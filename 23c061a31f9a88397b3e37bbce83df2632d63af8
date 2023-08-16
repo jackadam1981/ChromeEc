@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd670ba2_4191e3d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-16T23:10:33Z",
+      "side": 1,
+      "message": "I assume some of the test cases failed due to this change will run twister on this and update accordingly (will probably be changes to the tests themselves)",
+      "revId": "23c061a31f9a88397b3e37bbce83df2632d63af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8692dcce_ed718504",
@@ -31,6 +48,24 @@
       "writtenOn": "2023-08-16T21:52:36Z",
       "side": 1,
       "message": "Nit: These comments seem off, since as of this CL, DP 2.1 can\u0027t be enabled.",
+      "revId": "23c061a31f9a88397b3e37bbce83df2632d63af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be86b870_3c4df675",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-16T23:10:33Z",
+      "side": 1,
+      "message": "Good point I will update these",
+      "parentUuid": "8692dcce_ed718504",
       "revId": "23c061a31f9a88397b3e37bbce83df2632d63af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
