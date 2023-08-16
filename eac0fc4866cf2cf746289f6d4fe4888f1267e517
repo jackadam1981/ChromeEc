@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6320889_43401a6f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-16T21:48:55Z",
+      "side": 1,
+      "message": "remove this, this is for Data path only",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "eac0fc4866cf2cf746289f6d4fe4888f1267e517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0724a2_37321048",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-16T21:48:55Z",
+      "side": 1,
+      "message": "nit: remove extra line",
+      "revId": "eac0fc4866cf2cf746289f6d4fe4888f1267e517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
