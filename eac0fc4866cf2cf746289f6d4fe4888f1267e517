@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "141623c5_c83be355",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-16T21:49:56Z",
+      "side": 1,
+      "message": "nit: remove extra lines",
+      "revId": "eac0fc4866cf2cf746289f6d4fe4888f1267e517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6320889_43401a6f",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
         "patchSetId": 4
