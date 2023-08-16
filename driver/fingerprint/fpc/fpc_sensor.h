@@ -10,9 +10,12 @@
 
 #if defined(CONFIG_FP_SENSOR_FPC1025)
 #include "bep/fpc1025_private.h"
+#include "fpc_bep_private.h"
 #elif defined(CONFIG_FP_SENSOR_FPC1035)
 #include "bep/fpc1035_private.h"
+#include "fpc_bep_private.h"
 #elif defined(CONFIG_FP_SENSOR_FPC1145)
+#include "fpc_libfp_private.h"
 #include "libfp/fpc1145_private.h"
 #else
 #error "Sensor type not defined!"

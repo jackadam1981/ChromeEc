@@ -15,5 +15,5 @@ all-obj-rw+=$(_bep_cur_dir)fpc_misc.o \
 	$(_bep_cur_dir)fpc_sensor_spi.o \
 	$(_bep_cur_dir)fpc_timebase.o
 
-# Add fpc_private.o only if there is a private repo
-all-obj-rw+=$(if $(HAVE_PRIVATE),$(_bep_cur_dir)fpc_private.o,)
+# Add fpc_bep_private.o only if there is a private repo
+all-obj-rw+=$(if $(HAVE_PRIVATE),$(_bep_cur_dir)fpc_bep_private.o,)

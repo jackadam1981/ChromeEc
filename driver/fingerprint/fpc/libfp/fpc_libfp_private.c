@@ -8,7 +8,7 @@
 #include "console.h"
 #include "driver/fingerprint/fpc/fpc_sensor.h"
 #include "fpc_bio_algorithm.h"
-#include "fpc_private.h"
+#include "fpc_libfp_private.h"
 #include "fpsensor.h"
 #include "fpsensor_utils.h"
 #include "gpio.h"

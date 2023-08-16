@@ -9,9 +9,9 @@
 #include <include/fpsensor_state.h>
 #include <include/fpsensor_utils.h>
 #if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035)
-#include "bep/fpc_private.h"
+#include "fpc_bep_private.h"
 #elif defined(CONFIG_FP_SENSOR_FPC1145)
-#include "libfp/fpc_private.h"
+#include "fpc_libfp_private.h"
 #else
 #error "Sensor type not defined!"
 #endif
