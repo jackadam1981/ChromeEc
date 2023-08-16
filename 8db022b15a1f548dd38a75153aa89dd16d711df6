@@ -33,6 +33,23 @@
       "message": "Hi Caveh and Jason,\n\nplease help to review the CL, thanks.",
       "revId": "8db022b15a1f548dd38a75153aa89dd16d711df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f411d2_34c0f749",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-16T08:29:29Z",
+      "side": 1,
+      "message": "Should this reference b/254148652 in the comment text?",
+      "revId": "8db022b15a1f548dd38a75153aa89dd16d711df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
