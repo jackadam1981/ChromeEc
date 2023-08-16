@@ -315,7 +315,7 @@ ZTEST_USER(bb_retimer_no_tasks, test_bb_set_dfp_state)
 	cable_resp.tbt_cable = TBT_CABLE_NON_OPTICAL;
 	cable_resp.retimer_type = USB_NOT_RETIMER;
 	cable_resp.lsrx_comm = BIDIR_LSRX_COMM;
-	cable_resp.tbt_active_passive = TBT_CABLE_PASSIVE;
+	cable_resp.tbt_active_passive = TBT_CABLE_ACTIVE;
 	disc->svids[0].mode_vdo[0] = cable_resp.raw_value;
 
 	/* Set device VDO */
