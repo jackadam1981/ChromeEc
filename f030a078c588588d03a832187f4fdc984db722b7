@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fdfeda7_de751ee3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-16T12:18:34Z",
+      "side": 1,
+      "message": "there\u0027s no point in supporting Python 2.  it\u0027s not being tested/verified anywhere.  you should delete all such logic now.",
+      "revId": "f030a078c588588d03a832187f4fdc984db722b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
