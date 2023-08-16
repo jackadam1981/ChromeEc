@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd22b79_cd307083",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-16T21:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dfa5039_41b628a8",
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db58ac91_ceeb3d60",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "Oops. You need to rename `drivers-rw` to `driver-rw`.\n\nSee https://crsrc.org/o/src/platform/ec/Makefile;l\u003d325",
       "parentUuid": "b0880638_2dd29221",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fd2c07_600da4ed",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-16T21:23:07Z",
+      "side": 1,
+      "message": "I did some very simple cleanup and opened b/296280995 to follow up on the rest. \nOn this CL I moved the addition of `fpc_stubs.o` up a directory as you suggested. \n\nNote: As a result of this I had to roll the [bep changes](https://crrev.com/c/4558584) into this CL too.",
+      "parentUuid": "001fa619_4f5e3b58",
       "range": {
         "startLine": 7,
         "startChar": 0,
