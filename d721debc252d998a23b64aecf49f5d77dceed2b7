@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d1d3352_4a75a6a4",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-16T03:50:31Z",
+      "side": 1,
+      "message": "\"the DRBG/SHA is powered on in npcx_trng_hw_init\"\nYes\n\n\"DRBG-\u003egenerate should be always called after npcx_trng_hw_init and before npcx_trng_power_off\"\nAlso yes, but the current implementation in fpsensor.cc doesn\u0027t call npcx_trng_power_off. It does call trng_init and trng_exit something like this:\n\ntrng_init();\ntrng_rand();\ntrng_exit();\n\nThis is why I suggest trng_init() power on the blocks and trng_exit() power them off: to save power when not in use. This assumes the power API calls have small latency. Let us know your thoughts here.",
+      "parentUuid": "a1ef1c7c_82f995ef",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d159191_bee85670",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 4
