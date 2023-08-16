@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1ef1c7c_82f995ef",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-16T03:25:26Z",
+      "side": 1,
+      "message": "If I understand correctly, with this CL\u0027s change, the DRBG/SHA is powered on in npcx_trng_hw_init and powered off in npcx_trng_power_off. \nDRBG-\u003egenerate should be always called after  npcx_trng_hw_init  and before npcx_trng_power_off. This why I think this is not required.\nIs my understanding correct?",
+      "parentUuid": "4e88eeb4_7b42edfc",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d159191_bee85670",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 4
