@@ -40,6 +40,8 @@ if(DEFINED CONFIG_PLATFORM_EC)
   # determine that the header is being compiled for the EC instead of
   # by another third-party C codebase.
   zephyr_compile_definitions("CHROMIUM_EC")
+  zephyr_compile_definitions("SECTION_IS_RO")
+  zephyr_compile_definitions("SECTION_IS_RW")
 
   # Add CONFIG_ZEPHYR, which is commonly used to guard code for use
   # with Zephyr builds only.
