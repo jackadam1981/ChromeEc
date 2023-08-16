@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f2b42a_f1f9c446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-16T04:50:10Z",
+      "side": 1,
+      "message": "the CQ failure doesn\u0027t seem related.\n```\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nERROR: console_unittest (unittest.loader._FailedTest)\n----------------------------------------------------------------------\nImportError: Failed to import test module: console_unittest\nTraceback (most recent call last):\n  File \"/usr/lib/python3.8/unittest/loader.py\", line 154, in loadTestsFromName\n    module \u003d __import__(module_name)\n  File \"/mnt/host/source/src/platform/ec/util/ec3po/console_unittest.py\", line 20, in \u003cmodule\u003e\n    import mock  # pylint:disable\u003dimport-error\nModuleNotFoundError: No module named \u0027mock\u0027\n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nERROR: interpreter_unittest (unittest.loader._FailedTest)\n----------------------------------------------------------------------\nImportError: Failed to import test module: interpreter_unittest\nTraceback (most recent call last):\n  File \"/usr/lib/python3.8/unittest/loader.py\", line 154, in loadTestsFromName\n    module \u003d __import__(module_name)\n  File \"/mnt/host/source/src/platform/ec/util/ec3po/interpreter_unittest.py\", line 18, in \u003cmodule\u003e\n    import mock  # pylint:disable\u003dimport-error\nModuleNotFoundError: No module named \u0027mock\u0027\n```",
+      "revId": "de9267da5541b57eed1443f78633b33c1d041aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
