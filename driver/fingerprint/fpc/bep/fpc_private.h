@@ -139,6 +139,22 @@ int fp_sensor_maintenance(uint8_t *image_data,
 			  fp_sensor_info_t *fp_sensor_info);
 
 /**
+ * Configure finger detection.
+ *
+ * Send the settings to the sensor, so it is properly configured to detect
+ * the presence of a finger.
+ */
+void fp_sensor_configure_detect(void);
+
+/**
+ * Returns the status of the finger on the sensor.
+ * (assumes fp_sensor_configure_detect was called before)
+ *
+ * @return finger_state
+ */
+enum finger_state fp_sensor_finger_status(void);
+
+/**
  * Get the HWID of the sensor.
  *
  * @param id Pointer to where to store the HWID value.  The HWID value here is

@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "fpsensor.h"
+#include "fpsensor_driver.h"
 #include "mock/fpsensor_mock.h"
 
 #include <stdlib.h>
@@ -83,4 +84,35 @@ int fp_finger_enroll(uint8_t *image, int *completion)
 int fp_maintenance(void)
 {
 	return mock_ctrl_fp_sensor.fp_maintenance_return;
+}
+
+struct fp_sensor_interface fp_driver_mock = {
+	.sensor_type = FP_SENSOR_TYPE_UNKNOWN,
+	.sensor_init = &fp_sensor_init,
+	.sensor_deinit = &fp_sensor_deinit,
+	.sensor_get_info = &fp_sensor_get_info,
+	.sensor_low_power = &fp_sensor_low_power,
+	.sensor_configure_detect = &fp_sensor_configure_detect,
+	.sensor_finger_status = &fp_sensor_finger_status,
+	.sensor_acquire_image_with_mode = &fp_sensor_acquire_image_with_mode,
+	.finger_enroll = &fp_finger_enroll,
+	.finger_match = &fp_finger_match,
+	.enrollment_begin = &fp_enrollment_begin,
+	.enrollment_finish = &fp_enrollment_finish,
+	.maintenance = &fp_maintenance,
+	.image_size = FP_SENSOR_IMAGE_SIZE,
+	.template_size = 0,
+	.encrypted_template_size =
+		FP_POSITIVE_MATCH_SALT_BYTES +
+		sizeof(struct ec_fp_template_encryption_metadata),
+	.res_x = 0,
+	.res_y = 0
+};
+
+/* Fp sensor driver interface. */
+struct fp_sensor_interface *fp_driver = &fp_driver_mock;
+
+struct fp_sensor_interface *fpc_sensor_get_interface(void)
+{
+	return &fp_driver_mock;
 }

@@ -80,11 +80,11 @@ static void upload_pgm_image(uint8_t *frame)
 	CPRINTF("#IGNORE for ZModem\r**\030B00");
 	msleep(2000); /* let the download program start */
 	/* Print 8-bpp PGM ASCII header */
-	CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	CPRINTF("P2\n%d %d\n255\n", fp_driver->res_x, fp_driver->res_y);
 
-	for (y = 0; y < FP_SENSOR_RES_Y; y++) {
+	for (y = 0; y < fp_driver->res_y; y++) {
 		watchdog_reload();
-		for (x = 0; x < FP_SENSOR_RES_X; x++, ptr++)
+		for (x = 0; x < fp_driver->res_x; x++, ptr++)
 			CPRINTF("%d ", *ptr);
 		CPRINTF("\n");
 		cflush();
@@ -292,7 +292,7 @@ DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, NULL,
 static int command_fpmaintenance(int argc, const char **argv)
 {
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	return fp_maintenance();
+	return fp_driver->maintenance();
 #else
 	return EC_SUCCESS;
 #endif /* #ifdef HAVE_FP_PRIVATE_DRIVER */

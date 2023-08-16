@@ -14,6 +14,12 @@
 #include "task.h"
 #include "util.h"
 
+#ifdef SECTION_IS_RW
+#include "fpsensor_driver.h"
+/* Fp sensor driver interface. */
+struct fp_sensor_interface *fp_driver;
+#endif
+
 /**
  * Disable restricted commands when the system is locked.
  *
@@ -90,6 +96,11 @@ static void spi_configure(void)
 /* Initialize board. */
 static void board_init(void)
 {
+	if (IS_ENABLED(SECTION_IS_RW)) {
+		fp_driver = fpc_sensor_get_interface();
+		ASSERT(fp_driver);
+	}
+
 	spi_configure();
 
 	ccprints("TRANSPORT_SEL: %s",

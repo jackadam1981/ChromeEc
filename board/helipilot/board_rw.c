@@ -29,6 +29,9 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
+/* Fp sensor driver interface. */
+struct fp_sensor_interface *fp_driver;
+
 static void configure_fp_sensor_spi(void)
 {
 	/* Configure SPI GPIOs */
