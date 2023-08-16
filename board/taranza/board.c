@@ -162,18 +162,32 @@ static const struct bitbang_cec_config bitbang_cec_config = {
 	.timer = CEC_EXT_TIMER,
 };
 
+/* Power on Taranza through CEC */
+struct cec_offline_policy taranza_cec_policy[] = {
+	{
+		.command = CEC_MSG_REPORT_PHYSICAL_ADDRESS,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	{
+		.command = CEC_MSG_DEVICE_VENDOR_ID,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	/* Terminator */
+	{ 0 },
+};
+
 const struct cec_config_t cec_config[] = {
 	/* HDMI1 */
 	[CEC_PORT_0] = {
 		.drv = &it83xx_cec_drv,
 		.drv_config = NULL,
-		.offline_policy = NULL,
+		.offline_policy = taranza_cec_policy,
 	},
 	/* HDMI2 */
 	[CEC_PORT_1] = {
 		.drv = &bitbang_cec_drv,
 		.drv_config = &bitbang_cec_config,
-		.offline_policy = NULL,
+		.offline_policy = taranza_cec_policy,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(cec_config) == CEC_PORT_COUNT);
