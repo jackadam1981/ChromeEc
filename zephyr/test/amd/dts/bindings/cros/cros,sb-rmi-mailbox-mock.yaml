@@ -1,0 +1,5 @@
+description: AMD side-band remote management interface
+
+compatible: "cros,sb-rmi-mailbox-mock"
+
+include: amd,sb-rmi-mailbox-base.yaml

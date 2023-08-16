@@ -46,9 +46,17 @@
 &i2c0 {
 	status = "okay";
 
-	sb_rmi_emul: sb_rmi@0x3c {
+	sb_rmi_emul: sb_rmi@3c {
 		compatible = "amd,sb-rmi";
 		status = "okay";
 		reg = <0x3c>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		/*mock@ff {
+			compatible = "cros,sb-rmi-mailbox-mock";
+			status = "okay";
+			reg = <0xff>;
+		};*/
 	};
 };

@@ -1,0 +1,13 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Common properties for AMD SB-RMI mailbox functionality
+
+include: base.yaml
+
+properties:
+  commands:
+    type: uint8-array
+    description: |
+      Commands for this mailbox functionality
