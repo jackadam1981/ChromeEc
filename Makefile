@@ -194,7 +194,7 @@ endif
 # them into variables available to this build script
 # Usage: $(shell $(call cmd_get_configs,<RO|RW>))
 cmd_get_configs = $(CPP) $(foreach BLD,$(1),$(CPPFLAGS)) -P -dM \
-	-Ichip/$(CHIP) -I$(BASEDIR) -I$(BDIR) include/config.h | \
+	-Ichip/$(CHIP) -I$(BASEDIR) -I$(BDIR) -Iprivate include/config.h | \
 	grep -o "\#define \(CONFIG\|VARIANT\)_[A-Z0-9_]*" | cut -c9- | sort
 _flag_cfg_ro:=$(call shell_echo,$(call cmd_get_configs,RO))
 _flag_cfg_rw:=$(_tsk_cfg_rw) $(call shell_echo,$(call cmd_get_configs,RW))
