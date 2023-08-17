@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e83ba6_a5a5dbef",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-17T22:08:18Z",
+      "side": 1,
+      "message": "How does this work if we have one non-bitbang cec port and one bitbang cec port? For example, dibbi uses it83xx_cec_drv for p0 and bitbang_cec_drv for p1. What do you think about multiplexing ports at common/cec.c using a more versatile context container?",
+      "range": {
+        "startLine": 214,
+        "startChar": 28,
+        "endLine": 214,
+        "endChar": 58
+      },
+      "revId": "911d7b159b01ba071c8cd7dab627d4d4cf5e1439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
