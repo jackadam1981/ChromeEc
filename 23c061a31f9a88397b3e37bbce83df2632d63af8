@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "421b69c2_cc1f076d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-08-17T15:45:04Z",
+      "side": 1,
+      "message": "Let me double check this as the test should have been failing before too. It was actually strange to me that this was the fix as the active component was being set to Passive always and the code checked for this bit before but just in a different way",
+      "parentUuid": "32a2a6a1_2873aea7",
+      "revId": "23c061a31f9a88397b3e37bbce83df2632d63af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8692dcce_ed718504",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 1
