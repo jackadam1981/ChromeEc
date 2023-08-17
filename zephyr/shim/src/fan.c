@@ -118,9 +118,11 @@ static int fan_rpm(int ch)
 		LOG_ERR("Tach device %s not ready", dev->name);
 		return 0;
 	}
-
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j2_debug), 1);
 	sensor_sample_fetch_chan(dev, SENSOR_CHAN_RPM);
 	sensor_channel_get(dev, SENSOR_CHAN_RPM, &val);
+	if ((int)val.val1 > 3500)
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j2_debug), 0);
 
 	return (int)val.val1;
 }

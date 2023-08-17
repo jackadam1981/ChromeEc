@@ -200,6 +200,9 @@
 		gpio_usb_c1_int_odl: usb_c1_int_odl {
 			gpios = <&gpioe 6 GPIO_INPUT_PULL_UP>;
 		};
+		gpio_j2_debug: j2_debug {
+			gpios = <&gpioj 2 GPIO_OUTPUT>;
+		};
 	};
 
 	named-i2c-ports {
