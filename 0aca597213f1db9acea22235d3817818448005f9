@@ -46,6 +46,30 @@
       },
       "revId": "0aca597213f1db9acea22235d3817818448005f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb29208e_f6b506ee",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-17T17:18:15Z",
+      "side": 1,
+      "message": "ah, I missed the oter if, makes sense",
+      "parentUuid": "54d01070_99c62457",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "0aca597213f1db9acea22235d3817818448005f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
