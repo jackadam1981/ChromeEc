@@ -463,6 +463,7 @@ static int cc_cbi(int argc, const char **argv)
 		(struct __ec_align4 ec_params_set_cbi *)buf;
 	int last_arg;
 	char *e;
+	enum ec_status hc_rv;
 
 	if (argc == 1) {
 		dump_cbi();
@@ -544,8 +545,13 @@ static int cc_cbi(int argc, const char **argv)
 		}
 	}
 
-	if (common_cbi_set(setter) == EC_RES_SUCCESS)
+	hc_rv = common_cbi_set(setter);
+	if (hc_rv == EC_RES_SUCCESS)
 		return EC_SUCCESS;
+	if (hc_rv == EC_RES_ACCESS_DENIED)
+		return EC_ERROR_ACCESS_DENIED;
+	if (hc_rv == EC_RES_INVALID_PARAM)
+		return EC_ERROR_INVAL;
 
 	return EC_ERROR_UNKNOWN;
 }
