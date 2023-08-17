@@ -135,23 +135,38 @@
 			};
 		};
 
-		power-state-idle {
+		power-state-idle-left {
+			/* Battery sustainer active (b/295570557 buggy charge-state?) */
 			charge-state = "LED_PWRS_IDLE";
 
-			/* Blink both LEDs amber at 0.5 Hz */
+			/* Blink port LED white at 0.25 Hz */
 			color-0 {
-				led-color = <&color_amber_left>;
-				period-ms = <1000>;
+				led-color = <&color_off_right>;
 			};
 			color-1 {
-				led-color = <&color_amber_right>;
-				period-ms = <1000>;
+				led-color = <&color_off_left>;
+				period-ms = <3000>;
 			};
 			color-2 {
 				led-color = <&color_white_left>;
 				period-ms = <1000>;
 			};
-			color-3 {
+		};
+
+		power-state-idle-right {
+			/* Battery sustainer active (b/295570557 buggy charge-state?) */
+			charge-state = "LED_PWRS_IDLE";
+
+			/* Blink port LED white at 0.25 Hz */
+
+			color-0 {
+				led-color = <&color_off_left>;
+			};
+			color-1 {
+				led-color = <&color_off_right>;
+				period-ms = <3000>;
+			};
+			color-2 {
 				led-color = <&color_white_right>;
 				period-ms = <1000>;
 			};
