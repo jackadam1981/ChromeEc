@@ -16,6 +16,24 @@
       "message": "@bobbycasey@google.com, I repaired your CL and re-uploaded. Please review!",
       "revId": "3a1178401e540d5bd03e098adaeea0a64a5a4eb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519a9a75_f00797f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-17T14:35:30Z",
+      "side": 1,
+      "message": "Thanks! I double checked with and without the private repo (ensuring that I have the correct private repo version, https://crrev.com/i/6329970). I also verified that the [compare_build.sh script](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/util/compare_build.sh?l\u003d212) utilizes the checked out `private` repo so we should be good.",
+      "parentUuid": "e084333b_58d3f6f5",
+      "revId": "3a1178401e540d5bd03e098adaeea0a64a5a4eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

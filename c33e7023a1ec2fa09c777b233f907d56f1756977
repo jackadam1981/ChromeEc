@@ -16,6 +16,24 @@
       "message": "This include overwrites `CPPFLAGS`.",
       "revId": "c33e7023a1ec2fa09c777b233f907d56f1756977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad126bda_231633e3",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-17T14:35:30Z",
+      "side": 1,
+      "message": "Oh, good catch! I\u0027m surprised I didn\u0027t run into this while testing but I guess it\u0027s possible that my repo was still using the old private so CPPFLAGS was getting set there.",
+      "parentUuid": "7cdbb8ec_9fd3c27d",
+      "revId": "c33e7023a1ec2fa09c777b233f907d56f1756977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
