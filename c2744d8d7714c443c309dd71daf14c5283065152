@@ -306,6 +306,30 @@
       },
       "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d249005_96e84779",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-17T06:55:25Z",
+      "side": 1,
+      "message": "It\u0027s different because EC converts the raw report to a `struct usb_hid_touchpad_report` in drivers/touchpad_elan.c:elan_tp_read_report. \nThe descriptor here does not come from touchpad, it\u0027s EC\u0027s own structure.\n\nI don\u0027t know if there\u0027s any historical reason, but I don\u0027t think the conversion is necessary. Maybe you can skip the conversion part in elan_tp_read_report and pipe the raw data to AP directly...?",
+      "parentUuid": "1b08e13e_9a49f9f2",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
