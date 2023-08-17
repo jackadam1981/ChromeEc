@@ -22,6 +22,30 @@
       },
       "revId": "0aca597213f1db9acea22235d3817818448005f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d01070_99c62457",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-17T17:15:08Z",
+      "side": 1,
+      "message": "I made these lines common for gcc 11.2 \u0026 gcc 11.3.",
+      "parentUuid": "b3e702c3_0be9ba91",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "0aca597213f1db9acea22235d3817818448005f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
