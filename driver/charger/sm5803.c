@@ -695,6 +695,22 @@ static void sm5803_init(int chgnum)
 		rv |= test_write8(chgnum, 0x47, 0x10);
 		rv |= test_write8(chgnum, 0x48, 0x04);
 		rv |= main_write8(chgnum, 0x1F, 0x0);
+#ifdef CONFIG_CHARGER_SM5803_PROCHOT_DURATION
+		rv |= sm5803_set_phot_duration(
+			chgnum, CONFIG_CHARGER_SM5803_PROCHOT_DURATION);
+#endif
+#ifdef CONFIG_CHARGER_SM5803_VBUS_MON_SEL
+		rv |= sm5803_set_vbus_monitor_sel(
+			chgnum, CONFIG_CHARGER_SM5803_VBUS_MON_SEL);
+#endif
+#ifdef CONFIG_CHARGER_SM5803_VSYS_MON_SEL
+		rv |= sm5803_set_vsys_monitor_sel(
+			chgnum, CONFIG_CHARGER_SM5803_VSYS_MON_SEL);
+#endif
+#ifdef CONFIG_CHARGER_SM5803_IBAT_PHOT_SEL
+		rv |= sm5803_set_ibat_phot_sel(
+			chgnum, CONFIG_CHARGER_SM5803_IBAT_PHOT_SEL);
+#endif
 	}
 
 	/* Enable LDO bits */
@@ -2028,6 +2044,82 @@ static int sm5803_ramp_get_current_limit(int chgnum)
 	return rv ? -1 : input_current;
 }
 #endif /* CONFIG_CHARGE_RAMP_HW */
+
+#ifdef CONFIG_CHARGER_SM5803_PROCHOT_DURATION
+enum ec_error_list sm5803_set_phot_duration(int chgnum, int duration)
+{
+	enum ec_error_list rv = EC_SUCCESS;
+	int reg;
+
+	/* Set PHOT_DURATION */
+	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
+	reg &= ~SM5803_PHOT1_DURATION;
+	reg |= duration << SM5803_PHOT1_DURATION_SHIFT;
+	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
+
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CHARGER_SM5803_PROCHOT_DURATION */
+
+#ifdef CONFIG_CHARGER_SM5803_VBUS_MON_SEL
+enum ec_error_list sm5803_set_vbus_monitor_sel(int chgnum, int vbus_sel)
+{
+	enum ec_error_list rv = EC_SUCCESS;
+	int reg;
+
+	/* Set VBUS_MONITOR_SEL */
+	rv |= chg_read8(chgnum, SM5803_REG_PHOT2, &reg);
+	reg &= ~SM5803_PHOT2_VBUS_SEL;
+	reg |= vbus_sel;
+	rv |= chg_write8(chgnum, SM5803_REG_PHOT2, reg);
+
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CHARGER_SM5803_VBUS_MON_SEL */
+
+#ifdef CONFIG_CHARGER_SM5803_VSYS_MON_SEL
+enum ec_error_list sm5803_set_vsys_monitor_sel(int chgnum, int vsys_sel)
+{
+	enum ec_error_list rv = EC_SUCCESS;
+	int reg;
+
+	/* Set VSYS_MONITOR_SEL */
+	rv |= chg_read8(chgnum, SM5803_REG_PHOT3, &reg);
+	reg &= ~SM5803_PHOT3_VSYS_SEL;
+	reg |= vsys_sel;
+	rv |= chg_write8(chgnum, SM5803_REG_PHOT3, reg);
+
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CHARGER_SM5803_VSYS_MON_SEL */
+
+#ifdef CONFIG_CHARGER_SM5803_IBAT_PHOT_SEL
+enum ec_error_list sm5803_set_ibat_phot_sel(int chgnum, int ibat_sel)
+{
+	enum ec_error_list rv = EC_SUCCESS;
+	int reg;
+
+	/* Set IBAT_PHOT_SEL */
+	rv |= chg_read8(chgnum, SM5803_REG_PHOT4, &reg);
+	reg &= ~SM5803_PHOT4_IBAT_SEL;
+	reg |= SM5803_IBAT_PROCHOT_MA_TO_REG(ibat_sel);
+	rv |= chg_write8(chgnum, SM5803_REG_PHOT4, reg);
+
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CHARGER_SM5803_IBAT_PHOT_SEL */
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
 static void command_sm5803_dump(int chgnum)
