@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5850772e_12146257",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-17T16:00:23Z",
+      "side": 1,
+      "message": "Is this setting both flags for both RO and RW builds? How is it only enabling the right flag for the correct build?\n\n----\n\nCan you also add the following console command to your build and include the output here:\n\n`common/system.c`\n```\nstatic int command_in_rw(int argc, const char **argv)\n{\n#if defined(SECTION_IS_RW)\n\tint section_is_rw \u003d 1;\n#else\n\tint section_is_rw \u003d 0;\n#endif\n\n\tccprintf(\"image_copy \u003d %d\\n\", system_get_image_copy());\n\tccprintf(\"SECTION_IS_RW \u003d %d\\n\", section_is_rw);\n\tccprintf(\"system_is_in_rw \u003d %d\\n\", system_is_in_rw());\n\n\treturn EC_SUCCESS;\n}\nDECLARE_CONSOLE_COMMAND(in_rw, command_in_rw,\n\t\t\tNULL,\n\t\t\t\"Output system RW status.\");\n```\n\nWe\u0027ll want to validate both cases:\n\n1. Flash on the EC, verify `SECTION_IS_RW` is not defined while running in RO.\n2. Jump to RW first (`sysjump RW`) and then run `in_rw` to verify `SECTION_IS_RW` is enabled correctly.\n\nYou\u0027ll probably want to build on it a bit more to validate `SECTION_IS_RO` is defined correctly (only for RO builds).",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
