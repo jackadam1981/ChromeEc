@@ -16,6 +16,24 @@
       "message": "The build failure is quite concerning.",
       "revId": "5f342f38334b1562094464db5c742177dc0aa761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01bfbebc_6e6b4083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-17T21:45:35Z",
+      "side": 1,
+      "message": "I can locally reproduce the build issues.",
+      "parentUuid": "8e98a83f_1721cb0a",
+      "revId": "5f342f38334b1562094464db5c742177dc0aa761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
