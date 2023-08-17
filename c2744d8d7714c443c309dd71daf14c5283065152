@@ -354,6 +354,30 @@
       },
       "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b60d8629_28899d56",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-17T08:36:10Z",
+      "side": 1,
+      "message": "@parkerlin can you help Ren\u0027s request?",
+      "parentUuid": "2fb5d3c3_50fda318",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
