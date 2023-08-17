@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b249ae37_01d7b5c4",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-17T22:10:16Z",
+      "side": 1,
+      "message": "\u003e Changing this over will affect the builds of non Zephyr based boards.\n\nRight, but I\u0027m still wondering if that\u0027s the right path going forward. More as a tech debt type of cleanup, since it appears we have duplicate flags (I didn\u0027t know the Kconfig value existed).\n\nIt\u0027s probably worth opening a spin-off bug for. Maybe as a good starter bug since it should be fairly mechanical to switch everything to a build flag.",
+      "parentUuid": "4ee2df55_d32ce520",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "f33ca7ca5e42dedcc221c1eddfb02882c6526ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "067cc003_f0db75f7",
         "filename": "zephyr/zmake/zmake/output_packers.py",
         "patchSetId": 2
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "That is a good question.  Checking legacy EC makefile, I don\u0027t observe any additional static defines they add in for compiles like they do for `SECTION_IS_R(O|W)`",
       "parentUuid": "067cc003_f0db75f7",
+      "revId": "f33ca7ca5e42dedcc221c1eddfb02882c6526ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3f99ef_2dc7156e",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-17T22:10:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a492d3ad_9784d7ea",
       "revId": "f33ca7ca5e42dedcc221c1eddfb02882c6526ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
