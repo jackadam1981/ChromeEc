@@ -242,6 +242,44 @@ config PLATFORM_EC_CHARGER_SM5803
 	  choice of supported configurations: see b:260271871, b:258754576, and
 	  b:230712704 for more information.
 
+if PLATFORM_EC_CHARGER_SM5803
+
+config PLATFORM_EC_CHARGER_SM5803_PROCHOT_CONTROL
+	bool "Prochot control for SM5803"
+	default n
+	help
+	  Enables the driver for the SM5803 PROCHOT control. This will allow platform to
+	  control prochot duration/ VBUS/ VSYS/ IBAT selection.
+
+config PLATFORM_EC_CHARGER_SM5803_PROCHOT_DURATION
+	int "Prochot duration for SM5803"
+	depends on PLATFORM_EC_CHARGER_SM5803_PROCHOT_CONTROL
+	default 2
+	help
+	  Enables the driver for the SM5803 PROCHOT duration control.
+
+config PLATFORM_EC_CHARGER_SM5803_VBUS_MON_SEL
+	int "VBUS monitor select for SM5803"
+	depends on PLATFORM_EC_CHARGER_SM5803_PROCHOT_CONTROL
+	default 4
+	help
+	  Enables the driver for the SM5803 VBUS monitor select.
+
+config PLATFORM_EC_CHARGER_SM5803_VSYS_MON_SEL
+	int "VSYS monitor select for SM5803"
+	depends on PLATFORM_EC_CHARGER_SM5803_PROCHOT_CONTROL
+	default 10
+	help
+	  Enables the driver for the SM5803 VSYS monitor select.
+
+config PLATFORM_EC_CHARGER_SM5803_IBAT_PHOT_SEL
+	int "IBAT prochot select for SM5803"
+	depends on PLATFORM_EC_CHARGER_SM5803_PROCHOT_CONTROL
+	default 63
+	help
+	  Enables the driver for the SM5803 IBAT prochot select.
+
+endif
 
 if PLATFORM_EC_OCPC
 

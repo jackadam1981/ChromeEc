@@ -1397,6 +1397,13 @@
 /* Wireless chargers */
 #undef CONFIG_CPS8100
 
+/* SM5803 PROCHOT configuration*/
+#undef CONFIG_CHARGER_SM5803_PROCHOT_CONTROL
+#undef CONFIG_CHARGER_SM5803_PROCHOT_DURATION
+#undef CONFIG_CHARGER_SM5803_VBUS_MON_SEL
+#undef CONFIG_CHARGER_SM5803_VSYS_MON_SEL
+#undef CONFIG_CHARGER_SM5803_IBAT_PHOT_SEL
+
 /*****************************************************************************/
 
 /*
