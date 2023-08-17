@@ -116,6 +116,30 @@
       },
       "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522d6964_924047a0",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-17T13:07:54Z",
+      "side": 1,
+      "message": "Actually read the code and the c1sel things are clock_select \u003d\u003d x, not port.",
+      "parentUuid": "5d703908_11c08e53",
+      "range": {
+        "startLine": 280,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 14
+      },
+      "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
