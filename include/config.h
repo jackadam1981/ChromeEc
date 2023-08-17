@@ -7168,4 +7168,8 @@
 #define CONFIG_PRESERVED_END_OF_RAM_SIZE 1024
 #endif
 
+#ifdef HAVE_PRIVATE
+#include "private/config.h"
+#endif /* HAVE_PRIVATE */
+
 #endif /* __CROS_EC_CONFIG_H */
