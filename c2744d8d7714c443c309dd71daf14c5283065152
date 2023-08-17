@@ -378,6 +378,30 @@
       },
       "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec685724_7523fa6e",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-17T10:59:12Z",
+      "side": 1,
+      "message": "I  tried to read the descriptor. looks like report id 93 (\u003d`ETP_REPORT_ID`) is the touchpad report we want. there\u0027s no information in this descriptor.\n\n```\n0x85, 0x5D,        //   Report ID (93)\n0x09, 0x01,        //   Usage (0x01)\n0x95, 0x1B,        //   Report Count (27)\n0x75, 0x08,        //   Report Size (8)\n0x81, 0x06,        //   Input (Data,Var,Rel,No Wrap,Linear,Preferred State,No Null Position)\n```",
+      "parentUuid": "b60d8629_28899d56",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
