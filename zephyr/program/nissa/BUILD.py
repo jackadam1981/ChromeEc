@@ -124,3 +124,6 @@ craaskov = register_nissa_project(
 pirrha = register_nereid_project(
     project_name="pirrha",
 )
+anraggar = register_nereid_project(
+    project_name="anraggar",
+)
