@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c3ee48_020ab057",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-17T18:35:54Z",
+      "side": 1,
+      "message": "Should the EC code be updated to look for this Kcofig value instead, rather than duplicating the definition?",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "f33ca7ca5e42dedcc221c1eddfb02882c6526ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067cc003_f0db75f7",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-17T18:35:54Z",
+      "side": 1,
+      "message": "Are there any other `cmake_defs` values that aren\u0027t being enabled via `zephyr_compile_definitions` also?\n\nCan `cmake_defs` be updated to automatically enable `zephyr_compile_definitions` also, so we don\u0027t need to translate the definitions for everything (which will likely get missed in the future)?",
+      "revId": "f33ca7ca5e42dedcc221c1eddfb02882c6526ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
