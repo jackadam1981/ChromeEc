@@ -46,6 +46,30 @@
       },
       "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f37da5_8521e5c3",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-08-17T17:57:24Z",
+      "side": 1,
+      "message": "I added \n```\n#ifdef SECTION_IS_RW\n#error RW\n#endif\n\n#ifdef SECTION_IS_RO\n#error RO\n#endif\n``` \nAnd confirmed expected compiler failure output per build\n```\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/flash.c.obj \nccache /home/asemjonovs/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -DCHROMIUM_EC -DCONFIG_ZEPHYR -DKERNEL -DSECTION_IS_RO -D__PROGRAM_START -D__REQUIRE_ZEPHYR_GPIOS__ -D__ZEPHYR__\u003d1 -\n:\n:\nmodules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/flash.c.obj -c /home/asemjonovs/chromiumos/src/platform/ec/zephyr/shim/src/flash.c\n/home/asemjonovs/chromiumos/src/platform/ec/zephyr/shim/src/flash.c:38:2: error: #error RO\n   38 | #error RO\n```\n\n```\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/flash.c.obj \nccache /home/asemjonovs/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -DCHROMIUM_EC -DCONFIG_ZEPHYR -DKERNEL -DSECTION_IS_RW -D__PROGRAM_START -D__REQUIRE_ZEPHYR_GPIOS__ -D__ZEPHYR__\u003d1 \n:\n:\n/home/asemjonovs/chromiumos/src/platform/ec/zephyr/shim/src/flash.c\n/home/asemjonovs/chromiumos/src/platform/ec/zephyr/shim/src/flash.c:34:2: error: #error RW\n   34 | #error RW\n```",
+      "parentUuid": "56fa01d0_1fc19bad",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
