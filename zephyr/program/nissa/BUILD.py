@@ -132,3 +132,6 @@ pirrha = register_nereid_project(
 quandiso = register_nissa_project(
     project_name="quandiso",
 )
+anraggar = register_nereid_project(
+    project_name="anraggar",
+)
