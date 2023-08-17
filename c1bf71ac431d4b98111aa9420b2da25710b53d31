@@ -22,6 +22,30 @@
       },
       "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fa01d0_1fc19bad",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-08-17T16:55:59Z",
+      "side": 1,
+      "message": "Ah, that makes more sense why Keith suggested to have this change in zmake.",
+      "parentUuid": "5850772e_12146257",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
