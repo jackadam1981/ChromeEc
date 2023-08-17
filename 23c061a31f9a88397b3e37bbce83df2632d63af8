@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80d17d11_d258546c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-17T16:42:33Z",
+      "side": 1,
+      "message": "Ok looked into it was passing before cause this logic was wrong:\n\nif ((mux_state \u0026 BB_RETIMER_MUX_USB_ALT_MODE) \u0026\u0026\n\t    ((cable_type \u003d\u003d IDH_PTYPE_ACABLE) ||\n\t     cable_resp.tbt_active_passive \u003d\u003d TBT_CABLE_ACTIVE))\n\t\t*set_retimer_con |\u003d BB_RETIMER_ACTIVE_PASSIVE;\n\t\t\nin TBT mode you should be relying on the tbt_active_passive bit only but the test was setting IDH_PTYPE_ACABLE at line 302 but then passive at line 318 for the TBT cable. With the updated code this check is split into a USB mode check which uses the IDH_PTYPE_ACTIVE check and the TBT mode check that uses the tbt cable response",
+      "parentUuid": "421b69c2_cc1f076d",
+      "revId": "23c061a31f9a88397b3e37bbce83df2632d63af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8692dcce_ed718504",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 1
