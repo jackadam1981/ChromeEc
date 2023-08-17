@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "559b2dc9_8580a9c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-17T01:27:11Z",
+      "side": 1,
+      "message": "The test? Done.",
+      "parentUuid": "177863b5_6fac3767",
+      "revId": "3aa1fb5715b15f8494a9a57bf873c3615190f5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f510e5d8_8b42bec2",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbb41a6b_08a18ac3",
+        "filename": "common/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-17T01:27:11Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure about that. In the past we\u0027ve always left it disabled.\n\nThe logs are quite verbose, e.g. if you have a display connected it might send you polling messages every few seconds.\n\nI might split it into two log levels, e.g logging sent/received messages can be debug only, and everything else can be default on.",
+      "parentUuid": "f510e5d8_8b42bec2",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "3aa1fb5715b15f8494a9a57bf873c3615190f5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "823b16de_600f6469",
         "filename": "common/cec.c",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2023-08-16T17:27:01Z",
       "side": 1,
       "message": "I think most developers will be confused about this. IIUC, multi-port CEC supersedes single-port CEC. Can you please file a bug with a list of changes needed to deprecate single-port CEC?",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 60
+      },
+      "revId": "3aa1fb5715b15f8494a9a57bf873c3615190f5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ea5f17_f65682f7",
+        "filename": "common/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-17T01:27:11Z",
+      "side": 1,
+      "message": "b/296314584",
+      "parentUuid": "823b16de_600f6469",
       "range": {
         "startLine": 426,
         "startChar": 1,
