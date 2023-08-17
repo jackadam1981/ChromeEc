@@ -70,6 +70,30 @@
       },
       "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31eaa58_5e51e375",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-08-17T21:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2f37da5_8521e5c3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "c1bf71ac431d4b98111aa9420b2da25710b53d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
