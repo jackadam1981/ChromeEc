@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8414889f_fb2a8a58",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-17T11:23:11Z",
+      "side": 1,
+      "message": "`\u003e\u003d`?",
+      "range": {
+        "startLine": 237,
+        "startChar": 10,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8155e16_524fc414",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-17T11:23:11Z",
+      "side": 1,
+      "message": "What do you think about specifying these via cec_config? I.e.\n- Add an enum with values for the two timers (T1CNT1 and T1CNT2)\n- In board.c, specify the timer for each port in bitbang_cec_config.timer\n- In this file, add a static const struct array which maps the enum values to the values below\n- In the functions above, use cec_config[port]-\u003edrv_config-\u003etimer to index into the array. Similar to what I did on ITE: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/it83xx/cec_bitbang.c;l\u003d120\n\nJust a suggestion.",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075b6ec7_7c478723",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-17T11:23:11Z",
+      "side": 1,
+      "message": "If you take my suggestion above, this could be `cec_config[port]-\u003edrv_config-\u003etimer \u003d\u003d TCNT1`. And same for all the other uses of `port \u003d\u003d 0` in this file.",
+      "range": {
+        "startLine": 280,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 14
+      },
+      "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
