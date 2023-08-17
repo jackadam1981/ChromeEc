@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12c016f7_497eca4a",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-17T12:37:41Z",
+      "side": 1,
+      "message": "Changing timer on Nuovoton also means you have to switch pin on the chip. TCNT1  only on works on TA-pin and TCNT2 is only on TB. So this isn\u0027t as dynamic as on it83xx.\n\nMoving it to a static const struct array might look better though. I\u0027ll give it a try.",
+      "parentUuid": "b8155e16_524fc414",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "075b6ec7_7c478723",
         "filename": "chip/npcx/cec_bitbang.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2023-08-17T11:23:11Z",
       "side": 1,
       "message": "If you take my suggestion above, this could be `cec_config[port]-\u003edrv_config-\u003etimer \u003d\u003d TCNT1`. And same for all the other uses of `port \u003d\u003d 0` in this file.",
+      "range": {
+        "startLine": 280,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 14
+      },
+      "revId": "d0da7d64f05b5c75eb4f80f4ad4baeb19f424b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d703908_11c08e53",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-17T12:37:41Z",
+      "side": 1,
+      "message": "I don\u0027t think it would work for the port \u003d\u003d 0 case of C1SEL/C2SEL, since thos defines are part of a macron name (FIELD) that gets string concatenated in another macro. But this case could go in the static struct.",
+      "parentUuid": "075b6ec7_7c478723",
       "range": {
         "startLine": 280,
         "startChar": 5,
