@@ -121,20 +121,20 @@ static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 	switch (data.event) {
 #if DT_NODE_EXISTS(DT_NODELABEL(gpio_hdmi_sel))
 	case AP_POWER_PRE_INIT:
-		LOG_DBG("Connecting HDMI DDC to sub-board");
+		LOG_INF("Connecting HDMI DDC to sub-board");
 		gpio_pin_set_dt(ddc_select, 1);
 		break;
 	case AP_POWER_HARD_OFF:
-		LOG_DBG("Disconnecting HDMI sub-board DDC");
+		LOG_INF("Disconnecting HDMI sub-board DDC");
 		gpio_pin_set_dt(ddc_select, 0);
 		break;
 #endif
 	case AP_POWER_STARTUP:
-		LOG_DBG("Enabling HDMI VCC");
+		LOG_INF("Enabling HDMI VCC");
 		gpio_pin_set_dt(s3_rail, 1);
 		break;
 	case AP_POWER_SHUTDOWN:
-		LOG_DBG("Disabling HDMI VCC");
+		LOG_INF("Disabling HDMI VCC");
 		gpio_pin_set_dt(s3_rail, 0);
 		break;
 	default:
@@ -150,7 +150,7 @@ static void hdmi_hpd_interrupt(const struct device *device,
 	int state = gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_hpd_odl));
 
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_hdmi_hpd), state);
-	LOG_DBG("HDMI HPD changed state to %d", state);
+	LOG_INF("HDMI HPD changed state to %d", state);
 }
 
 void nissa_configure_hdmi_rails(void)
@@ -319,14 +319,19 @@ static void nereid_subboard_config(void)
 		 * on the sub-board.
 		 */
 		gpio_pin_configure_dt(hpd_gpio, GPIO_INPUT | GPIO_ACTIVE_LOW);
+		LOG_INF("hpd_gpio config GPIO_INPUT, GPIO_ACTIVE_LOW");
 		/* Register interrupt handler for HPD changes */
 		gpio_init_callback(&hdmi_hpd_cb, hdmi_hpd_interrupt,
 				   BIT(hpd_gpio->pin));
+		LOG_INF("hpd_gpio init callback");
 		gpio_add_callback(hpd_gpio->port, &hdmi_hpd_cb);
+		LOG_INF("hpd_gpio add callback");
 		rv = gpio_pin_interrupt_configure_dt(hpd_gpio,
 						     GPIO_INT_EDGE_BOTH);
 		__ASSERT(rv == 0,
 			 "HPD interrupt configuration returned error %d", rv);
+
+		LOG_INF("HPD interrupt config success!");
 		/*
 		 * Run the HPD handler once to ensure output is in sync.
 		 * Lock interrupts to ensure that we don't cause desync if an
