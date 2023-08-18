@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db498e71_64e70b71",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-18T01:43:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eea78fe_d140eba8",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0880638_2dd29221",
