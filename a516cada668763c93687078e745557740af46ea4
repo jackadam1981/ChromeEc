@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5691685_3dc8517c",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-08-18T20:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53046017_6abc88b6",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "a516cada668763c93687078e745557740af46ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e098357_31376f0f",
@@ -65,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69657579_4614a478",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-08-18T20:17:55Z",
+      "side": 1,
+      "message": "Agreed, we just build `gsctool` in the chroot via portage and it is just available. Building opentitantool is quite the ordeal.\n\nSubsequent cached build operations take on less than 450 ms, so it isn\u0027t too much overhead",
+      "parentUuid": "9e098357_31376f0f",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "a516cada668763c93687078e745557740af46ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51c8b91d_75c9fa13",
@@ -78,6 +126,30 @@
       "writtenOn": "2023-08-18T20:09:03Z",
       "side": 1,
       "message": "to avoid pushd/pod pairs you can just run the sequence of commands in parens `( cd new_dir; ... )` which creates a new shell and does not affect the current directory of the current script\n\nJust a thought",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "a516cada668763c93687078e745557740af46ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e520885b_a5b10cfb",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-08-18T20:17:55Z",
+      "side": 1,
+      "message": "I like it. Done",
+      "parentUuid": "51c8b91d_75c9fa13",
       "range": {
         "startLine": 19,
         "startChar": 4,
