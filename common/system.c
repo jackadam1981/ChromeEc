@@ -1020,6 +1020,9 @@ static int handle_pending_reboot(struct ec_params_reboot_ec p)
 		return system_run_image_copy_with_flags(
 			EC_IMAGE_RO, EC_RESET_FLAG_STAY_IN_RO);
 	case EC_REBOOT_JUMP_RW:
+		CPRINTS("Clearing STAY_IN_RO and AP_OFF");
+		system_clear_reset_flags(EC_RESET_FLAG_STAY_IN_RO);
+		system_clear_reset_flags(EC_RESET_FLAG_AP_OFF);
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
 	case EC_REBOOT_COLD_AP_OFF:
