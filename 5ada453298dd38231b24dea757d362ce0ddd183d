@@ -46,6 +46,30 @@
       },
       "revId": "5ada453298dd38231b24dea757d362ce0ddd183d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced1681d_871ea3db",
+        "filename": "board/taranza/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-08-18T08:16:18Z",
+      "side": 1,
+      "message": "My lab\u0027s TV doesn\u0027t send out CEC_MSG_REQUEST_ACTIVE_SOURCE(0x85) and CEC_MSG_SET_STREAM_PATH (0x86) when powered on.\nHere is all cec message when my TV power on:\n```\n23-08-18 16:02:45.022 \u003e [133.251042 CEC0 offline msg: 0f84000000]\n23-08-18 16:02:46.840 [133.251304 CEC0 message consumed offline]\n23-08-18 16:02:47.009 [133.426559 CEC0 offline msg: 0f87080046]\n23-08-18 16:02:47.014 [133.426814 CEC0 message consumed offline]\n23-08-18 16:02:47.155 [133.572691 CEC0 offline msg: 0f820000]\n23-08-18 16:02:47.160 [133.572944 CEC0 message consumed offline]\n23-08-18 16:02:47.483 [133.901557 CEC0 offline msg: 0f8000003000]\n23-08-18 16:02:47.490 [133.901818 CEC0 message consumed offline]\n23-08-18 16:02:47.925 [134.343485 CEC0 offline msg: 0fa00800460013001000900100000000]\n23-08-18 16:02:47.932 [134.343811 CEC0 message consumed offline]\n```",
+      "parentUuid": "06a51a1c_c63a85d0",
+      "range": {
+        "startLine": 166,
+        "startChar": 26,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "5ada453298dd38231b24dea757d362ce0ddd183d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
