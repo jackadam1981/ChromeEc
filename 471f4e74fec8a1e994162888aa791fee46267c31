@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99b1391_4debf352",
+        "filename": "zephyr/zmake/tests/test_signers.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-18T10:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c3b9bcb_eb2e2b66",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "471f4e74fec8a1e994162888aa791fee46267c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ebd8f1e_8db195ac",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-08-17T04:38:16Z",
       "side": 1,
       "message": "IMO, just use a temporary directory instead of mocking the FS apis.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "471f4e74fec8a1e994162888aa791fee46267c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "110b80b8_e4fdf5de",
+        "filename": "zephyr/zmake/tests/test_signers.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-18T10:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebd8f1e_8db195ac",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f327c22b_a4be4ce0",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-18T10:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e3bfc7_c149a9d6",
+      "revId": "471f4e74fec8a1e994162888aa791fee46267c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4542fa7e_333b2335",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ec217a_44bb4448",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-18T10:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4542fa7e_333b2335",
+      "revId": "471f4e74fec8a1e994162888aa791fee46267c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c205de7_57595f50",
@@ -111,6 +195,30 @@
       "writtenOn": "2023-08-17T04:38:16Z",
       "side": 1,
       "message": "IMO the signer class should take all artifacts and determine if it wants to sign each artifact.",
+      "range": {
+        "startLine": 751,
+        "startChar": 20,
+        "endLine": 751,
+        "endChar": 47
+      },
+      "revId": "471f4e74fec8a1e994162888aa791fee46267c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5cfc93_3baa1208",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-18T10:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c205de7_57595f50",
       "range": {
         "startLine": 751,
         "startChar": 20,
