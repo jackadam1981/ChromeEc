@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b28cc4c_b8b32bc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T00:45:42Z",
+      "side": 1,
+      "message": "We didn\u0027t see this problem maybe because we\u0027ve never used HAS_TASK_*_RW/RO in the source code? RW and RO are compiled separately. So, I think HAS_TASK_* should be enough for conditional compilation. What is HAS_TASK_*_RW/RO for, then?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "45d2de357386b657b4edf30e33a1eb1a82b172d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69a5628_ac026957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T00:45:42Z",
+      "side": 1,
+      "message": "What has been broken because of this?",
+      "revId": "45d2de357386b657b4edf30e33a1eb1a82b172d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
