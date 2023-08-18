@@ -777,10 +777,17 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 
 	/*
 	 * The version string is always located after the reset vectors, so
-	 * it's the same offset as in the current image.  Find that offset.
+	 * it's the typically the same offset as in the current image.
+	 * Find that offset first...
 	 */
 	addr = ((uintptr_t)&current_image_data -
 		get_program_memory_addr(active_copy));
+
+	/*
+	 * If the image is RO, we need to account for the firmware header
+	 */
+	if (copy == EC_IMAGE_RO)
+		addr += CONFIG_RO_HDR_SIZE;
 
 	/*
 	 * Read the version information from the proper location
