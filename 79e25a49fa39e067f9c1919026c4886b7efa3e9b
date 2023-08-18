@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad841c32_d78927a1",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-18T01:42:11Z",
+      "side": 1,
+      "message": "Why are these declarations in the private?\n\nI see they are already declared in https://crsrc.org/o/src/platform/ec/include/fpsensor.h;l\u003d74-88",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "79e25a49fa39e067f9c1919026c4886b7efa3e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873743c3_c8c48cbd",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-18T01:42:11Z",
+      "side": 1,
+      "message": "Why are these declarations in the private?\n\nI see they are already declared in https://crsrc.org/o/src/platform/ec/include/fpsensor.h;l\u003d74-88",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "79e25a49fa39e067f9c1919026c4886b7efa3e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
