@@ -162,6 +162,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89ac6d3a_6b4d2bb7",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-18T03:13:05Z",
+      "side": 1,
+      "message": "With is change,",
+      "parentUuid": "7d1d3352_4a75a6a4",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519cdf6c_16da5168",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-18T03:13:05Z",
+      "side": 1,
+      "message": "This CL intends to do the initialization for the DRBG only once at bootup. So the 250 ms delay of the DRBG-\u003einit happens once.\nThe trng_init() and trng_exit is now an empty function by this change. \nThat\u0027s why I said the power on in the trng_rand() is not required.",
+      "parentUuid": "7d1d3352_4a75a6a4",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d159191_bee85670",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 4
