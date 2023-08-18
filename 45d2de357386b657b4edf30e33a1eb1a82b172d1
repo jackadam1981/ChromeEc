@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8a5037_22093cb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-18T01:21:50Z",
+      "side": 1,
+      "message": "For this example, the only notable `HAS_TASK_*` defines which were missing was `HAS_TASK_RWSIG` and `HAS_TASK_FPSENSOR`.\n\nRight, this didn\u0027t change the behavior of any existing boards, which means we weren\u0027t relying on it (maybe because it didn\u0027t work). I think we would typically condition configs based on `SECTION_IS_RW` or `SECTION_IS_RO`, instead of `HAS_TASK_RWSIG`.\n\n---\n\nYeah, the `HAS_TASK_*_RW/RO` were foreign to me, too. These seem to show up in the opposite image. So, in the `RO` image, which doesn\u0027t contain any fpsensor code, you see `HAS_TASK_FPSENSOR_RW`. I guess these must have been some application where one image needed to know about the other image\u0027s features?\n\n---\n\nHonestly, this is a very minor fix for correctness.",
+      "parentUuid": "8b28cc4c_b8b32bc9",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "45d2de357386b657b4edf30e33a1eb1a82b172d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e69a5628_ac026957",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-08-18T00:45:42Z",
       "side": 1,
       "message": "What has been broken because of this?",
+      "revId": "45d2de357386b657b4edf30e33a1eb1a82b172d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325155af_2c0dc6e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-18T01:21:50Z",
+      "side": 1,
+      "message": "Nothing, as far as I can detect using `compare_builds.sh`. It\u0027s just more of a correctness fix.",
+      "parentUuid": "e69a5628_ac026957",
       "revId": "45d2de357386b657b4edf30e33a1eb1a82b172d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
