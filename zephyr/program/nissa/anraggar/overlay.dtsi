@@ -115,7 +115,6 @@
 			       <&gpiod 4 0>,
 			       <&gpiod 7 0>,
 			       <&gpioh 2 0>,
-			       <&gpioj 7 0>,
 			       <&gpiol 4 0>;
 	};
 
@@ -277,6 +276,23 @@
 	status = "okay";
 };
 
+/* GPIO J6 and J7 require external pull-up. */
+&gpio_voldn_btn_odl {
+	gpios = <&gpioj 6 GPIO_INPUT>;
+};
+
+&gpio_volup_btn_odl {
+	gpios = <&gpioj 7 GPIO_INPUT>;
+};
+
+&adc_temp_sensor_3 {
+	io-channels = <&adc0 6>;
+};
+
+&adc_ec_vsense_pp1050_proc {
+	io-channels = <&adc0 7>;
+};
+
 &adc_ec_vsense_pp3300_s5 {
 	/*
 	 * Voltage divider on input has 47k upper and 220k lower legs with 3 V
@@ -293,8 +309,8 @@
 	pinctrl-0 = <&adc0_ch0_gpi0_default
 		     &adc0_ch2_gpi2_default
 		     &adc0_ch3_gpi3_default
-		     &adc0_ch13_gpl0_default
-		     &adc0_ch14_gpl1_default>;
+		     &adc0_ch6_gpi6_default
+		     &adc0_ch7_gpi7_default>;
 	pinctrl-names = "default";
 };
 
