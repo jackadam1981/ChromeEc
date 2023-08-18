@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4d074b_f7e3bb8c",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T20:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3234965_5827f5e4",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "44a968fa92c86dcd07a7e6738790f5efaee1832a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd5653f3_1fbb5ab0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-18T17:34:25Z",
       "side": 1,
       "message": "CONFIG_BOARD_MTLRVP_PD ?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 24
+      },
+      "revId": "44a968fa92c86dcd07a7e6738790f5efaee1832a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5a6e3d_a9b984cd",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T20:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5653f3_1fbb5ab0",
       "range": {
         "startLine": 5,
         "startChar": 0,
