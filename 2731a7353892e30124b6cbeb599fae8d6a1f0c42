@@ -22,6 +22,30 @@
       },
       "revId": "2731a7353892e30124b6cbeb599fae8d6a1f0c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a322a8_177b0494",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T20:12:38Z",
+      "side": 1,
+      "message": "pls check https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4779740?forceReload\u003dtrue latest patch.",
+      "parentUuid": "09a80ba2_c532b0a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "2731a7353892e30124b6cbeb599fae8d6a1f0c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
