@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e93fd90_4cfc649f",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T07:00:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfb393b_fc09023b",
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab42ce7_52e65c4c",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-08-16T21:59:05Z",
       "side": 1,
       "message": "and CCG8 PD",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "293c250f_bb399df7",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T07:00:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab42ce7_52e65c4c",
       "range": {
         "startLine": 38,
         "startChar": 12,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e590b36_6e11844d",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T07:00:50Z",
+      "side": 1,
+      "message": "using it for CMakeList in this commit",
+      "parentUuid": "6210b545_f8556b82",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d900677_3f4c4f8a",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
         "patchSetId": 4
@@ -94,6 +160,30 @@
       "writtenOn": "2023-08-16T21:59:05Z",
       "side": 1,
       "message": "these should be common for both npcx projects",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d10ab3_a12d1d83",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T07:00:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d900677_3f4c4f8a",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2c5fae_b76eb91c",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T07:00:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37bd758_e179ef85",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fbdcc31_aaf10065",
@@ -140,6 +254,24 @@
       "writtenOn": "2023-08-16T21:59:05Z",
       "side": 1,
       "message": "I believe no need to separate this file,\ndefine dummy functions for build error and add a TODO to fix",
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c36128_ff5eb5df",
+        "filename": "zephyr/program/intelrvp/src/chg_dc_jack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-18T07:00:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fbdcc31_aaf10065",
       "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
