@@ -46,6 +46,30 @@
       },
       "revId": "ad35d27a504301b615d8c488a643002e0d506f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "607921bb_b46386c7",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-18T13:34:39Z",
+      "side": 1,
+      "message": "Fix the return value and rename the function.\nAnd we plan to import this CL before producing. We will restructure the code when the function works stably.",
+      "parentUuid": "e47f08e1_8aafe8f5",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "ad35d27a504301b615d8c488a643002e0d506f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
