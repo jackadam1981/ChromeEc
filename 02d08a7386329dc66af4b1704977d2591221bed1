@@ -22,6 +22,30 @@
       },
       "revId": "02d08a7386329dc66af4b1704977d2591221bed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85b5d15_01a97500",
+        "filename": "zephyr/program/skyrim/crystaldrift/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-08-18T00:59:08Z",
+      "side": 1,
+      "message": "thermal team policy only handle TEMP_CPU",
+      "parentUuid": "bd2987ef_99ba4cff",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "02d08a7386329dc66af4b1704977d2591221bed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
