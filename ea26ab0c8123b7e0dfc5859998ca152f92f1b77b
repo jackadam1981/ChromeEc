@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3463280a_7ca7dddc",
+        "filename": "board/constitution/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "Can we submit this change separtely?",
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37b8bc0_c530f95d",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "We have a unused slot usage if drivers are mixed? Please add a comment.",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 57
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fca687_e758b801",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "nit: why not \u0027.capture \u003d { ... }, .underflow \u003d { ... }\u0027?",
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c91f57_1ef90dab",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "Why not:\n\n    SET_FIELD(NPCX_TCKC(mdl), timer_cfg-\u003eclock_select, 1);\n\nwhere clock_select \u003d NPCX_TCKC_C1CSEL_FIELD or NPCX_TCKC_C2CSEL_FIELD. It\u0027ll also prevent clock_select from being wrong (e.g. \u00273\u0027).",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 55
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0497cf4_599cf3d8",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "nit: I usually recommend variables be declared in narrower scopes: \u0027const struct bitbang_cec_config drv_config \u003d cec_config[port].drv_config\u0027.",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 12
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6189126_9c59064c",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "nit: how about npcx_cec_port[port].cec_port-\u003esw_interrupt \u003d 1?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 28
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25810fa6_9c18b7d6",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "nit: (Not a change of this CL but) const",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 4
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2993f646_d4ec1b04",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "This is now executed after configuring GPIO/TA. Is it ok?",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 17
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9c5723_e0a94e86",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 4
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc947c07_0881862c",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-18T18:20:51Z",
+      "side": 1,
+      "message": "Shall we validate drv_config-\u003etimer?",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 11
+      },
+      "revId": "ea26ab0c8123b7e0dfc5859998ca152f92f1b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
