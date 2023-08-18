@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a0adbb_75f89042",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-18T20:34:07Z",
+      "side": 1,
+      "message": "Ok 450 ms is not a big deal, still I think it would be more logical to have a separate script or command line option to build the tool.\n\nHopefully the ebuild will make this unnecessary soon.\n\nPlease fix the linter nit",
+      "revId": "6b949bd68b3097db6c4c1cf82673d6debaad8ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15838628_35c3ee96",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-18T20:34:07Z",
+      "side": 1,
+      "message": "\u003e warning: Quote this to prevent word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2046\n\nPlease fix.",
+      "parentUuid": "28d54fe2_cdd822ea",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "6b949bd68b3097db6c4c1cf82673d6debaad8ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
