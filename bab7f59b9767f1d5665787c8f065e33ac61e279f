@@ -152,6 +152,30 @@
       },
       "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc51cb0_f36f078c",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-18T01:42:49Z",
+      "side": 1,
+      "message": "Awesome. Makes sense",
+      "parentUuid": "f5fd2c07_600da4ed",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
