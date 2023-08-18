@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36a718f_5c3aec73",
+        "filename": "zephyr/program/nissa/yaviks/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-18T06:34:16Z",
+      "side": 1,
+      "message": "Since this assumes the secondary table is the same size, we should add a build-time assertion that it is.\n\n```suggestion\nBUILD_ASSERT(ARRAY_SIZE(fan_table_1) \u003d\u003d ARRAY_SIZE(fan_table_2),\n             \"fan tables must have the same size\");\n#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table_1)\n```",
+      "revId": "4967d734fb9c28dce5fa48879e9b3dfdd7c01387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
