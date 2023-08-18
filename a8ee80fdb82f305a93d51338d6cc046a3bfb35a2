@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5008d66_ae7d9d00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-18T22:37:58Z",
+      "side": 1,
+      "message": "add \"zmake build mtlrvpp_pd\" too",
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71ed4cf_61d3e579",
+        "filename": "zephyr/program/intelrvp/mtlrvp/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-18T22:37:58Z",
+      "side": 1,
+      "message": "nit: whitespace",
+      "range": {
+        "startLine": 7,
+        "startChar": 87,
+        "endLine": 7,
+        "endChar": 89
+      },
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e81d82_c55e6246",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/src/chg_dc_jack.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-18T22:37:58Z",
+      "side": 1,
+      "message": "try see if you need these",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55b0df6_6262ccc3",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/src/chg_dc_jack.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-18T22:37:58Z",
+      "side": 1,
+      "message": "add a TODO and comment added this to suppress build errors",
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
