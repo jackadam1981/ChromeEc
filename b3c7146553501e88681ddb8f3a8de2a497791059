@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cf0bcb_a4303ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-08-18T23:20:32Z",
+      "side": 1,
+      "message": "With this new implementation, HyperDebug should support run-time changing of the chip select pin to be used with either SPI2 or QSPI data/clock lines.\n\nThis goes together with OpenTitanTool code:\nhttps://github.com/lowRISC/opentitan/pull/19482",
+      "revId": "b3c7146553501e88681ddb8f3a8de2a497791059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
