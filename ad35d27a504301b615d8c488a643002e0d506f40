@@ -22,6 +22,30 @@
       },
       "revId": "ad35d27a504301b615d8c488a643002e0d506f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47f08e1_8aafe8f5",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-08-18T04:15:19Z",
+      "side": 1,
+      "message": "IMHO, it would be better to return the `ppc_idx` as suggested by Sung-chi\u0027s review comment. There is no need to mention \u0027syv\u0027 in the naming.\n\nIf we plan to mainly use syv in the future, we may want to move it from `ppc_alt` to `ppc` someday in dts. The code logic here would remain the same but the name \"has_syv_ppc\" will become a bit awkward.",
+      "parentUuid": "d3bc0f36_fec87908",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "ad35d27a504301b615d8c488a643002e0d506f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
