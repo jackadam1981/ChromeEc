@@ -16,6 +16,24 @@
       "message": "if you only have 2 ports and both do USB4/TBT, maybe just\nreturn true unconditionally. should help coverage stats.",
       "revId": "8ce9ab94f6ee9bd0d348fca1059486c01c7230d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746743b5_c8f9901e",
+        "filename": "zephyr/program/rex/karis/src/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-08-18T01:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d2d001_85b44f2c",
+      "revId": "8ce9ab94f6ee9bd0d348fca1059486c01c7230d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
