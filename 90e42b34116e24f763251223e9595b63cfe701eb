@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b489d6a9_3d63b5cc",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-18T08:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908dc106_c2e52271",
+      "range": {
+        "startLine": 310,
+        "startChar": 13,
+        "endLine": 310,
+        "endChar": 14
+      },
+      "revId": "90e42b34116e24f763251223e9595b63cfe701eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd86d270_ea7b2800",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-18T00:31:51Z",
       "side": 1,
       "message": "nit: I don\u0027t think you need to store these in npcx_cec_port. In the functions above you can just use `npcx_cec_timer_cfg[drv_config-\u003etimer]` and `npcx_cec_timer[drv_config-\u003etimer]` directly. It just feels a bit cleaner to get the config directly from the source of truth instead of caching it in the driver state.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 0
+      },
+      "revId": "90e42b34116e24f763251223e9595b63cfe701eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281d5ee5_e59288c3",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-18T08:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd86d270_ea7b2800",
       "range": {
         "startLine": 317,
         "startChar": 0,
