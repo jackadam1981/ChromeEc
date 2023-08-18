@@ -16,6 +16,76 @@
       "message": "Thoughts? I have been working with infra to try and build with bazel in the chroot via portage and it just isn\u0027t ready for it yet.",
       "revId": "a516cada668763c93687078e745557740af46ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53046017_6abc88b6",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-18T20:09:03Z",
+      "side": 1,
+      "message": "\u003e warning: opentitan_path appears unused. Verify use (or export if used externally).\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2034\n\nPlease fix.",
+      "parentUuid": "1a3f0b0a_2b49498e",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "a516cada668763c93687078e745557740af46ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e098357_31376f0f",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-18T20:09:03Z",
+      "side": 1,
+      "message": "so, bazel will be ran each time this script is invoked? Why is this necessary? We don\u0027t rebuild gsctool each time we try using it?",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "a516cada668763c93687078e745557740af46ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c8b91d_75c9fa13",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-18T20:09:03Z",
+      "side": 1,
+      "message": "to avoid pushd/pod pairs you can just run the sequence of commands in parens `( cd new_dir; ... )` which creates a new shell and does not affect the current directory of the current script\n\nJust a thought",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "a516cada668763c93687078e745557740af46ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
