@@ -8,9 +8,14 @@
 #include "console.h"
 #include "driver/charger/sm5803.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "usb_pd.h"
 
 #include <zephyr/logging/log.h>
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
@@ -53,3 +58,46 @@ __override void board_hibernate(void)
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }
+
+static inline enum ec_error_list chg_write8(int chgnum, int offset, int value)
+{
+	return i2c_write8(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags, offset, value);
+}
+
+static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
+{
+	return i2c_read8(chg_chips[chgnum].i2c_port,
+			 chg_chips[chgnum].i2c_addr_flags, offset, value);
+}
+
+static void charger_init(void)
+{
+	enum ec_error_list rv = EC_SUCCESS;
+	int reg;
+	int chip;
+
+	for (chip = 0; chip < board_get_charger_chip_count(); chip++) {
+		/* Set PHOT_DURATION to 10ms */
+		rv |= chg_read8(chip, SM5803_REG_PHOT1, &reg);
+		reg &= ~SM5803_PHOT1_DURATION;
+		reg |= SM5803_PHOT1_DURATION_10ms;
+		rv |= chg_write8(chip, SM5803_REG_PHOT1, reg);
+
+		/* Set VBUS_MONITOR_SEL to 4V */
+		rv |= chg_read8(chip, SM5803_REG_PHOT2, &reg);
+		reg &= ~SM5803_PROT2_VBUS_SEL;
+		reg |= SM5803_PROT2_VBUS_SEL_4V;
+		rv |= chg_write8(chip, SM5803_REG_PHOT2, reg);
+
+		/* Set IBAT_PHOT_SEL to 4.8A */
+		rv |= chg_read8(chip, SM5803_REG_PHOT4, &reg);
+		reg &= ~SM5803_PROT4_IBAT_SEL;
+		reg |= SM5803_PROT4_IBAT_SEL_4P8A;
+		rv |= chg_write8(chip, SM5803_REG_PHOT4, reg);
+
+		if (rv)
+			CPRINTS("%s %d: Failed initialization", CHARGER_NAME, chip);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
