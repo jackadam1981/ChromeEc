@@ -19,7 +19,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PP5000_S5 enable output to regulator";
 		enum-name = "PWR_EN_PP5000_A";
-		gpios = <&gpiok 5 0>;
+		gpios = <&gpiog 7 0>;
 		output;
 	};
 	pwr-en-pp3300-s5 {
@@ -68,7 +68,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "DSW_PWROK output to PCH";
 		enum-name = "PWR_EC_SOC_DSW_PWROK";
-		gpios = <&gpiol 7 0>;
+		gpios = <&gpiod 4 0>;
 		output;
 	};
 	pwr-vccst-pwrgd-od {
@@ -212,12 +212,12 @@
 	comparison = <IT8XXX2_VCMP_GREATER>;
 	/* Setting at 90% of nominal voltage */
 	threshold-mv = <945>;
-	io-channels = <&adc0 14>;
+	io-channels = <&adc0 7>;
 };
 &vcmp3 {
 	status = "okay";
 	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
 	comparison = <IT8XXX2_VCMP_LESS_OR_EQUAL>;
 	threshold-mv = <945>;
-	io-channels = <&adc0 14>;
+	io-channels = <&adc0 7>;
 };
