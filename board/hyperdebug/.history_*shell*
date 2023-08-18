@@ -1,0 +1,500 @@
+git stash push -m"Print fat pointer" capsules/src/usb/usbc_client.rs
+git status
+git stash pop
+git status
+git add capsules/src/
+git commit --amend
+sudo echo fisk
+git status
+git log -n1
+git diff
+git add ports/opentitan/
+git status
+git commit --aend
+git commit --amend
+git status
+git add ports/opentitan/
+git commit --amend
+git  status
+git log -n1
+git checkout HEAD~1
+git diff --name-only ot~1 ot
+git diff ot~1 ot -- hil
+git diff ot~1 ot -- projects
+git checkout ot
+git status
+git add projects/
+git commit --amend
+git status
+com
+git status
+git diff
+git status
+git add hil/ ports/
+git status
+git commit --amend
+git diff ot~1 ot -- hil
+git diff ot ot~1 -- hil | patch -p1
+git diff ot ot~capsules
+git diff ot ot~1 -- capsules
+git diff ot ot~1 -- capsules/src/usb/usbc_client_ctrl.rs
+git diff ot ot~1 -- capsules/src/usb/usbc_client_ctrl.rs | patch -p 1
+git status
+git diff
+git status
+git add capsules/ hil/ ports/
+git status
+git commit --amend
+git status
+git diff --name-only ot~1 ot
+git diff ot~1 ot -- capsules
+git diff ot ot~1 -- capsules/src/usb/descriptors.rs | patch -p1
+git status
+git diff ot ot~1 -- capsules/src/uart_forwarder.rs
+git diff ot ot~1 -- capsules/src/uart_forwarder.rs | patch -p1
+git diff ot ot~1 -- capsules/src/ccd/ccd_mgr.rs | patch -p1
+git status
+git add capsules/
+git status
+git commit --amend
+git status
+git diff ot~1 ot  -- capsules
+git diff ot ot~1 -- capsules | patch -p1
+git status
+git diff
+git status
+git add capsules/
+git commit --amend
+git status
+git diff --name-only ot~1 ot
+cd ../../..
+cd third_party/tock/tock/
+find -name \*.rs | xargs grep "struct OptionalCell"
+git
+git status
+cd ../../..
+cd platform/ti50/common/
+git status
+git checkout ot~1
+git diff --name-only ot~1 ot
+git diff ot~1 ot -- capsules/ projects/ | patch -p1
+git status
+git add capsules/
+git commit
+git status
+git add projects
+git diff --staged
+git commit
+git checkout ot
+git rebase HEAD~1 --onto d7a8fbe0
+git status
+git diff --name-only ot~1 ot
+git diff ot~1 ot -- ports/opentitan/build.mk 
+git diff ot~1 ot -- ports/opentitan/chip.mk 
+git diff ot~1 ot -- ports/opentitan/chip.rs
+git diff ot~1 ot -- ports/opentitan/src/chip.rs
+git status
+git log -n2
+git log -n3
+git rebase -i HEAD~3
+git status
+git add ports/opentitan/src/
+git status
+git commit --amend
+git rebase --continue
+git status
+git rebase --continue
+git log -n3
+repo upload . --cbr
+git rebase -i HEAD~3
+git diff --name-only HEAD~1 HEAD
+git diff --name-only HEAD~1 HEAD | xargs rustfmt
+git tsatus
+git status
+git diff
+git status
+git add capsules/
+git status
+git commit --amend
+git rebase --continue
+git diff --name-only HEAD~1 HEAD | xargs rustfmt
+git diff --name-only HEAD~1 HEAD | grep 'rs$' | xargs rustfmt
+git status
+git diff
+git status
+git add ports/
+git status
+git commit --amend
+repo upload . --cbr
+git commit --amend
+repo upload . --cbr
+git status
+git add ports/opentitan/
+git commit --amend
+repo upload . --cbr
+git status
+git diff --name-only HEAD HEAD~1
+git diff HEAD HEAD~1 -- ports/opentitan/src/project.rs | patch -p1
+git diff HEAD HEAD~1 -- ports/opentitan/src/lib.rs | patch -p1
+git diff HEAD HEAD~1 -- ports/opentitan/build.mk | patch -p1
+git status
+git add ports/
+git status
+git diff --staged
+git diff --staged | patch -p1
+git status
+git commit --amend
+git status
+git add ports/
+git status
+git restore 	ports/opentitan/build.mk.orig	ports/opentitan/src/chip.rs.orig	ports/opentitan/src/lib.rs.orig	ports/opentitan/src/project.rs.orig
+git status
+git restore --staged 	ports/opentitan/build.mk.orig	ports/opentitan/src/chip.rs.orig	ports/opentitan/src/lib.rs.orig	ports/opentitan/src/project.rs.orig
+git status
+rm 	ports/opentitan/build.mk.orig	ports/opentitan/src/chip.rs.orig	ports/opentitan/src/lib.rs.orig	ports/opentitan/src/project.rs.orig
+git status
+git commit
+git status
+repo upload . --cbr
+git status
+git branch -l
+git checkout -b ot-review
+git checkout ot
+git status
+git commit
+git checkout ot-review
+repo upload . --cbr
+git branch -u m/main
+repo upload . --cbr
+git checkout ot
+git diff HEAD~1 HEAD
+sudo echo fisk
+git status
+git stash
+git rebase -i HEAD~3
+git statsu
+git status
+git checkout ot-review
+git status
+git rebase -i HEAD~3
+git stash pop
+git add projects
+git status
+git commit --amend
+git rebase --continue
+repo upload . --cbr
+git status
+git add ports/
+git status
+git commit --amend
+git checkout ot
+git rebase HEAD~1 --onto ot-review
+git status
+git diff
+git status
+git diff
+git status
+git add ports/opentitan/src/chip.rs
+git commit --amend
+git stash
+git checkout ot-review
+git add ports/
+git stash pop
+git add ports/
+git status
+git commit --amend
+ 
+git rebase -i HEAD~3
+repo upload . --cbr
+rustfmt ports/opentitan/src/usb.rs 
+git diff
+git add ports
+git commit --amend
+repo upload . --cbr
+git checkout ot
+git rebase HEAD~1 --onto ot-review
+git status
+sudo echo fisk
+find -name \*.rs | xargs grep receive_reay
+find -name \*.rs | xargs grep receive_ready
+find -name \*.rs | xargs grep link_tx_pin
+git status
+git diff capsules/
+sudo echo fisk
+git diff
+git status
+git diff capsules/
+git restore capsules/src/uart_forwarder.rs
+git status
+git diff capsules/
+rustfmt capsules/src/ccd/ccd_mgr.rs 
+git diff capsules/
+git status
+git diff ports/
+git status
+git add ports/opentitan/src/uart.rs capsules/
+git diff ports/opentitan/src/chip
+git diff ports/opentitan/src/chip.rs 
+git status
+git add ports/opentitan/src/chip.rs 
+git status
+git diff ports/opentitan/
+git commit
+git status
+git diff
+git stash
+git status
+git checkout ot-review
+git log -n3
+git status
+git stash pop
+git add ports/
+git status
+git commit --amend
+git checkout ot
+git rebase HEAD~2 --onto ot-review
+git status
+git checkout ot-review
+git fetch
+git status
+git rebase
+git status
+git log -n2
+git status
+repo upload . --cbr
+rustfmt ports/opentitan/src/chip
+rustfmt ports/opentitan/src/chip.rs 
+git tsatus
+git diff
+git commit --amend
+git add ports/opentitan/src/chip.rs 
+git commit --amend
+repo upload . -ccbr
+repo upload . --cbr
+git checkout ot
+git rebase HEAD~2 --onto ot-review
+git status
+git log -n4
+git status
+git log -n1
+git log
+git log -n4
+git rebase -i HEAD~2
+git log -n4
+sudo echo fisk
+git status
+git restore ports/opentitan/src/lib.rs
+git diff
+git status
+git diff
+git status
+git checkout ot-review
+git status
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+git fetch
+git rebase
+git status
+git checkout ot
+git rebase HEAD~2 --onto ot-review
+git status
+cd ../..
+cd signing/quorum-keys/
+ls
+cd cr50/
+ls
+git status
+git fetch
+git rebase
+git status
+git add votes/jbk.yaml 
+git commit
+repo upload . --cbr
+cd ../../..
+cd ti50/common/
+git status
+git rebase --continue
+git status
+git checkout ot-rebiew
+git checkout ot-review
+repo upload . --cbr
+rustfmt ports/opentitan/src/usb.rs
+git status
+git diff
+git status
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+repo upload . --cbr
+git checkout ot
+git rebase HEAD~2 --onto ot-review
+git log -n3
+git checkout ot-review
+git reset --hard fb4cf4c5b0d05354f3d86f89ac2affdebe03ff09
+git status
+repo upload . --cbr
+rustfmt ports/opentitan/src/chip.rs ports/opentitan/src/uart.rs
+git status
+git add ports/opentitan/src/
+git status
+git commit --amend
+repo upload . --cbr
+sudo echo fisk
+git stash list
+git status
+git diff
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+git statsu
+git status
+git log -n2
+git checkout ot
+git rebase HEAD~1 --onto ot-review
+git status
+git log -n1
+git diff HEAD~1 HEAD
+git diff HEAD HEAD~1 -- ports/opentitan/src/project.rs | patch -p1
+git status
+git diff
+git status
+git restore ports/opentitan/src/project.rs
+git status
+git diff HEAD~1 HEAD
+git status
+git tsatus
+git status
+git log -n3
+git tsatus
+git status
+git checkout ot-review
+git stash
+git checkout ot-review
+git rebase -i HEAD~2
+git stash pop
+git status
+git rebase --continue
+git status
+git diff
+git add ports/opentitan/src/usb.rs
+git diff --staged
+git status
+git rebase --continue
+git log -n2
+git checkout ot-review~1
+git stats
+git status
+git stash
+git checkout ot-review
+git rebase -i HEAD~2
+git stash pop
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+git rebase --continue
+git tsatus
+git status
+git stash
+git rebase -i HEAD~2
+git stash pop
+git status
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+git rebase --continue
+git status
+git add ports/opentitan/src/usb.rs 
+git status
+git commit --amend
+git rebase --continue
+git status
+git rebase --continue
+git status
+git reset --hard HEAD~1
+git status
+git checkout ot
+git reflog -n10
+git rebase HEAD~1 --onto 176c14cd
+git log -n3
+git checkout ot-review
+git status
+git diff
+cd ../..
+cd signing/quorum-keys/cr50/
+cd votes/
+git fetch
+git rebase
+git status
+git log -n1
+git diff HEAD~1 HEAD
+repo upload . --cbr
+cd ../../.
+cd ../
+cd ti50/common
+git status
+git diff
+gsutil ls gs://chromeos-releases/canary-channel/reef/9311.70.7/
+sudo echo FISK
+git status
+git diff
+git log -n1
+git diff
+git status
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+git checkout ot
+git log -n3
+git rebase HEAD~2 --onto ot-review
+git fetch
+git checkout ot-review
+git rebase
+git status
+git add ports/opentitan/src/
+git status
+git rebase --continue
+git checkout ot
+git rebase HEAD~2 --onto ot-review
+git checkout ot
+git checkout ot-review
+repo upload . --cbr
+git diff HEAD~1 HEAD
+git diff --name-only HEAD~1 HEAD
+git diff --name-only HEAD~1 HEAD | grep rs$
+git diff --name-only HEAD~1 HEAD | grep rs$ | xargs rustfmt
+git diff
+git status
+git add ports/opentitan/src/usb.rs 
+git commit --amend
+repo upload . --cbr
+git status
+git diff
+git status
+git add ports/opentitan/src/
+rustfmt ports/opentitan/src/usb.rs 
+git diff
+git add ports/opentitan/src/
+git status
+exit
+emacslist
+emacsclient -c -s emacs-555570 &
+dmesg
+sudo dmesg
+tio /dev/ttyUSB0
+killall tio
+killall opentitantool
+killall -9 opentitantool
+ps x | grep opentitantool
+vmstat 1
+streace -p 3252597
+strace -p 3252597
+sudo strace -p 3252597
+bg
+sudo reboot
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-154654 &
+lsusb
+lsusb -v -d 18d1:520e
+tio /dev/ttyUSB0
+lsusb -v -d 18d1:520e | grep hyperdebug_
+lsusb -v -d 18d1:520e | grep iConfiguration
+tio /dev/ttyUSB0
+sudo dmesg -w
+exit
+date
