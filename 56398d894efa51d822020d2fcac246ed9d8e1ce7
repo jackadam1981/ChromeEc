@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60f694af_2e41be4c",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-18T17:31:50Z",
+      "side": 1,
+      "message": "if you make this as 3rd CL, you dont need to add it here",
+      "parentUuid": "8e590b36_6e11844d",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "56398d894efa51d822020d2fcac246ed9d8e1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d900677_3f4c4f8a",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
         "patchSetId": 4
