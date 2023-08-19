@@ -339,7 +339,7 @@ struct vendor_cc_spi_hash_request {
 	uint32_t size;		/* Size in bytes to hash/read */
 } __packed;
 
-struct ti50_stats {
+struct ti50_stats_v0 {
 	/* filesystem initialization time in ms */
 	uint32_t fs_init_time;
 	/* filesustem usage in bytes */
@@ -350,6 +350,10 @@ struct ti50_stats {
 	 * UMA
 	 */
 	uint32_t expanded_aprov_status;
+};
+
+struct ti50_stats_v1 {
+	struct ti50_stats_v0 stats;
 	/* [31:27] - bits used
 	 * [27: 4] - unused
 	 * [ 3: 3] - CCD_MODE
