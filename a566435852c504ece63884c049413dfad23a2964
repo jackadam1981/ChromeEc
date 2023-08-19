@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18529aaf_f864f53f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-08-19T00:00:10Z",
+      "side": 1,
+      "message": "Looking into the failing tests:\n\n`drivers.usbc_ctvpd.verify_discovery` fails because `pd_get_identity_discovery() !\u003d PD_DISC_COMPLETE` and therefore returns 0 VDOs. `pd_discovery_state` \n is `PD_DISC_NEEDED`.\n\n`drivers.usbc_ctvpd.verify_no_vconn_swap` fails because the TCPM gladly executes a VCONN swap even though it\u0027s in a `CTAttached.SNK` state.\n\n`drivers.default.*` are failing because the policy engine fails to enter/stay in the `PE_SNK_READY` state. \n\nI\u0027m not sure why changing `get_mux_mode_to_set` would affect these scenarios.",
+      "revId": "a566435852c504ece63884c049413dfad23a2964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
