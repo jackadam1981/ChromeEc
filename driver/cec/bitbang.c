@@ -12,12 +12,15 @@
 #include "task.h"
 #include "util.h"
 
-#ifdef CONFIG_CEC_DEBUG
 #define CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CEC, format, ##args)
+
+#ifdef CONFIG_CEC_DEBUG
+#define DEBUG_CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
+#define DEBUG_CPRINTS(format, args...) cprints(CC_CEC, format, ##args)
 #else
-#define CPRINTF(...)
-#define CPRINTS(...)
+#define DEBUG_CPRINTF(...)
+#define DEBUG_CPRINTS(...)
 #endif
 
 /*
@@ -383,7 +386,8 @@ static void enter_state(int port, enum cec_state new_state)
 				 * recent one.
 				 */
 				if (cec_rx.received_message_available)
-					CPRINTS("CEC%d: received message not "
+					DEBUG_CPRINTS(
+						"CEC%d: received message not "
 						"read out, discarding",
 						port);
 
@@ -760,7 +764,7 @@ static int bitbang_cec_send(int port, const uint8_t *msg, uint8_t len)
 	cec_tx.len = len;
 
 	snprintf_hex_buffer(str_buf, sizeof(str_buf), HEX_BUF(msg, len));
-	CPRINTS("CEC%d send: 0x%s", port, str_buf);
+	DEBUG_CPRINTS("CEC%d send: 0x%s", port, str_buf);
 
 	memcpy(cec_tx.transfer.buf, msg, len);
 
