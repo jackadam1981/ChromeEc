@@ -12,12 +12,15 @@
 #include "task.h"
 #include "util.h"
 
-#if !(DEBUG_CEC)
-#define CPRINTF(...)
-#define CPRINTS(...)
-#else
 #define CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CEC, format, ##args)
+
+#if !(DEBUG_CEC)
+#define DEBUG_CPRINTF(...)
+#define DEBUG_CPRINTS(...)
+#else
+#define DEBUG_CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
+#define DEBUG_CPRINTS(format, args...) cprints(CC_CEC, format, ##args)
 #endif
 
 /*
