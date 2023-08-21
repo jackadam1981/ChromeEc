@@ -84,7 +84,9 @@
 #define CONFIG_SHAREDLIB_SIZE 0
 
 #define CONFIG_RO_MEM_OFF 0
-#define CONFIG_RO_STORAGE_OFF 0
+
+/* Need to account for the 64 (0x40) byte long firmware header */
+#define CONFIG_RO_STORAGE_OFF 64
 #define CONFIG_RO_SIZE (128 * 1024)
 
 #define CONFIG_RO_PUBKEY_READ_ADDR                                      \
