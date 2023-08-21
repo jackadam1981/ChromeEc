@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1382b4_01dc0269",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-21T16:20:25Z",
+      "side": 1,
+      "message": "Is there a version field somewhere in the struct we should be checking?",
+      "range": {
+        "startLine": 4138,
+        "startChar": 38,
+        "endLine": 4138,
+        "endChar": 40
+      },
+      "revId": "720e4edf579b235ec6c7e534b3cc03ec2ffc2735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "70419956_992cb4e6",
