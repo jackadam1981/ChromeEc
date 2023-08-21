@@ -202,11 +202,13 @@ static int match_node(int node_idx)
 {
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != LED_PWRS_UNCHANGE) {
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER
 		enum led_pwr_state pwr_state = led_pwr_get_state();
 
 		if (node_array[node_idx].pwr_state != pwr_state)
 			return -1;
-
+#endif
+#ifdef CONFIG_PLATFORM_EC_CHARGE_MANAGER
 		/* Check if this node depends on charge port */
 		if (node_array[node_idx].charge_port != -1) {
 			int port = charge_manager_get_active_charge_port();
@@ -214,6 +216,7 @@ static int match_node(int node_idx)
 			if (node_array[node_idx].charge_port != port)
 				return -1;
 		}
+#endif
 	}
 
 	/* Check if this node depends on chipset state */
@@ -224,6 +227,7 @@ static int match_node(int node_idx)
 			return -1;
 	}
 
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER
 	/* check if this node depends on battery status */
 	if (node_array[node_idx].batt_state_mask != -1) {
 		int batt_state;
@@ -244,7 +248,7 @@ static int match_node(int node_idx)
 		    (curr_batt_lvl > node_array[node_idx].batt_lvl[1]))
 			return -1;
 	}
-
+#endif
 	/* We found the node that matches the current system state */
 	return node_idx;
 }
