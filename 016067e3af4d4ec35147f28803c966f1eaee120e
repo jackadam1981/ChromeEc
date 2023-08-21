@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c5521d_81b3d4fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-21T21:24:34Z",
+      "side": 1,
+      "message": "This command is used by `firmware_Cr50CCDUartStress`. That being said, I\u0027m not sure what else we could really take out of this board. It\u0027s skin and bones.\n\nJeremy, is this livable?",
+      "revId": "016067e3af4d4ec35147f28803c966f1eaee120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
