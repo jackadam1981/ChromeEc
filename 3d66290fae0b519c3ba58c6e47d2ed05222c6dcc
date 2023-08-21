@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a7e455_c0ab709a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-21T20:11:48Z",
+      "side": 1,
+      "message": "firmware_build.py doesn\u0027t fail locally. CQ reports:\n\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027CDRAM\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027CDRAM\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027CDRAM\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: No room left in the flash\nld.lld: error: section \u0027.fill\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.fill\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.fill\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: build/volteer/RW/ec.RW.lds:4413: unable to move location counter backward for: .fill\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027CDRAM\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027CDRAM\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027CDRAM\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.rodata\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: No room left in the flash\nld.lld: error: section \u0027.fill\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: section \u0027.fill\u0027 will not fit in region \u0027FLASH\u0027: overflowed by 12 bytes\nld.lld: error: too many errors emitted, stopping now (use --error-limit\u003d0 to see all errors)\nclang: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nmake: *** [Makefile.rules:598: build/volteer/RW/ec.RW.elf] Error 1",
+      "revId": "3d66290fae0b519c3ba58c6e47d2ed05222c6dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
