@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc712ef_af274e67",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-21T17:19:33Z",
+      "side": 1,
+      "message": "nit: How about CEC%d? Actually, other printfs in this file are not so debug friendly, either.",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 14
+      },
+      "revId": "d18965c7d26ef3c901a720f57fadadf006d62e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
