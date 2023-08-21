@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ba52336_6d26d5e1",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-21T17:30:03Z",
+      "side": 1,
+      "message": "Agreed, CH, it wouldn\u0027t make sense to include power on in trng_rand if we move the power functions to init(ON) and exit(OFF). Thanks for the input here",
+      "parentUuid": "b351e4d3_9a288cd3",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d159191_bee85670",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 4
