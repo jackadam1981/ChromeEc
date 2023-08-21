@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c401aa_822c5f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-21T17:04:10Z",
+      "side": 1,
+      "message": "Looks like there is a new question on the bug.",
+      "revId": "f2328451d77983c91436f6154d4dff1fa3c92f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567c0427_b1611c73",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-21T17:04:10Z",
+      "side": 1,
+      "message": "Please add comment explaining why we chose this order.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 45
+      },
+      "revId": "f2328451d77983c91436f6154d4dff1fa3c92f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
