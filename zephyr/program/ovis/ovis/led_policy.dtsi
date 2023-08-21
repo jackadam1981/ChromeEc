@@ -1,0 +1,40 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	led-colors {
+		compatible = "cros-ec,led-policy";
+
+		power-state-s0 {
+			chipset-state = "POWER_S0";
+
+			color-0 {
+				led-color = <&color_white>;
+			};
+		};
+
+		power-state-s3 {
+			chipset-state = "POWER_S3";
+
+			/* White 1 sec on, 3 sec off */
+			color-0 {
+				led-color = <&color_white>;
+				period-ms = <1000>;
+			};
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <3000>;
+			};
+		};
+
+		power-state-s5 {
+			chipset-state = "POWER_S5";
+
+			color-0 {
+				led-color = <&color_off>;
+			};
+		};
+	};
+};

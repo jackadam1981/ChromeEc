@@ -14,7 +14,4 @@
 
 /* Ovis project DTS includes */
 #include "led_pins.dtsi"
-/*
- * TODO(b/285166688): need led_policy.dtsi once that has been
- * implemented to match Ovis requirements
- */
+#include "led_policy.dtsi"
