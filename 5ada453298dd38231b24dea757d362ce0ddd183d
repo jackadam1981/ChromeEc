@@ -142,6 +142,30 @@
       },
       "revId": "5ada453298dd38231b24dea757d362ce0ddd183d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55feafd_39012554",
+        "filename": "board/taranza/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-08-21T05:51:31Z",
+      "side": 1,
+      "message": "Was taranza the active source when the TV was switched off? \n\u003e Yes\n\nWhen you turn it back on, is it actually displaying the internal tuner? \n\u003e No, After turning the TV back on it still shows chrome OS.\n\nIf taranza is the active source and you disconnect it or power it off, does the TV automatically switch the the internal tuner? \n\u003e No, It stay on the chromebox hdmi input port.\n\nBTW, My lab\u0027s TV is KD-49X8500F..",
+      "parentUuid": "21145d16_a0600650",
+      "range": {
+        "startLine": 166,
+        "startChar": 26,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "5ada453298dd38231b24dea757d362ce0ddd183d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
