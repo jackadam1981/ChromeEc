@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb601f8_0258f5cd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-21T18:05:35Z",
+      "side": 1,
+      "message": "Right, I remembered this right after I sent my comment 😊\n\nStill, should the check be against the size of V0, a negative check, so that  it does not try processing V1 in case data is of V0?",
+      "parentUuid": "5db39824_118960ad",
+      "range": {
+        "startLine": 4138,
+        "startChar": 38,
+        "endLine": 4138,
+        "endChar": 40
+      },
+      "revId": "720e4edf579b235ec6c7e534b3cc03ec2ffc2735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "70419956_992cb4e6",
