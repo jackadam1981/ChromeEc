@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85cee57a_a6215820",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-08-21T16:13:21Z",
+      "side": 1,
+      "message": "So, the ebuild will \"install\" a symlink to this wrapper script as the `opentitantool` binary in `/usr/sbin`.\n\nDoes that change what you want to ask for?",
+      "parentUuid": "a3a0adbb_75f89042",
+      "revId": "6b949bd68b3097db6c4c1cf82673d6debaad8ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15838628_35c3ee96",
         "filename": "util/opentitantool.sh",
         "patchSetId": 2
@@ -32,6 +50,30 @@
       "side": 1,
       "message": "\u003e warning: Quote this to prevent word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2046\n\nPlease fix.",
       "parentUuid": "28d54fe2_cdd822ea",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "6b949bd68b3097db6c4c1cf82673d6debaad8ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36c4b1a_a374e8c4",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-08-21T16:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15838628_35c3ee96",
       "range": {
         "startLine": 15,
         "startChar": 22,
