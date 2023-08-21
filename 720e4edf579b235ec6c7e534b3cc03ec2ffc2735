@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db39824_118960ad",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-08-21T17:48:27Z",
+      "side": 1,
+      "message": "This went back and forth like 100 times. The original struct was extended and we decided to have a number of bits used in the misc status of the extended struct. gsctool never had a command to read the original version, but the change to extend the struct in Ti50 landed the same day as the last release, but just after it was built.\n\nPersonally. I don\u0027t really like this change and would rather just leave it as is. The existence of a gsctool that can read these stats and a ti50 with the original version will only be built together for a short time until we update ti50. The stats meant to be collected from gsctool  are the new ones anyway. The original four are collected by tpmmanagerd and sent to UMA.",
+      "parentUuid": "88764f7b_5133fb91",
+      "range": {
+        "startLine": 4138,
+        "startChar": 38,
+        "endLine": 4138,
+        "endChar": 40
+      },
+      "revId": "720e4edf579b235ec6c7e534b3cc03ec2ffc2735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "70419956_992cb4e6",
