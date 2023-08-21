@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e34deb90_44a6ce01",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-21T20:01:46Z",
+      "side": 1,
+      "message": "lets remove this file, instead add in bas mtlrvp project",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 11
+      },
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8e81d82_c55e6246",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/src/chg_dc_jack.c",
         "patchSetId": 10
