@@ -46,6 +46,53 @@
       },
       "revId": "8b92d371a4b66773c27dfe8e8fab52ab927aeb92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58b187f_7e59cd08",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-21T16:19:49Z",
+      "side": 1,
+      "message": "You could wrap the line in `clang-format` tags as you did in `EC_STATUS_TEXT` above. That should keep `checkpath` happy and avoid clang-format issues.\n```suggestion\n/* clang-format off */\n#define TEXT_MAP_ITEMk, v)[k] \u003d #v\n/* clang-format on */\n```",
+      "parentUuid": "ac86d900_4dfaa0ba",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 31
+      },
+      "revId": "8b92d371a4b66773c27dfe8e8fab52ab927aeb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0844b3b4_671bc90c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-21T16:19:49Z",
+      "side": 1,
+      "message": "Does it work with this `undef` in place? I would expect the expansion to fail because by the time you get to someone doing something like `static const char *const ec_status_text[] \u003d EC_STATUS_TEXT;`, `EC_STATUS_TEXT` won\u0027t have a valid definition of `TEXT_MAP_ITEM`.",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 20
+      },
+      "revId": "8b92d371a4b66773c27dfe8e8fab52ab927aeb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
