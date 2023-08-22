@@ -31,8 +31,6 @@ BOARD_SERVO_V4 = "servo_v4"
 BOARD_SERVO_V4P1 = "servo_v4p1"
 BOARD_SWEETBERRY = "sweetberry"
 
-DEFAULT_BOARD = BOARD_SERVO_V4
-
 # These lists are to facilitate exposing choices in the command-line tool
 # below.
 BOARDS = [
@@ -293,21 +291,7 @@ def get_firmware_channel(bname, version):
     return None
 
 
-def get_files_and_version(cname, fname=None, channel=DEFAULT_CHANNEL):
-    """Select config and firmware binary files.
-
-    This checks default file names and paths.
-    In: /usr/share/servo_updater/[firmware|configs]
-    check for board.json, board.bin
-
-    Args:
-      cname: board name, or config name. eg. "servo_v4" or "servo_v4.json"
-      fname: firmware binary name. Can be None to try default.
-      channel: the channel requested for servo firmware. See |CHANNELS| above.
-
-    Returns:
-      cname, fname, version: validated filenames selected from the path.
-    """
+def get_updater_path():
     for p in (DEFAULT_BASE_PATH, TEST_IMAGE_BASE_PATH):
         updater_path = os.path.join(p, COMMON_PATH)
         if os.path.exists(updater_path):
@@ -323,6 +307,26 @@ def get_files_and_version(cname, fname=None, channel=DEFAULT_CHANNEL):
     for p in (firmware_path, configs_path):
         if not os.path.exists(p):
             raise ServoUpdaterException("Could not find required path %r" % p)
+
+    return updater_path, firmware_path, configs_path
+
+
+def get_files_and_version(cname, fname=None, channel=DEFAULT_CHANNEL):
+    """Select config and firmware binary files.
+
+    This checks default file names and paths.
+    In: /usr/share/servo_updater/[firmware|configs]
+    check for board.json, board.bin
+
+    Args:
+      cname: board name, or config name. eg. "servo_v4" or "servo_v4.json"
+      fname: firmware binary name. Can be None to try default.
+      channel: the channel requested for servo firmware. See |CHANNELS| above.
+
+    Returns:
+      cname, fname, version: validated filenames selected from the path.
+    """
+    updater_path, firmware_path, configs_path = get_updater_path()
 
     if not os.path.isfile(cname):
         # If not an existing file, try checking on the default path.
@@ -388,7 +392,7 @@ def main():
         "--board",
         type=str,
         help="Board configuration json file",
-        default=DEFAULT_BOARD,
+        default=None,
         choices=BOARDS,
     )
     parser.add_argument(
@@ -420,13 +424,17 @@ def main():
 
     args = parser.parse_args()
 
-    brdfile, binfile, newvers = get_files_and_version(
-        args.board, args.file, args.channel
-    )
-
     # If the user only cares about the information then just print it here,
     # and exit.
     if args.print_only:
+        board = args.board
+        if board is None:
+            board = BOARD_SERVO_V4
+
+        brdfile, binfile, newvers = get_files_and_version(
+            board, args.file, args.channel
+        )
+
         output = ("board: %s\nchannel: %s\nfirmware: %s") % (
             args.board,
             args.channel,
@@ -437,16 +445,35 @@ def main():
 
     serialno = args.serialno
 
-    with open(brdfile) as data_file:
-        data = json.load(data_file)
-    vid, pid = int(data["vid"], 0), int(data["pid"], 0)
-    vidpid = "%04x:%04x" % (vid, pid)
-    iface = int(data["console"], 0)
-    boardname = data["board"]
+    if args.board is None:
+        boards = BOARDS
+    else:
+        boards = [args.board]
+
+    vidpids = set()
+    devmap = {}
+    for board in boards:
+        brdfile, binfile, newvers = get_files_and_version(
+            board, args.file, args.channel
+        )
+
+        with open(brdfile) as data_file:
+            data = json.load(data_file)
+        vid, pid = int(data["vid"], 0), int(data["pid"], 0)
+        vidpid = "%04x:%04x" % (vid, pid)
+        iface = int(data["console"], 0)
+        boardname = data["board"]
+
+        vidpids.add(vidpid)
+        devmap[vidpid] = [board, boardname, iface, brdfile, binfile, newvers]
 
     # Make sure device is up.
     print("===== Waiting for USB device =====")
-    c.wait_for_usb(set({vidpid}), serialname=serialno)
+    dev = c.wait_for_usb(vidpids, serialname=serialno)
+    vid, pid = dev.idVendor, dev.idProduct
+    vidpid = "%04x:%04x" % (vid, pid)
+    board, boardname, iface, brdfile, binfile, newvers = devmap[vidpid]
+
     # We need a tiny_servod to query some information. Set it up first.
     tinys = tiny_servod.TinyServod(vid, pid, iface, serialno, args.verbose)
 
