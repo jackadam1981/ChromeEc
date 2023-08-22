@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c285b37_d7db0409",
+        "filename": "zephyr/program/rex/karis/src/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-22T13:44:00Z",
+      "side": 1,
+      "message": "I think you can test this easily with something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/nissa/src/nivviks.c;l\u003d153;drc\u003d22f621e14440190f7cf07892cf5db7897fb46a1f (need to also add `test_export_static` to the decalartion of `karis_kb`)",
+      "revId": "3a51714626e3ca5d84240b579623849b2fdce3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
