@@ -14,6 +14,20 @@ zephyr_include_directories(
 
 target_sources(app PRIVATE src/stubs.c)
 
+if(CONFIG_TEST_NISSA_BOARD_POWER)
+    # Test source
+    target_sources(app PRIVATE src/board_power.c)
+    # Rename board_power_signal_{get,set} in the module under test so we can
+    # still call it, but can also intercept board power signals in the test
+    # itself. ap_pwrseq wants only that specific name for external signals,
+    # which this test uses exclusively.
+    target_sources(app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/nissa/src/board_power.c)
+    set_source_files_properties(
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/src/board_power.c
+            PROPERTIES COMPILE_DEFINITIONS
+            "board_power_signal_set=real_board_power_signal_set;board_power_signal_get=real_board_power_signal_get")
+endif()
+
 target_sources_ifdef(
         CONFIG_TEST_NISSA_SUB_BOARD
         app PRIVATE
