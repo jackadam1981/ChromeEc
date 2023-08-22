@@ -132,6 +132,13 @@
 /* Control1: audio filter */
 #define ISL923X_C1_AUDIO_FILTER BIT(10)
 
+/* Control1: ISL9238 Switching Frequency */
+#define ISL9238_C1_SWITCHING_FREQ_PROG (0 << 8)
+#define ISL9238_C1_SWITCHING_FREQ_839K BIT(8)
+#define ISL9238_C1_SWITCHING_FREQ_723K (2 << 8)
+#define ISL9238_C1_SWITCHING_FREQ_635K (3 << 8)
+#define ISL9238_C1_SWITCHING_FREQ_MASK (3 << 8)
+
 /* Control1: switch frequency, ISL9238 defines bit 7 as unused */
 #define ISL923X_C1_SWITCH_FREQ_PROG (0 << 7) /* 1000kHz or PROG */
 #define ISL9237_C1_SWITCH_FREQ_913K BIT(7)
