@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770d0d34_6a2680fd",
+        "filename": "board/kuldax/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-22T03:04:28Z",
+      "side": 1,
+      "message": "done, add expression build_assert for each usb_mux struct",
+      "parentUuid": "cdcbdc94_823403dd",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "cac4ae099efb9a72a59375a59587db3626b0b7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b95d0a3_0ec04b4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-21T17:00:37Z",
       "side": 1,
       "message": "nit: Why not simply mb_update_usb4_tbt_config?",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 42
+      },
+      "revId": "cac4ae099efb9a72a59375a59587db3626b0b7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44319cb9_839207d4",
+        "filename": "board/kuldax/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-22T03:04:28Z",
+      "side": 1,
+      "message": "update it. done",
+      "parentUuid": "0b95d0a3_0ec04b4a",
       "range": {
         "startLine": 248,
         "startChar": 5,
