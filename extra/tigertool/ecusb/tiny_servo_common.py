@@ -169,12 +169,18 @@ def wait_for_usb(vidpid, serialname=None, timeout=None, desiredpresence=True):
       timeout: timeout in seconds, None for no timeout.
       desiredpresence: True for present, False for not present.
 
+    Returns:
+      If device found, returns its pyUSB device object
+
     Raises:
       TinyServoError: on timeout.
     """
     if timeout:
         finish = datetime.datetime.now() + datetime.timedelta(seconds=timeout)
-    while check_usb(vidpid, serialname) != desiredpresence:
+    while True:
+        dev = get_usb_dev(vidpid, serialname)
+        if (dev is not None) == desiredpresence:
+            return dev
         time.sleep(0.1)
         if timeout:
             if datetime.datetime.now() > finish:
