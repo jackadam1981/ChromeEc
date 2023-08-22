@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43dcfcd_ef6ba340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-22T18:38:39Z",
+      "side": 1,
+      "message": "I rebased past Daisuke\u0027s exclusion of volteer from Clang, so I\u0027m not sure what\u0027s going on here. My local Clang build is clean. Excluding the next CL from this run in case that\u0027s the problem.",
+      "revId": "bae8fdeedce2ca4837cd09fe8ee8b0fce1f7cb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
