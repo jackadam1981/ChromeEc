@@ -221,3 +221,7 @@
 	rpm_start = <1710>;
 	rpm_max = <5700>;
 };
+
+&kblight {
+	pwms = <&pwm3 0 PWM_KHZ(10) PWM_POLARITY_NORMAL>;
+};
