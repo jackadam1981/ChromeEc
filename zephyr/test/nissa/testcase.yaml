@@ -5,6 +5,20 @@
 common:
   platform_allow: native_posix
 tests:
+  nissa.board_power:
+    extra_dtc_overlay_files:
+      - "boards/generic_npcx.dts"
+      - "boards/generic_power_signals.dts"
+    extra_configs:
+      - CONFIG_TEST_NISSA_BOARD_POWER=y
+      - CONFIG_PLATFORM_EC_VBOOT_HASH=n
+      - CONFIG_AP_X86_INTEL_ADL=y
+      - CONFIG_X86_NON_DSX_PWRSEQ_ADL=y
+      # ap_pwrseq requires power button
+      - CONFIG_PLATFORM_EC_POWER_BUTTON=y
+      # Power button requires host commands
+      - CONFIG_PLATFORM_EC_HOSTCMD=y
+      - CONFIG_PLATFORM_EC_BACKLIGHT_LID=n
   nissa.sub_board:
     extra_dtc_overlay_files:
       - "boards/generic_npcx.dts"
