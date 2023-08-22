@@ -202,11 +202,13 @@ static int match_node(int node_idx)
 {
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != LED_PWRS_UNCHANGE) {
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER
 		enum led_pwr_state pwr_state = led_pwr_get_state();
 
 		if (node_array[node_idx].pwr_state != pwr_state)
 			return -1;
-
+#endif /*CONFIG_PLATFORM_EC_USB_CHARGER*/
+#ifdef CONFIG_PLATFORM_EC_CHARGE_MANAGER
 		/* Check if this node depends on charge port */
 		if (node_array[node_idx].charge_port != -1) {
 			int port = charge_manager_get_active_charge_port();
@@ -214,6 +216,7 @@ static int match_node(int node_idx)
 			if (node_array[node_idx].charge_port != port)
 				return -1;
 		}
+#endif /*CONFIG_PLATFORM_EC_CHARGE_MANAGER*/
 	}
 
 	/* Check if this node depends on chipset state */
