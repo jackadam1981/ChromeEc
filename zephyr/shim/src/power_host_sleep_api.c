@@ -8,6 +8,7 @@
 #include <power_host_sleep.h>
 
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
+#ifdef CONFIG_HOSTCMD_X86
 static enum power_state
 translate_ap_power_state(enum power_states_ndsx ap_power_state)
 {
@@ -35,6 +36,7 @@ int ap_power_get_lazy_wake_mask(enum power_states_ndsx state,
 		return -EINVAL;
 	return get_lazy_wake_mask(st, mask);
 }
+#endif /* CONFIG_HOSTCMD_X86 */
 #else
 #include "ap_power/ap_pwrseq.h"
 
