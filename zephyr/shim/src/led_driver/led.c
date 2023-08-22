@@ -200,6 +200,7 @@ static void set_color(int node_idx, uint32_t ticks)
 
 static int match_node(int node_idx)
 {
+#ifdef CONFIG_PLATFORM_EC_CHARGE_MANAGER
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != LED_PWRS_UNCHANGE) {
 		enum led_pwr_state pwr_state = led_pwr_get_state();
@@ -215,6 +216,7 @@ static int match_node(int node_idx)
 				return -1;
 		}
 	}
+#endif /*CONFIG_PLATFORM_EC_CHARGE_MANAGER*/
 
 	/* Check if this node depends on chipset state */
 	if (node_array[node_idx].chipset_state != 0) {
@@ -224,6 +226,7 @@ static int match_node(int node_idx)
 			return -1;
 	}
 
+#ifdef CONFIG_PLATFORM_EC_BATTERY
 	/* check if this node depends on battery status */
 	if (node_array[node_idx].batt_state_mask != -1) {
 		int batt_state;
@@ -234,7 +237,9 @@ static int match_node(int node_idx)
 		     node_array[node_idx].batt_state))
 			return -1;
 	}
+#endif
 
+#ifdef CONFIG_PLATFORM_EC_CHARGE_MANAGER
 	/* Check if this node depends on battery level */
 	if (node_array[node_idx].batt_lvl[0] != -1) {
 		int curr_batt_lvl =
@@ -244,6 +249,7 @@ static int match_node(int node_idx)
 		    (curr_batt_lvl > node_array[node_idx].batt_lvl[1]))
 			return -1;
 	}
+#endif /*CONFIG_PLATFORM_EC_CHARGE_MANAGER*/
 
 	/* We found the node that matches the current system state */
 	return node_idx;
