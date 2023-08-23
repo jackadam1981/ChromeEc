@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bbbd5a7_8bea8307",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_kb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-23T08:13:45Z",
+      "side": 1,
+      "message": "Dependency on the Zephyr HID driver modification. It\u0027s under review.\nhttps://github.com/zephyrproject-rtos/zephyr/pull/61685",
+      "parentUuid": "0851d13a_655175e8",
+      "range": {
+        "startLine": 212,
+        "startChar": 20,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffcff787_2012488c",
@@ -394,6 +418,30 @@
       "side": 1,
       "message": "I  tried to read the descriptor. looks like report id 93 (\u003d`ETP_REPORT_ID`) is the touchpad report we want. there\u0027s no information in this descriptor.\n\n```\n0x85, 0x5D,        //   Report ID (93)\n0x09, 0x01,        //   Usage (0x01)\n0x95, 0x1B,        //   Report Count (27)\n0x75, 0x08,        //   Report Size (8)\n0x81, 0x06,        //   Input (Data,Var,Rel,No Wrap,Linear,Preferred State,No Null Position)\n```",
       "parentUuid": "b60d8629_28899d56",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76051ed0_00afbe88",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-23T08:13:45Z",
+      "side": 1,
+      "message": "Since the command/information for touchpad report descriptor is still unknown, we plan to keep the definition in usb_dc_tp.c for the short-term solution.\nAnd we add this into our remaining work. We will resolve this if we get the programming guide.\nIs it okay for you? Or, do you have any suggestion?",
+      "parentUuid": "ec685724_7523fa6e",
       "range": {
         "startLine": 45,
         "startChar": 1,

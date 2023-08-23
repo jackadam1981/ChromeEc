@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee1ab62_a41265b7",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_kb.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-23T08:13:45Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9852cd2c_e03e1243",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9209b98b_093c2804",
@@ -77,6 +101,30 @@
       "writtenOn": "2023-08-15T08:12:26Z",
       "side": 1,
       "message": "Please make this name configurable in device tree.",
+      "range": {
+        "startLine": 537,
+        "startChar": 30,
+        "endLine": 537,
+        "endChar": 37
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5d1d22_2f18ca9b",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-23T08:13:45Z",
+      "side": 1,
+      "message": "Hi Ting,\nAccording to the documentation \"usb_device.rst,\" the instance name(HID_n) depends on CONFIG_USB_HID_DEVICE_NAME and CONFIG_USB_HID_DEVICE_COUNT.\nThe instance name for hid device creating is set in hid/core.c directly.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/subsys/usb/device/class/hid/core.c;drc\u003da2b8741a2ee79ccbf164b5b0991cc754f337b38c;l\u003d728\nWe\u0027d like to added two configurations for keyboard and touchpad hid instance numbers.\nIs it okay for you?",
+      "parentUuid": "9209b98b_093c2804",
       "range": {
         "startLine": 537,
         "startChar": 30,
