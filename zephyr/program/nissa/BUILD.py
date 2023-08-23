@@ -124,3 +124,7 @@ craaskov = register_nissa_project(
 pirrha = register_nereid_project(
     project_name="pirrha",
 )
+anraggar = register_nissa_project(
+    project_name="anraggar",
+    chip="it81302bx",
+)

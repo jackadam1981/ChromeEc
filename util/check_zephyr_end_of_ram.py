@@ -29,6 +29,8 @@ EXCLUDED_BOARDS = [
     "gothrax",
     # Only 800 bytes of free RAM (b/289320515)
     "nereid",
+    # Only ??? bytes of free RAM (b/???)
+    "anraggar",
 ]
 
 
