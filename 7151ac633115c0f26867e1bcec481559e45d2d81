@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb33a0a_10096840",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "Just to confirm, have you run servo_updater with just this change to confirm it still functions as-is?",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a3c2008_86a5947d",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "Just require an iterable now, and update callers as needed.  Keep the interface simple, avoid \"if isinstance(...)\" branches.",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfca06d3_6e270c4f",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "s/list/iterable/ - might as well officially allow any iterable (no code change needed AFAICT)\n\nSame for the other docstrings where the arg gets passed through to this function.",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0fb1788_951af1ce",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "Define this at module scope.  If you want to keep it internal (which is totally fine!), use underscore prefix naming i.e. `_parse_vidpid_string()`.",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909c62c0_e85674a2",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "I think a tuple would be more typical / expected for this than a list, and has the advantage of being hashable.",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77aff55b_08ce1a82",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "The way `devs` is used, I think it should be a `set`.",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "badcba95_e9fa56eb",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "always use `is` / `is not` for None comparisons",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b73504_fba34844",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "I\u0027d prefer this be a standalone function or class that fully encompasses the logic.  Something like this:\n\n```\nclass _SerialMatcher(object):\n  def __init__(self, serialname, devs):\n    \"\"\"Args:\n      serialname: None or str - device serial name/number\n      devs: iterable of (str, str) - USB (VID, PID) pairs\n    \"\"\"\n    self._serialname \u003d serialname\n    self._devs \u003d set(devs)\n\n  def match(self, device):\n    return (device.idVendor, device.idProduct) in self._devs and (\n        self._serialname is None or\n        self._serialname \u003d\u003d usb.util.get_string(device, device.iSerialNumber))\n\n\ndef get_usb_dev(...):\n  serial_matcher \u003d _SerialMatcher(serialname, map(_parse_vidpid_string, vidpid))\n  dev_g \u003d usb.core.find(find_all\u003dTrue, custom_match\u003dserial_matcher.Match)\n  ...\n```\n\nThinking through this more, I think all the functions in this module that are built around `get_usb_dev()` should really be grouped together in a public class.  I\u0027m okay leave that out of this CL, but I do think it would make sense for this module.\n\nI\u0027d probably have that class take `devs` as an initializer argument, while leaving `serialname` as an argument to each public method, but that\u0027s just my first pass thought and I haven\u0027t really prototyped that through.",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8f361e_9256657d",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:14:44Z",
+      "side": 1,
+      "message": "\u003e \"specificed\" is a possible misspelling of \"specified\".\n\ntypo",
+      "parentUuid": "d0f14282_abb3babe",
+      "range": {
+        "startLine": 166,
+        "startChar": 32,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
