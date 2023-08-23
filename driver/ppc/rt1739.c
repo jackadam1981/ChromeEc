@@ -22,6 +22,7 @@
 
 #define RT1739_FLAGS_SOURCE_ENABLED BIT(0)
 #define RT1739_FLAGS_FRS_ENABLED BIT(1)
+#define RT1739_FLAGS_FRS_RX_RECV BIT(2)
 static int rt1739_pd_connect_flag;
 static atomic_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -266,6 +267,9 @@ static int rt1739_set_frs_enable(int port, int enable)
 	else
 		atomic_clear_bits(&flags[port], RT1739_FLAGS_FRS_ENABLED);
 
+	/* Clear Rx receive events. */
+	atomic_clear_bits(&flags[port], RT1739_FLAGS_FRS_RX_RECV);
+
 	return EC_SUCCESS;
 }
 
@@ -499,8 +503,14 @@ DECLARE_DEFERRED(rt1739_deferred_interrupt);
 
 void rt1739_interrupt(int port)
 {
-	if (flags[port] & RT1739_FLAGS_FRS_ENABLED)
+	/* The RX event maybe sent out multiple times during one FRS RX
+	 * event. Filter the redudant ones.
+	 */
+	if (flags[port] & RT1739_FLAGS_FRS_ENABLED &&
+	    !(flags[port] & RT1739_FLAGS_FRS_RX_RECV)) {
+		atomic_or(&flags[port], RT1739_FLAGS_FRS_RX_RECV);
 		pd_got_frs_signal(port);
+	}
 
 	atomic_or(&pending_events, BIT(port));
 	hook_call_deferred(&rt1739_deferred_interrupt_data, 0);
