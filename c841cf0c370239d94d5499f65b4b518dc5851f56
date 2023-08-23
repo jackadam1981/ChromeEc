@@ -52,6 +52,24 @@
       "parentUuid": "938fc0a2_f9e9e55c",
       "revId": "c841cf0c370239d94d5499f65b4b518dc5851f56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bfaae3_bcb34fda",
+        "filename": "zephyr/program/roach/BUILD.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-23T09:38:29Z",
+      "side": 1,
+      "message": "Please try update your chromiumos-overlay repo and then `emerge chromeos-base/zephyr-build-tools`",
+      "parentUuid": "938fc0a2_f9e9e55c",
+      "revId": "c841cf0c370239d94d5499f65b4b518dc5851f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
