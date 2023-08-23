@@ -151,6 +151,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7a9fe68_c7f6db74",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-23T19:16:06Z",
+      "side": 1,
+      "message": "Note there\u0027s definitely typos in that code snippet, e.g. `custom_match\u003dserial_matcher.Match` should be `custom_match\u003dserial_matcher.match` (My fingers are forever used to google3 Python style), but hopefully you get the gist!",
+      "parentUuid": "88b73504_fba34844",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8f361e_9256657d",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 1
