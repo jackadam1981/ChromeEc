@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e613909_cdc2b924",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-23T23:17:12Z",
+      "side": 1,
+      "message": "Out of curiosity, why was this added, was does `-Iprivate` add to the `cmd_get_configs`?\ncan you please explain how is `cmd_get_configs` being formed and what it is used for? For example `$(CPP)` interprets to what?",
+      "range": {
+        "startLine": 197,
+        "startChar": 39,
+        "endLine": 197,
+        "endChar": 71
+      },
+      "revId": "20e3789b50464dbf6d8a1f67efb553000df5565b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fc7492_6298cd0e",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 7173,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-23T23:17:12Z",
+      "side": 1,
+      "message": "out of curiosity, why we do not include the absolute path of `private_config.h? `config.h` is in this folder `src/platform/ec/include/`, while `private_config.h` is in `src/platform/ec/private/`",
+      "range": {
+        "startLine": 7173,
+        "startChar": 0,
+        "endLine": 7173,
+        "endChar": 27
+      },
+      "revId": "20e3789b50464dbf6d8a1f67efb553000df5565b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
