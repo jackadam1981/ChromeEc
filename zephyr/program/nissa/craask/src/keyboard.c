@@ -84,8 +84,13 @@ static void kb_init(void)
 		keyscan_config.actual_key_mask[14] = 0xff;
 	}
 
-	if (cros_cbi_ssfc_check_match(
-		    CBI_SSFC_VALUE_ID(DT_NODELABEL(keyboard_cf)))) {
+	ret = cros_cbi_get_fw_config(FW_KB_TYPE, &val);
+
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_KB_TYPE);
+	}
+
+	if (val == FW_KB_TYPE_CA_FR) {
 		/*
 		 * Canadian French keyboard (US type),
 		 *   \|:     0x0061->0x61->0x56
