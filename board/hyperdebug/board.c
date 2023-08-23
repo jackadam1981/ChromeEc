@@ -32,7 +32,7 @@ void board_config_pre_init(void)
  */
 
 #define USB_STREAM_RX_SIZE 16
-#define USB_STREAM_TX_SIZE 16
+#define USB_STREAM_TX_SIZE 64
 
 /******************************************************************************
  * Forward USART2 as a simple USB serial interface.
