@@ -435,10 +435,11 @@ def main():
             board, args.file, args.channel
         )
 
-        output = ("board: %s\nchannel: %s\nfirmware: %s") % (
+        output = ("board: %s\nchannel: %s\nfirmware: %s\nfirmware file: %s\n") % (
             args.board,
             args.channel,
             newvers,
+            binfile,
         )
         print(output)
         return
