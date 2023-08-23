@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83819280_f016ebe0",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 86
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-08-23T13:07:29Z",
+      "side": 1,
+      "message": "EC shim.",
+      "parentUuid": "9dfb130a_1d72d384",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "21b69b293fa5a5e559e59d5a3bcab71bc024131d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c40b0d32_8ade8cdf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-04T07:55:09Z",
       "side": 1,
       "message": "I\u0027m guessing this section gets pulled into the linker script at some point? Is this part of Zephyr or part of EC shim?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "21b69b293fa5a5e559e59d5a3bcab71bc024131d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d87591e_c23475d6",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 86
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-08-23T13:07:29Z",
+      "side": 1,
+      "message": "\u003e I\u0027m guessing this section gets pulled into the linker script at some point?\n\nNo. We use `binman` instead of the linker to assemble the final binary. This is only in EC shim (Zephyr doesn\u0027t have RO/RW concept).",
+      "parentUuid": "c40b0d32_8ade8cdf",
       "range": {
         "startLine": 41,
         "startChar": 1,
