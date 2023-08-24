@@ -249,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abbd11e9_299cfab6",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 12
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-24T00:43:45Z",
+      "side": 1,
+      "message": "Oh, I meant `config` there.",
+      "parentUuid": "52da2e1f_75906b84",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 57
+      },
+      "revId": "ee2d240f5eaff054eb1918c0f71e604e8fee3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcf0589f_0ff7d9a8",
         "filename": "zephyr/Kconfig.charger",
         "patchSetId": 12
@@ -378,6 +402,30 @@
       "side": 1,
       "message": "Change to `PHOT_REG1[6:4] \u003d 000` in the description will make pre-upload check failed. It will show `WARNING: please write a paragraph that describes the config symbol fully`. I will need to add more about every config.",
       "parentUuid": "b0559bc6_2aea1dc3",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 33
+      },
+      "revId": "ee2d240f5eaff054eb1918c0f71e604e8fee3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67662eb_e6c4e861",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 12
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-24T00:43:45Z",
+      "side": 1,
+      "message": "I think that check is unhelpful in this case, so you can ignore it. Use `repo upload --ignore-hooks` to stop it from blocking CL upload.",
+      "parentUuid": "e8abf35e_6644cdc8",
       "range": {
         "startLine": 263,
         "startChar": 0,
