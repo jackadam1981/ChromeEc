@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "361ef4ca_03b5fbe3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-24T23:05:51Z",
+      "side": 1,
+      "message": "Marking resolved, re-testing tracked by V+1 I assume. :-)",
+      "parentUuid": "77c5e67e_e4715c84",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a3c2008_86a5947d",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Mind if I make this a follow-up CL? This CL is already too large for my taste and adding all the clerical work of wrapping things before passing it into these functions only adds more noise.\n\nSo: this adds the new behavior (and uses isinstance), its immediate follow-up will clean up the call sites and remove the string based interface (and therefore isinstance)",
       "parentUuid": "1a3c2008_86a5947d",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3bc3ea_356bd870",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-24T23:05:51Z",
+      "side": 1,
+      "message": "Okay.  Make it work with any (non-string) iterable though in this CL, by having the `isinstance()` test check if the arg is a string.  (If it\u0027s not a string, assume it\u0027s an iterable of strings.)",
+      "parentUuid": "fa9e40f0_154329ee",
       "range": {
         "startLine": 92,
         "startChar": 14,
