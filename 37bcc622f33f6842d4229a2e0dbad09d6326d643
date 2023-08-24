@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff432f79_6f7f00c7",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-24T17:23:01Z",
+      "side": 1,
+      "message": "Really? I have been told the opposite, don\u0027t use f-strings unless they are needed.\n\nThe examples on https://www.geeksforgeeks.org/formatted-string-literals-f-strings-python/ don\u0027t use f\u003dstring, unless they are actually using the `{}` part of f-strings.",
+      "parentUuid": "70145ac4_7df1a53e",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I thought since your are using f-format, it is better to be consistent",
       "parentUuid": "c326203d_92e6bee8",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "261cc8a8_edcac2a1",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-24T17:23:01Z",
+      "side": 1,
+      "message": "I\u0027m neutral on this. That\u0027s fair.",
+      "parentUuid": "cdf7bae7_6d7e82f8",
       "range": {
         "startLine": 75,
         "startChar": 39,
@@ -322,6 +370,30 @@
       "side": 1,
       "message": "just to understand, if someone wants to invoke the `port` argument, is this the proper way:\n`./util/fptool.py remote dut1 flash port 22`\nor\n`./util/fptool.py remote dut1 flash --port 22`",
       "parentUuid": "823ea5af_12723391",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb665557_787b4d6d",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-24T17:23:01Z",
+      "side": 1,
+      "message": "The latter. Or, `./util/fptool.py remote --port 22 dut1 flash [image]`",
+      "parentUuid": "1bf24027_1c4fa0c6",
       "range": {
         "startLine": 112,
         "startChar": 9,
