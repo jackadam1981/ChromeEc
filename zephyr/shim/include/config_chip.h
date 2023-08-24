@@ -1119,8 +1119,10 @@ extern char mock_jump_data[CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE];
 /* USB-C things */
 #ifdef CONFIG_PLATFORM_EC_USBC
 
-/* Zephyr only supports v2 so we always define this */
+#undef CONFIG_USB_PD_TCPMV2
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPMV2
 #define CONFIG_USB_PD_TCPMV2
+#endif
 
 /*
  * Define these here for now. They are not actually CONFIG options in the EC
@@ -3179,5 +3181,20 @@ BUILD_ASSERT((DT_NUM_INST_STATUS_OKAY(mps_mp2964)) == 1,
 #define CONFIG_RSA_EXPONENT_3
 #endif
 #endif /* CONFIG_PLATFORM_EC_RSA */
+
+#undef CONFIG_CEC
+#ifdef CONFIG_PLATFORM_EC_CEC
+#define CONFIG_CEC
+#endif
+
+#undef CONFIG_CEC_DEBUG
+#ifdef CONFIG_PLATFORM_EC_CEC_DEBUG
+#define CONFIG_CEC_DEBUG
+#endif
+
+#undef CONFIG_CEC_BITBANG
+#ifdef CONFIG_PLATFORM_EC_CEC_BITBANG
+#define CONFIG_CEC_BITBANG
+#endif
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */

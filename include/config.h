@@ -886,6 +886,7 @@
 
 /* CEC drivers */
 #undef CONFIG_CEC_BITBANG
+#undef CONFIG_CEC_IT83XX
 
 /*****************************************************************************/
 
@@ -5769,7 +5770,7 @@
 #undef CONFIG_DFU_BOOTMANAGER_SHARED
 
 /*
- * If defined, charge_get_state returns a special status if battery is
+ * If defined, led_pwr_get_state returns a special status if battery is
  * discharging and battery is nearly full.
  */
 #undef CONFIG_PWR_STATE_DISCHARGE_FULL
@@ -7167,5 +7168,9 @@
 #ifndef CONFIG_PRESERVED_END_OF_RAM_SIZE
 #define CONFIG_PRESERVED_END_OF_RAM_SIZE 1024
 #endif
+
+#ifdef HAVE_PRIVATE
+#include "private_config.h"
+#endif /* HAVE_PRIVATE */
 
 #endif /* __CROS_EC_CONFIG_H */
