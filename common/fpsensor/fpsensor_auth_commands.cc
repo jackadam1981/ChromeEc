@@ -11,6 +11,7 @@
 #include "fpsensor/fpsensor_auth_crypto.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
+#include "fpsensor/fpsensor_template_state.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "openssl/mem.h"
 #include "openssl/rand.h"
@@ -20,6 +21,7 @@
 #include <array>
 #include <cstdint>
 #include <utility>
+#include <variant>
 
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
@@ -277,3 +279,111 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
 		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_unlock_template(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_unlock_template *>(args->params);
+	uint16_t fgr_num = params->fgr_num;
+
+	ScopedFastCpu fast_cpu;
+
+	if (!(fp_encryption_status & FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	if (fp_encryption_status & FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	if (fgr_num > template_states.size()) {
+		return EC_RES_OVERFLOW;
+	}
+
+	for (uint16_t idx = 0; idx < fgr_num; idx++) {
+		if (!template_states[idx].is_locked) {
+			continue;
+		}
+
+		if (auto *tmpl_user_id =
+			    std::get_if<fp_template_state::decrypted_state>(
+				    &template_states[idx].state)) {
+			if (!std::equal(tmpl_user_id->begin(),
+					tmpl_user_id->end(),
+					std::begin(user_id))) {
+				return EC_RES_ACCESS_DENIED;
+			}
+			template_states[idx].is_locked = false;
+			continue;
+		}
+
+		auto *enc_info =
+			std::get_if<fp_template_state::encrypted_state>(
+				&template_states[idx].state);
+
+		if (enc_info == nullptr) {
+			return EC_RES_ACCESS_DENIED;
+		}
+
+		size_t encrypted_blob_size;
+
+		std::copy(std::begin(fp_template[idx]),
+			  std::end(fp_template[idx]),
+			  std::begin(fp_enc_buffer));
+
+		if (enc_info->struct_version <= 3) {
+			encrypted_blob_size = sizeof(fp_template[0]);
+		} else {
+			encrypted_blob_size = sizeof(fp_template[0]) +
+					      sizeof(fp_positive_match_salt[0]);
+			std::copy(std::begin(fp_positive_match_salt[idx]),
+				  std::end(fp_positive_match_salt[idx]),
+				  std::begin(fp_enc_buffer) +
+					  std::size(fp_template[0]));
+		}
+
+		CleanseWrapper<std::array<uint8_t, SBP_ENC_KEY_LEN> > key;
+		enum ec_error_list ret = derive_encryption_key(
+			key.data(), enc_info->encryption_salt);
+		if (ret != EC_SUCCESS) {
+			return EC_RES_UNAVAILABLE;
+		}
+
+		ret = aes_gcm_decrypt(key.data(), SBP_ENC_KEY_LEN,
+				      fp_enc_buffer, fp_enc_buffer,
+				      encrypted_blob_size, enc_info->nonce,
+				      FP_CONTEXT_NONCE_BYTES, enc_info->tag,
+				      FP_CONTEXT_TAG_BYTES);
+		if (ret != EC_SUCCESS) {
+			fp_clear_finger_context(idx);
+			return EC_RES_UNAVAILABLE;
+		}
+
+		std::copy(std::begin(fp_enc_buffer),
+			  std::begin(fp_enc_buffer) + std::size(fp_template[0]),
+			  std::begin(fp_template[idx]));
+
+		if (enc_info->struct_version > 3) {
+			std::copy(std::begin(fp_enc_buffer) +
+					  std::size(fp_template[0]),
+				  std::begin(fp_enc_buffer) +
+					  std::size(fp_template[0]) +
+					  std::size(fp_positive_match_salt[0]),
+				  std::begin(fp_positive_match_salt[idx]));
+		}
+
+		std::array<uint32_t, FP_CONTEXT_USERID_WORDS> raw_user_id;
+		std::copy(std::begin(user_id), std::end(user_id),
+			  std::begin(raw_user_id));
+		template_states[idx].state =
+			fp_template_state::decrypted_state(raw_user_id);
+		template_states[idx].is_locked = false;
+	}
+
+	templ_valid = fgr_num;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_UNLOCK_TEMPLATE, fp_command_unlock_template,
+		     EC_VER_MASK(0));
