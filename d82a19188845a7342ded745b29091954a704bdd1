@@ -22,6 +22,30 @@
       },
       "revId": "d82a19188845a7342ded745b29091954a704bdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa5cb86_7f8c8be5",
+        "filename": "common/panic_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-08-24T15:41:37Z",
+      "side": 1,
+      "message": "would not be able to take a look before vacations :/\nif you will consider changing this earlier please also look at panic_printf() as this is working same way",
+      "parentUuid": "a34236de_acd58df2",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "d82a19188845a7342ded745b29091954a704bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
