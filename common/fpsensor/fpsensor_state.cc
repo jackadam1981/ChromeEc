@@ -230,6 +230,7 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 		}
 
 		memcpy(user_id, p->userid, sizeof(user_id));
+		fp_encryption_status |= FP_CONTEXT_USER_ID_SET;
 
 		return EC_RES_SUCCESS;
 	}
