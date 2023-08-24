@@ -8,7 +8,7 @@
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
 
-#ifndef CONFIG_AP_PWRSEQ_DRIVER
+#if !defined(CONFIG_AP_PWRSEQ_DRIVER) && !defined(CONFIG_EMUL_AP_PWRSEQ_DRIVER)
 void ap_pwrseq_wake(void);
 #else
 
