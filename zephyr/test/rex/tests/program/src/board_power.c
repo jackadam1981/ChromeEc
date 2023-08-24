@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ap_power/ap_pwrseq.h"
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
 #include "timer.h"
@@ -160,6 +161,28 @@ ZTEST_USER(board_power, test_board_ap_power_force_shutdown_timeout)
 	zassert_true(power_signal_get_fake.call_count > 2);
 }
 
+#if defined(CONFIG_EMUL_AP_PWRSEQ_DRIVER)
+ZTEST_USER(board_power, test_board_ap_power_action_g3_entry)
+{
+	const struct device *dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_start(dev, AP_POWER_STATE_G3);
+}
+
+ZTEST_USER(board_power, test_board_ap_power_action_g3_run_1)
+{
+	const struct device *dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_STARTUP);
+}
+
+ZTEST_USER(board_power, test_board_ap_power_action_g3_run_2)
+{
+	const struct device *dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_SIGNAL);
+}
+#else
 ZTEST_USER(board_power, test_board_ap_power_check_power_rails_enabled_0)
 {
 	power_signal_get_fake.custom_fake =
@@ -209,5 +232,6 @@ ZTEST_USER(board_power, test_board_ap_power_action_g3_s5_1)
 	zassert_equal(1, power_wait_mask_signals_timeout_fake.call_count);
 	zassert_equal(0, ap_power_ev_send_callbacks_fake.call_count);
 }
+#endif /* CONFIG_EMUL_AP_PWRSEQ_DRIVER */
 
 ZTEST_SUITE(board_power, NULL, NULL, board_power_before, NULL, NULL);
