@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27baaafd_857acaa9",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-24T17:51:41Z",
+      "side": 1,
+      "message": "but it is used for strings:\n```\nname \u003d \u0027Tushar\u0027\nage \u003d 23\nprint(f\"Hello, My name is {name} and I\u0027m {age} years old.\")\n```\n\nwas wondering if `[\"ssh\", f\"-p{port}\", host, \"--\"]` can be simplified as `f\"ssh -p{port} host --\"`\n\nIs there a Google readability doc about fstrings. I am curious to read more",
+      "parentUuid": "ff432f79_6f7f00c7",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
