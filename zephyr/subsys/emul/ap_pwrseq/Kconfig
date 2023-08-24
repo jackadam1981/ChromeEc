@@ -31,4 +31,11 @@ config EMUL_POWER_SIGNALS_WORK_QUEUE_PRIO
 	  Defines work queue thread thread priority.
 
 endif # EMUL_POWER_SIGNALS
+
+config EMUL_AP_PWRSEQ
+	bool "Enable Ap Power Sequence Emulator"
+	select SMF
+	select SMF_ANCESTOR_SUPPORT
+	help
+	  Test
 endif # ZTEST
