@@ -239,6 +239,7 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 		  reinterpret_cast<uint8_t *>(user_id));
 
 	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
+	fp_encryption_status |= FP_CONTEXT_USER_ID_SET;
 	fp_encryption_status |= FP_CONTEXT_STATUS_NONCE_CONTEXT_SET;
 	return EC_RES_SUCCESS;
 }
