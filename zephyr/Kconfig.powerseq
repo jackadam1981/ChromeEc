@@ -48,6 +48,28 @@ config PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION
 	  Failure information is reported via the EC_CMD_HOST_SLEEP_EVENT host
 	  command.
 
+config PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION_MS
+	int "Timeout for the AP to enter sleep in ms"
+	default 15000
+	help
+	  Timeout for the AP to enter sleep before the EC decides that the sleep
+	  transition has failed.
+
+config PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION_RESET
+	bool "Attempt to reset the AP if it's stuck during a sleep transition"
+	depends on PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION
+	help
+		The EC will attempt to reset or shutdown the AP if it appears to be
+		in a stuck state after a sleep state transition failure.
+
+config PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION_RESET_MS
+	int "Timeout for the AP respond after a sleep failure in ms"
+	default 10000
+	depends on PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION_RESET
+	help
+	  Timeout for the AP to repsond after a sleep failure before attempting to
+	  reset or shutdown the AP.
+
 config PLATFORM_EC_POWERSEQ_S0IX_COUNTER
 	bool "Enable S0ix counter"
 	depends on PLATFORM_EC_POWERSEQ_S0IX

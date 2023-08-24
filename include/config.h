@@ -3754,6 +3754,11 @@
 /* Support detecting failure to enter a sleep state (S0ix/S3) */
 #undef CONFIG_POWER_SLEEP_FAILURE_DETECTION
 
+/* Support resetting the AP in case it gets stuck during a sleep transition. */
+#undef CONFIG_POWER_SLEEP_FAILURE_DETECTION_RESET
+
+#define CONFIG_POWER_SLEEP_FAILURE_DETECTION_RESET_MS 10000
+
 /*
  * Allow the host to self-report its sleep state, in case there is some delay
  * between the host beginning to enter the sleep state and power signals
