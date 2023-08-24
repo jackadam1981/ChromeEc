@@ -17,7 +17,7 @@
 #include <power_signals.h>
 #include <x86_power_signals.h>
 
-#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#if defined(CONFIG_AP_PWRSEQ_DRIVER) || defined(CONFIG_EMUL_AP_PWRSEQ_DRIVER)
 #include "ap_power/ap_pwrseq_sm.h"
 #endif
 
@@ -48,26 +48,7 @@ void board_ap_power_force_shutdown(void)
 	}
 }
 
-#ifndef CONFIG_AP_PWRSEQ_DRIVER
-void board_ap_power_action_g3_s5(void)
-{
-	/* Turn on the PP3300_PRIM rail. */
-	power_signal_set(PWR_EN_PP3300_A, 1);
-
-	update_ap_boot_time(ARAIL);
-
-	if (!power_wait_signals_timeout(
-		    IN_PGOOD_ALL_CORE,
-		    AP_PWRSEQ_DT_VALUE(wait_signal_timeout))) {
-		ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
-	}
-}
-
-bool board_ap_power_check_power_rails_enabled(void)
-{
-	return power_signal_get(PWR_EN_PP3300_A);
-}
-#else
+#if defined(CONFIG_AP_PWRSEQ_DRIVER) || defined(CONFIG_EMUL_AP_PWRSEQ_DRIVER)
 int board_ap_power_action_g3_entry(void *data)
 {
 	board_ap_power_force_shutdown();
@@ -91,5 +72,24 @@ static int board_ap_power_action_g3_run(void *data)
 
 AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
 			  board_ap_power_action_g3_run, NULL);
-#endif /* CONFIG_AP_PWRSEQ_DRIVER */
+#else
+void board_ap_power_action_g3_s5(void)
+{
+	/* Turn on the PP3300_PRIM rail. */
+	power_signal_set(PWR_EN_PP3300_A, 1);
+
+	update_ap_boot_time(ARAIL);
+
+	if (!power_wait_signals_timeout(
+		    IN_PGOOD_ALL_CORE,
+		    AP_PWRSEQ_DT_VALUE(wait_signal_timeout))) {
+		ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
+	}
+}
+
+bool board_ap_power_check_power_rails_enabled(void)
+{
+	return power_signal_get(PWR_EN_PP3300_A);
+}
+#endif /* CONFIG_AP_PWRSEQ_DRIVER || CONFIG_EMUL_AP_PWRSEQ_DRIVER */
 #endif /* CONFIG_X86_NON_DSX_PWRSEQ_MTL */
