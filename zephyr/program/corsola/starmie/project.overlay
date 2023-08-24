@@ -72,8 +72,8 @@
 			gpios = <&gpioc 6 GPIO_OUTPUT_LOW>;
 		};
 
-		// EN_PP3300_BASE_X  GPD7
-		en_pp3300_base_x: en_pp3300_base_x{
+		// EN_PP3300_POGO  GPD7
+		en_pp3300_pogo: en_pp3300_pogo {
 			gpios = <&gpiod 7 GPIO_OUTPUT_LOW>;
 		};
 
