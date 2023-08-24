@@ -8,7 +8,6 @@
 #include "chipset.h"
 #include "emul/emul_power_signals.h"
 #include "power_signals.h"
-#include "test_state.h"
 
 #include <zephyr/drivers/adc.h>
 #include <zephyr/drivers/espi.h>
@@ -243,6 +242,7 @@ static const struct power_signal_emul_test_platform *cur_test_platform;
 
 static bool emul_ready;
 
+#if CONFIG_AP_PWRSEQ_SIGNAL_GPIO
 /**
  * @brief Set GPIO type power signal to specified value.
  *
@@ -270,55 +270,6 @@ static void power_signal_emul_set_gpio_value(const struct gpio_dt_spec *spec,
 }
 
 /**
- * @brief Set virtual wire type power signal to value.
- *
- * @param spec Pointer to container for virtual wire information specified in
- *             devicetree.
- * @param value Value to be set on virtual wire.
- */
-static void power_signal_emul_set_vw_value(const struct wv_dt_spec *vw,
-					   int value)
-{
-	const struct device *espi =
-		DEVICE_DT_GET_ANY(zephyr_espi_emul_controller);
-
-	emul_espi_host_send_vw(espi, vw->espi_signal,
-			       vw->invert ? !value : !!value);
-}
-
-/**
- * @brief Set power signal to specified value.
- *
- * @param desc Pointer to power signal descriptor.
- * @param value Value to be set on power signal.
- */
-static void
-power_signal_emul_set_value(struct power_signal_emul_signal_desc *desc,
-			    int value)
-{
-	LOG_DBG("Set Signal %s -> %d", desc->name, value);
-
-	switch (desc->source) {
-	case PWR_SIG_EMUL_SRC_GPIO:
-		power_signal_emul_set_gpio_value(&desc->spec.gpio, !!value);
-		break;
-
-	case PWR_SIG_EMUL_SRC_EXT:
-		zassert_ok(power_signal_set(desc->enum_id, value),
-			   "Setting %s Signal value!!", desc->name);
-		break;
-
-	case PWR_SIG_EMUL_SRC_VW:
-		power_signal_emul_set_vw_value(&desc->spec.vw, value);
-		break;
-
-	default:
-		zassert_unreachable("Undefined Signal %s!!", desc->name);
-	}
-	power_signal_interrupt(desc->enum_id, value);
-}
-
-/**
  * @brief Get GPIO type power signal value.
  *
  * @param spec Pointer to container for GPIO pin information specified in
@@ -343,6 +294,64 @@ static int power_signal_emul_get_gpio_value(const struct gpio_dt_spec *spec)
 
 	return ret;
 }
+#endif
+
+#if CONFIG_AP_PWRSEQ_SIGNAL_VW
+/**
+ * @brief Set virtual wire type power signal to value.
+ *
+ * @param spec Pointer to container for virtual wire information specified in
+ *             devicetree.
+ * @param value Value to be set on virtual wire.
+ */
+static void power_signal_emul_set_vw_value(const struct wv_dt_spec *vw,
+					   int value)
+{
+	const struct device *espi =
+		DEVICE_DT_GET_ANY(zephyr_espi_emul_controller);
+
+	emul_espi_host_send_vw(espi, vw->espi_signal,
+			       vw->invert ? !value : !!value);
+}
+#endif
+
+/**
+ * @brief Set power signal to specified value.
+ *
+ * @param desc Pointer to power signal descriptor.
+ * @param value Value to be set on power signal.
+ */
+static void
+power_signal_emul_set_value(struct power_signal_emul_signal_desc *desc,
+			    int value)
+{
+	LOG_DBG("Set Signal %s -> %d", desc->name, value);
+
+	switch (desc->source) {
+#if CONFIG_AP_PWRSEQ_SIGNAL_GPIO
+	case PWR_SIG_EMUL_SRC_GPIO:
+		power_signal_emul_set_gpio_value(&desc->spec.gpio, !!value);
+		break;
+#endif
+
+#if CONFIG_AP_PWRSEQ_SIGNAL_EXTERNAL
+	case PWR_SIG_EMUL_SRC_EXT:
+		zassert_ok(power_signal_set(desc->enum_id, value),
+			   "Setting %s Signal value!!", desc->name);
+		break;
+#endif
+
+#if CONFIG_AP_PWRSEQ_SIGNAL_VW
+	case PWR_SIG_EMUL_SRC_VW:
+		power_signal_emul_set_vw_value(&desc->spec.vw, value);
+		break;
+#endif
+
+	default:
+		zassert_unreachable("Undefined Signal %s!!", desc->name);
+	}
+	power_signal_interrupt(desc->enum_id, value);
+}
 
 /**
  * @brief Get power signal value.
@@ -357,13 +366,17 @@ power_signal_emul_get_value(struct power_signal_emul_signal_desc *desc)
 	int ret;
 
 	switch (desc->source) {
+#if CONFIG_AP_PWRSEQ_SIGNAL_GPIO
 	case PWR_SIG_EMUL_SRC_GPIO:
 		ret = power_signal_emul_get_gpio_value(&desc->spec.gpio);
 		break;
+#endif
 
+#if CONFIG_AP_PWRSEQ_SIGNAL_VW
 	case PWR_SIG_EMUL_SRC_VW:
 		ret = power_signal_get(desc->enum_id);
 		break;
+#endif
 
 	default:
 		ret = power_signal_get(desc->enum_id);
