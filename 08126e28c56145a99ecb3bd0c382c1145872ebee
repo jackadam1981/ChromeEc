@@ -50,6 +50,24 @@
       "message": "Does 0x28 have a name?",
       "revId": "08126e28c56145a99ecb3bd0c382c1145872ebee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6a7da4_852667fd",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-24T01:17:29Z",
+      "side": 1,
+      "message": "Normally, the Device ID is defined in the chip variant\u0027s DT node, Ex:[/npcx9m7f.dtsi](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/dts/arm/nuvoton/npcx9m7f.dtsi;l\u003d25).\n0x2B is the device ID for NPCX998FP chip variant which is not used in any Zephyr-EC project.  So it is not included in any chip variant\u0027s DT node.\nThe root cause that we need this patch is that the npcx9m7f Device ID (0x22) in one batch of the sample chip is programed to 0x2B (npcx998fp) by mistake.\nThis is why I just hardcode 0x2B here.",
+      "parentUuid": "b28a38ce_fd32ffc4",
+      "revId": "08126e28c56145a99ecb3bd0c382c1145872ebee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
