@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd60217_29525ca9",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/src/chg_dc_jack.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-24T18:12:05Z",
+      "side": 1,
+      "message": "remove this file",
+      "revId": "d6f0e8e4aea6551501980aab568f521f3a868295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4eb3c9_dacabdf1",
+        "filename": "zephyr/program/intelrvp/mtlrvp/pd.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-24T18:12:05Z",
+      "side": 1,
+      "message": "nit:\nadd TODO for the ones you intend to define later\nadd comment why few are not needed",
+      "revId": "d6f0e8e4aea6551501980aab568f521f3a868295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511708f8_7ee2b12d",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/pd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-24T18:12:05Z",
+      "side": 1,
+      "message": "check if all needed",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "d6f0e8e4aea6551501980aab568f521f3a868295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7308b35c_8332ad68",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/pd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-24T18:12:05Z",
+      "side": 1,
+      "message": "try see if you can use CONFIG_USB_PD_PORT_MAX_COUNT",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "d6f0e8e4aea6551501980aab568f521f3a868295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
