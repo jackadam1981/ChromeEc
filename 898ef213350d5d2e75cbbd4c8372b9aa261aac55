@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f8928f_a1acdd27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-24T16:12:07Z",
+      "side": 1,
+      "message": "I did not think of an env variable, but it is the best way to handle this, thank you for coming up with it. Still +2 :)",
+      "revId": "898ef213350d5d2e75cbbd4c8372b9aa261aac55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8405e8_02bb1f17",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-24T16:12:07Z",
+      "side": 1,
+      "message": "nit: any nonempty `FORCE_BUILD` will suffice",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "898ef213350d5d2e75cbbd4c8372b9aa261aac55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
