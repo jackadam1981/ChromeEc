@@ -6,6 +6,7 @@
 #include "compile_time_macros.h"
 
 #include <array>
+#include <variant>
 
 /* Boringssl headers need to be included before extern "C" section. */
 #include "openssl/mem.h"
@@ -24,6 +25,7 @@ extern "C" {
 #include "fpsensor_auth_commands.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
+#include "fpsensor_template_state.h"
 #include "fpsensor_utils.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
@@ -42,6 +44,8 @@ uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
 uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 			      [FP_POSITIVE_MATCH_SALT_BYTES];
 
+std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
+
 /* LCOV_EXCL_START */
 __test_only void fp_task_simulate(void)
 {
@@ -57,6 +61,8 @@ void fp_clear_finger_context(uint16_t idx)
 	OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
 	OPENSSL_cleanse(fp_positive_match_salt[idx],
 			sizeof(fp_positive_match_salt[0]));
+	template_states[idx].is_locked = false;
+	template_states[idx].state = std::monostate();
 }
 
 /**
