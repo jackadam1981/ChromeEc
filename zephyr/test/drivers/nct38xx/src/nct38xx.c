@@ -109,7 +109,7 @@ ZTEST(nct38xx, test_emul_reset)
 	 * flag is set.
 	 */
 	nct38xx_emul_test_set_reg(TCPC_REG_FAULT_STATUS, 0);
-	nct38xx_emul_reset(NCT38XX_EMUL);
+	nct38xx_emul_reset(NCT38XX_EMUL, true);
 
 	rv = nct38xx_emul_test_get_reg(TCPC_REG_FAULT_STATUS, &val);
 	zassert_ok(rv);

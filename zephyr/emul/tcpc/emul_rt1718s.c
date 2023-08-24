@@ -86,11 +86,11 @@ static void add_access_history_entry(struct rt1718s_emul_data *rt1718s_data,
  *
  * @param emul Pointer to rt1718s emulator
  */
-static void rt1718s_emul_reset(const struct emul *emul)
+static void rt1718s_emul_reset(const struct emul *emul, bool reset_alert)
 {
 	struct rt1718s_emul_data *rt1718s_data = emul->data;
 
-	tcpci_emul_reset(emul);
+	tcpci_emul_reset(emul, reset_alert);
 	memset(rt1718s_data->reg_page1, 0, sizeof(rt1718s_data->reg_page1));
 	memset(rt1718s_data->reg_page2, 0, sizeof(rt1718s_data->reg_page2));
 }
@@ -265,7 +265,7 @@ static int rt1718s_emul_write_byte_page1(const struct emul *emul, int reg,
 
 	/* Software reset is triggered */
 	if (reg == RT1718S_SYS_CTRL3 && (val & RT1718S_SWRESET_MASK)) {
-		rt1718s_emul_reset(emul);
+		rt1718s_emul_reset(emul, true);
 	}
 
 	return EC_SUCCESS;
@@ -428,7 +428,7 @@ static int rt1718s_emul_init(const struct emul *emul,
 
 	tcpci_emul_i2c_init(emul, i2c_dev);
 
-	rt1718s_emul_reset(emul);
+	rt1718s_emul_reset(emul, false);
 	sys_slist_init(&(rt1718s_data->set_private_reg_history));
 
 	return 0;
@@ -479,7 +479,7 @@ DT_INST_FOREACH_STATUS_OKAY(RT1718S_EMUL)
 
 #ifdef CONFIG_ZTEST_NEW_API
 #define RT1718S_EMUL_RESET_RULE_BEFORE(n) \
-	rt1718s_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)))
+	rt1718s_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)), true)
 static void rt1718s_emul_reset_rule_before(const struct ztest_unit_test *test,
 					   void *data)
 {

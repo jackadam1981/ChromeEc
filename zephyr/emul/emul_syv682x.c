@@ -210,13 +210,15 @@ static int syv682x_emul_read_byte(const struct emul *emul, int reg,
 	return ret;
 }
 
-static void syv682x_emul_reset(const struct emul *emul)
+static void syv682x_emul_reset(const struct emul *emul, bool reset_alert)
 {
 	struct syv682x_emul_data *data = emul->data;
 
 	memset(data->reg, 0, sizeof(data->reg));
 
-	syv682x_emul_set_alert(data, false);
+	if (reset_alert) {
+		syv682x_emul_set_alert(data, false);
+	}
 	data->reg[SYV682X_CONTROL_1_REG] =
 		(SYV682X_HV_ILIM_3_30 << SYV682X_HV_ILIM_BIT_SHIFT) |
 		(SYV682X_5V_ILIM_3_30 << SYV682X_5V_ILIM_BIT_SHIFT) |
@@ -243,7 +245,7 @@ static int syv682x_emul_init(const struct emul *emul,
 	data->common.i2c = parent;
 	i2c_common_emul_init(&data->common);
 
-	syv682x_emul_reset(emul);
+	syv682x_emul_reset(emul, false);
 	return 0;
 }
 
@@ -277,7 +279,7 @@ DT_INST_FOREACH_STATUS_OKAY(SYV682X_EMUL)
 #ifdef CONFIG_ZTEST_NEW_API
 
 #define SYV682X_EMUL_RESET_RULE_BEFORE(n) \
-	syv682x_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)));
+	syv682x_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)), true);
 
 static void emul_syv682x_reset_before(const struct ztest_unit_test *test,
 				      void *data)

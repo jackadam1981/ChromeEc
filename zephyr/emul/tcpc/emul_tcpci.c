@@ -822,7 +822,7 @@ static void tcpci_emul_reset_role_ctrl(struct tcpci_ctx *ctx)
  * @param emul Pointer to TCPCI emulator
  * @return 0 if successful
  */
-int tcpci_emul_reset(const struct emul *emul)
+int tcpci_emul_reset(const struct emul *emul, bool reset_alert)
 {
 	struct tcpc_emul_data *tcpc_data = emul->data;
 	struct tcpci_ctx *ctx = tcpc_data->tcpci_ctx;
@@ -859,6 +859,10 @@ int tcpci_emul_reset(const struct emul *emul)
 
 	tcpci_emul_reset_mask_regs(ctx);
 	tcpci_emul_reset_role_ctrl(ctx);
+
+	if (!reset_alert) {
+		return 0;
+	}
 
 	return tcpci_emul_alert_changed(emul);
 }

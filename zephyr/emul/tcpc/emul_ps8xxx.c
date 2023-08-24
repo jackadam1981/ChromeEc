@@ -317,7 +317,7 @@ static int ps8xxx_emul_tcpc_access_reg(const struct emul *emul, int reg,
  *
  * @param emul Pointer to PS8xxx emulator
  */
-static int ps8xxx_emul_tcpc_reset(const struct emul *emul)
+static int ps8xxx_emul_tcpc_reset(const struct emul *emul, bool reset_alert)
 {
 	tcpci_emul_set_reg(emul, PS8XXX_REG_I2C_DEBUGGING_ENABLE, 0x31);
 	tcpci_emul_set_reg(emul, PS8XXX_REG_MUX_IN_HPD_ASSERTION, 0x00);
@@ -326,7 +326,7 @@ static int ps8xxx_emul_tcpc_reset(const struct emul *emul)
 	tcpci_emul_set_reg(emul, PS8XXX_REG_BIST_CONT_MODE_BYTE2, 0x00);
 	tcpci_emul_set_reg(emul, PS8XXX_REG_BIST_CONT_MODE_CTR, 0x00);
 
-	return tcpci_emul_reset(emul);
+	return tcpci_emul_reset(emul, reset_alert);
 }
 
 /**
@@ -631,7 +631,7 @@ static int ps8xxx_emul_init(const struct emul *emul,
 		i2c_common_emul_init(&data->gpio_data);
 	}
 
-	ret |= ps8xxx_emul_tcpc_reset(emul);
+	ret |= ps8xxx_emul_tcpc_reset(emul, false);
 
 	tcpci_emul_set_reg(emul, TCPC_REG_VENDOR_ID, PS8XXX_VENDOR_ID);
 	tcpci_emul_set_reg(emul, TCPC_REG_PRODUCT_ID, data->prod_id);
@@ -682,7 +682,7 @@ DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL)
 
 #ifdef CONFIG_ZTEST_NEW_API
 #define PS8XXX_EMUL_RESET_RULE_BEFORE(n) \
-	ps8xxx_emul_tcpc_reset(EMUL_DT_GET(DT_DRV_INST(n)));
+	ps8xxx_emul_tcpc_reset(EMUL_DT_GET(DT_DRV_INST(n)), true);
 static void ps8xxx_emul_reset_rule_before(const struct ztest_unit_test *test,
 					  void *data)
 {

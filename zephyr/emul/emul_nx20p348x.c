@@ -62,7 +62,7 @@ static void nx20p348x_emul_interrupt_set(const struct emul *emul, int val)
 	__ASSERT_NO_MSG(res == 0);
 }
 
-void nx20p348x_emul_reset_regs(const struct emul *emul)
+void nx20p348x_emul_reset_regs(const struct emul *emul, bool reset_irq)
 {
 	struct nx20p348x_emul_data *data =
 		(struct nx20p348x_emul_data *)emul->data;
@@ -74,7 +74,9 @@ void nx20p348x_emul_reset_regs(const struct emul *emul)
 
 		data->regs[def.offset] = def.val;
 	}
-	nx20p348x_emul_interrupt_set(emul, 1);
+	if (reset_irq) {
+		nx20p348x_emul_interrupt_set(emul, 1);
+	}
 	nx20p348x_emul_set_tcpc_interact(emul, true);
 }
 
@@ -231,7 +233,7 @@ static int nx20p348x_emul_init(const struct emul *emul,
 	i2c_common_emul_set_read_func(common_data, nx20p348x_emul_read, NULL);
 	i2c_common_emul_set_write_func(common_data, nx20p348x_emul_write, NULL);
 
-	nx20p348x_emul_reset_regs(emul);
+	nx20p348x_emul_reset_regs(emul, false);
 
 	return 0;
 }
@@ -263,7 +265,7 @@ static void nx20p348x_emul_reset_rule_before(const struct ztest_unit_test *test,
 	ARG_UNUSED(data);
 
 #define NX20P348X_EMUL_RESET_RULE_BEFORE(n) \
-	nx20p348x_emul_reset_regs(EMUL_DT_GET(DT_DRV_INST(n)));
+	nx20p348x_emul_reset_regs(EMUL_DT_GET(DT_DRV_INST(n)), true);
 
 	DT_INST_FOREACH_STATUS_OKAY(NX20P348X_EMUL_RESET_RULE_BEFORE);
 }

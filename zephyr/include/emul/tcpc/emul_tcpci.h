@@ -261,7 +261,7 @@ void tcpci_emul_i2c_init(const struct emul *emul, const struct device *i2c_dev);
  * @param emul Pointer to TCPC emulator
  * @return 0 if successful
  */
-int tcpci_emul_reset(const struct emul *emul);
+int tcpci_emul_reset(const struct emul *emul, bool reset_alert);
 
 /**
  * @brief Get value of given register of TCPCI

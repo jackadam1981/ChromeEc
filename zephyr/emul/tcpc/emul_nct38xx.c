@@ -180,7 +180,7 @@ static int nct38xx_emul_access_reg(const struct emul *emul, int reg, int bytes,
 	return reg;
 }
 
-void nct38xx_emul_reset(const struct emul *emul)
+void nct38xx_emul_reset(const struct emul *emul, bool reset_alert)
 {
 	struct tcpc_emul_data *tcpc_data = emul->data;
 	struct nct38xx_emul_data *nct38xx = tcpc_data->chip_data;
@@ -196,7 +196,7 @@ void nct38xx_emul_reset(const struct emul *emul)
 				     nct38xx->regs[i].def);
 	}
 
-	tcpci_emul_reset(emul);
+	tcpci_emul_reset(emul, reset_alert);
 }
 
 static int nct38xx_emul_init(const struct emul *emul,
@@ -211,7 +211,7 @@ static int nct38xx_emul_init(const struct emul *emul,
 	tcpci_ctx->common.write_byte = nct38xx_emul_tcpc_write_byte;
 
 	tcpci_emul_i2c_init(emul, parent);
-	nct38xx_emul_reset(emul);
+	nct38xx_emul_reset(emul, false);
 	return 0;
 }
 
@@ -223,7 +223,7 @@ static int nct38xx_emul_init(const struct emul *emul,
 DT_INST_FOREACH_STATUS_OKAY(NCT38XX_EMUL);
 
 #define NCT38XX_EMUL_RESET_RULE_AFTER(n) \
-	nct38xx_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)));
+	nct38xx_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)), true);
 
 static void nct38xx_emul_test_reset(const struct ztest_unit_test *test,
 				    void *data)

@@ -100,9 +100,9 @@ static int tcpci_generic_emul_access_reg(const struct emul *emul, int reg,
  *
  * @param emul Pointer to TCPC emulator
  */
-static void tcpci_generic_emul_reset(const struct emul *emul)
+static void tcpci_generic_emul_reset(const struct emul *emul, bool reset_alert)
 {
-	tcpci_emul_reset(emul);
+	tcpci_emul_reset(emul, reset_alert);
 }
 
 /**
@@ -132,7 +132,7 @@ static int tcpci_generic_emul_init(const struct emul *emul,
 
 	tcpci_emul_i2c_init(emul, i2c_dev);
 
-	tcpci_generic_emul_reset(emul);
+	tcpci_generic_emul_reset(emul, false);
 
 	return 0;
 }
@@ -161,7 +161,7 @@ DT_INST_FOREACH_STATUS_OKAY(TCPCI_GENERIC_EMUL)
 
 #ifdef CONFIG_ZTEST_NEW_API
 #define TCPCI_GENERIC_EMUL_RESET_RULE_BEFORE(n) \
-	tcpci_generic_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)));
+	tcpci_generic_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)), true);
 static void
 tcpci_generic_emul_reset_rule_before(const struct ztest_unit_test *test,
 				     void *data)

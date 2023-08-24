@@ -17,6 +17,6 @@
 int nct38xx_emul_get_reg(const struct emul *emul, int r, uint16_t *val);
 int nct38xx_emul_set_reg(const struct emul *emul, int r, uint16_t val);
 
-void nct38xx_emul_reset(const struct emul *emul);
+void nct38xx_emul_reset(const struct emul *emul, bool reset_alert);
 
 #endif /* __EMUL_NCT38XX_H */

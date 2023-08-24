@@ -320,8 +320,6 @@ static int emul_sn5s330_init(const struct emul *emul,
 {
 	struct sn5s330_emul_data *data = emul->data;
 
-	sn5s330_emul_deassert_interrupt(emul);
-
 	data->common.i2c = parent;
 	i2c_common_emul_init(&data->common);
 
