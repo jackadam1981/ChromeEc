@@ -986,6 +986,11 @@ function flash_openocd() {
 function flash_flashrom() {
 	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}:/usr/sbin"
 	FLASHROM=$(PATH="${TOOL_PATH}" which flashrom)
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
 
 	if on_servov3; then
 		FLASHROM_ARGS="-p linux_spi"
@@ -1131,6 +1136,24 @@ function flash_flashrom() {
 			fi
 			cat "${IMG}"
 		} > "${T}"
+		fi
+
+		if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+			local CUR_IMG
+			local PRESERVE_STATUS
+
+			PRESERVE_STATUS=0
+			is_preservation_needed "${T}" "${TEMP_DIR}" || PRESERVE_STATUS=$?
+			if [[ "${PRESERVE_STATUS}" -eq 0 ]]; then
+				info "Reading current EC firmware image."
+				CUR_IMG="${TEMP_DIR}/ec.cur.bin"
+				local FLASHROM_CUR_RD=( "${FLASHROM_CMDLINE[*]} -r ${CUR_IMG}" )
+				echo "${FLASHROM_CUR_RD[*]}"
+				print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+					"${FLASHROM_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
+
+				preserve_sections "${CUR_IMG}" "${T}" "${TEMP_DIR}"
+			fi
 		fi
 
 		info "Programming EC firmware image."
@@ -1334,6 +1357,11 @@ function dut_i2c_dev() {
 function flash_it83xx() {
 	local TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}"
 	local ITEFLASH_BIN
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
 	ITEFLASH_BIN=$(PATH="${TOOL_PATH}" which iteflash)
 
 	if [[ ! -x "${ITEFLASH_BIN}" ]]; then
@@ -1411,6 +1439,24 @@ function flash_it83xx() {
 			"--i2c-dev-path=$(dut_i2c_dev)" )
 		if servo_is_ccd; then
 			ITEFLASH_ARGS+=( "--block-write-size=256" )
+		fi
+	fi
+
+	if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+		local CUR_IMG
+		local PRESERVE_STATUS
+
+		PRESERVE_STATUS=0
+		is_preservation_needed "${IMG}" "${TEMP_DIR}" || PRESERVE_STATUS=$?
+		if [[ "${PRESERVE_STATUS}" -eq 0 ]]; then
+			info "Reading current EC firmware image."
+			CUR_IMG="${TEMP_DIR}/ec.cur.bin"
+			local ITEFLASH_CUR_RD=( "${ITEFLASH_ARGS[*]} --read=${CUR_IMG}" )
+			echo "${ITEFLASH_CUR_RD[*]}"
+			print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+				"${ITEFLASH_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
+
+			preserve_sections "${CUR_IMG}" "${IMG}" "${TEMP_DIR}"
 		fi
 	fi
 
