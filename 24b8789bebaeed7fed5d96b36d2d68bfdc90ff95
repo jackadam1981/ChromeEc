@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b47f69_598ead5a",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2023-08-24T19:38:33Z",
+      "side": 1,
+      "message": "\u003e Instead of this, what if we changed cc off to remove CC_EMCA_SERVO, and changed the other cc subcommands to add it back? \n\nCC_EMCA_SERVO is merely a (stateful) configuration tracking bit.  \nWiping it would only wipe the variable tracking user setting.\n\n\u003e We should really revisit the cc interface as a whole (b:248383961).\n\nAgreed. Command params doesn\u0027t indicate \u0027PD\u0027 usage; it\u0027s completely legacy.  \nIn my (abandoned) WIP refactor, I split all commands to be grammatically correct.\n\nExample: \"cc [?:PD][SNK|SRC][?:DTS] [?:cc1|cc2] for all 2*2*2 variants.  \nAnd further adding either a separate param/command to set Rp signal level.  \n(Which is completely not possible right now.)",
+      "parentUuid": "61cfc536_45233834",
+      "revId": "24b8789bebaeed7fed5d96b36d2d68bfdc90ff95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffb65643_11c75dbf",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-26T06:53:58Z",
       "side": 1,
       "message": "Did you mean to leave CC2 untouched when rp \u003d\u003d TYPEC_RP_RESERVED?  Or would the snippet below make more sense?\n\n```\n  if (cc_config \u0026 CC_EMCA_SERVO \u0026\u0026 rp !\u003d TYPEC_RP_RESERVED)\n    DUT_INACTIVE_CC_PD(RA);\n  else\n    DUT_INACTIVE_CC_OPEN(RA);\n```\n\nAlternatively, skip `DUT_INACTIVE_CC_OPEN(RA)` entirely, if we\u0027re comfortable with relying on `pd_set_rp_rd()` having set it.",
+      "revId": "24b8789bebaeed7fed5d96b36d2d68bfdc90ff95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e33383_fa976d34",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2023-08-24T19:38:33Z",
+      "side": 1,
+      "message": "\u003e Did you mean to leave CC2 untouched when rp \u003d\u003d TYPEC_RP_RESERVED?\n\nSome legacy Servo coders (or CB EC engineers) did a bit of a hack.  \n\nThey used enum `TYPEC_RP_RESERVED` from TCPCI ROLE_CONTROL register...   \n...to signal \"Hi-Z CC off disconnect state\". Which isn\u0027t proper.  \n(RESERVED literally means \"Do Not Use, May Mean Something Else Later\".)\n\nI argued a *separate* variable should be used to track this.  \nInstead of overloading \"Rp pull value\" to mean something it\u0027s not.\n\n\u003e Or would the snippet below make more sense?\n\nI didn\u0027t use that approach since it would \"cause a change\" when not necessary.  \n\nPlease note I ported manual override command `tw res __ __` in another CL.  \nThis function was written to \"touch as little as possible\" when invoked.\n\nBy wrapping the setting with `TYPEC_RP_RESERVED`...  \n...if Servo user has *manually* written a value using `tw res __ __`...  \n...this approach will NOT blow it away. Only the bare minimum writes are performed.\n\nThis is particularly relevant for my CC fuzzer script.  \nWhich uses manual `tw res __ __` writes while CC engine is \"disconnected\".",
+      "parentUuid": "ffb65643_11c75dbf",
       "revId": "24b8789bebaeed7fed5d96b36d2d68bfdc90ff95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
