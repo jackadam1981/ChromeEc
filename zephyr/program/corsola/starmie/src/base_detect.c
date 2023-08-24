@@ -46,7 +46,7 @@ static void base_update(enum base_status specified_status)
 	current_base_status = specified_status;
 
 	tablet_set_mode(!connected, TABLET_TRIGGER_BASE);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp3300_base_x), connected);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp3300_pogo), connected);
 }
 
 void base_detect_interrupt(enum gpio_signal signal)
