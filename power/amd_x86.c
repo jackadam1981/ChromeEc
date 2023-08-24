@@ -49,7 +49,7 @@ void power_fake_disable(void)
 }
 #endif /* defined(CONFIG_POWERSEQ_FAKE_CONTROL) */
 
-void chipset_force_shutdown(enum chipset_shutdown_reason reason)
+test_mockable void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
 
@@ -66,7 +66,7 @@ static void chipset_force_g3(void)
 	gpio_set_level(GPIO_EN_PWR_A, 0);
 }
 
-void chipset_reset(enum chipset_shutdown_reason reason)
+test_mockable void chipset_reset(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s: %d", __func__, reason);
 
@@ -571,7 +571,7 @@ enum power_state power_handle_state(enum power_state state)
 	return state;
 }
 
-#if defined(SECTION_IS_RW) && \
+#if (defined(SECTION_IS_RW) || defined(CONFIG_ZTEST)) && \
 	defined(CONFIG_POWER_SLEEP_FAILURE_DETECTION_RESET)
 
 /**
@@ -661,7 +661,7 @@ static void board_handle_hard_sleep_hang(void)
 /**
  * Reset hang counters whenever a resume is successful
  */
-static void reset_hang_counters(void)
+test_export_static void reset_hang_counters(void)
 {
 	if (hard_sleep_hang_count || soft_sleep_hang_count)
 		ccprints("Successful S0ix resume after consecutive hangs: "

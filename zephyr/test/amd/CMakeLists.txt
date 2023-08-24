@@ -8,5 +8,9 @@ project(amd)
 
 add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
 
+zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+target_sources(app PRIVATE src/common.c)
+
 target_sources_ifdef(CONFIG_TEST_AMD_POWER app PRIVATE src/amd_power.c)
-target_sources_ifdef(CONFIG_TEST_AMD_STB_DUMP app PRIVATE src/stb_dump.c)
+target_sources_ifdef(CONFIG_TEST_AMD_SLEEP_FAILURE_DETECT app PRIVATE src/sleep_failure_detect.c)

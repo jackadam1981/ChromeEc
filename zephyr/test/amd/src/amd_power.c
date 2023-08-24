@@ -3,10 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "amd_test.h"
 #include "console.h"
 #include "driver/amd_stb.h"
 #include "ec_app_main.h"
-#include "emul/emul_stub_device.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "gpio_signal.h"
@@ -33,49 +33,6 @@
 #include <dt-bindings/buttons.h>
 
 void set_initial_pwrbtn_state(void);
-
-/* All emulated GPIOS are on one device */
-#define GPIO_DEVICE \
-	DEVICE_DT_GET(DT_GPIO_CTLR(NAMED_GPIOS_GPIO_NODE(s0_pgood), gpios))
-#define SLP_S3_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(slp_s3_l), gpios)
-#define SLP_S5_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(slp_s5_l), gpios)
-#define PGOOD_S0_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(s0_pgood), gpios)
-#define PGOOD_S5_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(pg_pwr_s5), gpios)
-#define PWRBTN_IN_PIN \
-	DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(mech_pwr_btn_odl), gpios)
-#define PWRBTN_OUT_PIN \
-	DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(ec_soc_pwr_btn_l), gpios)
-#define PROCHOT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(prochot_odl), gpios)
-#define LID_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(lid_open_ec), gpios)
-#define STB_OUT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(ec_sfh_int_h), gpios)
-
-/*
- * Provide standard array of power signals for the module based on our DTS enum
- * names we filled in
- */
-const struct power_signal_info power_signal_list[] = {
-	[X86_SLP_S3_N] = {
-		.gpio = GPIO_PCH_SLP_S3_L,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_S3_DEASSERTED",
-	},
-	[X86_SLP_S5_N] = {
-		.gpio = GPIO_PCH_SLP_S5_L,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_S5_DEASSERTED",
-	},
-	[X86_S0_PGOOD] = {
-		.gpio = GPIO_S0_PGOOD,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "S0_PGOOD",
-	},
-	[X86_S5_PGOOD] = {
-		.gpio = GPIO_S5_PGOOD,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "S5_PGOOD",
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 struct hook_tracker {
 	int startup_count;
@@ -921,7 +878,3 @@ void test_main(void)
 
 	ztest_verify_all_test_suites_ran();
 }
-
-/* These 2 lines are needed because we don't define an espi host driver */
-#define DT_DRV_COMPAT zephyr_espi_emul_espi_host
-DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

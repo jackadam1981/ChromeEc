@@ -5,4 +5,8 @@
 config TEST_AMD_POWER
 	bool "Enable general power sequencing tests"
 
+config TEST_AMD_SLEEP_FAILURE_DETECT
+	bool "Enable sleep failure detection tests"
+	select PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION_RESET
+
 source "Kconfig.zephyr"

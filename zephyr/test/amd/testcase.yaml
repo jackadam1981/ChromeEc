@@ -8,3 +8,6 @@ tests:
   amd.power:
     extra_configs:
       - CONFIG_TEST_AMD_POWER=y
+  amd.sleep_failure_detect:
+    extra_configs:
+      - CONFIG_TEST_AMD_SLEEP_FAILURE_DETECT=y
