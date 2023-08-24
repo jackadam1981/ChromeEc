@@ -11,6 +11,9 @@
 #include <zephyr/shell/shell.h>
 #endif
 
+#include <array>
+#include <variant>
+
 extern "C" {
 #include "atomic.h"
 #include "clock.h"
@@ -34,6 +37,7 @@ extern "C" {
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_detect.h"
 #include "fpsensor/fpsensor_state.h"
+#include "fpsensor/fpsensor_template_state.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
 
@@ -87,6 +91,16 @@ __maybe_unused bool fp_match_success(int match_result)
 	       match_result == EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED;
 }
 
+static void init_template_state_with_user_id(int idx)
+{
+	std::array<uint32_t, FP_CONTEXT_USERID_WORDS> raw_user_id;
+	std::copy(std::begin(user_id), std::end(user_id),
+		  std::begin(raw_user_id));
+	template_states[idx].state =
+		fp_template_state::decrypted_state(raw_user_id);
+	template_states[idx].is_locked = false;
+}
+
 #ifdef HAVE_FP_PRIVATE_DRIVER
 static inline int is_test_capture(uint32_t mode)
 {
@@ -130,6 +144,7 @@ static uint32_t fp_process_enroll(void)
 			template_newly_enrolled = templ_valid;
 			fp_enable_positive_match_secret(
 				templ_valid, &positive_match_secret_state);
+			init_template_state_with_user_id(templ_valid);
 			templ_valid++;
 		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
@@ -149,10 +164,21 @@ static uint32_t fp_process_match(void)
 	/* match finger against current templates */
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 
-	if ((fp_encryption_status & FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) &&
-	    (fp_encryption_status & FP_CONTEXT_STATUS_MATCH_PROCESSED_SET)) {
-		CPRINTS("Cannot process match twice in nonce context");
-		return EC_MKBP_FP_ERRCODE(EC_MKBP_FP_ERR_MATCH_NO_INTERNAL);
+	if (fp_encryption_status & FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
+		if (fp_encryption_status &
+		    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
+			CPRINTS("Cannot process match twice in nonce context");
+			return EC_MKBP_FP_ERRCODE(
+				EC_MKBP_FP_ERR_MATCH_NO_INTERNAL);
+		}
+		for (uint16_t idx = 0; idx < templ_valid; idx++) {
+			if (template_states[idx].is_locked == true) {
+				CPRINTS("Cannot process match on locked template");
+				return EC_MKBP_FP_ERRCODE(
+					EC_MKBP_FP_ERR_MATCH_NO_INTERNAL);
+			}
+			template_states[idx].is_locked = true;
+		}
 	}
 
 	fp_encryption_status |= FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
@@ -614,26 +640,39 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 					      sizeof(fp_positive_match_salt[0]);
 		}
 
-		ret = derive_encryption_key(key, enc_info->encryption_salt);
-		if (ret != EC_SUCCESS) {
-			CPRINTS("fgr%d: Failed to derive key", idx);
-			return EC_RES_UNAVAILABLE;
+		if (fp_encryption_status & FP_CONTEXT_USER_ID_SET) {
+			ret = derive_encryption_key(key,
+						    enc_info->encryption_salt);
+			if (ret != EC_SUCCESS) {
+				CPRINTS("fgr%d: Failed to derive key", idx);
+				return EC_RES_UNAVAILABLE;
+			}
+
+			/* Decrypt the secret blob in-place. */
+			ret = aes_gcm_decrypt(
+				key, SBP_ENC_KEY_LEN, encrypted_template,
+				encrypted_template, encrypted_blob_size,
+				enc_info->nonce, FP_CONTEXT_NONCE_BYTES,
+				enc_info->tag, FP_CONTEXT_TAG_BYTES);
+			OPENSSL_cleanse(key, sizeof(key));
+			if (ret != EC_SUCCESS) {
+				CPRINTS("fgr%d: Failed to decipher template",
+					idx);
+				/* Don't leave bad data in the template buffer
+				 */
+				fp_clear_finger_context(idx);
+				return EC_RES_UNAVAILABLE;
+			}
+			init_template_state_with_user_id(idx);
+		} else {
+			template_states[idx].is_locked = true;
+			template_states[idx].state =
+				fp_template_state::encrypted_state(*enc_info);
 		}
 
-		/* Decrypt the secret blob in-place. */
-		ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, encrypted_template,
-				      encrypted_template, encrypted_blob_size,
-				      enc_info->nonce, FP_CONTEXT_NONCE_BYTES,
-				      enc_info->tag, FP_CONTEXT_TAG_BYTES);
-		OPENSSL_cleanse(key, sizeof(key));
-		if (ret != EC_SUCCESS) {
-			CPRINTS("fgr%d: Failed to decipher template", idx);
-			/* Don't leave bad data in the template buffer */
-			fp_clear_finger_context(idx);
-			return EC_RES_UNAVAILABLE;
-		}
 		memcpy(fp_template[idx], encrypted_template,
 		       sizeof(fp_template[0]));
+
 		if (template_needs_validation_value(enc_info)) {
 			CPRINTS("fgr%d: Generating positive match salt.", idx);
 			trng_init();
