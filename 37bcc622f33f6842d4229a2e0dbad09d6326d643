@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c96485bd_3e0027a6",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-24T20:16:23Z",
+      "side": 1,
+      "message": "Ohhh, I think we might be talking about different things. In that example, they want to produce one string to give to `print`. In the code here, `[\"ssh\", f\"-p{port}\", host, \"--\"]` is not equivalent to `f\"ssh -p{port} host --\"`.\n\nThe first keeps each str piece as an array element. These array elements are given to `subprocess.run` as separate item, to ensure proper command argument construction.\nThe latter smashes all command line pieces into a single string and then *hopes* that the shell will reinterpret the individual command line items. You typically must run a different function, typically named `shell`, to have a string evaluated for execution.\n\nBad code will smash commands into a single string before execution. We intentionally want to keep each parameter separate, so that we don\u0027t need to deal with escaping and reinterpretation.",
+      "parentUuid": "27baaafd_857acaa9",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
