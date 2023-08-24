@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0101c72f_cc893f55",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-24T20:19:22Z",
+      "side": 1,
+      "message": "@vapier@chromium.org to look at as an independent party.",
+      "parentUuid": "c96485bd_3e0027a6",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
