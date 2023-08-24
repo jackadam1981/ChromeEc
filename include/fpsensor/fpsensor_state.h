@@ -72,6 +72,11 @@ void fp_clear_finger_context(uint16_t idx);
 void fp_reset_context(void);
 
 /**
+ * Set all fingerprint templates to the locked state.
+ */
+void fp_lock_templates(void);
+
+/**
  * Clear all fingerprint templates associated with the current user id and
  * reset the sensor.
  */
