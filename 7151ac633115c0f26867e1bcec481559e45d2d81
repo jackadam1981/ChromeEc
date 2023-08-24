@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77c5e67e_e4715c84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-24T20:00:37Z",
+      "side": 1,
+      "message": "The original set, yes (although I only committed later). Since I\u0027m changing it according to your comments (thanks for the review! I forgot most of my Python in the last decades of only sporadic use), I\u0027ll re-test them individually.",
+      "parentUuid": "7fb33a0a_10096840",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a3c2008_86a5947d",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-08-23T19:14:44Z",
       "side": 1,
       "message": "Just require an iterable now, and update callers as needed.  Keep the interface simple, avoid \"if isinstance(...)\" branches.",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9e40f0_154329ee",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-24T20:00:37Z",
+      "side": 1,
+      "message": "Mind if I make this a follow-up CL? This CL is already too large for my taste and adding all the clerical work of wrapping things before passing it into these functions only adds more noise.\n\nSo: this adds the new behavior (and uses isinstance), its immediate follow-up will clean up the call sites and remove the string based interface (and therefore isinstance)",
+      "parentUuid": "1a3c2008_86a5947d",
       "range": {
         "startLine": 92,
         "startChar": 14,
@@ -77,6 +119,24 @@
       "writtenOn": "2023-08-23T19:14:44Z",
       "side": 1,
       "message": "Define this at module scope.  If you want to keep it internal (which is totally fine!), use underscore prefix naming i.e. `_parse_vidpid_string()`.",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc19a0e_140404f4",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-24T20:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0fb1788_951af1ce",
       "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df5db98_113340b6",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-24T20:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "badcba95_e9fa56eb",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88b73504_fba34844",
@@ -181,6 +259,30 @@
       "side": 1,
       "message": "\u003e \"specificed\" is a possible misspelling of \"specified\".\n\ntypo",
       "parentUuid": "d0f14282_abb3babe",
+      "range": {
+        "startLine": 166,
+        "startChar": 32,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9069c366_333b7d4b",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-24T20:00:37Z",
+      "side": 1,
+      "message": "Already taken care of in CL:4804628",
+      "parentUuid": "4e8f361e_9256657d",
       "range": {
         "startLine": 166,
         "startChar": 32,
