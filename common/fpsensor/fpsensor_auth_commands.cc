@@ -50,6 +50,9 @@ static void invalidate_existing_context()
 	templ_dirty = 0;
 	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
+	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++) {
+		template_states[idx].is_locked = true;
+	}
 	OPENSSL_cleanse(user_id, sizeof(user_id));
 }
 
