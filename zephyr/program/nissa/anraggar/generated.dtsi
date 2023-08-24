@@ -72,6 +72,7 @@
 		};
 		gpio_ec_prochot_odl: ec_prochot_odl {
 			gpios = <&gpioi 1 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_PROCHOT_IN_L";
 		};
 		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
 			gpios = <&gpiol 7 GPIO_OUTPUT>;
@@ -82,6 +83,7 @@
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
 			gpios = <&gpiod 5 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_EC_INT_L";
+			alias = "GPIO_SEQ_EC_DSW_PWROK";
 		};
 		gpio_ec_soc_pch_pwrok_od: ec_soc_pch_pwrok_od {
 			gpios = <&gpiod 6 GPIO_ODR_HIGH>;
@@ -214,7 +216,8 @@
 
 		i2c_ec_i2c_eeprom: ec_i2c_eeprom {
 			i2c-port = <&i2c0>;
-			enum-names = "I2C_PORT_EEPROM";
+			enum-names = "I2C_PORT_EEPROM",
+				"I2C_PORT_CHARGER";
 		};
 		i2c_ec_i2c_batt: ec_i2c_batt {
 			i2c-port = <&i2c1>;

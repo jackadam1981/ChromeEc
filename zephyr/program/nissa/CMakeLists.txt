@@ -147,3 +147,14 @@ if(DEFINED CONFIG_BOARD_CRAASKOV)
 	"craaskov/src/keyboard_customization.c"
 	)
 endif()
+if(DEFINED CONFIG_BOARD_ANRAGGAR)
+	project(anraggar)
+	zephyr_library_sources(
+			"src/led.c"
+			"anraggar/src/keyboard.c"
+			"anraggar/src/hdmi.c"
+			"anraggar/src/prochot.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "anraggar/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "anraggar/src/charger.c")
+endif()
