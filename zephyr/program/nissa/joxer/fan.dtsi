@@ -6,9 +6,9 @@
 	fans {
 		compatible = "cros-ec,fans";
 		fan_0 {
-			pwms = <&pwm7 PWM_CHANNEL_7 PWM_KHZ(30) \
+			pwms = <&pwm7 PWM_CHANNEL_7 PWM_KHZ(25) \
 				PWM_POLARITY_NORMAL>;
-			tach = <&tach1>;
+			tach = <&tach0>;
 			rpm_min = <1500>;
 			rpm_start = <2700>;
 			rpm_max = <6500>;
@@ -60,10 +60,10 @@
 };
 
 /* fan tachometer sensor */
-&tach1 {
+&tach0 {
 	status = "okay";
-	channel = <IT8XXX2_TACH_CHANNEL_A>;
+	channel = <IT8XXX2_TACH_CHANNEL_B>;
 	pulses-per-round = <2>;
-	pinctrl-0 = <&tach1a_gpd7_default>;
+	pinctrl-0 = <&tach0b_gpj2_default>;
 	pinctrl-names = "default";
 };
