@@ -207,12 +207,13 @@
 			compatible = "named-usbc-port";
 			reg = <0>;
 			bc12 = <&bc12_port0>;
-			chg = <&chg_port0>;
+			chg = <&charger>;
 			tcpc = <&usbpd0>;
 			usb-mux-chain-0 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_0>;
 			};
+			ppc = <&ppc_port0>;
 		};
 		port0-muxes {
 			virtual_mux_0: virtual-mux-0 {
@@ -223,7 +224,6 @@
 			compatible = "named-usbc-port";
 			reg = <1>;
 			bc12 = <&bc12_port1>;
-			chg = <&chg_port1>;
 			tcpc = <&tcpc_port1>;
 			usb-mux-chain-1 {
 				compatible = "cros-ec,usb-mux-chain";
@@ -376,6 +376,12 @@
 	pinctrl-0 = <&i2c0_clk_gpb3_default
 		     &i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
+
+	charger: bq25710@9 {
+		compatible = "ti,bq25710";
+		status = "okay";
+		reg = <0x9>;
+	};
 };
 
 &i2c1 {
@@ -409,12 +415,6 @@
 		reg = <0x5f>;
 	};
 
-	chg_port1: sm5803@32 {
-		compatible = "siliconmitus,sm5803";
-		status = "okay";
-		reg = <0x32>;
-	};
-
 	tcpc_port1: ps8745@b {
 		compatible = "parade,ps8xxx";
 		reg = <0xb>;
@@ -444,11 +444,17 @@
 		status = "okay";
 		reg = <0x5f>;
 	};
-
-	chg_port0: sm5803@32 {
-		compatible = "siliconmitus,sm5803";
+	
+	ppc_port0: syv682x@40 {
+		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x32>;
+		reg = <0x40>;
+		frs_en_gpio = <&gpio_usb_c0_frs>;
+		/* a duplicate of the <&gpio_usb_c0_ppc_int_odl> node in
+		 * "named-gpios". This is the Zephyr preferred style,
+		 * the "named-gpios" node will be dealt with at a later date.
+		 */
+		irq-gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
 	};
 };
 
