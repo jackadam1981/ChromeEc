@@ -4,6 +4,15 @@
 
 if PLATFORM_EC_USBC
 
+config PLATFORM_EC_USB_PD_DP_MODE
+	bool "EC-driven DP support"
+	depends on !PLATFORM_EC_USB_PD_VDM_AP_CONTROL
+	default y
+	help
+	  This enables support for entering DisplayPort alternate mode as a
+	  DFP from the Embedded Controller directly.  This flag gates all the
+	  on-EC logic for determining specifics such as VDM contents.
+
 config PLATFORM_EC_USB_PD_INTEL_ALTMODE
 	bool "PD task to configure USB-C Alternate modes on Intel SoC"
 	select PLATFORM_EC_USBC_SS_MUX
