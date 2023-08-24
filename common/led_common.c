@@ -41,9 +41,12 @@ void led_auto_control(enum ec_led_id led_id, int enable)
 
 int led_auto_control_is_enabled(enum ec_led_id led_id)
 {
+	ccprints("%s led_id=0x%x", __func__, led_id);
 	if (!led_is_supported(led_id))
 		return 0;
 
+	ccprints("%s led_auto_control_Flag=0x%x", __func__,
+		 led_auto_control_flags);
 	return (led_auto_control_flags & LED_AUTO_CONTROL_FLAG(led_id)) != 0;
 }
 
