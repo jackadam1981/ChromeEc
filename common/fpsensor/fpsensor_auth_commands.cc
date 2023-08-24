@@ -15,6 +15,7 @@
 #include "openssl/mem.h"
 #include "openssl/rand.h"
 #include "scoped_fast_cpu.h"
+#include "trng.h"
 
 #include <algorithm>
 #include <array>
