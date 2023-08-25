@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09a43dac_c1d69085",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-08-25T11:23:46Z",
+      "side": 1,
+      "message": "`dump_fmap \"${NEW_IMG}\" -e | grep -q \u0027 preserve\u0027`\n\nWe are running this command before doing read of EC flash, if there are any sections that needs to be preserved as per NEW_IMG, then we will do the flash read. Until we do this flash read, we don\u0027t know what is in EC chip image or CUR_IMG.\n\nOne thing I just realized is, if we use CUR_IMG `preserve` status to determine preserving in NEW_IMG, then we might need to do full flash read in almost all cases. Right now we don\u0027t do flash read if preserve status is not enabled in any sections of NEW_IMG.\n\nRight now the following commands doing the presence check of sections in CUR_IMG: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/flash_ec;l\u003d1763-1764\n\nWe could also avoid flash_ec script run failure by suppressing above error if we want to, but as it\u0027s better to break earlier than later, we are not suppressing them till now",
+      "parentUuid": "29849fc0_3b587e49",
+      "range": {
+        "startLine": 1741,
+        "startChar": 15,
+        "endLine": 1741,
+        "endChar": 22
+      },
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4203e0c4_454cce61",
         "filename": "util/flash_ec",
         "patchSetId": 1
