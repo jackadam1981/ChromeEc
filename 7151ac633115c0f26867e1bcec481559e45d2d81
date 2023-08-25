@@ -148,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2532ae1a_1da48380",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-25T18:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfca06d3_6e270c4f",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0fb1788_951af1ce",
@@ -200,6 +224,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b176a32f_368b920b",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-25T18:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "909c62c0_e85674a2",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77aff55b_08ce1a82",
@@ -213,6 +255,24 @@
       "writtenOn": "2023-08-23T19:14:44Z",
       "side": 1,
       "message": "The way `devs` is used, I think it should be a `set`.",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c6dd1f_0ea2b071",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-25T18:58:47Z",
+      "side": 1,
+      "message": "Agreed, done.",
+      "parentUuid": "77aff55b_08ce1a82",
       "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -283,6 +343,24 @@
       "side": 1,
       "message": "Note there\u0027s definitely typos in that code snippet, e.g. `custom_match\u003dserial_matcher.Match` should be `custom_match\u003dserial_matcher.match` (My fingers are forever used to google3 Python style), but hopefully you get the gist!",
       "parentUuid": "88b73504_fba34844",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1f96f9_39cce1f8",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-25T18:58:47Z",
+      "side": 1,
+      "message": "Something like _match_device() in the newest iteration?",
+      "parentUuid": "a7a9fe68_c7f6db74",
       "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

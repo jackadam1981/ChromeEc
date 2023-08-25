@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34edb313_6ea35e8e",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-25T18:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c76749_fc028e76",
+      "revId": "9d68ce4c6e8298dcec357762bd04117885fc73d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d35331f8_7592c965",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-08-24T23:06:22Z",
       "side": 1,
       "message": "return a tuple, i.e. just delete the `[]` characters",
+      "revId": "9d68ce4c6e8298dcec357762bd04117885fc73d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c534fb_5d777f53",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-25T18:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35331f8_7592c965",
       "revId": "9d68ce4c6e8298dcec357762bd04117885fc73d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
