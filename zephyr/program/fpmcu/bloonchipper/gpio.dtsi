@@ -50,6 +50,10 @@
 			gpios = <&gpiob 9 GPIO_ODR_HIGH>;
 		};
 
+		div_highside: div_highside {
+			gpios = <&gpiob 8 GPIO_OUTPUT_HIGH>;
+		};
+
 		/* unimplemented GPIOs */
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
