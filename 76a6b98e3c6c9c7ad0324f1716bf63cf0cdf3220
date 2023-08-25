@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e704b57_c42f2feb",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-25T23:01:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we want to add this print. Can you make it it\u0027s own change?",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 6
+      },
+      "revId": "76a6b98e3c6c9c7ad0324f1716bf63cf0cdf3220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca1d0a0_07c959ea",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-25T23:01:11Z",
+      "side": 1,
+      "message": "nit: can you make these modifications to flash errors their own cl. \"Improve flash error handling\" or something like that.",
+      "range": {
+        "startLine": 892,
+        "startChar": 12,
+        "endLine": 892,
+        "endChar": 25
+      },
+      "revId": "76a6b98e3c6c9c7ad0324f1716bf63cf0cdf3220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
