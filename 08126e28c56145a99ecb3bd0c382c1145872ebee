@@ -86,6 +86,24 @@
       "parentUuid": "bc6a7da4_852667fd",
       "revId": "08126e28c56145a99ecb3bd0c382c1145872ebee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93a1919_d6975b35",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-25T01:19:08Z",
+      "side": 1,
+      "message": "Not related to the issue but I want to correct my typo of the comment above.\nThe ID 0x2B is for the chip variant NPCX99FP, not NPCX998FP to avoid confused.",
+      "parentUuid": "e34484c3_a36899fc",
+      "revId": "08126e28c56145a99ecb3bd0c382c1145872ebee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
