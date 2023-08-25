@@ -23,8 +23,12 @@
 #include "util.h"
 #include "watchdog.h"
 
+#ifndef CONFIG_ZTEST
 /* Console output macro */
 #define CPRINTS(format, args...) cprints(CC_SWITCH, format, ##args)
+#else
+#define CPRINTS(format, args...) cprints(CC_COMMAND, format, ##args)
+#endif
 
 struct button_state_t {
 	uint64_t debounce_time;
