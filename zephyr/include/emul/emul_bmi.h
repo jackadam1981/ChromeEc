@@ -427,6 +427,7 @@ void bmi_emul_simulate_cmd_exec_time(const struct emul *emul, bool set);
  * @param skip Number of skipped frames
  */
 void bmi_emul_set_skipped_frames(const struct emul *emul, uint8_t skip);
+uint8_t bmi_emul_get_skipped_frames(const struct emul *emul);
 
 /**
  * @brief Clear all FIFO frames, set current frame to empty and reset fifo_skip

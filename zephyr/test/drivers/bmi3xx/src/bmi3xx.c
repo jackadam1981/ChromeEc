@@ -519,9 +519,6 @@ ZTEST_USER(bmi3xx, test_bmi_acc_fifo)
 	int event;
 	int rv;
 
-	acc = acc;
-	gyr = gyr;
-
 	/* init bmi before test */
 	zassert_equal(EC_RES_SUCCESS, acc->drv->init(acc));
 	zassert_equal(EC_RES_SUCCESS, gyr->drv->init(gyr));
@@ -653,6 +650,35 @@ ZTEST_USER(bmi3xx, test_bmi_acc_fifo)
 
 	/* Remove custom emulator read function */
 	i2c_common_emul_set_read_func(common_data, NULL, NULL);
+}
+
+/** Test irq handler of accelerometer sensor when interrupt register is stuck.
+ */
+ZTEST_USER(bmi3xx, test_bmi_acc_fifo_stuck)
+{
+	uint32_t event = CONFIG_ACCELGYRO_BMI3XX_INT_EVENT;
+
+	/* init bmi before test */
+	zassert_equal(EC_RES_SUCCESS, acc->drv->init(acc));
+	zassert_equal(EC_RES_SUCCESS, gyr->drv->init(gyr));
+
+	/* Setup interrupts register */
+	bmi_emul_set_reg16(emul, BMI3_REG_INT_STATUS_INT1,
+			   BMI3_INT_STATUS_ORIENTATION | BMI3_INT_STATUS_FFULL);
+
+	/* Set skip frame as a marker */
+	bmi_emul_set_skipped_frames(emul, 8);
+	zassert_equal(bmi_emul_get_skipped_frames(emul), 8);
+
+	/* Read FIFO in driver */
+	zassert_equal(EC_SUCCESS, acc->drv->irq_handler(acc, &event),
+		      "Failed to read FIFO in irq handler");
+
+	/*
+	 * Check flush register has been written to, by checking the FIFO is
+	 * clean.
+	 */
+	zassert_equal(bmi_emul_get_skipped_frames(emul), 0);
 }
 
 ZTEST_USER(bmi3xx, test_bmi_gyr_fifo)

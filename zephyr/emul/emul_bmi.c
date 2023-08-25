@@ -466,6 +466,15 @@ void bmi_emul_set_skipped_frames(const struct emul *emul, uint8_t skip)
 	data->fifo_skip = skip;
 }
 
+uint8_t bmi_emul_get_skipped_frames(const struct emul *emul)
+{
+	struct bmi_emul_data *data;
+
+	data = emul->data;
+
+	return data->fifo_skip;
+}
+
 /**
  * @brief Convert current time to sensor time (39 us units)
  *
