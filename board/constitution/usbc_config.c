@@ -34,6 +34,8 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
+bool pd_enter_suspend = false;
+
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
@@ -244,6 +246,42 @@ void board_reset_pd_mcu(void)
 
 	msleep(50);
 }
+
+void pd_reset_deferred(void)
+{
+	CPRINTS("PD start reset when resume to S0");
+	pd_execute_hard_reset(0);
+}
+DECLARE_DEFERRED(pd_reset_deferred);
+
+void pd_enter_shutdown_setting(void)
+{
+	CPRINTS("PD enter shutdown");
+	pd_enter_suspend = false;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_enter_shutdown_setting,
+	     HOOK_PRIO_DEFAULT);
+
+void pd_enter_suspend_setting(void)
+{
+	mux_state_t mux_state;
+
+	mux_state = usb_mux_get(0);
+	CPRINTS("PD enter suspend");
+	if (!!(mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED))
+		pd_enter_suspend = true;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_enter_suspend_setting, HOOK_PRIO_DEFAULT);
+
+void pd_reset_resume(void)
+{
+	if (pd_enter_suspend) {
+		CPRINTS("PD reset when resume to S0");
+		hook_call_deferred(&pd_reset_deferred_data, 30 * SECOND);
+		pd_enter_suspend = false;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_reset_resume, HOOK_PRIO_DEFAULT);
 
 static void enable_ioex(int ioex)
 {
