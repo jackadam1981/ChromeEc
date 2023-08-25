@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4203e0c4_454cce61",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-08-25T08:24:23Z",
+      "side": 1,
+      "message": "It\u0027s possible to do this way but we are using NEW_IMG so far because it tells/determines what\u0027s needed for it. We have node property called `preserve`, which tells a section should be preserved or not. If it\u0027s set to false it won\u0027t do the preserve.\n\nOne case this change could break is, if the CBI portion has `preserve` flag set false in CUR_IMG and set to true in NEW_IMG.  The general expectation is it needs to preserve or get the CBI data from CUR_IMG, but it won\u0027t with this change\n\nOther case would be, If CUR_IMG marked CBI as preserve, but in NEW_IMG it\u0027s marked as don\u0027t preserve and we have new CBI data in NEW_IMG, we could only flash it using --no_preserve tag to avoid preserving. But --no_preserve should not be required in this case as per device tree configuration in NEW_IMG\n\nWe need to use --no_preserve until we don\u0027t have CBI data present in the CUR_IMG. Without `no_preserve` it fails which also works as alert that the CBI section is not in-place. Generally --no_preserve is meant for factory use case to put initial CBI into device, similar to flashing EEPROM at factory, normally dev won\u0027t need this flag.\n\nThe flashing won\u0027t fail in the following case but it\u0027s expected to, CUR_IMG don\u0027t have CBI, but NEW_IMG (with `preserve` flag set to true) is expecting to get the CBI from CUR_IMG\n\nIt\u0027s also bit complicated for a new user to understand if the behavior relies on old image properties, instead of new image properties",
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
