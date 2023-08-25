@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc68e927_a1c6ec2b",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-25T00:51:18Z",
+      "side": 1,
+      "message": "Seems like there should be a common symbol that indicates whether either of these is enabled, since they provide the same API and its consumers shouldn\u0027t have to care whether it\u0027s emulated or real.",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f42522f3_99e376ac",
         "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
         "patchSetId": 6
