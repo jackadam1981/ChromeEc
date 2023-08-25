@@ -41,7 +41,7 @@ def register_binman_project(**kwargs):
 def register_npcx_project(**kwargs):
     """Register a project that uses NpcxPacker."""
     kwargs.setdefault("output_packer", zmake.output_packers.NpcxPacker)
-    kwargs.setdefault("modules", ["ec", "cmsis", "pigweed", "picolibc"])
+    kwargs.setdefault("modules", ["ec", "cmsis", "pigweed"])
     return register_binman_project(**kwargs)
 
 

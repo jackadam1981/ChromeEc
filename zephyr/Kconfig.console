@@ -101,3 +101,4 @@ config PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER_TMP_BUF_SIZE
 	  The logging subsystem will buffer up to this many bytes before calling
 	  the backend in deferred logging mode. Ideally this will be large
 	  enough to fit an entire log line.
+
