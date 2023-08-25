@@ -111,6 +111,24 @@
       "parentUuid": "4ec3a82e_f3e077f2",
       "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1070d82_37821fa3",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-08-25T11:03:08Z",
+      "side": 1,
+      "message": "Actually there is an action item to look into optimization of flash read while preserving the protected sections, but I haven\u0027t started working on that yet\n\n\n`but that\u0027s the actual use case we\u0027re experiencing right now as we\u0027re\nadding a new region that needs to be preserved.`\n\nActually this should not happen in general use-cases, is it possible to share more info around what is the device and the scenario\n\n\nI am just putting the other way of what is preserve current behaviour again, the preserve status in an IMG will let it decide to use it\u0027s version or the previous version\n\nSo the preserve flag in CUR_IMG is not ignored, it\u0027s considered while it was a NEW_IMG\n\nBy default CBI is marked as `preserve`. So until someone voluntarily overrides that property in device tree, it won\u0027t stop preserving or through `no_preserve`",
+      "parentUuid": "d956cf49_d870cafd",
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
