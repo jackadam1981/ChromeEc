@@ -536,19 +536,25 @@ static int irq_handler(struct motion_sensor_t *s,
 	uint32_t interrupt;
 	int8_t has_read_fifo = 0;
 	int rv;
+	int i;
 
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 			(!(*event & CONFIG_ACCELGYRO_BMI160_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
-	do {
+	/*
+	 * As an optimization, we loop up to a small number of times (3) to
+	 * avoid extra interrupt processing overhead. We want to keep the number
+	 * of loops small/finite, though, so a bug doesn't land us in an
+	 * infinite loop.
+	 */
+	for (i = 0; i < 3; i++) {
 		rv = bmi_read16(s->port, s->i2c_spi_addr_flags,
 				BMI160_INT_STATUS_0, &interrupt);
-		/*
-		 * Bail out of this loop there was an error reading the register
-		 */
-		if (rv)
-			return rv;
+
+		/* Bail out if there was an error or no more interrupts. */
+		if (rv || !interrupt)
+			break;
 
 		if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP) &&
 		    (interrupt & BMI160_D_TAP_INT))
@@ -565,7 +571,11 @@ static int irq_handler(struct motion_sensor_t *s,
 		}
 		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR))
 			irq_set_orientation(s, interrupt);
-	} while (interrupt != 0);
+	}
+
+	/* Only return an error if no data was read at all. */
+	if (i == 0 && rv)
+		return rv;
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
 		motion_sense_fifo_commit_data();
