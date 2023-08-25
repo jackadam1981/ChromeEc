@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29849fc0_3b587e49",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-25T10:19:32Z",
+      "side": 1,
+      "message": "we should really check CUR_IMG if it has a region that\nneeds preserving. NEW_IMG may not have the same preserve\nrequirements.",
+      "range": {
+        "startLine": 1741,
+        "startChar": 15,
+        "endLine": 1741,
+        "endChar": 22
+      },
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4203e0c4_454cce61",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -68,6 +91,24 @@
       "side": 1,
       "message": "Shouldn\u0027t this check both old and new and maybe require an explicit flag if there\u0027s some inconsistency?",
       "parentUuid": "af35c58a_cdcc83af",
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d956cf49_d870cafd",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-25T10:19:32Z",
+      "side": 1,
+      "message": "`But in flash_ec case, we can\u0027t do flashing section wise, if it was possible we would have skipped flashing those sections based on NEW_IMG`\n\nthere\u0027s no fundamental reason we can\u0027t. considering it takes\n2 minutes to read the flash right now to `preserve` 256 bytes of CBI,\nwe should seriously look into addressing that: find the flash map,\nextract CBI region, etc.. cbfstool can do it, so the information\nmust be there.\n\nagain, we should not use the preserve flag from NEW_IMG to describe\ndata in CUR_IMG as that negates the whole point of having a preserve\nflag in the on-device image.\n\n`I think the error coming up at flashing process when trying to preserve some sections from CUR_IMG which don\u0027t have them, is a valid error`\nbut that\u0027s the actual use case we\u0027re experiencing right now as we\u0027re\nadding a new region that needs to be preserved.",
+      "parentUuid": "4ec3a82e_f3e077f2",
       "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
