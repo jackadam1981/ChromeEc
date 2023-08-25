@@ -94,6 +94,8 @@
  * top of the compacted log.
  */
 
+#define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
+
 /*
  * Structure keeping the context of the last entry retrieval access. If the
  * next retrieval passed in timestamp saved in prev_timestamp, log search
@@ -375,6 +377,10 @@ void flash_log_add_event(uint8_t type, uint8_t size, void *payload)
 		report_failure(FE_LOG_OVERFLOWS, &overflow_failures_count);
 
 	flash_log_add_event_core(type, size, payload);
+#ifdef BOARD_CR50
+	if (type != FE_LOG_START)
+		CPRINTS("FLOG: %u %ph", type, HEX_BUF(payload, size));
+#endif
 }
 
 int flash_log_dequeue_event(uint32_t event_after, void *buffer,
