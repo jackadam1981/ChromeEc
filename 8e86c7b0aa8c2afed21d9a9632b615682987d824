@@ -16,6 +16,24 @@
       "message": "how about making this default? You can add `default: 0xff` here and drop it from the dtsi, I can\u0027t see a good reason to pad to 0x00 something that goes in flash or eeprom anyway.",
       "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f914a830_3053ab20",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-25T23:37:02Z",
+      "side": 1,
+      "message": "hmm... that doesn\u0027t work. it\u0027s behaving like 0xff is not specified,\nso essentially a no-op.\ni\u0027m guessing this default value doesn\u0027t make it down to binman?",
+      "parentUuid": "9fa4fc3f_3868f52a",
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
