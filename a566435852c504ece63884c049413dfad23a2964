@@ -34,6 +34,24 @@
       "parentUuid": "18529aaf_f864f53f",
       "revId": "a566435852c504ece63884c049413dfad23a2964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c4f541_d8a93bf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-08-25T21:01:55Z",
+      "side": 1,
+      "message": "Seems like the entire line `(pd_capable(port) || pd_waiting_on_partner_src_caps(port))` should be removed, as when the first condition is true the second condition is false, and vice versa. There is a (theoretical) possibility that a the partner is not pd capable but reported src caps, but I assume this is an bad state and we should not make muxing decisions based on it.\n\nLeaving only the `pd_capable(port)` condition (as in patchset 5) allowed the USB3 lines to be connected if the partner is not pd capable, and the failed tests were reflecting that erroneous decision.",
+      "parentUuid": "344ef3e6_2c333595",
+      "revId": "a566435852c504ece63884c049413dfad23a2964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
