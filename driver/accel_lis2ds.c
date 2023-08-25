@@ -11,10 +11,10 @@
  * For any details on driver implementation please
  * Refer to AN4748 Application Note on www.st.com
  */
+#include "accel_lis2ds.h"
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accel_lis2ds.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
@@ -377,5 +377,5 @@ const struct accelgyro_drv lis2ds_drv = {
 	.get_offset = st_get_offset,
 #ifdef ACCEL_LIS2DS_INT_ENABLE
 	.irq_handler = lis2ds_irq_handler,
-#endif /* CONFIG_ACCEL_INTERRUPTS */
+#endif /* ACCEL_LIS2DS_INT_ENABLE */
 };
