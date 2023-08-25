@@ -125,6 +125,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e3c65d_4cf6bee5",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-25T20:50:18Z",
+      "side": 1,
+      "message": "looks like this is implemented, marking resolved",
+      "parentUuid": "5f3bc3ea_356bd870",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfca06d3_6e270c4f",
@@ -361,6 +385,24 @@
       "side": 1,
       "message": "Something like _match_device() in the newest iteration?",
       "parentUuid": "a7a9fe68_c7f6db74",
+      "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36388407_7ec06cd2",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-25T20:50:18Z",
+      "side": 1,
+      "message": "Yup _match_device() is good, marking resolved.",
+      "parentUuid": "5e1f96f9_39cce1f8",
       "revId": "7151ac633115c0f26867e1bcec481559e45d2d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
