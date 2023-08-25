@@ -52,6 +52,24 @@
       "parentUuid": "f46a5f88_2fdaaefb",
       "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec3a82e_f3e077f2",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-25T10:05:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this check both old and new and maybe require an explicit flag if there\u0027s some inconsistency?",
+      "parentUuid": "af35c58a_cdcc83af",
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
