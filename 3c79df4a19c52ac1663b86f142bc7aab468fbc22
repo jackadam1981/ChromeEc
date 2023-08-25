@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60b6c49a_3c13cfee",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-25T01:01:46Z",
+      "side": 1,
+      "message": "The build would break if both this and the real implementation were enabled, right? Can we make them mutually exclusive?",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f42522f3_99e376ac",
         "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
         "patchSetId": 6
