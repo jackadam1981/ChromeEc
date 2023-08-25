@@ -11,8 +11,10 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/toolchain.h>
 
+#if DT_HAS_COMPAT_STATUS_OKAY(named_gpios)
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_gpios) == 1,
 	     "only one named-gpios compatible node may be present");
+#endif
 
 #define NAMED_GPIOS_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(named_gpios)
 
