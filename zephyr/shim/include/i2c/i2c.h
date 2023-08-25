@@ -14,8 +14,10 @@
 extern "C" {
 #endif
 
+#if DT_HAS_COMPAT_STATUS_OKAY(named_i2c_ports)
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_i2c_ports) == 1,
 	     "only one named-i2c-ports compatible node may be present");
+#endif
 
 #define NAMED_I2C_PORTS_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(named_i2c_ports)
 

@@ -3199,8 +3199,10 @@ BUILD_ASSERT(DT_REG_SIZE(DT_NODELABEL(rollback0)) ==
 #define CONFIG_MP2964
 #define I2C_ADDR_MP2964_FLAGS \
 	DT_REG_ADDR(DT_COMPAT_GET_ANY_STATUS_OKAY(mps_mp2964))
+#if DT_HAS_COMPAT_STATUS_OKAY(mps_mp2964)
 BUILD_ASSERT((DT_NUM_INST_STATUS_OKAY(mps_mp2964)) == 1,
 	     "Only one instance of mps,mp2964 should be defined");
+#endif
 #endif
 
 #undef CONFIG_ACCELGYRO_ICM_COMM_SPI
