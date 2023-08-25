@@ -36,6 +36,7 @@
 #ifdef ENABLE_TPM
 /* TPM2 library includes. */
 #include "ExecCommand_fp.h"
+#include "GlobalStateCleanup_fp.h"
 #include "Platform.h"
 #include "_TPM_Init_fp.h"
 #include "Manufacture_fp.h"
@@ -897,9 +898,7 @@ static void tpm_reset_now(int wipe_first, int can_preserve_orderly)
 	 * includes this file's .bss in the same section, so it will be cleared
 	 * at the same time.
 	 */
-	memset(&__bss_libtpm2_start, 0,
-	       (uintptr_t)(&__bss_libtpm2_end) -
-		       (uintptr_t)(&__bss_libtpm2_start));
+	GlobalStateCleanup();
 
 	/* Prevent NVRAM commits until further notice. */
 	nvmem_disable_commits();
