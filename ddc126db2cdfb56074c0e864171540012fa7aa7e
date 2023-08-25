@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88dfde7_d070f5c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-08-25T09:31:24Z",
+      "side": 1,
+      "message": "I ran `./zephyr/firmware_builder.py --metrics /tmp/metrics test` and `./twister -v -i  -p native_posix -p unit_testing` pass.\n\nBut still failed on CQ.",
+      "revId": "ddc126db2cdfb56074c0e864171540012fa7aa7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
