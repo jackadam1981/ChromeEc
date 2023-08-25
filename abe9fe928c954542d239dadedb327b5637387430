@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd4c18d_a17266b2",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-25T17:06:29Z",
+      "side": 1,
+      "message": "It seems like it might be sufficient here to `#if` or `IS_ENABLED` the bodies of the VW- and GPIO-specific functions, as opposed to conditionally compiling the declarations and consequently needing to do so for all the call sites. If that is possible, I\u0027d prefer it to reduce the amount of code that\u0027s conditionally compiled and make it easier to reason about. I note a couple call sites below, but I think this applies generally.",
+      "revId": "abe9fe928c954542d239dadedb327b5637387430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9967b5_1f946a20",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-25T17:06:29Z",
+      "side": 1,
+      "message": "This call seems like it would compile/link even in the case where the signals are vwires.",
+      "revId": "abe9fe928c954542d239dadedb327b5637387430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a427600_9cc167c6",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-25T17:06:29Z",
+      "side": 1,
+      "message": "It seems like this case would have to compile without guards, because it\u0027s the same as the default case. Do you need to conditionally compile this?",
+      "revId": "abe9fe928c954542d239dadedb327b5637387430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
