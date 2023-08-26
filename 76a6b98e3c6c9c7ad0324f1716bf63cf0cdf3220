@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc8835c_eccfdeb4",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T04:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "798010ff_e9012cdb",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 6
+      },
+      "revId": "76a6b98e3c6c9c7ad0324f1716bf63cf0cdf3220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca1d0a0_07c959ea",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "1ca1d0a0_07c959ea",
+      "range": {
+        "startLine": 892,
+        "startChar": 12,
+        "endLine": 892,
+        "endChar": 25
+      },
+      "revId": "76a6b98e3c6c9c7ad0324f1716bf63cf0cdf3220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ff9781_184cf648",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T04:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8831690f_c03d1da4",
       "range": {
         "startLine": 892,
         "startChar": 12,
