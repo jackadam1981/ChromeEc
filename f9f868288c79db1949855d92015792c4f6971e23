@@ -1,0 +1,458 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabafa86_c0bb83ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "more questions than changes",
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86d016d_041af9e6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "maybe propagate get_next_object() error code?",
+      "range": {
+        "startLine": 960,
+        "startChar": 10,
+        "endLine": 960,
+        "endChar": 25
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55639a70_63563c03",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "shall we check for errors here?",
+      "range": {
+        "startLine": 994,
+        "startChar": 4,
+        "endLine": 994,
+        "endChar": 20
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39efcec7_99e254bb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error? how to handle properly?",
+      "range": {
+        "startLine": 1006,
+        "startChar": 4,
+        "endLine": 1006,
+        "endChar": 28
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d096be38_7d66f3d4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "shall we check for errors here?",
+      "range": {
+        "startLine": 1022,
+        "startChar": 2,
+        "endLine": 1022,
+        "endChar": 24
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ada175_8e714d4c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 1068,
+        "startChar": 2,
+        "endLine": 1068,
+        "endChar": 16
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7bb2e56_81725e5b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 1085,
+        "startChar": 2,
+        "endLine": 1085,
+        "endChar": 17
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392a31a5_8fff4a6d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "probably return status?",
+      "range": {
+        "startLine": 1196,
+        "startChar": 1,
+        "endLine": 1196,
+        "endChar": 20
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8171f3d2_5a0883c3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 1385,
+        "startChar": 2,
+        "endLine": 1385,
+        "endChar": 21
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308ed4f7_9928a820",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 1577,
+        "startChar": 1,
+        "endLine": 1577,
+        "endChar": 23
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0a0741_a78b60a5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1671,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error? how to handle properly?",
+      "range": {
+        "startLine": 1671,
+        "startChar": 3,
+        "endLine": 1671,
+        "endChar": 25
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0402bbf7_d4a81094",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 1991,
+        "startChar": 2,
+        "endLine": 1991,
+        "endChar": 24
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c7c31c_991b57a5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error? how to handle properly?",
+      "range": {
+        "startLine": 2293,
+        "startChar": 2,
+        "endLine": 2293,
+        "endChar": 40
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7982beb9_288852c0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error? how to handle properly?",
+      "range": {
+        "startLine": 2296,
+        "startChar": 2,
+        "endLine": 2296,
+        "endChar": 18
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0b593f_6ff451d2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2299,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error? does this change anything?",
+      "range": {
+        "startLine": 2299,
+        "startChar": 2,
+        "endLine": 2299,
+        "endChar": 24
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57616898_6b9dabd3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2730,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "add logging?",
+      "range": {
+        "startLine": 2729,
+        "startChar": 3,
+        "endLine": 2730,
+        "endChar": 19
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae06675_83abe695",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2741,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 2741,
+        "startChar": 3,
+        "endLine": 2741,
+        "endChar": 58
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0841bac_478c511a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2773,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 2773,
+        "startChar": 2,
+        "endLine": 2773,
+        "endChar": 18
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e70641_b33b1a80",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2963,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "also update rv?",
+      "range": {
+        "startLine": 2963,
+        "startChar": 3,
+        "endLine": 2963,
+        "endChar": 25
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8b73d8_ae9667fb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2994,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T05:55:44Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 2994,
+        "startChar": 1,
+        "endLine": 2994,
+        "endChar": 17
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
