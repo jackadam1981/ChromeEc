@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcdaf2ef_81bd3d36",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-26T04:41:27Z",
+      "side": 1,
+      "message": "at first I implemented bitfields to store errors of different kind - erase/write/read, but then I thought that I only see erase errors so far. so simplified it. we have plenty scratch regs, so no need to grow the code with bitfields - they aren\u0027t cheap.",
+      "parentUuid": "db563630_7841956e",
+      "revId": "76a6b98e3c6c9c7ad0324f1716bf63cf0cdf3220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e704b57_c42f2feb",
         "filename": "common/flash_log.c",
         "patchSetId": 2
