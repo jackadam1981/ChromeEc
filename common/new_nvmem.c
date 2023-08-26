@@ -366,6 +366,20 @@ test_export_static enum ec_error_list browse_flash_contents(int print);
 static enum ec_error_list save_container(struct nn_container *nc);
 static void invalidate_nvmem_flash(void);
 
+/* Log NVMEM problem as per passed in payload and size. */
+static void log_failure(struct nvmem_failure_payload *payload,
+			size_t payload_union_size)
+{
+	flash_log_add_event(FE_LOG_NVMEM,
+			    payload_union_size +
+				    offsetof(struct nvmem_failure_payload,
+					     size),
+			    payload);
+
+	ccprintf("Logging failure %d, will %sreinit\n", payload->failure_type,
+		 init_in_progress ? "" : "not ");
+}
+
 /* Log NVMEM problem as per passed in payload and size, and reboot. */
 static void report_failure(struct nvmem_failure_payload *payload,
 			   size_t payload_union_size)
@@ -378,14 +392,7 @@ static void report_failure(struct nvmem_failure_payload *payload,
 		invalidate_nvmem_flash();
 	}
 
-	flash_log_add_event(FE_LOG_NVMEM,
-			    payload_union_size +
-				    offsetof(struct nvmem_failure_payload,
-					     size),
-			    payload);
-
-	ccprintf("Logging failure %d, will %sreinit\n", payload->failure_type,
-		 init_in_progress ? "" : "not ");
+	log_failure(payload, payload_union_size);
 
 	if (init_in_progress) {
 		struct nvmem_failure_payload fp;
@@ -408,6 +415,14 @@ static void report_no_payload_failure(enum nvmem_failure_type type)
 
 	fp.failure_type = type;
 	report_failure(&fp, 0);
+}
+
+static void log_no_payload_failure(enum nvmem_failure_type type)
+{
+	struct nvmem_failure_payload fp;
+
+	fp.failure_type = type;
+	log_failure(&fp, 0);
 }
 
 /*
@@ -807,8 +822,6 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 
 		/* And calculate hash. */
 		if (!container_is_valid(ch)) {
-			struct nvmem_failure_payload fp;
-
 			if (!init_in_progress)
 				report_no_payload_failure(
 					NVMEMF_CONTAINER_HASH_MISMATCH);
@@ -816,11 +829,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 			 * During init there might be a way to deal with
 			 * this, let's just log this and continue.
 			 */
-			fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH;
-			flash_log_add_event(
-				FE_LOG_NVMEM,
-				offsetof(struct nvmem_failure_payload, size),
-				&fp);
+			log_no_payload_failure(NVMEMF_CONTAINER_HASH_MISMATCH);
 
 			return EC_ERROR_INVAL;
 		}
@@ -1602,6 +1611,8 @@ static void verify_empty_page(void *ph)
 
 	for (i = 0; i < (CONFIG_FLASH_BANK_SIZE / sizeof(*word_p)); i++) {
 		if (word_p[i] != (uint32_t)~0) {
+			log_no_payload_failure(
+				NVMEMF_NVMEM_CORRUPTED_EMPTY_PAGE);
 			CPRINTS("%s: corrupted page at %pP!", __func__, word_p);
 			flash_physical_erase((uintptr_t)word_p -
 						     CONFIG_PROGRAM_MEMORY_BASE,
@@ -2260,6 +2271,8 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
 			     dpt.ct.ph))
 				report_no_payload_failure(
 					NVMEMF_CORRUPTED_INIT);
+			log_no_payload_failure(
+				NVMEMF_NVMEM_ERASE_INVALID_DELIMITER);
 			/*
 			 * Let's erase the page where the last object spilled
 			 * into.
