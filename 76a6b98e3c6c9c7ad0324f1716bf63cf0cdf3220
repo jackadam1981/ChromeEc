@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63348365_2ceb59d7",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-28T16:49:13Z",
+      "side": 1,
+      "message": "I think it\u0027s good to use a different scratch. I don\u0027t really want to mess with the scratch register that controls rollback when we have so many available scratch registers.\n\nWe could bound the flash error count to ensure we only use 16 bits of scratch24, so we could use other parts of scratch24 later for something else.\nlog something to flash log whenever we roll over.",
+      "parentUuid": "fcdaf2ef_81bd3d36",
+      "revId": "76a6b98e3c6c9c7ad0324f1716bf63cf0cdf3220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e704b57_c42f2feb",
         "filename": "common/flash_log.c",
         "patchSetId": 2
