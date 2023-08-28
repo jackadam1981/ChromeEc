@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4339a84_84973f83",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-28T17:59:23Z",
+      "side": 1,
+      "message": "won\u0027t this wipe out the unused part of the register contents?",
+      "range": {
+        "startLine": 346,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 44
+      },
+      "revId": "f6209ba438044a9cb77d241968bd99f5a5d78a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
