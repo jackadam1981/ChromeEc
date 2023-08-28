@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d629d6_7a3d4d92",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 12
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-08-28T01:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abbd11e9_299cfab6",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 57
+      },
+      "revId": "ee2d240f5eaff054eb1918c0f71e604e8fee3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf0589f_0ff7d9a8",
@@ -426,6 +450,30 @@
       "side": 1,
       "message": "I think that check is unhelpful in this case, so you can ignore it. Use `repo upload --ignore-hooks` to stop it from blocking CL upload.",
       "parentUuid": "e8abf35e_6644cdc8",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 33
+      },
+      "revId": "ee2d240f5eaff054eb1918c0f71e604e8fee3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d629dee0_d5091c53",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 12
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-08-28T01:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b67662eb_e6c4e861",
       "range": {
         "startLine": 263,
         "startChar": 0,
