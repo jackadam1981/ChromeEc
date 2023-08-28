@@ -17,6 +17,8 @@ include("${CROS_EC_REPO}/cmake/toolchain-common.cmake")
 add_definitions(-D__TRUSTY__)
 set(ANDROID TRUE)
 
+set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}=/")
+
 # TODO(b/287661706): This can be removed once https://crrev.com/c/4610318 lands.
 if (CMAKE_SYSTEM_PROCESSOR STREQUAL armv7)
     add_compile_options(-mcpu=cortex-m4)
