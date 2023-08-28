@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa6424d1_97523e8e",
+        "filename": "zephyr/program/nissa/nokris/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-08-28T06:00:41Z",
+      "side": 1,
+      "message": "What\u0027s `adc_temp_sensor_4` for? It\u0027s not connected to any thermistor on the schematic.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "e11a9c5027a26bf6a2305d0e4f5d332733faff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a137464_364aa7cd",
+        "filename": "zephyr/program/nissa/nokris/overlay.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-08-28T06:00:41Z",
+      "side": 1,
+      "message": "Why changing the interrupt handler?",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e11a9c5027a26bf6a2305d0e4f5d332733faff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe27476a_c53f997f",
+        "filename": "zephyr/program/nissa/nokris/overlay.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-08-28T06:00:41Z",
+      "side": 1,
+      "message": "Same as my previous comment.",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "e11a9c5027a26bf6a2305d0e4f5d332733faff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
