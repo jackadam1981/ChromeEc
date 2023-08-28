@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6301ade_219fcde2",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-08-28T16:50:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dc68e927_a1c6ec2b",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60b6c49a_3c13cfee",
         "filename": "zephyr/subsys/emul/ap_pwrseq/Kconfig",
         "patchSetId": 6
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e1ede71_be602cdf",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-08-28T16:50:36Z",
+      "side": 1,
+      "message": "We can certainly do that. It makes more sense, and we would avoid such cases like the one about your comment above.",
+      "parentUuid": "60b6c49a_3c13cfee",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f42522f3_99e376ac",
         "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
         "patchSetId": 6
@@ -48,6 +84,24 @@
       "writtenOn": "2023-08-25T00:49:45Z",
       "side": 1,
       "message": "Are parts of this the same as the real implementation? Could there be a \"core\" driver implementation used by both the real and emulated subsystems to save on duplication?",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d7e5e8_03f3c59f",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-08-28T16:50:36Z",
+      "side": 1,
+      "message": "I think we could reuse the framework API\u0027s and implementation (contained inside `zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c`), and only emulate driver API\u0027s code.",
+      "parentUuid": "f42522f3_99e376ac",
       "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
