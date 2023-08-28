@@ -16,6 +16,92 @@
       "message": "Hi Daisuke,\n\nCan you please review? Thanks.",
       "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8efdd3_b73e62b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-28T17:55:25Z",
+      "side": 1,
+      "message": "The code looks good. A few comments on names.",
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827914ed_7853fd5c",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-28T17:55:25Z",
+      "side": 1,
+      "message": "nit: \u0027ec_\u0027 seems redundant. How about \u0027conf_mb_usbc_type\u0027? What does \u0027MLB\u0027 stand for? Mainboard? Can you make the enum member names match the enum name?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135a8e31_1c8929b4",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-28T17:55:25Z",
+      "side": 1,
+      "message": "What does \u0027mb\u0027 stand for? Different from MLB? If it\u0027s mainboard, can we omit it (e.g. usbc_type)?",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f13d5d_83044d62",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-28T17:55:25Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good idea that a function and its return type use the same name from the readability perspective. Can you please rename one or the other?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
