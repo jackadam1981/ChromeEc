@@ -70,6 +70,30 @@
       },
       "revId": "f79db141e0a1ae1b22647d1e0e0e9b748847655d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f975f48_cd917924",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-28T21:57:36Z",
+      "side": 1,
+      "message": "no point, right. I just reserve 12 bits for future - not sure about rate of errors. 1/64 is just a guess of what might be reasonable. we can revise it once see the rate.",
+      "parentUuid": "15a5955c_6dcaaa6f",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "f79db141e0a1ae1b22647d1e0e0e9b748847655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
