@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a306ef_28974e8b",
+        "filename": "zephyr/program/nissa/nokris/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-08-28T02:39:06Z",
+      "side": 1,
+      "message": "Add\n```\nCONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI3\u003dy\nCONFIG_PLATFORM_EC_KEYBOARD_REFRESH_ROW3\u003dy\n```\nif Vivaldi keyboard is enabled.",
+      "revId": "2274a9b8d5c0f69494a744cb9082cfc0052e36d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
