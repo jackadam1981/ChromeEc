@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b650e1d_471aa1bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-08-28T06:57:22Z",
+      "side": 1,
+      "message": "Move `extern enum joxer_sub_board_type joxer_cached_sub_board;\n` into `zephyr/test/nissa/include/joxer.h`",
+      "revId": "ef98e9d81a7b467f18f3a18e1c7417733f1ed7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
