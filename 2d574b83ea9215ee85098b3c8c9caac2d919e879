@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66496edb_09fa3330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-28T20:52:17Z",
+      "side": 1,
+      "message": "I checked all revisions in this patch train (and fixed a bunch of bugs) to work with:\n\n```\nsudo servo_updater -b servo_v4p1 -s SERVOV4P1-S-2107250739 # reporting no update needed\nsudo servo_updater -b servo_v4p1 # reporting no update needed\nsudo servo_updater # reporting no update needed, or getting stuck waiting for a servo v4.0 before it started choosing any servo\nsudo servo_updater -b servo_v4p1 -p # to see that it emits the right firmware file path once it learned to do so\n```\n\nThe first and the last were also checked with the following commands to see that they actually flash properly:\n\n```\nsudo servo_updater -b servo_v4p1 -c dev\nsudo servo_updater -b servo_v4p1\n```\n\nAs such, I think the patch train is ready, please take a look :-)",
+      "revId": "2d574b83ea9215ee85098b3c8c9caac2d919e879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

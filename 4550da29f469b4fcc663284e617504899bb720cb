@@ -33,6 +33,24 @@
       "message": "I find this easier to follow as one `return` statement.\n\n```\n    return (dev.idVendor, dev.idProduct) in devs and (\n        serial is None or\n        serial \u003d\u003d usb.util.get_string(dev, dev.iSerialNumber))\n```",
       "revId": "4550da29f469b4fcc663284e617504899bb720cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ea6c5f_6d7ee65d",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-28T20:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6477ce38_e6f864ef",
+      "revId": "4550da29f469b4fcc663284e617504899bb720cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
