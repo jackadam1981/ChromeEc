@@ -273,6 +273,7 @@ const struct gpio_dt_spec *gpio_get_dt_spec(enum gpio_signal signal)
  */
 test_export_static int init_gpios(void)
 {
+	int init_rv = EC_SUCCESS;
 	gpio_flags_t flags;
 	bool is_sys_jumped = system_jumped_to_this_image();
 
@@ -283,8 +284,10 @@ test_export_static int init_gpios(void)
 		if (configs[i].no_auto_init)
 			continue;
 
-		if (!device_is_ready(configs[i].spec.port))
-			LOG_ERR("Not found (%s)", configs[i].name);
+		if (!device_is_ready(configs[i].spec.port)) {
+			LOG_ERR("Device not ready (%s)", configs[i].name);
+			return EC_ERROR_BUSY;
+		}
 
 		/*
 		 * The configs[i].init_flags variable is read-only, so the
@@ -304,6 +307,10 @@ test_export_static int init_gpios(void)
 		rv = gpio_pin_configure_dt(&configs[i].spec, flags);
 		if (rv < 0) {
 			LOG_ERR("Config failed %s (%d)", configs[i].name, rv);
+			/* Capture first error returned
+			 * Exiting loop early causes tests to fail
+			 */
+			init_rv = (init_rv == EC_SUCCESS ? rv : init_rv);
 		}
 	}
 
@@ -317,7 +324,7 @@ test_export_static int init_gpios(void)
 		}
 	}
 
-	return 0;
+	return init_rv;
 }
 #if CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY <= CONFIG_KERNEL_INIT_PRIORITY_DEFAULT
 #error "GPIOs must initialize after the kernel default initialization"
