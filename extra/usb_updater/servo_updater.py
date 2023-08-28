@@ -481,7 +481,7 @@ def main():
         raise ServoUpdaterException("Can't detect updater version")
 
     # Make sure device is up.
-    c.wait_for_usb(vidpid, serialname=serialno)
+    c.wait_for_usb(set(vidpid), serialname=serialno)
     # After we have made sure that it's back/available, reconnect the tiny servod.
     tinys.reinitialize()
 
