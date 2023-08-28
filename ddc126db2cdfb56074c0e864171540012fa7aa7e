@@ -33,6 +33,24 @@
       "message": "Hi Peter, could you please help to check why it build failed? Because I cannot access the build page.",
       "revId": "ddc126db2cdfb56074c0e864171540012fa7aa7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f89d724_798e9073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-28T06:03:13Z",
+      "side": 1,
+      "message": "```\n/mnt/host/source/src/platform/ec/zephyr/program/nissa/joxer/src/sub_board.c:31:46: error: static declaration of \u0027joxer_cached_sub_board\u0027 follows non-static declaration\n```",
+      "parentUuid": "d5359ae6_b716d30b",
+      "revId": "ddc126db2cdfb56074c0e864171540012fa7aa7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
