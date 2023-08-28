@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "786cb04f_fdc018f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-28T09:57:22Z",
+      "side": 1,
+      "message": "Yeah add a line like:\n\n\"LOW_COVERAGE_REASON\u003d\" with a comment in the commit message, I think it\u0027s fair to mention something like the file being out of scope.",
+      "parentUuid": "b4692a7c_560a032b",
+      "revId": "08126e28c56145a99ecb3bd0c382c1145872ebee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b28a38ce_fd32ffc4",
