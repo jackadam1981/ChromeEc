@@ -56,30 +56,6 @@ def check_usb(vidpid: Iterable[str], serialname=None):
     return False
 
 
-def check_usb_sn(vidpid: Iterable[str]):
-    """Return the serial number
-
-    Return the serial number of the first USB device with VID:PID vidpid,
-    or None if no device is found. This will not work well with two of
-    the same device attached.
-
-    Args:
-      vidpid: iterable of string representations of the usb vid:pid,
-              eg. '18d1:2001', all of which can match.
-
-    Returns:
-      string serial number if found, None otherwise.
-    """
-    dev = get_usb_dev(vidpid)
-
-    if dev:
-        dev_serial = usb.util.get_string(dev, dev.iSerialNumber)
-
-        return dev_serial
-
-    return None
-
-
 def _parse_vidpid_string(vidpid: str) -> Tuple[int, int]:
     vidpidst = vidpid.split(":")
     vid = int(vidpidst[0], 16)
