@@ -131,7 +131,7 @@ ZTEST_F(i2c_controller, test_field_update16)
 		      EC_ERROR_INVAL);
 }
 
-ZTEST_F(i2c_controller, test_read_offset16__one_byte)
+ZTEST_F(i2c_controller, test_read_offset16_one_byte)
 {
 	/* Read 1 byte from a 16-bit register offset, which will cause us to
 	 * access the extended register space of our i2c device
@@ -149,7 +149,7 @@ ZTEST_F(i2c_controller, test_read_offset16__one_byte)
 		      expected);
 }
 
-ZTEST_F(i2c_controller, test_read_offset16__two_bytes)
+ZTEST_F(i2c_controller, test_read_offset16_two_bytes)
 {
 	/* Read 2 bytes from a 16-bit register offset, which will cause us to
 	 * access the extended register space of our i2c device
@@ -168,7 +168,7 @@ ZTEST_F(i2c_controller, test_read_offset16__two_bytes)
 		      expected);
 }
 
-ZTEST_F(i2c_controller, test_read_offset16__two_bytes_be)
+ZTEST_F(i2c_controller, test_read_offset16_two_bytes_be)
 {
 	/* Read 2 bytes from a 16-bit register offset, which will cause us to
 	 * access the extended register space of our i2c device
@@ -190,7 +190,7 @@ ZTEST_F(i2c_controller, test_read_offset16__two_bytes_be)
 		      expected);
 }
 
-ZTEST_F(i2c_controller, test_read_offset16__invalid)
+ZTEST_F(i2c_controller, test_read_offset16_invalid)
 {
 	/* Check length limits */
 	zassert_ok(
@@ -203,7 +203,7 @@ ZTEST_F(i2c_controller, test_read_offset16__invalid)
 				      1));
 }
 
-ZTEST_F(i2c_controller, test_write_offset16__one_byte)
+ZTEST_F(i2c_controller, test_write_offset16_one_byte)
 {
 	/* Write 1 byte to a 16-bit register offset, which will cause us to
 	 * access the extended register space of our i2c device
@@ -221,7 +221,7 @@ ZTEST_F(i2c_controller, test_write_offset16__one_byte)
 		      expected);
 }
 
-ZTEST_F(i2c_controller, test_write_offset16__two_bytes)
+ZTEST_F(i2c_controller, test_write_offset16_two_bytes)
 {
 	/* Write 2 bytes to a 16-bit register offset, which will cause us to
 	 * access the extended register space of our i2c device
@@ -239,7 +239,7 @@ ZTEST_F(i2c_controller, test_write_offset16__two_bytes)
 		      expected);
 }
 
-ZTEST_F(i2c_controller, test_write_offset16__two_bytes_be)
+ZTEST_F(i2c_controller, test_write_offset16_two_bytes_be)
 {
 	/* Write 2 bytes to a 16-bit register offset, which will cause us to
 	 * access the extended register space of our i2c device
@@ -259,7 +259,7 @@ ZTEST_F(i2c_controller, test_write_offset16__two_bytes_be)
 		      expected);
 }
 
-ZTEST_F(i2c_controller, test_write_offset16__invalid)
+ZTEST_F(i2c_controller, test_write_offset16_invalid)
 {
 	/* Check length limits */
 	zassert_ok(!i2c_write_offset16(fixture->port, fixture->addr, 0, 0, 3));
@@ -346,7 +346,7 @@ ZTEST_F(i2c_controller, test_pec_disabled)
 		      EC_ERROR_UNIMPLEMENTED);
 }
 
-ZTEST_F(i2c_controller, test_i2c_xfer_unlocked__error_paths)
+ZTEST_F(i2c_controller, test_i2c_xfer_unlocked_error_paths)
 {
 	uint8_t out_buffer[1];
 	int out_size;

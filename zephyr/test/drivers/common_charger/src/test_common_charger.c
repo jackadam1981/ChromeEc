@@ -59,7 +59,7 @@ ZTEST(common_charger, test_charger_get_min_bat_pct_for_power_on)
 		      CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON);
 }
 
-ZTEST(common_charger, test_charger_set_vsys_compensation__bad_arg)
+ZTEST(common_charger, test_charger_set_vsys_compensation_bad_arg)
 {
 	/* Not supported without RAA489000 */
 	struct ocpc_data unused = { 0 };
@@ -68,7 +68,7 @@ ZTEST(common_charger, test_charger_set_vsys_compensation__bad_arg)
 		      EC_ERROR_INVAL);
 }
 
-ZTEST(common_charger, test_charger_set_vsys_compensation__unsupported)
+ZTEST(common_charger, test_charger_set_vsys_compensation_unsupported)
 {
 	/* Not supported without RAA489000 */
 	struct ocpc_data unused = { 0 };
@@ -77,7 +77,7 @@ ZTEST(common_charger, test_charger_set_vsys_compensation__unsupported)
 		      EC_ERROR_UNIMPLEMENTED);
 }
 
-ZTEST(common_charger, test_charger_is_icl_reached__bad_arg)
+ZTEST(common_charger, test_charger_is_icl_reached_bad_arg)
 {
 	bool unused = false;
 
@@ -85,7 +85,7 @@ ZTEST(common_charger, test_charger_is_icl_reached__bad_arg)
 	zassert_equal(charger_is_icl_reached(INT_MIN, &unused), EC_ERROR_INVAL);
 }
 
-ZTEST(common_charger, test_charger_is_icl_reached__unsupported)
+ZTEST(common_charger, test_charger_is_icl_reached_unsupported)
 {
 	/* Not supported by isl923x */
 	bool unused;
@@ -94,7 +94,7 @@ ZTEST(common_charger, test_charger_is_icl_reached__unsupported)
 		      EC_ERROR_UNIMPLEMENTED);
 }
 
-ZTEST(common_charger, test_charger_enable_linear_charge__bad_arg)
+ZTEST(common_charger, test_charger_enable_linear_charge_bad_arg)
 {
 	/* Not supported without RAA489000 */
 	/* All arguments but 0th are unused. */
@@ -102,7 +102,7 @@ ZTEST(common_charger, test_charger_enable_linear_charge__bad_arg)
 		      EC_ERROR_INVAL);
 }
 
-ZTEST(common_charger, test_charger_enable_linear_charge__unsupported)
+ZTEST(common_charger, test_charger_enable_linear_charge_unsupported)
 {
 	/* Not supported without RAA489000 */
 	/* All arguments but 0th are unused. */
@@ -110,7 +110,7 @@ ZTEST(common_charger, test_charger_enable_linear_charge__unsupported)
 		      EC_ERROR_UNIMPLEMENTED);
 }
 
-ZTEST(common_charger, test_charger_get_battery_cells__bad_arg)
+ZTEST(common_charger, test_charger_get_battery_cells_bad_arg)
 {
 	/* Not supported by isl923x */
 	/* All arguments but 0th are unused. */
@@ -120,7 +120,7 @@ ZTEST(common_charger, test_charger_get_battery_cells__bad_arg)
 		      EC_ERROR_INVAL);
 }
 
-ZTEST(common_charger, test_charger_get_battery_cells__unsupported)
+ZTEST(common_charger, test_charger_get_battery_cells_unsupported)
 {
 	/* Not supported by isl923x */
 	/* All arguments but 0th are unused. */

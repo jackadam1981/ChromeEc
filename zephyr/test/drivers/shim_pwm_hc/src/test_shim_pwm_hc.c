@@ -16,7 +16,7 @@
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
-ZTEST(shim_pwm_hc, test_pwm_set_duty_hc__kblight)
+ZTEST(shim_pwm_hc, test_pwm_set_duty_hc_kblight)
 {
 	struct ec_params_pwm_set_duty p = {
 		.index = DT_REG_ADDR(DT_NODELABEL(pwm_kblight)),
@@ -29,7 +29,7 @@ ZTEST(shim_pwm_hc, test_pwm_set_duty_hc__kblight)
 	zassert_equal(kblight_get(), PWM_RAW_TO_PERCENT(p.duty));
 }
 
-ZTEST(shim_pwm_hc, test_pwm_set_duty_hc__displight)
+ZTEST(shim_pwm_hc, test_pwm_set_duty_hc_displight)
 {
 	struct ec_params_pwm_set_duty p = {
 		.index = DT_REG_ADDR(DT_NODELABEL(pwm_displight)),
@@ -42,7 +42,7 @@ ZTEST(shim_pwm_hc, test_pwm_set_duty_hc__displight)
 	zassert_equal(displight_get(), PWM_RAW_TO_PERCENT(p.duty));
 }
 
-ZTEST(shim_pwm_hc, test_pwm_set_duty_hc__bad_pwm_type)
+ZTEST(shim_pwm_hc, test_pwm_set_duty_hc_bad_pwm_type)
 {
 	struct ec_params_pwm_set_duty p = {
 		/* Arbitrary, don't care */
@@ -54,7 +54,7 @@ ZTEST(shim_pwm_hc, test_pwm_set_duty_hc__bad_pwm_type)
 	zassert_equal(EC_RES_INVALID_PARAM, ec_cmd_pwm_set_duty(NULL, &p));
 }
 
-ZTEST(shim_pwm_hc, test_pwm_get_duty_hc__kblight)
+ZTEST(shim_pwm_hc, test_pwm_get_duty_hc_kblight)
 {
 	struct ec_params_pwm_get_duty p = {
 		.index = DT_REG_ADDR(DT_NODELABEL(pwm_kblight)),
@@ -72,7 +72,7 @@ ZTEST(shim_pwm_hc, test_pwm_get_duty_hc__kblight)
 	zassert_equal(r.duty, PWM_PERCENT_TO_RAW(56));
 }
 
-ZTEST(shim_pwm_hc, test_pwm_get_duty_hc__displight)
+ZTEST(shim_pwm_hc, test_pwm_get_duty_hc_displight)
 {
 	struct ec_params_pwm_get_duty p = {
 		p.index = DT_REG_ADDR(DT_NODELABEL(pwm_displight)),

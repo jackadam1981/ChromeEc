@@ -58,7 +58,7 @@ static void lis2dw12_after(void *state)
 	lis2dw12_setup();
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__fail_read_who_am_i)
+ZTEST(lis2dw12, test_lis2dw12_init_fail_read_who_am_i)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct i2c_common_emul_data *common_data =
@@ -71,7 +71,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_read_who_am_i)
 	zassert_equal(EC_ERROR_INVAL, rv);
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__fail_who_am_i)
+ZTEST(lis2dw12, test_lis2dw12_init_fail_who_am_i)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
@@ -85,7 +85,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_who_am_i)
 		      EC_ERROR_ACCESS_DENIED);
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__fail_write_soft_reset)
+ZTEST(lis2dw12, test_lis2dw12_init_fail_write_soft_reset)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct i2c_common_emul_data *common_data =
@@ -99,7 +99,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_write_soft_reset)
 	zassert_equal(EC_ERROR_INVAL, rv);
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__timeout_read_soft_reset)
+ZTEST(lis2dw12, test_lis2dw12_init_timeout_read_soft_reset)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct i2c_common_emul_data *common_data =
@@ -125,7 +125,7 @@ static int lis2dw12_test_mock_write_fail_set_bdu(const struct emul *emul,
 	return 1;
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__fail_set_bdu)
+ZTEST(lis2dw12, test_lis2dw12_init_fail_set_bdu)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct i2c_common_emul_data *common_data =
@@ -142,7 +142,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_set_bdu)
 		     "expected at least one soft reset");
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__fail_set_lir)
+ZTEST(lis2dw12, test_lis2dw12_init_fail_set_lir)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct i2c_common_emul_data *common_data =
@@ -171,7 +171,7 @@ static int lis2dw12_test_mock_write_fail_set_power_mode(const struct emul *emul,
 	return 1;
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__fail_set_power_mode)
+ZTEST(lis2dw12, test_lis2dw12_init_fail_set_power_mode)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct i2c_common_emul_data *common_data =
@@ -190,7 +190,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_set_power_mode)
 		     "expected at least one soft reset");
 }
 
-ZTEST(lis2dw12, test_lis2dw12_init__success)
+ZTEST(lis2dw12, test_lis2dw12_init_success)
 {
 	const struct emul *emul = EMUL_DT_GET(LIS2DW12_EMUL_NODE);
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];

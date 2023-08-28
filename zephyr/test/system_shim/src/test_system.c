@@ -134,7 +134,7 @@ ZTEST(system, test_system_hibernate)
 	zassert_equal(board_hibernate_fake.call_count, 1);
 }
 
-ZTEST(system, test_system_hibernate__failure)
+ZTEST(system, test_system_hibernate_failure)
 {
 	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
 	/* Validate 0th and last bit preserved*/
@@ -228,7 +228,7 @@ ZTEST(system, test_system_reset)
 		      sys_dev);
 }
 
-ZTEST_USER(system, test_system_console_cmd__idlestats)
+ZTEST_USER(system, test_system_console_cmd_idlestats)
 {
 	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
 	const struct shell *shell_zephyr = get_ec_shell();

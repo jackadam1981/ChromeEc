@@ -107,7 +107,7 @@ ZTEST(panic_output, test_feature_present)
 		     "Failed to see feature present");
 }
 
-ZTEST(panic_output, test_console_cmd__unaligned)
+ZTEST(panic_output, test_console_cmd_unaligned)
 {
 	int rv;
 	const char *cmd[] = { "crash", "unaligned" };
@@ -119,7 +119,7 @@ ZTEST(panic_output, test_console_cmd__unaligned)
 	zassert_equal(SIGSEGV, signal_received);
 }
 
-ZTEST(panic_output, test_console_cmd__watchdog)
+ZTEST(panic_output, test_console_cmd_watchdog)
 {
 	/* Note: this does not verify that the watchdog fired, but that is
 	 * covered in a different test suite.
@@ -134,7 +134,7 @@ ZTEST(panic_output, test_console_cmd__watchdog)
 		      "Command returned %d but shouldn't have exited", rv);
 }
 
-ZTEST(panic_output, test_console_cmd__hang)
+ZTEST(panic_output, test_console_cmd_hang)
 {
 	int rv;
 	const char *cmd[] = { "crash", "hang" };
@@ -145,7 +145,7 @@ ZTEST(panic_output, test_console_cmd__hang)
 		      "Command returned %d but shouldn't have exited", rv);
 }
 
-ZTEST(panic_output, test_console_cmd__null)
+ZTEST(panic_output, test_console_cmd_null)
 {
 	int rv;
 	const char *cmd[] = { "crash", "null" };
@@ -157,7 +157,7 @@ ZTEST(panic_output, test_console_cmd__null)
 	zassert_equal(SIGSEGV, signal_received);
 }
 
-ZTEST(panic_output, test_console_cmd__bad_param)
+ZTEST(panic_output, test_console_cmd_bad_param)
 {
 	int rv;
 	const char *cmd[] = { "crash", "xyz" };
@@ -167,7 +167,7 @@ ZTEST(panic_output, test_console_cmd__bad_param)
 	zassert_equal(EC_ERROR_PARAM1, rv, "Command returned %d", rv);
 }
 
-ZTEST(panic_output, test_console_cmd__no_param)
+ZTEST(panic_output, test_console_cmd_no_param)
 {
 	int rv;
 	const char *cmd[] = { "crash" };

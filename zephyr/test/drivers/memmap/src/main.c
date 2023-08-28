@@ -24,7 +24,7 @@ static void after(void *f)
 
 ZTEST_SUITE(memmap, drivers_predicate_post_main, NULL, NULL, after, NULL);
 
-ZTEST(memmap, test_crec_flash_dataptr__invalid)
+ZTEST(memmap, test_crec_flash_dataptr_invalid)
 {
 	zassert_equal(-1, crec_flash_dataptr(/*offset=*/-1, /*size_req=*/1,
 					     /*align=*/1, /*ptrp=*/NULL));
@@ -39,26 +39,26 @@ ZTEST(memmap, test_crec_flash_dataptr)
 	zassert_equal(CONFIG_PLATFORM_EC_MAPPED_STORAGE_BASE, (uintptr_t)ptr);
 }
 
-ZTEST(memmap, test_crec_flash_is_erased__invalid_args)
+ZTEST(memmap, test_crec_flash_is_erased_invalid_args)
 {
 	zassert_equal(0, crec_flash_is_erased(/*offset=*/0, /*size=*/-1));
 }
 
-ZTEST(memmap, test_crec_flash_is_erased__fail)
+ZTEST(memmap, test_crec_flash_is_erased_fail)
 {
 	sprintf(flash, "non empty data");
 	flash_physical_dataptr_override = flash;
 	zassert_equal(0, crec_flash_is_erased(/*offset=*/0, /*size=*/8));
 }
 
-ZTEST(memmap, test_crec_flash_is_erased__pass)
+ZTEST(memmap, test_crec_flash_is_erased_pass)
 {
 	memset(flash, 0xff, 32);
 	flash_physical_dataptr_override = flash;
 	zassert_equal(1, crec_flash_is_erased(/*offset=*/0, /*size=*/32));
 }
 
-ZTEST(memmap, test_crec_flash_read__invalid_args)
+ZTEST(memmap, test_crec_flash_read_invalid_args)
 {
 	zassert_equal(EC_ERROR_INVAL, crec_flash_read(/*offset=*/-1, /*size=*/0,
 						      /*data=*/NULL));
@@ -75,14 +75,14 @@ ZTEST(memmap, test_crec_flash_read)
 	zassert_mem_equal(output, flash, ARRAY_SIZE(output));
 }
 
-ZTEST(memmap, test_crec_flash_write__invalid_args)
+ZTEST(memmap, test_crec_flash_write_invalid_args)
 {
 	zassert_equal(EC_ERROR_INVAL,
 		      crec_flash_write(/*offset=*/-1, /*size=*/0,
 				       /*data=*/NULL));
 }
 
-ZTEST(memmap, test_crec_flash_erase__invalid_args)
+ZTEST(memmap, test_crec_flash_erase_invalid_args)
 {
 	zassert_equal(EC_ERROR_INVAL,
 		      crec_flash_erase(/*offset=*/-1, /*size=*/0));

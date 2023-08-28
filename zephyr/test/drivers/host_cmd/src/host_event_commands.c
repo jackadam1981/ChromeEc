@@ -164,7 +164,7 @@ ZTEST_USER(host_cmd_host_event_commands, test_host_event_clear_cmd)
 /**
  * @brief TestPurpose: Verify EC_CMD_HOST_EVENT_CLEAR clear host command.
  */
-ZTEST_USER(host_cmd_host_event_commands, test_host_event_clear__cmd)
+ZTEST_USER(host_cmd_host_event_commands, test_host_event_clear_cmd)
 {
 	enum ec_status ret_val;
 	host_event_t events;

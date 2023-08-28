@@ -176,7 +176,7 @@ ZTEST_USER(host_cmd_motion_sense, test_dump)
 		      NULL);
 }
 
-ZTEST_USER(host_cmd_motion_sense, test_dump__large_max_sensor_count)
+ZTEST_USER(host_cmd_motion_sense, test_dump_large_max_sensor_count)
 {
 	uint8_t response_buffer[RESPONSE_MOTION_SENSE_BUFFER_SIZE(
 		ALL_MOTION_SENSORS)];
@@ -189,7 +189,7 @@ ZTEST_USER(host_cmd_motion_sense, test_dump__large_max_sensor_count)
 	zassert_equal(result->dump.sensor_count, ALL_MOTION_SENSORS);
 }
 
-ZTEST_USER(host_cmd_motion_sense, test_read_data__invalid_sensor_num)
+ZTEST_USER(host_cmd_motion_sense, test_read_data_invalid_sensor_num)
 {
 	struct ec_response_motion_sense response;
 
@@ -212,7 +212,7 @@ ZTEST_USER(host_cmd_motion_sense, test_read_data)
 	zassert_equal(response.data.data[2], 3);
 }
 
-ZTEST_USER(host_cmd_motion_sense, test_get_info__invalid_sensor_num)
+ZTEST_USER(host_cmd_motion_sense, test_get_info_invalid_sensor_num)
 {
 	struct ec_response_motion_sense response;
 
@@ -252,7 +252,7 @@ ZTEST_USER(host_cmd_motion_sense, test_get_info_v3)
 		      CONFIG_ACCEL_FIFO_SIZE, NULL);
 }
 
-ZTEST_USER(host_cmd_motion_sense, test_get_info_v4__no_read_temp)
+ZTEST_USER(host_cmd_motion_sense, test_get_info_v4_no_read_temp)
 {
 	struct ec_response_motion_sense response;
 
@@ -273,7 +273,7 @@ ZTEST_USER(host_cmd_motion_sense, test_get_info_v4__no_read_temp)
 	}
 }
 
-ZTEST_USER(host_cmd_motion_sense, test_get_ec_rate__invalid_sensor_num)
+ZTEST_USER(host_cmd_motion_sense, test_get_ec_rate_invalid_sensor_num)
 {
 	struct ec_response_motion_sense response;
 
@@ -683,7 +683,7 @@ ZTEST_USER_F(host_cmd_motion_sense, test_calib_fail)
 	zassert_false(mock_perform_calib_fake.arg1_history[0]);
 }
 
-ZTEST_USER_F(host_cmd_motion_sense, test_calib_success__fail_get_offset)
+ZTEST_USER_F(host_cmd_motion_sense, test_calib_success_fail_get_offset)
 {
 	struct ec_response_motion_sense response;
 
@@ -716,7 +716,7 @@ ZTEST_USER_F(host_cmd_motion_sense, test_calib)
 	zassert_true(mock_perform_calib_fake.arg1_history[0]);
 }
 
-ZTEST(host_cmd_motion_sense, test_fifo_flush__invalid_sensor_num)
+ZTEST(host_cmd_motion_sense, test_fifo_flush_invalid_sensor_num)
 {
 	int rv;
 	struct ec_response_motion_sense response;
@@ -948,7 +948,7 @@ ZTEST(host_cmd_motion_sense, test_tablet_mode_lid_angle)
 	zassert_equal(expected_hys, response.tablet_mode_threshold.hys_degree);
 }
 
-ZTEST(host_cmd_motion_sense, test_tablet_mode_lid_angle__invalid)
+ZTEST(host_cmd_motion_sense, test_tablet_mode_lid_angle_invalid)
 {
 	struct ec_response_motion_sense response;
 

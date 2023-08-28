@@ -10,7 +10,7 @@
 
 #include <zephyr/ztest.h>
 
-ZTEST_USER(hc_get_cmd_versions, test_v0__both_versions)
+ZTEST_USER(hc_get_cmd_versions, test_v0_both_versions)
 {
 	struct ec_params_get_cmd_versions params = {
 		.cmd = EC_CMD_GET_CMD_VERSIONS,
@@ -23,7 +23,7 @@ ZTEST_USER(hc_get_cmd_versions, test_v0__both_versions)
 	zassert_equal(response.version_mask, EC_VER_MASK(0) | EC_VER_MASK(1));
 }
 
-ZTEST_USER(hc_get_cmd_versions, test_v1__only_v0)
+ZTEST_USER(hc_get_cmd_versions, test_v1_only_v0)
 {
 	struct ec_params_get_cmd_versions_v1 params = {
 		.cmd = EC_CMD_HELLO,
@@ -36,7 +36,7 @@ ZTEST_USER(hc_get_cmd_versions, test_v1__only_v0)
 	zassert_equal(response.version_mask, EC_VER_MASK(0));
 }
 
-ZTEST_USER(hc_get_cmd_versions, test_v1__bad_cmd)
+ZTEST_USER(hc_get_cmd_versions, test_v1_bad_cmd)
 {
 	struct ec_params_get_cmd_versions_v1 params = {
 		/* Non-existent host-command */

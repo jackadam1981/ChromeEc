@@ -9,7 +9,7 @@
 
 #include <zephyr/ztest.h>
 
-ZTEST(host_cmd_host_commands, test_get_command_versions__v1)
+ZTEST(host_cmd_host_commands, test_get_command_versions_v1)
 {
 	struct ec_response_get_cmd_versions response;
 	struct ec_params_get_cmd_versions_v1 params = {
@@ -23,7 +23,7 @@ ZTEST(host_cmd_host_commands, test_get_command_versions__v1)
 	zassert_equal(EC_VER_MASK(0) | EC_VER_MASK(1), response.version_mask);
 }
 
-ZTEST(host_cmd_host_commands, test_get_command_versions__invalid_cmd)
+ZTEST(host_cmd_host_commands, test_get_command_versions_invalid_cmd)
 {
 	struct ec_response_get_cmd_versions response;
 	struct ec_params_get_cmd_versions_v1 params = {

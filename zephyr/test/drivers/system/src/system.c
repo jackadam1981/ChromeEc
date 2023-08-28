@@ -50,7 +50,7 @@ static void system_before_after(void *data)
 	RESET_FAKE(jump_to_image);
 }
 
-ZTEST(system, test_system_enter_hibernate__at_g3)
+ZTEST(system, test_system_enter_hibernate_at_g3)
 {
 	set_ac_enabled(false);
 	test_set_chipset_to_g3();
@@ -64,7 +64,7 @@ ZTEST(system, test_system_enter_hibernate__at_g3)
 	zassert_equal(system_hibernate_fake.call_count, 1);
 }
 
-ZTEST(system, test_system_enter_hibernate__ac_on)
+ZTEST(system, test_system_enter_hibernate_ac_on)
 {
 	test_set_chipset_to_s0();
 	set_ac_enabled(true);
@@ -74,7 +74,7 @@ ZTEST(system, test_system_enter_hibernate__ac_on)
 	zassert_equal(chipset_force_shutdown_fake.call_count, 0);
 }
 
-ZTEST(system, test_system_enter_hibernate__at_s0)
+ZTEST(system, test_system_enter_hibernate_at_s0)
 {
 	test_set_chipset_to_s0();
 	set_ac_enabled(false);
@@ -92,7 +92,7 @@ ZTEST(system, test_get_program_memory_addr_bad_args)
 	zassert_equal(get_program_memory_addr(-1), INVALID_ADDR);
 }
 
-ZTEST(system, test_system_common_pre_init__watch_dog_panic)
+ZTEST(system, test_system_common_pre_init_watch_dog_panic)
 {
 	uint32_t reason;
 	uint32_t info;
@@ -112,7 +112,7 @@ ZTEST(system, test_system_common_pre_init__watch_dog_panic)
 	zassert_equal(exception, 0);
 }
 
-ZTEST(system, test_system_common_pre_init__watch_dog_warn_panic)
+ZTEST(system, test_system_common_pre_init_watch_dog_warn_panic)
 {
 	uint32_t reason;
 	uint32_t info;
@@ -133,7 +133,7 @@ ZTEST(system, test_system_common_pre_init__watch_dog_warn_panic)
 	zassert_equal(exception, 0x34);
 }
 
-ZTEST(system, test_system_common_pre_init__watch_dog_panic_already_initialized)
+ZTEST(system, test_system_common_pre_init_watch_dog_panic_already_initialized)
 {
 	uint32_t reason;
 	uint32_t info;
@@ -153,7 +153,7 @@ ZTEST(system, test_system_common_pre_init__watch_dog_panic_already_initialized)
 	zassert_equal(exception, 0x34);
 }
 
-ZTEST(system, test_system_common_pre_init__watch_dog_panic_already_read)
+ZTEST(system, test_system_common_pre_init_watch_dog_panic_already_read)
 {
 	uint32_t reason;
 	uint32_t info;
@@ -232,7 +232,7 @@ ZTEST(system, test_system_encode_save_flags_mutually_exclusive_reset_flags)
 
 /* System Console Commands */
 
-ZTEST_USER(system, test_console_cmd_sysjump__no_args)
+ZTEST_USER(system, test_console_cmd_sysjump_no_args)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -241,7 +241,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__no_args)
 		      EC_ERROR_PARAM_COUNT);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__RO)
+ZTEST_USER(system, test_console_cmd_sysjump_RO)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -255,7 +255,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__RO)
 		      EC_RESET_FLAG_STAY_IN_RO);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__RW)
+ZTEST_USER(system, test_console_cmd_sysjump_RW)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -266,7 +266,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__RW)
 	zassert_equal(system_run_image_copy_with_flags_fake.arg1_val, 0);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__A)
+ZTEST_USER(system, test_console_cmd_sysjump_A)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -277,7 +277,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__A)
 	zassert_equal(system_run_image_copy_with_flags_fake.arg1_val, 0);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__B)
+ZTEST_USER(system, test_console_cmd_sysjump_B)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -287,7 +287,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__B)
 	zassert_equal(system_run_image_copy_with_flags_fake.call_count, 0);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__disable)
+ZTEST_USER(system, test_console_cmd_sysjump_disable)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -296,7 +296,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__disable)
 	zassert_equal(system_disable_jump_fake.call_count, 1);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__addr_while_sys_locked)
+ZTEST_USER(system, test_console_cmd_sysjump_addr_while_sys_locked)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -308,7 +308,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__addr_while_sys_locked)
 	zassert_equal(system_is_locked_fake.call_count, 1);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__addr)
+ZTEST_USER(system, test_console_cmd_sysjump_addr)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -319,7 +319,7 @@ ZTEST_USER(system, test_console_cmd_sysjump__addr)
 	zassert_equal(jump_to_image_fake.arg0_val, 0x1234);
 }
 
-ZTEST_USER(system, test_console_cmd_sysjump__addr_bad_number)
+ZTEST_USER(system, test_console_cmd_sysjump_addr_bad_number)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
