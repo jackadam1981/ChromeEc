@@ -22,3 +22,5 @@ if (CMAKE_SYSTEM_PROCESSOR STREQUAL armv7)
     add_compile_options(-mcpu=cortex-m4)
     add_compile_options(-mfloat-abi=hard)
 endif ()
+
+add_compile_options(-fmacro-prefix-map="${CMAKE_CURRENT_SOURCE_DIR}/=")
