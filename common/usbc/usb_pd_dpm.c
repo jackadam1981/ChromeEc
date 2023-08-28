@@ -302,6 +302,8 @@ bool dpm_check_vdm_request(int port)
 	return DPM_CHK_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
 }
 
+static bool hack_force_usb4_check;
+
 enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 {
 	if (port >= board_get_usb_pd_port_count())
@@ -325,6 +327,7 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 		DPM_SET_FLAG(port, DPM_FLAG_ENTER_TBT);
 	} else if (IS_ENABLED(CONFIG_USB_PD_USB4) && mode == TYPEC_MODE_USB4) {
 		DPM_SET_FLAG(port, DPM_FLAG_ENTER_USB4);
+		hack_force_usb4_check = true;
 	} else {
 		return EC_RES_INVALID_PARAM;
 	}
@@ -1196,14 +1199,16 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE)
 		return false;
 
-	if (dp_entry_is_done(port) ||
-	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
-	     tbt_entry_is_done(port)) ||
-	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
-		dpm_set_mode_entry_done(port);
-		return false;
+	if (!hack_force_usb4_check) {
+		if (dp_entry_is_done(port) ||
+		    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+		     tbt_entry_is_done(port)) ||
+		    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
+			dpm_set_mode_entry_done(port);
+			return false;
+		}
 	}
-
+	hack_force_usb4_check = false;
 	/*
 	 * If AP mode entry is enabled, and a Data Reset has not been done, then
 	 * first request Data Reset prior to attempting to enter any modes.
