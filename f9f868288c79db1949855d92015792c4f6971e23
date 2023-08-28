@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2eb357e8_da0a2545",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-28T16:38:41Z",
+      "side": 1,
+      "message": "\"will reinit\" doesn\u0027t apply to all of the failures.",
+      "range": {
+        "startLine": 379,
+        "startChar": 31,
+        "endLine": 379,
+        "endChar": 44
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e86d016d_041af9e6",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1
@@ -266,6 +289,29 @@
         "startChar": 2,
         "endLine": 1991,
         "endChar": 24
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168973f6_47d7b8d8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-28T16:38:41Z",
+      "side": 1,
+      "message": "this will lead to two logs right?",
+      "range": {
+        "startLine": 2272,
+        "startChar": 0,
+        "endLine": 2275,
+        "endChar": 42
       },
       "revId": "f9f868288c79db1949855d92015792c4f6971e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
