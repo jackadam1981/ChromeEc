@@ -46,6 +46,30 @@
       },
       "revId": "2f19d7affbbbb76f76a094bead04f66b895d82a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fd51f8_06e3e1f2",
+        "filename": "common/button.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-08-28T02:03:51Z",
+      "side": 1,
+      "message": "I add CONFIG_PLATFORM_EC_LID_SWITCH in testcase.yaml to make the build pass now. Thanks!",
+      "parentUuid": "54d1ea01_bf4a6fcb",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "2f19d7affbbbb76f76a094bead04f66b895d82a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
