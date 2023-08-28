@@ -319,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c01881e_a6f12a8c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-28T17:30:32Z",
+      "side": 1,
+      "message": "no, report_no_payload_failure() resets.",
+      "parentUuid": "168973f6_47d7b8d8",
+      "range": {
+        "startLine": 2272,
+        "startChar": 0,
+        "endLine": 2275,
+        "endChar": 42
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36c7c31c_991b57a5",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1
