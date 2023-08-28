@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84c2ae76_40d51b8e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-28T06:05:40Z",
+      "side": 1,
+      "message": "checking the `preserve` flag in NEW_IMG instead of CUR_IMG means we don\u0027t\nrespect the existing `preserve` flag (see b/297804096). and yes, we do need\nto check if CUR_IMG has `preserve` regions now that we store persistent data\nthere. we need to address the performance penalty (b/288589393) for this to\nbe practical.\n\nwe do not need to suppress the error currently reported by flash_ec - it\u0027s a valid case that should not be treated as an error.",
+      "parentUuid": "09a43dac_c1d69085",
+      "range": {
+        "startLine": 1741,
+        "startChar": 15,
+        "endLine": 1741,
+        "endChar": 22
+      },
+      "revId": "5a9ee73aac97b76e3a708b87151e4f33ae0d6c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4203e0c4_454cce61",
         "filename": "util/flash_ec",
         "patchSetId": 1
