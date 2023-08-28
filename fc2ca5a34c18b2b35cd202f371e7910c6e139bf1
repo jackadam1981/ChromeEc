@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4da460b2_296f5a2a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-28T21:28:16Z",
+      "side": 1,
+      "message": "Oh, good call! Presumably in the long run the dependency should be on the `ec-flashrom` version from https://crrev.com/c/4781545, right? To decouple these it\u0027s probably best to add the direct dependency for `flashrom` (as Craig suggested) but also create a bug or an subsequent CL for changing this from `flashrom` to `ec-flashrom`.",
+      "parentUuid": "213fd3bd_d293c023",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 17
+      },
+      "revId": "fc2ca5a34c18b2b35cd202f371e7910c6e139bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10319dda_22ae50de",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 9
