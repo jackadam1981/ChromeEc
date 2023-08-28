@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee2e9824_8cc8b049",
+        "filename": "zephyr/program/nissa/nokris/src/charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2023-08-28T13:45:07Z",
+      "side": 1,
+      "message": "Could we add the CONFIG_PLATFORM_EC_EXTPOWER_GPIO and configure the acok gpio pin instead of implementing this function?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "2c1a72264e2a178205bf99011c85c05f99c0cae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
