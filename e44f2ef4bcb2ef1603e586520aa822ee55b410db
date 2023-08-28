@@ -38,6 +38,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84442a9c_64b51d5b",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "```suggestion\n    print(f\"\u003e {shlex.join(cmd)}\")\n```\n\ntrying to join shell commands with spaces should never be done\n\nthe use of `\u003e` is weird since that\u0027s valid shell syntax, but i assume that makes sense in this particular context",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64bd42fc_eb49e494",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "just fix the error and don\u0027t suppress ?  you should be using `check\u003dFalse` here.",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a581c5_856ac365",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "not really a new issue, but none of the error messages are being sent to stderr",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ec22aa8_cba5175a",
         "filename": "util/fptool.py",
         "patchSetId": 3
@@ -55,6 +106,74 @@
         "endLine": 29,
         "endChar": 16
       },
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d82c68a_5072a2ee",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "this is called `opts` elsewhere, and is preferred over `args` to avoid confusion with `*args` convention",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a67af5_e736a807",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "```suggestion\n        scp_cmd \u003d [\"scp\", f\"-P{port}\", image, f\"{host}:{REMOTE_TMP_IMG}\"]\n```\n\nsubprocess accepts `Path` in argv, so you don\u0027t need the str conversion",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97be496c_1096a77b",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "when the parser gets complicated, it\u0027s common to move it to a `get_parser` helper so the main func/etc... stay simple",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e35324_48309fe5",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "line is too long",
       "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

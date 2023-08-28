@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2ff61cc_b33c0859",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-28T02:59:51Z",
+      "side": 1,
+      "message": "Craig is correct -- never use `shell\u003dTrue` with `subprocess.run`, or similar commands like `os.system`.  you quickly fall down the rabbit hole of nesting shell syntax from python code, and things mostly working until they blow up.  it\u0027s also arguably faster because you don\u0027t waste time running a shell command.\n\nplus, it\u0027s even worse here in that `ssh` runs a shell command on the remote, so you\u0027d be expanding a shell command in a shell command and figuring out correct quoting there is a nightmare.\n\nas it stands, i think you want to use `... + [shlex.join(remote_cmd)]`.",
+      "parentUuid": "0101c72f_cc893f55",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
