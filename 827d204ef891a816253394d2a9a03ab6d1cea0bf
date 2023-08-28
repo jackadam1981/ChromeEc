@@ -16,6 +16,24 @@
       "message": "Thanks for the fix, I think we want at least 53 here, it has to be after `GPIO_NCT38XX_PORT_INIT_PRIORITY` (https://github.com/zephyrproject-rtos/zephyr/commit/49b8f95513bbaf568b6775fa89c3dd290d5307c1)",
       "revId": "827d204ef891a816253394d2a9a03ab6d1cea0bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66777267_7556ecc7",
+        "filename": "zephyr/Kconfig.init_priority",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-08-28T15:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579a6fe3_8eb27227",
+      "revId": "827d204ef891a816253394d2a9a03ab6d1cea0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
