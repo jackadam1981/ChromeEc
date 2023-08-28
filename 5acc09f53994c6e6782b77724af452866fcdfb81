@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e95e53_9a56d904",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-28T22:27:29Z",
+      "side": 1,
+      "message": "Leave this as `Set`.  This needs a container which supports `in` containment test, not just any iterable, and ideally it should support efficient lookups, meaning a set or mapping (dict).",
+      "range": {
+        "startLine": 90,
+        "startChar": 29,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "5acc09f53994c6e6782b77724af452866fcdfb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9557278a_0453a9c1",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-28T22:27:29Z",
+      "side": 1,
+      "message": "Skip the `set()` call, it shouldn\u0027t be needed.  This applies everywhere in the CL that does `set({item})` .\n\nI would also prefer these just be lists or tuples, e.g. `[item]` or `(item,)`.  These are just going to get iterated over, so there\u0027s no advantage to them being hash sets.",
+      "revId": "5acc09f53994c6e6782b77724af452866fcdfb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
