@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d70807_b06e71a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-28T22:27:51Z",
+      "side": 1,
+      "message": "There\u0027s already a decent bit of JSON usage for output like this in the servo(d) ecosystem, e.g. `devices` control.  What do you think of having this output JSON?\n\nI\u0027m not super keen on JSON in general but I think consistency in this area would be user-friendly.  And the `jq` CLI program makes is very easy to select specific JSON fields on the command line or in shell scripts.\n\nFWIW I\u0027m totally fine with this CL as-is and a followup changing the output to JSON.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "83750120aac654f960de9f5d76a903acc12a04cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
