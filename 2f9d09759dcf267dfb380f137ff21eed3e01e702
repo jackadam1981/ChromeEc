@@ -16,6 +16,24 @@
       "message": "I don\u0027t think it is an issue for NPCX, but there was an issue for ITE (that was fixed related to these changes CL:4358752). Just a heads up to double check if you want",
       "revId": "2f9d09759dcf267dfb380f137ff21eed3e01e702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96d5251c_aa1793a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-08-28T17:42:41Z",
+      "side": 1,
+      "message": "This is for STM32 EC, so it should be fine.",
+      "parentUuid": "1b123f5f_82926b2d",
+      "revId": "2f9d09759dcf267dfb380f137ff21eed3e01e702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
