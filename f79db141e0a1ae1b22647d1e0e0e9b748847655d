@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3257f919_e10a1135",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-08-28T20:16:08Z",
+      "side": 1,
+      "message": "Can you create a flash log event for rollovers?",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "f79db141e0a1ae1b22647d1e0e0e9b748847655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
