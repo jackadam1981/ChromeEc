@@ -22,6 +22,30 @@
       },
       "revId": "b9508a5beea7c5ac86607982a9323f35baf77397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a141f4_e09d2afc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-28T16:45:29Z",
+      "side": 1,
+      "message": "no, these errors are coming from higher level - they can\u0027t be decrypted. here I add reaction to lower level errors from failed flash page erase operation. We have it on some systems in lab like in the referenced bug, but thats it. And I don\u0027t know what shall be \"normal\" behavior in such case. So far I just want to limit further proliferation of damage by not adding broken page to the list of free pages.",
+      "parentUuid": "6ffda4ce_f2ba86a5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "b9508a5beea7c5ac86607982a9323f35baf77397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
