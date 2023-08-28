@@ -16,6 +16,23 @@
       "message": "@Caveh, can we plan to land this CL? to be able to flash latest EC?",
       "revId": "2c771a47beabae06af0126a8558506f8a708f9e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f769556c_5beff656",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-28T21:33:09Z",
+      "side": 1,
+      "message": "should we add the `continue` to avoid the inevitable boot loop here?\n\n(i\u0027ll restore the error msg if so)",
+      "revId": "2c771a47beabae06af0126a8558506f8a708f9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
