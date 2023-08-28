@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e1e02f5_32e4efb6",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-28T22:27:39Z",
+      "side": 1,
+      "message": "[ This is for a preexisting issue that isn\u0027t new with this CL... ]\n\nWhile you\u0027re at it, can you add a type annotation to require a true `bool` for `desiredpresence` arg?\n\nThat or add a defensive `desiredpresence \u003d bool(desiredpresence)` line at the beginning of the function.\n\nIt\u0027s not unusual for Python code to assume a boolean arg will simply be evaluated in a boolean context and doesn\u0027t need to be a true `bool`.  Since the current implementation would quietly accept that (but with unintended behavior), best to either force an error (type annotation, *if* that\u0027s truly enforced), or simply handle it (run it through `bool()`).",
+      "revId": "fb442967d17b2e3ba023853fb62491c3f0671e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
