@@ -14,7 +14,7 @@
  * supported upstream.
  */
 
-ZTEST(gpio_id, test_board_get_sku_id__default_value)
+ZTEST(gpio_id, test_board_get_sku_id_default_value)
 {
 	int bits[] = {
 		/* Default Hi-Z value */
@@ -25,7 +25,7 @@ ZTEST(gpio_id, test_board_get_sku_id__default_value)
 		      ternary_from_bits(bits, ARRAY_SIZE(bits)));
 }
 
-ZTEST(gpio_id, test_board_get_version__default_value)
+ZTEST(gpio_id, test_board_get_version_default_value)
 {
 	int bits[] = {
 		/* Default Hi-Z value */

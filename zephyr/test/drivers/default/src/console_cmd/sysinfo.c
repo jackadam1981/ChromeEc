@@ -35,7 +35,7 @@ ZTEST_USER(console_cmd_sysinfo, test_no_args)
 	zassert_not_null(strstr(outbuffer, "Flags:"), NULL);
 }
 
-ZTEST_USER(console_cmd_sysinfo, test_no_args__sys_locked)
+ZTEST_USER(console_cmd_sysinfo, test_no_args_sys_locked)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 	const char *outbuffer;

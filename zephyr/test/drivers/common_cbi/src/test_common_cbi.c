@@ -45,7 +45,7 @@ ZTEST(common_cbi, test_cbi_latch_eeprom_wp)
 	zassert_equal(gpio_emul_output_get(wp->port, wp->pin), 1);
 }
 
-ZTEST(common_cbi, test_do_cbi_read__cant_load_head)
+ZTEST(common_cbi, test_do_cbi_read_cant_load_head)
 {
 	enum cbi_data_tag arbitrary_unused_tag = CBI_TAG_SKU_ID;
 	uint8_t arbitrary_unused_byte_buffer[100];
@@ -64,7 +64,7 @@ ZTEST(common_cbi, test_do_cbi_read__cant_load_head)
 		      EC_ERROR_UNKNOWN);
 }
 
-ZTEST(common_cbi, test_cbi_set_string__null_str)
+ZTEST(common_cbi, test_cbi_set_string_null_str)
 {
 	struct cbi_data data = { 0 };
 	struct cbi_data unused_data = { 0 };
@@ -152,7 +152,7 @@ ZTEST_USER(common_cbi, test_hc_cbi_set_then_get)
 			  hc_set_params.params.size);
 }
 
-ZTEST_USER(common_cbi, test_hc_cbi_set__bad_size)
+ZTEST_USER(common_cbi, test_hc_cbi_set_bad_size)
 {
 	const char data[] = "hello";
 
@@ -175,7 +175,7 @@ ZTEST_USER(common_cbi, test_hc_cbi_set__bad_size)
 	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM);
 }
 
-ZTEST_USER(common_cbi, test_hc_cbi_set_then_get__with_too_small_response)
+ZTEST_USER(common_cbi, test_hc_cbi_set_then_get_with_too_small_response)
 {
 	const uint8_t data[] = "I'm way too big of a payload for you!";
 

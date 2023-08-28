@@ -71,14 +71,14 @@ struct common_charger_mocked_driver_fixture {
 	struct charger_drv mock_driver;
 };
 
-ZTEST(common_charger_mocked_driver, test_charger_enable_otg_power__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_enable_otg_power_invalid)
 {
 	/* charger number out of bounds */
 	zassert_equal(EC_ERROR_INVAL, charger_enable_otg_power(-1, 0));
 	zassert_equal(EC_ERROR_INVAL, charger_enable_otg_power(INT_MAX, 0));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_enable_otg_power__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_enable_otg_power_unimpl)
 {
 	/* enable_otg_power is NULL */
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
@@ -99,7 +99,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_enable_otg_power)
 }
 
 ZTEST(common_charger_mocked_driver,
-      test_charger_set_otg_current_voltage__invalid)
+      test_charger_set_otg_current_voltage_invalid)
 {
 	/* charger number out of bounds */
 	zassert_equal(EC_ERROR_INVAL,
@@ -108,8 +108,7 @@ ZTEST(common_charger_mocked_driver,
 		      charger_set_otg_current_voltage(INT_MAX, 0, 0));
 }
 
-ZTEST(common_charger_mocked_driver,
-      test_charger_set_otg_current_voltage__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_set_otg_current_voltage_unimpl)
 {
 	/* set_otg_current_voltage is NULL */
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
@@ -130,7 +129,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_set_otg_current_voltage)
 	zassert_equal(20, set_otg_current_voltage_fake.arg2_history[0]);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_is_sourcing_otg_power__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_is_sourcing_otg_power_invalid)
 {
 	/* is_sourcing_otg_power is NULL */
 	zassert_equal(0, charger_is_sourcing_otg_power(0));
@@ -147,7 +146,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_is_sourcing_otg_power)
 	zassert_equal(1, is_sourcing_otg_power_fake.call_count);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_actual_current__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_actual_current_invalid)
 {
 	/* charger number out of bounds */
 	zassert_equal(EC_ERROR_INVAL, charger_get_actual_current(-1, NULL));
@@ -155,7 +154,7 @@ ZTEST(common_charger_mocked_driver, test_charger_get_actual_current__invalid)
 		      charger_get_actual_current(INT_MAX, NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_actual_current__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_get_actual_current_unimpl)
 {
 	/* get_actual_current is NULL */
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
@@ -190,7 +189,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_get_actual_current)
 	zassert_equal(1000, current);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_actual_voltage__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_actual_voltage_invalid)
 {
 	/* charger number out of bounds */
 	zassert_equal(EC_ERROR_INVAL, charger_get_actual_voltage(-1, NULL));
@@ -198,7 +197,7 @@ ZTEST(common_charger_mocked_driver, test_charger_get_actual_voltage__invalid)
 		      charger_get_actual_voltage(INT_MAX, NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_actual_voltage__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_get_actual_voltage_unimpl)
 {
 	/* get_actual_voltage is NULL */
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
@@ -233,14 +232,14 @@ ZTEST_F(common_charger_mocked_driver, test_charger_get_actual_voltage)
 	zassert_equal(2000, voltage);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_set_voltage__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_set_voltage_invalid)
 {
 	/* charger number out of bounds */
 	zassert_equal(EC_ERROR_INVAL, charger_set_voltage(-1, 0));
 	zassert_equal(EC_ERROR_INVAL, charger_set_voltage(INT_MAX, 0));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_set_voltage__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_set_voltage_unimpl)
 {
 	/* set_voltage is NULL */
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_set_voltage(CHG_NUM, 0));
@@ -259,7 +258,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_set_voltage)
 	zassert_equal(2000, set_voltage_fake.arg1_history[0]);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_vsys_voltage__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_vsys_voltage_invalid)
 {
 	/* Cannot do chgnum bounds checking because
 	 * charger_get_valid_chgnum() will convert chgnum to 0 unless
@@ -301,7 +300,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_get_vsys_voltage)
 	zassert_equal(2000, vsys_voltage);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_enable_bypass_mode__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_enable_bypass_mode_invalid)
 {
 	/* enable_bypass_mode is NULL */
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
@@ -319,7 +318,7 @@ ZTEST_F(common_charger_mocked_driver, test_charger_enable_bypass_mode)
 	zassert_true(enable_bypass_mode_fake.arg1_history[0]);
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_params__error_flags)
+ZTEST(common_charger_mocked_driver, test_charger_get_params_error_flags)
 {
 	/* When one of the parameters cannot be retrieved, a corresponding flag
 	 * is set. Since all of the driver functions are unimplemented by
@@ -338,7 +337,7 @@ ZTEST(common_charger_mocked_driver, test_charger_get_params__error_flags)
 }
 
 ZTEST(common_charger_mocked_driver,
-      test_charger_get_input_current_limit__invalid)
+      test_charger_get_input_current_limit_invalid)
 {
 	zassert_equal(EC_ERROR_INVAL,
 		      charger_get_input_current_limit(-1, false));
@@ -346,26 +345,25 @@ ZTEST(common_charger_mocked_driver,
 		      charger_get_input_current_limit(INT_MAX, false));
 }
 
-ZTEST(common_charger_mocked_driver,
-      test_charger_get_input_current_limit__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_get_input_current_limit_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
 		      charger_get_input_current_limit(CHG_NUM, false));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_input_current__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_input_current_invalid)
 {
 	zassert_equal(EC_ERROR_INVAL, charger_get_input_current(-1, NULL));
 	zassert_equal(EC_ERROR_INVAL, charger_get_input_current(INT_MAX, NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_input_current__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_get_input_current_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
 		      charger_get_input_current(CHG_NUM, NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_manufacturer_id__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_manufacturer_id_invalid)
 {
 	uint8_t zero = 0;
 
@@ -373,12 +371,12 @@ ZTEST(common_charger_mocked_driver, test_charger_manufacturer_id__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_manufacturer_id(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_manufacturer_id__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_manufacturer_id_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_manufacturer_id(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_device_id__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_device_id_invalid)
 {
 	uint8_t zero = 0;
 
@@ -386,12 +384,12 @@ ZTEST(common_charger_mocked_driver, test_charger_device_id__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_device_id(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_device_id__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_device_id_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_device_id(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_option__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_option_invalid)
 {
 	uint8_t zero = 0;
 
@@ -399,12 +397,12 @@ ZTEST(common_charger_mocked_driver, test_charger_get_option__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_get_option(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_option__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_get_option_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_get_option(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_set_option__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_set_option_invalid)
 {
 	uint8_t zero = 0;
 
@@ -412,12 +410,12 @@ ZTEST(common_charger_mocked_driver, test_charger_set_option__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_set_option(0));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_set_option__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_set_option_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_set_option(0));
 }
 
-ZTEST(common_charger_mocked_driver, test_chg_ramp_is_stable__invalid)
+ZTEST(common_charger_mocked_driver, test_chg_ramp_is_stable_invalid)
 {
 	uint8_t zero = 0;
 
@@ -425,13 +423,13 @@ ZTEST(common_charger_mocked_driver, test_chg_ramp_is_stable__invalid)
 	zassert_false(chg_ramp_is_stable());
 }
 
-ZTEST(common_charger_mocked_driver, test_chg_ramp_is_stable__unimpl)
+ZTEST(common_charger_mocked_driver, test_chg_ramp_is_stable_unimpl)
 {
 	/* Returns 0 if ramp_is_stable not implemented */
 	zassert_false(chg_ramp_is_stable());
 }
 
-ZTEST(common_charger_mocked_driver, test_chg_ramp_is_detected__invalid)
+ZTEST(common_charger_mocked_driver, test_chg_ramp_is_detected_invalid)
 {
 	uint8_t zero = 0;
 
@@ -439,13 +437,13 @@ ZTEST(common_charger_mocked_driver, test_chg_ramp_is_detected__invalid)
 	zassert_false(chg_ramp_is_detected());
 }
 
-ZTEST(common_charger_mocked_driver, test_chg_ramp_is_detected__unimpl)
+ZTEST(common_charger_mocked_driver, test_chg_ramp_is_detected_unimpl)
 {
 	/* Returns 0 if ramp_is_detected not implemented */
 	zassert_false(chg_ramp_is_detected());
 }
 
-ZTEST(common_charger_mocked_driver, test_chg_ramp_get_current_limit__invalid)
+ZTEST(common_charger_mocked_driver, test_chg_ramp_get_current_limit_invalid)
 {
 	uint8_t zero = 0;
 
@@ -453,13 +451,13 @@ ZTEST(common_charger_mocked_driver, test_chg_ramp_get_current_limit__invalid)
 	zassert_false(chg_ramp_get_current_limit());
 }
 
-ZTEST(common_charger_mocked_driver, test_chg_ramp_get_current_limit__unimpl)
+ZTEST(common_charger_mocked_driver, test_chg_ramp_get_current_limit_unimpl)
 {
 	/* Returns 0 if ramp_get_current_limit not implemented */
 	zassert_false(chg_ramp_get_current_limit());
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_post_init__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_post_init_invalid)
 {
 	uint8_t zero = 0;
 
@@ -467,12 +465,12 @@ ZTEST(common_charger_mocked_driver, test_charger_post_init__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_post_init());
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_post_init__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_post_init_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_post_init());
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_info__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_info_invalid)
 {
 	uint8_t zero = 0;
 
@@ -480,12 +478,12 @@ ZTEST(common_charger_mocked_driver, test_charger_get_info__invalid)
 	zassert_is_null(charger_get_info());
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_info__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_get_info_unimpl)
 {
 	zassert_is_null(charger_get_info());
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_get_status__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_get_status_invalid)
 {
 	uint8_t zero = 0;
 
@@ -493,7 +491,7 @@ ZTEST(common_charger_mocked_driver, test_charger_get_status__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_get_status(NULL));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_set_mode__invalid)
+ZTEST(common_charger_mocked_driver, test_charger_set_mode_invalid)
 {
 	uint8_t zero = 0;
 
@@ -501,7 +499,7 @@ ZTEST(common_charger_mocked_driver, test_charger_set_mode__invalid)
 	zassert_equal(EC_ERROR_INVAL, charger_set_mode(0));
 }
 
-ZTEST(common_charger_mocked_driver, test_charger_set_mode__unimpl)
+ZTEST(common_charger_mocked_driver, test_charger_set_mode_unimpl)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, charger_set_mode(0));
 }

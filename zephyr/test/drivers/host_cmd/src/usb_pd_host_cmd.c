@@ -44,7 +44,7 @@ test_find_hc_remote_hash_entry(int dev_id)
 	return NULL;
 }
 
-ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry__bad_dev_id)
+ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry_bad_dev_id)
 {
 	struct ec_params_usb_pd_rw_hash_entry params = {
 		/* Dev ID can't be 0 */
@@ -55,7 +55,7 @@ ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry__bad_dev_id)
 		      EC_RES_INVALID_PARAM);
 }
 
-ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry__add_entry)
+ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry_add_entry)
 {
 	struct ec_params_usb_pd_rw_hash_entry params = {
 		/* Arbitrary dev_id */
@@ -70,7 +70,7 @@ ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry__add_entry)
 			  &params, sizeof(params));
 }
 
-ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry__update_entry)
+ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry_update_entry)
 {
 	int arbitrary_dev_id = 1;
 	struct ec_params_usb_pd_rw_hash_entry initial_entry = {

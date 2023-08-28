@@ -89,7 +89,7 @@ ZTEST_USER(console_cmd_accelres, test_print_res)
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "accelres 0"));
 }
 
-ZTEST_USER(console_cmd_accelres, test_set_res__invalid_data)
+ZTEST_USER(console_cmd_accelres, test_set_res_invalid_data)
 {
 	int rv = shell_execute_cmd(get_ec_shell(), "accelres 0 f");
 
@@ -97,7 +97,7 @@ ZTEST_USER(console_cmd_accelres, test_set_res__invalid_data)
 		      EC_ERROR_PARAM2, rv);
 }
 
-ZTEST_USER(console_cmd_accelres, test_set_res__no_setter)
+ZTEST_USER(console_cmd_accelres, test_set_res_no_setter)
 {
 	int resolution;
 
@@ -107,7 +107,7 @@ ZTEST_USER(console_cmd_accelres, test_set_res__no_setter)
 		      BMA2x2_RESOLUTION, resolution);
 }
 
-ZTEST_USER_F(console_cmd_accelres, test_set_res__bad_res_value)
+ZTEST_USER_F(console_cmd_accelres, test_set_res_bad_res_value)
 {
 	int rv;
 

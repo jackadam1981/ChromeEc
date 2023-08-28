@@ -39,7 +39,7 @@ ZTEST(panic_output_get_panic_data_write, test_existing_panic_data)
 	zassert_equal(pdata_actual, get_panic_data_write());
 }
 
-ZTEST(panic_output_get_panic_data_write, test_no_panic_data__no_jump_data)
+ZTEST(panic_output_get_panic_data_write, test_no_panic_data_no_jump_data)
 {
 	struct panic_data *pdata_actual = test_get_panic_data_pointer();
 	struct panic_data pdata_expected = {
@@ -73,7 +73,7 @@ struct jump_data_v1 {
 };
 
 /* Test that V1 jump data is moved correctly. */
-ZTEST(panic_output_get_panic_data_write, test_no_panic_data__jump_data_v1)
+ZTEST(panic_output_get_panic_data_write, test_no_panic_data_jump_data_v1)
 {
 	struct panic_data *pdata_actual = test_get_panic_data_pointer();
 	struct jump_data_v1 jdata_expected = {
@@ -118,7 +118,7 @@ struct jump_data_v2_plus_tags {
 };
 
 /* Test that V2 jump data is moved correctly. */
-ZTEST(panic_output_get_panic_data_write, test_no_panic_data__jump_data_v2)
+ZTEST(panic_output_get_panic_data_write, test_no_panic_data_jump_data_v2)
 {
 	struct panic_data *pdata_actual = test_get_panic_data_pointer();
 	struct jump_data_v2_plus_tags jdata_expected = {
@@ -165,7 +165,7 @@ struct jump_data_v3_plus_tags {
 };
 
 /* Test that V3 jump data is moved correctly. */
-ZTEST(panic_output_get_panic_data_write, test_no_panic_data__jump_data_v3)
+ZTEST(panic_output_get_panic_data_write, test_no_panic_data_jump_data_v3)
 {
 	struct panic_data *pdata_actual = test_get_panic_data_pointer();
 	struct jump_data_v3_plus_tags jdata_expected = {

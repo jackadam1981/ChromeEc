@@ -10,7 +10,7 @@
 
 #include <zephyr/ztest.h>
 
-ZTEST_USER(math, test_arc_cos__x_below_range)
+ZTEST_USER(math, test_arc_cos_x_below_range)
 {
 	fp_t result = arc_cos(FLOAT_TO_FP(-1.1));
 
@@ -18,7 +18,7 @@ ZTEST_USER(math, test_arc_cos__x_below_range)
 		       "arc_cos(-1.1) was %d", FP_TO_INT(result));
 }
 
-ZTEST_USER(math, test_arc_cos__x_above_range)
+ZTEST_USER(math, test_arc_cos_x_above_range)
 {
 	fp_t result = arc_cos(FLOAT_TO_FP(1.1));
 

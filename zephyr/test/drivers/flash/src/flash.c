@@ -133,7 +133,7 @@ ZTEST_USER(flash, test_hostcmd_flash_protect_wp_deasserted)
 		      response.flags);
 }
 
-ZTEST_USER(flash, test_hostcmd_flash_read__overflow)
+ZTEST_USER(flash, test_hostcmd_flash_read_overflow)
 {
 	struct ec_params_flash_read params = {
 		.size = 32,
@@ -413,13 +413,13 @@ ZTEST_USER(flash, test_console_cmd_flash_info)
 	zassert_not_null(strstr(outbuffer, "Protected now"));
 }
 
-ZTEST_USER(flash, test_console_cmd_flashwp__invalid)
+ZTEST_USER(flash, test_console_cmd_flashwp_invalid)
 {
 	/* Command requires a 2nd CLI arg */
 	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp"), NULL);
 }
 
-ZTEST_USER(flash, test_console_cmd_flashwp__now)
+ZTEST_USER(flash, test_console_cmd_flashwp_now)
 {
 	uint32_t current;
 
@@ -438,7 +438,7 @@ ZTEST_USER(flash, test_console_cmd_flashwp__now)
 		     current);
 }
 
-ZTEST_USER(flash, test_console_cmd_flashwp__all)
+ZTEST_USER(flash, test_console_cmd_flashwp_all)
 {
 	uint32_t current;
 
@@ -451,7 +451,7 @@ ZTEST_USER(flash, test_console_cmd_flashwp__all)
 		     current);
 }
 
-ZTEST_USER(flash, test_console_cmd_flashwp__bool_false)
+ZTEST_USER(flash, test_console_cmd_flashwp_bool_false)
 {
 	uint32_t current;
 
@@ -472,7 +472,7 @@ ZTEST_USER(flash, test_console_cmd_flashwp__bool_false)
 		      current);
 }
 
-ZTEST_USER(flash, test_console_cmd_flashwp__bool_true)
+ZTEST_USER(flash, test_console_cmd_flashwp_bool_true)
 {
 	uint32_t current;
 
@@ -485,12 +485,12 @@ ZTEST_USER(flash, test_console_cmd_flashwp__bool_true)
 		      current, "current = %08x", current);
 }
 
-ZTEST_USER(flash, test_console_cmd_flashwp__bad_param)
+ZTEST_USER(flash, test_console_cmd_flashwp_bad_param)
 {
 	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp xyz"), NULL);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__flash_locked)
+ZTEST_USER(flash, test_console_cmd_flash_erase_flash_locked)
 {
 	/* Force write protection on */
 	zassert_ok(crec_flash_physical_protect_now(1));
@@ -499,7 +499,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__flash_locked)
 			  EC_ERROR_ACCESS_DENIED);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__bad_args)
+ZTEST_USER(flash, test_console_cmd_flash_erase_bad_args)
 {
 	/* No args*/
 	CHECK_CONSOLE_CMD("flasherase", NULL, EC_ERROR_PARAM_COUNT);
@@ -561,7 +561,7 @@ static uint16_t read_flash_helper32(uint32_t offset, uint32_t *output)
 	return host_command_process(&read_args);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__happy)
+ZTEST_USER(flash, test_console_cmd_flash_erase_happy)
 {
 	/* Immediately before the region to erase */
 	zassert_ok(write_flash_helper32(0x10000 - 4, 0x5A5A5A5A));
@@ -591,7 +591,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__happy)
 }
 
 #ifdef CONFIG_PLATFORM_EC_CBI_FLASH
-ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_0)
+ZTEST_USER(flash, test_console_cmd_flash_erase_cbi_overlap_0)
 {
 	uint32_t output;
 
@@ -621,7 +621,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_0)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_left)
+ZTEST_USER(flash, test_console_cmd_flash_erase_cbi_overlap_left)
 {
 	uint32_t output;
 
@@ -659,7 +659,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_left)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_right)
+ZTEST_USER(flash, test_console_cmd_flash_erase_cbi_overlap_right)
 {
 	uint32_t output;
 
@@ -697,7 +697,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_right)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__left)
+ZTEST_USER(flash, test_console_cmd_flash_erase_left)
 {
 	uint32_t output;
 
@@ -732,7 +732,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__left)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__right)
+ZTEST_USER(flash, test_console_cmd_flash_erase_right)
 {
 	uint32_t output;
 
@@ -765,7 +765,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__right)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_1)
+ZTEST_USER(flash, test_console_cmd_flash_erase_cbi_overlap_1)
 {
 	uint32_t output;
 
@@ -807,7 +807,7 @@ ZTEST_USER(flash, test_console_cmd_flash_erase__cbi_overlap_1)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_write__cbi_0)
+ZTEST_USER(flash, test_console_cmd_flash_write_cbi_0)
 {
 	uint32_t output;
 
@@ -843,7 +843,7 @@ ZTEST_USER(flash, test_console_cmd_flash_write__cbi_0)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_write__cbi_1)
+ZTEST_USER(flash, test_console_cmd_flash_write_cbi_1)
 {
 	uint32_t output;
 
@@ -859,7 +859,7 @@ ZTEST_USER(flash, test_console_cmd_flash_write__cbi_1)
 }
 #endif
 
-ZTEST_USER(flash, test_console_cmd_flash_write__flash_locked)
+ZTEST_USER(flash, test_console_cmd_flash_write_flash_locked)
 {
 	/* Force write protection on */
 	zassert_ok(crec_flash_physical_protect_now(1));
@@ -868,7 +868,7 @@ ZTEST_USER(flash, test_console_cmd_flash_write__flash_locked)
 			  EC_ERROR_ACCESS_DENIED);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_write__bad_args)
+ZTEST_USER(flash, test_console_cmd_flash_write_bad_args)
 {
 	/* No args*/
 	CHECK_CONSOLE_CMD("flashwrite", NULL, EC_ERROR_PARAM_COUNT);
@@ -881,13 +881,13 @@ ZTEST_USER(flash, test_console_cmd_flash_write__bad_args)
 	CHECK_CONSOLE_CMD("flashwrite 100 xyz", NULL, EC_ERROR_PARAM2);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_write__too_big)
+ZTEST_USER(flash, test_console_cmd_flash_write_too_big)
 {
 	CHECK_CONSOLE_CMD("flashwrite 0x10000 " STRINGIFY(INT_MAX), NULL,
 			  EC_ERROR_INVAL);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_write__happy)
+ZTEST_USER(flash, test_console_cmd_flash_write_happy)
 {
 	/* Write 4 bytes. The bytes written are autogenerated and just the
 	 * pattern 00 01 02 03.
@@ -906,7 +906,7 @@ ZTEST_USER(flash, test_console_cmd_flash_write__happy)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_read__bad_args)
+ZTEST_USER(flash, test_console_cmd_flash_read_bad_args)
 {
 	/* No args*/
 	CHECK_CONSOLE_CMD("flashread", NULL, EC_ERROR_PARAM_COUNT);
@@ -916,13 +916,13 @@ ZTEST_USER(flash, test_console_cmd_flash_read__bad_args)
 	CHECK_CONSOLE_CMD("flashread 100 xyz", NULL, EC_ERROR_PARAM2);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_read__too_big)
+ZTEST_USER(flash, test_console_cmd_flash_read_too_big)
 {
 	CHECK_CONSOLE_CMD("flashread 0x10000 " STRINGIFY(INT_MAX), NULL,
 			  EC_ERROR_INVAL);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_read__happy_4_bytes)
+ZTEST_USER(flash, test_console_cmd_flash_read_happy_4_bytes)
 {
 	/* Write some bytes to read */
 	zassert_ok(write_flash_helper32(0x10000, sys_cpu_to_be32(0xA1B2C3D4)));
@@ -932,7 +932,7 @@ ZTEST_USER(flash, test_console_cmd_flash_read__happy_4_bytes)
 	CHECK_CONSOLE_CMD("flashread 0x10000 4", expected, EC_SUCCESS);
 }
 
-ZTEST_USER(flash, test_console_cmd_flash_read__happy_17_bytes)
+ZTEST_USER(flash, test_console_cmd_flash_read_happy_17_bytes)
 {
 	/* Test 16-byte column wrapping behavior */
 
@@ -989,7 +989,7 @@ static void setup_flash_region_helper(uint32_t offset, uint32_t size,
 	}
 }
 
-ZTEST_USER(flash, test_crec_flash_is_erased__happy)
+ZTEST_USER(flash, test_crec_flash_is_erased_happy)
 {
 	uint32_t offset = 0x10000;
 
@@ -999,7 +999,7 @@ ZTEST_USER(flash, test_crec_flash_is_erased__happy)
 		     NULL);
 }
 
-ZTEST_USER(flash, test_crec_flash_is_erased__not_erased)
+ZTEST_USER(flash, test_crec_flash_is_erased_not_erased)
 {
 	uint32_t offset = 0x10000;
 

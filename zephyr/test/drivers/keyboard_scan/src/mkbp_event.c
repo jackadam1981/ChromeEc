@@ -37,7 +37,7 @@ struct event_fixture {
 
 static struct event_fixture fixture;
 
-ZTEST(mkbp_event, test_host_command_get_events__empty)
+ZTEST(mkbp_event, test_host_command_get_events_empty)
 {
 	/* Issue a host command to get the next event (from any source) */
 	uint16_t ret;
@@ -103,7 +103,7 @@ ZTEST(mkbp_event, test_host_command_event_wake_mask)
 	zassert_equal(0x87654321, response.wake_mask);
 }
 
-ZTEST(mkbp_event, test_host_command_wake_mask__invalid_args)
+ZTEST(mkbp_event, test_host_command_wake_mask_invalid_args)
 {
 	struct ec_response_mkbp_event_wake_mask response = { 0 };
 	struct ec_params_mkbp_event_wake_mask params = {
@@ -140,7 +140,7 @@ ZTEST(mkbp_event, test_console_command_wake_mask_event)
 			  __FILE__, __LINE__);
 }
 
-ZTEST(mkbp_event, test_host_command_get_events__get_event)
+ZTEST(mkbp_event, test_host_command_get_events_get_event)
 {
 	/* Dispatch a fake keyboard event and ensure it gets returned by the
 	 * host command.
@@ -190,7 +190,7 @@ ZTEST(mkbp_event, test_host_command_get_events__get_event)
 		      interrupt_gpio_monitor_fake.call_count);
 }
 
-ZTEST(mkbp_event, test_host_command_get_events__get_event_v2)
+ZTEST(mkbp_event, test_host_command_get_events_get_event_v2)
 {
 	/*
 	 * Dispatch some fake events and ensure they get returned by the

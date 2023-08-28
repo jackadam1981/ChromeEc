@@ -32,7 +32,7 @@ ZTEST(system, test_system_get_board_version)
 	zassert_equal(system_get_board_version(), ARBITRARY_VERSION);
 }
 
-ZTEST(system, test_system_get_board_version__bad_cbi_read)
+ZTEST(system, test_system_get_board_version_bad_cbi_read)
 {
 	RESET_FAKE(cbi_get_board_version);
 	cbi_get_board_version_fake.return_val = EC_ERROR_BUSY;

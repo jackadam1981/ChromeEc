@@ -19,7 +19,7 @@ ZTEST_USER(charge_manager, test_port_count)
 		      response.port_count);
 }
 
-ZTEST_USER(charge_manager, test_port_override__port_out_of_bounds)
+ZTEST_USER(charge_manager, test_port_override_port_out_of_bounds)
 {
 	struct ec_params_charge_port_override params = { 0 };
 
@@ -32,7 +32,7 @@ ZTEST_USER(charge_manager, test_port_override__port_out_of_bounds)
 		      ec_cmd_pd_charge_port_override(NULL, &params));
 }
 
-ZTEST_USER(charge_manager, test_port_override__0_from_off)
+ZTEST_USER(charge_manager, test_port_override_0_from_off)
 {
 	struct ec_params_charge_port_override params = { 0 };
 
