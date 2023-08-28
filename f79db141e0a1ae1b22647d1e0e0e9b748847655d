@@ -22,6 +22,30 @@
       },
       "revId": "f79db141e0a1ae1b22647d1e0e0e9b748847655d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d26838_2ac476d0",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-08-28T20:39:50Z",
+      "side": 1,
+      "message": "why would it be needed? if events continues, we will just get more and more FE_LOG_FLASH_ERROR in the UMA. I\u0027m interested more to count unique clients suffering it as it is clear error is unrecoverable. The purpose of this counter is to just reduce the rate to report 64x. Note, each cr50 reboot results in bunch of errors, so logging each error will be rather expensive. So, capture the 1st one and each 64th after. We don\u0027t use counter other than that.",
+      "parentUuid": "3257f919_e10a1135",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "f79db141e0a1ae1b22647d1e0e0e9b748847655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
