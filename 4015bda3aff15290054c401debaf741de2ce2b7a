@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec557750_f0aa9af3",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-08-28T16:06:49Z",
+      "side": 1,
+      "message": "Can use the following inside the `pw_add_library` instead\n```\nPUBLIC_INCLUDES\n  ${PLATFORM_EC}/zephyr/shim/include\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 65
+      },
+      "revId": "4015bda3aff15290054c401debaf741de2ce2b7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c1b3bd_4e7f9d55",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-08-28T16:06:49Z",
+      "side": 1,
+      "message": "Can we add `extern \"C\"` to the header instead?",
+      "revId": "4015bda3aff15290054c401debaf741de2ce2b7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
