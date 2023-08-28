@@ -35,7 +35,7 @@ ZTEST_USER(console_cmd_charge_state, test_idle_arg_not_a_bool)
 		      EC_ERROR_PARAM2, rv);
 }
 
-ZTEST_USER(console_cmd_charge_state, test_idle_on__no_ac)
+ZTEST_USER(console_cmd_charge_state, test_idle_on_no_ac)
 {
 	int rv;
 
@@ -44,7 +44,7 @@ ZTEST_USER(console_cmd_charge_state, test_idle_on__no_ac)
 		      EC_ERROR_NOT_POWERED, rv);
 }
 
-ZTEST_USER(console_cmd_charge_state, test_discharge_on__no_ac)
+ZTEST_USER(console_cmd_charge_state, test_discharge_on_no_ac)
 {
 	int rv;
 
@@ -124,7 +124,7 @@ ZTEST_USER(console_cmd_charge_state, test_debug_on_show_charging_progress)
 	zassert_true(charging_progress_displayed());
 }
 
-ZTEST_USER(console_cmd_charge_state, test_sustain_too_few_args__2_args)
+ZTEST_USER(console_cmd_charge_state, test_sustain_too_few_args_2_args)
 {
 	int rv;
 
@@ -133,7 +133,7 @@ ZTEST_USER(console_cmd_charge_state, test_sustain_too_few_args__2_args)
 		      EC_ERROR_PARAM_COUNT, rv);
 }
 
-ZTEST_USER(console_cmd_charge_state, test_sustain_too_few_args__3_args)
+ZTEST_USER(console_cmd_charge_state, test_sustain_too_few_args_3_args)
 {
 	int rv;
 

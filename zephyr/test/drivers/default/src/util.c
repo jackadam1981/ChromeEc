@@ -18,7 +18,7 @@ ZTEST(util, test_reverse)
 	zassert_mem_equal(input, expected, sizeof(input), NULL);
 }
 
-ZTEST(util, test_parse_offset_size__normal)
+ZTEST(util, test_parse_offset_size_normal)
 {
 	const char *argv[] = { "cmd", "123", "456" };
 	int argc = ARRAY_SIZE(argv);
@@ -30,7 +30,7 @@ ZTEST(util, test_parse_offset_size__normal)
 	zassert_equal(456, size, NULL);
 }
 
-ZTEST(util, test_parse_offset_size__invalid_param1)
+ZTEST(util, test_parse_offset_size_invalid_param1)
 {
 	const char *argv[] = { "cmd", "xyz" /* <- bad */, "456" };
 	int argc = ARRAY_SIZE(argv);
@@ -41,7 +41,7 @@ ZTEST(util, test_parse_offset_size__invalid_param1)
 		      parse_offset_size(argc, argv, 1, &offset, &size), NULL);
 }
 
-ZTEST(util, test_parse_offset_size__invalid_param2)
+ZTEST(util, test_parse_offset_size_invalid_param2)
 {
 	const char *argv[] = { "cmd", "123", "xyz" /* <- bad */ };
 	int argc = ARRAY_SIZE(argv);

@@ -809,7 +809,7 @@ static void isl923x_hibernate_after(void *state)
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__happy_path)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_happy_path)
 {
 	const struct emul *isl923x_emul = ISL923X_EMUL;
 	uint16_t actual;
@@ -866,7 +866,7 @@ ZTEST(isl923x_hibernate, test_isl923x_hibernate__happy_path)
 	}
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__invalid_charger_number)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_invalid_charger_number)
 {
 	/* Mocks should just be pass-through */
 	RESET_FAKE(hibernate_mock_read_fn);
@@ -883,7 +883,7 @@ ZTEST(isl923x_hibernate, test_isl923x_hibernate__invalid_charger_number)
 		      "No I2C writes should have happened");
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL923X_REG_CONTROL0)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_fail_at_ISL923X_REG_CONTROL0)
 {
 	i2c_common_emul_set_read_fail_reg(COMMON_DATA, ISL923X_REG_CONTROL0);
 
@@ -898,7 +898,7 @@ ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL923X_REG_CONTROL0)
 			      MOCK_IGNORE_VALUE);
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL923X_REG_CONTROL1)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_fail_at_ISL923X_REG_CONTROL1)
 {
 	i2c_common_emul_set_read_fail_reg(COMMON_DATA, ISL923X_REG_CONTROL1);
 
@@ -919,7 +919,7 @@ ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL923X_REG_CONTROL1)
 			      MOCK_IGNORE_VALUE);
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL9238_REG_CONTROL3)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_fail_at_ISL9238_REG_CONTROL3)
 {
 	i2c_common_emul_set_read_fail_reg(COMMON_DATA, ISL9238_REG_CONTROL3);
 
@@ -940,7 +940,7 @@ ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL9238_REG_CONTROL3)
 			      MOCK_IGNORE_VALUE);
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL9238_REG_CONTROL4)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_fail_at_ISL9238_REG_CONTROL4)
 {
 	i2c_common_emul_set_read_fail_reg(COMMON_DATA, ISL9238_REG_CONTROL4);
 
@@ -958,7 +958,7 @@ ZTEST(isl923x_hibernate, test_isl923x_hibernate__fail_at_ISL9238_REG_CONTROL4)
 			      ISL9238_REG_CONTROL3, MOCK_IGNORE_VALUE);
 }
 
-ZTEST(isl923x_hibernate, test_isl923x_hibernate__adc_disable)
+ZTEST(isl923x_hibernate, test_isl923x_hibernate_adc_disable)
 {
 	const struct emul *isl923x_emul = ISL923X_EMUL;
 	uint16_t expected;

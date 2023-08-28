@@ -44,12 +44,12 @@ ZTEST_F(tcpm_header, test_tcpm_header_drv_set_vconn_failure)
 	zassert_equal(-1, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_reset_bist_type_2__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_reset_bist_type_2_unimplemented)
 {
 	zassert_ok(tcpm_reset_bist_type_2(TCPM_TEST_PORT));
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_reset_bist_type_2__implemented)
+ZTEST_F(tcpm_header, test_tcpm_header_reset_bist_type_2_implemented)
 {
 	int res;
 	const int driver_return_code = 7458; /* arbitrary */
@@ -63,13 +63,13 @@ ZTEST_F(tcpm_header, test_tcpm_header_reset_bist_type_2__implemented)
 	zassert_equal(driver_return_code, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_debug_accessory__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_debug_accessory_unimplemented)
 {
 	zassert_ok(tcpm_debug_accessory(TCPM_TEST_PORT, true));
 	zassert_ok(tcpm_debug_accessory(TCPM_TEST_PORT, false));
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_debug_accessory__implemented)
+ZTEST_F(tcpm_header, test_tcpm_header_debug_accessory_implemented)
 {
 	int res;
 	const int driver_return_code = 7458; /* arbitrary */
@@ -84,12 +84,12 @@ ZTEST_F(tcpm_header, test_tcpm_header_debug_accessory__implemented)
 	zassert_equal(driver_return_code, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_debug_detach__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_debug_detach_unimplemented)
 {
 	zassert_ok(tcpm_debug_detach(TCPM_TEST_PORT));
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_debug_detach__implemented)
+ZTEST_F(tcpm_header, test_tcpm_header_debug_detach_implemented)
 {
 	int res;
 	const int driver_return_code = 7458; /* arbitrary */
@@ -103,7 +103,7 @@ ZTEST_F(tcpm_header, test_tcpm_header_debug_detach__implemented)
 	zassert_equal(driver_return_code, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_hard_reset_reinit__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_hard_reset_reinit_unimplemented)
 {
 	int res;
 
@@ -112,7 +112,7 @@ ZTEST_F(tcpm_header, test_tcpm_header_hard_reset_reinit__unimplemented)
 	zassert_equal(EC_ERROR_UNIMPLEMENTED, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_hard_reset_reinit__implemented)
+ZTEST_F(tcpm_header, test_tcpm_header_hard_reset_reinit_implemented)
 {
 	int res;
 	const int driver_return_code = 7458; /* arbitrary */
@@ -126,7 +126,7 @@ ZTEST_F(tcpm_header, test_tcpm_header_hard_reset_reinit__implemented)
 	zassert_equal(driver_return_code, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_tcpc_has_frs_control__flag)
+ZTEST_F(tcpm_header, test_tcpm_header_tcpc_has_frs_control_flag)
 {
 	Z_TEST_SKIP_IFNDEF(CONFIG_PLATFORM_EC_USB_PD_FRS);
 	Z_TEST_SKIP_IFDEF(CONFIG_PLATFORM_EC_USB_PD_FRS_TCPC);
@@ -140,7 +140,7 @@ ZTEST_F(tcpm_header, test_tcpm_header_tcpc_has_frs_control__flag)
 	zassert_equal(1, tcpm_tcpc_has_frs_control(TCPM_TEST_PORT));
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_set_frs_enable__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_set_frs_enable_unimplemented)
 {
 	Z_TEST_SKIP_IFNDEF(CONFIG_PLATFORM_EC_USB_PD_FRS);
 
@@ -148,7 +148,7 @@ ZTEST_F(tcpm_header, test_tcpm_header_set_frs_enable__unimplemented)
 	zassert_ok(tcpm_set_frs_enable(TCPM_TEST_PORT, 0));
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_set_frs_enable__implemented)
+ZTEST_F(tcpm_header, test_tcpm_header_set_frs_enable_implemented)
 {
 	int res;
 	const int driver_return_code = 7458; /* arbitrary */
@@ -165,7 +165,7 @@ ZTEST_F(tcpm_header, test_tcpm_header_set_frs_enable__implemented)
 	zassert_equal(driver_return_code, res);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_tcpc_get_bist_test_mode__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_tcpc_get_bist_test_mode_unimplemented)
 {
 	int res;
 	bool enabled = true; /* Should be overwritten to false */
@@ -176,13 +176,13 @@ ZTEST_F(tcpm_header, test_tcpm_header_tcpc_get_bist_test_mode__unimplemented)
 	zassert_false(enabled);
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_get_chip_info__unimplemented)
+ZTEST_F(tcpm_header, test_tcpm_header_get_chip_info_unimplemented)
 {
 	zassert_equal(EC_ERROR_UNIMPLEMENTED,
 		      tcpm_get_chip_info(TCPM_TEST_PORT, 0, NULL));
 }
 
-ZTEST_F(tcpm_header, test_tcpm_header_dump_registers__std)
+ZTEST_F(tcpm_header, test_tcpm_header_dump_registers_std)
 {
 	Z_TEST_SKIP_IFNDEF(CONFIG_PLATFORM_EC_CONSOLE_CMD_TCPC_DUMP);
 

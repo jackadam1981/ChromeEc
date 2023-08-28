@@ -18,7 +18,7 @@
 #include <zephyr/shell/shell_dummy.h>
 #include <zephyr/ztest.h>
 
-ZTEST(keyboard_8042, test_console_cmd__typematic__status)
+ZTEST(keyboard_8042, test_console_cmd_typematic_status)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -43,7 +43,7 @@ ZTEST(keyboard_8042, test_console_cmd__typematic__status)
 		!strstr(outbuffer, "Repeat scan code: {0x01, 0x02, 0x03, }"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__typematic__set_delays)
+ZTEST(keyboard_8042, test_console_cmd_typematic_set_delays)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -60,7 +60,7 @@ ZTEST(keyboard_8042, test_console_cmd__typematic__set_delays)
 	zassert_ok(!strstr(outbuffer, "Inter delay: 456 ms"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__codeset__set_codeset1)
+ZTEST(keyboard_8042, test_console_cmd_codeset_set_codeset1)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -75,13 +75,13 @@ ZTEST(keyboard_8042, test_console_cmd__codeset__set_codeset1)
 	zassert_ok(!strstr(outbuffer, "Set: 1"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__codeset__set_invalid)
+ZTEST(keyboard_8042, test_console_cmd_codeset_set_invalid)
 {
 	zassert_equal(EC_ERROR_PARAM1,
 		      shell_execute_cmd(get_ec_shell(), "8042 codeset 999"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__ram__writeread)
+ZTEST(keyboard_8042, test_console_cmd_ram_writeread)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -96,7 +96,7 @@ ZTEST(keyboard_8042, test_console_cmd__ram__writeread)
 	zassert_ok(!strstr(outbuffer, "31 = 0xaa"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__ram__invalid)
+ZTEST(keyboard_8042, test_console_cmd_ram_invalid)
 {
 	/* Missing args */
 	zassert_equal(EC_ERROR_PARAM_COUNT,
@@ -107,7 +107,7 @@ ZTEST(keyboard_8042, test_console_cmd__ram__invalid)
 		      shell_execute_cmd(get_ec_shell(), "8042 ctrlram 9999"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__enable__true)
+ZTEST(keyboard_8042, test_console_cmd_enable_true)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -122,14 +122,14 @@ ZTEST(keyboard_8042, test_console_cmd__enable__true)
 	zassert_ok(!strstr(outbuffer, "Enabled: 1"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__enable__invalid)
+ZTEST(keyboard_8042, test_console_cmd_enable_invalid)
 {
 	/* Non-bool arg */
 	zassert_equal(EC_ERROR_PARAM1,
 		      shell_execute_cmd(get_ec_shell(), "8042 kbd abc"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__internal)
+ZTEST(keyboard_8042, test_console_cmd_internal)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -157,14 +157,14 @@ ZTEST(keyboard_8042, test_console_cmd__internal)
 	zassert_ok(!strstr(outbuffer, "A20_status=0"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__invalid)
+ZTEST(keyboard_8042, test_console_cmd_invalid)
 {
 	/* Non-existent subcommand */
 	zassert_equal(EC_ERROR_PARAM1,
 		      shell_execute_cmd(get_ec_shell(), "8042 foobar"));
 }
 
-ZTEST(keyboard_8042, test_console_cmd__all)
+ZTEST(keyboard_8042, test_console_cmd_all)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -189,7 +189,7 @@ ZTEST(keyboard_8042, test_console_cmd__all)
 
 FAKE_VOID_FUNC(chipset_reset, enum chipset_shutdown_reason);
 
-ZTEST(keyboard_8042, test_command__system_reset)
+ZTEST(keyboard_8042, test_command_system_reset)
 {
 	keyboard_host_write(I8042_SYSTEM_RESET, true);
 
@@ -201,7 +201,7 @@ ZTEST(keyboard_8042, test_command__system_reset)
 
 FAKE_VOID_FUNC(lpc_keyboard_put_char, uint8_t, int);
 
-ZTEST(keyboard_8042, test_command__read_control_ram)
+ZTEST(keyboard_8042, test_command_read_control_ram)
 {
 	/* Put test data (0x55) into control RAM */
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "8042 ctrlram 0x1 0x55"));
@@ -219,7 +219,7 @@ ZTEST(keyboard_8042, test_command__read_control_ram)
 	zassert_equal(0x55, lpc_keyboard_put_char_fake.arg0_history[0]);
 }
 
-ZTEST(keyboard_8042, test_command__a20)
+ZTEST(keyboard_8042, test_command_a20)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -255,7 +255,7 @@ ZTEST(keyboard_8042, test_command__a20)
 	zassert_ok(!strstr(outbuffer, "A20_status=0"));
 }
 
-ZTEST(keyboard_8042, test_command__pulse)
+ZTEST(keyboard_8042, test_command_pulse)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -276,7 +276,7 @@ ZTEST(keyboard_8042, test_command__pulse)
 	zassert_ok(!strstr(outbuffer, "A20_status=1"));
 }
 
-ZTEST(keyboard_8042, test_command__invalid)
+ZTEST(keyboard_8042, test_command_invalid)
 {
 	/* Unsupported command */
 	keyboard_host_write(0x00, true);
@@ -290,7 +290,7 @@ ZTEST(keyboard_8042, test_command__invalid)
 		      lpc_keyboard_put_char_fake.arg0_history[0]);
 }
 
-ZTEST(keyboard_8042, test_atkbdcommand__resend)
+ZTEST(keyboard_8042, test_atkbdcommand_resend)
 {
 	uint8_t resend_data[] = { 0xAA, 0xBB, 0xCC };
 
@@ -314,7 +314,7 @@ ZTEST(keyboard_8042, test_atkbdcommand__resend)
 		      lpc_keyboard_put_char_fake.arg0_history[2]);
 }
 
-ZTEST(keyboard_8042, test_atkbdcommand__unsupported__setall_mb)
+ZTEST(keyboard_8042, test_atkbdcommand_unsupported_setall_mb)
 {
 	keyboard_host_write(ATKBD_CMD_SETALL_MB, false);
 
@@ -327,7 +327,7 @@ ZTEST(keyboard_8042, test_atkbdcommand__unsupported__setall_mb)
 		      lpc_keyboard_put_char_fake.arg0_history[0]);
 }
 
-ZTEST(keyboard_8042, test_atkbdcommand__unsupported__setall_mbr)
+ZTEST(keyboard_8042, test_atkbdcommand_unsupported_setall_mbr)
 {
 	keyboard_host_write(ATKBD_CMD_SETALL_MBR, false);
 
@@ -340,7 +340,7 @@ ZTEST(keyboard_8042, test_atkbdcommand__unsupported__setall_mbr)
 		      lpc_keyboard_put_char_fake.arg0_history[0]);
 }
 
-ZTEST(keyboard_8042, test_atkbdcommand__unsupported__ex_enable)
+ZTEST(keyboard_8042, test_atkbdcommand_unsupported_ex_enable)
 {
 	keyboard_host_write(ATKBD_CMD_EX_ENABLE, false);
 
@@ -353,7 +353,7 @@ ZTEST(keyboard_8042, test_atkbdcommand__unsupported__ex_enable)
 		      lpc_keyboard_put_char_fake.arg0_history[0]);
 }
 
-ZTEST(keyboard_8042, test_atkbdcommand__unsupported__bad_cmd)
+ZTEST(keyboard_8042, test_atkbdcommand_unsupported_bad_cmd)
 {
 	/* Non-existent ATKBD command */
 	keyboard_host_write(0x00, false);

@@ -15,7 +15,7 @@
 
 /* Tests for USBC PPC Common Code */
 
-ZTEST(usbc_ppc, test_ppc_dump__no_args)
+ZTEST(usbc_ppc, test_ppc_dump_no_args)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 
@@ -24,7 +24,7 @@ ZTEST(usbc_ppc, test_ppc_dump__no_args)
 		      EC_ERROR_PARAM_COUNT);
 }
 
-ZTEST(usbc_ppc, test_ppc_dump__bad_args)
+ZTEST(usbc_ppc, test_ppc_dump_bad_args)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 	const char *outbuffer;
@@ -40,7 +40,7 @@ ZTEST(usbc_ppc, test_ppc_dump__bad_args)
 	zassert_not_null(strstr(outbuffer, "Invalid port!"));
 }
 
-ZTEST(usbc_ppc, test_ppc_dump__good_args)
+ZTEST(usbc_ppc, test_ppc_dump_good_args)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 	const char *outbuffer;
@@ -57,63 +57,63 @@ ZTEST(usbc_ppc, test_ppc_dump__good_args)
 	zassert_not_null(strstr(outbuffer, " = 0x"));
 }
 
-ZTEST(usbc_ppc, test_ppc_init__bad_args)
+ZTEST(usbc_ppc, test_ppc_init_bad_args)
 {
 	zassert_equal(ppc_init(-1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_is_sourcing_vbus__bad_args)
+ZTEST(usbc_ppc, test_ppc_is_sourcing_vbus_bad_args)
 {
 	zassert_false(ppc_is_sourcing_vbus(-1));
 }
 
-ZTEST(usbc_ppc, test_ppc_set_polarity__bad_args)
+ZTEST(usbc_ppc, test_ppc_set_polarity_bad_args)
 {
 	zassert_equal(ppc_set_polarity(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_set_vbus_source_current_limit__bad_args)
+ZTEST(usbc_ppc, test_ppc_set_vbus_source_current_limit_bad_args)
 {
 	zassert_equal(ppc_set_vbus_source_current_limit(-1, -1),
 		      EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_discharge_vbus__bad_args)
+ZTEST(usbc_ppc, test_ppc_discharge_vbus_bad_args)
 {
 	zassert_equal(ppc_discharge_vbus(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_set_sbu__bad_args)
+ZTEST(usbc_ppc, test_ppc_set_sbu_bad_args)
 {
 	zassert_equal(ppc_set_sbu(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_set_vconn__bad_args)
+ZTEST(usbc_ppc, test_ppc_set_vconn_bad_args)
 {
 	zassert_equal(ppc_set_vconn(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_dev_is_connected__bad_args)
+ZTEST(usbc_ppc, test_ppc_dev_is_connected_bad_args)
 {
 	zassert_equal(ppc_dev_is_connected(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_vbus_sink_enable__bad_args)
+ZTEST(usbc_ppc, test_ppc_vbus_sink_enable_bad_args)
 {
 	zassert_equal(ppc_vbus_sink_enable(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_enter_low_power_mode__bad_args)
+ZTEST(usbc_ppc, test_ppc_enter_low_power_mode_bad_args)
 {
 	zassert_equal(ppc_enter_low_power_mode(-1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_vbus_source_enable__bad_args)
+ZTEST(usbc_ppc, test_ppc_vbus_source_enable_bad_args)
 {
 	zassert_equal(ppc_vbus_source_enable(-1, -1), EC_ERROR_INVAL);
 }
 
-ZTEST(usbc_ppc, test_ppc_set_frs_enable__bad_args)
+ZTEST(usbc_ppc, test_ppc_set_frs_enable_bad_args)
 {
 	zassert_equal(ppc_set_frs_enable(-1, -1), EC_ERROR_INVAL);
 }

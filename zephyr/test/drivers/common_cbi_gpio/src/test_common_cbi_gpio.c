@@ -18,7 +18,7 @@ ZTEST(cbi_gpio, test_cbio_is_write_protected)
 	zassert_true(cbi_config->drv->is_protected());
 }
 
-ZTEST(cbi_gpio, test_cbi_gpio_read__negative_board_id)
+ZTEST(cbi_gpio, test_cbi_gpio_read_negative_board_id)
 {
 	uint8_t unused_offset = 0;
 	uint8_t unused_data = 0;
@@ -30,7 +30,7 @@ ZTEST(cbi_gpio, test_cbi_gpio_read__negative_board_id)
 		      EC_ERROR_UNKNOWN);
 }
 
-ZTEST(cbi_gpio, test_cbi_gpio_read__bad_board_info_set)
+ZTEST(cbi_gpio, test_cbi_gpio_read_bad_board_info_set)
 {
 	uint8_t unused_offset = 0;
 	uint8_t unused_data = 0;
@@ -43,7 +43,7 @@ ZTEST(cbi_gpio, test_cbi_gpio_read__bad_board_info_set)
 		      EC_ERROR_UNKNOWN);
 }
 
-ZTEST(cbi_gpio, test_cbi_gpio_read__negative_board_id_then_bad_board_info_set)
+ZTEST(cbi_gpio, test_cbi_gpio_read_negative_board_id_then_bad_board_info_set)
 {
 	/* Tests the path of two separate errors occurring */
 

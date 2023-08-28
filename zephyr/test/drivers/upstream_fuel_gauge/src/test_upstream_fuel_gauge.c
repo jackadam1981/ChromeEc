@@ -17,7 +17,7 @@
 /* TODO(b271889974/) Use default_battery label */
 #define BATT_EMUL EMUL_DT_GET(DT_NODELABEL(upstream_battery))
 
-ZTEST(upstream_fuel_gauge, test_battery_get_params__success)
+ZTEST(upstream_fuel_gauge, test_battery_get_params_success)
 {
 	const struct emul *sbs_gauge = BATT_EMUL;
 

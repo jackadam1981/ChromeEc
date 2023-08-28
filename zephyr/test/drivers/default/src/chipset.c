@@ -16,12 +16,12 @@
 #include <ap_power/ap_power.h>
 #include <ap_power/ap_power_events.h>
 
-ZTEST(chipset, test_get_ap_reset_stats__bad_pointers)
+ZTEST(chipset, test_get_ap_reset_stats_bad_pointers)
 {
 	zassert_equal(EC_ERROR_INVAL, get_ap_reset_stats(NULL, 0, NULL));
 }
 
-ZTEST(chipset, test_get_ap_reset_stats__happy_path)
+ZTEST(chipset, test_get_ap_reset_stats_happy_path)
 {
 	struct ap_reset_log_entry reset_log_entries[4];
 	uint32_t actual_reset_count, reset_count;

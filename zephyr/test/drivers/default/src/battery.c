@@ -161,13 +161,13 @@ static int battery2_read(const struct emul *target, int reg, uint8_t *val,
 	return 0;
 }
 
-ZTEST(battery, test_is_charge_fet_disabled__cfet_mask_is_0)
+ZTEST(battery, test_is_charge_fet_disabled_cfet_mask_is_0)
 {
 	battery_fuel_gauge_type_override = 2;
 	zassert_equal(0, battery_is_charge_fet_disabled());
 }
 
-ZTEST_F(battery, test_is_charge_fet_disabled__i2c_error)
+ZTEST_F(battery, test_is_charge_fet_disabled_i2c_error)
 {
 	/* Set the battery to battery 1 */
 	battery_fuel_gauge_type_override = 1;
@@ -249,7 +249,7 @@ ZTEST_F(battery, test_is_charge_fet_disabled)
 	zassert_equal(1, rv, "RV=%x", rv);
 }
 
-ZTEST_F(battery, test_get_disconnect_state__fail_i2c_read)
+ZTEST_F(battery, test_get_disconnect_state_fail_i2c_read)
 {
 	/* Use battery 0 */
 	battery_fuel_gauge_type_override = 0;

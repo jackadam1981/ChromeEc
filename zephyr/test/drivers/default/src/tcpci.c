@@ -506,7 +506,7 @@ ZTEST(tcpci, test_generic_tcpci_mux_set_get)
 	test_generic_tcpci_mux_set_get();
 }
 
-ZTEST(tcpci, test_generic_tcpci_mux_set_get__not_tcpc)
+ZTEST(tcpci, test_generic_tcpci_mux_set_get_not_tcpc)
 {
 	set_usb_mux_not_tcpc();
 	test_generic_tcpci_mux_set_get();

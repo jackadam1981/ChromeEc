@@ -30,7 +30,7 @@ static void get_pid_constants_custom_fake(int *kp, int *kp_div, int *ki,
 	*kd_div = test_kd_div;
 }
 
-ZTEST_USER(ocpc, test_consolecmd_ocpcpid__read)
+ZTEST_USER(ocpc, test_consolecmd_ocpcpid_read)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -51,7 +51,7 @@ ZTEST_USER(ocpc, test_consolecmd_ocpcpid__read)
 		   outbuffer);
 }
 
-ZTEST_USER(ocpc, test_consolecmd_ocpcpid__write)
+ZTEST_USER(ocpc, test_consolecmd_ocpcpid_write)
 {
 	const char *outbuffer;
 	size_t buffer_size;
@@ -76,7 +76,7 @@ ZTEST_USER(ocpc, test_consolecmd_ocpcpid__write)
 		   outbuffer);
 }
 
-ZTEST_USER(ocpc, test_consolecmd_ocpcpid__bad_param)
+ZTEST_USER(ocpc, test_consolecmd_ocpcpid_bad_param)
 {
 	zassert_equal(EC_ERROR_PARAM1,
 		      shell_execute_cmd(get_ec_shell(), "ocpcpid y 0 0"));
@@ -128,7 +128,7 @@ ZTEST_USER(ocpc, test_consolecmd_ocpcdebug)
 		      shell_execute_cmd(get_ec_shell(), "ocpcdebug"));
 }
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__with_primary_charger)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_with_primary_charger)
 {
 	/* Should immediately return if a non-secondary charger is active,
 	 * which is the default.
@@ -140,7 +140,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__with_primary_charger)
 		      ocpc_config_secondary_charger(NULL, NULL, 0, 0));
 }
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__zero_desired_batt_curr)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_zero_desired_batt_curr)
 {
 	int expected_vsys_voltage = battery_get_info()->voltage_min;
 	int desired_vsys_voltage = expected_vsys_voltage - 1;
@@ -160,7 +160,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__zero_desired_batt_curr)
 
 FAKE_VALUE_FUNC(int, battery_is_charge_fet_disabled);
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__fet_disabled)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_fet_disabled)
 {
 	charge_set_active_chg_chip(CHARGER_SECONDARY);
 
@@ -184,7 +184,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__fet_disabled)
 FAKE_VALUE_FUNC(enum ec_error_list, charger_set_vsys_compensation, int,
 		struct ocpc_data *, int, int);
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__happy)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_happy)
 {
 	int desired_batt_voltage_mv = 123;
 	int desired_batt_current_ma = 456;
@@ -207,7 +207,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__happy)
 		      charger_set_vsys_compensation_fake.arg3_history[0]);
 }
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__unknown_return_code)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_unknown_return_code)
 {
 	charge_set_active_chg_chip(CHARGER_SECONDARY);
 
@@ -219,7 +219,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__unknown_return_code)
 	zassert_equal(999, ocpc_config_secondary_charger(NULL, NULL, 123, 456));
 }
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__unimpl)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_unimpl)
 {
 	int desired_charger_input_current;
 	int desired_batt_voltage_mv = 10000;
@@ -243,7 +243,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__unimpl)
 					  desired_batt_current_ma));
 }
 
-ZTEST(ocpc, test_ocpc_config_secondary_charger__second_loop)
+ZTEST(ocpc, test_ocpc_config_secondary_charger_second_loop)
 {
 	int desired_charger_input_current = 2;
 	int desired_batt_voltage_mv = 10000;
@@ -288,7 +288,7 @@ ZTEST(ocpc, test_ocpc_config_secondary_charger__second_loop)
 		      expected_last_error + initial_integral);
 }
 
-ZTEST(ocpc, test_ocpc_calc_resistances__not_charging)
+ZTEST(ocpc, test_ocpc_calc_resistances_not_charging)
 {
 	struct ocpc_data test_ocpc;
 	struct batt_params test_batt_params;
@@ -312,7 +312,7 @@ ZTEST(ocpc, test_ocpc_calc_resistances__not_charging)
 		      ocpc_calc_resistances(&test_ocpc, &test_batt_params));
 }
 
-ZTEST(ocpc, test_ocpc_calc_resistances__separate)
+ZTEST(ocpc, test_ocpc_calc_resistances_separate)
 {
 	struct ocpc_data test_ocpc;
 	struct batt_params test_batt_params;
