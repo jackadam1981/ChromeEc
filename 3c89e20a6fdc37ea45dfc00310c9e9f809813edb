@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd433d8e_91fd1e6a",
+        "filename": "include/touchpad.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-28T06:57:45Z",
+      "side": 1,
+      "message": "Removed this in the patchset 12.",
+      "parentUuid": "2c0a5571_cd336977",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9852cd2c_e03e1243",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "sounds good, thanks!",
       "parentUuid": "5c5d1d22_2f18ca9b",
+      "range": {
+        "startLine": 537,
+        "startChar": 30,
+        "endLine": 537,
+        "endChar": 37
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc0b54e_8f6b048d",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-28T06:57:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "04b98c9d_898ab3f9",
       "range": {
         "startLine": 537,
         "startChar": 30,
