@@ -1,0 +1,245 @@
+#include <dt-bindings/pwm/pwm.h>
+#include <dt-bindings/usb_pd_tcpm.h>
+
+#include "../program/nissa/nokris/cbi.dtsi"
+
+/ {
+
+	named-i2c-ports {
+		i2c_ec_i2c_batt: ec_i2c_batt {
+			i2c-port = <&i2c_ctrl7>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+
+		i2c_ec_i2c_sensor: ec_i2c_sensor {
+			i2c-port = <&i2c_ctrl1>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_usb_c0_ppc_int_odl: usb_c0_ppc_int_odl {
+			gpios = <&gpio1 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			enum-name = "GPIO_USB_C0_PPC_INT_ODL";
+		};
+		gpio_usb_c1_ppc_int_odl: usb_c1_ppc_int_odl {
+			gpios = <&gpio1 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			enum-name = "GPIO_USB_C1_PPC_INT_ODL";
+		};
+		gpio_usb_c1_rt_3p3_sx_en: usb_c1_rt_3p3_sx_en {
+			gpios = <&gpio1 8 0>;
+		};
+		ioex_usb_c1_rt_rst_ls_l: usb_c1_rt_rst_ls_l {
+			gpios = <&gpio1 9 0>;
+		};
+		ioex_usb_c1_frs_en: usb_c1_frs_en {
+			gpios = <&gpio1 10 0>;
+		};
+		gpio_usb_c0_rt_3p3_sx_en: usb_c0_rt_3p3_sx_en {
+			gpios = <&gpio1 11 GPIO_ODR_LOW>;
+		};
+		gpio_usb_c0_rt_int_odl: usb_c0_rt_int_odl {
+			gpios = <&gpio1 12 GPIO_INPUT>;
+		};
+		ioex_usb_c0_rt_rst_ls_l: usb_c0_rt_rst_ls_l {
+			gpios = <&gpio1 13 0>;
+		};
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
+			gpios = <&gpio1 14 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_usb_c0_bc12_int_odl: usb_c0_bc12_int_odl {
+			gpios = <&gpio1 15 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_BC12_INT_ODL";
+		};
+		gpio_usb_c1_bc12_int_odl: usb_c1_bc12_int_odl {
+			gpios = <&gpio1 16 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C1_BC12_INT_ODL";
+		};
+	};
+
+	ioex_c0_port0: gpio@1100 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x1100 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+
+	ioex_c0_port1: gpio@1200 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x1200 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+
+	ioex_c1_port0: gpio@1300 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x1300 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+
+	ioex_c1_port1: gpio@1400 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x1400 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			bc12 = <&pi3usb9201_emul0>;
+			chg = <&charger_emul>;
+			tcpc = <&tcpci_emul0>;
+			ppc = <&ppc0_emul>;
+			usb-mux-chain-0 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_0>;
+			};
+		};
+		port0-muxes {
+			virtual_mux_0: virtual-mux-0 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+		};
+		/*
+		 * TODO(b:211693800): port1 may not be present on some
+		 * sub-boards.
+		 */
+		port1@1 {
+			compatible = "named-usbc-port";
+			reg = <1>;
+			bc12 = <&pi3usb9201_emul1>;
+			tcpc = <&tcpci_emul1>;
+			ppc = <&ppc1_emul>;
+			usb-mux-chain-1 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_1 &tcpci_mux_1>;
+			};
+		};
+		port1-muxes {
+			virtual_mux_1: virtual-mux-1 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+			tcpci_mux_1: tcpci-mux-1 {
+				compatible = "parade,usbc-mux-ps8xxx";
+			};
+		};
+	};
+
+	batteries {
+		default_battery: lgc {
+			compatible = "lgc,ap18c8k", "battery-smart";
+		};
+	};
+};
+
+&i2c0 {
+	status = "okay";
+
+	battery: sb@b {
+		compatible = "zephyr,smart-battery-emul";
+		status = "okay";
+		reg = <0xb>;
+		cycle-count = <99>;
+		version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+		/* Real battery voltages are multiples of 4.4V. */
+		desired-charg-volt = <5000>;
+		desired-charg-cur = <1000>;
+		mf-name = "LGC";
+		dev-name = "AC17A8M";
+	};
+
+	charger_emul: bq25710@9 {
+		compatible = "ti,bq25710";
+		status = "okay";
+		reg = <0x9>;
+	};
+
+	tcpci_emul0: tcpci_emul@83 {
+		compatible = "cros,tcpci-generic-emul";
+		status = "okay";
+		reg = <0x83>;
+	};
+
+	tcpci_emul1: tcpci_emul@82 {
+		compatible = "cros,tcpci-generic-emul";
+		status = "okay";
+		reg = <0x82>;
+	};
+
+	ppc0_emul: syv682x@42 {
+		compatible = "silergy,syv682x", "cros,i2c-mock";
+		status = "okay";
+		reg = <0x42>;
+		frs_en_gpio = <&ioex_usb_c1_frs_en>;
+		irq-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
+	};
+
+	ppc1_emul: syv682x@43 {
+		compatible = "silergy,syv682x", "cros,i2c-mock";
+		status = "okay";
+		reg = <0x43>;
+		frs_en_gpio = <&ioex_usb_c1_frs_en>;
+		irq-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
+	};
+
+	tcpc_ps8xxx_alt: tcpc-ps8xxx-alt@b {
+		compatible = "parade,ps8xxx", "cros,i2c-mock";
+		reg = < 0xb >;
+		tcpc-flags = < 0xd8 >;
+		is-alt;
+	};
+
+	ppc_nx20p_port1: nx20p348x@77 {
+		compatible = "nxp,nx20p348x";
+		status = "okay";
+		reg = <0x77>;
+		irq-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
+		is-alt;
+	};
+
+	pi3usb9201_emul0: pi3usb9201@5d {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5d>;
+	};
+
+	pi3usb9201_emul1: pi3usb9201@5e {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5e>;
+	};
+};
+
