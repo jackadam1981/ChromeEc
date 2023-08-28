@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a14c3b_7578f1f2",
+        "filename": "zephyr/program/nissa/nokris/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-28T08:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6424d1_97523e8e",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "e11a9c5027a26bf6a2305d0e4f5d332733faff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a137464_364aa7cd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354f2c72_efa6a1b9",
+        "filename": "zephyr/program/nissa/nokris/overlay.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-28T08:20:32Z",
+      "side": 1,
+      "message": "The interrupt is not shared.",
+      "parentUuid": "1a137464_364aa7cd",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e11a9c5027a26bf6a2305d0e4f5d332733faff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe27476a_c53f997f",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-28T06:00:41Z",
       "side": 1,
       "message": "Same as my previous comment.",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "e11a9c5027a26bf6a2305d0e4f5d332733faff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb47d1d_d62b5bde",
+        "filename": "zephyr/program/nissa/nokris/overlay.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-28T08:20:32Z",
+      "side": 1,
+      "message": "The interrupt is not shared.",
+      "parentUuid": "fe27476a_c53f997f",
       "range": {
         "startLine": 78,
         "startChar": 14,
