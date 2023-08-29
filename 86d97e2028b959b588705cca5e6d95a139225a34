@@ -16,6 +16,24 @@
       "message": "Will this still run the un-parallelized command to start?",
       "revId": "86d97e2028b959b588705cca5e6d95a139225a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7090465_558264da",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-08-29T16:39:00Z",
+      "side": 1,
+      "message": "-y lists the tests only, then we read the testplan.json to find a subset of the tests, and then run those tests only without the -y param.",
+      "parentUuid": "41950a22_dc10fbd9",
+      "revId": "86d97e2028b959b588705cca5e6d95a139225a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
