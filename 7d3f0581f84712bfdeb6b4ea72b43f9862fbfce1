@@ -22,6 +22,30 @@
       },
       "revId": "7d3f0581f84712bfdeb6b4ea72b43f9862fbfce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "431c6a28_3fcbd4cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-08-29T15:41:45Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4819927/1/zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c#102",
+      "parentUuid": "4435e063_73b03e4b",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "7d3f0581f84712bfdeb6b4ea72b43f9862fbfce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
