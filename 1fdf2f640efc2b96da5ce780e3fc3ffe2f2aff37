@@ -34,6 +34,24 @@
       "parentUuid": "a3032a7f_86bd3c2f",
       "revId": "1fdf2f640efc2b96da5ce780e3fc3ffe2f2aff37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bc7267_f8142262",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-29T14:48:59Z",
+      "side": 1,
+      "message": "I\u0027m more thinking that it this specific case setting the later gpio may have a fighting chance of letting something else go ahead enough for the user to see the error, let\u0027s leave it as this.",
+      "parentUuid": "442f741f_671b8be6",
+      "revId": "1fdf2f640efc2b96da5ce780e3fc3ffe2f2aff37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
