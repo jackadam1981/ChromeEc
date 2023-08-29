@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3f358fd_2cd7677d",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-29T20:04:51Z",
+      "side": 1,
+      "message": "You can file a feature request with Simon ([example](http://issuetracker.google.com/264910598)).  As binman is meant to be general purpose, not all images generated will be stored in flash.  So the default is somewhat arbitrary.",
+      "parentUuid": "7063d2c1_259603b5",
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60f8ce4d_f1a54a92",
         "filename": "zephyr/include/cros/binman.dtsi",
         "patchSetId": 1
@@ -192,6 +210,30 @@
       "side": 1,
       "message": "yes, it\u0027s intentional to the extent that it didn\u0027t affect\npadding when specified at the ec-rw level.\n\ni was also surprised by this, but assumed this is an\n\"intentional\" quirk of the underlying implementation.",
       "parentUuid": "f1f55d61_81011476",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ba32ef_5372eada",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-29T20:04:51Z",
+      "side": 1,
+      "message": "Can you open a bug and assign to Simon?  Either the documentation of `pad-byte` needs updating, or there is an underlying bug.\n\nI would have expected the `pad-byte` at the file level to cover all sections, and it\u0027s odd that `pad-byte` didn\u0027t work at the `binman/ec-rw` section.",
+      "parentUuid": "33f261bf_6293ee9f",
       "range": {
         "startLine": 68,
         "startChar": 4,
