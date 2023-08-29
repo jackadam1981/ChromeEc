@@ -34,6 +34,24 @@
       "parentUuid": "865337cd_c2c912b3",
       "revId": "79caceee8d7f639dc7ae9283fe0da756f759139c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b0b780_6e0d875c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-08-29T02:31:24Z",
+      "side": 1,
+      "message": "Sorry, my bad. I was in stable channel, and that will treat `PLATFORM_EC_LED_COMMON was assigned the value \u0027y\u0027 but got the value \u0027n\u0027` warning as error, so the build failed.",
+      "parentUuid": "e13d8cf9_ab05de41",
+      "revId": "79caceee8d7f639dc7ae9283fe0da756f759139c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
