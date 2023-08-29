@@ -75,6 +75,24 @@
       "parentUuid": "8de3af36_3aed16fb",
       "revId": "f2aeb217564ceb53b16a873e9c216241d4d5b901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2b849f_b68c8429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-08-29T21:53:58Z",
+      "side": 1,
+      "message": "\u003e IOC. It\u0027s edge triggered, so it might not.\n\u003e \n\u003e OK, I\u0027ll look at the datasheet some more. Maybe the issue is that some error interrupt is firing that we never look at and never clear. That would make us loop. ...so if we just make sure that the interrupts that we care about are non-zero then that will probably also work.\n\nUgh, this is why I hate edge triggered interrupts for this type of thing. If we were using level triggered interrupts (and just masked them while the bottom half was scheduled/running) then they would just re-trigger. I don\u0027t relish the idea of updating every board to use level triggered interrupt, though.\n\nThe BMI160 datasheet even has a warning in the description of INT_MAP saying that edge triggered interrupts won\u0027t necessarily retrigger if we\u0027re using a single interrupt line for both data driven and physical interrupts, which it seems like this driver can be configured to do. Ugh. I guess that makes some amount of sense, but it\u0027s unfortunate.\n\n...though, on lazor, we actually _are_ only using data driven interrupts (we only enable the watermark and FIFO full on BMI160), but even there the design of the driver would need to change. As I understand it, each time through the loop we only read a maximum of BMI_FIFO_BUFFER (64 byte) from BMI160. If that doesn\u0027t cause us to go below the watermark level then (I think) a new edge-triggered interrupt won\u0027t fire and we\u0027ll be stuck.\n\n---\n\nIn any case, I spent a bunch more time looking through the BMI code to see how we could possibly end up in an infinite loop and I still don\u0027t see it. I guess my best guess is that we could be tripping an errata on the BMI160 that causes it to repeatedly report a non-zero interrupt.\n\nI guess I\u0027ll change this to 100 loops and reword the description? As you said, 100 loops would mean that something is seriously wrong...",
+      "parentUuid": "44bb5da3_ec49504a",
+      "revId": "f2aeb217564ceb53b16a873e9c216241d4d5b901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
