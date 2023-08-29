@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351bfbb6_8fbcd62d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-29T15:50:04Z",
+      "side": 1,
+      "message": "LTO is normally enabled, so I assume your test set the flag to disabled.\n`-DCONFIG_LTO\u003dn`",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "4b39fd4220316c94fe20eb042d9ecf5808876770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
