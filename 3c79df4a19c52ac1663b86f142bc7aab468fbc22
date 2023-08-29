@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c708f122_0d5e9f48",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-08-29T03:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6301ade_219fcde2",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60b6c49a_3c13cfee",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31066006_e6cc0225",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-08-29T03:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1ede71_be602cdf",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f42522f3_99e376ac",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "I think we could reuse the framework API\u0027s and implementation (contained inside `zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c`), and only emulate driver API\u0027s code.",
       "parentUuid": "f42522f3_99e376ac",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da8a440_6e7970fa",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-08-29T03:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d7e5e8_03f3c59f",
       "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
