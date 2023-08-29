@@ -242,6 +242,30 @@
       },
       "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1d24bc_ca110bc5",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-29T20:31:40Z",
+      "side": 1,
+      "message": "b/298074929",
+      "parentUuid": "b4ba32ef_5372eada",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
