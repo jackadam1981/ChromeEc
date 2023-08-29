@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3032a7f_86bd3c2f",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-29T09:18:50Z",
+      "side": 1,
+      "message": "would it make sense to adjust the test to allow early exit instead? not a fan of these \"keep going on error\" approaches, though it may be ok in this case",
+      "revId": "1fdf2f640efc2b96da5ce780e3fc3ffe2f2aff37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
