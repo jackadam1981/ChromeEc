@@ -158,6 +158,24 @@
       "parentUuid": "76d7e5e8_03f3c59f",
       "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e530586_38da70bf",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-08-29T06:22:57Z",
+      "side": 1,
+      "message": "Good outcome, saving around 200 lines of code!",
+      "parentUuid": "3da8a440_6e7970fa",
+      "revId": "3c79df4a19c52ac1663b86f142bc7aab468fbc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
