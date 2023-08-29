@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7063d2c1_259603b5",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-29T19:51:03Z",
+      "side": 1,
+      "message": "Would it make sense trying to change the binman default value? Padding something that ends in flash with 0 by default still sounds off.",
+      "parentUuid": "8069c526_594b5971",
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60f8ce4d_f1a54a92",
         "filename": "zephyr/include/cros/binman.dtsi",
         "patchSetId": 1
