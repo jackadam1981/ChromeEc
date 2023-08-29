@@ -39,3 +39,20 @@ static void safe_mode_timeout_cb(struct k_timer *unused)
 	handle_system_safe_mode_timeout();
 }
 K_TIMER_DEFINE(safe_mode_timeout, safe_mode_timeout_cb, NULL);
+
+/* Override assert_post_action to force asserts to trigger
+ * kernel oops instead of kernel panic since kernel oops are
+ * recoverable.
+ */
+#ifdef CONFIG_ASSERT_NO_FILE_INFO
+__override void assert_post_action(void)
+#else
+__override void assert_post_action(const char *file, unsigned int line)
+#endif
+{
+#ifndef CONFIG_ASSERT_NO_FILE_INFO
+	ARG_UNUSED(file);
+	ARG_UNUSED(line);
+#endif
+	k_oops();
+}
