@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c051aa_7c0703e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-29T23:44:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this newline with lots of prepended space is going to be parsed correctly.\n\nYou probably need to put nami on the same line, but I honestly don\u0027t know if they accounted for this.",
+      "revId": "c9b3581f437a955ddde5ac0f9dd006fdbaea5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e447e39_479e46de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-29T23:44:44Z",
+      "side": 1,
+      "message": "Probably need to remove newline.",
+      "revId": "c9b3581f437a955ddde5ac0f9dd006fdbaea5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "88a1fd52_cbe65066",
