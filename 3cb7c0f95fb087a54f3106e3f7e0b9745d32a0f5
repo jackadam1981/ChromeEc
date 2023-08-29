@@ -22,6 +22,30 @@
       },
       "revId": "3cb7c0f95fb087a54f3106e3f7e0b9745d32a0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88cf0d8b_f2d7a0bd",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-08-29T17:11:15Z",
+      "side": 1,
+      "message": "All these values came from Silicon Mitus directly. They didn\u0027t really specify exactly why these specific values were selected.",
+      "parentUuid": "678aac11_6d4f99ec",
+      "range": {
+        "startLine": 768,
+        "startChar": 2,
+        "endLine": 768,
+        "endChar": 39
+      },
+      "revId": "3cb7c0f95fb087a54f3106e3f7e0b9745d32a0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
