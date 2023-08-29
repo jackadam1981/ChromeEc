@@ -179,6 +179,23 @@ int start_system_safe_mode(void)
 	return EC_SUCCESS;
 }
 
+/* Override assert_post_action to force asserts to trigger
+ * kernel oops instead of kernel panic since kernel oops are
+ * recoverable.
+ */
+#ifdef CONFIG_ASSERT_NO_FILE_INFO
+__override void assert_post_action(void)
+#else
+__override void assert_post_action(const char *file, unsigned int line)
+#endif
+{
+#ifndef CONFIG_ASSERT_NO_FILE_INFO
+	ARG_UNUSED(file);
+	ARG_UNUSED(line);
+#endif
+	k_oops();
+}
+
 #ifdef TEST_BUILD
 void set_system_safe_mode(bool mode)
 {
