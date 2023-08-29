@@ -57,6 +57,24 @@
       "parentUuid": "2e13048b_189c2e20",
       "revId": "f2aeb217564ceb53b16a873e9c216241d4d5b901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bb5da3_ec49504a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-08-29T00:05:58Z",
+      "side": 1,
+      "message": "IOC. It\u0027s edge triggered, so it might not.\n\nOK, I\u0027ll look at the datasheet some more. Maybe the issue is that some error interrupt is firing that we never look at and never clear. That would make us loop. ...so if we just make sure that the interrupts that we care about are non-zero then that will probably also work.",
+      "parentUuid": "8de3af36_3aed16fb",
+      "revId": "f2aeb217564ceb53b16a873e9c216241d4d5b901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
