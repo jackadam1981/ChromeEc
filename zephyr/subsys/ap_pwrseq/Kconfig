@@ -6,8 +6,6 @@ menuconfig AP_PWRSEQ
 	bool "AP Power sequencing support"
 	default y
 	depends on DT_HAS_INTEL_AP_PWRSEQ_ENABLED && !TEST_DISABLE_AP_PWRSEQ
-	select HAS_TASK_POWERBTN
-	select GPIO_GET_CONFIG
 	help
 	  Enables AP power sequencing support with
 	  embedded controller. This includes normal shutdown, critical
@@ -106,6 +104,8 @@ config AP_PWRSEQ_THREAD_PRIORITY
 config X86_NON_DSX_PWRSEQ
 	bool
 	default n
+	select HAS_TASK_POWERBTN
+	select GPIO_GET_CONFIG
 	help
 	  This option enables Non Deep Sleep Well power sequencing for
 	  Intel x86 chips.
