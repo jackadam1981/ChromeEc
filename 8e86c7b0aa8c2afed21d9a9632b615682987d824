@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "482931a0_fa28abcc",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-29T19:55:10Z",
+      "side": 1,
+      "message": "where does that leave us? is this patch OK as-is, then?",
+      "parentUuid": "8069c526_594b5971",
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60f8ce4d_f1a54a92",
         "filename": "zephyr/include/cros/binman.dtsi",
         "patchSetId": 1
@@ -97,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f5876fa_58d2fdfa",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-29T19:55:10Z",
+      "side": 1,
+      "message": "yes, padding was 0x00 before this patch.\n\ni have no idea what effect 0x1d has here. origin:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2860987",
+      "parentUuid": "60f8ce4d_f1a54a92",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1f55d61_81011476",
         "filename": "zephyr/include/cros/binman.dtsi",
         "patchSetId": 1
@@ -108,6 +150,30 @@
       "writtenOn": "2023-08-29T19:18:04Z",
       "side": 1,
       "message": "Note that your RO and RW sections setup the `pad-byte` property at different levels in the tree.\n\n```\nbinman/wp-ro/pad-byte\u003d\u003c0xff\u003e;\nbinman/ec-rw/rw-fw/pad-byte\u003d\u003c0xff\u003e;\n```\n\nIs this intentional?  If not, I recommend grouping the `pad-byte` property to be adjacent to the \u0027offset\u0027 and \u0027size\u0027 properties.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f261bf_6293ee9f",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-29T19:55:10Z",
+      "side": 1,
+      "message": "yes, it\u0027s intentional to the extent that it didn\u0027t affect\npadding when specified at the ec-rw level.\n\ni was also surprised by this, but assumed this is an\n\"intentional\" quirk of the underlying implementation.",
+      "parentUuid": "f1f55d61_81011476",
       "range": {
         "startLine": 68,
         "startChar": 4,
