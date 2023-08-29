@@ -16,6 +16,23 @@
       "message": "responded to all comments",
       "revId": "c9b3581f437a955ddde5ac0f9dd006fdbaea5804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7765895_618d7344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-08-29T17:50:35Z",
+      "side": 1,
+      "message": "It looks good to me, but I have no time to investigate it deeper. Have you tested that on a local DUT?",
+      "revId": "c9b3581f437a955ddde5ac0f9dd006fdbaea5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
