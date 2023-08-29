@@ -349,7 +349,8 @@ static enum ec_error_list isl923x_device_id(int chgnum, int *id)
 }
 
 #ifdef CONFIG_CHARGER_SET_FREQUENCY
-static enum ec_error_list isl923x_set_frequency(int chgnum, int freq_khz)
+test_export_static enum ec_error_list isl923x_set_frequency(int chgnum,
+							    int freq_khz)
 {
 	int rv;
 	int reg;
