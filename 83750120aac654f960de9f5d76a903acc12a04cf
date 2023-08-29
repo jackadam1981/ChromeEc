@@ -22,6 +22,30 @@
       },
       "revId": "83750120aac654f960de9f5d76a903acc12a04cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc78738d_846dc23a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-29T15:23:49Z",
+      "side": 1,
+      "message": "Agreed in general. Moving to JSON requires checking if anybody relies on the current format, and it\u0027s missing quotes to make a wild JSON-but-also-remaining-compatible contraption work that could allow gradual changes.",
+      "parentUuid": "28d70807_b06e71a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "83750120aac654f960de9f5d76a903acc12a04cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
