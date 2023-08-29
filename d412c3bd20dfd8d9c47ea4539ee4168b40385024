@@ -16,6 +16,23 @@
       "message": "invoke the command \"zmake build adlrvp_mchp\".\nhow about program \"mtlrvpp_mchp\" build, this second loader project should be built too?",
       "revId": "d412c3bd20dfd8d9c47ea4539ee4168b40385024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc36265_bc631f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-29T17:49:42Z",
+      "side": 1,
+      "message": "pls split it into multiple logical CLs.",
+      "revId": "d412c3bd20dfd8d9c47ea4539ee4168b40385024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
