@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e81031_30c68332",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-29T20:01:26Z",
+      "side": 1,
+      "message": "Yeah I think it\u0027s alright for now, but it\u0027d be cool not to have this copy pasted to every other board forever.",
+      "parentUuid": "482931a0_fa28abcc",
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60f8ce4d_f1a54a92",
