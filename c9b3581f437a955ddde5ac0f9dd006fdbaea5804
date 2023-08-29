@@ -33,6 +33,24 @@
       "message": "It looks good to me, but I have no time to investigate it deeper. Have you tested that on a local DUT?",
       "revId": "c9b3581f437a955ddde5ac0f9dd006fdbaea5804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5770dbcb_68301359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-29T17:53:29Z",
+      "side": 1,
+      "message": "Yes, I experimented with it using a local DUT. I also ran TAST and autotests.",
+      "parentUuid": "a7765895_618d7344",
+      "revId": "c9b3581f437a955ddde5ac0f9dd006fdbaea5804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
