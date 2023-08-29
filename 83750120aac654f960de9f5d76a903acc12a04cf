@@ -46,6 +46,53 @@
       },
       "revId": "83750120aac654f960de9f5d76a903acc12a04cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11bd9078_bf5461e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-29T17:45:23Z",
+      "side": 1,
+      "message": "A few thoughts on this:\n\n1. In this particular case, I\u0027m pretty confident no important checked-in code is parsing this output right now.  Searching both internal and public CrOS codebases for `print_only` doesn\u0027t find anything that looks like a `servo_updater` call.\n\n1. That said, I think `--print_only` isn\u0027t the ideal name for a JSON output option, though it could live on as a (deprecated) alternate option name I guess.\n\nGiven the above, how about:\n\n1. This CL proceeds as-is.\n1. Follow up with a CL that adds a JSON output option (`--json` or any better name that you prefer).\n1. Optional: If you feel `--print_only` isn\u0027t worth keeping as a separate option from JSON output - I don\u0027t feel strongly about this one way or another - then in a third CL delete `--print_only`.",
+      "parentUuid": "bc78738d_846dc23a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "83750120aac654f960de9f5d76a903acc12a04cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abff263d_f25f3a95",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-08-29T17:45:23Z",
+      "side": 1,
+      "message": "print() already adds a final newline by default.\n\nThat said mixing print() supplied final newline with hardcoded `\\n` always feels slightly awkward, and the use of `output` string here is unnecessary.  That\u0027s not a new issue with this CL, but IMO might as well clean it up while you\u0027re at it.\n\nHow about:\n\n```\n        print(\"board:\", args.board)\n        print(\"channel:\", args.channel)\n        print(\"firmware:\", newvers)\n        print(\"firmware file:\", binfile)\n```\n\nNote the lack of a space after each colon is deliberate, print() adds that automatically by default when joining multiple args.",
+      "range": {
+        "startLine": 438,
+        "startChar": 74,
+        "endLine": 438,
+        "endChar": 76
+      },
+      "revId": "83750120aac654f960de9f5d76a903acc12a04cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
