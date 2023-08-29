@@ -34,6 +34,70 @@
       "parentUuid": "9fa4fc3f_3868f52a",
       "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8069c526_594b5971",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-29T19:18:04Z",
+      "side": 1,
+      "message": "It looks like the Zephyr devicetree support doesn\u0027t populate the default properties into the final generated DTS file.  Instead, the default values are populated into the devicetree_generated.h file.\n\nSo the default values are available to the C code, but binman processes the DTS directly and won\u0027t see the default value.\n\nConsidering binman\u0027s default padding is 0, it would be confusing to setup a different default here.",
+      "parentUuid": "f914a830_3053ab20",
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f8ce4d_f1a54a92",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-29T19:18:04Z",
+      "side": 1,
+      "message": "Based on your commit message comment, the padding was 0x00 before this change.  Is the `pad-byte` property ignored unless it\u0027s part of a section?",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f55d61_81011476",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-29T19:18:04Z",
+      "side": 1,
+      "message": "Note that your RO and RW sections setup the `pad-byte` property at different levels in the tree.\n\n```\nbinman/wp-ro/pad-byte\u003d\u003c0xff\u003e;\nbinman/ec-rw/rw-fw/pad-byte\u003d\u003c0xff\u003e;\n```\n\nIs this intentional?  If not, I recommend grouping the `pad-byte` property to be adjacent to the \u0027offset\u0027 and \u0027size\u0027 properties.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "8e86c7b0aa8c2afed21d9a9632b615682987d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
