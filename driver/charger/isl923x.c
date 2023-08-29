@@ -348,6 +348,44 @@ static enum ec_error_list isl923x_device_id(int chgnum, int *id)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_CHARGER_SET_FREQUENCY
+static enum ec_error_list isl923x_set_frequency(int chgnum, int freq_khz)
+{
+	int rv;
+	int reg;
+
+	mutex_lock(&control1_mutex_isl923x);
+	rv = raw_read16(chgnum, ISL923X_REG_CONTROL1, &reg);
+	if (rv) {
+		CPRINTS("Could not read CONTROL1. (rv=%d)", rv);
+		return rv;
+	}
+
+	reg &= ~ISL9238_C1_SWITCHING_FREQ_MASK;
+	/* 00 = 1000kHz or PROG */
+	/* 01 = 839kHz */
+	/* 10 = 723kHz */
+	/* 11 = 635kHz */
+	if (freq_khz >= 1000)
+		reg |= ISL9238_C1_SWITCHING_FREQ_PROG;
+	else if (freq_khz >= 839)
+		reg |= ISL9238_C1_SWITCHING_FREQ_839K;
+	else if (freq_khz >= 723)
+		reg |= ISL9238_C1_SWITCHING_FREQ_723K;
+	else if (freq_khz >= 635)
+		reg |= ISL9238_C1_SWITCHING_FREQ_635K;
+	else
+		reg &= ~ISL9238_C1_SWITCHING_FREQ_MASK;
+
+	rv = raw_write16(chgnum, ISL923X_REG_CONTROL1, reg);
+	if (rv)
+		return rv;
+
+	mutex_unlock(&control1_mutex_isl923x);
+	return EC_SUCCESS;
+}
+#endif
+
 static enum ec_error_list isl923x_get_option(int chgnum, int *option)
 {
 	int rv;
@@ -1579,6 +1617,9 @@ const struct charger_drv isl923x_drv = {
 #endif
 	.manufacturer_id = &isl923x_manufacturer_id,
 	.device_id = &isl923x_device_id,
+#ifdef CONFIG_CHARGER_SET_FREQUENCY
+	.set_frequency = &isl923x_set_frequency,
+#endif
 	.get_option = &isl923x_get_option,
 	.set_option = &isl923x_set_option,
 #ifdef CONFIG_CHARGE_RAMP_HW
