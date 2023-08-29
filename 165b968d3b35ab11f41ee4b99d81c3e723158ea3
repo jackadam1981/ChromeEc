@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d546654_82feb586",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-29T22:29:28Z",
+      "side": 1,
+      "message": "I don\u0027t think this file was intentionally added. I defined `fp_driver` in it but I\u0027m thinking `helipilot/board_rw.c` may have been a stale file in my path.",
+      "revId": "165b968d3b35ab11f41ee4b99d81c3e723158ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d61f2c7_ac938af7",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-29T22:29:28Z",
+      "side": 1,
+      "message": "This seems like it may be a rebase issue that likely pulled in a block that was removed in a previous commit.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "165b968d3b35ab11f41ee4b99d81c3e723158ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
