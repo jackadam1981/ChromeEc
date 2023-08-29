@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d449d78_f8b80954",
+        "filename": "board/constitution/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-29T07:37:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3790c235_d3c3bbd7",
+      "range": {
+        "startLine": 271,
+        "startChar": 20,
+        "endLine": 271,
+        "endChar": 49
+      },
+      "revId": "7cf001cc01cddeb40c7b3de4e136548910171a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd383132_d1674743",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "This is rough setting to make sure C0 will be reset.",
       "parentUuid": "cd383132_d1674743",
+      "range": {
+        "startLine": 280,
+        "startChar": 46,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "7cf001cc01cddeb40c7b3de4e136548910171a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df610bf_f9fa62b3",
+        "filename": "board/constitution/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-08-29T07:37:09Z",
+      "side": 1,
+      "message": "I think it might be too rough. Have you run any experiments on how long time is actually needed?",
+      "parentUuid": "91e3ca36_b2775ff9",
       "range": {
         "startLine": 280,
         "startChar": 46,
