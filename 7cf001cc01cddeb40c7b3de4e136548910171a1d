@@ -235,6 +235,30 @@
       },
       "revId": "7cf001cc01cddeb40c7b3de4e136548910171a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00d2a53_ef1ec91b",
+        "filename": "board/constitution/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-08-29T10:56:13Z",
+      "side": 1,
+      "message": "If we have to fix power on, 30s might not enough due to bios/h1 update.\nAnd normal power on takes almost 30s to see OS display.\nAnd resume from S3, my system takes around 20s to see OS display.",
+      "parentUuid": "0df610bf_f9fa62b3",
+      "range": {
+        "startLine": 280,
+        "startChar": 46,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "7cf001cc01cddeb40c7b3de4e136548910171a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
