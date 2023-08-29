@@ -760,6 +760,41 @@ ZTEST(isl923x, test_isl923x_enable_asgate)
 		      "RAA489000_C8_ASGATE_ON_READY bit set in Control Reg 8");
 }
 
+ZTEST(isl923x, test_isl923x_set_frequency)
+{
+	int rv;
+	uint16_t val;
+	const struct emul *isl923x_emul = ISL923X_EMUL;
+
+	zassert_true(isl923x_drv.set_frequency);
+
+	/* Test our success paths. */
+	rv = isl923x_drv.set_frequency(CHARGER_NUM, 1000);
+	zassert_ok(rv);
+	val = isl923x_emul_peek_reg(isl923x_emul, ISL923X_REG_CONTROL1);
+	zassert_false(val & ISL9238_C1_SWITCHING_FREQ_PROG);
+
+	rv = isl923x_drv.set_frequency(CHARGER_NUM, 839);
+	zassert_ok(rv);
+	val = isl923x_emul_peek_reg(isl923x_emul, ISL923X_REG_CONTROL1);
+	zassert_true(val & ISL9238_C1_SWITCHING_FREQ_839K);
+
+	rv = isl923x_drv.set_frequency(CHARGER_NUM, 723);
+	zassert_ok(rv);
+	val = isl923x_emul_peek_reg(isl923x_emul, ISL923X_REG_CONTROL1);
+	zassert_true(val & ISL9238_C1_SWITCHING_FREQ_723K);
+
+	rv = isl923x_drv.set_frequency(CHARGER_NUM, 635);
+	zassert_ok(rv);
+	val = isl923x_emul_peek_reg(isl923x_emul, ISL923X_REG_CONTROL1);
+	zassert_true(val & ISL9238_C1_SWITCHING_FREQ_635K);
+
+	rv = isl923x_drv.set_frequency(CHARGER_NUM, 500);
+	zassert_ok(rv);
+	val = isl923x_emul_peek_reg(isl923x_emul, ISL923X_REG_CONTROL1);
+	zassert_false(val & ISL9238_C1_SWITCHING_FREQ_MASK);
+}
+
 /* Mock read and write functions to use in the hibernation test */
 FAKE_VALUE_FUNC(int, hibernate_mock_read_fn, const struct emul *, int,
 		uint8_t *, int, void *);
