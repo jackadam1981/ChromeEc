@@ -1131,6 +1131,13 @@ static void system_common_shutdown(void)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown.cmd);
 	handle_pending_reboot(reboot_at_shutdown);
 
+	/*
+	 * Clear EC_REBOOT_FLAG_CLEAR_AP_IDLE because it's already handled in
+	 * handle_pending_reboot()
+	 */
+	if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE))
+		reboot_at_shutdown.flags &= ~(EC_REBOOT_FLAG_CLEAR_AP_IDLE);
+
 	/* Reset cnt on cold boot */
 	update_ap_boot_time(RESET_CNT);
 }
