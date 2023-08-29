@@ -1196,14 +1196,6 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE)
 		return false;
 
-	if (dp_entry_is_done(port) ||
-	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
-	     tbt_entry_is_done(port)) ||
-	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
-		dpm_set_mode_entry_done(port);
-		return false;
-	}
-
 	/*
 	 * If AP mode entry is enabled, and a Data Reset has not been done, then
 	 * first request Data Reset prior to attempting to enter any modes.
@@ -1214,6 +1206,14 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
 		set_state_dpm(port, DPM_DATA_RESET);
 		return true;
+	}
+
+	if (dp_entry_is_done(port) ||
+	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+	     tbt_entry_is_done(port)) ||
+	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
+		dpm_set_mode_entry_done(port);
+		return false;
 	}
 
 	/* Check if port, port partner and cable support USB4. */
