@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c605995d_8fba6101",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-29T01:59:34Z",
+      "side": 1,
+      "message": "fix it,",
+      "parentUuid": "827914ed_7853fd5c",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135a8e31_1c8929b4",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fcf0f00_22c8cccb",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-29T01:59:34Z",
+      "side": 1,
+      "message": "yes, it is reference https://chromium-review.googlesource.com/c/chromiumos/third_party/coreboot/+/4677512/2/src/mainboard/google/brya/variants/kuldax/overridetree.cb#12.\n\nAnd it is setting on mainboard device switch.",
+      "parentUuid": "135a8e31_1c8929b4",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f13d5d_83044d62",
@@ -94,6 +142,30 @@
       "writtenOn": "2023-08-28T17:55:25Z",
       "side": 1,
       "message": "I don\u0027t think it\u0027s a good idea that a function and its return type use the same name from the readability perspective. Can you please rename one or the other?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "3136f44e145fec4f617771fa114c671dc4183f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cebca04d_ef5b81a3",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-29T01:59:34Z",
+      "side": 1,
+      "message": "fix it",
+      "parentUuid": "f8f13d5d_83044d62",
       "range": {
         "startLine": 73,
         "startChar": 5,
