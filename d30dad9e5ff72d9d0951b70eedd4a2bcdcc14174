@@ -16,6 +16,29 @@
       "message": "(just trying converage check)",
       "revId": "d30dad9e5ff72d9d0951b70eedd4a2bcdcc14174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81ab109_a41ed84c",
+        "filename": "zephyr/subsys/usb_dc/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-30T06:28:15Z",
+      "side": 1,
+      "message": "please remove the corrsponding config vars in util/config_allowed.txt",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "d30dad9e5ff72d9d0951b70eedd4a2bcdcc14174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
