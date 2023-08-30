@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8eb638_4a83f1b8",
+        "filename": "bazel/twister.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-30T20:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c89e93_7b691cf9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 99
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ade2fb8f_9819110f",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Yeah but Bazel doesn\u0027t know about Pathlib. This is for the template below, not the subprocess.run. Documented to make that more clean.",
       "parentUuid": "ade2fb8f_9819110f",
+      "range": {
+        "startLine": 362,
+        "startChar": 42,
+        "endLine": 362,
+        "endChar": 66
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9612dbef_f920a36d",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-30T20:46:18Z",
+      "side": 1,
+      "message": "To reiterate, this is for passing the arguments into the generated bazel.\n\nRemoving the `str()` gives us `PosixPath(\u0027/home/aaronmassey/fwsdk2/src/platform/ec/zephyr/test/hooks\u0027)` in the generated bazel build.",
+      "parentUuid": "ce0d0ad9_37a779fa",
       "range": {
         "startLine": 362,
         "startChar": 42,
