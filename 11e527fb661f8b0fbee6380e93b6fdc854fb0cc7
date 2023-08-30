@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8533a64_8dab52d8",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-30T20:54:14Z",
+      "side": 1,
+      "message": "I followed what the other Type C tests were doing for this mask I can just use it directly as well",
+      "parentUuid": "0e6ed00d_b4882154",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90358e02_4f18a919",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 59
@@ -65,6 +83,24 @@
       "writtenOn": "2023-08-30T20:41:04Z",
       "side": 1,
       "message": "Structurally, if you\u0027re going to add more tests with different discovery data, you\u0027ll probably want to do the connect at the beginning of each test, so you can change the discovery data before that.",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6134c2_f1b3742d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-30T20:54:14Z",
+      "side": 1,
+      "message": "I have moved it to there after this patch. I started adding additional cable types and realized this wouldn\u0027t work",
+      "parentUuid": "b7a7d4ae_e2a227ba",
       "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
