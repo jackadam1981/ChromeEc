@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20edcff5_896a9f37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-30T16:41:55Z",
+      "side": 1,
+      "message": "I reran the tests above on `cros/main` and all failed there too. \nBased on that, I swapped out the Icetower board for a v2 board and reran again against `cros/main` and all tests passed. This suggests it is related to the board rather than the code. I then re-ran the tests against patchset 19 (with the v2 board) and all tests are passing.",
+      "parentUuid": "7f8c296e_9843a796",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "165b968d3b35ab11f41ee4b99d81c3e723158ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d546654_82feb586",
         "filename": "board/helipilot/board_rw.c",
         "patchSetId": 19
