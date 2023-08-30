@@ -62,6 +62,23 @@
       },
       "revId": "6dcfd44ed85a6f248ecfdef159090fb0f61bd153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b3bb5a_18f12a4d",
+        "filename": "zephyr/program/intelrvp/mtlrvp/pd.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-30T23:47:54Z",
+      "side": 1,
+      "message": "rename this file to usbc_pd.dts",
+      "revId": "6dcfd44ed85a6f248ecfdef159090fb0f61bd153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
