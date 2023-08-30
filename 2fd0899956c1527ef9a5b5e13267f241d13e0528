@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efabb596_4e54b6c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-08-30T22:15:30Z",
+      "side": 1,
+      "message": "Can this be changed into a state machine that follows https://buganizer.corp.google.com/issues/188457962#comment13 exactly?",
+      "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9386973c_941bcb23",
+        "filename": "common/charge_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-08-30T22:15:30Z",
+      "side": 1,
+      "message": "Remove this switch statement, and just turn this into a state machine based on charge, as described in https://buganizer.corp.google.com/issues/188457962#comment13\n\nTo make things more clear, rewording here:\nFor maintaining  X \u003c charge \u003c Y:\nX \u003c soc \u003c Y:\n-if discharging, continue to discharge\n-if charging continue to charge\nsoc \u003c X:\n-charge normally\nY \u003c soc:\n-force discharge the battery\n\nFor maintaining a target charge X:\nsoc \u003c X:\n-charge normally\nsoc \u003d X:\n-charge idle\nsoc \u003e X:\n-force discharge the battery\n\nOnly check the current mode when handling the \"X \u003c soc \u003c Y\" case.",
+      "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
