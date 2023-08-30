@@ -214,6 +214,10 @@ struct tcpci_cable_data {
 	 */
 	uint32_t identity_vdm[VDO_MAX_SIZE];
 	int identity_vdos;
+	uint32_t svids_vdm[VDO_MAX_SIZE];
+	int svids_vdos;
+	uint32_t modes_vdm[VDO_MAX_SIZE];
+	int modes_vdos;
 };
 
 /** Structure of message used by TCPCI partner emulator */
