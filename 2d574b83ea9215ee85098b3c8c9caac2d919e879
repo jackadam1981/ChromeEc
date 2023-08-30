@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05266d3_e6461a72",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-30T13:09:40Z",
+      "side": 1,
+      "message": "Done, but why keep datetime/sys/time and six/typing in separate blocks?",
+      "parentUuid": "20f4e633_8d9433e8",
+      "revId": "2d574b83ea9215ee85098b3c8c9caac2d919e879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6085ca49_4ddd1b8b",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f398072d_10de4711",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-30T13:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6085ca49_4ddd1b8b",
+      "revId": "2d574b83ea9215ee85098b3c8c9caac2d919e879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68cfb6cf_6eeda973",
@@ -65,6 +101,30 @@
       "writtenOn": "2023-08-28T22:27:21Z",
       "side": 1,
       "message": "nit: I would prefer:\n\n```\nfor device in usb.core.find(find_all\u003dTrue, custom_match\u003dlambda d: _match_device(d, devs, serialname)):\n    return device\nreturn None\n```",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "2d574b83ea9215ee85098b3c8c9caac2d919e879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26309910_704d4ea0",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-30T13:09:40Z",
+      "side": 1,
+      "message": "Sounds good, I missed the forest for the trees.",
+      "parentUuid": "68cfb6cf_6eeda973",
       "range": {
         "startLine": 119,
         "startChar": 0,
