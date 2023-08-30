@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c935a5_3744b0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T21:58:42Z",
+      "side": 1,
+      "message": "Briefly, this change seems unlikely to address the root cause of the linked bug. I have some more general questions that I\u0027ll post to the bug but WRT this CL:\n* Why is this only targeted at port 0?\n* How is this supposed to work? What is expected to be different 30 seconds after wake, such that the port will enter a different mode upon reconnection?",
+      "revId": "03b3a8a80471b8b3dddd4173d7990e2c4dfc85bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
