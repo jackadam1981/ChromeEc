@@ -34,6 +34,24 @@
       "parentUuid": "acb99768_d0826c0f",
       "revId": "7418bc8eb65152976b134e5b481855cce4ed6bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7caeb86_07abf3cb",
+        "filename": "zephyr/test/drivers/default/src/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T20:03:26Z",
+      "side": 1,
+      "message": "Nit: You could probably do this statically in the driver code.",
+      "parentUuid": "5d22de73_6104f4d7",
+      "revId": "7418bc8eb65152976b134e5b481855cce4ed6bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
