@@ -22,6 +22,30 @@
       },
       "revId": "57bc3204aafc8a6201968e3fdf50facd34b364f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "669da6e6_d4602577",
+        "filename": "zephyr/shim/chip/mchp/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-08-30T17:10:09Z",
+      "side": 1,
+      "message": "Dont we need to wrap by \"CONFIG_COVERAGE\"?\nI have updated this file based on other chip vendors cmake as reference.\nPlease suggest on this.",
+      "parentUuid": "bae46df8_e672425f",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 31
+      },
+      "revId": "57bc3204aafc8a6201968e3fdf50facd34b364f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
