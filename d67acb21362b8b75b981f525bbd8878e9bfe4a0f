@@ -16,6 +16,23 @@
       "message": "This CL is landed to main, but look likes is not clean revert and cause some conflict.",
       "revId": "d67acb21362b8b75b981f525bbd8878e9bfe4a0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "668b7b3a_f476b698",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-08-30T03:29:43Z",
+      "side": 1,
+      "message": "The revert will be covered by next merge",
+      "revId": "d67acb21362b8b75b981f525bbd8878e9bfe4a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
