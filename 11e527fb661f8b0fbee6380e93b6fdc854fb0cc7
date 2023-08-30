@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "949b6d9b_fed92741",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-30T22:36:44Z",
+      "side": 1,
+      "message": "I only added it here cause nothing else will use it. This is only coming from cable responses so the EC only gets it during discovery",
+      "parentUuid": "90358e02_4f18a919",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7a7d4ae_e2a227ba",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I have moved it to there after this patch. I started adding additional cable types and realized this wouldn\u0027t work",
       "parentUuid": "b7a7d4ae_e2a227ba",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53400f9_8404f088",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-30T22:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d6134c2_f1b3742d",
       "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f48000f_db70a4b5",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-30T22:36:44Z",
+      "side": 1,
+      "message": "Looking at the spec this was done cause all that matters is if it is SVDM_VER_2_1 or not I can edit this to appropriately set since it will just be 1 more if else statement",
+      "parentUuid": "af811a5c_e9a6f4ff",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "789acecb_b53955dd",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 52
