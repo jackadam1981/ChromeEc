@@ -16,6 +16,24 @@
       "message": "This wasn\u0027t present in original test. Why is it needed?",
       "revId": "108de0b8f965fbb90cb3981ef4487e765dbd3894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7447a1_1d6e37a1",
+        "filename": "zephyr/test/amd/src/amd_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-30T21:26:08Z",
+      "side": 1,
+      "message": "This is a cautionary/general clean-up change. It ensures that the STB code is reset to its initial state.",
+      "parentUuid": "97191ece_0baa9445",
+      "revId": "108de0b8f965fbb90cb3981ef4487e765dbd3894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
