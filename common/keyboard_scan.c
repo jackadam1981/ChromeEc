@@ -637,7 +637,7 @@ static int check_keys_changed(uint8_t *state)
 	}
 
 	if (any_change) {
-		if (print_state_changes)
+		if (1)
 			print_state(state, "state");
 
 #ifdef CONFIG_KEYBOARD_PRINT_SCAN_TIMES

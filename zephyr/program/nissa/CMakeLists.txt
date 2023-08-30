@@ -82,7 +82,6 @@ if(DEFINED CONFIG_BOARD_JOXER)
 	project(joxer)
 	zephyr_library_sources(
 			"joxer/src/led.c"
-			"joxer/src/keyboard.c"
 			"joxer/src/form_factor.c"
 			"joxer/src/sub_board.c"
 			"joxer/src/thermal.c"

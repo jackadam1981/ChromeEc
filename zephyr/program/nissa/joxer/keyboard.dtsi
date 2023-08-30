@@ -22,7 +22,7 @@
 };
 
 &cros_kb_raw {
-	status = "okay";
+	status = "disabled";
 	/* No KSO2 (it's inverted and implemented by GPIO) */
 	pinctrl-0 = <&ksi0_default
 		     &ksi1_default
