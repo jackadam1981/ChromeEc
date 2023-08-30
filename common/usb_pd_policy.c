@@ -26,6 +26,7 @@
 #include "typec_control.h"
 #include "usb_api.h"
 #include "usb_common.h"
+#include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -1037,9 +1038,7 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 
 	payload[0] =
 		VDO(USB_SID_DISPLAYPORT, 1, CMD_DP_CONFIG | VDO_OPOS(opos));
-	payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
-				1, /* DPv1.3 signaling */
-				2); /* UFP connected */
+	payload[1] = dp_create_vdo_cfg(port, pin_mode);
 	return 2;
 };
 
