@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1f1941_3d9abe32",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T20:41:04Z",
+      "side": 1,
+      "message": "Nit: Add a blank line between includes and defines.",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6ed00d_b4882154",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T20:41:04Z",
+      "side": 1,
+      "message": "Nit: I\u0027m not sure this macro improves readability much. It doesn\u0027t make the usages much shorter than they otherwise would be, and it obscures what the code is doing a little bit. I\u0027d just use the polarity mask directly. Alternatively, you could write a small, well named function that returns a mux state that is its argument but with the polarity zeroed. That would be a little more obviously correct.",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90358e02_4f18a919",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T20:41:04Z",
+      "side": 1,
+      "message": "Nit: If you expect to use this anywhere else, it should be in `usb_dp_alt_mode.h` (the newer place where DP things should be) or `usb_pd.h` (the old place where things like this still are). See `PD_DP_CFG_DPON` and nearby macros.\n\nThat being said, I\u0027d really prefer to see this accessed via a bit field struct analogous to `struct dp_mode_resp_cable`.",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a7d4ae_e2a227ba",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T20:41:04Z",
+      "side": 1,
+      "message": "Structurally, if you\u0027re going to add more tests with different discovery data, you\u0027ll probably want to do the connect at the beginning of each test, so you can change the discovery data before that.",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15378146_22559b16",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T20:41:04Z",
+      "side": 1,
+      "message": "I don\u0027t see this test checking the contents of the log.",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
