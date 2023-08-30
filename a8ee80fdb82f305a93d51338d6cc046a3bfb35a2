@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ab855b_9abe1237",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-30T22:43:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c5008d66_ae7d9d00",
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71ed4cf_61d3e579",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-08-18T22:37:58Z",
       "side": 1,
       "message": "nit: whitespace",
+      "range": {
+        "startLine": 7,
+        "startChar": 87,
+        "endLine": 7,
+        "endChar": 89
+      },
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2a76de_bee2ccb1",
+        "filename": "zephyr/program/intelrvp/mtlrvp/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-30T22:43:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d71ed4cf_61d3e579",
       "range": {
         "startLine": 7,
         "startChar": 87,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea695aa5_ee127e89",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-30T22:43:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e34deb90_44a6ce01",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 11
+      },
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e81d82_c55e6246",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf42d2d_25c69fe0",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/src/chg_dc_jack.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-30T22:43:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c8e81d82_c55e6246",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a55b0df6_6262ccc3",
@@ -100,6 +190,24 @@
       "writtenOn": "2023-08-18T22:37:58Z",
       "side": 1,
       "message": "add a TODO and comment added this to suppress build errors",
+      "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af758ae9_7cba703e",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/src/chg_dc_jack.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-30T22:43:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a55b0df6_6262ccc3",
       "revId": "a8ee80fdb82f305a93d51338d6cc046a3bfb35a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
