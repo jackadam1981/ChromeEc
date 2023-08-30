@@ -39,6 +39,24 @@
       "message": "Much of the code below uses `arg.board` even after this assignment.  Also, `board` gets used as a `for` loop variable on line `455`.\n\nThis might all be 100% correct but it\u0027s not really obvious if it is or not.  Can you rename variables such that it\u0027s pretty obvious the correct one is being used in each case?\n\nFor example, it\u0027s unclear why line `435` uses `board` while `439` below uses `args.board`.  At first glance that looks like a bug, but maybe a more descriptive name for `board` would make it clear.\n\nAnother example is line `475` using `board` after `board` gets reassigned by the `for` loop on line `455`.  Is that bug or intended?  Again I think more descriptive - and *maybe* more unique - variable naming could clear it up.",
       "revId": "387959a9fd62267b669d05c3e1e3e831433d44a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f396f9_946b3497",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-30T13:10:08Z",
+      "side": 1,
+      "message": "It was actually broken (`--print` showed the wrong board if no default was given)\n\nAs for naming: board in line 430 is local to that context (which returns anyway), so 455 isn\u0027t reassigning it, but using it for itself.",
+      "parentUuid": "92f930bd_af6838e7",
+      "revId": "387959a9fd62267b669d05c3e1e3e831433d44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
