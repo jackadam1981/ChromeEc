@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a5a083e_b3d2aa5f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-30T01:26:12Z",
+      "side": 1,
+      "message": "I believe the flashrom programmer we are using here will continue to be supported in flashrom. So, we should continue to use the normal version.",
+      "parentUuid": "4da460b2_296f5a2a",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 17
+      },
+      "revId": "fc2ca5a34c18b2b35cd202f371e7910c6e139bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10319dda_22ae50de",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 9
