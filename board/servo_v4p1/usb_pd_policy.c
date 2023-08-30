@@ -38,29 +38,29 @@
 #define CONF_SET_CLEAR(c, set, clear) ((c | (set)) & ~(clear))
 #define CONF_SRC(c)                                      \
 	CONF_SET_CLEAR(c, CC_DISABLE_DTS | CC_ALLOW_SRC, \
-		       CC_ENABLE_DRP | CC_SNK_WITH_PD)
+		       CC_ENABLE_DRP | CC_SNK_WITH_PD | CC_SUZYQ)
 #define CONF_SNK(c)                       \
 	CONF_SET_CLEAR(c, CC_DISABLE_DTS, \
-		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SNK_WITH_PD)
+		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SNK_WITH_PD | CC_SUZYQ)
 #define CONF_PDSNK(c)                                      \
 	CONF_SET_CLEAR(c, CC_DISABLE_DTS | CC_SNK_WITH_PD, \
-		       CC_ALLOW_SRC | CC_ENABLE_DRP)
+		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SUZYQ)
 #define CONF_DRP(c)                                                      \
 	CONF_SET_CLEAR(c, CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP, \
-		       CC_SNK_WITH_PD)
+		       CC_SNK_WITH_PD | CC_SUZYQ)
 #define CONF_SRCDTS(c)                  \
 	CONF_SET_CLEAR(c, CC_ALLOW_SRC, \
-		       CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SNK_WITH_PD)
+		       CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SNK_WITH_PD | CC_SUZYQ)
 #define CONF_SNKDTS(c)                                                 \
 	CONF_SET_CLEAR(c, 0,                                           \
 		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_DISABLE_DTS | \
-			       CC_SNK_WITH_PD)
+			       CC_SNK_WITH_PD | CC_SUZYQ)
 #define CONF_PDSNKDTS(c)                  \
 	CONF_SET_CLEAR(c, CC_SNK_WITH_PD, \
-		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_DISABLE_DTS)
+		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SUZYQ)
 #define CONF_DRPDTS(c)                                  \
 	CONF_SET_CLEAR(c, CC_ALLOW_SRC | CC_ENABLE_DRP, \
-		       CC_DISABLE_DTS | CC_SNK_WITH_PD)
+		       CC_DISABLE_DTS | CC_SNK_WITH_PD | CC_SUZYQ)
 #define CONF_DTSOFF(c) CONF_SET_CLEAR(c, CC_DISABLE_DTS, 0)
 #define CONF_DTSON(c) CONF_SET_CLEAR(c, 0, CC_DISABLE_DTS)
 
@@ -117,7 +117,6 @@ struct vbus_prop {
 static struct vbus_prop vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
-static uint8_t vbus_rp = TYPEC_RP_RESERVED;
 
 static int cc_config = CC_ALLOW_SRC | CC_EMCA_SERVO;
 
@@ -424,7 +423,7 @@ int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
 	if (port != DUT)
 		return 0;
 
-	rp_index = vbus_rp;
+	rp_index = rp_value_stored;
 	/*
 	 * If rp_index > 2, then always return not connected. This case should
 	 * only happen when all Rp GPIO controls are tri-stated.
@@ -452,7 +451,7 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 	if (port != DUT)
 		return 0;
 
-	rp_index = vbus_rp;
+	rp_index = rp_value_stored;
 	/*
 	 * If rp_index > 2, then can't be Ra. This case should
 	 * only happen when all Rp GPIO controls are tri-stated.
@@ -611,7 +610,7 @@ static int board_set_rp(int rp)
 		}
 	}
 	/* Save new Rp value for DUT port */
-	vbus_rp = rp;
+	rp_value_stored = rp;
 
 	return EC_SUCCESS;
 }
@@ -1160,6 +1159,7 @@ static void print_cc_mode(void)
 	ccprintf("pd enabled: %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
 	ccprintf("emca: %s\n",
 		 cc_config & CC_EMCA_SERVO ? "emarked" : "non-emarked");
+	ccprintf("suzyq mode: %s\n", cc_config & CC_SUZYQ ? "on" : "off");
 }
 
 static void do_cc(int cc_config_new)
@@ -1228,6 +1228,14 @@ static void do_cc(int cc_config_new)
 				pd_comm_enable(DUT, 1);
 			else
 				pd_comm_enable(DUT, chargeable);
+
+			// VBUS Hot emulation (as failsafe sink)
+			if (cc_config & CC_SUZYQ) {
+					pd_comm_enable(DUT, 0);
+					//board_set_rp(TYPEC_RP_USB);
+					pd_set_rp_rd(DUT, TYPEC_CC_RP, TYPEC_RP_USB);
+					chg_power_select(CHG_POWER_PP5000);
+			}
 		}
 	}
 }
@@ -1271,6 +1279,12 @@ static int command_cc(int argc, const char **argv)
 			cc_config_new |= CC_EMCA_SERVO;
 		else if (!strcasecmp(argv[1], "nonemca"))
 			cc_config_new &= ~CC_EMCA_SERVO;
+		else if (!strcasecmp(argv[1], "suzyq")) {
+			cc_config_new = CONF_SNKDTS(cc_config_new);
+			cc_config_new |= CC_SUZYQ;
+			pd_power_supply_reset(DUT);
+			pd_comm_enable(DUT, 0);
+		}
 		else
 			return EC_ERROR_PARAM2;
 	}
@@ -1289,7 +1303,7 @@ static int command_cc(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(cc, command_cc,
 			"[off|on|src|snk|pdsnk|drp|srcdts|snkdts|pdsnkdts|"
-			"drpdts|dtsoff|dtson|emca|nonemca] [cc1|cc2]",
+			"drpdts|dtsoff|dtson|emca|nonemca|suzyq] [cc1|cc2]",
 			"Servo_v4 DTS and CHG mode");
 
 static void fake_disconnect_end(void)

@@ -5249,6 +5249,12 @@ static int command_pd(int argc, const char **argv)
 				return EC_ERROR_PARAM4;
 		}
 		return EC_SUCCESS;
+	}  else if (!strcasecmp(argv[2], "suspend")) {
+		pd_comm_enable(port, 0);
+		pd_set_suspend(port, 1);
+	} else if (!strcasecmp(argv[2], "resume")) {
+		pd_comm_enable(port, 1);
+			pd_set_suspend(port, 0);
 #endif
 	} else
 #endif
@@ -5283,6 +5289,7 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			"|tx|bist_rx|bist_tx|charger|dev"
 			"\n\t<port> disable|enable|soft|info|hard|ping"
+			"\n\t<port> suspend|resume"
 			"\n\t<port> dualrole [on|off|freeze|sink|source]"
 			"\n\t<port> swap [power|data|vconn]"
 			"\n\t<port> vdm [ping|curr|vers]"
