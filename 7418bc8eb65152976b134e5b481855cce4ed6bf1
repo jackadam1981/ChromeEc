@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb99768_d0826c0f",
+        "filename": "zephyr/test/drivers/default/src/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-30T16:27:20Z",
+      "side": 1,
+      "message": "I find this a little weird. IMO, the test shouldn\u0027t care where the implementation comes from as long as it produces the expected behavior. You\u0027d have to change this test if you changed the name of the driver-internal function, which seems wrong. If you didn\u0027t have this check, you wouldn\u0027t need to export this function for tests or redeclare it above, which seem like good things.",
+      "revId": "7418bc8eb65152976b134e5b481855cce4ed6bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
