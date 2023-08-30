@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa83b0a_21b418bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-30T23:11:02Z",
+      "side": 1,
+      "message": "add BUG and TEST\u003dzmake build -a",
+      "revId": "6a1309ce42d436d1d117a29cc192fb78ca33af92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26ddeaf_fbbfaee2",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-30T23:11:02Z",
+      "side": 1,
+      "message": "nit: remove extra space",
+      "range": {
+        "startLine": 13,
+        "startChar": 46,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "6a1309ce42d436d1d117a29cc192fb78ca33af92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
