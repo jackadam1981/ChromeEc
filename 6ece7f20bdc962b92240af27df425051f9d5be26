@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199d14ba_3384a145",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-08-30T09:20:07Z",
+      "side": 1,
+      "message": "Change the subject to \u0027zephyr/battery: Add SDI battery\u0027\nAlso add more details of the battery in the commit message body.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "6ece7f20bdc962b92240af27df425051f9d5be26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016c9ac0_e845eeef",
+        "filename": "zephyr/dts/bindings/battery/sdi,4404d57.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-08-30T09:20:07Z",
+      "side": 1,
+      "message": "Add Chrome OS copy right license terms",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 26
+      },
+      "revId": "6ece7f20bdc962b92240af27df425051f9d5be26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
