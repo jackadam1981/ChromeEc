@@ -59,6 +59,7 @@
 		* (EMCA) servo (or non-EMCA)                   \
 		*/
 #define CC_FASTBOOT_DFP BIT(7) /* Allow mux uServo->Fastboot on DFP */
+#define CC_SUZYQ BIT(8) /* Emulate Vbus-Hot SuzyQ */
 
 /* Servo v4 DP alt-mode configuration */
 #define ALT_DP_ENABLE BIT(0) /* Enable DP alt-mode or not */
