@@ -51,9 +51,9 @@
  * to 100W after we verify it.
  */
 #define PD_OPERATING_POWER_MW CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
-#define PD_MAX_POWER_MW 100000
-#define PD_MAX_CURRENT_MA 5000
-#define PD_MAX_VOLTAGE_MV 20000
+#define PD_MAX_POWER_MW 500
+#define PD_MAX_CURRENT_MA 100
+#define PD_MAX_VOLTAGE_MV 5000
 
 /*
  * Macros for GPIO signals used in common code that don't match the
