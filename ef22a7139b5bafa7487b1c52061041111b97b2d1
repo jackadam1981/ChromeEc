@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17786ff7_6404f639",
+        "filename": "common/pd/pd_task_intel_altmode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-31T15:21:11Z",
+      "side": 1,
+      "message": "See my comment on the 1st CL in the chain.  This should be implemented as a Zephyr driver.  Also, the PD access routines probably should be in a separate file from the thread handler.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "ef22a7139b5bafa7487b1c52061041111b97b2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
