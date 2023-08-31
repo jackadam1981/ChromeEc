@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7cce7c_9a3c3f3e",
+        "filename": "common/pd/pd_task_intel_altmode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-31T15:18:02Z",
+      "side": 1,
+      "message": "Should this file live here?  Why not under the zephyr sub-directory?\n\nCan this PD task effort be made to follow the Zephyr device model directly instead of creating a shim?",
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437e6fc4_c362c1e2",
+        "filename": "include/pd_task_intel_altmode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-31T15:18:02Z",
+      "side": 1,
+      "message": "It would be better to use Zephyr APIs directly instead of the shim.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9a0f88_60b2bab0",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-31T15:18:02Z",
+      "side": 1,
+      "message": "This needs a `depends on !PLATFORM_EC_USB_PD_TCPMV2`.  My understanding is that TCPM and PD support are mutually exclusive.",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 63
+      },
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
