@@ -16,6 +16,40 @@
       "message": "Just a thought: Could we define a different value of `CONFIG_POWER_SLEEP_FAILURE_DETECTION_RESET_MS` for tests only? Let say 100-200msec? That would help avoiding 10sec timeout while running the test every time... \n\nFeel free to answer \"NOPE\"",
       "revId": "91574e28319120a71a02b1b83762e2bb1584e576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bafe1b9_9fc5f829",
+        "filename": "zephyr/test/amd/src/sleep_failure_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-08-31T12:31:41Z",
+      "side": 1,
+      "message": "Nothing is testing PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION_MS here. Maybe it\u0027s not feasible or out of scope for an amd specific test?",
+      "revId": "91574e28319120a71a02b1b83762e2bb1584e576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee1f641_9bffabda",
+        "filename": "zephyr/test/amd/src/sleep_failure_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-08-31T12:31:41Z",
+      "side": 1,
+      "message": "Could we also test the case where the AP does reset in time? i.e. chipset_force_shutdown isn\u0027t executed.",
+      "revId": "91574e28319120a71a02b1b83762e2bb1584e576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
