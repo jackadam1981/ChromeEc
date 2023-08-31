@@ -62,6 +62,14 @@ void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+{
+	rp = TYPEC_RP_3A0;
+	ppc_set_vbus_source_current_limit(port, rp);
+	tcpm_select_rp_value(port, rp);
+	pd_update_contract(port);
+}
+
 static int set_rt1739(void)
 {
 	/*
