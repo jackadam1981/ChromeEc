@@ -16,6 +16,24 @@
       "message": "Briefly, this change seems unlikely to address the root cause of the linked bug. I have some more general questions that I\u0027ll post to the bug but WRT this CL:\n* Why is this only targeted at port 0?\n* How is this supposed to work? What is expected to be different 30 seconds after wake, such that the port will enter a different mode upon reconnection?",
       "revId": "03b3a8a80471b8b3dddd4173d7990e2c4dfc85bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f09d14_475760b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523417
+      },
+      "writtenOn": "2023-08-31T08:48:40Z",
+      "side": 1,
+      "message": "Why is this only targeted at port 0? --\u003e Thunderbolt port located at port 0 only.\n\nHow is this supposed to work? --\u003e After 30 seconds(should be a safe duration both for warm reboot and resume from S3), the port will be reset and the thunderbolt device could be detected as well.\n\nIt\u0027s just one work-around for b/296493322 because EC didn\u0027t be notified by OS which is different from the same case in S0ix.\n\nPlease help to review the comments in b/296493322#comment25.",
+      "parentUuid": "e0c935a5_3744b0e5",
+      "revId": "03b3a8a80471b8b3dddd4173d7990e2c4dfc85bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
