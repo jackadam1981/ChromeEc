@@ -16,6 +16,23 @@
       "message": "CL 4749162 makes it even more generic (for any x86 platform)",
       "revId": "29014a83d9e3da04e5369336ab2a3c72c9e50782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce07b22_60077ddb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-31T16:31:11Z",
+      "side": 1,
+      "message": "I have the same CL available here: https://crrev.com/c/4706379\n\nI haven\u0027t landed that yet, since it would be better to move it to `power/host_sleep.c`, so AMD and Intel can share the same recovery mechanism, rather than duplicating the logic multiple times. We can then build on that to send the `sysrq` and get additional debug data.\n\nThis would complete the implementation described in: go/suspend-resume-hang-recovery",
+      "revId": "29014a83d9e3da04e5369336ab2a3c72c9e50782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
