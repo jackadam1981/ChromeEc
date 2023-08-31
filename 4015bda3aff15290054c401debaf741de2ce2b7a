@@ -81,6 +81,24 @@
       "parentUuid": "26c1b3bd_4e7f9d55",
       "revId": "4015bda3aff15290054c401debaf741de2ce2b7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcca6619_cce8866d",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-08-31T05:33:22Z",
+      "side": 1,
+      "message": "Might be worth a `TODO`, but LGTM",
+      "parentUuid": "3959946c_c0d73c57",
+      "revId": "4015bda3aff15290054c401debaf741de2ce2b7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
