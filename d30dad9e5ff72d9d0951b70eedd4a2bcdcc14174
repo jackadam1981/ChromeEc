@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faccdb06_4881577e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-31T08:21:06Z",
+      "side": 1,
+      "message": "We want to merge this commit. And there is a known issue because the Zephyr change is under review. The keyboard framework doesn\u0027t receive SET_PROTOCOL(report protocol) request from Zephyr HID driver after AP boots into OS from bootloader.\nSo, the keyboard\u0027s modifer and vivaldi function keys don\u0027t work. And it will recover after hot-plugging usb device.\nZephyr PR: https://github.com/zephyrproject-rtos/zephyr/pull/61685",
+      "revId": "d30dad9e5ff72d9d0951b70eedd4a2bcdcc14174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e81ab109_a41ed84c",
