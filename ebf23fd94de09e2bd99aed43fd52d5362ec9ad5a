@@ -45,6 +45,30 @@
       },
       "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5a11e2_4e82d29f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1622,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-08-31T20:50:05Z",
+      "side": 1,
+      "message": "The ${IMG_CPY} won\u0027t be set if the `--no_preserve` is given. You may modify the ${IMG} directly to ${IMG_CPY} for the preserve case.",
+      "parentUuid": "099d1539_ae16b284",
+      "range": {
+        "startLine": 1622,
+        "startChar": 20,
+        "endLine": 1622,
+        "endChar": 27
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
