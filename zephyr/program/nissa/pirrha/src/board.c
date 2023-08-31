@@ -6,6 +6,7 @@
 #include "board.h"
 #include "common.h"
 #include "driver/charger/isl923x_public.h"
+#include "driver/mp2964.h"
 #include "extpower.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -16,6 +17,26 @@
 #include <zephyr/drivers/i2c.h>
 
 #include <ap_power/ap_power.h>
+
+/* MP2964 registers and values */
+const static struct mp2964_reg_val mp2964_page0[] = {
+	{ 0x28, 0x000C }, { 0x29, 0x0001 }, { 0x2C, 0x031F }, { 0x32, 0x1DFA },
+	{ 0x38, 0x0035 }, { 0x3C, 0x00D1 }, { 0x40, 0x034D }, { 0x41, 0x0153 },
+	{ 0x42, 0x014D }, { 0x44, 0x0053 }, { 0x45, 0x0053 }, { 0x46, 0x00D0 },
+	{ 0x4D, 0xE13F }, { 0x53, 0x0025 }, { 0x60, 0x2DB0 }, { 0x62, 0x0CAD },
+	{ 0xBD, 0x0019 }, { 0xD2, 0x00D0 }, { 0xD4, 0x0063 }, { 0xD6, 0x003F },
+	{ 0xD8, 0x002D }, { 0xE0, 0x0012 }, { 0xE2, 0x00D0 }, { 0xE8, 0x04B7 },
+	{ 0xE9, 0x00B7 }, { 0xEA, 0x00B7 }, { 0xEB, 0x00B7 }, { 0xEF, 0x00C7 },
+	{ 0xF0, 0x01C7 }
+};
+
+const static struct mp2964_reg_val mp2964_page1[] = {
+	{ 0x22, 0x00FF }, { 0x28, 0x000C }, { 0x29, 0x0001 }, { 0x2C, 0x02F7 },
+	{ 0x32, 0x1DFA }, { 0x38, 0x002D }, { 0x3C, 0x00D1 }, { 0x40, 0x034D },
+	{ 0x41, 0x0153 }, { 0x42, 0x014D }, { 0x44, 0x0053 }, { 0x45, 0x0053 },
+	{ 0x46, 0x00D0 }, { 0x48, 0x01C0 }, { 0x4D, 0xE13F }, { 0x53, 0x001D },
+	{ 0x60, 0x32B0 }, { 0x62, 0x0CAA }
+};
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
@@ -114,8 +135,26 @@ static void power_handler(struct ap_power_ev_callback *cb,
 			  struct ap_power_ev_data data)
 {
 	int enable;
+	int ret;
+	static int chip_updated;
 
 	switch (data.event) {
+	case AP_POWER_STARTUP:
+		/* mp2964 */
+		if (chip_updated == 0) {
+			ret = mp2964_tune(mp2964_page0,
+					  ARRAY_SIZE(mp2964_page0),
+					  mp2964_page1,
+					  ARRAY_SIZE(mp2964_page1));
+			if (ret != 0)
+				CPRINTS("Failed to tune mp2964");
+			else {
+				CPRINTS("Success to tune mp2964");
+				chip_updated = 1;
+			}
+		}
+
+		break;
 	case AP_POWER_RESUME:
 		/* USB A power */
 		enable = 1;
@@ -124,8 +163,6 @@ static void power_handler(struct ap_power_ev_callback *cb,
 			LOG_WRN("Failed to %sable sub rails!",
 				enable ? "en" : "dis");
 		LOG_WRN("%sable sub rails!", enable ? "en" : "dis");
-
-		/* ToDo: init mp2964 */
 		break;
 	case AP_POWER_SUSPEND:
 	case AP_POWER_SHUTDOWN:
@@ -148,7 +185,7 @@ static void pirrha_callback_init(void)
 
 	ap_power_ev_init_callback(&pirrha_cb, power_handler,
 				  AP_POWER_SHUTDOWN | AP_POWER_SUSPEND |
-					  AP_POWER_RESUME);
+					  AP_POWER_RESUME | AP_POWER_STARTUP);
 	ap_power_ev_add_callback(&pirrha_cb);
 }
 DECLARE_HOOK(HOOK_INIT, pirrha_callback_init, HOOK_PRIO_DEFAULT);
