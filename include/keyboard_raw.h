@@ -31,6 +31,7 @@ enum keyboard_column_index {
  * Must be called before any other functions in this interface.
  */
 void keyboard_raw_init(void);
+void keyboard_raw_get_ksi_control(void);
 
 /**
  * Finish intitialization after task scheduling has started.

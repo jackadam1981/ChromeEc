@@ -32,6 +32,15 @@ void keyboard_raw_init(void)
 	cros_kb_raw_init(cros_kb_raw_dev);
 }
 
+void keyboard_raw_get_ksi_control(void)
+{
+	if (!device_is_ready(cros_kb_raw_dev))
+		k_oops();
+
+	LOG_INF("%s", __func__);
+	cros_kb_raw_get_ksi_control(cros_kb_raw_dev);
+}
+
 /**
  * Finish initialization after task scheduling has started.
  */

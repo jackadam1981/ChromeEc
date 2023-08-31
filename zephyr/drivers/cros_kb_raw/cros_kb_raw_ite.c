@@ -180,6 +180,16 @@ static void cros_kb_raw_ite_ksi_isr(const struct device *dev)
 	task_wake(TASK_ID_KEYSCAN);
 }
 
+static int cros_kb_raw_ite_get_ksi_control(const struct device *dev)
+{
+	const struct cros_kb_raw_ite_config *config = dev->config;
+	struct kscan_it8xxx2_regs *const inst = config->base;
+
+	printk("[SC] inst->KBS_KSICTRL=0x%x\n", inst->KBS_KSICTRL);
+
+	return 0;
+}
+
 static int cros_kb_raw_ite_init(const struct device *dev)
 {
 	unsigned int key;
@@ -267,6 +277,7 @@ static const struct cros_kb_raw_driver_api cros_kb_raw_ite_driver_api = {
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_FACTORY_TEST
 	.config_alt = cros_kb_raw_ite_config_alt,
 #endif
+	.get_ksi_control = cros_kb_raw_ite_get_ksi_control,
 };
 static const struct cros_kb_raw_wuc_map_cfg
 	cros_kb_raw_wuc_0[IT8XXX2_DT_INST_WUCCTRL_LEN(0)] =
