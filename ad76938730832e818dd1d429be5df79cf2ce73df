@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e963df_fca8f5f0",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-31T16:56:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2739741_65bf7035",
+      "revId": "ad76938730832e818dd1d429be5df79cf2ce73df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c41ce131_4885190d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ebf94b_080bf351",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-31T16:56:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c41ce131_4885190d",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 12
+      },
+      "revId": "ad76938730832e818dd1d429be5df79cf2ce73df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc88adf8_8b889f5d",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-08-31T04:29:44Z",
       "side": 1,
       "message": "Please reuse the generic 923x defines instead of 9238-specific defines. They are available a few lines below. The driver will run on the entire 923x family, not only 9238, right?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 0
+      },
+      "revId": "ad76938730832e818dd1d429be5df79cf2ce73df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5fa83b_47b4a667",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-31T16:56:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc88adf8_8b889f5d",
       "range": {
         "startLine": 135,
         "startChar": 0,
