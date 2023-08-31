@@ -34,6 +34,41 @@
       "parentUuid": "e0c935a5_3744b0e5",
       "revId": "03b3a8a80471b8b3dddd4173d7990e2c4dfc85bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec2df66_ef6423fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-31T20:53:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "85f09d14_475760b1",
+      "revId": "03b3a8a80471b8b3dddd4173d7990e2c4dfc85bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b4ff4d_46785306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-31T20:53:22Z",
+      "side": 1,
+      "message": "I\u0027m approving this conditionally. Can you add a comment like this before the hooks?\n```\nReset the port 0 (TBT port) PD connection 30 seconds after resume to ensure correct TBT init.\nTODO(b/296493322): Craft a more targeted fix.\n```",
+      "revId": "03b3a8a80471b8b3dddd4173d7990e2c4dfc85bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
