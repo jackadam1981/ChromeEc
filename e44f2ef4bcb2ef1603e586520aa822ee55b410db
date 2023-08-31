@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "993d743c_66334584",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T18:55:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure we need to use the shlex for this as we\u0027re really just looking to print it to the console. I was initially going to suggest that we use `logging.info` or `logging.debug` for this but apparently we\u0027re not using `logging` in this module (yet?).  Maybe the simpler solution is to just break this into two lines, one to build the string and one to print it. \n\n```suggestion\ndef run(cmd: List[str]) -\u003e int:\n    \"\"\"Run a command locally with the command echoed first.\"\"\"\n    cmd_string \u003d \" \".join(cmd)\n    print(f\u0027\u003e {cmd_string}\u0027)\n```",
+      "parentUuid": "84442a9c_64b51d5b",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64bd42fc_eb49e494",
         "filename": "util/fptool.py",
         "patchSetId": 3
@@ -83,6 +101,24 @@
       "writtenOn": "2023-08-28T02:59:51Z",
       "side": 1,
       "message": "not really a new issue, but none of the error messages are being sent to stderr",
+      "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c6ffa2_1562614b",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T18:55:59Z",
+      "side": 1,
+      "message": "Good point. I just created b/298075108 to track this for better logging.",
+      "parentUuid": "a0a581c5_856ac365",
       "revId": "e44f2ef4bcb2ef1603e586520aa822ee55b410db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
