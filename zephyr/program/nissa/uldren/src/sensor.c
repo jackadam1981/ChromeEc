@@ -16,56 +16,80 @@
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
 
+static int cbi_boardversion = -1;
 static int sensor_fwconfig;
 
 void motion_interrupt(enum gpio_signal signal)
 {
-	if (sensor_fwconfig == BMA422_BMI323 ||
-	    sensor_fwconfig == LIS2DW12_BMI323)
+	if (cbi_boardversion == 1)
 		bmi3xx_interrupt(signal);
-	else if (sensor_fwconfig == BMA422_LSM6DSO ||
-		 sensor_fwconfig == LIS2DW12_LSM6DSO)
-		lsm6dso_interrupt(signal);
+	else if (cbi_boardversion >= 2) {
+		if (sensor_fwconfig == BMA422_BMI323 ||
+		    sensor_fwconfig == LIS2DW12_BMI323)
+			bmi3xx_interrupt(signal);
+		else if (sensor_fwconfig == BMA422_LSM6DSO ||
+			 sensor_fwconfig == LIS2DW12_LSM6DSO)
+			lsm6dso_interrupt(signal);
+	} else
+		bmi3xx_interrupt(signal);
 }
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
-	if (sensor_fwconfig == BMA422_LSM6DSO ||
-	    sensor_fwconfig == BMA422_BMI323)
+	if (cbi_boardversion == 1)
 		bma4xx_interrupt(signal);
-	else if (sensor_fwconfig == LIS2DW12_BMI323 ||
-		 sensor_fwconfig == LIS2DW12_LSM6DSO)
-		lis2dw12_interrupt(signal);
+	else if (cbi_boardversion >= 2) {
+		if (sensor_fwconfig == BMA422_LSM6DSO ||
+		    sensor_fwconfig == BMA422_BMI323)
+			bma4xx_interrupt(signal);
+		else if (sensor_fwconfig == LIS2DW12_BMI323 ||
+			 sensor_fwconfig == LIS2DW12_LSM6DSO)
+			lis2dw12_interrupt(signal);
+	} else
+		bma4xx_interrupt(signal);
 }
 
 static void motionsense_init(void)
 {
+	int ret;
+
+	ret = cbi_get_board_version(&cbi_boardversion);
 	cros_cbi_get_fw_config(MOTIONSENSE_SENSOR, &sensor_fwconfig);
 
-	if (sensor_fwconfig == BMA422_LSM6DSO) {
-		MOTIONSENSE_ENABLE_ALTERNATE(alt_lid_accel);
-		ccprints("LID ACCEL:BMA422, BASE ACCEL:LSM6DSO");
-	} else if (sensor_fwconfig == BMA422_BMI323) {
+	if (ret == EC_SUCCESS && cbi_boardversion <= 1) {
 		MOTIONSENSE_ENABLE_ALTERNATE(alt_lid_accel);
 		MOTIONSENSE_ENABLE_ALTERNATE(alt_base_accel);
 		MOTIONSENSE_ENABLE_ALTERNATE(alt_base_gyro);
-		ccprints("LID ACCEL:BMA422, BASE ACCEL:BMI323");
-	} else if (sensor_fwconfig == LIS2DW12_BMI323) {
-		MOTIONSENSE_ENABLE_ALTERNATE(alt_base_accel);
-		MOTIONSENSE_ENABLE_ALTERNATE(alt_base_gyro);
-		ccprints("LID ACCEL:LIS2DW12, BASE ACCEL:BMI323");
-	} else if (sensor_fwconfig == LIS2DW12_LSM6DSO) {
-		ccprints("LID ACCEL:LIS2DW12, BASE ACCEL:LSM6DSO");
-	} else {
-		motion_sensor_count = 0;
-		gmr_tablet_switch_disable();
-		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
-		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
-		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
-				      GPIO_DISCONNECTED);
-		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
-				      GPIO_DISCONNECTED);
-		ccprints("NO MOTIONSENSE");
+	} else if (cbi_boardversion >= 2) {
+		if (sensor_fwconfig == BMA422_LSM6DSO) {
+			MOTIONSENSE_ENABLE_ALTERNATE(alt_lid_accel);
+			ccprints("LID ACCEL:BMA422, BASE ACCEL:LSM6DSO");
+		} else if (sensor_fwconfig == BMA422_BMI323) {
+			MOTIONSENSE_ENABLE_ALTERNATE(alt_lid_accel);
+			MOTIONSENSE_ENABLE_ALTERNATE(alt_base_accel);
+			MOTIONSENSE_ENABLE_ALTERNATE(alt_base_gyro);
+			ccprints("LID ACCEL:BMA422, BASE ACCEL:BMI323");
+		} else if (sensor_fwconfig == LIS2DW12_BMI323) {
+			MOTIONSENSE_ENABLE_ALTERNATE(alt_base_accel);
+			MOTIONSENSE_ENABLE_ALTERNATE(alt_base_gyro);
+			ccprints("LID ACCEL:LIS2DW12, BASE ACCEL:BMI323");
+		} else if (sensor_fwconfig == LIS2DW12_LSM6DSO) {
+			ccprints("LID ACCEL:LIS2DW12, BASE ACCEL:LSM6DSO");
+		} else {
+			motion_sensor_count = 0;
+			gmr_tablet_switch_disable();
+			gpio_disable_dt_interrupt(
+				GPIO_INT_FROM_NODELABEL(int_imu));
+			gpio_disable_dt_interrupt(
+				GPIO_INT_FROM_NODELABEL(int_lid_imu));
+			gpio_pin_configure_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
+				GPIO_DISCONNECTED);
+			gpio_pin_configure_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
+				GPIO_DISCONNECTED);
+			ccprints("NO MOTIONSENSE");
+		}
 	}
 }
 DECLARE_HOOK(HOOK_INIT, motionsense_init, HOOK_PRIO_DEFAULT);
