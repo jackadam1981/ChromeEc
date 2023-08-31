@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4846c1a_149a64c5",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "False positive. This line is tested (and there is only one condition).",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795bb2b4_f35f36ca",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "This is a real coverage error. Fixed.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587ef762_7b37b9d8",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "False positive. This line is exercised with and without hitting the condition at line 932.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be345d7e_d7043187",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "False positive.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425d7c13_f6521cbe",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "False positive. Is this maybe warning on the line above (963)? Updated the test.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84a10cc_be2c4843",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "False positive.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d125a5_73264918",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "This line isn\u0027t tested. To test it, we need to expose internal state (i.e. local_state.chg_ctl_mode), which reduces the readability. It\u0027s also unrealistic since the internal state will be never changed outside of charge_state.c.\n\nWe can remove the default case instead but the code format checker doesn\u0027t allow it.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72723f4d_30eed4d3",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-31T18:26:02Z",
+      "side": 1,
+      "message": "This is a real coverage error. The line is tested but \u0027new_mode \u003d\u003d mode\u0027 isn\u0027t used as a condition. Fixed.",
+      "revId": "92d3f6a837f43ec196ffbe703b1ea5d482b89f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
