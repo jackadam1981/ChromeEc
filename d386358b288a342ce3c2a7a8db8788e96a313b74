@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4fd74c0_c3e09851",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T19:24:19Z",
+      "side": 1,
+      "message": "`updater_control` or `updater_set_state` or something similar might read easier. \n\n\u003e Is this function used standalone from the user interface or this is mainly an internal function?\n\nIf you look further down the file you\u0027ll see the lines below. Those are where the commands are being added to the user interface, so only `updater-enable` and `updater-disable` are available to the user.\n\n```\n    # Parser for \"updater-enable\" subcommand.\n    subparsers.add_parser(\n        \"updater-enable\", help\u003dcmd_updater_enable.__doc__\n    ).set_defaults(func\u003dcmd_updater_enable)\n\n    # Parser for \"updater-disable\" subcommand.\n    subparsers.add_parser(\n        \"updater-disable\", help\u003dcmd_updater_disable.__doc__\n    ).set_defaults(func\u003dcmd_updater_disable)\n```",
+      "parentUuid": "e63a575e_9a4b7cf0",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82acd699_66221fc7",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "169e4366_287582ed",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T19:24:19Z",
+      "side": 1,
+      "message": "In many cases the when you create or update files the OS will cache those updates to write them more efficiently later. `sync` tells the OS to write all cached updates to disk now. This ensures that the file is already written if we do something like a hard power down (not rebooting, which would write cached updates) of the DUT right after creating the file.",
+      "parentUuid": "14929856_295b0067",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce9c9625_c890384e",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2023-08-10T22:17:40Z",
       "side": 1,
       "message": "same comment as above. does it make sense to use something like `control`?? maybe with an input string \"Enable\" or \"Disable\" and switch/case??",
+      "range": {
+        "startLine": 89,
+        "startChar": 16,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "201e4d10_5f6d77ed",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T19:24:19Z",
+      "side": 1,
+      "message": "In this case I think it makes sense to keep as is. This function will always disable the updater and makes for an easier user interface.\n\nIf I were reading this command I would immediately know it is disabling the updater\n```\n$ ./util/fptool.py remote dut1 updater-disable\n```\n\nbut if I was reading this command I would have to think for a second about how it is controlling it and what `enable` means in this context.\n```\n./util/fptool.py remote dut1 updater-control\u003denable\n```",
+      "parentUuid": "ce9c9625_c890384e",
       "range": {
         "startLine": 89,
         "startChar": 16,

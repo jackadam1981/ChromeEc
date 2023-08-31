@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4837a3d_06637902",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T19:24:19Z",
+      "side": 1,
+      "message": "In general, I find function names and parameters that are positive to be more intuitive. In this case passing `true` means `disable` where false means `enable`. That requires a second or two of thought when calling. With that in mind, the function may read a bit easier if it were `updater_enable(enable: bool)`",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "d23db505788c6a2f62c55407522deae291a7b590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5201c49b_855d96c5",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T19:24:19Z",
+      "side": 1,
+      "message": "Either in this CL or another one we should change this (and other lines) to use `logger.info` or `logger.debug`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "d23db505788c6a2f62c55407522deae291a7b590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f4f24c_48efefb1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T19:24:19Z",
+      "side": 1,
+      "message": "I wonder if `auto-updater-enable` might be a bit more obvious. It\u0027s longer which can be annoying but slightly more specific.",
+      "range": {
+        "startLine": 175,
+        "startChar": 9,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "d23db505788c6a2f62c55407522deae291a7b590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
