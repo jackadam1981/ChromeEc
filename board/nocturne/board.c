@@ -670,7 +670,7 @@ static void board_report_pmic_fault(const char *str)
 	 * offset 0x14(PWRSTAT1) and 0x15(PWRSTAT2) in cros ec panicinfo.
 	 */
 	info = ((pwrstat2 & 0xFF) << 8) | (pwrstat1 & 0xFF);
-	panic_set_reason(PANIC_SW_PMIC_FAULT, info, 0);
+	panic_set_reason(PANIC_SW_PMIC_FAULT, info, 0, 0);
 }
 
 void board_reset_pd_mcu(void)

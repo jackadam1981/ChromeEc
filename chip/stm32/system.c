@@ -265,7 +265,7 @@ DECLARE_IRQ(STM32_IRQ_PVD, pvd_interrupt, HOOK_PRIO_FIRST);
 
 void system_pre_init(void)
 {
-	uint16_t reason, info;
+	uint16_t reason, info, task;
 	uint8_t exception, panic_flags;
 	struct panic_data *pdata;
 
@@ -346,11 +346,13 @@ void system_pre_init(void)
 	/* Restore then clear saved panic reason */
 	reason = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_REASON);
 	info = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_INFO);
+	task = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_TASK);
 	exception = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION);
-	if (reason || info || exception) {
+	if (reason || info || task || exception) {
 		panic_set_reason(reason, info, exception);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_REASON, 0);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_INFO, 0);
+		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_TASK, 0);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, 0);
 	}
 

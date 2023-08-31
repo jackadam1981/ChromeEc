@@ -173,7 +173,8 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 	__ASSERT_UNREACHABLE;
 }
 
-void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
+void panic_set_reason(uint32_t reason, uint32_t info, uint32_t task,
+		      uint8_t exception)
 {
 	struct panic_data *const pdata = get_panic_data_write();
 
@@ -188,12 +189,14 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	PANIC_REG_EXCEPTION(pdata) = exception;
 	PANIC_REG_REASON(pdata) = reason;
 	PANIC_REG_INFO(pdata) = info;
+	PANIC_REG_TASK(pdata) = task;
 
 	/* Allow architecture specific logic */
-	arch_panic_set_reason(reason, info, exception);
+	arch_panic_set_reason(reason, info, task, exception);
 }
 
-void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
+void panic_get_reason(uint32_t *reason, uint32_t *info, uint32_t *task,
+		      uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 
@@ -201,13 +204,14 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*exception = PANIC_REG_EXCEPTION(pdata);
 		*reason = PANIC_REG_REASON(pdata);
 		*info = PANIC_REG_INFO(pdata);
+		*task = PANIC_REG_TASK(pdata);
 	} else {
-		*exception = *reason = *info = 0;
+		*exception = *reason = *info = *task = 0;
 	}
 }
 
 __overridable void arch_panic_set_reason(uint32_t reason, uint32_t info,
-					 uint8_t exception)
+					 uint32_t task, uint8_t exception)
 {
 	/* Default implementation, do nothing. */
 }

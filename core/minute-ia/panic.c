@@ -184,7 +184,8 @@ noreturn void software_panic(uint32_t reason, uint32_t info)
 	__builtin_unreachable();
 }
 
-void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
+void panic_set_reason(uint32_t reason, uint32_t info, uint32_t task,
+		      uint8_t exception)
 {
 	struct panic_data *const pdata = get_panic_data_write();
 
@@ -199,6 +200,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	pdata->x86.vector = reason;
 	pdata->x86.error_code = info;
 	pdata->x86.eflags = exception;
+	pdata->x86.task_id = task_id;
 }
 
 void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
@@ -209,7 +211,8 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*reason = pdata->x86.vector;
 		*info = pdata->x86.error_code;
 		*exception = pdata->x86.eflags;
+		*task = pdata->x86.task_id;
 	} else {
-		*reason = *info = *exception = 0;
+		*reason = *info = *exception = *task = 0;
 	}
 }

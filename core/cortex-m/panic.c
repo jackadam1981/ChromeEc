@@ -470,7 +470,8 @@ void software_panic(uint32_t reason, uint32_t info)
 	__builtin_unreachable();
 }
 
-void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
+void panic_set_reason(uint32_t reason, uint32_t info, uint32_t task,
+		      uint8_t exception)
 {
 	struct panic_data *const pdata = get_panic_data_write();
 	uint32_t *lregs;
@@ -488,9 +489,11 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	lregs[CORTEX_PANIC_REGISTER_IPSR] = exception;
 	lregs[CORTEX_PANIC_REGISTER_R4] = reason;
 	lregs[CORTEX_PANIC_REGISTER_R5] = info;
+	lregs[CORTEX_PANIC_REGISTER_R6] = task;
 }
 
-void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
+void panic_get_reason(uint32_t *reason, uint32_t *info, uint32_t *task,
+		      uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 	uint32_t *lregs;
@@ -500,8 +503,9 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*exception = lregs[CORTEX_PANIC_REGISTER_IPSR];
 		*reason = lregs[CORTEX_PANIC_REGISTER_R4];
 		*info = lregs[CORTEX_PANIC_REGISTER_R5];
+		*task = lregs[CORTEX_PANIC_REGISTER_R6];
 	} else {
-		*exception = *reason = *info = 0;
+		*exception = *reason = *info = *task = 0;
 	}
 }
 

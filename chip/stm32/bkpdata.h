@@ -27,6 +27,7 @@ enum bkpdata_index {
 #endif
 	BKPDATA_INDEX_SAVED_PANIC_REASON, /* Saved panic reason */
 	BKPDATA_INDEX_SAVED_PANIC_INFO, /* Saved panic data */
+	BKPDATA_INDEX_SAVED_PANIC_TASK, /* Saved panic task info */
 	BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, /* Saved panic exception code */
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	BKPDATA_INDEX_PD0, /* USB-PD saved port0 state */

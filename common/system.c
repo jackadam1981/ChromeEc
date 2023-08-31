@@ -902,10 +902,11 @@ void system_common_pre_init(void)
 	if (system_get_reset_flags() & EC_RESET_FLAG_WATCHDOG) {
 		uint32_t reason;
 		uint32_t info;
+		uint32_t task;
 		uint8_t exception;
 		struct panic_data *pdata;
 
-		panic_get_reason(&reason, &info, &exception);
+		panic_get_reason(&reason, &info, &task, &exception);
 		pdata = panic_get_data();
 
 		/* If the panic reason is a watchdog warning, then change
@@ -913,7 +914,8 @@ void system_common_pre_init(void)
 		 * the info and exception from the watchdog warning.
 		 */
 		if (reason == PANIC_SW_WATCHDOG_WARN)
-			panic_set_reason(PANIC_SW_WATCHDOG, info, exception);
+			panic_set_reason(PANIC_SW_WATCHDOG, info, task,
+					 exception);
 		/* The watchdog panic info may have already been initialized by
 		 * the watchdog handler, so only set it here if the panic reason
 		 * is not a watchdog or the panic info has already been read,
@@ -921,7 +923,7 @@ void system_common_pre_init(void)
 		 */
 		else if (reason != PANIC_SW_WATCHDOG || !pdata ||
 			 pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD)
-			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
+			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0xff, 0);
 	}
 
 	jdata = get_jump_data();

@@ -69,13 +69,14 @@ ZTEST(panic, test_panic_reason)
 {
 	uint32_t reason;
 	uint32_t info;
+	uint32_t task;
 	uint8_t exception;
 	struct panic_data *pdata = panic_get_data();
 
 	zassert_is_null(pdata, NULL);
-	panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
+	panic_set_reason(PANIC_SW_WATCHDOG, 0, 0, 0);
 
-	panic_get_reason(&reason, &info, &exception);
+	panic_get_reason(&reason, &info, &task, &exception);
 
 	zassert_equal(PANIC_SW_WATCHDOG, reason);
 	zassert_equal(0, info);

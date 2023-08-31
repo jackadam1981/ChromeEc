@@ -26,7 +26,8 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 	exit(1);
 }
 
-void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
+void panic_set_reason(uint32_t reason, uint32_t info, uint32_t task,
+		      uint8_t exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 
@@ -40,9 +41,11 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	pdata->x86.vector = reason;
 	pdata->x86.error_code = info;
 	pdata->x86.eflags = exception;
+	pdata->x86.task_id = task;
 }
 
-void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
+void panic_get_reason(uint32_t *reason, uint32_t *info, uint32_t *task,
+		      uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 
@@ -55,4 +58,6 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*info = pdata->x86.error_code;
 	if (exception)
 		*exception = pdata->x86.eflags;
+	if (task)
+		*task = pdata->x86.task_id;
 }

@@ -19,6 +19,8 @@
 #define SOFT_PANIC_GPR_REASON 6
 /* General purpose register (r7) for saving software panic information */
 #define SOFT_PANIC_GPR_INFO 7
+/* General purpose register (r8) for saving task info */
+#define SOFT_PANIC_GPR_TASK 8
 
 #ifdef CONFIG_DEBUG_EXCEPTIONS
 /**
@@ -87,7 +89,8 @@ void software_panic(uint32_t reason, uint32_t info)
 	__builtin_unreachable();
 }
 
-void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
+void panic_set_reason(uint32_t reason, uint32_t info, uint32_t task,
+		      uint8_t exception)
 {
 	/*
 	 * It is safe to get pointer using get_panic_data_write().
@@ -117,9 +120,11 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	pdata->nds_n8.itype = exception;
 	regs[SOFT_PANIC_GPR_REASON] = reason;
 	regs[SOFT_PANIC_GPR_INFO] = info;
+	regs[SOFT_PANIC_GPR_TASK] = task;
 }
 
-void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
+void panic_get_reason(uint32_t *reason, uint32_t *info, uint32_t task,
+		      uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 	uint32_t *regs;
@@ -129,8 +134,9 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*exception = pdata->nds_n8.itype;
 		*reason = regs[SOFT_PANIC_GPR_REASON];
 		*info = regs[SOFT_PANIC_GPR_INFO];
+		*task = regs[SOFT_PANIC_GPR_TASK];
 	} else {
-		*exception = *reason = *info = 0;
+		*exception = *reason = *info = *task = 0;
 	}
 }
 

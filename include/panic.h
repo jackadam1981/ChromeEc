@@ -122,12 +122,14 @@ noreturn
  * Log a panic in the panic log, but don't halt the system. Normally
  * called on the subsequent reboot after panic detection.
  */
-void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception);
+void panic_set_reason(uint32_t reason, uint32_t info, uint32_t task,
+		      uint8_t exception);
 
 /**
  * Retrieve the currently stored panic reason + info.
  */
-void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception);
+void panic_get_reason(uint32_t *reason, uint32_t *info, uint32_t *task,
+		      uint8_t *exception);
 
 #ifdef CONFIG_ZEPHYR
 /**
@@ -135,7 +137,7 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception);
  * reason.
  */
 __override_proto void arch_panic_set_reason(uint32_t reason, uint32_t info,
-					    uint8_t exception);
+					    uint32_t task, uint8_t exception);
 #endif /* CONFIG_ZEPHYR */
 
 /**
