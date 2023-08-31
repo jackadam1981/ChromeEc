@@ -11,7 +11,7 @@ import sys
 import time
 
 import six
-from typing import Iterable, Set, Tuple
+from typing import Iterable, Optional, Set, Tuple
 
 import usb  # pylint:disable=import-error
 
@@ -51,7 +51,7 @@ def check_usb(vidpid: Iterable[str], serialname=None):
     Returns:
       True if found, False, otherwise.
     """
-    if get_usb_dev(vidpid, serialname):
+    for dev in get_usb_dev(vidpid, serialname):
         return True
 
     return False
@@ -83,16 +83,15 @@ def get_usb_dev(vidpid: Iterable[str], serialname=None):
       serialname: serialname if specified.
 
     Returns:
-      pyusb device if found, None otherwise.
+      Iterable of pyusb devices, may be empty
     """
 
     devs = set(map(_parse_vidpid_string, vidpid))
 
-    for device in usb.core.find(find_all=True, custom_match=lambda d: _match_device(d, devs, serialname)):
-        return device
+    return usb.core.find(find_all=True, custom_match=lambda d: _match_device(d, devs, serialname))
 
 
-def check_usb_dev(vidpid: Iterable[str], serialname=None):
+def check_usb_dev(vidpid: Iterable[str], serialname=None) -> Optional[int]:
     """Return the USB dev number
 
     Return the dev number of the first USB device with VID:PID vidpid,
@@ -105,12 +104,14 @@ def check_usb_dev(vidpid: Iterable[str], serialname=None):
       serialname: serialname if specified.
 
     Returns:
-      usb device number if found, None otherwise.
+      usb device number if exactly one device found, None otherwise.
     """
-    dev = get_usb_dev(vidpid, serialname=serialname)
+    devs_iter = iter(get_usb_dev(vidpid, serialname=serialname))
+    first = next(devs_iter, None)
+    additional = next(devs_iter, None)
 
-    if dev:
-        return dev.address
+    if first is not None and additional is None:
+        return first.address
 
     return None
 
