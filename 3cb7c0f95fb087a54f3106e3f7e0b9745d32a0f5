@@ -46,6 +46,30 @@
       },
       "revId": "3cb7c0f95fb087a54f3106e3f7e0b9745d32a0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1cead7_88806793",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-08-31T01:43:40Z",
+      "side": 1,
+      "message": "Thank you Aseda.\nI got feedback from Silicon Mitus. They said \"We kept it lower than min VBUS requirement of type C standard\".",
+      "parentUuid": "88cf0d8b_f2d7a0bd",
+      "range": {
+        "startLine": 768,
+        "startChar": 2,
+        "endLine": 768,
+        "endChar": 39
+      },
+      "revId": "3cb7c0f95fb087a54f3106e3f7e0b9745d32a0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
