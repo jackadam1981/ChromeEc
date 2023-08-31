@@ -7,6 +7,7 @@
 #include "charge_manager.h"
 #include "charger_profile_override.h"
 #include "driver/charger/isl923x_public.h"
+#include "driver/mp2964.h"
 #include "driver/tcpm/raa489000.h"
 #include "emul/tcpc/emul_tcpci.h"
 #include "extpower.h"
@@ -49,6 +50,8 @@ FAKE_VALUE_FUNC(int, chipset_in_state, int);
 FAKE_VOID_FUNC(usb_charger_task_set_event_sync, int, uint8_t);
 FAKE_VALUE_FUNC(int, charge_get_percent);
 FAKE_VALUE_FUNC(int, isl923x_set_comparator_inversion, int, int);
+FAKE_VALUE_FUNC(int, mp2964_tune, const struct mp2964_reg_val *, int,
+		const struct mp2964_reg_val *, int);
 
 static enum ec_error_list raa489000_is_acok_absent(int charger, bool *acok);
 
@@ -67,6 +70,7 @@ static void test_before(void *fixture)
 	RESET_FAKE(usb_charger_task_set_event_sync);
 	RESET_FAKE(charge_get_percent);
 	RESET_FAKE(isl923x_set_comparator_inversion);
+	RESET_FAKE(mp2964_tune);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -463,6 +467,9 @@ ZTEST(pirrha, test_pirrha_callback_init)
 	zassert_equal(isl923x_set_comparator_inversion_fake.call_count, 2);
 	zassert_equal(isl923x_set_comparator_inversion_fake.arg0_val, 1);
 	zassert_equal(isl923x_set_comparator_inversion_fake.arg1_val, 0);
+
+	hook_notify(HOOK_CHIPSET_STARTUP);
+	zassert_equal(mp2964_tune_fake.call_count, 1);
 }
 
 ZTEST(pirrha, test_led_set_color_power)
