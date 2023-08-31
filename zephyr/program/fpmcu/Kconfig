@@ -8,10 +8,18 @@ config BOARD_FINGERPRINT
 	  Indicates that this is the FPMCU board. This config is enabled in RO
 	  and RW, so it can be used to control fingerprint flag in EC features.
 
+config FPMCU_RW
+	bool "Include functionality required by FPMCU RW"
+	select CROS_FP_SENSOR
+	select FINGERPRINT_SHELL
+	select PLATFORM_EC_FINGERPRINT
+
 config BOARD_BLOONCHIPPER
 	bool "Bloonchipper FPMCU Board"
 	select HAS_COVERAGE_SUPPORT
 	select BOARD_FINGERPRINT
+	select FPMCU_RW if CROS_EC_RW
+	select CROS_FP_FPC_BEP_ALGORITHM if CROS_EC_RW
 	help
 	  Build the bloonchipper FPMCU board. The board uses STM32F412CG MCU
 	  and FPC1025 sensor.
