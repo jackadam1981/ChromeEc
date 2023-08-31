@@ -22,6 +22,30 @@
       },
       "revId": "bdafbaa3ae1ec564a21e9efa9b07e9fee43fe911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a86bf93_bfba615d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T20:02:32Z",
+      "side": 1,
+      "message": "I think that line in the commit message was intended to indicate that the two versions that we were using are functionally equivalent to the preferred version (`subprocess.run(cmd, check\u003dTrue)`).\n\nThese are the two versions we were using:\n```\nsubprocess.run(cmd, check\u003dFalse).check_returncode()\n```\nand \n```\nret \u003d subprocess.run(cmd, check\u003dFalse)\nret.check_returncode()\n```\n\nI updated the commit message.",
+      "parentUuid": "0c288a22_857dce04",
+      "range": {
+        "startLine": 14,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "bdafbaa3ae1ec564a21e9efa9b07e9fee43fe911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
