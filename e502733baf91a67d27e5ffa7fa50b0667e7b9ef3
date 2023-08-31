@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf619aca_df846377",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-08-31T18:03:41Z",
+      "side": 1,
+      "message": "This also needs a config option guard as it assumes battery support.",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 50
+      },
+      "revId": "e502733baf91a67d27e5ffa7fa50b0667e7b9ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d77f3a_bf2ebe2e",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-08-31T18:03:41Z",
+      "side": 1,
+      "message": "This will not exist if charger/battery support is not enabled.",
+      "range": {
+        "startLine": 243,
+        "startChar": 21,
+        "endLine": 243,
+        "endChar": 46
+      },
+      "revId": "e502733baf91a67d27e5ffa7fa50b0667e7b9ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
