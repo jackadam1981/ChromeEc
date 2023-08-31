@@ -8,6 +8,15 @@
 #include <dt-bindings/usb_pd_tcpm.h>
 
 / {
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+		i2c_lcd: lcd {
+			i2c-port = <&i2c3>;
+			enum-names =  "I2C_PORT_LCD",
+				"I2C_PORT_MP2964";
+		};
+	};
+
 	aliases {
 		gpio-cbi-wp = &gpio_ec_cbi_wp;
 		gpio-wp = &gpio_ec_wp_odl;
@@ -403,6 +412,11 @@
 
 	lcdctrl: lcd_port@29 {
 		reg = <0x29>;
+	};
+
+	mpsctrl: pmic_mp2964@20 {
+		compatible = "mps,mp2964";
+		reg = <0x20>;
 	};
 };
 
