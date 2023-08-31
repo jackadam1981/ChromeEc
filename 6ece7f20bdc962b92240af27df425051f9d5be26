@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51952803_2c040359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199d14ba_3384a145",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "6ece7f20bdc962b92240af27df425051f9d5be26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016c9ac0_e845eeef",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-30T09:20:07Z",
       "side": 1,
       "message": "Add Chrome OS copy right license terms",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 26
+      },
+      "revId": "6ece7f20bdc962b92240af27df425051f9d5be26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc9b0c2_2b907c23",
+        "filename": "zephyr/dts/bindings/battery/sdi,4404d57.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016c9ac0_e845eeef",
       "range": {
         "startLine": 1,
         "startChar": 0,
