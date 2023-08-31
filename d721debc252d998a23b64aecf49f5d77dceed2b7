@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b7875f_abdd1cfc",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T18:51:01Z",
+      "side": 1,
+      "message": "I haven\u0027t gotten a chance to test this yet. Since it\u0027s not a blocker for anything yet, I\u0027m going to punt on it for now. I created b/298451965 to track it and I\u0027ll work on it once the higher priority fixes are in place.",
+      "parentUuid": "5e5d4394_1bd147b1",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caf734d4_bf049fbb",
@@ -280,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c14d0a2_f252051c",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T18:51:01Z",
+      "side": 1,
+      "message": "Resolved in patchset 5. As noted above I\u0027ll track the power saving changes (power off DRBG and SHA when not in use) in b/298451965 and will work on that once higher priority items are complete.",
+      "parentUuid": "4ba52336_6d26d5e1",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d159191_bee85670",
@@ -345,6 +393,30 @@
         "startChar": 29,
         "endLine": 226,
         "endChar": 34
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad75c2c_d9b75aa0",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-31T18:51:01Z",
+      "side": 1,
+      "message": "As noted by CH, this was due to the first parameter of `generate` being NULL. That was resolved in http://crrev.com/c/4780147",
+      "parentUuid": "3d159191_bee85670",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 73
       },
       "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
