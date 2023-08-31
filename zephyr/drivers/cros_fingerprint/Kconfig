@@ -17,4 +17,34 @@ config CROS_FP_SENSOR_INIT_PRIORITY
 	  This initialization priority is used unless the driver implementation
 	  has its own initialization priority.
 
+config CROS_FP_FPC1025
+	bool "Fingerprint driver for FPC1025"
+	depends on DT_HAS_FPC_FPC1025_ENABLED
+	default y
+	help
+	  Driver for FPC1025 fingerprint sensor.
+
+# Enabled in private driver Kconfig
+config HAVE_FPC1025_PRIVATE_DRIVER
+	bool
+	default n
+	help
+	  If enabled, it indicates that the private driver is present.
+
+config FP_SENSOR_IMAGE_SIZE
+	int "Size of fingerprint image data"
+	default 26260 if CROS_FP_FPC1025
+	help
+	  This is a size of fingerprint image with an additional metadata.
+	  This size must be at least a size of raw image. For FPC1025,
+	  the size of a raw image is 25600 and the size of metadata is 660, so
+	  the total data is 26260 bytes.
+
+config FP_SENSOR_IMAGE_OFFSET
+	int "Offset of raw image in fingerprint image data"
+	default 400 if CROS_FP_FPC1025
+	help
+	  This is an offset of the raw fingerprint image in the image data
+	  buffer.
+
 endif # CROS_FP_SENSOR
