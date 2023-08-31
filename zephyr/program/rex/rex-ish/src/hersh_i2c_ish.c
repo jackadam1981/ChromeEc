@@ -23,7 +23,7 @@
 #define REG_LEN_BYTES 2
 #define EC_CONTROL_REG  0x52
 uint8_t ec_control_reg_val[REG_LEN_BYTES]; // register is 2 bytes long
-uint8_t i2c_read_val[REG_LEN_BYTES];
+uint8_t i2c_read_val[REG_LEN_BYTES]; 
 
 #define I2C_BUS_NODE	DT_ALIAS(i2c_0)
 // #define I2C_EC_NODE		DT_ALIAS(nuvoton_ec)
