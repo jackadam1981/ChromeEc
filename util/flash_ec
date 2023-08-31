@@ -1596,6 +1596,7 @@ function flash_npcx_uut() {
 
 		if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
 			local CUR_IMG
+			local IMG_CPY
 			local PRESERVE_STATUS
 
 			PRESERVE_STATUS=0
@@ -1603,20 +1604,22 @@ function flash_npcx_uut() {
 			if [[ "${PRESERVE_STATUS}" -eq 0 ]]; then
 				info "Reading current EC firmware image."
 				CUR_IMG="${TEMP_DIR}/ec.cur.bin"
+				IMG_CPY="${TEMP_DIR}/ec.new.cpy.bin"
+				cat "${IMG}" >> "${IMG_CPY}"
 				local UUT_CUR_RD=( "${NPCX_UUT}" "${UUT_ARGS[@]}"   \
 							"--read-flash" "--file=${CUR_IMG}" )
 				echo "${UUT_CUR_RD[*]}"
 				print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
 
-				preserve_sections "${CUR_IMG}" "${IMG}" "${TEMP_DIR}"
+				preserve_sections "${CUR_IMG}" "${IMG_CPY}" "${TEMP_DIR}"
 			fi
 		fi
 
 		info "Programming EC firmware image."
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \
 			       "--auto" "--offset=${FLAGS_offset}" \
-			       "--file=${IMG}" )
+			       "--file=${IMG_CPY}" )
 		if [[ "${FLAGS_verbose}" = "${FLAGS_TRUE}" ]]; then
 			echo "${UUT_WR[*]}"
 		fi
@@ -1650,10 +1653,10 @@ function flash_npcx_uut() {
 		info "Verifying EC firmware image."
 
 		if [[ "${FLAGS_verbose}" == "${FLAGS_TRUE}" ]]; then
-			echo "cmp -n ${IMG_SIZE} ${IMG} ${IMG_READ}"
+			echo "cmp -n ${IMG_SIZE} ${IMG_CPY} ${IMG_READ}"
 		fi
 
-		print_or_run cmp -s -n "${IMG_SIZE}" "${IMG}" "${IMG_READ}" \
+		print_or_run cmp -s -n "${IMG_SIZE}" "${IMG_CPY}" "${IMG_READ}" \
 			|| die "${MSG_VERIFY_FAIL}"
 	fi
 }
