@@ -637,7 +637,7 @@ static int check_keys_changed(uint8_t *state)
 	}
 
 	if (any_change) {
-		if (print_state_changes)
+		if (1)
 			print_state(state, "state");
 
 #ifdef CONFIG_KEYBOARD_PRINT_SCAN_TIMES
@@ -866,6 +866,12 @@ void keyboard_scan_init(void)
 #endif
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
 }
+
+static void keyboard_get_ksi_control_second(void)
+{
+	keyboard_raw_get_ksi_control();
+}
+DECLARE_HOOK(HOOK_SECOND, keyboard_get_ksi_control_second, HOOK_PRIO_DEFAULT);
 
 void keyboard_scan_task(void *u)
 {

@@ -59,6 +59,8 @@
  */
 typedef int (*cros_kb_raw_api_init)(const struct device *dev);
 
+typedef int (*cros_kb_get_ksi_control)(const struct device *dev);
+
 typedef int (*cros_kb_raw_api_drive_column)(const struct device *dev, int col);
 
 typedef int (*cros_kb_raw_api_read_rows)(const struct device *dev);
@@ -71,12 +73,14 @@ typedef int (*cros_kb_raw_api_config_alt)(const struct device *dev,
 
 __subsystem struct cros_kb_raw_driver_api {
 	cros_kb_raw_api_init init;
+	cros_kb_get_ksi_control get_ksi_control;
 	cros_kb_raw_api_drive_column drive_colum;
 	cros_kb_raw_api_read_rows read_rows;
 	cros_kb_raw_api_enable_interrupt enable_interrupt;
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_FACTORY_TEST
 	cros_kb_raw_api_config_alt config_alt;
 #endif
+
 };
 
 /**
@@ -105,6 +109,19 @@ static inline int z_impl_cros_kb_raw_init(const struct device *dev)
 	}
 
 	return api->init(dev);
+}
+
+__syscall int cros_kb_raw_get_ksi_control(const struct device *dev);
+static inline int z_impl_cros_kb_raw_get_ksi_control(const struct device *dev)
+{
+	const struct cros_kb_raw_driver_api *api =
+		(const struct cros_kb_raw_driver_api *)dev->api;
+
+	if (!api->get_ksi_control) {
+		return -ENOTSUP;
+	}
+
+	return api->get_ksi_control(dev);
 }
 
 /**
