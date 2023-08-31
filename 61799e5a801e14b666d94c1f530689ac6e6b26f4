@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc5263f2_46aafb52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1918f99d_5c65a201",
+      "revId": "61799e5a801e14b666d94c1f530689ac6e6b26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde0da25_e57abb01",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-08-30T08:54:07Z",
       "side": 1,
       "message": "Please add more details of the sensor, such as model name.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "61799e5a801e14b666d94c1f530689ac6e6b26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ee65c7_1ec67925",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde0da25_e57abb01",
       "range": {
         "startLine": 7,
         "startChar": 8,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c53aec7_32fec790",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,lis2ds.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a914329_184cd136",
+      "revId": "61799e5a801e14b666d94c1f530689ac6e6b26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "375feb0e_6d4079f2",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b9423c_b61fddbb",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-lis2ds.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "375feb0e_6d4079f2",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "61799e5a801e14b666d94c1f530689ac6e6b26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06790bda_ed9902ba",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-08-30T08:54:07Z",
       "side": 1,
       "message": "```suggestion\n/* Copyright 2023 The ChromiumOS Authors\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "61799e5a801e14b666d94c1f530689ac6e6b26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59c9ccb_ccb1a182",
+        "filename": "zephyr/shim/src/motionsense_driver/lis2ds-drvinfo.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-08-31T04:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06790bda_ed9902ba",
       "range": {
         "startLine": 1,
         "startChar": 13,
