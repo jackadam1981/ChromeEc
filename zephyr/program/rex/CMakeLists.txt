@@ -10,6 +10,21 @@ zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY "src/battery_present.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usbc_config.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_pd_policy.c")
+# zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/eeprom_target.c")
+zephyr_library_sources("rex-ish/src/hersh_i2c_ish.c")
+zephyr_library_sources("rex-ish-ec/src/hersh_i2c_ec.c")
+
+# zephyr_include_directories("../../../../../third_party/zephyr/main/drivers/i2c/")
+
+# Add 
+# # set(CMAKE_C_FLAGS "-DCHIP_NAME=npcx99nf")
+# set(CMAKE_C_FLAGS "-DCHIP_NAME=npcx9mnx")
+# # export CFLAGS=-DCHIP_NAME=npcx99nf
+# zephyr_include_directories("SWC_HAL.3.6.6.2/")
+# zephyr_include_directories("NPCX9MNG_FDK_138_GCC/SWC_DEFS/")
+# zephyr_library_sources("SWC_HAL.3.6.6.2/hal.c")
+
+
 
 if(DEFINED CONFIG_BOARD_REX)
 	project(rex)

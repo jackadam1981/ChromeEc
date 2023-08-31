@@ -1,0 +1,15 @@
+# Copyright 2023 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+description: Integrated Sensor Hub (ISH) on Intel Meteorlake CPU
+compatible: "intel,mtl-ish"
+include: i2c-device.yaml
+#
+# examples:
+#
+# intel_mtl_ish: intel-mtl-ish@38 {
+#         compatible = "intel,mtl-ish.yaml";
+#         reg = <0x38>;
+#         label = "meteorlake_cpu";
+# };
+#

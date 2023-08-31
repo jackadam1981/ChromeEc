@@ -7,10 +7,64 @@
 #include "../rex/project.overlay"
 
 &i2c0_0 {
-	status = "disabled";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	
+	// mtl_ish: mtl-ish@86 {
+	// 	// /home/hershjos/Repos/chromiumos/src/platform/ec/zephyr/dts/bindings/i2c_device/intel,mtl-ish.yaml
+	// 	compatible = "intel,mtl-ish";
+	// 	reg = <0x86>;
+	// 	label = "meteorlake_cpu_ish";
+	// 	// do I need to indicate a pin
+	// 	// port = <& idk >;
+	// 	// pinctrl-0 = <& idk >;
+	// 	// pinctrl-names = "default";
+	// };
+	
+	nuvoton_npcx99_ec: nuvoton-ec@56 {
+		compatible = "nuvoton,npcx-i2c-port";
+		reg = <0x56>;
+		status = "okay";
+		port = <0x00>;
+		controller = <&i2c_ctrl0>;
+		clock-frequency = <I2C_BITRATE_FAST>;	
+		pinctrl-0 = <&i2c0_0_sda_scl_gpb4_b5>;
+		pinctrl-names = "default";
+		#address-cells = <1>;
+		#size-cells = <0>;
+	};
+
+	// nuvoton_npcx99_ec: nuvoton-ec@56 {
+	// 	compatible = "nuvoton,npcx-i2c-ctrl";
+	// 	// compatible = "nuvoton,npcx99";
+	// 	reg = <0x40009000 0x1000>;
+	// 	// reg = <0x56>;
+	// 	status = "okay";
+	// };
 };
+
+// &i2c_ctrl0 {
+// 	nuvoton_npcx99_ec: nuvoton-ec@82 {
+// 		compatible = "nuvoton,npcx-i2c-ctrl";
+// 		// compatible = "nuvoton,npcx99";
+// 		// reg = <0x86>;
+// 		reg = <0x40009000 0x1000>;
+// 		status = "okay";
+// 		// port = < 0x0 >;
+// 		// controller = <&i2c_ctrl0>;
+// 		// clocks = <  >
+// 		// label = "nuvoton_npcx99_ec";
+// 		// label = "i2c-device";
+// 		// do I need to indicate a pin
+// 		// port = <& idk >;
+// 		// pinctrl-0 = <& idk >;
+// 		// pinctrl-names = "default";
+// 	};
+// };
+
+
 &i2c_ec_i2c_sensor_scl_r {
-	status = "disabled";
+	status = "okay";
 };
 &int_imu {
 	status = "disabled";
