@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5147166f_409743da",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-31T21:16:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9612dbef_f920a36d",
+      "range": {
+        "startLine": 362,
+        "startChar": 42,
+        "endLine": 362,
+        "endChar": 66
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d30b36f4_38be6975",
