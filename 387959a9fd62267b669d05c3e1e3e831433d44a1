@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17c65d5_0f19d101",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-08-31T20:21:44Z",
+      "side": 1,
+      "message": "I added -a/--all support here. This required some additional changes including a new commit, to pass through all the found devices.",
+      "parentUuid": "b42601ab_504ec857",
+      "range": {
+        "startLine": 17,
+        "startChar": 60,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "387959a9fd62267b669d05c3e1e3e831433d44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92f930bd_af6838e7",
