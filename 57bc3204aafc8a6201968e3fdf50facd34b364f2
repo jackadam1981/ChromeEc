@@ -46,6 +46,30 @@
       },
       "revId": "57bc3204aafc8a6201968e3fdf50facd34b364f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b352b5_ee295333",
+        "filename": "zephyr/shim/chip/mchp/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-08-31T20:39:44Z",
+      "side": 1,
+      "message": "This is fine. Can you add this comment above, though?\n\n```\n# When building code coverage, the final Zephyr image isn\u0027t actually linked\n# and there\u0027s no valid image to program. Skip compiling and linking the mchp\n# second loader when coverage is enabled.\n```",
+      "parentUuid": "669da6e6_d4602577",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 31
+      },
+      "revId": "57bc3204aafc8a6201968e3fdf50facd34b364f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
