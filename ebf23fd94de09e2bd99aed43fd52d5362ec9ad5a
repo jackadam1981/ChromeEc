@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26a49430_1e1cfe23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-08-31T20:53:03Z",
+      "side": 1,
+      "message": "In addition to the preserve case, please test `--no_preserve`, `--read`, and `--verify`.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb5a96b8_eb6ff1bd",
         "filename": "util/flash_ec",
         "patchSetId": 2
