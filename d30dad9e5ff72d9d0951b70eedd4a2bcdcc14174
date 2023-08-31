@@ -63,6 +63,30 @@
       },
       "revId": "d30dad9e5ff72d9d0951b70eedd4a2bcdcc14174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a1eab7f_c94f2e9c",
+        "filename": "zephyr/subsys/usb_dc/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-31T06:47:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "54b2690b_013b03f6",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "d30dad9e5ff72d9d0951b70eedd4a2bcdcc14174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
