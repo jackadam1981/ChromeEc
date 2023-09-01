@@ -16,6 +16,24 @@
       "message": "Looks like some unused emul functions are messing with the coverage. I\u0027m OK with LCOV-excluding these if we need them there.",
       "revId": "8888550d3275d06d4fe6679231db73abdf1aac73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfdcd06_d6325381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-01T18:06:52Z",
+      "side": 1,
+      "message": "Done - I used LCOV exclusions for the required GPIO APIs and I enhanced the test to validate that the mock controller correctly tracks if the application",
+      "parentUuid": "d0434649_4f3ace5d",
+      "revId": "8888550d3275d06d4fe6679231db73abdf1aac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
