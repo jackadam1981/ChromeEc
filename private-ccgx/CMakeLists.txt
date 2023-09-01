@@ -1,0 +1,1 @@
+zephyr_library_sources(ccgx_library.c)
