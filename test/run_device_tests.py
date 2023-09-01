@@ -486,6 +486,29 @@ BOARD_CONFIGS = {
 }
 
 
+def get_board_config(build_board: str) -> BoardConfig:
+    """
+    Returns the BOARD_CONFIG entry for the given build_board. If build_board is
+    one of the standard boards then just return the config from BOARD_CONFIGS.
+    Otherwise search through the build variants for a matching `build_board`.
+    """
+
+    try:
+        return BOARD_CONFIGS[build_board]
+    except KeyError as board_config_key_error:
+        logging.debug(
+            "build_board %s not found in BOARD_CONFIGS, checking variants",
+            board_config_key_error,
+        )
+
+    for board_config in BOARD_CONFIGS.values():
+        variants_info = board_config.variants.values()
+        if any(v.get("build_board") == build_board for v in variants_info):
+            return board_config
+
+    return None
+
+
 def read_file_gsutil(path: str) -> bytes:
     """Get data from bucket, using gsutil tool"""
     cmd = ["gsutil", "cat", path]
@@ -730,7 +753,13 @@ def run_test(
     """Run specified test."""
     start = time.time()
 
-    board_config = BOARD_CONFIGS[build_board]
+    board_config = get_board_config(build_board)
+    logging.debug(
+        "Mapped build board %s to BoardConfig %s",
+        build_board,
+        board_config.name,
+    )
+
     logging.debug("Calling pre-test callback")
     if not test.pre_test_callback(board_config):
         logging.error("pre-test callback failed, aborting")
