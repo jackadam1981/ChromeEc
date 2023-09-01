@@ -93,6 +93,30 @@
       },
       "revId": "b335344a3b81d98f470f5898dae21dd852bb09d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b396bec_fff3590f",
+        "filename": "board/constitution/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-09-01T06:47:03Z",
+      "side": 1,
+      "message": "And if CL merge, should I cherry-pick to brya or you will cherry-pick to brya?\nThanks.",
+      "parentUuid": "e015897b_b665cba6",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 19
+      },
+      "revId": "b335344a3b81d98f470f5898dae21dd852bb09d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
