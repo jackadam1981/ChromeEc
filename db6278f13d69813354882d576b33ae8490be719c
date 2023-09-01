@@ -51,6 +51,24 @@
       "message": "If Karis needs to enable CONFIG_PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH likes Rex and Screebo?",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334a2b4a_4a54f7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-01T10:09:13Z",
+      "side": 1,
+      "message": "Actually it\u0027s enabled for Rex and Screebo because there are existing protos of them which have EEPROM in them and EC flash don\u0027t have CBI, so that option copies CBI from EEPROM to EC flash first time.\n\nWe are working on making this feature a POR, if the bring up is very close, I will enable the Kconfig option",
+      "parentUuid": "6a5d32d7_6ba1df48",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
