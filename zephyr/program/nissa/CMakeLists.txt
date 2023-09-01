@@ -44,6 +44,18 @@ if(DEFINED CONFIG_BOARD_NOKRIS)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "nokris/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nokris/src/charger.c")
 endif()
+if(DEFINED CONFIG_BOARD_BIRDO)
+	project(birdo)
+	zephyr_library_sources(
+			"birdo/src/led.c"
+			"birdo/src/form_factor.c"
+			"birdo/src/keyboard.c"
+			"birdo/src/hdmi.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "birdo/src/fan.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "birdo/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "birdo/src/charger.c")
+endif()
 if(DEFINED CONFIG_BOARD_CRAASK)
 	zephyr_library_sources(
 			"craask/src/fan.c"
