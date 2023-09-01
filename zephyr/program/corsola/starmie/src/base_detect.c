@@ -122,9 +122,7 @@ static int base_init(void)
 				  AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
 	ap_power_ev_add_callback(&cb);
 
-	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-		base_detect_enable(true);
-	}
+	base_detect_enable(true);
 
 	return 0;
 }
