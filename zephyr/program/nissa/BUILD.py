@@ -79,6 +79,11 @@ nokris = register_nissa_project(
     chip="npcx9m3f",
 )
 
+birdo = register_nissa_project(
+    project_name="birdo",
+    chip="npcx9m3f",
+)
+
 craask = register_nissa_project(
     project_name="craask",
     chip="npcx9m3f",
