@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fbf36c_cad77f3e",
+        "filename": "board/constitution/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-09-01T05:53:48Z",
+      "side": 1,
+      "message": "I think you need to cancel old request with hook_call_deferred(\u0026pd_reset_deferred_data, -1); since we might already have a deferred call pending.",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "b335344a3b81d98f470f5898dae21dd852bb09d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38572bd_a2e71f2b",
+        "filename": "board/constitution/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-09-01T05:53:48Z",
+      "side": 1,
+      "message": "I think you need to cancel old request with hook_call_deferred(\u0026pd_reset_deferred_data, -1); since we might already have a deferred call pending.",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 19
+      },
+      "revId": "b335344a3b81d98f470f5898dae21dd852bb09d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
