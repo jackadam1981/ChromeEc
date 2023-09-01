@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5871d1cb_7be790fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-09-01T21:52:16Z",
+      "side": 1,
+      "message": "I think the correct fix would be to change the check in crash collector. It should look at subset of flags (actually not sure which one besides PANIC_DATA_FLAG_FRAME_VALID). The purpose of TRUNCATED flag is to notify that not all data was copied (for whatever reason) and the current CL is disabling this notification.",
+      "revId": "cd0bd91d4a040416ca55e55e0ed118415dd3181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
