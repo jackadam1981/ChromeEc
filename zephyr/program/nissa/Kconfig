@@ -42,6 +42,12 @@ config BOARD_NOKRIS
           Build Google Nokris reference board. Nokris has Intel ADL-N SoC
           with NPCX993FA0BX EC.
 
+config BOARD_BIRDO
+        bool "Google Birdo Board"
+        help
+          Build Google Birdo board. Birdo has Intel ADL-N SoC
+          with NPCX993FA0BX EC.
+
 config BOARD_CRAASK
 	bool "Google Craask Board"
 	help
