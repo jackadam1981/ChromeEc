@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "825bf5bb_a1e53281",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-09-01T17:32:28Z",
+      "side": 1,
+      "message": "Calling callbacks from `fp_driver` structure is not a Zephyr friendly approach.\n\nFrom a user perspective, Zephyr API is a set of functions. These functions make necessary checks and call appropriate driver function (if implemented).\n\nWith `fp_driver` we will have two layers of indirect calls. With functions, I can make them `inline`, so the overhead will be minimal.",
+      "range": {
+        "startLine": 116,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "165b968d3b35ab11f41ee4b99d81c3e723158ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d61f2c7_ac938af7",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 19
