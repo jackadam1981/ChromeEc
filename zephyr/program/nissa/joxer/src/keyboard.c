@@ -15,7 +15,7 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-test_export_static const struct ec_response_keybd_config joxer_kb_legacy = {
+test_export_static const struct ec_response_keybd_config joxer_kb_w_kb_ligh = {
 	.num_top_row_keys = 13,
 	.action_keys = {
 		TK_BACK,		/* T1 */
@@ -35,10 +35,37 @@ test_export_static const struct ec_response_keybd_config joxer_kb_legacy = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
 
+test_export_static const struct ec_response_keybd_config joxer_kb_wo_kb_ligh = {
+	.num_top_row_keys = 13,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_PLAY_PAUSE,		/* T8 */
+		TK_MICMUTE,		/* T9 */
+		TK_VOL_MUTE,		/* T10 */
+		TK_VOL_DOWN,		/* T11 */
+		TK_VOL_UP,		/* T12 */
+		TK_MENU,		/* T13 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
-	return &joxer_kb_legacy;
+	uint32_t val;
+
+	cros_cbi_get_fw_config(FW_KB_BACKLIGHT, &val);
+
+	if (val == FW_KB_BACKLIGHT_OFF)
+		return &joxer_kb_wo_kb_light;
+	else
+		return &joxer_kb_w_kb_light;
 }
 
 /*
