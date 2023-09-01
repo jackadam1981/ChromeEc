@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d042b897_3b74a92c",
+        "filename": "common/pd/pd_task_intel_altmode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-09-01T18:44:13Z",
+      "side": 1,
+      "message": "In an offline conversion with Keith, we decided that it\u0027s better to use the Zephyr task framework from the start.",
+      "parentUuid": "ad7cce7c_9a3c3f3e",
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "437e6fc4_c362c1e2",
         "filename": "include/pd_task_intel_altmode.h",
         "patchSetId": 9
