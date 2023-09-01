@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bc71e05_45cc8dcd",
+        "filename": "common/pd/pd_task_intel_altmode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-01T19:05:38Z",
+      "side": 1,
+      "message": "ACK, I will plan to implement Zephyr device model.",
+      "parentUuid": "d042b897_3b74a92c",
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "437e6fc4_c362c1e2",
         "filename": "include/pd_task_intel_altmode.h",
         "patchSetId": 9
