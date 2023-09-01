@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5d27149_b3d68010",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-01T22:29:18Z",
+      "side": 1,
+      "message": "could you elaborate on \u0027not compatible\u0027?\nit\u0027s not clear to me why \u0027cat\u0027 would be able to read a file while \u0027cp\u0027 can not.",
+      "parentUuid": "5063e9cd_eb50f8b2",
+      "range": {
+        "startLine": 1608,
+        "startChar": 4,
+        "endLine": 1608,
+        "endChar": 31
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "099d1539_ae16b284",
         "filename": "util/flash_ec",
         "patchSetId": 2
