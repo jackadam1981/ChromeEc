@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed0d834_e2f364bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-01T09:30:41Z",
+      "side": 1,
+      "message": "I tested `verfiy` `read` `verbose` cases but missed `no_preserve`. Thanks for pointing it out. In latest revision I tested all cases mentioned",
+      "parentUuid": "26a49430_1e1cfe23",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb5a96b8_eb6ff1bd",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-31T19:17:50Z",
       "side": 1,
       "message": "use the `cp` command for copy.",
+      "range": {
+        "startLine": 1608,
+        "startChar": 4,
+        "endLine": 1608,
+        "endChar": 31
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "846523ab_c3f50a48",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-01T09:30:41Z",
+      "side": 1,
+      "message": "I tried `cp` initially, the path in variable `IMG` is not compatible with that command. Then based on other places in this script where `cat` is used to copy, I used it",
+      "parentUuid": "fb5a96b8_eb6ff1bd",
       "range": {
         "startLine": 1608,
         "startChar": 4,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "The ${IMG_CPY} won\u0027t be set if the `--no_preserve` is given. You may modify the ${IMG} directly to ${IMG_CPY} for the preserve case.",
       "parentUuid": "099d1539_ae16b284",
+      "range": {
+        "startLine": 1622,
+        "startChar": 20,
+        "endLine": 1622,
+        "endChar": 27
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6252591a_8f13bce2",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1622,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-01T09:30:41Z",
+      "side": 1,
+      "message": "oh sorry I missed that, thanks for pointing it out, updated the script in latest revision",
+      "parentUuid": "db5a11e2_4e82d29f",
       "range": {
         "startLine": 1622,
         "startChar": 20,
