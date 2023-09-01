@@ -14,7 +14,13 @@
 
 struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 	/* SRAM (for most code, data) */
+#ifdef HAVE_PRIVATE_MT_SCP_CORE1
+	/* isp camsys run on SCP 1, should enable cache */
+	{ 0, SCP_SRAM_END, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R },
+#else
+	/* vdec run on SCP 0, disable cache currently */
 	{ 0, SCP_SRAM_END, MPU_ATTR_W | MPU_ATTR_R },
+#endif
 	/* SRAM (for IPI shared buffer) */
 	{ SCP_SRAM_END, SCP_FW_END, MPU_ATTR_W | MPU_ATTR_R },
 /* For AP domain */
@@ -30,7 +36,13 @@ struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 #endif
 
 #if defined(CHIP_VARIANT_MT8195) || defined(CHIP_VARIANT_MT8188)
+#ifdef HAVE_PRIVATE_MT_SCP_CORE1
+	/* isp camsys run on SCP 1, should enable cache */
+	{ CONFIG_DRAM_BASE, DRAM_NC_BASE, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R },
+#else
+	/* vdec run on SCP 0, disable cache currently */
 	{ CONFIG_DRAM_BASE, DRAM_NC_BASE, MPU_ATTR_W | MPU_ATTR_R },
+#endif
 	{ DRAM_NC_BASE, KERNEL_BASE + KERNEL_SIZE, MPU_ATTR_W | MPU_ATTR_R },
 #else
 	{ 0x10000000, 0x11400000, MPU_ATTR_W | MPU_ATTR_R },
