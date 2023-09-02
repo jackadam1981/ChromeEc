@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919feb1a_310cfe1e",
+        "filename": "common/charge_state.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-09-02T05:43:20Z",
+      "side": 1,
+      "message": "If we have IDLE enabled, and sustain_soc.upper \u003c soc, the system will enter IDLE, then enter DISCHARGE on the following charger loop?",
+      "revId": "e81d35df2cee4631d921886cfc1e9b305a6cfda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c857881a_7f6f54db",
+        "filename": "common/charge_state.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-09-02T05:43:20Z",
+      "side": 1,
+      "message": "nit: please also mention that powerd should also use the v3 command as well.",
+      "revId": "e81d35df2cee4631d921886cfc1e9b305a6cfda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
