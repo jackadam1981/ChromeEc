@@ -5,13 +5,110 @@
 
 /* Boxy specific PWM LED settings. */
 
+#include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "led_common.h"
 #include "led_pwm.h"
 #include "pwm.h"
+#include "timer.h"
 #include "util.h"
+
+#define PULSE_TICK (250 * MSEC)
+
+int pulse_request;
+static uint8_t led_is_pulsing;
+
+static int get_led_id_color(enum pwm_led_id id, int color)
+{
+	return color;
+}
+
+static void set_led_color(int color)
+{
+	/*
+	 *  We must check if auto control is enabled since the LEDs may be
+	 *  controlled from the AP at anytime.
+	 */
+	if ((led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) ||
+	    (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)) || pulse_request)
+		set_pwm_led_color(PWM_LED0, get_led_id_color(PWM_LED0, color));
+}
+
+static uint8_t pulse_period;
+static uint8_t pulse_ontime;
+static enum ec_led_colors pulse_color;
+static void update_leds(void);
+static void pulse_leds_deferred(void);
+DECLARE_DEFERRED(pulse_leds_deferred);
+static void pulse_leds_deferred(void)
+{
+	static uint8_t tick_count;
+
+	if (!led_is_pulsing) {
+		tick_count = 0;
+		/*
+		 * Since we're not pulsing anymore, turn the colors off in case
+		 * we were in the "on" time.
+		 */
+		set_led_color(-1);
+		/* Then show the desired state. */
+		update_leds();
+		return;
+	}
+
+	if (tick_count < pulse_ontime)
+		set_led_color(pulse_color);
+	else
+		set_led_color(-1);
+
+	tick_count = (tick_count + 1) % pulse_period;
+	hook_call_deferred(&pulse_leds_deferred_data, PULSE_TICK);
+}
+
+static void pulse_leds(enum ec_led_colors color, int ontime, int period)
+{
+	pulse_color = color;
+	pulse_ontime = ontime;
+	pulse_period = period;
+	led_is_pulsing = 1;
+	pulse_leds_deferred();
+}
+
+static int show_chipset_state(void)
+{
+	/* Reflect the SoC state. */
+	led_is_pulsing = 0;
+
+	if (pulse_request &&
+	    !led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) {
+		pulse_leds(EC_LED_COLOR_WHITE, 2, 4);
+	} else if (chipset_in_state(CHIPSET_STATE_ON)) {
+		/* The LED must be on in the Active state. */
+		set_led_color(EC_LED_COLOR_WHITE);
+		pulse_request = 0;
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		/* The power LED must pulse in the suspend state. */
+		pulse_leds(EC_LED_COLOR_WHITE, 4, 8);
+		pulse_request = 0;
+	} else {
+		/* Chipset is off, no need to show anything for this. */
+		pulse_request = 0;
+		return 0;
+	}
+	return 1;
+}
+
+static void update_leds(void)
+{
+	if (show_chipset_state())
+		return;
+
+	set_led_color(-1);
+}
+DECLARE_HOOK(HOOK_TICK, update_leds, HOOK_PRIO_DEFAULT);
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_POWER_LED,
@@ -56,6 +153,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	enum pwm_led_id pwm_id;
 
+	pulse_request = 0;
 	/* Convert ec_led_id to pwm_led_id. */
 	if (led_id == EC_LED_ID_POWER_LED)
 		pwm_id = PWM_LED0;
@@ -84,7 +182,58 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 void board_led_init(void)
 {
 	led_auto_control(EC_LED_ID_POWER_LED, 0);
-	set_pwm_led_color(PWM_LED0, EC_LED_COLOR_RED);
+	pulse_request = 1;
 }
 
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_led_init, HOOK_PRIO_DEFAULT);
+
+static int command_ledtest(int argc, const char **argv)
+{
+	int enable;
+	int pwm_led_id;
+	int led_id;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	pwm_led_id = atoi(argv[1]);
+	if ((pwm_led_id < 0) || (pwm_led_id >= CONFIG_LED_PWM_COUNT))
+		return EC_ERROR_PARAM1;
+	led_id = supported_led_ids[pwm_led_id];
+
+	if (argc == 2) {
+		ccprintf("PWM LED %d: led_id=%d, auto_control=%d\n", pwm_led_id,
+			 led_id, led_auto_control_is_enabled(led_id) != 0);
+		return EC_SUCCESS;
+	}
+	if (!parse_bool(argv[2], &enable))
+		return EC_ERROR_PARAM2;
+
+	/* Inverted because this drives auto control. */
+	led_auto_control(led_id, !enable);
+	pulse_request = 0;
+
+	if (argc == 4) {
+		/* Set the color. */
+		if (!strncmp(argv[3], "red", 3))
+			set_pwm_led_color(pwm_led_id, EC_LED_COLOR_RED);
+		else if (!strncmp(argv[3], "green", 5))
+			set_pwm_led_color(pwm_led_id, EC_LED_COLOR_GREEN);
+		else if (!strncmp(argv[3], "amber", 5))
+			set_pwm_led_color(pwm_led_id, EC_LED_COLOR_AMBER);
+		else if (!strncmp(argv[3], "blue", 4))
+			set_pwm_led_color(pwm_led_id, EC_LED_COLOR_BLUE);
+		else if (!strncmp(argv[3], "white", 5))
+			set_pwm_led_color(pwm_led_id, EC_LED_COLOR_WHITE);
+		else if (!strncmp(argv[3], "yellow", 6))
+			set_pwm_led_color(pwm_led_id, EC_LED_COLOR_YELLOW);
+		else if (!strncmp(argv[3], "off", 3))
+			set_pwm_led_color(pwm_led_id, -1);
+		else
+			return EC_ERROR_PARAM3;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ledtest, command_ledtest,
+			"<pwm led idx> <enable|disable> [color|off]", "");
