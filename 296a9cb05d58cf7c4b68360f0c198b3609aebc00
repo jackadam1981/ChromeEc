@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0c67d1_f00c3c1d",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-09-04T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d262ba6d_ece85365",
+      "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "418826a6_dd8dd4a9",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c9c0d2_77651bf9",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-09-04T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418826a6_dd8dd4a9",
+      "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5546f59d_1cdef9f7",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-09-04T06:08:36Z",
       "side": 1,
       "message": "Don\u0027t need to check ret again as it would always be EC_SUCCESS here. And you could use similar condition if (cbi_boardversion \u003c 2) {...} else {...} in montion_interrupt and lid_accel_interrupt.",
+      "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83da0f0f_93fd8e5f",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-09-04T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5546f59d_1cdef9f7",
       "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
