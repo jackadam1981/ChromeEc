@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a36dce6f_d16b5ad8",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-04T09:40:39Z",
+      "side": 1,
+      "message": "The link in IMG has some symbols like `*`, which are not converted and `cp` is considering it as `*` but not the expansion of it. I was referring this as \u0027not compatible\u0027 earlier",
+      "parentUuid": "f5d27149_b3d68010",
+      "range": {
+        "startLine": 1608,
+        "startChar": 4,
+        "endLine": 1608,
+        "endChar": 31
+      },
+      "revId": "ebf23fd94de09e2bd99aed43fd52d5362ec9ad5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "099d1539_ae16b284",
         "filename": "util/flash_ec",
         "patchSetId": 2
