@@ -70,6 +70,24 @@
       "parentUuid": "0390c050_ed13500b",
       "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91fd4d2_ba5516ee",
+        "filename": "zephyr/test/rex/tests/program/src/board_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-04T01:44:49Z",
+      "side": 1,
+      "message": "It sounds like this is trying to test two things, then?\n\n1. `board_ap_power_action_g3_entry` is correctly registered with the subsystem and gets called on G3 entry\n2. the function sets signals to the expected G3 state\n \nIt\u0027s not clear to me that as currently written it really does either of those: it kind of does in that it expects some signals to be touched, but that could easily come from somewhere else.\n\nFor point 1 it would be ideal to instrument `board_ap_power_action_g3_entry` with a fake, but that seems difficult.\n\nFor point 2, there\u0027s already a test for `board_ap_power_force_shutdown` so we don\u0027t need to look at its behavior: mocking out `board_ap_power_force_shutdown` is sufficient to check that the handler calls that to set things to the expected state. Since we also know that this is the only thing `board_ap_power_action_g3_entry` does, mocking out `force_shutdown` also suffices to test that the handler was registered correctly.",
+      "parentUuid": "43eae4ca_07f216f8",
+      "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
