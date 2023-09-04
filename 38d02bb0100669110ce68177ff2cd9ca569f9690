@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a12327_7173b432",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-09-04T03:48:44Z",
+      "side": 1,
+      "message": "Maybe simplify it with\nif (cbi_boardversion \u003c 2)\n   bmi3xxx_interrupt(signal);\nelse\n   ...\n   \nThen you don\u0027t need the last \"else\"",
+      "revId": "38d02bb0100669110ce68177ff2cd9ca569f9690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03e1586_f35564c6",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-09-04T03:48:44Z",
+      "side": 1,
+      "message": "if ret !\u003d EC_SUCCESS, cbi_boardversion would be -1. There seems to be no block handling this though not sure if it would happen. Please re-arrange the code to make it better.\n\nMaybe ensure board version is read successfully and then choose the rule based on it. Add one more block handling the read failure.",
+      "revId": "38d02bb0100669110ce68177ff2cd9ca569f9690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
