@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f32724_89623e86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-04T04:56:41Z",
+      "side": 1,
+      "message": "I guess you want `CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS \u003d 1`?\n\nAnd please discuss with hw eng first.",
+      "revId": "1a000b3dff618b0f1aae8c834bafe070128a2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
