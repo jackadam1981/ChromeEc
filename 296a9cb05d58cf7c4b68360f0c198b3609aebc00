@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d262ba6d_ece85365",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-09-04T06:08:36Z",
+      "side": 1,
+      "message": "I think you don\u0027t need the condition here. Could simply use \"else\" as they are equal.",
+      "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418826a6_dd8dd4a9",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-09-04T06:08:36Z",
+      "side": 1,
+      "message": "I think you don\u0027t need the condition here. Could simply use \"else\" as they are equal.",
+      "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5546f59d_1cdef9f7",
+        "filename": "zephyr/program/nissa/uldren/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-09-04T06:08:36Z",
+      "side": 1,
+      "message": "Don\u0027t need to check ret again as it would always be EC_SUCCESS here. And you could use similar condition if (cbi_boardversion \u003c 2) {...} else {...} in montion_interrupt and lid_accel_interrupt.",
+      "revId": "296a9cb05d58cf7c4b68360f0c198b3609aebc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
