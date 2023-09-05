@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5884cd_7409c424",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T19:35:23Z",
+      "side": 1,
+      "message": "I think those should all go together.  Up to you whether to fix that in this CL!",
+      "parentUuid": "c05266d3_e6461a72",
+      "revId": "2d574b83ea9215ee85098b3c8c9caac2d919e879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6085ca49_4ddd1b8b",
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "Sounds good, I missed the forest for the trees.",
       "parentUuid": "68cfb6cf_6eeda973",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "2d574b83ea9215ee85098b3c8c9caac2d919e879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4d1eef_dcb4726f",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T19:35:23Z",
+      "side": 1,
+      "message": "FWIW I generally prefer explicit `return None` for clarity of intention, when there are other non-None return paths.\n\nI don\u0027t feel strongly about it though since the docstring makes it clear that None can be returned, and it looks like CrOS Python style guide doesn\u0027t have any such requirement, so feel free to leave as-is if you prefer.",
+      "parentUuid": "26309910_704d4ea0",
       "range": {
         "startLine": 119,
         "startChar": 0,
