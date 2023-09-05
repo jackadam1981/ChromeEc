@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a06866b_3ebdf949",
+        "filename": "test/test_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-05T17:26:51Z",
+      "side": 1,
+      "message": "Is this better than using \u0027#ifdef TEST_BUILD\u0027 in private_config.h?",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 32
+      },
+      "revId": "7edeedf4c68147893c9200271e7cc8fcff9822b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
