@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbea0a15_12a5966c",
+        "filename": "common/charge_state.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-05T18:59:43Z",
+      "side": 1,
+      "message": "Done. This is obscure. Made it explicit.",
+      "parentUuid": "919feb1a_310cfe1e",
+      "revId": "e81d35df2cee4631d921886cfc1e9b305a6cfda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c857881a_7f6f54db",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-02T05:43:20Z",
       "side": 1,
       "message": "nit: please also mention that powerd should also use the v3 command as well.",
+      "revId": "e81d35df2cee4631d921886cfc1e9b305a6cfda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d5dbd0_5c625d02",
+        "filename": "common/charge_state.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-05T18:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c857881a_7f6f54db",
       "revId": "e81d35df2cee4631d921886cfc1e9b305a6cfda9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
