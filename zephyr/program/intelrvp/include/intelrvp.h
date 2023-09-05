@@ -16,6 +16,7 @@
 
 FORWARD_DECLARE_ENUM(tcpc_rp_value);
 
+/* TCPC AIC Config for MECC1.0 */
 struct tcpc_aic_gpio_config_t {
 	/* TCPC interrupt */
 	enum gpio_signal tcpc_alert;
@@ -25,6 +26,13 @@ struct tcpc_aic_gpio_config_t {
 	void (*ppc_intr_handler)(int port);
 };
 extern const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[];
+
+/* TCPC AIC Config for MECC1.1 */
+struct tcpc_aic_config_t {
+	/* TCPC interrupt */
+	enum gpio_signal tcpc_alert;
+};
+extern const struct tcpc_aic_config_t tcpc_aic_config[];
 
 void board_charging_enable(int port, int enable);
 void board_vbus_enable(int port, int enable);
