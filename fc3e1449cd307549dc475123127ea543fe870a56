@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab49556f_80747bd3",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:41:29Z",
+      "side": 1,
+      "message": "nit: I\u0027d like an error if both are specified.\n\n(But, if you don\u0027t think that\u0027s worth the extra lines of code, I won\u0027t insist!)",
+      "revId": "fc3e1449cd307549dc475123127ea543fe870a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6215bf_00c17c7d",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:41:29Z",
+      "side": 1,
+      "message": "I know this sort of optimization can be tempting...but strong convention and I think style requirement to put all import dependencies at the top of the module, never in-line.",
+      "revId": "fc3e1449cd307549dc475123127ea543fe870a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
