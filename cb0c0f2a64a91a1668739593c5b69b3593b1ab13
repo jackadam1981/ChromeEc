@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9909e94_24799f78",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-05T04:24:05Z",
+      "side": 1,
+      "message": "I don\u0027t think you need these `ifdef`s because these functions will still compile if this is disabled; that\u0027s what the `__maybe_unused` is for: so you won\u0027t get an error if all callers are disabled by config.",
+      "revId": "cb0c0f2a64a91a1668739593c5b69b3593b1ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06cdc7e_ab02b794",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-05T04:24:05Z",
+      "side": 1,
+      "message": "I think this should replace the default assignment to this register on line 771 and be unconditional, since keeping the other assignment only manages to be confusing: the value of `SM5803_REG_PHOT2` would change permanently the first time the port was switched to source mode.",
+      "revId": "cb0c0f2a64a91a1668739593c5b69b3593b1ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
