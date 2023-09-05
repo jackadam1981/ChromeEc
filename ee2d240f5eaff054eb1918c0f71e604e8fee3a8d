@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d27382_a04d2a05",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-05T03:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b98e592_b345c18c",
+      "range": {
+        "startLine": 698,
+        "startChar": 7,
+        "endLine": 698,
+        "endChar": 45
+      },
+      "revId": "ee2d240f5eaff054eb1918c0f71e604e8fee3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "943a10e2_b5e81ac2",
