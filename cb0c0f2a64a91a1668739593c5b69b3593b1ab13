@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a692268_5c4d86fe",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-05T05:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9909e94_24799f78",
+      "revId": "cb0c0f2a64a91a1668739593c5b69b3593b1ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a06cdc7e_ab02b794",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-05T04:24:05Z",
       "side": 1,
       "message": "I think this should replace the default assignment to this register on line 771 and be unconditional, since keeping the other assignment only manages to be confusing: the value of `SM5803_REG_PHOT2` would change permanently the first time the port was switched to source mode.",
+      "revId": "cb0c0f2a64a91a1668739593c5b69b3593b1ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92ea9dc_754f53b1",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-05T05:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06cdc7e_ab02b794",
       "revId": "cb0c0f2a64a91a1668739593c5b69b3593b1ab13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
