@@ -9,6 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 #define CONFIG_LTO
+#undef HAVE_PRIVATE
 
 /* Disable deferred (async) flash protect*/
 #undef CONFIG_FLASH_PROTECT_DEFERRED
@@ -256,6 +257,8 @@ void user_button_edge(enum gpio_signal signal);
 
 /* Utility method */
 enum gpio_signal gpio_find_by_name(const char *name);
+
+extern int shield_reset_pin;
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
