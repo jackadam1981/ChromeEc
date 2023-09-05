@@ -9,6 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 #define CONFIG_LTO
+#undef HAVE_PRIVATE
 
 /* Disable deferred (async) flash protect*/
 #undef CONFIG_FLASH_PROTECT_DEFERRED
