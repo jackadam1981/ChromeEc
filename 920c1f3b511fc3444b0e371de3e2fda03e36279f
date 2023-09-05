@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c75df96_bf3254ef",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:16:08Z",
+      "side": 1,
+      "message": "Does all calling code always pass a float?\n\nSeparately, would it make sense to still allow int?\n\n(I don\u0027t care much about the latter, I\u0027m more concerned about the former.)",
+      "range": {
+        "startLine": 129,
+        "startChar": 74,
+        "endLine": 129,
+        "endChar": 98
+      },
+      "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd55644_3161d005",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:16:08Z",
+      "side": 1,
+      "message": "TBH the more I think about it, the more I think the `desiredpresence\u003dFalse` case should be split off to a separate function.  It forces an awkward implementation, and it makes the return value meaningless.  I certainly won\u0027t insist on that as part of your changes though, this awkward interface isn\u0027t your fault here!\n\nAssuming this stays as one function, think it would be easier to follow by defining an inline presence check function?\n\n```    \n    if desiredpresence:\n        def check_presence(devs): return devs\n    else:\n        def check_presence(devs): return not devs\n```\n\nOr:\n\n```\n    check_presence \u003d ((lambda devs: devs) if desiredpresence else\n                      (lambda devs: not devs))\n```\n\nThen the presence check in the loop becomes:\n\n```\n        if check_presence(devs):\n            return devs\n```",
+      "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
