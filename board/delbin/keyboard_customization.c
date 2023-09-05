@@ -177,6 +177,10 @@ __override void board_keyboard_boot_key(enum boot_key key,
 		boot_key->col = key_typ.col_left_shift;
 		boot_key->row = key_typ.row_left_shift;
 		break;
+	case BOOT_KEY_REFRESH:
+		boot_key->col = key_typ.col_refresh;
+		boot_key->row = key_typ.row_refresh;
+		break;
 	default:
 		keyboard_boot_key(key, boot_key);
 	}
