@@ -11,6 +11,7 @@
 #include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
 #include "../usbc.dtsi"
+#include "../wake.dtsi"
 
 /* Frostflow project DTS includes*/
 #include "led_pins.dtsi"
