@@ -98,6 +98,26 @@ const uint16_t CAP_UsbComPort = 0x0100;
 
 const uint32_t GOOG_CAP_I2c = 0x00000001;
 
+enum jtag_signal_t {
+	JTAG_TCLK = 0,
+	JTAG_TMS,
+	JTAG_TDI,
+	JTAG_TDO,
+	JTAG_TRSTn,
+	JTAG_INVALID
+};
+
+static int jtag_pins[JTAG_INVALID] = {
+	GPIO_CN7_1, /* TCLK */
+	GPIO_CN7_7, /* TMS */
+	GPIO_CN7_3, /* TDI */
+	GPIO_CN7_5, /* TDO */
+	GPIO_CN7_16, /* TRSTn */
+};
+static int saved_pin_flags[JTAG_INVALID];
+static bool jtag_enabled = false;
+static uint32_t jtag_clock_hz = 100000;
+
 static int8_t rx_buffer[256];
 static int8_t tx_buffer[256];
 
@@ -209,7 +229,7 @@ static uint8_t peek[5];
 static void dap_info(void)
 {
 	const char *CMSIS_DAP_VERSION_STR = "2.1.1";
-	const uint16_t CAPABILITIES = 0;
+	const uint16_t CAPABILITIES = CAP_Jtag;
 	struct usb_string_desc *sd = usb_serialno_desc;
 
 	if (peek_c < 2)
@@ -239,6 +259,210 @@ static void dap_info(void)
 		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
 		break;
 	}
+}
+
+static void dap_host_status(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 3)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 3);
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_connect(void)
+{
+	if (peek_c < 2)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 2);
+	if (peek[1] == 0 || peek[1] == 2) {
+		tx_buffer[1] = 2;
+		if (!jtag_enabled) {
+			jtag_enabled = true;
+			for (size_t i = 0; i < JTAG_INVALID; i++) {
+				saved_pin_flags[i] =
+					gpio_get_flags(jtag_pins[i]);
+			}
+
+			gpio_set_flags(jtag_pins[JTAG_TMS], GPIO_OUT_LOW);
+			gpio_set_flags(jtag_pins[JTAG_TDI], GPIO_OUT_LOW);
+			gpio_set_flags(jtag_pins[JTAG_TCLK], GPIO_OUT_LOW);
+			gpio_set_flags(jtag_pins[JTAG_TRSTn],
+				       GPIO_ODR_HIGH | GPIO_PULL_UP);
+			gpio_set_flags(jtag_pins[JTAG_TDO],
+				       GPIO_INPUT | GPIO_PULL_UP);
+		}
+	} else {
+		tx_buffer[1] = 0;
+	}
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_disconnect(void)
+{
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 1);
+
+	if (jtag_enabled) {
+		jtag_enabled = false;
+		for (size_t i = 0; i < JTAG_INVALID; i++) {
+			gpio_set_flags(jtag_pins[i], saved_pin_flags[i]);
+		}
+	}
+
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_transfer_configure(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 6)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 6);
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_reset_target(void)
+{
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 1);
+
+	if (shield_reset_pin != GPIO_COUNT) {
+		gpio_set_level(shield_reset_pin, false);
+		usleep(100000);
+		gpio_set_level(shield_reset_pin, true);
+		tx_buffer[2] = 1;
+	} else {
+		tx_buffer[2] = 0;
+	}
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 3);
+}
+
+static void dap_swj_pins(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 7)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 7);
+
+	uint32_t wait_us;
+	memcpy(&wait_us, rx_buffer + 3, sizeof(wait_us));
+
+	for (size_t i = 0; i < JTAG_INVALID; i++) {
+		if (rx_buffer[2] & (1 << i)) {
+			gpio_set_level(jtag_pins[i],
+				       !!(rx_buffer[1] & (1 << i)));
+		}
+	}
+
+	if ((rx_buffer[2] & 0x80) && shield_reset_pin != GPIO_COUNT) {
+		gpio_set_level(shield_reset_pin, !!(rx_buffer[1] & 0x80));
+	}
+
+	usleep(wait_us);
+
+	tx_buffer[1] = 0;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_swj_clock(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 5)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 7);
+
+	memcpy(&jtag_clock_hz, rx_buffer + 1, sizeof(jtag_clock_hz));
+
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+// 0x0100: 9 us full cycle
+// 0x1000: 82 us full cycle
+
+// 80us / 16 = 5us
+
+inline static void half_clock_delay(void)
+{
+	STM32_TIM_CNT(3) = 0x0000;
+	while (((int16_t)STM32_TIM_CNT(3)) >= 0)
+		;
+}
+
+static void dap_swj_sequence(void)
+{
+	unsigned c = queue_count(&cmsis_dap_rx_queue);
+	if (c < 2)
+		return;
+	unsigned int bit_count = peek[1] == 0 ? 256 : peek[1];
+	// ccprintf("SWJ_Sequence: bit count: %d\n", bit_count);
+	if (c < 2 + (bit_count + 7) / 8)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, c);
+	// ccprintf("Data: %02x\n", rx_buffer[2]);
+	gpio_set_level(jtag_pins[JTAG_TDI], false);
+	for (unsigned int i = 0; i < bit_count; i++) {
+		gpio_set_level(jtag_pins[JTAG_TMS],
+			       !!(rx_buffer[2 + i / 8] & (1 << (i % 8))));
+		half_clock_delay();
+		gpio_set_level(jtag_pins[JTAG_TCLK], true);
+		half_clock_delay();
+		gpio_set_level(jtag_pins[JTAG_TCLK], false);
+	}
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_jtag_sequence(void)
+{
+	unsigned int tdo_cnt = 0;
+	int c = queue_count(&cmsis_dap_rx_queue);
+	if (c < 3)
+		return;
+
+	/* TODO: Check that complete request is in queue. */ 
+	
+	memset(tx_buffer + 1, 0, sizeof(tx_buffer) - 1);
+	// unsigned int count = peek[1];
+	// ccprintf("JTAG_Sequence: bytes: %d\n", c);
+	// ccprintf("JTAG_Sequence: count: %d\n", count);
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, c);
+	unsigned int ptr = 2;
+	while (ptr < c) {
+		// ccprintf("JTAG_Sequence: info: %02x\n",
+		// rx_buffer[ptr]);
+		gpio_set_level(jtag_pins[JTAG_TMS], !!(rx_buffer[ptr] & 0x40));
+		bool capture_tdo = !!(rx_buffer[ptr] & 0x80);
+		unsigned int bit_count = rx_buffer[ptr] & 0x3F;
+		if (bit_count == 0)
+			bit_count = 0x40;
+		for (unsigned int i = 0; i < bit_count; i++) {
+			gpio_set_level(jtag_pins[JTAG_TDI],
+				       !!(rx_buffer[ptr + 1 + i / 8] &
+					  (1 << (i % 8))));
+			half_clock_delay();
+			gpio_set_level(jtag_pins[JTAG_TCLK], true);
+			if (capture_tdo) {
+				if (gpio_get_level(jtag_pins[JTAG_TDO])) {
+					// ccprintf("!");
+					tx_buffer[2 + tdo_cnt / 8] |=
+						1 << (tdo_cnt % 8);
+				} else {
+					// ccprintf(".");
+				}
+				tdo_cnt++;
+			}
+			half_clock_delay();
+			gpio_set_level(jtag_pins[JTAG_TCLK], false);
+		}
+		// ccprintf("\n");
+		ptr += 1 + (bit_count + 7) / 8;
+	}
+
+	tx_buffer[1] = STATUS_Ok;
+	// ccprintf("JTAG_Sequence: return %d: %02x %02x %02x %02x\n",
+	// (tdo_cnt + 7) / 8, 	 buffer[2], buffer[3], buffer[4],
+	// buffer[5]);
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2 + (tdo_cnt + 7) / 8);
 }
 
 /* Vendor command (HyperDebug): Discover Google-specific capabilities. */
@@ -290,6 +514,15 @@ static void (*dispatch_table[256])(void) = {
 	[DAP_Info] = dap_info,
 	[DAP_GOOG_Info] = dap_goog_info,
 	[DAP_GOOG_I2c] = dap_goog_i2c,
+	[DAP_HostStatus] = dap_host_status,
+	[DAP_Connect] = dap_connect,
+	[DAP_Disconnect] = dap_disconnect,
+	[DAP_TransferConfigure] = dap_transfer_configure,
+	[DAP_ResetTarget] = dap_reset_target,
+	[DAP_SWJ_Pins] = dap_swj_pins,
+	[DAP_SWJ_Clock] = dap_swj_clock,
+	[DAP_SWJ_Sequence] = dap_swj_sequence,
+	[DAP_JTAG_Sequence] = dap_jtag_sequence,
 };
 
 /*
@@ -319,3 +552,16 @@ void cmsis_dap_deferred(void)
 		queue_advance_head(&cmsis_dap_rx_queue, queue_count(&cmsis_dap_rx_queue));
 	}
 }
+
+static int command_jtag(int argc, const char **argv)
+{
+	ccprintf("TIM2_CR2: %08x\n", STM32_TIM_CR1(2));
+	ccprintf("TIM2_CR3: %08x\n", STM32_TIM_CR1(3));
+	ccprintf("TIM2_CR4: %08x\n", STM32_TIM_CR1(4));
+	ccprintf("TIM2_CR5: %08x\n", STM32_TIM_CR1(5));
+	ccprintf("TIM2_CR6: %08x\n", STM32_TIM_CR1(6));
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(jtag, command_jtag, "",
+			      "Stop any ongoing operation",
+			      CMD_FLAG_RESTRICTED);
