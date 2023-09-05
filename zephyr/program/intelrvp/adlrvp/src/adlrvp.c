@@ -36,28 +36,20 @@
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
-		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p0)),
-		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p1)),
-		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p1)),
-		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p2)),
-		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p2)),
-		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
 	[TYPE_C_PORT_3] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p3)),
-		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p3)),
-		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #endif
 };
