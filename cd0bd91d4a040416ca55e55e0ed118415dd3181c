@@ -16,6 +16,24 @@
       "message": "I think the correct fix would be to change the check in crash collector. It should look at subset of flags (actually not sure which one besides PANIC_DATA_FLAG_FRAME_VALID). The purpose of TRUNCATED flag is to notify that not all data was copied (for whatever reason) and the current CL is disabling this notification.",
       "revId": "cd0bd91d4a040416ca55e55e0ed118415dd3181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213b62dd_f5043c22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-09-05T15:44:04Z",
+      "side": 1,
+      "message": "The real motivation is https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4421417, which reads the panic info to generate a coredump. However reading the panic info in this utility will cause panic info to appear stale when the crash collector runs after reboot. \n\nCrash collector needs a way to check if a crash is new or old, currently this is done with the PANIC_DATA_FLAG_OLD_HOSTCMD flag. A better solution might be to add a timestamp to the panic_data struct, but that\u0027s a heavier lift.\n\nTRUNCATED should actually be a command response parameter IMO, not a persistent flag in the panic info structure. How about I add this as a response parameter in v1 of the command? \n\nAlternatively, I could create a brand new command for this use case.",
+      "parentUuid": "5871d1cb_7be790fa",
+      "revId": "cd0bd91d4a040416ca55e55e0ed118415dd3181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
