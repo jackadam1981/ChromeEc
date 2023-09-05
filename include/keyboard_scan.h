@@ -71,6 +71,7 @@ enum boot_key {
 	BOOT_KEY_ESC = 0,
 	BOOT_KEY_DOWN_ARROW = 1,
 	BOOT_KEY_LEFT_SHIFT = 2,
+	BOOT_KEY_REFRESH = 3,
 
 	BOOT_KEY_COUNT,
 	BOOT_KEY_POWER = 31,
@@ -153,8 +154,6 @@ extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
 #endif
 
-#ifdef CONFIG_KEYBOARD_MULTIPLE
-
 struct keyboard_type {
 	int col_esc;
 	int row_esc;
@@ -175,7 +174,6 @@ struct keyboard_type {
 };
 
 extern struct keyboard_type key_typ;
-#endif
 
 #ifdef TEST_BUILD
 /**

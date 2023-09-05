@@ -148,6 +148,10 @@ __override void board_keyboard_boot_key(enum boot_key key,
 					struct boot_key_entry *boot_key)
 {
 	switch (key) {
+	case BOOT_KEY_REFRESH:
+		boot_key->col = key_typ.col_refresh;
+		boot_key->row = key_typ.row_refresh;
+		break;
 	default:
 		keyboard_boot_key(key, boot_key);
 	}
