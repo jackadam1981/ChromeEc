@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa4e151_ebd86c20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-05T02:29:04Z",
+      "side": 1,
+      "message": "Excuse me. What is firmware-zephyr-cq failed?\nI run `cros-workon-nissa start chromeos-zephyr` and `emerge-nissa chromeos-zephyr` pass and I can get ec.bin in /build/nissa/firmware so I don\u0027t know what firmware-zephyr-cq is.",
+      "revId": "bd04b32c73ecd8ed9eeb0bbe643ac34539074d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
