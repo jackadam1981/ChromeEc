@@ -228,6 +228,12 @@ static void board_init(void)
 							    HIDO/HODI */
 	STM32_GPIO_AFRL(STM32_GPIOB_BASE) |= 0x00005000; /* SPI1: PB3 SCK */
 
+	/*
+	 * Enable TIMER3 for precise JTAG bit-banging.
+	 */ 
+	STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR1_TIM3EN;
+	STM32_TIM_CR1(3) = 0x0011;
+
 	/* Enable ADC */
 	STM32_RCC_AHB2ENR |= STM32_RCC_AHB2ENR_ADCEN;
 	/* Initialize the ADC by performing a fake reading */
