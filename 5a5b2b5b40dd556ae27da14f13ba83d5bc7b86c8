@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6722e9ba_6e5b9151",
+        "filename": "zephyr/program/nissa/pirrha/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-09-05T05:55:34Z",
+      "side": 1,
+      "message": "If Vivaldi keyboard is enabled, the configuration below may be required depending on the schematic:\n```\nCONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI3\u003dy\nCONFIG_PLATFORM_EC_KEYBOARD_REFRESH_ROW3\u003dy\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 49
+      },
+      "revId": "5a5b2b5b40dd556ae27da14f13ba83d5bc7b86c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
