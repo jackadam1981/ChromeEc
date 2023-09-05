@@ -646,16 +646,22 @@ static int check_keys_changed(uint8_t *state)
 	return any_pressed;
 }
 
-static uint8_t keyboard_mask_refresh;
-__overridable uint8_t board_keyboard_row_refresh(void)
+#ifdef CONFIG_KEYBOARD_BOOT_KEYS
+
+static bool keyboard_refresh_key_pressed(const uint8_t *state)
 {
-	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
-		return 3;
-	else
-		return 2;
+	static uint8_t mask_refresh;
+
+	mask_refresh = KEYBOARD_ROW_TO_MASK(
+		IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3) ? 3 : 2);
+
+#ifndef CONFIG_KEYBOARD_MULTIPLE
+	return state[KEYBOARD_COL_REFRESH] & mask_refresh;
+#else
+	return state[key_typ.col_refresh] & mask_refresh;
+#endif
 }
 
-#ifdef CONFIG_KEYBOARD_BOOT_KEYS
 /*
  * Returns mask of the boot keys that are pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
@@ -733,16 +739,10 @@ static uint32_t check_boot_key(const uint8_t *state)
 	if (system_jumped_late())
 		return BOOT_KEY_NONE;
 
-/* If reset was not caused by reset pin, refresh must be held down */
-#ifndef CONFIG_KEYBOARD_MULTIPLE
+	/* If reset was not caused by reset pin, refresh must be held down */
 	if (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) &&
-	    !(state[KEYBOARD_COL_REFRESH] & keyboard_mask_refresh))
+			!keyboard_refresh_key_pressed(state))
 		return BOOT_KEY_NONE;
-#else
-	if (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) &&
-	    !(state[key_typ.col_refresh] & keyboard_mask_refresh))
-		return BOOT_KEY_NONE;
-#endif
 
 	return check_key_list(state);
 }
@@ -785,10 +785,6 @@ void keyboard_scan_init(void)
 		 */
 		CPRINTS("KB WARN: Debounce durations not equal");
 	}
-
-	/* Configure refresh key matrix */
-	keyboard_mask_refresh =
-		KEYBOARD_ROW_TO_MASK(board_keyboard_row_refresh());
 
 	if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC))
 		/* Configure GPIO */
