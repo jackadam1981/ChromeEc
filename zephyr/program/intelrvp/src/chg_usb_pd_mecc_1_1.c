@@ -40,7 +40,7 @@ uint16_t tcpc_get_alert_status(void)
 
 int ppc_get_alert_status(int port)
 {
-	return ppc_chips[port].drv->interrupt &&
+	return board_port_has_ppc(port) &&
 	       !gpio_get_level(tcpc_aic_gpios[port].ppc_alert);
 }
 
@@ -48,7 +48,7 @@ void board_charging_enable(int port, int enable)
 {
 	int rv;
 
-	if (ppc_chips[port].drv->interrupt) {
+	if (board_port_has_ppc(port)) {
 		rv = ppc_vbus_sink_enable(port, enable);
 	} else {
 		rv = tcpc_config[port].drv->set_snk_ctrl(port, enable);

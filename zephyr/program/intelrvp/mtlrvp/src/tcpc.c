@@ -58,20 +58,16 @@ BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[USBC_PORT_C0] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
-		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p0)),
 	},
 	[USBC_PORT_C1] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
-		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p1)),
 	},
 #if defined(HAS_TASK_PD_C2)
 	[USBC_PORT_C2] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p2)),
-		/* No PPC alert for CCGXXF */
 	},
 	[USBC_PORT_C3] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p3)),
-		/* No PPC alert for CCGXXF */
 	},
 #endif
 };
