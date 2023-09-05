@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7665b79b_b6ed7f34",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:04:20Z",
+      "side": 1,
+      "message": "I think this is returning the opposite of what the docstring says.\n\nHow about:\n\n```\n    for dev in get_usb_dev(vidpid, serialname):\n        return True\n    return False\n```",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8100f30_f08750fa",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:04:20Z",
+      "side": 1,
+      "message": "Since `get_usb_dev()` is documented as returning an iterable, not an iterator, this needs to be wrapper in `iter()` for correctness + safety.  Some iterable types are their own iterator, but not all (e.g. the builtin container types aren\u0027t, for example).\n\nIn other words make this:\n\n```\n    devs_iter \u003d iter(get_usb_dev(vidpid, serialname\u003dserialname))\n```\n\n(Yes name it `devs_iter` while at it, as a naming convention for having passed it through `iter()`.)",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a407b8_e55347ea",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-05T20:04:20Z",
+      "side": 1,
+      "message": "I think using `None` instead of `bool` objects is a bit safer and more Pythonic.\n\nHow about:\n\n```\n    devs_iter \u003d iter(get_usb_dev(vidpid, serialname\u003dserialname))\n    first \u003d next(devs_iter, None)\n    if first is not None and next(devs_iter, None) is None:\n      return first.address\n    return None\n```",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
