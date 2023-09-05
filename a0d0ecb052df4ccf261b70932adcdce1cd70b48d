@@ -88,6 +88,24 @@
       "parentUuid": "43eae4ca_07f216f8",
       "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4951c1_65dffcd5",
+        "filename": "zephyr/test/rex/tests/program/src/board_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-09-05T22:14:10Z",
+      "side": 1,
+      "message": "You are right, this test attempts those two things.\n\n\u003eFor point 1 it would be ideal to instrument `board_ap_power_action_g3_entry` with a fake, but that seems difficult.\n\nAgree, I approached this by using AP Power sequence emulator since those functions are declared as `static` that way we can avoid using `test_export_static` on every action handler function. \n\n\u003e For point 2, there\u0027s already a test for `board_ap_power_force_shutdown` so we don\u0027t ...\n\nIn that case, I can remove this test. I was thinking on establishing this pattern to be followed once AP Power Sequence driver gets rolled out.",
+      "parentUuid": "f91fd4d2_ba5516ee",
+      "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
