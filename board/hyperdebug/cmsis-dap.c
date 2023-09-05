@@ -91,6 +91,28 @@ enum cmsis_dap_info_subcommand_t {
 	INFO_PacketSize = 0xFF,
 };
 
+enum jtag_signal_t {
+	JTAG_TCLK = 0,
+	JTAG_TMS,
+	JTAG_TDI,
+	JTAG_TDO,
+	JTAG_TRSTn,
+	JTAG_INVALID
+};
+
+static int jtag_pins[JTAG_INVALID] = {
+	GPIO_CN7_1, /* TCLK */
+	GPIO_CN7_7, /* TMS */
+	GPIO_CN7_3, /* TDI */
+	GPIO_CN7_5, /* TDO */
+	GPIO_CN7_16, /* TRSTn */
+};
+static int saved_pin_flags[JTAG_INVALID];
+static bool jtag_enabled = false;
+static uint32_t jtag_clock_hz = 100000;
+
+int reset_pin = GPIO_COUNT;
+
 static int8_t in_buffer[256];
 static int8_t buffer[256];
 
@@ -244,7 +266,7 @@ void cmsis_dap_deferred(void)
 		case INFO_Capabilities:
 			buffer[0] = 0;
 			buffer[1] = 2;
-			buffer[2] = 0x00; // No capabilities
+			buffer[2] = 0x02; // JTAG capability
 			buffer[3] = 0x00;
 			queue_add_units(&cmsis_dap_out_queue, buffer, 4);
 			break;
@@ -255,6 +277,202 @@ void cmsis_dap_deferred(void)
 			break;
 		}
 		break;
+	case DAP_HostStatus:
+		if (queue_count(&cmsis_dap_in_queue) < 3)
+			break;
+		queue_remove_units(&cmsis_dap_in_queue, cmsis_dap_buffer, 3);
+		buffer[0] = 0x01;
+		buffer[1] = STATUS_Ok;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	case DAP_Connect:
+		if (peek_c < 2)
+			break;
+		queue_remove_units(&cmsis_dap_in_queue, cmsis_dap_buffer, 2);
+		buffer[0] = 2;
+		if (peek[1] == 0 || peek[1] == 2) {
+			buffer[1] = 2;
+			ccprintf("DAP_Connect: JTAG\n");
+
+			if (!jtag_enabled) {
+				jtag_enabled = true;
+				for (size_t i = 0; i < JTAG_INVALID; i++) {
+					saved_pin_flags[i] =
+						gpio_get_flags(jtag_pins[i]);
+				}
+
+				gpio_set_flags(jtag_pins[JTAG_TMS],
+					       GPIO_OUT_LOW);
+				gpio_set_flags(jtag_pins[JTAG_TDI],
+					       GPIO_OUT_LOW);
+				gpio_set_flags(jtag_pins[JTAG_TCLK],
+					       GPIO_OUT_LOW);
+				gpio_set_flags(jtag_pins[JTAG_TRSTn],
+					       GPIO_ODR_HIGH | GPIO_PULL_UP);
+				gpio_set_flags(jtag_pins[JTAG_TDO],
+					       GPIO_INPUT | GPIO_PULL_UP);
+			}
+		} else {
+			buffer[1] = 0;
+		}
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	case DAP_Disconnect:
+		ccprintf("DAP_Disconnect\n");
+		queue_remove_units(&cmsis_dap_in_queue, cmsis_dap_buffer, 1);
+
+		if (jtag_enabled) {
+			jtag_enabled = false;
+			for (size_t i = 0; i < JTAG_INVALID; i++) {
+				gpio_set_flags(jtag_pins[i],
+					       saved_pin_flags[i]);
+			}
+		}
+
+		buffer[0] = 0x03;
+		buffer[1] = STATUS_Ok;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	case DAP_TransferConfigure:
+		if (queue_count(&cmsis_dap_in_queue) < 6)
+			break;
+		queue_remove_units(&cmsis_dap_in_queue, cmsis_dap_buffer, 6);
+		buffer[0] = 0x04;
+		buffer[1] = STATUS_Ok;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	case DAP_ResetTarget:
+		queue_remove_units(&cmsis_dap_in_queue, cmsis_dap_buffer, 1);
+
+		if (reset_pin != GPIO_COUNT) {
+			gpio_set_level(reset_pin, false);
+			usleep(100000);
+			gpio_set_level(reset_pin, true);
+			buffer[2] = 1;
+		} else {
+			buffer[2] = 0;
+		}
+		buffer[0] = 0x0A;
+		buffer[1] = STATUS_Ok;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 3);
+		break;
+	case DAP_SWJ_Pins: {
+		if (queue_count(&cmsis_dap_in_queue) < 7)
+			break;
+		queue_remove_units(&cmsis_dap_in_queue, in_buffer, 7);
+
+		uint32_t wait_us;
+		memcpy(&wait_us, in_buffer + 3, sizeof(wait_us));
+
+		for (size_t i = 0; i < JTAG_INVALID; i++) {
+			if (in_buffer[2] & (1 << i)) {
+				gpio_set_level(jtag_pins[i],
+					       !!(in_buffer[1] & (1 << i)));
+			}
+		}
+
+		if ((in_buffer[2] & 0x80) && reset_pin != GPIO_COUNT) {
+			gpio_set_level(reset_pin, !!(in_buffer[1] & 0x80));
+		}
+
+		usleep(wait_us);
+
+		buffer[0] = 0x10;
+		buffer[1] = 0;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	}
+	case DAP_SWJ_Clock:
+		if (queue_count(&cmsis_dap_in_queue) < 5)
+			break;
+		queue_remove_units(&cmsis_dap_in_queue, in_buffer, 7);
+
+		memcpy(&jtag_clock_hz, in_buffer + 1, sizeof(jtag_clock_hz));
+
+		buffer[0] = 0x11;
+		buffer[1] = STATUS_Ok;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	case DAP_SWJ_Sequence: {
+		unsigned c = queue_count(&cmsis_dap_in_queue);
+		if (c < 2)
+			break;
+		unsigned int bit_count = peek[1] == 0 ? 256 : peek[1];
+		// ccprintf("SWJ_Sequence: bit count: %d\n", bit_count);
+		if (c < 2 + (bit_count + 7) / 8)
+			break;
+		queue_remove_units(&cmsis_dap_in_queue, buffer, c);
+		// ccprintf("Data: %02x\n", buffer[2]);
+		gpio_set_level(jtag_pins[JTAG_TDI], false);
+		for (unsigned int i = 0; i < bit_count; i++) {
+			gpio_set_level(jtag_pins[JTAG_TMS],
+				       !!(buffer[2 + i / 8] & (1 << (i % 8))));
+			usleep(1);
+			gpio_set_level(jtag_pins[JTAG_TCLK], true);
+			usleep(1);
+			gpio_set_level(jtag_pins[JTAG_TCLK], false);
+		}
+		buffer[0] = 0x12;
+		buffer[1] = STATUS_Ok;
+		queue_add_units(&cmsis_dap_out_queue, buffer, 2);
+		break;
+	}
+	case DAP_JTAG_Sequence: {
+		unsigned int tdo_cnt = 0;
+		if (peek_c < 2)
+			break;
+		int c = queue_count(&cmsis_dap_in_queue);
+		if (c < 3)
+			break;
+		memset(buffer, 0, sizeof(buffer));
+		// unsigned int count = peek[1];
+		// ccprintf("JTAG_Sequence: bytes: %d\n", c);
+		// ccprintf("JTAG_Sequence: count: %d\n", count);
+		queue_remove_units(&cmsis_dap_in_queue, in_buffer, c);
+		unsigned int ptr = 2;
+		while (ptr < c) {
+			// ccprintf("JTAG_Sequence: info: %02x\n",
+			// in_buffer[ptr]);
+			gpio_set_level(jtag_pins[JTAG_TMS],
+				       !!(in_buffer[ptr] & 0x40));
+			bool capture_tdo = !!(in_buffer[ptr] & 0x80);
+			(void)capture_tdo;
+			unsigned int bit_count = in_buffer[ptr] & 0x3F;
+			if (bit_count == 0)
+				bit_count = 0x40;
+			for (unsigned int i = 0; i < bit_count; i++) {
+				gpio_set_level(jtag_pins[JTAG_TDI],
+					       !!(in_buffer[ptr + 1 + i / 8] &
+						  (1 << (i % 8))));
+				usleep(1);
+				gpio_set_level(jtag_pins[JTAG_TCLK], true);
+				if (capture_tdo) {
+					if (gpio_get_level(
+						    jtag_pins[JTAG_TDO])) {
+						// ccprintf("!");
+						buffer[2 + tdo_cnt / 8] |=
+							1 << (tdo_cnt % 8);
+					} else {
+						// ccprintf(".");
+					}
+					tdo_cnt++;
+				}
+				usleep(1);
+				gpio_set_level(jtag_pins[JTAG_TCLK], false);
+			}
+			// ccprintf("\n");
+			ptr += 1 + (bit_count + 7) / 8;
+		}
+
+		buffer[0] = 0x14;
+		buffer[1] = STATUS_Ok;
+		// ccprintf("JTAG_Sequence: return %d: %02x %02x %02x %02x\n",
+		// (tdo_cnt + 7) / 8, 	 buffer[2], buffer[3], buffer[4],
+		//buffer[5]);
+		queue_add_units(&cmsis_dap_out_queue, buffer,
+				2 + (tdo_cnt + 7) / 8);
+		break;
+	}
 	case DAP_GOOG_Info: { // Vendor command (HyperDebug): Discover
 			      // capabilities
 		buffer[0] = 0x80;
@@ -293,3 +511,16 @@ void cmsis_dap_deferred(void)
 	default:;
 	}
 }
+
+static int command_jtag(int argc, const char **argv)
+{
+	ccprintf("TIM2_CR2: %08x\n", STM32_TIM_CR1(2));
+	ccprintf("TIM2_CR3: %08x\n", STM32_TIM_CR1(3));
+	ccprintf("TIM2_CR4: %08x\n", STM32_TIM_CR1(4));
+	ccprintf("TIM2_CR5: %08x\n", STM32_TIM_CR1(5));
+	ccprintf("TIM2_CR6: %08x\n", STM32_TIM_CR1(6));
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(jtag, command_jtag, "",
+			      "Stop any ongoing operation",
+			      CMD_FLAG_RESTRICTED);
