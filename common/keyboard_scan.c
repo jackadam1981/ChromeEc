@@ -670,12 +670,6 @@ static uint32_t check_key_list(const uint8_t *state)
 	/* Make copy of current debounced state. */
 	memcpy(curr_state, state, sizeof(curr_state));
 
-#ifndef CONFIG_KEYBOARD_MULTIPLE
-	curr_state[KEYBOARD_COL_REFRESH] &= ~keyboard_mask_refresh;
-#else
-	curr_state[key_typ.col_refresh] &= ~keyboard_mask_refresh;
-#endif
-
 	/* Update mask with all boot keys that were pressed. */
 	k = boot_key_list;
 	for (c = 0; c < ARRAY_SIZE(boot_key_list); c++, k++) {
