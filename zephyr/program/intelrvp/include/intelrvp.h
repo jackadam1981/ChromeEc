@@ -19,10 +19,6 @@ FORWARD_DECLARE_ENUM(tcpc_rp_value);
 struct tcpc_aic_gpio_config_t {
 	/* TCPC interrupt */
 	enum gpio_signal tcpc_alert;
-	/* PPC interrupt */
-	enum gpio_signal ppc_alert;
-	/* PPC interrupt handler */
-	void (*ppc_intr_handler)(int port);
 };
 extern const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[];
 
