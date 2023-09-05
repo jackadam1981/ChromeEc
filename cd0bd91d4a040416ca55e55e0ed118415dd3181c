@@ -34,6 +34,24 @@
       "parentUuid": "5871d1cb_7be790fa",
       "revId": "cd0bd91d4a040416ca55e55e0ed118415dd3181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bfd402_d6968f7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-09-05T21:41:28Z",
+      "side": 1,
+      "message": "Oh sorry, my comment was mostly regarding the `_TRUNCATED` flag. I think using `PANIC_DATA_FLAG_OLD_HOSTCMD` is totally legit.\n\n\u003e  How about I add this as a response parameter in v1 of the command?\n-- sounds great!",
+      "parentUuid": "213b62dd_f5043c22",
+      "revId": "cd0bd91d4a040416ca55e55e0ed118415dd3181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
