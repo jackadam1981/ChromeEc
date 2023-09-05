@@ -641,16 +641,8 @@ static int check_keys_changed(uint8_t *state)
 	return any_pressed;
 }
 
-static uint8_t keyboard_mask_refresh;
-__overridable uint8_t board_keyboard_row_refresh(void)
-{
-	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
-		return 3;
-	else
-		return 2;
-}
-
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
+
 /*
  * Returns mask of the boot keys that are pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
@@ -664,12 +656,6 @@ static uint32_t check_key_list(const uint8_t *state)
 
 	/* Make copy of current debounced state. */
 	memcpy(curr_state, state, sizeof(curr_state));
-
-#ifndef CONFIG_KEYBOARD_MULTIPLE
-	curr_state[KEYBOARD_COL_REFRESH] &= ~keyboard_mask_refresh;
-#else
-	curr_state[key_typ.col_refresh] &= ~keyboard_mask_refresh;
-#endif
 
 	/* Update mask with all boot keys that were pressed. */
 	k = boot_key_list;
@@ -734,16 +720,16 @@ static uint32_t check_boot_key(const uint8_t *state)
 	if (system_jumped_late())
 		return BOOT_KEY_NONE;
 
-/* If reset was not caused by reset pin, refresh must be held down */
-#ifndef CONFIG_KEYBOARD_MULTIPLE
-	if (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) &&
-	    !(state[KEYBOARD_COL_REFRESH] & keyboard_mask_refresh))
+	/*
+	 * Boot keys are available only through reset-pin reset, which can be
+	 * issued only by GSC (through refresh+power combo).
+	 *
+	 * If the EC resets differently (e.g. watchdog, power-on, exception,
+	 * we don't want to accidentally enter recovery mode even if a refresh
+	 * key or whatever key is pressed (as previously allowed).
+	 */
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN))
 		return BOOT_KEY_NONE;
-#else
-	if (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) &&
-	    !(state[key_typ.col_refresh] & keyboard_mask_refresh))
-		return BOOT_KEY_NONE;
-#endif
 
 	return check_key_list(state);
 }
@@ -786,10 +772,6 @@ void keyboard_scan_init(void)
 		 */
 		CPRINTS("KB WARN: Debounce durations not equal");
 	}
-
-	/* Configure refresh key matrix */
-	keyboard_mask_refresh =
-		KEYBOARD_ROW_TO_MASK(board_keyboard_row_refresh());
 
 	if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC))
 		/* Configure GPIO */
