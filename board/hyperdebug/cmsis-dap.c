@@ -101,6 +101,14 @@ const uint16_t CAP_UsbComPort = 0x0100;
 /* Bitfield response to vendor (Google) capabities request */
 const uint32_t GOOG_CAP_I2c = 0x00000001;
 
+/* Bitfield used in DAP_SWJ_Pins request */
+const uint8_t PIN_SwClk_Tck = 0x01;
+const uint8_t PIN_SwDio_Tms = 0x02;
+const uint8_t PIN_Tdi = 0x04;
+const uint8_t PIN_Tdo = 0x08;
+const uint8_t PIN_Trst = 0x20;
+const uint8_t PIN_Reset = 0x80;
+
 /*
  * Incoming and outgoing byte streams.
  */
@@ -110,6 +118,29 @@ static struct queue const cmsis_dap_rx_queue;
 
 static uint8_t rx_buffer[256];
 static uint8_t tx_buffer[256];
+
+/*
+ * JTAG state
+ */
+enum jtag_signal_t {
+	JTAG_TCLK = 0,
+	JTAG_TMS,
+	JTAG_TDI,
+	JTAG_TDO,
+	JTAG_TRSTn,
+	JTAG_INVALID
+};
+
+static int jtag_pins[JTAG_INVALID] = {
+	GPIO_CN7_1, /* TCLK */
+	GPIO_CN7_7, /* TMS */
+	GPIO_CN7_3, /* TDI */
+	GPIO_CN7_5, /* TDO */
+	GPIO_CN7_16, /* TRSTn */
+};
+static int saved_pin_flags[JTAG_INVALID];
+static bool jtag_enabled = false;
+static uint32_t jtag_clock_hz = 100000;
 
 /*
  * A few routines mostly copied from usb_i2c.c.
@@ -187,7 +218,7 @@ static size_t peek_c;
 static void dap_info(void)
 {
 	const char *CMSIS_DAP_VERSION_STR = "2.1.1";
-	const uint16_t CAPABILITIES = 0; /* No support for JTAG or SWD */
+	const uint16_t CAPABILITIES = CAP_Jtag;
 	struct usb_string_desc *sd = usb_serialno_desc;
 	int i;
 
@@ -217,6 +248,258 @@ static void dap_info(void)
 		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
 		break;
 	}
+}
+
+/* Informational command, to allow debugging device to indicate status. */
+static void dap_host_status(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 3)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 3);
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/* Establish JTAG connection, take control of JTAG pins. */
+static void dap_connect(void)
+{
+	if (peek_c < 2)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 2);
+	if (rx_buffer[1] == 0 || rx_buffer[1] == 2) {
+		tx_buffer[1] = 2;
+		if (!jtag_enabled) {
+			jtag_enabled = true;
+			for (size_t i = 0; i < JTAG_INVALID; i++) {
+				saved_pin_flags[i] =
+					gpio_get_flags(jtag_pins[i]);
+			}
+
+			gpio_set_flags(jtag_pins[JTAG_TMS], GPIO_OUT_LOW);
+			gpio_set_flags(jtag_pins[JTAG_TDI], GPIO_OUT_LOW);
+			gpio_set_flags(jtag_pins[JTAG_TCLK], GPIO_OUT_LOW);
+			gpio_set_flags(jtag_pins[JTAG_TRSTn],
+				       GPIO_ODR_HIGH | GPIO_PULL_UP);
+			gpio_set_flags(jtag_pins[JTAG_TDO],
+				       GPIO_INPUT | GPIO_PULL_UP);
+		}
+	} else {
+		tx_buffer[1] = 0;
+	}
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/* Restore JTAG pins to previous configuration. */
+static void dap_disconnect(void)
+{
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 1);
+
+	if (jtag_enabled) {
+		jtag_enabled = false;
+		for (size_t i = 0; i < JTAG_INVALID; i++) {
+			gpio_set_flags(jtag_pins[i], saved_pin_flags[i]);
+		}
+	}
+
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/* TODO: What does this command do? */
+static void dap_transfer_configure(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 6)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 6);
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/* Reset the GSC (using same pin as if blue button was pressed). */
+static void dap_reset_target(void)
+{
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 1);
+
+	if (shield_reset_pin != GPIO_COUNT) {
+		gpio_set_level(shield_reset_pin, false);
+		usleep(100000);
+		gpio_set_level(shield_reset_pin, true);
+		tx_buffer[2] = 1;
+	} else {
+		tx_buffer[2] = 0;
+	}
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 3);
+}
+
+/* One-time setting of the output level of each JTAG signal. */
+static void dap_swj_pins(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 7)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 7);
+
+	uint32_t wait_us;
+	memcpy(&wait_us, rx_buffer + 3, sizeof(wait_us));
+
+	if ((rx_buffer[2] & PIN_SwClk_Tck) && shield_reset_pin != GPIO_COUNT)
+		gpio_set_level(jtag_pins[JTAG_TCLK],
+			       !!(rx_buffer[1] & PIN_SwClk_Tck));
+	if ((rx_buffer[2] & PIN_SwDio_Tms) && shield_reset_pin != GPIO_COUNT)
+		gpio_set_level(jtag_pins[JTAG_TMS],
+			       !!(rx_buffer[1] & PIN_SwDio_Tms));
+	if ((rx_buffer[2] & PIN_Tdi) && shield_reset_pin != GPIO_COUNT)
+		gpio_set_level(jtag_pins[JTAG_TDI], !!(rx_buffer[1] & PIN_Tdi));
+	if ((rx_buffer[2] & PIN_Trst) && shield_reset_pin != GPIO_COUNT)
+		gpio_set_level(jtag_pins[JTAG_TRSTn],
+			       !!(rx_buffer[1] & PIN_Trst));
+	if ((rx_buffer[2] & PIN_Reset) && shield_reset_pin != GPIO_COUNT)
+		gpio_set_level(shield_reset_pin, !!(rx_buffer[1] & PIN_Reset));
+
+	usleep(wait_us);
+
+	tx_buffer[1] = 0;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/* Set JTAG clock frequency. */
+static void dap_swj_clock(void)
+{
+	if (queue_count(&cmsis_dap_rx_queue) < 5)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 7);
+
+	memcpy(&jtag_clock_hz, rx_buffer + 1, sizeof(jtag_clock_hz));
+
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static const uint16_t count = CPU_CLOCK / 500000 / 2;
+
+/* Busy-wait half a JTAG clock cycle. */
+static inline __attribute__((always_inline)) void half_clock_delay(void)
+{
+	STM32_TIM_CNT(3) = count;
+	while (((int16_t)STM32_TIM_CNT(3)) >= 0)
+		;
+}
+
+/* Clock data out on TMS. */
+static void dap_swj_sequence(void)
+{
+	unsigned c = queue_count(&cmsis_dap_rx_queue);
+	if (c < 2)
+		return;
+	unsigned int bit_count = rx_buffer[1] == 0 ? 256 : rx_buffer[1];
+	if (c < 2 + (bit_count + 7) / 8)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, c);
+	for (unsigned int i = 0; i < bit_count; i++) {
+		gpio_set_level(jtag_pins[JTAG_TMS],
+			       !!(rx_buffer[2 + i / 8] & (1 << (i % 8))));
+		half_clock_delay();
+		gpio_set_level(jtag_pins[JTAG_TCLK], true);
+		half_clock_delay();
+		gpio_set_level(jtag_pins[JTAG_TCLK], false);
+	}
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/*
+ * Do a JTAG transaction, consisting of one or more sequences of clocking data
+ * on TDI (between 1 and 64 bits), while keeping TMS at a particular level.
+ */
+static void dap_jtag_sequence(void)
+{
+	unsigned int tdo_cnt = 0;
+	int c = queue_count(&cmsis_dap_rx_queue);
+	if (c < 3)
+		return;
+
+	/* Check whether a complete request is in queue. */
+	queue_peek_units(&cmsis_dap_rx_queue, rx_buffer, 0, c);
+	size_t num_sequences = rx_buffer[1];
+	size_t offset = 2;
+	for (size_t i = 0; i < num_sequences; i++) {
+		uint8_t header = rx_buffer[offset];
+		unsigned int bit_count = header & 0x3F;
+		if (bit_count == 0)
+			bit_count = 0x40;
+		offset += 1 + (bit_count + 7) / 8;
+		if (offset > c) {
+			/* We do not yet have all bytes of the request. */
+			return;
+		}
+	}
+
+	/* We have a complete request, mark as removed from the queue. */
+	queue_advance_head(&cmsis_dap_rx_queue, offset);
+
+	/*
+	 * As an optimization, resolve the IO port addresses and masks of
+	 * frequently used GPIOs.
+	 */
+	volatile uint32_t *const jtag_clk_bsrr =
+		&STM32_GPIO_BSRR(gpio_list[jtag_pins[JTAG_TCLK]].port);
+	const uint32_t jtag_clk_mask_set = gpio_list[jtag_pins[JTAG_TCLK]].mask;
+	const uint32_t jtag_clk_mask_clear =
+		gpio_list[jtag_pins[JTAG_TCLK]].mask << 16;
+
+	volatile uint32_t *const jtag_tms_bsrr =
+		&STM32_GPIO_BSRR(gpio_list[jtag_pins[JTAG_TMS]].port);
+	const uint32_t jtag_tms_mask_set = gpio_list[jtag_pins[JTAG_TMS]].mask;
+	const uint32_t jtag_tms_mask_clear = gpio_list[jtag_pins[JTAG_TMS]].mask
+					     << 16;
+
+	volatile uint32_t *const jtag_tdi_bsrr =
+		&STM32_GPIO_BSRR(gpio_list[jtag_pins[JTAG_TDI]].port);
+	const uint32_t jtag_tdi_mask_set = gpio_list[jtag_pins[JTAG_TDI]].mask;
+	const uint32_t jtag_tdi_mask_clear = gpio_list[jtag_pins[JTAG_TDI]].mask
+					     << 16;
+
+	volatile uint16_t *const jtag_tdo_idr =
+		&STM32_GPIO_IDR(gpio_list[jtag_pins[JTAG_TDO]].port);
+	const uint16_t jtag_tdo_mask = gpio_list[jtag_pins[JTAG_TDO]].mask;
+
+	memset(tx_buffer + 1, 0, sizeof(tx_buffer) - 1);
+	const uint8_t *ptr = rx_buffer + 2;
+	const uint8_t *const end = rx_buffer + offset;
+	while (ptr < end) {
+		uint8_t header = *ptr++;
+		if (header & 0x40) {
+			*jtag_tms_bsrr = jtag_tms_mask_set;
+		} else {
+			*jtag_tms_bsrr = jtag_tms_mask_clear;
+		}
+		bool capture_tdo = !!(header & 0x80);
+		unsigned int bit_count = header & 0x3F;
+		if (bit_count == 0)
+			bit_count = 0x40;
+		for (unsigned int i = 0; i < bit_count; i++) {
+			if (ptr[i / 8] & (1 << (i % 8))) {
+				*jtag_tdi_bsrr = jtag_tdi_mask_set;
+			} else {
+				*jtag_tdi_bsrr = jtag_tdi_mask_clear;
+			}
+			half_clock_delay();
+			*jtag_clk_bsrr = jtag_clk_mask_set;
+			if (capture_tdo) {
+				if (*jtag_tdo_idr & jtag_tdo_mask) {
+					tx_buffer[2 + tdo_cnt / 8] |=
+						1 << (tdo_cnt % 8);
+				}
+				tdo_cnt++;
+			}
+			half_clock_delay();
+			*jtag_clk_bsrr = jtag_clk_mask_clear;
+		}
+		ptr += (bit_count + 7) / 8;
+	}
+
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2 + (tdo_cnt + 7) / 8);
 }
 
 /* Vendor command (HyperDebug): Discover Google-specific capabilities. */
@@ -268,6 +551,15 @@ static void (*dispatch_table[256])(void) = {
 	[DAP_Info] = dap_info,
 	[DAP_GOOG_Info] = dap_goog_info,
 	[DAP_GOOG_I2c] = dap_goog_i2c,
+	[DAP_HostStatus] = dap_host_status,
+	[DAP_Connect] = dap_connect,
+	[DAP_Disconnect] = dap_disconnect,
+	[DAP_TransferConfigure] = dap_transfer_configure,
+	[DAP_ResetTarget] = dap_reset_target,
+	[DAP_SWJ_Pins] = dap_swj_pins,
+	[DAP_SWJ_Clock] = dap_swj_clock,
+	[DAP_SWJ_Sequence] = dap_swj_sequence,
+	[DAP_JTAG_Sequence] = dap_jtag_sequence,
 };
 
 /*
@@ -299,6 +591,19 @@ static void cmsis_dap_deferred(void)
 	}
 }
 DECLARE_DEFERRED(cmsis_dap_deferred);
+
+static int command_jtag(int argc, const char **argv)
+{
+	ccprintf("TIM2_CR2: %08x\n", STM32_TIM_CR1(2));
+	ccprintf("TIM2_CR3: %08x\n", STM32_TIM_CR1(3));
+	ccprintf("TIM2_CR4: %08x\n", STM32_TIM_CR1(4));
+	ccprintf("TIM2_CR5: %08x\n", STM32_TIM_CR1(5));
+	ccprintf("TIM2_CR6: %08x\n", STM32_TIM_CR1(6));
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(jtag, command_jtag, "",
+			      "Stop any ongoing operation",
+			      CMD_FLAG_RESTRICTED);
 
 /*
  * Declare USB interface for CMSIS-DAP.
