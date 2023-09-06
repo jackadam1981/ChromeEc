@@ -82,13 +82,23 @@
 			rpm_target = <0>;
 		};
 		level_1 {
+<<<<<<< HEAD   (3d39e5 markarth: Correct cosmx_ap20cbl match point.)
 			temp_on = <(-1) (-1) 75 (-1) 35 (-1)>;
 			temp_off = <(-1) (-1) 99 (-1) 32 (-1)>;
+=======
+			temp_on = <(-1) (-1) 62 (-1) 37 (-1)>;
+			temp_off = <(-1) (-1) 52 (-1) 34 (-1)>;
+>>>>>>> CHANGE (a96ed8 markarth: Rising the temp_on threshold for first level)
 			rpm_target = <2200>;
 		};
 		level_2 {
+<<<<<<< HEAD   (3d39e5 markarth: Correct cosmx_ap20cbl match point.)
 			temp_on = <(-1) (-1) 75 (-1) 40 (-1)>;
 			temp_off = <(-1) (-1) 99 (-1) 37 (-1)>;
+=======
+			temp_on = <(-1) (-1) 70 (-1) 40 (-1)>;
+			temp_off = <(-1) (-1) 65 (-1) 38 (-1)>;
+>>>>>>> CHANGE (a96ed8 markarth: Rising the temp_on threshold for first level)
 			rpm_target = <2400>;
 		};
 		level_3 {
