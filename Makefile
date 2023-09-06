@@ -296,6 +296,27 @@ $(1)-incs-y += $(addprefix $(2)/,$($(3)-incs-y))
 $(1)-dirs-y += $(addprefix $(2)/,$($(3)-dirs-y))
 endef
 
+# Usage: $(call include_subdir,<current-var-prefix>,<path>,<subdir-var-prefix>)
+# Include sub-directory's build.mk and collect all of its objects, includes,
+# and dir declarations.
+#
+# $(1) is the current files's variable base name, where we will deposit values.
+# $(2) is subdir relative path, which will be prepended to incoming values.
+# $(3) is the sub-directory's variable base name, which holds incoming values.
+#
+# Example:
+#   $(call include_subdir,private,subdir,subdir)
+#
+#   This would include the subdir/build.mk and set all private variables
+#   private-y/ro/rw, private-incs-y, and private-dirs-y variables from the
+#   subdir-* equivalent variables, while prefixing all values with "subdir/".
+define include_subdir
+# Set subdir's variable prefix path.
+$(eval $(3)-path = $(addsuffix $(2),$((2)-path)))
+# Transfer all objects defined in the subdir build.mk.
+$(eval $(call vars_from_dir,$(1),$(2),$(3)))
+endef
+
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
 
