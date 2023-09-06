@@ -22,6 +22,30 @@
       },
       "revId": "57af7265b0309ff37cfead647b663b619fa7b4ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797b2744_782c849c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-09-06T18:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a553872_617e9c38",
+      "range": {
+        "startLine": 366,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 38
+      },
+      "revId": "57af7265b0309ff37cfead647b663b619fa7b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
