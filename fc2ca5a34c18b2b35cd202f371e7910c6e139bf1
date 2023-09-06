@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "517d4122_1f823833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-09-06T05:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bbacf2b_1437606d",
+      "revId": "fc2ca5a34c18b2b35cd202f371e7910c6e139bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce795d81_b04743ba",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8df0b52_c0051b76",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-09-06T05:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce795d81_b04743ba",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 1
+      },
+      "revId": "fc2ca5a34c18b2b35cd202f371e7910c6e139bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85374781_314572f0",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-08-22T23:28:06Z",
       "side": 1,
       "message": "```suggestion\n    local port\u003d\"${device#/dev/}\"\n```",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 46
+      },
+      "revId": "fc2ca5a34c18b2b35cd202f371e7910c6e139bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "931e9046_5312bb8f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 9
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-09-06T05:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85374781_314572f0",
       "range": {
         "startLine": 334,
         "startChar": 0,
@@ -189,6 +255,30 @@
       "writtenOn": "2023-08-22T23:28:06Z",
       "side": 1,
       "message": "Can you add new direct dependencies and/or note in https://crsrc.org/o/src/third_party/chromiumos-overlay/chromeos-base/ec-utils-test/ec-utils-test-9999.ebuild;l\u003d30 ?",
+      "range": {
+        "startLine": 349,
+        "startChar": 9,
+        "endLine": 349,
+        "endChar": 23
+      },
+      "revId": "fc2ca5a34c18b2b35cd202f371e7910c6e139bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "080f9f77_7a1165ec",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 9
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-09-06T05:17:22Z",
+      "side": 1,
+      "message": "Filed b/299220111 for this, I need further instruction",
+      "parentUuid": "10319dda_22ae50de",
       "range": {
         "startLine": 349,
         "startChar": 9,
