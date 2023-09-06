@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "530d06d6_9f829d81",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7665b79b_b6ed7f34",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8100f30_f08750fa",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa980a5_79a640b9",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8100f30_f08750fa",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a407b8_e55347ea",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-09-05T20:04:20Z",
       "side": 1,
       "message": "I think using `None` instead of `bool` objects is a bit safer and more Pythonic.\n\nHow about:\n\n```\n    devs_iter \u003d iter(get_usb_dev(vidpid, serialname\u003dserialname))\n    first \u003d next(devs_iter, None)\n    if first is not None and next(devs_iter, None) is None:\n      return first.address\n    return None\n```",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a6c932_c607142b",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:04Z",
+      "side": 1,
+      "message": "To make this a learning experience: Because the None type check is more explicit than the dev-or-False bool check? (in any case: done, although I kept `additional`)",
+      "parentUuid": "21a407b8_e55347ea",
       "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
