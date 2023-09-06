@@ -34,6 +34,24 @@
       "parentUuid": "4797d9ab_f3426775",
       "revId": "cc3cf84cfce3e58b94f1d7afd1a1c534a5cc5d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10edb94_67a0dc20",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-06T21:38:50Z",
+      "side": 1,
+      "message": "Correct.  I first started by modifying the `projects` set directly, but then I realized many of the sub-routines call `_resolve_projects()` again, so I needed to modify `project_names` and `all_projects` here.",
+      "parentUuid": "c999aeb5_087c376e",
+      "revId": "cc3cf84cfce3e58b94f1d7afd1a1c534a5cc5d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
