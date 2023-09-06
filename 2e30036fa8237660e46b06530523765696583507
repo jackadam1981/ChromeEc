@@ -16,6 +16,24 @@
       "message": "chargecontrol v1 should also support get, which only has one arg.",
       "revId": "2e30036fa8237660e46b06530523765696583507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d138b5_eceacb88",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7687,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-06T20:51:14Z",
+      "side": 1,
+      "message": "EC_CHARGE_CONTROL_CMD_GET was added to v2. So, V1 can only do set.",
+      "parentUuid": "3dfacb5a_ba3486b0",
+      "revId": "2e30036fa8237660e46b06530523765696583507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
