@@ -147,6 +147,7 @@
 #ifdef CONFIG_GPIO_POWER_DOWN
 #define GPIO_POWER_DOWN BIT(23) /* Pin and pad is powered off */
 #endif
+#define GPIO_TRISTATE BIT(24) /* Enable tri-state */
 
 #endif /* CONFIG_ZEPHYR */
 
