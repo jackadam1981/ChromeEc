@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eefefdb_dfb61a2b",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-06T17:45:35Z",
+      "side": 1,
+      "message": "Please handle the case of no $3, i.e. the user still using the old `dump_fmap`.",
+      "range": {
+        "startLine": 1743,
+        "startChar": 2,
+        "endLine": 1743,
+        "endChar": 17
+      },
+      "revId": "230120e6b08bda696ce038f261b41c53503f6fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65458cfb_e8ee5d11",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-06T17:45:35Z",
+      "side": 1,
+      "message": "Please wrap them in a function as they look similar to `preserve_sections()`. The original `preserve_sections` can be renamed as `preserve_sections_from_image` and the new one can be named as `preserve_sections_from_chip`.",
+      "range": {
+        "startLine": 1767,
+        "startChar": 0,
+        "endLine": 1790,
+        "endChar": 7
+      },
+      "revId": "230120e6b08bda696ce038f261b41c53503f6fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b278f5a3_023a23fa",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-06T17:45:35Z",
+      "side": 1,
+      "message": "Better to print a message if no section is preserved, i.e. the CBI in EEPROM.",
+      "range": {
+        "startLine": 1790,
+        "startChar": 3,
+        "endLine": 1790,
+        "endChar": 7
+      },
+      "revId": "230120e6b08bda696ce038f261b41c53503f6fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
