@@ -105,6 +105,24 @@
       "parentUuid": "ced88f19_5b46abcf",
       "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4a5c33_e917a942",
+        "filename": "common/charge_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-06T22:37:46Z",
+      "side": 1,
+      "message": "My previous comment is referring to the workaround we currently use. The bug is still open. I\u0027m waiting for an EC log. This CL won\u0027t break sustainer at full charge more than it\u0027s already broken.",
+      "parentUuid": "9afca838_c5120ba3",
+      "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
