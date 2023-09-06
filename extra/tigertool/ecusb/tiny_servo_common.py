@@ -7,10 +7,9 @@
 # Note: This is a py2/3 compatible file.
 
 import datetime
+import six
 import sys
 import time
-
-import six
 from typing import Iterable, Optional, Set, Tuple
 
 import usb  # pylint:disable=import-error
