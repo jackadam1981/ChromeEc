@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75ab816_2ed2830c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "nit: one-wire (also below)",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593d74d4_d8421fea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "Just do first round of review today. I\u0027ll be on it tomorrow.",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9644fa_aee8cd54",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "```\n/* if the size isn\u0027t at least the header size large, then it\u0027s a broken packet */\n```",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f96e9265_3edc5837",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "```\n/* if the size isn\u0027t match the msg_len, then it\u0027s a broken packet */\n```",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 3
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c7806c_b4359fe5",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "Can this be a configurable option for the uart rx buffer size?",
+      "range": {
+        "startLine": 265,
+        "startChar": 13,
+        "endLine": 265,
+        "endChar": 15
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8954d2fb_364b2798",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "You could add a comment like this:\n```\n/* This function may return less allocated buffer size than requested, but \n * the chance is very low so we don\u0027t check the return size.\n */\n ```",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 38
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655cbf07_7994d40b",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "dooes `data-\u003emsg_id` need to be reset?",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec1cafa_f6bc9d2d",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "AFAIK, it seems the id may be the same for lid and the base. Do we need to have some other way to determine the id?",
+      "range": {
+        "startLine": 327,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 64
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef3e47e_139d071f",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "sizeof(struct one_wire_uart_message) must be multiple of 4 for the msgq initialization.\n\nCan you add a build time check for this pattern?\n\ncontext: https://docs.zephyrproject.org/latest/kernel/services/data_passing/message_queues.html#c.K_MSGQ_DEFINE",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 63
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf06925_b89282c6",
+        "filename": "zephyr/include/drivers/one_wire_uart.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-06T23:40:28Z",
+      "side": 1,
+      "message": "Comment the functions and structs in doxygen style.\n\nhttps://docs.zephyrproject.org/latest/project/documentation.html",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
