@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14189d4b_ea660dc2",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab49556f_80747bd3",
+      "revId": "fc3e1449cd307549dc475123127ea543fe870a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b6215bf_00c17c7d",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-05T20:41:29Z",
       "side": 1,
       "message": "I know this sort of optimization can be tempting...but strong convention and I think style requirement to put all import dependencies at the top of the module, never in-line.",
+      "revId": "fc3e1449cd307549dc475123127ea543fe870a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ee04fd_f8c908c7",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:07Z",
+      "side": 1,
+      "message": "Besides that it doesn\u0027t even work under some circumstances (probably because json was already imported above. oops!)",
+      "parentUuid": "3b6215bf_00c17c7d",
       "revId": "fc3e1449cd307549dc475123127ea543fe870a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
