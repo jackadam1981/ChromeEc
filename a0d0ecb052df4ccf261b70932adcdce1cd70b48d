@@ -124,6 +124,24 @@
       "parentUuid": "7d4951c1_65dffcd5",
       "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449135ff_9908a0b3",
+        "filename": "zephyr/test/rex/tests/program/src/board_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-09-06T01:05:53Z",
+      "side": 1,
+      "message": "\u003e  Some boards might need to have special handling of state entry that actually needs a test, so how do you expect to cover that?\n\nAny state action handling can be covered using AP Power sequence driver emulator. We can make calls to `xxx_enry` and `xxx_exit` functions by invoking `ap_pwrseq_start` (This needs to be done at least once to start state machine execution and position it on desired state), and `ap_pwrseq_sm_set_state`. Also any state transition can be covered.\n\nFor calling `xxx_run` handlings, we have `ap_pwrseq_post_event` and use its `event` parameter to manipulate `run` function flow, like on tests `test_board_ap_power_action_g3_run_1` and `test_board_ap_power_action_g3_run_2`.\n\nWe can also check if action handler is returning correct value with macro `AP_POWER_CHIPSET_STATE_DEFINE`. Like I did on this file with function `chipset_ap_power_action_g3_run`.\n\nInside corresponding function we can use `DEFINE_FAKE_VALUE_FUNC` for power signals or even power signal emulator.\n\n\u003e Or are we just concluding that this particular implementation doesn\u0027t need to be covered while others might need to do something similar to this\n\nFor rex, we do not need much, given that only requires handling for G3 state. Other projects may need more test cases to cover, for instance nissa.",
+      "parentUuid": "f6a4d750_2c0bded3",
+      "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
