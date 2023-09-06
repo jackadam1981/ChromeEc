@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35adfb3_2487e1c7",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21efeb06_219125bc",
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d39698_e607a520",
@@ -111,6 +129,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "306f146a_8208b08a",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:18Z",
+      "side": 1,
+      "message": "Better phrasing: okay. What\u0027s that `(len(devs,)))` thing about?",
+      "parentUuid": "9567ff5a_7d197903",
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0ea944a_cc87d31f",
         "filename": "extra/usb_updater/servo_updater.py",
         "patchSetId": 11
@@ -122,6 +158,24 @@
       "writtenOn": "2023-09-05T20:36:11Z",
       "side": 1,
       "message": "In a followup CL, move update() above main() with no other changes.\n\nI like that leaving update() here makes the diff clear, so leave as-is in this CL, but style wise main() should always be at the bottom.  (Mark this Resolved just as a way to acknowledge, no change needed in this CL.)",
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c886cda2_e379cefd",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ea944a_cc87d31f",
       "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
