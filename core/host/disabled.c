@@ -11,3 +11,5 @@
 	}
 
 DISABLED(void clock_init(void));
+
+// TODO foo - bar
