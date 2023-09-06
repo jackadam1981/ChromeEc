@@ -45,6 +45,54 @@
       },
       "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19a77ff_d07e6234",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-06T01:16:58Z",
+      "side": 1,
+      "message": "Maybe use `-fmacro-prefix-map` only?",
+      "parentUuid": "a4a9681a_86fc6543",
+      "range": {
+        "startLine": 20,
+        "startChar": 84,
+        "endLine": 20,
+        "endChar": 85
+      },
+      "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a26121f_25ebb076",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-06T01:16:58Z",
+      "side": 1,
+      "message": "```suggestion\nadd_compile_options(-ffile-prefix-map\u003d\"${CMAKE_CURRENT_SOURCE_DIR}\u003d/\")\n```\n\nAny reason why you didn\u0027t use `add_compile_options`?",
+      "parentUuid": "5b73cfd7_8395f4e1",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
