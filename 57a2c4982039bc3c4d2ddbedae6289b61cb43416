@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a9681a_86fc6543",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-06T00:54:44Z",
+      "side": 1,
+      "message": "This makes for an invalid paths for debug symbols and debug messages, like `//crypto/fipsmodule/ecdh/ecdh.c`.\n\n\n```bash\narm-none-eabi-gdb build/bloonchipper/RW/ec.RW.elf\n\n(gdb) p EC_KEY_new_by_curve_name\n$2 \u003d {EC_KEY *(int)} 0x808f824 \u003cEC_KEY_new_by_curve_name\u003e\n\n(gdb) l EC_KEY_new_by_curve_name\n137\t//crypto/fipsmodule/ec/ec_key.c: No such file or directory.\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 84,
+        "endLine": 20,
+        "endChar": 85
+      },
+      "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b73cfd7_8395f4e1",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-06T00:54:44Z",
+      "side": 1,
+      "message": "did you intend to mix CXX flags and C flags?",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
