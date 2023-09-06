@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38bcd6b5_ab308246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-06T20:01:07Z",
+      "side": 1,
+      "message": "I recognize you haven\u0027t sent this for review yet, but since it\u0027s followup to CL:4804624 review, I\u0027m going ahead and commenting. :-)  Nothing major!",
+      "revId": "e8dd5b6e78eb3a2ad32329501a16d3c44a7b6f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a349f38_91095954",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-06T20:01:07Z",
+      "side": 1,
+      "message": "Just do `if not devs:`\n\n(All the builtin container types implement true-ness as \"not empty.\")",
+      "revId": "e8dd5b6e78eb3a2ad32329501a16d3c44a7b6f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b86f90_c72e1970",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-06T20:01:07Z",
+      "side": 1,
+      "message": "Move this sleep duration to a common module constant now.  Mark it as internal/private though, i.e. name it with an underscore prefix.",
+      "revId": "e8dd5b6e78eb3a2ad32329501a16d3c44a7b6f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de50a2a_c17c2875",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-06T20:01:07Z",
+      "side": 1,
+      "message": "Just do `if devs:`\n\n(All the builtin container types implement true-ness as \"not empty.\")",
+      "revId": "e8dd5b6e78eb3a2ad32329501a16d3c44a7b6f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
