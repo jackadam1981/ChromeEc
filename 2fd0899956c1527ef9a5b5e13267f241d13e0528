@@ -69,6 +69,24 @@
       "parentUuid": "738b9357_dd8e7a4a",
       "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced88f19_5b46abcf",
+        "filename": "common/charge_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-06T22:18:54Z",
+      "side": 1,
+      "message": "\u003e -not discharging when fully charged \n\nb:295239614. The workaround should continue to work because this patch doesn\u0027t change how \u0027chargecontrol discharge\u0027 works. \u0027chargecontrol discharge\u0027 disables sustainer.\n\n\u003e sustainer getting disabled when the chargecontrol command tries to configure it when it\u0027s already enabled\n\nA unit test is added. This is b:222620437 and it\u0027s fixed by crrev.com/c/3070328. The fix is for the command handler which this CL doesn\u0027t change.\n\n\u003e -not discharging when soc \u003e upper if IDLE is enabled\n\nA unit test is added. This is handled at line 932 for NORMAL and at line 958 for IDLE.",
+      "parentUuid": "89ffe8f5_ddd345c7",
+      "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
