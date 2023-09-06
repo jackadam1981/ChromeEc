@@ -87,6 +87,24 @@
       "parentUuid": "89ffe8f5_ddd345c7",
       "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afca838_c5120ba3",
+        "filename": "common/charge_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-09-06T22:23:07Z",
+      "side": 1,
+      "message": "I wasn\u0027t referring to \"chargecontrol discharge\" not discharging when the battery is full. The battery sustainer should discharge the battery when it\u0027s full. We don\u0027t want to rely on chargecontrol discharge to make Charge Limit, or any Adaptive Charging features that would require it, work.",
+      "parentUuid": "ced88f19_5b46abcf",
+      "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
