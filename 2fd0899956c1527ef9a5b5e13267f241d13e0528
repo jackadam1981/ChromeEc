@@ -51,6 +51,24 @@
       "parentUuid": "9386973c_941bcb23",
       "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ffe8f5_ddd345c7",
+        "filename": "common/charge_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-09-06T21:25:06Z",
+      "side": 1,
+      "message": "Ok, can you verify that our past issues are still resolved with this refactor? The ones I remember are:\n-not discharging when fully charged\n-sustainer getting disabled when the chargecontrol command tries to configure it when it\u0027s already enabled\n-not discharging when soc \u003e upper if IDLE is enabled",
+      "parentUuid": "738b9357_dd8e7a4a",
+      "revId": "2fd0899956c1527ef9a5b5e13267f241d13e0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
