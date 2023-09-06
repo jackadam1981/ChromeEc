@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6610eb7_b815b690",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:12Z",
+      "side": 1,
+      "message": "https://peps.python.org/pep-0484/#the-numeric-tower says:\n\n\u003e when an argument is annotated as having type float, an argument of type int is acceptable; similar, for an argument annotated as having type complex, arguments of type float or int are acceptable.\n\nDon\u0027t think we need complex timeouts though :-)",
+      "parentUuid": "4c75df96_bf3254ef",
+      "range": {
+        "startLine": 129,
+        "startChar": 74,
+        "endLine": 129,
+        "endChar": 98
+      },
+      "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd55644_3161d005",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-09-05T20:16:08Z",
       "side": 1,
       "message": "TBH the more I think about it, the more I think the `desiredpresence\u003dFalse` case should be split off to a separate function.  It forces an awkward implementation, and it makes the return value meaningless.  I certainly won\u0027t insist on that as part of your changes though, this awkward interface isn\u0027t your fault here!\n\nAssuming this stays as one function, think it would be easier to follow by defining an inline presence check function?\n\n```    \n    if desiredpresence:\n        def check_presence(devs): return devs\n    else:\n        def check_presence(devs): return not devs\n```\n\nOr:\n\n```\n    check_presence \u003d ((lambda devs: devs) if desiredpresence else\n                      (lambda devs: not devs))\n```\n\nThen the presence check in the loop becomes:\n\n```\n        if check_presence(devs):\n            return devs\n```",
+      "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9592baa_027bdbda",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-06T19:29:12Z",
+      "side": 1,
+      "message": "I violated the DRY principle in a follow-up CL.",
+      "parentUuid": "dcd55644_3161d005",
       "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
