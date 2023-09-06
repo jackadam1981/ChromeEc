@@ -106,6 +106,24 @@
       "parentUuid": "f91fd4d2_ba5516ee",
       "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a4d750_2c0bded3",
+        "filename": "zephyr/test/rex/tests/program/src/board_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-06T00:02:06Z",
+      "side": 1,
+      "message": "Removing most of this test makes sense, but what pattern are you referring to? Some boards might need to have special handling of state entry that actually needs a test, so how do you expect to cover that? (Or are we just concluding that this particular implementation doesn\u0027t need to be covered while others might need to do something similar to this?)",
+      "parentUuid": "7d4951c1_65dffcd5",
+      "revId": "a0d0ecb052df4ccf261b70932adcdce1cd70b48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
