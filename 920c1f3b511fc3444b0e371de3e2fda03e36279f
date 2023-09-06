@@ -81,6 +81,24 @@
       "parentUuid": "dcd55644_3161d005",
       "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca91f6f_f0819f2e",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-06T20:00:27Z",
+      "side": 1,
+      "message": "CL:4847672 I assume?  I see you haven\u0027t sent it for review yet but I\u0027ll go ahead and comment now anyways. :-)   (nothing major)\n\nIMO splitting this doesn\u0027t violate DRY.  The only knowledge encoded in this function is the fixed sleep() duration, which can be moved to a shared constant.",
+      "parentUuid": "b9592baa_027bdbda",
+      "revId": "920c1f3b511fc3444b0e371de3e2fda03e36279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
