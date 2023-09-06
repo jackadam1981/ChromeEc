@@ -104,6 +104,24 @@
       "parentUuid": "21a407b8_e55347ea",
       "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1e3dc5_bc8c76bb",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-06T19:48:45Z",
+      "side": 1,
+      "message": "Using `is` / `not is` checks for an exact single sentinel object (`None` in this case, and most cases).  True-ness is subject to type implementation.\n\nI assume the USB class doesn\u0027t implement custom boolean evaluation today, and therefore inherits the default behavior of always evaluating as true, but in theory that could change.  And in this case, since it\u0027s a 3rd party library, that could change without any say or involvement from us.\n\nTo put another way, boolean evaluation is equivalent to `ptr-\u003eis_true()` while `is not None` is equivalent to `ptr !\u003d NULL`.",
+      "parentUuid": "13a6c932_c607142b",
+      "revId": "3cf0a11253c56249ee7745598a5d93fcc262407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
