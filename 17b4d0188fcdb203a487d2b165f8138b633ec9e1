@@ -46,6 +46,30 @@
       },
       "revId": "17b4d0188fcdb203a487d2b165f8138b633ec9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17993f38_b91cc5a7",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 60
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-06T23:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e2c130_7a47046f",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "17b4d0188fcdb203a487d2b165f8138b633ec9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1298bda1_84b1c2f7",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 61
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-06T23:05:07Z",
+      "side": 1,
+      "message": "Can these macros be functions that take typed parameters and return typed structures? I know the existing code typically generates VDOs via macros, but they make for hard-to-understand call sites and provide a strong temptation to just OR in new fields at the call site instead of updating the generator for everyone.",
+      "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff70ee0_09d54a6d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 61
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-06T23:05:07Z",
+      "side": 1,
+      "message": "As I noted in the header file, I don\u0027t like the macros here. But if you just want them to define constants in tests, you could just define constant structs here. It would be no worse than the `tcpci_cable_data` structures.",
+      "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547d626e_827fadaa",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 61
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-06T23:05:07Z",
+      "side": 1,
+      "message": "Nit: These structures should probably be `static const`.",
+      "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
