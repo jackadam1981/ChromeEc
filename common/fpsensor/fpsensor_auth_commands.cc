@@ -56,6 +56,15 @@ enum ec_error_list check_context_cleared()
 	return EC_SUCCESS;
 }
 
+static void invalidate_existing_context()
+{
+	templ_valid = 0;
+	templ_dirty = 0;
+	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
+	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
+	OPENSSL_cleanse(user_id, sizeof(user_id));
+}
+
 static enum ec_status
 fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 {
@@ -180,13 +189,9 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	ScopedFastCpu fast_cpu;
 
 	if (fp_encryption_status & FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
-		/* If the context is not cleared, reject this request to prevent
-		 * leaking the existing template. */
-		enum ec_error_list ret = check_context_cleared();
-		if (ret != EC_SUCCESS) {
-			CPRINTS("load_pairing_key: Context is not clean");
-			return EC_RES_ACCESS_DENIED;
-		}
+		/* Invalidate the existing context to prevent leaking the
+		 * existing template. */
+		invalidate_existing_context();
 	}
 
 	RAND_bytes(auth_nonce.data(), auth_nonce.size());
