@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00903e02_3a8fecfe",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5175,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-07T18:25:12Z",
+      "side": 1,
+      "message": "How about adding\n\n    #if defined(CONFIG_USB_PD_RESET_PRESERVE_RECOVERY_FLAGS) \u0026\u0026\n        defined(CONFIG_BATTERY)\n    #error CONFIG_USB_PD_RESET_PRESERVE_RECOVERY_FLAGS should be used only for chromeboxes.\n    #endif\n\nbelow line 6288?",
+      "range": {
+        "startLine": 5175,
+        "startChar": 2,
+        "endLine": 5175,
+        "endChar": 45
+      },
+      "revId": "7fe8e61efda66f9322d58b319df8221083400f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
