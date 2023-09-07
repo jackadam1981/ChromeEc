@@ -34,6 +34,24 @@
       "parentUuid": "38aa4a3f_f932ee7a",
       "revId": "5677b979aa485be401e548a163fe99113d02ad14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27eda3a9_f4ab7611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-07T05:47:03Z",
+      "side": 1,
+      "message": "`make buildall` pass/ `./twister -ciC -s drivers/drivers.sm5803` pass.",
+      "parentUuid": "34e1b2d1_37572c8c",
+      "revId": "5677b979aa485be401e548a163fe99113d02ad14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
