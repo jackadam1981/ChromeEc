@@ -5,6 +5,8 @@
  * Main routine for Chrome EC
  */
 
+/* Test change */
+
 #include "board_config.h"
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
 #include "adc.h"
