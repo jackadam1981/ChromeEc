@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45a0732_628a7efd",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 61
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "I\u0027m just going to use the union defines instead and define static structs from that. The VDO is messy I just added these to test quicker but now should be able to define structs for the tests. I think this will be messy no matter what cause a function that takes 10+ parameters just seems like too much as well.",
+      "parentUuid": "1298bda1_84b1c2f7",
+      "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ff70ee0_09d54a6d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a7930c_bce77fdc",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 61
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "taking care of this in next patch",
+      "parentUuid": "2ff70ee0_09d54a6d",
+      "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "547d626e_827fadaa",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-09-06T23:05:07Z",
       "side": 1,
       "message": "Nit: These structures should probably be `static const`.",
+      "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1417dd8_5f6b3c71",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 61
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "547d626e_827fadaa",
       "revId": "293a8279d69a449ad36351a0de8d0878f97d828f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78bf7f0_7c61f971",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1f1941_3d9abe32",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e6ed00d_b4882154",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "If other tests are using it, I think that would argue for a helper function in, say, `zephyr/test/drivers/common/src/utils.c`. This is still just a nit.",
       "parentUuid": "a8533a64_8dab52d8",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85878ccf_3475edab",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e13dd3b1_b286cf7c",
       "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -226,6 +262,24 @@
       "side": 1,
       "message": "This log is different than the EC console log. It\u0027s a list of all the PD messages sent and received by the partner emulator. You can see an example of checking its contents at https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c#123.",
       "parentUuid": "f57b2a11_5635f1eb",
+      "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27714544_98d9b3cf",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "got you will look into this and add some checks",
+      "parentUuid": "65f6f00f_0ce5d549",
       "revId": "11e527fb661f8b0fbee6380e93b6fdc854fb0cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

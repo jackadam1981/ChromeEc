@@ -759,6 +759,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5198472_02d10b32",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-07T21:56:17Z",
+      "side": 1,
+      "message": "changed this to use a union which has named fields for possible fields in the vdo",
+      "parentUuid": "1d7c1585_836fea47",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2ce7127_a7c3baa5",
