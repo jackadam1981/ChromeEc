@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0d76aa_30ecf966",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-07T13:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2987372b_c0d86cb1",
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76b6a3f7_8ced7f06",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-05T20:36:11Z",
       "side": 1,
       "message": "In the general help output that gets printed before the options list, mention that by default it\u0027s an error if multiple devices match.",
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8445ee_441c321d",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-07T13:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b6a3f7_8ced7f06",
       "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63c2b9d_7bf8a8ba",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-07T13:42:45Z",
+      "side": 1,
+      "message": "Done. As for serialno, that will require more work, so won\u0027t do this here, but it\u0027s something to consider.",
+      "parentUuid": "70d39698_e607a520",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 29
+      },
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9567ff5a_7d197903",
@@ -159,6 +219,24 @@
       "side": 1,
       "message": "The way % string formatting works with multiple values is by taking them as a tuple, e.g. `\u0027%s %s\u0027 % (obj0, obj1)` .\n\nFor whatever reason - singleton tuple syntactical awkwardness I assume - % string formatting will treat any *non-tuple* object `obj` as if it were `(obj,)` single item tuple.\n\nIn this particular case there is no issue, because `len()` is guaranteed to return an `int`, which is not a `tuple`.  However I often see people rely on this behavior in error cases where the problematic value is unknown, e.g. it *shouldn\u0027t* be a tuple but the unexpected value came from somewhere else and the immediate surrounding code hasn\u0027t done anything to truly established its type.  That can and has resulted in very confusing exceptions when the unexpected object turns out to be a tuple.\n\nThus, I think best practice is to always create a tuple for % formatting, there\u0027s no functional downside, only upside for error clarity should the value type ever change (even if the change is itself another bug).\n\nAlternatively, Python 3 brought `str.format()` method which was intended to replace `%` string formatting and avoids this awkward syntax dilemma.  Feel free to use `.format()` anywhere in the codebase, including here, even in files that already heavily use `%` string formatting.  (Yes in general following common style is good, but this is far more than a style choice.)\n\nThis particular line could become:\n\n```\n        raise ServoUpdaterException(\"Found {:d} matching devices to update. Use --all if updating multiple devices is intended.\".format(len(devs)))\n```",
       "parentUuid": "306f146a_8208b08a",
+      "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20b9ab2_cc2bb944",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-07T13:42:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ac47a978_1cd595cd",
       "revId": "1cdf4f978e361498db39606f54f0d541b06d1304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
