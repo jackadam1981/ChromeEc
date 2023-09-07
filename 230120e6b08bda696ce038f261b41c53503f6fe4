@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "926c3279_a1edbca9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-07T12:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eefefdb_dfb61a2b",
+      "range": {
+        "startLine": 1743,
+        "startChar": 2,
+        "endLine": 1743,
+        "endChar": 17
+      },
+      "revId": "230120e6b08bda696ce038f261b41c53503f6fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65458cfb_e8ee5d11",
@@ -60,6 +84,54 @@
       "writtenOn": "2023-09-06T17:45:35Z",
       "side": 1,
       "message": "Better to print a message if no section is preserved, i.e. the CBI in EEPROM.",
+      "range": {
+        "startLine": 1790,
+        "startChar": 3,
+        "endLine": 1790,
+        "endChar": 7
+      },
+      "revId": "230120e6b08bda696ce038f261b41c53503f6fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03eb61e_bda288e5",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-07T12:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65458cfb_e8ee5d11",
+      "range": {
+        "startLine": 1767,
+        "startChar": 0,
+        "endLine": 1790,
+        "endChar": 7
+      },
+      "revId": "230120e6b08bda696ce038f261b41c53503f6fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb22d89_a71734c1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-07T12:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b278f5a3_023a23fa",
       "range": {
         "startLine": 1790,
         "startChar": 3,
