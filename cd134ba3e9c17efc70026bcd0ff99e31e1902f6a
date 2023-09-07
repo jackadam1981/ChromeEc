@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f20332_9d544640",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-07T00:03:17Z",
+      "side": 1,
+      "message": "Can we just name it USB_SPI_FULL_DUPLEX_SUPPORT and make the commont spi driver fail if it\u0027s set? I would like to see flags orthogonal to each other.",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 55
+      },
+      "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
