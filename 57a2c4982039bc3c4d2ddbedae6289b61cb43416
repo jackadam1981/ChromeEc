@@ -93,6 +93,54 @@
       },
       "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2562063_9654f180",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-07T04:09:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a26121f_25ebb076",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f53898fa_01fc61db",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-07T04:09:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f19a77ff_d07e6234",
+      "range": {
+        "startLine": 20,
+        "startChar": 84,
+        "endLine": 20,
+        "endChar": 85
+      },
+      "revId": "57a2c4982039bc3c4d2ddbedae6289b61cb43416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
