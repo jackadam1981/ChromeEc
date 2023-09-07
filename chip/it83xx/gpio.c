@@ -603,8 +603,11 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 					 GPCR_PORT_PIN_MODE_INPUT) &
 					~GPCR_PORT_PIN_MODE_OUTPUT;
 
-			/* Handle pullup / pulldown */
-			if (flags & GPIO_PULL_UP) {
+			/* Handle pullup / pulldown / tri-state */
+			if (flags & GPIO_TRISTATE) {
+				IT83XX_GPIO_CTRL(port, pin) |=
+					GPCR_PORT_PIN_MODE_TRISTATE;
+			} else if (flags & GPIO_PULL_UP) {
 				IT83XX_GPIO_CTRL(port, pin) =
 					(IT83XX_GPIO_CTRL(port, pin) |
 					 GPCR_PORT_PIN_MODE_PULLUP) &
