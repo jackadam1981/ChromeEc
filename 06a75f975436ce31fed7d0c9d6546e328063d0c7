@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2870e921_e9b2db4b",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-07T18:26:52Z",
+      "side": 1,
+      "message": "style: two spaces before # when it\u0027s on the same line as actual code",
+      "revId": "06a75f975436ce31fed7d0c9d6546e328063d0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578a68ac_0b3ca409",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-07T18:26:52Z",
+      "side": 1,
+      "message": "The prior wrapping was more readable IMO, but I guess this is what the auto-formatter wants?\n\n[ no response needed, this is rhetorical ]",
+      "revId": "06a75f975436ce31fed7d0c9d6546e328063d0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
