@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d281970a_ccb52732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-07T03:04:20Z",
+      "side": 1,
+      "message": "Hi Jeremy,\n\nWhat is `firmware-zephyr-cq` failed? What is the command that I can run locally to check if it can pass or not?\n\nI only run `zmake build craask` and `emerge-nissa chromeos-zephyr` pass and ./twister to make sure the test pass. I don\u0027t know how to check `firmware-zephyr-cq` failure.",
+      "revId": "7ca0c6535e03cbc5d68443d1602f05541d3d544f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
