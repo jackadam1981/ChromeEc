@@ -70,6 +70,30 @@
       },
       "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb1ab7e_f24132e3",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-07T18:35:29Z",
+      "side": 1,
+      "message": "I should have given more context from the beginning.\n\nThe common driver already supports full duplex, except if CONFIG_SPI_HALFDUPLEX is defined in board.h.  This means that the spi_devices[] array \"ordinary\" boards will not mention full duplex support, as it is either supported by all or not supported by any of the ports.  Code in usb_spi.c will set a bit in the feature_bitmap of struct usb_spi_response_configuration_v2, sent via USB, to advertise whether full duplex is supported, depending on the compile time define.\n\nNow, I previously added support for \"custom\" board-level SPI drivers, and added a flag to spi_devices[].usb_flags to allow the board to declare for each SPI port, whether a custom driver should be used.  This means that the common logic in usb_spi.c may a mix of SPI ports using the common driver, and ports using special board-specific drivers.  For all the ports that use the common driver, usb_spi.c already \"knows\" whether full duplex is supported, based on the compile time define.  For each of the board-specific ports, usb_spi.c cannot know, so that is why I am proposing a new flag in spi_devices[], which has meaning only for SPI ports using board-specific drivers, that allows the board to tell usb_spi.c whether each of the special ports support full duplex.\n\nI want to avoid adding explicit USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED to each of the ports using common driver, on all boards that do not have CONFIG_SPI_HALFDUPLEX.  As that would leave open the possibility of future inconsistencies, e.g. if the define CONFIG_SPI_HALFDUPLEX is later modified in board.h, without appropriate updates to spi_devices[].  That is why I propose a new flag, which should only have meaning for custom-driver ports.",
+      "parentUuid": "911f76e0_2fc05cfa",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 55
+      },
+      "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
