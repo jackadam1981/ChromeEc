@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f3533568_bb801be6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75ab816_2ed2830c",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "593d74d4_d8421fea",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0a22a5_dbbdb918",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9644fa_aee8cd54",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f96e9265_3edc5837",
@@ -88,6 +130,30 @@
       "writtenOn": "2023-09-06T23:40:28Z",
       "side": 1,
       "message": "```\n/* if the size isn\u0027t match the msg_len, then it\u0027s a broken packet */\n```",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 3
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62af6b2f_373cb6f3",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f96e9265_3edc5837",
       "range": {
         "startLine": 223,
         "startChar": 0,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb7c9ce_f956a627",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "It depends on the underlying hw so I guess no.\n\nBut we can add a loop here to ensure rx fifo is cleared.",
+      "parentUuid": "b7c7806c_b4359fe5",
+      "range": {
+        "startLine": 265,
+        "startChar": 13,
+        "endLine": 265,
+        "endChar": 15
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8954d2fb_364b2798",
@@ -134,6 +224,30 @@
       "writtenOn": "2023-09-06T23:40:28Z",
       "side": 1,
       "message": "You could add a comment like this:\n```\n/* This function may return less allocated buffer size than requested, but \n * the chance is very low so we don\u0027t check the return size.\n */\n ```",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 38
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3640d3_fcc2c3f7",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8954d2fb_364b2798",
       "range": {
         "startLine": 270,
         "startChar": 2,
@@ -161,6 +275,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f50634_d76509be",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "No but good to have.",
+      "parentUuid": "655cbf07_7994d40b",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec1cafa_f6bc9d2d",
@@ -174,6 +306,30 @@
       "writtenOn": "2023-09-06T23:40:28Z",
       "side": 1,
       "message": "AFAIK, it seems the id may be the same for lid and the base. Do we need to have some other way to determine the id?",
+      "range": {
+        "startLine": 327,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 64
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec88a8d3_581a8ea1",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Updated.\n\nIf user doesn\u0027t manually set the ID in device tree,\nwe will use CONFIG_DETACHABLE_BASE to decide the default value (only works for our detachable use case anyway..).",
+      "parentUuid": "eec1cafa_f6bc9d2d",
       "range": {
         "startLine": 327,
         "startChar": 2,
@@ -207,6 +363,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "318240bb_d492da2a",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Removed.\nAll fields in one_wire_uart_message are uint8_t so it don\u0027t need to 4 byte alignment",
+      "parentUuid": "0ef3e47e_139d071f",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 63
+      },
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbf06925_b89282c6",
@@ -220,6 +400,24 @@
       "writtenOn": "2023-09-06T23:40:28Z",
       "side": 1,
       "message": "Comment the functions and structs in doxygen style.\n\nhttps://docs.zephyrproject.org/latest/project/documentation.html",
+      "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78080060_5d423053",
+        "filename": "zephyr/include/drivers/one_wire_uart.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-07T07:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf06925_b89282c6",
       "revId": "cd7f6f745fb392f43c451f36b06638c5897b82d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
