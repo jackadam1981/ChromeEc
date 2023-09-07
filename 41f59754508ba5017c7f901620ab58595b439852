@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2022db9e_cd4c00f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 62
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-07T22:50:50Z",
+      "side": 1,
+      "message": "Looks like some older boards are failing with undefined references to `dp_create_vdo_cfg`. You probably need to stub this out somewhere or guard it with `IS_ENABLED` as you\u0027ve done elsewhere.",
+      "revId": "41f59754508ba5017c7f901620ab58595b439852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
