@@ -46,6 +46,30 @@
       },
       "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911f76e0_2fc05cfa",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-07T17:43:55Z",
+      "side": 1,
+      "message": "What I meant was:\n\n\tif (current_device-\u003eusb_flags \u0026\n\t\t    USB_SPI_CUSTOM_SPI_DEVICE_FULL_DUPLEX_SUPPORTED) {\n\t    \tif (current_device-\u003eusb_flags \u0026 USB_SPI_CUSTOM_SPI_DEVICE) {\n\t\t\tpacket-\u003ersp_config.feature_bitmap |\u003d\n\t\t\t\tUSB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED;\n\t\t} else {\n\t\t\t/* Currently invalid */\n\t\t\tcprintf(\"Error\\n\");\n\t\t}\n\t}\n\nIs it possible for the common driver to be updated to handle full-duplex? If so, (CUSTOM\u003d0, FULL_DUPLEX\u003d1) is only temporarily invalid. Can you please tell me if I\u0027m missing something? I admit I don\u0027t have the whole context.",
+      "parentUuid": "ea04b822_493a4da0",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 55
+      },
+      "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
