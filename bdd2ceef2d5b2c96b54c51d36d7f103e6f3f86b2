@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac5a114_1ec702ba",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-07T16:47:05Z",
+      "side": 1,
+      "message": "Because `preserve_sections_with_cur_image` is conditional; the original structure looks better, i.e. renaming `check_preserve_sections_not_present` to `is_preservation_needed` and changing the structure like\n\n    is_preservation_needed ...\n    if [[ \"${PRESERVE_STATUS}\" -eq 0 ]]; then\n        preserve_sections_with_cur_image\n    fi",
+      "range": {
+        "startLine": 1753,
+        "startChar": 3,
+        "endLine": 1753,
+        "endChar": 51
+      },
+      "revId": "bdd2ceef2d5b2c96b54c51d36d7f103e6f3f86b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1d82ea_677c001c",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-07T16:47:05Z",
+      "side": 1,
+      "message": "Also check if the `NEW_IMG` contains the same preserve section. If not, print an error and stop the script. Failing here is better than failing in the below `cbfstool write`.",
+      "range": {
+        "startLine": 1770,
+        "startChar": 1,
+        "endLine": 1770,
+        "endChar": 3
+      },
+      "revId": "bdd2ceef2d5b2c96b54c51d36d7f103e6f3f86b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb824f4_81354345",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1860,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-07T16:47:05Z",
+      "side": 1,
+      "message": "Print an error if the function is accidentally called in a non-supported chip.",
+      "range": {
+        "startLine": 1860,
+        "startChar": 1,
+        "endLine": 1860,
+        "endChar": 3
+      },
+      "revId": "bdd2ceef2d5b2c96b54c51d36d7f103e6f3f86b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312ec421_f6a8dbac",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-07T16:47:05Z",
+      "side": 1,
+      "message": "Similarly, print an error for the else clause.",
+      "range": {
+        "startLine": 1880,
+        "startChar": 1,
+        "endLine": 1880,
+        "endChar": 3
+      },
+      "revId": "bdd2ceef2d5b2c96b54c51d36d7f103e6f3f86b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
