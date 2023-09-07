@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38aa4a3f_f932ee7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-07T02:53:01Z",
+      "side": 1,
+      "message": "Two different errors.\n\n`make buildall` failed because some values are undefined:\n```\ndriver/charger/sm5803.c: In function \u0027sm5803_init\u0027:\ndriver/charger/sm5803.c:781:5: error: \"CONFIG_CHARGER_SM5803_PROCHOT_DURATION\" is not defined, evaluates to 0 [-Werror\u003dundef]\n  781 | #if CONFIG_CHARGER_SM5803_PROCHOT_DURATION !\u003d 2\n```\n\nand Zephyr tests (`twister`) failed because register accesses during init changed:\n```\n[00:02:08.370,100] \u003cinf\u003e sm5803_emul: SM5803 charger page read of register 0x73 unhandled\n\n    Assertion failed at CMAKE_SOURCE_DIR/sm5803/src/sm5803.c:297: sm5803_test_init_2s: (I2C log mismatch)\nTransaction 35 did not match expectations:\nexpected write of address 0x32 register 0x73 with value 0x22\n   found read of address 0x32 register 0x73 with value 0x00\n FAIL - test_init_2s in 3.001 seconds\n ```",
+      "revId": "5677b979aa485be401e548a163fe99113d02ad14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
