@@ -94,6 +94,30 @@
       },
       "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02b2f49c_4463418b",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-07T18:47:26Z",
+      "side": 1,
+      "message": "Thanks for clarification.\n\n\u003e The common driver already supports full duplex, except if CONFIG_SPI_HALFDUPLEX is defined\n\nCan you please add this comment to line 365?",
+      "parentUuid": "6cb1ab7e_f24132e3",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 55
+      },
+      "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
