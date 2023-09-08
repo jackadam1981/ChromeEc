@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8fa1a9_a3de2888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T22:49:41Z",
+      "side": 1,
+      "message": "I think I get the idea of this, but in the case where FRS is not disabled upon starting the AMS, when does it get disabled?",
+      "revId": "f3ff707747bf7332383945ffa5d6f0cafd186cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cab4c0e_22941ea0",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T22:49:41Z",
+      "side": 1,
+      "message": "Nit: This should probably use `FAKE_VALUE_FUNC(bool, port_frs_disable_source_on, int port)`. See other uses of `FAKE_*` in Zephyr tests.",
+      "revId": "f3ff707747bf7332383945ffa5d6f0cafd186cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611942c4_892b411a",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T22:49:41Z",
+      "side": 1,
+      "message": "Should this also be checking that it\u0027s not enabled at some earlier time?",
+      "revId": "f3ff707747bf7332383945ffa5d6f0cafd186cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
