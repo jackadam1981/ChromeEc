@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a000b9fd_28c679ab",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-08T07:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05eae1b9_ba8f9824",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 13
+      },
+      "revId": "5519a3bb71e4ab692f15c0037f2711f55238dc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5fd80c8_aa0327b1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-07T21:16:44Z",
       "side": 1,
       "message": "May be good to explain the `/ 2` here.",
+      "range": {
+        "startLine": 117,
+        "startChar": 33,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "5519a3bb71e4ab692f15c0037f2711f55238dc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b4ba73_b1752a33",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-08T07:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5fd80c8_aa0327b1",
       "range": {
         "startLine": 117,
         "startChar": 33,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74f52767_13b42457",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-08T07:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64985e7e_e178242a",
+      "revId": "5519a3bb71e4ab692f15c0037f2711f55238dc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9115762_d35dda7f",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-09-07T21:16:44Z",
       "side": 1,
       "message": "Move the declaration to the top of this `else` closure.",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 41
+      },
+      "revId": "5519a3bb71e4ab692f15c0037f2711f55238dc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1eab58_2ff5f1ce",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-08T07:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9115762_d35dda7f",
       "range": {
         "startLine": 254,
         "startChar": 4,
