@@ -34,6 +34,24 @@
       "parentUuid": "d281970a_ccb52732",
       "revId": "7ca0c6535e03cbc5d68443d1602f05541d3d544f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc7c022_4c9c532c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-08T01:33:52Z",
+      "side": 1,
+      "message": "Thanks! I found that I miss `cbi_get_board_version_fake.custom_fake \u003d cbi_get_board_version_mock` in test_base_orientation.",
+      "parentUuid": "d66ba7ed_a7a0cc32",
+      "revId": "7ca0c6535e03cbc5d68443d1602f05541d3d544f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
