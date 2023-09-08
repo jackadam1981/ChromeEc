@@ -10,6 +10,7 @@
  */
 
 #include "intel_altmode.h"
+#include "pd_task_intel_altmode.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -64,15 +65,24 @@ static int pd_altmode_isr_enable(const struct device *dev, bool en)
 						    GPIO_INT_DISABLE);
 }
 
-static const struct pd_altmode_driver pd_altmode_driver_api = {
+static bool pd_altmode_is_interrupted(const struct device *dev)
+{
+	const struct pd_altmode_config *cfg = dev->config;
+
+	return !gpio_pin_get_dt(&cfg->int_gpio);
+}
+
+const struct pd_altmode_driver pd_altmode_driver_api = {
 	.read = pd_altmode_read,
 	.write = pd_altmode_write,
 	.isr_enable = pd_altmode_isr_enable,
+	.is_interrupted = pd_altmode_is_interrupted,
 };
 
 static void pd_altmode_gpio_callback(const struct device *dev,
 				     struct gpio_callback *cb, uint32_t pins)
 {
+	intel_altmode_post_event(INTEL_ALTMODE_EVENT_INTERRUPT);
 }
 
 static int pd_altmode_init(const struct device *dev)
@@ -127,3 +137,5 @@ static int pd_altmode_init(const struct device *dev)
 			      &pd_altmode_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(INTEL_ALTMODE_DEFINE)
+
+const struct device *const vijay = DEVICE_DT_GET_ANY(intel_pd_altmode);

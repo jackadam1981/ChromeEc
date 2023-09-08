@@ -227,6 +227,7 @@ struct pd_altmode_driver {
 	int (*read)(const struct device *dev, union data_status_reg *data);
 	int (*write)(const struct device *dev, union data_control_reg *data);
 	int (*isr_enable)(const struct device *dev, bool en);
+	bool (*is_interrupted)(const struct device *dev);
 };
 
 struct pd_altmode_config {
@@ -246,5 +247,7 @@ struct pd_altmode_data {
 	const struct device *dev;
 	struct gpio_callback gpio_cb;
 };
+
+extern const struct pd_altmode_driver pd_altmode_driver_api;
 
 #endif /* __INTEL_ALTMODE_H */
