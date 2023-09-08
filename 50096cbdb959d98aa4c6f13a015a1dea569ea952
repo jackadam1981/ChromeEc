@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53a25aa_4c689cde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-08T22:49:09Z",
+      "side": 1,
+      "message": "\u003e \"wether\" is a possible misspelling of \"weather\" or \"whether\".\n\nPlease fix.",
+      "parentUuid": "ef26a5f3_16804d8f",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "50096cbdb959d98aa4c6f13a015a1dea569ea952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b323b7_1ca248b8",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-08T22:49:09Z",
+      "side": 1,
+      "message": "Nice. Thanks.",
+      "range": {
+        "startLine": 366,
+        "startChar": 59,
+        "endLine": 369,
+        "endChar": 25
+      },
+      "revId": "50096cbdb959d98aa4c6f13a015a1dea569ea952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
