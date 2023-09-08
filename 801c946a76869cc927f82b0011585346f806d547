@@ -34,6 +34,24 @@
       "message": "This change is breaking build on main branch :\n```\nNo package \u0027libec\u0027 found\nIn file included from include/config.h:6790:\ntest/test_config.h:716:10: fatal error: \u0027private_test_config.h\u0027 file not found\n#include \"private_test_config.h\"\n         ^~~~~~~~~~~~~~~~~~~~~~~\n```",
       "revId": "801c946a76869cc927f82b0011585346f806d547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c29f7d3_0e4b9a14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-09-08T13:42:05Z",
+      "side": 1,
+      "message": "I encountered same issue, `repo sync` helped as this CL also needed some changes in EC private repo if I understand correctly",
+      "parentUuid": "e39b35cb_82381836",
+      "revId": "801c946a76869cc927f82b0011585346f806d547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
