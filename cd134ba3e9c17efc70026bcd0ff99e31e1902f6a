@@ -118,6 +118,30 @@
       },
       "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8759e066_78de97b3",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-08T22:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b2f49c_4463418b",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 55
+      },
+      "revId": "cd134ba3e9c17efc70026bcd0ff99e31e1902f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
