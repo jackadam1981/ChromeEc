@@ -960,7 +960,7 @@ void pe_got_hard_reset(int port)
  * If the PE is not running, generate an error recovery to turn off
  * Vbus and get the port back into a known state.
  */
-void pd_got_frs_signal(int port)
+test_mockable void pd_got_frs_signal(int port)
 {
 	if (pe_is_running(port))
 		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
@@ -4050,6 +4050,23 @@ static void pe_snk_hard_reset_entry(int port)
 			port);
 		set_state_pe(port, PE_SRC_DISABLED);
 		return;
+	}
+
+	/*
+	 * Workaround for power_state:rec with cros_ec_softrec_power on
+	 * chromeboxes. If we're booted in recovery and about to reset our
+	 * active charge port, preserve the ap-off and stay-in-ro flags so that
+	 * the next boot after we brown out will still be recovery.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_RESET_PRESERVE_RECOVERY_FLAGS) &&
+	    port == charge_manager_get_active_charge_port() &&
+	    (system_get_reset_flags() & EC_RESET_FLAG_STAY_IN_RO) &&
+	    system_get_image_copy() == EC_IMAGE_RO) {
+		CPRINTS("C%d: Preserve ap-off and stay-in-ro across PD reset",
+			port);
+		chip_save_reset_flags(chip_read_reset_flags() |
+				      EC_RESET_FLAG_AP_OFF |
+				      EC_RESET_FLAG_STAY_IN_RO);
 	}
 
 #ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
