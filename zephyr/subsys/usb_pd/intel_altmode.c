@@ -18,14 +18,41 @@
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
-static int pd_altmode_read(const struct device *dev)
+static int pd_altmode_read(const struct device *dev,
+			   union data_status_reg *data)
 {
+	const struct pd_altmode_config *cfg = dev->config;
+	uint8_t buf[DATA_STATUS_REG_LEN + 1];
+	int rv;
+
+	/*
+	 * Read sequence
+	 * DEV_ADDR - REG_ID - DEV_ADDR - READ_LEN - DATA0 .. DATAn
+	 */
+	rv = i2c_burst_read_dt(&cfg->i2c, REG_DATA_STATUS, buf,
+			       DATA_STATUS_REG_LEN + 1);
+	if (rv)
+		return rv;
+	if (buf[0] != DATA_STATUS_REG_LEN)
+		return -EIO;
+
+	memcpy(data, &buf[1], DATA_STATUS_REG_LEN);
+
 	return 0;
 }
 
-static int pd_altmode_write(const struct device *dev)
+static int pd_altmode_write(const struct device *dev,
+			    union data_control_reg *data)
 {
-	return 0;
+	const struct pd_altmode_config *cfg = dev->config;
+
+	/*
+	 * Write sequence
+	 * DEV_ADDR - REG_ID - DATA_LEN - DATA0 .. DATAn
+	 */
+	return i2c_burst_write_dt(&cfg->i2c, REG_DATA_CONTROL,
+				  (const uint8_t *)data,
+				  DATA_CONTROL_REG_LEN + 2);
 }
 
 static int pd_altmode_isr_enable(const struct device *dev, bool en)
