@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf5bade_78ceb957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T19:30:25Z",
+      "side": 1,
+      "message": "Broadly, this is starting to look really clean, which is impressive in a feature this big. Thanks so much for your willingness to iterate!",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad8954a_4234e1b5",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T19:30:25Z",
+      "side": 1,
+      "message": "Nit: Can you have the function return the union type and then take the raw value in this assignment?",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb07507_4f890068",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T19:30:25Z",
+      "side": 1,
+      "message": "As discussed OOB, it seems like you need to directly modify the stored discovery within the TCPM to get the active-cable logic to work. I think this is because you are combining multiple attempted mode entries into one test without an intervening disconnect. When you change the discovery response of the cable emulator, the TCPM will have no way of knowing that it should rerun discovery to detect that change.\n\nHypothetically, you should be able to get the TCPM to rerun discovery with a host command. A more realistic scenario would be to disconnect and reconnect the emulator inside the test.\n\nHowever, as I note below, I think that strictly from a style POV, each set of discovery responses should be its own test. Incidentally, I think this would avoid the issues you were seeing trying to get the active-cable logic to work.",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8319a4ab_1fbcf746",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T19:30:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure that I get this test. The cable discovery response has an invalid product type for a cable, but if there\u0027s any response, then the cable would be emarked. The name of the cable setting (`non_active_non_passive`) is confusing. It should be something like `non_emarked`, or if this is the intended response, `invalid_ptype`. Similarly, the `misc` test name doesn\u0027t give me much, and I\u0027d like it if it were more specific.",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b63d412_70133b11",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-08T19:30:25Z",
+      "side": 1,
+      "message": "Setting aside the issue of changing the stored discovery data, I think that this section should be a separate test. So far, the tests in this file each have their own cable discovery responses. Combining two sets of responses into one test, with different expected behaviors, seems unnecessary. This also goes for the other tests.",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
