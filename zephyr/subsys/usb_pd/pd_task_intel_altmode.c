@@ -18,15 +18,6 @@
 
 #define INTEL_ALTMODE_COMPAT_PD intel_pd_altmode
 
-#define INTEL_ALTMODE_PD_CONFIG(id)                               \
-	{                                                         \
-		.i2c = {                                        \
-			.bus = I2C_PORT_BY_DEV(id),             \
-			.addr = DT_REG_ADDR(id),               \
-		},                                              \
-		.int_gpio = GPIO_DT_SPEC_GET(id, irq_gpios), \
-	}
-
 #define PD_CHIP_ENTRY(usbc_id, pd_id, config_fn) \
 	[USBC_PORT_NEW(usbc_id)] = config_fn(pd_id),
 
@@ -34,28 +25,30 @@
 	COND_CODE_1(DT_NODE_HAS_COMPAT(pd_id, compat),  \
 		    (PD_CHIP_ENTRY(usbc_id, pd_id, config_fn)), ())
 
-#define PD_CHIP_FIND(usbc_id, pd_id)                          \
-	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, \
-		     INTEL_ALTMODE_PD_CONFIG)
+#define PD_CHIP_FIND(usbc_id, pd_id) \
+	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, DEVICE_DT_GET)
 
 #define PD_CHIP(usbc_id)                                                      \
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, pd_altmode),                    \
 		    (PD_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, pd_altmode))), \
-		    (none))
+		    ())
 
 /* Generate PD structure */
-const struct pd_config_t pd_config_array[] = { DT_FOREACH_STATUS_OKAY(
+static const struct device *pd_config_array[] = { DT_FOREACH_STATUS_OKAY(
 	named_usbc_port, PD_CHIP) };
 
 BUILD_ASSERT(ARRAY_SIZE(pd_config_array) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
+/* Store current data of the DATA STATUS register */
+static union data_status_reg data_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 static struct intel_altmode_data intel_altmode_task_data;
 
 static const struct device *intel_altmode_get_instance(void);
 
-static void intel_altmode_set_event(enum intel_altmode_event event)
+void intel_altmode_post_event(enum intel_altmode_event event)
 {
 	const struct device *dev = intel_altmode_get_instance();
 	struct intel_altmode_data *const data = dev->data;
@@ -67,29 +60,25 @@ static void intel_altmode_suspend_handler(struct ap_power_ev_callback *cb,
 					  struct ap_power_ev_data data)
 {
 	int i;
-	const struct device *dev = intel_altmode_get_instance();
-	struct intel_altmode_data *const pd_data = dev->data;
-	struct pd_config_t *pd_config = pd_data->pd_conf;
 
 	LOG_DBG("suspend event: 0x%x", data.event);
 
 	if (data.event == AP_POWER_RESUME) {
 		/* Enable interrupt when AP is on */
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			gpio_pin_interrupt_configure_dt(
-				&pd_config[i].int_gpio,
-				GPIO_INT_EDGE_TO_INACTIVE);
+			pd_altmode_driver_api.isr_enable(pd_config_array[i],
+							 true);
 
 		/* Set event to forcefully get new PD data */
-		intel_altmode_set_event(INTEL_ALTMODE_EVENT_FORCE);
+		intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
 	} else if (data.event == AP_POWER_SUSPEND) {
 		/*
 		 * Disable interrupt when the AP is down to avoid unnecessary
 		 * wake of AP
 		 */
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			gpio_pin_interrupt_configure_dt(&pd_config[i].int_gpio,
-							GPIO_INT_DISABLE);
+			pd_altmode_driver_api.isr_enable(pd_config_array[i],
+							 false);
 	} else {
 		LOG_ERR("Invalid suspend event");
 	}
@@ -108,16 +97,37 @@ static uint32_t intel_altmode_wait_event(const struct device *dev)
 	return events & INTEL_ALTMODE_EVENT_COUNT;
 }
 
-static void intel_altmode_interrupt_cb(const struct device *dev,
-				       struct gpio_callback *cb, uint32_t pins)
-{
-	/* PD interrupt event */
-	intel_altmode_set_event(INTEL_ALTMODE_EVENT_INTERRUPT);
-}
-
 static void process_altmode_pd_data(int port)
 {
+	int rv;
+	union data_status_reg status;
+	union data_control_reg control = { .i2c_int_ack = 1 };
+
 	LOG_DBG("Process p% data", port);
+
+	/* Clear the interrupt */
+	rv = pd_altmode_driver_api.write(pd_config_array[port], &control);
+	if (rv) {
+		LOG_ERR("P%d write Err=%d", port, rv);
+		return;
+	}
+
+	/* Read the status register */
+	rv = pd_altmode_driver_api.read(pd_config_array[port], &status);
+	if (rv) {
+		LOG_ERR("P%d read Err=%d", port, rv);
+		return;
+	}
+
+	/* Nothing to do if the data in the status register has not changed */
+	if (!memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
+		    sizeof(union data_status_reg)))
+		return;
+
+	/* Update the new data */
+	memcpy(&data_status[port], &status, sizeof(union data_status_reg));
+
+	/* TODO: Process MUX events */
 }
 
 static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
@@ -125,8 +135,6 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 	int i;
 	uint32_t events;
 	struct device *const dev = (struct device *)arg;
-	struct intel_altmode_data *const pd_data = dev->data;
-	struct pd_config_t *pd_config = pd_data->pd_conf;
 
 	/* Add callbacks for suspend hooks */
 	ap_power_ev_init_callback(&intel_altmode_task_data.cb,
@@ -142,7 +150,8 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 		if (events & INTEL_ALTMODE_EVENT_INTERRUPT) {
 			for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 				/* Process data of interrupted port */
-				if (!gpio_pin_get_dt(&pd_config[i].int_gpio))
+				if (pd_altmode_driver_api.is_interrupted(
+					    pd_config_array[i]))
 					process_altmode_pd_data(i);
 			}
 		} else if (events & INTEL_ALTMODE_EVENT_FORCE) {
@@ -155,18 +164,6 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 
 static int intel_altmode_driver_init(const struct device *dev)
 {
-	int i;
-
-	intel_altmode_task_data.pd_conf = (struct pd_config_t *)pd_config_array;
-
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		gpio_init_callback(&intel_altmode_task_data.int_cb,
-				   intel_altmode_interrupt_cb,
-				   BIT(pd_config_array[i].int_gpio.pin));
-		gpio_add_callback(pd_config_array[i].int_gpio.port,
-				  &intel_altmode_task_data.int_cb);
-	}
-
 	return 0;
 }
 
