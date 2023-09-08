@@ -16,6 +16,24 @@
       "message": "Ya know...this is missing a docstring. :-)\n\nI\u0027m fine with adding it in this CL.  Or a separate one if you prefer.  Either way is good.",
       "revId": "464caa13e0aa5696ee50dfc99e81eef281eaf24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "801d8ce7_394c1918",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-09-08T07:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75bdb1f8_a883b75b",
+      "revId": "464caa13e0aa5696ee50dfc99e81eef281eaf24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
