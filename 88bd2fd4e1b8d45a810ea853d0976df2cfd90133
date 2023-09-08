@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee9d8cc5_730d1d5f",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-08T22:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc37b408_396dcd62",
+      "range": {
+        "startLine": 306,
+        "startChar": 6,
+        "endLine": 306,
+        "endChar": 183
+      },
+      "revId": "88bd2fd4e1b8d45a810ea853d0976df2cfd90133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c850c984_a86afa3d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-07T00:11:39Z",
       "side": 1,
       "message": "Line 304 says \u0027receive-only\u0027? Can you please make these consistent? I also see read-only in the CL description but line 297 says transmit-only.",
+      "range": {
+        "startLine": 309,
+        "startChar": 5,
+        "endLine": 309,
+        "endChar": 14
+      },
+      "revId": "88bd2fd4e1b8d45a810ea853d0976df2cfd90133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "657a382b_4e99ccab",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-08T22:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c850c984_a86afa3d",
       "range": {
         "startLine": 309,
         "startChar": 5,
