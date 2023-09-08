@@ -12,6 +12,9 @@
 #ifndef __INTEL_ALTMODE_H
 #define __INTEL_ALTMODE_H
 
+#include <zephyr/device.h>
+#include <zephyr/kernel.h>
+#include <zephyr/syscall_handler.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
 
@@ -223,11 +226,60 @@ union data_control_reg {
 	uint8_t raw_value[DATA_CONTROL_REG_LEN];
 };
 
-struct pd_altmode_driver {
-	int (*read)(const struct device *dev, union data_status_reg *data);
-	int (*write)(const struct device *dev, union data_control_reg *data);
-	int (*isr_enable)(const struct device *dev, bool en);
+typedef void (*pd_altmode_callback)(void);
+
+__subsystem struct pd_altmode_driver_api {
+	int (*altmode_read)(const struct device *dev, union data_status_reg *data);
+	int (*altmode_write)(const struct device *dev, union data_control_reg *data);
+	int (*altmode_isr_enable)(const struct device *dev, bool en);
+	bool (*altmode_is_interrupted)(const struct device *dev);
+	void (*altmode_set_result_cb)(const struct device *dev, pd_altmode_callback cb);
 };
+
+__syscall int pd_altmode_read(const struct device *dev, union data_status_reg *data);
+
+static inline int z_impl_pd_altmode_read(const struct device *dev, union data_status_reg *data)
+{
+	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+
+	return api->altmode_read(dev, data);
+}
+
+__syscall int pd_altmode_write(const struct device *dev, union data_control_reg *data);
+
+static inline int z_impl_pd_altmode_write(const struct device *dev, union data_control_reg *data)
+{
+	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+
+	return api->altmode_write(dev, data);
+}
+
+__syscall int pd_altmode_isr_enable(const struct device *dev, bool en);
+
+static inline int z_impl_pd_altmode_isr_enable(const struct device *dev, bool en)
+{
+	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+
+	return api->altmode_isr_enable(dev, en);
+}
+
+__syscall int pd_altmode_is_interrupted(const struct device *dev);
+
+static inline int z_impl_pd_altmode_is_interrupted(const struct device *dev)
+{
+	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+
+	return api->altmode_is_interrupted(dev);
+}
+
+__syscall void pd_altmode_set_result_cb(const struct device *dev, pd_altmode_callback cb);
+
+static inline void z_impl_pd_altmode_set_result_cb(const struct device *dev, pd_altmode_callback cb)
+{
+	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+
+	api->altmode_set_result_cb(dev, cb);
+}
 
 struct pd_altmode_config {
 	/* I2C config */
@@ -244,7 +296,11 @@ struct pd_altmode_config {
 
 struct pd_altmode_data {
 	const struct device *dev;
+	struct k_work work;
 	struct gpio_callback gpio_cb;
+	pd_altmode_callback isr_cb;
 };
+
+//extern const struct pd_altmode_driver_api pd_altmode_driver_api_api;
 
 #endif /* __INTEL_ALTMODE_H */

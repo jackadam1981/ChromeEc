@@ -14,18 +14,12 @@
 #include "pd_task_intel_altmode.h"
 #include "usbc/utils.h"
 
+#include <stdlib.h>
+
 #include <zephyr/logging/log.h>
+#include <zephyr/shell/shell.h>
 
 #define INTEL_ALTMODE_COMPAT_PD intel_pd_altmode
-
-#define INTEL_ALTMODE_PD_CONFIG(id)                               \
-	{                                                         \
-		.i2c = {                                        \
-			.bus = I2C_PORT_BY_DEV(id),             \
-			.addr = DT_REG_ADDR(id),               \
-		},                                              \
-		.int_gpio = GPIO_DT_SPEC_GET(id, irq_gpios), \
-	}
 
 #define PD_CHIP_ENTRY(usbc_id, pd_id, config_fn) \
 	[USBC_PORT_NEW(usbc_id)] = config_fn(pd_id),
@@ -34,28 +28,30 @@
 	COND_CODE_1(DT_NODE_HAS_COMPAT(pd_id, compat),  \
 		    (PD_CHIP_ENTRY(usbc_id, pd_id, config_fn)), ())
 
-#define PD_CHIP_FIND(usbc_id, pd_id)                          \
-	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, \
-		     INTEL_ALTMODE_PD_CONFIG)
+#define PD_CHIP_FIND(usbc_id, pd_id) \
+	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, DEVICE_DT_GET)
 
 #define PD_CHIP(usbc_id)                                                      \
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, pd_altmode),                    \
 		    (PD_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, pd_altmode))), \
-		    (none))
+		    ())
 
-/* Generate PD structure */
-const struct pd_config_t pd_config_array[] = { DT_FOREACH_STATUS_OKAY(
+/* Generate device tree for available PDs */
+static const struct device *pd_config_array[] = { DT_FOREACH_STATUS_OKAY(
 	named_usbc_port, PD_CHIP) };
 
 BUILD_ASSERT(ARRAY_SIZE(pd_config_array) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
+/* Store current data of the DATA STATUS register */
+static union data_status_reg data_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 static struct intel_altmode_data intel_altmode_task_data;
 
 static const struct device *intel_altmode_get_instance(void);
 
-static void intel_altmode_set_event(enum intel_altmode_event event)
+void intel_altmode_post_event(enum intel_altmode_event event)
 {
 	const struct device *dev = intel_altmode_get_instance();
 	struct intel_altmode_data *const data = dev->data;
@@ -67,29 +63,23 @@ static void intel_altmode_suspend_handler(struct ap_power_ev_callback *cb,
 					  struct ap_power_ev_data data)
 {
 	int i;
-	const struct device *dev = intel_altmode_get_instance();
-	struct intel_altmode_data *const pd_data = dev->data;
-	struct pd_config_t *pd_config = pd_data->pd_conf;
 
 	LOG_DBG("suspend event: 0x%x", data.event);
 
 	if (data.event == AP_POWER_RESUME) {
 		/* Enable interrupt when AP is on */
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			gpio_pin_interrupt_configure_dt(
-				&pd_config[i].int_gpio,
-				GPIO_INT_EDGE_TO_INACTIVE);
+			pd_altmode_isr_enable(pd_config_array[i], true);
 
 		/* Set event to forcefully get new PD data */
-		intel_altmode_set_event(INTEL_ALTMODE_EVENT_FORCE);
+		intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
 	} else if (data.event == AP_POWER_SUSPEND) {
 		/*
 		 * Disable interrupt when the AP is down to avoid unnecessary
 		 * wake of AP
 		 */
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			gpio_pin_interrupt_configure_dt(&pd_config[i].int_gpio,
-							GPIO_INT_DISABLE);
+			pd_altmode_isr_enable(pd_config_array[i], false);
 	} else {
 		LOG_ERR("Invalid suspend event");
 	}
@@ -100,24 +90,45 @@ static uint32_t intel_altmode_wait_event(const struct device *dev)
 	struct intel_altmode_data *const data = dev->data;
 	uint32_t events;
 
-	events = k_event_wait(&data->evt, INTEL_ALTMODE_EVENT_COUNT, false,
+	events = k_event_wait(&data->evt, INTEL_ALTMODE_EVENT_MASK, false,
 			      Z_FOREVER);
 	/* Clear all events posted */
 	k_event_clear(&data->evt, events);
 
-	return events & INTEL_ALTMODE_EVENT_COUNT;
-}
-
-static void intel_altmode_interrupt_cb(const struct device *dev,
-				       struct gpio_callback *cb, uint32_t pins)
-{
-	/* PD interrupt event */
-	intel_altmode_set_event(INTEL_ALTMODE_EVENT_INTERRUPT);
+	return events & INTEL_ALTMODE_EVENT_MASK;
 }
 
 static void process_altmode_pd_data(int port)
 {
+	int rv;
+	union data_status_reg status;
+	union data_control_reg control = { .i2c_int_ack = 1 };
+
 	LOG_DBG("Process p% data", port);
+
+	/* Clear the interrupt */
+	rv = pd_altmode_write(pd_config_array[port], &control);
+	if (rv) {
+		LOG_ERR("P%d write Err=%d", port, rv);
+		return;
+	}
+
+	/* Read the status register */
+	rv = pd_altmode_read(pd_config_array[port], &status);
+	if (rv) {
+		LOG_ERR("P%d read Err=%d", port, rv);
+		return;
+	}
+
+	/* Nothing to do if the data in the status register has not changed */
+	if (!memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
+		    sizeof(union data_status_reg)))
+		return;
+
+	/* Update the new data */
+	memcpy(&data_status[port], &status, sizeof(union data_status_reg));
+
+	/* TODO: Process MUX events */
 }
 
 static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
@@ -125,8 +136,6 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 	int i;
 	uint32_t events;
 	struct device *const dev = (struct device *)arg;
-	struct intel_altmode_data *const pd_data = dev->data;
-	struct pd_config_t *pd_config = pd_data->pd_conf;
 
 	/* Add callbacks for suspend hooks */
 	ap_power_ev_init_callback(&intel_altmode_task_data.cb,
@@ -140,9 +149,10 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 		events = intel_altmode_wait_event(dev);
 
 		if (events & INTEL_ALTMODE_EVENT_INTERRUPT) {
+			/* Process data of interrupted port */
 			for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-				/* Process data of interrupted port */
-				if (!gpio_pin_get_dt(&pd_config[i].int_gpio))
+				if (pd_altmode_is_interrupted(
+					    pd_config_array[i]))
 					process_altmode_pd_data(i);
 			}
 		} else if (events & INTEL_ALTMODE_EVENT_FORCE) {
@@ -155,18 +165,6 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 
 static int intel_altmode_driver_init(const struct device *dev)
 {
-	int i;
-
-	intel_altmode_task_data.pd_conf = (struct pd_config_t *)pd_config_array;
-
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		gpio_init_callback(&intel_altmode_task_data.int_cb,
-				   intel_altmode_interrupt_cb,
-				   BIT(pd_config_array[i].int_gpio.pin));
-		gpio_add_callback(pd_config_array[i].int_gpio.port,
-				  &intel_altmode_task_data.int_cb);
-	}
-
 	return 0;
 }
 
@@ -182,3 +180,78 @@ static const struct device *intel_altmode_get_instance(void)
 {
 	return DEVICE_GET(intel_altmode_dev);
 }
+
+void intel_altmode_task_start(void)
+{
+	k_thread_start(intel_altmode_tid);
+}
+
+#ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
+static int console_command_intel_altmode(const struct shell *shell, size_t argc,
+					 char **argv)
+{
+	int port, rv, i;
+	char rw, *e;
+	uint16_t val1;
+	uint32_t val2 = 0;
+	union data_status_reg status;
+	union data_control_reg control;
+
+	if (argc < 4 || argc > 5)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* Get PD port number */
+	port = strtol(argv[1], &e, 0);
+	if (*e || port > CONFIG_USB_PD_PORT_MAX_COUNT)
+		return EC_ERROR_PARAM1;
+
+	/* Validate r/w selection */
+	rw = argv[2][0];
+	if (rw != 'w' && rw != 'r')
+		return EC_ERROR_PARAM2;
+
+	if (rw == 'r') {
+		rv = pd_altmode_read(pd_config_array[port], &status);
+		if (rv)
+			return rv;
+
+		shell_fprintf(shell, SHELL_INFO, "RD_VAL: ");
+		for (i = 0; i < DATA_STATUS_REG_LEN; i++)
+			shell_fprintf(shell, SHELL_INFO, "[%d]0x%x, ", i,
+				      status.raw_value[i]);
+		shell_fprintf(shell, SHELL_INFO, "\n");
+	} else {
+		val1 = strtoull(argv[3], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM3;
+
+		if (argc > 4) {
+			val2 = strtoull(argv[4], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM4;
+		}
+
+		memcpy(&control.raw_value[0], &val1, 2);
+		memcpy(&control.raw_value[2], &val2, 4);
+
+		rv = pd_altmode_write(pd_config_array[port],
+						 &control);
+		if (rv)
+			return rv;
+
+		shell_fprintf(shell, SHELL_INFO, "WR_VAL: ");
+		for (i = 0; i < DATA_CONTROL_REG_LEN; i++)
+			shell_fprintf(shell, SHELL_INFO, "[%d]0x%x, ", i,
+				      control.raw_value[i]);
+		shell_fprintf(shell, SHELL_INFO, "\n");
+	}
+
+	return rv;
+}
+
+SHELL_CMD_REGISTER(powerinfo, NULL,
+		   "<port> r\n"
+		   "<port> w <val1> | <val2>\n"
+		   "Read or write to PD reg",
+		   console_command_intel_altmode);
+#endif /* CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE */

@@ -10,6 +10,7 @@
  */
 
 #include "intel_altmode.h"
+#include "pd_task_intel_altmode.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -18,7 +19,7 @@
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
-static int pd_altmode_read(const struct device *dev,
+static int intel_altmode_read(const struct device *dev,
 			   union data_status_reg *data)
 {
 	const struct pd_altmode_config *cfg = dev->config;
@@ -41,7 +42,7 @@ static int pd_altmode_read(const struct device *dev,
 	return 0;
 }
 
-static int pd_altmode_write(const struct device *dev,
+static int intel_altmode_write(const struct device *dev,
 			    union data_control_reg *data)
 {
 	const struct pd_altmode_config *cfg = dev->config;
@@ -55,7 +56,7 @@ static int pd_altmode_write(const struct device *dev,
 				  DATA_CONTROL_REG_LEN + 2);
 }
 
-static int pd_altmode_isr_enable(const struct device *dev, bool en)
+static int intel_altmode_isr_enable(const struct device *dev, bool en)
 {
 	const struct pd_altmode_config *cfg = dev->config;
 
@@ -64,15 +65,43 @@ static int pd_altmode_isr_enable(const struct device *dev, bool en)
 						    GPIO_INT_DISABLE);
 }
 
-static const struct pd_altmode_driver pd_altmode_driver_api = {
-	.read = pd_altmode_read,
-	.write = pd_altmode_write,
-	.isr_enable = pd_altmode_isr_enable,
+static bool intel_altmode_is_interrupted(const struct device *dev)
+{
+	const struct pd_altmode_config *cfg = dev->config;
+
+	return !gpio_pin_get_dt(&cfg->int_gpio);
+}
+
+static void intel_altmode_set_result_cb(const struct device *dev, pd_altmode_callback cb)
+{
+	struct pd_altmode_data *data = dev->data;
+	data->isr_cb = cb;
+}
+
+//const struct pd_altmode_driver_api pd_altmode_driver_api_api = {
+static const struct pd_altmode_driver_api intel_pd_altmode_driver_api = {
+	.altmode_read = intel_altmode_read,
+	.altmode_write = intel_altmode_write,
+	.altmode_isr_enable = intel_altmode_isr_enable,
+	.altmode_is_interrupted = intel_altmode_is_interrupted,
+	.altmode_set_result_cb = intel_altmode_set_result_cb,
 };
 
 static void pd_altmode_gpio_callback(const struct device *dev,
 				     struct gpio_callback *cb, uint32_t pins)
 {
+	struct pd_altmode_data *data = CONTAINER_OF(cb, struct pd_altmode_data, gpio_cb);
+
+	k_work_submit(&data->work);
+	//intel_altmode_post_event(INTEL_ALTMODE_EVENT_INTERRUPT);
+}
+
+static void pd_altmode_isr_work(struct k_work *item)
+{
+	struct pd_altmode_data *data = CONTAINER_OF(item, struct pd_altmode_data, work);
+	//const struct device *dev = data->dev;
+
+	data->isr_cb();
 }
 
 static int pd_altmode_init(const struct device *dev)
@@ -103,6 +132,8 @@ static int pd_altmode_init(const struct device *dev)
 	gpio_init_callback(&data->gpio_cb, pd_altmode_gpio_callback,
 			   BIT(cfg->int_gpio.pin));
 
+	k_work_init(&data->work, pd_altmode_isr_work);
+
 	rv = gpio_add_callback(cfg->int_gpio.port, &data->gpio_cb);
 	if (rv < 0) {
 		LOG_ERR("Unable to add callback");
@@ -124,6 +155,6 @@ static int pd_altmode_init(const struct device *dev)
 			      &pd_altmode_data_##inst,                    \
 			      &pd_altmode_config##inst, POST_KERNEL,      \
 			      CONFIG_APPLICATION_INIT_PRIORITY,           \
-			      &pd_altmode_driver_api);
+			      &intel_pd_altmode_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(INTEL_ALTMODE_DEFINE)

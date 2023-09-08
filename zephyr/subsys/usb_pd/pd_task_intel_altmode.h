@@ -12,6 +12,8 @@
 #ifndef __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 #define __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 
+#include "intel_altmode.h"
+
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
@@ -26,28 +28,15 @@ enum intel_altmode_event {
 	INTEL_ALTMODE_EVENT_COUNT
 };
 
-struct pd_config_t {
-	/* I2C config */
-	struct i2c_dt_spec i2c;
-	/*
-	 * PD interrupt to wake the task to configure alternate modes. There
-	 * can be individual Interrupt pin for each PD port or all the PD
-	 * interrupts can be muxed to single GPIO. This helps to keep common
-	 * code for single port / dual port PD solutions offered by different
-	 * PD vendors.
-	 */
-	struct gpio_dt_spec int_gpio;
-};
-
 struct intel_altmode_data {
 	/* Driver event object to receive events posted. */
 	struct k_event evt;
 	/* Callback for the AP power events */
 	struct ap_power_ev_callback cb;
-	/* PD data path I2C */
-	struct pd_config_t *pd_conf;
-	/* Interrupt callback */
-	struct gpio_callback int_cb;
 };
+
+void intel_altmode_post_event(enum intel_altmode_event event);
+
+void intel_altmode_task_start(void);
 
 #endif /* __CROS_EC_PD_TASK_INTEL_ALTMODE_H */
