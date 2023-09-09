@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "719f8d52_8a21a7c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-09T04:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b53a25aa_4c689cde",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "50096cbdb959d98aa4c6f13a015a1dea569ea952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "40b323b7_1ca248b8",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 3
