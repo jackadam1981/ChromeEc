@@ -9,32 +9,13 @@
  * Delivery Controller Interface for SoC and Retimer" document.
  */
 
-#ifndef __INTEL_ALTMODE_H
-#define __INTEL_ALTMODE_H
+#ifndef ZEPHYR_INCLUDE_DRIVERS_CROS_INTEL_ALTMODE_H_
+#define ZEPHYR_INCLUDE_DRIVERS_CROS_INTEL_ALTMODE_H_
+
+#include "usb_pd_tbt.h"
+#include "usb_pd_vdo.h"
 
 #include <zephyr/device.h>
-#include <zephyr/kernel.h>
-#include <zephyr/syscall_handler.h>
-#include <zephyr/drivers/gpio.h>
-#include <zephyr/drivers/i2c.h>
-
-enum usb_rev30_ss {
-	USB_R30_SS_U2_ONLY,
-	USB_R30_SS_U32_U40_GEN1,
-	USB_R30_SS_U32_U40_GEN2,
-	USB_R30_SS_U40_GEN3,
-	USB_R30_SS_RES_4,
-	USB_R30_SS_RES_5,
-	USB_R30_SS_RES_6,
-	USB_R30_SS_RES_7,
-};
-
-enum tbt_compat_rounded_support {
-	TBT_GEN3_NON_ROUNDED,
-	TBT_GEN3_GEN4_ROUNDED_NON_ROUNDED,
-	TBT_ROUND_SUP_RES_2,
-	TBT_ROUND_SUP_RES_3,
-};
 
 /*
  * References:
@@ -135,8 +116,8 @@ enum tbt_compat_rounded_support {
  *           1: Connection present
  */
 
-#define REG_DATA_STATUS 0x5F
-#define DATA_STATUS_REG_LEN 5
+#define INTEL_ALTMODE_REG_DATA_STATUS 0x5F
+#define INTEL_ALTMODE_DATA_STATUS_REG_LEN 5
 
 union data_status_reg {
 	struct {
@@ -179,7 +160,7 @@ union data_status_reg {
 		/* Bits 32 to 39 */
 		uint8_t res3;
 	};
-	uint8_t raw_value[DATA_STATUS_REG_LEN];
+	uint8_t raw_value[INTEL_ALTMODE_DATA_STATUS_REG_LEN];
 };
 
 /*
@@ -204,8 +185,8 @@ union data_status_reg {
  * <1:0>   : Reserved
  */
 
-#define REG_DATA_CONTROL 0x50
-#define DATA_CONTROL_REG_LEN 6
+#define INTEL_ALTMODE_REG_DATA_CONTROL 0x50
+#define INTEL_ALTMODE_DATA_CONTROL_REG_LEN 6
 
 union data_control_reg {
 	struct {
@@ -223,84 +204,84 @@ union data_control_reg {
 		/* Bits 16 to 47 */
 		uint32_t ret_dbg_mode;
 	};
-	uint8_t raw_value[DATA_CONTROL_REG_LEN];
+	uint8_t raw_value[INTEL_ALTMODE_DATA_CONTROL_REG_LEN];
 };
 
-typedef void (*pd_altmode_callback)(void);
+typedef void (*intel_altmode_callback)(void);
+typedef int (*altmode_read)(const struct device *dev,
+			    union data_status_reg *data);
+typedef int (*altmode_write)(const struct device *dev,
+			     union data_control_reg *data);
+typedef int (*altmode_isr_enable)(const struct device *dev, bool en);
+typedef bool (*altmode_is_interrupted)(const struct device *dev);
+typedef void (*altmode_set_result_cb)(const struct device *dev,
+				      intel_altmode_callback cb);
 
-__subsystem struct pd_altmode_driver_api {
-	int (*altmode_read)(const struct device *dev, union data_status_reg *data);
-	int (*altmode_write)(const struct device *dev, union data_control_reg *data);
-	int (*altmode_isr_enable)(const struct device *dev, bool en);
-	bool (*altmode_is_interrupted)(const struct device *dev);
-	void (*altmode_set_result_cb)(const struct device *dev, pd_altmode_callback cb);
+__subsystem struct intel_altmode_driver_api {
+	altmode_read read;
+	altmode_write write;
+	altmode_isr_enable isr_enable;
+	altmode_is_interrupted is_interrupted;
+	altmode_set_result_cb set_result_cb;
 };
 
-__syscall int pd_altmode_read(const struct device *dev, union data_status_reg *data);
+__syscall int pd_altmode_read(const struct device *dev,
+			      union data_status_reg *data);
 
-static inline int z_impl_pd_altmode_read(const struct device *dev, union data_status_reg *data)
+static inline int z_impl_pd_altmode_read(const struct device *dev,
+					 union data_status_reg *data)
 {
-	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+	const struct intel_altmode_driver_api *api =
+		(const struct intel_altmode_driver_api *)dev->api;
 
-	return api->altmode_read(dev, data);
+	return api->read(dev, data);
 }
 
-__syscall int pd_altmode_write(const struct device *dev, union data_control_reg *data);
+__syscall int pd_altmode_write(const struct device *dev,
+			       union data_control_reg *data);
 
-static inline int z_impl_pd_altmode_write(const struct device *dev, union data_control_reg *data)
+static inline int z_impl_pd_altmode_write(const struct device *dev,
+					  union data_control_reg *data)
 {
-	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+	const struct intel_altmode_driver_api *api =
+		(const struct intel_altmode_driver_api *)dev->api;
 
-	return api->altmode_write(dev, data);
+	return api->write(dev, data);
 }
 
 __syscall int pd_altmode_isr_enable(const struct device *dev, bool en);
 
-static inline int z_impl_pd_altmode_isr_enable(const struct device *dev, bool en)
+static inline int z_impl_pd_altmode_isr_enable(const struct device *dev,
+					       bool en)
 {
-	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+	const struct intel_altmode_driver_api *api =
+		(const struct intel_altmode_driver_api *)dev->api;
 
-	return api->altmode_isr_enable(dev, en);
+	return api->isr_enable(dev, en);
 }
 
 __syscall int pd_altmode_is_interrupted(const struct device *dev);
 
 static inline int z_impl_pd_altmode_is_interrupted(const struct device *dev)
 {
-	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+	const struct intel_altmode_driver_api *api =
+		(const struct intel_altmode_driver_api *)dev->api;
 
-	return api->altmode_is_interrupted(dev);
+	return api->is_interrupted(dev);
 }
 
-__syscall void pd_altmode_set_result_cb(const struct device *dev, pd_altmode_callback cb);
+__syscall void pd_altmode_set_result_cb(const struct device *dev,
+					intel_altmode_callback cb);
 
-static inline void z_impl_pd_altmode_set_result_cb(const struct device *dev, pd_altmode_callback cb)
+static inline void z_impl_pd_altmode_set_result_cb(const struct device *dev,
+						   intel_altmode_callback cb)
 {
-	const struct pd_altmode_driver_api *api = (const struct pd_altmode_driver_api *)dev->api;
+	const struct intel_altmode_driver_api *api =
+		(const struct intel_altmode_driver_api *)dev->api;
 
-	api->altmode_set_result_cb(dev, cb);
+	api->set_result_cb(dev, cb);
 }
 
-struct pd_altmode_config {
-	/* I2C config */
-	struct i2c_dt_spec i2c;
-	/*
-	 * PD interrupt to wake the task to configure alternate modes. There
-	 * can be individual Interrupt pin for each PD port or all the PD
-	 * interrupts can be muxed to single GPIO. This helps to keep common
-	 * code for single port / dual port PD solutions offered by different
-	 * PD vendors.
-	 */
-	struct gpio_dt_spec int_gpio;
-};
+#include <syscalls/intel_altmode.h>
 
-struct pd_altmode_data {
-	const struct device *dev;
-	struct k_work work;
-	struct gpio_callback gpio_cb;
-	pd_altmode_callback isr_cb;
-};
-
-//extern const struct pd_altmode_driver_api pd_altmode_driver_api_api;
-
-#endif /* __INTEL_ALTMODE_H */
+#endif /* ZEPHYR_INCLUDE_DRIVERS_CROS_INTEL_ALTMODE_H_ */

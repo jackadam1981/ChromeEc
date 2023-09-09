@@ -12,8 +12,6 @@
 #ifndef __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 #define __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 
-#include "intel_altmode.h"
-
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
@@ -34,8 +32,6 @@ struct intel_altmode_data {
 	/* Callback for the AP power events */
 	struct ap_power_ev_callback cb;
 };
-
-void intel_altmode_post_event(enum intel_altmode_event event);
 
 void intel_altmode_task_start(void);
 
