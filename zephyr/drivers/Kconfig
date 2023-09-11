@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 rsource "cros_flash/Kconfig"
+rsource "cros_fingerprint/Kconfig"
 rsource "cros_kb_raw/Kconfig"
 rsource "cros_rtc/Kconfig"
 rsource "cros_system/Kconfig"
