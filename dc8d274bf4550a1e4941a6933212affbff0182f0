@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8feb13b4_e29d6c19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-11T20:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fb71a53_f4ad4adb",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0d6f472_c3be6654",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-11T18:27:53Z",
       "side": 1,
       "message": "I don\u0027t think we have any other gsctool commands that send multiple vendor commands. Is this ok? Does it work over ccd and the tpm?",
+      "range": {
+        "startLine": 2868,
+        "startChar": 7,
+        "endLine": 2868,
+        "endChar": 29
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "109c4a0a_d5c1f033",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2868,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-11T20:11:11Z",
+      "side": 1,
+      "message": "ccd open already sends multiple TPMV command in a single gsctool call while it is polling. This does work over USB and TPM interface.",
+      "parentUuid": "b0d6f472_c3be6654",
       "range": {
         "startLine": 2868,
         "startChar": 7,
