@@ -16,6 +16,24 @@
       "message": "In what CL is this added to config.h? It should be added in this one.",
       "revId": "a3f1e655a9c70ab141a07329c9aedfcfbe2033ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c53351b_75764e48",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-11T22:00:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0525500_44210c87",
+      "revId": "a3f1e655a9c70ab141a07329c9aedfcfbe2033ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
