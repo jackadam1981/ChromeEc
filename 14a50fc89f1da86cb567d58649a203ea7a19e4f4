@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b103718_77ac7195",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-11T17:17:52Z",
+      "side": 1,
+      "message": "Actually when I tested the script, if `die` is triggered inside `check_preserve_sections_presence`, it\u0027s still entering into function `preserve_sections_with_cur_image`, hence appended \"|| die\" later to make sure it exits",
+      "parentUuid": "8ffe0adf_5e001e6f",
+      "range": {
+        "startLine": 1754,
+        "startChar": 30,
+        "endLine": 1754,
+        "endChar": 37
+      },
+      "revId": "14a50fc89f1da86cb567d58649a203ea7a19e4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "450dafdc_0e38bdc5",
         "filename": "util/flash_ec",
         "patchSetId": 7
