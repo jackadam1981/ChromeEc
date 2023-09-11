@@ -1,0 +1,41 @@
+# Copyright (c) 2023 The ChromiumOS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+# Common fields for fingerprint sensors
+
+properties:
+  width:
+    type: int
+    required: true
+    description: |
+      Fingerprint sensor width in pixels.
+
+  height:
+    type: int
+    required: true
+    description: |
+      Fingerprint sensor height in pixels.
+
+  bits-per-pixel:
+    type: int
+    required: true
+    description: |
+      Pixel resolution in bits.
+
+  v4l2-pixel-format:
+    type: int
+    required: true
+    description: |
+     V4L2 pixel format code.
+
+  irq-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      This property specifies the connection for sensor interrupt.
+
+  reset-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      This property specifies the connection for sensor reset.
