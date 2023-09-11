@@ -46,20 +46,38 @@ static int write_reg(uint8_t port, int reg, int regval)
 			  ppc_chips[port].i2c_addr_flags, reg, regval);
 }
 
+void check_ovp_limit(int port, int line)
+{
+	int reg;
+	int rv;
+
+	rv = read_reg(port, NX20P348X_OVLO_THRESHOLD_REG, &reg);
+	if (rv)
+		ccprintf("Oopsie...\n");
+
+	if((reg & NX20P348X_OVLO_THRESHOLD_MASK) != NX20P348X_OVLO_10_0)
+	{
+		ccprintf("OVP Changed at: %d to value: %d\n", line, reg);
+	}
+}
+
 static int nx20p348x_set_ovp_limit(int port)
 {
 	int rv;
 	int reg;
 
 	/* Set VBUS over voltage threshold (OVLO) */
+	check_ovp_limit(port, __LINE__);
 	rv = read_reg(port, NX20P348X_OVLO_THRESHOLD_REG, &reg);
 	if (rv)
 		return rv;
 	/* OVLO threshold is 3 bit field */
 	reg &= ~NX20P348X_OVLO_THRESHOLD_MASK;
 	/* Set SNK OVP to 23.0 V */
-	reg |= NX20P348X_OVLO_23_0;
+	reg |= NX20P348X_OVLO_10_0;
+	check_ovp_limit(port, __LINE__);
 	rv = write_reg(port, NX20P348X_OVLO_THRESHOLD_REG, reg);
+	check_ovp_limit(port, __LINE__);
 	if (rv)
 		return rv;
 
@@ -68,6 +86,7 @@ static int nx20p348x_set_ovp_limit(int port)
 
 static int nx20p348x_is_sourcing_vbus(int port)
 {
+	check_ovp_limit(port, __LINE__);
 	return flags[port] & NX20P348X_FLAGS_SOURCE_ENABLED;
 }
 
@@ -76,7 +95,9 @@ static int nx20p348x_set_vbus_source_current_limit(int port,
 {
 	int regval;
 	int status;
+	int ret;
 
+	check_ovp_limit(port, __LINE__);
 	status = read_reg(port, NX20P348X_5V_SRC_OCP_THRESHOLD_REG, &regval);
 	if (status)
 		return status;
@@ -99,7 +120,11 @@ static int nx20p348x_set_vbus_source_current_limit(int port,
 		break;
 	};
 
-	return write_reg(port, NX20P348X_5V_SRC_OCP_THRESHOLD_REG, regval);
+	check_ovp_limit(port, __LINE__);
+	ret = write_reg(port, NX20P348X_5V_SRC_OCP_THRESHOLD_REG, regval);
+	check_ovp_limit(port, __LINE__);
+
+	return ret;
 }
 
 static int nx20p348x_discharge_vbus(int port, int enable)
@@ -108,6 +133,7 @@ static int nx20p348x_discharge_vbus(int port, int enable)
 	int newval;
 	int status;
 
+	check_ovp_limit(port, __LINE__);
 	status = read_reg(port, NX20P348X_DEVICE_CONTROL_REG, &regval);
 	if (status)
 		return status;
@@ -120,7 +146,9 @@ static int nx20p348x_discharge_vbus(int port, int enable)
 	if (newval == regval)
 		return EC_SUCCESS;
 
+	check_ovp_limit(port, __LINE__);
 	status = write_reg(port, NX20P348X_DEVICE_CONTROL_REG, newval);
+	check_ovp_limit(port, __LINE__);
 	if (status) {
 		CPRINTS("Failed to %s VBUS discharge",
 			enable ? "enable" : "disable");
@@ -136,16 +164,20 @@ __maybe_unused static int nx20p3481_vbus_sink_enable(int port, int enable)
 	int rv;
 	int control = enable ? NX20P3481_SWITCH_CONTROL_HVSNK : 0;
 
+	check_ovp_limit(port, __LINE__);
+
 	if (enable) {
 		/*
 		 * VBUS Discharge must be off in sink mode.
 		 */
 		rv = nx20p348x_discharge_vbus(port, 0);
+		check_ovp_limit(port, __LINE__);
 		if (rv)
 			return rv;
 	}
 
 	rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
+	check_ovp_limit(port, __LINE__);
 	if (rv)
 		return rv;
 
@@ -157,6 +189,7 @@ __maybe_unused static int nx20p3481_vbus_sink_enable(int port, int enable)
 	 */
 	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
 	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+	check_ovp_limit(port, __LINE__);
 	if (rv)
 		return rv;
 
@@ -172,9 +205,11 @@ __maybe_unused static int nx20p3481_vbus_source_enable(int port, int enable)
 	uint8_t previous_flags = flags[port];
 	int control = enable ? NX20P3481_SWITCH_CONTROL_5VSRC : 0;
 
+	check_ovp_limit(port, __LINE__);
 	rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
 	if (rv)
 		return rv;
+	check_ovp_limit(port, __LINE__);
 
 	/* Cache the anticipated Vbus state */
 	if (enable)
@@ -189,9 +224,11 @@ __maybe_unused static int nx20p3481_vbus_source_enable(int port, int enable)
 	 * (15 msec) before the status will reflect the control command.
 	 */
 	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
+	check_ovp_limit(port, __LINE__);
 
 	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481)) {
 		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+		check_ovp_limit(port, __LINE__);
 		if (rv) {
 			flags[port] = previous_flags;
 			return rv;
@@ -208,6 +245,7 @@ __maybe_unused static int nx20p3481_vbus_source_enable(int port, int enable)
 __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 {
 	int rv;
+	check_ovp_limit(port, __LINE__);
 
 	enable = !!enable;
 
@@ -216,6 +254,7 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 		 * VBUS Discharge must be off in sink mode.
 		 */
 		rv = nx20p348x_discharge_vbus(port, 0);
+		check_ovp_limit(port, __LINE__);
 		if (rv)
 			return rv;
 	}
@@ -225,10 +264,13 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 	 * will float the GPIO thus browning out the board (without
 	 * a battery).
 	 */
+	check_ovp_limit(port, __LINE__);
+	ccprintf("Set sink: %d\n", enable);
 	rv = tcpm_set_snk_ctrl(port, enable);
 	if (rv)
 		return rv;
 
+	check_ovp_limit(port, __LINE__);
 	/*
 	 * The sink overvoltage protection is set to maximum possible value
 	 * after enabling the sink path. In case the threshold should be a lower
@@ -239,16 +281,20 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 		return rv;
 	}
 
+	check_ovp_limit(port, __LINE__);
+
 	for (int i = 0; i < NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC; ++i) {
 		int ds;
 		bool is_sink;
 
 		rv = read_reg(port, NX20P348X_DEVICE_STATUS_REG, &ds);
+		check_ovp_limit(port, __LINE__);
 		if (rv != EC_SUCCESS)
 			return rv;
 
 		is_sink = (ds & NX20P3483_DEVICE_MODE_MASK) ==
 			  NX20P3483_MODE_HV_SNK;
+		check_ovp_limit(port, __LINE__);
 		if (enable == is_sink)
 			return EC_SUCCESS;
 
@@ -263,6 +309,7 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 	int rv;
 
 	enable = !!enable;
+	check_ovp_limit(port, __LINE__);
 
 	/*
 	 * For parity's sake, we should not use an EC GPIO for
@@ -270,6 +317,7 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 	 * out reason listed above).
 	 */
 	rv = tcpm_set_src_ctrl(port, enable);
+	check_ovp_limit(port, __LINE__);
 	if (rv)
 		return rv;
 
@@ -282,6 +330,7 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 		int s;
 
 		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &s);
+		check_ovp_limit(port, __LINE__);
 		if (rv != EC_SUCCESS)
 			return rv;
 
@@ -293,6 +342,7 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 				flags[port] &= ~NX20P348X_FLAGS_SOURCE_ENABLED;
 			return EC_SUCCESS;
 		}
+		check_ovp_limit(port, __LINE__);
 		msleep(1);
 	}
 
@@ -401,6 +451,8 @@ static void nx20p348x_handle_interrupt(int port)
 	int reg;
 	int control_reg;
 
+	check_ovp_limit(port, __LINE__);
+
 	/*
 	 * Read interrupt 1 status register. Note, interrupt register is
 	 * automatically cleared by reading.
@@ -485,7 +537,12 @@ static void nx20p348x_handle_interrupt(int port)
 	 * these values aren't controlled by the EC directly, not sure what
 	 * action if any can be taken.
 	 */
+
+	check_ovp_limit(port, __LINE__);
+
 	read_reg(port, NX20P348X_INTERRUPT2_REG, &reg);
+
+	check_ovp_limit(port, __LINE__);
 }
 
 static void nx20p348x_irq_deferred(void)
@@ -508,6 +565,7 @@ test_mockable void nx20p348x_interrupt(int port)
 #ifdef CONFIG_CMD_PPC_DUMP
 static int nx20p348x_dump(int port)
 {
+	check_ovp_limit(port, __LINE__);
 	int reg_addr;
 	int reg;
 	int rv;
@@ -526,6 +584,8 @@ static int nx20p348x_dump(int port)
 		cflush();
 	}
 
+	check_ovp_limit(port, __LINE__);
+
 	return EC_SUCCESS;
 }
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
@@ -540,6 +600,7 @@ static int nx20p348x_dump(int port)
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 static int nx20p348x_is_vbus_present(int port)
 {
+	check_ovp_limit(port, __LINE__);
 	return EC_ERROR_UNIMPLEMENTED;
 }
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
@@ -547,6 +608,7 @@ static int nx20p348x_is_vbus_present(int port)
 #ifdef CONFIG_USBC_PPC_POLARITY
 static int nx20p348x_set_polarity(int port, int polarity)
 {
+	check_ovp_limit(port, __LINE__);
 	return EC_ERROR_UNIMPLEMENTED;
 }
 #endif
@@ -554,6 +616,7 @@ static int nx20p348x_set_polarity(int port, int polarity)
 #ifdef CONFIG_USBC_PPC_VCONN
 static int nx20p348x_set_vconn(int port, int enable)
 {
+	check_ovp_limit(port, __LINE__);
 	return EC_ERROR_UNIMPLEMENTED;
 }
 #endif
