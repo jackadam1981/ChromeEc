@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb59f5e_5cd1f7c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-11T04:26:54Z",
+      "side": 1,
+      "message": "I suggest adding non-default values to `zephyr/test/drivers/sm5803/prj.conf` (and updating the test so it continues to pass) to get change coverage up to a reasonable level.",
+      "revId": "3104d445afc11b1a2d6844b79c5d072b49aeb17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
