@@ -22,6 +22,29 @@
       },
       "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d6f472_c3be6654",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2868,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-11T18:27:53Z",
+      "side": 1,
+      "message": "I don\u0027t think we have any other gsctool commands that send multiple vendor commands. Is this ok? Does it work over ccd and the tpm?",
+      "range": {
+        "startLine": 2868,
+        "startChar": 7,
+        "endLine": 2868,
+        "endChar": 29
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
