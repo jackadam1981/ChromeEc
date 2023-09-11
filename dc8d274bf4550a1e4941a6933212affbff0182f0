@@ -50,6 +50,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9a397db_ae602e1f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-11T20:34:44Z",
+      "side": 1,
+      "message": "why did these lines have to change?",
+      "range": {
+        "startLine": 2615,
+        "startChar": 0,
+        "endLine": 2617,
+        "endChar": 0
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c490eb68_988f73ac",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-11T20:34:44Z",
+      "side": 1,
+      "message": "maybe `is_unverified_ro_allowed()` ?",
+      "range": {
+        "startLine": 2813,
+        "startChar": 12,
+        "endLine": 2813,
+        "endChar": 34
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39425268_ba1cadcb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2833,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-11T20:34:44Z",
+      "side": 1,
+      "message": "the check should be for equality to zero, in which case future versions would not fail here.",
+      "range": {
+        "startLine": 2833,
+        "startChar": 22,
+        "endLine": 2833,
+        "endChar": 26
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0543af_841cff0a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-11T20:34:44Z",
+      "side": 1,
+      "message": "please add a comment to mention at where this is defined.\n\nalso it is odd that the conversion from be32 is required, the comment above mentions that this utility expects two be32 values.",
+      "range": {
+        "startLine": 2844,
+        "startChar": 60,
+        "endLine": 2844,
+        "endChar": 62
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0d6f472_c3be6654",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 4
@@ -84,6 +176,30 @@
       "writtenOn": "2023-09-11T20:11:11Z",
       "side": 1,
       "message": "ccd open already sends multiple TPMV command in a single gsctool call while it is polling. This does work over USB and TPM interface.",
+      "parentUuid": "b0d6f472_c3be6654",
+      "range": {
+        "startLine": 2868,
+        "startChar": 7,
+        "endLine": 2868,
+        "endChar": 29
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e662542_2b5adfb2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2868,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-11T20:34:44Z",
+      "side": 1,
+      "message": "I think this shoud be fine, but won\u0027t hurt testing explicitly.",
       "parentUuid": "b0d6f472_c3be6654",
       "range": {
         "startLine": 2868,
