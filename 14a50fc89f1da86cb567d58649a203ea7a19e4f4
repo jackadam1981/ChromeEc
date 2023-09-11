@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b16978_94d74491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-11T16:17:13Z",
+      "side": 1,
+      "message": "Please describe what cases have been tested, like:\n * current image without CBI -\u003e new image without CBI\n * current image without CBI -\u003e new image with CBI\n * current image with CBI -\u003e new image without CBI\n * current image with CBI -\u003e new image with CBI",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "14a50fc89f1da86cb567d58649a203ea7a19e4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffe0adf_5e001e6f",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-11T16:17:13Z",
+      "side": 1,
+      "message": "It is redundant. The function calls `die` internally.",
+      "range": {
+        "startLine": 1754,
+        "startChar": 30,
+        "endLine": 1754,
+        "endChar": 37
+      },
+      "revId": "14a50fc89f1da86cb567d58649a203ea7a19e4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450dafdc_0e38bdc5",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-11T16:17:13Z",
+      "side": 1,
+      "message": "Nit: use tab to align.",
+      "range": {
+        "startLine": 1779,
+        "startChar": 1,
+        "endLine": 1779,
+        "endChar": 3
+      },
+      "revId": "14a50fc89f1da86cb567d58649a203ea7a19e4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
