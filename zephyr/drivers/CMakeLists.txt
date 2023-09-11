@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 add_subdirectory(cros_displight)
+add_subdirectory(cros_fingerprint)
 add_subdirectory(cros_flash)
 add_subdirectory(cros_kb_raw)
 add_subdirectory(cros_kblight)
