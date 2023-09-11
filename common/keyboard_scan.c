@@ -85,6 +85,11 @@ __overridable struct keyboard_scan_config keyscan_config = {
 };
 
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
+/*
+ * Note that boot_key_list shouldn't include a refresh key. Its visibility after
+ * refresh+power(+ESC) is too sensitive to the timing that the power button is
+ * released.
+ */
 #ifndef CONFIG_KEYBOARD_MULTIPLE
 static const
 #endif
@@ -665,6 +670,10 @@ static uint32_t check_key_list(const uint8_t *state)
 	/* Make copy of current debounced state. */
 	memcpy(curr_state, state, sizeof(curr_state));
 
+	/*
+	 * We explicitly clear a refresh key press because its visibility is too
+	 * sensitive to the timing that the power button is released.
+	 */
 #ifndef CONFIG_KEYBOARD_MULTIPLE
 	curr_state[KEYBOARD_COL_REFRESH] &= ~keyboard_mask_refresh;
 #else
