@@ -239,6 +239,30 @@
 		reset-pin = <&usb_c1_hb_retimer_rst>;
 		ls-en-pin = <&usb_c1_hb_retimer_ls_en>;
 	};
+
+	pd_port0: ccg@50 {
+		compatible = "intel,pd-altmode";
+		reg = <0x50>;
+		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
+	};
+
+	pd_port1: ccg@51 {
+		compatible = "intel,pd-altmode";
+		reg = <0x51>;
+		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
+	};
+
+	pd_port2: ccg@52 {
+		compatible = "intel,pd-altmode";
+		reg = <0x52>;
+		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
+	};
+
+	pd_port3: ccg@53 {
+		compatible = "intel,pd-altmode";
+		reg = <0x53>;
+		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
+	};
 };
 
 &i2c_ctrl0 {
