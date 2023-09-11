@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7832eb4e_7736ea4b",
+        "filename": "zephyr/Kconfig.init_priority",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-11T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f334e537_b162c05d",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "2f22aca6ab5b1993404e3ec195c7503f88671efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc1acb46_17b08c97",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-09-06T10:19:29Z",
       "side": 1,
       "message": "how about making it 68 in general? don\u0027t think it would hurt any",
+      "revId": "2f22aca6ab5b1993404e3ec195c7503f88671efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10a197c_cd3c60a5",
+        "filename": "zephyr/Kconfig.init_priority",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-11T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1acb46_17b08c97",
       "revId": "2f22aca6ab5b1993404e3ec195c7503f88671efa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
