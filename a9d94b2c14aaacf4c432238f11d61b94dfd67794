@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd0c5d8_3e4a9877",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-12T21:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea37b36_94251608",
+      "range": {
+        "startLine": 180,
+        "startChar": 14,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44a1c103_ae1e4ddc",
