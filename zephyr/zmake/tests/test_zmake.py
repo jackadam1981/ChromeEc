@@ -307,7 +307,7 @@ def test_list_projects(
         for name in project_names
     }
 
-    zmk = zmake_factory_from_dir(projects_dir=search_dir)
+    zmk = zmake_factory_from_dir(projects_dirs=[search_dir])
     with unittest.mock.patch(
         "zmake.project.find_projects",
         autospec=True,
