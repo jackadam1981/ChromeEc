@@ -211,7 +211,6 @@ typedef int (*altmode_read)(const struct device *dev,
 			    union data_status_reg *data);
 typedef int (*altmode_write)(const struct device *dev,
 			     union data_control_reg *data);
-typedef int (*altmode_isr_enable)(const struct device *dev, bool en);
 typedef bool (*altmode_is_interrupted)(const struct device *dev);
 typedef void (*altmode_set_result_cb)(const struct device *dev,
 				      intel_altmode_callback cb);
@@ -219,7 +218,6 @@ typedef void (*altmode_set_result_cb)(const struct device *dev,
 __subsystem struct intel_altmode_driver_api {
 	altmode_read read;
 	altmode_write write;
-	altmode_isr_enable isr_enable;
 	altmode_is_interrupted is_interrupted;
 	altmode_set_result_cb set_result_cb;
 };
@@ -246,17 +244,6 @@ static inline int z_impl_pd_altmode_write(const struct device *dev,
 		(const struct intel_altmode_driver_api *)dev->api;
 
 	return api->write(dev, data);
-}
-
-__syscall int pd_altmode_isr_enable(const struct device *dev, bool en);
-
-static inline int z_impl_pd_altmode_isr_enable(const struct device *dev,
-					       bool en)
-{
-	const struct intel_altmode_driver_api *api =
-		(const struct intel_altmode_driver_api *)dev->api;
-
-	return api->isr_enable(dev, en);
 }
 
 __syscall int pd_altmode_is_interrupted(const struct device *dev);

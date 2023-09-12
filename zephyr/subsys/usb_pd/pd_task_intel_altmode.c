@@ -81,32 +81,23 @@ static void intel_altmode_post_event(enum intel_altmode_event event)
 static void intel_altmode_suspend_handler(struct ap_power_ev_callback *cb,
 					  struct ap_power_ev_data data)
 {
-	int i;
-
 	LOG_DBG("suspend event: 0x%x", data.event);
 
 	if (data.event == AP_POWER_RESUME) {
-		/* Enable interrupt when AP is on */
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			pd_altmode_isr_enable(pd_config_array[i], true);
-
-		/* Set event to forcefully get new PD data */
-		intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
-	} else if (data.event == AP_POWER_SUSPEND) {
 		/*
-		 * Disable interrupt when the AP is down to avoid unnecessary
-		 * wake of AP
+		 * Set event to forcefully get new PD data.
+		 * This ensures EC doesnt miss the interrupt if the interrupt
+		 * pull-ups are on A-rail.
 		 */
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			pd_altmode_isr_enable(pd_config_array[i], false);
+		intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
 	} else {
 		LOG_ERR("Invalid suspend event");
 	}
 }
 
-static void intel_altmode_event(void)
+static void intel_altmode_event_cb(void)
 {
-	intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
+	intel_altmode_post_event(INTEL_ALTMODE_EVENT_INTERRUPT);
 }
 
 static uint32_t intel_altmode_wait_event(const struct device *dev)
@@ -130,7 +121,7 @@ static void process_altmode_pd_data(int port)
 		&intel_altmode_task_data.data_status[port];
 	union data_control_reg control = { .i2c_int_ack = 1 };
 
-	LOG_DBG("Process p% data", port);
+	LOG_INF("Process p%d data", port);
 
 	/* Clear the interrupt */
 	rv = pd_altmode_write(pd_config_array[port], &control);
@@ -166,27 +157,29 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 	/* Add callbacks for suspend hooks */
 	ap_power_ev_init_callback(&intel_altmode_task_data.cb,
 				  intel_altmode_suspend_handler,
-				  AP_POWER_RESUME | AP_POWER_SUSPEND);
+				  AP_POWER_RESUME);
 	ap_power_ev_add_callback(&intel_altmode_task_data.cb);
 
 	/* Register PD interrupt callback */
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 		pd_altmode_set_result_cb(pd_config_array[i],
-					 intel_altmode_event);
+					 intel_altmode_event_cb);
 
 	LOG_INF("Intel Altmode thread start");
 
 	while (1) {
 		events = intel_altmode_wait_event(dev);
 
-		if (events & INTEL_ALTMODE_EVENT_INTERRUPT) {
+		LOG_DBG("Altmode events=0x%x", events);
+
+		if (events & BIT(INTEL_ALTMODE_EVENT_INTERRUPT)) {
 			/* Process data of interrupted port */
 			for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 				if (pd_altmode_is_interrupted(
 					    pd_config_array[i]))
 					process_altmode_pd_data(i);
 			}
-		} else if (events & INTEL_ALTMODE_EVENT_FORCE) {
+		} else if (events & BIT(INTEL_ALTMODE_EVENT_FORCE)) {
 			/* Process data for any wake events on all ports */
 			for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 				process_altmode_pd_data(i);
@@ -196,6 +189,9 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 
 static int intel_altmode_driver_init(const struct device *dev)
 {
+	struct intel_altmode_data *const data = dev->data;
+
+	k_event_init(&data->evt);
 	return 0;
 }
 
@@ -221,30 +217,41 @@ void intel_altmode_task_start(void)
 static int console_command_intel_altmode(const struct shell *shell, size_t argc,
 					 char **argv)
 {
-	int port, rv, i;
+	int port, rv = EC_ERROR_UNKNOWN, i;
 	char rw, *e;
 	uint16_t val1;
 	uint32_t val2 = 0;
 	union data_status_reg status;
 	union data_control_reg control;
 
-	if (argc < 4 || argc > 5)
-		return EC_ERROR_PARAM_COUNT;
+	if (argc < 3) {
+		rv = EC_ERROR_PARAM_COUNT;
+		goto error;
+	}
 
 	/* Get PD port number */
 	port = strtol(argv[1], &e, 0);
-	if (*e || port > CONFIG_USB_PD_PORT_MAX_COUNT)
-		return EC_ERROR_PARAM1;
+	if (*e || port > CONFIG_USB_PD_PORT_MAX_COUNT) {
+		rv = EC_ERROR_PARAM1;
+		goto error;
+	}
 
 	/* Validate r/w selection */
 	rw = argv[2][0];
-	if (rw != 'w' && rw != 'r')
-		return EC_ERROR_PARAM2;
+	if (rw != 'w' && rw != 'r') {
+		rv = EC_ERROR_PARAM2;
+		goto error;
+	}
 
 	if (rw == 'r') {
+		if (argc > 3) {
+			rv = EC_ERROR_PARAM_COUNT;
+			goto error;
+		}
+
 		rv = pd_altmode_read(pd_config_array[port], &status);
 		if (rv)
-			return rv;
+			goto error;
 
 		shell_fprintf(shell, SHELL_INFO, "RD_VAL: ");
 		for (i = 0; i < INTEL_ALTMODE_DATA_STATUS_REG_LEN; i++)
@@ -252,14 +259,23 @@ static int console_command_intel_altmode(const struct shell *shell, size_t argc,
 				      status.raw_value[i]);
 		shell_fprintf(shell, SHELL_INFO, "\n");
 	} else {
+		if (argc < 4) {
+			rv = EC_ERROR_PARAM_COUNT;
+			goto error;
+		}
+
 		val1 = strtoull(argv[3], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM3;
+		if (*e) {
+			rv = EC_ERROR_PARAM3;
+			goto error;
+		}
 
 		if (argc > 4) {
 			val2 = strtoull(argv[4], &e, 0);
-			if (*e)
-				return EC_ERROR_PARAM4;
+			if (*e) {
+				rv = EC_ERROR_PARAM4;
+				goto error;
+			}
 		}
 
 		memcpy(&control.raw_value[0], &val1, 2);
@@ -267,7 +283,7 @@ static int console_command_intel_altmode(const struct shell *shell, size_t argc,
 
 		rv = pd_altmode_write(pd_config_array[port], &control);
 		if (rv)
-			return rv;
+			goto error;
 
 		shell_fprintf(shell, SHELL_INFO, "WR_VAL: ");
 		for (i = 0; i < INTEL_ALTMODE_DATA_CONTROL_REG_LEN; i++)
@@ -276,12 +292,96 @@ static int console_command_intel_altmode(const struct shell *shell, size_t argc,
 		shell_fprintf(shell, SHELL_INFO, "\n");
 	}
 
+error:
+	shell_fprintf(shell, SHELL_INFO, "altmode rv=%d\n", rv);
+
 	return rv;
 }
 
-SHELL_CMD_REGISTER(powerinfo, NULL,
-		   "<port> r\n"
-		   "<port> w <val1> | <val2>\n"
-		   "Read or write to PD reg",
+SHELL_CMD_REGISTER(altmode, NULL, "Read or write to Altmode PD reg",
 		   console_command_intel_altmode);
 #endif /* CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE */
+
+/*
+ * Add functions for which the data can be obtained from PD to AP interface.
+ */
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return intel_altmode_task_data.data_status[port].conn_ori;
+}
+
+enum pd_data_role pd_get_data_role(int port)
+{
+	return !intel_altmode_task_data.data_status[port].data_role;
+}
+
+int pd_is_connected(int port)
+{
+	return intel_altmode_task_data.data_status[port].data_conn;
+}
+
+/*
+ * Add functions for which the data can be obtained from PD to EC interface.
+ *
+ * TODO: Need to enable PD to EC interface
+ * To suppress the compilation error, these functions are added with tested
+ * data.
+ */
+void pd_request_data_swap(int port)
+{
+}
+
+enum pd_power_role pd_get_power_role(int port)
+{
+	return !intel_altmode_task_data.data_status[port].dp_src_snk;
+}
+
+uint8_t pd_get_task_state(int port)
+{
+	return 0;
+}
+
+int pd_comm_is_enabled(int port)
+{
+	return 1;
+}
+
+bool pd_get_vconn_state(int port)
+{
+	return true;
+}
+
+bool pd_get_partner_dual_role_power(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_data_swap_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_usb_comm_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_unconstr_power(int port)
+{
+	return false;
+}
+
+const char *pd_get_task_state_name(int port)
+{
+	return "";
+}
+
+enum pd_cc_states pd_get_task_cc_state(int port)
+{
+	return PD_CC_UFP_ATTACHED;
+}
+
+bool pd_capable(int port)
+{
+	return true;
+}

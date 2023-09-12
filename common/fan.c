@@ -580,7 +580,7 @@ static void pwm_fan_second(void)
 		if (fan_is_stalled(FAN_CH(fan))) {
 			rpm = EC_FAN_SPEED_STALLED;
 			stalled = 1;
-			cprints(CC_PWM, "Fan %d stalled!", fan);
+			// cprints(CC_PWM, "Fan %d stalled!", fan);
 		} else {
 			rpm = fan_get_rpm_actual(FAN_CH(fan));
 		}

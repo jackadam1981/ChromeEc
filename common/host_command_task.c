@@ -498,10 +498,12 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		    t - hc_prev_time < HCDEBUG_MAX_REPEAT_DELAY) {
 			hc_prev_count++;
 			hc_prev_time = t;
+#if 0
 			if (hc_prev_count < HCDEBUG_MAX_REPEAT_COUNT)
 				CPUTS("+");
 			else if (hc_prev_count == HCDEBUG_MAX_REPEAT_COUNT)
 				CPUTS("(++)");
+#endif
 			return;
 		}
 		hc_prev_count = 1;
@@ -516,8 +518,8 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 				    HEX_BUF(args->params, args->params_size));
 		CPRINTS("HC 0x%04x.%d:%s", args->command, args->version,
 			str_buf);
-	} else
-		CPRINTS("HC 0x%04x", args->command);
+	} // else
+	//	CPRINTS("HC 0x%04x", args->command);
 }
 
 uint16_t host_command_process(struct host_cmd_handler_args *args)
@@ -569,8 +571,8 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 			rv = cmd->handler(args);
 	}
 
-	if (rv != EC_RES_SUCCESS)
-		CPRINTS("HC 0x%04x err %d", args->command, rv);
+	// if (rv != EC_RES_SUCCESS)
+	// CPRINTS("HC 0x%04x err %d", args->command, rv);
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->response_size) {
 		char str_buf[hex_str_buf_size(args->response_size)];

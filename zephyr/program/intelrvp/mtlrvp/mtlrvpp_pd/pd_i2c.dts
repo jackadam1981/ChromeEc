@@ -46,6 +46,7 @@
 		compatible = "intel,pd-altmode";
 		reg = <0x51>;
 		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
+		irq-shared;
 	};
 };
 

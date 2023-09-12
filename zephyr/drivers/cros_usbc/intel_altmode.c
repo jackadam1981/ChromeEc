@@ -9,6 +9,7 @@
  * Delivery Controller Interface for SoC and Retimer" document.
  */
 
+#include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
@@ -31,6 +32,8 @@ struct pd_altmode_config {
 	 * PD vendors.
 	 */
 	struct gpio_dt_spec int_gpio;
+	/* Shared interrupt pin in dual port solution */
+	bool shared_irq;
 };
 
 struct pd_altmode_data {
@@ -66,29 +69,23 @@ static int intel_altmode_read(const struct device *dev,
 static int intel_altmode_write(const struct device *dev,
 			       union data_control_reg *data)
 {
-	const struct pd_altmode_config *cfg = dev->config;
 	uint8_t buf[INTEL_ALTMODE_DATA_CONTROL_REG_LEN + 2];
-
-	buf[0] = INTEL_ALTMODE_REG_DATA_CONTROL;
-	buf[1] = INTEL_ALTMODE_DATA_CONTROL_REG_LEN;
-	memcpy(&buf[2], data->raw_value, INTEL_ALTMODE_DATA_CONTROL_REG_LEN);
+	const struct pd_altmode_config *cfg = dev->config;
+	struct i2c_msg msg;
 
 	/*
 	 * Write sequence
 	 * DEV_ADDR - REG_ID - DATA_LEN - DATA0 .. DATAn
 	 */
-	return i2c_burst_write_dt(&cfg->i2c, INTEL_ALTMODE_REG_DATA_CONTROL,
-				  (const uint8_t *)data,
-				  INTEL_ALTMODE_DATA_CONTROL_REG_LEN + 2);
-}
+	buf[0] = INTEL_ALTMODE_REG_DATA_CONTROL;
+	buf[1] = INTEL_ALTMODE_DATA_CONTROL_REG_LEN;
+	memcpy(&buf[2], data->raw_value, INTEL_ALTMODE_DATA_CONTROL_REG_LEN);
 
-static int intel_altmode_isr_enable(const struct device *dev, bool en)
-{
-	const struct pd_altmode_config *cfg = dev->config;
+	msg.buf = (uint8_t *)&buf;
+	msg.len = INTEL_ALTMODE_DATA_CONTROL_REG_LEN + 2;
+	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
 
-	return gpio_pin_interrupt_configure_dt(&cfg->int_gpio,
-					       en ? GPIO_INT_EDGE_TO_INACTIVE :
-						    GPIO_INT_DISABLE);
+	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
 }
 
 static bool intel_altmode_is_interrupted(const struct device *dev)
@@ -109,7 +106,6 @@ static void intel_altmode_set_result_cb(const struct device *dev,
 static const struct intel_altmode_driver_api intel_pd_altmode_driver_api = {
 	.read = intel_altmode_read,
 	.write = intel_altmode_write,
-	.isr_enable = intel_altmode_isr_enable,
 	.is_interrupted = intel_altmode_is_interrupted,
 	.set_result_cb = intel_altmode_set_result_cb,
 };
@@ -149,22 +145,31 @@ static int intel_altmode_init(const struct device *dev)
 
 	data->dev = dev;
 
-	/* Configure interrupt */
-	rv = gpio_pin_configure_dt(&cfg->int_gpio, GPIO_INPUT);
-	if (rv < 0) {
-		LOG_ERR("Unable to configure GPIO");
-		return rv;
-	}
+	/* Configure interrupt for the primary port */
+	if (!cfg->shared_irq) {
+		rv = gpio_pin_configure_dt(&cfg->int_gpio, GPIO_INPUT);
+		if (rv < 0) {
+			LOG_ERR("Unable to configure GPIO");
+			return rv;
+		}
 
-	gpio_init_callback(&data->gpio_cb, pd_altmode_gpio_callback,
-			   BIT(cfg->int_gpio.pin));
+		gpio_init_callback(&data->gpio_cb, pd_altmode_gpio_callback,
+				   BIT(cfg->int_gpio.pin));
 
-	k_work_init(&data->work, pd_altmode_isr_work);
+		k_work_init(&data->work, pd_altmode_isr_work);
 
-	rv = gpio_add_callback(cfg->int_gpio.port, &data->gpio_cb);
-	if (rv < 0) {
-		LOG_ERR("Unable to add callback");
-		return rv;
+		rv = gpio_add_callback(cfg->int_gpio.port, &data->gpio_cb);
+		if (rv < 0) {
+			LOG_ERR("Unable to add callback");
+			return rv;
+		}
+
+		rv = gpio_pin_interrupt_configure_dt(&cfg->int_gpio,
+						     GPIO_INT_EDGE_FALLING);
+		if (rv < 0) {
+			LOG_ERR("Unable to configure interrupt");
+			return rv;
+		}
 	}
 
 	return 0;
@@ -176,6 +181,7 @@ static int intel_altmode_init(const struct device *dev)
 	static const struct pd_altmode_config pd_altmode_config##inst = { \
 		.i2c = I2C_DT_SPEC_INST_GET(inst),                        \
 		.int_gpio = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),       \
+		.shared_irq = DT_INST_PROP(inst, irq_shared),             \
 	};                                                                \
                                                                           \
 	DEVICE_DT_INST_DEFINE(inst, intel_altmode_init, NULL,             \

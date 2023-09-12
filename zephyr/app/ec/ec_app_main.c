@@ -132,7 +132,7 @@ void ec_app_main(void)
 	}
 #endif
 
-	if (IS_ENABLED(USB_PD_ALTMODE_INTEL)) {
+	if (IS_ENABLED(CONFIG_USB_PD_ALTMODE_INTEL)) {
 		intel_altmode_task_start();
 	}
 }

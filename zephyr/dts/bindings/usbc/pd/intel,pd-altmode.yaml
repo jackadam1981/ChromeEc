@@ -14,3 +14,9 @@ properties:
     required: true
     description: |
       Interrupt line from the PD for data path (zephyr standard GPIO format)
+  irq-shared:
+    type: boolean
+    description: |
+      Interrupt line is shared between ports in a dual port solution.
+      Define it only for the secondary port so that the driver doesn't
+      trigger multiple events.
