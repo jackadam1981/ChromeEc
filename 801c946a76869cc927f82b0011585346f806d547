@@ -52,6 +52,24 @@
       "parentUuid": "e39b35cb_82381836",
       "revId": "801c946a76869cc927f82b0011585346f806d547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf47171_a5f05eaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-12T17:35:57Z",
+      "side": 1,
+      "message": "Please repo sync and try `cros build-packages --board\u003d$BOARD chromeos-ec`, instead of `emerge-$BOARD`.\n\nSee http://b/299515078.",
+      "parentUuid": "e39b35cb_82381836",
+      "revId": "801c946a76869cc927f82b0011585346f806d547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
