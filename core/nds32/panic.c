@@ -94,20 +94,18 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	 * If it was called earlier (eg. when saving nds_n8.ipc) calling it
 	 * once again won't remove any data
 	 */
+<<<<<<< HEAD   (9dda14 dojo: increase chipset task stack size)
 	struct panic_data * const pdata = get_panic_data_write();
 	uint32_t warning_ipc;
+=======
+	struct panic_data *const pdata = get_panic_data_write();
+>>>>>>> CHANGE (74739f nds32/riscv: Set WATCHDOG_WARN panic reason on watchdog warn)
 	uint32_t *regs;
 
 	regs = pdata->nds_n8.regs;
 
 	/* Setup panic data structure */
-	if (reason != PANIC_SW_WATCHDOG) {
-		memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
-	} else {
-		warning_ipc = pdata->nds_n8.ipc;
-		memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
-		pdata->nds_n8.ipc = warning_ipc;
-	}
+	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
 	pdata->struct_version = 2;
