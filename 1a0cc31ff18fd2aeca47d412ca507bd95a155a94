@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7b9fae_b3e0ca19",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2575,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-12T20:24:44Z",
+      "side": 1,
+      "message": "I think this changes logic of this code: htobd32() was converting the values, le32toh is not changing anything.",
+      "range": {
+        "startLine": 2575,
+        "startChar": 4,
+        "endLine": 2575,
+        "endChar": 11
+      },
+      "revId": "1a0cc31ff18fd2aeca47d412ca507bd95a155a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83122318_cdf7777d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2593,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-12T20:24:44Z",
+      "side": 1,
+      "message": "this section was not there in the source of this copy and paste, why does it need to be added?",
+      "range": {
+        "startLine": 2582,
+        "startChar": 0,
+        "endLine": 2593,
+        "endChar": 0
+      },
+      "revId": "1a0cc31ff18fd2aeca47d412ca507bd95a155a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2f7159_c5e6924d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2841,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-12T20:24:44Z",
+      "side": 1,
+      "message": "Technically, Ti50 is not a chip, its a firmware. Also, future versions of the firmware are likely to suppor this operation, so maybe change to `Cr50 does not support this operation` or some such?",
+      "range": {
+        "startLine": 2841,
+        "startChar": 3,
+        "endLine": 2841,
+        "endChar": 22
+      },
+      "revId": "1a0cc31ff18fd2aeca47d412ca507bd95a155a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

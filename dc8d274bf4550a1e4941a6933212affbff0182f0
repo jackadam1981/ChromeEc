@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fcee67c_e5c13fe6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-12T20:24:44Z",
+      "side": 1,
+      "message": "This does not match the rest of this file and this codebase, please leave it as it was.",
+      "parentUuid": "5c52901b_061c8fc8",
+      "range": {
+        "startLine": 2615,
+        "startChar": 0,
+        "endLine": 2617,
+        "endChar": 0
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c490eb68_988f73ac",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 4
