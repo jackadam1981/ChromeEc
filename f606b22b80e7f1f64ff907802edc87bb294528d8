@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1293397_c78f7dad",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-12T20:54:05Z",
+      "side": 1,
+      "message": "looks like it\u0027s just used in one spot so I just replaced that with the 2 values or\u0027d together",
+      "parentUuid": "203e55ba_afc77056",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2aafbec_bdea575c",
@@ -83,6 +101,24 @@
       "writtenOn": "2023-08-11T21:46:03Z",
       "side": 1,
       "message": "Nit: This function is getting kind of long. Could it be split up into USB, TBT, and DP helpers?",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6000a13_c7090010",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-12T20:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2aafbec_bdea575c",
       "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a53ab1c_5914ffd7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-12T20:54:05Z",
+      "side": 1,
+      "message": "I think leaving it as is seems more intuitive since the same bit is getting set based on the if statements. Checking DPAM version first would make sense if it was setting different bits based on DPAM version but it\u0027s really not",
+      "parentUuid": "d1a4ffe0_1825012b",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b62a994_c260dc36",
@@ -170,6 +224,24 @@
       "writtenOn": "2023-08-11T21:46:03Z",
       "side": 1,
       "message": "Nit: DP 2.0 or earlier",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fe9bd2_9935c5de",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-12T20:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b62a994_c260dc36",
       "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
