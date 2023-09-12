@@ -52,27 +52,11 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 		.rpm = &node_id##_rpm,   \
 	},
 
-#define FAN_CONTROL_INST(node_id)                                 \
-	[node_id] = {                                             \
-		.pwm = PWM_DT_SPEC_GET(node_id),                  \
-		.tach = DEVICE_DT_GET(DT_PHANDLE(node_id, tach)), \
-	},
-
 DT_INST_FOREACH_CHILD(0, FAN_CONFIGS)
 
 const struct fan_t fans[FAN_CH_COUNT] = { DT_INST_FOREACH_CHILD(0, FAN_INST) };
 
-/* Data structure to define PWM and tachometer. */
-struct fan_config {
-	struct pwm_dt_spec pwm;
-
-	const struct device *tach;
-};
-
 struct fan_data fan_data[FAN_CH_COUNT];
-static const struct fan_config fan_config[FAN_CH_COUNT] = {
-	DT_INST_FOREACH_CHILD(0, FAN_CONTROL_INST)
-};
 
 static void fan_pwm_update(int ch)
 {

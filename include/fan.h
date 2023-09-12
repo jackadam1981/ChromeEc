@@ -17,6 +17,8 @@
 #ifdef CONFIG_PLATFORM_EC_FAN
 
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/pwm.h>
+
 #define NODE_ID_AND_COMMA(node_id) node_id,
 enum fan_channel {
 #if DT_NODE_EXISTS(DT_INST(0, cros_ec_fans))
@@ -26,6 +28,26 @@ enum fan_channel {
 };
 
 BUILD_ASSERT(FAN_CH_COUNT == CONFIG_PLATFORM_EC_NUM_FANS);
+
+/* Data structure to define PWM and tachometer. */
+struct fan_config {
+	struct pwm_dt_spec pwm;
+
+	const struct device *tach;
+};
+
+#define FAN_CONTROL_INST(node_id)                                 \
+	[node_id] = {                                             \
+		.pwm = PWM_DT_SPEC_GET(node_id),                  \
+		.tach = DEVICE_DT_GET(DT_PHANDLE(node_id, tach)), \
+	},
+
+#ifdef CONFIG_FAN_DYNAMIC_CONFIG
+extern struct fan_config fan_config[FAN_CH_COUNT];
+#else
+static const struct fan_config fan_config[FAN_CH_COUNT] = { DT_FOREACH_CHILD(
+	DT_INST(0, cros_ec_fans), FAN_CONTROL_INST) };
+#endif
 
 #endif /* CONFIG_PLATFORM_EC_FAN */
 #endif /* CONFIG_ZEPHYR */
