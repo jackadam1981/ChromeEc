@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c056ac3c_d96c99f2",
+        "filename": "zephyr/test/drivers/bc12_upstream/src/test_host_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-09-12T15:59:07Z",
+      "side": 1,
+      "message": "*Non-blocking CL comment*\n\nI think this is perfectly fine/reasonable. But to make this test truly *driver/chip agnostic* this ought to use some non-chip specific node label. I think we could use an alias to accomplish this quickly without breaking other tests.\n\nThat being said, this is the only chip specific code and it seems immediately obvious to future contributors how to make this test fully non-specific to a particular chip/driver.",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 57
+      },
+      "revId": "d67a8a5845c218096441f54af29a935c5b1e1164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
