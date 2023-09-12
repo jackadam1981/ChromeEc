@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2829eca8_947fb0de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "Seem good to me!",
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4085f4_9b2d67f3",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "super nit: I am pretty sure the EC codebase has macros for `BIT(0)` and `BIT(1)`; what do you think about using those?",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "970a787f_8189713f",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "isntead of having this as a global, what you think about using `queue_peek_units(\u0026cmsis_dap_rx_queue, rx_buffer, 0, 5);` inline where you access `peek_c` now?",
+      "range": {
+        "startLine": 180,
+        "startChar": 14,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a1c103_ae1e4ddc",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "nit: `sizeof(CAPABILITIES)`",
+      "range": {
+        "startLine": 211,
+        "startChar": 16,
+        "endLine": 211,
+        "endChar": 18
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ebb0d3_496d5136",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "nit: can you use a named constant for this please?",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 7
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d1f5cd_f9efd8d9",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "why are the `CAPABILITIES` different size than on line 211?",
+      "range": {
+        "startLine": 233,
+        "startChar": 15,
+        "endLine": 233,
+        "endChar": 18
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd53500_74206209",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T15:53:38Z",
+      "side": 1,
+      "message": "don\u0027t you need to `queue_remove_units` first before `rx_buffer` has data?",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 14
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
