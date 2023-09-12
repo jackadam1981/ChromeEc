@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec3f1e1e_50bb479a",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-12T06:46:28Z",
+      "side": 0,
+      "message": "Leave the initializer here; just make it non-const if the new option is enabled.\n```suggestion\n#ifdef CONFIG_FAN_DYNAMIC_CONFIG\nconst\n#endif\nstruct fan_config fan_config[FAN_CH_COUNT] \u003d {\n        DT_INST_FOREACH_CHILD(0, FAN_CONTROL_INST)\n};\n```\n\nI think it\u0027s best to always make this public for simplicity, by removing `static` altogether.\n\nThen `FAN_CONTROL_INST` doesn\u0027t need to move, and the header can always declare the array as `extern` with optional `const`.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "ddbb2e6b429552da2466a100234e98967af6fd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
