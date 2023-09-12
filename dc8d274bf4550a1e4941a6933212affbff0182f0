@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e24a827_a77aa934",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T21:03:46Z",
+      "side": 1,
+      "message": "honesty, I disagree. This code is now formatted using the `.clang-format` file. If the style isn\u0027t correct, then we should update that file since it is used for automatic formatting.\n\nAlso code on line 4447 has this same style with spaces:\n\n```\n\tconst struct options_map omap[] \u003d {\n\t\t{ \u0027b\u0027, \u0026binary_vers },\n\t\t{ \u0027c\u0027, \u0026corrupt_inactive_rw },\n\t\t{ \u0027D\u0027, \u0026is_dauntless },\n\t\t{ \u0027f\u0027, \u0026show_fw_ver },\n\t\t{ \u0027g\u0027, \u0026get_boot_mode},\n\t\t{ \u0027H\u0027, \u0026erase_ap_ro_hash},\n\t\t{ \u0027k\u0027, \u0026ccd_lock },\n\t\t{ \u0027o\u0027, \u0026ccd_open },\n\t\t{ \u0027P\u0027, \u0026password },\n\t\t{ \u0027p\u0027, \u0026td.post_reset },\n\t\t{ \u0027U\u0027, \u0026ccd_unlock },\n\t\t{ \u0027u\u0027, \u0026td.upstart_mode },\n\t\t{ \u0027V\u0027, \u0026verbose_mode },\n\t\t{},\n\t};\n```\n\nalong with a few other instance.\n\nThe file already has inconsistencies and we should rely an an automated tool for formatting.\n\n\n---\n\nAll that said, I have revert this change, but we should use and update the `.clang-format` to express the style we want and stay consistent with that style through automated tools.",
+      "parentUuid": "6fcee67c_e5c13fe6",
+      "range": {
+        "startLine": 2615,
+        "startChar": 0,
+        "endLine": 2617,
+        "endChar": 0
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c490eb68_988f73ac",
