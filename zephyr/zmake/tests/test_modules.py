@@ -9,7 +9,7 @@ import tempfile
 
 import hypothesis  # pylint:disable=import-error
 import hypothesis.strategies as st  # pylint:disable=import-error
-import zmake.modules
+import zmake.modules  # pylint:disable=import-error
 
 
 module_lists = st.lists(
