@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb7236f_49e0d732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-12T03:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bed6270_53fcb9e0",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "14a50fc89f1da86cb567d58649a203ea7a19e4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ffe0adf_5e001e6f",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "OK. `check_preserve_sections_presence` creates another shell, through the `()`. The `die` inside the function exits that shell only.",
       "parentUuid": "1b103718_77ac7195",
+      "range": {
+        "startLine": 1754,
+        "startChar": 30,
+        "endLine": 1754,
+        "endChar": 37
+      },
+      "revId": "14a50fc89f1da86cb567d58649a203ea7a19e4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b46e8b_4519ecc1",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-12T03:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f61d944c_4e7ed0f2",
       "range": {
         "startLine": 1754,
         "startChar": 30,
