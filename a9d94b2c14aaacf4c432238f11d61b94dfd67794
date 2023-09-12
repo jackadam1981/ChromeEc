@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dea37b36_94251608",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:32:25Z",
+      "side": 1,
+      "message": "let\u0027s pass as a parameter then. Thank you!",
+      "parentUuid": "4e67dac4_83836633",
+      "range": {
+        "startLine": 180,
+        "startChar": 14,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44a1c103_ae1e4ddc",
         "filename": "board/hyperdebug/cmsis-dap.c",
         "patchSetId": 12
@@ -290,6 +314,30 @@
       "side": 1,
       "message": "The convention is that if peek_c is 5 (or more), then rx_buffer[0] through rx_buffer[4] will contain valid \"peeked\" data before entering this handler routine.",
       "parentUuid": "afd53500_74206209",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 14
+      },
+      "revId": "a9d94b2c14aaacf4c432238f11d61b94dfd67794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a655d4d_31ed5288",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:32:25Z",
+      "side": 1,
+      "message": "Oh, yes I figured this out by looking at the code. I actually made this comment on a few places and removing it after figuring it out 😊 I guess my brain just couldn\u0027t remember it. No change necessary",
+      "parentUuid": "f8cca886_5f3560d1",
       "range": {
         "startLine": 252,
         "startChar": 5,
