@@ -14,6 +14,11 @@ choice TEST_TARGET
 		help
 		  The test target that exercises nissa/src/sub_board.c.
 
+	config TEST_NISSA_BOARD_POWER
+		bool "Tests for board_power.c"
+		help
+		  The test target that exercises nissa/src/board_power.c
+
 	config TEST_NISSA_COMMON
 		bool "Tests for common.c"
 		help
