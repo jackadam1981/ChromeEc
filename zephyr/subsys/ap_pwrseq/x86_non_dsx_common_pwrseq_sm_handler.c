@@ -425,7 +425,6 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S5G3:
 		/* Nofity power event after we remove power rails */
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
 
 		/* Notify power event before we enter G3 */
 		ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
@@ -591,6 +590,7 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S4S5:
 		/* Notify power event before we remove power rails */
 		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
 
 		/*
 		 * If support controlling power of wifi/WWAN/BT devices
