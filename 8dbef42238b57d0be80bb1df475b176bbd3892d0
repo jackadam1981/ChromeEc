@@ -22,6 +22,30 @@
       },
       "revId": "8dbef42238b57d0be80bb1df475b176bbd3892d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdd1f86_303dc244",
+        "filename": "common/panic_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-09-12T17:03:09Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "db6408fb_bb541e6f",
+      "range": {
+        "startLine": 145,
+        "startChar": 58,
+        "endLine": 145,
+        "endChar": 62
+      },
+      "revId": "8dbef42238b57d0be80bb1df475b176bbd3892d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
