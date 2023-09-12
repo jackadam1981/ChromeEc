@@ -46,6 +46,30 @@
       },
       "revId": "5a5b2b5b40dd556ae27da14f13ba83d5bc7b86c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b92dcc_4c7c407c",
+        "filename": "zephyr/program/nissa/pirrha/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2023-09-12T07:09:04Z",
+      "side": 1,
+      "message": "I have changed this configuration to KSI2 because KSI2 is right for our schematic.\nPlease review again.",
+      "parentUuid": "ff2e8e6b_de55b129",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 49
+      },
+      "revId": "5a5b2b5b40dd556ae27da14f13ba83d5bc7b86c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
