@@ -142,6 +142,7 @@ bool board_ap_power_check_power_rails_enabled(void)
 	       power_signal_get(PWR_EC_SOC_DSW_PWROK);
 }
 #else
+#ifndef CONFIG_EMUL_AP_PWRSEQ_DRIVER
 /* This is called by AP Power Sequence driver only when AP exits S0 or S0IX */
 static void board_ap_power_cb(const struct device *dev,
 			      const enum ap_pwrseq_state entry,
@@ -169,6 +170,7 @@ static int board_ap_power_init(void)
 	return 0;
 }
 SYS_INIT(board_ap_power_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+#endif /* CONFIG_EMUL_AP_PWRSEQ_DRIVER */
 
 void board_ap_power_force_shutdown(void)
 {
@@ -187,6 +189,8 @@ void board_ap_power_force_shutdown(void)
 		k_msleep(1);
 		timeout_ms--;
 	}
+
+	/* LCOV_EXCL_START messages are informational only */
 	if (power_signal_get(PWR_SLP_SUS) == 0) {
 		LOG_WRN("SLP_SUS is not deasserted! Assuming G3");
 	}
@@ -194,6 +198,7 @@ void board_ap_power_force_shutdown(void)
 	if (power_signal_get(PWR_RSMRST) == 1) {
 		LOG_WRN("RSMRST is not deasserted! Assuming G3");
 	}
+	/* LCOV_EXCL_STOP */
 
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
@@ -205,8 +210,10 @@ void board_ap_power_force_shutdown(void)
 		timeout_ms--;
 	};
 
+	/* LCOV_EXCL_START informational */
 	if (power_signal_get(PWR_DSW_PWROK))
 		LOG_WRN("DSW_PWROK didn't go low!  Assuming G3.");
+	/* LCOV_EXCL_STOP */
 
 	power_signal_disable(PWR_DSW_PWROK);
 	power_signal_disable(PWR_PG_PP1P05);

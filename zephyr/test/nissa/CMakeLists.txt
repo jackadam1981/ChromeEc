@@ -15,6 +15,12 @@ zephyr_include_directories(
 target_sources(app PRIVATE src/stubs.c)
 
 target_sources_ifdef(
+	CONFIG_TEST_NISSA_BOARD_POWER
+	app PRIVATE
+	src/board_power.c
+	${PLATFORM_EC_PROGRAM_DIR}/nissa/src/board_power.c)
+
+target_sources_ifdef(
         CONFIG_TEST_NISSA_SUB_BOARD
         app PRIVATE
         src/sub_board.c
