@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c52901b_061c8fc8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:28:23Z",
+      "side": 1,
+      "message": "I apply the standard formatting to the functions I am modifying while I am writing code. This seems like a reasonable enough change that I kept it 😊",
+      "parentUuid": "d9a397db_ae602e1f",
+      "range": {
+        "startLine": 2615,
+        "startChar": 0,
+        "endLine": 2617,
+        "endChar": 0
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c490eb68_988f73ac",
@@ -84,6 +108,30 @@
       "writtenOn": "2023-09-11T20:34:44Z",
       "side": 1,
       "message": "maybe `is_unverified_ro_allowed()` ?",
+      "range": {
+        "startLine": 2813,
+        "startChar": 12,
+        "endLine": 2813,
+        "endChar": 34
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28929ea0_0328d04a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c490eb68_988f73ac",
       "range": {
         "startLine": 2813,
         "startChar": 12,
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bd2f2a_ff5cddbf",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2833,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:28:23Z",
+      "side": 1,
+      "message": "I actually do want future version to fail here since the future version might have different order for the CCD capabilities. It will be worth checking explicitly that the next version has the same array index etc for `AllowUnverifiedRO`\n\nI added a comment to this affect",
+      "parentUuid": "39425268_ba1cadcb",
+      "range": {
+        "startLine": 2833,
+        "startChar": 22,
+        "endLine": 2833,
+        "endChar": 26
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a0543af_841cff0a",
@@ -130,6 +202,30 @@
       "writtenOn": "2023-09-11T20:34:44Z",
       "side": 1,
       "message": "please add a comment to mention at where this is defined.\n\nalso it is odd that the conversion from be32 is required, the comment above mentions that this utility expects two be32 values.",
+      "range": {
+        "startLine": 2844,
+        "startChar": 60,
+        "endLine": 2844,
+        "endChar": 62
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc03076_2a973812",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:28:23Z",
+      "side": 1,
+      "message": "Added comment.\n\nI think it is a little weird too.. I was trying to change as little as possible for the printing capability case, but I have been inspired to update it to where both callers don\u0027t have to worry about endianness of transmission, this `validate_into_ccd_info_response` function now ensures the fields are in host endianess before returning.",
+      "parentUuid": "1a0543af_841cff0a",
       "range": {
         "startLine": 2844,
         "startChar": 60,
@@ -201,6 +297,30 @@
       "side": 1,
       "message": "I think this shoud be fine, but won\u0027t hurt testing explicitly.",
       "parentUuid": "b0d6f472_c3be6654",
+      "range": {
+        "startLine": 2868,
+        "startChar": 7,
+        "endLine": 2868,
+        "endChar": 29
+      },
+      "revId": "dc8d274bf4550a1e4941a6933212affbff0182f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0238d657_79ca2e2f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2868,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-12T17:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e662542_2b5adfb2",
       "range": {
         "startLine": 2868,
         "startChar": 7,
