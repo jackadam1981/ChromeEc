@@ -189,3 +189,175 @@ void intel_altmode_task_start(void)
 {
 	k_thread_start(intel_altmode_tid);
 }
+
+#ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
+static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
+{
+	char *e;
+
+	*port = strtoul(arg_val, &e, 0);
+	if (*e || *port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
+		shell_error(sh, "Invalid port");
+		return -EINVAL;
+	}
+
+	return 0;
+}
+
+static int cmd_altmode_read(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv, i;
+	uint8_t port;
+	union data_status_reg status;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	/* Read from status register */
+	rv = pd_altmode_read(pd_config_array[port], &status);
+	if (rv) {
+		shell_error(sh, "Read failed, rv=%d", rv);
+		return rv;
+	}
+
+	shell_fprintf(sh, SHELL_INFO, "RD_VAL: ");
+	for (i = 0; i < INTEL_ALTMODE_DATA_STATUS_REG_LEN; i++)
+		shell_fprintf(sh, SHELL_INFO, "[%d]0x%x, ", i,
+			      status.raw_value[i]);
+
+	shell_info(sh, "");
+
+	return 0;
+}
+
+static int cmd_altmode_write(const struct shell *sh, size_t argc, char **argv)
+{
+	char *e;
+	int rv, i;
+	uint8_t port;
+	uint16_t val;
+	union data_control_reg control = { 0 };
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	/* Fill the control register with data */
+	for (i = 2; i < argc; i++) {
+		val = strtoul(argv[i], &e, 0);
+		if (*e || val > UINT8_MAX) {
+			shell_error(sh, "Invalid data, %s", argv[i]);
+			return -EINVAL;
+		}
+		control.raw_value[i - 2] = (uint8_t)val;
+	}
+
+	/* Write to control register */
+	rv = pd_altmode_write(pd_config_array[port], &control);
+	if (rv)
+		shell_error(sh, "Write failed, rv=%d", rv);
+
+	return rv;
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(
+	sub_altmode_cmds,
+	SHELL_CMD_ARG(read, NULL,
+		      "Read status register\n"
+		      "Usage: altmode read <port>",
+		      cmd_altmode_read, 2, 1),
+	SHELL_CMD_ARG(write, NULL,
+		      "Write control register\n"
+		      "Usage: altmode write <port> [<byte0>, ...]",
+		      cmd_altmode_write, 3,
+		      INTEL_ALTMODE_DATA_CONTROL_REG_LEN - 1),
+	SHELL_SUBCMD_SET_END);
+
+SHELL_CMD_REGISTER(altmode, &sub_altmode_cmds, "PD Altmode commands", NULL);
+
+#endif /* CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE */
+
+/*
+ * TODO: For all the below functions; need to enable PD to EC power path
+ * interface and gather the information.
+ */
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return intel_altmode_task_data.data_status[port].conn_ori;
+}
+
+enum pd_data_role pd_get_data_role(int port)
+{
+	return !intel_altmode_task_data.data_status[port].data_role;
+}
+
+int pd_is_connected(int port)
+{
+	return intel_altmode_task_data.data_status[port].data_conn;
+}
+
+/*
+ * To suppress the compilation error, below functions are added with tested
+ * data.
+ */
+void pd_request_data_swap(int port)
+{
+}
+
+enum pd_power_role pd_get_power_role(int port)
+{
+	return !intel_altmode_task_data.data_status[port].dp_src_snk;
+}
+
+uint8_t pd_get_task_state(int port)
+{
+	return 0;
+}
+
+int pd_comm_is_enabled(int port)
+{
+	return 1;
+}
+
+bool pd_get_vconn_state(int port)
+{
+	return true;
+}
+
+bool pd_get_partner_dual_role_power(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_data_swap_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_usb_comm_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_unconstr_power(int port)
+{
+	return false;
+}
+
+const char *pd_get_task_state_name(int port)
+{
+	return "";
+}
+
+enum pd_cc_states pd_get_task_cc_state(int port)
+{
+	return PD_CC_UFP_ATTACHED;
+}
+
+bool pd_capable(int port)
+{
+	return true;
+}
