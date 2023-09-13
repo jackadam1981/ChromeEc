@@ -63,14 +63,17 @@ struct keyboard_scan_config *keyboard_scan_get_config(void);
  */
 __override_proto extern struct keyboard_scan_config keyscan_config;
 
+#define BOOT_KEY_NONE 0
+
 /* Key held down at keyboard-controlled reset boot time. */
 enum boot_key {
 	/* No keys other than keyboard-controlled reset keys */
-	BOOT_KEY_NONE = 0,
-	BOOT_KEY_ESC = BIT(0),
-	BOOT_KEY_DOWN_ARROW = BIT(1),
-	BOOT_KEY_LEFT_SHIFT = BIT(2),
-	BOOT_KEY_POWER = BIT(3),
+	BOOT_KEY_ESC = 0,
+	BOOT_KEY_DOWN_ARROW = 1,
+	BOOT_KEY_LEFT_SHIFT = 2,
+
+	BOOT_KEY_COUNT,
+	BOOT_KEY_POWER = 31,
 };
 
 #if defined(HAS_TASK_KEYSCAN) && defined(CONFIG_KEYBOARD_BOOT_KEYS)
@@ -92,6 +95,11 @@ static inline uint32_t keyboard_scan_get_boot_keys(void)
 	return BOOT_KEY_NONE;
 }
 #endif
+
+__override_proto void board_keyboard_boot_key(enum boot_key key,
+					      struct boot_key_entry *boot_key);
+
+void keyboard_boot_key(enum boot_key key, struct boot_key_entry *boot_key);
 
 /**
  * Return a pointer to the current debounced keyboard matrix state, which is
@@ -146,7 +154,6 @@ extern const int keyboard_factory_scan_pins_used;
 #endif
 
 #ifdef CONFIG_KEYBOARD_MULTIPLE
-extern struct boot_key_entry boot_key_list[];
 
 struct keyboard_type {
 	int col_esc;

@@ -54,8 +54,8 @@ struct keyboard_type key_typ = {
 	.row_down = KEYBOARD_ROW_DOWN,
 	.col_left_shift = KEYBOARD_COL_LEFT_SHIFT,
 	.row_left_shift = KEYBOARD_ROW_LEFT_SHIFT,
-	.col_refresh = KEYBOARD_COL_ID1_REFRESH,
-	.row_refresh = KEYBOARD_ROW_ID1_REFRESH,
+	.col_refresh = KEYBOARD_COL_REFRESH,
+	.row_refresh = KEYBOARD_ROW_REFRESH,
 	.col_right_alt = KEYBOARD_COL_RIGHT_ALT,
 	.row_right_alt = KEYBOARD_ROW_RIGHT_ALT,
 	.col_left_alt = KEYBOARD_COL_LEFT_ALT,
@@ -143,3 +143,12 @@ void set_keycap_label(uint8_t row, uint8_t col, uint8_t val)
 		keycap_label[col][row] = val;
 }
 #endif
+
+__override void board_keyboard_boot_key(enum boot_key key,
+					struct boot_key_entry *boot_key)
+{
+	switch (key) {
+	default:
+		keyboard_boot_key(key, boot_key);
+	}
+}
