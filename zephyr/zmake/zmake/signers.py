@@ -175,8 +175,13 @@ class RwsigSigner(BaseSigner):
             work_dir: A directory to write outputs and temporary files into.
             jobclient: A JobClient object to use.
         """
+        futility = util.get_tool_path("futility")
+        if not futility:
+            raise Exception(
+                "futility not found in path, maybe run sudo emerge signingtools-bin"
+            )
         proc = jobclient.popen(
-            [util.get_tool_path("futility"), *args],
+            [futility, *args],
             cwd=work_dir,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
