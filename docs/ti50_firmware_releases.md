@@ -85,6 +85,10 @@ Released with RW 0.23.20 and 0.24.20
     be able to erase both Board ID and RW Rollback information stored in INFO
     pages.
 
+## 0.0.52 released on 09/13/2023
+
+Released with RW 0.24.51
+
 # RW revisions
 
 Previously released RW images can be downloaded from
@@ -1073,6 +1077,41 @@ Build:   ti50_common_prepvt-15086.B:v0.0.355-15c69d7f
          tock:v0.0.9643-c973271b1
          ms-tpm-20-ref:v0.0.316-a7bd523
          @chromeos-ci-firmware-us-central2-d-x32-0-5zc7 2023-06-05 07:51:35
+```
+
+### 0.24.51 Released on 9/13/2023 in M???
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/4860496)
+
+Builder
+[?]()
+
+Artifacts:
+[15086.??.0]()
+
+**Features**
+
+*   `ecrst pulse` command is now safe
+*   Add initial factory mode to `gsctool`'s ccd print out
+*   SPI Flash performance for AP twice as fast at cr50 now
+*   Add `rddkeepalive` state in feedback reports
+
+**Bug Fixes**
+
+*   Improve DT clock stretching behavior for I2C
+    [b/285366491](https://b.corp.google.com/issues/285366491)
+*   Recover after unexpected reads
+    [b/225044349](https://b.corp.google.com/issues/225044349)
+*   Fix race condition with deep sleep resume reseting EC
+    [b/296518779](https://b.corp.google.com/issues/296518779)
+
+```
+Build:   ti50_common_prepvt-15086.B:v0.0.674-2ad344ef
+         libtock-rs:v0.0.925-c38b187
+         tock:v0.0.9657-44d75a018
+         ms-tpm-20-ref:v0.0.324-7e7a3da
+         @chromeos-ci-firmware-us-central2-d-x32-0-l4sc 2023-09-05 13:28:14
 ```
 
 <!-- Links -->
