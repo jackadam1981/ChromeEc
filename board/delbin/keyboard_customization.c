@@ -138,13 +138,6 @@ void key_choose(void)
 		key_typ.col_key_h = KEYBOARD2_COL_KEY_H;
 		key_typ.row_key_h = KEYBOARD2_ROW_KEY_H;
 
-		boot_key_list[0].col = KEYBOARD2_COL_ESC;
-		boot_key_list[0].row = KEYBOARD2_ROW_ESC;
-		boot_key_list[1].col = KEYBOARD2_COL_DOWN;
-		boot_key_list[1].row = KEYBOARD2_ROW_DOWN;
-		boot_key_list[2].col = KEYBOARD2_COL_LEFT_SHIFT;
-		boot_key_list[2].row = KEYBOARD2_ROW_LEFT_SHIFT;
-
 		scancode_set2 = KB2scancode_set2;
 	} else {
 		key_typ.col_esc = KEYBOARD_COL_ESC;
@@ -165,5 +158,26 @@ void key_choose(void)
 		key_typ.row_key_h = KEYBOARD_ROW_KEY_H;
 
 		scancode_set2 = KB1scancode_set2;
+	}
+}
+
+__override void board_keyboard_boot_key(enum boot_key key,
+					struct boot_key_entry *boot_key)
+{
+	switch (key) {
+	case BOOT_KEY_ESC:
+		boot_key->col = key_typ.col_esc;
+		boot_key->row = key_typ.row_esc;
+		break;
+	case BOOT_KEY_DOWN_ARROW:
+		boot_key->col = key_typ.col_down;
+		boot_key->row = key_typ.row_down;
+		break;
+	case BOOT_KEY_LEFT_SHIFT:
+		boot_key->col = key_typ.col_left_shift;
+		boot_key->row = key_typ.row_left_shift;
+		break;
+	default:
+		keyboard_boot_key(key, boot_key);
 	}
 }
