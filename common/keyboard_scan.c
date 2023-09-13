@@ -686,7 +686,7 @@ static uint32_t check_key_list(const uint8_t *state)
 			return BOOT_KEY_NONE;
 	}
 
-	CPRINTS("boot key mask %x", boot_key_mask);
+	CPRINTS("boot keys: 0x%x", boot_key_mask);
 	return boot_key_mask;
 }
 
