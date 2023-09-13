@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48bbd075_7d38ea02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-13T22:48:49Z",
+      "side": 1,
+      "message": "Benson, Nathan: This CL is based on the \"Functionally connect the USB TX/RX pairs\" language from the \"Attached.SRC Requirements\" and \"Attached.SNK Requirements\" sections of the Type-C spec.\n\nUp to this point, we\u0027ve been doing this at slightly different times and I think typically waiting to set USB mode until we\u0027ve seen USB data communication in PD responses (implying that PD is supported). It would take me a bit to fully describe when we currently set the mux mode to USB.\n\nDo you know if our current practice is based on anything in particular? Is this just a requirement that we\u0027ve missed accidentally up to this point?",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ff660ff_c926021f",
