@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53e7acd_bf754693",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-09-13T16:56:05Z",
+      "side": 1,
+      "message": "You can join this into a single line:\n\n```suggestion\n\"\"\"Tests for the generate_readme.py file.\"\"\"\n```",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 3
+      },
+      "revId": "6e9f920b751496653ad636e47e4494d03b771202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
