@@ -16,6 +16,24 @@
       "message": "we don\u0027t want people running `sudo emerge X` directly... this won\u0027t work once the SDK becomes stateless and local-only packages won\u0027t survive (go/cros-sdk-revamp:vision).\n\nCan you instead fix the underlying issue with futility being a dependency of the SDK?",
       "revId": "cfc97e213bef05d89d2b074bffd92de74817ccd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65294f85_2a28b3a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-09-13T21:16:10Z",
+      "side": 1,
+      "message": "No, I can\u0027t fix that.",
+      "parentUuid": "231b66f7_2647e6fe",
+      "revId": "cfc97e213bef05d89d2b074bffd92de74817ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
