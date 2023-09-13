@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2b4cf99_ab74c83a",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2023-09-13T21:21:08Z",
+      "side": 1,
+      "message": "Sorry, my bash syntax was wrong...I was intending to make that ?\u003d so then if this is run w/out CPPFLAGS being set (They said they use this makefile outside the chroot sometimes in the other CL) then it won\u0027t fail on the +\u003d line. Let me know if I should do it that way or not (your bash-fu is way better than mine).",
+      "parentUuid": "54748881_8459f212",
+      "revId": "478ce94761ef8d1bc48b0a62c168f85d54bf0d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f804849_8205f895",
         "filename": "extra/usb_updater/Makefile",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-13T21:18:15Z",
       "side": 1,
       "message": "```suggestion\n# Enable large file support.\n```",
+      "revId": "478ce94761ef8d1bc48b0a62c168f85d54bf0d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "962d7bda_af4c0829",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2023-09-13T21:21:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f804849_8205f895",
       "revId": "478ce94761ef8d1bc48b0a62c168f85d54bf0d93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
