@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e830500_17e0a651",
+        "filename": "util/ectool_i2c.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-13T01:15:27Z",
+      "side": 1,
+      "message": "shouldn\u0027t we mask off the unwanted bytes in read_buf?\ni\u0027m not sure we can or should depend on the host command\nresult buffer being zero\u0027d out beyond read_len.",
+      "range": {
+        "startLine": 185,
+        "startChar": 42,
+        "endLine": 185,
+        "endChar": 50
+      },
+      "revId": "1da9eba22b01413d43d6d0667791c31f1558b8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
