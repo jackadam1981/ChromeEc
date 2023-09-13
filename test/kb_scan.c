@@ -14,6 +14,7 @@
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "power_button.h"
 #include "system.h"
 #include "task.h"
 #include "test_util.h"
@@ -44,6 +45,7 @@ static int total_key_state_change;
 static int column_driven;
 static int fifo_add_count;
 static int lid_open;
+static int power_button;
 #ifdef EMU_BUILD
 static int hibernated;
 static int reset_called;
@@ -64,6 +66,11 @@ int lid_is_open(void)
 	return lid_open;
 }
 #endif
+
+int power_button_signal_asserted(void)
+{
+	return power_button;
+}
 
 void keyboard_raw_drive_column(int out)
 {
