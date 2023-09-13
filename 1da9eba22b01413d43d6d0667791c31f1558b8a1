@@ -22,6 +22,30 @@
       },
       "revId": "1da9eba22b01413d43d6d0667791c31f1558b8a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73c1621_e699cbcc",
+        "filename": "util/ectool_i2c.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-13T21:15:34Z",
+      "side": 1,
+      "message": "Agree. The latest patchset copies the valid bytes to an uint32_t val.",
+      "parentUuid": "7e830500_17e0a651",
+      "range": {
+        "startLine": 185,
+        "startChar": 42,
+        "endLine": 185,
+        "endChar": 50
+      },
+      "revId": "1da9eba22b01413d43d6d0667791c31f1558b8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
