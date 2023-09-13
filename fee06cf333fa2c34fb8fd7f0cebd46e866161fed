@@ -16,6 +16,74 @@
       "message": "PTAL",
       "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0e20fc_79c2e427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-13T22:36:30Z",
+      "side": 1,
+      "message": "If we now have more clarity on when `get_mux_mode_to_set` is appropriate to call, it might be good to change its name/comment to reflect its reduced scope or, alternatively, to change it to work in the general case and consistently call it.",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff660ff_c926021f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-13T22:36:30Z",
+      "side": 1,
+      "message": "This is also a requirement for Attached.SRC.",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c7db64_229fdc38",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-13T22:36:30Z",
+      "side": 1,
+      "message": "This comment should cite the Type-C section the code is based on. We\u0027ve been confused about it before, so it would be good to avoid that.",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8b7a70_e63bd822",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2520,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-13T22:36:30Z",
+      "side": 1,
+      "message": "Is there some existing call to `usb_mux_set`, using `get_mux_mode_to_set` incorrectly, which is happening at the wrong time and should be removed?",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
