@@ -6,8 +6,8 @@
 #ifndef __INCLUDE_TPM_VENDOR_CMDS_H
 #define __INCLUDE_TPM_VENDOR_CMDS_H
 
-#include "common.h"  /* For __packed. */
-#include "compile_time_macros.h"  /* For BIT. */
+#include "common.h" /* For __packed. */
+#include "compile_time_macros.h" /* For BIT. */
 
 /*
  * This file includes definitions of extended/vendor TPM2 commands and their
@@ -230,7 +230,7 @@ enum vendor_cmd_rc {
 	/* EXTENSION_HASH error codes */
 	/* Attempt to start a session on an active handle. */
 	EXC_HASH_DUPLICATED_HANDLE = 1,
-	EXC_HASH_TOO_MANY_HANDLES = 2,  /* No room to allocate a new context. */
+	EXC_HASH_TOO_MANY_HANDLES = 2, /* No room to allocate a new context. */
 	/* Continuation/finish on unknown context. */
 	EXC_HASH_UNKNOWN_CONTEXT = 3,
 
@@ -279,8 +279,8 @@ enum user_pres_options {
 };
 /* Structure for VENDOR_CC_USER_PRES response */
 struct user_pres_response {
-	uint8_t state;		/* The user presence state. ENABLE or DISABLE */
-	uint64_t last_press;	/* Time since last press */
+	uint8_t state; /* The user presence state. ENABLE or DISABLE */
+	uint64_t last_press; /* Time since last press */
 } __packed;
 
 /*
@@ -291,9 +291,9 @@ struct user_pres_response {
  * desired operation.
  */
 #define TPM_CC_VENDOR_BIT_MASK 0x20000000
-#define VENDOR_CC_MASK         0x0000ffff
+#define VENDOR_CC_MASK	       0x0000ffff
 /* Our vendor-specific command codes go here */
-#define TPM_CC_VENDOR_CR50         0x0000
+#define TPM_CC_VENDOR_CR50 0x0000
 
 /*** Structures and constants for VENDOR_CC_SPI_HASH ***/
 
@@ -340,11 +340,11 @@ enum ap_ro_check_vc_errors {
 
 /* Structure for VENDOR_CC_SPI_HASH request which follows tpm_header */
 struct vendor_cc_spi_hash_request {
-	uint8_t subcmd;		/* See vendor_cc_spi_hash_request_subcmd */
-	uint8_t flags;		/* See vendor_cc_spi_hash_request_flags */
+	uint8_t subcmd; /* See vendor_cc_spi_hash_request_subcmd */
+	uint8_t flags; /* See vendor_cc_spi_hash_request_flags */
 	/* Offset and size used by SHA256 and DUMP; ignored by other subcmds */
-	uint32_t offset;	/* Offset in flash to hash/read */
-	uint32_t size;		/* Size in bytes to hash/read */
+	uint32_t offset; /* Offset in flash to hash/read */
+	uint32_t size; /* Size in bytes to hash/read */
 } __packed;
 
 struct ti50_stats {
@@ -367,13 +367,13 @@ struct ti50_stats {
 	uint32_t misc_status;
 };
 
-#define METRICSV_BITS_USED_SHIFT 27
-#define METRICSV_RDD_KEEP_ALIVE_MASK 3
+#define METRICSV_BITS_USED_SHIFT	      27
+#define METRICSV_RDD_KEEP_ALIVE_MASK	      3
 #define METRICSV_RDD_KEEP_ALIVE_AT_BOOT_SHIFT 2
-#define METRICSV_RDD_KEEP_ALIVE_AT_BOOT_MASK (1 << \
-		METRICSV_RDD_KEEP_ALIVE_AT_BOOT_SHIFT)
+#define METRICSV_RDD_KEEP_ALIVE_AT_BOOT_MASK \
+	(1 << METRICSV_RDD_KEEP_ALIVE_AT_BOOT_SHIFT)
 #define METRICSV_CCD_MODE_SHIFT 3
-#define METRICSV_CCD_MODE_MASK (1 << METRICSV_CCD_MODE_SHIFT)
+#define METRICSV_CCD_MODE_MASK	(1 << METRICSV_CCD_MODE_SHIFT)
 
 #define CR50_METRICSV_RDD_IS_DETECTED_SHIFT		0
 #define CR50_METRICSV_RDD_KEEPALIVE_EN_SHIFT		1
@@ -411,11 +411,11 @@ struct cr50_stats_response {
 /*
  * Subcommand code, used to set write protect.
  */
-#define WPV_UPDATE		BIT(0)
-#define WPV_ENABLE		BIT(1)
-#define WPV_FORCE		BIT(2)
-#define WPV_ATBOOT_SET		BIT(3)
-#define WPV_ATBOOT_ENABLE	BIT(4)
-#define WPV_FWMP_FORCE_WP_EN	BIT(5)
+#define WPV_UPDATE	     BIT(0)
+#define WPV_ENABLE	     BIT(1)
+#define WPV_FORCE	     BIT(2)
+#define WPV_ATBOOT_SET	     BIT(3)
+#define WPV_ATBOOT_ENABLE    BIT(4)
+#define WPV_FWMP_FORCE_WP_EN BIT(5)
 
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */
