@@ -483,6 +483,7 @@ mux_state_t get_mux_mode_to_set(int port)
 	    pd_get_data_role(port) != PD_ROLE_DFP)
 		return USB_PD_MUX_NONE;
 
+<<<<<<< HEAD   (4886f4 volteer: Enable system safe mode panic recovery)
 	/*
 	 * If the power role is sink and the PD partner device is not capable
 	 * of USB communication then disconnect.
@@ -498,6 +499,12 @@ mux_state_t get_mux_mode_to_set(int port)
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
 	    (pd_capable(port) || pd_waiting_on_partner_src_caps(port)) &&
 	    !pd_get_partner_usb_comm_capable(port))
+=======
+	/* If new data role isn't UFP & we only support UFP then disconnect. */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+	    IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_ONLY) &&
+	    pd_get_data_role(port) != PD_ROLE_UFP)
+>>>>>>> CHANGE (6c2f1d tcpmv2: Connect SuperSpeed on Attached.{SRC,SNK})
 		return USB_PD_MUX_NONE;
 
 	/* Otherwise connect mux since we are in S3+ */
