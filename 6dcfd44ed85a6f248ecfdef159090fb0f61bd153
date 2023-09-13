@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea75cf70_70f9c710",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-13T18:07:37Z",
+      "side": 1,
+      "message": "remove this file, we can use native zephyr way of declaring interrupts",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "6dcfd44ed85a6f248ecfdef159090fb0f61bd153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18015ba7_53ac197f",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
         "patchSetId": 12
