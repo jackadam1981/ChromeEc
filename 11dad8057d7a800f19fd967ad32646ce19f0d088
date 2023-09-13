@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f153ae0c_18f3fc47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-09-13T15:52:44Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nEC sets AP_IDLE in the chipset shutdown hook, so when AP goes to S5 the AP_IDLE flag will be set. We need EC to clear the AP_IDLE flag in some cases that the AP goes to S5 but expect to boot in the next boot. \n\nOne of the cases is when CR50 firmware update, AP resets CR50, shutdown itself and expect that CR50 reset will boot AP, however due to the AP_IDLE flag being set, EC doesn\u0027t boot AP after CR40 reset.\n\nThe other case is AP trigger global reset to switch CSE RO/RW boot partition, more context in b:296173534.",
+      "parentUuid": "07dc23ae_050ea941",
+      "revId": "11dad8057d7a800f19fd967ad32646ce19f0d088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ca4e883_90982395",
         "filename": "common/system.c",
         "patchSetId": 3
