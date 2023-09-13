@@ -143,3 +143,12 @@ void set_keycap_label(uint8_t row, uint8_t col, uint8_t val)
 		keycap_label[col][row] = val;
 }
 #endif
+
+__override void board_keyboard_boot_key(enum boot_key key,
+					struct boot_key_entry *boot_key)
+{
+	switch (key) {
+	default:
+		keyboard_boot_key(key, boot_key);
+	}
+}
