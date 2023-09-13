@@ -36,13 +36,13 @@ ZTEST(keyboard_scan, test_boot_key)
 				    true));
 	zassert_ok(emulate_keystate(KEYBOARD_ROW_ESC, KEYBOARD_COL_ESC, true));
 	keyboard_scan_init();
-	zassert_equal(keyboard_scan_get_boot_keys(), BOOT_KEY_ESC);
+	zassert_equal(keyboard_scan_get_boot_keys(), BIT(BOOT_KEY_ESC));
 
 	/* Case 2: esc only -> BOOT_KEY_ESC */
 	emul_kb_raw_reset(dev);
 	zassert_ok(emulate_keystate(KEYBOARD_ROW_ESC, KEYBOARD_COL_ESC, true));
 	keyboard_scan_init();
-	zassert_equal(keyboard_scan_get_boot_keys(), BOOT_KEY_ESC);
+	zassert_equal(keyboard_scan_get_boot_keys(), BIT(BOOT_KEY_ESC));
 
 	/* Case 3: refresh + arrow down -> BOOT_KEY_DOWN_ARROW */
 	emul_kb_raw_reset(dev);
@@ -51,7 +51,7 @@ ZTEST(keyboard_scan, test_boot_key)
 	zassert_ok(
 		emulate_keystate(KEYBOARD_ROW_DOWN, KEYBOARD_COL_DOWN, true));
 	keyboard_scan_init();
-	zassert_equal(keyboard_scan_get_boot_keys(), BOOT_KEY_DOWN_ARROW);
+	zassert_equal(keyboard_scan_get_boot_keys(), BIT(BOOT_KEY_DOWN_ARROW));
 
 	/* Case 4: refresh + L shift -> BOOT_KEY_LEFT_SHIFT */
 	emul_kb_raw_reset(dev);
@@ -60,7 +60,7 @@ ZTEST(keyboard_scan, test_boot_key)
 	zassert_ok(emulate_keystate(KEYBOARD_ROW_LEFT_SHIFT,
 				    KEYBOARD_COL_LEFT_SHIFT, true));
 	keyboard_scan_init();
-	zassert_equal(keyboard_scan_get_boot_keys(), BOOT_KEY_LEFT_SHIFT);
+	zassert_equal(keyboard_scan_get_boot_keys(), BIT(BOOT_KEY_LEFT_SHIFT));
 
 	/* Case 5: refresh + esc + other random key -> BOOT_KEY_NONE */
 	emul_kb_raw_reset(dev);
