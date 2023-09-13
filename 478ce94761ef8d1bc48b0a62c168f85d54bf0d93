@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df054148_fd32a119",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T21:25:31Z",
+      "side": 1,
+      "message": "this is make syntax, not shell (bash)\n\n`CPPFLAGS ?\u003d` is redundant.  some people write that for some kind of self-documentation purposes, but it\u0027s never been necessary.\n\nplease provide logs where `+\u003d` on a var fails when there is no `?\u003d`.  this isn\u0027t an inside-vs-outside SDK issue.",
+      "parentUuid": "f2b4cf99_ab74c83a",
+      "revId": "478ce94761ef8d1bc48b0a62c168f85d54bf0d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f804849_8205f895",
         "filename": "extra/usb_updater/Makefile",
         "patchSetId": 1
