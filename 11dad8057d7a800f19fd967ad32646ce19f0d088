@@ -16,6 +16,47 @@
       "message": "ping for review, thanks.",
       "revId": "11dad8057d7a800f19fd967ad32646ce19f0d088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07dc23ae_050ea941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-13T02:34:39Z",
+      "side": 1,
+      "message": "Hi Derek, I think we should first close the discussion on b:296173534. \n\nDo you know why we need CLEAR_AP_IDLE at all? I think AP_IDLE should be cleared naturally whenever it\u0027s consumed. I want to understand we didn\u0027t introduce a flag to control undefined behavior of another flag.",
+      "parentUuid": "0a91df20_0a5c4404",
+      "revId": "11dad8057d7a800f19fd967ad32646ce19f0d088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca4e883_90982395",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-13T02:34:39Z",
+      "side": 1,
+      "message": "Without this condition, you\u0027ll get the same result.",
+      "range": {
+        "startLine": 1134,
+        "startChar": 47,
+        "endLine": 1135,
+        "endChar": 61
+      },
+      "revId": "11dad8057d7a800f19fd967ad32646ce19f0d088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
