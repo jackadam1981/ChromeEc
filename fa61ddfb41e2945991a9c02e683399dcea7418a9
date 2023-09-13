@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "496c7540_ea22ae98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-13T18:46:14Z",
+      "side": 1,
+      "message": "let me fix these issues in a separate patch.\n\nThis makefile was created long time ago and is supposed to work both inside chrome os chroot and as a standalone.",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38d97484_e9b7213b",
@@ -31,6 +48,24 @@
       "writtenOn": "2023-09-13T18:28:54Z",
       "side": 1,
       "message": "inconsistent tabs-vs-spaces",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8163270e_6151b0c2",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-13T18:46:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "38d97484_e9b7213b",
       "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff03eac_e0838932",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-13T18:46:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f370a6a5_a2cd582c",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fd8c080_a3bb84a0",
@@ -65,6 +118,24 @@
       "writtenOn": "2023-09-13T18:28:54Z",
       "side": 1,
       "message": "`-I` and `-D` belong in `CPPFLAGS`, not `CFLAGS`\n\ncomes up below too",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4169dc4_51328245",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-13T18:46:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6fd8c080_a3bb84a0",
       "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fae9d955_58a9aa1c",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-13T18:46:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9cade564_563fc704",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b968698_1a66cfaa",
@@ -99,6 +188,24 @@
       "writtenOn": "2023-09-13T18:28:54Z",
       "side": 1,
       "message": "i grok this is a test, and it\u0027s probably (hopefully) not being invoked automatically by the build, but it\u0027s still wrong.  this should be CC+CFLAGS+CPPFLAGS like normal.  if you want to force -O0, append it.  you could even avoid defining a rule at all.\n\n```\ndesc_parser.o: CFLAGS +\u003d -O0\nparser_debug: desc_parser.o\n```\n\nalthough that doesn\u0027t handle the weird `parser_debug` -\u003e `dp` rename.  i guess you want `make parser_debug` to always run the tool and never check timestamps as to the binary being up-to-date relative tot he inputs ?",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75bd246d_ffb42804",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-13T18:46:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4b968698_1a66cfaa",
       "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
