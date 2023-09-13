@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bd5823_2dc5453d",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-13T20:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb3bff9_e73aa08f",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "e06c55e021bdc870928df56d439ca3e9d2e6fb55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5b16dd4_f89ece5a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-31T15:26:13Z",
       "side": 1,
       "message": "I suggest that `pd_config[]` should only contain a pointer to the `struct device *` handle provided by Zephyr drivers.  This will provide the mapping from the index based type-c port number to the correct Zephyr driver instance.\n\nI have an example CL that demonstrates this.  There are upstream BC1.2 drivers that follow the Zephyr model and I create an array, indexed by the type-c port number, to look up the correct device handle.\n\n[Code is here](https://crrev.com/c/4459090/2/zephyr/shim/src/bc12_upstream.c).  See the initialization of `bc12_shim_drivers[]`.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 80
+      },
+      "revId": "e06c55e021bdc870928df56d439ca3e9d2e6fb55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4137d8_efcf737c",
+        "filename": "zephyr/shim/src/intel_pd_altmode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-13T20:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5b16dd4_f89ece5a",
       "range": {
         "startLine": 36,
         "startChar": 0,
