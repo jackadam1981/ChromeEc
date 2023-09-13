@@ -2511,6 +2511,21 @@ static void tc_attached_snk_entry(const int port)
 		tcpm_debug_accessory(port, 1);
 		set_ccd_mode(port, 1);
 	}
+
+	/*
+	 * Attached.SNK requirements from the
+	 * "Universal Serial Bus Type-C Cable and Connector
+	 * Specification" Release 2.2 paragraph 4.5.2.2.5.1:
+	 *
+	 * "If the port supports signaling on USB TX/RX pairs,
+	 * it shall functionally connect the USB TX/RX pairs and maintain
+	 * the connection during and after a USB PD PR_Swap."
+	 *
+	 * This allows for support of the Android Debug Bridge.
+	 */
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+		usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
 }
 
 /*
@@ -3027,8 +3042,9 @@ static void tc_attached_src_entry(const int port)
 					set_vconn(port, 0);
 
 				if (IS_ENABLED(CONFIG_USBC_SS_MUX))
-					usb_mux_set(port, USB_PD_MUX_NONE,
-						    USB_SWITCH_DISCONNECT,
+					usb_mux_set(port,
+						    USB_PD_MUX_USB_ENABLED,
+						    USB_SWITCH_CONNECT,
 						    tc[port].polarity);
 			}
 
@@ -3078,8 +3094,8 @@ static void tc_attached_src_entry(const int port)
 				set_vconn(port, 0);
 
 			if (IS_ENABLED(CONFIG_USBC_SS_MUX))
-				usb_mux_set(port, USB_PD_MUX_NONE,
-					    USB_SWITCH_DISCONNECT,
+				usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
+					    USB_SWITCH_CONNECT,
 					    tc[port].polarity);
 		}
 	}
