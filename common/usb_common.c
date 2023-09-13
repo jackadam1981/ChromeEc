@@ -95,6 +95,335 @@ enum pd_cc_polarity_type get_snk_polarity(enum tcpc_cc_voltage_status cc1,
 	return cc2 > cc1;
 }
 
+<<<<<<< HEAD   (1ca04d charge_manager: Make charge OVERRIDE_DONT_CHARGE persistent)
+=======
+enum tcpc_cc_polarity get_src_polarity(enum tcpc_cc_voltage_status cc1,
+				       enum tcpc_cc_voltage_status cc2)
+{
+	return (cc1 == TYPEC_CC_VOLT_RD) ? POLARITY_CC1 : POLARITY_CC2;
+}
+
+enum pd_cc_states pd_get_cc_state(enum tcpc_cc_voltage_status cc1,
+				  enum tcpc_cc_voltage_status cc2)
+{
+	/* Port partner is a SNK */
+	if (cc_is_snk_dbg_acc(cc1, cc2))
+		return PD_CC_UFP_DEBUG_ACC;
+	if (cc_is_at_least_one_rd(cc1, cc2))
+		return PD_CC_UFP_ATTACHED;
+	if (cc_is_audio_acc(cc1, cc2))
+		return PD_CC_UFP_AUDIO_ACC;
+
+	/* Port partner is a SRC */
+	if (cc_is_rp(cc1) && cc_is_rp(cc2))
+		return PD_CC_DFP_DEBUG_ACC;
+	if (cc_is_rp(cc1) || cc_is_rp(cc2))
+		return PD_CC_DFP_ATTACHED;
+
+	/*
+	 * 1) Both lines are Vopen or
+	 * 2) Only an e-marked cabled without a partner on the other side
+	 */
+	return PD_CC_NONE;
+}
+
+__overridable int pd_board_check_request(uint32_t rdo, int pdo_cnt)
+{
+	return EC_SUCCESS;
+}
+
+int pd_get_source_pdo(const uint32_t **src_pdo_p, const int port)
+{
+#if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)
+	const uint32_t *src_pdo;
+	const int pdo_cnt = dpm_get_source_pdo(&src_pdo, port);
+#elif defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
+	defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
+	const uint32_t *src_pdo;
+	const int pdo_cnt = charge_manager_get_source_pdo(&src_pdo, port);
+#else
+	const uint32_t *src_pdo = pd_src_pdo;
+	const int pdo_cnt = pd_src_pdo_cnt;
+#endif
+
+	*src_pdo_p = src_pdo;
+	return pdo_cnt;
+}
+
+int pd_check_requested_voltage(uint32_t rdo, const int port)
+{
+	int max_ma = rdo & 0x3FF;
+	int op_ma = (rdo >> 10) & 0x3FF;
+	int idx = RDO_POS(rdo);
+	uint32_t pdo;
+	uint32_t pdo_ma;
+	const uint32_t *src_pdo;
+	int pdo_cnt;
+
+	pdo_cnt = pd_get_source_pdo(&src_pdo, port);
+
+	/* Check for invalid index */
+	if (!idx || idx > pdo_cnt)
+		return EC_ERROR_INVAL;
+
+	/* Board specific check for this request */
+	if (pd_board_check_request(rdo, pdo_cnt))
+		return EC_ERROR_INVAL;
+
+	/* check current ... */
+	pdo = src_pdo[idx - 1];
+	pdo_ma = (pdo & 0x3ff);
+
+	if (op_ma > pdo_ma)
+		return EC_ERROR_INVAL; /* too much op current */
+
+	if (max_ma > pdo_ma && !(rdo & RDO_CAP_MISMATCH))
+		return EC_ERROR_INVAL; /* too much max current */
+
+	CPRINTF("Requested %d mV %d mA (for %d/%d mA)\n",
+		((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10, op_ma * 10,
+		max_ma * 10);
+
+	/* Accept the requested voltage */
+	return EC_SUCCESS;
+}
+
+__overridable uint8_t board_get_usb_pd_port_count(void)
+{
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+
+__overridable bool board_is_usb_pd_port_present(int port)
+{
+	/*
+	 * Use board_get_usb_pd_port_count() instead of checking
+	 * CONFIG_USB_PD_PORT_MAX_COUNT directly here for legacy boards
+	 * that implement board_get_usb_pd_port_count() but do not
+	 * implement board_is_usb_pd_port_present().
+	 */
+
+	return (port >= 0) && (port < board_get_usb_pd_port_count());
+}
+
+__overridable bool board_is_dts_port(int port)
+{
+	return true;
+}
+
+int pd_get_retry_count(int port, enum tcpci_msg_type type)
+{
+	/* PD 3.0 6.7.7: nRetryCount = 2; PD 2.0 6.6.9: nRetryCount = 3 */
+	return pd_get_rev(port, type) == PD_REV30 ? 2 : 3;
+}
+
+enum pd_drp_next_states drp_auto_toggle_next_state(
+	uint64_t *drp_sink_time, enum pd_power_role power_role,
+	enum pd_dual_role_states drp_state, enum tcpc_cc_voltage_status cc1,
+	enum tcpc_cc_voltage_status cc2, bool auto_toggle_supported)
+{
+	const bool hardware_debounced_unattached =
+		((drp_state == PD_DRP_TOGGLE_ON) && auto_toggle_supported);
+
+	/* Set to appropriate port state */
+	if (cc_is_open(cc1, cc2) || cc_is_pwred_cbl_without_snk(cc1, cc2)) {
+		/*
+		 * If nothing is attached then use drp_state to determine next
+		 * state. If DRP auto toggle is still on, then remain in the
+		 * DRP_AUTO_TOGGLE state. Otherwise, stop dual role toggling
+		 * and go to a disconnected state.
+		 */
+		switch (drp_state) {
+		case PD_DRP_TOGGLE_OFF:
+			return DRP_TC_DEFAULT;
+		case PD_DRP_FREEZE:
+			if (power_role == PD_ROLE_SINK)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_UNATTACHED_SRC;
+		case PD_DRP_FORCE_SINK:
+			return DRP_TC_UNATTACHED_SNK;
+		case PD_DRP_FORCE_SOURCE:
+			return DRP_TC_UNATTACHED_SRC;
+		case PD_DRP_TOGGLE_ON:
+		default:
+			if (!auto_toggle_supported) {
+				if (power_role == PD_ROLE_SINK)
+					return DRP_TC_UNATTACHED_SNK;
+				else
+					return DRP_TC_UNATTACHED_SRC;
+			}
+
+			return DRP_TC_DRP_AUTO_TOGGLE;
+		}
+	} else if ((cc_is_rp(cc1) || cc_is_rp(cc2)) &&
+		   drp_state != PD_DRP_FORCE_SOURCE) {
+		/* SNK allowed unless ForceSRC */
+		if (hardware_debounced_unattached)
+			return DRP_TC_ATTACHED_WAIT_SNK;
+		return DRP_TC_UNATTACHED_SNK;
+	} else if (cc_is_at_least_one_rd(cc1, cc2) ||
+		   cc_is_audio_acc(cc1, cc2)) {
+		/*
+		 * SRC allowed unless ForceSNK or Toggle Off
+		 *
+		 * Ideally we wouldn't use auto-toggle when drp_state is
+		 * TOGGLE_OFF/FORCE_SINK, but for some TCPCs, auto-toggle can't
+		 * be prevented in low power mode. Try being a sink in case the
+		 * connected device is dual-role (this ensures reliable charging
+		 * from a hub, b/72007056). 100 ms is enough time for a
+		 * dual-role partner to switch from sink to source. If the
+		 * connected device is sink-only, then we will attempt
+		 * TC_UNATTACHED_SNK twice (due to debounce time), then return
+		 * to low power mode (and stay there). After 200 ms, reset
+		 * ready for a new connection.
+		 */
+		if (drp_state == PD_DRP_TOGGLE_OFF ||
+		    drp_state == PD_DRP_FORCE_SINK) {
+			if (get_time().val > *drp_sink_time + 200 * MSEC)
+				*drp_sink_time = get_time().val;
+			if (get_time().val < *drp_sink_time + 100 * MSEC)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_DRP_AUTO_TOGGLE;
+		} else {
+			if (hardware_debounced_unattached)
+				return DRP_TC_ATTACHED_WAIT_SRC;
+			return DRP_TC_UNATTACHED_SRC;
+		}
+	} else {
+		/* Anything else, keep toggling */
+		if (!auto_toggle_supported) {
+			if (power_role == PD_ROLE_SINK)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_UNATTACHED_SRC;
+		}
+
+		return DRP_TC_DRP_AUTO_TOGGLE;
+	}
+}
+
+__overridable bool usb_ufp_check_usb3_enable(int port)
+{
+	return false;
+}
+
+mux_state_t get_mux_mode_to_set(int port)
+{
+	/*
+	 * If the SoC is down, then we disconnect the MUX to save power since
+	 * no one cares about the data lines.
+	 */
+	if (IS_ENABLED(CONFIG_AP_POWER_CONTROL) &&
+	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
+		return USB_PD_MUX_NONE;
+
+	/*
+	 * When PD stack is disconnected, then mux should be disconnected, which
+	 * is also what happens in the set_state disconnection code. Once the
+	 * PD state machine progresses out of disconnect, the MUX state will
+	 * be set correctly again.
+	 */
+	if (pd_is_disconnected(port))
+		return USB_PD_MUX_NONE;
+
+	/*
+	 * For type-c only connections, there may be a need to enable USB3.1
+	 * mode when the port is in a UFP data role, independent of any other
+	 * conditions which are checked below. The default function returns
+	 * false, so only boards that override this check will be affected.
+	 */
+	if (usb_ufp_check_usb3_enable(port) &&
+	    pd_get_data_role(port) == PD_ROLE_UFP)
+		return USB_PD_MUX_USB_ENABLED;
+
+	/* If new data role isn't DFP & we only support DFP, also disconnect. */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+	    IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
+	    pd_get_data_role(port) != PD_ROLE_DFP)
+		return USB_PD_MUX_NONE;
+
+	/* If new data role isn't UFP & we only support UFP then disconnect. */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+	    IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_ONLY) &&
+	    pd_get_data_role(port) != PD_ROLE_UFP)
+		return USB_PD_MUX_NONE;
+
+	/* Otherwise connect mux since we are in S3+ */
+	return USB_PD_MUX_USB_ENABLED;
+}
+
+void set_usb_mux_with_current_data_role(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		mux_state_t mux_mode = get_mux_mode_to_set(port);
+		enum usb_switch usb_switch_mode =
+			(mux_mode == USB_PD_MUX_NONE) ? USB_SWITCH_DISCONNECT :
+							USB_SWITCH_CONNECT;
+
+		usb_mux_set(port, mux_mode, usb_switch_mode,
+			    polarity_rm_dts(pd_get_polarity(port)));
+	}
+}
+
+void usb_mux_set_safe_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		usb_mux_set(port, USB_PD_MUX_SAFE_MODE, USB_SWITCH_CONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
+	}
+
+	/* Isolate the SBU lines. */
+	typec_set_sbu(port, false);
+}
+
+void usb_mux_set_safe_mode_exit(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_CONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
+
+	/* Isolate the SBU lines. */
+	typec_set_sbu(port, false);
+}
+
+void pd_send_hard_reset(int port)
+{
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET);
+}
+
+#ifdef CONFIG_USBC_OCP
+void pd_handle_overcurrent(int port)
+{
+	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		return;
+	}
+
+	CPRINTS("C%d: overcurrent!", port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_LOGGING))
+		pd_log_event(PD_EVENT_PS_FAULT, PD_LOG_PORT_SIZE(port, 0),
+			     PS_FAULT_OCP, NULL);
+
+	/* No action to take if disconnected, just log. */
+	if (pd_is_disconnected(port))
+		return;
+
+	/*
+	 * Keep track of the overcurrent events and allow the module to perform
+	 * the spec-dictated recovery actions.
+	 */
+	usbc_ocp_add_event(port);
+}
+
+#endif /* CONFIG_USBC_OCP */
+
+__maybe_unused void pd_handle_cc_overvoltage(int port)
+{
+	pd_send_hard_reset(port);
+}
+>>>>>>> CHANGE (6c2f1d tcpmv2: Connect SuperSpeed on Attached.{SRC,SNK})
 
 __overridable int pd_board_checks(void)
 {
