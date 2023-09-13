@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf342039_82846599",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2023-09-13T21:22:21Z",
+      "side": 1,
+      "message": "Proper fix is here crrev.com/c/4864818, but Mike corrected me that we don\u0027t want to revert this.",
+      "parentUuid": "d8d63a08_eee8a92a",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 103
+      },
+      "revId": "4d365a19818c2df0c94913aef4630595fd004baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c5b8c04_035ca568",
