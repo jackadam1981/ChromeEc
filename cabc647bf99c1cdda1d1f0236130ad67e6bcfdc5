@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1a1e404_7b7fee2d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-13T20:43:55Z",
+      "side": 1,
+      "message": "I think the natural way to set this up in the test is just to have no cable discovery responses for this test, i.e. the SOP\u0027 partner structures should be empty/null.",
+      "parentUuid": "1fa7f4dd_f512fc05",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b63d412_70133b11",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 63
