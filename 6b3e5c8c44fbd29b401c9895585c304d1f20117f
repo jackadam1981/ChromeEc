@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "817ee13d_c165431e",
+        "filename": "common/pd/pd_task_intel_altmode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-13T21:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc71e05_45cc8dcd",
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "437e6fc4_c362c1e2",
@@ -90,6 +108,30 @@
       "writtenOn": "2023-08-31T15:18:02Z",
       "side": 1,
       "message": "This needs a `depends on !PLATFORM_EC_USB_PD_TCPMV2`.  My understanding is that TCPM and PD support are mutually exclusive.",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 63
+      },
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045b2603_11dde956",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-13T21:16:30Z",
+      "side": 1,
+      "message": "added #error in pd_task_intel_altmode.h",
+      "parentUuid": "bd9a0f88_60b2bab0",
       "range": {
         "startLine": 8,
         "startChar": 1,
