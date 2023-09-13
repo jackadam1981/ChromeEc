@@ -9,6 +9,8 @@ menuconfig USB_PD_ALTMODE_INTEL
 	depends on !PLATFORM_EC_USB_PD_TCPMV2
 	default y if DT_HAS_INTEL_PD_ALTMODE_ENABLED
 	select EVENTS
+	select PLATFORM_EC_USBC_SS_MUX
+	select PLATFORM_EC_USB_PD_HOST_CMD
 	help
 	  Enable this to support configuring the USB-C alternate modes on
 	  Intel SoC when using PD chips in PD mode.
