@@ -2511,6 +2511,14 @@ static void tc_attached_snk_entry(const int port)
 		tcpm_debug_accessory(port, 1);
 		set_ccd_mode(port, 1);
 	}
+
+	/*
+	 * Connect SuperSpeed lines immediately upon
+	 * entering Attached.SNK state. This allows for
+	 * support of the Android Debug Bridge.
+	 */
+	usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
+		    polarity_rm_dts(pd_get_polarity(port)));
 }
 
 /*
