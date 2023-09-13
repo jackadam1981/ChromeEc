@@ -47,6 +47,7 @@ struct keyboard_scan_config {
 struct boot_key_entry {
 	uint8_t col;
 	uint8_t row;
+	uint8_t id; /* enum boot_key */
 };
 
 /**
@@ -63,14 +64,15 @@ struct keyboard_scan_config *keyboard_scan_get_config(void);
  */
 __override_proto extern struct keyboard_scan_config keyscan_config;
 
+#define BOOT_KEY_NONE 0
+
 /* Key held down at keyboard-controlled reset boot time. */
 enum boot_key {
 	/* No keys other than keyboard-controlled reset keys */
-	BOOT_KEY_NONE = 0,
-	BOOT_KEY_ESC = BIT(0),
-	BOOT_KEY_DOWN_ARROW = BIT(1),
-	BOOT_KEY_LEFT_SHIFT = BIT(2),
-	BOOT_KEY_POWER = BIT(3),
+	BOOT_KEY_ESC = 0,
+	BOOT_KEY_DOWN_ARROW = 1,
+	BOOT_KEY_LEFT_SHIFT = 2,
+	BOOT_KEY_POWER = 3,
 };
 
 #if defined(HAS_TASK_KEYSCAN) && defined(CONFIG_KEYBOARD_BOOT_KEYS)
@@ -89,7 +91,7 @@ uint32_t keyboard_scan_get_boot_keys(void);
 #else
 static inline uint32_t keyboard_scan_get_boot_keys(void)
 {
-	return BOOT_KEY_NONE;
+	return 0;
 }
 #endif
 
