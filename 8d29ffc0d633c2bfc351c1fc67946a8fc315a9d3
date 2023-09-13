@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dedb156_019e34d8",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-13T17:58:03Z",
+      "side": 1,
+      "message": "This symbol is only defined for Zephyr builds (and is missing the CONFIG_ prefix).  You\u0027ll need to create a separate symbol in config.h if you want this support in legacy EC builds.  Add the linkage from the Kconfig symbol in config_chip.h\n\n```\n#undef CONFIG_PANIC_ON_WATCHDOG_WARNING\n#ifndef CONFIG_PLATFORM_EC_PANIC_ON_WATCHDOG_WARNING\n#define CONFIG_PANIC_ON_WATCHDOG_WARNING\n#endif\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "8d29ffc0d633c2bfc351c1fc67946a8fc315a9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe44aea_ccce50ee",
+        "filename": "zephyr/shim/core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-13T17:58:03Z",
+      "side": 1,
+      "message": "Is an architecture specific function needed, or can you leverage `k_sys_fatal_error_handler()` provided by Zephyr?\n\nhttps://github.com/zephyrproject-rtos/zephyr/blob/38c918164217965c92b04f23ca894f926bc11219/include/zephyr/fatal.h#L67\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/panic.c;l\u003d134",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 51
+      },
+      "revId": "8d29ffc0d633c2bfc351c1fc67946a8fc315a9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
