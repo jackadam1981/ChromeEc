@@ -16,6 +16,24 @@
       "message": "Would it make sense to if-check for CONFIG_ZEPHYR instead of the FLT_MAX symbol? If I understand correctly, zephyr added this symbol (picolibc) and there is a conflict. Marking it as zephyr ifdef would make it easier to find and remove, when we will move to 100% zephyr.",
       "revId": "c0e43879e708a7fc300a0976fae8cacddfc2c124",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2741a027_6bdfd1d1",
+        "filename": "include/math_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-09-13T18:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e78b40_44568887",
+      "revId": "c0e43879e708a7fc300a0976fae8cacddfc2c124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
