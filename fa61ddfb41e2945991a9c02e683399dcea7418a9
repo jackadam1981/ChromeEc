@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb619b93_493a6f56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T18:28:54Z",
+      "side": 1,
+      "message": "this is why we don\u0027t want people writing custom Makefiles.  we spend time repeating the same boilerplate/lessons.",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d97484_e9b7213b",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T18:28:54Z",
+      "side": 1,
+      "message": "inconsistent tabs-vs-spaces",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f370a6a5_a2cd582c",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T18:28:54Z",
+      "side": 1,
+      "message": "all these pkg-config invocations are incorrect.  they\u0027re being expanded \u0026 executed for every invocation.  this is why we normally have the pattern:\n\n```\nLIBS_LIBUSB   :\u003d $(shell $(PKG_CONFIG) --libs   libusb-1.0)\nCFLAGS_LIBUSB :\u003d $(shell $(PKG_CONFIG) --cflags libusb-1.0)\n...\nLIBS +\u003d $(LIBS_LIBUSB)\nCFLAGS +\u003d $(CFLAGS_LIBUSB)\n```\n\ncomes up below too with libcrypto",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd8c080_a3bb84a0",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T18:28:54Z",
+      "side": 1,
+      "message": "`-I` and `-D` belong in `CPPFLAGS`, not `CFLAGS`\n\ncomes up below too",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cade564_563fc704",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T18:28:54Z",
+      "side": 1,
+      "message": "this should be respecting CFLAGS.  not sure what CFLAGS_g is about, but that too.",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b968698_1a66cfaa",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-13T18:28:54Z",
+      "side": 1,
+      "message": "i grok this is a test, and it\u0027s probably (hopefully) not being invoked automatically by the build, but it\u0027s still wrong.  this should be CC+CFLAGS+CPPFLAGS like normal.  if you want to force -O0, append it.  you could even avoid defining a rule at all.\n\n```\ndesc_parser.o: CFLAGS +\u003d -O0\nparser_debug: desc_parser.o\n```\n\nalthough that doesn\u0027t handle the weird `parser_debug` -\u003e `dp` rename.  i guess you want `make parser_debug` to always run the tool and never check timestamps as to the binary being up-to-date relative tot he inputs ?",
+      "revId": "fa61ddfb41e2945991a9c02e683399dcea7418a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
