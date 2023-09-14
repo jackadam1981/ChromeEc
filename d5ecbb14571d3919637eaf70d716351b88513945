@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57021276_86ec11d7",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-14T15:31:04Z",
+      "side": 1,
+      "message": "What do you think about indexing this array by the `enum boot_key` instead?\n\n```\nstruct boot_key_entry boot_key_list[] \u003d {\n    [BOOT_KEY_ESC] \u003d { KEYBOARD_COL_ESC, KEYBOARD_ROW_ESC },\n    ...\n```\n\nThen any boards that use `CONFIG_KEYBOARD_MULTIPLE`, can update the boot keys more intuitively.  For example, from [delbin keyboard customization](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/board/delbin/keyboard_customization.c;l\u003d141):\n\n```\nboot_key_list[BOOT_KEY_ESC].col \u003d KEYBOARD2_COL_ESC;\nboot_key_list[BOOT_KEY_ESC].row \u003d KEYBOARD2_ROW_ESC;\nboot_key_list[BOOT_KEY_DOWN_ARROW].col \u003d KEYBOARD2_COL_DOWN;\nboot_key_list[BOOT_KEY_DOWN_ARROW].row \u003d KEYBOARD2_ROW_DOWN;\nboot_key_list[BOOT_KEY_LEFT_SHIFT].col \u003d KEYBOARD2_COL_LEFT_SHIFT;\nboot_key_list[BOOT_KEY_LEFT_SHIFT].row \u003d KEYBOARD2_ROW_LEFT_SHIFT;\n```",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "d5ecbb14571d3919637eaf70d716351b88513945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
