@@ -1,4 +1,4 @@
-# Copyright 2020 The ChromiumOS Authors
+# Copyright 2023 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -7,7 +7,8 @@
 #   $ sudo make modules_install
 #   $ make clean
 
-obj-m := i2c-pseudo.o
+obj-m := drivers/i2c/i2c-pseudo.o
+ccflags-y := -I$(src)/include
 
 .PHONY: all
 
