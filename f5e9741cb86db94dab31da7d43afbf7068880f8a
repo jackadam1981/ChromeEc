@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d28984_6095f124",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2023-09-14T17:05:40Z",
+      "side": 1,
+      "message": "Makes sense, I\u0027ve updated the table",
+      "parentUuid": "95b14c7e_27b1f3c3",
+      "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d4ed793_fd082b39",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Features: \n * GSC console improved logging by adding timestamp prefix to each line\n * Added GSC bootloader stage to boot tracer time monitor b/275390574\n \nFixes\n * Improve flashing EC/AP firmware through CCD when external CCD is unstable (b/295584404)\n\n---\n\nWe can always add later if we missed something.",
       "parentUuid": "1e42b78a_771058ab",
+      "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e37d5064_c689c7a2",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2023-09-14T17:05:40Z",
+      "side": 1,
+      "message": "Sounds good, added these to the list",
+      "parentUuid": "ff8340ee_ce241093",
       "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
