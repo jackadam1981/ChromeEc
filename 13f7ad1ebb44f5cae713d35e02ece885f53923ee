@@ -16,6 +16,24 @@
       "message": "LGTM, but I would like Daisuke to also take a look.",
       "revId": "13f7ad1ebb44f5cae713d35e02ece885f53923ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cd6ff5_43982b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-14T18:00:56Z",
+      "side": 1,
+      "message": "Sounds good to me I didn\u0027t dig into why this was causing the issue on Rex so maybe Daisuke will have some insight on that and just be able to push a fix",
+      "parentUuid": "e6975941_cd6e401d",
+      "revId": "13f7ad1ebb44f5cae713d35e02ece885f53923ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
