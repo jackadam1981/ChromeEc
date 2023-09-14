@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5440626a_324a6f87",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-14T20:46:47Z",
+      "side": 1,
+      "message": "```suggestion\ndef get_board_config(build_board: str) -\u003e Optional[BoardConfig]:\n```\n\nIf you want to return None and specify a return type, then you need to specify `Optional`.",
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7466b8d9_88103229",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-14T20:46:47Z",
+      "side": 1,
+      "message": "Did you mean to provide `board_config_key_error` for this `%s`?",
+      "range": {
+        "startLine": 500,
+        "startChar": 25,
+        "endLine": 500,
+        "endChar": 27
+      },
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468e5db5_6e7a7e9d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-14T20:46:47Z",
+      "side": 1,
+      "message": "```suggestion\n    if build_board in BOARD_CONFIGS:\n        return BOARD_CONFIGS[build_board]\n    logging.debug(\n        \"build_board %s not found in BOARD_CONFIGS, checking variants\",\n        build_board,\n    )\n```",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 9
+      },
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
