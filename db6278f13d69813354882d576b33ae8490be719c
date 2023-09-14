@@ -87,6 +87,24 @@
       "parentUuid": "334a2b4a_4a54f7a5",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87666a4_f9607579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-14T06:43:42Z",
+      "side": 1,
+      "message": "Yes, I mean\n\nThe Kconfig option needs to be enabled while we have protos with EEPROM\n\nOnce EEPROM is removed, the Kconfig option needs to be disabled along with that",
+      "parentUuid": "7525a4c8_3e5142c8",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
