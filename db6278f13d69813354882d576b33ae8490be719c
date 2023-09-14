@@ -69,6 +69,24 @@
       "parentUuid": "6a5d32d7_6ba1df48",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7525a4c8_3e5142c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-14T01:58:26Z",
+      "side": 1,
+      "message": "Karis protos have EEPROM too. It the config can be enabled at proto and be removed in the future?",
+      "parentUuid": "334a2b4a_4a54f7a5",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
