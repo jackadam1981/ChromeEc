@@ -16,6 +16,23 @@
       "message": "Hi Peter, do you know how to skip fan_config in the unit test? Because I found we are not able to add the test to fan_config for now.",
       "revId": "72893f2da3ac441bd53bd7f0ac1186b8b11c570f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e02cc94_1af9a940",
+        "filename": "zephyr/program/nissa/joxer/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-14T05:34:47Z",
+      "side": 1,
+      "message": "```suggestion\n#ifndef TEST_BUILD\n```\nCould I use TEST_BUILD to disable the ztest to test it?",
+      "revId": "72893f2da3ac441bd53bd7f0ac1186b8b11c570f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
