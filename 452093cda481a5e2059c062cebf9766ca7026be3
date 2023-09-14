@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e750cb2_641d0a63",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-14T02:03:45Z",
+      "side": 1,
+      "message": "this name is incorrect -- it\u0027s supposed to be `LDFLAGS`, not `LFLAGS`",
+      "revId": "452093cda481a5e2059c062cebf9766ca7026be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c37797_7d99695c",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-09-14T02:03:45Z",
+      "side": 1,
+      "message": "you don\u0027t want `CPPFLAGS` when linking, just CFLAGS+LDFLAGS",
+      "revId": "452093cda481a5e2059c062cebf9766ca7026be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
