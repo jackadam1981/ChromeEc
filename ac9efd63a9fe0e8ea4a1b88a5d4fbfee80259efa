@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "607e305a_8e6a7f0f",
+        "filename": "board/boxy/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-09-14T08:43:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e46df1a_aa79032e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "ac9efd63a9fe0e8ea4a1b88a5d4fbfee80259efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc037531_e50e99eb",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-14T07:55:32Z",
       "side": 1,
       "message": "Do we have this for boxy?",
+      "range": {
+        "startLine": 36,
+        "startChar": 34,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "ac9efd63a9fe0e8ea4a1b88a5d4fbfee80259efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56eb1b45_e0b0d229",
+        "filename": "board/boxy/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-09-14T08:43:14Z",
+      "side": 1,
+      "message": "no used on boxy, remove it",
+      "parentUuid": "cc037531_e50e99eb",
       "range": {
         "startLine": 36,
         "startChar": 34,
