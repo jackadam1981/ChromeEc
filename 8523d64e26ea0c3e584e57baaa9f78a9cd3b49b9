@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a537159_d9f9157e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-14T06:24:55Z",
+      "side": 1,
+      "message": "DEBUG:root:Running command: \"make print-boards\"\nThe following boards are missing and must be added to BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG or BOARDS_THAT_FAIL_WITH_CLANG:\ndochi\n23:23:00.390: INFO: Endpoint execution completed, return code: 3",
+      "revId": "8523d64e26ea0c3e584e57baaa9f78a9cd3b49b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
