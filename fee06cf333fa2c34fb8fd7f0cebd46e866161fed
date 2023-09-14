@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "183da11a_bb0d545d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-14T21:58:32Z",
+      "side": 1,
+      "message": "Build fails for `it8xxx2_pdevb` board, as `usb_mux_set` is not defined for this board",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ff660ff_c926021f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
