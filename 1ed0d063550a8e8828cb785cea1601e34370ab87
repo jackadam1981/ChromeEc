@@ -22,6 +22,30 @@
       },
       "revId": "1ed0d063550a8e8828cb785cea1601e34370ab87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e5e7cd_e6b1dab7",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-09-14T00:34:27Z",
+      "side": 1,
+      "message": "i think I just tried to enable all warnings, but some of those may be specific to gcc/clang versions,so we may want to completely remove this",
+      "parentUuid": "01d16e0d_aebb1f07",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "1ed0d063550a8e8828cb785cea1601e34370ab87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
