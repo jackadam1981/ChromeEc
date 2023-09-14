@@ -183,12 +183,9 @@ cmd_pretty_print_list = $(call cmd_pretty_print_cmd,echo $(1) | tr ' ' '\n')
 
 # By default, the "build_boards" and "try_build_boards" targets will build all
 # of the boards listed in $(boards). However, the invoker can provide a
-# different list via the BOARDS variable. Providing an empty value for BOARDS
-# is not allowed.
+# different list via the BOARDS variable. We assume only non-empty value would
+# be provided for the BOARDS variable.
 BOARDS ?= $(boards)
-ifeq ($(BOARDS),)
-$(error BOARDS must be non-empty)
-endif
 
 FAILED_BOARDS_DIR = .failedboards
 # When building with -j, it's easy to miss errors. If you don't have your shell
