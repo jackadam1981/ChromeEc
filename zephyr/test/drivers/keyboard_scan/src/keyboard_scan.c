@@ -28,7 +28,11 @@
 ZTEST(keyboard_scan, test_boot_key)
 {
 	const struct device *dev = DEVICE_DT_GET(DT_NODELABEL(cros_kb_raw));
+<<<<<<< HEAD   (06f010 Merge remote-tracking branch cros/main into firmware-nissa-1)
 	static const struct device *gpio_dev = GPIO_DEVICE;
+=======
+	const int kb_cols = DT_PROP(DT_NODELABEL(cros_kb_raw), cols);
+>>>>>>> CHANGE (13f7ad Revert "keyboard: Remove workaround for stuck KSI2")
 
 	emul_kb_raw_reset(dev);
 	zassert_equal(keyboard_scan_get_boot_keys(), BOOT_KEY_NONE, NULL);
@@ -44,7 +48,23 @@ ZTEST(keyboard_scan, test_boot_key)
 	keyboard_scan_init();
 	zassert_equal(keyboard_scan_get_boot_keys(), BIT(BOOT_KEY_ESC));
 
+<<<<<<< HEAD   (06f010 Merge remote-tracking branch cros/main into firmware-nissa-1)
 	/* Case 2: esc only -> BOOT_KEY_ESC */
+=======
+	/*
+	 * Case 1.5:
+	 * GSC may hold ksi2 when power button is pressed, simulate this
+	 * behavior and verify boot key detection again.
+	 */
+	zassert_true(IS_ENABLED(CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2), NULL);
+	for (int i = 0; i < kb_cols; i++) {
+		zassert_ok(emulate_keystate(KEYBOARD_ROW_REFRESH, i, true));
+	}
+	keyboard_scan_init();
+	zassert_equal(keyboard_scan_get_boot_keys(), BOOT_KEY_ESC);
+
+	/* Case 2: esc only -> BOOT_KEY_NONE */
+>>>>>>> CHANGE (13f7ad Revert "keyboard: Remove workaround for stuck KSI2")
 	emul_kb_raw_reset(dev);
 	zassert_ok(emulate_keystate(KEYBOARD_ROW_ESC, KEYBOARD_COL_ESC, true));
 	keyboard_scan_init();
