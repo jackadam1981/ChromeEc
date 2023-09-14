@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95b14c7e_27b1f3c3",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-14T13:59:55Z",
+      "side": 1,
+      "message": "We can add the missing M116 through M118 branch links. They will all be for 0.24.30 though",
+      "parentUuid": "6a7efe27_2233fd5a",
+      "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d4ed793_fd082b39",
         "filename": "docs/ti50_firmware_releases.md",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-13T21:14:13Z",
       "side": 1,
       "message": "What changed in the RO image between .46 and .52?",
+      "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b133e0e4_f9c8c586",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-14T13:59:55Z",
+      "side": 1,
+      "message": "@sukhomlinov@chromium.org of @vbendeb@chromium.org do you have items to put in this list?",
+      "parentUuid": "3d4ed793_fd082b39",
       "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb23f577_efc96b07",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-14T13:59:55Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "b56fa07b_9f15a71c",
+      "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e42b78a_771058ab",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-09-13T21:14:13Z",
       "side": 1,
       "message": "Anything else to add under features or bug fixes?",
+      "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8340ee_ce241093",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-14T13:59:55Z",
+      "side": 1,
+      "message": "Features: \n * GSC console improved logging by adding timestamp prefix to each line\n * Added GSC bootloader stage to boot tracer time monitor b/275390574\n \nFixes\n * Improve flashing EC/AP firmware through CCD when external CCD is unstable (b/295584404)\n\n---\n\nWe can always add later if we missed something.",
+      "parentUuid": "1e42b78a_771058ab",
       "revId": "f5e9741cb86db94dab31da7d43afbf7068880f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
