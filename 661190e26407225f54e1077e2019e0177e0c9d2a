@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b52e6991_364cfe3c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-14T20:49:58Z",
+      "side": 1,
+      "message": "```suggestion\n    \"helipilot\": HELIPILOT_CONFIG,\n    \"nami_fp\": DARTMONKEY_CONFIG,\n    \"nocturne_fp\": DARTMONKEY_CONFIG,\n```\n\nWould this solve the same issue?",
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5440626a_324a6f87",
         "filename": "test/run_device_tests.py",
         "patchSetId": 3
