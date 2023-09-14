@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beda0f25_eb2833db",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-14T00:23:46Z",
+      "side": 1,
+      "message": "Instead of clearing it here, can you do it in handle_pending_reboot, where the flag is consumed? handle_pending_reboot needs to take a pointer.\n\nThen, the CL lgtm.",
+      "range": {
+        "startLine": 1138,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 62
+      },
+      "revId": "84c45a541b88b82375642cb45f67b80dbe461feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
