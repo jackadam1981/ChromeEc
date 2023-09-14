@@ -50,6 +50,8 @@ def _ec_srcs():
     native.filegroup(
         name = "legacy_ec_srcs",
         srcs = native.glob([
+#            "board/", # THIS MIGHT BE THE PROBLEM, LOOK AT THE ERROR, IT THINKS WE DON'T HAVE  BOARD DIRECTORY
+            "libc/**",
             "Makefile.*",
             "builtin/**",
             "common/**",
@@ -64,7 +66,10 @@ def _ec_srcs():
             "util/genvif.*",
             "util/getversion.sh",
             "util/lock/**",
+            # Added this, looks like test suite
+            "cts/**",
         ]),
+        #]) + ["board"],
     )
 
 def _impl(ctx):
@@ -75,12 +80,17 @@ def _impl(ctx):
         "BOARD": ctx.attr.board,
         "BUILD_DIR": build_dir.path,
         "EC_DIR": ctx.file._legacy_ec_makefile.dirname,
+        #"CHIP": "host",
+        "CHIP": ctx.attr.chip,
+        #"CRYPTOC_DIR": ctx.files._cryptoc_root[0].path,
     }
 
     deps = (ctx.files._legacy_ec_makefile +
             ctx.files._legacy_ec_srcs +
             ctx.files.board_srcs +
-            ctx.files._coreboot_root)
+            ctx.files._coreboot_root +
+            ctx.files._cryptoc_root
+            )
 
     # Have to use shell as we need to realpath pretty much everything
     # (need to change directories for the Makefile).
@@ -89,21 +99,36 @@ def _impl(ctx):
         'mkdir "${BUILD_DIR}"',
     ]
     make_args = [
-        "BOARD=${BOARD}",
+        #"CC=clang",
+        #"BOARD=${BOARD}",
         "CCACHE=",
-        'CROSS_COMPILE_arm=$(realpath "${COREBOOT_SDK_ROOT}")/bin/arm-eabi-',
-        'CROSS_COMPILE_nds32=$(realpath "${COREBOOT_SDK_ROOT}")/bin/nds32le-elf-',
-        'CROSS_COMPILE_riscv=$(realpath "${COREBOOT_SDK_ROOT}")/bin/riscv64-elf-',
-        'CROSS_COMPILE_x86=$(realpath "${COREBOOT_SDK_ROOT}")/bin/i386-elf-',
+        #'CRYPTOC_DIR=$(realpath "${CRYPTOC_DIR}")',
+        'BUILDCC_PREFIX=',
+        'CC=/usr/bin/clang',
+        'HOSTCC=/usr/bin/clang',
+        'HOSTCXX=/usr/bin/clang',
+        'CROSS_COMPILE_host=/usr/bin/',
+        'CROSS_COMPILE_host=/usr/bin/',
+        #'CROSS_COMPILE=/usr/bin/clang',
+        #'HOST_CROSS_COMPILE=/usr/bin/clang',
+        'HOSTCC=/usr/bin/clang',
+        'BUILDCC=/usr/bin/clang',
+        # 'CROSS_COMPILE_arm=$(realpath "${COREBOOT_SDK_ROOT}")/bin/arm-eabi-',
+        # 'CROSS_COMPILE_nds32=$(realpath "${COREBOOT_SDK_ROOT}")/bin/nds32le-elf-',
+        # 'CROSS_COMPILE_riscv=$(realpath "${COREBOOT_SDK_ROOT}")/bin/riscv64-elf-',
+        # 'CROSS_COMPILE_x86=$(realpath "${COREBOOT_SDK_ROOT}")/bin/i386-elf-',
         'out=$(realpath "${BUILD_DIR}")',
         "SHELL=/bin/bash",
         "HOSTCC=/usr/bin/clang -Wno-unknown-warning-option",
         "BUILDCC=/usr/bin/clang -Wno-unknown-warning-option",
-        '$(realpath "${BUILD_DIR}")/ec.bin',
+        'host-hooks',
+        #'print-host-tests',
     ]
     commands.append("MAKE_ARGS=(%s)" % " ".join(['"%s"' % x for x in make_args]))
     commands.append('cd "${EC_DIR}" && make "${MAKE_ARGS[@]}"')
     command = ";".join(commands)
+
+    print(command)
 
     ctx.actions.run_shell(
         outputs = [build_dir],
@@ -134,7 +159,16 @@ _rule = rule(
             default = "@coreboot_sdk//:coreboot_sdk_root",
             allow_single_file = True,
         ),
+        "_cryptoc_root": attr.label(
+            default = "@cryptoc//:root",
+            allow_single_file = True,
+        ),
+        # "_cryptoc_srcs": attr.label(
+        #     default = "@cryptoc//:src",
+        #     allow_files = True,
+        # ),
         "board": attr.string(),
+        "chip": attr.string(default = "host"),
         "board_srcs": attr.label(allow_files = True),
     },
 )

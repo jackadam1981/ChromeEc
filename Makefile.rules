@@ -11,7 +11,11 @@ FLATSIZE_FILE ?= .sizes.txt
 BUILD_DIR := $(firstword $(subst /, ,$(out)))
 
 # Don't do a build test on the following boards:
-skip_boards = OWNERS cr50 host
+#skip_boards = OWNERS cr50 host
+skip_boards = OWNERS cr50
+# Here we give access to all boards.
+# We have 2 choices for the bazel: Either keep giving access or remove "host" from skip boards
+# I am more a fan of not skipping the "host" board.
 boards := $(filter-out $(skip_boards),$(notdir $(wildcard board/* private*/board/*)))
 
 # Create output directories if necessary
@@ -22,6 +26,8 @@ _sharedlib_dir_create := $(foreach d,$(dirs),$(shell \
 _dir_create := $(foreach d,$(dirs) $(dirs-y),\
 	$(shell [ -d $(out)/$(BLD)/$(d) ] || mkdir -p $(out)/RO/$(d); \
 	    mkdir -p $(out)/RW/$(d); mkdir -p $(out)/gen/$(d)))
+
+
 
 # V unset for normal output, V=1 for verbose output, V=0 for silent build
 # (warnings/errors only). Use echo thus: $(call echo,"stuff  to  echo")
@@ -68,6 +74,10 @@ cmd_libec = $(LD) -r $^ -o $@.1.o ${silent_err} && \
 	$(OBJCOPY) --localize-hidden $@.1.o $@.2.o ${silent_err} && \
 	$(AR) scr $@ $@.2.o ${silent_err}
 cmd_lds = $(CPP) -P -C -MMD -MF $@.d -MT $@ $(CPPFLAGS) $< -o $@
+#cmd_lds = clang -P -C -MMD -MF $@.d -MT $@ $(CPPFLAGS) $< -o $@
+
+
+$(warning $(cmd_lds))
 cmd_lds_b = $(cmd_lds) -DRW_B_LDS=$(EMPTY)
 # Allow obj_to_bin to be overridden by board or chip specific commands
 cmd_obj_to_bin ?= $(OBJCOPY) --gap-fill=0xff -O binary $^ $(out)/$*.bin.tmp
@@ -103,6 +113,7 @@ cmd_c_to_o = $(CC) -std=gnu11 $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $< \
 		-MT $(@D)/$(@F) -o $(@D)/$(@F)
 cmd_c_to_s = $(CC) -S $(C_WARN) $(CFLAGS) -fno-lto -MMD -MP -MF $@.d -c $< \
 		-MT $(@D)/$(@F) -o $(@D)/$(@F)
+$(warning CXX=$(CXX))
 cmd_cxx_to_o = $(CXX) -std=gnu++17 $(CFLAGS) $(CXXFLAGS) -MMD -MP -MF $@.d -c $< \
 		      -MT $(@D)/$(@F) -o $(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
@@ -147,6 +158,8 @@ cmd_proto_to_cxx = $(PROTOC) -I. --cpp_out=$(out)/gen $^
 cmd_tp_hash = $(out)/util/gen_touchpad_hash \
 		$(if $(TOUCHPAD_FW),-f $(TOUCHPAD_FW)) -o $@
 
+$(warning FOO)
+
 cmd_emmc_bootblock = $(out)/util/gen_emmc_transfer_data \
 		-i $(BOOTBLOCK) -o $@
 
@@ -183,8 +196,9 @@ cmd_pretty_print_list = $(call cmd_pretty_print_cmd,echo $(1) | tr ' ' '\n')
 
 # By default, the "build_boards" and "try_build_boards" targets will build all
 # of the boards listed in $(boards). However, the invoker can provide a
-# different list via the BOARDS variable. We assume only non-empty value would
-# be provided for the BOARDS variable.
+# different list via the BOARDS variable. We assume that a user provided BOARDS
+# variable is non-empty. Note: We do not explicitly check this because an empty
+# BOARDS variable internally signifies a host test.
 BOARDS ?= $(boards)
 
 FAILED_BOARDS_DIR = .failedboards
@@ -377,6 +391,8 @@ $(host-coverage-targets): host-coverage-%: | $(FAILED_BOARDS_DIR)
 $(run-coverage-targets): run-coverage-%: host-coverage-%
 	$(call quiet,run_coverage_test,TEST   )
 	@rm -f $(FAILED_BOARDS_DIR)/test-$*
+
+$(warning HERE)
 
 .PHONY: print-host-tests
 print-host-tests:
@@ -983,7 +999,7 @@ $(out_cros_ec_commands): include/ec_commands.h util/make_linux_ec_commands_h.sh
 include Makefile.ide
 
 # Pull in special rules/targets for third_party software
--include third_party/rules.mk
+#-include third_party/rules.mk
 
 .SECONDARY:
 

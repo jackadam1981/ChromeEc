@@ -15,6 +15,8 @@
 ARCH?=amd64
 BOARD ?= elm
 
+$(warning HERE4)
+
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
 # Private board directory
@@ -113,7 +115,10 @@ $(shell util/env_changed.sh "$(out)/env_config.h" "$(current_set)")
 endif
 
 # Baseboard directory
+
+$(warning $(BASEBOARD))
 ifneq (,$(BASEBOARD))
+$(warning should not have gotten here on run host tests)
 BASEDIR:=baseboard/$(BASEBOARD)
 CFLAGS_BASEBOARD=-DHAS_BASEBOARD=$(EMPTY) -DBASEBOARD_$(UC_BASEBOARD)=$(EMPTY)
 include $(BASEDIR)/build.mk
@@ -121,9 +126,14 @@ else
 # If BASEBOARD is not defined, then assign BASEDIR to BDIR. This avoids
 # the need to have so many conditional checks wherever BASEDIR is used
 # below.
+$(warning $(BDIR))
 BASEDIR:=$(BDIR)
 CFLAGS_BASEBOARD=
 endif
+
+$(warning $(BASEDIR))
+$(warning $(CHIP))
+
 include chip/$(CHIP)/build.mk
 
 # The toolchain must be set before referencing any toolchain-related variables

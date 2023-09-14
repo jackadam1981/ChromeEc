@@ -12,4 +12,8 @@ load(
 )
 
 legacy_ec.ec_srcs()
-all_targets()
+# all_targets()
+
+my_host_board_srcs = legacy_ec.board_srcs(board = "host", chip = "host", core = "host")
+
+legacy_ec.rule(name = "host-hooks", board_srcs=my_host_board_srcs, board = "host")

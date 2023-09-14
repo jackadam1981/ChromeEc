@@ -13,6 +13,9 @@ ifeq ($(CONFIG_LIBCRYPTOC),y)
 
 # The cryptoc path can be overridden on invocation, as in the following example:
 # $ make CRYPTOC_DIR=~/src/cryptoc BOARD=bloonchipper
+
+$(warning CRYPTOC_DIR=$(CRYPTOC_DIR))
+
 CRYPTOC_DIR ?= ../../third_party/cryptoc
 
 # SUPPORT_UNALIGNED indicates to libcryptoc that provided data buffers
