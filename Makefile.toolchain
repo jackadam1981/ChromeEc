@@ -95,8 +95,12 @@ endif
 
 AR=$(CROSS_COMPILE)ar
 CC=$(CCACHE) $(CROSS_COMPILE)$(cc-name)
+#CC?=$(CCACHE) $(CROSS_COMPILE)$(cc-name)
+$(warning CROSS_COMPILE=$(CROSS_COMPILE))
+$(warning CC=$(CC))
 CPP=$(CC) -E
 CXX=$(CROSS_COMPILE)$(cxx-name)
+$(warning CXX=$(CXX))
 LD=$(CROSS_COMPILE)ld
 NM=$(CROSS_COMPILE)nm
 OBJCOPY=$(CROSS_COMPILE)objcopy
@@ -107,6 +111,7 @@ BUILD_PKG_CONFIG?=$(PKG_CONFIG)
 BUILDCC?=$(CCACHE) $(BUILDCC_PREFIX)$(cc-name)
 HOSTCC?=$(CCACHE) $(HOST_CROSS_COMPILE)$(cc-name)
 HOSTCXX?=$(CCACHE) $(HOST_CROSS_COMPILE)clang++
+$(warning HOSTCXX=$(HOSTCXX))
 HOST_PKG_CONFIG?=$(HOST_CROSS_COMPILE)pkg-config
 PROTOC?=protoc
 GCOV=$(CROSS_COMPILE)gcov
@@ -115,6 +120,8 @@ HOSTGCOV=$(HOST_CROSS_COMPILE)gcov
 else
 HOSTGCOV=$(CURDIR)/util/llvm-gcov.sh
 endif
+
+$(warning BUILDCC=$(BUILDCC))
 
 C_WARN = -Wstrict-prototypes -Wno-pointer-sign
 C_WARN += -Werror-implicit-function-declaration
