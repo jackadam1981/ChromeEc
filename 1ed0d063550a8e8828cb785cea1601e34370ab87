@@ -46,6 +46,30 @@
       },
       "revId": "1ed0d063550a8e8828cb785cea1601e34370ab87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f606ce36_01c961b9",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-14T02:03:33Z",
+      "side": 1,
+      "message": "ok, I just checked, looks like the only CFLAGS provided to ebuild are `-O2 -pipe`\n\nI changed the statement to use `+\u003d`, the \u0027-O` value will be overwritten, the compiler is using the latest one in the command line, so the proper value will be used.",
+      "parentUuid": "83e5e7cd_e6b1dab7",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "1ed0d063550a8e8828cb785cea1601e34370ab87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
