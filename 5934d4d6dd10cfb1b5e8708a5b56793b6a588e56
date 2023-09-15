@@ -16,6 +16,24 @@
       "message": "PTAL\n\nThis is building, passing tests, and has good code coverage so I think it\u0027s ready for another look.\n\nIt\u0027s also grown a bit to support all of that, so let me know if there\u0027s any clean breaks I can make into smaller CLs that would help with reviews/landing them.",
       "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9acbc59_343e3a60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-09-15T17:31:32Z",
+      "side": 1,
+      "message": "My only thought would be to add a separate config for the recovery:  `CONFIG_POWER_SLEEP_FAILURE_RECOVERY` and disable it by default by adding `#undef CONFIG_POWER_SLEEP_FAILURE_RECOVERY` to include/configs.h  This would eliminate the need of touching coachz, burnet, corori, etc. Also this approach would keep sleep hang detection (without recovery) on the above boards, which I think is a benefit.\nYou\u0027ll just need to enable it in guybrush/baseboard.h to keep the behaviour on guybrush consistent.\nAnd then a follow-up CL to enable `CONFIG_POWER_SLEEP_FAILURE_RECOVERY`.",
+      "parentUuid": "4334315a_beb627b5",
+      "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
