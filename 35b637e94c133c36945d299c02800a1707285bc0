@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318a635e_97882c39",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-15T16:37:17Z",
+      "side": 1,
+      "message": "Does this work?\n```\nchoice LIBC_IMPLEMENTATION\n    default MINIMAL_LIBC\nendchoice\n```\n\nI prefer this approach so that we\u0027re explicit about the LIBC we are using.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "35b637e94c133c36945d299c02800a1707285bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
