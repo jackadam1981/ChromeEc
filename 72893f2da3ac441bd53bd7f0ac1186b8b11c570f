@@ -33,6 +33,24 @@
       "message": "```suggestion\n#ifndef TEST_BUILD\n```\nCould I use TEST_BUILD to disable the ztest to test it?",
       "revId": "72893f2da3ac441bd53bd7f0ac1186b8b11c570f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a84e2d_292f2d3d",
+        "filename": "zephyr/program/nissa/joxer/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-15T00:51:09Z",
+      "side": 1,
+      "message": "This should be tested. You can add a `cros,tach-mock` device to `joxer.dts` for the test and enable the required config options in `testcase.yaml`.",
+      "parentUuid": "4e02cc94_1af9a940",
+      "revId": "72893f2da3ac441bd53bd7f0ac1186b8b11c570f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
