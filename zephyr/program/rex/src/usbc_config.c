@@ -45,12 +45,16 @@ static void usbc_interrupt_init(void)
 		board_reset_pd_mcu();
 	}
 
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER
 	/* Enable BC 1.2 interrupts */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_bc12));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_bc12));
+#endif
 
+#if DT_NODE_EXISTS(DT_NODELABEL(ioex_usb_c0_sbu_fault_odl))
 	/* Enable SBU fault interrupts */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_sbu_fault));
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_POST_I2C);
 
@@ -74,6 +78,7 @@ void sbu_fault_interrupt(enum gpio_signal signal)
 
 void reset_nct38xx_port(int port)
 {
+#if DT_NODE_EXISTS(DT_NODELABEL(nct3807_C0))
 	const struct gpio_dt_spec *reset_gpio_l;
 	const struct device *ioex_port0, *ioex_port1;
 
@@ -104,8 +109,10 @@ void reset_nct38xx_port(int port)
 	/* Re-enable the IO expander pins */
 	gpio_reset_port(ioex_port0);
 	gpio_reset_port(ioex_port1);
+#endif
 }
 
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER
 void bc12_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
@@ -119,6 +126,7 @@ void bc12_interrupt(enum gpio_signal signal)
 		break;
 	}
 }
+#endif
 
 static void board_disable_charger_ports(void)
 {
@@ -132,11 +140,12 @@ static void board_disable_charger_ports(void)
 		 * If this port had booted in dead battery mode, go
 		 * ahead and reset it so EN_SNK responds properly.
 		 */
+#if DT_NODE_EXISTS(DT_NODELABEL(nct3807_C0))
 		if (nct38xx_get_boot_type(i) == NCT38XX_BOOT_DEAD_BATTERY) {
 			reset_nct38xx_port(i);
 			pd_set_error_recovery(i);
 		}
-
+#endif
 		/*
 		 * Do not return early if one fails otherwise we can
 		 * get into a boot loop assertion failure.
@@ -168,6 +177,7 @@ int board_set_active_charge_port(int port)
 	 * sufficient battery to do so, which will bring EN_SNK back under
 	 * normal control.
 	 */
+#if DT_NODE_EXISTS(DT_NODELABEL(nct3807_C0))
 	if (port == USBC_PORT_C0 &&
 	    nct38xx_get_boot_type(port) == NCT38XX_BOOT_DEAD_BATTERY) {
 		/* Handle dead battery boot case */
@@ -182,6 +192,7 @@ int board_set_active_charge_port(int port)
 			pd_set_error_recovery(port);
 		}
 	}
+#endif
 
 	/* Check if the port is sourcing VBUS. */
 	if (ppc_is_sourcing_vbus(port)) {
