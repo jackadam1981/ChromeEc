@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab53e242_59a8f03a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2526,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T22:35:14Z",
+      "side": 1,
+      "message": "Thanks for the check, put the mux swap code in the second branch (ditto for Attached.SRC) so it\u0027s not set during a data role swap, and added a todo (b/300694918) for the redundant mux setting.",
+      "parentUuid": "f1023c0a_9cb7c8c5",
+      "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667397ac_2b0e0bf2",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38dd70d7_17fa939a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3027,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T22:35:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "667397ac_2b0e0bf2",
+      "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76bea11f_18652f97",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-09-15T21:32:19Z",
       "side": 1,
       "message": "IIUC, this is the scenario where we failed to turn on VBUS. In this case, it is probably appropriate to disable USB, although I\u0027m curious why we don\u0027t take more drastic action. Same with the no-PE scenario below.",
+      "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a8f6c1_722a2ca3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T22:35:14Z",
+      "side": 1,
+      "message": "Good catch, reverted the changes, but left a TODO for taking more drastic action: b/300691956",
+      "parentUuid": "76bea11f_18652f97",
       "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
