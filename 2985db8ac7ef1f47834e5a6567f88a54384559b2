@@ -22,6 +22,29 @@
       },
       "revId": "2985db8ac7ef1f47834e5a6567f88a54384559b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a450e68_0d3fcba9",
+        "filename": "zephyr/program/rex/rex/src/usba_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-15T01:32:44Z",
+      "side": 1,
+      "message": "this 3s and the following 10s delay seem very arbitrary to me.\ncan we trigger on one of the AP power state/rail transitions?",
+      "range": {
+        "startLine": 103,
+        "startChar": 54,
+        "endLine": 103,
+        "endChar": 58
+      },
+      "revId": "2985db8ac7ef1f47834e5a6567f88a54384559b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
