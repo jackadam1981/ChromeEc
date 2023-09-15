@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d295f2_7afb29b4",
+        "filename": "zephyr/test/nissa/src/joxer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-15T07:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ead543_63cca1ae",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 37
+      },
+      "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca53dba3_2e275602",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d6f232_02f11567",
+        "filename": "zephyr/test/nissa/src/joxer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-15T07:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca53dba3_2e275602",
+      "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "388a1a8b_776346ac",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-09-15T07:14:58Z",
       "side": 1,
       "message": "As above, I don\u0027t think this needs `fan_config_new`.",
+      "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3dddb2_aa816fde",
+        "filename": "zephyr/test/nissa/src/joxer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-09-15T07:29:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "388a1a8b_776346ac",
       "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
