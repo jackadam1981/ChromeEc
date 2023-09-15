@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1023c0a_9cb7c8c5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2526,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-15T21:32:19Z",
+      "side": 1,
+      "message": "This should be in the non-PRS branch above. In general, we shouldn\u0027t enable or disable USB after a PRS.\n\nAs written, this makes the mux set in `tc_set_data_role` from line 2476 redundant. In the short term, a TODO to refactor it is fine. Eventually, there should only be one mux set here.",
+      "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "667397ac_2b0e0bf2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3027,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-15T21:32:19Z",
+      "side": 1,
+      "message": "The actual mux set in Attached.SRC should mirror the structure of Attached.SNK, which I think would eventually put it around here.",
+      "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bea11f_18652f97",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-15T21:32:19Z",
+      "side": 1,
+      "message": "IIUC, this is the scenario where we failed to turn on VBUS. In this case, it is probably appropriate to disable USB, although I\u0027m curious why we don\u0027t take more drastic action. Same with the no-PE scenario below.",
+      "revId": "de90ad7e6f8d188a102283d2a72472b45ca15137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
