@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e364d160_b7359a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-15T18:27:05Z",
+      "side": 1,
+      "message": "Can you also update the boot_key_list[] updates done in the [Delbin keyboard customization](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/board/delbin/keyboard_customization.c;l\u003d141) to use the new enum indexes?",
+      "revId": "ad7d5add74a72069776aa76e31e56570a6e8b0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
