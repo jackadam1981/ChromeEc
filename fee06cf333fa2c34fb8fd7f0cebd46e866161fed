@@ -69,6 +69,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b206f07_ba3c3e9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T01:54:56Z",
+      "side": 1,
+      "message": "mux_set must be guarded by `IS_ENABLED(CONFIG_USBC_SS_MUX)`",
+      "parentUuid": "183da11a_bb0d545d",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133d9b68_df464eb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T01:54:56Z",
+      "side": 1,
+      "message": "Some information: `get_mux_mode_to_set` is only called within `set_usb_mux_with_current_data_role`, and it seems like both functions came about to help share common code between TCPMv1 \u0026 TCPMv2: https://crrev.com/c/1990425\n\nA concern: `mux_set` and `set_usb_mux_with_current_data_role` do the same thing but in slightly different ways: for `mux_set` the caller determines the next state of the mux, but in `set_usb_mux_with_current_data_role`, the next state is inferred by the function internally. We can\u0027t do a simple replacement of one for the other.",
+      "parentUuid": "7f0e20fc_79c2e427",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ff660ff_c926021f",
@@ -82,6 +118,24 @@
       "writtenOn": "2023-09-13T22:36:30Z",
       "side": 1,
       "message": "This is also a requirement for Attached.SRC.",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76400ad5_c8e29334",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T01:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff660ff_c926021f",
       "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d85aa90c_d4c09906",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T01:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c7db64_229fdc38",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a8b7a70_e63bd822",
@@ -116,6 +188,24 @@
       "writtenOn": "2023-09-13T22:36:30Z",
       "side": 1,
       "message": "Is there some existing call to `usb_mux_set`, using `get_mux_mode_to_set` incorrectly, which is happening at the wrong time and should be removed?",
+      "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d62d763_a26ee147",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2520,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-09-15T01:54:56Z",
+      "side": 1,
+      "message": "There are other calls to `get_mux_mode_to_set` - through `set_usb_mux_with_current_data_role` - which clobber the desired mux connection.\n\nThe two functions that I see that are being called that does this are \n1. `tc_set_data_role` and \n2. `handle_new_power_state`.\nBut there are a total of 12 functions throughout that can call it.\n\nEither `set_usb_mux_with_current_data_role` must be replaced with a raw `mux_set` in these functions, or, probably more preferably, the `get_mux_mode_to_set` function must return a connected mux state regardless of where it\u0027s being called from.",
+      "parentUuid": "7a8b7a70_e63bd822",
       "revId": "fee06cf333fa2c34fb8fd7f0cebd46e866161fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
