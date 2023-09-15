@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36ead543_63cca1ae",
+        "filename": "zephyr/test/nissa/src/joxer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-15T07:14:58Z",
+      "side": 1,
+      "message": "No need to have `fan_config_new` at all, unless this doesn\u0027t work the way I think.\n\n```suggestion\n\tzassert_equal_ptr(fan_config[0].tach, DEVICE_DT_GET(DT_NODELABEL(tach1)),\n\t\t\t  \"fan_config should not change\");\n```",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 37
+      },
+      "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca53dba3_2e275602",
+        "filename": "zephyr/test/nissa/src/joxer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-15T07:14:58Z",
+      "side": 1,
+      "message": "Message is wrong; it should change to tach0.",
+      "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388a1a8b_776346ac",
+        "filename": "zephyr/test/nissa/src/joxer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-15T07:14:58Z",
+      "side": 1,
+      "message": "As above, I don\u0027t think this needs `fan_config_new`.",
+      "revId": "783791045b7c9f43d5a079cdf1fcf80f69564232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
