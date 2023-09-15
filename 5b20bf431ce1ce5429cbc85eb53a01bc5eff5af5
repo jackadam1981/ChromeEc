@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e250a2e_6e6e374b",
+        "filename": "zephyr/program/roach/src/one_wire.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-15T18:53:01Z",
+      "side": 1,
+      "message": "ec_ec_comm_init will be executed before main, is this what you expect?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "5b20bf431ce1ce5429cbc85eb53a01bc5eff5af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
