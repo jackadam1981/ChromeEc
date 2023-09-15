@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca2e56f_76a3b47a",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-09-15T20:21:01Z",
+      "side": 1,
+      "message": "nit: Would be nice to link back to the bug (via https://issuetracker.google.com/227509479 URL), I think it has useful context.  (And revision history gets buried as things are moved, refactored, reformatted, etc.)",
+      "revId": "21f32b826660deb6f982227df0538746e0e4be4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
