@@ -35,6 +35,10 @@
 #   name: "infra/python/wheels/lxml/${vpython_platform}"
 #   version: "version:4.6.3"
 # >
+# wheel: <
+#   name: "infra/python/wheels/west-py3"
+#   version: "version:0.14.0"
+# >
 # [VPYTHON:END]
 
 import argparse
