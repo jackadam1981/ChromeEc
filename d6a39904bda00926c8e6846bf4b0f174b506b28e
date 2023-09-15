@@ -16,6 +16,23 @@
       "message": "Hi Bernardo:  \nCan you help to check the issue and the Cl?   Thank you very much.",
       "revId": "d6a39904bda00926c8e6846bf4b0f174b506b28e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e66080_4f789d75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-09-15T23:35:46Z",
+      "side": 1,
+      "message": "Good finding!! Could you please add b:297188149? Since this also fixes that issue.",
+      "revId": "d6a39904bda00926c8e6846bf4b0f174b506b28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
