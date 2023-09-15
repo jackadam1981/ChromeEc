@@ -52,12 +52,15 @@ static void fips_print_mode(void)
 				      "not-approved");
 }
 
+static timestamp_t drbg_test_time;
+
 /* Print time it took tests to run or print error message. */
 static void fips_print_test_time(void)
 {
 	if (fips_last_kat_test_duration != -1ULL)
 		CPRINTS("FIPS power-up tests completed in %llu",
 			fips_last_kat_test_duration);
+	CPRINTS("drbg init time %llu\n", drbg_test_time.val);
 }
 
 static void fips_print_status(void)
@@ -67,8 +70,10 @@ static void fips_print_status(void)
 
 	fips_print_test_time();
 	/* Make sure system DRBG is initialized */
+	drbg_test_time = get_time();
 	if (!fips_rand_bytes(NULL, 0))
 		CPRINTS("FIPS DRBG failed");
+	drbg_test_time.val = get_time().val - drbg_test_time.val;
 	fips_print_mode();
 }
 DECLARE_HOOK(HOOK_INIT, fips_print_status, HOOK_PRIO_INIT_PRINT_FIPS_STATUS);
