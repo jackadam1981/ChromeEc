@@ -188,6 +188,30 @@
       },
       "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a953580e_83d75cb3",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-16T00:31:13Z",
+      "side": 1,
+      "message": "okay I tried it, !PLATFORM_EC_USB_PD_TCPMV2 simply ignores building the PLATFORM_EC_USB_PD_INTEL_ALTMODE dependent code. \nIs it the desired expectation ?",
+      "parentUuid": "f8b04830_92bd9c15",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 63
+      },
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
