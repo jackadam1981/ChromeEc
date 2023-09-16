@@ -164,6 +164,30 @@
       },
       "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b04830_92bd9c15",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-09-16T00:26:46Z",
+      "side": 1,
+      "message": "Maybe we should implement Keith\u0027s suggestion instead of throwing an error.",
+      "parentUuid": "045b2603_11dde956",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 63
+      },
+      "revId": "6b3e5c8c44fbd29b401c9895585c304d1f20117f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
