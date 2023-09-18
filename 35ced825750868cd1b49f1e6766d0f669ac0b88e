@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034f055f_9cb2d0bb",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2023-09-18T21:49:01Z",
+      "side": 1,
+      "message": "This is a known \"hack\" to avoid spurious ST# state transitions once connected. It was noted when SRCDTS state was used, there were uncontrollable debounce.\n\nProper implementation should switch back to SRCDTS (to allow Servo DFP USB2 muxes in right mode on connect after debounce) and resolve this issue.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 3,
+        "endLine": 1283,
+        "endChar": 46
+      },
+      "revId": "35ced825750868cd1b49f1e6766d0f669ac0b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
