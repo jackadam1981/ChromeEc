@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea082dc8_60060cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-18T06:12:28Z",
+      "side": 1,
+      "message": "This change has dependency on this commit: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4844188, if it\u0027s included in build, it should not throw that error. Could you check if this(vboot_reference) commit is included in build. Thank you",
+      "revId": "b082d2598a8da1cdfb36e4981659d651089daf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
