@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51751d2e_4276f650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-18T20:18:46Z",
+      "side": 1,
+      "message": "may be we can move config from this file too\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/drivers/usbc/Kconfig#5\n\nto\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/drivers/Kconfig#11",
+      "revId": "a7774bfd8d6a30e0b91cad0dc233b79a20f2a06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
