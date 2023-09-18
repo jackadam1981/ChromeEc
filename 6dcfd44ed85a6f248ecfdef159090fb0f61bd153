@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b38cae9_5f16ef12",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-18T17:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea75cf70_70f9c710",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "6dcfd44ed85a6f248ecfdef159090fb0f61bd153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18015ba7_53ac197f",
@@ -100,6 +124,24 @@
       "writtenOn": "2023-08-30T23:47:54Z",
       "side": 1,
       "message": "rename this file to usbc_pd.dts",
+      "revId": "6dcfd44ed85a6f248ecfdef159090fb0f61bd153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effdc0bc_c6df2562",
+        "filename": "zephyr/program/intelrvp/mtlrvp/pd.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-18T17:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b3bb5a_18f12a4d",
       "revId": "6dcfd44ed85a6f248ecfdef159090fb0f61bd153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
