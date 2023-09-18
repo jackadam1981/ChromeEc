@@ -52,6 +52,24 @@
       "parentUuid": "c9acbc59_343e3a60",
       "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f0ee89_475117ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-09-18T23:54:35Z",
+      "side": 1,
+      "message": "Typically new features in EC are added in the \"disabled\" state and then slowly enabled on selected platforms. I agree this time we may choose to apply-all.\n \n\u003e these boards aren\u0027t actually changing behavior from a user\u0027s perspective, because they are on FW branches and will not pick up these CLs\n\nbrya/dedede/nissa boards are in sync with ToT. This was the main reason for suggesting another config, which allows for the incremental change.\n\nFor all the \"old\" boards this feature will not be pushed to their firmware branches, but it will still occupy memory and might cause \"not enough flash memory\" pain for developers. \n\nI\u0027m just suggesting, no strong opinion here. Feel free to close this comment thread and push the CL.",
+      "parentUuid": "d01a88c9_5da71e7e",
+      "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
