@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610d4d73_46d41b0d",
+        "filename": "zephyr/program/rex/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-09-18T09:18:24Z",
+      "side": 1,
+      "message": "Make this one `default y` and drop the override in `rex/program.conf`, makes more sense since the devices it covers are in the default config.",
+      "revId": "9213ef4728dd6fb3de1796874c156c8f22d5413e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
