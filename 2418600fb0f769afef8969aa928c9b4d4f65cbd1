@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8721b71_70ec0aa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-18T19:10:27Z",
+      "side": 1,
+      "message": "As mentioned OOB, I think the appropriate test fix is probably to delete this testcase and add one to the Zephyr tests that checks the intended mux state instead of the number of mux sets (assuming that test doesn\u0027t already exist). As an initial step to precede a refactor, this is fine.",
+      "revId": "2418600fb0f769afef8969aa928c9b4d4f65cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
