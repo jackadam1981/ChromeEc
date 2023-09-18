@@ -33,6 +33,29 @@
       "message": "Good finding!! Could you please add b:297188149? Since this also fixes that issue.",
       "revId": "d6a39904bda00926c8e6846bf4b0f174b506b28e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab6e424_fe658976",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-18T05:56:45Z",
+      "side": 1,
+      "message": "For consistency with the old intel_x86 power code, call this after the opportunity to turn off wireless power. There\u0027s currently no difference, but it would be easy to introduce a bug later.\n\n```suggestion\n\t\t/*\n\t\t * If support controlling power of wifi/WWAN/BT devices\n\t\t * add handling here.\n\t\t */\n\n \t\tap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);\n\n```",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 5
+      },
+      "revId": "d6a39904bda00926c8e6846bf4b0f174b506b28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
