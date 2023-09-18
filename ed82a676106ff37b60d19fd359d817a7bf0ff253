@@ -22,6 +22,30 @@
       },
       "revId": "ed82a676106ff37b60d19fd359d817a7bf0ff253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9980729_07d2fd15",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-18T23:26:16Z",
+      "side": 1,
+      "message": "Done.\n\nNice catch, looks like we are not using this code hence dint get error.\nAlso I had deleted the params in wrong structure.",
+      "parentUuid": "1e6d6d83_693f67e6",
+      "range": {
+        "startLine": 44,
+        "startChar": 45,
+        "endLine": 44,
+        "endChar": 54
+      },
+      "revId": "ed82a676106ff37b60d19fd359d817a7bf0ff253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
