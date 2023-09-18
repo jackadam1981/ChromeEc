@@ -18,7 +18,9 @@ if PLATFORM_EC_BATTERY
 
 config PLATFORM_EC_BATTERY_CONFIG_IN_CBI
 	bool "Support battery-config-in-CBI"
-	depends on CBI_EEPROM
+	default y
+	depends on PLATFORM_EC_CBI_EEPROM || PLATFORM_EC_CBI_FLASH
+	depends on PLATFORM_EC_BATTERY && PLATFORM_EC_BATTERY_FUEL_GAUGE
 	help
 	  If this is enabled, a board reads battery config from CBI and updates
 	  each param in the default battery info using discovered data.
