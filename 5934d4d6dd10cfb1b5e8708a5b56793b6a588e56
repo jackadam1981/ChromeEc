@@ -34,6 +34,24 @@
       "parentUuid": "4334315a_beb627b5",
       "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01a88c9_5da71e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-18T22:00:08Z",
+      "side": 1,
+      "message": "\u003e My only thought would be to add a separate config for the recovery: `CONFIG_POWER_SLEEP_FAILURE_RECOVERY`\n\nI want to push back on this for a couple reasons.\n\n\u003e This would eliminate the need of touching coachz, burnet, corori, etc.\n\nTrue, but instead we would need to touch every other board besides those to enable the new `CONFIG_POWER_SLEEP_FAILURE_RECOVERY`, which would be a much larger change because it would touch every board file in the code base. This is a smaller change in comparison.\n\nFurther, these boards aren\u0027t actually changing behavior from a user\u0027s perspective, because they are on FW branches and will not pick up these CLs. Only ToT local builds will see the behavior change (CQ still sees the pinned FW branch build).\n\nI also prefer not to have 3 tiers of detection and recovery:\n\n1. Do nothing\n2. Detect and send host command\n3. Detect and recovery (reset AP)\n\nIt is intentional that all boards have detection+recovery enabled for a couple reasons:\n\n1. It\u0027s difficult to debug sleep issues, since we don\u0027t have any hints where the AP is stuck (the follow-on `sysrq` CL should help there).\n2. The user experience is bad, because the device is hung until they manually reset the device (e.g., long power button press).\n\nIn practice, adding another config option just means all boards would need to enable 2 options instead of just 1, because no boards should ever enable only one going forward. This doesn\u0027t help maintainability for developers, and instead (arguably) hurts it by having multiple levels of `#ifdef`s to be aware of when making changes here in the future.",
+      "parentUuid": "c9acbc59_343e3a60",
+      "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
