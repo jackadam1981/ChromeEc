@@ -21,6 +21,8 @@ config TEST_DISABLE_PLATFORM_EC_USBC
 	  Use this config to allow tests for code that doesn't actually rely on
 	  USBC.
 
+if PLATFORM_EC_USBC
+
 rsource "Kconfig.retimer"
 rsource "Kconfig.pd_int_shared"
 rsource "Kconfig.pd_meas_vbus"
@@ -36,8 +38,6 @@ rsource "Kconfig.usb_mux"
 rsource "Kconfig.usbc_ss_mux"
 rsource "Kconfig.tcpm"
 rsource "Kconfig.usb_charger"
-
-if PLATFORM_EC_USBC
 
 config PLATFORM_EC_TCPC_INTERRUPT
 	bool "Enables tcpc driver"

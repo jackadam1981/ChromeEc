@@ -2,8 +2,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-if PLATFORM_EC_USBC
-
 config PLATFORM_EC_USBC_RETIMER_INTEL_BB
 	bool "Support Intel Burnside Bridge retimer"
 	default y
@@ -152,8 +150,6 @@ config PLATFORM_EC_USBC_RETIMER_KB8010
 	    - USB4/Thunderbolt: two bi-directional lanes
 	    - Multifunction Display (MFD): two unidirectional lanes of DP and
 	      one bidirectional lane of USB3.1 Gen1/2
-
-endif # PLATFORM_EC_USBC
 
 config PLATFORM_EC_USBC_RETIMER_ANX7483
 	bool "Support Analogix ANX7483 10G Active Retimer"
