@@ -316,6 +316,27 @@ def get_updater_path() -> Tuple[str, str, str]:
 
     return updater_path, firmware_path, configs_path
 
+def _compare_versions(a, b: str) -> bool:
+    """Takes two device strings ($name_v$version-$hash) and compares them.
+
+    Returns True if a is a newer version than b
+    """
+    a_ver = a.split("_")
+    b_ver = b.split("_")
+    # TODO: should we report an error if the device name
+    # differs? silently ignore?
+    assert(a_ver[0:-1] == b_ver[0:-1])
+    # TODO: there are various packages to handle semver
+    # comparisons, but I'm not sure if we should bring in a
+    # dependency for a 10 line test.
+    a_ver = a_ver[-1].split(".")
+    b_ver = b_ver[-1].split(".")
+    for a_comp, b_comp in zip(a_ver, b_ver):
+        a_comp = a_comp.strip("v").split("-")[0]
+        b_comp = b_comp.strip("v").split("-")[0]
+        if int(a_comp) > int(b_comp):
+            return True
+    return False
 
 def get_files_and_version(cname, fname=None, channel=DEFAULT_CHANNEL):
     """Select config and firmware binary files.
@@ -402,8 +423,12 @@ def update(dev, serialno, args, devmap):
             if args.reboot:
                 select(tinys, "ro")
             return
-        else:
-            print("Updating to recommended version.")
+        elif not args.allow_rollback and _compare_versions(vers, newvers):
+            print("Installed version is newer than candidate, skipping.")
+            if args.reboot:
+                select(tinys, "ro")
+            return
+        print("Updating to recommended version.")
 
     # Make sure the servo MCU is in RO
     print("===== Jumping to RO =====")
@@ -503,6 +528,23 @@ def main():
         action="store_true",
         help="Update even if version match",
         default=False,
+    )
+    # TODO: Once we can expect py3.8, replace with one
+    # action=argparse.BooleanOptionalAction
+    # TODO: Once fleet is ready, switch default to --no-allow-rollback (False)
+    parser.add_argument(
+        "--allow-rollback",
+        dest="allow_rollback",
+        action="store_true",
+        default=True,
+        help="Allow firmware downgrades",
+    )
+    parser.add_argument(
+        "--no-allow-rollback",
+        dest="allow_rollback",
+        action="store_false",
+        default=True,
+        help="Don't allow firmware downgrades",
     )
     parser.add_argument(
         "-a",
