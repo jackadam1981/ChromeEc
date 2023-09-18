@@ -163,6 +163,30 @@
       },
       "revId": "d6f0e8e4aea6551501980aab568f521f3a868295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2896111_7b8d0332",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/pd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-18T18:15:50Z",
+      "side": 1,
+      "message": "removed the code.",
+      "parentUuid": "eb566cfb_1bbc4fa5",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "d6f0e8e4aea6551501980aab568f521f3a868295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
