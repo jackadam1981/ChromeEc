@@ -46,6 +46,30 @@
       },
       "revId": "d5ecbb14571d3919637eaf70d716351b88513945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f206044e_74683931",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-18T17:04:08Z",
+      "side": 1,
+      "message": "\u003e What do you think about indexing this array by the enum boot_key instead?\n\nActually, it doesn\u0027t resolve the case I\u0027m trying to address. If there is an entry (e.g. Refresh) in boot_key_list excluded for a certain board, the for loop at line 679 processes it as KSO0+KSI0, which would produce a wrong result if the key at (0, 0) was pressed. So, I still propose PS6 as a solution.",
+      "parentUuid": "f26857db_be6f90d2",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "d5ecbb14571d3919637eaf70d716351b88513945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
