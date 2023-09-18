@@ -16,6 +16,24 @@
       "message": "You should be able to add 1.1.0 here now https://chromium-review.googlesource.com/c/infra/infra/+/4865563",
       "revId": "13190bdf83c3cd1510f30e682fde3b760379a550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c82aaa4_08b3838c",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-09-18T15:12:10Z",
+      "side": 1,
+      "message": "Will update and re-test with CQ",
+      "parentUuid": "8587f2ca_a2f4ea59",
+      "revId": "13190bdf83c3cd1510f30e682fde3b760379a550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
