@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476c40ff_05ac229a",
+        "filename": "zephyr/include/usbc/pd_task_intel_altmode.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-18T18:10:29Z",
+      "side": 1,
+      "message": "Because both of these are Kconfig symbols, you should use Kconfig to ensure the symbols are mutually exclusive.\n\nLet me upload a change that get\u0027s this setup.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "1bdba8ecd37a0185b7fb6884a0e1c7ff2760312b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d33df27_9e32712d",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-18T18:10:29Z",
+      "side": 1,
+      "message": "The `DEVICE_DEFINE` isn\u0027t needed.  You can just pass `\u0026intel_altmode_task_data` as the first thread parameter directly. You could also pass in NULL for all three thread parameters and have the `intel_altmode_thread()` body reference `intel_altmode_task_data` directly. \n\nYou can move the body of `intel_altmode_driver_init()` into the `intel_altmode_thread()` before the while(1).",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 0
+      },
+      "revId": "1bdba8ecd37a0185b7fb6884a0e1c7ff2760312b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
