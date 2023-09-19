@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dc8618_aa043222",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-19T03:08:07Z",
+      "side": 1,
+      "message": "Maybe add a note - the reason AP_IDLE is not set by default is that apshutdown does a forced shutdown, so the power sequencing code detects it as a power failure, so pb_chipset_shutdown() does not set AP_IDLE.",
+      "revId": "4514fea69bc9f945772054ce5d00a98914e7d6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
