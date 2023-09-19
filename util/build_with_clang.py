@@ -134,8 +134,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "copano",
     "coral",
     "corori",
-    "corori2",
-    "cret",
     "crota",
     "dalboz",
     "delbin",
@@ -194,7 +192,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "moonbuggy",
     "morphius",
     "mrbland",
-    "mushu",
     "nami",
     "nautilus",
     "nightfury",
@@ -306,6 +303,9 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "chocodile_vpdmcu",  # compilation error: b/254710459
     # Boards that use CHIP:=npcx
     "garg",
+    "corori2",
+    "cret",
+    "mushu",
     "volteer",
 ]
 
