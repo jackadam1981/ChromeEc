@@ -16,6 +16,24 @@
       "message": "nit: Can you copy the comment from the CL description here (so that we will remember what was verified and what\u0027s not)?",
       "revId": "43f278750518dce56466171cd39b517ba1deaa86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7121dcaa_c480ae7a",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-19T01:49:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7342f127_4c79354c",
+      "revId": "43f278750518dce56466171cd39b517ba1deaa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
