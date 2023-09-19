@@ -15,5 +15,6 @@ register_raw_project(
         "interrupts.dts",
         "pwm.dts",
         "shi.dts",
+        "uart.dts",
     ],
 )

@@ -1,0 +1,17 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+&uart2 {
+	status = "okay";
+	current-speed = <115200>;
+	clock-frequency = <1804800>;
+};
+&ite_uart2_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart2_rx_gph5_default
+		     &uart2_tx_gph6_default>;
+	pinctrl-names = "default";
+	gpios = <&gpioh 5 0>;
+};
