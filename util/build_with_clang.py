@@ -299,6 +299,10 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "chocodile_vpdmcu",  # compilation error: b/254710459
     # Boards that use CHIP:=npcx
     "garg",
+    # Boards that don't fit in flash with clang
+    "corori2",
+    "cret",
+    "mushu",
     "volteer",
     # Not enough flash space with CONFIG_POWER_SLEEP_FAILURE_DETECTION enabled
     "burnet",
