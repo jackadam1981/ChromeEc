@@ -34,6 +34,24 @@
       "parentUuid": "cbe57352_04632625",
       "revId": "347735cf0e60a280424834435546add7988a1386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b11cf74_a926fb5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535267
+      },
+      "writtenOn": "2023-09-19T06:11:26Z",
+      "side": 1,
+      "message": "I re-run ./util/gen_bazel_targets.py and error changed:\n```\nTraceback (most recent call last):\n  File \"./util/gen_bazel_targets.py\", line 156, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"./util/gen_bazel_targets.py\", line 152, in main\n    opts.output_file.write_text(gen_bazel())\n  File \"./util/gen_bazel_targets.py\", line 136, in gen_bazel\n    unformatted_code \u003d \"\".join(f\"{x}\\n\" for x in _gen_bazel_lines())\n  File \"./util/gen_bazel_targets.py\", line 136, in \u003cgenexpr\u003e\n    unformatted_code \u003d \"\".join(f\"{x}\\n\" for x in _gen_bazel_lines())\n  File \"./util/gen_bazel_targets.py\", line 126, in _gen_bazel_lines\n    for name, args in sorted(_find_all_projects().items()):\n  File \"./util/gen_bazel_targets.py\", line 98, in _find_all_projects\n    zephyr_projects \u003d dict(_find_zephyr_ec_projects())\n  File \"./util/gen_bazel_targets.py\", line 44, in _find_zephyr_ec_projects\n    projects_path \u003d zmake.modules.default_projects_dirs(modules)\nAttributeError: module \u0027zmake.modules\u0027 has no attribute \u0027default_projects_dirs\u0027\n```\n\nbut dochi is not zephyr ec, can you re-CQ+2 to try if it can pass.",
+      "parentUuid": "9db13f7e_039a5cd5",
+      "revId": "347735cf0e60a280424834435546add7988a1386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
