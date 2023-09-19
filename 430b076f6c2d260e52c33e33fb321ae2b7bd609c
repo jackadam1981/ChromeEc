@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d492c2a2_b203fb45",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-09-19T14:19:00Z",
+      "side": 1,
+      "message": "Since there two places in this file where call `gpio_enable_interrupt(GPIO_FPS_INT)` we should probably abstract this into a `enable_fps_interrupt()` function that calls both `gpio_clear_pending_interrupt` and `gpio_enable_interrupt`. Alternatively, maybe it would be better to create a generic `gpio_clear_pending_and_enable_interrupt(enum gpio_signal signal)` function?",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 47
+      },
+      "revId": "430b076f6c2d260e52c33e33fb321ae2b7bd609c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
