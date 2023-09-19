@@ -89,6 +89,10 @@ static void thermal_control(void)
 		msleep(first_read_delay);
 		first_read_delay = 0;
 	}
+	/* some thermal sensors need delay on every boot */
+#elif defined(CONFIG_TEMP_SENSOR_POWER) && \
+	defined(CONFIG_TEMP_SENSOR_EACH_READ_DELAY_MS)
+	msleep(CONFIG_TEMP_SENSOR_EACH_READ_DELAY_MS);
 #endif
 
 	/* Get ready to count things */
