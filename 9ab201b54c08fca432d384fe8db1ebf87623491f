@@ -16,6 +16,24 @@
       "message": "just drop it and set the ZTEST_SUITE pointer to NULL if you don\u0027t need this",
       "revId": "9ab201b54c08fca432d384fe8db1ebf87623491f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2e79f0_55b7fd50",
+        "filename": "zephyr/test/rex/tests/karis/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-19T01:40:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ab472c_efc8796d",
+      "revId": "9ab201b54c08fca432d384fe8db1ebf87623491f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
