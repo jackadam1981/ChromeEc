@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5222d1aa_dadd4243",
+        "filename": "common/chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-19T18:10:38Z",
+      "side": 1,
+      "message": "If pb_chipset_shutdown checks \u0027chipset_get_shutdown_reason() \u003d\u003d CHIPSET_SHUTDOWN_CONSOLE_CMD\u0027, will we get the same result? This way, we\u0027ll also be able to cover \u0027hibernate\u0027 console command.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "56dc9dee30800f68b8d145d08b2f64fb1396c020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
