@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "057fb715_172bdf06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-09-19T16:17:48Z",
+      "side": 1,
+      "message": "\u003e I still believe the sensor [stack] is not the root cause of the issue: another task is taking all the time, so while we are processing the bottom half, we get interrupted long enough for another sensor event to be available, leading to a watchdog timer in the sensor task.\n\nWe don\u0027t see a watchdog though, right? We just see the sensor task stop running its main loop but the sensor task itself _doesn\u0027t_ watchdog. That implies that something in the sensor task is infinite looping but there\u0027s a sleep in the loop to prevent the watchdog. The best guess was that the sleep was the sleep in the BMI register access functions and that the loop was here, but agreed that we don\u0027t have any definite proof.\n\nI don\u0027t think another task is sucking up all the time, though. Then that other task would watchdog, right? ...and also we are seeing the EC respond / work in general. It\u0027s just the sensor task not running.",
+      "parentUuid": "06d79a3d_af92c2e6",
+      "revId": "b242342b784a7e2a365c28cd502093fb2f9d19ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d03c8f22_c2d8e652",
@@ -65,6 +83,24 @@
       "writtenOn": "2023-09-19T15:43:26Z",
       "side": 1,
       "message": "Where could the bug(s) in the driver be? We are at the bottom of it, I don\u0027t see how a bug could leave the interrupt register set.",
+      "revId": "b242342b784a7e2a365c28cd502093fb2f9d19ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5a713a_f9bc9c39",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-09-19T16:17:48Z",
+      "side": 1,
+      "message": "Yeah, I couldn\u0027t spot the problem either. My best guess was that there was some type of error interrupt that would show up in the status regardless of whether we enabled it or not? ...or it could simply be an unknown hardware glitch where somehow the IRQ gets stuck.\n\nEven if we don\u0027t know the bug, though, it\u0027s better not to have an infinite loop IMO.",
+      "parentUuid": "d03c8f22_c2d8e652",
       "revId": "b242342b784a7e2a365c28cd502093fb2f9d19ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c03c3457_bfb6b70d",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-09-19T16:17:48Z",
+      "side": 1,
+      "message": "Not that I\u0027m aware of. The i2c subsystem is reporting no errors, though, right? Otherwise the read would have returned an error code?\n\nThinking about this, though, I should print the value of `interrupt` here. Let me add that.",
+      "parentUuid": "947de22f_d1a486f2",
+      "revId": "b242342b784a7e2a365c28cd502093fb2f9d19ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e215f45_cc5d32d9",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 2
@@ -99,6 +153,24 @@
       "writtenOn": "2023-09-19T15:43:26Z",
       "side": 1,
       "message": "When we leave the interrupt handler without servicing the chip, we won\u0027t get any more event. We wont fail because of watchdog timer, but the sensor will not post any new events either.",
+      "revId": "b242342b784a7e2a365c28cd502093fb2f9d19ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec6b38e_b3a4ef8a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-09-19T16:17:48Z",
+      "side": 1,
+      "message": "Yeah, the sensor might end up just as stuck as it was before, but...\n* We\u0027ll at least have a printout that it had problems.\n* It\u0027s _possible_ that this flush will unstick it. If nothing else it will drain the FIFO and that might make the interrupt fire again.\n* We won\u0027t block the whole sensor task, so other sensors in the system will at least work.",
+      "parentUuid": "1e215f45_cc5d32d9",
       "revId": "b242342b784a7e2a365c28cd502093fb2f9d19ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
