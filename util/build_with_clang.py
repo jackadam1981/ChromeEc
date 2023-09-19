@@ -81,7 +81,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "servo_v4p1",
     "staff",
     "star",
-    "stern",
     "tigertail",
     "twinkie",
     "wand",
@@ -309,6 +308,7 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "mushu",
     "makomo",
     "oak",
+    "stern",
     "terrador",
     "waddledoo",
 ]
