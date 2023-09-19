@@ -146,7 +146,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "fleex",
     "foob",
     "gaelin",
-    "gelarshie",
     "genesis",
     "gimble",
     "gladios",
@@ -212,7 +211,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "stryke",
     "taeko",
     "taniks",
-    "terrador",
     "treeya",
     "trembyle",
     "trogdor",
@@ -310,6 +308,8 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "makomo",
     "oak",
     "waddledoo",
+    "gelarshie",
+    "terrador",
 ]
 
 # TODO(b/201311714): NDS32 is not supported by LLVM.
