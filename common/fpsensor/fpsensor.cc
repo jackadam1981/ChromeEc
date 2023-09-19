@@ -322,6 +322,8 @@ extern "C" void fp_task(void)
 
 			if (sensor_mode & FP_MODE_ANY_WAIT_IRQ) {
 				fp_sensor_configure_detect();
+
+				gpio_clear_pending_interrupt(GPIO_FPS_INT);
 				gpio_enable_interrupt(GPIO_FPS_INT);
 			} else {
 				fp_sensor_low_power();
