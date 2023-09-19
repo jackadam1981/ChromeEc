@@ -447,9 +447,27 @@ DECLARE_SAFE_CONSOLE_COMMAND(gettime, command_get_time, NULL,
 #endif
 
 #ifdef CONFIG_CMD_TIMERINFO
+
+#include <zephyr/drivers/uart.h>
+const struct device *uart2 = DEVICE_DT_GET(DT_NODELABEL(uart2));
+struct uart_config uart_cfg = {
+	.baudrate = 460800,
+
+};
+
 static int command_timer_info(int argc, const char **argv)
 {
 	timer_print_info();
+
+
+
+	if (ECREG(0xf02220)){
+		uart_cfg.baudrate = 115200;
+		int rc = uart_configure(uart2, &uart_cfg);
+		if (rc) {
+			printk("[test]Could not configure device %s", uart2->name);
+		}
+	}
 
 	return EC_SUCCESS;
 }

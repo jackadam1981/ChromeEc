@@ -126,10 +126,6 @@
 			<&gpioh 3 GPIO_INPUT_PULL_DOWN>,
 			/* gpioh4 */
 			<&gpioh 4 GPIO_INPUT_PULL_DOWN>,
-			/* gpioh5 */
-			<&gpioh 5 GPIO_INPUT_PULL_DOWN>,
-			/* gpioh6 */
-			<&gpioh 6 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpioi6 */
 			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
