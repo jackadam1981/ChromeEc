@@ -52,6 +52,24 @@
       "parentUuid": "9db13f7e_039a5cd5",
       "revId": "347735cf0e60a280424834435546add7988a1386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d87ba6_583746a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-09-19T16:01:07Z",
+      "side": 1,
+      "message": "#2 is run inside the SDK, just ensure your chroot is up to date.\n\nOr run outside the SDK where you don\u0027t need to update your SDK.",
+      "parentUuid": "1b11cf74_a926fb5b",
+      "revId": "347735cf0e60a280424834435546add7988a1386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
