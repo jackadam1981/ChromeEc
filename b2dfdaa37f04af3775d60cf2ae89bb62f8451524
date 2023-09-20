@@ -132,6 +132,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e85882f_a1f4d8c7",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-20T23:52:52Z",
+      "side": 1,
+      "message": "Seems prudent to handle that, in case there are weird ways in which it could become unknown. I for one am not confident that I understand all the possible failure modes.",
+      "parentUuid": "0ac5d306_c7eab19f",
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8b9009e_e0f487a8",
         "filename": "board/dibbi/board.c",
         "patchSetId": 2
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "Sorry, I don\u0027t understand. We\u0027re not invalidating the entries, we\u0027re setting them all to the first power reading after the CPU starts again, so we don\u0027t have that reading yet in the if branch.",
       "parentUuid": "e8b9009e_e0f487a8",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 4
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0fdada_40e4671d",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-20T23:52:52Z",
+      "side": 1,
+      "message": "Oh, I overlooked that it\u0027s treating the first reading as having always been that way rather than ignoring zeroes. That seems potentially bad because the first reading will be weighted much more than subsequent ones up to the 10th and we know that power-on tends to be among the most power-hungry states, but I suppose psys monitoring should ensure we don\u0027t blow the power budget anyway and could only affect performance in the first 20ms after power-on.",
+      "parentUuid": "b04bb5ba_f1692157",
       "range": {
         "startLine": 541,
         "startChar": 0,
