@@ -21,5 +21,6 @@ void clamshell_init(void);
 void alt_sensor_init(void);
 void fan_init(void);
 void thermal_init(void);
+void board_pd_max_voltage_init(void);
 
 #endif /* ZEPHYR_TEST_NISSA_INCLUDE_CRAASK_H_ */

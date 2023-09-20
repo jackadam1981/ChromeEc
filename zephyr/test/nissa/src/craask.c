@@ -45,6 +45,7 @@ FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
 FAKE_VALUE_FUNC(int, cbi_get_board_version, uint32_t *);
 FAKE_VALUE_FUNC(int, cbi_get_ssfc, uint32_t *);
+FAKE_VALUE_FUNC(int, cbi_get_sku_id, uint32_t *);
 FAKE_VALUE_FUNC(enum nissa_sub_board_type, nissa_get_sb_type);
 FAKE_VOID_FUNC(usb_interrupt_c1, enum gpio_signal);
 FAKE_VOID_FUNC(bmi3xx_interrupt, enum gpio_signal);
@@ -66,11 +67,56 @@ FAKE_VOID_FUNC(lpc_keyboard_resume_irq);
 
 static enum ec_error_list raa489000_is_acok_absent(int charger, bool *acok);
 
+enum project_name {
+	PROJ_CRAASK,
+	PROJ_CRAASKBOWL,
+	PROJ_CRAASKVIN,
+	PROJ_CRAASNETO,
+	PROJ_CRAASULA,
+	PROJ_CRAASKINO,
+	PROJ_CRAASKANA,
+	PROJ_COUNT,
+};
+
+static int proj;
+
+static int cbi_get_sku_id_mock(uint32_t *value)
+{
+	switch (proj) {
+	case PROJ_CRAASK:
+		*value = 0x40002;
+		break;
+	case PROJ_CRAASKBOWL:
+		*value = 0x60000;
+		break;
+	case PROJ_CRAASKVIN:
+		*value = 0x50001;
+		break;
+	case PROJ_CRAASNETO:
+		*value = 0x140000;
+		break;
+	case PROJ_CRAASULA:
+		*value = 0x140008;
+		break;
+	case PROJ_CRAASKINO:
+		*value = 0x120000;
+		break;
+	case PROJ_CRAASKANA:
+		*value = 0x210000;
+		break;
+	default:
+		*value = 0x7fffffff;
+		break;
+	}
+	return 0;
+}
+
 static void test_before(void *fixture)
 {
 	RESET_FAKE(cbi_get_board_version);
 	RESET_FAKE(cros_cbi_get_fw_config);
 	RESET_FAKE(cbi_get_ssfc);
+	RESET_FAKE(cbi_get_sku_id);
 	RESET_FAKE(nissa_get_sb_type);
 	RESET_FAKE(bmi3xx_interrupt);
 	RESET_FAKE(lsm6dso_interrupt);
@@ -683,6 +729,49 @@ ZTEST(craask, test_get_leave_safe_mode_delay_ms)
 	battery_fuel_gauge_type_override =
 		BATTERY_TYPE(DT_NODELABEL(battery_cosmx_2));
 	zassert_equal(board_get_leave_safe_mode_delay_ms(), 2000);
+}
+
+ZTEST(craask, test_board_pd_max_voltage_init)
+{
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASK;
+	board_pd_max_voltage_init();
+	zassert_equal(15000, pd_get_max_voltage());
+
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASKBOWL;
+	board_pd_max_voltage_init();
+	zassert_equal(15000, pd_get_max_voltage());
+
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASKVIN;
+	board_pd_max_voltage_init();
+	zassert_equal(15000, pd_get_max_voltage());
+
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASNETO;
+	board_pd_max_voltage_init();
+	zassert_equal(20000, pd_get_max_voltage());
+
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASULA;
+	board_pd_max_voltage_init();
+	zassert_equal(20000, pd_get_max_voltage());
+
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASKINO;
+	board_pd_max_voltage_init();
+	zassert_equal(20000, pd_get_max_voltage());
+
+	cbi_get_sku_id_fake.custom_fake = cbi_get_sku_id_mock;
+	proj = PROJ_CRAASKANA;
+	board_pd_max_voltage_init();
+	zassert_equal(20000, pd_get_max_voltage());
+
+	RESET_FAKE(cbi_get_sku_id);
+	cbi_get_sku_id_fake.return_val = EINVAL;
+	board_pd_max_voltage_init();
+	zassert_equal(20000, pd_get_max_voltage());
 }
 
 ZTEST(craask, test_board_is_sourcing_vbus)

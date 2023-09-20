@@ -262,7 +262,7 @@ test_mockable int cbi_get_board_version(uint32_t *ver)
 	return cbi_get_board_info(CBI_TAG_BOARD_VERSION, (uint8_t *)ver, &size);
 }
 
-int cbi_get_sku_id(uint32_t *id)
+test_mockable int cbi_get_sku_id(uint32_t *id)
 {
 	uint8_t size = sizeof(*id);
 
