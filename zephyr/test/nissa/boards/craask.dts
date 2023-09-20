@@ -86,6 +86,19 @@
 			i2c-port = <&i2c_ctrl1>;
 			enum-names = "I2C_PORT_SENSOR";
 		};
+		i2c_ec_i2c_batt: ec_i2c_batt {
+			i2c-port = <&i2c_ctrl7>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+	};
+
+	usbc {
+		port0@0 {
+			chg = <&chg_port0>;
+		};
+		port1@1 {
+			chg = <&chg_port1>;
+		};
 	};
 
 	batteries {
@@ -324,4 +337,22 @@
 
 &thermistor_3V3_51K1_47K_4050B  {
 	status = "okay";
+};
+
+&i2c_ctrl3 {
+	chg_port0: isl923x@9 {
+		compatible = "cros,isl923x-emul";
+		status = "okay";
+		reg = <0x9>;
+		battery = <&battery>;
+	};
+};
+
+&i2c_ctrl5 {
+	chg_port1: isl923x@9 {
+		compatible = "cros,isl923x-emul";
+		status = "okay";
+		reg = <0x9>;
+		battery = <&battery>;
+	};
 };
