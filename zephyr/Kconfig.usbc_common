@@ -1,0 +1,32 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC_USBC
+
+choice PLATFORM_EC_USBC_STACK
+	prompt "Select the USB-C software stack used by the platform"
+	default PLATFORM_EC_USB_PD_TCPMV2
+	help
+	  Select a software stack used by the platform for USB-C power
+	  delivery and USB-C alternate mode configurations.
+
+config PLATFORM_EC_USB_PD_TCPMV2
+	bool "USB-C Power Delivery TCPM Version 2"
+	help
+	  Enable USB-C Power Delivery Type-C Port Manager Version 2. It
+	  implements a layered, state-based design which tracks more closely
+	  with the USB Type-C and USB PD specifications.
+	  Zephyr only supports v2 if the platform uses TCPC chips and EC
+	  handles the TCPM, so we always define this.
+
+config PLATFORM_EC_USB_PD_CONTROLLER
+	bool "USB-C Power Delivery using a dedicated controller"
+	help
+	  Enable USB-C Power Delivery Type-C Port Manager using a dedicated
+	  power delivery controller. The dedicated controller controls TCPM
+	  and the EC manages platform power and alternate mode policies.
+
+endchoice # PLATFORM_EC_USBC_STACK
+
+endif # PLATFORM_EC_USBC
