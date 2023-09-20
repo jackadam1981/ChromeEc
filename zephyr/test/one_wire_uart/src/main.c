@@ -20,9 +20,12 @@ FAKE_VOID_FUNC(on_message_received, uint8_t, const uint8_t *, int);
 
 ZTEST(one_wire_uart_driver, test_checksum)
 {
-	uint8_t data[] = { 1, 2, 3, 4 };
+	uint8_t data[] = { 0xA1, 0xA2, 0xA3, 0xA4 };
 
-	zassert_equal(checksum(data, sizeof(data)), 246);
+	/* 16bit 1's complement:
+	 * 0xA2A1 + 0xA4A3 = 0x14744 => carry back => 0x4745
+	 */
+	zassert_equal(checksum(data, sizeof(data)), 0x4745);
 }
 
 ZTEST(one_wire_uart_driver, test_send)
@@ -210,6 +213,27 @@ ZTEST(one_wire_uart_driver, test_tx)
 	zassert_equal(ring_buf_size_get(data->tx_ring_buf), 0);
 
 	get_time_mock = NULL;
+}
+
+ZTEST(one_wire_uart_driver, test_bad_packet_length)
+{
+	struct one_wire_uart_data *data = dev->data;
+	struct one_wire_uart_message msg;
+
+	msg.header.magic = 0xEC;
+	msg.header.payload_len = 255;
+	msg.header.sender = 1;
+	msg.header.ack = 1;
+	msg.header.msg_id = 11;
+	msg.header.checksum = 0;
+	ring_buf_put(data->rx_ring_buf, (uint8_t *)&msg, sizeof(msg.header));
+
+	process_rx_fifo(dev);
+
+	/* expect that process_rx_fifo will flush the fifo without waiting for
+	 * payload_len(=255) bytes of data arrive
+	 */
+	zassert_equal(ring_buf_size_get(data->rx_ring_buf), 0);
 }
 
 static void one_wire_uart_driver_before(void *fixture)
