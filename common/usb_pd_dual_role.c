@@ -29,6 +29,11 @@ static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
+__overridable unsigned int board_set_pd_max_voltage(void)
+{
+	return PD_MAX_VOLTAGE_MV;
+}
+
 void pd_set_max_voltage(unsigned int mv)
 {
 	max_request_mv = mv;
@@ -84,7 +89,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
 		desired_uw = charge_get_plt_plus_bat_desired_mw() * 1000;
 
 	/* max voltage is always limited by this boards max request */
-	max_mv = MIN(max_mv, PD_MAX_VOLTAGE_MV);
+	max_mv = MIN(max_mv, board_set_pd_max_voltage());
 
 	/* Get max power that is under our max voltage input */
 	for (i = 0; i < src_cap_cnt; i++) {

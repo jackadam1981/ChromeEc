@@ -9,7 +9,9 @@
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 
@@ -69,3 +71,36 @@ __override int board_get_leave_safe_mode_delay_ms(void)
 	else
 		return 500;
 }
+
+static unsigned int board_pd_max_voltage;
+
+__override unsigned int board_set_pd_max_voltage(void)
+{
+	return board_pd_max_voltage;
+}
+
+test_export_static void board_pd_max_voltage_init(void)
+{
+	uint32_t val, proj;
+
+	board_pd_max_voltage = CONFIG_PLATFORM_EC_PD_MAX_VOLTAGE_MV;
+
+	if (cbi_get_sku_id(&val) != EC_SUCCESS) {
+		LOG_ERR("Error retrieving CBI SKU_ID.");
+		return;
+	}
+
+	proj = val & 0x7fff0000;
+
+	/*
+	 * Project Craask, Craaskbowl and Craaskvin only support 45W
+	 * as PD max power.
+	 */
+	if (proj == 0x40000 || proj == 0x50000 || proj == 0x60000) {
+		board_pd_max_voltage = 15000;
+		LOG_INF("Setting PD_MAX_VOLTAGE to 15V for 3 project.");
+	}
+
+	pd_set_max_voltage(board_pd_max_voltage);
+}
+DECLARE_HOOK(HOOK_INIT, board_pd_max_voltage_init, HOOK_PRIO_POST_I2C);
