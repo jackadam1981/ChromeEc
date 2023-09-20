@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "294eaf97_5099b305",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-20T19:01:57Z",
+      "side": 1,
+      "message": "I thought our TCPM always selects the highest PDO. So, there is no more power available from the same AC. Is this CL more about throttling down (so that the source can distribute power to other sinks)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88c00931_8ce37717",
         "filename": "board/dibbi/board.c",
         "patchSetId": 2
