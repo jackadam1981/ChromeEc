@@ -30,7 +30,7 @@ static enum ec_status hc_locate_chip(struct host_cmd_handler_args *args)
 #endif /* CONFIG_CBI_EEPROM */
 		break;
 	case EC_CHIP_TYPE_TCPC:
-#if defined(CONFIG_USB_POWER_DELIVERY) && \
+#if !defined(CONFIG_USB_PD_TCPMV3) && defined(CONFIG_USB_POWER_DELIVERY) && \
 	defined(CONFIG_USB_PD_PORT_MAX_COUNT) && !defined(CONFIG_USB_PD_TCPC)
 		if (params->index >= board_get_usb_pd_port_count())
 			return EC_RES_OVERFLOW;
