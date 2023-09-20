@@ -67,6 +67,8 @@ int one_wire_uart_send(const struct device *dev, uint8_t cmd,
 
 	if (!ret) {
 		uart_irq_tx_enable(bus);
+	} else {
+		ccprints("uart write buffer full!");
 	}
 	return ret;
 }
@@ -77,10 +79,11 @@ test_export_static void process_packet(void)
 	struct one_wire_uart_message msg;
 	const struct device *dev = DEVICE_DT_GET(DT_DRV_INST(0));
 	struct one_wire_uart_data *data = dev->data;
-	int last_msg_id = data->last_received_msg_id;
 	struct k_msgq *rx_queue = data->rx_queue;
 
 	while (k_msgq_get(rx_queue, &msg, K_NO_WAIT) == 0) {
+		int last_msg_id = data->last_received_msg_id;
+
 		if (last_msg_id != msg.header.msg_id && data->msg_received_cb) {
 			data->msg_received_cb(msg.payload[0], msg.payload + 1,
 					      msg.header.payload_len - 1);
@@ -115,7 +118,7 @@ static void wake_tx(void)
 DECLARE_DEFERRED(wake_tx);
 
 /* retry every 2.5ms */
-#define RETRY_INTERVAL (5 * MSEC / 2)
+#define RETRY_INTERVAL (8 * MSEC / 2)
 
 test_export_static void load_next_message(const struct device *dev)
 {
@@ -125,6 +128,8 @@ test_export_static void load_next_message(const struct device *dev)
 	struct one_wire_uart_message *msg = &data->resend_cache;
 
 	if (!ring_buf_is_empty(tx_ring_buf)) {
+		data->last_send_time = get_time();
+
 		return;
 	}
 
