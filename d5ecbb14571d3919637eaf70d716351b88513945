@@ -142,6 +142,30 @@
       },
       "revId": "d5ecbb14571d3919637eaf70d716351b88513945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecf5bf3_d64df919",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-20T16:19:01Z",
+      "side": 1,
+      "message": "I\u0027m revising this again. I\u0027ll ping when it\u0027s ready for review.",
+      "parentUuid": "2b6d3ed0_dcd21e46",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "d5ecbb14571d3919637eaf70d716351b88513945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
