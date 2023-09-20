@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc705ff_693a0991",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-09-20T19:27:51Z",
+      "side": 1,
+      "message": "Do you think we should give this a more general name? Maybe pdc, since the PD-Controller should be configured for both Power and Alt-Mode.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "b13d8075496d52716eaff629897475d3e6b690c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
