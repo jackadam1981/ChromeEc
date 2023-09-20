@@ -21,6 +21,8 @@
 #define CBI_IMAGE_SIZE               \
 	(sizeof(struct cbi_header) + \
 	 (2 * (sizeof(struct cbi_data) + sizeof(uint32_t))))
+#elif defined(CONFIG_CBI_FLASH)
+#define CBI_IMAGE_SIZE DT_PROP(DT_NODELABEL(cbi_flash), image_size)
 #else
 #define CBI_IMAGE_SIZE 256
 #endif
