@@ -1643,6 +1643,14 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps);
 void pd_snk_give_back(int port, uint32_t *const ma, uint32_t *const mv);
 
 /**
+ * Board specific function for setting dynamic max voltage.
+ *
+ * @return max voltage which the boards max request. default is
+ * PD_MAX_VOLTAGE_MV.
+ */
+__override_proto unsigned int board_set_pd_max_voltage(void);
+
+/**
  * Put a cap on the max voltage requested as a sink.
  * @param mv maximum voltage in millivolts.
  */
