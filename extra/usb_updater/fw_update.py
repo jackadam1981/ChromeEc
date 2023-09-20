@@ -116,9 +116,7 @@ class Supdate:
         read_ep = usb.util.find_descriptor(
             intf,
             # match the first IN endpoint
-            custom_match=lambda e: usb.util.endpoint_direction(
-                e.bEndpointAddress
-            )
+            custom_match=lambda e: usb.util.endpoint_direction(e.bEndpointAddress)
             == usb.util.ENDPOINT_IN,
         )
 
@@ -128,9 +126,7 @@ class Supdate:
         write_ep = usb.util.find_descriptor(
             intf,
             # match the first OUT endpoint
-            custom_match=lambda e: usb.util.endpoint_direction(
-                e.bEndpointAddress
-            )
+            custom_match=lambda e: usb.util.endpoint_direction(e.bEndpointAddress)
             == usb.util.ENDPOINT_OUT,
         )
 
@@ -386,8 +382,7 @@ class Supdate:
         if self._filesize != self._flashsize:
             raise FwUpdaterException(
                 "Update",
-                "Flash size 0x%x != file size 0x%x"
-                % (self._flashsize, self._filesize),
+                "Flash size 0x%x != file size 0x%x" % (self._flashsize, self._filesize),
             )
 
 
@@ -403,13 +398,9 @@ parser.add_argument(
 parser.add_argument(
     "-f", "--file", type=str, help="Complete ec.bin file", default="ec.bin"
 )
-parser.add_argument(
-    "-s", "--serial", type=str, help="Serial number", default=""
-)
+parser.add_argument("-s", "--serial", type=str, help="Serial number", default="")
 parser.add_argument("-l", "--list", action="store_true", help="List regions")
-parser.add_argument(
-    "-v", "--verbose", action="store_true", help="Chatty output"
-)
+parser.add_argument("-v", "--verbose", action="store_true", help="Chatty output")
 
 
 def main():
