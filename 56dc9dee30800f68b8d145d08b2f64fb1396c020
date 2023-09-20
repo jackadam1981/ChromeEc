@@ -22,6 +22,30 @@
       },
       "revId": "56dc9dee30800f68b8d145d08b2f64fb1396c020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b728670_54cf1479",
+        "filename": "common/chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-09-20T02:00:56Z",
+      "side": 1,
+      "message": "In chipset_force_shutdown, EC directly turns off the power, the power state machine calls chipset_force_shutdown again when it detects power failure and sets the shutdown reason to CHIPSET_SHUTDOWN_POWERFAIL. So pb_chipset_shutdown always gets CHIPSET_SHUTDOWN_POWERFAIL.  \n\n\nBelow is the EC log for your reference, in the beginning when the shutdown reason is 32774 (CHIPSET_SHUTDOWN_CONSOLE_CMD) but it becomes 32768 (CHIPSET_SHUTDOWN_POWERFAIL) before pb_chipset_shutdown is called. \n```\n23-09-19 22:58:52.591 \u003e apshutdown\n23-09-20 09:44:12.426 [39010.319093 Saved AP_IDLE flag]\n23-09-20 09:44:12.430 [39010.319436 chipset_force_shutdown() 32774]\n23-09-20 09:44:12.433 [39010.322556 power state 4 \u003d S0, in 0x0140]\n23-09-20 09:44:12.438 [39010.323115 Pass thru GPIO_DSW_PWROK: 1]\n23-09-20 09:44:12.442 [39010.337265 power lost input; wanted 0x0060, got 0x0040]\n23-09-20 09:44:12.449 [39010.337735 chipset_force_shutdown() 32768]\n23-09-20 09:44:12.489 \u003e [39010.443187 power state 9 \u003d S0-\u003eS3, in 0x0000]\n23-09-20 09:44:12.553 [39010.444838 EN_PP3300_A is low, assuming PG is low!]\n23-09-20 09:44:12.560 [39010.446654 PD:S0-\u003eS3]\n23-09-20 09:44:12.562 [39010.447353 power state 3 \u003d S3, in 0x0000]\n23-09-20 09:44:12.566 [39010.447753 EN_PP3300_A is low, assuming PG is low!]\n23-09-20 09:44:12.573 [39010.448139 power lost input; wanted 0x0060, got 0x0000]\n23-09-20 09:44:12.576 [39010.448525 chipset_force_shutdown() 32768]\n23-09-20 09:44:12.615 [39010.509304 EN_PP3300_A is low, assuming PG is low!]\n23-09-20 09:44:12.619 [39010.510827 EN_PP3300_A is low, assuming PG is low!]\n23-09-20 09:44:12.625 [39010.511294 power state 10 \u003d S3-\u003eS5, in 0x0000]\n23-09-20 09:44:12.628 [39010.511846 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n23-09-20 09:44:12.642 [39010.536536 PD:S3-\u003eS5]\n23-09-20 09:44:12.642 Reboot at shutdown: 9\n23-09-20 09:44:12.646 [39010.537027 VB hook_shutdown]\n23-09-20 09:44:12.649 [39010.537320 power state 1 \u003d S5, in 0x0000]\n23-09-20 09:44:12.652 [39010.537807 power lost input; wanted 0x0010, got 0x0000]\n23-09-20 09:44:12.659 [39010.538220 power state 11 \u003d S5-\u003eG3, in 0x0000]\n23-09-20 09:44:12.665 [39010.538672 chipset_force_shutdown() 32775]\n23-09-20 09:44:12.705 [39010.600179 power state 0 \u003d G3, in 0x0000]\n```",
+      "parentUuid": "5222d1aa_dadd4243",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "56dc9dee30800f68b8d145d08b2f64fb1396c020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
