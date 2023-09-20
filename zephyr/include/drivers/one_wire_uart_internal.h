@@ -10,12 +10,12 @@
 
 #include <zephyr/kernel.h>
 
-/* Private structures and methods below, fortesting purpose only */
+/* Private structures and methods below, for testing purpose only */
 
 struct one_wire_uart_header {
 	uint8_t magic;
 	uint8_t payload_len;
-	uint8_t checksum;
+	uint16_t checksum;
 	uint8_t sender : 1;
 	uint8_t reset : 1;
 	uint8_t ack : 1;
@@ -23,7 +23,7 @@ struct one_wire_uart_header {
 } __packed;
 
 #define HEADER_SIZE sizeof(struct one_wire_uart_header)
-BUILD_ASSERT(HEADER_SIZE == 4);
+BUILD_ASSERT(HEADER_SIZE == 5);
 
 #define HEADER_MAGIC 0xEC
 
