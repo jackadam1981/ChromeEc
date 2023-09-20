@@ -16,6 +16,24 @@
       "message": "Are there any automated tests that exercise this? Maybe power_WakeSources and/or hpd_wake.go?",
       "revId": "36c2c5dfdf5b77b6872f7734fead13cbf3fcead4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1433b1_b9e4727e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-09-20T18:12:45Z",
+      "side": 1,
+      "message": "Not currently since the test condition involves plugging and unplugging a display. I\u0027ve reached out to the Chameleon team and it sounds like they\u0027re working on filling the gap in testing.",
+      "parentUuid": "ba228371_18440844",
+      "revId": "36c2c5dfdf5b77b6872f7734fead13cbf3fcead4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
