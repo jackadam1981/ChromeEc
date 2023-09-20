@@ -22,7 +22,7 @@ ZTEST(one_wire_uart_driver, test_checksum)
 {
 	uint8_t data[] = { 1, 2, 3, 4 };
 
-	zassert_equal(checksum(data, sizeof(data)), 246);
+	zassert_equal(checksum(data, sizeof(data)), 1540);
 }
 
 ZTEST(one_wire_uart_driver, test_send)
