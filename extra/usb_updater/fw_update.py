@@ -256,7 +256,7 @@ class Supdate:
                 data = self._binfile.read(packetsize)
                 if len(data) != packetsize:
                     raise FwUpdaterException("Update", "No more data from file")
-                for i in range(0, 10):
+                for _unused in range(0, 10):
                     try:
                         self.wr_command(data, read_count=0)
                         break
@@ -420,8 +420,9 @@ def main():
     if args.verbose:
         debug = True
 
+    # Check for valid JSON data
     with open(brdfile) as data_file:
-        names = json.load(data_file)
+        _unused = json.load(data_file)
 
     p = Supdate()
     p.load_board(brdfile)
