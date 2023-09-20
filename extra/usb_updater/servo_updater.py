@@ -155,8 +155,7 @@ def flash2(vidpid, serialno, binfile):
 
     if res in (0, 1, 2):
         return res
-    else:
-        raise ServoUpdaterException("%s exit with res = %d" % (cmd, res))
+    raise ServoUpdaterException("%s exit with res = %d" % (cmd, res))
 
 
 def select(tinys, region):
@@ -235,8 +234,7 @@ def do_updater_version(tinys):
         version_number = int(m.group(1))
         if version_number < 5800:
             return 2
-        else:
-            return 6
+        return 6
     raise ServoUpdaterException("Can't determine updater target from vers: [%s]" % vers)
 
 
@@ -392,8 +390,7 @@ def update(dev, serialno, args, devmap):
             if args.reboot:
                 select(tinys, "ro")
             return
-        else:
-            print("Updating to recommended version.")
+        print("Updating to recommended version.")
 
     # Make sure the servo MCU is in RO
     print("===== Jumping to RO =====")
