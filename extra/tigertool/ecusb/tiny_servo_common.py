@@ -178,9 +178,7 @@ def wait_for_usb(
         time.sleep(_USB_SCAN_WAIT)
         if timeout:
             if datetime.datetime.now() > finish:
-                raise TinyServoError(
-                    "Timeout", "Timeout waiting for USB %s" % vidpid
-                )
+                raise TinyServoError("Timeout", "Timeout waiting for USB %s" % vidpid)
 
 
 def do_serialno(serialno, pty):
