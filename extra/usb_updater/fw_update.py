@@ -101,7 +101,7 @@ class Supdate:
         # Get an endpoint instance.
         try:
             dev.set_configuration()
-        except:
+        except Exception:
             pass
         cfg = dev.get_active_configuration()
 
@@ -261,7 +261,7 @@ class Supdate:
                     try:
                         self.wr_command(data, read_count=0)
                         break
-                    except:
+                    except Exception:
                         log("Timeout fail")
                 todo -= packetsize
             # Done with this packet, move to the next one.
