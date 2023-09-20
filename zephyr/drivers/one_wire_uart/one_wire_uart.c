@@ -25,15 +25,32 @@ static int msg_len(const struct one_wire_uart_message *msg)
 	return sizeof(msg->header) + msg->header.payload_len;
 }
 
-test_export_static uint8_t checksum(const uint8_t *data, int len)
+test_export_static uint16_t checksum(const uint8_t *data, int len)
 {
-	uint8_t sum = 0;
+	uint32_t sum = 0;
 
+	/* 16-bit one's complement sum */
 	for (int i = 0; i < len; i++) {
-		sum += data[i];
+		if (i % 2 == 0) {
+			sum += data[i];
+		} else {
+			sum += (data[i] << 8);
+		}
+		if (sum >= 0x10000) {
+			sum = (sum & 0xFFFF) + 1;
+		}
 	}
 
-	return (uint8_t)(-sum);
+	return sum;
+}
+
+static bool verify_checksum(struct one_wire_uart_message *msg)
+{
+	uint16_t expected = msg->header.checksum;
+
+	msg->header.checksum = 0;
+
+	return checksum((uint8_t*)msg, msg_len(msg)) == expected;
 }
 
 int one_wire_uart_send(const struct device *dev, uint8_t cmd,
@@ -67,6 +84,8 @@ int one_wire_uart_send(const struct device *dev, uint8_t cmd,
 
 	if (!ret) {
 		uart_irq_tx_enable(bus);
+	} else {
+		ccprints("uart write buffer full!");
 	}
 	return ret;
 }
@@ -77,10 +96,11 @@ test_export_static void process_packet(void)
 	struct one_wire_uart_message msg;
 	const struct device *dev = DEVICE_DT_GET(DT_DRV_INST(0));
 	struct one_wire_uart_data *data = dev->data;
-	int last_msg_id = data->last_received_msg_id;
 	struct k_msgq *rx_queue = data->rx_queue;
 
 	while (k_msgq_get(rx_queue, &msg, K_NO_WAIT) == 0) {
+		int last_msg_id = data->last_received_msg_id;
+
 		if (last_msg_id != msg.header.msg_id && data->msg_received_cb) {
 			data->msg_received_cb(msg.payload[0], msg.payload + 1,
 					      msg.header.payload_len - 1);
@@ -125,6 +145,8 @@ test_export_static void load_next_message(const struct device *dev)
 	struct one_wire_uart_message *msg = &data->resend_cache;
 
 	if (!ring_buf_is_empty(tx_ring_buf)) {
+		data->last_send_time = get_time();
+
 		return;
 	}
 
@@ -238,7 +260,7 @@ test_export_static void process_rx_fifo(const struct device *dev)
 		ring_buf_peek(rx_ring_buf, (uint8_t *)&msg, len);
 
 		/* bad checksum, drop 1 byte and loop again */
-		if (checksum((uint8_t *)&msg, len) != 0) {
+		if (!verify_checksum(&msg)) {
 			ring_buf_get(rx_ring_buf, NULL, 1);
 			continue;
 		}
