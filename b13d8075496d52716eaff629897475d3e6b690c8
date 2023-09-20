@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "239bef37_66d9215d",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-20T20:04:20Z",
+      "side": 1,
+      "message": "Ack. how about below names?\nalt-mode:\n  for alternate mode\npd-mode:\n   for power delivery code",
+      "parentUuid": "2fc705ff_693a0991",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "b13d8075496d52716eaff629897475d3e6b690c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "817dda97_2d7d4ff4",
         "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-20T19:48:21Z",
       "side": 1,
       "message": "Maybe this menuconfig and the filename should be renamed also to something more generic that includes the Power management too.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "b13d8075496d52716eaff629897475d3e6b690c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89078cb9_c28957dc",
+        "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-20T20:04:20Z",
+      "side": 1,
+      "message": "Ack. How about I add nested menuconfig ?\n\nmenuconfig USB_PD_ALTMODE\n       this is applicable only to PD chips in PD mode\n       \nfollowed with intel specific\nmenuconfig USB_PD_ALTMODE_INTEL",
+      "parentUuid": "817dda97_2d7d4ff4",
       "range": {
         "startLine": 7,
         "startChar": 11,
