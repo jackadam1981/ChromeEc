@@ -54,7 +54,7 @@ config PLATFORM_EC_USB_PD_TCPMV2
 	  implements a layered, state-based design which tracks more closely
 	  with the USB Type-C and USB PD specifications.
 
-config PLATFORM_EC_USB_PD_CONTROLLER
+config PLATFORM_EC_USB_PD_TCPMV3
 	bool "USB-C Power Delivery Controller"
 	help
 	  Enable USB-C Power Delivery using a discrete controller chip. The PD
