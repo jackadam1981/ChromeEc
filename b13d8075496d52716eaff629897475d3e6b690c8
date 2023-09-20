@@ -141,6 +141,30 @@
       },
       "revId": "b13d8075496d52716eaff629897475d3e6b690c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806ba9e4_87620530",
+        "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-20T20:23:08Z",
+      "side": 1,
+      "message": "You should also add an option to PLATFORM_EC_USBC_STACK.\n\n```\nchoice PLATFORM_EC_USBC_STACK\n    default PLATFORM_EC_USB_PD_TCPMV2\n    ...\nconfig PLATFORM_EC_USB_PD_TCPMV2\n    bool \"USB-C Power Delivery TCPM Version 2\"\n    ...\nconfig PLATFORM_EC_USB_PD_CONTROLLER\n    bool \"USB-C Power Delivery using a dedicated controller\"\n    ...\nendchoice\n```\n\nYou can then guard this file with `if PLATFORM_EC_USB_PD_CONTROLLER`.\n\nThe board Kconfig file then needs to override the default setting:\n```\nchoice PLATFORM_EC_USBC_STACK\n    default PLATFORM_EC_USB_PD_CONTROLLER\nendchoice\n```\n\nThis ensures the board has `CONFIG_PLATFORM_EC_USB_PD_TCPMV2\u003dn` and `CONFIG_PLATFORM_EC_USB_PD_CONTROLLER\u003dy`.",
+      "parentUuid": "f6f60da2_7f6d5205",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "b13d8075496d52716eaff629897475d3e6b690c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
