@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5e7e2e0_9729a14c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-20T23:43:20Z",
+      "side": 1,
+      "message": "This CL is for the situation where all the ports are fully loaded so the total system power could exceed the rating of the adaptor powering dibbi, causing a brownout. If dibbi is sourcing from the Type-C port, we throttle the source power from 15W to 7.5W to prevent this. Does that explain it? Sorry, I\u0027m not sure if I understood the question. I also tried to make the commit message a bit clearer.",
+      "parentUuid": "294eaf97_5099b305",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88c00931_8ce37717",
         "filename": "board/dibbi/board.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-20T07:10:46Z",
       "side": 1,
       "message": "`POWER_READINGS` is 10. Which is it?",
+      "range": {
+        "startLine": 459,
+        "startChar": 38,
+        "endLine": 459,
+        "endChar": 62
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97939090_62a9d46c",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-20T23:43:20Z",
+      "side": 1,
+      "message": "10, forgot to update this.",
+      "parentUuid": "88c00931_8ce37717",
       "range": {
         "startLine": 459,
         "startChar": 38,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ac5d306_c7eab19f",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-20T23:43:20Z",
+      "side": 1,
+      "message": "I think that only happens during EC boot when the charge manager is not initialised yet, so the current_state should always still be zero.",
+      "parentUuid": "238f39b7_ea96d7e6",
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8b9009e_e0f487a8",
         "filename": "board/dibbi/board.c",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2023-09-20T07:10:46Z",
       "side": 1,
       "message": "This seems better to do directly in the `if` branch above, since that\u0027s logically where the exising values get invalidated; it\u0027s just confusing to split up even though the check for zeroes is still needed to avoid continuously clearing the history (which isn\u0027t harmful, but is somewhat inefficient).",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 4
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04bb5ba_f1692157",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-20T23:43:20Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand. We\u0027re not invalidating the entries, we\u0027re setting them all to the first power reading after the CPU starts again, so we don\u0027t have that reading yet in the if branch.",
+      "parentUuid": "e8b9009e_e0f487a8",
       "range": {
         "startLine": 541,
         "startChar": 0,
