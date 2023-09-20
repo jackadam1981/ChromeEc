@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c00931_8ce37717",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-20T07:10:46Z",
+      "side": 1,
+      "message": "`POWER_READINGS` is 10. Which is it?",
+      "range": {
+        "startLine": 459,
+        "startChar": 38,
+        "endLine": 459,
+        "endChar": 62
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238f39b7_ea96d7e6",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-20T07:10:46Z",
+      "side": 1,
+      "message": "The false case of this branch will leave `new_state` at zero and release all throttles. Is that intended, or should the current state be left unchanged if we don\u0027t know how much power is available?",
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b9009e_e0f487a8",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-20T07:10:46Z",
+      "side": 1,
+      "message": "This seems better to do directly in the `if` branch above, since that\u0027s logically where the exising values get invalidated; it\u0027s just confusing to split up even though the check for zeroes is still needed to avoid continuously clearing the history (which isn\u0027t harmful, but is somewhat inefficient).",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 4
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
