@@ -47,7 +47,7 @@ config BOARD_MTLRVP_PD
 # Override the default USB-C stack choice baseed on the board type.
 # This must be done before including Kconfig.zephyr below.
 choice PLATFORM_EC_USBC_STACK
-	default PLATFORM_EC_USB_PD_CONTROLLER if BOARD_MTLRVP_PD
+	default PLATFORM_EC_USB_PD_TCPMV3 if BOARD_MTLRVP_PD
 endchoice
 
 source "Kconfig.zephyr"

@@ -18,6 +18,8 @@
 #include "watchdog.h"
 #include "zephyr_espi_shim.h"
 
+#include "usbc/pdc_power_mgnt.h"
+
 #include <zephyr/kernel.h>
 #include <zephyr/pm/policy.h>
 #include <zephyr/shell/shell_uart.h>
