@@ -46,6 +46,30 @@
       },
       "revId": "56dc9dee30800f68b8d145d08b2f64fb1396c020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0978f15_82f27b9a",
+        "filename": "common/chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-20T16:38:10Z",
+      "side": 1,
+      "message": "\u003e when the shutdown reason is 32774 (CHIPSET_SHUTDOWN_CONSOLE_CMD) but it becomes 32768 (CHIPSET_SHUTDOWN_POWERFAIL) before pb_chipset_shutdown is called.\n\nI think this is the problem we should fix.\n\nCHIPSET_SHUTDOWN_CONSOLE_CMD is overwritten by CHIPSET_SHUTDOWN_POWERFAIL (in intel_x86.c). I believe CONSOLE_CMD implies POWERFAIL. So, POWERFAIL should be set only if CONSOLE_CMD isn\u0027t registered.",
+      "parentUuid": "4b728670_54cf1479",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "56dc9dee30800f68b8d145d08b2f64fb1396c020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
