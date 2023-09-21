@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccfb6d5b_521a9682",
+        "filename": "common/battery_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-21T21:45:27Z",
+      "side": 1,
+      "message": "Added test.",
+      "revId": "99527f9cbd5cb0b0fccfd9bae39bee4c8737a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e3532c_1ef5bad4",
+        "filename": "common/battery_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-21T21:45:27Z",
+      "side": 1,
+      "message": "FP: Not changed by this CL.",
+      "revId": "99527f9cbd5cb0b0fccfd9bae39bee4c8737a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0314f18e_1ff5c570",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-21T21:45:27Z",
+      "side": 1,
+      "message": "FP: Not changed by this CL.",
+      "revId": "99527f9cbd5cb0b0fccfd9bae39bee4c8737a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28e391a_fd8c556d",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-21T21:45:27Z",
+      "side": 1,
+      "message": "FP. This line isn\u0027t changed.",
+      "revId": "99527f9cbd5cb0b0fccfd9bae39bee4c8737a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
