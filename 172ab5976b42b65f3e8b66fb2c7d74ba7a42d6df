@@ -22,6 +22,53 @@
       },
       "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c307a9ea_e73e76d7",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-21T18:38:44Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "736ea5a5_1b65c13f",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4557b49d_c961288a",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-21T18:38:44Z",
+      "side": 1,
+      "message": "is there an implementation limitation that forces image-size read/write ops?\nthe underlying hardware is more forgiving.",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 62
+      },
+      "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
