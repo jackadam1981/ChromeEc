@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5aaf0f_0f5f85ba",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-09-21T13:08:44Z",
+      "side": 1,
+      "message": "hey the GPIO configuration system supports setting a gpio as active low as a gpio flag, could you do this by changing the flag for the corresponding pin in an overlay?\n\nguess it\u0027s\n\n```\n                gpio_en_pp5000_usba_r: en_pp5000_usba_r {\n                        gpios \u003d \u003c\u0026gpiod 7 GPIO_OUTPUT\u003e;\n                };\n```\n\nyou should be able to change it by adding an overlaying with something like\n```\n\u0026gpio_en_pp5000_usba_r {\n\tgpios \u003d \u003c\u0026gpiod 7 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)\u003e;\n}\n```",
+      "revId": "109727f62cfcdd9031de9ffe3e5daebae9aa712a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
