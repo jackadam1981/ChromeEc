@@ -123,6 +123,24 @@
       "parentUuid": "b87666a4_f9607579",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10dab4c5_f0deb2bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-21T06:19:39Z",
+      "side": 1,
+      "message": "The factory flash the CBI into the EEPROM in proto. There is no CBI in EC flash. Therefore, I had enabled this config in local built EC and transfer the CBI to EC flash first and then use local built EC without the config to get the CBI info successfully. If the factory flash the CBI to EC flash at the next stage, I think the config would not be needed. Thanks!",
+      "parentUuid": "f133292f_73ff0566",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
