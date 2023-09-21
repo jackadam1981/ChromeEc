@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac35044e_cfc05e54",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "This is meant to test lined 753-757 of dp_alt_mode.c I based the comments on what was already there for those lines hence \"Not Emark\" but if this isn\u0027t correct I can fix the comment there as well",
+      "parentUuid": "5c8ecc39_3e68d3f7",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "333fc604_955d27b7",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-21T22:10:04Z",
       "side": 1,
       "message": "Nit: \"Passive cable with USB2 support only. When used, set product VDOs.\" (product type is already set to passive cable here)\n\nSame for `active cable`.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b2d28a_e92d38d4",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333fc604_955d27b7",
       "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0704d1_2b1a67f2",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "I think I fixed what you were asking here",
+      "parentUuid": "ff5d37d4_3307f62e",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b46c7b7_285886ab",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-09-21T22:10:04Z",
       "side": 1,
       "message": "Instead of this function changing `active_cable`, `active_cable` should be constant, and this function should update `partner-\u003ecable`. I think that will make the tests easier to reason about and reduce the chance for ordering deps.\n\n(Nit: If you wanted to really reduce the chance of ordering deps, you could zero out `partner-\u003ecable` in the `_after` function.)",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f9fbc5_9aa7a074",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "makes sense to me I\u0027ll change this to modify partner-\u003ecable not active_cable",
+      "parentUuid": "0b46c7b7_285886ab",
       "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d88a1d64_ad053662",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "clang must have done this I\u0027ll tidy it up",
+      "parentUuid": "dd08c5d1_d8aecb22",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af1bf3a4_a1fffc5d",
@@ -99,6 +189,24 @@
       "writtenOn": "2023-09-21T22:10:04Z",
       "side": 1,
       "message": "Another weird comma construction.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57659f0_ea6a0a8f",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af1bf3a4_a1fffc5d",
       "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb263ede_0de0986a",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4fa351b_457ee556",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bdc18f6_0c80dabe",
@@ -133,6 +259,24 @@
       "writtenOn": "2023-09-21T22:10:04Z",
       "side": 1,
       "message": "Why do this twice?",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "293a86f9_f849632a",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "probably just a remnant from some patch merging will remove",
+      "parentUuid": "7bdc18f6_0c80dabe",
       "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd1dd4a_d9b8ffac",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3146291b_549427cf",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667d67a7_5f7d59a7",
@@ -167,6 +329,24 @@
       "writtenOn": "2023-09-21T22:10:04Z",
       "side": 1,
       "message": "Nit: Why go to the trouble of creating `cable_resp` if you\u0027re just going to assign to and from its raw value?",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94663a18_9ca35edd",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667d67a7_5f7d59a7",
       "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +368,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f940e3_3f5a25cb",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "the intent is to test no tbt cable info so I think you are right thats a better title",
+      "parentUuid": "f18958de_15f80d34",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26980792_6fa2df24",
@@ -201,6 +399,24 @@
       "writtenOn": "2023-09-21T22:10:04Z",
       "side": 1,
       "message": "Nit: This testcase and the setup function and data structure that support it should probably be something like `no_modal_active_cable`. AFAIK, it would be fine to enter DP with a passive cable that did not support an alt mode.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee56dba_b260ab69",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26980792_6fa2df24",
       "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
