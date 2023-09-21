@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4e35db_4fc20355",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-21T19:55:44Z",
+      "side": 1,
+      "message": "You need to add `CONFIG_HOST_COMMAND_MEMORY_DUMP` to config.h, or the symbol won\u0027t be visible to the legacy EC builds.",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 35
+      },
+      "revId": "03dc8ce97625c22b622e77f071e69b0ed52d7fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
