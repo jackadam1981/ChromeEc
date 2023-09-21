@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5614f296_c3403339",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:15:56Z",
+      "side": 1,
+      "message": "Ah, that is a great idea! I am glad you put it in its own task assuming we have the ram space (which it seems like we do)",
+      "parentUuid": "ba6651f9_d7a8e005",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 17
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20872d3c_609f237f",
@@ -508,6 +532,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e985e0ab_7508da56",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:15:56Z",
+      "side": 1,
+      "message": "Make sense, can you add come comments here in the file that the max wait this while loop should ever take is 315us",
+      "parentUuid": "1d07da91_78b93f24",
+      "range": {
+        "startLine": 431,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 3
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b081a194_c69caedd",
         "filename": "board/hyperdebug/cmsis-dap.c",
         "patchSetId": 24
@@ -555,6 +603,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40477062_01379801",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:15:56Z",
+      "side": 1,
+      "message": "That makes sense. Can you add some or all of that information to that comment please?",
+      "parentUuid": "ba3d3337_f607824a",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 12
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d156d132_31d05261",
         "filename": "board/hyperdebug/cmsis-dap.c",
         "patchSetId": 24
@@ -590,6 +662,30 @@
       "side": 1,
       "message": "Each sub-sequence has a one-byte header, and variable length data.  For convenience, I wanted `ptr` to point at the start of the data range during the inner loop, in order to be able to use the `ptr[]` syntax for accessing the data bytes, that is why I increment past the header byte before the inner loop, and then move past the data bytes below the inner loop.  I have added comments.",
       "parentUuid": "d156d132_31d05261",
+      "range": {
+        "startLine": 556,
+        "startChar": 1,
+        "endLine": 556,
+        "endChar": 29
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca4fbad_3000d527",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:15:56Z",
+      "side": 1,
+      "message": "Ah, make sense. Thank you!",
+      "parentUuid": "7330571b_647e38c9",
       "range": {
         "startLine": 556,
         "startChar": 1,

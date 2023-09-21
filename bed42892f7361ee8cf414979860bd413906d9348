@@ -16,6 +16,29 @@
       "message": "Thanks for the diligent review as always.  I have addressed all of your comments.",
       "revId": "bed42892f7361ee8cf414979860bd413906d9348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1b746b_21709193",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:15:56Z",
+      "side": 1,
+      "message": "nit: drop in favor of using `peek_c`",
+      "range": {
+        "startLine": 465,
+        "startChar": 14,
+        "endLine": 465,
+        "endChar": 47
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
