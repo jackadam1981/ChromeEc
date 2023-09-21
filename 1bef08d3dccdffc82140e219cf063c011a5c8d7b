@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3b55b1_b7a4aa72",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "I thought this was the value of `peek_c`",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 36
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48008515_1590add6",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "I missed it, where is `tx_buffer[0]` getting set first?",
+      "range": {
+        "startLine": 269,
+        "startChar": 38,
+        "endLine": 269,
+        "endChar": 47
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c062f0_cda2257e",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "can you make these named constants? (also what do they mean?)",
+      "range": {
+        "startLine": 278,
+        "startChar": 21,
+        "endLine": 278,
+        "endChar": 22
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092e53e5_75357908",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "what do you want to do with this comment?",
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd722a5a_82d30d2b",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "use `peek_c`?",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 37
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e4b274_4b541042",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "can the protocol really handle a blocking call for 100ms? This seems like we want a callback or something to let the hyperdebug keep running and processing other things in the mean time (like console output)",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 17
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20872d3c_609f237f",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "nit: can you pull out `rx_buffer[2]` and `rx_buffer[1]` into named variables for enable and value please (or something similar to that)?",
+      "range": {
+        "startLine": 354,
+        "startChar": 6,
+        "endLine": 354,
+        "endChar": 19
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f01c94_af517ddd",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "this seems \"dangerous\" a jtag command could make hyperdebug watch dog. Can we do it another way?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 17
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a78a2099_22f24c41",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "`peek_c`",
+      "range": {
+        "startLine": 379,
+        "startChar": 5,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665fc1b6_8862a58f",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "why `7` here instead of `5` from above?",
+      "range": {
+        "startLine": 381,
+        "startChar": 52,
+        "endLine": 381,
+        "endChar": 53
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48da55c5_390e3b17",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "why kind of delays are possible here. This looks like another watchdog potential",
+      "range": {
+        "startLine": 431,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 3
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b081a194_c69caedd",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "isn\u0027t the below clearing values instead of being a no-op?",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 12
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d156d132_31d05261",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T19:30:13Z",
+      "side": 1,
+      "message": "why do you increment here and at the start of the loop? If intentional, we should add some comments",
+      "range": {
+        "startLine": 556,
+        "startChar": 1,
+        "endLine": 556,
+        "endChar": 29
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
