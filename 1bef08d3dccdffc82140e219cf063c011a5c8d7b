@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3f4f71_d96afc14",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d3b55b1_b7a4aa72",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 36
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48008515_1590add6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-21T19:30:13Z",
       "side": 1,
       "message": "I missed it, where is `tx_buffer[0]` getting set first?",
+      "range": {
+        "startLine": 269,
+        "startChar": 38,
+        "endLine": 269,
+        "endChar": 47
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd35c2d_45d52ed6",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Down in the \"main entry point\", `cmsis_dap_deferred()`, under the comment:\n`/* First byte of response is always same as command byte */`",
+      "parentUuid": "48008515_1590add6",
       "range": {
         "startLine": 269,
         "startChar": 38,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdddcfa_d34d2efa",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c062f0_cda2257e",
+      "range": {
+        "startLine": 278,
+        "startChar": 21,
+        "endLine": 278,
+        "endChar": 22
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "092e53e5_75357908",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87ce24e_415eb2a0",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "I have replaced it with a longer comment about why it is OK to ignore this request.",
+      "parentUuid": "092e53e5_75357908",
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd722a5a_82d30d2b",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-09-21T19:30:13Z",
       "side": 1,
       "message": "use `peek_c`?",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 37
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5cc69f_ed023194",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "We cannot quite.  peek_c is how many bytes from the queue has been \"peeked at\", that is placed into rx_buffer[] without being removed from the queue.  There could be more bytes in the buffer than indicated by peek_c, and in this case, we need to know if there are at least 6 bytes, but peek_c is currently capped at 5 (the number that we need to be sure that we can decode the length of a I2C request.)",
+      "parentUuid": "dd722a5a_82d30d2b",
       "range": {
         "startLine": 320,
         "startChar": 5,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6651f9_d7a8e005",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Unlike `udelay()`, `usleep()` which is used here will put the current EC task into sleep state, and invoke the scheduler to process other tasks while waiting.\n\nI have verified that the EC console remains response even while this code is sitting in `usleep()`.\n\nHonestly though, I am not sure which task is running the methods scheduled with `hook_call_deferred()` (which is how this runs), nor whether it is frowned upon to put that task into a timed sleep (possibly holding up other deferred calls.)\n\nTo be sure not to cause any unduly delay to other hook handlers, I have created a new separate EC task for these JTAG routines.",
+      "parentUuid": "54e4b274_4b541042",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 17
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20872d3c_609f237f",
@@ -146,6 +284,30 @@
       "writtenOn": "2023-09-21T19:30:13Z",
       "side": 1,
       "message": "nit: can you pull out `rx_buffer[2]` and `rx_buffer[1]` into named variables for enable and value please (or something similar to that)?",
+      "range": {
+        "startLine": 354,
+        "startChar": 6,
+        "endLine": 354,
+        "endChar": 19
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe75e28c_a42451a7",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20872d3c_609f237f",
       "range": {
         "startLine": 354,
         "startChar": 6,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c644b9b_c0a14533",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Again, `usleep()` is part of the interface `task.h`, which deals with putting EC tasks in and out of runnable state, and rescheduling.  So other tasks will get a chance to run while this one is waiting here.",
+      "parentUuid": "70f01c94_af517ddd",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 17
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a78a2099_22f24c41",
@@ -192,6 +378,30 @@
       "writtenOn": "2023-09-21T19:30:13Z",
       "side": 1,
       "message": "`peek_c`",
+      "range": {
+        "startLine": 379,
+        "startChar": 5,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a507d392_38c128ae",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a78a2099_22f24c41",
       "range": {
         "startLine": 379,
         "startChar": 5,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9231a0a2_3d68b196",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "That was a bug, the clock request is just 5 bytes lone (one byte header, a four-byte value in Hertz).",
+      "parentUuid": "665fc1b6_8862a58f",
+      "range": {
+        "startLine": 381,
+        "startChar": 52,
+        "endLine": 381,
+        "endChar": 53
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48da55c5_390e3b17",
@@ -238,6 +472,30 @@
       "writtenOn": "2023-09-21T19:30:13Z",
       "side": 1,
       "message": "why kind of delays are possible here. This looks like another watchdog potential",
+      "range": {
+        "startLine": 431,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 3
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d07da91_78b93f24",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "This is a 16-bit counter, and the maximum value we use for starting the countdown is 32767 (see `dap_swj_clock()`).  At 104Mhz core clock frequency, that means that we can at most wait around 315μs here.  This method is called from within the bit-banging logic of `dap_jtag_sequence()`.\n\nReading the CMSIS-DAP protocol, one could think that 255 sequences each of 64 clock cycles could be requested at once, (this request would be almost 2kB of USB data, more than our queues support), but I have seen OpenOCD break up requests, so that they are no longer than 5 sequences of 64 clock cycles, plus a few one-clock sequences.  This would limit the time spent in one invocation of `dap_jtag_sequence()` to about 200ms.  I have tried artificially running the clock as slow as possible, and seen that the requests sent by OpenOCD can be handled by HyperDebug in 207ms without triggering watchdog issues.",
+      "parentUuid": "48da55c5_390e3b17",
       "range": {
         "startLine": 431,
         "startChar": 1,
@@ -271,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3d3337_f607824a",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "It is clearing bits that are already known (by us) to be zero.  I wanted something that the compiler could not likely optimize away, and took exactly the same amount of time to execute as the other branch, hence all the same bit fiddling operations.\nIt clears all the bits in the current output byte which are \"ahead\" of where we would be placing the next sampled bits, that is, into the bit range that was already zero\u0027ed by `memset()`.",
+      "parentUuid": "b081a194_c69caedd",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 12
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d156d132_31d05261",
@@ -284,6 +566,30 @@
       "writtenOn": "2023-09-21T19:30:13Z",
       "side": 1,
       "message": "why do you increment here and at the start of the loop? If intentional, we should add some comments",
+      "range": {
+        "startLine": 556,
+        "startChar": 1,
+        "endLine": 556,
+        "endChar": 29
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7330571b_647e38c9",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T21:51:21Z",
+      "side": 1,
+      "message": "Each sub-sequence has a one-byte header, and variable length data.  For convenience, I wanted `ptr` to point at the start of the data range during the inner loop, in order to be able to use the `ptr[]` syntax for accessing the data bytes, that is why I increment past the header byte before the inner loop, and then move past the data bytes below the inner loop.  I have added comments.",
+      "parentUuid": "d156d132_31d05261",
       "range": {
         "startLine": 556,
         "startChar": 1,
