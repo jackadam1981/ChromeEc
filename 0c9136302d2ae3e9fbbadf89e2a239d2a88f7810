@@ -16,6 +16,24 @@
       "message": "Don\u0027t forget the .bss.Tpm2_common section and the bss of tpm_registers\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/cr50/core/cortex-m/ec.lds.S;drc\u003d9e31a10eccea4ff5d757af2fc4e54be5a8816334;l\u003d308",
       "revId": "0c9136302d2ae3e9fbbadf89e2a239d2a88f7810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afc2a15_7acbc883",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-21T15:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa93936_1027b0b4",
+      "revId": "0c9136302d2ae3e9fbbadf89e2a239d2a88f7810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
