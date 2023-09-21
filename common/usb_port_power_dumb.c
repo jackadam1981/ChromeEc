@@ -32,7 +32,11 @@ static void usb_port_set_enabled(int port_id, int en)
 	 * Only enable valid ports.
 	 */
 	if (usb_port_enable[port_id] >= 0) {
+#ifdef CONFIG_USB_A_5V_EN_ACTIVE_LOW
+		gpio_or_ioex_set_level(usb_port_enable[port_id], !en);
+#else
 		gpio_or_ioex_set_level(usb_port_enable[port_id], en);
+#endif
 		charge_mode[port_id] = en;
 	}
 }
