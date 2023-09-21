@@ -449,3 +449,12 @@ config PLATFORM_EC_USB_PD_RESET_PRESERVE_RECOVERY_FLAGS
 rsource "Kconfig.svdm_rsp"
 
 endif  # PLATFORM_EC_USB_POWER_DELIVERY
+
+config PLATFORM_EC_USB_PD_DP_MODE
+	bool "EC-driven DP support"
+	depends on !PLATFORM_EC_USB_PD_VDM_AP_CONTROL
+	default y
+	help
+	  This enables support for entering DisplayPort alternate mode as a
+	  DFP from the Embedded Controller directly.  This flag gates all the
+	  on-EC logic for determining specifics such as VDM contents.
