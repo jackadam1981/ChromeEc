@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8ecc39_3e68d3f7",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "If the cable responds to identity but not SVIDs or modes, then it\u0027s emarked. I think I misunderstood this test case.\n\nRight now, it\u0027s creating a cable that has an undefined cable ptype. I\u0027m not sure what that would correspond to in real life. But if you genuinely want to test that case, then the data structure/setup function/test case should probably be named something like `_undefined_ptype`.\n\nIf, per the comments, what you really want to test is a non-emarked cable, then you should set `identity_vdos` to 0. That will cause the emulator to not respond at all to Discover Identity, which would be consistent with a non-emarked cable.\n\nEither way, I\u0027d like to see the names be consistent with the behavior.\n\nNB: I see something that could be considered a bug or just a missing feature in the partner emulator, for both SOP and SOP\u0027. If the `_vdos` field for a supported command is 0, the emulator will just not do anything and say that the message is handled. That doesn\u0027t really make sense for a partner that supports some commands but not others, e.g. identity but no SVIDs. In that case, the partner should respond with NAK to Discover SVIDs, but I don\u0027t think the partner currently supports it. It doesn\u0027t matter much for the purpose of this test. The PE treats a VDM timeout the same as a VDM NAK.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333fc604_955d27b7",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Nit: \"Passive cable with USB2 support only. When used, set product VDOs.\" (product type is already set to passive cable here)\n\nSame for `active cable`.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5d37d4_3307f62e",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Seems like there should also be a comment above the data structure to match the other ones.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b46c7b7_285886ab",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Instead of this function changing `active_cable`, `active_cable` should be constant, and this function should update `partner-\u003ecable`. I think that will make the tests easier to reason about and reduce the chance for ordering deps.\n\n(Nit: If you wanted to really reduce the chance of ordering deps, you could zero out `partner-\u003ecable` in the `_after` function.)",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd08c5d1_d8aecb22",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Should this comma be a semicolon?",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1bf3a4_a1fffc5d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Another weird comma construction.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4fa351b_457ee556",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Nit: For the sake of hermetic tests, it might be a good idea to disable partner message logging here, in case an individual tests forgets.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdc18f6_0c80dabe",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Why do this twice?",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3146291b_549427cf",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Nit: You don\u0027t need to do this anymore. The `_after` function will disconnect.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "667d67a7_5f7d59a7",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Nit: Why go to the trouble of creating `cable_resp` if you\u0027re just going to assign to and from its raw value?",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18958de_15f80d34",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "This creates a cable that will respond with TBT in its SVIDs but respond with an empty mode VDO. Is this the intent of the test? If so, `no_sop_prime` is not an accurate description. It should be something like `empty_tbt_mode`.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26980792_6fa2df24",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Nit: This testcase and the setup function and data structure that support it should probably be something like `no_modal_active_cable`. AFAIK, it would be fine to enter DP with a passive cable that did not support an alt mode.",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

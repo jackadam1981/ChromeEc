@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e021f1a_76a93d7f",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Fixed in another CL.",
+      "parentUuid": "f8817aa0_3b628a07",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8319a4ab_1fbcf746",
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "I can create individual tests for all of these but felt that separating them out into certain blocks was a better approach due to the discovery data not being accurate anyway.",
       "parentUuid": "7b63d412_70133b11",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ca4197_0ad9404b",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T22:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4839d21b_21f150f8",
       "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
