@@ -5459,6 +5459,11 @@
 #undef CONFIG_USB_PORT_POWER_DUMB_CUSTOM_HOOK
 
 /*
+ * USB-A enable pins (define in usb_port_enable[]) are active-low.
+ */
+#undef CONFIG_USB_A_5V_EN_ACTIVE_LOW
+
+/*
  * Support smart power control to the device's USB ports, using
  * dedicated power control chips.  This potentially enables automatic
  * negotiation of supplying more power to peripherals.
