@@ -172,6 +172,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8661cde6_e8d770cf",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-21T00:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e85882f_a1f4d8c7",
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8b9009e_e0f487a8",
@@ -233,6 +251,30 @@
       "side": 1,
       "message": "Oh, I overlooked that it\u0027s treating the first reading as having always been that way rather than ignoring zeroes. That seems potentially bad because the first reading will be weighted much more than subsequent ones up to the 10th and we know that power-on tends to be among the most power-hungry states, but I suppose psys monitoring should ensure we don\u0027t blow the power budget anyway and could only affect performance in the first 20ms after power-on.",
       "parentUuid": "b04bb5ba_f1692157",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 4
+      },
+      "revId": "b2dfdaa37f04af3775d60cf2ae89bb62f8451524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55a24e3_f515f9c8",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-21T00:14:28Z",
+      "side": 1,
+      "message": "Yeah I understand your point, but since it\u0027s only 20 ms I think it\u0027s fine.",
+      "parentUuid": "db0fdada_40e4671d",
       "range": {
         "startLine": 541,
         "startChar": 0,
