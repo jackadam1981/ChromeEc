@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9327f020_4d096a94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:17:25Z",
+      "side": 1,
+      "message": "Forgot to add these peek_c comments and give +2 with open comments 😊",
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8c566f_5f83f4f0",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:17:25Z",
+      "side": 1,
+      "message": "peek_c",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 335,
+        "endChar": 16
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147e2008_e9e77c50",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:17:25Z",
+      "side": 1,
+      "message": "peek_c",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 16
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1b746b_21709193",
@@ -36,6 +99,29 @@
         "startChar": 14,
         "endLine": 465,
         "endChar": 47
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853d9283_981d900d",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-21T22:17:25Z",
+      "side": 1,
+      "message": "peek_c",
+      "range": {
+        "startLine": 491,
+        "startChar": 9,
+        "endLine": 491,
+        "endChar": 20
       },
       "revId": "bed42892f7361ee8cf414979860bd413906d9348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
