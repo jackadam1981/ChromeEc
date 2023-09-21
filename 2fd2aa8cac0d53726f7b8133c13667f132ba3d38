@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee70f2fe_be394c69",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-21T17:10:49Z",
+      "side": 1,
+      "message": "Just curious, is it a common practice to define/undef the configs for all the hammer variants in a firmware branch?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "2fd2aa8cac0d53726f7b8133c13667f132ba3d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
