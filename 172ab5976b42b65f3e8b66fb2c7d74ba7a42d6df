@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736ea5a5_1b65c13f",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-21T18:22:05Z",
+      "side": 1,
+      "message": "`STANDARD` seems too broad. It may not be standard when all projects move to using the CBI in flash and the size grows. Maybe `CBI_IMAGE_SIZE_EEPROM`?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
