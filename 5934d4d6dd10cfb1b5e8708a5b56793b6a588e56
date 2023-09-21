@@ -70,6 +70,24 @@
       "parentUuid": "d01a88c9_5da71e7e",
       "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82b0c55_10975213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-21T17:50:43Z",
+      "side": 1,
+      "message": "\u003e For all the \"old\" boards this feature will not be pushed to their firmware branches, but it will still occupy memory and might cause \"not enough flash memory\" pain for developers.\n\nThe builds are all passing, so there is enough space today for this feature. New features may run into space issues in the future, but that\u0027s true for any code that lands.\n\n----\n\nI\u0027ll give this CL a shot and let it soak for a few days before trying to land the `sysrq` CL on top of it. We can revert quickly if there are any issues/complaints.",
+      "parentUuid": "92f0ee89_475117ea",
+      "revId": "5934d4d6dd10cfb1b5e8708a5b56793b6a588e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
