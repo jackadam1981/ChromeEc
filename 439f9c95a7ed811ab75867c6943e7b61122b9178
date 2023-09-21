@@ -16,6 +16,24 @@
       "message": "how about other settings:\n\n        CONFIG_BRINGUP\n        CONFIG_SYSTEM_UNLOCKED\n        CONFIG_USB_PD_DEBUG_LEVEL\n        CONFIG_CMD_GPIO_EXTENDED\n        CONFIG_CMD_POWERINDEBUG\n        CONFIG_I2C_DEBUG\n        CONFIG_BYPASS_CBI_EEPROM_WP_CHECK",
       "revId": "439f9c95a7ed811ab75867c6943e7b61122b9178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4443fb90_51fd9084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-09-21T03:27:26Z",
+      "side": 1,
+      "message": "all defines already remove in boxy.h",
+      "parentUuid": "79555f19_84c5f248",
+      "revId": "439f9c95a7ed811ab75867c6943e7b61122b9178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
