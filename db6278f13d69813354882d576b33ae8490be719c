@@ -159,6 +159,24 @@
       "parentUuid": "10dab4c5_f0deb2bc",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be9f4aa_440caf63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-21T18:50:42Z",
+      "side": 1,
+      "message": "Re: Sue, you don\u0027t need that complicated.\n\n * Enable the `CONFIG_PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH` and use it in this build. The CBI data should be transferred from the EEPROM to the EC flash at its first boot. The `ectool` will return the data from the CBI in the EC flash.\n * At some point when all the devices have their first boot (probably weeks after the first build), disable the `CONFIG_PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH`, as all devices have done the transfer.\n * In the next build, put the CBI in the EC flash during the factory.",
+      "parentUuid": "a4103b50_db316ed0",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
