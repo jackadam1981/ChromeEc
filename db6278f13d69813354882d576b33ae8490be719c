@@ -141,6 +141,24 @@
       "parentUuid": "f133292f_73ff0566",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4103b50_db316ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-21T10:36:17Z",
+      "side": 1,
+      "message": "Can we proceed with current changes or do we need to confirm if factory flashing process involves putting CBI in EC flash",
+      "parentUuid": "10dab4c5_f0deb2bc",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
