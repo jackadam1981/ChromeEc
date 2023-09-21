@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c467e6_b51afad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 67
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T23:10:40Z",
+      "side": 1,
+      "message": "Some remaining nits, but overall, this looks good pending code coverage.",
+      "revId": "0e80984f6b491039dd630c8a6a5639a546b0189b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e37be0c_4a664d03",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T23:10:40Z",
+      "side": 1,
+      "message": "Nit: Per the below discussion of the setup functions, I think you can make all of these const now.",
+      "revId": "0e80984f6b491039dd630c8a6a5639a546b0189b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c5a763_44c1953d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T23:10:40Z",
+      "side": 1,
+      "message": "Nit: product",
+      "range": {
+        "startLine": 147,
+        "startChar": 40,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "0e80984f6b491039dd630c8a6a5639a546b0189b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

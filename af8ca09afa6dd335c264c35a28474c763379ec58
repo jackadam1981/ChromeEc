@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "699dc5f3_cdc6285a",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-09-21T23:10:40Z",
+      "side": 1,
+      "message": "OK, I see what you\u0027re going for. I think that error message is inaccurate imprecise and should be something like \"Unsupported cable product type.\" (I still don\u0027t know what Undefined is actually meant to be used for.)\n\nThis data structure and the setup function and test case should probably be named something like `_unsupported_cable_ptype`.",
+      "parentUuid": "ac35044e_cfc05e54",
+      "revId": "af8ca09afa6dd335c264c35a28474c763379ec58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "333fc604_955d27b7",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 66
