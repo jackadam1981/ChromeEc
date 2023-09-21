@@ -53,6 +53,12 @@ config PLATFORM_EC_USB_PORT_POWER_DUMB_CUSTOM_HOOK
 	  Enable this if your board does not want to use the default S3 hooks
 	  from USB_PORT_POWER_DUMB.
 
+config PLATFORM_EC_USB_A_5V_EN_ACTIVE_LOW
+	bool "USB-A enable pins are active low"
+	help
+	  This allow the boards to define the USB-A 5V enable pins active low.
+	  usb_port_set_enabled() will set the pins low to enable USB-A 5V.
+
 if PLATFORM_EC_USB_PORT_POWER_SMART
 
 config PLATFORM_EC_USB_PORT_POWER_SMART_CDP_SDP_ONLY
