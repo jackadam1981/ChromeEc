@@ -295,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0878b4c6_3b102087",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "We have so much RAM it is hard to come up with uses for it.  The build system claims `44092 bytes in RAM still available`, but that is based on a 64kB RAM area, when the datasheet actually says 256kB.  I have not bothered investigating how to properly tell the EC makefiles that this part has four times the RAM they think.",
+      "parentUuid": "5614f296_c3403339",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 17
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20872d3c_609f237f",
@@ -554,6 +578,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a501f7_bd002d21",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e985e0ab_7508da56",
+      "range": {
+        "startLine": 431,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 3
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b081a194_c69caedd",
@@ -615,6 +663,30 @@
       "side": 1,
       "message": "That makes sense. Can you add some or all of that information to that comment please?",
       "parentUuid": "ba3d3337_f607824a",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 12
+      },
+      "revId": "1bef08d3dccdffc82140e219cf063c011a5c8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cf86bb_5e09accd",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40477062_01379801",
       "range": {
         "startLine": 548,
         "startChar": 7,

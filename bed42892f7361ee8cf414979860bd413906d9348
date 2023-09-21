@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e215c79d_8e93b51b",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8c566f_5f83f4f0",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 335,
+        "endChar": 16
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "147e2008_e9e77c50",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-09-21T22:17:25Z",
       "side": 1,
       "message": "peek_c",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 16
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179ef4ef_584feb77",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147e2008_e9e77c50",
       "range": {
         "startLine": 373,
         "startChar": 5,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "339622f7_96e79bf0",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1b746b_21709193",
+      "range": {
+        "startLine": 465,
+        "startChar": 14,
+        "endLine": 465,
+        "endChar": 47
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853d9283_981d900d",
@@ -117,6 +189,30 @@
       "writtenOn": "2023-09-21T22:17:25Z",
       "side": 1,
       "message": "peek_c",
+      "range": {
+        "startLine": 491,
+        "startChar": 9,
+        "endLine": 491,
+        "endChar": 20
+      },
+      "revId": "bed42892f7361ee8cf414979860bd413906d9348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a67f7b_bd5ce31a",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-09-21T22:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "853d9283_981d900d",
       "range": {
         "startLine": 491,
         "startChar": 9,
