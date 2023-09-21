@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5253f861_b322e51f",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T21:05:20Z",
+      "side": 1,
+      "message": "this is fixed with the changes to the emulator",
+      "parentUuid": "f8817aa0_3b628a07",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8319a4ab_1fbcf746",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "I think the natural way to set this up in the test is just to have no cable discovery responses for this test, i.e. the SOP\u0027 partner structures should be empty/null.",
       "parentUuid": "1fa7f4dd_f512fc05",
+      "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7f2247_06340db9",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 63
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-09-21T21:05:20Z",
+      "side": 1,
+      "message": "fixed naming this is one of two no SOP\u0027 exit points this one exists early in the case of not passive or active. Later there is a check if the cable has a SOP\u0027 for TBT or DP and exists if neither",
+      "parentUuid": "b1a1e404_7b7fee2d",
       "revId": "cabc647bf99c1cdda1d1f0236130ad67e6bcfdc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
