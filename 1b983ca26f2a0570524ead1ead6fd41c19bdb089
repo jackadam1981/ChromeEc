@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c85407_f8e25a8d",
+        "filename": "common/chipset.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-21T00:54:02Z",
+      "side": 1,
+      "message": "nit: If intex_x86.c is fixed, I believe pd_chipset_shutdown doesn\u0027t need to be changed. It monitors CHIPSET_SHUTDOWN_POWERFAIL and apshutdown (and hibernate) will set CHIPSET_SHUTDOWN_CONSOLE_CMD.",
+      "range": {
+        "startLine": 40,
+        "startChar": 64,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "1b983ca26f2a0570524ead1ead6fd41c19bdb089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
