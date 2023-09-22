@@ -195,6 +195,24 @@
       "parentUuid": "0be9f4aa_440caf63",
       "revId": "db6278f13d69813354882d576b33ae8490be719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ce8d98_1ae503d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-22T07:39:07Z",
+      "side": 1,
+      "message": "Re: Madhurima, I can use `cbfstool` to copy cbi into ec binary. The factory can use this binary to flash in EC flash directly. Thanks!",
+      "parentUuid": "ea88eb8f_76e72a7b",
+      "revId": "db6278f13d69813354882d576b33ae8490be719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
