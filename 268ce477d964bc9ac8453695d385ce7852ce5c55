@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f8160a_bb2817d5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-22T15:47:41Z",
+      "side": 1,
+      "message": "Do you need guards for these conditions?\n\nWhat happens if the power button is held long enough for the tasks to start?",
+      "range": {
+        "startLine": 658,
+        "startChar": 50,
+        "endLine": 659,
+        "endChar": 26
+      },
+      "revId": "268ce477d964bc9ac8453695d385ce7852ce5c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
