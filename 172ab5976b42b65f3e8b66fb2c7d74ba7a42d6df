@@ -141,6 +141,30 @@
       },
       "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f3eeb1_4f280ca7",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-22T10:01:51Z",
+      "side": 1,
+      "message": "CBI section size on flash (erase size aligned) - is used CBI driver to erase, is used by flash driver to avoid read/write/erase operations in this section\n\nCBI image size on flash (to fit in RAM) - is used CBI driver to read and write",
+      "parentUuid": "1a1314b8_ef573e44",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 62
+      },
+      "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
