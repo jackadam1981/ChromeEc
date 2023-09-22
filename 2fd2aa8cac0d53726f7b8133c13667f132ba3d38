@@ -46,6 +46,30 @@
       },
       "revId": "2fd2aa8cac0d53726f7b8133c13667f132ba3d38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf136a6_31f90894",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-22T04:44:09Z",
+      "side": 1,
+      "message": "Not a good practice, but we did this on all other hammer boards.",
+      "parentUuid": "5ae6afae_6b962d72",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "2fd2aa8cac0d53726f7b8133c13667f132ba3d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
