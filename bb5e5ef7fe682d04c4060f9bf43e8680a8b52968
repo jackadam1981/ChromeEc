@@ -16,6 +16,24 @@
       "message": "It\u0027s very strange to me that this is globally allocating a fw_config bit, because normally boards have complete control over the meaning of their own fw_config- this effectively steals bit 31 from every existing board in a way they probably aren\u0027t designed to expect.\n\nI\u0027d be much more comfortable checking if any (or all, if they\u0027re all needed) of the CBI fields containing battery information exist and not touching fw_config here.",
       "revId": "bb5e5ef7fe682d04c4060f9bf43e8680a8b52968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459902d2_076fd2a0",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-22T19:06:55Z",
+      "side": 1,
+      "message": "Removed.\n\nI thought the highest bit currently used of all boards was 20 (when I submitted the CL) but I just found zork use 30 \u0026 31. So, I moved BCIC_ENABLED to a separate tag (CBI_TAG_COMMON_CONTROL).",
+      "parentUuid": "0a1c94fd_25d6a3e0",
+      "revId": "bb5e5ef7fe682d04c4060f9bf43e8680a8b52968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
