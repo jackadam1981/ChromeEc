@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81b31d6_9fbf9a5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-22T21:29:42Z",
+      "side": 1,
+      "message": "`build_with_clang.py` file has lists of boards within it\nto decide which boards to compile with clang and thus indirectly\nenforce flash size limits. it\u0027s mostly ceremonial as there is no\ncorrective action warranted other than to exclude it\nwhen a board built with clang can\u0027t fit.\n\nother than the fingerprint projects, gcc is our production compiler.\ni think the idea behind compiling with clang is to make sure we don\u0027t\nbreak common code used by the fingerprint projects. the image\nsize produced by clang is significantly larger than gcc, so it\u0027s\nreally not feasible for many boards.",
+      "parentUuid": "10acf926_ddd8f7eb",
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287c547a_37df844f",
@@ -85,6 +103,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c8fb238_020af8cc",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-22T21:29:42Z",
+      "side": 1,
+      "message": "yes, please... at least that\u0027ll inform people like me who don\u0027t read\nvery far ahead informed.",
+      "parentUuid": "bc997c18_1f241b85",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "897037d1_eab57ba8",
         "filename": "power/host_sleep.c",
         "patchSetId": 17
@@ -96,6 +138,30 @@
       "writtenOn": "2023-09-22T15:18:46Z",
       "side": 1,
       "message": "ref1",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 18
+      },
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91732b52_57b35822",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-22T21:29:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "897037d1_eab57ba8",
       "range": {
         "startLine": 167,
         "startChar": 0,
