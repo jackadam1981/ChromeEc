@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52d4d2b_d7697afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-22T01:44:46Z",
+      "side": 1,
+      "message": "have you already run `util/build_with_clang.py`?\nthere may be additional boards with negative flash space headroom.\njust add such boards to the exclude list in the checker.",
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287c547a_37df844f",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-22T01:44:46Z",
+      "side": 1,
+      "message": "obligatory question. why RW only?",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
