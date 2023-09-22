@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca578747_f70bf446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-22T01:27:09Z",
+      "side": 1,
+      "message": "Compare to crrev/c/4881963, this CL no need to add new CONFIG but I\u0027m not sure if it impacts other codes used `gpio_or_ioex_set_gpio()`. I can only verify it on USB-A function of Karis.",
+      "revId": "834feb219e0a6dcc4654b909e6af83b9b25e2547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
