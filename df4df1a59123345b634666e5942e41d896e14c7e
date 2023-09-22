@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08f3a35e_cd822cd3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T22:44:30Z",
+      "side": 1,
+      "message": "I see that `image_magic` value is set in 4686 solely based on the `is_dauntless` value. So, just checking for `is_dauntless` everywerhe in this fucntion shoud be sufficient, no?",
+      "parentUuid": "c1efea39_b677769b",
+      "range": {
+        "startLine": 4750,
+        "startChar": 7,
+        "endLine": 4750,
+        "endChar": 37
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69011456_28ab787f",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "That is the valid fw image. I didn\u0027t like the name either, so I renamed it based on this feedback 😊",
       "parentUuid": "69011456_28ab787f",
+      "range": {
+        "startLine": 4764,
+        "startChar": 8,
+        "endLine": 4764,
+        "endChar": 12
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3864c0_47151855",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4764,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T22:44:30Z",
+      "side": 1,
+      "message": "I understand that data points at an image, I don\u0027t understand we consider this pointer at this point of the program, why is `is_dauntless` not enough.\n\nIf image data was supplied we already know if tihs is for Haven or Dauntless, and `is_dauntless` would be set appropriately, what am I missing?",
+      "parentUuid": "1d5f8c37_91376cda",
       "range": {
         "startLine": 4764,
         "startChar": 8,
