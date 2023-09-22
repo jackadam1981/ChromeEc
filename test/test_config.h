@@ -382,6 +382,13 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_ALS_LIGHTBAR_DIMMING 0
 #endif
 
+/* Host target doesn't defined RWSIG, specify here */
+#if defined(TEST_RWSIG) && defined(BOARD_HOST)
+#define CONFIG_RWSIG
+#define CONFIG_RWSIG_TYPE_RWSIG
+#define CONFIG_RSA
+#endif
+
 #ifdef TEST_USB_COMMON
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_TCPMV1

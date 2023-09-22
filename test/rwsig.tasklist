@@ -1,0 +1,15 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/**
+ * See CONFIG_TASK_LIST in config.h for details.
+ */
+
+/* Host target doesn't have rwsig, so explicitly include it */
+#ifdef BOARD_HOST
+#define CONFIG_TEST_TASK_LIST TASK_ALWAYS(RWSIG, rwsig_task, NULL, 1280)
+#else
+#define CONFIG_TEST_TASK_LIST
+#endif
