@@ -4720,16 +4720,6 @@ int main(int argc, char *argv[])
 			printf("Ignoring binary image %s\n", argv[optind]);
 	}
 
-	/*
-	 * If no usb device information was given, default to the using haven
-	 * or dauntless vendor and product id to find the usb device.
-	 */
-	if (!serial && !vid && !pid) {
-		vid = USB_VID_GOOGLE;
-		/* Set default product id based on image type */
-		pid = (image_magic == MAGIC_DAUNTLESS) ? D2_PID : H1_PID;
-	}
-
 	if (((bid_action != bid_none) + !!rma + !!password + !!ccd_open +
 	     !!ccd_unlock + !!ccd_lock + !!ccd_info + !!get_flog +
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
@@ -4743,10 +4733,47 @@ int main(int argc, char *argv[])
 	}
 
 	if (td.ep_type == usb_xfer) {
-		if (usb_findit(serial, vid, pid, USB_SUBCLASS_GOOGLE_CR50,
-			       USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE,
-			       &td.uep))
-			exit(update_error);
+		/* Extra variables only used to prevent 80+ character lines */
+		const uint16_t subclass = USB_SUBCLASS_GOOGLE_CR50;
+		const uint16_t protocol =
+			USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE;
+		/*
+		 * If no usb device information was given, default to the using
+		 * haven or dauntless vendor and product id to find the usb
+		 * device, but then try the other if the first isn't found
+		 */
+		if (!serial && !vid && !pid) {
+			uint16_t backup_pid;
+
+			vid = USB_VID_GOOGLE;
+			/* Set default product id based on image type */
+			if (image_magic == MAGIC_DAUNTLESS) {
+				pid = D2_PID;
+				backup_pid = H1_PID;
+			} else {
+				pid = H1_PID;
+				backup_pid = D2_PID;
+			}
+			if (usb_findit(serial, vid, pid, subclass, protocol,
+				       &td.uep)) {
+				/*
+				 * If we have a valid FW image, or dauntless was
+				 * specifically requested, do not try backup
+				 * pid. Exit immediately.
+				 */
+				if (data || is_dauntless)
+					exit(update_error);
+				pid = backup_pid;
+				/* Try the back pid, then fail if not present */
+				if (usb_findit(serial, vid, pid, subclass,
+					       protocol, &td.uep))
+					exit(update_error);
+			}
+		} else {
+			if (usb_findit(serial, vid, pid, subclass, protocol,
+				       &td.uep))
+				exit(update_error);
+		}
 	} else if (td.ep_type == dev_xfer) {
 		td.tpm_fd = open("/dev/tpm0", O_RDWR);
 		if (td.tpm_fd < 0) {
