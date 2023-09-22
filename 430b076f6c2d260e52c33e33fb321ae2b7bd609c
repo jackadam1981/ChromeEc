@@ -22,6 +22,30 @@
       },
       "revId": "430b076f6c2d260e52c33e33fb321ae2b7bd609c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a276c04_041292ae",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-09-22T20:27:35Z",
+      "side": 1,
+      "message": "With the latest changes, this no longer makes sense.",
+      "parentUuid": "d492c2a2_b203fb45",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 47
+      },
+      "revId": "430b076f6c2d260e52c33e33fb321ae2b7bd609c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
