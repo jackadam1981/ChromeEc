@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6bb7e9_42a852a0",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-22T00:27:48Z",
+      "side": 1,
+      "message": "I noted on the parent change that I don\u0027t think fw_config is a good place for this flag, but otherwise this change is unobjectionable.",
+      "revId": "ec087f904b7f324a035c23343ee99764a8a5d117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
