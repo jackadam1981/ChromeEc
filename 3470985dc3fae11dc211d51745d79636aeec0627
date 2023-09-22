@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10acf926_ddd8f7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-22T15:18:46Z",
+      "side": 1,
+      "message": "\u003e have you already run util/build_with_clang.py?\n\nYes, I\u0027ve run it locally, and CQ runs it as well. These are the only boards that need it disabled due to flash size.\n\n\u003e just add such boards to the exclude list in the checker.\n\nI don\u0027t know what this means. What checker are you referring to?\n\nAlso, would this only prevent the check that the code fits in flash, meaning the resulting binary couldn\u0027t actually be used (since it would be too large to fit in flash on the device)?",
+      "parentUuid": "a52d4d2b_d7697afe",
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "287c547a_37df844f",
         "filename": "power/host_sleep.c",
         "patchSetId": 17
@@ -36,6 +54,53 @@
         "startChar": 4,
         "endLine": 136,
         "endChar": 26
+      },
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc997c18_1f241b85",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-22T15:18:46Z",
+      "side": 1,
+      "message": "This is explained a bit further down (see ref1):\n\n```\n * Only runs in RW to de-risk an unrecoverable boot loop in RO.\n```\n\nI can shuffle things around a bit and move this up to the `#ifdef` if that helps.",
+      "parentUuid": "287c547a_37df844f",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897037d1_eab57ba8",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-22T15:18:46Z",
+      "side": 1,
+      "message": "ref1",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 18
       },
       "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
