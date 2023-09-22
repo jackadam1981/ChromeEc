@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4303a9_2976b166",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T20:44:55Z",
+      "side": 1,
+      "message": "A like this idea, we should extend it to the case when gsctool is running on the DUT and is using the TPM interface. Maybe by looking at /opt/google/ or at a file in /etc/init.d",
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d99b90fd_14663437",
