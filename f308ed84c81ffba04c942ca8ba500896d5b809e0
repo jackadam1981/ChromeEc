@@ -16,6 +16,29 @@
       "message": "Modified the structure to support both MECC1.0 \u0026 MECC1.1",
       "revId": "f308ed84c81ffba04c942ca8ba500896d5b809e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724fed8b_2fc51eaa",
+        "filename": "zephyr/program/intelrvp/include/intelrvp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-22T15:16:52Z",
+      "side": 1,
+      "message": "This naming is a little confusing.  How about `mecc1_1_tcpc_aic_gpio_config` and `mecc1_1_tcpc_aic_gpios`?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "f308ed84c81ffba04c942ca8ba500896d5b809e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
