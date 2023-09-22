@@ -739,13 +739,13 @@ int crec_flash_read(int offset, int size, char *data)
 	return EC_SUCCESS;
 }
 
-static void flash_abort_or_invalidate_hash(int offset, int size)
+test_export_static int flash_abort_or_invalidate_hash(int offset, int size)
 {
 #ifdef CONFIG_VBOOT_HASH
 	if (vboot_hash_in_progress()) {
 		/* Abort hash calculation when flash update is in progress. */
 		vboot_hash_abort();
-		return;
+		return EC_ERROR_BUSY;
 	}
 
 #ifdef CONFIG_EXTERNAL_STORAGE
@@ -755,7 +755,7 @@ static void flash_abort_or_invalidate_hash(int offset, int size)
 	 * flash copy and the RAM copy, then take necessary actions.
 	 */
 	if (system_is_in_rw())
-		return;
+		return EC_ERROR_INVAL;
 #endif
 
 	/* If EC executes in place, we need to invalidate the cached hash. */
@@ -772,9 +772,12 @@ static void flash_abort_or_invalidate_hash(int offset, int size)
 	    ((offset + size) > CONFIG_RW_MEM_OFF &&
 	     (offset + size) <= (CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE)) ||
 	    (offset < CONFIG_RW_MEM_OFF &&
-	     (offset + size) > (CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE)))
+	     (offset + size) > (CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE))) {
 		rwsig_abort();
+		return EC_ERROR_INVAL;
+	}
 #endif
+	return EC_SUCCESS;
 }
 
 int crec_flash_write(int offset, int size, const char *data)
