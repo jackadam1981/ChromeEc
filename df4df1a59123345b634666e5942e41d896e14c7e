@@ -16,6 +16,92 @@
       "message": "I am tried of forgetting the `-D`; this should break any backwards compatibility either.",
       "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7565871b_f317f7f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T20:43:00Z",
+      "side": 1,
+      "message": "a few questions/nits",
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99b90fd_14663437",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T20:43:00Z",
+      "side": 1,
+      "message": "why use different checks for the same Boolean? `is_dauntless` should suffice, like in line 4764",
+      "range": {
+        "startLine": 4750,
+        "startChar": 7,
+        "endLine": 4750,
+        "endChar": 37
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69011456_28ab787f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4764,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T20:43:00Z",
+      "side": 1,
+      "message": "why is `data` a condition here?",
+      "range": {
+        "startLine": 4764,
+        "startChar": 8,
+        "endLine": 4764,
+        "endChar": 12
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e2f7c4_d8c67564",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4767,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-22T20:43:00Z",
+      "side": 1,
+      "message": "why is `backup_pid` variable even required - won\u0027t we come here only if we tried H1 and did not find it, while dauntless was not explicitly requested? Dauntless PID could be used here unconditionally I think.",
+      "range": {
+        "startLine": 4767,
+        "startChar": 4,
+        "endLine": 4767,
+        "endChar": 21
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
