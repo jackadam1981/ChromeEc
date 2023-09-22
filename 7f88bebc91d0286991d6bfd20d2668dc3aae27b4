@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e5710f_aa8cd1ba",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-22T18:22:48Z",
+      "side": 1,
+      "message": "Nit - in a follow up CL, the API names for the PD altmode are confusing.\n\nThe names `pd_altmode_write` and `pd_altmode_read` imply that the functions are symmetrical.  `pd_altmode_write_control` and `pd_altmode_read_status` would be much clearer.",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "7f88bebc91d0286991d6bfd20d2668dc3aae27b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
