@@ -69,6 +69,30 @@
       },
       "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021f69d3_99d8a3ce",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-09-22T09:30:38Z",
+      "side": 1,
+      "message": "I am not sure I understood the comment completely\n\nimage-size is DT propery so we would set it only one time, read multiple times to get size of CBI image, not sure we could change it during runtime, even if we could it\u0027s not supposed to be changed at runtime\n\nCBI image size and CBI section size is different because, in Rex case there is RAM overflow if we try to load 0x10000 bytes (older CBI section size) to image, hence we are using 256 bytes for now which is sufficient\n\nBut with BCIC data in CBI, the 256 bytes is not enough for projects that has it, hence adding this capability\n\nThis property is only to be used by CBI driver to read and modify CBI \n\nThere are no hard rules like it should be multiple or something or aligned to something, it could be any number",
+      "parentUuid": "4557b49d_c961288a",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 62
+      },
+      "revId": "172ab5976b42b65f3e8b66fb2c7d74ba7a42d6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
