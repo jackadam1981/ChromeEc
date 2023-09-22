@@ -22,6 +22,30 @@
       },
       "revId": "268ce477d964bc9ac8453695d385ce7852ce5c55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ac9982_a01b1295",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-22T20:58:31Z",
+      "side": 1,
+      "message": "\u003e What happens if the power button is held long enough for the tasks to start?\n\nUpdated the logic and comments. Ptal.\n\n\u003e Do you need guards for these conditions?\n\nProbably ok not to have guards. There are various situations where this function can be called (e.g. task disabled, scanning disabled, etc.). So, I\u0027m afraid adding comprehensive guards is complex and slows things down.",
+      "parentUuid": "d3f8160a_bb2817d5",
+      "range": {
+        "startLine": 658,
+        "startChar": 50,
+        "endLine": 659,
+        "endChar": 26
+      },
+      "revId": "268ce477d964bc9ac8453695d385ce7852ce5c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
