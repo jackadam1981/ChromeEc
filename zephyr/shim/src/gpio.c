@@ -165,7 +165,15 @@ void gpio_set_level_verbose(enum console_channel channel,
 
 void gpio_or_ioex_set_level(int signal, int value)
 {
-	gpio_set_level(signal, value);
+	if (!gpio_is_implemented(signal))
+		return;
+
+	int rv = gpio_pin_set(configs[signal].spec.port,
+			      configs[signal].spec.pin, value);
+
+	if (rv < 0) {
+		LOG_ERR("Cannot write %s (%d)", configs[signal].name, rv);
+	}
 }
 
 int gpio_or_ioex_get_level(int signal, int *value)
