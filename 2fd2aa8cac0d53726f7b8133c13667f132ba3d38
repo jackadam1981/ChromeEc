@@ -22,6 +22,30 @@
       },
       "revId": "2fd2aa8cac0d53726f7b8133c13667f132ba3d38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae6afae_6b962d72",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1436607
+      },
+      "writtenOn": "2023-09-22T00:34:01Z",
+      "side": 1,
+      "message": "Maybe yes, I just checked that kukui does the same thing.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-kukui-12573.B/board/hammer/board.h#14",
+      "parentUuid": "ee70f2fe_be394c69",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "2fd2aa8cac0d53726f7b8133c13667f132ba3d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
