@@ -34,6 +34,24 @@
       "parentUuid": "7e5aaf0f_0f5f85ba",
       "revId": "109727f62cfcdd9031de9ffe3e5daebae9aa712a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c454d61_6e1e44f5",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-09-22T09:48:54Z",
+      "side": 1,
+      "message": "Yeah you are right, sorry I did not realize that was the case. Added a comment in the other change asking Keith if he knows what\u0027s behind that choice but I suspect it\u0027s a no-go.\n\nWhat we can do instead is to get the gpio data with `gpio_get_dt_spec` and use `gpio_pin_set_dt` directly, then the change would be self confined here, something like\n\n```\nconst struct gpio_dt_spec *gpio \u003d gpio_get_dt_spec(usb_port_enable[port_id]);\ngpio_pin_set_dt(gpio, en);\n```",
+      "parentUuid": "ec4ed5bf_55d879b5",
+      "revId": "109727f62cfcdd9031de9ffe3e5daebae9aa712a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
