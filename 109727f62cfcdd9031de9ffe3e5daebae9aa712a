@@ -52,6 +52,24 @@
       "parentUuid": "ec4ed5bf_55d879b5",
       "revId": "109727f62cfcdd9031de9ffe3e5daebae9aa712a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a439b8_bbad3265",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-23T05:41:42Z",
+      "side": 1,
+      "message": "I uploaded to another change (CL:4885663) and also verified on Karis. If the change could be accepted I will abandon here. Thanks!",
+      "parentUuid": "7c454d61_6e1e44f5",
+      "revId": "109727f62cfcdd9031de9ffe3e5daebae9aa712a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
