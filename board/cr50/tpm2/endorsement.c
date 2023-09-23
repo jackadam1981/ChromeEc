@@ -327,13 +327,12 @@ const uint8_t FIXED_ECC_ENDORSEMENT_CERT[804] = {
 	0x52, 0x95, 0x13, 0x6e, 0xb7, 0x33, 0x1f, 0x8d, 0xc6, 0x22, 0xd8, 0xe4
 };
 
-static int store_eps(const uint8_t eps[PRIMARY_SEED_SIZE]);
 static int store_cert(enum cros_perso_component_type component_type,
 		      const uint8_t *cert, size_t cert_len);
 
 static int install_fixed_certs(void)
 {
-	if (!store_eps(FIXED_ENDORSEMENT_SEED))
+	if (set_eps() != EC_SUCCESS)
 		return 0;
 
 	if (!store_cert(CROS_PERSO_COMPONENT_TYPE_RSA_CERT,
@@ -457,36 +456,6 @@ static void flash_cert_region_enable(void)
 
 #define K_CROS_FW_MAJOR_VERSION 0
 
-/* EPS is stored XOR'd with FRK2, so make sure that the sizes match. */
-BUILD_ASSERT(AES256_BLOCK_CIPHER_KEY_SIZE == PRIMARY_SEED_SIZE);
-static int get_decrypted_eps(uint8_t eps[PRIMARY_SEED_SIZE])
-{
-	int i;
-	uint8_t frk2[AES256_BLOCK_CIPHER_KEY_SIZE];
-
-	CPRINTF("%s: getting eps\n", __func__);
-	if (!DCRYPTO_ladder_compute_frk2(K_CROS_FW_MAJOR_VERSION, frk2))
-		return 0;
-
-	for (i = 0; i < INFO1_EPS_SIZE; i += sizeof(uint32_t)) {
-		uint32_t word;
-
-		if (flash_physical_info_read_word(
-				INFO1_EPS_OFFSET + i, &word) != EC_SUCCESS) {
-			always_memset(frk2, 0, sizeof(frk2));
-			return 0;     /* Flash read INFO1 failed. */
-		}
-		memcpy(eps + i, &word, sizeof(word));
-	}
-
-	/* One-time-pad decrypt EPS. */
-	for (i = 0; i < PRIMARY_SEED_SIZE; i++)
-		eps[i] ^= frk2[i];
-
-	always_memset(frk2, 0, sizeof(frk2));
-	return 1;
-}
-
 static int handle_cert(
 	const struct cros_perso_response_component_info_v0 *cert_info,
 	const struct cros_perso_certificate_response_v0 *cert,
@@ -509,15 +478,50 @@ static int handle_cert(
 }
 #endif /* above for the case `not CR50_USE_FIXED_CERT` */
 
-static int store_eps(const uint8_t eps[PRIMARY_SEED_SIZE])
+/* EPS is stored XOR'd with FRK2, so make sure that the sizes match. */
+BUILD_ASSERT(AES256_BLOCK_CIPHER_KEY_SIZE == PRIMARY_SEED_SIZE);
+enum ec_error_list set_eps(void)
 {
 	/* gp is a TPM global state structure, declared in Global.h. */
-	memcpy(gp.EPSeed.t.buffer, eps, PRIMARY_SEED_SIZE);
-	gp.EPSeed.t.size = PRIMARY_SEED_SIZE;
+	uint8_t *eps = gp.EPSeed.t.buffer;
 
-	/* Persist the seed to flash. */
-	NvWriteReserved(NV_EP_SEED, &gp.EPSeed);
-	return NvCommit();
+#ifndef CR50_USE_FIXED_CERT
+	uint8_t frk2[AES256_BLOCK_CIPHER_KEY_SIZE];
+	size_t i;
+
+	if (!DCRYPTO_ladder_compute_frk2(K_CROS_FW_MAJOR_VERSION, frk2))
+		return EC_ERROR_HW_INTERNAL;
+	flash_cert_region_enable();
+
+	for (i = 0; i < INFO1_EPS_SIZE; i += sizeof(uint32_t)) {
+		uint32_t word;
+
+		if (flash_physical_info_read_word(INFO1_EPS_OFFSET + i,
+						  &word) != EC_SUCCESS) {
+			always_memset(frk2, 0, sizeof(frk2));
+			/* Flash read INFO1 failed. */
+			return EC_ERROR_HW_INTERNAL;
+		}
+		memcpy(eps + i, &word, sizeof(word));
+	}
+	/* One-time-pad decrypt EPS. */
+	for (i = 0; i < PRIMARY_SEED_SIZE; i++)
+		eps[i] ^= frk2[i];
+
+	always_memset(frk2, 0, sizeof(frk2));
+#else
+	memcpy(eps, FIXED_ENDORSEMENT_SEED, PRIMARY_SEED_SIZE);
+#endif
+	gp.EPSeed.t.size = PRIMARY_SEED_SIZE;
+	/**
+	 * Persist the seed to NV cache, and to the flash.
+	 * Equivalent to NvWriteReserved(NV_EP_SEED, &gp.EPSeed);
+	 * but without triggering NV update.
+	 */
+	_plat__NvMemoryWrite(s_reservedAddr[NV_EP_SEED],
+			     s_reservedSize[NV_EP_SEED], &gp.EPSeed);
+
+	return EC_SUCCESS;
 }
 
 static void endorsement_complete(void)
@@ -551,20 +555,22 @@ enum manufacturing_status tpm_endorse(void)
 	const uint32_t *c = (const uint32_t *) RO_CERTS_START_ADDR;
 	const struct ro_cert *rsa_cert;
 	const struct ro_cert *ecc_cert;
-	uint8_t eps[PRIMARY_SEED_SIZE];
+	uint8_t *eps = gp.EPSeed.t.buffer;
 
 	struct hmac_sha256_ctx hmac;
 
-	flash_cert_region_enable();
+	/* Read EPS. It is used to check certs. Also enable read access for
+	 * flash info region as a side-effect.
+	 */
+	CPRINTF("%s: getting eps\n", __func__);
+	if (set_eps() != EC_SUCCESS) {
+		CPRINTF("%s(): failed to read eps\n", __func__);
+		return mnf_eps_decr;
+	}
 
 	/* First boot, certs not yet installed. */
 	if (*c == 0xFFFFFFFF)
 		return mnf_no_certs;
-
-	if (!get_decrypted_eps(eps)) {
-		CPRINTF("%s(): failed to read eps\n", __func__);
-		return mnf_eps_decr;
-	}
 
 	/* Unpack rsa cert struct. */
 	rsa_cert = (const struct ro_cert *) p;
@@ -655,13 +661,6 @@ enum manufacturing_status tpm_endorse(void)
 		}
 		CPRINTF("%s: ECC cert install success\n", __func__);
 
-		/* Copy EPS from INFO1 to flash data region. */
-		if (!store_eps(eps)) {
-			CPRINTF("%s(): eps storage failed\n", __func__);
-			result = mnf_store;
-			break;
-		}
-
 		/* Mark as endorsed. */
 		endorsement_complete();
 
@@ -669,7 +668,6 @@ enum manufacturing_status tpm_endorse(void)
 		result = mnf_success;
 	} while (0);
 
-	always_memset(eps, 0, sizeof(eps));
 #else  /*  CR50_USE_FIXED_CERT vvvv defined    ^^^^^ not defined */
 	if (!install_fixed_certs()) {
 		CPRINTF(" failed to install fixed "
@@ -683,5 +681,6 @@ enum manufacturing_status tpm_endorse(void)
 		result = mnf_success;
 	}
 #endif
+	cflush();
 	return result;
 }

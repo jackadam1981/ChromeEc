@@ -33,4 +33,7 @@ enum manufacturing_status {
 
 enum manufacturing_status tpm_endorse(void);
 
+/* Copy EPS from INFO space to gp.EPSeed. */
+enum ec_error_list set_eps(void);
+
 #endif	/* __CROS_EC_TPM_MANUFACTURE_H */
