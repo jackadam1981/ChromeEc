@@ -594,6 +594,7 @@ static void tpm_init(void)
 {
 	/* This is more related to TPM task activity than TPM transactions */
 	cprints(CC_TASK, "%s", __func__);
+	cflush();
 
 	if (system_rolling_reboot_suspected()) {
 		cprints(CC_TASK, "%s interrupted", __func__);
@@ -642,12 +643,15 @@ static void tpm_init(void)
 		endorse_result = tpm_endorse();
 
 		ccprints("Endorsement %s (%d)",
-			 (endorse_result == mnf_success) ?
-			 "succeeded" : "failed", endorse_result);
-		cflush();
+			 (endorse_result == mnf_success) ? "succeeded" :
+							   "failed",
+			 endorse_result);
 	} else {
 		_plat__SetNvAvail();
+		if (set_eps() != EC_SUCCESS)
+			ccprints("EPS load failed");
 	}
+	cflush();
 #endif
 }
 
