@@ -28,6 +28,12 @@ static uint8_t charge_mode[USB_PORT_COUNT];
 
 static void usb_port_set_enabled(int port_id, int en)
 {
+#ifdef CONFIG_PLATFORM_EC_USB_PORT_POWER_DUMB
+	const struct gpio_dt_spec *gpio =
+		gpio_get_dt_spec(usb_port_enable[port_id]);
+
+	gpio_pin_set_dt(gpio, en);
+#else
 	/*
 	 * Only enable valid ports.
 	 */
@@ -35,6 +41,7 @@ static void usb_port_set_enabled(int port_id, int en)
 		gpio_or_ioex_set_level(usb_port_enable[port_id], en);
 		charge_mode[port_id] = en;
 	}
+#endif
 }
 
 __maybe_unused static void usb_port_all_ports_on(void)
