@@ -845,7 +845,7 @@ static void sm5803_init(int chgnum)
 	 * the setpoint is not confirmed.
 	 */
 	rv |= main_read8(chgnum, SM5803_REG_INT2_EN, &reg);
-	reg |= SM5803_INT2_TINT;
+	reg = SM5803_INT2_TINT;
 	rv |= main_write8(chgnum, SM5803_REG_INT2_EN, reg);
 
 	/*
