@@ -308,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f62fc7_e177b2a2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4764,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-25T19:21:04Z",
+      "side": 1,
+      "message": "\u003e If image data was supplied we already know if tihs is for Haven or Dauntless, and is_dauntless would be set appropriately, what am I missing?\n\nThis statement is true before and after this change. I agree that it is a little weird, but it would be the correct thing to do, other than to error instead of trying to write the FW image... Actually I open a second CL (CL:4891656) to correct this case since it is unrelated to this change, but still a useful change.",
+      "parentUuid": "8d3864c0_47151855",
+      "range": {
+        "startLine": 4764,
+        "startChar": 8,
+        "endLine": 4764,
+        "endChar": 12
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72e2f7c4_d8c67564",
