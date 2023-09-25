@@ -3424,7 +3424,7 @@ __maybe_unused static void tc_drp_auto_toggle_entry(const int port)
 	 * transition into auto toggle doesn't violate spec timing.
 	 */
 	pd_timer_enable(port, TC_TIMER_TIMEOUT,
-			MAX(PD_T_DRP_SNK, PD_T_DRP_SRC));
+			1*MSEC);
 }
 
 __maybe_unused static void tc_drp_auto_toggle_run(const int port)
