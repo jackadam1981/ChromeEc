@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "feea90a3_d3ec0642",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-25T16:39:27Z",
+      "side": 1,
+      "message": "the `locate_headers` function also sets `image_magic` and that happens after `is_dauntless` is used to set `image_magic`",
+      "parentUuid": "08f3a35e_cd822cd3",
+      "range": {
+        "startLine": 4750,
+        "startChar": 7,
+        "endLine": 4750,
+        "endChar": 37
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69011456_28ab787f",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
