@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af50f243_74b1aea1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-25T16:06:39Z",
+      "side": 1,
+      "message": "Thanks for the pointer, since this lets up keep the hang detection enabled on (most of) those boards.",
+      "parentUuid": "e81b31d6_9fbf9a5c",
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287c547a_37df844f",
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "yes, please... at least that\u0027ll inform people like me who don\u0027t read\nvery far ahead informed.",
       "parentUuid": "bc997c18_1f241b85",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "3470985dc3fae11dc211d51745d79636aeec0627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "669e8ee2_1d1c8f7e",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-09-25T16:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c8fb238_020af8cc",
       "range": {
         "startLine": 136,
         "startChar": 4,
