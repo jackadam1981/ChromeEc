@@ -181,6 +181,30 @@
       },
       "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e777ea3a_fb00d5b2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-25T19:00:13Z",
+      "side": 1,
+      "message": "Only a suggestion.",
+      "parentUuid": "468e5db5_6e7a7e9d",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 9
+      },
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
