@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f887f4_6cbf19f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-25T17:45:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "af71f023_7594bd70",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "94d0d098e418946a31563b02ad196c49749a57e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b7f347e_de785ce6",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "it shows the digests for FIPS module which are the same as earlier. Updated commit message.",
       "parentUuid": "0b7f347e_de785ce6",
+      "range": {
+        "startLine": 14,
+        "startChar": 49,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "94d0d098e418946a31563b02ad196c49749a57e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73420ee8_da380e3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-25T17:45:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7b794820_206bd9e0",
       "range": {
         "startLine": 14,
         "startChar": 49,
