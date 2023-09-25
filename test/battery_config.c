@@ -117,8 +117,8 @@ int test_read_ship_mode(void)
 	zassert_equal(dflt->reg_data[1], 0);
 	zassert_equal(dflt->wb_support, 0);
 
-	tag = CBI_TAG_BATT_SHIP_MODE_FLAGS;
-	d8 = BIT(0);
+	tag = CBI_TAG_FUEL_GAUGE_FLAGS;
+	d8 = FUEL_GAUGE_FLAG_WRITE_BLOCK;
 	zassert_equal(cbi_set_board_info(tag, &d8, sizeof(d8)), EC_SUCCESS);
 	tag = CBI_TAG_BATT_SHIP_MODE_REG_ADDR;
 	zassert_equal(cbi_set_board_info(tag, &info->reg_addr,
@@ -159,8 +159,8 @@ int test_read_sleep_mode(void)
 	zassert_equal(dflt->reg_data, 0);
 	zassert_equal(dflt->sleep_supported, 0);
 
-	tag = CBI_TAG_BATT_SLEEP_MODE_FLAGS;
-	d8 = BIT(0);
+	tag = CBI_TAG_FUEL_GAUGE_FLAGS;
+	d8 = FUEL_GAUGE_FLAG_SLEEP_MODE;
 	zassert_equal(cbi_set_board_info(tag, &d8, sizeof(d8)), EC_SUCCESS);
 	tag = CBI_TAG_BATT_SLEEP_MODE_REG_ADDR;
 	zassert_equal(cbi_set_board_info(tag, &info->reg_addr,
@@ -198,9 +198,10 @@ int test_read_fet_info(void)
 	zassert_equal(dflt->reg_addr, 0);
 	zassert_equal(dflt->reg_mask, 0);
 	zassert_equal(dflt->mfgacc_support, 0);
+	zassert_equal(dflt->mfgacc_smb_block, 0);
 
-	tag = CBI_TAG_BATT_FET_FLAGS;
-	d8 = BIT(0);
+	tag = CBI_TAG_FUEL_GAUGE_FLAGS;
+	d8 = FUEL_GAUGE_FLAG_MFGACC | FUEL_GAUGE_FLAG_MFGACC_SMB_BLOCK;
 	zassert_equal(cbi_set_board_info(tag, &d8, sizeof(d8)), EC_SUCCESS);
 	tag = CBI_TAG_BATT_FET_REG_ADDR;
 	zassert_equal(cbi_set_board_info(tag, &info->reg_addr,
@@ -230,6 +231,7 @@ int test_read_fet_info(void)
 	zassert_equal(dflt->reg_addr, info->reg_addr);
 	zassert_equal(dflt->reg_mask, info->reg_mask);
 	zassert_equal(dflt->mfgacc_support, 1);
+	zassert_equal(dflt->mfgacc_smb_block, 1);
 
 	return EC_SUCCESS;
 }
