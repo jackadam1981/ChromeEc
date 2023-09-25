@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ae734c8_573b641b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-09-25T16:22:38Z",
+      "side": 1,
+      "message": "Yes, I think that would work. It\u0027s been a while since I made this, but think I opted for this solution because I wasn\u0027t sure if there would be a problem with conflating boards with variants.",
+      "parentUuid": "b52e6991_364cfe3c",
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5440626a_324a6f87",
         "filename": "test/run_device_tests.py",
         "patchSetId": 3
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "911eafd9_f1fd894d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-09-25T16:22:38Z",
+      "side": 1,
+      "message": "Good call, I\u0027ll make the update",
+      "parentUuid": "5440626a_324a6f87",
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7466b8d9_88103229",
         "filename": "test/run_device_tests.py",
         "patchSetId": 3
@@ -48,6 +84,30 @@
       "writtenOn": "2023-09-14T20:46:47Z",
       "side": 1,
       "message": "Did you mean to provide `board_config_key_error` for this `%s`?",
+      "range": {
+        "startLine": 500,
+        "startChar": 25,
+        "endLine": 500,
+        "endChar": 27
+      },
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fbd1b0_5915dbdc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-09-25T16:22:38Z",
+      "side": 1,
+      "message": "No, I wanted it to print the board it was unable to find. For example: `build_board nami_fp not found in BOARD_CONFIG, checking variants`.",
+      "parentUuid": "7466b8d9_88103229",
       "range": {
         "startLine": 500,
         "startChar": 25,
