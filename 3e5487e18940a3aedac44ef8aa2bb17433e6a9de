@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a12ca2e_fc6b0612",
+        "filename": "zephyr/test/drivers/cbi_flash/binman.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-09-25T21:21:46Z",
+      "side": 1,
+      "message": "Can this test include the `cbi_flash.dtsi` so a change like this doesn\u0027t need to modify the default field?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "3e5487e18940a3aedac44ef8aa2bb17433e6a9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
