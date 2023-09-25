@@ -114,8 +114,14 @@
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_VIVALDI
 #define CONFIG_KBLIGHT_ENABLE_PIN
+<<<<<<< HEAD   (f975d4 keyboard: Wake up key scanner only if there are changes)
 #define GPIO_EN_KEYBOARD_BACKLIGHT	GPIO_EN_KB_BL
 #define GPIO_KBD_KSO2			GPIO_EC_KSO_02_INV
+=======
+#define GPIO_EN_KEYBOARD_BACKLIGHT GPIO_EN_KB_BL
+#define GPIO_KBD_KSO2 GPIO_EC_KSO_02_INV
+#define CONFIG_NCPX_KBC_IRQ_ACTIVE_LOW
+>>>>>>> CHANGE (914c33 guybrush: Invert keyboard interrupts)
 
 /* Sensors */
 #ifdef HAS_TASK_MOTIONSENSE
