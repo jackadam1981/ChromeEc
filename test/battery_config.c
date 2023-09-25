@@ -99,7 +99,7 @@ DECLARE_EC_TEST(test_batt_conf_read)
 	return EC_SUCCESS;
 }
 
-DECLARE_EC_TEST(test_read_ship_mode)
+int test_read_ship_mode(void)
 {
 	struct ship_mode_info *info = &conf_in_cbi.fuel_gauge.ship_mode;
 	struct ship_mode_info *dflt =
@@ -142,7 +142,7 @@ DECLARE_EC_TEST(test_read_ship_mode)
 	return EC_SUCCESS;
 }
 
-DECLARE_EC_TEST(test_read_sleep_mode)
+int test_read_sleep_mode(void)
 {
 	struct sleep_mode_info *info = &conf_in_cbi.fuel_gauge.sleep_mode;
 	struct sleep_mode_info *dflt =
@@ -183,7 +183,7 @@ DECLARE_EC_TEST(test_read_sleep_mode)
 	return EC_SUCCESS;
 }
 
-DECLARE_EC_TEST(test_read_fet_info)
+int test_read_fet_info(void)
 {
 	struct fet_info *info = &conf_in_cbi.fuel_gauge.fet;
 	struct fet_info *dflt = &default_battery_conf.fuel_gauge.fet;
@@ -274,6 +274,10 @@ DECLARE_EC_TEST(test_read_fuel_gauge_info)
 			      strlen(info->device_name)),
 		      0);
 	zassert_equal(dflt->override_nil, 1);
+
+	test_read_fet_info();
+	test_read_ship_mode();
+	test_read_sleep_mode();
 
 	return EC_SUCCESS;
 }
@@ -389,12 +393,6 @@ TEST_SUITE(test_suite_battery_config)
 	ztest_test_suite(
 		test_battery_config,
 		ztest_unit_test_setup_teardown(test_batt_conf_read, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_ship_mode, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_sleep_mode, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_fet_info, test_setup,
 					       test_teardown),
 		ztest_unit_test_setup_teardown(test_read_fuel_gauge_info,
 					       test_setup, test_teardown),
