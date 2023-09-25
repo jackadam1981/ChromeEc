@@ -646,6 +646,15 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 		if (ret == EC_SUCCESS)
 			has_data_read = 1;
 	}
+
+	/*
+	 * ODR change was requested: update the collection data rate,
+	 * we may miss a sample, but we won't use stale collection_rate.
+	 */
+	if (is_odr_pending) {
+		motion_sense_set_data_rate(sensor);
+	}
+
 	if (motion_sensor_in_forced_mode(sensor)) {
 		if (motion_sensor_time_to_read(ts, sensor)) {
 			/*
@@ -675,9 +684,8 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 		}
 	}
 
-	/* ODR change was requested. */
+	/* ODR change was requested, confirm change to AP, after flush.*/
 	if (is_odr_pending) {
-		motion_sense_set_data_rate(sensor);
 		if (IS_ENABLED(CONFIG_ACCEL_FIFO))
 			motion_sense_fifo_insert_async_event(sensor,
 							     ASYNC_EVENT_ODR);
@@ -1689,6 +1697,16 @@ static int command_accel_init(int argc, const char **argv)
 
 	sensor = &motion_sensors[id];
 	ret = motion_sense_init(sensor);
+
+	if (ret == EC_SUCCESS) {
+		/*
+		 * We need to reset the ODR information, especially since
+		 * the ODR has been changed.
+		 */
+		atomic_or(&odr_event_required, BIT(id));
+		task_set_event(TASK_ID_MOTIONSENSE,
+			       TASK_EVENT_MOTION_ODR_CHANGE);
+	}
 
 	ccprintf("%s: state %d - %d\n", sensor->name, sensor->state, ret);
 	return EC_SUCCESS;
