@@ -872,8 +872,13 @@ static void lpc_init(void)
 	 * enable IBF core interrupt
 	 */
 	NPCX_HIPMCTL(PMC_ACPI) |= 0x81;
-	/* Normally Polarity IRQ1,12 type (level + high) setting */
+#ifdef CONFIG_NCPX_KBC_IRQ_ACTIVE_LOW
+	/* Inverted polarity on IRQ1 and IRQ12 (level + low) */
+	NPCX_HIIRQC = 0x40;
+#else
+	/* Normal polarity on IRQ1 and IRQ12 (level + high) */
 	NPCX_HIIRQC = 0x00;
+#endif
 
 	/*
 	 * Init PORT80
