@@ -50,6 +50,24 @@
       "message": "Does zephyr EC need to be fixed as well?",
       "revId": "0a3a6e20e5e7741d9bee71d646babfda708270fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28fad5a_e31344f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-09-25T05:30:35Z",
+      "side": 1,
+      "message": "This issue occurs because the rwsig task only exists in RO image in the Helipilot project (FPMCU). \nFor EC application, there should be no such issue because all tasks exist in both RO and RW.",
+      "parentUuid": "1a82a1d5_9ae8fba3",
+      "revId": "0a3a6e20e5e7741d9bee71d646babfda708270fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
