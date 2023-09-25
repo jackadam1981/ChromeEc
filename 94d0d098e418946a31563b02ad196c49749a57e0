@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe8fccd_9f62508e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-25T17:14:15Z",
+      "side": 1,
+      "message": "so why not use the \"proper solution\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "94d0d098e418946a31563b02ad196c49749a57e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7f347e_de785ce6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-25T17:14:15Z",
+      "side": 1,
+      "message": "what does this show? Looks like two different digests to me?\n\nAlso, how does the generated image size change as a result of this patch? Please add this information to the description.",
+      "range": {
+        "startLine": 14,
+        "startChar": 49,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "94d0d098e418946a31563b02ad196c49749a57e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
