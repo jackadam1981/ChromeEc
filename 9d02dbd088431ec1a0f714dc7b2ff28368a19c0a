@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc9a0c8_56e6aa7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-25T20:09:27Z",
+      "side": 1,
+      "message": "with a nit",
+      "revId": "9d02dbd088431ec1a0f714dc7b2ff28368a19c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003699df_37fa2338",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4742,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-25T20:09:27Z",
+      "side": 1,
+      "message": "to be consistent with the check the message should read ´non ti50´ image",
+      "range": {
+        "startLine": 4742,
+        "startChar": 22,
+        "endLine": 4742,
+        "endChar": 26
+      },
+      "revId": "9d02dbd088431ec1a0f714dc7b2ff28368a19c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
