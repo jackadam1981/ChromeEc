@@ -16,6 +16,24 @@
       "message": "just curious why is it called “intel” alt mode?",
       "revId": "2ecb9c9d96da62e2c990dae16b482f8a31509ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb535381_1fbbbc2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-25T15:54:07Z",
+      "side": 1,
+      "message": "these registers are defined by Intel and are not exposed to other vendors",
+      "parentUuid": "97e2669f_3a4ba2a5",
+      "revId": "2ecb9c9d96da62e2c990dae16b482f8a31509ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
