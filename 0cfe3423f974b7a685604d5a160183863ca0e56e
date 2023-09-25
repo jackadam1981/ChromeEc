@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c1cf4a_fc82668a",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2023-09-25T20:08:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a72be437_ed748e0b",
+      "revId": "0cfe3423f974b7a685604d5a160183863ca0e56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad77634_363a7327",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-09-25T20:04:10Z",
       "side": 1,
       "message": "Just confirming, this bit also flips IRQ 12 right?",
+      "range": {
+        "startLine": 876,
+        "startChar": 22,
+        "endLine": 876,
+        "endChar": 29
+      },
+      "revId": "0cfe3423f974b7a685604d5a160183863ca0e56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668acddf_a296e0f2",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2023-09-25T20:08:29Z",
+      "side": 1,
+      "message": "Yep! I can clear up the comments.",
+      "parentUuid": "1ad77634_363a7327",
       "range": {
         "startLine": 876,
         "startChar": 22,
