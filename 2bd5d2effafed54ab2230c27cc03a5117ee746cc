@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2113ad7_957f4098",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6334,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-09-25T08:39:49Z",
+      "side": 1,
+      "message": "Consuming nearly 20% of the entire ID space for these seems like a lot- could some of these be combined into a smaller number of fields? For example does it make sense to be able to specify a `REG_ADDR` without a `REG_DATA`, or could both be stored in a single field that always provides both values?\n\nI don\u0027t mind the ID allocation in general since some kind of \"extended\" tag could be allocated to extend the ID space if needed, but if more features like this were added we\u0027d quickly run out of IDs so I\u0027d prefer to try to be more efficient if that makes sense for this application.",
+      "revId": "2bd5d2effafed54ab2230c27cc03a5117ee746cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
