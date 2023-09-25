@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5409f3f3_f22eac08",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-25T16:48:57Z",
+      "side": 1,
+      "message": "I gotcha. I don\u0027t know if it helps, but outside of this script we do call `nami_fp` and `nocturne_fp` boards, for example, querying a nocturne board for its board using cros_config, like in [flash_fp_mcu](https://crsrc.org/o/src/platform/ec/util/flash_fp_mcu;l\u003d247-262). I thought this was simpler and still served to show the readers that these were aliases/variants for `DARTMONKEY_CONFIG`.\n\nEither is fine.",
+      "parentUuid": "6ae734c8_573b641b",
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5440626a_324a6f87",
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "No, I wanted it to print the board it was unable to find. For example: `build_board nami_fp not found in BOARD_CONFIG, checking variants`.",
       "parentUuid": "7466b8d9_88103229",
+      "range": {
+        "startLine": 500,
+        "startChar": 25,
+        "endLine": 500,
+        "endChar": 27
+      },
+      "revId": "661190e26407225f54e1077e2019e0177e0c9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb5d72a_89fdf7f3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-25T16:48:57Z",
+      "side": 1,
+      "message": "Oh, I guess printing the exception, in this case, actually does resolve to the key/board, so I guess this works. Up to you if you want to make it more clear to the reader.",
+      "parentUuid": "70fbd1b0_5915dbdc",
       "range": {
         "startLine": 500,
         "startChar": 25,
