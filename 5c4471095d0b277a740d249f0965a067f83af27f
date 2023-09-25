@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7137d4_31a7fa09",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-25T23:54:39Z",
+      "side": 1,
+      "message": "move this also",
+      "range": {
+        "startLine": 362,
+        "startChar": 7,
+        "endLine": 362,
+        "endChar": 33
+      },
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b43bf46_7398711a",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-25T23:54:39Z",
+      "side": 1,
+      "message": "publish this file in a separate CL",
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad04eeab_52b8ec81",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-25T23:54:39Z",
+      "side": 1,
+      "message": "check if these can be replaced with \nPLATFORM_EC_USBC_STACK",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
