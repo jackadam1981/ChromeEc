@@ -248,7 +248,7 @@ DECLARE_EC_TEST(test_read_fuel_gauge_info)
 	/* Validate default info remains unchanged. */
 	zassert_is_null(dflt->manuf_name);
 	zassert_is_null(dflt->device_name);
-	zassert_equal(dflt->override_nil, 0);
+	zassert_equal(dflt->flags, 0);
 
 	tag = CBI_TAG_FUEL_GAUGE_MANUF_NAME;
 	zassert_equal(cbi_set_board_info(tag, (uint8_t *)info->manuf_name,
@@ -273,7 +273,7 @@ DECLARE_EC_TEST(test_read_fuel_gauge_info)
 	zassert_equal(strncmp(dflt->device_name, info->device_name,
 			      strlen(info->device_name)),
 		      0);
-	zassert_equal(dflt->override_nil, 1);
+	zassert_equal(dflt->flags, 1);
 
 	test_read_fet_info();
 	test_read_ship_mode();
