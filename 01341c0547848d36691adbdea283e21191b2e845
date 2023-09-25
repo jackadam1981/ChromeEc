@@ -16,6 +16,24 @@
       "message": "LGTM, but wait to merge this until Nuvoton responds whether it is valid to set IRQ negative polarity with eSPI.",
       "revId": "01341c0547848d36691adbdea283e21191b2e845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7feb7e6b_fa0788d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2023-09-25T20:33:08Z",
+      "side": 1,
+      "message": "Will do. I was also going to wait until the corresponding coreboot [change](https://review.coreboot.org/c/coreboot/+/78137) gets downstreamed so I can add a Cq-Depend and get them committed together.",
+      "parentUuid": "822f0eb1_b3ec9246",
+      "revId": "01341c0547848d36691adbdea283e21191b2e845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
