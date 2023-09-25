@@ -148,6 +148,7 @@ int test_read_sleep_mode(void)
 	struct sleep_mode_info *dflt =
 		&default_battery_conf.fuel_gauge.sleep_mode;
 	enum cbi_data_tag tag;
+	struct fuel_gauge_reg_addr_data reg;
 	uint8_t d8;
 
 	/* Read without data in CBI. Test ERROR_UNKNOWN is correctly ignored. */
@@ -162,13 +163,10 @@ int test_read_sleep_mode(void)
 	tag = CBI_TAG_FUEL_GAUGE_FLAGS;
 	d8 = FUEL_GAUGE_FLAG_SLEEP_MODE;
 	zassert_equal(cbi_set_board_info(tag, &d8, sizeof(d8)), EC_SUCCESS);
-	tag = CBI_TAG_BATT_SLEEP_MODE_REG_ADDR;
-	zassert_equal(cbi_set_board_info(tag, &info->reg_addr,
-					 sizeof(info->reg_addr)),
-		      EC_SUCCESS);
-	tag = CBI_TAG_BATT_SLEEP_MODE_REG_DATA;
-	zassert_equal(cbi_set_board_info(tag, (uint8_t *)&info->reg_data,
-					 sizeof(info->reg_data)),
+	tag = CBI_TAG_BATT_SLEEP_MODE;
+	reg.addr = info->reg_addr;
+	reg.data = info->reg_data;
+	zassert_equal(cbi_set_board_info(tag, (uint8_t *)&reg, sizeof(reg)),
 		      EC_SUCCESS);
 
 	/* Read */
