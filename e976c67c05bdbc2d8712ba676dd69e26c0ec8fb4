@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1720bd7e_eb4747b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "I\u0027ve done a partial review, but I\u0027m going to be direct with some overall feedback.\n\nHas this code gone through any internal review at Microchip?\n\nWhile this does improve on the previous submission, mostly it\u0027s moved the problematic code from main.c into spi_flash.c.  The nearly 400 line SPI_Operations() has up to 5 levels of nesting, and intermixes using local and global variables that contain the same data (see `spi_util_cmd`).",
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9308d68f_21187dcf",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "This loader needs to work for more than just the Intel RVP.  A second UART won\u0027t be available on Chromebooks.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7269aaa5_f227d48b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "\"extern\" is redundant for function prototypes.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c96c18a_0dee9d42",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Should be static const",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f76917c_f69fc59b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Declare static, and there\u0027s no need to initialize this.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a526d789_5d8789be",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Static, no initialization needed.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242e2048_d9ad81dd",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "This is far too many globals.  Most of these are only used in this file, so at a minimum need to include the static attribute.\n\nI haven\u0027t done a complete review, but many of these static/globals can be eliminated entirely by making them local to the function that uses them.\n\nFor example, `PgmDataPtr` is only used by `receive_packet()`.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5526ee09_faa4185b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Why continue if the board init failed?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fc3669_84a9de1f",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Why is this needed?  This GPIO and pin muxing should be limited to bare minimum needed to communicate on the UART and program the internal flash.\n\nIf setting all these GPIOs is required, the logic should be moved to a separate function.",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9292096_324dc8a2",
+        "filename": "zephyr/shim/chip/mchp/second_loader/serial.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Extern not required.  Please also use a common prefix for all the related routines.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d01fcff_90c88309",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "This public interface is doing too much work and relies too much on globals.  Expand the API space to smaller pieces that can be combined as needed by the caller.  This file shouldn\u0027t need to check the flags sent by the host utility (CMD_ERASE, CMD_PARTIAL_ERASE, etc).\n\nFor instance:\n```\nspi_flash_init()\nspi_flash_read_id(*out_id)\nspi_flash_erase(start, length)\nspi_flash_program(start, length, *write_data, bool verify)\n\n```",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 23
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20fbcf44_60c30450",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "Here\u0027s an example of why using globals makes this hard to follow.\n\nYou\u0027ve copied `spi_util_cmd` into a static variable, but you use both `flash_conf.host_cntrl_conf` and `spi_util_cmd` directly in this routine to check the flags set by host utility.",
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70170ced_81185d1d",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:17:14Z",
+      "side": 1,
+      "message": "These should be eliminated by passing in arguments.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
