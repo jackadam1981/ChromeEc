@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae00017d_a31a2918",
+        "filename": "board/dochi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-09-26T06:22:38Z",
+      "side": 1,
+      "message": "it don\u0027t support brightness at the same time.",
+      "parentUuid": "db0bdc9a_4d65a32c",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "4c8f0668652ddd73eb7bc48276cab52bf0b2fcca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8936ffb7_2a79a1b1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-25T20:44:01Z",
       "side": 1,
       "message": "Is this intended?",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "4c8f0668652ddd73eb7bc48276cab52bf0b2fcca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc271965_6523e548",
+        "filename": "board/dochi/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-09-26T06:22:38Z",
+      "side": 1,
+      "message": "Just for test, but it could reserved.I revert it.",
+      "parentUuid": "8936ffb7_2a79a1b1",
       "range": {
         "startLine": 16,
         "startChar": 10,
