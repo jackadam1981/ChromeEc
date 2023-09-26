@@ -88,6 +88,24 @@
       "parentUuid": "6f32d770_e6d4ed10",
       "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606cbbc7_054bdd9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-09-26T22:52:17Z",
+      "side": 1,
+      "message": "So I haven\u0027t been able to reproduce behavior of \"nothing happening\" at all. But I did find that the script crashes when run without `vpython3` *inside* the chroot.\n\nAs a workaround, run `vpython3 ./util/gen_bazel_targets.py` inside or outside the chroot. Apologies for the inconvenience.",
+      "parentUuid": "3383d90d_f57ffcc7",
+      "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
