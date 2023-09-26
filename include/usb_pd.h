@@ -688,6 +688,11 @@ struct rmdo {
 /* Confirm RMDO is 32 bits. */
 BUILD_ASSERT(sizeof(struct rmdo) == 4);
 
+#define RMDO_MAJOR_REV (3 << 28)
+#define RMDO_MINOR_REV (1 << 24)
+#define RMDO_MAJOR_VER (1 << 20)
+#define RMDO_MINOR_VER (0 << 16)
+
 /*
  * Message id starts from 0 to 7. If last_msg_id is initialized to 0,
  * it will lead to repetitive message id with first received packet,
