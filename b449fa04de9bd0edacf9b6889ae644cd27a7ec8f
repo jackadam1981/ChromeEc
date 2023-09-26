@@ -70,6 +70,24 @@
       "parentUuid": "5d43bc99_386b85ad",
       "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3383d90d_f57ffcc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T22:28:10Z",
+      "side": 1,
+      "message": "We\u0027re looking into this.  There may be an error with ./util/gen_bazel_targets.py",
+      "parentUuid": "6f32d770_e6d4ed10",
+      "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
