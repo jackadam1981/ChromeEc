@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46174eaa_76c9ab20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Updated the review comments. UART, SPI, CRC  and GPIO related logic moved into separate file.",
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d14bfd_7560eb62",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "```\nadd_executable(second_loader)\ntarget_sources(second_loader PRIVATE\n  main.c\n  rom_stuff.c\n  trace.c\n  startup_ARMCM4.S\n  )\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4312b79_99c570ee",
+        "filename": "zephyr/shim/chip/mchp/second_loader/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Updated the CMake as suggested",
+      "parentUuid": "62d14bfd_7560eb62",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de62975b_bf5e983d",
+        "filename": "zephyr/shim/chip/mchp/second_loader/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Corrected the indentation.",
+      "parentUuid": "03d9d227_844dd5d0",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6a2d574_6decd08d",
@@ -77,6 +142,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "This creates the map file inside the source directory.  This should be `CMAKE_CURRENT_BINARY_DIR`.",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e58e59c_5a65dcd3",
+        "filename": "zephyr/shim/chip/mchp/second_loader/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Changed map file destination to CMAKE_CURRENT_BINARY_DIR.",
+      "parentUuid": "d6a2d574_6decd08d",
       "range": {
         "startLine": 30,
         "startChar": 13,
@@ -110,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc443563_bc728be3",
+        "filename": "zephyr/shim/chip/mchp/second_loader/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Deleted the commented line.",
+      "parentUuid": "340634f3_bbac8cf6",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3af93a5f_796cb8b8",
@@ -123,6 +236,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Does this have to be hard-coded?\n\nYou could set a local variable based on Kconfig:\n```\nif(defined CONFIG_SOC_SERIES_MEC172X)\n  set(MEC_CHIP_TYPE mec172x)\nelseif(defined CONFIG_SOC_SERIES_MEC1501X)\n  set(MEC_CHIP_TYPE mec152x)\nendif()\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec128b16_0f671279",
+        "filename": "zephyr/shim/chip/mchp/second_loader/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Used \"CONFIG_MCHP_MEC_HEADER_CHIP\" to specify the chip.",
+      "parentUuid": "3af93a5f_796cb8b8",
       "range": {
         "startLine": 50,
         "startChar": 5,
@@ -156,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "433dd14e_e10210a4",
+        "filename": "zephyr/shim/chip/mchp/second_loader/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Configuration used instead of hardcoded value.",
+      "parentUuid": "6c3c82dd_09d0fd5d",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9bdbf20_237faeb1",
@@ -169,6 +330,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Are the register definitions different for each GPIO? If not, this is more complicated than necessary.\n\nInstead you only need one structure defining the GPIO pin control bit fields, and a helper macro to look up the GPIO pin control address.  See my comment in main.c",
+      "range": {
+        "startLine": 1815,
+        "startChar": 1,
+        "endLine": 1857,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c1e982_16cf0af8",
+        "filename": "zephyr/shim/chip/mchp/second_loader/MCHP_MEC172x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Agreed, updated the structure.",
+      "parentUuid": "f9bdbf20_237faeb1",
       "range": {
         "startLine": 1815,
         "startChar": 1,
@@ -196,6 +381,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6709f3_e96690b8",
+        "filename": "zephyr/shim/chip/mchp/second_loader/MCHP_MEC172x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6692,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Introduced new line.",
+      "parentUuid": "d78b7a04_59d11c3a",
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b4369c1_d395d1d7",
@@ -209,6 +412,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Is UART1 always available?  What",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088515a6_7d13a979",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Yes, UART1 is available for debug in Intel RVP.",
+      "parentUuid": "6b4369c1_d395d1d7",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -242,6 +469,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5148df_fd9c4669",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Encapsulated Global variable using structure.",
+      "parentUuid": "48c3d135_6b10e984",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 18
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "239be915_9a18707b",
@@ -255,6 +506,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Please move the crc support into a separate file.  This file is much too long.",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c465ab4_1f8d8a6e",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "crc32.c file created and all crc related functions are moved from main.c.",
+      "parentUuid": "239be915_9a18707b",
       "range": {
         "startLine": 281,
         "startChar": 0,
@@ -288,6 +563,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bffbf9f4_b463e961",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Prototype has been moved to feature specific header files.",
+      "parentUuid": "258fd660_01c36924",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bf1e144_26a1c46a",
@@ -301,6 +600,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "This solution doesn\u0027t require windows, correct?",
+      "range": {
+        "startLine": 336,
+        "startChar": 12,
+        "endLine": 336,
+        "endChar": 19
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e43a406_937e9af5",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Removed \"Windows\" from comments.",
+      "parentUuid": "5bf1e144_26a1c46a",
       "range": {
         "startLine": 336,
         "startChar": 12,
@@ -334,6 +657,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bbd467d_38e20d9d",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Unbounded loop removed and WDT disabled irrespective of its state.",
+      "parentUuid": "2b29b4f8_4f8704da",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 1
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "069bb092_313e07a4",
@@ -347,6 +694,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Nit, use decimal constant suffix instead of casting. `spi_error_flag \u003d 0u;`",
+      "range": {
+        "startLine": 355,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7893fd7b_83c4acd8",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Updated with Decimal constant suffix.",
+      "parentUuid": "069bb092_313e07a4",
       "range": {
         "startLine": 355,
         "startChar": 1,
@@ -380,6 +751,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c73934_c5dd91ac",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "b0b9e166_bac75eb9",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb014524_d4cb317c",
@@ -393,6 +788,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Can you create a macro to do this lookup?\n\n```\n/* Note - use octal notation (leading 0) for GPIO number */\n#define GPIO_PIN_CONTROL_ADDR(gpio_num) \\\n    (volatile uint32_t *)(GPIO_000_036_INST_BASE + (gpio_num * 4))\n```\n\nThen this check becomes\n\n```\nif (GPIO_Control_register !\u003d GPIO_PIN_CONTROL_ADDR(062))\n```\n\nWhy is GPIO062 skipped?",
+      "range": {
+        "startLine": 375,
+        "startChar": 43,
+        "endLine": 375,
+        "endChar": 53
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f64bcc2_821e4446",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "1) Updated the logic as suggested with below deviation,\n/* Note - use octal notation (leading 0) for GPIO number */\n#define GPIO_PIN_CONTROL1_ADDR(gpio_num) \\\n    (GPIO_000_036_INST_BASE + (gpio_num * 4))\n    \nDid not use typecast in Macro, instead used where the macro get called.\nBecause, some place need uint32_t and struct GPIO_PIN_CTRL1_Type typecast.\n\n2) GPIO062 configured as output (Default value is 0x8240).\n(GPIO062 defaults to output low on RESET_SYS to support FW controller\nRESETO# feature.)",
+      "parentUuid": "eb014524_d4cb317c",
       "range": {
         "startLine": 375,
         "startChar": 43,
@@ -426,6 +845,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "265fe48d_a58a1a04",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "This is specific to the Intel RVP. Its for indication purpose, i removed the logic.",
+      "parentUuid": "2c7e1ca5_c3b57956",
+      "range": {
+        "startLine": 435,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 31
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d680e49_f2c55a1c",
@@ -449,6 +892,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759cad3a_a858c740",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Updated the logic as suggested.",
+      "parentUuid": "4d680e49_f2c55a1c",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ceade3df_047c12a7",
@@ -462,6 +929,30 @@
       "writtenOn": "2023-08-30T22:16:46Z",
       "side": 1,
       "message": "Move all SPI operations into a separate file.  Keep the public interface simple: `erase(offset, length)`, and `program(offset, length, data)` for instance.\n\nThis should help reduce the number of global variables.\n\nThis will also make the main flow easier to read.  I assume the the SPI operations will work, but it\u0027s hard to review the UART protocol logic for correctness and corner cases.",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 48
+      },
+      "revId": "fc5d54eb9a495b2a2311be751bb87fb5674e1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0386cad4_05947de4",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-09-26T11:21:32Z",
+      "side": 1,
+      "message": "Moved all SPI operation into a separate file.\nUART protocol logic re-visited.",
+      "parentUuid": "ceade3df_047c12a7",
       "range": {
         "startLine": 540,
         "startChar": 0,
