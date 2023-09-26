@@ -52,6 +52,24 @@
       "parentUuid": "2c381f87_16867ff3",
       "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f32d770_e6d4ed10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-09-26T21:22:56Z",
+      "side": 1,
+      "message": "I have updated here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4893887/2/zephyr/zmake/zmake/configlib.py\nThis patch has dependency on above patch.\n\nI did mentioned steps on top of CL:4893887.",
+      "parentUuid": "5d43bc99_386b85ad",
+      "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
