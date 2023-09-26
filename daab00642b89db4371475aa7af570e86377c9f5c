@@ -70,6 +70,47 @@
       "parentUuid": "b7e951ab_bb16c14e",
       "revId": "daab00642b89db4371475aa7af570e86377c9f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63ee700_97ccf13d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-26T15:49:39Z",
+      "side": 1,
+      "message": "I don\u0027t know if we want to allow people to read the ti50 gpios.\n\nCan we just designate \"-K\" a misc info command or something and plan to use it for miscellaneous one off info commands? Require a secondary arg to decide what command it runs\n\n-K --status [chassis_open]\n\nWhen we add future one off commands we can designate args for them.\n\nOr modify the metrics command to accept chassis_open arg. If the chassis_open arg is specified, just print the chassis open output. If it\u0027s not specified, print the standard metrics output.",
+      "parentUuid": "d705e879_ea960fe3",
+      "revId": "daab00642b89db4371475aa7af570e86377c9f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4135165d_987f732d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-26T15:49:39Z",
+      "side": 1,
+      "message": "The list is in alphabetical order based on the shortopt.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 40
+      },
+      "revId": "daab00642b89db4371475aa7af570e86377c9f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
