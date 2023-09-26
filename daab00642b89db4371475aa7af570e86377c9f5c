@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9a8c48_64a1df09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-26T17:18:14Z",
+      "side": 1,
+      "message": "I make `-K` a `get_value` option like you suggested. This seems like a good way to go. PTAL",
+      "parentUuid": "c63ee700_97ccf13d",
+      "revId": "daab00642b89db4371475aa7af570e86377c9f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4135165d_987f732d",
@@ -103,6 +121,30 @@
       "writtenOn": "2023-09-26T15:49:39Z",
       "side": 1,
       "message": "The list is in alphabetical order based on the shortopt.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 40
+      },
+      "revId": "daab00642b89db4371475aa7af570e86377c9f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d8a23a_4b1ec1ae",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-26T17:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4135165d_987f732d",
       "range": {
         "startLine": 527,
         "startChar": 0,
