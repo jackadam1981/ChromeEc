@@ -16,6 +16,24 @@
       "message": "I noted on the parent change that I don\u0027t think fw_config is a good place for this flag, but otherwise this change is unobjectionable.",
       "revId": "ec087f904b7f324a035c23343ee99764a8a5d117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6b5f65_b7c47897",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-26T00:14:52Z",
+      "side": 1,
+      "message": "This has been addressed. Ptal.",
+      "parentUuid": "7c6bb7e9_42a852a0",
+      "revId": "ec087f904b7f324a035c23343ee99764a8a5d117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
