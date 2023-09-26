@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91903137_a6ebe285",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-26T03:10:10Z",
+      "side": 1,
+      "message": "add\n\nif (CONFIG_PLATFORM_EC_USB_PD_TCPMV2)",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 28
+      },
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd7137d4_31a7fa09",
         "filename": "zephyr/Kconfig.pd",
         "patchSetId": 1
