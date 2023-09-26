@@ -16,6 +16,24 @@
       "message": "Here is the build error:\n\"Build targets were changed.  Please run ./util/gen_bazel_targets.py.\"\n\nI believe this is needed because you\u0027ve removed a module from zmake.",
       "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c381f87_16867ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-09-26T20:54:04Z",
+      "side": 1,
+      "message": "I should do below steps, is this correct?\n1. run \"./util/gen_bazel_targets.py.\"\n2. an updated bazel/all_targets.generated.bzl will be generated.\n3. include the \"bazel/all_targets.generated.bzl\" in this commit and upload.\n\nwhat I did:\n1. removed line 118 and 119.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/zmake/zmake/modules.py#118\n\n2. after ran `zmake build rex-ish --clobber`, and `./util/gen_bazel_targets.py`, I still see `bazel/all_targets.generated.bzl` has this:\n```\n   ec_target(\n        name \u003d \"rex-ish\",\n        board \u003d \"rex-ish\",\n        extra_modules \u003d [\"ish\", \"cmsis\", \"hal_intel_public\"],\n    )\n```\nmodule ish is not removed. How to proceed can I manually remove it?",
+      "parentUuid": "eb109ab6_608cfd54",
+      "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
