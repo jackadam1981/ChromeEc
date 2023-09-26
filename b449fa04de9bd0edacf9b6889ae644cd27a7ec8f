@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb109ab6_608cfd54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-26T19:25:15Z",
+      "side": 1,
+      "message": "Here is the build error:\n\"Build targets were changed.  Please run ./util/gen_bazel_targets.py.\"\n\nI believe this is needed because you\u0027ve removed a module from zmake.",
+      "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
