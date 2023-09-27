@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "435498df_87d8b56f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-27T20:29:00Z",
+      "side": 1,
+      "message": "I see the following platforms will be changed by this:\n\ncorsola boards: nereid_cx, nereid, \nrex boards: karris, rex, rex-ish-ec\nnissa: pirrha\n\nWe should have someone validate recovery mode works on these platforms.\n\nThere are some additional boards that will be changed, but none of them are shipping devices (Intel\u0027s RVP boards, eval boards, and brya).\n\nYour change should also delete reference that set `CONFIG_PLATFORM_EC_KEYBOARD_REFRESH_ROW3\u003dy`.   For instance: [magikarp](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/corsola/magikarp/project.conf;l\u003d13)\n\nYou can use `zmake compare-builds \u003cboard list\u003e` to validate there haven\u0027t been any functional changes introduced by changing the Kconfig dependency.",
+      "revId": "b90daf4b575ffbfd1db13d5b2dfe7867ea61e7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88e4c33_5e7a628c",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-27T20:29:00Z",
+      "side": 1,
+      "message": "I think it\u0027s valid to also add `select PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI3` here.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "b90daf4b575ffbfd1db13d5b2dfe7867ea61e7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
