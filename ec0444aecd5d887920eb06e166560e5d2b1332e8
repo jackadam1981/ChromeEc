@@ -16,6 +16,24 @@
       "message": "Jeremy, the error from the last CQ run is from the coverage tool:\n\nlcov: ERROR: no valid records found in tracefile /mnt/host/source/src/platform/ec/build/zephyr/rex-ish/output/zephyr.info\n\nAny tips on resolving this?",
       "revId": "ec0444aecd5d887920eb06e166560e5d2b1332e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41719403_ce11e1e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-09-27T20:09:54Z",
+      "side": 1,
+      "message": "`zmake build --coverage rex-ish` should be able to reproduce.",
+      "parentUuid": "f32b4dcb_6d27577f",
+      "revId": "ec0444aecd5d887920eb06e166560e5d2b1332e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
