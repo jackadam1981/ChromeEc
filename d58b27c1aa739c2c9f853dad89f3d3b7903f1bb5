@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c9aa03_1a83d9a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-27T21:12:56Z",
+      "side": 1,
+      "message": "Use of `#ifdef CONFIG_ZEPHYR` is required in this case because the legacy EC code doesn\u0027t define prototypes/stubs for `gpio_pin_set_dt()`, which is from Zephyr\u0027s GPIO driver upstream.\n\nI checked existing boards that enable the \"cros-ec,usba-port-enable-pins\" driver, and none of them have set the active high flag.  So this change shouldn\u0027t break any boards.",
+      "revId": "d58b27c1aa739c2c9f853dad89f3d3b7903f1bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
