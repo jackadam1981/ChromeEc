@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "533a7195_e8bf2be1",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-27T21:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2e8e1d_76e794cf",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "131138c14902e0a0d20b65e19a58e1673051bbdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4da2f33_8cf248a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-27T21:19:17Z",
       "side": 1,
       "message": "I don\u0027t understand this wording.",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "131138c14902e0a0d20b65e19a58e1673051bbdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d790206f_185b4447",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-09-27T21:58:02Z",
+      "side": 1,
+      "message": "Rephrased.",
+      "parentUuid": "d4da2f33_8cf248a6",
       "range": {
         "startLine": 26,
         "startChar": 15,
