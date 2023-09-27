@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2e8e1d_76e794cf",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-27T21:19:17Z",
+      "side": 1,
+      "message": "Use the symbol `PLATFORM_EC_CBI_EEPROM_OR_FLASH`.  This symbol is mutually exclusive with `PLATFORM_EC_CBI_GPIO`.",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "131138c14902e0a0d20b65e19a58e1673051bbdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4da2f33_8cf248a6",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-27T21:19:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand this wording.",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "131138c14902e0a0d20b65e19a58e1673051bbdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
