@@ -34,6 +34,24 @@
       "parentUuid": "ee79e0d8_b337dde9",
       "revId": "ed66b274ab216c823792434c91d01e0c3a7604e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56eb85b7_aee09aec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-27T08:27:40Z",
+      "side": 1,
+      "message": "Hi @caveh@chromium.org, Could I use `#ifdef CONFIG_ZEPHYR` here?",
+      "parentUuid": "8ead5da8_1afafd9b",
+      "revId": "ed66b274ab216c823792434c91d01e0c3a7604e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
