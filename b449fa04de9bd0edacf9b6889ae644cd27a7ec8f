@@ -142,6 +142,24 @@
       "parentUuid": "63aefdd4_da06c83c",
       "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa98d722_af9f8eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-09-27T16:07:31Z",
+      "side": 1,
+      "message": "Ahh, so the within chroot failure is fixed by updating the chroot via `update_chroot`. So an out of date chroot is the root of the problem.",
+      "parentUuid": "36cd7f20_15767007",
+      "revId": "b449fa04de9bd0edacf9b6889ae644cd27a7ec8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
