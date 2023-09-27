@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e240e62_b33fd8a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-27T22:27:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3b67b2af_cc6bdce6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "d881a7f07ec02632c9faabfb916b10e7e44126a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4227a1e_a8242824",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-27T16:15:00Z",
       "side": 1,
       "message": "To support both PD based solution and TCPC based solution *** add details ***",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "d881a7f07ec02632c9faabfb916b10e7e44126a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377b18cd_5f2f1893",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-27T22:27:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f4227a1e_a8242824",
       "range": {
         "startLine": 8,
         "startChar": 0,
