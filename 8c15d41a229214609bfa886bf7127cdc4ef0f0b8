@@ -158,6 +158,24 @@
       "parentUuid": "a24add06_064adcdc",
       "revId": "8c15d41a229214609bfa886bf7127cdc4ef0f0b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a96a786_81746463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-09-27T00:25:41Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4892385\npassed CQ... what\u0027s different there?\nboth branches get refreshed from ToT, shouldn\u0027t we get similar results?",
+      "parentUuid": "9a4f0dff_d266f071",
+      "revId": "8c15d41a229214609bfa886bf7127cdc4ef0f0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
