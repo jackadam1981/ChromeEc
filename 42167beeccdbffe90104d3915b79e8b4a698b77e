@@ -16,6 +16,24 @@
       "message": "what is the function of this text file? Does it get used in the codebase or this is just for documentation?",
       "revId": "42167beeccdbffe90104d3915b79e8b4a698b77e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f412c6c6_e46cea8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-09-27T20:57:27Z",
+      "side": 1,
+      "message": "It is used by the kconfig_check.py [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.rules;l\u003d272;drc\u003d5acd055b596db4e2abc76fc79d6e507bdcdbcc48) script to check that new configs are added to Zephyr, in addition to EC. I don\u0027t think we need a Zephyr config for this, yet.",
+      "parentUuid": "612b3fcf_f7f99ae2",
+      "revId": "42167beeccdbffe90104d3915b79e8b4a698b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
