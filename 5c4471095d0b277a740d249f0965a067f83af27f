@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cef141_70dae458",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-27T00:41:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "91903137_a6ebe285",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 28
+      },
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd7137d4_31a7fa09",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-25T23:54:39Z",
       "side": 1,
       "message": "move this also",
+      "range": {
+        "startLine": 362,
+        "startChar": 7,
+        "endLine": 362,
+        "endChar": 33
+      },
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89588a36_dfc6630c",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-09-27T00:41:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bd7137d4_31a7fa09",
       "range": {
         "startLine": 362,
         "startChar": 7,
