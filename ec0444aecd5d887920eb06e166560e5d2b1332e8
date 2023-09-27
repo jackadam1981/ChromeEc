@@ -52,6 +52,24 @@
       "parentUuid": "41719403_ce11e1e1",
       "revId": "ec0444aecd5d887920eb06e166560e5d2b1332e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52c634f_5ae3476e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-09-27T22:29:48Z",
+      "side": 1,
+      "message": "Adding `select HAS_COVERAGE_SUPPORT` to main/soc/x86/intel_ish/Kconfig or main/arch/Kconfig (in config X86) would be better, since it wouldn\u0027t break for every new board.",
+      "parentUuid": "6b17a3a1_83d31b31",
+      "revId": "ec0444aecd5d887920eb06e166560e5d2b1332e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
