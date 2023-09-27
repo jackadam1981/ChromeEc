@@ -34,6 +34,24 @@
       "parentUuid": "f32b4dcb_6d27577f",
       "revId": "ec0444aecd5d887920eb06e166560e5d2b1332e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b17a3a1_83d31b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-09-27T20:55:33Z",
+      "side": 1,
+      "message": "This is an old issue Yuval fixed before.\nI tried this and can no coverage error now. \nShall I submit a patch to zephyr/main?\n\ndiff --git a/boards/x86/intel_ish/Kconfig.board b/boards/x86/intel_ish/Kconfig.board\nindex 77962495a1..6e37b1d979 100644\n--- a/boards/x86/intel_ish/Kconfig.board\n+++ b/boards/x86/intel_ish/Kconfig.board\n@@ -10,6 +10,7 @@ config BOARD_INTEL_ISH_5_4_1\n config BOARD_INTEL_ISH_5_6_0\n        bool \"Intel ISH 5.6.0 board\"\n        depends on SOC_INTEL_ISH_5_6_0\n+       select HAS_COVERAGE_SUPPORT\n \n config BOARD_INTEL_ISH_5_8_0\n        bool \"Intel ISH 5.8.0 board\"",
+      "parentUuid": "41719403_ce11e1e1",
+      "revId": "ec0444aecd5d887920eb06e166560e5d2b1332e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
