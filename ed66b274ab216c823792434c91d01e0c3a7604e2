@@ -16,6 +16,24 @@
       "message": "```\ncommon/usb_port_power_dumb.c: In function \u0027usb_port_set_enabled\u0027:\ncommon/usb_port_power_dumb.c:37:33: error: implicit declaration of function \u0027gpio_get_dt_spec\u0027; did you mean \u0027gpio_get_name\u0027? [-Werror\u003dimplicit-function-declaration]\n   37 |                                 gpio_get_dt_spec(usb_port_enable[port_id]);\n      |                                 ^~~~~~~~~~~~~~~~\n      |                                 gpio_get_name\ncommon/usb_port_power_dumb.c:37:33: error: initialization of \u0027const struct gpio_dt_spec *\u0027 from \u0027int\u0027 makes pointer from integer without a cast [-Werror\u003dint-conversion]\ncommon/usb_port_power_dumb.c:39:25: error: implicit declaration of function \u0027gpio_pin_set_dt\u0027 [-Werror\u003dimplicit-function-declaration]\n   39 |                         gpio_pin_set_dt(gpio, en);\n      |                         ^~~~~~~~~~~~~~~\n```",
       "revId": "ed66b274ab216c823792434c91d01e0c3a7604e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ead5da8_1afafd9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-09-27T05:54:47Z",
+      "side": 1,
+      "message": "I changed `if (IS_ENABLED(CONFIG_ZEPHYR))` to `#ifdef CONFIG_ZEPHYR`. This error would disappear when I run `make buildall`. I search `gpio_pin_set_dt` in other non-zephyr c files (also used for make build) which use `#ifdef CONFIG_ZEPHYR` instead of IS_ENABLED. Is it caused by that `gpio_pin_set_dt` isn\u0027t defined in inculde/*.h?",
+      "parentUuid": "ee79e0d8_b337dde9",
+      "revId": "ed66b274ab216c823792434c91d01e0c3a7604e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
