@@ -175,6 +175,30 @@
       },
       "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aebb804_4a546ced",
+        "filename": "zephyr/Kconfig.usbc_altmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-27T16:15:00Z",
+      "side": 1,
+      "message": "Acknowledged\n\nremove if PLATFORM_EC_USBC as rsource \"Kconfig.usbc_common_altmode\" is included under PLATFORM_EC_USBC",
+      "parentUuid": "f403e14e_857b715f",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "5c4471095d0b277a740d249f0965a067f83af27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
