@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b99d743_7ef51000",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-09-28T20:12:52Z",
+      "side": 1,
+      "message": "Should this 20 be #define(d) rather than a magic number, i.e.\n#define SLEEP_WRNG_INTERVAL 20?\n\nWe may want to increase this interval further at some point",
+      "revId": "e0ef8f5232db90e4781e63c2713f107c9d1776bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866f9d25_dc3275b0",
+        "filename": "test/timer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-09-28T20:12:52Z",
+      "side": 1,
+      "message": "Same comment on magic number",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 11
+      },
+      "revId": "e0ef8f5232db90e4781e63c2713f107c9d1776bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
