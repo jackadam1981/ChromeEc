@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84211427_1b12dc73",
+        "filename": "zephyr/Kconfig.usbc_common_altmode",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-09-28T15:43:47Z",
+      "side": 1,
+      "message": "sorry for the last minute notice:\nhow about replacing with PLATFORM_EC_USB_PD_CONTROLLER?",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 57
+      },
+      "revId": "4b73d9b25272a9a6144d35038e343c54bc08438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
