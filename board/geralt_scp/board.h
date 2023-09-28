@@ -10,8 +10,8 @@
 
 #include "baseboard.h"
 
-#define SCP_CORE1_RAM_START 0xe0000
-#define SCP_CORE1_RAM_SIZE 0x1F000 /* 124K */
+#define SCP_CORE1_RAM_START 0xd0000
+#define SCP_CORE1_RAM_SIZE 0x2F000 /* 124K */
 #define SCP_CORE1_RAM_PADDING 0xc00 /* for 4K-alignment */
 
 #ifdef BOARD_GERALT_SCP_CORE1
@@ -36,7 +36,7 @@
  * The core address 0x0~0x10000 are translated to 0xaf000~0xbf000.
  */
 #define CONFIG_ROM_BASE 0x0
-#define CONFIG_RAM_BASE 0x14000
+#define CONFIG_RAM_BASE 0x10000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
 #define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
 			 CONFIG_RAM_BASE)
