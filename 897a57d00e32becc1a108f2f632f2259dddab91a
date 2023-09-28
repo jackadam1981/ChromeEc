@@ -254,6 +254,30 @@
       },
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd289f8d_970ab4e5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-28T19:37:04Z",
+      "side": 1,
+      "message": "With that suggestions, then `gsctool /cr50-image.bin` will first try to find a haven chip, but if it isn\u0027t found it will look for a dauntless chip (which we don\u0027t want).",
+      "parentUuid": "be06901d_5f332175",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
