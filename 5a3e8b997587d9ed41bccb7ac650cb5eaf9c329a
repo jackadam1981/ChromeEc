@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39811697_1e1d2bf8",
+        "filename": "zephyr/program/geralt/CMakeLists.txt",
+        "patchSetId": 38
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-28T17:39:43Z",
+      "side": 1,
+      "message": "sort the files",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "5a3e8b997587d9ed41bccb7ac650cb5eaf9c329a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb52cc54_5ca95b28",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 38
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-28T17:39:43Z",
+      "side": 1,
+      "message": "This is listed at line 207.",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 56
+      },
+      "revId": "5a3e8b997587d9ed41bccb7ac650cb5eaf9c329a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57814381_19524f9c",
+        "filename": "zephyr/program/geralt/src/hid_over_i2c_target.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-28T17:39:43Z",
+      "side": 1,
+      "message": "sizeof(struct usb_hid_touchpad_report) has to be multiple of 4 here. Maybe you have to add align attribute for the struct.",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "5a3e8b997587d9ed41bccb7ac650cb5eaf9c329a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46c7106_922757ca",
+        "filename": "zephyr/program/geralt/src/hid_over_i2c_target.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-28T17:39:43Z",
+      "side": 1,
+      "message": "Can you comment on the meaning of the return value?",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 10
+      },
+      "revId": "5a3e8b997587d9ed41bccb7ac650cb5eaf9c329a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ce37bb_7726e028",
+        "filename": "zephyr/program/geralt/src/hid_over_i2c_target.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-09-28T17:39:43Z",
+      "side": 1,
+      "message": "Should it be `in_size \u003c 5` ? The line:127 access in[4], and it may stack overrun.",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "5a3e8b997587d9ed41bccb7ac650cb5eaf9c329a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
