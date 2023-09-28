@@ -42,6 +42,16 @@ static int svdm_identity(int port, uint32_t *payload)
 	return VDO_I(PRODUCT) + 2;
 }
 
+static int svdm_svid(int port, uint32_t *payload)
+{
+	/*
+	 * In USB Power Delivery Specification Revision 3.1, Version 1.6,
+	 * 6.4.4.3.2  Discover SVIDs
+	 * A Responder that does not support any SVIDs Shall return a NAK.
+	 */
+	return 0;
+}
+
 __override const struct svdm_response svdm_rsp = {
 	.identity = svdm_identity,
 	/*
@@ -50,4 +60,5 @@ __override const struct svdm_response svdm_rsp = {
 	 * as Responder in any mode, so leave them unimplemented. See 6.13.5,
 	 * Applicability of Structured VDM Commands.
 	 */
+	.svids = svdm_svid,
 };
