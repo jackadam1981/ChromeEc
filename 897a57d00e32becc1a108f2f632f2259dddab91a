@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b332ef7_b3c4f2c7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4754,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-28T17:04:52Z",
+      "side": 1,
+      "message": "It is not, is_dauntless can be false while image_magic is MAGIC_DAUNTLESS when the user passes in a ti50 FW image (and does not specify `-D` parameter)",
+      "parentUuid": "ac66bb18_e98231b3",
+      "range": {
+        "startLine": 4754,
+        "startChar": 10,
+        "endLine": 4754,
+        "endChar": 41
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "338d8a9a_604936e7",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2023-09-28T16:53:25Z",
       "side": 1,
       "message": "it is still not clear to me why the `fw_image_data` check is required here.",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5119f9_8fb2c783",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-28T17:04:52Z",
+      "side": 1,
+      "message": "It is for the case when is_dauntless is false and image_magic is dauntless.",
+      "parentUuid": "338d8a9a_604936e7",
       "range": {
         "startLine": 4763,
         "startChar": 8,
