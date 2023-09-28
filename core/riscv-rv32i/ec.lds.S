@@ -100,7 +100,7 @@ SECTIONS
 		. = ALIGN(16);
 #endif
 #if SCP_CORE_SN == 1
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.text*)
+		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o)) *(.text*)
 #else
 		*(.text*)
 #endif
@@ -263,7 +263,7 @@ SECTIONS
 		. = ALIGN(4);
 
 #if SCP_CORE_SN == 1
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.rodata*)
+		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o)) *(.rodata*)
 #else
 		*(.rodata*)
 #endif
@@ -323,7 +323,7 @@ SECTIONS
 		. = ALIGN(4);
 		__data_start = .;
 #if SCP_CORE_SN == 1
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.data)
+		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o)) *(.data)
 #else
 		*(.data)
 #endif
@@ -351,7 +351,7 @@ SECTIONS
 		. = ALIGN(4);
 		/* Rest of .bss takes care of its own alignment */
 #if SCP_CORE_SN == 1
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.bss)
+		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o)) *(.bss)
 #else
 		*(.bss)
 #endif
@@ -458,7 +458,7 @@ SECTIONS
 		KEEP(*(SORT(.dram.text.keep.*)))
 		*(SORT(.dram.text.*))
 #if SCP_CORE_SN == 1
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.text*)
+		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o) (.text*)
 #endif
 		. = ALIGN(4);
 	} > DRAM
@@ -468,7 +468,7 @@ SECTIONS
 		KEEP(*(SORT(.dram.rodata.keep.*)))
 		*(SORT(.dram.rodata.*))
 #if SCP_CORE_SN == 1
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.rodata*)
+		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o) (.rodata*)
 #endif
 		. = ALIGN(4);
 	} > DRAM
@@ -482,7 +482,7 @@ SECTIONS
 		__dram_data_start = .;
 		*(.dram.data*)
 #if SCP_CORE_SN == 1
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.data)
+		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o) (.data)
 #endif
 		. = ALIGN(4);
 		__dram_data_end = .;
@@ -506,7 +506,7 @@ SECTIONS
 		__dram_bss_start = .;
 		*(SORT(.dram.bss*))
 #if SCP_CORE_SN == 1
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.bss)
+		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o) (.bss)
 #endif
 		. = ALIGN(4);
 		__dram_bss_end = .;

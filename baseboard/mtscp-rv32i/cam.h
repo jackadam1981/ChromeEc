@@ -10,12 +10,15 @@
 
 struct cam_msg {
 	unsigned char id;
-	unsigned char msg[106];
+	unsigned char msg[588];
 };
 
 BUILD_ASSERT(member_size(struct cam_msg, msg) <= CONFIG_IPC_SHARED_OBJ_BUF_SIZE);
 
 /* Functions provided by private overlay. */
 void ipi_cam_handler(void *data);
+void ipi_img_handler(void *data);
+int32_t startRED(void);
+void img_task_handler(void);
 
 #endif /* __CROS_EC_CAM_SRV_H */

@@ -15,7 +15,7 @@ enum venc_type {
 
 struct venc_msg {
 	enum venc_type type;
-	unsigned char msg[288];
+	unsigned char msg[576];
 };
 BUILD_ASSERT(member_size(struct venc_msg, msg) <=
 	     CONFIG_IPC_SHARED_OBJ_BUF_SIZE);
