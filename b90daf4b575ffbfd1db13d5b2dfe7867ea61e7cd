@@ -73,6 +73,53 @@
       },
       "revId": "b90daf4b575ffbfd1db13d5b2dfe7867ea61e7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4da68e_a90cba11",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-28T04:21:10Z",
+      "side": 1,
+      "message": "Given that some boards set `KEYBOARD_VIVALDI\u003dy, KEYBOARD_REFRESH_ROW3\u003dn` (e.g. nereid), I think it\u0027s better to have a weaker dependency like this:\n\n```\nconfig PLATFORM_EC_KEYBOARD_REFRESH_ROW3\n    defauly y if PLATFORM_EC_KEYBOARD_VIVALDI\n```",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 7
+      },
+      "revId": "b90daf4b575ffbfd1db13d5b2dfe7867ea61e7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38982be_8e6fd76b",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-09-28T04:21:10Z",
+      "side": 1,
+      "message": "We should cleanup `KEYBOARD_PWRBTN_ASSERTS_KSIx` since CL:4846112 removed the workaround.\n(it\u0027s still under discussion, so maybe not now)",
+      "parentUuid": "d88e4c33_5e7a628c",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "b90daf4b575ffbfd1db13d5b2dfe7867ea61e7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
