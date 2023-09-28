@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762b2686_bccd5154",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6054,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-28T16:15:00Z",
+      "side": 1,
+      "message": "These checks in this file are only valid for legacy EC builds.  If this is generating a build error, change to:\n```\n#if !defined(CONFIG_ZEPHYR) \u0026\u0026 \\\n\t!defined(CONFIG_USB_PD_ALT_MODE_DFP)\n```\n\nIt looks like the Kconfig symbol `CONFIG_PLATFORM_EC_USB_PD_USB4` likely needs additional dependencies to match what you were trying to do here.",
+      "range": {
+        "startLine": 6054,
+        "startChar": 10,
+        "endLine": 6054,
+        "endChar": 37
+      },
+      "revId": "7ed965aa70131daa8bc3c593875d7c58458d9e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2df540_aec33f04",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-28T16:15:00Z",
+      "side": 1,
+      "message": "Put this constraint into the Kconfig file instead.\n```\nconfig PLATFORM_EC_USB_PD_TBT_COMPAT_MODE\n    depends on PLATFORM_EC_USB_PD_TCPMV2\n```",
+      "range": {
+        "startLine": 523,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 36
+      },
+      "revId": "7ed965aa70131daa8bc3c593875d7c58458d9e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d982ed4_60603bb1",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-09-28T16:15:00Z",
+      "side": 1,
+      "message": "Same here - move this into Kconfig.",
+      "range": {
+        "startLine": 558,
+        "startChar": 4,
+        "endLine": 558,
+        "endChar": 36
+      },
+      "revId": "7ed965aa70131daa8bc3c593875d7c58458d9e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
