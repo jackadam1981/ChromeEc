@@ -367,8 +367,8 @@ static enum ec_error_list save_container(struct nn_container *nc);
 static void invalidate_nvmem_flash(void);
 
 /* Log NVMEM problem as per passed in payload and size, and reboot. */
-static void report_failure(struct nvmem_failure_payload *payload,
-			   size_t payload_union_size)
+static __noreturn void report_failure(struct nvmem_failure_payload *payload,
+				      size_t payload_union_size)
 {
 	if (init_in_progress) {
 		/*
@@ -402,7 +402,7 @@ static void report_failure(struct nvmem_failure_payload *payload,
 	system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED | SYSTEM_RESET_HARD);
 }
 
-static void report_no_payload_failure(enum nvmem_failure_type type)
+static __noreturn void report_no_payload_failure(enum nvmem_failure_type type)
 {
 	struct nvmem_failure_payload fp;
 
@@ -504,8 +504,8 @@ static uint32_t calculate_page_header_hash(struct nn_page_header *ph)
 	return hash;
 }
 
-/* Veirify page header hash. */
-static int page_header_is_valid(struct nn_page_header *ph)
+/* Verify page header hash. */
+static bool page_header_is_valid(struct nn_page_header *ph)
 {
 	return calculate_page_header_hash(ph) == ph->page_hash;
 }
@@ -557,8 +557,8 @@ test_export_static struct nn_page_header *list_element_to_ph(size_t el)
  * If not enough bytes are available in the storage to satisfy the request -
  * log error and reboot.
  */
-static size_t nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
-			       void *buf, int container_fetch)
+static void nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
+			     void *buf, bool container_fetch)
 {
 	size_t togo;
 	struct nvmem_failure_payload fp;
@@ -583,7 +583,7 @@ static size_t nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
 			memcpy(buf, page_cursor(&at->mt), num_bytes);
 
 		at->mt.data_offset += num_bytes;
-		return num_bytes;
+		return;
 	}
 
 	/* Data is split between pages. */
@@ -642,7 +642,7 @@ static size_t nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
 		at->mt.data_offset = sizeof(*at->mt.ph) + togo;
 	}
 
-	return num_bytes;
+	return;
 }
 
 /*
@@ -757,7 +757,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 		size_t aligned_remaining_size;
 		struct nn_container temp_ch;
 
-		nvmem_read_bytes(at, sizeof(temp_ch), &temp_ch, 1);
+		nvmem_read_bytes(at, sizeof(temp_ch), &temp_ch, true);
 		ctype = temp_ch.container_type;
 
 		/* Should we check for the container being all 0xff? */
@@ -794,7 +794,8 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 					NVMEMF_INCONSISTENT_FLASH_CONTENTS);
 			}
 
-			nvmem_read_bytes(at, aligned_remaining_size, ch + 1, 0);
+			nvmem_read_bytes(at, aligned_remaining_size, ch + 1,
+					 false);
 
 			salt[0] = at->ct.ph->page_number;
 			salt[1] = at->ct.data_offset;

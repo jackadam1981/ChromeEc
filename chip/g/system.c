@@ -115,7 +115,7 @@ void system_pinhold_on_reset_disable(void)
 	pinhold_on_reset = 0;
 }
 
-void system_reset(int flags)
+__noreturn void system_reset(int flags)
 {
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();

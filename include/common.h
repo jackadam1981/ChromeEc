@@ -116,6 +116,10 @@
 #define __has_feature(x) 0
 #endif
 
+#ifndef __noreturn
+#define __noreturn __attribute__((noreturn))
+#endif
+
 /*
  * Use this to prevent AddressSanitizer from putting guards around some global
  * variables (e.g. hook/commands "arrays" that are put together at link time).

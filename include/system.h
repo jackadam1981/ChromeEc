@@ -232,7 +232,7 @@ const char *system_get_build_info(void);
  * @param flags		Reset flags; see SYSTEM_RESET_* above.
  */
 #ifndef TEST_FUZZ
-__attribute__((noreturn))
+__noreturn
 #endif
 void system_reset(int flags);
 
