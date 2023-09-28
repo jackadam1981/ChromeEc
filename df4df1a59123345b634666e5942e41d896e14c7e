@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cebcddf_0d07aa85",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-28T16:05:15Z",
+      "side": 1,
+      "message": "Yeah I think this is going to lead to weird behavior if you have a haven device and a dauntless device connected to your workstation that won\u0027t be obvious to people not familiar with gsctool defaults.\n\nIn general I guess gsctool behaves badly when there are multiple gsc devices connected and you don\u0027t specify the serial number.",
+      "parentUuid": "6253456a_eb22ebaa",
+      "range": {
+        "startLine": 4750,
+        "startChar": 7,
+        "endLine": 4750,
+        "endChar": 37
+      },
+      "revId": "df4df1a59123345b634666e5942e41d896e14c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69011456_28ab787f",
