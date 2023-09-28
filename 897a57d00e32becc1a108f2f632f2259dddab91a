@@ -326,6 +326,30 @@
       },
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b752a7_2bdb5af3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-28T21:04:05Z",
+      "side": 1,
+      "message": "why is `image_magic` set to anything unless there is an image, does it have to be?\n\nI am sorry, maybe I should let this patch go and then try cleaning up the logic later. I can\u0027t help it, but feel that this needs to be simplified.\n\nSo, +2 and let me try improving it.",
+      "parentUuid": "ccdeddb4_b85457bd",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
