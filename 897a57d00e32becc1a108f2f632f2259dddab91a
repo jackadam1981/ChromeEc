@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ead681_7a529675",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4754,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-28T17:31:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5b332ef7_b3c4f2c7",
+      "range": {
+        "startLine": 4754,
+        "startChar": 10,
+        "endLine": 4754,
+        "endChar": 41
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "338d8a9a_604936e7",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "It is for the case when is_dauntless is false and image_magic is dauntless.",
       "parentUuid": "338d8a9a_604936e7",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ea53f4_4493864c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-28T17:31:39Z",
+      "side": 1,
+      "message": "let\u0027s check `image_magic \u003d\u003d MAGIC_DAUNTLESS` or `pid \u003d\u003d D2_PID` in this case? Checking for the presence of an image data but in fact checking if the image is for dauntless is confusing.",
+      "parentUuid": "3c5119f9_8fb2c783",
       "range": {
         "startLine": 4763,
         "startChar": 8,
