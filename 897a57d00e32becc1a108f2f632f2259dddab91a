@@ -16,6 +16,52 @@
       "message": "PTAL",
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac66bb18_e98231b3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4754,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-28T16:53:25Z",
+      "side": 1,
+      "message": "with your fix in the next patch `is_dauntless` is enough for checks everywhere, right?\n\nMaybe you should squash the two patches?",
+      "range": {
+        "startLine": 4754,
+        "startChar": 10,
+        "endLine": 4754,
+        "endChar": 41
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338d8a9a_604936e7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-28T16:53:25Z",
+      "side": 1,
+      "message": "it is still not clear to me why the `fw_image_data` check is required here.",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
