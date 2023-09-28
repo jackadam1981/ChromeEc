@@ -171,7 +171,7 @@ static void ipi_handler(void)
 		return;
 	}
 
-	CPRINTS("IPI %d", ipi_recv_buf->id);
+	//CPRINTS("IPI %d", ipi_recv_buf->id);
 
 	ipi_handler_table[ipi_recv_buf->id](
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
