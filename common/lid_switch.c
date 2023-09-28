@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "system.h"
 #include "timer.h"
 #include "util.h"
 
@@ -85,6 +86,20 @@ test_mockable int lid_is_open(void)
  */
 static void lid_init(void)
 {
+	const enum system_bbram_idx rsi = SYSTEM_BBRAM_SWITCH_RESTORE;
+	const enum system_bbram_idx sti = SYSTEM_BBRAM_SWITCH_STATE;
+	uint8_t rs, st;
+
+	/* Restore forced (a.k.a. fake) lid state. */
+	if (system_get_bbram(rsi, &rs) == EC_SUCCESS &&
+	    system_get_bbram(sti, &st) == EC_SUCCESS &&
+	    (rs & EC_SWITCH_LID_OPEN)) {
+		debounced_lid_open = !!(st & EC_SWITCH_LID_OPEN);
+		CPRINTS("Restored lid %s",
+			debounced_lid_open ? "open" : "close");
+		return;
+	}
+
 	if (raw_lid_open())
 		debounced_lid_open = 1;
 
@@ -144,6 +159,7 @@ DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen, NULL, "Simulate lid open");
 static int command_lidclose(int argc, const char **argv)
 {
 	lid_switch_close();
+
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose, NULL, "Simulate lid close");
@@ -155,6 +171,50 @@ static int command_lidstate(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(lidstate, command_lidstate, NULL, "Get state of lid");
+
+static int command_lid(int argc, const char **argv)
+{
+	const enum system_bbram_idx rsi = SYSTEM_BBRAM_SWITCH_RESTORE;
+	const enum system_bbram_idx sti = SYSTEM_BBRAM_SWITCH_STATE;
+	uint8_t rs, st;
+
+	if (argc == 1) {
+		ccprintf("lid state: %s\n",
+			 debounced_lid_open ? "open" : "closed");
+		if (system_get_bbram(rsi, &rs) == EC_SUCCESS &&
+		    system_get_bbram(sti, &st) == EC_SUCCESS &&
+		    (rs & EC_SWITCH_LID_OPEN))
+			ccprintf("restore to %s\n",
+				 st & EC_SWITCH_LID_OPEN ? "open" : "close");
+		return EC_SUCCESS;
+	}
+
+	if (argc > 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (system_get_bbram(rsi, &rs) ||
+	    system_get_bbram(sti, &st)) {
+		CPRINTS("Failed to get BBRAM_SWITCH");
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[1], "close")) {
+		system_set_bbram(rsi, rs | EC_SWITCH_LID_OPEN);
+		system_set_bbram(sti, st & ~EC_SWITCH_LID_OPEN);
+		lid_switch_close();
+	} else if (!strcasecmp(argv[1], "open")) {
+		system_set_bbram(rsi, rs | EC_SWITCH_LID_OPEN);
+		system_set_bbram(sti, st | EC_SWITCH_LID_OPEN);
+		lid_switch_open();
+	} else if (!strcasecmp(argv[1], "reset")) {
+		system_set_bbram(rsi, rs & ~EC_SWITCH_LID_OPEN);
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lid, command_lid, NULL, "Simulate lid state");
 
 /**
  * Host command to enable/disable lid opened.
