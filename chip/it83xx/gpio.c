@@ -262,6 +262,9 @@ static int gpio_to_irq(uint8_t port, uint8_t mask)
 {
 	int i;
 
+	if (port == GPIO_J && mask == BIT(3))
+		return IT83XX_IRQ_WKO131;
+
 	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
 		if (gpio_irqs[i].gpio_port == port &&
 		    gpio_irqs[i].gpio_mask == mask)

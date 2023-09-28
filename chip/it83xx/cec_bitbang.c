@@ -105,8 +105,8 @@ void cec_tmr_cap_start(int port, enum cec_cap_edge edge, int timeout)
 		 * Take into account the delay from when the interrupt occurs to
 		 * when we actually get here.
 		 */
-		int delay =
-			CEC_US_TO_TICKS(get_time().val - interrupt_time.val);
+		int delay = CEC_US_TO_TICKS(get_time().val -
+					    interrupt_time.val + 100);
 		int timer_count = timeout - delay;
 
 		/*
