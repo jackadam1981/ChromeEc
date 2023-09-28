@@ -523,7 +523,8 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 	if (port < 0 || port > board_get_usb_pd_port_count())
 		return;
 
-	raa489000_set_output_current(port, rp);
+	/* set rp default 1.5A*/
+	raa489000_set_output_current(port, TYPEC_RP_1A5);
 }
 
 /* Sensors */
@@ -779,6 +780,7 @@ void board_init(void)
 {
 	int on;
 	uint32_t board_id;
+	int port, reg, rv;
 
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
@@ -868,6 +870,25 @@ void board_init(void)
 			CPRINTF("LID_ACCEL is BMA253");
 		}
 	}
+
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		/* set ac prochot 3400mA */
+		isl923x_set_ac_prochot(port, 3400);
+
+		/* disable input current limit */
+		rv = i2c_read16(chg_chips[port].i2c_port,
+				I2C_ADDR_CHARGER_FLAGS, ISL9238_REG_CONTROL3,
+				&reg);
+		if (rv)
+			CPRINTF("C%d ISL9238_REG_CONTROL3 read fail!", port);
+
+		rv = i2c_write16(
+			chg_chips[port].i2c_port, I2C_ADDR_CHARGER_FLAGS,
+			ISL9238_REG_CONTROL3,
+			reg | RAA489000_C3_INPUT_CURRENT_LIMIT_LOOP_ENABLE);
+		if (rv)
+			CPRINTF("C%d ISL9238_REG_CONTROL3 write fail!", port);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -929,3 +950,36 @@ __override void lid_angle_peripheral_enable(int enable)
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 	}
 }
+
+#define IPNUT_CURRENT_LIMIT 4000
+static timestamp_t input_current_limit_time;
+
+void board_input_current_setting(void)
+{
+	int input_current, charge_port;
+
+	charge_port = charge_manager_get_active_charge_port();
+
+	if (charge_port < 0) {
+		input_current_limit_time.val = 0;
+	} else {
+		charger_get_input_current(charge_port, &input_current);
+
+		if (input_current_limit_time.val) {
+			if ((input_current > IPNUT_CURRENT_LIMIT) &&
+			    (input_current_limit_time.val <= get_time().val)) {
+				tcpc_write(charge_port, TCPC_REG_COMMAND,
+					   TCPC_REG_COMMAND_SNK_CTRL_LOW);
+				raa489000_enable_asgate(charge_port, false);
+				input_current_limit_time.val = 0;
+				CPRINTF("C%d,stop power supply!", charge_port);
+			}
+		} else if (input_current > IPNUT_CURRENT_LIMIT) {
+			input_current_limit_time.val =
+				get_time().val + (5 * SECOND);
+		} else {
+			input_current_limit_time.val = 0;
+		}
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, board_input_current_setting, HOOK_PRIO_DEFAULT);

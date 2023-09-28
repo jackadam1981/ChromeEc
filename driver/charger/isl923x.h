@@ -239,6 +239,13 @@
 #define ISL9238_C3_AMON_BMON_DIRECTION BIT(3)
 
 /*
+ * Control3: Input Current Limit Loop
+ * 0: enable input current limit loop(default)
+ * 1: disable input current limit loop
+ */
+#define RAA489000_C3_INPUT_CURRENT_LIMIT_LOOP_ENABLE BIT(5)
+
+/*
  * Control3: Disables Autonomous Charing
  *
  * Note: This is disabled automatically when ever we set the current limit

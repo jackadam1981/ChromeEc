@@ -8,7 +8,10 @@
 #include "battery_fuel_gauge.h"
 #include "charge_state.h"
 #include "common.h"
+#include "util.h"
 
+#define MAX_CHARGE_CURRENT_S0 1800
+#define MAX_CHARGE_CURRENT_NOT_S0 2300
 /*
  * Battery info for all Storo battery types. Note that the fields
  * start_charging_min/max and charging_min/max are not used for the charger.
@@ -97,3 +100,35 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_AS3GXXD3KA;
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	int current;
+	int on;
+
+	current = curr->requested_current;
+	on = chipset_in_state(CHIPSET_STATE_ON);
+	if (on) {
+		if (current > MAX_CHARGE_CURRENT_S0)
+			current = MAX_CHARGE_CURRENT_S0;
+	} else {
+		if (current > MAX_CHARGE_CURRENT_NOT_S0)
+			current = MAX_CHARGE_CURRENT_NOT_S0;
+	}
+
+	curr->requested_current = MIN(curr->requested_current, current);
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
