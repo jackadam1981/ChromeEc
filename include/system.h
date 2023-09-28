@@ -485,6 +485,10 @@ enum system_bbram_idx {
 	SYSTEM_BBRAM_IDX_PD1,
 	SYSTEM_BBRAM_IDX_PD2,
 	SYSTEM_BBRAM_IDX_TRY_SLOT,
+	/* Indicates corresponding switch state is to be restored from BBRAM. */
+	SYSTEM_BBRAM_SWITCH_RESTORE,
+	/* Indicates corresponding switch state. */
+	SYSTEM_BBRAM_SWITCH_STATE,
 };
 
 /* Maximum number of bbram indexes allotted for PD port state data */
