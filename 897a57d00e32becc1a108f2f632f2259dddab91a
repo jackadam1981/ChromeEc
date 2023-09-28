@@ -158,6 +158,30 @@
       },
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7735eff_b0f774d8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-28T17:48:28Z",
+      "side": 1,
+      "message": "Sorry I meant it is for the case when the user passed in a cr50 image. We do not want to try to find a dauntless chip. I can introduce more variable names, but it would just make to fw_image_data !\u003d NULL.\n\nI tried refactoring this to drop the `fw_image_data` condition, but then I realized we would try to flash a cr50 image on a dauntless chip (which we want to prevent).\n\nI am open to suggestions on how to rewrite this to make it more clear.",
+      "parentUuid": "93ea53f4_4493864c",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
