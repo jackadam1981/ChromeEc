@@ -230,6 +230,30 @@
       },
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be06901d_5f332175",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-28T19:14:00Z",
+      "side": 1,
+      "message": "ah, of course, I missed the non fw update use case.\n\nhow about in line 4754:\n```\nif (fw_image_data) {\n  if (is_dauntless \u0026\u0026 (image_magic !\u003d MAGIC_DAUNTLESS)) {\n   print(\"Unexpected image for Ti50 programming\\n\");\n   exit(update_errror);\n }\n pid \u003d (image_magic \u003d\u003d MAGIC_DAUNTLESS) ? D2_PID : H1_PID;\n} else {\n pid \u003d is_dauntless ? D2_PID : H1_PID;\n}\n```\n\nand in line 4763 bail out if `pid \u003d\u003d D2_PID`?",
+      "parentUuid": "6718c4ee_083017ea",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
