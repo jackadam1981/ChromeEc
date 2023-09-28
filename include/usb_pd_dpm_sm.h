@@ -212,7 +212,7 @@ uint8_t pd_get_bist_share_mode(void);
  * @param *len		pointer to uint32_t holding length of SDB
  */
 int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len);
-
+int dpm_get_snk_cap_ext_msg(int port, uint32_t *msg, uint32_t *len);
 /*
  * DPM function to handle a received alert message
  *

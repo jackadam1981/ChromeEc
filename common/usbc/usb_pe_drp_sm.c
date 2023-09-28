@@ -293,6 +293,7 @@ enum usb_pe_state {
 	PE_SNK_CHUNK_RECEIVED, /* pe-st76 */
 	PE_VCS_FORCE_VCONN, /* pe-st77 */
 	PE_GET_REVISION, /* pe-st78 */
+	PE_SNK_CAP_EXT, /* pe-st79 */
 
 	/* EPR states */
 	PE_SNK_SEND_EPR_MODE_ENTRY,
@@ -420,6 +421,7 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 	[PE_GIVE_STATUS] = "PE_Give_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
 	[PE_ALERT_RECEIVED] = "PE_Alert_Received",
+	[PE_SNK_CAP_EXT] = "PE_Snk_Cap_Ext",
 #else
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
 	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
@@ -494,6 +496,8 @@ GEN_NOT_SUPPORTED(PE_GIVE_STATUS);
 #define PE_GIVE_STATUS PE_GIVE_STATUS_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_SEND_ALERT);
 #define PE_SEND_ALERT PE_SEND_ALERT_NOT_SUPPORTED
+GEN_NOT_SUPPORTED(PE_SNK_CAP_EXT);
+#define PE_SNK_CAP_EXT PE_SNK_CAP_EXT_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
@@ -2915,6 +2919,9 @@ static void pe_src_ready_run(int port)
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
+			case PD_EXT_SINK_CAP:
+				set_state_pe(port, PE_SNK_CAP_EXT);
+				return;
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY */
 			default:
 				extended_message_not_supported(port, payload);
@@ -3831,6 +3838,9 @@ static void pe_snk_ready_run(int port)
 				set_state_pe(port, PE_SNK_EVALUATE_CAPABILITY);
 				break;
 #endif /* CONFIG_USB_PD_EPR */
+			case PD_EXT_SINK_CAP:
+				set_state_pe(port, PE_SNK_CAP_EXT);
+				return;
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY */
 			default:
 				extended_message_not_supported(port, payload);
@@ -4711,6 +4721,31 @@ static void pe_alert_received_entry(int port)
 	print_current_state(port);
 	dpm_handle_alert(port, *ado);
 	pe_set_ready_state(port);
+}
+
+/**
+ * PE_Snk_Cap_Ext
+ */
+static void pe_snk_cap_ext_entry(int port)
+{
+	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
+	uint32_t *len = &tx_emsg[port].len;
+
+	print_current_state(port);
+	if (dpm_get_snk_cap_ext_msg(port, msg, len) != EC_SUCCESS) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	send_ext_data_msg(port, TCPCI_MSG_SOP, PD_EXT_SINK_CAP);
+}
+
+static void pe_snk_cap_ext_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	}
 }
 
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
@@ -8716,6 +8751,10 @@ static __const_data const struct usb_state pe_states[] = {
 	},
 	[PE_ALERT_RECEIVED] = {
 		.entry = pe_alert_received_entry,
+	},
+	[PE_SNK_CAP_EXT] = {
+		.entry = pe_snk_cap_ext_entry,
+		.run   = pe_snk_cap_ext_run,
 	},
 #else
 	[PE_SRC_CHUNK_RECEIVED] = {

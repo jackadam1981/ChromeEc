@@ -1139,6 +1139,36 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	return EC_SUCCESS;
 }
 
+int dpm_get_snk_cap_ext_msg(int port, uint32_t *msg, uint32_t *len)
+{
+	struct pd_skedb skedb;
+
+	skedb.vid = USB_VID_GOOGLE;
+	skedb.pid = CONFIG_USB_PID;
+	skedb.xid = 0x0;
+	skedb.fw_version = 0x1;
+	skedb.hw_version = 0x2;
+	skedb.skedb_version = 0x1;
+	skedb.load_step = 0x0;
+	skedb.sink_load_char = 0x0;
+	skedb.compliance = 0x0;
+	skedb.touch_temp = 0x1;
+	skedb.battery_info = 0x1;
+	skedb.sink_mode = 0x1;
+	skedb.sink_min_pdp = 0x0;
+	skedb.sink_operational_pdp = 0x0;
+	skedb.sink_operational_pdp = 0x0;
+	skedb.sink_max_pdp = 0x0;
+	skedb.epr_sink_min_pdp = 0x0;
+	skedb.epr_sink_operational_pdp = 0x0;
+	skedb.epr_sink_max_pdp = 0x0;
+
+	*len = 24;
+
+	memcpy(msg, &skedb, *len);
+	return EC_SUCCESS;
+}
+
 enum ec_status pd_set_bist_share_mode(uint8_t enable)
 {
 	/*

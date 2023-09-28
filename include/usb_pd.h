@@ -1274,6 +1274,45 @@ enum pd_ctrl_msg_type {
 	 (1 << PD_CTRL_FR_SWAP) | (1 << PD_CTRL_GET_PPS_STATUS) |        \
 	 (1 << PD_CTRL_GET_COUNTRY_CODES))
 
+struct pd_skedb {
+	/* Vendor ID*/
+	uint16_t vid;
+	/* Product ID */
+	uint16_t pid;
+	/* Value provided by the USB-IF assigned to the product */
+	uint32_t xid;
+	/* Firmware version number */
+	uint8_t fw_version;
+	/* Hardware version number */
+	uint8_t hw_version;
+	/* SKEDB Version */
+	uint8_t skedb_version;
+	/* Load step */
+	uint8_t load_step;
+	/* Sink Load Characteristics */
+	uint16_t sink_load_char;
+	/* Compliance */
+	uint8_t compliance;
+	/* Touch temp */
+	uint8_t touch_temp;
+	/* Battery info */
+	uint8_t battery_info;
+	/* Sink mode */
+	uint8_t sink_mode;
+	/* Sink Minimum PDP */
+	uint8_t sink_min_pdp;
+	/* Sink Operational PDP */
+	uint8_t sink_operational_pdp;
+	/* Sink Maximum PDP */
+	uint8_t sink_max_pdp;
+	/* EPR Sink Minimum PDP */
+	uint8_t epr_sink_min_pdp;
+	/* EPR Sink Operational PDP */
+	uint8_t epr_sink_operational_pdp;
+	/* EPR Sink Maximum PDP */
+	uint8_t epr_sink_max_pdp;
+} __packed;
+
 /* Battery Status Data Object fields for REV 3.0 */
 #define BSDO_CAP_UNKNOWN 0xffff
 #define BSDO_CAP(n) (((n)&0xffff) << 16)
