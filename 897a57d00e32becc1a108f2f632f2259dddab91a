@@ -206,6 +206,30 @@
       },
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6718c4ee_083017ea",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-28T18:52:19Z",
+      "side": 1,
+      "message": "The `if (td.ep_type \u003d\u003d usb_xfer) {` section is for more than just programming a fw image. It is for other TPMV commnds too.\n\nYou suggested code wouldn\u0027t for example handled `gsctool -f` correctly when only a dauntless chip was attached to the system. With your suggestion a dauntless chip would not be tried, and it should be (or at least that is the intention for this CL)",
+      "parentUuid": "062a7cb2_d52f7fcc",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
