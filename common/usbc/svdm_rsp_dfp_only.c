@@ -14,10 +14,13 @@
 
 static int svdm_identity(int port, uint32_t *payload)
 {
-	if (pd_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) {
+	if ((pd_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) ||
+		PD_VDO_VID(payload[0]) != USB_SID_PD ) {
 		/*
 		 * PD 2 requires that DFPs nack received SVDM requests when no
 		 * modes are supported. PD 3 allows a response.
+		 *
+		 * Return NAK if incoming SVID cannot be recognized.
 		 */
 		return 0;
 	}
