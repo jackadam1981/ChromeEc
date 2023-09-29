@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "630dc59c_4764aa39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "I do think this is a good approach. Thank you for the refactor!",
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0a9a2b_2e031467",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "update this line",
+      "range": {
+        "startLine": 442,
+        "startChar": 4,
+        "endLine": 442,
+        "endChar": 34
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab7b8a2_209ab892",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "Could we get rid of this `NULL` everywhere in the declaration if we declared the field last?",
+      "range": {
+        "startLine": 445,
+        "startChar": 25,
+        "endLine": 445,
+        "endChar": 29
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83314455_7b21fd83",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "fail in `else` case?",
+      "range": {
+        "startLine": 2036,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 1
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34d6eed_a6925447",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3873,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "interesting... this command will now work better over CCD than from AP console because USB will know what the chip is",
+      "range": {
+        "startLine": 3873,
+        "startChar": 17,
+        "endLine": 3873,
+        "endChar": 41
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e06a38_13d76f8b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4486,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "should this `break` instead of `continue` if we get an error?\n\n\nCan we also add a comment saying that we do not accept parameters that conflict on device type required",
+      "range": {
+        "startLine": 4485,
+        "startChar": 2,
+        "endLine": 4486,
+        "endChar": 13
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed5fba17_7a0bb225",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4817,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "we should add an else clause to set `gsc_dev` to the correct known chip",
+      "range": {
+        "startLine": 4817,
+        "startChar": 3,
+        "endLine": 4817,
+        "endChar": 55
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c6b377_015ebcc3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4830,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:18:46Z",
+      "side": 1,
+      "message": "we should set gsc_dev to `DT` here",
+      "range": {
+        "startLine": 4830,
+        "startChar": 1,
+        "endLine": 4830,
+        "endChar": 17
+      },
+      "revId": "3e936068bfa82c33ddd7b58a8c61ffb924d94427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
