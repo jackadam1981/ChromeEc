@@ -22,12 +22,12 @@ extern "C" {
 #include "sha256.h"
 }
 
+#include <array>
+
 #include "fpsensor_auth_crypto.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state_without_driver_info.h"
 #include "fpsensor_utils.h"
-
-#include <array>
 
 enum ec_error_list
 encrypt_data_in_place(uint16_t version,
