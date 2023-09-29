@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1fe7471_65ada123",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T20:35:26Z",
+      "side": 1,
+      "message": "is it possible to have a local variable and pass a reference to the parsing function instead of making this global?",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 52
+      },
+      "revId": "77a6f6694d93f85437ecb141b07c1b8d84cd2f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3103be_17436f95",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4910,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T20:35:26Z",
+      "side": 1,
+      "message": "we can drop this line now that you have the `/* Make sure device type is set. */` code",
+      "range": {
+        "startLine": 4910,
+        "startChar": 7,
+        "endLine": 4910,
+        "endChar": 28
+      },
+      "revId": "77a6f6694d93f85437ecb141b07c1b8d84cd2f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776c6958_a73539a3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T20:35:26Z",
+      "side": 1,
+      "message": "Hmm, this is where we could use a build time flag. Build `gsctool` with a different default only for this clause. What do you think?",
+      "range": {
+        "startLine": 4934,
+        "startChar": 2,
+        "endLine": 4941,
+        "endChar": 3
+      },
+      "revId": "77a6f6694d93f85437ecb141b07c1b8d84cd2f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
