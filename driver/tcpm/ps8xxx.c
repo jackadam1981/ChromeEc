@@ -1130,11 +1130,21 @@ static int ps8xxx_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 
 static int ps8xxx_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
 {
+	int reg;
+	int rv;
+
 	if (product_id[me->usb_port] == PS8751_PRODUCT_ID &&
 	    me->flags & USB_MUX_FLAG_NOT_TCPC)
 		ps8xxx_wake_from_standby(me);
 
-	return tcpci_tcpm_mux_get(me, mux_state);
+	rv = tcpci_tcpm_mux_get(me, mux_state);
+	if (rv)
+		return rv;
+
+	rv = mux_read(me, MUX_IN_HPD_ASSERTION_REG, &reg);
+	if (!rv && reg & IN_HPD)
+		*mux_state |= USB_PD_MUX_HPD_LVL;
+	return rv;
 }
 
 static int ps8xxx_mux_enter_low_power(const struct usb_mux *me)
@@ -1163,6 +1173,30 @@ const struct usb_mux_driver ps8xxx_usb_mux_driver = {
 	.set = ps8xxx_mux_set,
 	.get = ps8xxx_mux_get,
 	.enter_low_power_mode = ps8xxx_mux_enter_low_power,
+};
+
+#else
+
+static int ps8xxx_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
+{
+	int reg;
+	int rv;
+
+	rv = tcpci_tcpm_mux_get(me, mux_state);
+	if (rv)
+		return rv;
+
+	rv = mux_read(me, MUX_IN_HPD_ASSERTION_REG, &reg);
+	if (!rv && reg & IN_HPD)
+		*mux_state |= USB_PD_MUX_HPD_LVL;
+	return rv;
+}
+
+const struct usb_mux_driver ps8xxx_usb_mux_driver = {
+	.init = tcpci_tcpm_mux_init,
+	.set = tcpci_tcpm_mux_set,
+	.get = ps8xxx_mux_get,
+	.enter_low_power_mode = tcpci_tcpm_mux_enter_low_power,
 };
 
 #endif /* CONFIG_USB_PD_TCPM_PS8751_CUSTOM_MUX_DRIVER */
