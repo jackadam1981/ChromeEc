@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e246d78b_092f148d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T15:29:46Z",
+      "side": 1,
+      "message": "Should we be checking the number of bytes read?",
+      "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
