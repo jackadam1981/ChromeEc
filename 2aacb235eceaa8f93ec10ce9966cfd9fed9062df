@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1e11b7_b2c0782a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-09-29T16:21:22Z",
+      "side": 1,
+      "message": "Could you add another review with more familiarity of the motion sense task?",
+      "revId": "2aacb235eceaa8f93ec10ce9966cfd9fed9062df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5280dad_c730d441",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-09-29T16:21:22Z",
+      "side": 1,
+      "message": "Should this return an error if ret is not EC_SUCCESS?",
+      "range": {
+        "startLine": 1722,
+        "startChar": 8,
+        "endLine": 1722,
+        "endChar": 18
+      },
+      "revId": "2aacb235eceaa8f93ec10ce9966cfd9fed9062df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3cca69_1e46bc0c",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-09-29T16:21:22Z",
+      "side": 1,
+      "message": "nit: A brief comment about each state would be helpful.",
+      "revId": "2aacb235eceaa8f93ec10ce9966cfd9fed9062df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
