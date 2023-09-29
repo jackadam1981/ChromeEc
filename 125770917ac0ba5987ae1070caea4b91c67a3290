@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "408e8c15_a7c0953d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T18:47:34Z",
+      "side": 1,
+      "message": "Attempts to send unsupported commands will be rejected by the GSC, so gsctool would report an error.\n\nRE: building gsctool differently for the DUT - I am not sure this is the best approach. I think it would be more flexible to try and determine the type of the GSC from the envirnoment.",
+      "parentUuid": "04cefc9f_b5a84825",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e53d070a_ff97bfd4",
