@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cefc9f_b5a84825",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T18:32:34Z",
+      "side": 1,
+      "message": "When we build gsctool, can we specify whether the tpm is h1 or dt? I think chromeos-gsc-dev has access to cr50_onboard and ti50_onboard, so it could build gsctool correctly for the board.",
+      "parentUuid": "34fd94eb_ec5ff122",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e53d070a_ff97bfd4",
