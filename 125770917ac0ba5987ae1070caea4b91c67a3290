@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8614f904_e6c94548",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T20:04:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "408e8c15_a7c0953d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e53d070a_ff97bfd4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -168,6 +192,24 @@
       "side": 1,
       "message": "will do.",
       "parentUuid": "c9ab046e_57924cbb",
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61961cc_276a054b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4584,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T20:04:04Z",
+      "side": 1,
+      "message": "Can you specify the device type in the \"-D\" cmdline option controls this? I\u0027m not sure it will be obvious what\u0027s going on to someone.\n\nThey might be tempted to use \"-D\" for something else. It kind of looks like a noop here.",
+      "parentUuid": "7d738fce_605a9449",
       "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
