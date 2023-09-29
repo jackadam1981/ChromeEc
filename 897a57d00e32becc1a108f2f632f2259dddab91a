@@ -350,6 +350,30 @@
       },
       "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e79684_7232d36c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4763,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-09-29T14:04:24Z",
+      "side": 1,
+      "message": "Thank you. I\u0027ll land now and we can work on a clean up then.",
+      "parentUuid": "28b752a7_2bdb5af3",
+      "range": {
+        "startLine": 4763,
+        "startChar": 8,
+        "endLine": 4763,
+        "endChar": 21
+      },
+      "revId": "897a57d00e32becc1a108f2f632f2259dddab91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
