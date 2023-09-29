@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cafab92_07d1aab7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T18:20:32Z",
+      "side": 1,
+      "message": "What happens if the dev_type gets set to Dauntless and the command is run on H1?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e53d070a_ff97bfd4",
@@ -14,6 +37,23 @@
       "writtenOn": "2023-09-29T18:13:44Z",
       "side": 1,
       "message": "I am going to try this on a DUT, open for more testing suggestoins",
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ab046e_57924cbb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4584,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T18:20:32Z",
+      "side": 1,
+      "message": "Add \"by the dev_type setting in the cmd_line_options.\" or something like that.",
       "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
