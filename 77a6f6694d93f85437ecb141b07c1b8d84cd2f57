@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116f76f0_ee7ab9ea",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T20:58:01Z",
+      "side": 1,
+      "message": "I thought about it, but decided against it, just folowing the C library patter of command line option processing where some variables are global (like optarg).",
+      "parentUuid": "d1fe7471_65ada123",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 52
+      },
+      "revId": "77a6f6694d93f85437ecb141b07c1b8d84cd2f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3103be_17436f95",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a957890f_d57411b5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4910,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T20:58:01Z",
+      "side": 1,
+      "message": "We know the device type at this point, I prefer to set it, so that there is no need to check the pid again. The code in line 4921 is explicitly for the case when device type could not be determined by any means.",
+      "parentUuid": "9a3103be_17436f95",
+      "range": {
+        "startLine": 4910,
+        "startChar": 7,
+        "endLine": 4910,
+        "endChar": 28
+      },
+      "revId": "77a6f6694d93f85437ecb141b07c1b8d84cd2f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "776c6958_a73539a3",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-09-29T20:35:26Z",
       "side": 1,
       "message": "Hmm, this is where we could use a build time flag. Build `gsctool` with a different default only for this clause. What do you think?",
+      "range": {
+        "startLine": 4934,
+        "startChar": 2,
+        "endLine": 4941,
+        "endChar": 3
+      },
+      "revId": "77a6f6694d93f85437ecb141b07c1b8d84cd2f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644abcb0_f3a3189b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T20:58:01Z",
+      "side": 1,
+      "message": "Frankly, I am not a fun of building gsctool differently for DUT vs host, and then split it even further for DUT with H1 vs DT.\n\nI often build gsctools once and then use it on differnt DUTs when testing.\n\nWe can discuss this further, it should not be part of this patch in any case.",
+      "parentUuid": "776c6958_a73539a3",
       "range": {
         "startLine": 4934,
         "startChar": 2,
