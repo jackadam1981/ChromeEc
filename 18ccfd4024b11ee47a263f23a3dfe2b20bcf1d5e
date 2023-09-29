@@ -52,6 +52,24 @@
       "parentUuid": "86873b9a_937c07f1",
       "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1249d0d_13ce7b68",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T17:56:48Z",
+      "side": 1,
+      "message": "We reboot if we can\u0027t do what?",
+      "parentUuid": "86873b9a_937c07f1",
+      "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
