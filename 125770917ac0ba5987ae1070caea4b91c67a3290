@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "733b980f_51ebf7db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T18:24:29Z",
+      "side": 1,
+      "message": "it will not connect to H1 over USB, because it would be using the DT vid/pid.\n\nIf ran on the DUT this could happen, but this is the same as before this patch.\n\nI\u0027ve been thinking aboug adding some heuristics for the DUT use case so that it can be known for sure what the device is,  but this would be a different patch.",
+      "parentUuid": "1cafab92_07d1aab7",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e53d070a_ff97bfd4",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-09-29T18:20:32Z",
       "side": 1,
       "message": "Add \"by the dev_type setting in the cmd_line_options.\" or something like that.",
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d738fce_605a9449",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4584,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-09-29T18:24:29Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "c9ab046e_57924cbb",
       "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
