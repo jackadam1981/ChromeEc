@@ -230,6 +230,24 @@
       "parentUuid": "d61961cc_276a054b",
       "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3e3c38_3e024e6e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4584,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-09-29T20:29:28Z",
+      "side": 1,
+      "message": "Maybe say \"D\" is used to specify running on a DT device.\n\nI think the \"already\" might make me think \"D\" isn\u0027t doing anything.",
+      "parentUuid": "0d5eef90_5d5f4386",
+      "revId": "125770917ac0ba5987ae1070caea4b91c67a3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
