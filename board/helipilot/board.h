@@ -293,12 +293,6 @@
 #define CONFIG_HW_QUINCY
 
 /*
- * TODO (b/279032946): should eventually be removed, required to avoid
- * chip_pre_init disabling JTAG internally
- */
-#define CONFIG_ENABLE_JTAG_SELECTION
-
-/*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
  * then redefined here to so it's more clear which signal is being used for
