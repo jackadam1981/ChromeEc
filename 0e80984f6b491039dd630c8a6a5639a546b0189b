@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9325a36_d18f2ee6",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-02T23:07:44Z",
+      "side": 1,
+      "message": "the compiler really doesn\u0027t want me adding const to these. With them as static I think that\u0027s sufficient for what this is doing in the first place",
+      "parentUuid": "5e37be0c_4a664d03",
+      "revId": "0e80984f6b491039dd630c8a6a5639a546b0189b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0c5a763_44c1953d",
@@ -69,6 +87,30 @@
         "id": 1305927
       },
       "writtenOn": "2023-10-02T23:04:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0c5a763_44c1953d",
+      "range": {
+        "startLine": 147,
+        "startChar": 40,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "0e80984f6b491039dd630c8a6a5639a546b0189b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aadbd25_a3b4e40d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-02T23:07:44Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "a0c5a763_44c1953d",
