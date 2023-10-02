@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f465a8_9ace9b40",
+        "filename": "common/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-02T20:12:35Z",
+      "side": 1,
+      "message": "It seems like `cuttoff_timeout` is not a time value but actually a number of polling iterations and should be called something like `cutoff_polling_iterations`.\n\nAnother way of doing it that seems a bit more expressive to me would be to compute the timeout timestamp with `get_time()` in `battery_cutoff_start` and then poll `timestamp_expired` in this function. Then you wouldn\u0027t have to maintain a relationship between `CONFIG_BATTERY_CUTOFF_TIMEOUT_MSEC` and `cutoff_poll_msec`, and you could get rid of some of your global variables.",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd6aa14_42659bf8",
+        "filename": "include/battery.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-02T20:12:35Z",
+      "side": 1,
+      "message": "Do you mean that it won\u0027t be reached because the EC will shut off before updating the state? Or that, by policy, we\u0027ll reject cutoff requests if AC is unplugged? (I think it\u0027s the first one.) It might be good to clarify in this comment between not reached due to policy and not reached due to the mechanics of cutoff.",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e049561b_fe99eaa3",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/cutoff.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-02T20:12:35Z",
+      "side": 1,
+      "message": "Providing an error message is optional. If you don\u0027t want to have one, you can just omit the argument.",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b90024a_cf92348c",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/cutoff.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-02T20:12:35Z",
+      "side": 1,
+      "message": "Nit: If the request is supposed to fail after the timeout, then you could set this to just a bit above the timeout.",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd87094e_66b64e57",
+        "filename": "zephyr/test/drivers/host_cmd/src/battery_cut_off.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-02T20:12:35Z",
+      "side": 1,
+      "message": "Nit: Any reason not to use the WAIT_FOR idiom here?",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
