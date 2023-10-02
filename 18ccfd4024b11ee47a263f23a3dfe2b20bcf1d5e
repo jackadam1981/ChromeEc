@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9392de5f_7497b4ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-02T17:03:10Z",
+      "side": 1,
+      "message": "with a nit about an unnecessary return statement",
+      "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd109dfc_1520888c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-02T17:03:10Z",
+      "side": 1,
+      "message": "no need in this return statement",
+      "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e246d78b_092f148d",
@@ -86,6 +120,24 @@
       "side": 1,
       "message": "nvmem_read_bytes():\n```\n * If not enough bytes are available in the storage to satisfy the request -\n * log error and reboot.\n```\nSo it is either returns requested size or reboot. I just wanted to avoid confusion in function signature.",
       "parentUuid": "d1249d0d_13ce7b68",
+      "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92b34b0_690fbbe0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-02T17:03:10Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t understand the reasoning.\n\nI agree though that the called function returns the same number no matter what, so there is no reason to check that number.",
+      "parentUuid": "fffeeb8d_974bb8ec",
       "revId": "18ccfd4024b11ee47a263f23a3dfe2b20bcf1d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
