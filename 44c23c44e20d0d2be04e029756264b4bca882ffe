@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9945f4_93c9c8ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-02T20:08:30Z",
+      "side": 1,
+      "message": "Why not just `--trace`?",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "44c23c44e20d0d2be04e029756264b4bca882ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a8ef4a_91c9cc63",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-02T20:08:30Z",
+      "side": 1,
+      "message": "You need to run `zmake generate-readme` to update the documentation.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 0
+      },
+      "revId": "44c23c44e20d0d2be04e029756264b4bca882ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
