@@ -809,6 +809,15 @@ static int syv682x_init(int port)
 	if (rv)
 		return rv;
 
+#ifdef CONFIG_USBC_PPC_SYV682X_OVP_SET_15V
+	/*
+	 * Setting the OVP to 15v power profile application
+	 */
+	regval = (SYV682X_OVP_17_9 << SYV682X_OVP_BIT_SHIFT) | SYV682X_RVS_MASK;
+	rv = write_reg(port, SYV682X_CONTROL_3_REG, regval);
+	if (rv)
+		return rv;
+#else
 	/*
 	 * Always set the over voltage setting to the maximum to support
 	 * sinking from a 20V PD charger. The common PPC code doesn't provide
@@ -820,6 +829,7 @@ static int syv682x_init(int port)
 	rv = write_reg(port, SYV682X_CONTROL_3_REG, regval);
 	if (rv)
 		return rv;
+#endif
 
 	/*
 	 * Remove Rd and connect CC1/CC2 lines to TCPC
