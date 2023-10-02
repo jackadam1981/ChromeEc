@@ -145,6 +145,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd556981_4c8f6569",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-02T15:03:12Z",
+      "side": 1,
+      "message": "This is okay for the moment, but consider grouping all the sources specific to TCPMv2 into one section before making additional changes related to the USB_PD configs that are shared by TCPMv2 and PD controller.",
+      "parentUuid": "e6724654_ae6bd272",
+      "range": {
+        "startLine": 523,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 36
+      },
+      "revId": "7ed965aa70131daa8bc3c593875d7c58458d9e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff157f6_20c28a8d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-02T15:03:12Z",
+      "side": 1,
+      "message": "We should evaluate whether these options are needed with using a dedicated PD chip.\n\nFor instance, `PLATFORM_EC_USB_PD_DP_MODE` is d",
+      "parentUuid": "e6724654_ae6bd272",
+      "range": {
+        "startLine": 523,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 36
+      },
+      "revId": "7ed965aa70131daa8bc3c593875d7c58458d9e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d982ed4_60603bb1",
         "filename": "zephyr/CMakeLists.txt",
         "patchSetId": 5
@@ -156,6 +204,30 @@
       "writtenOn": "2023-09-28T16:15:00Z",
       "side": 1,
       "message": "Same here - move this into Kconfig.",
+      "range": {
+        "startLine": 558,
+        "startChar": 4,
+        "endLine": 558,
+        "endChar": 36
+      },
+      "revId": "7ed965aa70131daa8bc3c593875d7c58458d9e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d12d78_d2f03de5",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-02T15:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d982ed4_60603bb1",
       "range": {
         "startLine": 558,
         "startChar": 4,
