@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c72014c_1f54d7d9",
+        "filename": "zephyr/program/geralt/i2c.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-02T17:41:16Z",
+      "side": 1,
+      "message": "I understand this is just a temporary, but it conflicts with other assignments: \n\n```\nproduct {\n  id: 0x5000\n  name: \"mini servo\"\n  project: \"Chrome OS\"\n  comments: \"FT232R (ftdichip.com) based debug \u0026 control board for Cros\"\n}\n```\n\nMaybe use 0x50ff for now, which is not occupied.",
+      "range": {
+        "startLine": 159,
+        "startChar": 9,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "1f451dc997d617d3cd8135819295efca75e71c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
