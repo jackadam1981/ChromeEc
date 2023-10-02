@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71288389_cf2aff8f",
+        "filename": "common/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-02T22:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59f465a8_9ace9b40",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd6aa14_42659bf8",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83307acc_610f8a1b",
+        "filename": "include/battery.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-02T22:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd6aa14_42659bf8",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e049561b_fe99eaa3",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-10-02T20:12:35Z",
       "side": 1,
       "message": "Providing an error message is optional. If you don\u0027t want to have one, you can just omit the argument.",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10655d1_f7a1f175",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/cutoff.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-02T22:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e049561b_fe99eaa3",
       "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a7a4876_3ad3f56c",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/cutoff.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-02T22:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b90024a_cf92348c",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd87094e_66b64e57",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-10-02T20:12:35Z",
       "side": 1,
       "message": "Nit: Any reason not to use the WAIT_FOR idiom here?",
+      "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f48d94_be5b9df9",
+        "filename": "zephyr/test/drivers/host_cmd/src/battery_cut_off.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-02T22:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd87094e_66b64e57",
       "revId": "d2e9b1de09927449f45ee02c95d2014ad4dcfb42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
