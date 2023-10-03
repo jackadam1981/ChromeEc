@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95011ff4_b391b86f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-10-03T07:10:04Z",
+      "side": 1,
+      "message": "No,previously you should have ended up in CEC_STATE_FOLLOWER_DEBOUNCE after the some failures and the interrupt would have been turned off in the following call to cec_tmr_cap_start(CEC_CAP_EDGE_NONE)",
+      "parentUuid": "4e3a4a6a_e1782fa0",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f4161_a1a44cd2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -138,6 +162,30 @@
       "side": 1,
       "message": "Without this it\u0027s completely broken on dibbi because we get a gpio interrupt every time and the state machine ends up in the wrong state, so it is clearing the interrupt. I see what you mean about the timing not being guaranteed, but I can\u0027t think of a way to fix it either.",
       "parentUuid": "7bebb0b1_1427b444",
+      "range": {
+        "startLine": 437,
+        "startChar": 2,
+        "endLine": 437,
+        "endChar": 52
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef862ee3_d7f62821",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-10-03T07:10:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fbde9610_0ac3d65b",
       "range": {
         "startLine": 437,
         "startChar": 2,
