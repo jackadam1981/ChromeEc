@@ -278,7 +278,8 @@
 			<&gpioc 0 0>,
 			<&gpioc 7 0>,
 			<&gpiod 5 0>,
-			<&gpioe 4 0>,
+			/* ec_prochot_in_l */
+			<&gpioe 4 GPIO_INPUT_PULL_UP>,
 			<&gpiof 2 0>,
 			<&gpiof 3 0>;
 	 };
