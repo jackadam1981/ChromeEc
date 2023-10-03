@@ -50,6 +50,15 @@ config USBC_PDC_RTS54XX_THREAD_PRIORITY
         help
           Set thread priority of the USB-C PDC
 
+config USBC_INTEL_ALTMODE_EMULATOR
+	bool "USB-C Intel alternate mode configuration driver emulator"
+	default y if ZTEST && DT_HAS_INTEL_PD_ALTMODE_ENABLED
+	select I2C_EMUL
+	select GPIO_EMUL
+	help
+	  This option enables USB-C Intel PD controller emulator code that
+	  helps validating Intel alternate mode configuration driver.
+
 endif # PLATFORM_EC_USBC
 
 # TODO: move this inside the PLATFORM_EC_USBC guard
