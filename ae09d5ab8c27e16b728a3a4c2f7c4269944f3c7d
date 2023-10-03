@@ -16,6 +16,24 @@
       "message": "I suggest also reaching out to the chip vendor and ask about interrupt latency just to be sure, and maybe to make it more future-proof.",
       "revId": "ae09d5ab8c27e16b728a3a4c2f7c4269944f3c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe3a1c8_25aad844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-10-03T00:47:36Z",
+      "side": 1,
+      "message": "Filed b/303139959",
+      "parentUuid": "f863bec0_f10ef3e5",
+      "revId": "ae09d5ab8c27e16b728a3a4c2f7c4269944f3c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
