@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6180fee_8f1c8653",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-03T17:28:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "12daaa9c_fec1437f",
+      "range": {
+        "startLine": 22,
+        "startChar": 23,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "8fa16b19ead920ae187b5285a49c1066173f4f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452b6c0b_cbce4572",
@@ -253,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09396c1_04ff5f36",
+        "filename": "zephyr/program/rex/rex/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-03T17:28:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "33011cc5_8d8ebe43",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 11
+      },
+      "revId": "8fa16b19ead920ae187b5285a49c1066173f4f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d58a6c_1ea5832d",
@@ -302,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f605f2a_d8a5110b",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-03T17:28:00Z",
+      "side": 1,
+      "message": "I like the rename to `board_led_apply_color()`.",
+      "parentUuid": "d32fcd15_41885dd6",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 7
+      },
+      "revId": "8fa16b19ead920ae187b5285a49c1066173f4f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "887f99f5_e227a51e",
         "filename": "zephyr/shim/src/led_driver/led.h",
         "patchSetId": 6
@@ -337,6 +409,30 @@
       "side": 1,
       "message": "For example in the linear transition `cur_color[i].pulse_ns \u003d (next_color[i].pulse_ns - prev_color[i].pulse_ns) * pattern-\u003eticks / duration + prev_color[i].pulse_ns;` the term `(next_color[i].pulse_ns - prev_color[i].pulse_ns)` could be negative. casting the number to a signed int in the middle of the calculation would have undesired behavior when pulse_ns \u003e 2^31.\n\nwhile we could use a lot of if statements to keep the intermediate values strictly positive and change the signs instead, considering the fact that all the LEDs run at less than 1 000 000 it seems better to just use 1 bit in the number to keep track of the direction of transition.\n\nYou might ask why is casting it worse if it\u0027s less than 1 000 000 anyways so there\u0027s no overflow problems. It\u0027s because having it as a signed int allows the compiler to throw errors in the off chance someone does enter a value \u003e 2^31.",
       "parentUuid": "887f99f5_e227a51e",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "8fa16b19ead920ae187b5285a49c1066173f4f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bdde898_b0be4dab",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-03T17:28:00Z",
+      "side": 1,
+      "message": "That\u0027s make sense. Please copy a summary to this explanation as a comment.",
+      "parentUuid": "9f290afb_c87116f7",
       "range": {
         "startLine": 83,
         "startChar": 4,
