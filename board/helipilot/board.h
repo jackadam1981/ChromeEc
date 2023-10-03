@@ -14,6 +14,9 @@
 
 #define CONFIG_ALLOW_UNALIGNED_ACCESS
 #define CONFIG_LTO
+/* TODO: Verify these are compatible with NPCX arch */
+#define CONFIG_FLASH_PROTECT_NEXT_BOOT
+#undef CONFIG_FLASH_PSTATE_BANK
 
 /*-------------------------------------------------------------------------*
  * Flash layout:

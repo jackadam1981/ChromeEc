@@ -8,6 +8,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "flash.h"
 #include "fpsensor_detect.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -133,6 +134,11 @@ static void board_init(void)
 	 * avoid incurring that cost when generating random numbers
 	 */
 	npcx_trng_hw_init();
+
+	/* TODO: Not sure if this is the correct solution or if this should be
+	 * enabled elsewhere, through other means
+	 */
+	crec_flash_physical_protect_now(1);
 
 	/*
 	 * Enable the SPI slave interface if the PCH is up.
