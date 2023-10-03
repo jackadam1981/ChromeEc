@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64c8a38_e9b12d4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-03T15:09:42Z",
+      "side": 1,
+      "message": "I need to do some cleanup (move test wrapper functions out of `npcx/flash.c`, etc) but I\u0027d like some feedback on the direction of this. All tests presently pass but I don\u0027t believe helipilot is using any functionality analogous to the STM32\u0027s Option Bytes. Is that correct?",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
