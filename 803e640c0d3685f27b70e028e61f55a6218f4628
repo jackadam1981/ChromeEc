@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c623edd_89db81f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-03T22:44:15Z",
+      "side": 1,
+      "message": "```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/dochi/led.c:22:33: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:__override struct led_descriptor\nERROR:root:                                ^\n```\n\nplease let the repo upload hooks run.\nthat should guide you through fixing the formatting.",
+      "revId": "803e640c0d3685f27b70e028e61f55a6218f4628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
