@@ -209,6 +209,7 @@ tests:
       - CONFIG_ZTEST_THREAD_PRIORITY=1
   drivers.power_host_sleep:
     extra_configs:
+<<<<<<< HEAD   (8b614f zephyr: Add Kconfig PLATFORM_EC_EMULATED_SYSRQ)
       - CONFIG_LINK_TEST_SUITE_POWER_HOST_SLEEP=y
       # Make tests independent of chipset specific code
       - CONFIG_AP_ARM_QUALCOMM_SC7280=n
@@ -216,6 +217,51 @@ tests:
 
       - CONFIG_POWER_SEQUENCE_MOCK=y
       - CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP=y
+=======
+    - CONFIG_LINK_TEST_SUITE_POWER_HOST_SLEEP=y
+    # Make tests independent of chipset specific code
+    - CONFIG_AP_ARM_QUALCOMM_SC7280=n
+    - CONFIG_PLATFORM_EC_POWERSEQ_SC7280=n
+    - CONFIG_POWER_SEQUENCE_MOCK=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_S0IX=y
+    - CONFIG_PLATFORM_EC_EMULATED_SYSRQ=y
+  drivers.power_host_sleep_ro:
+    extra_args:
+    - EXTRA_CFLAGS=-DSECTION_IS_RO
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_POWER_HOST_SLEEP=y
+    # Make tests independent of chipset specific code
+    - CONFIG_AP_ARM_QUALCOMM_SC7280=n
+    - CONFIG_PLATFORM_EC_POWERSEQ_SC7280=n
+    - CONFIG_POWER_SEQUENCE_MOCK=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_S0IX=y
+  drivers.power_host_sleep_rw:
+    extra_args:
+    - EXTRA_CFLAGS=-DSECTION_IS_RW
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_POWER_HOST_SLEEP=y
+    # Make tests independent of chipset specific code
+    - CONFIG_AP_ARM_QUALCOMM_SC7280=n
+    - CONFIG_PLATFORM_EC_POWERSEQ_SC7280=n
+    - CONFIG_POWER_SEQUENCE_MOCK=y
+    - CONFIG_PLATFORM_EC_EMULATED_SYSRQ=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_S0IX=y
+  drivers.power_host_sleep.ec_host_cmd:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_POWER_HOST_SLEEP=y
+    # Make tests independent of chipset specific code
+    - CONFIG_AP_ARM_QUALCOMM_SC7280=n
+    - CONFIG_PLATFORM_EC_POWERSEQ_SC7280=n
+    - CONFIG_POWER_SEQUENCE_MOCK=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_S0IX=y
+    extra_conf_files:
+    - prj.conf
+    - ec_host_cmd.conf
+>>>>>>> CHANGE (f0a4dc zephyr: Enable emulated SysRq testing)
   drivers.ps8xxx:
     extra_args: >
       CONF_FILE="prj.conf;ps8xxx/prj.conf"

@@ -17,6 +17,11 @@
 		gpio_sfh_ec_int_h: sfh_ec_int_h {
 			gpios = <&gpio0 1 GPIO_INPUT>;
 		};
+
+		gpio_ap_ec_int_l: ap_ec_int_l {
+			gpios = <&gpio0 18 GPIO_OUTPUT_HIGH>;
+			enum-name = "GPIO_EC_INT_L";
+		};
 	};
 
 	gpio-interrupts {
@@ -31,5 +36,18 @@
 };
 
 &gpio0 {
+<<<<<<< HEAD   (8b614f zephyr: Add Kconfig PLATFORM_EC_EMULATED_SYSRQ)
 	ngpios = <2>;
 };
+=======
+	ngpios = <19>;
+};
+
+&espi0 {
+	espi-host@0 {
+		status = "okay";
+		compatible = "zephyr,espi-emul-espi-host";
+		reg = <0x0>;
+	};
+};
+>>>>>>> CHANGE (f0a4dc zephyr: Enable emulated SysRq testing)
