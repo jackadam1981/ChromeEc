@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbbf0fd_a4c9e675",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-03T14:47:43Z",
+      "side": 1,
+      "message": "How does this work? Don\u0027t we need to have another GPIO for the watermark interrupt?",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
