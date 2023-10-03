@@ -309,6 +309,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 {
 	int c;
 	int pressed = 0;
+	int pb_pressed;
 
 	/* 1. Read input pins */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -324,6 +325,8 @@ static int read_matrix(uint8_t *state, bool at_boot)
 			continue;
 		}
 
+		pb_pressed = power_button_signal_asserted();
+
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
 		udelay(keyscan_config.output_settle_us);
@@ -334,6 +337,14 @@ static int read_matrix(uint8_t *state, bool at_boot)
 #else
 		state[c] = keyboard_raw_read_rows();
 #endif
+
+		if (pb_pressed != power_button_signal_asserted()) {
+			c--;
+			continue;
+		} else if (pb_pressed) {
+			state[c] &= ~(KEYBOARD_MASK_REFRESH |
+				      KEYBOARD_MASK_BACKSPACE);
+		}
 
 		/* Use simulated keyscan sequence instead if testing active */
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
