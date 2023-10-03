@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e3a4a6a_e1782fa0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-10-03T00:13:30Z",
+      "side": 1,
+      "message": "Probably yes. But that was possible before this change too in the states where the interrupt is enabled. And this is a problem with any gpio interrupt, right?",
+      "parentUuid": "c20b4a9a_bcec34df",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f4161_a1a44cd2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -90,6 +114,30 @@
       "writtenOn": "2023-10-02T07:47:29Z",
       "side": 1,
       "message": "There is no guarantees that the interrupt flag has already been triggered here, but I guess it is hard to do anything about it. Have you done any verification to see that the interrupt count decreased?",
+      "range": {
+        "startLine": 437,
+        "startChar": 2,
+        "endLine": 437,
+        "endChar": 52
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbde9610_0ac3d65b",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-10-03T00:13:30Z",
+      "side": 1,
+      "message": "Without this it\u0027s completely broken on dibbi because we get a gpio interrupt every time and the state machine ends up in the wrong state, so it is clearing the interrupt. I see what you mean about the timing not being guaranteed, but I can\u0027t think of a way to fix it either.",
+      "parentUuid": "7bebb0b1_1427b444",
       "range": {
         "startLine": 437,
         "startChar": 2,
