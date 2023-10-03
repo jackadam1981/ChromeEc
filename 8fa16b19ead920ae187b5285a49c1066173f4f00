@@ -372,6 +372,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d232639_d9ac7886",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-10-03T23:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f605f2a_d8a5110b",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 7
+      },
+      "revId": "8fa16b19ead920ae187b5285a49c1066173f4f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "887f99f5_e227a51e",
@@ -433,6 +457,30 @@
       "side": 1,
       "message": "That\u0027s make sense. Please copy a summary to this explanation as a comment.",
       "parentUuid": "9f290afb_c87116f7",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "8fa16b19ead920ae187b5285a49c1066173f4f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4c0f9e_0a7cd792",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-10-03T23:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bdde898_b0be4dab",
       "range": {
         "startLine": 83,
         "startChar": 4,
