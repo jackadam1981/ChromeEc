@@ -12,4 +12,13 @@ config USBC_INTEL_ALTMODE
 	  chip and EC for configuring the USB-C alternate mode muxes inside
 	  Intel AP.
 
+config USBC_INTEL_ALTMODE_EMULATOR
+	bool "USB-C Intel alternate mode configuration driver emulator"
+	default y if ZTEST && DT_HAS_INTEL_PD_ALTMODE_ENABLED
+	select I2C_EMUL
+	select GPIO_EMUL
+	help
+	  This option enables USB-C Intel PD controller emulator code that
+	  helps validating Intel alternate mode configuration driver.
+
 endif # PLATFORM_EC_USBC
