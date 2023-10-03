@@ -309,7 +309,9 @@ static int read_matrix(uint8_t *state, bool at_boot)
 {
 	int c;
 	int pressed = 0;
-
+#ifdef KEYBOARD_MASK_PWRBTN
+	int power_btn_pressed;
+#endif
 	/* 1. Read input pins */
 	for (c = 0; c < keyboard_cols; c++) {
 		/*
@@ -328,11 +330,31 @@ static int read_matrix(uint8_t *state, bool at_boot)
 		keyboard_raw_drive_column(c);
 		udelay(keyscan_config.output_settle_us);
 
+		/* Get power button state */
+#ifdef KEYBOARD_MASK_PWRBTN
+		power_btn_pressed = !gpio_get_level(GPIO_POWER_BUTTON_L);
+#endif
+
 		/* Read the row state */
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
 		state[c] = keyboard_read_adc_rows();
 #else
 		state[c] = keyboard_raw_read_rows();
+#endif
+
+#ifdef KEYBOARD_MASK_PWRBTN
+		/*
+		 * Power button changed state during scan, so re scan
+		 * column because GSC will assert KS02 while power
+		 * button is being held
+		 */
+		if (power_btn_pressed == gpio_get_level(GPIO_POWER_BUTTON_L)) {
+			c--;
+			continue;
+		} else if (power_btn_pressed) {
+			/* Clear the KSI for when power button is pressed */
+			state[c] &= ~KEYBOARD_MASK_PWRBTN;
+		}
 #endif
 
 		/* Use simulated keyscan sequence instead if testing active */
