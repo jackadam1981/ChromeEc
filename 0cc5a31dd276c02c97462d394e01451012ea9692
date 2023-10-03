@@ -22,6 +22,30 @@
       },
       "revId": "0cc5a31dd276c02c97462d394e01451012ea9692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab99c1d_09a23fc3",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2023-10-03T01:28:46Z",
+      "side": 1,
+      "message": "This value \"SYV682X_OVP_17_9\" I just following driver/ppc/syv682x.h to define. Could you please tell me specific how to modify the define?",
+      "parentUuid": "9cd3ed89_7f2292f9",
+      "range": {
+        "startLine": 816,
+        "startChar": 11,
+        "endLine": 816,
+        "endChar": 27
+      },
+      "revId": "0cc5a31dd276c02c97462d394e01451012ea9692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
