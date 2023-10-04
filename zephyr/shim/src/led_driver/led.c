@@ -23,7 +23,7 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
-LOG_MODULE_REGISTER(led, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(led, LOG_LEVEL_INF);
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Exactly one instance of cros-ec,led-policy should be defined.");
@@ -198,7 +198,8 @@ static void set_color(int node_idx, uint32_t ticks)
 	}
 }
 
-static int match_node(int node_idx)
+STATIC_IF_NOT(CONFIG_ZTEST)
+int match_node(int node_idx)
 {
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != LED_PWRS_UNCHANGE) {
@@ -252,6 +253,7 @@ static int match_node(int node_idx)
 static void board_led_set_color(void)
 {
 	static uint32_t ticks;
+	static int last_node = -1;
 	bool found_node = false;
 
 	ticks++;
@@ -267,6 +269,10 @@ static void board_led_set_color(void)
 	for (int i = 0; i < ARRAY_SIZE(node_array); i++) {
 		if (match_node(i) != -1) {
 			found_node = true;
+			if (i != last_node) {
+				LOG_INF("Set LED node %d, ticks %d", i, ticks);
+				last_node = i;
+			}
 			set_color(i, ticks);
 		}
 	}
