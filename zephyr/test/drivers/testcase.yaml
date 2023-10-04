@@ -1211,6 +1211,17 @@ tests:
     - prj.conf
     - usbc_alt_mode/prj.conf
     - ec_host_cmd.conf
+  drivers.usbc_intel_alt_mode:
+    timeout: 120
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_USBC_INTEL_ALT_MODE=y
+    - CONFIG_PLATFORM_EC_USB_PD_CONTROLLER=y
+    - CONFIG_USB_PD_ALTMODE=y
+    - CONFIG_USB_PD_ALTMODE_INTEL=y
+    extra_conf_files:
+    - ./usbc_intel_alt_mode/prj.conf
+    extra_dtc_overlay_files:
+    - ./usbc_intel_alt_mode/pd_alt_mode.dts
   drivers.usbc_console_pd:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_USBC_CONSOLE_PD=y
