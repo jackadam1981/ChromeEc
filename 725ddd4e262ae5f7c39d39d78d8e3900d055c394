@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19344ba1_63796b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-04T21:01:16Z",
+      "side": 1,
+      "message": "This is a proof of concept test that demonstrates how to detect LED policy gaps.\n\nFrom this [comment](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/led_driver/led.c;l\u003d266) in the LED policy driver, every possible system state should have an LED policy.",
+      "revId": "725ddd4e262ae5f7c39d39d78d8e3900d055c394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
