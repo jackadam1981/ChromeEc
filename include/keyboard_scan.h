@@ -74,10 +74,11 @@ enum boot_key {
 	BOOT_KEY_REFRESH = 3,
 
 	BOOT_KEY_COUNT,
-	/* 31 is reserved for power button. */
+	/* Reserved */
+	BOOT_KEY_VOLUME_UP = 30,
 	BOOT_KEY_POWER = 31,
 };
-BUILD_ASSERT(BOOT_KEY_COUNT < 31);
+BUILD_ASSERT(BOOT_KEY_COUNT <= 30);
 
 #if defined(HAS_TASK_KEYSCAN) && defined(CONFIG_KEYBOARD_BOOT_KEYS)
 /**

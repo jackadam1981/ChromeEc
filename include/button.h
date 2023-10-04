@@ -102,6 +102,14 @@ int button_is_adc_detected(enum gpio_signal gpio);
  */
 int adc_to_physical_value(enum gpio_signal gpio);
 
+/**
+ * Return a raw (pre-bounced) state of a button.
+ *
+ * @param button  pointer to button config.
+ * @return  true if button is pressed or false otherwise.
+ */
+int button_raw_pressed(const struct button_config *button);
+
 /* Public for testing purposes only, undocumented. */
 enum debug_state {
 	STATE_DEBUG_NONE,

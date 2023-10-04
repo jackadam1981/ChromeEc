@@ -66,10 +66,7 @@ static int simulated_button_pressed(const struct button_config *button)
 }
 #endif
 
-/*
- * Whether a button is currently pressed.
- */
-static int raw_button_pressed(const struct button_config *button)
+int button_raw_pressed(const struct button_config *button)
 {
 	int physical_value = 0;
 	int simulated_value = 0;
@@ -204,7 +201,7 @@ static int is_recovery_boot(void)
 static void button_reset(enum button button_type,
 			 const struct button_config *button)
 {
-	state[button_type].debounced_pressed = raw_button_pressed(button);
+	state[button_type].debounced_pressed = button_raw_pressed(button);
 	state[button_type].debounce_time = 0;
 	gpio_enable_interrupt(button->gpio);
 }
@@ -287,7 +284,7 @@ static void button_change_deferred(void)
 
 		if (state[i].debounce_time <= time_now) {
 			/* Check if the state has changed */
-			new_pressed = raw_button_pressed(&buttons[i]);
+			new_pressed = button_raw_pressed(&buttons[i]);
 			if (state[i].debounced_pressed != new_pressed) {
 				state[i].debounced_pressed = new_pressed;
 #ifdef CONFIG_EMULATED_SYSRQ
