@@ -22,6 +22,30 @@
       },
       "revId": "0c52a5797faf2a50a0c0927ed2cd94a07bd4a7aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc2db7a_7f3c7ca1",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-10-04T15:43:38Z",
+      "side": 1,
+      "message": "First of all, FPMCU Zephyr (and EC, AFAIK) includes files from libc provided with toolchain. In `/usr/lib64/clang/17/include/stdnoreturn.h` there are no guards, just definition.\n\nOnly `system.h` and `panic.h` pull `stdnoreturn.h`. Files above pull neither `system.h` nor `panic.h`",
+      "parentUuid": "188a05a5_1fc0f857",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "0c52a5797faf2a50a0c0927ed2cd94a07bd4a7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
