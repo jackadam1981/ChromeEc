@@ -157,6 +157,19 @@ static enum ec_error_list isl923x_set_input_current_limit(int chgnum,
 	if (rv)
 		return rv;
 
+	if (IS_ENABLED(CONFIG_CHANGER_RAA489000_TWO_LEVEL_CURRENT_LIMIT))
+		return raw_write16(chgnum, ISL923X_REG_ADAPTER_CURRENT_LIMIT1,
+				   reg);
+	else
+		return raw_write16(chgnum, ISL923X_REG_ADAPTER_CURRENT_LIMIT2,
+				   reg);
+}
+
+/* use for board special setting*/
+int isl923x_set_level_2_input_current_limit(int chgnum, int input_current_2)
+{
+	uint16_t reg = AC_CURRENT_TO_REG(input_current_2);
+
 	return raw_write16(chgnum, ISL923X_REG_ADAPTER_CURRENT_LIMIT2, reg);
 }
 
@@ -790,6 +803,15 @@ static void isl923x_init(int chgnum)
 		reg &= ~GENMASK(13, 15);
 		reg |= ((CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT - 32) / 32)
 		       << 13;
+		if (raw_write16(chgnum, ISL923X_REG_CONTROL2, reg))
+			goto init_fail;
+	}
+
+	if (IS_ENABLED(CONFIG_CHANGER_RAA489000_TWO_LEVEL_CURRENT_LIMIT)) {
+		if (raw_read16(chgnum, ISL923X_REG_CONTROL2, &reg))
+			goto init_fail;
+		/* enable two level current limit */
+		reg |= ISL923X_C2_2LVL_OVERCURRENT;
 		if (raw_write16(chgnum, ISL923X_REG_CONTROL2, reg))
 			goto init_fail;
 	}
