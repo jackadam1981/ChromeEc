@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40dc70f1_40c52cbb",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-04T20:51:45Z",
+      "side": 1,
+      "message": "pure nitpicking: bars around SysRq (|) are not required. You have |SysRq| here and 2 lines below with the bars, then on line 270 without the bars - SysRq",
+      "range": {
+        "startLine": 257,
+        "startChar": 10,
+        "endLine": 257,
+        "endChar": 18
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9419dff_a80fef64",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-04T20:51:45Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be beneficial to send EC_HOST_EVENT_HANG_DETECT after the SysRq for this case? To give it one more attempt of graceful \"wake\"...",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 52
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
