@@ -117,6 +117,30 @@
       },
       "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03fd1ad_2a2b2ee3",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-04T23:04:48Z",
+      "side": 1,
+      "message": "if CONFIG_EMULATED_SYSRQ is NOT defined - the event is also ignored?",
+      "parentUuid": "119d5aac_4cc98851",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 52
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
