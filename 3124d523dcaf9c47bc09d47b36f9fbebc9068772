@@ -45,6 +45,30 @@
       },
       "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e786685_e963baf6",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-10-04T21:07:20Z",
+      "side": 1,
+      "message": "No, since the `sysrq` results in a kernel panic and reboot. If the AP was alive enough to receive/respond to the HC, then it has also already rebooted due to the `sysrq`.",
+      "parentUuid": "f9419dff_a80fef64",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 52
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
