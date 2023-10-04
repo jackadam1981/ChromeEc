@@ -46,6 +46,30 @@
       },
       "revId": "0c52a5797faf2a50a0c0927ed2cd94a07bd4a7aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7290480_3c992585",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-04T15:48:49Z",
+      "side": 1,
+      "message": "Oh, okay, that makes sense. Thanks for the clarification.",
+      "parentUuid": "8dc2db7a_7f3c7ca1",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "0c52a5797faf2a50a0c0927ed2cd94a07bd4a7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
