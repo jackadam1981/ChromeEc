@@ -16,6 +16,24 @@
       "message": "```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/dochi/led.c:22:33: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:__override struct led_descriptor\nERROR:root:                                ^\n```\n\nplease let the repo upload hooks run.\nthat should guide you through fixing the formatting.",
       "revId": "803e640c0d3685f27b70e028e61f55a6218f4628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "699eedb4_5d33d94c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-10-04T01:51:48Z",
+      "side": 1,
+      "message": "The following files have formatting errors:\n    \tboard/dochi/gpio.inc\n    \tboard/dochi/led.c\n    You can run `/home/ben/chromiumos/src/repohooks/third_party/clang-format.py --fix --commit 803e640c0d3685f27b70e028e61f55a6218f4628` to fix this\n    \n   but, use that, it don\u0027t seems kindly visually.",
+      "parentUuid": "8c623edd_89db81f9",
+      "revId": "803e640c0d3685f27b70e028e61f55a6218f4628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
