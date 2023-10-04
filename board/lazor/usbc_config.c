@@ -186,6 +186,24 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
  * to AP. But the TCPC chip is also needed to know the HPD status; otherwise,
  * the mux misbehaves.
  */
+static const struct usb_mux_chain usbc0_virtual_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.usb_port = 0,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+};
+
+static const struct usb_mux_chain usbc1_virtual_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.usb_port = 1,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+};
+
 const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
@@ -194,6 +212,7 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 				.driver = &tcpci_tcpm_usb_mux_driver,
 				.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 			},
+		.next = &usbc0_virtual_mux,
 	},
 	{
 		.mux =
@@ -202,6 +221,7 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 				.driver = &tcpci_tcpm_usb_mux_driver,
 				.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 			},
+		.next = &usbc1_virtual_mux,
 	}
 };
 
