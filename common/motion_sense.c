@@ -306,7 +306,10 @@ static void motion_sense_switch_sensor_rate(void)
 					tablet_set_mode(0, TABLET_TRIGGER_LID);
 			}
 		} else {
-			/* The sensors are being powered off */
+			/*
+			 * The sensors are being powered off or data sampling is
+			 * not supported during suspend.
+			 */
 			if ((sensor->state == SENSOR_INITIALIZED) ||
 			    (sensor->state == SENSOR_READY)) {
 				/*
@@ -316,6 +319,11 @@ static void motion_sense_switch_sensor_rate(void)
 				mutex_lock(&g_sensor_mutex);
 				sensor->collection_rate = 0;
 				mutex_unlock(&g_sensor_mutex);
+				/*
+				 * Set ODR accordingly in case data sampling
+				 * is not supported
+				 */
+				motion_sense_set_data_rate(sensor);
 				sensor->state = SENSOR_NOT_INITIALIZED;
 			}
 		}
@@ -425,6 +433,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
 
 static void motion_sense_suspend(void)
 {
+	int i;
+	struct motion_sensor_t *sensor;
+
 	motion_sense_print_stats("suspend");
 
 	/*
@@ -435,6 +446,16 @@ static void motion_sense_suspend(void)
 		return;
 
 	sensor_active = SENSOR_ACTIVE_S3;
+
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		if (!SENSOR_ACTIVE(sensor)) {
+			/* Forget about changes made by the AP */
+			sensor->backup_ap_odr =
+				sensor->config[SENSOR_CONFIG_AP].odr;
+			sensor->config[SENSOR_CONFIG_AP].odr = 0;
+		}
+	}
 
 	/*
 	 * During shutdown sequence sensor rails can be powered down
@@ -456,7 +477,17 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 
 static void motion_sense_resume(void)
 {
+	int i;
+	struct motion_sensor_t *sensor;
+
 	motion_sense_print_stats("resume");
+
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		if (!sensor->backup_ap_odr)
+			sensor->config[SENSOR_CONFIG_AP].odr =
+				sensor->backup_ap_odr;
+	}
 
 	sensor_active = SENSOR_ACTIVE_S0;
 	hook_call_deferred(&motion_sense_switch_sensor_rate_data,

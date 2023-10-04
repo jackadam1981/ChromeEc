@@ -257,6 +257,12 @@ struct motion_sensor_t {
 
 	/* Maximum supported sampling frequency in miliHertz for this sensor */
 	uint32_t max_frequency;
+
+	/*
+	 * For sensors which are not active during suspend, save AP ODR
+	 * before entering susepnd; and restore it after resume.
+	 */
+	unsigned int backup_ap_odr;
 };
 
 /*
