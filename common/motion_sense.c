@@ -422,6 +422,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
 
 static void motion_sense_suspend(void)
 {
+	int i;
+	struct motion_sensor_t *sensor;
+
 	motion_sense_print_stats("suspend");
 
 	/*
@@ -432,6 +435,13 @@ static void motion_sense_suspend(void)
 		return;
 
 	sensor_active = SENSOR_ACTIVE_S3;
+
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Forget about changes made by the AP */
+		sensor->backup_odr = sensor->config[SENSOR_CONFIG_AP].odr;
+		sensor->config[SENSOR_CONFIG_AP].odr = 0;
+	}
 
 	/*
 	 * During shutdown sequence sensor rails can be powered down
@@ -453,12 +463,21 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 
 static void motion_sense_resume(void)
 {
+	int i;
+	struct motion_sensor_t *sensor;
+
 	motion_sense_print_stats("resume");
+
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		sensor->config[SENSOR_CONFIG_AP].odr = sensor->backup_odr;
+	}
 
 	sensor_active = SENSOR_ACTIVE_S0;
 	hook_call_deferred(&motion_sense_switch_sensor_rate_data,
 			   CONFIG_MOTION_SENSE_RESUME_DELAY_US);
 }
+
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume, MOTION_SENSE_HOOK_PRIO);
 
 static void motion_sense_startup(void)

@@ -243,6 +243,8 @@ struct motion_sensor_t {
 
 	/* Maximum supported sampling frequency in miliHertz for this sensor */
 	uint32_t max_frequency;
+
+	unsigned int backup_odr;
 };
 
 /*

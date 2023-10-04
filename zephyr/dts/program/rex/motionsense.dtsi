@@ -165,7 +165,7 @@
 					odr = <(10000 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
+					odr = <(0 | ROUND_UP_FLAG)>;
 				};
 			};
 		};
@@ -190,7 +190,7 @@
 					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
+					odr = <(0 | ROUND_UP_FLAG)>;
 					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
