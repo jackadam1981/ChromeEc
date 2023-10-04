@@ -897,6 +897,9 @@ static void __gpio_irq(void)
 	/* Determine interrupt number. */
 	int irq = intc_get_ec_int();
 
+	/* Set gpd3 to low */
+	IT83XX_GPIO_GPDRD = 0xf7;
+
 	/* assert failure if interrupt number is zero */
 	ASSERT(irq);
 
@@ -926,6 +929,9 @@ static void __gpio_irq(void)
 
 	/* Run the GPIO master handler above with corresponding port/mask. */
 	gpio_interrupt(gpio_irqs[irq].gpio_port, gpio_irqs[irq].gpio_mask);
+
+	/* Set gpd3 to high */
+	IT83XX_GPIO_GPDRD = 0xff;
 }
 
 /* Route all WKO interrupts coming from INT#2 into __gpio_irq. */

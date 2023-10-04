@@ -137,6 +137,7 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 /* Initialize board. */
 static void board_init(void)
 {
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
