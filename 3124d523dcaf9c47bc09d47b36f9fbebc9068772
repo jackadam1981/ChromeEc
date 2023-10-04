@@ -141,6 +141,30 @@
       },
       "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9037014d_781c9f97",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-10-04T23:06:48Z",
+      "side": 1,
+      "message": "The OS always ignores `EC_HOST_EVENT_HANG_DETECT`, regardless of any `sysrq` config settings. It\u0027s already awake, and it doesn\u0027t do anything to handle the event.",
+      "parentUuid": "f03fd1ad_2a2b2ee3",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 52
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
