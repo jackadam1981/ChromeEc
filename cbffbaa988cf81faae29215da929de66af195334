@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab56615f_1384517a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-10-04T06:24:15Z",
+      "side": 1,
+      "message": "Something like turning off the gpio interrupt when the debounce logic triggers and then setting a timer to enable them again should work. But it can be a bit tricky to figure out the implementation details. \n\nI think it would be ok to add the cost for disabling gpio interrupts in the debounce case since this code path should not effect the bug you are trying to fix. Also, it shouldn\u0027t effect the \"average\" case.",
+      "parentUuid": "31046843_2826281f",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f4161_a1a44cd2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
