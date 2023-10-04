@@ -9,3 +9,29 @@
 #include "interrupts.dtsi"
 #include "ish.dtsi"
 #include <program/rex/motionsense.dtsi>
+
+&lid_accel {
+	active-mask = "SENSOR_ACTIVE_S0";
+	configs {
+		/delete-node/ ec-s3;
+	};
+};
+
+&base_accel {
+	active-mask = "SENSOR_ACTIVE_S0";
+	configs {
+		/delete-node/ ec-s3;
+	};
+};
+
+&base_gyro {
+	active-mask = "SENSOR_ACTIVE_S0";
+};
+
+&als_clear {
+	active-mask = "SENSOR_ACTIVE_S0";
+};
+
+&als_rgb {
+	active-mask = "SENSOR_ACTIVE_S0";
+};
