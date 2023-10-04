@@ -30,7 +30,7 @@
 &uart1 {
 	status = "okay";
 	current-speed = <115200>;
-	clock-frequency = <1804800>;
+	clock-frequency = <1843200>;
 };
 
 &ite_uart1_wrapper {
