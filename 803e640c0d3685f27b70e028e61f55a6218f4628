@@ -34,6 +34,24 @@
       "parentUuid": "8c623edd_89db81f9",
       "revId": "803e640c0d3685f27b70e028e61f55a6218f4628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa6b43a_48c76401",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-10-04T02:35:40Z",
+      "side": 1,
+      "message": "update ERROR:root:__override struct led_descriptor, led format",
+      "parentUuid": "699eedb4_5d33d94c",
+      "revId": "803e640c0d3685f27b70e028e61f55a6218f4628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
