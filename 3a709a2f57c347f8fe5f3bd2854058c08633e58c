@@ -22,6 +22,30 @@
       },
       "revId": "3a709a2f57c347f8fe5f3bd2854058c08633e58c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132f7968_84a104ae",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2023-10-04T03:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781ca4c0_c253b00a",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "3a709a2f57c347f8fe5f3bd2854058c08633e58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
