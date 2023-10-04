@@ -16,6 +16,24 @@
       "message": "Nit: To my eye, it would be a little bit more _functional_ if these functions returned a `uint32_t`, and then `retimer_set_state_dfp` ORed together those returned values. However, the full form of this refactor would be to make `retimer_set_state_dfp` and `retimer_set_state_ufp` also return values for the caller to OR together, and that\u0027s out of scope here. So this is totally optional.",
       "revId": "be23e8b7915df20c61a154d3149e96aedce47265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8daef302_3c65fb32",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-10-04T22:22:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cd7cb027_6481dc85",
+      "revId": "be23e8b7915df20c61a154d3149e96aedce47265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
