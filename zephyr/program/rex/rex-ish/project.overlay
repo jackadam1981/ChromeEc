@@ -9,3 +9,49 @@
 #include "interrupts.dtsi"
 #include "ish.dtsi"
 #include <program/rex/motionsense.dtsi>
+
+/ {
+	/*
+	 * List of motion sensors that creates motion_sensors array.
+	 * The nodelabel "lid_accel" and "base_accel" are used to indicate
+	 * motion sensor IDs for lid angle calculation.
+	 */
+	motionsense-sensor {
+		lid_accel: lid-accel {
+			active-mask = "SENSOR_ACTIVE_S0";
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				/delete-node/ ec-s3;
+			};
+		};
+
+		base_accel: base-accel {
+			active-mask = "SENSOR_ACTIVE_S0";
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
+				};
+				/delete-node/ ec-s3;
+			};
+		};
+
+		base-gyro {
+			active-mask = "SENSOR_ACTIVE_S0";
+		};
+
+		als_clear: base-als-clear {
+			active-mask = "SENSOR_ACTIVE_S0";
+		};
+
+		base-als-rgb {
+			active-mask = "SENSOR_ACTIVE_S0";
+		};
+	};
+};
