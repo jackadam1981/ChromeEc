@@ -5,6 +5,7 @@
 
 /* Yaviks sub-board hardware configuration */
 
+#include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -41,20 +42,19 @@ enum yaviks_sub_board_type yaviks_get_sb_type(void)
 		return yaviks_cached_sub_board;
 
 	yaviks_cached_sub_board = YAVIKS_SB_C_A; /* Defaults to 1A1C */
-	ret = cros_cbi_get_fw_config(FW_SUB_BOARD, &val);
+	ret = cbi_get_fw_config(&val);
 	if (ret != 0) {
-		LOG_WRN("Error retrieving CBI FW_CONFIG field %d",
-			FW_SUB_BOARD);
+		LOG_WRN("Error retrieving CBI FW_CONFIG field %x\n", ret);
 		return yaviks_cached_sub_board;
 	}
 	switch (val) {
 	case FW_SUB_BOARD_1:
 		yaviks_cached_sub_board = YAVIKS_SB_A;
-		LOG_INF("SB: Only USB type A");
+		LOG_INF("SB: Only USB type A\n");
 		break;
 	case FW_SUB_BOARD_2:
 		yaviks_cached_sub_board = YAVIKS_SB_C_A;
-		LOG_INF("SB: USB type C, USB type A");
+		LOG_INF("SB: USB type C, USB type A\n");
 		break;
 	default:
 		break;
