@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "188a05a5_1fc0f857",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-04T15:29:29Z",
+      "side": 1,
+      "message": "I\u0027m a little confused. If the issue is that C files are pulling in builtins/stdnoreturn.h then why does it work with the extern \"C\" files above array?\n\n`builtins/stdnoreturn.h` puts guards around to only define `noreturn` if `__cplusplus` and `noreturn` are undefined. Based on that, shouldn\u0027t we move the `extern \"C\"` block down below the `#include \u003carray\u003e`? I think if we do that then we shouldn\u0027t need the `clang-format off` because (I believe) believe `clang-format` won\u0027t move that block.\n\n```\n#ifndef __cplusplus\n  #ifndef noreturn\n    #define noreturn _Noreturn\n  #endif\n#endif\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "0c52a5797faf2a50a0c0927ed2cd94a07bd4a7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
