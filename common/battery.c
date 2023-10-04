@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_fuel_gauge.h"
+#include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -424,7 +425,16 @@ static void power_supply_change(void)
 {
 	static bool had_active_charge_port;
 	int port = charge_manager_get_active_charge_port();
-	bool key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
+	bool key;
+
+#if defined(HAS_TASK_KEYSCAN)
+	key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
+#elif defined(CONFIG_VOLUME_BUTTONS)
+	/* Strictly vol-up only. */
+	key = button_get_boot_button() == BIT(BUTTON_VOLUME_UP);
+#else
+	key = false;
+#endif
 
 	if (!key) {
 		/*
