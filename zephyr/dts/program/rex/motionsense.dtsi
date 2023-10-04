@@ -196,7 +196,7 @@
 			};
 		};
 
-		base-gyro {
+		base_gyro: base-gyro {
 			compatible = "cros-ec,lsm6dso-gyro";
 			status = "okay";
 
@@ -230,7 +230,7 @@
 			};
 		};
 
-		base-als-rgb {
+		als_rgb: base-als-rgb {
 			compatible = "cros-ec,tcs3400-rgb";
 			status = "okay";
 
