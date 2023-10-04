@@ -90,6 +90,7 @@ add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_ANX7452 anx7452)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_SM5803 sm5803)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_BODY_DETECTION body_detection)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_WATCHDOG_HELPER watchdog_helper)
+add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_INTEL_ALT_MODE usbc_intel_alt_mode)
 
 get_target_property(TEST_SOURCES_NEW app SOURCES)
 
