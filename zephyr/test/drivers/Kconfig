@@ -237,6 +237,9 @@ config LINK_TEST_SUITE_USBC_FRS
 	select LOG
 	select PLATFORM_EC_USB_PD_FRS
 
+config LINK_TEST_SUITE_USBC_INTEL_ALT_MODE
+	bool "Link tests for USBC intel alternate mode"
+
 config LINK_TEST_SUITE_USBC_OCP
 	bool "Link tests for common USBC OCP code"
 
