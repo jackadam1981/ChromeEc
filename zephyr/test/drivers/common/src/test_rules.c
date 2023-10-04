@@ -11,6 +11,7 @@
 
 #include <zephyr/ztest.h>
 
+#if DT_HAS_TCPC
 static void motion_sense_fifo_reset_before(const struct ztest_unit_test *test,
 					   void *data)
 {
@@ -36,3 +37,4 @@ static void tcpci_revision_reset_before(const struct ztest_unit_test *test,
 	tcpci_emul_set_rev(tcpc_c1_emul, TCPCI_EMUL_REV2_0_VER1_1);
 }
 ZTEST_RULE(tcpci_revision_reset, tcpci_revision_reset_before, NULL);
+#endif
