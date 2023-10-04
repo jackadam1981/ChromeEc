@@ -34,6 +34,24 @@
       "parentUuid": "c64c8a38_e9b12d4c",
       "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7a8103_acdd0d7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-04T16:29:51Z",
+      "side": 1,
+      "message": "The STM32 options bytes are basically a separate region of flash memory that provide a way to pre-configure the chip before powering up. They are automatically loaded after POR and can enable/disable/configure features like RDP (readout protection), WRP (write protection), watchdogs, boot configurations, etc. Does the npcx have anything like this?",
+      "parentUuid": "6b28b69a_811eb6ee",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
