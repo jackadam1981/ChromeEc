@@ -1,0 +1,566 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <board-overlays/native_posix.dts>
+#include <cros/binman.dtsi>
+#include <cros/thermistor/thermistor.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <dt-bindings/wake_mask_event_defines.h>
+#include <freq.h>
+
+/ {
+	chosen {
+		cros-ec,espi = &espi0;
+		cros-ec,watchdog = &wdt_counter;
+		cros-ec,flash = &flash0;
+		cros-ec,flash-controller = &cros_flash;
+		cros,rtc = &cros_rtc;
+		zephyr,shell-uart = &test_uart;
+	};
+
+	aliases {
+		gpio-wp = &gpio_wp_l;
+		gpio-cbi-wp = &gpio_ec_cbi_wp;
+		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
+	};
+
+	ec-console {
+		compatible = "ec-console";
+		disabled = "events", "lpc", "hostcmd";
+	};
+
+	ec-mkbp-host-event-wakeup-mask {
+		compatible = "cros-ec,mkbp-host-event-wakeup-mask";
+		wakeup-mask = <(
+			HOST_EVENT_LID_OPEN |
+			HOST_EVENT_POWER_BUTTON |
+			HOST_EVENT_AC_CONNECTED |
+			HOST_EVENT_AC_DISCONNECTED |
+			HOST_EVENT_HANG_DETECT |
+			HOST_EVENT_RTC |
+			HOST_EVENT_MODE_CHANGE |
+			HOST_EVENT_DEVICE |
+			HOST_EVENT_KEYBOARD_RECOVERY)>;
+	};
+
+	ec-mkbp-event-wakeup-mask {
+		compatible = "cros-ec,mkbp-event-wakeup-mask";
+		wakeup-mask = <(MKBP_EVENT_KEY_MATRIX | \
+				MKBP_EVENT_HOST_EVENT | \
+				MKBP_EVENT_SENSOR_FIFO)>;
+	};
+
+	/*
+	 * Keep these GPIOs in pin order.
+	 * If you need to add one, make sure you increase
+	 * ngpios in the gpio0 node further down.
+	 */
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_acok_od: acok_od {
+			gpios = <&gpio0 0 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+
+		/*
+		 * TODO(b/270601972):
+		 * Important note on testing emulated output GPIOs: Using
+		 * gpio_set_level() won't be observable from a gpio_get_level()
+		 * unless the output gpio is also configured as an input gpio.
+		 *
+		 * One may also configure the gpio as an input in the test
+		 * itself instead of device tree.
+		 */
+
+		/* In test WP is output because CBI use it, but it is also
+		 * input, because test_all_tags set it to enable write
+		 * protection.
+		 */
+		gpio_wp_l: wp_l {
+			gpios = <&gpio0 2 (GPIO_INPUT | GPIO_OUTPUT |
+					   GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_kso_02_inv: ec_kso_02_inv {
+			gpios = <&gpio0 3 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+		};
+		pg_ec_dsw_pwrok {
+			gpios = <&gpio0 4 GPIO_INPUT>;
+			enum-name = "GPIO_TEMP_SENSOR_POWER";
+		};
+		gpio_ec_pch_wake_odl: ec_pch_wake_odl {
+			gpios = <&gpio0 5 GPIO_OUTPUT_HIGH>;
+		};
+		/* Setup USB C1 pin as output to check their state in test */
+		usb_c1_ls_en: usb_c1_ls_en {
+			gpios = <&gpio0 6 (GPIO_INPUT_PULL_UP |
+					   GPIO_OUTPUT)>;
+		};
+		usb_c1_rt_rst_odl: usb_c1_rt_rst_odl {
+			gpios = <&gpio0 7 (GPIO_OUTPUT | GPIO_INPUT)>;
+		};
+		gpio_usb_c1_frs_en: usb_c1_frs_en {
+			gpios = <&gpio0 8 (GPIO_OUTPUT_LOW)>;
+		};
+		usb_c0_tcpc_int_odl: usb_c0_tcpc_int_odl {
+			gpios = <&gpio0 9 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		usb_c1_tcpc_int_odl: usb_c1_tcpc_int_odl {
+			gpios = <&gpio0 10 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		usb_c0_tcpc_rst_l: usb_c0_tcpc_rst_l {
+			gpios = <&gpio0 11 (GPIO_OUTPUT_HIGH | GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		usb_c1_tcpc_rst_l: usb_c1_tcpc_rst_l {
+			gpios = <&gpio0 12 (GPIO_OUTPUT_HIGH | GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_usb_c1_ppc_int: usb_c1_ppc_int {
+			gpios = <&gpio0 13 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_usb_c0_ppc_int: usb_c0_ppc_int {
+			gpios = <&gpio0 14 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_switchcap_pg_int_l: switchcap_pg_int_l {
+			gpios = <&gpio0 15 (GPIO_OUTPUT | GPIO_INPUT)>;
+		};
+		gpio_ap_rst_l: ap_rst_l {
+			gpios = <&gpio0 16 GPIO_INPUT>;
+			enum-name = "GPIO_AP_RST_L";
+		};
+		gpio_ps_hold: ps_hold {
+			gpios = <&gpio0 17 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_PS_HOLD";
+		};
+		gpio_mb_power_good: mb_power_good {
+			gpios = <&gpio0 18 (GPIO_OUTPUT | GPIO_INPUT |
+				GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_POWER_GOOD";
+		};
+		gpio_ap_suspend: ap_suspend {
+			gpios = <&gpio0 19 GPIO_INPUT>;
+			enum-name = "GPIO_AP_SUSPEND";
+		};
+		gpio_pmic_kpd_pwr_odl: pmic_kpd_pwr_odl {
+			gpios = <&gpio0 20 GPIO_OUTPUT_HIGH>;
+			enum-name = "GPIO_PMIC_KPD_PWR_ODL";
+		};
+		gpio_pmic_resin_l: pmic_resin_l {
+			gpios = <&gpio0 21 GPIO_OUTPUT_HIGH>;
+			enum-name = "GPIO_PMIC_RESIN_L";
+		};
+		gpio_warm_reset_l: warm_reset_l {
+			gpios = <&gpio0 22 GPIO_INPUT>;
+			enum-name = "GPIO_WARM_RESET_L";
+		};
+		gpio_lid_open_ec: lid_open_ec {
+			/* GPIO_PULL_UP will cause this start asserted. */
+			gpios = <&gpio0 23 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		gpio_switchcap_on: switchcap_on {
+			gpios = <&gpio0 24 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+		};
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
+			/* GPIO_PULL_UP will cause this start asserted,
+			 * i.e. not pressed.
+			 */
+			gpios = <&gpio0 25 (GPIO_ACTIVE_LOW | GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_src_vph_pwr_pg: src_vph_pwr_pg {
+			gpios = <&gpio0 26 (GPIO_INPUT | GPIO_OUTPUT |
+				GPIO_PULL_DOWN)>;
+		};
+		gpio_test: test {
+			gpios = <&gpio0 27 (GPIO_INPUT | GPIO_OUTPUT)>;
+			enum-name = "GPIO_TEST";
+		};
+		ec_batt_pres_odl {
+			gpios = <&gpio0 28 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_no_init: no_init {
+			gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_INPUT)>;
+			no-auto-init;
+		};
+		gpio_ec_chg_led_y_c0: ec_chg_led_y_c0 {
+			gpios = <&gpio0 30 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+		};
+		gpio_ec_chg_led_w_c0: ec_chg_led_w_c0 {
+			gpios = <&gpio0 31 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+		};
+		/* gpio1 */
+		gpio_ec_chg_led_y_c1: ec_chg_led_y_c1 {
+			gpios = <&gpio1 0 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+		};
+		gpio_ec_chg_led_w_c1: ec_chg_led_w_c1 {
+			gpios = <&gpio1 1 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+		};
+		gpio_ap_ec_int_l: ap_ec_int_l {
+			gpios = <&gpio1 2 GPIO_OUTPUT_HIGH>;
+			enum-name = "GPIO_EC_INT_L";
+		};
+		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+			gpios = <&gpio1 3 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+			gpios = <&gpio1 4 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
+		gpio_en_pp5000_usba_r: en_pp5000_usba_r {
+			gpios = <&gpio1 5 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
+			enum-name = "GPIO_EN_PP5000_USBA_R";
+		};
+		gpio_sku_id0: sku_id0 {
+			gpios = <&gpio1 7 GPIO_INPUT>;
+		};
+		gpio_brd_id0: brd_id0 {
+			gpios = <&gpio1 8 GPIO_INPUT>;
+		};
+		gpio_ec_cbi_wp: ec_cbi_wp {
+			gpios = <&gpio1 9 GPIO_OUTPUT>;
+		};
+		gpio_usb_c0_bc12_int_l: usb_c0_bc12_int_l {
+			gpios = <&gpio1 10 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_usb_c1_bc12_int_l: usb_c1_bc12_int_l {
+			gpios = <&gpio1 11 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+                gpio_usb_c0_hpd: usb_c0_hpd {
+                        gpios = <&gpio1 12 (GPIO_OUTPUT_LOW | GPIO_INPUT)>;
+                        enum-name = "GPIO_USB_C0_DP_HPD";
+                };
+                gpio_usb_c1_hpd: usb_c1_hpd {
+                        gpios = <&gpio1 13 (GPIO_OUTPUT_LOW | GPIO_INPUT)>;
+                        enum-name = "GPIO_USB_C1_DP_HPD";
+                };
+		usb_c1_usb_en: usb_c1_usb_en {
+			gpios = <&gpio1 14 GPIO_OUTPUT_LOW>;
+		};
+		usb_c1_dp_en: usb_c1_dp_en {
+			gpios = <&gpio1 15 GPIO_OUTPUT_LOW>;
+		};
+	};
+
+	gpio1: gpio@101 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x101 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <32>;
+	};
+
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_acok_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+		int_switchcap_pg: switchcap_pg {
+			irq-pin = <&gpio_switchcap_pg_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ln9310_interrupt";
+		};
+		int_gpio_test: test {
+			irq-pin = <&gpio_test>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "gpio_test_interrupt";
+		};
+		int_lid_open_ec: lid_open_ec {
+			irq-pin = <&gpio_lid_open_ec>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "lid_interrupt";
+		};
+		int_mb_power_good: mb_power_good {
+			irq-pin = <&gpio_mb_power_good>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		named_i2c0: i2c0 {
+			i2c-port = <&i2c0>;
+			enum-names = "I2C_PORT_BATTERY",
+				"I2C_PORT_POWER",
+				"I2C_PORT_CHARGER",
+				"I2C_PORT_EEPROM",
+				"I2C_PORT_ACCEL",
+				"I2C_PORT_VIRTUAL_BATTERY";
+		};
+		named_i2c1: i2c1 {
+			i2c-port = <&i2c1>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+		named_i2c2: i2c2 {
+			i2c-port = <&i2c2>;
+			dynamic-speed;
+			enum-names = "I2C_PORT_USB_C0";
+		};
+		named_i2c3: i2c3 {
+			i2c-port = <&i2c3>;
+			dynamic-speed;
+			enum-names = "I2C_PORT_USB_C1";
+		};
+	};
+
+	batteries {
+		default_battery: lgc_ac17a8m {
+			compatible = "lgc,ac17a8m", "battery-smart";
+		};
+		ap16l5j {
+			compatible = "panasonic,ap16l5j", "battery-smart";
+		};
+		ap16l8j {
+			compatible = "lgc,ap16l8j", "battery-smart";
+		};
+	};
+
+	cbi-ssfc {
+		compatible = "cros-ec,cbi-ssfc";
+		cbi_ssfc_base_sensor: base_sensor {
+			enum-name = "BASE_SENSOR";
+			size = <2>;
+			base_sensor_0: base0 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+				default;
+			};
+			base_sensor_1: base1 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <2>;
+			};
+		};
+	};
+
+	cbi-fw-config {
+		compatible = "cros-ec,cbi-fw-config";
+		field-1 {
+			enum-name = "FW_CONFIG_FIELD_1";
+			start = <0>;
+			size = <2>;
+			val-0 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FIELD_1_A";
+				value = <0>;
+			};
+			val-1 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FIELD_1_B";
+				value = <1>;
+				default;
+			};
+		};
+		field-2 {
+			enum-name = "FW_CONFIG_FIELD_2";
+			start = <5>;
+			size = <1>;
+			val-1 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FIELD_2_X";
+				value = <1>;
+			};
+		};
+	};
+
+	adc0: adc {
+		compatible = "zephyr,adc-emul";
+		nchannels = <6>;
+		ref-internal-mv = <3300>;
+		#io-channel-cells = <1>;
+		status = "okay";
+	};
+
+	/*
+	 * Add extra i2c buses to test the I2C passthrough: 1 for sensor and
+	 * 2 dedicated for TCPC.
+	 */
+	i2c1: i2c@400 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x400 4>;
+
+	};
+
+	i2c2: i2c@500 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x500 4>;
+		isl9241_emul: isl9241@9 {
+			compatible = "intersil,isl9241";
+			status = "okay";
+			reg = <0x9>;
+		};
+	};
+
+	i2c3: i2c@600 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x600 4>;
+		status = "okay";
+		clock-frequency = <I2C_BITRATE_FAST>;
+
+		pd_port0: ccg@50 {
+			compatible = "intel,pd-altmode";
+			reg = <0x50>;
+			irq-gpios = <&gpio1 17 GPIO_ACTIVE_LOW>;
+		};
+		pd_port1: ccg@51 {
+			compatible = "intel,pd-altmode";
+			reg = <0x51>;
+			irq-gpios = <&gpio1 17 GPIO_ACTIVE_LOW>;
+			irq-shared;
+		};
+	};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&isl9241_emul>;
+			alt-mode = <&pd_port0>;
+			usb-mux-chain-0 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_0>;
+			};
+		};
+		port0-muxes {
+			virtual_mux_0: virtual-mux-0 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+		};
+		port1@1 {
+			compatible = "named-usbc-port";
+			reg = <1>;
+			alt-mode = <&pd_port1>;
+			usb-mux-chain-1 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_1>;
+			};
+		};
+		port1-muxes {
+			virtual_mux_1: virtual-mux-1 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+		};
+	};
+
+	clock: clock {
+		compatible = "cros,clock-control-emul";
+		clock-frequency = <DT_FREQ_M(100)>; /* 100 MHz */
+	};
+
+	wdt_counter: wdt-counter {
+		compatible = "zephyr,counter-watchdog";
+		status = "okay";
+		counter = <&counter0>;
+	};
+
+	cros_flash: cros-flash {
+		compatible = "cros-ec,flash-emul";
+	};
+
+	cros_rtc: cros-rtc {
+		compatible = "cros-ec,rtc-emul";
+	};
+
+	test_uart: uart@55556666 {
+	   compatible = "vnd,serial";
+	   reg = <0x55556666 0x1000>;
+	   status = "okay";
+	   buffer-size = <200>;
+	};
+
+};
+
+&espi0 {
+	espi-host@0 {
+		status = "okay";
+		compatible = "zephyr,espi-emul-espi-host";
+		reg = <0x0>;
+	};
+};
+
+&gpio0 {
+	ngpios = <32>;
+};
+
+&i2c0 {
+	cbi_eeprom: eeprom@56 {
+		compatible = "atmel,at24";
+		reg = <0x56>;
+		size = <512>;
+		pagesize = <8>;
+		address-width = <8>;
+		timeout = <5>;
+	};
+
+	battery: sb@b {
+		compatible = "zephyr,smart-battery-emul";
+		reg = <0xb>;
+		cycle-count = <99>;
+		version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+		/* Real battery voltages are multiples of 4.4V. */
+		desired-charg-volt = <5000>;
+		desired-charg-cur = <1000>;
+		mf-name = "LGC";
+		dev-name = "AC17A8M";
+	};
+
+	battery2: sb@3a {
+		compatible = "zephyr,smart-battery-emul";
+		reg = <0x3a>;
+		cycle-count = <99>;
+		version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+		/* Real battery voltages are multiples of 4.4V. */
+		desired-charg-volt = <5000>;
+		desired-charg-cur = <1000>;
+		mf-name = "PANASONIC";
+		dev-name = "AP16L5J";
+	};
+
+	ln9310: ln9310@72 {
+		compatible = "cros,ln9310-emul";
+		status = "okay";
+		reg = <0x72>;
+		pg-int-pin = <&gpio_switchcap_pg_int_l>;
+	};
+
+	i2c_mock: i2c_mock@84 {
+		compatible = "cros,i2c-mock";
+		status = "okay";
+		reg = <0x84>;
+	};
+};
+
+&flash0 {
+        erase-block-size = <0x1000>;
+        write-block-size = <1>;
+        reg = <0x00000000 DT_SIZE_K(512)>;
+};
