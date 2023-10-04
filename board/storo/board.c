@@ -777,7 +777,7 @@ struct motion_sensor_t bmi220_base_gyro = {
 
 void board_init(void)
 {
-	int on;
+	int on, reg, port, rv;
 	uint32_t board_id;
 
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
@@ -868,8 +868,50 @@ void board_init(void)
 			CPRINTF("LID_ACCEL is BMA253");
 		}
 	}
+
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		/* disable SMBUS TIMEOUT */
+		rv = i2c_read16(chg_chips[port].i2c_port,
+				I2C_ADDR_CHARGER_FLAGS, ISL923X_REG_CONTROL0,
+				&reg);
+		if (rv)
+			CPRINTF("C%d ISL9238_REG_CONTROL0 read fail!", port);
+
+		rv = i2c_write16(chg_chips[port].i2c_port,
+				 I2C_ADDR_CHARGER_FLAGS, ISL923X_REG_CONTROL0,
+				 reg | RAA489000_C0_SMBUT_TIMEOUT);
+		if (rv)
+			CPRINTF("C%d ISL9238_REG_CONTROL0 write fail!", port);
+
+		/* set charger t1 20ms, t2 1ms */
+		rv = i2c_read16(chg_chips[port].i2c_port,
+				I2C_ADDR_CHARGER_FLAGS, ISL923X_REG_T1_T2,
+				&reg);
+		if (rv)
+			CPRINTF("C%d ISL9238_REG_t1_t2 read fail!", port);
+
+		rv = i2c_write16(chg_chips[port].i2c_port,
+				 I2C_ADDR_CHARGER_FLAGS, ISL923X_REG_T1_T2,
+				 reg | ISL923X_T2_1000 | ISL923X_T1_20000);
+		if (rv)
+			CPRINTF("C%d ISL9238_REG_T1_T2 write fail!", port);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Called when the charge manager has switched to a new port. */
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+				       int max_ma, int charge_mv)
+{
+	int chgnum = charge_get_active_chg_chip();
+
+	charge_set_input_current_limit(charge_ma, charge_mv);
+
+	if (charge_ma > 400)
+		charge_ma = 400;
+	/* set current limit 2 less than 400mA */
+	isl923x_set_level_2_input_current_limit(chgnum, charge_ma);
+}
 
 void motion_interrupt(enum gpio_signal signal)
 {

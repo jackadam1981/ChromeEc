@@ -45,22 +45,22 @@
 #define RAA489000_CURRENT_REG_MAX 0x17fc
 
 /* 2-level adpater current limit duration T1 & T2 in micro seconds */
-#define ISL923X_T1_10000 0x00
-#define ISL923X_T1_20000 0x01
-#define ISL923X_T1_15000 0x02
-#define ISL923X_T1_5000 0x03
-#define ISL923X_T1_1000 0x04
-#define ISL923X_T1_500 0x05
-#define ISL923X_T1_100 0x06
-#define ISL923X_T1_0 0x07
-#define ISL923X_T2_10 (0x00 << 8)
-#define ISL923X_T2_100 (0x01 << 8)
-#define ISL923X_T2_500 (0x02 << 8)
-#define ISL923X_T2_1000 (0x03 << 8)
-#define ISL923X_T2_300 (0x04 << 8)
-#define ISL923X_T2_750 (0x05 << 8)
-#define ISL923X_T2_2000 (0x06 << 8)
-#define ISL923X_T2_10000 (0x07 << 8)
+#define ISL923X_T1_10000 (0x00 << 10)
+#define ISL923X_T1_20000 (0x01 << 10)
+#define ISL923X_T1_15000 (0x02 << 10)
+#define ISL923X_T1_5000 (0x03 << 10)
+#define ISL923X_T1_1000 (0x04 << 10)
+#define ISL923X_T1_500 (0x05 << 10)
+#define ISL923X_T1_100 (0x06 << 10)
+#define ISL923X_T1_0 (0x07 << 10)
+#define ISL923X_T2_10 (0x00 << 13)
+#define ISL923X_T2_100 (0x01 << 13)
+#define ISL923X_T2_500 (0x02 << 13)
+#define ISL923X_T2_1000 (0x03 << 13)
+#define ISL923X_T2_300 (0x04 << 13)
+#define ISL923X_T2_750 (0x05 << 13)
+#define ISL923X_T2_2000 (0x06 << 13)
+#define ISL923X_T2_10000 (0x07 << 13)
 
 #define ISL9237_SYS_VOLTAGE_REG_MAX 13824
 #define ISL9238_SYS_VOLTAGE_REG_MAX 18304
@@ -114,6 +114,9 @@
 /* Control0: BGATE force on */
 #define RAA489000_C0_BGATE_FORCE_ON BIT(10)
 #define RAA489000_C0_EN_CHG_PUMPS_TO_100PCT BIT(6)
+
+/* Control0: SMBUS Timeout */
+#define RAA489000_C0_SMBUT_TIMEOUT BIT(7)
 
 /* Control1: general purpose comparator debounce time in micro second */
 #define ISL923X_C1_GP_DEBOUNCE_2 (0 << 14)
