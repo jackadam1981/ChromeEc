@@ -423,9 +423,15 @@ static void power_supply_change(void)
 {
 	static bool had_active_charge_port;
 	int port = charge_manager_get_active_charge_port();
-	bool refresh = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
+	bool key;
 
-	if (!refresh) {
+	if (IS_ENABLED(HAS_TASK_KEYSCAN))
+		key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
+	else if (IS_ENABLED(CONFIG_VOLUME_BUTTONS))
+		/* Strictly vol-up only. */
+		key = button_get_boot_button() == BIT(BUTTON_VOLUME_UP);
+
+	if (!key) {
 		/*
 		 * Need to set had_active_charge_port also here because refresh
 		 * boot key can be registered when the power button is released.
@@ -437,7 +443,7 @@ static void power_supply_change(void)
 
 	if (port != CHARGE_PORT_NONE) {
 		had_active_charge_port = true;
-		if (refresh)
+		if (key)
 			CUTOFFPRINTS("backoff: P%d is active", port);
 		return;
 	}
