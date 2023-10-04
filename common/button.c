@@ -199,6 +199,10 @@ static int is_recovery_boot(void)
 		return 0;
 	return 1;
 }
+	if (IS_ENABLED(CONFIG_VOLUME_BUTTONS) &&
+	    button_raw_pressed(&buttons[BUTTON_VOLUME_UP]))
+		boot_key_mask |= BIT(BOOT_KEY_VOLUME_UP);
+
 #endif /* CONFIG_BUTTON_TRIGGERED_RECOVERY */
 
 static void button_reset(enum button button_type,
@@ -207,6 +211,23 @@ static void button_reset(enum button button_type,
 	state[button_type].debounced_pressed = raw_button_pressed(button);
 	state[button_type].debounce_time = 0;
 	gpio_enable_interrupt(button->gpio);
+}
+
+static uint32_t boot_button;
+
+uint32_t button_get_boot_button(void)
+{
+	return boot_button;
+}
+
+static void boot_button_set(enum button button) {
+{
+	boot_button |= BIT(button);
+}
+
+static void boot_button_clear(enum button button) {
+{
+	boot_button &= ~BIT(button);
 }
 
 /*
@@ -228,6 +249,13 @@ void button_init(void)
 		button_check_hw_reinit_required();
 	}
 #endif /* defined(CONFIG_BUTTON_TRIGGERED_RECOVERY) */
+
+	/* Detect boot buttons. */
+	for (i = 0; i < BUTTON_COUNT; i++) {
+		if (button_raw_pressed(&buttons[i]))
+			boot_button_set(i);
+	}
+	CPRINTS("boot buttons: 0x%x", boot_button);
 }
 
 #ifdef CONFIG_BUTTONS_RUNTIME_CONFIG
@@ -309,6 +337,8 @@ static void button_change_deferred(void)
 #endif
 				CPRINTS("Button '%s' was %s", buttons[i].name,
 					new_pressed ? "pressed" : "released");
+				if (!new_pressed)
+					boot_button_clear(i);
 				if (IS_ENABLED(CONFIG_MKBP_INPUT_DEVICES)) {
 					mkbp_button_update(buttons[i].type,
 							   new_pressed);
