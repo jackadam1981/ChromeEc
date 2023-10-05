@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d19fc4_aef7faea",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-05T17:00:25Z",
+      "side": 1,
+      "message": "In a normal cable, if there are both TBT and DP mode VDOs, they should match in their capabilities. But you could imagine a defective cable that advertised, for instance, retimer in the TBT VDO but redriver in the DP VDO.\n\nIn that case, it\u0027s not obvious to me what the TCPM should do, but it seems like the behavior should at least be self-consistent, i.e. if we relied on the TBT VDO to decide that we could enter DP mode, then we should be entering TBT mode on the cable and configuring the retimer based on the TBT VDO.\n\nIt seems like the structure of this code would allow for us to configure retimer/redriver based on the TBT VDO but configure optical based on the DP VDO. That seems like an opportunity to be subtly wrong. (This same reasoning may also apply to the general mode entry logic in the DP module.)\n\nDo you think this is a legitimate concern?",
+      "revId": "4785cd32b2da59a461f82d101e6d0534dd7be961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1611dc01_a4c02a39",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 71
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-05T17:00:25Z",
+      "side": 1,
+      "message": "Nit: This configuration will create a new test binary that will run all of the tests in default, including the new one. Running the existing retimer tests with DP 2.1 enabled is probably a good idea. Rerunning the tests that have nothing to do with USB-C is just a waste of time.\n\nIdeally, the retimer test .c files would be pulled out into their own test build.",
+      "revId": "4785cd32b2da59a461f82d101e6d0534dd7be961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
