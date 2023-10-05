@@ -7,8 +7,13 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 zephyr_library_sources(
+		"src/board.c"
 		"src/fakes.c"
-		"src/one_wire.c"
+)
+
+zephyr_library_sources_ifndef(
+		CONFIG_BOARD_ROACH_KB_TP_PACKETS_OVER_USB
+		src/one_wire.c
 )
 
 zephyr_include_directories(
