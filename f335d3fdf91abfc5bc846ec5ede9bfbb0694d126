@@ -63,6 +63,30 @@
       },
       "revId": "f335d3fdf91abfc5bc846ec5ede9bfbb0694d126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5494e0e3_cd318602",
+        "filename": "extra/usb_updater/fw_update.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2023-10-05T18:35:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "65c98c44_4658a610",
+      "range": {
+        "startLine": 168,
+        "startChar": 16,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "f335d3fdf91abfc5bc846ec5ede9bfbb0694d126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
