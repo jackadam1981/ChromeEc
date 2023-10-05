@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bbae98_6427a48e",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-05T23:26:08Z",
+      "side": 1,
+      "message": "General comment.  Are there plans to migrate the host_service subsystem upstream?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "debe73aa04da07bcdf575d9b3df6a60aed8f25de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633bc2e9_502822c3",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-05T23:26:08Z",
+      "side": 1,
+      "message": "This header needs include guards.  `#ifndef _HECI_SYSTEM_STATE_H_`.",
+      "revId": "debe73aa04da07bcdf575d9b3df6a60aed8f25de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89905d45_ca689cb3",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-05T23:26:08Z",
+      "side": 1,
+      "message": "Please add a comment describing this routine.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "debe73aa04da07bcdf575d9b3df6a60aed8f25de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
