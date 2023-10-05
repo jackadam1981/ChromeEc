@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eea4790_672fbaef",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-10-05T17:09:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a legitimate concern cause in that case wouldn\u0027t the cable be violating the spec? I added these additional checks in the case the cable doesn\u0027t support dp mode vdos but does support tbt mode vdos.\n\nretimer_handle_dp21_dfp is only called when we are in mux state dp enabled so we know we are in DP mode not TBT mode. There exists a small (but non zero) chance that the device is DP 2.1 but someone used a cable that only supports TBT VDOs.",
+      "parentUuid": "c9d19fc4_aef7faea",
+      "revId": "4785cd32b2da59a461f82d101e6d0534dd7be961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1611dc01_a4c02a39",
         "filename": "zephyr/test/drivers/testcase.yaml",
         "patchSetId": 71
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-05T17:00:25Z",
       "side": 1,
       "message": "Nit: This configuration will create a new test binary that will run all of the tests in default, including the new one. Running the existing retimer tests with DP 2.1 enabled is probably a good idea. Rerunning the tests that have nothing to do with USB-C is just a waste of time.\n\nIdeally, the retimer test .c files would be pulled out into their own test build.",
+      "revId": "4785cd32b2da59a461f82d101e6d0534dd7be961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ce117f_aadfac07",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 71
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-10-05T17:09:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1611dc01_a4c02a39",
       "revId": "4785cd32b2da59a461f82d101e6d0534dd7be961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
