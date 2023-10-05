@@ -16,7 +16,7 @@
 #include "thermal.h"
 
 /* ADC configuration */
-struct adc_t adc_channels[] = {
+const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_1_DDR_SOC] = {
 		.name = "TEMP_DDR_SOC",
 		.input_ch = NPCX_ADC_CH0,
@@ -38,9 +38,9 @@ struct adc_t adc_channels[] = {
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
 	},
-	[ADC_TEMP_SENSOR_4_WWAN] = {
-		.name = "TEMP_WWAN",
-		.input_ch = NPCX_ADC_CH7,
+	[ADC_IADPT] = {
+		.name = "CHARGER_IADPT",
+		.input_ch = NPCX_ADC_CH3,
 		.factor_mul = ADC_MAX_VOLT,
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
@@ -168,12 +168,6 @@ const struct temp_sensor_t temp_sensors[] = {
 		.read = get_temp_3v3_30k9_47k_4050b,
 		.idx = ADC_TEMP_SENSOR_3_CHARGER,
 	},
-	[TEMP_SENSOR_4_WWAN] = {
-		.name = "WWAN",
-		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
-		.idx = ADC_TEMP_SENSOR_4_WWAN,
-	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -286,6 +280,5 @@ struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_1_DDR_SOC] = THERMAL_CPU,
 	[TEMP_SENSOR_2_AMBIENT] = THERMAL_AMBIENT,
 	[TEMP_SENSOR_3_CHARGER] = THERMAL_CHARGER,
-	[TEMP_SENSOR_4_WWAN] = THERMAL_WWAN,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
