@@ -16,6 +16,24 @@
       "message": "Are these shift operations expected? Do we have a document for this?",
       "revId": "28160d0710c2f31a86770e2cb84d95e517686504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aff0b81_640f02dc",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2023-10-05T14:25:21Z",
+      "side": 1,
+      "message": "Update document in issue tracker\nWe already test it, and it is ok",
+      "parentUuid": "525897a6_b6cf4c2f",
+      "revId": "28160d0710c2f31a86770e2cb84d95e517686504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
