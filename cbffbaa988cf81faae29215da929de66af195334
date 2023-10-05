@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42336c81_00070ec9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-10-05T04:38:53Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/4914853",
+      "parentUuid": "17eb63a2_bd395230",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b71f4161_a1a44cd2",
