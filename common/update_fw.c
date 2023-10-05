@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "byteorder.h"
+#include "builtin/endian.h"
 #include "console.h"
 #include "flash.h"
 #include "hooks.h"
@@ -293,7 +293,8 @@ void fw_update_command_handler(void *body, size_t cmd_size,
 	}
 #endif
 
-	CPRINTF("update: 0x%x\n", block_offset + CONFIG_PROGRAM_MEMORY_BASE);
+	CPRINTF("update: 0x%llx\n",
+		(uint64_t)(block_offset + CONFIG_PROGRAM_MEMORY_BASE));
 	if (crec_flash_physical_write(block_offset, body_size, update_data) !=
 	    EC_SUCCESS) {
 		*error_code = UPDATE_WRITE_FAILURE;
@@ -305,7 +306,8 @@ void fw_update_command_handler(void *body, size_t cmd_size,
 
 	/* Verify that data was written properly. */
 	if (memcmp(update_data,
-		   (void *)(block_offset + CONFIG_PROGRAM_MEMORY_BASE),
+		   (void *)(uintptr_t)(block_offset +
+				       CONFIG_PROGRAM_MEMORY_BASE),
 		   body_size)) {
 		*error_code = UPDATE_VERIFY_ERROR;
 		CPRINTF("%s:%d update verification error\n", __func__,
