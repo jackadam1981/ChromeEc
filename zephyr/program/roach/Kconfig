@@ -8,4 +8,74 @@ config BOARD_ROACH
 	  Build Google Roach reference board. Roach is a keyboard EC
 	  using ITE it82202-ax.
 
+config BOARD_ROACH_KB_TP_PACKETS_OVER_USB
+	bool "Enable keyboard and touchpad packets over usb on Roach"
+	default n
+	help
+	  Enable keyboard and touchpad packets over usb on Roach. The transaction
+	  over UART is disabled if this configuration is set.
+
+if BOARD_ROACH_KB_TP_PACKETS_OVER_USB
+config USB_DEVICE_STACK
+	default y
+
+config USB_DEVICE_MANUFACTURER
+	default "Google LLC"
+
+config USB_DEVICE_PRODUCT
+	default "Roach"
+
+config USB_DEVICE_SN
+	default "0"
+
+config USB_DEVICE_INITIALIZE_AT_BOOT
+	default n
+
+config USB_DEVICE_VID
+	default 0x18D1
+
+config USB_DEVICE_PID
+	default 0x5999
+
+config USB_DEVICE_REMOTE_WAKEUP
+	default y
+
+config USB_DEVICE_HID
+	default y
+
+config USB_HID_BOOT_PROTOCOL
+	default y
+
+config HID_INTERRUPT_EP_MPS
+	default 64
+
+config USB_HID_DEVICE_COUNT
+	default 2
+
+config USB_DC_HID_KEYBOARD
+	default y
+
+config USB_DC_HID_TOUCHPAD
+	default y
+
+config USB_DC_HID_VIVALDI
+	default y
+
+config USB_DC_KEYBOARD_ASSISTANT_KEY
+	default n
+
+config USB_DC_KEYBOARD_TABLET_MODE_SWITCH
+	default n
+
+config USB_DC_KEYBOARD_NUM_TOP_ROW_KEYS
+	default 10
+
+config USB_DC_KEYBOARD_HID_NUM
+	default 0
+
+config USB_DC_TOUCHPAD_HID_NUM
+	default 1
+
+endif
+
 source "Kconfig.zephyr"
