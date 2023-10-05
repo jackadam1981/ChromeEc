@@ -435,6 +435,7 @@ static int write_gyro_offset(const struct motion_sensor_t *s, int *val)
 
 int set_gyro_offset(const struct motion_sensor_t *s, intv3_t v)
 {
+	int ret;
 	uint8_t reg_data[4] = { 0 };
 	uint8_t saved_conf[6] = { 0 };
 	int i, val[3];
@@ -450,23 +451,42 @@ int set_gyro_offset(const struct motion_sensor_t *s, intv3_t v)
 			val[i] = 1024 + val[i];
 	}
 
+	mutex_lock(s->mutex);
+
 	/* Set the power mode as suspend */
-	RETURN_ERROR(bmi3_read_n(s, BMI3_REG_ACC_CONF, saved_conf, 6));
+	ret = bmi3_read_n(s, BMI3_REG_ACC_CONF, saved_conf, 6);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
 	/* Disable accelerometer and gyroscope */
 	reg_data[0] = saved_conf[2];
 	reg_data[1] = 0x00;
 	reg_data[2] = saved_conf[4];
 	reg_data[3] = 0x00;
-	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_ACC_CONF, reg_data, 4));
+	ret = bmi3_write_n(s, BMI3_REG_ACC_CONF, reg_data, 4);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
 	/* Set the gyro offset in the sensor registers */
-	RETURN_ERROR(write_gyro_offset(s, val));
+	ret = write_gyro_offset(s, val);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
 	/* Restore ACC_CONF by storing saved_conf data */
-	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_ACC_CONF, &saved_conf[2], 4));
+	ret = bmi3_write_n(s, BMI3_REG_ACC_CONF, &saved_conf[2], 4);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
-	return EC_SUCCESS;
+	mutex_unlock(s->mutex);
+	return ret;
 }
 
 int get_accel_offset(const struct motion_sensor_t *s, intv3_t v)
@@ -516,6 +536,7 @@ static int write_accel_offsets(const struct motion_sensor_t *s, int *val)
 
 int set_accel_offset(const struct motion_sensor_t *s, intv3_t v)
 {
+	int ret;
 	uint8_t reg_data[4] = { 0 };
 	uint8_t saved_conf[6] = { 0 };
 	int i, val[3];
@@ -531,23 +552,42 @@ int set_accel_offset(const struct motion_sensor_t *s, intv3_t v)
 			val[i] += 16384;
 	}
 
+	mutex_lock(s->mutex);
+
 	/* Set the power mode as suspend */
-	RETURN_ERROR(bmi3_read_n(s, BMI3_REG_ACC_CONF, saved_conf, 6));
+	ret = bmi3_read_n(s, BMI3_REG_ACC_CONF, saved_conf, 6);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
 	/* Disable accelerometer and gyroscope */
 	reg_data[0] = saved_conf[2];
 	reg_data[1] = 0x00;
 	reg_data[2] = saved_conf[4];
 	reg_data[3] = 0x00;
-	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_ACC_CONF, reg_data, 4));
+	ret = bmi3_write_n(s, BMI3_REG_ACC_CONF, reg_data, 4);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
 	/* Set the accel offset in the sensor registers */
-	RETURN_ERROR(write_accel_offsets(s, val));
+	ret = write_accel_offsets(s, val);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
 	/* Restore ACC_CONF by storing saved_conf data */
-	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_ACC_CONF, &saved_conf[2], 4));
+	ret = bmi3_write_n(s, BMI3_REG_ACC_CONF, &saved_conf[2], 4);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
+	}
 
-	return EC_SUCCESS;
+	mutex_unlock(s->mutex);
+	return ret;
 }
 
 static int set_gyro_foc_config(struct motion_sensor_t *s)
