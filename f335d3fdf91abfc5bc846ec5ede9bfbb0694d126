@@ -39,6 +39,30 @@
       },
       "revId": "f335d3fdf91abfc5bc846ec5ede9bfbb0694d126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c98c44_4658a610",
+        "filename": "extra/usb_updater/fw_update.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-10-05T18:34:37Z",
+      "side": 1,
+      "message": "As I understand it, the purpose is to normalize None and False into an integer, in case those are passed in. As such, the comment still applies, maybe even more-so than before as write_list/write_length had more complex semantics.",
+      "parentUuid": "c00a3c84_edb799fb",
+      "range": {
+        "startLine": 168,
+        "startChar": 16,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "f335d3fdf91abfc5bc846ec5ede9bfbb0694d126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
