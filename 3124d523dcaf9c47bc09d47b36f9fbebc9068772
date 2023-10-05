@@ -189,6 +189,30 @@
       },
       "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2dacfb_0a077829",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-10-05T17:01:26Z",
+      "side": 1,
+      "message": "The event does wake the device when it\u0027s asleep, it\u0027s just that the OS ignores it when it\u0027s awake. You can test this yourself with:\n\n```\nhostevent set 0x80000\n```\n\nI\u0027m fine with removing it entirely, but that is outside the scope of this change and should be done with a separate CL. \n\nI can\u0027t say if the host event actually makes any difference in terms of recovery, though, since I\u0027m not sure if we keep any data in terms of when it\u0027s used. My guess is that it does nothing.\n\nFor the sleep case, it may work to abort the sleep and bring the AP back to S0. But, if the AP is stuck and failing to sleep, it\u0027s also unlikely to be able to process wake events in the first place.\n\nFor the wake case, either the AP is failing to wake from any host events (in which case the event would do nothing), or the wake itself is failing to complete (in which case there\u0027s nothing for the host event to do since the AP is already awake).",
+      "parentUuid": "196d044e_c6f55f6b",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 52
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
