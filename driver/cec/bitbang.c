@@ -338,6 +338,13 @@ static void enter_state(int port, enum cec_state new_state)
 		timeout = CAP_START_HIGH_TICKS;
 		break;
 	case CEC_STATE_FOLLOWER_DEBOUNCE:
+		/*
+		 * In most states it83xx keeps gpio interrupts enabled (see
+		 * https://crrev.com/c/4899696). But for the debounce logic to
+		 * work, gpio interrupts must be disabled, so we disable them
+		 * here then re-enable them when leaving the debounce state.
+		 */
+		cec_disable_gpio_interrupt(port);
 		if (port_data->rx.debounce_count >= DEBOUNCE_CUTOFF) {
 			timeout = DEBOUNCE_WAIT_LONG_TICKS;
 		} else {
@@ -537,9 +544,13 @@ void cec_event_timeout(int port)
 		else
 			enter_state(port, CEC_STATE_FOLLOWER_ACK_FINISH);
 		break;
+	case CEC_STATE_FOLLOWER_DEBOUNCE:
+		/* Debounce period has finished, so re-enable gpio interrupts */
+		cec_enable_gpio_interrupt(port);
+		enter_state(port, CEC_STATE_IDLE);
+		break;
 	case CEC_STATE_FOLLOWER_START_LOW:
 	case CEC_STATE_FOLLOWER_START_HIGH:
-	case CEC_STATE_FOLLOWER_DEBOUNCE:
 	case CEC_STATE_FOLLOWER_HEADER_INIT_LOW:
 	case CEC_STATE_FOLLOWER_HEADER_INIT_HIGH:
 	case CEC_STATE_FOLLOWER_HEADER_DEST_LOW:
@@ -701,6 +712,14 @@ void cec_event_tx(int port)
 		cec_update_interrupt_time(port);
 		enter_state(port, CEC_STATE_INITIATOR_FREE_TIME);
 	}
+}
+
+__overridable void cec_enable_gpio_interrupt(int port)
+{
+}
+
+__overridable void cec_disable_gpio_interrupt(int port)
+{
 }
 
 __overridable void cec_update_interrupt_time(int port)

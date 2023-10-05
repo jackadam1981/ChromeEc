@@ -55,6 +55,16 @@ void cec_tmr_cap_stop(int port);
 int cec_tmr_cap_get(int port);
 
 /**
+ * ITE-specific callback to enable GPIO interrupts. Used for debounce logic.
+ */
+__override_proto void cec_enable_gpio_interrupt(int port);
+
+/**
+ * ITE-specific callback to disable GPIO interrupts. Used for debounce logic.
+ */
+__override_proto void cec_disable_gpio_interrupt(int port);
+
+/**
  * ITE-specific callback to record the interrupt time.
  *
  * @param port		CEC port where the interrupt occurred.

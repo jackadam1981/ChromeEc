@@ -135,6 +135,22 @@ int cec_tmr_cap_get(int port)
 	return CEC_US_TO_TICKS(interrupt_time.val - prev_interrupt_time.val);
 }
 
+__override void cec_enable_gpio_interrupt(int port)
+{
+	const struct bitbang_cec_config *drv_config =
+		cec_config[port].drv_config;
+
+	gpio_enable_interrupt(drv_config->gpio_in);
+}
+
+__override void cec_disable_gpio_interrupt(int port)
+{
+	const struct bitbang_cec_config *drv_config =
+		cec_config[port].drv_config;
+
+	gpio_disable_interrupt(drv_config->gpio_in);
+}
+
 __override void cec_update_interrupt_time(int port)
 {
 	prev_interrupt_time = interrupt_time;
