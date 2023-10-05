@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f6e09f_2d7cfad9",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-05T23:38:33Z",
+      "side": 1,
+      "message": "If you leave interrupts enabled, can you also leave logging enabled?\n\nIf not, please split this CL into 2 - one for the the shell and logging changes and a second that enables power management.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "07d271063c976f8fdc93d945c5ded20bd67d0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
