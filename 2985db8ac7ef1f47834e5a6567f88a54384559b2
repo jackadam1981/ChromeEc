@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "445c9218_a2787e24",
+        "filename": "zephyr/program/rex/rex/src/usba_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-05T18:57:11Z",
+      "side": 1,
+      "message": "WWAN?",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "2985db8ac7ef1f47834e5a6567f88a54384559b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df37569c_b1395c38",
         "filename": "zephyr/program/rex/rex/src/usba_config.c",
         "patchSetId": 8
