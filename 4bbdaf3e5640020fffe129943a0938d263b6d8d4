@@ -40,6 +40,30 @@
       },
       "revId": "4bbdaf3e5640020fffe129943a0938d263b6d8d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7963f0c_355b1e5b",
+        "filename": "zephyr/program/rex/rex/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-05T23:06:29Z",
+      "side": 1,
+      "message": "i measured the blink rate for `power-state-error` which is an\nidentical construct (except for the blink rate)\nand is easy to check with `cutoff`.\n\nmy observation is that these delays should not have been changed\nto preserve the original blink rate.",
+      "parentUuid": "134a3267_476e1343",
+      "range": {
+        "startLine": 182,
+        "startChar": 18,
+        "endLine": 182,
+        "endChar": 22
+      },
+      "revId": "4bbdaf3e5640020fffe129943a0938d263b6d8d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
