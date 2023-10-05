@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b801acbb_41b8de8d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6330,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-05T17:02:34Z",
+      "side": 1,
+      "message": "How about mentioning the size (e.g. size\u003d3) instead because everything in CBI is uint8_t[*] internally?",
+      "range": {
+        "startLine": 6330,
+        "startChar": 51,
+        "endLine": 6330,
+        "endChar": 61
+      },
+      "revId": "0383d86628822c8e1a424059c3b72685ad04d7d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
