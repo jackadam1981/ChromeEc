@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4152b14a_4fc0345a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-05T17:20:27Z",
+      "side": 1,
+      "message": "The cable would be violating spec, but would the TCPM have any way of knowing that?\n\nIf the cable was violating spec, should the TCPM do anything besides try to make the connection work as best it can (as this CL currently does)?",
+      "parentUuid": "4eea4790_672fbaef",
+      "revId": "4785cd32b2da59a461f82d101e6d0534dd7be961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1611dc01_a4c02a39",
         "filename": "zephyr/test/drivers/testcase.yaml",
         "patchSetId": 71
