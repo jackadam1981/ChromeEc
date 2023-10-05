@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17eb63a2_bd395230",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-10-05T02:14:08Z",
+      "side": 1,
+      "message": "Yeah, I came to the same conclusion. It\u0027s a bit annoying to have a special case for this, but I can\u0027t think of a better solution. I\u0027ll try and implement it.",
+      "parentUuid": "ab56615f_1384517a",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "cbffbaa988cf81faae29215da929de66af195334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f4161_a1a44cd2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
