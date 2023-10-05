@@ -16,6 +16,29 @@
       "message": "Please refrain from self CR+1. Thanks.",
       "revId": "cad83f7161b580595cff66201c47a11b4a2ed239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5429d9_826c0214",
+        "filename": "board/dochi/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-05T17:53:18Z",
+      "side": 1,
+      "message": "don\u0027t you need an entry for IADPT here?",
+      "range": {
+        "startLine": 152,
+        "startChar": 27,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "cad83f7161b580595cff66201c47a11b4a2ed239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
