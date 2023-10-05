@@ -127,6 +127,20 @@
 		compatible = "cros-ec,usba-port-enable-pins";
 		enable-pins = <&gpio_en_pp5000_usba_r>;
 	};
+
+	console {
+		compatible = "ec-console";
+		disabled = "DPTF",
+			   "motionsense",
+			   "host_event",
+			   "events",
+			   "lpc",
+			   "host_event",
+			   "events",
+			   "lpc",
+			   "keyboard",
+			   "keyscan";
+	};
 };
 
 /* host interface */
