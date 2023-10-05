@@ -8,4 +8,11 @@ config BOARD_ROACH
 	  Build Google Roach reference board. Roach is a keyboard EC
 	  using ITE it82202-ax.
 
+config HID_OVER_USB
+	bool "Enable HID over USB for keyboard and touchpad devices"
+	default n
+	help
+	  Enable HID over USB for keyboard and touchpad devices. The HID over UART
+	  is disabled if this configuration is set.
+
 source "Kconfig.zephyr"

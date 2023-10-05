@@ -8,7 +8,6 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "roach_cmds.h"
-#include "touchpad.h"
 #include "usb_hid_touchpad.h"
 
 #include <zephyr/devicetree.h>
@@ -52,10 +51,6 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 
 	one_wire_uart_send(one_wire_uart, ROACH_CMD_KEYBOARD_MATRIX, state,
 			   KEYBOARD_COLS_MAX);
-}
-
-void board_touchpad_reset(void)
-{
 }
 
 void set_touchpad_report(struct usb_hid_touchpad_report *report)
