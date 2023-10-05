@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04df0f6_9a60b98a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2023-10-05T16:21:24Z",
+      "side": 1,
+      "message": "I\u0027m not an OWNER here, so I\u0027m not entirely sure what kind of input you are looking for from me.\n\nBut at a high level, this looks like some fairly complex parsing logic; I might consider sandboxing it, especially if it will run as root.",
+      "revId": "b5f756a9eb282fc02cde30ec9d43fda781e7f949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
