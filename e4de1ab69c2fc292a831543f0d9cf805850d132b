@@ -22,6 +22,30 @@
       },
       "revId": "e4de1ab69c2fc292a831543f0d9cf805850d132b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "601b46dc_6850f0e5",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T15:03:41Z",
+      "side": 1,
+      "message": "I needed `TOOLCHAIN_HOME` to be set so the gcc `target.cmake` can appropriately search the paths\n\nhttp://cs/h/chromium/chromiumos/codesearch/+/main:src/third_party/zephyr/main/cmake/compiler/gcc/target.cmake?l\u003d27\n```\nfind_program(CMAKE_CXX_COMPILER ${cplusplus_compiler} PATHS ${TOOLCHAIN_HOME} NO_DEFAULT_PATH)\n```",
+      "parentUuid": "9f73db0b_3c677b5c",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "e4de1ab69c2fc292a831543f0d9cf805850d132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
