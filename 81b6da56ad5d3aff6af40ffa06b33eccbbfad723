@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5ac2b9_9da06551",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-06T22:38:23Z",
+      "side": 1,
+      "message": "how about directly use FLASH_RESET_REGISTERS in the code to avoid new config ?",
+      "range": {
+        "startLine": 165,
+        "startChar": 7,
+        "endLine": 165,
+        "endChar": 51
+      },
+      "revId": "81b6da56ad5d3aff6af40ffa06b33eccbbfad723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
