@@ -7,12 +7,19 @@
 #include "gpio.h"
 #include "hooks.h"
 
+static void ec_get_external_spi_access(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 0);
+	k_msleep(10);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, ec_get_external_spi_access, HOOK_PRIO_PRE_I2C);
+
 static void board_init(void)
 {
 	/* Enable SOC SPI */
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 1);
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_PRE_I2C);
 
 __override void intel_x86_sys_reset_delay(void)
 {
