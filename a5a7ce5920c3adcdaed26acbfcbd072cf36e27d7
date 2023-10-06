@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f2c4689_bf551648",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-06T18:53:47Z",
+      "side": 1,
+      "message": "Limiting the spin_lock to the smallest possible surface seems like the better approach.  The alternative would be to add something like `!IS_ENABLED(CONFIG_PIGWEED)` to the mutex stuff in console_buffer.c, but that seems messy.",
+      "parentUuid": "382eb14e_75a364b1",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "a5a7ce5920c3adcdaed26acbfcbd072cf36e27d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f5273b6_3d8f4646",
         "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
         "patchSetId": 2
