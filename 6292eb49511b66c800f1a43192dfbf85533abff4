@@ -34,6 +34,24 @@
       "parentUuid": "b26cefe1_c8b07523",
       "revId": "6292eb49511b66c800f1a43192dfbf85533abff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13d1b4c_e3b2917d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-06T04:20:36Z",
+      "side": 1,
+      "message": "we normally define these fields in `config.star` first so we don\u0027t have\ndifferent parts of the system defining these bits in inconsistent ways.\n\nmoragues@ will have to +2 this.",
+      "parentUuid": "05a1018a_02b9db88",
+      "revId": "6292eb49511b66c800f1a43192dfbf85533abff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
