@@ -450,7 +450,5 @@ board_battery_imbalance_mv(const struct board_batt_params *info)
 
 int battery_imbalance_mv(void)
 {
-	const struct board_batt_params *params = get_batt_params();
-
-	return (!params) ? 0 : board_battery_imbalance_mv(params);
+	return board_battery_imbalance_mv(get_batt_params());
 }
