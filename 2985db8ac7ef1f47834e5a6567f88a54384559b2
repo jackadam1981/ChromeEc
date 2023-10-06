@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39b3638a_4a91a5d0",
+        "filename": "zephyr/program/rex/rex/src/usba_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-10-06T02:04:29Z",
+      "side": 1,
+      "message": "This table is from skyrim.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/skyrim/frostflow/src/usb_mux_config.c#113",
+      "parentUuid": "445c9218_a2787e24",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "2985db8ac7ef1f47834e5a6567f88a54384559b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df37569c_b1395c38",
         "filename": "zephyr/program/rex/rex/src/usba_config.c",
         "patchSetId": 8
