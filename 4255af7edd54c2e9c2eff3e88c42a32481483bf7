@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f441e1e_eceeb07d",
+        "filename": "zephyr/program/roach/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-06T02:06:45Z",
+      "side": 1,
+      "message": "Suggested name for this configuration: BOARD_ROACH_KB_TP_PACKETS_OVER_USB\nCan you put child CL\u0027s configurations behind this configuration?",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "4255af7edd54c2e9c2eff3e88c42a32481483bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6ab4b8_ad099f16",
+        "filename": "zephyr/program/roach/uart.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-06T02:06:45Z",
+      "side": 1,
+      "message": "1843200: please see https://github.com/zephyrproject-rtos/zephyr/pull/63428",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "4255af7edd54c2e9c2eff3e88c42a32481483bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
