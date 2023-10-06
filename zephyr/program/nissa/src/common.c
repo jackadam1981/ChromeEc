@@ -18,6 +18,7 @@
 #include <ap_power/ap_power.h>
 LOG_MODULE_REGISTER(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+#if CONFIG_NISSA_BOARD_HAS_PEN
 __overridable void board_power_change(struct ap_power_ev_callback *cb,
 				      struct ap_power_ev_data data)
 {
@@ -39,13 +40,16 @@ __overridable void board_power_change(struct ap_power_ev_callback *cb,
 		break;
 	}
 }
+#endif
 
 static void board_setup_init(void)
 {
 	static struct ap_power_ev_callback cb;
 
+#if CONFIG_NISSA_BOARD_HAS_PEN
 	ap_power_ev_init_callback(&cb, board_power_change,
 				  AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
+#endif
 	ap_power_ev_add_callback(&cb);
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_INIT_I2C);
