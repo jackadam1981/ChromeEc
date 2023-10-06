@@ -90,11 +90,17 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 
 	/* Check valid address for jumpiing */
 	__ASSERT_NO_MSG(exeAddr != 0x0);
+
 	/* Configure QMSPI controller */
 	qspi->MODE = MCHP_QMSPI_M_SRST;
 	fdiv = 2;
 	if (pcr->TURBO_CLK & MCHP_PCR_TURBO_CLK_96M)
 		fdiv *= 2;
+
+#ifdef CONFIG_PLATFORM_EC_SHARED_SPI_FLASH
+	/* value depends on the spi length from ec to flashchip */
+	fdiv = 6;
+#endif
 
 	qspi->MODE = (fdiv << MCHP_QMSPI_M_FDIV_POS) & MCHP_QMSPI_M_FDIV_MASK;
 	qspi->MODE |= (MCHP_QMSPI_M_ACTIVATE | MCHP_QMSPI_M_LDMA_RX_EN);
