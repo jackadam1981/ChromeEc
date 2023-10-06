@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3541ef_c02a999e",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T15:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f55595c_1329018a",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "939f5a9264fb1589899da230be3c5785fb47bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee012a37_566d2aa1",
@@ -82,6 +106,30 @@
         "id": 1530058
       },
       "writtenOn": "2023-10-06T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee012a37_566d2aa1",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "939f5a9264fb1589899da230be3c5785fb47bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3968df34_3fbbbec8",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T15:04:14Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "ee012a37_566d2aa1",
