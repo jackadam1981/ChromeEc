@@ -52,6 +52,24 @@
       "parentUuid": "6b28b69a_811eb6ee",
       "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa895e1_6c0f0998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-10-06T07:28:55Z",
+      "side": 1,
+      "message": "NPCX has the Firmware Header (the first 64 bytes in the flash) for the boot configuration. However, it doesn\u0027t include the configuration to set RDP, WRP, watchdog. You should see the detailed Firmware Header in the software user guide.",
+      "parentUuid": "df7a8103_acdd0d7a",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
