@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d4490f_7a7bf904",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T15:03:50Z",
+      "side": 1,
+      "message": "Filed http://b/303828221",
+      "parentUuid": "8f55595c_1329018a",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "939f5a9264fb1589899da230be3c5785fb47bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee012a37_566d2aa1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "652ed662_40a2fadb",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee012a37_566d2aa1",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "939f5a9264fb1589899da230be3c5785fb47bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c0b7860_0d88ab52",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-05T23:14:01Z",
       "side": 1,
       "message": "According the [picolibc documentation](https://docs.zephyrproject.org/latest/develop/languages/c/picolibc.html#building-without-toolchain-bundled-picolibc), you should create `platform/ec/zephyr/cmake/toolchain/coreboot-sdk/Kconfig` and add a symbol that does `select PICOLIBC_SUPPORTED`.\n\nAlternately, you could explicitly enable `TOOLCHAIN_HAS_PICOLIBC` in the coreboot-sdk [generic.cmake](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/cmake/toolchain/coreboot-sdk/generic.cmake;l\u003d1)\n\nExample [upstream](https://github.com/zephyrproject-rtos/zephyr/blob/7fb2929e5ba058da82716b6555f75c112c252072/cmake/toolchain/espressif/generic.cmake#L56) that does this for newlib.",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 609,
+        "endChar": 0
+      },
+      "revId": "939f5a9264fb1589899da230be3c5785fb47bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae836283_dd41716a",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0b7860_0d88ab52",
       "range": {
         "startLine": 603,
         "startChar": 0,
