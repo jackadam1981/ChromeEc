@@ -360,20 +360,15 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	return BATTERY_NOT_DISCONNECTED;
 }
 
-#ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
+__overridable int
+board_battery_imbalance_mv(const struct board_batt_params *info)
+{
+	return 0;
+}
+
 int battery_imbalance_mv(void)
 {
 	const struct board_batt_params *params = get_batt_params();
 
-	/*
-	 * If battery type is unknown, we cannot safely access non-standard
-	 * registers.
-	 */
-	return (!params) ? 0 : params->fuel_gauge.imbalance_mv();
+	return (!params) ? 0 : board_battery_imbalance_mv(params);
 }
-
-int battery_default_imbalance_mv(void)
-{
-	return 0;
-}
-#endif /* CONFIG_BATTERY_MEASURE_IMBALANCE */
