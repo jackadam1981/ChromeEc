@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "382eb14e_75a364b1",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T18:40:28Z",
+      "side": 1,
+      "message": "The `spin_lock` is more for `LOG_PRINTK`.  I can move this out of the protection, if that\u0027s what you\u0027re asking?",
+      "parentUuid": "48468ccf_0eccb8ec",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "a5a7ce5920c3adcdaed26acbfcbd072cf36e27d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f5273b6_3d8f4646",
         "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-06T17:28:33Z",
       "side": 1,
       "message": "This should be `LOG_PRINTK`.  APIs that start with \"Z_\" or \"z_\" are considered private, and can be changed at any time.\n\nAlso, is a spin lock around `LOG_PRINTK` guaranteed safe?  Has this been tested when the UART is configured for interrupt and polling modes?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "a5a7ce5920c3adcdaed26acbfcbd072cf36e27d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9e51f5_1cd180b1",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-06T18:40:28Z",
+      "side": 1,
+      "message": "Done\n\nFrom my observations without a spinlock, I\u0027ll see interleaved base64 messages causing decoding issues. Adding a spinlock around `LOG_PRINTK` keeps the tokenized messages well formed.",
+      "parentUuid": "5f5273b6_3d8f4646",
       "range": {
         "startLine": 56,
         "startChar": 1,
