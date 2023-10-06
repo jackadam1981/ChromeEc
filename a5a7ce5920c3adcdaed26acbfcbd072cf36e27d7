@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48468ccf_0eccb8ec",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-06T17:28:33Z",
+      "side": 1,
+      "message": "`console_buf_notify_chars()` has a separate mutex.  Seems like that mutex isn\u0027t needed if you\u0027re also doing a spin lock.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "a5a7ce5920c3adcdaed26acbfcbd072cf36e27d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5273b6_3d8f4646",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-06T17:28:33Z",
+      "side": 1,
+      "message": "This should be `LOG_PRINTK`.  APIs that start with \"Z_\" or \"z_\" are considered private, and can be changed at any time.\n\nAlso, is a spin lock around `LOG_PRINTK` guaranteed safe?  Has this been tested when the UART is configured for interrupt and polling modes?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "a5a7ce5920c3adcdaed26acbfcbd072cf36e27d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

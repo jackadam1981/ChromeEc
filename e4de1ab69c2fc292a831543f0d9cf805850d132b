@@ -46,6 +46,30 @@
       },
       "revId": "e4de1ab69c2fc292a831543f0d9cf805850d132b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f42fe9_4a456114",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-06T17:28:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "601b46dc_6850f0e5",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "e4de1ab69c2fc292a831543f0d9cf805850d132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
