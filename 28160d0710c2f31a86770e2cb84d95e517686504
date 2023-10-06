@@ -52,6 +52,24 @@
       "parentUuid": "1aff0b81_640f02dc",
       "revId": "28160d0710c2f31a86770e2cb84d95e517686504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8968fe_d73efdbf",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2023-10-06T15:22:47Z",
+      "side": 1,
+      "message": "1. disable charger SMBUS timeout function\n0X39 bit7\u003d1\n2. enabled 2-level input current limit function\n0X3D bit12\u003d1\n3. change 2-level ACLIM time T1 to 1ms, T2 to 10ms.\n0X38 bit10-12\u003d011 0X38 bit13-15\u003d001\n4. set ACLIM1 current to 400mA,and ACLIM2 follow adapter\n   capacity.\n  AC Limit 1 0x3F  AC Limit 2 0x3B",
+      "parentUuid": "78a5f7e6_fdcfea7e",
+      "revId": "28160d0710c2f31a86770e2cb84d95e517686504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
