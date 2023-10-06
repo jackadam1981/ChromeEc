@@ -3,9 +3,12 @@
  * found in the LICENSE file.
  */
 #include "common.h"
+#include "flash.h"
 #include "soc.h"
+#include "system.h"
 #include "system_chip.h"
 
+#include <zephyr/drivers/gpio.h>
 #include <zephyr/dt-bindings/clock/npcx_clock.h>
 
 #include <stdnoreturn.h>
@@ -90,11 +93,25 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 
 	/* Check valid address for jumpiing */
 	__ASSERT_NO_MSG(exeAddr != 0x0);
+
+#ifdef CONFIG_PLATFORM_EC_SHARED_SPI_FLASH
+	/* get external spi flash access */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 0);
+
+	/* wait time before accessing spi lines */
+	k_msleep(10);
+#endif
+
 	/* Configure QMSPI controller */
 	qspi->MODE = MCHP_QMSPI_M_SRST;
 	fdiv = 2;
 	if (pcr->TURBO_CLK & MCHP_PCR_TURBO_CLK_96M)
 		fdiv *= 2;
+
+#ifdef CONFIG_PLATFORM_EC_SHARED_SPI_FLASH
+	/* value depends on the spi length from ec to flashchip */
+	fdiv = 6;
+#endif
 
 	qspi->MODE = (fdiv << MCHP_QMSPI_M_FDIV_POS) & MCHP_QMSPI_M_FDIV_MASK;
 	qspi->MODE |= (MCHP_QMSPI_M_ACTIVATE | MCHP_QMSPI_M_LDMA_RX_EN);
