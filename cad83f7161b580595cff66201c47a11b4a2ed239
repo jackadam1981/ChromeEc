@@ -39,6 +39,30 @@
       },
       "revId": "cad83f7161b580595cff66201c47a11b4a2ed239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d804f4_dae3ec05",
+        "filename": "board/dochi/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-10-06T01:08:23Z",
+      "side": 1,
+      "message": "No, it is reserved for power loading",
+      "parentUuid": "7d5429d9_826c0214",
+      "range": {
+        "startLine": 152,
+        "startChar": 27,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "cad83f7161b580595cff66201c47a11b4a2ed239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
