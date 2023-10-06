@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe883884_91303972",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-10-06T00:50:00Z",
+      "side": 1,
+      "message": "Fixed for real now.",
+      "parentUuid": "2e122d1d_f58546d7",
+      "range": {
+        "startLine": 645,
+        "startChar": 40,
+        "endLine": 645,
+        "endChar": 42
+      },
+      "revId": "2aacb235eceaa8f93ec10ce9966cfd9fed9062df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "499dda5f_8d9fdb1f",
