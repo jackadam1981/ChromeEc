@@ -16,6 +16,24 @@
       "message": "set_accel_offset and set_gyro_offset are called from this function. If a mutex is needed, it could be held here.\n\nAgainst which other function the set offset is racing? Other sensors may be impacted.",
       "revId": "6da3867fb1d36c33fd76bfdc6fb70e1efee51ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5793452a_f35c3e44",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2023-10-06T07:17:02Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nFrom the i2c log in b:303584942, I just saw at failed point EC only writes two bytes of `BMI3_REG_ACC_CONF` to `BMI3_ACC_MODE_DISABLE` without reading first, and then `BMI3_REG_ACC_CONF` cannot restore back to `BMI3_ACC_MODE_NORMAL`. From ITE\u0027s suggestion, this may cause by I2C racing condition. As I apply mutex, the issue cannot be duplicated until now by running firmware.ConsecutiveBoot. I can update patch set to move mutex lock here.\n\nThanks!",
+      "parentUuid": "398c537f_b502596b",
+      "revId": "6da3867fb1d36c33fd76bfdc6fb70e1efee51ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
