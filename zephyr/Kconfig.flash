@@ -163,4 +163,12 @@ config PLATFORM_EC_SHARED_SPI_FLASH
 	  Config implements the configurations needed by EC to access
 	  SPI flash on initial boot and while jumping to EC RW/RO firmware.
 
+config PLATFORM_EC_SPI_CLOCK_DEVIDE
+	int "SPI clock devider"
+	depends on SOC_FAMILY_MEC
+	default 3 if DT_HAS_CROS_EC_SHARED_SPI_FLASH_ENABLED
+	default 2
+	help
+	  Defines SPI clock devider value.
+
 endif # PLATFORM_EC_FLASH_CROS
