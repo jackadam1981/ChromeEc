@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c854abb4_759a4579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-06T19:10:23Z",
+      "side": 1,
+      "message": "Can you explain further? Can we give the log a bigger buffer or use Al\u0027s tokenizing work to flush less often?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "07d271063c976f8fdc93d945c5ded20bd67d0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771b3a00_880028fe",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-06T19:10:23Z",
+      "side": 1,
+      "message": "Can we change the logging priority instead of turning it off entirely? I\u0027m not really comfortable with no logs.",
+      "revId": "07d271063c976f8fdc93d945c5ded20bd67d0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7f6e09f_2d7cfad9",
         "filename": "zephyr/program/rex/rex-ish/prj.conf",
         "patchSetId": 3
