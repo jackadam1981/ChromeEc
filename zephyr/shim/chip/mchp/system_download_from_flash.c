@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 #include "common.h"
+#include "flash.h"
 #include "soc.h"
 #include "system_chip.h"
 
@@ -91,6 +92,10 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	/* Check valid address for jumpiing */
 	__ASSERT_NO_MSG(exeAddr != 0x0);
 
+#ifdef CONFIG_FLASH_EX_OP_ENABLED
+	/* flash registers reset before starting DMA */
+	crec_flash_ex_op();
+#endif
 	/* Configure QMSPI controller */
 	qspi->MODE = MCHP_QMSPI_M_SRST;
 	fdiv = 2;
