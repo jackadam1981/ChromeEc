@@ -46,6 +46,30 @@
       },
       "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56285bbc_410e9d16",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-06T19:07:51Z",
+      "side": 1,
+      "message": "Right, that will tell the lis2dw12 to enable the fifo threshold interrupt, but that line needs to be mapped to the ISH no?\n\nThe mapping is done at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/rex-ish/interrupts.dtsi so if we have both the lid and base accels using the FIFO we need another GPIO line.",
+      "parentUuid": "b00cbcce_1107ebf0",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
