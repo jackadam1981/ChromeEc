@@ -162,4 +162,12 @@ config PLATFORM_EC_SHARED_SPI_FLASH
 	  Config implements the configurations needed by EC to access
 	  SPI flash on initial boot and while jumping to EC RW/RO firmware.
 
+config PLATFORM_EC_USE_ZEPHYR_FLASH_RESET
+	bool "Use Zephyr flash register API to reset flash registers"
+	default y if BOARD_MEC1723 # TODO: add new board  MEC1723
+	select FLASH_RESET
+	help
+	  When enabled, EC will use flash reset registers API to reset the flash
+	  registers.
+
 endif # PLATFORM_EC_FLASH_CROS
