@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80769105_6ea608a8",
+        "filename": "test/debug.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-06T16:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f626451_5decee7b",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b67818a8_a010cae6",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "Right, but then the test wouldn\u0027t function correctly upon a second run of no_debugger. For example, it would then fail if you did:\n\n1. **power cycle the board (if you flashed using debugger or already ran test)**\n1. runtest no_debugger\n1. runtest debugger\n1. FAIL--\u003e runtest no_debugger\n\nOne could argue that this mechanism doesn\u0027t belong in this test, but the counter argument is that we already have a lot of other tests that require external sequencing and environment setup. I tried to document the nuance of how this test MUST be performed above.",
       "parentUuid": "b67818a8_a010cae6",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40a1b62_209a61f4",
+        "filename": "test/debug.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-06T16:10:33Z",
+      "side": 1,
+      "message": "Oh, I see now. Does it make sense to just explicitly pass these into the test rather than relying on the FPMCU to retain this state? For example:\n\n```\n1. Power cycle\n2. runtest no_debugger was_no_debugger\n3. runtest debugger was_no_debugger\n4. runtest no_debugger was_debugger\n```\n\nThis would allow you to run through that same sequence",
+      "parentUuid": "897708e3_dcaee805",
       "range": {
         "startLine": 56,
         "startChar": 2,
