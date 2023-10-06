@@ -232,11 +232,20 @@ DECLARE_EC_TEST(test_batt_conf_main)
 	return EC_SUCCESS;
 }
 
+DECLARE_EC_TEST(test_imbalance_mv)
+{
+	zassert_equal(battery_imbalance_mv(), 0);
+
+	return EC_SUCCESS;
+}
+
 TEST_SUITE(test_suite_battery_config)
 {
-	ztest_test_suite(test_battery_config,
-			 ztest_unit_test_setup_teardown(test_batt_conf_main,
-							test_setup,
-							test_teardown));
+	ztest_test_suite(
+		test_battery_config,
+		ztest_unit_test_setup_teardown(test_batt_conf_main, test_setup,
+					       test_teardown),
+		ztest_unit_test_setup_teardown(test_imbalance_mv, test_setup,
+					       test_teardown));
 	ztest_run_test_suite(test_battery_config);
 }
