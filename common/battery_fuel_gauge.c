@@ -15,9 +15,7 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
-#ifdef CONFIG_BATTERY_CONFIG_IN_CBI
 static const struct board_batt_params *battery_conf = &default_battery_conf;
-#endif
 
 /*
  * Authenticate the battery connected.
@@ -139,7 +137,6 @@ __overridable int board_get_default_battery_type(void)
 	return DEFAULT_BATTERY_TYPE;
 }
 
-#ifdef CONFIG_BATTERY_CONFIG_IN_CBI
 void init_battery_type(void)
 {
 	int type = get_battery_type();
@@ -160,24 +157,6 @@ const struct board_batt_params *get_batt_params(void)
 
 	return battery_conf;
 }
-
-#else /* !CONFIG_BATTERY_CONFIG_IN_CBI */
-
-void init_battery_type(void)
-{
-	if (get_battery_type() == BATTERY_TYPE_COUNT)
-		CPRINTS("battery not found");
-}
-
-const struct board_batt_params *get_batt_params(void)
-{
-	int type = get_battery_type();
-
-	return &board_battery_info[type == BATTERY_TYPE_COUNT ?
-					   board_get_default_battery_type() :
-					   type];
-}
-#endif /* CONFIG_BATTERY_CONFIG_IN_CBI */
 
 const struct battery_info *battery_get_info(void)
 {
