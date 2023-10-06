@@ -126,9 +126,6 @@
 			gpios = <&gpio_240_276 5 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		}; /* GPIO245 */
-		ec_spi_oe_mecc: ec-spi-oe-mecc-r {
-			gpios = <&gpio_040_076 11 GPIO_OUTPUT_LOW>; /* 1.8V */
-		}; /* GPIO053 */
 		en_pp3300_a: ec-ds3-r {
 			gpios = <&gpio_000_036 21 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_EN_PP3300_A";
@@ -287,4 +284,9 @@
 			enum-name = "GPIO_EN_PP5000";
 		};
 	};
+
+	shared-spi {
+		compatible = "cros-ec,shared-spi-flash";
+		spi-oe-gpios = <&gpio_040_076 11 0>;
+	}; /* GPIO053 */
 };
