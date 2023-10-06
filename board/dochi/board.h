@@ -29,6 +29,9 @@
 /* LED */
 #define CONFIG_LED_ONOFF_STATES
 
+/* Keyboard */
+#define CONFIG_KEYBOARD_REFRESH_ROW3
+
 /* Sensors */
 #define CONFIG_ACCELGYRO_LSM6DSO /* Base accel */
 #define CONFIG_ACCEL_LSM6DSO_INT_EVENT \
