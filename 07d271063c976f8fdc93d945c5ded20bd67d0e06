@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bee699b_3e5fd6f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-07T22:56:15Z",
+      "side": 1,
+      "message": "UART will prevent ISH enter low power mode, I spent quite some time to experiment how different config affect S0ix substates counter. We can keep CONFIG_LOG\u003dy for now since it only slightly improvs the number..\n\nAnother option, there is cros_ish.log file saved in /var/log. One option we can use this file for log purpose. \n\nRex design ISH UART is not stuffed, UART rework is required. So UART reworked board, with the UART tx/rx pins in coreboot configured as ISH GPIO pin; we get ISH log on console and can achieve S0i2.2(the deepest sleep in MTL). \n\nHowever, we are running another problem: use same CB/EC/ISH image, S0i2.2 won\u0027t work. This is due to pins are configured in SOC side, but those are not actually connected, and causes SOC couldn\u0027t enter deepest sleep. To make this non-rework board ISH work, can\u0027t config those UART pins in CB. Current CPFE ISH coreboot keeps those pins NC.\n\nIn summary, \n1. UART rework board + CB (UART pins configured) + ISH (log enabled)\nCan have ISH log from console, S0i2.2 is ok.\n2. no rework board + CB(UART pins NC) + ISH (log enabled), \nS0i2.2 is ok. Of course no console. I think we can still get /var/log/cros_ish.log.",
+      "parentUuid": "c854abb4_759a4579",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "07d271063c976f8fdc93d945c5ded20bd67d0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "771b3a00_880028fe",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "820c4323_8c0cedf8",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-07T22:56:15Z",
+      "side": 1,
+      "message": "Sure, I leave log enabled. Disable log makes S0ix counter a little bit better.  If PNP performance is marginal, we can revisit.",
+      "parentUuid": "771b3a00_880028fe",
+      "revId": "07d271063c976f8fdc93d945c5ded20bd67d0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7f6e09f_2d7cfad9",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-10-05T23:38:33Z",
       "side": 1,
       "message": "If you leave interrupts enabled, can you also leave logging enabled?\n\nIf not, please split this CL into 2 - one for the the shell and logging changes and a second that enables power management.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "07d271063c976f8fdc93d945c5ded20bd67d0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f097252_2975a187",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-07T22:56:15Z",
+      "side": 1,
+      "message": "I split this to two CLs. CL:4920388 just for PM",
+      "parentUuid": "b7f6e09f_2d7cfad9",
       "range": {
         "startLine": 62,
         "startChar": 0,
