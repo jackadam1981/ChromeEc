@@ -70,6 +70,24 @@
       "parentUuid": "78a5f7e6_fdcfea7e",
       "revId": "28160d0710c2f31a86770e2cb84d95e517686504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f60d7f_23ac9b0a",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-07T01:59:04Z",
+      "side": 1,
+      "message": "hi shouchieh, the isl9238c is different from  the raa489000 about this register definition",
+      "parentUuid": "4e8968fe_d73efdbf",
+      "revId": "28160d0710c2f31a86770e2cb84d95e517686504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
