@@ -193,7 +193,6 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head, uint8_t *dest,
 	 * conversion and return the converted values.
 	 */
 	static int batt_mode_cache = BATT_MODE_UNINITIALIZED;
-	const struct batt_params *curr_batt;
 	/*
 	 * Don't allow host reads into arbitrary memory space, most params
 	 * are two bytes.
@@ -208,7 +207,17 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head, uint8_t *dest,
 		 */
 		bs = &battery_static[BATT_IDX_MAIN];
 
+#if defined(HAS_TASK_CHARGER)
+	const struct batt_params *curr_batt;
+	/* Ask charger so that we don't need to ask battery again. */
 	curr_batt = charger_current_battery_params();
+#else
+	/* This is for test code, where doesn't have charger task. */
+	struct batt_params _batt;
+	const struct batt_params *curr_batt = &_batt;
+
+	battery_get_params(&_batt);
+#endif
 	switch (*batt_cmd_head) {
 	case SB_BATTERY_MODE:
 		if (write_len == 3) {
