@@ -70,6 +70,30 @@
       },
       "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dab5b6_cbbab509",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-07T18:36:36Z",
+      "side": 1,
+      "message": "\u003eRight, that will tell the lis2dw12 to enable the fifo threshold interrupt, but that line needs to be mapped to the ISH no?\n\nlis2dw12 config_interrupt function routes interrupt on FIFO watermark to INT1, on mainboard, this pin is connected to both EC gpio81 and ISH GP3\nISH:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/rex-ish/interrupts.dtsi;l\u003d20\nand the gpio pin is defined as:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/rex-ish/gpio.dtsi;l\u003d11\n\n```\t\tgpio_ec_accel_int_r_l: ec_accel_int_r_l {\n\t\t\tgpios \u003d \u003c\u0026gpio0 3 GPIO_INPUT\u003e;\n\t\t};\n```\nEC sensor is the same:\ninterrupt defined: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/interrupts.dtsi;l\u003d50\nGPIO: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/generated.dtsi;l\u003d45\n\nCurrently interrupt is enabled, and lid accel is declared as forced mode too. As a result,motion_sense task read fifo data every interrupt(about 80ms) and polling data every (about 75ms). This polling is redundant.\nread data upon interrupt: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/motion_sense.c;l\u003d656\npolling data:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/motion_sense.c;l\u003d673",
+      "parentUuid": "56285bbc_410e9d16",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
