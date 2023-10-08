@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f7befa0_a8c4f22c",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-08T07:11:31Z",
+      "side": 1,
+      "message": "host_service will stay in Chromium tree since tt\u0027s only used by Chrome cros_ishtp.",
+      "parentUuid": "28bbae98_6427a48e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "debe73aa04da07bcdf575d9b3df6a60aed8f25de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633bc2e9_502822c3",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4112e7_faa39d5f",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-08T07:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633bc2e9_502822c3",
+      "revId": "debe73aa04da07bcdf575d9b3df6a60aed8f25de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89905d45_ca689cb3",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-10-05T23:26:08Z",
       "side": 1,
       "message": "Please add a comment describing this routine.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "debe73aa04da07bcdf575d9b3df6a60aed8f25de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e43927_ad8159ee",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-08T07:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89905d45_ca689cb3",
       "range": {
         "startLine": 7,
         "startChar": 5,
