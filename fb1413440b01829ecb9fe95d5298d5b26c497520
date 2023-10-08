@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d19efa4_1e1a6721",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-08T04:57:34Z",
+      "side": 1,
+      "message": "Register `TCS_I2C_ENABLE` is Enable Register (0x 80), the `TCS_I2C_ENABLE_MASK` masks bits 0,1,3,4,6; the masked bits will be set to different mode value when rate is changed. That is why I think original purpose of this assignment is to clear all masked bits then assign  new mode value.\n\nMode value are defined as this:\n```\nenum tcs3400_mode {\n\tTCS3400_MODE_SUSPEND \u003d 0,\n\tTCS3400_MODE_IDLE \u003d\n\t\t(TCS_I2C_ENABLE_POWER_ON | TCS_I2C_ENABLE_ADC_ENABLE),\n\tTCS3400_MODE_COLLECTING \u003d\n\t\t(TCS_I2C_ENABLE_POWER_ON | TCS_I2C_ENABLE_ADC_ENABLE |\n\t\t TCS_I2C_ENABLE_INT_ENABLE),\n}\n```\nIn this function, mode \u003d TCS3400_MODE_SUSPEND; or mode \u003d TCS3400_MODE_COLLECTING; \nnot using `~TSC_I2C_ENABLE_MASK` causes assignment fails to set correct mode value when `mode \u003d TCS3400_MODE_SUSPEND`, which is 0. \n\nIf using `data \u003d (data \u0026 (rate \u003d\u003d 0 ? ~TSC_I2C_ENABLE_MASK : TSC_I2C_ENABLE_MASK)) | mode;`, to set mode value `TCS3400_MODE_COLLECTING ` for non-zero rate, this way will keep previous masked bits if its value is 1, this happens only when previous mode is TCS3400_MODE_IDLE, but IDLE mode value is a subset of TCS3400_MODE_COLLECTING. So it won\u0027t do anything extra than `data \u003d (data \u0026 ~TCS_I2C_ENABLE_MASK) | mode;`.\n\nI think this issue is simply a typo from original author. But if there is still concern, I can change to `data \u003d (data \u0026 (rate \u003d\u003d 0 ? ~TSC_I2C_ENABLE_MASK : TSC_I2C_ENABLE_MASK)) | mode;`; which also works too.",
+      "range": {
+        "startLine": 670,
+        "startChar": 28,
+        "endLine": 670,
+        "endChar": 42
+      },
+      "revId": "fb1413440b01829ecb9fe95d5298d5b26c497520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0880ce82_e8bc5a80",
