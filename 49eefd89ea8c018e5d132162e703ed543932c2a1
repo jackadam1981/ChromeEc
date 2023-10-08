@@ -16,6 +16,24 @@
       "message": "Is the CONFIG_PM related to Log Buffer Size? If not, may be separate them?",
       "revId": "49eefd89ea8c018e5d132162e703ed543932c2a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa353cf_2e326d01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-08T05:05:07Z",
+      "side": 1,
+      "message": "If use 16384 bytes, the build has error saying ram is not sufficient to have 1024B free space. This 16384 was arbitrarily chosen during development. We don\u0027t have to use customized size, default value 1024 is fine.",
+      "parentUuid": "16a6501a_96b9f473",
+      "revId": "49eefd89ea8c018e5d132162e703ed543932c2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
