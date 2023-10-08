@@ -39,6 +39,24 @@
       "message": "What happens when we set the rate to something other than 0? Don\u0027t we need that bit then? Should this be:\n\n```\ndata \u003d (data \u0026 (rate \u003d\u003d 0 ? ~TSC_I2C_ENABLE_MASK : TSC_I2C_ENABLE_MASK)) | mode;\n```",
       "revId": "fb1413440b01829ecb9fe95d5298d5b26c497520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca68a9b5_abf53ff4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-08T04:59:25Z",
+      "side": 1,
+      "message": "Sorry I accidently replied to wrong place at line 670.",
+      "parentUuid": "0880ce82_e8bc5a80",
+      "revId": "fb1413440b01829ecb9fe95d5298d5b26c497520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
