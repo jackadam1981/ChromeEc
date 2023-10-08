@@ -34,6 +34,24 @@
       "parentUuid": "398c537f_b502596b",
       "revId": "6da3867fb1d36c33fd76bfdc6fb70e1efee51ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31385cfe_735a2cc3",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-08T22:46:58Z",
+      "side": 1,
+      "message": "Looks like PS8 moved the locking as suggested, and this makes sense to me; other code paths that access the ACC_CONF register use locking, but these neglected to.",
+      "parentUuid": "5793452a_f35c3e44",
+      "revId": "6da3867fb1d36c33fd76bfdc6fb70e1efee51ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
