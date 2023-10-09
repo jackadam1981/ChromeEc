@@ -19,30 +19,15 @@
 /* When battery type is not initialized */
 #define BATTERY_TYPE_UNINITIALIZED -1
 
-struct battery_voltage_current {
-	uint16_t mv;
-	uint16_t ma;
-} __packed;
-
-struct battery_temperature_range {
-	int8_t min_c;
-	int8_t max_c;
-} __packed;
-
-struct fuel_gauge_reg_addr_data {
-	uint8_t addr;
-	uint16_t data;
-} __packed;
-
 struct ship_mode_info {
 	uint8_t reg_addr;
 	uint16_t reg_data[SHIP_MODE_WRITES];
-};
+} __packed;
 
 struct sleep_mode_info {
 	uint8_t reg_addr;
 	uint16_t reg_data;
-};
+} __packed;
 
 struct fet_info {
 	uint8_t reg_addr;
@@ -50,7 +35,7 @@ struct fet_info {
 	uint16_t disconnect_val;
 	uint16_t cfet_mask; /* CHG FET status mask */
 	uint16_t cfet_off_val;
-};
+} __packed;
 
 enum fuel_gauge_flags {
 	/*
@@ -83,15 +68,27 @@ struct fuel_gauge_info {
 	struct ship_mode_info ship_mode;
 	struct sleep_mode_info sleep_mode;
 	struct fet_info fet;
-};
+} __packed;
 
 struct board_batt_params {
 	struct fuel_gauge_info fuel_gauge;
 	struct battery_info batt_info;
-};
+} __packed;
+
+struct batt_conf_header {
+	/* Version of struct batt_conf_header and its internals. */
+	uint8_t struct_version;
+	union {
+		/* Version 0.0 */
+		struct {
+			char manuf_name[16];
+			char device_name[16];
+			uint8_t data[];
+		} __packed;
+	};
+} __packed;
 
 /* Forward declare board specific data used by common code */
-extern struct board_batt_params default_battery_conf;
 extern const struct board_batt_params board_battery_info[];
 extern const enum battery_type DEFAULT_BATTERY_TYPE;
 
