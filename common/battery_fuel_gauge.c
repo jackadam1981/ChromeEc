@@ -9,13 +9,17 @@
 #include "battery_smart.h"
 #include "builtin/assert.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
-static const struct board_batt_params *battery_conf = &default_battery_conf;
+test_export_static struct board_batt_params default_battery_conf;
+const struct board_batt_params *battery_conf = &default_battery_conf;
+test_export_static char manuf_name[32];
+test_export_static char device_name[32];
 
 /*
  * Authenticate the battery connected.
@@ -163,6 +167,93 @@ const struct battery_info *battery_get_info(void)
 	return &get_batt_params()->batt_info;
 }
 
+test_export_static int
+batt_conf_read_battery_config(struct board_batt_params *info)
+{
+	char manuf[32];
+	char device[32];
+	int tag = CBI_TAG_BATTERY_CONFIG;
+
+	if (battery_manufacturer_name(manuf, sizeof(manuf))) {
+		CPRINTS("Manuf name not found");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	if (battery_device_name(device, sizeof(device))) {
+		CPRINTS("Batt name not found");
+		memset(device, 0, sizeof(device));
+	}
+
+	while (1) {
+		uint8_t buf[sizeof(struct batt_conf_header) + sizeof(*info)];
+		struct batt_conf_header *head = (struct batt_conf_header *)buf;
+		uint8_t size = sizeof(buf);
+		int rv;
+
+		CPRINTS("Batt conf #%d...", tag - CBI_TAG_BATTERY_CONFIG);
+		rv = cbi_get_board_info(tag++, buf, &size);
+		if (rv) {
+			CPRINTS("No more configs (%d).", rv);
+			return rv;
+		}
+
+		if (head->struct_version > 0) {
+			CPRINTS("Version mismatch: 0x%x", head->struct_version);
+			continue;
+		}
+
+		if (strcasecmp(head->manuf_name, manuf)) {
+			CPRINTS("Manuf name mismatch: %s", head->manuf_name);
+			continue;
+		}
+
+		if (head->device_name[0] &&
+		    strcasecmp(head->device_name, device)) {
+			CPRINTS("Batt name mismatch: %s", head->device_name);
+			continue;
+		}
+
+		CPRINTS("Matched: %s,%s", head->manuf_name, head->device_name);
+		memcpy(info, head->data, sizeof(*info));
+		strncpy(manuf_name, head->manuf_name, sizeof(manuf_name));
+		info->fuel_gauge.manuf_name = manuf_name;
+		info->fuel_gauge.device_name = NULL;
+		if (head->device_name[0]) {
+			strncpy(device_name, head->device_name,
+				sizeof(device_name));
+			info->fuel_gauge.device_name = device_name;
+		}
+
+		return EC_SUCCESS;
+	}
+}
+
+__overridable bool board_batt_conf_enabled(void)
+{
+	union ec_common_control ctrl;
+
+	if (cbi_get_common_control(&ctrl) != EC_SUCCESS)
+		return false;
+
+	return !!(ctrl.bcic_enabled);
+}
+
+test_export_static void batt_conf_main(void)
+{
+	CPRINTS("%s", __func__);
+	if (IS_ENABLED(CONFIG_BATTERY_CONFIG_IN_CBI) &&
+	    board_batt_conf_enabled()) {
+		CPRINTS("Reading CBI");
+		batt_conf_read_battery_config(&default_battery_conf);
+	} else {
+		/* Battery config isn't in CBI. */
+		CPRINTS("Detect battery");
+		init_battery_type();
+	}
+	CPRINTS("%s done", __func__);
+}
+DECLARE_HOOK(HOOK_INIT, batt_conf_main, HOOK_PRIO_POST_I2C);
+
 #ifndef CONFIG_FUEL_GAUGE
 /**
  * Battery cut off command via SMBus write block.
@@ -231,7 +322,6 @@ int board_cut_off_battery(void)
 
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
-#endif /* !CONFIG_FUEL_GAUGE */
 
 enum ec_error_list battery_sleep_fuel_gauge(void)
 {
@@ -338,6 +428,8 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 	return BATTERY_NOT_DISCONNECTED;
 }
+
+#endif /* !CONFIG_FUEL_GAUGE */
 
 __overridable int
 board_battery_imbalance_mv(const struct board_batt_params *info)
