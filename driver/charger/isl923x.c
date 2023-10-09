@@ -150,12 +150,14 @@ static enum ec_error_list isl9237_set_voltage(int chgnum, uint16_t voltage)
 static enum ec_error_list isl923x_set_input_current_limit(int chgnum,
 							  int input_current)
 {
-	int rv;
 	uint16_t reg = AC_CURRENT_TO_REG(input_current);
 
-	rv = raw_write16(chgnum, ISL923X_REG_ADAPTER_CURRENT_LIMIT1, reg);
-	if (rv)
-		return rv;
+	return raw_write16(chgnum, ISL923X_REG_ADAPTER_CURRENT_LIMIT1, reg);
+}
+
+int isl923x_set_level_2_input_current_limit(int chgnum, int input_current2)
+{
+	uint16_t reg = AC_CURRENT_TO_REG(input_current2);
 
 	return raw_write16(chgnum, ISL923X_REG_ADAPTER_CURRENT_LIMIT2, reg);
 }
