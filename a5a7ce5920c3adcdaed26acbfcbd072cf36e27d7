@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "566be34c_88c67b94",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-09T14:58:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2c4689_bf551648",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "a5a7ce5920c3adcdaed26acbfcbd072cf36e27d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f5273b6_3d8f4646",
