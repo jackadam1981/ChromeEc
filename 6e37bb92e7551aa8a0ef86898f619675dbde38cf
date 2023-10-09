@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d34f61_650a9fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-10-09T20:38:05Z",
+      "side": 1,
+      "message": "As majority of the system integration and validation teams will be using stock proto 2 platforms, my recommendation will be to disable ISH UART by default. For ISH development and debug, we can provide instructions (in ISH care \u0026 feed) on the re-work and FW change to enable UART logging.",
+      "revId": "6e37bb92e7551aa8a0ef86898f619675dbde38cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
