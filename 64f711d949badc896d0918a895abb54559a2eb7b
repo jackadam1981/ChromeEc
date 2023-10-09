@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cc3fc5_bd6e9bec",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-10-09T15:48:20Z",
+      "side": 1,
+      "message": "Looks like CROSS_COMPILE went from a path to a basename. Is this impacting something outside of this file, or is this just cleanup?",
+      "revId": "64f711d949badc896d0918a895abb54559a2eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
