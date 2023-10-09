@@ -540,6 +540,7 @@ static int cc_bcfg(int argc, const char *argv[])
 	} else if (argc == 3) {
 		struct batt_conf_header head = {};
 		uint8_t size = sizeof(head);
+		uint8_t expected = sizeof(head);
 		int index;
 		int rv;
 		char *e;
@@ -558,7 +559,7 @@ static int cc_bcfg(int argc, const char *argv[])
 			ccprintf("struct_ver = 0x%02x\n", head.struct_version);
 			ccprintf("manuf = \"%s\"\n", head.manuf_name);
 			ccprintf("name = \"%s\"\n", head.device_name);
-			ccprintf("size = %u (expect %u)\n", size, sizeof(head));
+			ccprintf("size = %u (expect %u)\n", size, expected);
 			batt_conf_dump(&head.config);
 		} else if (strcasecmp(argv[1], "set") == 0) {
 			const struct board_batt_params *conf =
