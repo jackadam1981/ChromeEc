@@ -94,6 +94,30 @@
       },
       "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a509b5_c2a360c9",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-09T19:05:51Z",
+      "side": 1,
+      "message": "I must be missing something, I was under the impression we only had a GPIO line going from the base IMU to the EC/ISH. I see the nodes in `interrupts.dtsi` now",
+      "parentUuid": "e3dab5b6_cbbab509",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "25a67ddb4494cdd43f113e61bf92bf639e7d02aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
