@@ -16,6 +16,24 @@
       "message": "Looks like CROSS_COMPILE went from a path to a basename. Is this impacting something outside of this file, or is this just cleanup?",
       "revId": "64f711d949badc896d0918a895abb54559a2eb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf54292_64ce73cc",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-09T16:06:20Z",
+      "side": 1,
+      "message": "Keith had an earlier comment on this, please see\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4916394/comment/9f73db0b_3c677b5c/",
+      "parentUuid": "f6cc3fc5_bd6e9bec",
+      "revId": "64f711d949badc896d0918a895abb54559a2eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
