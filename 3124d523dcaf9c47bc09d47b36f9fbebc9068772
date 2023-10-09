@@ -213,6 +213,30 @@
       },
       "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075be458_74e2d2f4",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-09T16:55:39Z",
+      "side": 1,
+      "message": "Thanks for the explanation. The current version looks good then.",
+      "parentUuid": "8e2dacfb_0a077829",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 52
+      },
+      "revId": "3124d523dcaf9c47bc09d47b36f9fbebc9068772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
