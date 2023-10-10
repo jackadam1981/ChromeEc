@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7edef0e1_0796e910",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-10T18:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30901ac0_cba534ac",
+      "revId": "e0ef8f5232db90e4781e63c2713f107c9d1776bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "866f9d25_dc3275b0",
@@ -49,6 +67,30 @@
       "writtenOn": "2023-09-28T20:12:52Z",
       "side": 1,
       "message": "Same comment on magic number",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 11
+      },
+      "revId": "e0ef8f5232db90e4781e63c2713f107c9d1776bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024be40d_09b081ab",
+        "filename": "test/timer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-10T18:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "866f9d25_dc3275b0",
       "range": {
         "startLine": 130,
         "startChar": 9,
