@@ -16,6 +16,24 @@
       "message": "is this still a recommended module? if so, it nicely nukes my gLinux updates as of recently, and we should probably recommend people update their sources",
       "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57164b3d_49f633b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-10T18:40:09Z",
+      "side": 1,
+      "message": "Yes still used, thanks for contributing this.  I\u0027m on the verge of replacing with a new implementation that I hope has a better chance of upstream acceptance.\n\nPersonally I\u0027m now avoiding DKMS for i2c-pseudo after this issue.  (I didn\u0027t add DKMS use to the install script, though I did approve it.)  I looked for a way to mark a DKMS module as \"best effort\" to avoid blocking kernel updates, but didn\u0027t find anything.\n\nThough in the case of my workstation, kernel updates were also failing for a certain infamous out-of-tree proprietary module, completely unrelated to this one. :/",
+      "parentUuid": "28db5622_62658fe5",
+      "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
