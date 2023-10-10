@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb19347_fa45a1a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-10T19:25:52Z",
+      "side": 1,
+      "message": "I\u0027m guessing there\u0027s no code coverage for these files either.  What\u0027s the plan for code coverage?",
+      "revId": "3ec2558d836b9e00e976cd91231facc79a4940d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14edb3c2_9d13d092",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-10T19:25:52Z",
+      "side": 1,
+      "message": "This routine needs to be made public in the hal_intel module.  Is there an open issue to fix that?",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "3ec2558d836b9e00e976cd91231facc79a4940d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
