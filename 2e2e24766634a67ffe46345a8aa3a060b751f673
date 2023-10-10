@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "972868f8_d43e80f4",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T10:30:34Z",
+      "side": 1,
+      "message": "ok. Shall i change the node label to \"flash_spi_sel\" for all the intelrvp platforms?",
+      "parentUuid": "5e49bc29_be958f0f",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 54
+      },
+      "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99a2c728_ef940acf",
         "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
         "patchSetId": 1
