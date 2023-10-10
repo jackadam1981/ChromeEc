@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbb68e1_568a0e77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T06:56:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96f7be9_3f1f9f87",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56623b59_e8c0ee10",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-10-06T22:34:23Z",
       "side": 1,
       "message": "we may still need 1727.\nhow about creating a new variant mtlrvp_mec1723 and bring it there ?",
+      "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05cf7669_350b33c6",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T06:56:56Z",
+      "side": 1,
+      "message": "this change will be part of separate variant \"mtlrvp_mec1723\"",
+      "parentUuid": "56623b59_e8c0ee10",
       "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +119,30 @@
       "writtenOn": "2023-10-06T22:34:23Z",
       "side": 1,
       "message": "need to set it back to 1 after sysjump or EC resets ?",
+      "range": {
+        "startLine": 99,
+        "startChar": 57,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5280225a_a7d45d9b",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T06:56:56Z",
+      "side": 1,
+      "message": "Added handling in HOOK_INIT\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4916997/2/zephyr/program/intelrvp/src/intelrvp.c",
+      "parentUuid": "bac791cf_5e3e165d",
       "range": {
         "startLine": 99,
         "startChar": 57,
