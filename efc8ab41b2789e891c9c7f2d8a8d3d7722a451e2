@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd41a665_f1aef1db",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T06:56:25Z",
+      "side": 1,
+      "message": "I see Handling in HOOK_SHUTDOWN//HOOK_INIT is not addressing all the scenarios, \n\nex:\napshutdown from ec console or failures during Power sequencing,\nI see this do not trigger HOOK_SHUTDOWN/HOOK_CHIPSET_HARD_OFF but invokes board_ap_power_force_shutdown()\n\nI have changed intelrvp.c implementation which covers SPI handling in all the below scenarios.\n- sysjump RO/RW in G3 state\n- sysjump RO/RW in S0 state\n- \"apshutdown\" followed by \"powerbtn\"",
+      "parentUuid": "f038e70a_00bf3a10",
+      "revId": "efc8ab41b2789e891c9c7f2d8a8d3d7722a451e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91d88dc_503918be",
@@ -54,6 +72,30 @@
       "writtenOn": "2023-10-06T22:25:44Z",
       "side": 1,
       "message": "how about use HOOK_SHUTDOWN call and disable the flash access so that the change is independent of Kconfig ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "efc8ab41b2789e891c9c7f2d8a8d3d7722a451e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e0799d_3acaf307",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T06:56:25Z",
+      "side": 1,
+      "message": "Thanks, removed the CONFIG_PLATFORM_EC_G3_SPI_FLASH_SHARING while handling \"ec_spi_oe_mecc\" gpio.\nAdded SPI gpio handling in hooks, HOOK_CHIPSET_HARD_OFF, HOOK_POWER_BUTTON_CHANGE, HOOK_INIT. Kindly check.",
+      "parentUuid": "f91d88dc_503918be",
       "range": {
         "startLine": 17,
         "startChar": 0,
