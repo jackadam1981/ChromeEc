@@ -58,6 +58,7 @@ __test_only void fp_task_simulate(void)
 
 void fp_clear_finger_context(uint16_t idx)
 {
+	CPRINTS("FPMCU MODE: fp_clear_finger_context");
 	OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
 	OPENSSL_cleanse(fp_positive_match_salt[idx],
 			sizeof(fp_positive_match_salt[0]));
@@ -70,6 +71,7 @@ void fp_clear_finger_context(uint16_t idx)
  */
 static void _fp_clear_context(void)
 {
+	CPRINTS("FPMCU MODE: fp_clear_context");
 	templ_valid = 0;
 	templ_dirty = 0;
 	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
@@ -85,6 +87,7 @@ static void _fp_clear_context(void)
 
 void fp_reset_and_clear_context(void)
 {
+	CPRINTS("FPMCU MODE: fp_reset_and_clear_context");
 	if (fp_sensor_deinit() != EC_SUCCESS)
 		CPRINTS("Failed to deinit sensor");
 	_fp_clear_context();
@@ -94,6 +97,7 @@ void fp_reset_and_clear_context(void)
 
 int fp_get_next_event(uint8_t *out)
 {
+	CPRINTS("FPMCU MODE: fp_get_next_event");
 	uint32_t event_out = atomic_clear(&fp_events);
 
 	memcpy(out, &event_out, sizeof(event_out));
@@ -104,6 +108,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_FINGERPRINT, fp_get_next_event);
 
 static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 {
+	CPRINTS("FPMCU MODE: fp_command_tpm_seed");
 	const auto *params =
 		static_cast<const ec_params_fp_seed *>(args->params);
 
@@ -126,6 +131,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
 static enum ec_status
 fp_command_encryption_status(struct host_cmd_handler_args *args)
 {
+	CPRINTS("FPMCU MODE: fp_command_encryption_status");
 	auto *r =
 		static_cast<ec_response_fp_encryption_status *>(args->response);
 
@@ -170,6 +176,7 @@ static int validate_fp_mode(const uint32_t mode)
 
 enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
 {
+	CPRINTS("FPMCU MODE: fp_set_sensor_mode");
 	int ret;
 
 	if (mode_output == NULL)
@@ -192,6 +199,7 @@ enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
 
 static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 {
+	CPRINTS("FPMCU MODE: fp_command_mode");
 	const auto *p = static_cast<const ec_params_fp_mode *>(args->params);
 	auto *r = static_cast<ec_response_fp_mode *>(args->response);
 
@@ -206,6 +214,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
 
 static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 {
+	CPRINTS("FPMCU MODE: fp_command_context");
 	const auto *p =
 		static_cast<const ec_params_fp_context_v1 *>(args->params);
 	uint32_t mode_output;
@@ -246,6 +255,7 @@ int fp_enable_positive_match_secret(uint16_t fgr,
 				    struct positive_match_secret_state *state)
 {
 	timestamp_t now;
+	CPRINTS("FPMCU MODE: fp_enable_positive_match_secret");
 
 	if (state->readable) {
 		CPRINTS("Error: positive match secret already readable.");
@@ -272,6 +282,7 @@ enum ec_status fp_read_match_secret(
 	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES])
 {
 	timestamp_t now = get_time();
+	CPRINTS("FPMCU MODE: fp_read_match_secret");
 	struct positive_match_secret_state state_copy =
 		positive_match_secret_state;
 
@@ -309,6 +320,7 @@ enum ec_status fp_read_match_secret(
 static enum ec_status
 fp_command_read_match_secret(struct host_cmd_handler_args *args)
 {
+	CPRINTS("FPMCU MODE: fp_command_read_match_secret");
 	const auto *params =
 		static_cast<const ec_params_fp_read_match_secret *>(
 			args->params);
