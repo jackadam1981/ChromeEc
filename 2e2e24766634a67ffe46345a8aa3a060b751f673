@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99b6fecc_93c23bd9",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-10T16:16:50Z",
+      "side": 1,
+      "message": "we can alias in dts file. Here is an example.\nC file: gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pch_wake_odl),\ndts file: gpio_ec_pch_wake_odl: pch_wake_l",
+      "parentUuid": "972868f8_d43e80f4",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 54
+      },
+      "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99a2c728_ef940acf",
         "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
         "patchSetId": 1
