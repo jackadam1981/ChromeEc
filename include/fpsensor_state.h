@@ -31,9 +31,7 @@ extern "C" {
 #define FP_TEMPLATE_SECTION
 #endif
 
-#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE                         \
-	(FP_ALGORITHM_TEMPLATE_SIZE + FP_POSITIVE_MATCH_SALT_BYTES + \
-	 sizeof(struct ec_fp_template_encryption_metadata))
+#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE 6600
 
 /* Events for the FPSENSOR task */
 #define TASK_EVENT_SENSOR_IRQ TASK_EVENT_CUSTOM_BIT(0)

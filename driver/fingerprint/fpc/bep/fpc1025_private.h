@@ -42,11 +42,11 @@
  *
  * Template size + alignment padding + size of template size variable
  */
-#define FP_ALGORITHM_TEMPLATE_SIZE_FPC (5088 + 0 + 4)
+#define FP_ALGORITHM_TEMPLATE_SIZE_FPC (39600)
 
 /* Max number of templates stored / matched against */
 #ifndef FP_MAX_FINGER_COUNT_FPC
-#define FP_MAX_FINGER_COUNT_FPC (5)
+#define FP_MAX_FINGER_COUNT_FPC (3)
 #endif
 
 #endif /* __CROS_EC_FPC1025_PRIVATE_H */
