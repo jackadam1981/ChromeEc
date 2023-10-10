@@ -52,6 +52,24 @@
       "parentUuid": "57164b3d_49f633b4",
       "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00f9150_7b2c718a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-10T21:24:55Z",
+      "side": 1,
+      "message": "On Tue, Oct 10, 2023 at 12:24 PM briannorris@chromium.org wrote:\n\u003e What\u0027s a good DKMS alternative?\n\nGet the new implementation of this module upstreamed.  I\u0027m working on it.\n\n\n\u003e Are you just going the manual-install route, and you\u0027re OK with losing (and having to remember to rebuild/reinstall) the module on every update?\n\nYup.  Letting our work machine kernel updates block and fail on this DKMS rebuild can have pretty serious and disruptive cascading effects, if the blockage is not addressed promptly.  Up to you what the best tradeoff is for yourself though.  My only active use of this module right now is testing and iterating on the new implementation.  If you\u0027re using this regularly just as a user, DKMS install could certainly be worthwhile.\n\nIf DKMS had an option to mark a module as \"best effort\" I would gladly have the install script set it, but I\u0027m not going to pursue adding that to DKMS.\n\nIMO this script should have an option to force non-DKMS install.  Feel free to send a patch for that if you\u0027d find it useful, or maybe I\u0027ll add that shortly just for my own usage.\n\n\n\u003e BTW, the dkms path in the `install` script also isn\u0027t very good at doing updates. You have to manually `sudo dkms remove i2c-pseudo/1` before running it again on a previous installation.\n\nI think correct DKMS usage might be to bump the `/1` version each time the module is updated, rather than running `remove` first.  I\u0027ll test and send a CL sometime, or feel free to send me a patch.",
+      "parentUuid": "d8212fb9_f8397727",
+      "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
