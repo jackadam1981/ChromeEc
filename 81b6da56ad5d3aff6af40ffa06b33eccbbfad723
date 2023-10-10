@@ -22,6 +22,30 @@
       },
       "revId": "81b6da56ad5d3aff6af40ffa06b33eccbbfad723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4195832b_ae667293",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-10T10:30:20Z",
+      "side": 1,
+      "message": "The driver will send SPI command to flashchip for resetting the registers.\nThe SPI commands are SPI_NOR_CMD_RESET_EN and SPI_NOR_CMD_RESET_MEM \n\nThis change has dependency on the zephyr change which needs to be merged\n\nhttps://github.com/zephyrproject-rtos/zephyr/pull/61019/files#diff-68c9be8932318c5396390b7264802c5e6f4e495f60a136d01a2c7bdac9c08d5a",
+      "parentUuid": "aa5ac2b9_9da06551",
+      "range": {
+        "startLine": 165,
+        "startChar": 7,
+        "endLine": 165,
+        "endChar": 51
+      },
+      "revId": "81b6da56ad5d3aff6af40ffa06b33eccbbfad723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
