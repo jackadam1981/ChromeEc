@@ -70,6 +70,24 @@
       "parentUuid": "d8212fb9_f8397727",
       "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c331c2_87256a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2023-10-10T21:30:29Z",
+      "side": 1,
+      "message": "I don\u0027t know much about this module, nor am I much of a DKMS guru. I just figured I\u0027d patch this when I saw the failure.\n\nI expect I probably don\u0027t actually rely on the module any more, so I\u0027m just removing it from my system, and I\u0027ll see what breaks. I rarely even use servod at all these days.",
+      "parentUuid": "a00f9150_7b2c718a",
+      "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
