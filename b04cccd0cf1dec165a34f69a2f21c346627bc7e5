@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad213f44_b41e4264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-10T19:13:00Z",
+      "side": 1,
+      "message": "There isn\u0027t any code coverage for host_command_heci.c.   Please open a bug to add coverage for this file and then reference the bug as the LOW_COVERAGE_REASON in the commit message.",
+      "revId": "b04cccd0cf1dec165a34f69a2f21c346627bc7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
