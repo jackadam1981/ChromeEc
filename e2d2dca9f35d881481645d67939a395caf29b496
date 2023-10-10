@@ -34,6 +34,24 @@
       "parentUuid": "28db5622_62658fe5",
       "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8212fb9_f8397727",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2023-10-10T19:24:38Z",
+      "side": 1,
+      "message": "What\u0027s a good DKMS alternative? Are you just going the manual-install route, and you\u0027re OK with losing (and having to remember to rebuild/reinstall) the module on every update?\n\nBTW, the dkms path in the `install` script also isn\u0027t very good at doing updates. You have to manually `sudo dkms remove i2c-pseudo/1` before running it again on a previous installation.",
+      "parentUuid": "57164b3d_49f633b4",
+      "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
