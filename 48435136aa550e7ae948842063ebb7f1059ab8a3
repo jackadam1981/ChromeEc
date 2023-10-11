@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c44f428_d0b4de14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-11T17:24:32Z",
+      "side": 1,
+      "message": "This is a bit hard to understand: do you mean\n\n```\nThe current RT1739 driver code sets the VBUS_OVP threshold to 23V. However, in LV_SRC mode, the OVP should be set to 6V to prevent potential damage to the VIN_LV . Additionally, under certain conditions (FRS condition 0x36 bit7), the OVP should be automatically forced to 6V when LV_SRC is enabled.\n\nTo address this potential damage risk, we need to modify the RT1739 driver to properly set the OVP threshold in LV_SRC mode and ensure the safety of the VIN_LV during operation.\n```\n\nIf yes, could you rephrase the commit message accordingly?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "48435136aa550e7ae948842063ebb7f1059ab8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241bda2b_122a2e24",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-11T17:24:32Z",
+      "side": 1,
+      "message": "You have to define the variable before use.",
+      "range": {
+        "startLine": 229,
+        "startChar": 46,
+        "endLine": 229,
+        "endChar": 60
+      },
+      "revId": "48435136aa550e7ae948842063ebb7f1059ab8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
