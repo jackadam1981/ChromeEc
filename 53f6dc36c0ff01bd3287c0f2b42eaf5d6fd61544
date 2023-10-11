@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d083f995_2e41b8ca",
+        "filename": "zephyr/include/dt-bindings/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-10-11T17:57:26Z",
+      "side": 1,
+      "message": "Do we need a test or a BUILD_ASSERT to make sure that this matches FUEL_GAUGE_FLAG_SLEEP_MODE ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "53f6dc36c0ff01bd3287c0f2b42eaf5d6fd61544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
