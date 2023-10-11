@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f34141_5bd73622",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-10-11T07:28:19Z",
+      "side": 1,
+      "message": "We can create a likewise `isl923x_set_level_1_input_current_limit` function to set `ISL923X_REG_ADAPTER_CURRENT_LIMIT1`.   \nIn this case we can keep the original `isl923x_set_input_current_limit` as what it is.",
+      "revId": "763b837f90820fc5785b5927cd2e6d70d5099410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d906f64_5aa3056d",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-10-11T07:28:19Z",
+      "side": 1,
+      "message": "If the define value is different for RAA489000 and ISL923x, I would recommend to create a new set of define like `RAA489000_T*_*`. To ensure it would not affect ISL923x.",
+      "revId": "763b837f90820fc5785b5927cd2e6d70d5099410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
