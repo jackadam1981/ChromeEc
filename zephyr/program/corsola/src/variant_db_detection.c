@@ -86,10 +86,13 @@ enum corsola_db_type corsola_get_db_type(void)
 /* Detect for no sub board case by FW_CONFIG */
 #if DT_NODE_EXISTS(DT_NODELABEL(db_config))
 	ret = cros_cbi_get_fw_config(DB, &val);
+	CPRINTS("---CORSOLA_DB_HDMI: %d---",val);
 	if (ret != 0) {
 		CPRINTS("Error retrieving CBI FW_CONFIG field %d", DB);
 	} else if (val == DB_NONE) {
 		db = CORSOLA_DB_NONE;
+	} else if (val == CORSOLA_HDMI){
+		db = CORSOLA_DB_HDMI;
 	}
 #endif
 
@@ -123,14 +126,13 @@ DECLARE_HOOK(HOOK_INIT, corsola_db_init, HOOK_PRIO_PRE_I2C);
  * Handle PS185 HPD changing state.
  */
 void ps185_hdmi_hpd_mux_set(void)
-{
+{	
+	CPRINTS("ps185_hdmi_hpd_mux_set-----.");
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
-
 	if (!corsola_is_dp_muxable(USBC_PORT_C1)) {
 		return;
 	}
-
 	if (hpd && !(usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
 		dp_status[USBC_PORT_C1] =
 			VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
@@ -180,6 +182,7 @@ DECLARE_DEFERRED(ps185_hdmi_hpd_deferred);
 
 void hdmi_hpd_interrupt(enum gpio_signal signal)
 {
+	CPRINTS("hdmi_hpd_interrupt--------.");
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
 

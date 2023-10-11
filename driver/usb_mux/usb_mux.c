@@ -289,6 +289,8 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 
 		/* Action time!  Lock this mux */
 		mutex_lock(&mux_lock[port]);
+		CPRINTS("mux_ptr->usb_port:%d, i2c_port:%d, i2c_addr_flags:%d, config:%d", 
+			mux_ptr->usb_port, mux_ptr->i2c_port, mux_ptr->i2c_addr_flags,config);
 
 		switch (config) {
 		case USB_MUX_INIT:
@@ -601,7 +603,10 @@ static enum ec_error_list try_usb_mux_get(int port, mux_state_t *mux_state)
 
 	/* Perform initialization if not initialized yet */
 	if (!(flags[port] & USB_MUX_FLAG_INIT))
+	{
+		CPRINTS("---entry usb_mux_init:%d, ----",port);
 		usb_mux_init(port);
+	}
 
 	if (flags[port] & USB_MUX_FLAG_IN_LPM) {
 		*mux_state = USB_PD_MUX_NONE;
@@ -616,9 +621,9 @@ mux_state_t usb_mux_get(int port)
 {
 	mux_state_t mux_state;
 	enum ec_status rv;
-
+	CPRINTS("---try_usb_mux_get port:%d, ----",port);
 	rv = try_usb_mux_get(port, &mux_state);
-
+	CPRINTS("---try_usb_mux_get rv:%d, ----",rv);
 	return rv ? USB_PD_MUX_NONE : mux_state;
 }
 

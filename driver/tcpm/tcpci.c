@@ -1415,6 +1415,9 @@ int tcpci_get_chip_info_mutable(
 			return error;
 		info->product_id = product_id;
 
+		CPRINTS("------C%d-----", port);
+		CPRINTS("------0x%x-----", product_id);
+
 		error = tcpc_read16(port, TCPC_REG_BCD_DEV, &device_id);
 		if (error)
 			return error;
