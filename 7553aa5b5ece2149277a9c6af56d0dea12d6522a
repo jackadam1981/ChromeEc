@@ -33,6 +33,24 @@
       "message": "And 533 because that the branch used by dedede drawcia:\nhttps://cros-goldeneye.corp.google.com/chromeos/console/firmwareQuals?q\u003dmodel:dedede.drawcia",
       "revId": "7553aa5b5ece2149277a9c6af56d0dea12d6522a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e370e3dd_8b6a4c5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-10-11T14:06:26Z",
+      "side": 1,
+      "message": "533 branch was used to rapidly deploy a hotfix. Drawcia should switch back to dedede 13606 branch IMO.",
+      "parentUuid": "96530119_a0e6e308",
+      "revId": "7553aa5b5ece2149277a9c6af56d0dea12d6522a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
