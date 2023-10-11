@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e96428b_d9ab09ec",
+        "filename": "test/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-11T23:10:56Z",
+      "side": 1,
+      "message": "Could you add a comment here indicating that these aren\u0027t needed because this target uses `CONFIG_EXTERNAL_STORAGE`?",
+      "revId": "b0fcda31278c1532c6d8d2abf66cc57ffd6caa4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
