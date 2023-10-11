@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43316425_8d00d9e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-11T16:34:45Z",
+      "side": 1,
+      "message": "I have sent request to the code owner. Will update in the issue tracker.",
+      "parentUuid": "adb19347_fa45a1a3",
+      "revId": "3ec2558d836b9e00e976cd91231facc79a4940d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14edb3c2_9d13d092",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-10T19:25:52Z",
       "side": 1,
       "message": "This routine needs to be made public in the hal_intel module.  Is there an open issue to fix that?",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "3ec2558d836b9e00e976cd91231facc79a4940d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "696afc4d_46421448",
+        "filename": "zephyr/subsys/host_service/heci/heci_system_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-11T16:34:45Z",
+      "side": 1,
+      "message": "Also sent request to code owner. I will report an issue tracker to track this.",
+      "parentUuid": "14edb3c2_9d13d092",
       "range": {
         "startLine": 11,
         "startChar": 12,
