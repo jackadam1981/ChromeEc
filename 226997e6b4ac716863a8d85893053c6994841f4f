@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a94e6e_882afd18",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2023-10-11T05:59:31Z",
+      "side": 1,
+      "message": "Also add the following code:\n```\n#undef CONFIG_RAM_SIZE\n#define CONFIG_RAM_SIZE (CONFIG_DATA_RAM_SIZE - 0x1000)\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72dd4717_c119fc0a",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2023-10-11T05:59:31Z",
+      "side": 1,
+      "message": "It seems to make more sense to define `CONFIG_CODE_RAM_SIZE` to `(352 * 1024)`.\ni.e. `NPCX_PROGRAM_MEMORY_SIZE`",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
