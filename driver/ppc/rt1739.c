@@ -224,9 +224,12 @@ static int rt1739_workaround(int port)
 		break;
 
 	case RT1739_DEVICE_ID_ES4:
-		CPRINTS("RT1739 ES4");
-		RETURN_ERROR(update_reg(port, RT1739_REG_LVHVSW_OV_CTRL,
-					RT1739_OT_SEL_LVL, MASK_CLR));
+		RETURN_ERROR(
++			read_reg(port, RT1739_REG_LVHVSW_OV_CTRL, &lvhvsw_ov_ctrl));
++		lvhvsw_ov_ctrl |= RT1739_LVSW_OVP_6V;
++		lvhvsw_ov_ctrl &= ~RT1739_OT_SEL_LVL;
++		RETURN_ERROR(
++			write_reg(port, RT1739_REG_LVHVSW_OV_CTRL, lvhvsw_ov_ctrl));
 		RETURN_ERROR(
 			read_reg(port, RT1739_REG_VCONN_CTRL4, &vconn_ctrl4));
 		vconn_ctrl4 &= ~RT1739_VCONN_OCP_SEL_MASK;
