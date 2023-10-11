@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbaa297b_03d10652",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-11T22:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a94e6e_882afd18",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72dd4717_c119fc0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-11T05:59:31Z",
       "side": 1,
       "message": "It seems to make more sense to define `CONFIG_CODE_RAM_SIZE` to `(352 * 1024)`.\ni.e. `NPCX_PROGRAM_MEMORY_SIZE`",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d91a6ca_a0420c4b",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-11T22:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72dd4717_c119fc0a",
       "range": {
         "startLine": 93,
         "startChar": 30,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d672f8f8_b28316c3",
+        "filename": "test/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-11T22:15:50Z",
+      "side": 1,
+      "message": "Good point, these are unused by the test since test_mpu_get_rw_regions is effectively skipped. They have now been removed",
+      "parentUuid": "8ffddfa1_0968f911",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efc06feb_464f5385",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d1bc18_8155648d",
+        "filename": "test/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-11T22:15:50Z",
+      "side": 1,
+      "message": "The inclusion of both of these checks is based entirely on\nsrc/platform/ec/core/cortex-m/mpu.c\n\nwhere\n\n#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)\"\nmpu_protect_code_ram()\n#else\nmpu_lock_ro_flash()\nmpu_lock_get_rw_regions()\nmpu_lock_rw_flash()\n#endif\n\nThere is also precedent in the existing test/mpu.c around mpu_protect_code_ram() where the opposite #if is used to enable the test.\nMy understanding is that the ARM based MPU is flexible enough to protect any memory address including aliased SPI flash addresses. We should likely confirm with Nuvoton.",
+      "parentUuid": "efc06feb_464f5385",
+      "range": {
+        "startLine": 142,
+        "startChar": 17,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7b62e01_2be1a0ed",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-10-11T17:41:49Z",
       "side": 1,
       "message": "Is this check necessary? I could be wrong but I believe all boards that would be running this test have `CONFIG_FLASH_PHYSICAL` set.",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 38
+      },
+      "revId": "226997e6b4ac716863a8d85893053c6994841f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3475889_601f68e6",
+        "filename": "test/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-11T22:15:50Z",
+      "side": 1,
+      "message": "Yes, based on src/platform/ec/core/cortex-m/mpu.c, please see other comment",
+      "parentUuid": "b7b62e01_2be1a0ed",
       "range": {
         "startLine": 143,
         "startChar": 5,
