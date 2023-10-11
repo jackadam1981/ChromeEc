@@ -16,6 +16,24 @@
       "message": "Sorry we are not going to use USB keyboard on Roach.\n\nWe will enable USB keyboard on a Roach\u0027s variant called Axii.\nBut I don\u0027t have time to push the initial board setup yet. Please expect the code appears in ~1 month.",
       "revId": "966a1e6cccd3766038eed4db05f896581a1af634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010b3a51_5aa34ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-11T05:36:19Z",
+      "side": 1,
+      "message": "Got it.\nSince there is no pending USB device mode CL that need to be merged on Roach, can you close the below issue?\nhttps://partnerissuetracker.corp.google.com/issues/277525450",
+      "parentUuid": "f1e3e393_f910ec0c",
+      "revId": "966a1e6cccd3766038eed4db05f896581a1af634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
