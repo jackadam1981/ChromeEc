@@ -16,6 +16,23 @@
       "message": "@sfrolov There seems to be an issue with the OWNERS on this and I\u0027m hoping you can help me figure it out. For reference, this CL is trying to merge a release into the [firmware-fpmcu-helipilot-release](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-fpmcu-helipilot-release) branch, which was created a while back but has never been merged to otherwise. This branch should be pretty much identical to the [firmware-fpmcu-bloonchipper-release](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-fpmcu-bloonchipper-release) and [firmware-fpmcu-dartmonkey-release](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-fpmcu-dartmonkey-release) branches. The other two branches have been around for a while and we don\u0027t have any issues merging to them but we\u0027re not able to merge to this branch due to missing `Code-Owners`. \n\nSee https://crrev.com/c/4750351 for a previous attempt to merge that sync\u0027d up with the other two branches. The other two succeeded but the helipilot build failed.",
       "revId": "06b70ef108e97b35602ebc09063458484fbd3af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b7fad3_3b919185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2023-10-11T22:47:12Z",
+      "side": 1,
+      "message": "overriding code-owners for merge",
+      "revId": "06b70ef108e97b35602ebc09063458484fbd3af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
