@@ -126,7 +126,6 @@ __override void svdm_dp_post_config(int port)
 int corsola_is_dp_muxable(int port)
 {
 	int i;
-
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		if (i != port) {
 			if (usb_mux_get(i) & USB_PD_MUX_DP_ENABLED) {

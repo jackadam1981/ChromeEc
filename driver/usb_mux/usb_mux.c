@@ -618,7 +618,7 @@ mux_state_t usb_mux_get(int port)
 	enum ec_status rv;
 
 	rv = try_usb_mux_get(port, &mux_state);
-
+	
 	return rv ? USB_PD_MUX_NONE : mux_state;
 }
 
