@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6104f901_cbcfd9b8",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-11T22:33:08Z",
+      "side": 1,
+      "message": "Ah, I see. This wasn\u0027t trivial. In this case feel free to update `ktu1125_vbus_source_enable` the same way, because it switches to src mode on line 451",
+      "parentUuid": "4d93eb40_fc2cadfd",
+      "range": {
+        "startLine": 424,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 3
+      },
+      "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3927d965_19d4d439",
         "filename": "driver/ppc/ktu1125.c",
         "patchSetId": 1
