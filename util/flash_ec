@@ -767,36 +767,69 @@ if [[ -n "${EC_DIR}" ]]; then
 	fi
 fi
 
+function locate_ec_dir()
+{
+	local ec_dir
+
+	for ec_dir in "${EC_DIR}" \
+		      "${HOME}/chromiumos/src/platform/ec" \
+		      "${HOME}/trunk/src/platform/ec" ; do
+		if [[ -d "${ec_dir}" ]] ; then
+			echo "${ec_dir}"
+			return
+		fi
+	done
+}
+
 # Get baseboard from build system if present
-BASEBOARD=
+function compute_cros_baseboard()
+{
+	local ec_dir
+	local bb
 
-# We do not want to exit script if make call fails; we turn -e back on after
-# setting BASEBOARD
-set +e
-if [[ -n "${EC_DIR}" ]]; then
-	BASEBOARD=$(make --quiet -C "${EC_DIR}" BOARD="${BOARD}" print-baseboard \
-		2>/dev/null)
-elif [[ -d "${HOME}/trunk/src/platform/ec" ]]; then
-	BASEBOARD=$(make --quiet -C "${HOME}"/trunk/src/platform/ec \
-		BOARD="${BOARD}" print-baseboard 2>/dev/null)
-else
-	info "Could not find ec build folder to calculate baseboard."
-fi
-# shellcheck disable=SC2181
-if [ $? -ne 0 ] && [ -z "${FLAGS_image}" ]; then
-	info "EC build system didn't recognize ${BOARD}. Assuming no baseboard."
-fi
-set -e
+	ec_dir=$(locate_ec_dir)
+	if [[ -z "${ec_dir}" ]]; then
+		info "Could not find ec build folder to calculate baseboard."
+		return
+	fi
 
-if [[ -n "${BASEBOARD}" ]]; then
-	EMERGE_BUILD=/build/${BASEBOARD}/firmware/${BOARD}/${EC_FILE}
-else
-	EMERGE_BUILD=/build/${BOARD}/firmware/${EC_FILE}
-fi
+	# We do not want to exit this script if the make call fails
+	bb=$(make --quiet -C "${ec_dir}" \
+			BOARD="${BOARD}" print-baseboard 2>/dev/null) || {
+		if [[ -z "${FLAGS_image}" ]]; then
+			info "EC build system didn't recognize ${BOARD}. Assuming no baseboard."
+		fi
+		return
+	}
 
-echo EMERGE_BUILD: $EMERGE_BUILD
-exit 42
+	echo "${bb}"
+}
 
+function compute_emerge_build()
+{
+	local bb
+
+	if [[ "${FLAGS_zephyr}" = "${FLAGS_TRUE}" ]]; then
+		# emerge chromeos-zephyr creates
+		# /build/$BOARD/firmware/$FW_NAME/ec.bin
+		# where FW_NAME is the coreboot variant
+		# if we don't know FW_NAME, give up
+		if [[ -z "${FW_NAME}" ]]; then
+			return
+		fi
+		echo "/build/${BOARD}/firmware/${FW_NAME}/${EC_FILE}"
+		return
+	fi
+
+	bb=$(compute_cros_baseboard)
+	if [[ -n "${bb}" ]]; then
+		echo "/build/${bb}/firmware/${BOARD}/${EC_FILE}"
+	else
+		echo "/build/${BOARD}/firmware/${EC_FILE}"
+	fi
+}
+
+EMERGE_BUILD=$(compute_emerge_build)
 
 # Find the EC image to use
 function ec_image() {
@@ -817,7 +850,7 @@ function ec_image() {
 			echo "${EMERGE_BUILD}"
 			return
 		fi
-	fi
+		fi
 	die "no EC image found : build one or specify one."
 }
 
