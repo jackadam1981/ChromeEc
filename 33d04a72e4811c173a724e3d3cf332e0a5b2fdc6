@@ -33,6 +33,24 @@
       "message": "is there anything in this new code that\u0027s really rex specific?\ncan we find a common place so it can be shared with other devices?",
       "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ade550c_0bb97cf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-11T20:13:45Z",
+      "side": 1,
+      "message": "Though those VDM responses should be board specific. It sounds a good idea to have a common implementation but overridable by board level. I can submit an issue tracker for discussion, TCPM owner will be the right people to make this decision I think. At this moment, since UFP support still need to be enabled by ectool, not just the UFP config. The suggested change is too big for the scope of the patch. We need UFP support for Rex patch be merged so we can have CPFE for validation.",
+      "parentUuid": "76dd8afc_e30c7338",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
