@@ -63,6 +63,8 @@ register_corsola_project(
     chip="npcx9m3f",
 )
 
+register_corsola_project("chinchou")
+
 register_corsola_project("starmie")
 
 register_corsola_project("tentacruel")
