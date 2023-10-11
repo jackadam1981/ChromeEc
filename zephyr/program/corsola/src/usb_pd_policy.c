@@ -126,12 +126,15 @@ __override void svdm_dp_post_config(int port)
 int corsola_is_dp_muxable(int port)
 {
 	int i;
-
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		CPRINTS("---i : %d, count: %d----",i,board_get_usb_pd_port_count());
 		if (i != port) {
+			CPRINTS("---i != port----");
 			if (usb_mux_get(i) & USB_PD_MUX_DP_ENABLED) {
+				CPRINTS("---return 0----");
 				return 0;
 			}
+			CPRINTS("-------");
 		}
 	}
 
@@ -140,6 +143,7 @@ int corsola_is_dp_muxable(int port)
 
 __override int svdm_dp_attention(int port, uint32_t *payload)
 {
+	CPRINTS("svdm_dp_attention-----.");
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO

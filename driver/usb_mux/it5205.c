@@ -10,6 +10,9 @@
 #include "it5205.h"
 #include "util.h"
 
+#define CPRINTS(format, args...)
+#define CPRINTF(format, args...)
+
 #define MUX_STATE_DP_USB_MASK (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED)
 
 static int it5205_read(const struct usb_mux *me, uint8_t reg, int *val)
@@ -54,11 +57,13 @@ static int it5205_init(const struct usb_mux *me)
 
 	/* bit[0]: mux power on, bit[7-1]: reserved. */
 	ret = it5205_write(me, IT5205_REG_MUXPDR, 0);
+	CPRINTS("mux ret:%d, reg:%d", ret, reg);
 	if (ret)
 		return ret;
 	/*  Verify chip ID registers. */
 	for (i = 0; i < ARRAY_SIZE(mux_chip_id_verify); i++) {
 		ret = it5205_read(me, mux_chip_id_verify[i].reg, &val);
+		CPRINTS("mux ret:%d, reg:%d", ret, reg);
 		if (ret)
 			return ret;
 
@@ -130,6 +135,7 @@ static int it5205_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	int reg, ret;
 
 	ret = it5205_read(me, IT5205_REG_MUXCR, &reg);
+	CPRINTS("mux ret:%d, reg:%d", ret, reg);
 	if (ret)
 		return ret;
 
