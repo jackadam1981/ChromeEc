@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ac77d9_828066af",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-10-11T01:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a147d3_d900f607",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "4546969585e9f895d62bffd9ac64bdf2b69285d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a514624_27cabcbc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-06T01:31:57Z",
       "side": 1,
       "message": "2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "4546969585e9f895d62bffd9ac64bdf2b69285d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65784d0_2eafabec",
+        "filename": "zephyr/test/drivers/led_pwm_fade/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-10-11T01:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a514624_27cabcbc",
       "range": {
         "startLine": 1,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0909248_a65123c7",
+        "filename": "zephyr/test/drivers/led_pwm_fade/led_policy.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-10-11T01:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c880618_62b6f061",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "4546969585e9f895d62bffd9ac64bdf2b69285d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e63807c_f14a72cc",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-10-06T01:31:57Z",
       "side": 1,
       "message": "Please add a duplicated \"LED_WHITE\" color to ensure the no-change calculation still correct.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "4546969585e9f895d62bffd9ac64bdf2b69285d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc44f33_f8435007",
+        "filename": "zephyr/test/drivers/led_pwm_fade/led_policy.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-10-11T01:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e63807c_f14a72cc",
       "range": {
         "startLine": 52,
         "startChar": 5,
