@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09adf28a_3169f124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-11T00:45:50Z",
+      "side": 1,
+      "message": "double typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c64355_7e0683a9",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-11T00:45:50Z",
+      "side": 1,
+      "message": "Sorry, maybe a stupid question but I don\u0027t understand this part. Port is in SRC mode (POW_MODE \u003d 1) and the command is to disable sink. Shouldn\u0027t we switch to sink mode (POW_MODE \u003d 0) and then disable it?",
+      "range": {
+        "startLine": 424,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 3
+      },
+      "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3927d965_19d4d439",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-11T00:45:50Z",
+      "side": 1,
+      "message": "same logic here..",
+      "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
