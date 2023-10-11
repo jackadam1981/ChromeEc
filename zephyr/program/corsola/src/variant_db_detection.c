@@ -90,6 +90,8 @@ enum corsola_db_type corsola_get_db_type(void)
 		CPRINTS("Error retrieving CBI FW_CONFIG field %d", DB);
 	} else if (val == DB_NONE) {
 		db = CORSOLA_DB_NONE;
+	} else if (val == DB_USBA_HDMI){
+		db = CORSOLA_DB_HDMI;
 	}
 #endif
 
@@ -126,11 +128,11 @@ void ps185_hdmi_hpd_mux_set(void)
 {
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
-
+	
 	if (!corsola_is_dp_muxable(USBC_PORT_C1)) {
 		return;
 	}
-
+	
 	if (hpd && !(usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
 		dp_status[USBC_PORT_C1] =
 			VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
