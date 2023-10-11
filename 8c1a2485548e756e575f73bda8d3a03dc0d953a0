@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13964738_bd5b98ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-11T20:58:51Z",
+      "side": 1,
+      "message": "pls use this 295924125",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3552a197_30abb2da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-11T20:58:51Z",
+      "side": 1,
+      "message": "is there a way to know how much was test coverage before and now?",
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318ebd8a_87138a6f",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-11T20:58:51Z",
+      "side": 1,
+      "message": "nit: extra tab",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0b1f96_5c292497",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-11T20:58:51Z",
+      "side": 1,
+      "message": "-ENODEV",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09a7cfd_5910e624",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-11T20:58:51Z",
+      "side": 1,
+      "message": "may be -EIO in below all errors ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1f4624_32fec8c5",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-11T20:58:51Z",
+      "side": 1,
+      "message": "how about reusing the intel,pd-altmode.yaml",
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
