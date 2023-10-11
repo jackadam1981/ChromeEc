@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ae30ea_83cd9177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-11T03:50:34Z",
+      "side": 1,
+      "message": "Hi Martin, that should be fine. If it is possible, You can mark me as author in the new CL. command as below and upload new patch. \nIf not also no issues. 😊\n\n git commit --amend --author\u003d\"Deepti Deshatty\n\u003cdeepti.deshatty@intel.corp-partner.google.com\u003e\"",
+      "parentUuid": "92e77fb1_9dc3431b",
+      "revId": "e9758f1107ea3468249e77ae0a4acb5ced52c10d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c16d5bc_7660c88b",
