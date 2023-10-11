@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9983fcda_d1f93978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-11T18:00:41Z",
+      "side": 1,
+      "message": "like, *whatever*...\n```\n/mnt/host/source/src/platform/ec/zephyr/test/math/src/math_util.c:34:26: error: implicit conversion from \u0027int\u0027 to \u0027fp_inter_t\u0027 (aka \u0027float\u0027) changes value from 1111088889 to 1111088896 [-Werror,-Wimplicit-const-int-float-conversion]\n        zassert_equal(int_sqrtf(1111088889), 33333);\n```",
+      "revId": "812d2d69b03563e6f9fc3c9086f43b03e4e57350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
