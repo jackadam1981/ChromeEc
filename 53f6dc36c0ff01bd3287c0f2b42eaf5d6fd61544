@@ -22,6 +22,30 @@
       },
       "revId": "53f6dc36c0ff01bd3287c0f2b42eaf5d6fd61544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461528f0_2c9be158",
+        "filename": "zephyr/include/dt-bindings/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-12T00:13:37Z",
+      "side": 1,
+      "message": "Done (in crrev.com/c/4933141).",
+      "parentUuid": "d083f995_2e41b8ca",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "53f6dc36c0ff01bd3287c0f2b42eaf5d6fd61544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
