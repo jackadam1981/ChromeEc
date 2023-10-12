@@ -63,7 +63,10 @@
 #undef CONFIG_CMD_ADC
 
 /* Reduce flash space usage */
+#define CONFIG_DEBUG_ASSERT_BRIEF
 #undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_CMD_BATTFAKE
+#undef CONFIG_USB_PD_TCPMV1_DEBUG
 
 /* SOC */
 #define CONFIG_CHIPSET_SKYLAKE
