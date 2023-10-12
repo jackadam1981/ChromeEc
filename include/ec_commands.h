@@ -6313,6 +6313,8 @@ enum cbi_data_tag {
 	 */
 	CBI_TAG_COMMON_CONTROL = 11,
 
+	CBI_TAG_IMG = 12,
+
 	/*
 	 * Battery info
 	 */

@@ -155,6 +155,39 @@ static int do_cbi_read(void)
 	return EC_SUCCESS;
 }
 
+
+// open ticket to refactor this to avoid repetetion
+static bool is_valid_cbi(const uint8_t *cbi)
+{
+	const struct cbi_header *head = (const struct cbi_header *)cbi;
+
+	/* Check magic */
+	if (memcmp(head->magic, cbi_magic, sizeof(head->magic))) {
+		return false;
+	}
+
+	/* check version */
+	if (head->major_version > CBI_VERSION_MAJOR) {
+		return false;
+	}
+
+	/*
+	 * Check the data size. It's expected to support up to 64k but our
+	 * buffer has practical limitation.
+	 */
+	if (head->total_size < sizeof(*head) ||
+	    head->total_size > CBI_IMAGE_SIZE) {
+		return false;
+	}
+
+	/* Check CRC */
+	if (cbi_crc8(head) != head->crc) {
+		return false;
+	}
+
+	return true;
+}
+
 static int cbi_read(void)
 {
 	int i;
@@ -187,6 +220,19 @@ int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 
 	if (cbi_read())
 		return EC_ERROR_UNKNOWN;
+
+	if(tag == CBI_TAG_IMG) {
+		if(*size <= CBI_IMAGE_SIZE){
+			/* Insufficient buffer size */
+			return EC_ERROR_INVAL;
+		}
+		if (cbi_config->drv->load(0, buf, CBI_IMAGE_SIZE)) {
+			CPRINTS("Failed to read image");
+			return EC_ERROR_UNKNOWN;
+		}
+		*size = (uint8_t) CBI_IMAGE_SIZE + 1;
+		return cbi_board_override(tag, buf, size);
+	}
 
 	d = cbi_find_tag(cbi, tag);
 	if (!d)
@@ -356,6 +402,28 @@ common_cbi_set(const struct __ec_align4 ec_params_set_cbi *p)
 		return EC_RES_ACCESS_DENIED;
 	}
 
+	if(p->tag == CBI_TAG_IMG) {
+		/* If we found the entry, but the size doesn't match, return error */
+		if(p->size != (CBI_IMAGE_SIZE + 1)){
+			return EC_RES_INVALID_PARAM;
+		}
+		if (!is_valid_cbi(p->data)){
+			return EC_RES_INVALID_PARAM;
+		}
+		memcpy(cbi, p->data, p->size - 1);
+		if (cbi_write())
+			return EC_RES_ERROR;
+		cbi_invalidate_cache();
+		cbi_read();
+
+		if (cbi_get_cache_status() != CBI_CACHE_STATUS_SYNCED) {
+			ccprintf("Cannot Read CBI (Error %d)\n",
+				 cbi_get_cache_status());
+			return EC_RES_ERROR;
+		}
+		return EC_RES_SUCCESS;
+	}
+
 #ifndef CONFIG_SYSTEM_UNLOCKED
 	/*
 	 * These fields are not allowed to be reprogrammed regardless the
@@ -495,7 +563,8 @@ static int cc_cbi(int argc, const char **argv)
 		if (setter->tag == CBI_TAG_DRAM_PART_NUM ||
 		    setter->tag == CBI_TAG_OEM_NAME ||
 		    setter->tag == CBI_TAG_FUEL_GAUGE_MANUF_NAME ||
-		    setter->tag == CBI_TAG_FUEL_GAUGE_DEVICE_NAME) {
+		    setter->tag == CBI_TAG_FUEL_GAUGE_DEVICE_NAME ||
+		    setter->tag == CBI_TAG_IMG) {
 			setter->size = strlen(argv[3]) + 1;
 			memcpy(setter->data, argv[3], setter->size);
 		} else {
