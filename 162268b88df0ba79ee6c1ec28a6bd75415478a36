@@ -16,6 +16,24 @@
       "message": "this function could also return EC_RES_ERROR and EC_RES_INVALID_PARAM, would be nice to propagate any return code, by adding them to the switch statement",
       "revId": "162268b88df0ba79ee6c1ec28a6bd75415478a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b4664b_7a61ba1d",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-10-12T07:47:38Z",
+      "side": 1,
+      "message": "`EC_RES_ERROR` will be covered by default statement, because there is no direct equivalent in the `enum ec_error_list`. `EC_RES_INVALID_PARAM` has no direct equivalent too. there are errors for a specific param and their number, but not a generic error code. We could use `EC_ERROR_INVAL` instead, but I do not think it\u0027s a best idea.\n\nMoreover, there should be a common/ function to translate these codes between `ec_error_list` and `ec_status` when possible.",
+      "parentUuid": "2357ca5a_976840e1",
+      "revId": "162268b88df0ba79ee6c1ec28a6bd75415478a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
