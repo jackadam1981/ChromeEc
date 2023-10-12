@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b14e997_4f9b43a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T20:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13964738_bd5b98ca",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3552a197_30abb2da",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb0a222e_33f0b3a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T20:22:11Z",
+      "side": 1,
+      "message": "Sure, I will share coverage report.",
+      "parentUuid": "3552a197_30abb2da",
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "318ebd8a_87138a6f",
         "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
         "patchSetId": 5
@@ -54,6 +96,30 @@
       "writtenOn": "2023-10-11T20:58:51Z",
       "side": 1,
       "message": "nit: extra tab",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7822752a_058618ae",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T20:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "318ebd8a_87138a6f",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917aa45d_5c46cde9",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T20:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f0b1f96_5c292497",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c09a7cfd_5910e624",
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa6f4a1_c8309ea0",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T20:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09a7cfd_5910e624",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a1f4624_32fec8c5",
@@ -123,6 +237,24 @@
       "writtenOn": "2023-10-11T20:58:51Z",
       "side": 1,
       "message": "how about reusing the intel,pd-altmode.yaml",
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89097404_750027fb",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T20:22:11Z",
+      "side": 1,
+      "message": "This will cause linker errors due duplicate device symbols since now both would share the same `compatible` on device tree.",
+      "parentUuid": "3a1f4624_32fec8c5",
       "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
