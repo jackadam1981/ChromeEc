@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390d9374_0cfe2e77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2023-10-12T10:29:13Z",
+      "side": 1,
+      "message": "Tested on Geralt. No more `E: I2C ch1 reset cause 1` in EC console and the device can boot as fast as usual.",
+      "revId": "c69ac3a7cabebedb4b7edc59633a3cf5423551e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
