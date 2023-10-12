@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac4a981_b80f8dce",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T23:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a02de60a_f070499c",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15bb0e10_829d2ad1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bcfc5db_e24b1c75",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T23:27:00Z",
+      "side": 1,
+      "message": "Not required anymore.",
+      "parentUuid": "15bb0e10_829d2ad1",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c20ba20c_cc3d1f33",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-10-12T20:42:15Z",
       "side": 1,
       "message": "may be cover the shared IRQ scenario too",
+      "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3979ff95_f957d316",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T23:27:00Z",
+      "side": 1,
+      "message": "This is taken care in function `intel_pd_controller_emul_clr_irq`.",
+      "parentUuid": "c20ba20c_cc3d1f33",
       "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
