@@ -333,6 +333,37 @@ static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
 	uint8_t size = MIN(args->response_max, UINT8_MAX);
 
+	if(p->tag == CBI_IMG) {
+		if(size <= p->size){
+			/* Insufficient buffer size */
+			return EC_RES_INVALID_PARAM;
+		}
+		if(p->offset >= CBI_FLASH_SIZE){
+			/* Incorrect offset */
+			return EC_RES_INVALID_PARAM;
+		}
+		if((p->offset + p->size) > CBI_FLASH_SIZE){
+			/* Incorrect area */
+			return EC_RES_INVALID_PARAM;
+		}
+		if(p->offset < CBI_IMAGE_SIZE){
+			uint32_t read_size = p->size;
+			if((p->offset + p->size) > CBI_IMAGE_SIZE){
+				read_size = CBI_IMAGE_SIZE - p->offset;
+				memset((uint8_t *)args->response + CBI_IMAGE_SIZE, 0xFF, p->offset + p->size - CBI_IMAGE_SIZE);
+			}
+			if (cbi_config->drv->load(p->offset, args->response, read_size)) {
+				CPRINTS("Failed to read CBI");
+				return EC_RES_ERROR;
+			}
+		} else {
+			memset((uint8_t *)args->response + p->offset, 0xFF, p->size);
+		}
+		((uint8_t *)args->response)[p->size] = '\0';
+		args->response_size = p->size + 1;
+		return EC_RES_SUCCESS;
+	}
+
 	if (p->flag & CBI_GET_RELOAD)
 		cbi_invalidate_cache();
 
@@ -397,6 +428,37 @@ common_cbi_set(const struct __ec_align4 ec_params_set_cbi *p)
 	return EC_RES_SUCCESS;
 }
 
+static bool is_valid_cbi(const uint8_t *cbi)
+{
+	const struct cbi_header *head = (const struct cbi_header *)cbi;
+
+	/* Check magic */
+	if (memcmp(head->magic, cbi_magic, sizeof(head->magic))) {
+		return false;
+	}
+
+	/* check version */
+	if (head->major_version > CBI_VERSION_MAJOR) {
+		return false;
+	}
+
+	/*
+	 * Check the data size. It's expected to support up to 64k but our
+	 * buffer has practical limitation.
+	 */
+	if (head->total_size < sizeof(*head) ||
+	    head->total_size > CBI_IMAGE_SIZE) {
+		return false;
+	}
+
+	/* Check CRC */
+	if (cbi_crc8(head) != head->crc) {
+		return false;
+	}
+
+	return true;
+}
+
 static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_set_cbi *p = args->params;
@@ -404,6 +466,43 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 	/* Given data size exceeds the packet size. */
 	if (args->params_size < sizeof(*p) + p->size)
 		return EC_RES_INVALID_PARAM;
+
+	if(p->tag == CBI_IMG) {
+		if(p->offset >= CBI_FLASH_SIZE){
+			/* Incorrect offset */
+			return EC_RES_INVALID_PARAM;
+		}
+		if((p->offset + p->size) > CBI_FLASH_SIZE){
+			/* Incorrect area */
+			return EC_RES_INVALID_PARAM;
+		}
+		if(p->offset < CBI_IMAGE_SIZE){
+			uint8_t buf[CBI_IMAGE_SIZE];
+			uint32_t write_size = p->size;
+			if((p->offset + p->size) > CBI_IMAGE_SIZE){
+				write_size = CBI_IMAGE_SIZE - p->offset;
+			}
+			if (cbi_config->drv->load(0, buf, CBI_IMAGE_SIZE)) {
+				CPRINTS("Failed to read CBI");
+				return EC_RES_ERROR;
+			}
+			memcpy(buf + p->offset, p->data, write_size);
+			if (cbi_config->drv->store(buf)) {
+				CPRINTS("Failed to write CBI");
+				return EC_RES_ERROR;
+			}
+			if (is_valid_cbi(buf)){
+				cbi_invalidate_cache();
+				cbi_read();
+				if (cbi_get_cache_status() != CBI_CACHE_STATUS_SYNCED) {
+					ccprintf("Cannot Read CBI (Error %d)\n",
+				 	cbi_get_cache_status());
+					return EC_RES_ERROR;
+				}
+			}
+		}
+		return EC_RES_SUCCESS;
+	}
 
 	return common_cbi_set(p);
 }

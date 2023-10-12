@@ -8591,7 +8591,7 @@ static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
 	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME ||
 	       tag == CBI_TAG_FUEL_GAUGE_MANUF_NAME ||
-	       tag == CBI_TAG_FUEL_GAUGE_DEVICE_NAME;
+	       tag == CBI_TAG_FUEL_GAUGE_DEVICE_NAME || tag == CBI_IMG;
 }
 
 /*
@@ -8623,7 +8623,23 @@ static int cmd_cbi(int argc, char *argv[])
 		int i;
 
 		p.tag = tag;
-		if (argc > 3) {
+		if (tag == CBI_IMG) {
+			if (argc < 5) {
+				fprintf(stderr, "Invalid number of params\n");
+				cmd_cbi_help(argv[0]);
+				return -1;
+			}
+			p.offset = strtol(argv[3], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad offset\n");
+				return -1;
+			}
+			p.size = strtol(argv[4], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad size\n");
+				return -1;
+			}
+		} else if (argc > 3) {
 			p.flag = strtol(argv[3], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "Bad flag\n");
@@ -8676,38 +8692,66 @@ static int cmd_cbi(int argc, char *argv[])
 		memset(p, 0, ec_max_outsize);
 		p->tag = tag;
 
-		if (cmd_cbi_is_string_field(tag)) {
-			val_ptr = argv[3];
-			size = strlen((char *)(val_ptr)) + 1;
-		} else {
-			val = strtoul(argv[3], &e, 0);
-			/* strtoul sets an errno for invalid input. If the value
-			 * read is out of range of representable values by an
-			 * unsigned long int, the function returns ULONG_MAX
-			 * or ULONG_MIN and the errno is set to ERANGE.
-			 */
-			if ((e && *e) || errno == ERANGE) {
-				fprintf(stderr, "Bad value\n");
+		if (tag == CBI_IMG) {
+			if (argc < 6) {
+				fprintf(stderr, "Invalid number of params\n");
+				cmd_cbi_help(argv[0]);
+				return -1;
+			}
+			p.offset = strtol(argv[3], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad offset\n");
 				return -1;
 			}
 			size = strtol(argv[4], &e, 0);
-			if (tag == CBI_TAG_REWORK_ID) {
-				if ((e && *e) || size < 1 || size > 8 ||
-				    (size < 8 && val >= (1ull << size * 8)))
-					bad_size = 1;
-			} else {
-				if ((e && *e) || size < 1 || 4 < size ||
-				    val >= (1ull << size * 8))
-					bad_size = 1;
-			}
-			if (bad_size == 1) {
-				fprintf(stderr, "Bad size: %d\n", size);
+			if (e && *e) {
+				fprintf(stderr, "Bad size\n");
 				return -1;
 			}
+			val_ptr = argv[5];
+		} else {
+			if (cmd_cbi_is_string_field(tag)) {
+				val_ptr = argv[3];
+				size = strlen((char *)(val_ptr)) + 1;
+			} else {
+				val = strtoul(argv[3], &e, 0);
+				/* strtoul sets an errno for invalid input. If
+				 * the value read is out of range of
+				 * representable values by an unsigned long int,
+				 * the function returns ULONG_MAX or ULONG_MIN
+				 * and the errno is set to ERANGE.
+				 */
+				if ((e && *e) || errno == ERANGE) {
+					fprintf(stderr, "Bad value\n");
+					return -1;
+				}
+				size = strtol(argv[4], &e, 0);
+				if (tag == CBI_TAG_REWORK_ID) {
+					if ((e && *e) || size < 1 || size > 8 ||
+					    (size < 8 &&
+					     val >= (1ull << size * 8)))
+						bad_size = 1;
+				} else {
+					if ((e && *e) || size < 1 || 4 < size ||
+					    val >= (1ull << size * 8))
+						bad_size = 1;
+				}
+				if (bad_size == 1) {
+					fprintf(stderr, "Bad size: %d\n", size);
+					return -1;
+				}
 
-			val_ptr = &val;
+				val_ptr = &val;
+			}
+
+			if (argc > 5) {
+				p->flag = strtol(argv[5], &e, 0);
+				if (e && *e) {
+					fprintf(stderr, "Bad flag\n");
+					return -1;
+				}
+			}
 		}
-
 		if (size > ec_max_outsize - sizeof(*p)) {
 			fprintf(stderr, "Size exceeds parameter buffer: %d\n",
 				size);
@@ -8716,13 +8760,6 @@ static int cmd_cbi(int argc, char *argv[])
 		/* Little endian */
 		memcpy(p->data, val_ptr, size);
 		p->size = size;
-		if (argc > 5) {
-			p->flag = strtol(argv[5], &e, 0);
-			if (e && *e) {
-				fprintf(stderr, "Bad flag\n");
-				return -1;
-			}
-		}
 		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, p,
 				sizeof(*p) + size, NULL, 0);
 		if (rv < 0) {
