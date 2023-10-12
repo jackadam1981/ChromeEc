@@ -70,6 +70,24 @@
       "parentUuid": "df7a8103_acdd0d7a",
       "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76ef2ea_df9f4a51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-12T15:26:48Z",
+      "side": 1,
+      "message": "Yeah, the STM32 Option bytes are similar to the firmware header except they are aren\u0027t part of the image header.",
+      "parentUuid": "5fa895e1_6c0f0998",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
