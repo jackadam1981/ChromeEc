@@ -19,6 +19,14 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
+#define P_20 0x20
+#define P_8E 0x8e
+
+static int anx7452_page_read(const struct usb_mux *me, int page, uint8_t reg, int *val)
+{
+	return i2c_read8(me->i2c_port, page>>1, reg, val);
+}
+
 static int anx7452_top_read(const struct usb_mux *me, uint8_t reg, int *val)
 {
 	return i2c_read8(me->i2c_port, me->i2c_addr_flags, reg, val);
@@ -29,6 +37,11 @@ static int anx7452_top_update(const struct usb_mux *me, uint8_t reg,
 {
 	return i2c_field_update8(me->i2c_port, me->i2c_addr_flags, reg, mask,
 				 val & mask);
+}
+
+static int anx7452_ctltop_read(const struct usb_mux *me, uint8_t reg, int *val)
+{
+	return i2c_read8(me->i2c_port, ANX7452_I2C_ADDR_CTLTOP_FLAGS, reg, val);
 }
 
 static int anx7452_ctltop_update(const struct usb_mux *me, uint8_t reg,
@@ -181,8 +194,69 @@ static int anx7452_get(const struct usb_mux *me, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
+static int anx7452_read(const struct usb_mux *me, const uint32_t offset,
+			uint32_t * const data)
+{
+	int reg_status;
+	int reg_cfg0;
+	int reg_cfg1;
+	int reg_cfg2;
+	int v1, v2;
+
+	anx7452_page_read(me, P_20, 0xc0, &v1);
+	anx7452_page_read(me, P_20, 0xc1, &v2);
+	CPRINTF("chip: %02x%02x\n", v1, v2);
+
+	anx7452_page_read(me, P_8E, 0x31, &v1);
+	anx7452_page_read(me, P_8E, 0x32, &v2);
+	CPRINTF("L0,1: 0x%02x\n", v1);
+	CPRINTF("L2,3: 0x%02x\n", v2);
+
+	anx7452_page_read(me, P_8E, 0x90, &v1);
+	CPRINTF("DP CHx: 0x%02x\n", v1);
+
+	anx7452_top_read(me, ANX7452_TOP_STATUS_REG, &reg_status);
+	CPRINTF("status: 0x%02x\n", reg_status);
+	CPRINTF(" %c%c%c%c%c\n",
+		(reg_status & ANX7452_TOP_FLIP_INFO)? 'F': '.',
+		(reg_status & ANX7452_TOP_USB4_INFO)? '4': '.',
+		(reg_status & ANX7452_TOP_TBT_INFO)? 'T': '.',
+		(reg_status & ANX7452_TOP_DP_INFO)? 'D': '.',
+		(reg_status & ANX7452_TOP_USB3_INFO)? '3': '.');
+
+	anx7452_ctltop_read(me, ANX7452_CTLTOP_CFG0_REG, &reg_cfg0);
+	CPRINTF("cfg0:   0x%02x\n", reg_cfg0);
+	CPRINTF(" %c%c\n",
+		(reg_cfg0 & ANX7452_CTLTOP_CFG0_USB3_EN)? '3': '.',
+		(reg_cfg0 & ANX7452_CTLTOP_CFG0_FLIP_EN)? 'F': '.');
+
+	anx7452_ctltop_read(me, ANX7452_CTLTOP_CFG1_REG, &reg_cfg1);
+	CPRINTF("cfg1:   0x%02x\n", reg_cfg1);
+	CPRINTF(" %c\n",
+		(reg_cfg1 & ANX7452_CTLTOP_CFG1_DP_EN)? 'D': '.');
+
+	anx7452_ctltop_read(me, ANX7452_CTLTOP_CFG2_REG, &reg_cfg2);
+	CPRINTF("cfg2:   0x%02x\n", reg_cfg2);
+	CPRINTF(" %c%c\n",
+		(reg_cfg2 & ANX7452_CTLTOP_CFG2_USB4_EN)? '3': '.',
+		(reg_cfg2 & ANX7452_CTLTOP_CFG2_TBT_EN)? 'F': '.');
+
+	*data = 0xdeadbeef;
+	return EC_SUCCESS;
+}
+
+static int anx7452_write(const struct usb_mux *me, const uint32_t offset,
+			 const uint32_t data)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 const struct usb_mux_driver anx7452_usb_retimer_driver = {
 	.init = anx7452_init,
 	.set = anx7452_set,
 	.get = anx7452_get,
+#ifdef CONFIG_CMD_RETIMER
+	.retimer_read = anx7452_read,
+	.retimer_write = anx7452_write,
+#endif /* CONFIG_CMD_RETIMER */
 };
