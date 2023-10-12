@@ -52,6 +52,29 @@
       "parentUuid": "d2f58271_583434eb",
       "revId": "2934d244b265f107f5745f458af302e92ca85ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50eccba_02f7c322",
+        "filename": "zephyr/program/nissa/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2023-10-12T06:21:52Z",
+      "side": 1,
+      "message": "why do you need to add this part? What if other projects use different pins?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "2934d244b265f107f5745f458af302e92ca85ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
