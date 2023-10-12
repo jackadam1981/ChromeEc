@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14f96036_6afef947",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1603198
+      },
+      "writtenOn": "2023-10-12T02:34:11Z",
+      "side": 1,
+      "message": "The RT1739 VBUS_OV_SETTING 0x24 bit2:0 is no matter what you EN HV_SNK or LV_SRC the VBUS_OVP will follow setting.\nThen it will cause a problem, while EN LV_SRC VBUS_OVP is still set at 23V.\nThat will cause have a VBUS EOS issue.\nThe 0x36 bit7 LVSW_OVP_6V set\u003d1 that will force VBUS_OVP level to 6V when LV_SRC enable.\nThe 0x36 bit7 LVSW_OVP_6V set\u003d0 that will not force VBUS_OVP level to 6V when LV_SRC enable, just follow VBUS_OV_SETTING 0x24 bit2:0\u0027s setting. \nIt is recommended to set 0x36 bit7 LVSW_OVP_6V set to 1.",
+      "parentUuid": "661b01c9_db4254ae",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "48435136aa550e7ae948842063ebb7f1059ab8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "241bda2b_122a2e24",
         "filename": "driver/ppc/rt1739.c",
         "patchSetId": 3
