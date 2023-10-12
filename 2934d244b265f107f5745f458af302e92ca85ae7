@@ -99,6 +99,29 @@
       },
       "revId": "2934d244b265f107f5745f458af302e92ca85ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebeb23b_2f54a9a4",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2023-10-12T09:48:05Z",
+      "side": 1,
+      "message": "I\u0027m worried this may affect other projects. If you can implement the same feature without adding CONFIG_NISSA_BOARD_HAS_PEN, please do so.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "2934d244b265f107f5745f458af302e92ca85ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
