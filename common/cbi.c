@@ -81,6 +81,7 @@ struct cbi_data *cbi_find_tag(const void *buf, enum cbi_data_tag tag)
 
 static int cache_status = CBI_CACHE_STATUS_INVALID;
 static uint8_t cbi[CBI_IMAGE_SIZE];
+static uint8_t cbi_buf[CBI_IMAGE_SIZE];
 static struct cbi_header *const head = (struct cbi_header *)cbi;
 
 int cbi_create(void)
@@ -410,6 +411,135 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 	return common_cbi_set(p);
 }
 DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO, hc_cbi_set, EC_VER_MASK(0));
+
+static enum ec_status hc_cbi_bin_read(struct host_cmd_handler_args *args)
+{
+	const struct __ec_align4 ec_params_get_cbi_bin *p = args->params;
+	uint8_t size = MIN(args->response_max, UINT8_MAX);
+
+	if (size < p->size) {
+		/* Insufficient buffer size */
+		return EC_RES_INVALID_PARAM;
+	}
+	if (p->offset >= CBI_FLASH_SIZE) {
+		/* Incorrect offset */
+		return EC_RES_INVALID_PARAM;
+	}
+	if ((p->offset + p->size) > CBI_FLASH_SIZE) {
+		/* Incorrect area */
+		return EC_RES_INVALID_PARAM;
+	}
+	if (p->offset < CBI_IMAGE_SIZE) {
+		uint32_t read_size = p->size;
+
+		if ((p->offset + p->size) > CBI_IMAGE_SIZE) {
+			read_size = CBI_IMAGE_SIZE - p->offset;
+			memset((uint8_t *)args->response + read_size, 0xFF,
+			       p->size - read_size);
+		}
+		if (cbi_config->drv->load(p->offset, args->response,
+					  read_size)) {
+			CPRINTS("Failed to read CBI");
+			return EC_RES_ERROR;
+		}
+	} else {
+		memset((uint8_t *)args->response, 0xFF, p->size);
+	}
+	args->response_size = p->size;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CBI_BIN_READ, hc_cbi_bin_read, EC_VER_MASK(0));
+
+static bool is_valid_cbi(const uint8_t *cbi)
+{
+	const struct cbi_header *head = (const struct cbi_header *)cbi;
+
+	/* Check magic */
+	if (memcmp(head->magic, cbi_magic, sizeof(head->magic))) {
+		return false;
+	}
+
+	/* check version */
+	if (head->major_version > CBI_VERSION_MAJOR) {
+		return false;
+	}
+
+	/*
+	 * Check the data size. It's expected to support up to 64k but our
+	 * buffer has practical limitation.
+	 */
+	if (head->total_size < sizeof(*head) ||
+	    head->total_size > CBI_IMAGE_SIZE) {
+		return false;
+	}
+
+	/* Check CRC */
+	if (cbi_crc8(head) != head->crc) {
+		return false;
+	}
+
+	return true;
+}
+
+static enum ec_status hc_cbi_bin_write(struct host_cmd_handler_args *args)
+{
+	/*
+	 * If we ultimately cannot write to the flash, then fail early
+	 */
+	if (cbi_config->drv->is_protected()) {
+		CPRINTS("Failed to write due to WP");
+		return EC_RES_ACCESS_DENIED;
+	}
+	const struct __ec_align4 ec_params_set_cbi_bin *p = args->params;
+
+	/* Given data size exceeds the packet size. */
+	if (args->params_size < sizeof(*p) + p->size)
+		return EC_RES_INVALID_PARAM;
+
+	if (p->offset >= CBI_FLASH_SIZE) {
+		/* Incorrect offset */
+		return EC_RES_INVALID_PARAM;
+	}
+	if ((p->offset + p->size) > CBI_FLASH_SIZE) {
+		/* Incorrect area */
+		return EC_RES_INVALID_PARAM;
+	}
+	if (p->flags & EC_CBI_BIN_BUFFER_CLEAR) {
+		memset(cbi_buf, 0xFF, CBI_IMAGE_SIZE);
+	}
+	if (p->offset < CBI_IMAGE_SIZE) {
+		uint32_t write_size = p->size;
+
+		if ((p->offset + p->size) > CBI_IMAGE_SIZE) {
+			write_size = CBI_IMAGE_SIZE - p->offset;
+		}
+		memcpy(cbi_buf + p->offset, p->data, write_size);
+	} else {
+		CPRINTS("CBI buffer overflow");
+		return EC_RES_ERROR;
+	}
+	if (p->flags & EC_CBI_BIN_BUFFER_WRITE) {
+		if (is_valid_cbi(cbi_buf)) {
+			if (cbi_config->drv->store(cbi_buf)) {
+				CPRINTS("Failed to write CBI");
+				return EC_RES_ERROR;
+			}
+			cbi_invalidate_cache();
+			cbi_read();
+			if (cbi_get_cache_status() != CBI_CACHE_STATUS_SYNCED) {
+				ccprintf("Cannot Read CBI (Error %d)\n",
+					 cbi_get_cache_status());
+				return EC_RES_ERROR;
+			}
+		} else {
+			CPRINTS("Invalid CBI in buffer");
+			return EC_RES_ERROR;
+		}
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CBI_BIN_WRITE, hc_cbi_bin_write, EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_CBI
 static void print_tag(const char *const tag, int rv, const uint32_t *val)
