@@ -177,6 +177,7 @@ config PLATFORM_EC_USBC_RETIMER_ANX7452
 	bool "Support Analogix ANX7452 Active Retimer"
 	default y
 	depends on DT_HAS_ANALOGIX_ANX7452_ENABLED
+	select PLATFORM_EC_CONSOLE_CMD_RETIMER
 	help
 	  ANX7452 is a 2-lane USB4 Re-timer MUX capable of switching the USB4
 	  fabric protocol to support a single USB Type-C™ (USB-C™) port. ANX7452
