@@ -257,6 +257,24 @@
       "parentUuid": "3a1f4624_32fec8c5",
       "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1b2cbb_bf002bc7",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T23:55:33Z",
+      "side": 1,
+      "message": "I have been able to address this correctly. Thanks for the suggestion!!",
+      "parentUuid": "89097404_750027fb",
+      "revId": "8c1a2485548e756e575f73bda8d3a03dc0d953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
