@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95a1853_ecf92ec4",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-12T01:28:56Z",
+      "side": 1,
+      "message": "To confirm, does this refer to \"manual recovery\" only, or also the BROKEN screen (non-manual recovery)?",
+      "range": {
+        "startLine": 1132,
+        "startChar": 5,
+        "endLine": 1132,
+        "endChar": 18
+      },
+      "revId": "4150771b0095927c27acd890dddb9582720e8fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4cbaf7_c3b6f90b",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-12T01:28:56Z",
+      "side": 1,
+      "message": "This seems to be an EC internal flag (not in ec_commands.h). Could you suggest how AP should initiate shutdown in recovery mode? Is AP supposed to request `EC_REBOOT_COLD_AP_OFF` (or `EC_REBOOT_NO_OP`) with `FLAG_ON_AP_SHUTDOWN`?",
+      "range": {
+        "startLine": 1138,
+        "startChar": 5,
+        "endLine": 1138,
+        "endChar": 30
+      },
+      "revId": "4150771b0095927c27acd890dddb9582720e8fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
