@@ -16,6 +16,23 @@
       "message": "This is still a work in progress but is this what you were thinking for the VDM port timeout? Some of this code is still for debug I\u0027m hopefully going to get a more rough idea of how long the partner takes to respond after having some cycles ran on this. Seems its not really worth trying to connect a PD analyzer at this point cause it can take 50+ cycles to reproduce which will be an hour of trace to parse through.",
       "revId": "7945114d42840ac3ee007585ad079e11c3f7d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c0ea80_2cb95f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-12T21:22:34Z",
+      "side": 1,
+      "message": "Conceptually, this seems reasonable to me. I could imagine benefits to generalizing this to other VDMs, but Discover Identity ACK is typically the largest and takes the longest to send, so this is probably fine for an experiment.",
+      "revId": "7945114d42840ac3ee007585ad079e11c3f7d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
