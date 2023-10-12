@@ -6313,6 +6313,8 @@ enum cbi_data_tag {
 	 */
 	CBI_TAG_COMMON_CONTROL = 11,
 
+	CBI_IMG = 15,
+
 	/*
 	 * Battery info
 	 */
@@ -6363,6 +6365,8 @@ union ec_common_control {
 struct ec_params_get_cbi {
 	uint32_t tag; /* enum cbi_data_tag */
 	uint32_t flag; /* CBI_GET_* */
+	uint32_t offset; /* Data offset */
+	uint32_t size; /* Data size */
 } __ec_align4;
 
 /*
@@ -6379,6 +6383,7 @@ struct ec_params_get_cbi {
 struct ec_params_set_cbi {
 	uint32_t tag; /* enum cbi_data_tag */
 	uint32_t flag; /* CBI_SET_* */
+	uint32_t offset; /* Data offset */
 	uint32_t size; /* Data size */
 	uint8_t data[]; /* For string and raw data */
 } __ec_align1;
