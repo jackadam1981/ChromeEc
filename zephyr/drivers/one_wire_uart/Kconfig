@@ -9,3 +9,15 @@ config PLATFORM_EC_ONE_WIRE_UART
 	help
 	  Enable the driver for communication between tablet and detachable
 	  keyboard over one-wire UART.
+
+config PLATFORM_EC_ONE_WIRE_UART_TABLET
+	bool ""
+	depends on PLATFORM_EC_ONE_WIRE_UART
+	help
+	  <WIP>
+
+config PLATFORM_EC_ONE_WIRE_UART_KEYBOARD
+	bool ""
+	depends on PLATFORM_EC_ONE_WIRE_UART
+	help
+	  <WIP>

@@ -7,6 +7,7 @@
 #define ZEPHYR_INCLUDE_DRIVERS_ONE_WIRE_UART_INTERNAL_H_
 
 #include "timer.h"
+#include "usb_hid_touchpad.h"
 
 #include <zephyr/kernel.h>
 
@@ -54,6 +55,21 @@ struct one_wire_uart_data {
 	timestamp_t last_send_time;
 	int retry_count;
 };
+
+enum RoachCommand {
+	ROACH_CMD_KEYBOARD_MATRIX,
+	ROACH_CMD_TOUCHPAD_REPORT,
+	ROACH_CMD_SUSPEND,
+	ROACH_CMD_RESUME,
+	ROACH_CMD_UPDATER_COMMAND,
+};
+
+/**
+ * Add touchpad event into hid-i2c FIFO
+ *
+ * @param report HID report to add
+ */
+void hid_i2c_touchpad_add(const struct usb_hid_touchpad_report *report);
 
 #ifdef CONFIG_ZTEST
 uint8_t checksum(const uint8_t *data, int len);
