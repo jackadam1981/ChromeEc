@@ -314,4 +314,7 @@ config LINK_TEST_SUITE_BODY_DETECTION
 	help
 	  Include the test suite exercising body detection behaviors in the binary.
 
+config LINK_TEST_SUITE_ONE_WIRE_UART
+	bool "Link and test the one wire uart driver tests"
+
 source "Kconfig.zephyr"
