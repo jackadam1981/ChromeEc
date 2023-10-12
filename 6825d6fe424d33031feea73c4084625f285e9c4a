@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02de60a_f070499c",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-12T20:42:15Z",
+      "side": 1,
+      "message": "y if (**)",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15bb0e10_829d2ad1",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-12T20:42:15Z",
+      "side": 1,
+      "message": "Intel USB-C Alternate mode PD Driver",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20ba20c_cc3d1f33",
+        "filename": "zephyr/dts/bindings/emul/intel,pd-controller-emul.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-12T20:42:15Z",
+      "side": 1,
+      "message": "may be cover the shared IRQ scenario too",
+      "revId": "6825d6fe424d33031feea73c4084625f285e9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
