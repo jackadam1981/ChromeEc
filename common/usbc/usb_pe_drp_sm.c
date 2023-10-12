@@ -625,6 +625,10 @@ static struct policy_engine {
 	uint32_t ado;
 	mutex_t ado_lock;
 
+	/* Retry flag for Port identity response */
+	bool retry_port_identity;
+	uint64_t port_identity_start;
+
 	/* Counters */
 
 	/*
@@ -5786,7 +5790,15 @@ static void pe_vdm_send_request_run(int port)
 
 		/* Start no response timer */
 		/* TODO(b/155890173): Support DPM-supplied timeout */
-		pd_timer_enable(port, PE_TIMER_VDM_RESPONSE, PD_T_VDM_SNDR_RSP);
+		if (!pe[port].retry_port_identity)
+			pd_timer_enable(port, PE_TIMER_VDM_RESPONSE,
+					PD_T_VDM_SNDR_RSP);
+		else
+			/* If partner failed to respond retry with longer
+			 * timeout
+			 */
+			pd_timer_enable(port, PE_TIMER_VDM_RESPONSE,
+					PD_T_VDM_SNDR_RSP * 2);
 	}
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
@@ -6041,6 +6053,9 @@ static void pe_init_port_vdm_identity_request_entry(int port)
 	 * (header, ID header, Cert Stat, Product VDO).
 	 */
 	pe[port].vdm_ack_min_data_objects = 4;
+
+	pe[port].retry_port_identity = false;
+	pe[port].port_identity_start = get_time().val;
 }
 
 static void pe_init_port_vdm_identity_request_run(int port)
@@ -6058,6 +6073,8 @@ static void pe_init_port_vdm_identity_request_run(int port)
 		break;
 	case VDM_RESULT_ACK: {
 		/* Retrieve the message information. */
+		CPRINTS("Port ACK received after %llu",
+			get_time().val - pe[port].port_identity_start);
 		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
 		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
@@ -6090,7 +6107,16 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 		 * If Structured VDMs are not supported, a Structured VDM
 		 * Command received by a DFP or UFP Shall be Ignored.
 		 */
-		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		if (pe[port].retry_port_identity) {
+			CPRINTS("Identity discovery failed after retry port %d",
+				port);
+			pd_set_identity_discovery(port, pe[port].tx_type,
+						  PD_DISC_FAIL);
+		} else {
+			CPRINTS("Retry partner failed to respond port %d",
+				port);
+			pe[port].retry_port_identity = true;
+		}
 	}
 
 	/* Do not attempt further discovery if identity discovery failed. */
