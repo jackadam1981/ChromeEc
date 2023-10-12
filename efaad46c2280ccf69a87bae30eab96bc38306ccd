@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401baf7c_365bc13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-12T18:51:27Z",
+      "side": 1,
+      "message": "what problem does this change solve?\n\ni\u0027m concerned disabling this feature will cause problems for situations\nwhere people flash back to older FW images. the factory image didn\u0027t\nsupport CBI-in-flash, so we need to be a bit careful about\ninadvertently creating an unrecoverable workflow.\n\nwhat might make more sense is to check the board-ID at runtime\nand disable this feature dynamically on future board spins.",
+      "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
