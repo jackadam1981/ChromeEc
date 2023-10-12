@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192dcb5f_8b2e850d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-12T17:12:51Z",
+      "side": 1,
+      "message": "This is still a work in progress but is this what you were thinking for the VDM port timeout? Some of this code is still for debug I\u0027m hopefully going to get a more rough idea of how long the partner takes to respond after having some cycles ran on this. Seems its not really worth trying to connect a PD analyzer at this point cause it can take 50+ cycles to reproduce which will be an hour of trace to parse through.",
+      "revId": "7945114d42840ac3ee007585ad079e11c3f7d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
