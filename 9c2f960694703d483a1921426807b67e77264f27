@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a5d1c6_2cafcf6f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-10-12T21:08:27Z",
+      "side": 1,
+      "message": "nit: print DEV_ID0 and DEV_ID1, so it matches the format of the arg name and it matches the variable names used in the gsc code.",
+      "range": {
+        "startLine": 3033,
+        "startChar": 24,
+        "endLine": 3033,
+        "endChar": 29
+      },
+      "revId": "9c2f960694703d483a1921426807b67e77264f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
