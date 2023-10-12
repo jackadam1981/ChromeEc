@@ -64,6 +64,7 @@
 
 /* Reduce flash space usage */
 #undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_CMD_BATTFAKE
 
 /* SOC */
 #define CONFIG_CHIPSET_SKYLAKE
