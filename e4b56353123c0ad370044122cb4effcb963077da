@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aacdb4e_fc3206cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-12T00:30:29Z",
+      "side": 1,
+      "message": "The common-code changes make sense to me. I\u0027m a bit confused by the addition of entire `board.h` files. Perhaps relatedly, this looks like a cherry-pick to a branch. But if so, where is the original change to `main`?",
+      "revId": "e4b56353123c0ad370044122cb4effcb963077da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012ea8e8_3b57c954",
+        "filename": "common/led_onoff_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-12T00:30:29Z",
+      "side": 1,
+      "message": "Where is this used?",
+      "revId": "e4b56353123c0ad370044122cb4effcb963077da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69904f33_a3a5b3af",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-12T00:30:29Z",
+      "side": 1,
+      "message": "Where does `BATTERY_LEVEL_SHUTDOWN \u003d 3` come into the below constant?",
+      "revId": "e4b56353123c0ad370044122cb4effcb963077da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
