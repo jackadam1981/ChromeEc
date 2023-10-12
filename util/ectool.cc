@@ -8768,6 +8768,136 @@ static int cmd_cbi(int argc, char *argv[])
 	return -1;
 }
 
+static void cmd_cbibin_help(char *cmd)
+{
+	fprintf(stderr,
+		"  Usage: %s get <offset> <size>\n"
+		"  Usage: %s set <commit flag> <offset> <size> <data>\n"
+		"    <commit flag> is one of:\n"
+		"      0: Clear buffer\n"
+		"      1: Update buffer\n"
+		"      2: Update primary storage\n"
+		"    <offset> is the offset of the data in byte.\n"
+		"    <size> is the size of the data in byte.\n"
+		"    <data> is the space seperated bytes of size length to be set\n",
+		cmd, cmd);
+}
+
+/*
+ * Read or Write to CBI binary
+ */
+static int cmd_cbibin(int argc, char *argv[])
+{
+	char *e;
+	int rv;
+
+	if (argc < 4) {
+		fprintf(stderr, "Invalid number of params\n");
+		cmd_cbibin_help(argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "get")) {
+		struct ec_params_get_cbibin p = { 0 };
+		int i;
+
+		p.offset = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset\n");
+			return -1;
+		}
+		p.size = strtol(argv[3], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad size\n");
+			return -1;
+		}
+
+		rv = ec_command(EC_CMD_GET_CROS_BOARD_INFO_BIN, 0, &p,
+				sizeof(p), ec_inbuf, ec_max_insize);
+		if (rv < 0) {
+			fprintf(stderr, "Error code: %d\n", rv);
+			return rv;
+		}
+		if (rv < sizeof(uint8_t)) {
+			fprintf(stderr, "Invalid size: %d\n", rv);
+			return -1;
+		}
+		if (rv == 0) {
+			printf("Read bytes:");
+			for (i = 0; i < p.size; i++) {
+				if ((i > 0) && (i % 32 == 0))
+					printf("\n");
+				printf("%#02x ", ((uint8_t *)ec_inbuf)[i]);
+			}
+			printf("\n");
+		}
+		return 0;
+	} else if (!strcasecmp(argv[1], "set")) {
+		struct ec_params_set_cbibin *p =
+			(struct ec_params_set_cbibin *)ec_outbuf;
+		uint8_t size;
+		if (argc < 5) {
+			fprintf(stderr, "Invalid number of params\n");
+			cmd_cbibin_help(argv[0]);
+			return -1;
+		}
+		memset(p, 0, ec_max_outsize);
+
+		p->commit = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset\n");
+			return -1;
+		}
+
+		p->offset = strtol(argv[3], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset\n");
+			return -1;
+		}
+
+		size = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad size\n");
+			return -1;
+		}
+
+		if (size > ec_max_outsize - sizeof(*p)) {
+			fprintf(stderr, "Size exceeds parameter buffer: %d\n",
+				size);
+			return -1;
+		}
+		for (int i = 0; i < size && (5 + i) < argc; i++) {
+			p->data[i] = (uint8_t)strtoul(argv[5 + i], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad input data\n");
+				return -1;
+			}
+		}
+		p->size = size;
+		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO_BIN, 0, p,
+				sizeof(*p) + size, NULL, 0);
+		if (rv < 0) {
+			if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
+				fprintf(stderr,
+					"Write-protect is enabled or "
+					"EC explicitly refused to change the "
+					"requested field.\n");
+			else
+				fprintf(stderr, "Error code: %d\n", rv);
+			return rv;
+		}
+		if (rv == 0) {
+			printf("Write successful.\n");
+		}
+		return 0;
+	}
+
+	fprintf(stderr, "Invalid sub command: %s\n", argv[1]);
+	cmd_cbibin_help(argv[0]);
+
+	return -1;
+}
+
 int cmd_chipinfo(int argc, char *argv[])
 {
 	struct ec_response_get_chip_info info;
@@ -11664,6 +11794,7 @@ const struct command commands[] = {
 	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
 	{ "cbi", cmd_cbi },
+	{ "cbibin", cmd_cbibin },
 	{ "chargecurrentlimit", cmd_charge_current_limit },
 	{ "chargecontrol", cmd_charge_control },
 	{ "chargeoverride", cmd_charge_port_override },

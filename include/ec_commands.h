@@ -6317,6 +6317,8 @@ enum cbi_data_tag {
 	CBI_TAG_BATTERY_CONFIG = 12,
 	/* CBI_TAG_BATTERY_CONFIG_1 ~ 15 will use 13 ~ 27. */
 
+	CBI_IMG = 15,
+
 	/* Last entry */
 	CBI_TAG_COUNT,
 };
@@ -6356,6 +6358,34 @@ struct ec_params_set_cbi {
 	uint32_t tag; /* enum cbi_data_tag */
 	uint32_t flag; /* CBI_SET_* */
 	uint32_t size; /* Data size */
+	uint8_t data[]; /* For string and raw data */
+} __ec_align1;
+
+/*
+ * Retrieve binary from CrOS Board Info primary memory source.
+ */
+#define EC_CMD_GET_CROS_BOARD_INFO_BIN 0x0504
+/*
+ * Write binary into CrOS Board Info on primary memory source. Write fails if
+ * the board has hardware write-protect enabled.
+ */
+#define EC_CMD_SET_CROS_BOARD_INFO_BIN 0x0505
+
+enum ec_cbibin_commit_flag {
+	EC_CBI_BIN_COMMIT_FLAG_BUFFER_CLEAR = 0,
+	EC_CBI_BIN_COMMIT_FLAG_BUFFER_UPDATE,
+	EC_CBI_BIN_COMMIT_FLAG_WRITE,
+};
+
+struct ec_params_get_cbibin {
+	uint32_t offset; /* Data offset */
+	uint32_t size; /* Data size */
+} __ec_align4;
+
+struct ec_params_set_cbibin {
+	uint32_t offset; /* Data offset */
+	uint32_t size; /* Data size */
+	uint8_t commit; /* enum ec_cbibin_commit_flag */
 	uint8_t data[]; /* For string and raw data */
 } __ec_align1;
 
