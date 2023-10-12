@@ -55,6 +55,14 @@ struct one_wire_uart_data {
 	int retry_count;
 };
 
+enum RoachCommand {
+	ROACH_CMD_KEYBOARD_MATRIX,
+	ROACH_CMD_TOUCHPAD_REPORT,
+	ROACH_CMD_SUSPEND,
+	ROACH_CMD_RESUME,
+	ROACH_CMD_UPDATER_COMMAND,
+};
+
 #ifdef CONFIG_ZTEST
 uint8_t checksum(const uint8_t *data, int len);
 void load_next_message(const struct device *dev);
