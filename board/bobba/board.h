@@ -26,6 +26,7 @@
 /* Reduce flash space usage */
 #define CONFIG_DEBUG_ASSERT_BRIEF
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
+#undef CONFIG_CONSOLE_CMDHELP
 #undef CONFIG_CMD_ADC
 #undef CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_CBI
