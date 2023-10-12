@@ -16,6 +16,29 @@
       "message": "Now reusing the existing `VENDOR_CC_SYSINFO` that cr50 and ti50 both response to",
       "revId": "c002e9be9711fa83db79f2d5a313a0a7d3cd544f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479ea81b_16ac156e",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-10-12T20:58:46Z",
+      "side": 1,
+      "message": "Delete this.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "c002e9be9711fa83db79f2d5a313a0a7d3cd544f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
