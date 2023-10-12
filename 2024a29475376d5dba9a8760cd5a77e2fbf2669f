@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a82f173_67386a9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T23:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11ada50b_d7422686",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "2024a29475376d5dba9a8760cd5a77e2fbf2669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e6c455_022fa580",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-11T21:03:56Z",
       "side": 1,
       "message": "how about #if defined(TEST_BUILD) \u0026\u0026 !defined(HAS_TASK_CHARGER)\nand line 210 to 213 in else part?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 5
+      },
+      "revId": "2024a29475376d5dba9a8760cd5a77e2fbf2669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aedfa56_eb206550",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-12T23:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e6c455_022fa580",
       "range": {
         "startLine": 214,
         "startChar": 1,
