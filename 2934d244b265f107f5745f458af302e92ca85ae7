@@ -75,6 +75,30 @@
       },
       "revId": "2934d244b265f107f5745f458af302e92ca85ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c21e91_24c73549",
+        "filename": "zephyr/program/nissa/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-10-12T09:21:05Z",
+      "side": 1,
+      "message": "We follow the HDMI [codehere](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/nissa/Kconfig#16) logic to implement the pen Kconfig.\nAnd the [codehere](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/nissa/src/common.c#29) have fixed GPIO naming for the pen.\n\nIf you have concerns we can upload another patch. Use the default \u0027y\u0027 at Kconfig and then \u0027n\u0027 at Craaskov project.conf.",
+      "parentUuid": "f50eccba_02f7c322",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "2934d244b265f107f5745f458af302e92ca85ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
