@@ -48,6 +48,8 @@ BUILD_ASSERT(IS_ENABLED(CONFIG_CHARGER_ISL9238),
 #define ISL923X_EMUL EMUL_DT_GET(DT_NODELABEL(isl923x_emul))
 #define COMMON_DATA emul_isl923x_get_i2c_common_data(ISL923X_EMUL)
 
+FAKE_VALUE_FUNC(int, board_allow_i2c_passthru, const struct i2c_cmd_desc_t *);
+
 static int mock_write_fn_always_fail(const struct emul *emul, int reg,
 				     uint8_t val, int bytes, void *data)
 {
@@ -153,7 +155,7 @@ ZTEST(isl923x, test_isl923x_set_input_current_limit)
 	i2c_common_emul_set_write_fail_reg(COMMON_DATA,
 					   ISL923X_REG_ADAPTER_CURRENT_LIMIT2);
 	zassert_equal(EC_ERROR_INVAL,
-		      isl923x_drv.set_input_current_limit(CHARGER_NUM, 0),
+		      isl923x_set_level_2_input_current_limit(CHARGER_NUM, 0),
 		      NULL);
 
 	/* Reset fail register */

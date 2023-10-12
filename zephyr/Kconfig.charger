@@ -828,6 +828,9 @@ config PLATFORM_EC_CHARGER_DUMP_PROCHOT
 	bool "Enable support for prochot status dumping functions"
 	default n
 
+config PLATFORM_EC_CHANGER_RAA489000_TWO_LEVEL_CURRENT_LIMIT
+	bool "Enable two level input current limit function"
+
 rsource "drivers/sm5803/Kconfig.sm5803"
 
 endif # PLATFORM_EC_CHARGER
