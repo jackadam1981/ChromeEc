@@ -16,6 +16,24 @@
       "message": "Nit: This would look a bit cleaner in a C `if`/`else`. Since the `DT_PROP` expression results in a compile-time constant, I think the check and the unused branch should be optimized out.",
       "revId": "96963e6371357fa05f348d2526858ae4b2e4193f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d6a19c_119f3347",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-12T14:33:09Z",
+      "side": 1,
+      "message": "Done. Kind of better logic in code.",
+      "parentUuid": "80ed1038_cecbe81e",
+      "revId": "96963e6371357fa05f348d2526858ae4b2e4193f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
