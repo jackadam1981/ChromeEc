@@ -6360,6 +6360,34 @@ struct ec_params_set_cbi {
 } __ec_align1;
 
 /*
+ * Retrieve binary from CrOS Board Info primary memory source.
+ */
+#define EC_CMD_CBI_BIN_READ 0x0504
+/*
+ * Write binary into CrOS Board Info on primary memory source. Write fails if
+ * the board has hardware write-protect enabled.
+ */
+#define EC_CMD_CBI_BIN_WRITE 0x0505
+
+/* cbi binary read/write flags */
+#define EC_CBI_BIN_BUFFER_CLEAR BIT(0)
+#define EC_CBI_BIN_BUFFER_WRITE BIT(1)
+/* default behavior with both bits unset is to append to the buffer */
+
+
+struct ec_params_get_cbi_bin {
+	uint32_t offset; /* Data offset */
+	uint32_t size; /* Data size */
+} __ec_align4;
+
+struct ec_params_set_cbi_bin {
+	uint32_t offset; /* Data offset */
+	uint32_t size; /* Data size */
+	uint8_t flags; /* bit field for EC_CBI_BIN_COMMIT_FLAG_* */
+	uint8_t data[]; /* For string and raw data */
+} __ec_align1;
+
+/*
  * Information about resets of the AP by the EC and the EC's own uptime.
  */
 #define EC_CMD_GET_UPTIME_INFO 0x0121
