@@ -182,6 +182,7 @@
 #define CONFIG_HOST_INTERFACE_SHI
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
+#define CONFIG_PANIC_STRIP_GPR
 #define CONFIG_PRINTF_LONG_IS_32BITS
 #define CONFIG_RNG
 #define CONFIG_SHA256
@@ -283,20 +284,6 @@
  * Chip Specific
  *-------------------------------------------------------------------------*
  */
-
-/*
- * TODO (b/281751547): Remove once Quincy brought up
- * Board should be set to CONFIG_HW_MRIDER or CONFIG_HW_QUINCY, only needed
- * until Quincy stable, re-assigns WP GPIO
- */
-#undef CONFIG_HW_MRIDER
-#define CONFIG_HW_QUINCY
-
-/*
- * TODO (b/279032946): should eventually be removed, required to avoid
- * chip_pre_init disabling JTAG internally
- */
-#define CONFIG_ENABLE_JTAG_SELECTION
 
 /*
  * Macros for GPIO signals used in common code that don't match the
