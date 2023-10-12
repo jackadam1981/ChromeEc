@@ -39,6 +39,30 @@
       },
       "revId": "c002e9be9711fa83db79f2d5a313a0a7d3cd544f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32b9011_0a05bb33",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-12T20:59:57Z",
+      "side": 1,
+      "message": "Whoops. Thanks!",
+      "parentUuid": "479ea81b_16ac156e",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "c002e9be9711fa83db79f2d5a313a0a7d3cd544f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
