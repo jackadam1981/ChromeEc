@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75149234_b95f4341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Logic present inside SPI_Operation function has been re-visited.\nAlso undergone the updated code with internal review.",
+      "parentUuid": "1720bd7e_eb4747b3",
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9308d68f_21187dcf",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-09-26T22:17:14Z",
       "side": 1,
       "message": "This loader needs to work for more than just the Intel RVP.  A second UART won\u0027t be available on Chromebooks.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e113488_3cf96327",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Ok, removed the debug interface.",
+      "parentUuid": "9308d68f_21187dcf",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979f1160_9d81aa3f",
+        "filename": "zephyr/shim/chip/mchp/second_loader/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "7269aaa5_f227d48b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c96c18a_0dee9d42",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-09-26T22:17:14Z",
       "side": 1,
       "message": "Should be static const",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae928a3_a465fcf1",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Updated with static const",
+      "parentUuid": "9c96c18a_0dee9d42",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "199541ed_dd32c460",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Moved this declaration to function scope.",
+      "parentUuid": "5f76917c_f69fc59b",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a526d789_5d8789be",
@@ -123,6 +237,30 @@
       "writtenOn": "2023-09-26T22:17:14Z",
       "side": 1,
       "message": "Static, no initialization needed.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1579c8f1_98133168",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Moved this declaration to function scope.",
+      "parentUuid": "a526d789_5d8789be",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3c1316_9d2a2cea",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Variable has been moved into function scope.\nstruct introduced to group data extracted from header.",
+      "parentUuid": "242e2048_d9ad81dd",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5526ee09_faa4185b",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-09-26T22:17:14Z",
       "side": 1,
       "message": "Why continue if the board init failed?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a37e1843_d75d80ff",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Error handling introduced to hold the control not to proceed further.",
+      "parentUuid": "5526ee09_faa4185b",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa58f7d_05930549",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Removed the GPIO initialization.",
+      "parentUuid": "30fc3669_84a9de1f",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9292096_324dc8a2",
@@ -215,6 +425,30 @@
       "writtenOn": "2023-09-26T22:17:14Z",
       "side": 1,
       "message": "Extern not required.  Please also use a common prefix for all the related routines.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbdc972_58fc287b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/serial.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Extern has been removed, serial key has been prefixed.",
+      "parentUuid": "d9292096_324dc8a2",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2595a52c_9ac04a83",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Introduced below interfaces to access FLASH,\nspi_flash_init\nspi_flash_program_sector\nspi_flash_sector_erase\nspi_splash_check_sector_content_same",
+      "parentUuid": "6d01fcff_90c88309",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 23
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20fbcf44_60c30450",
@@ -265,6 +523,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "891df0d3_31662a18",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Understood and updated the code.",
+      "parentUuid": "20fbcf44_60c30450",
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70170ced_81185d1d",
@@ -278,6 +554,30 @@
       "writtenOn": "2023-09-26T22:17:14Z",
       "side": 1,
       "message": "These should be eliminated by passing in arguments.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "e976c67c05bdbc2d8712ba676dd69e26c0ec8fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b254f5a_bbdd6899",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-12T05:31:43Z",
+      "side": 1,
+      "message": "Logic updated to remove the extern variable usage.",
+      "parentUuid": "70170ced_81185d1d",
       "range": {
         "startLine": 9,
         "startChar": 0,
