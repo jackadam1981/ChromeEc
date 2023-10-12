@@ -4,3 +4,4 @@
 
 # Add source files
 target_sources(app PRIVATE src/test_common_cbi.c)
+target_sources(app PRIVATE src/test_common_cbi_bin.c)

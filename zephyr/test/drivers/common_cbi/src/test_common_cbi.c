@@ -227,6 +227,56 @@ ZTEST_USER(common_cbi, test_hc_cbi_set_then_get__with_too_small_response)
 	zassert_equal(host_command_process(&get_args), EC_RES_INVALID_PARAM);
 }
 
+ZTEST_USER(common_cbi, test_hc_cbi_bin_write_then_read)
+{
+	/*
+	 * cbi_bin commands will do a validity check on the header.
+	 * This data allows the cbi to pass the validity check.
+	 */
+	const uint8_t data[] = {
+		0x43, 0x42, 0x49, 0xCA, 0x00, 0x00, 0x30, 0x00
+	};
+
+	struct actual_set_params {
+		struct ec_params_set_cbi_bin params;
+		uint8_t actual_data[ARRAY_SIZE(data)];
+	};
+
+	struct actual_set_params hc_set_params = {
+		.params = {
+		.offset = 0,
+		.size = ARRAY_SIZE(data),
+		.flags = EC_CBI_BIN_BUFFER_WRITE,
+		},
+	};
+	struct host_cmd_handler_args set_args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_CBI_BIN_WRITE, 0, hc_set_params);
+
+	memcpy(hc_set_params.params.data, data, ARRAY_SIZE(data));
+
+	/* Turn off write-protect so we can actually write */
+	gpio_wp_l_set(1);
+
+	zassert_ok(host_command_process(&set_args));
+
+	struct ec_params_get_cbi_bin hc_get_params = {
+		.offset = 0,
+		.size = ARRAY_SIZE(data),
+	};
+
+	struct test_ec_params_get_cbi_response {
+		uint8_t data[ARRAY_SIZE(data)];
+	};
+	struct test_ec_params_get_cbi_response hc_get_response;
+	struct host_cmd_handler_args get_args = BUILD_HOST_COMMAND(
+		EC_CMD_CBI_BIN_READ, 0, hc_get_response, hc_get_params);
+
+	zassert_ok(host_command_process(&get_args));
+
+	zassert_mem_equal(hc_get_response.data, hc_set_params.params.data,
+			  hc_set_params.params.size);
+}
+
 static void test_common_cbi_before_after(void *test_data)
 {
 	RESET_FAKE(eeprom_load);
