@@ -450,6 +450,7 @@ static int ps8805_make_device_id(int port, int *id)
 		*id = 1;
 		break;
 	case 0xa0: /* A3 chip */
+	case 0x40: /* Corrupted A3 chip */
 		*id = 2;
 		break;
 	default:
