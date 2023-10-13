@@ -16,6 +16,23 @@
       "message": "After requesting or giving a notice to everyone having Screebo devices to update their EC firmware version and EC tools, this change could be pushed",
       "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "332b35e1_765f677c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-10-13T00:56:02Z",
+      "side": 1,
+      "message": "Should we remove the `cbi_flash` in `screebo/project.overlay` together? Otherwise, is there a preserved section in EC flash?",
+      "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
