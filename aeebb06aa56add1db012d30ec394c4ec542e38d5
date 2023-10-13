@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc529def_3478b77f",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-13T22:18:14Z",
+      "side": 1,
+      "message": "I\u0027d recommend creating a devicetree node to configure the GPIO used to control the SPI access.  `ec_spi_oe_mecc` is specific to the Intel RVP.\n\nExample for the adlrvp_mchp board below;\n```\nshared-spi {\n   compatible\u003d\"cros-ec,shared-spi-flash\";\n   spi-oe-gpios \u003d \u003c\u0026gpio_040_076 2 GPIO_OUTPUT_LOW\u003e;\n```",
+      "parentUuid": "7ce9df29_35d7d860",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "854f0108_462a1a1f",
         "filename": "zephyr/program/intelrvp/src/intelrvp.c",
         "patchSetId": 4
