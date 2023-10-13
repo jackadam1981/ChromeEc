@@ -33,6 +33,29 @@
       "message": "Hi Daisuke, could you help review this CL?\nThanks.",
       "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9cf6b9b_96d34a2b",
+        "filename": "board/constitution/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-13T18:02:53Z",
+      "side": 1,
+      "message": "Why do you need this? You still externally look like a sink, right?",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
