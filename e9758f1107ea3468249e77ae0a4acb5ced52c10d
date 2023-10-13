@@ -16,6 +16,24 @@
       "message": "on a second thought, I think we don\u0027t need all these changes.\n\nhow about we add one more hook ?\nDECLARE_HOOK(HOOK_SYSJUMP, board_init, HOOK_PRIO_FIRST);",
       "revId": "e9758f1107ea3468249e77ae0a4acb5ced52c10d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684da315_46b861e0",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-13T15:03:50Z",
+      "side": 0,
+      "message": "Thanks, verified with SYSJUMP and simplified it.",
+      "parentUuid": "a2a4085f_5b2c4dc6",
+      "revId": "e9758f1107ea3468249e77ae0a4acb5ced52c10d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
