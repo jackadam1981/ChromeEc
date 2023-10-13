@@ -186,7 +186,7 @@ const char help_str[] =
 	"      Get the value of GPIO signal\n"
 	"  gpioset <GPIO name>\n"
 	"      Set the value of GPIO signal\n"
-	"  hangdetect <flags> <event_msec> <reboot_msec> | stop | start\n"
+	"  hangdetect <flags> <reboot_sec> | stop | start\n"
 	"      Configure or start/stop the hang detect timer\n"
 	"  hello\n"
 	"      Checks for basic communication with EC\n"
@@ -9851,37 +9851,28 @@ static int cmd_hang_detect(int argc, char *argv[])
 				  NULL, 0);
 	}
 
-	if (argc == 4) {
+	if (argc == 3) {
 		req.flags = strtol(argv[1], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "Bad flags.\n");
 			return -1;
 		}
 
-		req.host_event_timeout_msec = strtol(argv[2], &e, 0);
-		if (e && *e) {
-			fprintf(stderr, "Bad event timeout.\n");
-			return -1;
-		}
-
-		req.warm_reboot_timeout_msec = strtol(argv[3], &e, 0);
+		req.reboot_timeout_sec = strtol(argv[2], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "Bad reboot timeout.\n");
 			return -1;
 		}
 
 		printf("hang flags=0x%x\n"
-		       "event_timeout=%d ms\n"
-		       "reboot_timeout=%d ms\n",
-		       req.flags, req.host_event_timeout_msec,
-		       req.warm_reboot_timeout_msec);
+		       "reboot_timeout=%d s\n",
+		       req.flags, req.reboot_timeout_sec);
 
 		return ec_command(EC_CMD_HANG_DETECT, 0, &req, sizeof(req),
 				  NULL, 0);
 	}
 
-	fprintf(stderr,
-		"Must specify start/stop or <flags> <event_ms> <reboot_ms>\n");
+	fprintf(stderr, "Must specify start/stop or <flags> <reboot_sec>\n");
 	return -1;
 }
 

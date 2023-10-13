@@ -4712,13 +4712,13 @@ struct ec_response_i2c_passthru {
 #define EC_CMD_HANG_DETECT 0x009F
 
 /* Reasons to start hang detection timer */
-/* Power button pressed */
+/* Power button pressed - OBSOLETE */
 #define EC_HANG_START_ON_POWER_PRESS BIT(0)
 
-/* Lid closed */
+/* Lid closed - OBSOLETE */
 #define EC_HANG_START_ON_LID_CLOSE BIT(1)
 
-/* Lid opened */
+/* Lid opened - OBSOLETE */
 #define EC_HANG_START_ON_LID_OPEN BIT(2)
 
 /* Start of AP S3->S0 transition (booting or resuming from suspend) */
@@ -4726,14 +4726,20 @@ struct ec_response_i2c_passthru {
 
 /* Reasons to cancel hang detection */
 
-/* Power button released */
+/* Power button released - OBSOLETE */
 #define EC_HANG_STOP_ON_POWER_RELEASE BIT(8)
 
-/* Any host command from AP received */
+/* Any host command from AP received - OBSOLETE */
 #define EC_HANG_STOP_ON_HOST_COMMAND BIT(9)
 
 /* Stop on end of AP S0->S3 transition (suspending or shutting down) */
 #define EC_HANG_STOP_ON_SUSPEND BIT(10)
+
+/* Get last hang status - whether the AP boot was clear or not */
+#define EC_GET_HANG_STATUS BIT(11)
+
+/* Clear last hang status when AP is rebooting/shutting down gracefully */
+#define EC_CLEAR_HANG_STATUS BIT(12)
 
 /*
  * If this flag is set, all the other fields are ignored, and the hang detect
@@ -4753,14 +4759,20 @@ struct ec_response_i2c_passthru {
 struct ec_params_hang_detect {
 	/* Flags; see EC_HANG_* */
 	uint32_t flags;
+	uint16_t reserved;
 
-	/* Timeout in msec before generating host event, if enabled */
-	uint16_t host_event_timeout_msec;
-
-	/* Timeout in msec before generating warm reboot, if enabled */
-	uint16_t warm_reboot_timeout_msec;
+	/* Timeout in seconds before generating reboot, if enabled */
+	uint16_t reboot_timeout_sec;
 } __ec_align4;
 
+enum ec_hang_detect_status {
+	EC_HANG_DETECT_AP_BOOT_NORMAL = 0x0,
+	EC_HANG_DETECT_AP_BOOT_EC_WDT = 0x1,
+	EC_HANG_DETECT_AP_BOOT_COUNT,
+};
+struct ec_params_hang_detect_resp {
+	uint8_t status; /* enum ec_hang_detect_status */
+} __ec_align1;
 /*****************************************************************************/
 /* Commands for battery charging */
 
