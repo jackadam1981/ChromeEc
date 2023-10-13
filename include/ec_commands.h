@@ -4712,28 +4712,20 @@ struct ec_response_i2c_passthru {
 #define EC_CMD_HANG_DETECT 0x009F
 
 /* Reasons to start hang detection timer */
-/* Power button pressed */
-#define EC_HANG_START_ON_POWER_PRESS BIT(0)
-
-/* Lid closed */
-#define EC_HANG_START_ON_LID_CLOSE BIT(1)
-
-/* Lid opened */
-#define EC_HANG_START_ON_LID_OPEN BIT(2)
 
 /* Start of AP S3->S0 transition (booting or resuming from suspend) */
 #define EC_HANG_START_ON_RESUME BIT(3)
 
 /* Reasons to cancel hang detection */
 
-/* Power button released */
-#define EC_HANG_STOP_ON_POWER_RELEASE BIT(8)
-
-/* Any host command from AP received */
-#define EC_HANG_STOP_ON_HOST_COMMAND BIT(9)
-
 /* Stop on end of AP S0->S3 transition (suspending or shutting down) */
 #define EC_HANG_STOP_ON_SUSPEND BIT(10)
+
+/* Get last hang status - whether the AP boot was clear or not */
+#define EC_GET_HANG_STATUS BIT(11)
+
+/* Clear last hang status when AP is rebooting/shutting down gracefully */
+#define EC_CLEAR_HANG_STATUS BIT(12)
 
 /*
  * If this flag is set, all the other fields are ignored, and the hang detect
@@ -4754,13 +4746,14 @@ struct ec_params_hang_detect {
 	/* Flags; see EC_HANG_* */
 	uint32_t flags;
 
-	/* Timeout in msec before generating host event, if enabled */
-	uint16_t host_event_timeout_msec;
-
-	/* Timeout in msec before generating warm reboot, if enabled */
-	uint16_t warm_reboot_timeout_msec;
+	/* Timeout in msec before generating reboot, if enabled */
+	uint16_t reboot_timeout_msec;
 } __ec_align4;
 
+struct ec_params_hang_detect_resp {
+	/* 0 - AP normal boot; 1 - AP was rebooted by EC watchdog */
+	uint32_t status;
+} __ec_align4;
 /*****************************************************************************/
 /* Commands for battery charging */
 
