@@ -106,6 +106,24 @@
       "parentUuid": "7630f331_882f4355",
       "revId": "6292eb49511b66c800f1a43192dfbf85533abff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4646a71_9597d6d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-10-13T22:51:03Z",
+      "side": 1,
+      "message": "It looks like it would be better to make these bit fields match skolas, which tracks very closely to brya.",
+      "parentUuid": "4c43b25e_98f52db9",
+      "revId": "6292eb49511b66c800f1a43192dfbf85533abff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
