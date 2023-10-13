@@ -88,6 +88,24 @@
       "parentUuid": "a00f9150_7b2c718a",
       "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ad8b98_f53d6301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-13T21:10:08Z",
+      "side": 1,
+      "message": "Bumping the dkms.conf PACKAGE_VERSION seems to be the proper way, CL:4937823 sent for that.\n\nThere\u0027s still other rough edges for upgrading in place.  I\u0027ll tag those fixes with b:299690277 since that will be a major revision change.",
+      "parentUuid": "d9c331c2_87256a67",
+      "revId": "e2d2dca9f35d881481645d67939a395caf29b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
