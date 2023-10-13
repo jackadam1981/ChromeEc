@@ -335,6 +335,15 @@ struct deferred_data {
 int hook_call_deferred(const struct deferred_data *data, int us);
 
 /**
+ * Check if a timer for a deferred routine is active.
+ *
+ *
+ * @param data	The deferred_data struct created by invoking DECLARE_DEFERRED().
+ * @return one if timer is active.
+ */
+int hook_call_is_active(const struct deferred_data *data);
+
+/**
  * Register a hook routine.
  *
  * NOTE: Hook routines must be careful not to leave resources locked which may
