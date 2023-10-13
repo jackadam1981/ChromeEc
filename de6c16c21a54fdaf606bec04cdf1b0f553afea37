@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1761ee_af382e2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-10-13T09:12:03Z",
+      "side": 1,
+      "message": "This CL pass `make buildall` on my local machine. No idea why it failed to build in the CQ.",
+      "revId": "de6c16c21a54fdaf606bec04cdf1b0f553afea37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
