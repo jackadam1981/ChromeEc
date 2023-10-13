@@ -16,6 +16,24 @@
       "message": "nit: 80 char limit.\n\nTry use repo upload, git hooks will auto correct it",
       "revId": "245b070636ce615c036d2e1108b8bbbe4b1dddf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4dbe71e_3ccf2e98",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-13T15:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77df05eb_1d9bcd92",
+      "revId": "245b070636ce615c036d2e1108b8bbbe4b1dddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
