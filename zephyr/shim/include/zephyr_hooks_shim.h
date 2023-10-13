@@ -33,6 +33,8 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 		.work = &routine##_work_data,                        \
 	}
 
+int hook_call_is_active(const struct deferred_data *data);
+
 /**
  * Record describing a single hook routine.
  */

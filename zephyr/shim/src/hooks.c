@@ -183,6 +183,11 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	return rv >= 0 ? EC_SUCCESS : rv;
 }
 
+int hook_call_is_active(const struct deferred_data *data)
+{
+	return k_work_delayable_is_pending(data->work);
+}
+
 /*
  * Shims for interconnecting AP power sequence events with legacy hooks.
  * Depending on whether the power sequence code is running in zephyr or
