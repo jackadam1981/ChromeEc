@@ -15,7 +15,9 @@ def register_intelrvp_project(
 ):
     """Register a variant of intelrvp."""
     register_func = register_binman_project
-    if chip.startswith("mec1727"):
+    if chip.startswith("mec1723"):
+        register_func = register_mchp_project
+    elif chip.startswith("mec1727"):
         register_func = register_mchp_project
     elif chip.startswith("npcx"):
         register_func = register_npcx_project
@@ -74,6 +76,30 @@ register_intelrvp_project(
     extra_kconfig_files=[
         here / "legacy_ec_pwrseq.conf",
         here / "adlrvp/adlrvp_npcx/prj.conf",
+    ],
+)
+
+
+register_intelrvp_project(
+    project_name="mtlrvpp_m1723",
+    chip="mec1723",
+    extra_dts_overlays=[
+        here / "mtlrvp/mtlrvpp_m1723/fan.dts",
+        here / "mtlrvp/mtlrvpp_m1723/gpio.dts",
+        here / "mtlrvp/mtlrvpp_m1723/keyboard.dts",
+        here / "mtlrvp/mtlrvpp_npcx/interrupts.dts",
+        here / "mtlrvp/mtlrvpp_npcx/tcpc_interrupts.dts",
+        here / "mtlrvp/ioex.dts",
+        here / "mtlrvp/tcpc_ioex.dts",
+        here / "mtlrvp/mtlrvpp_m1723/mtlrvp_m1723.dts",
+        here / "mtlrvp/mtlrvpp_m1723/mtlrvp_m1723_power_signals.dts",
+        here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
+        here / "mtlrvp/usbc.dts",
+    ],
+    extra_kconfig_files=[
+        here / "zephyr_ap_pwrseq.conf",
+        here / "mtlrvp/mtlrvpp_m1723/prj.conf",
+        here / "mtlrvp/tcpc.conf",
     ],
 )
 
