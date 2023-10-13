@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef55e683_a01a103e",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-13T22:12:54Z",
+      "side": 1,
+      "message": "Note - add a build time check for this condition in the CL that uses this symbol.",
+      "range": {
+        "startLine": 39,
+        "startChar": 14,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "53fb6b109e33eaca03808358dd9961e8f3c1460d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
