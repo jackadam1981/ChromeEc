@@ -33,6 +33,23 @@
       "message": "please help cq failed",
       "revId": "d64ab095914cd450db10daa4bc13b8d168ed5a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e92cbc7_9f04c978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-10-13T03:04:12Z",
+      "side": 1,
+      "message": "```\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d FAILURES \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n_____________________________ test_generated_file ______________________________\n\n    def test_generated_file():\n        \"\"\"Test that the generated file is up-to-date.\"\"\"\n        # TODO(b/300287548): Generate the public and private bazel targets\n        # separately.\n        if not (pathlib.Path(__file__).parent.parent / \"private\").is_dir():\n            pytest.skip(\"Don\u0027t test bazel generation in public checkouts\")\n\u003e       assert (\n            gen_bazel_targets.DEFAULT_OUTPUT.read_text(encoding\u003d\"utf-8\")\n            \u003d\u003d gen_bazel_targets.gen_bazel()\n        ), \"Build targets were changed.  Please run ./util/gen_bazel_targets.py.\"\nE       AssertionError: Build targets were changed.  Please run ./util/gen_bazel_targets.py.\nE       assert \u0027# Copyright ...lse,\\n    )\\n\u0027 \u003d\u003d \u0027# Copyright 2...lse,\\n    )\\n\u0027\nE         Skipping 11892 identical leading characters in diff, use -v to show\nE         -  name \u003d \"dibbi\",\nE         ?           ^^^\nE         +  name \u003d \"dexi\",\nE         ?           ^^\nE         +         baseboard \u003d \"dedede\",\nE         +         board \u003d \"dexi\",...\nE         \nE         ...Full output truncated (1781 lines hidden), use \u0027-vv\u0027 to show\n\nutil/test_gen_bazel_targets.py:19: AssertionError\n```\n\n\nPlease run `./util/gen_bazel_targets.py`.",
+      "revId": "d64ab095914cd450db10daa4bc13b8d168ed5a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
