@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce9df29_35d7d860",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T15:31:27Z",
+      "side": 1,
+      "message": "may be add these two functions with ifdef PLATFORM_EC_SHARED_SPI_FLASH in common shim file (zephyr/shim/src/flash.c) along with CL:4916998",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854f0108_462a1a1f",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T15:31:27Z",
+      "side": 1,
+      "message": "nit: add comment for delay",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a0ed63_d2e8c736",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T15:31:27Z",
+      "side": 1,
+      "message": "may be PRIO_FIRST ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474ef2bf_eebabb77",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T15:31:27Z",
+      "side": 1,
+      "message": "Gaurd with ifndef PLATFORM_EC_SHARED_SPI_FLASH for non shared flash projects.",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5465c6ab_3eac52fe",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T15:31:27Z",
+      "side": 1,
+      "message": "any reason for pre-i2c?",
+      "range": {
+        "startLine": 22,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
