@@ -51,6 +51,24 @@
       "parentUuid": "332b35e1_765f677c",
       "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753f9de5_e5dda954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-10-13T09:44:51Z",
+      "side": 1,
+      "message": "\u003e We will disable CBI copy from EEPROM to EC flash if EC flash CBI region is empty\n\nwhat will happen if EC flash CBI region is empty but EEPROM has the CBI data?\n\nScreebo will keep EEPROM according to [meeting note](https://docs.google.com/document/d/1P1XX43ZosoUFNw65NI4hc2-R00lpUm5lKKHnl-mXsis/edit) on 10/12.",
+      "parentUuid": "0ca01948_d7ea07e6",
+      "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
