@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86a95b3_e468237b",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-10-13T15:27:01Z",
+      "side": 1,
+      "message": "misspelling IS_ENBLED",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4b08de_6c085bea",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-10-13T15:27:01Z",
+      "side": 1,
+      "message": "No need for the brackets around the IS_ENABLED I think",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3983e64e_8125aa28",
+        "filename": "common/host_command_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-10-13T15:27:01Z",
+      "side": 1,
+      "message": "I wonder if there is a need for both statements. I know that the CrOS EC doesn\u0027t have a dependency system, but I am not sure if there is a need for both. If anyone enable the _FOR_EVENT define without base one, it is invalid either way so compilation error shouldn\u0027t be a problem here. But it may be a different approach for different persons, so no need to change that.",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1023762f_5bc217c4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-10-13T15:27:01Z",
+      "side": 1,
+      "message": "Did you add the appropriate Kconfig for the zephyr? I remember that there was a pre-submit check that required this to be done when adding new config in CrOS EC",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
