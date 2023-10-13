@@ -34,6 +34,24 @@
       "parentUuid": "401baf7c_365bc13c",
       "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e587fb_1a9a08e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-13T21:14:09Z",
+      "side": 1,
+      "message": "`it might break things because there is no EEPROM` that\u0027s why i said\n`disable this feature dynamically on future board spins`",
+      "parentUuid": "dbec542b_3596c0d2",
+      "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
