@@ -22,6 +22,30 @@
       },
       "revId": "1da179cd8089887a24e3f8118e4b5ac587e639d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c64e027_f957b12e",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-13T22:57:57Z",
+      "side": 1,
+      "message": "I looked for guidance on this in our licensing documentation and didn\u0027t find anything.  (I think I\u0027ve looked in the past as well.)  So I consulted CrOS Chatty Eng, and received a response suggesting the same.  I\u0027m interpreting this as best to claim the oldest copyright year we can.  I created the first revision of this script in 2018, so I\u0027m changing it to 2018.",
+      "parentUuid": "294acd38_e96108d5",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "1da179cd8089887a24e3f8118e4b5ac587e639d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
