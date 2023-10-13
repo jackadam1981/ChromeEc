@@ -116,7 +116,7 @@ static void ec_host_cmd_user_cb(const struct ec_host_cmd_rx_ctx *rx_ctx,
 		system_reset(SYSTEM_RESET_HARD);
 	}
 
-#ifdef CONFIG_AP_HANG_DETECT
+#if defined(CONFIG_AP_HANG_DETECT) && defined(CONFIG_AP_HANG_DETECT_FOR_EVENT)
 	/* If hang detection is enabled, check stop on host command */
 	hang_detect_stop_on_host_command();
 #endif
