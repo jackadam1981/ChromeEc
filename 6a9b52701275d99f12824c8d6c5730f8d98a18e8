@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2db39c_addda4ac",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/pd_alt_mode.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T22:25:25Z",
+      "side": 1,
+      "message": "are all of these needed?",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0101472d_1ea954ab",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T22:25:25Z",
+      "side": 1,
+      "message": "all the configs needed?",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e55598_b9ebef0e",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T22:25:25Z",
+      "side": 1,
+      "message": "how about adding a \nBUILD_ASSERT(USBC_PORT_COUNT \u003d\u003d CONFIG_USB_PD_PORT_MAX_COUNT) ?",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3b1039_825117f8",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T22:25:25Z",
+      "side": 1,
+      "message": "in all the below functions should \"status \u003d { 0 };\" or its don\u0027t care ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
