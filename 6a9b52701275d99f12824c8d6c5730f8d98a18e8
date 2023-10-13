@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ca6775f_98cb2ae7",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/pd_alt_mode.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-13T23:23:16Z",
+      "side": 1,
+      "message": "Need to check.",
+      "parentUuid": "bc2db39c_addda4ac",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0101472d_1ea954ab",
         "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-13T22:25:25Z",
       "side": 1,
       "message": "all the configs needed?",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df78b12_25737eb5",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-13T23:23:16Z",
+      "side": 1,
+      "message": "Need to check on this.",
+      "parentUuid": "0101472d_1ea954ab",
       "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5946aedb_243a6399",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-13T23:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22e55598_b9ebef0e",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3b1039_825117f8",
@@ -65,6 +119,30 @@
       "writtenOn": "2023-10-13T22:25:25Z",
       "side": 1,
       "message": "in all the below functions should \"status \u003d { 0 };\" or its don\u0027t care ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa3578d_cf534ed5",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-13T23:23:16Z",
+      "side": 1,
+      "message": "It does not really care, I just ensure also clearing status works.",
+      "parentUuid": "3e3b1039_825117f8",
       "range": {
         "startLine": 58,
         "startChar": 23,
