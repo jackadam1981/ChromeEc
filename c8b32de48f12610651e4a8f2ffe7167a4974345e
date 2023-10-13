@@ -33,6 +33,24 @@
       "message": "Should we remove the `cbi_flash` in `screebo/project.overlay` together? Otherwise, is there a preserved section in EC flash?",
       "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca01948_d7ea07e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-13T08:45:17Z",
+      "side": 1,
+      "message": "Not sure I got the comment but we are not disabling CBI in EC flash feature with this\n\nWe will disable CBI copy from EEPROM to EC flash if EC flash CBI region is empty\n\nThis change is intended to pushed when, future protos are supposed to be shipped with CBI in EC flash from factory and existing protos are using latest EC image",
+      "parentUuid": "332b35e1_765f677c",
+      "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
