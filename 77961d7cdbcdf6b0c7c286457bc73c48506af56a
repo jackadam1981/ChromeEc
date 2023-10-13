@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d26c0e7_ea9769c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-13T21:05:48Z",
+      "side": 1,
+      "message": "There\u0027s still some rough edges to upgrading in place, most notably not reloading the module.  I\u0027m fixing those in separate CLs, which I\u0027ll tag with b:299690277.",
+      "revId": "77961d7cdbcdf6b0c7c286457bc73c48506af56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
