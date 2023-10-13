@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7736c4ec_1938563e",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-13T19:12:50Z",
+      "side": 1,
+      "message": "Nit: It seems like the structure of this code is meant to allow the same function to be used for different chips. If all the Microchip chips start with \"mec,\" then you should just be able to use that as the string and not need to check for each full chip name.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "cec700bccab5ca872feb5943ed2ec3b2e9879e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
