@@ -106,7 +106,9 @@
 			       <&gpioh 2 0>,
 			       <&gpiok 7 0>,
 			       <&gpioc 6 0>,
-			       <&gpiof 0 0>;
+				   <&gpiof 0 0>,
+				   <&gpioh 2 0>,
+				   <&gpioj 3 0>;
 	};
 
 	named-gpios {
