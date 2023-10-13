@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cb3a18_dac8abba",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-13T22:09:57Z",
+      "side": 1,
+      "message": "You could add `select FLASH_RESET` to this symbol.",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 35
+      },
+      "revId": "3b62166e3aab215df3423d06e1d1a4ac340f0138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9dba2d_a6a7df10",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-13T22:09:57Z",
+      "side": 1,
+      "message": "This symbol isn\u0027t needed.  Boards should use the Zephyr symbol CONFIG_FLASH_RESET directly.",
+      "range": {
+        "startLine": 165,
+        "startChar": 7,
+        "endLine": 165,
+        "endChar": 41
+      },
+      "revId": "3b62166e3aab215df3423d06e1d1a4ac340f0138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
