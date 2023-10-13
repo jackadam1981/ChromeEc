@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "932d4a69_ca0b9891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T19:20:52Z",
+      "side": 1,
+      "message": "this looks same as zephyr/boards/arm/mec1727\nhow about changing the zephyr/boards/arm/mec1727 to zephyr/boards/arm/mec172x\nand call out the differences like zephyr/boards/arm/npcx9/",
+      "revId": "724896a4b11a2a6113771d80487b4bf042693d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
