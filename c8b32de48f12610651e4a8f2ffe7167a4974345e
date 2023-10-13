@@ -69,6 +69,24 @@
       "parentUuid": "0ca01948_d7ea07e6",
       "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b55514_bd84b439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-13T09:48:51Z",
+      "side": 1,
+      "message": "`what will happen if EC flash CBI region is empty but EEPROM has the CBI data?`\nCBI will be unavailable\n\n\n`Screebo will keep EEPROM according to meeting note on 10/12.`\nGot it. We need to keep this mechanism enabled for some more time. This change is stale now given this discussion and discussion in Rex CL below this",
+      "parentUuid": "753f9de5_e5dda954",
+      "revId": "c8b32de48f12610651e4a8f2ffe7167a4974345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
