@@ -16,6 +16,24 @@
       "message": "what problem does this change solve?\n\ni\u0027m concerned disabling this feature will cause problems for situations\nwhere people flash back to older FW images. the factory image didn\u0027t\nsupport CBI-in-flash, so we need to be a bit careful about\ninadvertently creating an unrecoverable workflow.\n\nwhat might make more sense is to check the board-ID at runtime\nand disable this feature dynamically on future board spins.",
       "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbec542b_3596c0d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-13T08:51:07Z",
+      "side": 1,
+      "message": "ok we are actually doing the transfer only when CBI in EC flash is empty or corrupted\n\nIf I leave it as it is and in future boards we remove EEPROM, if CBI in EC flash is somehow corrupted and this feature tried to transfer from EEPROM, it might break things because there is no EEPROM\n\nShould we make this change when we stop support for proto2",
+      "parentUuid": "401baf7c_365bc13c",
+      "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
