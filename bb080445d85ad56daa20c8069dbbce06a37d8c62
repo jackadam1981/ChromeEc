@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91112354_0d5b5359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-13T23:20:14Z",
+      "side": 1,
+      "message": "Note I tried avoiding the version duplication by putting the version in a common file, read from both dkms.conf and the Makefile, but making dkms.conf find an arbitrary local file seemed rather hacky and not properly supported.",
+      "revId": "bb080445d85ad56daa20c8069dbbce06a37d8c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
