@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde286e7_024e3f8b",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: 80 chars",
+      "range": {
+        "startLine": 6,
+        "startChar": 60,
+        "endLine": 6,
+        "endChar": 61
+      },
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261a880e_bb41e747",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "How about USBC_INTEL_ALTMODE_EMULATOR ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c8f0d5_5bfea6d5",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: add a comment something like \" used for testing intel pd altmode driver etc",
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6048909d_dc95f1e8",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: needed ? used only once and can it be directly used in the code?",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857a018b_3b96d0b0",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: how about adding comments to each of the return in the for loop ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 4
+      },
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c428204_7fcbbec1",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: add a comment its for writing to data control",
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f2844d_f95c5819",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: add a comment its for reading from data status",
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4423d42a_0eb679ef",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: add a new line",
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f14ec86_84b468b0",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-13T21:44:15Z",
+      "side": 1,
+      "message": "nit: add a new line",
+      "revId": "30ca3e8facf6c8c85b74d65b03838a6fe82f9dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
