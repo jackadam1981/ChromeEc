@@ -52,6 +52,24 @@
       "parentUuid": "dbec542b_3596c0d2",
       "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a40930c_36e527ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-14T11:23:17Z",
+      "side": 1,
+      "message": "we need some value right to determine what proto or sku it is, and I assume we get that info or board ID through CBI. But this feature is active only when CBI is missing or corrupted. Is there a way to determine the device other than CBI, to dynamically decide to go through transfer mechanism",
+      "parentUuid": "35e587fb_1a9a08e9",
+      "revId": "efaad46c2280ccf69a87bae30eab96bc38306ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
