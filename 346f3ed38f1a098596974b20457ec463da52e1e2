@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8df4405_faecde23",
+        "filename": "common/host_command_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-16T10:52:15Z",
+      "side": 1,
+      "message": "@keithshort@chromium.org do you know if it is stil necessary? I didn\u0027t find the original `CONFIG_AP_HANG_DETECT` in the zephry Kconfigs.",
+      "parentUuid": "3983e64e_8125aa28",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1023762f_5bc217c4",
         "filename": "include/config.h",
         "patchSetId": 1
