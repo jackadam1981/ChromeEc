@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b002451_e7724e9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-16T23:22:24Z",
+      "side": 1,
+      "message": "\"symlink to the old directory\" --\u003e Try to avoid symlinks for reusing source code files.  Use normal language and build config means for that.",
+      "parentUuid": "1d695001_3ed96224",
+      "revId": "3baac815bc145be41d0691b0efd3171c69b6ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2be7b82d_0ade8a60",
