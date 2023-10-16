@@ -16,6 +16,23 @@
       "message": "Should be fixed by https://crrev.com/i/6563735",
       "revId": "8551568c82db7ee4860b880699e4a636efb934e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336692f8_20a07cce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-10-16T10:11:59Z",
+      "side": 1,
+      "message": "drop this one. crrev/c/4940857 is uploaoded instead.",
+      "revId": "8551568c82db7ee4860b880699e4a636efb934e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
