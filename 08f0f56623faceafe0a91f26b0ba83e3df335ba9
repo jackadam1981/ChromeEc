@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d1f5c1_6217ac0b",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-10-16T13:52:48Z",
+      "side": 1,
+      "message": "would it work to do `read -r -a \u003c\u003c\u003c \"${CHIP_CMD_PREFIX}\"`?",
+      "range": {
+        "startLine": 1857,
+        "startChar": 1,
+        "endLine": 1857,
+        "endChar": 37
+      },
+      "revId": "08f0f56623faceafe0a91f26b0ba83e3df335ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
