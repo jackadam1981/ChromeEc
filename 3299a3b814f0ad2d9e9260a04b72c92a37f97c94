@@ -80,6 +80,30 @@
       },
       "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61d17de_cd6346aa",
+        "filename": "board/constitution/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-16T18:01:47Z",
+      "side": 1,
+      "message": "IIUC, the idea of this CL is to make the sink port consume no current. This function configures the port as a source. Can you please explain why that\u0027s ok and what happens if this line is removed?",
+      "parentUuid": "6cdc0f6c_9fc14ece",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
