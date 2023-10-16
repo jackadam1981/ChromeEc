@@ -392,7 +392,7 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 		voltage_mv = board_get_vbus_voltage(port);
 #else
 		/* There is a single ADC that measures joint Vbus */
-		voltage_mv = adc_read_channel(ADC_VBUS);
+		//voltage_mv = adc_read_channel(ADC_VBUS);
 #endif
 	}
 	return voltage_mv;

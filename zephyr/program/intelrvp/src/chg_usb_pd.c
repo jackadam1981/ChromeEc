@@ -12,8 +12,13 @@
 #include "intelrvp.h"
 #include "tcpm/tcpci.h"
 
+#if 0
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+#else
+#define CPRINTF(format, args...)
+#define CPRINTS(format, args...)
+#endif
 
 bool is_typec_port(int port)
 {
