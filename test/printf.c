@@ -180,6 +180,7 @@ test_static int test_vsnprintf_int(void)
 		 * more means that the output was truncated.
 		 */
 		DISABLE_COMPILER_WARNING("-Wformat-truncation");
+		DISABLE_COMPILER_WARNING("-Wfortify-source");
 
 		ret = SNPRINTF(output, 4, "%5d", 123);
 		TEST_ASSERT_ARRAY_EQ(output, "  1", 4);
@@ -197,6 +198,7 @@ test_static int test_vsnprintf_int(void)
 		TEST_ASSERT_ARRAY_EQ(output, "000", 4);
 		TEST_EQ(ret, 10, "%d");
 
+		ENABLE_COMPILER_WARNING("-Wfortify-source");
 		ENABLE_COMPILER_WARNING("-Wformat-truncation");
 	}
 
