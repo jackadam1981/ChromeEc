@@ -52,6 +52,24 @@
       "parentUuid": "82b4664b_7a61ba1d",
       "revId": "162268b88df0ba79ee6c1ec28a6bd75415478a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49528c0a_9c6ad684",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-16T18:50:29Z",
+      "side": 1,
+      "message": "Adding `EC_RES_INVALID_PARAM` -\u003e `EC_ERROR_INVAL` conversion would make sense IMO",
+      "parentUuid": "3ee19147_a9e15f1a",
+      "revId": "162268b88df0ba79ee6c1ec28a6bd75415478a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
