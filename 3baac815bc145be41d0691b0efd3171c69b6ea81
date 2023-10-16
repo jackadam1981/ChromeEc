@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d695001_3ed96224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-16T20:29:33Z",
+      "side": 1,
+      "message": "I think this looks as good as it did 6 months ago, which is to say that I\u0027d still like to see at least some response to my outstanding comments, but it seems like it\u0027s pretty close to being done.\n\nA few overall comments:\n* You\u0027ll need to make sure that changes to common code only apply to the new board config, not the existing Servo build.\n* For files where the new board is exactly the same as the old board, which have nothing to do with the TCPM, it\u0027s probably better to symlink to the old directory than to copy the files. That way, there will be less room for unintended divergence between the boards while we iterate.\n* `#ifdef CONFIG_SERVO` checks intended solely to save flash space on the Servo would probably be easier to understand if they were something like `#ifdef CONFIG_TCPM_FEATURE_FOO`, and each code chunk was guarded by an appropriately named feature. You could make `CONFIG_SERVO` turn off those features in config.h, but having feature flags like that would make the code easier to understand.",
+      "revId": "3baac815bc145be41d0691b0efd3171c69b6ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be7b82d_0ade8a60",
+        "filename": "common/usb_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-16T20:29:33Z",
+      "side": 1,
+      "message": "Since we\u0027re trying to contain the Servo code changes to an experimental board for now, you\u0027ll want to make sure that checks like this in common code (that builds for Servo TCPMv1) only apply to the new board. We don\u0027t want to mess with the existing board yet.",
+      "revId": "3baac815bc145be41d0691b0efd3171c69b6ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
