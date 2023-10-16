@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e78a34_5407c464",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-16T18:37:58Z",
+      "side": 1,
+      "message": "yes, reuse files under mtlrvpp_mchp program since same MECC + MTL RVP boards are used.",
+      "parentUuid": "56c30683_eaa5454f",
+      "revId": "6546f7d08875796e35a15a001158b15570c95c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da7d9e2c_c79ce756",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-13T19:45:30Z",
       "side": 1,
       "message": "What are these commented lines for?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "6546f7d08875796e35a15a001158b15570c95c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36c3cf6_74b4bc1a",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/fan.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-16T18:37:58Z",
+      "side": 1,
+      "message": "Leftover from previous project, yes, comments can be removed.\nbut now, this file is not used.",
+      "parentUuid": "da7d9e2c_c79ce756",
       "range": {
         "startLine": 27,
         "startChar": 1,
