@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec4602b_f9cb9d08",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/pd_alt_mode.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-16T22:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca6775f_98cb2ae7",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0101472d_1ea954ab",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Need to check on this.",
       "parentUuid": "0101472d_1ea954ab",
+      "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44691286_62be31e5",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-16T22:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df78b12_25737eb5",
       "revId": "6a9b52701275d99f12824c8d6c5730f8d98a18e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
