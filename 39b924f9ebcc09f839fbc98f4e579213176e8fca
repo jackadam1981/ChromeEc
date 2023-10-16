@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "873d3a3b_c9d890d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2023-10-16T16:16:14Z",
+      "side": 1,
+      "message": "```\ninclude/compiler.h:45:23: error: unknown option after ‘#pragma GCC diagnostic’ kind [-Werror\u003dpragmas]\n   45 | #define _DO_PRAGMA(x) _Pragma(#x)\n      |                       ^~~~~~~\ninclude/compiler.h:49:2: note: in expansion of macro ‘_DO_PRAGMA’\n   49 |  _DO_PRAGMA(compiler diagnostic ignored warning)\n      |  ^~~~~~~~~~\ninclude/compiler.h:58:2: note: in expansion of macro ‘_DISABLE_COMPILER_WARNING’\n   58 |  _DISABLE_COMPILER_WARNING(GCC, warning)\n      |  ^~~~~~~~~~~~~~~~~~~~~~~~~\ntest/printf.c:183:3: note: in expansion of macro ‘DISABLE_COMPILER_WARNING’\n  183 |   DISABLE_COMPILER_WARNING(\"-Wfortify-source\");\n      |   ^~~~~~~~~~~~~~~~~~~~~~~~\ncc1: all warnings being treated as errors\n```\n\n`cc1` makes this look like a GCC-specific error. Fix coming in a sec",
+      "revId": "39b924f9ebcc09f839fbc98f4e579213176e8fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
