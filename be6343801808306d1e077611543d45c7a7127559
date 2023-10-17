@@ -16,6 +16,24 @@
       "message": "This seems workable, but it blurs the interface between the common VDM code and the individual VDM states. Ideally, the common VDM code shouldn\u0027t need to know what state it\u0027s in, and the individual states shouldn\u0027t need to know about retries or timeouts.\n\nWhat if you moved the check of the retry flag into `parse_vdm_response_common` and had it return `VDM_RESULT_NO_ACTION` after the first timeout? Then, the existing identity state code would handle the discovery state correctly by itself, and `pe_vdm_send_request_run` wouldn\u0027t need to know what state it\u0027s in. As a bonus, all VDMs would benefit from this retry mechanism, not just SOP Discover Identity.",
       "revId": "be6343801808306d1e077611543d45c7a7127559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51008e22_f8339509",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5821,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-17T17:34:28Z",
+      "side": 1,
+      "message": "let me work on changing the implementation to that and getting it tested. Seems reasonable to keep the common code separate from the VDM states. \n\nI was focusing on the states that I had seen failing and didn\u0027t take into consideration that other requests could fail",
+      "parentUuid": "bbbbd035_f0c3036d",
+      "revId": "be6343801808306d1e077611543d45c7a7127559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
