@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4f6416_02a095f6",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-17T21:07:56Z",
+      "side": 1,
+      "message": "maybe alpha-sort?\nit doesn\u0027t make sense to group this list by the most recent\nconfig option that increased the image size beyond the limit.\nit\u0027s never just that *one* option. anything more detailed than\n`# Boards that don\u0027t fit in flash with clang` is not going to\nbe accurate, so unlikely to be useful info here.",
+      "range": {
+        "startLine": 311,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 15
+      },
+      "revId": "b02b896756ae7d86d99cbdc2273edf1bbce3ca04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
