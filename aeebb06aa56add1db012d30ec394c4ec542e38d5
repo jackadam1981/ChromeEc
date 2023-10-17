@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9351df77_2cb097df",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-17T11:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc529def_3478b77f",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "854f0108_462a1a1f",
@@ -49,6 +67,24 @@
       "writtenOn": "2023-10-13T15:31:27Z",
       "side": 1,
       "message": "nit: add comment for delay",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5680d3a_45e51b98",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-17T11:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854f0108_462a1a1f",
       "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "082942d3_8e7a848a",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-17T11:41:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a0a0ed63_d2e8c736",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474ef2bf_eebabb77",
@@ -93,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e0b0ab_40da562b",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-17T11:41:49Z",
+      "side": 1,
+      "message": "board_init() changes are needed even for the shared flash.\nI see before sysjump \"HOOK_SYSJUMP\" is called and post sysjump \"HOOK_INIT\" is called.",
+      "parentUuid": "474ef2bf_eebabb77",
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5465c6ab_3eac52fe",
@@ -106,6 +184,30 @@
       "writtenOn": "2023-10-13T15:31:27Z",
       "side": 1,
       "message": "any reason for pre-i2c?",
+      "range": {
+        "startLine": 22,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "aeebb06aa56add1db012d30ec394c4ec542e38d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccde5da7_3b0cbb67",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-17T11:41:49Z",
+      "side": 1,
+      "message": "No specific reason, just wanted to keep with high priority.",
+      "parentUuid": "5465c6ab_3eac52fe",
       "range": {
         "startLine": 22,
         "startChar": 36,
