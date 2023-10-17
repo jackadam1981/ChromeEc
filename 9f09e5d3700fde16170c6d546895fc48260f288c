@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edfeb3cc_e26888a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5801,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-17T23:51:01Z",
+      "side": 1,
+      "message": "Will run some tests with the change",
+      "parentUuid": "a9a214f6_6534ac12",
+      "range": {
+        "startLine": 5796,
+        "startChar": 0,
+        "endLine": 5801,
+        "endChar": 28
+      },
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "faaa5337_31011e7e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "511f078a_53a86a73",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5826,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-17T23:51:01Z",
+      "side": 1,
+      "message": "I\u0027ll test that out I had tried this initially and it wasn\u0027t working but I was assigning it from the port functions",
+      "parentUuid": "faaa5337_31011e7e",
+      "range": {
+        "startLine": 5822,
+        "startChar": 0,
+        "endLine": 5826,
+        "endChar": 33
+      },
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c011248_ecaf9def",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -94,6 +142,24 @@
       "writtenOn": "2023-10-17T22:54:02Z",
       "side": 1,
       "message": "Recording and printing this value could be done in the common code as well.",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807bad74_4acbd69e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6068,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-17T23:51:01Z",
+      "side": 1,
+      "message": "I will probably remove this as it was for debug more than anything",
+      "parentUuid": "6c011248_ecaf9def",
       "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
