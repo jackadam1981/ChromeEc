@@ -4205,12 +4205,12 @@
 /*
  * Device can be a tablet as well as a clamshell.
  */
-#undef CONFIG_TABLET_MODE
+#define CONFIG_TABLET_MODE
 
 /*
  * Add a virtual switch to indicate when we are in tablet mode.
  */
-#undef CONFIG_TABLET_MODE_SWITCH
+#define CONFIG_TABLET_MODE_SWITCH
 
 /*
  * Config to identify what devices use GMR sensor to detect tablet mode. If a

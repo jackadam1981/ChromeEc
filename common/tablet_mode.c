@@ -25,6 +25,7 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ##args)
 
+void nb_mode_interrupt(enum gpio_signal signal);
 /*
  * Other code modules assume that notebook mode (i.e. tablet_mode = 0) at
  * startup.
@@ -360,6 +361,7 @@ static int command_settabletmode(int argc, const char **argv)
 	}
 
 	notify_tablet_mode_change();
+
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(tabletmode, command_settabletmode, "[on | off | reset]",
@@ -372,3 +374,43 @@ __test_only void tablet_reset(void)
 	tablet_mode_forced = false;
 	disabled = false;
 }
+
+#ifdef CONFIG_SOC_FAMILY_INTEL_ISH
+static void board_tablet_mode_change(void)
+{
+	CPRINTS("tablet mode changed to %d", tablet_get_mode());
+        /* Update GPIO to EC letting it know that we entered tablet mode */
+        gpio_set_level(GPIO_SOC_EC_ISH_NB_MODE, tablet_get_mode());
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_tablet_mode_change,
+             HOOK_PRIO_DEFAULT);
+#else
+static void nb_mode_init(void)
+{
+        gpio_enable_interrupt(GPIO_SOC_EC_ISH_NB_MODE);
+}
+DECLARE_HOOK(HOOK_INIT, nb_mode_init, HOOK_PRIO_POST_LID);
+
+
+void nb_mode_isr_debounce(enum gpio_signal signal)
+{
+	int nb_mode_l;
+
+	/* notebook mode: GPIO_SOC_EC_ISH_NB_MODE is 0 */
+	nb_mode_l = gpio_get_level(GPIO_SOC_EC_ISH_NB_MODE);
+
+	CPRINTS("%s: gpio nb_mode_l = %d\n", __func__, nb_mode_l);
+	if (!nb_mode_l) {
+		tablet_set_mode(0, TABLET_TRIGGER_LID);
+	} else {
+		tablet_set_mode(1, TABLET_TRIGGER_LID);
+	}
+}
+DECLARE_DEFERRED(nb_mode_isr_debounce);
+
+void nb_mode_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&nb_mode_isr_debounce_data,
+			   40*MSEC);
+}
+#endif

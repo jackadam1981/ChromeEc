@@ -22,7 +22,19 @@
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ##args)
+#if 0
+#ifdef CONFIG_TABLET_MODE_SWITCH
+#warning "tablet mode switch"
+#endif
 
+#ifdef CONFIG_TABLET_MODE
+#warning "tablet mode"
+#endif
+
+#ifdef CONFIG_GMR_TABLET_MODE
+#warning "GMR tablet mode"
+#endif
+#endif
 /* Buttons state. */
 static uint32_t mkbp_button_state;
 
