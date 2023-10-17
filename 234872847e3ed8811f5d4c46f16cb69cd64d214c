@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8869adc0_5e0c78fd",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-17T01:26:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6104f901_cbcfd9b8",
+      "range": {
+        "startLine": 424,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 3
+      },
+      "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3927d965_19d4d439",
@@ -132,6 +156,24 @@
       "writtenOn": "2023-10-11T00:45:50Z",
       "side": 1,
       "message": "same logic here..",
+      "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a73289_2e89bb79",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-17T01:26:23Z",
+      "side": 1,
+      "message": "i think `ktu1125_vbus_source_enable()` is actually OK as-is\nbecause the `ktu1125_is_sourcing_vbus()` check prevents\ndisabling sink mode when there\u0027s a request to disable\nsource mode. did i get the truth table wrong?",
+      "parentUuid": "3927d965_19d4d439",
       "revId": "234872847e3ed8811f5d4c46f16cb69cd64d214c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
