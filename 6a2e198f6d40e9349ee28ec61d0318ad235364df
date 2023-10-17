@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb3bde5a_da3b4ff3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-17T22:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acab76e_02b00db7",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "6a2e198f6d40e9349ee28ec61d0318ad235364df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa48e22e_920f08e7",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0a0fe0_f27b23f7",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-17T22:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa48e22e_920f08e7",
+      "revId": "6a2e198f6d40e9349ee28ec61d0318ad235364df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9033e1a_33ddfc54",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-10-17T21:45:53Z",
       "side": 1,
       "message": "I think need to test with invalid port, num of args sent. Same for read function too",
+      "revId": "6a2e198f6d40e9349ee28ec61d0318ad235364df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc96d490_f0fcb6ac",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-17T22:23:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f9033e1a_33ddfc54",
       "revId": "6a2e198f6d40e9349ee28ec61d0318ad235364df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
