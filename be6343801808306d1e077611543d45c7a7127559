@@ -52,6 +52,24 @@
       "parentUuid": "51008e22_f8339509",
       "revId": "be6343801808306d1e077611543d45c7a7127559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3771c99_c409e672",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5821,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-17T22:54:02Z",
+      "side": 1,
+      "message": "I missed how this block of code worked before. It\u0027s recursively calling this run function with flags and timers set so as to partially reinitialize the state, and the overall flow is to wait for the timeout, then restart the timeout and keep waiting in the same state. So the max timeout is 3 * tVDMSenderResponse, not 2 * tVDMSenderResponse. This breaks with our existing idioms in the PD state machines, and I find it hard to follow.\n\nI think it could be made simpler. See suggestion.",
+      "parentUuid": "eaa0408b_56060240",
+      "revId": "be6343801808306d1e077611543d45c7a7127559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f87ef3_3fba73da",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-17T22:54:02Z",
+      "side": 1,
+      "message": "Nit: Remaining references to \"identity\" should be generalized.",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c09b70a_6a80469d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-17T22:54:02Z",
+      "side": 1,
+      "message": "Nit here, elsewhere: I initially took this change to be sending a second VDM REQ after the timeout. But it\u0027s just extending the timeout for the initial REQ. It\u0027s not really retrying anything. Thus, I would call this something like `vdm_req_timeout_extended`. The commit message and other comments should be updated to call it a timeout extension as well.",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a214f6_6534ac12",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5801,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-17T22:54:02Z",
+      "side": 1,
+      "message": "This block can be removed if the timer reset logic is in the timeout block.",
+      "range": {
+        "startLine": 5796,
+        "startChar": 0,
+        "endLine": 5801,
+        "endChar": 28
+      },
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faaa5337_31011e7e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5826,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-17T22:54:02Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t/* If partner failed to respond retry with longer\n\t\t\t * timeout\n\t\t\t */\n\t\t\tpd_timer_enable(port, PE_TIMER_VDM_RESPONSE,\n\t\t\t\t\tPD_T_VDM_SNDR_RSP * 2)\n\n```\nThis will simply allow the state to keep running with no state change other than a timer reset. No need for a recursive call.",
+      "range": {
+        "startLine": 5822,
+        "startChar": 0,
+        "endLine": 5826,
+        "endChar": 33
+      },
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c011248_ecaf9def",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6068,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-17T22:54:02Z",
+      "side": 1,
+      "message": "Recording and printing this value could be done in the common code as well.",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
