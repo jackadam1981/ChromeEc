@@ -68,7 +68,7 @@ static bool in_reset = true;
 static void hid_reset(void)
 {
 	k_msgq_purge(&touchpad_report_queue);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODE(DT_PROP(TP_NODE, irq)), 0);
 	in_reset = true;
 }
 
@@ -95,9 +95,7 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 			}
 
 			if (k_msgq_num_used_get(&touchpad_report_queue) == 0) {
-				gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(
-							ec_ap_hid_int_odl),
-						1);
+				gpio_pin_set_dt(GPIO_DT_FROM_NODE(DT_PROP(TP_NODE, irq)), 1);
 			}
 
 			return (ret ? 0 :
@@ -108,8 +106,7 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 			out[0] = 0;
 			out[1] = 0;
 			in_reset = false;
-			gpio_pin_set_dt(
-				GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 1);
+			gpio_pin_set_dt(GPIO_DT_FROM_NODE(DT_PROP(TP_NODE, irq)), 1);
 			k_msgq_purge(&touchpad_report_queue);
 			return 2;
 		}
@@ -257,7 +254,7 @@ static int hid_i2c_target_init(const struct device *dev)
 void hid_i2c_touchpad_add(const struct usb_hid_touchpad_report *report)
 {
 	k_msgq_put(&touchpad_report_queue, report, K_NO_WAIT);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODE(DT_PROP(TP_NODE, irq)), 0);
 }
 
 static const struct i2c_target_dev_config i2c_target_cfg = {
