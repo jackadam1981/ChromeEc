@@ -93,6 +93,7 @@ static enum battery_present prev_bp;
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_target_time;
 static timestamp_t precharge_start_time;
+static timestamp_t charge_request_time;
 static struct sustain_soc sustain_soc;
 static struct current_limit {
 	uint32_t value; /* Charge limit to apply, in mA */
@@ -476,6 +477,18 @@ int charge_request(bool use_curr, bool is_full)
 #else
 		voltage = current = 0;
 #endif
+	}
+
+	/*
+	 * If the battery can't discharge, don't set charge current within
+	 * 500ms to wait ACOK stable.
+	 */
+	if (battery_seems_disconnected) {
+		if (!extpower_is_present() ||
+		    get_time().val < charge_request_time.val + 500 * MSEC) {
+			CPRINTS("ACOK unstable do not set charge current.");
+			current = 0;
+		}
 	}
 
 	if (curr.ac) {
@@ -1050,6 +1063,13 @@ void charge_wakeup(void)
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, charge_wakeup, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_AC_CHANGE, charge_wakeup, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, charge_wakeup, HOOK_PRIO_DEFAULT);
+
+static void charge_request_time_setting(void)
+{
+	if (extpower_is_present())
+		charge_request_time = get_time();
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, charge_request_time_setting, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE
 static void bat_low_voltage_throttle_reset(void)
