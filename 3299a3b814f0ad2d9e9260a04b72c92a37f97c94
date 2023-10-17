@@ -128,6 +128,30 @@
       },
       "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9cc27ab_d33ba939",
+        "filename": "board/constitution/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-17T16:20:37Z",
+      "side": 1,
+      "message": "Is it not going to damage an external source device? We\u0027re a sink on the contract but internally the PPC is muxed as a source.",
+      "parentUuid": "630bfd99_00bd4a48",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
