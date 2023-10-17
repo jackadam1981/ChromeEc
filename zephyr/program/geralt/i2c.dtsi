@@ -157,5 +157,7 @@
 		/* TODO(b/301380459): allocate pid */
 		vid = <0x18d1>;
 		pid = <0x50ff>;
+
+		irq = <&ec_ap_hid_int_odl>;
 	};
 };
