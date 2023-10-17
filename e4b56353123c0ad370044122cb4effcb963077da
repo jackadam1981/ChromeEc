@@ -158,6 +158,24 @@
       "parentUuid": "d3a602c0_6b3492bc",
       "revId": "e4b56353123c0ad370044122cb4effcb963077da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e42377_412bda35",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-17T19:26:15Z",
+      "side": 1,
+      "message": "I haven\u0027t heard such a need (of making it configurable). It\u0027s one of the ancient macros lurking around. We may be able to derive it from CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE (and deprecate it).",
+      "parentUuid": "f9713b53_a53120c9",
+      "revId": "e4b56353123c0ad370044122cb4effcb963077da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
