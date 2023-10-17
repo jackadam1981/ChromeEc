@@ -34,6 +34,24 @@
       "parentUuid": "dff0151e_486f79bd",
       "revId": "673ca5a80014ad733e7bb13e89613b8d16b4b1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b4ac1c_5839aff9",
+        "filename": "zephyr/boards/arm/mec1723/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T18:05:23Z",
+      "side": 1,
+      "message": "It will be easy for maintaining if we use mec172x. \nI believe it will be just a build script/config changes for mtlrvpp_mchp \u0026 mtlrvpp_m1723 and functionality wouldn\u0027t change.",
+      "parentUuid": "7401b565_6f5159e9",
+      "revId": "673ca5a80014ad733e7bb13e89613b8d16b4b1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
