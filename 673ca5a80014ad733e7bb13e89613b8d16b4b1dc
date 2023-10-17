@@ -52,6 +52,24 @@
       "parentUuid": "7401b565_6f5159e9",
       "revId": "673ca5a80014ad733e7bb13e89613b8d16b4b1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c72b609_f18c7c3e",
+        "filename": "zephyr/boards/arm/mec1723/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-17T19:00:38Z",
+      "side": 1,
+      "message": "ok, worth to restructure for easier maintaining in the future...yes, functionality should not be impacted.",
+      "parentUuid": "c3b4ac1c_5839aff9",
+      "revId": "673ca5a80014ad733e7bb13e89613b8d16b4b1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
