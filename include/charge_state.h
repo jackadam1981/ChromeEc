@@ -416,6 +416,15 @@ __test_only bool charging_progress_displayed(void);
  */
 int board_should_charger_bypass(void);
 
+/**
+ * Setting delay time for charge_requset when the battery D-FET can't be
+ * turn on.
+ *
+ * @return delay time. charge_request will set charge current 0mA within
+ * the delay time.
+ */
+__override_proto int board_set_charge_request_delay(void);
+
 /* Config Charger */
 #include "charge_state.h"
 
