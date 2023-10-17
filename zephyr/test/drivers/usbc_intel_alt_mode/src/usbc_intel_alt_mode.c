@@ -3,14 +3,18 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "usb_mux.h"
 
+#include <zephyr/shell/shell.h>
+#include <zephyr/shell/shell_dummy.h>
 #include <zephyr/ztest.h>
 
 #include <emul_intel_pd_controller.h>
 #include <host_command.h>
+#include <time.h>
 
 #define DT_DRV_COMPAT intel_pd_altmode
 
@@ -182,6 +186,61 @@ ZTEST_USER(usbc_intel_altmode, test_mux_hpd_lvl)
 			     "Port %d Failed", i);
 	}
 }
+
+#ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
+ZTEST_USER(usbc_intel_altmode, test_read_console_cmd)
+{
+	union data_status_reg _status;
+	union data_status_reg status;
+	const char *rdval = "RD_VAL:";
+	const char *buffer;
+	size_t buffer_size;
+	unsigned int temp[INTEL_ALTMODE_DATA_STATUS_REG_LEN];
+	int rv;
+
+	/* Generate randon status word */
+	srand(time(NULL));
+	for (int i = 0; i < INTEL_ALTMODE_DATA_STATUS_REG_LEN; i++) {
+		status.raw_value[i] = rand() & 0xFF;
+	}
+
+	intel_pd_controller_emul_set_status(emul_pd_ctrlr[USBC_PORT0], status);
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_equal(EC_SUCCESS,
+		      shell_execute_cmd(get_ec_shell(), "altmode read 0"),
+		      NULL);
+
+	buffer = shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_not_null(buffer);
+
+	/* Place `buffer` pointer in the right position for scanning */
+	buffer = strstr(buffer, rdval);
+	zassert_not_null(buffer);
+
+	rv = sscanf(buffer,
+		    "RD_VAL: [0]0x%x, [1]0x%x, [2]0x%x, [3]0x%x, [4]0x%x",
+		    &temp[0], &temp[1], &temp[2], &temp[3], &temp[4]);
+	zassert_equal(INTEL_ALTMODE_DATA_STATUS_REG_LEN, rv);
+
+	for (int i = 0; i < INTEL_ALTMODE_DATA_STATUS_REG_LEN; i++) {
+		_status.raw_value[i] = temp[i] & 0xFF;
+	}
+	zassert_equal(0, strncmp(&status.raw_value[0], &_status.raw_value[0],
+				 sizeof(status)));
+}
+
+ZTEST_USER(usbc_intel_altmode, test_write_console_cmd)
+{
+	shell_backend_dummy_clear_output(get_ec_shell());
+
+	zassert_equal(
+		EC_SUCCESS,
+		shell_execute_cmd(get_ec_shell(),
+				  "altmode write 0 0x0 0x1 0x2 0x3 0x4 0x5"),
+		NULL);
+}
+#endif /* CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE */
 
 ZTEST_SUITE(usbc_intel_altmode, drivers_predicate_post_main, NULL,
 	    usbc_intel_altmode_before, NULL, NULL);
