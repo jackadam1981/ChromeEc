@@ -16,6 +16,24 @@
       "message": "Hi Martin, looks like you dint see the comment.\n\nall the changes are same as zephyr/boards/arm/mec1727\nhow about changing the zephyr/boards/arm/mec1727 to zephyr/boards/arm/mec172x\nand call out the differences like zephyr/boards/arm/npcx9/",
       "revId": "673ca5a80014ad733e7bb13e89613b8d16b4b1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7401b565_6f5159e9",
+        "filename": "zephyr/boards/arm/mec1723/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-17T17:54:36Z",
+      "side": 1,
+      "message": "rename as mec172x, need a structure change which impacts mtlrvpp_mchp program.\nneed to restructure mtlrvpp_mchp firstly then mtlrvpp_m1723.",
+      "parentUuid": "dff0151e_486f79bd",
+      "revId": "673ca5a80014ad733e7bb13e89613b8d16b4b1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
