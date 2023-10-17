@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4667b68_fe3579f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T19:41:11Z",
+      "side": 1,
+      "message": "shared flash.\n\nnote: This is not a true G3 shared, EC can access flash during sysjump without going to G3",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887952d2_a6f6c8e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T19:41:11Z",
+      "side": 1,
+      "message": "shared flash.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2272f4_bb851bce",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T19:41:11Z",
+      "side": 1,
+      "message": "add mtlrvp_flash.dts that overrides default flash info",
+      "range": {
+        "startLine": 94,
+        "startChar": 36,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eef9d94_62912e29",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T19:41:11Z",
+      "side": 1,
+      "message": "add flash start address config",
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
