@@ -34,6 +34,24 @@
       "parentUuid": "bbbbd035_f0c3036d",
       "revId": "be6343801808306d1e077611543d45c7a7127559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa0408b_56060240",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5821,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-17T19:16:17Z",
+      "side": 1,
+      "message": "After looking into it I think most straightforward is just removing the state check from line 5821/5822 and only checking the retry. the vdm_response_common code doesn\u0027t care about the timeout and might get called after the timeout has already been checking in some cases.\n\nI\u0027m running a 200 cycle test with the state check removed.",
+      "parentUuid": "51008e22_f8339509",
+      "revId": "be6343801808306d1e077611543d45c7a7127559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
