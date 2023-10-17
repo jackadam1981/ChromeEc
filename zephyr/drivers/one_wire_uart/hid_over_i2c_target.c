@@ -58,7 +58,7 @@ struct i2c_target_dev_config {
 struct i2c_target_data {
 	struct i2c_target_config config;
 	uint8_t write_buf[256];
-	uint8_t read_buf[CONFIG_I2C_TARGET_IT8XXX2_MAX_BUF_SIZE];
+	uint8_t read_buf[2044];
 	int write_buf_len;
 	struct ap_power_ev_callback cb;
 };
