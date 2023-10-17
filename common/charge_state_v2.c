@@ -1339,6 +1339,12 @@ __test_only enum charge_state_v2 charge_get_state_v2(void)
 
 static void deep_charge_battery(int *need_static)
 {
+#ifndef CONFIG_PRECHARGE_DELAY_MS
+	const int precharge_delay = 0;
+#else
+	const int precharge_delay = CONFIG_PRECHARGE_DELAY_MS * MSEC;
+#endif
+
 	if ((curr.state == ST_IDLE) &&
 	    (curr.batt.flags & BATT_FLAG_DEEP_CHARGE)) {
 		/* Deep charge time out , do nothing */
@@ -1356,14 +1362,19 @@ static void deep_charge_battery(int *need_static)
 	} else {
 		/* See if we can wake it up */
 		if (curr.state != ST_PRECHARGE) {
-			CPRINTS("Start precharge for low voltage");
+			CPRINTS("Start precharge for low voltage in %d ms",
+				precharge_delay / MSEC);
 			precharge_start_time = get_time();
 			*need_static = 1;
+			set_charge_state(ST_PRECHARGE);
 		}
-		set_charge_state(ST_PRECHARGE);
-		curr.requested_voltage = batt_info->voltage_max;
-		curr.requested_current = batt_info->precharge_current;
-		curr.batt.flags |= BATT_FLAG_DEEP_CHARGE;
+
+		if (get_time().val >
+		    precharge_start_time.val + precharge_delay) {
+			curr.requested_voltage = batt_info->voltage_max;
+			curr.requested_current = batt_info->precharge_current;
+			curr.batt.flags |= BATT_FLAG_DEEP_CHARGE;
+		}
 	}
 }
 
