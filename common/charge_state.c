@@ -478,6 +478,12 @@ int charge_request(bool use_curr, bool is_full)
 #endif
 	}
 
+	/*
+	 * If the battery can't discharge, don't set charge current while ACOK
+	 * is unstable. The function board_set_charge_request_delay can set
+	 * delay time in board level.
+	 */
+
 	if (curr.ac) {
 		if (prev_volt != voltage || prev_curr != current)
 			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
@@ -1073,6 +1079,8 @@ static int get_desired_input_current(enum battery_present batt_present,
 #endif
 }
 
+#define CONFIG_PRECHARGE_DELAY_US (150 * MSEC)
+
 static void wakeup_battery(int *need_static)
 {
 	if (battery_seems_dead || battery_is_cut_off()) {
@@ -1092,13 +1100,18 @@ static void wakeup_battery(int *need_static)
 	} else {
 		/* See if we can wake it up */
 		if (curr.state != ST_PRECHARGE) {
-			CPRINTS("try to wake battery");
+			CPRINTS("try to wake battery in %d ms",
+				CONFIG_PRECHARGE_DELAY_US / MSEC);
 			precharge_start_time = get_time();
 			*need_static = 1;
+			set_charge_state(ST_PRECHARGE);
 		}
-		set_charge_state(ST_PRECHARGE);
-		curr.requested_voltage = batt_info->voltage_max;
-		curr.requested_current = batt_info->precharge_current;
+
+		if (get_time().val >
+		    precharge_start_time.val + CONFIG_PRECHARGE_DELAY_US) {
+			curr.requested_voltage = batt_info->voltage_max;
+			curr.requested_current = batt_info->precharge_current;
+		}
 	}
 }
 
