@@ -3,12 +3,18 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "usb_mux.h"
 
+#include <time.h>
+
+#include <zephyr/shell/shell.h>
+#include <zephyr/shell/shell_dummy.h>
 #include <zephyr/ztest.h>
 
+#include <drivers/intel_altmode.h>
 #include <emul_intel_pd_controller.h>
 #include <host_command.h>
 
@@ -154,6 +160,90 @@ ZTEST_USER(usbc_intel_altmode, test_mux_hpd_lvl)
 			     "Port %d Failed", i);
 	}
 }
+
+#ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
+static int usbc_intel_altmode_run_console_cmd(const char *cmd,
+					      const char **resp,
+					      size_t *resp_size)
+{
+	const struct shell *sh = get_ec_shell();
+	int rv;
+
+	shell_backend_dummy_clear_output(sh);
+
+	rv = shell_execute_cmd(sh, cmd);
+
+	if (resp && resp_size) {
+		*resp = shell_backend_dummy_get_output(sh, resp_size);
+	}
+
+	return rv;
+}
+
+ZTEST_USER(usbc_intel_altmode, test_console_cmd)
+{
+	union data_status_reg _status = { 0 };
+	union data_status_reg status = { 0 };
+	const char *rdval = "RD_VAL:";
+	const char *buffer;
+	size_t buffer_size;
+	unsigned int temp[INTEL_ALTMODE_DATA_STATUS_REG_LEN];
+	int rv;
+
+	rv = usbc_intel_altmode_run_console_cmd("altmode read 0", &buffer,
+						&buffer_size);
+	zassert_equal(EC_SUCCESS, rv);
+
+	zassert_not_null(buffer);
+
+	/* Place `buffer` pointer in the right position for scanning */
+	buffer = strstr(buffer, rdval);
+	zassert_not_null(buffer);
+
+	rv = sscanf(buffer,
+		    "RD_VAL: [0]0x%x, [1]0x%x, [2]0x%x, [3]0x%x, [4]0x%x",
+		    &temp[0], &temp[1], &temp[2], &temp[3], &temp[4]);
+	zassert_equal(INTEL_ALTMODE_DATA_STATUS_REG_LEN, rv);
+
+	for (int i = 0; i < INTEL_ALTMODE_DATA_STATUS_REG_LEN; i++) {
+		_status.raw_value[i] = temp[i] & 0xFF;
+	}
+	zassert_equal(0, strncmp(&status.raw_value[0], &_status.raw_value[0],
+				 sizeof(status)));
+
+	rv = usbc_intel_altmode_run_console_cmd(
+		"altmode write 0 0x0 0x1 0x2 0x3 0x4 0x5", NULL, 0);
+
+	zassert_equal(EC_SUCCESS, rv);
+}
+
+ZTEST_USER(usbc_intel_altmode, test_error_console_cmd)
+{
+	const char *buffer;
+	size_t buffer_size;
+	const char *err_msg = "Invalid port";
+	int rv;
+
+	/* Test read command error */
+	rv = usbc_intel_altmode_run_console_cmd("altmode read 5", &buffer,
+						&buffer_size);
+	zassert_equal(-EINVAL, rv);
+	zassert_not_null(buffer);
+
+	buffer = strstr(buffer, err_msg);
+	zassert_not_null(buffer);
+
+	/* Test write command error */
+	rv = usbc_intel_altmode_run_console_cmd(
+		"altmode write 5 0x0 0x1 0x2 0x3 0x4 0x5", &buffer,
+		&buffer_size);
+	zassert_equal(-EINVAL, rv);
+	zassert_not_null(buffer);
+
+	buffer = strstr(buffer, err_msg);
+	zassert_not_null(buffer);
+}
+#endif /* CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE */
 
 ZTEST_SUITE(usbc_intel_altmode, drivers_predicate_post_main, NULL,
 	    usbc_intel_altmode_before, NULL, NULL);
