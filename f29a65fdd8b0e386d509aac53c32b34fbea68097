@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e200863e_cd4f3c65",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T17:51:43Z",
+      "side": 1,
+      "message": "how about moving it to zephyr/shim/src/flash.c\n\n#ifdef CONFIG_PLATFORM_EC_SHARED_SPI_FLASH\n\n#define DT_DRV_COMPAT cros_ec_shared_spi_flash\n\nBUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) \u003c\u003d 1,\n\t     \"Unsupported External SPI GPIO\");\n\n#define SHARED_SPI_NODE DT_PATH(shared_spi)\n\nconst struct gpio_dt_spec spi_oe \u003d\n\t\t\tGPIO_DT_SPEC_GET(SHARED_SPI_NODE, spi_oe_gpios);\n\nstatic void ec_get_external_spi_access(void)\n{\n\t/* EC to get access to SPI flash  */\n\tgpio_pin_set_dt(\u0026spi_oe, 0);\n\t/* delay before EC access the external SPI flash */\n\tk_msleep(10);\n}\nDECLARE_HOOK(HOOK_SYSJUMP, ec_get_external_spi_access, HOOK_PRIO_FIRST);\n\nstatic void ap_get_external_spi_access(void)\n{\n\t/* AP to get access to SPI flash  */\n\tgpio_pin_set_dt(\u0026spi_oe, 1);\n}\nDECLARE_HOOK(HOOK_INIT, ap_get_external_spi_access, HOOK_PRIO_FIRST);\n\n#endif\n\nand and ifndef CONFIG_PLATFORM_EC_SHARED_SPI_FLASH for RVP?",
+      "revId": "f29a65fdd8b0e386d509aac53c32b34fbea68097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
