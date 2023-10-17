@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "charge_state.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
@@ -30,6 +31,7 @@
 #include "system.h"
 #include "tablet_mode.h"
 #include "task.h"
+#include "timer.h"
 #include "usbc_config.h"
 #include "usbc_ppc.h"
 
@@ -426,4 +428,9 @@ __override uint32_t board_get_sku_id(void)
 __override int mkbp_support_volume_buttons(void)
 {
 	return board_has_side_volume_buttons();
+}
+
+__override int board_set_charge_request_delay(void)
+{
+	return 500 * MSEC;
 }
