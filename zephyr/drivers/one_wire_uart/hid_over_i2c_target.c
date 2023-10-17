@@ -3,16 +3,22 @@
  * found in the LICENSE file.
  */
 
+#define DT_DRV_COMPAT cros_ec_hid_i2c_touchpad
+
 #include "drivers/one_wire_uart.h"
+#include "gpio_signal.h"
 #include "hooks.h"
 #include "usb_hid_touchpad.h"
 
 #include <string.h>
 
+#include <zephyr/devicetree.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
 
 #include <ap_power/ap_power.h>
+
+#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
 
 #define TP_NODE DT_NODELABEL(hid_i2c_target)
 
@@ -30,6 +36,8 @@ static const uint8_t REPORT_DESC_BLOB[] = REPORT_DESC(
 #define OUTPUT_REG 0x04
 #define CMD_REG 0x05
 #define DATA_REG 0x06
+
+const static struct gpio_dt_spec IRQ = GPIO_DT_SPEC_GET(TP_NODE, irq_gpios);
 
 /* TODO: allocate usb VID/PID */
 const static uint16_t HID_DESC[] = {
@@ -53,22 +61,24 @@ const static uint16_t HID_DESC[] = {
 struct i2c_target_dev_config {
 	/* I2C alternate configuration */
 	struct i2c_dt_spec bus;
+	struct gpio_dt_spec irq;
 };
 
 struct i2c_target_data {
 	struct i2c_target_config config;
+	const struct i2c_target_dev_config *dev_config;
 	uint8_t write_buf[256];
-	uint8_t read_buf[CONFIG_I2C_TARGET_IT8XXX2_MAX_BUF_SIZE];
+	uint8_t read_buf[2044];
 	int write_buf_len;
 	struct ap_power_ev_callback cb;
 };
 
 static bool in_reset = true;
 
-static void hid_reset(void)
+static void hid_reset(const struct i2c_target_dev_config *dev_config)
 {
 	k_msgq_purge(&touchpad_report_queue);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 0);
+	gpio_pin_set_dt(&dev_config->irq, 0);
 	in_reset = true;
 }
 
@@ -81,7 +91,8 @@ static void hid_reset(void)
  *
  * @return Number of bytes written to output buffer.
  */
-static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
+static int hid_handler(const struct i2c_target_dev_config *dev_config,
+		const uint8_t *in, int in_size, uint8_t *out)
 {
 	if (in_size == 0) { /* read report */
 		if (!in_reset) {
@@ -95,9 +106,7 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 			}
 
 			if (k_msgq_num_used_get(&touchpad_report_queue) == 0) {
-				gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(
-							ec_ap_hid_int_odl),
-						1);
+				gpio_pin_set_dt(&dev_config->irq, 1);
 			}
 
 			return (ret ? 0 :
@@ -108,8 +117,7 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 			out[0] = 0;
 			out[1] = 0;
 			in_reset = false;
-			gpio_pin_set_dt(
-				GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 1);
+			gpio_pin_set_dt(&dev_config->irq, 1);
 			k_msgq_purge(&touchpad_report_queue);
 			return 2;
 		}
@@ -136,7 +144,7 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 		int op_code = (cmd >> 8) & 0xF;
 
 		if (op_code == 1) { /* RESET */
-			hid_reset();
+			hid_reset(dev_config);
 		}
 		/* TODO: implement GET_REPORT and SET_REPORT */
 		return 0;
@@ -151,7 +159,7 @@ static int hid_i2c_target_stop(struct i2c_target_config *config)
 		CONTAINER_OF(config, struct i2c_target_data, config);
 
 	if (data->write_buf_len) {
-		hid_handler(data->write_buf, data->write_buf_len,
+		hid_handler(data->dev_config, data->write_buf, data->write_buf_len,
 			    data->read_buf);
 	}
 	data->write_buf_len = 0;
@@ -173,7 +181,7 @@ static int hid_i2c_target_buf_read_requested(struct i2c_target_config *config,
 {
 	struct i2c_target_data *data =
 		CONTAINER_OF(config, struct i2c_target_data, config);
-	int ret = hid_handler(data->write_buf, data->write_buf_len,
+	int ret = hid_handler(data->dev_config, data->write_buf, data->write_buf_len,
 			      data->read_buf);
 
 	if (ret < 0) {
@@ -257,15 +265,20 @@ static int hid_i2c_target_init(const struct device *dev)
 void hid_i2c_touchpad_add(const struct usb_hid_touchpad_report *report)
 {
 	k_msgq_put(&touchpad_report_queue, report, K_NO_WAIT);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 0);
+	gpio_pin_set_dt(&IRQ, 0);
 }
 
 static const struct i2c_target_dev_config i2c_target_cfg = {
-	.bus = I2C_DT_SPEC_GET(DT_NODELABEL(hid_i2c_target)),
+	.bus = I2C_DT_SPEC_GET(TP_NODE),
+	.irq = GPIO_DT_SPEC_GET(TP_NODE, irq_gpios),
 };
 
-static struct i2c_target_data i2c_target_data;
+static struct i2c_target_data i2c_target_data = {
+	.dev_config = &i2c_target_cfg,
+};
 
 I2C_DEVICE_DT_DEFINE(DT_NODELABEL(hid_i2c_target), hid_i2c_target_init, NULL,
 		     &i2c_target_data, &i2c_target_cfg, POST_KERNEL,
 		     CONFIG_I2C_TARGET_INIT_PRIORITY, &api_funcs);
+
+#endif /* DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT) */
