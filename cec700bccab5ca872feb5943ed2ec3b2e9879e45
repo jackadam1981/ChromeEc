@@ -93,6 +93,30 @@
       },
       "revId": "cec700bccab5ca872feb5943ed2ec3b2e9879e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f734f724_4171d8da",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T18:16:26Z",
+      "side": 1,
+      "message": "for the RVP, it has to be overridden with MTL-RVP specific flash. And single mode is used. Also flash start address is different.",
+      "parentUuid": "fe8b594b_15340209",
+      "range": {
+        "startLine": 94,
+        "startChar": 50,
+        "endLine": 94,
+        "endChar": 53
+      },
+      "revId": "cec700bccab5ca872feb5943ed2ec3b2e9879e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
