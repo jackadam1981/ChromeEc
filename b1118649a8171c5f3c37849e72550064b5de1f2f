@@ -39,6 +39,30 @@
       },
       "revId": "b1118649a8171c5f3c37849e72550064b5de1f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b5f744_8e430cbe",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-17T18:32:12Z",
+      "side": 1,
+      "message": "you can abandon this CL.\nInstead add this file in CL:4938046\nwith just below changes.\nCONFIG_BOARD_MTLRVP_MCHP\u003dn\nCONFIG_BOARD_MTLRVP_M1723\u003dy\n\nand add \nhere / \"mtlrvp/mtlrvpp_mchp/prj.conf\",\nhere / \"mtlrvp/mtlrvpp_m1723/prj.conf\",\nin BUILD.py",
+      "parentUuid": "eb8fbf80_d3563682",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 27
+      },
+      "revId": "b1118649a8171c5f3c37849e72550064b5de1f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
