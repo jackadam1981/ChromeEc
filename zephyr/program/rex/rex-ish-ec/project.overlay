@@ -21,3 +21,20 @@
 &int_accel {
 	status = "disabled";
 };
+
+/ {
+	named-gpios {
+		gpio_soc_ec_ish_nb_mode: soc_ec_ish_nb_mode {
+			gpios = <&gpioa 2 GPIO_INPUT>;
+			enum-name = "GPIO_SOC_EC_ISH_NB_MODE";
+		};
+	};
+
+	gpio-interrupts {
+		int_nb_mode: nb_mode {
+			irq-pin = <&gpio_soc_ec_ish_nb_mode>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "nb_mode_interrupt";
+		};
+	};
+};

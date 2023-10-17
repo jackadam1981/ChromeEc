@@ -4202,6 +4202,10 @@
  */
 #undef CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
 
+#ifdef CONFIG_BOARD_REX_ISH_EC
+#define CONFIG_TABLET_MODE
+#define CONFIG_TABLET_MODE_SWITCH
+#else
 /*
  * Device can be a tablet as well as a clamshell.
  */
@@ -4211,6 +4215,7 @@
  * Add a virtual switch to indicate when we are in tablet mode.
  */
 #undef CONFIG_TABLET_MODE_SWITCH
+#endif
 
 /*
  * Config to identify what devices use GMR sensor to detect tablet mode. If a
