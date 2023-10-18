@@ -62,7 +62,15 @@ static void connect_partner_to_port(struct usbc_alt_mode_fixture *fixture)
 	k_sleep(K_SECONDS(10));
 }
 
+<<<<<<< HEAD   (447de5 Merge remote-tracking branch cros/main into firmware-dedede-)
 static void disconnect_partner_from_port(struct usbc_alt_mode_fixture *fixture)
+||||||| BASE
+static void disconnect_partner_from_port(const struct emul *tcpc_emul,
+					 const struct emul *charger_emul)
+=======
+void disconnect_partner_from_port(const struct emul *tcpc_emul,
+				  const struct emul *charger_emul)
+>>>>>>> CHANGE (c122f9 TCPMv2: Do not send Data Reset if no UFP VDO)
 {
 	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
 	isl923x_emul_set_adc_vbus(fixture->charger_emul, 0);
@@ -329,6 +337,193 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
 	    usbc_alt_mode_before, usbc_alt_mode_after, NULL);
 
+<<<<<<< HEAD   (447de5 Merge remote-tracking branch cros/main into firmware-dedede-)
+||||||| BASE
+static void *usbc_alt_mode_custom_discovery_setup(void)
+{
+	static struct usbc_alt_mode_custom_discovery_fixture fixture;
+	struct tcpci_partner_data *partner = &fixture.partner;
+	struct tcpci_src_emul_data *src_ext = &fixture.src_ext;
+
+	tcpci_partner_init(partner, PD_REV30);
+	partner->extensions = tcpci_src_emul_init(src_ext, partner, NULL);
+
+	/* Get references for the emulators */
+	fixture.tcpci_emul = EMUL_GET_USBC_BINDING(TEST_PORT, tcpc);
+	fixture.charger_emul = EMUL_GET_USBC_BINDING(TEST_PORT, chg);
+
+	add_discovery_responses(partner);
+
+	return &fixture;
+}
+
+static void usbc_alt_mode_custom_discovery_before(void *data)
+{
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	struct usbc_alt_mode_custom_discovery_fixture *fixture = data;
+
+	/* Re-populate our usual responses in case a test overrode them */
+	add_displayport_mode_responses(&fixture->partner);
+	/* Do not connect to the partner to allow the test to override discovery
+	 * responses.
+	 */
+}
+
+static void usbc_alt_mode_custom_discovery_after(void *data)
+{
+	struct usbc_alt_mode_custom_discovery_fixture *fixture = data;
+
+	disconnect_partner_from_port(fixture->tcpci_emul,
+				     fixture->charger_emul);
+}
+
+ZTEST_SUITE(usbc_alt_mode_custom_discovery, drivers_predicate_post_main,
+	    usbc_alt_mode_custom_discovery_setup,
+	    usbc_alt_mode_custom_discovery_before,
+	    usbc_alt_mode_custom_discovery_after, NULL);
+
+static void *usbc_alt_mode_dp_unsupported_setup(void)
+{
+	static struct usbc_alt_mode_dp_unsupported_fixture fixture;
+	struct tcpci_partner_data *partner = &fixture.partner;
+	struct tcpci_src_emul_data *src_ext = &fixture.src_ext;
+
+	tcpci_partner_init(partner, PD_REV20);
+	partner->extensions = tcpci_src_emul_init(src_ext, partner, NULL);
+
+	/* Get references for the emulators */
+	fixture.tcpci_emul = EMUL_GET_USBC_BINDING(TEST_PORT, tcpc);
+	fixture.charger_emul = EMUL_GET_USBC_BINDING(TEST_PORT, chg);
+
+	/*
+	 * Respond to discovery REQs to indicate DisplayPort support, but do not
+	 * respond to DisplayPort alt mode VDMs, including Enter Mode.
+	 */
+	add_discovery_responses(partner);
+
+	return &fixture;
+}
+
+static void usbc_alt_mode_dp_unsupported_before(void *data)
+{
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	struct usbc_alt_mode_dp_unsupported_fixture *fixture = data;
+
+	connect_partner_to_port(fixture->tcpci_emul, fixture->charger_emul,
+				&fixture->partner, &fixture->src_ext);
+}
+
+static void usbc_alt_mode_dp_unsupported_after(void *data)
+{
+	struct usbc_alt_mode_dp_unsupported_fixture *fixture = data;
+
+	disconnect_partner_from_port(fixture->tcpci_emul,
+				     fixture->charger_emul);
+}
+
+=======
+static void *usbc_alt_mode_custom_discovery_setup(void)
+{
+	static struct usbc_alt_mode_custom_discovery_fixture fixture;
+	struct tcpci_partner_data *partner = &fixture.partner;
+	struct tcpci_src_emul_data *src_ext = &fixture.src_ext;
+
+	tcpci_partner_init(partner, PD_REV30);
+	partner->extensions = tcpci_src_emul_init(src_ext, partner, NULL);
+
+	/* Get references for the emulators */
+	fixture.tcpci_emul = EMUL_GET_USBC_BINDING(TEST_PORT, tcpc);
+	fixture.charger_emul = EMUL_GET_USBC_BINDING(TEST_PORT, chg);
+
+	return &fixture;
+}
+
+static void usbc_alt_mode_custom_discovery_before(void *data)
+{
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	struct usbc_alt_mode_custom_discovery_fixture *fixture = data;
+
+	/* Re-populate our usual responses in case a test overrode them */
+	add_discovery_responses(&fixture->partner);
+	add_displayport_mode_responses(&fixture->partner);
+	/* Do not connect to the partner to allow the test to override discovery
+	 * responses.
+	 */
+}
+
+static void usbc_alt_mode_custom_discovery_after(void *data)
+{
+	struct usbc_alt_mode_custom_discovery_fixture *fixture = data;
+
+	disconnect_partner_from_port(fixture->tcpci_emul,
+				     fixture->charger_emul);
+}
+
+ZTEST_SUITE(usbc_alt_mode_custom_discovery, drivers_predicate_post_main,
+	    usbc_alt_mode_custom_discovery_setup,
+	    usbc_alt_mode_custom_discovery_before,
+	    usbc_alt_mode_custom_discovery_after, NULL);
+
+static void *usbc_alt_mode_dp_unsupported_setup(void)
+{
+	static struct usbc_alt_mode_dp_unsupported_fixture fixture;
+	struct tcpci_partner_data *partner = &fixture.partner;
+	struct tcpci_src_emul_data *src_ext = &fixture.src_ext;
+
+	tcpci_partner_init(partner, PD_REV20);
+	partner->extensions = tcpci_src_emul_init(src_ext, partner, NULL);
+
+	/* Get references for the emulators */
+	fixture.tcpci_emul = EMUL_GET_USBC_BINDING(TEST_PORT, tcpc);
+	fixture.charger_emul = EMUL_GET_USBC_BINDING(TEST_PORT, chg);
+
+	/*
+	 * Respond to discovery REQs to indicate DisplayPort support, but do not
+	 * respond to DisplayPort alt mode VDMs, including Enter Mode.
+	 */
+	add_discovery_responses(partner);
+
+	return &fixture;
+}
+
+static void usbc_alt_mode_dp_unsupported_before(void *data)
+{
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	struct usbc_alt_mode_dp_unsupported_fixture *fixture = data;
+
+	connect_partner_to_port(fixture->tcpci_emul, fixture->charger_emul,
+				&fixture->partner, &fixture->src_ext);
+}
+
+static void usbc_alt_mode_dp_unsupported_after(void *data)
+{
+	struct usbc_alt_mode_dp_unsupported_fixture *fixture = data;
+
+	disconnect_partner_from_port(fixture->tcpci_emul,
+				     fixture->charger_emul);
+}
+
+>>>>>>> CHANGE (c122f9 TCPMv2: Do not send Data Reset if no UFP VDO)
 /*
  * When the partner advertises DP mode support but refuses to enter, discovery
  * should still work as if the partner were compliant.

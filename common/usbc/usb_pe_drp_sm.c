@@ -1526,6 +1526,68 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 }
 
 /*
+<<<<<<< HEAD   (447de5 Merge remote-tracking branch cros/main into firmware-dedede-)
+||||||| BASE
+ * PD 3.x partners should respond to Data_Reset with either Accept or
+ * Not_Supported. However, some partners simply do not respond, triggering
+ * ErrorRecovery. Try to avoid this by only initiating Data Reset with partners
+ * that seem likely to support it.
+ */
+static bool pe_should_send_data_reset(const int port)
+{
+	const struct pd_discovery *disc =
+		pd_get_am_discovery(port, TCPCI_MSG_SOP);
+	const enum idh_ptype ufp_ptype = pd_get_product_type(port);
+	const union ufp_vdo_rev30 ufp_vdo = {
+		.raw_value = disc->identity.product_t1.raw_value
+	};
+
+	return prl_get_rev(port, TCPCI_MSG_SOP) >= PD_REV30 &&
+	       /*
+		* Data Reset was added to the PD spec around the time that the
+		* AMA product type/VDO was deprecated and the UFP VDO added.
+		* Partners that advertise the AMA product type are thus likely
+		* not to support Data Reset (and perhaps more likely than newer
+		* products to not respond to it at all).
+		*/
+	       (ufp_ptype == IDH_PTYPE_HUB || ufp_ptype == IDH_PTYPE_PERIPH) &&
+	       ((ufp_vdo.device_capability & VDO_UFP1_CAPABILITY_USB4) ||
+		ufp_vdo.alternate_modes);
+}
+
+/*
+=======
+ * PD 3.x partners should respond to Data_Reset with either Accept or
+ * Not_Supported. However, some partners simply do not respond, triggering
+ * ErrorRecovery. Try to avoid this by only initiating Data Reset with partners
+ * that seem likely to support it.
+ */
+static bool pe_should_send_data_reset(const int port)
+{
+	const struct pd_discovery *disc =
+		pd_get_am_discovery(port, TCPCI_MSG_SOP);
+	const enum idh_ptype ufp_ptype = pd_get_product_type(port);
+	const union ufp_vdo_rev30 ufp_vdo = {
+		.raw_value = disc->identity_cnt >= VDO_INDEX_PTYPE_UFP1_VDO ?
+				     disc->identity.product_t1.raw_value :
+				     0
+	};
+
+	return prl_get_rev(port, TCPCI_MSG_SOP) >= PD_REV30 &&
+	       /*
+		* Data Reset was added to the PD spec around the time that the
+		* AMA product type/VDO was deprecated and the UFP VDO added.
+		* Partners that advertise the AMA product type are thus likely
+		* not to support Data Reset (and perhaps more likely than newer
+		* products to not respond to it at all).
+		*/
+	       (ufp_ptype == IDH_PTYPE_HUB || ufp_ptype == IDH_PTYPE_PERIPH) &&
+	       ((ufp_vdo.device_capability & VDO_UFP1_CAPABILITY_USB4) ||
+		ufp_vdo.alternate_modes);
+}
+
+/*
+>>>>>>> CHANGE (c122f9 TCPMv2: Do not send Data Reset if no UFP VDO)
  * Handle common DPM requests to both source and sink.
  *
  * Note: it is assumed the calling state set PE_FLAGS_LOCALLY_INITIATED_AMS
