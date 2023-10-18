@@ -264,6 +264,24 @@
       "parentUuid": "807bad74_4acbd69e",
       "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11338ab0_8cf0fd25",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6068,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-10-18T17:54:30Z",
+      "side": 1,
+      "message": "I can see that...I\u0027ll add it in at the beginning of VDM request and track times from there.",
+      "parentUuid": "95b1e8ee_7ab3ff17",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
