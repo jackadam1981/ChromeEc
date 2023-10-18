@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bcbd9f_c5be0e3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-18T17:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4667b68_fe3579f4",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "887952d2_a6f6c8e1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1003bdf6_ed3183ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-18T17:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "887952d2_a6f6c8e1",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c2272f4_bb851bce",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-17T19:41:11Z",
       "side": 1,
       "message": "add mtlrvp_flash.dts that overrides default flash info",
+      "range": {
+        "startLine": 94,
+        "startChar": 36,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0f64fc_62e59335",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-18T17:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2272f4_bb851bce",
       "range": {
         "startLine": 94,
         "startChar": 36,
@@ -101,6 +173,24 @@
       "side": 1,
       "message": "Hi Martin, \ncan you pls add this config to mtlrvp_m1723?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4916998/6/zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/prj.conf\n\ni.e CONFIG_PLATFORM_EC_FW_START_OFFSET_IN_EXT_SPI_FLASH\u003d0x4000",
       "parentUuid": "9eef9d94_62912e29",
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e4046c_a0e04b0f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-18T17:27:26Z",
+      "side": 1,
+      "message": "added it.\nReminder: need to rebase code as this CL is ready to merge.",
+      "parentUuid": "05d172cb_7c61cd25",
       "revId": "9a9913093f08c76145a609d0904af9581a400413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
