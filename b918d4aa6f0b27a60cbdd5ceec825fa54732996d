@@ -16,6 +16,368 @@
       "message": "Review comments updated.",
       "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddea19d_68988388",
+        "filename": "zephyr/shim/chip/mchp/second_loader/MCHP_MEC172x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "Is this file auto-generated?  If not, please run clang-format on this and the other files.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34da3eb5_cb4b497c",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "This is only used by serial.c.  Move into that module.\nYou should also look into extracting the UART interface from the devicetree.  Something like\n```\n#define HOST_IF_UART_BASE DT_REG_ADDR(DT_CHOSEN(zephyr_console))\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a957b526_f8e94748",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "Only used in main.c",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fb24da_60711218",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "Nit, 0 is more commonly used to indicate no error.",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d274418_e19d8ebd",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "You should use linker variables to define this space.  Your linker directive file allocates the SHD_SRAM section which overlaps this area, but I don\u0027t see SHD_SRAM referenced anywhere.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb35e51_562bbb1b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "Why is this a bit mask?  I suggest moving adjacent to the NO_ERROR definition to make this clearer that this is a defined return code.",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c884b13_5205dd30",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "These defines don\u0027t appear to be used.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac4626d_f67c194a",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "Nit - if you reorder the static function implementations, you probably can eliminate most of these forward declarations.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca47863_66388df5",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "Please don\u0027t use camel case naming.",
+      "range": {
+        "startLine": 175,
+        "startChar": 9,
+        "endLine": 175,
+        "endChar": 17
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c123841_e3327f71",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "You should pass in the data buffer as a parameter.\n\n```\nreceive_packet(uint8_t command, uint8_t *data, uint8_t *len);\n```",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2e2409_f0123361",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "This could use a timeout and error code so the caller can revert to the waiting for ACK1 state.\n\nI recommend moving the polling loop into serial.c, which will simplify all the callers.\n\n```\nfor (i \u003d 0; i \u003c 4; i++) {\n    if (serial_receive_host_char(\u0026rx_data, timeout_ms) !\u003d NO_ERROR)\n       return TIMEOUT_ERR;\n    }\n    rx_buff[i] \u003d rx_data;\n}\n```",
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5974df7d_86dfb6a9",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "This function should be split into 2 - receive_program_data() and program_data().\n\nThe caller then does the following:\n```\n    static uint8_t *rx_buffer \u003d DATA_IO_BUFFER;\n    static uint32_t offset \u003d 0;\n    /* receive_program_data() should validate the header offset against\n     * expected offset.\n     */\n    receive_program_data(rxData, rx_buffer, offset, \u0026len);\n    offset +\u003d len;\n    if (offset \u003d\u003d MAX_CHUNK_SIZE)\n        program_length \u003d offset;\n        program_data(flash_addr, rx_buffer, progrm_length);\n        flash_addr +\u003d program_length;\n    \n```",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78786f9_39ec5296",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "What if the image size is not a multiple of the chunk size?",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 51
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328273ca_dc7638c1",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "This might be simplified by creating two separate states, WAIT_FOR_ACK1 and WAIT_FOR_ACK2.\n```\ncase STATE_WAIT_FOR_ACK1:\n    if (rxData \u003d\u003d CMD_ACK1)\n        state \u003d WAIT_FOR_ACK2;\n    break;\ncase STATE_WAIT_FOR_ACK2:\n    if (rxData \u003d\u003d CMD_ACK2)\n        state \u003d STATE_WAIT_FOR_FLASH_CMD;\n        /* Send ack to host */\n    else\n        state \u003d STATE_WAIT_FOR_ACK1;\n```",
+      "range": {
+        "startLine": 441,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 0
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb5340b_63448bfb",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "If you pass in the data pointer, then this logic becomes;\n```\ndata_ptr \u003d \u0026DATA_IO_BUFFER;\nreceive_packet(rxData,data_ptr, \u0026len);\nextract_header_info(data_ptr); \n```",
+      "range": {
+        "startLine": 464,
+        "startChar": 3,
+        "endLine": 464,
+        "endChar": 41
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfaa208e_fb4cf129",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-18T22:21:17Z",
+      "side": 1,
+      "message": "How was this value chosen?  Please add a comment that indicates the expected PLL lock time (in CPU cycles or microseconds)",
+      "range": {
+        "startLine": 504,
+        "startChar": 16,
+        "endLine": 504,
+        "endChar": 23
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
