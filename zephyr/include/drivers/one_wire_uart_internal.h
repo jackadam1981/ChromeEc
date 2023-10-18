@@ -9,7 +9,10 @@
 #include "timer.h"
 #include "usb_hid_touchpad.h"
 
+#include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
+
+#include <ap_power/ap_power.h>
 
 /* Private structures and methods below, for testing purpose only */
 
@@ -64,6 +67,26 @@ enum RoachCommand {
 	ROACH_CMD_SUSPEND,
 	ROACH_CMD_RESUME,
 	ROACH_CMD_UPDATER_COMMAND,
+};
+
+struct i2c_target_dev_config {
+	/* I2C alternate configuration */
+	struct i2c_dt_spec bus;
+	struct gpio_dt_spec irq;
+	const uint8_t *report_desc;
+	int report_desc_length;
+	const uint16_t *hid_desc;
+};
+
+struct i2c_target_data {
+	struct i2c_target_config config;
+	const struct device *dev;
+	uint8_t write_buf[256];
+	uint8_t read_buf[2044];
+	int write_buf_len;
+	struct ap_power_ev_callback cb;
+	bool in_reset;
+	struct k_msgq *touchpad_report_queue;
 };
 
 /**
