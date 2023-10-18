@@ -33,6 +33,24 @@
       "message": "It looks like the test covers the new button API but doesn\u0027t cover the battery cutoff feature it supports. Is it possible to test that?",
       "revId": "c99eb4727495d30694d773c4f1f78fd7d6d5ab3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b329ef0_dd2c56d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-18T22:52:51Z",
+      "side": 1,
+      "message": "Done. Ptal.",
+      "parentUuid": "de50174f_fc6632b8",
+      "revId": "c99eb4727495d30694d773c4f1f78fd7d6d5ab3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
