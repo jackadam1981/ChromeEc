@@ -62,7 +62,9 @@ static void connect_partner_to_port(struct usbc_alt_mode_fixture *fixture)
 	k_sleep(K_SECONDS(10));
 }
 
-static void disconnect_partner_from_port(struct usbc_alt_mode_fixture *fixture)
+
+static void disconnect_partner_from_port(const struct emul *tcpc_emul,
+					 const struct emul *charger_emul)
 {
 	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
 	isl923x_emul_set_adc_vbus(fixture->charger_emul, 0);
