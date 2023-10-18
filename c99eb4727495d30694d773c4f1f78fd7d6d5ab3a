@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1862fa74_6f743a6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-18T21:47:24Z",
+      "side": 1,
+      "message": "\u003e FileNotFoundError: [Errno 2] No such file or directory: b\u0027/var/lib/portage/pkgs/virtual/pkgconfig-2.tbz2.partial\u0027\n\nInfra issue?",
+      "revId": "c99eb4727495d30694d773c4f1f78fd7d6d5ab3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
