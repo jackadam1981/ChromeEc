@@ -3,6 +3,12 @@
  * found in the LICENSE file.
  */
 
+/ {
+	shared-spi {
+		compatible = "cros-ec,shared-spi-flash";
+		spi-oe-gpios = <&gpio_040_076 11 0>;
+	}; /* GPIO053 */
+};
 
 /* overrides default flash information per specific board design */
 &spi0 {
