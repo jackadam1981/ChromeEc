@@ -16,6 +16,24 @@
       "message": "Hi Jeremy, I am good with we revert it first. However, I tested emerging the ec_utils package with board corsola, staryu, brya, and none of them failed on emerging this package.\n\nCan you share us which board failed on building this package? I would like to fix it, thank you.",
       "revId": "493845f9721fb13f9cf707e7c14f6d7d64b2ba95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7304e3_a379944e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-10-18T16:14:54Z",
+      "side": 1,
+      "message": "See the uprev cl https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/4935333?attempt\u003d15\u0026tab\u003dchecks\n\nIt fails to emerge on kukui, staryu, and strongbad.",
+      "parentUuid": "b1bfe878_6407c489",
+      "revId": "493845f9721fb13f9cf707e7c14f6d7d64b2ba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
