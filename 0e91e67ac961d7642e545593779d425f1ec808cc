@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec60e886_197afae6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-18T17:50:52Z",
+      "side": 1,
+      "message": "Nit: Maybe, \"Flag to indicate that the timeout for the current VDM request should be extended.\"",
+      "revId": "0e91e67ac961d7642e545593779d425f1ec808cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31961d02_3e067db1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5812,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-18T17:50:52Z",
+      "side": 1,
+      "message": "Nit: Maybe a comment here along the lines of, \"If the timeout expires, extend it and keep waiting. The maximum overall timeout is 3x the initial, spec-compliant timeout, or ~90 ms. This is approximately 2x the highest observed response time from a partner.\"",
+      "revId": "0e91e67ac961d7642e545593779d425f1ec808cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e17f810_09d7db14",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5813,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-18T17:50:52Z",
+      "side": 1,
+      "message": "Nit:\n```suggestion\n\t\t\tCPRINTS(\"No response: extending VDM request timeout\");\n```",
+      "revId": "0e91e67ac961d7642e545593779d425f1ec808cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
