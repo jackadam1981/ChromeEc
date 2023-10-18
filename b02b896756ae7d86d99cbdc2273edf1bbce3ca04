@@ -22,6 +22,30 @@
       },
       "revId": "b02b896756ae7d86d99cbdc2273edf1bbce3ca04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2c0f24_9a904509",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-18T02:34:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4f6416_02a095f6",
+      "range": {
+        "startLine": 311,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 15
+      },
+      "revId": "b02b896756ae7d86d99cbdc2273edf1bbce3ca04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
