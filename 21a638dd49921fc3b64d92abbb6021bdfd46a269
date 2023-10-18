@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dc888c_c12231e3",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-18T03:40:18Z",
+      "side": 1,
+      "message": "It looks like the point of this is to choose the Zephyr implementation if both are enabled, but I think it would make more sense to change `SOC_IT8XXX2_SHA256_HW_ACCELERATE` to depend on `!PLATFORM_EC_SHA256_HW_ZEPHYR` so you can\u0027t enable both; that way the existing implementation doesn\u0027t need to be changed at all.",
+      "revId": "21a638dd49921fc3b64d92abbb6021bdfd46a269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
