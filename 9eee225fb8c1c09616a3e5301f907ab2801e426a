@@ -34,6 +34,24 @@
       "parentUuid": "383ad718_e809b0aa",
       "revId": "9eee225fb8c1c09616a3e5301f907ab2801e426a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecc49de_564e95ba",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2023-10-18T17:39:31Z",
+      "side": 1,
+      "message": "Ahh yes - sorry - I did not spot that this is only in print/json and thought there needed to be a more general error in the case that print and json are not specified but the guard at 528 is what I missed.",
+      "parentUuid": "666cac96_8c184655",
+      "revId": "9eee225fb8c1c09616a3e5301f907ab2801e426a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
