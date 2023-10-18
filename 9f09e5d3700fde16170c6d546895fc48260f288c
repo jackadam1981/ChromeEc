@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4adeac1_346534d8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-18T15:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90f87ef3_3fba73da",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c09b70a_6a80469d",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-17T22:54:02Z",
       "side": 1,
       "message": "Nit here, elsewhere: I initially took this change to be sending a second VDM REQ after the timeout. But it\u0027s just extending the timeout for the initial REQ. It\u0027s not really retrying anything. Thus, I would call this something like `vdm_req_timeout_extended`. The commit message and other comments should be updated to call it a timeout extension as well.",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86e3a03_ba1c88de",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-18T15:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c09b70a_6a80469d",
       "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8348d374_147f598e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5801,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-18T15:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edfeb3cc_e26888a4",
+      "range": {
+        "startLine": 5796,
+        "startChar": 0,
+        "endLine": 5801,
+        "endChar": 28
+      },
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faaa5337_31011e7e",
@@ -119,6 +179,30 @@
       "side": 1,
       "message": "I\u0027ll test that out I had tried this initially and it wasn\u0027t working but I was assigning it from the port functions",
       "parentUuid": "faaa5337_31011e7e",
+      "range": {
+        "startLine": 5822,
+        "startChar": 0,
+        "endLine": 5826,
+        "endChar": 33
+      },
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8add350f_3a34f885",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5826,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-18T15:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "511f078a_53a86a73",
       "range": {
         "startLine": 5822,
         "startChar": 0,
