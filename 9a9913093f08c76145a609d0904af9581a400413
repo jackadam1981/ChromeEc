@@ -85,6 +85,24 @@
       "message": "add flash start address config",
       "revId": "9a9913093f08c76145a609d0904af9581a400413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d172cb_7c61cd25",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-18T11:37:17Z",
+      "side": 1,
+      "message": "Hi Martin, \ncan you pls add this config to mtlrvp_m1723?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4916998/6/zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/prj.conf\n\ni.e CONFIG_PLATFORM_EC_FW_START_OFFSET_IN_EXT_SPI_FLASH\u003d0x4000",
+      "parentUuid": "9eef9d94_62912e29",
+      "revId": "9a9913093f08c76145a609d0904af9581a400413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
