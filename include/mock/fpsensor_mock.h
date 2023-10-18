@@ -18,9 +18,9 @@ struct mock_ctrl_fp_sensor {
 	int fp_sensor_init_return;
 	int fp_sensor_deinit_return;
 	int fp_sensor_get_info_return;
-	enum finger_state fp_sensor_finger_status_return;
-	int fp_sensor_acquire_image_return;
-	int fp_sensor_acquire_image_with_mode_return;
+	enum finger_state fp_finger_status_return;
+	int fp_acquire_image_return;
+	int fp_acquire_image_with_mode_return;
 	int fp_finger_match_return;
 	int fp_enrollment_begin_return;
 	int fp_enrollment_finish_return;
