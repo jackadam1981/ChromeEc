@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babebbdd_f6010fa1",
+        "filename": "zephyr/test/drivers/host_cmd/src/battery_cut_off.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-18T22:57:05Z",
+      "side": 1,
+      "message": "Nit: This should be its own named test, not extra code at the end of an existing test.",
+      "revId": "bd115a4f9351c753a2b3aaabaefcb7b04b72da89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
