@@ -34,6 +34,24 @@
       "parentUuid": "31dc888c_c12231e3",
       "revId": "21a638dd49921fc3b64d92abbb6021bdfd46a269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4352d1_ecb10ca1",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-18T22:31:36Z",
+      "side": 1,
+      "message": "Okay, that\u0027s reasonable.",
+      "parentUuid": "db5edcf3_eb993bbf",
+      "revId": "21a638dd49921fc3b64d92abbb6021bdfd46a269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
