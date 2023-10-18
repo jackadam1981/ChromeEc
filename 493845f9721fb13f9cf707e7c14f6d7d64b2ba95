@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1bfe878_6407c489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-18T03:00:05Z",
+      "side": 1,
+      "message": "Hi Jeremy, I am good with we revert it first. However, I tested emerging the ec_utils package with board corsola, staryu, brya, and none of them failed on emerging this package.\n\nCan you share us which board failed on building this package? I would like to fix it, thank you.",
+      "revId": "493845f9721fb13f9cf707e7c14f6d7d64b2ba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
