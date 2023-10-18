@@ -22,6 +22,30 @@
       },
       "revId": "46c6e1b1c6d71289e25e1e248e2ae04659681768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6bf062_0839ffd2",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-18T22:41:30Z",
+      "side": 1,
+      "message": "Commented on the bug as well, but I think that would break booting without a battery because the type-C state machine avoids setting CC open on cold boot to avoid potential boot loops from causing VBUS to go away.",
+      "parentUuid": "93b64a2f_7bf519d4",
+      "range": {
+        "startLine": 104,
+        "startChar": 9,
+        "endLine": 104,
+        "endChar": 16
+      },
+      "revId": "46c6e1b1c6d71289e25e1e248e2ae04659681768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
