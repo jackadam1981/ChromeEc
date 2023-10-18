@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b64a2f_7bf519d4",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-18T19:02:18Z",
+      "side": 1,
+      "message": "Peter, Andrew, what do you think about returning VCC1_RST_PIN? \n\nCurrently boot keys are scanned only for reset-pin resets: [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/keyboard_scan.c;l\u003d887?). I think it\u0027s better for the boot key scanner not to accept EC_RESET_FLAG_POWER_ON. Another option is to accept it only for #ifdef CONFIG_CROS_SYSTEM_IT8XXX2 but I prefer not to make the common code unnecessarily crowded.\n\nRecovery mode entry is being affected: b/306057929.",
+      "range": {
+        "startLine": 104,
+        "startChar": 9,
+        "endLine": 104,
+        "endChar": 16
+      },
+      "revId": "46c6e1b1c6d71289e25e1e248e2ae04659681768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
