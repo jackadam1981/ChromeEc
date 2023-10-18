@@ -16,6 +16,29 @@
       "message": "Hi, I added some details about this implementation in b:301017318.",
       "revId": "999131553cf9f0fa8148a93fbf033d4b685a865f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0f7931_610de762",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-18T20:19:26Z",
+      "side": 1,
+      "message": "Can you explain why we need to save this and set it to 0? Is it not possible to just use the `sensor_state` to ignore the AP odr?",
+      "range": {
+        "startLine": 454,
+        "startChar": 2,
+        "endLine": 456,
+        "endChar": 44
+      },
+      "revId": "999131553cf9f0fa8148a93fbf033d4b685a865f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
