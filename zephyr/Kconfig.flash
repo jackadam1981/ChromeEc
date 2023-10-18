@@ -155,6 +155,7 @@ config PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT
 config PLATFORM_EC_SHARED_SPI_FLASH
 	bool "External SPI flash used to store EC & AP firmware"
 	default n
+	select FLASH_EX_OP_ENABLED
 	depends on PLATFORM_EC_EXTERNAL_STORAGE
 	help
 	  Used when EC image flashed onto external flash chip.
