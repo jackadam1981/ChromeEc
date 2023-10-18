@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173163be_75e1affe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-18T18:10:08Z",
+      "side": 1,
+      "message": "Currently, the partner emulator always replies to VDMs immediately (delay \u003d\u003d 0): https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/emul/tcpc/emul_tcpci_partner_common.c#685\n\nI think you could add a field to the partner emulator for how long to wait, set the field in the test, and use the value for the emulator\u0027s calls to `tcpci_partner_send_data_msg`. You could do one at ~45 ms and check that the discovery data was collected and one at ~100 ms and check that it wasn\u0027t. Note that the test will also need to wait that long before checking the result.\n\nI can\u0027t immediately find a test where the partner just never responds, and we don\u0027t get discovery data, but we might have one. That would cover the new code, but vacuously. The same test would be expected to pass without the timeout extension mechanism.",
+      "parentUuid": "95df42f7_f876f8fc",
+      "revId": "0e91e67ac961d7642e545593779d425f1ec808cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec60e886_197afae6",
