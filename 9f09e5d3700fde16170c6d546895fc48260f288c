@@ -282,6 +282,24 @@
       "parentUuid": "95b1e8ee_7ab3ff17",
       "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e238dd_16170161",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6068,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-10-18T20:30:22Z",
+      "side": 1,
+      "message": "after looking at this some more since the send_request functions are never checking the response I\u0027m not sure it makes sense to keep this time. This will add a lot of print overhead if I just have vdm_response print the time all the time. while it\u0027s a useful debugging tool I don\u0027t think it\u0027s necessary to have in normal use cases",
+      "parentUuid": "11338ab0_8cf0fd25",
+      "revId": "9f09e5d3700fde16170c6d546895fc48260f288c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
