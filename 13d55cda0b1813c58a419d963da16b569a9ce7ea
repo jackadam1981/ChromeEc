@@ -16,6 +16,52 @@
       "message": "Fixed the wrong type conversion of, PTAL.",
       "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6291a24c_d34da5f1",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-19T04:38:33Z",
+      "side": 1,
+      "message": "This casts a 8bit integer `rx_buf[I2C_RESPONSE_OFFSET]` to a 16bit integer, so the result doesn\u0027t include the MSB byte.\n\nYou\u0027ll need something like `le_bytes_to_int` for unaligned access.",
+      "range": {
+        "startLine": 440,
+        "startChar": 24,
+        "endLine": 440,
+        "endChar": 61
+      },
+      "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed2a15f_5564f7b4",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-19T04:38:33Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 58
+      },
+      "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
