@@ -4349,6 +4349,16 @@ static void print_ti50_stats(struct ti50_stats_v0 *stats, size_t size)
 				>> METRICSV_CCD_MODE_SHIFT);
 		}
 	}
+	if (size >= sizeof(struct ti50_stats_v1)) {
+		struct ti50_stats_v2 *stats_v2 = (struct ti50_stats_v2 *) stats;
+
+		printf("filesystem_busy_count: %d\n",
+			stats_v2->filesystem_busy_count);
+		printf("crypto_busy_count:     %d\n",
+			stats_v2->crypto_busy_count);
+		printf("timeslices_expired:    %d\n",
+			stats_v2->timeslices_expired);
+	}
 }
 
 static int process_get_metrics(struct transfer_descriptor *td,
@@ -4356,7 +4366,7 @@ static int process_get_metrics(struct transfer_descriptor *td,
 {
 	uint32_t rv;
 	/* Allocate extra space in case future versions add more data. */
-	struct ti50_stats response[4] = { 0 };
+	struct ti50_stats_v2 response[4] = { 0 };
 	size_t response_size = sizeof(response);
 
 	rv = send_vendor_command(td, VENDOR_CC_GET_TI50_STATS, NULL, 0,

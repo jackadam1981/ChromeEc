@@ -370,6 +370,14 @@ struct ti50_stats_v1 {
 	uint32_t misc_status;
 };
 
+struct ti50_stats_v2 {
+	struct ti50_stats_v0 v1;
+	struct ti50_stats_v1 v2;
+	uint32_t filesystem_busy_count;
+	uint32_t crypto_busy_count;
+	uint32_t timeslices_expired;
+};
+
 #define METRICSV_BITS_USED_SHIFT	      27
 #define METRICSV_RDD_KEEP_ALIVE_MASK	      3
 #define METRICSV_RDD_KEEP_ALIVE_AT_BOOT_SHIFT 2
