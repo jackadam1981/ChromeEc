@@ -351,7 +351,7 @@
  * check.
  */
 #undef CONFIG_BATTERY_BQ20Z453
-#undef CONFIG_BATTERY_BQ27541
+#undef CONFIG_BATTERY_BQ27541f
 #undef CONFIG_BATTERY_BQ27621
 #undef CONFIG_BATTERY_BQ4050
 #undef CONFIG_BATTERY_MAX17055
@@ -1176,7 +1176,7 @@
  * capture the EC state after a panic.
  */
 #undef CONFIG_SYSTEM_SAFE_MODE
-#define CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC 2000
+#define CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC 4000
 /*
  * Prints the stack of the faulting task to the console buffer in system safe
  * mode.
