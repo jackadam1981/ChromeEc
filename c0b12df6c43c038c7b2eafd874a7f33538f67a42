@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78978ad2_85e4b4fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-19T15:14:06Z",
+      "side": 1,
+      "message": "tuned mtlrvpp_m1723 program to apply mec1727 chip under board level too, will rename mec1727 as mec172x to be more generic to support both mec1727 and 1723 in next step, but need to merge BULD.py and mtlrvpp_m1723 program firstly.",
+      "revId": "c0b12df6c43c038c7b2eafd874a7f33538f67a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
