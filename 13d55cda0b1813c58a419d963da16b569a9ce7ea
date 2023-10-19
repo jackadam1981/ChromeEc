@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3b983f_7d79fff8",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-19T05:37:33Z",
+      "side": 1,
+      "message": "Oh you are right, sorry I totally forget the reason I convert it to `uint16` before. Fixed.",
+      "parentUuid": "6291a24c_d34da5f1",
+      "range": {
+        "startLine": 440,
+        "startChar": 24,
+        "endLine": 440,
+        "endChar": 61
+      },
+      "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ed2a15f_5564f7b4",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-19T04:38:33Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 58
+      },
+      "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4347dd1e_691b766b",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-19T05:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed2a15f_5564f7b4",
       "range": {
         "startLine": 458,
         "startChar": 12,
