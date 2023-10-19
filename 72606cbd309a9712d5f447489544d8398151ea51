@@ -22,6 +22,30 @@
       },
       "revId": "72606cbd309a9712d5f447489544d8398151ea51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b93183_ffaff9ee",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-19T15:51:56Z",
+      "side": 1,
+      "message": "a bunch of python files weren\u0027t formatted.  i can apply those here too.",
+      "parentUuid": "483cd839_932a0d01",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 142
+      },
+      "revId": "72606cbd309a9712d5f447489544d8398151ea51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
