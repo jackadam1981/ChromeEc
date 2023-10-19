@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5a81e5_9194bff7",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-19T21:35:08Z",
+      "side": 1,
+      "message": "is it possible to make a common function for test_read_console_cmd, test_read_error_console_cmd \u0026 test_write_error_console_cmd and pass the input \u0026 error msg as arg ?",
+      "range": {
+        "startLine": 252,
+        "startChar": 43,
+        "endLine": 252,
+        "endChar": 57
+      },
+      "revId": "b21c950159f9fed01cb7757ad5254fa50cf50176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
