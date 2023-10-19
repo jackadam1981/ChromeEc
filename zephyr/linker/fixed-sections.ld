@@ -4,5 +4,6 @@
  */
 
 #if defined(CONFIG_PLATFORM_EC) && !defined(CONFIG_ARCH_POSIX)
+*(.fixed.ver)
 *(.fixed.*)
 #endif

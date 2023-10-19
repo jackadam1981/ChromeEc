@@ -17,16 +17,25 @@
 			read-only;
 			ec-ro {
 				type = "section";
-				ro-fw {
+				ro_fw: ro-fw {
 					type = "blob";
 					filename = "zephyr_ro.bin";
+					elf-filename = "zephyr_rw.elf";
+					elf-base-sym = "__start";
 				};
 				fmap {
 				};
-				ro-frid {
+				ro-fwid {
+					/* Point the FWID section to
+					 * current_image_data.cros_fwid[32].
+					 * The offset of cros_fwid is 48.
+					 */
 					type = "blob";
+					offset-from-elf = <&ro_fw>,
+						"current_image_data", <48>;
 					size = <32>;
 					filename = "version.txt";
+					overlap;
 				};
 			};
 			pad-byte = <0xff>;
@@ -49,21 +58,23 @@
 			size = <0x40000>;
 			rw-fw {
 				type = "section";
-				zephyr-rw {
+				zephyr_rw: zephyr-rw {
 					type = "blob";
 					filename = "zephyr_rw.bin";
+					elf-filename = "zephyr_rw.elf";
+					elf-base-sym = "__start";
 				};
 				rw-fwid {
-					/* Fix the location of the FWID to the
-					 * last 32 bytes of the flash. This
-					 * ensures the RW entries in the FMAP
-					 * stored in the RO section of flash
-					 * are always correct.
+					/* Point the FWID section to
+					 * current_image_data.cros_fwid[32].
+					 * The offset of cros_fwid is 48.
 					 */
-					offset = <(0x40000 - 32)>;
 					type = "blob";
+					offset-from-elf = <&zephyr_rw>,
+						"current_image_data", <48>;
 					size = <32>;
 					filename = "version.txt";
+					overlap;
 				};
 				pad-byte = <0xff>;
 			};

@@ -16,11 +16,6 @@
 
 	ec-rw {
 		rw-fw {
-			rw-fwid {
-				offset = <(0x40000 - 1024 - 32)>;
-				size = <32>;
-			};
-
 			sig-rw {
 				type = "section";
 				size = <1024>;

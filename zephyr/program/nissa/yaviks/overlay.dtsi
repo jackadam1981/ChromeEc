@@ -220,13 +220,15 @@
 		size = <0x50000>;
 		rw-fw {
 			rw-fwid {
-				/* Fix the lcoation of the FWID to the
+				/* Fix the location of the FWID to the
 				 * last 32 bytes of the flash. This
 				 * ensures the RW entries in the FMAP
 				 * stored in the RO section of flash
 				 * are always correct.
 				 */
 				offset = <(0x50000 - 32)>;
+                                /delete-property/ offset-from-elf;
+                                /delete-property/ overlap;
 			};
 		};
 	};
