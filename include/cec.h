@@ -48,6 +48,12 @@
 
 /* Bit timing */
 #define CEC_NOMINAL_BIT_PERIOD_US 2400
+#define CEC_START_BIT_LOW_US 3700
+#define CEC_START_BIT_HIGH_US 800
+#define CEC_DATA_ZERO_LOW_US 1500
+#define CEC_DATA_ZERO_HIGH_US 900
+#define CEC_DATA_ONE_LOW_US 600
+#define CEC_DATA_ONE_HIGH_US 1800
 
 /* Free time timing */
 /* Resend */
