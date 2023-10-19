@@ -4318,7 +4318,7 @@ static int process_get_time(struct transfer_descriptor *td)
 	return 0;
 }
 
-static void print_ti50_stats(struct ti50_stats_v0 *stats, size_t size)
+static int print_ti50_stats(struct ti50_stats_v0 *stats, size_t size)
 {
 	stats->fs_init_time = be32toh(stats->fs_init_time);
 	stats->fs_usage = be32toh(stats->fs_usage);
@@ -4349,6 +4349,38 @@ static void print_ti50_stats(struct ti50_stats_v0 *stats, size_t size)
 				>> METRICSV_CCD_MODE_SHIFT);
 		}
 	}
+	if (size >= sizeof(struct ti50_stats_v2)) {
+		struct ti50_stats_v2 *stats_v2 = (struct ti50_stats_v2 *) stats;
+
+		/* Version was added with v2 and therefore must be >= 2. */
+		if (stats_v2->version < 2) {
+			printf("Invalid stats version %d.", stats_v2->version);
+			return 1;
+		}
+
+		stats_v2->filesystem_busy_count =
+		    be32toh(stats_v2->filesystem_busy_count);
+		stats_v2->crypto_busy_count =
+		    be32toh(stats_v2->crypto_busy_count);
+		stats_v2->dispatcher_busy_count =
+		    be32toh(stats_v2->dispatcher_busy_count);
+		stats_v2->timeslices_expired =
+		    be32toh(stats_v2->timeslices_expired);
+		stats_v2->crypto_init_time =
+		    be32toh(stats_v2->crypto_init_time);
+
+		printf("filesystem_busy_count: %d\n",
+			stats_v2->filesystem_busy_count);
+		printf("crypto_busy_count:     %d\n",
+			stats_v2->crypto_busy_count);
+		printf("dispatcher_busy_count: %d\n",
+			stats_v2->dispatcher_busy_count);
+		printf("timeslices_expired:    %d\n",
+			stats_v2->timeslices_expired);
+		printf("crypto_init_time:      %d\n",
+			stats_v2->crypto_init_time);
+	}
+	return 0;
 }
 
 static int process_get_metrics(struct transfer_descriptor *td,
@@ -4356,7 +4388,7 @@ static int process_get_metrics(struct transfer_descriptor *td,
 {
 	uint32_t rv;
 	/* Allocate extra space in case future versions add more data. */
-	struct ti50_stats response[4] = { 0 };
+	struct ti50_stats_v2 response[4];
 	size_t response_size = sizeof(response);
 
 	rv = send_vendor_command(td, VENDOR_CC_GET_TI50_STATS, NULL, 0,
@@ -4377,8 +4409,8 @@ static int process_get_metrics(struct transfer_descriptor *td,
 		for (size_t i = 0; i < response_size; i++)
 			printf("%02X", raw_response[i]);
 	} else {
-		print_ti50_stats((struct ti50_stats_v0 *) response,
-				response_size);
+		return print_ti50_stats((struct ti50_stats_v0 *) response,
+					response_size);
 	}
 	return 0;
 }
