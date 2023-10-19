@@ -21,6 +21,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usbc/pd_task_intel_altmode.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
@@ -92,7 +93,7 @@ static enum ec_status host_command_hello(struct host_cmd_handler_args *args)
 	const struct ec_params_hello *p = args->params;
 	struct ec_response_hello *r = args->response;
 	uint32_t d = p->in_data;
-
+	hc_retimer_fw_update();
 	r->out_data = d + 0x01020304;
 	args->response_size = sizeof(*r);
 

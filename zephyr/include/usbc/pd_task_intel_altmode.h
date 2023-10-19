@@ -15,5 +15,7 @@
  * @brief Starts the Intel Alternate Mode configuration thread.
  */
 void intel_altmode_task_start(void);
+enum ec_status hc_retimer_fw_update();
+enum ec_status hc_exit_retimer_fw_update();
 
 #endif /* __CROS_EC_PD_TASK_INTEL_ALTMODE_H */
