@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25795d83_1a88c6c3",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/pd_alt_mode.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-19T21:16:07Z",
+      "side": 1,
+      "message": "Most of these GPIO\u0027s are required to satisfy build, since code inside folder `zephyr/test/drivers/common` is included on all drivers builds by default.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "47ab422be1352fa1c075651f6f277763db94a977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
