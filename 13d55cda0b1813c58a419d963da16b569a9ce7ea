@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f664d800_9dd60a41",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-19T07:10:37Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "d5eb91b9_4b751acd",
+      "range": {
+        "startLine": 440,
+        "startChar": 24,
+        "endLine": 440,
+        "endChar": 61
+      },
+      "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ed2a15f_5564f7b4",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "This is technically correct, but it\u0027s hard to understand what\u0027s happening here.\n\nPlease inplement a he_bytes_to_int helper function here.",
       "parentUuid": "4347dd1e_691b766b",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 58
+      },
+      "revId": "13d55cda0b1813c58a419d963da16b569a9ce7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09035261_f58aa5fc",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-19T07:10:37Z",
+      "side": 1,
+      "message": "Right, I think have the align warning because we changed the compiler to clang. Since we would get the align warning as error, I followed the `le_bytes_to_int`, create `be_bytes_to_int` instead of using endian library.",
+      "parentUuid": "52f870e2_3d152850",
       "range": {
         "startLine": 458,
         "startChar": 12,
