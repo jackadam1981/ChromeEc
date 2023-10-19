@@ -566,20 +566,28 @@ test_export_static void boot_key_clear(enum boot_key key)
 
 static void boot_key_released(const uint8_t *state)
 {
-	int b = __builtin_ffs(boot_key_value & ~BIT(BOOT_KEY_POWER));
+	uint32_t keys = boot_key_value & ~BIT(BOOT_KEY_POWER);
 
-	while (b) {
+	while (keys) {
+		int b = __builtin_ffs(keys);
+
+		if (!b)
+			return;
+
 		/*
 		 * __builtin_ffs returns the index of the least significant
 		 * 1-bit plus one. 0x1 -> 1.
 		 */
 		b--;
 
+		/* Check each 1-bit only once. */
+		keys &= ~BIT(b);
+
 		if (state[boot_key_list[b].col] & BIT(boot_key_list[b].row))
+			/* Still pressed. */
 			continue;
 		/* Key is released. */
 		boot_key_clear(b);
-		b = __builtin_ffs(boot_key_value & ~BIT(BOOT_KEY_POWER));
 	}
 }
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
