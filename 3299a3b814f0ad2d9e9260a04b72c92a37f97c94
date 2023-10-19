@@ -152,6 +152,30 @@
       },
       "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8858000_b6dfa405",
+        "filename": "board/constitution/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-10-19T07:48:51Z",
+      "side": 1,
+      "message": "Confirm with PPC vendor, PPC has reverse block with 5V output and they think it\u0027s no problem.",
+      "parentUuid": "a9cc27ab_d33ba939",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "3299a3b814f0ad2d9e9260a04b72c92a37f97c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
