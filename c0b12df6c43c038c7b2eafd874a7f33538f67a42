@@ -16,6 +16,23 @@
       "message": "tuned mtlrvpp_m1723 program to apply mec1727 chip under board level too, will rename mec1727 as mec172x to be more generic to support both mec1727 and 1723 in next step, but need to merge BULD.py and mtlrvpp_m1723 program firstly.",
       "revId": "c0b12df6c43c038c7b2eafd874a7f33538f67a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae09541_78b077cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-19T20:05:08Z",
+      "side": 1,
+      "message": "From the builder log:\n```\nE       AssertionError: Build targets were changed.  Please run ./util/gen_bazel_targets.py.\n```\n\nWhen you run that command, it\u0027s going to change some files, and then you need to amend this CL with those changes and upload again.",
+      "revId": "c0b12df6c43c038c7b2eafd874a7f33538f67a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
