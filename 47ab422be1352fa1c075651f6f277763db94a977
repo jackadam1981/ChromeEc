@@ -22,6 +22,30 @@
       },
       "revId": "47ab422be1352fa1c075651f6f277763db94a977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7581ba0a_c7856064",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/pd_alt_mode.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-19T21:19:56Z",
+      "side": 1,
+      "message": "I think we have to find a way to exclude these , especially TCPC related usb_c1_tcpc_rst_l.\nAnd keep minimum configs and dts files needed",
+      "parentUuid": "25795d83_1a88c6c3",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "47ab422be1352fa1c075651f6f277763db94a977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
