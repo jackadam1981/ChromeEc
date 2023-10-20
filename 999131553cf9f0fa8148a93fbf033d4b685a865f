@@ -63,6 +63,30 @@
       },
       "revId": "999131553cf9f0fa8148a93fbf033d4b685a865f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bedb6f40_b2f6c2b2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-20T06:50:43Z",
+      "side": 1,
+      "message": "Using `sensor_state`, you mean if sensor is `SENSOR_NOT_INITIALIZED`, then ignore AP ODR? motion_sense_set_data_rate() assume sensors are initialized, so it will be odd inside this function to check `SENSOR_NOT_INITIALIZED`. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4914641/7/common/motion_sense.c#331, I add the call to motion_sense_set_data_rate() before setting the sensors as uninitialized.\nI do have question here, in motion_sense_switch_sensor_rate(), how if sensor `SENSOR_ACTIVE(sensor)` returns false will be considered as sensors are powered off? ISH case that sensors are still powered in suspend but not support sensor sampling data in suspend. It is not considered here.",
+      "parentUuid": "053498e5_3031dd42",
+      "range": {
+        "startLine": 454,
+        "startChar": 2,
+        "endLine": 456,
+        "endChar": 44
+      },
+      "revId": "999131553cf9f0fa8148a93fbf033d4b685a865f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
