@@ -140,6 +140,30 @@
       },
       "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289f7929_bcf18321",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T19:10:07Z",
+      "side": 1,
+      "message": "Acknowledged. This flow is quite hacky BTW.",
+      "parentUuid": "e49a50e7_bd840737",
+      "range": {
+        "startLine": 536,
+        "startChar": 33,
+        "endLine": 536,
+        "endChar": 38
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
