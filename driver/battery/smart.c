@@ -609,10 +609,10 @@ int battery_wait_for_stable(void)
 		}
 #endif
 		/* Battery is stable */
-		CPRINTS("battery responded with status %x", status);
+		CPRINTS("battery responded with status 0x%x", status);
 		return EC_SUCCESS;
 	}
-	CPRINTS("battery not responding with status %x", status);
+	CPRINTS("battery not responding");
 	return EC_ERROR_NOT_POWERED;
 }
 
