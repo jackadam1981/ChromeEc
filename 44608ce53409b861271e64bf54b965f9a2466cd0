@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a13eec0_c4fe0711",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4353,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-20T21:46:23Z",
+      "side": 1,
+      "message": "I know we decided not to keep the explicit version field, but let\u0027s at least make sure that the received size is no smaller than `sizeof (struct ti50_stats_v2)`? \n\nAre you avoiding the exact size matching in order to make it possible to add fields to the structure and still tolerate mismatch between Ti50 and gsctool?",
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5657f1f7_5de60b34",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4384,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-20T21:46:23Z",
+      "side": 1,
+      "message": "not this patch\u0027s addition, but there is no need to expliclity mention `0` here,",
+      "range": {
+        "startLine": 4384,
+        "startChar": 37,
+        "endLine": 4384,
+        "endChar": 39
+      },
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88862490_8fcd8d31",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 2
@@ -14,6 +54,47 @@
       "writtenOn": "2023-10-20T21:33:38Z",
       "side": 1,
       "message": "Should we investigate a better method than just tacking things on?",
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635247ed_f1cbffc4",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-20T21:46:23Z",
+      "side": 1,
+      "message": "a good question. I deally there would be a single source for gsctool and rust structures generated from it or the other way around, but this is a bit involved.\n\nFor now - please just add a comment pointing at the Rust counterpart of this strucure.",
+      "parentUuid": "88862490_8fcd8d31",
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4c11a5_7dc6a93e",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-10-20T21:46:23Z",
+      "side": 1,
+      "message": "why field named don\u0027t match structure namse? Can fields be called `v0` and `v1` respectively?",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 25
+      },
       "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
