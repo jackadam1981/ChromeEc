@@ -589,12 +589,14 @@ int battery_wait_for_stable(void)
 {
 	int status;
 	uint64_t wait_timeout = get_time().val + BATTERY_NO_RESPONSE_TIMEOUT;
+	int rv;
 
 	CPRINTS("Wait for battery to stabilize for %d ms",
 		BATTERY_NO_RESPONSE_TIMEOUT / MSEC);
 	while (get_time().val < wait_timeout) {
 		/* Starting pinging battery */
-		if (battery_status(&status) != EC_SUCCESS) {
+		rv = battery_status(&status);
+		if (rv != EC_SUCCESS) {
 			msleep(25); /* clock stretching could hold 25ms */
 			continue;
 		}
@@ -609,10 +611,11 @@ int battery_wait_for_stable(void)
 		}
 #endif
 		/* Battery is stable */
-		CPRINTS("battery responded with status %x", status);
+		CPRINTS("battery responded with status 0x%x", status);
 		return EC_SUCCESS;
 	}
-	CPRINTS("battery not responding with status %x", status);
+	CPRINTS("battery not stabilized (%s=0x%x)", rv ? "rv" : "status",
+		rv ? rv : status);
 	return EC_ERROR_NOT_POWERED;
 }
 
