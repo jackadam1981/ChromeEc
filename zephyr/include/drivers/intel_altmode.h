@@ -120,7 +120,7 @@ extern "C" {
  */
 
 #define INTEL_ALTMODE_REG_DATA_STATUS 0x5F
-#define INTEL_ALTMODE_DATA_STATUS_REG_LEN 5
+#define INTEL_ALTMODE_DATA_STATUS_REG_LEN 4
 
 union data_status_reg {
 	struct {
@@ -161,9 +161,10 @@ union data_status_reg {
 		uint8_t cable_gen : 2;
 		uint8_t res1 : 1;
 		uint8_t res2 : 1;
-
+#if 0
 		/* Bits 32 to 39 */
 		uint8_t res3;
+#endif
 	};
 	uint8_t raw_value[INTEL_ALTMODE_DATA_STATUS_REG_LEN];
 };
@@ -191,7 +192,7 @@ union data_status_reg {
  */
 
 #define INTEL_ALTMODE_REG_DATA_CONTROL 0x50
-#define INTEL_ALTMODE_DATA_CONTROL_REG_LEN 6
+#define INTEL_ALTMODE_DATA_CONTROL_REG_LEN 4
 
 union data_control_reg {
 	struct {
@@ -205,9 +206,12 @@ union data_control_reg {
 		uint8_t wr_ret : 1;
 		uint8_t hpd_irq_ack : 1;
 		uint8_t res3 : 2;
-
+#if 0
 		/* Bits 16 to 47 */
 		uint32_t ret_dbg_mode;
+#else
+		uint16_t ret_dbg_mode;
+#endif
 	};
 	uint8_t raw_value[INTEL_ALTMODE_DATA_CONTROL_REG_LEN];
 };
