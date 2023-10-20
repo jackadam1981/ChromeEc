@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1354c1e_24102e6f",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-20T17:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c929d1_80eaf4a7",
+      "range": {
+        "startLine": 487,
+        "startChar": 35,
+        "endLine": 487,
+        "endChar": 37
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a639fc86_73cbaa2a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac4f512_d6ce2db7",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-20T17:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a639fc86_73cbaa2a",
+      "range": {
+        "startLine": 514,
+        "startChar": 26,
+        "endLine": 514,
+        "endChar": 30
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a4e7058_394d258d",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-20T16:24:49Z",
       "side": 1,
       "message": "What is the use case for the \"set\" subcommand?\n\nIs there a console command to modify the effective battery config? or plan to add one?",
+      "range": {
+        "startLine": 536,
+        "startChar": 33,
+        "endLine": 536,
+        "endChar": 38
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49a50e7_bd840737",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-20T17:31:03Z",
+      "side": 1,
+      "message": "This is a way for bcic developers to program a config into CBI without booting the OS: 1. Add a config to the FW; 2. Flash it to a DUT; 3. Run \u0027bcfg set x\u0027. It\u0027s not useful for testing a new battery because flashing FW with a new config is enough. \n\n\u003e Is there a console command to modify the effective battery config? or plan to add one?\n\nIt would be nice to have such a command but it won\u0027t be a small command (unless we sacrifice the ux). Also, it will not be very needed because we\u0027ll eventually be able to program a config from the OS.",
+      "parentUuid": "2a4e7058_394d258d",
       "range": {
         "startLine": 536,
         "startChar": 33,
