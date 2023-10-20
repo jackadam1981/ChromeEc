@@ -68,6 +68,29 @@
       "parentUuid": "eb52b9a5_fc0403da",
       "revId": "b141d0eef6200cb4de702c7d3d5da02455f9198e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7bf2570_76d1fc02",
+        "filename": "zephyr/test/drivers/bmi3xx/src/bmi3xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-10-20T16:46:13Z",
+      "side": 1,
+      "message": "Unrelated change, right? I guess it doesn\u0027t hurt?",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "b141d0eef6200cb4de702c7d3d5da02455f9198e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
