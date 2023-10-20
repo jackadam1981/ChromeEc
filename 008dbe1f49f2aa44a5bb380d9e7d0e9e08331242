@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4704697_d9c0322f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-20T18:12:04Z",
+      "side": 1,
+      "message": "There\u0027s some good info here.  Its suggestion of using a `chromeos-version.sh` version bump for auto-uprev\u0027d (-9999 based) ebuilds is a good one.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/portage/ebuild_faq.md#Moving-files-between-packages",
+      "parentUuid": "f30d2a08_e56dd547",
+      "revId": "008dbe1f49f2aa44a5bb380d9e7d0e9e08331242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "97e3d6d9_c0e03477",
