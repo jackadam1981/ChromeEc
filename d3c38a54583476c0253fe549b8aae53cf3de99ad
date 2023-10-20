@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c4357a_d75601cf",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-20T22:34:50Z",
+      "side": 1,
+      "message": "I think this can be cleaner if it\u0027s done in wakeup_battery and you wouldn\u0027t need to hook AC_CHANGE. Something like this should work?\n```\n@@ -1073,6 +1073,8 @@ static int get_desired_input_current(enum battery_present batt_present,\n #endif\n }\n \n+#define CONFIG_PRECHARGE_DELAY_US (150 * MSEC)\n+\n static void wakeup_battery(int *need_static)\n {\n        if (battery_seems_dead || battery_is_cut_off()) {\n@@ -1092,13 +1094,18 @@ static void wakeup_battery(int *need_static)\n        } else {\n                /* See if we can wake it up */\n                if (curr.state !\u003d ST_PRECHARGE) {\n-                       CPRINTS(\"try to wake battery\");\n+                       CPRINTS(\"try to wake battery in %d ms\",\n+                               CONFIG_PRECHARGE_DELAY_US / MSEC);\n                        precharge_start_time \u003d get_time();\n                        *need_static \u003d 1;\n+                       set_charge_state(ST_PRECHARGE);\n+               }\n+\n+               if (get_time().val \u003e\n+                   precharge_start_time.val + CONFIG_PRECHARGE_DELAY_US) {\n+                       curr.requested_voltage \u003d batt_info-\u003evoltage_max;\n+                       curr.requested_current \u003d batt_info-\u003eprecharge_current;\n                }\n-               set_charge_state(ST_PRECHARGE);\n-               curr.requested_voltage \u003d batt_info-\u003evoltage_max;\n-               curr.requested_current \u003d batt_info-\u003eprecharge_current;\n        }\n }\n```",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 2
+      },
+      "revId": "d3c38a54583476c0253fe549b8aae53cf3de99ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
