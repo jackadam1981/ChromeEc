@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa30329_1e778432",
+        "filename": "zephyr/program/rex/screebo/src/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-20T13:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f4939f6_665f5b2c",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "22f3792d97bc91c6695da682cbf4d6f7e7f35efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7abb1c_2f47c88b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-20T04:40:45Z",
       "side": 1,
       "message": "only one \"on\" needed in this sentence.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "22f3792d97bc91c6695da682cbf4d6f7e7f35efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db43cf37_51c000f2",
+        "filename": "zephyr/program/rex/screebo/src/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-20T13:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7abb1c_2f47c88b",
       "range": {
         "startLine": 24,
         "startChar": 9,
