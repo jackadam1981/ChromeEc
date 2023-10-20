@@ -8,6 +8,10 @@
 
 #include "common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Task identifier (8 bits) */
 typedef uint8_t task_id_t;
 
@@ -269,7 +273,11 @@ enum {
 };
 
 #define EXTRA_TASK_ID(name) \
-	TASK_ID_##name = (TASK_ID_COUNT + EXTRA_TASK_##name),
+	TASK_ID_##name = ((int)TASK_ID_COUNT + (int)EXTRA_TASK_##name),
 enum { CROS_EC_EXTRA_TASKS(EXTRA_TASK_ID) };
+
+#ifdef __cplusplus
+};
+#endif
 
 #endif /* __CROS_EC_SHIMMED_TASK_ID_H */

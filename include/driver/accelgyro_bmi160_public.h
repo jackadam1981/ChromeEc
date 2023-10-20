@@ -8,6 +8,13 @@
 #ifndef __CROS_EC_DRIVER_ACCELGYRO_BMI160_PUBLIC_H
 #define __CROS_EC_DRIVER_ACCELGYRO_BMI160_PUBLIC_H
 
+#include "accelgyro.h"
+#include "gpio.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * The addr field of motion_sensor support both SPI and I2C:
  * This is defined in include/i2c.h and is no longer an 8bit
@@ -27,6 +34,10 @@ int bmi160_get_sensor_temp(int idx, int *temp_ptr);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
 extern struct i2c_stress_test_dev bmi160_i2c_stress_test_dev;
+#endif
+
+#ifdef __cplusplus
+};
 #endif
 
 #endif /* __CROS_EC_DRIVER_ACCELGYRO_BMI260_PUBLIC_H */

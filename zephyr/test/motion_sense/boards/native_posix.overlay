@@ -1,0 +1,69 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	motionsense-mutex {
+		compatible = "cros-ec,motionsense-mutex";
+		mutex_bmi160: bmi160-mutex {
+		};
+	};
+	motionsense-sensor-data {
+		bmi160_data: bmi160-drv-data {
+			compatible = "cros-ec,drvdata-bmi160";
+			status = "okay";
+			driver = <&accel_bmi160>;
+		};
+	};
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+		named_i2c0: i2c0 {
+			i2c-port = <&i2c0>;
+			enum-names = "I2C_PORT_ACCEL";
+		};
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+		/* unimplemented GPIOs */
+		entering-rw {
+			enum-name = "GPIO_ENTERING_RW";
+		};
+	};
+	motionsense-sensor {
+		base_accel: ms_bmi160_accel: ms-bmi160-accel {
+			compatible = "cros-ec,bmi160-accel";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3_S5";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_bmi160>;
+			port = <&named_i2c0>;
+			drv-data = <&bmi160_data>;
+			default-range = <4>;
+			i2c-spi-addr-flags = "BMI160_ADDR0_FLAGS";
+			driver = <&accel_bmi160>;
+		};
+
+		base_gyro: ms_bmi160_gyro: ms-bmi160-gyro {
+			compatible = "cros-ec,bmi160-gyro";
+			status = "okay";
+
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_bmi160>;
+			port = <&named_i2c0>;
+			drv-data = <&bmi160_data>;
+			default-range = <1000>; /* dps */
+			i2c-spi-addr-flags = "BMI160_ADDR0_FLAGS";
+			driver = <&accel_bmi160>;
+		};
+	};
+};
+
+&i2c0 {
+	accel_bmi160: bmi160@68 {
+		compatible = "bosch,bmi160";
+		reg = <0x68>;
+	};
+};

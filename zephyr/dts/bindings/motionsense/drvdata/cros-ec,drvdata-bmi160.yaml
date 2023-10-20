@@ -8,11 +8,17 @@ compatible: "cros-ec,drvdata-bmi160"
 
 include: drvdata-base.yaml
 
+properties:
+  driver:
+    type: phandle
+    description: phandle to underlying Zephyr device
+
 #
 # examples:
 #
 # bmi160_data: bmi160-drv-data {
 #        compatible = "cros-ec,drvdata-bmi160";
 #        status = "okay";
+#        driver = <&lid_accel>;
 # };
 #

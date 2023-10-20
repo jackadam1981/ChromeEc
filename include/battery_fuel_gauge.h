@@ -151,4 +151,6 @@ __override_proto bool board_batt_conf_enabled(void);
 __override_proto int
 board_battery_imbalance_mv(const struct board_batt_params *info);
 
+void batt_conf_main(void);
+
 #endif /* __CROS_EC_BATTERY_FUEL_GAUGE_H */

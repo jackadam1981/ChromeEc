@@ -10,6 +10,7 @@
 #include "hooks.h"
 #include "motionsense_sensors.h"
 
+#include <zephyr/drivers/sensor.h>
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(shim_cros_motionsense_sensors);
@@ -74,9 +75,17 @@ DT_FOREACH_STATUS_OKAY(cros_ec_motionsense_bodydetect,
  */
 #define SENSOR_DATA_NAME(id) DT_CAT(SENSOR_DAT_, id)
 #define SENSOR_DATA_NODE DT_PATH(motionsense_sensor_data)
+#define SENSOR_ONE_SHOT_READER_NAME(id) DT_CAT(sensor_reader_iodev_, id)
 
-#define SENSOR_DATA(inst, compat, create_data_macro) \
-	create_data_macro(DT_INST(inst, compat),     \
+#define CREATE_ONE_SHOT_READER(id)                                         \
+	COND_CODE_1(CONFIG_SENSOR,                                         \
+		    (SENSOR_DT_READ_IODEV(SENSOR_ONE_SHOT_READER_NAME(id), \
+					  DT_PHANDLE(id, driver),          \
+					  SENSOR_CHAN_ALL);),              \
+		    ())
+
+#define SENSOR_DATA(inst, compat, create_data_macro)   \
+	create_data_macro(DT_INST(inst, compat),       \
 			  SENSOR_DATA_NAME(DT_INST(inst, compat)))
 
 /*
@@ -245,10 +254,16 @@ DT_FOREACH_STATUS_OKAY(cros_ec_motionsense_bodydetect,
 
 /* Create motion sensor node with node ID */
 #define DO_MK_SENSOR_ENTRY(id, s_chip, s_type, s_drv, s_min_freq, s_max_freq) \
-	[SENSOR_ID(id)] = { SENSOR_BASIC_INFO(id).chip = s_chip,              \
-			    .type = s_type, .drv = &s_drv,                    \
-			    .min_frequency = s_min_freq,                      \
-			    .max_frequency = s_max_freq },
+	[SENSOR_ID(id)] = {                                                   \
+		SENSOR_BASIC_INFO(id)                                         \
+		.chip = s_chip,                                               \
+		.type = s_type,                                               \
+		.drv = &s_drv,                                                \
+		.min_frequency = s_min_freq,                                  \
+		.max_frequency = s_max_freq,                                  \
+		.dev = DEVICE_DT_GET_OR_NULL(DT_PHANDLE(id, driver)),         \
+        	.iodev = &SENSOR_ONE_SHOT_READER_NAME(id),                    \
+	},
 
 /* Construct an entry iff the alternate_for property is missing. */
 #define MK_SENSOR_ENTRY(inst, s_compat, s_chip, s_type, s_drv, s_min_freq,    \
@@ -274,6 +289,21 @@ DT_FOREACH_STATUS_OKAY(cros_ec_motionsense_bodydetect,
  * time we ignore CREATE_SENSOR_DATA().
  */
 #define CREATE_SENSOR_DATA(compat, create_data_macro)
+#undef CREATE_MOTION_SENSOR
+
+#define CREATE_MOTION_SENSOR_READER(inst, s_compat) \
+	CREATE_ONE_SHOT_READER(DT_INST(inst, s_compat));
+
+#define CREATE_MOTION_SENSOR(s_compat, s_chip, s_type, s_drv, s_min_freq, \
+			     s_max_freq)                                  \
+	LISTIFY(DT_NUM_INST_STATUS_OKAY(s_compat),                        \
+		CREATE_MOTION_SENSOR_READER, (), s_compat)
+
+#if DT_NODE_EXISTS(SENSOR_NODE)
+#include "motionsense_driver/sensor_drv_list.inc"
+#endif
+
+#undef CREATE_MOTION_SENSOR_READER
 #undef CREATE_MOTION_SENSOR
 
 /*

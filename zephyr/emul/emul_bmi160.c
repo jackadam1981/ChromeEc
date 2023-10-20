@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#ifdef __REQUIRE_ZEPHYR_GPIOS__
+#undef __REQUIRE_ZEPHYR_GPIOS__
+#endif
+
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "emul/emul_bmi.h"

@@ -7,6 +7,14 @@
 #ifndef __CROS_EC_DRIVER_ACCELGYRO_BMI_COMMON_PUBLIC_H
 #define __CROS_EC_DRIVER_ACCELGYRO_BMI_COMMON_PUBLIC_H
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/device.h>
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Min and Max sampling frequency in mHz */
 #define BMI_ACCEL_MIN_FREQ 12500
 #define BMI_ACCEL_MAX_FREQ MOTION_MAX_SENSOR_FREQUENCY(1600000, 100000)
@@ -26,6 +34,13 @@ struct bmi_drv_data_t {
 	enum motionsensor_orientation orientation;
 	enum motionsensor_orientation last_orientation;
 #endif
+#ifdef CONFIG_ZEPHYR
+	const struct device *dev;
+#endif
 };
+
+#ifdef __cplusplus
+};
+#endif
 
 #endif /* __CROS_EC_DRIVER_ACCELGYRO_BMI_COMMON_PUBLIC_H */

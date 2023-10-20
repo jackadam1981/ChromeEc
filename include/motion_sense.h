@@ -20,6 +20,11 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/device.h>
+#include <zephyr/rtio/rtio.h>
+#endif
+
 enum sensor_state {
 	/* Sensor state is unknown, out of reset. Maybe powered down */
 	SENSOR_NOT_INITIALIZED = 0,
@@ -257,6 +262,11 @@ struct motion_sensor_t {
 
 	/* Maximum supported sampling frequency in miliHertz for this sensor */
 	uint32_t max_frequency;
+
+#ifdef CONFIG_ZEPHYR
+	const struct device *dev;
+	struct rtio_iodev *iodev;
+#endif
 };
 
 /*

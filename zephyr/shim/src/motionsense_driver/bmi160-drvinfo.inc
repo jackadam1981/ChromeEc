@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#ifdef __REQUIRE_ZEPHYR_GPIOS__
+#undef __REQUIRE_ZEPHYR_GPIOS__
+#endif
+
 #include "driver/accelgyro_bmi_common_public.h"
 #include "driver/accelgyro_bmi160_public.h"
 
@@ -20,8 +24,10 @@
  * Create driver data. It can be shared among the entries in
  * motion_sensors array which are using the same bmi160 driver.
  */
-#define CREATE_SENSOR_DATA_BMI160(id, drvdata_name)			\
-	static struct bmi_drv_data_t drvdata_name;
+#define CREATE_SENSOR_DATA_BMI160(id, drvdata_name)                            \
+	static struct bmi_drv_data_t drvdata_name = {                          \
+		.dev = DEVICE_DT_GET_OR_NULL(DT_PHANDLE(id, driver)),          \
+	};
 
 /*
  * Create driver data for each BMI160 drvinfo instance in device tree.

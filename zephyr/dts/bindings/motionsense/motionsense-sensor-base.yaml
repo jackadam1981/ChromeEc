@@ -56,6 +56,9 @@ properties:
   int-signal:
     type: phandle
     description: pin which triggers interrupt for sensor
+  driver:
+    type: phandle
+    description: phandle to underlying Zephyr device
 
 #
 # examples:

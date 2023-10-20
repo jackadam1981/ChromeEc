@@ -34,7 +34,7 @@
 #ifdef CONFIG_PLATFORM_EC_ACCEL_LIS2DW12
 #include "lis2dw12-drvinfo.inc"
 #endif
-#ifdef CONFIG_PLATFORM_EC_ACCELGYRO_BMI160
+#if defined(CONFIG_PLATFORM_EC_ACCELGYRO_BMI160) || defined(CONFIG_BMI160)
 #include "bmi160-drvinfo.inc"
 #endif
 #ifdef CONFIG_PLATFORM_EC_ACCELGYRO_BMI260

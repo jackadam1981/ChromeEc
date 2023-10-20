@@ -400,4 +400,6 @@ int tcpci_tcpm_set_src_ctrl(int port, int enable);
 
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable);
 
+test_export_static int get_state_tc(const int port);
+
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */
