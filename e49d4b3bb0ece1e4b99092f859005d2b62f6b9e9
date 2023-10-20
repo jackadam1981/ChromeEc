@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08bd247_5d375ec0",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T23:31:33Z",
+      "side": 1,
+      "message": "Use `p-\u003esize - read_size`.",
+      "range": {
+        "startLine": 356,
+        "startChar": 11,
+        "endLine": 356,
+        "endChar": 47
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c584d0_bbc78bc4",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T23:31:33Z",
+      "side": 1,
+      "message": "The stack is usually small and can\u0027t afford a big number if it grows to 4KB. As the existing API needs to an entire buffer to load, looks like we have to create a global static variable to store the staging cbi data.",
+      "range": {
+        "startLine": 483,
+        "startChar": 15,
+        "endLine": 483,
+        "endChar": 29
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bbf01c_d28dac08",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T23:31:33Z",
+      "side": 1,
+      "message": "How about add a flag COMMIT and the last write CMD has the COMMIT flag enabled? All the CMD modifies the staging buffer. If the COMMIT flag is set, check `is_valid_cbi(staging_buf)` and then call this `store()` and the below invalidate and read calls.",
+      "range": {
+        "startLine": 494,
+        "startChar": 7,
+        "endLine": 494,
+        "endChar": 34
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ebd164_bc65ee4d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6386,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T23:31:33Z",
+      "side": 1,
+      "message": "An incompatible change like this needs to duplicate the struct to a _v2 struct and keep the original struct as _v1. The relevant code needs to handle both formats. Otherwise, it will break the existing devices which use the v1 struct. The complication may not justified.\n\nAn easier way is to create a new CMD for these new operations, like `EC_CMD_READ_CROS_BOARD_INFO`/`EC_CMD_WRITE_CROS_BOARD_INFO` instead of overloading the `EC_CMD_GET_CROS_BOARD_INFO`/`EC_CMD_SET_CROS_BOARD_INFO`.\n\nYou can check the above `EC_CMD_FLASH_READ`/`EC_CMD_FLASH_WRITE`. The params should be similar.",
+      "range": {
+        "startLine": 6386,
+        "startChar": 1,
+        "endLine": 6386,
+        "endChar": 35
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
