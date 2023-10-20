@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30d2a08_e56dd547",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-20T18:06:43Z",
+      "side": 1,
+      "message": "This Cq-Depend is good, but not sufficient alone unfortunately.\n\nBoth CLs feed into cros_workon managed automatically uprev\u0027d packages, so they each go live when those ebuilds get uprev\u0027d.\n\nIf anyone\u0027s update_chroot invocation tries to update hdctools to gain servo_updater first, before updating ec-devutils to remove its copy, that will fail (chroot broken / unable to uprev).\n\nThe way to avoid this is version dependencies.  The first hdctools version to get servo_updater needs to depend on ec-devutils version \u003e\u003d its first version without servo_updater.\n\nConsider carefully how to orchestrate this given the auto-uprev situation.  You\u0027ll probably want to temporarily use `CROS_WORKON_MANUAL_UPREV\u003d1` on at least hdctools, and maybe on both.",
+      "revId": "008dbe1f49f2aa44a5bb380d9e7d0e9e08331242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "97e3d6d9_c0e03477",
