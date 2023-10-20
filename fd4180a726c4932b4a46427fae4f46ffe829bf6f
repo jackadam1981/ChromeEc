@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6e19fe_9b34c611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-20T13:49:21Z",
+      "side": 1,
+      "message": "run ./util/gen_bazel_targets.py\n\"mtlrvpp_m1723\" program is added into: /bazel/all_targets.generated.bzl\nThanks!",
+      "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
