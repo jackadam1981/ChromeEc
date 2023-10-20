@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297b6536_ab131495",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T00:48:12Z",
+      "side": 1,
+      "message": "+Daisuke to review\n\nI basically agree with this change to reflect the debounce time per the spec. As it seems to be a common behavior that a wide range of boards have it, doing it in a common code makes sense.",
+      "revId": "4a1227a5f98b00612296b240b6dec06b69b29509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5de7c2_0df21d1c",
+        "filename": "include/charge_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T00:48:12Z",
+      "side": 1,
+      "message": "turned",
+      "range": {
+        "startLine": 421,
+        "startChar": 3,
+        "endLine": 421,
+        "endChar": 7
+      },
+      "revId": "4a1227a5f98b00612296b240b6dec06b69b29509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
