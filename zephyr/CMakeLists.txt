@@ -690,3 +690,13 @@ if (NOT DEFINED CONFIG_BOARD_NATIVE_POSIX)
       --delete
   )
 endif()
+
+# Add a disassembled EC image for analyzing crashes
+if (NOT DEFINED CONFIG_BOARD_NATIVE_POSIX)
+  set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
+    COMMAND
+      ${CMAKE_OBJDUMP} -d
+      ${CMAKE_BINARY_DIR}/zephyr/zephyr.elf
+      > ${CMAKE_BINARY_DIR}/zephyr/zephyr.disasm
+  )
+endif()
