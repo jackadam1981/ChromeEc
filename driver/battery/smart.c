@@ -590,8 +590,8 @@ int battery_wait_for_stable(void)
 	int status;
 	uint64_t wait_timeout = get_time().val + BATTERY_NO_RESPONSE_TIMEOUT;
 
-	CPRINTS("Wait for battery stabilized during %d",
-		BATTERY_NO_RESPONSE_TIMEOUT);
+	CPRINTS("Wait for battery to stabilize for %d ms",
+		BATTERY_NO_RESPONSE_TIMEOUT / MSEC);
 	while (get_time().val < wait_timeout) {
 		/* Starting pinging battery */
 		if (battery_status(&status) != EC_SUCCESS) {
