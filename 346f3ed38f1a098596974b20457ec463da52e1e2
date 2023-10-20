@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e53e5283_bf06c95c",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-20T13:16:12Z",
+      "side": 1,
+      "message": "Right! I would say even more, we have to do it also for any other chip reset. I think we can reuse this function for both purposes.\nOf course, we also issue chip_reset() here, but we set bootstatus after that call, so it is safe to clear bootstatus here.",
+      "parentUuid": "fb838448_5cc6a74c",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a86a95b3_e468237b",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14e649b9_fe6843a6",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-20T13:16:12Z",
+      "side": 1,
+      "message": "moving back for #ifdef as in case that this is not defined, legacy builds are failing.",
+      "parentUuid": "a86a95b3_e468237b",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb4b08de_6c085bea",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2023-10-13T15:27:01Z",
       "side": 1,
       "message": "No need for the brackets around the IS_ENABLED I think",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3da1a0_ec8034d7",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-20T13:16:12Z",
+      "side": 1,
+      "message": "moving back for #ifdef as in case that this is not defined, legacy builds are failing.",
+      "parentUuid": "eb4b08de_6c085bea",
       "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
