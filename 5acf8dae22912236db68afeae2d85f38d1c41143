@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec8e111_a7e39d71",
+        "filename": "test/battery_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-20T17:50:18Z",
+      "side": 1,
+      "message": "This test isn\u0027t checking anything useful.  What about faking the board_battery_imbalance_mv() in the test and then validating that the battery flags set `BATT_FLAG_IMBALANCED_CELL`?\n\nOnly caller to `battery_imbalance_mv()` seems to be [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/driver/battery/smart.c;l\u003d550).",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 42
+      },
+      "revId": "5acf8dae22912236db68afeae2d85f38d1c41143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
