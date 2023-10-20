@@ -12,4 +12,21 @@ config USBC_INTEL_ALTMODE
 	  chip and EC for configuring the USB-C alternate mode muxes inside
 	  Intel AP.
 
+if USBC_INTEL_ALTMODE
+
+config USBC_INTEL_ALTMODE_STATUS_REG_LENGTH
+	int "USB-C Intel alternate mode status register length in bytes"
+	default 5
+	help
+	  When USBC_INTEL_ALTMODE is enabled, this option sets the expected
+	  length in bytes of Intel PD Controller status register.
+
+config USBC_INTEL_ALTMODE_CONTROL_REG_LENGTH
+	int "USB-C Intel alternate mode control register length in bytes"
+	default 4
+	help
+	  When USBC_INTEL_ALTMODE is enabled, this option sets the expected
+	  length in bytes of Intel PD Controller control register.
+endif # USBC_INTEL_ALTMODE
+
 endif # PLATFORM_EC_USBC

@@ -58,8 +58,11 @@ static int intel_altmode_read_status(const struct device *dev,
 			       INTEL_ALTMODE_DATA_STATUS_REG_LEN + 1);
 	if (rv)
 		return rv;
-	if (buf[0] != INTEL_ALTMODE_DATA_STATUS_REG_LEN)
+	if (buf[0] != INTEL_ALTMODE_DATA_STATUS_REG_LEN) {
+		LOG_ERR("Wrong status register length %d, expecting %d", buf[0],
+			INTEL_ALTMODE_DATA_STATUS_REG_LEN);
 		return -EIO;
+	}
 
 	memcpy(data, &buf[1], INTEL_ALTMODE_DATA_STATUS_REG_LEN);
 
