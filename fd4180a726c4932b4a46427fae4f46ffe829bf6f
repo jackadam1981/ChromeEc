@@ -16,6 +16,29 @@
       "message": "run ./util/gen_bazel_targets.py\n\"mtlrvpp_m1723\" program is added into: /bazel/all_targets.generated.bzl\nThanks!",
       "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c893c3a_1e934823",
+        "filename": "bazel/all_targets.generated.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-20T23:34:44Z",
+      "side": 1,
+      "message": "extra_modules \u003d [\"cmsis\", \"picolibc\"],\n\n./util/gen_bazel_targets.py\nI didn\u0027t put effort to see why its needed but the script generated this.",
+      "range": {
+        "startLine": 1419,
+        "startChar": 8,
+        "endLine": 1419,
+        "endChar": 34
+      },
+      "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
