@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c929d1_80eaf4a7",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T16:24:49Z",
+      "side": 1,
+      "message": "Nit: `%04x` for easily matching the above mask.",
+      "range": {
+        "startLine": 487,
+        "startChar": 35,
+        "endLine": 487,
+        "endChar": 37
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a639fc86_73cbaa2a",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T16:24:49Z",
+      "side": 1,
+      "message": "Initialize the struct to `{0}` here. Some members are not filled below, e.g. reserved[].",
+      "range": {
+        "startLine": 514,
+        "startChar": 26,
+        "endLine": 514,
+        "endChar": 30
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4e7058_394d258d",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-20T16:24:49Z",
+      "side": 1,
+      "message": "What is the use case for the \"set\" subcommand?\n\nIs there a console command to modify the effective battery config? or plan to add one?",
+      "range": {
+        "startLine": 536,
+        "startChar": 33,
+        "endLine": 536,
+        "endChar": 38
+      },
+      "revId": "76d6b70b16e5018f2fee6114dcc0164881674550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
