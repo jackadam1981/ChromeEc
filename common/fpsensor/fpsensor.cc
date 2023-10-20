@@ -259,7 +259,15 @@ extern "C" void fp_task(void)
 		if (evt & TASK_EVENT_UPDATE_CONFIG) {
 			uint32_t mode = sensor_mode;
 
+#ifdef CONFIG_ZEPHYR
+			/*
+			 * We are about to change sensor mode, so exit any
+			 * previous states.
+			 */
+			fp_idle();
+#else
 			gpio_disable_interrupt(GPIO_FPS_INT);
+#endif
 			if ((mode ^ enroll_session) & FP_MODE_ENROLL_SESSION) {
 				if (mode & FP_MODE_ENROLL_SESSION) {
 					if (fp_enrollment_begin())
@@ -304,7 +312,13 @@ extern "C" void fp_task(void)
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
 			overall_t0 = get_time();
 			timestamps_invalid = 0;
+#ifdef CONFIG_ZEPHYR
+			/* On timeout, put sensor into idle state. */
+			if (evt & TASK_EVENT_TIMER)
+				fp_idle();
+#else
 			gpio_disable_interrupt(GPIO_FPS_INT);
+#endif
 			if (sensor_mode & FP_MODE_ANY_DETECT_FINGER) {
 				st = fp_finger_status();
 				if (st == FINGER_PRESENT &&
