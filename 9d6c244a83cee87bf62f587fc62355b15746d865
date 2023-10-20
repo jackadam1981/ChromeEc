@@ -16,6 +16,24 @@
       "message": "Can you add information about this? Why can\u0027t we share the same dtsi like before?",
       "revId": "9d6c244a83cee87bf62f587fc62355b15746d865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "093766f8_81ce3099",
+        "filename": "zephyr/program/rex/rex-ish/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-10-20T20:31:02Z",
+      "side": 1,
+      "message": "The reason is that for ISH enabled builds, we would like sensors inactive during system suspend. This ensures that SoC can enter into S0I2.2. We changed active-mask \u003d \"SENSOR_ACTIVE_S0_S3\" to active-mask \u003d \"SENSOR_ACTIVE_S0\".\n\nIn case of sensors on EC, SoC is not impacted even if sensors are active during system suspend.",
+      "parentUuid": "caca1a98_553b96d9",
+      "revId": "9d6c244a83cee87bf62f587fc62355b15746d865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
