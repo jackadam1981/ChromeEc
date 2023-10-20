@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fa64149_0794db39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-20T15:34:05Z",
+      "side": 1,
+      "message": "Please add a link to the upstream PR that adds flash reset support to the commit message.",
+      "revId": "3b62166e3aab215df3423d06e1d1a4ac340f0138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5cb3a18_dac8abba",
         "filename": "zephyr/Kconfig.flash",
         "patchSetId": 4
