@@ -12,7 +12,6 @@
 #include "../keyboard.dtsi"
 #include "../power_signals.dtsi"
 #include "../rex.dtsi"
-#include "../temp_sensors.dtsi"
 #include "../usbc.dtsi"
 
 /* Karis project DTS includes */
@@ -22,6 +21,7 @@
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
 #include "motionsense.dtsi"
+#include "temp_sensors.dtsi"
 
 / {
 	named-gpios {
