@@ -25,6 +25,8 @@ extern "C" {
  *
  * MeteorLake Platform Power Delivery Controller Interface for SoC and Retimer
  * https://cdrdv2.intel.com/v1/dl/getContent/634442
+ * <Placeholder for Next Gen Platform>
+ * https://cdrdv2.intel.com/v1/dl/getContent/766056
  * Table A-1: DATA STATUS Register Definition
  * Table A-3: DATA CONTROL Register
  */
@@ -120,7 +122,11 @@ extern "C" {
  */
 
 #define INTEL_ALTMODE_REG_DATA_STATUS 0x5F
+#if defined(CONFIG_AP_X86_INTEL_MTL)
 #define INTEL_ALTMODE_DATA_STATUS_REG_LEN 5
+#else
+#define INTEL_ALTMODE_DATA_STATUS_REG_LEN 4
+#endif
 
 union data_status_reg {
 	struct {
@@ -161,9 +167,6 @@ union data_status_reg {
 		uint8_t cable_gen : 2;
 		uint8_t res1 : 1;
 		uint8_t res2 : 1;
-
-		/* Bits 32 to 39 */
-		uint8_t res3;
 	};
 	uint8_t raw_value[INTEL_ALTMODE_DATA_STATUS_REG_LEN];
 };
@@ -191,7 +194,11 @@ union data_status_reg {
  */
 
 #define INTEL_ALTMODE_REG_DATA_CONTROL 0x50
+#if defined(CONFIG_AP_X86_INTEL_MTL)
 #define INTEL_ALTMODE_DATA_CONTROL_REG_LEN 6
+#else
+#define INTEL_ALTMODE_DATA_CONTROL_REG_LEN 4
+#endif
 
 union data_control_reg {
 	struct {
@@ -205,9 +212,6 @@ union data_control_reg {
 		uint8_t wr_ret : 1;
 		uint8_t hpd_irq_ack : 1;
 		uint8_t res3 : 2;
-
-		/* Bits 16 to 47 */
-		uint32_t ret_dbg_mode;
 	};
 	uint8_t raw_value[INTEL_ALTMODE_DATA_CONTROL_REG_LEN];
 };
