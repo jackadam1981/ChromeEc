@@ -176,6 +176,23 @@
       "message": "I really don\u0027t own this device, though.",
       "revId": "6292eb49511b66c800f1a43192dfbf85533abff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45432b60_c502355d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-10-21T00:56:14Z",
+      "side": 1,
+      "message": "The reason this has not received a CR+2 from me is that the producer of the bit fields (config.star) and the consumer of the bit fields (EC) have definitions that don\u0027t appear to match.  We need the two authors from the ODM to come to an agreement.",
+      "revId": "6292eb49511b66c800f1a43192dfbf85533abff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
