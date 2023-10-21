@@ -22,6 +22,30 @@
       },
       "revId": "6ea67b6f43efd2e392013bb737f9d972190067fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba7465b_45d8964a",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-21T19:17:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d400f473_5dd2e1f1",
+      "range": {
+        "startLine": 695,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 42
+      },
+      "revId": "6ea67b6f43efd2e392013bb737f9d972190067fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
