@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d7b51c8_256b1bc4",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-22T14:05:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b08bd247_5d375ec0",
+      "range": {
+        "startLine": 356,
+        "startChar": 11,
+        "endLine": 356,
+        "endChar": 47
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9c584d0_bbc78bc4",
         "filename": "common/cbi.c",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-20T23:31:33Z",
       "side": 1,
       "message": "The stack is usually small and can\u0027t afford a big number if it grows to 4KB. As the existing API needs to an entire buffer to load, looks like we have to create a global static variable to store the staging cbi data.",
+      "range": {
+        "startLine": 483,
+        "startChar": 15,
+        "endLine": 483,
+        "endChar": 29
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0a80c4_f02b1e3f",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-22T14:05:46Z",
+      "side": 1,
+      "message": "I didn\u0027t understand the comment completely, could you help me with following questions:\n\nAt present we have a global variable `cbi`, which is point of reference for all APIs. Are you suggesting to have another buffer variable like it to store pieces of image temporarily at one place before writing at a time. Or to use existing `cbi` variable for this and ignore it\u0027s being unstable for a while\n\nIf we go with global variable specific for buffer, there won\u0027t be much memory space saving difference w.r.to current implementation as we have buffer array in function now\n\nThank you",
+      "parentUuid": "c9c584d0_bbc78bc4",
       "range": {
         "startLine": 483,
         "startChar": 15,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35ec5c3c_d3841ebb",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-22T14:05:46Z",
+      "side": 1,
+      "message": "That sounds like a neat approach",
+      "parentUuid": "c3bbf01c_d28dac08",
+      "range": {
+        "startLine": 494,
+        "startChar": 7,
+        "endLine": 494,
+        "endChar": 34
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28ebd164_bc65ee4d",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2023-10-20T23:31:33Z",
       "side": 1,
       "message": "An incompatible change like this needs to duplicate the struct to a _v2 struct and keep the original struct as _v1. The relevant code needs to handle both formats. Otherwise, it will break the existing devices which use the v1 struct. The complication may not justified.\n\nAn easier way is to create a new CMD for these new operations, like `EC_CMD_READ_CROS_BOARD_INFO`/`EC_CMD_WRITE_CROS_BOARD_INFO` instead of overloading the `EC_CMD_GET_CROS_BOARD_INFO`/`EC_CMD_SET_CROS_BOARD_INFO`.\n\nYou can check the above `EC_CMD_FLASH_READ`/`EC_CMD_FLASH_WRITE`. The params should be similar.",
+      "range": {
+        "startLine": 6386,
+        "startChar": 1,
+        "endLine": 6386,
+        "endChar": 35
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d15fc12_c7dad468",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6386,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-22T14:05:46Z",
+      "side": 1,
+      "message": "Ok, I will create separate commands for this",
+      "parentUuid": "28ebd164_bc65ee4d",
       "range": {
         "startLine": 6386,
         "startChar": 1,
