@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a3a8b8_6bf92d78",
+        "filename": "zephyr/program/corsola/BUILD.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Move to last line.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5fbdc2_74d37d01",
+        "filename": "zephyr/program/corsola/chinchou/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070e1a1e_0012430c",
+        "filename": "zephyr/program/corsola/chinchou/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Alignment context.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bce304_9724fe02",
+        "filename": "zephyr/program/corsola/chinchou/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b4fe5f_52c06cf3",
+        "filename": "zephyr/program/corsola/chinchou/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8ba951_b7c838d3",
+        "filename": "zephyr/program/corsola/chinchou/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Alignment context.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83eb4b5_76f92842",
+        "filename": "zephyr/program/corsola/chinchou/src/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-10-23T03:23:07Z",
+      "side": 1,
+      "message": "Just config the touchpad GPIO to enable level, no need to control it in the function.",
+      "revId": "8c875e84dcf0a9ef67a40add483489e37ea6b222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
