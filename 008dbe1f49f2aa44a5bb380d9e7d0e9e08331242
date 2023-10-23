@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c782685f_f290e81b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-23T22:47:42Z",
+      "side": 1,
+      "message": "Oh, except because chromeos-base/ec-devutils uprevs are managed by PUpr, while dev-util/hdctools is uprev\u0027d by the regular cros_workon process.  I doubt there\u0027s any possibility of getting a lockstep automatic uprev in a single commit. 😞\n\nIn theory you could probably do a combined manual uprev, but I don\u0027t think that is worthwhile.  Short of that, https://crrev.com/c/4966522/2 is probably as good as this can get, just update the description as mentioned there.\n\n[ I\u0027m marking this thread resolved. ]",
+      "parentUuid": "b4103b79_56c081d8",
+      "revId": "008dbe1f49f2aa44a5bb380d9e7d0e9e08331242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "97e3d6d9_c0e03477",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
