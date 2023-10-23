@@ -45,6 +45,30 @@
       },
       "revId": "3ae7e4b32241205179533729b96c0c5b215d6441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dbadc51_f61583a7",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-23T07:52:56Z",
+      "side": 1,
+      "message": "Fixed by updating the `led_id` right after the first check.",
+      "parentUuid": "8cab4ef8_8415d8ce",
+      "range": {
+        "startLine": 283,
+        "startChar": 19,
+        "endLine": 283,
+        "endChar": 40
+      },
+      "revId": "3ae7e4b32241205179533729b96c0c5b215d6441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
