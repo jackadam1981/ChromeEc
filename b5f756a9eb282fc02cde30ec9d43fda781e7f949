@@ -34,6 +34,24 @@
       "parentUuid": "f04df0f6_9a60b98a",
       "revId": "b5f756a9eb282fc02cde30ec9d43fda781e7f949",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d43546e_e7d7dd54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2023-10-23T21:58:48Z",
+      "side": 1,
+      "message": "Basically avoiding the forbidden intersection: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/sandboxing.md#The-forbidden-intersection",
+      "parentUuid": "4e19b094_61542757",
+      "revId": "b5f756a9eb282fc02cde30ec9d43fda781e7f949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
