@@ -317,6 +317,9 @@
 	led-colors {
 		compatible = "cros-ec,led-policy";
 
+		sysrq-alias = "EC_LED_ID_BATTERY_LED";
+		sysrq-led-control-color = "LED_WHITE";
+
 		/* STARMIE LED bat charge */
 		bat-power-state-charge-lvl-1 {
 			charge-state = "LED_PWRS_CHARGE";
