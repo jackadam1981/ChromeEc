@@ -39,6 +39,30 @@
       },
       "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21490dea_3e46d332",
+        "filename": "bazel/all_targets.generated.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-10-23T16:20:53Z",
+      "side": 1,
+      "message": "From the builder:\n```\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d FAILURES \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n_____________________________ test_generated_file ______________________________\n\n    def test_generated_file():\n        \"\"\"Test that the generated file is up-to-date.\"\"\"\n        # TODO(b/300287548): Generate the public and private bazel targets\n        # separately.\n        if not (pathlib.Path(__file__).parent.parent / \"private\").is_dir():\n            pytest.skip(\"Don\u0027t test bazel generation in public checkouts\")\n\u003e       assert (\n            gen_bazel_targets.DEFAULT_OUTPUT.read_text(encoding\u003d\"utf-8\")\n            \u003d\u003d gen_bazel_targets.gen_bazel()\n        ), \"Build targets were changed.  Please run ./util/gen_bazel_targets.py.\"\nE       AssertionError: Build targets were changed.  Please run ./util/gen_bazel_targets.py.\nE       assert \u0027# Copyright ...lse,\\n    )\\n\u0027 \u003d\u003d \u0027# Copyright 2...lse,\\n    )\\n\u0027\nE         Skipping 32076 identical leading characters in diff, use -v to show\nE         - \u003d [\"cmsis\"],\nE         + \u003d [\"cmsis\", \"picolibc\"],\nE               )\nE               ec_target(\nE                   name \u003d \"mtlrvpp_mchp\",\nE                   board \u003d \"mtlrvpp_mchp\",...\nE         \nE         ...Full output truncated (882 lines hidden), use \u0027-vv\u0027 to show\n\nutil/test_gen_bazel_targets.py:19: AssertionError\n```\n\nI think Vijay is right, and you need to run `gen_bazel_targets.py` again.",
+      "parentUuid": "1c893c3a_1e934823",
+      "range": {
+        "startLine": 1419,
+        "startChar": 8,
+        "endLine": 1419,
+        "endChar": 34
+      },
+      "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
