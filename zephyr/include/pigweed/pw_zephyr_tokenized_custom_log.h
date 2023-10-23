@@ -11,4 +11,7 @@
  */
 #define PW_LOG_TOKENIZED_FORMAT_STRING(string) string
 
+/* Use a rarely used char in EC logging as tokenizer prefix */
+#define PW_TOKENIZER_NESTED_PREFIX_STR "`"
+
 #endif /* __PW_ZEPHYR_TOKENIZED_CUSTOM_LOG_H */
