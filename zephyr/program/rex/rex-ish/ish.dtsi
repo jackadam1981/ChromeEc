@@ -3,7 +3,11 @@
  * found in the LICENSE file.
  */
 
-#ifndef __ZEPHYR_GPIO_MAP_H
-#define __ZEPHYR_GPIO_MAP_H
-
-#endif /* __ZEPHYR_GPIO_MAP_H */
+/ {
+	chosen {
+		zephyr,sram = &sram;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,flash = &sram;
+	};
+};
