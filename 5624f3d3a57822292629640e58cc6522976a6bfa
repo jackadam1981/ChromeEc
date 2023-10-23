@@ -16,6 +16,24 @@
       "message": "update `extra/usb_updater/pylintrc`",
       "revId": "5624f3d3a57822292629640e58cc6522976a6bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca8ee61_9e793d47",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-23T22:21:58Z",
+      "side": 0,
+      "message": "Actually, just delete it entirely, nothing left for it after this CL.",
+      "parentUuid": "85c87719_02cefac5",
+      "revId": "5624f3d3a57822292629640e58cc6522976a6bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
