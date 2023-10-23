@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5dbb0b5_5923af2d",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-23T20:38:30Z",
+      "side": 1,
+      "message": "I feel we should make this an alias to a LED DT Node instead, so we don\u0027t need to repeat the EC_LED_ID* multiple times in `sysrq-alias` and `recovery-hw-reinit-alias`. WDYT?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
