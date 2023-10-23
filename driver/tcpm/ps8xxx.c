@@ -512,6 +512,18 @@ static int ps8xxx_get_chip_info(int port, int live,
 		chip_info->product_id = product_id[port];
 	}
 
+	CPRINTS("DOUG: %d %d 0x%08x, 0x%08x 0x%08x",
+		port, live, (int)chip_info,
+		(int)(&chip_info->fw_version_number),
+		(int)chip_info->fw_version_number);
+	if (!chip_info) {
+		chip_info->fw_version_number = 0x123;
+		CPRINTS("DOUG (after modify to 0x123): %d %d 0x%08x, 0x%08x 0x%08x",
+			port, live, (int)chip_info,
+			(int)(&chip_info->fw_version_number),
+			(int)chip_info->fw_version_number);
+	}
+
 	if (chip_info->fw_version_number == 0 ||
 	    chip_info->fw_version_number == -1 || live) {
 #ifdef CONFIG_USB_PD_TCPM_PS8805_FORCE_DID

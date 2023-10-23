@@ -1449,7 +1449,9 @@ int tcpci_tcpm_init(int port)
 		return error;
 
 	/* Read chip info here when we know the chip is awake. */
+	CPRINTS("DOUG: %s before tcpm_get_chip_info", __func__);
 	tcpm_get_chip_info(port, 1, NULL);
+	CPRINTS("DOUG: %s after tcpm_get_chip_info", __func__);
 
 	return EC_SUCCESS;
 }
