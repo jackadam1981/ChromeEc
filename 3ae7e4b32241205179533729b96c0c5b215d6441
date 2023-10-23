@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5333b5b5_eb773cce",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-23T09:25:27Z",
+      "side": 1,
+      "message": "Per offline discussion, the `EC_LED_ID_RECOVERY_HW_REINIT_LED` is for deeper reset ([ref](https://chromium.googlesource.com/chromiumos/docs/+/refs/heads/factory-atlas-11907.B/debug_buttons.md#firmware-menu-interface)). That is also for detachable, so we will handle it as well.",
+      "parentUuid": "a6e1c926_7f802d0a",
+      "range": {
+        "startLine": 278,
+        "startChar": 16,
+        "endLine": 278,
+        "endChar": 48
+      },
+      "revId": "3ae7e4b32241205179533729b96c0c5b215d6441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cab4ef8_8415d8ce",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 1
