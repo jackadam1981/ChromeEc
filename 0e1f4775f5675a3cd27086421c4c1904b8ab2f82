@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5acddf_1272e095",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:02Z",
+      "side": 1,
+      "message": "Last week I was stuck at home, remotely controlling my HyperDebug and Haven shield to verify some I2C wires.  I would have wanted to hook up my logic analyzer to the I2C wires, but had to do with HyperDebug `gpio monitoring` capabitities.  Unfortunately, even at the lowest I2C speed of 100kHz, the ToT HyperDebug firmware was not able to capture the signals coming out of H1 on the I2C clock and data lines, however, with this old stack of CLs, I could see every transition and verify what I wanted.\n\nAlso, I imagine that if we decide to use the SPI pass-through feature of the OpenTitan chip, we may want to use logic analyzer functionality when testing that Ti50 properly prevents a rogue AP from passing prohibited commands to the SPI flash.  Having high-speed logic analyzer would allow us write an automated test that verifies that the chip select is deasserted at a particular clock cycle in a SPI transaction, as soon as OpenTitan recognizes the prohibited instruction code.  (Provided that we reduce the SPI clock to 200kHz or thereabout.)\n\nBecause of the above, I think it makes sense to consider again whether this sequence of three CLs optimizing the GPIO monitoring should become part of the official HyperDebug firmware.",
+      "revId": "0e1f4775f5675a3cd27086421c4c1904b8ab2f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

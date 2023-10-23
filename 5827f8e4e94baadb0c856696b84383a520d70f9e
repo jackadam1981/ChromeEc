@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e805f134_dee24242",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:02Z",
+      "side": 1,
+      "message": "Even with this `cflush()` on each iteration, I find that if the output contains hundreds of lines, then it will get truncated, that is, after a while, the test of the  output (including the next command prompt character `\"\u003e \"`) will not make it out of the USB stream.  Because of this, I have currently limited the number of lines that will be printed by a single command invocation to 32, forcing opentitantool to repeatedly request more, sidestepping the issue.\n\nI would rather understand what guarantees `cflush()` provides, and how I can achieve printing an unbounded number of lines.  Do anyone have suggestion for this?",
+      "revId": "5827f8e4e94baadb0c856696b84383a520d70f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
