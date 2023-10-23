@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf4b460_08c52724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-23T22:57:08Z",
+      "side": 1,
+      "message": "Re-opening this since the CL ordering does matter and the Cq-Depend loop should still be avoided.\n\nI think the safe ordering for avoiding build and uprev breakage is:\n\n1. CL:4892017 (this CL deleting servo_updater from platform/ec/)\n2. CL:4966522 (the ebuild CL)\n3. CL:4879103 (adding servo_updater to hdctools)\n\nMake the Cq-Depends require that ordering, as pure one way dependency path (no loops).\n\nFeel free to send them all to CQ together once fully approved.  This is just so CQ will follow a defined, safest ordering in case any of the merges fails.",
+      "parentUuid": "c782685f_f290e81b",
+      "revId": "008dbe1f49f2aa44a5bb380d9e7d0e9e08331242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "97e3d6d9_c0e03477",
