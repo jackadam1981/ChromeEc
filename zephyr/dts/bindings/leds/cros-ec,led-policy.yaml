@@ -6,6 +6,37 @@ description: LED policy parent node
 
 compatible: "cros-ec,led-policy"
 
+properties:
+  sysrq-alias:
+    description: |
+      This property is for making another existing led behaves as the
+      EC_LED_ID_SYSRQ_DEBUG_LED when any call to `led_control` on the
+      SYSRQ_DEBUG_LED.
+    type: string
+    default: EC_LED_ID_SYSRQ_DEBUG_LED
+    enum:
+      - EC_LED_ID_BATTERY_LED
+      - EC_LED_ID_POWER_LED
+      - EC_LED_ID_ADAPTER_LED
+      - EC_LED_ID_LEFT_LED
+      - EC_LED_ID_RIGHT_LED
+      - EC_LED_ID_RECOVERY_HW_REINIT_LED
+      - EC_LED_ID_SYSRQ_DEBUG_LED
+  sysrq-led-control-color:
+    description: |
+      Specify what color to display when `led_control` makes the LED
+      EC_LED_ID_SYSRQ_DEBUG_LED active.
+    type: string
+    default: LED_BLUE
+    enum:
+      - LED_OFF
+      - LED_RED
+      - LED_GREEN
+      - LED_BLUE
+      - LED_YELLOW
+      - LED_WHITE
+      - LED_AMBER
+
 child-binding:
   description: |
     LED policy nodes to describe the policy combination a node depends on, and
