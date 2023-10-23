@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afaa381c_36458515",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4353,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-10-23T16:09:40Z",
+      "side": 1,
+      "message": "If we\u0027re modifying the struct, let\u0027s add a explicit version field. Right now there\u0027s no easy way to tell what\u0027s included in misc_status. Adding a version would let us add bits to the status and know what it covers.",
+      "parentUuid": "4a13eec0_c4fe0711",
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5657f1f7_5de60b34",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
