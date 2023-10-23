@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a34150_2a0d1eab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-10-23T11:49:54Z",
+      "side": 1,
+      "message": "Hi Al, downstream fix, looks like we were still running some tests with the old API, this fixes them but I think some of these may have to be dropped from the legacy build.mk, doing a dry run with no dependency to verify if that\u0027s indeed the case.",
+      "revId": "e5c30ddb2c3ca8e88fd06beded5aa6de70770bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
