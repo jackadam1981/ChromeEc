@@ -63,6 +63,30 @@
       },
       "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece6eb39_85232044",
+        "filename": "bazel/all_targets.generated.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-23T18:09:28Z",
+      "side": 1,
+      "message": "Yes, VJ’s comment is correct.\nI “repo sync” to get updated “gen_bazel_targets.py”, then able to get same result:\n        extra_modules \u003d [\"cmsis\", \"picolibc\"],\nThanks you both\u0027s feedbacks.",
+      "parentUuid": "21490dea_3e46d332",
+      "range": {
+        "startLine": 1419,
+        "startChar": 8,
+        "endLine": 1419,
+        "endChar": 34
+      },
+      "revId": "fd4180a726c4932b4a46427fae4f46ffe829bf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
