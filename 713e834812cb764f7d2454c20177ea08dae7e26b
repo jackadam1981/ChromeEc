@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d548d3_261ad5a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e90e15_60c64dca",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d9676e_062f0bd7",
@@ -38,6 +62,30 @@
       "writtenOn": "2023-02-06T16:26:08Z",
       "side": 1,
       "message": "since this is 64-bits, should this go first to ensure that there is not padding if someone where to add another field above this?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffc9683_d391ec62",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "Yes, I had an idea that it would be beneficial to put all the fields that were used by the interrupt handler together at the beginning of the struct, and that the struct was padded to 64-bit boundary.  But thinking about it, this chip probably does not have L1 data cache that would benefit from such data locality.\n\nI will re-arrange such that the larger fields come first, for better packing.",
+      "parentUuid": "99d9676e_062f0bd7",
       "range": {
         "startLine": 61,
         "startChar": 1,
@@ -71,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58762c22_b6a675f1",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "I have eliminated them in favor of explicitly declaring desired alignment of the `data[]` \"flexible array\" member.",
+      "parentUuid": "b9cc340f_7ac39101",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e3a964a_2b617998",
@@ -84,6 +156,30 @@
       "writtenOn": "2023-02-06T16:26:08Z",
       "side": 1,
       "message": "why is `fill2` a `u8` here but a `u32` above?\n\nAlso need comments\n\n(Oh are these padding or reserved fields for padding?) Needs commends saying it is for padding and/or call them reserved#",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755b6c9a_6460e843",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "There were for padding the struct to a multiple of 4 bytes, in anticipation of another flexible array member being added in a subsequenct CL.  The same effect can be achieve better with an alignment attribute on the future field.",
+      "parentUuid": "2e3a964a_2b617998",
       "range": {
         "startLine": 95,
         "startChar": 16,
@@ -117,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dcc765_f900e2f6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "I have added that comment in the previous CL in the chain, which does that optimization, along with some numbers on its benefit.",
+      "parentUuid": "f160b3df_083bb514",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 14
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac301163_a6499a83",
@@ -130,6 +250,30 @@
       "writtenOn": "2023-02-06T16:26:08Z",
       "side": 1,
       "message": "`uint8_t const * buffer_data` since we don\u0027t want to update this variable ever",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 21
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8aec826_d1e3cdcb",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "Right (though I believe that for obscure reasons, `uint8_t const * v` has the same meaning as `const uint8_t * v`, which is not what we want.)",
+      "parentUuid": "ac301163_a6499a83",
       "range": {
         "startLine": 135,
         "startChar": 1,
@@ -163,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6caaf9af_7aa345fc",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d05d2c8_4d8c8d0c",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95d9d06d_4c4d2f37",
@@ -176,6 +344,30 @@
       "writtenOn": "2023-02-06T16:26:08Z",
       "side": 1,
       "message": "nit: `const uint8_t const * end` since we don\u0027t want to modify variable or modify contents through this variable.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250a1600_2be9110b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d9d06d_4c4d2f37",
       "range": {
         "startLine": 138,
         "startChar": 1,
@@ -209,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fccf7b_794cc134",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "The interrupt handler wants to determine if the most recently measured level on the signal is identical to what was recorded in the last execution of the interrupt handler, because if so, there must have been (at least) two edges since last time.\n\nIf you recall, I used to store a boolean value in `uint8_t head_level`, and do the comparison like this `!!current_level \u003d\u003d !!slot-\u003ehead_level`, to see if both were zero or both were non-zero.  Now I am working directly with gpio register masks for efficiency, it dawned on me that we could save a few cycles by not eliminating the need for the compiler to consider any two non-zero values \"equal\".  The new convention of the `uint32_t head_level` is that it is either zero or the value of `gpio_mask`, that is, it has the particular bit set, which this GPIO occupies in its value register.  This way, the interrupt handler will read a GPIO register, do logical-and with the gpio mask, and then do plain integer comparison against `head_level`.\n\nI have added a comment on the `head_level` field, briefly explaining the above.",
+      "parentUuid": "de0a6801_a454ae49",
+      "range": {
+        "startLine": 487,
+        "startChar": 21,
+        "endLine": 487,
+        "endChar": 69
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c60a29f_6fb949a5",
@@ -222,6 +438,30 @@
       "writtenOn": "2023-02-06T16:26:08Z",
       "side": 1,
       "message": "`uint8_t const * buf_start`",
+      "range": {
+        "startLine": 602,
+        "startChar": 2,
+        "endLine": 602,
+        "endChar": 20
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94216358_21a4b166",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-23T21:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c60a29f_6fb949a5",
       "range": {
         "startLine": 602,
         "startChar": 2,
