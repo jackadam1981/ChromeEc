@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b042f64_d2cac13c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-10-23T23:39:44Z",
+      "side": 1,
+      "message": "Actually, this looks to be just the compiler. If I make things \"volatile\" I don\u0027t get 0x123 here... So to summarize:\n* reading / writing to NULL doesn\u0027t cause a fault (but probably should?)\n* reading from NULL just reads back from the ROM\n* writing to NULL is ignored.",
+      "range": {
+        "startLine": 17,
+        "startChar": 89,
+        "endLine": 17,
+        "endChar": 99
+      },
+      "revId": "00ddb03ecbc262d99d7fc811b6c25400a8f75809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "01b45cae_eb4e544c",
