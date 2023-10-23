@@ -16,6 +16,23 @@
       "message": "Yeah as expected these two don\u0027t run on the legacy test anymore. I\u0027m proposing to drop them from there, the code is tested in the Zephyr run anyway so I think that was redundant in the first place.",
       "revId": "f4b86881e329bfa0916055c4f8b4ce32adcff936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81d5daa_db43dfeb",
+        "filename": "test/accel_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-10-23T14:10:00Z",
+      "side": 1,
+      "message": "The fourth and fifth argument of `ZTEST_SUITE` takes a `before`/`after` function pointer.   We should be able to add the `before_test` and `after_test` there.",
+      "revId": "f4b86881e329bfa0916055c4f8b4ce32adcff936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
