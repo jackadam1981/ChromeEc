@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5888a186_42bedd9d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-23T16:28:11Z",
+      "side": 1,
+      "message": "This needs to be added to include/config.h and zephyr/Kconfig.charger (e.g. crrev.com/c/4409986). Sorry for inconvenience.\n\nIt should be undefined by default and set to 150 msec if CONFIG_CHARGER_ISL9238 is defined ([link](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/config.h;drc\u003d7189a40f4961a0c21d19143b76462566a54e6ee6;l\u003d6479)).\n\nCan you also change the unit to _MS? You can add something like this to wakeup_battery:\n```\n#ifndef CONFIG_PRECHARGE_DELAY_MS\n    const int precharge_delay \u003d 0;\n#else\n    const int precharge_delay \u003d CONFIG_PRECHARGE_DELAY_MS * MSEC;\n#endif\n```\n\nYou also probably need to update the unit test. Please let me know if this is too much or isn\u0027t clear.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 8,
+        "endLine": 1076,
+        "endChar": 33
+      },
+      "revId": "1ab8dfda2e7ceb49440348d76d9536efcd840e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
