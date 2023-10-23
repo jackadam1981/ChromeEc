@@ -1464,6 +1464,10 @@ static void dpm_dfp_ready_run(const int port)
 	}
 
 	if (DPM_CHK_FLAG(port, DPM_FLAG_VCONN_SWAP)) {
+		enum pd_vconn_role desired = pd_get_vconn_state(port) ?
+						     PD_ROLE_VCONN_OFF :
+						     PD_ROLE_VCONN_SRC;
+		pe_set_requested_vconn_role(port, desired);
 		pd_dpm_request(port, DPM_REQUEST_VCONN_SWAP);
 		DPM_CLR_FLAG(port, DPM_FLAG_VCONN_SWAP);
 		set_state_dpm(port, DPM_WAITING);
@@ -1506,6 +1510,10 @@ static void dpm_ufp_ready_run(const int port)
 	}
 
 	if (DPM_CHK_FLAG(port, DPM_FLAG_VCONN_SWAP)) {
+		enum pd_vconn_role desired = pd_get_vconn_state(port) ?
+						     PD_ROLE_VCONN_OFF :
+						     PD_ROLE_VCONN_SRC;
+		pe_set_requested_vconn_role(port, desired);
 		pd_dpm_request(port, DPM_REQUEST_VCONN_SWAP);
 		DPM_CLR_FLAG(port, DPM_FLAG_VCONN_SWAP);
 		set_state_dpm(port, DPM_WAITING);
