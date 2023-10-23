@@ -285,7 +285,11 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 		return;
 	}
 
-	color = state ? LED_BLUE : LED_OFF;
+	color = state ? DT_INST_STRING_TOKEN(0, sysrq_led_control_color) :
+			LED_OFF;
+	if (led_id == EC_LED_ID_SYSRQ_DEBUG_LED) {
+		led_id = DT_INST_STRING_TOKEN(0, sysrq_alias);
+	}
 
 	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
 
