@@ -274,8 +274,6 @@ static int syv682x_emul_init(const struct emul *emul,
 
 DT_INST_FOREACH_STATUS_OKAY(SYV682X_EMUL)
 
-#ifdef CONFIG_ZTEST_NEW_API
-
 #define SYV682X_EMUL_RESET_RULE_BEFORE(n) \
 	syv682x_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)));
 
@@ -287,7 +285,6 @@ static void emul_syv682x_reset_before(const struct ztest_unit_test *test,
 	DT_INST_FOREACH_STATUS_OKAY(SYV682X_EMUL_RESET_RULE_BEFORE);
 }
 ZTEST_RULE(emul_syv682x_reset, emul_syv682x_reset_before, NULL);
-#endif /* CONFIG_ZTEST_NEW_API */
 
 DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
 
