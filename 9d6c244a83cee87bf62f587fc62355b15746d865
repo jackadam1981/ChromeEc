@@ -34,6 +34,24 @@
       "parentUuid": "caca1a98_553b96d9",
       "revId": "9d6c244a83cee87bf62f587fc62355b15746d865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22f74ff_04bb0efe",
+        "filename": "zephyr/program/rex/rex-ish/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-23T19:13:18Z",
+      "side": 1,
+      "message": "So the only difference is the `active-mask`? We should overlay it instead of duplicating then.",
+      "parentUuid": "093766f8_81ce3099",
+      "revId": "9d6c244a83cee87bf62f587fc62355b15746d865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
