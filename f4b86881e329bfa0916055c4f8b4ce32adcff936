@@ -33,6 +33,24 @@
       "message": "The fourth and fifth argument of `ZTEST_SUITE` takes a `before`/`after` function pointer.   We should be able to add the `before_test` and `after_test` there.",
       "revId": "f4b86881e329bfa0916055c4f8b4ce32adcff936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dbc08d4_51e8c8ae",
+        "filename": "test/accel_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-10-23T14:30:40Z",
+      "side": 1,
+      "message": "Good call, done. I dropped the cq-depend as I think this can go in by itself and I bumped into another regression with adlrvp_mchp that will also have to be fixed. Let\u0027s see if it passes CI.",
+      "parentUuid": "b81d5daa_db43dfeb",
+      "revId": "f4b86881e329bfa0916055c4f8b4ce32adcff936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
