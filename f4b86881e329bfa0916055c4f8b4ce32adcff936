@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755b190f_9b643964",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-10-23T13:17:01Z",
+      "side": 1,
+      "message": "Yeah as expected these two don\u0027t run on the legacy test anymore. I\u0027m proposing to drop them from there, the code is tested in the Zephyr run anyway so I think that was redundant in the first place.",
+      "revId": "f4b86881e329bfa0916055c4f8b4ce32adcff936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
