@@ -16,6 +16,23 @@
       "message": "I have no idea how big of a problem this is. NOTE that in ToT this doesn\u0027t seem to be a problem because of CL:4179431",
       "revId": "00ddb03ecbc262d99d7fc811b6c25400a8f75809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0b2e32_5998acf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-23T23:38:04Z",
+      "side": 1,
+      "message": "ugh, ToT looks a lot different.\ni was going to say it got fixed with\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4179432,\nbut the null pointer case is handled correctly before that change already.",
+      "revId": "00ddb03ecbc262d99d7fc811b6c25400a8f75809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
