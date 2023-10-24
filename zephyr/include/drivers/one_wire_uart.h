@@ -66,4 +66,11 @@ typedef void (*one_wire_uart_msg_received_cb_t)(uint8_t cmd,
 void one_wire_uart_set_callback(const struct device *device,
 				one_wire_uart_msg_received_cb_t msg_received);
 
+/**
+ * @brief Reset the internal state of the one-wire UART device.
+ *
+ * @param dev One-Wire UART device instance.
+ */
+void one_wire_uart_reset(const struct device *dev);
+
 #endif /* ZEPHYR_INCLUDE_DRIVERS_ONE_WIRE_UART_H_ */

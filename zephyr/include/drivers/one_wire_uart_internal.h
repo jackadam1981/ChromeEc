@@ -80,7 +80,6 @@ void find_header(const struct device *dev);
 void process_rx_fifo(const struct device *dev);
 void process_packet(void);
 void process_tx_irq(const struct device *dev);
-void one_wire_uart_reset(const struct device *dev);
 #endif
 
 #endif /* ZEPHYR_INCLUDE_DRIVERS_ONE_WIRE_UART_INTERNAL_H_ */

@@ -7,11 +7,14 @@
 	named-adc-channels {
 		compatible = "named-adc-channels";
 
+		adc-base-det {
+			enum-name = "ADC_BASE_DET";
+			io-channels = <&adc0 0>;
+		};
 		adc_ec_id: ec_id {
 			enum-name = "ADC_ID_1";
 			io-channels = <&adc0 1>;
 		};
-
 	};
 };
 
