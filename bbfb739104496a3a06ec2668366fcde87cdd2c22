@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46c35d2_e6bd1a9d",
+        "filename": "zephyr/drivers/one_wire_uart/hid_over_i2c_target.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-24T18:01:38Z",
+      "side": 1,
+      "message": "should we configure `cfg-\u003eirq` is low active in DT so that we could set the logical value by `gpio_pin_set_dt`?",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "bbfb739104496a3a06ec2668366fcde87cdd2c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
