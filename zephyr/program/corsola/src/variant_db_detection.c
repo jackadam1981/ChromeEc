@@ -182,6 +182,7 @@ DECLARE_DEFERRED(ps185_hdmi_hpd_deferred);
 
 void hdmi_hpd_interrupt(enum gpio_signal signal)
 {
+	CPRINTS("\n---entry hdmi_hpd_interrupt---");
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
 

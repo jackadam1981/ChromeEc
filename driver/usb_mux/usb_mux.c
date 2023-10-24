@@ -286,10 +286,13 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 
 		if (index != TYPEC_USB_MUX_SET_ALL_CHIPS && index != chip)
 			continue;
-
+		CPRINTS("\n---entry mutex_lock---");
 		/* Action time!  Lock this mux */
 		mutex_lock(&mux_lock[port]);
 
+		CPRINTS("\nmux_ptr->usb_port:%d, i2c_port:%d, i2c_addr_flags:%d, config:%d", 
+			mux_ptr->usb_port, mux_ptr->i2c_port, mux_ptr->i2c_addr_flags,config);
+		
 		switch (config) {
 		case USB_MUX_INIT:
 			if (drv && drv->init) {
@@ -607,7 +610,7 @@ static enum ec_error_list try_usb_mux_get(int port, mux_state_t *mux_state)
 		*mux_state = USB_PD_MUX_NONE;
 		return EC_SUCCESS;
 	}
-
+	CPRINTS("\n---entry try_usb_mux_get to configure_mux, port : %d---",port);
 	return configure_mux(port, TYPEC_USB_MUX_SET_ALL_CHIPS,
 			     USB_MUX_GET_MODE, mux_state);
 }
