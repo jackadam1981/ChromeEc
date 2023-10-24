@@ -22,6 +22,30 @@
       },
       "revId": "1ab8dfda2e7ceb49440348d76d9536efcd840e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d45674a_ac884300",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-10-24T08:46:28Z",
+      "side": 1,
+      "message": "What is unit test?",
+      "parentUuid": "5888a186_42bedd9d",
+      "range": {
+        "startLine": 1076,
+        "startChar": 8,
+        "endLine": 1076,
+        "endChar": 33
+      },
+      "revId": "1ab8dfda2e7ceb49440348d76d9536efcd840e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
