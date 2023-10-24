@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04f1b8f_ef4b2c34",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-24T20:36:26Z",
+      "side": 1,
+      "message": "This needs to be set to ACTIVE_LOW if https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4950187/13 follows the corresponding fix.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 40
+      },
+      "revId": "550362d5cd1fe2790a189b4991cba05fca9c0e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
