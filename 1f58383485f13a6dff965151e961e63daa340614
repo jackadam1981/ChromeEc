@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe3190f_e0b0aeb2",
+        "filename": "zephyr/program/rex/screebo/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-24T11:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f4501e5_7532177b",
+      "revId": "1f58383485f13a6dff965151e961e63daa340614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e1a2a13_199b0b32",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17f2f77_05341ffe",
+        "filename": "zephyr/test/rex/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-24T11:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1a2a13_199b0b32",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "1f58383485f13a6dff965151e961e63daa340614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87a36c7d_6978cad1",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-10-20T14:16:09Z",
       "side": 1,
       "message": "nit: just use a single blank line",
+      "revId": "1f58383485f13a6dff965151e961e63daa340614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7766f298_452f0a04",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-24T11:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a36c7d_6978cad1",
       "revId": "1f58383485f13a6dff965151e961e63daa340614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
