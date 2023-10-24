@@ -16,6 +16,24 @@
       "message": "Do we missing any indent here ?",
       "revId": "7a3970404628b994154a9f506494e857e3a53d78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d428548_fec95534",
+        "filename": "zephyr/program/corsola/chinchou/src/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-10-24T04:30:03Z",
+      "side": 1,
+      "message": "I fixed it with this command：cros format zephyr/program/corsola/chinchou/src/board.c",
+      "parentUuid": "0810aaa2_546c8010",
+      "revId": "7a3970404628b994154a9f506494e857e3a53d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
