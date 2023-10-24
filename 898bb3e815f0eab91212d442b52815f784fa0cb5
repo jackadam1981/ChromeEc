@@ -22,6 +22,30 @@
       },
       "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94ed49b_727085f7",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-24T01:24:10Z",
+      "side": 1,
+      "message": "Oh, we were thinking about using yaml anchor and alias to solve the repetition. I did something wrong, so the anchor did not work. After fixing that, I can use yaml alias and anchor to solve the repetition. Let me push a new patchset and we can have a first glance.",
+      "parentUuid": "c5dbb0b5_5923af2d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
