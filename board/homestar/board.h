@@ -38,6 +38,9 @@
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 
+/* I2C speed console command */
+#define CONFIG_CMD_I2C_SPEED
+
 /* Lid accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
