@@ -388,7 +388,21 @@ static void pwr_led_tick(void)
 		next = pwr_led_pulse.interval;
 	elapsed = get_time().le.lo - start;
 	next = next > elapsed ? next - elapsed : 0;
-	hook_call_deferred(&pwr_led_tick_data, next);
+	/*
+	 * To avoid racing condition of pwr_led_tick happens when chipset
+	 * resume or shutdown, check chipset state before the next tick.
+	 * (b:305126895)
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		hook_call_deferred(&pwr_led_tick_data, -1);
+		if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+			led_set_color_power(LED_WHITE, 100);
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		hook_call_deferred(&pwr_led_tick_data, -1);
+		if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+			led_set_color_power(LED_OFF, 0);
+	} else
+		hook_call_deferred(&pwr_led_tick_data, next);
 }
 
 static void pwr_led_suspend(void)
