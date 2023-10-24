@@ -15,7 +15,7 @@ def register_intelrvp_project(
 ):
     """Register a variant of intelrvp."""
     register_func = register_binman_project
-    if chip.startswith("mec1727"):
+    if chip.startswith("mec172x"):
         register_func = register_mchp_project
     elif chip.startswith("npcx"):
         register_func = register_npcx_project
@@ -43,7 +43,7 @@ def register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="adlrvp_mchp",
-    chip="mec1727",
+    chip="mec172x",
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
         here / "adlrvp/adlrvp_mchp/gpio.dts",
@@ -80,7 +80,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="mtlrvpp_m1723",
-    chip="mec1727",
+    chip="mec172x",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_mchp/fan.dts",
         here / "mtlrvp/mtlrvpp_mchp/gpio.dts",
@@ -106,7 +106,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="mtlrvpp_mchp",
-    chip="mec1727",
+    chip="mec172x",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_mchp/fan.dts",
         here / "mtlrvp/mtlrvpp_mchp/gpio.dts",
