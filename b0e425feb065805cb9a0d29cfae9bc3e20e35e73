@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61df4770_dc32a52b",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-24T21:02:18Z",
+      "side": 1,
+      "message": "Yes,\u0026spi0{} is different for MEC1723, but, it is overlay by: intelrvp/mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts\nfor “mtlrvpp_m1723” program.",
+      "parentUuid": "b2c3db3c_0be541c8",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94f77180_7cf9fc07",
