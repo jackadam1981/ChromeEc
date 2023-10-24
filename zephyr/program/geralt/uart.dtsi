@@ -5,7 +5,7 @@
 
 &uart2 {
 	status = "okay";
-	current-speed = <115200>;
+	current-speed = <460800>;
 	clock-frequency = <1804800>;
 
 	one_wire_uart: one-wire-uart {
@@ -15,7 +15,7 @@
 
 &ite_uart2_wrapper {
 	status = "okay";
-	pinctrl-0 = <&uart2_rx_gph5
-		     &uart2_tx_gph6>;
+	pinctrl-0 = <&uart2_rx_gph5_default
+		     &uart2_tx_gph6_default>;
 	pinctrl-names = "default";
 };
