@@ -22,6 +22,23 @@
       },
       "revId": "5016889a3808a59d6782ac725d67901683c70ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba85941_c550ad62",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-24T21:07:02Z",
+      "side": 1,
+      "message": "add reference document link\nhttps://cdrdv2.intel.com/v1/dl/getContent/766056\n\nBut don\u0027t name the document name yet",
+      "revId": "5016889a3808a59d6782ac725d67901683c70ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
