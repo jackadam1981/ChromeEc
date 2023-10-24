@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0381ecde_e06e4088",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-24T20:41:39Z",
+      "side": 1,
+      "message": "This sort of option is usually expressed in the devicetree.  Is that doable?",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "5016889a3808a59d6782ac725d67901683c70ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
