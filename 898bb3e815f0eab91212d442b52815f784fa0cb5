@@ -46,6 +46,30 @@
       },
       "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6004ee5_6cef1a78",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-10-24T20:26:06Z",
+      "side": 1,
+      "message": "It\u0027s much better now. Maybe not in this patch, but we should gather all the led-id-enum and led-color-enum definitions from `pwm-led-pins.yaml` and `gpio-led-pins.yaml`.",
+      "parentUuid": "e94ed49b_727085f7",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
