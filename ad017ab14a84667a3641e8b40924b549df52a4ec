@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a91cac_ef162f56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-10-24T18:03:34Z",
+      "side": 1,
+      "message": "I guess we need to add more tests on:\n1) Overflow of nvmem\n2) Continues update of NV space with many generations\n3) Bad pages - make it possible to return error from flash erase",
+      "revId": "ad017ab14a84667a3641e8b40924b549df52a4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
