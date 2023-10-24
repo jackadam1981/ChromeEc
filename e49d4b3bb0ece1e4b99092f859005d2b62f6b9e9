@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a3c851d_38f0b5c2",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-24T02:20:07Z",
+      "side": 1,
+      "message": "Add another buffer like `cbi` to store the temporary data, such that we can wait the entire buffer filled and commit to the flash once.",
+      "parentUuid": "fc0a80c4_f02b1e3f",
+      "range": {
+        "startLine": 483,
+        "startChar": 15,
+        "endLine": 483,
+        "endChar": 29
+      },
+      "revId": "e49d4b3bb0ece1e4b99092f859005d2b62f6b9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3bbf01c_d28dac08",
         "filename": "common/cbi.c",
         "patchSetId": 6
