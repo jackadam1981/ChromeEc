@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a22661_e24a367b",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-10-24T23:59:12Z",
+      "side": 1,
+      "message": "nit: an error message would help here, something like `Failed to set i2c speed for port %d because it  has static speed configuration`",
+      "range": {
+        "startLine": 1039,
+        "startChar": 1,
+        "endLine": 1040,
+        "endChar": 32
+      },
+      "revId": "81ce44fdccefa2b566cbbc60c1d7acd4f0b44129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
