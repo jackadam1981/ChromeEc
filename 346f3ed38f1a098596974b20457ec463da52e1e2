@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e04c6cd_cc878b4b",
+        "filename": "common/host_command_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-24T19:55:09Z",
+      "side": 1,
+      "message": "It\u0027s better to guard this code with `CONFIG_AP_HANG_DETECT_FOR_EVENT` only.  You can add build-time dependency in config.h to validate `CONFIG_AP_HANG_DETECT_FOR_EVENT` is only set if `CONFIG_AP_HANG_DETECT` is also set.",
+      "parentUuid": "d8df4405_faecde23",
+      "revId": "346f3ed38f1a098596974b20457ec463da52e1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1023762f_5bc217c4",
         "filename": "include/config.h",
         "patchSetId": 1

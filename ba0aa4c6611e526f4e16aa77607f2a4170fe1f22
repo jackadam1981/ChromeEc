@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3a2f55_cc714794",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-24T19:55:09Z",
+      "side": 1,
+      "message": "How about naming these routines as follows:\n- `hang_detect_reboot`\n- `hang_detect_cancel_reboot`\n- `hang_detect_event`\n- `hang_detect_cancel_event`",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "320279e7_01ec7b6e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-24T19:55:09Z",
+      "side": 1,
+      "message": "This is a new configuration option and should be moved to a separate CL.  There needs be a reason provided for adding this option.\n\nAlso. the comment implies that this option sends a host event, but does not do a reboot.  It actually does both, correct?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 0
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e913872c_eb892751",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-24T19:55:09Z",
+      "side": 1,
+      "message": "Please leave this file alphasorted.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 48
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
