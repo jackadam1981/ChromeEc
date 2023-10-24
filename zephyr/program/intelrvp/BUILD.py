@@ -15,7 +15,7 @@ def register_intelrvp_project(
 ):
     """Register a variant of intelrvp."""
     register_func = register_binman_project
-    if chip.startswith("mec1727"):
+    if chip.startswith("mec172x"):
         register_func = register_mchp_project
     elif chip.startswith("npcx"):
         register_func = register_npcx_project
@@ -43,13 +43,14 @@ def register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="adlrvp_mchp",
-    chip="mec1727",
+    chip="mec172x",
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
         here / "adlrvp/adlrvp_mchp/gpio.dts",
         here / "adlrvp/adlrvp_mchp/interrupts.dts",
         here / "adlrvp/adlrvp_mchp/keyboard.dts",
         here / "adlrvp/adlrvp_mchp/usbc.dts",
+        here / "../../boards/arm/mec172x/mec1727_flash.dts",
     ],
     extra_kconfig_files=[
         here / "legacy_ec_pwrseq.conf",
@@ -80,7 +81,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="mtlrvpp_m1723",
-    chip="mec1727",
+    chip="mec172x",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_mchp/fan.dts",
         here / "mtlrvp/mtlrvpp_mchp/gpio.dts",
@@ -94,6 +95,7 @@ register_intelrvp_project(
         here / "mtlrvp/mtlrvpp_mchp/mtlrvp_mchp_power_signals.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
         here / "mtlrvp/usbc.dts",
+        here / "../../boards/arm/mec172x/mec1723_flash.dts",
     ],
     extra_kconfig_files=[
         here / "zephyr_ap_pwrseq.conf",
@@ -106,7 +108,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="mtlrvpp_mchp",
-    chip="mec1727",
+    chip="mec172x",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_mchp/fan.dts",
         here / "mtlrvp/mtlrvpp_mchp/gpio.dts",
@@ -119,6 +121,7 @@ register_intelrvp_project(
         here / "mtlrvp/mtlrvpp_mchp/mtlrvp_mchp_power_signals.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
         here / "mtlrvp/usbc.dts",
+        here / "../../boards/arm/mec172x/mec1727_flash.dts",
     ],
     extra_kconfig_files=[
         here / "zephyr_ap_pwrseq.conf",
