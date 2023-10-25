@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4c9281_c6c936f9",
+        "filename": "zephyr/program/nissa/yavilla/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-25T02:00:37Z",
+      "side": 1,
+      "message": "This assumption is false, making this the underlying problem- on Nissa `HOOK_CHIPSET_` hooks execute on the power sequencing thread whereas older boards do always execute them on the hooks thread.\n\nThe way the various hooks here interact is complex enough that I haven\u0027t been able to figure it out yet, but I think this needs to be fixed (possibly by removing it completely and going about this differently) rather than papering over the bug by adding more tests.",
+      "revId": "6f9a845e242c7d5735e9d1709d387c6b1bd86555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
