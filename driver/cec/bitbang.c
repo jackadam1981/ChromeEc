@@ -218,6 +218,11 @@ struct cec_port_data {
 /* TODO(b/296813751): Implement a common data structure for CEC drivers */
 static struct cec_port_data cec_port_data[CEC_PORT_COUNT];
 
+__test_only int cec_get_state(int port)
+{
+	return cec_port_data[port].state;
+}
+
 static void enter_state(int port, enum cec_state new_state)
 {
 	const struct bitbang_cec_config *drv_config =
@@ -435,7 +440,9 @@ static void enter_state(int port, enum cec_state new_state)
 		 * Changing the level of the output gpio triggers an unwanted
 		 * interrupt on the input gpio.
 		 */
+#ifndef CONFIG_ZEPHYR
 		gpio_clear_pending_interrupt(drv_config->gpio_in);
+#endif
 	}
 	if (timeout >= 0) {
 		cec_tmr_cap_start(port, cap_edge, timeout);
