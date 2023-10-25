@@ -18,16 +18,19 @@
 
 struct ship_mode_info {
 	uint8_t reg_addr;
+	uint8_t reserved;
 	uint16_t reg_data[SHIP_MODE_WRITES];
 } __packed;
 
 struct sleep_mode_info {
 	uint8_t reg_addr;
+	uint8_t reserved;
 	uint16_t reg_data;
 } __packed;
 
 struct fet_info {
 	uint8_t reg_addr;
+	uint8_t reserved;
 	uint16_t reg_mask;
 	uint16_t disconnect_val;
 	uint16_t cfet_mask; /* CHG FET status mask */
@@ -70,11 +73,11 @@ struct fuel_gauge_info {
 	struct ship_mode_info ship_mode;
 	struct sleep_mode_info sleep_mode;
 	struct fet_info fet;
-} __packed;
+} __packed __aligned(4);
 
 struct board_batt_params {
-	struct battery_info batt_info;
 	struct fuel_gauge_info fuel_gauge;
+	struct battery_info batt_info;
 } __packed __aligned(4);
 
 struct batt_conf_header {
