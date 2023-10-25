@@ -93,6 +93,30 @@
       },
       "revId": "6865752448e9b349f64f65fb91e4b56e1366a1da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d61b586_a044ed67",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-25T11:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a9b6785_2c7a4311",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 44
+      },
+      "revId": "6865752448e9b349f64f65fb91e4b56e1366a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
