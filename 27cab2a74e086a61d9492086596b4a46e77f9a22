@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d2af0c_f066fe52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-25T01:16:10Z",
+      "side": 1,
+      "message": "/mnt/host/source/src/platform/ec/zephyr/app/ec/main_shim.c\nIn file included from /mnt/host/source/src/platform/ec/zephyr/app/ec/main_shim.c:7:\nIn file included from /mnt/host/source/src/platform/ec/build/zephyr/dev-posix/modules/ec/include/host_command.h:17:\nIn file included from /mnt/host/source/src/platform/ec/build/zephyr/dev-posix/modules/ec/include/common.h:298:\n/mnt/host/source/src/platform/ec/build/zephyr/dev-posix/modules/ec/include/config.h:6494:9: error: \u0027CONFIG_PRECHARGE_DELAY_MS\u0027 macro redefined [-Werror,-Wmacro-redefined]\n#define CONFIG_PRECHARGE_DELAY_MS 150\n        ^\n/mnt/host/source/src/platform/ec/build/zephyr/dev-posix/modules/ec/zephyr/shim/include/config_chip.h:391:9: note: previous definition is here\n#define CONFIG_PRECHARGE_DELAY_MS CONFIG_PLATFORM_EC_PRECHARGE_DELAY_MS\n        ^\n1 error generated.",
+      "revId": "27cab2a74e086a61d9492086596b4a46e77f9a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65598ed6_2b626582",
