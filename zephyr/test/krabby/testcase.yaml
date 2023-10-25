@@ -70,3 +70,17 @@ tests:
     - CONFIG_SHIMMED_TASKS=y
     extra_dtc_overlay_files:
     - krabby.starmie.overlay
+  krabby.chinchou:
+    extra_configs:
+    - CONFIG_TEST_CHINCHOU=y
+    - CONFIG_AP_ARM_MTK_MT8186=y
+    - CONFIG_MUX_INIT_ADC=y
+    - CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK=y
+    - CONFIG_PLATFORM_EC_EXTPOWER_GPIO=y
+    - CONFIG_PLATFORM_EC_POWERSEQ_PP5000_CONTROL=n
+    - CONFIG_SHIMMED_TASKS=y
+    - CONFIG_PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT=y
+    - CONFIG_PLATFORM_EC_GMR_TABLET_MODE=y
+    - CONFIG_PLATFORM_EC_TABLET_MODE=y
+    extra_dtc_overlay_files:
+    - krabby.chinchou.overlay

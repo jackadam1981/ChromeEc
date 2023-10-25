@@ -45,3 +45,9 @@ target_sources_ifdef(CONFIG_TEST_STARMIE
 	src/temp_starmie.c
 	${PLATFORM_EC_PROGRAM_DIR}/corsola/starmie/src/thermal.c
 )
+
+target_sources_ifdef(CONFIG_TEST_CHINCHOU
+	app PRIVATE
+	src/board_chinchou.c
+	${PLATFORM_EC_PROGRAM_DIR}/corsola/chinchou/src/board.c
+)
