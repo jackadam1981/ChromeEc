@@ -4318,6 +4318,68 @@ static int process_get_time(struct transfer_descriptor *td)
 	return 0;
 }
 
+/*
+ * Bit used to indicate that the GSC has at least once succeeded validating AP
+ * RO.
+ */
+#define APROV_PREVIOUS_SUCCESS (((uint32_t)1) << 31)
+#define APROV_STATUS_SUCCESS 0
+
+/* Convert AP RO status value into descriptive text. */
+static const char *decode_aprov_status(uint32_t status)
+{
+	/*
+	 * Keep this array in sync with
+	 * capsules/src/ap_ro_verification/err.rs:pub enum VerifyErrorCode
+	 * from the Ti50 tree.
+	 */
+	static const char * const text[] = {
+		/* No VerifyErrorCode representation. */
+		"Success",
+		/* FailedVerification = 1 */
+		"Signature mismatch",
+		/* FailedStatusRegister1 = 2 */
+		"Failed SPI flash WP Status Register 1",
+		/* FailedStatusRegister2 = 3 */
+		"Failed SPI flash WP Status Register 2",
+		/* FailedStatusRegister3 = 4 */
+		"Failed SPI flash WP Status Register 3",
+		/* InconsistentGscvd = 5 */
+		"Wrong GSCVD layout",
+		/* InconsistentKeyblock = 6 */
+		"Wrong Vb2Keyblock",
+		/* InconsistentKey = 7 */
+		"Wrong key",
+		/* SpiRead = 8 */
+		"SPI read failure",
+		/* UnsupportedCryptoAlgorithm = 9 */
+		"Unsupported crypto algorithm",
+		/* VersionMismatch = 10 */
+		"Unsupported signature version",
+		/* OutOfMemory = 11 */
+		"Out of memeory",
+		/* Internal = 12 */
+		"Internal error",
+		/* TooBig = 13 */
+		"Data structure too large",
+		/* MissingGscvd = 14 */
+		"No GSCVD found",
+		/* BoardIdMismatch = 15 */
+		"BoardID mismatch",
+		/* SettingNotProvisioned = 16 */
+		"Settings not provisioned",
+		/* NonZeroGbbFlags = 17 */
+		"Nonzero GBB flags",
+		/* WrongRootKey = 18 */
+		"Disabled root key",
+	};
+
+	if (status >= ARRAY_SIZE(text))
+		return "Unknown";
+
+	return text[status];
+}
+
 static int process_get_metrics(struct transfer_descriptor *td,
 			       bool show_machine_output)
 {
@@ -4345,6 +4407,11 @@ static int process_get_metrics(struct transfer_descriptor *td,
 			printf("%02X", raw_response[i]);
 	} else {
 		struct ti50_stats stats = *response;
+		uint32_t real_status = stats.expanded_aprov_status &
+			~APROV_PREVIOUS_SUCCESS;
+		bool prev_succeeded =
+			(real_status != APROV_STATUS_SUCCESS) &&
+			(stats.expanded_aprov_status & APROV_PREVIOUS_SUCCESS);
 
 		stats.fs_init_time = be32toh(stats.fs_init_time);
 		stats.fs_usage = be32toh(stats.fs_usage);
@@ -4358,8 +4425,9 @@ static int process_get_metrics(struct transfer_descriptor *td,
 		printf("fs_init_time:          %d\n", stats.fs_init_time);
 		printf("fs_usage:              %d\n", stats.fs_usage);
 		printf("aprov_time:            %d\n", stats.aprov_time);
-		printf("expanded_aprov_status: %X\n",
-		       stats.expanded_aprov_status);
+		printf("expanded_aprov_status: %s%s\n",
+		       decode_aprov_status(real_status),
+		       prev_succeeded ? ", previously succeeded" : "");
 
 		if (bits_used >= 4) {
 			printf("rdd_keepalive:         %d\n",
