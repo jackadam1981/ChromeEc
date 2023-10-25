@@ -70,6 +70,30 @@
       },
       "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5533d518_7e574b3e",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-25T01:03:09Z",
+      "side": 1,
+      "message": "Sure, let me first merge this chain so Starmie can test earlier, then sending removing the repetition CL later.",
+      "parentUuid": "c6004ee5_6cef1a78",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
