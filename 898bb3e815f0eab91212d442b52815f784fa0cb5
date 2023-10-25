@@ -94,6 +94,30 @@
       },
       "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fb5641_f26188eb",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-10-25T07:44:20Z",
+      "side": 1,
+      "message": "Create a bug for tracking this: b/307672894.",
+      "parentUuid": "5533d518_7e574b3e",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "898bb3e815f0eab91212d442b52815f784fa0cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
