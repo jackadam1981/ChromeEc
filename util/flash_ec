@@ -638,6 +638,54 @@ on_raiden() {
 	return 1
 }
 
+declare -a save
+
+#######################################
+# Store DUT control value to restore in LIFO order.
+# Arguments:
+#   $1: Control name
+#   $2: (optional) Value to restore for the name at exit.
+#######################################
+function servo_save_add() {
+	local CTRL_RESULT=
+	case $# in
+		1) CTRL_RESULT="$( "${DUT_CONTROL_CMD[@]}" \
+				"${DUT_CTRL_PREFIX}$*" )"
+		   if [[ -n "${CTRL_RESULT}" ]]; then
+			# Don't save the control with the prefix, because
+			# dut_control will add the prefix again when we restore
+			# the settings.
+			save=( "${CTRL_RESULT#"${DUT_CTRL_PREFIX}"}" "${save[@]}" )
+		   fi
+		   ;;
+		2) save=( "$1:$2" "${save[@]}" )
+		   ;;
+		*) die "${FUNCNAME[0]} failed: arguments error"
+		   ;;
+	esac
+}
+
+function servo_save() {
+	servo_save_add "cold_reset"
+
+	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
+		servo_save_add "i2c_mux_en"
+		servo_save_add "i2c_mux"
+
+		dut_control i2c_mux_en:on
+		dut_control i2c_mux:remote_adc
+	fi
+}
+
+function servo_restore() {
+	info "Restoring servo settings..."
+	for ctrl in "${save[@]}"; do
+		if [[ -n "${ctrl}" ]]; then
+			dut_control "${ctrl}"
+		fi
+	done
+}
+
 declare -a DELETE_LIST 	# Array of file/dir names to delete at exit
 
 # Put back the servo and the system in a clean state at exit
@@ -746,6 +794,10 @@ else
 	EMERGE_BUILD=/build/${BOARD}/firmware/${EC_FILE}
 fi
 
+echo EMERGE_BUILD: $EMERGE_BUILD
+exit 42
+
+
 # Find the EC image to use
 function ec_image() {
 	# No image specified on the command line, try default ones
@@ -817,54 +869,6 @@ function servo_ec_uart() {
 	    die "${SERVOD_FAIL}"
 	fi
 	echo "${PTY}"
-}
-
-declare -a save
-
-#######################################
-# Store DUT control value to restore in LIFO order.
-# Arguments:
-#   $1: Control name
-#   $2: (optional) Value to restore for the name at exit.
-#######################################
-function servo_save_add() {
-	local CTRL_RESULT=
-	case $# in
-		1) CTRL_RESULT="$( "${DUT_CONTROL_CMD[@]}" \
-				"${DUT_CTRL_PREFIX}$*" )"
-		   if [[ -n "${CTRL_RESULT}" ]]; then
-			# Don't save the control with the prefix, because
-			# dut_control will add the prefix again when we restore
-			# the settings.
-			save=( "${CTRL_RESULT#"${DUT_CTRL_PREFIX}"}" "${save[@]}" )
-		   fi
-		   ;;
-		2) save=( "$1:$2" "${save[@]}" )
-		   ;;
-		*) die "${FUNCNAME[0]} failed: arguments error"
-		   ;;
-	esac
-}
-
-function servo_save() {
-	servo_save_add "cold_reset"
-
-	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
-		servo_save_add "i2c_mux_en"
-		servo_save_add "i2c_mux"
-
-		dut_control i2c_mux_en:on
-		dut_control i2c_mux:remote_adc
-	fi
-}
-
-function servo_restore() {
-	info "Restoring servo settings..."
-	for ctrl in "${save[@]}"; do
-		if [[ -n "${ctrl}" ]]; then
-			dut_control "${ctrl}"
-		fi
-	done
 }
 
 function claim_pty() {
