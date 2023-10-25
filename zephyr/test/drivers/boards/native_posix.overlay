@@ -306,6 +306,15 @@
 		usb_c1_dp_en: usb_c1_dp_en {
 			gpios = <&gpio1 15 GPIO_OUTPUT_LOW>;
 		};
+		gpio_hdmi_cec_out: gpio_hdmi_cec_out {
+			gpios = <&gpio1 16 (GPIO_INPUT | GPIO_OUTPUT_HIGH)>;
+		};
+		gpio_hdmi_cec_in: gpio_hdmi_cec_in {
+			gpios = <&gpio1 17 GPIO_INPUT>;
+		};
+		gpio_hdmi_cec_pull_up: gpio_hdmi_cec_pull_up {
+			gpios = <&gpio1 18 GPIO_OUTPUT_HIGH>;
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -318,7 +327,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <16>;
+		ngpios = <19>;
 	};
 
 	gpio-interrupts {
