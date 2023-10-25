@@ -88,6 +88,40 @@
       "parentUuid": "5fa895e1_6c0f0998",
       "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae1bac3_4bb536c8",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-25T23:43:07Z",
+      "side": 1,
+      "message": "For consistency, should we change this to CMD_WRITE_DIS or make CMD_WRITE_EN \u003d\u003e CMD_WRITE_ENABLE?",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894cc01c_c7d71a4d",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-25T23:43:07Z",
+      "side": 1,
+      "message": "Based on the comment above, it seems that this TODO should be removed.",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
