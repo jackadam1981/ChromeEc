@@ -41,6 +41,12 @@
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 
+/* I2C speed console command */
+#define CONFIG_CMD_I2C_SPEED
+
+/* I2C control host command */
+#define CONFIG_HOSTCMD_I2C_CONTROL
+
 /* I2C */
 #undef I2C_PORT_TCPC0
 #define I2C_PORT_TCPC0 NPCX_I2C_PORT2_0
