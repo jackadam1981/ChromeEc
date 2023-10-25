@@ -22,6 +22,30 @@
       },
       "revId": "bbfb739104496a3a06ec2668366fcde87cdd2c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11637180_68718095",
+        "filename": "zephyr/drivers/one_wire_uart/hid_over_i2c_target.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-25T06:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46c35d2_e6bd1a9d",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "bbfb739104496a3a06ec2668366fcde87cdd2c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
