@@ -22,6 +22,30 @@
       },
       "revId": "948ae9b43d68c49ac82c4c3c769ec6e1fd7eb603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b278fa66_1674534c",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-25T22:50:21Z",
+      "side": 1,
+      "message": "Yes, increasing the delay only on failure seems like a good idea.",
+      "parentUuid": "8b769e8c_6169750d",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 22
+      },
+      "revId": "948ae9b43d68c49ac82c4c3c769ec6e1fd7eb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
