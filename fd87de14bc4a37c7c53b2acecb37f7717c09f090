@@ -16,6 +16,24 @@
       "message": "do we still need this revert?",
       "revId": "fd87de14bc4a37c7c53b2acecb37f7717c09f090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd5fc35_2cd826d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381738
+      },
+      "writtenOn": "2023-10-25T02:38:53Z",
+      "side": 1,
+      "message": "No. Ting created and landed another revert for the same CL, and this is just a duplicate now.",
+      "parentUuid": "daf8cf1f_009797de",
+      "revId": "fd87de14bc4a37c7c53b2acecb37f7717c09f090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
