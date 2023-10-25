@@ -16,6 +16,24 @@
       "message": "changes in this file don\u0027t seem related...\nand are just stylistic, right?",
       "revId": "316a88fedb5ce6db72955424b23510c03489ab88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e5894e_d10bdc1d",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-25T03:58:36Z",
+      "side": 1,
+      "message": "Did you mean the `i2c_ports[]`? The change is to initialize two `.flags` member. Because the `.flags` is not next to the `.sda`, I either fill 2 zero\u0027es between `.sda` and `.flags`, or specify the members to assign (the members are not assigned default to 0).",
+      "parentUuid": "9897bb4b_4c9403ee",
+      "revId": "316a88fedb5ce6db72955424b23510c03489ab88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
