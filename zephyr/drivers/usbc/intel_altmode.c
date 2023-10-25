@@ -116,9 +116,8 @@ static const struct intel_altmode_driver_api intel_pd_altmode_driver_api = {
 static void pd_altmode_gpio_callback(const struct device *dev,
 				     struct gpio_callback *cb, uint32_t pins)
 {
-	struct pd_altmode_data *data =
-		CONTAINER_OF(cb, struct pd_altmode_data, gpio_cb);
-	const struct pd_altmode_config *cfg = data->dev->config;
+	struct pd_altmode_data *data = dev->data;
+	const struct pd_altmode_config *cfg = dev->config;
 
 	if (!cfg->shared_irq) {
 		k_work_submit(&data->work);
