@@ -22,6 +22,30 @@
       },
       "revId": "550362d5cd1fe2790a189b4991cba05fca9c0e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0daf77d2_3f274e3e",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-25T06:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04f1b8f_ef4b2c34",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 40
+      },
+      "revId": "550362d5cd1fe2790a189b4991cba05fca9c0e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
