@@ -16,6 +16,24 @@
       "message": "Is the change needed here as well ?",
       "revId": "b7558d03476c6b3e09cce0219525ed7222e6e711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b14fbf_606934f9",
+        "filename": "board/omnigul/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-10-25T08:12:56Z",
+      "side": 1,
+      "message": "Battery team say that LGC KT0030G024 do not need to change change.",
+      "parentUuid": "96ee0e96_dd449816",
+      "revId": "b7558d03476c6b3e09cce0219525ed7222e6e711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

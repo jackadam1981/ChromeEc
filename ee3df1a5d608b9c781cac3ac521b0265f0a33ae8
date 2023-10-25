@@ -16,6 +16,24 @@
       "message": "Could you advise why the flag is removed ?",
       "revId": "ee3df1a5d608b9c781cac3ac521b0265f0a33ae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6366c2_7273b010",
+        "filename": "board/omnigul/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-10-25T08:12:56Z",
+      "side": 0,
+      "message": "The ```COSMX KT0030B004``` use MFGACC or 0x00 both could read D-FET and C-FET, \nbattery team want to sync all battery read method, so change to read 0x00 to get D-FET and C-FET.",
+      "parentUuid": "be4d8d17_57889955",
+      "revId": "ee3df1a5d608b9c781cac3ac521b0265f0a33ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
