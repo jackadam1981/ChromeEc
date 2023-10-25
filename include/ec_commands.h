@@ -7636,6 +7636,9 @@ struct ec_response_typec_vdm_response {
 	uint32_t vdm_attention[2];
 } __ec_align1;
 
+/* Version of struct batt_conf_header and its internals. */
+#define EC_BATTERY_CONFIG_STRUCT_VERSION 0x00
+
 /* Number of writes needed to invoke battery cutoff command */
 #define SHIP_MODE_WRITES 2
 
@@ -7731,7 +7734,6 @@ struct board_batt_params {
 } __ec_align4;
 
 struct batt_conf_header {
-	/* Version of struct batt_conf_header and its internals. */
 	uint8_t struct_version;
 	uint8_t reserved[3];
 	char manuf_name[16];
