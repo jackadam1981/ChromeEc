@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b769e8c_6169750d",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-25T21:32:59Z",
+      "side": 1,
+      "message": "The default setting for CONFIG_SYS_CLOCK_TICKS_PER_SEC on the native posix target is 100, so the tick is 10ms.\n\nThis change causes tests that wait on a deferred action by sleeping 10ms or less to fail.\n\nFor example - changing the sleep [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/amd/src/amd_power.c;l\u003d544) from 10 to 11 ms allows the test to pass with this change.\n\nI see some other tests set the tick rate to [10 KHz](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3398505).  You can fix the other tests by making a similar change.\n\nHowever, this change adds extra latency for processing interrupts - 100 us for Nuvoton and about 30 us for ITE.\n\nHow about leaving the K_NO_WAIT, but explicitly reschedule if -EBUSY is returned?\n\n```\n\t\trv \u003d k_work_reschedule(work, delay);\n\n\t\tif (rv \u003d\u003d -EBUSY \u0026\u0026 K_TIMEOUT_EQ(delay, K_NO_WAIT)) {\n\t\t\tdelay \u003d K_TICKS(1);\n\t\t\trv \u003d k_work_reschedule(work, delay);\n\t\t}\n\n```",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 22
+      },
+      "revId": "948ae9b43d68c49ac82c4c3c769ec6e1fd7eb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
