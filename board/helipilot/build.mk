@@ -13,6 +13,7 @@ board-y=
 board-y+=board.o
 board-rw=board_rw.o
 
+
 # If we're mocking the sensor detection for testing (so we can test
 # sensor/transport permutations in the unit tests), don't build the real sensor
 # detection.
