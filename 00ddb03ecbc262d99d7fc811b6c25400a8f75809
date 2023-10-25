@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f299876_78e6b682",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-25T20:30:20Z",
+      "side": 1,
+      "message": "\u003e reading / writing to NULL doesn\u0027t cause a fault \n\nCurrently, we don\u0027t protect the address 0 region (by the MPU). According to the history, we have never done. So, reading from NULL-\u003efw_version_number means reading from memory address 0x6.\n\nNPCX796FC datasheet says 0x0 ~ 0x7fff are ROM. So, \u00270x27510000\u0027 must be what\u0027s in the ROM[6]. Writing to the ROM is probably ignored.\n\n\u003e (but probably should?)\n\nI think so... I don\u0027t know why we didn\u0027t in the first place. I think we can set the entire ROM region as MPU_ATTR_NO_NO for npcx7 and npcx9. It\u0027ll allow us to catch all access from 0 through 0x7fff (or 0xffff for npcx9). I\u0027ll file a bug and consult with Nuvoton.\n\nThanks for rasing this concern.",
+      "parentUuid": "3b042f64_d2cac13c",
+      "range": {
+        "startLine": 17,
+        "startChar": 89,
+        "endLine": 17,
+        "endChar": 99
+      },
+      "revId": "00ddb03ecbc262d99d7fc811b6c25400a8f75809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "01b45cae_eb4e544c",
