@@ -264,6 +264,30 @@
       },
       "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740538be_e1ca9a8c",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-25T16:52:05Z",
+      "side": 1,
+      "message": "add clock divider value in\nzephyr/dts/bindings/gpio/cros-ec,shared-spi-flash.yaml\nassign it only if the node is present",
+      "parentUuid": "99a2c728_ef940acf",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 9
+      },
+      "revId": "2e2e24766634a67ffe46345a8aa3a060b751f673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
