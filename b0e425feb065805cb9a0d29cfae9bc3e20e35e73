@@ -206,6 +206,30 @@
       },
       "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384a48c3_28dffc09",
+        "filename": "zephyr/boards/arm/mec172x/mec172x_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-25T17:38:10Z",
+      "side": 1,
+      "message": "updated comment, this configuration is not specific for MEC chip, but used to define public API\u0027s for application.",
+      "parentUuid": "1a63657f_6eac1752",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
