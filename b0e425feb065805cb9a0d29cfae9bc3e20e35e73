@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8705f60a_7aa7c272",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-25T16:28:39Z",
+      "side": 1,
+      "message": "Hi Martin, how about this?\n1. create two files mec1727_flash.dts \u0026 mec1723_flash.dts\n2. include these based on the chip selected by BUILD.py\n3. if needed, let board file override mec1723_flash.dts",
+      "parentUuid": "0147c531_99b93690",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94f77180_7cf9fc07",
         "filename": "zephyr/boards/arm/mec172x/mec172x_defconfig",
         "patchSetId": 1
