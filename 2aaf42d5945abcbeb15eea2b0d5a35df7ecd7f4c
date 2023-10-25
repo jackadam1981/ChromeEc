@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d541bb_a949bfe6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-25T15:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a457d51_1d97e20b",
+      "range": {
+        "startLine": 102,
+        "startChar": 60,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1798bc7_99f20e2f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00388ed5_e5b74b49",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-25T15:53:44Z",
+      "side": 1,
+      "message": "Old habits die hard, I guess.  At the first job I had writing C code in 2001 the policy was that we could not be sure of the NULL macro across the various old Unix-flavors our code was supposed to run on, so we used integer zero, which according to some C standard implicitly converts to the null pointer.",
+      "parentUuid": "e1798bc7_99f20e2f",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7202244_2419487f",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-25T14:53:41Z",
       "side": 1,
       "message": "should this use `STM32_GPIO_IDR(slot-\u003egpio_base) \u0026 slot-\u003egpio_pin_mask;` to be consistent?",
+      "range": {
+        "startLine": 781,
+        "startChar": 21,
+        "endLine": 781,
+        "endChar": 46
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310345ce_ae7303b7",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-25T15:53:44Z",
+      "side": 1,
+      "message": "It is a little odd to have one be uint32_t and the other be uint8_t.  However, using the same convention for `tail_level` will just make the C logic more complicated.  The reason I introduced the somewhat odd convention for `head_level`, is that it is used in the interrupt handler, and the next CL that introduces assembly code in the interrupt handler can take advantage of the convention, eliminating an instruction or two.",
+      "parentUuid": "f7202244_2419487f",
       "range": {
         "startLine": 781,
         "startChar": 21,
