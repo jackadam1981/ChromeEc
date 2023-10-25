@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e77a895_27154ac3",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2023-10-25T15:23:54Z",
+      "side": 1,
+      "message": "If this is a dead code, I\u0027m in favor of removing it.\nI suppose the only reason you keep it intact was the intent to limit the amount of changes. But dead code should be removed IMO.",
+      "parentUuid": "3d06b8ba_02c17220",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 0
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e913872c_eb892751",
         "filename": "util/config_allowed.txt",
         "patchSetId": 2
