@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a22505b2_465f29ca",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-25T13:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3a2f55_cc714794",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "320279e7_01ec7b6e",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0d86c51_1f2dd9f5",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-25T13:48:41Z",
+      "side": 1,
+      "message": "The idea with refactoring this part of code was to put \"for event\" under a separate config and disable it, as I don\u0027t see a good reason to send event form EC to AP, when AP-hang is detected (simply the AP is dead from EC perspective). \nThe more I look at this code the more I\u0027m in favor to remove all \"for event\" part, especially that originally the old EC watchdog was pinged by every single host command (with a call to `hang_detect_stop_on_host_command()`) and with this new approach, the watchdog will be kicked by the dedicated message (re-use of EC_HANG_START_NOW). Also the suspend/resume uses cases will be handled on the kernel side.\nTL;DR: Remove code under CONFIG_AP_HANG_DETECT_FOR_EVENT.\nWhat do you think Keith?",
+      "parentUuid": "320279e7_01ec7b6e",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 0
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e913872c_eb892751",
         "filename": "util/config_allowed.txt",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-24T19:55:09Z",
       "side": 1,
       "message": "Please leave this file alphasorted.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 48
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777f6bab_0e7f62de",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-25T13:48:41Z",
+      "side": 1,
+      "message": "After runnign `make buildall`, I got below:\n```\nThe following options are now in Kconfig:\n\nCONFIG_AP_HANG_DETECT\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n```\nSo this file was generated.",
+      "parentUuid": "e913872c_eb892751",
       "range": {
         "startLine": 127,
         "startChar": 0,
