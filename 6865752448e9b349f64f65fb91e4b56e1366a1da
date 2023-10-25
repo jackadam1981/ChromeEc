@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f38890c2_a2954ffc",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-25T06:29:59Z",
+      "side": 1,
+      "message": "I was thinking like below.\n\nRVP\u0027s which supports external shared flash will define CONFIG_PLATFORM_EC_SHARED_SPI_FLASH and use API\u0027s implemented under this.\nThis in a way can be extended to CEP\u0027s too.\n\nRest of the platforms(RVP\u0027s currently) which uses EC internal flash will only do the init of this GPIO under board_init().\nThis code is already part of the ML code. Hence i have marked board_init() under NOT define of the CONFIG_PLATFORM_EC_SHARED_SPI_FLASH. \nI think init is only RVP specific implementation and may vary for CEP\u0027s depending on CEP designs for shared flash access.",
+      "parentUuid": "e37d5fc3_3f27487c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "6865752448e9b349f64f65fb91e4b56e1366a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75d6c741_59bab9ca",
         "filename": "zephyr/shim/src/flash.c",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-20T15:31:00Z",
       "side": 1,
       "message": "These names are confusing to me.  Usually the verb \"get\" implies that the function returns some sort of state.\n\nHow about `flash_shared_enable_ec_access` and `flash_shared_enable_ap_access`?",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 44
+      },
+      "revId": "6865752448e9b349f64f65fb91e4b56e1366a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9b6785_2c7a4311",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-25T06:29:59Z",
+      "side": 1,
+      "message": "Thanks, Done.",
+      "parentUuid": "75d6c741_59bab9ca",
       "range": {
         "startLine": 359,
         "startChar": 0,
