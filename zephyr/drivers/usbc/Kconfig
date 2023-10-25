@@ -12,4 +12,10 @@ config USBC_INTEL_ALTMODE
 	  chip and EC for configuring the USB-C alternate mode muxes inside
 	  Intel AP.
 
+config PDC_CCG8_PWR_MGNT
+	bool "PDC CCG8 power management driver"
+	default y
+	help
+	  TBD
+
 endif # PLATFORM_EC_USBC
