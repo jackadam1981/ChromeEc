@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43bfa2c0_ecd17923",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-25T20:01:09Z",
+      "side": 1,
+      "message": "+2 with fix",
+      "revId": "1be0d3a13e0af9056deb476c18835c5ac710b530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ebc809_cdf5014b",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-25T20:01:09Z",
+      "side": 1,
+      "message": "fix `]` spacing here",
+      "range": {
+        "startLine": 1185,
+        "startChar": 7,
+        "endLine": 1185,
+        "endChar": 17
+      },
+      "revId": "1be0d3a13e0af9056deb476c18835c5ac710b530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
