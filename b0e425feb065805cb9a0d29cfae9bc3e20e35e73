@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0147c531_99b93690",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-25T15:03:14Z",
+      "side": 1,
+      "message": "Hi VJ, I will suggest following for different \u0026spi0{} in different program:\n\n1: remove \u0026spi0 {} in boards/arm/mec172x/mec172x.dts\n2: similar to intelrvp/mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts, add 2 _flash.dts for “adlrvp_mchp” and “mtlrvpp_mchp” to define \u0026spi0{} per program design;\n3: similar to “here / \"mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts\"” for “mtlrvpp_m1723”, add _flash.dts for “adlrvp_mchp” and “mtlrvpp_mchp” in BUILD.py\n\nall 3 programs have consistent solution, What do you think?",
+      "parentUuid": "2a49f38a_29dbf43a",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94f77180_7cf9fc07",
         "filename": "zephyr/boards/arm/mec172x/mec172x_defconfig",
         "patchSetId": 1
@@ -126,6 +150,30 @@
       "writtenOn": "2023-10-24T20:24:41Z",
       "side": 1,
       "message": "is it applicable to MEC1723 too?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a63657f_6eac1752",
+        "filename": "zephyr/boards/arm/mec172x/mec172x_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-25T15:03:14Z",
+      "side": 1,
+      "message": "Comment is not accurate, will update it.",
+      "parentUuid": "94f77180_7cf9fc07",
       "range": {
         "startLine": 51,
         "startChar": 0,
