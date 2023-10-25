@@ -163,7 +163,7 @@ DECLARE_EC_TEST(test_batt_conf_main)
 	 * manuf_name != manuf_name
 	 */
 	ccprintf("\nmanuf_name != manuf_name\n");
-	head.struct_version = 0;
+	head.struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION;
 	strncpy(head.manuf_name, "foo", sizeof("foo"));
 	memset(head.device_name, 0, sizeof(head.device_name));
 	memcpy(&head.config, &conf_in_cbi, sizeof(head.config));
@@ -224,7 +224,7 @@ DECLARE_EC_TEST(test_batt_conf_main)
 	 * Version mismatch
 	 */
 	ccprintf("\nVersion mismatch\n");
-	head.struct_version = 0x01;
+	head.struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION + 1;
 	cbi_set_board_info(CBI_TAG_BATTERY_CONFIG, (void *)&head, sizeof(head));
 	batt_conf_main();
 	zassert_equal_ptr(get_batt_params(), &board_battery_info[0]);

@@ -209,7 +209,7 @@ static int bcfg_search_in_cbi(struct board_batt_params *info)
 		BCFGPRT("Checking config #%d...", tag - CBI_TAG_BATTERY_CONFIG);
 		tag++;
 
-		if (head.struct_version > 0) {
+		if (head.struct_version > EC_BATTERY_CONFIG_STRUCT_VERSION) {
 			BCFGPRT("Version mismatch: 0x%x", head.struct_version);
 			continue;
 		}
@@ -539,7 +539,7 @@ static int cc_bcfg(int argc, const char *argv[])
 		} else if (strcasecmp(argv[1], "set") == 0) {
 			const struct board_batt_params *conf =
 				get_batt_params();
-			head.struct_version = 0;
+			head.struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION;
 			strncpy(head.manuf_name, conf->fuel_gauge.manuf_name,
 				sizeof(head.manuf_name));
 			if (conf->fuel_gauge.device_name)
