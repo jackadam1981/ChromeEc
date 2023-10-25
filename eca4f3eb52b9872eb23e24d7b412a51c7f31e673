@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2791fda_2f9f930e",
+        "filename": "zephyr/drivers/usbc/intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-10-25T22:27:49Z",
+      "side": 0,
+      "message": "This causes a fault:\nE: Faulting instruction address (r15/pc): 0x00000000                                         \n23-10-25 14:16:44.287 E: \u003e\u003e\u003e ZEPHYR FATAL ERROR 20: Unknown error on CPU 0                                         \n23-10-25 14:16:44.288 E: Current thread: 0x200c38c8 (sysworkq)",
+      "revId": "eca4f3eb52b9872eb23e24d7b412a51c7f31e673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

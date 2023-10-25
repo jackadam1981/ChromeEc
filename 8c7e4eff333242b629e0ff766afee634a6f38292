@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bd14f4_b99d73c5",
+        "filename": "zephyr/drivers/usbc/intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-10-25T22:27:49Z",
+      "side": 1,
+      "message": "The fix corrects the fault, but the interrupt doesn\u0027t trigger when the dock is connected",
+      "revId": "8c7e4eff333242b629e0ff766afee634a6f38292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
