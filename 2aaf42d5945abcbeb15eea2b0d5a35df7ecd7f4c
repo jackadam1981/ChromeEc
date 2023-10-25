@@ -140,6 +140,30 @@
       },
       "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8ad9ce_db3e882f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-25T15:56:40Z",
+      "side": 1,
+      "message": "I feel like we should make them consistent and have slightly more complex C code. I feel like it is asking for trouble in the future if we have two different styles of values.\n\nI don\u0027t know if reducing the asm by 2 instructions is worth it, but I will let you make that call. I think the smaller future maintenance cost is worth a few more lines of asm or C code.",
+      "parentUuid": "310345ce_ae7303b7",
+      "range": {
+        "startLine": 781,
+        "startChar": 21,
+        "endLine": 781,
+        "endChar": 46
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
