@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a457d51_1d97e20b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-25T14:53:41Z",
+      "side": 1,
+      "message": "to the data section of this structure (since it might not immediately follow because of the padding)",
+      "range": {
+        "startLine": 102,
+        "startChar": 60,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1798bc7_99f20e2f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-25T14:53:41Z",
+      "side": 1,
+      "message": "nit: `return NULL` (here and other return in function).",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7202244_2419487f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-25T14:53:41Z",
+      "side": 1,
+      "message": "should this use `STM32_GPIO_IDR(slot-\u003egpio_base) \u0026 slot-\u003egpio_pin_mask;` to be consistent?",
+      "range": {
+        "startLine": 781,
+        "startChar": 21,
+        "endLine": 781,
+        "endChar": 46
+      },
+      "revId": "2aaf42d5945abcbeb15eea2b0d5a35df7ecd7f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
