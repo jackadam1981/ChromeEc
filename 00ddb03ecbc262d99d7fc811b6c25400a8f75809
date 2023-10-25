@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "307a3e6f_41f43000",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-25T21:40:45Z",
+      "side": 1,
+      "message": "FYI: Zephyr has the option NULL_POINTER_EXCEPTION_DETECTION_MPU and it seems enabled [by default](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.defaults-arm;drc\u003de113586363a26755dbd171b4b2d24aacc302780e;l\u003d11).",
+      "parentUuid": "8f299876_78e6b682",
+      "range": {
+        "startLine": 17,
+        "startChar": 89,
+        "endLine": 17,
+        "endChar": 99
+      },
+      "revId": "00ddb03ecbc262d99d7fc811b6c25400a8f75809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "01b45cae_eb4e544c",
