@@ -7636,6 +7636,8 @@ struct ec_response_typec_vdm_response {
 	uint32_t vdm_attention[2];
 } __ec_align1;
 
+#define EC_CMD_BATTERY_CONFIG 0x013D
+
 /* Number of writes needed to invoke battery cutoff command */
 #define SHIP_MODE_WRITES 2
 
