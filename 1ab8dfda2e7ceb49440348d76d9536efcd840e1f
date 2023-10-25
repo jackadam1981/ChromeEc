@@ -46,6 +46,30 @@
       },
       "revId": "1ab8dfda2e7ceb49440348d76d9536efcd840e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fff9a5_1a625b86",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-10-25T00:39:47Z",
+      "side": 1,
+      "message": "Done. But I don\u0027t know how to check if I should update unit test or not.",
+      "parentUuid": "8d45674a_ac884300",
+      "range": {
+        "startLine": 1076,
+        "startChar": 8,
+        "endLine": 1076,
+        "endChar": 33
+      },
+      "revId": "1ab8dfda2e7ceb49440348d76d9536efcd840e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
