@@ -17,6 +17,7 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
+#include "trng.h"
 #include "uart.h"
 #include "uart_host_command.h"
 #include "uartn.h"
@@ -133,6 +134,17 @@ static void board_init(void)
 	 * avoid incurring that cost when generating random numbers
 	 */
 	npcx_trng_hw_init();
+
+	{
+		uint32_t random_num;
+		timestamp_t t0 = get_time();
+
+		trng_init();
+		random_num = trng_rand();
+		trng_exit();
+
+		ccprintf("ti(0): %d, rand: %d\n", time_since32(t0), random_num);
+	}
 
 	/*
 	 * Enable the SPI slave interface if the PCH is up.
