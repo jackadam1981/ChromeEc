@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84e452e_42202528",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-26T18:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae1bac3_4bb536c8",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "894cc01c_c7d71a4d",
@@ -120,6 +138,24 @@
       "writtenOn": "2023-10-25T23:43:07Z",
       "side": 1,
       "message": "Based on the comment above, it seems that this TODO should be removed.",
+      "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29940bfa_6df38810",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-26T18:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894cc01c_c7d71a4d",
       "revId": "661967462a946c1854cc29eeb90fd9ea81235231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
