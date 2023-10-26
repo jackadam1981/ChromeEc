@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7d8a675_b8ef305f",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-10-26T19:53:17Z",
+      "side": 1,
+      "message": "I hadn\u0027t, but used go/crvc/4980663 to do so. The patch appears to add 5 microseconds of execution time. Without the patch, the profiling time was 164 or 165. With it, the number was 170 microseconds. I think this difference is negligible, let me know if you disagree.",
+      "parentUuid": "00df16b6_3f5e2bb3",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "b4915019a9ba70ebd2038b2c426b1ebc7fb25c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56327c1b_4f256f75",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
