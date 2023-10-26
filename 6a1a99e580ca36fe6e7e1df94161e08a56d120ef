@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e0a82d_30336e42",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-10-26T22:10:37Z",
+      "side": 1,
+      "message": "nit: I think we use block comment stype and avoid any use of `//` That being said, that\u0027s a different CL\u0027s job :p",
+      "revId": "6a1a99e580ca36fe6e7e1df94161e08a56d120ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
