@@ -124,6 +124,14 @@ struct usb_mux_driver {
 
 #ifdef CONFIG_CMD_RETIMER
 	/**
+	 * Console command to dump the retimer registers
+	 *
+	 * @param me usb_mux
+	 * @return EC_SUCCESS on success, non-zero error code on failure.
+	 */
+	int (*retimer_dump)(const struct usb_mux *me);
+
+	/**
 	 * Console command to read the retimer registers
 	 *
 	 * @param me usb_mux

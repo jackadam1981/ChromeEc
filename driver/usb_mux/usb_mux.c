@@ -899,13 +899,13 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_ACK, hc_usb_pd_mux_ack, EC_VER_MASK(0));
 #ifdef CONFIG_CMD_RETIMER
 static int console_command_retimer(int argc, const char **argv)
 {
-	char rw, *e;
+	char rwd, *e;
 	uint32_t reg, data, val = 0;
 	int port, rv = EC_ERROR_UNIMPLEMENTED;
 	const struct usb_mux *mux;
 	const struct usb_mux_chain *mux_chain;
 
-	if (argc < 4 || argc > 5)
+	if (argc < 3 || argc > 5)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* Get port number */
@@ -917,21 +917,36 @@ static int console_command_retimer(int argc, const char **argv)
 	if (!mux_chain)
 		return EC_ERROR_PARAM1;
 
-	/* Validate r/w selection */
-	rw = argv[2][0];
-	if (rw != 'w' && rw != 'r')
+	/* Validate d/r/w selection */
+	rwd = argv[2][0];
+	if (rwd != 'w' && rwd != 'r' && rwd != 'd')
 		return EC_ERROR_PARAM2;
 
-	/* Get register address */
-	reg = strtoull(argv[3], &e, 0);
-	if (*e)
-		return EC_ERROR_PARAM3;
+	switch (rwd) {
+	case 'd':
+		if (argc != 3)
+			return EC_ERROR_PARAM_COUNT;
+		break;
+	case 'r':
+		if (argc != 4)
+			return EC_ERROR_PARAM_COUNT;
+		break;
+	case 'w':
+		if (argc != 5)
+			return EC_ERROR_PARAM_COUNT;
 
-	/* Get value to be written */
-	if (rw == 'w') {
+		/* Get value to be written */
 		val = strtoull(argv[4], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM4;
+		break;
+	}
+
+	if (argc >= 4) {
+		/* Get register address */
+		reg = strtoull(argv[3], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM3;
 	}
 
 	/*
@@ -940,24 +955,31 @@ static int console_command_retimer(int argc, const char **argv)
 	 */
 	for (; mux_chain != NULL; mux_chain = mux_chain->next) {
 		mux = mux_chain->mux;
-		if (mux->driver && mux->driver->retimer_read &&
-		    mux->driver->retimer_write) {
-			if (rw == 'r') {
+		if (mux->driver == NULL)
+			continue;
+
+		if (rwd == 'd') {
+			if (mux->driver->retimer_dump)
+				rv = mux->driver->retimer_dump(mux);
+		} else if (rwd == 'r') {
+			if (mux->driver->retimer_read) {
 				rv = mux->driver->retimer_read(mux, reg, &data);
 				if (rv == EC_SUCCESS) {
 					CPRINTS("Addr 0x%x register %d = 0x%x",
 						mux->i2c_addr_flags, reg, data);
 				}
-			} else {
-				rv = mux->driver->retimer_write(mux, reg, val);
 			}
+		} else {
+			if (mux->driver->retimer_write)
+				rv = mux->driver->retimer_write(mux, reg, val);
 		}
 	}
 
 	return rv;
 }
 DECLARE_CONSOLE_COMMAND(retimer, console_command_retimer,
-			"<port> r <reg>"
-			"\n<port> w <reg> <val>",
-			"Read or write to retimer register");
+			"\n\t<port> d"
+			"\n\t<port> r <reg>"
+			"\n\t<port> w <reg> <val>",
+			"Dump, read or write to retimer registers");
 #endif /* CONFIG_CMD_RETIMER */
