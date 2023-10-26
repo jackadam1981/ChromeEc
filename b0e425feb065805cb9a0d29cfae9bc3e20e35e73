@@ -209,6 +209,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acfc6100_1e0662ea",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-26T15:02:42Z",
+      "side": 1,
+      "message": "yes, image sizes are not impacted for 3 MCHP programs, and mtlrvpp_mchp can boot up to OS. Thanks!",
+      "parentUuid": "9b7f810e_81179959",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "b0e425feb065805cb9a0d29cfae9bc3e20e35e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94f77180_7cf9fc07",
