@@ -5,6 +5,7 @@
 
 #include <cros/binman.dtsi>
 #include <microchip/mec172xnsz.dtsi>
+#include <microchip/mec172x/mec172xnsz-pinctrl.dtsi>
 
 / {
 	chosen {
@@ -64,6 +65,10 @@
 		lct_time {
 			offset = <0x40>;
 			size = <0x04>;
+		};
+		ec_img_load {
+			offset = <0x44>;
+			size = <0x01>;
 		};
 	};
 
