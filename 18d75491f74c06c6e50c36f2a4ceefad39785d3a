@@ -16,6 +16,24 @@
       "message": "BTW, we allocate 64 bytes for hash_digest. So, this build assert seems redundant (or should be moved to ec_commands.h)?",
       "revId": "18d75491f74c06c6e50c36f2a4ceefad39785d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e8b28e_3b57f5fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-26T20:08:57Z",
+      "side": 1,
+      "message": "i was going to at least move the assert out of the function but i could find\na good way to express `sizeof(p-\u003em)`",
+      "parentUuid": "8c0b5af4_5d1edc37",
+      "revId": "18d75491f74c06c6e50c36f2a4ceefad39785d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
