@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00df16b6_3f5e2bb3",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-26T15:40:00Z",
+      "side": 1,
+      "message": "Have you done any timing analysis to see how long it takes to generate random numbers with this in place?",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "b4915019a9ba70ebd2038b2c426b1ebc7fb25c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56327c1b_4f256f75",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-26T15:40:00Z",
+      "side": 1,
+      "message": "I wonder if this should be a panic, as this would mean we wouldn\u0027t be generating RNGs",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "b4915019a9ba70ebd2038b2c426b1ebc7fb25c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
