@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c324f8_229d6076",
+        "filename": "zephyr/boards/arm/mec172x/mec1723.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-26T15:55:37Z",
+      "side": 1,
+      "message": "if not bound to compatible yaml, how about changing it to ext_flash?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "7135664c72c79b93cacba1524d9b3b6a38cd6629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f878f56_e3649577",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-26T15:55:37Z",
+      "side": 1,
+      "message": "I think need to change below files similarly\nzephyr/include/cros/microchip/mec1727.dtsi\nzephyr/include/cros/microchip/mec172x.dtsi\n\nalso include this in respective chip specific file",
+      "range": {
+        "startLine": 6,
+        "startChar": 25,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "7135664c72c79b93cacba1524d9b3b6a38cd6629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaaaa913_ad1f1df1",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-26T15:55:37Z",
+      "side": 1,
+      "message": "should go to respective chip specific file",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "7135664c72c79b93cacba1524d9b3b6a38cd6629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
