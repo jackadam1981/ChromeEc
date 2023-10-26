@@ -8524,6 +8524,76 @@ cmd_battery_vendor_param_usage:
 	return -1;
 }
 
+static void batt_conf_dump(const struct batt_conf_header *head)
+{
+	const struct board_batt_params *info = &head->config;
+	const struct fuel_gauge_info *fg = &info->fuel_gauge;
+	const struct ship_mode_info *ship = &info->fuel_gauge.ship_mode;
+	const struct sleep_mode_info *sleep = &info->fuel_gauge.sleep_mode;
+	const struct fet_info *fet = &info->fuel_gauge.fet;
+	const struct battery_info *batt = &info->batt_info;
+
+	printf(".fuel_gauge = {\n");
+
+	printf("\t.manuf_name = \"%s\",\n", head->manuf_name);
+	printf("\t.device_name= \"%s\",\n", head->device_name);
+	printf("\t.flags = 0x%x,\n", fg->flags);
+
+	printf("\t.ship_mode = {\n");
+	printf("\t\t.reg_addr = 0x%02x,\n", ship->reg_addr);
+	printf("\t\t.reg_data = { 0x%04x, 0x%04x },\n", ship->reg_data[0],
+	       ship->reg_data[1]);
+	printf("\t},\n");
+
+	printf("\t.sleep_mode = {\n");
+	printf("\t\t.reg_addr = 0x%02x,\n", sleep->reg_addr);
+	printf("\t\t.reg_data = 0x%04x,\n", sleep->reg_data);
+	printf("\t},\n");
+
+	printf("\t.fet = {\n");
+	printf("\t\t.reg_addr = 0x%02x,\n", fet->reg_addr);
+	printf("\t\t.reg_mask = 0x%04x,\n", fet->reg_mask);
+	printf("\t\t.disconnect_val = 0x%04x,\n", fet->disconnect_val);
+	printf("\t\t.cfet_mask = 0x%04x,\n", fet->cfet_mask);
+	printf("\t\t.cfet_off_val = 0x%04x,\n", fet->cfet_off_val);
+	printf("\t},\n");
+
+	printf("},\n"); /* end of fuel_gauge */
+
+	printf(".batt_info = {\n");
+	printf("\t.voltage_max = %d,\n", batt->voltage_max);
+	printf("\t.voltage_normal = %d,\n", batt->voltage_normal);
+	printf("\t.voltage_min = %d,\n", batt->voltage_min);
+	printf("\t.precharge_voltage= %d,\n", batt->precharge_voltage);
+	printf("\t.precharge_current = %d,\n", batt->precharge_current);
+	printf("\t.start_charging_min_c = %d,\n", batt->start_charging_min_c);
+	printf("\t.start_charging_max_c = %d,\n", batt->start_charging_max_c);
+	printf("\t.charging_min_c = %d,\n", batt->charging_min_c);
+	printf("\t.charging_max_c = %d,\n", batt->charging_max_c);
+	printf("\t.discharging_min_c = %d,\n", batt->discharging_min_c);
+	printf("\t.discharging_max_c = %d,\n", batt->discharging_max_c);
+	printf("},\n"); /* end of batt_info */
+}
+
+static int cmd_battery_config(int argc, char *argv[])
+{
+	struct batt_conf_header r;
+	int rv;
+
+	if (argc != 1) {
+		fprintf(stderr, "Invalid param count\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_BATTERY_CONFIG, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	batt_conf_dump(&r);
+
+	return 0;
+}
+
 int cmd_board_version(int argc, char *argv[])
 {
 	struct ec_response_board_version response;
@@ -11660,6 +11730,7 @@ const struct command commands[] = {
 	{ "battery", cmd_battery },
 	{ "batterycutoff", cmd_battery_cut_off },
 	{ "batteryparam", cmd_battery_vendor_param },
+	{ "batteryconfig", cmd_battery_config },
 	{ "boardversion", cmd_board_version },
 	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
