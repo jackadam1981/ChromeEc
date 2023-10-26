@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2fc4a3_d87ac7fe",
+        "filename": "zephyr/boards/arm/mec172x/mec1723.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-26T21:18:08Z",
+      "side": 1,
+      "message": "can not change to ext_flash, since it is used in cros_flash_xec.c\n#define FLASH_DEV DT_NODELABEL(int_flash)",
+      "parentUuid": "25c324f8_229d6076",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "7135664c72c79b93cacba1524d9b3b6a38cd6629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f878f56_e3649577",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a829ea_a87ec35d",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-26T21:18:08Z",
+      "side": 1,
+      "message": "done to include \"mec172x.dtsi\", and update mec172x.dtsi to fit this change.",
+      "parentUuid": "7f878f56_e3649577",
+      "range": {
+        "startLine": 6,
+        "startChar": 25,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "7135664c72c79b93cacba1524d9b3b6a38cd6629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaaaa913_ad1f1df1",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-26T15:55:37Z",
       "side": 1,
       "message": "should go to respective chip specific file",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "7135664c72c79b93cacba1524d9b3b6a38cd6629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f522233f_00914f79",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-26T21:18:08Z",
+      "side": 1,
+      "message": "actually, this include was removed in previous patch.\nremoved it.",
+      "parentUuid": "aaaaa913_ad1f1df1",
       "range": {
         "startLine": 9,
         "startChar": 20,
