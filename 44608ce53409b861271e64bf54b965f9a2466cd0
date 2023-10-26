@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b6c447_0792980e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4384,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-10-26T23:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5657f1f7_5de60b34",
+      "range": {
+        "startLine": 4384,
+        "startChar": 37,
+        "endLine": 4384,
+        "endChar": 39
+      },
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88862490_8fcd8d31",
@@ -96,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "853b4175_0d186303",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-10-26T23:10:22Z",
+      "side": 1,
+      "message": "I added a version as Mary suggested. Linking to the Rust counterpart would a link to chromium-internal. Is that okay?",
+      "parentUuid": "635247ed_f1cbffc4",
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de4c11a5_7dc6a93e",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 2
@@ -107,6 +149,30 @@
       "writtenOn": "2023-10-20T21:46:23Z",
       "side": 1,
       "message": "why field named don\u0027t match structure namse? Can fields be called `v0` and `v1` respectively?",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 25
+      },
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887241b1_16517f6f",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-10-26T23:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de4c11a5_7dc6a93e",
       "range": {
         "startLine": 374,
         "startChar": 0,
