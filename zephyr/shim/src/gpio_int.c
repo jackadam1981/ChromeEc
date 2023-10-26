@@ -199,6 +199,16 @@ int gpio_enable_interrupt(enum gpio_signal signal)
  */
 int gpio_disable_dt_interrupt(const struct gpio_int_config *conf)
 {
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts)
+	struct gpio_callback *cb = &int_cb_data[conf - &gpio_int_data[0]];
+
+	/* Remove the callback associated with this interrupt */
+	if (cb->handler) {
+		gpio_remove_callback(conf->port, cb);
+		cb->handler = NULL;
+	}
+#endif
+
 	return gpio_pin_interrupt_configure(conf->port, conf->pin,
 					    GPIO_INT_DISABLE);
 }
