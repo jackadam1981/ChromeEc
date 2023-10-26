@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00403eb5_f0e4c45f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-26T16:21:41Z",
+      "side": 1,
+      "message": "I agree with your analysis.  The EC_HOST_EVENT_HANG_REBOOT event appears to be unused on by the AP firmware and kernel.  So it can be removed.",
+      "parentUuid": "5e77a895_27154ac3",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 0
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e913872c_eb892751",
         "filename": "util/config_allowed.txt",
         "patchSetId": 2
