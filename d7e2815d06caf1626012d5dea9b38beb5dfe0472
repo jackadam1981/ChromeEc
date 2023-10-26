@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e567d13f_692043a4",
+        "filename": "common/cbi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "Don\u0027t need this flag. The `_BUFFER_CLEAR` and the `_COMMIT` flags should be bit-wide, like BIT(0) and BIT(1) instead of using enum, so they can be embedded in a normal write command.\n\nFor example, the first-issued write command has the `_BUFFER_CLEAR` bit set; the last-issued write command has the `_COMMIT` set; all other commands in between have the flags cleared.",
+      "range": {
+        "startLine": 519,
+        "startChar": 25,
+        "endLine": 519,
+        "endChar": 53
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961bf714_f424b67e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6320,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "No one uses it.",
+      "range": {
+        "startLine": 6320,
+        "startChar": 1,
+        "endLine": 6320,
+        "endChar": 14
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d901f02_5f663e77",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6367,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "READ/WRITE seems better, that is intentionally different from the above GET/SET commands. Maybe put it as suffix, like `EC_CMD_CBI_BIN_READ`.",
+      "range": {
+        "startLine": 6367,
+        "startChar": 15,
+        "endLine": 6367,
+        "endChar": 18
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd41f88_c080d669",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6374,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "Don\u0027t mention commit, just `ec_cbi_bin_flags`.",
+      "range": {
+        "startLine": 6374,
+        "startChar": 5,
+        "endLine": 6374,
+        "endChar": 26
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da173343_3b2c1a40",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6380,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "Use 2 words `_cbi_bin`",
+      "range": {
+        "startLine": 6380,
+        "startChar": 21,
+        "endLine": 6380,
+        "endChar": 27
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dac71c_1049636f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6388,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "Use `flags` so it can be expanded to other purposes.",
+      "range": {
+        "startLine": 6388,
+        "startChar": 9,
+        "endLine": 6388,
+        "endChar": 15
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8af3054_6ac4166a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "Use read/write",
+      "range": {
+        "startLine": 8774,
+        "startChar": 15,
+        "endLine": 8774,
+        "endChar": 18
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f587c942_cdf84581",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-26T01:54:29Z",
+      "side": 1,
+      "message": "The ectool is more flexible that it can handle files. A simpler way is to give an output file here. And the write command gives an input file. The offset, size, and flags can be handled internally. Multiple host commands may be issued with proper flags. Otherwise, people have to understand the implementation detail to know how to pass a proper flags.\n\nBTW, you may need another host command to know the CBI size so you can check the size first. Maybe call it `EC_CMD_CBI_BIN_INFO`.",
+      "range": {
+        "startLine": 8774,
+        "startChar": 19,
+        "endLine": 8774,
+        "endChar": 34
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
