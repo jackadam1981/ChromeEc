@@ -22,6 +22,30 @@
       },
       "revId": "6106b6d941839eb4d705bc92ddde6ad9f65d7e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b203b7_55ba9168",
+        "filename": "zephyr/boards/arm/mec172x/mec1723.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-26T15:00:05Z",
+      "side": 1,
+      "message": "agree, support dual mode in default, program can overwrite it per SPI chip on specific board.",
+      "parentUuid": "c8d9a2d5_d590a7df",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "6106b6d941839eb4d705bc92ddde6ad9f65d7e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
