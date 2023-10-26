@@ -34,6 +34,24 @@
       "parentUuid": "414cc5a8_5959e87f",
       "revId": "a0dd8e90ecb98c3e006bf6e5085e7648d9ba904b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a61822f_3549af32",
+        "filename": "zephyr/include/cros/microchip/mec172x.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-10-26T21:36:22Z",
+      "side": 1,
+      "message": "understand that. originally, think to keep it as a reference.\ndeleted it.",
+      "parentUuid": "c17721c0_eee6ccd6",
+      "revId": "a0dd8e90ecb98c3e006bf6e5085e7648d9ba904b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
