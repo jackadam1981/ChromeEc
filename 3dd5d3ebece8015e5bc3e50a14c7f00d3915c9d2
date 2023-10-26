@@ -34,6 +34,24 @@
       "parentUuid": "8cf616c3_69801b99",
       "revId": "3dd5d3ebece8015e5bc3e50a14c7f00d3915c9d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8f457a_c8f19d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-10-26T19:23:21Z",
+      "side": 1,
+      "message": "I will delete the internal one, but this will provide visibility to all current and future vendors.\n\nThe link to this doc is in the commit description.",
+      "parentUuid": "bfea7960_db425c5a",
+      "revId": "3dd5d3ebece8015e5bc3e50a14c7f00d3915c9d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
