@@ -22,18 +22,11 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
-	/* Vconn control is only for port 0 */
-	if (port)
-		return;
-
-	if (cc_pin == USBPD_CC_PIN_1)
-		gpio_pin_set_dt(
-			GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_cc1_vconn),
-			!!enabled);
-	else
-		gpio_pin_set_dt(
-			GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_cc2_vconn),
-			!!enabled);
+	/*
+	 * We ignore the cc_pin and PPC vconn because polarity and PPC vconn
+	 * should already be set correctly in the PPC driver via the pd
+	 * state machine.
+	 */
 }
 
 __override bool pd_check_vbus_level(int port, enum vbus_level level)
