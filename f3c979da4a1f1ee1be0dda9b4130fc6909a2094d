@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff09f914_8fb408f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-10-26T10:52:39Z",
+      "side": 1,
+      "message": "No idea why this didn\u0027t trigger earlier, but maybe the lack of action in extra/usb_updater/ made the CQ optimize out that part of the build? In any case, CL:4975378 fails due to this, and if we want `servo_updater` to exist in the chroot, that\u0027s kinda important to land.",
+      "revId": "f3c979da4a1f1ee1be0dda9b4130fc6909a2094d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
