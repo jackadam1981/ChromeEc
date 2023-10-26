@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0b5af4_5d1edc37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-26T17:55:11Z",
+      "side": 1,
+      "message": "BTW, we allocate 64 bytes for hash_digest. So, this build assert seems redundant (or should be moved to ec_commands.h)?",
+      "revId": "18d75491f74c06c6e50c36f2a4ceefad39785d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
