@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5febfcda_e8ac1cb6",
+        "filename": "common/cec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-10-26T17:12:25Z",
+      "side": 1,
+      "message": "Don\u0027t we normally follow the Linux style and drop {} around single lines?",
+      "range": {
+        "startLine": 452,
+        "startChar": 47,
+        "endLine": 452,
+        "endChar": 48
+      },
+      "revId": "b2a624dfbe3d66d4842d9b7e3864016ef4b9d914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5ab66f_8df68b0f",
+        "filename": "zephyr/shim/src/cec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-10-26T17:12:25Z",
+      "side": 1,
+      "message": "Do we need to set things to NULL? Shouldn\u0027t that happen anyway?\n\nOr are you wanting to be explicit about which fields exist?",
+      "revId": "b2a624dfbe3d66d4842d9b7e3864016ef4b9d914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149ce8a1_9d2dcc1b",
+        "filename": "zephyr/test/drivers/cec_common/src/cec_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-10-26T17:12:25Z",
+      "side": 1,
+      "message": "Can this go in a header file and have a comment?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "b2a624dfbe3d66d4842d9b7e3864016ef4b9d914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
