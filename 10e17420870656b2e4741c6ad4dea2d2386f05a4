@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a87421a_1f4f9322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-26T03:53:58Z",
+      "side": 1,
+      "message": "Battery cutoff tests depend on deferred calls that handle polling the battery state failing (leaving it in an \"in progress\" state), so I\u0027m working on debugging those.",
+      "revId": "10e17420870656b2e4741c6ad4dea2d2386f05a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
