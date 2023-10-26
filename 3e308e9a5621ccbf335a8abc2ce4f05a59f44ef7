@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abec081a_e705547d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-26T16:42:47Z",
+      "side": 1,
+      "message": "We have the https://source.corp.google.com/h/chrome-internal/chromeos/codesearch/+/main:src/platform/ti50/common/tools/explain_ap_ro_verification_status/src/main.rs already, can we expose that tool instead of double sourcing this logic?",
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
