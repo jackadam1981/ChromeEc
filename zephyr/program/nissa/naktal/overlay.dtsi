@@ -115,8 +115,7 @@
 			       <&gpiod 4 0>,
 			       <&gpiod 7 0>,
 			       <&gpioh 2 0>,
-			       <&gpioj 7 0>,
-			       <&gpiol 4 0>;
+			       <&gpioj 7 0>;
 	};
 
 	named-gpios {
@@ -125,10 +124,6 @@
 		 * due to fault, but this definition is useful for hardware
 		 * testing.
 		 */
-		gpio_usb_c0_prot_fault_odl: usb_c0_prot_fault_odl {
-			gpios = <&gpiok 6 GPIO_INPUT_PULL_UP>;
-		};
-
 		gpio_sb_1: sb_1 {
 			gpios = <&gpioe 6 0>;
 			no-auto-init;
@@ -386,7 +381,7 @@
 };
 
 &i2c5 {
-	label = "I2C_USB_C0_TCPC";
+	label = "I2C_USB_C0";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 	pinctrl-0 = <&i2c5_clk_gpa4_default
 		     &i2c5_data_gpa5_default>;
@@ -396,12 +391,18 @@
 		compatible = "pericom,pi3usb9201";
 		status = "okay";
 		reg = <0x5f>;
+				irq = <&int_usb_c0>;
 	};
-
-	chg_port0: sm5803@32 {
-		compatible = "siliconmitus,sm5803";
+	ppc_port0: ppc_syv682@40 {
+		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x32>;
+		reg = <0x40>;
+		frs_en_gpio = <&gpio_usb_c0_frs_en>;
+	};
+	chg_port0: bq25710@9 {
+		compatible = "ti,bq25710";
+		status = "okay";
+		reg = <0x9>;
 	};
 };
 
