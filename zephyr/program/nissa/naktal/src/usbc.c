@@ -22,72 +22,17 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
-	/* Vconn control is only for port 0 */
-	if (port)
-		return;
-
-	if (cc_pin == USBPD_CC_PIN_1)
-		gpio_pin_set_dt(
-			GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_cc1_vconn),
-			!!enabled);
-	else
-		gpio_pin_set_dt(
-			GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_cc2_vconn),
-			!!enabled);
+	/*
+	 * We ignore the cc_pin and PPC vconn because polarity and PPC vconn
+	 * should already be set correctly in the PPC driver via the pd
+	 * state machine.
+	 */
 }
 
 __override bool pd_check_vbus_level(int port, enum vbus_level level)
 {
 	return sm5803_check_vbus_level(port, level);
 }
-
-/*
- * Putting chargers into LPM when in suspend reduces power draw by about 8mW
- * per charger, but also seems critical to correct operation in source mode:
- * if chargers are not in LPM when a sink is first connected, VBUS sourcing
- * works even if the partner is later removed (causing LPM entry) and
- * reconnected (causing LPM exit). If in LPM initially, sourcing VBUS
- * consistently causes the charger to report (apparently spurious) overcurrent
- * failures.
- *
- * In short, this is important to making things work correctly but we don't
- * understand why.
- */
-static void board_chargers_suspend(struct ap_power_ev_callback *const cb,
-				   const struct ap_power_ev_data data)
-{
-	void (*fn)(int chgnum);
-
-	switch (data.event) {
-	case AP_POWER_SUSPEND:
-		fn = sm5803_enable_low_power_mode;
-		break;
-	case AP_POWER_RESUME:
-		fn = sm5803_disable_low_power_mode;
-		break;
-	/* LCOV_EXCL_START can only happen if init doesn't match these cases */
-	default:
-		LOG_WRN("%s: power event %d is not recognized", __func__,
-			data.event);
-		return;
-		/* LCOV_EXCL_STOP */
-	}
-
-	fn(CHARGER_PRIMARY);
-	if (board_get_charger_chip_count() > 1)
-		fn(CHARGER_SECONDARY);
-}
-
-static int board_chargers_suspend_init(void)
-{
-	static struct ap_power_ev_callback cb = {
-		.handler = board_chargers_suspend,
-		.events = AP_POWER_SUSPEND | AP_POWER_RESUME,
-	};
-	ap_power_ev_add_callback(&cb);
-	return 0;
-}
-SYS_INIT(board_chargers_suspend_init, APPLICATION, 0);
 
 int board_set_active_charge_port(int port)
 {
