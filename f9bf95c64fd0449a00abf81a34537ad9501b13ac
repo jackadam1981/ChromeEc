@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b514f7a0_1e01cb85",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-10-27T17:02:47Z",
+      "side": 1,
+      "message": "Could you add a comment as to what is expected to occur if dpm_vconn_swap_policy returns true and if it returns false? And same below on line 1522.",
+      "range": {
+        "startLine": 1484,
+        "startChar": 4,
+        "endLine": 1484,
+        "endChar": 33
+      },
+      "revId": "f9bf95c64fd0449a00abf81a34537ad9501b13ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
