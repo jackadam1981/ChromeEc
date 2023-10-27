@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bece7bcf_7fb8c542",
+        "filename": "zephyr/program/rex/rex-ish/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-10-27T03:01:40Z",
+      "side": 1,
+      "message": "I believe this is duplicating a lot and can be simplified using the `\u0026` marker (I might be wrong, but it\u0027s worth a try).\n\n```\n/* Using the \u0026 should allow you to avoid duplicating the node tree */\n\u0026lid_accel {\n  active-mask \u003d \"SENSOR_ACTIVE_S0\";\n  configs {\n    /* I think you can skip the compatible here because you\u0027re overriding */\n    ec-s0 {\n      /* Similarly here, I think you can skip odr */\n      ec-rate \u003d \u003c(100 * USEC_PER_MSEC)\u003e;\n    };\n    /delete-node/ ec-s3;\n  };\n};\n```\n\nYou would need to add labels for `base-gyro` and `base-als-rgb`",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "ace39b4fa846cb1d5c40efe2c0c68f88a2f5e38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
