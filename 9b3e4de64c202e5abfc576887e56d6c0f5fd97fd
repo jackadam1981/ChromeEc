@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c16d3346_4f293fc1",
+        "filename": "zephyr/program/roach/axii/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-27T07:35:05Z",
+      "side": 1,
+      "message": "GPA0 added.\nGPI0 is the adc-base-det below.",
+      "parentUuid": "b1de168f_aa3285f8",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d2fceee_10490c65",
         "filename": "zephyr/program/roach/axii/project.overlay",
         "patchSetId": 8
@@ -66,6 +84,24 @@
       "writtenOn": "2023-10-27T06:57:58Z",
       "side": 1,
       "message": "it should be Output here.",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb38e660_f4291050",
+        "filename": "zephyr/program/roach/axii/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-27T07:35:05Z",
+      "side": 1,
+      "message": "Isn\u0027t it input by default, and re-configure to output high when attached?",
+      "parentUuid": "1d2fceee_10490c65",
       "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
