@@ -34,6 +34,24 @@
       "parentUuid": "e805f134_dee24242",
       "revId": "5827f8e4e94baadb0c856696b84383a520d70f9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf30af08_a5e94fa8",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-27T20:08:31Z",
+      "side": 1,
+      "message": "Any other concurrent prints would mess up the output, confusing opentitantool.  I have not seen issues retrieving thousands of events in my I2C test.\n\nI am wondering how the `cflush()` is meant to work, when we have both UART and USB receiving the same output.  Depending on how often the USB host issues IN transactions, it would be either the UART or the USB endpoint that is the slowest, which `cflush()` would have to wait for.\n\nI should be possible to implement `cflush()` such that no matter how infrequently the USB host issues IN transactions, HyperDebug will not lose data, but I do not know if it is in fact implemented in such a way.  I do not know that you can meaningfully talk about whether the issue is \"on devboardservice side\", though.",
+      "parentUuid": "6a4e4066_d5af3537",
+      "revId": "5827f8e4e94baadb0c856696b84383a520d70f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

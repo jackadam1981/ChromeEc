@@ -22,6 +22,30 @@
       },
       "revId": "09e1ffd424548250b85b656c1fbf89a901d8a8d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edabc0d_b95f6977",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-27T20:08:31Z",
+      "side": 1,
+      "message": "`stop_all_gpio_monitoring` will stop anything ongoing, this piece of code already knows that the last ongoing operation has just stopped, so I do not think it makes sense to call `stop_all_gpio_monitoring()` here.  It could make sense to factor out a common method doing what needs to be done to re-enable handling of the blue button, to be called by both `stop_all_gpio_monitoring` and by this code, when the last monitoring operation stops.  However, with just two call sites, and three lines of body, I do not quite believe it helps to factor it out.",
+      "parentUuid": "e5048920_757f68c4",
+      "range": {
+        "startLine": 1003,
+        "startChar": 2,
+        "endLine": 1005,
+        "endChar": 46
+      },
+      "revId": "09e1ffd424548250b85b656c1fbf89a901d8a8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
