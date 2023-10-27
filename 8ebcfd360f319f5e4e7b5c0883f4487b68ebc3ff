@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95796376_9e015d47",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-10-27T21:40:24Z",
+      "side": 1,
+      "message": "Why is this not wanted on zephyr? I understand that it doesn\u0027t exist, but isn\u0027t it necessary still?",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 21
+      },
+      "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
