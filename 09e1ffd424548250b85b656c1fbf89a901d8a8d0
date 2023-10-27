@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5048920_757f68c4",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-27T16:08:34Z",
+      "side": 1,
+      "message": "should we be calling `stop_all_gpio_monitoring` instead?",
+      "range": {
+        "startLine": 1003,
+        "startChar": 2,
+        "endLine": 1005,
+        "endChar": 46
+      },
+      "revId": "09e1ffd424548250b85b656c1fbf89a901d8a8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
