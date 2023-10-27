@@ -33,6 +33,133 @@
       "message": "ping...",
       "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591566bc_97fcaf5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-10-27T18:23:09Z",
+      "side": 1,
+      "message": "I don\u0027t see how that could be done without essentially pulling in all of Ti50 in order to build `gsctool`.",
+      "parentUuid": "abec081a_e705547d",
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535bf628_a14547c2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4336,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-10-27T18:23:09Z",
+      "side": 1,
+      "message": "Why not just use the current doc string contents in `VerifyErrorCode`? Or just print out the name of the enum variant? That would be much more consistent and avoid the subtly incorrect terms introduced below. Having a totally separate set of descriptions for the same set of errors will only increase confusion.",
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e8d69d_32047c74",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4352,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-10-27T18:23:09Z",
+      "side": 1,
+      "message": "It\u0027s not just a \"wrong\" key, it\u0027s a key that isn\u0027t structured correctly. I would call it a `Bad key` or `Inconsistent key`, not a `Wrong key`, since that implies it could be returned if the value is signed validly with a key that the system doesn\u0027t recognize.\n\nSo, don\u0027t say \"Wrong\", because these errors are about the item itself being incorrectly structured instead of having a correctly structured, but incorrectly chosen, item.",
+      "range": {
+        "startLine": 4352,
+        "startChar": 3,
+        "endLine": 4352,
+        "endChar": 8
+      },
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5064992b_d197c8a3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4358,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-10-27T18:23:09Z",
+      "side": 1,
+      "message": "It\u0027s the GSCVD, not the signature itself",
+      "range": {
+        "startLine": 4358,
+        "startChar": 15,
+        "endLine": 4358,
+        "endChar": 24
+      },
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f15736b_918d105c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4360,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-10-27T18:23:09Z",
+      "side": 1,
+      "message": "`memory`",
+      "range": {
+        "startLine": 4360,
+        "startChar": 10,
+        "endLine": 4360,
+        "endChar": 17
+      },
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b338ea50_92ce60ef",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4374,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-10-27T18:23:09Z",
+      "side": 1,
+      "message": "`Non MP prod root key rejected` would be much more clear, as is currently printed on the console.",
+      "range": {
+        "startLine": 4374,
+        "startChar": 3,
+        "endLine": 4374,
+        "endChar": 11
+      },
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
