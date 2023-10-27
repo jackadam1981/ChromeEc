@@ -55,6 +55,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7be19c68_21ae3993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-27T18:30:04Z",
+      "side": 1,
+      "message": "We already have a portage build that builds our firmware image on branches (so we know we can build stuff in the normal portage way).\n\nI don\u0027t think this needs to be part of gsctool. We do not need decoding to be part of the binary that is on every ChromeOS device.\n\nThe explain tool seems like another tool that is install in the chroot with gsc-devtools.",
+      "parentUuid": "591566bc_97fcaf5b",
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818ff796_10dd776c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-27T18:30:04Z",
+      "side": 1,
+      "message": "I left a comment on Oct 26th that was never responded too...",
+      "parentUuid": "018850de_9584548d",
+      "revId": "3e308e9a5621ccbf335a8abc2ce4f05a59f44ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "535bf628_a14547c2",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
