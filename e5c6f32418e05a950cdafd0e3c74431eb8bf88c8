@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7133a056_454be382",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-27T19:27:18Z",
+      "side": 1,
+      "message": "@mike5@huaqin.corp-partner.google.com\ni wonder if we should use this event to turn off USB-A?",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 47
+      },
+      "revId": "e5c6f32418e05a950cdafd0e3c74431eb8bf88c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
