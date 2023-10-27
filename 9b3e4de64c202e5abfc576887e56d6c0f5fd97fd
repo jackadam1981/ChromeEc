@@ -34,6 +34,131 @@
       "parentUuid": "260b7205_18adda7b",
       "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15fff05_1bc895ca",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "In Axii, the net name of GPIOA1 is EN_PP3300_BASE. Should we change the name to the one Axii used?",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b74ad0a_7ee44d69",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "We didn\u0027t use this pin in Axii. We might move it to the unused-pins group.",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3510e27_5f3607c9",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "We didn\u0027t use this pin in Axii. We might move it to the unused-pins group.",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83d7620_e3e2f288",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "We didn\u0027t use this pin in Axii. We might move it to the unused-pins group.",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b0baa6_c2855f1a",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "GPIOA2 is used for indicating the present of DUT in Axii. Net name: PRST_BASE;  GPIO_Output, Function: output high while a DUT attached to Axii. Should we enable it\u0027s function here ?",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d603db_b7a38609",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "GPIOi0 is used for being the ADC to detect attachment and detachment in Axii. Net name: CC_TESTER_BASE_ADC; Input. Should we enable it\u0027s function here ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885b5979_9ec0fee9",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2023-10-27T06:33:19Z",
+      "side": 1,
+      "message": "GPIOJ0 is used for being the PU source in Axii. Net name: EC_UART_PU_TESTER; OUTPUT High. Should we enable it\u0027s function here ?",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
