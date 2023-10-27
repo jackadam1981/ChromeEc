@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b694d785_93067426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-27T04:30:17Z",
+      "side": 1,
+      "message": "With this optimization, the code in crrev.com/c/4982550 is able to capture what goes on on the I2C wires during a test of corner cases, in a format that can be loaded into off-the-shelf graphical logic analyzer programs.  This information will supplement the text logs and can greatly help engineers find out what happened during a nightly test.",
+      "parentUuid": "a2e20012_d4be9e78",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "2ca249f5930ade33478646a06d579923bf923f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5ad9dfad_518f60e8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
