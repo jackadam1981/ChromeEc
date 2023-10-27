@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef3f0f2_627659c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T19:48:41Z",
+      "side": 1,
+      "message": "Only minor nits from me.  Considering that this is generating data critical for the factory and RMA flows, this probably needs some unit tests.",
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960954b0_820f1483",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T19:48:41Z",
+      "side": 1,
+      "message": "As a followup, can you move this to separate file so it can be shared by named_gpios.py?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d7864b_14dcc4fc",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T19:48:41Z",
+      "side": 1,
+      "message": "What will this be set to for motionsesense components?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 41
+      },
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b27d46c_f671fa4e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T19:48:41Z",
+      "side": 1,
+      "message": "Nit - you\u0027re interchanging `hasattr` and `if .. in` constructs.  I\u0027m not a python expert so I\u0027m not sure if one style is preferred.",
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6355d27_afb2b16e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T19:48:41Z",
+      "side": 1,
+      "message": "Just FYI: this property is deprecated.  b:280430216 is the effort to migrate to the \"is-alt\" property.\n\nThe mapping of the usbc port number to alternate TCPC/PPCs is done in board specific C code and isn\u0027t captured in the devicetree.  I\u0027m not sure if the usbc port number is critical to the consumers of the manifest.",
+      "range": {
+        "startLine": 265,
+        "startChar": 29,
+        "endLine": 265,
+        "endChar": 36
+      },
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
