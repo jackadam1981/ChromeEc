@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0855a0f6_17dd854c",
+        "filename": "zephyr/program/roach/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-27T06:40:47Z",
+      "side": 1,
+      "message": "Ah... this file is for Roach.\n\nPlease review zephyr/program/roach/axii/project.overlay instead.",
+      "parentUuid": "c15fff05_1bc895ca",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b74ad0a_7ee44d69",
         "filename": "zephyr/program/roach/gpio.dtsi",
         "patchSetId": 8
