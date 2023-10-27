@@ -16,6 +16,24 @@
       "message": "Could we enable the ADC detection and then enable the power to the KB?\nThis can also ensure the 6.8K pull-down resistor is well stuffed on KB side.",
       "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef08abe_bfbe0e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-27T04:51:58Z",
+      "side": 1,
+      "message": "yes it\u0027s implemented in main.c, around line 52",
+      "parentUuid": "260b7205_18adda7b",
+      "revId": "9b3e4de64c202e5abfc576887e56d6c0f5fd97fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
