@@ -46,6 +46,30 @@
       },
       "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b64ec1_18b8140b",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-10-27T21:58:07Z",
+      "side": 1,
+      "message": "If this change is just for the test, perhaps it would be simpler to use a legacy test instead.",
+      "parentUuid": "377000bb_922c26e6",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 21
+      },
+      "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
