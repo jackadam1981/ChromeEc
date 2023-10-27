@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dfd33c2_686f30e4",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T18:04:49Z",
+      "side": 1,
+      "message": "The second loader is built as part of building a Zephyr EC firmware image.  The overall concept is that configuration of the board may affect the operation of the second loader.\n\nFor instance, your Cmake file already pulls in Kconfig symbols from the Zephyr EC project (CONFIG_MCHP_MEC_HEADER_CHIP, CONFIG_MCHP_MEC_HEADER_SPI_READ_MODE, etc).\n\nAll the devicetree symbols get converted into a C macros and written to a header file.  So I believe you should be able to use Zephyr\u0027s devicetree macros (such as DT_CHOSEN) to extract values from the devicetree.\n\nThis can be done as a follow up CL.",
+      "parentUuid": "086093d1_3d06e09f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a957b526_f8e94748",
         "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
         "patchSetId": 4
