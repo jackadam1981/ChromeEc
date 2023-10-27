@@ -22,6 +22,29 @@
       },
       "revId": "e5c6f32418e05a950cdafd0e3c74431eb8bf88c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0724c941_cd17c0f9",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-27T19:33:03Z",
+      "side": 1,
+      "message": "the problem we saw was that the AP enters S5 from S0 briefly during a\nnormal boot - presumably due to CSE-lite transitioning to CSE-RW.\nthat confuses logic that assumes entering S5 means we\u0027re shutting\ndown, when in fact, it\u0027s a glitch on the way to S0 in a normal boot.",
+      "range": {
+        "startLine": 116,
+        "startChar": 30,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "e5c6f32418e05a950cdafd0e3c74431eb8bf88c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
