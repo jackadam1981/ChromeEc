@@ -16,6 +16,24 @@
       "message": "Needs testing",
       "revId": "125357a39e9c37763bd70bbd5891b66b31d62912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38247e00_0e8c9b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-27T00:32:49Z",
+      "side": 1,
+      "message": "This will only really work if we cherry pick crrev.com/i/6582318 into the vendor `firmware-fpmcu-bloonchipper-release` branch (crrev.com/i/6606921)",
+      "parentUuid": "8dcc78a8_edfac088",
+      "revId": "125357a39e9c37763bd70bbd5891b66b31d62912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

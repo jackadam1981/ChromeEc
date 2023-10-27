@@ -16,6 +16,24 @@
       "message": "This is fine and doesn\u0027t cause any immediate issues. Please post a revert as soon as possible, tho.",
       "revId": "75f7efb3f2e7d96a2b972ed10d0eab5d4d63ad31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa63a5a_8949a6d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-10-27T00:32:49Z",
+      "side": 1,
+      "message": "I tried to post the revert CL even before merging but apparently you can\u0027t do that. I\u0027ll post as soon as this merges to keep as a reminder.",
+      "parentUuid": "577a3564_2835b03c",
+      "revId": "75f7efb3f2e7d96a2b972ed10d0eab5d4d63ad31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
