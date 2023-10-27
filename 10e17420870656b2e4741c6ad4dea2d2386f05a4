@@ -34,6 +34,24 @@
       "parentUuid": "5a87421a_1f4f9322",
       "revId": "10e17420870656b2e4741c6ad4dea2d2386f05a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075666dc_e760cbef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-27T05:11:52Z",
+      "side": 1,
+      "message": "Solved the PD thing (various cleanup ordering being not quite right and calling the shutdown hook without actually changing power state broke turning the emulated AP back on), but now more failures have appeared.",
+      "parentUuid": "6064bec3_83ec027b",
+      "revId": "10e17420870656b2e4741c6ad4dea2d2386f05a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
