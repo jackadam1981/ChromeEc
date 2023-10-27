@@ -16,6 +16,24 @@
       "message": "Battery cutoff tests depend on deferred calls that handle polling the battery state failing (leaving it in an \"in progress\" state), so I\u0027m working on debugging those.",
       "revId": "10e17420870656b2e4741c6ad4dea2d2386f05a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6064bec3_83ec027b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-27T00:00:33Z",
+      "side": 1,
+      "message": "Solved that, but cutoff tests now also interfere with `host_cmd_usb_pd_control.test_good_index_sink_partner`.",
+      "parentUuid": "5a87421a_1f4f9322",
+      "revId": "10e17420870656b2e4741c6ad4dea2d2386f05a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
