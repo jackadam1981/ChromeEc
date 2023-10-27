@@ -22,6 +22,30 @@
       },
       "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377000bb_922c26e6",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T21:56:38Z",
+      "side": 1,
+      "message": "The Zephyr ITE support does expose an API to clear pending interrupts, and we use it [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/tasks.c;l\u003d441).\n\nIt looks like it might also be required to call `it8xxx2_wuc_clear_status()` for GPIOs specifically.  But lookup of the correct WUC device based on the GPIO needs some research.\n\nHowever, I don\u0027t see any Zephyr boards enabling CEC.  I recommend stubbing out `gpio_clear_pending_interrupt()` in the Zephyr GPIO shim and adding a TODO bug.",
+      "parentUuid": "95796376_9e015d47",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 21
+      },
+      "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
