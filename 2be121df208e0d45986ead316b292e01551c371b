@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab210f6e_9a6ef907",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-27T17:14:29Z",
+      "side": 1,
+      "message": "@waihong@chromium.org",
+      "revId": "2be121df208e0d45986ead316b292e01551c371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dbcdaf7_54788aa7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 7639,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-10-27T17:14:29Z",
+      "side": 1,
+      "message": "Are we moving structs to this header files because other executables outside of EC read CBI image and type cast them using these structs\n\nI am just asking as there is effort towards HC for BCIC, is it efficient to send granular data through BCIC HC similar to CBI HC instead of passing whole chunk and asking them to typecast",
+      "revId": "2be121df208e0d45986ead316b292e01551c371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
