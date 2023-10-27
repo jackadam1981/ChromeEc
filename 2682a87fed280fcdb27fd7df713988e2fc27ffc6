@@ -16,6 +16,506 @@
       "message": "Updated the review comments",
       "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ea04e6_d1f3f44a",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Nit - these are bitmasks.  So define them that way.  I also recommend using the naming from the Crisis Mode document.\n```\n#define CRC_FAILURE (1 \u003c\u003c 0)\n#define ILLEGAL_PAYLOAD_LENGTH (1 \u003c\u003c 1)\n```\n\nAlso the errors at bits 3 and 4 are not documented in the crisis mode document and these errors are not handled by the crisis recovery script.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c22ea0_dc2504d2",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "```\n/* Max chunk must be a power of 2 */\n#define MAX_CHUNK_SIZE 262144U\n#define MAX_CHUNK_BUFF_OFFSET (MAX_CHUNK_SIZE - 1)\nstatic uint8_t data_buffer[MAX_CHUNK_SIZE]\n\t\t__attribute__((section(\".buffer_256K\")));\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56a8ecb_f1bc3c61",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Even though this is only used in this file, logically it\u0027s used along with NO_ERROR, so it makes more sense in common.h",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5aac50a_0a8aef75",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Nit - set to 0xF0 to match the crisis recovery script.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/util/mchp/crisis_rcvry_util.py;l\u003d66",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0403f6eb_4ed9b2ab",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "You\u0027re padding out the max size by 10 bytes. Instead you should validate that you\u0027re not going to overflow the buffer allocated on the stack.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5906e614_30079b2c",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "This is a little odd - most of your functions return 0 for no error, but your enum here defines no failure at the end of the list.\n\nIt might be cleaner to have one set of error used throughout this code.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57aeba46_bff8ae68",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Nit - create a local variable to set the status byte, and then write into the transmit buffer once.\n```\nswitch() {\ncase HEADER_PACKET_CRC_FAILURE:\n    status \u003d CRC_MISMATCH;\n    break;\n...\n}\ntx_buff[RESP_FAILURE_STATUS_POS] \u003d status;\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8a8563_318b738a",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Document all fallthrough conditions with `__fallthrough;` or `/* fallthrough */`\n\nThe braces are not required if you\u0027re not defining any locally scoped variables.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84718db5_61ae816e",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Because this is under the Zephyr area, please always use braces on all conditionals.\nhttps://docs.zephyrproject.org/latest/contribute/guidelines.html#coding-style",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 36
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc72a944_f6777d15",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Move this to process_rxd_data() and then you can drop passing in the command byte.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 36
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eecf290_6135d1b8",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "You should verify that you\u0027re not going to overflow data_buffer.\n```\nif (len \u003e (MAX_PKT_HEADER_PAYLOAD + CRC32_SIZE))\n    return HEADER_PACKET_ILLEGAL_LENGTH;\n```\n\nThe crisis recovery script probably shouldn\u0027t retry in this case as the error indicates a mismatch in the expected contract between the script and this code.",
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f7858e_9dbddc3d",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Nit - `return NO_ERROR;`.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 12
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a094d16a_b5a67b2a",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "This is more readable if you directly construct the 32-bit value;\n```\nhost_crc32 \u003d data_buffer[len + 0] \u003c\u003c 0;\nhost_crc32 |\u003d data_buffer[len + 1] \u003c\u003c 8;\nhost_crc32 |\u003d data_buffer[len + 2] \u003c\u003c 16;\nhost_crc32 |\u003d data_buffer[len + 3] \u003c\u003c 24;\n```\n\nOr you can use `__builtin_bswap32` like you did in extract_header_info, provided that the CRC is guaranteed to be 4-byte aligned.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bceae2e9_fb297909",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Same comment as verify_pkt_integrity(). The for loop is hard to read.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c121f2da_6e46673b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Move this to the top of the file.",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 393,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1e2421_42e1a207",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "After checking the CRC, you should validate that the payload length is exactly 236 bytes because the extract_header_info() has hard-coded offsets.",
+      "range": {
+        "startLine": 434,
+        "startChar": 2,
+        "endLine": 434,
+        "endChar": 47
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687284af_154613d4",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "What about the last chunk? The image size is not guaranteed to be a multiple of 256 K.\n```\nif (!(total_offset \u0026 MAX_CHUNK_BUFF_OFFSET) || \n    total_offset \u003d\u003d hdr_info.flash_data_len_total)\n```",
+      "range": {
+        "startLine": 493,
+        "startChar": 2,
+        "endLine": 493,
+        "endChar": 48
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6413c959_c912abd9",
+        "filename": "zephyr/shim/chip/mchp/second_loader/second_loader.ld",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Why is there a gap between the code sram and this buffer?",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d29642_1bd82e77",
+        "filename": "zephyr/shim/chip/mchp/second_loader/serial.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Move this to common.h",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb49b051_55bdcadb",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Let the caller manage the offset.\n```\nuint32_t spi_flash_program_sector(uint32_t sector_address,\n\t\t\t\t  uint8_t *input_data_ptr)\n```",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795bd429_793fb8c9",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "Nit - `sector_address` is specified with one parameter, but the RAM address requires two.  If the caller should manages incrementing the `input_data_ptr`, then you can drop a parameter.\n\n```\nuint32_t spi_splash_check_sector_content_same(uint32_t sector_address,\n\t\t\t\t\t      uint8_t *input_data_ptr,\n\t\t\t\t\t      uint8_t *status)\n```",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15180b0_866ab806",
+        "filename": "zephyr/shim/chip/mchp/second_loader/startup_ARMCM4.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-27T17:48:41Z",
+      "side": 1,
+      "message": "I assume this source is unmodified, correct?\n\nEven if the file is modified, we need to first check this file into platform/ec/third_party to comply with our licensing requirements, and then make changes.\n\nCan you provide me info about the source of this file?  Here is an example file that includes the required details.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/third_party/zephyr/METADATA;l\u003d1\n\nI\u0027ll work with our licensing team to get this file landed.\n\nYou\u0027ll have to modify your CMake to reference the new location once it has landed.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
