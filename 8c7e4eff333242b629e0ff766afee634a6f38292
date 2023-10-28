@@ -16,6 +16,24 @@
       "message": "The fix corrects the fault, but the interrupt doesn\u0027t trigger when the dock is connected",
       "revId": "8c7e4eff333242b629e0ff766afee634a6f38292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a2bad5_40a28ef3",
+        "filename": "zephyr/drivers/usbc/intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-28T00:05:03Z",
+      "side": 1,
+      "message": "for some reason, cfg-\u003eshared_irq \u003d\u003d true, hence the interrupt is not firing.\nWe are also seeing this error after picking your CL.",
+      "parentUuid": "c2bd14f4_b99d73c5",
+      "revId": "8c7e4eff333242b629e0ff766afee634a6f38292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
