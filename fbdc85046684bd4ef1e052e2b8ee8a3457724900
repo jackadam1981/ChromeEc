@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f7dbbf_b1cf6491",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-10-29T23:06:46Z",
+      "side": 1,
+      "message": "This won\u0027t null-terminate if longer than size, so either ectool needs to know that or a null needs to be inserted.",
+      "revId": "fbdc85046684bd4ef1e052e2b8ee8a3457724900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
