@@ -22,6 +22,30 @@
       },
       "revId": "ace39b4fa846cb1d5c40efe2c0c68f88a2f5e38b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37516ec8_4c9c812e",
+        "filename": "zephyr/program/rex/rex-ish/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-10-29T06:43:30Z",
+      "side": 1,
+      "message": "The \u0026 works. Label added in `zephyr/dts/program/rex/motionsense.dtsi.`",
+      "parentUuid": "bece7bcf_7fb8c542",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "ace39b4fa846cb1d5c40efe2c0c68f88a2f5e38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
