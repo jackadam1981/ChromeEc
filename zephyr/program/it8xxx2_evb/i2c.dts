@@ -29,8 +29,9 @@
 &i2c0 {
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
-	pinctrl-0 = <&i2c0_clk_gpb3_default
-		     &i2c0_data_gpb4_default>;
+	pinctrl-0 = <&i2c2_clk_gpf6_default
+		     &i2c2_data_gpf7_default>;
+
 	pinctrl-names = "default";
 };
 
@@ -45,8 +46,8 @@
 &i2c2 {
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
-	pinctrl-0 = <&i2c2_clk_gpf6_default
-		     &i2c2_data_gpf7_default>;
+	pinctrl-0 = <&i2c0_clk_gpb3_default
+		     &i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
 };
 
