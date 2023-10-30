@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "567469c3_c66e8607",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-10-30T15:44:47Z",
+      "side": 1,
+      "message": "OK, great! We can probably close this, then. What\u0027s on the trogdor branch seems harmless and I wouldn\u0027t suggest trying to backport the NULL check there. Thanks for looking into it!",
+      "parentUuid": "307a3e6f_41f43000",
+      "range": {
+        "startLine": 17,
+        "startChar": 89,
+        "endLine": 17,
+        "endChar": 99
+      },
+      "revId": "00ddb03ecbc262d99d7fc811b6c25400a8f75809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "01b45cae_eb4e544c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
