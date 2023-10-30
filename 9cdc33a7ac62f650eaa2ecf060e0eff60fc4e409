@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7672a0_9cd1fb97",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-30T23:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c5631c8_7df03733",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 0
+      },
+      "revId": "9cdc33a7ac62f650eaa2ecf060e0eff60fc4e409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6a529b4_9f81d32d",
