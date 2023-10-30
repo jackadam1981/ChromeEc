@@ -192,6 +192,7 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 		hook_call_deferred(&ps185_hdmi_hpd_deferred_data, -1);
 	}
 
+#if 0
 	/* C0 DP is muxed, we should not send HPD to the AP */
 	if (!corsola_is_dp_muxable(USBC_PORT_C1)) {
 		if (hpd) {
@@ -199,14 +200,15 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 		}
 		return;
 	}
+#endif
 
-	if (hpd && !(usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
+	//if (hpd && !(usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
 		/* set dp_aux_path_sel first, and configure the usb_mux in the
 		 * deferred hook to prevent from dead locking.
 		 */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(dp_aux_path_sel), hpd);
 		hook_call_deferred(&ps185_hdmi_hpd_deferred_data, 0);
-	}
+	//}
 
 	svdm_set_hpd_gpio(USBC_PORT_C1, hpd);
 }
