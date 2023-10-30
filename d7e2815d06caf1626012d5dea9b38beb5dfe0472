@@ -207,6 +207,30 @@
       },
       "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cae0c8c_08476565",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-30T23:52:44Z",
+      "side": 1,
+      "message": "Yes. Saving the data to a file is more practical. People rarely type 256 numbers by hand.",
+      "parentUuid": "29c80bfc_da7c5d9c",
+      "range": {
+        "startLine": 8774,
+        "startChar": 19,
+        "endLine": 8774,
+        "endChar": 34
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
