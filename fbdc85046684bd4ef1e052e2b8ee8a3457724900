@@ -16,6 +16,24 @@
       "message": "This won\u0027t null-terminate if longer than size, so either ectool needs to know that or a null needs to be inserted.",
       "revId": "fbdc85046684bd4ef1e052e2b8ee8a3457724900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5bcf2a_57d76054",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-30T19:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f7dbbf_b1cf6491",
+      "revId": "fbdc85046684bd4ef1e052e2b8ee8a3457724900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
