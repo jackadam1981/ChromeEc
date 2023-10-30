@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c492b6_f0112821",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T22:17:34Z",
+      "side": 1,
+      "message": "I totally didn\u0027t catch that. Thank you for the comments!",
+      "parentUuid": "b7c0c14f_61cab945",
+      "range": {
+        "startLine": 233,
+        "startChar": 54,
+        "endLine": 233,
+        "endChar": 56
+      },
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7be31abd_54045815",
