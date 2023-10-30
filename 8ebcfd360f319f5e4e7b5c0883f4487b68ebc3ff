@@ -70,6 +70,30 @@
       },
       "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fbb7b4_4ee60a1d",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-10-30T22:14:33Z",
+      "side": 1,
+      "message": "Yes, the shim is just for the test for now. I can add a TODO as Keith suggested.\n\nI thought the recommendation was that most new tests should be zephyr tests. Is that not true? Anyway, I\u0027ve already implemented this and other CEC tests (drivers.cec_common, drivers.cec_it83xx) in zephyr, so it would be easier to keep it as is unless there\u0027s a strong reason to switch to a legacy test.",
+      "parentUuid": "47b64ec1_18b8140b",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 21
+      },
+      "revId": "8ebcfd360f319f5e4e7b5c0883f4487b68ebc3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
