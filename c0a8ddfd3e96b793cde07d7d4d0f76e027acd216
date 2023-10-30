@@ -56,6 +56,30 @@
       },
       "revId": "c0a8ddfd3e96b793cde07d7d4d0f76e027acd216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44a22a1_58c9f8f8",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-30T21:36:15Z",
+      "side": 1,
+      "message": "pls change to: chip,",
+      "parentUuid": "d225505e_15d9b6d6",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "c0a8ddfd3e96b793cde07d7d4d0f76e027acd216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
