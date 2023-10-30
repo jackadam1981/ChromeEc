@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc30364d_59bc4ae4",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-10-30T20:06:51Z",
+      "side": 1,
+      "message": "nit: pls used easy readable GPIO macros (MCHP_GPIO_DECODE_053 0)",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "372b38126f6d70aeab5701ff37d60e91ef9e9ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c22921_f1be7f68",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts",
         "patchSetId": 8
