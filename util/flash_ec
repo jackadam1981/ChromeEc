@@ -856,6 +856,10 @@ function servo_save() {
 		dut_control i2c_mux_en:on
 		dut_control i2c_mux:remote_adc
 	fi
+	if [[ "${SERVO_TYPE}" =~ "c2d2" ]] ; then
+		servo_save_add "cold_reset_select"
+		dut_control cold_reset_select:gsc_ec_reset
+	fi
 }
 
 function servo_restore() {
