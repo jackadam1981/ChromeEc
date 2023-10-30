@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "961a50e5_eb1c5ae4",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-30T03:18:15Z",
+      "side": 1,
+      "message": "Hi Keith, can you pls help review this change?",
+      "parentUuid": "f38890c2_a2954ffc",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "6865752448e9b349f64f65fb91e4b56e1366a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75d6c741_59bab9ca",
         "filename": "zephyr/shim/src/flash.c",
         "patchSetId": 9
