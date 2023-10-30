@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e32396_bd105b0f",
+        "filename": "zephyr/test/roach/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-30T04:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21039153_c3497cee",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "42925fc31fe1bb6af3c88c0626cb440399056a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a0fe766_094c64ea",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-27T21:37:17Z",
       "side": 1,
       "message": "roach?",
+      "range": {
+        "startLine": 1,
+        "startChar": 52,
+        "endLine": 1,
+        "endChar": 58
+      },
+      "revId": "42925fc31fe1bb6af3c88c0626cb440399056a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8133b7_270977a2",
+        "filename": "zephyr/test/roach/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-10-30T04:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a0fe766_094c64ea",
       "range": {
         "startLine": 1,
         "startChar": 52,
