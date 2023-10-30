@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "540a1f3c_aff6fd50",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-30T20:43:28Z",
+      "side": 1,
+      "message": "Done.\n\nAdded \u0027try_\u0027 to indicate it\u0027s not a deterministic feature. Help messages aren\u0027t as visible as we want. The command line could be copied from one project to another.",
+      "parentUuid": "03423561_39dfd25e",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d13b660_ba38ace4",
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9a4c73_de8287f5",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-30T20:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d13b660_ba38ace4",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ddcd795_e116ebb1",
@@ -83,6 +119,24 @@
       "writtenOn": "2023-10-30T18:43:22Z",
       "side": 1,
       "message": "Think it\u0027s worth making the sleep duration configurable too?\n\n(Feel free to say \"no\" :-)",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81ec9ae_3df9f707",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-10-30T20:43:28Z",
+      "side": 1,
+      "message": "It\u0027s not needed at this moment.",
+      "parentUuid": "7ddcd795_e116ebb1",
       "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
