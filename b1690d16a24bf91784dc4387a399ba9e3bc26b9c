@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f842d2cf_c36ec7c7",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T20:43:54Z",
+      "side": 1,
+      "message": "Add comment that we only need 2-byte alignment?",
+      "range": {
+        "startLine": 233,
+        "startChar": 54,
+        "endLine": 233,
+        "endChar": 56
+      },
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be31abd_54045815",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T20:43:54Z",
+      "side": 1,
+      "message": "why are you rounding this pointer? If you actually change round, won\u0027t it not copy what you want?",
+      "range": {
+        "startLine": 316,
+        "startChar": 8,
+        "endLine": 316,
+        "endChar": 43
+      },
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bca30d8_d172634c",
+        "filename": "board/hyperdebug/gpio_edge.S",
+        "patchSetId": 35
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T20:43:54Z",
+      "side": 1,
+      "message": "please add a comments through out here like\n\n// get the rising and failing edge status\n\n\n// Clear status bits in interrupt registers",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ae5d43_a9bd2d40",
+        "filename": "board/hyperdebug/gpio_edge.S",
+        "patchSetId": 35
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T20:43:54Z",
+      "side": 1,
+      "message": "can you describe how you are encoding these bytes? Maybe an example input and output (and when overflow would happen)",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cde6d1_7ff8ed26",
+        "filename": "board/hyperdebug/gpio_edge.S",
+        "patchSetId": 35
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T20:43:54Z",
+      "side": 1,
+      "message": "please add comment (I know people can look up asm, but it is much easier to read if the intent is also here too)",
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd8dbe3_0b93d0b9",
+        "filename": "board/hyperdebug/gpio_edge.S",
+        "patchSetId": 35
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-30T20:43:54Z",
+      "side": 1,
+      "message": "please give example of encoding here too",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "b1690d16a24bf91784dc4387a399ba9e3bc26b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
