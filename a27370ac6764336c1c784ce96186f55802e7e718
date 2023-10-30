@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03423561_39dfd25e",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-30T18:47:20Z",
+      "side": 1,
+      "message": "Explain in the help message this is a workaround for https://issuetracker.google.com/269804618 and should not be used with unaffected boards or for any other purpose.\n\nIdeally this workaround will get deleted when the affected boards reach AUE.",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ddcd795_e116ebb1",
         "filename": "util/flash_ec",
         "patchSetId": 2
