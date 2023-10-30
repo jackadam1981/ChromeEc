@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddbcf6b_4e48bdaf",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-30T23:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc30364d_59bc4ae4",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "372b38126f6d70aeab5701ff37d60e91ef9e9ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4c22921_f1be7f68",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-30T18:57:08Z",
       "side": 1,
       "message": "Nit - move this comment above the `spi-oe-gpios` property.",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "372b38126f6d70aeab5701ff37d60e91ef9e9ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05134ee5_dbbf9934",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_m1723/mtlrvp_flash.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-10-30T23:11:47Z",
+      "side": 1,
+      "message": "Changed the GPIO name as readable names, hence removed the comment.",
+      "parentUuid": "c4c22921_f1be7f68",
       "range": {
         "startLine": 10,
         "startChar": 4,
