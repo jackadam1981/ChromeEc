@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f83038db_df486ee6",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-30T18:26:06Z",
+      "side": 1,
+      "message": "Sorry for delayed response.\nI have explored this possibility, unfortunately we would need to define a new binding, if we use existing one [intel,pd-altmode.yaml](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/dts/bindings/usbc/pd/intel%2Cpd-altmode.yaml), we would end up having to define length on each node definition:\n```\n\tpd_port0: ccg@50 {\n\t\tcompatible \u003d \"intel,pd-altmode\";\n\t\treg \u003d \u003c0x50\u003e;\n\t\tstatus-reg-length \u003d \u003clength\u003e;\n\t\tcontrol-reg-length \u003d \u003clength\u003e;\n\t\tirq-gpios \u003d \u003c\u0026gpio9 5 GPIO_ACTIVE_LOW\u003e;\n\t};\n\tpd_port1: ccg@51 {\n\t\tcompatible \u003d \"intel,pd-altmode\";\n\t\treg \u003d \u003c0x51\u003e;\n\t\tstatus-reg-length \u003d \u003clength\u003e;\n\t\tcontrol-reg-length \u003d \u003clength\u003e;\n\t\tirq-gpios \u003d \u003c\u0026gpio9 5 GPIO_ACTIVE_LOW\u003e;\n\t\tirq-shared;\n\t};\n```\nThis would be error prone.\n\nSince these status registers lengths are more tied to SOC type, it would be better to vary them based on that, example:\n```\n#if defined(CONFIG_AP_X86_INTEL_MTL)\nINTEL_ALTMODE_DATA_STATUS_REG_LEN 5\n#elif define(\u003cINTEL SOC TYPE\u003e)\n#else\nINTEL_ALTMODE_DATA_STATUS_REG_LEN 4\n#endif\n```",
+      "parentUuid": "0381ecde_e06e4088",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "5016889a3808a59d6782ac725d67901683c70ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ba85941_c550ad62",
         "filename": "zephyr/include/drivers/intel_altmode.h",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2023-10-24T21:07:02Z",
       "side": 1,
       "message": "add reference document link\nhttps://cdrdv2.intel.com/v1/dl/getContent/766056\n\nBut don\u0027t name the document name yet",
+      "revId": "5016889a3808a59d6782ac725d67901683c70ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42dadb07_55cdf3ea",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-30T18:26:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0ba85941_c550ad62",
       "revId": "5016889a3808a59d6782ac725d67901683c70ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -22,6 +22,30 @@
       },
       "revId": "5624f3d3a57822292629640e58cc6522976a6bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1ab8a2_4cc33b27",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-30T18:26:06Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "d1114991_3acf6a67",
+      "range": {
+        "startLine": 123,
+        "startChar": 42,
+        "endLine": 123,
+        "endChar": 43
+      },
+      "revId": "5624f3d3a57822292629640e58cc6522976a6bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
