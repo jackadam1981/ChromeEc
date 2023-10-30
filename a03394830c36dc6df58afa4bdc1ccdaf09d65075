@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b8f32f_8c3bd4a0",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-30T23:39:09Z",
+      "side": 1,
+      "message": "Can this be abstracted?  As is, the test has to know all the details on how the driver is implemented.  This also can mean any change to the driver may also need to modify the test\n\nAn abstraction could provide functions like:\n  Connect DP\n  Connect USB2\n  Connect USB3_2\n  Toggle HPD\n  \nThe emulator should set the appropriate bits in the status register for the action requested by the test and automatically trigger the interrupt.\n\nIdeally we can use the same test with multiple alternate mode drivers.\n\nThe alternate mode emulator can define a common backend API that could work  with any alternate mode driver/emulator.\n\nhttps://docs.zephyrproject.org/latest/hardware/emulator/index.html#creating-a-device-driver-emulator\n\nIf we don\u0027t anticipate other alternate mode drivers, then defining a backend API could be overkill.",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 67
+      },
+      "revId": "a03394830c36dc6df58afa4bdc1ccdaf09d65075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c4c997_ac8683c5",
+        "filename": "zephyr/emul/include/emul_intel_pd_controller.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-30T23:39:09Z",
+      "side": 1,
+      "message": "This API seems unnecessary.  Your test always calls set status followed by trigger IRQ.  You can have the emulator set the IRQ automatically.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "a03394830c36dc6df58afa4bdc1ccdaf09d65075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
