@@ -16,6 +16,24 @@
       "message": "Should this apply only to C2D2 + CCD combo?",
       "revId": "b1d1f1cd19e8b2bb43aba13fa4574317df2d240f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef72358_877f2307",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-10-30T19:48:09Z",
+      "side": 1,
+      "message": "I think it applies to all c2d2 setups. If they\u0027re flashing the EC, gsc has to be open to control write protect and assert reset signals.\n\nVadim says he can\u0027t flash his EC, because c2d2 has cold_reset_select set to gsc_reset.",
+      "parentUuid": "76e69674_c2cc3ad6",
+      "revId": "b1d1f1cd19e8b2bb43aba13fa4574317df2d240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
