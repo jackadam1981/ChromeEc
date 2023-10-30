@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6aec8e_839c48c2",
+        "filename": "zephyr/program/intelrvp/src/intelrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-30T18:54:04Z",
+      "side": 1,
+      "message": "Thanks for clarifying.  I didn\u0027t notice the negation of the ifdef on my first pass.\n\nCan you add a comment describing the setting of the SPI output enable here?",
+      "parentUuid": "961a50e5_eb1c5ae4",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "6865752448e9b349f64f65fb91e4b56e1366a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75d6c741_59bab9ca",
