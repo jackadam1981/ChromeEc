@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8befb4_5837beb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-30T18:43:22Z",
+      "side": 1,
+      "message": "Can you update TEST\u003d to show this successfully wins its race against EC SW sync?\n\nIdeally would test with b/268250002#comment20 DUT model and affected FW version.",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddcd795_e116ebb1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-30T18:43:22Z",
+      "side": 1,
+      "message": "Think it\u0027s worth making the sleep duration configurable too?\n\n(Feel free to say \"no\" :-)",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
