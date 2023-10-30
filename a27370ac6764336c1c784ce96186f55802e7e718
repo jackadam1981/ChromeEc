@@ -55,6 +55,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d13b660_ba38ace4",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-30T19:51:58Z",
+      "side": 1,
+      "message": "Set `ec_uart_regexp` first because it could have something leftover from a previous `ec_uart_cmd`.\n\nIf you want no regexp output matching set `ec_uart_regexp:None` .\n\nIf you *do* want regexp output matching, then also set `ec_uart_timeout`, because it too could have a potentially undesirable value leftover from a previous `ec_uart_cmd`.\n\n(We should really make a first class control for `apshutdown` for this use case - but no need to block this CL on that.)",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ddcd795_e116ebb1",
         "filename": "util/flash_ec",
         "patchSetId": 2
