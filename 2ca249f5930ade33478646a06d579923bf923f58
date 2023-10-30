@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "39224096_08ad95f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-30T20:35:07Z",
+      "side": 1,
+      "message": "True, this is less critical than ti50 code, since it will not be released on consumer devices.  Worst case, it can cause our tests to fail, if HyperDebug crashes or otherwise misbehaves.  (And tests of the OpenTitan consortium, which also uses HyperDebug, though I am not sure they use GPIO monitoring, yet.)\n\nReview as deep as you want to spend time on.  This is pretty hairy self-modifying code, and there is probably a bunch of things that were obvious to me when writing, that does not make sense to you.  Let me know, then I can add more comments to the code in those places, to help future maintainers understand the code a little easier.",
+      "parentUuid": "a27c3d92_d14a9f32",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "2ca249f5930ade33478646a06d579923bf923f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5ad9dfad_518f60e8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
