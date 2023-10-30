@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b64acfd0_24e8db77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-30T18:44:49Z",
+      "side": 1,
+      "message": "Gerrit-friendly direct link: https://issuetracker.google.com/268250002#comment20\n\n[ Gerrit didn\u0027t linkify the #comment20 part above ]",
+      "parentUuid": "ad8befb4_5837beb7",
+      "revId": "a27370ac6764336c1c784ce96186f55802e7e718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ddcd795_e116ebb1",
         "filename": "util/flash_ec",
         "patchSetId": 2
