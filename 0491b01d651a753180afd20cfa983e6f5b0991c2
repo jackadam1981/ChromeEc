@@ -22,6 +22,30 @@
       },
       "revId": "0491b01d651a753180afd20cfa983e6f5b0991c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56b9f8d_30f995b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-31T16:20:33Z",
+      "side": 1,
+      "message": "If you compare patchset 1 and patchset 4 (the newest) of `clock-stm32l5.c`, then you will see exactly the changes I made after copying.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4990075/1..4\n\nThat would be the same you would see if I split out the copying to a separate CL.  My thought was that by uploading patchset 1 as just plain copy, I could achieve the same as splitting into two CLs.\n\nIf you insist, I will split the CL, please let me know.",
+      "parentUuid": "9b28304a_5f959f09",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "0491b01d651a753180afd20cfa983e6f5b0991c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
