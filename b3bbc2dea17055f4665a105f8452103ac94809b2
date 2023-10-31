@@ -1,0 +1,406 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229ec3eb_8d201b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at the ubuf part of the uapi yet.",
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc3211a_363cd004",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Does userspace care about the id? It looks like this should be an ida (see include/linux/idr.h) and possibly be an internal detail and not exposed to the UAPI?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 71
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40c4f6b_fdd2e012",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "This is usually called `time_left`",
+      "range": {
+        "startLine": 147,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 14
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8992f4ed_1153aeb5",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Isn\u0027t `max_msgs_per_xfer` a u16 already?",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7136bb52_821adba0",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "This is not kernel style. Don\u0027t cast to void. The return value should be handled. Also, why is it a try?",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 7
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75d5491_99ce470a",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "This should be some static inline function like `to_i2cp_controller()` so that we can have one line\n\n```\nstruct i2cp_controller *i2cp \u003d to_i2cp_controller(adap);\n```",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 64
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9d0ea5_2637b2ad",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "The word `this` isn\u0027t used for kernel variables very often. Probably because it aliases with C++? Either way, this is usually named something like `i2cp_dev`.",
+      "range": {
+        "startLine": 264,
+        "startChar": 21,
+        "endLine": 264,
+        "endChar": 32
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13113ed1_2616079f",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "The IDA code is made for this.",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 2
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30953f8f_e9c7f4ae",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "How big is too big? Seems like we shouldn\u0027t let userspace name these at all.",
+      "range": {
+        "startLine": 396,
+        "startChar": 7,
+        "endLine": 396,
+        "endChar": 10
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13333527_b18b891b",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Is the mutex mostly protecting `pdata-\u003estate`?",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 22
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c8e382_54acd1a1",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Add a newline after the local variable block please.",
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b3d5f8_0f4e5e95",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Move this variable declaration up to the top of the function. Might as well make it an int too?",
+      "range": {
+        "startLine": 653,
+        "startChar": 6,
+        "endLine": 653,
+        "endChar": 11
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daeb7a0c_ebd37acd",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "This is neat. What\u0027s happening here?",
+      "range": {
+        "startLine": 667,
+        "startChar": 24,
+        "endLine": 667,
+        "endChar": 60
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6012cb_4562d987",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Is this only used for debug? If so I\u0027d simply remove it or move to debugfs.",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 25
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e3bd85_2ff5a4d8",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "These attributes must be documented in Documentation/ABI/",
+      "range": {
+        "startLine": 827,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 25
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae578e06_fedc4d8a",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "This can be \n\n```\nclass_destroy(i2cp_class);\ni2cp_class \u003d NULL;\n```\n\nbut also I don\u0027t really know if we even care that i2cp_class is dangling. The module is being unloaded at this time so the pointer will stop existing soon.",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 22
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943a0729_f2f8dfc8",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "This can just be \"i2c-psuedo\", no format specifier needed.",
+      "range": {
+        "startLine": 873,
+        "startChar": 42,
+        "endLine": 873,
+        "endChar": 46
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4669aa0_d08a3591",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-10-31T22:22:16Z",
+      "side": 1,
+      "message": "Remove fullstop please.",
+      "range": {
+        "startLine": 904,
+        "startChar": 68,
+        "endLine": 904,
+        "endChar": 69
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
