@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7f28ac_f09c02f7",
+        "filename": "extra/i2c_pseudo/i2c-pseudo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 0,
+      "message": "You should split this into deleting the old one and adding the new one in separate CLs. CQ-Depend if you want (which is also good at signaling someone to skip the segment during a bisect). If it\u0027s split it keeps the review a little cleaner.",
+      "revId": "05ecccaa81b7f7508f3a770da5035daa3c0dfb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

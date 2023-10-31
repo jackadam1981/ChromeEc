@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c2c7fe_938490cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "Maybe you should practice in here on making a bigger commit message for the kernel proper ;). After removing the \"TEST\u003d\"(which upstream will not care about) there\u0027s not much left.",
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "46d4bd5c_6f74aef3",
@@ -31,6 +48,236 @@
       "writtenOn": "2023-10-31T00:00:41Z",
       "side": 1,
       "message": "I still have a few TODOs to clean up, however I think this is solidly ready for initial review rounds!\n\nAll documentation in i2c-pseudo.rst and i2c-pseudo.h is up-to-date and I believe reasonably thorough. The new module has been working smoothly for me in all testing so far. Servod in main ToT automatically detects and uses this new i2c-pseudo version when present.\n\nI suggest reviewing the module itself as a clean slate, not a diff from the old version.",
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950c2efd_4806f5ab",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "Maybe rephrase some of this, it reads as if it\u0027s a BTW located somewhere else.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e52dbb_1885ef7d",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "This section is good, has the correct 2 bullet points.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24109cd0_a3eb86c5",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "how easy is this? it\u0027s not like you can ioctl over the network that easy.",
+      "range": {
+        "startLine": 13,
+        "startChar": 58,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5f0a6e_52a32dbf",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "You could be a little more proud of this and not just compare to another driver\u0027s shortcomings (the comparisson can be included, but maybe just as a note at the end of the paragraph).\n\nTry something like \"**Fully** mocking (including its behavior) of a i2c device, useful for testing i2c device drivers.\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 69,
+        "endLine": 16,
+        "endChar": 77
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b47661f_85ab031c",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "What is this timeout in the context of i2c? Is this a new concept to the normal I2C API that your driver also adds?",
+      "range": {
+        "startLine": 35,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 77
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e184a51a_8b134c16",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "I like this section, just what I was looking for!",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9098e540_bf70fc9d",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "I\u0027m not really following, what is this supposed to do?\n\nOr is this kind of like a TEST\u003d line?",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b400226_a3f5c4e9",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be in a loop?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb14349_a3385d1e",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "I see sometimes you have \"i2cp\" and \"i2c_p\" naming convention, are they both refering to the same thing? Why are they different?",
+      "range": {
+        "startLine": 817,
+        "startChar": 25,
+        "endLine": 817,
+        "endChar": 29
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31842c9e_64c3c3eb",
+        "filename": "extra/i2c_pseudo/include/uapi/linux/i2c-pseudo.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T00:26:35Z",
+      "side": 1,
+      "message": "Maybe include a note where this will show up. I have no idea what this means otherwise. Ex: can I include spaces or is it a filesystem path where it would be annoying?",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 68
+      },
       "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
