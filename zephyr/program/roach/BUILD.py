@@ -22,3 +22,4 @@ def register_variant(project_name):
 
 
 register_variant("roach")
+register_variant("kelpie")
