@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb55221_6eecd2b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-10-31T01:52:51Z",
+      "side": 1,
+      "message": "last i checked, we do not allow unaligned accesses on regular\nEC builds. it\u0027s only enabled on FP EC builds.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4599528\n\nthis means using `void *` to defeat packed struct warnings is suspect.",
+      "revId": "926a15d2fec5f07169965d5dda3ba5180b68325f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
