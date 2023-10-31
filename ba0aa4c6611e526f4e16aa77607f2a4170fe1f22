@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c39c80_911c258f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-31T11:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00403eb5_f0e4c45f",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 0
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e913872c_eb892751",
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "After runnign `make buildall`, I got below:\n```\nThe following options are now in Kconfig:\n\nCONFIG_AP_HANG_DETECT\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n```\nSo this file was generated.",
       "parentUuid": "e913872c_eb892751",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 48
+      },
+      "revId": "ba0aa4c6611e526f4e16aa77607f2a4170fe1f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0967f334_07366945",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-10-31T11:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777f6bab_0e7f62de",
       "range": {
         "startLine": 127,
         "startChar": 0,
