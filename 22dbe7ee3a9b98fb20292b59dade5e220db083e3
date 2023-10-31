@@ -490,6 +490,23 @@
       },
       "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d7bb52_571e5ead",
+        "filename": "extra/i2c_pseudo/include/uapi/linux/i2c-pseudo.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T15:21:32Z",
+      "side": 1,
+      "message": "@amstan@chromium.org @swboyd@chromium.org Let me know what you think of the shared `data_buf` concept.\n\nNot having `data_buf` would of course simplify this API struct, as well as the kernel side implementation of I2CP_IOCTL_XFER_REQ.  However then userspace would have to preallocate fixed-sized buffers for each i2c_msg, so less efficient use of memory.  It might also be clunkier for userspace, since then i2c_msg.len would be used as both input (size of available buffer) and output (actual size used), thus needing to be filled in again for each I2CP_IOCTL_XFER_REQ call.",
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
