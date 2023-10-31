@@ -283,6 +283,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4937dd8c_8d5ed362",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T21:03:46Z",
+      "side": 1,
+      "message": "ACK.\nIt\u0027s probably ok to assume the knowlege.\n\nLet\u0027s put it this way, one of your target audience for these userspace controller drivers should be people that were ready to make a kernel controller driver (including the prereq knowledge) but changed their mind in the last second to put it in userspace.",
+      "parentUuid": "658e1dce_8cef53fa",
+      "range": {
+        "startLine": 35,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 77
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e184a51a_8b134c16",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
@@ -353,6 +377,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "425c6000_adab9cc4",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T21:03:46Z",
+      "side": 1,
+      "message": "Still not sure I follow. Is that `i2ctransfer` command what i\u0027m supposed to execute on the new i2cdev for this userspace controller to recieve what it\u0027s looking (lines 110-113) for?\n\nMaybe add some debug prints or something, then it\u0027s kind of self documenting.\n\"Recieved READ request for device %d, bytes %d %d %d\"\n\"Sending back 0xde ad be ef\"",
+      "parentUuid": "badbaa54_aee91bb4",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b400226_a3f5c4e9",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
@@ -388,6 +436,30 @@
       "side": 1,
       "message": "Probably yes if this was a real pseudo controller doing something useful.  The point of this code is just to illustrate the basic ioctl usage though, I\u0027m not sure how a loop would help with that.",
       "parentUuid": "3b400226_a3f5c4e9",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872ee9e9_7988de12",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-10-31T21:03:46Z",
+      "side": 1,
+      "message": "Well, this is a controller that takes in multiple transfers, it\u0027s not like other controllers self destruct after processing 2 requests, they usually process stuff in a loop.",
+      "parentUuid": "51aa3973_0194ff72",
       "range": {
         "startLine": 151,
         "startChar": 3,
