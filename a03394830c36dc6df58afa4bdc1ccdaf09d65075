@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6e798c_87d937da",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-31T00:48:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "99b8f32f_8c3bd4a0",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 67
+      },
+      "revId": "a03394830c36dc6df58afa4bdc1ccdaf09d65075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84c4c997_ac8683c5",
