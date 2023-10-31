@@ -61,13 +61,6 @@ enum fuel_gauge_flags {
 };
 
 struct fuel_gauge_info {
-#if defined(__x86_64__) && !defined(TEST_BUILD)
-	/* These shouldn't be used on the (__x86_64__) host. */
-	uint32_t reserved[2];
-#else
-	char *manuf_name;
-	char *device_name;
-#endif
 	uint32_t flags;
 	uint32_t board_flags;
 	struct ship_mode_info ship_mode;
@@ -80,7 +73,13 @@ struct board_batt_params {
 	struct battery_info batt_info;
 } __packed __aligned(4);
 
-struct batt_conf_header {
+struct batt_conf_embed {
+	char *manuf_name;
+	char *device_name;
+	struct board_batt_params config;
+};
+
+struct batt_conf_export {
 	/* Version of struct batt_conf_header and its internals. */
 	uint8_t struct_version;
 	uint8_t reserved[3];
@@ -90,7 +89,7 @@ struct batt_conf_header {
 } __packed __aligned(4);
 
 /* Forward declare board specific data used by common code */
-extern const struct board_batt_params board_battery_info[];
+extern const struct batt_conf_embed board_battery_info[];
 extern const enum battery_type DEFAULT_BATTERY_TYPE;
 
 #ifdef CONFIG_BATTERY_TYPE_NO_AUTO_DETECT
