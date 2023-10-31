@@ -833,8 +833,8 @@ static void charge_manager_refresh(void)
 		override_port = OVERRIDE_OFF;
 
 	if (new_supplier == CHARGE_SUPPLIER_NONE) {
-#ifdef CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT
-		new_charge_current = CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT;
+#ifdef CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT
+		new_charge_current = CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT;
 #else
 		new_charge_current = 0;
 #endif
