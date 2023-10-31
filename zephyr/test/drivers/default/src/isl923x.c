@@ -686,9 +686,9 @@ ZTEST(isl923x, test_init_late_jump)
 		      isl923x_drv.get_input_current_limit(CHARGER_NUM,
 							  &input_current),
 		      "Could not read input current limit.");
-	zassert_equal(CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT, input_current,
+	zassert_equal(CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT, input_current,
 		      "Input current (%d) not at (%d)", input_current,
-		      CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT);
+		      CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT);
 }
 
 ZTEST(isl923x, test_isl923x_is_acok)
