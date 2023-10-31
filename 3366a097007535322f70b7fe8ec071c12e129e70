@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2686b78_326ef1a2",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-31T03:59:42Z",
+      "side": 1,
+      "message": "I will let Jason to follow up this change.",
+      "parentUuid": "960954b0_820f1483",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45d7864b_14dcc4fc",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-27T19:48:41Z",
       "side": 1,
       "message": "What will this be set to for motionsesense components?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 41
+      },
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d94a8e9_45874c7e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-31T03:59:42Z",
+      "side": 1,
+      "message": "The sensor will pass None. The below `usbc` JSON member will be omitted if the port is None. I will defer the change when we add the sensor support.",
+      "parentUuid": "45d7864b_14dcc4fc",
       "range": {
         "startLine": 118,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f515c12_08b454b4",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-31T03:59:42Z",
+      "side": 1,
+      "message": "`hasattr` works on any object and it checks if the given object has a given property. `in` only works on iterators, like list, dict.\n\nDouble checked that I actually don\u0027t need this check because the `devicetree.edtlib.Node` object must have the `parent` property. But the `parent` may be None if it is the root node so I need to check the None case before accessing `node.parent.name`.",
+      "parentUuid": "6b27d46c_f671fa4e",
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6355d27_afb2b16e",
@@ -94,6 +160,30 @@
       "writtenOn": "2023-10-27T19:48:41Z",
       "side": 1,
       "message": "Just FYI: this property is deprecated.  b:280430216 is the effort to migrate to the \"is-alt\" property.\n\nThe mapping of the usbc port number to alternate TCPC/PPCs is done in board specific C code and isn\u0027t captured in the devicetree.  I\u0027m not sure if the usbc port number is critical to the consumers of the manifest.",
+      "range": {
+        "startLine": 265,
+        "startChar": 29,
+        "endLine": 265,
+        "endChar": 36
+      },
+      "revId": "3366a097007535322f70b7fe8ec071c12e129e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29d8924_563713f8",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-10-31T03:59:42Z",
+      "side": 1,
+      "message": "Thanks for the notice. Let\u0027s discuss a solution in the doc.",
+      "parentUuid": "b6355d27_afb2b16e",
       "range": {
         "startLine": 265,
         "startChar": 29,
