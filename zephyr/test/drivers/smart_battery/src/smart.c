@@ -12,12 +12,15 @@
 #include "i2c.h"
 #include "test/drivers/test_state.h"
 
+#include <zephyr/fff.h>
 #include <zephyr/kernel.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/ztest.h>
 
 #define BATTERY_NODE DT_NODELABEL(battery)
+
+FAKE_VALUE_FUNC(int, battery_is_cut_off);
 
 /** Test all simple getters */
 ZTEST_USER(smart_battery, test_battery_getters)
@@ -523,11 +526,6 @@ ZTEST_USER(smart_battery, test_battery_fake_charge)
 		      batt.remaining_capacity);
 }
 
-static void reset_battfake(void *data)
-{
-	shell_execute_cmd(get_ec_shell(), "battfake -1");
-}
-
 /** Test battery fake temperature set and read */
 ZTEST_USER(smart_battery, test_battery_fake_temperature)
 {
@@ -584,6 +582,28 @@ ZTEST_USER(smart_battery, test_battery_fake_temperature)
 	zassert_equal(flags, batt.flags, "0x%x != 0x%x", flags, batt.flags);
 	zassert_equal(bat->temp, batt.temperature, "%d != %d", bat->temp,
 		      batt.temperature);
+}
+
+/* Test that accesses to battery properties are prevented during cutoff. */
+ZTEST_USER(smart_battery, test_battery_access_cutoff)
+{
+	struct batt_params params = {};
+
+	battery_is_cut_off_fake.return_val = 1;
+
+	/*
+	 * Every field is marked as bad; accesses were blocked because
+	 * they might wake the battery up from cutoff.
+	 */
+	battery_get_params(&params);
+	zassert_equal(params.flags, BATT_FLAG_BAD_ANY, "actual flags were %#x",
+		      params.flags);
+}
+
+static void reset_battfake(void *data)
+{
+	RESET_FAKE(battery_is_cut_off);
+	shell_execute_cmd(get_ec_shell(), "battfake -1");
 }
 
 ZTEST_SUITE(smart_battery, drivers_predicate_post_main, NULL, NULL,
