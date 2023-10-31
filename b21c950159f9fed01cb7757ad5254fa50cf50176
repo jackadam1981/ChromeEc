@@ -22,6 +22,30 @@
       },
       "revId": "b21c950159f9fed01cb7757ad5254fa50cf50176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d587ded4_e128d9a8",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-10-31T23:30:53Z",
+      "side": 1,
+      "message": "Done.\n\nI added `usbc_intel_altmode_run_console_cmd`, I sill need to get output to evaluate since I need to parse output in `test_read_console_cmd`.",
+      "parentUuid": "aa5a81e5_9194bff7",
+      "range": {
+        "startLine": 252,
+        "startChar": 43,
+        "endLine": 252,
+        "endChar": 57
+      },
+      "revId": "b21c950159f9fed01cb7757ad5254fa50cf50176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
