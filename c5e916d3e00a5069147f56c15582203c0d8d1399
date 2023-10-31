@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5761512e_388f39b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-31T16:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61df6e0a_c2e37c68",
+      "range": {
+        "startLine": 19,
+        "startChar": 58,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "c5e916d3e00a5069147f56c15582203c0d8d1399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ab3d7629_85868e16",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "writtenOn": "2023-10-31T14:04:19Z",
       "side": 1,
       "message": "should this move up too? (or why not). While here, could you add a comment?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 49
+      },
+      "revId": "c5e916d3e00a5069147f56c15582203c0d8d1399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8db151_6cf2bd1d",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-10-31T16:01:04Z",
+      "side": 1,
+      "message": "Looking at this line, I do not recall why I would want to pull eight pins PE[15:8] high after (or before) the ordinary GPIO setup based on `gpio.inc`.  Most of these pins are declared as \"alternate\" for QSPI, a few are `GPIO_INPUT`, and a single is `GPIO_OUT_HIGH` in `gpio.inc`, so I do not think that this writing to BSRR will have any lasting effect.  Also, it is clearly wrong to use the operator `|\u003d` on a write-only register.  I think this line could be a leftover from early debugging.\n\nSince I cannot document its purpose, I am going to remove it.  If we notice any problems during testing, then hopefully we will have a better idea how to describe the purpose of this line.",
+      "parentUuid": "597ace2f_6dc6cdfc",
       "range": {
         "startLine": 188,
         "startChar": 0,
