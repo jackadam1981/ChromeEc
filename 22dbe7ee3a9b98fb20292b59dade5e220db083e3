@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5e3954ae_7d6f64dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "Hah fair enough!  I\u0027m going to ask for review of the initial upstream email / commit before sending it though.  If I start on that before this CL is otherwise ready to merge, I may update the message here, but I\u0027d like to not block merging this on sending upstream (since this CL is replacing something that is also not upstream).\n\nI\u0027ve put in a short description for this CL. I will write a clean slate description for upstream.",
+      "parentUuid": "d6c2c7fe_938490cd",
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "46d4bd5c_6f74aef3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 22
@@ -77,6 +95,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d89bb08d_a582b937",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "I took this phrasing from the i2c-dev documentation:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/Documentation/i2c/dev-interface.rst;drc\u003d9d55e7b0bdf9480a57b4fe87134e749cb18e281a;l\u003d5-7\n\nI agree with you though.  I\u0027ve updated it, let me know if it still reads weird.",
+      "parentUuid": "950c2efd_4806f5ab",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44e52dbb_1885ef7d",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
@@ -121,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d61527_8e9fcbc5",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "Heh, well, with the original command stream implementation it was trivial. :-)  That simplicity of transporting, saving, and replaying is lost with the move to ioctl().\n\nThat said it\u0027s certainly still possible.  Userspace can serialize and deserialize the ioctls into a message stream.  I\u0027ve been wanting to provide a standalone program for that, reusing the original command stream format.  It could also serve as a canonical example pseudo controller implementation.\n\nIn addition to trivially sending over the network or any kind of pipe, a streaming format like the original UAPI also allows for really simple I2C device driver regression tests when precise timing isn\u0027t a concern.  Simply replay a saved file of transactions and consider any deviation a failure.",
+      "parentUuid": "24109cd0_a3eb86c5",
+      "range": {
+        "startLine": 13,
+        "startChar": 58,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f5f0a6e_52a32dbf",
@@ -144,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8498f4_0040bc9a",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f5f0a6e_52a32dbf",
+      "range": {
+        "startLine": 16,
+        "startChar": 69,
+        "endLine": 16,
+        "endChar": 77
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b47661f_85ab031c",
@@ -157,6 +247,30 @@
       "writtenOn": "2023-10-31T00:26:35Z",
       "side": 1,
       "message": "What is this timeout in the context of i2c? Is this a new concept to the normal I2C API that your driver also adds?",
+      "range": {
+        "startLine": 35,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 77
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658e1dce_8cef53fa",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "It\u0027s an existing thing, I2C adapters are expected to have a timeout and not wait forever for a response.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/include/linux/i2c.h;drc\u003d5eb1e6e459cfa025f79c43014f66ff62a55542f1;l\u003d730\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/i2c/i2c-core-base.c;drc\u003d564d73c4d9201526bd976b9379d2aaf1a7133e84;l\u003d1499-1501\n\ni2c-pseudo respects the timeout, and also lets userspace configure it (via `timeout_ms` field of `struct i2cp_ioctl_start_arg`).  I think most pseudo controllers will or should set a custom timeout, curated for the expected latency of whatever they\u0027re doing.\n\nThink this should be explained here in the doc?  Or okay to assume this knowledge?",
+      "parentUuid": "9b47661f_85ab031c",
       "range": {
         "startLine": 35,
         "startChar": 62,
@@ -213,6 +327,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "badbaa54_aee91bb4",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "This shows the I2C transfer request the code block is expecting to receive.",
+      "parentUuid": "9098e540_bf70fc9d",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b400226_a3f5c4e9",
@@ -226,6 +364,30 @@
       "writtenOn": "2023-10-31T00:26:35Z",
       "side": 1,
       "message": "Shouldn\u0027t this be in a loop?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51aa3973_0194ff72",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "Probably yes if this was a real pseudo controller doing something useful.  The point of this code is just to illustrate the basic ioctl usage though, I\u0027m not sure how a loop would help with that.",
+      "parentUuid": "3b400226_a3f5c4e9",
       "range": {
         "startLine": 151,
         "startChar": 3,
@@ -259,6 +421,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4c7c25_05045578",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "Hrmm...that naming inconsistency is carryover from the original implementation.  I don\u0027t remember exactly why I named them inconsistently like that, so I\u0027ve changed the few `i2c_p_` prefixed names to `i2cp_` prefix.",
+      "parentUuid": "9fb14349_a3385d1e",
+      "range": {
+        "startLine": 817,
+        "startChar": 25,
+        "endLine": 817,
+        "endChar": 29
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31842c9e_64c3c3eb",
@@ -272,6 +458,30 @@
       "writtenOn": "2023-10-31T00:26:35Z",
       "side": 1,
       "message": "Maybe include a note where this will show up. I have no idea what this means otherwise. Ex: can I include spaces or is it a filesystem path where it would be annoying?",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 68
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad7d774_01cca757",
+        "filename": "extra/i2c_pseudo/include/uapi/linux/i2c-pseudo.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T06:40:57Z",
+      "side": 1,
+      "message": "It gets put into the adapter name, see `i2cp_set_suffix()` function.  Adapter name is an existing feature of the subsystem:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/include/linux/i2c.h;drc\u003d5eb1e6e459cfa025f79c43014f66ff62a55542f1;l\u003d738\n\nThere\u0027s no character restrictions that I\u0027m aware of besides being null-terminated (as already documented).\n\nHow might you describe this?  Also, what do you think of the whole suffix thing in general, vs, say, letting the userspace controller set the entire name as it chooses?",
+      "parentUuid": "31842c9e_64c3c3eb",
       "range": {
         "startLine": 168,
         "startChar": 1,
