@@ -212,8 +212,15 @@ def insert_i2c_component(ctype, node, usbc_port, i2c_portmap, manifest):
         )
         return
 
-    # TODO(b/308028808): Check if the name needs to be modified. The compatible
-    # may not be the same as the component name.
+    compatible_tmp = node.props["compatible"].val[0].split("-", 1)
+    if len(compatible_tmp) > 1:
+        if compatible_tmp[1] != ctype:
+            logging.error(
+                "Devicetree compatible error: expected %s, but got %s",
+                ctype,
+                compatible_tmp[1],
+            )
+            compatible_tmp[0] = node.props["compatible"].val[0]
 
     # TODO(b/308031064): Add the probe methods if multiple components share the
     # same compatible. These components need to be identified.
@@ -222,7 +229,7 @@ def insert_i2c_component(ctype, node, usbc_port, i2c_portmap, manifest):
 
     manifest.insert_component(
         ctype,
-        node.props["compatible"].val[0],
+        compatible_tmp[0],
         i2c_portmap[node.parent.name],
         node.props["reg"].val[0],
         usbc_port,
