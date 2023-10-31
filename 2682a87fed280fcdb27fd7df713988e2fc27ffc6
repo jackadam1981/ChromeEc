@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3754609b_694a4f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Review comments updated.",
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89ea04e6_d1f3f44a",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Nit - these are bitmasks.  So define them that way.  I also recommend using the naming from the Crisis Mode document.\n```\n#define CRC_FAILURE (1 \u003c\u003c 0)\n#define ILLEGAL_PAYLOAD_LENGTH (1 \u003c\u003c 1)\n```\n\nAlso the errors at bits 3 and 4 are not documented in the crisis mode document and these errors are not handled by the crisis recovery script.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "903a931c_e2463f29",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "1) Updated as suggested.\n2) Yes those 3 and 4 are not documented. Updated and uploaded in below path.\n   https://partnerissuetracker.corp.google.com/issues/272305778\n3) Agreed, need to introduce logic to handle those errors in crisis recovery script. I will create one CL.",
+      "parentUuid": "89ea04e6_d1f3f44a",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc89483_d61ab55c",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Updated the offset macro and brought 256K buffer declaration into global scope.",
+      "parentUuid": "31c22ea0_dc2504d2",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56a8ecb_f1bc3c61",
@@ -77,6 +142,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Even though this is only used in this file, logically it\u0027s used along with NO_ERROR, so it makes more sense in common.h",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c72a56a_22e2c9ef",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Moved the macro in common.h",
+      "parentUuid": "e56a8ecb_f1bc3c61",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -110,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dde42f2_28c23fbe",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok, changed to hexadecimal representation.",
+      "parentUuid": "c5aac50a_0a8aef75",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0403f6eb_4ed9b2ab",
@@ -123,6 +236,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "You\u0027re padding out the max size by 10 bytes. Instead you should validate that you\u0027re not going to overflow the buffer allocated on the stack.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe08731_742112ce",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "As suggested introduce the logic to see the buffer overflow.",
+      "parentUuid": "0403f6eb_4ed9b2ab",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -156,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "517069bd_d8f61b38",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Agreed. \"NO_FAILURE\" enum has been move to the top of the list.",
+      "parentUuid": "5906e614_30079b2c",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57aeba46_bff8ae68",
@@ -169,6 +330,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Nit - create a local variable to set the status byte, and then write into the transmit buffer once.\n```\nswitch() {\ncase HEADER_PACKET_CRC_FAILURE:\n    status \u003d CRC_MISMATCH;\n    break;\n...\n}\ntx_buff[RESP_FAILURE_STATUS_POS] \u003d status;\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcfdd912_f0d122cd",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "57aeba46_bff8ae68",
       "range": {
         "startLine": 131,
         "startChar": 2,
@@ -202,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa358925_ca8e2af1",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Revisited the switch case.",
+      "parentUuid": "5e8a8563_318b738a",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84718db5_61ae816e",
@@ -215,6 +424,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Because this is under the Zephyr area, please always use braces on all conditionals.\nhttps://docs.zephyrproject.org/latest/contribute/guidelines.html#coding-style",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 36
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0459d20_0aebb631",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok, updated across all files.",
+      "parentUuid": "84718db5_61ae816e",
       "range": {
         "startLine": 193,
         "startChar": 0,
@@ -248,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b76751c_6215e10c",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Moved \"data_buffer[PKT_CMD_IDX] \u003d command;\" in process_rxd_data() method.",
+      "parentUuid": "fc72a944_f6777d15",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 36
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eecf290_6135d1b8",
@@ -265,6 +522,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "972795e3_4d8478ca",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Updated the logic to see the buffer overflow.",
+      "parentUuid": "4eecf290_6135d1b8",
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7f7858e_9dbddc3d",
@@ -278,6 +553,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Nit - `return NO_ERROR;`.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 12
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fdb3e1f_46829311",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok, updated.",
+      "parentUuid": "a7f7858e_9dbddc3d",
       "range": {
         "startLine": 233,
         "startChar": 0,
@@ -311,6 +610,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e0b21bb_f97191d0",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok, updated the logic.",
+      "parentUuid": "a094d16a_b5a67b2a",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bceae2e9_fb297909",
@@ -324,6 +647,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Same comment as verify_pkt_integrity(). The for loop is hard to read.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abeee748_974ed990",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "bceae2e9_fb297909",
       "range": {
         "startLine": 273,
         "startChar": 0,
@@ -357,6 +704,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97aabb87_545fbce6",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok. Brought to global scope.",
+      "parentUuid": "c121f2da_6e46673b",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 393,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e1e2421_42e1a207",
@@ -370,6 +741,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "After checking the CRC, you should validate that the payload length is exactly 236 bytes because the extract_header_info() has hard-coded offsets.",
+      "range": {
+        "startLine": 434,
+        "startChar": 2,
+        "endLine": 434,
+        "endChar": 47
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75015e14_9b11d0c2",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Introduced the logic to check packet payload length.",
+      "parentUuid": "7e1e2421_42e1a207",
       "range": {
         "startLine": 434,
         "startChar": 2,
@@ -403,6 +798,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d73a233_24a8c5fd",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Updated the logic.",
+      "parentUuid": "687284af_154613d4",
+      "range": {
+        "startLine": 493,
+        "startChar": 2,
+        "endLine": 493,
+        "endChar": 48
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6413c959_c912abd9",
@@ -416,6 +835,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Why is there a gap between the code sram and this buffer?",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af26c5fc_9b204808",
+        "filename": "zephyr/shim/chip/mchp/second_loader/second_loader.ld",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Not intentionally. Ok i update it with 0x000CA000.",
+      "parentUuid": "6413c959_c912abd9",
       "range": {
         "startLine": 12,
         "startChar": 30,
@@ -449,6 +892,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf4625d_e76b148c",
+        "filename": "zephyr/shim/chip/mchp/second_loader/serial.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok, moved to common.h",
+      "parentUuid": "01d29642_1bd82e77",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb49b051_55bdcadb",
@@ -462,6 +929,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "Let the caller manage the offset.\n```\nuint32_t spi_flash_program_sector(uint32_t sector_address,\n\t\t\t\t  uint8_t *input_data_ptr)\n```",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71ff3ea_a74b3392",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Agreed. Updated the code accordingly.",
+      "parentUuid": "eb49b051_55bdcadb",
       "range": {
         "startLine": 368,
         "startChar": 0,
@@ -495,6 +986,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67546666_9d97a201",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Updated the logic as suggested.",
+      "parentUuid": "795bd429_793fb8c9",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 0
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a15180b0_866ab806",
@@ -508,6 +1023,30 @@
       "writtenOn": "2023-10-27T17:48:41Z",
       "side": 1,
       "message": "I assume this source is unmodified, correct?\n\nEven if the file is modified, we need to first check this file into platform/ec/third_party to comply with our licensing requirements, and then make changes.\n\nCan you provide me info about the source of this file?  Here is an example file that includes the required details.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/third_party/zephyr/METADATA;l\u003d1\n\nI\u0027ll work with our licensing team to get this file landed.\n\nYou\u0027ll have to modify your CMake to reference the new location once it has landed.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d390ad46_43c88392",
+        "filename": "zephyr/shim/chip/mchp/second_loader/startup_ARMCM4.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "No, i took it from MCHP local repository and modified based on our project.",
+      "parentUuid": "a15180b0_866ab806",
       "range": {
         "startLine": 5,
         "startChar": 0,

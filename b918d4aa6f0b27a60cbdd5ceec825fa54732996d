@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cef124f_1c8c5666",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-10-31T13:27:17Z",
+      "side": 1,
+      "message": "Ok, will perform DT methods in the following up another CL.",
+      "parentUuid": "7dfd33c2_686f30e4",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "b918d4aa6f0b27a60cbdd5ceec825fa54732996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a957b526_f8e94748",
