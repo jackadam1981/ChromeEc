@@ -1,0 +1,27 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Kelpie program common DTS includes */
+
+#include "../adc.dtsi"
+#include "../gpio.dtsi"
+#include "../i2c.dtsi"
+#include "../interrupts.dtsi"
+#include "../keyboard.dtsi"
+#include "../rwsig.dtsi"
+
+/ {
+	named-gpios {
+		/delete-node/ en_kb_bl;
+	};
+
+    unused-pins {
+		compatible = "unused-gpios";
+
+		unused-gpios =
+            <&gpioa 0 GPIO_INPUT_PULL_DOWN>, /* kb_bl_pwm */
+			<&gpioa 1 GPIO_INPUT_PULL_DOWN>; /* en_kb_bl */
+	};
+};
