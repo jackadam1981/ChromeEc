@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c8385a6_25c6fd75",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-10-31T06:28:49Z",
+      "side": 1,
+      "message": "not yet, i have tried this cl before.",
+      "parentUuid": "7133a056_454be382",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 47
+      },
+      "revId": "e5c6f32418e05a950cdafd0e3c74431eb8bf88c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0724c941_cd17c0f9",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
         "patchSetId": 8
