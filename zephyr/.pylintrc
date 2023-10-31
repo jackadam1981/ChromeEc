@@ -1,5 +1,5 @@
 [MASTER]
-init-hook='import sys; sys.path.extend(["zephyr/zmake"])'
+init-hook='import sys; sys.path.extend(["zephyr/zmake", "zephyr/scripts"])'
 
 # cros lint doesn't inherit the pylintrc from the parent dir.
 # These settings are copied from platform/ec/pylintrc
