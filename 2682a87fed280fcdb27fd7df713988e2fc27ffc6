@@ -1055,6 +1055,30 @@
       },
       "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb80ab08_c20e02b2",
+        "filename": "zephyr/shim/chip/mchp/second_loader/startup_ARMCM4.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-10-31T16:47:54Z",
+      "side": 1,
+      "message": "MCHP signed a Contributor License Agreement so that the code MCHP authors and contributes is considered authored by \"ChromiusOS\".\n\nHowever, this file was authored by ARM. The license allows us to use this file in ChromeOS, but we need to put this file in a third_party directory.\n\nThis looks to be originally from CMSIS version 4:\nhttps://github.com/ARM-software/CMSIS_4/blob/master/Device/ARM/ARMCM4/Source/GCC/startup_ARMCM4.S\n\nAnd there is a newer version of the file maintained [here](https://github.com/ARM-software/CMSIS_5/blob/master/Device/ARM/ARMCM4/Source/GCC/startup_ARMCM4.S).\n\nSo I believe the correct course of action is for this file to get added to the platform/ec/third_party directory, unmodified.  And then MCHP can apply there changes on top of the pristine file.\n\nI\u0027ll work with our licensing team to make sure this is the correct course.",
+      "parentUuid": "d390ad46_43c88392",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
