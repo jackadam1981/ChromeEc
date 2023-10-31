@@ -75,7 +75,7 @@ config PLATFORM_EC_TCPC_INTERRUPT
 	  interrupt callbacks from being generated and save space on flash if a
 	  custom driver is used instead.
 
-config PLATFORM_EC_CHARGER_DEFAULT_CURRENT_LIMIT
+config PLATFORM_EC_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT
 	int "Charger input current in mA"
 	depends on PLATFORM_EC_CHARGE_MANAGER
 	default 512
