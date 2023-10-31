@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2861100d_89732752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:27:38Z",
+      "side": 1,
+      "message": "CONFIG_I2C_IT8XXX2_SWAP_CHA_CHC needs to be enabled for swapping.",
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4b86ac_882e4b98",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:27:38Z",
+      "side": 1,
+      "message": "Please add these two properties in this node:\n\tscl-gpios \u003d \u003c\u0026gpiob 3 0\u003e;\n\tsda-gpios \u003d \u003c\u0026gpiob 4 0\u003e;",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 6
+      },
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d043c4_9288267e",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:27:38Z",
+      "side": 1,
+      "message": "Please add these two properties in this node:\n\tscl-gpios \u003d \u003c\u0026gpiof 6 0\u003e;\n\tsda-gpios \u003d \u003c\u0026gpiof 7 0\u003e;",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 6
+      },
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
