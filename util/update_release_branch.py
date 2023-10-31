@@ -2,6 +2,7 @@
 # Copyright 2021 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+
 """Release branch updater tool.
 
 This is a tool to merge from the main branch into a release branch.
@@ -10,6 +11,7 @@ Inspired by the fingerprint release process:
 http://go/cros-fingerprint-firmware-branching-and-signing and now used by other
 boards.
 """
+
 from __future__ import print_function
 
 import argparse
@@ -489,6 +491,15 @@ def main(argv):
             prunelist.append("OWNERS")
         merge_repo(
             os.path.join(opts.srcbase, "src/third_party/zephyr/main"),
+            cros_main,
+            cmd_checkout,
+            strategy,
+            cmd,
+            prunelist,
+            [],
+        )
+        merge_repo(
+            os.path.join(opts.srcbase, "src/third_party/zephyr/picolibc"),
             cros_main,
             cmd_checkout,
             strategy,
