@@ -20,6 +20,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24f021ab_0405a97c",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:49:06Z",
+      "side": 1,
+      "message": "i2c0_clk_gpb3_default",
+      "range": {
+        "startLine": 280,
+        "startChar": 24,
+        "endLine": 280,
+        "endChar": 46
+      },
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9a34f2_b67e31e7",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:49:06Z",
+      "side": 1,
+      "message": "i2c0_clk_gpb3_default",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 22
+      },
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a821fc5_31292c31",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:49:06Z",
+      "side": 1,
+      "message": "i2c0_data_gpb4_default",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 23
+      },
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f76240_7acb19a4",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-10-31T09:49:06Z",
+      "side": 1,
+      "message": "i2c0_data_gpb4_default",
+      "range": {
+        "startLine": 283,
+        "startChar": 25,
+        "endLine": 283,
+        "endChar": 48
+      },
+      "revId": "e89450ba360048bd05cb99a753e6b112601dc900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc4b86ac_882e4b98",
         "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
         "patchSetId": 2
