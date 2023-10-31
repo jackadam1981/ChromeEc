@@ -853,7 +853,7 @@ static void isl923x_init(int chgnum)
 		 * Initialize the input current limit to the board's default.
 		 */
 		if (isl923x_set_input_current_limit(
-			    chgnum, CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT))
+			    chgnum, CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT))
 			goto init_fail;
 	}
 

@@ -173,7 +173,7 @@ static void set_input_limit_on_ac_removal(void)
 		return;
 
 	charger_set_input_current_limit(0,
-					CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT);
+					CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT);
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, set_input_limit_on_ac_removal, HOOK_PRIO_DEFAULT);
 

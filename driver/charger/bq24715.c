@@ -208,7 +208,7 @@ static enum ec_error_list bq24715_post_init(int chgnum)
 		return rv;
 
 	rv = bq24715_set_input_current_limit(
-		chgnum, CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT);
+		chgnum, CONFIG_CHARGER_DEFAULT_INPUT_CURRENT_LIMIT);
 	return rv;
 }
 
