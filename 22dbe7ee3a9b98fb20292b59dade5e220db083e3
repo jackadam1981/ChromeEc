@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d4bd5c_6f74aef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-31T00:00:15Z",
+      "side": 1,
+      "message": "I still have a few TODOs to clean up, however I think this is solidly ready for initial review rounds!\n\nAll documentation in i2c-pseudo.rst and i2c-pseudo.h is up-to-date and I believe reasonably thorough.  The new module has been working smoothly for me in all testing so far.  Servod in `main` ToT automatically detects and uses this new i2c-pseudo version when present.\n\nI suggest reviewing the module itself as a clean slate, not a diff from the old version.",
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
