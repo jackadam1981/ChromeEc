@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61df6e0a_c2e37c68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-31T14:04:19Z",
+      "side": 1,
+      "message": "\u003e \"exising\" is a possible misspelling of \"existing\".\n\nPlease fix.",
+      "parentUuid": "9201e3c8_c7cbfc40",
+      "range": {
+        "startLine": 19,
+        "startChar": 58,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "c5e916d3e00a5069147f56c15582203c0d8d1399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3d7629_85868e16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-31T14:04:19Z",
+      "side": 1,
+      "message": "Good find!",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 69
+      },
+      "revId": "c5e916d3e00a5069147f56c15582203c0d8d1399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597ace2f_6dc6cdfc",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-10-31T14:04:19Z",
+      "side": 1,
+      "message": "should this move up too? (or why not). While here, could you add a comment?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 49
+      },
+      "revId": "c5e916d3e00a5069147f56c15582203c0d8d1399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
