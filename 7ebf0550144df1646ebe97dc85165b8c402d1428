@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ba4ae4a8_366c9fd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "enum_as can be pulled in, it has been copied as is, no changes. I am planning to move ti50 to use it after this patch is merged.\n\nThe ap_erros crate is a combination of a few inputs from ti50 tree, it would need more effort to properly integrate.",
+      "parentUuid": "78d4b15d_a064f0de",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d6773181_6d14e901",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9e6bc7_77b13b43",
+        "filename": "rust/ap_ro_errs/Cargo.lock",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "197432e9_0931ab14",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 2,
+        "endChar": 40
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aef1869c_9c770844",
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84b26fe_49e72e03",
+        "filename": "rust/ap_ro_errs/Cargo.toml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef1869c_9c770844",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 96
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe9782c3_54e2ac55",
@@ -117,6 +189,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "nit: combine the two derive lines",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257199cc_7aedb536",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe9782c3_54e2ac55",
       "range": {
         "startLine": 69,
         "startChar": 9,
@@ -152,6 +248,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c07c85b_02d68da7",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "it is used in unittests",
+      "parentUuid": "5c589c6c_b1a78e6e",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 5
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec9ffccd_ae10490c",
         "filename": "rust/ap_ro_errs/src/lib.rs",
         "patchSetId": 3
@@ -163,6 +283,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "Why do we need the `WriteProtectDescriptor` and the reset of these struct (expect for `ApRoVerificationTpmvStatus` which we do need)?",
+      "range": {
+        "startLine": 427,
+        "startChar": 11,
+        "endLine": 427,
+        "endChar": 33
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d260ae_8a09a315",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "`WriteProtectDescriptor` is one of the paramters of `VerifyEror::FailedStatusRegister()`",
+      "parentUuid": "ec9ffccd_ae10490c",
       "range": {
         "startLine": 427,
         "startChar": 11,
@@ -198,6 +342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "775cdfc8_bd97f3ac",
+        "filename": "rust/enum_as/BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "should we keep it for the case when `enum_as` is shared?",
+      "parentUuid": "9f77b6cb_fc76ae21",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71025c90_e77ebe39",
         "filename": "rust/enum_as/src/lib.rs",
         "patchSetId": 3
@@ -209,6 +377,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380090c8_fd990cb6",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "here and in other enum_as comments: I think we should keep it unchanged so that it can be used in ti50, no?",
+      "parentUuid": "71025c90_e77ebe39",
       "range": {
         "startLine": 34,
         "startChar": 3,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d28deba_13d85582",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ec148d3e_5db9717b",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2150dec9_8ba320b9",
@@ -255,6 +471,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed534d8f_51229140",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2150dec9_8ba320b9",
       "range": {
         "startLine": 123,
         "startChar": 7,
@@ -288,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa2f624_2bc30b65",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0ccb8fc3_6933bcbd",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8b33035_13a1c288",
@@ -301,6 +565,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 335,
+        "startChar": 3,
+        "endLine": 335,
+        "endChar": 30
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2a7798_0d3f6754",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e8b33035_13a1c288",
       "range": {
         "startLine": 335,
         "startChar": 3,
@@ -334,6 +622,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be915f8_f72e3642",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1680f1bf_2bf7bded",
+      "range": {
+        "startLine": 393,
+        "startChar": 7,
+        "endLine": 393,
+        "endChar": 18
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9edd2529_11b3002a",
@@ -347,6 +659,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "remove file?",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1e8740_44601622",
+        "filename": "rust/explain_ap_ro_verification_status/BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9edd2529_11b3002a",
       "range": {
         "startLine": 1,
         "startChar": 2,
@@ -380,6 +716,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02bb22f_95f06ee2",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "does not seem to be needed.",
+      "parentUuid": "1e978eb4_9bfb7b86",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff1c9b8_6f76acb2",
@@ -393,6 +753,30 @@
       "writtenOn": "2023-11-01T18:52:08Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3469326_13706d31",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T21:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff1c9b8_6f76acb2",
       "range": {
         "startLine": 24,
         "startChar": 0,
