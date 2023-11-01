@@ -1079,6 +1079,30 @@
       },
       "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf98fa0_856beda1",
+        "filename": "zephyr/shim/chip/mchp/second_loader/startup_ARMCM4.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-11-01T11:57:36Z",
+      "side": 1,
+      "message": "Thanks Keith.\n\nShall i create folder named \"startup-cortexm4-v4\" under \"platform/ec/third_party\"? and place CMSIS version 4 startup file there? (https://github.com/ARM-software/CMSIS_4/blob/master/Device/ARM/ARMCM4/Source/GCC/startup_ARMCM4.S)",
+      "parentUuid": "fb80ab08_c20e02b2",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
