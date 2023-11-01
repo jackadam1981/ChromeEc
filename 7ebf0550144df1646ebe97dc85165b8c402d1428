@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "889b4ac9_94ddfe5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T23:33:20Z",
+      "side": 1,
+      "message": "I think we should use `enum_as` from the common location,  both picking up your recent changes and making `enum_as1 available to the Ti50 build can be done in the next step, so we can leave the `enum_as` crate as is for this patch,\n\nSharing the AP RO and other enums and structures is a much more involved undertaking, this is why I suggest to duplicate them for now to be able to publish the utility quickly, and look into sharing them later to see if it is at all feasible.\n\nWDYT?",
+      "parentUuid": "c7741d4f_0509dfc1",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d6773181_6d14e901",
