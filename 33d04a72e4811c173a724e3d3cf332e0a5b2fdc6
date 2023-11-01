@@ -68,6 +68,24 @@
       "message": "This patch is needed for our P2P development/validation. Please advice.",
       "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88c4eb6_f1c5b53b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-01T11:58:09Z",
+      "side": 1,
+      "message": "What\u0027s board specific about this? It\u0027s really hard to tell from the diff, at least from someone unfamiliar with the functionality",
+      "parentUuid": "2ade550c_0bb97cf7",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
