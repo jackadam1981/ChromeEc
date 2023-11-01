@@ -6,6 +6,7 @@
 /* USART driver for Chrome EC */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "dma.h"
 #include "gpio.h"
@@ -245,8 +246,8 @@ static void uart_freq_change(void)
 	/* UART clocked from HSI 16 */
 	freq = 16000000;
 #else
-	/* UART clocked from the main clock */
-	freq = clock_get_freq();
+	/* UART clocked from the main APB clock (PCLK) */
+	freq = clock_get_apb_freq();
 #endif
 
 #if (UARTN == 9) /* LPUART */
