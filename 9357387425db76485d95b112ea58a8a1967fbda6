@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e8e926_a65d480f",
+        "filename": "zephyr/program/nissa/naktal/overlay.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-01T03:30:02Z",
+      "side": 1,
+      "message": "incorrect irq pin",
+      "revId": "9357387425db76485d95b112ea58a8a1967fbda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e101ddb7_23bb9057",
+        "filename": "zephyr/program/nissa/naktal/src/usbc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-01T03:30:02Z",
+      "side": 1,
+      "message": "Add error message about the failure.",
+      "revId": "9357387425db76485d95b112ea58a8a1967fbda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e7f5bd_32e7411b",
+        "filename": "zephyr/program/nissa/naktal/src/usbc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-01T03:30:02Z",
+      "side": 1,
+      "message": "Add error message about the failure.",
+      "revId": "9357387425db76485d95b112ea58a8a1967fbda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdddb11_5ccbe3bd",
+        "filename": "zephyr/program/nissa/naktal/src/usbc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-01T03:30:02Z",
+      "side": 1,
+      "message": "Is the function still needed ?",
+      "revId": "9357387425db76485d95b112ea58a8a1967fbda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
