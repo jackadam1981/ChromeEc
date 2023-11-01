@@ -4,6 +4,8 @@
  */
 /* HyperDebug SPI logic and console commands */
 
+#include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "dma.h"
@@ -16,10 +18,10 @@
 #include "usb_spi.h"
 #include "util.h"
 
-#define OCTOSPI_CLOCK (CPU_CLOCK)
-#define SPI_CLOCK (CPU_CLOCK)
+#define OCTOSPI_CLOCK (clock_get_ahb_freq())
+#define SPI_CLOCK (clock_get_apb_freq())
 
-/* SPI devices, default to 406 kb/s for all. */
+/* SPI devices, default to lowest speed for all. */
 struct spi_device_t spi_devices[] = {
 	{ .name = "SPI2",
 	  .port = 1,
