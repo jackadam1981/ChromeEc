@@ -9,6 +9,7 @@
 #include "chipset.h"
 #include "clock-l4.h"
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -58,14 +59,56 @@ enum clock_osc {
 static int freq = STM32_MSI_CLOCK;
 static int current_osc;
 
+/*
+ * Get the clock frequency of the EC core.
+ */
 int clock_get_freq(void)
 {
 	return freq;
 }
 
+/*
+ * Get the clock frequency of APB peripherals (assuming that APB1 and APB2
+ * prescalers are set identically.)
+ */
+int clock_get_apb_freq(void)
+{
+	switch (STM32_RCC_CFGR & STM32_RCC_CFGR_PPRE1_MSK) {
+	case STM32_RCC_CFGR_PPRE1_DIV16:
+		return freq / 16;
+	case STM32_RCC_CFGR_PPRE1_DIV8:
+		return freq / 8;
+	case STM32_RCC_CFGR_PPRE1_DIV4:
+		return freq / 4;
+	case STM32_RCC_CFGR_PPRE1_DIV2:
+		return freq / 2;
+	default:
+		return freq;
+	}
+}
+
+/*
+ * Get the clock frequency of timers.
+ */
 int clock_get_timer_freq(void)
 {
-	return clock_get_freq();
+	/*
+	 * Timer clock is identical to other APB peripheral clocks, except when
+	 * APB prescaling is enabled, in which case the timers run at twice the
+	 * clock rate of the other peripherals (closer to the core frequency.)
+	 */
+	switch (STM32_RCC_CFGR & STM32_RCC_CFGR_PPRE1_MSK) {
+	case STM32_RCC_CFGR_PPRE1_DIV16:
+		return freq / 8;
+	case STM32_RCC_CFGR_PPRE1_DIV8:
+		return freq / 4;
+	case STM32_RCC_CFGR_PPRE1_DIV4:
+		return freq / 2;
+	case STM32_RCC_CFGR_PPRE1_DIV2:
+		return freq;
+	default:
+		return freq;
+	}
 }
 
 void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)

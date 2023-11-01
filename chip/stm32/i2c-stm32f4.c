@@ -7,6 +7,7 @@
 #include "builtin/assert.h"
 #include "chipset.h"
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "dma.h"
@@ -290,7 +291,7 @@ static int send_fmpi2c_start(const int port, const uint16_t addr_8bit, int size,
 static void i2c_set_freq_port(const struct i2c_port_t *p)
 {
 	int port = p->port;
-	int freq = clock_get_freq();
+	int freq = clock_get_apb_freq();
 
 	if (p->port == STM32F4_FMPI2C_PORT) {
 		int prescalar;

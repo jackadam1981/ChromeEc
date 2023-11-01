@@ -97,6 +97,11 @@ int clock_get_freq(void)
 	return current_bus_freq;
 }
 
+int clock_get_abp_freq(void)
+{
+	return clock_get_freq();
+}
+
 int clock_get_timer_freq(void)
 {
 	return clock_get_freq();
