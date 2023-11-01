@@ -90,6 +90,8 @@ const char help_str[] =
 	"      Manually force base state to attached, detached or reset.\n"
 	"  battery\n"
 	"      Prints battery info\n"
+	"  batteryconfig\n"
+	"      Set Battery Config\n"
 	"  batterycutoff [at-shutdown]\n"
 	"      Cut off battery output power\n"
 	"  batteryparam\n"
@@ -8411,6 +8413,20 @@ cmd_error:
 	fprintf(stderr, "Bad battery info value. Check protocol version.\n");
 	return -1;
 }
+static void cmd_battery_config_help()
+{
+	fprintf(stderr)
+	// TODO(jimmysun) Add usage ectool batteryconfig set
+}
+
+int cmd_battery_config(int argc, char *argv[])
+{
+	if (argc != 2) {
+		cmd_battery_config_help()
+	}
+	// TODO(jimmysun) call function in libec to read battery config in json,
+	// serialize and set it tocbi.
+}
 
 int cmd_battery_cut_off(int argc, char *argv[])
 {
@@ -11659,6 +11675,7 @@ const struct command commands[] = {
 	{ "backlight", cmd_lcd_backlight },
 	{ "basestate", cmd_basestate },
 	{ "battery", cmd_battery },
+	{ "batteryconfig", cmd_battery_config },
 	{ "batterycutoff", cmd_battery_cut_off },
 	{ "batteryparam", cmd_battery_vendor_param },
 	{ "boardversion", cmd_board_version },
