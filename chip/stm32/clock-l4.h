@@ -91,9 +91,6 @@ void clock_init(void);
 /* Init high speed clock config */
 void config_hispeed_clock(void);
 
-/* Get timer clock frequency (for STM32 only) */
-int clock_get_timer_freq(void);
-
 /*
  * Return 1 if host_wake_time is nonzero and the saved host_wake_time
  * is expired at a given time, ts.

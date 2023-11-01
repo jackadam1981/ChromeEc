@@ -8,6 +8,7 @@
 #include "chipset.h"
 #include "clock-f.h"
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -381,6 +382,11 @@ void __idle(void)
 #endif /* CONFIG_LOW_POWER_IDLE */
 
 int clock_get_freq(void)
+{
+	return CPU_CLOCK;
+}
+
+int clock_get_apb_freq(void)
 {
 	return CPU_CLOCK;
 }

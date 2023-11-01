@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "dma.h"
@@ -178,7 +179,7 @@ static void adc_interval_read(int ain_id, int interval_ms)
 	STM32_TIM_ARR(TIM_ADC) = interval_ms & 0xffff;
 
 	/* Set prescaler to tick per millisecond */
-	STM32_TIM_PSC(TIM_ADC) = (clock_get_freq() / MSEC) - 1;
+	STM32_TIM_PSC(TIM_ADC) = (clock_get_timer_freq() / MSEC) - 1;
 
 	/* Start counting */
 	STM32_TIM_CR1(TIM_ADC) |= 1;
