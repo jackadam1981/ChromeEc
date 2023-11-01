@@ -204,8 +204,6 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 			   chg_chips[chgnum].i2c_addr_flags, offset, value);
 }
 
-#if defined(CONFIG_CHARGE_RAMP_HW) || \
-	defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
 static int bq25710_get_low_power_mode(int chgnum, int *mode)
 {
 	int rv;
@@ -324,7 +322,6 @@ static int bq25710_adc_start(int chgnum, int adc_en_mask)
 
 	return EC_SUCCESS;
 }
-#endif
 
 static int bq257x0_init_charge_option_1(int chgnum)
 {
@@ -749,7 +746,6 @@ static enum ec_error_list bq25710_device_id(int chgnum, int *id)
 	return raw_read16(chgnum, BQ25710_REG_DEVICE_ADDRESS, id);
 }
 
-#ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 
 #if defined(CONFIG_CHARGER_BQ25720)
 
@@ -801,7 +797,6 @@ error:
 		CPRINTF("Could not read VBUS ADC! Error: %d\n", rv);
 	return rv;
 }
-#endif
 
 static enum ec_error_list bq25710_get_option(int chgnum, int *option)
 {

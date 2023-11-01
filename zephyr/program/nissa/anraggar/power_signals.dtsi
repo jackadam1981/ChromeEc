@@ -168,7 +168,7 @@
 	no-auto-init;
 };
 &gpio_en_pp5000_s5 {
-	no-auto-init;
+	// no-auto-init;
 };
 &gpio_imvp91_vrrdy_od {
 	no-auto-init;
