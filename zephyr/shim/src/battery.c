@@ -9,8 +9,6 @@
 
 #define NODE_FUEL_GAUGE(node) \
 	{ \
-	.manuf_name = DT_PROP(node, manuf_name), \
-	.device_name = DT_PROP(node, device_name), \
 	.flags = DT_PROP_OR(node, flags, 0), \
 	.ship_mode = { \
 		.reg_addr = DT_PROP(node, ship_mode_reg_addr), \
@@ -48,12 +46,17 @@
 	},
 
 #define NODE_BATT_PARAMS(node)                            \
-	{ .fuel_gauge = NODE_FUEL_GAUGE(node).batt_info = \
-		  NODE_BATT_INFO(node) },
+	{ \
+	.manuf_name = DT_PROP(node, manuf_name), \
+	.device_name = DT_PROP(node, device_name), \
+	.config = { \
+		.fuel_gauge = NODE_FUEL_GAUGE(node).batt_info = \
+		  NODE_BATT_INFO(node) }, \
+	},
 
 #if DT_HAS_COMPAT_STATUS_OKAY(battery_smart)
 
-const struct board_batt_params board_battery_info[] = { DT_FOREACH_STATUS_OKAY(
+const struct batt_conf_embed board_battery_info[] = { DT_FOREACH_STATUS_OKAY(
 	battery_smart, NODE_BATT_PARAMS) };
 
 #if DT_NODE_EXISTS(DT_NODELABEL(default_battery))
