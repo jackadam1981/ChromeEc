@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb452db_cf831763",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Thanks, I hadn\u0027t come across IDA.\n\nThe Pseudo IDs exist solely for userspace, they\u0027re not needed internally.\n\nI\u0027ve been thinking about removing Pseudo ID concept entirely...done now.  I carried it over from the original i2c-pseudo implementation, but I ended up never using it from iteflash.  The Pseudo IDs just aren\u0027t really that useful for solving the problem they were meant to help with.\n\n---\n\nThe situation they were meant to help with is determining when an I2C adapter number has been unexpectedly reused while a stateful i2c-dev client program is using a pseudo I2C bus - even if it\u0027s the same pseudo controller program that simply got restarted (e.g. crashed then restarted), and thus maybe using the same I2C adapter name.  If that happens the device program state may be out of sync.\n\nI no longer think this is of any real use.  It\u0027s still a race and there are other ways to make the same determination.",
+      "parentUuid": "1fc3211a_363cd004",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 71
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e40c4f6b_fdd2e012",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "This is usually called `time_left`",
+      "range": {
+        "startLine": 147,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 14
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fadf7d3_d38e63ab",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e40c4f6b_fdd2e012",
       "range": {
         "startLine": 147,
         "startChar": 6,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15db5453_9d254103",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Thanks for bringing this up, these pedantic size safety checks are something I wanted guidance on.\n\n`max_msgs_per_xfer` is `unsigned short` because `module_param` doesn\u0027t support fixed sizes.  While `short` is 16 bits on any Linux system I\u0027ve programmed for, AFAIK its absolute size is not guaranteed by C.  In theory it could be 32 bits, for example.\n\nDoes Linux guarantee short is \u003c\u003d 16 bits?  Is there a reference for Linux type size guarantees beyond what C requires?\n\nOr is this something where kernel style is to just code for the architectures that exist today and avoid complexity for (nonsensical?) hypotheticals like 32 bit `short`? :-)",
+      "parentUuid": "8992f4ed_1153aeb5",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7136bb52_821adba0",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 24
@@ -100,6 +172,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "This is not kernel style. Don\u0027t cast to void. The return value should be handled. Also, why is it a try?",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 7
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e0056f_2e5f174f",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "I tried to explain it with the comment - but clearly missed.\n\nThere is nothing different to do based on its return value.  This is to clear the completion in case `i2cp_cdev_ioctl_xfer_req()` was never called and therefore never consumed it.  That\u0027s why it\u0027s a \"try\" and why we don\u0027t care if it failed (that just means `i2cp_cdev_ioctl_xfer_req()` consumed it).\n\nSimilar situation for line 193.\n\nWhat\u0027s the right style in this case?  There\u0027s a compiler warning without the `(void)` of course.  Also the `(void)` makes it clear that ignoring the return value is deliberate.",
+      "parentUuid": "7136bb52_821adba0",
       "range": {
         "startLine": 191,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "710c026d_9282ee3d",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "This is the only line doing `struct i2c_adapter` -\u003e `struct i2cp_controller` though.  Still want a separate function?",
+      "parentUuid": "f75d5491_99ce470a",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 64
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e9d0ea5_2637b2ad",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "The word `this` isn\u0027t used for kernel variables very often. Probably because it aliases with C++? Either way, this is usually named something like `i2cp_dev`.",
+      "range": {
+        "startLine": 264,
+        "startChar": 21,
+        "endLine": 264,
+        "endChar": 32
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6a588e_671aad25",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9d0ea5_2637b2ad",
       "range": {
         "startLine": 264,
         "startChar": 21,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a47775_935c4272",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Deleted now, see comment reply about Pseudo ID\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4867275/comment/1fc3211a_363cd004/",
+      "parentUuid": "13113ed1_2616079f",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 2
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30953f8f_e9c7f4ae",
@@ -192,6 +360,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "How big is too big? Seems like we shouldn\u0027t let userspace name these at all.",
+      "range": {
+        "startLine": 396,
+        "startChar": 7,
+        "endLine": 396,
+        "endChar": 10
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20d7979_a93997f1",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "In this version it depends on how many characters pdata-\u003eid ends up taking...\n\nI think custom adapter naming is a pretty useful feature, I really don\u0027t want to drop it.  I was thinking about simplifying it by dropping the \"suffix\" aspect and just letting userspace set the entire name without forcing \"I2C pseudo\" into it...done now.",
+      "parentUuid": "30953f8f_e9c7f4ae",
       "range": {
         "startLine": 396,
         "startChar": 7,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25438a1b_50df6be5",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "It protects a lot of fields, see lines 113-122 in this snapshot.\n\nI\u0027ve renamed the lock and the fields it protects to all start with `xfer_`, to hopefully make this more clear.",
+      "parentUuid": "13333527_b18b891b",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 22
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1c8e382_54acd1a1",
@@ -242,6 +458,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4424ae6_b008feaf",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c8e382_54acd1a1",
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b3d5f8_0f4e5e95",
@@ -255,6 +489,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "Move this variable declaration up to the top of the function. Might as well make it an int too?",
+      "range": {
+        "startLine": 653,
+        "startChar": 6,
+        "endLine": 653,
+        "endChar": 11
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df34aaed_473b6800",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Moved the declaration to the top.\n\narg_copy.num_msgs is u16 so I figure might as well match it and avoid size relationship assumptions between fixed size types and traditional C types.",
+      "parentUuid": "a3b3d5f8_0f4e5e95",
       "range": {
         "startLine": 653,
         "startChar": 6,
@@ -290,6 +548,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b127878_1d0b82af",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "\"This is neat.\" 😂\n\nThis is another one of those defensive/pedantic size safety checks where I didn\u0027t feel comfortable making assumptions about size relationships between fixed size and traditional types.\n\nThis also tries to strictly avoid undefined behavior from the unsigned -\u003e signed conversion.\n\nHow exactly did I end up with this mess of a line?  Well...\n* `master_xfer()` (from `struct i2c_algorithm`) returns `int` with negative values for errors, so `pdata-\u003ei2c_xfer_ret` is the same.\n* `arg_copy.error` is *fixed size* because that\u0027s required or at least recommended for all ioctl fields (besides pointers).\n* `arg_copy.error` is *unsigned* because it\u0027s only for holding an errno.  If it were signed with negative errno values, there would be no meaning for positive values, and therefore an extra error condition to check and handle (unexpected positive value).\n* If this used `-arg_copy.error` instead of `-((s32)arg_copy.error)` would it potentially convert to `s16`?  If so and userspace set a value `\u003e S16_MAX` then it would overflow and risk undefined behavior from the sign conversion.\n* I want the UAPI to have separate `error` and `num_msgs`, even though the internal kernel `i2c_transfer` / `master_xfer` API doesn\u0027t currently, because it\u0027s far more sensical and maybe someday the kernel API will get cleaned up.\n   * See the i2c-core-base.c comment about this: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/i2c/i2c-core-base.c;drc\u003d564d73c4d9201526bd976b9379d2aaf1a7133e84;l\u003d2263\n\nI do think I\u0027ve made this more complicated than necessary, I would appreciate thoughts and opinions on it.  I really do want to keep `error` and `num_msgs` separate in the UAPI though.",
+      "parentUuid": "daeb7a0c_ebd37acd",
+      "range": {
+        "startLine": 667,
+        "startChar": 24,
+        "endLine": 667,
+        "endChar": 60
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b6012cb_4562d987",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 24
@@ -301,6 +583,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "Is this only used for debug? If so I\u0027d simply remove it or move to debugfs.",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 25
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497972a3_9470143d",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "ACK, will consider this.  Leaving unresolved.",
+      "parentUuid": "9b6012cb_4562d987",
       "range": {
         "startLine": 810,
         "startChar": 0,
@@ -336,6 +642,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32c7a8a9_8f8e2633",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "ACK, will do if I don\u0027t move these to debugfs.  Leaving unresolved.",
+      "parentUuid": "26e3bd85_2ff5a4d8",
+      "range": {
+        "startLine": 827,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 25
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae578e06_fedc4d8a",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 24
@@ -347,6 +677,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "This can be \n\n```\nclass_destroy(i2cp_class);\ni2cp_class \u003d NULL;\n```\n\nbut also I don\u0027t really know if we even care that i2cp_class is dangling. The module is being unloaded at this time so the pointer will stop existing soon.",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 22
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498e5724_9e71f87a",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae578e06_fedc4d8a",
       "range": {
         "startLine": 840,
         "startChar": 0,
@@ -380,6 +734,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76a0724_140412fd",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "943a0729_f2f8dfc8",
+      "range": {
+        "startLine": 873,
+        "startChar": 42,
+        "endLine": 873,
+        "endChar": 46
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4669aa0_d08a3591",
@@ -393,6 +771,30 @@
       "writtenOn": "2023-10-31T22:22:16Z",
       "side": 1,
       "message": "Remove fullstop please.",
+      "range": {
+        "startLine": 904,
+        "startChar": 68,
+        "endLine": 904,
+        "endChar": 69
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29eaf823_5d1a7a02",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4669aa0_d08a3591",
       "range": {
         "startLine": 904,
         "startChar": 68,

@@ -401,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f99f377_0678d27d",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "ACK, I will think on how to best express this.  Leaving unresolved.",
+      "parentUuid": "425c6000_adab9cc4",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b400226_a3f5c4e9",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
@@ -460,6 +484,30 @@
       "side": 1,
       "message": "Well, this is a controller that takes in multiple transfers, it\u0027s not like other controllers self destruct after processing 2 requests, they usually process stuff in a loop.",
       "parentUuid": "51aa3973_0194ff72",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93104248_f742d3ab",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-01T23:46:30Z",
+      "side": 1,
+      "message": "ACK, I\u0027ll rethink the example to have a real processing loop.  Leaving unresolved.",
+      "parentUuid": "872ee9e9_7988de12",
       "range": {
         "startLine": 151,
         "startChar": 3,
