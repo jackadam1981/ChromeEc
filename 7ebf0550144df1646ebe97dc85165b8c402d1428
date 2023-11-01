@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7741d4f_0509dfc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T21:47:15Z",
+      "side": 1,
+      "message": "I think the ap_erros is the crate that is the more important one of the two to share.\n\nAlso, ironically, I just landed a CL in enum_as crate earlier today  (CL:*6622680). It is worth noting there are some unit tests that should probably go with the enum_as crate that are in another crate right now if we want to move it completely.\n\nHowever, I think it would be fine to copy the enum_as stuff (and pair it down to only what is needed) and not even pull the latest generation code that was landed today, since we shouldn\u0027t need any more functionality from enum_as in the future.\n\nThe shared definitions for enums seems more important to single source though.",
+      "parentUuid": "ba4ae4a8_366c9fd8",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d6773181_6d14e901",
