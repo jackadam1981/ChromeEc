@@ -23,7 +23,7 @@
 const struct board_batt_params *battery_conf;
 
 /* Copies of config and strings of a matching battery found in CBI. */
-test_export_static struct batt_conf_export default_battery_conf;
+struct batt_conf_export default_battery_conf;
 
 /*
  * Authenticate the battery connected.
@@ -172,6 +172,11 @@ const struct board_batt_params *get_batt_params(void)
 		return battery_conf;
 
 	return &board_battery_info[battery_fuel_gauge_type_override].config;
+}
+
+const struct batt_conf_export *get_batt_conf(void)
+{
+	return &default_battery_conf;
 }
 
 const struct battery_info *battery_get_info(void)
