@@ -131,6 +131,11 @@ void init_battery_type(void);
 const struct board_batt_params *get_batt_params(void);
 
 /**
+ * Return pointer to active battery config.
+ */
+const struct batt_conf_embed *get_batt_conf(void);
+
+/**
  * Return 1 if CFET is disabled, 0 if enabled. -1 if an error was encountered.
  * If the CFET mask is not defined, it will return 0.
  */

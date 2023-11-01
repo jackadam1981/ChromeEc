@@ -27,7 +27,7 @@ static char batt_manuf_name[32];
 static char batt_device_name[32];
 
 /* Copies of config and strings of a matching battery found in CBI. */
-test_export_static struct batt_conf_embed default_battery_conf = {
+struct batt_conf_embed default_battery_conf = {
 	.manuf_name = batt_manuf_name,
 	.device_name = batt_device_name,
 };
@@ -173,6 +173,11 @@ const struct board_batt_params *get_batt_params(void)
 		return &battery_conf->config;
 
 	return &board_battery_info[battery_fuel_gauge_type_override].config;
+}
+
+const struct batt_conf_embed *get_batt_conf(void)
+{
+	return battery_conf;
 }
 
 const struct battery_info *battery_get_info(void)
