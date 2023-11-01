@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f42df56_53cb2fa9",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-01T17:29:40Z",
+      "side": 1,
+      "message": "Use the full pathname location. And don\u0027t import the methods. Here is like `from scripts import util`. You need an empty `__init__.py` to make it a package.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "4c8eb109f7aa904c6af0081d8d6c870c3db5fb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d148c94_d95a6b47",
+        "filename": "zephyr/scripts/common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-01T17:29:40Z",
+      "side": 1,
+      "message": "The naming `common.py` is not quite popular in Python. Use `util.py` instead.",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "4c8eb109f7aa904c6af0081d8d6c870c3db5fb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6b8a93_7be430c8",
+        "filename": "zephyr/scripts/common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-01T17:29:40Z",
+      "side": 1,
+      "message": "Now no longer an internal method. Removing the prefix `_`, just `load_edt`.",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "4c8eb109f7aa904c6af0081d8d6c870c3db5fb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
