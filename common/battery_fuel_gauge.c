@@ -169,6 +169,11 @@ const struct board_batt_params *get_batt_params(void)
 	return battery_conf;
 }
 
+const struct batt_conf_export *get_batt_conf(void)
+{
+	return &default_battery_conf;
+}
+
 const struct battery_info *battery_get_info(void)
 {
 	return &get_batt_params()->batt_info;
