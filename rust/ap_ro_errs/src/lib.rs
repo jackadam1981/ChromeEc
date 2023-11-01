@@ -1,7 +1,6 @@
-use super::{flash::StatusRegister, gscvd};
-use ap_ro_verification_config::WriteProtectDescriptor;
-use ti50_macros::{cfg_host_attr, enum_as};
-use ti50_syscalls::sys_mgr::ApRoVerificationTpmvStatus;
+use core::fmt;
+use enum_as::enum_as;
+use zerocopy::{transmute, AsBytes, FromBytes};
 
 /// The result type used throughout AP RO verification.
 pub type Result<T> = core::result::Result<T, VerifyError>;
@@ -19,14 +18,6 @@ impl ApRoVerificationResult {
     /// Returns true if the AP RO verification successfully passed
     pub fn is_success(self) -> bool {
         self.0.is_ok()
-    }
-}
-
-impl From<ApRoVerificationResult> for ApRoVerificationTpmvStatus {
-    fn from(value: ApRoVerificationResult) -> Self {
-        value
-            .0
-            .map_or_else(|e| e.into(), |()| ApRoVerificationTpmvStatus::Success)
     }
 }
 
@@ -72,7 +63,7 @@ impl From<ApRoVerificationResult> for u32 {
 ///
 /// This value has a niche at 0, so `Result<(), VerifyError>`
 /// can represent `Ok` as a 0, saving space.
-#[cfg_host_attr(derive(Debug, Eq, PartialEq))]
+#[derive(Debug, Eq, PartialEq)]
 #[repr(C, align(4))]
 #[derive(Clone, Copy)]
 pub struct VerifyError {
@@ -263,7 +254,7 @@ pub enum InternalErrorSource {
 
 /// Details for the [`VerifyErrorCode::VersionMismatch`] error. Values cannot change, they can only
 /// be appended.
-#[cfg_host_attr(derive(Debug))]
+#[derive(Debug)]
 #[enum_as(u8)]
 pub enum VersionMismatchSource {
     Gscvd = 1,
@@ -273,7 +264,7 @@ pub enum VersionMismatchSource {
 /// Details for the [`VerifyErrorCode::UnsupportedCryptoAlgorithm`] error.
 ///
 /// Values cannot change, they can only be appended.
-#[cfg_host_attr(derive(Debug))]
+#[derive(Debug)]
 #[enum_as(u8)]
 pub enum CryptoAlgorithmSource {
     Gscvd = 1,
@@ -287,7 +278,7 @@ pub enum CryptoAlgorithmSource {
 /// Details for the [`VerifyErrorCode::FailedVerification`] error.
 ///
 /// Values cannot change, they can only be appended.
-#[cfg_host_attr(derive(Debug))]
+#[derive(Debug)]
 pub enum FailedVerificationDetail {
     DigestMismatch {
         location: DigestLocation,
@@ -300,7 +291,7 @@ pub enum FailedVerificationDetail {
 /// Part of the top byte of the detail for [`VerifyErrorCode::FailedVerification`].
 ///
 /// Values cannot change, they can only be appended.
-#[cfg_host_attr(derive(Debug))]
+#[derive(Debug)]
 #[enum_as(u8)]
 pub enum SignatureLocation {
     Gscvd = 1,
@@ -311,7 +302,7 @@ pub enum SignatureLocation {
 ///
 /// Max value is 15.
 /// Values cannot change, they can only be appended.
-#[cfg_host_attr(derive(Debug))]
+#[derive(Debug)]
 #[enum_as(u8)]
 pub enum DigestLocation {
     /// The protected regions of AP flash covered by the GSCVD.
@@ -337,19 +328,14 @@ impl FailedVerificationDetail {
                 expected,
             } => {
                 const _CHECK_MAX_DIGEST_LOCATION: () = assert!(DigestLocation::END <= 0x0f);
-                const _CHECK_NUM_ROOT_KEY_HASHES: () = assert!(
-                    gscvd::NUM_VALID_ROOT_KEY_HASHES < 14,
-                    "Too many root key hashes to fill in detail unambiguously"
-                );
 
                 // Also record the (hardcoded) number of valid root key hashes.
                 // The top byte carries three pieces of info:
                 // - The top nibble being non-zero indicates this is a `DIGEST_MISMATCH`.
                 // - The top nibble is 1 + NUM_VALID_ROOT_KEY_HASHES.
                 // - The bottom nibble is the `DigestLocation`.
-                let top_byte = FailedVerificationDetail::DIGEST_MISMATCH
-                    + ((gscvd::NUM_VALID_ROOT_KEY_HASHES as u8) << 4)
-                    + location as u8;
+                let top_byte =
+                    FailedVerificationDetail::DIGEST_MISMATCH + ((3_u8) << 4) + location as u8;
                 [top_byte, got, expected]
             }
             FailedVerificationDetail::SignatureVerifyFail => {
@@ -364,7 +350,7 @@ impl FailedVerificationDetail {
 /// All of the verification errors that can occur while validating AP RO. Values cannot change,
 /// they can only be appended.
 #[enum_as(u8)]
-#[cfg_host_attr(derive(Debug))]
+#[derive(Debug)]
 pub enum VerifyErrorCode {
     /// Consistent verification data was found, but it failed cryptographic verification.
     FailedVerification = 1,
@@ -422,58 +408,229 @@ pub enum VerifyErrorCode {
     WrongRootKey = 18,
 }
 
-// Ensure that all `VerifyErrorCode` values fit within 7 bits to ensure that the top bit
-// is reserved for specifying if an error was seen after the success latch has been
-// flipped. See `mix_latch_status_with_apro_status` for more details.
-static_assertions::const_assert!(VerifyErrorCode::END < 0x80);
+pub enum StatusRegister {
+    /// Read Status Register-1 (05h)
+    Register1,
 
-impl From<kernel::ErrorCode> for VerifyError {
-    fn from(e: kernel::ErrorCode) -> Self {
-        VerifyError::Internal(InternalErrorSource::Kernel, e as u16)
+    /// Read Status Register-2 (35h)
+    Register2,
+
+    /// Read Status Register-3 (15h)
+    Register3,
+}
+
+#[repr(C, align(4))]
+#[derive(AsBytes, FromBytes, Clone, Copy)]
+pub struct WriteProtectDescriptor {
+    expected_value: ByteWithInverse,
+    mask: ByteWithInverse,
+}
+
+/// A byte value stored along with its bit-inverted value.
+///
+/// This protects against a spurious write causing a reduction in security without first erasing,
+/// since writes can only clear bits.
+/// It also allows for more flexible filling in of individual values than a checksum.
+#[repr(C)]
+#[derive(AsBytes, FromBytes, Clone, Copy)]
+struct ByteWithInverse {
+    value: u8,
+
+    /// `value`, but with the bits inverted
+    ///
+    /// If it does not equal `!value`, this value is unset (all 1's) or corrupted.
+    inv_value: u8,
+}
+
+impl ByteWithInverse {
+    pub const fn new(value: u8) -> Self {
+        Self {
+            value,
+            inv_value: !value,
+        }
+    }
+
+    pub const fn is_blank(self) -> bool {
+        self.value == !0 && self.inv_value == !0
+    }
+
+    pub const fn get(self) -> core::result::Result<u8, BadValue> {
+        if self.value == !self.inv_value {
+            Ok(self.value)
+        } else {
+            Err(if self.is_blank() {
+                BadValue::Blank
+            } else {
+                BadValue::Corrupted
+            })
+        }
     }
 }
 
-impl From<hil::crypto::CryptoError> for VerifyError {
-    fn from(e: hil::crypto::CryptoError) -> Self {
-        VerifyError::Internal(InternalErrorSource::Crypto, e as u16)
+impl fmt::Display for ByteWithInverse {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self.get() {
+            Ok(value) => write!(f, "{value:02x}"),
+            Err(e) => write!(f, "{}", e.to_string()),
+        }
     }
 }
 
-impl From<buf_arena::OutOfMemory> for VerifyError {
-    fn from(_: buf_arena::OutOfMemory) -> Self {
-        VerifyError::OutOfMemory
+// TODO(kupiakos): Resolve naming consistency of `is_blank` and `get` with
+// similar `ValueAndMaskWriteProtectDescriptor` methods.
+impl WriteProtectDescriptor {
+    pub fn new(expected_value: u8, mask: u8) -> Self {
+        Self {
+            expected_value: ByteWithInverse::new(expected_value),
+            mask: ByteWithInverse::new(mask),
+        }
+    }
+
+    /// Returns a blank/unset `WriteProtectDescriptor`
+    pub fn blank() -> Self {
+        transmute!(!0u32)
+    }
+
+    /// Returns the (expected value, mask), so long as the value is valid.
+    pub const fn get(self) -> core::result::Result<(u8, u8), BadValue> {
+        match (self.expected_value.get(), self.mask.get()) {
+            (Ok(expected_value), Ok(mask)) => Ok((expected_value, mask)),
+            (Err(BadValue::Corrupted), _) | (_, Err(BadValue::Corrupted)) => {
+                Err(BadValue::Corrupted)
+            }
+            // ByteWithInverse never returns `Invalid`
+            _ => Err(BadValue::Blank),
+        }
+    }
+
+    /// Has this never been written to?
+    pub fn is_blank(self) -> bool {
+        let as_u32: u32 = transmute!(self);
+        as_u32 == !0
+    }
+
+    /// Does this descriptor have an mask of all 0's, making it always match?
+    pub fn is_empty_mask(self) -> bool {
+        matches!(self.mask.get(), Ok(0))
+    }
+
+    /// Is the given value from the protection register considered
+    /// "matching" this descriptor, meaning it's verified.
+    pub fn matches(self, value: u8) -> bool {
+        match self.get() {
+            Ok((expected_value, mask)) => expected_value & mask == value & mask,
+            _ => false,
+        }
     }
 }
 
-impl From<VerifyError> for ApRoVerificationTpmvStatus {
-    fn from(value: VerifyError) -> Self {
-        value.code().into()
+impl fmt::Display for WriteProtectDescriptor {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{} & {}", self.expected_value, self.mask)
     }
 }
 
-impl From<VerifyErrorCode> for ApRoVerificationTpmvStatus {
-    fn from(result: VerifyErrorCode) -> Self {
-        use VerifyErrorCode::*;
-        match result {
-            FailedVerification
-            | FailedStatusRegister1
-            | FailedStatusRegister2
-            | FailedStatusRegister3 => ApRoVerificationTpmvStatus::FailedVerification,
-            InconsistentGscvd => ApRoVerificationTpmvStatus::InconsistentGscvd,
-            InconsistentKeyblock => ApRoVerificationTpmvStatus::InconsistentKeyblock,
-            InconsistentKey => ApRoVerificationTpmvStatus::InconsistentKey,
-            SpiRead => ApRoVerificationTpmvStatus::SpiRead,
-            UnsupportedCryptoAlgorithm => ApRoVerificationTpmvStatus::UnsupportedCryptoAlgorithm,
-            VersionMismatch => ApRoVerificationTpmvStatus::VersionMismatch,
-            OutOfMemory => ApRoVerificationTpmvStatus::OutOfMemory,
-            Internal => ApRoVerificationTpmvStatus::Internal,
-            TooBig => ApRoVerificationTpmvStatus::TooBig,
-            MissingGscvd => ApRoVerificationTpmvStatus::MissingGscvd,
-            BoardIdMismatch => ApRoVerificationTpmvStatus::BoardIdMismatch,
-            SettingNotProvisioned => ApRoVerificationTpmvStatus::SettingNotProvisioned,
-            // TODO(vbendeb): add handling of the below to gsctool.
-            NonZeroGbbFlags => ApRoVerificationTpmvStatus::NonZeroGbbFlags,
-            WrongRootKey => ApRoVerificationTpmvStatus::WrongRootkey,
+
+/// The value stored here couldn't be used.
+#[enum_as(u8)]
+pub enum BadValue {
+    /// The value was unset/blank. This is an expected state.
+    Blank = 1,
+
+    /// The value was corrupted - its inverted value did not match its value and it was not blank.
+    /// This is an unexpected state.
+    Corrupted,
+
+    /// The value was outside of the range of valid values for the type.
+    Invalid,
+}
+
+impl BadValue {
+    pub fn to_string(self) -> &'static str {
+        match self {
+            BadValue::Blank => "Blank",
+            BadValue::Corrupted => "Corrupted",
+            BadValue::Invalid => "Invalid",
+        }
+    }
+}
+
+#[derive(Debug)]
+#[enum_as(u8)]
+pub enum ApRoVerificationTpmvStatus {
+    /// Success
+    Success = 20,
+
+    /// Consistent verification data was found, but it failed cryptographic verification.
+    FailedVerification = 21,
+
+    /// The `GscVerificationData` wasn't correctly laid out.
+    InconsistentGscvd = 22,
+
+    /// The `Vb2Keyblock` wasn't correctly laid out.
+    InconsistentKeyblock = 23,
+
+    /// The key stored wasn't in a valid format.
+    InconsistentKey = 24,
+
+    /// A SPI read operation failed while communicating with AP flash.
+    SpiRead = 25,
+
+    /// The data uses a crypto algorithm that is unsupported.
+    UnsupportedCryptoAlgorithm = 26,
+
+    /// A structure version is unsupported.
+    VersionMismatch = 27,
+
+    /// There was not enough reserved memory to perform the operation as requested.
+    OutOfMemory = 28,
+
+    /// A miscellaneous internal error occurred.
+    Internal = 29,
+
+    /// A data structure was too large.
+    TooBig = 30,
+
+    /// There was no GSCVD present in flash.
+    MissingGscvd = 31,
+
+    /// The Board ID for this GSCVD is not correct for this board.
+    BoardIdMismatch = 32,
+
+    /// A necessary setting was not provisioned or was invalid.
+    SettingNotProvisioned = 33,
+    /* Do not use values 34 and 35. They are ambiguous since Unknown used both as its value. */
+    /// Verification failed solely because the GBB flags are non-zero.
+    NonZeroGbbFlags = 36,
+
+    /// The root key was recognized, but is disabled by security policy.
+    WrongRootkey = 37,
+
+    /// Unknown error
+    Unknown = 255,
+}
+
+impl ApRoVerificationTpmvStatus {
+    pub fn to_str(self) -> &'static str {
+        use ApRoVerificationTpmvStatus::*;
+        match self {
+            Success => "OK",
+            FailedVerification => "FAIL",
+            InconsistentGscvd => "bad gvd",
+            InconsistentKeyblock => "bad keyblock",
+            InconsistentKey => "bad key",
+            SpiRead => "spi err",
+            UnsupportedCryptoAlgorithm => "bad crypto",
+            VersionMismatch => "bad version",
+            OutOfMemory => "oom",
+            Internal => "internal",
+            TooBig => "too big",
+            MissingGscvd => "no gvd",
+            BoardIdMismatch => "wrong board id",
+            SettingNotProvisioned => "setting unprovisioned",
+            NonZeroGbbFlags => "Would pass with zeroed GBB flags",
+            WrongRootkey => "Only MP prod root key is accepted",
+            Unknown => "unknown",
         }
     }
 }

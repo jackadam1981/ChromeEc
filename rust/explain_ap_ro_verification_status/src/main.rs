@@ -12,8 +12,13 @@
 //!   Platform.Ti50.ARVStatus metric. It follows a different set of
 //!   statuses from Cr50, but is in the same namespace.
 
-use ap_ro_verification_config::BadValue;
 use std::fmt::Display;
+use ap_ro_errs::{
+    ApRoVerificationResult, ApRoVerificationTpmvStatus, BadValue, CryptoAlgorithmSource,
+    DigestLocation, InternalErrorSource, Result, SignatureLocation, VerifyError, VerifyErrorCode,
+    VersionMismatchSource,
+};
+/*
 use thiserror::Error;
 use ti50::ap_ro_verification::{
     err::{
@@ -23,17 +28,24 @@ use ti50::ap_ro_verification::{
     ApRoVerificationResult,
 };
 use ti50_syscalls::sys_mgr::ApRoVerificationTpmvStatus;
-
-#[derive(Debug, Error)]
+*/
+#[derive(Debug)]
 enum ExplainError {
-    #[error("Expected a single arg, hex or decimal")]
     WrongArgCount,
-
-    #[error("Unrecognized argument format, expected a single hex or decimal argument")]
     InvalidArg,
 }
 
-fn parse_arg(mut arg: &str) -> Result<u32, ExplainError> {
+impl ExplainError {
+    fn to_str(self) -> &'static str {
+        match self {
+            ExplainError::WrongArgCount => "Expected a single arg, hex or decimal",
+            ExplainError::InvalidArg => {
+                "Unrecognized argument format, expected a single hex or decimal argument"
+            }
+        }
+    }
+}
+fn parse_arg(mut arg: &str) -> core::result::Result<u32, ExplainError> {
     if let Some(stripped) = arg.strip_prefix("0x").or_else(|| arg.strip_prefix('x')) {
         arg = stripped;
     } else {
@@ -49,7 +61,7 @@ fn parse_arg(mut arg: &str) -> Result<u32, ExplainError> {
     u32::from_str_radix(arg, 16).map_err(|_| ExplainError::InvalidArg)
 }
 
-fn get_code_from_args() -> Result<u32, ExplainError> {
+fn get_code_from_args() -> core::result::Result<u32, ExplainError> {
     let mut args = std::env::args();
     let _app_name = args.next();
     let Some(out) = args.next() else {
@@ -284,6 +296,6 @@ fn explain_code(code: u32) {
 
 fn main() {
     if let Err(e) = get_code_from_args().map(explain_code) {
-        println!("{e}");
+        println!("{}", e.to_str());
     }
 }
