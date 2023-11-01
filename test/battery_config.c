@@ -15,7 +15,6 @@
 #include "write_protect.h"
 
 void batt_conf_main(void);
-extern struct batt_conf_embed default_battery_conf;
 
 const struct batt_conf_embed board_battery_info[] = {
 	[BATTERY_C214] = {
@@ -120,12 +119,13 @@ int cbi_get_common_control(union ec_common_control *ctrl)
 DECLARE_EC_TEST(test_batt_conf_main)
 {
 	struct batt_conf_export head;
-	const struct board_batt_params *conf;
+	const struct board_batt_params *param;
+	const struct batt_conf_export *conf = get_batt_conf();
 
 	/* On POR, no config in CBI. Legacy mode should choose conf[0]. */
 	zassert_equal_ptr(get_batt_params(), &board_battery_info[0].config);
 
-	memset(&default_battery_conf, 0, sizeof(default_battery_conf));
+	memset((void *)conf, 0, sizeof(*conf));
 
 	ccprintf("Blob size = %lu (config = %lu)\n", sizeof(head),
 		 sizeof(struct board_batt_params));
@@ -152,10 +152,10 @@ DECLARE_EC_TEST(test_batt_conf_main)
 	ccprintf("\nmanuf_name == manuf_name && device_name == \"\"\n");
 	strncpy(head.manuf_name, "AS1GUXd3KB", sizeof("AS1GUXd3KB"));
 	cbi_set_board_info(CBI_TAG_BATTERY_CONFIG, (void *)&head, sizeof(head));
-	memset(&default_battery_conf, 0, sizeof(default_battery_conf));
+	memset((void *)conf, 0, sizeof(*conf));
 	batt_conf_main();
-	conf = get_batt_params();
-	zassert_equal(memcmp(conf, &conf_in_cbi, sizeof(*conf)), 0);
+	param = get_batt_params();
+	zassert_equal(memcmp(param, &conf_in_cbi, sizeof(*param)), 0);
 
 	/*
 	 * manuf_name == manuf_name && device_name != device_name
@@ -170,12 +170,12 @@ DECLARE_EC_TEST(test_batt_conf_main)
 	 * manuf_name == manuf_name && device_name == device_name
 	 */
 	ccprintf("\nmanuf_name == manuf_name && device_name == device_name\n");
-	memset(&default_battery_conf, 0, sizeof(default_battery_conf));
+	memset((void *)conf, 0, sizeof(*conf));
 	strncpy(head.device_name, "C214-43", sizeof("C214-43"));
 	cbi_set_board_info(CBI_TAG_BATTERY_CONFIG, (void *)&head, sizeof(head));
 	batt_conf_main();
-	conf = get_batt_params();
-	zassert_equal(memcmp(conf, &conf_in_cbi, sizeof(*conf)), 0);
+	param = get_batt_params();
+	zassert_equal(memcmp(param, &conf_in_cbi, sizeof(*param)), 0);
 
 	/*
 	 * Manuf name not found in battery.
