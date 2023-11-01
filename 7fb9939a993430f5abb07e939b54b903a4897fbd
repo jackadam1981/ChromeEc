@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2f297d_5537b39c",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-01T17:43:17Z",
+      "side": 1,
+      "message": "Use `rsplit` in case multiple `-` in the string.",
+      "range": {
+        "startLine": 215,
+        "startChar": 53,
+        "endLine": 215,
+        "endChar": 58
+      },
+      "revId": "7fb9939a993430f5abb07e939b54b903a4897fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e6b879_ed70fcdb",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-01T17:43:17Z",
+      "side": 1,
+      "message": "Move the logic to a separate method. For the error case, it may need some hard-coded rules to modify, but I don\u0027t know the future. So a separate method is good for future extension.",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 18
+      },
+      "revId": "7fb9939a993430f5abb07e939b54b903a4897fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
