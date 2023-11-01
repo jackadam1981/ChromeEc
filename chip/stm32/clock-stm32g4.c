@@ -226,6 +226,11 @@ int clock_get_freq(void)
 	return CPU_CLOCK;
 }
 
+int clock_get_apb_freq(void)
+{
+	return CPU_CLOCK;
+}
+
 void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 {
 	volatile uint32_t unused __attribute__((unused));

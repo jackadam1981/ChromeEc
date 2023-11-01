@@ -4,6 +4,7 @@
  */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "hooks.h"
@@ -33,7 +34,7 @@ static void usart_variant_enable(struct usart_config const *config)
 	/* Use single-bit sampling */
 	STM32_USART_CR3(config->hw->base) |= STM32_USART_CR3_ONEBIT;
 
-	usart_set_baud_f0_l(config, config->baud, clock_get_freq());
+	usart_set_baud_f0_l(config, config->baud, clock_get_apb_freq());
 
 	task_enable_irq(config->hw->irq);
 }

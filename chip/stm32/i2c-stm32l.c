@@ -6,6 +6,7 @@
 #include "builtin/assert.h"
 #include "chipset.h"
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "dma.h"
@@ -124,7 +125,7 @@ static int send_start(int port, uint16_t slave_addr_8bit)
 static void i2c_set_freq_port(const struct i2c_port_t *p)
 {
 	int port = p->port;
-	int freq = clock_get_freq();
+	int freq = clock_get_apb_freq();
 
 	/* Force peripheral reset and disable port */
 	STM32_I2C_CR1(port) = STM32_I2C_CR1_SWRST;

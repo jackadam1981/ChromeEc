@@ -7,6 +7,7 @@
 
 #include "chipset.h"
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -48,6 +49,11 @@ static int current_osc;
 int clock_get_freq(void)
 {
 	return freq;
+}
+
+int clock_get_apb_freq(void)
+{
+	return clock_get_freq();
 }
 
 int clock_get_timer_freq(void)

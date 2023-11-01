@@ -78,8 +78,13 @@ static int current_osc = OSC_PLL;
 static int current_io_freq = STM32F4_IO_CLOCK;
 static int current_timer_freq = STM32F4_TIMER_CLOCK;
 
-/* the EC code expects to get the USART/I2C clock frequency here (APB clock) */
 int clock_get_freq(void)
+{
+	return current_io_freq;
+}
+
+/* the EC code expects to get the USART/I2C clock frequency here (APB clock) */
+int clock_get_apb_freq(void)
 {
 	return current_io_freq;
 }
