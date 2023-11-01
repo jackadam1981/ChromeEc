@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09c4a95_5590e95c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-11-01T15:16:40Z",
+      "side": 1,
+      "message": "the previous while loop would have tsken care of re-checking as well. the for loop bounds its execution,",
+      "parentUuid": "491bf537_376b5d90",
+      "range": {
+        "startLine": 35,
+        "startChar": 66,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "f2aeb217564ceb53b16a873e9c216241d4d5b901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e13048b_189c2e20",
