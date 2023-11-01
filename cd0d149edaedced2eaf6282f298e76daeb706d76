@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3f4091_d58882fc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 11747,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-01T09:14:53Z",
+      "side": 1,
+      "message": "How about `batteryconfigget`? As we will have another `batteryconfigset`.",
+      "range": {
+        "startLine": 11747,
+        "startChar": 4,
+        "endLine": 11747,
+        "endChar": 17
+      },
+      "revId": "cd0d149edaedced2eaf6282f298e76daeb706d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
