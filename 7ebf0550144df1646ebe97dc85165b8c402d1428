@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d4b15d_a064f0de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "Can we make of the these crates the source of truth for enum definitions and the ti50/common repo just pull it in? What kind of issues arise when trying that scheme?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d6773181_6d14e901",
@@ -31,6 +54,351 @@
       "writtenOn": "2023-11-01T18:17:08Z",
       "side": 1,
       "message": "One thing I forgot to mention: to make the review simpler. patchset 1 is the copy of the original files as is.",
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197432e9_0931ab14",
+        "filename": "rust/ap_ro_errs/Cargo.lock",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "we shouldn\u0027t check this file in since it is for a library instead of a final binary. We should add it to .gitignore",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 2,
+        "endChar": 40
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef1869c_9c770844",
+        "filename": "rust/ap_ro_errs/Cargo.toml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need this, Remove?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 96
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9782c3_54e2ac55",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "nit: combine the two derive lines",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c589c6c_b1a78e6e",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need this function in the explain binary. Should we just remove it (versus changing it)?",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 5
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9ffccd_ae10490c",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "Why do we need the `WriteProtectDescriptor` and the reset of these struct (expect for `ApRoVerificationTpmvStatus` which we do need)?",
+      "range": {
+        "startLine": 427,
+        "startChar": 11,
+        "endLine": 427,
+        "endChar": 33
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f77b6cb_fc76ae21",
+        "filename": "rust/enum_as/BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "probably don\u0027t need the bazel file",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71025c90_e77ebe39",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec148d3e_5db9717b",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2150dec9_8ba320b9",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccb8fc3_6933bcbd",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b33035_13a1c288",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 335,
+        "startChar": 3,
+        "endLine": 335,
+        "endChar": 30
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1680f1bf_2bf7bded",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 393,
+        "startChar": 7,
+        "endLine": 393,
+        "endChar": 18
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9edd2529_11b3002a",
+        "filename": "rust/explain_ap_ro_verification_status/BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove file?",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e978eb4_9bfb7b86",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "you could probably leave `thiserror::Error` dependencies since that is external",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff1c9b8_6f76acb2",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-01T18:52:08Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
       "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
