@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6773181_6d14e901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-01T18:14:54Z",
+      "side": 1,
+      "message": "guys, I\u0027m OOO next week, it would be good to get this (and the pending ebuild changes) in before then.\n\nAs Alyssa predicted, clean decoupling from Ti50 tree and making the decoupled code shareable proved very involved, I suggest to start with this to make the utility available and then work on consolidation of the trees.",
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
