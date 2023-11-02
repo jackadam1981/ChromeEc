@@ -5,7 +5,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
-#include "fpsensor_driver.h"
+#include "fpsensor/fpsensor_driver.h"
 #include "test_util.h"
 
 #include <stddef.h>
