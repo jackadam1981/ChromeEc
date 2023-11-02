@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <cstring>
 #include <utility>
 #include <variant>
 
@@ -316,8 +317,9 @@ static enum ec_status unlock_template(uint16_t idx)
 	const auto enc_salt_begin = enc_template_end;
 	const auto enc_salt_end = enc_template_end + salt_size;
 
-	std::copy(fp_template[idx], fp_template[idx] + template_size,
-		  enc_template_begin);
+	// std::copy(fp_template[idx], fp_template[idx] + template_size,
+	// 	  enc_template_begin);
+	std::memcpy(enc_template_begin, &fp_template[idx], template_size);
 	std::copy(fp_positive_match_salt[idx],
 		  fp_positive_match_salt[idx] + salt_size, enc_salt_begin);
 
@@ -338,7 +340,8 @@ static enum ec_status unlock_template(uint16_t idx)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	std::copy(enc_template_begin, enc_template_end, fp_template[idx]);
+	// std::copy(enc_template_begin, enc_template_end, fp_template[idx]);
+	std::memcpy(&fp_template[idx], enc_template_begin, template_size);
 
 	std::copy(enc_salt_begin, enc_salt_end, fp_positive_match_salt[idx]);
 
