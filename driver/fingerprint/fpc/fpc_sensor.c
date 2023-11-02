@@ -4,7 +4,6 @@
  */
 
 #include "fpsensor/fpsensor.h"
-#include "fpsensor/fpsensor_state.h"
 #include "fpsensor/fpsensor_utils.h"
 
 #include <stddef.h>
