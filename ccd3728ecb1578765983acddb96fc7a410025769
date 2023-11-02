@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ea3900_eb8f2e51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-02T05:52:32Z",
+      "side": 1,
+      "message": "Hi Keith,\n\ncan you please help with the errors?.Can i skip code coverage for now and do it later?\nFor me,  zmake build --all; ./twister -T zephyr/test are successful",
+      "revId": "ccd3728ecb1578765983acddb96fc7a410025769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
