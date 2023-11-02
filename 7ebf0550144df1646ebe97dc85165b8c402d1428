@@ -218,6 +218,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c902bd1e_f7775507",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-02T21:27:59Z",
+      "side": 1,
+      "message": "Seems like the last thing to me. I still hope to see some sharing of the verification enums in a future CL though 😊",
+      "parentUuid": "a2087172_0e89bd1d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d6773181_6d14e901",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -438,6 +462,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f56ab38_dca28be4",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-02T21:27:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7c07c85b_02d68da7",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 5
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec9ffccd_ae10490c",
@@ -475,6 +523,30 @@
       "side": 1,
       "message": "`WriteProtectDescriptor` is one of the paramters of `VerifyEror::FailedStatusRegister()`",
       "parentUuid": "ec9ffccd_ae10490c",
+      "range": {
+        "startLine": 427,
+        "startChar": 11,
+        "endLine": 427,
+        "endChar": 33
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e573ec_38c5b49c",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-02T21:27:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "15d260ae_8a09a315",
       "range": {
         "startLine": 427,
         "startChar": 11,
@@ -532,6 +604,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1f9bb3_60ecfcd6",
+        "filename": "rust/enum_as/BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-02T21:27:59Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "775cdfc8_bd97f3ac",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71025c90_e77ebe39",
@@ -569,6 +665,30 @@
       "side": 1,
       "message": "here and in other enum_as comments: I think we should keep it unchanged so that it can be used in ti50, no?",
       "parentUuid": "71025c90_e77ebe39",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccf9ff5_61056c89",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-02T21:27:59Z",
+      "side": 1,
+      "message": "let\u0027s do that",
+      "parentUuid": "380090c8_fd990cb6",
       "range": {
         "startLine": 34,
         "startChar": 3,
