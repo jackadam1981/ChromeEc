@@ -3,11 +3,11 @@
  * found in the LICENSE file.
  */
 
-/* Clocks and power management settings for STM32L4xx as well as STM32L5xx. */
+/* Clocks and power management settings for STM32L5xx. */
 
 #include "builtin/assert.h"
 #include "chipset.h"
-#include "clock-l4.h"
+#include "clock_chip.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"

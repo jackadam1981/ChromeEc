@@ -6,7 +6,7 @@
 /* Clocks and power management settings */
 
 #include "chipset.h"
-#include "clock-f.h"
+#include "clock_chip.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
