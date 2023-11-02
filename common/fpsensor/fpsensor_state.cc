@@ -28,6 +28,7 @@ extern "C" {
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
 #include "fpsensor/fpsensor_utils.h"
+#include "fpsensor_algorithm.h"
 #include "fpsensor_driver.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
