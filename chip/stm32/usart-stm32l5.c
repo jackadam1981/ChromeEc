@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "hooks.h"

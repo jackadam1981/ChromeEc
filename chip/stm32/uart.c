@@ -6,6 +6,7 @@
 /* USART driver for Chrome EC */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "dma.h"
 #include "gpio.h"
@@ -244,6 +245,9 @@ static void uart_freq_change(void)
 #elif defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32L5)
 	/* UART clocked from HSI 16 */
 	freq = 16000000;
+#elif defined(CHIP_FAMILY_STM32L5)
+	/* UART clocked from the main clock, L5 supports APB prescaler */
+	freq = clock_get_apb_freq();
 #else
 	/* UART clocked from the main clock */
 	freq = clock_get_freq();
