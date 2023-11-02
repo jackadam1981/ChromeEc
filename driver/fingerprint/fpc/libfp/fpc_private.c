@@ -7,6 +7,7 @@
 #include "console.h"
 #include "driver/fingerprint/fpc/fpc_sensor.h"
 #include "fpc_bio_algorithm.h"
+#include "fpc_libfp_algorithm.h"
 #include "fpc_private.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_utils.h"
@@ -31,7 +32,7 @@
 #define FP_SENSOR_OPEN_DELAY_US (500 * MSEC)
 
 /* Decode internal error codes from FPC's sensor library */
-#define FPC_GET_INTERNAL_CODE(res) (((res)&0x000fc000) >> 14)
+#define FPC_GET_INTERNAL_CODE(res) (((res) & 0x000fc000) >> 14)
 /* There was a finger on the sensor when calibrating finger detect */
 #define FPC_INTERNAL_FINGER_DFD FPC_ERROR_INTERNAL_38
 

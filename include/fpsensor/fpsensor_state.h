@@ -11,6 +11,7 @@
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
+#include "fpsensor_algorithm.h"
 #include "fpsensor_driver.h"
 #include "fpsensor_state_without_driver_info.h"
 #include "link_defs.h"
