@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde7e218_016334d8",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-02T23:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd0dad9a_94ff33ea",
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bb48abd_ddadf2e2",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-11-02T21:27:59Z",
       "side": 1,
       "message": "these tests don\u0027t seem like the belong in this crate.\n\nCan you create a new crate call `enum_as_tests` please and put them there instead?\n\n---\n\nAlso the last CL:*6626347 that touched these files has landed, so ToT as of now should be good to copy to the new `enum_as_tests` crate",
+      "range": {
+        "startLine": 804,
+        "startChar": 4,
+        "endLine": 811,
+        "endChar": 5
+      },
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d531d76c_512cfc59",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-02T23:28:31Z",
+      "side": 1,
+      "message": "I looked at this some more and just can\u0027t see a reason for moving these tests into a separate crate.\n\nThe two other crates included in this patch have their own unit tests, the purpose of the test included here is just to test the items in this module. If you think some tests are not necessary - let\u0027s drop them, will this work?",
+      "parentUuid": "1bb48abd_ddadf2e2",
       "range": {
         "startLine": 804,
         "startChar": 4,

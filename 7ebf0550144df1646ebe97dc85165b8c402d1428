@@ -749,6 +749,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "279144fa_858814ed",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-02T23:28:31Z",
+      "side": 1,
+      "message": "the goal is to share this crate between gsc-utils and ti50,. this is why it copied as is, why does it have to be modified?",
+      "parentUuid": "1323bc43_8bae3421",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec148d3e_5db9717b",
         "filename": "rust/enum_as/src/lib.rs",
         "patchSetId": 3
