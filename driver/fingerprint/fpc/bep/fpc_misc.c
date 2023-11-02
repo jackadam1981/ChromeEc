@@ -8,6 +8,7 @@
 #include "shared_mem.h"
 #include "uart.h"
 
+#include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -16,12 +17,16 @@ void __unused *fpc_malloc(uint32_t size)
 	char *data;
 	int rc;
 
+	printf("FPC Alloc %d\n", size);
+
 	rc = shared_mem_acquire(size, (char **)&data);
 
 	if (rc == 0)
 		return data;
-	else
+	else {
+		printf("FPC Alloc Failed.\n");
 		return NULL;
+	}
 }
 
 void __unused fpc_free(void *data)
