@@ -28,6 +28,7 @@ struct image_data {
 	char cros_fwid[32];
 	uint32_t cookie3;
 } __packed;
+BUILD_ASSERT(offsetof(struct image_data, version) == 4);
 
 extern const struct image_data current_image_data;
 extern const char build_info[];
