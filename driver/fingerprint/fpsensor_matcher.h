@@ -47,6 +47,15 @@
 #define FP_SENSOR_IMAGE_OFFSET (0)
 #endif
 
-typedef uint8_t fp_template_t[FP_ALGORITHM_TEMPLATE_SIZE];
+#ifdef CONFIG_LIB_DRUID
+#include "mcu/primitives/templates.h"
+
+#undef FP_ALGORITHM_TEMPLATE_SIZE
+#define FP_ALGORITHM_TEMPLATE_SIZE sizeof(fingerprintauth::FingerTemplate)
+
+#undef FP_MAX_FINGER_COUNT
+#define FP_MAX_FINGER_COUNT 2
+
+#endif /* CONFIG_LIB_DRUID */
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_MATCHER_H_ */
