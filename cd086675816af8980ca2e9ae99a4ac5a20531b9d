@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf39205_f1d887ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-11-02T22:12:50Z",
+      "side": 1,
+      "message": "\u003e \"proejct\" is a possible misspelling of \"project\".\n\nPlease fix.",
+      "parentUuid": "745aadaa_20ff47ad",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "cd086675816af8980ca2e9ae99a4ac5a20531b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e691208b_aa0e3a4a",
+        "filename": "zephyr/program/it8xxx2_evb/it82002_evb/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-11-02T22:12:50Z",
+      "side": 1,
+      "message": "Nit: 2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "cd086675816af8980ca2e9ae99a4ac5a20531b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf5cb38_96cd95d5",
+        "filename": "zephyr/program/it8xxx2_evb/it82002_evb/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-11-02T22:12:50Z",
+      "side": 1,
+      "message": "Not sure what unimplemented means. But do we even need this since this GPIO is required mostly for EC Vboot and that too when used with Cr50.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "cd086675816af8980ca2e9ae99a4ac5a20531b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
