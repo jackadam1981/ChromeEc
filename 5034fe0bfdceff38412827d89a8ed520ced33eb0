@@ -16,6 +16,46 @@
       "message": "Added coverage for error paths where I corrected the return value.",
       "revId": "5034fe0bfdceff38412827d89a8ed520ced33eb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e145096_ac3baf7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-02T22:36:54Z",
+      "side": 1,
+      "message": "One",
+      "revId": "5034fe0bfdceff38412827d89a8ed520ced33eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e57c14_62969da3",
+        "filename": "zephyr/test/drivers/smart_battery/src/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-02T22:36:54Z",
+      "side": 1,
+      "message": "You\u0027re not testing this condition - writing to an in progress cutoff. Should it be tested?",
+      "range": {
+        "startLine": 606,
+        "startChar": 36,
+        "endLine": 606,
+        "endChar": 69
+      },
+      "revId": "5034fe0bfdceff38412827d89a8ed520ced33eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
