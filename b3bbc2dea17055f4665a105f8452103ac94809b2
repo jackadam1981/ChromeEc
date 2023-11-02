@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "607d8791_6b5e1dad",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "Within the kernel we use `u16` if we want to have 16 bits. The usage of the `short` type is fairly limited from what I recall because of what you say, C doesn\u0027t really say how big it is.\n\nAre you hoping to rely on `sizeof(short)` to be 16 bits? And then clamping the value to 16 bits otherwise to comply with the uABI? If so I\u0027d have a `#define MAX_SEGS_PER_XFER U16_MAX` that conveys that instead of using `U16_MAX`. It would be even better to somehow make that be related to something in the UAPI but I don\u0027t know how.\n\nAlso, you can have modparams clamp their values when written. See code like this https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/net/sunrpc/xprtsock.c;l\u003d3657;drc\u003d99d99825fc075fd24b60cc9cf0fb1e20b9c16b0f",
+      "parentUuid": "15db5453_9d254103",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7136bb52_821adba0",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 24
@@ -208,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b217c6a_01acbfdf",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "It sounds like you want `reinit_completion()` then?",
+      "parentUuid": "23e0056f_2e5f174f",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 7
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f75d5491_99ce470a",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 24
@@ -243,6 +291,30 @@
       "side": 1,
       "message": "This is the only line doing `struct i2c_adapter` -\u003e `struct i2cp_controller` though.  Still want a separate function?",
       "parentUuid": "f75d5491_99ce470a",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 64
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48af70c9_ae636190",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "Sure? Or at least put it on one line.",
+      "parentUuid": "710c026d_9282ee3d",
       "range": {
         "startLine": 238,
         "startChar": 9,
@@ -560,6 +632,30 @@
       "side": 1,
       "message": "\"This is neat.\" 😂\n\nThis is another one of those defensive/pedantic size safety checks where I didn\u0027t feel comfortable making assumptions about size relationships between fixed size and traditional types.\n\nThis also tries to strictly avoid undefined behavior from the unsigned -\u003e signed conversion.\n\nHow exactly did I end up with this mess of a line?  Well...\n* `master_xfer()` (from `struct i2c_algorithm`) returns `int` with negative values for errors, so `pdata-\u003ei2c_xfer_ret` is the same.\n* `arg_copy.error` is *fixed size* because that\u0027s required or at least recommended for all ioctl fields (besides pointers).\n* `arg_copy.error` is *unsigned* because it\u0027s only for holding an errno.  If it were signed with negative errno values, there would be no meaning for positive values, and therefore an extra error condition to check and handle (unexpected positive value).\n* If this used `-arg_copy.error` instead of `-((s32)arg_copy.error)` would it potentially convert to `s16`?  If so and userspace set a value `\u003e S16_MAX` then it would overflow and risk undefined behavior from the sign conversion.\n* I want the UAPI to have separate `error` and `num_msgs`, even though the internal kernel `i2c_transfer` / `master_xfer` API doesn\u0027t currently, because it\u0027s far more sensical and maybe someday the kernel API will get cleaned up.\n   * See the i2c-core-base.c comment about this: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/i2c/i2c-core-base.c;drc\u003d564d73c4d9201526bd976b9379d2aaf1a7133e84;l\u003d2263\n\nI do think I\u0027ve made this more complicated than necessary, I would appreciate thoughts and opinions on it.  I really do want to keep `error` and `num_msgs` separate in the UAPI though.",
       "parentUuid": "daeb7a0c_ebd37acd",
+      "range": {
+        "startLine": 667,
+        "startChar": 24,
+        "endLine": 667,
+        "endChar": 60
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a01022_a299f01c",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "I\u0027d try to avoid doing too much in one line of code. Code is less clear when it is doing many things at a time. Kernel code should be simple and easy to understand.\n\nAs I understand it, `arg_copy.error` is `__u16`. What are the values? Are they supposed to be kernel error values? Maybe they should be numbers that are also in the uABI?",
+      "parentUuid": "2b127878_1d0b82af",
       "range": {
         "startLine": 667,
         "startChar": 24,

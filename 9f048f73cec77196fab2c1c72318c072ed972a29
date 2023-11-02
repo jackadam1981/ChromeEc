@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd4e0198_5ebffaa3",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is talked about in kernel style guide but usually the ++ is attached directly to the variable being incremented.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 3
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6dd56e_e1009eaa",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 26
@@ -65,6 +88,75 @@
       "writtenOn": "2023-11-01T23:53:02Z",
       "side": 1,
       "message": "TODO: Is this needed, or okay to not have trailing Null?\n\n@amstan@chromium.org @swboyd@chromium.org Any thoughts on this one?  The field it\u0027s setting is `char name[48]`.",
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9deb03_7b0f984f",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "I think you can just set `pdata-\u003ei2c_adapter.name[sizeof(pdata-\u003ei2c_adapter.name) - 1] \u003d \u0027\\0\u0027` and return the `ret` value to the caller.",
+      "range": {
+        "startLine": 345,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 60
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e5c4ae_c31cc1d2",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "Instead of using a completion it may make more sense to use the `wait_event()` API (see include/linux/wait.h). That way you can have the condition argument check `pdata-\u003exfer_state`, and then wake up the task after changing the state. It may also help avoid holding the mutex over such a wide area.",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 36
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5391db65_1fa21d99",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-11-02T23:15:25Z",
+      "side": 1,
+      "message": "Just int? I doubt we care how many bits this is.",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 549,
+        "endChar": 4
+      },
       "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
