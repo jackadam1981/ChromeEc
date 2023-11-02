@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "073a09b1_33e4d451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-02T19:48:23Z",
+      "side": 1,
+      "message": "moved most tests from ti50_macros, two last ones in the test{} module did not port easily, removed.",
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
