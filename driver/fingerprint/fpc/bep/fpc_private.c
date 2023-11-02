@@ -4,8 +4,10 @@
  */
 
 #include "common.h"
-#include "driver/fingerprint/fpc/fpc_sensor.h"
+#include "fpc_bep_matcher.h"
+#include "fpc_bep_sensor.h"
 #include "fpc_bio_algorithm.h"
+#include "fpc_sensor.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "gpio.h"
@@ -16,8 +18,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-static uint8_t
-	enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4) = { 0 };
+static fp_fpc_enroll_ctx_t enroll_ctx __aligned(4) = { 0 };
 
 /* Recorded error flags */
 static uint16_t errors;
