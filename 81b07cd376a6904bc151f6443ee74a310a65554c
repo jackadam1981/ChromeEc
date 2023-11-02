@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333dcf9f_16338cb8",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-02T00:24:26Z",
+      "side": 1,
+      "message": "If you want to do something like that, wrap the class like:\n\n```\nclass EdtArgumentParser(argparse.ArgumentParser):\n\n    def __init__(self, *args, **kwargs):\n        super(EdtArgumentParser, self).__init__(*args, **kwargs)\n        self.add_argument(\"--zephyr-base\", ...)\n        self.add_argument(\"--edt-pickle\", ...)\n        ...\n```\n\nAnd than instantiate the `EdtArgumentParser` instead of `ArgumentParser`.",
+      "revId": "81b07cd376a6904bc151f6443ee74a310a65554c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
