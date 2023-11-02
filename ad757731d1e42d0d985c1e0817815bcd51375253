@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc00fbe7_212a6254",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4723,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-02T22:29:25Z",
+      "side": 0,
+      "message": "Because this is part of a published API (sort of), it\u0027s better to leave this definition in and mark them obsolete.\n\nThis prevents future users from trying to reclaim these bits.",
+      "range": {
+        "startLine": 4715,
+        "startChar": 0,
+        "endLine": 4723,
+        "endChar": 0
+      },
+      "revId": "ad757731d1e42d0d985c1e0817815bcd51375253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
