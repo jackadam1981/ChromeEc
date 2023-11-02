@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "072c1e44_cb4dfc73",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-02T20:31:30Z",
+      "side": 1,
+      "message": "Right, but there should be a space. checkpatch is enforcing an invalid syntax rule, since it thinks we are accessing an index of `TEXT_MAP_ITEM(k, v)` array.",
+      "parentUuid": "f58b187f_7e59cd08",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 31
+      },
+      "revId": "8b92d371a4b66773c27dfe8e8fab52ab927aeb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0844b3b4_671bc90c",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
