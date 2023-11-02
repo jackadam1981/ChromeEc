@@ -10,6 +10,9 @@ from pathlib import Path
 import sys
 from typing import List, Optional
 
+import zmake.modules
+import zmake.version
+
 from scripts import util
 
 
@@ -33,8 +36,12 @@ def parse_args(argv: Optional[List[str]] = None):
 class Manifest:
     """Manifest class to operate the component manifest."""
 
-    def __init__(self):
-        self.manifest = {"version": 1, "component_list": []}
+    def __init__(self, ec_version):
+        self.manifest = {
+            "manifest_version": 1,
+            "ec_version": ec_version,
+            "component_list": [],
+        }
 
     def insert_component(self, ctype, name, i2c_port, i2c_addr, usbc_port):
         """Insert the component inform to the component manifest.
@@ -240,7 +247,16 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     logging.info("Running CME, outputting to %s", args.manifest_file)
     i2c_portmap = find_i2c_portmap(edtlib, edt)
 
-    manifest = Manifest()
+    # Compute the version string.
+    build_dir = args.edt_pickle.parents[2]
+    project_name = build_dir.name
+    ec_version_string = zmake.version.get_version_string(
+        project_name,
+        build_dir / "zephyr_base",
+        zmake.modules.locate_from_directory(build_dir / "modules"),
+        static=False,
+    )
+    manifest = Manifest(ec_version_string)
 
     iterate_usbc_components(edtlib, edt, i2c_portmap, manifest)
 
