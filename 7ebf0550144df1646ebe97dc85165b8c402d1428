@@ -242,6 +242,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "46900a28_a2f50f99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-11-02T22:38:36Z",
+      "side": 1,
+      "message": "Agreed, I\u0027d come to the same conclusion that the short-term goal of getting the tool landed was more important than the long-term goal of decoupling errors from the capsules crate, which would let it be an easy-to-share source of truth.",
+      "parentUuid": "c902bd1e_f7775507",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d6773181_6d14e901",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -689,6 +713,30 @@
       "side": 1,
       "message": "let\u0027s do that",
       "parentUuid": "380090c8_fd990cb6",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1323bc43_8bae3421",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-11-02T22:38:36Z",
+      "side": 1,
+      "message": "Couldn\u0027t this just move the minimum functions necessary and have `ti50_macros` re-export the things that moved? `enum_as` as a library name is smaller in scope than what it actually defines, so I think this should either:\n\nA) rename the library to something more general, like `enum_utils`, or\nB) the non-`enum_as` methods remain where they are, this library only defines `enum_as`, and `enum_as` gets re-exported in `ti50_macros`.",
+      "parentUuid": "dccf9ff5_61056c89",
       "range": {
         "startLine": 34,
         "startChar": 3,
