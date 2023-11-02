@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7034cf_cc72f4ac",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-02T19:53:59Z",
+      "side": 1,
+      "message": "Can you `+ 1` to this number so we know the order stuff it run in between `board_init` and `spi_init`",
+      "range": {
+        "startLine": 646,
+        "startChar": 34,
+        "endLine": 646,
+        "endChar": 51
+      },
+      "revId": "44a6bdb493047e7288300f4651e6d2ca1bb579d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
