@@ -22,6 +22,30 @@
       },
       "revId": "c8b44aa8d4de8b764953b0c0a4e4f8c1d810e538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcfd2e3e_00f0e2ab",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-02T21:19:49Z",
+      "side": 1,
+      "message": "it looks like `rstrip` just strips characters and not the whole substring as a single unit: https://docs.python.org/3/library/stdtypes.html#str.rstrip\n\nI\u0027ve removed the error message, the function returns the original name if `ctype` is not found.",
+      "parentUuid": "e09ae15a_7c20598e",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 36
+      },
+      "revId": "c8b44aa8d4de8b764953b0c0a4e4f8c1d810e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
