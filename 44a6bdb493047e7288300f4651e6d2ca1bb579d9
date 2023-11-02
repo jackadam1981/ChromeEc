@@ -22,6 +22,30 @@
       },
       "revId": "44a6bdb493047e7288300f4651e6d2ca1bb579d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96661236_95b7d925",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-02T20:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7034cf_cc72f4ac",
+      "range": {
+        "startLine": 646,
+        "startChar": 34,
+        "endLine": 646,
+        "endChar": 51
+      },
+      "revId": "44a6bdb493047e7288300f4651e6d2ca1bb579d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
