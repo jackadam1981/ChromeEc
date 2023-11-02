@@ -73,20 +73,85 @@ struct board_batt_params {
 	struct battery_info batt_info;
 } __packed __aligned(4);
 
+/**
+ * Struct used to represent battery configs embedded in FW.
+ */
 struct batt_conf_embed {
 	char *manuf_name;
 	char *device_name;
 	struct board_batt_params config;
 };
 
+#define SBS_MAX_STRING_SIZE 32
+
+/**
+ * Struct used to export a battery config from/to AP. Only struct_version has
+ * size and position independent of struct_version. The rest varies as
+ * struct_version changes.
+ *
+ * This is also used to represent an active battery config in RAM. For that,
+ * buffers are allocated to the strings and board_batt_params is aligned.
+ */
 struct batt_conf_export {
-	/* Version of struct batt_conf_header and its internals. */
+	/* Version independent field. It's always here as a uint8_t. */
 	uint8_t struct_version;
+	/* Version 0 */
 	uint8_t reserved[3];
-	char manuf_name[16];
-	char device_name[16];
+	char manuf_name[SBS_MAX_STRING_SIZE];
+	char device_name[SBS_MAX_STRING_SIZE];
 	struct board_batt_params config;
 } __packed __aligned(4);
+
+/**
+ * Header describing the data layout of a battery config stored in CBI. Only
+ * struct_version has size and position independent of struct_version. The rest
+ * varies as struct_version changes.
+ *
+ * Version 0
+ * Layout:
+ *  +-------------+
+ *  | header      |
+ *  +-------------+
+ *  |             | ^
+ *  | manuf_name  | | manuf_name_size
+ *  |             | v
+ *  +-------------+
+ *  | device_name | ^
+ *  |             | | device_name_size
+ *  |             | v
+ *  +-------------+
+ *  | config      | ^
+ *  |             | |
+ *  |             | | cbi data size
+ *  |             | |    - (header_size+manuf_name_size+device_name_size)
+ *  |             | |
+ *  |             | v
+ *  +-------------+
+ * Note:
+ * - manuf_name and device_name are not null-terminated.
+ * - The config isn't aligned. It'll be aligned when it's copied to struct
+ *   batt_conf_export.
+ *
+ * Reading from CBI:
+ * 1. Read CBI_TAG_BATTERY_CONFIG from CBI.
+ * 2. Verify struct_version is 0.
+ * 3. Parse manuf_name using manuf_name_size.
+ * 4. Parse device_name using device_name_size.
+ * 5. Parse config.
+ */
+struct batt_conf_header {
+	/* Version independent field. It's always here as a uint8_t. */
+	uint8_t struct_version;
+	/* Version 0 members */
+	uint8_t manuf_name_size;
+	uint8_t device_name_size;
+	uint8_t reserved;
+	/* manuf_name, device_name, config follow after this. */
+} __packed;
+
+#define BATT_CONF_MAX_SIZE                                           \
+	(sizeof(struct batt_conf_header) + SBS_MAX_STRING_SIZE * 2 + \
+	 sizeof(struct board_batt_params))
 
 /* Forward declare board specific data used by common code */
 extern const struct batt_conf_embed board_battery_info[];

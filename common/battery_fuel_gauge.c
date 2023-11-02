@@ -204,36 +204,61 @@ static int bcfg_search_in_cbi(struct batt_conf_export *conf)
 	BCFGPRT("Battery says %s,%s", manuf, device);
 
 	while (1) {
-		struct batt_conf_export tmp;
-		uint8_t size = sizeof(tmp);
+		uint8_t buf[BATT_CONF_MAX_SIZE];
+		uint8_t size = sizeof(buf);
+		uint8_t *p = buf;
+		struct batt_conf_header *head;
+		char *m, *d;
 		int rv;
 
-		rv = cbi_get_board_info(tag, (void *)&tmp, &size);
+		rv = cbi_get_board_info(tag, buf, &size);
 		if (rv) {
 			BCFGPRT("No more configs (%d)", rv);
 			return rv;
 		}
-		BCFGPRT("Checking config #%d...", tag - CBI_TAG_BATTERY_CONFIG);
+		BCFGPRT("Checking config #%d (size=%d)...",
+			tag - CBI_TAG_BATTERY_CONFIG, size);
 		tag++;
 
-		if (tmp.struct_version > 0) {
-			BCFGPRT("Version mismatch: 0x%x", tmp.struct_version);
+		head = (struct batt_conf_header *)buf;
+		if (head->struct_version > 0) {
+			BCFGPRT("Version mismatch: 0x%x", head->struct_version);
 			continue;
 		}
 
-		if (strcasecmp(tmp.manuf_name, manuf)) {
-			BCFGPRT("Manuf mismatch: %s", tmp.manuf_name);
+		/* Check total size. */
+		if (size != sizeof(*head) + head->manuf_name_size +
+				    head->device_name_size +
+				    sizeof(conf->config)) {
+			BCFGPRT("Size mismatch: %u != %lu", size,
+				sizeof(*head) + head->manuf_name_size +
+					head->device_name_size);
 			continue;
 		}
 
-		/* "" means a wild card (or don't care). */
-		if (tmp.device_name[0] && strcasecmp(tmp.device_name, device)) {
-			BCFGPRT("Name mismatch: %s", tmp.device_name);
+		/* Check manufacturer name. */
+		p += sizeof(*head);
+		m = (char *)p;
+		if (strncasecmp(m, manuf, head->manuf_name_size)) {
+			BCFGPRT("Manuf mismatch: %*s", head->manuf_name_size,
+				m);
+			continue;
+		}
+
+		/* (Optional) Check device name. */
+		p += head->manuf_name_size;
+		d = (char *)p;
+		if (strncasecmp(d, device, head->device_name_size)) {
+			BCFGPRT("Name mismatch: %*s", head->device_name_size,
+				d);
 			continue;
 		}
 
 		BCFGPRT("Matched");
-		memcpy(conf, &tmp, sizeof(*conf));
+		p += head->device_name_size;
+		memcpy(&conf->config, p, sizeof(conf->config));
+		strncpy(conf->manuf_name, m, head->manuf_name_size);
+		strncpy(conf->device_name, d, head->device_name_size);
 
 		return EC_SUCCESS;
 	}
