@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc90b518_3b22e0b5",
+        "filename": "zephyr/emul/include/emul_intel_pd_controller.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-02T22:05:38Z",
+      "side": 1,
+      "message": "You should create wrappers for each of these APIs.  That will make the test code easier to read.\n\n```\nstatic int emul_intel_pd_controller_connect_data(const struct emul *target)\n{\n    struct emul_intel_pd_controller_backend_api *backend_api \u003d\n\t\t(struct emul_intel_pd_controller_backend_api *)target-\u003ebackend_api;\n\n    return backend_api-\u003econnect_data(target);\n}\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "eed84a773a26c86ccf30caea60d2af7307d1a800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
