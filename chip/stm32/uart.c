@@ -6,6 +6,7 @@
 /* USART driver for Chrome EC */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "dma.h"
 #include "gpio.h"
