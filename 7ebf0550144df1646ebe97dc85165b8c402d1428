@@ -773,6 +773,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd0d4724_f8fac098",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-11-02T23:50:08Z",
+      "side": 1,
+      "message": "The reason I ask for it to be modified is because `enum_as` is not a good name for what the library actually defines.\n\nWill gsc-utils need to use more than `enum_as`? I\u0027m suggesting it be split or be renamed to `enum_utils` if you see gsc-utils using these other macros.\n\nWe are going to add more proc-macros that have nothing to do with enums, so the `ti50_proc_macros` crate will need to stick around long term regardless of what you do here. That\u0027s why I think it will be simpler to split out `enum_as` into its own crate and put it here, and then just re-export it from `ti50_macros`.",
+      "parentUuid": "279144fa_858814ed",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec148d3e_5db9717b",
         "filename": "rust/enum_as/src/lib.rs",
         "patchSetId": 3

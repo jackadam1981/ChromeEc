@@ -98,6 +98,30 @@
       },
       "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01779b63_2128efe3",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-11-02T23:50:08Z",
+      "side": 1,
+      "message": "It\u0027s also unclear to me why there\u0027s a need for a separate test crate - does `cargo test` work?",
+      "parentUuid": "d531d76c_512cfc59",
+      "range": {
+        "startLine": 804,
+        "startChar": 4,
+        "endLine": 811,
+        "endChar": 5
+      },
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
