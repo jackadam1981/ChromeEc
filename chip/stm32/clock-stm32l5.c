@@ -3,11 +3,11 @@
  * found in the LICENSE file.
  */
 
-/* Clocks and power management settings for STM32L4xx as well as STM32L5xx. */
+/* Clocks and power management settings for STM32L5xx. */
 
 #include "builtin/assert.h"
 #include "chipset.h"
-#include "clock-l4.h"
+#include "clock_chip.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -17,12 +17,16 @@
 #include "registers.h"
 #include "rtc.h"
 #include "timer.h"
+#include "task.h"
 #include "uart.h"
 #include "util.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ##args)
+
+#define STM32L5_RTC_REQ 1000000
+#define STM32L5_LSI_CLOCK 32000
 
 /* High-speed oscillator is 16 MHz */
 #define STM32_HSI_CLOCK 16000000
@@ -33,10 +37,10 @@
 
 #ifdef CONFIG_STM32_CLOCK_HSE_HZ
 #define RTC_PREDIV_A 39
-#define RTC_FREQ ((STM32L4_RTC_REQ) / (RTC_PREDIV_A + 1)) /* Hz */
+#define RTC_FREQ ((STM32L5_RTC_REQ) / (RTC_PREDIV_A + 1)) /* Hz */
 #else /* from LSI clock */
 #define RTC_PREDIV_A 1
-#define RTC_FREQ (STM32L4_LSI_CLOCK / (RTC_PREDIV_A + 1)) /* Hz */
+#define RTC_FREQ (STM32L5_LSI_CLOCK / (RTC_PREDIV_A + 1)) /* Hz */
 #endif
 #define RTC_PREDIV_S (RTC_FREQ - 1)
 /*
