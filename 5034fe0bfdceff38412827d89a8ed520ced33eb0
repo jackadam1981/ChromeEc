@@ -56,6 +56,30 @@
       },
       "revId": "5034fe0bfdceff38412827d89a8ed520ced33eb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f63a83_e753810e",
+        "filename": "zephyr/test/drivers/smart_battery/src/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-11-02T23:07:03Z",
+      "side": 1,
+      "message": "Since that\u0027s part of the cutoff procedure, it\u0027s exercised by the test cases that test battery cutoff as a feature rather than the driver implementation. It\u0027s also difficult to test the non-error branch here because the test doesn\u0027t actually want to write anything.",
+      "parentUuid": "48e57c14_62969da3",
+      "range": {
+        "startLine": 606,
+        "startChar": 36,
+        "endLine": 606,
+        "endChar": 69
+      },
+      "revId": "5034fe0bfdceff38412827d89a8ed520ced33eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
