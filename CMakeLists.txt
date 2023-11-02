@@ -29,6 +29,9 @@ add_subdirectory(zephyr)
 add_subdirectory(common)
 add_subdirectory(third_party)
 
-if (EXISTS "private/fingerprint")
+# The EXISTS behavior is only well defined for full paths.
+get_filename_component(private_repo_abs_path "private/fingerprint" ABSOLUTE)
+if (EXISTS "${private_repo_abs_path}")
+  message("Private repo exists")
   add_subdirectory(private/fingerprint)
 endif()
