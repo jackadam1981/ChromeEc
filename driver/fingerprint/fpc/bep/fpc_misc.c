@@ -11,18 +11,23 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 
 __staticlib_hook void *fpc_malloc(uint32_t size)
 {
 	char *data;
 	int rc;
 
+	printf("FPC Alloc %d\n", size);
+
 	rc = shared_mem_acquire(size, (char **)&data);
 
 	if (rc == 0)
 		return data;
-	else
+	else {
+		printf("FPC Alloc Failed.\n");
 		return NULL;
+	}
 }
 
 __staticlib_hook void fpc_free(void *data)
