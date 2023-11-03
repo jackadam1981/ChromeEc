@@ -47,11 +47,6 @@ enum fifo_header {
 
 /* Sensor resolution in number of bits. This sensor has fixed resolution. */
 #define BMI_RESOLUTION 16
-/* Min and Max sampling frequency in mHz */
-#define BMI_ACCEL_MIN_FREQ 12500
-#define BMI_ACCEL_MAX_FREQ MOTION_MAX_SENSOR_FREQUENCY(1600000, 100000)
-#define BMI_GYRO_MIN_FREQ 25000
-#define BMI_GYRO_MAX_FREQ MOTION_MAX_SENSOR_FREQUENCY(3200000, 100000)
 
 enum bmi_running_mode {
 	STANDARD_UI_9DOF_FIFO = 0,
