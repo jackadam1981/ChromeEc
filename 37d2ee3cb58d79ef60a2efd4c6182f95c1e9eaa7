@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba0bb21_7396778a",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-11-03T19:28:19Z",
+      "side": 1,
+      "message": "What do you think about using a macro for these? something like #define MAX_NAME_LEN 32",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "37d2ee3cb58d79ef60a2efd4c6182f95c1e9eaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
