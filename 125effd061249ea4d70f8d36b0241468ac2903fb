@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb7c97a_ffb1bcc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-03T22:28:05Z",
+      "side": 1,
+      "message": "There is a tast-test `/cros/remote/bundles/cros/firmware/fmap.go` to check the FMAP layout, like inclusion, overlap. But AFAIK no test to check if the offset of the FWID sections is in a particular location. A new test is needed.",
+      "parentUuid": "16bf8de1_0c719a84",
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23d5690_a8ecd47d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffed2eff_6375bc86",
+        "filename": "zephyr/include/cros/integrated_fwid.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-03T22:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23d5690_a8ecd47d",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e398f55_5233c07c",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-11-03T15:15:52Z",
       "side": 1,
       "message": "Is this required for binman to work? If so, could you add a comment? If not, perhaps move it to a separate CL?",
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208ac483_684321ab",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-03T22:28:05Z",
+      "side": 1,
+      "message": "Yes, binmin needs these files in the work directory. Is the above comment in the line 170 good enough?",
+      "parentUuid": "3e398f55_5233c07c",
       "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
