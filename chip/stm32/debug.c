@@ -3,8 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "common.h"
+#include "compile_time_macros.h"
 #include "debug.h"
+#include "gpio.h"
+#include "panic.h"
 #include "registers.h"
 
 /*
@@ -37,4 +41,67 @@ __override bool debugger_was_connected(void)
 	 * Only power-on-reset / power-cycle.
 	 */
 	return STM32_DBGMCU_CR & STM32_DBGMCU_CR_LOW_PWR_FRIENDLY;
+}
+
+__override void debugger_disable(void)
+{
+	/* Only board which */
+	if (IS_ENABLED(BOARD_BLOONCHIPPER) || IS_ENABLED(BOARD_DARTMONKEY)) {
+		/*
+		 * Ensure that we are always called after the gpio peripherals
+		 * have been enabled. Otherwise, our gpio configuration will be
+		 * ignored by the peripheral. This is just an simple indicator
+		 * and the an exhaustive check of the peripheral config.
+		 */
+#ifdef CHIP_FAMILY_STM32F4
+		assert(STM32_RCC_AHB1ENR_STRUCT.gpio_a_en == true);
+		assert(STM32_RCC_AHB1ENR_STRUCT.gpio_b_en == true);
+#endif
+#ifdef CHIP_FAMILY_STM32H7
+		assert(STM32_RCC_AHB4ENR_STRUCT.gpio_a_en == true);
+		assert(STM32_RCC_AHB4ENR_STRUCT.gpio_b_en == true);
+#endif
+
+		/*
+		 * There are two crucial GPIO settings that determine whether a
+		 * connected JTAG/SWD debugger will operate correctly.
+		 *
+		 * 1. The GPIO mode must be configured to utilize the
+		 *    alternate function.
+		 * 2. The alternate function selector must be set to
+		 *    system/default/0.
+		 *
+		 * Modifying either of these two settings will effectively
+		 * obstruct communication between the physical debugger and the
+		 * debug module. As an added precaution, we modify both
+		 * settings. Please see the board's gpio.inc file for detailed
+		 * information about each debug pin.
+		 *
+		 * To conserve power, we configure the pins as analog input
+		 * instead of digital input. See ST's AN4365 section 1.2.6
+		 * for more detail.
+		 */
+		gpio_set_alternate_function(STM32_GPIOA_BASE, GENMASK(15, 13),
+					    GPIO_ALT_FUNC_1);
+		gpio_set_alternate_function(STM32_GPIOB_BASE, GENMASK(4, 3),
+					    GPIO_ALT_FUNC_1);
+		gpio_set_flags_by_mask(STM32_GPIOA_BASE, GENMASK(15, 13),
+				       GPIO_ANALOG);
+		gpio_set_flags_by_mask(STM32_GPIOB_BASE, GENMASK(4, 3),
+				       GPIO_ANALOG);
+	} else {
+		panic("Called unimplemented security function debugger_disable");
+		__builtin_unreachable();
+	}
+}
+
+__override void debugger_enable(void)
+{
+	/*
+	 * Configure the debug pins as specified in the board's gpio.inc.
+	 *
+	 * A failure here would simply mean that the module wasn't specified
+	 * in the gpio.inc, which isn't critical.
+	 */
+	gpio_config_module(MODULE_DEBUG, 1);
 }

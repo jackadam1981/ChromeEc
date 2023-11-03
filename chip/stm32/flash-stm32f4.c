@@ -6,7 +6,7 @@
 /* Flash memory module for stm32f3 and stm32f4 */
 
 #include "common.h"
-#include "flash-f.h"
+#include "flash-rdp.h"
 #include "flash-regs.h"
 #include "flash.h"
 #include "hooks.h"
