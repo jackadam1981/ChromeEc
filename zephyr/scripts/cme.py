@@ -16,6 +16,43 @@ import zmake.version
 from scripts import util
 
 
+# The devicetrees for motionsensors store i2c address as strings. They are
+# converted into addresses in a series of .h files. To build the component
+# manifest, these addresses are copied into the dictionary below.
+# Update the dictionary as needed when more motionsensors are added.
+SENSOR_I2C_ADDRESSES = {
+    "BMI160_ADDR0_FLAGS": "0x68",
+    "BMI260_ADDR0_FLAGS": "0x68",
+    "BMA4_I2C_ADDR_PRIMARY": "0x18",
+    "BMA4_I2C_ADDR_SECONDARY": "0x19",
+    "BMI3_ADDR_I2C_PRIM": "0x68",
+    "BMI3_ADDR_I2C_SEC": "0x69",
+    "BMA2x2_I2C_ADDR1_FLAGS": "0x18",
+    "BMA2x2_I2C_ADDR2_FLAGS": "0x19",
+    "BMA2x2_I2C_ADDR3_FLAGS": "0x10",
+    "BMA2x2_I2C_ADDR4_FLAGS": "0x11",
+    "KX022_ADDR0_FLAGS": "0x1e",
+    "KX022_ADDR1_FLAGS": "0x1f",
+    "KXCJ9_ADDR0_FLAGS": "0x0E",
+    "KXCJ9_ADDR1_FLAGS": "0x0D",
+    "LIS2DS_ADDR0_FLAGS": "0x1a",
+    "LIS2DS_ADDR1_FLAGS": "0x1e",
+    "LIS2DWL_ADDR0_FLAGS": "0x18",
+    "LIS2DWL_ADDR1_FLAGS": "0x19",
+    "LIS2DH_ADDR0_FLAGS": "0x18",
+    "LIS2DH_ADDR1_FLAGS": "0x19",
+    "ICM426XX_ADDR0_FLAGS": "0x68",
+    "ICM426XX_ADDR1_FLAGS": "0x69",
+    "ICM42607_ADDR0_FLAGS": "0x68",
+    "ICM42607_ADDR1_FLAGS": "0x69",
+    "LSM6DSM_ADDR0_FLAGS": "0x6a",
+    "LSM6DSM_ADDR1_FLAGS": "0x6b",
+    "LSM6DSO_ADDR0_FLAGS": "0x6a",
+    "LSM6DSO_ADDR1_FLAGS": "0x6b",
+    "TCS3400_I2C_ADDR_FLAGS": "0x39",
+}
+
+
 def parse_args(argv: Optional[List[str]] = None):
     """Returns parsed command-line arguments"""
     parser = util.EdtArgumentParser(
@@ -43,7 +80,7 @@ class Manifest:
             "component_list": [],
         }
 
-    def insert_component(self, ctype, name, i2c_port, i2c_addr, usbc_port):
+    def insert_component(self, ctype, name, i2c_port, i2c_addr, usbc_port=None):
         """Insert the component inform to the component manifest.
 
         Args:
@@ -57,14 +94,42 @@ class Manifest:
             "component_type": ctype,
             "component_name": name,
             "i2c": {"port": i2c_port, "addr": i2c_addr},
-            "usbc": {"port": usbc_port},
         }
+        if usbc_port:
+            component.update({"usbc": {"port": usbc_port}})
+
+        for comp in self.manifest["component_list"]:
+            if comp == component:
+                return
         self.manifest["component_list"].append(component)
 
     def json_dump(self, filepath):
         """Dump the component manifest to a JSON file."""
         with open(filepath, "w", encoding="utf-8") as outfile:
             outfile.write(json.dumps(self.manifest, indent=4))
+
+
+def node_is_valid(node, i2c_node, i2c_portmap):
+    """Checks if a given node can be inserted into the manifest
+
+    Args:
+        node: Devicetree node object.
+        i2c_node: Devicetree node object for the i2c.
+        i2c_portmap: Dict of the mapping from I2C name to remote port number.
+    """
+    if "compatible" not in node.props:
+        logging.error("Compatible not found: %s", node.name)
+        return False
+
+    if i2c_node and i2c_node.name not in i2c_portmap:
+        logging.info(
+            "Component %s(%s) not on I2C bus, skip it",
+            node.name,
+            node.props["compatible"].val[0],
+        )
+        return False
+
+    return True
 
 
 def find_i2c_portmap(edtlib, edt):
@@ -154,19 +219,10 @@ def insert_i2c_component(ctype, node, usbc_port, i2c_portmap, manifest):
     Args:
         node: Devicetree node object.
         usbc_port: USB-C port number
-        i2c_portman: Dict of the mapping from I2C name to remote port number.
+        i2c_portmap: Dict of the mapping from I2C name to remote port number.
         manifest: Manifest object.
     """
-    if "compatible" not in node.props:
-        logging.error("Compatible not found: %s", node.name)
-        return
-
-    if node.parent and node.parent.name not in i2c_portmap:
-        logging.info(
-            "Component %s(%s) not on I2C bus, skip it",
-            node.name,
-            node.props["compatible"].val[0],
-        )
+    if not node_is_valid(node, node.parent, i2c_portmap):
         return
 
     # TODO(b/308031064): Add the probe methods if multiple components share the
@@ -189,7 +245,7 @@ def iterate_usbc_components(edtlib, edt, i2c_portmap, manifest):
     Args:
         edtlib: Module object for the edtlib library.
         edt: EDT object representation of a devicetree
-        i2c_portman: Dict of the mapping from I2C name to remote port number.
+        i2c_portmap: Dict of the mapping from I2C name to remote port number.
         manifest: Manifest object.
     """
     try:
@@ -226,6 +282,78 @@ def iterate_usbc_components(edtlib, edt, i2c_portmap, manifest):
             insert_i2c_component("tcpc", tcpc, port, i2c_portmap, manifest)
 
 
+def insert_motionsense_component(node, i2c_portmap, manifest):
+    """Insert the motion sense component to the manifest.
+
+    Args:
+        node: Devicetree node object.
+        i2c_portmap: Dict of the mapping from I2C name to remote port number.
+        manifest: Manifest object.
+    """
+    if "port" in node.props:
+        i2c = node.props["port"].val.props["i2c-port"].val
+    else:
+        logging.info(
+            "Component %s(%s) not on I2C bus, skip it",
+            node.name,
+            node.props["compatible"].val[0],
+        )
+        return
+    if not node_is_valid(node, i2c, i2c_portmap):
+        return
+
+    if node.props["i2c-spi-addr-flags"].val in SENSOR_I2C_ADDRESSES:
+        i2c_addr = SENSOR_I2C_ADDRESSES[node.props["i2c-spi-addr-flags"].val]
+    else:
+        logging.error(
+            "i2c address for %s is %s. The reg value is unknown. \
+            Please add the address value to SENSOR_I2C_ADDRESSES",
+            node.props["compatible"].val[0],
+            node.props["i2c-spi-addr-flags"].val,
+        )
+        sys.exit(1)
+
+    compatible_name = node.props["compatible"].val[0]
+
+    # compatible suffix for light sensor
+    device_name = compatible_name_parser("clear", compatible_name)
+    if device_name != compatible_name:
+        component_type = "Ambient Light Sensor"
+    else:
+        component_type = "Accelerometer/IMU"
+
+    # accel and gryo are both listed under Accelerometer/IMU in AVL.
+    device_name = compatible_name_parser("accel", device_name)
+    device_name = compatible_name_parser("gyro", device_name)
+
+    manifest.insert_component(
+        component_type,
+        device_name,
+        i2c_portmap[i2c.name],
+        i2c_addr,
+    )
+
+
+def iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest):
+    """Iterate all motion sensor components and insert them to the manifest.
+
+    Args:
+        edtlib: Module object for the edtlib library.
+        edt: EDT object representation of a devicetree
+        i2c_portmap: Dict of the mapping from I2C name to remote port number.
+        manifest: Manifest object.
+    """
+    try:
+        mss = edt.get_node("/motionsense-sensor")
+    except edtlib.EDTError:
+        # If the motionsense-sensor node doesn't exist, return success.
+        logging.error("No motionsense-sensor node found")
+        return
+
+    for node in mss.children.values():
+        insert_motionsense_component(node, i2c_portmap, manifest)
+
+
 def main(argv: Optional[List[str]] = None) -> Optional[int]:
     """The main function.
 
@@ -260,6 +388,8 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     manifest = Manifest(ec_version_string)
 
     iterate_usbc_components(edtlib, edt, i2c_portmap, manifest)
+
+    iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest)
 
     # TODO(b/308028560): Iterate all sensor components.
 
