@@ -63,6 +63,9 @@ void slp_event(enum gpio_signal signal)
 
 void board_init(void)
 {
+	/* Disable JTAG/SWD */
+	gpio_config_module(MODULE_DEBUG, 0);
+
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_SLP_ALT_L);
 	gpio_enable_interrupt(GPIO_SLP_L);
