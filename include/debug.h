@@ -23,4 +23,18 @@ __override_proto bool debugger_is_connected(void);
  */
 __override_proto bool debugger_was_connected(void);
 
+/*
+ * Disable the debugger interface, in the context of security lockdown.
+ */
+__override_proto void debugger_disable(void);
+
+/*
+ * Enable the debugger interface.
+ *
+ * This is a seperate function from debugger_disable to ensure that the
+ * enable code path can be completely removed during the build process, if
+ * unused, to improve security posture.
+ */
+__override_proto void debugger_enable(void);
+
 #endif /* __CROS_EC_DEBUG_H */
