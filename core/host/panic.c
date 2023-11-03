@@ -13,6 +13,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+void panic(const char *msg)
+{
+	assert(msg);
+
+	fprintf(stderr, "\n** PANIC: %s\n", msg);
+	fflush(stderr);
+	task_dump_trace();
+
+	exit(1);
+}
+
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
 		       int linenum)
 {
