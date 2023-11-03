@@ -821,6 +821,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0f3f201_4de41a38",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T14:23:40Z",
+      "side": 1,
+      "message": "I don\u0027t think the proc macro crate needs to be separated, just renamed from `enum_as` to `enum_utils` since scope of the crate increased over time.",
+      "parentUuid": "67fe4d20_dbdc852c",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec148d3e_5db9717b",
         "filename": "rust/enum_as/src/lib.rs",
         "patchSetId": 3
