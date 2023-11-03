@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0251e83_fba27f3d",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1914,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-03T18:34:43Z",
+      "side": 1,
+      "message": "No, this was a copy/paste mistake.  A define like this only makes sense for 1-bit flags that are either present or absent.",
+      "parentUuid": "eb041602_563655e2",
+      "range": {
+        "startLine": 1914,
+        "startChar": 8,
+        "endLine": 1914,
+        "endChar": 61
+      },
+      "revId": "6d14dae219993dadf4631b717b3cfe915e427a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2a143a_6d52178b",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-03T18:20:23Z",
       "side": 1,
       "message": "nit: fold?",
+      "revId": "6d14dae219993dadf4631b717b3cfe915e427a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd7f67a_1cbf875a",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1917,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-03T18:34:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2a143a_6d52178b",
       "revId": "6d14dae219993dadf4631b717b3cfe915e427a0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
