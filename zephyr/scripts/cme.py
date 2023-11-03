@@ -121,8 +121,9 @@ class Manifest:
             "component_type": ctype,
             "component_name": name,
             "i2c": {"port": i2c_port, "addr": i2c_addr},
-            "usbc": {"port": usbc_port},
         }
+        if usbc_port is not None:
+            component.update({"usbc": {"port": usbc_port}})
         self.manifest["component_list"].append(component)
 
     def json_dump(self, filepath):
@@ -272,6 +273,110 @@ def iterate_usbc_components(edtlib, edt, i2c_portmap, manifest):
             insert_i2c_component("tcpc", tcpc, port, i2c_portmap, manifest)
 
 
+def insert_motionsense_component(node, i2c, i2c_portmap, manifest):
+    """Insert the motion sense component to the manifest.
+
+    Args:
+        node: Devicetree node object.
+        i2c: Devicetree node object of ic2 port
+        manifest: Manifest object.
+    """
+    if "compatible" not in node.props:
+        logging.error("Compatible not found: %s", node.name)
+        return
+
+    if i2c and i2c.name not in i2c_portmap:
+        logging.info(
+            "Component %s(%s) not on I2C bus, skip it",
+            node.name,
+            node.props["compatible"].val[0],
+        )
+        return
+
+    component_type = node.props["location"].val
+    if component_type == "MOTIONSENSE_LOC_BASE":
+        component_type = "base_sensor"
+    elif component_type == "MOTIONSENSE_LOC_LID":
+        component_type = "lid_sensor"
+    elif component_type == "MOTIONSENSE_LOC_CAMERA":
+        component_type = "camera_sensor"
+    else:
+        component_type = "unsupported"
+
+    # the sensor devicetrees store i2c address as strings. They are converted
+    # into addresses in c code.
+    sensor_i2c_address = {
+        "BMI160_ADDR0_FLAGS": "0x68",
+        "BMI260_ADDR0_FLAGS": "0x68",
+        "BMA4_I2C_ADDR_PRIMARY": "0x18",
+        "BMA4_I2C_ADDR_SECONDARY": "0x19",
+        "BMI3_ADDR_I2C_PRIM": "0x68",
+        "BMI3_ADDR_I2C_SEC": "0x69",
+        "BMA2x2_I2C_ADDR1_FLAGS": "0x18",
+        "BMA2x2_I2C_ADDR2_FLAGS": "0x19",
+        "BMA2x2_I2C_ADDR3_FLAGS": "0x10",
+        "BMA2x2_I2C_ADDR4_FLAGS": "0x11",
+        "KX022_ADDR0_FLAGS": "0x1e",
+        "KX022_ADDR1_FLAGS": "0x1f",
+        "KXCJ9_ADDR0_FLAGS": "0x0E",
+        "KXCJ9_ADDR1_FLAGS": "0x0D",
+        "LIS2DS_ADDR0_FLAGS": "0x1a",
+        "LIS2DS_ADDR1_FLAGS": "0x1e",
+        "LIS2DWL_ADDR0_FLAGS": "0x18",
+        "LIS2DWL_ADDR1_FLAGS": "0x19",
+        "LIS2DH_ADDR0_FLAGS": "0x18",
+        "LIS2DH_ADDR1_FLAGS": "0x19",
+        "ICM426XX_ADDR0_FLAGS": "0x68",
+        "ICM426XX_ADDR1_FLAGS": "0x69",
+        "ICM42607_ADDR0_FLAGS": "0x68",
+        "ICM42607_ADDR1_FLAGS": "0x69",
+        "LSM6DSM_ADDR0_FLAGS": "0x6a",
+        "LSM6DSM_ADDR1_FLAGS": "0x6b",
+        "LSM6DSO_ADDR0_FLAGS": "0x6a",
+        "LSM6DSO_ADDR1_FLAGS": "0x6b",
+        "TCS3400_I2C_ADDR_FLAGS": "0x39",
+    }
+    if node.props["i2c-spi-addr-flags"].val in sensor_i2c_address:
+        i2c_addr = sensor_i2c_address[node.props["i2c-spi-addr-flags"].val]
+    else:
+        logging.error(
+            "i2c address for %s is %s. The reg value is unknown.",
+            node.props["compatible"].val[0],
+            node.props["i2c-spi-addr-flags"].val,
+        )
+        i2c_addr = node.props["i2c-spi-addr-flags"].val + "_value_unsupported"
+
+    manifest.insert_component(
+        component_type,
+        node.props["compatible"].val[0],
+        i2c_portmap[i2c.name],
+        i2c_addr,
+        None,
+    )
+
+
+def iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest):
+    """Iterate all motion sensor components and insert them to the manifest.
+
+    Args:
+        edtlib: Module object for the edtlib library.
+        edt: EDT object representation of a devicetree
+        i2c_portman: Dict of the mapping from I2C name to remote port number.
+        manifest: Manifest object.
+    """
+    try:
+        mss = edt.get_node("/motionsense-sensor")
+    except edtlib.EDTError:
+        # If the motionsense-sensor node doesn't exist, return success.
+        logging.error("No motionsense-sensor node found")
+        return
+
+    for node in mss.children.values():
+        i2c = node.props["port"].val.props["i2c-port"].val
+
+        insert_motionsense_component(node, i2c, i2c_portmap, manifest)
+
+
 def main(argv: Optional[List[str]] = None) -> Optional[int]:
     """The main function.
 
@@ -296,6 +401,8 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     manifest = Manifest()
 
     iterate_usbc_components(edtlib, edt, i2c_portmap, manifest)
+
+    iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest)
 
     # TODO(b/308028560): Iterate all sensor components.
 
