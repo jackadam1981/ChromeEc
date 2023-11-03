@@ -119,6 +119,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b5a7ab8b_8ec8dd62",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2023-11-03T18:01:05Z",
+      "side": 1,
+      "message": "from your earlier explanations I2C adapters typically reside in the kernel for efficient operation. \n\nSo do you want to add that\n\"\"I2C adapters typically reside in the kernel for efficient operation. However, userspace implementation is also possible through the /dev/i2c-pseudo interface. To enable this functionality, load the i2c-pseudo module.\"\"",
+      "parentUuid": "d89bb08d_a582b937",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44e52dbb_1885ef7d",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "ACK.\nIt\u0027s probably ok to assume the knowlege.\n\nLet\u0027s put it this way, one of your target audience for these userspace controller drivers should be people that were ready to make a kernel controller driver (including the prereq knowledge) but changed their mind in the last second to put it in userspace.",
       "parentUuid": "658e1dce_8cef53fa",
+      "range": {
+        "startLine": 35,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 77
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf6fe1c_1fd16d5d",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2023-11-03T18:01:05Z",
+      "side": 1,
+      "message": "does it make sense to provide short summary of the below while going into details. \n\n\nSummary:\n\n\"This section provides detailed instructions on how to use the userspace I2C adapter. It covers creating and destroying adapters, handling I2C transactions, using polling, and shutting down the adapter.\"\n\nExplanation\n\n1) Creating and Destroying adapter\n\nTo create a new I2C adapter, open the /dev/i2c-pseudo device file and call the I2CP_IOCTL_START ioctl. The adapter will continue to exist until its file descriptor is closed. Multiple pseudo adapters can be used simultaneously.\n\n2) Handling I2C Transactions\n\n3) Using Polling\n\nPolling is supported for both blocking and non-blocking operation. The ``POLLIN`` event indicates that an I2C transaction is available for ``I2CP_IOCTL_XFER_REQ``. The POLLOUT event indicates that ``I2CP_IOCTL_XFER_REPLY`` may be valid. The ``POLLHUP`` event indicates that ``I2CP_IOCTL_SHUTDOWN`` has been called.\n\n4) Shutting Down the Adapter",
+      "parentUuid": "4937dd8c_8d5ed362",
       "range": {
         "startLine": 35,
         "startChar": 62,
