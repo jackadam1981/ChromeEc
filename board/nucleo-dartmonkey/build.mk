@@ -17,6 +17,7 @@ test-list-y=\
        compile_time_macros \
        crc \
        debug \
+       debug_stm32 \
        exception \
        flash_physical \
        flash_write_protect \
