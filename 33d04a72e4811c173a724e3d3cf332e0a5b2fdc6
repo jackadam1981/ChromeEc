@@ -104,6 +104,24 @@
       "parentUuid": "c88c4eb6_f1c5b53b",
       "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd97002c_77fd49df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-03T09:21:39Z",
+      "side": 1,
+      "message": "if it\u0027s only few values why not do it generic as a start? does not sound like much extra work, move the file up the hierarchy, create a binding to hold the values, instantiate it for rex and refer to the values, or is there a major blocker I\u0027m missing?",
+      "parentUuid": "0a3dedf4_e844f2ff",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
