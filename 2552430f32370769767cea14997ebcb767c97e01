@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "893116d4_d58ccd73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T21:48:42Z",
+      "side": 1,
+      "message": "CQ Error:\n```\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/shim/src/flash.c:143:48: warning: code should be clang-formatted [-Wclang-format-violations]\n\n```",
+      "revId": "2552430f32370769767cea14997ebcb767c97e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
