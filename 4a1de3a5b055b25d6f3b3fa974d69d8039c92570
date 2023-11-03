@@ -70,6 +70,30 @@
       },
       "revId": "4a1de3a5b055b25d6f3b3fa974d69d8039c92570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddba73f_27491f9c",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-11-03T23:02:16Z",
+      "side": 1,
+      "message": "Rex devices have not been locked yet so we should be good to go.",
+      "parentUuid": "e3886dca_9564d11a",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "4a1de3a5b055b25d6f3b3fa974d69d8039c92570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
