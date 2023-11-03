@@ -9,7 +9,7 @@
 #include "builtin/assert.h"
 #include "clock.h"
 #include "console.h"
-#include "flash-f.h"
+#include "flash-rdp.h"
 #include "flash.h"
 #include "hooks.h"
 #include "panic.h"
