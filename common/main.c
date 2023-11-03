@@ -16,6 +16,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "cros_board_info.h"
+#include "debug.h"
 #include "dma.h"
 #include "eeprom.h"
 #include "flash.h"
@@ -117,6 +118,9 @@ test_mockable __keep int main(void)
 	 */
 	crec_flash_pre_init();
 #endif
+
+	/* Disabling the debugger requires the gpio peripheral to be configured. */
+	debugger_disable_on_boot();
 
 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */
 	clock_init();

@@ -257,6 +257,12 @@ static int is_wp_enabled(void)
 #endif
 }
 
+#ifdef CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
+bool is_flash_rdp_enabled(void) {
+	return !!is_wp_enabled();
+}
+#endif
+
 static int set_wp(int enabled)
 {
 	int rv;

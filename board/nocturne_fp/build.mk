@@ -15,6 +15,8 @@ CHIP_VARIANT:=stm32h7x3
 board-y=
 board-rw=ro_workarounds.o board_rw.o
 board-ro=board_ro.o
+board-y+=debug.o
+
 # If we're mocking the sensor detection for testing (so we can test
 # sensor/transport permutations in the unit tests), don't build the real sensor
 # detection.
@@ -35,6 +37,7 @@ test-list-y=\
        cortexm_fpu \
        crc \
        debug \
+       debug_stm32 \
        exception \
        flash_physical \
        flash_write_protect \
