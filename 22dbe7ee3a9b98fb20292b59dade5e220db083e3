@@ -425,6 +425,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9413ab4e_bbcfc761",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2023-11-03T17:39:14Z",
+      "side": 1,
+      "message": "where do error handling happens. like checking the error code. \n\nif (reply_arg.error \u003d\u003d 0) {\n    // Process the data in reply_arg.buf\n} else {\n    // Handle the error\n}",
+      "parentUuid": "1f99f377_0678d27d",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b400226_a3f5c4e9",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
@@ -508,6 +532,30 @@
       "side": 1,
       "message": "ACK, I\u0027ll rethink the example to have a real processing loop.  Leaving unresolved.",
       "parentUuid": "872ee9e9_7988de12",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f9afa7_d98f5c66",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2023-11-03T17:39:14Z",
+      "side": 1,
+      "message": "i was also wondering that. we dont generally handle just single transfer request correct. how can it handle multiple transfer requests without requiring the user to manually call the function each time.",
+      "parentUuid": "93104248_f742d3ab",
       "range": {
         "startLine": 151,
         "startChar": 3,
