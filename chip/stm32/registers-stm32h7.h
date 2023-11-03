@@ -18,6 +18,8 @@
 #error "This header file should not be included directly."
 #endif
 
+#include <stdint.h>
+
 /* --- IRQ numbers --- */
 #define STM32_IRQ_WWDG 0
 #define STM32_IRQ_PVD 1
@@ -404,6 +406,35 @@
 #define STM32_RCC_AHB2ENR_CRYPTEN BIT(4)
 #define STM32_RCC_AHB4ENR REG32(STM32_RCC_BASE + 0x0E0)
 #define STM32_RCC_AHB4ENR_GPIOMASK 0x3ff
+
+struct stm32_rcc_ahb4enr {
+	uint8_t gpio_a_en : 1;
+	uint8_t gpio_b_en : 1;
+	uint8_t gpio_c_en : 1;
+	uint8_t gpio_d_en : 1;
+	uint8_t gpio_e_en : 1;
+	uint8_t gpio_f_en : 1;
+	uint8_t gpio_g_en : 1;
+	uint8_t gpio_h_en : 1;
+	uint8_t gpio_i_en : 1;
+	uint8_t gpio_j_en : 1;
+	uint8_t gpio_k_en : 1;
+	uint32_t _reserved_1 : 8;
+	uint8_t crc_en : 1;
+	uint32_t _reserved_2 : 1;
+	uint8_t bdma_en : 1;
+	uint32_t _reserved_3 : 2;
+	uint8_t adc3_en : 1;
+	uint8_t hsem_en : 1;
+	uint32_t _reserved_4 : 2;
+	uint8_t bkpram_en : 1;
+	uint32_t _reserved_5 : 3;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_rcc_ahb4enr) == 4);
+
+#define STM32_RCC_AHB4ENR_STRUCT \
+	(*((volatile struct stm32_rcc_ahb4enr *)&STM32_RCC_AHB4ENR))
+
 #define STM32_RCC_APB3ENR REG32(STM32_RCC_BASE + 0x0E4)
 #define STM32_RCC_APB1LENR REG32(STM32_RCC_BASE + 0x0E8)
 #define STM32_RCC_APB1HENR REG32(STM32_RCC_BASE + 0x0EC)

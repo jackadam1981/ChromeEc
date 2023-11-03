@@ -16,6 +16,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "cros_board_info.h"
+#include "debug.h"
 #include "dma.h"
 #include "eeprom.h"
 #include "flash.h"
@@ -154,6 +155,17 @@ test_mockable __keep int main(void)
 #ifdef CONFIG_BRINGUP
 	ccprintf("\n\nWARNING: BRINGUP BUILD\n\n\n");
 #endif
+
+	/*
+	 * Conditionally disable the JTAG/SWD debugger interface.
+	 * We can't move this earlier in the boot because it relies on the GPIO
+	 * peripheral being enabled (enabled and clocked) to be able to
+	 * reconfigure the pins. Additionally, the possible panic message could
+	 * use the uart peripheral for console output.
+	 * The important part is that the debug interface is disabled before
+	 * other application specific tasks are started.
+	 */
+	debugger_disable_on_boot();
 
 #ifdef CONFIG_WATCHDOG
 	/*

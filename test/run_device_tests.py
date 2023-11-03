@@ -262,6 +262,11 @@ class AllTests:
             TestConfig(test_name="boringssl_crypto"),
             TestConfig(test_name="cortexm_fpu"),
             TestConfig(test_name="crc"),
+            TestConfig(
+                test_name="debug_stm32",
+                toggle_power=True,
+                enable_hw_write_protect=True,
+            ),
             TestConfig(test_name="exception"),
             TestConfig(
                 test_name="flash_physical",

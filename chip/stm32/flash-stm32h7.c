@@ -7,6 +7,7 @@
 #include "clock.h"
 #include "common.h"
 #include "cpu.h"
+#include "flash-rdp.h"
 #include "flash-regs.h"
 #include "flash.h"
 #include "hooks.h"
@@ -256,6 +257,13 @@ static int is_wp_enabled(void)
 	return !!(STM32_FLASH_OPTSR_CUR(0) & FLASH_OPTSR_RSS1);
 #endif
 }
+
+#ifdef CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
+bool is_flash_rdp_enabled(void)
+{
+	return !!is_wp_enabled();
+}
+#endif
 
 static int set_wp(int enabled)
 {

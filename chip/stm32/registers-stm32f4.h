@@ -21,6 +21,10 @@
 #error "This header file should not be included directly."
 #endif
 
+#include "compile_time_macros.h"
+
+#include <stdint.h>
+
 /* --- IRQ numbers --- */
 #define STM32_IRQ_WWDG 0
 #define STM32_IRQ_PVD 1
@@ -543,6 +547,27 @@
 #define STM32_RCC_AHB1ENR_BKPSRAMEN BIT(18)
 #define STM32_RCC_AHB1ENR_DMA1EN BIT(21)
 #define STM32_RCC_AHB1ENR_DMA2EN BIT(22)
+
+struct stm32_rcc_ahb1enr {
+	uint8_t gpio_a_en : 1;
+	uint8_t gpio_b_en : 1;
+	uint8_t gpio_c_en : 1;
+	uint8_t gpio_d_en : 1;
+	uint8_t gpio_e_en : 1;
+	uint8_t gpio_f_en : 1;
+	uint8_t gpio_g_en : 1;
+	uint8_t gpio_h_en : 1;
+	uint32_t _reserved_1 : 4;
+	uint8_t crc_en : 1;
+	uint32_t _reserved_2 : 8;
+	uint8_t dma_1_en : 1;
+	uint8_t dma_2_en : 1;
+	uint32_t _reserved_3 : 9;
+};
+BUILD_ASSERT(sizeof(struct stm32_rcc_ahb1enr) == 4);
+
+#define STM32_RCC_AHB1ENR_STRUCT \
+	(*((volatile struct stm32_rcc_ahb1enr *)&STM32_RCC_AHB1ENR))
 
 /* TODO(nsanders): normalize naming.*/
 #define STM32_RCC_HB1_DMA1 BIT(21)
