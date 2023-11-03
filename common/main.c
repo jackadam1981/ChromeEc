@@ -16,6 +16,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "cros_board_info.h"
+#include "debug.h"
 #include "dma.h"
 #include "eeprom.h"
 #include "flash.h"
@@ -46,6 +47,9 @@
 
 test_mockable __keep int main(void)
 {
+	/* Disabling the debugger must remain the first item of main. */
+	debugger_disable_on_boot();
+
 	int mpu_pre_init_rv = EC_SUCCESS;
 
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
