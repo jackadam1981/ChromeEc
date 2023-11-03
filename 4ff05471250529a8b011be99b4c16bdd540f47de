@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167b0f4a_82c96c92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T21:21:49Z",
+      "side": 1,
+      "message": "This isn\u0027t accurate.  CONFIG_PLATFORM_EC_AP_RESET_LOG is enabled on all non-Intel Zephyr boards.  Only boards with `CONFIG_AP_PWRSEQ` need support for AP reset logging.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "4ff05471250529a8b011be99b4c16bdd540f47de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
