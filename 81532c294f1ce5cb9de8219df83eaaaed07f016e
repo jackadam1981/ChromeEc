@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20388a6_1e6fa684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T13:54:06Z",
+      "side": 1,
+      "message": "Hopefully you can add a unit test as well",
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "734462d2_41bd0696",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T13:54:06Z",
+      "side": 1,
+      "message": "nit: remove space.\n\n(vscode should be able to format this C file for you automatically -- or `cros format`)",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954b8145_21feeaf6",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T13:54:06Z",
+      "side": 1,
+      "message": "just like the \"Price is Right\"!",
+      "range": {
+        "startLine": 190,
+        "startChar": 29,
+        "endLine": 191,
+        "endChar": 47
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323d97b5_20a9aa21",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T13:54:06Z",
+      "side": 1,
+      "message": "This code is ripe for a unit test. Could you add a unit test or two to verify this logic please?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 3
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
