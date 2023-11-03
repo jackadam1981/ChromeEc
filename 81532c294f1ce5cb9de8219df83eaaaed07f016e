@@ -133,6 +133,30 @@
       },
       "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2cc7df_af12b7f3",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T17:45:40Z",
+      "side": 1,
+      "message": "Looks good to me. I don\u0027t quite know the most up to date way either, but now we have a little bit of coverage! 😊",
+      "parentUuid": "767313cc_2fffa92e",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 3
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
