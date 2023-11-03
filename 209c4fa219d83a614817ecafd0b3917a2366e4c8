@@ -49,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81d2772e_ebc139f5",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:02:02Z",
+      "side": 1,
+      "message": "Typo: PLATFORM_EC_SPI_CLOCK_DIVIDE",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 35
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76875427_2408fb58",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:02:02Z",
+      "side": 1,
+      "message": "Typo: divider",
+      "range": {
+        "startLine": 167,
+        "startChar": 16,
+        "endLine": 167,
+        "endChar": 23
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db2f9c6a_ac9a35c3",
         "filename": "zephyr/Kconfig.flash",
         "patchSetId": 19
