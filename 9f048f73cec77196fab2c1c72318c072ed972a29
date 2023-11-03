@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea64ba7_647aa5b8",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4e0198_5ebffaa3",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 3
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d6dd56e_e1009eaa",
@@ -115,6 +139,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc89b608_5447496e",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "Marking resolved, I\u0027ll ensure there\u0027s a trailing Null unless/until a reviewer (CrOS or upstream) tells me not to bother.",
+      "parentUuid": "0d6dd56e_e1009eaa",
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7e8d84_eb1b67da",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c9deb03_7b0f984f",
+      "range": {
+        "startLine": 345,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 60
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13e5c4ae_c31cc1d2",
@@ -140,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17c86e81_05d6bcc8",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "ACK, leaving this unresolved to consider if `wait_event()` would simplify this.\n\nNote there\u0027s no downside to holding the mutex for most of the function.  I2C is serial after all, and the subsystem enforces that for adapter drivers, so there\u0027s never anything for a parallel I2CP_IOCTL_XFER_REQ to do besides wait for a turn.",
+      "parentUuid": "13e5c4ae_c31cc1d2",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 36
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5391db65_1fa21d99",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 26
@@ -151,6 +241,30 @@
       "writtenOn": "2023-11-02T23:15:25Z",
       "side": 1,
       "message": "Just int? I doubt we care how many bits this is.",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 549,
+        "endChar": 4
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591269b5_84f7734d",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "It needs to be large enough to hold `U16_MAX`, `int` isn\u0027t guaranteed for that.\n\nThis is one reason why declaring it inside the `for` loop is honestly better - it\u0027s then obvious which index field this is for, and then it\u0027s clear this is to match a fixed size type.\n\nI see there\u0027s already many declarations inside `for ()` loops in the kernel, and the kernel style guide doesn\u0027t say anything about avoiding it, so I\u0027ve moved this declaration back there for clarity.\n\nhttps://source.chromium.org/search?q\u003dcase:yes%20%5E%5Cs*for%5Cs*%5C(int%5Cs\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fthird_party%2Fkernel%2Fupstream%2F\n\nhttps://www.kernel.org/doc/html/latest/process/coding-style.html",
+      "parentUuid": "5391db65_1fa21d99",
       "range": {
         "startLine": 549,
         "startChar": 1,

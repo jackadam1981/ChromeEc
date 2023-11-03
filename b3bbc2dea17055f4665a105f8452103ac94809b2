@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96efd71e_0c732253",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "Enforcing the max in modparams does seem best (not simplest!), so that it\u0027s expressed and caught earlier.  Done.",
+      "parentUuid": "607d8791_6b5e1dad",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7136bb52_821adba0",
@@ -254,6 +278,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e418b553_eda8b55d",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "`reinit_completion()` is only safe if nobody is waiting for completion anymore - which I don\u0027t believe is guaranteed here.",
+      "parentUuid": "6b217c6a_01acbfdf",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 7
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f75d5491_99ce470a",
@@ -315,6 +363,30 @@
       "side": 1,
       "message": "Sure? Or at least put it on one line.",
       "parentUuid": "710c026d_9282ee3d",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 64
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c1ed69_5e7b1657",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48af70c9_ae636190",
       "range": {
         "startLine": 238,
         "startChar": 9,
@@ -666,6 +738,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f82c41_c120695b",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "The expectation is `errno` values, though I don\u0027t think i2c-pseudo should enforce that.\n\nI\u0027ve updated this to be easier to understand (I think).  In overflow cases the result is different now than before, but it still guarantees the essential aspects:\n* `arg_copy.error \u003e 0` must result in `pdata-\u003exfer_ret \u003c 0`\n* `arg_copy.error \u003d\u003d 0` must result in `pdata-\u003exfer_ret \u003e\u003d 0`",
+      "parentUuid": "00a01022_a299f01c",
+      "range": {
+        "startLine": 667,
+        "startChar": 24,
+        "endLine": 667,
+        "endChar": 60
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b6012cb_4562d987",
@@ -713,6 +809,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04faab4_2dd228a1",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "I think this should stay in sysfs, since it\u0027s for monitoring userspace utilization of a limited resource (the limit being `max_adapters` module parameter).",
+      "parentUuid": "497972a3_9470143d",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 25
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26e3bd85_2ff5a4d8",
@@ -750,6 +870,30 @@
       "side": 1,
       "message": "ACK, will do if I don\u0027t move these to debugfs.  Leaving unresolved.",
       "parentUuid": "26e3bd85_2ff5a4d8",
+      "range": {
+        "startLine": 827,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 25
+      },
+      "revId": "b3bbc2dea17055f4665a105f8452103ac94809b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9edc39_ba3f8124",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T02:46:45Z",
+      "side": 1,
+      "message": "Done.  I\u0027ve kept this in sysfs and added `Documentation/ABI/testing/sysfs-devices-i2c-pseudo` file to the patch.",
+      "parentUuid": "32c7a8a9_8f8e2633",
       "range": {
         "startLine": 827,
         "startChar": 2,
