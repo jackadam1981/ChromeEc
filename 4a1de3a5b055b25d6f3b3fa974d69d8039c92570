@@ -22,6 +22,30 @@
       },
       "revId": "4a1de3a5b055b25d6f3b3fa974d69d8039c92570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12eb4eb2_b9b5da43",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-03T22:40:18Z",
+      "side": 1,
+      "message": "Assume all rex devices and the variants haven\u0027t enable the WP (locked), the firmware update will also update the EC RO so its fmap will change that points to the correct address.\n\nIf my assumption is not true, should abandon this change. The RW-FWID still points to the end of EC-RW (as the fmap in RO) but this 32B area won\u0027t be updated as the RW-FW is now smaller.",
+      "parentUuid": "058b1c2a_16afaf2f",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "4a1de3a5b055b25d6f3b3fa974d69d8039c92570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
