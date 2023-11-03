@@ -193,6 +193,11 @@ config AP_PWRSEQ_DEBUG_MODE_COMMAND
 	  during this time EC may lose Sx lines, This option enables console
 	  command to enable debug mode and prevent force shutdown.
 
+config AP_PWRSEQ_RESET_LOG
+	bool "Enable AP reset event logging"
+	depends on PLATFORM_EC_AP_RESET_LOG
+	default y
+
 endif
 
 config AP_EVENTS
