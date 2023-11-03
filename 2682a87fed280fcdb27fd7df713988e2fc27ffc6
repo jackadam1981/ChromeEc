@@ -1103,6 +1103,30 @@
       },
       "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21dcd20c_7633a0e7",
+        "filename": "zephyr/shim/chip/mchp/second_loader/startup_ARMCM4.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T15:11:06Z",
+      "side": 1,
+      "message": "I handle creating the required file under platform/ec/third_party.  I\u0027m currently waiting for approval to add this file.  I\u0027ll let you know once it\u0027s available and then MCHP can make the modification needed to the file.",
+      "parentUuid": "bbf98fa0_856beda1",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
