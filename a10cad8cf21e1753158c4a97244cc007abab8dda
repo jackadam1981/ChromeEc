@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8da969_a0f2bd75",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:21:34Z",
+      "side": 1,
+      "message": "This isn\u0027t used by your test.  So you can delete for now.\n\nIf you keep it, I assume this will be used to set the cable polarity?  I suggest changing the second parameter to an enum that conveys what you are requesting: `ORIENTATION_REVERSE`/`ORIENTATION_NORMAL` or similar.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 43
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb896d6_508cbb29",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:21:34Z",
+      "side": 1,
+      "message": "This is also not used.  If you keep this, `speed` should be an enum to select 5 or 10 Gbps",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 79
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "544ca598_17bd93f2",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:21:34Z",
+      "side": 1,
+      "message": "The ztest framework provides a common way to reset emulators, so this doesn\u0027t need to be part of the backend API.\n\nYou can add a ZTEST_RULE to the emulator and the test framework will automatically call your reset routine.\n\n[Example](https://github.com/zephyrproject-rtos/zephyr/blob/6c25136e604ae54f332d60458bc604c71cb5f070/drivers/usb/bc12/emul_bc12_pi3usb9201.c#L166) from upstream.",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 41
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3457ebcd_2bcd5017",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:21:34Z",
+      "side": 1,
+      "message": "I recommend deleting this.  This inherently will be driver specific.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 76
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cb179b_ba1b8e21",
+        "filename": "zephyr/emul/include/emul_intel_pd_controller.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T22:21:34Z",
+      "side": 1,
+      "message": "Please add doxygen headers for the public routines.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
