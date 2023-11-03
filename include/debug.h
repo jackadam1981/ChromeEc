@@ -23,4 +23,30 @@ __override_proto bool debugger_is_connected(void);
  */
 __override_proto bool debugger_was_connected(void);
 
+/*
+ * Disable the debugger interface, in the context of security lockdown.
+ */
+__override_proto void debugger_disable(void);
+
+/*
+ * Enable the debugger interface.
+ *
+ * This is a separate function from debugger_disable to ensure that the
+ * enable code path can be completely removed during the build process, if
+ * unused, to improve security posture.
+ */
+__override_proto void debugger_enable(void);
+
+/*
+ * Optionally disable the debugger on early boot.
+ *
+ * This function should be implemented as board specific behavior.
+ *
+ * The logic in this function must not be dependent on any other sub-system
+ * being initialized during boot, since this will be called at the earlier
+ * point in boot. For example, this function cannot rely on the common
+ * system_is_locked, since it relies on gpio init and high level flash state.
+ */
+__override_proto void debugger_disable_on_boot(void);
+
 #endif /* __CROS_EC_DEBUG_H */
