@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7760156d_6e69d920",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-03T20:15:26Z",
+      "side": 1,
+      "message": "nit: I think \"shared flash access\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b976eb7d_428cf3c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-03T20:15:26Z",
+      "side": 1,
+      "message": "reset external flash and reduce the SPI clock frequency.",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2f9c6a_ac9a35c3",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-03T20:15:26Z",
+      "side": 1,
+      "message": "default 2 if SOC_FAMILY_MEC\noverride at board level, if the SPI length is short it can still work at 2.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 10
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bebe674c_58ba6854",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-03T20:15:26Z",
+      "side": 1,
+      "message": "nit: add details why its needed.",
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
