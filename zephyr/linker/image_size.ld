@@ -3,7 +3,16 @@
  * found in the LICENSE file.
  */
 
-#if defined(CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE)
+#if defined(CONFIG_PLATFORM_EC_RW_FWID_OVERLAP)
+
+#if defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \
+	defined(CONFIG_CPU_CORTEX_A)
+__image_size = _flash_used;
+#elif defined(CONFIG_RISCV)
+__image_size = __rom_region_size;
+#endif /* CONFIG_CPU_CORTEX_M || CONFIG_CPU_CORTEX_R || CONFIG_CPU_CORTEX_A */
+
+#elif defined(CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE)
 __image_size = CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE;
 #else
 /*
