@@ -14,4 +14,11 @@
  */
 __override_proto bool debugger_is_connected(void);
 
+/*
+ * This function looks for signs that a debugger was attached. If we
+ * see that a debugger was attached, we know that the chip's security features
+ * may function as if the debugger is still attached.
+ */
+__override_proto bool debugger_was_connected(void);
+
 #endif /* __CROS_EC_DEBUG_H */
