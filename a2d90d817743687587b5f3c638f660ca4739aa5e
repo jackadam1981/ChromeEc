@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6277f3cd_0376e13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-11-03T17:20:00Z",
+      "side": 1,
+      "message": "The shellcheck suggestions of double quoting the `${PRESUBMIT_FILES[@]}` results in the script not catching violations",
+      "revId": "a2d90d817743687587b5f3c638f660ca4739aa5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
