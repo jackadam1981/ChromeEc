@@ -23,4 +23,26 @@ __override_proto bool debugger_is_connected(void);
  */
 __override_proto bool debugger_was_connected(void);
 
+/*
+ * Disable the debugger interface, in the context of security lockdown.
+ */
+__override_proto void debugger_disable(void);
+
+/*
+ * Enable the debugger interface.
+ *
+ * This is a seperate function from debugger_disable to ensure that the
+ * enable code path can be completely removed during the build process, if
+ * unused, to improve security posture.
+ */
+__override_proto void debugger_enable(void);
+
+/*
+ * Detect if we will disable the debugger interface.
+ *
+ * In order to be able to disable at the very beginning of main, we must not have
+ * any dependencies on other components being initialized.
+ */
+__override_proto void debugger_disable_on_boot(void);
+
 #endif /* __CROS_EC_DEBUG_H */

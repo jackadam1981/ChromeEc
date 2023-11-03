@@ -46,6 +46,10 @@
 
 test_mockable __keep int main(void)
 {
+	volatile uint32_t __keep flags1, __keep flags2, __keep flags3;
+
+	flags1 = crec_flash_get_protect();
+
 	int mpu_pre_init_rv = EC_SUCCESS;
 
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
@@ -117,6 +121,7 @@ test_mockable __keep int main(void)
 	 */
 	crec_flash_pre_init();
 #endif
+	flags2 = crec_flash_get_protect();
 
 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */
 	clock_init();
@@ -287,6 +292,8 @@ test_mockable __keep int main(void)
 	 * the majority of the time.
 	 */
 	CPRINTS("Inits done");
+
+	flags3 = crec_flash_get_protect();
 
 	/* Launch task scheduling (never returns) */
 	return task_start();
