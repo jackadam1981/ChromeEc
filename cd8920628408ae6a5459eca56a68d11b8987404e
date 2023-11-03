@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f391cf8_83846580",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-11-03T07:24:47Z",
+      "side": 1,
+      "message": "Hi, this revert is because all builders are failed to build for depthcharge package, and the failure is described in the revert reason.",
+      "revId": "cd8920628408ae6a5459eca56a68d11b8987404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
