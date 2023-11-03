@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c813bef_e4079a4d",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-03T20:54:13Z",
+      "side": 1,
+      "message": "doens\u0027t have to be a link, just a path starting with `common/...`",
+      "parentUuid": "853b4175_0d186303",
+      "revId": "44608ce53409b861271e64bf54b965f9a2466cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de4c11a5_7dc6a93e",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 2
