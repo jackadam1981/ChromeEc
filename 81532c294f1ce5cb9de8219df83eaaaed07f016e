@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fa5154c2_78e22b0e",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-03T17:41:29Z",
+      "side": 1,
+      "message": "`clang-format` had quite a few changes to make.  Done.",
+      "parentUuid": "734462d2_41bd0696",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "954b8145_21feeaf6",
         "filename": "board/hyperdebug/spi.c",
         "patchSetId": 11
@@ -77,6 +101,30 @@
       "writtenOn": "2023-11-03T13:54:06Z",
       "side": 1,
       "message": "This code is ripe for a unit test. Could you add a unit test or two to verify this logic please?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 3
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "767313cc_2fffa92e",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-03T17:41:29Z",
+      "side": 1,
+      "message": "I have done so.  I could not find other examples of a .c file from a `board/` directory being compiled into a test, though.  I am not sure I have done it right.",
+      "parentUuid": "323d97b5_20a9aa21",
       "range": {
         "startLine": 198,
         "startChar": 2,
