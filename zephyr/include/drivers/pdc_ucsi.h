@@ -10,8 +10,8 @@
  * Elaborate details can be found in respective SoC's "Platform Power
  * Delivery Controller Interface for SoC and Retimer" document.
  */
-#ifndef ZEPHYR_INCLUDE_DRIVERS_PDC_CCG8_PWR_MNGT_H_
-#define ZEPHYR_INCLUDE_DRIVERS_PDC_CCG8_PWR_MNGT_H_
+#ifndef ZEPHYR_INCLUDE_USBC_PDC_UCSI_H_
+#define ZEPHYR_INCLUDE_USBC_PDC_UCSI_H_
 
 #include <zephyr/device.h>
 
@@ -613,6 +613,6 @@ static inline int z_impl_pdc_get_current_pdo(const struct device *dev, enum port
  * @}
  */
 #if 1
- #include <syscalls/pdc_ccg8_pwr_mngt.h>
+ #include <syscalls/pdc_ucsi.h>
 #endif
-#endif /* ZEPHYR_INCLUDE_DRIVERS_PDC_CCG8_PWR_MNGT_H_ */
+#endif /* ZEPHYR_INCLUDE_USBC_PDC_UCSI_H_ */

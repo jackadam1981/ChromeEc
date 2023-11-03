@@ -18,4 +18,10 @@ config PDC_CCG8_PWR_MGNT
 	help
 	  TBD
 
+config PDC_RTS54_PWR_MGNT
+	bool
+	default y if DT_HAS_REALTEK_RTS54_PDC_ENABLED
+	help
+	  TBD
+
 endif # PLATFORM_EC_USBC
