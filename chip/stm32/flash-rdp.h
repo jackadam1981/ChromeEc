@@ -1,10 +1,10 @@
-/* Copyright 2019 The ChromiumOS Authors
+/* Copyright 2023 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-#ifndef __CROS_EC_STM32_FLASH_F_H
-#define __CROS_EC_STM32_FLASH_F_H
+#ifndef __CROS_EC_STM32_FLASH_RDP_H
+#define __CROS_EC_STM32_FLASH_RDP_H
 
 #include <stdbool.h>
 
@@ -23,4 +23,4 @@ enum flash_rdp_level {
 
 bool is_flash_rdp_enabled(void);
 
-#endif /* __CROS_EC_STM32_FLASH_F_H */
+#endif /* __CROS_EC_STM32_FLASH_RDP_H */
