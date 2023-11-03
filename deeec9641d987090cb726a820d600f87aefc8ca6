@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e742db5b_5d1cbaa3",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-03T23:15:30Z",
+      "side": 1,
+      "message": "As long as Zephyr doesn\u0027t use this node, should be fine. It is simply passed to binman. This CL starts using it, i.e. `$(dt_node_bool_prop,/binman/ec-rw/rw-fw/rw-fwid,overlap)`",
+      "parentUuid": "3bdf487a_d7148bb1",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "deeec9641d987090cb726a820d600f87aefc8ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ced1c43_1ac4a6cc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-03T22:48:54Z",
       "side": 1,
       "message": "Does [`phandle-array`](https://docs.zephyrproject.org/latest/build/dts/phandles.html#id8) type work?\n\nUpstream I found the `st,stm32-rtc` node has a property type that mixes phandles and data values.\n\nExample from the 96b_carbon board.  The `clocks` property is defined by the [base.yaml file](https://github.com/zephyrproject-rtos/zephyr/blob/6c25136e604ae54f332d60458bc604c71cb5f070/dts/bindings/base/base.yaml#L55C7-L55C7).\n\n```\nrtc: rtc@40002800 {\n  compatible \u003d \"st,stm32-rtc\";\n  reg \u003d \u003c 0x40002800 0x400 \u003e;\n  interrupts \u003d \u003c 0x29 0x0 \u003e;\n  clocks \u003d \u003c \u0026rcc 0x40 0x10000000 \u003e, \u003c \u0026rcc 0x5 0x26870 \u003e;\n  prescaler \u003d \u003c 0x8000 \u003e;\n  status \u003d \"okay\";\n  bbram: backup_regs {\n    compatible \u003d \"st,stm32-bbram\";\n    st,backup-regs \u003d \u003c 0x14 \u003e;\n    status \u003d \"disabled\";\n  };\n};\n```",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 78
+      },
+      "revId": "deeec9641d987090cb726a820d600f87aefc8ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6970fab1_2fdcc3a4",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-03T23:15:30Z",
+      "side": 1,
+      "message": "I tried but it didn\u0027t work. The `phandle-array` expects a mix of phandles and numbers, per\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/scripts/dts/python-devicetree/src/devicetree/edtlib.py;l\u003d1524",
+      "parentUuid": "1ced1c43_1ac4a6cc",
       "range": {
         "startLine": 38,
         "startChar": 0,
