@@ -110,6 +110,9 @@ static void board_init_transport(void)
 /* Initialize board. */
 static void board_init(void)
 {
+	/* Disable JTAG/SWD */
+	gpio_config_module(MODULE_DEBUG, 0);
+
 	/* Run until the first S3 entry */
 	disable_sleep(SLEEP_MASK_AP_RUN);
 

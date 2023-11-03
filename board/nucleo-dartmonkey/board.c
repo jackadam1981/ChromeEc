@@ -75,6 +75,9 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
 static void spi_configure(void)
 {
+	/* Disable JTAG/SWD */
+	gpio_config_module(MODULE_DEBUG, 0);
+
 	/* Configure SPI GPIOs */
 	gpio_config_module(MODULE_SPI_CONTROLLER, 1);
 	/* Set all SPI controller signal pins to very high speed:
