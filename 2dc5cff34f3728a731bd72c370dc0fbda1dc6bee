@@ -122,6 +122,30 @@
       },
       "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2895071_ee13802d",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-03T00:02:13Z",
+      "side": 1,
+      "message": "yes, it does.",
+      "parentUuid": "01779b63_2128efe3",
+      "range": {
+        "startLine": 804,
+        "startChar": 4,
+        "endLine": 811,
+        "endChar": 5
+      },
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -797,6 +797,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67fe4d20_dbdc852c",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-03T00:02:13Z",
+      "side": 1,
+      "message": "I totally understand that probably not the entire `enum_as` crate is needed for ths gsc-utils port, but the intention is to keep it the same between ti50 and gsc-utils.\n\nIt it needs to be refactored and split - so be it, but it has to be done in the ti50 space first and then the smaller part moved to gsc-util to be shared.",
+      "parentUuid": "fd0d4724_f8fac098",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec148d3e_5db9717b",
         "filename": "rust/enum_as/src/lib.rs",
         "patchSetId": 3
