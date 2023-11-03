@@ -200,6 +200,7 @@ console_edit-y=console_edit.o
 cortexm_fpu-y=cortexm_fpu.o
 crc-y=crc.o
 debug-y=debug.o
+debug_stm32-y=debug_stm32.o
 debug_unimplemented-y=debug_unimplemented.o
 entropy-y=entropy.o
 exception-y=exception.o

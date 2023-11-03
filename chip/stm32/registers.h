@@ -207,6 +207,181 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #define UNIMPLEMENTED_GPIO_BANK GPIO_A
 
+/* GPIO port mode */
+enum stm32_gpio_moder {
+	STM32_GPIO_MODER_INPUT = 0, // reset-state (other than port A and B)
+	STM32_GPIO_MODER_OUTPUT = 1,
+	STM32_GPIO_MODER_ALT_FUNC = 2,
+	STM32_GPIO_MODER_ANALOG = 3,
+
+	STM32_GPIO_MODER_MASK = 3,
+};
+
+/* GPIO port mode register */
+struct stm32_gpio_moder_reg {
+	enum stm32_gpio_moder moder0 : 2;
+	enum stm32_gpio_moder moder1 : 2;
+	enum stm32_gpio_moder moder2 : 2;
+	enum stm32_gpio_moder moder3 : 2;
+	enum stm32_gpio_moder moder4 : 2;
+	enum stm32_gpio_moder moder5 : 2;
+	enum stm32_gpio_moder moder6 : 2;
+	enum stm32_gpio_moder moder7 : 2;
+	enum stm32_gpio_moder moder8 : 2;
+	enum stm32_gpio_moder moder9 : 2;
+	enum stm32_gpio_moder moder10 : 2;
+	enum stm32_gpio_moder moder11 : 2;
+	enum stm32_gpio_moder moder12 : 2;
+	enum stm32_gpio_moder moder13 : 2;
+	enum stm32_gpio_moder moder14 : 2;
+	enum stm32_gpio_moder moder15 : 2;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_gpio_moder_reg) == 4);
+
+/* GPIO port output type */
+enum stm32_gpio_otyper {
+	STM32_GPIO_OTYPER_OUTPUT_PUSH_PULL = 0, // reset-state
+	STM32_GPIO_OTYPER_OUTPUT_OPEN_DRAIN = 1,
+
+	STM32_GPIO_OTYPER_MASK = 1,
+};
+
+/* GPIO port output type register */
+struct stm32_gpio_otyper_reg {
+	enum stm32_gpio_otyper otyper0 : 1;
+	enum stm32_gpio_otyper otyper1 : 1;
+	enum stm32_gpio_otyper otyper2 : 1;
+	enum stm32_gpio_otyper otyper3 : 1;
+	enum stm32_gpio_otyper otyper4 : 1;
+	enum stm32_gpio_otyper otyper5 : 1;
+	enum stm32_gpio_otyper otyper6 : 1;
+	enum stm32_gpio_otyper otyper7 : 1;
+	enum stm32_gpio_otyper otyper8 : 1;
+	enum stm32_gpio_otyper otyper9 : 1;
+	enum stm32_gpio_otyper otyper10 : 1;
+	enum stm32_gpio_otyper otyper11 : 1;
+	enum stm32_gpio_otyper otyper12 : 1;
+	enum stm32_gpio_otyper otyper13 : 1;
+	enum stm32_gpio_otyper otyper14 : 1;
+	enum stm32_gpio_otyper otyper15 : 1;
+	uint16_t _reserved : 16;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_gpio_otyper_reg) == 4);
+
+/* GPIO port output speed */
+enum stm32_gpio_ospeedr {
+	STM32_GPIO_OSPEEDR_LOW_SPEED = 0,
+	STM32_GPIO_OSPEEDR_MEDIUM_SPEED = 1,
+	STM32_GPIO_OSPEEDR_FAST_SPEED = 2,
+	STM32_GPIO_OSPEEDR_HIGH_SPEED = 3,
+
+	STM32_GPIO_OSPEEDR_MASK = 3,
+};
+
+/* GPIO port output speed register */
+struct stm32_gpio_ospeedr_reg {
+	enum stm32_gpio_ospeedr ospeedr0 : 2;
+	enum stm32_gpio_ospeedr ospeedr1 : 2;
+	enum stm32_gpio_ospeedr ospeedr2 : 2;
+	enum stm32_gpio_ospeedr ospeedr3 : 2;
+	enum stm32_gpio_ospeedr ospeedr4 : 2;
+	enum stm32_gpio_ospeedr ospeedr5 : 2;
+	enum stm32_gpio_ospeedr ospeedr6 : 2;
+	enum stm32_gpio_ospeedr ospeedr7 : 2;
+	enum stm32_gpio_ospeedr ospeedr8 : 2;
+	enum stm32_gpio_ospeedr ospeedr9 : 2;
+	enum stm32_gpio_ospeedr ospeedr10 : 2;
+	enum stm32_gpio_ospeedr ospeedr11 : 2;
+	enum stm32_gpio_ospeedr ospeedr12 : 2;
+	enum stm32_gpio_ospeedr ospeedr13 : 2;
+	enum stm32_gpio_ospeedr ospeedr14 : 2;
+	enum stm32_gpio_ospeedr ospeedr15 : 2;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_gpio_ospeedr_reg) == 4);
+
+/* GPIO port pull-up/pull-down */
+enum stm32_gpio_pupdr {
+	STM32_GPIO_PUPDR_NONE = 0,
+	STM32_GPIO_PUPDR_PULL_UP = 1,
+	STM32_GPIO_PUPDR_PULL_DOWN = 2,
+	STM32_GPIO_PUPDR_RESERVED = 3,
+
+	STM32_GPIO_PUPDR_MASK = 3,
+};
+
+/* GPIO port pull-up/pull-down register */
+struct stm32_gpio_pupdr_reg {
+	enum stm32_gpio_pupdr pupdr0 : 2;
+	enum stm32_gpio_pupdr pupdr1 : 2;
+	enum stm32_gpio_pupdr pupdr2 : 2;
+	enum stm32_gpio_pupdr pupdr3 : 2;
+	enum stm32_gpio_pupdr pupdr4 : 2;
+	enum stm32_gpio_pupdr pupdr5 : 2;
+	enum stm32_gpio_pupdr pupdr6 : 2;
+	enum stm32_gpio_pupdr pupdr7 : 2;
+	enum stm32_gpio_pupdr pupdr8 : 2;
+	enum stm32_gpio_pupdr pupdr9 : 2;
+	enum stm32_gpio_pupdr pupdr10 : 2;
+	enum stm32_gpio_pupdr pupdr11 : 2;
+	enum stm32_gpio_pupdr pupdr12 : 2;
+	enum stm32_gpio_pupdr pupdr13 : 2;
+	enum stm32_gpio_pupdr pupdr14 : 2;
+	enum stm32_gpio_pupdr pupdr15 : 2;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_gpio_pupdr_reg) == 4);
+
+/*
+ * GPIO alternate function
+ * This is the same as the generic gpio.h |enum gpio_alternate_func|, but
+ * without the dependnecy on common gpio.h code.
+ */
+enum stm32_gpio_alt_func {
+	STM32_GPIO_ALT_FUNC_AF0 = 0,
+	STM32_GPIO_ALT_FUNC_AF1,
+	STM32_GPIO_ALT_FUNC_AF2,
+	STM32_GPIO_ALT_FUNC_AF3,
+	STM32_GPIO_ALT_FUNC_AF4,
+	STM32_GPIO_ALT_FUNC_AF5,
+	STM32_GPIO_ALT_FUNC_AF6,
+	STM32_GPIO_ALT_FUNC_AF7,
+	STM32_GPIO_ALT_FUNC_AF8,
+	STM32_GPIO_ALT_FUNC_AF9,
+	STM32_GPIO_ALT_FUNC_AF10,
+	STM32_GPIO_ALT_FUNC_AF11,
+	STM32_GPIO_ALT_FUNC_AF12,
+	STM32_GPIO_ALT_FUNC_AF13,
+	STM32_GPIO_ALT_FUNC_AF14,
+	STM32_GPIO_ALT_FUNC_AF15,
+
+	STM32_GPIO_ALT_FUNC_MASK = 0xF,
+};
+
+/* GPIO alternate function low register (port pins 0 to 7) */
+struct stm32_gpio_afrl_reg {
+	enum stm32_gpio_alt_func afrl0 : 4;
+	enum stm32_gpio_alt_func afrl1 : 4;
+	enum stm32_gpio_alt_func afrl2 : 4;
+	enum stm32_gpio_alt_func afrl3 : 4;
+	enum stm32_gpio_alt_func afrl4 : 4;
+	enum stm32_gpio_alt_func afrl5 : 4;
+	enum stm32_gpio_alt_func afrl6 : 4;
+	enum stm32_gpio_alt_func afrl7 : 4;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_gpio_afrl_reg) == 4);
+
+/* GPIO alternate function high register (port pins 8 to 15) */
+struct stm32_gpio_afrh_reg {
+	enum stm32_gpio_alt_func afrh8 : 4;
+	enum stm32_gpio_alt_func afrh9 : 4;
+	enum stm32_gpio_alt_func afrh10 : 4;
+	enum stm32_gpio_alt_func afrh11 : 4;
+	enum stm32_gpio_alt_func afrh12 : 4;
+	enum stm32_gpio_alt_func afrh13 : 4;
+	enum stm32_gpio_alt_func afrh14 : 4;
+	enum stm32_gpio_alt_func afrh15 : 4;
+} __packed;
+BUILD_ASSERT(sizeof(struct stm32_gpio_afrh_reg) == 4);
+
 /* --- I2C --- */
 #define STM32_I2C1_PORT 0
 #define STM32_I2C2_PORT 1
