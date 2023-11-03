@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a91959_fae6d578",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940860e1_85e087be",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49d2a5e3_645bcb56",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-02T22:29:25Z",
       "side": 1,
       "message": "uint32_t/uint8_t to match the status field type. Also initialize to the AP_NORMAL_BOOT status value.  The compiler will still optimize the assignment out, but it makes the code clearer.",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "682b1783_c1371d4a",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d2a5e3_645bcb56",
       "range": {
         "startLine": 23,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ea5acc_8ecd049e",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 1,
+      "message": "Yes, also as `EC_HANG_START_NOW` is the flag that is set most of the time, I\u0027ve moved it to the top.\nAnother thing is that the very first message doesn\u0027t contain `EC_HANG_START_NOW` or `EC_HANG_START_NOW` - it has configuration flags (at the moment `EC_HANG_START_ON_RESUME` and `EC_HANG_STOP_ON_SUSPEND`) and requested timeout - I will update the documentation.",
+      "parentUuid": "f78fbf9c_f8dd0b3f",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01a71cc1_7721509a",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-02T22:29:25Z",
       "side": 1,
       "message": "Is the AP always shutting down on this path?",
+      "range": {
+        "startLine": 107,
+        "startChar": 33,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f53e9e88_66da9772",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 1,
+      "message": "This flag is set when kernel is aware that it is shutting down (it might by other faulty reason, but it let us know that AP shuts down itself not because of the watchdog). It is handled on the kernel side int `\nstatic void cros_ec_wdt_shutdown(struct platform_device *pdev)`",
+      "parentUuid": "01a71cc1_7721509a",
       "range": {
         "startLine": 107,
         "startChar": 33,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06d1cf7_2d36a7ec",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4754,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529c43c2_e713aa15",
+      "range": {
+        "startLine": 4754,
+        "startChar": 1,
+        "endLine": 4754,
+        "endChar": 61
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b08a67f_559b377a",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-11-02T22:29:25Z",
       "side": 1,
       "message": "Please leave this file alpha sorted.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 48
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e417fd22_655ff330",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 1,
+      "message": "The case with this file is that, when I run `make -j8 BOARD\u003dvell` (or any other board), at the end it produces:\n```\nThe following options are now in Kconfig:\n\nCONFIG_AP_HANG_DETECT\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n\nmake: *** [Makefile.rules:295: notice] Error 1\n```\nso the util/config_allowed.txt comes from the above - should I sort it anyway ?",
+      "parentUuid": "8b08a67f_559b377a",
       "range": {
         "startLine": 127,
         "startChar": 0,

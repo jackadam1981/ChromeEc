@@ -22,6 +22,47 @@
       },
       "revId": "ad757731d1e42d0d985c1e0817815bcd51375253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d643a9_43febb09",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4723,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 0,
+      "message": "Yes, this is a tricky part. Yes it is (sort of) published but nobody uses it - I will mark them as you advise. How about the",
+      "parentUuid": "dc00fbe7_212a6254",
+      "range": {
+        "startLine": 4715,
+        "startChar": 0,
+        "endLine": 4723,
+        "endChar": 0
+      },
+      "revId": "ad757731d1e42d0d985c1e0817815bcd51375253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71394ef6_94b1eee5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4757,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-03T12:35:27Z",
+      "side": 0,
+      "message": "@keithshort@chromium.org what do you thnik about this change (host_event_timeout_msec removal) - it is published (also exposed in kernel), but again not used.",
+      "revId": "ad757731d1e42d0d985c1e0817815bcd51375253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
