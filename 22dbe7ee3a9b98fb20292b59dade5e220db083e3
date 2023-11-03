@@ -497,6 +497,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25c47a68_c395b779",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T21:25:42Z",
+      "side": 1,
+      "message": "`reply_arg.error` is handled here:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/75/4867275/31/extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c#614\n\n[ Leaving unresolved for improving the `i2ctransfer` comment ]",
+      "parentUuid": "9413ab4e_bbcfc761",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b400226_a3f5c4e9",
         "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
         "patchSetId": 22
