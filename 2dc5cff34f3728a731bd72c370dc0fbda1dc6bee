@@ -194,6 +194,30 @@
       },
       "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc623efb_e12c7e38",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T15:12:22Z",
+      "side": 1,
+      "message": "The test like\n\n```rust\n  #[enum_as(u8)]\n    pub enum TestU8 {\n        /// One Value\n        One \u003d 1,\n        // Eight with other kind of comment\n        Eight \u003d 0o10,\n        ThirtyTwo \u003d 0x20, // inline comment afterwards\n    }\n\n    #[test]\n    fn test_u8_enum_conversion() {\n        assert!(matches!(TestU8::from_u8(1), Some(TestU8::One)));\n        assert!(matches!(TestU8::from_u8(8), Some(TestU8::Eight)));\n        assert!(matches!(TestU8::from_u8(32), Some(TestU8::ThirtyTwo)));\n        assert_eq!(TestU8::END, 33);\n\n        for i in 0..u8::MAX {\n            if matches!(i, 1 | 8 | 32) {\n                continue;\n            }\n            assert!(TestU8::from_u8(i).is_none());\n        }\n    }\n```\n\ndo not belong in the `ap_ro_err` crate. These tests are related to the `enum_as` proc macros. The unit test before were in a different crate (b/c of the proc macro test limitation if I remember correctly -- but they were in a crate for other macros and tests). Since we don\u0027t have another crate that close maps to what we want already in gsc_utils repo, we should create a new crate called `enum_utils_tests` (assuming rename) to put these tests in.",
+      "parentUuid": "c4800641_7787f4bd",
+      "range": {
+        "startLine": 804,
+        "startChar": 4,
+        "endLine": 811,
+        "endChar": 5
+      },
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

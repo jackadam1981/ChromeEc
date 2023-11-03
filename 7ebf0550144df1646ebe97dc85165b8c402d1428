@@ -869,6 +869,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e30b1e2f_63e28783",
+        "filename": "rust/enum_as/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-03T15:12:22Z",
+      "side": 1,
+      "message": "I think renaming while moving it is not too much to ask at all. Publishing this utility is not such a high priority that we need to delay all feedback from this CL to another CL.",
+      "parentUuid": "826f69e6_ce110bef",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "7ebf0550144df1646ebe97dc85165b8c402d1428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec148d3e_5db9717b",
         "filename": "rust/enum_as/src/lib.rs",
         "patchSetId": 3
