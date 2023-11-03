@@ -8,6 +8,7 @@ BASEBOARD:=nucleo-h743zi
 
 board-y=board.o
 board-y+=fpsensor_detect.o
+board-y+=debug.o
 
 # Enable on device tests
 test-list-y=\
@@ -17,6 +18,7 @@ test-list-y=\
        compile_time_macros \
        crc \
        debug \
+       debug_stm32 \
        exception \
        flash_physical \
        flash_write_protect \
