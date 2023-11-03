@@ -281,6 +281,30 @@
       },
       "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd669f4d_e90892d2",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T21:59:32Z",
+      "side": 1,
+      "message": "That\u0027s odd.  I guess check the generated file with this item out of order.",
+      "parentUuid": "e417fd22_655ff330",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 48
+      },
+      "revId": "7e4284f6ab7056ca3e0913c37233a78b99c4e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
