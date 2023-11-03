@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83db4365_6249fe0d",
+        "filename": "extra/i2c_pseudo/Documentation/ABI/testing/sysfs-devices-i2c-pseudo",
+        "patchSetId": 31
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-03T19:11:07Z",
+      "side": 1,
+      "message": "This is actually available under two paths.  Should I document both or just one?  The `/sys/devices/virtual` path is the \"physical\" one without any symlinks.\n\n```\n$ ls -ld /sys/{class,devices/virtual}/i2c-pseudo{,/i2c-pseudo}\ndrwxr-xr-x 2 root root 0 Nov  2 15:47 /sys/class/i2c-pseudo\nlrwxrwxrwx 1 root root 0 Nov  3 12:03 /sys/class/i2c-pseudo/i2c-pseudo -\u003e ../../devices/virtual/i2c-pseudo/i2c-pseudo\ndrwxr-xr-x 3 root root 0 Nov  2 15:47 /sys/devices/virtual/i2c-pseudo\ndrwxr-xr-x 5 root root 0 Nov  2 15:47 /sys/devices/virtual/i2c-pseudo/i2c-pseudo\n$ cat /sys/class/i2c-pseudo/i2c-pseudo/open_count\n2\n$ cat /sys/devices/virtual/i2c-pseudo/i2c-pseudo/open_count\n2\n```\n\nI\u0027ll also note that \"i2c-pseudo/i2c-pseudo/\" looks awkward but makes logical sense.  AIUI the first part is the i2c-pseudo class, 2nd is the i2c-pseudo device.  It\u0027s far from the only case of naming redundancy in a sysfs path of course.",
+      "revId": "073eebcc4d22bc69ee4cb19a1a90522171adc5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
