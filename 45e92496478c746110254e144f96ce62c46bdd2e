@@ -22,6 +22,30 @@
       },
       "revId": "45e92496478c746110254e144f96ce62c46bdd2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193ee2dd_4faa3710",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-03T18:07:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74249fe_5e87e375",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "45e92496478c746110254e144f96ce62c46bdd2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
