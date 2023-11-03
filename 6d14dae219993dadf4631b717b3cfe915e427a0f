@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb041602_563655e2",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1914,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-03T18:20:23Z",
+      "side": 1,
+      "message": "Do you need both?",
+      "range": {
+        "startLine": 1914,
+        "startChar": 8,
+        "endLine": 1914,
+        "endChar": 61
+      },
+      "revId": "6d14dae219993dadf4631b717b3cfe915e427a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2a143a_6d52178b",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1917,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-03T18:20:23Z",
+      "side": 1,
+      "message": "nit: fold?",
+      "revId": "6d14dae219993dadf4631b717b3cfe915e427a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
