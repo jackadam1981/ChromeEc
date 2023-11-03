@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c23d5690_a8ecd47d",
+        "filename": "zephyr/include/cros/integrated_fwid.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-03T21:29:52Z",
+      "side": 1,
+      "message": "Please add a BUILD_ASSERT into cros_version.h that validates `offsetof(struct image_data, version) \u003d\u003d 4` and comment pointing to this file.\nThe legacy code in fmap.c already has direct access to offsetof() and will automatically change.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e398f55_5233c07c",
         "filename": "zephyr/zmake/zmake/output_packers.py",
         "patchSetId": 2
