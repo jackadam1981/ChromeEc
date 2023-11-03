@@ -86,6 +86,24 @@
       "parentUuid": "2ade550c_0bb97cf7",
       "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3dedf4_e844f2ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-11-03T05:47:30Z",
+      "side": 1,
+      "message": "We enable TBT UFP first, then next will enable USB4 UFP. Some VDM messages fields have different values.\nI have submitted issue tracker b:309048892 for common TBT UFP SVDM response. It will be addressed in different patch.",
+      "parentUuid": "c88c4eb6_f1c5b53b",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
