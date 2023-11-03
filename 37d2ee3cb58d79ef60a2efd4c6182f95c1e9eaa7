@@ -22,6 +22,30 @@
       },
       "revId": "37d2ee3cb58d79ef60a2efd4c6182f95c1e9eaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff7cb97_e5e7ac04",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-03T20:40:34Z",
+      "side": 1,
+      "message": "Done.\n\nThere are other similar instances here and in other files which should use the same macro. I left them alone since they\u0027re not part of this CL. I\u0027ll fix all others together in a separate clean-up CL.",
+      "parentUuid": "cba0bb21_7396778a",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "37d2ee3cb58d79ef60a2efd4c6182f95c1e9eaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
