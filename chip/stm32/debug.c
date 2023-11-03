@@ -38,3 +38,35 @@ __override bool debugger_was_connected(void)
 	 */
 	return STM32_DBGMCU_CR & STM32_DBGMCU_CR_LOW_PWR_FRIENDLY;
 }
+
+#include "gpio.h"
+#include "compile_time_macros.h"
+__overridable void debugger_enable_disable(bool enable)
+{
+	if (IS_ENABLED(CHIP_FAMILY_STM32F4)) {
+		/* DEBUG PORT: PA13/14/15 PB3/4 (JTMS-SWDIO/JTCK-SWCLK/JTDI JTDO/NJTRST) */
+		/*
+		 * PA15: JTDI in pull-up
+		 * PA14: JTCK/SWCLK in pull-down
+		 * PA13: JTMS/SWDAT in pull-up
+		 * PB4: NJTRST in pull-up
+		 * PB3: JTDO in floating state
+		 */
+
+		// enum gpio_alternate_func func = enable ? GPIO_ALT_FUNC_DEFAULT : GPIO_ALT_FUNC_1;
+		// gpio_set_alternate_function(STM32_GPIOA_BASE, GENMASK(15, 13), func);
+		// gpio_set_alternate_function(STM32_GPIOB_BASE, GENMASK(4, 3), func);
+
+		if (enable) {
+			gpio_config_module(MODULE_DEBUG, 1);
+			// gpio_set_flags_by_mask(STM32_GPIOA_BASE, BIT(15)|BIT(13), GPIO_PULL_UP);
+			// gpio_set_flags_by_mask(STM32_GPIOA_BASE, BIT(14), GPIO_PULL_DOWN);
+			// gpio_set_flags_by_mask(STM32_GPIOB_BASE, BIT(4), GPIO_PULL_UP);
+			// gpio_set_flags_by_mask(STM32_GPIOB_BASE, BIT(3), GPIO_FLAG_NONE);
+		} else {
+			gpio_config_module(MODULE_DEBUG, 0);
+		}
+	} else {
+		while (1) ;
+	}
+}

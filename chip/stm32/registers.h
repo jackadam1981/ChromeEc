@@ -207,6 +207,12 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #define UNIMPLEMENTED_GPIO_BANK GPIO_A
 
+#define STM32_GPIO_MODER_INPUT 0
+#define STM32_GPIO_MODER_OUTPUT 1
+#define STM32_GPIO_MODER_ALT_FUNC 2
+#define STM32_GPIO_MODER_ANALOG 3
+#define STM32_GPIO_MODER_MASK 3
+
 /* --- I2C --- */
 #define STM32_I2C1_PORT 0
 #define STM32_I2C2_PORT 1

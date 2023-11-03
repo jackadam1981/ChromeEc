@@ -152,7 +152,13 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask,
 		/* Return to normal GPIO function, defaulting to input. */
 		while (mask) {
 			bit = get_next_bit(&mask);
-			moder &= ~(0x3 << (bit * 2));
+			moder &= ~(STM32_GPIO_MODER_MASK << (bit * 2));
+			/*
+			 * Configure unused pins as ANALOG INPUT to save power.
+			 * See ST's AN4365 section 1.2.6 for more detail.
+			 */
+			if (IS_ENABLED(CHIP_FAMILY_STM32F4))
+				moder |= (STM32_GPIO_MODER_ANALOG << (bit * 2));
 		}
 		STM32_GPIO_MODER(port) = moder;
 		return;

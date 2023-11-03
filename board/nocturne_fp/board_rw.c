@@ -101,6 +101,9 @@ static void spi_configure(enum fp_sensor_spi_select spi_select)
 
 void board_init(void)
 {
+	/* Disable JTAG/SWD */
+	gpio_config_module(MODULE_DEBUG, 0);
+
 	enum fp_sensor_spi_select spi_select = fpsensor_detect_get_spi_select();
 
 	/*

@@ -23,4 +23,9 @@ __override_proto bool debugger_is_connected(void);
  */
 __override_proto bool debugger_was_connected(void);
 
+/*
+ * Enable or disable the debugger port.
+ */
+__override_proto void debugger_enable_disable(bool enable);
+
 #endif /* __CROS_EC_DEBUG_H */
