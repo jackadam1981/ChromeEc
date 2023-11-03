@@ -170,6 +170,30 @@
       },
       "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4800641_7787f4bd",
+        "filename": "rust/ap_ro_errs/src/lib.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-03T14:38:59Z",
+      "side": 1,
+      "message": "I am confused. The tests are already there, what needs to be done?",
+      "parentUuid": "f126d1ef_5b9ba528",
+      "range": {
+        "startLine": 804,
+        "startChar": 4,
+        "endLine": 811,
+        "endChar": 5
+      },
+      "revId": "2dc5cff34f3728a731bd72c370dc0fbda1dc6bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
