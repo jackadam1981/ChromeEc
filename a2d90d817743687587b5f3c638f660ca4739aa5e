@@ -16,6 +16,70 @@
       "message": "The shellcheck suggestions of double quoting the `${PRESUBMIT_FILES[@]}` results in the script not catching violations",
       "revId": "a2d90d817743687587b5f3c638f660ca4739aa5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de078be3_11629d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-03T17:32:46Z",
+      "side": 1,
+      "message": "I think that is because PRESUBMIT_FILES isn\u0027t an array.",
+      "parentUuid": "6277f3cd_0376e13c",
+      "revId": "a2d90d817743687587b5f3c638f660ca4739aa5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b5ec61b_5e500dbd",
+        "filename": "util/host_command_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-03T17:32:46Z",
+      "side": 1,
+      "message": "How about\n\n```\n# Check if ec_commands.h has changed.\necho ${PRESUBMIT_FILES} | grep -q \"${ec_commands_file_in}\" || exit 0\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "a2d90d817743687587b5f3c638f660ca4739aa5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7205654c_84c7f970",
+        "filename": "util/host_command_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-03T17:32:46Z",
+      "side": 1,
+      "message": "Why not `include/ec_commands.h` ? That is the only file that will contain these?",
+      "range": {
+        "startLine": 95,
+        "startChar": 30,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "a2d90d817743687587b5f3c638f660ca4739aa5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
