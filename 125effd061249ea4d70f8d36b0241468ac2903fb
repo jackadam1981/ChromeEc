@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bf8de1_0c719a84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-03T15:15:52Z",
+      "side": 1,
+      "message": "Is it possible to add a test which checks the layout of the image, perhaps by looking for the version string and checking the layout?\n\nBinman has lots of tests, so I am not worried about that...just the logic here which it pretty critical to updates, etc.\n\nIf there are tests elsewhere, you could mention them in the CL description.",
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e398f55_5233c07c",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-03T15:15:52Z",
+      "side": 1,
+      "message": "Is this required for binman to work? If so, could you add a comment? If not, perhaps move it to a separate CL?",
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
