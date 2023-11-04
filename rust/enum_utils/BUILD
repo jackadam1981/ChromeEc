@@ -6,7 +6,7 @@ package(default_visibility = ["//platform/ti50/common/libs:__subpackages__"])
 load("@rules_rust//rust:defs.bzl", "rust_proc_macro")
 
 rust_proc_macro(
-    name = "enum_as",
+    name = "enum_utils",
     srcs = glob(["**/*.rs"]),
     edition = "2021",
 )
