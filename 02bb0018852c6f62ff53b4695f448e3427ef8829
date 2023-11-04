@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67da0175_e80330dc",
+        "filename": "zephyr/.pylintrc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-04T00:49:54Z",
+      "side": 1,
+      "message": "Is it \"zephyr\" only as the module is imported like `from scripts import util`?\n\nOr move the util.py to a new subdirectory?",
+      "range": {
+        "startLine": 2,
+        "startChar": 63,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba23475_2cb58784",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-04T00:49:54Z",
+      "side": 1,
+      "message": "Does the init-hook work? I think we only need one.",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 47
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef3829f_66302ff8",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-04T00:49:54Z",
+      "side": 1,
+      "message": "Unrelated, please change the prog name which I forgot to change.",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b6886f_d2275b96",
+        "filename": "zephyr/scripts/util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-04T00:49:54Z",
+      "side": 1,
+      "message": "Util",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
