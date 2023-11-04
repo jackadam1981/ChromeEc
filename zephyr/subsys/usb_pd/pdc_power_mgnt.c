@@ -23,7 +23,7 @@
 
 #include <zephyr/smf.h>
 
-#include <drivers/pdc_ccg8_pwr_mngt.h>
+#include <drivers/pdc_ucsi.h>
 #include <usbc/pdc_power_mgnt.h>
 
 #include "usb_pd.h"
