@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3adc55c2_6570d40f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-04T14:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7760156d_6e69d920",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b976eb7d_428cf3c1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-03T20:15:26Z",
       "side": 1,
       "message": "reset external flash and reduce the SPI clock frequency.",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3f3259_b8af377f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-04T14:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b976eb7d_428cf3c1",
       "range": {
         "startLine": 14,
         "startChar": 41,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be12f26b_491d4b6a",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-04T14:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d2772e_ebc139f5",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 35
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76875427_2408fb58",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-03T22:02:02Z",
       "side": 1,
       "message": "Typo: divider",
+      "range": {
+        "startLine": 167,
+        "startChar": 16,
+        "endLine": 167,
+        "endChar": 23
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9d6b3b_79bf00ec",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-04T14:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76875427_2408fb58",
       "range": {
         "startLine": 167,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e40794_336a4466",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-04T14:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2f9c6a_ac9a35c3",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 10
+      },
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bebe674c_58ba6854",
@@ -129,6 +249,24 @@
       "writtenOn": "2023-11-03T20:15:26Z",
       "side": 1,
       "message": "nit: add details why its needed.",
+      "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2644b476_59744603",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 19
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-04T14:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bebe674c_58ba6854",
       "revId": "209c4fa219d83a614817ecafd0b3917a2366e4c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
