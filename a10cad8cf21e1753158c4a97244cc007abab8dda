@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77e71a3_096f0f44",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-04T01:39:59Z",
+      "side": 1,
+      "message": "We can remove this one for now.",
+      "parentUuid": "aa8da969_a0f2bd75",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 43
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eb896d6_508cbb29",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-03T22:21:34Z",
       "side": 1,
       "message": "This is also not used.  If you keep this, `speed` should be an enum to select 5 or 10 Gbps",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 79
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaf24f0_8a67dfd8",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-04T01:39:59Z",
+      "side": 1,
+      "message": "We can remove.",
+      "parentUuid": "6eb896d6_508cbb29",
       "range": {
         "startLine": 253,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "548b767d_3d7f3ba1",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-04T01:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "544ca598_17bd93f2",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 41
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3457ebcd_2bcd5017",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e12c5c_1b34596a",
+        "filename": "zephyr/drivers/usbc/emul_intel_pd_controller.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-04T01:39:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3457ebcd_2bcd5017",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 76
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3cb179b_ba1b8e21",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-11-03T22:21:34Z",
       "side": 1,
       "message": "Please add doxygen headers for the public routines.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d648231f_68be2a2a",
+        "filename": "zephyr/emul/include/emul_intel_pd_controller.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-04T01:39:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f3cb179b_ba1b8e21",
       "range": {
         "startLine": 36,
         "startChar": 0,
