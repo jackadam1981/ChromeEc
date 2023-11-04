@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca32f7a_a3a65f3a",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-04T00:38:14Z",
+      "side": 1,
+      "message": "SBS_MAX_STRING_SIZE?",
+      "range": {
+        "startLine": 46,
+        "startChar": 18,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013e7bb0_59dbe90d",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-04T00:38:14Z",
+      "side": 1,
+      "message": "SBS_MAX_STRING_SIZE?",
+      "range": {
+        "startLine": 117,
+        "startChar": 17,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0936eddf_1496d75f",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-04T00:38:14Z",
+      "side": 1,
+      "message": "SBS_MAX_STRING_SIZE?",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ead628d_4f92c047",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-04T00:38:14Z",
+      "side": 1,
+      "message": "SBS_MAX_STRING_SIZE?",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 191,
+        "endChar": 15
+      },
+      "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91448a49_f7deb99d",
+        "filename": "test/battery_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-04T00:38:14Z",
+      "side": 1,
+      "message": "i would have expected to get a segfault here due to writing to RO memory?\ndo test builds not put const data in RO memory?",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
