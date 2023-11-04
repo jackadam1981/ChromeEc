@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a217d9_e5e0d892",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-04T00:58:25Z",
+      "side": 1,
+      "message": "This is the manifest version. An extra field \"ec_version\" is needed for the EC version. Rename the argument to `ec_version` to avoid confusion.",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 34
+      },
+      "revId": "8bc71148a2d9f606077c27892851ac95de7b4a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7b6158_84c3d8f3",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-04T00:58:25Z",
+      "side": 1,
+      "message": "The new `load_edt()` returns the project name.",
+      "range": {
+        "startLine": 301,
+        "startChar": 19,
+        "endLine": 301,
+        "endChar": 33
+      },
+      "revId": "8bc71148a2d9f606077c27892851ac95de7b4a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
