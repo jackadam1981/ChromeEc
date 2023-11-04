@@ -200,6 +200,7 @@ if(DEFINED CONFIG_BOARD_PIRRHA)
 endif()
 if(DEFINED CONFIG_BOARD_ANRAGGAR)
 	project(anraggar)
+	zephyr_include_directories("anraggar/include")
 	zephyr_library_sources(
 			"src/led.c"
 			"anraggar/src/keyboard.c"
@@ -207,4 +208,7 @@ if(DEFINED CONFIG_BOARD_ANRAGGAR)
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "anraggar/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "anraggar/src/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+			"anraggar/src/keyboard_customization.c"
+	)
 endif()
