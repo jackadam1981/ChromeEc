@@ -114,6 +114,30 @@
       },
       "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d53c57_93d22481",
+        "filename": "test/battery_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-04T00:48:08Z",
+      "side": 1,
+      "message": "oh, looks like these are removed in cl/4998758\nand the CQ depend chain should take care of it.",
+      "parentUuid": "91448a49_f7deb99d",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "422d28cccf06df4ee9ce7f132342af54f3a1cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
