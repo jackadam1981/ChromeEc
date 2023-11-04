@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc1a5047_9c65a55b",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-04T07:54:59Z",
+      "side": 1,
+      "message": "The corer issue is that I hadn\u0027t fully tested the mechanism for disabling this the jtag/swd interface. I have now done that (for the f412), but it still needs a complete unit test. Unfortunately, it is still a WIP.",
+      "parentUuid": "d5e1c4e9_cb70941c",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "b06c640fc983080391dc11b5679bd4f957bfb088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c15acb_d366498d",
         "filename": "board/nocturne_fp/board.c",
         "patchSetId": 5
