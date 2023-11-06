@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b87fbb_1ac4d5e8",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-06T23:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64a217d9_e5e0d892",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 34
+      },
+      "revId": "8bc71148a2d9f606077c27892851ac95de7b4a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b7b6158_84c3d8f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-04T00:58:25Z",
       "side": 1,
       "message": "The new `load_edt()` returns the project name.",
+      "range": {
+        "startLine": 301,
+        "startChar": 19,
+        "endLine": 301,
+        "endChar": 33
+      },
+      "revId": "8bc71148a2d9f606077c27892851ac95de7b4a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0561061_4ae05a43",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-06T23:33:15Z",
+      "side": 1,
+      "message": "I\u0027m planning to put further changes in `load_edt()` into its own CL to keep thing organized.\n\nI want to change `load_edt()` so that the third output is the path of the project instead of the project name, so that any scripts that want the name can just get it from `output.name` but a project like CME that needs both path and name can easily get both.\n\nAlso I\u0027ll probably need to make more adjustments to `util` for b/303489645, so I\u0027m planning to put all the adjustments to `util` together in the same CL.",
+      "parentUuid": "7b7b6158_84c3d8f3",
       "range": {
         "startLine": 301,
         "startChar": 19,
