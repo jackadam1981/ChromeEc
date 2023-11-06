@@ -110,3 +110,12 @@ __override void board_power_change(struct ap_power_ev_callback *cb,
 		break;
 	}
 }
+
+static void i2c_swap_default(void)
+{
+	/* Channel A and B are located at SMCLK0/SMDAT0 and SMCLK1/SMDAT1. */
+	IT8XXX2_SMB_CHSAB = 0x10;
+	/* Channel C and D are located at SMCLK2/SMDAT2 and SMCLK3/SMDAT3. */
+	IT8XXX2_SMB_CHSCD = 0x32;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, i2c_swap_default, HOOK_PRIO_DEFAULT);
