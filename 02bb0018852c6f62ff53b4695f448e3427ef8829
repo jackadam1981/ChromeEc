@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8564da5e_8c2a7d08",
+        "filename": "zephyr/.pylintrc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-06T23:16:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "67da0175_e80330dc",
+      "range": {
+        "startLine": 2,
+        "startChar": 63,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ba23475_2cb58784",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-04T00:49:54Z",
       "side": 1,
       "message": "Does the init-hook work? I think we only need one.",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 47
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f296f1_4402a399",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-06T23:16:45Z",
+      "side": 1,
+      "message": "After some testing, I couldn\u0027t get the init-hook to work, so I deleted it. this patch now only uses the CMake `set ENV`.",
+      "parentUuid": "9ba23475_2cb58784",
       "range": {
         "startLine": 8,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b51de1b_c201d42d",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-06T23:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef3829f_66302ff8",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b6886f_d2275b96",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-04T00:49:54Z",
       "side": 1,
       "message": "Util",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "02bb0018852c6f62ff53b4695f448e3427ef8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5654b56b_e405ca97",
+        "filename": "zephyr/scripts/util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-06T23:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b6886f_d2275b96",
       "range": {
         "startLine": 5,
         "startChar": 1,
