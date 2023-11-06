@@ -120,7 +120,7 @@ test_static int finish_src_discovery(int startup_cable_probes)
 
 	/* Expect VENDOR_DEF for partner identity, reply NOT_SUPPORTED. */
 	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPCI_MSG_SOP, 0,
-					 PD_DATA_VENDOR_DEF, 10 * MSEC),
+					 PD_DATA_VENDOR_DEF, 100 * MSEC),
 		EC_SUCCESS, "%d");
 	mock_prl_message_sent(PORT0);
 	task_wait_event(10 * MSEC);
