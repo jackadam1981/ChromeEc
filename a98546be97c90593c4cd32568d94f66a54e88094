@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ac6320_96cda94d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-06T14:17:34Z",
+      "side": 1,
+      "message": "RISC",
+      "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233f739e_f920f692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-06T14:17:34Z",
+      "side": 1,
+      "message": "Would binman symbols help here? It allows a symbol value (e.g. the size of a section) to be written to an variable in the binary:\n\nhttps://u-boot.readthedocs.io/en/latest/develop/package/binman.html#access-to-binman-entry-offsets-at-run-time-symbols\n\nhttps://chromium.googlesource.com/chromiumos/third_party/u-boot/+/refs/heads/chromeos-v2023.10-next/include/binman_sym.h\n\nBut it seems you are already handling this in the link script, which is fine",
+      "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e655d1_27d2fef1",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-06T14:17:34Z",
+      "side": 1,
+      "message": "How come RISC-V is different? Can you add a comment here?",
+      "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
