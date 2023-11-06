@@ -899,8 +899,10 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 	}
 
 	for (index = 0; index < sens_size - 1; index++) {
-		if (range >= sensor_range[index][0] &&
-		    range < sensor_range[index + 1][0]) {
+		if (range <= sensor_range[index][0])
+			break;
+
+		if (range < sensor_range[index + 1][0]) {
 			if (rnd) {
 				index++;
 			}
