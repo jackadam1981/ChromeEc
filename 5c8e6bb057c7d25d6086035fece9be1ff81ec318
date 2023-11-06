@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10962373_90a5f8b1",
+        "filename": "test/debug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-06T11:29:40Z",
+      "side": 0,
+      "message": "`strncmp(argv[1], \"debugger\", sizeof(\"debugger\")) \u003d\u003d 0` will accept argv[1] that starts with `debugger`, e.g. `debugger_blah_blah`, while `strcmp(argv[1], \"debugger\") \u003d\u003d 0` accepts `debugger` only.\n\nI see in next patches that `debugger` and `no_debugger` are the only allowed strings, so everything is alright here.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "5c8e6bb057c7d25d6086035fece9be1ff81ec318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

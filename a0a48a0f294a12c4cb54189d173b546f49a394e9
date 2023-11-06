@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236c8344_6f42686f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-06T11:29:40Z",
+      "side": 1,
+      "message": "Fun thing here is that `strncmp(argv[1], \"debugger\", sizeof(\"debugger\"))` is not more secure than `strcmp()` version. \n\nThe problem will appear when `argv[1]` is not null terminated string, shorter than `\"debugger\"` string. To avoid reading after the end of the `argv[1]` string we should pass size of `argv[1]` to `strncmp()` (it will work because we are guaranteed that \"debugger\" ends with null character).\n\nNIT: You can extend commit message with information, why `strncmp()` is not better than `strcmp()` in this case.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "a0a48a0f294a12c4cb54189d173b546f49a394e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e8be98_460883fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-06T11:29:40Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a0a48a0f294a12c4cb54189d173b546f49a394e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
