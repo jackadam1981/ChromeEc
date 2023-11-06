@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4765648d_fcdebb0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-06T21:46:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88ac6320_96cda94d",
+      "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "233f739e_f920f692",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-06T14:17:34Z",
       "side": 1,
       "message": "Would binman symbols help here? It allows a symbol value (e.g. the size of a section) to be written to an variable in the binary:\n\nhttps://u-boot.readthedocs.io/en/latest/develop/package/binman.html#access-to-binman-entry-offsets-at-run-time-symbols\n\nhttps://chromium.googlesource.com/chromiumos/third_party/u-boot/+/refs/heads/chromeos-v2023.10-next/include/binman_sym.h\n\nBut it seems you are already handling this in the link script, which is fine",
+      "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4b8116_b0af160b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-06T21:46:48Z",
+      "side": 1,
+      "message": "I did a bit experiment on this path. Binman puts these symbols in the section(\".binman_sym\") and fills them later. But `current_image_data` is in another section(\".fixed.ver\") and its `.size` needs to be modified. Probably need more effort to support this use case.\n\n```\nconst struct image_data __keep current_image_data FIXED_SECTION(\"ver\") \u003d { \n        .cookie1 \u003d CROS_EC_IMAGE_DATA_COOKIE1, \n        .version \u003d CROS_EC_VERSION32, \n#ifndef TEST_BUILD\n        .size \u003d (const uintptr_t)\u0026__image_size,\n#endif  \n        .rollback_version \u003d CONFIG_ROLLBACK_VERSION, \n        .cookie2 \u003d CROS_EC_IMAGE_DATA_COOKIE2, \n        .cros_fwid \u003d CROS_FWID32, \n        .cookie3 \u003d CROS_EC_IMAGE_DATA_COOKIE3, \n};\n```",
+      "parentUuid": "233f739e_f920f692",
       "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2023-11-06T14:17:34Z",
       "side": 1,
       "message": "How come RISC-V is different? Can you add a comment here?",
+      "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "118771a6_32b8eb21",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-06T21:46:48Z",
+      "side": 1,
+      "message": "I don\u0027t know the background. I think they can share the one but somehow their linker scripts use different names in the upstream Zephyr. I added the comment.",
+      "parentUuid": "61e655d1_27d2fef1",
       "revId": "a98546be97c90593c4cd32568d94f66a54e88094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
