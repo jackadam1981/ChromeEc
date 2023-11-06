@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5a477f_fbc22321",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-06T20:26:33Z",
+      "side": 1,
+      "message": "does this need to get re-enabled at the bottom of this function. Something seems unbalanced. If it needs to be that way, can you add a comment?",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "54411a90a1005194145599f876ffa7a1bd4e343e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
