@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc6c2deb_dd03c02a",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 21
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-06T18:02:56Z",
+      "side": 1,
+      "message": "default 2 if SOC_FAMILY_MEC\ndefault 2 # TODO: If needed, add values for different EC chips",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 10
+      },
+      "revId": "e3cc18ab0da566b2ca427a4cfaad856b677b6d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88824834_bba32034",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/prj.conf",
         "patchSetId": 21
