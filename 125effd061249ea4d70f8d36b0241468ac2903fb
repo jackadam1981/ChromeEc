@@ -116,6 +116,24 @@
       "parentUuid": "3e398f55_5233c07c",
       "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5582aa_bb66ee64",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-06T14:07:29Z",
+      "side": 1,
+      "message": "OK I see. Yes that is OK. We could add to the --inpath but I suppose that is more complicated",
+      "parentUuid": "208ac483_684321ab",
+      "revId": "125effd061249ea4d70f8d36b0241468ac2903fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

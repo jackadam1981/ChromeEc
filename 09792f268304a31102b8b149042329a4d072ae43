@@ -16,6 +16,23 @@
       "message": "Found a bug that RO FWID offset is wrong. Because the RO image may add a chip-specific header to the beginning so the loader understands how to load the RO\nimage from the flash. This header shifts the elf symbols. So the latest patchset keeps the RO FWID as original.",
       "revId": "09792f268304a31102b8b149042329a4d072ae43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16e8a60_4a0ba8cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-06T14:07:29Z",
+      "side": 1,
+      "message": "I see the test info, thanks",
+      "revId": "09792f268304a31102b8b149042329a4d072ae43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
