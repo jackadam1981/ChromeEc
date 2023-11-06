@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44606e9_ea1769ba",
+        "filename": "include/debug.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-06T18:36:56Z",
+      "side": 1,
+      "message": "Yep! I went the weakref route and provided a default stub for all. The stm32 implementation overrides this.",
+      "parentUuid": "c3ed1856_46596af1",
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55c5fa92_122cc3ee",
