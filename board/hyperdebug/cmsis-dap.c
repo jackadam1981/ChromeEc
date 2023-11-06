@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "cmsis-dap.h"
 #include "common.h"
 #include "consumer.h"
 #include "gpio.h"
@@ -67,6 +68,7 @@ enum cmsis_dap_command_t {
 	/* Vendor-specific commands (reserved range 0x80 - 0x9F) */
 	DAP_GOOG_Info = 0x80,
 	DAP_GOOG_I2c = 0x81,
+	DAP_GOOG_I2cDevice = 0x82,
 
 };
 
@@ -120,6 +122,7 @@ enum goog_info_subcommand_t {
 
 /* Bitfield response to vendor (Google) capabities request */
 const uint32_t GOOG_CAP_I2c = BIT(0);
+const uint32_t GOOG_CAP_I2cDevice = BIT(1);
 
 /* Bitfield used in DAP_SWJ_Pins request */
 const uint8_t PIN_SwClk_Tck = 0x01;
@@ -138,11 +141,11 @@ const uint8_t SEQ_CaptureTdo = 0x80;
  * Incoming and outgoing byte streams.
  */
 
-static struct queue const cmsis_dap_tx_queue;
-static struct queue const cmsis_dap_rx_queue;
+struct queue const cmsis_dap_tx_queue;
+struct queue const cmsis_dap_rx_queue;
 
-static uint8_t rx_buffer[256];
-static uint8_t tx_buffer[256];
+uint8_t rx_buffer[256];
+uint8_t tx_buffer[256];
 
 /*
  * JTAG state
@@ -608,7 +611,7 @@ static void dap_jtag_sequence(size_t peek_c)
 /* Vendor command (HyperDebug): Discover Google-specific capabilities. */
 static void dap_goog_info(size_t peek_c)
 {
-	const uint16_t CAPABILITIES = GOOG_CAP_I2c;
+	const uint16_t CAPABILITIES = GOOG_CAP_I2c | GOOG_CAP_I2cDevice;
 
 	if (peek_c < 2)
 		return;
@@ -654,6 +657,7 @@ static void (*dispatch_table[256])(size_t peek_c) = {
 	[DAP_Info] = dap_info,
 	[DAP_GOOG_Info] = dap_goog_info,
 	[DAP_GOOG_I2c] = dap_goog_i2c,
+	[DAP_GOOG_I2cDevice] = dap_goog_i2c_device,
 	[DAP_HostStatus] = dap_host_status,
 	[DAP_Connect] = dap_connect,
 	[DAP_Disconnect] = dap_disconnect,
@@ -761,8 +765,8 @@ struct consumer const cmsis_dap_consumer = {
 	.ops = &cmsis_dap_consumer_ops,
 };
 
-static struct queue const cmsis_dap_tx_queue = QUEUE_DIRECT(
+struct queue const cmsis_dap_tx_queue = QUEUE_DIRECT(
 	sizeof(tx_buffer), uint8_t, null_producer, cmsis_dap_usb.consumer);
 
-static struct queue const cmsis_dap_rx_queue = QUEUE_DIRECT(
+struct queue const cmsis_dap_rx_queue = QUEUE_DIRECT(
 	sizeof(rx_buffer), uint8_t, cmsis_dap_usb.producer, cmsis_dap_consumer);
