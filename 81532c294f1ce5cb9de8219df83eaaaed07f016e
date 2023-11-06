@@ -157,6 +157,30 @@
       },
       "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2b413e_5f88fbcb",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-06T21:37:21Z",
+      "side": 1,
+      "message": "I get this error in CQ:\n```\nx86_64-pc-linux-gnu-g++.real: error: build/host/hyperdebug/RO/test/../board/hyperdebug/util.o: No such file or directory\n```\n\nIt seems that the way that I from test/build.mk refer to files in ../board/hyperdebug does not quite work.",
+      "parentUuid": "cd2cc7df_af12b7f3",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 3
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
