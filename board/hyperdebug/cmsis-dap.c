@@ -564,6 +564,7 @@ static void (*dispatch_table[256])(size_t peek_c) = {
 	[DAP_Info] = dap_info,
 	[DAP_GOOG_Info] = dap_goog_info,
 	[DAP_GOOG_I2c] = dap_goog_i2c,
+	[DAP_GOOG_I2cDevice] = dap_goog_i2c_device,
 	[DAP_HostStatus] = dap_host_status,
 	[DAP_Connect] = dap_connect,
 	[DAP_Disconnect] = dap_disconnect,
