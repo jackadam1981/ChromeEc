@@ -141,6 +141,30 @@
       },
       "revId": "cd086675816af8980ca2e9ae99a4ac5a20531b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c188538_4c50b3a8",
+        "filename": "zephyr/program/it8xxx2_evb/it82002_evb/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-11-06T16:43:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2ce3f2c0_59db7f3e",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "cd086675816af8980ca2e9ae99a4ac5a20531b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
