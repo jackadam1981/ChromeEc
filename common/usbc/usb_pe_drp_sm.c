@@ -34,6 +34,7 @@
 #include "usb_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_discovery.h"
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_policy.h"
 #include "usb_pd_tcpm.h"
@@ -2175,6 +2176,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	if (pd_timer_is_expired(port, PE_TIMER_DISCOVER_IDENTITY)) {
 		if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
 		    PD_DISC_NEEDED) {
+			CPRINTS("Discover still needed");
 			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
@@ -5952,9 +5954,10 @@ static void pe_vdm_identity_request_cbl_run(int port)
 			return;
 		}
 		break;
-	case VDM_RESULT_ACK:
+	case VDM_RESULT_ACK: {
 		/* PE_INIT_PORT_VDM_Identity_ACKed embedded here */
-		dfp_consume_identity(port, sop, cnt, payload);
+		// dfp_consume_identity(port, sop, cnt, payload);
+		dpm_vdm_acked(port, sop, cnt, payload);
 
 		/*
 		 * Note: If port partner runs PD 2.0, we must use PD 2.0 to
@@ -5967,9 +5970,11 @@ static void pe_vdm_identity_request_cbl_run(int port)
 			set_cable_rev(port,
 				      PD_HEADER_REV(rx_emsg[port].header));
 		break;
+	}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_PORT_VDM_IDENTITY_NAKed embedded here */
-		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		// pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, sop, USB_SID_PD, CMD_DISCOVER_IDENT, payload[0]);
 		break;
 	}
 
@@ -6005,16 +6010,20 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 	 * Identity Command requests have been sent by a Port, the Port Shall
 	 * Not send any further SOP’/SOP’’ Messages.
 	 */
-	if (pe[port].discover_identity_counter >= N_DISCOVER_IDENTITY_COUNT)
-		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
-	else if (pe[port].discover_identity_counter ==
-		 N_DISCOVER_IDENTITY_PD3_0_LIMIT)
+	if (pe[port].discover_identity_counter >= N_DISCOVER_IDENTITY_COUNT) {
+		CPRINTS("Reached end of discover identity counter");
+		dpm_vdm_naked(port, TCPCI_MSG_SOP_PRIME, USB_SID_PD,
+				CMD_DISCOVER_IDENT, 0);
+	} else if (pe[port].discover_identity_counter ==
+		 N_DISCOVER_IDENTITY_PD3_0_LIMIT) {
+		CPRINTS("PD 3.0 limit");
 		/*
 		 * Downgrade to PD 2.0 if the partner hasn't replied before
 		 * all retries are exhausted in case the cable is
 		 * non-compliant about GoodCRC-ing higher revisions
 		 */
 		set_cable_rev(port, PD_REV20);
+	}
 
 	/*
 	 * Set discover identity timer unless BUSY case already did so.
@@ -8341,6 +8350,8 @@ void pd_dfp_discovery_init(int port)
 		  BIT(task_get_current()));
 
 	memset(pe[port].discovery, 0, sizeof(pe[port].discovery));
+
+	discovery_init(port);
 }
 
 void pd_dfp_mode_init(int port)
