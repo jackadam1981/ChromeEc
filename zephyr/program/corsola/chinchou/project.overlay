@@ -549,3 +549,16 @@
 	enable-pins = <&en_pp5000_usb_a0_vbus
 		       &en_pp5000_usb_a1_vbus_x>;
 };
+
+&lid_accel {
+	configs {
+		compatible =
+			"cros-ec,motionsense-sensor-config";
+		ec-s0 {
+			odr = <(50000 | ROUND_UP_FLAG)>;
+		};
+		ec-s3 {
+			odr = <(50000 | ROUND_UP_FLAG)>;
+		};
+	};
+};
