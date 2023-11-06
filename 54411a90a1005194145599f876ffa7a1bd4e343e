@@ -22,6 +22,30 @@
       },
       "revId": "54411a90a1005194145599f876ffa7a1bd4e343e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897bdbac_8255df68",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-06T21:34:11Z",
+      "side": 1,
+      "message": "You are right, it is asymmetrical.\n\nAfter reading some documentation, I do not believe that clearing CR2 here serves any purpose.  I have removed it.",
+      "parentUuid": "6b5a477f_fbc22321",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "54411a90a1005194145599f876ffa7a1bd4e343e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
