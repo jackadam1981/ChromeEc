@@ -46,6 +46,30 @@
       },
       "revId": "5c8e6bb057c7d25d6086035fece9be1ff81ec318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcfba8ff_58a2bb67",
+        "filename": "test/debug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-06T19:14:19Z",
+      "side": 0,
+      "message": "You are right. Thanks for checking this.",
+      "parentUuid": "890ad66f_95afeb77",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "5c8e6bb057c7d25d6086035fece9be1ff81ec318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
