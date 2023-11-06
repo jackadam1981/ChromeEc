@@ -458,3 +458,74 @@ bool is_active_cable_element_retimer(int port)
 	       disc->identity.idh.product_type == IDH_PTYPE_ACABLE &&
 	       disc->identity.product_t2.a2_rev30.active_elem == ACTIVE_RETIMER;
 }
+
+/*
+ * This discovery DPM state machine is only intended to be used with TCPMv2.
+ * Make sure that no TCPMv1 code relies upon it.
+ */
+#ifdef CONFIG_USB_PD_TCPMV2
+enum discovery_states {
+	DISCOVERY_CABLE_IDENTITY = 0,
+	/* TODO(b/188578923): Add other discovery states. */
+	DISCOVERY_DONE,
+	DISCOVERY_STATE_COUNT
+};
+static enum discovery_states discovery_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+bool discovery_is_done(int port)
+{
+	return discovery_state[port] == DISCOVERY_DONE;
+}
+
+void discovery_init(int port)
+{
+	discovery_state[port] = DISCOVERY_CABLE_IDENTITY;
+}
+
+void discovery_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
+			 uint32_t *vdm)
+{
+	switch (discovery_state[port]) {
+	case DISCOVERY_CABLE_IDENTITY:
+		dfp_consume_identity(port, type, vdo_count, vdm);
+		CPRINTS("C%d: Cable identity ACK", port);
+		/* TODO(b/188578923): Add other discovery states. */
+		discovery_state[port] = DISCOVERY_DONE;
+		break;
+	default:
+		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
+			discovery_state[port]);
+		discovery_state[port] = DISCOVERY_DONE;
+	}
+}
+
+void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
+			 uint8_t vdm_cmd)
+{
+	switch (discovery_state[port]) {
+	case DISCOVERY_CABLE_IDENTITY:
+		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
+		CPRINTS("C%d: Cable identity NAK", port);
+		/* TODO(b/188578923): Add other discovery states. */
+		discovery_state[port] = DISCOVERY_DONE;
+		break;
+	default:
+		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
+			discovery_state[port]);
+		discovery_state[port] = DISCOVERY_DONE;
+	}
+}
+
+bool discovery_vdm_is_discovery(uint16_t svid, uint8_t cmd)
+{
+	if (svid == USB_SID_PD &&
+	    (cmd == CMD_DISCOVER_IDENT || cmd == CMD_DISCOVER_SVID))
+		return true;
+
+	if (svid != USB_SID_PD && cmd == CMD_DISCOVER_MODES)
+		return true;
+
+	return false;
+}
+
+#endif

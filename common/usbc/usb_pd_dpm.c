@@ -27,6 +27,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_ap_vdm_control.h"
+#include "usb_pd_discovery.h"
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_pdo.h"
 #include "usb_pd_tcpm.h"
@@ -436,9 +437,21 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		   uint32_t *vdm)
 {
 	__maybe_unused const uint16_t svid = PD_VDO_VID(vdm[0]);
+	__maybe_unused const uint8_t cmd = PD_VDO_CMD(vdm[0]);
 
 	assert(vdo_count >= 1);
 	assert(vdo_count <= VDO_MAX_SIZE);
+
+	/*
+	 * Discovery VDMs can either have the PD SID (0xff00) for Discover
+	 * Identity and Discover SVIDs or the SVID of the alt mode to which they
+	 * apply for Discover Modes. Filter out discovery responses. Then apply
+	 * SVID switching.
+	 */
+	if (discovery_vdm_is_discovery(svid, cmd) && !discovery_is_done(port)) {
+		discovery_vdm_acked(port, type, vdo_count, vdm);
+		return;
+	}
 
 	if (IS_ENABLED(CONFIG_USB_PD_VDM_AP_CONTROL)) {
 		ap_vdm_acked(port, type, vdo_count, vdm);
@@ -468,6 +481,18 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 		   uint8_t vdm_cmd, uint32_t vdm_header)
 {
+	/*
+	 * Discovery VDMs can either have the PD SID (0xff00) for Discover
+	 * Identity and Discover SVIDs or the SVID of the alt mode to which they
+	 * apply for Discover Modes. Filter out discovery responses. Then apply
+	 * SVID switching.
+	 */
+	if (discovery_vdm_is_discovery(svid, vdm_cmd) &&
+	    !discovery_is_done(port)) {
+		discovery_vdm_naked(port, type, svid, vdm_cmd);
+		return;
+	}
+
 	if (IS_ENABLED(CONFIG_USB_PD_VDM_AP_CONTROL)) {
 		ap_vdm_naked(port, type, svid, vdm_cmd, vdm_header);
 		return;

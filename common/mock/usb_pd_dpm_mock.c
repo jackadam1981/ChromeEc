@@ -57,6 +57,9 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 		   uint8_t vdm_cmd, uint32_t vdm_header)
 {
+	if (type == TCPCI_MSG_SOP_PRIME && svid == USB_SID_PD &&
+	    vdm_cmd == CMD_DISCOVER_IDENT)
+		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
 }
 
 void dpm_notify_attention(int port, size_t vdo_objects, uint32_t *buf)
