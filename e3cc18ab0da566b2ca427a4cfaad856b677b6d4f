@@ -16,6 +16,29 @@
       "message": "Hi Keith, Vijay\nCan you pls help with the review.\n\nThanks.",
       "revId": "e3cc18ab0da566b2ca427a4cfaad856b677b6d4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88824834_bba32034",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/prj.conf",
+        "patchSetId": 21
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-06T17:11:49Z",
+      "side": 1,
+      "message": "this should be picked up by default value",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "e3cc18ab0da566b2ca427a4cfaad856b677b6d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
