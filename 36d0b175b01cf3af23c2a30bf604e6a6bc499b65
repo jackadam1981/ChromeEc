@@ -46,6 +46,30 @@
       },
       "revId": "36d0b175b01cf3af23c2a30bf604e6a6bc499b65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c333f233_94c1c0ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-06T04:19:45Z",
+      "side": 1,
+      "message": "The upstream tests exposed an issue with my change and I\u0027m not sure what the best solution is.\n\nTo unblock this CL in the meantime, I added a workaround of configuring the pin as an interrupt, with a TODO. Let me know if you\u0027re happy with this.",
+      "parentUuid": "9e5a00b1_e28d3fe0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "36d0b175b01cf3af23c2a30bf604e6a6bc499b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
