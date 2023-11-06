@@ -466,3 +466,123 @@ bool is_active_cable_element_retimer(int port)
 	       disc->identity.idh.product_type == IDH_PTYPE_ACABLE &&
 	       disc->identity.product_t2.a2_rev30.active_elem == ACTIVE_RETIMER;
 }
+
+/*
+ * This discovery DPM state machine is only intended to be used with TCPMv2.
+ * Make sure that no TCPMv1 code relies upon it.
+ */
+#ifdef CONFIG_USB_PD_TCPMV2
+enum discovery_states {
+	DISCOVERY_CABLE_IDENTITY = 0,
+	/* TODO(b/188578923): Add other discovery states. */
+	DISCOVERY_DONE,
+	DISCOVERY_STATE_COUNT
+};
+static enum discovery_states discovery_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+bool discovery_is_done(int port)
+{
+	return discovery_state[port] == DISCOVERY_DONE;
+}
+
+void discovery_init(int port)
+{
+	discovery_state[port] = DISCOVERY_CABLE_IDENTITY;
+}
+
+/*
+ * Marks as failed any element of discovery state that is not already complete.
+ * The primary purpose is to stop any mechanism that would repeatedly send
+ * discovery requests, the responses for which can't be handled due to the
+ * current discovery state. This would presumably be the result of a programming
+ * error, in which the wrong request is sent for the current discovery state. As
+ * such, this cleanup is somewhat redundant but acts as a failsafe.
+ * TODO(b/272827504): Remove this when sending discovery REQs and handling
+ * responses are both controlled by the same state variable.
+ */
+static void discovery_set_failed(int port)
+{
+	struct pd_discovery *disc_sop =
+		pd_get_am_discovery_and_notify_access(port, TCPCI_MSG_SOP);
+	struct pd_discovery *disc_sop_prime =
+		pd_get_am_discovery_and_notify_access(port,
+						      TCPCI_MSG_SOP_PRIME);
+	int svid_index;
+
+	if (disc_sop->identity_discovery == PD_DISC_NEEDED)
+		disc_sop->identity_discovery = PD_DISC_FAIL;
+	if (disc_sop->svids_discovery == PD_DISC_NEEDED)
+		disc_sop->svids_discovery = PD_DISC_FAIL;
+	for (svid_index = 0; svid_index < disc_sop->svid_cnt; ++svid_index) {
+		struct svid_mode_data *mode_data = &disc_sop->svids[svid_index];
+
+		if (mode_data->discovery == PD_DISC_NEEDED)
+			mode_data->discovery = PD_DISC_FAIL;
+	}
+
+	if (disc_sop_prime->identity_discovery == PD_DISC_NEEDED)
+		disc_sop_prime->identity_discovery = PD_DISC_FAIL;
+	if (disc_sop_prime->svids_discovery == PD_DISC_NEEDED)
+		disc_sop_prime->svids_discovery = PD_DISC_FAIL;
+	for (svid_index = 0; svid_index < disc_sop_prime->svid_cnt;
+	     ++svid_index) {
+		struct svid_mode_data *mode_data =
+			&disc_sop_prime->svids[svid_index];
+
+		if (mode_data->discovery == PD_DISC_NEEDED)
+			mode_data->discovery = PD_DISC_FAIL;
+	}
+
+	pd_notify_event(port, PD_STATUS_EVENT_SOP_DISC_DONE);
+	pd_notify_event(port, PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+}
+
+void discovery_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
+			 uint32_t *vdm)
+{
+	switch (discovery_state[port]) {
+	case DISCOVERY_CABLE_IDENTITY:
+		dfp_consume_identity(port, type, vdo_count, vdm);
+		CPRINTS("C%d: Cable identity ACK", port);
+		/* TODO(b/188578923): Add other discovery states. */
+		discovery_state[port] = DISCOVERY_DONE;
+		break;
+	default:
+		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
+			discovery_state[port]);
+		discovery_state[port] = DISCOVERY_DONE;
+		discovery_set_failed(port);
+	}
+}
+
+void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
+			 uint8_t vdm_cmd)
+{
+	switch (discovery_state[port]) {
+	case DISCOVERY_CABLE_IDENTITY:
+		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
+		CPRINTS("C%d: Cable identity NAK", port);
+		/* TODO(b/188578923): Add other discovery states. */
+		discovery_state[port] = DISCOVERY_DONE;
+		break;
+	default:
+		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
+			discovery_state[port]);
+		discovery_state[port] = DISCOVERY_DONE;
+		discovery_set_failed(port);
+	}
+}
+
+bool discovery_vdm_is_discovery(uint16_t svid, uint8_t cmd)
+{
+	if (svid == USB_SID_PD &&
+	    (cmd == CMD_DISCOVER_IDENT || cmd == CMD_DISCOVER_SVID))
+		return true;
+
+	if (svid != USB_SID_PD && cmd == CMD_DISCOVER_MODES)
+		return true;
+
+	return false;
+}
+
+#endif

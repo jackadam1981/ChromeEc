@@ -16,6 +16,7 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "test_usbc_alt_mode.h"
+#include "usb_pd_discovery.h"
 
 #include <stdint.h>
 
@@ -251,6 +252,159 @@ ZTEST_F(usbc_alt_mode, test_discovery_params_too_small)
 	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, &discovery,
 				 sizeof(discovery));
 	zassert_equal(discovery.svid_count, 0);
+}
+
+/* Verify that the TCPM will preserve discovery state if it calls
+ * discovery_vdm_acked as a programming error. This is distinct from receiving
+ * an unexpected VDM ACK message, which wouldn't even get that far.
+ */
+ZTEST_F(usbc_alt_mode, test_discovery_unexpected_ack)
+{
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+
+	/* This is somewhat contrived. The TCPM should only call this function
+	 * from the expected state. Calling it now would be a programming error.
+	 */
+	discovery_vdm_acked(TEST_PORT, TCPCI_MSG_SOP,
+			    fixture->partner.identity_vdm,
+			    fixture->partner.identity_vdos);
+
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	/* The host command does not count the VDM header in identity_count. */
+	zassert_equal(discovery->identity_count,
+		      fixture->partner.identity_vdos - 1,
+		      "Expected %d identity VDOs, got %d",
+		      fixture->partner.identity_vdos - 1,
+		      discovery->identity_count);
+	zassert_mem_equal(
+		discovery->discovery_vdo, fixture->partner.identity_vdm + 1,
+		discovery->identity_count * sizeof(*discovery->discovery_vdo),
+		"Discovered SOP identity ACK did not match");
+	zassert_equal(discovery->svid_count, 1, "Expected 1 SVID, got %d",
+		      discovery->svid_count);
+	zassert_equal(discovery->svids[0].svid, USB_SID_DISPLAYPORT,
+		      "Expected SVID 0x%0000x, got 0x%0000x",
+		      USB_SID_DISPLAYPORT, discovery->svids[0].svid);
+	zassert_equal(discovery->svids[0].mode_count, 1,
+		      "Expected 1 DP mode, got %d",
+		      discovery->svids[0].mode_count);
+	zassert_equal(discovery->svids[0].mode_vdo[0],
+		      fixture->partner.modes_vdm[1],
+		      "DP mode VDOs did not match");
+}
+
+/* Verify that the TCPM will preserve discovery state if it calls
+ * discovery_vdm_naked as a programming error. This is distinct from receiving
+ * an unexpected VDM ACK message, which wouldn't even get that far.
+ */
+ZTEST_F(usbc_alt_mode, test_discovery_unexpected_nak)
+{
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+
+	/*
+	 * This is somewhat contrived. The TCPM should only call this function
+	 * from the expected state. Calling it now would be a programming error.
+	 */
+	discovery_vdm_naked(TEST_PORT, TCPCI_MSG_SOP, USB_SID_PD,
+			    CMD_DISCOVER_IDENT);
+
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	/* The host command does not count the VDM header in identity_count. */
+	zassert_equal(discovery->identity_count,
+		      fixture->partner.identity_vdos - 1,
+		      "Expected %d identity VDOs, got %d",
+		      fixture->partner.identity_vdos - 1,
+		      discovery->identity_count);
+	zassert_mem_equal(
+		discovery->discovery_vdo, fixture->partner.identity_vdm + 1,
+		discovery->identity_count * sizeof(*discovery->discovery_vdo),
+		"Discovered SOP identity ACK did not match");
+	zassert_equal(discovery->svid_count, 1, "Expected 1 SVID, got %d",
+		      discovery->svid_count);
+	zassert_equal(discovery->svids[0].svid, USB_SID_DISPLAYPORT,
+		      "Expected SVID 0x%0000x, got 0x%0000x",
+		      USB_SID_DISPLAYPORT, discovery->svids[0].svid);
+	zassert_equal(discovery->svids[0].mode_count, 1,
+		      "Expected 1 DP mode, got %d",
+		      discovery->svids[0].mode_count);
+	zassert_equal(discovery->svids[0].mode_vdo[0],
+		      fixture->partner.modes_vdm[1],
+		      "DP mode VDOs did not match");
+}
+
+ZTEST_F(usbc_alt_mode, test_discovery_set_failed_sop_identity)
+{
+	/* At this point, discovery has succeeded, and the discovery state is
+	 * "done." Artificially mark discovery structures not done to make sure
+	 * they will be marked as failed in response to a programming error.
+	 */
+
+	struct pd_discovery *disc_sop =
+		pd_get_am_discovery_and_notify_access(TEST_PORT, TCPCI_MSG_SOP);
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+
+	disc_sop->identity_discovery = PD_DISC_NEEDED;
+	discovery_vdm_naked(TEST_PORT, TCPCI_MSG_SOP, USB_SID_PD,
+			    CMD_DISCOVER_IDENT);
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	zassert_equal(discovery->identity_count, 0);
+}
+
+ZTEST_F(usbc_alt_mode, test_discovery_set_failed_sop_svids)
+{
+	/* At this point, discovery has succeeded, and the discovery state is
+	 * "done." Artificially mark discovery structures not done to make sure
+	 * they will be marked as failed in response to a programming error.
+	 */
+
+	struct pd_discovery *disc_sop =
+		pd_get_am_discovery_and_notify_access(TEST_PORT, TCPCI_MSG_SOP);
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+
+	disc_sop->svids_discovery = PD_DISC_NEEDED;
+	disc_sop->svids[0].discovery = PD_DISC_NEEDED;
+	discovery_vdm_naked(TEST_PORT, TCPCI_MSG_SOP, USB_SID_PD,
+			    CMD_DISCOVER_IDENT);
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	zassert_equal(discovery->svid_count, 0);
+}
+
+ZTEST_F(usbc_alt_mode, test_discovery_set_failed_sop_mode)
+{
+	/* At this point, discovery has succeeded, and the discovery state is
+	 * "done." Artificially mark discovery structures not done to make sure
+	 * they will be marked as failed in response to a programming error.
+	 */
+
+	struct pd_discovery *disc_sop =
+		pd_get_am_discovery_and_notify_access(TEST_PORT, TCPCI_MSG_SOP);
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+
+	disc_sop->svids[0].discovery = PD_DISC_NEEDED;
+	discovery_vdm_naked(TEST_PORT, TCPCI_MSG_SOP, USB_SID_PD,
+			    CMD_DISCOVER_IDENT);
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	zassert_equal(discovery->svids[0].mode_count, 0);
 }
 
 void verify_data_reset_msg(struct tcpci_partner_data *partner, bool want)
