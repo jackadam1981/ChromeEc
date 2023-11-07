@@ -22,6 +22,30 @@
       },
       "revId": "cd0d149edaedced2eaf6282f298e76daeb706d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff88cf1_de60ce04",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 11747,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-07T19:03:49Z",
+      "side": 1,
+      "message": "Then, I think we should combine them: ectool bcfg get and ectool bcfg set.",
+      "parentUuid": "ee3f4091_d58882fc",
+      "range": {
+        "startLine": 11747,
+        "startChar": 4,
+        "endLine": 11747,
+        "endChar": 17
+      },
+      "revId": "cd0d149edaedced2eaf6282f298e76daeb706d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
