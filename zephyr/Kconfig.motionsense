@@ -193,3 +193,40 @@ rsource "Kconfig.sensor_devices"
 rsource "Kconfig.body_detection"
 
 endif # PLATFORM_EC_MOTIONSENSE
+
+config PLATFORM_EC_EXTERNAL_MOTIONSENSE
+	bool "External device has motionsense task"
+	help
+	  This config is used by EC firmware to indication EC doesn't control
+	  motion sensors. External device has motionsense task enabled to
+	  take care motion sensor, lid angle, tablet mode.
+
+if PLATFORM_EC_EXTERNAL_MOTIONSENSE
+
+config PLATFORM_EC_TABLET_MODE
+	bool "Tablet Mode"
+	help
+	  Enable this for a device which can be a tablet as well as a clamshell.
+	  Tablet mode detection is done either by using the lid angle measurement
+	  or by the dedicated GMR sensor.
+
+if PLATFORM_EC_TABLET_MODE
+
+config PLATFORM_EC_TABLET_MODE_SWITCH
+	bool "Tablet Mode Switch"
+	depends on PLATFORM_EC_MKBP_INPUT_DEVICES
+	help
+	  Enable a virtual switch to indicate when we are in tablet mode. The tablet
+	  mode state is sent to AP via MKBP protocol(switch event).
+
+config PLATFORM_EC_GMR_TABLET_MODE
+	bool "Giant Magnetoresistance(GMR) Tablet Mode"
+	help
+	  Enable this to use GMR sensor to detect tablet mode.
+	  It requires to set GPIO_TABLET_MODE_L to map the interrupt from
+	  the sensor and direct its mapping to gmr_tablet_switch_isr
+	  in common/tablet_mode.c.
+
+endif #PLATFORM_EC_TABLET_MODE
+
+endif #PLATFORM_EC_EXTERNAL_MOTIONSENSE
