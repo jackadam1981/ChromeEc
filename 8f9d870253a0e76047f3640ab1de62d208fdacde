@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "082664aa_f9058422",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-07T08:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50a26a30_5a4439d9",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9a1287_10027362",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-07T07:02:38Z",
       "side": 1,
       "message": "Frankly speaking, I don\u0027t believe there is no bug for this CL. Please add a bug that keeps history of implementing FP login feature on FPMCU or create a new one.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fbe5c7_d610754f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-07T08:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9a1287_10027362",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "Sounds good.",
       "parentUuid": "8d552d1a_13947d99",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ddf592_e92e36ae",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-07T08:50:22Z",
+      "side": 1,
+      "message": "hmmm, we cannot use the same function to reset the context content.\nAnd in the future, these two functions will set different states to the templates. http://crrev.com/c/4809463",
+      "parentUuid": "6cf04255_a5e9d32a",
       "range": {
         "startLine": 59,
         "startChar": 0,
