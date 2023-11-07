@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97e744a_9f1b2dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-11-07T09:39:55Z",
+      "side": 1,
+      "message": "Should be Gothrax instead of Uldren",
+      "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d4bd4d_4e14a1ed",
+        "filename": "zephyr/program/nissa/gothrax/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-11-07T09:39:55Z",
+      "side": 1,
+      "message": "Rename variable `nissa_cached_sub_board` as `cached_sub_board`",
+      "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aabc294_eea70f4d",
+        "filename": "zephyr/program/nissa/gothrax/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-11-07T09:39:55Z",
+      "side": 1,
+      "message": "Replace `nereid` with `gothrax`",
+      "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
