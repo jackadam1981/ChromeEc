@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af99efb3_a9bc2ef3",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-07T21:24:02Z",
+      "side": 1,
+      "message": "C / C++ have what is called \"integer promotions\", which basically means that when figuring which type to use when evaluating arithmetic operators, first both operands are \"promoted\" to `int` (unless the range of the operand does not fit in the range of `int`, in which case `unsigned int` is chosen instead, unless that also does not fit, in which case the type is not promoted.)\n\nThis evaluation will take the high four bits of a particular byte, and shift them up (as an `int`), to make them occupy bits 11:8.\n\nhttps://www.geeksforgeeks.org/integer-promotions-in-c/",
+      "parentUuid": "e2cbc714_d3b57d7b",
+      "range": {
+        "startLine": 197,
+        "startChar": 21,
+        "endLine": 197,
+        "endChar": 40
+      },
+      "revId": "83c85d152dca07dde6e25239f56d9971f61a1c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd5ce17f_19ac4b6c",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-11-07T19:51:10Z",
       "side": 1,
       "message": "since we are here, it would be good to call out what the `1` and the `4` are for",
+      "range": {
+        "startLine": 234,
+        "startChar": 49,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "83c85d152dca07dde6e25239f56d9971f61a1c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d184111_41a6b2cc",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-07T21:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5ce17f_19ac4b6c",
       "range": {
         "startLine": 234,
         "startChar": 49,
