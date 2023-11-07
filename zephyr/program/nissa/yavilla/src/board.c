@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 /* yavilla hardware configuration */
+#include "chipset.h"
 #include "cros_cbi.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -50,6 +51,9 @@ static void board_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
 
+	/* Enable Pen Detect interrupt */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_pen_det_l));
+
 	/*
 	 * Disable tablet related interrupts for tablet absent DUT.
 	 */
@@ -73,9 +77,17 @@ void pen_detect_interrupt(enum gpio_signal s)
 {
 	int pen_detect =
 		!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pen_detect_odl));
+	const struct gpio_dt_spec *const pen_power_gpio =
+		GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_pen_x);
 
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_pen_x),
-			pen_detect);
+	/* Make sure pen power is off when AP is off */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		gpio_pin_set_dt(pen_power_gpio, 0);
+		return;
+	}
+
+	/* Turn on/off pen power if pen is attached/detached */
+	gpio_pin_set_dt(pen_power_gpio, pen_detect);
 }
 
 __override void board_power_change(struct ap_power_ev_callback *cb,
@@ -85,25 +97,19 @@ __override void board_power_change(struct ap_power_ev_callback *cb,
 		GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_pen_x);
 	const struct gpio_dt_spec *const pen_detect_gpio =
 		GPIO_DT_FROM_NODELABEL(gpio_pen_detect_odl);
-	const struct gpio_int_config *const pen_detect_int =
-		GPIO_INT_FROM_NODELABEL(int_pen_det_l);
 
 	switch (data.event) {
 	case AP_POWER_STARTUP:
-		/* Enable Pen Detect interrupt */
-		gpio_enable_dt_interrupt(pen_detect_int);
 		/*
-		 * Make sure pen detection is triggered or not when AP power on
+		 * Turn on pen power if pen is attached when AP power on
 		 */
 		if (!gpio_pin_get_dt(pen_detect_gpio))
 			gpio_pin_set_dt(pen_power_gpio, 1);
 		break;
 	case AP_POWER_SHUTDOWN:
 		/*
-		 * Disable pen detect INT and turn off pen power when AP
-		 * shutdown
+		 * Turn off pen power when AP shutdown
 		 */
-		gpio_disable_dt_interrupt(pen_detect_int);
 		gpio_pin_set_dt(pen_power_gpio, 0);
 		break;
 	default:
