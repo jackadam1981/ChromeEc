@@ -110,6 +110,7 @@ if(CONFIG_TEST_NISSA_CRAASK)
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/keyboard.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/led.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/thermal.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/touch.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/usbc.c
     )
 endif()
