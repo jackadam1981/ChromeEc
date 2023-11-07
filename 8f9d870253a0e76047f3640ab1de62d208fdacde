@@ -68,6 +68,30 @@
       },
       "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d552d1a_13947d99",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-07T07:14:42Z",
+      "side": 1,
+      "message": "We don\u0027t need (and don\u0027t want) to reset that many stuff here. But I think we can make _fp_clear_context call this new helper function as a part of its cleanup process to reduce duplication.",
+      "parentUuid": "7ad7de7a_9799af6d",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
