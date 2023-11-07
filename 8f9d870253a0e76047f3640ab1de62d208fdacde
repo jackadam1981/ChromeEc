@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a26a30_5a4439d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-07T07:02:38Z",
+      "side": 1,
+      "message": "It would be good to write 3-4 sentences why existing check needs to be changed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9a1287_10027362",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-07T07:02:38Z",
+      "side": 1,
+      "message": "Frankly speaking, I don\u0027t believe there is no bug for this CL. Please add a bug that keeps history of implementing FP login feature on FPMCU or create a new one.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad7de7a_9799af6d",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-07T07:02:38Z",
+      "side": 1,
+      "message": "This partially covers with `_fp_clear_context()` from `fpsensor_state.cc`. Can we use that function instead of creating a new one?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
