@@ -519,6 +519,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "411b1442_1e559009",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-07T18:51:11Z",
+      "side": 1,
+      "message": "I\u0027ve updated the comments explaining the `i2ctransfer` commands.  In patchset 34 see lines 68-74, 124-127, 146-151.",
+      "parentUuid": "25c47a68_c395b779",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b400226_a3f5c4e9",
@@ -628,6 +652,30 @@
       "side": 1,
       "message": "i was also wondering that. we dont generally handle just single transfer request correct. how can it handle multiple transfer requests without requiring the user to manually call the function each time.",
       "parentUuid": "93104248_f742d3ab",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac7ba88_7476fee7",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-07T18:51:11Z",
+      "side": 1,
+      "message": "So FWIW I didn\u0027t intend this to be a useful program, it\u0027s just to show use of the API in as simple a manner as possible (no excessive lines of code or logic that isn\u0027t needed by the API).\n\nI\u0027ve added basic error checking.  That is relevant to the API usage after all.  I had skipped error checking for brevity because the i2c-dev documentation example skips for that reason - but returning errors is part of the API after all, so I think it\u0027s justifiable to have some extra lines in this for error handling.\n\nI\u0027ll put something on calendar to discuss what this example code might look like and actually do if it were redone to try to look like a real and functionally useful pseudo controller.",
+      "parentUuid": "d4f9afa7_d98f5c66",
       "range": {
         "startLine": 151,
         "startChar": 3,
