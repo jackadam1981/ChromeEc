@@ -13,7 +13,6 @@
 #include <linux/build_bug.h>
 #include <linux/cdev.h>
 #include <linux/compat.h>
-#include <linux/completion.h>
 #include <linux/device.h>
 #include <linux/errno.h>
 #include <linux/fs.h>
@@ -69,7 +68,7 @@ struct i2cp_device {
 	struct cdev cdev;
 	struct device device;
 
-	/* must be held while accessing count_* fields */
+	/* must hold to access count_* fields */
 	struct mutex count_lock;
 	unsigned int count_open;
 };
@@ -95,14 +94,19 @@ enum i2cp_state {
 struct i2cp_controller {
 	u32 functionality;
 	struct i2c_adapter i2c_adapter;
+	/* wake for any change to xfer_state */
+	wait_queue_head_t state_wait_queue;
+	/* wake for any change to I/O readiness */
 	wait_queue_head_t poll_wait_queue;
 
-	/* must be held while accessing xfer_* fields */
+	/* must hold to access xfer_* fields, except READ_ONCE(xfer_state) */
 	struct mutex xfer_lock;
+	/*
+	 * must hold xfer_lock while writing AND use WRITE_ONCE()
+	 * must hold xfer_lock while reading OR use READ_ONCE()
+	 */
 	enum i2cp_state xfer_state;
 	struct i2cp_ioctl_xfer_counters xfer_counters;
-	struct completion xfer_queued;
-	struct completion xfer_done;
 	u64 xfer_id;
 	struct i2c_msg *xfer_msgs;
 	u32 xfer_num_msgs;
@@ -131,6 +135,12 @@ static int i2cp_adapter_master_xfer_atomic(struct i2c_adapter *adap,
 	struct i2c_msg *msgs, int num)
 {
 	return -ENOSYS;
+}
+
+static inline bool i2cp_master_xfer_wait_cond(enum i2cp_state xfer_state)
+{
+	return xfer_state != I2CP_STATE_WAIT_FOR_REQ &&
+	       xfer_state != I2CP_STATE_WAIT_FOR_REPLY;
 }
 
 static int i2cp_adapter_master_xfer(struct i2c_adapter *adap,
@@ -172,27 +182,24 @@ static int i2cp_adapter_master_xfer(struct i2c_adapter *adap,
 	pdata->xfer_msgs = msgs;
 	pdata->xfer_num_msgs = num;
 	pdata->xfer_ret = 0;
-	pdata->xfer_state = I2CP_STATE_WAIT_FOR_REQ;
-	complete(&pdata->xfer_queued);
+	WRITE_ONCE(pdata->xfer_state, I2CP_STATE_WAIT_FOR_REQ);
 	mutex_unlock(&pdata->xfer_lock);
 
+	wake_up_interruptible_sync(&pdata->state_wait_queue);
 	wake_up_interruptible_sync_poll(&pdata->poll_wait_queue, POLLIN);
-	time_left = wait_for_completion_killable_timeout(
-		&pdata->xfer_done, adap->timeout);
+	time_left = wait_event_interruptible_timeout(pdata->state_wait_queue,
+		i2cp_master_xfer_wait_cond(READ_ONCE(pdata->xfer_state)),
+		adap->timeout);
 
 	mutex_lock(&pdata->xfer_lock);
-	/* dequeue if i2cp_cdev_ioctl_xfer_req() never did */
-	(void)try_wait_for_completion(&pdata->xfer_queued);
-	/* dequeue if i2cp_cdev_ioctl_xfer_reply() queued after our timeout */
-	(void)try_wait_for_completion(&pdata->xfer_done);
 	switch (pdata->xfer_state) {
 	case I2CP_STATE_XFER_RETURN:
-		pdata->xfer_state = I2CP_STATE_WAIT_FOR_XFER;
+		WRITE_ONCE(pdata->xfer_state, I2CP_STATE_WAIT_FOR_XFER);
 		pdata->xfer_counters.controller_replied++;
 		ret = pdata->xfer_ret;
 		goto unlock;
 	case I2CP_STATE_RETURN_THEN_SHUTDOWN:
-		pdata->xfer_state = I2CP_STATE_SHUTDOWN;
+		WRITE_ONCE(pdata->xfer_state, I2CP_STATE_SHUTDOWN);
 		pdata->xfer_counters.controller_replied++;
 		ret = pdata->xfer_ret;
 		goto unlock;
@@ -216,7 +223,7 @@ static int i2cp_adapter_master_xfer(struct i2c_adapter *adap,
 		pdata->xfer_counters.unknown_failure++;
 		goto unlock;
 	}
-	pdata->xfer_state = I2CP_STATE_WAIT_FOR_XFER;
+	WRITE_ONCE(pdata->xfer_state, I2CP_STATE_WAIT_FOR_XFER);
 	if (time_left == 0)
 		ret = -ETIMEDOUT;
 	else if (time_left == -ERESTARTSYS)
@@ -267,10 +274,9 @@ static int i2cp_cdev_open(struct inode *inodep, struct file *filep)
 		return -ENOMEM;
 	}
 
+	init_waitqueue_head(&pdata->state_wait_queue);
 	init_waitqueue_head(&pdata->poll_wait_queue);
 	mutex_init(&pdata->xfer_lock);
-	init_completion(&pdata->xfer_queued);
-	init_completion(&pdata->xfer_done);
 
 	/* Initialize the I2C adapter. */
 	pdata->i2c_adapter.owner = THIS_MODULE;
@@ -301,18 +307,14 @@ static int i2cp_cdev_release(struct inode *inodep, struct file *filep)
 		 * acquire the lock in order to check the state.
 		 */
 		adapter_was_added = true;
-		pdata->xfer_state =
+		WRITE_ONCE(pdata->xfer_state,
 			(pdata->xfer_state == I2CP_STATE_XFER_RETURN) ?
-			I2CP_STATE_RETURN_THEN_SHUTDOWN : I2CP_STATE_SHUTDOWN;
+			I2CP_STATE_RETURN_THEN_SHUTDOWN : I2CP_STATE_SHUTDOWN);
 	}
 	mutex_unlock(&pdata->xfer_lock);
 
-	/* wake up any buggy pollers */
-	wake_up_interruptible_all(&pdata->poll_wait_queue);
-	/* wake up blocked master_xfer */
-	complete_all(&pdata->xfer_done);
-	/* wake up blocked I2CP_IOCTL_XFER_REQ */
-	complete_all(&pdata->xfer_queued);
+	wake_up_all(&pdata->state_wait_queue);
+	wake_up_all(&pdata->poll_wait_queue);
 
 	if (adapter_was_added)
 		i2c_del_adapter(&pdata->i2c_adapter);
@@ -401,7 +403,7 @@ static long i2cp_cdev_ioctl_start(struct file *filep, unsigned long arg)
 	}
 
 	ret = 0;
-	pdata->xfer_state = I2CP_STATE_WAIT_FOR_XFER;
+	WRITE_ONCE(pdata->xfer_state, I2CP_STATE_WAIT_FOR_XFER);
 
  unlock:
 	mutex_unlock(&pdata->xfer_lock);
@@ -484,6 +486,13 @@ static long i2cp_xfer_req_copy_msgs(struct i2c_msg *xfer_msgs, u32 num_msgs,
 	return ret;
 }
 
+static inline bool i2cp_xfer_req_wait_cond(enum i2cp_state xfer_state)
+{
+	return xfer_state != I2CP_STATE_WAIT_FOR_XFER &&
+	       xfer_state != I2CP_STATE_WAIT_FOR_REPLY &&
+	       xfer_state != I2CP_STATE_XFER_RETURN;
+}
+
 static long i2cp_cdev_ioctl_xfer_req(struct file *filep, unsigned long arg)
 {
 	long ret = 0;
@@ -495,19 +504,7 @@ static long i2cp_cdev_ioctl_xfer_req(struct file *filep, unsigned long arg)
 	if (copy_from_user(&arg_copy, user_arg, sizeof(arg_copy)))
 		return -EFAULT;
 
- wait_for_next_xfer:
-	if (filep->f_flags & O_NONBLOCK) {
-		if (!try_wait_for_completion(&pdata->xfer_queued))
-			return -EAGAIN;
-	} else {
-		ret = wait_for_completion_killable(&pdata->xfer_queued);
-		if (ret == -ERESTARTSYS)
-			return ret;
-		if (ret != 0)
-			return -ENOTRECOVERABLE;
-		/* ret == 0 */
-	}
-
+ check_xfer_state:
 	mutex_lock(&pdata->xfer_lock);
 	switch (pdata->xfer_state) {
 	case I2CP_STATE_WAIT_FOR_REQ:
@@ -517,14 +514,23 @@ static long i2cp_cdev_ioctl_xfer_req(struct file *filep, unsigned long arg)
 	case I2CP_STATE_WAIT_FOR_REPLY:
 	case I2CP_STATE_XFER_RETURN:
 		mutex_unlock(&pdata->xfer_lock);
-		goto wait_for_next_xfer;
+		if (filep->f_flags & O_NONBLOCK)
+			return -EAGAIN;
+		ret = wait_event_interruptible(pdata->state_wait_queue,
+			i2cp_xfer_req_wait_cond(READ_ONCE(pdata->xfer_state)));
+		if (ret == -ERESTARTSYS)
+			return ret;
+		if (ret != 0)
+			return -ENOTRECOVERABLE;
+		/* ret == 0 */
+		goto check_xfer_state;
 	case I2CP_STATE_RETURN_THEN_SHUTDOWN:
 	case I2CP_STATE_SHUTDOWN:
 		ret = -ESHUTDOWN;
 		goto unlock;
 	default:
 		ret = -ENOTRECOVERABLE;
-		goto recomplete;
+		goto unlock;
 	}
 
 	arg_copy.output.xfer_id = pdata->xfer_id;
@@ -532,21 +538,19 @@ static long i2cp_cdev_ioctl_xfer_req(struct file *filep, unsigned long arg)
 	BUILD_BUG_ON((void *)&arg_copy.output != (void *)&arg_copy);
 	if (copy_to_user(user_arg, &arg_copy.output, sizeof(arg_copy.output))) {
 		ret = -EFAULT;
-		goto recomplete;
+		goto unlock;
 	}
 	if (arg_copy.msgs_len < pdata->xfer_num_msgs) {
 		ret = -EMSGSIZE;
-		goto recomplete;
+		goto unlock;
 	}
 	ret = i2cp_xfer_req_copy_msgs(pdata->xfer_msgs, pdata->xfer_num_msgs,
 	                              &arg_copy);
 	if (ret >= 0) {
-		pdata->xfer_state = I2CP_STATE_WAIT_FOR_REPLY;
-		goto unlock;
+		WRITE_ONCE(pdata->xfer_state, I2CP_STATE_WAIT_FOR_REPLY);
+		wake_up_interruptible_sync(&pdata->state_wait_queue);
 	}
 
- recomplete:
-	complete(&pdata->xfer_queued);
  unlock:
 	mutex_unlock(&pdata->xfer_lock);
 	return ret;
@@ -620,8 +624,8 @@ static long i2cp_cdev_ioctl_xfer_reply(struct file *filep, unsigned long arg)
 		pdata->xfer_ret = min(-1, -(int)arg_copy.error);
 	else
 		pdata->xfer_ret = max(0, (int)arg_copy.num_msgs);
-	pdata->xfer_state = I2CP_STATE_XFER_RETURN;
-	complete(&pdata->xfer_done);
+	WRITE_ONCE(pdata->xfer_state, I2CP_STATE_XFER_RETURN);
+	wake_up_interruptible_sync(&pdata->state_wait_queue);
 unlock:
 	mutex_unlock(&pdata->xfer_lock);
 	return ret;
@@ -650,15 +654,12 @@ static long i2cp_cdev_ioctl_shutdown(struct file *filep, unsigned long arg)
 	pdata = filep->private_data;
 
 	mutex_lock(&pdata->xfer_lock);
-	pdata->xfer_state = (pdata->xfer_state == I2CP_STATE_XFER_RETURN) ?
-		I2CP_STATE_RETURN_THEN_SHUTDOWN : I2CP_STATE_SHUTDOWN;
+	WRITE_ONCE(pdata->xfer_state,
+		(pdata->xfer_state == I2CP_STATE_XFER_RETURN) ?
+		I2CP_STATE_RETURN_THEN_SHUTDOWN : I2CP_STATE_SHUTDOWN);
 	mutex_unlock(&pdata->xfer_lock);
-	/* wake up any pollers */
+	wake_up_interruptible_all(&pdata->state_wait_queue);
 	wake_up_interruptible_all(&pdata->poll_wait_queue);
-	/* wake up blocked master_xfer */
-	complete_all(&pdata->xfer_done);
-	/* wake up blocked I2CP_IOCTL_XFER_REQ */
-	complete_all(&pdata->xfer_queued);
 	return 0;
 }
 
