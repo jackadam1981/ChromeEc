@@ -46,6 +46,30 @@
       },
       "revId": "cd0d149edaedced2eaf6282f298e76daeb706d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ab1c23c_1f7085a3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 11747,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-07T20:35:25Z",
+      "side": 1,
+      "message": "Renamed it to bcfg.",
+      "parentUuid": "aff88cf1_de60ce04",
+      "range": {
+        "startLine": 11747,
+        "startChar": 4,
+        "endLine": 11747,
+        "endChar": 17
+      },
+      "revId": "cd0d149edaedced2eaf6282f298e76daeb706d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
