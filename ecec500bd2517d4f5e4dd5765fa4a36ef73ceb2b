@@ -22,6 +22,30 @@
       },
       "revId": "ecec500bd2517d4f5e4dd5765fa4a36ef73ceb2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96dbb638_54b3cd77",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-07T03:53:05Z",
+      "side": 1,
+      "message": "I was writing this retrospectively and as if it is too late now, since the error that needs to be correct already occurred.\n\nThat being said, I\u0027m not sure that this retrospective view is needed or wanted. Let me try to rewrite.",
+      "parentUuid": "de3845fa_5e35c0e3",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "ecec500bd2517d4f5e4dd5765fa4a36ef73ceb2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
