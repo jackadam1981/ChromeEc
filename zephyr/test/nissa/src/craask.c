@@ -1139,3 +1139,46 @@ ZTEST(craask, test_15w_thermal_solution)
 	zassert_equal(fan_get_rpm_mode(0), 1);
 	zassert_equal(fan_get_rpm_target(0), 0);
 }
+
+static bool touch_en;
+
+static int cbi_get_touch_en_config(enum cbi_fw_config_field_id field,
+				   uint32_t *value)
+{
+	if (field != FW_TOUTH_EN)
+		return -EINVAL;
+
+	*value = touch_en ? FW_TOUTH_EN_ENABLE : FW_TOUTH_EN_DISABLE;
+	return 0;
+}
+
+ZTEST(craask, test_soc_edp_bl_interrupt)
+{
+	const struct device *soc_bl_en_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_soc_edp_bl_en), gpios));
+	const gpio_port_pins_t soc_bl_en_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_soc_edp_bl_en), gpios);
+
+	const struct gpio_dt_spec *gpio_touch_en =
+		GPIO_DT_FROM_NODELABEL(gpio_ec_touch_en);
+
+	touch_en = true;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_touch_en_config;
+
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_edp_bl_en));
+
+	zassert_ok(gpio_emul_input_set(soc_bl_en_gpio, soc_bl_en_pin, 0), NULL);
+	zassert_equal(gpio_emul_output_get(gpio_touch_en->port,
+					   gpio_touch_en->pin),
+		      0);
+
+	zassert_ok(gpio_emul_input_set(soc_bl_en_gpio, soc_bl_en_pin, 1), NULL);
+	zassert_equal(gpio_emul_output_get(gpio_touch_en->port,
+					   gpio_touch_en->pin),
+		      0);
+
+	k_sleep(K_MSEC(510));
+	zassert_equal(gpio_emul_output_get(gpio_touch_en->port,
+					   gpio_touch_en->pin),
+		      1);
+}
