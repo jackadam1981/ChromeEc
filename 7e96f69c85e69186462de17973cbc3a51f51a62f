@@ -1,0 +1,265 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e10e33a_a9bacf8f",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "Use /** */ for doxygen generation",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a79d65f_dd0149a5",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "You may use the GENMASK macro here",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d9fff8_d356a765",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "You may use the short version without @brief, oneliner for short (brief) description by default",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bd53e8_c8221c8f",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "These could be in a documentation block before every corresponding enum value",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ef8f9c_46c2251b",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "Missing _TYPE in names?",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91e44e5_7ced9861",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "Document this and above enums",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed2ac71_1676ab38",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "Is there no enum for the event?",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd8d107_ad622c7d",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "brief should be at first line",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df5d633_aa1b3681",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "Missing _t for type name, also the `_api` is redundant/misleading imo, or should be before the function name, such as `fingerprint_api_do_something_t`",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2e7615_4599fc89",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "I\u0027ll probably see usage in the next CL, but it looks like enum for a result. Shouldn\u0027t it be an enum and also have a success define/enum?",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd9f023_e059298b",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "I think that there should be any possible value here, so something like -EIO or something also",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5824bd6_5793978a",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "misspelling",
+      "range": {
+        "startLine": 330,
+        "startChar": 16,
+        "endLine": 330,
+        "endChar": 27
+      },
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1adff23_5fa090c5",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "If there are some mandatory functions, that must always be implemented, they should probably be asserted (generic note, not sure about this specific function).",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a547517_b6129425",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "Is there any return value that says \"buffer not big enough\"? Or any way to get the required buffer for specific fingerprint sensor?",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2544edf3_d9d69b3b",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:39:46Z",
+      "side": 1,
+      "message": "I remember that there are functions in zephyr that could return true/false in case of success, or negative value in case of error. Maybe worth asking someone else, but does it make sense to return the status as return value, not with pointer?",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
