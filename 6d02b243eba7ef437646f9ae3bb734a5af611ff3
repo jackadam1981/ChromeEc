@@ -22,6 +22,30 @@
       },
       "revId": "6d02b243eba7ef437646f9ae3bb734a5af611ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fcf8ecb_ec7c42a4",
+        "filename": "zephyr/test/drivers/cec_bitbang/src/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-07T22:28:03Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t know about that. Done.",
+      "parentUuid": "4ee1ffb0_8fb45b9b",
+      "range": {
+        "startLine": 37,
+        "startChar": 70,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "6d02b243eba7ef437646f9ae3bb734a5af611ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
