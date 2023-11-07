@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee1ffb0_8fb45b9b",
+        "filename": "zephyr/test/drivers/cec_bitbang/src/cec_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-07T22:16:59Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is necessary. The clock in the unit tests is fake, so the tick interval can be whatever you want it to be.\n\nYou can set CONFIG_SYS_CLOCK_TICKS_PER_SEC in your test overlay or testcase.yaml.\n\nSee https://docs.zephyrproject.org/latest/boards/posix/native_posix/doc/index.html#peripherals",
+      "range": {
+        "startLine": 37,
+        "startChar": 70,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "6d02b243eba7ef437646f9ae3bb734a5af611ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
