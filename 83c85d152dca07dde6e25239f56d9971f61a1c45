@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "350a0739_e15c6604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-07T19:51:10Z",
+      "side": 1,
+      "message": "Logic seems correct to me",
+      "revId": "83c85d152dca07dde6e25239f56d9971f61a1c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cbc714_d3b57d7b",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-07T19:51:10Z",
+      "side": 1,
+      "message": "I am so used to rust now... does this need to be case to `int` first (or asked another way is this just dropping the data value in rx_buffer[1]).",
+      "range": {
+        "startLine": 197,
+        "startChar": 21,
+        "endLine": 197,
+        "endChar": 40
+      },
+      "revId": "83c85d152dca07dde6e25239f56d9971f61a1c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5ce17f_19ac4b6c",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-07T19:51:10Z",
+      "side": 1,
+      "message": "since we are here, it would be good to call out what the `1` and the `4` are for",
+      "range": {
+        "startLine": 234,
+        "startChar": 49,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "83c85d152dca07dde6e25239f56d9971f61a1c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
