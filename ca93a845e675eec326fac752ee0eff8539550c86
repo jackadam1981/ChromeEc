@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cfd25b9_4b862a94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-11-07T10:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97e744a_9f1b2dfd",
+      "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9d4bd4d_4e14a1ed",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5057bb_b8924027",
+        "filename": "zephyr/program/nissa/gothrax/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-11-07T10:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d4bd4d_4e14a1ed",
+      "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aabc294_eea70f4d",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-11-07T09:39:55Z",
       "side": 1,
       "message": "Replace `nereid` with `gothrax`",
+      "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e121c16_e9db4f9d",
+        "filename": "zephyr/program/nissa/gothrax/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-11-07T10:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aabc294_eea70f4d",
       "revId": "ca93a845e675eec326fac752ee0eff8539550c86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
