@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4919fa_cbf87e65",
+        "filename": "zephyr/drivers/cros_fingerprint/fpc1025_private.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:43:59Z",
+      "side": 1,
+      "message": "Is it defined anywhere?\nAlso I know that we will have only one sensor, but would it make sense to create a function returning pointer to this structure from the device node, instead of global value?",
+      "revId": "a33421b2cfc283440ed2f5135126b53b145135e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
