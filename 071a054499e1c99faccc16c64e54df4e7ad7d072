@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5a762b_19abc13a",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-07T23:27:16Z",
+      "side": 1,
+      "message": "Declare this new CONFIG in `include/config.h`.",
+      "range": {
+        "startLine": 242,
+        "startChar": 7,
+        "endLine": 242,
+        "endChar": 38
+      },
+      "revId": "071a054499e1c99faccc16c64e54df4e7ad7d072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
