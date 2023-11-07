@@ -230,6 +230,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84ae844f_dad03c42",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-07T07:18:45Z",
+      "side": 1,
+      "message": "See CL:5009287 for wait_event diff.  What do you think?\n\nI\u0027ve tested it with a run of `flash_ec` / `iteflash` and it worked, but I haven\u0027t tried antagonistically throwing a lot of userspace threads at it yet.\n\nI have some specific safety concerns with how I used wait_event and wake_up, see my comments in the CL.",
+      "parentUuid": "17c86e81_05d6bcc8",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 36
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5391db65_1fa21d99",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 26
