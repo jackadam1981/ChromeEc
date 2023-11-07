@@ -16,6 +16,24 @@
       "message": "Just wondering, usually the fingerprints are called just \"fp\" in the code, even the kconfig you added is CROS_FP_x, would it make sense to continue using the short version here or not?",
       "revId": "d78c6fe26779af6c98e5ad1965ac5c1637bd90e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dac66da_29fb2ab6",
+        "filename": "zephyr/drivers/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-07T15:20:04Z",
+      "side": 1,
+      "message": "I see that you are using the long names in the macros, which is great. So maybe change the Kconfigs to use the full name also?",
+      "parentUuid": "b3facd07_67898a95",
+      "revId": "d78c6fe26779af6c98e5ad1965ac5c1637bd90e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
