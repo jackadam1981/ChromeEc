@@ -22,6 +22,30 @@
       },
       "revId": "cbe5acd05c8d2fcbae474613ea0243a9885a598f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f92b1131_ee15acc7",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2023-11-07T08:58:09Z",
+      "side": 1,
+      "message": "Yes, this hook will jump between RO and RW.\nIf sysjump is from RO to RW, the I2C will be set to the swapped state in the i2c_it8xxx2_init function, the operation is still normal.",
+      "parentUuid": "35f9422a_fee68ab9",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 72
+      },
+      "revId": "cbe5acd05c8d2fcbae474613ea0243a9885a598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
