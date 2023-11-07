@@ -181,6 +181,30 @@
       },
       "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "987feeaf_773aeffa",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-07T21:29:58Z",
+      "side": 1,
+      "message": "I have added a file in board/host, which in a somewhat ugly way includes the .c file from board/hyperdebug which contains the code we want to test.  This seems to get the job done.",
+      "parentUuid": "0e2b413e_5f88fbcb",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 3
+      },
+      "revId": "81532c294f1ce5cb9de8219df83eaaaed07f016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
