@@ -96,7 +96,7 @@ int kblight_get_enabled(void)
 int kblight_register(const struct kblight_drv *drv)
 {
 	kblight.drv = drv;
-	CPRINTS("kblight registered");
+	CPRINTS("kblight registered RPZ");
 	return EC_SUCCESS;
 }
 
@@ -117,7 +117,7 @@ static void keyboard_backlight_init(void)
 	/* Don't leave kblight enable state undetermined */
 	kblight_enable(0);
 }
-#ifdef HAS_TASK_CHIPSET
+#if defined(HAS_TASK_CHIPSET) && !defined(CONFIG_KBLIGHT_HOOK_INIT)
 /* We're running on a system EC. Initialize kblight once per AP start-up. */
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, keyboard_backlight_init, HOOK_PRIO_DEFAULT);
 #else
