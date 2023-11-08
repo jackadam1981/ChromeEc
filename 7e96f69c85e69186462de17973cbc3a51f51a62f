@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7587a8d7_ff283d60",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e10e33a_a9bacf8f",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a79d65f_dd0149a5",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "You may use the GENMASK macro here",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042d3f80_707d55d2",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a79d65f_dd0149a5",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3183ff8d_3ae723d6",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d9fff8_d356a765",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33bd53e8_c8221c8f",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "These could be in a documentation block before every corresponding enum value",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e0740f_1d5e2fde",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33bd53e8_c8221c8f",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ba94a9_ae931aaf",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ef8f9c_46c2251b",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91e44e5_7ced9861",
@@ -99,6 +189,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "Document this and above enums",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671df886_28ef25dd",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91e44e5_7ced9861",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d17ca70_594a5b7e",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Actually it was unused. Removed.",
+      "parentUuid": "6ed2ac71_1676ab38",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dd8d107_ad622c7d",
@@ -133,6 +259,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "brief should be at first line",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55c1d55_8443674c",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "In this case `@typedef` should be at first line. But fixed that in other places.",
+      "parentUuid": "1dd8d107_ad622c7d",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f36000b_05899589",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df5d633_aa1b3681",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd2e7615_4599fc89",
@@ -171,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade18de9_7724b601",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "dd2e7615_4599fc89",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbd9f023_e059298b",
@@ -184,6 +364,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "I think that there should be any possible value here, so something like -EIO or something also",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd873cab_133a6ed4",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Added other possible return values.",
+      "parentUuid": "bbd9f023_e059298b",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -211,6 +409,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfed7c60_264f1b18",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "f5824bd6_5793978a",
+      "range": {
+        "startLine": 330,
+        "startChar": 16,
+        "endLine": 330,
+        "endChar": 27
+      },
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1adff23_5fa090c5",
@@ -224,6 +446,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "If there are some mandatory functions, that must always be implemented, they should probably be asserted (generic note, not sure about this specific function).",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55ccd42_5c301872",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Hmm, I looked at the API for more important devices (e.g. flash) and I didn\u0027t see any asserts. I think returning -ENOTSUP is a good way.",
+      "parentUuid": "f1adff23_5fa090c5",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -245,6 +485,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d724cde2_651f7ee3",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "You get the buffer size by checking image size. Added `-EINVAL` as a value returned when argument is incorrect.",
+      "parentUuid": "0a547517_b6129425",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2544edf3_d9d69b3b",
@@ -258,6 +516,24 @@
       "writtenOn": "2023-11-07T15:39:46Z",
       "side": 1,
       "message": "I remember that there are functions in zephyr that could return true/false in case of success, or negative value in case of error. Maybe worth asking someone else, but does it make sense to return the status as return value, not with pointer?",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52917ded_a9f5ba54",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T14:50:12Z",
+      "side": 1,
+      "message": "Yeah. I also found examples of returning positive value as a \"success with additional status\". Changed API to use that approach.",
+      "parentUuid": "2544edf3_d9d69b3b",
       "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
