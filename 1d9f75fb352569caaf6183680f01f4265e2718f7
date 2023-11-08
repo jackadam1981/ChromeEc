@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f93f0a29_6c2f8067",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2023-11-08T21:20:46Z",
+      "side": 1,
+      "message": "rts545x not 646x",
+      "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4068d02_5dcd6edf",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2023-11-08T21:20:46Z",
+      "side": 1,
+      "message": "You should use `status_byte \u0026 0x3`. Ping status defines bits 0 and 1 for status and 2-7 for read data size.",
+      "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee0dadc6_00457178",
         "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
         "patchSetId": 1
@@ -43,6 +77,23 @@
         "endLine": 115,
         "endChar": 21
       },
+      "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22c764b_7d050499",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2023-11-08T21:20:46Z",
+      "side": 1,
+      "message": "First param as described in RTL smbus guide is always the size so it makes sense to remove them from the \"command\" list and just have `rts545x_block_out_transfer` insert them (same as command).",
       "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
