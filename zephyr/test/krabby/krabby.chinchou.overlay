@@ -7,6 +7,7 @@
 #include "../program/corsola/ite_gpio.dtsi"
 #include "../program/corsola/ite_interrupts.dtsi"
 #include "../program/corsola/power_signal.dtsi"
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 /* remove pinctrl to avoid pull in too many unwanted dependency */
 /delete-node/ &pinctrl;
