@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6f8f42_459c3cfb",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T01:44:24Z",
+      "side": 1,
+      "message": "Think this is more readable using switch()?  CL:5011311 for that diff.",
+      "revId": "e0731dd64cec1c10199986a3b3b9b5d23ad31250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
