@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf76d24_5b9845d2",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-11-08T23:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb033c2_d3788d81",
+      "revId": "214588f1eaa29f1d71a77e522306e3d844eda590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e9867cb_c1e1709c",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-08T22:55:42Z",
       "side": 1,
       "message": "Comments need to be updated.",
+      "revId": "214588f1eaa29f1d71a77e522306e3d844eda590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a9029d_015c9263",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-11-08T23:14:22Z",
+      "side": 1,
+      "message": "Done, let me know if there\u0027s anything I should tweak/clarify.",
+      "parentUuid": "7e9867cb_c1e1709c",
       "revId": "214588f1eaa29f1d71a77e522306e3d844eda590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
