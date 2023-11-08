@@ -135,8 +135,13 @@ static int i2cp_adapter_master_xfer_atomic(struct i2c_adapter *adap,
 
 static inline bool i2cp_master_xfer_wait_cond(enum i2cp_state xfer_state)
 {
-	return xfer_state != I2CP_STATE_WAIT_FOR_REQ &&
-	       xfer_state != I2CP_STATE_WAIT_FOR_REPLY;
+	switch (xfer_state) {
+	case I2CP_STATE_WAIT_FOR_REQ:
+	case I2CP_STATE_WAIT_FOR_REPLY:
+		return false;
+	default:
+		return true;
+	}
 }
 
 static int i2cp_adapter_master_xfer(struct i2c_adapter *adap,
@@ -183,7 +188,8 @@ static int i2cp_adapter_master_xfer(struct i2c_adapter *adap,
 
 	wake_up_interruptible_sync(&pdata->state_wait_queue);
 	wake_up_interruptible_sync_poll(&pdata->poll_wait_queue, POLLIN);
-	time_left = wait_event_interruptible_timeout(pdata->state_wait_queue,
+	time_left = wait_event_interruptible_timeout(
+		pdata->state_wait_queue,
 		i2cp_master_xfer_wait_cond(READ_ONCE(pdata->xfer_state)),
 		adap->timeout);
 
@@ -488,9 +494,14 @@ static long i2cp_xfer_req_copy_msgs(struct i2c_msg *xfer_msgs, u32 num_msgs,
 
 static inline bool i2cp_xfer_req_wait_cond(enum i2cp_state xfer_state)
 {
-	return xfer_state != I2CP_STATE_WAIT_FOR_XFER &&
-	       xfer_state != I2CP_STATE_WAIT_FOR_REPLY &&
-	       xfer_state != I2CP_STATE_XFER_RETURN;
+	switch (xfer_state) {
+	case I2CP_STATE_WAIT_FOR_XFER:
+	case I2CP_STATE_WAIT_FOR_REPLY:
+	case I2CP_STATE_XFER_RETURN:
+		return false;
+	default:
+		return true;
+	}
 }
 
 static long i2cp_cdev_ioctl_xfer_req(struct file *filep, unsigned long arg)
@@ -515,7 +526,8 @@ static long i2cp_cdev_ioctl_xfer_req(struct file *filep, unsigned long arg)
 		mutex_unlock(&pdata->xfer_lock);
 		if (filep->f_flags & O_NONBLOCK)
 			return -EAGAIN;
-		ret = wait_event_interruptible(pdata->state_wait_queue,
+		ret = wait_event_interruptible(
+			pdata->state_wait_queue,
 			i2cp_xfer_req_wait_cond(READ_ONCE(pdata->xfer_state)));
 		if (ret == -ERESTARTSYS)
 			return ret;
