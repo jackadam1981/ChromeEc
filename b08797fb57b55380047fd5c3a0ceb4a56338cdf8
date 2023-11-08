@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7151c9_156be1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-08T18:59:10Z",
+      "side": 1,
+      "message": "Please search all the references to `led_policy_std` and remove them, e.g. the `build.mk` and the `CONFIG_LED_POLICY_STD`.",
+      "revId": "b08797fb57b55380047fd5c3a0ceb4a56338cdf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
