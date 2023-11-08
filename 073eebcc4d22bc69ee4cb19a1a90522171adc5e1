@@ -34,6 +34,24 @@
       "parentUuid": "83db4365_6249fe0d",
       "revId": "073eebcc4d22bc69ee4cb19a1a90522171adc5e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a115fb_74626281",
+        "filename": "extra/i2c_pseudo/Documentation/ABI/testing/sysfs-devices-i2c-pseudo",
+        "patchSetId": 31
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:14:20Z",
+      "side": 1,
+      "message": "Marking resolved, will keep this simple and just mention the \"physical\" path for now.",
+      "parentUuid": "3c8d6687_d0cef5e3",
+      "revId": "073eebcc4d22bc69ee4cb19a1a90522171adc5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

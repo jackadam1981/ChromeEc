@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e44ef5_ff3e8597",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:14:20Z",
+      "side": 1,
+      "message": "FYI I reordered this function to check `i2cp_dev-\u003ecount_open` before `pdata \u003d kzalloc(...)` (those being the two steps here which can fail).  The behavior is better this way, so that `max_adapters` properly limits resource consumption.\n\nFor code simplicity `pdata \u003d kzalloc(...)` is now performed while holding `i2cp_dev-\u003ecount_lock`.  I think that should be fine.",
+      "revId": "48db7702357b32d1fef4ca20bbfafecec118c7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -252,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "827c1e5a_0da4e061",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:14:20Z",
+      "side": 1,
+      "message": "I think the wait_event implementation is a bit easier to follow, thanks for that suggestion.\n\nI especially like that it avoids the need to re-`complete()` in `i2cp_cdev_ioctl_xfer_req()` and `i2cp_cdev_ioctl_xfer_reply()` when they fail after consuming a completion.\n\nI\u0027ve gone ahead and squashed CL:5009287 into this CL.",
+      "parentUuid": "84ae844f_dad03c42",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 36
+      },
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5391db65_1fa21d99",

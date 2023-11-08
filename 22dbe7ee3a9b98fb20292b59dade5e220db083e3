@@ -688,6 +688,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e557f18d_37e75e73",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 22
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:14:20Z",
+      "side": 1,
+      "message": "As discussed, I\u0027ll change this to just print whatever it receives, while doing something simple for reads.  (Not done yet, leaving unresolved.)",
+      "parentUuid": "6ac7ba88_7476fee7",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fb14349_a3385d1e",
         "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
         "patchSetId": 22
@@ -780,6 +804,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e735e2da_cc3bfc3f",
+        "filename": "extra/i2c_pseudo/include/uapi/linux/i2c-pseudo.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:14:20Z",
+      "side": 1,
+      "message": "I think this is more obvious now that it\u0027s setting the whole adapter name, not a suffix.",
+      "parentUuid": "0ad7d774_01cca757",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 68
+      },
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1d7bb52_571e5ead",
@@ -793,6 +841,24 @@
       "writtenOn": "2023-10-31T15:21:32Z",
       "side": 1,
       "message": "@amstan@chromium.org @swboyd@chromium.org Let me know what you think of the shared `data_buf` concept.\n\nNot having `data_buf` would of course simplify this API struct, as well as the kernel side implementation of I2CP_IOCTL_XFER_REQ.  However then userspace would have to preallocate fixed-sized buffers for each i2c_msg, so less efficient use of memory.  It might also be clunkier for userspace, since then i2c_msg.len would be used as both input (size of available buffer) and output (actual size used), thus needing to be filled in again for each I2CP_IOCTL_XFER_REQ call.",
+      "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a77980_186e29db",
+        "filename": "extra/i2c_pseudo/include/uapi/linux/i2c-pseudo.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:14:20Z",
+      "side": 1,
+      "message": "Marking resolved based on lack of concerns.",
+      "parentUuid": "a1d7bb52_571e5ead",
       "revId": "22dbe7ee3a9b98fb20292b59dade5e220db083e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
