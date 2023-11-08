@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b6ae79_0ebcf8d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T08:54:41Z",
+      "side": 1,
+      "message": "How about adding information that this changes the test e.g.\n`Add debugger warning to system_is_locked test`\n\nWhen I read the title I expected changes in `system_is_locked()` function and I was a bit confused why this changes the test only 😄",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "b4d430f8ef65628931049d2e338ab9be314a5406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
