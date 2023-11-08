@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0dadc6_00457178",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-08T18:24:41Z",
+      "side": 1,
+      "message": "Use `k_msleep(PING_DELAY_MS)` here.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 8
+      },
+      "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e76693_7c65af92",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-08T18:24:41Z",
+      "side": 1,
+      "message": "Can you add macros for the command types?",
+      "range": {
+        "startLine": 115,
+        "startChar": 17,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
