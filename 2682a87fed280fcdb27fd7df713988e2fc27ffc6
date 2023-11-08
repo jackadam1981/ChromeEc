@@ -1127,6 +1127,30 @@
       },
       "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a220d5_11d6a73f",
+        "filename": "zephyr/shim/chip/mchp/second_loader/startup_ARMCM4.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-08T16:39:43Z",
+      "side": 1,
+      "message": "I\u0027ve created CL:5010982.  Once that merges, you can apply the MCHP changes needed for the second loader.",
+      "parentUuid": "21dcd20c_7633a0e7",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "2682a87fed280fcdb27fd7df713988e2fc27ffc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
