@@ -34,6 +34,24 @@
       "parentUuid": "b3facd07_67898a95",
       "revId": "d78c6fe26779af6c98e5ad1965ac5c1637bd90e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e113a749_66a35478",
+        "filename": "zephyr/drivers/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-08T10:02:49Z",
+      "side": 1,
+      "message": "I\u0027m thinking about changing the directory name to `fingerprint` and `CROS_FP_x` to `FINGERPRINT_SENSOR_x`.\n\nMy understanding is that `cros_` prefix should be added for drivers that are required by EC and:\n- wouldn\u0027t be accepted in Zephyr (e.g. `cros_system`)\n- Zephyr already has the drivers (e.g. `cros_flash`)",
+      "parentUuid": "1dac66da_29fb2ab6",
+      "revId": "d78c6fe26779af6c98e5ad1965ac5c1637bd90e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
