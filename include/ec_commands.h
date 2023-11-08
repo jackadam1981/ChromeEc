@@ -7636,6 +7636,22 @@ struct ec_response_typec_vdm_response {
 	uint32_t vdm_attention[2];
 } __ec_align1;
 
+/*
+ * Record the current AP firmware state. This is used to help testing, such as
+ * with FAFT (Fully-Automated Firmware Test), which likes to know which firmware
+ * screen is currently displayed.
+ */
+
+#define EC_CMD_AP_FW_STATE 0x013D
+
+struct ec_params_ap_fw_state {
+	/*
+	 * Value which indicates the state. This is not decoded by the EC, so
+	 * its meaning is entirely outside this code base.
+	 */
+	uint32_t state;
+} __ec_align1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
