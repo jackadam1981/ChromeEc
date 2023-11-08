@@ -34,6 +34,24 @@
       "parentUuid": "fc4919fa_cbf87e65",
       "revId": "a33421b2cfc283440ed2f5135126b53b145135e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8c787d_754db9c1",
+        "filename": "zephyr/drivers/cros_fingerprint/fpc1025_private.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-08T15:27:38Z",
+      "side": 1,
+      "message": "May be good to add comment about this, so no one would try removing this extern",
+      "parentUuid": "b2da985a_dc0f45fd",
+      "revId": "a33421b2cfc283440ed2f5135126b53b145135e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
