@@ -51,6 +51,24 @@
       "message": "@swboyd@chromium.org Any concerns with using wake_up before releasing `pdata-\u003exfer_lock` mutex?",
       "revId": "474b66889f4097d1b4a3589a462cd79254a44d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee51b6d_3d0f1530",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T03:00:08Z",
+      "side": 1,
+      "message": "This has been working fine, and I don\u0027t see any deadlock potential from it.\n\nMarking resolved as I\u0027m squashing this into the parent CL.",
+      "parentUuid": "3ec08752_9f70128a",
+      "revId": "474b66889f4097d1b4a3589a462cd79254a44d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
