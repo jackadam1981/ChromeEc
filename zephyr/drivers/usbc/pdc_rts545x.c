@@ -5,11 +5,20 @@
 
 #include "uart.h"
 
+#include <timer.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/shell/shell.h>
+#define INCBIN_STYLE INCBIN_STYLE_SNAKE
+#include "third_party/incbin/incbin.h"
+INCBIN(rts545x_fw, "zephyr/drivers/usbc/rts545x_fw.bin");
+
+#define PING_DELAY_US 10000
+#define PING_RETRY_COUNT 200
+#define MAX_COMMAND_SIZE 32
+#define FW_CHUNKSIZE 29
 
 /*
  * Driver for the Realtek RTS545x Power Delivery Controller
@@ -31,16 +40,49 @@ struct rts545x_data {
 	bool initialized;
 };
 
+struct rts5453_ic_status {
+	uint8_t byte_count;
+	uint8_t code_location;
+	uint16_t reserved_0;
+	uint8_t major_version;
+	uint8_t minor_version;
+	uint8_t patch_version;
+	uint16_t reserved_1;
+	uint8_t pd_typec_status;
+	uint8_t vid_pid[4];
+	uint8_t reserved_2;
+	uint8_t flash_bank;
+	uint8_t reserved_3[16];
+} __attribute__((__packed__)) ic_status;
+
+
 static int rts646x_ping_status(const struct device *dev, uint8_t *status_byte)
 {
 	const struct rts545x_config *cfg = dev->config;
 	struct i2c_msg ping_msg;
+	int retry_count;
+	int ret;
 
 	ping_msg.buf = status_byte;
 	ping_msg.len = 1;
 	ping_msg.flags = I2C_MSG_READ | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &ping_msg, 1);
+	for (retry_count = 0; retry_count < PING_RETRY_COUNT; retry_count++) {
+		ret = i2c_transfer_dt(&cfg->i2c, &ping_msg, 1);
+		if (ret < 0)
+			return ret;
+
+		/* Command execution is complete */
+		if (*status_byte == 1)
+			return 0;
+
+		/* Invalid command format */
+		if (*status_byte == 3)
+			return -3;
+
+		usleep(PING_DELAY_US);
+	}
+	return -1;
 }
 
 static int rts545x_block_out_transfer(const struct device *dev,
@@ -50,7 +92,8 @@ static int rts545x_block_out_transfer(const struct device *dev,
 	const struct rts545x_config *cfg = dev->config;
 	int ret;
 	struct i2c_msg write_msg;
-	uint8_t write_buf[16];
+	/* Command byte + Byte Count + Data[0..31] */
+	uint8_t write_buf[MAX_COMMAND_SIZE + 2];
 
 	if (len + 1 > ARRAY_SIZE(write_buf)) {
 		return -EINVAL;
@@ -69,7 +112,10 @@ static int rts545x_block_out_transfer(const struct device *dev,
 		return ret;
 	}
 
-	return rts646x_ping_status(dev, status_byte);
+	if (cmd_code != 0x05)
+		return rts646x_ping_status(dev, status_byte);
+	else
+		return 0;
 }
 
 /*
@@ -138,7 +184,6 @@ static int rts545x_get_ic_status(const struct shell *sh, size_t argc,
 	const struct device *dev;
 	uint8_t get_ic_status[] = { 0x03, 0x00, 0x00, 0x1f };
 	uint8_t ping_status;
-	uint8_t ic_status[31];
 	int ret;
 
 	dev = device_get_binding(s_dev_name);
@@ -158,14 +203,164 @@ static int rts545x_get_ic_status(const struct shell *sh, size_t argc,
 		shell_error(sh, "%s, GET_IC_CMD failed: %d", s_dev_name, ret);
 	}
 
-	ret = rts545x_block_in_transfer(dev, 31, ic_status);
+	ret = rts545x_block_in_transfer(dev, 31, (uint8_t *)&ic_status);
 
 	if (ret != 0) {
 		return ret;
 	}
 
 	shell_print(sh, "IC status:");
-	shell_hexdump(sh, ic_status, 31);
+	shell_hexdump(sh, (uint8_t *)&ic_status, sizeof(ic_status));
+
+	return ret;
+}
+
+static int rts545x_flash_access_enable(const struct shell *sh, size_t argc,
+				       char **argv)
+{
+	char *s_dev_name = argv[ARGV_DEV];
+	const struct device *dev;
+	uint8_t flash_access_enable[] = { 0x03, 0xDA, 0x0B, 0x03 };
+	uint8_t ping_status;
+	int ret;
+
+	dev = device_get_binding(s_dev_name);
+
+	if (dev == NULL) {
+		shell_error(sh, "PDC: Device driver %s not found.", s_dev_name);
+		return -ENODEV;
+	}
+
+	ret = rts545x_block_out_transfer(dev, 0x01,
+					 ARRAY_SIZE(flash_access_enable),
+					 flash_access_enable, &ping_status);
+
+	if (ret == 0) {
+		shell_print(sh, "%s, FLASH_ACCESS_ENABLE ping status 0x%02x",
+			    s_dev_name, ping_status);
+	} else {
+		shell_error(sh, "%s, FLASH_ACCESS_ENABLE failed: %d",
+			    s_dev_name, ret);
+	}
+
+	return ret;
+}
+
+static int rts545x_flash_write(const struct shell *sh, size_t argc, char **argv)
+{
+	char *s_dev_name = argv[ARGV_DEV];
+	const struct device *dev;
+	uint8_t flash_write[MAX_COMMAND_SIZE + 1] = {0};
+	uint8_t cmd;
+	uint8_t ping_status;
+	uint32_t offset = 0;
+	uint8_t size = 0;
+	int ret;
+
+	dev = device_get_binding(s_dev_name);
+
+	if (dev == NULL) {
+		shell_error(sh, "PDC: Device driver %s not found.", s_dev_name);
+		return -ENODEV;
+	}
+
+	while (offset < grts545x_fw_size) {
+		if (ic_status.flash_bank) {
+			/* Flash Bank 0 */
+			if (offset < (64 * 1024))
+				cmd = 0x04;
+			else
+				cmd = 0x06;
+		} else {
+			/* Flash Bank 1 */
+			if (offset < (64 * 1024))
+				cmd = 0x13;
+			else
+				cmd = 0x14;
+		}
+		size = MIN(FW_CHUNKSIZE, grts545x_fw_size - offset);
+		/* Account for ADDR_L, ADDR_H, Write Count */
+		flash_write[0] = size + 3;
+		flash_write[1] = (uint8_t)(offset  & 0xff);
+		flash_write[2] = (uint8_t)((offset >> 8) & 0xff);
+		flash_write[3] = size;
+		memcpy(&flash_write[4], &grts545x_fw_data[offset], size);
+
+		ret = rts545x_block_out_transfer(dev, cmd,
+						 size + 4,
+						 flash_write, &ping_status);
+		if (ret == 0) {
+			shell_print(sh, "%s, FLASH_WRITE ping status 0x%02x",
+				    s_dev_name, ping_status);
+		} else {
+			shell_error(sh, "%s, FLASH_WRITE failed: %d",
+				    s_dev_name, ret);
+		}
+
+		shell_print(sh, "offset %x, size %x\n", offset, size);
+		offset += size;
+	}
+	return 0;
+}
+
+static int rts545x_validate_isp(const struct shell *sh, size_t argc,
+				char **argv)
+{
+	char *s_dev_name = argv[ARGV_DEV];
+	const struct device *dev;
+	uint8_t validate_isp[] = { 0x01, 0x01 };
+	uint8_t ping_status;
+	int ret;
+
+	dev = device_get_binding(s_dev_name);
+
+	if (dev == NULL) {
+		shell_error(sh, "PDC: Device driver %s not found.", s_dev_name);
+		return -ENODEV;
+	}
+
+	ret = rts545x_block_out_transfer(dev, 0x16,
+					 ARRAY_SIZE(validate_isp),
+					 validate_isp, &ping_status);
+
+	if (ret == 0) {
+		shell_print(sh, "%s, VALIDATE_ISP ping status 0x%02x",
+			    s_dev_name, ping_status);
+	} else {
+		shell_error(sh, "%s, VALIDATE_ISP failed: %d", s_dev_name,
+			    ret);
+	}
+
+	return ret;
+}
+
+static int rts545x_reset_to_flash(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	char *s_dev_name = argv[ARGV_DEV];
+	const struct device *dev;
+	uint8_t reset_to_flash[] = { 0x03, 0xDA, 0x0B, 0x01 };
+	uint8_t ping_status;
+	int ret;
+
+	dev = device_get_binding(s_dev_name);
+
+	if (dev == NULL) {
+		shell_error(sh, "PDC: Device driver %s not found.", s_dev_name);
+		return -ENODEV;
+	}
+
+	ret = rts545x_block_out_transfer(dev, 0x05,
+					 ARRAY_SIZE(reset_to_flash),
+					 reset_to_flash, &ping_status);
+
+	if (ret == 0) {
+		shell_print(sh, "%s, Reset to Flash passed",
+			    s_dev_name);
+	} else {
+		shell_error(sh, "%s, Reset to Flash failed: %d", s_dev_name,
+			    ret);
+	}
 
 	return ret;
 }
@@ -210,6 +405,26 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Send the GET_IC_STATUS\n"
 		      "Usage: get_ic_status <device>",
 		      rts545x_get_ic_status, 2, 0),
+	SHELL_CMD_ARG(flash_access_enable, &dsub_device_name,
+		      "Send the FLASH_ACCESS_ENABLE\n"
+		      "Usage: flash_access_enable <device>",
+		      rts545x_flash_access_enable, 2, 0),
+	SHELL_CMD_ARG(flash_write, &dsub_device_name,
+		      "Write to the flash\n"
+		      "Usage: flash_write <device>",
+		      rts545x_flash_write, 2, 0),
+	SHELL_CMD_ARG(flash_access_disable, &dsub_device_name,
+		      "Send the FLASH_ACCESS_DISABLE\n"
+		      "Usage: flash_access_disable <device>",
+		      rts545x_vendor_cmd_enable, 2, 0),
+	SHELL_CMD_ARG(validate_isp, &dsub_device_name,
+		      "Validate the ISP\n"
+		      "Usage: validate_isp <device>",
+		      rts545x_validate_isp, 2, 0),
+	SHELL_CMD_ARG(reset_to_flash, &dsub_device_name,
+		      "Reset to flash\n"
+		      "Usage: reset_to_flash <device>",
+		      rts545x_reset_to_flash, 2, 0),
 	SHELL_SUBCMD_SET_END /* Array terminated. */
 );
 
