@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831bc95a_6bba6048",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T01:13:47Z",
+      "side": 1,
+      "message": "Now with READ_ONCE + WRITE_ONCE to avoid reading partial writes.",
+      "parentUuid": "52fc8d51_6aba6390",
+      "revId": "474b66889f4097d1b4a3589a462cd79254a44d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ec08752_9f70128a",
