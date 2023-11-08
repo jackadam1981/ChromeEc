@@ -7,6 +7,7 @@
 #include "../program/corsola/ite_gpio.dtsi"
 #include "../program/corsola/ite_interrupts.dtsi"
 #include "../program/corsola/power_signal.dtsi"
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 /* remove pinctrl to avoid pull in too many unwanted dependency */
 /delete-node/ &pinctrl;
@@ -101,6 +102,69 @@
 				enum-name = "CLAMSHELL";
 				value = <0>;
 			};
+		};
+	};
+	/* Chinchou-specific ssfc fields. */
+	chinchou-ssfc {
+		compatible = "cros-ec,cbi-ssfc";
+
+		/* SSFC field to identify BASE motion sensor. */
+		base-sensor {
+			enum-name = "BASE_SENSOR";
+			size = <3>;
+
+			base_sensor_0: bmi323 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+				default;
+			};
+			base_sensor_1: lsm6dsm {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <2>;
+			};
+		};
+
+		/* SSFC field to identify LID motion sensor. */
+		lid-sensor {
+			enum-name = "LID_SENSOR";
+			size = <3>;
+
+			lid_sensor_0: bma422 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+				default;
+			};
+			lid_sensor_1: lis2dw12 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <2>;
+			};
+		};
+	};
+
+	motionsense-sensor-alt {
+		alt_lid_accel: alt-lid-accel {
+			compatible = "cros-ec,lis2dw12";
+			status = "okay";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_LID";
+		};
+
+		alt_base_accel: alt-base-accel {
+			compatible = "cros-ec,lsm6dsm-accel";
+			status = "okay";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+		};
+
+		alt_base_gyro: alt-base-gyro {
+			compatible = "cros-ec,lsm6dsm-gyro";
+			status = "okay";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
 		};
 	};
 };
