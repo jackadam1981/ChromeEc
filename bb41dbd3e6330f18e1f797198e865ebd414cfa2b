@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2932e78_3f293cdd",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-09T14:39:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94db694_26eaaa3a",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20dcb459_898621ed",
@@ -76,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f64d6ad_e1e987cd",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-09T14:39:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8116a7f6_7637a088",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2a5649f_0d8416b2",
@@ -93,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1d214a_669391f8",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-09T14:39:52Z",
+      "side": 1,
+      "message": "Changed to `api-\u003emaintenance \u003d\u003d NULL`.",
+      "parentUuid": "b2a5649f_0d8416b2",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "088c13ee_b5ec70e8",
@@ -106,6 +166,24 @@
       "writtenOn": "2023-11-09T11:53:02Z",
       "side": 1,
       "message": "nit: you were using the userspace, so don\u0027t you want to implement z_vrfy_* functions?",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b699b8_9624c822",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-09T14:39:52Z",
+      "side": 1,
+      "message": "No, I\u0027ve been doing some experiments with userspace, but I just wanted to check flash API changes. There is a plan to implement `z_vrfy_` functions in future and enable userspace, but FPC private library implements functions used by driver (kernel) and matching algorithm (userspace) and it uses one heap to allocate memory, so enabling userspace now doesn\u0027t make sense.",
+      "parentUuid": "088c13ee_b5ec70e8",
       "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
