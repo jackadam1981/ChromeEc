@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1680ccba_6b4e8ba9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-11-09T03:46:11Z",
+      "side": 1,
+      "message": "\u003e what\u0027s the issue on screebo? b/308572030?\n\nscreebo DVT devices(QS CPU) can not enter recovery mode due to abnormal AP sequence state and F/R is 100%, but only a few EVT devices(ES CPU) can reproduce this issue.\n\n\u003e does this happen on rex as well?\n\nWe don\u0027t have a Rex with QS CPU.\n\n\u003e i\u0027m a bit concerned that there is still instability\n\nIt seems to be a timing issue, b/308572030#comment4",
+      "parentUuid": "018bed25_7d6ace8c",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "a613243e26b46ac7df644fc8809502a6919c9e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "91006cd4_e183690e",
