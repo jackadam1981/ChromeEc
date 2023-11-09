@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b058acd_13739c50",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-09T15:09:02Z",
+      "side": 1,
+      "message": "Tempting to suggest making this option automatic depending on `$(dt_nodelabel_enabled,gpio_gsc_ec_rec_btn_odl)`... probably not as dependable as the label may change, worth thinking about it though.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "7ebd3085b7763bd51aef2c5ec2d43fedbdf946e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
