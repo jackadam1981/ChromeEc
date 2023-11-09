@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8e4609_0d56df81",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-11-09T22:52:02Z",
+      "side": 1,
+      "message": "Do these need to be unique? (I2C_PORT_CHARGER)",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "fd0b5808b8f8d8219bfb21f1ca0467eecee32f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
