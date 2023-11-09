@@ -4,7 +4,11 @@
  */
 
 /* Brox program common DTS includes */
-#include "../brox_stub.dts"
+#include "../generated.dtsi"
+#include "../adc.dtsi"
+#include "../brox.dtsi"
+#include "../gpio.dtsi"
+#include "../i2c.dtsi"
 
 /* Brox project DTS includes*/
 
