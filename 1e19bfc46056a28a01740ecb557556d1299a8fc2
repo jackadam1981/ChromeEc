@@ -46,6 +46,30 @@
       },
       "revId": "1e19bfc46056a28a01740ecb557556d1299a8fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11455ad_3b83aa66",
+        "filename": "board/drawcia_riscv/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-09T18:46:07Z",
+      "side": 1,
+      "message": "Does it give you enough space if you keep CONFIG_CMD_HASH? I need it more than chgsup. The rest look ok to be removed.\n\nHaving said that, if we have to micro-optimize the space, this board will most likely come back and ask us more. I posted a question on b:204231736 about its status. At least currently, drawcia EC FW is built from board/drawcia.",
+      "parentUuid": "757044bf_6b5ee309",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "1e19bfc46056a28a01740ecb557556d1299a8fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
