@@ -9,6 +9,7 @@ menuconfig PLATFORM_EC_KEYBOARD
 	bool "Keyboard support"
 	default y
 	depends on ($(dt_chosen_enabled,$(CHOSEN_CROS_EC_RAW_KB)) || $(dt_chosen_enabled,$(CHOSEN_CROS_EC_KEYBOARD)) || $(dt_nodelabel_enabled,kb_discrete))
+	select PLATFORM_EC_BUTTON
 	help
 	  Enable keyboard support.
 
@@ -220,13 +221,6 @@ config PLATFORM_EC_CMD_BUTTON
 	help
 	  This command simulates button press. The buttons are like volume-up,
 	  volume-down, and recovery buttons.
-
-config PLATFORM_EC_BUTTON_TRIGGERED_RECOVERY
-	bool "Support entering recovery mode using buttons"
-	help
-	  Support for entering recovery mode using the volume buttons or a
-	  dedicated recovery button. Note that these are *buttons* and not keys
-	  in the keyboard matrix.
 
 config PLATFORM_EC_CONSOLE_CMD_KEYBOARD
 	bool "Console command: ksstate, kbpress, 8042"
