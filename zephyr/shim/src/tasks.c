@@ -422,14 +422,14 @@ int task_start_called(void)
 {
 	return tasks_started;
 }
-/*
- * TODO(b/190203712): Implement this
- * LCOV_EXCL_START
- */
+
 void task_disable_task(task_id_t tskid)
 {
+	k_tid_t tid = task_id_to_thread_id(tskid);
+
+	if (tid)
+		k_thread_abort(tid);
 }
-/* LCOV_EXCL_STOP */
 
 /*
  * This function cannot be tested since it is architecture specific.
