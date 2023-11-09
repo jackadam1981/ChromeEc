@@ -14,23 +14,6 @@ import sys
 import zmake.version
 
 
-def convert_module_list_to_dict(modules: list) -> dict:
-    """Convert a list of string paths to modules in to a dict of module
-    names to paths."""
-
-    if not modules:
-        return {}
-
-    dict_out = {}
-    for mod in modules:
-        if not mod.is_dir():
-            raise FileNotFoundError(f"Module '{mod}' not found")
-
-        dict_out[mod.name] = mod
-
-    return dict_out
-
-
 def main():
     """CLI entry point for generating the ec_version.h header"""
     logging.basicConfig(level=logging.INFO, stream=sys.stderr)
@@ -47,65 +30,35 @@ def main():
         "reproducible.",
     )
     parser.add_argument(
-        "--base",
-        default=os.environ.get("ZEPHYR_BASE"),
-        help="Path to Zephyr base directory. Uses ZEPHYR_BASE env var if unset.",
-    )
-    parser.add_argument(
-        "-m",
-        "--module",
-        action="append",
-        help="Specify modules paths to include in version hash. Uses "
-        "ZEPHYR_MODULES env var if unset",
-    )
-    parser.add_argument(
         "-n", "--name", required=True, type=str, help="Project name"
+    )
+    parser.add_argument(
+        "-v", "--version", required=False, type=str, help="Build version"
+    )
+    parser.add_argument(
+        "-o",
+        "--official-build",
+        required=False,
+        action="store_true",
+        help="Enable if building an official release. No timestamp will be "
+        "generated.",
     )
 
     args = parser.parse_args()
 
-    if args.base is None:
-        logging.error(
-            "No Zephyr base is defined. Pass --base or set env var ZEPHYR_BASE"
-        )
-        return 1
-
-    logging.info("Zephyr Base: %s", args.base)
-
     if args.static:
         logging.info("Using a static version string")
 
-    # Make a dict of modules from the list. Modules can be added one at a time
-    # by repeating the -m flag, or once as a semicolon-separated list. In the
-    # later case, we need to expand the modules list.
-
-    if args.module is None:
-        # No modules specified on command line. Default to environment variable.
-        env_modules = os.environ.get("ZEPHYR_MODULES")
-        args.module = env_modules.split(";") if env_modules else []
-        logging.info(
-            "No modules passed via CLI. Getting list from ZEPHYR_MODULES"
-        )
-
-    elif len(args.module) == 1:
-        # In case of a single -m flag, treat value as a semicolon-delimited
-        # list.
-        args.module = args.module[0].split(";")
-
-    try:
-        module_dict = convert_module_list_to_dict(
-            map(pathlib.Path, args.module)
-        )
-    except FileNotFoundError as err:
-        logging.error("Cannot find module: %s", str(err))
-        return 1
-
-    logging.info("Including modules: [%s]", ", ".join(args.module))
+    if args.official_build:
+        logging.info("Generating version string for official build")
 
     # Generate the version string that gets inserted in to the header. Will get
     # commit IDs from Git
     ver = zmake.version.get_version_string(
-        args.name, args.base, module_dict, args.static
+        args.name,
+        args.version,
+        static=args.static,
+        official_build=args.official_build,
     )
     logging.info("Version string: %s", ver)
 

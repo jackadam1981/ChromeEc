@@ -311,10 +311,21 @@ def add_common_configure_args(sub_parser: argparse.ArgumentParser):
         help="Delete existing build directories, even if configuration is unchanged",
     )
     sub_parser.add_argument(
+        "-v",
+        "--version",
+        help="Base version string to use in build",
+    )
+    sub_parser.add_argument(
         "--static",
         action="store_true",
         dest="static_version",
         help="Generate static version information for reproducible builds",
+    )
+    sub_parser.add_argument(
+        "--official-build",
+        action="store_true",
+        dest="official_build",
+        help="Mark the build as an official release build",
     )
     sub_parser.add_argument(
         "--save-temps",
