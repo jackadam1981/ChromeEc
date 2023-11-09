@@ -80,6 +80,30 @@
       },
       "revId": "933d87c017850a3df3e197752da2611fa6d2e029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef139c8_113cc3d0",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 22
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-11-09T17:31:17Z",
+      "side": 1,
+      "message": "Pls ignore the earlier comments,\nI am overriding the value for shared flash i.e for mec1723 for other MEC chips with internal flash value 2 is applicable. i.e for MEC1727.\n\nI hope it is fine.",
+      "parentUuid": "0f68fc04_ea611582",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "933d87c017850a3df3e197752da2611fa6d2e029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
