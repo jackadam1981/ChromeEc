@@ -29,6 +29,9 @@
 #define GPIO_SET_LEVEL(signal, value) gpio_set_level(signal, value)
 #endif
 
+#define RSMRST_L_PGOOD_MASK POWER_SIGNAL_MASK(X86_RSMRST_L_PGOOD)
+#define ALL_SYS_PGOOD_MASK POWER_SIGNAL_MASK(X86_ALL_SYS_PGOOD)
+
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S0_DEASSERTED] = {
@@ -67,8 +70,6 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
-	int timeout_ms = 50;
-
 	CPRINTS("%s() %d", __func__, reason);
 	report_ap_reset(reason);
 
@@ -88,14 +89,10 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	else
 		GPIO_SET_LEVEL(GPIO_EN_PP5000, 0);
 
-	/* RSMRST_ODL to go away. */
-	while (gpio_get_level(GPIO_PG_EC_RSMRST_ODL) && (timeout_ms > 0)) {
-		msleep(1);
-		timeout_ms--;
-	};
-
-	if (!timeout_ms)
-		CPRINTS("RSMRST_ODL didn't go low!  Assuming G3.");
+	/* Wait for RSMRST_ODL to go away. */
+	if (power_wait_mask_signals_timeout(0, RSMRST_L_PGOOD_MASK,
+					    50 * MSEC) != EC_SUCCESS)
+		CPRINTS("RSMRST_ODL didn't go low! Assuming G3.");
 }
 
 void chipset_handle_espi_reset_assert(void)
@@ -129,18 +126,13 @@ static void pwrok_signal_set(const struct intel_x86_pwrok_signal *signal,
 	GPIO_SET_LEVEL(signal->gpio, signal->active_low ? !level : level);
 }
 
-__overridable int intel_x86_get_pg_ec_all_sys_pwrgd(void)
-{
-	return gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD);
-}
-
 /*
  * Pass through the state of the ALL_SYS_PWRGD input to all the PWROK outputs
  * defined by the board.
  */
 static void all_sys_pwrgd_pass_thru(void)
 {
-	int all_sys_pwrgd_in = intel_x86_get_pg_ec_all_sys_pwrgd();
+	int all_sys_pwrgd_in = !!(power_get_signals() & ALL_SYS_PGOOD_MASK);
 	const struct intel_x86_pwrok_signal *pwrok_signal;
 	int signal_count;
 	int i;
