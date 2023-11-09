@@ -8,6 +8,10 @@
 #define BASE_EXCEPTION_FRAME_SIZE_BYTES (8 * sizeof(uint32_t))
 #define FPU_EXCEPTION_FRAME_SIZE_BYTES (18 * sizeof(uint32_t))
 
+#define STACK_IDX_REG_LR 5
+#define STACK_IDX_REG_PC 6
+#define STACK_IDX_REG_PSR 7
+
 /*
  * Returns non-zero if the exception frame was created on the main stack, or
  * zero if it's on the process stack.
@@ -64,4 +68,29 @@ uint32_t get_panic_stack_pointer(const struct panic_data *pdata)
 		psp += get_exception_frame_size(pdata);
 
 	return psp;
+}
+
+noreturn static void exception_return_placeholder(void)
+{
+	panic_printf("Unexpected return from exception\n");
+	panic_reboot();
+	__builtin_unreachable();
+}
+
+noreturn void arch_return_from_exception(void)
+{
+	uint32_t *psp;
+	void (*func)(void) = exception_return_placeholder;
+
+	__asm__ volatile("mrs %0, psp" : "=r"(psp));
+
+	psp[STACK_IDX_REG_LR] = 0; /* Will never return */
+	psp[STACK_IDX_REG_PC] = (uint32_t)func; /* Return to this function */
+	psp[STACK_IDX_REG_PSR] = (1 << 24); /* Just set thumb mode */
+
+	/* Return from exception using process stack */
+	__asm__ volatile("bx %0" : : "r"(0xFFFFFFFD));
+
+	/* should not reach here */
+	__builtin_unreachable();
 }

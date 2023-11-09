@@ -211,3 +211,47 @@ __overridable void arch_panic_set_reason(uint32_t reason, uint32_t info,
 {
 	/* Default implementation, do nothing. */
 }
+
+/* This should cause an immediate return from the exception handler.
+ * It should not be called outside of an ISR context.
+ */
+__overridable noreturn void arch_return_from_exception(void);
+
+/*
+ * Store panic reason and info in panic_data using CrOS EC common form and
+ * start system safe mode if enabled, otherwise reboot immediately.
+ *
+ * Notes:
+ * There isn't a clean way to to trigger a regular Zephyr fault and preserve
+ * reason and info in the right location in panic_data. Also Zephyr does not
+ * support returning from fault triggered from an ISR context, like a watchdog
+ * warning.
+ */
+noreturn void software_panic(uint32_t reason, uint32_t info)
+{
+	panic_set_reason(reason, info, 0);
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE)) {
+		struct panic_data *pdata = panic_get_data();
+
+		if (start_system_safe_mode() == EC_SUCCESS) {
+			pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_STARTED;
+			/* Disable the current task.
+			 * The current task is disabled in z_fatal_error during
+			 * a normal fault. If running in process context,
+			 * disabling the current task will cause execution to
+			 * stop here and never return. If running in ISR
+			 * context, execution will fall through to
+			 * arch_return_from_exception(), which will never
+			 * return.
+			 */
+			k_thread_abort(k_current_get());
+			arch_return_from_exception();
+			__builtin_unreachable();
+		}
+		pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS;
+	}
+
+	panic_reboot();
+	__builtin_unreachable();
+}

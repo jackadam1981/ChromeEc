@@ -6,6 +6,7 @@
 #include "config.h"
 #include "hooks.h"
 #include "panic.h"
+#include "software_panic.h"
 #include "task.h"
 #include "watchdog.h"
 
@@ -179,6 +180,9 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	 * occurs.
 	 */
 	panic_set_reason(PANIC_SW_WATCHDOG_WARN, 0, task_get_current());
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_ON_WATCHDOG_WARNING))
+		software_panic(PANIC_SW_WATCHDOG, task_get_current());
 }
 
 __maybe_unused static void
