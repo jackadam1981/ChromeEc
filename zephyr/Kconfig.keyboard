@@ -221,13 +221,6 @@ config PLATFORM_EC_CMD_BUTTON
 	  This command simulates button press. The buttons are like volume-up,
 	  volume-down, and recovery buttons.
 
-config PLATFORM_EC_BUTTON_TRIGGERED_RECOVERY
-	bool "Support entering recovery mode using buttons"
-	help
-	  Support for entering recovery mode using the volume buttons or a
-	  dedicated recovery button. Note that these are *buttons* and not keys
-	  in the keyboard matrix.
-
 config PLATFORM_EC_CONSOLE_CMD_KEYBOARD
 	bool "Console command: ksstate, kbpress, 8042"
 	default y if PLATFORM_EC_KEYBOARD
@@ -333,3 +326,37 @@ config PLATFORM_EC_LED_DRIVER_AW20198
 	  Enable driver for AW20198 LED controller.
 
 endif # PLATFORM_EC_RGB_KEYBOARD
+
+config PLATFORM_EC_DEDICATED_RECOVERY_BUTTON
+	bool "Enable dedicated recovery button"
+	help
+	  Indicates there is a dedicated recovery button.  Note, that if there
+	  are volume buttons, a dedicated recovery button is not needed.
+	  This is intended because if a board has volume buttons, they can do
+	  everything a dedicated recovery button can do.
+
+	  For various reasons, on some platforms there may be multiple
+	  recovery inputs. See b/149967026.
+
+config PLATFORM_EC_DEDICATED_RECOVERY_BUTTON_ACTIVE_HIGH
+	bool "Recovery button is active high"
+	help
+	  Configure recovery button to use high state as active.
+
+config PLATFORM_EC_DEDICATED_RECOVERY_BUTTON_2
+	bool "Enable second dedicated recovery button"
+	help
+	  Enable use of second dedicated recovery button.
+
+config PLATFORM_EC_DEDICATED_RECOVERY_BUTTON_2_ACTIVE_HIGH
+	bool "Second recovery button is active high"
+	help
+	  Configure second recovery button to use high state as active.
+
+config PLATFORM_EC_BUTTON_TRIGGERED_RECOVERY
+	bool "Support entering recovery mode using buttons"
+	default y if PLATFORM_EC_DEDICATED_RECOVERY_BUTTON
+	help
+	  Support for entering recovery mode using the volume buttons or a
+	  dedicated recovery button. Note that these are *buttons* and not keys
+	  in the keyboard matrix.
