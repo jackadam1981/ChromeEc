@@ -22,6 +22,30 @@
       },
       "revId": "4b3c3b08460828a5b7d04619045302a15aa345b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21c97eb_2999f147",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-09T23:18:58Z",
+      "side": 1,
+      "message": "nope, we can squash this and use PLATFORM_EC_AP_RESET_LOG directly.\n\ni\u0027ll update the patch.",
+      "parentUuid": "b7aa0fa2_54c76849",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "4b3c3b08460828a5b7d04619045302a15aa345b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
