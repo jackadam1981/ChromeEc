@@ -22,6 +22,30 @@
       },
       "revId": "1e19bfc46056a28a01740ecb557556d1299a8fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "757044bf_6b5ee309",
+        "filename": "board/drawcia_riscv/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-11-09T17:49:59Z",
+      "side": 1,
+      "message": "How does this look? (Also, are we even using this EC build?)",
+      "parentUuid": "0adf0080_1a753a5b",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "1e19bfc46056a28a01740ecb557556d1299a8fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
