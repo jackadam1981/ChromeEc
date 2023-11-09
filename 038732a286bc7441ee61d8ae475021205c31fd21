@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cb5ef4_47835ecd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-11-09T10:32:51Z",
+      "side": 1,
+      "message": "test failed:\n```\n/mnt/host/source/src/platform/ec/zephyr/program/corsola/chinchou/src/board.c:68:3: error: use of undeclared identifier \u0027CBI_SSFC_VALUE_DT_N_NODELABEL_base_sensor_1\u0027\n                CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)));\n                ^\n/mnt/host/source/src/platform/ec/zephyr/shim/include/cros_cbi.h:19:31: note: expanded from macro \u0027CBI_SSFC_VALUE_ID\u0027\n#define CBI_SSFC_VALUE_ID(id) DT_CAT(CBI_SSFC_VALUE_, id)\n                              ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/devicetree.h:4341:24: note: expanded from macro \u0027DT_CAT\u0027\n#define DT_CAT(a1, a2) a1 ## a2\n                       ^\n\u003cscratch space\u003e:18:1: note: expanded from here\nCBI_SSFC_VALUE_DT_N_NODELABEL_base_sensor_1\n^\n1 error generated.\n```",
+      "revId": "038732a286bc7441ee61d8ae475021205c31fd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
