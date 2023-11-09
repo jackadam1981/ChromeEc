@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c01f548_e4f62fec",
+        "filename": "zephyr/dts/bindings/fingerprint/fpc,fpc1025.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-09T11:55:05Z",
+      "side": 1,
+      "message": "nit1: you haven\u0027t used the `(c)` in other files and not sure if this is required\nnit2: other files were under BSD license. apache-2.0 is used by upstream I think?",
+      "revId": "c76ba0dc7820704939754718087bcd11d898245c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
