@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6fc056e_895cf086",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-11-09T14:19:01Z",
+      "side": 1,
+      "message": "I guess it is really hard, but I would like to hear you opinion. Have you consider using the general sensor API? Or is would have to be extended and adjusted to fp too much?",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94db694_26eaaa3a",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-11-09T14:19:01Z",
+      "side": 1,
+      "message": "Please adjust to the new file name",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20dcb459_898621ed",
@@ -14,6 +54,24 @@
       "writtenOn": "2023-11-09T11:53:02Z",
       "side": 1,
       "message": "nit: I understand why, but all other enums start with FINGERPRINT",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8116a7f6_7637a088",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-11-09T14:19:01Z",
+      "side": 1,
+      "message": "True, shouldn\u0027t it be `FINGERPRINT_FINGER_STATE_NONE` to follow the pattern?",
+      "parentUuid": "20dcb459_898621ed",
       "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
