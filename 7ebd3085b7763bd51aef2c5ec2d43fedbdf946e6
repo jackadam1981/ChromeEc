@@ -22,6 +22,30 @@
       },
       "revId": "7ebd3085b7763bd51aef2c5ec2d43fedbdf946e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb96c4cf_fdfb9be1",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-11-09T16:01:04Z",
+      "side": 1,
+      "message": "Good suggestion. I do not know EC/Zephyr good enough to decide though. I\u0027d wait for more ChromeBox designs and then generalize this if needed. Ovis/{Deku/Sequoia} will come soon so there will be an opportunity for that I guess.",
+      "parentUuid": "2b058acd_13739c50",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "7ebd3085b7763bd51aef2c5ec2d43fedbdf946e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
