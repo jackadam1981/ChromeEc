@@ -13,6 +13,7 @@ import logging
 import os
 import pathlib
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -298,7 +299,9 @@ class Zmake:
         all_projects=False,
         extra_cflags=None,
         delete_intermediates=False,
+        version=None,
         static_version=False,
+        official_build=False,
         save_temps=False,
         wait_for_executor=True,
     ):
@@ -330,7 +333,9 @@ class Zmake:
                     allow_warnings=allow_warnings,
                     extra_cflags=extra_cflags,
                     delete_intermediates=delete_intermediates,
+                    version=version,
                     static_version=static_version,
+                    official_build=official_build,
                     save_temps=save_temps,
                 )
             )
@@ -371,7 +376,9 @@ class Zmake:
         all_projects=False,
         extra_cflags=None,
         delete_intermediates=False,
+        version=None,
         static_version=False,
+        official_build=False,
         save_temps=False,
     ):
         """Locate and build the specified projects."""
@@ -389,7 +396,9 @@ class Zmake:
             extra_cflags=extra_cflags,
             build_after_configure=True,
             delete_intermediates=delete_intermediates,
+            version=version,
             static_version=static_version,
+            official_build=official_build,
             save_temps=save_temps,
         )
 
@@ -508,7 +517,9 @@ class Zmake:
         allow_warnings=False,
         extra_cflags=None,
         delete_intermediates=False,
+        version=None,
         static_version=False,
+        official_build=False,
         save_temps=False,
     ):
         """Set up a build directory to later be built by "zmake build"."""
@@ -523,6 +534,16 @@ class Zmake:
                     shutil.rmtree(build_dir)
 
                 generated_include_dir = (build_dir / "include").resolve()
+
+                ec_version_flags = []
+                if version:
+                    quoted_version = shlex.quote(version)
+                    ec_version_flags.append(f"--version {quoted_version}")
+                if static_version:
+                    ec_version_flags.append("--static")
+                if official_build:
+                    ec_version_flags.append("--official-build")
+
                 base_config = zmake.build_config.BuildConfig(
                     cmake_defs={
                         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
@@ -543,8 +564,12 @@ class Zmake:
                         "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
                         "Python3_EXECUTABLE": sys.executable,
                         **(
-                            {"EXTRA_EC_VERSION_FLAGS": "--static"}
-                            if static_version
+                            {
+                                "EXTRA_EC_VERSION_FLAGS": " ".join(
+                                    ec_version_flags
+                                )
+                            }
+                            if ec_version_flags
                             else {}
                         ),
                     },
@@ -651,7 +676,9 @@ class Zmake:
                     build_dir=build_dir,
                     project=project,
                     coverage=coverage,
+                    version=version,
                     static_version=static_version,
+                    official_build=official_build,
                     delete_intermediates=delete_intermediates,
                 )
             return 0
@@ -735,7 +762,9 @@ class Zmake:
         build_dir,
         project: zmake.project.Project,
         coverage=False,
+        version=None,
         static_version=False,
+        official_build=False,
         delete_intermediates=False,
     ):
         """Build a pre-configured build directory."""
@@ -748,9 +777,9 @@ class Zmake:
             # Compute the version string.
             version_string = zmake.version.get_version_string(
                 project.config.project_name,
-                build_dir / "zephyr_base",
-                zmake.modules.locate_from_directory(build_dir / "modules"),
+                version,
                 static=static_version,
+                official_build=official_build,
             )
 
             # The version header needs to generated during the build phase

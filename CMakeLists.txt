@@ -12,6 +12,7 @@ if(NOT DEFINED ZEPHYR_CURRENT_MODULE_DIR)
   message(FATAL_ERROR "This Cmake system implements only a Zephyr module, and
           should not be invoked directly.  Please continue to use the Makefile
           system for non-Zephyr builds.")
+
 endif()
 
 set(PLATFORM_EC "${ZEPHYR_CURRENT_MODULE_DIR}" CACHE PATH
