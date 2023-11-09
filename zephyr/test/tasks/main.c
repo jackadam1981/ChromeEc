@@ -301,4 +301,45 @@ ZTEST(test_task_shim, test_empty_set_mask)
 	run_test(&empty_set_mask1, &empty_set_mask2);
 }
 
+/* Task 3 timer is just used to release semaphores */
+static void release_semaphores(uint32_t event_mask)
+{
+	k_sem_give(&task_done1);
+	k_sem_give(&task_done2);
+}
+
+static void task_1_disable(void)
+{
+	timestamp_t timer_timeout;
+
+	timer_armed_at = get_time();
+
+	timer_timeout.val = timer_armed_at.val + TASK_SEC(2);
+
+	task3_entry_func = release_semaphores;
+	zassert_equal(timer_arm(timer_timeout, TASK_ID_TASK_3), EC_SUCCESS,
+		      "Setting timer should succeed");
+
+	/* Kill task 2 before it starts */
+	task_disable_task(TASK_ID_TASK_2);
+
+	/* Kill self */
+	task_disable_task(task_get_current());
+
+	zassert_false(true, "Current task should have been disabled");
+}
+
+static void task_2_disable(void)
+{
+	zassert_false(true, "Task 2 should have been disabled");
+}
+
+/* zzz prefix ensures the disable task test is run last.
+ * Tasks will be permanently disabled after this test finishes.
+ */
+ZTEST(test_task_shim, test_zzz_task_disable)
+{
+	run_test(&task_1_disable, &task_2_disable);
+}
+
 ZTEST_SUITE(test_task_shim, NULL, tasks_setup, NULL, NULL, NULL);
