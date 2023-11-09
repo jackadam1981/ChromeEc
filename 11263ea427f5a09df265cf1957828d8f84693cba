@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a08b14_8f3ebae4",
+        "filename": "util/check_zephyr_end_of_ram.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-11-09T22:50:53Z",
+      "side": 1,
+      "message": "pirrha seems fine to me as well, showing 1536 bytes free. Can we remove it right away too?",
+      "revId": "11263ea427f5a09df265cf1957828d8f84693cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
