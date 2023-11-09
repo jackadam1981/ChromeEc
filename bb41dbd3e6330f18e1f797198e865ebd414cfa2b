@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20dcb459_898621ed",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-09T11:53:02Z",
+      "side": 1,
+      "message": "nit: I understand why, but all other enums start with FINGERPRINT",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a5649f_0d8416b2",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-09T11:53:02Z",
+      "side": 1,
+      "message": "not sure if my understanding is correct since there is no exact example, but I think that misra requires to compare the pointer to the null value (at least if checking if pointer is not null, so I\u0027m not sure if this applies if you check if pointer IS a null): https://gitlab.com/MISRA/MISRA-C/MISRA-C-2012/Example-Suite/-/blob/master/R_14_04.c",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088c13ee_b5ec70e8",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-09T11:53:02Z",
+      "side": 1,
+      "message": "nit: you were using the userspace, so don\u0027t you want to implement z_vrfy_* functions?",
+      "revId": "bb41dbd3e6330f18e1f797198e865ebd414cfa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

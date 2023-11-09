@@ -468,6 +468,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "124950d4_942d2175",
+        "filename": "zephyr/include/drivers/cros_fingerprint.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-09T11:53:02Z",
+      "side": 1,
+      "message": "Hm, looks like some i2c functions neither use assert, nor checking if function is implemented. Strange, but if so, then returning -ENOTSUP is definitely better approach.",
+      "parentUuid": "d55ccd42_5c301872",
+      "revId": "7e96f69c85e69186462de17973cbc3a51f51a62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a547517_b6129425",
