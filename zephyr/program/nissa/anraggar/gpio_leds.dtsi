@@ -237,7 +237,7 @@ led-colors {
 			};
 		};
 
-		power-state-idle-s0 {
+		power-state-idle-s3 {
 			charge-state = "LED_PWRS_IDLE";
 			chipset-state = "POWER_S3";
 
