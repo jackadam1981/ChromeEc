@@ -212,6 +212,30 @@
       },
       "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b299bc_633a72da",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-09T09:43:23Z",
+      "side": 1,
+      "message": "I still see a possibility to split `_fp_clear_context()` into two functions and use one of the functions here.\n\nThe main problem is that we are modifying global state in multiple places, which should be avoided. For example, `template_newly_enrolled` is only assigned here, this variable definitely doesn\u0027t \"belong\" to this file.\n\n\u003e And in the future, these two functions will set different states to the templates.\n\nI looked at the CL you linked, and it only adds one small for loop to `invalidate_existing_nonce_context()`, this can be moved to e.g. `fp_command_generate_nonce()`\n\nI know that `fpsensor` codebase is full of antipatterns and it really deserves refactoring, but let\u0027s try to NOT making things worse.",
+      "parentUuid": "0226e028_a7bf8559",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "8f9d870253a0e76047f3640ab1de62d208fdacde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
