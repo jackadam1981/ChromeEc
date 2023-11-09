@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a969d60_2a13d6a1",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-09T16:19:41Z",
+      "side": 1,
+      "message": "I think `default n` is default, just leave it unspecified",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 10
+      },
+      "revId": "0b17362ed246e74619de956f05c2a11ec2b64477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ba2874_3b9f5592",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-09T16:19:41Z",
+      "side": 1,
+      "message": "should this be a\n\n```\ndefault y\ndepends on PLATFORM_EC_DEDICATED_RECOVERY_BUTTON\n```\n?\n\nThat way you cannot select it unless the depend is enabled",
+      "revId": "0b17362ed246e74619de956f05c2a11ec2b64477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

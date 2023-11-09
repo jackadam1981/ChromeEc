@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4912e04_7d9de0ac",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-09T16:19:41Z",
+      "side": 1,
+      "message": "Sorry I\u0027m afraid I drove you the wrong way -- normally the flag would just work automatically, the Zephyr APIs return a logical value, but now that I\u0027ve checked, `button.c` uses `gpio_get_level`, which is implemented using `gpio_pin_get_raw`, which is the same as `gpio_pin_get` but bypasses the `ACTIVE_LOW` bit.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/gpio.c;l\u003d106\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/gpio.h#L1475-L1477\n\napologies for throwing you off, so either add back those config or add a Zephyr specific implementation of `raw_button_pressed` (there\u0027s few different code path in common, look for `CONFIG_ZEPHYR`). Up to you I guess.",
+      "parentUuid": "a9b901a8_6ec4f39a",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 57
+      },
+      "revId": "00603e97bf5757cc1ec7a6465abfc18afe9773aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd844ff6_232b4664",
         "filename": "zephyr/Kconfig.keyboard",
         "patchSetId": 1
