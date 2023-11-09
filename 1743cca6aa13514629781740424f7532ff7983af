@@ -16,6 +16,24 @@
       "message": "Do we still need intel_x86_get_pg_ec_dsw_pwrok in include/intel_x86.h?",
       "revId": "1743cca6aa13514629781740424f7532ff7983af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33e8dce_726a022e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-09T23:05:01Z",
+      "side": 1,
+      "message": "It\u0027s still used by adl, and intel_x86_get_pg_ec_all_sys_pwrgd is still used by adl and mtl. I think we should do similar cleanup for those, and then remove the functions from include/intel_x86.h. I can prepare CLs but I\u0027ll need to find devices to test on or ask someone to test.",
+      "parentUuid": "96923901_f5e61363",
+      "revId": "1743cca6aa13514629781740424f7532ff7983af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
