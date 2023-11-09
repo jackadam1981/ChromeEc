@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "018bed25_7d6ace8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-09T03:29:44Z",
+      "side": 1,
+      "message": "that\u0027s a feature request marked as a bug.\nwhat\u0027s the issue on screebo? b/308572030?\ndoes this happen on rex as well?\ni\u0027m a bit concerned that there is still instability\nin the power sequencing code.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "a613243e26b46ac7df644fc8809502a6919c9e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "91006cd4_e183690e",
