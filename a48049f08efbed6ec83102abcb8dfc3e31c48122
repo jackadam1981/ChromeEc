@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2dbb0cb_0f8e08fb",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 23
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-09T19:11:06Z",
+      "side": 1,
+      "message": "Drop this line.  It doesn\u0027t make sense to specify a duplicate default value.",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 28
+      },
+      "revId": "a48049f08efbed6ec83102abcb8dfc3e31c48122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
