@@ -46,6 +46,30 @@
       },
       "revId": "7ebd3085b7763bd51aef2c5ec2d43fedbdf946e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11210d1_93246b70",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-09T16:08:54Z",
+      "side": 1,
+      "message": "Ah it\u0027s not as much about EC/Zephyr, the label is supposed to match the net name at some extent to it\u0027s more about confidence on the net name being coherent on various design. Which is probably quite low. :-) Guess it\u0027s fine to leave it as a config option.",
+      "parentUuid": "fb96c4cf_fdfb9be1",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "7ebd3085b7763bd51aef2c5ec2d43fedbdf946e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
