@@ -80,6 +80,13 @@ config LINK_TEST_SUITE_FLASH
 	help
 	  Include the test suite exercising flash-related code in the binary.
 
+config LINK_TEST_SUITE_FPC1025
+	bool "Link and execute the FPC1025 driver tests"
+	help
+	  Include the test suite exercising FPC1025 driver in the binary.
+	  Tests exercise functions that are available without the FPC private
+	  library and Platform Abstraction Layer required by the library
+
 config LINK_TEST_SUITE_GPIO_INIT
   	bool "Link and execute the GPIO init tests"
 
