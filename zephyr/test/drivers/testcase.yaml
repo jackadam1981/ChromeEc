@@ -1555,3 +1555,8 @@ tests:
     - default/prj.conf
     extra_dtc_overlay_files:
     - default/boards/native_posix.overlay
+  drivers.fpc1025:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_FPC1025=y
+    extra_dtc_overlay_files:
+    - 
