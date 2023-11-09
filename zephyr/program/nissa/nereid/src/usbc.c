@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "system.h"
 #include "usb_mux.h"
+#include "watchdog.h"
 
 #include <zephyr/logging/log.h>
 
@@ -237,6 +238,25 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 	}
 }
 
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+				       int max_ma, int charge_mv)
+{
+	/*
+	 * Joxer C1 port is OCPC (One Charger IC Per Type-C)
+	 * architecture, The charging current is controlled by increasing Vsys.
+	 * However, the charger SM5803 is not limit current while Vsys
+	 * increasing, we can see the current overshoot to ~3.6A to cause
+	 * C1 port brownout with low power charger (5V). To avoid C1 port
+	 * brownout at low power charger connected. Limit charge current to 2A.
+	 */
+	if (charge_mv <= 5000 && port == 1)
+		charge_ma = MIN(charge_ma, 2000);
+	else
+		charge_ma = charge_ma * 96 / 100;
+
+	charge_set_input_current_limit(charge_ma, charge_mv);
+}
+
 /* LCOV_EXCL_START function does nothing, but is required for build */
 void board_reset_pd_mcu(void)
 {
@@ -295,6 +315,28 @@ void usb_c1_interrupt(enum gpio_signal s)
 /* LCOV_EXCL_STOP */
 
 /*
+ * Check state of IRQ lines at startup, ensuring an IRQ that happened before
+ * the EC started up won't get lost (leaving the IRQ line asserted and blocking
+ * any further interrupts on the port).
+ *
+ * Although the PD task will check for pending TCPC interrupts on startup,
+ * the charger sharing the IRQ will not be polled automatically.
+ */
+void board_handle_initial_typec_irq(void)
+{
+	check_c0_line();
+	/*
+	 * C1 port IRQ already handled by board_process_pd_alert(), we don't
+	 * need check IRQ here at initial.
+	 */
+}
+/*
+ * This must run after sub-board detection (which happens in EC main()),
+ * but isn't depended on by anything else either.
+ */
+DECLARE_HOOK(HOOK_INIT, board_handle_initial_typec_irq, HOOK_PRIO_LAST);
+
+/*
  * Handle charger interrupts in the PD task. Not doing so can lead to a priority
  * inversion where we fail to respond to TCPC alerts quickly enough because we
  * don't get another edge on a shared IRQ until the other interrupt is cleared
@@ -323,6 +365,15 @@ void board_process_pd_alert(int port)
 	 */
 	if (!gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl)))
 		schedule_deferred_pd_interrupt(port);
+
+	/*
+	 * b:301055899: There are some peripheral display docks will
+	 * issue HPDs in the short time. TCPM must wake up pd_task
+	 * continually to service the events. They may cause the
+	 * watchdog to reset. This patch placates watchdog after
+	 * receiving dp_attention.
+	 */
+	watchdog_reload();
 }
 
 int pd_snk_is_vbus_provided(int port)
