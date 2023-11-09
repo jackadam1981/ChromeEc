@@ -1555,3 +1555,13 @@ tests:
     - default/prj.conf
     extra_dtc_overlay_files:
     - default/boards/native_posix.overlay
+  drivers.fpc1025:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_FPC1025=y
+    extra_conf_files:
+    - prj.conf
+    - fpc1025/prj.conf
+    extra_dtc_overlay_files:
+    - boards/native_posix.overlay
+    - fpc1025/boards/native_posix.overlay
+    tags: fingerprint
