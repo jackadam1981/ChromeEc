@@ -56,11 +56,3 @@ static void set_board_id_5_gpios(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, set_board_id_5_gpios, HOOK_PRIO_POST_FIRST);
-
-__override int intel_x86_get_pg_ec_all_sys_pwrgd(void)
-{
-	if (get_board_id() < 6)
-		return gpio_get_level(GPIO_ID_5_SEQ_EC_ALL_SYS_PG);
-
-	return gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD);
-}
