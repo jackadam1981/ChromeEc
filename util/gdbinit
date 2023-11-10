@@ -224,3 +224,18 @@ define ec-brexception
     break bus_fault_handler
     break panic_assert_fail
 end
+
+
+define ec-print-debug-gpio
+    set $cfg = get_gpio_config()
+    p $cfg.port_a.mode.moder13
+    p $cfg.port_a.mode.moder14
+    p $cfg.port_a.mode.moder15
+    p $cfg.port_b.mode.moder3
+    p $cfg.port_b.mode.moder4
+    p $cfg.port_a.alt_func_upper.afrh13
+    p $cfg.port_a.alt_func_upper.afrh14
+    p $cfg.port_a.alt_func_upper.afrh15
+    p $cfg.port_b.alt_func_lower.afrl3
+    p $cfg.port_b.alt_func_lower.afrl4
+end
