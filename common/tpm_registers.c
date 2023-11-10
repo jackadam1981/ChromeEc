@@ -77,6 +77,7 @@
 
 #define CPRINTS(format, args...) cprints(CC_TPM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_TPM, format, ## args)
+#define CPRINTSS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /* Register addresses for FIFO mode. */
 #define TPM_ACCESS	    (0)
@@ -951,6 +952,9 @@ void tpm_stop(void)
 	reset_in_progress = 0;
 }
 
+/* (b/262324344) Can't include Implementation.h due to symbol conflicts. */
+#define TPM_CC_Startup 0x144
+
 void tpm_task(void *u)
 {
 	uint32_t evt = 0;
@@ -1077,10 +1081,27 @@ void tpm_task(void *u)
 				       response_size);
 			} else {
 #ifdef ENABLE_TPM
+				/* TODO:  (b/262324344) remove once fixed. */
+				uint16_t eps_len;
+
+				eps_len = nv_eps_len();
+				if ((command_code != TPM_CC_Startup) &&
+				    (eps_len == 0 || *GP_EPS_LEN == 0)) {
+					CPRINTSS("EPS before cmd=0x%x:"
+						 " NV=%u, GP=%u",
+						 command_code, eps_len,
+						 *GP_EPS_LEN);
+				}
 				ExecuteCommand(tpm_.fifo_write_index,
-					       (uint8_t *)tpmh,
-					       &response_size,
+					       (uint8_t *)tpmh, &response_size,
 					       &response);
+				eps_len = nv_eps_len();
+				if (eps_len == 0 || *GP_EPS_LEN == 0) {
+					CPRINTSS("EPS after cmd=0x%x:"
+						 " NV=%u, GP=%u",
+						 command_code, eps_len,
+						 *GP_EPS_LEN);
+				}
 #else
 				{
 					/*
