@@ -472,6 +472,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "653fc5e4_7b7990da",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-10T22:45:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b4966f17_0c56bdcc",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2c15d31_fd0eabd8",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
