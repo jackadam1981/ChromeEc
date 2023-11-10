@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75974387_f7853154",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-10T19:03:38Z",
+      "side": 1,
+      "message": "Adding the commit to the version string breaks `zmake compare-builds`.  Note the usage text above:\n\n```\n        static: if set, create a version string not dependent on git\n            commits, thus allowing binaries to be compared between two\n            commits.\n```",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "173d70a132c19d03977f36332bb56d030a59e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6343c36f_429c386e",
         "filename": "zephyr/zmake/zmake/version.py",
         "patchSetId": 4
