@@ -1449,7 +1449,7 @@ void sm5803_handle_interrupt(int chgnum)
 			CHARGER_NAME, chgnum, status_reg);
 		if ((status_reg == 0) ||
 		    (status_reg == SM5803_STATUS_DISCHG_VBUS_SHORT)) {
-			pd_handle_overcurrent(chgnum);
+			//pd_handle_overcurrent(chgnum);
 		}
 
 		/*
