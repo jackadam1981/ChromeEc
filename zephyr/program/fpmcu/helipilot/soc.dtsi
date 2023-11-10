@@ -1,0 +1,54 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/nuvoton/npcx9.dtsi>
+#include <nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi>
+/*
+ * &iwdg {
+ *	status = "okay";
+ * };
+ *
+ * &itims {
+ *	status = "okay";
+ *	wdg_helper_counter: counter {
+ *		status = "okay";
+ *	};
+ * };
+ *
+ * &wdg_helper {
+ *	counter = <&wdg_helper_counter>;
+ *	status = "okay";
+ * };
+ */
+
+ &drbg0 {
+	status = "okay";
+	};
+
+
+/*
+ * SHI0: communication with the AP
+ */
+ &shi0 {
+	status = "okay";
+	pinctrl-0 = <&shi_gp46_47_53_55>;
+	pinctrl-names = "default";
+ };
+
+&mdc {
+	status = "okay";
+};
+
+/*
+ * TODO(b/352412433): why is uart status
+ * not inherited from google_quincy.dts
+ */
+&uart1 {
+    status = "okay";
+};
+
+&uart2 {
+    status = "okay";
+};
