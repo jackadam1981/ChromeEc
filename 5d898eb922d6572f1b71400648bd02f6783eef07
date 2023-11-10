@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc2efab2_2913bcfc",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2023-11-10T16:45:26Z",
+      "side": 1,
+      "message": "From the man page\n```\n--porcelain[\u003d\u003cversion\u003e]\nGive the output in an easy-to-parse format for scripts. This is similar to the short output, but will remain stable across Git versions and regardless of user configuration. See below for details.\n```\n\nCurious what negative affects porcelain has?",
+      "parentUuid": "754b148d_d71ef6d9",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "602ea8de_9d71e20f",
         "filename": "zephyr/zmake/zmake/version.py",
         "patchSetId": 1
@@ -100,6 +124,30 @@
       "writtenOn": "2023-11-10T00:15:46Z",
       "side": 1,
       "message": "The new official build flag seems to overlap with what a static version is.  Can we just de-duplicate the two concepts and make them the same?",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8329d4_a90feca5",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2023-11-10T16:45:26Z",
+      "side": 1,
+      "message": "The static version just replaces the build time with `STATIC` (See point 4 in go/cros-fwid-deprecation). IIRC it was implemented because:\n- The option already exited in zmake\n- It helps recreate reproducible builds",
+      "parentUuid": "602ea8de_9d71e20f",
       "range": {
         "startLine": 127,
         "startChar": 4,
