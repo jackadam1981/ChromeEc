@@ -9,7 +9,9 @@
  * so some functions should be disabled for clamshell.
  */
 #include "accelgyro.h"
+#include "battery_smart.h"
 #include "common.h"
+#include "console.h"
 #include "cros_cbi.h"
 #include "driver/accelgyro_bmi3xx.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -18,11 +20,14 @@
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
+#include "tcpm/tcpci.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
+
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 static bool board_is_clamshell;
 
@@ -74,3 +79,19 @@ static void alt_sensor_init(void)
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
+
+static void check_battery_current(void)
+{
+	int battery_current = 0;
+	if (sb_read(SB_CURRENT, &battery_current)) {
+		CPRINTS("can not read battery current");
+	} else {
+		battery_current = (int16_t)battery_current;
+		CPRINTS("battery_current = %d", battery_current);
+		if (battery_current > 5100) {
+			CPRINTS("battery_current = %d > 5100 mA, cutoff VBUS", battery_current);
+			tcpc_config[0].drv->set_snk_ctrl(0, 0);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, check_battery_current, HOOK_PRIO_DEFAULT);
