@@ -62,4 +62,10 @@ void tpm_orderly_state_restore(const char copy[TPM_ORDERLY_STATE_SIZE]);
  */
 bool get_tpm_pcr_value(uint32_t pcr_num, uint8_t value[SHA256_DIGEST_SIZE]);
 
+/* TODO (b/262324344) remove once fixed. */
+/* Pointer to EPS len in TPM2 GP struct */
+extern uint16_t *GP_EPS_LEN;
+/* Return EPS length from NVmem. */
+extern uint16_t nv_eps_len(void);
+
 #endif  /* ! __EC_BOARD_CR50_TPM_NVMEM_OPS_H */
