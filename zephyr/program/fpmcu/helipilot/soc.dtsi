@@ -1,0 +1,96 @@
+/* Copyright 2025 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/nuvoton/npcx9_cros.dtsi>
+#include <nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi>
+
+/* DRBG: Deterministic Random Bit Generator */
+&drbg0 {
+	status = "okay";
+};
+
+/* Update program memory size */
+&flash0 {
+    reg = <0x10058000 DT_SIZE_K(320)>;
+};
+
+/* Update data memory size */
+&sram0 {
+    reg = <0x200AC000 DT_SIZE_K(172)>;
+};
+
+/* UART1: Servo UART (console) */
+&uart1 {
+      /* Use UART1_SL2 ie. PIN64.65 */
+       pinctrl-0 = <&uart1_2_sin_gp64
+                    &uart1_2_sout_gp65>;
+       pinctrl-names = "default";
+       current-speed = <115200>;
+};
+
+/* UART2: AP UART (Host Commands and MKBP) */
+&uart2 {
+       pinctrl-0 = <&uart2_sin_gp75
+                        &uart2_sout_gp86>;
+       pinctrl-names = "default";
+       current-speed = <3000000>;
+};
+
+/*
+ * SPI0: communication with the fingerprint sensor
+ */
+&spip0 {
+	pinctrl-0 = <&spip_sclk_mosi_miso_gp95_gpa1_gpa3_gpa5_sl
+		     &spip_sclk_mosi_miso_gp95_gpa1_gpa3_gpa5_no_spip_inv>;
+	pinctrl-names = "default";
+	cs-gpios = <&gpioa 6 GPIO_ACTIVE_LOW>;
+	status = "okay";
+
+	fp_sensor: fpc1025@0 {
+		compatible = "fpc,fpc1025";
+		reg = <0>;
+		spi-max-frequency = <4000000>;
+
+		width = <160>;
+		height = <160>;
+		bits-per-pixel = <8>;
+		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
+		irq-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
+	};
+};
+
+&qspi_fiu0 {
+	int_flash: w25q80@0 {
+		compatible ="nuvoton,npcx-fiu-nor";
+		size = <DT_SIZE_M(1 * 8)>;
+		reg = <0>;
+		status = "okay";
+
+		/* quad spi bus configuration of nor flash device */
+		qspi-flags = <NPCX_QSPI_SW_CS1>;
+		mapped-addr = <0x64000000>;
+		pinctrl-0 = <&int_flash_sl>;
+		pinctrl-names = "default";
+	};
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		/* First rollback section */
+		rollback0: partition@20000 {
+			label = "rollback0";
+			reg = <0x20000 DT_SIZE_K(64)>;
+		};
+
+		/* Second rollback section */
+		rollback1: partition@30000 {
+			label = "rollback1";
+			reg = <0x30000 DT_SIZE_K(64)>;
+		};
+	};
+};
