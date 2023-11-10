@@ -27,11 +27,19 @@ import time
 
 DEFAULT_SEGGER_REMOTE_PORT = 19020
 
+# dartmonkey
+# W4 0x58004000+0x50+4*0, 0
+# bloonchipper
+# W4 0x40002800+0x50+4*0, 0
+
 # Commands are documented here: https://wiki.segger.com/J-Link_Commander
 JLINK_COMMANDS = """
 exitonerror 1
 r
 loadfile {FIRMWARE} {FLASH_ADDRESS}
+// Clear RTC Backup Reg for test scratchpad to prevent falling back
+// into same test state after flashing is complete.
+Write4 0x{TEST_SCRATCHPAD:X}, 0
 r
 go
 exit
@@ -41,10 +49,11 @@ exit
 class BoardConfig:
     """Board configuration."""
 
-    def __init__(self, interface, device, flash_address):
+    def __init__(self, interface, device, flash_address, scratchpad_address):
         self.interface = interface
         self.device = device
         self.flash_address = flash_address
+        self.scratchpad_address = scratchpad_address
 
 
 SWD_INTERFACE = "SWD"
@@ -53,11 +62,13 @@ DRAGONCLAW_CONFIG = BoardConfig(
     interface=SWD_INTERFACE,
     device="STM32F412CG",
     flash_address=STM32_DEFAULT_FLASH_ADDRESS,
+    scratchpad_address=0x40002800+0x50,
 )
 ICETOWER_CONFIG = BoardConfig(
     interface=SWD_INTERFACE,
     device="STM32H743ZI",
     flash_address=STM32_DEFAULT_FLASH_ADDRESS,
+    scratchpad_address=0x58004000+0x50,
 )
 
 BOARD_CONFIGS = {
@@ -101,7 +112,9 @@ def create_jlink_command_file(firmware_file, config):
     tmp = tempfile.NamedTemporaryFile()
     tmp.write(
         JLINK_COMMANDS.format(
-            FIRMWARE=firmware_file, FLASH_ADDRESS=config.flash_address
+            FIRMWARE=firmware_file,
+            FLASH_ADDRESS=config.flash_address,
+            TEST_SCRATCHPAD=config.scratchpad_address
         ).encode("utf-8")
     )
     tmp.flush()
