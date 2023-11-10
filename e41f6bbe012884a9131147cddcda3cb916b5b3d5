@@ -51,6 +51,24 @@
       "parentUuid": "3fb14f5d_0334bded",
       "revId": "e41f6bbe012884a9131147cddcda3cb916b5b3d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3e8d90_9265c551",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-10T07:48:12Z",
+      "side": 1,
+      "message": "Oh, I confused it with the fp_xfer_buffer. Yes, this should be fine.",
+      "parentUuid": "51283b68_913853ff",
+      "revId": "e41f6bbe012884a9131147cddcda3cb916b5b3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
