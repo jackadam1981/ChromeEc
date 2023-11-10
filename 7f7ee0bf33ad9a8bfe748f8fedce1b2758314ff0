@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34f4545_9b0df864",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-10T20:34:35Z",
+      "side": 1,
+      "message": "I don\u0027t know much about the DTS format so I may be misreading this but \nin a later CL [fpc1025.h\n](https://crrev.com/c/4866410/31/zephyr/drivers/fingerprint/fpc1025.h) defines the following:\n\n```\nstruct fpc1025_cfg {\n\tstruct spi_dt_spec spi;\n\tstruct gpio_dt_spec interrupt;\n\tstruct gpio_dt_spec reset_pin;\n\tstruct fingerprint_info info;\n};\n```\n\nI believe the `struct fingerprint_info info;` is a representation of this DTS config. Then in [fpc1025.c](https://crrev.com/c/4866410/31/zephyr/drivers/fingerprint/fpc1025.c) from the same CL the `reset_pin` and `interrupt` signals seem to use the versions from `fpc_1025_cfg` rather than from `fingerprint_info`. Are the GPIO definitions here still needed?",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "7f7ee0bf33ad9a8bfe748f8fedce1b2758314ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
