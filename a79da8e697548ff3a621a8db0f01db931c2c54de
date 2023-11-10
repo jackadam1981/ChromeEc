@@ -22,6 +22,30 @@
       },
       "revId": "a79da8e697548ff3a621a8db0f01db931c2c54de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed594f5a_7e631a2e",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-10T19:14:43Z",
+      "side": 1,
+      "message": "This is intended to be passive, in the sense that FAFT just watches for things it expects. If the FAFT tests need to issue an EC command then it becomes less useful. In particular it makes it hard to deal with reboots, where we want to wait for the dev screen to come up. With the current design, this is quite easy.",
+      "parentUuid": "85904c08_f0e9b391",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 34
+      },
+      "revId": "a79da8e697548ff3a621a8db0f01db931c2c54de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
