@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7349a418_0e0e0228",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc50ae88_c7961d75",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 73
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a7991c6_5644b122",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3f1f1c_45193059",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7991c6_5644b122",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a86c787c_3a241867",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-11-09T22:58:59Z",
       "side": 1,
       "message": "This isn\u0027t an error.",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d720363_106a093d",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a86c787c_3a241867",
       "range": {
         "startLine": 64,
         "startChar": 16,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e656ba_a775917d",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it should be unsupported, all I can say is that out of all the boards we have, only `yaviks`, `rex`, `screebo`, and the `corsola` projects support this state. Seems like all the other board just use `LED_PWRS_FORCED_IDLE` and doesn\u0027t support `LED_PWRS_IDLE`.\n\nBoards that support `LED_PWRS_FORCED_IDLE` but do not support `LED_PWRS_IDLE` are: any `skyrim` board, `karis`, `gothrax`, `crasskov`, and `myst`.\n\nBoards not listed above have generic policies that do not depend on `charge-state`.",
+      "parentUuid": "73373cbe_23480cdc",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67fdd80_0f80a9d3",
         "filename": "zephyr/scripts/led_policy.py",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2023-11-09T22:58:59Z",
       "side": 1,
       "message": "`usbc_nodes \u003d edt.compat2okay(\"named-usbc-port\")`",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7812e5_7bff03b9",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67fdd80_0f80a9d3",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -129,6 +249,30 @@
       "writtenOn": "2023-11-09T22:58:59Z",
       "side": 1,
       "message": "charge_port_num \u003d len(usbc_nodes)",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0d7768_0425533a",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48cb47da_9ad876bc",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -163,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770821fd_2f31fedf",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a059f785_02430d64",
+      "range": {
+        "startLine": 94,
+        "startChar": 24,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ca10bb1_795b51c5",
@@ -176,6 +344,30 @@
       "writtenOn": "2023-11-09T22:58:59Z",
       "side": 1,
       "message": "How about generating an error message for each contiguous range that is missing a policy?\n\nSomething like\n```\nmissing_batt_level_start \u003d -1\nfor all charge_state, chipset_state, batt_level\n  if check_policy():\n    if missing_batt_level_start !\u003d -1\n      error(\"No LED policy for batt range %i to %i\", start, batt_level - 1)\n      missing_batt_level_start \u003d -1\n    else\n      if missing_batt_level_start \u003d\u003d -1\n        missing_batt_level_start \u003d batt_level\n\n  if missing_batt_level_start !\u003d -1\n    # No policies over the entire range\n    error(\"No LED policy at charge/chipset state\")\n```",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 40
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354f3d4c_8d413fab",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-10T23:37:35Z",
+      "side": 1,
+      "message": "I\u0027ve rewriten the code for error messages to be more informative without spamming error messages for states that we don\u0027t care about.",
+      "parentUuid": "3ca10bb1_795b51c5",
       "range": {
         "startLine": 102,
         "startChar": 0,
