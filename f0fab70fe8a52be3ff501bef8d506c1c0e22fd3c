@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1083e2_9bbfaa09",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-10T20:40:26Z",
+      "side": 1,
+      "message": "Should the `irq_gpios` and `reset_gpios` from https://crrev.com/c/5006897/3 be set as well? It looks like those have been replaced with `interrupt` and `reset_pin` in `fpc1025_cfg` though.",
+      "range": {
+        "startLine": 393,
+        "startChar": 3,
+        "endLine": 393,
+        "endChar": 7
+      },
+      "revId": "f0fab70fe8a52be3ff501bef8d506c1c0e22fd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
