@@ -68,6 +68,24 @@
       "parentUuid": "e7a53876_76ad564d",
       "revId": "1f2003544c1fc1ea755131989d4bdc9cd5ea146e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "282a1091_56bc5942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2023-11-10T22:48:12Z",
+      "side": 1,
+      "message": "I\u0027m referring to upstream.\n\nhttps://gitlab.com/kernel-firmware/linux-firmware/-/tree/main/mediatek/mt8195\n\nThe last commit shows that the upstream scp supports 10 bit.\n\nWe pull firmware for other vendors from there. Does the firmware that MTK builds for us differ from upstream?",
+      "parentUuid": "8258b0fa_9efda93e",
+      "revId": "1f2003544c1fc1ea755131989d4bdc9cd5ea146e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
