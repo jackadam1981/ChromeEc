@@ -6080,6 +6080,11 @@ static void pe_init_port_vdm_identity_request_entry(int port)
 
 static void pe_init_port_vdm_identity_request_run(int port)
 {
+	/* Retrieve the message information. */
+	uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
+	int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+	uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
+
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
 		/* If common code didn't parse a message, continue waiting. */
@@ -6092,19 +6097,14 @@ static void pe_init_port_vdm_identity_request_run(int port)
 		 */
 		break;
 	case VDM_RESULT_ACK: {
-		/* Retrieve the message information. */
-		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
-		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
-		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
-
 		/* PE_INIT_PORT_VDM_Identity_ACKed embedded here */
-		dfp_consume_identity(port, sop, cnt, payload);
-
+		dpm_vdm_acked(port, sop, cnt, payload);
 		break;
 	}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_PORT_VDM_IDENTITY_NAKed embedded here */
-		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, sop, USB_SID_PD, CMD_DISCOVER_IDENT,
+			      payload[0]);
 		break;
 	}
 
@@ -6125,7 +6125,8 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 		 * If Structured VDMs are not supported, a Structured VDM
 		 * Command received by a DFP or UFP Shall be Ignored.
 		 */
-		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, TCPCI_MSG_SOP, USB_SID_PD,
+			      CMD_DISCOVER_IDENT, 0);
 	}
 
 	/* Do not attempt further discovery if identity discovery failed. */
@@ -6194,12 +6195,13 @@ static void pe_init_vdm_svids_request_run(int port)
 		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
 
 		/* PE_INIT_VDM_SVIDs_ACKed embedded here */
-		dfp_consume_svids(port, sop, cnt, payload);
+		dpm_vdm_acked(port, sop, cnt, payload);
 		break;
 	}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_VDM_SVIDs_NAKed embedded here */
-		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, sop, USB_SID_PD, CMD_DISCOVER_SVID,
+			      payload[0]);
 		break;
 	}
 
@@ -6220,7 +6222,8 @@ static void pe_init_vdm_svids_request_exit(int port)
 		 * If Structured VDMs are not supported, a Structured VDM
 		 * Command received by a DFP or UFP Shall be Ignored.
 		 */
-		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, TCPCI_MSG_SOP, USB_SID_PD,
+			      CMD_DISCOVER_SVID, 0);
 	}
 
 	/* If SVID discovery failed, discovery is done at this point */
