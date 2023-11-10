@@ -1,0 +1,134 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "soc.dtsi"
+#include "gpio.dtsi"
+#include "rwsig.dtsi"
+
+/ {
+	chosen {
+		cros-fp,fingerprint-sensor = &fp_sensor;
+		zephyr,host-cmd-shi-backend = &shi0;
+		zephyr,host-cmd-uart-backend = &uart2;
+		zephyr,shell-uart = &uart1;
+	};
+
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x00>;
+			size = <0x02>;
+		};
+		saved-reset-flags {
+			offset = <0x02>;
+			size = <0x04>;
+		};
+		saved-panic-reason {
+			offset = <0x06>;
+			size = <0x02>;
+		};
+		saved-panic-info {
+			offset = <0x08>;
+			size = <0x02>;
+		};
+		saved-panic-exception {
+			offset = <0x0a>;
+			size = <0x02>;
+		};
+		saved-panic-flags {
+			offset = <0x0c>;
+			size = <0x02>;
+		};
+	};
+
+	binman {
+		/* First 5 sectors (4 x 16KB, 1 x 64KB) used for RO */
+		wp-ro {
+			offset = <0x0>;
+			size = <0x20000>;
+			ec-ro {
+				pad-byte = <0xff>;
+			};
+		};
+
+		/* Two sectors used for rollback (128KB each) */
+		rollback0 {
+			offset = <0x20000>;
+			size = <0x20000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		rollback1 {
+			offset = <0x40000>;
+			size = <0x20000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		/* Remaining 5 sectors (128KB each) used for RW */
+		ec-rw {
+			offset = <0x60000>;
+			size = <0xa0000>;
+		};
+		pad-byte = <0xff>;
+	};
+};
+
+/*
+ * SPI0: communication with the fingerprint sensor
+ */
+&spip0 {
+	pinctrl-0 = <&alt0_f_spi_cs1 &alt0_spip_sl>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	fp_sensor: fpc1025@0 {
+		compatible = "fpc,fpc1025";
+		reg = <0>;
+		spi-max-frequency = <4000000>;
+
+		width = <160>;
+		height = <160>;
+		bits-per-pixel = <8>;
+		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
+		irq-gpios = <&gpiob 1 GPIO_INPUT>;
+		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
+	};
+};
+
+&qspi_fiu0 {
+	int_flash: w25q80@0 {
+		compatible ="nuvoton,npcx-fiu-nor";
+		size = <DT_SIZE_M(1 * 8)>;
+		reg = <0>;
+		status = "okay";
+
+		/* quad spi bus configuration of nor flash device */
+		qspi-flags = <NPCX_QSPI_SW_CS1>;
+		mapped-addr = <0x64000000>;
+		pinctrl-0 = <&int_flash_sl>;
+		pinctrl-names = "default";
+	};
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		/* Sixth sector is used as first rollback sector. */
+		rollback0: partition@20000 {
+			label = "rollback0";
+			reg = <0x20000 DT_SIZE_K(128)>;
+		};
+
+		/* Seventh sector is used as second rollback sector. */
+		rollback1: partition@40000 {
+			label = "rollback1";
+			reg = <0x40000 DT_SIZE_K(128)>;
+		};
+	};
+};
