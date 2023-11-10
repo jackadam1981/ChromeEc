@@ -22,6 +22,30 @@
       },
       "revId": "fd0b5808b8f8d8219bfb21f1ca0467eecee32f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "324b3a62_1b6c1aea",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-10T00:20:28Z",
+      "side": 1,
+      "message": "Yes the labels should be unique.  Fixed.",
+      "parentUuid": "dc8e4609_0d56df81",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "fd0b5808b8f8d8219bfb21f1ca0467eecee32f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
