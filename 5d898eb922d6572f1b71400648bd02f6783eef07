@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf247691_cafe8d17",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-10T17:14:32Z",
+      "side": 1,
+      "message": "The RW-FWID fmap is deduplicated, which points to the `current_image_data.version[32]`, check the CL chain (http://crrev.com/c/4998760). The version string can be easily accessed through fmap.",
+      "parentUuid": "3473523a_5e705d23",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 27
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8cf3b61_9163cf43",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-11-10T00:15:46Z",
       "side": 1,
       "message": "Under what context do we expect this flag to be set?  Only on the firmware builders?  Or in CQ too?",
+      "range": {
+        "startLine": 328,
+        "startChar": 35,
+        "endLine": 328,
+        "endChar": 57
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3472d4fb_c0549d78",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-10T17:14:32Z",
+      "side": 1,
+      "message": "Any builder, including firmare builders and CQ, will have this flag set.",
+      "parentUuid": "b8cf3b61_9163cf43",
       "range": {
         "startLine": 328,
         "startChar": 35,
@@ -100,6 +148,30 @@
       "writtenOn": "2023-11-10T16:45:26Z",
       "side": 1,
       "message": "From the man page\n```\n--porcelain[\u003d\u003cversion\u003e]\nGive the output in an easy-to-parse format for scripts. This is similar to the short output, but will remain stable across Git versions and regardless of user configuration. See below for details.\n```\n\nCurious what negative affects porcelain has?",
+      "parentUuid": "754b148d_d71ef6d9",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15dcd2af_befc1b57",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-10T17:14:32Z",
+      "side": 1,
+      "message": "Is `git -C \u003crepo\u003e ls-files --modified` enough? or other arguments you suggest?",
       "parentUuid": "754b148d_d71ef6d9",
       "range": {
         "startLine": 80,
@@ -160,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3c50aee_df352a9b",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-10T17:14:32Z",
+      "side": 1,
+      "message": "`official_build` implies `static` but `static` doesn\u0027t implies `official_build`.\n\n`static` generates something like `skyrim-0.0.0-STATIC-1234abc`. The difference is the commit hash. Is the hash useful? I think the answer is no. I will merge them if no one objects.",
+      "parentUuid": "602ea8de_9d71e20f",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2c15d31_fd0eabd8",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
@@ -171,6 +267,30 @@
       "writtenOn": "2023-11-10T00:15:46Z",
       "side": 1,
       "message": "i\u0027m unfamiliar with who consumes this EXTRA_EC_VERSION_FLAGS, but if it\u0027s a shell, you need to `shlex.quote` this value.",
+      "range": {
+        "startLine": 539,
+        "startChar": 56,
+        "endLine": 539,
+        "endChar": 65
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15127ef_578ec199",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-10T17:14:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c15d31_fd0eabd8",
       "range": {
         "startLine": 539,
         "startChar": 56,
