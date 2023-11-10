@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d22c7f2_370b78bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-10T04:03:08Z",
+      "side": 1,
+      "message": "It looks like rex has switched to zephyr power sequencing code.\n\nCaveh, do you know what the plan for the legacy code is - are we going to delete it at some point? Is it still worth making this fix, and if so how should I test it?",
+      "revId": "bf4ecd98950b9e7bdfbcbf0ca45fdbdb003aef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
