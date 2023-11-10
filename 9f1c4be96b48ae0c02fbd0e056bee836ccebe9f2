@@ -16,6 +16,24 @@
       "message": "Add handler for GPIO_AC_PRESENT:\n\n\t\tint_ac_present: ac_present {\n\t\t\tirq-pin \u003d \u003c\u0026gpio_ec_acok_d_od\u003e;\n\t\t\tflags \u003d \u003cGPIO_INT_EDGE_BOTH\u003e;\n\t\t\thandler \u003d \"extpower_interrupt\";\n\t\t};",
       "revId": "9f1c4be96b48ae0c02fbd0e056bee836ccebe9f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fe6ca6_6a4b9114",
+        "filename": "zephyr/program/nissa/naktal/overlay.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2023-11-10T08:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "befcb637_1fd8f5bd",
+      "revId": "9f1c4be96b48ae0c02fbd0e056bee836ccebe9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
