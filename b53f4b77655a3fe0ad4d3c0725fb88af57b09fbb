@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6364c18_734aebe7",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-11-10T19:09:52Z",
+      "side": 1,
+      "message": "It\u0027s basically a programming error for this function and `discovery_vdm_naked` to be called with an unexpected discovery state. Eventually (later in this CL stack), I expect that sending discovery VDMs will be controlled by this state variable, so it should be especially hard to call this function inappropriately.\n\nHowever, I could see an argument for marking the underlying discovery state as failed here to reduce even further likelihood of getting into a weird loop where we repeatedly provoke discovery responses that we aren\u0027t capable of processing.\n\nWhat do you think?",
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "This still needs to be cleaned up. I\u0027ll upload another CL that does the same thing to the rest of the discovery requests or roll those into this CL.\n\nThe next step would be to basically move `pe_attempt_port_discovery` into the DPM, replacing the state changes with DPM requests. I\u0027d probably start with a separate DPM request for each discovery step, then maybe move the VDM construction into the DPM, such that the DPM could just use the current send-VDM request, and the PE could drop at least most of its individual discovery states. (SOP\u0027 discover identity is special and probably needs to stay in the PE in some form.)\n\nThis seemed like a relatively stable intermediate form and a good CL boundary along the way to fully defining discovery policy in the DPM. Does that seem reasonable to you, or would you break it down differently?",
       "revId": "ca00b9fd6d406b7afc7e8f43a7eb9adb2f1de41f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24840c00_3653f848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-11-10T19:09:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9b98f8a7_f300e11d",
+      "revId": "ca00b9fd6d406b7afc7e8f43a7eb9adb2f1de41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
