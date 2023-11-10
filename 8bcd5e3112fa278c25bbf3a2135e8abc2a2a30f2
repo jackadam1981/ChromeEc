@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9d9aee_55f2f421",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-11-10T16:19:26Z",
+      "side": 1,
+      "message": "What about \u0026i2c3 for control of the Alt-Mode PDC interface (I2C_EC_PMC_PD_SCL and I2C_EC_PMC_PD_SDA)?",
+      "revId": "8bcd5e3112fa278c25bbf3a2135e8abc2a2a30f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
