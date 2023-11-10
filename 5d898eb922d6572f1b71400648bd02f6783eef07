@@ -424,6 +424,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4966f17_0c56bdcc",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-10T22:25:59Z",
+      "side": 1,
+      "message": "The usage of `zmake compare-builds` trends to be the way of the official build, that should not have a commit hash. Merging them into one makes sense. I will keep the `static` and drop the `official-build` argument.",
+      "parentUuid": "1f8569cd_c2bc2627",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "5d898eb922d6572f1b71400648bd02f6783eef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2c15d31_fd0eabd8",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
