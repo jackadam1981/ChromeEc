@@ -1,0 +1,21 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi>
+
+/* DRBG: Deterministic Random Bit Generator */
+&drbg0 {
+	status = "okay";
+};
+
+/* Update program memory size */
+&flash0 {
+    reg = <0x10058000 DT_SIZE_K(352)>;
+};
+
+/* Update data memory size */
+&sram0 {
+    reg = <0x200B0000 DT_SIZE_K(156)>;
+};
