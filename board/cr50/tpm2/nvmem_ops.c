@@ -3,9 +3,17 @@
  * found in the LICENSE file.
  */
 
+#include "dcrypto.h"
+
 #include "Global.h"
 #include "NV_fp.h"
 #include "util.h"
+
+static void fill_rand_or_clear(void *buf, size_t size)
+{
+	if (!fips_rand_bytes(buf, size))
+		memset(buf, 0, size);
+}
 
 void nvmem_wipe_cache(void)
 {
@@ -23,10 +31,12 @@ void nvmem_wipe_cache(void)
 	memset(&gp.ownerAuth, 0, sizeof(gp.ownerAuth));
 	memset(&gp.endorsementAuth, 0, sizeof(gp.endorsementAuth));
 	memset(&gp.lockoutAuth, 0, sizeof(gp.lockoutAuth));
-	memset(&gp.EPSeed, 0, sizeof(gp.EPSeed));
-	memset(&gp.SPSeed, 0, sizeof(gp.SPSeed));
-	memset(&gp.PPSeed, 0, sizeof(gp.PPSeed));
-	memset(&gp.phProof, 0, sizeof(gp.phProof));
-	memset(&gp.shProof, 0, sizeof(gp.shProof));
-	memset(&gp.ehProof, 0, sizeof(gp.ehProof));
+
+	gp.SPSeed.t.size = PRIMARY_SEED_SIZE;
+	fill_rand_or_clear(gp.SPSeed.t.buffer, sizeof(gp.SPSeed.t.buffer));
+	gp.PPSeed.t.size = PRIMARY_SEED_SIZE;
+	fill_rand_or_clear(gp.PPSeed.t.buffer, sizeof(gp.PPSeed.t.buffer));
+	fill_rand_or_clear(gp.phProof.t.buffer, sizeof(gp.phProof.t.buffer));
+	fill_rand_or_clear(gp.shProof.t.buffer, sizeof(gp.shProof.t.buffer));
+	fill_rand_or_clear(gp.ehProof.t.buffer, sizeof(gp.ehProof.t.buffer));
 }
