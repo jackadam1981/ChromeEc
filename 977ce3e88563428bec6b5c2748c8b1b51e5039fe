@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3359f7a1_27bed78c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-11T01:25:56Z",
+      "side": 1,
+      "message": "\u003e  whether the sign-change in clock-stm32{f?,g?}.c alone would pass\n\nI meant the other way. Keeping the sign-change aside, would the remaining changes pass compare_build.sh?",
+      "parentUuid": "ee4a8d3c_203a890e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "977ce3e88563428bec6b5c2748c8b1b51e5039fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50f54285_ac46afd4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 34
