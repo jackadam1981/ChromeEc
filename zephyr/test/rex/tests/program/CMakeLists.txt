@@ -11,3 +11,6 @@ target_sources_ifdef(CONFIG_TEST_PROGRAM_BOARD_POWER app PRIVATE ${PLATFORM_EC_P
 target_sources_ifdef(CONFIG_TEST_PROGRAM_BATTERY_PRESENT app PRIVATE src/battery_present.c)
 target_sources_ifdef(CONFIG_TEST_PROGRAM_BATTERY_PRESENT app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rex/src/battery_present.c)
 target_sources_ifdef(CONFIG_TEST_PROGRAM_BATTERY_PRESENT app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rex/src/usb_pd_policy.c)
+
+target_sources_ifdef(CONFIG_TEST_PROGRAM_I2C_POLICY app PRIVATE src/i2c_policy.c)
+target_sources_ifdef(CONFIG_TEST_PROGRAM_I2C_POLICY app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rex/rex/src/i2c_policy.c)
