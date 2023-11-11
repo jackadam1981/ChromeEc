@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4a8d3c_203a890e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-11T00:18:18Z",
+      "side": 1,
+      "message": "Do you mean if I separated out the change in sign from the merging of files, whether the sign-change in `clock-stm32{f?,g?}.c` alone would pass `util/compare_build.sh -b {hyperdebug,munna,sweetberry}`?\n\nI very much expect that it would, since those three boards use L4 and L5, and none of them would include any of the modified files.\n\nI think I could have misunderstood what you are asking here.",
+      "parentUuid": "456f5fb3_934ebf21",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "977ce3e88563428bec6b5c2748c8b1b51e5039fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f54285_ac46afd4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-11T00:10:30Z",
       "side": 1,
       "message": "nit: it",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "977ce3e88563428bec6b5c2748c8b1b51e5039fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58e8e92_7262bb78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-11T00:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f54285_ac46afd4",
       "range": {
         "startLine": 24,
         "startChar": 20,
