@@ -23,7 +23,6 @@ void nvmem_wipe_cache(void)
 	memset(&gp.ownerAuth, 0, sizeof(gp.ownerAuth));
 	memset(&gp.endorsementAuth, 0, sizeof(gp.endorsementAuth));
 	memset(&gp.lockoutAuth, 0, sizeof(gp.lockoutAuth));
-	memset(&gp.EPSeed, 0, sizeof(gp.EPSeed));
 	memset(&gp.SPSeed, 0, sizeof(gp.SPSeed));
 	memset(&gp.PPSeed, 0, sizeof(gp.PPSeed));
 	memset(&gp.phProof, 0, sizeof(gp.phProof));
