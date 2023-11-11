@@ -104,6 +104,24 @@
       "parentUuid": "282a1091_56bc5942",
       "revId": "1f2003544c1fc1ea755131989d4bdc9cd5ea146e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5490476a_05c1b184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2023-11-11T01:52:11Z",
+      "side": 1,
+      "message": "For scp firmware, below one was something I checked before for upstream. Should be the same one as you shared.\n\nhttps://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/mediatek/mt8195/scp.img?id\u003df41d890ac9e3540caf59cbda34be50a6ebef31f3",
+      "parentUuid": "0cac45c9_d84ac54d",
+      "revId": "1f2003544c1fc1ea755131989d4bdc9cd5ea146e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
