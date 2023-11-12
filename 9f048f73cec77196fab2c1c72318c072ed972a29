@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de11e8d_c628378d",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-12T07:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b553f130_96df452f",
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e4d67b2_fee30a46",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-11-01T23:53:02Z",
       "side": 1,
       "message": "TODO: What\u0027s the correct and portable way to do this safely?\n\nI probably shouldn\u0027t use `__builtin_add_overflow()`.\n\nI forget exactly what the problem is with using `check_add_overflow()` here - probably something to do with implicit integer type conversions.",
+      "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "984df0ce_822fa7cc",
+        "filename": "extra/i2c_pseudo/drivers/i2c/i2c-pseudo.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-12T07:02:03Z",
+      "side": 1,
+      "message": "Done, changed to `check_add_overflow()`",
+      "parentUuid": "7e4d67b2_fee30a46",
       "revId": "9f048f73cec77196fab2c1c72318c072ed972a29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
