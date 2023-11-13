@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ace75c12_70e78efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2023-11-13T20:29:32Z",
+      "side": 1,
+      "message": "Trying one more time - I\u0027m not able to reproduce the CQ error locally with `sudo emerge chromeos-gsc-dev`",
+      "revId": "f58bb802bb117881da18963bd57696657f7d7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e8b366b6_4ec75816",
         "filename": "docs/ti50_firmware_releases.md",
         "patchSetId": 2
