@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0640c24a_f145fba0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-13T15:36:51Z",
+      "side": 1,
+      "message": "Add CONFIG_NVMEM_DEBUG_EPS, so it\u0027s easy to enable/disable based on if we want EPS debugging.",
+      "range": {
+        "startLine": 1035,
+        "startChar": 7,
+        "endLine": 1035,
+        "endChar": 17
+      },
+      "revId": "32afd63fbfed87c45301f3627bfd4323a0513dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
