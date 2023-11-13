@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edac853_a92c66cf",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-11-13T16:16:48Z",
+      "side": 1,
+      "message": "This comment should be left on the schematic: The name of the pin on the schematic is SMCLK3ALT/GPH, but I think it should be SMCLK3ALT/GPH1",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "025c22ef0f28cba2b555d99d36aad2cc3b350c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
