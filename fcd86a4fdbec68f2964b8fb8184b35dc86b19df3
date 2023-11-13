@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8a820a_4d64d76e",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-13T23:35:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa5186a_1f16f2aa",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0130ef4_a1d25d5e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-13T19:12:56Z",
       "side": 1,
       "message": "This file shouldn\u0027t generate an error messages if the led policies are well defined.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecca708d_3db2a922",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-13T23:35:50Z",
+      "side": 1,
+      "message": "The goal of this edit was to make sure the script doesn\u0027t spam error messages for a single missing policy that covers multiple states, because the `led-policy` binding allows for states to be unspecified for \"match any\".\n\nFor Example, in the old patchset, if a board has a policy that only specifies the `chipset-state` but ignores all the other factors, and only covered S0 and S3 but missed S5, the error message generated would be:\n```\nNo LED policy found for LED_PWRS_CHARGE, port 0, POWER_S5.\nNo LED policy found for LED_PWRS_CHARGE, port 1, POWER_S5.\nNo LED policy found for LED_PWRS_DISCHARGE, port 0, POWER_S5.\nNo LED policy found for LED_PWRS_DISCHARGE, port 1, POWER_S5.\nNo LED policy found for LED_PWRS_ERROR, port 0, POWER_S5.\nNo LED policy found for LED_PWRS_ERROR, port 1, POWER_S5.\nNo LED policy found for LED_PWRS_FORCED_IDLE, port 0, POWER_S5.\nNo LED policy found for LED_PWRS_FORCED_IDLE, port 1, POWER_S5.\nNo LED policy found for LED_PWRS_CHARGE_NEAR_FULL, port 0, POWER_S5.\nNo LED policy found for LED_PWRS_CHARGE_NEAR_FULL, port 1, POWER_S5.\n```\n\nWith the new patchset, the error message will just be \n```\nNo LED policy found for POWER_S5.\n```",
+      "parentUuid": "d0130ef4_a1d25d5e",
       "range": {
         "startLine": 114,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "521608e4_42044329",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-13T23:35:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeeb3f34_046786b0",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a2e6f8a_3e53f5fb",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-13T19:12:56Z",
       "side": 1,
       "message": "This should return an error if any policy gaps are detected and fail the build.  Otherwise, the errors will be ignored.",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 24
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c1c618_da7f2d5c",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-13T23:35:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a2e6f8a_3e53f5fb",
       "range": {
         "startLine": 222,
         "startChar": 4,
