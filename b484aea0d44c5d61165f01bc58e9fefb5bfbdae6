@@ -39,6 +39,23 @@
       "message": "nit; docstring. It\u0027s a \"private\" function, but the other private functions are documented.",
       "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48214bf_b3078d69",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-11-13T20:43:44Z",
+      "side": 1,
+      "message": "Can we get rid of the date and time for developer builds? Since we\u0027re not increasing the length of the version string, this will get truncated. The build string already contains the build date and time for developers.",
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
