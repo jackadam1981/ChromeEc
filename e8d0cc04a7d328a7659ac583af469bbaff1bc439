@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3df984_fa32ba8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 58
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-13T21:19:11Z",
+      "side": 1,
+      "message": "I ran the C code through `clang-format` as requested by EC repo CQ.  The diff is minimal and I think still compliant with kernel style, if IMO not quite ideal.",
+      "revId": "e8d0cc04a7d328a7659ac583af469bbaff1bc439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
