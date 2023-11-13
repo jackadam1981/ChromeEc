@@ -887,6 +887,15 @@ config PLATFORM_EC_ASSERT_CCD_MODE_ON_DTS_CONNECT
 	  CCD USBC port. GPIO_CCD_MODE_ODL should be configured with
 	  GPIO_ODR_HIGH flag.
 
+config PLATFORM_EC_ENTERING_RW_BYPASS
+	bool "Disable the ENTERING_RW signal"
+	default y
+	help
+	  Older platforms that use the H1 Google Security Chip are required
+	  to implement the ENTERING_RW signal and connect this to the H1. Newer
+	  platforms use the H1D3C Google Security Chip and no longer have this
+	  requirement.
+
 config PLATFORM_EC_CCD_USBC_PORT_NUMBER
 	int "CCD USB Port Number"
 	default 0
