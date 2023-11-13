@@ -46,6 +46,30 @@
       },
       "revId": "a79da8e697548ff3a621a8db0f01db931c2c54de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7e8c61_cfebda16",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-13T19:24:43Z",
+      "side": 1,
+      "message": "My suggestion is to do both.  The EC prints out the AP_FW state as it is received from the AP and provide a console command to print out the last AP_FW state received.\n\nThe console command can be used by FAFT if polling for the desired state fails.  Parsing console output is fragile, so the console command gives  FAFT a chance to retry.",
+      "parentUuid": "ed594f5a_7e631a2e",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 34
+      },
+      "revId": "a79da8e697548ff3a621a8db0f01db931c2c54de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
