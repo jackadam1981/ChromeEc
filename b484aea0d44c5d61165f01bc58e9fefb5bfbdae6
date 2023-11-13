@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74616519_e9ded679",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-13T18:31:45Z",
+      "side": 1,
+      "message": "Typo: official",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d9906f0_c1f0c3ee",
         "filename": "zephyr/zmake/zmake/version.py",
         "patchSetId": 7
