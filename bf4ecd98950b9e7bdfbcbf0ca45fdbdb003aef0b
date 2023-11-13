@@ -34,6 +34,24 @@
       "parentUuid": "6d22c7f2_370b78bc",
       "revId": "bf4ecd98950b9e7bdfbcbf0ca45fdbdb003aef0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a20e66_b176ab4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-13T22:32:53Z",
+      "side": 1,
+      "message": "this file was used before we implemented zephyr based power sequencing code, this file is not used anymore. We can delete the file if needed",
+      "parentUuid": "479453fa_2e5b3afc",
+      "revId": "bf4ecd98950b9e7bdfbcbf0ca45fdbdb003aef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
