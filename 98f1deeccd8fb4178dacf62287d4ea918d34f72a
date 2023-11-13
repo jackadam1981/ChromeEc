@@ -70,6 +70,30 @@
       },
       "revId": "98f1deeccd8fb4178dacf62287d4ea918d34f72a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87778b01_73fc8f54",
+        "filename": "rust/enum_utils/BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-13T23:40:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7632998e_cee2e5fc",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "98f1deeccd8fb4178dacf62287d4ea918d34f72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
