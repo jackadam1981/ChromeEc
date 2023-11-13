@@ -22,6 +22,30 @@
       },
       "revId": "98f1deeccd8fb4178dacf62287d4ea918d34f72a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eec1dfc_28c7f18e",
+        "filename": "rust/enum_utils/BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-13T20:04:48Z",
+      "side": 1,
+      "message": "Dropped the pachade rename.\n\nwhere will the BUILD file for enum_utils_test be referenced in the Ti50 tree?\n\nDoes it have to be created in this patch?",
+      "parentUuid": "b0144f9e_0c3fb389",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "98f1deeccd8fb4178dacf62287d4ea918d34f72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
