@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa5186a_1f16f2aa",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-13T19:12:56Z",
+      "side": 1,
+      "message": "This essentially duplicates the next check. I\u0027m good with a message that reports an error for \"battery range 95% to 95%\".",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0130ef4_a1d25d5e",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-13T19:12:56Z",
+      "side": 1,
+      "message": "This file shouldn\u0027t generate an error messages if the led policies are well defined.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeeb3f34_046786b0",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-13T19:12:56Z",
+      "side": 1,
+      "message": "Suggest changing the names to make it clearer what you\u0027re testing:\n```\nno_policy_batt_lvl_min \u003d 0\nno_policy_batt_range \u003d 0\n```",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2e6f8a_3e53f5fb",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-13T19:12:56Z",
+      "side": 1,
+      "message": "This should return an error if any policy gaps are detected and fail the build.  Otherwise, the errors will be ignored.",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 24
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
