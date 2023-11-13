@@ -16,6 +16,24 @@
       "message": "I\u0027ve updated the CL because it turns out we actually need this workaround on vell board_id \u003c 6. (And there are MP devices with board_id \u003c 6, so we do need to keep supporting it).",
       "revId": "36028adc75834d4dc7d831acbab6978313fac0da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b73fe57_dd1852d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-13T19:25:00Z",
+      "side": 1,
+      "message": "I thought we handled the two cases by set_board_id_5_gpios, which assigns different GPIO# in power_signal_list[]?",
+      "parentUuid": "55cec9e3_2d09be2d",
+      "revId": "36028adc75834d4dc7d831acbab6978313fac0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
