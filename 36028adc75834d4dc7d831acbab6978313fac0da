@@ -34,6 +34,24 @@
       "parentUuid": "55cec9e3_2d09be2d",
       "revId": "36028adc75834d4dc7d831acbab6978313fac0da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc94c69_3fa475f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-13T22:29:53Z",
+      "side": 1,
+      "message": "Yes, but the old GPIO D7 does not support interrupts (which is the reason it was moved: b/253957352). So on old devices there\u0027s no power_signal_interrupt when the pin changes, so the common power code state never gets updated (it still thinks ALL_SYS_PG is 0).",
+      "parentUuid": "8b73fe57_dd1852d6",
+      "revId": "36028adc75834d4dc7d831acbab6978313fac0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
