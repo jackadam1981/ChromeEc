@@ -70,6 +70,30 @@
       },
       "revId": "a79da8e697548ff3a621a8db0f01db931c2c54de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79607fc5_52a2e01f",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-11-13T20:29:00Z",
+      "side": 1,
+      "message": "OK sure, I filed b/310691828\n\nI\u0027m planning to take this one step at a time",
+      "parentUuid": "fb7e8c61_cfebda16",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 34
+      },
+      "revId": "a79da8e697548ff3a621a8db0f01db931c2c54de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
