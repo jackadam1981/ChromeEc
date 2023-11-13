@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16db6b92_7e3e912a",
+        "filename": "rust/enum_utils_test/BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-13T22:06:21Z",
+      "side": 1,
+      "message": "I think this should be a `rust_test` rule instead",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "f6526529ee84acb64e2c4c820b941259c1eb3da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
