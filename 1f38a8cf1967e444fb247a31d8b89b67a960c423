@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59877c9_4bbc41b3",
+        "filename": "chip/mt_scp/mt8195/video.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2023-11-13T17:27:43Z",
+      "side": 0,
+      "message": "Mingjia, looked at the CQ failure. It is format issue. \n\nNot sure you had access to this log, but also copied error messages here too.\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8764789323834419297/+/u/build_firmware/call_build_API_script/stdout\n\n```\n# Running isort --settings-file\u003d/mnt/host/source/chromite/.isort.cfg --check --gitignore --dont-follow-links ..\nSkipped 39 files\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:16:48: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        return VDEC_CAP_INNER_RACING | VDEC_CAP_MM21 | VDEC_CAP_IS_SUPPORT_10BIT\nERROR:root:                                                      ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:16:74: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        return VDEC_CAP_INNER_RACING | VDEC_CAP_MM21 | VDEC_CAP_IS_SUPPORT_10BIT\nERROR:root:                                                                                ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:17:26: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                | VDEC_CAP_H264_SLICE | VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME\nERROR:root:                                       ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:17:66: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                | VDEC_CAP_H264_SLICE | VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME\nERROR:root:                                                                               ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:18:25: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                | VDEC_CAP_AV1_FRAME | VDEC_CAP_HEVC_SLICE;\nERROR:root:                                      ^\n```",
+      "revId": "1f38a8cf1967e444fb247a31d8b89b67a960c423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
