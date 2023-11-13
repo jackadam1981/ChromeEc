@@ -91,6 +91,12 @@
 #define CONFIG_USB_MUX_IT5205 /* C1: ITE Mux */
 #define I2C_PORT_USB_MUX I2C_PORT_USB_C0 /* Required for ITE Mux */
 
+/* Override max current and max power. */
+#undef PD_MAX_CURRENT_MA
+#define PD_MAX_CURRENT_MA 4330
+#undef PD_MAX_POWER_MW
+#define PD_MAX_POWER_MW 65000
+
 /* USB Type A Features */
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
