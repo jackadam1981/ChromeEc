@@ -108,9 +108,6 @@
 		en_pp5000_usb_a1_vbus_x: en_pp5000_usb_a1_vbus_x{
 			gpios = <&gpioa 7 GPIO_OUTPUT_LOW>;
 		};
-		entering_rw: entering_rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
 		usb_c0_bc12_charger_int_odl: usb_c0_bc12_charger_int_odl {
 			gpios = <&gpioj 4 GPIO_INPUT>;
 		};

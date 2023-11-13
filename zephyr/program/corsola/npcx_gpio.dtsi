@@ -220,10 +220,6 @@
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
-		/* unimplemented GPIOs */
-		entering-rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
 	};
 
 	/*

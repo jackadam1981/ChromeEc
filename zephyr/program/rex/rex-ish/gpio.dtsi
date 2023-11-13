@@ -28,9 +28,5 @@
 		gpio_ec_nb_mode_l: ec_nb_mode_l {
 			gpios = <&gpio0 10 GPIO_OUTPUT_LOW>;
 		};
-		ec_entering_rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
-
 	};
 };

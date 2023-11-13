@@ -32,9 +32,6 @@
 
 	named-gpios {
 		/* Unimplemented */
-		gpio_ec_entering_rw: ec_entering_rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
 		pch-sys-prwok {
 			enum-name = "GPIO_PCH_SYS_PWROK";
 		};

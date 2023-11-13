@@ -79,11 +79,6 @@
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpiof 2 GPIO_OUTPUT_LOW>;
 		};
-
-		/* The legacy system code requires GPIO_ENTERING_RW symbol */
-		gpio_ec_entering_rw: ec_entering_rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
 	};
 
 	unused-pins {

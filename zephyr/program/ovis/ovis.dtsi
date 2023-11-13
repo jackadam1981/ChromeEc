@@ -14,9 +14,6 @@
 	named-gpios {
 		compatible = "named-gpios";
 
-		gpio_ec_entering_rw: ec_entering_rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
 		usb_c0_ppc_int_odl {
 			gpios = <&gpio6 2 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};

@@ -37,12 +37,6 @@
 		en_pp3300_tchpad_odl: en_pp3300_tchpad_odl {
 			gpios = <&gpiob 5 GPIO_OUTPUT>;
 		};
-
-		/* TODO: unimplemented GPIOs */
-		/* system.c related */
-		entering_rw: entering_rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
 	};
 
 	unused-pins {
@@ -204,4 +198,3 @@
 		     &uart2_tx_gpf1_default>;
 	pinctrl-names = "default";
 };
-
