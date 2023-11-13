@@ -1786,8 +1786,27 @@ static enum ec_error_list sm5803_set_input_current_limit(int chgnum,
 							 int input_current)
 {
 	int reg;
+	int rv;
 
-	reg = SM5803_CURRENT_TO_REG(input_current) & SM5803_CHG_ILIM_RAW;
+	rv = chg_read8(chgnum, SM5803_REG_CHG_ILIM_EXTD, &reg);
+	if (rv)
+		return rv;
+
+	if (input_current > SM5803_INPUT_I_MAX_RANGE1)
+		reg |= SM5803_CHG_ILIM_EXTD;
+	else
+		reg &= ~SM5803_CHG_ILIM_EXTD;
+
+	rv = chg_write8(chgnum, SM5803_REG_CHG_ILIM_EXTD, reg);
+	if (rv)
+		return rv;
+
+	if (input_current > SM5803_INPUT_I_MAX_RANGE1)
+		reg = input_current / SM5803_CURRENT_STEP_EXTD;
+	else
+		reg = input_current / SM5803_CURRENT_STEP;
+
+	reg &= SM5803_CHG_ILIM_RAW;
 
 	return chg_write8(chgnum, SM5803_REG_CHG_ILIM, reg);
 }
@@ -1797,12 +1816,26 @@ static enum ec_error_list sm5803_get_input_current_limit(int chgnum,
 {
 	int rv;
 	int val;
+	int reg;
+	int chg_ilim_ext;
+
+	rv = chg_read8(chgnum, SM5803_REG_CHG_ILIM_EXTD, &reg);
+	if (rv)
+		return rv;
+
+	chg_ilim_ext = reg & SM5803_CHG_ILIM_EXTD;
 
 	rv = chg_read8(chgnum, SM5803_REG_CHG_ILIM, &val);
 	if (rv)
 		return rv;
 
-	*input_current = SM5803_REG_TO_CURRENT(val & SM5803_CHG_ILIM_RAW);
+	val &= SM5803_CHG_ILIM_RAW;
+
+	if (chg_ilim_ext)
+		*input_current = val * SM5803_CURRENT_STEP_EXTD;
+	else
+		*input_current = val * SM5803_CURRENT_STEP;
+
 	return rv;
 }
 
