@@ -229,9 +229,47 @@ define ec-brexception
     break panic_assert_fail
 end
 
+set $scratchpad = (uint32_t *)(0x40002800+0x50)
+set $perph_clocks = (uint32_t *)(0x40023800+0x30)
+set $rcc_apb1 = (uint32_t *)(0x40023800 + 0x40)
+set $rcc_apb1_pwr_en = (1<<28)
+set $backup_domain_cr = (uint32_t *)(0x40023800+0x70)
+set $backup_domain_cr_rtc_en = 0x00008000
+set $backup_domain_cr_reset = 0x00010000
+
+set $pwr_cr = (uint32_t *)(0x40007000+0x00)
+set $pwr_cr_backup_en = 0x100
+
+define ec-enable-gpio-clock
+    set *$perph_clocks = 0xFFFFFFFF
+end
+
+# This works.
+define ec-enable-backup-domain
+    set *$rcc_apb1 |= $rcc_apb1_pwr_en
+    set *$pwr_cr |= $pwr_cr_backup_en
+    set *$backup_domain_cr |= $backup_domain_cr_rtc_en
+end
+
+# define ec-backup-domain-reset
+#     p /x *$backup_domain_cr
+#     set *$backup_domain_cr |= $backup_domain_cr_reset
+#     p /x *$backup_domain_cr
+# end
+
+define ec-scratchpad
+    p /x *$scratchpad
+end
+
+define ec-scratchpad-zero
+    ec-enable-backup-domain
+    set *$scratchpad = 0
+end
 
 define ec-print-debug-gpio
     set $cfg = get_gpio_config()
+    p $cfg.clocks.gpio_a_en
+    p $cfg.clocks.gpio_b_en
     p $cfg.port_a.mode.moder13
     p $cfg.port_a.mode.moder14
     p $cfg.port_a.mode.moder15
