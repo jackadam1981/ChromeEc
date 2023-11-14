@@ -116,8 +116,17 @@ static int hid_handler(const struct device *dev, const uint8_t *in, int in_size,
 	}
 
 	if (reg == USB_UPDATER_WRITE_REG) {
-		one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND,
-				   in + 1, in_size - 1);
+		--in_size;
+		++in;
+
+		while (in_size) {
+			int chunk_size = MIN(in_size, ONE_WIRE_UART_MAX_PAYLOAD_SIZE);
+
+			one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND,
+					   in, chunk_size);
+			in += chunk_size;
+			in_size -= chunk_size;
+		}
 		return 0;
 	}
 

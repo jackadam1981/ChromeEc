@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "consumer.h"
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"

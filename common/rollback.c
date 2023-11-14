@@ -23,15 +23,8 @@
 #include "util.h"
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
-#ifdef CONFIG_BORINGSSL_CRYPTO
-#include "openssl/mem.h"
-#define secure_clear(buffer, size) OPENSSL_cleanse(buffer, size)
-#elif defined(CONFIG_LIBCRYPTOC)
 #include "cryptoc/util.h"
 #define secure_clear(buffer, size) always_memset(buffer, 0, size)
-#else
-#error One of CONFIG_BORINGSSL_CRYPTO or CONFIG_LIBCRYPTOC should be defined
-#endif
 #endif
 
 /* Console output macros */

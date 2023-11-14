@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "ap_power/ap_power.h"
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
@@ -34,6 +35,7 @@ static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 	if (cmd == ROACH_CMD_UPDATER_COMMAND) {
 		struct i2c_target_data *data = touchpad->data;
 
+		ccprints("updater %d", length);
 		ring_buf_put(data->usb_update_queue, (void *)payload, length);
 	}
 }

@@ -90,6 +90,9 @@ static int check_padding(const uint8_t *data, unsigned int start,
 	return 1;
 }
 
+_Static_assert(CONFIG_RW_MEM_OFF == 0x40000);
+_Static_assert(CONFIG_EC_WRITABLE_STORAGE_OFF == 0x40000);
+
 int rwsig_check_signature(void)
 {
 	struct sha256_ctx ctx;
@@ -190,8 +193,11 @@ int rwsig_check_signature(void)
 	hash = SHA256_final(&ctx);
 
 	good = rsa_verify(key, sig, hash, rsa_workbuf);
-	if (!good)
+	if (!good) {
+		CPRINTS("?????");
+		CPRINTS("rwlen %d", rwlen);
 		goto out;
+	}
 
 #ifdef CONFIG_ROLLBACK
 	/*
@@ -281,7 +287,7 @@ void rwsig_task(void *u)
 	rwsig_status = RWSIG_VALID;
 
 	/* Jump to RW after a timeout */
-	evt = task_wait_event(CONFIG_RWSIG_JUMP_TIMEOUT);
+	evt = task_wait_event(CONFIG_RWSIG_JUMP_TIMEOUT * 2);
 
 	/* Jump now if we timed out, or were told to continue. */
 	if (evt == TASK_EVENT_TIMER || evt == TASK_EVENT_CONTINUE)
