@@ -70,6 +70,24 @@
       "parentUuid": "7406744b_30f9c906",
       "revId": "413914be652549cf736b7d717ffcd013d09894e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d64dfe5_4987b48c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-14T00:50:57Z",
+      "side": 1,
+      "message": "https://crrev.com/c/5019616? We overrode coverage+1 because the file has no tests, so it should be fine.",
+      "parentUuid": "e8119a17_22e80e2e",
+      "revId": "413914be652549cf736b7d717ffcd013d09894e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
