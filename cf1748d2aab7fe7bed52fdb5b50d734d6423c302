@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7588e1_17ca7368",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1521968
+      },
+      "writtenOn": "2023-11-14T02:21:10Z",
+      "side": 1,
+      "message": "Just curious, does that mean the future `get features` of gsctool will be used like `gsctool -aK \u003ckey\u003e`?\nIt seems not consistent with how we use gsctool currently.",
+      "revId": "cf1748d2aab7fe7bed52fdb5b50d734d6423c302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
