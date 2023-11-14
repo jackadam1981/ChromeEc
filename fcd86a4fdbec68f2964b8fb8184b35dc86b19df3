@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cef3a64_11216935",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-14T20:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ecca708d_3db2a922",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "fcd86a4fdbec68f2964b8fb8184b35dc86b19df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeeb3f34_046786b0",

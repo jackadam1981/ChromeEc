@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e677640_fab039d5",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-14T20:27:07Z",
+      "side": 1,
+      "message": "According to `board_led_set_color()`, this is an error.  And the EC firmware prints out an error to the console.\n\nSo we either need to update boards to eliminate these gaps, or we need to document which board states much have an LED policy defined and which states can be skipped.\n\nI suspect we have several boards with gaps that are not intended, which is what this script detects.  My recommendation is that you create CLs that are a parent to this CL to fix the projects with missing policies.  You\u0027ll want the program/project owner to review.",
+      "parentUuid": "45e0a118_8471d16a",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "6eb9e10e7f9289dde0bf31bc30140b9522993cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67fdd80_0f80a9d3",
         "filename": "zephyr/scripts/led_policy.py",
         "patchSetId": 2

@@ -34,6 +34,29 @@
       "parentUuid": "276cc3a0_1b10562f",
       "revId": "e41f86dc54c8f44a7309307f4ffde978d2d8eb3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b960a37_6419d119",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-14T20:27:07Z",
+      "side": 1,
+      "message": "You should output the board name as part of the error.  Because all the projects are built in parallel, it\u0027s difficult to tell from the CQ log which project is failing.  The last CQ run shows\n```\nERROR: No LED policy for battery range 100% to 100% for LED_PWRS_CHARGE, POWER_S0, \nERROR: No LED policy for battery range 100% to 100% for LED_PWRS_CHARGE, POWER_S0, \nERROR: No LED policy for battery range 100% to 100% for LED_PWRS_CHARGE, POWER_S3, \n```\n\nBut I can\u0027t tell which projects generated errors.\n\n`load_edt` returns the project directory name that you can use to print out the project/board name when you detect an error.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "e41f86dc54c8f44a7309307f4ffde978d2d8eb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
