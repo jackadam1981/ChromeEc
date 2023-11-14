@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ece6ec_c71d726a",
+        "filename": "common/test_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-14T19:26:27Z",
+      "side": 1,
+      "message": "How about we avoid the cast (here and in the other places) with:\n\n```\n\tconst struct test_multistep_state state \u003d {\n\t\t.status \u003d status,\n\t\t.step \u003d TEST_MULTISTEP_STEP_1\n\t};\n\ttest_multistep_reboot_with_state(state);\n```",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 4
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a625c4c7_a6c8a814",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-14T19:26:27Z",
+      "side": 1,
+      "message": "\"Multi\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c7c0c2_13dfcf30",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-14T19:26:27Z",
+      "side": 1,
+      "message": "Would \"_unused_space\" be clearer? Other places in EC tend to call it \"padding\". I don\u0027t have a strong preference (doesn\u0027t need to be changed); just commenting.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
