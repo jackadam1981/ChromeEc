@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc823cb9_c36363d4",
+        "filename": "common/test_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-14T23:24:24Z",
+      "side": 1,
+      "message": "Yeah, true. This usage of the NONE enum was a bit of a stretch, but removes some boiler plate.\n\nThe NONE name is more important to represent that there is actually no FAILED or PASSED status. I renamed it to DEFAULT to try to accommodate both use cases. If you still think this is not good enough, I can redesign this finish mechanism.",
+      "parentUuid": "91a63967_f6f9501a",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44ece6ec_c71d726a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-14T19:26:27Z",
       "side": 1,
       "message": "How about we avoid the cast (here and in the other places) with:\n\n```\n\tconst struct test_multistep_state state \u003d {\n\t\t.status \u003d status,\n\t\t.step \u003d TEST_MULTISTEP_STEP_1\n\t};\n\ttest_multistep_reboot_with_state(state);\n```",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 4
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18ba263_25199fdf",
+        "filename": "common/test_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-14T23:24:24Z",
+      "side": 1,
+      "message": "Sure, is this just an aesthetic thing?\n\nJust for info sake, this is actually a compound literal https://en.cppreference.com/w/c/language/compound_literal. We used these in a bunch of places in EC.",
+      "parentUuid": "44ece6ec_c71d726a",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b20017_4f9dbf34",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-14T23:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a625c4c7_a6c8a814",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c7c0c2_13dfcf30",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-14T19:26:27Z",
       "side": 1,
       "message": "Would \"_unused_space\" be clearer? Other places in EC tend to call it \"padding\". I don\u0027t have a strong preference (doesn\u0027t need to be changed); just commenting.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c8ebea_7a424784",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-14T23:24:24Z",
+      "side": 1,
+      "message": "Yep, that\u0027s fine. I just didn\u0027t want to call it reserved or padding, since I wanted people to know that we can use it for more things.\n\nI think might make sense to eventually add the `__test_error_count` into this space.",
+      "parentUuid": "86c7c0c2_13dfcf30",
       "range": {
         "startLine": 185,
         "startChar": 5,
