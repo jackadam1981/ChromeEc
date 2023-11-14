@@ -34,6 +34,24 @@
       "parentUuid": "a59877c9_4bbc41b3",
       "revId": "1f38a8cf1967e444fb247a31d8b89b67a960c423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76862e37_dd4b8cf1",
+        "filename": "chip/mt_scp/mt8195/video.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2023-11-14T02:44:02Z",
+      "side": 0,
+      "message": "Yes, it\u0027s a format issue. \nI\u0027ve corrected it in time, please review it.\nThanks.",
+      "parentUuid": "c96249da_43e3e551",
+      "revId": "1f38a8cf1967e444fb247a31d8b89b67a960c423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
