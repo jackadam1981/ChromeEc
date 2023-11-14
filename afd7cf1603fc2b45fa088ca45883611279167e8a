@@ -16,6 +16,24 @@
       "message": "We pin the hash directly in manifest in the factory branch to reduce the cherry-pick effort. e.g. https://crrev.com/i/6583719",
       "revId": "afd7cf1603fc2b45fa088ca45883611279167e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4648705a_8d816e45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509762
+      },
+      "writtenOn": "2023-11-14T05:39:10Z",
+      "side": 1,
+      "message": "Hi @chenghan@chromium.org\nDo we need this CL in the factory branch?\nI suppose this is only used in shimless RMA.",
+      "parentUuid": "e522bd27_8f3b7b23",
+      "revId": "afd7cf1603fc2b45fa088ca45883611279167e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
