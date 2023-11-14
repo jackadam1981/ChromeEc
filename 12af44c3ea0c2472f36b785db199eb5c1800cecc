@@ -22,6 +22,30 @@
       },
       "revId": "12af44c3ea0c2472f36b785db199eb5c1800cecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e29454_963d6699",
+        "filename": "extra/i2c_pseudo/samples/i2c-pseudo/.gitignore",
+        "patchSetId": 60
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-14T00:47:48Z",
+      "side": 1,
+      "message": "upstream seems to like it, see:\nhttps://source.chromium.org/search?q\u003dcase:yes%20file:%2F%5C.gitignore$\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fthird_party%2Fkernel%2Fupstream%2Fsamples%2F\n\nI\u0027m using this recent addition as a reference:\nhttps://chromium.googlesource.com/chromiumos/third_party/kernel/+/9e66fb52449538406cea43e9f3889c391350e76e\nhttps://chromium.googlesource.com/chromiumos/third_party/kernel/+/merge/continuous/chromeos-kernelupstream-6.6-rc6/samples/pfsm",
+      "parentUuid": "8f1d66c3_98e1a00b",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "12af44c3ea0c2472f36b785db199eb5c1800cecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
