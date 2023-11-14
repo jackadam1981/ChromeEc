@@ -34,6 +34,24 @@
       "parentUuid": "7081b6d0_d03af8b9",
       "revId": "413914be652549cf736b7d717ffcd013d09894e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7406744b_30f9c906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-11-14T00:45:48Z",
+      "side": 1,
+      "message": "https://crrev.com/c/5019616 is currently running CQ+2. I don\u0027t think you can do CQ+1 at the same time?",
+      "parentUuid": "55354558_c6106ea1",
+      "revId": "413914be652549cf736b7d717ffcd013d09894e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
