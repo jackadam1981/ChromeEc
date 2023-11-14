@@ -622,18 +622,16 @@ static int test_check_boot_down(void)
 
 void test_init(void)
 {
-	uint32_t state;
-
-	system_get_scratchpad(&state);
+	enum test_multistep_step step = test_multistep_get_step();
 
 	gpio_set_level(GPIO_POWER_BUTTON_L, 1);
 
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
+	if (step == TEST_MULTISTEP_STEP_2) {
 		/* Power-F3-ESC */
 		system_set_reset_flags(system_get_reset_flags() |
 				       EC_RESET_FLAG_RESET_PIN);
 		mock_key(KEYBOARD_ROW_ESC, KEYBOARD_COL_ESC, 1);
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_3)) {
+	} else if (step == TEST_MULTISTEP_STEP_3) {
 		/* Power-F3-Down */
 		system_set_reset_flags(system_get_reset_flags() |
 				       EC_RESET_FLAG_RESET_PIN);
@@ -668,9 +666,9 @@ static void run_test_step1(void)
 	RUN_TEST(power_button_mask_test);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_2);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_2);
 }
 
 static void run_test_step2(void)
@@ -683,9 +681,9 @@ static void run_test_step2(void)
 	RUN_TEST(test_check_boot_esc);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_3);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_3);
 }
 
 static void run_test_step3(void)
@@ -697,20 +695,24 @@ static void run_test_step3(void)
 
 	RUN_TEST(test_check_boot_down);
 
-	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
-	else
-		test_reboot_to_next_step(TEST_STATE_PASSED);
+	test_multistep_finish(TEST_MULTISTEP_STATUS_NONE);
 }
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1))
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
 		run_test_step1();
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2))
+		break;
+	case TEST_MULTISTEP_STEP_2:
 		run_test_step2();
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_3))
+		break;
+	case TEST_MULTISTEP_STEP_3:
 		run_test_step3();
+		break;
+	default:
+		__builtin_unreachable();
+	}
 }
 
 int test_task(void *data)

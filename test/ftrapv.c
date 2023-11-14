@@ -133,7 +133,7 @@ test_static int test_panic_data(void)
 
 test_static void run_test_step1(void)
 {
-	test_set_next_step(TEST_STATE_STEP_2);
+	test_multistep_set_step(TEST_MULTISTEP_STEP_2);
 	RUN_TEST(test_ftrapv_addition);
 }
 
@@ -142,14 +142,14 @@ test_static void run_test_step2(void)
 	RUN_TEST(test_panic_data);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_3);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_3);
 }
 
 test_static void run_test_step3(void)
 {
-	test_set_next_step(TEST_STATE_STEP_4);
+	test_multistep_set_step(TEST_MULTISTEP_STEP_4);
 	RUN_TEST(test_ftrapv_subtraction);
 }
 
@@ -158,14 +158,14 @@ test_static void run_test_step4(void)
 	RUN_TEST(test_panic_data);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_5);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_5);
 }
 
 test_static void run_test_step5(void)
 {
-	test_set_next_step(TEST_STATE_STEP_6);
+	test_multistep_set_step(TEST_MULTISTEP_STEP_6);
 	RUN_TEST(test_ftrapv_multiplication);
 }
 
@@ -174,14 +174,14 @@ test_static void run_test_step6(void)
 	RUN_TEST(test_panic_data);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_7);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_7);
 }
 
 test_static void run_test_step7(void)
 {
-	test_set_next_step(TEST_STATE_STEP_8);
+	test_multistep_set_step(TEST_MULTISTEP_STEP_8);
 	RUN_TEST(test_ftrapv_negation);
 }
 
@@ -190,9 +190,9 @@ test_static void run_test_step8(void)
 	RUN_TEST(test_panic_data);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_9);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_9);
 }
 
 test_static void run_test_step9(void)
@@ -202,10 +202,10 @@ test_static void run_test_step9(void)
 	 * clang, so skip the check.
 	 */
 #if 0
-	test_set_next_step(TEST_STATE_STEP_10);
+	test_multistep_set_step(TEST_MULTISTEP_STEP_10);
 	RUN_TEST(test_ftrapv_absolute_value);
 #else
-	test_reboot_to_next_step(TEST_STATE_STEP_10);
+	test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_10);
 #endif
 }
 
@@ -219,34 +219,44 @@ test_static void run_test_step10(void)
 	RUN_TEST(test_panic_data);
 #endif
 
-	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
-	else
-		test_reboot_to_next_step(TEST_STATE_PASSED);
+	test_multistep_finish(TEST_MULTISTEP_STATUS_NONE);
 }
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1)) {
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
 		run_test_step1();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
+		break;
+	case TEST_MULTISTEP_STEP_2:
 		run_test_step2();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_3)) {
+		break;
+	case TEST_MULTISTEP_STEP_3:
 		run_test_step3();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_4)) {
+		break;
+	case TEST_MULTISTEP_STEP_4:
 		run_test_step4();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_5)) {
+		break;
+	case TEST_MULTISTEP_STEP_5:
 		run_test_step5();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_6)) {
+		break;
+	case TEST_MULTISTEP_STEP_6:
 		run_test_step6();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_7)) {
+		break;
+	case TEST_MULTISTEP_STEP_7:
 		run_test_step7();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_8)) {
+		break;
+	case TEST_MULTISTEP_STEP_8:
 		run_test_step8();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_9)) {
+		break;
+	case TEST_MULTISTEP_STEP_9:
 		run_test_step9();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_10)) {
+		break;
+	case TEST_MULTISTEP_STEP_10:
 		run_test_step10();
+		break;
+	default:
+		__builtin_unreachable();
 	}
 }
 
