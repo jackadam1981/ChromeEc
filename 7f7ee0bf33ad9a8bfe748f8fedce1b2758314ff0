@@ -22,6 +22,30 @@
       },
       "revId": "7f7ee0bf33ad9a8bfe748f8fedce1b2758314ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d4e228_262dc512",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-11-14T10:13:32Z",
+      "side": 1,
+      "message": "The fingerprint_info structure describes the sensor parameters like vendor, image resolution, etc, not the FP MCU and comunication (CL line 61: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4866408/30 ).\nThe DTS has predefined names for things like irq-gpios, so they should/must be used in the device tree, but they do not have the same exact name in the code.\nIn the CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4866410/comment/7f1083e2_9bbfaa09/\nyou can see in first ans second line above your comment that Patryk is assigning the value of `irq-gpios` (converted to C/C++ name as `irq_gpios`) to the `interrupt` and `reset-gpios` to `reset_pin`.",
+      "parentUuid": "d34f4545_9b0df864",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "7f7ee0bf33ad9a8bfe748f8fedce1b2758314ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
