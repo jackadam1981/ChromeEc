@@ -61,9 +61,9 @@ test_static void run_test_step1(void)
 	RUN_TEST(test_tpm_seed_before_reboot);
 
 	if (test_get_error_count()) {
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	} else {
-		test_reboot_to_next_step(TEST_STATE_STEP_2);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_2);
 	}
 }
 
@@ -74,21 +74,23 @@ test_static void run_test_step2(void)
 
 	RUN_TEST(test_tpm_seed_after_reboot);
 
-	if (test_get_error_count()) {
-		test_reboot_to_next_step(TEST_STATE_FAILED);
-	} else {
-		test_reboot_to_next_step(TEST_STATE_PASSED);
+	test_multistep_finish(TEST_MULTISTEP_STATUS_DEFAULT);
+}
+
+__override void test_multistep_run_step(enum test_multistep_step step)
+{
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
+		run_test_step1();
+		break;
+	case TEST_MULTISTEP_STEP_2:
+		run_test_step2();
+		break;
+	default:
+		__builtin_unreachable();
 	}
 }
 
-void test_run_step(uint32_t state)
-{
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1)) {
-		run_test_step1();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
-		run_test_step2();
-	}
-}
 int task_test(void *unused)
 {
 	if (IS_ENABLED(SECTION_IS_RW))

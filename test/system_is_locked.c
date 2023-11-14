@@ -64,46 +64,49 @@ static void print_usage(void)
 	ccprintf("usage: runtest [wp_on|wp_off]\n");
 }
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
-	/*
-	 * Step 1: Check if reported write protect and system_is_locked()
-	 * output is correct. Since RO protection is not enabled at this point
-	 * we expect system_is_locked() to return 0. If write protect is
-	 * enabled then attempt to enable RO protection.
-	 */
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1)) {
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
+		/*
+		 * Step 1: Check if reported write protect and
+		 * system_is_locked() output is correct. Since RO protection is
+		 * not enabled at this point we expect system_is_locked() to
+		 * return 0. If write protect is enabled then attempt to enable
+		 * RO protection.
+		 */
 		RUN_TEST(test_write_protect);
 		RUN_TEST(test_system_is_locked);
 
 		if (test_get_error_count())
-			test_reboot_to_next_step(TEST_STATE_FAILED);
+			test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 		else if (write_protect_enabled) {
 			RUN_TEST(test_ensure_no_debugger_detected);
 			ccprintf("Request RO protection at boot\n");
 			cflush();
 			crec_flash_set_protect(EC_FLASH_PROTECT_RO_AT_BOOT,
 					       EC_FLASH_PROTECT_RO_AT_BOOT);
-			test_reboot_to_next_step(TEST_STATE_STEP_2);
+			test_multistep_reboot_to_next_step(
+				TEST_MULTISTEP_STEP_2);
 		} else {
 			/* Write protect is disabled, nothing else to do */
-			test_reboot_to_next_step(TEST_STATE_PASSED);
+			test_multistep_finish(TEST_MULTISTEP_STATUS_PASSED);
 		}
-	}
-	/*
-	 * Step 2: Check if hardware write protect is enabled, RO protection
-	 * is enabled and system_is_locked() returns 1.
-	 */
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
+		break;
+	case TEST_MULTISTEP_STEP_2:
+		/*
+		 * Step 2: Check if hardware write protect is enabled, RO
+		 * protection is enabled and system_is_locked() returns 1.
+		 */
 		/* Expect hardware write protect to be enabled */
 		write_protect_enabled = true;
 		RUN_TEST(test_write_protect);
 		RUN_TEST(test_ro_protection_enabled);
 		RUN_TEST(test_system_is_locked);
-		if (test_get_error_count())
-			test_reboot_to_next_step(TEST_STATE_FAILED);
-		else
-			test_reboot_to_next_step(TEST_STATE_PASSED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_DEFAULT);
+		break;
+	default:
+		__builtin_unreachable();
 	}
 }
 

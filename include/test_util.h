@@ -148,22 +148,45 @@ extern "C" {
 			}                                                  \
 	} while (0)
 
-/* Mutlistep test states */
-enum test_state_t {
-	TEST_STATE_STEP_1 = 0,
-	TEST_STATE_STEP_2,
-	TEST_STATE_STEP_3,
-	TEST_STATE_STEP_4,
-	TEST_STATE_STEP_5,
-	TEST_STATE_STEP_6,
-	TEST_STATE_STEP_7,
-	TEST_STATE_STEP_8,
-	TEST_STATE_STEP_9,
-	TEST_STATE_STEP_10,
-	TEST_STATE_PASSED,
-	TEST_STATE_FAILED,
+/* Multistep test status. */
+enum test_multistep_status {
+	TEST_MULTISTEP_STATUS_DEFAULT = 0,
+	TEST_MULTISTEP_STATUS_PASSED,
+	TEST_MULTISTEP_STATUS_FAILED,
 };
-#define TEST_STATE_MASK(x) (1 << (x))
+
+/* Multistep test step. */
+enum test_multistep_step {
+	TEST_MULTISTEP_STEP_1 = 0,
+	TEST_MULTISTEP_STEP_2,
+	TEST_MULTISTEP_STEP_3,
+	TEST_MULTISTEP_STEP_4,
+	TEST_MULTISTEP_STEP_5,
+	TEST_MULTISTEP_STEP_6,
+	TEST_MULTISTEP_STEP_7,
+	TEST_MULTISTEP_STEP_8,
+	TEST_MULTISTEP_STEP_9,
+	TEST_MULTISTEP_STEP_10,
+	TEST_MULTISTEP_STEP_11,
+	TEST_MULTISTEP_STEP_12,
+	TEST_MULTISTEP_STEP_13,
+	TEST_MULTISTEP_STEP_14,
+	TEST_MULTISTEP_STEP_15,
+	TEST_MULTISTEP_STEP_16,
+};
+
+/*
+ * Multistep test state.
+ * This must fit into the 16 bit scratchpad/backup-register space.
+ */
+struct test_multistep_state {
+	enum test_multistep_status status : 2;
+	enum test_multistep_step step : 4;
+	int _unused_space : 10;
+} __packed;
+
+/* The backup reg that saves the scratchpad is only 16 bits. */
+BUILD_ASSERT(sizeof(struct test_multistep_state) == 2);
 
 /* Hooks gcov_flush() for test coverage report generation */
 void register_test_end_hook(void);
@@ -268,6 +291,25 @@ const char *test_get_captured_console(void);
  */
 void emulator_flush(void);
 
+/* Get multistep test current status */
+enum test_multistep_status test_multistep_get_status(void);
+/* Get multistep test current step */
+enum test_multistep_step test_multistep_get_step(void);
+
+/* Set the next step */
+void test_multistep_set_step(enum test_multistep_step step);
+
+/* Set the next step and reboot */
+void test_multistep_reboot_to_next_step(enum test_multistep_step step);
+
+/*
+ * Finish a multistep test with PASSED or FAILED.
+ *
+ * If called with TEST_MULTISTEP_STATUS_DEFAULT, the final status will reflect
+ * the current test error count, from test_get_error_count().
+ */
+void test_multistep_finish(enum test_multistep_status status);
+
 /*
  * Entry point of multi-step test.
  *
@@ -279,27 +321,18 @@ void emulator_flush(void);
 void test_run_multistep(void);
 
 /*
- * A function that runs the test step specified in 'state'. This function
- * should be defined by all multi-step tests.
- *
- * @param state     TEST_STATE_MASK(x) indicating the step to run.
- */
-void test_run_step(uint32_t state);
-
-/* Get the current test state */
-uint32_t test_get_state(void);
-
-/*
  * Multistep test clean up. If a multi-step test has this function defined,
  * it will be called on test end. (i.e. when test passes or fails.)
  */
-void test_clean_up(void);
+__override_proto void test_multistep_clean_up(void);
 
-/* Set the next step */
-void test_set_next_step(enum test_state_t step);
-
-/* Set the next step and reboot */
-void test_reboot_to_next_step(enum test_state_t step);
+/*
+ * A function that runs the next test step. This function should be defined by
+ * all multi-step tests.
+ *
+ * @param step One of the steps from enum test_multistep_step.
+ */
+__override_proto void test_multistep_run_step(enum test_multistep_step step);
 
 struct test_i2c_read_string_dev {
 	/* I2C string read handler */

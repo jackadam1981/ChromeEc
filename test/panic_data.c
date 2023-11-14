@@ -79,47 +79,51 @@ test_static int test_panic_data_half(void)
 	return EC_SUCCESS;
 }
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
-	/* Step 1: Crash system to get panic data. */
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1)) {
-		test_set_next_step(TEST_STATE_STEP_2);
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
+		/* Step 1: Crash system to get panic data. */
+		test_multistep_set_step(TEST_MULTISTEP_STEP_2);
 		/* Crash the system */
 		ccprintf("Crash the system!\n");
 		cflush();
 		crash_system();
-	}
-	/* Step 2: Check panic data after crash and do soft reboot. */
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
+		break;
+	case TEST_MULTISTEP_STEP_2:
+		/* Step 2: Check panic data after crash and do soft reboot. */
 		RUN_TEST(test_panic_data);
 		if (!test_get_error_count()) {
-			test_set_next_step(TEST_STATE_STEP_3);
+			test_multistep_set_step(TEST_MULTISTEP_STEP_3);
 			/* Do a soft system reset */
 			ccprintf("Perform soft reboot\n");
 			cflush();
 			system_reset(0);
 		} else
-			test_reboot_to_next_step(TEST_STATE_FAILED);
-	}
-	/* Step 3: Check panic data after soft reboot and do hard reboot. */
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_3)) {
+			test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
+		break;
+	case TEST_MULTISTEP_STEP_3:
+		/*
+		 * Step 3: Check panic data after soft reboot and do hard
+		 * reboot.
+		 */
 		RUN_TEST(test_panic_data);
 		if (!test_get_error_count()) {
-			test_set_next_step(TEST_STATE_STEP_4);
+			test_multistep_set_step(TEST_MULTISTEP_STEP_4);
 			/* Do a hard system reset */
 			ccprintf("Perform hard reboot\n");
 			cflush();
 			system_reset(SYSTEM_RESET_HARD);
 		} else
-			test_reboot_to_next_step(TEST_STATE_FAILED);
-	}
-	/* Step 4: Check panic data after hard reboot */
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_4)) {
+			test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
+		break;
+	case TEST_MULTISTEP_STEP_4:
+		/* Step 4: Check panic data after hard reboot. */
 		RUN_TEST(test_panic_data_half);
-		if (!test_get_error_count())
-			test_reboot_to_next_step(TEST_STATE_PASSED);
-		else
-			test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_DEFAULT);
+		break;
+	default:
+		__builtin_unreachable();
 	}
 }
 

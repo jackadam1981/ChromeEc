@@ -42,7 +42,7 @@ test_static int test_panic_data(void)
 
 test_static void run_test_step1(void)
 {
-	test_set_next_step(TEST_STATE_STEP_2);
+	test_multistep_set_step(TEST_MULTISTEP_STEP_2);
 	RUN_TEST(test_abort);
 }
 
@@ -50,18 +50,20 @@ test_static void run_test_step2(void)
 {
 	RUN_TEST(test_panic_data);
 
-	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
-	else
-		test_reboot_to_next_step(TEST_STATE_PASSED);
+	test_multistep_finish(TEST_MULTISTEP_STATUS_DEFAULT);
 }
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1)) {
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
 		run_test_step1();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
+		break;
+	case TEST_MULTISTEP_STEP_2:
 		run_test_step2();
+		break;
+	default:
+		__builtin_unreachable();
 	}
 }
 
