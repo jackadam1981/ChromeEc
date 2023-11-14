@@ -16,6 +16,24 @@
       "message": "still has a format issue.\n\n```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:16:48: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        return VDEC_CAP_INNER_RACING | VDEC_CAP_MM21 | VDEC_CAP_IS_SUPPORT_10BIT |\nERROR:root:                                                      ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:16:76: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        return VDEC_CAP_INNER_RACING | VDEC_CAP_MM21 | VDEC_CAP_IS_SUPPORT_10BIT |\nERROR:root:                                                                                  ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:17:30: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:               VDEC_CAP_H264_SLICE | VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME |\nERROR:root:                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:17:72: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:               VDEC_CAP_H264_SLICE | VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME |\nERROR:root:                                                                              ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt8195/video.c:18:29: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:               VDEC_CAP_AV1_FRAME | VDEC_CAP_HEVC_SLICE;\nERROR:root:                                   ^\n```",
       "revId": "51468ae467fc1e1d117b526659642a60bd77c1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a589a44e_24bed218",
+        "filename": "chip/mt_scp/mt8195/video.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2023-11-14T19:52:14Z",
+      "side": 1,
+      "message": "This cmd should be able to format it correctly.\n```\nclang-format --style\u003dChromium -i \u003cFILE_NAME\u003e\n```",
+      "parentUuid": "558ee562_96c75ef4",
+      "revId": "51468ae467fc1e1d117b526659642a60bd77c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
