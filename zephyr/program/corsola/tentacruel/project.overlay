@@ -32,6 +32,17 @@
 		bma4xx-int = &lid_accel;
 	};
 
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		battery {
+			i2c-port = <&i2c4>;
+		};
+		i2c_usb_c1: usb-c1 {
+			i2c-port = <&i2c1>;
+		};
+	};
+
 	named-gpios {
 		/delete-node/ usb_c0_ppc_bc12_int_odl;
 
@@ -455,7 +466,7 @@
 	};
 };
 
-&i2c4 {
+&i2c1 {
 	/delete-node/ tusb1064-mux-1@44;
 
 	ps8743_mux_1: ps8743-mux-1@10 {
