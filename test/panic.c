@@ -71,19 +71,11 @@ test_static int test_exception_panic_registers(void)
 	__builtin_unreachable();
 }
 
-test_static void run_test_step1(void)
-{
-	ccprintf("Step 1: Panic\n");
-	test_multistep_set_step(TEST_MULTISTEP_STEP_2);
-	RUN_TEST(test_exception_panic_registers);
-}
-
-test_static int run_test_step2(void)
+test_static int test_read_panic_data(void)
 {
 	struct panic_data *data;
 	int i;
 
-	ccprintf("Step 2: Read panic data\n");
 	data = panic_get_data();
 	for (i = 0; i < ARRAY_SIZE(EXPECTED); i++) {
 		TEST_EQ(EXPECTED[i].val, data->cm.regs[EXPECTED[i].index],
@@ -95,18 +87,16 @@ test_static int run_test_step2(void)
 
 __override void test_multistep_run_step(enum test_multistep_step step)
 {
-	int ret;
-
 	switch (step) {
 	case TEST_MULTISTEP_STEP_1:
-		run_test_step1();
+		ccprintf("Step 1: Panic\n");
+		test_multistep_set_step(TEST_MULTISTEP_STEP_2);
+		RUN_TEST(test_exception_panic_registers);
 		break;
 	case TEST_MULTISTEP_STEP_2:
-		ret = run_test_step2();
-		if (ret == EC_SUCCESS)
-			test_multistep_finish(TEST_MULTISTEP_STATUS_PASSED);
-		else
-			test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
+		ccprintf("Step 2: Read panic data\n");
+		RUN_TEST(test_read_panic_data);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_NONE);
 		break;
 	default:
 		__builtin_unreachable();
