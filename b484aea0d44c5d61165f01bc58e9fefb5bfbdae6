@@ -152,6 +152,24 @@
       "parentUuid": "d1ddc0f6_1f251c75",
       "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a38630_1ccb9881",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-14T17:18:45Z",
+      "side": 1,
+      "message": "Let\u0027s see Keith\u0027s opinion.\n\nI am fine with the change. This is a minor change and can be done in a separate CL.",
+      "parentUuid": "2ed06490_092a3a9d",
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
