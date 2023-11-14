@@ -134,6 +134,24 @@
       "parentUuid": "d1ddc0f6_1f251c75",
       "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed06490_092a3a9d",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-11-14T17:10:57Z",
+      "side": 1,
+      "message": "I\u0027m in favor of keeping the string as 31-bytes for now. As you noted, date/time is included in the build string so I don\u0027t think we\u0027re losing much by removing it from the version string.",
+      "parentUuid": "d1ddc0f6_1f251c75",
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
