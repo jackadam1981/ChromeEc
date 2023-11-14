@@ -34,6 +34,24 @@
       "parentUuid": "e522bd27_8f3b7b23",
       "revId": "afd7cf1603fc2b45fa088ca45883611279167e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e1d7e63_931cba2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-14T14:48:56Z",
+      "side": 1,
+      "message": "If that is the case, then we should pin `084b599d65f93311a758100a40497914c93e7957` in the manifest. Do other factory branches work this way or just Nissa?",
+      "parentUuid": "4648705a_8d816e45",
+      "revId": "afd7cf1603fc2b45fa088ca45883611279167e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
