@@ -46,6 +46,30 @@
       },
       "revId": "7f7ee0bf33ad9a8bfe748f8fedce1b2758314ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4577db67_f3261be7",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-14T15:38:20Z",
+      "side": 1,
+      "message": "\u003e I believe the struct fingerprint_info info; is a representation of this DTS config.\n\nIt\u0027s not. `struct fingerprint_info` was introduced to pass information about sensor (including number of bad pixels, errors, vendor information, etc.) to upper layers e.g. biod (through appropriate host command). Since almost all fields in `struct fingerprint_info` don\u0027t change value during runtime, it would be good to keep these data in flash (that\u0027s why it\u0027s in `struct fpc1025_cfg`).\n\nEvery driver in Zephyr can have one structure with immutable data (`struct fpc1025_cfg`) and mutable data (`struct fpc1025_data`).\n\nIn most cases, immutable structure contains configuration data, like reference to SPI controller and GPIO pins. On the other side, mutable structure contains all data that changes during runtime e.g. fingerprint sensor errors.\n\nThere is no such thing as representation of DTS. Actually, DTS is parsed to big file with C preprocessor definitions and it\u0027s the programmer responsibility to save all necessary data.",
+      "parentUuid": "b1d4e228_262dc512",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "7f7ee0bf33ad9a8bfe748f8fedce1b2758314ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
