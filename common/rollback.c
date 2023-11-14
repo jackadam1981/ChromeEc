@@ -30,7 +30,14 @@
 #include "cryptoc/util.h"
 #define secure_clear(buffer, size) always_memset(buffer, 0, size)
 #else
-#error One of CONFIG_BORINGSSL_CRYPTO or CONFIG_LIBCRYPTOC should be defined
+static void secure_clear(void *buffer, size_t size)
+{
+	volatile char *ptr = buffer;
+
+	while (size--) {
+		*ptr++ = 0;
+	}
+}
 #endif
 #endif
 
