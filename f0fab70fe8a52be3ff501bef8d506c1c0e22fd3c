@@ -22,6 +22,30 @@
       },
       "revId": "f0fab70fe8a52be3ff501bef8d506c1c0e22fd3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8dc459_89a10f33",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-14T15:40:11Z",
+      "side": 1,
+      "message": "Responded in https://crrev.com/c/5006897",
+      "parentUuid": "7f1083e2_9bbfaa09",
+      "range": {
+        "startLine": 393,
+        "startChar": 3,
+        "endLine": 393,
+        "endChar": 7
+      },
+      "revId": "f0fab70fe8a52be3ff501bef8d506c1c0e22fd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
