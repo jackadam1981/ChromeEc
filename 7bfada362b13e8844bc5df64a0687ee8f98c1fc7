@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91a63967_f6f9501a",
+        "filename": "common/test_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-14T19:30:59Z",
+      "side": 1,
+      "message": "The `NONE` name is a bit confusing since it changes the state underneath the hood. Maybe `TEST_MULTISTEP_STATUS_AUTO` or something along those lines?",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44ece6ec_c71d726a",
         "filename": "common/test_util.c",
         "patchSetId": 2
