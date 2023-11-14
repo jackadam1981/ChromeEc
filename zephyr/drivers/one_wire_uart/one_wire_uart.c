@@ -87,7 +87,6 @@ int one_wire_uart_send(const struct device *dev, uint8_t cmd,
 	msg.header.checksum = checksum(&msg);
 
 	ret = k_msgq_put(tx_queue, &msg, K_NO_WAIT);
-
 	if (!ret) {
 		uart_irq_tx_enable(bus);
 	}
@@ -168,6 +167,21 @@ DECLARE_DEFERRED(wake_tx);
 
 /* retry every 2.5ms */
 #define RETRY_INTERVAL (5 * MSEC / 2)
+
+int one_wire_uart_stat(int argc, const char **argv)
+{
+	const static struct device *dev =
+		DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
+	struct one_wire_uart_data *data = dev->data;
+
+	ccprints("tx_queue: %d", k_msgq_num_used_get(data->tx_queue));
+	ccprints("tx_ring_buf: %d", ring_buf_size_get(data->tx_ring_buf));
+	ccprints("msg_id: %d", data->msg_id);
+	ccprints("ack: %d", data->ack);
+	ccprints("msg_pending: %d", data->msg_pending);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(dbg, one_wire_uart_stat, "", "");
 
 test_export_static void load_next_message(const struct device *dev)
 {
@@ -314,10 +328,10 @@ test_export_static void process_rx_fifo(const struct device *dev)
 
 				if (msg.header.reset) {
 					one_wire_uart_reset(dev);
+				} else {
+					k_msgq_put(rx_queue, &msg, K_NO_WAIT);
+					hook_call_deferred(&process_packet_data, 0);
 				}
-
-				k_msgq_put(rx_queue, &msg, K_NO_WAIT);
-				hook_call_deferred(&process_packet_data, 0);
 
 				gen_ack_response(dev, &ack_resp, msg_id);
 				ring_buf_put(tx_ring_buf, (uint8_t *)&ack_resp,
@@ -384,6 +398,7 @@ void one_wire_uart_reset(const struct device *dev)
 	data->ack = -1;
 	data->msg_pending = false;
 	data->msg_id = 0;
+	data->last_send_time = get_time();
 
 	k_msgq_purge(data->tx_queue);
 	k_msgq_purge(data->rx_queue);
