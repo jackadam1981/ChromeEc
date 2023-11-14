@@ -16,6 +16,24 @@
       "message": "Just curious, does that mean the future `get features` of gsctool will be used like `gsctool -aK \u003ckey\u003e`?\nIt seems not consistent with how we use gsctool currently.",
       "revId": "cf1748d2aab7fe7bed52fdb5b50d734d6423c302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fde1ca4_d4d684ee",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-14T14:58:05Z",
+      "side": 1,
+      "message": "We are running out of short command letters codes (e.g. this command is `K`) on `gsctool`, so we need a place to be able to add future queries. The `get_value` is going to be the place where we add future queries if needed",
+      "parentUuid": "8a7588e1_17ca7368",
+      "revId": "cf1748d2aab7fe7bed52fdb5b50d734d6423c302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
