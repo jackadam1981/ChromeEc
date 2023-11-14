@@ -11,6 +11,11 @@ zephyr_library_sources(
 		"src/one_wire.c"
 )
 
+zephyr_library_sources(
+		"../../../../common/curve25519.c"
+		"../../../../common/curve25519-generic.c"
+)
+
 zephyr_include_directories(
 		"include"
 )
