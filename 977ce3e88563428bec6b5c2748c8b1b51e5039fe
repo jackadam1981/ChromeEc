@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6092ecad_2caa0700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-14T00:16:44Z",
+      "side": 1,
+      "message": "It seems that even with the sign-changes aside, the renaming of include files does not pass compare_build.sh.  There are some offsets and things that change.\n\nI can still break this refactoring into multiple smaller CLs, if you want.",
+      "parentUuid": "3359f7a1_27bed78c",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "977ce3e88563428bec6b5c2748c8b1b51e5039fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50f54285_ac46afd4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 34
