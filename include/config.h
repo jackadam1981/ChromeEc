@@ -5820,6 +5820,7 @@
 
 /* Add support for pairing over the USB update interface. */
 #undef CONFIG_USB_PAIRING
+#define CONFIG_USB_PAIRING
 
 /* Add support for reading UART buffer from USB update interface. */
 #undef CONFIG_USB_CONSOLE_READ
