@@ -57,6 +57,30 @@
       },
       "revId": "c76ba0dc7820704939754718087bcd11d898245c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2233d25_082fa4bd",
+        "filename": "zephyr/dts/bindings/fingerprint/fpc,fpc1025.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-14T15:11:03Z",
+      "side": 1,
+      "message": "Looks like it\u0027s possible to add vendor, without adding any nodes to DTS. Created https://github.com/zephyrproject-rtos/zephyr/pull/65176 which adds `fpc` to the list of vendors.",
+      "parentUuid": "d91d5c84_203aa617",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "c76ba0dc7820704939754718087bcd11d898245c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
