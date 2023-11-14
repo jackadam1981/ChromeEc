@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c5562f_c324ab77",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-14T00:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74616519_e9ded679",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d9906f0_c1f0c3ee",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3297c89a_20985ed5",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-14T00:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9906f0_c1f0c3ee",
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f48214bf_b3078d69",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-11-13T20:43:44Z",
       "side": 1,
       "message": "Can we get rid of the date and time for developer builds? Since we\u0027re not increasing the length of the version string, this will get truncated. The build string already contains the build date and time for developers.",
+      "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ddc0f6_1f251c75",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-14T00:09:12Z",
+      "side": 1,
+      "message": "This is a good question.\n\nMy opinion is the constant `build_info` also contains the full string of `VERSION` from the generated `ec_version.h`. The full version can be checked in some alternative way, just not so straightforward in the RW_FWID. A dev build is probably fine.\n\nA follow-up task is to repurpose the `image_data.cros_fwid[32]` as an extension of `image_data.version[32]`. So the `version` console command will show a 63-character string.\n\nOr people have other ideas?",
+      "parentUuid": "f48214bf_b3078d69",
       "revId": "b484aea0d44c5d61165f01bc58e9fefb5bfbdae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
