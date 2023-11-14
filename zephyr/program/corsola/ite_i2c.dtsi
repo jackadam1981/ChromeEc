@@ -72,15 +72,18 @@
 	};
 };
 
-&i2c1 {
+&i2c4 {
 	/* EC_I2C_BATTERY */
 	label = "I2C_BATTERY";
 	status = "okay";
-	clock-frequency = <50000>;
+	clock-frequency = <I2C_BITRATE_STANDARD>;
 	pinctrl-0 = <&i2c1_clk_gpc1_default
 		     &i2c1_data_gpc2_default>;
 	pinctrl-names = "default";
-	fifo-enable;
+	prescale-scl-low = <1>;
+	scl-gpios = <&gpioc 1 0>;
+	sda-gpios = <&gpioc 2 0>;
+	channel-switch-sel = <I2C_CHB_LOCATE>;
 };
 
 &i2c2 {
@@ -120,7 +123,7 @@
 	prescale-scl-low = <1>;
 };
 
-&i2c4 {
+&i2c1 {
 	/* EC_I2C_USB_C1 */
 	label = "I2C_USB_C1";
 	status = "okay";
@@ -128,7 +131,10 @@
 	pinctrl-0 = <&i2c4_clk_gpe0_default
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
-	prescale-scl-low = <1>;
+	scl-gpios = <&gpioe 0 0>;
+	sda-gpios = <&gpioe 7 0>;
+	channel-switch-sel = <I2C_CHE_LOCATE>;
+	fifo-enable;
 
 	ppc_port1: syv682x@40 {
 		compatible = "silergy,syv682x";
