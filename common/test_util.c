@@ -121,55 +121,114 @@ int test_get_error_count(void)
 	return __test_error_count;
 }
 
-uint32_t test_get_state(void)
+static struct test_multistep_state test_multistep_get_state(void)
 {
 	uint32_t state;
+	uint16_t state_16bit;
 
 	system_get_scratchpad(&state);
-	return state;
+	state_16bit = (uint16_t)state;
+
+	return *(struct test_multistep_state *)(&state_16bit);
 }
 
-test_mockable void test_clean_up(void)
+static void test_multistep_set_state(struct test_multistep_state state)
 {
+	uint16_t state_16bit;
+
+	*(struct test_multistep_state *)(&state_16bit) = state;
+	system_set_scratchpad((uint32_t)state_16bit);
 }
 
-void test_set_next_step(enum test_state_t step)
+static void test_multistep_reset_state(void)
 {
-	system_set_scratchpad(TEST_STATE_MASK(step));
+	test_multistep_set_state((struct test_multistep_state){ 0 });
 }
 
-void test_reboot_to_next_step(enum test_state_t step)
+static void test_multistep_reboot_with_state(struct test_multistep_state state)
 {
-	ccprintf("Rebooting to next test step...\n");
-	cflush();
-	test_set_next_step(step);
+	test_multistep_set_state(state);
 	system_reset(SYSTEM_RESET_HARD);
 }
 
-test_mockable void test_run_step(uint32_t state)
+enum test_multistep_status test_multistep_get_status(void)
 {
+	return test_multistep_get_state().status;
+}
+
+enum test_multistep_step test_multistep_get_step(void)
+{
+	return test_multistep_get_state().step;
+}
+
+void test_multistep_set_step(enum test_multistep_step step)
+{
+	test_multistep_set_state((struct test_multistep_state){
+		.status = TEST_MULTISTEP_STATUS_DEFAULT,
+		.step = step,
+	});
+}
+
+void test_multistep_reboot_to_next_step(enum test_multistep_step step)
+{
+	ccprintf("# TEST MULTISTEP: Rebooting to step %d (err count = %d).\n",
+		 step + 1, test_get_error_count());
+	cflush();
+	test_multistep_reboot_with_state((struct test_multistep_state){
+		.status = TEST_MULTISTEP_STATUS_DEFAULT,
+		.step = step,
+	});
+}
+
+void test_multistep_finish_with_status(enum test_multistep_status status)
+{
+	if (status == TEST_MULTISTEP_STATUS_DEFAULT) {
+		status = test_get_error_count() == 0 ?
+				 TEST_MULTISTEP_STATUS_PASSED :
+				 TEST_MULTISTEP_STATUS_FAILED;
+	}
+	ccprintf("# TEST MULTISTEP: Finishing with status %s.\n",
+		 (status == TEST_MULTISTEP_STATUS_PASSED) ? "PASSED" :
+							    "FAILED");
+	cflush();
+	test_multistep_reboot_with_state((struct test_multistep_state){
+		.status = status,
+		.step = TEST_MULTISTEP_STEP_1,
+	});
+}
+
+__overridable void test_multistep_clean_up(void)
+{
+}
+
+__overridable void test_multistep_run_step(enum test_multistep_step step)
+{
+	ccprintf("# TEST MULTISTEP: Ran unimplemented %s.\n", __func__);
+	cflush();
 }
 
 void test_run_multistep(void)
 {
-	uint32_t state = test_get_state();
+	struct test_multistep_state state = test_multistep_get_state();
 
-	if (state & TEST_STATE_MASK(TEST_STATE_PASSED)) {
-		test_clean_up();
-		system_set_scratchpad(0);
+	if (state.status == TEST_MULTISTEP_STATUS_PASSED) {
+		test_multistep_clean_up();
+		test_multistep_reset_state();
 		test_pass();
-	} else if (state & TEST_STATE_MASK(TEST_STATE_FAILED)) {
-		test_clean_up();
-		system_set_scratchpad(0);
+		return;
+	} else if (state.status == TEST_MULTISTEP_STATUS_FAILED) {
+		test_multistep_clean_up();
+		test_multistep_reset_state();
 		test_fail();
+		return;
 	}
 
-	if (state & TEST_STATE_STEP_1 || state == 0) {
+	if (state.step == TEST_MULTISTEP_STEP_1)
 		task_wait_event(-1); /* Wait for run_test() */
-		test_run_step(TEST_STATE_MASK(TEST_STATE_STEP_1));
-	} else {
-		test_run_step(state);
-	}
+
+	ccprintf("# TEST MULTISTEP: Running step %d.\n", state.step + 1);
+	cflush();
+	test_multistep_run_step(state.step);
 }
 
 #ifdef HAS_TASK_HOSTCMD

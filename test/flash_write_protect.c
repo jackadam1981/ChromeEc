@@ -62,9 +62,9 @@ test_static void run_test_step1(void)
 	RUN_TEST(test_flash_write_protect_enable);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else
-		test_reboot_to_next_step(TEST_STATE_STEP_2);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_2);
 }
 
 test_static void run_test_step2(void)
@@ -73,11 +73,11 @@ test_static void run_test_step2(void)
 	RUN_TEST(test_flash_write_protect_disable);
 
 	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
 	else if (IS_ENABLED(CONFIG_EEPROM_CBI_WP))
-		test_reboot_to_next_step(TEST_STATE_STEP_3);
+		test_multistep_reboot_to_next_step(TEST_MULTISTEP_STEP_3);
 	else
-		test_reboot_to_next_step(TEST_STATE_PASSED);
+		test_multistep_finish(TEST_MULTISTEP_STATUS_PASSED);
 }
 
 #ifdef CONFIG_EEPROM_CBI_WP
@@ -105,23 +105,27 @@ test_static void run_test_step3(void)
 	ccprintf("Step 3: Flash write protect test\n");
 	RUN_TEST(test_cbi_wb_asserted_immediately);
 
-	if (test_get_error_count())
-		test_reboot_to_next_step(TEST_STATE_FAILED);
-	else
-		test_reboot_to_next_step(TEST_STATE_PASSED);
+	test_multistep_finish(TEST_MULTISTEP_STATUS_DEFAULT);
 }
 #endif /* CONFIG_EEPROM_CBI_WP */
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1))
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
 		run_test_step1();
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2))
+		break;
+	case TEST_MULTISTEP_STEP_2:
 		run_test_step2();
+		break;
 #ifdef CONFIG_EEPROM_CBI_WP
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_3))
+	case TEST_MULTISTEP_STEP_3:
 		run_test_step3();
+		break;
 #endif /* CONFIG_EEPROM_CBI_WP */
+	default:
+		__builtin_unreachable();
+	}
 }
 
 int task_test(void *unused)

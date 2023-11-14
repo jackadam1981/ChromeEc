@@ -74,7 +74,7 @@ test_static int test_exception_panic_registers(void)
 test_static void run_test_step1(void)
 {
 	ccprintf("Step 1: Panic\n");
-	system_set_scratchpad(TEST_STATE_MASK(TEST_STATE_STEP_2));
+	test_multistep_set_step(TEST_MULTISTEP_STEP_2);
 	RUN_TEST(test_exception_panic_registers);
 }
 
@@ -93,18 +93,23 @@ test_static int run_test_step2(void)
 	return EC_SUCCESS;
 }
 
-void test_run_step(uint32_t state)
+__override void test_multistep_run_step(enum test_multistep_step step)
 {
 	int ret;
 
-	if (state & TEST_STATE_MASK(TEST_STATE_STEP_1))
+	switch (step) {
+	case TEST_MULTISTEP_STEP_1:
 		run_test_step1();
-	else if (state & TEST_STATE_MASK(TEST_STATE_STEP_2)) {
+		break;
+	case TEST_MULTISTEP_STEP_2:
 		ret = run_test_step2();
 		if (ret == EC_SUCCESS)
-			test_reboot_to_next_step(TEST_STATE_PASSED);
+			test_multistep_finish(TEST_MULTISTEP_STATUS_PASSED);
 		else
-			test_reboot_to_next_step(TEST_STATE_FAILED);
+			test_multistep_finish(TEST_MULTISTEP_STATUS_FAILED);
+		break;
+	default:
+		__builtin_unreachable();
 	}
 }
 
