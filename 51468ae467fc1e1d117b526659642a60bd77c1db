@@ -34,6 +34,24 @@
       "parentUuid": "558ee562_96c75ef4",
       "revId": "51468ae467fc1e1d117b526659642a60bd77c1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f09e99_67e5e599",
+        "filename": "chip/mt_scp/mt8195/video.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2023-11-14T19:59:53Z",
+      "side": 1,
+      "message": "Well, this is formatted result I got, but looks like it is probably using/requiring different style here. \n\n```\nuint32_t video_get_dec_capability(void) {\n  return VDEC_CAP_INNER_RACING | VDEC_CAP_MM21 | VDEC_CAP_IS_SUPPORT_10BIT |\n         VDEC_CAP_H264_SLICE | VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME |\n         VDEC_CAP_AV1_FRAME | VDEC_CAP_HEVC_SLICE;\n}\n```",
+      "parentUuid": "a589a44e_24bed218",
+      "revId": "51468ae467fc1e1d117b526659642a60bd77c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
