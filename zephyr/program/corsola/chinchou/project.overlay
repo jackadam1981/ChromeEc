@@ -124,6 +124,9 @@
 		pg_pp4200_s5_od: pg-pp4200-s5-od {
 			gpios = <&gpioc 5 GPIO_INPUT>;
 		};
+		en_pp5000_z2: en_pp5000_z2 {
+			gpios = <&gpioc 6 (GPIO_OUTPUT_HIGH | GPIO_ACTIVE_LOW)>;
+		};
 	};
 
 	unused-pins {
