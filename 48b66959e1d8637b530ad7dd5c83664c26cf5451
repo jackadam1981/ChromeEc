@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bd7b77_236556b9",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T00:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea6fdff_cfaa969b",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "48b66959e1d8637b530ad7dd5c83664c26cf5451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f01005de_c3af4d13",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4dba27_e31523c1",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T00:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f01005de_c3af4d13",
+      "range": {
+        "startLine": 307,
+        "startChar": 25,
+        "endLine": 307,
+        "endChar": 38
+      },
+      "revId": "48b66959e1d8637b530ad7dd5c83664c26cf5451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0157c9ae_e6d0462a",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-11-14T01:05:29Z",
       "side": 1,
       "message": "Add the next action to fix it, like \"Please add the address value to SENSOR_I2C_ADDRESSES\".",
+      "range": {
+        "startLine": 319,
+        "startChar": 64,
+        "endLine": 319,
+        "endChar": 65
+      },
+      "revId": "48b66959e1d8637b530ad7dd5c83664c26cf5451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d172b342_0e4928c0",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T00:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0157c9ae_e6d0462a",
       "range": {
         "startLine": 319,
         "startChar": 64,
