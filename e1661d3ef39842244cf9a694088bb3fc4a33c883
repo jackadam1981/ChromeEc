@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abaa8d87_820177e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-15T18:37:14Z",
+      "side": 1,
+      "message": "respond",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1c4f28_a0802430",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-15T18:37:14Z",
+      "side": 1,
+      "message": "I think this naming is confuse with what value you pass in. Can you make the value and name match?\n\nOr add a comment saying IC2 is i 1-based but index is 0-based",
+      "range": {
+        "startLine": 597,
+        "startChar": 12,
+        "endLine": 597,
+        "endChar": 27
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0f43ef_7d910a9a",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-15T18:37:14Z",
+      "side": 1,
+      "message": "why are the CR1 and OAR1 register set in different order for host and device? Is that important?",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c561c75c_58b606be",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-15T18:37:14Z",
+      "side": 1,
+      "message": "check that `e` is not an error after this line?",
+      "range": {
+        "startLine": 779,
+        "startChar": 2,
+        "endLine": 779,
+        "endChar": 36
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
