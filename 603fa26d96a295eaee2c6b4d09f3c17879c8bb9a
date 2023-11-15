@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe9635a_45f8b9f9",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T21:41:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7360662d_fac406e9",
+      "range": {
+        "startLine": 306,
+        "startChar": 40,
+        "endLine": 306,
+        "endChar": 76
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f71fa4_10bfba4c",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-11-15T01:45:02Z",
       "side": 1,
       "message": "This seems non-trivial as \"clear\" is not a component type. How many compatibles like this? Better to narrow it down to the type \"als\" and do the rename inside the `compatiable_name_parser()`.",
+      "range": {
+        "startLine": 319,
+        "startChar": 41,
+        "endLine": 319,
+        "endChar": 48
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4dc10c_c9a91ccd",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T21:41:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f71fa4_10bfba4c",
       "range": {
         "startLine": 319,
         "startChar": 41,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0292641b_02abab38",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T21:41:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37bed686_44c7b413",
+      "range": {
+        "startLine": 321,
+        "startChar": 26,
+        "endLine": 321,
+        "endChar": 46
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9be4b109_7d3d19ba",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84720c0e_ecb66112",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T21:41:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9be4b109_7d3d19ba",
+      "range": {
+        "startLine": 323,
+        "startChar": 26,
+        "endLine": 323,
+        "endChar": 43
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c30b483e_ad8e58c0",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-11-15T01:45:02Z",
       "side": 1,
       "message": "Move the rename inside the `compatible_name_parser()`.",
+      "range": {
+        "startLine": 326,
+        "startChar": 41,
+        "endLine": 326,
+        "endChar": 48
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780ce9f8_cf5f15a5",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-15T21:41:37Z",
+      "side": 1,
+      "message": "I want to allow `compatible_name_parser()` to accept inputs on what to parse on the off chance that the suffix for some compatible just happen to overlap with a type identifier for a unrelated compatible, but I\u0027ve made it take a list as input and cleaned up the code a bit.",
+      "parentUuid": "c30b483e_ad8e58c0",
       "range": {
         "startLine": 326,
         "startChar": 41,
