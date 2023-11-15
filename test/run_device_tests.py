@@ -59,6 +59,29 @@ import sys
 import time
 from typing import BinaryIO, Callable, Dict, List, Optional, Tuple
 
+# Renode prerequisites
+from pyrenode3 import RPath
+from pyrenode3.wrappers import Analyzer
+from pyrenode3.wrappers import Emulation
+from pyrenode3.wrappers import Machine
+from pyrenode3.wrappers import Monitor
+from pyrenode3.wrappers import TerminalTester
+
+from Antmicro.Renode.Analyzers import LoggingUartAnalyzer
+from Antmicro.Renode.Core import EmulationManager
+from Antmicro.Renode.Peripherals.UART import UARTBackend
+from Antmicro.Renode.Time import TimeInterval
+
+# Block Renode UART analyzers from popping-up
+def set_analyzers():
+    Emulation().BackendManager.SetPreferredAnalyzer(
+        UARTBackend, LoggingUartAnalyzer
+    )
+
+
+set_analyzers()
+EmulationManager.Instance.EmulationChanged += set_analyzers
+
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
 from contextlib2 import ExitStack
@@ -76,6 +99,8 @@ ALL_TESTS_FAILED_REGEX = re.compile(r"Fail! \(\d+ tests\)\r\n")
 
 SINGLE_CHECK_PASSED_REGEX = re.compile(r"Pass: .*")
 SINGLE_CHECK_FAILED_REGEX = re.compile(r".*failed:.*")
+
+RENODE_TEST_RESULT_REGEX = "(Pass!|Fail! \(\d+ tests\)|Pass: .*|.*failed: .*)"
 
 RW_IMAGE_BOOTED_REGEX = re.compile(r"^\[Image: RW.*")
 
@@ -178,6 +203,8 @@ class BoardConfig:
     name: str
     servo_uart_name: str
     servo_power_enable: str
+    renode_uart_name: str
+    renode_hw_write_protect_name: str
     rollback_region0_regex: object
     rollback_region1_regex: object
     mpu_regex: object
@@ -210,6 +237,7 @@ class TestConfig:
     passed: bool = field(init=False, default=False)
     num_passes: int = field(init=False, default=0)
     num_fails: int = field(init=False, default=0)
+    skip_in_renode: bool = False
 
     # The callbacks below are called before and after a test is executed and
     # may be used for additional test setup, post test activities, or other tasks
@@ -268,6 +296,7 @@ class AllTests:
                 finish_regexes=[RW_IMAGE_BOOTED_REGEX],
                 imagetype_to_use=ImageType.RW,
                 apptype_to_use=ApplicationType.PRODUCTION,
+                skip_in_renode=True,
             ),
             TestConfig(test_name="abort"),
             TestConfig(test_name="aes"),
@@ -287,11 +316,17 @@ class AllTests:
                 imagetype_to_use=ImageType.RO,
                 toggle_power=True,
                 enable_hw_write_protect=True,
+                skip_in_renode=True,
             ),
-            TestConfig(test_name="fpsensor_auth_crypto_stateful"),
+            TestConfig(
+                test_name="fpsensor_auth_crypto_stateful",
+                skip_in_renode=True,
+            ),
             TestConfig(test_name="fpsensor_auth_crypto_stateless"),
             TestConfig(
-                test_name="fpsensor_hw", pre_test_callback=fp_sensor_sel
+                test_name="fpsensor_hw",
+                pre_test_callback=fp_sensor_sel,
+                skip_in_renode=True,
             ),
             TestConfig(
                 config_name="fpsensor_spi_ro",
@@ -321,7 +356,7 @@ class AllTests:
                 finish_regexes=[PRINTF_CALLED_REGEX],
             ),
             TestConfig(test_name="global_initialization"),
-            TestConfig(test_name="libcxx"),
+            TestConfig(test_name="libcxx", skip_in_renode=True),
             TestConfig(test_name="malloc", imagetype_to_use=ImageType.RO),
             TestConfig(
                 config_name="mpu_ro",
@@ -345,15 +380,19 @@ class AllTests:
                 test_name="rollback",
                 finish_regexes=[board_config.rollback_region0_regex],
                 test_args=["region0"],
+                skip_in_renode=True,
             ),
             TestConfig(
                 config_name="rollback_region1",
                 test_name="rollback",
                 finish_regexes=[board_config.rollback_region1_regex],
                 test_args=["region1"],
+                skip_in_renode=True,
             ),
             TestConfig(
-                test_name="rollback_entropy", imagetype_to_use=ImageType.RO
+                test_name="rollback_entropy",
+                imagetype_to_use=ImageType.RO,
+                skip_in_renode=True,
             ),
             TestConfig(test_name="rtc"),
             TestConfig(test_name="sbrk", imagetype_to_use=ImageType.RO),
@@ -361,7 +400,7 @@ class AllTests:
             TestConfig(test_name="sha256_unrolled"),
             TestConfig(test_name="static_if"),
             TestConfig(test_name="stdlib"),
-            TestConfig(test_name="std_vector"),
+            TestConfig(test_name="std_vector", skip_in_renode=True),
             TestConfig(
                 test_name="stm32f_rtc", exclude_boards=[DARTMONKEY, HELIPILOT]
             ),
@@ -384,8 +423,10 @@ class AllTests:
             TestConfig(test_name="tpm_seed_clear"),
             TestConfig(test_name="uart"),
             TestConfig(test_name="unaligned_access"),
-            TestConfig(test_name="unaligned_access_benchmark"),
-            TestConfig(test_name="utils", timeout_secs=20),
+            TestConfig(
+                test_name="unaligned_access_benchmark", skip_in_renode=True
+            ),
+            TestConfig(test_name="utils", timeout_secs=20, skip_in_renode=True),
             TestConfig(test_name="utils_str"),
             TestConfig(
                 config_name="power_utilization_idle",
@@ -468,6 +509,8 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     name=BLOONCHIPPER,
     servo_uart_name="raw_fpmcu_console_uart_pty",
     servo_power_enable="fpmcu_pp3300",
+    renode_uart_name="usart2",
+    renode_hw_write_protect_name="gpiob.GPIO_WP",
     reboot_timeout=1.0,
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
@@ -492,6 +535,8 @@ DARTMONKEY_CONFIG = BoardConfig(
     name=DARTMONKEY,
     servo_uart_name="raw_fpmcu_console_uart_pty",
     servo_power_enable="fpmcu_pp3300",
+    renode_uart_name="usart1",
+    renode_hw_write_protect_name="gpioPortB.GPIO_WP",
     reboot_timeout=1.0,
     rollback_region0_regex=DATA_ACCESS_VIOLATION_80C0000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_80E0000_REGEX,
@@ -521,6 +566,8 @@ HELIPILOT_CONFIG = BoardConfig(
     name=HELIPILOT,
     servo_uart_name="raw_fpmcu_console_uart_pty",
     servo_power_enable="fpmcu_pp3300",
+    renode_uart_name="cr_uart1",
+    renode_hw_write_protect_name=None,
     reboot_timeout=1.5,
     rollback_region0_regex=DATA_ACCESS_VIOLATION_64020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_64040000_REGEX,
@@ -814,20 +861,106 @@ def process_console_output_line(line: bytes, test: TestConfig):
         return None
 
 
+def run_test_in_renode(
+    test: TestConfig,
+    board_config: BoardConfig,
+    renode_monitor: Monitor,
+    renode_machine: Machine,
+    console: TerminalTester,
+    reboot_timeout: TimeInterval,
+) -> bool:
+    if board_config.renode_hw_write_protect_name is not None:
+        # Set the jumper to correct state
+        renode_monitor.execute(
+            f"sysbus.{board_config.renode_hw_write_protect_name} Inverted {'true' if test.enable_hw_write_protect else 'false'}"
+        )
+        renode_monitor.execute(
+            f"sysbus.{board_config.renode_hw_write_protect_name} PressAndRelease"
+        )
+    renode_monitor.execute("start")
+
+    if (
+        test.imagetype_to_use == ImageType.RO
+        and board_config.name != "helipilot"
+    ):
+        logging.debug("About to reboot to RO")
+        console.WaitFor(
+            "Console is enabled; type HELP for help.", timeout=reboot_timeout
+        )
+        console.WriteLine("reboot ro")
+    console.WaitFor(
+        "Console is enabled; type HELP for help.", timeout=reboot_timeout
+    )
+    # Skip runtest if using standard app type
+    if test.apptype_to_use != ApplicationType.PRODUCTION:
+        console.WriteLine("runtest " + " ".join(test.test_args))
+
+    while True:
+        result = console.WaitFor(
+            RENODE_TEST_RESULT_REGEX,
+            treatAsRegex=True,
+            timeout=TimeInterval.FromSeconds(test.timeout_secs),
+        )
+
+        if result != None:
+            # The line ending must be added to satisfy the regex'es for ALL_TESTS_* cases
+            logging.debug(result.line)
+            matching_line = result.line + "\r\n"
+            if SINGLE_CHECK_FAILED_REGEX.search(matching_line) != None:
+                test.num_fails += 1
+            elif SINGLE_CHECK_PASSED_REGEX.search(matching_line) != None:
+                test.num_passes += 1
+            elif (
+                ALL_TESTS_FAILED_REGEX.search(matching_line) != None
+                or ALL_TESTS_PASSED_REGEX.search(matching_line) != None
+            ):
+                break
+            else:
+                raise Exception(
+                    f"Incorrect line matched!!: '{repr(matching_line)}'"
+                )
+        else:
+            logging.debug("Test timed out")
+            return False
+
+    logging.debug("Calling post-test callback")
+    post_cb_passed = test.post_test_callback(board_config)
+    test.logs = eval(
+        f"renode_machine.sysbus.{board_config.renode_uart_name}.DumpHistoryBuffer()"
+    )
+    return test.num_fails == 0 and post_cb_passed
+
+
 def run_test(
     test: TestConfig,
     board_config: BoardConfig,
     console: io.FileIO,
     executor: ThreadPoolExecutor,
+    use_renode: bool,
+    renode_monitor: Monitor,
+    renode_machine: Machine,
 ) -> bool:
     """Run specified test."""
     start = time.time()
 
+    if use_renode and test.skip_in_renode:
+        logging.debug("Skipped")
+        return
     reboot_timeout = board_config.reboot_timeout
     logging.debug("Calling pre-test callback")
     if not test.pre_test_callback(board_config):
         logging.error("pre-test callback failed, aborting")
         return False
+
+    if use_renode:
+        return run_test_in_renode(
+            test,
+            board_config,
+            renode_monitor,
+            renode_machine,
+            console,
+            TimeInterval.FromSeconds(reboot_timeout),
+        )
 
     # Wait for boot to finish
     time.sleep(reboot_timeout)
@@ -879,30 +1012,31 @@ def run_test(
 
 
 def get_test_list(
-    config: BoardConfig, test_args, with_private: str
+    config: BoardConfig, test_args, with_private: str, use_renode
 ) -> List[TestConfig]:
     """Get a list of tests to run."""
     if test_args == "all":
-        return AllTests.get(config, with_private)
-
-    test_list = []
-    for test in test_args:
-        logging.debug("test: %s", test)
-        test_regex = re.compile(test)
-        tests = [
-            test
-            for test in AllTests.get(config, with_private)
-            if test_regex.fullmatch(test.config_name)
-        ]
-        if not tests:
-            logging.error(
-                'Test "%s" is either not configured or not supported on board "%s"',
-                test,
-                config.name,
-            )
-            sys.exit(1)
-        test_list += tests
-
+        test_list = AllTests.get(config, with_private)
+    else:
+        test_list = []
+        for test in test_args:
+            logging.debug("test: %s", test)
+            test_regex = re.compile(test)
+            tests = [
+                test
+                for test in AllTests.get(config, with_private)
+                if test_regex.fullmatch(test.config_name)
+            ]
+            if not tests:
+                logging.error(
+                    'Test "%s" is either not configured or not supported on board "%s"',
+                    test,
+                    config.name,
+                )
+                sys.exit(1)
+            test_list += tests
+    if use_renode:
+        test_list = list(filter(lambda e: (not e.skip_in_renode), test_list))
     return test_list
 
 
@@ -920,14 +1054,17 @@ def flash_and_run_test(
         build_board = test.build_board
 
     # attempt to build test binary, reporting a test failure on error
-    try:
-        build(test.test_name, build_board, args.compiler, test.apptype_to_use)
-    except Exception as exception:  # pylint: disable=broad-except
-        logging.error("failed to build %s: %s", test.test_name, exception)
-        return False
+    # skipped in the pyrenode3 case, we're running out of chroot, so expect everything to be built
+    # try:
+    #     build(test.test_name, build_board, args.compiler, test.apptype_to_use)
+    # except Exception as exception:  # pylint: disable=broad-except
+    #     logging.error("failed to build %s: %s", test.test_name, exception)
+    # return False
 
     if test.apptype_to_use == ApplicationType.PRODUCTION:
         image_path = os.path.join(EC_DIR, "build", build_board, "ec.bin")
+        ro_path = os.path.join(EC_DIR, "build", build_board, "RO", "ec.RO.elf")
+        rw_path = os.path.join(EC_DIR, "build", build_board, "RW", "ec.RW.elf")
     else:
         image_path = os.path.join(
             EC_DIR,
@@ -935,6 +1072,22 @@ def flash_and_run_test(
             build_board,
             test.test_name,
             test.test_name + ".bin",
+        )
+        ro_path = os.path.join(
+            EC_DIR,
+            "build",
+            build_board,
+            test.test_name,
+            "RO",
+            test.test_name + ".RO.elf",
+        )
+        rw_path = os.path.join(
+            EC_DIR,
+            "build",
+            build_board,
+            test.test_name,
+            "RW",
+            test.test_name + ".RW.elf",
         )
     logging.debug("image_path: %s", image_path)
 
@@ -950,35 +1103,62 @@ def flash_and_run_test(
     # flash test binary
     # TODO(b/158327221): First attempt to flash fails after
     #  flash_write_protect test is run; works after second attempt.
-    flash_succeeded = False
-    for i in range(0, test.num_flash_attempts):
-        logging.debug("Flash attempt %d", i + 1)
-        if flash(
-            image_path, args.board, args.flasher, args.remote, args.jlink_port
-        ):
-            flash_succeeded = True
-            break
-        time.sleep(board_config.reboot_timeout)
+    if not args.renode:
+        flash_succeeded = False
+        for i in range(0, test.num_flash_attempts):
+            logging.debug("Flash attempt %d", i + 1)
+            if flash(
+                image_path,
+                args.board,
+                args.flasher,
+                args.remote,
+                args.jlink_port,
+            ):
+                flash_succeeded = True
+                break
+            time.sleep(board_config.reboot_timeout)
 
-    if not flash_succeeded:
-        logging.debug(
-            "Flashing failed after max attempts: %d", test.num_flash_attempts
-        )
-        return False
+        if not flash_succeeded:
+            logging.debug(
+                "Flashing failed after max attempts: %d",
+                test.num_flash_attempts,
+            )
+            return False
 
-    if test.toggle_power:
-        power_cycle(board_config)
-    else:
-        # In some cases flash_ec leaves the board off, so just ensure it is on
-        power(board_config, power_on=True)
-
-    hw_write_protect(test.enable_hw_write_protect)
+        if test.toggle_power:
+            power_cycle(board_config)
+        else:
+            # In some cases flash_ec leaves the board off, so just ensure it is on
+            power(board_config, power_on=True)
+        hw_write_protect(test.enable_hw_write_protect)
 
     # run the test
     logging.info('Running test: "%s"', test.config_name)
 
     with ExitStack() as stack:
-        if args.remote and args.console_port:
+        if args.renode:
+            renode_emulation = Emulation()
+            renode_monitor = Monitor()
+            script_path = EC_DIR / "util" / "renode" / (args.board + ".resc")
+            renode_monitor.execute("Clear")
+            renode_monitor.execute(f'$bin="{image_path}"')
+            renode_monitor.execute(f'$elf_ro="{ro_path}"')
+            renode_monitor.execute(f'$elf_rw="{rw_path}"')
+            _, err = renode_monitor.execute_script(str(script_path))
+            if err != "":
+                raise Exception(
+                    f"Executing Renode script [{script_path}] failed with message: '{err}'"
+                )
+            if test.test_name == "benchmark":
+                renode_monitor.execute('emulation SetGlobalQuantum "0.000003"')
+            renode_machine = renode_emulation.get_mach(args.board)
+            if renode_machine is None:
+                raise Exception("Renode machine is not properly created")
+            uart = eval(
+                f"renode_machine.sysbus.{board_config.renode_uart_name}"
+            )
+            console = TerminalTester(uart, timeout=test.timeout_secs)
+        elif args.remote and args.console_port:
             console_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             console_socket.connect((args.remote, args.console_port))
             console = stack.enter_context(
@@ -994,6 +1174,9 @@ def flash_and_run_test(
             board_config,
             console,
             executor=executor,
+            use_renode=args.renode,
+            renode_monitor=renode_monitor,
+            renode_machine=renode_machine,
         )
 
 
@@ -1103,6 +1286,12 @@ def main():
         type=int,
         help="The port connected to the FPMCU console.",
     )
+    parser.add_argument(
+        "--renode",
+        action="store_true",
+        default=False,
+        help="Use Renode for testing",
+    )
 
     with_private_choices = [PRIVATE_YES, PRIVATE_NO, PRIVATE_ONLY]
     parser.add_argument(
@@ -1116,7 +1305,9 @@ def main():
     validate_args_combination(args)
 
     board_config = BOARD_CONFIGS[args.board]
-    test_list = get_test_list(board_config, args.tests, args.with_private)
+    test_list = get_test_list(
+        board_config, args.tests, args.with_private, args.renode
+    )
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
 
     with ThreadPoolExecutor(max_workers=1) as executor:
