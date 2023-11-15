@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef65bffb_e164441d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T01:45:02Z",
+      "side": 1,
+      "message": "s",
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7360662d_fac406e9",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T01:45:02Z",
+      "side": 1,
+      "message": "Nit: `node.props[\"i2c-spi-addr-flags\"].val` is referenced multiple-time; save it to a local variable.",
+      "range": {
+        "startLine": 306,
+        "startChar": 40,
+        "endLine": 306,
+        "endChar": 76
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f71fa4_10bfba4c",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T01:45:02Z",
+      "side": 1,
+      "message": "This seems non-trivial as \"clear\" is not a component type. How many compatibles like this? Better to narrow it down to the type \"als\" and do the rename inside the `compatiable_name_parser()`.",
+      "range": {
+        "startLine": 319,
+        "startChar": 41,
+        "endLine": 319,
+        "endChar": 48
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bed686_44c7b413",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T01:45:02Z",
+      "side": 1,
+      "message": "Maybe just \"als\" which is commonly used in EC.",
+      "range": {
+        "startLine": 321,
+        "startChar": 26,
+        "endLine": 321,
+        "endChar": 46
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be4b109_7d3d19ba",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T01:45:02Z",
+      "side": 1,
+      "message": "And \"accel\" here.",
+      "range": {
+        "startLine": 323,
+        "startChar": 26,
+        "endLine": 323,
+        "endChar": 43
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30b483e_ad8e58c0",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T01:45:02Z",
+      "side": 1,
+      "message": "Move the rename inside the `compatible_name_parser()`.",
+      "range": {
+        "startLine": 326,
+        "startChar": 41,
+        "endLine": 326,
+        "endChar": 48
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
