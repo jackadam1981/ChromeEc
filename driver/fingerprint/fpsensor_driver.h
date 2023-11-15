@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_DRIVER_H_
 #define __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_DRIVER_H_
 
+#include <stdint.h>
+
 #if defined(HAVE_PRIVATE) && !defined(EMU_BUILD)
 #define HAVE_FP_PRIVATE_DRIVER
 
@@ -52,5 +54,7 @@
 #if !defined(FP_SENSOR_IMAGE_OFFSET) && defined(TEST_BUILD)
 #define FP_SENSOR_IMAGE_OFFSET (0)
 #endif
+
+typedef uint8_t fp_template_t[FP_ALGORITHM_TEMPLATE_SIZE];
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_DRIVER_H_ */
