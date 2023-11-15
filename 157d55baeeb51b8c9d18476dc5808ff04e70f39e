@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ce7e71_2d1b5a41",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T23:14:26Z",
+      "side": 1,
+      "message": "Maybe `ALS_PREFIXES`? as they are prefixes.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17689d5b_067e0568",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T23:14:26Z",
+      "side": 1,
+      "message": "Or use a dict to map a string (ctype) to a list of strings (suffixes to remove), e.g.\n\n```\nctype_suffixes \u003d {\n  \"accel\": [\"clear\", \"accel\", \"gyro\"],\n}\n```\n\nIf the ctype is not in the `ctype_suffixes`, remove the ctype.",
+      "range": {
+        "startLine": 205,
+        "startChar": 27,
+        "endLine": 205,
+        "endChar": 37
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c0d598_95e9fcae",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T23:14:26Z",
+      "side": 1,
+      "message": "The term may be confused with a register and it is not a register. Use `_val` maybe.",
+      "range": {
+        "startLine": 319,
+        "startChar": 17,
+        "endLine": 319,
+        "endChar": 20
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc381f25_9cc7d155",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T23:14:26Z",
+      "side": 1,
+      "message": "Add the \",\" to ensure it match the prefix, not match in the middle.",
+      "range": {
+        "startLine": 333,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 22
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

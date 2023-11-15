@@ -251,6 +251,30 @@
       },
       "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38cd28d2_f318fec5",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-11-15T23:14:26Z",
+      "side": 1,
+      "message": "Maybe an example is better to explain it.",
+      "parentUuid": "780ce9f8_cf5f15a5",
+      "range": {
+        "startLine": 326,
+        "startChar": 41,
+        "endLine": 326,
+        "endChar": 48
+      },
+      "revId": "603fa26d96a295eaee2c6b4d09f3c17879c8bb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
