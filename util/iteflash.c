@@ -167,9 +167,6 @@ struct i2c_interface {
 	int default_block_write_size;
 };
 
-static int spi_flash_command_short(struct common_hnd *chnd, uint8_t cmd,
-				   char *desc);
-
 static void null_and_free(void **ptr)
 {
 	void *holder;
