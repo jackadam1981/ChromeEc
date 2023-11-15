@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318311c9_02cd8822",
+        "filename": "util/gdbinit",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-15T19:22:33Z",
+      "side": 1,
+      "message": "Mind adding a comment on which line of code this should be?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/rwsig.c;l\u003d285?q\u003drwsig.c\n\nThat will make it easier to update in the future.",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 28
+      },
+      "revId": "b687415c087f7adeda46c9cd23e65d597e7201b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
