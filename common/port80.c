@@ -93,6 +93,11 @@ void port_80_write(int data)
 	writes++;
 }
 
+int port_80_last(void)
+{
+	return history[writes % ARRAY_SIZE(history)];
+}
+
 static void port80_dump_buffer(void)
 {
 	int printed = 0;

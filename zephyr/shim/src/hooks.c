@@ -42,6 +42,8 @@ BUILD_ASSERT(ARRAY_SIZE(hook_registry) == HOOK_TYPE_COUNT,
 BUILD_ASSERT(NUM_VA_ARGS_LESS_1(HOOK_TYPES_LIST) + 1 == HOOK_TYPE_COUNT,
 	     "At least one hook type is missing from HOOK_TYPES_LIST");
 
+static enum hook_type last_hook_notify;
+
 static void hook_second_work(struct k_work *work);
 static void hook_tick_work(struct k_work *work);
 
@@ -115,6 +117,10 @@ static int zephyr_shim_setup_hooks(void)
 
 SYS_INIT(zephyr_shim_setup_hooks, APPLICATION, 1);
 
+inline enum hook_type get_last_hook_notify(void) {
+	return last_hook_notify;
+}
+
 void hook_notify(enum hook_type type)
 {
 	const struct zephyr_shim_hook_info *start = hook_registry[type].start;
@@ -124,6 +130,8 @@ void hook_notify(enum hook_type type)
 	__ASSERT(type >= 0 && type < HOOK_TYPE_COUNT,
 		 "hook type %d is out of range (maximum hook_type value %d)",
 		 type, HOOK_TYPE_COUNT);
+
+	last_hook_notify = type;
 
 	while (1) {
 		/*

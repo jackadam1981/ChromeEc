@@ -245,4 +245,21 @@ uint64_t bitmask_uint64(int offset);
 #define bitmask_uint64(o) ((uint64_t)1 << (o))
 #endif
 
+
+static inline uint8_t log2(uint64_t value)
+{
+    if (value == 0)
+        return 0;
+
+    uint8_t msbPos = 63 - __builtin_clzll(value); // Position of the most significant bit
+    uint64_t mask = (1ULL << msbPos) - 1;
+    uint64_t remainder = value & mask;
+
+    // Round
+    if (remainder > (mask >> 1))
+        return msbPos + 1;
+    else
+        return msbPos;
+}
+
 #endif /* __CROS_EC_MATH_UTIL_H */

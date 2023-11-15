@@ -113,20 +113,22 @@ static uint32_t placeholder_info_reg;
 
 void panic_data_print(const struct panic_data *pdata)
 {
+	pretty_print_panic_context(&pdata->context);
 	PANIC_REG_LIST(PANIC_PRINT_REGS);
 }
 
 static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
 				   struct panic_data *pdata)
 {
+
 	pdata->arch = PANIC_ARCH;
 	pdata->struct_version = 2;
 	pdata->flags = (PANIC_ARCH == PANIC_ARCH_CORTEX_M) ?
 			       PANIC_DATA_FLAG_FRAME_VALID :
 			       0;
-	pdata->reserved = 0;
 	pdata->struct_size = sizeof(*pdata);
 	pdata->magic = PANIC_DATA_MAGIC;
+	fill_panic_context(&pdata->context, 0, 0);
 
 	PANIC_REG_LIST(PANIC_COPY_REGS);
 }

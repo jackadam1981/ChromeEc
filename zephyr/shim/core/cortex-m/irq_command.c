@@ -4,11 +4,13 @@
  */
 
 #include "console.h"
+#include "task.h"
 
 #include <cmsis_core.h>
 
 /* IRQ counters */
 int irq_count[CONFIG_NUM_IRQS];
+int last_irq;
 
 void sys_trace_isr_enter_user(void)
 {
@@ -17,7 +19,19 @@ void sys_trace_isr_enter_user(void)
 
 	__ASSERT(irq < CONFIG_NUM_IRQS, "Invalid IRQ number");
 
+	last_irq = irq;
 	irq_count[irq]++;
+}
+
+task_id_t task_get_last_irq(void)
+{
+	return last_irq;
+}
+
+uint32_t task_get_last_irq_count(void)
+{
+	__ASSERT(last_irq < CONFIG_NUM_IRQS, "Invalid IRQ number");
+	return irq_count[last_irq];
 }
 
 static int command_irq(int argc, const char **argv)

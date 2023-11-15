@@ -3,21 +3,33 @@
  * found in the LICENSE file.
  */
 
+#include "base_state.h"
+#include "body_detection.h"
 #include "builtin/assert.h"
+#include "charge_state.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lid_switch.h"
+#include "math_util.h"
 #include "panic.h"
+#include "port80.h"
+#include "power.h"
 #include "printf.h"
 #include "software_panic.h"
 #include "sysjump.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
+#include "usb_tc_sm.h"
 #include "timer.h"
 #include "uart.h"
 #include "usb_console.h"
+#include "usb_pd.h"
 #include "util.h"
 
 /*
@@ -203,6 +215,142 @@ static uint32_t get_panic_data_size(void)
 		return 0;
 
 	return pdata_ptr->struct_size;
+}
+
+void fill_panic_context(panic_context *context, uint8_t reason, uint8_t in_isr)
+{
+	struct batt_params battery_params;
+
+	/* Clear context first */
+	memset(context, 0, sizeof(*context));
+
+	// /* Meta info */
+	// uint8_t struct_version:4; /* Currently == 1 */
+	// uint8_t reserved:4; /* Reserved for future meta info set to 0 */
+	context->fields.struct_version = 1;
+	context->fields.reserved = 0;
+
+	// /* Panic info */
+	// uint8_t reason:5; /* e.g. PANIC_SW_DIV_ZERO - PANIC_SW_BASE */
+	context->fields.reason = reason;
+	context->fields.in_isr = in_isr;
+
+	// /* System info */
+	// uint8_t rw_image:1; /* 0 = RO, 1 = RW*/
+	context->fields.rw_image = system_get_image_copy() == EC_IMAGE_RW;
+	// uint8_t current_task:5; /* Current or most recent task */
+	context->fields.current_task = task_get_current();
+	// uint8_t last_hook:5; /* e.g. HOOK_INIT */
+	context->fields.last_hook = get_last_hook_notify();
+	// uint8_t last_irq:8; /* IRQs above 0xff (unusual) are truncated to
+	// 0xff */
+	context->fields.last_irq = task_get_last_irq();
+	// uint8_t last_irq_count_log2:5; /* Last IRQ count, log2 scaled */
+	context->fields.last_irq_count_log2 = log2(task_get_last_irq_count());
+	// uint8_t elapsed_time_log2us:6; /* Time in us, log2 scaled */
+	context->fields.elapsed_time_log2us = log2(get_time().val);
+	// uint8_t last_host_event:6; /* 0-64 */
+	context->fields.last_host_event = get_last_host_event();
+	// uint16_t last_host_command:12; /* Host commands above 0xFFF (unusual)
+	// are truncated to 0xFFF */
+	context->fields.last_host_command = get_last_host_command();
+	// uint16_t last_port80:16; /* 4 byte port 80 codes are truncated to
+	// 0xFFFF bytes */
+	context->fields.last_port80 = port_80_last();
+	// uint8_t reset_flag_l:5; /* Lowest reset flag that is set */
+	context->fields.reset_flag_l = __builtin_ffs(system_get_reset_flags());
+	// uint8_t reset_flag_h:5; /* Highest reset flag that is set */
+	context->fields.reset_flag_h = __builtin_clz(system_get_reset_flags());
+
+	// /* Power State */
+	// uint8_t power_state:5; /* e.g. POWER_G3, POWER_S0ix */
+	context->fields.power_state = power_get_state();
+	// uint8_t power_signals:8;
+	context->fields.power_signals = power_get_signals();
+
+	// /* Charger and battery info */
+	// uint8_t battery_level:7; /* Normalized to 0-100 */
+	// uint8_t battery_status:2;
+	// uint8_t charge_state:2; /* precharge, idle, charge, discharge */
+	battery_get_params(&battery_params);
+	context->fields.battery_level = battery_params.state_of_charge;
+	context->fields.battery_status = battery_params.status;
+	context->fields.charge_state = charge_get_status()->state;
+
+	// /* Physical State */
+	// uint8_t lid_open:1;
+	// uint8_t tablet:1;
+	// uint8_t detached:1;
+	// uint8_t body_detect:1;
+	context->fields.lid_open = lid_is_open();
+	context->fields.tablet = IS_ENABLED(CONFIG_TABLET_MODE_SWITCH) &&
+				 tablet_get_mode();
+	context->fields.detached = IS_ENABLED(CONFIG_BASE_ATTACHED_SWITCH) &&
+				   !base_get_state();
+	context->fields.body_detect =
+		IS_ENABLED(CONFIG_BODY_DETECTION_NOTIFY_MKBP) &&
+		!body_detect_get_state();
+
+	// /* PD State */
+	// uint8_t pd0_state:6;
+	// uint8_t pd1_state:6;
+	context->fields.pd0_state = pd_get_task_state(0);
+	context->fields.pd1_state = pd_get_task_state(1);
+}
+
+extern const char *const *power_state_names;
+extern const char *const *charge_state_names;
+
+void pretty_print_panic_context(const panic_context *context)
+{
+	const char *reason_to_str[] = { "DIV_ZERO",	"STACK_OVERFLOW",
+					"PD_CRASH",	"ASSERT",
+					"WATCHDOG",	"BAD_RNG",
+					"PMIC_FAULT",	"EXIT",
+					"WATCHDOG_WARN" };
+	ccprintf("struct_version:   %d\n", context->fields.struct_version);
+	if (context->fields.reason < ARRAY_SIZE(reason_to_str))
+		ccprintf("reason:           %s\n",
+			 reason_to_str[context->fields.reason]);
+	else
+		ccprintf("reason:           %s\n", "UNKNOWN");
+	ccprintf("in_isr:           %d\n", context->fields.in_isr);
+
+	ccprintf("image:            %s\n",
+		 context->fields.rw_image ? "RW" : "RO");
+	ccprintf("task:             %x\n", context->fields.current_task);
+	ccprintf("last_hook:        0x%x\n", context->fields.last_hook);
+	ccprintf("last_irq:         0x%x\n", context->fields.last_irq);
+	ccprintf("last_irq_count:   %d\n",
+		 1 << context->fields.last_irq_count_log2);
+	ccprintf("elapsed_time      %llus\n",
+		 (1ULL << context->fields.elapsed_time_log2us) / 1000 / 1000);
+	ccprintf("last_host_event:  0x%x\n", context->fields.last_host_event);
+	ccprintf("last_host_command:0x%x\n", context->fields.last_host_command);
+	ccprintf("last_port80:      0x%x\n", context->fields.last_port80);
+	ccprintf("reset_flags:      0x%x\n",
+		 (1 << context->fields.reset_flag_l) |
+			 (1 << context->fields.reset_flag_h));
+	ccprintf("power_state:      %s\n",
+		 power_state_names[context->fields.power_state]);
+	ccprintf("power_signals:    0x%x\n", context->fields.power_signals);
+	ccprintf("battery_level:    %d%%\n", context->fields.battery_level);
+	ccprintf("battery_status:   0x%x\n", context->fields.battery_status);
+	ccprintf("charge_state:     %s\n",
+		 charge_state_names[context->fields.charge_state]);
+	ccprintf("lid_open:         %d\n", context->fields.lid_open);
+	ccprintf("tablet:           %d\n", context->fields.tablet);
+	ccprintf("detached:         %d\n", context->fields.detached);
+	ccprintf("body_detect:      %d\n", context->fields.body_detect);
+	if (IS_ENABLED(USB_PD_DEBUG_LABELS)) {
+		ccprintf("pd0_state:        %s\n",
+			 tc_get_current_state(context->fields.pd0_state));
+		ccprintf("pd0_state:        %s\n",
+			 tc_get_current_state(context->fields.pd1_state));
+	} else {
+		ccprintf("pd0_state:        0x%x\n", context->fields.pd0_state);
+		ccprintf("pd0_state:        0x%x\n", context->fields.pd1_state);
+	}
 }
 
 /*

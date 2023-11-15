@@ -28,6 +28,9 @@
 #ifndef __ASSEMBLER__
 extern const char *const panic_sw_reasons[];
 extern int panic_sw_reason_is_valid(uint32_t vec);
+void pretty_print_panic_context(const panic_context *context);
+void fill_panic_context(panic_context *context, uint8_t reason, uint8_t in_isr);
 #endif
+
 
 #endif /* __CROS_EC_SOFTWARE_PANIC_H */

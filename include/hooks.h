@@ -291,6 +291,9 @@ struct hook_data {
 	int priority;
 };
 
+/* Returns the hook type of the last hook_notify */
+enum hook_type get_last_hook_notify(void);
+
 /**
  * Call all the hook routines of a specified type.
  *

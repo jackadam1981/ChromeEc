@@ -56,6 +56,8 @@ static const char *const state_names[] = {
 #endif
 };
 
+const char *const *power_state_names = state_names;
+
 static uint32_t in_signals; /* Current input signal states (IN_PGOOD_*) */
 static uint32_t in_want; /* Input signal state we're waiting for */
 static uint32_t in_debug; /* Signal values which print debug output */

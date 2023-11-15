@@ -61,6 +61,7 @@ static uint64_t exc_total_time; /* Total time in exceptions */
 static uint32_t svc_calls; /* Number of service calls */
 static uint32_t task_switches; /* Number of times active task changed */
 static uint32_t irq_dist[CONFIG_IRQ_COUNT]; /* Distribution of IRQ calls */
+static int last_irq = -1;
 #endif
 
 extern void __switchto(task_ *from, task_ *to);
@@ -258,6 +259,23 @@ task_id_t task_get_current(void)
 	return current_task - tasks;
 }
 
+task_id_t task_get_last_irq(void)
+{
+#ifdef CONFIG_TASK_PROFILING
+	return last_irq;
+#endif
+	return -1;
+}
+
+uint32_t task_get_last_irq_count(void)
+{
+#ifdef CONFIG_TASK_PROFILING
+	if (last_irq < ARRAY_SIZE(irq_dist) && last_irq >= 0)
+		return irq_dist[last_irq];
+#endif
+	return 0;
+}
+
 atomic_t *task_get_event_bitmap(task_id_t tskid)
 {
 	task_ *tsk = __task_id_to_ptr(tskid);
@@ -377,6 +395,7 @@ void __keep task_start_irq_handler(void *excep_return)
 	 */
 	if (irq < ARRAY_SIZE(irq_dist))
 		irq_dist[irq]++;
+	last_irq = irq;
 
 	/*
 	 * Continue iff a rescheduling event happened or profiling is active,

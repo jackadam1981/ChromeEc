@@ -317,7 +317,7 @@ void __keep report_panic(void)
 	pdata->struct_version = 2;
 	pdata->arch = PANIC_ARCH_CORTEX_M;
 	pdata->flags = 0;
-	pdata->reserved = 0;
+	fill_panic_context(&pdata->context, 0, 0);
 
 	/* Choose the right sp (psp or msp) based on EXC_RETURN value */
 	sp = is_frame_in_handler_stack(

@@ -186,6 +186,8 @@ uint16_t host_command_process(struct host_cmd_handler_args *args);
  */
 void host_set_single_event(enum host_event_code event);
 
+enum host_event_code get_last_host_event(void);
+
 /**
  * Clear one or more host event bits.
  *
@@ -198,6 +200,11 @@ void host_clear_events(host_event_t mask);
  * Return the raw event state.
  */
 host_event_t host_get_events(void);
+
+/**
+ * Return the raw event b state.
+ */
+host_event_t host_get_events_b(void);
 
 /**
  * Check a single host event.
@@ -248,6 +255,8 @@ uint8_t lpc_is_active_wm_set_by_host(void);
  * @param args	Contains response to send
  */
 void host_send_response(struct host_cmd_handler_args *args);
+
+uint16_t get_last_host_command(void);
 
 /**
  * Called by host interface module when a command is received.

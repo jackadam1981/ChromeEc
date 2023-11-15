@@ -83,6 +83,11 @@ static const uint16_t hc_suppressed_cmd[] = { CONFIG_SUPPRESSED_HOST_COMMANDS };
 static uint32_t hc_suppressed_cnt[ARRAY_SIZE(hc_suppressed_cmd)];
 #endif
 
+uint16_t get_last_host_command(void)
+{
+	return args0.command;
+}
+
 test_mockable void host_send_response(struct host_cmd_handler_args *args)
 {
 #ifdef CONFIG_HOST_COMMAND_STATUS

@@ -23,6 +23,8 @@ enum port_80_event {
  */
 void port_80_write(int data);
 
+int port_80_last(void);
+
 /**
  * Chip specific function to read from port 80.
  *

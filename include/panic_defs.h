@@ -126,12 +126,67 @@ struct x86_panic_data {
 	uint8_t task_id;
 };
 
+#define PANIC_CONTEXT_SIZE 32
+typedef union {
+	struct {
+		/* Meta info */
+		uint8_t struct_version : 4; /* Currently == 1 */
+		uint8_t reserved : 4; /* Reserved for future meta info, set to 0
+				       */
+
+		/* Panic info */
+		uint8_t reason : 5; /* e.g. PANIC_SW_DIV_ZERO - PANIC_SW_BASE */
+		uint8_t in_isr : 1; /* Panic occur'd inside an ISR */
+
+		/* System info */
+		uint8_t rw_image : 1; /* 0 = RO, 1 = RW */
+		uint8_t current_task : 5; /* Current or most recent task */
+		uint8_t last_hook : 5; /* e.g. HOOK_INIT */
+		uint8_t last_irq : 8; /* IRQs above 0xff (unusual) are truncated
+					 to 0xff */
+		uint8_t last_irq_count_log2 : 5; /* Last IRQ count, log2 scaled
+						  */
+		uint8_t elapsed_time_log2us : 6; /* Time in us, log2 scaled */
+		uint8_t last_host_event : 6; /* 0-64 */
+		uint16_t last_host_command : 12; /* Host commands above 0xFFF
+						    (unusual) are truncated to
+						    0xFFF */
+		uint16_t last_port80 : 16; /* 4 byte port 80 codes are truncated
+					      to 0xFFFF bytes */
+		uint8_t reset_flag_l : 5; /* Lowest reset flag that is set */
+		uint8_t reset_flag_h : 5; /* Highest reset flag that is set */
+
+		/* Power State */
+		uint8_t power_state : 5; /* e.g. POWER_G3, POWER_S0ix */
+		uint8_t power_signals : 8;
+
+		/* Charger and battery info */
+		uint8_t battery_level : 7; /* Normalized to 0-100 */
+		uint8_t battery_status : 2;
+		uint8_t charge_state : 2; /* precharge, idle, charge, discharge
+					   */
+
+		/* Physical State */
+		uint8_t lid_open : 1;
+		uint8_t tablet : 1;
+		uint8_t detached : 1;
+		uint8_t body_detect : 1;
+
+		/* PD State */
+		uint8_t pd0_state : 6;
+		uint8_t pd1_state : 6;
+	} fields;
+	uint8_t buffer[PANIC_CONTEXT_SIZE];
+} panic_context;
+BUILD_ASSERT(sizeof(panic_context) % 4 == 0);
+BUILD_ASSERT(sizeof(panic_context) == PANIC_CONTEXT_SIZE);
+
 /* Data saved across reboots */
 struct panic_data {
 	uint8_t arch; /* Architecture (PANIC_ARCH_*) */
-	uint8_t struct_version; /* Structure version (currently 2) */
+	uint8_t struct_version; /* Structure version (currently 3) */
 	uint8_t flags; /* Flags (PANIC_DATA_FLAG_*) */
-	uint8_t reserved; /* Reserved; set 0 */
+	panic_context context; /* panic_context */
 
 	/* core specific panic data */
 	union {
@@ -177,6 +232,8 @@ enum panic_arch {
 #define PANIC_DATA_FLAG_SAFE_MODE_STARTED BIT(5)
 /* System safe mode failed to start */
 #define PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS BIT(6)
+/* Panic Context Valid */
+#define PANIC_DATA_FLAG_PANIC_CONTEXT_VALID BIT(7)
 
 #ifdef __cplusplus
 }

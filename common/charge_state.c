@@ -255,6 +255,8 @@ test_export_static bool battery_sustainer_enabled(void)
 
 static const char *const state_list[] = { "idle", "discharge", "charge",
 					  "precharge" };
+const char *const *charge_state_names = state_list;
+
 BUILD_ASSERT(ARRAY_SIZE(state_list) == CHARGE_STATE_COUNT);
 static const char *const batt_pres[] = {
 	"NO",

@@ -86,9 +86,15 @@ static void host_event_set_bit(host_event_t *ev, uint8_t bit)
 
 static host_event_t lpc_host_events;
 static host_event_t lpc_host_event_mask[LPC_HOST_EVENT_COUNT];
+static enum host_event_code last_host_event;
 
 /* Indicates if active wake mask set by host */
 static uint8_t active_wm_set_by_host;
+
+enum host_event_code get_last_host_event(void)
+{
+	return last_host_event;
+}
 
 void lpc_set_host_event_mask(enum lpc_host_event_type type, host_event_t mask)
 {
@@ -298,6 +304,11 @@ host_event_t host_get_events(void)
 	return events;
 }
 
+host_event_t host_get_events_b(void)
+{
+	return events_copy_b;
+}
+
 void host_set_events(host_event_t mask)
 {
 	/* ignore host events the rest of board doesn't care about */
@@ -318,6 +329,12 @@ void host_set_events(host_event_t mask)
 	/* exit now if nothing has changed */
 	if (!((events & mask) != mask || (events_copy_b & mask) != mask))
 		return;
+
+	/*
+	 * Typically events are set one at a time. If multiple events are set at once,
+	 * the lowest event is chosen as last_host_event.
+	 */
+	last_host_event = __builtin_ffs(mask);
 
 	HOST_EVENT_CPRINTS("event set", mask);
 
