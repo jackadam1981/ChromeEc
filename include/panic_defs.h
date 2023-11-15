@@ -126,12 +126,79 @@ struct x86_panic_data {
 	uint8_t task_id;
 };
 
+struct abreviated_charge_state {
+	uint8_t battery_level;
+	uint16_t battery_status;
+	uint16_t battery_flags;
+	uint16_t charger_status;
+	uint16_t charger_flags;
+} __packed;
+BUILD_ASSERT(sizeof(struct abreviated_charge_state) == 9, "Unexpected size of abreviated_charge_state");
+
+struct abreviated_pd_state {
+	uint8_t task_state;
+	uint32_t flags;
+	uint8_t cc_polairty:2;
+	uint8_t comm_enabled:1;
+	uint8_t is_source:1;
+	uint8_t is_dfp:1;
+	uint8_t vconn_on:1;
+} __packed;
+BUILD_ASSERT(sizeof(struct abreviated_pd_state) == 6, "Unexpected size of abreviated_pd_state");
+
+typedef union {
+	struct {
+		uint8_t rw_image:1;
+		uint8_t in_isr:1;
+		/*
+		   DISCHARGING_LOW = 0
+		   DISCHARGING = 1
+		   CHARGING = 2
+		   CHARGING_FULL = 3
+		*/
+		uint8_t charge_state:2;
+		/* CLOSED = 0,
+		   CLAMSHELL = 1,
+		   TABLET  = 2,
+		   DETACHED = 3,
+		*/
+		uint8_t mode:2;
+		/* HARD_OFF (G3) = 0,
+		   SOFT_OFF (S4|S5) = 1
+		   SUSPEND(S0ix|S3) = 2
+		   ON(S0) = 3 */
+		uint8_t power_state:2;
+	} fields;
+	uint8_t val;
+} panic_context;
+
+
+struct software_panic_data {
+        uint8_t reason; // WATCHDOG, ASSERT, etc.
+	uint32_t info; // Reason specific info, e.g. assert line number
+        uint32_t timestamp;
+        uint8_t current_task;
+	uint8_t power_state;
+	uint8_t power_signals;
+        uint8_t last_irq;
+	uint8_t last_hook;
+        uint16_t last_irq_count;
+        uint16_t last_host_command;
+        uint64_t host_events;
+	uint64_t host_events_b;
+        struct abreviated_charge_state charge_state;
+        struct abreviated_pd_state c0_state;
+        struct abreviated_pd_state c1_state;
+        uint32_t call_trace[8]; // [0] == PC
+} __aligned(4);
+BUILD_ASSERT(sizeof(struct software_panic_data) < 128);
+
 /* Data saved across reboots */
 struct panic_data {
 	uint8_t arch; /* Architecture (PANIC_ARCH_*) */
 	uint8_t struct_version; /* Structure version (currently 2) */
 	uint8_t flags; /* Flags (PANIC_DATA_FLAG_*) */
-	uint8_t reserved; /* Reserved; set 0 */
+	uint8_t context; /* Reserved; set 0 */
 
 	/* core specific panic data */
 	union {
@@ -142,6 +209,7 @@ struct panic_data {
 #ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 		struct rv32i_panic_data riscv; /* RISC-V RV32I */
 #endif
+		struct software_panic_data software_panic; /* Generic Software Panic */
 	};
 
 	/*
@@ -160,6 +228,7 @@ enum panic_arch {
 #ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 	PANIC_ARCH_RISCV_RV32I = 4, /* RISC-V RV32I */
 #endif
+	PANIC_ARCH_GENERIC_SOFTWARE_PANIC = 5, /* Generic Software Panic */
 };
 
 /* Flags for panic_data.flags */
@@ -177,6 +246,8 @@ enum panic_arch {
 #define PANIC_DATA_FLAG_SAFE_MODE_STARTED BIT(5)
 /* System safe mode failed to start */
 #define PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS BIT(6)
+/* Panic Context Valid */
+#define PANIC_DATA_FLAG_PANIC_CONTEXT_VALID BIT(7)
 
 #ifdef __cplusplus
 }

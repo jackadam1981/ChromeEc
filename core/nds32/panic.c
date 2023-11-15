@@ -183,7 +183,7 @@ void report_panic(uint32_t *regs, uint32_t itype)
 	pdata->struct_version = 2;
 	pdata->arch = PANIC_ARCH_NDS32_N8;
 	pdata->flags = 0;
-	pdata->reserved = 0;
+	pdata->context = 0;
 
 	pdata->nds_n8.itype = itype;
 	for (i = 0; i < 16; i++)

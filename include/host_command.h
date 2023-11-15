@@ -200,6 +200,11 @@ void host_clear_events(host_event_t mask);
 host_event_t host_get_events(void);
 
 /**
+ * Return the raw event b state.
+ */
+host_event_t host_get_events_b(void);
+
+/**
  * Check a single host event.
  *
  * @param event		Event to check

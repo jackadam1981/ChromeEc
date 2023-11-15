@@ -119,12 +119,13 @@ void panic_data_print(const struct panic_data *pdata)
 static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
 				   struct panic_data *pdata)
 {
+
 	pdata->arch = PANIC_ARCH;
 	pdata->struct_version = 2;
 	pdata->flags = (PANIC_ARCH == PANIC_ARCH_CORTEX_M) ?
 			       PANIC_DATA_FLAG_FRAME_VALID :
 			       0;
-	pdata->reserved = 0;
+	pdata->context = 0;
 	pdata->struct_size = sizeof(*pdata);
 	pdata->magic = PANIC_DATA_MAGIC;
 

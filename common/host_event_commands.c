@@ -298,6 +298,11 @@ host_event_t host_get_events(void)
 	return events;
 }
 
+host_event_t host_get_events_b(void)
+{
+	return events_copy_b;
+}
+
 void host_set_events(host_event_t mask)
 {
 	/* ignore host events the rest of board doesn't care about */

@@ -4,18 +4,25 @@
  */
 
 #include "builtin/assert.h"
+#include "base_state.h"
+#include "charge_state.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lid_switch.h"
 #include "panic.h"
+#include "power.h"
 #include "printf.h"
 #include "software_panic.h"
 #include "sysjump.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "tablet_mode.h"
 #include "uart.h"
 #include "usb_console.h"
 #include "util.h"
@@ -203,6 +210,88 @@ static uint32_t get_panic_data_size(void)
 		return 0;
 
 	return pdata_ptr->struct_size;
+}
+
+static inline struct abreviated_charge_state get_abreviated_charge_state(void) {
+	return (struct abreviated_charge_state) {
+		.battery_level = charge_get_percent() & 0xff,
+	};
+}
+
+static inline struct abreviated_pd_state get_abreviated_pd_state(uint8_t port) {
+	return (struct abreviated_pd_state) {
+	};
+}
+
+uint8_t inline get_panic_context(void)
+{
+	panic_context context;
+
+	context.fields.rw_image = system_is_in_rw();
+
+	context.fields.in_isr = in_interrupt_context();
+
+	if (extpower_is_present())
+		if (charge_get_percent() == 100) // CHARGING_FULL
+			context.fields.charge_state = 3;
+		else // CHARGING
+			context.fields.charge_state = 2;
+	else
+		if (charge_get_percent() > 5) // DISCHARGING
+			context.fields.charge_state = 1;
+		else // DISCHARGING_LOW
+			context.fields.charge_state = 0;
+
+	if (!base_get_state()) // DETACHED
+		context.fields.mode = 3;
+	else if (tablet_get_mode()) // TABLET_MODE
+		context.fields.mode = 2;
+	else if (lid_is_open()) // CLAMSHELL
+		context.fields.mode = 1;
+	else // CLOSED
+		context.fields.mode = 0;
+
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		context.fields.mode = 0;
+	else if (chipset_in_state(CHIPSET_STATE_SOFT_OFF))
+		context.fields.mode = 1;
+	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		context.fields.mode = 2;
+	else if (chipset_in_state(CHIPSET_STATE_ON))
+		context.fields.mode = 3;
+
+	return context.val;
+}
+
+void generic_software_panic(uint32_t reason, uint32_t info)
+{
+	struct panic_data *const pdata = get_panic_data_write();
+
+	struct software_panic_data *software_panic = &pdata->software_panic;
+
+	pdata->magic = PANIC_DATA_MAGIC;
+	pdata->struct_size = sizeof(*pdata);
+	pdata->struct_version = 2;
+	pdata->arch = PANIC_ARCH_GENERIC_SOFTWARE_PANIC;
+	pdata->flags = 0;
+	pdata->context = get_panic_context();
+
+	software_panic->reason = (reason - PANIC_SW_BASE) & 0xff;
+	software_panic->info = info;
+	software_panic->timestamp = get_time().val;
+	software_panic->current_task = task_get_current();
+	software_panic->last_irq = task_get_last_irq();
+	software_panic->last_irq_count = task_get_last_irq_count();
+	software_panic->last_hook = get_last_hook_notify();
+	software_panic->host_events = host_get_events();
+	software_panic->host_events_b = host_get_events_b();
+	software_panic->charge_state = get_abreviated_charge_state();
+	software_panic->c0_state = get_abreviated_pd_state(0);
+	software_panic->c1_state = get_abreviated_pd_state(1);
+
+	//TODO: Print info
+
+	panic_reboot();
 }
 
 /*

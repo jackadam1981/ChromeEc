@@ -183,6 +183,18 @@ static inline void task_wake(task_id_t tskid)
  */
 task_id_t task_get_current(void);
 
+/**
+ * Return the last irq number.
+ * Return -1 if not inilizted or CONFIG_TASK_PROFILING is not enabled.
+ */
+task_id_t task_get_last_irq(void);
+
+/**
+ * Return the count of the last irq.
+ * Return 0 if CONFIG_TASK_PROFILING is not enabled.
+ */
+uint32_t task_get_last_irq_count(void);
+
 #ifdef CONFIG_ZEPHYR
 /**
  * Check if this current task is running in deferred context

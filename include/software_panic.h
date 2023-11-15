@@ -30,4 +30,6 @@ extern const char *const panic_sw_reasons[];
 extern int panic_sw_reason_is_valid(uint32_t vec);
 #endif
 
+void generic_software_panic(uint32_t reason, uint32_t info);
+
 #endif /* __CROS_EC_SOFTWARE_PANIC_H */

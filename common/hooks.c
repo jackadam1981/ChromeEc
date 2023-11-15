@@ -72,6 +72,8 @@ static const struct hook_ptrs hook_list[] = {
 /* Times for deferrable functions */
 static int hook_task_started;
 
+static enum hook_type last_hook_notify;
+
 #ifdef CONFIG_HOOK_DEBUG
 /* Stats for hooks */
 static uint64_t max_hook_tick_delay;
@@ -106,6 +108,10 @@ static void record_hook_delay(uint64_t now, uint64_t last, uint64_t interval,
 }
 #endif
 
+inline enum hook_type get_last_hook_notify(void) {
+	return last_hook_notify;
+}
+
 void hook_notify(enum hook_type type)
 {
 	const struct hook_data *start, *end, *p;
@@ -115,6 +121,7 @@ void hook_notify(enum hook_type type)
 	uint64_t start_time = get_time().val;
 	uint64_t run_time;
 #endif
+	last_hook_notify = type;
 
 	CPRINTS("hook notify %d", type);
 

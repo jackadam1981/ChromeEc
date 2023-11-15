@@ -137,7 +137,7 @@ void report_panic(uint32_t *regs)
 	pdata->struct_version = 2;
 	pdata->arch = PANIC_ARCH_RISCV_RV32I;
 	pdata->flags = 0;
-	pdata->reserved = 0;
+	pdata->context = 0;
 
 	pdata->riscv.mcause = mcause;
 	pdata->riscv.mepc = mepc;
