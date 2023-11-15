@@ -281,6 +281,14 @@ def bundle_firmware(opts):
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
 
+    tokens_path = platform_ec / "build" / "tokens.bin"
+    if pathlib.Path(tokens_path).is_file():
+        meta = info.objects.add()
+        meta.file_name = str(tokens_path)
+        meta.token_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TokenDatabaseInfo.TokenDatabaseType.EC  # pylint: disable=no-member
+        )
+
     write_metadata(opts, info)
 
 
