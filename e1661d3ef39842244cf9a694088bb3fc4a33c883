@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9b6966_a60a2a92",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-15T22:15:47Z",
+      "side": 1,
+      "message": "I have made the order of register assignments the same.",
+      "parentUuid": "59c4e6bf_3f6e8670",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c561c75c_58b606be",
