@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59c4e6bf_3f6e8670",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-11-15T22:09:38Z",
+      "side": 1,
+      "message": "I don\u0027t see host and device being opposite in terms of setup and tear down, but I might be missing something.\n\nSeems like we should always set CR1 berfore OAR1 then? (Leave it up to you though)",
+      "parentUuid": "5a3dd856_c94fbae8",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c561c75c_58b606be",
         "filename": "board/hyperdebug/i2c.c",
         "patchSetId": 12
