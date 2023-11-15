@@ -46,6 +46,30 @@
       },
       "revId": "b687415c087f7adeda46c9cd23e65d597e7201b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f0fe70_0561fea7",
+        "filename": "util/gdbinit",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-15T19:51:54Z",
+      "side": 1,
+      "message": "I believe I have a new way of forcing it to stay in RO, that doesn\u0027t rely on line numbers. So, hopefully this doesn\u0027t need to be here that much longer.",
+      "parentUuid": "904f11a3_95fb9c50",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 28
+      },
+      "revId": "b687415c087f7adeda46c9cd23e65d597e7201b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
