@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65697d2d_df6447a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-15T21:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abaa8d87_820177e0",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee1c4f28_a0802430",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-15T18:37:14Z",
       "side": 1,
       "message": "I think this naming is confuse with what value you pass in. Can you make the value and name match?\n\nOr add a comment saying IC2 is i 1-based but index is 0-based",
+      "range": {
+        "startLine": 597,
+        "startChar": 12,
+        "endLine": 597,
+        "endChar": 27
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5876b439_9585e874",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-15T21:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1c4f28_a0802430",
       "range": {
         "startLine": 597,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3dd856_c94fbae8",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-15T21:04:38Z",
+      "side": 1,
+      "message": "I did not want to let \"own address\" be unset while device mode interrupts were enabled.  I do not think that is important, though, as the bit 15 of the OAR1 register is an \"enable\" bit, without which no device interrupts will be generated.\n\nAlso, it was mostly a reflex to tear down in the opposite order of setting up things.",
+      "parentUuid": "de0f43ef_7d910a9a",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c561c75c_58b606be",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-15T18:37:14Z",
       "side": 1,
       "message": "check that `e` is not an error after this line?",
+      "range": {
+        "startLine": 779,
+        "startChar": 2,
+        "endLine": 779,
+        "endChar": 36
+      },
+      "revId": "e1661d3ef39842244cf9a694088bb3fc4a33c883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7da89b_fd11ed63",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-15T21:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c561c75c_58b606be",
       "range": {
         "startLine": 779,
         "startChar": 2,
