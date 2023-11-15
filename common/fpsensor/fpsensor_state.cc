@@ -23,19 +23,17 @@ extern "C" {
 #include "task.h"
 #include "util.h"
 }
-
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
 #include "fpsensor/fpsensor_utils.h"
+#include "fpsensor_driver.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
 /* Fingers templates for the current user */
-test_mockable uint8_t
-	fp_template[FP_MAX_FINGER_COUNT]
-		   [FP_ALGORITHM_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
+test_mockable fp_template_t fp_template[FP_MAX_FINGER_COUNT] FP_TEMPLATE_SECTION;
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
