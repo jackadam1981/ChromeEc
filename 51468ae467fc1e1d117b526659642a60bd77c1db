@@ -70,6 +70,24 @@
       "parentUuid": "d7f09e99_67e5e599",
       "revId": "51468ae467fc1e1d117b526659642a60bd77c1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43333339_80dd32d4",
+        "filename": "chip/mt_scp/mt8195/video.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2023-11-15T02:43:28Z",
+      "side": 1,
+      "message": "Thanks, I have the same result using clang-format locally.",
+      "parentUuid": "78d45fd1_f9c4f4cd",
+      "revId": "51468ae467fc1e1d117b526659642a60bd77c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
