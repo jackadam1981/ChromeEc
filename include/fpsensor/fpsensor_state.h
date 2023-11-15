@@ -31,8 +31,8 @@ extern "C" {
 #define FP_TEMPLATE_SECTION
 #endif
 
-#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE                         \
-	(FP_ALGORITHM_TEMPLATE_SIZE + FP_POSITIVE_MATCH_SALT_BYTES + \
+#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE                    \
+	(sizeof(fp_template_t) + FP_POSITIVE_MATCH_SALT_BYTES + \
 	 sizeof(struct ec_fp_template_encryption_metadata))
 
 /* Events for the FPSENSOR task */
@@ -44,7 +44,7 @@ extern "C" {
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 extern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];
 /* Fingers templates for the current user */
-extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
+extern fp_template_t fp_template[FP_MAX_FINGER_COUNT];
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
