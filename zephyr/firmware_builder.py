@@ -279,6 +279,12 @@ def bundle_firmware(opts):
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
 
+    # TODO(b/287268093 asemjonovs): Add universal token database artifact
+    meta = info.objects.add()
+    meta.file_name = str(platform_ec / "build" / "database.bin")
+    meta.token_info.type = (
+        firmware_pb2.FirmwareArtifactInfo.TokenDatabaseInfo.TokenDatabaseType.EC  # pylint: disable=no-member
+    )
     write_metadata(opts, info)
 
 
