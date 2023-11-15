@@ -8,6 +8,7 @@
 /* remove when ftdi_usb_purge_buffers has been replaced to follow libftdi */
 #define _FTDI_DISABLE_DEPRECATED
 
+#include "common.h"
 #include "compile_time_macros.h"
 #include "usb_if.h"
 
@@ -167,8 +168,8 @@ struct i2c_interface {
 	int default_block_write_size;
 };
 
-static int spi_flash_command_short(struct common_hnd *chnd, uint8_t cmd,
-				   char *desc);
+__maybe_unused static int spi_flash_command_short(struct common_hnd *chnd,
+						  uint8_t cmd, char *desc);
 
 static void null_and_free(void **ptr)
 {
