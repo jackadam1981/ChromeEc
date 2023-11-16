@@ -21,6 +21,7 @@
 #include <ap_power/ap_power.h>
 #include <drivers/intel_altmode.h>
 #include <usbc/pd_task_intel_altmode.h>
+#include <drivers/ccg8_pd.h>
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
@@ -196,7 +197,32 @@ static void process_altmode_pd_data(int port)
 #endif
 }
 
-static void intel_altmode_thread(void *unused1, void *unused2, void *unused3)
+enum ec_status hc_retimer_fw_update()
+{
+	LOG_INF("IN hc retimer fw update\n");
+	uint8_t data_retimer_cmd[2] = {0x00,0x01};
+	pd_write_powmode(pd_pow_config_array[0], PD_ICL_BB_RETIMER_CMD_REG,
+			PD_ICL_BB_RETIMER_CMD_REG_LEN, &data_retimer_cmd);
+	uint8_t data_fw_update = 0x01;
+	pd_write_powmode(pd_pow_config_array[0], PD_ICL_CTRL_REG,
+			PD_ICL_CTRL_REG_LEN, &data_fw_update);
+	return EC_RES_SUCCESS;
+}
+/*DECLARE_HOST_COMMAND(EC_CMD_RETIMER_FW_UPDATE, hc_retimer_fw_update,
+		EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2);*/
+
+enum ec_status hc_exit_retimer_fw_update()
+{
+	LOG_INF("IN hc exit retimer fw update\n");
+	uint8_t data_fw_update = 0x00;
+	pd_write_powmode(pd_pow_config_array[0], PD_ICL_CTRL_REG,
+			PD_ICL_CTRL_REG_LEN, &data_fw_update);
+	return EC_RES_SUCCESS;
+}
+/*DECLARE_HOST_COMMAND(EC_CMD_RETIMER_FW_UPDATE, hc_retimer_fw_update,
+		EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2);*/
+
+static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 {
 	int i;
 	uint32_t events;
