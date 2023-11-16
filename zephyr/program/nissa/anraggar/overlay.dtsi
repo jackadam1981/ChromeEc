@@ -75,7 +75,11 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bma4xx_interrupt";
 		};
-
+		int_usb_c1: usb_c1 {
+			irq-pin = <&gpio_usb_c1_tcpc_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb_c1_interrupt";
+		};
 		int_usb_c1_ppc: usb_c1_ppc {
 			irq-pin = <&gpio_usb_c1_ppc_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;

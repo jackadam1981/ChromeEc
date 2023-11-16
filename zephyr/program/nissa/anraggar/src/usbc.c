@@ -42,6 +42,11 @@ int board_is_sourcing_vbus(int port)
 	return ppc_is_sourcing_vbus(port);
 }
 
+int pd_snk_is_vbus_provided(int port)
+{
+	return ppc_is_vbus_present(port);
+}
+
 int board_set_active_charge_port(int port)
 {
 	int is_valid_port = board_is_usb_pd_port_present(port);
@@ -160,6 +165,11 @@ void board_reset_pd_mcu(void)
 	 */
 }
 /* LCOV_EXCL_STOP */
+
+void usb_c1_interrupt(enum gpio_signal s)
+{
+	schedule_deferred_pd_interrupt(1);
+}
 
 void ppc_interrupt(enum gpio_signal signal)
 {
