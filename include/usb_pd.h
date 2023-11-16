@@ -22,6 +22,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <zephyr/devicetree.h>
 
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
@@ -395,6 +396,11 @@ extern const int supported_modes_cnt;
 #define RW_HASH_ENTRIES 4
 extern struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #endif /* CONFIG_COMMON_RUNTIME */
+
+#ifdef CONFIG_USB_PD_ALTMODE_INTEL
+/* Generate device tree for available PDs */
+extern const struct device *pd_pow_config_array[];
+#endif /*CONFIG_USB_PD_ALTMODE_INTEL*/
 
 /*
  * defined in common/usb_common.c

@@ -52,7 +52,11 @@ properties:
     type: phandle
     description: |
       Alternate PPC for the USB-C port.
-  alt-mode:
+  pd-altmode:
     type: phandle
     description: |
       PD chip for configuring the alternate modes of the USB-C port.
+  pd-powmode:
+    type: phandle
+    description: |
+      PD chip for configuring the power modes of the USB-C port.
