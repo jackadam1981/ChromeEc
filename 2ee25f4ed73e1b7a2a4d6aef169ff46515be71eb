@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b31fbb_0e527a2f",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-16T20:10:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t this blow up on casting the `const` away?",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "2ee25f4ed73e1b7a2a4d6aef169ff46515be71eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
