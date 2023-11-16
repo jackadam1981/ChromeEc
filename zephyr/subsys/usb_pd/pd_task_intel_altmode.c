@@ -7,12 +7,13 @@
  * Source file for PD task to configure USB-C Alternate modes on Intel SoC.
  */
 
+#include "builtin/assert.h"
 #include "i2c.h"
 #include "i2c/i2c.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc/utils.h"
-
+#include "console.h"
 #include <stdlib.h>
 
 #include <zephyr/logging/log.h>
@@ -49,6 +50,116 @@ enum intel_altmode_event {
 	INTEL_ALTMODE_EVENT_INTERRUPT,
 	INTEL_ALTMODE_EVENT_COUNT
 };
+
+static int last_op;
+static int last_result;
+static int last_port;
+/* Retimer state before, while or after firmware update*/
+enum retimer_states {
+	RETIMER_ONLINE,
+	RETIMER_OFFLINE,
+	RETIMER_ONLINE_REQUESTED
+};
+static int retimer_state = RETIMER_ONLINE;
+
+uint8_t retimer_sm_prev_stage[] = {
+	[0] = 0,
+	[USB_RETIMER_FW_UPDATE_SUSPEND_PD] = 0,
+	[USB_RETIMER_FW_UPDATE_RESUME_PD] = USB_RETIMER_FW_UPDATE_DISCONNECT,
+	[USB_RETIMER_FW_UPDATE_GET_MUX] = 0,
+	[USB_RETIMER_FW_UPDATE_SET_USB] = USB_RETIMER_FW_UPDATE_SUSPEND_PD,
+	[USB_RETIMER_FW_UPDATE_SET_SAFE] = USB_RETIMER_FW_UPDATE_SET_USB,
+	[USB_RETIMER_FW_UPDATE_SET_TBT] = USB_RETIMER_FW_UPDATE_SET_SAFE,
+	[USB_RETIMER_FW_UPDATE_DISCONNECT] = USB_RETIMER_FW_UPDATE_SET_TBT,
+	[USB_RETIMER_FW_UPDATE_RESUME_PD] = USB_RETIMER_FW_UPDATE_DISCONNECT,
+};
+
+enum ec_status hc_retimer_fw_update();
+enum ec_status hc_exit_retimer_fw_update();
+
+int usb_retimer_fw_update_get_result(void)
+{
+	switch (last_op) {
+		case USB_RETIMER_FW_UPDATE_RESUME_PD:
+			last_result = 1;
+			break;
+		default:
+			last_result = usb_mux_get(last_port) & USB_RETIMER_FW_UPDATE_MUX_MASK;
+	}
+	return last_result;
+}
+
+void usb_retimer_fw_update_process_op(int port, int op)
+{
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+
+	switch (op) {
+		case USB_RETIMER_FW_UPDATE_QUERY_PORT:
+			break;
+		case USB_RETIMER_FW_UPDATE_GET_MUX:
+			if (retimer_state == RETIMER_ONLINE) {
+				last_op = op;
+				last_port = port;
+			}
+			break;
+		case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
+			if (retimer_state == RETIMER_ONLINE) {
+				retimer_state = RETIMER_OFFLINE;
+				last_op = op;
+				last_port = port;
+			}
+			break;
+		case USB_RETIMER_FW_UPDATE_SET_USB:
+			if (retimer_state == RETIMER_OFFLINE) {
+				if (last_op == retimer_sm_prev_stage[op]) {
+					usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT, pd_get_polarity(port));
+					last_op = op;
+					last_port = port;
+				}
+			}
+			break;
+		case USB_RETIMER_FW_UPDATE_SET_SAFE:
+			if (retimer_state == RETIMER_OFFLINE) {
+				if (last_op == retimer_sm_prev_stage[op]) {
+					usb_mux_set(port, USB_PD_MUX_SAFE_MODE, USB_SWITCH_CONNECT, pd_get_polarity(port));
+					last_op = op;
+					last_port = port;
+				}
+			}
+			break;
+		case USB_RETIMER_FW_UPDATE_SET_TBT:
+			if (retimer_state == RETIMER_OFFLINE) {
+				if (last_op == retimer_sm_prev_stage[op]) {
+					hc_retimer_fw_update();
+					last_op = op;
+					last_port = port;
+				}
+			}
+			break;
+		case USB_RETIMER_FW_UPDATE_DISCONNECT:
+			if (retimer_state == RETIMER_OFFLINE) {
+				if (last_op == retimer_sm_prev_stage[op]) {
+					retimer_state = RETIMER_ONLINE_REQUESTED;
+					usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT, pd_get_polarity(port));
+					last_op = op;
+					last_port = port;
+				}
+			}
+			break;
+		case USB_RETIMER_FW_UPDATE_RESUME_PD:
+			if (retimer_state == RETIMER_ONLINE_REQUESTED) {
+				if (last_op == retimer_sm_prev_stage[op]) {
+					hc_exit_retimer_fw_update();
+					retimer_state = RETIMER_ONLINE;
+					last_op = 0;
+					last_port = port;
+				}
+			}
+		default:
+			break;
+	}
+	cprints(CC_USBPD, "op:%d last_result:%d port_state:%d\n", op, last_result, retimer_state);
+}
 
 struct intel_altmode_data {
 	/* Driver event object to receive events posted. */

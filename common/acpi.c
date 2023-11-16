@@ -298,6 +298,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 #ifdef CONFIG_USBC_RETIMER_FW_UPDATE
 		case EC_ACPI_MEM_USB_RETIMER_FW_UPDATE:
 			result = usb_retimer_fw_update_get_result();
+			CPRINTF("result of call %d\n", result);
 			break;
 #endif
 		default:

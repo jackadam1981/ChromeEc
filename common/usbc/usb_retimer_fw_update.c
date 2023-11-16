@@ -11,7 +11,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_tc_sm.h"
-
+#include "usbc/pd_task_intel_altmode.h"
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -109,7 +109,9 @@ static enum retimer_port_state port_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 int usb_retimer_fw_update_get_result(void)
 {
 	int result = 0;
-
+	CPRINTF("last result in get result:%d\n", last_result);
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
+		CPRINTF("port state %d of port %d in get result \n", port_state[i], i);
 	switch (last_op) {
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
 		if (last_result == USB_RETIMER_FW_UPDATE_ERR) {
@@ -381,6 +383,7 @@ void usb_retimer_fw_update_process_op(int port, int op)
 	default:
 		break;
 	}
+	CPRINTF("op:%d last result:%d port state:%d\n", op, last_result, port_state[port]);
 }
 
 /*

@@ -63,16 +63,16 @@ struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
 bool pd_firmware_upgrade_check_power_readiness(int port)
 {
-	if (IS_ENABLED(HAS_TASK_CHARGER)) {
+/*	if (IS_ENABLED(HAS_TASK_CHARGER)) {
 		struct batt_params batt = { 0 };
-		/*
+		*
 		 * Cannot rely on the EC's active charger data as the
 		 * EC may just rebooted into RW and has not necessarily
 		 * picked the active charger yet. Charger task may not
 		 * initialized, so check battery directly.
 		 * Prevent the upgrade if the battery doesn't have enough
 		 * charge to finish the upgrade.
-		 */
+		 
 		battery_get_params(&batt);
 		if (batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
 		    batt.state_of_charge < MIN_BATTERY_FOR_PD_UPGRADE_PERCENT) {
@@ -82,14 +82,14 @@ bool pd_firmware_upgrade_check_power_readiness(int port)
 			return false;
 		}
 	} else {
-		/* VBUS is present on the port (it is either a
+		* VBUS is present on the port (it is either a
 		 * source or sink) to provide power, so don't allow
 		 * PD firmware upgrade on the port.
-		 */
+		 
 		if (pd_is_vbus_present(port))
 			return false;
 	}
-
+*/
 	return true;
 }
 
