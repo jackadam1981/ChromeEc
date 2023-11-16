@@ -39,6 +39,30 @@
       },
       "revId": "431be66c0d2ff2c245af8b17d5fcc15cecf241d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b9062d_8053b6f2",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-16T07:16:22Z",
+      "side": 1,
+      "message": "Good suggestion. Let\u0027s change that in a separate CL.",
+      "parentUuid": "623ed118_7c0c09cf",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "431be66c0d2ff2c245af8b17d5fcc15cecf241d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
