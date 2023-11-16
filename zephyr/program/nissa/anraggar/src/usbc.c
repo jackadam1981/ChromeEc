@@ -41,6 +41,15 @@ int board_is_sourcing_vbus(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
+int board_vbus_source_enabled(int port)
+{
+	return ppc_is_sourcing_vbus(port);
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	return ppc_is_vbus_present(port);
+}
 
 int board_set_active_charge_port(int port)
 {
@@ -143,7 +152,8 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 	int rv;
 	const int current = rp == TYPEC_RP_3A0 ? 3000 : 1500;
 
-	rv = charger_set_otg_current_voltage(port, current, 5000);
+	//rv = charger_set_otg_current_voltage(port, current, 5000);
+	rv=ppc_set_vbus_source_current_limit(port,current);
 	if (rv != EC_SUCCESS) {
 		LOG_WRN("Failed to set source ilimit on port %d to %d: %d",
 			port, current, rv);
@@ -168,4 +178,28 @@ void ppc_interrupt(enum gpio_signal signal)
 	} else {
 		syv682x_interrupt(0);
 	}
+ LOG_INF("Dolan: ppc irq. Port:%s -----",signal);
+}
+
+void usb_c1_interrupt(enum gpio_signal s)
+{
+	/* Charger and BC1.2 are handled in board_process_pd_alert */
+	schedule_deferred_pd_interrupt(1);
+}
+
+void board_process_pd_alert(int port)
+{
+	/*
+	 * Port 0 doesn't use an external TCPC, so its interrupts don't need
+	 * this special handling.
+	 */
+	if (port != 1)
+		return;
+
+	/*
+	 * Immediately schedule another TCPC interrupt if it seems we haven't
+	 * cleared all pending interrupts.
+	 */
+	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_int_odl)))
+		schedule_deferred_pd_interrupt(port);
 }

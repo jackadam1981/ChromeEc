@@ -54,6 +54,7 @@ enum anraggar_sub_board_type anraggar_get_sb_type(void)
 
 	anraggar_cached_sub_board = ANRAGGAR_SB_NONE; /* Defaults to none */
 	ret = cros_cbi_get_fw_config(FW_SUB_BOARD, &val);
+	anraggar_cached_sub_board = ANRAGGAR_SB_C;
 	if (ret != 0) {
 		LOG_WRN("Error retrieving CBI FW_CONFIG field %d",
 			FW_SUB_BOARD);
@@ -85,6 +86,11 @@ test_export_static void board_usb_pd_count_init(void)
 		cached_usb_pd_port_count = 2;
 		break;
 	}
+
+	const struct gpio_dt_spec *en_3p3 =
+	GPIO_DT_FROM_NODELABEL(gpio_en_pp3300_s5);
+	if(en_3p3)	
+		gpio_pin_set_dt(en_3p3,1);
 }
 /*
  * Make sure setup is done after EEPROM is readable.
@@ -165,10 +171,14 @@ static void board_init(void)
 	/*
 	 * Enable USB-C interrupts.
 	 */
-	// gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
-// #if CONFIG_USB_PD_PORT_MAX_COUNT > 1
-// 	if (board_get_usb_pd_port_count() == 2)
-// 		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
-// #endif
+	//gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_tcpc_int_odl));
+	 
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_ppc));
+
+		/* TODO(crosbug.com/p/61098): How long do we need to wait? */
+ //#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+ //	if (board_get_usb_pd_port_count() == 2)
+ 		//gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
+ //#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
