@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f020b91c_4d1130d5",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-16T14:41:50Z",
+      "side": 1,
+      "message": "We should probably mention we\u0027re deleting these because they conflict with upstream.",
+      "revId": "b1557591de715955bc518e4bc018cd37272592eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
