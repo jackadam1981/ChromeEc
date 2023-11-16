@@ -54,6 +54,7 @@
 	soc {
 		/delete-node/ rtc@400f5000;
 		/delete-node/ kscan@40009c00;
+		/delete-node/ kbd@40009c00;
 
 		crtc: cros-rtc@400f5000 {
 			compatible = "microchip,xec-cros-rtc";
