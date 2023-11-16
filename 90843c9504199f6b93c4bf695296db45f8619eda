@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aba26a9_be5a3827",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-11-16T19:55:23Z",
+      "side": 1,
+      "message": "this is a good fix, but I think we shall go even further. what if UART is enabled, but we have flow control turned on, and nobody is fetching characters on the other side. we\u0027d be still stuck in this loop since FIFO will get full and stay full.\nso, we need a time out on `while(!uart_tx_ready(uart))`, there shouldn\u0027t be potentially infinite loops w/o timeout. in case of timeout, drop the char and set the \"characters drop\" flag to inform CCD next time it reads out chars.",
+      "revId": "90843c9504199f6b93c4bf695296db45f8619eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
