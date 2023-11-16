@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdca81ca_d5375c7c",
+        "filename": "zephyr/program/corsola/voltorb/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-11-16T23:28:37Z",
+      "side": 1,
+      "message": "use `LED_BLUE` to align to the config in `bat-power-state-charge-near-full`",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 27
+      },
+      "revId": "dcd2fe83b9e6b3a8d706992891b070bcd4503b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
