@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8ac966_4057c349",
+        "filename": "common/test_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-16T04:18:41Z",
+      "side": 1,
+      "message": "Since the most common progression will likely be each state goes from state N to state N+1 until we reach the end, it might be helpful to also include a `test_multistep_next_step` function. It would effectively call `test_multistep_set_state` with the next state. I imagine it would look something like this:\n\n```\nstatic void test_multistep_next_state(struct test_multistep_state state)\n{\n  struct test_multistep_state prev_state \u003d test_multistep_get_status();\n\n  if (prev_state.step \u003c TEST_MULTISTEP_STEP_16) {\n    test_multistep_set_state((struct test_multistep_state){\n      .status \u003d prev_state.status,\n      .step \u003d prev_state.step+1,\n    });\n  } else {\n    __builtin_unreachable();\n  }\n}\n```\n\nI don\u0027t think it\u0027s required for the CL, just thinking out loud.",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 36
+      },
+      "revId": "b859031a2a86e184da066932f39d21513a42ef07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
