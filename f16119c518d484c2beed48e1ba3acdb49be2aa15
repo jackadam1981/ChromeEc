@@ -22,6 +22,30 @@
       },
       "revId": "f16119c518d484c2beed48e1ba3acdb49be2aa15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5c08bd_188ab5b0",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-11-16T01:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef35594_8b46aa32",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 13
+      },
+      "revId": "f16119c518d484c2beed48e1ba3acdb49be2aa15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

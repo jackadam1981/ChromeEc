@@ -180,6 +180,24 @@
       "message": "First param as described in RTL smbus guide is always the size so it makes sense to remove them from the \"command\" list and just have `rts545x_block_out_transfer` insert them (same as command).",
       "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88123385_28c6a17c",
+        "filename": "zephyr/drivers/usbc/pdc_rts545x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-11-16T01:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22c764b_7d050499",
+      "revId": "1d9f75fb352569caaf6183680f01f4265e2718f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
