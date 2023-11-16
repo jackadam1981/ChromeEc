@@ -8671,7 +8671,8 @@ static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
 		"  Usage: %s get <tag> [get_flag]\n"
-		"  Usage: %s set <tag> <value/string> <size> [set_flag]\n"
+		"  Usage: %s set <tag> <value> <size> [set_flag]\n"
+		"  Usage: %s set <tag> <string> <*> [set_flag]\n"
 		"  Usage: %s remove <tag> [set_flag]\n"
 		"    <tag> is one of:\n"
 		"      0: BOARD_VERSION\n"
@@ -8689,6 +8690,7 @@ static void cmd_cbi_help(char *cmd)
 		"    <size> is the size of the data in byte. It should be zero for\n"
 		"      string types.\n"
 		"    <value/string> is an integer or a string to be set\n"
+		"    <*> is unused but must be present (e.g. '0')\n"
 		"    [get_flag] is combination of:\n"
 		"      01b: Invalidate cache and reload data from EEPROM\n"
 		"    [set_flag] is combination of:\n"
