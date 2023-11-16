@@ -340,8 +340,8 @@ config PLATFORM_EC_CROS_FWID_VERSION
 	bool "Include CrOS FWID version"
 	default n
 	help
-	  Include Chrome OS FWID in version output. The CrOS FWID will be common
-	  across OS, AP firmware and EC firmware when built together.
+	  Deprecated. Include Chrome OS FWID in version output. The CrOS FWID will
+	  be common across OS, AP firmware and EC firmware when built together.
 
 config PLATFORM_EC_DEBUG_ASSERT
 	bool "Enable assertion failures"
