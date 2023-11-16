@@ -15,6 +15,12 @@
 
 #include <stdint.h>
 
+#ifdef CONFIG_ZEPHYR
+/* Deprecated and unused with zephyr. */
+#undef CROS_FWID32
+#define CROS_FWID32 ""
+#endif
+
 BUILD_ASSERT(CONFIG_ROLLBACK_VERSION >= 0);
 BUILD_ASSERT(CONFIG_ROLLBACK_VERSION <= INT32_MAX);
 
