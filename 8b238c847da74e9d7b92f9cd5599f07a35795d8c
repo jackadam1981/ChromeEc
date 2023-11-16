@@ -46,6 +46,30 @@
       },
       "revId": "8b238c847da74e9d7b92f9cd5599f07a35795d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68188523_e5d0a890",
+        "filename": "zephyr/program/rex/karis/src/i2c_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-16T19:21:56Z",
+      "side": 1,
+      "message": "@fabio, the I2C tree is typically quite different between variants,\nspecially when compared to the ref. design. i\u0027m not convinced it\u0027s\nworth the complexity to try to carve the decision tree into common\nand board specific allow/deny \"tables\".\n... and if we can move the access list into the device tree,\nit\u0027s wasted effort.",
+      "parentUuid": "648af171_6a6ebe78",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "8b238c847da74e9d7b92f9cd5599f07a35795d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
