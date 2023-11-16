@@ -86,21 +86,18 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "extpower_interrupt";
 		};
+		int_usb_c1: usb_c1 {
+			irq-pin = <&gpio_usb_c1_tcpc_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb_c1_interrupt";
+		};
 	};
+
 
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios = <&gpiod 4 0>,
-			       <&gpioj 7 0>;
-	};
-
-	named-gpios {
-		/*
-		 * Enable S5 rails for sub-board
-		 */
-		gpio_en_sub_s5_rails: en_sub_s5_rails {
-			gpios = <&gpiod 7 GPIO_OUTPUT_HIGH>;
-		};
+			           <&gpioj 7 0>;
 	};
 
 	temp_memory: memory {
@@ -288,7 +285,7 @@
 
 &i2c3 {
 	label = "I2C_USB_C1_TCPC";
-	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c3_clk_gph1_default
 		     &i2c3_data_gph2_default>;
 	pinctrl-names = "default";
@@ -299,15 +296,11 @@
 		tcpc-flags = <(
 			TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |
-			TCPC_FLAGS_CONTROL_VCONN |
 			TCPC_FLAGS_CONTROL_FRS)>;
 		/* a duplicate of the <&gpio_usb_c1_tcpc_int_odl> node in
 		 * "named-gpios". This is the Zephyr preferred style,
 		 * the "named-gpios" node will be dealt with at a later date.
 		 */
-
-		irq-gpios = <&gpiok 6 GPIO_ACTIVE_LOW>;
-		is-alt;
 	};
 
 	ppc_port1: ppc_syv@40 {
@@ -334,7 +327,7 @@
 
 &i2c5 {
 	label = "I2C_USB_C0";
-	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c5_clk_gpa4_default
 		     &i2c5_data_gpa5_default>;
 	pinctrl-names = "default";
@@ -350,6 +343,7 @@
 		status = "okay";
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_usb_c0_frs_en>;
+		irq-gpios = <&gpioe 0 GPIO_ACTIVE_LOW>;
 	};
 };
 
