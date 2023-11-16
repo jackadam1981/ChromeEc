@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2617f0_d34de14d",
+        "filename": "zephyr/program/nissa/craaskov/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-11-16T22:14:35Z",
+      "side": 1,
+      "message": "My understanding is that the `IDLE` state occurs normally if the battery is fully charged and the device is on AC, so blinking doesn\u0027t seem like the right choice; better to copy the `NEAR_FULL` behavior by default.\n\nI assume `FORCE_IDLE` is blinking because that\u0027s often part of the factory flow and users typically won\u0027t see that state at all.",
+      "revId": "740444480cef44be04bdf45c04befeb4f1b0d911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
