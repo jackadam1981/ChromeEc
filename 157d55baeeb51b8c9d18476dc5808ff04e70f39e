@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2635fe_e4a100d0",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-16T00:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ce7e71_2d1b5a41",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17689d5b_067e0568",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-15T23:14:26Z",
       "side": 1,
       "message": "Or use a dict to map a string (ctype) to a list of strings (suffixes to remove), e.g.\n\n```\nctype_suffixes \u003d {\n  \"accel\": [\"clear\", \"accel\", \"gyro\"],\n}\n```\n\nIf the ctype is not in the `ctype_suffixes`, remove the ctype.",
+      "range": {
+        "startLine": 205,
+        "startChar": 27,
+        "endLine": 205,
+        "endChar": 37
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e694ce97_fe2204b7",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-16T00:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17689d5b_067e0568",
       "range": {
         "startLine": 205,
         "startChar": 27,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65350f0_29902e9c",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-16T00:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09c0d598_95e9fcae",
+      "range": {
+        "startLine": 319,
+        "startChar": 17,
+        "endLine": 319,
+        "endChar": 20
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc381f25_9cc7d155",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-15T23:14:26Z",
       "side": 1,
       "message": "Add the \",\" to ensure it match the prefix, not match in the middle.",
+      "range": {
+        "startLine": 333,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 22
+      },
+      "revId": "157d55baeeb51b8c9d18476dc5808ff04e70f39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fedbb51_72bc4cb4",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-16T00:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc381f25_9cc7d155",
       "range": {
         "startLine": 333,
         "startChar": 11,
