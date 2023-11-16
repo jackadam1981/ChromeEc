@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd245c4_1881d231",
+        "filename": "zephyr/program/rex/karis/src/i2c_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-16T09:54:56Z",
+      "side": 1,
+      "message": "Do they really have to be all different or would it make sense to have a program wide one and maybe board specific extensions? Then you could have a weak one defined and only extend if needed or something. May also be restructured later...",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "8b238c847da74e9d7b92f9cd5599f07a35795d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
