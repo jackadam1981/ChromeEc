@@ -16,6 +16,29 @@
       "message": "This seems reasonable to me.",
       "revId": "431be66c0d2ff2c245af8b17d5fcc15cecf241d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623ed118_7c0c09cf",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-16T02:24:08Z",
+      "side": 1,
+      "message": "This type is FPC specific and isn\u0027t actually required by any functions of this API (it is used indirectly as an `int` type) so it might be better to leave in an FPC specific header. \n\nThis doesn\u0027t need to be resolved now. It could be part of a separate CL or future refactor though.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "431be66c0d2ff2c245af8b17d5fcc15cecf241d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
