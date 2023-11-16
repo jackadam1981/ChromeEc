@@ -131,5 +131,23 @@
 				};
 			};
 		};
+
+		power-state-idle {
+			charge-state = "LED_PWRS_IDLE";
+
+			/* Amber 2 sec, White 2 sec */
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
+			};
+		};
 	};
 };
