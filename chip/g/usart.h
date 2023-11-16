@@ -77,10 +77,10 @@ extern struct usart_config const ec_uart;
 /* Change EC UART-USB Bridge status */
 void uart_ec_bridge_enable(int enabled, int write);
 
-/* Return non-zero if EC UART-USB Bridge is enabled, or 0 otherwise */
-int uart_ec_bridge_is_enabled(void);
+/* Return non-zero if UART-USB Bridge is enabled, or 0 otherwise */
+int uart_bridge_is_enabled(int uart);
 
-/* Return non-zero if EC UART-USB Bridge is readwritable, or 0 otherwise */
-int uart_ec_bridge_tx_is_enabled(void);
+/* Return non-zero if UART-USB Bridge is readwritable, or 0 otherwise */
+int uart_bridge_tx_is_enabled(int uart);
 
 #endif  /* __CROS_FORWARD_UART_H */

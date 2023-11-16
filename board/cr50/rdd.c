@@ -159,6 +159,12 @@ enum ccd_state_flag {
 
 	/* EC data bridging from USB to UART is enabled. */
 	CCD_ENABLE_USB_TO_UART_EC	= BIT(8),
+
+	/* AP data bridging from UART to USB is enabled. */
+	CCD_ENABLE_USB_FROM_UART_AP	= BIT(9),
+
+	/* AP data bridging from USB to UART is enabled. */
+	CCD_ENABLE_USB_TO_UART_AP	= BIT(10),
 };
 
 int console_is_restricted(void)
@@ -193,9 +199,13 @@ static uint32_t get_state_flags(void)
 	if (ccd_usb_spi.state->enabled_device)
 		flags_now |= CCD_ENABLE_SPI;
 
-	if (uart_ec_bridge_is_enabled())
+	if (uart_bridge_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_USB_FROM_UART_AP;
+	if (uart_bridge_tx_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_USB_TO_UART_AP;
+	if (uart_bridge_is_enabled(UART_EC))
 		flags_now |= CCD_ENABLE_USB_FROM_UART_EC;
-	if (uart_ec_bridge_tx_is_enabled())
+	if (uart_bridge_tx_is_enabled(UART_EC))
 		flags_now |= CCD_ENABLE_USB_TO_UART_EC;
 
 	return flags_now;
@@ -226,6 +236,10 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 	if (flags & CCD_ENABLE_USB_FROM_UART_EC)
 		cprintf(channel, " USBEC");
 	if (flags & CCD_ENABLE_USB_TO_UART_EC)
+		cprintf(channel, "+TX");
+	if (flags & CCD_ENABLE_USB_FROM_UART_AP)
+		cprintf(channel, " USBAP");
+	if (flags & CCD_ENABLE_USB_TO_UART_AP)
 		cprintf(channel, "+TX");
 }
 
