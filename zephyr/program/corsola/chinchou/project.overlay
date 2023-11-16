@@ -545,8 +545,8 @@
 			};
 		};
 
-		/* Chinchou LED power idle */
-		power-state-idle {
+		/* Chinchou LED power idle, S5*/
+		power-state-idle-s5 {
 			charge-state = "LED_PWRS_IDLE";
 			chipset-state = "POWER_S5";
 
@@ -562,6 +562,44 @@
 		/* Chinchou LED power forced idle */
 		power-state-forced-idle {
 			charge-state = "LED_PWRS_FORCED_IDLE";
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
+			};
+		};
+
+		/* Chinchou LED power idle, S0 */
+		power-state-idle-s0 {
+			charge-state = "LED_PWRS_IDLE";
+			chipset-state = "POWER_S0";
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
+			};
+		};
+
+		/* Chinchou LED power idle, S3 */
+		power-state-idle-s3 {
+			charge-state = "LED_PWRS_IDLE";
+			chipset-state = "POWER_S3";
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
