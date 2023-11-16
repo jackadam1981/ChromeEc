@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff5fad80_a0530805",
+        "filename": "util/renode-deb-upgrade.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-16T22:05:08Z",
+      "side": 1,
+      "message": "Yes, just to give some space in the console output between the wget and the install command.",
+      "parentUuid": "9956eb81_85c53c7c",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "c632a47d3f66bc36ab2755f7cf42aa0a4db45dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f0df0b3_bef9919f",
         "filename": "util/renode-deb-upgrade.sh",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-16T16:04:59Z",
       "side": 1,
       "message": "It looks like this is indented with tabs while the rest is spaces.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "c632a47d3f66bc36ab2755f7cf42aa0a4db45dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d767bb9_bc1393b3",
+        "filename": "util/renode-deb-upgrade.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-16T22:05:08Z",
+      "side": 1,
+      "message": "Oops 😮. Thanks",
+      "parentUuid": "3f0df0b3_bef9919f",
       "range": {
         "startLine": 33,
         "startChar": 0,
