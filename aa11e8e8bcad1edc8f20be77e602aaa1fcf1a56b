@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afbdab0_99e489b4",
+        "filename": "include/fpsensor/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-16T02:39:15Z",
+      "side": 1,
+      "message": "This could be done in a separate CL but now that we have `OWNERS.cros_fp` this should probably use the style from crrev.com/c/5017278, like this:\n\n```\ninclude chromiumos/owners:v1:/firmware/OWNERS.cros_fp\n```",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 41
+      },
+      "revId": "aa11e8e8bcad1edc8f20be77e602aaa1fcf1a56b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
