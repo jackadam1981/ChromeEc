@@ -22,6 +22,30 @@
       },
       "revId": "2ee25f4ed73e1b7a2a4d6aef169ff46515be71eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c27b6fc_821279e5",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T18:36:16Z",
+      "side": 1,
+      "message": "No, the implicit cast from pointer to const pointer is OK (the reverse is not).\n\nIt\u0027s the same as if you wrote:\n\n```\nstruct cbi_header header;\n\nconst struct cbi_header *h \u003d \u0026header;\n```",
+      "parentUuid": "89b31fbb_0e527a2f",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "2ee25f4ed73e1b7a2a4d6aef169ff46515be71eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
