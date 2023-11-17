@@ -70,6 +70,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff1f81e_a6159eb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-17T22:24:32Z",
+      "side": 1,
+      "message": "Oops. Sorry.",
+      "parentUuid": "22bafc71_84b8fac6",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f756c6b_691f7586",
@@ -83,6 +107,30 @@
       "writtenOn": "2023-11-17T20:21:43Z",
       "side": 1,
       "message": "When I run this on `bloonchipper`, it doesn\u0027t seem to actually run. Do I need to run another command to start it?\n\n```\n./util/renode-ec-launch.sh bloonchipper abort\n\u003e exec renode --console --execute $bin\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/abort.bin\u0027; $elf_ro\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RO/abort.RO.elf\u0027; $elf_rw\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RW/abort.RW.elf\u0027; include @util/renode/bloonchipper.resc; logLevel 3; machine StartGdbServer 3333; start;\n12:17:38.1525 [INFO] Loaded monitor commands from: /opt/renode/scripts/monitor.py\nRenode, version 1.14.0.40778 (81da46c1-202308081623)\n\n(monitor) $bin\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/abort.bin\u0027;  $elf_ro\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RO/abort.RO.elf\u0027;  $elf_rw\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RW/abort.RW.elf\u0027;  include @util/renode/bloonchipper.resc;  logLevel 3;  machine StartGdbServer 3333;  start; \n12:17:38.2141 [INFO] Including script: /mnt/host/source/src/platform/ec/util/renode/bloonchipper.resc\n12:17:38.2302 [INFO] System bus created.\n12:17:39.4021 [INFO] sysbus: Loaded SVD: /tmp/renode-1751918/eb1b75d1-d431-4a94-b115-cde15b181cd8.tmp. Name: STM32F40x. Description: STM32F40x.\nStarting emulation...\n(bloonchipper) \n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4019f52f_965ada86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-17T22:24:32Z",
+      "side": 1,
+      "message": "Hmmm. Did you install the nightly Renode Debian package and then run this outside the chroot?",
+      "parentUuid": "7f756c6b_691f7586",
       "range": {
         "startLine": 22,
         "startChar": 5,
