@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d8d963_d052785c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8810,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-11-17T19:48:45Z",
+      "side": 1,
+      "message": "nit: From this error message it isn\u0027t clear what is wrong. Suggestion: \"\u003chex\u003e length must be even\"",
+      "range": {
+        "startLine": 8810,
+        "startChar": 23,
+        "endLine": 8810,
+        "endChar": 43
+      },
+      "revId": "0f13ebd187aae8626f3ed4416aa1cc642bcc5a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9517084a_ab8de0b6",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8820,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-11-17T19:48:45Z",
+      "side": 1,
+      "message": "nit: free(NULL) is redundant here",
+      "range": {
+        "startLine": 8820,
+        "startChar": 4,
+        "endLine": 8820,
+        "endChar": 14
+      },
+      "revId": "0f13ebd187aae8626f3ed4416aa1cc642bcc5a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
