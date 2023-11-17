@@ -34,6 +34,24 @@
       "parentUuid": "20bcb391_8d9c83f1",
       "revId": "43dba38abafd25331327cc20e718b1d2c2719685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d19127_e8c0acdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-17T22:40:38Z",
+      "side": 1,
+      "message": "You could define CONFIG_CMD_FLASH_LOG if H1_RED_BOARD is defined in board.h",
+      "parentUuid": "bce2bde1_8c652a28",
+      "revId": "43dba38abafd25331327cc20e718b1d2c2719685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
