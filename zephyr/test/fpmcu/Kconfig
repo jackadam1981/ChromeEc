@@ -45,4 +45,9 @@ config EC_HOST_CMD_BACKEND_UART
 	bool "HC UART backend"
 	default y
 
+config TEST_BOARD_GPIO
+	bool "GPIO board tests"
+	help
+	  Enables per board gpio tests
+
 source "Kconfig.zephyr"

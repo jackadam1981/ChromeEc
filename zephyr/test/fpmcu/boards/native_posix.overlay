@@ -30,10 +30,32 @@
 		status = "okay";
 
 	};
+
+	gpio1: gpio@900 {
+		status = "disabled";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x900 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			<&gpio0 3 0>,
+			<&gpio0 4 (GPIO_OUTPUT_LOW | GPIO_PULL_UP)>,
+			<&gpio0 5 (GPIO_OPEN_DRAIN)>,
+			<&gpio1 0 0>;
+	};
+
 };
 
 &gpio0 {
-	ngpios = <3>;
+	ngpios = <6>;
 };
 
 &spi0 {
