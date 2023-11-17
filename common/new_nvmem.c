@@ -2315,6 +2315,14 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
 	return EC_ERROR_TRY_AGAIN;
 }
 
+static size_t get_reserved_size(void)
+{
+	NV_RESERVED_ITEM ri;
+
+	NvGetReserved(NV_RESERVE_LAST - 1, &ri);
+	return ri.offset + ri.size;
+}
+
 /*
  * At startup iterate over flash contents and move TPM objects into the
  * appropriate locations in the NVMEM cache.
@@ -2326,9 +2334,14 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 	struct max_var_container *vc;
 	struct nn_container *nc;
 	uint8_t res_bitmap[(NV_PSEUDO_RESERVE_LAST + 7) / 8];
+	size_t reserved_size;
 
 	/* No saved object will exceed CONFIG_FLASH_BANK_SIZE in size. */
 	nc = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
+
+	reserved_size = get_reserved_size(); /* Currently 4306 bytes */
+	/* Clean reserved objects. Rest is cleaned in the loop. */
+	memset(res_bitmap, 0, sizeof(res_bitmap));
 
 	/*
 	 * Depending on the state of flash, we might have to do this three
@@ -2336,9 +2349,9 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 	 */
 	for (tries = 0; tries < 3; tries++) {
 		memset(&controller_at, 0, sizeof(controller_at));
-		memset(nvmem_cache_base(NVMEM_TPM), 0,
-		       nvmem_user_sizes[NVMEM_TPM]);
-		memset(res_bitmap, 0, sizeof(res_bitmap));
+		/* Preserve loaded reserved objects */
+		memset(nvmem_cache_base(NVMEM_TPM) + reserved_size, 0,
+		       nvmem_user_sizes[NVMEM_TPM] - reserved_size);
 		total_var_space = 0;
 		next_evict_obj_base = 0;
 
