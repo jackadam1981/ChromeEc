@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5543b56_d8e2031b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 35
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-17T22:24:18Z",
+      "side": 1,
+      "message": "I have updated the CL description stating that I have tried running HyperDebug with APB prescaling.  With this change, \"time\" shows seconds at correct pace, without this CL, the output of \"time\" progresses only at half the pace of wall clock time.",
+      "parentUuid": "c0a454e2_5a78c52f",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da57c0f_f107e9f1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-17T19:41:18Z",
       "side": 1,
       "message": "nit: This seems redundant.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6758b9a2_df2ac858",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-17T22:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da57c0f_f107e9f1",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "172ec277_185dae79",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-17T22:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d60660e_a8cf799e",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5374721f_38719518",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-17T19:41:18Z",
       "side": 1,
       "message": "APB prescaling is always enabled?",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255c8d29_8aa3c934",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-17T22:24:18Z",
+      "side": 1,
+      "message": "I have updated the comment.  What I meant is that if APB prescaling is /2 or a larger divisor, then the clock frequency is double that of the APB frequency, if APB prescaling factor is 1, then clock run at the same frequency as APB.",
+      "parentUuid": "5374721f_38719518",
       "range": {
         "startLine": 127,
         "startChar": 4,
