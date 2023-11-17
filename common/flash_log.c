@@ -512,9 +512,10 @@ static int command_flash_log(int argc, char **argv)
 	uint32_t stamp = 0;
 	union entry_u e;
 	int rv;
+	size_t i;
+#ifdef CONFIG_CMD_FLASH_LOG_UNSAFE
 	uint32_t type;
 	size_t size;
-	size_t i;
 
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "-e")) {
@@ -531,6 +532,7 @@ static int command_flash_log(int argc, char **argv)
 			argv++;
 		}
 	}
+#endif /* CONFIG_CMD_FLASH_LOG_UNSAFE */
 	if (argc < 3) {
 		if (argc == 2)
 			stamp = atoi(argv[1]);
@@ -538,8 +540,6 @@ static int command_flash_log(int argc, char **argv)
 		/* Retrieve entries newer than 'stamp'. */
 		while ((rv = flash_log_dequeue_event(stamp, e.entry,
 						     sizeof(e))) > 0) {
-			size_t i;
-
 			ccprintf("%10u:%02x", e.r.timestamp, e.r.type);
 			for (i = 0; i < FLASH_LOG_PAYLOAD_SIZE(e.r.size); i++) {
 				if (i && !(i % 16))
@@ -557,6 +557,7 @@ static int command_flash_log(int argc, char **argv)
 		return EC_SUCCESS;
 	}
 
+#ifdef CONFIG_CMD_FLASH_LOG_UNSAFE
 	if (argc != 3) {
 		ccprintf("type and size of the entry are required\n");
 		return EC_ERROR_PARAM_COUNT;
@@ -580,10 +581,18 @@ static int command_flash_log(int argc, char **argv)
 		e.r.payload[i] = type + i;
 	flash_log_add_event(type, size, e.r.payload);
 	return EC_SUCCESS;
+#else
+	return EC_ERROR_PARAM_COUNT;
+#endif /* CONFIG_CMD_FLASH_LOG_UNSAFE */
 }
+#ifdef CONFIG_CMD_FLASH_LOG_UNSAFE
 DECLARE_CONSOLE_COMMAND(flog, command_flash_log,
 			"[-e] ][[stamp]|[<type> <size>]]",
 			"Dump on the console the flash log contents,"
 			"optionally erasing it\n"
 			"or add a new entry of <type> and <size> bytes");
+#else
+DECLARE_CONSOLE_COMMAND(flog, command_flash_log, "[stamp]",
+			"Dump on the console the flash log contents");
+#endif /* CONFIG_CMD_FLASH_LOG_UNSAFE */
 #endif
