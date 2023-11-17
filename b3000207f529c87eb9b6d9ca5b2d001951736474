@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1d584f_15084483",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-17T19:47:21Z",
+      "side": 1,
+      "message": "Could you rename it, so it doesn\u0027t conflict?",
+      "range": {
+        "startLine": 955,
+        "startChar": 62,
+        "endLine": 955,
+        "endChar": 71
+      },
+      "revId": "b3000207f529c87eb9b6d9ca5b2d001951736474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
