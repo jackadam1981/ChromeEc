@@ -93,6 +93,30 @@
       },
       "revId": "c632a47d3f66bc36ab2755f7cf42aa0a4db45dfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca5c606_0f460a41",
+        "filename": "util/renode-deb-upgrade.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-17T00:29:51Z",
+      "side": 1,
+      "message": "Changed to all \"2 spaces\", like google shell style says.\n\nhttps://google.github.io/styleguide/shellguide.html#indentation",
+      "parentUuid": "3d767bb9_bc1393b3",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "c632a47d3f66bc36ab2755f7cf42aa0a4db45dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
