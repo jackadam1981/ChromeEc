@@ -119,7 +119,9 @@ struct i2cp_controller {
 static bool i2cp_sum_buf_lens(const struct i2c_msg *msgs, size_t num_msgs,
 			      size_t *ret)
 {
-	for (size_t i = 0; i < num_msgs; ++i)
+	size_t i;
+
+	for (i = 0; i < num_msgs; ++i)
 		if (check_add_overflow(msgs[i].len, *ret, ret))
 			return false;
 	return (*ret <= max_total_data_per_xfer);
@@ -417,7 +419,9 @@ unlock:
 
 static void i2cp_null_bufs(struct i2c_msg *msgs, u32 num_msgs)
 {
-	for (u32 i = 0; i < num_msgs; ++i)
+	u32 i;
+
+	for (i = 0; i < num_msgs; ++i)
 		msgs[i].buf = NULL;
 }
 
@@ -570,6 +574,7 @@ static long i2cp_cdev_ioctl_xfer_reply(struct file *filep, unsigned long arg)
 	struct i2cp_ioctl_xfer_reply_arg arg_copy;
 	struct i2cp_ioctl_xfer_reply_arg __user *user_arg;
 	struct i2cp_controller *pdata;
+	u32 i;
 
 	user_arg = (void __user *)arg;
 	if (copy_from_user(&arg_copy, user_arg, sizeof(arg_copy)))
@@ -618,7 +623,7 @@ static long i2cp_cdev_ioctl_xfer_reply(struct file *filep, unsigned long arg)
 		ret = -EFAULT;
 		goto unlock;
 	}
-	for (u32 i = 0; i < arg_copy.num_msgs; ++i) {
+	for (i = 0; i < arg_copy.num_msgs; ++i) {
 		if ((msgs_copy[i].flags & I2C_M_RD) &&
 		    copy_from_user(pdata->xfer_msgs[i].buf, msgs_copy[i].buf,
 				   pdata->xfer_msgs[i].len *
