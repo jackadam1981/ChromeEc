@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79cd8fef_69e52d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-17T23:04:04Z",
+      "side": 1,
+      "message": "I\u0027m picking this, so we don\u0027t have merge conflicts picking cr50 changes to the gsc-utils branch, but in the future I don\u0027t think you should reformat cr50 code like this. I think it makes the style in platform/cr50 inconsistent now. If you reformat gsc-utils, you probably need to reformat all of platform/cr50.",
+      "revId": "4a4abe7e267abb1bbefc58bc0ab1e3a88520c926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
