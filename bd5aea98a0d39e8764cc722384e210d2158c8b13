@@ -16,6 +16,24 @@
       "message": "How it works on Ti50? It seems enables no matter what channel is used... Does it make it unsafe - anyone with SuzyQ now can clean a log?",
       "revId": "bd5aea98a0d39e8764cc722384e210d2158c8b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7465007_b072f626",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-17T23:19:15Z",
+      "side": 1,
+      "message": "The flog vendor command can\u0027t erase anything. This just lets you run the vendor command over usb. Right now it\u0027s only available from the AP.",
+      "parentUuid": "bf698db7_975ed082",
+      "revId": "bd5aea98a0d39e8764cc722384e210d2158c8b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
