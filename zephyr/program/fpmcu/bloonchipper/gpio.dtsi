@@ -85,4 +85,17 @@
 			//handler = "";
 		};
 	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			<&gpiob 2 0>,
+			<&gpiob 5 0>,
+			<&gpioc 13 0>,
+			<&gpioc 14 0>,
+			<&gpioc 15 0>,
+			<&gpioh 0 0>,
+			<&gpioh 1 0>;
+	};
+
 };
