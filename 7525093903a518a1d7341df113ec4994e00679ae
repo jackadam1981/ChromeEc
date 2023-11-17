@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e4736e6_91977308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-17T22:50:04Z",
+      "side": 1,
+      "message": "There should have been a graphical window that was launched that contains the actual UART console, which won\u0027t launch inside the chroot or docker container.",
+      "parentUuid": "4019f52f_965ada86",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8fee49c_9f626a21",
         "filename": "util/renode/bloonchipper.resc",
         "patchSetId": 10
