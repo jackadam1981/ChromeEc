@@ -16,6 +16,29 @@
       "message": "@bobbycasey@google.com, PTAL.",
       "revId": "a7de4bd5e076ae3ef76686f41fe13db8932a12f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03f9cd2_e0d9da0b",
+        "filename": "util/renode-deb-install.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-17T18:20:48Z",
+      "side": 1,
+      "message": "Very nit picky but it might be slightly cleaner to avoid duplicating the deb file name like this:\n\n```suggestion\n  local deb_file\u003d\"renode-latest.deb\"\n\n  # Nightlies: https://builds.renode.io/\n  local url\u003d\"https://builds.renode.io/${deb_file}\"\n\n  local deb\u003d\"${download_dir}/${deb_file}\"\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "a7de4bd5e076ae3ef76686f41fe13db8932a12f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
