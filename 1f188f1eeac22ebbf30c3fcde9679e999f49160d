@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a454e2_5a78c52f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 35
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-17T19:41:18Z",
+      "side": 1,
+      "message": "Do you want to test the change on a physical device?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da57c0f_f107e9f1",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-17T19:41:18Z",
+      "side": 1,
+      "message": "nit: This seems redundant.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d60660e_a8cf799e",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-17T19:41:18Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5374721f_38719518",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-17T19:41:18Z",
+      "side": 1,
+      "message": "APB prescaling is always enabled?",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "1f188f1eeac22ebbf30c3fcde9679e999f49160d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
