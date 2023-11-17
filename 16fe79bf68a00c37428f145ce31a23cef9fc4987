@@ -22,6 +22,30 @@
       },
       "revId": "16fe79bf68a00c37428f145ce31a23cef9fc4987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9550f2f_63dee33a",
+        "filename": "zephyr/subsys/rollback/rollback_initial_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-11-17T10:55:12Z",
+      "side": 1,
+      "message": "`-fdata-section` creates a section for the variable, but seems not guarantee the section be placed under `.data`.\n\nThe compiler\u0027s behavior on Roach is like this:\n - const -\u003e `.srodata`\n - non-const zero -\u003e `.sbss`\n - non-const non-zero -\u003e `.sdata`\n \nI\u0027m not sure how portable is this, so I think the safest way is to explicit specify a section name.\n\n(rollback_initial_data has a non-zero cookie and large enough (?) so no need to worry about this)",
+      "parentUuid": "3bbdf9c4_290c64ab",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "16fe79bf68a00c37428f145ce31a23cef9fc4987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
