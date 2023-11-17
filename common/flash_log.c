@@ -518,9 +518,52 @@ static int command_flash_log(int argc, char **argv)
 	uint32_t stamp = 0;
 	union entry_u e;
 	int rv;
+	size_t i;
+
+	if (argc < 3) {
+		/* `stamp=0` by default, which means all events are printed. */
+		if (argc == 2)
+			stamp = atoi(argv[1]);
+
+		/* Retrieve entries newer than 'stamp'. */
+		while ((rv = flash_log_dequeue_event(stamp, e.entry,
+						     sizeof(e))) > 0) {
+			ccprintf("%10u:%02x", e.r.timestamp, e.r.type);
+			for (i = 0; i < FLASH_LOG_PAYLOAD_SIZE(e.r.size); i++) {
+				if (i && !(i % 16))
+					ccprintf("\n          ");
+				ccprintf(" %02x", e.r.payload[i]);
+			}
+			ccprintf("\n");
+			cflush();
+			stamp = e.r.timestamp;
+		}
+		if (rv)
+			ccprintf("Warning: Last attempt to dequeue returned "
+				 "%d\n",
+				 rv);
+		return EC_SUCCESS;
+	}
+
+	return EC_ERROR_PARAM_COUNT;
+}
+
+DECLARE_SAFE_CONSOLE_COMMAND(flog, command_flash_log, "[stamp]",
+			     "Dump on the console the flash log contents");
+#endif /* CONFIG_CMD_FLASH_LOG */
+
+#ifdef CONFIG_CMD_FLASH_LOG_UNSAFE
+/*
+ * Display and edit Flash event log.
+ */
+static int command_flash_log_edit(int argc, char **argv)
+{
+	uint32_t stamp = 0;
+	union entry_u e;
+	int rv;
+	size_t i;
 	uint32_t type;
 	size_t size;
-	size_t i;
 
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "-e")) {
@@ -544,8 +587,6 @@ static int command_flash_log(int argc, char **argv)
 		/* Retrieve entries newer than 'stamp'. */
 		while ((rv = flash_log_dequeue_event(stamp, e.entry,
 						     sizeof(e))) > 0) {
-			size_t i;
-
 			ccprintf("%10u:%02x", e.r.timestamp, e.r.type);
 			for (i = 0; i < FLASH_LOG_PAYLOAD_SIZE(e.r.size); i++) {
 				if (i && !(i % 16))
@@ -587,9 +628,10 @@ static int command_flash_log(int argc, char **argv)
 	flash_log_add_event(type, size, e.r.payload);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(flog, command_flash_log,
+
+DECLARE_CONSOLE_COMMAND(flogedit, command_flash_log_edit,
 			"[-e] ][[stamp]|[<type> <size>]]",
 			"Dump on the console the flash log contents,"
 			"optionally erasing it\n"
 			"or add a new entry of <type> and <size> bytes");
-#endif
+#endif /* CONFIG_CMD_FLASH_LOG_UNSAFE */
