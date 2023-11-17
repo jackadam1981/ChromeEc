@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d42646_811f827d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T20:21:43Z",
+      "side": 1,
+      "message": "Can you add the commit that it was copied from as well?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903188f6_bfcaeaa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T20:21:43Z",
+      "side": 1,
+      "message": "I get an error that mentions `numberOfMPURegions`. I\u0027m assuming it\u0027s an issue with not having the latest version of renode?\n\n\n```\n./util/renode-ec-launch.sh dartmonkey\n\u003e exec renode --console --execute $bin\u003d\u0027/mnt/host/source/src/platform/ec/build/dartmonkey/ec.bin\u0027; $elf_ro\u003d\u0027/mnt/host/source/src/platform/ec/build/dartmonkey/RO/ec.RO.elf\u0027; $elf_rw\u003d\u0027/mnt/host/source/src/platform/ec/build/dartmonkey/RW/ec.RW.elf\u0027; include @util/renode/dartmonkey.resc; logLevel 3; machine StartGdbServer 3333; start;\n12:19:37.5688 [INFO] Loaded monitor commands from: /opt/renode/scripts/monitor.py\nRenode, version 1.14.0.40778 (81da46c1-202308081623)\n\n(monitor) $bin\u003d\u0027/mnt/host/source/src/platform/ec/build/dartmonkey/ec.bin\u0027;  $elf_ro\u003d\u0027/mnt/host/source/src/platform/ec/build/dartmonkey/RO/ec.RO.elf\u0027;  $elf_rw\u003d\u0027/mnt/host/source/src/platform/ec/build/dartmonkey/RW/ec.RW.elf\u0027;  include @util/renode/dartmonkey.resc;  logLevel 3;  machine StartGdbServer 3333;  start; \n12:19:37.6221 [INFO] Including script: /mnt/host/source/src/platform/ec/util/renode/dartmonkey.resc\n12:19:37.6370 [INFO] System bus created.\nThere was an error executing command \u0027machine LoadPlatformDescription @/mnt/host/source/src/platform/ec/util/renode/stm32h743.repl\u0027\nError E25: Could not find suitable constructor for type \u0027Antmicro.Renode.Peripherals.CPU.CortexM\u0027.\nConstructor selection report:\n\nConsidering ctor Antmicro.Renode.Peripherals.CPU.CortexM with the following parameters: [System.String, Antmicro.Renode.Core.Machine, Antmicro.Renode.Peripherals.IRQControllers.NVIC, System.UInt32 (optional), ELFSharp.ELF.Endianess (optional), System.Nullable`1[System.UInt32] (optional)].\n  For parameter \u0027cpuType\u0027 of type \u0027System.String\u0027 found attribute at /mnt/host/source/src/platform/ec/util/renode/stm32h743.repl:6:5 with value [StringValue: \u0027cortex-m7\u0027]\n    Value converted succesfully, it is \u003d \u0027cortex-m7\u0027\n  Parameter \u0027machine\u0027 of type \u0027Antmicro.Renode.Core.Machine\u0027 filled with default value \u003d \u0027dartmonkey\u0027.\n  For parameter \u0027nvic\u0027 of type \u0027Antmicro.Renode.Peripherals.IRQControllers.NVIC\u0027 found attribute at /mnt/host/source/src/platform/ec/util/renode/stm32h743.repl:8:5 with value [ReferenceValue: nvic]\n    Parameter is assignable from the reference value.\n  Parameter \u0027id\u0027 of type \u0027System.UInt32\u0027 filled with default value \u003d \u00270\u0027.\n  Parameter \u0027endianness\u0027 of type \u0027ELFSharp.ELF.Endianess\u0027 filled with default value \u003d \u0027LittleEndian\u0027.\n  Parameter \u0027fpuInterruptNumber\u0027 of type \u0027System.Nullable`1[System.UInt32]\u0027 filled with default value \u003d \u0027\u0027.\n  Constructor rejected, 1 unused attributes left:\n    \u0027numberOfMPURegions\u0027 with value \u0027[NumericalValue: 16]\u0027 at /mnt/host/source/src/platform/ec/util/renode/stm32h743.repl:7:5\nAt /mnt/host/source/src/platform/ec/util/renode/stm32h743.repl:5:6:\ncpu: CPU.CortexM @ sysbus\n     ^\n(dartmonkey) \n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22bafc71_84b8fac6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T20:21:43Z",
+      "side": 1,
+      "message": "I think this should be `make BOARD\u003ddartmonkey test-abort` to build the test executed on next line",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f756c6b_691f7586",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T20:21:43Z",
+      "side": 1,
+      "message": "When I run this on `bloonchipper`, it doesn\u0027t seem to actually run. Do I need to run another command to start it?\n\n```\n./util/renode-ec-launch.sh bloonchipper abort\n\u003e exec renode --console --execute $bin\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/abort.bin\u0027; $elf_ro\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RO/abort.RO.elf\u0027; $elf_rw\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RW/abort.RW.elf\u0027; include @util/renode/bloonchipper.resc; logLevel 3; machine StartGdbServer 3333; start;\n12:17:38.1525 [INFO] Loaded monitor commands from: /opt/renode/scripts/monitor.py\nRenode, version 1.14.0.40778 (81da46c1-202308081623)\n\n(monitor) $bin\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/abort.bin\u0027;  $elf_ro\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RO/abort.RO.elf\u0027;  $elf_rw\u003d\u0027/mnt/host/source/src/platform/ec/build/bloonchipper/abort/RW/abort.RW.elf\u0027;  include @util/renode/bloonchipper.resc;  logLevel 3;  machine StartGdbServer 3333;  start; \n12:17:38.2141 [INFO] Including script: /mnt/host/source/src/platform/ec/util/renode/bloonchipper.resc\n12:17:38.2302 [INFO] System bus created.\n12:17:39.4021 [INFO] sysbus: Loaded SVD: /tmp/renode-1751918/eb1b75d1-d431-4a94-b115-cde15b181cd8.tmp. Name: STM32F40x. Description: STM32F40x.\nStarting emulation...\n(bloonchipper) \n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8fee49c_9f626a21",
+        "filename": "util/renode/bloonchipper.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T20:21:43Z",
+      "side": 1,
+      "message": "@pzierhoffer@antmicro.com, why this address, not `0x08000000`?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6caf4c28_80f787a9",
+        "filename": "util/renode/dartmonkey.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-17T20:21:43Z",
+      "side": 1,
+      "message": "@pzierhoffer@antmicro.com, why this address, not `0x08000000`?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
