@@ -39,6 +39,30 @@
       },
       "revId": "a7de4bd5e076ae3ef76686f41fe13db8932a12f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a88c097_cb47a0ff",
+        "filename": "util/renode-deb-install.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-17T22:17:28Z",
+      "side": 1,
+      "message": "Hmm, but then it doesn\u0027t generalize super well when you change the url to the stable download link above.\n\nI think I should just change the deb file name to the following:\n\n```\n  local deb\u003d\"${download_dir}/renode.deb\"\n```\n\nEither way, sounds like this is okay to submit as is, but I\u0027ll do a follow-up.",
+      "parentUuid": "f03f9cd2_e0d9da0b",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "a7de4bd5e076ae3ef76686f41fe13db8932a12f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
