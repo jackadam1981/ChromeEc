@@ -134,6 +134,7 @@
 
 /* (b/262324344): Enable debugging of EPS state in NVMEM */
 #define CONFIG_NVMEM_DEBUG_EPS
+#define CONFIG_CMD_FLASH_LOG
 
 #ifdef CR50_DEV
 /* Remove console commands to save space. */
@@ -145,7 +146,7 @@
 #undef CONFIG_FLASH
 /* Enable unsafe dev features for CCD in dev builds */
 #define CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
-#define CONFIG_CMD_FLASH_LOG
+#define CONFIG_CMD_FLASH_LOG_UNSAFE
 #define CONFIG_PHYSICAL_PRESENCE_DEBUG_UNSAFE
 #define CONFIG_CMD_ROLLBACK
 #endif
