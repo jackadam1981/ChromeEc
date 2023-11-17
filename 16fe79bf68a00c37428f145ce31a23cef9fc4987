@@ -46,6 +46,30 @@
       },
       "revId": "16fe79bf68a00c37428f145ce31a23cef9fc4987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e1588a_f3f37f9f",
+        "filename": "zephyr/subsys/rollback/rollback_initial_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-17T11:05:55Z",
+      "side": 1,
+      "message": "Interesting, I googled a bit and looks like `.sdata` is used to keep small variables indeed.\n\n\u003e I\u0027m not sure how portable is this, so I think the safest way is to explicit specify a section name.\n\nAgreed.",
+      "parentUuid": "b9550f2f_63dee33a",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "16fe79bf68a00c37428f145ce31a23cef9fc4987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
