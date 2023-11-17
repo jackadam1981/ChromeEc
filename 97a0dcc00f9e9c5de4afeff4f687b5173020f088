@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ce1123_207f79d1",
+        "filename": "include/cros_version.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-17T20:45:17Z",
+      "side": 1,
+      "message": "Typo: zephyr",
+      "range": {
+        "startLine": 37,
+        "startChar": 41,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "97a0dcc00f9e9c5de4afeff4f687b5173020f088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a9fc560_c88a65b0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-17T20:45:17Z",
+      "side": 1,
+      "message": "Zephyr provides `select DEPRECATED`.  [Example](https://github.com/zephyrproject-rtos/zephyr/blob/92fb8b223825bb3d8714017743c453a225eb6dce/soc/arm/nordic_nrf/nrf52/Kconfig.soc#L96)\n\nIf following this pattern causes a build failure on existing boards, then you can just add \"[DEPRECATED]\" to the prompt.",
+      "range": {
+        "startLine": 343,
+        "startChar": 3,
+        "endLine": 343,
+        "endChar": 13
+      },
+      "revId": "97a0dcc00f9e9c5de4afeff4f687b5173020f088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
