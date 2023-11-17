@@ -50,6 +50,7 @@
 
 #if defined(H1_RED_BOARD) || defined(CR50_DEV)
 #define CONFIG_USB_SELECT_PHY
+#define CONFIG_CMD_FLASH_LOG
 #endif
 
 /* Enable getting gpio flags to tell if open drain pins are asserted */
@@ -146,6 +147,7 @@
 /* Enable unsafe dev features for CCD in dev builds */
 #define CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
 #define CONFIG_CMD_FLASH_LOG
+#define CONFIG_CMD_FLASH_LOG_UNSAFE
 #define CONFIG_PHYSICAL_PRESENCE_DEBUG_UNSAFE
 #define CONFIG_CMD_ROLLBACK
 #endif
