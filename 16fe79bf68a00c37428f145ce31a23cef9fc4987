@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bbdf9c4_290c64ab",
+        "filename": "zephyr/subsys/rollback/rollback_initial_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-17T10:21:16Z",
+      "side": 1,
+      "message": "The `rollback_version` variable will be placed in `.data.rollback_version` section, because `-fdata-sections` is enabled. I\u0027m curious why you override this mechanism here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "16fe79bf68a00c37428f145ce31a23cef9fc4987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
