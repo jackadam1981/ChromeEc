@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "748b3077_e5f457ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-11-17T07:14:08Z",
+      "side": 1,
+      "message": "Updated.\n\nIt was a intentional failure because USB pairing is not enabled when I type this commit message.\nWIP CL for USB pairing here: CL:5029612",
+      "parentUuid": "9b469c3a_5262ee75",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "787ed0c33f37c50b98fe6cda4759fda41d08d8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0e5c3330_137115ed",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 42
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a5434c_9c5d2254",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 42
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-11-17T07:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d544084_5c8a0a8e",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "787ed0c33f37c50b98fe6cda4759fda41d08d8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77228ecc_aa5128e6",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38cd32a6_18f0e808",
+        "filename": "zephyr/drivers/one_wire_uart/keyboard.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-11-17T07:14:08Z",
+      "side": 1,
+      "message": "Done.\n\nCurrently there\u0027s no way to pause the producer side (common/usb_update.c), so the only thing I can do is to print something here.\nIf this happens, hopefully hammerd should stop when it detects protocol error.",
+      "parentUuid": "77228ecc_aa5128e6",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "787ed0c33f37c50b98fe6cda4759fda41d08d8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d2f269a_68fb4105",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-11-16T19:22:32Z",
       "side": 1,
       "message": "Nit: Add a bug number.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "787ed0c33f37c50b98fe6cda4759fda41d08d8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f3d6fc_55f7e74c",
+        "filename": "zephyr/drivers/one_wire_uart/keyboard.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-11-17T07:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2f269a_68fb4105",
       "range": {
         "startLine": 37,
         "startChar": 4,
