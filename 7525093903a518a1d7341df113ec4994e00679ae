@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97cced88_3799a618",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-17T22:51:22Z",
+      "side": 1,
+      "message": "Right. It looks like I got the same error when I ran this inside the chroot. For now, we need to run from the Renode nightly, installed on gLinux.",
+      "parentUuid": "903188f6_bfcaeaa6",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22bafc71_84b8fac6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
