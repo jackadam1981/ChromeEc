@@ -16,6 +16,24 @@
       "message": "Why `LED_OFF` here when the other variants have an actual color?",
       "revId": "78cb4bb26f1eb65b1df0e85066897efdf9200984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b955419_52c88a64",
+        "filename": "zephyr/program/skyrim/winterhold/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-11-17T21:20:28Z",
+      "side": 1,
+      "message": "Because for this board, the `LED_PWRS_CHARGE_NEAR_FULL` policy is `LED_OFF`. In all the boards, I\u0027ve duplicated the color usage for `LED_PWRS_CHARGE_NEAR_FULL`.",
+      "parentUuid": "5a2bebde_ee3b6d0c",
+      "revId": "78cb4bb26f1eb65b1df0e85066897efdf9200984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
