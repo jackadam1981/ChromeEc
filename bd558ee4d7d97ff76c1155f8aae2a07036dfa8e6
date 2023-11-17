@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14eafb3b_07ced831",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-17T23:18:24Z",
+      "side": 1,
+      "message": "Red board images are node locked. I think it\u0027s fine if they use the unsafe version. I don\u0027t think you need to make the change to add a unsafe and safe version of the flog console command.",
+      "range": {
+        "startLine": 51,
+        "startChar": 12,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
