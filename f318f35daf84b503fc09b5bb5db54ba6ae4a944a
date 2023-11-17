@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4de9f74_e651a420",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8816,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-17T20:36:49Z",
+      "side": 1,
+      "message": "This buffer isn\u0027t freed during the successful path.",
+      "range": {
+        "startLine": 8816,
+        "startChar": 0,
+        "endLine": 8816,
+        "endChar": 33
+      },
+      "revId": "f318f35daf84b503fc09b5bb5db54ba6ae4a944a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
