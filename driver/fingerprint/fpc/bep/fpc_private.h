@@ -137,8 +137,8 @@ typedef struct {
  * - 0 on success
  * - negative value on error
  */
-int fp_sensor_maintenance(uint8_t *image_data,
-			  fp_sensor_info_t *fp_sensor_info);
+__staticlib int fp_sensor_maintenance(uint8_t *image_data,
+				      fp_sensor_info_t *fp_sensor_info);
 
 /**
  * Get the HWID of the sensor.

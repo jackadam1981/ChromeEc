@@ -11,7 +11,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-void __unused *fpc_malloc(uint32_t size)
+__staticlib_hook void *fpc_malloc(uint32_t size)
 {
 	char *data;
 	int rc;
@@ -24,19 +24,19 @@ void __unused *fpc_malloc(uint32_t size)
 		return NULL;
 }
 
-void __unused fpc_free(void *data)
+__staticlib_hook void fpc_free(void *data)
 {
 	shared_mem_release(data);
 }
 
 /* Not in release */
-void __unused fpc_assert_fail(const char *file, uint32_t line, const char *func,
-			      const char *expr)
+__staticlib_hook void fpc_assert_fail(const char *file, uint32_t line,
+				      const char *func, const char *expr)
 {
 }
 
-void __unused fpc_log_var(const char *source, uint8_t level, const char *format,
-			  ...)
+__staticlib_hook void fpc_log_var(const char *source, uint8_t level,
+				  const char *format, ...)
 {
 	va_list args;
 
