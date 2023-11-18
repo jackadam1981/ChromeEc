@@ -22,6 +22,30 @@
       },
       "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed795782_4b3ec48d",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-18T01:16:05Z",
+      "side": 1,
+      "message": "i think it is useful to have `safe` version if needed, say for feature parity with Ti50 which does implement flog in prod. As for Red Board - `safe` version is smaller, providing more space for other stuff",
+      "parentUuid": "14eafb3b_07ced831",
+      "range": {
+        "startLine": 51,
+        "startChar": 12,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
