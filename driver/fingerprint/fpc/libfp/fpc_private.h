@@ -114,7 +114,7 @@ enum fpc_error_code_internal {
 };
 
 /* FPC specific initialization function to fill their context */
-int fp_sensor_open(void *ctx, uint32_t ctx_size);
+__staticlib int fp_sensor_open(void *ctx, uint32_t ctx_size);
 
 /*
  * Get library version code.
@@ -123,7 +123,7 @@ int fp_sensor_open(void *ctx, uint32_t ctx_size);
  *   y - minor version
  *   z - build index
  */
-const char *fp_sensor_get_version(void);
+__staticlib const char *fp_sensor_get_version(void);
 
 typedef struct {
 	uint32_t num_defective_pixels;
@@ -146,8 +146,8 @@ typedef struct {
  * - 0 on success
  * - negative value on error
  */
-int fp_sensor_maintenance(uint8_t *image_data,
-			  fp_sensor_info_t *fp_sensor_info);
+__staticlib int fp_sensor_maintenance(uint8_t *image_data,
+				      fp_sensor_info_t *fp_sensor_info);
 
 /**
  * Get the HWID of the sensor.
