@@ -122,6 +122,24 @@
       "parentUuid": "6f2633df_d49c353a",
       "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd002e3_aff7b955",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8809,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-11-20T19:01:13Z",
+      "side": 1,
+      "message": "I think it\u0027s not, I meant ASCII value of null is 0, not equal to the ASCII value of 0. https://www.commfront.com/pages/ascii-chart",
+      "parentUuid": "e03a9675_be14e078",
+      "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
