@@ -1587,6 +1587,7 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	if (IS_ENABLED(CONFIG_CHARGER_PROFILE_OVERRIDE) &&
 	    get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
 		sleep_usec = charger_profile_override(&curr);
+
 		if (sleep_usec < 0)
 			charge_problem(PR_CUSTOM, sleep_usec);
 	}
@@ -1687,6 +1688,7 @@ void charger_task(void *u)
 		local_state.is_full = is_full;
 
 		sleep_usec = calculate_sleep_dur(battery_critical, sleep_usec);
+		CPRINTS("---sleep_usec : %d---",sleep_usec);
 		task_wait_event(sleep_usec);
 	}
 }
