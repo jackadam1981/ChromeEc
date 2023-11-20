@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2690b0_4a860dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-11-20T14:23:07Z",
+      "side": 1,
+      "message": "you mention here private library and then mention static libraries. What is the difference between the static libraries and the private libraries? What is a hook to the static library?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "e06e8e931910d2ce24ba03d3315a024375e9394d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d6ef56_68a91724",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-11-20T14:23:07Z",
+      "side": 1,
+      "message": "did you miss the `int` here or this was intended?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "e06e8e931910d2ce24ba03d3315a024375e9394d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
