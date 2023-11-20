@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10abf61f_6df89a19",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8766,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-20T17:30:01Z",
+      "side": 1,
+      "message": "I chose a single contiguous string so that it\u0027ll be easier to copy it by double-click. This is the format we also use for printing a vboot hash. A contiguous string also won\u0027t be folded, avoiding the last few bytes being out of sight.\n\nThe help message clarifies it\u0027s a hex. I thiink the chance of misinterpretation (as a large decimal integer?) is negligible.",
+      "parentUuid": "58da6806_4cb973aa",
+      "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49957b7f_c0b2c9c9",
         "filename": "util/ectool.cc",
         "patchSetId": 10
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93af416d_54ffcb63",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8788,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-20T17:30:01Z",
+      "side": 1,
+      "message": "Yes, the host command buffer sizes are (currently) much larger than a config size. It probabaly will continue to be so based on how infrequently we changed struct board_batt_params.",
+      "parentUuid": "49957b7f_c0b2c9c9",
+      "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f2633df_d49c353a",
         "filename": "util/ectool.cc",
         "patchSetId": 10
@@ -48,6 +84,24 @@
       "writtenOn": "2023-11-19T14:26:02Z",
       "side": 1,
       "message": "I think it will return an incorrect length. String usually ends at null character right which is 0 in ASCII, I am assuming it will stop count when first 0 is encountered in input",
+      "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f41095_c8e346b0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8809,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-20T17:30:01Z",
+      "side": 1,
+      "message": "\u003e String usually ends at null character right which is 0 in ASCII, \n\nA null character is \u0027\\0\u0027 in ASCII, not \u00270\u0027 (\u003d0x30).",
+      "parentUuid": "6f2633df_d49c353a",
       "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
