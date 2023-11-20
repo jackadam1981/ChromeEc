@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-if PLATFORM_EC_USB_PD_CONTROLLER
+if PLATFORM_EC_USB_PD_TCPMV3
 
 menuconfig USB_PD_ALTMODE
 	bool "Configure USB-C Alternate modes"
@@ -53,4 +53,4 @@ endif # USB_PD_ALTMODE_INTEL
 
 endif # USB_PD_ALTMODE
 
-endif # PLATFORM_EC_USB_PD_CONTROLLER
+endif # PLATFORM_EC_USB_PD_TCPMV3
