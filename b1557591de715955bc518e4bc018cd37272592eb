@@ -16,6 +16,24 @@
       "message": "We should probably mention we\u0027re deleting these because they conflict with upstream.",
       "revId": "b1557591de715955bc518e4bc018cd37272592eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9a8561_6db4a71d",
+        "filename": "zephyr/boards/arm/mec172x/mec172x.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-20T11:37:19Z",
+      "side": 1,
+      "message": "good idea, added",
+      "parentUuid": "f020b91c_4d1130d5",
+      "revId": "b1557591de715955bc518e4bc018cd37272592eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
