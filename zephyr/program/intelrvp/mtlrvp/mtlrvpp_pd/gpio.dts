@@ -8,5 +8,9 @@
 		pd_p0p1_intr: tp-gpio95 {
 			gpios = <&gpio9 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
+
+		pd_power_p0p1_intr: tp-gpio40 {
+			gpios = <&gpio4 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
 	};
 };
