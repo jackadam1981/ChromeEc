@@ -46,6 +46,29 @@
       },
       "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4074a782_eef7b89c",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-20T17:59:59Z",
+      "side": 1,
+      "message": "can you make the flog command just print the flog. And add a flog_modify command that lets you erase or add flog entries?",
+      "range": {
+        "startLine": 516,
+        "startChar": 7,
+        "endLine": 516,
+        "endChar": 34
+      },
+      "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
