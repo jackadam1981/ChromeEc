@@ -104,6 +104,24 @@
       "parentUuid": "6f2633df_d49c353a",
       "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03a9675_be14e078",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8809,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-11-20T17:36:26Z",
+      "side": 1,
+      "message": "The null character is \"\\0\" not \"0\". Example https://godbolt.org/z/vvxT63bos",
+      "parentUuid": "6f2633df_d49c353a",
+      "revId": "e112341e3c53bbb4c6823cb0ce4d4c88e1106c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
