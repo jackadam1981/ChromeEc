@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3cfac49_c80f54d8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2329,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-20T23:17:38Z",
+      "side": 1,
+      "message": "same value it does. and it is cached in `reserved_size`. this function is only used in `retrieve_nvmem_contents`, so not sure if it needs to be cached beyond that. With LTO it should probably be computed as a constant at compile time.",
+      "parentUuid": "a5485966_65ae13d6",
+      "range": {
+        "startLine": 2328,
+        "startChar": 1,
+        "endLine": 2329,
+        "endChar": 28
+      },
+      "revId": "1998651cee8f3552f4e5cb7a9115fb439feea2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "630d6484_45d7a0c2",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-20T23:08:51Z",
       "side": 1,
       "message": "what\u0027s the point of doing this? The reserved space would still be overwritten in this loop, right?",
+      "range": {
+        "startLine": 2359,
+        "startChar": 0,
+        "endLine": 2362,
+        "endChar": 0
+      },
+      "revId": "1998651cee8f3552f4e5cb7a9115fb439feea2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cca7faa_064640be",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2362,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-20T23:17:38Z",
+      "side": 1,
+      "message": "it clears the other part of nvmem, but preserves reserved space. If object was loaded in earlier iteration, but not in a new one - it will still be preserved. I don\u0027t know if clearing the other nvmem part is needed. I can remove it, but not sure why it existed in the first place. I don\u0027t know how to trigger properly the second run.",
+      "parentUuid": "630d6484_45d7a0c2",
       "range": {
         "startLine": 2359,
         "startChar": 0,
