@@ -2,6 +2,13 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+config USB_DEVICE_GOOGLE_UPDATE
+	bool "USB Google support"
+	depends on USB_DEVICE_STACK
+	default n
+	help
+	  Enable Google vender specific class.
+
 config USB_DC_HID_KEYBOARD
 	bool "Enable support USB HID keyboard"
 	depends on USB_DEVICE_STACK

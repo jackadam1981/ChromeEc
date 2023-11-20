@@ -54,7 +54,8 @@ enum exit_values {
 
 struct usb_endpoint {
 	struct libusb_device_handle *devh;
-	uint8_t ep_num;
+	uint8_t in_ep_num;
+	uint8_t out_ep_num;
 	int chunk_len;
 };
 
@@ -269,7 +270,7 @@ static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 	/* Send data out */
 	if (outbuf && outlen) {
 		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num, outbuf, outlen,
+		r = libusb_bulk_transfer(uep->devh, uep->out_ep_num, outbuf, outlen,
 					 &actual, 2000);
 		if (r < 0) {
 			USB_ERROR("libusb_bulk_transfer", r);
@@ -285,7 +286,7 @@ static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 	/* Read reply back */
 	if (inbuf && inlen) {
 		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80, inbuf,
+		r = libusb_bulk_transfer(uep->devh, uep->in_ep_num, inbuf,
 					 inlen, &actual, 5000);
 		if (r < 0) {
 			USB_ERROR("libusb_bulk_transfer", r);
@@ -318,9 +319,26 @@ static int find_endpoint(const struct libusb_interface_descriptor *iface,
 	if (iface->bInterfaceClass == 255 &&
 	    iface->bInterfaceSubClass == SUBCLASS &&
 	    iface->bInterfaceProtocol == PROTOCOL && iface->bNumEndpoints) {
-		ep = &iface->endpoint[0];
-		uep->ep_num = ep->bEndpointAddress & 0x7f;
-		uep->chunk_len = ep->wMaxPacketSize;
+		if (iface->bNumEndpoints == 1) {
+			ep = &iface->endpoint[0];
+			uep->out_ep_num = ep->bEndpointAddress & 0x7f;
+			uep->in_ep_num = uep->out_ep_num | 0x80;
+			uep->chunk_len = ep->wMaxPacketSize;
+		} else if (iface->bNumEndpoints == 2) {
+			for (int i = 0; i < iface->bNumEndpoints; i++) {
+				ep = &iface->endpoint[i];
+				if ((ep->bEndpointAddress & 0x80) == 0x80) {
+					uep->in_ep_num = ep->bEndpointAddress;
+				} else {
+					uep->out_ep_num = ep->bEndpointAddress;
+				}
+				// TODO: seperate
+				uep->chunk_len = ep->wMaxPacketSize;
+			}
+		} else {
+			USB_ERROR("too many endpoints", iface->bNumEndpoints);
+			return 0;
+		}
 		return 1;
 	}
 
@@ -472,8 +490,8 @@ static void usb_findit(uint16_t vid, uint16_t pid, char *serialno,
 		shut_down(uep);
 	}
 
-	printf("found interface %d endpoint %d, chunk_len %d\n", iface_num,
-	       uep->ep_num, uep->chunk_len);
+	printf("found interface %d, IN ep 0x%x,  OUT ep 0x%x, chunk_len %d\n", iface_num,
+	       uep->in_ep_num, uep->out_ep_num, uep->chunk_len);
 
 	libusb_set_auto_detach_kernel_driver(uep->devh, 1);
 	r = libusb_claim_interface(uep->devh, iface_num);
@@ -509,7 +527,7 @@ static int transfer_block(struct usb_endpoint *uep,
 	}
 
 	/* Now get the reply. */
-	r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80, (void *)&reply,
+	r = libusb_bulk_transfer(uep->devh, uep->in_ep_num, (void *)&reply,
 				 sizeof(reply), &actual, 5000);
 	if (r) {
 		if (r == -7) {
@@ -764,7 +782,7 @@ static void setup_connection(struct transfer_descriptor *td)
 	int actual = 0;
 
 	/* Flush all data from endpoint to recover in case of error. */
-	while (!libusb_bulk_transfer(td->uep.devh, td->uep.ep_num | 0x80,
+	while (!libusb_bulk_transfer(td->uep.devh, td->uep.in_ep_num,
 				     (void *)&inbuf, td->uep.chunk_len, &actual,
 				     10)) {
 		printf("flush\n");
