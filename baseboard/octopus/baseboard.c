@@ -185,12 +185,10 @@ void chipset_do_shutdown(void)
 	power_5v_enable(task_get_current(), 0);
 
 	/*
-	 * Shutdown the 3.3V rail and wait for it to go down. We cannot wait
-	 * for the 5V rail since other tasks may be using it.
+	 * Shutdown the 3.3V rail. We cannot wait for the rails since other
+	 * tasks may be using it.
 	 */
 	gpio_set_level(GPIO_EN_PP3300, 0);
-	while (gpio_get_level(GPIO_PP3300_PG))
-		;
 
 #ifdef IT83XX_ESPI_INHIBIT_CS_BY_PAD_DISABLED
 	/*
