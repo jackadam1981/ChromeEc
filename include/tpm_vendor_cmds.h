@@ -276,6 +276,16 @@ enum wp_options {
 	WP_FOLLOW,
 };
 
+/*
+ * Subcommand code, used to set write protect.
+ */
+#define WPV_UPDATE	     BIT(0)
+#define WPV_ENABLE	     BIT(1)
+#define WPV_FORCE	     BIT(2)
+#define WPV_ATBOOT_SET	     BIT(3)
+#define WPV_ATBOOT_ENABLE    BIT(4)
+#define WPV_FWMP_FORCE_WP_EN BIT(5)
+
 /* VENDOR_CC_USER_PRES options. */
 enum user_pres_options {
 	USER_PRES_ENABLE = BIT(0),
@@ -287,6 +297,9 @@ struct user_pres_response {
 	uint8_t state; /* The user presence state. ENABLE or DISABLE */
 	uint64_t last_press; /* Time since last press */
 } __packed;
+
+/* Maximum size of a response = SHA-256 hash or 1-32 bytes of data */
+#define SPI_HASH_MAX_RESPONSE_BYTES 32
 
 /*
  * The TPMv2 Spec mandates that vendor-specific command codes have bit 29 set,
@@ -351,6 +364,8 @@ struct vendor_cc_spi_hash_request {
 	uint32_t size; /* Size in bytes to hash/read */
 } __packed;
 
+/*****************************************************************************/
+/* Ti50 Specific Structs */
 struct ti50_stats_v0 {
 	/* filesystem initialization time in ms */
 	uint32_t fs_init_time;
@@ -397,6 +412,9 @@ struct ti50_stats_v2 {
 #define METRICSV_CCD_MODE_SHIFT 3
 #define METRICSV_CCD_MODE_MASK	(1 << METRICSV_CCD_MODE_SHIFT)
 
+/* End Ti50 Specific Structs */
+/*****************************************************************************/
+/* Cr50 Specific Structs */
 #define CR50_METRICSV_RDD_IS_DETECTED_SHIFT		0
 #define CR50_METRICSV_RDD_KEEPALIVE_EN_SHIFT		1
 #define CR50_METRICSV_CCD_MODE_EN_SHIFT			2
@@ -426,18 +444,6 @@ struct cr50_stats_response {
 	/* Time since last cold reset */
 	uint32_t cold_reset_time_s;
 };
-
-/* Maximum size of a response = SHA-256 hash or 1-32 bytes of data */
-#define SPI_HASH_MAX_RESPONSE_BYTES 32
-
-/*
- * Subcommand code, used to set write protect.
- */
-#define WPV_UPDATE	     BIT(0)
-#define WPV_ENABLE	     BIT(1)
-#define WPV_FORCE	     BIT(2)
-#define WPV_ATBOOT_SET	     BIT(3)
-#define WPV_ATBOOT_ENABLE    BIT(4)
-#define WPV_FWMP_FORCE_WP_EN BIT(5)
+/* End Cr50 Specific Structs */
 
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */
