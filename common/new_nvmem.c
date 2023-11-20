@@ -559,8 +559,9 @@ test_export_static struct nn_page_header *list_element_to_ph(size_t el)
  * If not enough bytes are available in the storage to satisfy the request -
  * log error and reboot.
  */
-static void nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
-			     void *buf, bool container_fetch)
+static enum ec_error_list nvmem_read_bytes(struct access_tracker *at,
+					   size_t num_bytes, void *buf,
+					   bool container_fetch)
 {
 	size_t togo;
 	struct nvmem_failure_payload fp;
@@ -585,7 +586,7 @@ static void nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
 			memcpy(buf, page_cursor(&at->mt), num_bytes);
 
 		at->mt.data_offset += num_bytes;
-		return;
+		return EC_SUCCESS;
 	}
 
 	/* Data is split between pages. */
@@ -623,13 +624,8 @@ static void nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
 			report_failure(&fp, sizeof(fp.underrun_size));
 		}
 
-		/*
-		 * Simulate reading of the container header filled with all
-		 * ones, which would be an indication of the end of storage,
-		 * the caller will roll back ph, data_offset and list index as
-		 * appropriate.
-		 */
-		memset(buf, 0xff, togo);
+		log_no_payload_failure(NVMEMF_READ_UNDERRUN_SILENT);
+		return EC_ERROR_TRY_AGAIN;
 	} else if (at->mt.ph) {
 		if (at->mt.ph->data_offset < (sizeof(*at->mt.ph) + togo)) {
 			fp.failure_type = NVMEMF_PH_SIZE_MISMATCH;
@@ -644,7 +640,7 @@ static void nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
 		at->mt.data_offset = sizeof(*at->mt.ph) + togo;
 	}
 
-	return;
+	return EC_SUCCESS;
 }
 
 /*
@@ -752,6 +748,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 {
 	uint32_t salt[4];
 	uint8_t ctype;
+	enum ec_error_list rv;
 
 	salt[3] = 0;
 
@@ -759,11 +756,11 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 		size_t aligned_remaining_size;
 		struct nn_container temp_ch;
 
-		nvmem_read_bytes(at, sizeof(temp_ch), &temp_ch, true);
+		rv = nvmem_read_bytes(at, sizeof(temp_ch), &temp_ch, true);
 		ctype = temp_ch.container_type;
 
 		/* Should we check for the container being all 0xff? */
-		if (ctype == NN_OBJ_ERASED) {
+		if (ctype == NN_OBJ_ERASED || rv == EC_ERROR_TRY_AGAIN) {
 			/* Roll back container size. */
 			at->mt.data_offset = at->ct.data_offset;
 			at->mt.ph = at->ct.ph;
@@ -796,8 +793,11 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 					NVMEMF_INCONSISTENT_FLASH_CONTENTS);
 			}
 
-			nvmem_read_bytes(at, aligned_remaining_size, ch + 1,
-					 false);
+			rv = nvmem_read_bytes(at, aligned_remaining_size,
+					      ch + 1, false);
+			if (rv != EC_SUCCESS)
+				report_no_payload_failure(
+					NVMEMF_INCONSISTENT_FLASH_CONTENTS);
 
 			salt[0] = at->ct.ph->page_number;
 			salt[1] = at->ct.data_offset;
@@ -878,9 +878,12 @@ static enum ec_error_list finalize_delimiter(const struct nn_container *del)
 static enum ec_error_list add_final_delimiter(void)
 {
 	const struct nn_container *del;
+	enum ec_error_list rv;
 
 	del = page_cursor(&controller_at.mt);
-	add_delimiter();
+	rv = add_delimiter();
+	if (rv != EC_SUCCESS)
+		return rv;
 
 	return finalize_delimiter(del);
 }
@@ -945,7 +948,8 @@ test_export_static enum ec_error_list compact_nvmem(void)
 
 		case EC_ERROR_MEMORY_ALLOCATION:
 			shared_mem_release(ch);
-			return EC_SUCCESS;
+			log_no_payload_failure(NVMEMF_COMPACT_ERROR);
+			return EC_ERROR_MEMORY_ALLOCATION;
 
 		default:
 			/*
@@ -970,6 +974,7 @@ test_export_static enum ec_error_list compact_nvmem(void)
 			if (save_container(ch) != EC_SUCCESS) {
 				ccprintf("%s: Saving FAILED\n", __func__);
 				shared_mem_release(ch);
+				log_no_payload_failure(NVMEMF_COMPACT_SAVE);
 				return EC_ERROR_INVAL;
 			}
 			saved_object_count++;
@@ -992,7 +997,10 @@ test_export_static enum ec_error_list compact_nvmem(void)
 
 			if (saved_object_count) {
 				del = page_cursor(&controller_at.mt);
-				add_delimiter();
+				rv = add_delimiter();
+				if (rv != EC_SUCCESS)
+					log_no_payload_failure(
+						NVMEMF_COMPACT_DELIMETER);
 			}
 
 			release_flash_page(&at);
@@ -1004,7 +1012,11 @@ test_export_static enum ec_error_list compact_nvmem(void)
 #endif
 
 			if (saved_object_count) {
-				finalize_delimiter(del);
+				rv = finalize_delimiter(del);
+				if (rv != EC_SUCCESS)
+					log_no_payload_failure(
+						NVMEMF_COMPACT_DELIMETER);
+
 				saved_object_count = 0;
 			}
 			/*
@@ -1019,17 +1031,22 @@ test_export_static enum ec_error_list compact_nvmem(void)
 
 	shared_mem_release(ch);
 
-	if (final_delimiter_needed)
-		add_final_delimiter();
+	if (final_delimiter_needed) {
+		rv = add_final_delimiter();
+		if (rv != EC_SUCCESS)
+			log_no_payload_failure(NVMEMF_COMPACT_FINAL);
+	}
 
-	CPRINTS("Compaction done, went from %zd to %zd bytes", before,
-		total_used_size());
+	CPRINTS("Compaction done, went from %zd to %zd bytes, status %d",
+		before, total_used_size(), rv);
 
 	/* (b/262324344): debugging EPS status. */
 #ifdef CONFIG_NVMEM_DEBUG_EPS
-	eps_seed_len = tpm_nv_eps_len();
+	if (eps_seed_len) /* Only record new error */
+		eps_seed_len = tpm_nv_eps_len();
 	if (eps_seed_len != ri.size - sizeof(gp.EPSeed.t.size))
 		CPRINTS("%s: EPS after is zero, rv is %d", __func__, rv);
+	log_no_payload_failure(NVMEMF_COMPACTION_ERROR_EPS);
 #endif
 	return rv;
 }
@@ -1102,7 +1119,7 @@ static enum ec_error_list save_object(const struct nn_container *cont)
 /*
  * Functions to check if the passed in blob is all zeros or all 0xff, in both
  * cases would be considered an uninitialized value. This is used when
- * marshaling certaing structures and PCRs.
+ * marshaling certain structures and PCRs.
  */
 static bool is_all_value(const uint8_t *p, size_t size, uint8_t value)
 {
@@ -1619,6 +1636,8 @@ static enum ec_error_list verify_empty_page(void *ph)
 
 	for (i = 0; i < (CONFIG_FLASH_BANK_SIZE / sizeof(*word_p)); i++) {
 		if (word_p[i] != (uint32_t)~0) {
+			log_no_payload_failure(
+				NVMEMF_NVMEM_CORRUPTED_EMPTY_PAGE);
 			CPRINTS("%s: corrupted page at %pP!", __func__, word_p);
 			return flash_physical_erase(
 				(uintptr_t)word_p - CONFIG_PROGRAM_MEMORY_BASE,
@@ -2283,6 +2302,8 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
 			     dpt.ct.ph))
 				report_no_payload_failure(
 					NVMEMF_CORRUPTED_INIT);
+			log_no_payload_failure(
+				NVMEMF_NVMEM_ERASE_INVALID_DELIMITER);
 			/*
 			 * Let's erase the page where the last object spilled
 			 * into.
