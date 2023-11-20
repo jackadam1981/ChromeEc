@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39c60870_9285f54a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-20T12:16:19Z",
+      "side": 1,
+      "message": "Instead of using `unused-pins` we should use GPIO hogging mechanism provided by Zephyr.",
+      "revId": "aeaa7598a8e5c1b54c38c9f65a276b4bcea54f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
