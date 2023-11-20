@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27c3d90e_750e45c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-20T14:35:51Z",
+      "side": 1,
+      "message": "That\u0027s correct - the current Renode version requires this value to be provided if we want to enable MPU",
+      "parentUuid": "97cced88_3799a618",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22bafc71_84b8fac6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -238,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc9e2a34_efac1c3f",
+        "filename": "util/renode/bloonchipper.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-20T14:35:51Z",
+      "side": 1,
+      "message": "This might be a leftover from the beginning of the project - we\u0027ll double check it.\n\nActually, it should most likely say `cpu VectorTableOffset 0x08000000` - we\u0027re running a CI to double check it",
+      "parentUuid": "b8fee49c_9f626a21",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6caf4c28_80f787a9",
         "filename": "util/renode/dartmonkey.resc",
         "patchSetId": 10
@@ -249,6 +297,30 @@
       "writtenOn": "2023-11-17T20:21:43Z",
       "side": 1,
       "message": "@pzierhoffer@antmicro.com, why this address, not `0x08000000`?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673864bf_9643923d",
+        "filename": "util/renode/dartmonkey.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-20T14:35:51Z",
+      "side": 1,
+      "message": "As in bloonchipper, this might be a leftover from the beginning of the project - we\u0027ll double check it.",
+      "parentUuid": "6caf4c28_80f787a9",
       "range": {
         "startLine": 34,
         "startChar": 4,

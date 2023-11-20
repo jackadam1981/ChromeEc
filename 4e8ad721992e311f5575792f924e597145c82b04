@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f219c0a9_ae2f59dd",
+        "filename": "util/renode/bloonchipper.resc",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-20T14:35:51Z",
+      "side": 1,
+      "message": "For the record, these three lines are for convenience only and match the layout of directories in https://github.com/antmicro/cros-platform-ec-tester/ - I believe it\u0027s safe to remove them (they are commented out anyway",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3cd2ad_6369d9fa",
+        "filename": "util/renode/dartmonkey.resc",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-20T14:35:51Z",
+      "side": 1,
+      "message": "same as in bloonchipper.resc - these three lines can be safely removed",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eae6fc1_ecd54aad",
+        "filename": "util/renode/nuvoton_npcx9.repl",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-20T14:35:51Z",
+      "side": 1,
+      "message": "For the record, we are going to push out a significant update to this file today. We can, of course, create a CL after this one is merged.\n\nAlso for the record, I believe the best and most sustainable way to manage it would be to keep these files only in Renode and have your scripts load them from the Renode installation. There will still be a repl file on your side (e.g. to define the write-protect pin), but in general they should be very minor.\n\nHaving said that, I believe it makes sense to start by having them in your repository, like you propose in this CL.",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
