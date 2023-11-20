@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036eac63_0ad17030",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-20T18:58:45Z",
+      "side": 1,
+      "message": "Not sure if this was considered but if k is always EC_RES_##v, why don\u0027t we use another macro to simplify EC_STATUS_TEXT:\n\n    EC_MAP_ITEM_EC_RES(SUCCESS),\n    EC_MAP_ITEM_EC_RES(INVALID_COMMAND),\n    ...\n\n?",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 19
+      },
+      "revId": "25916f000ca86da46d13fb96b51287d417c0c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
