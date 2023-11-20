@@ -93,6 +93,30 @@
       },
       "revId": "1998651cee8f3552f4e5cb7a9115fb439feea2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42d37a7_7b8dc30d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2362,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-20T23:32:34Z",
+      "side": 1,
+      "message": "Oh, `memset(res_bitmap, 0, sizeof(res_bitmap));` had to be removed.",
+      "parentUuid": "4cca7faa_064640be",
+      "range": {
+        "startLine": 2359,
+        "startChar": 0,
+        "endLine": 2362,
+        "endChar": 0
+      },
+      "revId": "1998651cee8f3552f4e5cb7a9115fb439feea2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
