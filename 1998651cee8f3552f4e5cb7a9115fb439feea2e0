@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5485966_65ae13d6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2329,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-20T23:08:51Z",
+      "side": 1,
+      "message": "doesn\u0027t this always return the same value? Should it be cached then?",
+      "range": {
+        "startLine": 2328,
+        "startChar": 1,
+        "endLine": 2329,
+        "endChar": 28
+      },
+      "revId": "1998651cee8f3552f4e5cb7a9115fb439feea2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630d6484_45d7a0c2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2362,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-20T23:08:51Z",
+      "side": 1,
+      "message": "what\u0027s the point of doing this? The reserved space would still be overwritten in this loop, right?",
+      "range": {
+        "startLine": 2359,
+        "startChar": 0,
+        "endLine": 2362,
+        "endChar": 0
+      },
+      "revId": "1998651cee8f3552f4e5cb7a9115fb439feea2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
