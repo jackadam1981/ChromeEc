@@ -4597,6 +4597,7 @@
  * When this config option is enabled, one of the following must be enabled:
  *	CONFIG_USB_PD_TCPMV1 - legacy power delivery state machine
  *	CONFIG_USB_PD_TCPMV2 - current power delivery state machine
+ *	CONFIG_USB_PD_TCPMV3 - power delivery controller state machine
  */
 #undef CONFIG_USB_POWER_DELIVERY
 
@@ -4619,6 +4620,11 @@
  * enabled otherwise an error will be emitted.
  */
 #undef CONFIG_USB_PD_TCPMV2
+
+/*
+ * Enables Version 3 of the Power Delivery state machine
+ */
+#undef CONFIG_USB_PD_TCPMV3
 
 /*
  * Enable dynamic PDO selection.
