@@ -1587,6 +1587,7 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	if (IS_ENABLED(CONFIG_CHARGER_PROFILE_OVERRIDE) &&
 	    get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
 		sleep_usec = charger_profile_override(&curr);
+
 		if (sleep_usec < 0)
 			charge_problem(PR_CUSTOM, sleep_usec);
 	}
