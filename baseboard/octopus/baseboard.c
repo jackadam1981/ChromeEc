@@ -181,16 +181,9 @@ void chipset_do_shutdown(void)
 	/* Disable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 0);
 
-	/* Disable 5.0V and 3.3V rails, and wait until they power down. */
+	/* Disable 5.0V and 3.3V rails */
 	power_5v_enable(task_get_current(), 0);
-
-	/*
-	 * Shutdown the 3.3V rail and wait for it to go down. We cannot wait
-	 * for the 5V rail since other tasks may be using it.
-	 */
 	gpio_set_level(GPIO_EN_PP3300, 0);
-	while (gpio_get_level(GPIO_PP3300_PG))
-		;
 
 #ifdef IT83XX_ESPI_INHIBIT_CS_BY_PAD_DISABLED
 	/*
