@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93d0b6b0_9ea5bd47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-21T20:47:57Z",
+      "side": 1,
+      "message": "what does this change have to do with a skyrim bug?\nthese partner device owners won\u0027t have access to such a bug,\nso it\u0027s not really helpful when they review these changes.",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "bb7b5bd4035f1ee4e3466def235652b5cd454171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb6cf794_27370d04",
         "filename": "zephyr/program/rex/karis/led_policy.dtsi",
         "patchSetId": 3
