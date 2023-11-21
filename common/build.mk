@@ -12,15 +12,6 @@ _common_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 common-y=util.o
 common-y+=version.o printf.o queue.o queue_policies.o
 
-common-$(CONFIG_ACCELGYRO_BMA255)+=math_util.o
-common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
-common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o
-common-$(CONFIG_ACCELGYRO_LSM6DSM)+=math_util.o
-common-$(CONFIG_ACCELGYRO_LSM6DSO)+=math_util.o
-common-$(CONFIG_ACCEL_LIS2DW12)+=math_util.o
-common-$(CONFIG_ACCEL_LIS2DH)+=math_util.o
-common-$(CONFIG_ACCEL_KXCJ9)+=math_util.o
-common-$(CONFIG_ACCEL_KX022)+=math_util.o
 ifneq ($(CORE),cortex-m)
 common-$(CONFIG_AES)+=aes.o
 endif
@@ -29,10 +20,6 @@ common-$(CONFIG_AP_RO_VERIFICATION)+=ap_ro_integrity_check.o
 common-$(CONFIG_CMD_ADC)+=adc.o
 common-$(HAS_TASK_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
-common-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
-common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
-common-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
-common-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 common-$(CONFIG_BASE32)+=base32.o
 common-$(CONFIG_BASE64)+=base64.o
@@ -60,7 +47,6 @@ common-$(CONFIG_EC_EFS_SUPPORT)+=ec_comm.o ec_efs.o
 common-$(CONFIG_EXTRACT_PRINTF_STRINGS)+=cmsg.o
 common-$(CONFIG_EXTENSION_COMMAND)+=extension.o
 common-$(CONFIG_EXTPOWER_GPIO)+=extpower_gpio.o
-common-$(CONFIG_FANS)+=fan.o pwm.o
 common-$(CONFIG_FACTORY_MODE)+=factory_mode.o
 common-$(CONFIG_FLASH)+=flash.o
 common-$(CONFIG_FLASH_LOG)+=flash_log.o flash_log_vc.o
@@ -82,11 +68,8 @@ common-$(CONFIG_LED_COMMON)+=led_common.o
 common-$(CONFIG_LED_POLICY_STD)+=led_policy_std.o
 common-$(CONFIG_LED_PWM)+=led_pwm.o
 common-$(CONFIG_LED_ONOFF_STATES)+=led_onoff_states.o
-common-$(CONFIG_LID_ANGLE)+=motion_lid.o math_util.o
-common-$(CONFIG_LID_ANGLE_UPDATE)+=lid_angle.o
 common-$(CONFIG_LID_SWITCH)+=lid_switch.o
 common-$(CONFIG_LPC)+=acpi.o port80.o ec_features.o
-common-$(CONFIG_MAG_CALIBRATE)+= mag_cal.o math_util.o vec3.o mat33.o mat44.o
 common-$(CONFIG_MKBP_EVENT)+=mkbp_event.o
 common-$(CONFIG_PECI_COMMON)+=peci.o
 common-$(CONFIG_PHYSICAL_PRESENCE)+=physical_presence.o
@@ -94,14 +77,10 @@ common-$(CONFIG_PINWEAVER)+=pinweaver_cr50.o
 common-$(CONFIG_POWER_BUTTON)+=power_button.o
 common-$(CONFIG_POWER_BUTTON_X86)+=power_button_x86.o
 common-$(CONFIG_PSTORE)+=pstore_commands.o
-common-$(CONFIG_PWM)+=pwm.o
-common-$(CONFIG_PWM_KBLIGHT)+=pwm_kblight.o
-common-$(CONFIG_KEYBOARD_BACKLIGHT)+=keyboard_backlight.o
 common-$(CONFIG_RMA_AUTH)+=rma_auth.o
 common-$(CONFIG_RSA)+=rsa.o
 common-$(CONFIG_RWSIG)+=rwsig.o vboot/common.o
 common-$(CONFIG_RWSIG_TYPE_RWSIG)+=vboot/vb21_lib.o
-common-$(CONFIG_MATH_UTIL)+=math_util.o
 common-$(CONFIG_SHA1)+= sha1.o
 common-$(CONFIG_SHA256)+=sha256.o
 common-$(CONFIG_SOFTWARE_CLZ)+=clz.o
@@ -120,7 +99,6 @@ common-$(CONFIG_TPM_I2CP)+=i2cp_tpm.o
 common-$(CONFIG_U2F)+=u2f.o
 common-$(CONFIG_USB_CONSOLE_STREAM)+=usb_console_stream.o
 common-$(CONFIG_USB_I2C)+=usb_i2c.o
-common-$(CONFIG_USB_PD_LOGGING)+=event_log.o pd_log.o
 common-$(CONFIG_VBOOT_HASH)+=sha256.o vboot_hash.o
 common-$(CONFIG_VOLUME_BUTTONS)+=button.o
 common-$(CONFIG_VSTORE)+=vstore.o
@@ -134,10 +112,6 @@ common-$(HAS_TASK_PDCMD)+=host_command_pd.o
 common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
-
-ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
-common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
-endif
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o

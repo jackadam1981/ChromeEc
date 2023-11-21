@@ -7,9 +7,6 @@
 
 CONSOLE_CHANNEL(CC_COMMAND,      "command")
 CONSOLE_CHANNEL(CC_ACCEL,        "accel")
-#ifdef CONFIG_AUDIO_CODEC
-CONSOLE_CHANNEL(CC_AUDIO_CODEC,  "audio_codec")
-#endif
 #ifdef CONFIG_CEC
 CONSOLE_CHANNEL(CC_CEC, "cec")
 #endif
@@ -61,9 +58,6 @@ CONSOLE_CHANNEL(CC_MOTION_SENSE, "motionsense")
 CONSOLE_CHANNEL(CC_PD_HOST_CMD,  "pdhostcm")
 #endif
 CONSOLE_CHANNEL(CC_PORT80,       "port80")
-#if defined(CONFIG_PWM) || defined(CONFIG_FANS)
-CONSOLE_CHANNEL(CC_PWM,          "pwm")
-#endif
 CONSOLE_CHANNEL(CC_SPI,          "spi")
 #ifdef CONFIG_RBOX
 CONSOLE_CHANNEL(CC_RBOX,         "rbox")
@@ -89,8 +83,5 @@ CONSOLE_CHANNEL(CC_THERMAL,      "thermal")
 CONSOLE_CHANNEL(CC_TPM,          "tpm")
 CONSOLE_CHANNEL(CC_USB,          "usb")
 CONSOLE_CHANNEL(CC_USBCHARGE,    "usbcharge")
-#if defined(CONFIG_USB_POWER_DELIVERY) || defined(CONFIG_USB_PD_TCPC)
-CONSOLE_CHANNEL(CC_USBPD,        "usbpd")
-#endif
 CONSOLE_CHANNEL(CC_VBOOT,        "vboot")
 CONSOLE_CHANNEL(CC_HOOK,         "hook")
