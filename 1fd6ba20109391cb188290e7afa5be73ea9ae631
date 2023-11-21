@@ -16,6 +16,24 @@
       "message": "I\u0027ve started uploading the TCPMv3 code. It\u0027s not ready for review but please take a look to see if I\u0027m on the right track. A couple areas to note: The intel code needs to be folded into the TCPMv3 code, but this will be the last thing done. I\u0027ve added a phandle to the PDC but it\u0027s not being used because I was using a hacky way of getting the the handle to the PDC in my proof of concept code. I\u0027ll upload more code later after addressing some comments on the design doc.",
       "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f4b0c9_2e51a7ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-11-21T17:52:48Z",
+      "side": 1,
+      "message": "I haven\u0027t fully digested the changes yet, but I think the stack is broken up well.",
+      "parentUuid": "abf21b98_cd6c10cc",
+      "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
