@@ -36,13 +36,11 @@ static struct host_cmd_handler_args *pending_args;
 /* Verify Boot Mode */
 static int g_vboot_mode;
 
-#ifndef CONFIG_LPC
 /*
  * Simulated memory map.  Must be word-aligned, because some of the elements
  * in the memory map are words.
  */
 static uint8_t host_memmap[EC_MEMMAP_SIZE] __aligned(4);
-#endif
 
 static enum {
 	HCDEBUG_OFF,     /* No host command debug output */
@@ -91,11 +89,7 @@ static uint32_t hc_suppressed_cnt[ARRAY_SIZE(hc_suppressed_cmd)];
 
 uint8_t *host_get_memmap(int offset)
 {
-#ifdef CONFIG_LPC
-	return lpc_get_memmap_range() + offset;
-#else
 	return host_memmap + offset;
-#endif
 }
 
 int host_get_vboot_mode(void)
@@ -521,7 +515,6 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_TEST,
 		     host_command_read_test,
 		     EC_VER_MASK(0));
 
-#ifndef CONFIG_LPC
 /*
  * Host command to read memory map is not needed on LPC, because LPC can
  * directly map the data to the host's memory space.
@@ -552,7 +545,6 @@ host_command_read_memmap(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP,
 		     host_command_read_memmap,
 		     EC_VER_MASK(0));
-#endif
 
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)

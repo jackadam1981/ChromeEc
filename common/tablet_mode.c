@@ -125,11 +125,8 @@ static void gmr_tablet_switch_interrupt_debounce(void)
 	 * driver to clear it when lid goes into laptop zone.
 	 */
 
-	if (!IS_ENABLED(CONFIG_LID_ANGLE) || gmr_sensor_at_360)
-		tablet_set_mode(gmr_sensor_at_360);
+	tablet_set_mode(gmr_sensor_at_360);
 
-	if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) && gmr_sensor_at_360)
-		lid_angle_peripheral_enable(0);
 }
 DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
 

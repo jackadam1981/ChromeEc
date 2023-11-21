@@ -105,11 +105,6 @@
 /* Also use the cr50 as a second factor authentication */
 #define CONFIG_U2F
 
-/* Additional FIPS KAT tests. */
-#define CONFIG_FIPS_RSA2048
-#define CONFIG_FIPS_SW_HMAC_DRBG
-#define CONFIG_FIPS_AES_CBC_256
-
 /* USB configuration */
 #define CONFIG_USB
 #define CONFIG_USB_CONSOLE_STREAM
