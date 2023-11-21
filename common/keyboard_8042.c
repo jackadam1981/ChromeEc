@@ -15,7 +15,6 @@
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
-#include "lightbar.h"
 #include "lpc.h"
 #include "power_button.h"
 #include "queue.h"

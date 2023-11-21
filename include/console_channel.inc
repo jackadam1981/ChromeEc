@@ -7,9 +7,6 @@
 
 CONSOLE_CHANNEL(CC_COMMAND,      "command")
 CONSOLE_CHANNEL(CC_ACCEL,        "accel")
-#ifdef CONFIG_AUDIO_CODEC
-CONSOLE_CHANNEL(CC_AUDIO_CODEC,  "audio_codec")
-#endif
 #ifdef CONFIG_CEC
 CONSOLE_CHANNEL(CC_CEC, "cec")
 #endif
@@ -29,9 +26,6 @@ CONSOLE_CHANNEL(CC_EVENTS,       "events")
 #ifdef HAS_TASK_FPSENSOR
 CONSOLE_CHANNEL(CC_FP,           "fingerprint")
 #endif
-#ifdef CONFIG_GESTURE_SW_DETECTION
-CONSOLE_CHANNEL(CC_GESTURE,      "gesture")
-#endif
 CONSOLE_CHANNEL(CC_GPIO,         "gpio")
 #ifdef HAS_TASK_HOSTCMD
 CONSOLE_CHANNEL(CC_HOSTCMD,      "hostcmd")
@@ -45,14 +39,11 @@ CONSOLE_CHANNEL(CC_IPI,          "ipi")
 CONSOLE_CHANNEL(CC_KEYBOARD,     "keyboard")
 CONSOLE_CHANNEL(CC_KEYSCAN,      "keyscan")
 CONSOLE_CHANNEL(CC_LIDANGLE,     "lidangle")
-#ifdef HAS_TASK_LIGHTBAR
-CONSOLE_CHANNEL(CC_LIGHTBAR,     "lightbar")
-#endif
 /*
    Use CC_LPC for any host communication channels to x86,
    like LPC, eSPI, or IPC...
  */
-#if defined(CONFIG_LPC) || defined(HAS_TASK_IPC_MNG) || defined(HAS_TASK_HECI_RX)
+#if defined(HAS_TASK_IPC_MNG) || defined(HAS_TASK_HECI_RX)
 CONSOLE_CHANNEL(CC_LPC,          "lpc")
 #endif
 CONSOLE_CHANNEL(CC_MOTION_LID,   "motionlid")
@@ -61,9 +52,6 @@ CONSOLE_CHANNEL(CC_MOTION_SENSE, "motionsense")
 CONSOLE_CHANNEL(CC_PD_HOST_CMD,  "pdhostcm")
 #endif
 CONSOLE_CHANNEL(CC_PORT80,       "port80")
-#if defined(CONFIG_PWM) || defined(CONFIG_FANS)
-CONSOLE_CHANNEL(CC_PWM,          "pwm")
-#endif
 CONSOLE_CHANNEL(CC_SPI,          "spi")
 #ifdef CONFIG_RBOX
 CONSOLE_CHANNEL(CC_RBOX,         "rbox")
@@ -89,8 +77,5 @@ CONSOLE_CHANNEL(CC_THERMAL,      "thermal")
 CONSOLE_CHANNEL(CC_TPM,          "tpm")
 CONSOLE_CHANNEL(CC_USB,          "usb")
 CONSOLE_CHANNEL(CC_USBCHARGE,    "usbcharge")
-#if defined(CONFIG_USB_POWER_DELIVERY) || defined(CONFIG_USB_PD_TCPC)
-CONSOLE_CHANNEL(CC_USBPD,        "usbpd")
-#endif
 CONSOLE_CHANNEL(CC_VBOOT,        "vboot")
 CONSOLE_CHANNEL(CC_HOOK,         "hook")
