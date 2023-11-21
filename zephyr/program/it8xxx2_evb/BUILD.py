@@ -22,7 +22,7 @@ def register_it8xxx2_evb_project(project_name, zephyr_board):
 
 
 register_it8xxx2_evb_project(
-    project_name="it8xxx2_evb", zephyr_board="it81302bx"
+    project_name="it8xxx2_evb", zephyr_board="it82202ax"
 )
 
 # The it82002_evb board consists of the it82002 BGA board connected
