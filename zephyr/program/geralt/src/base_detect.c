@@ -13,6 +13,18 @@
 
 #include <zephyr/drivers/gpio.h>
 
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+#include "lid_switch.h"
+
+enum base_status {
+	BASE_UNKNOWN = 0,
+	BASE_DISCONNECTED = 1,
+	BASE_CONNECTED = 2,
+};
+static enum base_status current_base_status = BASE_UNKNOWN;
+static bool base_need_power;
+#endif
+
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
@@ -25,10 +37,34 @@ static void base_update(bool attached)
 	const struct gpio_dt_spec *en_cc_lid_base_pu =
 		GPIO_DT_FROM_NODELABEL(en_cc_lid_base_pu);
 
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+	if (!attached && (current_base_status == BASE_CONNECTED)) {
+		enable_lid_detect(!attached);
+		CPRINTS("ap off, base connected, lid enable#####");
+	} else {
+		enable_lid_detect(attached);
+		if (attached)
+			CPRINTS("base connected, lid enable#####");
+		else
+			CPRINTS("base disconnected, lid disenable#####");
+	}
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x), false);
+		if (current_base_status == BASE_CONNECTED)
+			base_need_power = true;
+	} else {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x),
+				attached);
+		base_need_power = false;
+	}
+#else
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x), attached);
+#endif
+
 	base_set_state(attached);
 	tablet_set_mode(!attached, TABLET_TRIGGER_BASE);
 
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x), attached);
 	gpio_pin_configure(en_cc_lid_base_pu->port, en_cc_lid_base_pu->pin,
 			   attached ? GPIO_OUTPUT_HIGH : GPIO_INPUT);
 }
@@ -46,13 +82,24 @@ static void base_detect_tick(void)
 			debouncing = true;
 		} else {
 			debouncing = false;
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+			current_base_status = BASE_DISCONNECTED;
+#endif
 			base_update(false);
 		}
-	} else if (mv <= ATTACH_MAX_THRESHOLD_MV && !base_get_state()) {
+	} else if ((mv <= ATTACH_MAX_THRESHOLD_MV && !base_get_state())
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+		   ||
+		   (base_need_power && !chipset_in_state(CHIPSET_STATE_ANY_OFF))
+#endif
+	) {
 		if (!debouncing) {
 			debouncing = true;
 		} else {
 			debouncing = false;
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+			current_base_status = BASE_CONNECTED;
+#endif
 			base_update(true);
 		}
 	} else {
@@ -80,7 +127,11 @@ static void base_startup_hook(struct ap_power_ev_callback *cb,
 		base_detect_enable(true);
 		break;
 	case AP_POWER_SHUTDOWN:
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+		base_update(false);
+#else
 		base_detect_enable(false);
+#endif
 		break;
 	default:
 		return;
@@ -105,6 +156,15 @@ static int base_init(void)
 }
 
 SYS_INIT(base_init, APPLICATION, 1);
+
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+void base_init_setting(void)
+{
+	base_update(false);
+	base_detect_enable(true);
+}
+DECLARE_HOOK(HOOK_INIT, base_init_setting, HOOK_PRIO_DEFAULT);
+#endif
 
 void base_force_state(enum ec_set_base_state_cmd state)
 {
