@@ -37,9 +37,9 @@ LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, DEVICE_DT_GET)
 
 #define PD_CHIP(usbc_id)                                                    \
-	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, alt_mode),                    \
-		    (PD_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, alt_mode))), \
-		    ())
+COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, pd_altmode),                    \
+		(PD_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, pd_altmode))),\
+		())
 
 #define INTEL_ALTMODE_EVENT_MASK GENMASK(INTEL_ALTMODE_EVENT_COUNT - 1, 0)
 
