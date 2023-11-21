@@ -13,6 +13,17 @@
 
 #include <zephyr/drivers/gpio.h>
 
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+#include "lid_switch.h"
+
+enum base_status {
+	BASE_UNKNOWN = 0,
+	BASE_DISCONNECTED = 1,
+	BASE_CONNECTED = 2,
+};
+static enum base_status current_base_status;
+#endif
+
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
@@ -31,6 +42,13 @@ static void base_update(bool attached)
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x), attached);
 	gpio_pin_configure(en_cc_lid_base_pu->port, en_cc_lid_base_pu->pin,
 			   attached ? GPIO_OUTPUT_HIGH : GPIO_INPUT);
+
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+	if (!attached && (current_base_status == BASE_CONNECTED))
+		enable_lid_detect(!attached);
+	else
+		enable_lid_detect(attached);
+#endif
 }
 
 static void base_detect_tick(void);
@@ -47,6 +65,9 @@ static void base_detect_tick(void)
 		} else {
 			debouncing = false;
 			base_update(false);
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+			current_base_status = BASE_DISCONNECTED;
+#endif
 		}
 	} else if (mv <= ATTACH_MAX_THRESHOLD_MV && !base_get_state()) {
 		if (!debouncing) {
@@ -54,6 +75,9 @@ static void base_detect_tick(void)
 		} else {
 			debouncing = false;
 			base_update(true);
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+			current_base_status = BASE_CONNECTED;
+#endif
 		}
 	} else {
 		debouncing = false;
@@ -80,7 +104,11 @@ static void base_startup_hook(struct ap_power_ev_callback *cb,
 		base_detect_enable(true);
 		break;
 	case AP_POWER_SHUTDOWN:
+#ifdef CONFIG_GERALT_LID_DETECTION_SELECTED
+		base_update(false);
+#else
 		base_detect_enable(false);
+#endif
 		break;
 	default:
 		return;
