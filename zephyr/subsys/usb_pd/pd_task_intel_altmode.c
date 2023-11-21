@@ -43,12 +43,6 @@ COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, pd_altmode),                    \
 
 #define INTEL_ALTMODE_EVENT_MASK GENMASK(INTEL_ALTMODE_EVENT_COUNT - 1, 0)
 
-enum intel_altmode_event {
-	INTEL_ALTMODE_EVENT_FORCE,
-	INTEL_ALTMODE_EVENT_INTERRUPT,
-	INTEL_ALTMODE_EVENT_COUNT
-};
-
 struct intel_altmode_data {
 	/* Driver event object to receive events posted. */
 	struct k_event evt;
@@ -67,7 +61,7 @@ BUILD_ASSERT(ARRAY_SIZE(pd_config_array) == CONFIG_USB_PD_PORT_MAX_COUNT);
 /* Store the task data */
 static struct intel_altmode_data intel_altmode_task_data;
 
-static void intel_altmode_post_event(enum intel_altmode_event event)
+void intel_altmode_post_event(enum intel_altmode_event event)
 {
 	k_event_post(&intel_altmode_task_data.evt, BIT(event));
 }
@@ -244,6 +238,16 @@ K_THREAD_DEFINE(intel_altmode_tid, CONFIG_TASK_PD_ALTMODE_INTEL_STACK_SIZE,
 void intel_altmode_task_start(void)
 {
 	k_thread_start(intel_altmode_tid);
+}
+
+void suspend_pd_task()
+{
+	k_thread_suspend(intel_altmode_tid);
+}
+
+void resume_pd_task()
+{
+	k_thread_resume(intel_altmode_tid);
 }
 
 #ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE

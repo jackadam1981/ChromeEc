@@ -29,6 +29,7 @@
 #include "usb_charge.h"
 #include "usb_common.h"
 #include "util.h"
+#include <usbc/retimer_fw_update.h>
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
