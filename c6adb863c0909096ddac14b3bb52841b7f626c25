@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd535820_7262684e",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-21T23:11:08Z",
+      "side": 1,
+      "message": "This pattern will quickly get out of hand.  The TCPMv2 files should get moved into a separate cmake file.\n\n```\nif (CONFIG_PLATFORM_EC_USB_PD_TCPMV2)\n  include(tcpmv2.cmake)\nendif()\n```",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 37
+      },
+      "revId": "c6adb863c0909096ddac14b3bb52841b7f626c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
