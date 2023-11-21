@@ -234,6 +234,30 @@
       },
       "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ef258b_f7a9ab93",
+        "filename": "zephyr/emul/include/emul_intel_pd_controller.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-21T23:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d648231f_68be2a2a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "a10cad8cf21e1753158c4a97244cc007abab8dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
