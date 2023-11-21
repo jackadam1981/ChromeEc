@@ -10,7 +10,9 @@
 
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/gpio.h>
 #include <zephyr/input/input.h>
+#include <zephyr/input/input_kbd_matrix.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/atomic.h>
 
@@ -57,3 +59,51 @@ static void keyboard_input_cb(struct input_event *evt)
 	}
 }
 INPUT_CALLBACK_DEFINE(DEVICE_DT_GET(CROS_EC_KEYBOARD_NODE), keyboard_input_cb);
+
+#ifdef CONFIG_CROS_EC_COL_GPIO_DRIVE
+
+BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(cros_ec_col_gpio) == 1,
+	     "only one cros-ec,col-gpio compatible node can be supported");
+
+#define COL_GPIO_NODE DT_INST(0, cros_ec_col_gpio)
+
+#define COL_GPIO_COLUMN DT_PROP(COL_GPIO_NODE, col_num)
+static const struct device *col_gpio_kbd_dev =
+	DEVICE_DT_GET(DT_PARENT(COL_GPIO_NODE));
+static const struct gpio_dt_spec col_gpio =
+	GPIO_DT_SPEC_GET(COL_GPIO_NODE, col_gpios);
+
+void input_kbd_matrix_drive_column_hook(const struct device *dev, int col)
+{
+	if (dev != col_gpio_kbd_dev) {
+		return;
+	}
+
+	if (col == INPUT_KBD_MATRIX_COLUMN_DRIVE_ALL ||
+	    col == COL_GPIO_COLUMN) {
+		gpio_pin_set_dt(&col_gpio, 1);
+	} else {
+		gpio_pin_set_dt(&col_gpio, 0);
+	}
+}
+
+static int col_gpio_init(void)
+{
+	int ret;
+
+	if (!gpio_is_ready_dt(&col_gpio)) {
+		LOG_ERR("%s is not ready", col_gpio.port->name);
+		return -ENODEV;
+	}
+
+	ret = gpio_pin_configure_dt(&col_gpio, GPIO_OUTPUT_INACTIVE);
+	if (ret != 0) {
+		LOG_ERR("Pin configuration failed: %d", ret);
+		return ret;
+	}
+
+	return 0;
+}
+SYS_INIT(col_gpio_init, POST_KERNEL, 0);
+
+#endif /* CONFIGCROS_EC_COL_GPIO_DRIVE */
