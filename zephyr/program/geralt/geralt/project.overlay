@@ -5,6 +5,8 @@
 
 /* Geralt program common DTS includes */
 
+#include <cros/integrated_fwid.dtsi>
+
 #include "../adc.dtsi"
 #include "../gpio.dtsi"
 #include "../i2c.dtsi"
