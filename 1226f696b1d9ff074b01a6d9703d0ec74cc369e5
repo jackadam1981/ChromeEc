@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb09952_1defd3d0",
+        "filename": "zephyr/program/rex/rex/src/i2c_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-21T01:25:51Z",
+      "side": 1,
+      "message": "i prefer to limit the scope of this variable since it does not\ncarry state across the switch/case statement.",
+      "parentUuid": "34d448cb_6cf0eea5",
+      "revId": "1226f696b1d9ff074b01a6d9703d0ec74cc369e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c1f3e8d_675d6d5b",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-17T08:06:16Z",
       "side": 1,
       "message": "`status \u003d \"okay\";`",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "1226f696b1d9ff074b01a6d9703d0ec74cc369e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc034f56_76d6dd3c",
+        "filename": "zephyr/test/rex/boards/rex/rex.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-11-21T01:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c1f3e8d_675d6d5b",
       "range": {
         "startLine": 68,
         "startChar": 1,
