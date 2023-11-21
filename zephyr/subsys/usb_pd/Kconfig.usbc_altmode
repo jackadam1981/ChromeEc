@@ -49,6 +49,19 @@ config CONSOLE_CMD_USBPD_INTEL_ALTMODE
 	  PD that are compliant with Intel alternate mode configuration
 	  specification.
 
+config USBC_PDC_CCG8
+	bool "If PD used is CCG8"
+	default y if DT_HAS_INTEL_PD_POWERMODE_ENABLED
+	help
+	  Enable this to to have CCG8 driver enabled.
+
+config CONSOLE_CMD_PD_CCG8
+	bool "Console command: CCG8 read/write"
+	default y if DT_HAS_INTEL_PD_POWERMODE_ENABLED
+	help
+	  Enable this to read/write to the power path registers of CCG8
+	  PD.
+
 endif # USB_PD_ALTMODE_INTEL
 
 endif # USB_PD_ALTMODE

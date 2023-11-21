@@ -3,4 +3,7 @@
 # found in the LICENSE file.
 
 zephyr_library_sources_ifdef(CONFIG_USBC_INTEL_ALTMODE intel_altmode.c)
+
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_RTS545X pdc_rts545x.c)
+
+zephyr_library_sources_ifdef(CONFIG_USBC_PDC_CCG8 ccg8_pd.c)
