@@ -16,6 +16,24 @@
       "message": "Make this more side-channel resilient",
       "revId": "aab51c800a8cae6d331f11e1e12fdea3c508bfea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "121ee093_7d498888",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-21T08:29:03Z",
+      "side": 1,
+      "message": "Replaced with `safe_memcmp`.",
+      "parentUuid": "b255326c_a6dcadad",
+      "revId": "aab51c800a8cae6d331f11e1e12fdea3c508bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
