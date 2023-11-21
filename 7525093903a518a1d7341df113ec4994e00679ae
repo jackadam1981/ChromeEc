@@ -286,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f495f5d_69cd3542",
+        "filename": "util/renode/bloonchipper.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-21T07:58:23Z",
+      "side": 1,
+      "message": "This was adjusted in https://github.com/antmicro/cros-platform-ec-tester/commit/74fb1d6a889bb5a50b7586c34b53b76d9d00dc24 - thanks for spotting this!",
+      "parentUuid": "fc9e2a34_efac1c3f",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6caf4c28_80f787a9",
         "filename": "util/renode/dartmonkey.resc",
         "patchSetId": 10
@@ -321,6 +345,30 @@
       "side": 1,
       "message": "As in bloonchipper, this might be a leftover from the beginning of the project - we\u0027ll double check it.",
       "parentUuid": "6caf4c28_80f787a9",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cedf144b_d74ced04",
+        "filename": "util/renode/dartmonkey.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1514407
+      },
+      "writtenOn": "2023-11-21T07:58:23Z",
+      "side": 1,
+      "message": "This was adjusted in https://github.com/antmicro/cros-platform-ec-tester/commit/74fb1d6a889bb5a50b7586c34b53b76d9d00dc24",
+      "parentUuid": "673864bf_9643923d",
       "range": {
         "startLine": 34,
         "startChar": 4,
