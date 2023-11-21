@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6cf794_27370d04",
+        "filename": "zephyr/program/rex/karis/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-21T17:16:50Z",
+      "side": 1,
+      "message": "This should set the same policy as \"near full\".  Solid blue.",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "bb7b5bd4035f1ee4e3466def235652b5cd454171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebae5e4b_bcc4565e",
+        "filename": "zephyr/program/rex/screebo/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-21T17:16:50Z",
+      "side": 1,
+      "message": "Use the same policy as \"near full\".",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 40
+      },
+      "revId": "bb7b5bd4035f1ee4e3466def235652b5cd454171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4e62f6_dc227436",
+        "filename": "zephyr/program/rex/screebo/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-21T17:16:50Z",
+      "side": 1,
+      "message": "Use the same policy as \"near full\".",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "bb7b5bd4035f1ee4e3466def235652b5cd454171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
