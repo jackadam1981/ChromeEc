@@ -98,16 +98,14 @@ static int cros_kb_raw_xec_drive_column(const struct device *dev, int col)
 	/* Drive all lines to high. i.e. Key detection is disabled. */
 	if (col == KEYBOARD_COLUMN_NONE) {
 		inst->KSO_SEL = MCHP_KSCAN_KSO_EN;
-		/* Set logical level high on COL2 */
-		cros_kb_raw_set_col2(1);
+		cros_kb_raw_set_col2(0);
 	}
 	/* Drive all lines to low for detection any key press */
 	else if (col == KEYBOARD_COLUMN_ALL) {
 		mchp_soc_ecia_girq_src_dis(MCHP_GIRQ21_ID,
 					   MCHP_KEYSCAN_GIRQ_POS);
 		inst->KSO_SEL = MCHP_KSCAN_KSO_ALL;
-		/* Set logical level low on COL2 */
-		cros_kb_raw_set_col2(0);
+		cros_kb_raw_set_col2(1);
 
 		/*
 		 * Fix glitches on KSIs pins as all KSOs are driven low
@@ -131,12 +129,10 @@ static int cros_kb_raw_xec_drive_column(const struct device *dev, int col)
 	else if (IS_ENABLED(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED)) {
 		if (col == 2) {
 			inst->KSO_SEL = MCHP_KSCAN_KSO_EN;
-			/* Set logical level low on COL2 */
-			cros_kb_raw_set_col2(0);
+			cros_kb_raw_set_col2(1);
 		} else {
 			inst->KSO_SEL = col + CONFIG_KEYBOARD_KSO_BASE;
-			/* Set logical level high on COL2 */
-			cros_kb_raw_set_col2(1);
+			cros_kb_raw_set_col2(0);
 		}
 	} else {
 		inst->KSO_SEL = col + CONFIG_KEYBOARD_KSO_BASE;
