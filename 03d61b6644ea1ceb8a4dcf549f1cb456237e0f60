@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f164cf6d_6024dbc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-21T18:55:59Z",
+      "side": 1,
+      "message": "The new code still sending a host event (which I believe is good). Can you clarify?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a0f6c2_d135c56a",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-21T18:55:59Z",
+      "side": 1,
+      "message": "I think we want to send EC_HOST_EVENT_HANG_DETECT. EC_HOST_EVENT_HANG_REBOOT seems to be the one sent after reboot (so that the AP can record the incident). At least that was the original intension.",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 48
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd407b4_3fa7feb8",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-21T18:55:59Z",
+      "side": 1,
+      "message": "Since we\u0027re sending a host event, don\u0027t we need a grace period before resetting the AP?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0848d21_68e6493b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4757,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-21T18:55:59Z",
+      "side": 1,
+      "message": "These are mutually exclusive (as indicated by \u0027all the other fields are ignored\u0027). They\u0027re like a command, not flags. Can we separate commands and flags?\n\nIt originates from the past CLs but since you\u0027re obsoleting most flags and adding new \u0027commands\u0027, it\u0027s probably good time to fix this mis-usage of \u0027flags\u0027.",
+      "range": {
+        "startLine": 4738,
+        "startChar": 0,
+        "endLine": 4757,
+        "endChar": 32
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
