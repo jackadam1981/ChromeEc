@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac389d7f_6b95afdc",
+        "filename": "zephyr/program/skyrim/markarth/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-11-21T08:47:29Z",
+      "side": 1,
+      "message": "The battery team want to align that read battery parameter method, so change it.",
+      "parentUuid": "c72303e5_523ab707",
+      "revId": "bb9b3e19f48dc6b4591d221515df160e336e4178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcee5e26_0807ece6",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-11-20T09:07:47Z",
       "side": 1,
       "message": "I think you\u0027re missing a closing brace here.",
+      "revId": "bb9b3e19f48dc6b4591d221515df160e336e4178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0375a8_d303cb10",
+        "filename": "zephyr/program/skyrim/markarth/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-11-21T08:47:29Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fcee5e26_0807ece6",
       "revId": "bb9b3e19f48dc6b4591d221515df160e336e4178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
