@@ -27,12 +27,6 @@ namespace
 constexpr int kMaxPreloadFingerCount = 3;
 } // namespace
 
-/* Store the intermediate encrypted data for transfer & reuse purpose.*/
-/* The data will be copied into fp_enc_buffer after commit. */
-static std::array<std::array<uint8_t, FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE>,
-		  std::min(FP_MAX_FINGER_COUNT, kMaxPreloadFingerCount)>
-	fp_xfer_buffer;
-
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
@@ -291,19 +285,21 @@ static enum ec_error_list preload_template(const uint8_t *data, uint32_t size,
 					   bool xfer_complete)
 {
 	/* Can we store one more template ? */
-	if (idx >= fp_xfer_buffer.size())
+	if (idx >= std::min(FP_MAX_FINGER_COUNT, kMaxPreloadFingerCount))
 		return EC_ERROR_OVERFLOW;
 
 	enum ec_error_list ret = validate_fp_buffer_offset(
-		fp_xfer_buffer[0].size(), offset, size);
+		FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE, offset, size);
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	std::copy(data, data + size, fp_xfer_buffer[idx].data() + offset);
+	std::copy(data, data + size, fp_template[idx] + offset);
 
 	if (xfer_complete) {
-		std::copy(fp_xfer_buffer[idx].begin(),
-			  fp_xfer_buffer[idx].end(), fp_enc_buffer);
+		std::copy(fp_template[idx],
+			  fp_template[idx] +
+				  FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE,
+			  fp_enc_buffer);
 	}
 
 	return EC_SUCCESS;
