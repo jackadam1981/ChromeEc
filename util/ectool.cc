@@ -34,12 +34,17 @@
 #include <time.h>
 
 #include <getopt.h>
+#include <iomanip>
+#include <iostream>
+#include <libchrome/base/json/json_reader.h>
+#include <libchrome/base/values.h>
 #include <libec/add_entropy_command.h>
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
+#include <string>
 #include <unistd.h>
 #include <vector>
 
@@ -8711,6 +8716,121 @@ static int cmd_cbi_is_binary_field(enum cbi_data_tag tag)
 	return tag == CBI_TAG_BATTERY_CONFIG;
 }
 
+static int cmd_read_json(int argc, char *argv[])
+{
+	// open the file
+	FILE *fp;
+	fp = fopen(argv[1], "r");
+	if (fp == NULL) {
+		printf("No file found QQ.");
+		return 1;
+	}
+	char buffer[1024];
+	int len = fread(buffer, 1, sizeof(buffer), fp);
+	if (len == 1) {
+		printf("len is 1");
+	}
+	fclose(fp);
+
+	struct board_batt_params battey_config;
+
+	// use libchrome/base/json/json_reader to parse the string read
+	absl::optional<base::Value> root = base::JSONReader::Read(buffer);
+	base::Value::Dict *root_dict = root->GetIfDict();
+
+	// put the corresponding value into battery struct
+	base::Value::Dict *fuel_gauge = root_dict->FindDict("fuel_gauge");
+
+	absl::optional<int> flags = fuel_gauge->FindInt("flags");
+	absl::optional<int> board_flags = fuel_gauge->FindInt("board_flags");
+	battey_config.fuel_gauge.flags = flags.value();
+	battey_config.fuel_gauge.board_flags = board_flags.value();
+
+	base::Value::Dict *ship_mode = fuel_gauge->FindDict("ship_mode");
+	absl::optional<int> reg_addr = ship_mode->FindInt("reg_addr");
+	absl::optional<int> reserved = ship_mode->FindInt("reserved");
+	// absl::optional<int> reg_data = ship_mode->FindInt("reg_data");
+	battey_config.fuel_gauge.ship_mode.reg_addr = reg_addr.value();
+	battey_config.fuel_gauge.ship_mode.reserved = reserved.value();
+	// battey_config.fuel_gauge.ship_mode.reg_data = reg_data.value();
+
+	base::Value::Dict *sleep_mode = fuel_gauge->FindDict("sleep_mode");
+	reg_addr = sleep_mode->FindInt("reg_addr");
+	reserved = sleep_mode->FindInt("reserved");
+	absl::optional<int> reg_data = sleep_mode->FindInt("reg_data");
+	battey_config.fuel_gauge.sleep_mode.reg_addr = reg_addr.value();
+	battey_config.fuel_gauge.sleep_mode.reserved = reserved.value();
+	battey_config.fuel_gauge.sleep_mode.reg_data = reg_data.value();
+
+	base::Value::Dict *fet_info = fuel_gauge->FindDict("fet_info");
+	reg_addr = fet_info->FindInt("reg_addr");
+	reserved = fet_info->FindInt("reserved");
+	absl::optional<int> reg_mask = fet_info->FindInt("reg_mask");
+	absl::optional<int> disconnect_val =
+		fet_info->FindInt("disconnect_val");
+	absl::optional<int> cfet_mask = fet_info->FindInt("cfet_mask");
+	absl::optional<int> cfet_off_val = fet_info->FindInt("cfet_off_val");
+	battey_config.fuel_gauge.fet.reg_addr = reg_addr.value();
+	battey_config.fuel_gauge.fet.reserved = reserved.value();
+	battey_config.fuel_gauge.fet.reg_mask = reg_mask.value();
+	battey_config.fuel_gauge.fet.disconnect_val = disconnect_val.value();
+	battey_config.fuel_gauge.fet.cfet_mask = cfet_mask.value();
+	battey_config.fuel_gauge.fet.cfet_off_val = cfet_off_val.value();
+
+	base::Value::Dict *batt_info = root_dict->FindDict("batt_info");
+
+	absl::optional<int> voltage_max = batt_info->FindInt("voltage_max");
+	absl::optional<int> voltage_normal =
+		batt_info->FindInt("voltage_normal");
+	absl::optional<int> voltage_min = batt_info->FindInt("voltage_min");
+	absl::optional<int> precharge_voltage =
+		batt_info->FindInt("precharge_voltage");
+	absl::optional<int> precharge_current =
+		batt_info->FindInt("precharge_current");
+	absl::optional<int> start_charging_min_c =
+		batt_info->FindInt("start_charging_min_c");
+	absl::optional<int> start_charging_max_c =
+		batt_info->FindInt("start_charging_max_c");
+	absl::optional<int> charging_min_c =
+		batt_info->FindInt("charging_min_c");
+	absl::optional<int> charging_max_c =
+		batt_info->FindInt("charging_max_c");
+	absl::optional<int> discharging_min_c =
+		batt_info->FindInt("discharging_min_c");
+	absl::optional<int> discharging_max_c =
+		batt_info->FindInt("discharging_max_c");
+	absl::optional<int> vendor_param_start =
+		batt_info->FindInt("vendor_param_start");
+	reserved = batt_info->FindInt("reserved");
+	battey_config.batt_info.voltage_max = voltage_max.value();
+	battey_config.batt_info.voltage_normal = voltage_normal.value();
+	battey_config.batt_info.voltage_min = voltage_min.value();
+	battey_config.batt_info.precharge_voltage = precharge_voltage.value();
+	battey_config.batt_info.precharge_current = precharge_current.value();
+	battey_config.batt_info.start_charging_min_c =
+		start_charging_min_c.value();
+	battey_config.batt_info.start_charging_max_c =
+		start_charging_max_c.value();
+	battey_config.batt_info.charging_min_c = charging_min_c.value();
+	battey_config.batt_info.charging_max_c = charging_max_c.value();
+	battey_config.batt_info.discharging_min_c = discharging_min_c.value();
+	battey_config.batt_info.discharging_max_c = discharging_max_c.value();
+	battey_config.batt_info.vendor_param_start = vendor_param_start.value();
+	battey_config.batt_info.reserved = reserved.value();
+
+	// convert the struct into hex string and return it
+	unsigned char *p = reinterpret_cast<unsigned char *>(&battey_config);
+	std::vector<unsigned char> bytes(p, p + sizeof(board_batt_params));
+
+	std::stringstream ss;
+	for (unsigned char i : bytes) {
+		ss << std::hex << std::setw(2) << std::setfill('0') << (int)i;
+	}
+	std::string hexString = ss.str();
+	std::cout << hexString << std::endl;
+	return 0;
+}
+
 /*
  * Write value to CBI
  *
@@ -11822,6 +11942,7 @@ const struct command commands[] = {
 	{ "boardversion", cmd_board_version },
 	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
+	{ "read_json", cmd_read_json },
 	{ "cbi", cmd_cbi },
 	{ "chargecurrentlimit", cmd_charge_current_limit },
 	{ "chargecontrol", cmd_charge_control },
