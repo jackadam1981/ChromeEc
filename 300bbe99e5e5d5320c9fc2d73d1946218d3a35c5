@@ -63,6 +63,30 @@
       },
       "revId": "300bbe99e5e5d5320c9fc2d73d1946218d3a35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec4aedf_d7e206e1",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T17:51:47Z",
+      "side": 1,
+      "message": "If they\u0027re compatible, it\u0027s convenient to keep them for debugging charging/battery issues.",
+      "parentUuid": "aab62a4d_170017ad",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "300bbe99e5e5d5320c9fc2d73d1946218d3a35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
