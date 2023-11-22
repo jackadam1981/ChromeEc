@@ -443,8 +443,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
 		uint8_t *positive_match_salt =
-			encrypted_template + sizeof(fp_template[0]);
-		size_t encrypted_blob_size = sizeof(fp_template[0]) +
+			encrypted_template + FP_ALGORITHM_TEMPLATE_SIZE;
+		size_t encrypted_blob_size = FP_ALGORITHM_TEMPLATE_SIZE +
 					     sizeof(fp_positive_match_salt[0]);
 
 		/* b/114160734: Not more than 1 encrypted message per second. */
@@ -491,7 +491,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		 * encrypted in-place.
 		 */
 		memcpy(encrypted_template, fp_template[fgr],
-		       sizeof(fp_template[0]));
+		       FP_ALGORITHM_TEMPLATE_SIZE);
 		memcpy(positive_match_salt, fp_positive_match_salt[fgr],
 		       sizeof(fp_positive_match_salt[0]));
 
@@ -587,7 +587,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
 		uint8_t *positive_match_salt =
-			encrypted_template + sizeof(fp_template[0]);
+			encrypted_template + FP_ALGORITHM_TEMPLATE_SIZE;
 		size_t encrypted_blob_size;
 
 		/*
@@ -608,9 +608,9 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		}
 
 		if (enc_info->struct_version <= 3) {
-			encrypted_blob_size = sizeof(fp_template[0]);
+			encrypted_blob_size = FP_ALGORITHM_TEMPLATE_SIZE;
 		} else {
-			encrypted_blob_size = sizeof(fp_template[0]) +
+			encrypted_blob_size = FP_ALGORITHM_TEMPLATE_SIZE +
 					      sizeof(fp_positive_match_salt[0]);
 		}
 
@@ -633,7 +633,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		memcpy(fp_template[idx], encrypted_template,
-		       sizeof(fp_template[0]));
+		       FP_ALGORITHM_TEMPLATE_SIZE);
 		if (template_needs_validation_value(enc_info)) {
 			CPRINTS("fgr%d: Generating positive match salt.", idx);
 			trng_init();
@@ -645,7 +645,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 				      sizeof(fp_positive_match_salt[0]))) {
 			CPRINTS("fgr%d: Trivial positive match salt.", idx);
 			OPENSSL_cleanse(fp_template[idx],
-					sizeof(fp_template[0]));
+					FP_ALGORITHM_TEMPLATE_SIZE);
 			return EC_RES_INVALID_PARAM;
 		}
 		memcpy(fp_positive_match_salt[idx], positive_match_salt,

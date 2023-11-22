@@ -44,7 +44,8 @@ extern "C" {
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 extern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];
 /* Fingers templates for the current user */
-extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
+extern uint8_t fp_template[FP_MAX_FINGER_COUNT]
+			  [FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
