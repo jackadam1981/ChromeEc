@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630ed5c7_a70bd898",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-22T04:47:48Z",
+      "side": 1,
+      "message": "The error code returned seems different. Any reason this is changed?",
+      "revId": "377e6d35d23319ba73ecbd68ff2d85870a273ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c8d208_359c4a7a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-22T04:47:48Z",
+      "side": 1,
+      "message": "nit: extra blank line?",
+      "revId": "377e6d35d23319ba73ecbd68ff2d85870a273ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
