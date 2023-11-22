@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2440b9f7_ebebbd90",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-22T19:03:56Z",
+      "side": 1,
+      "message": "in this one, yes, not needed, but in next one in chain - it is. There is some out-of-order nature as I developed different parts independently and then tried to reconcile those.",
+      "parentUuid": "70006715_86d5b032",
+      "range": {
+        "startLine": 921,
+        "startChar": 23,
+        "endLine": 921,
+        "endChar": 26
+      },
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7b8084e_fd281be2",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-22T18:55:51Z",
       "side": 1,
       "message": "why is this change necessary?",
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cdb494_0db1ddf0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-22T19:03:56Z",
+      "side": 1,
+      "message": "yes, i tried to get direct access to `gp` so needed another header. in earlier version of change access for done through GP_EPS_LEN pointer due to conflict with TPM2 headers, which I resolved by loading TPM2 headers first, but when I changed *GP_EPS_LEN to gp.EPSeed.t.size, I already added #ifdef which masked it, so I didn\u0027t notice that code stopped being compiled, and since it is mostly silent, I didn\u0027t catch this in the test.",
+      "parentUuid": "f7b8084e_fd281be2",
       "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

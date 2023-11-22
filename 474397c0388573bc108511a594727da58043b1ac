@@ -22,6 +22,30 @@
       },
       "revId": "474397c0388573bc108511a594727da58043b1ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6deab29_33424f86",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4630,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-22T19:03:56Z",
+      "side": 0,
+      "message": "they are, and this is fixed in https://crrev.com/c/5051558. fortunately these are working properly in their interaction with board.h (I disable these tests).",
+      "parentUuid": "ae40da5a_59f17f0c",
+      "range": {
+        "startLine": 4621,
+        "startChar": 0,
+        "endLine": 4630,
+        "endChar": 0
+      },
+      "revId": "474397c0388573bc108511a594727da58043b1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
