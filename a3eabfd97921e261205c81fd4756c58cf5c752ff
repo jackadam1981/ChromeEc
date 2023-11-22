@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18195659_f33b995a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "Let\u0027s definitely change these comments. I know it\u0027s a minor thing but it could be really confusing for someone diving into this without context while they\u0027re debugging something.",
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34286414_c3cec1bb",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "Can we update this comment to not confuse future readers. Or get rid of this part of the comment since it\u0027s obvious we\u0027re driving the signal to low to disable the key detection.",
+      "range": {
+        "startLine": 139,
+        "startChar": 23,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff406a5a_a40e8aa8",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "See above comment.",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 26
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48999a63_641efbc0",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 98,
+        "startChar": 23,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b79ef08_43370b80",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 103,
+        "startChar": 23,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f2dff6_2268e0cc",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 111,
+        "startChar": 54,
+        "endLine": 111,
+        "endChar": 57
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce970f3_01f36129",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-11-22T13:45:21Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 126,
+        "startChar": 22,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
