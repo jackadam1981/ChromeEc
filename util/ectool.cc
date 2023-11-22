@@ -34,12 +34,16 @@
 #include <time.h>
 
 #include <getopt.h>
+#include <iomanip>
+#include <iostream>
+#include <libchrome/base/json/json_reader.h>
 #include <libec/add_entropy_command.h>
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
+#include <string>
 #include <unistd.h>
 #include <vector>
 
@@ -8576,7 +8580,7 @@ static void batt_conf_dump(const struct board_batt_params *conf)
 	printf("},\n"); /* end of board_batt_params */
 }
 
-static int cmd_battery_config(int argc, char *argv[])
+static int cmd_battery_config_get(int argc, char *argv[])
 {
 	const uint8_t struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION;
 	struct batt_conf_header *head;
@@ -8924,6 +8928,233 @@ static int cmd_cbi(int argc, char *argv[])
 	cmd_cbi_help(argv[0]);
 
 	return -1;
+}
+
+static std::string cmd_convert_to_hex(struct board_batt_params &battery_config)
+{
+	unsigned char *p = reinterpret_cast<unsigned char *>(&battery_config);
+	std::vector<unsigned char> bytes(p, p + sizeof(board_batt_params));
+	std::stringstream ss;
+	for (unsigned char i : bytes) {
+		ss << std::hex << std::setw(2) << std::setfill('0') << (int)i;
+	}
+	std::string hex_string = ss.str();
+	return hex_string;
+}
+
+static absl::optional<std::string> cmd_get_hex_string(char *filename,
+						      char *identifier)
+{
+	FILE *fp;
+	int size;
+	fp = fopen(filename, "rb");
+	if (!fp) {
+		fprintf(stderr, "Can't open %s: %s\n", filename,
+			strerror(errno));
+		return absl::nullopt;
+	}
+	fseek(fp, 0, SEEK_END);
+	size = ftell(fp);
+	rewind(fp);
+	char buffer[size + 1];
+
+	int len = fread(buffer, 1, size, fp);
+	fclose(fp);
+	if (len <= 0) {
+		fprintf(stderr, "Failed to read %s\n", filename);
+		return absl::nullopt;
+	}
+
+	struct board_batt_params battery_config;
+
+	absl::optional<base::Value> root = base::JSONReader::Read(buffer);
+	base::Value::Dict *root_dict = root->GetIfDict();
+	base::Value::Dict *root_dict_identifier =
+		root_dict->FindDict(identifier);
+	if (!root_dict_identifier) {
+		fprintf(stderr, "Failed to find the identifier: %s in %s\n",
+			identifier, filename);
+		return absl::nullopt;
+	}
+	base::Value::Dict *fuel_gauge =
+		root_dict_identifier->FindDict("fuel_gauge");
+
+	absl::optional<int> flags = fuel_gauge->FindInt("flags");
+	absl::optional<int> board_flags = fuel_gauge->FindInt("board_flags");
+	battery_config.fuel_gauge.flags = flags.value();
+	battery_config.fuel_gauge.board_flags = board_flags.value();
+
+	base::Value::Dict *ship_mode = fuel_gauge->FindDict("ship_mode");
+	absl::optional<int> ship_mode_reg_addr = ship_mode->FindInt("reg_addr");
+	absl::optional<int> ship_mode_reserved = ship_mode->FindInt("reserved");
+	battery_config.fuel_gauge.ship_mode.reg_addr =
+		ship_mode_reg_addr.value();
+	battery_config.fuel_gauge.ship_mode.reserved =
+		ship_mode_reserved.value();
+	base::Value::List *ship_mode_reg_data = ship_mode->FindList("reg_data");
+	for (size_t i = 0;
+	     i < ship_mode_reg_data->size() && i < SHIP_MODE_WRITES; ++i) {
+		absl::optional<int> value = (*ship_mode_reg_data)[i].GetIfInt();
+		battery_config.fuel_gauge.ship_mode.reg_data[i] =
+			static_cast<uint16_t>(value.value());
+	};
+
+	base::Value::Dict *sleep_mode = fuel_gauge->FindDict("sleep_mode");
+	absl::optional<int> sleep_mode_reg_addr =
+		sleep_mode->FindInt("reg_addr");
+	absl::optional<int> sleep_mode_reserved =
+		sleep_mode->FindInt("reserved");
+	absl::optional<int> sleep_mode_reg_data =
+		sleep_mode->FindInt("reg_data");
+	battery_config.fuel_gauge.sleep_mode.reg_addr =
+		sleep_mode_reg_addr.value();
+	battery_config.fuel_gauge.sleep_mode.reserved =
+		sleep_mode_reserved.value();
+	battery_config.fuel_gauge.sleep_mode.reg_data =
+		sleep_mode_reg_data.value();
+
+	base::Value::Dict *fet_info = fuel_gauge->FindDict("fet_info");
+	absl::optional<int> fet_info_reg_addr = fet_info->FindInt("reg_addr");
+	absl::optional<int> fet_info_reserved = fet_info->FindInt("reserved");
+	absl::optional<int> fet_info_reg_mask = fet_info->FindInt("reg_mask");
+	absl::optional<int> fet_info_disconnect_val =
+		fet_info->FindInt("disconnect_val");
+	absl::optional<int> fet_info_cfet_mask = fet_info->FindInt("cfet_mask");
+	absl::optional<int> fet_info_cfet_off_val =
+		fet_info->FindInt("cfet_off_val");
+	battery_config.fuel_gauge.fet.reg_addr = fet_info_reg_addr.value();
+	battery_config.fuel_gauge.fet.reserved = fet_info_reserved.value();
+	battery_config.fuel_gauge.fet.reg_mask = fet_info_reg_mask.value();
+	battery_config.fuel_gauge.fet.disconnect_val =
+		fet_info_disconnect_val.value();
+	battery_config.fuel_gauge.fet.cfet_mask = fet_info_cfet_mask.value();
+	battery_config.fuel_gauge.fet.cfet_off_val =
+		fet_info_cfet_off_val.value();
+
+	base::Value::Dict *batt_info =
+		root_dict_identifier->FindDict("batt_info");
+
+	absl::optional<int> voltage_max = batt_info->FindInt("voltage_max");
+	absl::optional<int> voltage_normal =
+		batt_info->FindInt("voltage_normal");
+	absl::optional<int> voltage_min = batt_info->FindInt("voltage_min");
+	absl::optional<int> precharge_voltage =
+		batt_info->FindInt("precharge_voltage");
+	absl::optional<int> precharge_current =
+		batt_info->FindInt("precharge_current");
+	absl::optional<int> start_charging_min_c =
+		batt_info->FindInt("start_charging_min_c");
+	absl::optional<int> start_charging_max_c =
+		batt_info->FindInt("start_charging_max_c");
+	absl::optional<int> charging_min_c =
+		batt_info->FindInt("charging_min_c");
+	absl::optional<int> charging_max_c =
+		batt_info->FindInt("charging_max_c");
+	absl::optional<int> discharging_min_c =
+		batt_info->FindInt("discharging_min_c");
+	absl::optional<int> discharging_max_c =
+		batt_info->FindInt("discharging_max_c");
+	absl::optional<int> vendor_param_start =
+		batt_info->FindInt("vendor_param_start");
+	absl::optional<int> batt_info_reserved = batt_info->FindInt("reserved");
+	battery_config.batt_info.voltage_max = voltage_max.value();
+	battery_config.batt_info.voltage_normal = voltage_normal.value();
+	battery_config.batt_info.voltage_min = voltage_min.value();
+	battery_config.batt_info.precharge_voltage = precharge_voltage.value();
+	battery_config.batt_info.precharge_current = precharge_current.value();
+	battery_config.batt_info.start_charging_min_c =
+		start_charging_min_c.value();
+	battery_config.batt_info.start_charging_max_c =
+		start_charging_max_c.value();
+	battery_config.batt_info.charging_min_c = charging_min_c.value();
+	battery_config.batt_info.charging_max_c = charging_max_c.value();
+	battery_config.batt_info.discharging_min_c = discharging_min_c.value();
+	battery_config.batt_info.discharging_max_c = discharging_max_c.value();
+	battery_config.batt_info.vendor_param_start =
+		vendor_param_start.value();
+	battery_config.batt_info.reserved = batt_info_reserved.value();
+
+	return cmd_convert_to_hex(battery_config);
+}
+
+static int cmd_cbi_set_battery_config(const std::string &hex_string)
+{
+	enum cbi_data_tag tag = CBI_TAG_BATTERY_CONFIG;
+	char *e;
+	int rv;
+	int i;
+	struct ec_params_set_cbi *p = (struct ec_params_set_cbi *)ec_outbuf;
+	void *val_ptr;
+	size_t size;
+	uint8_t *buf = NULL;
+
+	memset(p, 0, ec_max_outsize);
+	p->tag = tag;
+
+	const char *hex = hex_string.c_str();
+	size = strlen(hex);
+	if (size % 2) {
+		fprintf(stderr, "\n<hex> length must be even.\n");
+		return -1;
+	}
+
+	size /= 2;
+	buf = (uint8_t *)malloc(size);
+	if (!buf) {
+		fprintf(stderr, "\nFailed to allocate buffer.\n");
+		return -1;
+	}
+	for (i = 0; i < size; i++) {
+		char t[3] = {};
+
+		memcpy(t, hex, 2);
+		buf[i] = strtoul(t, &e, 16);
+		if (e && *e) {
+			fprintf(stderr, "\nBad value: '%s'\n", t);
+			free(buf);
+			return -1;
+		}
+		hex += 2;
+	}
+	val_ptr = buf;
+	if (size > ec_max_outsize - sizeof(*p)) {
+		fprintf(stderr, "Size exceeds parameter buffer: %zu\n", size);
+		return -1;
+	}
+	/* Little endian */
+	memcpy(p->data, val_ptr, size);
+	free(buf);
+	val_ptr = NULL;
+	p->size = size;
+	rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, p, sizeof(*p) + size,
+			NULL, 0);
+	if (rv < 0) {
+		if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
+			fprintf(stderr, "Write-protect is enabled or "
+					"EC explicitly refused to change the "
+					"requested field.\n");
+		else
+			fprintf(stderr, "Error code: %d\n", rv);
+		return rv;
+	}
+	return 0;
+}
+
+static int cmd_battery_config_set(int argc, char *argv[])
+{
+	if (argc != 3) {
+		fprintf(stderr,
+			"Usage: %s <file_path> <battery_identifier>\n"
+			"  battery_identifier format: <OEM name>_<Model number>\n"
+			"  See `ectool battery` for <OEM name> and <Model number>\n",
+			argv[0]);
+		return -1;
+	}
+	auto result = cmd_get_hex_string(argv[1], argv[2]);
+	if (!result.has_value()) {
+		return 1;
+	}
+	return cmd_cbi_set_battery_config(result.value());
 }
 
 int cmd_chipinfo(int argc, char *argv[])
@@ -11818,7 +12049,8 @@ const struct command commands[] = {
 	{ "battery", cmd_battery },
 	{ "batterycutoff", cmd_battery_cut_off },
 	{ "batteryparam", cmd_battery_vendor_param },
-	{ "bcfg", cmd_battery_config },
+	{ "bcfg_get", cmd_battery_config_get },
+	{ "bcfg_set", cmd_battery_config_set },
 	{ "boardversion", cmd_board_version },
 	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
