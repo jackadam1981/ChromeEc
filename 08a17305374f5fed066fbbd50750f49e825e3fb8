@@ -16,6 +16,29 @@
       "message": "blocked by cl:4903046.",
       "revId": "08a17305374f5fed066fbbd50750f49e825e3fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e2ddce_b3609501",
+        "filename": "common/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T00:01:53Z",
+      "side": 1,
+      "message": "Another option is to assume the AP intends to shutdown. That is, we\u0027ll make the EC set AP_OFF by default and the AP will need to explicitly request a reboot. This allows us to leave all existing shutdown paths alone and requires us to change only reboot in recovery mode, which is architecture independent and in a very narrow scope.\n\nplatform/initramfs/recovery/recovery_init.sh executes \u0027reboot -f\u0027. So, we can either [1] make this script call another special command to clear AP_OFF or [2] customize the reboot command (third_party/systemd/shutdown). \n\nOption 1 is cleaner but it won\u0027t cover other reboots. Option 2 is more versatile but it requires us to maintain a custom systemd.",
+      "range": {
+        "startLine": 1147,
+        "startChar": 20,
+        "endLine": 1147,
+        "endChar": 55
+      },
+      "revId": "08a17305374f5fed066fbbd50750f49e825e3fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
