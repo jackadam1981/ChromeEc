@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09b0c6a_9d19eb9f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-22T06:38:48Z",
+      "side": 1,
+      "message": "Changed back to `EC_MKBP_FP_ERR_MATCH_NO_INTERNAL`.\n\nAnd add `EC_MKBP_FP_MATCH` \u0026 `(fgr \u003c\u003c EC_MKBP_FP_MATCH_IDX_OFFSET) \u0026 EC_MKBP_FP_MATCH_IDX_MASK` to match the general error code in fp_process_match.",
+      "parentUuid": "630ed5c7_a70bd898",
+      "revId": "377e6d35d23319ba73ecbd68ff2d85870a273ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49c8d208_359c4a7a",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-22T04:47:48Z",
       "side": 1,
       "message": "nit: extra blank line?",
+      "revId": "377e6d35d23319ba73ecbd68ff2d85870a273ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a323b9d_8425b97f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-22T06:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c8d208_359c4a7a",
       "revId": "377e6d35d23319ba73ecbd68ff2d85870a273ebd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
