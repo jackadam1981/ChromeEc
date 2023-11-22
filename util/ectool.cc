@@ -34,12 +34,16 @@
 #include <time.h>
 
 #include <getopt.h>
+#include <iomanip>
+#include <iostream>
+#include <libchrome/base/json/json_reader.h>
 #include <libec/add_entropy_command.h>
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
+#include <string>
 #include <unistd.h>
 #include <vector>
 
@@ -8576,20 +8580,107 @@ static void batt_conf_dump(const struct board_batt_params *conf)
 	printf("},\n"); /* end of board_batt_params */
 }
 
-static int cmd_battery_config(int argc, char *argv[])
+int cmd_set_battery_config_from_json(base::Value::Dict *root_dict_identifier,
+				     struct board_batt_params *config)
 {
-	const uint8_t struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION;
+	base::Value::Dict *fuel_gauge =
+		root_dict_identifier->FindDict("fuel_gauge");
+
+	absl::optional<int> flags = fuel_gauge->FindInt("flags");
+	absl::optional<int> board_flags = fuel_gauge->FindInt("board_flags");
+	config->fuel_gauge.flags = flags.value();
+	config->fuel_gauge.board_flags = board_flags.value();
+
+	base::Value::Dict *ship_mode = fuel_gauge->FindDict("ship_mode");
+	absl::optional<int> ship_mode_reg_addr = ship_mode->FindInt("reg_addr");
+	absl::optional<int> ship_mode_reserved = ship_mode->FindInt("reserved");
+	config->fuel_gauge.ship_mode.reg_addr = ship_mode_reg_addr.value();
+	config->fuel_gauge.ship_mode.reserved = ship_mode_reserved.value();
+	base::Value::List *ship_mode_reg_data = ship_mode->FindList("reg_data");
+	for (size_t i = 0;
+	     i < ship_mode_reg_data->size() && i < SHIP_MODE_WRITES; ++i) {
+		absl::optional<int> value = (*ship_mode_reg_data)[i].GetIfInt();
+		config->fuel_gauge.ship_mode.reg_data[i] =
+			static_cast<uint16_t>(value.value());
+	};
+
+	base::Value::Dict *sleep_mode = fuel_gauge->FindDict("sleep_mode");
+	absl::optional<int> sleep_mode_reg_addr =
+		sleep_mode->FindInt("reg_addr");
+	absl::optional<int> sleep_mode_reserved =
+		sleep_mode->FindInt("reserved");
+	absl::optional<int> sleep_mode_reg_data =
+		sleep_mode->FindInt("reg_data");
+	config->fuel_gauge.sleep_mode.reg_addr = sleep_mode_reg_addr.value();
+	config->fuel_gauge.sleep_mode.reserved = sleep_mode_reserved.value();
+	config->fuel_gauge.sleep_mode.reg_data = sleep_mode_reg_data.value();
+
+	base::Value::Dict *fet_info = fuel_gauge->FindDict("fet_info");
+	absl::optional<int> fet_info_reg_addr = fet_info->FindInt("reg_addr");
+	absl::optional<int> fet_info_reserved = fet_info->FindInt("reserved");
+	absl::optional<int> fet_info_reg_mask = fet_info->FindInt("reg_mask");
+	absl::optional<int> fet_info_disconnect_val =
+		fet_info->FindInt("disconnect_val");
+	absl::optional<int> fet_info_cfet_mask = fet_info->FindInt("cfet_mask");
+	absl::optional<int> fet_info_cfet_off_val =
+		fet_info->FindInt("cfet_off_val");
+	config->fuel_gauge.fet.reg_addr = fet_info_reg_addr.value();
+	config->fuel_gauge.fet.reserved = fet_info_reserved.value();
+	config->fuel_gauge.fet.reg_mask = fet_info_reg_mask.value();
+	config->fuel_gauge.fet.disconnect_val = fet_info_disconnect_val.value();
+	config->fuel_gauge.fet.cfet_mask = fet_info_cfet_mask.value();
+	config->fuel_gauge.fet.cfet_off_val = fet_info_cfet_off_val.value();
+
+	base::Value::Dict *batt_info =
+		root_dict_identifier->FindDict("batt_info");
+
+	absl::optional<int> voltage_max = batt_info->FindInt("voltage_max");
+	absl::optional<int> voltage_normal =
+		batt_info->FindInt("voltage_normal");
+	absl::optional<int> voltage_min = batt_info->FindInt("voltage_min");
+	absl::optional<int> precharge_voltage =
+		batt_info->FindInt("precharge_voltage");
+	absl::optional<int> precharge_current =
+		batt_info->FindInt("precharge_current");
+	absl::optional<int> start_charging_min_c =
+		batt_info->FindInt("start_charging_min_c");
+	absl::optional<int> start_charging_max_c =
+		batt_info->FindInt("start_charging_max_c");
+	absl::optional<int> charging_min_c =
+		batt_info->FindInt("charging_min_c");
+	absl::optional<int> charging_max_c =
+		batt_info->FindInt("charging_max_c");
+	absl::optional<int> discharging_min_c =
+		batt_info->FindInt("discharging_min_c");
+	absl::optional<int> discharging_max_c =
+		batt_info->FindInt("discharging_max_c");
+	absl::optional<int> vendor_param_start =
+		batt_info->FindInt("vendor_param_start");
+	absl::optional<int> batt_info_reserved = batt_info->FindInt("reserved");
+	config->batt_info.voltage_max = voltage_max.value();
+	config->batt_info.voltage_normal = voltage_normal.value();
+	config->batt_info.voltage_min = voltage_min.value();
+	config->batt_info.precharge_voltage = precharge_voltage.value();
+	config->batt_info.precharge_current = precharge_current.value();
+	config->batt_info.start_charging_min_c = start_charging_min_c.value();
+	config->batt_info.start_charging_max_c = start_charging_max_c.value();
+	config->batt_info.charging_min_c = charging_min_c.value();
+	config->batt_info.charging_max_c = charging_max_c.value();
+	config->batt_info.discharging_min_c = discharging_min_c.value();
+	config->batt_info.discharging_max_c = discharging_max_c.value();
+	config->batt_info.vendor_param_start = vendor_param_start.value();
+	config->batt_info.reserved = batt_info_reserved.value();
+
+	return 0;
+}
+
+static int cmd_battery_config_get()
+{
 	struct batt_conf_header *head;
 	struct board_batt_params conf;
 	uint8_t *p;
 	int expected;
 	int rv;
-
-	if (argc != 1) {
-		fprintf(stderr, "Invalid param count\n");
-		return -1;
-	}
-
 	rv = ec_command(EC_CMD_BATTERY_CONFIG, 0, NULL, 0, ec_inbuf,
 			ec_max_insize);
 	if (rv < 0)
@@ -8599,10 +8690,10 @@ static int cmd_battery_config(int argc, char *argv[])
 	printf("\n");
 	printf(".struct_version = 0x%02x,\n", head->struct_version);
 
-	if (head->struct_version > struct_version) {
+	if (head->struct_version > EC_BATTERY_CONFIG_STRUCT_VERSION) {
 		fprintf(stderr,
 			"Struct version mismatch. Supported: 0x00 ~ 0x%02x.\n",
-			struct_version);
+			EC_BATTERY_CONFIG_STRUCT_VERSION);
 		return -1;
 	}
 
@@ -8630,6 +8721,114 @@ static int cmd_battery_config(int argc, char *argv[])
 	memcpy(&conf, p, sizeof(conf));
 	batt_conf_dump(&conf);
 
+	return 0;
+}
+
+static void cmd_battery_config_help(char *cmd)
+{
+	fprintf(stderr,
+		"Usage: %s\n"
+		"Usage: %s <file_path> <battery_identifier>\n"
+		"    battery_identifier format: <OEM name>,<Model number>\n"
+		"    See `ectool battery` for <OEM name> and <Model number>\n",
+		cmd, cmd);
+}
+
+static int cmd_battery_config(int argc, char *argv[])
+{
+	if (argc != 1 && argc != 3) {
+		fprintf(stderr, "Invalid param count\n");
+		cmd_battery_config_help(argv[0]);
+		return -1;
+	}
+
+	if (argc == 1) {
+		return cmd_battery_config_get();
+	}
+
+	FILE *fp;
+	int size;
+	fp = fopen(argv[1], "rb");
+	if (!fp) {
+		fprintf(stderr, "Can't open %s: %s\n", argv[1],
+			strerror(errno));
+		return 1;
+	}
+	fseek(fp, 0, SEEK_END);
+	size = ftell(fp);
+	rewind(fp);
+	char buffer[size + 1];
+
+	int len = fread(buffer, 1, size, fp);
+	fclose(fp);
+	if (len != size) {
+		fprintf(stderr, "Failed to read %s\n", argv[1]);
+		return 1;
+	}
+	absl::optional<base::Value> root = base::JSONReader::Read(buffer);
+	base::Value::Dict *root_dict = root->GetIfDict();
+	base::Value::Dict *root_dict_identifier = root_dict->FindDict(argv[2]);
+	if (!root_dict_identifier) {
+		fprintf(stderr, "Failed to find the identifier: %s in %s\n",
+			argv[2], argv[1]);
+		return 1;
+	}
+
+	struct board_batt_params *battery_config =
+		(board_batt_params *)malloc(sizeof(struct board_batt_params));
+	cmd_set_battery_config_from_json(root_dict_identifier, battery_config);
+	std::string *manuf_name_str =
+		root_dict_identifier->FindString("manuf_name");
+	if (!manuf_name_str) {
+		printf("manuf_name is null.");
+		return -1;
+	}
+	if (manuf_name_str->length() > SBS_MAX_STRING_SIZE) {
+		printf("manuf_name is too long.");
+		return -1;
+	}
+	static char manuf_name[SBS_MAX_STRING_SIZE];
+	strcpy(manuf_name, manuf_name_str->c_str());
+
+	std::string *device_name_str =
+		root_dict_identifier->FindString("device_name");
+	if (!device_name_str) {
+		printf("device_name is null.");
+		return -1;
+	}
+	if (device_name_str->length() > SBS_MAX_STRING_SIZE) {
+		printf("device_name is too long.");
+		return -1;
+	}
+	static char device_name[SBS_MAX_STRING_SIZE];
+	strcpy(device_name, device_name_str->c_str());
+
+	int mem_size = sizeof(struct batt_conf_header) + strlen(manuf_name) +
+		       strlen(device_name) + sizeof(*battery_config);
+
+	struct batt_conf_header *header =
+		(struct batt_conf_header *)malloc(mem_size + 1);
+	header->struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION;
+	header->manuf_name_size = strlen(manuf_name);
+	header->device_name_size = strlen(device_name);
+	header += sizeof(struct batt_conf_header);
+	memcpy(header, manuf_name, header->manuf_name_size);
+	header += header->manuf_name_size;
+	memcpy(header, device_name, header->device_name_size);
+	header += header->device_name_size;
+	memcpy(header, battery_config, sizeof(*battery_config));
+
+	int rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, (uint8_t *)header,
+			    mem_size, NULL, 0);
+	if (rv < 0) {
+		if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
+			fprintf(stderr, "Write-protect is enabled or "
+					"EC explicitly refused to change the "
+					"requested field.\n");
+		else
+			fprintf(stderr, "Error code: %d\n", rv);
+		return rv;
+	}
 	return 0;
 }
 
