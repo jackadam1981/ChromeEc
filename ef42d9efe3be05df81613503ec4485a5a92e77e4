@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4649a751_5f87deb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "This only checks a binary blob was correctly written to CBI. To verify the correct format of the blob, you need to make the EC dump the config (e.g. using \u0027ectool bcfg\u0027).",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2aa9aab_21c4baa5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8733,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "Can you also describe the format of \u003cbatt_id\u003e in the usage?",
+      "range": {
+        "startLine": 8733,
+        "startChar": 42,
+        "endLine": 8733,
+        "endChar": 60
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3189943e_8c96b8cd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8740,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "nit: it\u0027s nice to also print strerror(errno).",
+      "range": {
+        "startLine": 8740,
+        "startChar": 2,
+        "endLine": 8740,
+        "endChar": 9
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf8c0e4_9e0eebff",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8743,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "Can you allocate memory from the heap? You can get the size by fseek \u0026 ftell. You can refer to cmd_pchg_update_write as an example.",
+      "range": {
+        "startLine": 8743,
+        "startChar": 6,
+        "endLine": 8743,
+        "endChar": 19
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da08aa49_a042f110",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8755,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "What happens if there is no match? Don\u0027t we need to handle root_dict_identifier \u003d nil?",
+      "range": {
+        "startLine": 8755,
+        "startChar": 20,
+        "endLine": 8755,
+        "endChar": 40
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cb16db_e2a8fccd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8779,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "Some of the fields are optional. For example, sleep_mode is used only by guybrush.\n\nWhat\u0027s your idea about optional fields? I think we need to allow json files to skip optional fields. In FW, the default value for an unspecified field is zero. So, we can do the same in json files.",
+      "range": {
+        "startLine": 8779,
+        "startChar": 20,
+        "endLine": 8779,
+        "endChar": 30
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14031982_83e5c79b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8854,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "What do you think about making the command directly send battery_config to the EC by EC_CMD_SET_CROS_BOARD_INFO?",
+      "range": {
+        "startLine": 8854,
+        "startChar": 1,
+        "endLine": 8854,
+        "endChar": 52
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4726fc_fb5789ba",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 11969,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T19:31:01Z",
+      "side": 1,
+      "message": "Maybe it\u0027s cleaner to integrate this with \u0027ectool bcfg\u0027:\n\n* ectool bcfg: Print active config.\n* ectool bcfg /path/to/json \u003cid\u003e: Program a config from json into CBI.\n* ectool bcfg \u003cindex\u003e: Read a config[index] from CBI.\n\nWDYT?",
+      "range": {
+        "startLine": 11969,
+        "startChar": 4,
+        "endLine": 11969,
+        "endChar": 22
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
