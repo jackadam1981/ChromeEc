@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b70619_92c7846a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "Yeah good point, they are all over the place, I dropped all of them and replaced with a single comment explaining what happens on those lines.",
+      "parentUuid": "18195659_f33b995a",
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34286414_c3cec1bb",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-22T13:45:21Z",
       "side": 1,
       "message": "Can we update this comment to not confuse future readers. Or get rid of this part of the comment since it\u0027s obvious we\u0027re driving the signal to low to disable the key detection.",
+      "range": {
+        "startLine": 139,
+        "startChar": 23,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc5b3ef_24d9d84d",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "Hey good point this is all over, I\u0027ve reworded the whole thing and removed the intermediate comment, lmk what you think about it.",
+      "parentUuid": "34286414_c3cec1bb",
       "range": {
         "startLine": 139,
         "startChar": 23,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aac86f1_b5c210b0",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff406a5a_a40e8aa8",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 26
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48999a63_641efbc0",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-11-22T13:45:21Z",
       "side": 1,
       "message": "Update comment.",
+      "range": {
+        "startLine": 98,
+        "startChar": 23,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c72d959b_4e4eb6fd",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "This is actually correct, the normal lines are high. Apart from the fact that it\u0027s not because they are high impedance. Let me rephrase the whole story, just adding a single comment and dropping the other ones, no need to comment every single step.",
+      "parentUuid": "48999a63_641efbc0",
       "range": {
         "startLine": 98,
         "startChar": 23,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b05e2d_d6de2f3f",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b79ef08_43370b80",
+      "range": {
+        "startLine": 103,
+        "startChar": 23,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f2dff6_2268e0cc",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b09b4bd_9cf95f9c",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f2dff6_2268e0cc",
+      "range": {
+        "startLine": 111,
+        "startChar": 54,
+        "endLine": 111,
+        "endChar": 57
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ce970f3_01f36129",
@@ -146,6 +284,30 @@
       "writtenOn": "2023-11-22T13:45:21Z",
       "side": 1,
       "message": "Update comment.",
+      "range": {
+        "startLine": 126,
+        "startChar": 22,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "a3eabfd97921e261205c81fd4756c58cf5c752ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32e7867_b6e5eada",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-22T14:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ce970f3_01f36129",
       "range": {
         "startLine": 126,
         "startChar": 22,
