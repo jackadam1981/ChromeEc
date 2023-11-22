@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9cdef81_6ec18c40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T22:57:16Z",
+      "side": 1,
+      "message": "IIUC, daisydog runs in user space. When it hangs, there is a chance that the kernel is still functioning. Don\u0027t we want to give the kernel a chance to collect some logs? How do we ensure we\u0027re not over-reacting?",
+      "parentUuid": "72c30935_f0e54dbb",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2a0f6c2_d135c56a",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 11
@@ -144,6 +168,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b778c88_f2d5d53f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4715,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T22:57:16Z",
+      "side": 1,
+      "message": "Are we going to return errors if these obsolete flags are received?",
+      "range": {
+        "startLine": 4715,
+        "startChar": 26,
+        "endLine": 4715,
+        "endChar": 34
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0848d21_68e6493b",
         "filename": "include/ec_commands.h",
         "patchSetId": 11
@@ -179,6 +226,30 @@
       "side": 1,
       "message": "Yeap, you are right, but what do you mean by \"separate\"? All those are kind of an action to do by EC, like start, stop, get, clear etc.",
       "parentUuid": "a0848d21_68e6493b",
+      "range": {
+        "startLine": 4738,
+        "startChar": 0,
+        "endLine": 4757,
+        "endChar": 32
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3519d7_dfb3e5cf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4757,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T22:57:16Z",
+      "side": 1,
+      "message": "To make it clear for the callers what combinations are legal/illegal, we could do:\n\n    struct ec_params_hang_detect {\n        uint16_t arg;     /* command argument */\n        uint16_t command; /* STOP, START, STATUS, FLAG */\n        uint16_t reserved;\n        uint16_t reboot_timeout_sec;\n    }\n\n* STOP(\u003d0x8000) and START(\u003d0x4000) don\u0027t take argument.\n* STATUS(\u003d0x0001) command takes:\n  arg\u003d0: Clear status\n  arg\u003d1: Get status\n* FLAG(\u003d0x0000) command takes:\n  BIT(3): START_ON_RESUME\n  BIT(10): STOP_ON_SUSPEND\n\nThe command values are chosen to parse the old ec_params_hang_detect.flags using the same code. I\u0027m not sure whether we care about mixing old \u0026 new FW \u0026 OS, though.",
+      "parentUuid": "7a0d964e_cf25e370",
       "range": {
         "startLine": 4738,
         "startChar": 0,
