@@ -39,6 +39,30 @@
       },
       "revId": "08a17305374f5fed066fbbd50750f49e825e3fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c7734b_7d60ab42",
+        "filename": "common/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-22T18:51:04Z",
+      "side": 1,
+      "message": "I found recovery sends the sysjump command to the EC and warm-resets the AP. Thus, the SHUTDOWN_COMPLETE hook won\u0027t be used. So, reboot in the current recovery process won\u0027t be affected by this CL (whether we choose AP_OFF or AP_ON as a default behavior).",
+      "parentUuid": "41e2ddce_b3609501",
+      "range": {
+        "startLine": 1147,
+        "startChar": 20,
+        "endLine": 1147,
+        "endChar": 55
+      },
+      "revId": "08a17305374f5fed066fbbd50750f49e825e3fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
