@@ -22,6 +22,30 @@
       },
       "revId": "d6cdd791156d6522b73a4b6ceb02b92dd0f22e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46125c55_4b216c4d",
+        "filename": "zephyr/program/skyrim/markarth/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-11-22T16:12:35Z",
+      "side": 1,
+      "message": "Yes, take a look at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5040041/comment/c72303e5_523ab707/",
+      "parentUuid": "e09dc2f0_964b2351",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "d6cdd791156d6522b73a4b6ceb02b92dd0f22e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
