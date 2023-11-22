@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70006715_86d5b032",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-22T18:55:51Z",
+      "side": 1,
+      "message": "this assignement is not needed.\n\nand in general, how about here and in line 1030 just\n```\nif (tpm_nv_eps_len() \u003d\u003d 0)\n  CPRINTS(\"%s: EPS before is zero\", __func__);\n```\n\nas the only conde iside this condition",
+      "range": {
+        "startLine": 921,
+        "startChar": 23,
+        "endLine": 921,
+        "endChar": 26
+      },
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b8084e_fd281be2",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-22T18:55:51Z",
+      "side": 1,
+      "message": "why is this change necessary?",
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

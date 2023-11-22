@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae40da5a_59f17f0c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4630,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-22T18:55:51Z",
+      "side": 0,
+      "message": "aren\u0027t all these `undef` statements also misplaced?",
+      "range": {
+        "startLine": 4621,
+        "startChar": 0,
+        "endLine": 4630,
+        "endChar": 0
+      },
+      "revId": "474397c0388573bc108511a594727da58043b1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
