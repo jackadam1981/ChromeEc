@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4293a783_7a6d82ff",
+        "filename": "zephyr/program/rex/screebo/led_policy.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-11-22T01:31:02Z",
+      "side": 1,
+      "message": "OEM LED behavior SPEC(b/278153037) did not define the `LED_PWRS_IDLE` and `POWER_S3` behavior, we\u0027d better keep the original `POWER_S3` behavior - `White 1 sec on, 3 sec off`",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 4
+      },
+      "revId": "5f9af58b61116559ea4a90fd441228dc1845015c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
