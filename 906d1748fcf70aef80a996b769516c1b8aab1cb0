@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5c511e_9b1995c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-11-23T10:43:59Z",
+      "side": 1,
+      "message": "For sure not entire file because of the `broken_slp` code. Dartmonkey doesn\u0027t have such \"feature\". The question is if `slp_event_init` and `slp_event_isr` can be moved to common file. I don\u0027t know at the moment if every fpmcu in the future use the same sleep pin pattern.",
+      "parentUuid": "db6ecfde_1211be43",
+      "revId": "906d1748fcf70aef80a996b769516c1b8aab1cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2551f685_1f1672d4",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "644f7545_330bf159",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-11-23T10:43:59Z",
+      "side": 1,
+      "message": "Yes, I don\u0027t see any consumer of the `HOOK_CHIPSET_RESUME`. However, I would keep this anyway, if any is added in the future in EC code.",
+      "parentUuid": "2551f685_1f1672d4",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "906d1748fcf70aef80a996b769516c1b8aab1cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c736135c_e1677e89",
         "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
         "patchSetId": 5
@@ -54,6 +96,30 @@
       "writtenOn": "2023-11-23T10:17:36Z",
       "side": 1,
       "message": "It should be `slp_event_init`, shouldn\u0027t it?",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "906d1748fcf70aef80a996b769516c1b8aab1cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1af2a08_bf69d2cb",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-11-23T10:43:59Z",
+      "side": 1,
+      "message": "True 😊",
+      "parentUuid": "c736135c_e1677e89",
       "range": {
         "startLine": 66,
         "startChar": 11,
