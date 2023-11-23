@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb73c66c_edeaf913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-11-23T05:08:56Z",
+      "side": 1,
+      "message": "Hi, can you separate change of the `project.conf` for chinchou and staryu to two different CLs, and use their name in the commit title? i.e.,\n\n`staryu: Change virtual battery i2c address` and `chinchou: Change virtual battery i2c address`.",
+      "revId": "cb0901d1511416967a7a2bd8b0e31fabf1510158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
