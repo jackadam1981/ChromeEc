@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a41dfe3_a839b254",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-11-23T06:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f3b622_c2097ab1",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "0779c177ba71ee833e6b03edfaa746ae470eaed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5eeb745_fcbbeb30",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef7c451_3abb139d",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-11-23T06:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5eeb745_fcbbeb30",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 23
+      },
+      "revId": "0779c177ba71ee833e6b03edfaa746ae470eaed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8502f1cd_83b93483",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-11-22T11:01:17Z",
       "side": 1,
       "message": "`BIT(NPCX_EVENABLE_IBFEN) | BIT(NPCX_EVENABLE_IBHFEN)` is used few times around here, how about adding a define for it?",
+      "revId": "0779c177ba71ee833e6b03edfaa746ae470eaed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a88c740_7afae6ce",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-11-23T06:32:05Z",
+      "side": 1,
+      "message": "Done. The MACRO define was added in the zephyr upstream [PR:65557](https://github.com/zephyrproject-rtos/zephyr/pull/65557)",
+      "parentUuid": "8502f1cd_83b93483",
       "revId": "0779c177ba71ee833e6b03edfaa746ae470eaed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
