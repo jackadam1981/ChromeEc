@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d55e0b3_1d472bcd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 9080,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-23T21:20:57Z",
+      "side": 1,
+      "message": "Hi Jimmy,\n\nThis is a hex string of struct board_batt_params, which doesn\u0027t contain manuf_name or model_name. What you need to pass to EC_CMD_SET_CROS_BOARD_INFO is struct batt_conf_header. You can refer to hc_battery_config (in battery_fuel_gauge.c) as an example of creating batt_conf_header. \n\nAlso, since you\u0027re not printing data to a console, you don\u0027t even need to convert data to a hex string (or revert it back).",
+      "range": {
+        "startLine": 9080,
+        "startChar": 57,
+        "endLine": 9080,
+        "endChar": 67
+      },
+      "revId": "b2ec3bf638b163db61337d5f3ba0f6d7f0d76232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
