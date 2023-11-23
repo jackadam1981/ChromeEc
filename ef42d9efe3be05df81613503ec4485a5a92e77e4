@@ -261,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "756955e3_0339217d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8779,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T11:36:49Z",
+      "side": 1,
+      "message": "For the json schema, we have another option in libchrome: https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/libchrome/components/policy/core/common/chrome_schema.h",
+      "parentUuid": "5d54b62e_70a10e6b",
+      "range": {
+        "startLine": 8779,
+        "startChar": 20,
+        "endLine": 8779,
+        "endChar": 30
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14031982_83e5c79b",
         "filename": "util/ectool.cc",
         "patchSetId": 4
@@ -295,6 +319,30 @@
       "writtenOn": "2023-11-22T19:31:01Z",
       "side": 1,
       "message": "Maybe it\u0027s cleaner to integrate this with \u0027ectool bcfg\u0027:\n\n* ectool bcfg: Print active config.\n* ectool bcfg /path/to/json \u003cid\u003e: Program a config from json into CBI.\n* ectool bcfg \u003cindex\u003e: Read a config[index] from CBI.\n\nWDYT?",
+      "range": {
+        "startLine": 11969,
+        "startChar": 4,
+        "endLine": 11969,
+        "endChar": 22
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb30e113_0f2ba534",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 11969,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T11:36:49Z",
+      "side": 1,
+      "message": "I would prefer to have \n* ectool bcfg_get\n* ectool bcfg_set\n\n1. It\u0027s easier to know what the command does by its name.\n2 The function would be smaller if they are seperate.\n\n* ectool bcfg \u003cindex\u003e: I am not sure what this does, can you explain more on this function? If this is a new function, we can implment this in another CL.",
+      "parentUuid": "5e4726fc_fb5789ba",
       "range": {
         "startLine": 11969,
         "startChar": 4,
