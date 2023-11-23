@@ -70,6 +70,30 @@
       },
       "revId": "d6cdd791156d6522b73a4b6ceb02b92dd0f22e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac10aed_4548b05e",
+        "filename": "zephyr/program/skyrim/markarth/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-11-23T09:23:58Z",
+      "side": 1,
+      "message": "The battery team want to aligned with reading battery method, so modify to ```ap20cbl-4```.",
+      "parentUuid": "1a02d2b5_bb64ae4e",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "d6cdd791156d6522b73a4b6ceb02b92dd0f22e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
