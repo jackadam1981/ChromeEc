@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0905290d_60abdd00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-11-23T08:55:35Z",
+      "side": 1,
+      "message": "Instead of pulling the DT schema changes (crrev/c/5040041 and friends) I modified the patches to work with the old binding.\nPlease take at detailed explanation below.\n\nConflicts:\n1. zephyr/dts/bindings/battery/lges,ap23a8l.yaml Flags field doesn\u0027t exist, set \"fet_mfgacc_support \u003d 0\" instead.\n2. zephyr/program/nissa/craaskov/overlay.dtsi doesn\u0027t exist. Omit it.",
+      "revId": "0b2be6330d8944c3648a33a5c76c71eb0873d943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
