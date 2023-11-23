@@ -63,6 +63,22 @@ void board_ap_power_action_g3_s5(void)
 	}
 }
 
+void board_ap_power_action_s0(void)
+{
+	LOG_INF("\n---%s---\n",__func__);
+	if (power_signal_get(PWR_PCH_PWROK)) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_a1_oc_pu_en), 1);
+	}
+}
+
+void board_ap_power_action_s0_s3(void)
+{
+	LOG_INF("\n---%s---\n",__func__);
+	if (!power_signal_get(PWR_PCH_PWROK)) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_a1_oc_pu_en), 0);
+	}
+}
+
 bool board_ap_power_check_power_rails_enabled(void)
 {
 	return power_signal_get(PWR_EN_PP3300_A);
