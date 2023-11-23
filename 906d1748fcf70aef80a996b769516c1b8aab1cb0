@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6ecfde_1211be43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-23T10:17:36Z",
+      "side": 1,
+      "message": "I wonder if `power.c` can be moved to `fpmcu/src` instead of `fpmcu/bloonchipper/src`",
+      "revId": "906d1748fcf70aef80a996b769516c1b8aab1cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2551f685_1f1672d4",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-23T10:17:36Z",
+      "side": 1,
+      "message": "What are the consumers of this signal? In EC, SPI controller driver was the consumer IIRC",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "906d1748fcf70aef80a996b769516c1b8aab1cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c736135c_e1677e89",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-23T10:17:36Z",
+      "side": 1,
+      "message": "It should be `slp_event_init`, shouldn\u0027t it?",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "906d1748fcf70aef80a996b769516c1b8aab1cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
