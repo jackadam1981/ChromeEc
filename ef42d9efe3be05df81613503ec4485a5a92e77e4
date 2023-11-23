@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a810156_dce3778b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8733,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T08:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2aa9aab_21c4baa5",
+      "range": {
+        "startLine": 8733,
+        "startChar": 42,
+        "endLine": 8733,
+        "endChar": 60
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3189943e_8c96b8cd",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-11-22T19:31:01Z",
       "side": 1,
       "message": "nit: it\u0027s nice to also print strerror(errno).",
+      "range": {
+        "startLine": 8740,
+        "startChar": 2,
+        "endLine": 8740,
+        "endChar": 9
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b67d21e_3993a471",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8740,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T08:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3189943e_8c96b8cd",
       "range": {
         "startLine": 8740,
         "startChar": 2,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7272eda_1c1c0cc9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8743,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T08:34:50Z",
+      "side": 1,
+      "message": "Done. buffer[size] doens\u0027t work so I need to add 1.",
+      "parentUuid": "4bf8c0e4_9e0eebff",
+      "range": {
+        "startLine": 8743,
+        "startChar": 6,
+        "endLine": 8743,
+        "endChar": 19
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da08aa49_a042f110",
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4ba19f_db12bda3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8755,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T08:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da08aa49_a042f110",
+      "range": {
+        "startLine": 8755,
+        "startChar": 20,
+        "endLine": 8755,
+        "endChar": 40
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90cb16db_e2a8fccd",
@@ -129,6 +225,30 @@
       "writtenOn": "2023-11-22T19:31:01Z",
       "side": 1,
       "message": "Some of the fields are optional. For example, sleep_mode is used only by guybrush.\n\nWhat\u0027s your idea about optional fields? I think we need to allow json files to skip optional fields. In FW, the default value for an unspecified field is zero. So, we can do the same in json files.",
+      "range": {
+        "startLine": 8779,
+        "startChar": 20,
+        "endLine": 8779,
+        "endChar": 30
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d54b62e_70a10e6b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8779,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-23T08:34:50Z",
+      "side": 1,
+      "message": "I didn\u0027t know there is optional field.\n\nCan you mark them in the doc: https://docs.google.com/document/d/1ReU29Q6H3slQYLPYKlb0tfT27m5-bouwSEhJOL7-Vyw/edit? I have updated the json format.\n\nWe can validate the battery config with json schema in python. When partners are uploading the json file, it will be checked in `repo upload`.\n\nFor optional fields, I think we can\n(1) Still make them required, but let partners fill them will zero.\n(2) Make it optional and we need to deal with the case no node is found in ectool: assign it with zero when no node found.\n\nI think (1) is better since the format will be consistent so it\u0027s easier for manual review. Also we don\u0027t need to fill the zero values in ectool.",
+      "parentUuid": "90cb16db_e2a8fccd",
       "range": {
         "startLine": 8779,
         "startChar": 20,
