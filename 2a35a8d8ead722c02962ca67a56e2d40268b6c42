@@ -16,6 +16,58 @@
       "message": "Could the CLs be merged to one ?",
       "revId": "2a35a8d8ead722c02962ca67a56e2d40268b6c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d5ada3_abbeb445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-24T06:51:36Z",
+      "side": 1,
+      "message": "The base definition also includes fp and thermal. separate CLs looks fine.",
+      "parentUuid": "6a7d5216_8fa2a883",
+      "revId": "2a35a8d8ead722c02962ca67a56e2d40268b6c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b80d8d5_1ea8af1a",
+        "filename": "board/omnigul/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-24T06:51:36Z",
+      "side": 1,
+      "message": "The function ec_cfg_has_keyboard_numpad returns bool so it should be used directly as the attribute comparison is done inside the function.",
+      "revId": "2a35a8d8ead722c02962ca67a56e2d40268b6c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e3f454_80dbca78",
+        "filename": "board/omnigul/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-24T06:51:36Z",
+      "side": 1,
+      "message": "should use the bool returned directly.",
+      "revId": "2a35a8d8ead722c02962ca67a56e2d40268b6c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
