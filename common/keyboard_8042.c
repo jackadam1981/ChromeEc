@@ -389,6 +389,33 @@ static void scancode_bytes(uint16_t make_code, int8_t pressed,
 {
 	*len = 0;
 
+	uint16_t temp_code1;
+	uint16_t temp_code2;
+	uint16_t temp_code3;
+
+	if(make_code == 0xFF)
+	{
+		CPRINTS(" emoji picker: %d ", make_code);
+		temp_code1=0x0012;
+		temp_code2=0xe01f;
+		temp_code3=0x0029;
+
+		temp_code1 = scancode_translate_set2_to_1(temp_code1);
+		scan_code[(*len)++] = pressed ? temp_code1 : (temp_code1 | 0x80); // left shift 0x12
+
+		if (temp_code2 >= 0x0100) {
+			scan_code[(*len)++] = temp_code2 >> 8;
+			temp_code2 &= 0xff;
+		}
+		temp_code2 = scancode_translate_set2_to_1(temp_code2);
+		scan_code[(*len)++] = pressed ? temp_code2 : (temp_code2 | 0x80); // Search 0xe01f
+
+		temp_code3 = scancode_translate_set2_to_1(temp_code3);
+		scan_code[(*len)++] = pressed ? temp_code3 : (temp_code3 | 0x80);  // space 0x0029
+		CPRINTS(" [temp_code1: %d ], [temp_code2: %d], [temp_code3: %d ]", temp_code1,temp_code2,make_code);
+		return;
+	}
+
 	/* Output the make code (from table) */
 	if (make_code >= 0x0100) {
 		scan_code[(*len)++] = make_code >> 8;
@@ -458,6 +485,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
+	CPRINTS("KB: make_code: %d , code_set:%d \n", make_code,code_set);
 	scancode_bytes(make_code, pressed, code_set, scan_code, len);
 	return EC_SUCCESS;
 }
