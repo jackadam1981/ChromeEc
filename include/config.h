@@ -3100,6 +3100,9 @@
 /* Compile code for 8042 keyboard protocol */
 #undef CONFIG_KEYBOARD_PROTOCOL_8042
 
+/* Enable 8042 FN key function */
+#undef CONFIG_KEYBOARD_8042_FN_FUNCTION
+
 /*
  * Enable code for chromeos vivaldi keyboard (standard for new chromeos devices)
  * This config only takes effect if CONFIG_KEYBOARD_PROTOCOL_8042 is selected. A
@@ -3171,7 +3174,7 @@
 /*
  * Allow board-specific 8042 keyboard callback when a key state is changed.
  */
-#undef CONFIG_KEYBOARD_SCANCODE_CALLBACK
+#define CONFIG_KEYBOARD_SCANCODE_CALLBACK
 
 /*
  * Enable keyboard testing functionality. This enables a message which receives

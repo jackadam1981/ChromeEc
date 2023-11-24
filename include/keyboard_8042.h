@@ -43,7 +43,9 @@ void keyboard_host_write(int data, int is_cmd);
  * @param pressed	Is the key being pressed (1) or released (0).
  */
 enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
-					      int8_t pressed);
+			int8_t row, int8_t col,	 int8_t pressed);
+
+bool get_fn_status(void);
 
 /**
  * Send aux data to host from interrupt context.

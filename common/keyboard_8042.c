@@ -83,6 +83,8 @@ enum scancode_set_list {
 /* Number of bytes host can get behind before we start generating extra IRQs */
 #define KB_TO_HOST_RETRIES 3
 
+#define FN_KEY_COUNT 16
+
 /*
  * Timeout for SETLEDS command. Kernel is supposed to send the second byte
  * within this period. When timeout occurs, the second byte is received as
@@ -154,6 +156,10 @@ static uint8_t controller_ram[0x20] = {
 	/* 0x01 - 0x1f are controller RAM */
 };
 static uint8_t A20_status;
+
+#ifdef CONFIG_KEYBOARD_8042_FN_FUNCTION
+static uint8_t fn_status;
+#endif
 
 /*
  * Scancode settings
@@ -402,13 +408,14 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 #ifdef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 	{
 		enum ec_error_list r =
-			keyboard_scancode_callback(&make_code, pressed);
+			keyboard_scancode_callback(&make_code, row, col, pressed);
 		if (r != EC_SUCCESS)
 			return r;
 	}
 #endif
 
 	code_set = acting_code_set(code_set);
+	CPRINTS("KB scancode set %d supported", code_set);
 	if (!is_supported_code_set(code_set)) {
 		CPRINTS("KB scancode set %d unsupported", code_set);
 		return EC_ERROR_UNIMPLEMENTED;
@@ -469,6 +476,13 @@ void clear_typematic_key(void)
 	typematic_len = 0;
 }
 
+#ifdef CONFIG_KEYBOARD_8042_FN_FUNCTION
+bool get_fn_status(void)
+{
+	return fn_status;
+}
+#endif
+
 void keyboard_state_changed(int row, int col, int is_pressed)
 {
 	uint8_t scan_code[MAX_SCAN_CODE_LEN];
@@ -484,6 +498,17 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 					      KEYCAP_LONG_LABEL_INDEX_BITMASK));
 	else
 		CPRINTS("KB (%d,%d)=%d %c", row, col, is_pressed, mylabel);
+#endif
+
+#ifdef CONFIG_KEYBOARD_8042_FN_FUNCTION
+	if ((row==4) && (col==10)) {
+		if (is_pressed)
+			fn_status = 1;
+		else
+			fn_status = 0;
+
+		return;
+	}
 #endif
 
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,

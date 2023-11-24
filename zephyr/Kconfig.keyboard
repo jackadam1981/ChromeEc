@@ -93,6 +93,13 @@ config PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
 
 endchoice # PLATFORM_EC_KEYBOARD_PROTOCOL_MODE
 
+config PLATFORM_EC_KEYBOARD_8042_FN_FUNCTION
+	bool "i8042 fn key function"
+	default n
+	help
+	  Adding fn key function. when press one key, the key has one function, and
+	  if pressing fn+key, the key excute another function.
+
 config PLATFORM_EC_KEYBOARD_DEBUG
 	bool "Enable keyboard debug prints"
 	depends on PLATFORM_EC_SYSTEM_UNLOCKED
