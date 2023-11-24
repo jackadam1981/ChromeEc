@@ -83,6 +83,8 @@ enum scancode_set_list {
 /* Number of bytes host can get behind before we start generating extra IRQs */
 #define KB_TO_HOST_RETRIES 3
 
+#define FN_KEY_COUNT 16
+
 /*
  * Timeout for SETLEDS command. Kernel is supposed to send the second byte
  * within this period. When timeout occurs, the second byte is received as
@@ -154,6 +156,34 @@ static uint8_t controller_ram[0x20] = {
 	/* 0x01 - 0x1f are controller RAM */
 };
 static uint8_t A20_status;
+
+static uint8_t fn_status;
+
+struct fn_func_key {
+	uint16_t key;     // key function
+	uint16_t fn_key;  //fn+key function
+};
+
+static struct fn_func_key fn_function_key[FN_KEY_COUNT] = {
+			/*A*/
+	{0x0005, 0x001c},
+			/*B*/
+	{0x0006, 0x0032},
+	{0x0004, 0x0021},
+	{0x000c, 0x0023},
+	{0x0003, 0x0024},
+	{0x000b, 0x002b},
+	{0x0083, 0x0034},
+	{0x000a, 0x0033},
+	{0x0001, 0x0043},
+	{0x0009, 0x003B},
+	{0xe01f, 0x0042},
+	{0x0000, 0x0000},
+	{0x0000, 0x0000},
+	{0x0000, 0x0000},
+	{0x0000, 0x0000},
+	{0x0000, 0x0000}
+};
 
 /*
  * Scancode settings
@@ -390,6 +420,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 					  uint8_t *scan_code, int32_t *len)
 {
 	uint16_t make_code;
+	int i;
 
 	ASSERT(scan_code);
 	ASSERT(len);
@@ -398,6 +429,14 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		return EC_ERROR_INVAL;
 
 	make_code = get_scancode_set2(row, col);
+
+	if((make_code >=0xD0) && (make_code <= 0xDF)) {
+		i = make_code - 0xD0;
+		if(fn_status)
+			make_code = fn_function_key[i].fn_key;
+		else
+			make_code = fn_function_key[i].key;
+	}
 
 #ifdef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 	{
@@ -486,6 +525,14 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 		CPRINTS("KB (%d,%d)=%d %c", row, col, is_pressed, mylabel);
 #endif
 
+	if((row==4) && (col==10))
+	{
+		if (is_pressed)
+			fn_status = 1;
+		else
+			fn_status = 0;
+		return;
+	}
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
 			      &len);
 	if (ret == EC_SUCCESS) {
