@@ -102,6 +102,11 @@ BUILD_ASSERT(ARRAY_SIZE(boot_key_list) == BOOT_KEY_COUNT);
 static uint32_t boot_key_value = BOOT_KEY_NONE;
 #endif
 
+// #define Marix_value(fn_row, fn_col, f_row, fcol) 
+//        (fn_row<<24 | fn_col << 16 | f_row << 8 | fcol)
+
+
+
 uint8_t keyboard_cols = KEYBOARD_COLS_MAX;
 
 /* Debounced key matrix */
@@ -300,6 +305,55 @@ static bool power_button_raw_pressed(void)
 	else
 		return false;
 }
+#define BIN(nr) (1U << (nr))
+#define Fn_key 0x4a
+static uint16_t keyboard_fnmap[][3] = {
+	{0x4a,0x02,0x0d},
+	{0x4a,0x32,0x1d},
+	{0x4a,0x22,0x2d},
+	{0x4a,0x12,0x3d},
+	{0x4a,0x34,0x4d},
+	{0x4a,0x24,0x5d},
+	{0x4a,0x14,0x7d},
+	{0x4a,0x29,0x0e},
+	{0x4a,0x19,0x2e},
+	{0x4a,0x04,0x4e},
+	{0x4a,0x01,0x5e},
+	{0x4a,0x15,0x6e},
+};
+
+static void enable_fn_matrix(uint8_t *state)
+{
+	uint8_t *temp = state;
+	uint8_t fn_key_state = 0;
+	uint16_t i,j; 
+	if(temp[Fn_key&0xf] == BIN((Fn_key&0xf0)>>4))
+	{
+		for(i = 0; i < keyboard_cols; i++)
+		{
+			if(temp[i] == 0)
+				continue;
+			for(j = 0; j <12 ; j++) {
+				if((temp[i] == BIN((keyboard_fnmap[j][1]&0xf0)>>4))
+					&& (i == (keyboard_fnmap[j][1]&0xf)))
+					{
+						fn_key_state = 1;
+						break;
+					}
+			}
+			if(fn_key_state == 1)
+				break;
+		}
+	}
+	
+	if(fn_key_state == 1)
+	{
+		CPRINTS("%d++++++++%d",j,i);
+		state[Fn_key&0xf] = 0;
+		state[i] = 0;
+		state[keyboard_fnmap[j][2]&0xf] = BIN((keyboard_fnmap[j][2]&0xf0)>>4);
+	}
+}
 
 /**
  * Read the raw keyboard matrix state.
@@ -359,6 +413,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
 
+
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
 	/* Account for the refresh key */
 	keyboard_read_refresh_key(state);
@@ -410,7 +465,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 	}
 
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
-
+	enable_fn_matrix(state);
 	return pressed ? 1 : 0;
 }
 
@@ -1038,9 +1093,12 @@ void keyboard_scan_task(void *u)
 			 * starting to pay attention to edges.
 			 */
 #ifndef CONFIG_KEYBOARD_SCAN_ADC
+			CPRINTS("---keyboard_scan_task 1041---");
 			if (!local_disable_scanning &&
-			    (keyboard_raw_read_rows() || force_poll))
-				break;
+			    (keyboard_raw_read_rows() || force_poll)){
+					CPRINTS("---keyboard_raw_read_rows : %d---",keyboard_raw_read_rows());
+					break;
+				}			
 #else
 			if (!local_disable_scanning &&
 			    (keyboard_read_adc_rows() || force_poll ||
