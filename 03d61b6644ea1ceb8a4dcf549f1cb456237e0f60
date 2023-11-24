@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06cd7024_f33e60ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-24T12:03:15Z",
+      "side": 1,
+      "message": "The user app only loop and write a dummy value to `/dev/watchdog` in case of crash the system cleans up the process in terms closing open files descriptors - e.g. `/dev/watchdog\u0027 and that in turn stops the watchdog.\nThe default timeout is set to 30 seconds, but the daisydog is set to pet the watchdog every 2s, so if there is no such an event and the descriptors were not closed it is likely we are in trouble.\n\nThe kernel watchdog is a generic API, the daisydog this way is used in other chromebooks as well.",
+      "parentUuid": "f9cdef81_6ec18c40",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2a0f6c2_d135c56a",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 11
@@ -191,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9576472_56c9c675",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4715,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-24T12:03:15Z",
+      "side": 1,
+      "message": "Yep, I can add a log for this - thanks :)",
+      "parentUuid": "9b778c88_f2d5d53f",
+      "range": {
+        "startLine": 4715,
+        "startChar": 26,
+        "endLine": 4715,
+        "endChar": 34
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0848d21_68e6493b",
         "filename": "include/ec_commands.h",
         "patchSetId": 11
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "To make it clear for the callers what combinations are legal/illegal, we could do:\n\n    struct ec_params_hang_detect {\n        uint16_t arg;     /* command argument */\n        uint16_t command; /* STOP, START, STATUS, FLAG */\n        uint16_t reserved;\n        uint16_t reboot_timeout_sec;\n    }\n\n* STOP(\u003d0x8000) and START(\u003d0x4000) don\u0027t take argument.\n* STATUS(\u003d0x0001) command takes:\n  arg\u003d0: Clear status\n  arg\u003d1: Get status\n* FLAG(\u003d0x0000) command takes:\n  BIT(3): START_ON_RESUME\n  BIT(10): STOP_ON_SUSPEND\n\nThe command values are chosen to parse the old ec_params_hang_detect.flags using the same code. I\u0027m not sure whether we care about mixing old \u0026 new FW \u0026 OS, though.",
       "parentUuid": "7a0d964e_cf25e370",
+      "range": {
+        "startLine": 4738,
+        "startChar": 0,
+        "endLine": 4757,
+        "endChar": 32
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5289f1ca_cbe1ef51",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4757,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-11-24T12:03:15Z",
+      "side": 1,
+      "message": "So here is the thing - I have left the structure binary layout to not change the ABI (also all the flags leaving as they are and just marking OBSOLETE). I\u0027m not aware of any usage of this code, but keep in mind that this part is also copied to the kernel. Earlier we\u0027ve talked with Keith to keep the ABI and just \"obsolete\" unused parts...",
+      "parentUuid": "7a3519d7_dfb3e5cf",
       "range": {
         "startLine": 4738,
         "startChar": 0,
