@@ -178,7 +178,21 @@ static void ps185_hdmi_hpd_deferred(void)
 }
 DECLARE_DEFERRED(ps185_hdmi_hpd_deferred);
 
-#define HPD_SINK_ABSENCE_DEBOUNCE (2 * MSEC)
+#define HPD_SINK_HPD_LOW (0 * MSEC)
+#define HPD_SINK_HPD_HIGH (500 * MSEC)
+#define HPD_SINK_ABSENCE_DEBOUNCE (1 * SECOND)
+
+static void hdmi_hpd_high(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 1);
+}
+DECLARE_DEFERRED(hdmi_hpd_high);
+
+static void hdmi_hpd_low(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 0);
+}
+DECLARE_DEFERRED(hdmi_hpd_low);
 
 static void hdmi_hpd_interrupt_deferred(void)
 {
@@ -197,8 +211,11 @@ static void hdmi_hpd_interrupt_deferred(void)
 		/* set dp_aux_path_sel first, and configure the usb_mux in the
 		 * deferred hook to prevent from dead locking.
 		 */
+		hook_call_deferred(&hdmi_hpd_high_data, HPD_SINK_HPD_LOW);
+		hook_call_deferred(&hdmi_hpd_low_data, HPD_SINK_HPD_HIGH);
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(dp_aux_path_sel), hpd);
-		hook_call_deferred(&ps185_hdmi_hpd_deferred_data, 0);
+		hook_call_deferred(&ps185_hdmi_hpd_deferred_data,
+				   HPD_SINK_ABSENCE_DEBOUNCE);
 	}
 
 	svdm_set_hpd_gpio(USBC_PORT_C1, hpd);
