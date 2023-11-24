@@ -189,7 +189,7 @@
 		compatible = "cros-ec,keyscan";
 
 		actual-key-mask = <
-			0x48	/* C0 */
+			0xff	/* C0 */
 			0xff	/* C1 */
 			0xff	/* C2 */
 			0xff	/* C3 */
@@ -202,7 +202,7 @@
 			0x55	/* C10 */
 			0xff	/* C11 */
 			0xff	/* C12 */
-			0x40    /* C13 */
+			0xff    /* C13 */
 			0x0a    /* C14 */
 		>;
 	};

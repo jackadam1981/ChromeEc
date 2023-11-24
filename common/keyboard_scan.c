@@ -301,6 +301,59 @@ static bool power_button_raw_pressed(void)
 		return false;
 }
 
+#define Fn_key 0x4a
+
+static uint16_t keyboard_fnmap[][3] = {
+	{0x4a,0x02,0x0d},
+	{0x4a,0x32,0x1d},
+	{0x4a,0x22,0x2d},
+	{0x4a,0x12,0x3d},
+	{0x4a,0x34,0x4d},
+	{0x4a,0x24,0x5d},
+	{0x4a,0x14,0x7d},
+	{0x4a,0x29,0x0e},
+	{0x4a,0x19,0x2e},
+	{0x4a,0x04,0x4e},
+	{0x4a,0x01,0x5e},
+	{0x4a,0x15,0x6e},
+};
+
+/*
+ * The Fn button and the f1~f12 button are mapped to anq
+ * unused matrix value and uploaded to the kernel.
+ */
+static void enable_fn_matrix(uint8_t *state)
+{
+	uint8_t *temp = state;
+	uint8_t fn_key_state = 0;
+	uint16_t i,j;
+	if(temp[Fn_key&0xf] == BIT((Fn_key&0xf0)>>4))
+	{
+		for(i = 0; i < keyboard_cols; i++)
+		{
+			if(temp[i] == 0)
+				continue;
+			for(j = 0; j <12 ; j++) {
+				if((temp[i] == BIT((keyboard_fnmap[j][1]&0xf0)>>4))
+					&& (i == (keyboard_fnmap[j][1]&0xf)))
+					{
+						fn_key_state = 1;
+						break;
+					}
+			}
+			if(fn_key_state == 1)
+				break;
+		}
+	}
+
+	if(fn_key_state == 1)
+	{
+		state[Fn_key&0xf] = 0;
+		state[i] = 0;
+		state[keyboard_fnmap[j][2]&0xf] = BIT((keyboard_fnmap[j][2]&0xf0)>>4);
+	}
+}
+
 /**
  * Read the raw keyboard matrix state.
  *
@@ -358,7 +411,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
-
+	enable_fn_matrix(state);
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
 	/* Account for the refresh key */
 	keyboard_read_refresh_key(state);
