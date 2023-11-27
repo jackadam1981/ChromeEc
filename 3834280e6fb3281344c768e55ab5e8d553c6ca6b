@@ -81,6 +81,23 @@
       "parentUuid": "f7b8084e_fd281be2",
       "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f949b47_868a8ac0",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4069,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-27T16:06:19Z",
+      "side": 1,
+      "message": "Can you add a \"*\" divider and label this section new cr50 config options. We should make sure to add any new ones in this section to avoid accidentally repeating this mistake in the future.",
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
