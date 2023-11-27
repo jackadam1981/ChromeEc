@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c90ddd1a_7f7081b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T19:55:25Z",
+      "side": 1,
+      "message": "I get an error when trying to run this. I know you have other pending changes for the `gdbinit`, so maybe it\u0027s fixed in those?\n\n```\ngdb.error: $HOME/chromiumos/src/platform/ec/build/bloonchipper/ec.obj: No such file or directory.\n.gdbinit:106: Error in sourced command file:\nError while executing Python code.\n```",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4c419c_2f7392ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T19:55:25Z",
+      "side": 1,
+      "message": "LGTM once comments are resolved.",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f219c0a9_ae2f59dd",
         "filename": "util/renode/bloonchipper.resc",
         "patchSetId": 14
@@ -48,6 +88,24 @@
       "writtenOn": "2023-11-20T14:35:51Z",
       "side": 1,
       "message": "For the record, we are going to push out a significant update to this file today. We can, of course, create a CL after this one is merged.\n\nAlso for the record, I believe the best and most sustainable way to manage it would be to keep these files only in Renode and have your scripts load them from the Renode installation. There will still be a repl file on your side (e.g. to define the write-protect pin), but in general they should be very minor.\n\nHaving said that, I believe it makes sense to start by having them in your repository, like you propose in this CL.",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ed5b5a_ad833c49",
+        "filename": "util/renode/nuvoton_npcx9.repl",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T19:55:25Z",
+      "side": 1,
+      "message": "\u003e Also for the record, I believe the best and most sustainable way to manage it would be to keep these files only in Renode and have your scripts load them from the Renode installation. There will still be a repl file on your side (e.g. to define the write-protect pin), but in general they should be very minor.\n\n\u003e Having said that, I believe it makes sense to start by having them in your repository, like you propose in this CL.\n\nSGTM. Let\u0027s go ahead and merge as-is. Then @pzierhoffer@antmicro.com, would you be able to create a CL that removes the parts that are unnecessary?",
+      "parentUuid": "2eae6fc1_ecd54aad",
       "revId": "4e8ad721992e311f5575792f924e597145c82b04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

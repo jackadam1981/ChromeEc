@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef3671fa_dca181fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T19:55:25Z",
+      "side": 1,
+      "message": "\u003e For now, we need to run from the Renode nightly, installed on gLinux.\n\nCan you add `(outside)` in front of the commands in the commit message to indicate they need to be run outside the chroot? (and `(inside)` for the build commands).",
+      "parentUuid": "27c3d90e_750e45c2",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22bafc71_84b8fac6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "There should have been a graphical window that was launched that contains the actual UART console, which won\u0027t launch inside the chroot or docker container.",
       "parentUuid": "4019f52f_965ada86",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2847a8a6_5d8e4d78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T19:55:25Z",
+      "side": 1,
+      "message": "Thanks. See other comment about modifying the commit message to make this clearer.",
+      "parentUuid": "2e4736e6_91977308",
       "range": {
         "startLine": 22,
         "startChar": 5,
