@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088a4c15_d6c14224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T18:40:16Z",
+      "side": 1,
+      "message": "LGTM after comment is addressed.",
+      "revId": "3ff33b1ff94ca40125342f5cf49a35a73fced534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051d4ccc_2b5cc2fd",
+        "filename": "util/gdbinit.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T18:40:16Z",
+      "side": 1,
+      "message": "I see this warning in the `util/gdbinit` file too. It looks like it really only applies to that file? (i.e., `ec-tasks` is defined there).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "3ff33b1ff94ca40125342f5cf49a35a73fced534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
