@@ -22,6 +22,30 @@
       },
       "revId": "6a91da9092d99fcb9a3ddaf1e0893e6e7db91c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bfe7190_cf078f06",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-11-27T23:36:40Z",
+      "side": 1,
+      "message": "good question. if yes, let\u0027s not risk it by adding this new check.\nbut also, if true, we need to guard from reset loops in line 792 above and line 808 in any case - let\u0027s check if such logic already exists and add if not",
+      "parentUuid": "00b77867_fffe18e0",
+      "range": {
+        "startLine": 799,
+        "startChar": 4,
+        "endLine": 799,
+        "endChar": 29
+      },
+      "revId": "6a91da9092d99fcb9a3ddaf1e0893e6e7db91c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
