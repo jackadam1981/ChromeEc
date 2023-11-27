@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "138dd9ad_91feef44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T18:19:16Z",
+      "side": 1,
+      "message": "LGTM after comments are addressed.",
+      "revId": "e06e8e931910d2ce24ba03d3315a024375e9394d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58d6ef56_68a91724",
@@ -37,6 +54,30 @@
       "writtenOn": "2023-11-20T14:23:07Z",
       "side": 1,
       "message": "did you miss the `int` here or this was intended?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "e06e8e931910d2ce24ba03d3315a024375e9394d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924b3f67_4f0d0cd3",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T18:19:16Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "58d6ef56_68a91724",
       "range": {
         "startLine": 44,
         "startChar": 0,
