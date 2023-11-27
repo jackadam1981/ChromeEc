@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d31f45d_9dcc3727",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-27T16:11:59Z",
+      "side": 0,
+      "message": "Can you verify the chan output is the same before and after this change? Tests rely on the value of things like the rbox and the tpm channel staying the same.",
+      "revId": "a4800af16125b07b66769ba39c28565c28fdfa05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
