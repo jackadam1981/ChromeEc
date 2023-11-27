@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4d77ee_fabe1385",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1591647
+      },
+      "writtenOn": "2023-11-27T21:45:45Z",
+      "side": 1,
+      "message": "Do we need an output byte count + size check as well? (so there are no overflows of the tx_buffer)",
+      "revId": "a1c50cc1183f0d6966ef0f6195275b16bd7fbd30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
