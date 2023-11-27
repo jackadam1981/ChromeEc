@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed545045_e5cda13f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-27T21:09:58Z",
+      "side": 1,
+      "message": "\u003e  There should have been a graphical window that was launched that contains the actual UART console, which won\u0027t launch inside the chroot or docker container.\n\n@pzierhoffer@antmicro.com, is there some way to run everything in non-graphical mode? I see some docs in https://renode.readthedocs.io/en/latest/basic/running.html. With https://crrev.com/c/5064594, I updated the version of Renode in the chroot, but we need to be able to run it in headless mode. I tried adding the `--disable-xwt` to the `util/renode-ec-launch.sh` script, but it doesn\u0027t seem to be showing the FPMCU console. (I didn\u0027t try very hard.)",
+      "parentUuid": "2847a8a6_5d8e4d78",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8fee49c_9f626a21",
         "filename": "util/renode/bloonchipper.resc",
         "patchSetId": 10
