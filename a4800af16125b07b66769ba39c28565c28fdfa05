@@ -16,6 +16,24 @@
       "message": "Can you verify the chan output is the same before and after this change? Tests rely on the value of things like the rbox and the tpm channel staying the same.",
       "revId": "a4800af16125b07b66769ba39c28565c28fdfa05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b60c837_95817f4a",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-27T17:15:09Z",
+      "side": 0,
+      "message": "yes, I did that by comparing binary image - no changes outside version part.\n```\nxxd build/cr50/RW/ec.RW.bin \u003ee.txt\ndiff e.txt ./ec.RW.txt\n```",
+      "parentUuid": "2d31f45d_9dcc3727",
+      "revId": "a4800af16125b07b66769ba39c28565c28fdfa05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
