@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d54f96_c9360ff5",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-27T20:49:05Z",
+      "side": 0,
+      "message": "nit: \nif INTEL_ALTMODE_DATA_STATUS_REG_LEN \u003d\u003d 5\nand retain this code ?",
+      "revId": "3e7fb3397d7c9952ca6c84d2db86ebcecd97888b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae34cf56_54656b05",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-27T20:49:05Z",
+      "side": 0,
+      "message": "nit: \nif INTEL_ALTMODE_DATA_CONTROL_REG_LEN \u003d\u003d 6\n     uint32_t ret_dbg_mode;\nelse\n     uint16_t res4;",
+      "revId": "3e7fb3397d7c9952ca6c84d2db86ebcecd97888b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
