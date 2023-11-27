@@ -16,6 +16,24 @@
       "message": "Do we need an output byte count + size check as well? (so there are no overflows of the tx_buffer)",
       "revId": "a1c50cc1183f0d6966ef0f6195275b16bd7fbd30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1ebd52_a135c86c",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-27T21:52:25Z",
+      "side": 1,
+      "message": "You are right that we should be careful whether a malformed request could possibly overflow `tx_buffer`.\n\nActually, since each sub-sequence always clocks out bits, and optionally records bits, the size of the recording cannot exceed the size of the original USB request.  Therefore, I do not believe it is possible to make this code write beyond the bounds of `tx_buffer`.  (It is possible to make it deadlock, probably, by beginning a request that is longer than the space in rx_buffer, but that gets into how the queue framework is used, and I want to get rid of that altogether, as discussed in the other CL.)",
+      "parentUuid": "5c4d77ee_fabe1385",
+      "revId": "a1c50cc1183f0d6966ef0f6195275b16bd7fbd30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
