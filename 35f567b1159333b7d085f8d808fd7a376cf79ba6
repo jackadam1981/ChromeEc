@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a636e4_806daddc",
+        "filename": "board/omnigul/keyboard_customization.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-11-27T05:45:17Z",
+      "side": 1,
+      "message": "The keyboard definitions are already in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/keyboard_config.h;drc\u003d22aa8caadd9ff4cdf041d0d561a235afcd926d13;l\u003d20 which could be leveraged ?",
+      "revId": "35f567b1159333b7d085f8d808fd7a376cf79ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
