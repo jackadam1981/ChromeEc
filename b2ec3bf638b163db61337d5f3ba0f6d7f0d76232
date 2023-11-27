@@ -22,6 +22,30 @@
       },
       "revId": "b2ec3bf638b163db61337d5f3ba0f6d7f0d76232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d4b8b4_fa8812bd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 9080,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-27T03:46:09Z",
+      "side": 1,
+      "message": "We decided to parse the json to the stuct and to a hex string in the meeting on 11/20 but it is mssing namuf_name and device_name.\n\nSo we discussed again on 11/24 and we are using `memcpy` to copy the information send the pointer to EC by `EC_CMD_SET_CROS_BOARD_INFO`. The implementation is updated in patchset 7.\n\nThe infomation we need to save in CBI is describe at https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d7739?q\u003dEC_CMD_BATTERY_CONFIG",
+      "parentUuid": "9d55e0b3_1d472bcd",
+      "range": {
+        "startLine": 9080,
+        "startChar": 57,
+        "endLine": 9080,
+        "endChar": 67
+      },
+      "revId": "b2ec3bf638b163db61337d5f3ba0f6d7f0d76232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a555b77_b3e095fe",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8779,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-27T03:46:09Z",
+      "side": 1,
+      "message": "Let\u0027s handle the option fields and add the json schema to check the format in the next CL.",
+      "parentUuid": "756955e3_0339217d",
+      "range": {
+        "startLine": 8779,
+        "startChar": 20,
+        "endLine": 8779,
+        "endChar": 30
+      },
+      "revId": "ef42d9efe3be05df81613503ec4485a5a92e77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14031982_83e5c79b",
