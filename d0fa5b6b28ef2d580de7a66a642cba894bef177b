@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22be8fe1_f9a7b96f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8584,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "You most likely want this function to take a pointer to board_batt_params:\n\n    int cmd_get_battery_config_in_board_batt_params(\n        base::Value::Dict *root_dict_identifier,\n        struct board_batt_params *config)",
+      "range": {
+        "startLine": 8583,
+        "startChar": 0,
+        "endLine": 8584,
+        "endChar": 41
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3214013_ed76b0ab",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8694,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "What do you think about using a more orthodox separator (e.g. comma, slash, colon)? I\u0027m afraid underscores appear in normal model names. If json files use \u0027_\u0027 as a separator, I think it\u0027s better to change it there as well.",
+      "range": {
+        "startLine": 8694,
+        "startChar": 44,
+        "endLine": 8694,
+        "endChar": 45
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2c6a78_3094a893",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8754,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "nit: How do you like moving this whole code to a subroutine (for readability)? That\u0027ll make the diff look clean.",
+      "range": {
+        "startLine": 8710,
+        "startChar": 0,
+        "endLine": 8754,
+        "endChar": 24
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c74e7a1_cadb6c90",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "You can be more strict (i.e. len !\u003d size) since you\u0027re not supporting a partial read.",
+      "range": {
+        "startLine": 8774,
+        "startChar": 5,
+        "endLine": 8774,
+        "endChar": 13
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b03315d_bf63e246",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8792,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "Can you check the length \u003c SBS_MAX_STRING_SIZE as well?",
+      "range": {
+        "startLine": 8792,
+        "startChar": 6,
+        "endLine": 8792,
+        "endChar": 20
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7d5857_59c395cc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8808,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "nit: you can declare a header as a pointer and assign memory to it as follows:\n\n    struct batt_conf_header *header;\n    header \u003d (struct batt_conf_header *)malloc(size);\n\nThen, you don\u0027t need to memcpy a header:\n\n    header-\u003estruct_version \u003d struct_version;\n    ...\n\nAlso you don\u0027t need to rewind p when you call ec_command:\n\n    uint8_t *p \u003d (uint8_t *)header;\n    ...\n    ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, header, mem_size, NULL, 0);",
+      "range": {
+        "startLine": 8808,
+        "startChar": 25,
+        "endLine": 8808,
+        "endChar": 46
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e68214_74f4de66",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8817,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "You need to check p !\u003d NULL.",
+      "range": {
+        "startLine": 8817,
+        "startChar": 10,
+        "endLine": 8817,
+        "endChar": 11
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7aac08f_6ff12c23",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8817,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-27T18:45:54Z",
+      "side": 1,
+      "message": "mem_size",
+      "range": {
+        "startLine": 8817,
+        "startChar": 32,
+        "endLine": 8817,
+        "endChar": 36
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
