@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ab49b9_66268d54",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-27T17:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2440b9f7_ebebbd90",
+      "range": {
+        "startLine": 921,
+        "startChar": 23,
+        "endLine": 921,
+        "endChar": 26
+      },
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b8084e_fd281be2",
@@ -96,6 +120,24 @@
       "writtenOn": "2023-11-27T16:06:19Z",
       "side": 1,
       "message": "Can you add a \"*\" divider and label this section new cr50 config options. We should make sure to add any new ones in this section to avoid accidentally repeating this mistake in the future.",
+      "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c975adcb_c45eaf2f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4069,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-27T17:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f949b47_868a8ac0",
       "revId": "3834280e6fb3281344c768e55ab5e8d553c6ca6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
