@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc8b1cb_52ca5207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-27T22:18:43Z",
+      "side": 1,
+      "message": "This comment seems backwards from the implementation.  The code in `board_nb_mode_change()` is setting the gpio_ec_nb_mode_l pin state in response to a table mode change hook.\n\nSo it looks like this signal is an output from the EC and input to the ISH.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "88a4943dc71487e628885fd2af5c690b1c1b2705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
