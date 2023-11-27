@@ -22,6 +22,30 @@
       },
       "revId": "6361064465132b692f970795914583c1cff00fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3b629b_b7862b1f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-27T21:38:44Z",
+      "side": 0,
+      "message": "we discussed with Vadim B that it was used as \"error\" code and tested this way. unfortunately that never worked correctly as it updated already changed `buf`. Using return code is more reliable",
+      "parentUuid": "06edb65a_78c55016",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 26
+      },
+      "revId": "6361064465132b692f970795914583c1cff00fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
