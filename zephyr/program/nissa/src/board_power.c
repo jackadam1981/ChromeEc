@@ -15,6 +15,7 @@
 #include <ap_power/ap_power_events.h>
 #include <ap_power/ap_power_interface.h>
 #include <ap_power_override_functions.h>
+#include <cros_board_info.h>
 #include <power_signals.h>
 #include <x86_power_signals.h>
 
@@ -63,7 +64,16 @@ void board_ap_power_force_shutdown(void)
 
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
+#ifndef CONFIG_BOARD_ANRAGGAR
 	power_signal_set(PWR_EN_PP5000_A, 0);
+#else
+	uint32_t board_version = 0;
+
+	cbi_get_board_version(&board_version);
+	if (board_version > 0) {
+		power_signal_set(PWR_EN_PP5000_A, 0);
+	}
+#endif /* CONFIG_BOARD_ANRAGGAR */
 
 	timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
 	while (power_signal_get(PWR_DSW_PWROK) && timeout_ms > 0) {
