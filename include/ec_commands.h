@@ -4011,7 +4011,11 @@ BUILD_ASSERT(EC_MKBP_EVENT_COUNT <= EC_MKBP_EVENT_TYPE_MASK);
 /* clang-format on */
 
 union __ec_align_offset1 ec_response_get_next_data {
-	uint8_t key_matrix[13];
+	#ifdef CONFIG_KEYBOARD_KEYPAD
+		uint8_t key_matrix[15];
+	#else
+		uint8_t key_matrix[13];
+	#endif
 
 	/* Unaligned */
 	uint32_t host_event;
