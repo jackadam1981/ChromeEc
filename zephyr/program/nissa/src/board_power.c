@@ -63,7 +63,7 @@ void board_ap_power_force_shutdown(void)
 
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
-	power_signal_set(PWR_EN_PP5000_A, 0);
+	// power_signal_set(PWR_EN_PP5000_A, 0);
 
 	timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
 	while (power_signal_get(PWR_DSW_PWROK) && timeout_ms > 0) {
