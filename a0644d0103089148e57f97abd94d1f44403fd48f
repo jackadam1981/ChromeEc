@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7bf9178_562b0970",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 9114,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-27T03:48:16Z",
+      "side": 1,
+      "message": "Since now(patchset 7) we don\u0027t parse it to a hex string, I am not sure how to manullay test if this value is saved to EC or not.",
+      "range": {
+        "startLine": 9114,
+        "startChar": 21,
+        "endLine": 9114,
+        "endChar": 47
+      },
+      "revId": "a0644d0103089148e57f97abd94d1f44403fd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
