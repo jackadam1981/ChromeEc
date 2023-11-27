@@ -16,6 +16,24 @@
       "message": "Does this introduce a race condition? Are we assuming that the firmware will complete this task before the host could send the DAP_Connect command?\n\nIt\u0027s too bad this queue mechanism appears to cause packet/transfer boundaries to be lost, as CMSIS-DAP is definitely a protocol that operates on messages. Some useful info for recovery and alignment is gone at this layer.",
       "revId": "22ec9fc453e6a25e448fb471b44caa76151942ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c2a4cd_c67ab5b5",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-11-27T16:54:00Z",
+      "side": 1,
+      "message": "\"opentitantool transport init\" will only terminate after receiving a response to the console command, hook_notify() calls all the registered hook methods synchronously before returning, so this means that as long as the caller waits for \"transport init\" to terminate, before invoking openocd, we can be sure that the discarding of queue contents has finished before openocd can send the next DAP_Connect message.\n\nI used this documentation when writing the CMSIS-DAP code:\nhttps://arm-software.github.io/CMSIS_5/DAP/html/modules.html\n\nIt was not clear to me that the USB protocol guaranteed USB packet boundaries to match the CMSIS-DAP requests.  If that is the case, then I feel that this implementation could be simplified, by operating more directly on the low-level USB methods, and dropping the use of the queue library.  I probably want to do so in a separate CL.",
+      "parentUuid": "a4aa5749_5ded645d",
+      "revId": "22ec9fc453e6a25e448fb471b44caa76151942ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
