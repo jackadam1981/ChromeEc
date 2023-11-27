@@ -16,6 +16,24 @@
       "message": "The keyboard definitions are already in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/keyboard_config.h;drc\u003d22aa8caadd9ff4cdf041d0d561a235afcd926d13;l\u003d20 which could be leveraged ?",
       "revId": "35f567b1159333b7d085f8d808fd7a376cf79ba6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a702f8ce_5f026cf1",
+        "filename": "board/omnigul/keyboard_customization.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2023-11-27T05:53:00Z",
+      "side": 1,
+      "message": "Becaus we use CONFIG_KEYBOARD_CUSTOMIZATION, that will not inclue the KEYBOARD_COLS_NO_KEYPAD define in keyboard_config.h . So i add in here.",
+      "parentUuid": "00a636e4_806daddc",
+      "revId": "35f567b1159333b7d085f8d808fd7a376cf79ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
