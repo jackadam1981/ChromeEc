@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5db34233_0422c6b1",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T16:56:49Z",
+      "side": 1,
+      "message": "But is it unintended if some templates are locked and some are unlocked? I can imagine a situation when some templates are locked and some aren\u0027t.",
+      "parentUuid": "88813389_11180368",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59de2814_77856769",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 39
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Added comments.\n\nThe reason of \"FP_CONTEXT_STATUS_MATCH_PROCESSED_SET\" is preventing the attacker unlock template multiple times in a single nonce context.\n\n(It\u0027s \"fine\" to remove the \"dec_state-\u003eis_locked \u003d true;\" here, but that may make the code more confusing.)",
       "parentUuid": "59de2814_77856769",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5302a5_889862af",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T16:56:49Z",
+      "side": 1,
+      "message": "\u003e The reason of \"FP_CONTEXT_STATUS_MATCH_PROCESSED_SET\" is preventing the attacker unlock template multiple times in a single nonce context.\n\nYes. I think I understand it now. To unlock the template, we need to provide UserID (LabelSeed). To match I need nonce context too. And there is only one match per single nonce context and one match when template is unlocked. Is it correct?\n\nIs the `dec_state-\u003eis_locked` responsible for locking templates when there was no match, e.g. user cancelled AuthSession?",
+      "parentUuid": "439df580_420ddd04",
       "range": {
         "startLine": 169,
         "startChar": 2,

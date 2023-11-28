@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69e61db_2fa26ccf",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T16:56:49Z",
+      "side": 1,
+      "message": "Why we allow to match when nonce context is not set? Why we set `FP_CONTEXT_STATUS_MATCH_PROCESSED_SET` here?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51409c6_075967bc",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T16:56:49Z",
+      "side": 1,
+      "message": "Where we clear this flag?",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
