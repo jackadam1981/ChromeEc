@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "04ffbf7d_73f93ad5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:44:46Z",
+      "side": 1,
+      "message": "Correct. I added a Cq-Depend on the gdbinit change.",
+      "parentUuid": "c90ddd1a_7f7081b5",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4c4c419c_2f7392ac",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 14
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "709113e8_08741fbb",
+        "filename": "util/renode/bloonchipper.resc",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f219c0a9_ae2f59dd",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc3cd2ad_6369d9fa",
@@ -71,6 +113,24 @@
       "writtenOn": "2023-11-20T14:35:51Z",
       "side": 1,
       "message": "same as in bloonchipper.resc - these three lines can be safely removed",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7898fc10_8b16ee22",
+        "filename": "util/renode/dartmonkey.resc",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3cd2ad_6369d9fa",
       "revId": "4e8ad721992e311f5575792f924e597145c82b04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -124,6 +184,24 @@
       "side": 1,
       "message": "Sure.",
       "parentUuid": "88ed5b5a_ad833c49",
+      "revId": "4e8ad721992e311f5575792f924e597145c82b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ffcd0c_73f54386",
+        "filename": "util/renode/nuvoton_npcx9.repl",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:44:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cff58f0b_330a7aff",
       "revId": "4e8ad721992e311f5575792f924e597145c82b04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

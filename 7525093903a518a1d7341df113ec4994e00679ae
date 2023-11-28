@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7170668_70162112",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3671fa_dca181fa",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22bafc71_84b8fac6",
@@ -347,6 +371,30 @@
       "side": 1,
       "message": "Got it. I think having the UART on a PTY might work best since that\u0027s how we currently connect to UART when using real hardware, but let\u0027s see the demo on Wednesday and talk about it.",
       "parentUuid": "013c514a_f8b17cb8",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b35a859e_6772907a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:44:46Z",
+      "side": 1,
+      "message": "Ack. Connecting to a dedicated PTY would probably keeps things simple, but I am definitely interested in switching the main window between monitor and UART, like QEMU.",
+      "parentUuid": "188c2cb0_094c867c",
       "range": {
         "startLine": 22,
         "startChar": 5,
