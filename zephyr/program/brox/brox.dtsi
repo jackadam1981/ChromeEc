@@ -8,3 +8,7 @@
 		gpio-wp = &gpio_ec_wp_odl;
 	};
 };
+
+&espi0 {
+	status = "okay";
+};
