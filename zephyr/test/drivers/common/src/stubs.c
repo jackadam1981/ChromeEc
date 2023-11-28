@@ -40,7 +40,7 @@ LOG_MODULE_REGISTER(stubs);
  * device tree.
  */
 
-int board_set_active_charge_port(int port)
+__overridable int board_set_active_charge_port(int port)
 {
 	int is_real_port = (port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	int i;
@@ -145,6 +145,7 @@ int pd_set_power_supply_ready(int port)
 DEFINE_FAKE_VOID_FUNC(system_hibernate, uint32_t, uint32_t);
 
 DEFINE_FAKE_VOID_FUNC(board_reset_pd_mcu);
+#if defined(CONFIG_PLATFORM_EC_USB_PD_TCPM_TCPCI)
 
 #ifndef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 uint16_t tcpc_get_alert_status(void)
@@ -199,6 +200,7 @@ static void stubs_interrupt_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_switchcap_pg));
 }
 DECLARE_HOOK(HOOK_INIT, stubs_interrupt_init, HOOK_PRIO_POST_I2C);
+#endif
 
 void board_set_switchcap_power(int enable)
 {
