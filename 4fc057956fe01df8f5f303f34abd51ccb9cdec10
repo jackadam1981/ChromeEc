@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "483b95f2_81961df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T16:59:06Z",
+      "side": 1,
+      "message": "craask and brya builds overflowed.  So disable EEPROM and WDT on these boards.",
+      "revId": "4fc057956fe01df8f5f303f34abd51ccb9cdec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
