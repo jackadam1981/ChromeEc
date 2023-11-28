@@ -476,6 +476,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e4bb97_874a59cf",
+        "filename": "util/renode/bloonchipper.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:56:11Z",
+      "side": 1,
+      "message": "Nice. I made a follow-up CL to correct this.\n\nhttps://crrev.com/c/5042002",
+      "parentUuid": "1f495f5d_69cd3542",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6caf4c28_80f787a9",
@@ -537,6 +561,30 @@
       "side": 1,
       "message": "This was adjusted in https://github.com/antmicro/cros-platform-ec-tester/commit/74fb1d6a889bb5a50b7586c34b53b76d9d00dc24",
       "parentUuid": "673864bf_9643923d",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7525093903a518a1d7341df113ec4994e00679ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cc6f83_de5c8c0c",
+        "filename": "util/renode/dartmonkey.resc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-11-28T19:56:11Z",
+      "side": 1,
+      "message": "Nice. I made a follow-up CL to correct this.\n\nhttps://crrev.com/c/5042002",
+      "parentUuid": "cedf144b_d74ced04",
       "range": {
         "startLine": 34,
         "startChar": 4,
