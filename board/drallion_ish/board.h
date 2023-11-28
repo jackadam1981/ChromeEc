@@ -78,8 +78,10 @@
 
 /* Undefined console commands */
 #undef CONFIG_CMD_HASH
+#undef CONFIG_CMD_HCDEBUG
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_CMD_I2C_SCAN
+#undef CONFIG_CMD_MD
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_CMD_POWER_AP
 #undef CONFIG_CMD_POWERINDEBUG
