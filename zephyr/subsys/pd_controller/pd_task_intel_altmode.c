@@ -22,7 +22,7 @@
 #include <drivers/intel_altmode.h>
 #include <usbc/pd_task_intel_altmode.h>
 
-LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
+LOG_MODULE_REGISTER(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
 #define INTEL_ALTMODE_COMPAT_PD intel_pd_altmode
 
