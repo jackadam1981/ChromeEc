@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88813389_11180368",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T15:51:13Z",
+      "side": 1,
+      "message": "Added comments.\n\nFor safety, we should not do any matching operation if it\u0027s in an unintended state.\nThe condition should only relax if there is a requirement.",
+      "parentUuid": "ba588053_2c416fc6",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59de2814_77856769",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439df580_420ddd04",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T15:51:13Z",
+      "side": 1,
+      "message": "Added comments.\n\nThe reason of \"FP_CONTEXT_STATUS_MATCH_PROCESSED_SET\" is preventing the attacker unlock template multiple times in a single nonce context.\n\n(It\u0027s \"fine\" to remove the \"dec_state-\u003eis_locked \u003d true;\" here, but that may make the code more confusing.)",
+      "parentUuid": "59de2814_77856769",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fbc777e_b2eea2ab",
@@ -83,6 +131,30 @@
       "writtenOn": "2023-11-28T14:11:24Z",
       "side": 1,
       "message": "Maybe we should add new result code for this case? I think follow-up CL would be fine.",
+      "range": {
+        "startLine": 186,
+        "startChar": 8,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335387d6_ae09d42e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T15:51:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbc777e_b2eea2ab",
       "range": {
         "startLine": 186,
         "startChar": 8,
