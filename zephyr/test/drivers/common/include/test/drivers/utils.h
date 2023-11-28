@@ -56,6 +56,11 @@
 				     EMUL_GET_USBC_BINDING_IF_PORT_MATCH, \
 				     port, chip)
 
+#define HAS_TCPC_PROP(usbc_id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, tcpc), (|| 1), ())
+
+#define DT_HAS_TCPC (0 DT_FOREACH_STATUS_OKAY(named_usbc_port, HAS_TCPC_PROP))
+
 /** @brief Set emulated battery level. Call all necessary hooks. */
 void test_set_battery_level(int percentage);
 

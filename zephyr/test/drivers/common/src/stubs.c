@@ -22,6 +22,7 @@
 #include "tcpm/ps8xxx_public.h"
 #include "tcpm/tcpci.h"
 #include "test/drivers/stubs.h"
+#include "test/drivers/utils.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
@@ -145,6 +146,7 @@ int pd_set_power_supply_ready(int port)
 DEFINE_FAKE_VOID_FUNC(system_hibernate, uint32_t, uint32_t);
 
 DEFINE_FAKE_VOID_FUNC(board_reset_pd_mcu);
+#if DT_HAS_TCPC
 
 #ifndef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 uint16_t tcpc_get_alert_status(void)
@@ -199,6 +201,7 @@ static void stubs_interrupt_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_switchcap_pg));
 }
 DECLARE_HOOK(HOOK_INIT, stubs_interrupt_init, HOOK_PRIO_POST_I2C);
+#endif
 
 void board_set_switchcap_power(int enable)
 {
