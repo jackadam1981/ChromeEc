@@ -22,6 +22,30 @@
       },
       "revId": "efe14005ec2ee1ff340ec47eb2422def1045d1bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95840c89_b39ca666",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 8190,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T15:56:35Z",
+      "side": 1,
+      "message": "I think it\u0027s not a good idea to reuse the command code...\nIf we reuse the command code, the client might not be able to distinguish the support of different commands.\n```\nectool --name\u003dcros_fp cmdversions 0x0417\n```",
+      "parentUuid": "648a88ac_daf4b404",
+      "range": {
+        "startLine": 8190,
+        "startChar": 0,
+        "endLine": 8190,
+        "endChar": 41
+      },
+      "revId": "efe14005ec2ee1ff340ec47eb2422def1045d1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
