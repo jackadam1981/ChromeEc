@@ -185,6 +185,11 @@ enum battery_type {
 	BATTERY_POWER_TECH,
 	BATTERY_LGC011,
 	BATTERY_COSMX_AP20CBL_004,
+<<<<<<< HEAD   (41410b Merge remote-tracking branch cros/main into firmware-brya-14)
+=======
+	BATTERY_AP23A7L,
+	BATTERY_AP23A8L,
+>>>>>>> CHANGE (0aabaa dochi: add new battery LGES AP23A8L)
 	BATTERY_TYPE_COUNT
 };
 
