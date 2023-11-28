@@ -70,6 +70,30 @@
       },
       "revId": "6a91da9092d99fcb9a3ddaf1e0893e6e7db91c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e4c846_6a11b2ed",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T20:18:14Z",
+      "side": 1,
+      "message": "Actually app_cipher() doesn\u0027t check validness, so need to change how to react on error.",
+      "parentUuid": "838b6850_088cde03",
+      "range": {
+        "startLine": 799,
+        "startChar": 4,
+        "endLine": 799,
+        "endChar": 29
+      },
+      "revId": "6a91da9092d99fcb9a3ddaf1e0893e6e7db91c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
