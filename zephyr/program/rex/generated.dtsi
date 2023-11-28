@@ -71,6 +71,7 @@
 		};
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
 			gpios = <&gpio1 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+			enum-name = "GPIO_KBD_KSO2";
 		};
 		gpio_ec_mech_pwr_btn_l: ec_mech_pwr_btn_l {
 			gpios = <&gpio0 2 GPIO_INPUT>;
