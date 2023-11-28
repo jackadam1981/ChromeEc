@@ -22,6 +22,30 @@
       },
       "revId": "f32214afbc3c5dec0d96f258e89f25c4e9c8ff89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f512b1a8_8d9063ce",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T15:43:27Z",
+      "side": 1,
+      "message": "Added the comments.",
+      "parentUuid": "c1182fd9_766300ed",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 71
+      },
+      "revId": "f32214afbc3c5dec0d96f258e89f25c4e9c8ff89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
