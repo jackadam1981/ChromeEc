@@ -259,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2c51ee_4b534bfd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8808,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e7d5857_59c395cc",
+      "range": {
+        "startLine": 8808,
+        "startChar": 25,
+        "endLine": 8808,
+        "endChar": 46
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e68214_74f4de66",
@@ -324,6 +348,30 @@
         "startChar": 32,
         "endLine": 8817,
         "endChar": 36
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "348bd9db_ba6c6b58",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8817,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:35:47Z",
+      "side": 1,
+      "message": "p is removed in patchset 9.",
+      "parentUuid": "d4e68214_74f4de66",
+      "range": {
+        "startLine": 8817,
+        "startChar": 10,
+        "endLine": 8817,
+        "endChar": 11
       },
       "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
