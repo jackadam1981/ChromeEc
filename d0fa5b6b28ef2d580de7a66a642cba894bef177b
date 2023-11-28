@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d5ef4d1_0eae8d5f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8584,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22be8fe1_f9a7b96f",
+      "range": {
+        "startLine": 8583,
+        "startChar": 0,
+        "endLine": 8584,
+        "endChar": 41
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3214013_ed76b0ab",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-27T18:45:54Z",
       "side": 1,
       "message": "What do you think about using a more orthodox separator (e.g. comma, slash, colon)? I\u0027m afraid underscores appear in normal model names. If json files use \u0027_\u0027 as a separator, I think it\u0027s better to change it there as well.",
+      "range": {
+        "startLine": 8694,
+        "startChar": 44,
+        "endLine": 8694,
+        "endChar": 45
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39bbb575_969dde7a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8694,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:34:44Z",
+      "side": 1,
+      "message": "Comma looks good to me. Done.",
+      "parentUuid": "d3214013_ed76b0ab",
       "range": {
         "startLine": 8694,
         "startChar": 44,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b7a063_b90471a9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8754,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:34:44Z",
+      "side": 1,
+      "message": "Done, moved to a new function: cmd_battery_config_get.",
+      "parentUuid": "eb2c6a78_3094a893",
+      "range": {
+        "startLine": 8710,
+        "startChar": 0,
+        "endLine": 8754,
+        "endChar": 24
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c74e7a1_cadb6c90",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5835af2_e5ab06d4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c74e7a1_cadb6c90",
+      "range": {
+        "startLine": 8774,
+        "startChar": 5,
+        "endLine": 8774,
+        "endChar": 13
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b03315d_bf63e246",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-11-27T18:45:54Z",
       "side": 1,
       "message": "Can you check the length \u003c SBS_MAX_STRING_SIZE as well?",
+      "range": {
+        "startLine": 8792,
+        "startChar": 6,
+        "endLine": 8792,
+        "endChar": 20
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f0fe25_65b34b57",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8792,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b03315d_bf63e246",
       "range": {
         "startLine": 8792,
         "startChar": 6,
@@ -175,6 +295,30 @@
       "writtenOn": "2023-11-27T18:45:54Z",
       "side": 1,
       "message": "mem_size",
+      "range": {
+        "startLine": 8817,
+        "startChar": 32,
+        "endLine": 8817,
+        "endChar": 36
+      },
+      "revId": "d0fa5b6b28ef2d580de7a66a642cba894bef177b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2e7027_adc16bb7",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8817,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T08:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7aac08f_6ff12c23",
       "range": {
         "startLine": 8817,
         "startChar": 32,
