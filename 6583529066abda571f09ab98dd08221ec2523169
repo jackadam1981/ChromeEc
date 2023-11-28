@@ -16,6 +16,24 @@
       "message": "I am assuming that SB implies SubBoard. For better understanding, please consider to add full name to the log unless it is an standard Acronym. (We can do this on ToT, and cherry pick to Nissa firmware branch later)",
       "revId": "6583529066abda571f09ab98dd08221ec2523169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f2996eb_e9b603e1",
+        "filename": "zephyr/program/nissa/quandiso/src/sub_board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-11-28T01:54:33Z",
+      "side": 1,
+      "message": "OK, Will add full name with next changing.",
+      "parentUuid": "c92a637e_8e32da75",
+      "revId": "6583529066abda571f09ab98dd08221ec2523169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
