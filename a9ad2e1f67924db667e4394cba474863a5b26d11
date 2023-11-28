@@ -16,6 +16,161 @@
       "message": "Updated the CMakeLists.txt to use \"startup_ARMCM4.S\" from thirdparty folder",
       "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1c5a28_3928f7ac",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "Please put all the macros that are defined by the Crisis Mode document into their own header file.  You should also reference the document name in the header file.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b50891_7434c583",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "The functions `receive_packet`, `verify_pkt_integrity`, etc. are using a mix of return types (NO_ERROR is a macro, PACKET_PAYLOAD_ILLEGAL_LEN is an enum).  I recommend using `enum failure_resp_type` for all these routines.\n\nYou can drop NO_ERROR and move BOARD_INIT_ERR, and SERIAL_RECV_TIMEOUT into a common failure response type.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 8
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e76a386_67d28dce",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "Do you need to send a response on this path?",
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1250a9_19a5835f",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "If you switch to using `enum failure_resp_type` for return types, this code becomes:\n```\n\t\tif (status !\u003d NO_FAILURE) {\n\t\t\tstate \u003d STATE_WAIT_FOR_ACK1;\n\t\t\tsend_response(status, rx_data);\n\t\t\tbreak;\n\t\t}\n```",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 0
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a1926a_2bb4e9e1",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "Response needed?",
+      "range": {
+        "startLine": 483,
+        "startChar": 3,
+        "endLine": 483,
+        "endChar": 31
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b18d786_61c22eef",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "Response needed?",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 31
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceefd534_e6a72bb3",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-11-28T20:20:47Z",
+      "side": 1,
+      "message": "Each of these error codes is used in only only place, and the caller only checks for `NO_ERROR`\n\nUltimately I believe these errors result in a SPI_OPERATION_FAILURE, correct?\n\nI recommend the changing the public routines to return `enum failure_resp_type` for consistency.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
