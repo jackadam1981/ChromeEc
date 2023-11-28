@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e2e044_fbb88458",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T16:04:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab217781_be910575",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "5f41822a9270c16a8b8bca1e8fb98cf1f1252ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75b4c0a2_0e120d17",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-28T16:01:14Z",
       "side": 1,
       "message": "IIUC the compile option will strip the BoringSSL sources path, not file name.",
+      "range": {
+        "startLine": 27,
+        "startChar": 63,
+        "endLine": 27,
+        "endChar": 76
+      },
+      "revId": "5f41822a9270c16a8b8bca1e8fb98cf1f1252ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bdfd31_8cb2c12b",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-28T16:04:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b4c0a2_0e120d17",
       "range": {
         "startLine": 27,
         "startChar": 63,
