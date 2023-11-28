@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1182fd9_766300ed",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T13:22:09Z",
+      "side": 1,
+      "message": "This is a hack that modifies `__FILE__` behavior. It deserves a comment that includes:\n- What this line does\n- Why we need that\n- Why we have choosen this method",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 71
+      },
+      "revId": "f32214afbc3c5dec0d96f258e89f25c4e9c8ff89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
