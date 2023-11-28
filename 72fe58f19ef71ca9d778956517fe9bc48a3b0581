@@ -16,6 +16,24 @@
       "message": "How about `apshutdown` in the recovery mode? does it work with the CL?",
       "revId": "72fe58f19ef71ca9d778956517fe9bc48a3b0581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "945ade82_d108dc0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-28T23:43:58Z",
+      "side": 1,
+      "message": "It\u0027s broken in recovery mode if you expect it to shutdown the AP and stay in S5/G3. If you expect it to just shut down the AP, it still works.",
+      "parentUuid": "970bf9bb_57debf2f",
+      "revId": "72fe58f19ef71ca9d778956517fe9bc48a3b0581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
