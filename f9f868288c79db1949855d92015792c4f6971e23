@@ -441,6 +441,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1abf4bb2_d740acbe",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8171f3d2_5a0883c3",
+      "range": {
+        "startLine": 1385,
+        "startChar": 2,
+        "endLine": 1385,
+        "endChar": 21
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "308ed4f7_9928a820",
@@ -454,6 +478,30 @@
       "writtenOn": "2023-08-26T05:55:44Z",
       "side": 1,
       "message": "check for error?",
+      "range": {
+        "startLine": 1577,
+        "startChar": 1,
+        "endLine": 1577,
+        "endChar": 23
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0887d7e3_f1f47ff2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "308ed4f7_9928a820",
       "range": {
         "startLine": 1577,
         "startChar": 1,
@@ -652,6 +700,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f63d0d_2cb97f30",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36c7c31c_991b57a5",
+      "range": {
+        "startLine": 2293,
+        "startChar": 2,
+        "endLine": 2293,
+        "endChar": 40
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7982beb9_288852c0",
@@ -665,6 +737,30 @@
       "writtenOn": "2023-08-26T05:55:44Z",
       "side": 1,
       "message": "check for error? how to handle properly?",
+      "range": {
+        "startLine": 2296,
+        "startChar": 2,
+        "endLine": 2296,
+        "endChar": 18
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8047e119_5261ca5c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7982beb9_288852c0",
       "range": {
         "startLine": 2296,
         "startChar": 2,
@@ -698,6 +794,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec606b12_4191d476",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2299,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0b593f_6ff451d2",
+      "range": {
+        "startLine": 2299,
+        "startChar": 2,
+        "endLine": 2299,
+        "endChar": 24
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57616898_6b9dabd3",
@@ -711,6 +831,30 @@
       "writtenOn": "2023-08-26T05:55:44Z",
       "side": 1,
       "message": "add logging?",
+      "range": {
+        "startLine": 2729,
+        "startChar": 3,
+        "endLine": 2730,
+        "endChar": 19
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91df6e3f_e4e8cf5d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2730,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "done at get_next_object() level",
+      "parentUuid": "57616898_6b9dabd3",
       "range": {
         "startLine": 2729,
         "startChar": 3,
@@ -744,6 +888,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc40de0_129491fb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2741,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae06675_83abe695",
+      "range": {
+        "startLine": 2741,
+        "startChar": 3,
+        "endLine": 2741,
+        "endChar": 58
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0841bac_478c511a",
@@ -757,6 +925,30 @@
       "writtenOn": "2023-08-26T05:55:44Z",
       "side": 1,
       "message": "check for error?",
+      "range": {
+        "startLine": 2773,
+        "startChar": 2,
+        "endLine": 2773,
+        "endChar": 18
+      },
+      "revId": "f9f868288c79db1949855d92015792c4f6971e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee336089_67293590",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2773,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0841bac_478c511a",
       "range": {
         "startLine": 2773,
         "startChar": 2,

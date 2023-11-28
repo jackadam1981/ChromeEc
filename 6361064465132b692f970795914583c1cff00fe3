@@ -46,6 +46,30 @@
       },
       "revId": "6361064465132b692f970795914583c1cff00fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae099ad5_d6f12ebb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-28T22:58:28Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "bb3b629b_b7862b1f",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 26
+      },
+      "revId": "6361064465132b692f970795914583c1cff00fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
