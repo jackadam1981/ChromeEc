@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8d2092_c5057ffa",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-28T18:55:20Z",
+      "side": 1,
+      "message": "BTW, there is a field to specify a model name. Would it make more sense if we do:\n\n    .manuf_name \u003d \"SMP\",\n    .device_name \u003d \"KT00307012\",\n\n?",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "8839b45ebf5d84d3c9483e54ab3071b67ab7eca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
