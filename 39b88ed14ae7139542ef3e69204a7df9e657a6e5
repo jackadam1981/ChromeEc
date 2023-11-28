@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9e06a3_89663552",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T14:11:24Z",
+      "side": 1,
+      "message": "NIT: For me, `verify` suggests that we only check the state, not modify it.",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 33
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba588053_2c416fc6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T14:11:24Z",
+      "side": 1,
+      "message": "Does it mean that won\u0027t match against unlocked templates when at least one template is locked?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59de2814_77856769",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T14:11:24Z",
+      "side": 1,
+      "message": "Here, we are locking the template, but if some template is already locked, we won\u0027t match against it. Is it a problem? The `dec_state-\u003eis_locked` and `FP_CONTEXT_STATUS_MATCH_PROCESSED_SET` are protecting against matching the same template more than once. Is it possible to remove `FP_CONTEXT_STATUS_MATCH_PROCESSED_SET`?",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fbc777e_b2eea2ab",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-28T14:11:24Z",
+      "side": 1,
+      "message": "Maybe we should add new result code for this case? I think follow-up CL would be fine.",
+      "range": {
+        "startLine": 186,
+        "startChar": 8,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
