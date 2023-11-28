@@ -331,8 +331,8 @@ static inline long i2cp_set_functionality(u32 functionality,
 {
 	if ((functionality & I2C_FUNC_I2C) != I2C_FUNC_I2C ||
 	    (functionality &
-	     ~(I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL | I2C_FUNC_10BIT_ADDR |
-	       I2C_FUNC_PROTOCOL_MANGLING | I2C_FUNC_SLAVE)))
+	     ~(I2C_FUNC_I2C | I2C_FUNC_10BIT_ADDR | I2C_FUNC_PROTOCOL_MANGLING |
+	       I2C_FUNC_SMBUS_EMUL)))
 		return -EINVAL;
 	pdata->functionality = functionality;
 	return 0;
