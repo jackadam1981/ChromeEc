@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5883d381_736ac838",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8810,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2023-11-28T09:19:31Z",
+      "side": 1,
+      "message": "This 1 is required to prevent `malloc(): corrupted top size`",
+      "range": {
+        "startLine": 8810,
+        "startChar": 45,
+        "endLine": 8810,
+        "endChar": 48
+      },
+      "revId": "cae8bca34fd82386c3155a25641dda7211890dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
