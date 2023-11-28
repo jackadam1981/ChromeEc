@@ -106,6 +106,7 @@ import uuid
 EC_TEST_PATHS = [
     Path("common"),
     Path("zephyr/test"),
+    Path("tests/drivers/i2c/i2c_pec"),
 ]
 
 # Paths under ZEPHYR_BASE that we also wish to search for test cases.

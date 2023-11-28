@@ -1,4 +1,17 @@
 common:
   platform_allow: native_posix
 tests:
-  i2c.default: {}
+  i2c.default:
+    extra_configs:
+    - CONFIG_TEST_I2C_DEFAULT=y
+
+  i2c.pec:
+    extra_configs:
+    - CONFIG_TEST_I2C_PEC=y
+    - CONFIG_PLATFORM_EC_SMBUS_PEC=y
+
+  i2c.pec.legacy:
+    extra_configs:
+    - CONFIG_TEST_I2C_PEC=y
+    - CONFIG_PLATFORM_EC_SMBUS_PEC=y
+    - CONFIG_PLATFORM_EC_SMBUS_PEC_ZEPHYR=n

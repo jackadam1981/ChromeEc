@@ -8,6 +8,8 @@
 #include "i2c/i2c.h"
 
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/emul.h>
+#include <zephyr/drivers/i2c_pec_test_emul.h>
 #include <zephyr/ztest.h>
 
 /* Unused: required for shimming i2c. */
@@ -64,5 +66,3 @@ ZTEST_USER(i2c, test_i2c_lock)
 		      "I2C_PORT_EEPROM not locked");
 	i2c_lock(I2C_PORT_EEPROM, 0);
 }
-
-ZTEST_SUITE(i2c, NULL, NULL, NULL, NULL, NULL);

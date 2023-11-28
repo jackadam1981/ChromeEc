@@ -34,4 +34,10 @@
 		compatible = "bosch,bmi160";
 		reg = <0x68>;
 	};
+
+	i2c_pec_test: i2c_pec_test@b {
+		compatible = "zephyr,i2c-pec-test";
+		reg = <0x0b>;
+		status = "okay";
+	};
 };
