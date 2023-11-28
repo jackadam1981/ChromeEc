@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e048631a_fd2c5491",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8778,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-28T17:43:53Z",
+      "side": 1,
+      "message": "You don\u0027t need malloc for batery_config because the size is static. You can just allocate memory in the stack.",
+      "range": {
+        "startLine": 8777,
+        "startChar": 0,
+        "endLine": 8778,
+        "endChar": 64
+      },
+      "revId": "cae8bca34fd82386c3155a25641dda7211890dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f29fc57_7399a383",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8791,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-28T17:43:53Z",
+      "side": 1,
+      "message": "I don\u0027t think you need manuf_name because you have manuf_name_str-\u003ec_str().",
+      "range": {
+        "startLine": 8790,
+        "startChar": 0,
+        "endLine": 8791,
+        "endChar": 45
+      },
+      "revId": "cae8bca34fd82386c3155a25641dda7211890dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5883d381_736ac838",
@@ -19,6 +65,52 @@
         "startChar": 45,
         "endLine": 8810,
         "endChar": 48
+      },
+      "revId": "cae8bca34fd82386c3155a25641dda7211890dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a7d5f0_b6450774",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-28T17:43:53Z",
+      "side": 1,
+      "message": "malloc doesn\u0027t always succeed. So, you need to check header !\u003d NULL.",
+      "range": {
+        "startLine": 8810,
+        "startChar": 29,
+        "endLine": 8810,
+        "endChar": 35
+      },
+      "revId": "cae8bca34fd82386c3155a25641dda7211890dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ab4edb_704a7eb9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 8814,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-28T17:43:53Z",
+      "side": 1,
+      "message": "You still need \u0027p\u0027:\n\n    uint8_t *p \u003d (uint8_t *)header;\n    p +\u003d sizeof(struct batt_conf_header);\n    ...\n\nbecause increment (\u0027+\u003d\u0027) for \u0027header\u0027 is not by 1 byte.",
+      "range": {
+        "startLine": 8814,
+        "startChar": 1,
+        "endLine": 8814,
+        "endChar": 43
       },
       "revId": "cae8bca34fd82386c3155a25641dda7211890dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
