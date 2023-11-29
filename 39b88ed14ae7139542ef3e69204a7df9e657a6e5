@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12e64a42_19868d73",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-29T03:00:40Z",
+      "side": 1,
+      "message": "I think we won\u0027t run into a situation where some templates are locked and some aren\u0027t right now.",
+      "parentUuid": "5db34233_0422c6b1",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59de2814_77856769",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 39
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "\u003e The reason of \"FP_CONTEXT_STATUS_MATCH_PROCESSED_SET\" is preventing the attacker unlock template multiple times in a single nonce context.\n\nYes. I think I understand it now. To unlock the template, we need to provide UserID (LabelSeed). To match I need nonce context too. And there is only one match per single nonce context and one match when template is unlocked. Is it correct?\n\nIs the `dec_state-\u003eis_locked` responsible for locking templates when there was no match, e.g. user cancelled AuthSession?",
       "parentUuid": "439df580_420ddd04",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699fdc13_d87bd2b7",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-29T03:00:40Z",
+      "side": 1,
+      "message": "Even if there is match, the templates need to be locked. Because no matter what happens in this match, the next match should require the label seed again.",
+      "parentUuid": "7a5302a5_889862af",
       "range": {
         "startLine": 169,
         "startChar": 2,
