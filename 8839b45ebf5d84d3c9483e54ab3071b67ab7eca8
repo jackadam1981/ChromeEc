@@ -22,6 +22,30 @@
       },
       "revId": "8839b45ebf5d84d3c9483e54ab3071b67ab7eca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b346148c_1c47c57d",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-11-29T01:16:08Z",
+      "side": 1,
+      "message": "update it, add device name.",
+      "parentUuid": "1b8d2092_c5057ffa",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "8839b45ebf5d84d3c9483e54ab3071b67ab7eca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
