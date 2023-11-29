@@ -22,6 +22,30 @@
       },
       "revId": "88a4943dc71487e628885fd2af5c690b1c1b2705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e5a6e6_1b74f1b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-11-29T00:56:12Z",
+      "side": 1,
+      "message": "The GPIO name is kind of confusing, I updated with its net name on schematic. This is an output of ISH and input to EC; since ISH run the motion sense task, and EC not. The tablet mode change HOOK is notified inside ISH. And EC only can know the mode change from the gpio pin.",
+      "parentUuid": "0dc8b1cb_52ca5207",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "88a4943dc71487e628885fd2af5c690b1c1b2705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
