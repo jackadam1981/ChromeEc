@@ -34,6 +34,121 @@
       "parentUuid": "e3914675_490f8e3b",
       "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79736110_6dda5ac0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T21:40:07Z",
+      "side": 1,
+      "message": "this does not have to be an `else` any more",
+      "range": {
+        "startLine": 629,
+        "startChar": 2,
+        "endLine": 629,
+        "endChar": 8
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf041284_b432efc8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T21:40:07Z",
+      "side": 1,
+      "message": "I am not sure about this result change, it could cause all kind of subtle behavior changes. Does this need to be reported as an error?",
+      "range": {
+        "startLine": 950,
+        "startChar": 3,
+        "endLine": 950,
+        "endChar": 37
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bcb6fd_3920f015",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T21:40:07Z",
+      "side": 1,
+      "message": "should return value be checked here as well?",
+      "range": {
+        "startLine": 2345,
+        "startChar": 2,
+        "endLine": 2345,
+        "endChar": 15
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c82824_0c7d73cb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T21:40:07Z",
+      "side": 1,
+      "message": "this is one of the cases where behavior will change: before even if compaction failed we\u0027d be able to save a change in NVMEM, and compaction could succeed the next time, but now a failure is reported in cases where it was not before.",
+      "range": {
+        "startLine": 2760,
+        "startChar": 1,
+        "endLine": 2762,
+        "endChar": 13
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bce94a_44371654",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2996,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T21:40:07Z",
+      "side": 1,
+      "message": "anotther case of changed return value, and more below.",
+      "range": {
+        "startLine": 2995,
+        "startChar": 2,
+        "endLine": 2996,
+        "endChar": 13
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
