@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e479dc5_d6a5ee8f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6173,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-11-29T22:53:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d8bf9825_eb416a98",
+      "range": {
+        "startLine": 6173,
+        "startChar": 16,
+        "endLine": 6173,
+        "endChar": 36
+      },
+      "revId": "270418d610c506a5b1d78a8d0a527d955c7adf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "412dc0de_cf872a94",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-27T18:24:54Z",
       "side": 1,
       "message": "move it under line 528 CONFIG_PLATFORM_EC_USB_PD_TCPMV2",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 29
+      },
+      "revId": "270418d610c506a5b1d78a8d0a527d955c7adf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab82a88_43eee545",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-11-29T22:53:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "412dc0de_cf872a94",
       "range": {
         "startLine": 482,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d1dcb6f_88e2aa11",
+        "filename": "zephyr/include/usbc/pd_task_intel_altmode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-11-29T22:53:22Z",
+      "side": 1,
+      "message": "yes, we need to post event from retimer_fw_update.c. Since the pd altmode task is going to remain suspended from the time AP calls USB_RETIMER_FW_UPDATE_SUSPEND_PD to USB_RETIMER_FW_UPDATE_SET_TBT(all mux changes buffered at EC end ie usb-\u003esafe-\u003etbt). When USB_RETIMER_FW_UPDATE_SET_TBT is called PD switches all mentioned altmodes at once. Once done, pd altmode task is resumed and the event is posted so the EC mux state is in sync with PD.",
+      "parentUuid": "f0824c4c_d2ceab92",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "270418d610c506a5b1d78a8d0a527d955c7adf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a2e42d_e3b7836a",
         "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-27T18:24:54Z",
       "side": 1,
       "message": "use zephyr prints",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "270418d610c506a5b1d78a8d0a527d955c7adf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55715179_5a81e61e",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-11-29T22:53:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "17a2e42d_e3b7836a",
       "range": {
         "startLine": 165,
         "startChar": 1,
@@ -106,6 +202,30 @@
       "writtenOn": "2023-11-27T18:24:54Z",
       "side": 1,
       "message": "add a Kconfig for console command and make two subcommands one for enter and other for exit",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "270418d610c506a5b1d78a8d0a527d955c7adf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae8e2b0_9c6863d9",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-11-29T22:53:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "250beb2f_6561d640",
       "range": {
         "startLine": 193,
         "startChar": 0,
