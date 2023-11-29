@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd3e12e6_31e6a5bb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T22:06:33Z",
+      "side": 1,
+      "message": "still not clear why this condition was not considered an error before, but is turining inot an error now.\n\nThe original idea was that occasioanl compaction failures due to memory allocation could be tolerated,",
+      "parentUuid": "f1de67f3_aab5e375",
+      "range": {
+        "startLine": 950,
+        "startChar": 3,
+        "endLine": 950,
+        "endChar": 37
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2bcb6fd_3920f015",
         "filename": "common/new_nvmem.c",
         "patchSetId": 6
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "c0c82824_0c7d73cb",
+      "range": {
+        "startLine": 2760,
+        "startChar": 1,
+        "endLine": 2762,
+        "endChar": 13
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57b215d_7760eb37",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T22:06:33Z",
+      "side": 1,
+      "message": "so, what do you think about my concern?",
+      "parentUuid": "81d1a0c6_481c7592",
       "range": {
         "startLine": 2760,
         "startChar": 1,
