@@ -46,6 +46,30 @@
       },
       "revId": "8839b45ebf5d84d3c9483e54ab3071b67ab7eca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03dcef8_18ac0fef",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-29T04:23:36Z",
+      "side": 1,
+      "message": "manuf_name still has KT00307012. Isn\u0027t it a model name?",
+      "parentUuid": "b346148c_1c47c57d",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "8839b45ebf5d84d3c9483e54ab3071b67ab7eca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
