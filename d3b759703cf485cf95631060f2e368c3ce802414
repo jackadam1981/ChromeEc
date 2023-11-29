@@ -22,6 +22,30 @@
       },
       "revId": "d3b759703cf485cf95631060f2e368c3ce802414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6644a2_b038a4bb",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T19:54:09Z",
+      "side": 0,
+      "message": "`-p` and `-ps` are same thing resulting in producing hex output w/o address and spaces between hex digits. e.g. 0x00 0x01 -\u003e `0001`. It translates `cr50` to `63723530`",
+      "parentUuid": "94c8a7f4_d2877073",
+      "range": {
+        "startLine": 228,
+        "startChar": 14,
+        "endLine": 228,
+        "endChar": 15
+      },
+      "revId": "d3b759703cf485cf95631060f2e368c3ce802414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
