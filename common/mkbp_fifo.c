@@ -33,6 +33,8 @@ static uint8_t fifo_max_depth = FIFO_DEPTH;
 static struct ec_response_get_next_event_v1 fifo[FIFO_DEPTH];
 
 BUILD_ASSERT(sizeof(fifo[0].data) >= KEYBOARD_COLS_MAX);
+BUILD_ASSERT(sizeof(((struct ec_response_get_next_event){}).data) >=
+		KEYBOARD_COLS_NO_KEYPAD);
 
 /*
  * Mutex for critical sections of mkbp_fifo_add(), which is called

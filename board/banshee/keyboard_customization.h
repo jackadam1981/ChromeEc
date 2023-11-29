@@ -15,6 +15,7 @@
  */
 #define KEYBOARD_COLS_MAX 16
 #define KEYBOARD_ROWS 8
+#define KEYBOARD_COLS_NO_KEYPAD 13
 
 /*
  * WARNING: Do not directly modify it. You should call keyboard_raw_set_cols,
