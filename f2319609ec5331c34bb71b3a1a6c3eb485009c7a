@@ -70,6 +70,30 @@
       },
       "revId": "f2319609ec5331c34bb71b3a1a6c3eb485009c7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a70b604_8b5b50fc",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-11-29T05:46:26Z",
+      "side": 1,
+      "message": "Upload battery spec in issue tracker comment#7,\n2. Product Configuration\nModel Name: AP23A8L\n\n3.2 Fuel Gauge spec\nManuf_name LGES KT0030G025\nDevice name: AP23A8L\nI think it don\u0027t define model name.",
+      "parentUuid": "25e677f8_3172f32c",
+      "range": {
+        "startLine": 166,
+        "startChar": 22,
+        "endLine": 166,
+        "endChar": 32
+      },
+      "revId": "f2319609ec5331c34bb71b3a1a6c3eb485009c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
