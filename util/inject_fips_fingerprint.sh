@@ -67,7 +67,7 @@ main() {
     exit 1
   fi
 
-  sha256sum "${fips_body}" | xxd -r -p -l 32 > "${fips_checksum_dump}"
+  ./util/fipsdigest.py -i "${fips_body}" -o "${fips_checksum_dump}"
 
   cp "${rw_elf_in}" "${rw_elf_out}"
 
