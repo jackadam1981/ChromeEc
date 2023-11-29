@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74845b00_3ed6e952",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-29T16:12:08Z",
+      "side": 1,
+      "message": "@yich@google.com can you provide more info here? Will a global `is_locked` work?",
+      "parentUuid": "838feec8_17428a0b",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59de2814_77856769",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 39
@@ -252,6 +276,30 @@
       "side": 1,
       "message": "What if the user cancelled AuthSession?",
       "parentUuid": "699fdc13_d87bd2b7",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac4d3e3_7cb2c5cd",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-11-29T16:12:08Z",
+      "side": 1,
+      "message": "I think that sets the mode to none in FPMCU. But the context is still there and available. If someone manually sends a command to put FPMCU into match again I believe they can match, but that should be fine. The constraint that 1 context can only match once is still there.",
+      "parentUuid": "c350a55c_7d75a84f",
       "range": {
         "startLine": 169,
         "startChar": 2,
