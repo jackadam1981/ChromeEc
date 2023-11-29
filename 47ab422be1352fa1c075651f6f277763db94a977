@@ -46,6 +46,30 @@
       },
       "revId": "47ab422be1352fa1c075651f6f277763db94a977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6383078_bbb3d41b",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/pd_alt_mode.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-29T02:17:34Z",
+      "side": 1,
+      "message": "I have removed TCPC related GPIO\u0027s with this CL:5067745.",
+      "parentUuid": "7581ba0a_c7856064",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "47ab422be1352fa1c075651f6f277763db94a977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
