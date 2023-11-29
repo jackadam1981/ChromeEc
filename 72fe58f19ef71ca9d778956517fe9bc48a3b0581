@@ -34,6 +34,24 @@
       "parentUuid": "970bf9bb_57debf2f",
       "revId": "72fe58f19ef71ca9d778956517fe9bc48a3b0581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "794d19ee_53b10d30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-29T20:26:37Z",
+      "side": 1,
+      "message": "Uploaded crrev/c/5073813 for apshutdown. Again, whether it\u0027s working or not depends on the expectation. It\u0027s totally valid to use apshutdown to test reboot-ec cold at-shutdown. With crrev/c/5073813, this workflow will need to change: apshutdown \u0027-d\u0027.",
+      "parentUuid": "945ade82_d108dc0a",
+      "revId": "72fe58f19ef71ca9d778956517fe9bc48a3b0581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
