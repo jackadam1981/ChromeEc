@@ -16,6 +16,24 @@
       "message": "not sure why CQ fails",
       "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1354906_196fd168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-11-29T15:49:19Z",
+      "side": 1,
+      "message": "```\n./util/inject_fips_fingerprint.sh: line 70: xxd: command not found\n  OBJCOPY RW/ec.RW_B.hex\n./util/inject_fips_fingerprint.sh: line 70: xxd: command not found\n  OBJCOPY RW/ec.RW.hex\n  RW_SIGN RW/ec.RW.flat\n  RW_SIGN RW/ec.RW_B.flat\n  CAT     ec.obj\n  OBJCOPY ec.bin\n  COPY_RW ec.bin\n  MV      ec.bin\n  OBJCOPY ec.hex\n  *** 8152 bytes in flash and 57088 bytes in RAM still available on cr50 RO ****\n  *** 9452 bytes in flash and 1364 bytes in RAM still available on cr50 RW ****\nmake[1]: Leaving directory \u0027/mnt/host/source/src/platform/cr50\u0027\nmake: *** [Makefile.rules:184: build_boards] Error 2\n# Running make buildall_only -j32.\n16:01:04.511: INFO: Endpoint execution completed, return code: 3\n16:01:04.585: INFO: Endpoint execution completed, return code: 3\n```",
+      "parentUuid": "e3914675_490f8e3b",
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
