@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51678217_3ba3ce5f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-11-29T16:23:36Z",
+      "side": 1,
+      "message": "Yeah, changing it to the global is_locked might work.",
+      "parentUuid": "74845b00_3ed6e952",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59de2814_77856769",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 39
