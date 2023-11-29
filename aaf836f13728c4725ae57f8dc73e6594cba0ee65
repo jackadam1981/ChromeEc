@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e80f9a4_e3bb1aed",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:27:44Z",
+      "side": 1,
+      "message": "could be we never hit it before or it was harmless... you\u0027re correct that this subtle change may result in weird issues, so better not to change it w/o proper tests",
+      "parentUuid": "fd3e12e6_31e6a5bb",
+      "range": {
+        "startLine": 950,
+        "startChar": 3,
+        "endLine": 950,
+        "endChar": 37
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2bcb6fd_3920f015",
         "filename": "common/new_nvmem.c",
         "patchSetId": 6
@@ -262,6 +286,30 @@
       "side": 1,
       "message": "so, what do you think about my concern?",
       "parentUuid": "81d1a0c6_481c7592",
+      "range": {
+        "startLine": 2760,
+        "startChar": 1,
+        "endLine": 2762,
+        "endChar": 13
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a28928_4aa2f860",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:27:44Z",
+      "side": 1,
+      "message": "I reverted behavior to original and agree with concerns.",
+      "parentUuid": "e57b215d_7760eb37",
       "range": {
         "startLine": 2760,
         "startChar": 1,
