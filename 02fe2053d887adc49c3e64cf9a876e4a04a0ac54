@@ -16,6 +16,24 @@
       "message": "Why are we using 2 different markdown formats and repeating this :)",
       "revId": "02fe2053d887adc49c3e64cf9a876e4a04a0ac54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a31344c_e988072d",
+        "filename": "extra/i2c_pseudo/Documentation/i2c/i2c-pseudo.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-29T21:25:49Z",
+      "side": 1,
+      "message": "Linux documentation uses RST, but CrOS source code browsers - namely Gitiles and Code Search - don\u0027t support rendering RST into nice HTML like they do for Markdown.\n\nThe Markdown is generated from the RST, see extra/i2c_pseudo/README.md .",
+      "parentUuid": "c591e725_9bbb72d7",
+      "revId": "02fe2053d887adc49c3e64cf9a876e4a04a0ac54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
