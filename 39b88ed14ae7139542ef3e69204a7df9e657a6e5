@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "838feec8_17428a0b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-29T10:48:06Z",
+      "side": 1,
+      "message": "\u003e I think we won\u0027t run into a situation where some templates are locked and some aren\u0027t right now.\n\nSo...why each template has its own `is_locked`.",
+      "parentUuid": "12e64a42_19868d73",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59de2814_77856769",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 39
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "Even if there is match, the templates need to be locked. Because no matter what happens in this match, the next match should require the label seed again.",
       "parentUuid": "7a5302a5_889862af",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "39b88ed14ae7139542ef3e69204a7df9e657a6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c350a55c_7d75a84f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-29T10:48:06Z",
+      "side": 1,
+      "message": "What if the user cancelled AuthSession?",
+      "parentUuid": "699fdc13_d87bd2b7",
       "range": {
         "startLine": 169,
         "startChar": 2,
