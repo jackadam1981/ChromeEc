@@ -46,6 +46,30 @@
       },
       "revId": "f2319609ec5331c34bb71b3a1a6c3eb485009c7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e677f8_3172f32c",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-11-29T04:22:39Z",
+      "side": 1,
+      "message": "You still have KT0030G025 in manuf_name. If it\u0027s a model name, it should be in device_name.",
+      "parentUuid": "92166f53_b52a712a",
+      "range": {
+        "startLine": 166,
+        "startChar": 22,
+        "endLine": 166,
+        "endChar": 32
+      },
+      "revId": "f2319609ec5331c34bb71b3a1a6c3eb485009c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
