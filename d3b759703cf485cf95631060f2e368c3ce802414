@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c8a7f4_d2877073",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T19:34:32Z",
+      "side": 0,
+      "message": "how did this work before? `-s` seems to mean to start at a certain seek offset into the file and requires the actual number as the offset value?",
+      "range": {
+        "startLine": 228,
+        "startChar": 14,
+        "endLine": 228,
+        "endChar": 15
+      },
+      "revId": "d3b759703cf485cf95631060f2e368c3ce802414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

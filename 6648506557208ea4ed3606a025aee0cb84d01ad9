@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347af728_2a19c593",
+        "filename": "util/fipsdigest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T19:34:32Z",
+      "side": 1,
+      "message": "it is better to use `os.path.basename(__file__)` just in case this script file name changes.",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "6648506557208ea4ed3606a025aee0cb84d01ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aced1be_9aaf067e",
+        "filename": "util/fipsdigest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T19:34:32Z",
+      "side": 1,
+      "message": "`option -h not recognized` is printed when passing `-h`\n\nneed to add `h` to the second argument in line 26",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "6648506557208ea4ed3606a025aee0cb84d01ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c904d9_47f583a6",
+        "filename": "util/fipsdigest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-29T19:34:32Z",
+      "side": 1,
+      "message": "I\u0027m curious: why do you need to limit this to `CHUNK_SIZE`, why not to hash the entire file at once?",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "6648506557208ea4ed3606a025aee0cb84d01ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
