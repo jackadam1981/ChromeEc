@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4dfff7_9562bd72",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79736110_6dda5ac0",
+      "range": {
+        "startLine": 629,
+        "startChar": 2,
+        "endLine": 629,
+        "endChar": 8
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf041284_b432efc8",
@@ -72,6 +96,30 @@
       "writtenOn": "2023-11-29T21:40:07Z",
       "side": 1,
       "message": "I am not sure about this result change, it could cause all kind of subtle behavior changes. Does this need to be reported as an error?",
+      "range": {
+        "startLine": 950,
+        "startChar": 3,
+        "endLine": 950,
+        "endChar": 37
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1de67f3_aab5e375",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf041284_b432efc8",
       "range": {
         "startLine": 950,
         "startChar": 3,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a87746_1a7ee0a8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2345,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:02:37Z",
+      "side": 1,
+      "message": "here it breaks tests, since caller depends on EC_ERROR_TRY_AGAIN and doesn\u0027t get that while compact returns `EC_ERROR_INVAL` early in the initialization (spotted by nvmem_test).\nAdded comment",
+      "parentUuid": "a2bcb6fd_3920f015",
+      "range": {
+        "startLine": 2345,
+        "startChar": 2,
+        "endLine": 2345,
+        "endChar": 15
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0c82824_0c7d73cb",
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d1a0c6_481c7592",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c82824_0c7d73cb",
+      "range": {
+        "startLine": 2760,
+        "startChar": 1,
+        "endLine": 2762,
+        "endChar": 13
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12bce94a_44371654",
@@ -141,6 +237,30 @@
       "writtenOn": "2023-11-29T21:40:07Z",
       "side": 1,
       "message": "anotther case of changed return value, and more below.",
+      "range": {
+        "startLine": 2995,
+        "startChar": 2,
+        "endLine": 2996,
+        "endChar": 13
+      },
+      "revId": "aaf836f13728c4725ae57f8dc73e6594cba0ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d535e4_17d5717c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2996,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-11-29T22:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bce94a_44371654",
       "range": {
         "startLine": 2995,
         "startChar": 2,
