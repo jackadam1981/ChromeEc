@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc88b994_829deb32",
+        "filename": "zephyr/program/nissa/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-11-30T07:01:44Z",
+      "side": 1,
+      "message": "may be a good idea to have this in its own block, like\n\n```\n...\nCONFIG_AP_PWRSEQ_S0IX_ERROR_RECOVERY\u003dy\n\n# Disable driver mode because Nissa was brought up without it and changing\n# would be risky.\nCONFIG_AP_PWRSEQ_DRIVER\u003dn\n\n# Keyboard support\n...\n```\n\nthat way it\u0027s clear that the comment just refer to that option.",
+      "revId": "79aadcd3734f0d31d4dd7cd484e35fdad9d441bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
