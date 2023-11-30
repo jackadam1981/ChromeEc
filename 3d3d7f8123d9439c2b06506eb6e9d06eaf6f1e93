@@ -302,6 +302,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca3e9495_d65ffd9d",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-30T21:17:38Z",
+      "side": 1,
+      "message": "Should we stop using these API\u0027s and use work thread instead?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 16
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4eb8025_33fb614c",
         "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
         "patchSetId": 2
