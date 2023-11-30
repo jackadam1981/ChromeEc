@@ -1,0 +1,451 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0157f45_bbead9d2",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "remove newlines",
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c953cb_33fa03a7",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "rename file as pdc_ccg8.c",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1044fe_55648fdf",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "check if needed",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6579595_51d94a51",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "I think intel is not needed in this file as its a generic PD driver",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd3a345_33ddfd94",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "pd_write",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7e7e91_296fa740",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "add a newline",
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44809907_c8a4a5a6",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "pd_read",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63feb807_f8aef3d7",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "need this? just pass 2 in the function ?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c9e46f_06e40b34",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "I think this can go in application and can be generic for all PD chips",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 6
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6954cf5_a1becbde",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "CCG8_DEFINE",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 132,
+        "endChar": 27
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c77fbe_b3e8faff",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "i think powmode is not needed (everywhere) as its a PD driver",
+      "range": {
+        "startLine": 133,
+        "startChar": 26,
+        "endLine": 133,
+        "endChar": 33
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aed353f_ee6ec978",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "retain same name",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b910338_40e00f3f",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "how about pow-del?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20958434_9158d912",
+        "filename": "zephyr/dts/bindings/usbc/pd/intel,pd-powermode.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "Details in this file should be generic PD not related to Intel.\nRefer: zephyr/dts/bindings/usbc/pd/realtek,rts545x.yaml",
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591509a3_7a20d651",
+        "filename": "zephyr/dts/bindings/usbc/pd/intel,pd-powermode.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "power",
+      "range": {
+        "startLine": 16,
+        "startChar": 37,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e623b1_e9a9babe",
+        "filename": "zephyr/include/drivers/ccg8_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "rename file as pdc_ccg8.h",
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a40850_8afeecb0",
+        "filename": "zephyr/include/drivers/ccg8_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "add ifndef to avoid including header multiple times",
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac62acbe_b8b29fec",
+        "filename": "zephyr/include/drivers/ccg8_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "doesn\u0027t seem like these are used in this CL.\nalso need to figure out how to differentiate between PO \u0026 P1.\nHow about using shared-irq ?\n#define HOST_CAPCTRL_REG(x) (0x105C + 0x1000 * (x))",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "facbe8cd_2df8e5ee",
+        "filename": "zephyr/include/drivers/ccg8_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "add details for the functions, bring z_impl** of respective functions below each other",
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efecdc56_3f3ebb1b",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "check the netname from schematics and add it",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f497e0_a48f4c21",
+        "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T19:26:25Z",
+      "side": 1,
+      "message": "this should go in zephyr/drivers/usbc/Kconfig",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
