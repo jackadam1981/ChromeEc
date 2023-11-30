@@ -1,0 +1,98 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+# Copyright (c) 2023 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+# This file contains Kconfig options and defaults for configuring USB devices
+# using the new experimental USB device support. The scope of these options is
+# limited to USB samples in project tree, you cannot use them in your own
+# application.
+
+menu "USB sample options"
+	depends on USB_DEVICE_STACK_NEXT
+
+config USBD_HID_MANUFACTURER
+	string "USB device manufacturer string"
+	default "Google"
+	help
+	  USB device manufacturer string.
+
+config USBD_HID_PRODUCT
+	string "USB device product string"
+	default "HID KB and TP Sample"
+	help
+	  USB device product stringa.
+
+config USBD_HID_VID
+	hex "USB device Product ID"
+	default 0x18D1
+	help
+	  USB device Vendor ID.
+
+config USBD_HID_PID
+	hex "USB device Product ID"
+	default 0x0000
+	help
+	  USB device Product ID.
+
+config USBD_HID_SELF_POWERED
+	bool "USB device sample Self-powered attribute"
+	default y
+	help
+	  Set the Self-powered attribute in the sample configuration.
+
+config USBD_HID_REMOTE_WAKEUP
+	bool "USB device sample Remote Wakeup attribute"
+	default y
+	help
+	  Set the Remote Wakeup attribute in the sample configuration.
+
+config USBD_HID_MAX_POWER
+	int "USB device sample bMaxPower value"
+	default 125
+	range 0 250
+	help
+	  bMaxPower value in the sample configuration in 2 mA units.
+
+### TODO Combine??
+
+config USBD_HID_KEYBOARD
+	bool "Enable support USB HID keyboard"
+	depends on USB_DEVICE_STACK_NEXT
+	default n
+	help
+	  Enable keyboard support.
+
+config USBD_HID_VIVALDI
+	bool "Enable support vivaldi keyboard"
+	depends on USBD_HID_KEYBOARD
+	default n
+	help
+	  Enable code for Vivaldi keyboard (standard for new Chromium OS
+	  devices).
+
+config USBD_HID_KEYBOARD_NUM_TOP_ROW_KEYS
+	int "Keyboard top raw key number"
+	depends on USBD_HID_KEYBOARD
+	default 10
+	range 10 15
+	help
+	  The number of top raw keys.
+	  The number should be between 10 and 15.
+
+config USBD_HID_KEYBOARD_ASSISTANT_KEY
+	bool "Enable support assistant key"
+	depends on USBD_HID_KEYBOARD
+	default n
+	help
+	  Enable assistant key for keyboard device.
+
+config USBD_HID_KEYBOARD_TABLET_MODE_SWITCH
+	bool "Enable support tablet mode switch key"
+	depends on USBD_HID_KEYBOARD
+	default n
+	help
+	  Enable tablet mode switch for keyboard device.
+
+endmenu
