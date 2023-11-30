@@ -5,20 +5,28 @@
 #include "hooks.h"
 #include "queue.h"
 #include "task.h"
-#include "usb_dc.h"
 #include "usb_hid_touchpad.h"
 #include "util.h"
 
+#ifdef CONFIG_USB_DEVICE_STACK
+#include "usb_dc.h"
+#else
+#include <zephyr/drivers/usb/udc.h>
+#include <zephyr/usb/usbd.h>
+#endif
+
 #include <zephyr/logging/log.h>
-#include <zephyr/usb/class/usb_hid.h>
 #include <zephyr/usb/usb_device.h>
+#include <zephyr/usb/class/usb_hid.h>
 LOG_MODULE_DECLARE(usb_hid_tp, LOG_LEVEL_INF);
 
+#ifdef CONFIG_USB_DEVICE_STACK
 BUILD_ASSERT(CONFIG_USB_DC_TOUCHPAD_HID_NUM < CONFIG_USB_HID_DEVICE_COUNT,
 	     "The hid number of touchpad is invaild.");
 #define TP_DEV_NAME                 \
 	(CONFIG_USB_HID_DEVICE_NAME \
 	 "_" STRINGIFY(CONFIG_USB_DC_TOUCHPAD_HID_NUM))
+#endif
 
 #define TP_NODE DT_ALIAS(usb_hid_tp)
 BUILD_ASSERT(DT_NODE_EXISTS(TP_NODE),
@@ -357,20 +365,38 @@ __overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
 	static int print_full = 1;
 
-	if (!hid_dev || !check_usb_is_configured()) {
+	if (!hid_dev) {
+		return;
+	}
+
+#ifdef CONFIG_USB_DEVICE_STACK
+	if (!check_usb_is_configured()) {
+#else
+	/* TODO: Need to check */
+	// if (!udc_is_enabled(hid_dev)) {
+	if (false) {
+#endif
 		return;
 	}
 
 	mutex_lock(report_queue_mutex);
 
+#ifdef CONFIG_USB_DEVICE_STACK
 	if (!check_usb_is_suspended()) {
+#else
+	if (!udc_is_suspended(hid_dev)) {
+#endif
 		if (queue_is_empty(&report_queue)) {
 			write_tp_report(report);
 			mutex_unlock(report_queue_mutex);
 			return;
 		}
 	} else {
+#ifdef CONFIG_USB_DEVICE_STACK
 		if (!request_usb_wake()) {
+#else
+		if (!udc_host_wakeup(hid_dev)) {
+#endif
 			mutex_unlock(report_queue_mutex);
 			return;
 		}
@@ -399,7 +425,11 @@ static void hid_tp_proc_queue(void)
 	mutex_lock(report_queue_mutex);
 
 	/* clear queue if the usb dc status is reset or disconected */
+#ifdef CONFIG_USB_DEVICE_STACK
 	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
+#else
+	if (!udc_is_enabled(hid_dev) && !udc_is_suspended(hid_dev)) {
+#endif
 		queue_remove_units(&report_queue, NULL,
 				   queue_count(&report_queue));
 		mutex_unlock(report_queue_mutex);
@@ -421,9 +451,13 @@ static void hid_tp_proc_queue(void)
 	hook_call_deferred(&hid_tp_proc_queue_data, 1 * MSEC);
 }
 
-static int usb_hid_tp_init(void)
+__maybe_unused static int usb_hid_tp_init(void)
 {
+#ifdef CONFIG_USB_DEVICE_STACK
 	hid_dev = device_get_binding(TP_DEV_NAME);
+#else
+	hid_dev = DEVICE_DT_GET(DT_NODELABEL(hid_tp_dev));
+#endif
 
 	if (!hid_dev) {
 		LOG_ERR("failed to get hid device");
@@ -433,7 +467,10 @@ static int usb_hid_tp_init(void)
 	usb_hid_register_device(hid_dev, report_desc, sizeof(report_desc),
 				&ops);
 
+#ifdef CONFIG_USB_DEVICE_STACK
 	usb_hid_init(hid_dev);
+#endif
+
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
 
 	return 0;
