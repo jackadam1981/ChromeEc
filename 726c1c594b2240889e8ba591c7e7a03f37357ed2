@@ -16,6 +16,115 @@
       "message": "The change is ready to review.",
       "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041c6a74_18e28cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T18:50:07Z",
+      "side": 1,
+      "message": "A couple of minor questions but overall it LGTM",
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aadfeec_5074dae8",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T18:50:07Z",
+      "side": 1,
+      "message": "Is there any chance of `dev` being NULL in this call (and others below)?",
+      "range": {
+        "startLine": 38,
+        "startChar": 33,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c01036_45354624",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T18:50:07Z",
+      "side": 1,
+      "message": "We don\u0027t appear to be using the `rx_bufs` side so why not make the third parameters NULL?\n\nAs a side note, is it safe to use `trx` for both `tx_bufs` and `rx_bufs`?",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fac065_ed1523de",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T18:50:07Z",
+      "side": 1,
+      "message": "It might read more clearly if these were named `image_buf` and `image_buf_size`.",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 33
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41f2030_54071009",
+        "filename": "zephyr/drivers/fingerprint/fpc1025_pal.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T18:50:07Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
