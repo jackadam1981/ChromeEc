@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a0d83b_4d8818f1",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-30T08:28:48Z",
+      "side": 1,
+      "message": "Should we add `BUILD_ASSERT(sizeof(((union ec_response_get_next_data *)0)-\u003ekey_matrix) \u003e\u003d KEYBOARD_COLS_NO_KEYPAD);` somewhere in this file?\n\nAlso, in mkbp_fifo.c, change the `BUILD_ASSERT` to `BUILD_ASSERT(sizeof(fifo[0].key_matrix) \u003e\u003d KEYBOARD_COLS_MAX);`?",
+      "revId": "732bd234d06526fd91d0f8e97af068ca9d7fc061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83122160_d0f2f101",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-30T08:28:48Z",
+      "side": 1,
+      "message": "Use `MIN(data_size, KEYBOARD_COLS_NO_KEYPAD)` in case the returned size is larger than `KEYBOARD_COLS_NO_KEYPAD`.",
+      "range": {
+        "startLine": 479,
+        "startChar": 14,
+        "endLine": 479,
+        "endChar": 37
+      },
+      "revId": "732bd234d06526fd91d0f8e97af068ca9d7fc061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
