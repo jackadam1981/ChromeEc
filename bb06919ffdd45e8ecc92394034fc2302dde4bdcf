@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0db5b57_18053a6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-11-30T06:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "936e6880_474711b9",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "bb06919ffdd45e8ecc92394034fc2302dde4bdcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18254aad_116f6834",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-28T21:59:46Z",
       "side": 1,
       "message": "I think this logic can be simplified as:\n```\nif (sensor_active \u003d\u003d SENSOR_ACTIVE_S3 \u0026\u0026 !SENSOR_ACTIVE(sensor)) {\n    /* System is suspended, but sensor is not active during suspend */\n    ap_odr_mhz \u003d 0;\n} else if (sensor_active !\u003d SENSOR_ACTIVE_S5) {\n    /* System is resuming */\n    ap_odr_mhz \u003d BASE_ODR(sensor-\u003econfig[SENSOR_CONFIG_AP].odr);\n}\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "bb06919ffdd45e8ecc92394034fc2302dde4bdcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "187ce670_6b1b8306",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-11-30T06:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18254aad_116f6834",
       "range": {
         "startLine": 157,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f561c2_2193d9cd",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-11-30T06:11:35Z",
+      "side": 1,
+      "message": "Moved to new CL:5074930.",
+      "parentUuid": "982a378a_aabbbb76",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 24
+      },
+      "revId": "bb06919ffdd45e8ecc92394034fc2302dde4bdcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22134873_c502b1d3",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-28T21:59:46Z",
       "side": 1,
       "message": "Can we determine this index using the devicetree node label?  The hard-coded index makes this test fragile if sensors are added/removed from the native posix overlay.",
+      "range": {
+        "startLine": 381,
+        "startChar": 27,
+        "endLine": 381,
+        "endChar": 29
+      },
+      "revId": "bb06919ffdd45e8ecc92394034fc2302dde4bdcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f26119_aacc39c3",
+        "filename": "zephyr/test/drivers/host_cmd/src/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-11-30T06:11:35Z",
+      "side": 1,
+      "message": "hard coded code are removed. Now search the sensor list for index. If not found, test case fail.",
+      "parentUuid": "22134873_c502b1d3",
       "range": {
         "startLine": 381,
         "startChar": 27,
