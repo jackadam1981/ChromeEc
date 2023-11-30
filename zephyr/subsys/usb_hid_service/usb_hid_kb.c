@@ -9,16 +9,23 @@
 #include "keyboard_config.h"
 #include "queue.h"
 #include "task.h"
-#include "usb_dc.h"
 #include "usb_hid.h"
+
+#ifdef CONFIG_USB_DEVICE_STACK
+#include "usb_dc_init.h"
+#else
+#include "usbd_init.h"
+#include <zephyr/usb/usbd.h>
+#endif
 
 #include <errno.h>
 
 #include <zephyr/logging/log.h>
-#include <zephyr/usb/class/usb_hid.h>
 #include <zephyr/usb/usb_device.h>
+#include <zephyr/usb/class/usb_hid.h>
 LOG_MODULE_DECLARE(usb_hid_kb, LOG_LEVEL_INF);
 
+#ifdef CONFIG_USB_DEVICE_STACK
 /*
  * The keyboard HID number should be set as 0 since the coreboot BIOS parses
  * the interface protocol of the first hid deivce. The coreboot BIOS doesn't
@@ -35,6 +42,7 @@ BUILD_ASSERT(CONFIG_USB_DC_KEYBOARD_HID_NUM < CONFIG_USB_HID_DEVICE_COUNT,
 #define KB_DEV_NAME                 \
 	(CONFIG_USB_HID_DEVICE_NAME \
 	 "_" STRINGIFY(CONFIG_USB_DC_KEYBOARD_HID_NUM))
+#endif
 
 #define HID_EP_BUSY_FLAG 0
 
@@ -323,9 +331,11 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 	}
 
 	if (generate_keyboard_report(keycode, is_pressed)) {
+#ifdef CONFIG_USB_DEVICE_STACK
 		if (!check_usb_is_configured()) {
 			return;
 		}
+#endif
 
 		if (check_usb_is_suspended()) {
 			if (!request_usb_wake()) {
@@ -359,12 +369,14 @@ static void hid_kb_proc_queue(void)
 	mutex_lock(report_queue_mutex);
 
 	/* clear queue if the usb dc status is reset or disconected */
+#ifdef CONFIG_USB_DEVICE_STACK
 	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
 		queue_remove_units(&report_queue, NULL,
 				   queue_count(&report_queue));
 		mutex_unlock(report_queue_mutex);
 		return;
 	}
+#endif
 
 	if (queue_is_empty(&report_queue)) {
 		mutex_unlock(report_queue_mutex);
@@ -391,7 +403,11 @@ static void hid_kb_proc_queue(void)
 
 static int usb_hid_kb_init(void)
 {
+#ifdef CONFIG_USB_DEVICE_STACK
 	hid_dev = device_get_binding(KB_DEV_NAME);
+#else
+	hid_dev = DEVICE_DT_GET(DT_NODELABEL(hid_kb_dev));
+#endif
 	if (!hid_dev) {
 		LOG_ERR("failed to get hid device");
 		return -ENXIO;
@@ -400,6 +416,7 @@ static int usb_hid_kb_init(void)
 	usb_hid_register_device(hid_dev, hid_report_desc,
 				sizeof(hid_report_desc), &ops);
 
+#ifdef CONFIG_USB_DEVICE_STACK
 #ifdef CONFIG_USB_HID_BOOT_PROTOCOL
 	if (usb_hid_set_proto_code(hid_dev, HID_BOOT_IFACE_CODE_KEYBOARD)) {
 		LOG_WRN("failed to set interface protocol code");
@@ -407,6 +424,8 @@ static int usb_hid_kb_init(void)
 #endif
 
 	usb_hid_init(hid_dev);
+#endif
+
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
 
 	return 0;

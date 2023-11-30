@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-#include "usb_dc.h"
+#include "usb_dc_init.h"
 
 #include <zephyr/logging/log.h>
 #include <zephyr/usb/class/usb_hid.h>
