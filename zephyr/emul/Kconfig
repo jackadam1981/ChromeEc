@@ -149,6 +149,15 @@ config EMUL_CROS_FLASH
 	help
 	  This option enables the flash emulator for testing.
 
+config EMUL_REALTEK_RTS5453P
+	bool "Realtek RTS5453P Type-C Power Delivery Controller emulator"
+	default y
+	depends on DT_HAS_REALTEK_RTS5453P_EMUL_ENABLED
+	select EMUL_COMMON_I2C
+	help
+	  Enable the Realtek RTS5453P emulator. This driver use emulated I2C bus.
+	  Emulator API is available in zephyr/include/emul/emul_realtek_rts5453p.h
+
 config EMUL_RTC
 	bool "Emulated RTC driver for Zephyr shim"
 	default y
