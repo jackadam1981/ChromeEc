@@ -3,6 +3,212 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e238add7_06a63753",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "retimer: USBC Retimer f/w update using PD chips",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600747bd_7755c557",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "reword this section",
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d6d63e_7baee541",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "needed ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 82
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ac12be_86a868d9",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "and it is connected to power delivery chip.",
+      "range": {
+        "startLine": 66,
+        "startChar": 44,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25fc6a4_568b6450",
+        "filename": "zephyr/include/usbc/pd_task_intel_altmode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "intel_altmode",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4317c279_799060eb",
+        "filename": "zephyr/include/usbc/pd_task_intel_altmode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "intel_altmode",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00b1a02_ddbfa810",
+        "filename": "zephyr/include/usbc/retimer_fw_update.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "add ifdef to avoid including multiple times",
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63a9f5c_a0470863",
+        "filename": "zephyr/include/usbc/retimer_fw_update.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "add details for the functions",
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b07cb9_7b7d118a",
+        "filename": "zephyr/subsys/usb_pd/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "any reason to change original way of adding file?",
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05238318_9637ca91",
+        "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "may be default n as the retimer update comes from AP?",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92bf25fa_83fd7bb7",
         "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
         "patchSetId": 2
@@ -19,6 +225,168 @@
         "startChar": 1,
         "endLine": 245,
         "endChar": 17
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fab532_f7c1138d",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "I think this is fine as \u0027if the thread is in running state it will be suspended after it completes the job\u0027",
+      "parentUuid": "92bf25fa_83fd7bb7",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9f8b58_d295db8a",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "check if all of these are needed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e1a052_606e4b98",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "LOG_ERR",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4eb8025_33fb614c",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "add another function pointer in the PD driver and handle the function.\nval \u003d pd_intel_retimer_fw_update(dev, bool enable);\n\nsame for line 72",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d582ae7_3fb45363",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "LOG_ERR",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d9ab30_d4a94fa5",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "remove \\n, its auto added",
+      "range": {
+        "startLine": 96,
+        "startChar": 52,
+        "endLine": 96,
+        "endChar": 55
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd115805_2a84a0a3",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-11-30T20:20:57Z",
+      "side": 1,
+      "message": "code not added, may be remove it",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 6
       },
       "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
