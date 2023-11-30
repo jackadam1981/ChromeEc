@@ -46,6 +46,30 @@
       },
       "revId": "f868ea0b85764b2f47f5c880335536b3b74653ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4c6630_29878bb3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T19:44:22Z",
+      "side": 1,
+      "message": "Yes, exactly. I didn\u0027t go with the latter option because there are some tests that explicitly depend upon the data immediately after flashing. In this case it would fail on a board that is left powered on after flashing due to the double power cycle.",
+      "parentUuid": "e47959b3_13583ed1",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 42
+      },
+      "revId": "f868ea0b85764b2f47f5c880335536b3b74653ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
