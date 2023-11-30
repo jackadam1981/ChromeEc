@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a173106_25258187",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-30T11:22:32Z",
+      "side": 1,
+      "message": "@yich@google.com why we need this? Could you add a comment about this in the code?",
+      "parentUuid": "f5caffed_5a8c1628",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51409c6_075967bc",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 41
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It will be cleared when we call `fp_reset_context`:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor_state.cc;drc\u003d2b119eec3f31e11e33d4a4cffb8c63e6882e7e9a;l\u003d72\n\nAnd FP_CONTEXT_TEMPLATE_UNLOCKED_SET will also be reseted.",
       "parentUuid": "e51409c6_075967bc",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d08b034_f5ad0a6e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-11-30T11:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83536f7e_5288eca1",
       "range": {
         "startLine": 164,
         "startChar": 25,
