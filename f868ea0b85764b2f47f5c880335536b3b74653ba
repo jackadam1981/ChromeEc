@@ -22,6 +22,30 @@
       },
       "revId": "f868ea0b85764b2f47f5c880335536b3b74653ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47959b3_13583ed1",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-11-30T19:00:47Z",
+      "side": 1,
+      "message": "If the test specifies to toggle the power (turn off and on), we know the board is powered on at the end of the test and don\u0027t need to do so explicitly. If the test doesn\u0027t specify, we ensure the board is powered on in case flash_ec turned it off. An alternative would be to call power_cycle for all tests and remove the toggle_power variable.",
+      "parentUuid": "1ccb850f_4e456a6b",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 42
+      },
+      "revId": "f868ea0b85764b2f47f5c880335536b3b74653ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
