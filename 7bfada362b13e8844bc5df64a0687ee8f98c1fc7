@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8f1691b_f4a6ce00",
+        "filename": "common/test_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-30T22:19:56Z",
+      "side": 1,
+      "message": "\u003e Sure, is this just an aesthetic thing?\n\nI was originally thinking about the [C++ casting style guidelines](https://google.github.io/styleguide/cppguide.html#Casting) and that casting isn\u0027t required to do this in C++ ([example](https://godbolt.org/z/hP5jfeqxM)).\n\nThe cast is required in C though.\n\nIn general, I try to avoid casting since it can cause bugs (esp. C-style casts where it just blindly casts to whatever type you give).\n\nHowever, looking at this specific cast, I don\u0027t think it\u0027s easy to misuse it and accidentally cause a bug. e.g., if you add an additional field to the compound literal, the compiler will complain when you try to do the cast. If you forget to initialize a field, it will behave the same way as if you wrote the variable and forgot to initialize the field.\n\nEither style should be fine then.",
+      "parentUuid": "a18ba263_25199fdf",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 4
+      },
+      "revId": "7bfada362b13e8844bc5df64a0687ee8f98c1fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a625c4c7_a6c8a814",
         "filename": "include/test_util.h",
         "patchSetId": 2
