@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5677ba2e_c43c0da0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-30T18:42:45Z",
+      "side": 1,
+      "message": "with a couple of nits",
+      "revId": "6eece2586cc7aa080e54ad2155131c37e04eab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae032cc_a3de9fe1",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-30T18:42:45Z",
+      "side": 1,
+      "message": "let\u0027s make it \"flash chip size\"",
+      "range": {
+        "startLine": 548,
+        "startChar": 58,
+        "endLine": 548,
+        "endChar": 67
+      },
+      "revId": "6eece2586cc7aa080e54ad2155131c37e04eab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "993656f4_e25ae494",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-11-30T18:42:45Z",
+      "side": 1,
+      "message": "add the rv value to the message?",
+      "range": {
+        "startLine": 1375,
+        "startChar": 16,
+        "endLine": 1375,
+        "endChar": 36
+      },
+      "revId": "6eece2586cc7aa080e54ad2155131c37e04eab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
