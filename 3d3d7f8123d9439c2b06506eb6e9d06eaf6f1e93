@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92bf25fa_83fd7bb7",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-30T19:49:40Z",
+      "side": 1,
+      "message": "How are we ensuring that we ae not suspending this task in the middle of an iteration? Perhaps a mutex would help us prevent such race condition.",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

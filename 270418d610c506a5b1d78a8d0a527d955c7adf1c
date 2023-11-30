@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d71b975_b4f65bb0",
+        "filename": "zephyr/include/usbc/pd_task_intel_altmode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-11-30T19:49:40Z",
+      "side": 1,
+      "message": "How about including `intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE)` inside `resume_pd_task`? That way we can avoid exporting this.",
+      "parentUuid": "0d1dcb6f_88e2aa11",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "270418d610c506a5b1d78a8d0a527d955c7adf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a2e42d_e3b7836a",
         "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
         "patchSetId": 1
