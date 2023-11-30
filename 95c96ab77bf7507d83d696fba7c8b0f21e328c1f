@@ -39,6 +39,30 @@
       },
       "revId": "95c96ab77bf7507d83d696fba7c8b0f21e328c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8f66e9_4fa1385b",
+        "filename": "board/dochi/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-11-30T01:12:12Z",
+      "side": 1,
+      "message": "value section define as 4.3.5 Ship mode",
+      "parentUuid": "e3338931_b64c2101",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "95c96ab77bf7507d83d696fba7c8b0f21e328c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
