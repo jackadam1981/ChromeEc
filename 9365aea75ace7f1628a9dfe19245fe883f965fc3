@@ -51,6 +51,24 @@
       "parentUuid": "108250a9_f8cb9b52",
       "revId": "9365aea75ace7f1628a9dfe19245fe883f965fc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869bbc3c_b38c99a7",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T19:49:38Z",
+      "side": 1,
+      "message": "Oh, good catch. I created the bugs but didn\u0027t update the TODO!",
+      "parentUuid": "8b0619b9_7b491860",
+      "revId": "9365aea75ace7f1628a9dfe19245fe883f965fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
