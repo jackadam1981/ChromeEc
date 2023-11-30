@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440d4186_e348e65e",
+        "filename": "test/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-11-30T22:24:30Z",
+      "side": 1,
+      "message": "If you end up implementing Bobby\u0027s suggestion of `test_multistep_next_step`, you could use that here.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 49
+      },
+      "revId": "e9ff81d99262982af842c6f59bde08a27f688ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
