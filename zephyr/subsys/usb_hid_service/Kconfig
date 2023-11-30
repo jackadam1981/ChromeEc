@@ -4,7 +4,7 @@
 
 config USB_DC_HID_KEYBOARD
 	bool "Enable support USB HID keyboard"
-	depends on USB_DEVICE_STACK
+	depends on (USB_DEVICE_STACK || USB_DEVICE_STACK_NEXT)
 	default n
 	help
 	  Enable keyboard support.
@@ -52,7 +52,7 @@ config USB_DC_KEYBOARD_TABLET_MODE_SWITCH
 
 config USB_DC_HID_TOUCHPAD
 	bool "Enable support USB HID touchpad"
-	depends on USB_DEVICE_STACK
+	depends on (USB_DEVICE_STACK || USB_DEVICE_STACK_NEXT)
 	default n
 	help
 	  Enable touchpad support.
@@ -66,3 +66,57 @@ config USB_DC_TOUCHPAD_HID_NUM
 	  The format of hid instance name is name_n, where the name can be
 	  configured by CONFIG_USB_HID_DEVICE_NAME and n(hid number) should be in
 	  the range of 0 to (CONFIG_USB_HID_DEVICE_COUNT - 1).
+
+menu "USBD HID options"
+	depends on USB_DEVICE_STACK_NEXT
+
+config USBD_HID_MANUFACTURER
+	string "USB device manufacturer string"
+	default "Google"
+	help
+	  USB device manufacturer string.
+
+config USBD_HID_PRODUCT
+	string "USB device product string"
+	default "HID KB and TP Sample"
+	help
+	  USB device product stringa.
+
+config USBD_HID_SN
+	string "USB device serial number string"
+	default "0123456789ABCDEF"
+	help
+	  Placeholder for USB device serial number string.
+
+config USBD_HID_VID
+	hex "USB device Vendor ID"
+	default 0x18D1
+	help
+	  USB device Vendor ID.
+
+config USBD_HID_PID
+	hex "USB device Product ID"
+	default 0x0000
+	help
+	  USB device Product ID.
+
+config USBD_HID_SELF_POWERED
+	bool "USB device HID Self-powered attribute"
+	default n
+	help
+	  Set the Self-powered attribute in the HID configuration.
+
+config USBD_HID_REMOTE_WAKEUP
+	bool "USB device HID Remote Wakeup attribute"
+	default y
+	help
+	  Set the Remote Wakeup attribute in the HID configuration.
+
+config USBD_HID_MAX_POWER
+	int "USB device HID bMaxPower value"
+	default 125
+	range 0 250
+	help
+	  bMaxPower value in the HID configuration in 2 mA units.
+
+endmenu
