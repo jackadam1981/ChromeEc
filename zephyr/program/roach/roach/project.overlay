@@ -19,6 +19,30 @@
 		gpio-wp = &ec_flash_wp_odl;
 		usb-hid-tp = &touchpad;
 	};
+
+	hid_kb_dev: hid_kb_dev {
+		compatible = "zephyr,hid-device";
+		interface-name = "HID_0";
+		boot-protocol-code = "keyboard";
+		polling-rate = <1>;
+		in-reports-mps = <64>;
+	};
+
+	hid_tp_dev: hid_tp_dev {
+		compatible = "zephyr,hid-device";
+		interface-name = "HID_1";
+		boot-protocol-code = "none";
+		polling-rate = <1>;
+		in-reports-mps = <64>;
+	};
+
+	hid_test_dev: hid_test_dev {
+		compatible = "zephyr,hid-device";
+		interface-name = "HID_2";
+		boot-protocol-code = "none";
+		polling-rate = <1>;
+		in-reports-mps = <64>;
+	};
 };
 
 &touchpad {
@@ -29,7 +53,7 @@
 	max_pressure = <511>;
 };
 
-&usb0 {
+zephyr_udc0: &usb0 {
 	status = "okay";
 	pinctrl-0 = <&usb0_dm_gph5_default
 		     &usb0_dp_gph6_default>;
