@@ -16,6 +16,23 @@
       "message": "The change is ready to review.",
       "revId": "fd96fbdd963935944339904a0b21adfc725b2119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "375a6f4d_9f1aa53c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-11-30T19:11:21Z",
+      "side": 1,
+      "message": "LGTM but I don\u0027t have enough Zephyr knowledge to +2",
+      "revId": "fd96fbdd963935944339904a0b21adfc725b2119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
