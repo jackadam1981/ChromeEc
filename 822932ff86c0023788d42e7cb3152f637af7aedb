@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73a076c_b9826695",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-01T15:38:50Z",
+      "side": 1,
+      "message": "This is the WIP Realtek driver, PDC Api, and TCPMv3 with some test code. It compiles and run for the Intel RVP but I\u0027ve not been able to get it to compile for Brya and I\u0027ll likely need help from Keith.",
+      "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
