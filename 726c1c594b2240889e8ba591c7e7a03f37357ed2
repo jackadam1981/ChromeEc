@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3265f867_c6623f11",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-01T17:24:18Z",
+      "side": 1,
+      "message": "No, because `dev` is passed from API (`zephyr/include/drivers/fingerprint.h`) which previously dereferences that pointer to get pointer to the function called, so if the `dev` was not correct, it would cause the crash earlier.",
+      "parentUuid": "4aadfeec_5074dae8",
+      "range": {
+        "startLine": 38,
+        "startChar": 33,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27c01036_45354624",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-11-30T18:50:07Z",
       "side": 1,
       "message": "We don\u0027t appear to be using the `rx_bufs` side so why not make the third parameters NULL?\n\nAs a side note, is it safe to use `trx` for both `tx_bufs` and `rx_bufs`?",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bfb8f2_7245a73f",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-01T17:24:18Z",
+      "side": 1,
+      "message": "\u003e We don\u0027t appear to be using the rx_bufs side\n\nWe do. `id` contains 0x0000, and after `spi_transceive_dt()` it contains 2 byte HWID in big endian, and `cmd` is 0x00, because the first byte we receive is 0x00.\n\n\n\u003e As a side note, is it safe to use trx for both tx_bufs and rx_bufs\n\nYes. SPI driver first loads the byte, performs the transfer and saves received byte. I can even find examples in Zephyr code https://github.com/zephyrproject-rtos/zephyr/blob/5174e94c91c560de8961da3e81a4b001473daa6d/drivers/sdhc/sdhc_spi.c#L390, though I must admit that it\u0027s not a common pattern.\n\nIf you feel like this can cause problems in future, I can split it into two buffers, it costs only one extra byte (to save first byte). This has also advantage that we don\u0027t send `id` contents, so we can prevent from accidental leak if somebody forgets to initialize `id` variable.",
+      "parentUuid": "27c01036_45354624",
       "range": {
         "startLine": 62,
         "startChar": 41,
@@ -117,6 +165,30 @@
       "writtenOn": "2023-11-30T18:50:07Z",
       "side": 1,
       "message": "I don\u0027t understand this comment",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788fb15e_8fc6a8b6",
+        "filename": "zephyr/drivers/fingerprint/fpc1025_pal.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-01T17:24:18Z",
+      "side": 1,
+      "message": "I refer here to [the original PAL implementation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/bep/fpc_sensor_spi.c;l\u003d35-38;drc\u003df108d67192739dd055089d397a771c484db91524). In the original implementation we always flush SPI (release in Zephyr world) if the size is equal to real image size. We also have `leave_cs_asserted` which says if we should keep CS asserted.\n\nI don\u0027t know why the original implementation checks the size, so I added code that prints warning if there is a conflict between these. Unfortunately, the warning never appeared.\n\n@tomhughes@chromium.org maybe you know why the original PAL implementation checks the size?",
+      "parentUuid": "b41f2030_54071009",
       "range": {
         "startLine": 41,
         "startChar": 4,
