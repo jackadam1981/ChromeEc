@@ -7,6 +7,7 @@
 
 def register_brox_project(
     project_name,
+    **kwargs,
 ):
     """Register a variant of brox."""
     register_binman_project(
@@ -22,9 +23,16 @@ def register_brox_project(
             here / project_name / "project.conf",
         ],
         inherited_from=["brox"],
+        **kwargs,
     )
 
 
 register_brox_project(
     project_name="brox",
+)
+
+
+register_brox_project(
+    project_name="brox-tokenized",
+    modules=["picolibc", "ec", "pigweed"],
 )
