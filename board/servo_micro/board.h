@@ -54,7 +54,7 @@
 #define USB_IFACE_UPDATE	1
 #define USB_IFACE_SPI		2
 #define USB_IFACE_CONSOLE	3
-#define USB_IFACE_I2C		4
+#define USB_IFACE_CMSIS_DAP	4
 #define USB_IFACE_USART3_STREAM	5
 #define USB_IFACE_USART2_STREAM	6
 #define USB_IFACE_COUNT		7
@@ -65,7 +65,7 @@
 #define USB_EP_UPDATE		2
 #define USB_EP_SPI		3
 #define USB_EP_CONSOLE		4
-#define USB_EP_I2C		5
+#define USB_EP_CMSIS_DAP	5
 #define USB_EP_USART3_STREAM	6
 #define USB_EP_USART2_STREAM	7
 #define USB_EP_COUNT		8
@@ -82,8 +82,12 @@
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 
-/* Enable control of I2C over USB */
-#define CONFIG_USB_I2C
+/*
+ * Control of I2C over USB happens via board-specific CMSIS-DAP protocol. Do
+ * not enable common EC code for USB forwarding, but do enable low level I2C
+ * support for use by board-specific forwarding code.
+ */
+#undef CONFIG_USB_I2C
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0
@@ -120,7 +124,7 @@ enum usb_strings {
 	USB_STR_PRODUCT,
 	USB_STR_SERIALNO,
 	USB_STR_VERSION,
-	USB_STR_I2C_NAME,
+	USB_STR_CMSIS_DAP_NAME,
 	USB_STR_USART4_STREAM_NAME,
 	USB_STR_CONSOLE_NAME,
 	USB_STR_USART3_STREAM_NAME,
