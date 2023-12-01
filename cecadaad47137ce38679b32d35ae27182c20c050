@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4169f4e_4fe09122",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-12-01T13:27:36Z",
+      "side": 1,
+      "message": "Added a comment.\nWe don\u0027t have the rate limit for the \"existing\" user unlock flow. And we don\u0027t want to block the existing flow until we migrate all user to the new flow.",
+      "parentUuid": "3a173106_25258187",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51409c6_075967bc",
