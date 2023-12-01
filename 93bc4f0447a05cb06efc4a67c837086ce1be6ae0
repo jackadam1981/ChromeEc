@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cd28af_7b16f7f8",
+        "filename": "zephyr/shim/src/keyboard_input.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-12-01T16:45:17Z",
+      "side": 1,
+      "message": "Should this be marked test_only? It seems that it is only for testing.",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 39
+      },
+      "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
