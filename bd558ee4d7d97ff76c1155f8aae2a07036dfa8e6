@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5439ac2c_95f9b21f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-12-01T16:35:38Z",
+      "side": 1,
+      "message": "can you add b:268392484",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14eafb3b_07ced831",
         "filename": "board/cr50/board.h",
         "patchSetId": 3
@@ -109,6 +132,30 @@
       "side": 1,
       "message": "I don\u0027t think so. this isn\u0027t included in any prod cr50 images.",
       "parentUuid": "e9e87b78_9b02fc2a",
+      "range": {
+        "startLine": 516,
+        "startChar": 7,
+        "endLine": 516,
+        "endChar": 34
+      },
+      "revId": "bd558ee4d7d97ff76c1155f8aae2a07036dfa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7085d092_72cce9eb",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-12-01T16:35:38Z",
+      "side": 1,
+      "message": "I think the patch looks good if you split the unsafe stuff into its own command.",
+      "parentUuid": "960bf5e0_68e1cca5",
       "range": {
         "startLine": 516,
         "startChar": 7,
