@@ -22,6 +22,30 @@
       },
       "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6786ee97_a5efacfb",
+        "filename": "zephyr/shim/src/keyboard_input.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-01T18:07:20Z",
+      "side": 1,
+      "message": "no, the actual upstream code hooks into it, https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/input/input_kbd_matrix.c#L79",
+      "parentUuid": "d7cd28af_7b16f7f8",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 39
+      },
+      "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
