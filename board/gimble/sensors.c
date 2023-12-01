@@ -337,12 +337,12 @@ static const struct ec_thermal_config thermal_inductor = {
 #define THERMAL_FAN_MISSING      \
 	{                        \
 		.temp_host = { \
-                        [EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
-                        [EC_TEMP_THRESH_HALT] = C_TO_K(100), \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(100), \
                 }, \
                 .temp_host_release = { \
-                        [EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
-                }, \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+		}, \
 	}
 __maybe_unused static const struct ec_thermal_config thermal_fan_missing =
 	THERMAL_FAN_MISSING;
