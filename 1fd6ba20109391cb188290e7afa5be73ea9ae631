@@ -68,6 +68,29 @@
       "message": "Is this still current?  Maybe we need to be a little more explicit with our naming now?",
       "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a531cc_03fcb846",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4627,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-12-01T00:26:55Z",
+      "side": 1,
+      "message": "Maybe it\u0027s preferable to use CONFIG_USB_PD_PPM to differentiate this mode from either TCPMv1 or TCPMv2 where those modes are for an TCPM that controls a TCPC/PPC. But for PD controller mode, The EC is acting as the PPM connected to a TCPM (PDC)",
+      "range": {
+        "startLine": 4627,
+        "startChar": 21,
+        "endLine": 4627,
+        "endChar": 27
+      },
+      "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
