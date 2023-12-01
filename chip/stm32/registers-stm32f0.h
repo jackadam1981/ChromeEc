@@ -343,6 +343,7 @@
 #define STM32_RCC_APB1ENR           REG32(STM32_RCC_BASE + 0x1c)
 #define STM32_RCC_DACEN                 BIT(29)
 #define STM32_RCC_PWREN                 BIT(28)
+#define STM32_RCC_TIM3EN                BIT(1)
 
 #define STM32_RCC_BDCR              REG32(STM32_RCC_BASE + 0x20)
 #define STM32_RCC_CSR               REG32(STM32_RCC_BASE + 0x24)
