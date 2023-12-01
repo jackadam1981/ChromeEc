@@ -174,7 +174,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 		.iInterface         = INTERFACE_NAME,			\
 	};								\
 	const struct usb_endpoint_descriptor				\
-	USB_EP_DESC(INTERFACE, 0) = {					\
+	USB_EP_DESC(INTERFACE, 1) = {					\
 		.bLength          = USB_DT_ENDPOINT_SIZE,		\
 		.bDescriptorType  = USB_DT_ENDPOINT,			\
 		.bEndpointAddress = 0x80 | ENDPOINT,			\
@@ -183,7 +183,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 		.bInterval        = 10,					\
 	};								\
 	const struct usb_endpoint_descriptor				\
-	USB_EP_DESC(INTERFACE, 1) = {					\
+	USB_EP_DESC(INTERFACE, 0) = {					\
 		.bLength          = USB_DT_ENDPOINT_SIZE,		\
 		.bDescriptorType  = USB_DT_ENDPOINT,			\
 		.bEndpointAddress = ENDPOINT,				\
