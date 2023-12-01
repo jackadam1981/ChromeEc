@@ -46,6 +46,30 @@
       },
       "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472ffc06_c4efb910",
+        "filename": "zephyr/shim/src/keyboard_input.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-12-01T21:04:36Z",
+      "side": 1,
+      "message": "So the keyboard driver is writing to the gpio. I had assumed that we were reading the gpio and mixing that into the keyboard matrix input data.",
+      "parentUuid": "6786ee97_a5efacfb",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 39
+      },
+      "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
