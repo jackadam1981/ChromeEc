@@ -281,6 +281,11 @@ def all_targets():
         board = "brox",
     )
     ec_target(
+        name = "brox-tokenized",
+        board = "brox-tokenized",
+        extra_modules = ["picolibc", "pigweed"],
+    )
+    ec_target(
         name = "brya",
         baseboard = "brya",
         board = "brya",
