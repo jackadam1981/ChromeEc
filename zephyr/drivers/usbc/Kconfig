@@ -12,6 +12,12 @@ config USBC_INTEL_ALTMODE
 	  chip and EC for configuring the USB-C alternate mode muxes inside
 	  Intel AP.
 
+config USBC_PDC_RTS54XX
+	bool "Realtek RTS545x Power Delivery Controller driver"
+	default y if DT_HAS_REALTEK_RTS54_PDC_ENABLED
+	help
+	  This option enables the Realtek RTS545x Power Delivery Controller.
+
 endif # PLATFORM_EC_USBC
 
 # TODO: move this inside the PLATFORM_EC_USBC guard
