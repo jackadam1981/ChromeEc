@@ -22,6 +22,30 @@
       },
       "revId": "25916f000ca86da46d13fb96b51287d417c0c199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b5c442_3ae2ebf1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-12-01T21:01:40Z",
+      "side": 1,
+      "message": "True, that would reduce the line length.\n\nOr something generic, like:\n\n\n```c\n#define EC_ENUM_MAP(prefix, name) ...\n\nEC_ENUM_MAP(EC_RES, SUCCESS),\nEC_ENUM_MAP(EC_RES, INVALID_COMMAND),\n```\n\nAnyways, I would rather submit as is and improve if/when adopted in more places. Feel free to improve.",
+      "parentUuid": "036eac63_0ad17030",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 19
+      },
+      "revId": "25916f000ca86da46d13fb96b51287d417c0c199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
