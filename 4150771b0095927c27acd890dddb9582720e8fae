@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80442c60_046f89a1",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-01T00:44:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "db202e91_977a2ac5",
+      "range": {
+        "startLine": 1132,
+        "startChar": 5,
+        "endLine": 1132,
+        "endChar": 18
+      },
+      "revId": "4150771b0095927c27acd890dddb9582720e8fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a4cbaf7_c3b6f90b",
