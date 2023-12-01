@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde86d21_d2a31c30",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-01T17:51:36Z",
+      "side": 1,
+      "message": "The last question: Why we set `MATCH_PROCESSED_SET` here?",
+      "parentUuid": "a4169f4e_4fe09122",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51409c6_075967bc",
