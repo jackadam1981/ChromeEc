@@ -404,6 +404,12 @@ static void board_init(void)
 	usart_init(&usart3);
 	usart_init(&usart4);
 
+	/*
+	 * Enable TIMER3 in downward mode for precise JTAG bit-banging.
+	 */
+	STM32_RCC_APB1ENR |= STM32_RCC_TIM3EN;
+	STM32_TIM_CR1(3) = STM32_TIM_CR1_DIR_DOWN | STM32_TIM_CR1_CEN;
+
 	/* Enable GPIO expander. */
 	gpio_set_level(GPIO_TCA6416_RESET_L, 1);
 

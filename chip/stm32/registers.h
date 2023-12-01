@@ -66,6 +66,7 @@
 		REG32(STM32_TIM_BASE(n) + (offset))
 
 #define STM32_TIM_CR1(n)           STM32_TIM_REG(n, 0x00)
+#define STM32_TIM_CR1_DIR_DOWN		BIT(4)
 #define STM32_TIM_CR1_CEN		BIT(0)
 #define STM32_TIM_CR2(n)           STM32_TIM_REG(n, 0x04)
 #define STM32_TIM_SMCR(n)          STM32_TIM_REG(n, 0x08)
