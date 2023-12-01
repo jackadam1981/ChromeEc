@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7777ef1_c9693be9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-12-01T04:43:10Z",
+      "side": 1,
+      "message": "Hi, googler, we plan to fix the charger schematic issue at next phase, so use board version to identify the different power sequance in board_power.c. Could you help to confirm this CL? Thanks.",
+      "revId": "a42d7f886cff70b8ec198d430ad9d3c3deb8d4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
