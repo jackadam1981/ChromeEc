@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa9868d_c65d9f51",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-01T00:51:03Z",
+      "side": 1,
+      "message": "I think this should be `sizeof(r0-\u003edata.key_matrix)` instead.",
+      "range": {
+        "startLine": 480,
+        "startChar": 36,
+        "endLine": 480,
+        "endChar": 44
+      },
+      "revId": "9fbf23d8194924ca21fde7568225478c5d33c431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c0818c_1a173b5a",
+        "filename": "include/ec_cmd_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-01T00:51:03Z",
+      "side": 1,
+      "message": "Sorry, I meant we should sort these by v0-\u003ev1-\u003ev2. Now it\u0027s v1-\u003ev2-\u003ev0.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 56
+      },
+      "revId": "9fbf23d8194924ca21fde7568225478c5d33c431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
