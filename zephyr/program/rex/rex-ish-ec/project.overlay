@@ -5,6 +5,23 @@
 
 /* Include base Rex */
 #include "../rex/project.overlay"
+/ {
+	named-gpios {
+		/delete-node/ ec_spare_gpioa2;
+
+		gpio_soc_ec_ish_nb_mode_l: soc_ec_ish_nb_mode_l {
+			gpios = <&gpioa 2 GPIO_INPUT>;
+		};
+	};
+
+	gpio-interrupts {
+		int_nb_mode: nb_mode {
+			irq-pin = <&gpio_soc_ec_ish_nb_mode_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "nb_mode_interrupt";
+		};
+	};
+};
 
 &i2c0_0 {
 	status = "disabled";
