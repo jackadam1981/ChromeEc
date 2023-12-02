@@ -22,6 +22,13 @@ config BOARD_KARIS
 	  Build Google Karis variant board. The board uses Nuvoton
 	  NPCX9 chip as the EC.
 
+config BOARD_REX_ISH_EC
+	bool "Google rex-ish-ec Board"
+	select BOARD_HAS_INVALID_CHIP_DEVICE_ID_WORKAROUND
+	help
+	  Build Google rex variant board; this board has motion sense
+	  task removed; used on ISH enabled board.
+
 config BOARD_HAS_INVALID_CHIP_DEVICE_ID_WORKAROUND
 	bool
 	help
