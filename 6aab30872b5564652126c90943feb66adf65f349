@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16c8dcb_36409e83",
+        "filename": "zephyr/test/rex/tests/rex_ish/src/board_nb_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-12-02T01:35:42Z",
+      "side": 1,
+      "message": "Nice, updated.",
+      "parentUuid": "2ec509c8_bb3b7733",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "6aab30872b5564652126c90943feb66adf65f349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff2d3f69_16fa21bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-01T21:28:38Z",
       "side": 1,
       "message": "`tablet_get_mode_fake.return_val \u003d 1;`",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "6aab30872b5564652126c90943feb66adf65f349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f4b326_77fdf7c5",
+        "filename": "zephyr/test/rex/tests/rex_ish/src/board_nb_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-12-02T01:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff2d3f69_16fa21bf",
       "range": {
         "startLine": 40,
         "startChar": 1,
