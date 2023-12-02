@@ -7,3 +7,6 @@ zephyr_include_directories("include")
 zephyr_library_sources("src/usb_mux_config.c")
 zephyr_library_sources("src/i2c_policy.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usbc_config.c")
+#ifndef CONFIG_PLATFORM_EC_MOTIONSENSE
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_TABLET_MODE "src/board_nb_mode.c")
+#endif
