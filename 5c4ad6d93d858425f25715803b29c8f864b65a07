@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1813f25_8d1a8863",
+        "filename": "common/flash_log.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-03T03:47:17Z",
+      "side": 1,
+      "message": "yes, stamp is zero by default and if not provided it remains the same, so print all entries",
+      "parentUuid": "19310515_6697bd42",
+      "revId": "5c4ad6d93d858425f25715803b29c8f864b65a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a89f7d_34c15e0f",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-01T22:41:19Z",
       "side": 1,
       "message": "This command logic can be simplified.\n\nIn line 524 if argc \u003d\u003d 2, parse the stamp. If argc \u003e 3, return EC_ERROR_PARAM_COUNT.\n\nIf argv[1] isn\u0027t an int, what happens?",
+      "range": {
+        "startLine": 547,
+        "startChar": 1,
+        "endLine": 547,
+        "endChar": 29
+      },
+      "revId": "5c4ad6d93d858425f25715803b29c8f864b65a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b770a0_fa29ef87",
+        "filename": "common/flash_log.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-03T03:47:17Z",
+      "side": 1,
+      "message": "it will try to strtoi() it, and by default if argument is not a valid integer it will return 0 (https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/cr50/common/util.c;l\u003d309)",
+      "parentUuid": "99a89f7d_34c15e0f",
       "range": {
         "startLine": 547,
         "startChar": 1,
