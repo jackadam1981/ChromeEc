@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44f861f_11fe457a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-12-03T13:53:46Z",
+      "side": 1,
+      "message": "hmmm, there is no specific reason for that, we just want a consistency between the return value of `authenticate_fp_match_state` and the state behavior.\n\nMoved it back into `fp_process_match`.",
+      "parentUuid": "fde86d21_d2a31c30",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "cecadaad47137ce38679b32d35ae27182c20c050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51409c6_075967bc",
