@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa11e2a1_ee035b5d",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-04T15:01:50Z",
+      "side": 0,
+      "message": "LOG_ERR and \"Error\" is redundant.  Are there other places where we can drop the unneeded \"Error\"?",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "b2ac57a0aba36c142818ae9d60bd1cbedf9ea89b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
