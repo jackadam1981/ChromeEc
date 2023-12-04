@@ -284,10 +284,13 @@ def bundle_firmware(opts):
 
     tokens_file = "tokens.bin"
     tokens_path = platform_ec / "build" / tokens_file
+    print(f"{tokens_path} exists={pathlib.Path(tokens_path).is_file()}")
     if pathlib.Path(tokens_path).is_file():
+        cmd = ["cp", tokens_path, bundle_dir /tokens_file]
+        log_cmd(cmd)
         shutil.copyfile(tokens_path, bundle_dir / tokens_file)
         meta = info.objects.add()
-        meta.file_name = str(tokens_file)
+        meta.file_name = tokens_file
         meta.token_info.type = (
             firmware_pb2.FirmwareArtifactInfo.TokenDatabaseInfo.TokenDatabaseType.EC  # pylint: disable=no-member
         )
