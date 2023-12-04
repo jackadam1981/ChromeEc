@@ -46,6 +46,30 @@
       },
       "revId": "efe14005ec2ee1ff340ec47eb2422def1045d1bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a3e23d_f4c8da7a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 8190,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-04T09:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95840c89_b39ca666",
+      "range": {
+        "startLine": 8190,
+        "startChar": 0,
+        "endLine": 8190,
+        "endChar": 41
+      },
+      "revId": "efe14005ec2ee1ff340ec47eb2422def1045d1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
