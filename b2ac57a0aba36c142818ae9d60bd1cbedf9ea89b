@@ -22,6 +22,30 @@
       },
       "revId": "b2ac57a0aba36c142818ae9d60bd1cbedf9ea89b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d06db68_9468ebf4",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-04T15:45:26Z",
+      "side": 0,
+      "message": "Not as many as you\u0027d hope, I\u0027ll take a look see if it\u0027s worth it.",
+      "parentUuid": "aa11e2a1_ee035b5d",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "b2ac57a0aba36c142818ae9d60bd1cbedf9ea89b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
