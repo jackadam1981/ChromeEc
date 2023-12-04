@@ -30,9 +30,12 @@
 #define CONFIG_LED_ONOFF_STATES
 
 /* Sensors */
-#define CONFIG_ACCELGYRO_LSM6DSO /* Base accel */
-#define CONFIG_ACCEL_LSM6DSO_INT_EVENT \
+
+#define CONFIG_ACCEL_BMA4XX
+#define CONFIG_ACCEL_BMA4XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
 
 /* Enable sensor fifo, must also define the _SIZE and _THRES */
 #define CONFIG_ACCEL_FIFO
@@ -46,9 +49,6 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
-#define CONFIG_ACCEL_LIS2DWL
-#define CONFIG_ACCEL_LIS2DW12_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
 /* Sensor console commands */
 #define CONFIG_CMD_ACCELS
@@ -179,7 +179,7 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-enum sensor_id { LID_ACCEL = 0, BASE_ACCEL, BASE_GYRO, SENSOR_COUNT };
+enum sensor_id { LID_ACCEL = 0, BASE_ACCEL, SENSOR_COUNT };
 
 enum battery_type {
 	BATTERY_POWER_TECH,
@@ -199,6 +199,9 @@ enum pwm_channel {
 enum fan_channel { FAN_CH_0 = 0, FAN_CH_COUNT };
 
 enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
+
+void motion_interrupt(enum gpio_signal signal);
+void lid_accel_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
