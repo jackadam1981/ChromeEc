@@ -8,18 +8,21 @@
 #ifndef __KEYBOARD_CUSTOMIZATION_H
 #define __KEYBOARD_CUSTOMIZATION_H
 
+/* Keyboard matrix is 13 (or 15 with keypad) output columns x 8 input rows */
+#define KEYBOARD_COLS_WITH_KEYPAD 15
+#define KEYBOARD_COLS_NO_KEYPAD 13
+
 /*
  * KEYBOARD_COLS_MAX has the build time column size. It's used to allocate
  * exact spaces for arrays. Actual keyboard scanning is done using
  * keyboard_cols, which holds a runtime column size.
  */
-#ifdef CONFIG_KEYBOARD_CUSTOMIZATION
-#undef KEYBOARD_COLS_MAX
-#undef KEYBOARD_ROWS
-
-#define KEYBOARD_COLS_MAX 15
-#define KEYBOARD_ROWS 8
+#ifdef CONFIG_KEYBOARD_KEYPAD
+#define KEYBOARD_COLS_MAX KEYBOARD_COLS_WITH_KEYPAD
+#else
+#define KEYBOARD_COLS_MAX KEYBOARD_COLS_NO_KEYPAD
 #endif
+#define KEYBOARD_ROWS 8
 
 /*
  * WARNING: Do not directly modify it. You should call keyboard_raw_set_cols,
@@ -46,7 +49,11 @@ extern uint8_t keyboard_cols;
 #define KEYBOARD_ROW_LEFT_ALT 6
 #define KEYBOARD_MASK_LEFT_ALT KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_LEFT_ALT)
 #define KEYBOARD_COL_REFRESH 2
+#ifdef CONFIG_KEYBOARD_REFRESH_ROW3
 #define KEYBOARD_ROW_REFRESH 3
+#else
+#define KEYBOARD_ROW_REFRESH 2
+#endif
 #define KEYBOARD_MASK_REFRESH KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_REFRESH)
 #define KEYBOARD_COL_RIGHT_ALT 10
 #define KEYBOARD_ROW_RIGHT_ALT 0
@@ -59,8 +66,8 @@ extern uint8_t keyboard_cols;
 #define KEYBOARD_COL_RIGHT_CTRL 14
 #define KEYBOARD_ROW_RIGHT_CTRL 3
 #define KEYBOARD_MASK_RIGHT_CTRL KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_RIGHT_CTRL)
-#define KEYBOARD_COL_SEARCH 0
-#define KEYBOARD_ROW_SEARCH 3
+#define KEYBOARD_COL_SEARCH 1
+#define KEYBOARD_ROW_SEARCH 0
 #define KEYBOARD_MASK_SEARCH KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_SEARCH)
 #define KEYBOARD_COL_KEY_0 8
 #define KEYBOARD_ROW_KEY_0 6

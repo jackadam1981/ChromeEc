@@ -358,7 +358,7 @@ static int command_settabletmode(int argc, const char **argv)
 	} else {
 		return EC_ERROR_PARAM1;
 	}
-
+	CPRINTS("----tabletmode  1-----");
 	notify_tablet_mode_change();
 	return EC_SUCCESS;
 }

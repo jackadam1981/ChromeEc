@@ -26,17 +26,17 @@
 		lsm6dsm-int = &base_accel;
 	};
 
-	motionsense-sensor-info {
-		compatible = "cros-ec,motionsense-sensor-info";
+	// motionsense-sensor-info {
+	// 	compatible = "cros-ec,motionsense-sensor-info";
 
-		/*
-		 * list of GPIO interrupts that have to
-		 * be enabled at initial stage
-		 */
-		sensor-irqs = <&int_base_imu>;
+	// 	/*
+	// 	 * list of GPIO interrupts that have to
+	// 	 * be enabled at initial stage
+	// 	 */
+	// 	sensor-irqs = <&int_base_imu>;
 
-		accel-force-mode-sensors = <&lid_accel &alt_lid_accel>;
-	};
+	// 	accel-force-mode-sensors = <&lid_accel &alt_lid_accel>;
+	// };
 
 	batteries {
 		default_battery: c31n2005 {

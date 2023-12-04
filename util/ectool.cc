@@ -7361,7 +7361,7 @@ int cmd_tabletmode(int argc, char *argv[])
 
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
-
+	CPRINTS("----tabletmode  2-----");
 	memset(&p, 0, sizeof(p));
 	/* |+1| to also make sure the strings the same length. */
 	if (strncmp(argv[1], "on", strlen("on") + 1) == 0) {
