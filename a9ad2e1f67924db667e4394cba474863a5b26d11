@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3dbaa9_d492846c",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b572b789_dc91928f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21b50891_7434c583",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c4afaf_2721234b",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c73aff_f0aad6fd",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 8
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e76a386_67d28dce",
@@ -160,6 +208,24 @@
       "side": 1,
       "message": "The \"receive_packet\" function yields either \"SERIAL_RECV_TIMEOUT,\" \"PACKET_PAYLOAD_ILLEGAL_LEN,\" or \"NO_FAILURE\".\n\nCondition has been incorporated to send a failure response specifically for cases where \"PACKET_PAYLOAD_ILLEGAL_LEN\" is encountered.",
       "parentUuid": "3e76a386_67d28dce",
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98309a64_b4903818",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a39648_c9e5facf",
       "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +267,30 @@
       "side": 1,
       "message": "Ok, updated the logic accordingly.",
       "parentUuid": "bd1250a9_19a5835f",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 0
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4ee44a_90ef48e4",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83655688_e5ccde73",
       "range": {
         "startLine": 454,
         "startChar": 0,
@@ -258,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "299df3bb_ae9ffa93",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d7918a_f0439416",
+      "range": {
+        "startLine": 483,
+        "startChar": 3,
+        "endLine": 483,
+        "endChar": 31
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b18d786_61c22eef",
@@ -305,6 +419,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e70701_30faab32",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf59a3f_3e1876a2",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 31
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ceefd534_e6a72bb3",
@@ -342,6 +480,30 @@
       "side": 1,
       "message": "The return type of the public function has been updated to \"enum failure_resp_type.\"",
       "parentUuid": "ceefd534_e6a72bb3",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f640dc_47d2a69f",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-04T07:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50bb7a6_34a78517",
       "range": {
         "startLine": 27,
         "startChar": 0,
