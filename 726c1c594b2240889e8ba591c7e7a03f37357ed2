@@ -269,6 +269,30 @@
       },
       "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c159d046_755fef12",
+        "filename": "zephyr/drivers/fingerprint/fpc1025_pal.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-04T17:29:26Z",
+      "side": 1,
+      "message": "Thanks for the context. If I had to guess I\u0027d say that the `if (size \u003d\u003d FP_SENSOR_REAL_IMAGE_SIZE_FPC)` line was intended to ensure image reads occur synchronously, while allowing other commands to occur asynchronously. \n\nPer the stm32\u0027s [spi_transaction](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/spi.c?l\u003d206) function the [flush in fpc_sensor_spi_write_read](https://crsrc.org/o/src/platform/ec/driver/fingerprint/fpc/bep/fpc_sensor_spi.c;l\u003d38) is entirely unnecessary for synchronous reads (as it is done in the driver) and [spi_transaction_flush](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/spi.c?l\u003d169) will deassert the CS.",
+      "parentUuid": "788fb15e_8fc6a8b6",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
