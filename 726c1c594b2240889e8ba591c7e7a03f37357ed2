@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1937e570_36048ce8",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-04T15:32:36Z",
+      "side": 1,
+      "message": "\u003e We do. id contains 0x0000, and after spi_transceive_dt() it contains 2 byte HWID in big endian, and cmd is 0x00, because the first byte we receive is 0x00.\n\nYou are correct, I somehow missed that.\n\n\u003e If you feel like this can cause problems in future, I can split it into two buffers, it costs only one extra byte (to save first byte). This has also advantage that we don\u0027t send id contents, so we can prevent from accidental leak if somebody forgets to initialize id variable.\n\nI feel like the 1 byte is worth the extra protection here.",
+      "parentUuid": "47bfb8f2_7245a73f",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19fac065_ed1523de",
         "filename": "zephyr/drivers/fingerprint/fpc1025.c",
         "patchSetId": 41
