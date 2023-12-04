@@ -16,6 +16,29 @@
       "message": "This is the WIP Realtek driver, PDC Api, and TCPMv3 with some test code. It compiles and run for the Intel RVP but I\u0027ve not been able to get it to compile for Brya and I\u0027ll likely need help from Keith.",
       "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e0c4ad_911a293c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-12-04T22:24:31Z",
+      "side": 1,
+      "message": "Since only one command can be processed at the time, how about making all functions to block until completed?\nExample:\n```\n\tk_mutex_lock(\u0026data-\u003emtx, K_FOREVER);\n\t/*************\n\t * Fill `data-\u003ewr_buf`\n\t *************/\n\n\t/*************\t\n\t * Let this thread driver process command and notify when finished\n\t *************/\n\tret \u003d wait_for_completion(ppm);\n\t\n\tk_mutex_unlock(\u0026data-\u003emtx);\n```\n\nThis way [run_tcpm](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5047518/2/zephyr/subsys/tcpmv3/pdc_power_mgnt.c#57) function can be simplified.",
+      "range": {
+        "startLine": 573,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 0
+      },
+      "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
