@@ -16,6 +16,24 @@
       "message": "Any risk to merge the sensor probe together in hook_chipset_startup ?",
       "revId": "0ef6cdbae46ab380f646053cd1f56126377c63bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f54b987_dc550651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2023-12-04T13:39:38Z",
+      "side": 1,
+      "message": "Because sensor\u0027s power plane is PP1800_SENSOR, it\u0027s enable by SLP_SUS_L.\n\nSo, to use hook_chipset_startup is trigger after SLP_SUS_L, and sensor power is ready, EC can detect the value and sensor response successfully.",
+      "parentUuid": "4d5d3157_b4837180",
+      "revId": "0ef6cdbae46ab380f646053cd1f56126377c63bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
