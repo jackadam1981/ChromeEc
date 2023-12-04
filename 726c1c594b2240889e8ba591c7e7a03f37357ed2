@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd171cef_47731034",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-04T16:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1937e570_36048ce8",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19fac065_ed1523de",
@@ -166,6 +190,30 @@
       "writtenOn": "2023-11-30T18:50:07Z",
       "side": 1,
       "message": "It might read more clearly if these were named `image_buf` and `image_buf_size`.",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 33
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24344648_5191405c",
+        "filename": "zephyr/drivers/fingerprint/fpc1025.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-04T16:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19fac065_ed1523de",
       "range": {
         "startLine": 272,
         "startChar": 4,
