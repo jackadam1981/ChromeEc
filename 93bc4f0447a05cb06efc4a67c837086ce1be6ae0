@@ -70,6 +70,30 @@
       },
       "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0dcf57_73e20404",
+        "filename": "zephyr/shim/src/keyboard_input.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-04T09:38:38Z",
+      "side": 1,
+      "message": "It\u0027s writing to the columns and reading from the rows, the only signal we mess with is this one so the rest works fine with the stock driver, which in the way we use it is pretty much a specialized gpio driver. I even toyed with the idea of ditching specialized driver entirely but it\u0027s nice to have a single interrupt to control, I guess.",
+      "parentUuid": "472ffc06_c4efb910",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 39
+      },
+      "revId": "93bc4f0447a05cb06efc4a67c837086ce1be6ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
