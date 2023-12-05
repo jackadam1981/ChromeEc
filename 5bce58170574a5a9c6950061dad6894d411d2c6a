@@ -33,6 +33,52 @@
       "message": "Friendly ping. Wai-hong, Caveh, Yu-Ping?",
       "revId": "5bce58170574a5a9c6950061dad6894d411d2c6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3efabe8_8b937449",
+        "filename": "include/system.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T18:56:32Z",
+      "side": 1,
+      "message": "Nit: Pointer to the reboot command ...",
+      "range": {
+        "startLine": 138,
+        "startChar": 13,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "5bce58170574a5a9c6950061dad6894d411d2c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073a6ec9_73c59142",
+        "filename": "include/system.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T18:56:32Z",
+      "side": 1,
+      "message": "Nit: Same here: Pointer to ..",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 17
+      },
+      "revId": "5bce58170574a5a9c6950061dad6894d411d2c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
