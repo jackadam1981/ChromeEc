@@ -151,3 +151,11 @@ if(CONFIG_TEST_NISSA_ANRAGGAR)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/anraggar/src/keyboard.c
     )
 endif()
+
+if(CONFIG_TEST_NISSA_ULDREN)
+    target_sources(
+	    app PRIVATE
+	    src/uldren.c
+	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/charger.c
+    )
+endif()

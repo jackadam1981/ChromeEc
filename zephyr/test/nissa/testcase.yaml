@@ -150,3 +150,13 @@ tests:
       - CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION=y
     extra_dtc_overlay_files:
       - "boards/anraggar.dts"
+  nissa.uldren:
+    extra_dtc_overlay_files:
+      - "boards/chargers.dts"
+      - "boards/uldren.dts"
+    extra_conf_files:
+      - "prj.conf"
+      - "charger.conf"
+    extra_configs:
+      - CONFIG_TEST_NISSA_ULDREN=y
+      - CONFIG_PLATFORM_EC_CHARGER_RAA489000=n
