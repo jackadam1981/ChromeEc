@@ -635,6 +635,7 @@ static int check_keys_changed(uint8_t *state)
 			if (!(diff & BIT(i)))
 				/* Debounced but no difference. */
 				continue;
+			CPRINTS("ridden any_change 1");
 			any_change = 1;
 			key_state_changed(i, c, new_state[c]);
 			/*
@@ -655,6 +656,7 @@ static int check_keys_changed(uint8_t *state)
 			scan_edge_index[c][i] = scan_time_index;
 
 			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE)) {
+				CPRINTS("ridden any_change 2");
 				any_change = 1;
 				key_state_changed(i, c, new_state[c]);
 			}
