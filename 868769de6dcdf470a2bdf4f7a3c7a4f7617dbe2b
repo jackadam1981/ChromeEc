@@ -22,6 +22,30 @@
       },
       "revId": "868769de6dcdf470a2bdf4f7a3c7a4f7617dbe2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d16b6ae_f88093db",
+        "filename": "zephyr/program/rex/karis/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-12-05T06:13:47Z",
+      "side": 1,
+      "message": "Yes, It should be GPIOC6. Sorry! Thank you!!",
+      "parentUuid": "2ce6794a_8127e870",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "868769de6dcdf470a2bdf4f7a3c7a4f7617dbe2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
