@@ -1,0 +1,58 @@
+diff --git a/zephyr/test/nissa/CMakeLists.txt b/zephyr/test/nissa/CMakeLists.txt
+index 0f5e13237e..366b208ae6 100644
+--- a/zephyr/test/nissa/CMakeLists.txt
++++ b/zephyr/test/nissa/CMakeLists.txt
+@@ -151,3 +151,18 @@ if(CONFIG_TEST_NISSA_ANRAGGAR)
+             ${PLATFORM_EC_PROGRAM_DIR}/nissa/anraggar/src/keyboard.c
+     )
+ endif()
++
++if(CONFIG_TEST_NISSA_ULDREN)
++    target_sources(
++	    app PRIVATE
++	    src/uldren.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/charger.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/form_factor.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/kb_backlight.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/mp2964_update.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/sensor.c
++            ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/sub_board.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/usbc.c
++	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/uldren/src/usb_mux_config.c
++    )
++endif()
+diff --git a/zephyr/test/nissa/Kconfig b/zephyr/test/nissa/Kconfig
+index 319ba4b563..93ab5aa5f2 100644
+--- a/zephyr/test/nissa/Kconfig
++++ b/zephyr/test/nissa/Kconfig
+@@ -72,6 +72,11 @@ choice TEST_TARGET
+ 	  bool "Tests for Anraggar-specific code"
+ 	  help
+ 		The test target that exercises nissa/anraggar/*.c
++	config TEST_NISSA_ULDREN
++	  bool "Tests for Uldren-specific code"
++	  select TEST_DISABLE_INLINE_CHIPSET_IN_STATE
++	  help
++		The test target that exercises nissa/uldren/*.c
+ endchoice
+ 
+ config TEST_DISABLE_INLINE_CHIPSET_IN_STATE
+diff --git a/zephyr/test/nissa/testcase.yaml b/zephyr/test/nissa/testcase.yaml
+index 3bc47d3697..d7acd760dc 100644
+--- a/zephyr/test/nissa/testcase.yaml
++++ b/zephyr/test/nissa/testcase.yaml
+@@ -150,3 +150,13 @@ tests:
+       - CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION=y
+     extra_dtc_overlay_files:
+       - "boards/anraggar.dts"
++  nissa.uldren:
++    extra_dtc_overlay_files:
++      - "boards/generic_npcx.dts"
++      - "boards/chargers.dts"
++      - "boards/uldren.dts"
++    extra_conf_files:
++      - "prj.conf"
++      - "charger.conf"
++    extra_configs:
++      - CONFIG_TEST_NISSA_ULDREN=y
+\ No newline at end of file
