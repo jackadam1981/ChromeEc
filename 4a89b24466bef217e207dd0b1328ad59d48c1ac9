@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69434d35_0f139607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-12-05T00:29:02Z",
+      "side": 1,
+      "message": "I believe we\u0027re jumping into another problem : \n\n```\nb6d50e07 fpsensor: Change to new OWNERS format\n```\n\nAre we able to drop this or we shall pull this repo into firmware branch ?\nThere\u0027s no such repo and branch exist at the moment.",
+      "revId": "4a89b24466bef217e207dd0b1328ad59d48c1ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
