@@ -16,6 +16,24 @@
       "message": "may need to add ourselves here on fw branch",
       "revId": "a23d265f98f39d36c565ecc5807545ad77946808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff8d377_c5c8ce6c",
+        "filename": "include/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-12-05T08:31:13Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5087290\nUse this one to add owners inheritance back.",
+      "parentUuid": "3152d9f1_f8e67841",
+      "revId": "a23d265f98f39d36c565ecc5807545ad77946808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
