@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f0145eb_36411cac",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8548,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-12-05T03:39:00Z",
+      "side": 1,
+      "message": "I think we should just use `%u` or `%d` for integers, instead of hexlify them.",
+      "range": {
+        "startLine": 8548,
+        "startChar": 31,
+        "endLine": 8548,
+        "endChar": 42
+      },
+      "revId": "2ad83c29ec1f491c520d49df8ec30ff29407cef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
