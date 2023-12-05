@@ -6173,8 +6173,10 @@
  * Ensure CONFIG_USB_PD_TCPMV2 and CONFIG_USBC_SS_MUX both are defined. USBC
  * retimer firmware update feature requires both.
  */
-#if (defined(CONFIG_USBC_RETIMER_FW_UPDATE) && \
-     (!(defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USBC_SS_MUX))))
+#if (defined(CONFIG_USBC_RETIMER_FW_UPDATE) &&    \
+     (!((defined(CONFIG_USB_PD_TCPMV2) ||         \
+	 defined(CONFIG_USB_PD_ALTMODE_INTEL)) && \
+	defined(CONFIG_USBC_SS_MUX))))
 #error Retimer firmware update requires TCPMv2 and USBC_SS_MUX
 #endif
 

@@ -15,5 +15,16 @@
  * @brief Starts the Intel Alternate Mode configuration thread.
  */
 void intel_altmode_task_start(void);
+void intel_altmode_post_event(enum intel_altmode_event event);
+
+/*
+ * @brief Suspend pd_intel_altmode_task.
+ */
+void suspend_pd_intel_altmode_task(void);
+
+/*
+ * @brief Resume pd_intel_altmode_task.
+ */
+void resume_pd_intel_altmode_task(void);
 
 #endif /* __CROS_EC_PD_TASK_INTEL_ALTMODE_H */

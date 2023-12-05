@@ -36,7 +36,7 @@ LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 #define PD_CHIP_FIND(usbc_id, pd_id) \
 	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, DEVICE_DT_GET)
 
-#define PD_CHIP(usbc_id)                                                    \
+#define PD_CHIP(usbc_id)                                                   \
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, alt_mode),                    \
 		    (PD_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, alt_mode))), \
 		    ())
@@ -244,6 +244,23 @@ K_THREAD_DEFINE(intel_altmode_tid, CONFIG_TASK_PD_ALTMODE_INTEL_STACK_SIZE,
 void intel_altmode_task_start(void)
 {
 	k_thread_start(intel_altmode_tid);
+}
+
+void suspend_pd_intel_altmode_task(void)
+{
+	k_thread_suspend(intel_altmode_tid);
+}
+
+void resume_pd_intel_altmode_task(void)
+{
+	k_thread_resume(intel_altmode_tid);
+
+	/*
+	 * Suspended PD altmode task misses the altmode events.
+	 * Therefore, explicitly post event so PD altmode task updates
+	 * the mux status after resuming.
+	 */
+	intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
 }
 
 #ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
