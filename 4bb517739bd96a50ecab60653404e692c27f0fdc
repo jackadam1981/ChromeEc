@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63c35cf_5ba5ca7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-05T02:25:21Z",
+      "side": 1,
+      "message": "i think it\u0027s this:\n```\nError:\tThe EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr so that new\n\tfunctionality is available in Zephyr also. The following new ad-hoc\n\tCONFIG options were detected:\n\nCONFIG_ACCEL_BMA4XX_INT_EVENT\n```",
+      "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
