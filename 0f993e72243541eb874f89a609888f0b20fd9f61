@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7389c410_fb512c5f",
+        "filename": "common/flash_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-05T19:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae15d012_8654cffb",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 25
+      },
+      "revId": "0f993e72243541eb874f89a609888f0b20fd9f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3698ed_602ca7b9",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e9ba4c_bf839f52",
+        "filename": "common/flash_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-05T19:31:49Z",
+      "side": 1,
+      "message": "earlier it would erase and then add event. Now I made it exclusive to simplify code.",
+      "parentUuid": "3e3698ed_602ca7b9",
+      "revId": "0f993e72243541eb874f89a609888f0b20fd9f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f48788b_f740d851",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-12-05T18:04:06Z",
       "side": 1,
       "message": "You can remove this. The user can just run flog.",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 0
+      },
+      "revId": "0f993e72243541eb874f89a609888f0b20fd9f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "411e5b1f_ce5e0dcc",
+        "filename": "common/flash_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-05T19:31:49Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "8f48788b_f740d851",
       "range": {
         "startLine": 583,
         "startChar": 0,
