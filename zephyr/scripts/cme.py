@@ -71,6 +71,15 @@ CTYPE_SUFFIXES = {
     "accel": ["accel", "gyro"],
 }
 
+# mapping of SSFC field's enum-name to various sensor properties
+SSFC_ENUM_DICT = {
+    "AUDIO_CODEC": "",  # not currently supported
+    "BASE_SENSOR": "MOTIONSENSE_LOC_BASE",
+    "LID_SENSOR": "MOTIONSENSE_LOC_LID",
+    "LIGHTBAR": "",  # not currently supported
+    "USB_SS_MUX": "",  # not currently supported
+}
+
 
 def parse_args(argv: Optional[List[str]] = None):
     """Returns parsed command-line arguments"""
@@ -110,8 +119,11 @@ class Manifest:
             "ec_version": ec_version,
             "component_list": [],
         }
+        self.binding = []
 
-    def insert_component(self, ctype, name, i2c_port, i2c_addr, usbc_port=None):
+    def insert_component(
+        self, ctype, name, i2c_port, i2c_addr, usbc_port=None, ssfc_binding=None
+    ):
         """Insert the component inform to the component manifest.
 
         Args:
@@ -120,6 +132,7 @@ class Manifest:
             i2c_port: I2C remote port number.
             i2c_address: I2C device address (7-bit).
             usbc_port: USB-C port number.
+            ssfc_binding: SSFC devicetree node object
         """
         component = {
             "component_type": ctype,
@@ -133,6 +146,43 @@ class Manifest:
             if comp == component:
                 return
         self.manifest["component_list"].append(component)
+        self.binding.append(ssfc_binding)
+
+    def iterate_ssfc(self, edt):
+        """Iterate all cbi-ssfc nodes and insert them into the appropriate
+           item in the manifest.
+
+           Because all ssfc masks have to be evaluated in sequence to calculate
+           the offset of any individual mask, ssfc is inserted after all
+           components have been populated in the manifest.
+
+        Args:
+           edt: EDT object representation of a devicetree
+        """
+
+        cbi_ssfc_nodes = edt.compat2okay["cros-ec,cbi-ssfc"]
+
+        if len(cbi_ssfc_nodes) != 1:
+            return
+
+        ssfc_mask_offset = 0
+        for ssfc_field in cbi_ssfc_nodes[0].children.values():
+            mask_size = ssfc_field.props["size"].val
+            mask = (1 << mask_size) - 1
+            mask <<= ssfc_mask_offset
+            ssfc_mask_offset += mask_size
+
+            for ssfc_value_node in ssfc_field.children.values():
+                ssfc = {
+                    "ssfc": {
+                        "mask": hex(mask),
+                        "value": ssfc_value_node.props["value"].val,
+                    }
+                }
+                for idx, ssfc_binding in enumerate(self.binding):
+                    if ssfc_binding == ssfc_value_node:
+                        self.manifest["component_list"][idx].update(ssfc)
+                        break
 
     def json_dump(self, filepath):
         """Dump the component manifest to a JSON file."""
@@ -315,11 +365,13 @@ def iterate_usbc_components(edtlib, edt, i2c_portmap, manifest):
             insert_i2c_component("tcpc", tcpc, port, i2c_portmap, manifest)
 
 
-def insert_motionsense_component(node, i2c_portmap, manifest):
+def insert_motionsense_component(node, is_alt, edt, i2c_portmap, manifest):
     """Insert the motion sense component to the manifest.
 
     Args:
         node: Devicetree node object.
+        is_alt: boolean for if this component is alt sensor.
+        edt: EDT object representation of a devicetree
         i2c_portmap: Dict of the mapping from I2C name to remote port number.
         manifest: Manifest object.
     """
@@ -354,11 +406,26 @@ def insert_motionsense_component(node, i2c_portmap, manifest):
         if "," + part_number in compatible_name:
             ctype = "als"
 
+    ssfc_node = None
+    if not is_alt:
+        ssfc_node_list = edt.compat2okay["cros-ec,cbi-ssfc-value"]
+        for snode in ssfc_node_list:
+            location = SSFC_ENUM_DICT[snode.parent.props["enum-name"].val]
+            if (
+                snode.props["default"].val
+                and location == node.props["location"].val
+            ):
+                ssfc_node = snode
+    else:
+        if "alternate-ssfc-indicator" in node.props:
+            ssfc_node = node.props["alternate-ssfc-indicator"].val
+
     manifest.insert_component(
         ctype,
         compatible_name_parser(ctype, compatible_name),
         i2c_portmap[i2c.name],
         i2c_addr_val,
+        ssfc_binding=ssfc_node,
     )
 
 
@@ -379,7 +446,7 @@ def iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest):
         return
 
     for node in mss.children.values():
-        insert_motionsense_component(node, i2c_portmap, manifest)
+        insert_motionsense_component(node, False, edt, i2c_portmap, manifest)
 
     try:
         mss_alt = edt.get_node("/motionsense-sensor-alt")
@@ -389,7 +456,7 @@ def iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest):
         return
 
     for node in mss_alt.children.values():
-        insert_motionsense_component(node, i2c_portmap, manifest)
+        insert_motionsense_component(node, True, edt, i2c_portmap, manifest)
 
 
 def main(argv: Optional[List[str]] = None) -> Optional[int]:
@@ -429,6 +496,8 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest)
 
     # TODO(b/308028560): Iterate all sensor components.
+
+    manifest.iterate_ssfc(edt)
 
     manifest.json_dump(args.manifest_file)
 
