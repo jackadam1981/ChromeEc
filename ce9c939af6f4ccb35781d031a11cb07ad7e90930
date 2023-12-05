@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ebfc45ac_ced8aa57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-12-05T23:21:29Z",
+      "side": 1,
+      "message": "It is; the zephyr builds passed already.",
+      "parentUuid": "6f3bd07f_6f56dc72",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "ce9c939af6f4ccb35781d031a11cb07ad7e90930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "06b56ef1_cc981f8e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
