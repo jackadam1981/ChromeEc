@@ -57,6 +57,13 @@ config CONSOLE_CMD_PD_CCG8
 	  Enable this to read/write to the power path registers of CCG8
 	  PD.
 
+config CONSOLE_CMD_PD_RETIMER_UPDATE
+	bool "Console command: PD retimer fw update"
+	default n
+	help
+	   Enable this to enter/exit PD retimer firmware update mode
+	   using EC console command.
+
 endif # USB_PD_ALTMODE_INTEL
 
 endif # USB_PD_ALTMODE
