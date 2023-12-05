@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc3d6ed_55b53b93",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-05T17:54:44Z",
+      "side": 1,
+      "message": "Can you mock `charger_current_battery_params()` in your test instead?\n\nAdding `#ifdef TEST_BUILD` to any of the actual code should be a last resort.",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 69
+      },
+      "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
