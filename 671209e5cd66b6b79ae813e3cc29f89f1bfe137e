@@ -16,6 +16,24 @@
       "message": "how come this patch is not in the branch?",
       "revId": "671209e5cd66b6b79ae813e3cc29f89f1bfe137e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f38397_da10c83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-12-05T16:05:27Z",
+      "side": 1,
+      "message": "This is a new branch. Do you mean why isn\u0027t this on tot? We don\u0027t want tot images to have board ids.",
+      "parentUuid": "47b343d1_f4455861",
+      "revId": "671209e5cd66b6b79ae813e3cc29f89f1bfe137e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
