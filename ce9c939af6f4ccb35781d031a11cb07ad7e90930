@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "00eb8c1a_7c238cd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-05T23:19:14Z",
+      "side": 1,
+      "message": "the CQ builds cros-ec and zephyr-ec boards.\na lot of the cros-ec code is shared so you have to check both \"universes\".",
+      "parentUuid": "6f3bd07f_6f56dc72",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "ce9c939af6f4ccb35781d031a11cb07ad7e90930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "06b56ef1_cc981f8e",
