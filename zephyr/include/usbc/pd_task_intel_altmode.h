@@ -16,4 +16,14 @@
  */
 void intel_altmode_task_start(void);
 
+/*
+ * @brief Suspend pd_intel_altmode_task.
+ */
+void suspend_pd_intel_altmode_task(void);
+
+/*
+ * @brief Resume pd_intel_altmode_task.
+ */
+void resume_pd_intel_altmode_task(void);
+
 #endif /* __CROS_EC_PD_TASK_INTEL_ALTMODE_H */
