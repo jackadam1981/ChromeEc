@@ -22,6 +22,30 @@
       },
       "revId": "2ad83c29ec1f491c520d49df8ec30ff29407cef7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b527333_cbf51cc1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8548,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-05T03:52:36Z",
+      "side": 1,
+      "message": "This is a register address, which is usually written in hex in datasheets. Also, all existing boards set reg_addr in hex.",
+      "parentUuid": "9f0145eb_36411cac",
+      "range": {
+        "startLine": 8548,
+        "startChar": 31,
+        "endLine": 8548,
+        "endChar": 42
+      },
+      "revId": "2ad83c29ec1f491c520d49df8ec30ff29407cef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
