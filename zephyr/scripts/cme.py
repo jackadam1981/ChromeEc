@@ -139,6 +139,41 @@ class Manifest:
         with open(filepath, "w", encoding="utf-8") as outfile:
             outfile.write(json.dumps(self.manifest, indent=4))
 
+    def update_component(self, name, prop=None):
+        """update an existing component in the component list
+
+        Args:
+            name: string name of the component to be updated
+            prop: a dictionary element to be updated into the component list
+                  as is. Leave empty if only the name is to be updated
+
+        Returns:
+            Zero upon success, or non-zero if component is not found
+        """
+
+        for component in self.manifest["component_list"]:
+            # check if either name is a generic name
+            name_strip = name.rstrip("x")
+            compatible = component["component_name"].split(",")
+            if len(compatible) >= 2:
+                vendor = compatible[0]
+                device = compatible[1]
+            else:
+                device = compatible[0]
+            device = device.rstrip("x")
+
+            # if the name currently in the component_list is more generic than
+            # the one being updated, update to the new name
+            if device in name_strip:
+                device = name
+
+            if name_strip in device:
+                component["component_name"] = vendor + "," + device
+                component.update(prop)
+                return 0
+
+        return -1
+
 
 def node_is_valid(node, i2c_node, i2c_portmap):
     """Checks if a given node can be inserted into the manifest
@@ -382,6 +417,41 @@ def iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest):
         insert_motionsense_component(node, i2c_portmap, manifest)
 
 
+def insert_ssfc(edt, manifest):
+    """Iterate all cbi-ssfc compatibles and insert them into the appropriate
+        item in the manifest.
+
+    Args:
+        edt: EDT object representation of a devicetree
+        manifest: Manifest object.
+    """
+
+    cbi_ssfc_node = edt.compat2okay["cros-ec,cbi-ssfc"]
+
+    if len(cbi_ssfc_node) != 1:
+        return
+
+    ssfc_mask_offset = 0
+    for ssfc_field in cbi_ssfc_node[0].children.values():
+        if "size" in ssfc_field.props:
+            mask_size = ssfc_field.props["size"].val
+            mask = (1 << mask_size) - 1
+            mask <<= ssfc_mask_offset
+            ssfc_mask_offset += mask_size
+        else:
+            continue
+
+        for sensor_node in ssfc_field.children.values():
+            if "value" in sensor_node.props:
+                ssfc = {
+                    "ssfc": {
+                        "mask": hex(mask),
+                        "value": sensor_node.props["value"].val,
+                    }
+                }
+                manifest.update_component(sensor_node.name, ssfc)
+
+
 def main(argv: Optional[List[str]] = None) -> Optional[int]:
     """The main function.
 
@@ -417,6 +487,8 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     iterate_usbc_components(edtlib, edt, i2c_portmap, manifest)
 
     iterate_motionsensor_components(edtlib, edt, i2c_portmap, manifest)
+
+    insert_ssfc(edt, manifest)
 
     # TODO(b/308028560): Iterate all sensor components.
 
