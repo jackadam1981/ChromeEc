@@ -374,6 +374,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "510f1197_71c1ed5f",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-05T16:15:38Z",
+      "side": 1,
+      "message": "Add a comment indicating on a serial timeout, there is no recovery. The host must restart from the beginning.",
+      "parentUuid": "299df3bb_ae9ffa93",
+      "range": {
+        "startLine": 483,
+        "startChar": 3,
+        "endLine": 483,
+        "endChar": 31
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b18d786_61c22eef",
         "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
         "patchSetId": 9
