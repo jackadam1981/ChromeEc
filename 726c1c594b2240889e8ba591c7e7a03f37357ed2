@@ -293,6 +293,30 @@
       },
       "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0e98b1_534397a8",
+        "filename": "zephyr/drivers/fingerprint/fpc1025_pal.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-05T09:51:58Z",
+      "side": 1,
+      "message": "I followed `fpc_sensor_spi.c` history and I found that it was present from [the beginning](https://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/fpc/+/1331170).\n\n\u003e while allowing other commands to occur asynchronously\n\nIn fact, there is no async here. We run either `spi_transaction_flush` or `spi_transaction_wait` after `spi_transaction_async`. As a result, we will always wait for transaction to complete in `fpc_sensor_spi_write_read`.\n\nIMHO, the only possible reason is to override `leave_cs_asserted`, but looks like it\u0027s false when size is real image size.\n\nI\u0027ll leave as it is. We will probably remove that later.",
+      "parentUuid": "c159d046_755fef12",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "726c1c594b2240889e8ba591c7e7a03f37357ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
