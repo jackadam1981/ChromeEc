@@ -34,6 +34,24 @@
       "parentUuid": "69434d35_0f139607",
       "revId": "4a89b24466bef217e207dd0b1328ad59d48c1ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dea55e5_debce79d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-12-05T02:04:09Z",
+      "side": 1,
+      "message": "Are we able to drop the change OWNERS only ?\nIt seems this file is exist already, delete the file directly might lead to no OWNERS to land the code.",
+      "parentUuid": "dd2228fb_4bd00a8f",
+      "revId": "4a89b24466bef217e207dd0b1328ad59d48c1ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
