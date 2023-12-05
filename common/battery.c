@@ -474,6 +474,16 @@ static void power_supply_change(void)
 		return;
 	}
 
+	/*
+	 * Charge manager will refresh again after leaving charge manager
+	 * safe mode. So we need to check if the real AC is present or not
+	 * to know if the AC is unplugged.
+	 */
+	if (extpower_is_present()) {
+		CUTOFFPRINTS("backoff: AC is still present");
+		return;
+	}
+
 	CPRINTS("Refresh+Unplug! Scheduling cutoff.");
 	battery_cutoff_state = BATTERY_CUTOFF_STATE_SCHEDULED;
 	hook_call_deferred(&pending_cutoff_deferred_data,
