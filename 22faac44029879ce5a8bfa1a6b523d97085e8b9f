@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4db12b6_74642b7f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8947,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-12-05T03:24:23Z",
+      "side": 1,
+      "message": "I cannot find a reference that specifies the behavior when `NULL` is passed to `%s`.  I suspect that this is an undefined behavior. \nAlso, in other functions, I think we always check the `argc` and only access the non-null pointers.\n\nTherefore, how about:\n`fprintf(stderr, \"Invalid sub-command \u0027%s\u0027\\n\", argc \u003e 1 ? argv[1] : \"(null)\");`",
+      "range": {
+        "startLine": 8947,
+        "startChar": 47,
+        "endLine": 8947,
+        "endChar": 54
+      },
+      "revId": "22faac44029879ce5a8bfa1a6b523d97085e8b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
