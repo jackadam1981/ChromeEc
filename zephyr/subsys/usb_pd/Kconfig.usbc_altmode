@@ -49,6 +49,14 @@ config CONSOLE_CMD_USBPD_INTEL_ALTMODE
 	  PD that are compliant with Intel alternate mode configuration
 	  specification.
 
+config CONSOLE_CMD_PD_CCG8
+	bool "Console command: CCG8 read/write"
+	default y
+	depends on USBC_PDC_CCG8
+	help
+	  Enable this to read/write to the power path registers of CCG8
+	  PD.
+
 endif # USB_PD_ALTMODE_INTEL
 
 endif # USB_PD_ALTMODE
