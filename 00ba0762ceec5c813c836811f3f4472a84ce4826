@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e5b7e5_124a028a",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T19:28:42Z",
+      "side": 1,
+      "message": "It is not reliable. The name of the node may not match with the compatible. No rule enforces these two should be matched. Use the `alternate-ssfc-indicator` field of the sensor node, which is a phandle pointing to the `cbi-ssfc-value` node.",
+      "range": {
+        "startLine": 170,
+        "startChar": 15,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1bf946_a3c6ed32",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T19:28:42Z",
+      "side": 1,
+      "message": "`cbi_ssfc_nodes` for a list.",
+      "range": {
+        "startLine": 429,
+        "startChar": 4,
+        "endLine": 429,
+        "endChar": 17
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b265b209_753641df",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T19:28:42Z",
+      "side": 1,
+      "message": "The `compat2okay` returns a list of the matched. A `for` loop is more general that handles the empty list and more than one element.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 0
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261a7c5c_23aa592c",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T19:28:42Z",
+      "side": 1,
+      "message": "`size` is an required field. Don\u0027t need this if check.",
+      "range": {
+        "startLine": 436,
+        "startChar": 11,
+        "endLine": 436,
+        "endChar": 17
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7462b102_46b15d1e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-05T19:28:42Z",
+      "side": 1,
+      "message": "Other non-sensor components may be defined in the SSFC node, like `audio_codec`. Better have a check to ensure it is a sensor.",
+      "range": {
+        "startLine": 444,
+        "startChar": 12,
+        "endLine": 444,
+        "endChar": 23
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
