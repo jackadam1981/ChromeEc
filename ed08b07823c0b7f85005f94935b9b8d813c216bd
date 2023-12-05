@@ -22,6 +22,30 @@
       },
       "revId": "ed08b07823c0b7f85005f94935b9b8d813c216bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a411bb13_dd35a3ed",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-05T15:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ae2494_c0505d7e",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 54
+      },
+      "revId": "ed08b07823c0b7f85005f94935b9b8d813c216bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
