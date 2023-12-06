@@ -22,6 +22,30 @@
       },
       "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c7d396_387dd7c7",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-12-06T01:23:18Z",
+      "side": 1,
+      "message": "That is doable, please note that I was trying to handle this similar to [common/battery.c](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/battery.c#148).\n\nPlease let me know if `#defined(HAS_TASK_CHARGER)` will suffice, otherwise I can continue with mocking `charger_current_battery_params`.",
+      "parentUuid": "5fc3d6ed_55b53b93",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 69
+      },
+      "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
