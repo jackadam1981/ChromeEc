@@ -69,6 +69,24 @@
       "parentUuid": "5202f549_89c04d78",
       "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefaa39c_cfb42d79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-06T05:20:23Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/Kconfig.sensor_devices#31\n\nhas define bma4xx option.\n\nafter local build include CONFIG_ACCEL_BMA4XX_INT_EVENT in util/config_allowed.txt\n\nit do not show error message, if not please let me know",
+      "parentUuid": "61e467de_4a147385",
+      "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
