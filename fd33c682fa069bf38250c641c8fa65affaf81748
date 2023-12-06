@@ -94,6 +94,30 @@
       },
       "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca852e9_5d51551e",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-12-06T18:35:43Z",
+      "side": 1,
+      "message": "I have gone with Option 2, and added `charger_current_battery_params()` as fake to my test. See [4915709](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4915709/22/zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c#56).\nIf this approach is OK, we can abandon this CL.",
+      "parentUuid": "45ed3ee8_e3fb4f95",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 69
+      },
+      "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
