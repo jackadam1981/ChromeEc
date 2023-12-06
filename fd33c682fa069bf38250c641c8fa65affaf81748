@@ -70,6 +70,30 @@
       },
       "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ed3ee8_e3fb4f95",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T16:55:09Z",
+      "side": 1,
+      "message": "The issue is that adding `#ifdef TEST_BUILD` means that the code coverage will never show the call to charger_current_battery_params() has covered by tests.\n\nThere are 2 approaches you could take here:\n\n1. Modify the `charger_current_battery_params()` prototype to create an inline version when the charger task isn\u0027t available.\n```\n#ifdef HAS_TASK_CHARGER\nconst struct batt_params *charger_current_battery_params(void);\n#else\ninline const struct batt_params *charger_current_battery_params(void)\n{\n   /* Return the battery_get_params() pointer */\n}\n#endif\n```\n\n2. In the test code, create a fake for `charger_current_battery_params()` that just returns the `battery_get_params()` pointer.  This is effectively the same thing as option 1, but it makes it explicit that only test code should be referencing the charger code without a charger task.\n\nOption 2 is preferred, but requires some analysis to see if any of the legacy tests need to also create the fake `charger_current_battery_params()`.\n\nI\u0027m okay with option 1.",
+      "parentUuid": "ae3d9cbb_1e972feb",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 69
+      },
+      "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
