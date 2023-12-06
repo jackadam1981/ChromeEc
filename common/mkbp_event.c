@@ -454,6 +454,12 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 	args->response_size = 1 + data_size;
 
+	if (resp[0] == EC_MKBP_EVENT_SWITCH) {
+		CPRINTS("mkbp_event_switch %02x", resp[1]);
+	} else if (resp[0] == EC_MKBP_EVENT_BUTTON) {
+		CPRINTS("mkbp_event_button %02x", resp[1]);
+	}
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_NEXT_EVENT,
