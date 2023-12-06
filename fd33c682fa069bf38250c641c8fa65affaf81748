@@ -118,6 +118,30 @@
       },
       "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774889e0_1ba7a6b1",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T23:45:44Z",
+      "side": 1,
+      "message": "Yes, that works. Thank you.",
+      "parentUuid": "bca852e9_5d51551e",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 69
+      },
+      "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
