@@ -16,6 +16,24 @@
       "message": "An even cleaner solution might be to move the definitions into separate, device specific, files. Something like this would be very easy to read:\n```\n#if defined(HAVE_PRIVATE) \u0026\u0026 !defined(EMU_BUILD)\n#define HAVE_FP_PRIVATE_DRIVER\n\n#if defined(CONFIG_FP_SENSOR_ELAN80) || defined(CONFIG_FP_SENSOR_ELAN515)\n#include \"driver/fingerprint/fpsensor_driver_elan.h\"\n#endif\n\n#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1145)\n#include \"driver/fingerprint/fpsensor_driver_fpc.h\"\n#endif\n\n#else /* defined(HAVE_PRIVATE) \u0026\u0026 !defined(EMU_BUILD) */\n\n#include \"driver/fingerprint/fpsensor_driver_emu.h\"\n\n#endif /* defined(HAVE_PRIVATE) \u0026\u0026 !defined(EMU_BUILD) */\n```",
       "revId": "001852973b947b2f2f21fd625688503e569ab6e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382eb834_f3ff21d2",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-12-06T21:58:22Z",
+      "side": 1,
+      "message": "We can, but I think the header chain is getting slightly deep, here. Plus, it doesn\u0027t help with supporting multiple sensors in one image.\n\nAlso, https://crrev.com/c/4273187 somewhat undoes the hiding of these definitions in a sub-header.\n\nWe can nest the headers in a follow-up, if that\u0027s what we want to do.",
+      "parentUuid": "e05c3158_03c6acfe",
+      "revId": "001852973b947b2f2f21fd625688503e569ab6e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
