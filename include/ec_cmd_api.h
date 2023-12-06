@@ -282,6 +282,7 @@ _CROS_EC_C0_F_RF(EC_CMD_FLASH_SPI_INFO, flash_spi_info);
 _CROS_EC_C0_F_PF(EC_CMD_FORCE_LID_OPEN, force_lid_open);
 _CROS_EC_C0_F_PF_RF(EC_CMD_FP_MODE, fp_mode);
 _CROS_EC_C0_F_PF(EC_CMD_FP_SEED, fp_seed);
+_CROS_EC_C0_F_RF(EC_CMD_FP_ENC_STATUS, fp_encryption_status);
 _CROS_EC_C0_F_RF(EC_CMD_FP_STATS, fp_stats);
 _CROS_EC_CV_F_R(EC_CMD_GET_BOARD_VERSION, 0, get_board_version, board_version);
 _CROS_EC_C0_F_RF(EC_CMD_GET_BOOT_TIME, get_boot_time);
