@@ -378,6 +378,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21064cd0_15d5d0b0",
+        "filename": "zephyr/subsys/usb_pd/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "any error you see? condition is met in the Kconfig",
+      "parentUuid": "0493d15b_789eae7d",
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05238318_9637ca91",
         "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
         "patchSetId": 2
@@ -460,6 +478,30 @@
       "side": 1,
       "message": "I think this is fine as \u0027if the thread is in running state it will be suspended after it completes the job\u0027",
       "parentUuid": "92bf25fa_83fd7bb7",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "3d3d7f8123d9439c2b06506eb6e9d06eaf6f1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56229a91_83fefe7c",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fab532_f7c1138d",
       "range": {
         "startLine": 245,
         "startChar": 1,

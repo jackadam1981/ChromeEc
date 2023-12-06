@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ba1c26_cd7d7259",
+        "filename": "zephyr/include/usbc/retimer_fw_update.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "ZEPHYR_INCLUDE_DRIVERS_PD_RETIMER_FW_UPDATE_H_",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd26039a_555210ac",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "can miss",
+      "range": {
+        "startLine": 259,
+        "startChar": 30,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ecb610_f67c3b30",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "applicable to all PD hence change to \"Power Delivery Chip\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9205b5_ab5a7c8d",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "needed ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fdaee1_42fc71f7",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "neeeded?",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450c71b3_c1d8eca7",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "intended to remove ?",
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d6e51a_932e8c4d",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "i think below logic should do it?\nreturn ARRAY_SIZE(pd_retimer_ports) ? true : false;",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12985e5_01fd5e35",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-06T02:47:08Z",
+      "side": 1,
+      "message": "can\u0027t assume Port-0, if we have 2 ports on either side then retimer wont share SPI.\n\nIdeally this file has to send an event to PD_TASK and let PD task call the PD driver .\nFor time being add a TODO and call the driver directly",
+      "range": {
+        "startLine": 79,
+        "startChar": 38,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
