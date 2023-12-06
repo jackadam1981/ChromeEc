@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad667f5c_1750302c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T19:32:51Z",
+      "side": 1,
+      "message": "You also need to allocate a separate stack and thread for each chip instance.\n\nThis code reuses the thread for both ports.",
+      "parentUuid": "10076620_227c2c39",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 47
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38a0b7e0_1adadf43",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
