@@ -432,7 +432,7 @@ static void *get_scratch_buffer(size_t size)
 	 * way.
 	 */
 	for (i = 0; i < 50; i++) {
-		int rv;
+		enum ec_error_list rv;
 
 		rv = shared_mem_acquire(size, &buf);
 		if (rv == EC_SUCCESS) {
@@ -745,7 +745,7 @@ static uint32_t aligned_container_size(const struct nn_container *ch)
  */
 test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 						      struct nn_container *ch,
-						      int include_deleted)
+						      bool include_deleted)
 {
 	uint32_t salt[4];
 	uint8_t ctype;
@@ -777,7 +777,8 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 
 			return EC_ERROR_MEMORY_ALLOCATION;
 		}
-
+		if (rv != EC_SUCCESS)
+			return rv;
 		/*
 		 * The read data is a container header, copy it into the user
 		 * provided space and continue reading there.
@@ -941,7 +942,7 @@ test_export_static enum ec_error_list compact_nvmem(void)
 	saved_object_count = 0;
 
 	do {
-		switch (get_next_object(&at, ch, 0)) {
+		switch (get_next_object(&at, ch, false)) {
 		case EC_SUCCESS:
 			break;
 
@@ -2117,7 +2118,7 @@ static enum ec_error_list verify_last_section(
 
 	po = newobjs->objects;
 
-	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
+	while (get_next_object(&at, ch, false) == EC_SUCCESS) {
 		ctype = ch->container_type;
 
 		/* Speculative assignment, might be unused. */
@@ -2172,7 +2173,7 @@ static enum ec_error_list verify_last_section(
 		size_t key_size;
 		uint32_t key;
 
-		if (get_next_object(&at, ch, 0) != EC_SUCCESS)
+		if (get_next_object(&at, ch, false) != EC_SUCCESS)
 			report_no_payload_failure(NVMEMF_MISSING_OBJECT);
 
 		ctype = ch->container_type;
@@ -2289,7 +2290,7 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
 			}
 	}
 
-	while ((rv = get_next_object(&dpt, nc, 0)) == EC_SUCCESS)
+	while ((rv = get_next_object(&dpt, nc, false)) == EC_SUCCESS)
 		delete_object(&dpt, nc);
 
 	if (rv == EC_ERROR_INVAL) {
@@ -2381,7 +2382,7 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 		total_var_space = 0;
 		next_evict_obj_base = 0;
 
-		while ((rv = get_next_object(&controller_at, nc, 0)) ==
+		while ((rv = get_next_object(&controller_at, nc, false)) ==
 		       EC_SUCCESS) {
 			switch (nc->container_type) {
 			case NN_OBJ_TUPLE:
@@ -2775,7 +2776,7 @@ static enum ec_error_list new_nvmem_save_(void)
 	del_candidates->num_candidates = 0;
 
 	while ((fence_ph != at.mt.ph) || (fence_offset != at.mt.data_offset)) {
-		rv = get_next_object(&at, ch, 0);
+		rv = get_next_object(&at, ch, false);
 
 		if (rv == EC_ERROR_MEMORY_ALLOCATION)
 			break;
@@ -2886,7 +2887,7 @@ static struct max_var_container *find_var(const uint8_t *key, size_t key_len,
 	 * Let's iterate over all objects there are and look for matching
 	 * tuples.
 	 */
-	while ((rv = get_next_object(at, &vc->c_header, 0)) == EC_SUCCESS) {
+	while ((rv = get_next_object(at, &vc->c_header, false)) == EC_SUCCESS) {
 
 		if (vc->c_header.container_type != NN_OBJ_TUPLE)
 			continue;
@@ -3120,7 +3121,7 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 
 	lock_mutex(__LINE__);
 
-	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
+	while (get_next_object(&at, ch, false) == EC_SUCCESS) {
 
 		if ((ch->container_type != NN_OBJ_TPM_RESERVED) &&
 		    (ch->container_type != NN_OBJ_TPM_EVICTABLE))
@@ -3246,7 +3247,7 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
 	lock_mutex(__LINE__);
 
-	while ((rv = get_next_object(&at, ch, 1)) == EC_SUCCESS) {
+	while ((rv = get_next_object(&at, ch, true)) == EC_SUCCESS) {
 		uint8_t ctype = ch->container_type;
 
 		count++;
