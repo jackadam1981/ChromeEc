@@ -9,4 +9,5 @@ project(input_keyboard)
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 target_sources(app PRIVATE ../../drivers/keyboard_input/keyboard_input.c)
+target_sources(app PRIVATE ../../drivers/keyboard_input/col_gpio_drive.c)
 target_sources(app PRIVATE src/main.c)
