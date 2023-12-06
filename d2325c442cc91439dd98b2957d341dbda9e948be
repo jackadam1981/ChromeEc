@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078ece00_c9897b3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-06T20:05:51Z",
+      "side": 1,
+      "message": "I\u0027m a bit apprehensive about mixing up logical code changes with unrelated code cleanups. Changing get_next_object() prototype and its call sites do not belong in this patch.",
+      "revId": "d2325c442cc91439dd98b2957d341dbda9e948be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd9789e_e1f52352",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-06T20:05:51Z",
+      "side": 1,
+      "message": "drop the extra empty line",
+      "revId": "d2325c442cc91439dd98b2957d341dbda9e948be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
