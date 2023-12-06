@@ -51,6 +51,24 @@
       "parentUuid": "d63c35cf_5ba5ca7e",
       "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e467de_4a147385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-06T04:55:57Z",
+      "side": 1,
+      "message": "at this point the expectation is that we add the kconfig option\nand not expand allow_config.",
+      "parentUuid": "5202f549_89c04d78",
+      "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
