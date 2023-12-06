@@ -119,6 +119,8 @@ static
 			} else if (!strcasecmp(argv[3], "soft")) {
 				pd_dpm_request(port,
 					       DPM_REQUEST_SOFT_RESET_SEND);
+			} else if (!strcasecmp(argv[3], "data")) {
+				pd_dpm_request(port, DPM_REQUEST_DATA_RESET);
 			} else {
 				return EC_ERROR_PARAM3;
 			}
@@ -270,7 +272,7 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"\n\t<port> disable|enable"
 			"\n\t<port> suspend|resume"
 			"\n\t<port> dualrole [on|off|freeze|sink|source]"
-			"\n\t<port> reset [soft|hard]"
+			"\n\t<port> reset [soft|hard|data]"
 			"\n\t<port> swap [power|data|vconn]"
 #ifdef CONFIG_USB_PD_EPR
 			"\n\t<port> epr [enter|exit]"
