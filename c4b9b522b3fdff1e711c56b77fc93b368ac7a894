@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "930c228d_282834b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "from group review/meeting.",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8b4a950_a94282bf",
@@ -31,6 +48,57 @@
       "writtenOn": "2023-12-06T20:38:18Z",
       "side": 1,
       "message": "the the",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "063c4fdc_3c520890",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "Collective review: use \u003cboard\u003e instead of brox-tokenized.",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f15b59f_3dd2fa8e",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "revisit ordering of the three locations and what they are and why? Scp as a secure location would be first in the list.",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483ef644_ee1a7d55",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "worth commenting why you have to deploy? Is this a readonly partition? AI to Yuval.",
       "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +150,57 @@
       "writtenOn": "2023-12-06T20:38:18Z",
       "side": 1,
       "message": "what is the default? and default for boards that don\u0027t have tokenizing support?",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337ae444_5ac91df2",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "spelling: indicator",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e2a460_3b84245d",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "need a sample output of tokenizing failing.",
+      "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383d079e_484312a4",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-12-06T21:02:47Z",
+      "side": 1,
+      "message": "need a section on how to remedy hash collisions.",
       "revId": "c4b9b522b3fdff1e711c56b77fc93b368ac7a894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
