@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6e611c_be8d4d0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-06T16:15:42Z",
+      "side": 1,
+      "message": "I\u0027m going to strip this driver from the stack so that it can be merged separately. It\u0027s still a WIP but I think it\u0027s in a usable enough state to unblock development by other folks.",
+      "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47e0c4ad_911a293c",
