@@ -46,6 +46,30 @@
       },
       "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3d9cbb_1e972feb",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-12-06T02:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c7d396_387dd7c7",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 69
+      },
+      "revId": "fd33c682fa069bf38250c641c8fa65affaf81748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
