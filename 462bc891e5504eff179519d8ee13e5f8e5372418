@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ce45ee_5f0717d7",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T19:07:07Z",
+      "side": 1,
+      "message": "This header is used by the parent CL.  You should re-order these.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "462bc891e5504eff179519d8ee13e5f8e5372418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5a84df_a4410ff0",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T19:07:07Z",
+      "side": 1,
+      "message": "Please move the UCSI defined structures into their own header file.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "462bc891e5504eff179519d8ee13e5f8e5372418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0856175_b631c653",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T19:07:07Z",
+      "side": 1,
+      "message": "Can you pare this list of APIs down to what\u0027s needed to start?\n\nIt\u0027s easier to review if you add the APIs only as you use them.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 54
+      },
+      "revId": "462bc891e5504eff179519d8ee13e5f8e5372418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
