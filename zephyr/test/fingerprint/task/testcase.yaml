@@ -1,0 +1,18 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+common:
+  platform_allow: native_posix
+tests:
+  fingerprint.task:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_FINGERPRINT_UNINITIALIZED=y
+    extra_conf_files:
+    - prj.conf
+
+  fingerprint.task.tpm_and_userid_set:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_FINGERPRINT_TPM_AND_USERID_SET=y
+    extra_conf_files:
+    - prj.conf

@@ -1,0 +1,17 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config LINK_TEST_SUITE_FINGERPRINT_UNINITIALIZED
+	bool "Link fingerprint tests that don't require initialization"
+	help
+	  Link and execute fingerprint subsystem tests that don't need
+	  TPM seed and User ID to be initialized.
+
+config LINK_TEST_SUITE_FINGERPRINT_TPM_AND_USERID_SET
+	bool "Link fingerprint tests that require TPM seed and UserID"
+	help
+	  Link and execute fingerprint subsystem tests that require
+	  TPM seed and User ID to be initialized.
+
+source "Kconfig.zephyr"
