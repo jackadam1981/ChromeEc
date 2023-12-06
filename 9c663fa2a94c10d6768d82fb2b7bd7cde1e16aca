@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fd7773_1a1c7a5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-06T16:58:04Z",
+      "side": 1,
+      "message": "We need to create a new devicetree node for use with PD controllers.  Overloading the `named-usbc-node` is getting messy.",
+      "revId": "9c663fa2a94c10d6768d82fb2b7bd7cde1e16aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
