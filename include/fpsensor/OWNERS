@@ -1,3 +1,9 @@
 # Fingerprint Sensor
 
+<<<<<<< HEAD   (ad2512 add owners inheritance for firmware branch)
+=======
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+>>>>>>> BRANCH (24ec69 myst: add LED_PWRS_IDLE to led-policy)
 include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
