@@ -217,6 +217,8 @@
 #define APPLY_RESET_LOOP_FIX
 #endif
 
+#define CONFIG_GOOGLETEST
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
