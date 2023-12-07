@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f17603_d9d9b63b",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-07T01:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1e5b7e5_124a028a",
+      "range": {
+        "startLine": 170,
+        "startChar": 15,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f1bf946_a3c6ed32",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-05T19:28:42Z",
       "side": 1,
       "message": "`cbi_ssfc_nodes` for a list.",
+      "range": {
+        "startLine": 429,
+        "startChar": 4,
+        "endLine": 429,
+        "endChar": 17
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "031b0be0_a6d16d4e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-07T01:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f1bf946_a3c6ed32",
       "range": {
         "startLine": 429,
         "startChar": 4,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27bf1936_1b2d0542",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-07T01:49:59Z",
+      "side": 1,
+      "message": "I don\u0027t think there can be multiple `cros-ec,cbi-ssfc` nodes. The ssfc mask is implicitly defined by the order of the children nodes. If there were multiple `cros-ec,cbi-ssfc` nodes the ordering of the children would be undefined.\n\nif `len(cbi_ssfc_node) \u003e 1` the ssfc mask is undefined.",
+      "parentUuid": "b265b209_753641df",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 0
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "261a7c5c_23aa592c",
         "filename": "zephyr/scripts/cme.py",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2023-12-05T19:28:42Z",
       "side": 1,
       "message": "`size` is an required field. Don\u0027t need this if check.",
+      "range": {
+        "startLine": 436,
+        "startChar": 11,
+        "endLine": 436,
+        "endChar": 17
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd73ffe5_aa36d0f5",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-07T01:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "261a7c5c_23aa592c",
       "range": {
         "startLine": 436,
         "startChar": 11,
@@ -106,6 +202,30 @@
       "writtenOn": "2023-12-05T19:28:42Z",
       "side": 1,
       "message": "Other non-sensor components may be defined in the SSFC node, like `audio_codec`. Better have a check to ensure it is a sensor.",
+      "range": {
+        "startLine": 444,
+        "startChar": 12,
+        "endLine": 444,
+        "endChar": 23
+      },
+      "revId": "00ba0762ceec5c813c836811f3f4472a84ce4826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a4fa0f_4454389a",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-07T01:49:59Z",
+      "side": 1,
+      "message": "`iterate_ssfc()` checks if the ssfc node has a matching component in the manifest. If it cannot find a matching component the ssfc node will not be inserted.",
+      "parentUuid": "7462b102_46b15d1e",
       "range": {
         "startLine": 444,
         "startChar": 12,
