@@ -194,7 +194,6 @@ static int is_connected(int port)
 	return pd_is_connected(port);
 }
 
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 /**
  * In certain cases we need to override the default behavior of not charging
  * from non-dedicated chargers. If the system is in RO and locked, we have no
@@ -211,7 +210,6 @@ static int charge_manager_spoof_dualrole_capability(void)
 	return (system_get_image_copy() == EC_IMAGE_RO && system_is_locked()) ||
 	       !left_safe_mode;
 }
-#endif /* !CONFIG_CHARGE_MANAGER_DRP_CHARGING */
 
 /**
  * Initialize available charge. Run before board init, so board init can
@@ -694,7 +692,6 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			    override_port == port && override_port != j)
 				continue;
 
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 			/*
 			 * Don't charge from a dual-role port unless
 			 * it is our override port.
@@ -703,7 +700,6 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			    override_port != j &&
 			    !charge_manager_spoof_dualrole_capability())
 				continue;
-#endif
 
 			candidate_port_power = POWER(available_charge[i][j]);
 
@@ -1081,9 +1077,7 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		 * Ignore all except for transition to non-dualrole,
 		 * which may occur some time after we see a charge
 		 */
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 		if (dualrole_capability[port] != CAP_DEDICATED)
-#endif
 			return;
 		/* Clear override only if a charge is present on the port */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
@@ -1103,10 +1097,8 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	/* Remove override when a charger is plugged */
 	if (clear_override && override_port != port &&
 	    override_port != OVERRIDE_DONT_CHARGE
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 	    /* only remove override when it's a dedicated charger */
 	    && dualrole_capability[port] == CAP_DEDICATED
-#endif
 	) {
 		override_port = OVERRIDE_OFF;
 		if (delayed_override_port != OVERRIDE_OFF) {
