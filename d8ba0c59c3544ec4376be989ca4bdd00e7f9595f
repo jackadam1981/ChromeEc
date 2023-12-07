@@ -22,6 +22,30 @@
       },
       "revId": "d8ba0c59c3544ec4376be989ca4bdd00e7f9595f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c6a685_ef6a7903",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-07T21:35:19Z",
+      "side": 1,
+      "message": "you\u0027re right. doesn\u0027t make sense - I check data_offset to be \u003e\u003d8 anyway",
+      "parentUuid": "37657ea1_79756c43",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 23
+      },
+      "revId": "d8ba0c59c3544ec4376be989ca4bdd00e7f9595f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
