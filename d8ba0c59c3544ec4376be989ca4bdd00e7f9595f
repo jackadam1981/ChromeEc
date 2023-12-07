@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37657ea1_79756c43",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-07T21:27:44Z",
+      "side": 1,
+      "message": "the header is zeroed, its contents hash will be always the same, and not zero. So, it does not look like this function modification increases robustness.",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 23
+      },
+      "revId": "d8ba0c59c3544ec4376be989ca4bdd00e7f9595f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
