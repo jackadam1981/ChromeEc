@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ece9823_228b476c",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ecd8171_3dfffb44",
+      "range": {
+        "startLine": 1,
+        "startChar": 9,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bee8a89_d3215d6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-07T19:18:04Z",
       "side": 1,
       "message": "CONFIG_PLATFORM_EC_LOG_TOKENIZED",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3915cae1_2a20c54f",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bee8a89_d3215d6d",
       "range": {
         "startLine": 15,
         "startChar": 16,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43466493_7b5ae6f7",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6d8f52_4a7c7d11",
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a0c77eb_f6723ea7",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-12-07T19:18:04Z",
       "side": 1,
       "message": "Can the RO/RW logs get automatically merged and just added `build/zephyr/board/output`, which is where the other artifacts are found?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 105
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e80b62a_3889dd32",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "I actually did add support to zmake to do that 😊, updated the path to reflect this.",
+      "parentUuid": "8a0c77eb_f6723ea7",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "004e307c_4bf08bec",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db33548_6334315b",
+      "range": {
+        "startLine": 40,
+        "startChar": 52,
+        "endLine": 40,
+        "endChar": 73
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "411fe430_c49fa8d0",
@@ -123,6 +237,30 @@
       "writtenOn": "2023-12-07T19:18:04Z",
       "side": 1,
       "message": "Add public code link.",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "595b8847_b884ed36",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411fe430_c49fa8d0",
       "range": {
         "startLine": 41,
         "startChar": 27,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedaff9d_65eec96c",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c83d188b_5f8cc86d",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eff60daa_bbafafb0",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-12-07T19:18:04Z",
       "side": 1,
       "message": "Delete \u0027,\u0027",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd561fd_24e890ff",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eff60daa_bbafafb0",
       "range": {
         "startLine": 55,
         "startChar": 8,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb102b0_2ebbbf0a",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2baf19c9_09879e63",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9f10832_575553d6",
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "090468cb_26c22ef2",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f10832_575553d6",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f72fe7b_42b3934c",
@@ -238,6 +472,30 @@
       "writtenOn": "2023-12-07T19:18:04Z",
       "side": 1,
       "message": "Can you create sub-sections for the chroot vs docker specific instructions.  As is it\u0027s hard to tell which instructions are needed for each environment.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "c64352fc85fbdc8ed4e30a47de1ec2e277a97885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d394775a_268540ae",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-12-07T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f72fe7b_42b3934c",
       "range": {
         "startLine": 75,
         "startChar": 0,
