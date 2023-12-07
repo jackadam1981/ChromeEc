@@ -7155,6 +7155,19 @@
 #endif
 #endif /* defined(CONFIG_USB_PD_TCPM_PS8705) + ... */
 
+/*
+ * Add the implication for Device ID override.
+ * Depthcharge does the Device ID override. The EC should do the same for
+ * consistency; otherwise, a firmware broken screen will be shown.
+ */
+#ifdef CONFIG_USB_PD_TCPM_PS8805
+#define CONFIG_USB_PD_TCPM_PS8805_FORCE_DID
+#endif
+
+#ifdef CONFIG_USB_PD_TCPM_PS8815
+#define CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
+#endif
+
 /******************************************************************************/
 /* Check body detection setup */
 #if defined(CONFIG_BODY_DETECTION)
