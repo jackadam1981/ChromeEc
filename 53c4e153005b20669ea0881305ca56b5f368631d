@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35f2c993_46fba86d",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "I don\u0027t want to put it in the hdparams as those are received (set) from the kernel and tell how watchdog should work. the status on the other hand is set (beside the request to clear it) on the EC side and reported to the kernel upon request.",
+      "parentUuid": "e900b32e_10b9c64d",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed69d024_7a693d21",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-05T22:58:06Z",
       "side": 1,
       "message": "Do you mean EC_HANG_DETECT_AP_BOOT_EC_WDT?",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce54d6c_94874dd0",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Yes, thank you.",
+      "parentUuid": "ed69d024_7a693d21",
       "range": {
         "startLine": 35,
         "startChar": 14,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3f1c75_854aaa24",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52895fc_76fa1d81",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 32
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83e62db2_e3c45578",
@@ -83,6 +155,24 @@
       "writtenOn": "2023-12-05T22:58:06Z",
       "side": 1,
       "message": "I would return EC_RES_INVALID_PARAM if p-\u003eargs !\u003d 0 to let the host know they won\u0027t get what they expect.",
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ac958e_ef0945c9",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "I have also added validation for args.",
+      "parentUuid": "83e62db2_e3c45578",
       "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7114262f_837a13eb",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d558c357_4ec986cd",
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "025513a3_5f47cc35",
@@ -117,6 +225,30 @@
       "writtenOn": "2023-12-05T22:58:06Z",
       "side": 1,
       "message": "The EC has watchdog for itself. So, you most likely need to add something to avoid confusion. A recommended trick is to add a prefix as follows:\n\n    #define CPRINTS(fmt, args...) cprints(CC_CHIPSET, \"APHD: \" fmt, ##args)\n\nThen, all messages will be automatically tagged and you will be able to quickly highlight them in a log.",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1e61a4_f09399c6",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "025513a3_5f47cc35",
       "range": {
         "startLine": 134,
         "startChar": 11,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7557c3d_c0eaaddd",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "067db2fb_f60e2cdd",
+      "range": {
+        "startLine": 138,
+        "startChar": 33,
+        "endLine": 138,
+        "endChar": 63
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e76cb981_44eddc3b",
@@ -167,6 +323,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b400b54e_18fa7da2",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76cb981_44eddc3b",
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2817d00_219ff5ba",
@@ -180,6 +354,30 @@
       "writtenOn": "2023-12-05T22:58:06Z",
       "side": 1,
       "message": "Commands are mutually exclusive, right? So, I believe we should assign simple integers (i.e. 0, 1, 2, ...). You can even define an enum for readability.",
+      "range": {
+        "startLine": 4729,
+        "startChar": 30,
+        "endLine": 4729,
+        "endChar": 36
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764b57d7_43905dcc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4729,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2817d00_219ff5ba",
       "range": {
         "startLine": 4729,
         "startChar": 30,
@@ -213,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a8d050_a6f18f96",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4749,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b115981_1f47846f",
+      "range": {
+        "startLine": 4749,
+        "startChar": 1,
+        "endLine": 4749,
+        "endChar": 15
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e7c4a69_9b4cb5bc",
@@ -236,6 +458,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2d0851_3b2a94af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4753,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7c4a69_9b4cb5bc",
+      "range": {
+        "startLine": 4753,
+        "startChar": 12,
+        "endLine": 4753,
+        "endChar": 13
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f2a9bc2_75e47b41",
@@ -249,6 +495,30 @@
       "writtenOn": "2023-12-05T22:58:06Z",
       "side": 1,
       "message": "Can you please add comments to these?",
+      "range": {
+        "startLine": 4756,
+        "startChar": 0,
+        "endLine": 4757,
+        "endChar": 37
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad80a6d_3b5d2e2b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4757,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-07T15:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f2a9bc2_75e47b41",
       "range": {
         "startLine": 4756,
         "startChar": 0,
