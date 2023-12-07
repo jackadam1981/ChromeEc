@@ -533,4 +533,9 @@ int update_static_battery_info(void);
  */
 void update_dynamic_battery_info(void);
 
+/**
+ * Cancel the had_active_charge_port flag.
+ */
+void cancel_had_active_charge_port(void);
+
 #endif /* __CROS_EC_BATTERY_H */

@@ -437,9 +437,18 @@ static void battery_on_ac_change(void)
 DECLARE_HOOK(HOOK_AC_CHANGE, battery_on_ac_change, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CHARGE_MANAGER
+/*
+ * Flag indicating the cutoff manager has seen an active charge port.
+ */
+static bool had_active_charge_port;
+
+void cancel_had_active_charge_port(void)
+{
+	had_active_charge_port = false;
+}
+
 static void power_supply_change(void)
 {
-	static bool had_active_charge_port;
 	int port = charge_manager_get_active_charge_port();
 	bool key = false;
 

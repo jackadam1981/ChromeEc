@@ -1262,6 +1262,18 @@ void charge_manager_leave_safe_mode(void)
 	CPRINTS("%s()", __func__);
 	cflush();
 	left_safe_mode = 1;
+	/*
+	 * Cutoff manager triggers cutoff on !CHARGE_PORT_NONE->CHARGE_PORT_NONE
+	 * transition, which happens when the charge manager leaves safe mode
+	 * because it drops a CAP_UNKNOWN and CAP_DUALROLE port previously
+	 * selected (during safe mode).
+	 *
+	 * So, we cancel had_active_charge_port here if the current charge port
+	 * is CAP_UNKNOWN or CAP_DUALROLE because there is a chance they'll be
+	 * CHARGE_PORT_NONE temporarily.
+	 */
+	if (dualrole_capability[charge_port] != CAP_DEDICATED)
+		cancel_had_active_charge_port();
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
 }
