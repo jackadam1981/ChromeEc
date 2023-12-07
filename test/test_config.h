@@ -654,7 +654,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #undef CONFIG_USB_DPM_SM
 #endif
 
-#if defined(TEST_CHARGE_MANAGER) || defined(TEST_CHARGE_MANAGER_DRP_CHARGING)
+#ifdef TEST_CHARGE_MANAGER
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_USB_PD_3A_PORTS 0 /* Host does not define a 3.0 A PDO */
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -665,13 +665,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
 #define I2C_PORT_BATTERY 0
-#endif /* TEST_CHARGE_MANAGER_* */
-
-#ifdef TEST_CHARGE_MANAGER_DRP_CHARGING
-#define CONFIG_CHARGE_MANAGER_DRP_CHARGING
-#else
-#undef CONFIG_CHARGE_MANAGER_DRP_CHARGING
-#endif /* TEST_CHARGE_MANAGER_DRP_CHARGING */
+#endif
 
 #ifdef TEST_CHARGE_RAMP
 #define CONFIG_CHARGE_RAMP_SW
