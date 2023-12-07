@@ -127,7 +127,7 @@ static uint32_t fp_process_enroll(void)
 		       EC_MKBP_FP_ERRCODE(EC_MKBP_FP_ERR_ENROLL_INTERNAL);
 	templ_dirty |= BIT(templ_valid);
 	if (percent == 100) {
-		res = fp_enrollment_finish(fp_template[templ_valid]);
+		res = fp_enrollment_finish(&fp_template[templ_valid]);
 		if (res) {
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
 		} else {
@@ -191,7 +191,7 @@ static uint32_t fp_process_match(void)
 
 	CPRINTS("Matching/%d ...", templ_valid);
 	if (templ_valid) {
-		res = fp_finger_match(fp_template[0], templ_valid, fp_buffer,
+		res = fp_finger_match(&fp_template[0], templ_valid, fp_buffer,
 				      &fgr, &updated);
 		CPRINTS("Match =>%d (finger %d)", res, fgr);
 
@@ -544,7 +544,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		 * Copy the payload to |fp_enc_buffer| where it will be
 		 * encrypted in-place.
 		 */
-		memcpy(encrypted_template, fp_template[fgr],
+		memcpy(encrypted_template, &fp_template[fgr],
 		       sizeof(fp_template[0]));
 		memcpy(positive_match_salt, fp_positive_match_salt[fgr],
 		       sizeof(fp_positive_match_salt[0]));
@@ -698,7 +698,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 			};
 		}
 
-		memcpy(fp_template[idx], encrypted_template,
+		memcpy(&fp_template[idx], encrypted_template,
 		       sizeof(fp_template[0]));
 		if (template_needs_validation_value(enc_info)) {
 			CPRINTS("fgr%d: Generating positive match salt.", idx);
@@ -710,7 +710,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		if (bytes_are_trivial(positive_match_salt,
 				      sizeof(fp_positive_match_salt[0]))) {
 			CPRINTS("fgr%d: Trivial positive match salt.", idx);
-			OPENSSL_cleanse(fp_template[idx],
+			OPENSSL_cleanse(&fp_template[idx],
 					sizeof(fp_template[0]));
 			return EC_RES_INVALID_PARAM;
 		}
