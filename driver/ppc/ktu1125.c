@@ -469,9 +469,24 @@ static int ktu1125_set_sbu(int port, int enable)
 	if (status) {
 		CPRINTS("ppc p%d: Failed to %s sbu", port,
 			enable ? "enable" : "disable");
+		return status;
 	}
 
-	return status;
+	if (1 /*CONFIG_KTU1125_SBUA_CHECK*/) {
+		int val, rv;
+
+		rv = read_reg(port, KTU1125_MONITOR_DATA, &val);
+		if (rv != EC_SUCCESS)
+			return rv;
+
+		if ((val & KTU1125_SBUA) == 0) {
+			ppc_err_prints("SBUAx pins not selected!", port, val);
+			/* SBUAx pins are not selected */
+			return EC_ERROR_BUSY;
+		}
+	}
+
+	return EC_SUCCESS;
 }
 #endif /* CONFIG_USBC_PPC_SBU */
 
