@@ -399,6 +399,11 @@ extern int TC_TRY_WAIT_SNK_UNDEFINED;
 #define TC_TRY_WAIT_SNK TC_TRY_WAIT_SNK_UNDEFINED
 #endif
 
+struct cc_volt {
+	enum tcpc_cc_voltage_status cc1;
+	enum tcpc_cc_voltage_status cc2;
+};
+
 static struct type_c {
 	/* state machine context */
 	struct sm_ctx ctx;
@@ -442,6 +447,8 @@ static struct type_c {
 	enum tcpc_cc_pull select_cc_pull;
 	enum tcpc_rp_value select_current_limit_rp;
 	enum tcpc_rp_value select_collision_rp;
+	/* Cached CC voltage status */
+	struct cc_volt cached_cc;
 } tc[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Port dual-role state */
@@ -2077,6 +2084,20 @@ static void sink_power_sub_states(int port)
 	}
 }
 
+static inline void tc_cache_cc(int port, enum tcpc_cc_voltage_status cc1,
+			      enum tcpc_cc_voltage_status cc2)
+{
+	tc[port].cached_cc.cc1 = cc1;
+	tc[port].cached_cc.cc2 = cc2;
+}
+
+static inline void tc_get_cached_cc(int port, enum tcpc_cc_voltage_status *cc1,
+			      enum tcpc_cc_voltage_status *cc2)
+{
+	*cc1 = tc[port].cached_cc.cc1;
+	*cc2 = tc[port].cached_cc.cc2;
+}
+
 /*
  * TYPE-C State Implementations
  */
@@ -2341,6 +2362,7 @@ static void tc_attach_wait_snk_run(const int port)
 
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
+	tc_cache_cc(port, cc1, cc2);
 
 	if (cc_is_rp(cc1) && cc_is_rp(cc2) && board_is_dts_port(port))
 		new_cc_state = PD_CC_DFP_DEBUG_ACC;
@@ -2464,7 +2486,7 @@ static void tc_attached_snk_entry(const int port)
 		 */
 	} else {
 		/* Get connector orientation */
-		tcpm_get_cc(port, &cc1, &cc2);
+		tc_get_cached_cc(port, &cc1, &cc2);
 		tc[port].polarity = get_snk_polarity(cc1, cc2);
 		typec_set_polarity(port, tc[port].polarity);
 
@@ -3171,6 +3193,7 @@ static void tc_attached_src_run(const int port)
 
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
+	tc_cache_cc(port, cc1, cc2);
 
 	if (polarity_rm_dts(tc[port].polarity))
 		cc1 = cc2;
@@ -3621,6 +3644,7 @@ static void tc_try_wait_snk_run(const int port)
 
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
+	tc_cache_cc(port, cc1, cc2);
 
 	/* We only care about CCs being open */
 	if (cc1 == TYPEC_CC_VOLT_OPEN && cc2 == TYPEC_CC_VOLT_OPEN)
