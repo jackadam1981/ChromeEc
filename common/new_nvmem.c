@@ -316,6 +316,12 @@ static struct delete_candidates {
  * list.
  */
 static uint8_t page_list[NEW_NVMEM_TOTAL_PAGES];
+/* Number of available pages. Usually ARRAY_SIZE(page_list) or less. */
+static size_t page_count;
+
+/* Indicator that page in page_list is invalid. */
+#define PAGE_INVALID 0
+
 static uint32_t next_evict_obj_base;
 static uint8_t init_in_progress;
 /*
@@ -534,7 +540,7 @@ test_export_static struct nn_page_header *list_element_to_ph(size_t el)
 {
 	struct nn_page_header *ph;
 
-	if (el >= ARRAY_SIZE(page_list))
+	if (el >= page_count || page_list[el] == PAGE_INVALID)
 		return NULL;
 
 	ph = flash_index_to_ph(page_list[el]);
@@ -668,7 +674,7 @@ static void invalidate_nvmem_flash(void)
 
 	memset(&bad_ph, 0, sizeof(bad_ph));
 
-	for (i = 0; i < ARRAY_SIZE(page_list); i++) {
+	for (i = 0; i < page_count; i++) {
 		ph = list_element_to_ph(i);
 		if (!ph)
 			continue;
@@ -685,17 +691,24 @@ static enum ec_error_list set_first_page_header(void)
 	struct nn_page_header ph = {};
 	enum ec_error_list rv;
 	struct nn_page_header *fph; /* Address in flash. */
+	size_t page_index = 0;
 
 	ph.data_offset = sizeof(ph);
 	ph.page_hash = calculate_page_header_hash(&ph);
-	fph = flash_index_to_ph(page_list[0]);
-	rv = write_to_flash(fph, &ph, sizeof(ph));
 
-	if (rv == EC_SUCCESS) {
-		/* Make sure the controller page tracker is ready. */
-		memset(&controller_at, 0, sizeof(controller_at));
-		controller_at.mt.data_offset = ph.data_offset;
-		controller_at.mt.ph = fph;
+	/* b/315349328: search for first page which is usable. */
+	while (page_index < page_count) {
+		fph = flash_index_to_ph(page_list[page_index]);
+		rv = write_to_flash(fph, &ph, sizeof(ph));
+
+		if (rv == EC_SUCCESS) {
+			/* Make sure the controller page tracker is ready. */
+			memset(&controller_at, 0, sizeof(controller_at));
+			controller_at.mt.data_offset = ph.data_offset;
+			controller_at.mt.ph = fph;
+			return rv;
+		}
+		page_index++;
 	}
 
 	return rv;
@@ -894,21 +907,31 @@ static enum ec_error_list add_final_delimiter(void)
 static enum ec_error_list release_flash_page(struct access_tracker *at)
 {
 	enum ec_error_list rv = EC_SUCCESS;
-	uint8_t page_index = page_list[0];
+	uint8_t page_index;
 	void *flash;
 
-	flash = flash_index_to_ph(page_index);
-	rv = flash_physical_erase((uintptr_t)flash - CONFIG_PROGRAM_MEMORY_BASE,
-			     CONFIG_FLASH_BANK_SIZE);
+	while (page_count) {
+		page_index = page_list[0];
+		flash = flash_index_to_ph(page_index);
+		rv = flash_physical_erase((uintptr_t)flash -
+						  CONFIG_PROGRAM_MEMORY_BASE,
+					  CONFIG_FLASH_BANK_SIZE);
 
-	/* In case of error don't add it to the pool of empty pages */
-	if (rv)
-		return rv;
-	memmove(page_list, page_list + 1,
-		(ARRAY_SIZE(page_list) - 1) * sizeof(page_list[0]));
-	page_list[ARRAY_SIZE(page_list) - 1] = page_index;
-	at->list_index--;
-	controller_at.list_index--;
+		/* In case of error don't add it to the pool of empty pages */
+		memmove(page_list, page_list + 1,
+			(page_count - 1) * sizeof(page_list[0]));
+		/* Adjust access tracker index due to move. */
+		at->list_index--;
+		controller_at.list_index--;
+		if (rv == EC_SUCCESS) {
+			page_list[page_count - 1] = page_index;
+			return rv;
+		} else {
+			/* Mark page as invalid, reduce number of pages. */
+			page_list[--page_count] = PAGE_INVALID;
+		}
+	};
+
 	return rv;
 }
 
@@ -1060,7 +1083,7 @@ static enum ec_error_list start_new_flash_page(size_t data_size)
 	struct nn_page_header *mt_ph;
 	enum ec_error_list rv;
 
-	if ((controller_at.list_index + 1) >= ARRAY_SIZE(page_list))
+	if ((controller_at.list_index + 1) >= page_count)
 		report_no_payload_failure(NVMEMF_PAGE_LIST_OVERFLOW);
 	mt_ph = flash_index_to_ph(page_list[controller_at.list_index + 1]);
 
@@ -1678,6 +1701,7 @@ static void init_page_list(void)
 	struct nn_page_header *ph;
 
 	tail_index = ARRAY_SIZE(page_list);
+	page_count = ARRAY_SIZE(page_list);
 
 	for (i = 0; i < ARRAY_SIZE(page_list); i++) {
 		uint32_t page_index;
@@ -1709,6 +1733,20 @@ static void init_page_list(void)
 			 */
 			if (verify_empty_page(ph) == EC_SUCCESS)
 				page_list[--tail_index] = page_index;
+			else {
+				/* Insert invalid page to the end, and move
+				 * free pages down.
+				 */
+				--tail_index;
+				--page_count;
+				if (tail_index)
+					memmove(page_list + tail_index - 1,
+						page_list + tail_index,
+						sizeof(page_list[0] *
+						       (page_count -
+							tail_index)));
+				page_list[page_count] = PAGE_INVALID;
+			}
 			continue;
 		}
 
@@ -2112,7 +2150,7 @@ static enum ec_error_list verify_last_section(
 	newobjs = get_scratch_buffer(sizeof(struct new_objects));
 
 	at.mt = *prev_del;
-	for (i = 0; i < ARRAY_SIZE(page_list); i++)
+	for (i = 0; i < page_count; i++)
 		if (list_element_to_ph(i) == at.mt.ph) {
 			at.list_index = i;
 			break;
@@ -2744,6 +2782,16 @@ static enum ec_error_list save_new_object(uint16_t obj_base, void *buf)
 	return save_container(ch);
 }
 
+static bool compaction_needed(void)
+{
+	/* Set limit as 3/4 of page_count, which would be 7 for
+	 * page_count==10==ARRAY_SIZE(page_list).
+	 */
+	size_t compation_limit = (page_count >> 1) + (page_count >> 2);
+
+	return (controller_at.list_index >= compation_limit) ? true : false;
+}
+
 static enum ec_error_list new_nvmem_save_(void)
 {
 	const void *fence_ph;
@@ -2759,7 +2807,7 @@ static enum ec_error_list new_nvmem_save_(void)
 
 
 	/* See if compaction is needed. */
-	if (controller_at.list_index >= (ARRAY_SIZE(page_list) - 3)) {
+	if (compaction_needed()) {
 		rv = compact_nvmem();
 		if (rv != EC_SUCCESS)
 			return rv;
@@ -2991,8 +3039,7 @@ static enum ec_error_list setvar_(const uint8_t *key, uint8_t key_len,
 	erase_request = !val || !val_len;
 
 	/* See if compaction is needed. */
-	if (!erase_request &&
-	    (controller_at.list_index >= (ARRAY_SIZE(page_list) - 3))) {
+	if (!erase_request && compaction_needed()) {
 		rv = compact_nvmem();
 		if (rv != EC_SUCCESS)
 			return rv;
