@@ -295,9 +295,12 @@ def bundle_firmware(opts):
         shutil.copyfile(tokens_path, bundle_dir / tokens_file)
         meta = info.objects.add()
         meta.file_name = tokens_file
-        meta.token_info.type = (
-            firmware_pb2.FirmwareArtifactInfo.TokenDatabaseInfo.TokenDatabaseType.EC  # pylint: disable=no-member
+        meta.tarball_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC  # pylint: disable=no-member
         )
+        # meta.token_info.type = (
+        #     firmware_pb2.FirmwareArtifactInfo.TokenDatabaseInfo.TokenDatabaseType.EC  # pylint: disable=no-member
+        # )
 
     write_metadata(opts, info)
 
