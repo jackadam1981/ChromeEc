@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80055349_4d751fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Updated the review comments.",
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afbe3a65_aa3fa444",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "You should combine these enums:\n```\nenum failure_resp_type {\n  /* Response types sent to the host */\n  NO_FAILURE \u003d 0,\n  PACKET_PAYLOAD_ILLEGAL_LEN,\n  ...\n  SPI_OPERATION_FAILURE,\n\n  /* Internal errors without a corresponding host response type */\n  INTERNAL_ERROR_START, /* Placeholder */\n  BOARD_INIT_ERR,\n  SERIAL_RECV_TIMEOUT\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "301e436f_c45792aa",
+        "filename": "zephyr/shim/chip/mchp/second_loader/common.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "As recommended, the two enumerations have been consolidated.",
+      "parentUuid": "afbe3a65_aa3fa444",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d841747a_95d0e438",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Ok, added the logic.",
+      "parentUuid": "b30e35d5_55de092b",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 9
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85577c00_1918f925",
@@ -77,6 +142,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "You\u0027re still mixing the return type.  Change to `enum failure_resp_type`.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4ee589_c424c49d",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Sorry. Updated accordingly.",
+      "parentUuid": "85577c00_1918f925",
       "range": {
         "startLine": 189,
         "startChar": 0,
@@ -110,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85daf08e_00417ecc",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "60dbcffd_66c91cc1",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 7
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83b76688_5e2e9f07",
@@ -123,6 +236,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 7
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c101c266_737795d4",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "83b76688_5e2e9f07",
       "range": {
         "startLine": 242,
         "startChar": 0,
@@ -156,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12765153_c8ec70c2",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "29429f62_987fafdb",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 8
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67412597_03ae4b64",
@@ -169,6 +330,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 8
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4a5603_a50472f6",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "67412597_03ae4b64",
       "range": {
         "startLine": 298,
         "startChar": 0,
@@ -202,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be3356a_ab06ce04",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "ac160abb_02028a27",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 0
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5687796_a3afac72",
@@ -215,6 +424,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 7
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea52777_1ff321b3",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "f5687796_a3afac72",
       "range": {
         "startLine": 349,
         "startChar": 0,
@@ -248,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67c784c_018950f5",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Updated the comments accordingly.",
+      "parentUuid": "cfdf77b5_1e0dd592",
+      "range": {
+        "startLine": 412,
+        "startChar": 3,
+        "endLine": 412,
+        "endChar": 31
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79e1d3fa_ea52719b",
@@ -261,6 +518,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "This can be dropped.  You can use the `status` returned by `program_data` directly.",
+      "range": {
+        "startLine": 488,
+        "startChar": 2,
+        "endLine": 488,
+        "endChar": 28
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc54cfb4_5717f6cd",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "79e1d3fa_ea52719b",
       "range": {
         "startLine": 488,
         "startChar": 2,
@@ -294,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "071b42a1_8692c2d1",
+        "filename": "zephyr/shim/chip/mchp/second_loader/serial.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "93829019_690f1578",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7fd252e_b1935168",
@@ -307,6 +612,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11853ec2_bd420b30",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "e7fd252e_b1935168",
       "range": {
         "startLine": 62,
         "startChar": 7,
@@ -340,6 +669,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2d82c3_6b62a18a",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "8c201af3_c6ba2bda",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7050636_f4ec1713",
@@ -353,6 +706,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 158,
+        "startChar": 7,
+        "endLine": 158,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e882f5fa_c806a4df",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "a7050636_f4ec1713",
       "range": {
         "startLine": 158,
         "startChar": 7,
@@ -386,6 +763,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f22bfae_533d1fc0",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "05f3608a_6aea37f8",
+      "range": {
+        "startLine": 197,
+        "startChar": 7,
+        "endLine": 197,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9ace70b_ddcdb0c3",
@@ -399,6 +800,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 235,
+        "startChar": 7,
+        "endLine": 235,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f213646_be9c4862",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "d9ace70b_ddcdb0c3",
       "range": {
         "startLine": 235,
         "startChar": 7,
@@ -432,6 +857,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9690a4_a2c19b84",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "7fb04e3f_872076da",
+      "range": {
+        "startLine": 315,
+        "startChar": 7,
+        "endLine": 315,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7c25690_af99ca63",
@@ -445,6 +894,30 @@
       "writtenOn": "2023-12-05T16:15:38Z",
       "side": 1,
       "message": "enum failure_resp_type",
+      "range": {
+        "startLine": 401,
+        "startChar": 7,
+        "endLine": 401,
+        "endChar": 15
+      },
+      "revId": "3e834659d60bed08baa524f9ac40090804e80322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e38942c_0bc13b19",
+        "filename": "zephyr/shim/chip/mchp/second_loader/spi_flash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "The return type of the function has been modified to the enumeration type, failure_resp_type.",
+      "parentUuid": "c7c25690_af99ca63",
       "range": {
         "startLine": 401,
         "startChar": 7,

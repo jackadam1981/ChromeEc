@@ -396,6 +396,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4773909d_802f69ef",
+        "filename": "zephyr/shim/chip/mchp/second_loader/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-07T05:25:37Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "510f1197_71c1ed5f",
+      "range": {
+        "startLine": 483,
+        "startChar": 3,
+        "endLine": 483,
+        "endChar": 31
+      },
+      "revId": "a9ad2e1f67924db667e4394cba474863a5b26d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b18d786_61c22eef",
