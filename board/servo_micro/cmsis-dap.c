@@ -24,8 +24,8 @@ static const uint32_t OVERHEAD_CLOCK_CYCLES = 50;
  * The CMSIS-DAP specification calls for identifying the USB interface by
  * looking for "CMSIS-DAP" in the string name, not by subclass/protocol.
  */
-#define USB_SUBCLASS_CMSIS_DAP 0x00
-#define USB_PROTOCOL_CMSIS_DAP 0x00
+#define USB_SUBCLASS_CMSIS_DAP USB_SUBCLASS_GOOGLE_I2C
+#define USB_PROTOCOL_CMSIS_DAP USB_PROTOCOL_GOOGLE_I2C
 
 /* CMSIS-DAP command bytes */
 enum cmsis_dap_command_t {
@@ -148,6 +148,7 @@ static uint8_t rx_buffer[256];
 static uint8_t tx_buffer[256];
 
 static bool jtag_enabled = false;
+static bool swd_enabled = false;
 static uint16_t jtag_half_period_count =
 	CPU_CLOCK / DEFAULT_JTAG_CLOCK_HZ / 2 - OVERHEAD_CLOCK_CYCLES;
 
@@ -221,7 +222,7 @@ static void usb_i2c_execute(unsigned int expected_size)
 static void dap_info(size_t peek_c)
 {
 	const char *CMSIS_DAP_VERSION_STR = "2.1.1";
-	const uint16_t CAPABILITIES = CAP_Jtag;
+	const uint16_t CAPABILITIES = CAP_Jtag | CAP_Swd;
 	struct usb_string_desc *sd = usb_serialno_desc;
 	int i;
 
@@ -299,6 +300,32 @@ static void dap_connect(size_t peek_c)
 			gpio_set_level(GPIO_JTAG_BUFIN_EN_L, false);
 		}
 		break;
+	case CONN_REQ_Swd:
+		tx_buffer[1] = CONN_RESP_Swd;
+		if (jtag_enabled) {
+		}
+		if (!swd_enabled) {
+			swd_enabled = true;
+			
+			/* Turn PA0/1 into GPIO rather than UART */
+			gpio_set_flags(GPIO_UART3_TX_SERVO_JTAG_TCK, GPIO_OUT_LOW);
+			gpio_set_flags(GPIO_UART3_RX_JTAG_BUFFER_TO_SERVO_TDO, GPIO_INPUT);
+
+			/* Configure buffers for input (TMS for now) */
+			gpio_set_level(GPIO_SERVO_JTAG_TMS_DIR, false);
+			gpio_set_level(GPIO_SERVO_JTAG_TDI_DIR, false);
+			gpio_set_level(GPIO_SERVO_JTAG_TRST_DIR, false);
+
+			/* Configure signals feeding into above buffers */
+			gpio_set_flags(GPIO_SERVO_JTAG_TMS, GPIO_INPUT);
+			gpio_set_flags(GPIO_SERVO_JTAG_TDI, GPIO_INPUT);
+			gpio_set_flags(GPIO_SERVO_JTAG_TRST_L, GPIO_INPUT);
+
+			/* Enable JTAG buffers */
+			gpio_set_level(GPIO_JTAG_BUFOUT_EN_L, false);
+			gpio_set_level(GPIO_JTAG_BUFIN_EN_L, false);
+		}
+		break;
 	default:
 		tx_buffer[1] = CONN_RESP_Failed;
 	}
@@ -326,8 +353,33 @@ static void dap_disconnect(size_t peek_c)
 		gpio_set_level(GPIO_SPI1_MUX_SEL, false);
 	}
 
+	if (swd_enabled) {
+		swd_enabled = false;
+
+		/* Disable JTAG buffers */
+		gpio_set_level(GPIO_JTAG_BUFOUT_EN_L, true);
+		gpio_set_level(GPIO_JTAG_BUFIN_EN_L, true);
+
+		/* Turn PA0/1 into GPIO rather than UART */
+		gpio_set_flags(GPIO_UART3_TX_SERVO_JTAG_TCK, GPIO_ALTERNATE);
+		gpio_set_flags(GPIO_UART3_RX_JTAG_BUFFER_TO_SERVO_TDO, GPIO_ALTERNATE);
+	}
+	
 	tx_buffer[1] = STATUS_Ok;
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+/* Busy-wait half a JTAG clock cycle. */
+static inline __attribute__((always_inline)) void half_clock_delay(void)
+{
+	/* Set counter value.  Timer will immediately begin counting down. */
+	STM32_TIM_CNT(3) = jtag_half_period_count;
+	/*
+	 * Wait for counter value to wrap around zero.  Worst case, counting
+	 * down from 32767 at a 104Mhz clock frequency will finish in 315us.
+	 */
+	while (((int16_t)STM32_TIM_CNT(3)) >= 0)
+		;
 }
 
 /* Configure parameters for DAP_Transfer family of requests. */
@@ -347,7 +399,131 @@ static void dap_transfer_configure(size_t peek_c)
 	 * success to the caller.
 	 */
 
+	ccprintf("DAP_Transfer_Configure idle cycles: %d, wait retry: %d, match retry: %d\n",
+		 rx_buffer[1],
+		 rx_buffer[2] + rx_buffer[3] * 256,
+		 rx_buffer[4] + rx_buffer[5] * 256);
+
 	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+static void dap_transfer(size_t peek_c)
+{
+	int num_transfers, offset, c, tx_offset;
+	
+	if (peek_c < 3)
+		return;
+
+	c = queue_count(&cmsis_dap_rx_queue);
+
+	/* Check whether a complete request is in queue. */
+	queue_peek_units(&cmsis_dap_rx_queue, rx_buffer, 0, c);
+	num_transfers = rx_buffer[2];
+	offset = 3;
+	for (size_t i = 0; i < num_transfers; i++) {
+		uint8_t header = rx_buffer[offset];
+		offset += 1;
+		if ((header & 0x02) == 0 || (header & 0x30) != 0) {
+			offset += 4;
+		}
+		if (offset > c) {
+			/* We do not yet have all bytes of the request. */
+			return;
+		}
+	}
+
+	/* We have a complete request, mark as removed from the queue. */
+	queue_advance_head(&cmsis_dap_rx_queue, offset);
+
+	offset = 3;
+	tx_offset = 2;
+	tx_buffer[1] = num_transfers;
+	ccprintf("DAP_Transfer[%d]\n", num_transfers);
+	for (size_t i = 0; i < num_transfers; i++) {
+		uint8_t header = rx_buffer[offset];
+		ccprintf("  header %02x\n", header);
+		offset += 1;
+		if ((header & 0x02) != 0) {
+			// Read request
+			uint8_t ack = 0;
+			
+			uint8_t swd_header = 0x01
+				| (header & 0x01 ? 0x02 : 0)
+				| 0x04
+				| ((header & 0x0C) << 1)
+				| 0x80;
+
+			if (!!(swd_header & 0x02)
+			    ^ !(swd_header & 0x04)
+			    ^ !(swd_header & 0x08)
+			    ^ !(swd_header & 0x10)) {
+				// Parity
+				swd_header |= 0x20;
+			}
+
+			ccprintf("  swd_header 0x%02x\n", swd_header);
+			// Enable drive on TMS
+			gpio_set_level(GPIO_SERVO_JTAG_TMS_DIR, true);
+			gpio_set_flags(GPIO_SERVO_JTAG_TMS, GPIO_OUT_HIGH);
+
+			for (unsigned int i = 0; i < 8; i++) {
+				gpio_set_level(GPIO_SERVO_JTAG_TMS,
+					       !!(swd_header & (1 << (i % 8))));
+				half_clock_delay();
+				gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, true);
+				half_clock_delay();
+				gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, false);
+			}
+
+			// Disable drive on TMS (should have had pullup)
+			gpio_set_flags(GPIO_SERVO_JTAG_TMS, GPIO_INPUT);
+			gpio_set_level(GPIO_SERVO_JTAG_TMS_DIR, false);
+
+			for (int i = 0; i < 4; i++) {
+				half_clock_delay();
+				gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, true);
+				half_clock_delay();
+				ack |= !!gpio_get_level(GPIO_SERVO_JTAG_TMS) << i;
+				gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, false);
+			}
+			ccprintf("  ack 0x%02x\n", ack);
+
+			tx_buffer[tx_offset] = ack;
+			tx_offset++;
+
+			for (int b = 0; b < 4; b++) {
+				uint8_t byte = 0;
+				for (int i = 0; i < 8; i++) {
+					half_clock_delay();
+					gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, true);
+					half_clock_delay();
+					byte |= !!gpio_get_level(GPIO_SERVO_JTAG_TMS) << i;
+					gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, false);
+				}
+				tx_buffer[tx_offset] = byte;
+				tx_offset++;
+				ccprintf("  data 0x%02x\n", byte);
+			}
+
+			half_clock_delay();
+			gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, true);
+			half_clock_delay();
+			//partity = !!gpio_get_level(GPIO_SERVO_JTAG_TMS) << i;
+			gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, false);
+		}
+
+		if ((header & 0x02) == 0 || (header & 0x30) != 0) {
+			offset += 4;
+		}
+		if (offset > c) {
+			/* We do not yet have all bytes of the request. */
+			return;
+		}
+	}
+
+
+	
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
 }
 
@@ -448,19 +624,6 @@ static void dap_swj_clock(size_t peek_c)
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
 }
 
-/* Busy-wait half a JTAG clock cycle. */
-static inline __attribute__((always_inline)) void half_clock_delay(void)
-{
-	/* Set counter value.  Timer will immediately begin counting down. */
-	STM32_TIM_CNT(3) = jtag_half_period_count;
-	/*
-	 * Wait for counter value to wrap around zero.  Worst case, counting
-	 * down from 32767 at a 104Mhz clock frequency will finish in 315us.
-	 */
-	while (((int16_t)STM32_TIM_CNT(3)) >= 0)
-		;
-}
-
 /* Clock data out on TMS. */
 static void dap_swj_sequence(size_t peek_c)
 {
@@ -472,7 +635,15 @@ static void dap_swj_sequence(size_t peek_c)
 	c = queue_count(&cmsis_dap_rx_queue);
 	if (c < 2 + (bit_count + 7) / 8)
 		return;
+	ccprintf("SWJ_Sequence[%d]\n", bit_count);
 	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, c);
+
+	if (swd_enabled) {
+		// Enable drive on TMS
+		gpio_set_level(GPIO_SERVO_JTAG_TMS_DIR, true);
+		gpio_set_flags(GPIO_SERVO_JTAG_TMS, GPIO_OUT_HIGH);
+	}
+	
 	for (unsigned int i = 0; i < bit_count; i++) {
 		gpio_set_level(GPIO_SERVO_JTAG_TMS,
 			       !!(rx_buffer[2 + i / 8] & (1 << (i % 8))));
@@ -481,6 +652,13 @@ static void dap_swj_sequence(size_t peek_c)
 		half_clock_delay();
 		gpio_set_level(GPIO_UART3_TX_SERVO_JTAG_TCK, false);
 	}
+
+	if (swd_enabled) {
+		// Disable drive on TMS
+		gpio_set_flags(GPIO_SERVO_JTAG_TMS, GPIO_INPUT);
+		gpio_set_level(GPIO_SERVO_JTAG_TMS_DIR, false);
+	}
+
 	tx_buffer[1] = STATUS_Ok;
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
 }
@@ -610,6 +788,19 @@ static void dap_jtag_sequence(size_t peek_c)
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, tx_ptr - tx_buffer);
 }
 
+static void dap_swd_configure(size_t peek_c)
+{
+	if (peek_c < 2)
+		return;
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 2);
+
+	ccprintf("SWD configuration: %02x\n", rx_buffer[1]);
+
+	tx_buffer[1] = STATUS_Ok;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
+}
+
+
 /* Vendor command (HyperDebug): Discover Google-specific capabilities. */
 static void dap_goog_info(size_t peek_c)
 {
@@ -665,11 +856,13 @@ static void (*dispatch_table[256])(size_t peek_c) = {
 	[DAP_Connect] = dap_connect,
 	[DAP_Disconnect] = dap_disconnect,
 	[DAP_TransferConfigure] = dap_transfer_configure,
+	[DAP_Transfer] = dap_transfer,
 	[DAP_ResetTarget] = dap_reset_target,
 	[DAP_SWJ_Pins] = dap_swj_pins,
 	[DAP_SWJ_Clock] = dap_swj_clock,
 	[DAP_SWJ_Sequence] = dap_swj_sequence,
 	[DAP_JTAG_Sequence] = dap_jtag_sequence,
+	[DAP_SWD_Configure] = dap_swd_configure,
 };
 
 /* Dispatch incoming request according to table above. */
@@ -685,9 +878,11 @@ static void cmsis_dap_dispatch(void)
 	if (dispatch_table[rx_buffer[0]]) {
 		/* First byte of response is always same as command byte. */
 		tx_buffer[0] = rx_buffer[0];
+		//ccprintf("CMSIS-DAP request %02x\n", rx_buffer[0]);
 		/* Invoke handler routine. */
 		dispatch_table[rx_buffer[0]](peek_c);
 	} else {
+		ccprintf("CMSIS-DAP unrecognized request %02x\n", rx_buffer[0]);
 		/*
 		 * Unrecognized command.  The CMSIS-DAP protocol does not allow
 		 * us to know the size of the data of a command in general, nor
