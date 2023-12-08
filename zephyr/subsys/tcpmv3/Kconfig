@@ -4,7 +4,7 @@
 
 if PLATFORM_EC_USBC
 
-menuconfig USB_PDC_POWER_MGNT
+menuconfig USB_PDC
 	bool "Configure USB-C PD Controller"
 	depends on PLATFORM_EC_USB_PD_TCPMV3
 	default y

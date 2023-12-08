@@ -36,8 +36,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+#define CPRINTF(format, args...) 
+#define CPRINTS(format, args...) 
 
 #ifdef CONFIG_ZEPHYR
 enum ioex_port { IOEX_C0_NCT38XX = 0, IOEX_C2_NCT38XX, IOEX_PORT_COUNT };
@@ -266,13 +266,13 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 
 void config_usb_db_type(void)
 {
-	enum ec_cfg_usb_db_type db_type = ec_cfg_usb_db_type();
+//	enum ec_cfg_usb_db_type db_type = ec_cfg_usb_db_type();
 
 	/*
 	 * TODO(b/180434685): implement multiple DB types
 	 */
 
-	CPRINTS("Configured USB DB type number is %d", db_type);
+//	CPRINTS("Configured USB DB type number is %d", db_type);
 }
 
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
@@ -398,9 +398,9 @@ static void board_tcpc_init(void)
 #ifndef CONFIG_ZEPHYR
 		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
 		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
-#else
-	} else {
-		tcpc_config[1].irq_gpio.port = NULL;
+//	} 
+//else {
+//		tcpc_config[1].irq_gpio.port = NULL;
 #endif /* !CONFIG_ZEPHYR */
 	}
 }

@@ -120,7 +120,7 @@ extern "C" {
  */
 
 #define INTEL_ALTMODE_REG_DATA_STATUS 0x5F
-#define INTEL_ALTMODE_DATA_STATUS_REG_LEN 5
+#define INTEL_ALTMODE_DATA_STATUS_REG_LEN 4
 
 union data_status_reg {
 	struct {

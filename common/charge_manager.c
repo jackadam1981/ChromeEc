@@ -393,6 +393,7 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 #else
 		/* There is a single ADC that measures joint Vbus */
 		voltage_mv = adc_read_channel(ADC_VBUS);
+//		voltage_mv = board_get_vbus_voltage(port);
 #endif
 	}
 	return voltage_mv;
@@ -1015,7 +1016,7 @@ static void charge_manager_refresh(void)
 	if (power_changed) {
 		hook_notify(HOOK_POWER_SUPPLY_CHANGE);
 		/* notify host of power info change */
-		pd_send_host_event(PD_EVENT_POWER_CHANGE);
+		//pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
 }
 DECLARE_DEFERRED(charge_manager_refresh);
@@ -1026,7 +1027,7 @@ DECLARE_DEFERRED(charge_manager_refresh);
 static void charge_override_timeout(void)
 {
 	delayed_override_port = OVERRIDE_OFF;
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+//	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 DECLARE_DEFERRED(charge_override_timeout);
 

@@ -71,7 +71,7 @@ int pd_set_power_supply_ready(int port)
 
 	return EC_SUCCESS;
 }
-
+#if 0
 int board_vbus_source_enabled(int port)
 {
 	/* BJ port is always sink. */
@@ -79,7 +79,7 @@ int board_vbus_source_enabled(int port)
 		return 0;
 	return ppc_is_sourcing_vbus(port);
 }
-
+#endif
 #ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
 /* ----------------- Vendor Defined Messages ------------------ */
 /* Responses specifically for the enablement of TBT mode in the role of UFP */

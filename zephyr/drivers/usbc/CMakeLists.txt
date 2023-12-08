@@ -5,3 +5,4 @@
 zephyr_library_sources_ifdef(CONFIG_USBC_INTEL_ALTMODE intel_altmode.c)
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_RTS54XX pdc_rts54xx.c)
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_RTS545X pdc_rts545x.c)
+zephyr_library_sources_ifdef(CONFIG_USBC_PDC_CCG8 pdc_ccg8.c)

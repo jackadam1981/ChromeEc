@@ -51,6 +51,28 @@ static const struct tcpm_config_t tcpm_config = {
 	.create_thread = create_thread,
 };
 
+static void tcpm_cci_handler_cb(union cci_event_t cci_event)
+{
+	LOG_INF("DATA_LEN: %d\n", cci_event.data_len);
+
+	if (cci_event.reset_completed) {
+		LOG_INF("TCPM reset\n");
+	}
+
+	if (cci_event.busy) {
+              LOG_INF("TCPM busy\n");
+        }
+
+        if (cci_event.error) {
+		LOG_INF("TCPM error\n");
+        }
+
+        if (cci_event.command_completed) {
+		LOG_INF("TCPM done\n");
+        }
+}
+
+
 /*
  * Some TEST code to access the PDC driver
  */
@@ -65,7 +87,14 @@ static void run_tcpm(void *dev, void *unused1, void *unused2)
 	union connector_capability_t ccaps;
 	uint16_t vb;
 	uint32_t fwv;
+	uint32_t vid_pid;
+	uint32_t pd_version;
 	int delay = 0;
+	uint8_t result;
+	struct connector_status_t cs;
+
+	union pdo_source_t pdos[7];
+	union rdo_fixed_t rdo;
 
 	caps.bNumPorts = 0;
 
@@ -101,48 +130,123 @@ static void run_tcpm(void *dev, void *unused1, void *unused2)
 				k++;
 				break;
 			case 4:
-				/* Call Intel Specific command for RVP. REMOVE FOR OTHER BOARDS */
-				pdc_set_voltage(data->pdc[0]);
-				k++;
-				break;
-			case 5:
 				/* Get device capabilities */
 				pdc_get_capability(data->pdc[0], &caps);
 				k++;
 				break;
-			case 6:
+			case 5:
 				/* Analyze device caps */
 				printk("\n\n***PNUM: %d\n", caps.bNumPorts);
 				k++;
 				break;
-			case 7:
+			case 6:
 				/* Get Connector caps */
 				pdc_get_connector_capability(data->pdc[0], &ccaps);
 				k++;
 				break;
-			case 8:
+			case 7:
 				/* Analyze connector caps */
 				printk("\n\n***CCAPS: %04x\n", ccaps.raw_value);
-				k = 10;
+				k++;
+				break;
+			case 8:
+				/* Realtek said this needed to be called before every
+				 * pdc_getvbus_voltage command, but it seems it only
+				 * needs to be called once.
+				 */
+				pdc_read_power_level(data->pdc[0]);
+				k++;
 				break;
 			case 9:
 				vb = 0;
 				rv = pdc_getvbus_voltage(data->pdc[0], &vb);
-				printk("V(%d): %04x\n", rv, vb);
-				k = 11;
+				k++;
 				break;
 			case 10:
-				vb = 0;
-				rv = pdc_get_fw_version(data->pdc[0], &fwv);
-				printk("TEST(%d): %04x\n", rv, fwv);
-				k = 9;
+				printk("V(%d): %04x\n", rv, vb);
+				k++;
 				break;
 			case 11:
+				vb = 0;
+				rv = pdc_get_fw_version(data->pdc[0], &fwv);
+				k++;
+				break;
+			case 12:
+				printk("TEST(%d): %08x\n", rv, fwv);
+				k++;
+				break;
+			case 13:
+				rv = pdc_get_vid_pid(data->pdc[0], &vid_pid);
+				k++;
+				break;
+			case 14:
+				printk("VIDPID(%d): %08x\n", rv, vid_pid);
+				k++;
+				break;
+			case 15:
+				rv = pdc_get_pd_version(data->pdc[0], &pd_version);
+				k++;
+				break;
+			case 16:
+				printk("PDV(%d): %08x\n", rv, pd_version);
+				k++;
+				break;
+			case 17:
+				rv = pdc_is_typec_connected(data->pdc[0], &result);
+				k++;
+				break;
+			case 18:
+				printk("TC Conn(%d): %d\n", rv, result);
+				k++;
+				break;
+			case 19:
+				rv = pdc_is_pd_ready(data->pdc[0], &result);
+				k++;
+				break;
+			case 20:
+				printk("PD Ready(%d): %d\n", rv, result);
+				k++;
+				break;
+			case 21:
+				rv = pdc_get_rdo(data->pdc[0], &rdo.raw_value);
+				k++;
+				break;
+			case 22:
+				printk("RDO(%d): %d\n",rv, rdo.obj_position);
+				k++;
+				break;
+			case 23:
+				rv = pdc_get_pdo(data->pdc[0],
+						SOURCE_PDO,
+						PDO_OFFSET_0,
+						7,
+						true,
+						&pdos[0].raw_value);
+				k++;
+				break;
+			case 24:
+				for (int i = 0; i < 7; i++) {
+					printk("PDO%d: %d\n", i, pdos[i].voltage * 50);
+				}
+				k++;
+				break;
+			case 25:
+				rv = pdc_get_connector_status(data->pdc[0], &cs);
+				k++;
+				break;
+			case 26:
+				printk("RDO: %08x\n", cs.rdo);
+				printk("VBUS: %d %d\n", cs.voltage_scale, cs.voltage_reading * 50);
+				printk("FET: %d\n", cs.sink_path_status);
+				printk("ORI: %d\n", cs.orientation);
+				k++;
+				break;
+			case 27:
 				break;
 			}
 		}
 
-		k_sleep(K_MSEC(1000));
+		k_sleep(K_MSEC(500));
 	}
 }
 
@@ -159,6 +263,9 @@ static int tcpm_subsys_init(const struct device *dev)
 		LOG_ERR("PDC NOT READY\n");
 		return -ENODEV;
 	}
+
+	/* Set CCI Event callback */
+	pdc_set_handler_cb(data->pdc[0], tcpm_cci_handler_cb);
 
 	/* Create the thread for this port */
 	cfg->create_thread(dev);

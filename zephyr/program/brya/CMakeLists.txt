@@ -19,6 +19,13 @@ zephyr_include_directories(
   "${PLATFORM_EC_BASEBOARD}"
   "${PLATFORM_EC_BOARD}")
 
+if(DEFINED CONFIG_BOARD_BRYA)
+  project(brya)
+elseif(DEFINED CONFIG_BOARD_BRYA_PDC)
+  project(brox_pdc)
+  add_subdirectory(brya_pdc)
+endif()
+
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY
   "${PLATFORM_EC_BASEBOARD}/battery_presence.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_EEPROM
@@ -34,6 +41,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
   "${PLATFORM_EC_BOARD}/usbc_config.c"
   "${PLATFORM_EC_BOARD}/fw_config.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGE_MANAGER
-  "${PLATFORM_EC_BOARD}/charger.c"
-  "${PLATFORM_EC}/common/math_util.c")
+if(NOT DEFINED CONFIG_BOARD_BRYA_PDC)
+  zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGE_MANAGER
+    "${PLATFORM_EC_BOARD}/charger.c"
+    "${PLATFORM_EC}/common/math_util.c")
+endif()

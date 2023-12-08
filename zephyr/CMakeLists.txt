@@ -576,18 +576,18 @@ zephyr_library_sources_ifdef(CONFIG_SVDM_RSP_DFP_ONLY
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_OCP
                                                 "${PLATFORM_EC}/common/usbc_ocp.c")
 
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DISCOVERY
-                                                "${PLATFORM_EC}/common/usb_pd_discovery.c")
+					#zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DISCOVERY
+					#                                                "${PLATFORM_EC}/common/usb_pd_discovery.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_ALT_MODE_UFP
                                                 "${PLATFORM_EC}/common/usb_pd_alt_mode_ufp.c")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DUAL_ROLE
                                                 "${PLATFORM_EC}/common/usb_pd_dual_role.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_CONSOLE_CMD
-                                                "${PLATFORM_EC}/common/usb_pd_console_cmd.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_HOST_CMD
-                                                "${PLATFORM_EC}/common/usb_pd_host_cmd.c"
-                                                "${PLATFORM_EC}/common/usbc/usb_pd_host.c")
+					#zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_CONSOLE_CMD
+					#                                                "${PLATFORM_EC}/common/usb_pd_console_cmd.c")
+					#zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_HOST_CMD
+					#                                                "${PLATFORM_EC}/common/usb_pd_host_cmd.c"
+					#                                                "${PLATFORM_EC}/common/usbc/usb_pd_host.c")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DP_HPD_GPIO
                                                 "${PLATFORM_EC}/common/usbc/dp_hpd_gpio.c")

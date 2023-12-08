@@ -41,6 +41,22 @@ enum power_role_t {
 	SOURCE
 };
 
+union rdo_fixed_t {
+	struct {
+		uint32_t max_operating_current:	10;
+		uint32_t operating_current:	10;
+		uint32_t reserved:		2;
+		uint32_t epr_mode_capable:	1;
+		uint32_t unchunked_ext_msg:	1;
+		uint32_t no_usb_suspend:	1;
+		uint32_t usb_comms_capable:	1;
+		uint32_t capability_mismatch:	1;
+		uint32_t giveback:		1;
+		uint32_t obj_position:		4;
+	};
+	uint32_t raw_value;
+};
+
 union pdo_source_t {
 	struct {
 		uint32_t max_current            : 10;
@@ -266,34 +282,27 @@ union conn_status_change_t {
 	uint16_t raw_value;
 };
 
-union general_status_t {
-	struct {
-		uint16_t power_operation_mode	: 3;
-		uint16_t connect_status		: 1;
-		uint16_t power_direction	: 1;
-		uint16_t conn_partner_flags	: 8;
-		uint16_t conn_partner_type	: 3;
-	};
-	uint16_t raw_value;
-};
-
-union extra_status_t {
-	struct {
-		uint32_t battery_charging_caps	: 2;
-		uint32_t provider_caps_limited	: 4;
-		uint32_t bcd_pd_version		: 16;
-		uint32_t reserved		: 10;
-	};
-	uint32_t raw_value;
-};
-
 struct connector_status_t {
 	union conn_status_change_t conn_status_change;
-	union general_status_t general_status;
+	uint8_t power_operation_mode;
+	uint8_t connect_status;
+	uint8_t power_direction;
+	uint8_t conn_partner_flags;
+	uint8_t conn_partner_type;
 	uint32_t rdo;
-	union extra_status_t extra_status;
-	uint32_t reserved;
-} __packed;
+	uint8_t battery_charging_cap;
+	uint8_t provider_caps_limited;
+	uint16_t bcd_pd_version;
+	uint8_t orientation;
+	uint8_t sink_path_status;
+	uint8_t reverse_current_protection_status;
+	uint8_t power_reading_ready;
+	uint8_t current_scale;
+	uint16_t peak_current;
+	uint16_t average_current;
+	uint8_t voltage_scale;
+	uint16_t voltage_reading;
+};
 
 struct error_status_bits_t {
 	uint16_t unrecognized_command		: 1;
@@ -343,6 +352,8 @@ typedef int (*pdc_get_vbus_t)(const struct device *dev, uint16_t *vbus);
 typedef int (*pdc_get_pdo_t)(const struct device *dev, enum pdo_type_t pdo_type, enum pdo_offset_t pdo_offset, uint8_t num_pdos,
                         bool port_partner_pdo, uint32_t *pdos);
 
+typedef int (*pdc_get_rdo_t)(const struct device *dev, uint32_t *rdo);
+
 typedef int (*pdc_get_alternate_mode_t)(const struct device *dev, enum sop_t sop, uint8_t alt_mode_offset, uint8_t num_alt_modes, struct alt_mode_t *alt_modes);
 
 typedef int (*pdc_is_flash_code_t)(const struct device *dev, uint8_t *is_flash_code);
@@ -350,9 +361,14 @@ typedef int (*pdc_get_fw_version_t)(const struct device *dev, uint32_t *fw_versi
 typedef int (*pdc_get_vid_pid_t)(const struct device *dev, uint32_t *vid_pid);
 typedef int (*pdc_get_pd_version_t)(const struct device *dev, uint32_t *pd_version);
 
+typedef int (*pdc_is_pd_ready_t)(const struct device *dev, uint8_t *result);
+typedef int (*pdc_is_typec_connected_t)(const struct device *dev, uint8_t *result);
+
 typedef int (*pdc_get_current_pdo_t)(const struct device *dev, uint32_t *pdo);
 
 typedef int (*pdc_set_voltage_t)(const struct device *dev);
+
+typedef int (*pdc_read_power_level_t)(const struct device *dev);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -380,6 +396,12 @@ __subsystem struct pdc_driver_api_t {
 	pdc_get_vbus_t get_vbus_current;
 	pdc_get_current_pdo_t get_current_pdo;
 	pdc_get_pdo_t get_pdo;
+	pdc_get_rdo_t get_rdo;
+
+	pdc_read_power_level_t read_power_level;
+
+	pdc_is_pd_ready_t is_pd_ready;
+        pdc_is_typec_connected_t is_typec_connected;
 
 	pdc_is_flash_code_t is_flash_code;
 	pdc_get_fw_version_t get_fw_version;
@@ -405,6 +427,13 @@ static inline int pdc_enable(const struct device *dev)
 	const struct pdc_driver_api_t *api = (const struct pdc_driver_api_t *)dev->api;
 
 	return api->enable(dev);
+}
+
+static inline int pdc_read_power_level(const struct device *dev)
+{
+	const struct pdc_driver_api_t *api = (const struct pdc_driver_api_t *)dev->api;
+
+	return api->read_power_level(dev);
 }
 
 /**
@@ -744,7 +773,21 @@ static inline int pdc_is_flash_code(const struct device *dev, uint8_t *is_flash_
 
 	return api->is_flash_code(dev, is_flash_code);
 }               
-        
+
+static inline int pdc_is_pd_ready(const struct device *dev, uint8_t *result)
+{
+	const struct pdc_driver_api_t *api = (const struct pdc_driver_api_t *)dev->api;
+
+	return api->is_pd_ready(dev, result);
+}
+
+static inline int pdc_is_typec_connected(const struct device *dev, uint8_t *result)
+{
+	const struct pdc_driver_api_t *api = (const struct pdc_driver_api_t *)dev->api;
+
+	return api->is_typec_connected(dev, result);
+}
+
 static inline int pdc_get_fw_version(const struct device *dev, uint32_t *fw_version)
 {
 	const struct pdc_driver_api_t *api = (const struct pdc_driver_api_t *)dev->api;
@@ -765,6 +808,14 @@ static inline int pdc_get_pd_version(const struct device *dev, uint32_t *pd_vers
 
 	return api->get_pd_version(dev, pd_version);
 }
+
+static inline int pdc_get_rdo(const struct device *dev, uint32_t *rdo)
+{
+	const struct pdc_driver_api_t *api = (const struct pdc_driver_api_t *)dev->api;
+
+	return api->get_rdo(dev, rdo);
+}
+
 /**
  * @brief Get the currently selected PDO
  *
