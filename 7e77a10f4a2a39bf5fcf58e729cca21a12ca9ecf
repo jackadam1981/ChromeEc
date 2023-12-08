@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df8dc30_87e5a51a",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T20:01:40Z",
+      "side": 1,
+      "message": "Similar to above, this file seems like a stripped down implementation of [fpc_private.c](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c). To avoid duplication, maybe we can have that file call into this one or replace it entirely?",
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ecdc5ad_08d9a24f",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T20:01:40Z",
+      "side": 1,
+      "message": "It\u0027s probably worth printing a warning if we\u0027re trying to init bep but the algorithm isn\u0027t supported.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10da3a2d_01052388",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T20:01:40Z",
+      "side": 1,
+      "message": "This file is a near exact copy of [fpc_bio_algorithm.h](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/bep/fpc_bio_algorithm.h) so how do we ensure the two are kept in sync. Maybe we should either symlink one to the other or point all EC instances here?",
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2cc37f_be87626b",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T20:01:40Z",
+      "side": 1,
+      "message": "why pfe? should this be fpc?",
+      "range": {
+        "startLine": 34,
+        "startChar": 56,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
