@@ -278,6 +278,10 @@ static int kb8010_set_state(const struct usb_mux *me, mux_state_t mux_state,
 		}
 	}
 
+	const int aux_lsx_control = kb8010_controls[me->usb_port].dp_enable_gpio;
+	int aux_lsx_state = (mode == KB8010_DP) || (mode == KB8010_DPMF);
+	gpio_or_ioex_set_level(aux_lsx_control, aux_lsx_state);
+
 	/* Write mode to protocol register */
 //	rv = kb8010_write(me, KB8010_REG_PROTOCOL, (uint8_t)mode);
 //	if (rv) {
