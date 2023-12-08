@@ -181,6 +181,7 @@ static enum cr50_comm_err cmd_to_cr50(enum cr50_comm_cmd cmd,
 	return rv;
 }
 
+#ifndef CONFIG_PLATFORM_EC_SHARED_SPI_FLASH
 static enum cr50_comm_err verify_hash(void)
 {
 	const uint8_t *hash;
@@ -199,6 +200,16 @@ static enum cr50_comm_err verify_hash(void)
 	CPRINTS("Verifying hash");
 	return cmd_to_cr50(CR50_COMM_CMD_VERIFY_HASH, hash, SHA256_DIGEST_SIZE);
 }
+#else
+static enum cr50_comm_err verify_hash(void)
+{
+	/* TODO(b/289783489) Presume successful verification for ECs
+	 * that use external EC and AP shared SPI flash. Verification
+	 * of EC RW to be done by AP.
+	 */
+	return CR50_COMM_SUCCESS;
+}
+#endif
 
 /* LCOV_EXCL_START - TODO(b/172210316) implement is_battery_ready(), and remove
  * this lcov excl.
