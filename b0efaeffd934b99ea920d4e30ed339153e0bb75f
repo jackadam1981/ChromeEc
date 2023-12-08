@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4813d73e_038e9962",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-12-08T13:51:30Z",
+      "side": 1,
+      "message": "If this value is received from the DTS, can\u0027t the FPC1025 have a property with constant value in the binding?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "b0efaeffd934b99ea920d4e30ed339153e0bb75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
