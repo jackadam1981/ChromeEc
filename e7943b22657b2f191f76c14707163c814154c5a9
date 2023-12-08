@@ -16,6 +16,24 @@
       "message": "LGTM, suggest to chain the hooks like this:\n\n\n```\nstatic void hdmi_hpd_high(void)\n{\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 1);\n\thook_call_deferred(\u0026hdmi_hpd_low_data, 500ms);\n}\nDECLARE_DEFERRED(hdmi_hpd_high);\nstatic void hdmi_hpd_low(void)\n{\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 0);\n\thook_call_deferred(\u0026ps185_hdmi_hpd_deferred_data, 500ms);\n}\nDECLARE_DEFERRED(hdmi_hpd_low);\n```",
       "revId": "e7943b22657b2f191f76c14707163c814154c5a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bef247_25326bd0",
+        "filename": "zephyr/program/corsola/src/variant_db_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-12-08T03:03:24Z",
+      "side": 1,
+      "message": "We have verified that this modification is passed.",
+      "parentUuid": "fe071867_967f6419",
+      "revId": "e7943b22657b2f191f76c14707163c814154c5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
