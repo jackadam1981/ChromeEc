@@ -16,6 +16,24 @@
       "message": "The CQ failures seem to be caused by one Zephyr unit test setting the `_FORCE_DID` config to `n`.\n\nzephyr/test/drivers/ps8xxx/prj.conf:\n```\nCONFIG_PLATFORM_EC_USB_PD_TCPM_PS8805\u003dy \nCONFIG_PLATFORM_EC_USB_PD_TCPM_PS8805_FORCE_DID\u003dn \nCONFIG_PLATFORM_EC_USB_PD_TCPM_PS8815\u003dy \nCONFIG_PLATFORM_EC_USB_PD_TCPM_PS8815_FORCE_DID\u003dn\n```",
       "revId": "453e6136c3cf76742d91015078cb61e1360dcaae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd149903_15a4ef8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-08T19:59:45Z",
+      "side": 1,
+      "message": "The unit tests use the ps8xxx emulator. The emulator hasn\u0027t implemented the DID override logic, like not reporting the proprietary registers. It seems more work to add the support to the emulator. I will add the missing `_FORCE_DID` config to the `board.h` to resolve the problem first.",
+      "parentUuid": "7a175ffa_f68d5cb0",
+      "revId": "453e6136c3cf76742d91015078cb61e1360dcaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
