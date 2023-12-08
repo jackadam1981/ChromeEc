@@ -789,8 +789,6 @@ static void pchg_startup(void)
 	CPRINTS("%s", __func__);
 	queue_init(&host_events);
 
-	pchg_count = board_get_pchg_count();
-
 	for (p = 0; p < pchg_count; p++) {
 		rv = EC_SUCCESS;
 		ctx = &pchgs[p];
@@ -835,6 +833,8 @@ void pchg_task(void *u)
 {
 	struct pchg *ctx;
 	int p;
+
+	pchg_count = board_get_pchg_count();
 
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		/* We are here after power-on (because of late sysjump). */
