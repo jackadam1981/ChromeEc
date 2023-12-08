@@ -22,6 +22,30 @@
       },
       "revId": "1f7b3cb3dec5c2f76258333aae9ae8ab80ed56ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5982d51_3650d114",
+        "filename": "zephyr/program/skyrim/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-12-08T22:23:20Z",
+      "side": 1,
+      "message": "Done. I had always assumed that devicetrees didn\u0027t support that.",
+      "parentUuid": "b96817c4_98965967",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "1f7b3cb3dec5c2f76258333aae9ae8ab80ed56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
