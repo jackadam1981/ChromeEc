@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c743661c_006bbf78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 30
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T20:04:17Z",
+      "side": 1,
+      "message": "I see the declaration but no definition.",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "bfbf86ef5ad6260f2f40e4fefafa0c1160ab8b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4a8532_0f1679fb",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T20:04:17Z",
+      "side": 1,
+      "message": "Why only in Zephyr? Couldn\u0027t this be useful in non-Zephyr builds too?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "bfbf86ef5ad6260f2f40e4fefafa0c1160ab8b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
