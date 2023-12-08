@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5b02c9_66e5951b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T17:54:18Z",
+      "side": 1,
+      "message": "I didn\u0027t double check pin or port configs but overall this LGTM. Is it working now?",
+      "revId": "dd4ee42db1cb187951fbb3200c8dced5fd296675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822f81cf_8c17c1cf",
+        "filename": "board/hatch_fp/gpio.inc",
+        "patchSetId": 33
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T17:54:18Z",
+      "side": 1,
+      "message": "```suggestion\n * to write to the gpio registers will be ignored.\n```",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "dd4ee42db1cb187951fbb3200c8dced5fd296675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec523155_f165d5d9",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 33
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T17:54:18Z",
+      "side": 1,
+      "message": "```suggestion\n * to write to the gpio registers will be ignored.\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 39,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "dd4ee42db1cb187951fbb3200c8dced5fd296675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f926df3_9de0ec7d",
+        "filename": "board/nucleo-dartmonkey/gpio.inc",
+        "patchSetId": 33
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T17:54:18Z",
+      "side": 1,
+      "message": "```suggestion\n * to write to the gpio registers will be ignored.\n```",
+      "range": {
+        "startLine": 35,
+        "startChar": 39,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "dd4ee42db1cb187951fbb3200c8dced5fd296675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9135f8_85a98769",
+        "filename": "chip/stm32/debug.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-08T17:54:18Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t * ignored by the peripheral. This is just a simple indicator\n\t\t * and not an exhaustive check of the peripheral config.\n```",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "dd4ee42db1cb187951fbb3200c8dced5fd296675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
