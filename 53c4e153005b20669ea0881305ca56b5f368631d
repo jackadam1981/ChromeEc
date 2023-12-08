@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4469b14e_e70c5e4e",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "35f2c993_46fba86d",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed69d024_7a693d21",
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "067db2fb_f60e2cdd",
+      "range": {
+        "startLine": 138,
+        "startChar": 33,
+        "endLine": 138,
+        "endChar": 63
+      },
+      "revId": "53c4e153005b20669ea0881305ca56b5f368631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d216c2ed_f100007d",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "I think it\u0027s better to keep \"Clearing bootstatus\".",
+      "parentUuid": "c7557c3d_c0eaaddd",
       "range": {
         "startLine": 138,
         "startChar": 33,

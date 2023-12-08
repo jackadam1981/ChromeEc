@@ -1,6 +1,115 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9a6111_06a2e8b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "Are you planning to add a unit  test (in a separate CL)?",
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc77f2e5_661f1791",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "nit: These are now redundant (because you have \u0027APHD\u0027).",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc6d9f6e_66e4721c",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "Do you think you can improve wording a little bit here? \u0027started\u0027 seems ambiguous. How about \u0027APHD: Reloaded on %s (timeout\u003d%ds)\u0027?",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135c65e5_c7b4bbc3",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "So, this is basically the reload command for APHD, right? I recommend its name contains RELOAD somewhere (e.g. EC_APHD_CMD_RELOAD_NOW or EC_HANG_DETECT_CMD_RELOAD_NOW).",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dde3040_7d5487a8",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "Also I really wish this is renamed to aphd_reload or hang_detect_reload...",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f290590_4e04046b",

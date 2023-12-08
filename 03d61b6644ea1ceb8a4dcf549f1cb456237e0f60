@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03111b32_b7d0da55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06cd7024_f33e60ea",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a0f6c2_d135c56a",
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "No reason to send any host events as AP is hang.",
       "parentUuid": "2cd407b4_3fa7feb8",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f8384d_f0ab2228",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-08T02:17:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5d4a6874_d22ca9b9",
       "range": {
         "startLine": 33,
         "startChar": 1,
