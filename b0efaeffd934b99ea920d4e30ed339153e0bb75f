@@ -22,6 +22,30 @@
       },
       "revId": "b0efaeffd934b99ea920d4e30ed339153e0bb75f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ef0965_a6be9555",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-08T17:02:41Z",
+      "side": 1,
+      "message": "I think that this the sentence was misleading. There are actually two sizes here: real image size (which can be calculated from DTS properties) and size of image buffer (real image + metadata added by the driver).",
+      "parentUuid": "4813d73e_038e9962",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "b0efaeffd934b99ea920d4e30ed339153e0bb75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
