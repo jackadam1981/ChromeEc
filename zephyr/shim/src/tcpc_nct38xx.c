@@ -6,14 +6,17 @@
 #include "config.h"
 #include "usbc/tcpc_nct38xx.h"
 #include "usbc/utils.h"
+#include <zephyr/kernel.h>
 
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
 
-#define GPIO_DEV_WITH_COMMA(id) DEVICE_DT_GET(DT_PHANDLE(id, gpio_dev)),
+#define GPIO_DEV_PROP gpio_dev
+
+#define GPIO_DEV_WITH_COMMA(id) DEVICE_DT_GET(DT_PHANDLE(id, GPIO_DEV_PROP)),
 
 #define GPIO_DEV_BINDING(usbc_id, tcpc_id)                                     \
-	COND_CODE_1(DT_NODE_HAS_PROP(tcpc_id, gpio_dev),                       \
+	COND_CODE_1(DT_NODE_HAS_PROP(tcpc_id, GPIO_DEV_PROP),                       \
 		    ([USBC_PORT_NEW(usbc_id)] = GPIO_DEV_WITH_COMMA(tcpc_id)), \
 		    ())
 
@@ -25,10 +28,17 @@
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, tcpc), \
 		    (NCT38XX_CHECK(usbc_id, DT_PHANDLE(usbc_id, tcpc))), ())
 
+#define NCT38XX_GPIO_CHECK(usbc_id)
+	COND_CODE_1(DT_NODE_HAS_COMPAT(NCT38XX_GPIO(usbc_id), NCT38XX_GPIO_COMPAT), \
+		(), \
+		(BUILD_ASSERT(0, "Failed")))
+
 /* NCT38XX GPIO device pool for binding the TCPC port and NCT38XX GPIO device */
 static const struct device *nct38xx_gpio_devices[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	DT_FOREACH_STATUS_OKAY(named_usbc_port, NCT38XX_GPIO)
 };
+
+DT_FOREACH_STATUS_OKAY(named_usbc_port, NCT38XX_GPIO_CHECK)
 
 const struct device *nct38xx_get_gpio_device_from_port(const int port)
 {
