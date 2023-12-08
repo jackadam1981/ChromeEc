@@ -9,6 +9,10 @@ include: ["i2c-device.yaml", "cros-ec,usbc-mux.yaml"]
 compatible: "kandou,kb8010"
 
 properties:
+  dp-en-pin:
+    type: phandle
+    required: true
+
   reset-pin:
     type: phandle
     required: true
