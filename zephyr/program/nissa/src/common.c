@@ -64,7 +64,11 @@ int pd_check_vconn_swap(int port)
  */
 __override uint8_t board_get_charger_chip_count(void)
 {
+#ifdef CONFIG_BOARD_ANRAGGAR
+	return 1;
+#else
 	return board_get_usb_pd_port_count();
+#endif /* CONFIG_BOARD_ANRAGGAR */
 }
 
 __override void ocpc_get_pid_constants(int *kp, int *kp_div, int *ki,
