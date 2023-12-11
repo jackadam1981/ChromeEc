@@ -357,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "312234d0_a20e49fe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4715,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbdecd02_595ce9ec",
+      "range": {
+        "startLine": 4715,
+        "startChar": 26,
+        "endLine": 4715,
+        "endChar": 34
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0848d21_68e6493b",
@@ -466,6 +490,30 @@
       "side": 1,
       "message": "\u003e  I\u0027m not aware of any usage of this code, \n\nI also don\u0027t see any host-side code calling this command or the \u0027ectool hangdetect\u0027 command. So, I think it\u0027s safe to change the interface. (That makes sense since this feature has been unused for years?) Is daisydog already petting the EC? I don\u0027t see \u0027struct ec_params_hang_detect\u0027 being used in the kernel. So, I assume daisydog change will follow.\n\nOnce we enable this feature, it\u0027s going to be hard to change the interface because we would need to take care of backward compatibility.\n\nSo, I believe it\u0027s a good time to redefine a clean interface. I don\u0027t see a point of inheriting a not-ideal unused interface and being handcuffed.\n\nBTW, you can use union to keep ectool compatible:\n\n    union {\n        uint32_t flags;\n        struct {\n            uint16_t args;\n            uint16_t command;\n        };\n    };\n\nor update ectool together.",
       "parentUuid": "5289f1ca_cbe1ef51",
+      "range": {
+        "startLine": 4738,
+        "startChar": 0,
+        "endLine": 4757,
+        "endChar": 32
+      },
+      "revId": "03d61b6644ea1ceb8a4dcf549f1cb456237e0f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76fb646c_aa75267a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4757,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebcaac1b_82dbb3e1",
       "range": {
         "startLine": 4738,
         "startChar": 0,

@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f6cb636_1d59e8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with those. I will take a look a existing one and try to add them with this CL.",
+      "parentUuid": "1f9a6111_06a2e8b2",
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc77f2e5_661f1791",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 13
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-08T02:17:19Z",
       "side": 1,
       "message": "nit: These are now redundant (because you have \u0027APHD\u0027).",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efda97d_a7e2da9f",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc77f2e5_661f1791",
       "range": {
         "startLine": 29,
         "startChar": 10,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c1a84b_226185d6",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc6d9f6e_66e4721c",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135c65e5_c7b4bbc3",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62318d6d_8514e20d",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "135c65e5_c7b4bbc3",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dde3040_7d5487a8",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-12-08T02:17:19Z",
       "side": 1,
       "message": "Also I really wish this is renamed to aphd_reload or hang_detect_reload...",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c23255_902f363b",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dde3040_7d5487a8",
       "range": {
         "startLine": 96,
         "startChar": 2,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4e7f41e_3c71277d",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Agree - that could lead to the boot loop. What minimum timeout do you suggest? ( I was thinking about 5 or 10 sec)",
+      "parentUuid": "5f290590_4e04046b",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a49f104_69616aae",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 13
@@ -146,6 +284,30 @@
       "writtenOn": "2023-12-07T17:43:08Z",
       "side": 1,
       "message": "It could be useful to also print `bootstatus`.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 65
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31e6e85_ba4fbc9f",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-11T12:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a49f104_69616aae",
       "range": {
         "startLine": 166,
         "startChar": 0,
