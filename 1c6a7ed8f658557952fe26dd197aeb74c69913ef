@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0461bb2_2542df1d",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2023-12-11T07:02:22Z",
+      "side": 1,
+      "message": "Could you put CHARGER_NUM instead of 1?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "1c6a7ed8f658557952fe26dd197aeb74c69913ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
