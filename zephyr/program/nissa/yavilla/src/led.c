@@ -365,6 +365,7 @@ static void pwr_led_config_tick(uint32_t interval, int duty_inc,
 	pwr_led_pulse.duty = 0;
 }
 
+
 static void pwr_led_tick(void);
 DECLARE_DEFERRED(pwr_led_tick);
 static void pwr_led_tick(void)
@@ -372,6 +373,10 @@ static void pwr_led_tick(void)
 	uint32_t elapsed;
 	uint32_t next = 0;
 	uint32_t start = get_time().le.lo;
+
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		ccprintf("#\n");
+	}
 
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) {
 		led_set_color_power(pwr_led_pulse.color, pwr_led_pulse.duty);
@@ -426,7 +431,9 @@ static void pwr_led_resume(void)
 	 * Assume there is no race condition with pwr_led_tick, which also
 	 * runs in hook_task.
 	 */
+	ccprintf("!!! %s: Before cancel pwr_led_tick_data !!!\n", __func__);
 	hook_call_deferred(&pwr_led_tick_data, -1);
+	ccprintf("!!! %s: After cancel pwr_led_tick_data !!!\n", __func__);
 	/*
 	 * Avoid invoking the suspend/shutdown delayed hooks.
 	 */
