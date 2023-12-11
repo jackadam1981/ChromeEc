@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f926466_7ed40259",
+        "filename": "include/driver/accelgyro_lsm6dso_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-12-11T21:48:06Z",
+      "side": 1,
+      "message": "In the datasheet, the ODR are defined as:\n1.6(11)\n12.5\n26\n52\n104\n208\n416\n833\n1666\n3332\n6664 \n\nIf you wanted to get see the maximum frequency to 6kHz, you would have set 6664000, not 666000.\nThe maximal value of 416Hz was chosen because no EC can sample the sensor at a higher frequency.\n\nRegarding 13Hz instead of 12.5Hz, the value was chosen because (except \u003e\u003d 12.5 frequency), all frequencies can be described as 13Hz * 2^n.\n\nIn the bug, the issue is the sensor is set at ~52Hz instead of ~104Hz. \nThe issue is elsewhere: \n\nIn `src/platform/ec/zephyr/program/nissa/uldren/project.conf`, the maximum sensor frequency allowed in 100Hz: (see crrev.com/c/4340169).\n\n```\nCONFIG_PLATFORM_EC_MAX_SENSOR_FREQ_MILLIHZ\u003d100000\n```\n\nTo accomodate LSM6DSO, it should be at least 104Hz.",
+      "revId": "db6993cffbcb9ab0eed0e0f6ed13864c662a9cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
