@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a9244d_90eec2d5",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,bma4xx.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-11T20:43:36Z",
+      "side": 1,
+      "message": "Move this file, and the Kconfig file to a separate CL.",
+      "revId": "ffefe796d8fa7cd8d46f22dc1a92021298e68bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3567df_bd92a77c",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-11T20:43:36Z",
+      "side": 1,
+      "message": "Can you open a bug to verify the sensor orientation and reference here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "ffefe796d8fa7cd8d46f22dc1a92021298e68bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4373554f_02b238a9",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-11T20:43:36Z",
+      "side": 1,
+      "message": "Add a comment \"TODO: b/315839391 - Brox: configure EC interrupts\"",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "ffefe796d8fa7cd8d46f22dc1a92021298e68bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
