@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70f16845_5178eb1d",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2023-12-11T07:55:03Z",
+      "side": 1,
+      "message": "use `CONFIG_PLATFORM_EC_CHARGER_SINGLE_CHIP` instead of project name",
+      "range": {
+        "startLine": 67,
+        "startChar": 7,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "1c6a7ed8f658557952fe26dd197aeb74c69913ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0461bb2_2542df1d",
         "filename": "zephyr/program/nissa/src/common.c",
         "patchSetId": 1
