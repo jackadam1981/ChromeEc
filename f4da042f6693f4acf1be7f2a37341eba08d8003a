@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8dffa2_3cee86fe",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-11T17:20:44Z",
+      "side": 1,
+      "message": "how about filing a new bug and discuss how to approach it for shared flash ?",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 20
+      },
+      "revId": "f4da042f6693f4acf1be7f2a37341eba08d8003a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b508e4eb_363ff6eb",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-11T17:20:44Z",
+      "side": 1,
+      "message": "shared SPI flash between EC \u0026 AP.",
+      "range": {
+        "startLine": 207,
+        "startChar": 13,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "f4da042f6693f4acf1be7f2a37341eba08d8003a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3d4581_0003af8f",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-11T17:20:44Z",
+      "side": 1,
+      "message": "does this mean this logic can be removed?",
+      "range": {
+        "startLine": 207,
+        "startChar": 50,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "f4da042f6693f4acf1be7f2a37341eba08d8003a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
