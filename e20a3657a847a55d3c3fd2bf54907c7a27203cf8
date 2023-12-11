@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c854fffd_f9b957eb",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-11T19:42:25Z",
+      "side": 1,
+      "message": "This cause the build breakage.  This change replaced the default pach_firmware such that the only remaining artifact is the second_loader.bin file.\n\nTo reproduce the problem:\n\nWithout the second loader changes:\n\n```\n$ zmake build mtlrvpp_mchp --clobber\n$ ls build/zephyr/mtlrvpp_mchp/output\ncomponent_manifest.json  ec.bin  ec.config  zephyr.ro.elf  zephyr.ro.lst  zephyr.rw.elf  zephyr.rw.lst\n```\n\nWith the second loader changes, all the artifacts, except second_loader.bin are missing:\n\n```\n$ zmake build mtlrvpp_mchp --clobber\n$ ls build/zephyr/mtlrvpp_mchp/output\nsecond_loader_fw.bin\n```",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "e20a3657a847a55d3c3fd2bf54907c7a27203cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
