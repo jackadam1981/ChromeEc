@@ -34,6 +34,23 @@
       "parentUuid": "38a2b73d_1da9485e",
       "revId": "5ba8455700328bf3400a07921892cd312b2f8a60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a8445c_2135bb8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-12-11T01:22:25Z",
+      "side": 1,
+      "message": "Seems we still missing owners for i/f/fpsensor_state.h.",
+      "revId": "5ba8455700328bf3400a07921892cd312b2f8a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
