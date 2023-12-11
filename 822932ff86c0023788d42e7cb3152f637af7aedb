@@ -80,6 +80,76 @@
       },
       "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab31f77f_02cd550b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-11T19:42:59Z",
+      "side": 1,
+      "message": "Is there a plan to synchronize driver calls from TCPM_v3 thread or its expected to be called by any threads ?",
+      "parentUuid": "6822167c_474f314a",
+      "range": {
+        "startLine": 573,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 0
+      },
+      "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481f53e6_b1c8889f",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-11T19:42:59Z",
+      "side": 1,
+      "message": "how about init ?",
+      "range": {
+        "startLine": 1024,
+        "startChar": 2,
+        "endLine": 1024,
+        "endChar": 9
+      },
+      "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165e525c_dae448d7",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-11T19:42:59Z",
+      "side": 1,
+      "message": "how about waking the task event/interrupt based ? this will save some power on the EC",
+      "range": {
+        "startLine": 1080,
+        "startChar": 2,
+        "endLine": 1080,
+        "endChar": 33
+      },
+      "revId": "822932ff86c0023788d42e7cb3152f637af7aedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
