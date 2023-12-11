@@ -23,6 +23,9 @@ static int power_off_req;
 test_mockable void chipset_reset(enum chipset_shutdown_reason reason)
 {
 	fprintf(stderr, "Chipset reset: %d!\n", reason);
+#ifdef CONFIG_CMD_AP_RESET_LOG
+	report_ap_reset(reason);
+#endif
 }
 
 test_mockable void chipset_throttle_cpu(int throttle)

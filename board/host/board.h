@@ -32,6 +32,8 @@
 
 #define CONFIG_CMD_AP_RESET_LOG
 
+#define CONFIG_AP_HANG_DETECT
+
 #include "gpio_signal.h"
 
 enum temp_sensor_id {

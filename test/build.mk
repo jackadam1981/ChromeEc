@@ -146,6 +146,7 @@ test-list-host += vboot
 test-list-host += version
 test-list-host += x25519
 test-list-host += stillness_detector
+test-list-host += ap_hang_detect
 -include private/test/build.mk
 endif
 
@@ -345,6 +346,8 @@ is_enabled_error-y=is_enabled_error.o.cmd
 
 host-static_if_error: TEST_SCRIPT=static_if_error.sh
 static_if_error-y=static_if_error.o.cmd
+
+ap_hang_detect-y=ap_hang_detect.o
 
 run-genvif_test:
 	@echo "  TEST    genvif_test"

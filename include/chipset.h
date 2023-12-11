@@ -153,7 +153,7 @@ static inline void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 }
 
-static inline void chipset_reset(enum chipset_shutdown_reason reason)
+test_mockable void chipset_reset(enum chipset_shutdown_reason reason)
 {
 }
 static inline void power_interrupt(enum gpio_signal signal)
