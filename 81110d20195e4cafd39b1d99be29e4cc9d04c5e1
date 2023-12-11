@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c468bdb3_b9dcb82e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-12-11T19:04:23Z",
+      "side": 1,
+      "message": "Were we not doing this before or was there a bug stopping us from correctly handling the EC response?",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9719171f_ebdf13e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-12-11T19:04:23Z",
+      "side": 1,
+      "message": "Looks like we already were extracting the FW image offset, are we fixing a bug? What was the bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e75058_00de958b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-12-11T19:04:23Z",
+      "side": 1,
+      "message": "I\u0027m not full-time on the EC firmware team anymore and this looks like it needs more context than I currently have so bumping this to Keith who has more context.",
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa164b1_f9e5dadb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-12-11T19:04:23Z",
+      "side": 1,
+      "message": "So are we no longer covering the `Incorrect payload length` and `Incorrect header offset` failures in this script? If so, let\u0027s reflect that in the commit message.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 42
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40e55c1_1562c1cd",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-12-11T19:04:23Z",
+      "side": 1,
+      "message": "Why are we ignoring it?",
+      "range": {
+        "startLine": 256,
+        "startChar": 16,
+        "endLine": 256,
+        "endChar": 31
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a43bc8e_abea3de6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-12-11T19:04:23Z",
+      "side": 1,
+      "message": "So was this a bug where we weren\u0027t catching failures? Do we have a buganizer issue for this?",
+      "range": {
+        "startLine": 259,
+        "startChar": 19,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
