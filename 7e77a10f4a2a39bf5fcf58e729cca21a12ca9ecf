@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff197157_0d1baf7f",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-11T18:34:13Z",
+      "side": 1,
+      "message": "This file won\u0027t compile in an EC environment, so we can neither replace `fpc_private.c` nor call functions from this file.",
+      "parentUuid": "6df8dc30_87e5a51a",
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ecdc5ad_08d9a24f",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-08T20:01:40Z",
       "side": 1,
       "message": "It\u0027s probably worth printing a warning if we\u0027re trying to init bep but the algorithm isn\u0027t supported.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb7679b_a42674f7",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-11T18:34:13Z",
+      "side": 1,
+      "message": "`fpc_bep_match` and `fpc_bep_enroll_*` will return `-ENOTSUP` when trying to use it without BEP library. I can add a warning, but it will be printed every time the algorithm is initialized (which is acceptable IMO).",
+      "parentUuid": "3ecdc5ad_08d9a24f",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d55aa5b0_ad289d2a",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-11T18:34:13Z",
+      "side": 1,
+      "message": "\u003e how do we ensure the two are kept in sync\n\nDo you think there will be changes in that file in near future?\n\nThis file has some differences, so we can\u0027t symlink, also I\u0027m not sure if pointing to this file would work. How about including `fpc_bio_algorithm.h` here?",
+      "parentUuid": "10da3a2d_01052388",
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d2cc37f_be87626b",
         "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
         "patchSetId": 25
@@ -71,6 +131,30 @@
       "writtenOn": "2023-12-08T20:01:40Z",
       "side": 1,
       "message": "why pfe? should this be fpc?",
+      "range": {
+        "startLine": 34,
+        "startChar": 56,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79427e27_1b0a4593",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-11T18:34:13Z",
+      "side": 1,
+      "message": "This is correct. You can find the same declaration in [fpc_private.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c;l\u003d60;drc\u003df108d67192739dd055089d397a771c484db91524)",
+      "parentUuid": "6d2cc37f_be87626b",
       "range": {
         "startLine": 34,
         "startChar": 56,
