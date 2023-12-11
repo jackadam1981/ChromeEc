@@ -73,7 +73,7 @@ test-list-y=\
        unaligned_access \
        unaligned_access_benchmark \
        utils \
-       utils_str \
+       utils_str
 
 # Note that this variable includes the trailing "/"
 _hatch_fp_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
