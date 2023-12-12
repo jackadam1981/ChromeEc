@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98585899_ebf9fbc1",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-12T16:47:10Z",
+      "side": 1,
+      "message": "You should be able to use:\n```\n#include \u003czephyr/drivers/usb_c/usbc_pd.h\u003e\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "99cc3a0a58044ba30ff4cd0a72ab2cd5ddbe3bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
