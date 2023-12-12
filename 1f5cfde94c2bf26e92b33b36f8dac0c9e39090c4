@@ -896,6 +896,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8125a900_73dda291",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T20:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63336857_3931b954",
+      "range": {
+        "startLine": 134,
+        "startChar": 55,
+        "endLine": 134,
+        "endChar": 56
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84de5796_8842cef6",
