@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e862963e_a91d3dc6",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T01:27:43Z",
+      "side": 1,
+      "message": "Infineon",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "120573d1213bcca7e628d7c46c41429c9732ab0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c394e852_e44d720e",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T01:27:43Z",
+      "side": 1,
+      "message": "add a TODO to initialize CCG interrupt and other callback functions",
+      "revId": "120573d1213bcca7e628d7c46c41429c9732ab0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d36e26_915c654f",
+        "filename": "zephyr/include/drivers/pd_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T01:27:43Z",
+      "side": 1,
+      "message": "add a comment what this reg is used for and does it apply to both the ports in dual-port PD?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "120573d1213bcca7e628d7c46c41429c9732ab0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
