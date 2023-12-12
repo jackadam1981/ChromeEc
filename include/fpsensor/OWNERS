@@ -1,3 +1,9 @@
 # Fingerprint Sensor
 
+<<<<<<< HEAD   (588ccd add owners inheritance for firmware branch)
+=======
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+>>>>>>> BRANCH (59e8c0 ectool: Add verbose option)
 include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
