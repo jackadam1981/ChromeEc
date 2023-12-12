@@ -318,6 +318,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18f12ad_952aa3c3",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T01:34:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3662f8_103ee144",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12985e5_01fd5e35",
@@ -331,6 +355,30 @@
       "writtenOn": "2023-12-06T02:47:08Z",
       "side": 1,
       "message": "can\u0027t assume Port-0, if we have 2 ports on either side then retimer wont share SPI.\n\nIdeally this file has to send an event to PD_TASK and let PD task call the PD driver .\nFor time being add a TODO and call the driver directly",
+      "range": {
+        "startLine": 79,
+        "startChar": 38,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f1c4e0_59e66976",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T01:34:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12985e5_01fd5e35",
       "range": {
         "startLine": 79,
         "startChar": 38,

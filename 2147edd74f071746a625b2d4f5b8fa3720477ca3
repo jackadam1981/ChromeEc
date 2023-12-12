@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735e5877_1936f0b0",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T01:34:04Z",
+      "side": 1,
+      "message": "nit: \nreturn pd_retimer_ports[port] !\u003d NULL;",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "2147edd74f071746a625b2d4f5b8fa3720477ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
