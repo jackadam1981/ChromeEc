@@ -648,6 +648,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a158c913_1dabf7c6",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T20:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13452e07_8c7c9d13",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853ec0d1_b826f5a4",
@@ -791,6 +815,30 @@
       "side": 1,
       "message": "to figure out PD chip# we need port.\nConsider a scenario with multiple CCG8 PD chip platform, we want to differentiate I2C bus and address",
       "parentUuid": "f35fbc55_cc1d0230",
+      "range": {
+        "startLine": 132,
+        "startChar": 55,
+        "endLine": 132,
+        "endChar": 56
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abaeb3b4_0c9ca1b5",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T20:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c252de2f_1a061ba2",
       "range": {
         "startLine": 132,
         "startChar": 55,
