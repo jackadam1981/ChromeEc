@@ -1197,6 +1197,7 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	bool enter_mode_requested =
 		IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) ? false : true;
 	enum dpm_msg_setup_status status = MSG_SETUP_UNSUPPORTED;
+	static bool soft_reset_prime_requested = false;
 
 #ifdef CONFIG_AP_POWER_CONTROL
 	/*
@@ -1221,6 +1222,7 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	     tbt_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
+		soft_reset_prime_requested = false;
 		dpm_set_mode_entry_done(port);
 		return false;
 	}
@@ -1262,6 +1264,12 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
 					   USB_VID_INTEL) &&
 	    dpm_mode_entry_requested(port, TYPEC_MODE_TBT)) {
+		if (soft_reset_prime_requested == false) {
+			CPRINTS("%s(): start SOP\' SOFT RESET for port:%d", __func__, port);
+			pd_dpm_request(port, DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND);
+			soft_reset_prime_requested = true;
+			return false;
+		}
 		enter_mode_requested = true;
 		vdo_count = ARRAY_SIZE(vdm);
 		status = tbt_setup_next_vdm(port, &vdo_count, vdm, &tx_type);
@@ -1274,6 +1282,13 @@ static bool dpm_dfp_enter_mode_msg(int port)
 					   USB_SID_DISPLAYPORT) &&
 	    dpm_mode_entry_requested(port, TYPEC_MODE_DP) &&
 	    dp_mode_entry_allowed(port)) {
+		if (soft_reset_prime_requested == false) {
+			CPRINTS("%s(): start SOP\' SOFT RESET for port:%d", __func__, port);
+			pd_dpm_request(port, DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND);
+			soft_reset_prime_requested = true;
+			return false;
+		}
+ 
 		enter_mode_requested = true;
 		vdo_count = ARRAY_SIZE(vdm);
 		status = dp_setup_next_vdm(port, &vdo_count, vdm);
@@ -1370,6 +1385,8 @@ static bool dpm_dfp_exit_mode_msg(int port)
 	} else {
 		/* Clear exit mode request */
 		dpm_clear_mode_exit_request(port);
+		CPRINTS("%s(): start SOP\' SOFT RESET for port:%d", __func__, port);
+		pd_dpm_request(port, DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND);
 		return false;
 	}
 
