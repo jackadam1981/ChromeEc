@@ -1276,6 +1276,8 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    dp_mode_entry_allowed(port)) {
 		enter_mode_requested = true;
 		vdo_count = ARRAY_SIZE(vdm);
+		ccprints("[SC] stop");
+		pd_timer_disable(port, PE_TIMER_SENDER_DATA_SWAP);
 		status = dp_setup_next_vdm(port, &vdo_count, vdm);
 	}
 

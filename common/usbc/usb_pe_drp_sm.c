@@ -2141,10 +2141,11 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	/* Apply Port Discovery DR Swap Policy */
 	if (port_discovery_dr_swap_policy(
 		    port, pe[port].data_role,
-		    PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP))) {
+		    PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) &&
+			pd_timer_is_expired(port, PE_TIMER_SENDER_DATA_SWAP)) {
 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
-
+		pd_timer_disable(port, PE_TIMER_SENDER_DATA_SWAP);
 		pd_dpm_request(port, DPM_REQUEST_DR_SWAP);
 		return false;
 	}
@@ -2208,6 +2209,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 			return true;
 		} else {
 			pd_timer_disable(port, PE_TIMER_DISCOVER_IDENTITY);
+			pd_timer_disable(port, PE_TIMER_SENDER_DATA_SWAP);
 			return false;
 		}
 	}
@@ -6546,6 +6548,9 @@ static void pe_vdm_response_entry(int port)
 	/* Use VDM command to select the response handler function */
 	switch (vdo_cmd) {
 	case CMD_DISCOVER_IDENT:
+		ccprints("[SC] start");
+		pd_timer_enable(port, PE_TIMER_SENDER_DATA_SWAP,
+					150 * MSEC);
 		func = svdm_rsp.identity;
 		break;
 	case CMD_DISCOVER_SVID:
