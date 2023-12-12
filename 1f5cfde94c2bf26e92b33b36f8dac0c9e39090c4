@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb639f6_fc3957d1",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c9b798c3_15cf5084",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d516c30e_bf41ddf1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "y if",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5f98a6_70a9983f",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d516c30e_bf41ddf1",
       "range": {
         "startLine": 31,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4df9837_ca939495",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e27ad067_adde8d46",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0833b0f2_4c792db6",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "needed?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90be8f9e_3ac46302",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0833b0f2_4c792db6",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9e8ce3_ad397429",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Here for shell commands. PD task will have its own array. wont use this one.",
+      "parentUuid": "f6085ee0_9d77bae7",
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5530473a_2da8e70a",
@@ -123,6 +237,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "avoid comma in the macro",
+      "range": {
+        "startLine": 20,
+        "startChar": 55,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757cc07f_1901aee9",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "The macro expands to fill the array making it as separator. Throws compilation error without it.",
+      "parentUuid": "5530473a_2da8e70a",
       "range": {
         "startLine": 20,
         "startChar": 55,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af56b3fc_88d98da1",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3ffb9fe2_6805d89a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bd9f1ae_ee0d2c56",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "add a newline",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10973b1_eb76b029",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4bd9f1ae_ee0d2c56",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32759e76_d80f931d",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d042b288_2560c8a0",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3e68b4b_05e276ea",
@@ -215,6 +425,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "how about using (uint8_t *) \u0026enable?",
+      "range": {
+        "startLine": 76,
+        "startChar": 23,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f706d20_21d728bc",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a3e68b4b_05e276ea",
       "range": {
         "startLine": 76,
         "startChar": 23,
@@ -271,6 +505,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0db6735_0059581a",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "743acf1b_616faff4",
+      "range": {
+        "startLine": 84,
+        "startChar": 56,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6ca0d3_2e4d85e0",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5a468745_9e1d21bc",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baa2e723_8301cb0f",
@@ -284,6 +566,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "try get port in one function\nreg, len and data in another function",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5b48b4_6816dbd8",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Port is not required argument in the shell command. It is independent of port the register resembles. Also that not all registers belong to a port. This is common function to read/write from any register no matter what port the PD uses it for.",
+      "parentUuid": "baa2e723_8301cb0f",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -311,6 +617,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07e2cc2_06e7cc8c",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "853ec0d1_b826f5a4",
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3296d99d_40b97c01",
@@ -324,6 +648,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "check if the result was success",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2937c6_0cadaea3",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3296d99d_40b97c01",
       "range": {
         "startLine": 127,
         "startChar": 1,
@@ -359,6 +707,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f35fbc55_cc1d0230",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Registers need not necessarily be tied to a port. Many that are related to firmware version and read/write memory registers.",
+      "parentUuid": "cfc825e7_d2786926",
+      "range": {
+        "startLine": 132,
+        "startChar": 55,
+        "endLine": 132,
+        "endChar": 56
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f660c848_cc226339",
         "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
         "patchSetId": 3
@@ -382,6 +754,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63336857_3931b954",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Registers need not necessarily be tied to a port. Many that are related to firmware version and read/write memory registers. That is why port not part of argument. Also that register address is absolute and there is no requirement of having a port.",
+      "parentUuid": "f660c848_cc226339",
+      "range": {
+        "startLine": 134,
+        "startChar": 55,
+        "endLine": 134,
+        "endChar": 56
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84de5796_8842cef6",
         "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
         "patchSetId": 3
@@ -393,6 +789,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "i think 3 tabs can be removed",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0dd1b2_19881354",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "84de5796_8842cef6",
       "range": {
         "startLine": 132,
         "startChar": 0,
@@ -449,6 +869,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1b62f9_f72b0448",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9a430943_56c70d47",
+      "range": {
+        "startLine": 138,
+        "startChar": 25,
+        "endLine": 138,
+        "endChar": 32
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae30a6b4_fae0d387",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b4776c47_6fc3abfe",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 53
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec238637_6373beac",
@@ -462,6 +930,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "add initialization routine",
+      "range": {
+        "startLine": 148,
+        "startChar": 29,
+        "endLine": 148,
+        "endChar": 33
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933e0fb3_345b2d96",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ec238637_6373beac",
       "range": {
         "startLine": 148,
         "startChar": 29,
@@ -495,6 +987,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "069e5d4a_dea70140",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b3ce6cbc_bd5a91ca",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26a9ec3a_06a81978",
@@ -508,6 +1024,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "ZEPHYR_INCLUDE_DRIVERS_CCG8_PD_H_",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc00a101_dad269c3",
+        "filename": "zephyr/include/drivers/pdc_ccg8.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "26a9ec3a_06a81978",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -541,6 +1081,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a57454_be642a44",
+        "filename": "zephyr/include/drivers/pdc_ccg8.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f551dbf0_333b4e3d",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 3
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b2471b_dd0d60db",
@@ -558,6 +1122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e90a40_87ca9bad",
+        "filename": "zephyr/include/drivers/pdc_ccg8.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e6b2471b_dd0d60db",
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e7e7219_737bae30",
@@ -571,6 +1153,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "check schematics netname is different",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "145e997b_cc0ef719",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0e7e7219_737bae30",
       "range": {
         "startLine": 11,
         "startChar": 19,
@@ -604,6 +1210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7b470e_3874080a",
+        "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "db26f7e6_9d61d5e1",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9651e911_ac751346",
@@ -617,6 +1247,30 @@
       "writtenOn": "2023-12-06T02:36:28Z",
       "side": 1,
       "message": "y if **",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1f5cfde94c2bf26e92b33b36f8dac0c9e39090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16abe4ea_b14dc49b",
+        "filename": "zephyr/subsys/usb_pd/Kconfig.usbc_altmode",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9651e911_ac751346",
       "range": {
         "startLine": 54,
         "startChar": 9,
