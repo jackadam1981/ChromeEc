@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28683284_c42519f9",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-12T02:05:10Z",
+      "side": 1,
+      "message": "Make CME returning a non-zero return value in order to fail the build.",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 19
+      },
+      "revId": "8abedd37cb20134ea0ff5da2f4a1e6d42c87ea1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08eeaa0_a9b3c8cd",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-12T02:05:10Z",
+      "side": 1,
+      "message": "Nit: `is_alt\u003dFalse` for readability.",
+      "range": {
+        "startLine": 485,
+        "startChar": 18,
+        "endLine": 485,
+        "endChar": 23
+      },
+      "revId": "8abedd37cb20134ea0ff5da2f4a1e6d42c87ea1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8583690f_88b20904",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-12-12T02:05:10Z",
+      "side": 1,
+      "message": "Similar, `is_alt\u003dTrue` for readability.",
+      "range": {
+        "startLine": 497,
+        "startChar": 18,
+        "endLine": 497,
+        "endChar": 22
+      },
+      "revId": "8abedd37cb20134ea0ff5da2f4a1e6d42c87ea1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
