@@ -16,6 +16,24 @@
       "message": "Why is this desirable? It was disabled on boards using Nuvoton ECs to save Flash space, but there\u0027s no shortage of flash on ITE and `powerindebug` is useful for debugging if needed while otherwise doing nothing.",
       "revId": "a74af7963d5ddd10e9930e29dfdbd225aacbf6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6c120f_4fa24f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-12-12T01:26:15Z",
+      "side": 1,
+      "message": "I think it is useful for our debuging. However, we have a bug such as b:314023993 requires to not set this conf.",
+      "parentUuid": "14da39ee_c863fdd8",
+      "revId": "a74af7963d5ddd10e9930e29dfdbd225aacbf6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
