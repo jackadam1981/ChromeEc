@@ -24,4 +24,20 @@ config USBC_PDC_RTS545X
 	  This option enable the Realtek RTS545x Power Delivery Controller. This
 	  chip family supports both single port and multiple port
 	  configurations. For multiple port configurations, each port must
-	  create a separate devicetree entry.
+	  create a separate devicetree entry
+
+config USBC_PDC_CCG8
+	bool "Infinean CCG8 Power Delivery Controller driver"
+	default y if DT_HAS_INFINEON_CCG8_ENABLED
+	help
+	  This option enable the Infineon CCG8 Power Delivery Controller. This
+	  chip family supports both single port and multiple port
+	  configurations. For multiple port configurations, each port must
+	  create a separate devicetree entry
+
+config CONSOLE_CMD_PD_CCG8
+	bool "Console command: CCG8 read/write"
+	default y if USBC_PDC_CCG8
+	help
+	  Enable this to read/write to the power path registers of CCG8
+	  PD.
