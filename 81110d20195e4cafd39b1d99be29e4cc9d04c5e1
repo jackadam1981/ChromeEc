@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba0de87_9ebe294d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-12T12:31:12Z",
+      "side": 1,
+      "message": "We have the Host utility (this one) and EC-second loader firmware (binary form) to support the Crisis recovery feature.\n\nIn the past, the EC-second loader did not transmit \"Illegal HEADER Format,\" \"SPI FLASH Access Error,\" and \"Illegal FLASH Length\" failure responses to the Host utility.\n\nCurrently, we are attempting to upload the source code of the EC-second loader firmware into Gerrit instead of the binary form (currently, the binary form is present in Gerrit). Simultaneously, we are undertaking a re-architecture.\n\nThe associated Change List (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4826223/12) introduces the previously missing failure responses.\n\nConsequently, to accommodate these changes on the Host side, we are now executing the update.",
+      "parentUuid": "c468bdb3_b9dcb82e",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9719171f_ebdf13e4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-11T19:04:23Z",
       "side": 1,
       "message": "Looks like we already were extracting the FW image offset, are we fixing a bug? What was the bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5951f2e4_5545e275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-12T12:31:12Z",
+      "side": 1,
+      "message": "Previously, when updating the HOST utility, the EC-second loader existed in binary form.\n\nIn that binary, the FW image was positioned adjacent to the Header image, leading to a hardcoded computation like \"img_offset \u003d hdr_addr + header_len.\"\n\nHowever, this approach is not accurate, as the FW image location may differ from being directly next to the Header image.\n\nFurthermore, the header image contains information about the FW image\u0027s location, making it the correct method for determining this information.\n\nConsequently, the logic was updated to extract the FW image offset from the header image.\n\nShould we consider creating a bug ticket for this logic update?",
+      "parentUuid": "9719171f_ebdf13e4",
       "range": {
         "startLine": 11,
         "startChar": 12,
@@ -64,6 +112,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ce93f3_6578cc6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-12T12:31:12Z",
+      "side": 1,
+      "message": "Provided clarification on the review comments.",
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa164b1_f9e5dadb",
@@ -77,6 +142,30 @@
       "writtenOn": "2023-12-11T19:04:23Z",
       "side": 1,
       "message": "So are we no longer covering the `Incorrect payload length` and `Incorrect header offset` failures in this script? If so, let\u0027s reflect that in the commit message.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 42
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c5e369b_d1414dd8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-12T12:31:12Z",
+      "side": 1,
+      "message": "No, we are covering those failure response and end with script termination.\n\nwe have below failure responses\n\"CRC Failure\"\n\"Illegal Payload Length\"\n\"Illegal HEADER Offset\"\n\"Illegal HEADER Format,\"\n\"SPI FLASH Access Error,\" and\n\"Illegal FLASH Length\"\n\nImplemented a retry logic exclusively for \"CRC Failure\" among the listed failure responses. For the remaining failures, they are treated as non-recoverable errors, resulting in script termination.\n\nSo decided to update the comments in a generic manner (not to list all failure in the comments).",
+      "parentUuid": "0fa164b1_f9e5dadb",
       "range": {
         "startLine": 243,
         "startChar": 0,
@@ -110,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d4a1d3_38625fb4",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-12T12:31:12Z",
+      "side": 1,
+      "message": "This represents the final byte of the CRC for the Failure response. As we do not perform any computation on the failure response CRC, it is being ignored.",
+      "parentUuid": "a40e55c1_1562c1cd",
+      "range": {
+        "startLine": 256,
+        "startChar": 16,
+        "endLine": 256,
+        "endChar": 31
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a43bc8e_abea3de6",
@@ -123,6 +236,30 @@
       "writtenOn": "2023-12-11T19:04:23Z",
       "side": 1,
       "message": "So was this a bug where we weren\u0027t catching failures? Do we have a buganizer issue for this?",
+      "range": {
+        "startLine": 259,
+        "startChar": 19,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "81110d20195e4cafd39b1d99be29e4cc9d04c5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec557aa_b8807923",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-12-12T12:31:12Z",
+      "side": 1,
+      "message": "No its not a bug, previously we checked against two non-recoverable failure responses, if we got those we are exiting the script.\n\nNow checking, if not CRC failure exit the script. This logic has been changed to accommodate the new failure responses.",
+      "parentUuid": "0a43bc8e_abea3de6",
       "range": {
         "startLine": 259,
         "startChar": 19,
