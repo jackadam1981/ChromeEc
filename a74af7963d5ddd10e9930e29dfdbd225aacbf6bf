@@ -34,6 +34,24 @@
       "parentUuid": "14da39ee_c863fdd8",
       "revId": "a74af7963d5ddd10e9930e29dfdbd225aacbf6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3283312a_439a0dad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-12-12T02:01:50Z",
+      "side": 1,
+      "message": "Please add that bug to the CL description, so it\u0027s easier to find the reason for making this change.\n\nI think the bug is wrong and this option doesn\u0027t need to be disabled, so I will separately work to get that bug template changed but if it\u0027s easier to simply make this change right now then I don\u0027t mind.",
+      "parentUuid": "cb6c120f_4fa24f36",
+      "revId": "a74af7963d5ddd10e9930e29dfdbd225aacbf6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
