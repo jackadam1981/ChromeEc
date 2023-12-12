@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9f73be_c8ed4b84",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T22:41:46Z",
+      "side": 1,
+      "message": "how about making it easy readable \n\nval \u003d strtoul(argv[i], \u0026e, 0);\nif (*e)\n      return -EINVAL;\n\ninside switch case:\ncase 1:\n   if (val\u003e UINT8_MAX)\n      return -EINVAL;\n   *(uint8_t *)reg \u003d (uint8_t) val\n    break;\ncase 2:   \n   *(uint16_t *)reg \u003d val;\n    break;\ndefault:\n   return -EINVAL;\n   break;\n   \n   \nreturn 0;",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "2e8e16e868ec5051658f1f3468a40d381c7b6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4227ba83_e6a6025d",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T22:41:46Z",
+      "side": 1,
+      "message": "*port \u003d strtoul(arg_val, \u0026e, 0);\n        if (*e || *port \u003e\u003d CONFIG_USB_PD_PORT_MAX_COUNT) {\n                shell_error(sh, \"Invalid port\");\n                return -EINVAL;\n        }",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "2e8e16e868ec5051658f1f3468a40d381c7b6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fa40be_ab9a2f9d",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T22:41:46Z",
+      "side": 1,
+      "message": "replace with shell_error and shell_info where ever necessary",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 13
+      },
+      "revId": "2e8e16e868ec5051658f1f3468a40d381c7b6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c3ed93_b42b3de5",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-12T22:41:46Z",
+      "side": 1,
+      "message": "[\u003cbyte0\u003e, ...]",
+      "range": {
+        "startLine": 216,
+        "startChar": 35,
+        "endLine": 216,
+        "endChar": 61
+      },
+      "revId": "2e8e16e868ec5051658f1f3468a40d381c7b6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
