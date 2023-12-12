@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1373ea74_b18f6d3c",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "No that\u0027s only for the motion sensors. \n\nNow that you\u0027ve pointed it out, I\u0027ve edited the ssfc search to use a function instead of a dictionary to allow more flexibility as we expand to other devices.",
+      "parentUuid": "ce6d34a1_710813e5",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 64
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82e31167_db348f06",
         "filename": "zephyr/scripts/cme.py",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-09T02:13:55Z",
       "side": 1,
       "message": "`SSFC_ENUM_TO_LOCATION`?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ff2224_502eb105",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "82e31167_db348f06",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64d5b5f_3bc6b12b",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b2c4a821_d4ef821d",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 21
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db053988_9181c6df",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-12-09T02:13:55Z",
       "side": 1,
       "message": "This logic seems not straightforward. How about call the `iterate_ssfc()` first? It returns the ssfc mapping that saves to a variable, similar to the `i2c_portmap`. Then pass the variable to the `insert_motionsense_component()`.",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 41
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875c3289_76905fd0",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db053988_9181c6df",
       "range": {
         "startLine": 149,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "859159ef_28562d78",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b300e6d0_29242d16",
+      "range": {
+        "startLine": 152,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 32
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddbe4268_e3ad0759",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-12-09T02:13:55Z",
       "side": 1,
       "message": "Align to the start of \"\"\" for the detailed description.",
+      "range": {
+        "startLine": 155,
+        "startChar": 8,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8102c40_ca83b5fd",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddbe4268_e3ad0759",
       "range": {
         "startLine": 155,
         "startChar": 8,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "105855f4_96e93bf2",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96e7007_2d9dc87c",
+      "range": {
+        "startLine": 165,
+        "startChar": 34,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fced6b5_b11053df",
@@ -175,6 +343,30 @@
       "writtenOn": "2023-12-09T02:13:55Z",
       "side": 1,
       "message": "How about using the reversed mapping, i.e. from location to enum? The for loop may be reduced.",
+      "range": {
+        "startLine": 413,
+        "startChar": 23,
+        "endLine": 413,
+        "endChar": 74
+      },
+      "revId": "c75bbac8717876117516d38b53a63f249662134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce77054_8e743567",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T01:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fced6b5_b11053df",
       "range": {
         "startLine": 413,
         "startChar": 23,
