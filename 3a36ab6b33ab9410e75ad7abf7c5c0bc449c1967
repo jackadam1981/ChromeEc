@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd42072a_5cfd2a64",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-12-12T18:36:00Z",
+      "side": 0,
+      "message": "This additional buffer has already been removed in https://crrev.com/c/4809464, which has the same effect. Please rebase onto main.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "3a36ab6b33ab9410e75ad7abf7c5c0bc449c1967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
