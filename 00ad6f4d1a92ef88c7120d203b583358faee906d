@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d5ccde_89bfac3f",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-12-12T03:25:23Z",
+      "side": 1,
+      "message": "Can you introduce an enum as return status? I would like\n- !state\n- state-\u003edrbg_entropy_size !\u003d sizeof(state-\u003edrbg_entropy)\n- else\n\nbe distinguished, rather than just a boolean. Note that for (!state) we don\u0027t have to call FIPS_ON command.",
+      "revId": "00ad6f4d1a92ef88c7120d203b583358faee906d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
