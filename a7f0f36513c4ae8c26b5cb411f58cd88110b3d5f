@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "545f09e7_64c11d0a",
+        "filename": "zephyr/include/usbc/retimer_fw_update.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c7ba1c26_cd7d7259",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd26039a_555210ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-06T02:47:08Z",
       "side": 1,
       "message": "can miss",
+      "range": {
+        "startLine": 259,
+        "startChar": 30,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cfa2d8_03b82703",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fd26039a_555210ac",
       "range": {
         "startLine": 259,
         "startChar": 30,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce444c70_826bf7b3",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "33ecb610_f67c3b30",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe9205b5_ab5a7c8d",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-12-06T02:47:08Z",
       "side": 1,
       "message": "needed ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "777a0df6_60edd722",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fe9205b5_ab5a7c8d",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc90d9e1_36e5478b",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "10fdaee1_42fc71f7",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "450c71b3_c1d8eca7",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495d468d_63ee304c",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "450c71b3_c1d8eca7",
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63d6e51a_932e8c4d",
@@ -146,6 +284,30 @@
       "writtenOn": "2023-12-06T02:47:08Z",
       "side": 1,
       "message": "i think below logic should do it?\nreturn ARRAY_SIZE(pd_retimer_ports) ? true : false;",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "a7f0f36513c4ae8c26b5cb411f58cd88110b3d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3662f8_103ee144",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-12T00:58:26Z",
+      "side": 1,
+      "message": "Replaced the logic to check if retimer present for specific port.",
+      "parentUuid": "63d6e51a_932e8c4d",
       "range": {
         "startLine": 66,
         "startChar": 0,
