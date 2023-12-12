@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e67013c_72d15f16",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T19:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28683284_c42519f9",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 19
+      },
+      "revId": "8abedd37cb20134ea0ff5da2f4a1e6d42c87ea1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c08eeaa0_a9b3c8cd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a300da_c3cf2d73",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T19:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08eeaa0_a9b3c8cd",
+      "range": {
+        "startLine": 485,
+        "startChar": 18,
+        "endLine": 485,
+        "endChar": 23
+      },
+      "revId": "8abedd37cb20134ea0ff5da2f4a1e6d42c87ea1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8583690f_88b20904",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-12-12T02:05:10Z",
       "side": 1,
       "message": "Similar, `is_alt\u003dTrue` for readability.",
+      "range": {
+        "startLine": 497,
+        "startChar": 18,
+        "endLine": 497,
+        "endChar": 22
+      },
+      "revId": "8abedd37cb20134ea0ff5da2f4a1e6d42c87ea1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41794d29_4a4a92ba",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-12-12T19:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8583690f_88b20904",
       "range": {
         "startLine": 497,
         "startChar": 18,
