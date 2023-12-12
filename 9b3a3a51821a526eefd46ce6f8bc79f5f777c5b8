@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be33a13_33a92b9b",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-12T17:28:19Z",
+      "side": 1,
+      "message": "nit: I believe AP is more readable.",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ededcac_f0bd1ad7",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-12T17:28:19Z",
+      "side": 1,
+      "message": "Do you want to give a special care for a reload call already scheduled? Shall we call hang_detect_reload or call hand_detect_cancel?",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

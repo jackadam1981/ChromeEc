@@ -273,6 +273,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e939f86_5f6495b1",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-12T17:28:19Z",
+      "side": 1,
+      "message": "When a reboot is triggered, there will be no deferred call scheduled. So, I don\u0027t think reboot will loop. I think Keith\u0027s concern is triggering a reboot immediately after setting reboot_timeout_sec to ~0.\n\nI can\u0027t think of a reason we must reject reboot_timeout_sec\u003d0 but I think it\u0027s nice to do so.",
+      "parentUuid": "c4e7f41e_3c71277d",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a49f104_69616aae",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 13
