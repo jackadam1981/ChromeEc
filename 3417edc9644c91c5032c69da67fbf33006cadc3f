@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb40b73c_5d3309d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1474597
+      },
+      "writtenOn": "2023-12-12T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fdc9dba_eda1720d",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "3417edc9644c91c5032c69da67fbf33006cadc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f10b1d5_3c63f87b",
@@ -49,6 +73,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc9cb49_fa1b7c12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474597
+      },
+      "writtenOn": "2023-12-12T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f10b1d5_3c63f87b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "3417edc9644c91c5032c69da67fbf33006cadc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d455a564_68b38697",
@@ -62,6 +110,30 @@
       "writtenOn": "2023-12-12T17:59:53Z",
       "side": 1,
       "message": "Can you use resp_buffer_ptr.get()? resp_buffer isn\u0027t used in the function body.",
+      "range": {
+        "startLine": 5390,
+        "startChar": 37,
+        "endLine": 5390,
+        "endChar": 48
+      },
+      "revId": "3417edc9644c91c5032c69da67fbf33006cadc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0e59c4_6d53ff63",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1474597
+      },
+      "writtenOn": "2023-12-12T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d455a564_68b38697",
       "range": {
         "startLine": 5390,
         "startChar": 37,
