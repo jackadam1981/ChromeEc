@@ -30,6 +30,12 @@
 #endif /* CONFIG_ZEPHYR */
 
 /*
+ * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
+ * #line marks the *next* line, so it is off by one.
+ */
+#line 37
+
+/*
  * Define a new macro (FIXED_SECTION) to abstract away the linker details
  * between platform/ec builds and Zephyr. Each build has a slightly different
  * way of ensuring that the given section is in the same relative location in
@@ -192,6 +198,18 @@
 #define __override_proto
 #define __override
 #define __overridable __attribute__((weak))
+
+/*
+ * Mark a symbol that is provided by a precompiled static library, without
+ * source code.
+ */
+#define __staticlib extern
+
+/*
+ * Mark a function that is defined purely as a hook to be used by a static
+ * library.
+ */
+#define __staticlib_hook __unused
 
 /*
  * Attribute that will generate a compiler warning if the return value is not
