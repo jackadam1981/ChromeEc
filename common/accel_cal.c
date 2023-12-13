@@ -15,7 +15,10 @@ void accel_cal_reset(struct accel_cal *cal)
 {
 	int i;
 
-	for (i = 0; i < cal->num_temp_windows; ++i) { kasa_reset(&(cal->algos[i].kasa_fit)); newton_fit_reset(&(cal->algos[i].newton_fit)); }
+	for (i = 0; i < cal->num_temp_windows; ++i) {
+		kasa_reset(&(cal->algos[i].kasa_fit));
+		newton_fit_reset(&(cal->algos[i].newton_fit));
+	}
 }
 
 static inline int compute_temp_gate(const struct accel_cal *cal, fp_t temp)
