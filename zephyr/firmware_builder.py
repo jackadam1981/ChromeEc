@@ -86,14 +86,12 @@ def build(opts):
     platform_ec = zephyr_dir.parent
     modules = zmake.modules.locate_from_checkout(find_checkout())
     projects_path = zmake.modules.default_projects_dirs(modules)
-
-    # TODO(b:313535589): Re-enable.
-    # subprocess.run(
-    #     [platform_ec / "util" / "check_clang_format.py"],
-    #     check=True,
-    #     cwd=platform_ec,
-    #     stdin=subprocess.DEVNULL,
-    # )
+    subprocess.run(
+        [platform_ec / "util" / "check_clang_format.py"],
+        check=True,
+        cwd=platform_ec,
+        stdin=subprocess.DEVNULL,
+    )
 
     # Start with a clean build environment
     cmd = ["make", "clobber"]
