@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19146569_b67706af",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-12-13T23:27:18Z",
+      "side": 1,
+      "message": "nit: can you put this above with the other properties at this level? i.e. before line 50 ?",
+      "revId": "d4a12e81df0ac7af3cf58ba339436fb254f152f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
