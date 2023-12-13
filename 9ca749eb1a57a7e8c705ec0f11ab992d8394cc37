@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6478c44_f5f14af6",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-13T00:18:40Z",
+      "side": 1,
+      "message": "Why is this not vivaldi_keybd-\u003enum_top_row_keys?",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "9ca749eb1a57a7e8c705ec0f11ab992d8394cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
