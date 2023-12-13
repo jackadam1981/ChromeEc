@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e010c86_fdccc82a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-12-13T01:01:19Z",
+      "side": 1,
+      "message": "Hi Abe,\nwhile we are waiting to hear whether or not this resolves suspend_stress_test failures, can you help review it? Let me know if you have any questions.",
+      "revId": "16293ccf87222e2dda6091e2c39064949bcc8d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "601177d9_d6dec211",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-12-13T01:01:19Z",
+      "side": 1,
+      "message": "Adding this condition back here is going back to what we had before before landing https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2895424. That CL delayed setting the mux until after PD capability was resolved which fixed a high priority bug that broke charging on brya (b/187796705). It looks like the issue was caused by mux changes blocking the PD task which led to a timeout. But, now that we are directly enabling the USB mux in Attached.SRC/Attached.SNK in usb_tc_drp_acc_trysrc_sm.c, waiting for PD capability to be settled in this function will have no impact. We already set the muxes before we know whether or not the partner is capable of PD.",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 433,
+        "endChar": 3
+      },
+      "revId": "16293ccf87222e2dda6091e2c39064949bcc8d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15662910_7c26acbd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-12-13T01:01:19Z",
+      "side": 1,
+      "message": "I have added this function here because the usb_common.c change was leading to CTVPD test failures. Basically, when the charge through device gets connected, the policy engine will go into SNK Startup state which clears the discovery information and replaces it with information about the charge through device. So, when `get_mux_mode_to_set` is trying to determine the correct mux setting, it cannot check the SOP\u0027 discovery information to confirm a VPD is attached. It would have to rely on the USB communication capable bit of the charge through device. That could be set to 0 even though VPDs can support USB 3.2. To resolve this, I just added this condition to prevent the TC SM from considering connecting a CT device as \"new_pd_capable\". But, this could also be resolved by checking the VPD discovery info if that were stored somewhere.",
+      "range": {
+        "startLine": 829,
+        "startChar": 7,
+        "endLine": 829,
+        "endChar": 18
+      },
+      "revId": "16293ccf87222e2dda6091e2c39064949bcc8d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
