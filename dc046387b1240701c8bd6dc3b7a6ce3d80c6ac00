@@ -16,6 +16,24 @@
       "message": "Can you also run `zmake compare-builds -a`?",
       "revId": "dc046387b1240701c8bd6dc3b7a6ce3d80c6ac00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "088f1d00_f2a77bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-12-13T08:25:04Z",
+      "side": 1,
+      "message": "Got the result:\nFailed projects by diff in binary: rex-ish-ec\nAll failed projects: [\u0027rex-ish-ec\u0027]\nthis is expected, right?",
+      "parentUuid": "3fb2c508_0f515a59",
+      "revId": "dc046387b1240701c8bd6dc3b7a6ce3d80c6ac00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
