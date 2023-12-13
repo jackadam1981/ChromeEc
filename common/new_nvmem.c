@@ -300,6 +300,8 @@ struct max_var_container {
 		     sizeof(struct tuple)];
 } __packed;
 
+#define VAR_HEADER_SIZE (offsetof(struct max_var_container, body))
+
 /*
  * Limit of the number of objects which can be updated in one TPM transaction,
  * reserved and evictable total. This is much more than practical maximum.
@@ -1501,7 +1503,7 @@ static enum ec_error_list save_var(const uint8_t *key, uint8_t key_len,
 				   struct max_var_container *vc)
 {
 	const int total_size =
-		key_len + val_len + offsetof(struct max_var_container, body);
+		key_len + val_len + VAR_HEADER_SIZE;
 	enum ec_error_list rv;
 	int local_alloc = !vc;
 
@@ -3173,19 +3175,21 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 	 * that it would be erased during next compaction. Use placeholder key,
 	 * value pairs as the erase objects.
 	 */
-	saved_list_index = controller_at.list_index;
 	key = (const uint8_t *)nvmem_erase_tpm_data;
 	val = (const uint8_t *)nvmem_erase_tpm_data;
-	key_len = MAX_VAR_BODY_SPACE - 255;
+
 	do {
 		size_t to_go_in_page;
 		uint8_t val_len;
 
+		/* `setvar` may result in compaction */
+		saved_list_index = controller_at.list_index;
+		key_len = MAX_VAR_BODY_SPACE - 255;
+
 		to_go_in_page =
 			CONFIG_FLASH_BANK_SIZE - controller_at.mt.data_offset;
 		if (to_go_in_page >
-		    (MAX_VAR_BODY_SPACE +
-		     offsetof(struct max_var_container, body) - 1)) {
+		    (MAX_VAR_BODY_SPACE + VAR_HEADER_SIZE - 1)) {
 			val_len = MAX_VAR_BODY_SPACE - key_len;
 		} else {
 			/*
@@ -3196,8 +3200,7 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 			 *
 			 * (where key and value are of one byte each).
 			 */
-			if (to_go_in_page <
-			    (offsetof(struct max_var_container, body) + 2)) {
+			if (to_go_in_page < (VAR_HEADER_SIZE + 2)) {
 				/*
 				 * There is very little room left, even key
 				 * and value of size of one each is enough to
@@ -3210,17 +3213,18 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 
 				/* How much space key and value should cover? */
 				need_to_cover =
-					to_go_in_page -
-					offsetof(struct max_var_container,
-						 body) + 1;
+					to_go_in_page - VAR_HEADER_SIZE + 1;
 				key_len = need_to_cover / 2;
 				val_len = need_to_cover - key_len;
 			}
 		}
-		if (setvar(key, key_len, val, val_len) != EC_SUCCESS)
-			ccprintf("%s: adding var failed!\n", __func__);
-		if (setvar(key, key_len, NULL, 0) != EC_SUCCESS)
-			ccprintf("%s: deleting var failed!\n", __func__);
+		rv = setvar(key, key_len, val, val_len);
+		if (rv != EC_SUCCESS)
+			ccprintf("%s: adding var failed (%d)!\n", __func__, rv);
+		rv = setvar(key, key_len, NULL, 0);
+		if (rv != EC_SUCCESS)
+			ccprintf("%s: deleting var failed (%d)!\n", __func__,
+				 rv);
 
 	} while (controller_at.list_index != (saved_list_index + 1));
 
