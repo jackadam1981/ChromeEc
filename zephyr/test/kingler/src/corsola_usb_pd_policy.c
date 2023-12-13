@@ -14,7 +14,6 @@
 
 FAKE_VALUE_FUNC(int, board_set_active_charge_port, int);
 FAKE_VALUE_FUNC(int, board_vbus_source_enabled, int);
-FAKE_VOID_FUNC(button_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(xhci_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(switch_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(ppc_interrupt, enum gpio_signal);
@@ -32,7 +31,6 @@ FAKE_VOID_FUNC(pd_send_host_event, int);
 #define FFF_FAKES_LIST(FAKE)               \
 	FAKE(board_set_active_charge_port) \
 	FAKE(board_vbus_source_enabled)    \
-	FAKE(button_interrupt)             \
 	FAKE(xhci_interrupt)               \
 	FAKE(switch_interrupt)             \
 	FAKE(ppc_interrupt)                \

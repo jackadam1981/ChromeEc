@@ -9,7 +9,6 @@
 
 /* LCOV_EXCL_START */
 
-FAKE_VOID_FUNC(button_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(chipset_reset_request_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(power_signal_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(chipset_warm_reset_interrupt, enum gpio_signal);
