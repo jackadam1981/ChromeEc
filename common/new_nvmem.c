@@ -300,6 +300,9 @@ struct max_var_container {
 		     sizeof(struct tuple)];
 } __packed;
 
+/* Size of container + tuple for variables */
+#define VAR_HEADER_SIZE (offsetof(struct max_var_container, body))
+
 /*
  * Limit of the number of objects which can be updated in one TPM transaction,
  * reserved and evictable total. This is much more than practical maximum.
@@ -1553,7 +1556,7 @@ static enum ec_error_list save_var(const uint8_t *key, uint8_t key_len,
 				   struct max_var_container *vc)
 {
 	const int total_size =
-		key_len + val_len + offsetof(struct max_var_container, body);
+		key_len + val_len + VAR_HEADER_SIZE;
 	enum ec_error_list rv;
 	int local_alloc = !vc;
 
@@ -3178,6 +3181,23 @@ static void dump_contents(const struct nn_container *ch)
 	ccprintf("\n");
 }
 
+static enum ec_error_list nvmem_compact_and_init(void)
+{
+	enum ec_error_list rv;
+
+	lock_mutex(__LINE__);
+	rv = compact_nvmem();
+	unlock_mutex(__LINE__);
+
+	/* Return first error, but always do `new_nvmem_init()` */
+	if (rv == EC_SUCCESS)
+		rv = new_nvmem_init();
+	else
+		new_nvmem_init();
+
+	return rv;
+}
+
 enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 {
 	const uint8_t *key;
@@ -3186,7 +3206,8 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 	struct nn_container *ch;
 	struct access_tracker at = {};
 	uint8_t saved_list_index;
-	uint8_t key_len;
+	uint8_t key_len, initial_key_len;
+	int16_t var_space = 0;
 
 	if (!crypto_enabled())
 		return EC_ERROR_INVAL;
@@ -3233,25 +3254,57 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 
 	shared_mem_release(ch);
 
+	/* TODO: replace loop below with simple creation of object spanning
+	 * till end of the page once address issue with compact_nvmem():
+	 *  to_go_in_page = CONFIG_FLASH_BANK_SIZE -
+	 *                  controller_at.mt.data_offset;
+	 *  if (to_go_in_page > sizeof(*ch)) {
+	 *	ch->container_type = NN_OBJ_OLD_COPY;
+	 *	ch->container_type_copy = NN_OBJ_OLD_COPY;
+	 *	ch->size = to_go_in_page- sizeof(*ch);
+	 *	save_container(ch);
+	 *	add_final_delimiter();
+	 *  }
+	 */
+
 	/*
 	 * Now fill up the current flash page with erased objects to make sure
 	 * that it would be erased during next compaction. Use placeholder key,
 	 * value pairs as the erase objects.
+	 *
+	 * Use content of code segment for both key and value, as we don't
+	 * really care about it.
 	 */
-	saved_list_index = controller_at.list_index;
-	key = (const uint8_t *)nvmem_erase_tpm_data;
-	val = (const uint8_t *)nvmem_erase_tpm_data;
-	key_len = MAX_VAR_BODY_SPACE - 255;
+	key = (const uint8_t *)nvmem_erase_tpm_data_selective;
+	val = (const uint8_t *)nvmem_erase_tpm_data_selective;
+	/* We want to create largest variables possible. */
+	var_space = MAX_VAR_BODY_SPACE;
+	if (var_space + total_var_space > MAX_VAR_TOTAL_SPACE)
+		var_space = MAX_VAR_TOTAL_SPACE - total_var_space;
+
+	if (var_space < 2) {
+		ccprintf("%s: can't fill page (%d)!\n", __func__, var_space);
+		return nvmem_compact_and_init();
+	};
+
+	if (var_space > MAX_VAR_VAL_SIZE)
+		initial_key_len = var_space - MAX_VAR_VAL_SIZE;
+	else
+		initial_key_len = 1;
+
 	do {
 		size_t to_go_in_page;
 		uint8_t val_len;
 
+		/* `setvar` may result in compaction */
+		saved_list_index = controller_at.list_index;
+
+		key_len = initial_key_len;
+
 		to_go_in_page =
 			CONFIG_FLASH_BANK_SIZE - controller_at.mt.data_offset;
-		if (to_go_in_page >
-		    (MAX_VAR_BODY_SPACE +
-		     offsetof(struct max_var_container, body) - 1)) {
-			val_len = MAX_VAR_BODY_SPACE - key_len;
+		if (to_go_in_page > (var_space + VAR_HEADER_SIZE - 1)) {
+			val_len = var_space - key_len;
 		} else {
 			/*
 			 * Let's not write more than we have to get over the
@@ -3261,8 +3314,7 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 			 *
 			 * (where key and value are of one byte each).
 			 */
-			if (to_go_in_page <
-			    (offsetof(struct max_var_container, body) + 2)) {
+			if (to_go_in_page < (VAR_HEADER_SIZE + 2)) {
 				/*
 				 * There is very little room left, even key
 				 * and value of size of one each is enough to
@@ -3275,28 +3327,22 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 
 				/* How much space key and value should cover? */
 				need_to_cover =
-					to_go_in_page -
-					offsetof(struct max_var_container,
-						 body) + 1;
+					to_go_in_page - VAR_HEADER_SIZE + 1;
 				key_len = need_to_cover / 2;
 				val_len = need_to_cover - key_len;
 			}
 		}
-		if (setvar(key, key_len, val, val_len) != EC_SUCCESS)
-			ccprintf("%s: adding var failed!\n", __func__);
-		if (setvar(key, key_len, NULL, 0) != EC_SUCCESS)
-			ccprintf("%s: deleting var failed!\n", __func__);
+		rv = setvar(key, key_len, val, val_len);
+		if (rv != EC_SUCCESS)
+			ccprintf("%s: adding var failed (%d)!\n", __func__, rv);
+		rv = setvar(key, key_len, NULL, 0);
+		if (rv != EC_SUCCESS)
+			ccprintf("%s: deleting var failed (%d)!\n", __func__,
+				 rv);
 
 	} while (controller_at.list_index != (saved_list_index + 1));
 
-	lock_mutex(__LINE__);
-	rv = compact_nvmem();
-	unlock_mutex(__LINE__);
-
-	if (rv == EC_SUCCESS)
-		rv = new_nvmem_init();
-
-	return rv;
+	return nvmem_compact_and_init();
 }
 
 /*
