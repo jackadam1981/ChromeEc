@@ -8931,9 +8931,9 @@ static int cmd_battery_config_set(int argc, char *argv[])
 	FILE *fp = NULL;
 	int size;
 	char *json = NULL;
-	const char *json_file = argv[1];
-	const char *manuf_name = argv[2];
-	const char *device_name = argv[3];
+	const char *json_file;
+	const char *manuf_name;
+	const char *device_name;
 	char identifier[SBS_MAX_STR_OBJ_SIZE * 2];
 	struct board_batt_params config;
 	struct ec_params_set_cbi *p = (struct ec_params_set_cbi *)ec_outbuf;
@@ -8941,6 +8941,16 @@ static int cmd_battery_config_set(int argc, char *argv[])
 	uint8_t *d = (uint8_t *)header;
 	uint8_t struct_version = EC_BATTERY_CONFIG_STRUCT_VERSION;
 	int rv;
+
+	if (argc < 4 || 4 < argc) {
+		fprintf(stderr, "Invalid number of arguments.\n");
+		cmd_battery_config_help("bcfg");
+		return -1;
+	}
+
+	json_file = argv[1];
+	manuf_name = argv[2];
+	device_name = argv[3];
 
 	if (strlen(manuf_name) > SBS_MAX_STR_SIZE) {
 		fprintf(stderr, "manuf_name is too long.");
