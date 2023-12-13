@@ -690,6 +690,8 @@ enum ec_status {
 	EC_RES_INVALID_DATA_CRC = 19, /* Data CRC invalid */
 	EC_RES_DUP_UNAVAILABLE = 20, /* Can't resend response */
 
+	EC_RES_COUNT,
+
 	EC_RES_MAX = UINT16_MAX, /**< Force enum to be 16 bits */
 } __packed;
 BUILD_ASSERT(sizeof(enum ec_status) == sizeof(uint16_t));
@@ -735,6 +737,39 @@ BUILD_ASSERT((uint16_t)EC_RES_DUP_UNAVAILABLE ==
 	     (uint16_t)EC_HOST_CMD_DUP_UNAVAILABLE);
 BUILD_ASSERT((uint16_t)EC_RES_MAX == (uint16_t)EC_HOST_CMD_MAX);
 
+#endif
+
+/* clang-format off */
+#define EC_STATUS_TEXT                                                        \
+	{                                                                     \
+	EC_MAP_ITEM(EC_RES_SUCCESS, SUCCESS),                                 \
+	EC_MAP_ITEM(EC_RES_INVALID_COMMAND, INVALID_COMMAND),                 \
+	EC_MAP_ITEM(EC_RES_ERROR, ERROR),                                     \
+	EC_MAP_ITEM(EC_RES_INVALID_PARAM, INVALID_PARAM),                     \
+	EC_MAP_ITEM(EC_RES_ACCESS_DENIED, ACCESS_DENIED),                     \
+	EC_MAP_ITEM(EC_RES_INVALID_RESPONSE, INVALID_RESPONSE),               \
+	EC_MAP_ITEM(EC_RES_INVALID_VERSION, INVALID_VERSION),                 \
+	EC_MAP_ITEM(EC_RES_INVALID_CHECKSUM, INVALID_CHECKSUM),               \
+	EC_MAP_ITEM(EC_RES_IN_PROGRESS, IN_PROGRESS),                         \
+	EC_MAP_ITEM(EC_RES_UNAVAILABLE, UNAVAILABLE),                         \
+	EC_MAP_ITEM(EC_RES_TIMEOUT, TIMEOUT),                                 \
+	EC_MAP_ITEM(EC_RES_OVERFLOW, OVERFLOW),                               \
+	EC_MAP_ITEM(EC_RES_INVALID_HEADER, INVALID_HEADER),                   \
+	EC_MAP_ITEM(EC_RES_REQUEST_TRUNCATED, REQUEST_TRUNCATED),             \
+	EC_MAP_ITEM(EC_RES_RESPONSE_TOO_BIG, RESPONSE_TOO_BIG),               \
+	EC_MAP_ITEM(EC_RES_BUS_ERROR, BUS_ERROR),                             \
+	EC_MAP_ITEM(EC_RES_BUSY, BUSY),                                       \
+	EC_MAP_ITEM(EC_RES_INVALID_HEADER_VERSION, INVALID_HEADER_VERSION),   \
+	EC_MAP_ITEM(EC_RES_INVALID_HEADER_CRC, INVALID_HEADER_CRC),           \
+	EC_MAP_ITEM(EC_RES_INVALID_DATA_CRC, INVALID_DATA_CRC),               \
+	EC_MAP_ITEM(EC_RES_DUP_UNAVAILABLE, DUP_UNAVAILABLE),                 \
+	}
+/* clang-format on */
+
+#ifndef __cplusplus
+#define EC_MAP_ITEM(k, v) [k] = #v
+BUILD_ASSERT(ARRAY_SIZE(((const char *[])EC_STATUS_TEXT)) == EC_RES_COUNT);
+#undef EC_MAP_ITEM
 #endif
 
 /*
@@ -4122,6 +4157,7 @@ struct ec_response_keyboard_factory_test {
 #define EC_MKBP_FP_ERR_MATCH_NO 0
 #define EC_MKBP_FP_ERR_MATCH_NO_INTERNAL 6
 #define EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES 7
+#define EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL 8
 #define EC_MKBP_FP_ERR_MATCH_NO_LOW_QUALITY 2
 #define EC_MKBP_FP_ERR_MATCH_NO_LOW_COVERAGE 4
 #define EC_MKBP_FP_ERR_MATCH_YES 1
@@ -7636,6 +7672,179 @@ struct ec_response_typec_vdm_response {
 	uint32_t vdm_attention[2];
 } __ec_align1;
 
+/*
+ * Get an active battery config from the EC.
+ */
+#define EC_CMD_BATTERY_CONFIG 0x013D
+
+/* Version of struct batt_conf_header and its internals. */
+#define EC_BATTERY_CONFIG_STRUCT_VERSION 0x00
+
+/* Number of writes needed to invoke battery cutoff command */
+#define SHIP_MODE_WRITES 2
+
+struct ship_mode_info {
+	uint8_t reg_addr;
+	uint8_t reserved;
+	uint16_t reg_data[SHIP_MODE_WRITES];
+} __packed __aligned(2);
+
+struct sleep_mode_info {
+	uint8_t reg_addr;
+	uint8_t reserved;
+	uint16_t reg_data;
+} __packed __aligned(2);
+
+struct fet_info {
+	uint8_t reg_addr;
+	uint8_t reserved;
+	uint16_t reg_mask;
+	uint16_t disconnect_val;
+	uint16_t cfet_mask; /* CHG FET status mask */
+	uint16_t cfet_off_val;
+} __packed __aligned(2);
+
+enum fuel_gauge_flags {
+	/*
+	 * Write Block Support. If enabled, we use a i2c write block command
+	 * instead of a 16-bit write. The effective difference is the i2c
+	 * transaction will prefix the length (2).
+	 */
+	FUEL_GAUGE_FLAG_WRITE_BLOCK = BIT(0),
+	/* Sleep command support. fuel_gauge_info.sleep_mode must be defined. */
+	FUEL_GAUGE_FLAG_SLEEP_MODE = BIT(1),
+	/*
+	 * Manufacturer access command support. If enabled, FET status is read
+	 * from the OperationStatus (0x54) register using the
+	 * ManufacturerBlockAccess (0x44).
+	 */
+	FUEL_GAUGE_FLAG_MFGACC = BIT(2),
+	/*
+	 * SMB block protocol support in manufacturer access command. If
+	 * enabled, FET status is read from the OperationStatus (0x54) register
+	 * using the ManufacturerBlockAccess (0x44).
+	 */
+	FUEL_GAUGE_FLAG_MFGACC_SMB_BLOCK = BIT(3),
+};
+
+struct fuel_gauge_info {
+	uint32_t flags;
+	uint32_t board_flags;
+	struct ship_mode_info ship_mode;
+	struct sleep_mode_info sleep_mode;
+	struct fet_info fet;
+} __packed __aligned(4);
+
+/* Battery constants */
+struct battery_info {
+	/* Operation voltage in mV */
+	uint16_t voltage_max;
+	uint16_t voltage_normal;
+	uint16_t voltage_min;
+	/* (TODO(chromium:756700): add desired_charging_current */
+	/**
+	 * Pre-charge to fast charge threshold in mV,
+	 * default to voltage_min if not specified.
+	 * This option is only available on isl923x and rt946x.
+	 */
+	uint16_t precharge_voltage;
+	/* Pre-charge current in mA */
+	uint16_t precharge_current;
+	/* Working temperature ranges in degrees C */
+	int8_t start_charging_min_c;
+	int8_t start_charging_max_c;
+	int8_t charging_min_c;
+	int8_t charging_max_c;
+	int8_t discharging_min_c;
+	int8_t discharging_max_c;
+	/* Used only if CONFIG_BATTERY_VENDOR_PARAM is defined. */
+	uint8_t vendor_param_start;
+	uint8_t reserved;
+} __packed __aligned(2);
+
+/**
+ * The 'config' of a battery.
+ */
+struct board_batt_params {
+	struct fuel_gauge_info fuel_gauge;
+	struct battery_info batt_info;
+} __packed __aligned(4);
+
+/*
+ * The SBS defines a string object as a block of chars, 32 byte maximum, where
+ * the first byte indicates the number of chars in the block (excluding the
+ * first byte).
+ *
+ * Thus, the actual string length (i.e. the value strlen returns) is limited to
+ * 31 (=SBS_MAX_STR_SIZE).
+ *
+ * SBS_MAX_STR_OBJ_SIZE can be used as the size of a buffer for an SBS string
+ * object but also as a buffer for a c-lang string because the null terminating
+ * char also takes one byte.
+ */
+#define SBS_MAX_STR_SIZE 31
+#define SBS_MAX_STR_OBJ_SIZE (SBS_MAX_STR_SIZE + 1)
+
+/**
+ * Header describing a battery config stored in CBI. Only struct_version has
+ * size and position independent of struct_version. The rest varies as
+ * struct_version changes.
+ *
+ * Version 0
+ * Layout:
+ *  +-------------+
+ *  | header      |
+ *  +-------------+
+ *  |             | ^
+ *  | manuf_name  | | manuf_name_size
+ *  |             | v
+ *  +-------------+
+ *  | device_name | ^
+ *  |             | | device_name_size
+ *  |             | v
+ *  +-------------+
+ *  | config      | ^
+ *  |             | |
+ *  |             | | cbi data size
+ *  |             | |    - (header_size+manuf_name_size+device_name_size)
+ *  |             | |
+ *  |             | v
+ *  +-------------+
+ * Note:
+ * - manuf_name and device_name are not null-terminated.
+ * - The config isn't aligned. It should be copied to struct board_batt_params
+ *   before its contents are accessed.
+ */
+struct batt_conf_header {
+	/* Version independent field. It's always here as a uint8_t. */
+	uint8_t struct_version;
+	/* Version 0 members */
+	uint8_t manuf_name_size;
+	uint8_t device_name_size;
+	uint8_t reserved;
+	/* manuf_name, device_name, board_batt_params follow after this. */
+} __packed;
+
+#define BATT_CONF_MAX_SIZE                                           \
+	(sizeof(struct batt_conf_header) + SBS_MAX_STR_OBJ_SIZE * 2 + \
+	 sizeof(struct board_batt_params))
+
+/*
+ * Record the current AP firmware state. This is used to help testing, such as
+ * with FAFT (Fully-Automated Firmware Test), which likes to know which firmware
+ * screen is currently displayed.
+ */
+
+#define EC_CMD_AP_FW_STATE 0x013E
+
+struct ec_params_ap_fw_state {
+	/*
+	 * Value which indicates the state. This is not decoded by the EC, so
+	 * its meaning is entirely outside this code base.
+	 */
+	uint32_t state;
+} __ec_align1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
@@ -7649,7 +7858,11 @@ struct ec_response_typec_vdm_response {
 /*****************************************************************************/
 /* Fingerprint MCU commands: range 0x0400-0x040x */
 
-/* Fingerprint SPI sensor passthru command: prototyping ONLY */
+/*
+ * Fingerprint SPI sensor passthru command
+ *
+ * This command was used for prototyping and it's now deprecated.
+ */
 #define EC_CMD_FP_PASSTHRU 0x0400
 
 #define EC_FP_FLAG_NOT_COMPLETE 0x1
@@ -7903,6 +8116,10 @@ struct ec_params_fp_seed {
 #define FP_CONTEXT_STATUS_MATCH_PROCESSED_SET BIT(2)
 /* FP auth_nonce had been set or not*/
 #define FP_CONTEXT_AUTH_NONCE_SET BIT(3)
+/* FP user_id had been set or not*/
+#define FP_CONTEXT_USER_ID_SET BIT(4)
+/* FP templates are unlocked for nonce context or not */
+#define FP_CONTEXT_TEMPLATE_UNLOCKED_SET BIT(5)
 
 struct ec_response_fp_encryption_status {
 	/* Used bits in encryption engine status */
@@ -8020,15 +8237,11 @@ struct ec_response_fp_read_match_secret_with_pubkey {
 	uint8_t enc_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
 } __ec_align4;
 
-/* Preload encrypted template into the MCU buffer */
-#define EC_CMD_FP_PRELOAD_TEMPLATE 0x0416
+/* Unlock the fpsensor template with the current nonce context */
+#define EC_CMD_FP_UNLOCK_TEMPLATE 0x0417
 
-struct ec_params_fp_preload_template {
-	uint32_t offset;
-	uint32_t size;
-	uint16_t fgr;
-	uint8_t reserved[2];
-	uint8_t data[];
+struct ec_params_fp_unlock_template {
+	uint16_t fgr_num;
 } __ec_align4;
 
 /*****************************************************************************/
