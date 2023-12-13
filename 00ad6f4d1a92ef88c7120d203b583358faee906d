@@ -34,6 +34,24 @@
       "parentUuid": "73d5ccde_89bfac3f",
       "revId": "00ad6f4d1a92ef88c7120d203b583358faee906d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b933a0b_aeeba7fb",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-12-13T02:58:37Z",
+      "side": 1,
+      "message": "I see, u2f_get_state() creates the state if not created yet. So on a device with state not created yet, calling this command will actually create the state with FIPS path, and returning true. This is fine to me.",
+      "parentUuid": "a92d5044_a1451aee",
+      "revId": "00ad6f4d1a92ef88c7120d203b583358faee906d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
