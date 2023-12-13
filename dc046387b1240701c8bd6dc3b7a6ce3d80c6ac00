@@ -34,6 +34,24 @@
       "parentUuid": "3fb2c508_0f515a59",
       "revId": "dc046387b1240701c8bd6dc3b7a6ce3d80c6ac00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "404c85c6_d6f69eb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-13T16:12:06Z",
+      "side": 1,
+      "message": "Yes please add this to the TEST line\n\"TEST\u003dzmake compare-builds -a.  Passes except for rex-ish-ec\"",
+      "parentUuid": "088f1d00_f2a77bc0",
+      "revId": "dc046387b1240701c8bd6dc3b7a6ce3d80c6ac00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
