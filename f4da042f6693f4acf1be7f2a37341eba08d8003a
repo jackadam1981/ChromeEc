@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1dcb72_d236232f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-12-13T19:23:54Z",
+      "side": 1,
+      "message": "Hi Deepti,\nYes, per VJ’s comments, need to further discuss this implementation from system level.\nPer my knowledge, this verify_hash(void) should be supported to keep compatible with legacy.\n\nUnderstand in “shared external SPI flash” solution, AP has capability to access SPI flash chip directly, able to compute or verify hash of EC RW code. But if system prefers to compute or verify hash via EC command, EC FW should support it too. as soon as SPI signals are configured correctly, this verify_hash(void) should be functional as it is, similar to “hash” command host_command_vboot_hash() via eSPI or Console.\n\nOnly one new issue related to “shared external SPI flash” solution, EC should own SPI bus as verify_hash(void) is called.",
+      "revId": "f4da042f6693f4acf1be7f2a37341eba08d8003a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a8dffa2_3cee86fe",
