@@ -16,6 +16,24 @@
       "message": "```\nboard/primus/battery.c:222:18: error: \u0027const struct batt_conf_embed\u0027 has no member named \u0027fuel_gauge\u0027\n  222 |                 .fuel_gauge \u003d {\n      |                  ^~~~~~~~~~\n```",
       "revId": "402babcb863ba0779bbdfbeb8f21c4c08be71610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b68e506_72465550",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-12-13T00:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ddea8dc_c71e1e5a",
+      "revId": "402babcb863ba0779bbdfbeb8f21c4c08be71610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
