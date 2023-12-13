@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19d0ffa7_aa658411",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-13T15:59:36Z",
+      "side": 1,
+      "message": "No. Initialization occurs every time we reset the sensor.",
+      "parentUuid": "58c3e57a_acd33932",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10da3a2d_01052388",
         "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
         "patchSetId": 25
