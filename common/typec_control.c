@@ -5,6 +5,9 @@
 
 /* Type-C control logic source */
 
+#include "console.h"
+#include "timer.h"
+#include "usb_pd.h"
 #include "tcpm/tcpm.h"
 #include "typec_control.h"
 #include "usbc_ocp.h"
@@ -75,3 +78,31 @@ void typec_set_vconn(int port, bool enable)
 	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
 		ppc_set_vconn(port, true);
 }
+
+static int command_vconn(int argc, const char **argv)
+{
+	int port;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 10);
+	if (port < 0 || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM1;
+
+	if (!strcasecmp(argv[2], "toggle")) {
+		typec_set_vconn(port, 0);
+		msleep(20);
+		typec_set_vconn(port, 1);
+	} else if (!strcasecmp(argv[2], "on"))
+		typec_set_vconn(port, 1);
+	else if (!strcasecmp(argv[2], "off"))
+		typec_set_vconn(port, 0);
+	else
+		return EC_ERROR_PARAM2;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(vconn, command_vconn, "<port> <toggle | on | off>",
+			"Set VCONN");
