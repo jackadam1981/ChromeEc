@@ -16,6 +16,24 @@
       "message": "Do you want to remove anx7447_tcpc_clear_hpd_status defined in header file ?",
       "revId": "e774ba8b8cf018783171abe899874331764736e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c646731_410c0012",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-13T07:08:45Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d61421a4_7debaf2f",
+      "revId": "e774ba8b8cf018783171abe899874331764736e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
