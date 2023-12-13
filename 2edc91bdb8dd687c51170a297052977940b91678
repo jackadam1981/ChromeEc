@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ed8b27_3dbeda8a",
+        "filename": "board/dochi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-13T19:22:20Z",
+      "side": 1,
+      "message": "please review various scenarios where these deferred calls need\nto be cancelled. if events happen faster than assumed, both\ncalls may be pending.",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "2edc91bdb8dd687c51170a297052977940b91678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
