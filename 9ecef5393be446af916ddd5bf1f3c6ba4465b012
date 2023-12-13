@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdeb5bea_dd569a1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-12-13T18:13:03Z",
+      "side": 1,
+      "message": "For the purpose of experimenting, this is probably fine. This won\u0027t be the final solution anyway.\n\nHypothetically, controlling the TC directly from a shell command could make the TC state inconsistent. If that ends up breaking something, you could try using `pd_request_vconn_swap_off` and `pd_request_vconn_swap_on` instead of `typec_set_vconn`, although that comes with its own complication of signaling the PE when it\u0027s done. Let\u0027s see what this does before worrying about hypotheticals.",
+      "revId": "9ecef5393be446af916ddd5bf1f3c6ba4465b012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
