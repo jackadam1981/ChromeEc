@@ -356,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "591f0d8e_fae7c02a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-13T19:35:32Z",
+      "side": 1,
+      "message": "Because all these functions are so similar, I think a constant for the sub--command will help readability.",
+      "parentUuid": "88b5f7b8_320529da",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 24
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ce46bc1_2b559871",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
@@ -438,6 +462,30 @@
       "side": 1,
       "message": "Byte8 of the IC_STATUS register contains the connection state and the PD is ready bit. And it seems odd to have this dynamic data in the same register as the static version information.",
       "parentUuid": "5cd43b04_7030fd8f",
+      "range": {
+        "startLine": 857,
+        "startChar": 8,
+        "endLine": 857,
+        "endChar": 27
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f9eb80_1199c163",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-13T19:35:32Z",
+      "side": 1,
+      "message": "Can the connection state be read using a UCSI command?",
+      "parentUuid": "f59ebafd_e43373da",
       "range": {
         "startLine": 857,
         "startChar": 8,
