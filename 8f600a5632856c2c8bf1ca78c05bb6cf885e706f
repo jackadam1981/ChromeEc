@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d310ea22_a672dbbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-12-13T01:03:45Z",
+      "side": 1,
+      "message": "Please read the \"conditional approve\" comment before submit to CQ.",
+      "revId": "8f600a5632856c2c8bf1ca78c05bb6cf885e706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05defa6b_22257d18",
         "filename": "zephyr/program/nissa/uldren/project.conf",
         "patchSetId": 3
