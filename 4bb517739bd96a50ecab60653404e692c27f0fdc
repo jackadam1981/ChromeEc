@@ -141,6 +141,24 @@
       "parentUuid": "ae35dbb7_28e6a2d1",
       "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38d5e83_3382b31d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-13T06:19:01Z",
+      "side": 1,
+      "message": "I Check the error message, It show as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2718533\nfor Require new CONFIG options",
+      "parentUuid": "950d9530_8db6b454",
+      "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
