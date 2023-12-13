@@ -321,6 +321,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42e78826_acc63d71",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-13T10:35:53Z",
+      "side": 1,
+      "message": "update for 2) if (requested_timeout \u003c first_minimal_timeout) reboot_timeout \u003d first_minimal_timeout; (for the first run).",
+      "parentUuid": "241c545c_1e0b94bf",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a49f104_69616aae",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 13
