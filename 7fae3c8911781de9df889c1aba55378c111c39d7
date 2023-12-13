@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "08dc06d4_a36d7167",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Good point. Fixed.",
+      "parentUuid": "81f23bf4_e2bef506",
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e658235b_b693b1c0",
         "filename": "util/ec_coredump.cc",
         "patchSetId": 11
@@ -65,6 +83,24 @@
       "writtenOn": "2023-12-08T20:36:04Z",
       "side": 1,
       "message": "shouldn\u0027t ever happen..",
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5def4364_e4b3dfdb",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Good point. Fixed.",
+      "parentUuid": "e658235b_b693b1c0",
       "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,30 @@
       "writtenOn": "2023-12-08T20:36:04Z",
       "side": 1,
       "message": "ec_coredump",
+      "range": {
+        "startLine": 553,
+        "startChar": 22,
+        "endLine": 553,
+        "endChar": 31
+      },
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "618c88f8_71636ec2",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe1f499c_a3a2cf2b",
       "range": {
         "startLine": 553,
         "startChar": 22,
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd474304_8197ec65",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Moved next to usage so cleanup is simpler.",
+      "parentUuid": "01491939_ebbe6c03",
+      "range": {
+        "startLine": 602,
+        "startChar": 15,
+        "endLine": 602,
+        "endChar": 35
+      },
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45b3adfa_aeb0419a",
@@ -128,6 +212,24 @@
       "writtenOn": "2023-12-08T20:36:04Z",
       "side": 1,
       "message": "panic_output_file.close();",
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d946d0_7096aaee",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Now closing unconditionally after write.",
+      "parentUuid": "45b3adfa_aeb0419a",
       "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +251,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a3fcd9_0e2d1f55",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2af0628_2c7398b1",
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3fba9e7_18cefaa8",
@@ -162,6 +282,24 @@
       "writtenOn": "2023-12-08T20:36:04Z",
       "side": 1,
       "message": "free(current_segment-\u003emem);\nnext \u003d current_segment-\u003enext;\nfree(current_segment);\ncurrent_segment \u003d next;",
+      "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b90e04_656e18ef",
+        "filename": "util/ec_coredump.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-12-13T18:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3fba9e7_18cefaa8",
       "revId": "7fae3c8911781de9df889c1aba55378c111c39d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
