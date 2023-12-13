@@ -8835,6 +8835,7 @@ static void cmd_battery_config_help(const char *cmd)
 		"\n"
 		"Usage: %s get [-c] [<index>]\n"
 		"    Print active battery config in JSON or C-struct (-c).\n"
+		"    If <index> is specified, a config is read from CBI.\n"
 		"\n"
 		"Usage: %s set <json_file> <manuf_name> <device_name> [<index>]\n"
 		"    Copy battery config from file to CBI.\n"
@@ -9174,7 +9175,8 @@ static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 
 static int cmd_cbi_is_binary_field(enum cbi_data_tag tag)
 {
-	return tag == CBI_TAG_BATTERY_CONFIG;
+	return CBI_TAG_BATTERY_CONFIG <= tag &&
+	       tag <= CBI_TAG_BATTERY_CONFIG_15;
 }
 
 /*
