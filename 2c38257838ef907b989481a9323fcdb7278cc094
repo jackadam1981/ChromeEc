@@ -378,6 +378,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "962c327e_497c7984",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T22:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591f0d8e_fae7c02a",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 24
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ce46bc1_2b559871",
@@ -510,6 +534,30 @@
       "side": 1,
       "message": "It can be read using a different command. I\u0027ll make the change in the next upload",
       "parentUuid": "d6f9eb80_1199c163",
+      "range": {
+        "startLine": 857,
+        "startChar": 8,
+        "endLine": 857,
+        "endChar": 27
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4654326d_077dab02",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T22:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0838c8_49aed89c",
       "range": {
         "startLine": 857,
         "startChar": 8,
