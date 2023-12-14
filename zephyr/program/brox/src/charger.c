@@ -10,5 +10,5 @@ int extpower_is_present(void)
 	 * Update with PDC specific calls to get the AC state on all ports.
 	 */
 
-	return 0;
+	return 1;
 }

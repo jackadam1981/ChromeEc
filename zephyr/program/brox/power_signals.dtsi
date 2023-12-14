@@ -149,52 +149,8 @@
 		gpios = <&gpiob 3 0>;
 	};
 
-	ap-power {
-		compatible = "ap-pwrseq-sub-states";
-		chipset = "AP_POWER_STATE_S0IX";
-	};
-};
-
-/*
- * Because the power signals directly reference the GPIOs,
- * the correspinding named-gpios need to have no-auto-init set.
- */
-&gpio_ec_dsw_pwrok {
-	no-auto-init;
-};
-&gpio_ec_pch_pwrok {
-	no-auto-init;
-};
-&gpio_ec_rsmrst_l {
-	no-auto-init;
-};
-&gpio_ec_pch_sys_pwrok {
-	no-auto-init;
-};
-&gpio_pg_vccin_aux_od {
-	no-auto-init;
-};
-&gpio_en_s5_rails {
-	no-auto-init;
-};
-&gpio_imvp9_vrrdy_od {
-	no-auto-init;
-};
-&gpio_imvp9_vrrdy_od {
-	no-auto-init;
-};
-&gpio_sys_slp_s0ix_l {
-	no-auto-init;
-};
-&gpio_ec_slp_s4_l {
-	no-auto-init;
-};
-&gpio_ec_slp_s3_l {
-	no-auto-init;
-};
-&gpio_ec_slp_sus_l {
-	no-auto-init;
-};
-&gpio_sys_rst_r_odl {
-	no-auto-init;
+	// ap-power {
+	// 	compatible = "ap-pwrseq-sub-states";
+	// 	chipset = "AP_POWER_STATE_S0IX";
+	// };
 };
