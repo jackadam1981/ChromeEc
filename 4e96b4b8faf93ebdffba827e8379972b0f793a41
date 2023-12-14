@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55c4af7_a09a1764",
+        "filename": "bazel/gen_bazel_targets.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-12-14T23:36:18Z",
+      "side": 1,
+      "message": "Needs updated",
+      "range": {
+        "startLine": 119,
+        "startChar": 15,
+        "endLine": 119,
+        "endChar": 19
+      },
+      "revId": "4e96b4b8faf93ebdffba827e8379972b0f793a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b0b966_619d7a08",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-12-14T23:36:18Z",
+      "side": 1,
+      "message": "Zephyr and Legacy EC",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "4e96b4b8faf93ebdffba827e8379972b0f793a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
