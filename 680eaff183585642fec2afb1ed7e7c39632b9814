@@ -22,6 +22,30 @@
       },
       "revId": "680eaff183585642fec2afb1ed7e7c39632b9814",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8589d921_5bfb39f3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8837,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-14T17:16:53Z",
+      "side": 1,
+      "message": "Done.\n\nYes. I had added a new line right below and somehow I lost it when I reorganized CLs. I put it back to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5120651/3?usp\u003drelated-change. Ptal.",
+      "parentUuid": "535e493b_3bf89d58",
+      "range": {
+        "startLine": 8837,
+        "startChar": 7,
+        "endLine": 8837,
+        "endChar": 34
+      },
+      "revId": "680eaff183585642fec2afb1ed7e7c39632b9814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
