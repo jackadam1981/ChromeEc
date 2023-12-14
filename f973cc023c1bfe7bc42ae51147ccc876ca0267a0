@@ -16,6 +16,24 @@
       "message": "Please make Caveh\u0027s requested modification.  He is the approver here.",
       "revId": "f973cc023c1bfe7bc42ae51147ccc876ca0267a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6615da7c_85866de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-14T02:33:09Z",
+      "side": 1,
+      "message": "I Check ACCEL_BMA4XX_INT_EVENT had defined /include/config.h.\nabout Kconfig option includ PLATFORM_EC_ACCEL_BMA4XX.\nThe BMA4XX_INT_EVENT show as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2718533\nfor Require new CONFIG options in this project.\nif not please let me know, how to solved this problem.",
+      "parentUuid": "75a4a07f_7d895cb7",
+      "revId": "f973cc023c1bfe7bc42ae51147ccc876ca0267a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
