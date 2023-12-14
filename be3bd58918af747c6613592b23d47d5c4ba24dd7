@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c14bf1b_3fcef82a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T21:30:26Z",
+      "side": 1,
+      "message": "You can use `K_THREAD_DEFINE` to statically allocate a thread and it\u0027s stack.\n\nExample here: https://github.com/zephyrproject-rtos/zephyr/blob/29b19bcf8bc8f97069be00a9012c4cf1b7dbfb8b/drivers/adc/adc_tla2021.c#L300",
+      "range": {
+        "startLine": 1675,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 0
+      },
+      "revId": "be3bd58918af747c6613592b23d47d5c4ba24dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

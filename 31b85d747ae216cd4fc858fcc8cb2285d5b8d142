@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03cc4d3_d14384f9",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T21:30:26Z",
+      "side": 1,
+      "message": "This is only used by the RTS54xx driver at the moment. Add RTS54XX into the name.\n\n```\nconfig USBC_PDC_RTS54XX_STACK_SIZE\n    depends on USBC_PDC_RTS54XX\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "31b85d747ae216cd4fc858fcc8cb2285d5b8d142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
