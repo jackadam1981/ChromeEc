@@ -46,6 +46,30 @@
       },
       "revId": "bdba3f32cb161e4b6d231fc97f04a93c40b376af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd5f648_a8d47b5a",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-14T22:01:26Z",
+      "side": 1,
+      "message": "Are we going to have \u0027downtime\u0027 until we re-enable clang-format?",
+      "parentUuid": "87f0e1ff_7c59a79e",
+      "range": {
+        "startLine": 12,
+        "startChar": 97,
+        "endLine": 12,
+        "endChar": 104
+      },
+      "revId": "bdba3f32cb161e4b6d231fc97f04a93c40b376af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
