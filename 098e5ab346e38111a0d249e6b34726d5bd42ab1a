@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68659d7_44e15ee0",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-12-14T09:09:18Z",
+      "side": 1,
+      "message": "If it\u0027s for log dump only, maybe you could use something like\n```\n\"base status changed, lid detect %s\", attached ? \"enabled\" : \"disabled\"\n```",
+      "revId": "098e5ab346e38111a0d249e6b34726d5bd42ab1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
