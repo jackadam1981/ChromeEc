@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5d2ecb_b749fa18",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T20:21:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "05d28820_a1ca75d3",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbb284df_82b3916d",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "It would complicate the driver a little but mostly it would add extra time to processing a command. In most cases, given the command, the user will know\nwhy the command failed and the get_error_status will not need to be called.",
       "parentUuid": "5022d6c4_fa7a0d7c",
+      "range": {
+        "startLine": 325,
+        "startChar": 18,
+        "endLine": 325,
+        "endChar": 38
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca191524_f544e8b5",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T20:21:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4038c855_6a68736b",
       "range": {
         "startLine": 325,
         "startChar": 18,
