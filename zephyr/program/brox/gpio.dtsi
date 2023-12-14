@@ -83,6 +83,12 @@
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpiod 1 GPIO_INPUT>;
 		};
+		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
+			gpios = <&gpioj 0 GPIO_INPUT>;
+		};
+		gpio_ec_accel_db_int_l: ec_accel_db_int_l {
+			gpios = <&gpioj 7 GPIO_INPUT>;
+		};
 
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
 		gpio_ec_entering_rw: ec_entering_rw {
