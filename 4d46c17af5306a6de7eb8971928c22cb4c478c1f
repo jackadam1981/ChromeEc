@@ -22,6 +22,30 @@
       },
       "revId": "4d46c17af5306a6de7eb8971928c22cb4c478c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92050b82_90ba70d8",
+        "filename": "zephyr/program/rex/karis/src/touch_panel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-12-14T06:03:52Z",
+      "side": 1,
+      "message": "I updated new patchset to set touch_sequence_enable default false and change it true after reading FW_CONFIG is enabled.",
+      "parentUuid": "5a112706_faa9a734",
+      "range": {
+        "startLine": 89,
+        "startChar": 53,
+        "endLine": 89,
+        "endChar": 67
+      },
+      "revId": "4d46c17af5306a6de7eb8971928c22cb4c478c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
