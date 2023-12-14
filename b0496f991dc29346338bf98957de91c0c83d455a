@@ -22,6 +22,30 @@
       },
       "revId": "b0496f991dc29346338bf98957de91c0c83d455a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4f1103_fa248d5a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3187,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-14T22:15:49Z",
+      "side": 1,
+      "message": "in the process of fixing it I found another path for failure - attempt to create variable larger than total space allocated!",
+      "parentUuid": "8b19451b_ce9a98ef",
+      "range": {
+        "startLine": 3187,
+        "startChar": 33,
+        "endLine": 3187,
+        "endChar": 36
+      },
+      "revId": "b0496f991dc29346338bf98957de91c0c83d455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
