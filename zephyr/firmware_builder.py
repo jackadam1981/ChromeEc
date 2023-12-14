@@ -303,6 +303,11 @@ def test(opts):
     metrics = firmware_pb2.FwTestMetricList()  # pylint: disable=no-member
 
     zephyr_dir = pathlib.Path(__file__).parent.resolve()
+    platform_ec = zephyr_dir.parent
+
+    # Validate All Zephyr targets are reflected as Bazel targets
+    cmd = ["pytest", "-v", "bazel/test_gen_bazel_targets.py"]
+    subprocess.run(cmd, cwd=platform_ec, check=True, stdin=subprocess.DEVNULL)
 
     # Run tests from Makefile.cq because make knows how to run things
     # in parallel.
