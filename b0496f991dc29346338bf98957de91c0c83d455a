@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b19451b_ce9a98ef",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3187,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-12-14T18:57:13Z",
+      "side": 1,
+      "message": "Can you define this in  line 303 and add an assert to validate it\u0027s less than MAX_VAR_BODY_SPACE.",
+      "range": {
+        "startLine": 3187,
+        "startChar": 33,
+        "endLine": 3187,
+        "endChar": 36
+      },
+      "revId": "b0496f991dc29346338bf98957de91c0c83d455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
