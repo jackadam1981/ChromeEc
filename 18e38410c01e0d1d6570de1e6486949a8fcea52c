@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "672eaa8c_f0f65b7b",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "For now, we need to use the usb_pd.h include from ECOS because I need access to the API, and there are type conflicts if I include both usb_pd.h and usbc_pd.h.",
+      "parentUuid": "b65ea58c_9c36ba93",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c73c117f_24d31f3f",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 9
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2d8a044_6c715893",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "I addressed this in a comment below.",
+      "parentUuid": "c73c117f_24d31f3f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b9d68de_a91d9a6b",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 9
@@ -60,6 +108,30 @@
       "writtenOn": "2023-12-12T23:09:54Z",
       "side": 1,
       "message": "read",
+      "range": {
+        "startLine": 124,
+        "startChar": 29,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4792c53a_99629b00",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9d68de_a91d9a6b",
       "range": {
         "startLine": 124,
         "startChar": 29,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be72b50e_4496a5b0",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "e5e8325a_eecb01fe",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b73ebd4b_56a29a88",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 9
@@ -106,6 +202,30 @@
       "writtenOn": "2023-12-12T23:09:54Z",
       "side": 1,
       "message": "How does the caller get the actual power level?",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d28820_a1ca75d3",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "This is an unfortunate name for this API call. It\u0027s only purpose is to trigger a read of the power level at some future time, and the actual power can be read via the GET_CONNECTOR_STATUS command.\n\nNOTE: Realtek is violating the spec by using the READ_POWER_LEVEL command to enable reading VBUS while operating in sink mode.",
+      "parentUuid": "b73ebd4b_56a29a88",
       "range": {
         "startLine": 134,
         "startChar": 18,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a494d05e_4f9679db",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb284df_82b3916d",
+      "range": {
+        "startLine": 146,
+        "startChar": 52,
+        "endLine": 147,
+        "endChar": 15
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c332ff6_bb2d12c1",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-12-12T23:09:54Z",
       "side": 1,
       "message": "\"Set the Sink FET state\"",
+      "range": {
+        "startLine": 213,
+        "startChar": 10,
+        "endLine": 213,
+        "endChar": 29
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a618205c_30399f0e",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c332ff6_bb2d12c1",
       "range": {
         "startLine": 213,
         "startChar": 10,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff683fc3_08ec9ac7",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b9ee520_2d0df260",
+      "range": {
+        "startLine": 301,
+        "startChar": 31,
+        "endLine": 301,
+        "endChar": 33
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5022d6c4_fa7a0d7c",
@@ -198,6 +390,30 @@
       "writtenOn": "2023-12-12T23:09:54Z",
       "side": 1,
       "message": "Can the driver automatically fetch this information for the application if the cci_event.error bit gets set?",
+      "range": {
+        "startLine": 325,
+        "startChar": 18,
+        "endLine": 325,
+        "endChar": 38
+      },
+      "revId": "18e38410c01e0d1d6570de1e6486949a8fcea52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4038c855_6a68736b",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T18:31:23Z",
+      "side": 1,
+      "message": "It would complicate the driver a little but mostly it would add extra time to processing a command. In most cases, given the command, the user will know\nwhy the command failed and the get_error_status will not need to be called.",
+      "parentUuid": "5022d6c4_fa7a0d7c",
       "range": {
         "startLine": 325,
         "startChar": 18,
