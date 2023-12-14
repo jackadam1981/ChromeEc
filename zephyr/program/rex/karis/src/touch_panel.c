@@ -19,6 +19,8 @@ LOG_MODULE_DECLARE(rex, CONFIG_REX_LOG_LEVEL);
 #define TOUCH_ENABLE_DELAY_MS (500 * MSEC)
 #define TOUCH_DISABLE_DELAY_MS (0 * MSEC)
 
+static bool touch_sequence_enable;
+
 void touch_disable(void)
 {
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_touch_en), 0);
@@ -51,6 +53,9 @@ void soc_edp_bl_interrupt(enum gpio_signal signal)
 
 static void touch_lid_change(void)
 {
+	if (!touch_sequence_enable)
+		return;
+
 	if (!lid_is_open()) {
 		LOG_INF("%s: disable touch", __func__);
 		hook_call_deferred(&touch_disable_data, TOUCH_DISABLE_DELAY_MS);
@@ -80,6 +85,8 @@ static void touch_enable_init(void)
 
 	LOG_INF("%s: %sable", __func__,
 		(val == FW_TOUCH_EN_ENABLE) ? "en" : "dis");
+
+	touch_sequence_enable = (val == FW_TOUCH_EN_ENABLE) ? true : false;
 
 	if (val != FW_TOUCH_EN_ENABLE)
 		return;
