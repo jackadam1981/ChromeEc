@@ -576,6 +576,7 @@ static enum ec_error_list nvmem_read_bytes(struct access_tracker *at,
 {
 	size_t togo;
 	struct nvmem_failure_payload fp;
+	const uint8_t *page_data;
 
 	if (!at->list_index && !at->mt.data_offset) {
 		/* Start from the beginning. */
@@ -588,13 +589,14 @@ static enum ec_error_list nvmem_read_bytes(struct access_tracker *at,
 		at->ct.ph = at->mt.ph;
 	}
 
+	page_data = page_cursor(&at->mt);
 	if ((at->mt.data_offset + num_bytes) < CONFIG_FLASH_BANK_SIZE) {
 		/*
 		 * All requested data fits and does not even reach the top of
 		 * the page.
 		 */
 		if (buf)
-			memcpy(buf, page_cursor(&at->mt), num_bytes);
+			memcpy(buf, page_data, num_bytes);
 
 		at->mt.data_offset += num_bytes;
 		return EC_SUCCESS;
@@ -604,7 +606,7 @@ static enum ec_error_list nvmem_read_bytes(struct access_tracker *at,
 	/* To go in the current page. */
 	togo = CONFIG_FLASH_BANK_SIZE - at->mt.data_offset;
 	if (buf) {
-		memcpy(buf, page_cursor(&at->mt), togo);
+		memcpy(buf, page_data, togo);
 		/* Next portion goes here. */
 		buf = (uint8_t *)buf + togo;
 	}
@@ -633,9 +635,12 @@ static enum ec_error_list nvmem_read_bytes(struct access_tracker *at,
 			fp.underrun_size = num_bytes - togo;
 			/* This will never return. */
 			report_failure(&fp, sizeof(fp.underrun_size));
+			return EC_ERROR_CRC;
 		}
-
-		log_no_payload_failure(NVMEMF_READ_UNDERRUN_SILENT);
+		/* Only log if we have non-empty byte. */
+		if (*page_data != 0xff)
+			log_no_payload_failure(NVMEMF_READ_UNDERRUN_SILENT);
+		/* This is a case when data ends close to end of page */
 		return EC_ERROR_TRY_AGAIN;
 	}
 	if (at->mt.ph) {
@@ -717,10 +722,13 @@ static enum ec_error_list set_first_page_header(void)
  */
 static bool container_is_valid(struct nn_container *ch)
 {
-	struct nn_container placeholder_c;
 	uint32_t hash;
 	uint32_t preserved_hash;
 	uint8_t preserved_type;
+
+	if (ch->container_type != NN_OBJ_OLD_COPY &&
+	    ch->container_type != ch->container_type_copy)
+		return false;
 
 	preserved_hash = ch->container_hash;
 	preserved_type = ch->container_type;
@@ -733,9 +741,7 @@ static bool container_is_valid(struct nn_container *ch)
 	ch->container_hash = preserved_hash;
 	ch->container_type = preserved_type;
 
-	placeholder_c.container_hash = hash;
-
-	return placeholder_c.container_hash == ch->container_hash;
+	return (hash & NN_CONTAINER_HASH_MASK) == ch->container_hash;
 }
 
 static uint32_t aligned_container_size(const struct nn_container *ch)

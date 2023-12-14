@@ -90,15 +90,18 @@ BUILD_ASSERT(sizeof(struct nn_page_header) == 2 * sizeof(uint32_t));
  * container_hash: hash of the ENTIRE container, both header and body
  *                 included. This field is set to zero before hash is calculated
  */
+#define NN_CONTAINER_HASH_BITS 12
 struct nn_container {
 	unsigned int container_type : 3;
 	unsigned int container_type_copy : 3;
 	unsigned int encrypted : 1;
 	unsigned int size : 11;
 	unsigned int generation : 2;
-	unsigned int container_hash : 12;
+	unsigned int container_hash : NN_CONTAINER_HASH_BITS;
 } __packed;
 BUILD_ASSERT(sizeof(struct nn_container) == sizeof(uint32_t));
+
+#define NN_CONTAINER_HASH_MASK ((1U << NN_CONTAINER_HASH_BITS) - 1)
 
 /*
  * A structure to keep context of accessing to a page, page header and offset
