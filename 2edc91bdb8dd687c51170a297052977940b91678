@@ -22,6 +22,30 @@
       },
       "revId": "2edc91bdb8dd687c51170a297052977940b91678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b425528_9e70ba4e",
+        "filename": "board/dochi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-14T02:26:14Z",
+      "side": 1,
+      "message": "if adjust hook_priority, it could be good for pending problem? But I think touch en pin is not be real time effected, pending is ok.",
+      "parentUuid": "16ed8b27_3dbeda8a",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "2edc91bdb8dd687c51170a297052977940b91678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
