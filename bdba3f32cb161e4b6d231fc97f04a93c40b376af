@@ -22,6 +22,30 @@
       },
       "revId": "bdba3f32cb161e4b6d231fc97f04a93c40b376af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f0e1ff_7c59a79e",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-12-14T21:45:55Z",
+      "side": 1,
+      "message": "clang-format will still enforce many different sorts of spacing problems.  I really don\u0027t know why we even run checkpatch at this point.",
+      "parentUuid": "1733e0b3_caa51c04",
+      "range": {
+        "startLine": 12,
+        "startChar": 97,
+        "endLine": 12,
+        "endChar": 104
+      },
+      "revId": "bdba3f32cb161e4b6d231fc97f04a93c40b376af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
