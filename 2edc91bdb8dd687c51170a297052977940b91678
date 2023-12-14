@@ -46,6 +46,30 @@
       },
       "revId": "2edc91bdb8dd687c51170a297052977940b91678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0f2586_8ea4b347",
+        "filename": "board/dochi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-14T19:25:50Z",
+      "side": 1,
+      "message": "you can cancel the pending deferred call by setting the time to -1.",
+      "parentUuid": "1b425528_9e70ba4e",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "2edc91bdb8dd687c51170a297052977940b91678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
