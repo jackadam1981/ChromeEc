@@ -7,7 +7,7 @@
 #define __MOCK_FPSENSOR_STATE_MOCK_H
 
 #include "ec_commands.h"
-#include "fpsensor_driver.h"
+#include "fpsensor_matcher.h"
 
 #include <stdbool.h>
 #include <stdint.h>
