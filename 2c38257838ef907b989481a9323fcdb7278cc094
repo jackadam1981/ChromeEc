@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85256335_8bd6b08c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T22:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "555a7d59_b300e930",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 51
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1a560c1_ed71e492",
@@ -213,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f38eada_5f70f35a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T22:45:43Z",
+      "side": 1,
+      "message": "Agreed - this is appropriate for a follow on CL.",
+      "parentUuid": "a203e567_08e1994d",
+      "range": {
+        "startLine": 294,
+        "startChar": 6,
+        "endLine": 294,
+        "endChar": 21
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3e76994_d17b46dc",
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "Not needed and it\u0027s been removed.",
       "parentUuid": "f3e76994_d17b46dc",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 0
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28dd2107_39bae54e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T22:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd9ea62_5f55196b",
       "range": {
         "startLine": 434,
         "startChar": 0,
@@ -439,6 +511,30 @@
       "side": 1,
       "message": "Sometimes it\u0027s set to 2. See GET_CAPABILITY",
       "parentUuid": "3ce46bc1_2b559871",
+      "range": {
+        "startLine": 507,
+        "startChar": 19,
+        "endLine": 507,
+        "endChar": 23
+      },
+      "revId": "2c38257838ef907b989481a9323fcdb7278cc094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b4a2a0_2ae32a46",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-14T22:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "241fc76b_7a2a9364",
       "range": {
         "startLine": 507,
         "startChar": 19,
