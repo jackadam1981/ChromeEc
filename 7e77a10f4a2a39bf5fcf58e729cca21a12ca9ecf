@@ -131,6 +131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa87bbd4_1258cc6c",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-14T16:47:04Z",
+      "side": 1,
+      "message": "Added warning.",
+      "parentUuid": "19d0ffa7_aa658411",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10da3a2d_01052388",
@@ -180,6 +204,24 @@
       "side": 1,
       "message": "\u003e How about including fpc_bio_algorithm.h here?\n\nYes, that makes sense",
       "parentUuid": "d55aa5b0_ad289d2a",
+      "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5274ed_14852d3e",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-14T16:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d91be33_aa507f5f",
       "revId": "7e77a10f4a2a39bf5fcf58e729cca21a12ca9ecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
