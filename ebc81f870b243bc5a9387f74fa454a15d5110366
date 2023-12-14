@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ea101b_e9e038b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-14T20:43:05Z",
+      "side": 1,
+      "message": "do you have a bug number for dochi FW enablement?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "ebc81f870b243bc5a9387f74fa454a15d5110366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00dfadb1_451f21a2",
+        "filename": "board/dochi/fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-14T20:43:05Z",
+      "side": 1,
+      "message": "please update `brya/dochi/config.star` first.",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "ebc81f870b243bc5a9387f74fa454a15d5110366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
