@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a36af06_6770f906",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2193d7_585c6d15",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9a7c4e9_6ea50107",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-12-14T22:45:43Z",
       "side": 1,
       "message": "Nit: SMBUS_ADDRESS_ARA from `zephyr/drivers/smbus.h`",
+      "range": {
+        "startLine": 337,
+        "startChar": 39,
+        "endLine": 337,
+        "endChar": 43
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8899f2b9_cb49c250",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a7c4e9_6ea50107",
       "range": {
         "startLine": 337,
         "startChar": 39,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb8432f_10033526",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd3f7dc_a90a4ae5",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 582,
+        "endChar": 0
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d2f746_71042b10",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-12-14T22:45:43Z",
       "side": 1,
       "message": "Drop this.  Zephyr has built in I2C debugging that shows the same information.",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 672,
+        "endChar": 0
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ec2ff8_752f35f9",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64d2f746_71042b10",
       "range": {
         "startLine": 664,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe198fe_61c2ad63",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebbedbd5_7c3c6734",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 78
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2944d833_329f552c",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-12-14T22:45:43Z",
       "side": 1,
       "message": "Nit - move this to just before data-\u003ewr_buf[0]",
+      "range": {
+        "startLine": 1169,
+        "startChar": 0,
+        "endLine": 1169,
+        "endChar": 37
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f80eef_b9de3697",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2944d833_329f552c",
       "range": {
         "startLine": 1169,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f8ae2d_3d3f51cc",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca6e720d_6015b472",
+      "range": {
+        "startLine": 1282,
+        "startChar": 0,
+        "endLine": 1288,
+        "endChar": 0
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220d0046_b904951a",
@@ -192,6 +360,30 @@
       "writtenOn": "2023-12-14T22:45:43Z",
       "side": 1,
       "message": "Nit - move this to just before data-\u003ewr_buf[0]",
+      "range": {
+        "startLine": 1399,
+        "startChar": 0,
+        "endLine": 1399,
+        "endChar": 37
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63232a1e_80802988",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220d0046_b904951a",
       "range": {
         "startLine": 1399,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d729bfcb_cbf47f47",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55916c5_b6017ff3",
+      "range": {
+        "startLine": 1508,
+        "startChar": 1,
+        "endLine": 1508,
+        "endChar": 13
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "840a936b_03de05c4",
@@ -238,6 +454,30 @@
       "writtenOn": "2023-12-14T22:45:43Z",
       "side": 1,
       "message": "Because you\u0027re passing in this device handle, you can use the same function for all PDC instances.  You can remove this from the PDC_DEFINE and create one shared function:\n\n\n```\nstatic void rts54xx_thread(void *dev, void *unused1, void *unused2)\n```",
+      "range": {
+        "startLine": 1728,
+        "startChar": 0,
+        "endLine": 1737,
+        "endChar": 0
+      },
+      "revId": "60f77a8ff2a925200b51825971a3318690acd72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab50a148_65396428",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-14T23:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840a936b_03de05c4",
       "range": {
         "startLine": 1728,
         "startChar": 0,
