@@ -136,6 +136,12 @@
 		};
 	};
 
+	usba {
+		compatible = "cros-ec,usba-port-enable-pins";
+		enable-pins = <&gpio_en_usb_a0_vbus &gpio_en_usb_a1_vbus>;
+		status = "okay";
+	};
+
 	usbc {
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -283,9 +289,7 @@
 		 * "named-gpios". This is the Zephyr preferred style,
 		 * the "named-gpios" node will be dealt with at a later date.
 		 */
-
 		irq-gpios = <&gpiok 6 GPIO_ACTIVE_LOW>;
-		is-alt;
 	};
 
 	ppc_port1: ppc_syv@40 {
@@ -328,6 +332,11 @@
 		status = "okay";
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_usb_c0_frs_en>;
+		/* a duplicate of the <&gpio_usb_c0_ppc_int_odl> node in
+		 * "named-gpios". This is the Zephyr preferred style,
+		 * the "named-gpios" node will be dealt with at a later date.
+		 */
+		irq-gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
 	};
 };
 
