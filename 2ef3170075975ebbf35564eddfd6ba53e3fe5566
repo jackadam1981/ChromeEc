@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f834b4e7_da7c3a38",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T19:08:40Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this achieves.\n\nIf rv is EC_SUCCESS - there is no need to keep it. If it is anything else the fucntion will return right away with a fixed return value.",
+      "range": {
+        "startLine": 954,
+        "startChar": 2,
+        "endLine": 954,
+        "endChar": 51
+      },
+      "revId": "2ef3170075975ebbf35564eddfd6ba53e3fe5566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
