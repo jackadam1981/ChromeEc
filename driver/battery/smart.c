@@ -79,12 +79,40 @@ static bool sb_cutoff_or_in_progress(void)
 test_mockable int sb_read(int cmd, int *param)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
+	const uint8_t func_status = SB_BATTERY_STATUS;
+	int status;
+	uint8_t error;
+	int rv;
 
 	if (sb_cutoff_or_in_progress())
 		return EC_ERROR_ACCESS_DENIED;
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
-	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+	rv = i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+	if (rv) {
+		CPRINTS("Failed to call func 0x%02x (%d)", cmd, rv);
+		return rv;
+	}
+
+	/* Check the error code. */
+	rv = i2c_read16(I2C_PORT_BATTERY, addr_flags, func_status, &status);
+	if (rv) {
+		CPRINTS("Failed to call BatteryStatus for func 0x%02x (%d)",
+			cmd, rv);
+		return rv;
+	}
+	error = status & STATUS_ERR_CODE_MASK;
+	if (error) {
+		CPRINTS("Func 0x%02x returned error 0x%x", cmd, error);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/*
+	 * An error in reading BatteryStatus (0x16) is expected to be notified
+	 * via the I2C layer (i.e. timeout in SDA or SDC).
+	 */
+
+	return EC_SUCCESS;
 }
 
 test_mockable int sb_write(int cmd, int param)
