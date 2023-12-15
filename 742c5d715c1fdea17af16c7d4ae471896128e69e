@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a035854_6855ee48",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-15T19:10:43Z",
+      "side": 1,
+      "message": "Realtek datasheet says the voltage reading is at bytes 17 and 18.  Should `rts54_get_vbus_voltage()` change to read starting at offset 17 instead?",
+      "range": {
+        "startLine": 700,
+        "startChar": 35,
+        "endLine": 700,
+        "endChar": 52
+      },
+      "revId": "742c5d715c1fdea17af16c7d4ae471896128e69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
