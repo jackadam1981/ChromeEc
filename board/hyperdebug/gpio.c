@@ -6,6 +6,7 @@
 
 #include "atomic.h"
 #include "builtin/assert.h"
+#include "cmsis-dap.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -1107,3 +1108,221 @@ static void led_tick(void)
 	}
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
+
+size_t queue_add_units(struct queue const *q, const void *src, size_t count);
+
+
+static void queue_blocking_add(struct queue const *q, const void *src, size_t count)
+{
+	while (true) {
+		size_t progress = queue_add_units(q, src, count);
+		src += progress;
+		count -= progress;
+		if (!count)
+			return;
+		// Wait for queue consumer to wake up this task.
+		task_wait_event(0);
+	}
+}
+
+/*
+ * Declaration of header used in the binary USB protocol (Google HyperDebug
+ * extensions to CMSIS-DAP protocol.)
+ */
+struct gpio_monitoring_header_t {
+	/* Size of this struct, including the size field. */
+	uint16_t transcript_offset;
+
+	/*
+	 * Non-zero status indicates an error processing the request, in such
+	 * case the other fields may not be valid.
+	 */
+	uint16_t status;
+
+	/* Bitfield of the level of each of the signals at the beginning of this
+	 * transcript. */
+	uint16_t start_levels;
+
+	/* Number of bytes of transcript following this struct. */
+	uint16_t transcript_size;
+
+	/* Time window covered by this transcript. */
+	uint64_t start_timestamp;
+	uint64_t end_timestamp;
+};
+
+const uint8_t GPIO_REQ_MONITORING_READ = 0x00;
+
+/*
+ * Entry point for CMSIS-DAP vendor command for GPIO monitoring.
+ */
+void dap_goog_gpio_monitoring(size_t peek_c)
+{
+	if (peek_c < 2)
+		return;
+
+	switch (rx_buffer[1]) {
+	case GPIO_REQ_MONITORING_READ: {
+		/*
+		 * Esentially the same as console command `gpio monitoring
+		 * read`, but with binary protocol for greatly improved
+		 * efficiency.
+		 */
+		if (peek_c < 3)
+			return;
+		int gpio_num = rx_buffer[2];
+		int gpios[16];
+		struct cyclic_buffer_header_t *buf = NULL;
+		int gpio_signals_by_no[16];
+		queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 3);
+		for (int i = 0; i < gpio_num; i++) {
+			uint8_t str_len;
+			queue_remove_unit(&cmsis_dap_rx_queue, &str_len);
+			queue_remove_units(&cmsis_dap_rx_queue, rx_buffer,
+					   str_len);
+			rx_buffer[str_len] = '\0';
+			gpios[i] = gpio_find_by_name(rx_buffer);
+		}
+
+		struct gpio_monitoring_header_t *header =
+			(struct gpio_monitoring_header_t *)(tx_buffer + 1);
+		memset(tx_buffer + 1, sizeof(*header), 0);
+		header->transcript_offset = sizeof(*header);
+		header->status = 0; /* Success */
+
+		for (int i = 0; i < gpio_num; i++) {
+			if (gpios[i] == GPIO_COUNT)
+				header->status = 1;
+			struct monitoring_slot_t *slot =
+				monitoring_slots +
+				GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask);
+			if (slot->gpio_signal != gpios[i]) {
+				header->status = 2;
+			}
+			if (buf == NULL) {
+				buf = slot->buffer;
+			} else if (buf != slot->buffer) {
+				header->status = 3;
+			}
+			gpio_signals_by_no[slot->signal_no] = gpios[i];
+		}
+		if (gpio_num != buf->num_signals) {
+			header->status = 4;
+		}
+
+		if (header->status != 0) {
+			/* Report error processing the request. */
+			queue_add_units(&cmsis_dap_tx_queue, tx_buffer,
+					1 + sizeof(*header));
+			return;
+		}
+
+		if (buf->overrun) {
+			/*
+			 * Report overrun, but still transmit the events that we
+			 * managed to capture.
+			 */
+			header->status = 5;
+		}
+
+		/*
+		 * We read current time, before taking a snapshot of the head
+		 * pointer as set by the interrupt handler.  This way, we can
+		 * guarantee that the transcript will include any edge happening
+		 * at or before the `now` timestamp.  If an interrupt happens
+		 * between the two lines below, causing our head pointer to
+		 * include an event that happened after "now", then it will be
+		 * skipped in the loop below, and kept for the next invocation
+		 * of `gpio monitoring read`.
+		 */
+		timestamp_t now = get_time();
+		timestamp_t tail_time = buf->tail_time;
+
+		const uint8_t *head = buf->head;
+
+		uint8_t signal_bits = buf->signal_bits;
+		const uint8_t *tail = buf->tail;
+
+		uint32_t start_levels = 0;
+		for (uint8_t signal_no = 0; signal_no < buf->num_signals;
+		     signal_no++) {
+			uint32_t mask =
+				gpio_list[gpio_signals_by_no[signal_no]].mask;
+			struct monitoring_slot_t *slot =
+				monitoring_slots + GPIO_MASK_TO_NUM(mask);
+			if (slot->tail_level)
+				start_levels |= 1 << signal_no;
+		}
+		header->start_levels = start_levels;
+		header->start_timestamp = tail_time.val;
+		header->end_timestamp = now.val;
+
+		while (tail != head) {
+			const uint8_t *const buf_start = buf->data;
+			timestamp_t diff;
+			uint8_t byte;
+			uint8_t signal_no;
+			uint32_t mask;
+			int shift = 0;
+			const uint8_t *tentative_tail = tail;
+			struct monitoring_slot_t *slot;
+			diff.val = 0;
+			do {
+				byte = *tentative_tail++;
+				if (tentative_tail == buf->end)
+					tentative_tail = buf_start;
+				diff.val |= (byte & 0x7F) << shift;
+				shift += 7;
+			} while (byte & 0x80);
+			signal_no = diff.val & (0xFF >> (8 - signal_bits));
+			diff.val >>= signal_bits;
+			if (tail_time.val + diff.val > now.val) {
+				/*
+				 * Do not consume this or subsequent records,
+				 * which apparently happened after our "now"
+				 * timestamp from earlier in the execution of
+				 * this method.
+				 */
+				break;
+			}
+			tail = tentative_tail;
+			tail_time.val += diff.val;
+			mask = gpio_list[gpio_signals_by_no[signal_no]].mask;
+			slot = monitoring_slots + GPIO_MASK_TO_NUM(mask);
+			slot->tail_level ^= mask;
+		}
+
+		/*
+		 * Having found the byte range that corresponds to the time
+		 * interval in the header, and having updated `tail_level` and
+		 * `tail_time` to match the end of the interval, we can now
+		 * transmit all the raw bytes of the range.  If it wraps around
+		 * the cyclic buffer, we need two calls to `queue_add_units` (in
+		 * addition to first call to transmit the header).
+		 */
+
+		if (buf->tail <= tail) {
+			/* One contiguous range */
+			header->transcript_size = tail - buf->tail;
+			queue_add_units(&cmsis_dap_tx_queue, tx_buffer,
+					1 + sizeof(*header));
+			queue_blocking_add(&cmsis_dap_tx_queue, buf->tail,
+					   header->transcript_size);
+		} else {
+			/* Data wraps around */
+			header->transcript_size =
+				tail - buf->data + buf->end - buf->tail;
+			queue_add_units(&cmsis_dap_tx_queue, tx_buffer,
+					1 + sizeof(*header));
+			queue_blocking_add(&cmsis_dap_tx_queue, buf->tail,
+					   buf->end - buf->tail);
+			queue_blocking_add(&cmsis_dap_tx_queue, buf->data,
+					   tail - buf->data);
+		}
+
+		buf->tail = tail;
+		buf->tail_time = tail_time;
+		return;
+	}
+	}
+}
