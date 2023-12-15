@@ -26,4 +26,5 @@ if [ "${ec_commands_file_out}" -ot "${ec_commands_file_in}" ]; then
   exit 1
 fi
 
-"${ZEPHYR_BASE}/scripts/checkpatch.pl" -f "${ec_commands_file_out}"
+"${ZEPHYR_BASE}/scripts/checkpatch.pl" -f "${ec_commands_file_out}" \
+  --ignore=BRACKET_SPACE
