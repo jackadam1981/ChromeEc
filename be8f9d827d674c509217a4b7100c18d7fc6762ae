@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04dbe6c_c41d0f0b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-15T22:15:01Z",
+      "side": 1,
+      "message": "It\u0027s probably worth adding a `TODO` to remove this block once the port to Zepyhr is complete.",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "be8f9d827d674c509217a4b7100c18d7fc6762ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
