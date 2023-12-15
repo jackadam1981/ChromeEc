@@ -83,7 +83,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "tigertail",
     "twinkie",
     "wand",
-    "willow",
     "zed",
     "zinger",
     # Boards that use CHIP:=mchp
@@ -288,10 +287,12 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=npcx
     "garg",
     # Boards that don't fit in flash with clang
+    "cerise",
     "corori2",
     "cret",
     "mushu",
     "volteer",
+    "willow",
     # Not enough flash space with CONFIG_POWER_SLEEP_FAILURE_DETECTION enabled
     "burnet",
     "coachz",
