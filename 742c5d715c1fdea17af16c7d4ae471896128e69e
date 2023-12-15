@@ -22,6 +22,30 @@
       },
       "revId": "742c5d715c1fdea17af16c7d4ae471896128e69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f53a3a_8b57ccb2",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-15T19:46:42Z",
+      "side": 1,
+      "message": "Their offset is wrong in the datasheet.",
+      "parentUuid": "6a035854_6855ee48",
+      "range": {
+        "startLine": 700,
+        "startChar": 35,
+        "endLine": 700,
+        "endChar": 52
+      },
+      "revId": "742c5d715c1fdea17af16c7d4ae471896128e69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
