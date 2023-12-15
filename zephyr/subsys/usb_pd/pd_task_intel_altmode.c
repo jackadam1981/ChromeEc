@@ -246,6 +246,23 @@ void intel_altmode_task_start(void)
 	k_thread_start(intel_altmode_tid);
 }
 
+void suspend_pd_intel_altmode_task(void)
+{
+	k_thread_suspend(intel_altmode_tid);
+}
+
+void resume_pd_intel_altmode_task(void)
+{
+	k_thread_resume(intel_altmode_tid);
+
+	/*
+	 * Suspended PD altmode task can miss the altmode events.
+	 * Therefore, explicitly post event so PD altmode task updates
+	 * the mux status after resuming.
+	 */
+	intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
+}
+
 #ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
 static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 {
