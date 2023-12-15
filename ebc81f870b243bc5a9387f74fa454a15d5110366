@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32097775_b31a92eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-15T02:00:04Z",
+      "side": 1,
+      "message": "update commit",
+      "parentUuid": "59ea101b_e9e038b9",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "ebc81f870b243bc5a9387f74fa454a15d5110366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00dfadb1_451f21a2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "cool, please add the Cq-Depend.",
       "parentUuid": "bfedadc2_fe1c0041",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "ebc81f870b243bc5a9387f74fa454a15d5110366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c063580_e5eb3af5",
+        "filename": "board/dochi/fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-15T02:00:04Z",
+      "side": 1,
+      "message": "update commit",
+      "parentUuid": "29012982_8c93c9b1",
       "range": {
         "startLine": 46,
         "startChar": 37,
