@@ -24,6 +24,21 @@ extern "C" {
 #endif
 
 /**
+ * Extract the 16-bit VID or PID from the 32-bit container returned by
+ * `pdc_get_vid_pid_t`
+ */
+#define PDC_VIDPID_GET_VID(vidpid) (((vidpid) >> 16) & 0xFFFF)
+#define PDC_VIDPID_GET_PID(vidpid) ((vidpid) & 0xFFFF)
+
+/**
+ * Extract the major, minor, and patch elements from a 32-bit version returned
+ * by `pdc_get_fw_version_t`
+ */
+#define PDC_FWVER_GET_MAJOR(fwver) (((fwver) >> 16) & 0xFF)
+#define PDC_FWVER_GET_MINOR(fwver) (((fwver) >> 8) & 0xFF)
+#define PDC_FWVER_GET_PATCH(fwver) ((fwver) & 0xFF)
+
+/**
  * @typedef
  * @brief These are the API function types
  */
