@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a3568de_b15a0cdc",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "i\u0027ll change haven \u0026 host code in next CL to enum. In this code it is what `flash_pre_op_write` returns, and enums can be int.",
+      "parentUuid": "e7148799_d5692bea",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99076550_7c29688a",
         "filename": "chip/host/flash.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-15T18:39:20Z",
       "side": 1,
       "message": "I understand what you do here, but I am not sure this is how erase fails. I think the chip can\u0027t erase it will return the bad operation status.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73109f8_e17ee4b1",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "chip will try to do erase and it will most likely turn many 0 bits to 1, but it fail if not all bits can be erased. So, what I simulate here is that erase tried, it changes some number of bits to 1, but few remains in old state, whatever it was.\n\nPractically, I don\u0027t know how page which wasn\u0027t successfully erased looks like to model it properly. This is a guess on how it may look like.",
+      "parentUuid": "99076550_7c29688a",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd39e2ce_5e7c5033",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "it shall not. this is left as artifact from an earlier version of attempt, but I decided to keep it as a safety precaution in case of any logical issues.\n\nRemoved.",
+      "parentUuid": "93e7daf2_5608c4de",
+      "range": {
+        "startLine": 543,
+        "startChar": 25,
+        "endLine": 543,
+        "endChar": 54
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "254cbba0_311d5a4c",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-12-15T18:39:20Z",
       "side": 1,
       "message": "here you might want to print out all pages, marking corrupted ones as such.",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 17
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc5fdf7_74b9ef28",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "I print `page_count` value. Not sure if there is any value in printing remaining pages which aren\u0027t in the list (I put PAGE_INVALID). But... what if not... let me try",
+      "parentUuid": "254cbba0_311d5a4c",
       "range": {
         "startLine": 687,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d943d4e_6c8f8b5f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "it will be noisy - we already record flash errors in flog, so not sure if it will add something.",
+      "parentUuid": "1579bf0b_050b6d1a",
+      "range": {
+        "startLine": 698,
+        "startChar": 12,
+        "endLine": 698,
+        "endChar": 33
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29136525_68351d88",
         "filename": "common/new_nvmem.c",
         "patchSetId": 2
@@ -129,6 +249,30 @@
       "writtenOn": "2023-12-15T18:39:20Z",
       "side": 1,
       "message": "I don\u0027t understand why there is a cycle here. If page intialization failed it should be added to the list of invalid pages and this should be it, why are you moving to erasing another page and keep doint it until erase succeded.\n\nAlso, here and in other places, what if you come to `page_count \u003d\u003d 0`\n\nI guess this is not likely to happen, as we\u0027d have many other problems if the number of good pages gets below a certain value.",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 0
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe119823_d7a4329e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "adjust logic as per discussion.",
+      "parentUuid": "29136525_68351d88",
       "range": {
         "startLine": 939,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e352d23_5fda05a4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68151603_e088c7a9",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1779,
+        "endChar": 41
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d73c0ed_c950917b",
@@ -175,6 +343,30 @@
       "writtenOn": "2023-12-15T18:39:20Z",
       "side": 1,
       "message": "can just `return controller_at.list_index \u003e\u003d compation_limit;`",
+      "range": {
+        "startLine": 2824,
+        "startChar": 1,
+        "endLine": 2824,
+        "endChar": 69
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e069f961_19ede995",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2824,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "Done. I\u0027m trying to recall what I was thinking writing this in the first place 😊 Looks like remnant of something else.",
+      "parentUuid": "1d73c0ed_c950917b",
       "range": {
         "startLine": 2824,
         "startChar": 1,
@@ -202,6 +394,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0180baec_6c846880",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8348ddb_939df558",
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a70bca4e_f5cd63de",
@@ -215,6 +425,30 @@
       "writtenOn": "2023-12-15T18:39:20Z",
       "side": 1,
       "message": "please rename this function - it is confusing that it is not included in the list of tests invoked from `run_test()`",
+      "range": {
+        "startLine": 1442,
+        "startChar": 11,
+        "endLine": 1442,
+        "endChar": 26
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c811e0a_2f0b5253",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a70bca4e_f5cd63de",
       "range": {
         "startLine": 1442,
         "startChar": 11,
