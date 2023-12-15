@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3467153e_c7d32a38",
+        "filename": "board/dochi/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-15T21:25:00Z",
+      "side": 1,
+      "message": "wouldn\u0027t you always also want to cancel the other deferred call\nwhen registering the deferred calls?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 66
+      },
+      "revId": "174f1a5aee90239d560f244ba956420587c84f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
