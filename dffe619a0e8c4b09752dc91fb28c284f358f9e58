@@ -400,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f901da2_16fa3dec",
+        "filename": "zephyr/drivers/usbc/ccg8_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-15T18:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3658bbb0_6426af3e",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 6
+      },
+      "revId": "dffe619a0e8c4b09752dc91fb28c284f358f9e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6954cf5_a1becbde",
