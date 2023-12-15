@@ -70,6 +70,30 @@
       },
       "revId": "2edc91bdb8dd687c51170a297052977940b91678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6a6ba7_36109a45",
+        "filename": "board/dochi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-15T04:25:07Z",
+      "side": 1,
+      "message": "as cancel hook deferred at shutdown scenarios.if other need to cancel by request, I think to create other cls to slove.",
+      "parentUuid": "4a0f2586_8ea4b347",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "2edc91bdb8dd687c51170a297052977940b91678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
