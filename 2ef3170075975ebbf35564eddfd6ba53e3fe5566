@@ -22,6 +22,30 @@
       },
       "revId": "2ef3170075975ebbf35564eddfd6ba53e3fe5566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0ddadf_28a91b7f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T19:12:07Z",
+      "side": 1,
+      "message": "it prints `rv` if compact/get_next_object fails few lines below. otherwise it prints failure, but rv\u003d0, so not useful.",
+      "parentUuid": "f834b4e7_da7c3a38",
+      "range": {
+        "startLine": 954,
+        "startChar": 2,
+        "endLine": 954,
+        "endChar": 51
+      },
+      "revId": "2ef3170075975ebbf35564eddfd6ba53e3fe5566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
