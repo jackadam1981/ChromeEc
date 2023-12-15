@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7aa83f18_dc6ec2a5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8840,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-15T02:01:30Z",
+      "side": 1,
+      "message": "This hasn\u0027t been implemented but if \u003cindex\u003e isn\u0027t specified, ectool will choose the slot which has the same manuf_name and device_name (or choose the next empty slot if no matching is found). Specifying \u003cindex\u003e overrules this logic.",
+      "parentUuid": "ba4e1ec4_bd74892a",
+      "range": {
+        "startLine": 8840,
+        "startChar": 55,
+        "endLine": 8840,
+        "endChar": 65
+      },
+      "revId": "5e1c7a8e62ca79a5a8863311e92a2ac1847c3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8b7bf97_bdf29ad2",
         "filename": "util/ectool.cc",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-15T00:26:30Z",
       "side": 1,
       "message": "This is in the context of `set` subcommand, so just `set`",
+      "range": {
+        "startLine": 8846,
+        "startChar": 43,
+        "endLine": 8846,
+        "endChar": 53
+      },
+      "revId": "5e1c7a8e62ca79a5a8863311e92a2ac1847c3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b29cb5_84ec1c17",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8846,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-15T02:01:30Z",
+      "side": 1,
+      "message": "I reorganized the help in crrev/c/5120651 as follows:\n\n* Usage for get\n* Usage for set\n* Parameter list\n\nbecause I don\u0027t like to repeat description for \u003cindex\u003e. So, \u0027get or set\u0027 is intended.",
+      "parentUuid": "c8b7bf97_bdf29ad2",
       "range": {
         "startLine": 8846,
         "startChar": 43,
