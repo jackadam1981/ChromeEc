@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91f38b7_c3de289e",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T21:29:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2a3568de_b15a0cdc",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99076550_7c29688a",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "chip will try to do erase and it will most likely turn many 0 bits to 1, but it fail if not all bits can be erased. So, what I simulate here is that erase tried, it changes some number of bits to 1, but few remains in old state, whatever it was.\n\nPractically, I don\u0027t know how page which wasn\u0027t successfully erased looks like to model it properly. This is a guess on how it may look like.",
       "parentUuid": "99076550_7c29688a",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04272b0_7c4b9e15",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T21:29:47Z",
+      "side": 1,
+      "message": "I understand, my point is that if a page after erase has unerased bytes, the preceding erase operation would have returned some error code.\n\nI guess it does not hurt to check for this explicit case when erase operation returned succes but the page is not erased, just in case.",
+      "parentUuid": "d73109f8_e17ee4b1",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "it will be noisy - we already record flash errors in flog, so not sure if it will add something.",
       "parentUuid": "1579bf0b_050b6d1a",
+      "range": {
+        "startLine": 698,
+        "startChar": 12,
+        "endLine": 698,
+        "endChar": 33
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2976cf95_c59b3dca",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T21:29:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3d943d4e_6c8f8b5f",
       "range": {
         "startLine": 698,
         "startChar": 12,
