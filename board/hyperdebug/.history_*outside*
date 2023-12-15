@@ -1,0 +1,500 @@
+git rebase -i HEAD~4
+git stash pop
+git add sw/host/
+sudo echo fisk
+git status
+rustfmt -i sw/host/opentitanlib/src/transport/hyperdebug/i2c.rs 
+rustfmt sw/host/opentitanlib/src/transport/hyperdebug/i2c.rs 
+git status
+git rebase --continue
+git push -f jesultra HEAD
+sudo echo fisk
+Compressing objects: 100% (29/29), done.
+cd ../../..
+cd platform/ti50/common/
+git status
+git stash
+git stash pop
+git stash projects/common/src/lib.rs
+git stash push projects/common/src/lib.rs
+git stash pop
+git diff -- projects/common/src/lib.rs
+find -name \*.rs | xargs grep "Failed to initialize event log."
+find -name \*.rs | xargs grep 'read('
+find -name \*.rs | xargs grep -l 'read('
+find -name \*.rs | xargs grep -l SpecialRegion
+find -name page.rs
+find -name \*.rs | xargs grep -l read_word
+find -name \*.rs | xargs grep "pub struct Flash"
+find -name \*.rs | xargs grep ECC_SINGLE
+find -name \*.rs | xargs grep sleep
+find capsules -name \*.rs | xargs grep sleep
+cd ../../..
+cd third_party/lowrisc/opentitan/
+find -name \*.rs | xargs grep -i kMuBi4True
+find -type f | xargs grep -i kMuBi4True
+find -type f | xargs grep -i 4True
+find -type f | xargs grep -l -i kMultiBitBool4True
+find -type f | xargs grep -l multi_bit_bool_kMultiBitBool4True
+find -type f | xargs grep -l multibits
+find -name \*multibits\*
+sudo echo fisk
+git status
+cd ../../..
+cd platform/ti50/common/
+git status
+BITSTREAM="--refresh HEAD" bazel build hw/bitstream/hyperdebug:test_rom
+cd hw
+ls
+cd ip
+ls
+cd ..
+find -name \*ast\*
+find -name \*adc\*
+find -type f | xargs grep adc_d_ch0
+bazel build //hw/bitstream/vivado:fpga_cw310_test_rom
+echo $XILINXD_LICENSE_FILE
+export XILINXD_LICENSE_FILE=2100@primary.ci2.licenses.edafarm.goog
+bazel build //hw/bitstream/vivado:fpga_cw310_test_rom
+git status
+git log -n1
+git stash
+git rebase
+git fetch
+git rebase
+git stash pop
+git status
+git checkout lowrisc/master
+git branch -l
+git branch -d openocd
+git status
+git diff
+git status
+git branch -l
+git checkout -b adc_bitstream
+git add top_earlgrey/
+git status
+git commit -m"WIP"
+git fetch lowrisc
+cd ../sw
+cd ..
+bazel test //sw/device/tests:openocd_test
+bazel test //sw/device/tests:openocd_test --cache_test_results=no
+git status
+git fetch
+git fetch lowrisc
+git checkout lowrisc/master
+cd third_party/openocd/.
+ls
+cd ..
+cd bazel-bin/
+find -name openocd
+./third_party/openocd/build_openocd/bin/openocd
+./third_party/openocd/build_openocd/bin/openocd --pipe
+./third_party/openocd/build_openocd/bin/openocd --help
+cd ../..
+cd opentitan/
+ls
+cd third_party/openocd/
+ls
+git status
+git diff
+git restore ../../sw/host/opentitanlib/src/util/openocd.rs 
+cd ../..
+cd third_party/openocd/
+ls
+grep patch *
+git status
+git add .
+git status
+git commit
+git push jesultra HEAD
+got statis
+git remote -v
+git status
+git checkout -b openocd
+git branch -u lowrisc/master
+git status
+git push jesultra HEAD
+bazel run //third_party/openocd
+openocd -f /usr/share/openocd/scripts/interface/ftdi/olimex-arm-usb-tiny-h.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+find -name lowrisc-earlgrey.cfg
+cd ../..
+find -name lowrisc-earlgrey.cfg
+openocd -f /usr/share/openocd/scripts/interface/ftdi/olimex-arm-usb-tiny-h.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+openocd -f /usr/share/openocd/scripts/interface/ftdi/cmsis-dap.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+openocd -f /usr/share/openocd/scripts/interface/ftdi/olimex-arm-usb-tiny-h.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+Info : CMSIS-DAP: Interface ready
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg         -c "adapter speed 500; transport select jtag; reset_config trst_and_srst"         -f util/openocd/target/lowrisc-earlgrey.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+openocd -f /usr/share/openocd/scripts/interface//cmsis-dap.cfg -c "transport select swd" -f target/stm32l5x.cfg
+openocd -f interface/stlink.cfg -c "transport select hla_swd" -f target/stm32l5x.cfg
+cd depot_tools/
+ls
+git stats
+git status
+git fetch
+git checkout origin/main
+ls
+./repo --version
+cd ../
+cd Downloads/
+evince nucleo-l552ze-q.pdf 
+bg
+killall pulseview
+killall -9 pulseview
+tio /dev/ttyACM0
+killall tio
+top
+evince stm32f0.pdf 
+emacslist
+export DISPLAY
+export DISPLAY=
+emacsclient -c -s emacs-1077904
+emacslist
+emacsclient -c -s emacs-1135599
+emacsclient -c -s emacs-22534
+emacsclient -c -s emacs-23381
+emacslist
+emacsclient -c -s emacs-3827599 
+emacslist
+emacsclient -c -s emacs-678399
+emacslist
+reboot
+ls
+cd src
+ls
+cd chromiumos-volteer
+cros_sdk
+lsusb -v -d  2b3e:c310
+lsusb -v -d 18d1:501a
+pulseview &
+bg
+cd Downloads/
+evince stm32l5.pdf 
+bg
+tio /dev/ttyACM2
+tio /dev/ttyACM0
+dc
+tio /dev/ttyACM0
+ssh jesk@gateway.bodi-klinke.dk
+cd src/openocd-code/
+emacs
+bg
+tio /dev/ttyUSB5 
+tio /dev/ttyUSB6
+tio /dev/ttyUSB5 
+tio /dev/ttyUSB6
+tio /dev/ttyUSB20
+q
+ls /dev/ttyUSB*
+ls /dev/ttyUSB* > /tmp/before
+ls /dev/ttyUSB* > /tmp/after
+diff /tmp/before /tmp/after 
+tio /dev/ttyUSB20
+tio /dev/ttyUSB10
+tio --help
+tio -b 9600 /dev/ttyUSB10
+minicom -b 9600 /dev/ttyUSB10
+minicom -b 9600 -D /dev/ttyUSB10
+sudo lsof /dev/ttyACM0
+man openocd
+openocd -f tcl/interface/cmsis-dap.cfg"
+cd src/openocd-code/
+ls
+less .history_\*shell\* 
+openocd -f tcl/interface/cmsis-dap.cfg -c "tcl_port 0; telnet_port 0; gdb_port 0; echo FISK"
+openocd -f tcl/interface/cmsis-dap.cfg -c "tcl_port 0; telnet_port 0; gdb_port 0; transport select jtag; echo FISK"
+openocd -f tcl/interface/cmsis-dap.cfg -c "tcl_port 0; telnet_port 0; gdb_port 0; transport select jtag; echo FISK" --pipe
+openocd -p -f tcl/interface/cmsis-dap.cfg -c "tcl_port 0; telnet_port 0; gdb_port 0; transport select jtag; echo FISK"
+openocd --pipe -f tcl/interface/cmsis-dap.cfg -c "tcl_port 0; telnet_port 0; gdb_port 0; transport select jtag; echo FISK"
+ls
+cd src/
+ls
+emacs main.c openocd.c &
+find -name \*.c | xargs grep server_loop
+cd ..
+emacs &
+man prctl
+git status
+git diff
+git diff > ~/src/ti50/third_party/lowrisc/opentitan/third_party/openocd/terminate_on_parent_death.patch
+git diff
+ps
+ps aux | grep openocd
+killall openocd
+tio /dev/ttyUSB21
+cd /etc/udev/
+ls
+cd rules.d/
+ls
+cat 90-lowrisc.rules 
+tio /dev/ttyUSB21
+dc
+evince ~/Downloads/attachment\ \(5\).pdf 
+date
+cd
+ssh jesk@gateway.bodi-klinke.dk
+gimp ~/Downloads/d1.jpg 
+bg
+date
+cd Downloads/
+wget https://github.com/lowRISC/hyperdebug-firmware/releases/download/20231129_01/hyperdebug-firmware.tar.gz
+tar tvf hyperdebug-firmware.tar.gz.4
+sha256sum hyperdebug-firmware.tar.gz.4
+ssh jesk@gateway.bodi-klinke.dk
+cros_sdk
+cd chromeos-admin/
+cd docker/satlab/gsc_dev_board/
+ks
+ls
+git fetch
+cat docker_build.sh 
+git status
+git add docker_build.sh image/
+./docker_build.sh 
+gcert
+./docker_build.sh 
+git status
+git diff
+git add docker_build.sh 
+git commit --amend
+git status
+git branch -l
+git checkout opentitan
+git stash
+git checkout opentitan
+git rebase
+git status
+git rebase --abort
+git status
+git log -n1
+git diff
+git diff HEAD~1 HEAD
+git reset --hard HEAD~1
+git rebase
+git status
+git stash pop
+emacs docker_build.sh 
+git status
+./docker_build.sh 
+git status
+git diff
+git diff --staged
+git commit
+git log -n1
+git log -n1 .
+git commit
+repo upload . --cbr
+sudo apt-get install kubectl
+repo upload . --cbr
+sudo apt-get install isc-dhcp-server
+repo upload . --cbr
+sudo apt-get remove isc-dhcp-server
+sudo apt-get auto-remove
+./docker_build.sh 
+docker pull gcr.io/satlab-images/tcg_tests:1.2
+docker pull gcr.io/satlab-images/gsc_dev_board:1.23
+gcert
+docker pull gcr.io/satlab-images/gsc_dev_board:1.23
+cat ~/.docker/config.json
+gcloud auth list
+gcloud aauth list
+gcloud auth list
+gcloud auth login
+docker pull gcr.io/satlab-images/gsc_dev_board:1.23
+docker login
+docker pull gcr.io/satlab-images/gsc_dev_board:1.23
+gcloud auth login
+docker pull gcr.io/satlab-images/gsc_dev_board:1.23
+./docker_build.sh 
+docker pull gcr.io/satlab-images/gsc_dev_board:1.23
+./docker_build.sh 
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreiboard -e DEBUGGER_SERIAL=206536663452 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=0201a06b-4e61d717 gcr.io/satlab-images/gsc_dev_board:1.11 /opt/gscdevboard/start_devboardsvc.sh
+docker exec -it gscdevboard_hyperdebug /bin/bash
+docker ps
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreiboard -e DEBUGGER_SERIAL=206536663452 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=0201a06b-4e61d717 gcr.io/satlab-images/gsc_dev_board:1.11 /opt/gscdevboard/start_devboardsvc.sh
+docker ps
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreiboard -e DEBUGGER_SERIAL=206536663452 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=0201a06b-4e61d717 gcr.io/satlab-images/gsc_dev_board:1.24 /opt/gscdevboard/start_devboardsvc.sh
+docker ps
+docker kill gscdevboard_hyperdebug
+docker ps
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.24 /opt/gscdevboard/start_devboardsvc.sh
+docker ps
+docker kill gscdevboard_hyperdebug
+grep start_devboard ~/.bash_history 
+grep start_devboard ~/.bash_history | grep cw310
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=opentitan_cw310 -e DEBUGGER_SERIAL=2071365F3452 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=00000000-00000000 gcr.io/satlab-images/gsc_dev_board:1.17 /opt/gscdevboard/start_devboardsvc.sh
+docker kill gscdevboard_hyperdebug
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=opentitan_cw310 -e DEBUGGER_SERIAL=2071365F3452 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=00000000-00000000 gcr.io/satlab-images/gsc_dev_board:1.24 /opt/gscdevboard/start_devboardsvc.sh
+docker exec -it  gscdevboard_hyperdebug /bin/bash
+docker kill gscdevboard_hyperdebug
+./docker_build.sh 
+PUSH=1 RELEASE=1 ./docker_build.sh 
+cd../../..
+sudo dmesg -w
+tio /dev/ttyUSB28
+cd src/platform/ti50/common/
+git status
+git rebase -i HEAD~3
+git status
+git checkout ot-review
+git reset --hard ot~1
+git status
+repo upload . --cbr
+cros format
+git status
+git rebase -i HEAD~2
+git status
+git diff --name-only HEAD~1 HEAD
+git diff --name-only HEAD~1 HEAD | xargs clang-format -i
+git status
+git add ports/opentitan/
+git rebase --continue
+git status
+emacs ports/opentitan/src/chip.rs 
+git rebase --abort
+git rebase -i HEAD~2
+git diff --name-only HEAD~1 HEAD | xargs rustfmt
+git status
+git rebase --continue
+git diff --name-only HEAD~1 HEAD | xargs rustfmt
+git diff --name-only HEAD~1 HEAD 
+git diff --name-only HEAD~1 HEAD | grep rs$ | xargs rustfmt
+git diff HEAD~1 HEAD
+git status
+git add ports/opentitan/
+git status
+git diff
+git diff --staged
+git rebase --continue
+git status
+repo upload . --cbr
+git log -n1
+git status
+git add ports/opentitan/src/rbox.rs
+git commit --amend
+repo upload . --cbr
+rustfmt ports/opentitan/src/rbox.rs
+git diff
+rustfmt ports/opentitan/src/rbox.rs
+git add ports/opentitan/src/rbox.rs
+git commit --amend
+repo upload . --cbr
+git rebase -i HEAD~2
+git status
+git diff --name-only HEAD~1 HEAD
+find -name demo.json
+git rebase --continue
+git log -n2
+git rebase -i HEAD~2
+git diff --name-only HEAD~1 HEAD
+git rm ports/opentitan/software/tools/demo.json
+git rm ports/opentitan/software/tools/demo.json~
+git add ports/opentitan/
+git status
+git commit --amend
+git status
+repo upload . --cbr
+git checkout ot
+git rebase HEAD~1 --onto ot-review
+git diff HEAD~1 HEAD
+ls build/ti50/dauntless/dauntless/full_image.signed.bin
+strings build/ti50/dauntless/dauntless/full_image.signed.bin
+strings build/ti50/dauntless/dauntless/full_image.signed.bin | grep ti50_common_tot
+hexdump -C build/ti50/dauntless/dauntless/full_image.signed.bin | less
+find -type f | xargs grep -l VTIG
+find -type f -print0 | xargs -0 grep -l VTIG
+hexdump -C build/ti50/dauntless/dauntless/full_image.signed.bin | less
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-572416 &
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-3787223 &
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-3787223 &
+exit
+glinux-fixme
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+exit
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290
+bg
+fg
+bg
+fg
+exit
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290
+bg
+emacslist
+cd src/chromiumos-2/
+cd src/
+cd platform
+cd tast-tests
+git status
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+tio /dev/ttyACM0
+killall tio
+tio /dev/ttyACM0
+exit
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+tio /dev/ttyACM0
+emacslist
+emacsclient -c -s emacs-453534 &
+tio /dev/ttyACM0
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290 &
+tio /dev/ttyACM0
+exot
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-453534
+bg
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-24290
+exit
+exit
