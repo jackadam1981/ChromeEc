@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacbdc7d_0f802423",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-15T18:02:54Z",
+      "side": 1,
+      "message": "Patch 16: Added array to keep track of retimer state of individual port to cover cases where retimer update for individual port is allowed and where different PDs control different port retimers.",
+      "revId": "858cbac0950ed7e5a910adb62123f1605e2d3e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
