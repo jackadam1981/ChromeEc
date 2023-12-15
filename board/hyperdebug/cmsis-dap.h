@@ -11,5 +11,6 @@ extern uint8_t tx_buffer[256];
 
 void dap_goog_i2c(size_t peek_c);
 void dap_goog_i2c_device(size_t peek_c);
+void dap_goog_gpio_monitoring(size_t peek_c);
 
 #endif
