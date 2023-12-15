@@ -6351,6 +6351,10 @@
 #endif
 #endif
 
+#ifdef CONFIG_BATTERY_SMART
+#define CONFIG_SMBUS_PEC
+#endif
+
 /******************************************************************************/
 /*
  * Ensure CONFIG_USB_PD_RESET_PRESERVE_RECOVERY_FLAGS is only used on
