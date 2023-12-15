@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7148799_d5692bea",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "this function returns int, not the enum",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99076550_7c29688a",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "I understand what you do here, but I am not sure this is how erase fails. I think the chip can\u0027t erase it will return the bad operation status.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e7daf2_5608c4de",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "how could an invalid page end up in the list with index below `page_count`?",
+      "range": {
+        "startLine": 543,
+        "startChar": 25,
+        "endLine": 543,
+        "endChar": 54
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254cbba0_311d5a4c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "here you might want to print out all pages, marking corrupted ones as such.",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 17
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1579bf0b_050b6d1a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "should this event be added to the flash log?",
+      "range": {
+        "startLine": 698,
+        "startChar": 12,
+        "endLine": 698,
+        "endChar": 33
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29136525_68351d88",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "I don\u0027t understand why there is a cycle here. If page intialization failed it should be added to the list of invalid pages and this should be it, why are you moving to erasing another page and keep doint it until erase succeded.\n\nAlso, here and in other places, what if you come to `page_count \u003d\u003d 0`\n\nI guess this is not likely to happen, as we\u0027d have many other problems if the number of good pages gets below a certain value.",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 0
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68151603_e088c7a9",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "can `remove_page_from_list()` be used instead?",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1779,
+        "endChar": 41
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d73c0ed_c950917b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2824,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "can just `return controller_at.list_index \u003e\u003d compation_limit;`",
+      "range": {
+        "startLine": 2824,
+        "startChar": 1,
+        "endLine": 2824,
+        "endChar": 69
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8348ddb_939df558",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "Please add a comment describing what these offsets are.",
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70bca4e_f5cd63de",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-15T18:39:20Z",
+      "side": 1,
+      "message": "please rename this function - it is confusing that it is not included in the list of tests invoked from `run_test()`",
+      "range": {
+        "startLine": 1442,
+        "startChar": 11,
+        "endLine": 1442,
+        "endChar": 26
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
