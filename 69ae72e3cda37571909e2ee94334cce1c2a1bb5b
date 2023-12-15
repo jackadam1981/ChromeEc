@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf8b142_1a9a15f9",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-12-15T21:18:30Z",
+      "side": 1,
+      "message": "I think this extra config isn\u0027t needed. The 2 scenarios I\u0027m seeing are:\n\n1. EC motionsense, which enables PLATFORM_EC_MOTIONSENSE\n2. ISH motionsense, which has PLATFORM_EC_MOTIONSESE disabled on the EC image (same as having PLATFORM_EC_EXTERNAL_MOTIONSENSE) and the ISH image has PLATFORM_EC_MOTIONSESE enabled.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 37
+      },
+      "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
