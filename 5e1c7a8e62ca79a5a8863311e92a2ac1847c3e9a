@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4e1ec4_bd74892a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8840,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-12-15T00:26:30Z",
+      "side": 1,
+      "message": "What is the benefit of making this optional?  Can we make it required and change the order to `\u003cindex\u003e \u003cjson_file\u003e \u003cmanuf_name\u003e \u003cdevice_name\u003e`",
+      "range": {
+        "startLine": 8840,
+        "startChar": 55,
+        "endLine": 8840,
+        "endChar": 65
+      },
+      "revId": "5e1c7a8e62ca79a5a8863311e92a2ac1847c3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b7bf97_bdf29ad2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8846,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-12-15T00:26:30Z",
+      "side": 1,
+      "message": "This is in the context of `set` subcommand, so just `set`",
+      "range": {
+        "startLine": 8846,
+        "startChar": 43,
+        "endLine": 8846,
+        "endChar": 53
+      },
+      "revId": "5e1c7a8e62ca79a5a8863311e92a2ac1847c3e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
