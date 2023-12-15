@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "927c0a6a_d9bfdaf2",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-15T06:32:37Z",
+      "side": 1,
+      "message": "I still don\u0027t understand. Could you explain it more detail here?\n\nCouldn\u0027t we just bind the `enable_lid_detect(false)` to `detach` event? Since that\u0027s all you need. Is there anything missing here?",
+      "parentUuid": "e2852f91_fdb31f8c",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "098e5ab346e38111a0d249e6b34726d5bd42ab1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c68659d7_44e15ee0",
         "filename": "zephyr/program/geralt/src/base_detect.c",
         "patchSetId": 5
