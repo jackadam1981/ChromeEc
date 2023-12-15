@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2852f91_fdb31f8c",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-12-15T02:19:14Z",
+      "side": 1,
+      "message": "No, because there will be a situation（shutdown status） where attach is false, but connect status is connected.",
+      "parentUuid": "bf178747_b37ef594",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "098e5ab346e38111a0d249e6b34726d5bd42ab1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c68659d7_44e15ee0",
         "filename": "zephyr/program/geralt/src/base_detect.c",
         "patchSetId": 5
@@ -140,6 +164,30 @@
       "writtenOn": "2023-12-14T21:32:39Z",
       "side": 1,
       "message": "This function does the similar thing as `base_init`. Could you merge this function into `base_init`?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 6
+      },
+      "revId": "098e5ab346e38111a0d249e6b34726d5bd42ab1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69131616_1a589a8a",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-12-15T02:19:14Z",
+      "side": 1,
+      "message": "no， because the base_init excute early then ec function init, it will cause the base_detect_enable false.",
+      "parentUuid": "e5c4fc18_d35ccbcf",
       "range": {
         "startLine": 160,
         "startChar": 0,
