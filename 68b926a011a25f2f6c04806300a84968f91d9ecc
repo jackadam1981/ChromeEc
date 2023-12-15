@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94bb25d1_43d6428a",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-12-15T23:00:06Z",
+      "side": 1,
+      "message": "To avoid subtle issues about assumptions of how this is passed (by reference or value), we may want to do the struct wrapper: https://stackoverflow.com/a/4523537.\n\ne.g., most people reading the code will assume `fp_template_t` is a struct and will be passed by value.\n\nIf this code were only used by C++, we could use `std::array` to achieve the same effect I think.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "68b926a011a25f2f6c04806300a84968f91d9ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
