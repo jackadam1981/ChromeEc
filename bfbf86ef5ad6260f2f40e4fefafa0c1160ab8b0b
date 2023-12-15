@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711daa86_d7c81d0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 30
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-15T14:34:58Z",
+      "side": 1,
+      "message": "Fixed. Thanks!",
+      "parentUuid": "c743661c_006bbf78",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "bfbf86ef5ad6260f2f40e4fefafa0c1160ab8b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e4a8532_0f1679fb",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-08T20:04:17Z",
       "side": 1,
       "message": "Why only in Zephyr? Couldn\u0027t this be useful in non-Zephyr builds too?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "bfbf86ef5ad6260f2f40e4fefafa0c1160ab8b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe948b1f_d50edc0a",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-15T14:34:58Z",
+      "side": 1,
+      "message": "The story behind `fp_idle()` is that enabling/disabling GPIO interrupt from sensor is not a good approach.\n\nOf course, it is possible to enable/disable GPIO interrupt from fpsensor task in Zephyr, but:\n- It\u0027s not sound. It assumes that every sensor has irq pin. How about sensor simulator used for tests?\n- Information about GPIO pins are provided in DTS properties for the device, so it seems natural that the sensor driver is a good place to manage GPIO pins.\n\nI\u0027ve analyzed why we enable/disable sensor interrupt, and I found that we do this to avoid running into some bad state when e.g sensor is configured to detect finger, but we are not actually waiting for this, because we don\u0027t have true idle command. IMO all interrupts should go through FPC library.\n\n\u003e Couldn\u0027t this be useful in non-Zephyr builds too?\n\nIt could, but it requires more changes in EC and introduces risk of breaking something. Since we are going to port all FPMCU boards to Zephyr in a foreseeable future, it\u0027s resonable to implement it for Zephyr only.",
+      "parentUuid": "3e4a8532_0f1679fb",
       "range": {
         "startLine": 149,
         "startChar": 0,
