@@ -369,6 +369,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b344ecce_ae7283a0",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2023-12-15T07:12:28Z",
+      "side": 1,
+      "message": "Yes, reset reboot_timeout to some default value after watchdog reboot and use that default value for the very first time `hang_detect_reload()` is called if the timeout requested by user is below that default value, e.g. default_reboot_tiemout\u003d30s, after a fresh user requests reboot_timeout\u003d0s (what can cause immediate reboot and boot loop) so we set the first reboot_time \u003d default_reboot_time (with the proper log). \nThis way user will see, that the first `hang_detect_reload()` is called with different (longer than requested) reboot_timeout (what gives him a time e.g. to stop watchdog at all by calling `stop daisydog`) and may notice that the second call will happen with the desired reboot_timeout (eg. 0s) is to short and is causing instant reboot, then after such reboot, the `default_reboot_timeout` would be used for the first waiting period, giving the user a while to adjust the configuration.",
+      "parentUuid": "839dea18_57b28602",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "77ffae066b7d137b72bca1786641a91de4d08fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a49f104_69616aae",
         "filename": "common/ap_hang_detect.c",
         "patchSetId": 13
