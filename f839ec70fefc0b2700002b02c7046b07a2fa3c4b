@@ -16,6 +16,24 @@
       "message": "is the rex FW builder operational yet?",
       "revId": "f839ec70fefc0b2700002b02c7046b07a2fa3c4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef30ac77_b846d93a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-12-15T23:51:18Z",
+      "side": 1,
+      "message": "No, and it doesn\u0027t look like it\u0027ll be fixed until Jan (see b/316429012).",
+      "parentUuid": "106779e2_1bc61bb3",
+      "revId": "f839ec70fefc0b2700002b02c7046b07a2fa3c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
