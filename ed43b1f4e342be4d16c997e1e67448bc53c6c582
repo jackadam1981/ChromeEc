@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "806be675_b812c1a2",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-15T21:43:40Z",
+      "side": 1,
+      "message": "i was thinking that if this can happen in real life that page was not erase, but happened to be all 0xff - it would be interesting to see how we can handle this... but the main unknown here is the model of failure for our flash.",
+      "parentUuid": "c04272b0_7c4b9e15",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "ed43b1f4e342be4d16c997e1e67448bc53c6c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e7daf2_5608c4de",
