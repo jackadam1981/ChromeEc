@@ -45,6 +45,30 @@
       },
       "revId": "ebc81f870b243bc5a9387f74fa454a15d5110366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfedadc2_fe1c0041",
+        "filename": "board/dochi/fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1552017
+      },
+      "writtenOn": "2023-12-15T00:49:41Z",
+      "side": 1,
+      "message": "boxster CL at https://crrev.com/i/6782375",
+      "parentUuid": "00dfadb1_451f21a2",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "ebc81f870b243bc5a9387f74fa454a15d5110366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
