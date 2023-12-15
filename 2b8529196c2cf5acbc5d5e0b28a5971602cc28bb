@@ -51,6 +51,24 @@
       "parentUuid": "251535fc_db25cf3c",
       "revId": "2b8529196c2cf5acbc5d5e0b28a5971602cc28bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3dcf698_2e946fd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-12-15T18:56:44Z",
+      "side": 1,
+      "message": "Command should be similar to `util/update_release_branch.py --baseboard rex --relevant_paths_file baseboard/rex/relevant-paths.txt firmware-rex-15709.B-main`\n\nBut I don\u0027t think we have the baseboard and the relevant-paths.txt file set up yet?",
+      "parentUuid": "af126f0f_a36a49e5",
+      "revId": "2b8529196c2cf5acbc5d5e0b28a5971602cc28bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
