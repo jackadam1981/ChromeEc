@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58be8679_be9f6ec5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-16T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6d53de8_b7f3428f",
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "497bbfda_aeecdfd1",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-15T21:14:40Z",
       "side": 1,
       "message": "Not something you\u0027re introducing, but this is really confusing, took me a while to sort out ;P\n\nCan you please change `nvmem_erase_tpm_data` to `nvmem_erase_tpm_data_selective` (so that it is easier to find this label) and mention in the comment that we get key and value point at the same address in the code segment.",
+      "range": {
+        "startLine": 3179,
+        "startChar": 1,
+        "endLine": 3180,
+        "endChar": 45
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a987ca_9975ee3a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3180,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-16T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "497bbfda_aeecdfd1",
       "range": {
         "startLine": 3179,
         "startChar": 1,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a5b4a2d_3d0651bd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3187,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-16T03:16:00Z",
+      "side": 1,
+      "message": "this is the case when we want to fill page, but can\u0027t create variables. I\u0027m thinking that we may prefer to use special purpose function which would create a fake object spanning till end of page instead of setvar dance",
+      "parentUuid": "26e74708_96d5ffb3",
+      "range": {
+        "startLine": 3187,
+        "startChar": 20,
+        "endLine": 3187,
+        "endChar": 41
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9915ef26_23ce9d75",
         "filename": "common/new_nvmem.c",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2023-12-15T21:14:40Z",
       "side": 1,
       "message": "to avoid the `goto` please separate code below `compact:` into its own function.",
+      "range": {
+        "startLine": 3189,
+        "startChar": 2,
+        "endLine": 3190,
+        "endChar": 3
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d68f62f_30b84640",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3190,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-16T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9915ef26_23ce9d75",
       "range": {
         "startLine": 3189,
         "startChar": 2,
@@ -100,6 +190,30 @@
       "writtenOn": "2023-12-15T21:14:40Z",
       "side": 1,
       "message": "Having thought about this: why do we even allow  the setvar() called from this code trigger a compaction? \n\nWhy not call compaction first and then just fill the rest of the last page with erased values?\n\nIf we care about the wasted space in the last page we can call compaction again. This could take a bit longer time, (which does not matter much when `tpm_erase_objects()` is invoked) but would result in a much simpler code.",
+      "range": {
+        "startLine": 3201,
+        "startChar": 3,
+        "endLine": 3201,
+        "endChar": 38
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6f2460_11cda90b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-16T03:16:00Z",
+      "side": 1,
+      "message": "I found a weird issue in `compact_nvmem` - it doesn\u0027t clean properly always and can make last page a first with only deleted objects. Need more careful review of the logic. I tried to simply create an object spanning till end of page, but this breaks some tests counting number of deleted objects. It seems that `compact_nvmem` shall try to start with a fresh page if possible. This way we can remove this code and just call compact. Somehow the fact that this loop creates many objects helps compact to handle last page properly. Other approach - call compact several times, but it is less stable. I\u0027d prefer to fix compact logic. So far current solution is working, although not optimal.",
+      "parentUuid": "dcdf6ee3_6b7f5846",
       "range": {
         "startLine": 3201,
         "startChar": 3,
