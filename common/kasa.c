@@ -47,7 +47,7 @@ void kasa_compute(struct kasa_fit *kasa, fpv3_t bias, fp_t *radius)
 	fpv4_t b, out;
 	sizev4_t pivot;
 
-	A[0][0] = kasa->nsamples;
+	A[0][0] = INT_TO_FP(kasa->nsamples);
 	A[0][1] = A[1][0] = kasa->acc_x;
 	A[0][2] = A[2][0] = kasa->acc_y;
 	A[0][3] = A[3][0] = kasa->acc_z;
