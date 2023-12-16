@@ -146,15 +146,19 @@ int vector_magnitude(const intv3_t v)
 /* cross_product only works if the vectors magnitudes are around 1<<16. */
 void cross_product(const intv3_t v1, const intv3_t v2, intv3_t v)
 {
-	v[X] = (fp_inter_t)v1[Y] * v2[Z] - (fp_inter_t)v1[Z] * v2[Y];
-	v[Y] = (fp_inter_t)v1[Z] * v2[X] - (fp_inter_t)v1[X] * v2[Z];
-	v[Z] = (fp_inter_t)v1[X] * v2[Y] - (fp_inter_t)v1[Y] * v2[X];
+	v[X] = (fp_inter_t)v1[Y] * (fp_inter_t)v2[Z] -
+	       (fp_inter_t)v1[Z] * (fp_inter_t)v2[Y];
+	v[Y] = (fp_inter_t)v1[Z] * (fp_inter_t)v2[X] -
+	       (fp_inter_t)v1[X] * (fp_inter_t)v2[Z];
+	v[Z] = (fp_inter_t)v1[X] * (fp_inter_t)v2[Y] -
+	       (fp_inter_t)v1[Y] * (fp_inter_t)v2[X];
 }
 
 fp_inter_t dot_product(const intv3_t v1, const intv3_t v2)
 {
-	return (fp_inter_t)v1[X] * v2[X] + (fp_inter_t)v1[Y] * v2[Y] +
-	       (fp_inter_t)v1[Z] * v2[Z];
+	return (fp_inter_t)v1[X] * (fp_inter_t)v2[X] +
+	       (fp_inter_t)v1[Y] * (fp_inter_t)v2[Y] +
+	       (fp_inter_t)v1[Z] * (fp_inter_t)v2[Z];
 }
 
 void vector_scale(intv3_t v, fp_t s)
