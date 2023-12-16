@@ -22,6 +22,29 @@
       },
       "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea942d4_42a800fc",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-12-16T13:58:17Z",
+      "side": 1,
+      "message": "if `CONFIG_GERALT_LID_DETECTION_SELECTED` enabled, base detection will keep running in G3, is this intended?\n\n(as a result, the device will enable `en_ppvar_base_x` in G3 when keyboard attached)",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
