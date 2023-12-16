@@ -16,6 +16,24 @@
       "message": "I was able to invoke this command on a live DUT with ectool, but all of the returned values were 0 (but no errors). Is there some initialization of the PDC or loading of config that needs to take place first?",
       "revId": "d6e5d0a64db930290b902dd58d9ef3b217588dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a21a2e9_e79d0c43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-16T00:21:21Z",
+      "side": 1,
+      "message": "Yes, the PDC needs to be enabled before sending commands. The datasheet gives the initial command sequence. The driver api calls are as follows:\n1: pdc_enable\n2: pdc_set_notification_enable\n3: pdc_reset\n\nI\u0027m thinking this sequence should be added to the driver and performed automatically.",
+      "parentUuid": "0f79b005_f22e7932",
+      "revId": "d6e5d0a64db930290b902dd58d9ef3b217588dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
