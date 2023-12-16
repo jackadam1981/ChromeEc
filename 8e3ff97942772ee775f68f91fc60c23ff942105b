@@ -70,6 +70,30 @@
       },
       "revId": "8e3ff97942772ee775f68f91fc60c23ff942105b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765853bb_bda364bc",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-12-16T00:49:27Z",
+      "side": 1,
+      "message": "ignore that last comment.",
+      "parentUuid": "9769192e_1b58de3f",
+      "range": {
+        "startLine": 706,
+        "startChar": 63,
+        "endLine": 706,
+        "endChar": 69
+      },
+      "revId": "8e3ff97942772ee775f68f91fc60c23ff942105b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
