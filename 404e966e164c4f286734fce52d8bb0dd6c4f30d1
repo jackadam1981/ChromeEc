@@ -26,6 +26,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32580892_90bc866f",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-18T21:54:55Z",
+      "side": 1,
+      "message": "STARTUP",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c6f417_211593cb",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-18T21:54:55Z",
+      "side": 1,
+      "message": "You can drop it, since `enable_lid_detect` will print the info.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7d7b67_f8bc82e3",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-18T21:54:55Z",
+      "side": 1,
+      "message": "Add parenthesis",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eea942d4_42a800fc",
         "filename": "zephyr/program/geralt/src/base_detect.c",
         "patchSetId": 7
@@ -61,6 +130,30 @@
       "side": 1,
       "message": "yes, we need base detection will keep running in G3, because we should disable lid_detect if the base detach, and I use power_status_change to enable/disable en_ppvar_base_x at G3 state.",
       "parentUuid": "eea942d4_42a800fc",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64fb38af_0fb8ce8c",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-18T21:54:55Z",
+      "side": 1,
+      "message": "It may not pass the power requirement if the `en_ppvar_base_x` is enabled at G3.\n\n@parkerlin@google.com",
+      "parentUuid": "db9c7f42_f4b443e4",
       "range": {
         "startLine": 111,
         "startChar": 2,
