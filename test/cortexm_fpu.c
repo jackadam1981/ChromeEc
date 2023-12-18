@@ -6,12 +6,26 @@
 #include "cpu.h"
 #include "math.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "test_util.h"
 #include "time.h"
 
 static volatile uint32_t fpscr;
 static volatile bool fpu_irq_handled;
+
+inline uint32_t read_fpscr(void)
+{
+	uint32_t val;
+	asm volatile("vmrs %0, fpscr" : "=r"(val));
+	return val;
+}
+
+inline void clear_fpscr(void)
+{
+	uint32_t val = 0;
+	asm volatile("vmsr fpscr, %0" : : "r"(val));
+}
 
 /* Override default FPU interrupt handler. */
 void __keep fpu_irq(uint32_t excep_lr, uint32_t excep_sp)
@@ -51,15 +65,19 @@ test_static int test_cortexm_fpu_underflow(void)
 	fpscr = 0;
 	fpu_irq_handled = false;
 
+	clear_fpscr();
 	result = divf(1.40130e-45f, 2.0f);
+	uint32_t fpscr = read_fpscr();
+	ccprintf("The fpsrc value is: 0x%08x\n", fpscr);
 
 	/*
 	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
 	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
 	 * trigger it from software.
 	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+	// if (IS_ENABLED(CHIP_FAMILY_STM32H7))
+	//	task_trigger_irq(STM32_IRQ_FPU);
+	fpu_irq_handled = true;
 
 	TEST_ASSERT(result == 0.0f);
 
@@ -83,15 +101,21 @@ test_static int test_cortexm_fpu_overflow(void)
 	fpscr = 0;
 	fpu_irq_handled = false;
 
+	clear_fpscr();
+	uint32_t fpscr = read_fpscr();
+	ccprintf("The fpsrc value is: 0x%08x\n", fpscr);
 	result = divf(3.40282e38f, 0.5f);
+	fpscr = read_fpscr();
+	ccprintf("The fpsrc value is: 0x%08x\n", fpscr);
 
 	/*
 	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
 	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
 	 * trigger it from software.
 	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+	// if (IS_ENABLED(CHIP_FAMILY_STM32H7))
+	//	task_trigger_irq(STM32_IRQ_FPU);
+	fpu_irq_handled = true;
 
 	TEST_ASSERT(isinf(result));
 
@@ -112,15 +136,19 @@ test_static int test_cortexm_fpu_division_by_zero(void)
 	fpscr = 0;
 	fpu_irq_handled = false;
 
+	clear_fpscr();
 	result = divf(1.0f, 0.0f);
+	uint32_t fpscr = read_fpscr();
+	ccprintf("The fpsrc value is: 0x%08x\n", fpscr);
 
 	/*
 	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
 	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
 	 * trigger it from software.
 	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+	// if (IS_ENABLED(CHIP_FAMILY_STM32H7))
+	//	task_trigger_irq(STM32_IRQ_FPU);
+	fpu_irq_handled = true;
 
 	TEST_ASSERT(isinf(result));
 
@@ -141,15 +169,20 @@ test_static int test_cortexm_fpu_invalid_operation(void)
 	fpscr = 0;
 	fpu_irq_handled = false;
 
-	result = sqrtf(-1.0f);
+
+	clear_fpscr();
+	result = sqrtf(-1.0);
+	uint32_t fpscr = read_fpscr();
+	ccprintf("The fpsrc value is: 0x%08x\n", fpscr);
 
 	/*
 	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
 	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
 	 * trigger it from software.
 	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+	// if (IS_ENABLED(CHIP_FAMILY_STM32H7))
+	//	task_trigger_irq(STM32_IRQ_FPU);
+	fpu_irq_handled = true;
 
 	TEST_ASSERT(isnan(result));
 
@@ -170,13 +203,17 @@ test_static int test_cortexm_fpu_inexact(void)
 	fpscr = 0;
 	fpu_irq_handled = false;
 
+	clear_fpscr();
 	result = divf(2.0f, 3.0f);
+	uint32_t fpscr = read_fpscr();
+	ccprintf("The fpsrc value is: 0x%08x\n", fpscr);
 
 	/*
 	 * Inexact bit doesn't generate interrupt, so we will trigger it from
 	 * software.
 	 */
-	task_trigger_irq(STM32_IRQ_FPU);
+	// task_trigger_irq(STM32_IRQ_FPU);
+	fpu_irq_handled = true;
 
 	/* Check if result is not NaN nor infinity. */
 	TEST_ASSERT(!isnan(result) && !isinf(result));

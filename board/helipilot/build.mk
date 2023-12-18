@@ -31,6 +31,7 @@ test-list-y=\
        always_memset \
        benchmark \
        boringssl_crypto \
+       cortexm_fpu \
        compile_time_macros \
        crc \
        debug \
@@ -65,6 +66,7 @@ test-list-y=\
        static_if \
        stdlib \
        std_vector \
+       stm32f_rtc \
        system_is_locked \
        timer \
        timer_dos \
