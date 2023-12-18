@@ -246,6 +246,30 @@
       },
       "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bc1b5c_f3dc5fbd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-18T20:26:56Z",
+      "side": 1,
+      "message": "somehow multiple setvars filled the page in the way that compact recycled that page, but when I created a single deleted object spanning till the end - it moved this page as first despite having no live objects and calling compact again cleared it. So, some condition in compact needs to be checked.",
+      "parentUuid": "57eeed8b_5e62c216",
+      "range": {
+        "startLine": 3201,
+        "startChar": 3,
+        "endLine": 3201,
+        "endChar": 38
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
