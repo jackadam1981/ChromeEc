@@ -70,6 +70,24 @@
       "parentUuid": "a8b48970_56c748d8",
       "revId": "a888bb5a86f8b8bdabf5f2102723575e7d8d4954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e28f1a7_396699be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-18T18:30:45Z",
+      "side": 1,
+      "message": "I suspect that ChromiumOS SDK use pinning, so for some time the old version was used in CQ. Cr50 CQ is also different from what is called by `emerge chromeos-cr50-dev` since it runs unit tests \u0026 fuzzing. I don\u0027t know what is the best way to create such dependency? Create fake package `cr50-cq` ?",
+      "parentUuid": "22278c80_c89706cf",
+      "revId": "a888bb5a86f8b8bdabf5f2102723575e7d8d4954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
