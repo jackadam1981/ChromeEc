@@ -88,6 +88,24 @@
       "parentUuid": "22278c80_c89706cf",
       "revId": "a888bb5a86f8b8bdabf5f2102723575e7d8d4954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f295a4a0_42ff91dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2023-12-18T18:41:06Z",
+      "side": 1,
+      "message": "Ah, if this is a pinned SDK package, the problem would only show up in the SDK build, but that should still have CQ coverage IIRC.",
+      "parentUuid": "1e28f1a7_396699be",
+      "revId": "a888bb5a86f8b8bdabf5f2102723575e7d8d4954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
