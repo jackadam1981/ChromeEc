@@ -114,4 +114,10 @@ config PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP
 	  debugging panics. May not dump all memory, e.g. sensitive memory will
 	  not be dumped.
 
+config PLATFORM_EC_STATE_CACHE
+	bool "Enable state cache store"
+	help
+	  State cache stores system state from various sources and makes it available
+	  for debugging.
+
 endif # PLATFORM_EC

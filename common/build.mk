@@ -222,6 +222,7 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(CONFIG_SYSTEM_SAFE_MODE)+=system_safe_mode.o
 common-$(CONFIG_HOST_COMMAND_MEMORY_DUMP)+=host_command_memory_dump.o
+common-$(CONFIG_STATE_CACHE)+=state_cache.o
 
 ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
 common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o

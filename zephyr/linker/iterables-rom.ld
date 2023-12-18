@@ -15,3 +15,13 @@ ITERABLE_SECTION_ROM(mkbp_event_source, 4)
 FOR_EACH(HOOK_TYPE_SECTION, (
 ), HOOK_TYPES_LIST)
 #endif
+
+ITERABLE_SECTION_ROM(state_cache_uint8_t_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint16_t_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint32_t_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint64_t_tag, 1)
+
+ITERABLE_SECTION_ROM(state_cache_uint8_t_ptr_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint16_t_ptr_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint32_t_ptr_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint64_t_ptr_tag, 1)

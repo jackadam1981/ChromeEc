@@ -1,0 +1,7 @@
+common:
+  platform_allow: native_posix
+tests:
+  state_cache.default:
+    tags:
+      common
+      system

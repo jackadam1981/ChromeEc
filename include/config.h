@@ -6522,6 +6522,9 @@
 /* Define for to turn off power LED in suspend for boards shipped after 2022 */
 #undef CONFIG_LED_PWM_OFF_IN_SUSPEND
 
+/* Define to enable the state cache store */
+#undef CONFIG_STATE_CACHE
+
 /*****************************************************************************/
 /*
  * Define derived configuration options for EC-EC communication
@@ -6899,7 +6902,7 @@
  * period.
  */
 #ifdef CONFIG_WATCHDOG
-#if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS)*2)
+#if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
 #endif
