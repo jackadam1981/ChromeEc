@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43a632d_ab77d465",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3286,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-18T18:49:20Z",
+      "side": 1,
+      "message": "again, this message sounds like it is a problem, but is it? The page is full, no need to fill it with fake variables, right? So, `no need to add vars` or something like this is a clearer message.",
+      "range": {
+        "startLine": 3286,
+        "startChar": 16,
+        "endLine": 3286,
+        "endChar": 31
+      },
+      "revId": "3d82e25dfd3c83663a9905c58bd9b3b41b54f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -222,6 +222,30 @@
       },
       "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57eeed8b_5e62c216",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-18T18:49:20Z",
+      "side": 1,
+      "message": "What is the weird issue and how could it be happening? If this issue exists - let\u0027s fix it, it is better than creating more logic to work around it.",
+      "parentUuid": "1c6f2460_11cda90b",
+      "range": {
+        "startLine": 3201,
+        "startChar": 3,
+        "endLine": 3201,
+        "endChar": 38
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
