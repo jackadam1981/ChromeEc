@@ -334,6 +334,24 @@ SECTIONS
 		KEEP(*(.rodata.usb_ep.usb_ep_reset))
 		KEEP(*(.rodata.usb_ep.usb_iface_request))
 
+#ifdef CONFIG_STATE_CACHE
+		__state_cache_uint8_t_tag = .;
+		KEEP(*(SORT(.rodata.state_cache_uint8_t_*)))
+		__state_cache_uint8_t_tag_end = .;
+
+		__state_cache_uint16_t_tag = .;
+		KEEP(*(SORT(.rodata.state_cache_uint16_t_*)))
+		__state_cache_uint16_t_tag_end = .;
+
+		__state_cache_uint32_t_tag = .;
+		KEEP(*(SORT(.rodata.state_cache_uint32_t_*)))
+		__state_cache_uint32_t_tag_end = .;
+
+		__state_cache_uint64_t_tag = .;
+		KEEP(*(SORT(.rodata.state_cache_uint64_t_*)))
+		__state_cache_uint64_t_tag_end = .;
+#endif
+
 		. = ALIGN(4);
 		*(.rodata*)
 
@@ -442,6 +460,27 @@ SECTIONS
 		STRINGIFY(OUTDIR/common/tpm_registers.o*)(.bss)
 			*(.bss.Tpm2_common)
 		__bss_libtpm2_end = .;
+
+#ifdef CONFIG_STATE_CACHE
+		__state_cache_uint8_t_val = .;
+		KEEP(*(SORT(.bss.state_cache_uint8_t_*)))
+		__state_cache_uint8_t_val_end = .;
+
+		. = ALIGN(2);
+		__state_cache_uint16_t_val = .;
+		KEEP(*(SORT(.bss.state_cache_uint16_t_*)))
+		__state_cache_uint16_t_val_end = .;
+
+		. = ALIGN(4);
+		__state_cache_uint32_t_val = .;
+		KEEP(*(SORT(.bss.state_cache_uint32_t_*)))
+		__state_cache_uint32_t_val_end = .;
+
+		. = ALIGN(8);
+		__state_cache_uint64_t_val = .;
+		KEEP(*(SORT(.bss.state_cache_uint64_t_*)))
+		__state_cache_uint64_t_val_end = .;
+#endif
 
 		*(.bss*)
 

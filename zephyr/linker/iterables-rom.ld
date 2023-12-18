@@ -19,3 +19,13 @@ FOR_EACH(HOOK_TYPE_SECTION, (
 #ifdef CONFIG_FINGERPRINT_SUBSYSTEM
 ITERABLE_SECTION_ROM(fingerprint_algorithm, 4)
 #endif
+
+ITERABLE_SECTION_ROM(state_cache_uint8_t_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint16_t_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint32_t_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint64_t_tag, 1)
+
+ITERABLE_SECTION_ROM(state_cache_uint8_t_ptr_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint16_t_ptr_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint32_t_ptr_tag, 1)
+ITERABLE_SECTION_ROM(state_cache_uint64_t_ptr_tag, 1)
