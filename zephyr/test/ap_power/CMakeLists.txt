@@ -16,11 +16,16 @@ target_sources(app PRIVATE src/ap_pwrseq.c src/console_command.c
 	       src/events.c src/hibdelay.c src/hibernate.c src/host_command.c
 	       src/test_mocks.c src/main.c)
 
-target_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_ADL app PRIVATE
-		     src/boards/alderlake.c src/signals.c)
+if (DEFINED CONFIG_TEST_AP_POWER_BROX)
+  target_sources(app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/brox/src/board_power.c)
+else()
+  # Generic architecture tests
+  target_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_ADL app PRIVATE
+          src/boards/alderlake.c src/signals.c)
 
-target_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_MTL app PRIVATE
-		     src/boards/meteorlake.c)
+  target_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_MTL app PRIVATE
+          src/boards/meteorlake.c)
+endif()
 
 target_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_CONSOLE app PRIVATE
 		     src/pwrseq_console.c)

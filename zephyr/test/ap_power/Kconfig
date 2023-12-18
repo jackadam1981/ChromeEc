@@ -2,4 +2,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+config TEST_AP_POWER_BROX
+	bool "Run the AP Power sequence tests against the Brox platform"
+	help
+	  Run the AP power sequence tests using the Brox devicetree
+	  configuration and the Brox board specific source files.
+
 source "Kconfig.zephyr"

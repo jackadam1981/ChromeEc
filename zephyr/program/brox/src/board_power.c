@@ -51,7 +51,7 @@ void board_ap_power_force_shutdown(void)
 
 void board_ap_power_action_g3_s5(void)
 {
-	LOG_DBG("Turning on EN_S5_RAILS");
+	LOG_INF("Turning on EN_S5_RAILS");
 	power_signal_set(PWR_EN_PP5000_A, 1);
 
 	update_ap_boot_time(ARAIL);
@@ -135,7 +135,27 @@ int board_power_signal_get(enum power_signal signal)
 	}
 }
 
+#ifndef CONFIG_ZTEST
 int board_power_signal_set(enum power_signal signal, int value)
 {
 	return -EINVAL;
 }
+#else
+/* The test harness needs to set these signals */
+int board_power_signal_set(enum power_signal signal, int value)
+{
+	switch (signal) {
+	default:
+		LOG_ERR("Unknown signal");
+		return -1;
+
+	case PWR_DSW_PWROK:
+		// signal_PWR_DSW_PWROK = value;
+		return 0;
+
+	case PWR_PG_PP1P05:
+		// signal_PWR_PG_PP1P05 = value;
+		return 0;
+	}
+}
+#endif

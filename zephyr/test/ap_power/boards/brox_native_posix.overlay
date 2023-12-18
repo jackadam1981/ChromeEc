@@ -1,0 +1,215 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <board-overlays/native_posix.dts>
+#include <dt-bindings/gpio_defines.h>
+#include "../../../program/brox/power_signals.dtsi"
+#include "alderlake_emul.dtsi"
+
+/ {
+	/* Instantiate GPIO emulators with nodelabels matching the ITE EC */
+	gpioa: gpio@101 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x101 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpiob: gpio@201 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x201 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpioc: gpio@301 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x301 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpiod: gpio@401 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x401 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpioe: gpio@501 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x501 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpiof: gpio@601 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x601 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpiog: gpio@701 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x701 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpioh: gpio@801 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x801 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpioi: gpio@901 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x901 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpioj: gpio@a01 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0xa01 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+
+	/* Create nodelabels matching the common alderlake emulator */
+	en_pp3300: pwr-en-s5-rails {
+	};
+	pwr_pg_vccin_aux_od: pwr-pg-vccin-aux-od {
+	};
+	rsmrst: pwr-pg-vccin-aux-od {
+	};
+	ec_pch_rsmrst: pwr-ec-pch-rsmrst-odl {
+	};
+	slp_s0: pwr-slp-s0-l {
+	};
+	slp_s3: pwr-slp-s3-l {
+	};
+	slp_s4: pwr-slp-s4-l {
+	};
+	slp_s5: pwr-slp-s5-l {
+	};
+	slp_sus: pwr-slp-sus-l {
+	};
+	dsw_pwrok: pwr-dsw-pwrok {
+	};
+	ec_soc_dsw_pwrok: pwr-ec-soc-dsw-pwrok {
+	};
+	pch_pwrok: pwr-pch-pwrok {
+	};
+	all_sys_pwrgd: pwr-all-sys-pwrgd {
+	};
+
+	/* TODO: add emulatoro to drive PWR_IMVP9_VRRDY */
+
+	/delete-node/ en-pp3300-emul;
+
+	en_pp3300_emul: en-pp3300-emul {
+		compatible = "intel,ap-pwr-signal-emul";
+		input-signal = <&en_pp3300>;
+		init-value = <0>;
+		pg-vccin-aux-od-emul {
+			output-signal = <&pwr_pg_vccin_aux_od>;
+			assert-delay-ms = <10>;
+			init-value= <0>;
+		};
+	};
+
+	/* Stub node - not referenced once all the devictrees merged. */
+	en_pp5000_emul: en-pp5000-emul {
+		compatible = "intel,ap-pwr-signal-emul";
+		input-signal = <&en_pp3300>;
+		init-value = <0>;
+		pp5000-rsmrst-emul {
+			output-signal = <&dsw_pwrok>;
+			assert-delay-ms = <40>;
+			init-value= <0>;
+		};
+	};
+
+
+	// tp-sys-g3-to-s0 {
+	// 	nodes = <&en_pp3300_emul &ec_soc_dsw_pwrok_emul &ec_pch_rsmrst_emul>;
+	// };
+
+	// tp-sys-g3-to-s0-power-down {
+	// 	nodes = <&en_pp3300_emul
+	// 		      &ec_soc_dsw_pwrok_emul &ec_pch_rsmrst_emul
+	// 		      &pch_pwrok_power_down_emul>;
+	// };
+	// tp-sys-s4-dsw-pwrok-fail {
+	// 	nodes = <&en_pp3300_emul &ec_soc_dsw_pwrok_emul
+	// 		     &ec_pch_rsmrst_s4_dsw_pwrok_fail_emul>;
+	// };
+
+	// tp-sys-s3-dsw-pwrok-fail {
+	// 	compatible = "intel,ap-pwr-test-platform";
+	// 	nodes = <&en_pp3300_emul &ec_soc_dsw_pwrok_emul
+	// 		     &ec_pch_rsmrst_s3_dsw_pwrok_fail_emul>;
+	// };
+
+	// tp-sys-s3-rsmrst-fail {
+	// 	compatible = "intel,ap-pwr-test-platform";
+	// 	nodes = <&en_pp3300_emul &ec_soc_dsw_pwrok_emul
+	// 		     &ec_pch_rsmrst_s3_rsmrst_deassert_emul>;
+	// };
+};
