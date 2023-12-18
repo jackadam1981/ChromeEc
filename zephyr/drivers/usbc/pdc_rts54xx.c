@@ -19,7 +19,7 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
-#define BYTE0(n) ((n)&0xff)
+#define BYTE0(n) ((n) & 0xff)
 #define BYTE1(n) (((n) >> 8) & 0xff)
 #define BYTE2(n) (((n) >> 16) & 0xff)
 #define BYTE3(n) (((n) >> 24) & 0xff)
@@ -674,13 +674,13 @@ static void st_read_run(void *o)
 		data->is_running_flash_code = data->rd_buf[1];
 
 		/* Realtek FW main version: Byte4, Byte5, Byte6 */
-		data->pdc_fw_version = data->rd_buf[4] << 16 |
-				       data->rd_buf[5] << 8 | data->rd_buf[6];
+		data->pdc_fw_version = data->rd_buf[6] << 16 |
+				       data->rd_buf[5] << 8 | data->rd_buf[4];
 
 		/* Realtek VID PID: Byte10, Byte11, Byte12, Byte13 */
-		data->pdc_vid_pid = data->rd_buf[10] << 24 |
-				    data->rd_buf[11] << 16 |
-				    data->rd_buf[12] << 8 | data->rd_buf[13];
+		data->pdc_vid_pid = data->rd_buf[11] << 24 |
+				    data->rd_buf[10] << 16 |
+				    data->rd_buf[13] << 8 | data->rd_buf[12];
 
 		/* Realtek Running flash bank offset: Byte15 */
 		data->pdc_running_flash_bank = data->rd_buf[15];
