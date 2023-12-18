@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9878c691_b4a3e127",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-18T17:45:20Z",
+      "side": 1,
+      "message": "The logic that checks the command type is hard to follow.  Can you redo these checks to query the `init_local_state` instead?\n\nMaybe setup the init states like:\n```\n\t/** Enable the PDC */\n\tINIT_PDC_ENABLE,\n\t/** Get the PDC IC Status */\n\tINIT_PDC_GET_IC_STATUS,\n\t/** Set the PDC Notifications */\n\tINIT_PDC_SET_NOTIFICATION_ENABLE,\n\t/** Reset the PDC */\n\tINIT_PDC_RESET,\n\t/** Initialization done */\n\tINIT_PDC_COMPLETE\n```\nThen when you\u0027re going to set the state, you can just do \n```\nif (data-\u003einit_local_state !\u003d INIT_PDC_COMPLETE)\n    set_state(ST_INIT);\nelse\n    set_state(ST_IDLE);\n```\n\n\n\nAlso, it\u0027s not clear why you are going back to `ST_INIT:INIT_PDC_ENABLE` after the reset completes.  The comment at line 457 indicates you should be transitioning to`ST_IDLE`.",
+      "range": {
+        "startLine": 485,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 42
+      },
+      "revId": "2023e1923ff50280dddea4473e6bac00405d8814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
