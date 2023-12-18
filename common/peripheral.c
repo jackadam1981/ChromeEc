@@ -46,6 +46,20 @@ static enum ec_status hc_locate_chip(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE; /* LCOV_EXCL_LINE */
 #endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
 		break;
+	case EC_CHIP_TYPE_PDC: {
+#if defined(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER)
+		if (params->index >= board_get_usb_pd_port_count())
+			return EC_RES_OVERFLOW;
+
+		resp->i2c_info.port = I2C_PORT_USB_C1_TCPC;
+		resp->i2c_info.addr_flags = 0x66;
+		resp->bus_type = EC_BUS_TYPE_I2C;
+
+		break;
+#else
+		return EC_RES_UNAVAILABLE;
+#endif /* CONFIG_PLATFORM_EC_USB_PD_CONTROLLER */
+	}
 	default:
 		/* The type was unrecognized */
 		return EC_RES_INVALID_PARAM;
