@@ -7,6 +7,7 @@
  * Realtek RTS545x Power Delivery Controller Driver
  */
 
+#include <assert.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
@@ -491,6 +492,9 @@ static void st_write_entry(void *o)
 
 	print_current_state(data);
 
+	/* This state can only be entered from the Init and Idle states */
+	assert(data->last_state == ST_INIT || data->last_state == ST_IDLE);
+
 	/* Clear I2C transaction retry counter */
 	data->i2c_transaction_retry_counter = 0;
 	/* Clear the Error Status */
@@ -545,6 +549,10 @@ static void st_ping_status_entry(void *o)
 
 	print_current_state(data);
 
+	/* This state can only be entered from the Write Status state */
+	assert(data->last_state == ST_WRITE);
+
+	/* Clear the Error Status */
 	/* Clear I2c Transaction Retry Counter */
 	data->i2c_transaction_retry_counter = 0;
 	/* Clear Ping Rety Counter */
@@ -702,6 +710,9 @@ static void st_read_entry(void *o)
 	const struct pdc_config_t *cfg = data->dev->config;
 
 	print_current_state(data);
+
+	/* This state can only be entered from the Ping Status state */
+	assert(data->last_state == ST_PING_STATUS);
 
 	/* Clear the Error Status */
 	data->error_status.raw_value = 0;
