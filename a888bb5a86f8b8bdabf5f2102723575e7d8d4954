@@ -52,6 +52,24 @@
       "parentUuid": "1178870a_03aa389e",
       "revId": "a888bb5a86f8b8bdabf5f2102723575e7d8d4954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22278c80_c89706cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2023-12-18T14:10:53Z",
+      "side": 1,
+      "message": "Any idea why this wasn\u0027t caught in the CQ? Maybe there is an ebuild with a missing dependency on protobuf?",
+      "parentUuid": "a8b48970_56c748d8",
+      "revId": "a888bb5a86f8b8bdabf5f2102723575e7d8d4954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
