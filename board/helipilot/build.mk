@@ -31,6 +31,7 @@ test-list-y=\
        always_memset \
        benchmark \
        boringssl_crypto \
+       cortexm_fpu \
        compile_time_macros \
        crc \
        debug \
