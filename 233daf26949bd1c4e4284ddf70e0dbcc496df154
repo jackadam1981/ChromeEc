@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b286fb9f_e76be35d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-18T17:52:30Z",
+      "side": 1,
+      "message": "You should add an instance to the thread name.\n`\"RTS54XX\" STRINGIFY(inst)`",
+      "range": {
+        "startLine": 1853,
+        "startChar": 35,
+        "endLine": 1853,
+        "endChar": 42
+      },
+      "revId": "233daf26949bd1c4e4284ddf70e0dbcc496df154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
