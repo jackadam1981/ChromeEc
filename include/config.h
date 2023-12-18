@@ -6522,6 +6522,9 @@
 /* Define for to turn off power LED in suspend for boards shipped after 2022 */
 #undef CONFIG_LED_PWM_OFF_IN_SUSPEND
 
+/* Define to enable the state cache store */
+#undef CONFIG_STATE_CACHE
+
 /*****************************************************************************/
 /*
  * Define derived configuration options for EC-EC communication
