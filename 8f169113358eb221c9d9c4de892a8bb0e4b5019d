@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a584cc_621299ad",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-18T17:23:13Z",
+      "side": 1,
+      "message": "does this mean to say \u0027was enabled at least once in the past\u0027?",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 81
+      },
+      "revId": "8f169113358eb221c9d9c4de892a8bb0e4b5019d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb0b8f0_397b0d8d",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-18T17:23:13Z",
+      "side": 1,
+      "message": "was never what?",
+      "range": {
+        "startLine": 85,
+        "startChar": 69,
+        "endLine": 85,
+        "endChar": 79
+      },
+      "revId": "8f169113358eb221c9d9c4de892a8bb0e4b5019d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd83f1dd_269279f4",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-18T17:23:13Z",
+      "side": 1,
+      "message": "this is ambiguous: was the capability in the `enabled` state when the verification was attempted, or does this message mean that the capablility was enabled in the past but not necessarily when AP RO verification was attempted?",
+      "range": {
+        "startLine": 114,
+        "startChar": 18,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "8f169113358eb221c9d9c4de892a8bb0e4b5019d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58865d5_13e45698",
+        "filename": "rust/explain_ap_ro_verification_status/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-18T17:23:13Z",
+      "side": 1,
+      "message": "I would rather say `\u0027AlloUnverifiedRo` was never enabled on this system`",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 80
+      },
+      "revId": "8f169113358eb221c9d9c4de892a8bb0e4b5019d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
