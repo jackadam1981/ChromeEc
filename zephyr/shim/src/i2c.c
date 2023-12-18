@@ -53,6 +53,16 @@ const struct device *i2c_get_device_for_port(const int port)
 	return i2c_devices[port];
 }
 
+enum i2c_ports i2c_get_port_from_device(const struct device *i2c_dev)
+{
+	for (int i = 0; i < I2C_PORT_COUNT; i++) {
+		if (i2c_devices[i] == i2c_dev) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 int i2c_get_port_from_remote_port(int remote_port)
 {
 	for (int port = 0; port < I2C_PORT_COUNT; port++) {

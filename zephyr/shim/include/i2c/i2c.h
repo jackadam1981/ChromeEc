@@ -202,6 +202,14 @@ enum i2c_ports {
 const struct device *i2c_get_device_for_port(const int port);
 
 /**
+ * @brief Get legacy I2C port enum from Zephyr device pointer
+ *
+ * @param i2c_dev Zephyr device struct pointer for the target I2C port
+ * @return i2c_ports enum if match is found, or -1 if not.
+*/
+enum i2c_ports i2c_get_port_from_device(const struct device *i2c_dev);
+
+/**
  * @brief Get a port number for a received remote port number.
  *
  * This function translate a received port number via the I2C_PASSTHRU host
