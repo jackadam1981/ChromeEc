@@ -22,6 +22,30 @@
       },
       "revId": "dccbe8b7d6886824e9a91320e3fff569932f0135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc65190f_f7e690ad",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-18T11:09:19Z",
+      "side": 1,
+      "message": "Answered in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4957149/comment/3e4a8532_0f1679fb/",
+      "parentUuid": "44a133e2_5ef2b6d1",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "dccbe8b7d6886824e9a91320e3fff569932f0135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
