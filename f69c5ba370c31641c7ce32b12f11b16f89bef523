@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcdea1b_c7f58fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-18T14:49:42Z",
+      "side": 1,
+      "message": "Deja vu Deja vu https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4938736 :-) this somehow breaks the expansion to array, was attempted and reverted already, need to figure a way of making this work without presubmit complaining",
+      "revId": "f69c5ba370c31641c7ce32b12f11b16f89bef523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
