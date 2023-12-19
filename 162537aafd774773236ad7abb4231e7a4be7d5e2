@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45faa5b_e87702da",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-19T19:04:31Z",
+      "side": 1,
+      "message": "nit: add the full stop back",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "162537aafd774773236ad7abb4231e7a4be7d5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944ceb62_edabe587",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-19T19:04:31Z",
+      "side": 1,
+      "message": "remove changes on this file",
+      "revId": "162537aafd774773236ad7abb4231e7a4be7d5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e68398_4f4299c2",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-19T19:04:31Z",
+      "side": 1,
+      "message": "enter",
+      "range": {
+        "startLine": 814,
+        "startChar": 23,
+        "endLine": 814,
+        "endChar": 28
+      },
+      "revId": "162537aafd774773236ad7abb4231e7a4be7d5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a072ebb5_1901bfb4",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-19T19:04:31Z",
+      "side": 1,
+      "message": "ENOSYS if unimplemented",
+      "revId": "162537aafd774773236ad7abb4231e7a4be7d5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
