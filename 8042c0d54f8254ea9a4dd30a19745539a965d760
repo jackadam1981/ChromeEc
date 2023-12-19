@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663726d3_3b3cd201",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:57:51Z",
+      "side": 1,
+      "message": "please show an example in the TEST\u003d clause",
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37977a4_0efb43bb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:57:51Z",
+      "side": 1,
+      "message": "this does not seem to be related to this patch, and changes the logic of the code, before only the `mt` field was intitialized, now the entire structure is.",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438002ca_193910a4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3320,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:57:51Z",
+      "side": 1,
+      "message": "Please rename this to `prev_index` or something like that.",
+      "range": {
+        "startLine": 3320,
+        "startChar": 9,
+        "endLine": 3320,
+        "endChar": 45
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab30dee_350a9769",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:57:51Z",
+      "side": 1,
+      "message": "why is this necessary, setting the value to `{}` is enough.",
+      "range": {
+        "startLine": 3334,
+        "startChar": 1,
+        "endLine": 3334,
+        "endChar": 22
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ca3b4a_6029b8d1",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3337,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:57:51Z",
+      "side": 1,
+      "message": "you are setting `ctype`, but `ch` has not been initialized yet.",
+      "range": {
+        "startLine": 3337,
+        "startChar": 18,
+        "endLine": 3337,
+        "endChar": 36
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babdabc8_719bf6e5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3348,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:57:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t these conditions be checked after `get_next_object()` was invoked? In this case you don\u0027t need to change the logic of this loop, and still can print the page crossing indicator before or after the object information is printed.",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3348,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
