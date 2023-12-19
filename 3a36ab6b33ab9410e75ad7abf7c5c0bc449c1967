@@ -22,6 +22,30 @@
       },
       "revId": "3a36ab6b33ab9410e75ad7abf7c5c0bc449c1967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e839243f_f332fee4",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-12-19T22:25:23Z",
+      "side": 0,
+      "message": "@herman.lin@emc.com.tw, I believe the only change that needs to occur here is to remove the changes to `common/fpsensor/*` and `include/fpsensor/*` files.\n\nLet me know if there is anything I can do to help!",
+      "parentUuid": "dd42072a_5cfd2a64",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "3a36ab6b33ab9410e75ad7abf7c5c0bc449c1967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
