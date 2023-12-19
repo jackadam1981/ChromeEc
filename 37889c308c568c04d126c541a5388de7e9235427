@@ -16,6 +16,23 @@
       "message": "LGTM, -1 Verify to wait for ODM approval",
       "revId": "37889c308c568c04d126c541a5388de7e9235427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9829db5_dd8a566f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-12-19T07:44:29Z",
+      "side": 1,
+      "message": "According to the b/295018479#comment39, thermal merber verified PASS.",
+      "revId": "37889c308c568c04d126c541a5388de7e9235427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
