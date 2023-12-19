@@ -70,6 +70,24 @@
       "parentUuid": "664a1141_3a00a8e8",
       "revId": "165f5bd6b086d8ad2882dadfa0e1828bd2143a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0feb62_0f73902a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T22:30:38Z",
+      "side": 1,
+      "message": "\u003e One interesting thing I found is that H1 reports it\u0027s version \n\u003e with uppercase hex characters and DT with lowercase and the\n\u003e compare is case sensitive.\n\nYes, this is unfortunate, serial nubers are considered case sensitive strings.\n\nI am still not clear about the tests. Do you run the same tests with both H1 and DT based devices?\n\nDo all these invocatoins succeed on both H1 and DT based devices?",
+      "parentUuid": "e9700d98_987ee6db",
+      "revId": "165f5bd6b086d8ad2882dadfa0e1828bd2143a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
