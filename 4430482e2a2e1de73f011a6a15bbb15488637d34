@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e679616f_159e431f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3187,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a5b4a2d_3d0651bd",
+      "range": {
+        "startLine": 3187,
+        "startChar": 20,
+        "endLine": 3187,
+        "endChar": 41
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9915ef26_23ce9d75",
@@ -262,6 +286,30 @@
       "side": 1,
       "message": "somehow multiple setvars filled the page in the way that compact recycled that page, but when I created a single deleted object spanning till the end - it moved this page as first despite having no live objects and calling compact again cleared it. So, some condition in compact needs to be checked.",
       "parentUuid": "57eeed8b_5e62c216",
+      "range": {
+        "startLine": 3201,
+        "startChar": 3,
+        "endLine": 3201,
+        "endChar": 38
+      },
+      "revId": "4430482e2a2e1de73f011a6a15bbb15488637d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d08fc28_66646eff",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3bc1b5c_f3dc5fbd",
       "range": {
         "startLine": 3201,
         "startChar": 3,

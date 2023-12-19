@@ -46,6 +46,30 @@
       },
       "revId": "3d82e25dfd3c83663a9905c58bd9b3b41b54f709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd74105_da4c9514",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3286,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T04:03:51Z",
+      "side": 1,
+      "message": "I found what happened - if I had many deleted objects I can get into the state where get_next_object() skipped many pages till last not-deleted/delimeter and I have to release page several times, but if I only got a single object like that - i\u0027d miss deleting pages. When you created/deleted vars - you created many delimeters, so never hit this. I started to create a single deleted object + delimeter and got that.",
+      "parentUuid": "48df7d33_10c22048",
+      "range": {
+        "startLine": 3286,
+        "startChar": 16,
+        "endLine": 3286,
+        "endChar": 31
+      },
+      "revId": "3d82e25dfd3c83663a9905c58bd9b3b41b54f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
