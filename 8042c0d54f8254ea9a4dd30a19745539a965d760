@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6002078e_e39febc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T19:33:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663726d3_3b3cd201",
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c37977a4_0efb43bb",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a847d92_7692bddb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T19:33:04Z",
+      "side": 1,
+      "message": "I leave this function as it is a useful thing to be used in other occasions as it allows to deduplicate memset() called through code like `struct access_tracker at \u003d {};`.  I\u0027ll switch some other places to use it. \n\nmemset in nvmem_read_bytes() which happens is ok due to specifics of use. but it is worth a separate CL.",
+      "parentUuid": "c37977a4_0efb43bb",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "438002ca_193910a4",
         "filename": "common/new_nvmem.c",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2023-12-19T18:57:51Z",
       "side": 1,
       "message": "Please rename this to `prev_index` or something like that.",
+      "range": {
+        "startLine": 3320,
+        "startChar": 9,
+        "endLine": 3320,
+        "endChar": 45
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62760781_770a16d2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3320,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T19:33:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "438002ca_193910a4",
       "range": {
         "startLine": 3320,
         "startChar": 9,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5150152b_47572897",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T19:33:04Z",
+      "side": 1,
+      "message": "not exactly. I want to print wherever first object is just after the header or there is a remaining of some over object (data_offset !\u003d 8).\n\nInitially I have at.list_index \u003d 0, at.mt.data_offset \u003d 0 before get_next_object() and something like at.list_index \u003d 0 or 1, at.mt.data_offset \u003d ph-\u003edata_offset + object size mod page_size, so I will not be able to check where I was before object.\n\nIn the first version I started to print page boundary after the object, but with this I miss useful hint where the first object started.",
+      "parentUuid": "eab30dee_350a9769",
+      "range": {
+        "startLine": 3334,
+        "startChar": 1,
+        "endLine": 3334,
+        "endChar": 22
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5ca3b4a_6029b8d1",
         "filename": "common/new_nvmem.c",
         "patchSetId": 3
@@ -100,6 +190,30 @@
       "writtenOn": "2023-12-19T18:57:51Z",
       "side": 1,
       "message": "you are setting `ctype`, but `ch` has not been initialized yet.",
+      "range": {
+        "startLine": 3337,
+        "startChar": 18,
+        "endLine": 3337,
+        "endChar": 36
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e34e08d_491df27b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3337,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T19:33:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5ca3b4a_6029b8d1",
       "range": {
         "startLine": 3337,
         "startChar": 18,
@@ -123,6 +237,30 @@
       "writtenOn": "2023-12-19T18:57:51Z",
       "side": 1,
       "message": "shouldn\u0027t these conditions be checked after `get_next_object()` was invoked? In this case you don\u0027t need to change the logic of this loop, and still can print the page crossing indicator before or after the object information is printed.",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3348,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7402d26_59a9bd2e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3348,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T19:33:04Z",
+      "side": 1,
+      "message": "see above - after get_next_object() I\u0027d miss what happened on the first object.",
+      "parentUuid": "babdabc8_719bf6e5",
       "range": {
         "startLine": 3341,
         "startChar": 0,
