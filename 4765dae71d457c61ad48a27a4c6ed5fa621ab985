@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae17116_b204b0e2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3272,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-12-19T21:19:38Z",
+      "side": 1,
+      "message": "nit: can we do something more readable here? like\n```\n{\n    int init_rv \u003d new_nvmem_init();\n    if (rc \u003d\u003d EC_SUCCESS) rv \u003d init_rv;\n}\n```\n(may need to define init_rv at the top to satisfy linter)",
+      "range": {
+        "startLine": 3268,
+        "startChar": 1,
+        "endLine": 3272,
+        "endChar": 19
+      },
+      "revId": "4765dae71d457c61ad48a27a4c6ed5fa621ab985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
