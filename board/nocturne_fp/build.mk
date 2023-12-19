@@ -66,6 +66,7 @@ test-list-y=\
        static_if \
        stdlib \
        std_vector \
+       stm32f_rtc \
        system_is_locked \
        timer \
        timer_dos \
