@@ -19,7 +19,7 @@
 #if !defined(CONFIG_TASK_HOSTCMD_THREAD_MAIN) || \
 	defined(CONFIG_EC_HOST_CMD_DEDICATED_THREAD)
 BUILD_ASSERT(0, "The upstream Host Command subsystem is supported only with "
-		"reusing the main thread.");
+		"reusing the main thread");
 #endif
 #else
 #if (defined(CONFIG_TASK_HOSTCMD_THREAD_DEDICATED) &&  \
