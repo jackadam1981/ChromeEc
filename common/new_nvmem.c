@@ -556,6 +556,14 @@ test_export_static struct nn_page_header *list_element_to_ph(size_t el)
 	return NULL;
 }
 
+static void init_access_tracker(struct access_tracker *at)
+{
+	memset(at, 0, sizeof(*at));
+	/* Set to first page in the list */
+	at->mt.ph = list_element_to_ph(0);
+	at->mt.data_offset = at->mt.ph->data_offset;
+}
+
 /*
  * Read into buf or skip if buf is NULL the next num_bytes in the storage, at
  * the location determined by the passed in access tracker. Start from the
@@ -578,11 +586,9 @@ static enum ec_error_list nvmem_read_bytes(struct access_tracker *at,
 	size_t togo;
 	struct nvmem_failure_payload fp;
 
-	if (!at->list_index && !at->mt.data_offset) {
+	if (!at->list_index && !at->mt.data_offset)
 		/* Start from the beginning. */
-		at->mt.ph = list_element_to_ph(0);
-		at->mt.data_offset = at->mt.ph->data_offset;
-	}
+		init_access_tracker(at);
 
 	if (container_fetch) {
 		at->ct.data_offset = at->mt.data_offset;
@@ -3303,7 +3309,7 @@ enum ec_error_list nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 }
 
 /*
- * Function which verifes flash contents integrity (and printing objects it
+ * Function which verifies flash contents integrity (and printing objects it
  * finds, if requested by the caller). All objects' active and deleted alike
  * integrity is verified by get_next_object().
  */
@@ -3311,10 +3317,11 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 {
 	int active = 0;
 	int count = 0;
+	uint8_t page = 255; /* non-existent page. */
 	enum ec_error_list rv = EC_SUCCESS;
 	size_t line_len = 0;
 	struct nn_container *ch;
-	struct access_tracker at = {};
+	struct access_tracker at;
 
 	if (!crypto_enabled()) {
 		ccprintf("Crypto services not available\n");
@@ -3324,9 +3331,26 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
 	lock_mutex(__LINE__);
 
-	while ((rv = get_next_object(&at, ch, true)) == EC_SUCCESS) {
-		uint8_t ctype = ch->container_type;
+	init_access_tracker(&at);
 
+	while (true) {
+		uint8_t ctype = ch->container_type;
+		char page_delimeter = ' ';
+
+		/* Detect crossing the page before object. */
+		if (print && page != at.list_index) {
+			page = at.list_index;
+			page_delimeter = '|';
+			/* Check if object spans on two pages. */
+			if (at.mt.data_offset != sizeof(*at.mt.ph))
+				page_delimeter = '%';
+		}
+
+		rv = get_next_object(&at, ch, true);
+		if (rv != EC_SUCCESS)
+			break;
+
+		ctype = ch->container_type;
 		count++;
 
 		if ((ctype != NN_OBJ_OLD_COPY) &&
@@ -3341,8 +3365,9 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 			else
 				erased = ' ';
 
+			ccprintf("%c%c", page_delimeter, erased);
 			if (ch->container_type_copy == NN_OBJ_TPM_RESERVED) {
-				ccprintf("%cR:%02x[%03x].%u  ", erased,
+				ccprintf("R:%02x[%03x].%u ",
 					 *((uint8_t *)(ch + 1)), ch->size - 1,
 					 ch->generation);
 			} else {
@@ -3372,7 +3397,7 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 					memcpy(&index, ch + 1, sizeof(index));
 				else
 					index = 0;
-				ccprintf("%c%c:%08x.%d ", erased, tag, index,
+				ccprintf("%c:%08x.%d", tag, index,
 					 ch->generation);
 			}
 			if (print > 1) {
