@@ -16,6 +16,24 @@
       "message": "Should this adjustment be reflected in the device tree?",
       "revId": "ca54913488644f28b653766d88d073e0600d7530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b4e7f9_ac92fd4c",
+        "filename": "zephyr/program/skyrim/frostflow/src/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-19T22:41:00Z",
+      "side": 0,
+      "message": "It\u0027s already the binding default: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/dts/bindings/keyboard/cros-ec,keyscan.yaml;l\u003d12?q\u003dcros-ec,keyscan",
+      "parentUuid": "931cdc40_c7064b6a",
+      "revId": "ca54913488644f28b653766d88d073e0600d7530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
