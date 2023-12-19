@@ -8,13 +8,14 @@
 #ifndef __CROS_EC_CLOCK_CHIP_H
 #define __CROS_EC_CLOCK_CHIP_H
 
+
 /*
  * EC clock tree plan: (Default OSC_CLK is 40MHz.)
  *
  * Target OSC_CLK for NPCX7 is 90MHz, FMCLK is 45MHz, CPU and APBs is 15MHz.
  * Target OSC_CLK for NPCX5 is 30MHz, FMCLK is 30MHz, CPU and APBs is 15MHz.
  */
-#if defined(CHIP_FAMILY_NPCX5)
+#if defined(CHIP_FAMILY_NPCX9)
 /*
  * NPCX5 clock tree: (Please refer Figure 55. for more information.)
  *
@@ -155,11 +156,7 @@
 #error "Unsupported OSC_CLK Frequency"
 #endif
 
-#if defined(CHIP_FAMILY_NPCX5)
-#if (OSC_CLK > 50000000)
-#error "Unsupported OSC_CLK on NPCX5 series!"
-#endif
-#elif NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
+#if defined(CHIP_FAMILY_NPCX9)
 #if (OSC_CLK > 100000000)
 #error "Unsupported OSC_CLK on NPCX series!"
 #endif

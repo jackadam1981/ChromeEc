@@ -24,6 +24,11 @@
 #include "util.h"
 #include "watchdog.h"
 
+#define APB4DIV 5
+#define APB3DIV 5
+#define AHB6DIV 0
+#define FIUDIV 0
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ##args)
@@ -117,18 +122,10 @@ void clock_init(void)
 	}
 
 	/* Set all clock prescalers of core and peripherals. */
-#if defined(CHIP_FAMILY_NPCX5)
-	NPCX_HFCGP = (FPRED << 4);
-	NPCX_HFCBCD = (NPCX_HFCBCD & 0xF0) | (APB1DIV | (APB2DIV << 2));
-#elif NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
-	NPCX_HFCGP = ((FPRED << 4) | AHB6DIV);
-	NPCX_HFCBCD = (FIUDIV << 4);
-	NPCX_HFCBCD1 = (APB1DIV | (APB2DIV << 4));
-#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+#if defined(CHIP_FAMILY_NPCX9)
 	NPCX_HFCBCD2 = (APB3DIV | (APB4DIV << 4));
 #else
 	NPCX_HFCBCD2 = APB3DIV;
-#endif
 #endif
 
 	/* Notify modules of frequency change */

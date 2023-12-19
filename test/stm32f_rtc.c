@@ -6,6 +6,8 @@
 #include "clock_chip.h"
 #include "test_util.h"
 
+#define SET_RTC_MATCH_DELAY 200 /* us */
+
 static uint32_t rtc_fired;
 static struct rtc_time_reg rtc_irq;
 static const int rtc_delay_ms = 500;
