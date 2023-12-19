@@ -3,8 +3,26 @@
  * found in the LICENSE file.
  */
 
+#include "atomic.h"
 #include "clock_chip.h"
 #include "test_util.h"
+#include "timer.h"
+
+#define SET_RTC_MATCH_DELAY 200 /* us */
+struct rtc_time_reg {
+	uint32_t rtc_ssr; /* subseconds */
+	uint32_t rtc_tr; /* hours, minutes, seconds */
+	uint32_t rtc_dr; /* years, months, dates, week days */
+};
+
+void reset_rtc_alarm(struct rtc_time_reg *rtc);
+
+void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
+		   struct rtc_time_reg *rtc, uint8_t save_alarm);
+
+uint32_t get_rtc_diff(const struct rtc_time_reg *rtc0,
+		      const struct rtc_time_reg *rtc1);
+
 
 static uint32_t rtc_fired;
 static struct rtc_time_reg rtc_irq;
