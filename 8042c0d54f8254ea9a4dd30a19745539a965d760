@@ -227,6 +227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "720a1ae2_b42ea126",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T22:12:16Z",
+      "side": 1,
+      "message": "yes, because I need this before first invocation of get_next_object. not sure how to address it. the issue is that get_next_object() moves to next object, and for the first object I can\u0027t figure out where it starts.",
+      "parentUuid": "0a479615_560f486d",
+      "range": {
+        "startLine": 3334,
+        "startChar": 1,
+        "endLine": 3334,
+        "endChar": 22
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5ca3b4a_6029b8d1",
         "filename": "common/new_nvmem.c",
         "patchSetId": 3
@@ -333,6 +357,30 @@
       "side": 1,
       "message": "This does not seem a valid reason to change the logic, will this not work:\n\n```\nwhile(get_next_object()) {\n  if (page_index !\u003d at.list_index) {\n     // Either page boundary was crossed, or this is the first object in the list.\n     page_index \u003d at..list_index;\n     if at.mt.data_offset \u003c  (sizeof(*at.mt.ph)) + object_size) {\n       // the object spaned page boundary.\n       ...\n     }\n  }\n\n  // here you can print the page corssing indicator before printing the object contents.\n\n}\n```\n\nBasically, no need to change the logic, just figure out and print the indicator.",
       "parentUuid": "f7402d26_59a9bd2e",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3348,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2bc464_69171fd7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3348,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-19T22:12:16Z",
+      "side": 1,
+      "message": "page delimiter is determined before before get_next_object(). doing that would require to copy same code before the loop.",
+      "parentUuid": "41149643_6ae1373f",
       "range": {
         "startLine": 3341,
         "startChar": 0,
