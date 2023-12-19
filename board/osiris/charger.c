@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "driver/charger/isl9241.h"
+#include "hooks.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"

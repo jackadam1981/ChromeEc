@@ -135,6 +135,9 @@
 
 #define ISL9241_REG_CONTROL4 0x4E
 /* ISL9241 only */
+/* 9: way overcurrent detection (0 - enable, 1 - disable) */
+#define ISL9241_CONTROL4_WOCP BIT(9)
+
 #define ISL9241_CONTROL4_FORCE_BUCK_MODE BIT(10)
 /* 11: Rsense (Rs1:Rs2) ratio for PSYS (0 - 2:1, 1 - 1:1) */
 #define ISL9241_CONTROL4_PSYS_RSENSE_RATIO BIT(11)
