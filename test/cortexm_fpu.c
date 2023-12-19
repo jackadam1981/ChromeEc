@@ -13,6 +13,13 @@
 static volatile uint32_t fpscr;
 static volatile bool fpu_irq_handled;
 
+inline void clear_fpscr(void)
+{
+	uint32_t val = 0;
+
+	asm volatile("vmsr fpscr, %0" : : "r"(val));
+}
+
 /* Override default FPU interrupt handler. */
 void __keep fpu_irq(uint32_t excep_lr, uint32_t excep_sp)
 {
@@ -48,8 +55,9 @@ test_static int test_cortexm_fpu_underflow(void)
 {
 	float result;
 
-	fpscr = 0;
 	fpu_irq_handled = false;
+
+	clear_fpscr();
 
 	result = divf(1.40130e-45f, 2.0f);
 
@@ -80,8 +88,9 @@ test_static int test_cortexm_fpu_overflow(void)
 {
 	float result;
 
-	fpscr = 0;
 	fpu_irq_handled = false;
+
+	clear_fpscr();
 
 	result = divf(3.40282e38f, 0.5f);
 
@@ -109,8 +118,9 @@ test_static int test_cortexm_fpu_division_by_zero(void)
 {
 	float result;
 
-	fpscr = 0;
 	fpu_irq_handled = false;
+
+	clear_fpscr();
 
 	result = divf(1.0f, 0.0f);
 
@@ -138,8 +148,9 @@ test_static int test_cortexm_fpu_invalid_operation(void)
 {
 	float result;
 
-	fpscr = 0;
 	fpu_irq_handled = false;
+
+	clear_fpscr();
 
 	result = sqrtf(-1.0f);
 
@@ -167,8 +178,9 @@ test_static int test_cortexm_fpu_inexact(void)
 {
 	float result;
 
-	fpscr = 0;
 	fpu_irq_handled = false;
+
+	clear_fpscr();
 
 	result = divf(2.0f, 3.0f);
 
