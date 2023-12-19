@@ -34,6 +34,24 @@
       "parentUuid": "63d77517_004ebcb0",
       "revId": "165f5bd6b086d8ad2882dadfa0e1828bd2143a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664a1141_3a00a8e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T18:22:25Z",
+      "side": 1,
+      "message": "right, `usb_if.c::check_device()` will check for partial match, it would be good to explain this in the patch description.\n\nAnd as aready mentioned, it is not clear what the tests demosntrate, what is the setup (is it run vs H1 or DT and what difference this patch makes wrt test resutl, if any)",
+      "parentUuid": "46b7dc35_514398e2",
+      "revId": "165f5bd6b086d8ad2882dadfa0e1828bd2143a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
