@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff98af09_62161b48",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3266,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-12-19T18:28:54Z",
+      "side": 1,
+      "message": "is it a debug printout that sneaked into the CL or we need it for something?",
+      "range": {
+        "startLine": 3266,
+        "startChar": 1,
+        "endLine": 3266,
+        "endChar": 22
+      },
+      "revId": "5b0da837119065015ca1eef409b746432092ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
