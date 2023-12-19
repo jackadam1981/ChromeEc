@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef850b1a_3a8544b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-19T17:05:13Z",
+      "side": 1,
+      "message": "I\u0027d recommend breaking this CL into very small chunks to simplify the review and avoid the potential for breaking tests. It would look something like this:\n1. add `clear_fpscr` function and call it for all tests for STM32 targets\n2. add `read_fpscr` using the suggestions below for all existing tests for STM32 targets\n3. update `read_fpscr` and `run_device_tests.py` to add helipilot support",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "6600bf73b1be198a0908a68899da656ff39dd48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5963c2_8203201f",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-19T17:05:13Z",
+      "side": 1,
+      "message": "For now it\u0027s probably best to leave the STM32H7 implementation as it was (trigger the IRQ task directly) and just add a case for helipilot. \n\nAlthough, since this logic is copied all over the place it\u0027s probably worth moving this logic into a single place. It should work if you rewrite `read_fpscr` to work for all cases, like this: \n\n```suggestion\ninline uint32_t read_fpscr(void)\n{\n\tif (IS_ENABLED(CHIP_FAMILY_STM32H7))\n\t\ttask_trigger_irq(STM32_IRQ_FPU);\n\telse if IS_ENABLED(CHIP_FAMILY_NPCX9)) {\n\t\tfpscr \u003d read_fpscr();\n\t\tfpu_irq_handled \u003d true;\n\t} else {\n\t        /* Assume fpu_irq will be called by interrupt */\n\t}\n\t\n\t/* Wait for asynchronous FPU interrupt. */\n\twhile (!fpu_irq_handled) {\n\t}\n}\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "6600bf73b1be198a0908a68899da656ff39dd48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
