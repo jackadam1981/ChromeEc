@@ -3311,6 +3311,7 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 {
 	int active = 0;
 	int count = 0;
+	uint8_t page = 0;
 	enum ec_error_list rv = EC_SUCCESS;
 	size_t line_len = 0;
 	struct nn_container *ch;
@@ -3335,16 +3336,25 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 
 		if (print) {
 			char erased;
+			char page_delimeter = ' ';
 
+			/* Detect crossing the page */
+			if (page != at.list_index) {
+				page = at.list_index;
+				page_delimeter = '|';
+				/* Check if object spans on two pages. */
+				if (at.mt.data_offset != sizeof(*at.mt.ph))
+					page_delimeter = '%';
+			}
 			if (ctype == NN_OBJ_OLD_COPY)
 				erased = 'x';
 			else
 				erased = ' ';
 
 			if (ch->container_type_copy == NN_OBJ_TPM_RESERVED) {
-				ccprintf("%cR:%02x[%03x].%u  ", erased,
+				ccprintf("%cR:%02x[%03x].%u %c", erased,
 					 *((uint8_t *)(ch + 1)), ch->size - 1,
-					 ch->generation);
+					 ch->generation, page_delimeter);
 			} else {
 				uint32_t index;
 				char tag;
@@ -3372,8 +3382,8 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 					memcpy(&index, ch + 1, sizeof(index));
 				else
 					index = 0;
-				ccprintf("%c%c:%08x.%d ", erased, tag, index,
-					 ch->generation);
+				ccprintf("%c%c:%08x.%d%c", erased, tag, index,
+					 ch->generation, page_delimeter);
 			}
 			if (print > 1) {
 				dump_contents(ch);
