@@ -160,19 +160,21 @@ void init_battery_type(void)
 
 	if (type == BATTERY_TYPE_COUNT) {
 		BCFGPRT("Config not found");
-		type = board_get_default_battery_type();
 	}
-	BCFGPRT("Found config #%d", type);
-
-	battery_conf = &board_battery_info[type];
 }
 
 const struct batt_conf_embed *get_batt_conf(void)
 {
+	int type = get_battery_type();
+
 	if (IS_ENABLED(TEST_BUILD) && battery_fuel_gauge_type_override >= 0)
 		return &board_battery_info[battery_fuel_gauge_type_override];
 
-	return battery_conf;
+	if (type == BATTERY_TYPE_COUNT) {
+		type = board_get_default_battery_type();
+	}
+
+	return battery_conf = &board_battery_info[type];
 }
 
 const struct board_batt_params *get_batt_params(void)
