@@ -22,6 +22,30 @@
       },
       "revId": "7b3eba953d82e95b8d7d0c8eb9737426c239cb04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e921fe_a48d30f3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-19T23:58:43Z",
+      "side": 1,
+      "message": "This needs to be modified (i.e. dynamic_r \u003d \u0026d at line 8174).",
+      "parentUuid": "14a227a9_098dc998",
+      "range": {
+        "startLine": 8159,
+        "startChar": 1,
+        "endLine": 8159,
+        "endChar": 7
+      },
+      "revId": "7b3eba953d82e95b8d7d0c8eb9737426c239cb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
