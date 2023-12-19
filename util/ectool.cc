@@ -8212,7 +8212,9 @@ static int get_battery_command_print_info(
 	printf("  Present voltage         %u mV\n", dynamic_r.actual_voltage);
 
 	/* current can be negative */
-	printf("  Present current         %d mA\n", dynamic_r.actual_current);
+	printf("  Present current         %d mA%s\n", dynamic_r.actual_current,
+	       dynamic_r.flags & EC_BATT_FLAG_DISCHARGING ?
+	       " (discharging)" : "");
 
 	if (!is_battery_range(dynamic_r.remaining_capacity))
 		goto cmd_error;
