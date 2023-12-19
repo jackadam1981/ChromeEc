@@ -32,6 +32,19 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	 * should already be set correctly in the PPC driver via the pd
 	 * state machine.
 	 */
+		/* Vconn control is only for port 0 */
+		
+	if (port)
+		return;
+	CPRINTSUSB("board_pd_vconn_ctrl");
+	if (cc_pin == USBPD_CC_PIN_1)
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_cc1_vconn),
+			!!enabled);
+	else
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_cc2_vconn),
+			!!enabled);
 }
 
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_C1, USBC_PORT_COUNT };
