@@ -160,19 +160,7 @@ void init_battery_type(void)
 
 	if (type == BATTERY_TYPE_COUNT) {
 		BCFGPRT("Config not found");
-		type = board_get_default_battery_type();
 	}
-	BCFGPRT("Found config #%d", type);
-
-	battery_conf = &board_battery_info[type];
-}
-
-const struct batt_conf_embed *get_batt_conf(void)
-{
-	if (IS_ENABLED(TEST_BUILD) && battery_fuel_gauge_type_override >= 0)
-		return &board_battery_info[battery_fuel_gauge_type_override];
-
-	return battery_conf;
 }
 
 const struct board_batt_params *get_batt_params(void)
@@ -190,6 +178,7 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	char manuf[SBS_MAX_STR_OBJ_SIZE];
 	char device[SBS_MAX_STR_OBJ_SIZE];
 	int tag = CBI_TAG_BATTERY_CONFIG;
+	static int battery_conf_found;
 
 	if (battery_manufacturer_name(manuf, sizeof(manuf))) {
 		BCFGPRT("Manuf not found");
@@ -212,6 +201,13 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 		struct batt_conf_header *head;
 		char *m, *d;
 		int rv;
+
+		/*
+		 * If battery configuration is found, we don't need to query
+		 * battery gauge again.
+		 */
+		if (battery_conf_found)
+			return EC_SUCCESS;
 
 		rv = cbi_get_board_info(tag, buf, &size);
 		if (rv) {
@@ -264,9 +260,31 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 		strncpy(batt->device_name, d, head->device_name_size);
 		p += head->device_name_size;
 		memcpy(&batt->config, p, sizeof(batt->config));
+		battery_conf_found = 1;
 
 		return EC_SUCCESS;
 	}
+}
+
+const struct batt_conf_embed *get_batt_conf(void)
+{
+	int type = get_battery_type();
+
+	if (IS_ENABLED(CONFIG_BATTERY_CONFIG_IN_CBI) &&
+	    board_batt_conf_enabled()) {
+		if (bcfg_search_in_cbi(&default_battery_conf) == EC_SUCCESS) {
+			return battery_conf = &default_battery_conf;
+		}
+	}
+
+	if (IS_ENABLED(TEST_BUILD) && battery_fuel_gauge_type_override >= 0)
+		return &board_battery_info[battery_fuel_gauge_type_override];
+
+	if (type == BATTERY_TYPE_COUNT) {
+		type = board_get_default_battery_type();
+	}
+
+	return battery_conf = &board_battery_info[type];
 }
 
 __overridable bool board_batt_conf_enabled(void)
