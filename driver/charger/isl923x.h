@@ -382,4 +382,9 @@ enum isl9237_fsm_state {
 #define ISL923X_AC_PROCHOT_CURRENT_MAX 6400 /* mA */
 #define ISL923X_DC_PROCHOT_CURRENT_MAX 12800 /* mA */
 
+/**
+ * Board specific callback to modify the trickle_charge_current
+ */
+__override_proto int board_get_trickle_charge_current(void);
+
 #endif /* __CROS_EC_ISL923X_H */

@@ -629,6 +629,11 @@ int isl923x_set_comparator_inversion(int chgnum, int invert)
 	return rv;
 }
 
+__overridable int board_get_trickle_charge_current(void)
+{
+	return CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT;
+}
+
 static void isl923x_init(int chgnum)
 {
 	int reg;
@@ -796,8 +801,7 @@ static void isl923x_init(int chgnum)
 			goto init_fail;
 		/* Set trickle charge current bits. */
 		reg &= ~GENMASK(13, 15);
-		reg |= ((CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT - 32) / 32)
-		       << 13;
+		reg |= ((board_get_trickle_charge_current() - 32) / 32) << 13;
 		if (raw_write16(chgnum, ISL923X_REG_CONTROL2, reg))
 			goto init_fail;
 	}
