@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da9fac2_6c911fff",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-19T22:34:33Z",
+      "side": 0,
+      "message": "@bobbycasey@google.com it does not seem it recognizes which `NPCX_FAMILY_VERSION` is currently running on the `helipilot`. Where is this comparison executed `NPCX_FAMILY_VERSION \u003e\u003d NPCX_FAMILY_NPCX7`?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 44
+      },
+      "revId": "5f63f21c41eb5d11c41607a1c70d05cdb7685ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a42ae6_d494b523",
+        "filename": "chip/npcx/clock_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-19T22:34:33Z",
+      "side": 0,
+      "message": "@bobbycasey@google.com again, I do not believe that this comparison is executed properly `NPCX_FAMILY_VERSION \u003e\u003d NPCX_FAMILY_NPCX7`",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 46
+      },
+      "revId": "5f63f21c41eb5d11c41607a1c70d05cdb7685ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

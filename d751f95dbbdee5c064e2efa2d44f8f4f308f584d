@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9d01ce_eaf7d9ca",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-19T22:34:33Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com I am not sure why I had to redefine those variable again here. When I hover the mouse above the location where they are used, the values are clear.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "d751f95dbbdee5c064e2efa2d44f8f4f308f584d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c30b956_068d961d",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-19T22:34:33Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com it looks that this variable is defined in `chip/stm32/config-stm32f4.h`. Not sure how this file gets included when we run the test for `bloonchipper` and not `dartmonkey`? Not sure which config file to include for `dartmonkey` or `nxcp9`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "d751f95dbbdee5c064e2efa2d44f8f4f308f584d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19816f80_2585a8e9",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-19T22:34:33Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com\n\n`set_rtc_alarm`, `get_rtc_diff`, and `reset_rtc_alarm` are defined in `clock-f.c`, which is only included for the `bloonchipper` build. They are not included for `dartmonkey`.\n\nFor `helipilot`, there are additional issues:\n\nThe `rtc_time_reg` struct is defined `clock_chip`. However, this might be a different header with different relative path for `npcx`\n```\ntest/stm32f_rtc.c:12:15: note: forward declaration of \u0027struct rtc_time_reg\u0027\n   12 | static struct rtc_time_reg rtc_irq;\n```\n\nThe below error can be resolved for `helipilot` by including `timer.h`. I am not sure if there is some circular inclusion for `bloonchipper`\n```\ntest/stm32f_rtc.c:19:33: error: use of undeclared identifier \u0027MSEC\u0027\n   19 | static const int delay_tol_us \u003d MSEC / 2;\n```\n\nthe below error can be resolved by including `atomic.h`. Not sure why this was not an issue for `bloonchipper` or `dartmonkey`\n```\ntest/stm32f_rtc.c:26:2: error: call to undeclared function \u0027atomic_add\u0027; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n   26 |         atomic_add(\u0026rtc_fired, 1);\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "d751f95dbbdee5c064e2efa2d44f8f4f308f584d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
