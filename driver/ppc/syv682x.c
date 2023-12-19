@@ -543,6 +543,7 @@ static int syv682x_set_vconn(int port, int enable)
 	int regval;
 	int rv;
 
+	cprints(0, "#####%s %d",__func__, port);
 	rv = read_reg(port, SYV682X_CONTROL_4_REG, &regval);
 	if (rv)
 		return rv;
@@ -746,7 +747,7 @@ static int syv682x_init(int port)
 	 */
 	if (syv682x_is_vconn_controlled_by_tcpc(port)) {
 		CPRINTS("ERROR! Vconn MUST NOT be controlled by TCPC");
-		return EC_ERROR_INVALID_CONFIG;
+		//return EC_ERROR_INVALID_CONFIG;
 	}
 
 	rv = read_reg(port, SYV682X_STATUS_REG, &status);

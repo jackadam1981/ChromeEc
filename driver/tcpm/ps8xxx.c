@@ -1010,6 +1010,7 @@ static int ps8xxx_tcpm_set_vconn(int port, int enable)
 	 * This may be a PS8XXX firmware issue, Parade is still trying.
 	 * https://partnerissuetracker.corp.google.com/issues/185202064
 	 */
+	cprints(0, "#####%s",__func__);
 	if (!enable)
 		msleep(PS8XXX_VCONN_TURN_OFF_DELAY_US);
 
