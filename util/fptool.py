@@ -31,6 +31,18 @@ def run(cmd: List[str]) -> int:
     return p.returncode
 
 
+def remote_run(host: str, port: int, remote_cmd: List[str]) -> int:
+    """Run a command on a remote machine using ssh."""
+    cmd = ["ssh", f"-p{port}", host, "--"] + remote_cmd
+    return run(cmd)
+
+
+def scp_file(host: str, port: int, src: pathlib.Path, dst: pathlib.Path) -> int:
+    """Copy one file to remote host over scp."""
+    scp_cmd = ["scp", f"-P{port}", src, f"{host}:{dst}"]
+    return run(scp_cmd)
+
+
 def cmd_flash(opts: argparse.Namespace) -> int:
     """Flash the entire firmware FPMCU using the native bootloader.
 
@@ -67,6 +79,41 @@ def cmd_flash(opts: argparse.Namespace) -> int:
     return run(cmd)
 
 
+def cmd_remote_flash(opts: argparse.Namespace) -> int:
+    """Remotely flash the entire firmware FPMCU using the native bootloader.
+
+    This requires the Chromebook to be in dev mode with hardware write protect
+    disabled.
+    """
+
+    REMOTE_TMP_IMG = pathlib.Path("/tmp/fpmcu-fw.bin")
+
+    host: str = opts.host
+    port: int = opts.port
+    image: Optional[pathlib.Path] = opts.image
+
+    image_name = image if image else "default rootfs FW"
+    print(f"Flashing {image_name} to {host}:{port}.")
+
+    if image:
+        print(f"# Copying image {image} to {host}.")
+        ret = scp_file(host, port, image, REMOTE_TMP_IMG)
+        if ret:
+            print("Failed to copy image to host.", file=sys.stderr)
+            return ret
+
+    print("# Flashing copied image.")
+    remote_flash_cmd = ["fptool", "flash"]
+    if image:
+        remote_flash_cmd += [str(REMOTE_TMP_IMG)]
+    ret = remote_run(host, port, remote_flash_cmd)
+    if ret:
+        print("Failed to flash FPMCU.", file=sys.stderr)
+        return ret
+
+    return 0
+
+
 def main(argv: Optional[List[str]] = None) -> Optional[int]:
     def brief(doc: Optional[str]) -> Optional[str]:
         if doc is None:
@@ -84,6 +131,31 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
         "image", nargs="?", type=pathlib.Path, help="Path to the firmware image"
     )
     parser_flash.set_defaults(func=cmd_flash)
+
+    # Parser with subcommands for "remote [options] <host> <subcommand>".
+    parser_remote = subparsers.add_parser(
+        "remote",
+        help="Commands for working with the fingerprint subsystem on a remote "
+        "DUT.",
+    )
+    parser_remote.add_argument(
+        "--port", default=22, type=int, help="Target SSH port number."
+    )
+    parser_remote.add_argument("host", help="Target SSH hostname.")
+    subparsers_remote = parser_remote.add_subparsers(
+        dest="remote_subcommand", title="remote_subcommands"
+    )
+    subparsers_remote.required = True
+
+    # Parser for "remote flash <image>" subcommand.
+    parser_remote_flash = subparsers_remote.add_parser(
+        "flash", help=cmd_remote_flash.__doc__
+    )
+    parser_remote_flash.add_argument(
+        "image", nargs="?", type=pathlib.Path, help="Path to the firmware image"
+    )
+    parser_remote_flash.set_defaults(func=cmd_remote_flash)
+
     opts = parser.parse_args(argv)
     return opts.func(opts)
 
