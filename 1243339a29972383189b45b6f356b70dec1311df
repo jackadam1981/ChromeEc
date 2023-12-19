@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86b4f06_f5b33770",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T22:05:10Z",
+      "side": 1,
+      "message": "so, this changes the alignment by adding a character before the value is pirnted. Maybe the page crossing/spanning indicator should be printed after the object instead of the space separating object now?",
+      "revId": "1243339a29972383189b45b6f356b70dec1311df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710b607a_2cf23edb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3327,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-19T22:05:10Z",
+      "side": 1,
+      "message": "unless I\u0027m missing something, this is not used as a page number, this is used as an index into the page list, right? This is why it seems to me that using `page` in the variable name is misleading, `prev_index` makes more sense, no?",
+      "range": {
+        "startLine": 3327,
+        "startChar": 9,
+        "endLine": 3327,
+        "endChar": 18
+      },
+      "revId": "1243339a29972383189b45b6f356b70dec1311df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
