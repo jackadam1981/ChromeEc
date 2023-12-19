@@ -14,6 +14,11 @@ import sys
 from typing import List, Optional
 
 
+UPDATER_DISABLE_FILE = pathlib.Path(
+    "/mnt/stateful_partition/.disable_fp_updater"
+)
+
+
 def util_exists(util_path: pathlib.Path) -> bool:
     """Returns True if the utility can be found, False otherwise."""
     if shutil.which(util_path):
@@ -79,6 +84,78 @@ def cmd_flash(opts: argparse.Namespace) -> int:
     return run(cmd)
 
 
+def updater_disable(disable: bool) -> int:
+    """Disable or re-enable the fingerprint updater.
+
+    Args:
+        disable:
+            When True, disable auto updates.
+            When False, resume auto updates.
+
+    Returns:
+        0 on success, non-zero upon error.
+    """
+
+    if disable:
+        print("# Disabling fingerprint updater.")
+        action = "touch"
+    else:
+        print("# Enabling fingerprint updater.")
+        action = "rm"
+
+    ret = run([action, str(UPDATER_DISABLE_FILE)])
+    if ret:
+        print(f"Failed to {action} {UPDATER_DISABLE_FILE}.", file=sys.stderr)
+        return ret
+
+    ret = run(["sync"])
+    if ret:
+        print(f"Failed to sync {UPDATER_DISABLE_FILE}.", file=sys.stderr)
+        return ret
+
+    return 0
+
+
+def cmd_updater_enable(opts: argparse.Namespace) -> int:
+    """Enable fingerprint firmware updater."""
+    return updater_disable(False)
+
+
+def cmd_updater_disable(opts: argparse.Namespace) -> int:
+    """Disable fingerprint firmware updater."""
+    return updater_disable(True)
+
+
+def remote_updater_disable(host: str, port: int, disable: bool) -> int:
+    """Disable or enable fingerprint firmware updater on remote DUT."""
+
+    if disable:
+        print("# Disabling fingerprint updater.")
+        action = "touch"
+    else:
+        print("# Enabling fingerprint updater.")
+        action = "rm"
+
+    ret = remote_run(
+        host, port, [action, str(UPDATER_DISABLE_FILE), ";", "sync"]
+    )
+    if ret:
+        print(f"Failed to {action} {UPDATER_DISABLE_FILE}.", file=sys.stderr)
+        return ret
+
+    return 0
+
+
+def cmd_remote_updater_enable(opts: argparse.Namespace) -> int:
+    """Enable fingerprint firmware updater on remote DUT."""
+    return remote_updater_disable(opts.host, opts.port, False)
+
+
+def cmd_remote_updater_disable(opts: argparse.Namespace) -> int:
+    """Disable fingerprint firmware updater on remote DUT."""
+    return remote_updater_disable(opts.host, opts.port, True)
+
+
 def cmd_remote_flash(opts: argparse.Namespace) -> int:
     """Remotely flash the entire firmware FPMCU using the native bootloader.
 
@@ -132,6 +209,16 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     )
     parser_flash.set_defaults(func=cmd_flash)
 
+    # Parser for "updater-enable" subcommand.
+    subparsers.add_parser(
+        "updater-enable", help=cmd_updater_enable.__doc__
+    ).set_defaults(func=cmd_updater_enable)
+
+    # Parser for "updater-disable" subcommand.
+    subparsers.add_parser(
+        "updater-disable", help=cmd_updater_disable.__doc__
+    ).set_defaults(func=cmd_updater_disable)
+
     # Parser with subcommands for "remote [options] <host> <subcommand>".
     parser_remote = subparsers.add_parser(
         "remote",
@@ -155,6 +242,16 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
         "image", nargs="?", type=pathlib.Path, help="Path to the firmware image"
     )
     parser_remote_flash.set_defaults(func=cmd_remote_flash)
+
+    # Parser for "remote updater-enable" subcommand.
+    subparsers_remote.add_parser(
+        "updater-enable", help=cmd_remote_updater_enable.__doc__
+    ).set_defaults(func=cmd_remote_updater_enable)
+
+    # Parser for "remote updater-disable" subcommand.
+    subparsers_remote.add_parser(
+        "updater-disable", help=cmd_remote_updater_disable.__doc__
+    ).set_defaults(func=cmd_remote_updater_disable)
 
     opts = parser.parse_args(argv)
     return opts.func(opts)
