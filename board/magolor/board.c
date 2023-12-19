@@ -33,6 +33,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "isl923x.h"
 #include "keyboard_config.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
@@ -1146,4 +1147,9 @@ __override int board_get_leave_safe_mode_delay_ms(void)
 		return 2000;
 	else
 		return 500;
+}
+
+__override int board_get_trickle_charge_current(void)
+{
+	return 256;
 }
