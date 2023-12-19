@@ -8212,7 +8212,9 @@ static int get_battery_command_print_info(
 	printf("  Present voltage         %u mV\n", dynamic_r.actual_voltage);
 
 	/* current can be negative */
-	printf("  Present current         %d mA\n", dynamic_r.actual_current);
+	printf("  Present current         %u mA%s\n", dynamic_r.actual_current,
+	       dynamic_r.flags & EC_BATT_FLAG_DISCHARGING ?
+	       " (discharging)" : "");
 
 	if (!is_battery_range(dynamic_r.remaining_capacity))
 		goto cmd_error;
@@ -8412,7 +8414,7 @@ int cmd_battery(int argc, char *argv[])
 	val = read_mapped_mem32(EC_MEMMAP_BATT_RATE);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Present current         %u mA%s\n", val,
+	printf("  Present current         %d mA%s\n", val,
 	       flags & EC_BATT_FLAG_DISCHARGING ? " (discharging)" : "");
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_CAP);
