@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354d9e7c_c6b4d9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-12-20T22:04:26Z",
+      "side": 1,
+      "message": "FYI this shouldn\u0027t be an issue moving forward, as we resolved this issue by fixing our OWNERS files to use `include chromiumos/owners:v1:/firmware/OWNERS.cros_fp`.\nSee http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/OWNERS for example.",
+      "revId": "553a7ba39394219fffc3cfb21529fd2768feeb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
