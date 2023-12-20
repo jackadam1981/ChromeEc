@@ -10,7 +10,8 @@
 #ifndef __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_MATCHER_H_
 #define __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_MATCHER_H_
 
-#include <stdint.h>
+#include <array>
+#include <cstdint>
 
 #if defined(HAVE_PRIVATE) && !defined(EMU_BUILD)
 
@@ -65,7 +66,12 @@ typedef fingerprintauth::FingerTemplate fp_template_t;
 
 #else
 
-typedef uint8_t fp_template_t[FP_ALGORITHM_TEMPLATE_SIZE];
+// typedef std::array<std::uint8_t alignas(4), FP_ALGORITHM_TEMPLATE_SIZE>
+// 	fp_template_t ;
+
+// #undef noreturn
+using fp_template_t = std::array<std::uint8_t, FP_ALGORITHM_TEMPLATE_SIZE>;
+
 
 #endif /* CONFIG_LIB_DRUID */
 
