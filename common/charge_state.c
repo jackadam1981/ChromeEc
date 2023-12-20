@@ -1640,8 +1640,11 @@ void charger_task(void *u)
 	/* Set up the task - note that charger_init() has already run. */
 	charger_setup(info);
 
-	if (IS_ENABLED(CONFIG_BATTERY_SMART))
+	if (IS_ENABLED(CONFIG_BATTERY_SMART)) {
+		/* Print warning if SpecificationInfo doesn't look right. */
+		//sb_print_specification_info();
 		sb_disable_alarm_warning();
+	}
 
 	while (1) {
 		/* Let's see what's going on... */
