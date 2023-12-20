@@ -16,6 +16,24 @@
       "message": "Will arbitrage generate the unused-gpios node? Or do we need to manually add it later?",
       "revId": "fb0d04a6f95fab410c33b5fe35218ae3b055478c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2048299f_723103b2",
+        "filename": "zephyr/program/rauru/rauru/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-20T18:22:00Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t support unused-gpio yet.",
+      "parentUuid": "29e8ed9c_a46312fe",
+      "revId": "fb0d04a6f95fab410c33b5fe35218ae3b055478c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
