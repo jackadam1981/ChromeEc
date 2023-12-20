@@ -8,6 +8,12 @@
 #ifndef __CROS_EC_FPSENSOR_FPSENSOR_STATE_H
 #define __CROS_EC_FPSENSOR_FPSENSOR_STATE_H
 
+#ifndef __cplusplus
+#error This must be included from C++.
+#endif
+
+#include <array>
+
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
