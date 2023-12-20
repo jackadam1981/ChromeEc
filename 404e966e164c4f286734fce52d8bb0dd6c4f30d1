@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1ae939_f674a7a9",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-12-20T05:07:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "57e5368a_4f5634e5",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f19f6df_4522eb3f",
