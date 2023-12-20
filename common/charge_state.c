@@ -1645,6 +1645,8 @@ void charger_task(void *u)
 
 	if (IS_ENABLED(CONFIG_BATTERY_SMART)) {
 		sb_disable_alarm_warning(curr.batt.is_present == BP_YES);
+                /* Print warning if SpecificationInfo doesn't look right. */
+                //sb_print_specification_info();
 	}
 
 	while (1) {
