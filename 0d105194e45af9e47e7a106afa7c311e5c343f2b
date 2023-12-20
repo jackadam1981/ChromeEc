@@ -39,6 +39,30 @@
       },
       "revId": "0d105194e45af9e47e7a106afa7c311e5c343f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c728dc2_309cf7bc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3345,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-20T02:02:21Z",
+      "side": 1,
+      "message": "then I need to carefully care about signed / unsigned overflow. in this loop we print deleted objects, so we will clearly detect which object spans.\n\n\u0027|\u0027 printed before would mean object started from just after page header\n\u0027%\u0027 object is first on page, but started not from the start of the page, so the previous object in the list spanned (and we include deleted). Printed before the first object it means there is some part of already non-existent object.",
+      "parentUuid": "c532bb0b_06aeef63",
+      "range": {
+        "startLine": 3344,
+        "startChar": 0,
+        "endLine": 3345,
+        "endChar": 38
+      },
+      "revId": "0d105194e45af9e47e7a106afa7c311e5c343f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
