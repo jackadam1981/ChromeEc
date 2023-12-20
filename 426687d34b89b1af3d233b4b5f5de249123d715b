@@ -49,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db5c8ad4_2b8c3506",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-20T22:42:26Z",
+      "side": 1,
+      "message": "could you implement all the api calls defined in struct pdc_driver_api_t",
+      "range": {
+        "startLine": 94,
+        "startChar": 20,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61ac079_2f8e682b",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-20T22:42:26Z",
+      "side": 1,
+      "message": "could you move this addition to a separate CL",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38f53c12_42042da5",
         "filename": "zephyr/dts/bindings/usbc/pd/infineon,ccg8.yaml",
         "patchSetId": 19
