@@ -74,6 +74,7 @@
 #define MODE_ALARM BIT(13)
 #define MODE_CHARGER BIT(14)
 #define MODE_CAPACITY BIT(15)
+#define SBS_ALARM_MODE_CLEAR_INTERVAL (45 * SECOND)
 
 /* Battery status */
 #define STATUS_ERR_CODE_MASK 0xf
@@ -198,5 +199,19 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len);
 
 /* Read manufactures access data from the battery */
 int sb_read_mfgacc_block(int cmd, int block, uint8_t *data, int len);
+
+/**
+ * Disable alarm warning continually.
+ *
+ * The smart battery specification specifies "the ALARM_MODE bit is
+ * automatically cleared by the Smart Battery electronics every 60 seconds so
+ * that ... A SMBus Host which does not want the Smart Battery to be a master
+ * on the SMBus must therefore continually set this bit at least once per 45
+ * seconds...".
+ *
+ * @param start  True: Start periodically setting ALARM_MODE.
+ *               False: Stop periodically setting ALARM_MODE.
+ */
+void sb_disable_alarm_warning(bool start);
 
 #endif /* __CROS_EC_BATTERY_SMART_H */

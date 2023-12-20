@@ -1302,6 +1302,9 @@ static void process_battery_present_change(const struct charger_info *info,
 		charger_set_input_current_limit(chgnum,
 						curr.desired_input_current);
 	hook_notify(HOOK_BATTERY_SOC_CHANGE);
+
+	if (IS_ENABLED(CONFIG_BATTERY_SMART))
+		sb_disable_alarm_warning(curr.batt.is_present == BP_YES);
 }
 
 /* Decide on the charge state we are in */
@@ -1639,6 +1642,10 @@ void charger_task(void *u)
 
 	/* Set up the task - note that charger_init() has already run. */
 	charger_setup(info);
+
+	if (IS_ENABLED(CONFIG_BATTERY_SMART)) {
+		sb_disable_alarm_warning(curr.batt.is_present == BP_YES);
+	}
 
 	while (1) {
 		/* Let's see what's going on... */

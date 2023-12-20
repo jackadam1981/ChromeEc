@@ -9,6 +9,7 @@
 #include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "console.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "timer.h"
@@ -219,12 +220,42 @@ int battery_get_mode(int *mode)
 	return sb_read(SB_BATTERY_MODE, mode);
 }
 
+const struct deferred_data __keep sb_set_alarm_mode_data;
+
+void sb_set_alarm_mode(void)
+{
+	int val;
+
+	/* If a battery isn't present, terminate the recursive call loop. */
+	if (battery_is_present() != BP_YES)
+		return;
+
+	/* Don't disturb cutoff in progress but stay in the call loop. */
+	if (!battery_cutoff_in_progress() && !battery_is_cut_off()) {
+		if (battery_get_mode(&val) == EC_SUCCESS) {
+			if (!(val & MODE_ALARM))
+				sb_write(SB_BATTERY_MODE, val | MODE_ALARM);
+		}
+	}
+
+	hook_call_deferred(&sb_set_alarm_mode_data,
+			   SBS_ALARM_MODE_CLEAR_INTERVAL);
+}
+DECLARE_DEFERRED(sb_set_alarm_mode);
+
+void sb_disable_alarm_warning(bool start)
+{
+	if (start)
+		sb_set_alarm_mode();
+	else
+		hook_call_deferred(&sb_set_alarm_mode_data, -1);
+}
+
 /**
  * Force battery to mAh mode (instead of 10mW mode) for reporting capacity.
  *
  * @return non-zero if error.
  */
-
 static int battery_force_mah_mode(void)
 {
 	int val, rv;
