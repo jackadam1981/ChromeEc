@@ -46,6 +46,29 @@
       },
       "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c6ec63_f9c86203",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T21:42:08Z",
+      "side": 1,
+      "message": "Note that the `if/endif` blocks do not work like C `#ifdef/#endif`.\n\nThe `if/endif` blocks simply add an implicit `depends on \u003cconfig\u003e` for all configs inside the block.  So this change is duplicating symbols.\n\nI agree that we need a way to enable tablet mode detection for the keyboard  scanning.\n\nBut there is no need to create a separate guard.  You just need to remove the dependency on PLATFORM_EC_MOTIONSENSE for the tablet mode configs.\n\nI suggest breaking out the tablet mode changes into a separate Kconfig file.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
