@@ -121,12 +121,12 @@
 #define NPCX_TWD_BASE_ADDR 0x400D8000
 
 /* Multi-Modules Map */
-#define NPCX_PWM_BASE_ADDR(mdl) (0x40080000 + ((mdl)*0x2000L))
-#define NPCX_GPIO_BASE_ADDR(mdl) (0x40081000 + ((mdl)*0x2000L))
-#define NPCX_ITIM_BASE_ADDR(mdl) (0x400B0000 + ((mdl)*0x2000L))
-#define NPCX_MIWU_BASE_ADDR(mdl) (0x400BB000 + ((mdl)*0x2000L))
-#define NPCX_MFT_BASE_ADDR(mdl) (0x400E1000 + ((mdl)*0x2000L))
-#define NPCX_PM_CH_BASE_ADDR(mdl) (0x400C9000 + ((mdl)*0x2000L))
+#define NPCX_PWM_BASE_ADDR(mdl) (0x40080000 + ((mdl) * 0x2000L))
+#define NPCX_GPIO_BASE_ADDR(mdl) (0x40081000 + ((mdl) * 0x2000L))
+#define NPCX_ITIM_BASE_ADDR(mdl) (0x400B0000 + ((mdl) * 0x2000L))
+#define NPCX_MIWU_BASE_ADDR(mdl) (0x400BB000 + ((mdl) * 0x2000L))
+#define NPCX_MFT_BASE_ADDR(mdl) (0x400E1000 + ((mdl) * 0x2000L))
+#define NPCX_PM_CH_BASE_ADDR(mdl) (0x400C9000 + ((mdl) * 0x2000L))
 
 /******************************************************************************/
 /* System Configuration (SCFG) Registers */
@@ -290,6 +290,7 @@
 #define CMD_READ_ID 0x9F
 #define CMD_READ_MAN_DEV_ID 0x90
 #define CMD_WRITE_EN 0x06
+#define CMD_WRITE_DIS 0x04
 #define CMD_WRITE_STATUS 0x50
 #define CMD_READ_STATUS_REG 0x05
 #define CMD_READ_STATUS_REG2 0x35

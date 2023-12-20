@@ -21,8 +21,8 @@
 	};
 
 	batteries {
-		default_battery: cosmx_ap20cbl-2 {
-			compatible = "cosmx,ap20cbl-2", "battery-smart";
+		default_battery: cosmx_ap20cbl-4 {
+			compatible = "cosmx,ap20cbl-4", "battery-smart";
 		};
 		lges_ap23a8l {
 			compatible = "lges,ap23a8l", "battery-smart";
@@ -63,10 +63,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "gmr_tablet_switch_isr";
 		};
-		int_imu: ec_imu {
-			irq-pin = <&gpio_imu_int_l>;
+		int_lid_accel: ec_lid_accel  {
+			irq-pin = <&gpio_acc_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "lsm6dso_interrupt";
+			handler = "bma4xx_interrupt";
 		};
 		int_vol_down: vol_down {
 			irq-pin = <&gpio_voldn_btn_odl>;
@@ -108,6 +108,10 @@
 		};
 		gpio_sb_4: sb-4 {
 			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			no-auto-init;
+		};
+		gpio_fan_enable: fan-enable {
+			gpios = <&gpio6 3 GPIO_OUTPUT>;
 			no-auto-init;
 		};
 		ec-i2c-sensor-scl {
@@ -152,32 +156,30 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory {
-			temp_host_warn = <92>;
-			temp_host_high = <95>;
-			temp_host_halt = <100>;
-			temp_host_release_warn = <91>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <90>;
+			temp_fan_off = <35>;
+			temp_fan_max = <70>;
+			temp_host_warn = <45>;
+			temp_host_high = <100>;
+			temp_host_halt = <105>;
+			temp_host_release_warn = <40>;
+			temp_host_release_high = <90>;
+			temp_host_release_halt = <95>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};
 		charger {
-			temp_host_warn = <92>;
-			temp_host_high = <95>;
-			temp_host_halt = <100>;
-			temp_host_release_warn = <91>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <90>;
+			temp_host_high = <98>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <90>;
+			temp_host_release_halt = <95>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger>;
 		};
 		ambient {
-			temp_host_warn = <92>;
-			temp_host_high = <95>;
-			temp_host_halt = <100>;
-			temp_host_release_warn = <91>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <90>;
+			temp_host_high = <100>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <90>;
+			temp_host_release_halt = <95>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_ambient>;
 		};
@@ -216,6 +218,19 @@
 			virtual_mux_0: virtual-mux-0 {
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
+		};
+	};
+
+	fans {
+		compatible = "cros-ec,fans";
+
+		fan_0 {
+			pwms = <&pwm5 5 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			rpm_min = <2200>;
+			rpm_start = <2200>;
+			rpm_max = <6900>;
+			tach = <&tach2>;
+			enable_gpio = <&gpio_fan_enable>;
 		};
 	};
 
@@ -318,6 +333,16 @@
 	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
 	pinctrl-0 = <&pwm5_gpb7>;
 	pinctrl-names = "default";
+};
+
+/* Tachometer for fan speed measurement */
+&tach2 {
+	status = "okay";
+	pinctrl-0 = <&ta2_1_in_gp73>;
+	pinctrl-names = "default";
+	port = <NPCX_TACH_PORT_A>; /* port-A is selected */
+	sample-clk = <NPCX_TACH_FREQ_LFCLK>; /* Use LFCLK as sampling clock */
+	pulses-per-round = <2>; /* number of pulses per round of encoder */
 };
 
 /* host interface */
