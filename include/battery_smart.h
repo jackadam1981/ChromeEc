@@ -74,6 +74,7 @@
 #define MODE_ALARM BIT(13)
 #define MODE_CHARGER BIT(14)
 #define MODE_CAPACITY BIT(15)
+#define SBS_ALARM_MODE_CLEAR_INTERVAL (45 * SECOND)
 
 /* Battery status */
 #define STATUS_ERR_CODE_MASK 0xf
@@ -198,5 +199,10 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len);
 
 /* Read manufactures access data from the battery */
 int sb_read_mfgacc_block(int cmd, int block, uint8_t *data, int len);
+
+/**
+ * Disable alarm warning.
+ */
+void sb_disable_alarm_warning(void);
 
 #endif /* __CROS_EC_BATTERY_SMART_H */
