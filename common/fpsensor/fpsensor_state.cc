@@ -36,7 +36,8 @@ extern "C" {
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
 /* Fingers templates for the current user */
-test_mockable fp_template_t fp_template[FP_MAX_FINGER_COUNT] FP_TEMPLATE_SECTION;
+test_mockable std::array<fp_template_t, FP_MAX_FINGER_COUNT> fp_template
+	FP_TEMPLATE_SECTION;
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*

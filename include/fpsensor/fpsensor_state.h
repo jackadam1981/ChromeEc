@@ -21,6 +21,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/* Fingers templates for the current user */
+// extern fp_template_t fp_template[FP_MAX_FINGER_COUNT];
+extern std::array<fp_template_t, FP_MAX_FINGER_COUNT> fp_template;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,7 +48,7 @@ extern "C" {
 /* --- Global variables defined in fpsensor_state.c --- */
 
 /* Fingers templates for the current user */
-extern fp_template_t fp_template[FP_MAX_FINGER_COUNT];
+// extern fp_template_t fp_template[FP_MAX_FINGER_COUNT];
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
