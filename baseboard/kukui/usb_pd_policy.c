@@ -164,9 +164,7 @@ __override void svdm_safe_dp_mode(int port)
 __override int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
 	/* Kukui/Krane doesn't support superspeed lanes. */
-	const uint32_t support_pin_mode =
-		board_has_virtual_mux() ? (MODE_DP_PIN_C | MODE_DP_PIN_E) :
-					  MODE_DP_PIN_ALL;
+	const uint32_t support_pin_mode = MODE_DP_PIN_C | MODE_DP_PIN_E;
 
 	/**
 	 * Only enter mode if device is DFP_D (and PIN_C/E for Kukui/Krane)
@@ -191,7 +189,7 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	int pin_mode;
 
 	/* Kukui doesn't support multi-function mode, mask it out. */
-	if (board_has_virtual_mux())
+	if (1)
 		status &= ~PD_VDO_DPSTS_MF_MASK;
 
 	pin_mode = pd_dfp_dp_get_pin_mode(port, status);
@@ -199,7 +197,7 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	if (!pin_mode)
 		return 0;
 
-	if (board_has_virtual_mux())
+	if (1)
 		board_usb_mux_set(port, USB_PD_MUX_DP_ENABLED,
 				  USB_SWITCH_CONNECT, board_get_polarity(port));
 	else
