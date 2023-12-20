@@ -10,11 +10,20 @@
 #include "test_util.h"
 #include "time.h"
 
+#if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
+static bool supports_fpu_irq = true;
+#define FPU_IRQ STM32_IRQ_FPU
+#else
+static bool supports_fpu_irq;
+/* Value to make compilation succeed for chips that don't support FPU
+ * interrupts.
+ */
+#define FPU_IRQ -1
+#endif
+
 static volatile uint32_t fpscr;
 static volatile bool fpu_irq_handled;
 
-<<<<<<< HEAD
-=======
 static uint32_t _read_fpscr(void)
 {
 	uint32_t val;
@@ -30,7 +39,6 @@ static void clear_fpscr(void)
 	asm volatile("vmsr fpscr, %0" : : "r"(val));
 }
 
->>>>>>> c0703fc082 (mcutest: Add _read_fpscr function to read fpscr register)
 /* Override default FPU interrupt handler. */
 void __keep fpu_irq(uint32_t excep_lr, uint32_t excep_sp)
 {
@@ -46,6 +54,20 @@ void __keep fpu_irq(uint32_t excep_lr, uint32_t excep_sp)
 	fpu_state[FPU_IDX_REG_FPSCR] &= ~FPU_FPSCR_EXC_FLAGS;
 
 	fpu_irq_handled = true;
+}
+
+void read_fpscr(void)
+{
+	if (supports_fpu_irq) {
+		if (IS_ENABLED(CHIP_FAMILY_STM32H7)) {
+			task_trigger_irq(FPU_IRQ);
+		}
+
+		while (!fpu_irq_handled) {
+		}
+		return;
+	}
+	fpscr = _read_fpscr();
 }
 
 /* Performs division without casting to double. */
@@ -71,19 +93,9 @@ test_static int test_cortexm_fpu_underflow(void)
 
 	result = divf(1.40130e-45f, 2.0f);
 
-	/*
-	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
-	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
-	 * trigger it from software.
-	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
-
 	TEST_ASSERT(result == 0.0f);
 
-	/* Wait for asynchronous FPU interrupt. */
-	while (!fpu_irq_handled) {
-	}
+	read_fpscr();
 
 	TEST_ASSERT(fpscr & FPU_FPSCR_UFC);
 
@@ -103,19 +115,9 @@ test_static int test_cortexm_fpu_overflow(void)
 
 	result = divf(3.40282e38f, 0.5f);
 
-	/*
-	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
-	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
-	 * trigger it from software.
-	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
-
 	TEST_ASSERT(isinf(result));
 
-	/* Wait for asynchronous FPU interrupt. */
-	while (!fpu_irq_handled) {
-	}
+	read_fpscr();
 
 	TEST_ASSERT(fpscr & FPU_FPSCR_OFC);
 
@@ -132,19 +134,9 @@ test_static int test_cortexm_fpu_division_by_zero(void)
 
 	result = divf(1.0f, 0.0f);
 
-	/*
-	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
-	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
-	 * trigger it from software.
-	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
-
 	TEST_ASSERT(isinf(result));
 
-	/* Wait for asynchronous FPU interrupt. */
-	while (!fpu_irq_handled) {
-	}
+	read_fpscr();
 
 	TEST_ASSERT(fpscr & FPU_FPSCR_DZC);
 
@@ -161,19 +153,9 @@ test_static int test_cortexm_fpu_invalid_operation(void)
 
 	result = sqrtf(-1.0f);
 
-	/*
-	 * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,
-	 * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so
-	 * trigger it from software.
-	 */
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
-
 	TEST_ASSERT(isnan(result));
 
-	/* Wait for asynchronous FPU interrupt. */
-	while (!fpu_irq_handled) {
-	}
+	read_fpscr();
 
 	TEST_ASSERT(fpscr & FPU_FPSCR_IOC);
 
@@ -194,14 +176,13 @@ test_static int test_cortexm_fpu_inexact(void)
 	 * Inexact bit doesn't generate interrupt, so we will trigger it from
 	 * software.
 	 */
-	task_trigger_irq(STM32_IRQ_FPU);
+	if (IS_ENABLED(CHIP_FAMILY_STM32F4))
+		task_trigger_irq(FPU_IRQ);
 
 	/* Check if result is not NaN nor infinity. */
 	TEST_ASSERT(!isnan(result) && !isinf(result));
 
-	/* Wait for asynchronous FPU interrupt. */
-	while (!fpu_irq_handled) {
-	}
+	read_fpscr();
 
 	TEST_ASSERT(fpscr & FPU_FPSCR_IXC);
 
