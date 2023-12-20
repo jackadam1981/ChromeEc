@@ -135,7 +135,12 @@ static int command_ch(int argc, char **argv)
 		} else if (strcasecmp(argv[1], "restore") == 0) {
 			channel_mask = channel_mask_saved;
 			return EC_SUCCESS;
-
+		} else if (strcasecmp(argv[1], "tpm") == 0) {
+			channel_mask ^= CC_MASK(CC_TPM);
+			return EC_SUCCESS;
+		} else if (strcasecmp(argv[1], "reg") == 0) {
+			channel_mask ^= CC_MASK(CC_TPM_REG);
+			return EC_SUCCESS;
 		} else {
 			/* Set the mask */
 			int m = strtoi(argv[1], &e, 0);
@@ -161,5 +166,5 @@ static int command_ch(int argc, char **argv)
 	return EC_SUCCESS;
 };
 DECLARE_SAFE_CONSOLE_COMMAND(chan, command_ch,
-			     "[ save | restore | <mask> ]",
+			     "[ save | restore | tpm | reg | <mask> ]",
 			     "Save, restore, get or set console channel mask");
