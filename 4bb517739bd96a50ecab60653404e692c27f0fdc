@@ -195,6 +195,24 @@
       "parentUuid": "af4393bd_ff514396",
       "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4d91ac_e1ba4f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-20T01:57:46Z",
+      "side": 1,
+      "message": "Kconfig: PLATFORM_EC_ACCEL_BMA4XX hase define as\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/Kconfig.sensor_devices#31\n\nShim CONFIG_PLATFORM_EC_ACCEL_BMA4XX in zephyr to\nCONFIG_ACCEL_BMA4XX\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/include/config_chip.h#2481\n\nzephyr_library_sources_\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/CMakeLists.txt#210\n\nCONFIG_ACCEL_BMA4XX_INT_EVENT\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/driver/accel_bma4xx.h#206\n\nRequire new CONFIG options is about Kconfig option? should new define?",
+      "parentUuid": "4d59eb55_542c28cd",
+      "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
