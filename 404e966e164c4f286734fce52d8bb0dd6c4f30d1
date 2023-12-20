@@ -281,6 +281,30 @@
       },
       "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4d486f_7c00016d",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-12-20T05:04:58Z",
+      "side": 1,
+      "message": "Ah this looks like the root cause of b/314269901\n\nI will deal with this later.",
+      "parentUuid": "1f19f6df_4522eb3f",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "404e966e164c4f286734fce52d8bb0dd6c4f30d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
