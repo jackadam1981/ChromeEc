@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad42d53d_b3e6ce9b",
+        "filename": "include/config.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 6178,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USB_PD_CONTROLLER",
+      "range": {
+        "startLine": 6178,
+        "startChar": 10,
+        "endLine": 6178,
+        "endChar": 37
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52488902_6a098cbd",
+        "filename": "zephyr/subsys/usb_pd/CMakeLists.txt",
+        "patchSetId": 26
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "Move this to the parent directory CMake file.",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 40
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4f5c3d_a7b78cda",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "This should probably be `[USBC_PORT_NEW(usbc_id)] \u003d NULL,`.  same for the CHECK_RETIMER macro.",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 11
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056b0b29_6782fea8",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "Why is this tracked per port?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 49
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b5c931d_205b85dc",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "Can you use the system workqueue?  Each workqueue defined adds quite a bit RAM footprint.  If a separate workqueue is needed, can you get by with just 1?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51c4479_444d987d",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "Please open a bug.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7257c2_ad0e5a94",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "This isn\u0027t handled by `get_result()`.  Does the AP send this?",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a1e576_b2523450",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T23:20:00Z",
+      "side": 1,
+      "message": "If the retimer_state[] is incorrect, what\u0027s the recovery?  Should this throw an error to the AP from get_result()?\n\nThis might be easier to follow if you unconditionally set last_op and last_port, but set an error flag anytime the retimer_state doesn\u0027t match the expected state.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
