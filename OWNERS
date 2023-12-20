@@ -1,3 +1,10 @@
 # Fingerprint release branch OWNERS file
 include chromiumos/platform2:main:/biod/OWNERS
 
+<<<<<<< HEAD   (9bcb40 Merge remote-tracking branch cros/main into firmware-fpmcu-b)
+=======
+include chromiumos/owners:v1:/firmware/OWNERS.cros_ec
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+>>>>>>> BRANCH (cce250 ciri: Config the thermal sensor setting)
