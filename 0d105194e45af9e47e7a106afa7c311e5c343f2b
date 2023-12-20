@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65411c98_e6e91db6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-20T01:52:45Z",
+      "side": 1,
+      "message": "so much better - way less changes with the same result :)\n\none more question though",
+      "revId": "0d105194e45af9e47e7a106afa7c311e5c343f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c532bb0b_06aeef63",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-20T01:52:45Z",
+      "side": 1,
+      "message": "could it be that this is the first object on the page, but it is not spanning pages, because there were deleted objects before it?\n\nmaybe the check should be \n```\nif ((at.mt.data_offset - sizeof(*at.mt.ph) \u003c aligned_container_size(ch)) {\n}\n```",
+      "range": {
+        "startLine": 3344,
+        "startChar": 0,
+        "endLine": 3345,
+        "endChar": 38
+      },
+      "revId": "0d105194e45af9e47e7a106afa7c311e5c343f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
