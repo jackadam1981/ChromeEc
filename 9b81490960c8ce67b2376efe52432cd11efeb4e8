@@ -98,6 +98,24 @@
       "parentUuid": "9d0be588_c3693e21",
       "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bbf8c3d_4505d6be",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-12-20T23:06:32Z",
+      "side": 1,
+      "message": "I presumed that the volatile variable was linked onto the address of the register elsewhere. If this is not the case, are the variable and the register supposed to correspond to each other?\n\nI missed before that this was test code. Does this run in a context where there is an actual fpscr register?",
+      "parentUuid": "5f22e272_07e9cd11",
+      "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
