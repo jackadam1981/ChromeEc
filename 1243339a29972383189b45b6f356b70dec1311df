@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8244e9c_22e6b527",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-20T01:25:24Z",
+      "side": 1,
+      "message": "isn\u0027t it what happens? page indicator is printed before object. Note first object in commit message. Note, even for first object it can be `%` - meaning there was some stale data at the start of the page.",
+      "parentUuid": "a95427f5_df59b489",
+      "revId": "1243339a29972383189b45b6f356b70dec1311df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "710b607a_2cf23edb",
         "filename": "common/new_nvmem.c",
         "patchSetId": 4
@@ -67,6 +85,30 @@
       "writtenOn": "2023-12-19T22:05:10Z",
       "side": 1,
       "message": "unless I\u0027m missing something, this is not used as a page number, this is used as an index into the page list, right? This is why it seems to me that using `page` in the variable name is misleading, `prev_index` makes more sense, no?",
+      "range": {
+        "startLine": 3327,
+        "startChar": 9,
+        "endLine": 3327,
+        "endChar": 18
+      },
+      "revId": "1243339a29972383189b45b6f356b70dec1311df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf866fd8_d908085a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3327,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-20T01:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710b607a_2cf23edb",
       "range": {
         "startLine": 3327,
         "startChar": 9,

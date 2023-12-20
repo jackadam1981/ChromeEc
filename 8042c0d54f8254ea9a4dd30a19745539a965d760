@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7077eb_3d75ff84",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-20T01:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "457cef25_1d76a28e",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "438002ca_193910a4",
@@ -273,6 +297,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7695311_353ced52",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-20T01:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4511e00_56f4d154",
+      "range": {
+        "startLine": 3334,
+        "startChar": 1,
+        "endLine": 3334,
+        "endChar": 22
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5ca3b4a_6029b8d1",
@@ -429,6 +477,30 @@
       "side": 1,
       "message": "I don\u0027t udnerstand this. The tracker is set to point at a location right above the object after `get_next_object()` returns, right? Knowing the offset in the current page and the size of the last read object is it not enough to see that the object spans pages?",
       "parentUuid": "df2bc464_69171fd7",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3348,
+        "endChar": 0
+      },
+      "revId": "8042c0d54f8254ea9a4dd30a19745539a965d760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc194ea_2db58749",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3348,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-20T01:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df3d197_ffb8b5f3",
       "range": {
         "startLine": 3341,
         "startChar": 0,
