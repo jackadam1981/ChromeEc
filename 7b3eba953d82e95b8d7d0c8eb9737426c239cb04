@@ -46,6 +46,30 @@
       },
       "revId": "7b3eba953d82e95b8d7d0c8eb9737426c239cb04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53e67de_a9608bee",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8159,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-12-20T00:21:13Z",
+      "side": 1,
+      "message": "`const struct foo *p` should be OK.\nit\u0027s the struct that\u0027ll be const, not the pointer\nand i don\u0027t see the struct being modified through the pointer.",
+      "parentUuid": "65e921fe_a48d30f3",
+      "range": {
+        "startLine": 8159,
+        "startChar": 1,
+        "endLine": 8159,
+        "endChar": 7
+      },
+      "revId": "7b3eba953d82e95b8d7d0c8eb9737426c239cb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
