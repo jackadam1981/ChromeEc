@@ -10,6 +10,13 @@
 #include "test_util.h"
 #include "time.h"
 
+#if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
+#define FPU_IRQ STM32_IRQ_FPU
+#else
+/* default value for compilation. */
+#define FPU_IRQ -99
+#endif
+
 static volatile uint32_t fpscr;
 static volatile bool fpu_irq_handled;
 
@@ -18,6 +25,14 @@ inline void clear_fpscr(void)
 	uint32_t val = 0;
 
 	asm volatile("vmsr fpscr, %0" : : "r"(val));
+}
+
+inline uint32_t read_fpscr(void)
+{
+	uint32_t val;
+
+	asm volatile("vmrs %0, fpscr" : "=r"(val));
+	return val;
 }
 
 /* Override default FPU interrupt handler. */
@@ -67,7 +82,11 @@ test_static int test_cortexm_fpu_underflow(void)
 	 * trigger it from software.
 	 */
 	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+		task_trigger_irq(FPU_IRQ);
+	else if (IS_ENABLED(CHIP_FAMILY_NPCX9)) {
+		fpscr = read_fpscr();
+		fpu_irq_handled = true;
+	}
 
 	TEST_ASSERT(result == 0.0f);
 
@@ -100,7 +119,11 @@ test_static int test_cortexm_fpu_overflow(void)
 	 * trigger it from software.
 	 */
 	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+		task_trigger_irq(FPU_IRQ);
+	else if (IS_ENABLED(CHIP_FAMILY_NPCX9)) {
+		fpscr = read_fpscr();
+		fpu_irq_handled = true;
+	}
 
 	TEST_ASSERT(isinf(result));
 
@@ -130,7 +153,11 @@ test_static int test_cortexm_fpu_division_by_zero(void)
 	 * trigger it from software.
 	 */
 	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+		task_trigger_irq(FPU_IRQ);
+	else if (IS_ENABLED(CHIP_FAMILY_NPCX9)) {
+		fpscr = read_fpscr();
+		fpu_irq_handled = true;
+	}
 
 	TEST_ASSERT(isinf(result));
 
@@ -160,7 +187,11 @@ test_static int test_cortexm_fpu_invalid_operation(void)
 	 * trigger it from software.
 	 */
 	if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-		task_trigger_irq(STM32_IRQ_FPU);
+		task_trigger_irq(FPU_IRQ);
+	else if (IS_ENABLED(CHIP_FAMILY_NPCX9)) {
+		fpscr = read_fpscr();
+		fpu_irq_handled = true;
+	}
 
 	TEST_ASSERT(isnan(result));
 
@@ -188,7 +219,12 @@ test_static int test_cortexm_fpu_inexact(void)
 	 * Inexact bit doesn't generate interrupt, so we will trigger it from
 	 * software.
 	 */
-	task_trigger_irq(STM32_IRQ_FPU);
+	if (IS_ENABLED(CHIP_FAMILY_STM32F4) || IS_ENABLED(CHIP_FAMILY_STM32H7))
+		task_trigger_irq(FPU_IRQ);
+	else if (IS_ENABLED(CHIP_FAMILY_NPCX9)) {
+		fpscr = read_fpscr();
+		fpu_irq_handled = true;
+	}
 
 	/* Check if result is not NaN nor infinity. */
 	TEST_ASSERT(!isnan(result) && !isinf(result));
