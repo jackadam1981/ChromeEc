@@ -219,12 +219,26 @@ int battery_get_mode(int *mode)
 	return sb_read(SB_BATTERY_MODE, mode);
 }
 
+const struct deferred_data __keep sb_disable_alarm_warning_data;
+void sb_disable_alarm_warning(void)
+{
+	int val;
+
+	if (battery_get_mode(&val) == EC_SUCCESS) {
+		if (!(val & MODE_ALARM))
+			sb_write(SB_BATTERY_MODE, val | MODE_ALARM);
+	}
+
+	hook_call_deferred(sb_disable_alarm_warning_data,
+			   SBS_ALARM_MODE_CLEAR_INTERVAL);
+}
+DECLARE_DEFERRED(sb_disable_alarm_warning);
+
 /**
  * Force battery to mAh mode (instead of 10mW mode) for reporting capacity.
  *
  * @return non-zero if error.
  */
-
 static int battery_force_mah_mode(void)
 {
 	int val, rv;

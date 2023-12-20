@@ -1640,6 +1640,9 @@ void charger_task(void *u)
 	/* Set up the task - note that charger_init() has already run. */
 	charger_setup(info);
 
+	if (IS_ENABLED(CONFIG_BATTERY_SMART))
+		sb_disable_alarm_warning();
+
 	while (1) {
 		/* Let's see what's going on... */
 		curr.ts = get_time();
