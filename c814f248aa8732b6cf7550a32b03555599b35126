@@ -22,6 +22,30 @@
       },
       "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90cbd6f_70cfcf02",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-20T18:26:37Z",
+      "side": 0,
+      "message": "My understanding is that reseting the fpscr register, would result in the fpscr being set to 0. So there is no need. Although this does not solve any problem, printing the fpscr values before and after an illegal function would not cause anything else to contaminate the fpscr register i.e. no residual value from previous operations",
+      "parentUuid": "861465a0_20c47253",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
