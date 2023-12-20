@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b9ca65_f359a736",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2023-12-20T08:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2a7fb2_36e5c02b",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "098e5ab346e38111a0d249e6b34726d5bd42ab1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf178747_b37ef594",
