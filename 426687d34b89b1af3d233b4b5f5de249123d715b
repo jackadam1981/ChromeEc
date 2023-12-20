@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125d61b8_c1ff05cc",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T22:08:25Z",
+      "side": 1,
+      "message": "Note that the order of the DT nodes is not guaranteed.  So the \"port\" number can flip.\n\nYou can switch the console commands to use the node name directly.  This is done by using the `SHELL_DYNAMIC_CMD_CREATE` macro and providing a lookup routine that walks this array and returns the device name.\n\nExample here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/drivers/usbc/pdc_rts545x.c;l\u003d477\n\nIn that example, `rts545x_get_name()` is responsible for doing the runtime lookup of the device names.  These names are available via tab completion on the shell.",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effc5e84_d9462bc5",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T22:08:25Z",
+      "side": 1,
+      "message": "Is there a bug number for this?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 61
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f53c12_42042da5",
+        "filename": "zephyr/dts/bindings/usbc/pd/infineon,ccg8.yaml",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T22:08:25Z",
+      "side": 1,
+      "message": "This property isn\u0027t used.  Zephyr supports attaching multiple callbacks to the same GPIO pin, so the typical way to handle this is to ensure the ISR on a specific device checks if there is an interrupt event - if not the ISR just exits.\n\nNote that this does requires level sensitive interrupt support by the GPIO controller, and not all GPIO controller support this.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b535b0_e64a0022",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-20T22:08:25Z",
+      "side": 1,
+      "message": "This seems unrelated to the CCG8 driver.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 78
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
