@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3a541e_434028ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-12-21T00:30:45Z",
+      "side": 1,
+      "message": "Abe, would this be the right way to hardcode this board to only support Pin Assignment C? I somehow get the feeling that there might be some other functions that need to be overriden. For example: https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/dp_alt_mode.c;l\u003d545",
+      "revId": "3dc4405687d503ab85118fbf8944956a918d9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
