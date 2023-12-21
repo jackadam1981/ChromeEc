@@ -46,6 +46,30 @@
       },
       "revId": "67095efc67fa7e8cb46cfebf4c3a0440d8f79762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e064f758_28fe9e7d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-21T17:38:38Z",
+      "side": 1,
+      "message": "If the fw_version are little-endian, I would expect the PD revision and version fields to also be little-endian.  If the byte ordering is different, please add a comment.",
+      "parentUuid": "a5e5c92c_3c340433",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 63
+      },
+      "revId": "67095efc67fa7e8cb46cfebf4c3a0440d8f79762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
