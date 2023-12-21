@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a604058_09f72a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-12-21T17:33:36Z",
+      "side": 1,
+      "message": "NULL can be passed here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d314;drc\u003d1285bf7bb93a88bef3432b30e4b6a14bb18cc985",
+      "revId": "d607a21233a09ca08885792ed40ab9f5d11cdd36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
