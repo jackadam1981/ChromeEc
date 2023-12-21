@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c43fe3_07038afb",
+        "filename": "zephyr/program/brox/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-21T18:52:12Z",
+      "side": 1,
+      "message": "Good point.  I\u0027ll change this to alway return 1 until the charger driver is enabled.",
+      "parentUuid": "c676cb12_3478cf73",
+      "revId": "0b6818fdcfea8dc2f703aed746eb5cd03fa112a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c676cb12_3478cf73",
