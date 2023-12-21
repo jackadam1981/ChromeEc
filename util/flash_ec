@@ -4,6 +4,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+#set -x
+
 SCRIPT="$(readlink -f "$0")"
 SCRIPT_DIR="$(dirname "${SCRIPT}")"
 
@@ -1559,7 +1561,7 @@ function flash_npcx_uut() {
 	EC_UART="$(servo_ec_uart)"
 	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
 	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
-	DELETE_LIST+=("${TEMP_DIR}")
+####	DELETE_LIST+=("${TEMP_DIR}")
 
 	# Look for npcx_monitor.bin in multiple directories, starting with
 	# the same path as the EC binary.
@@ -1673,6 +1675,8 @@ function flash_npcx_uut() {
 			preserve_sections "${CHIP}" "${IMG}" "${TEMP_DIR}"    \
 				"${NPCX_UUT} ${UUT_ARGS[*]}" || die "${MSG_PROGRAM_FAIL}"
 		fi
+
+####		die "STOP before Programming EC firmware image."
 
 		info "Programming EC firmware image."
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \
@@ -1808,6 +1812,10 @@ function preserve_sections() {
 		local CUR_FMAP_IMG
 		local CUR_IMG
 
+info ================================================================
+dump_fmap "${NEW_IMG}" -e FMAP
+info ================================================================
+
 		NEW_FMAP=$(dump_fmap "${NEW_IMG}" -e FMAP)
 		NEW_FMAP_NFIELD=$(echo "${NEW_FMAP}" | awk '{print NF}')
 		if [ "${NEW_FMAP_NFIELD}" -ne 4 ]; then
@@ -1818,17 +1826,23 @@ function preserve_sections() {
 		NEW_FMAP_SIZE=$(echo "${NEW_FMAP}" | awk '{print $3}')
 		CUR_FMAP_IMG="${TEMP_DIR}/ec.cur.fmap.bin"
 		CUR_IMG="${TEMP_DIR}/ec.cur.bin"
-		info "Reading FMAP section from EC chip"
+
+		info "Checking for FMAP section at ${NEW_FMAP_OFFSET} in EC flash"
+
 		read_chip_partially "${CHIP_TYPE}" "${CHIP_CMD_PREFIX}"  \
 			"${NEW_FMAP_OFFSET}" "${NEW_FMAP_SIZE}" "${CUR_FMAP_IMG}"
 		if [[ -z "$(dump_fmap "${CUR_FMAP_IMG}" -e FMAP)" ]]; then
-			info "FMAP section read failed, reading complete image"
+
+			info "FMAP not found at ${NEW_FMAP_OFFSET} in EC flash"
+			info "Reading entire EC flash"
+
 			read_chip "${CHIP_TYPE}" "${CHIP_CMD_PREFIX}" "${CUR_IMG}"
 			check_preserve_sections_not_present "${CUR_IMG}"  \
 				"${NEW_IMG}" "${TEMP_DIR}" || die
 			preserve_sections_with_cur_image "${CUR_IMG}" "${NEW_IMG}" "${TEMP_DIR}"
 		else
-			info "FMAP read is successful from EC flash"
+			info "FMAP found at ${NEW_FMAP_OFFSET} in EC flash"
+
 			check_preserve_sections_not_present "${CUR_FMAP_IMG}"  \
 				"${NEW_IMG}" "${TEMP_DIR}" || die
 			preserve_sections_with_fmap_image "${CUR_FMAP_IMG}"  \
@@ -1837,6 +1851,11 @@ function preserve_sections() {
 		fi
 	)
 }
+
+#
+# Verify all sections to be preserved in current image have
+# a corresponding section in the new image.
+#
 
 function check_preserve_sections_not_present() {
 	local CUR_IMG
@@ -1848,11 +1867,16 @@ function check_preserve_sections_not_present() {
 	TEMP_DIR=${3:?"missing arg 3: Temp directory path"}
 
 	if ! dump_fmap "${CUR_IMG}" -e | grep -q ' preserve'; then
-		info "No sections are being preserved"
+		info "No sections need to be preserved"
 	else
 		check_preserve_sections_presence "${CUR_IMG}" "${NEW_IMG}" "${TEMP_DIR}"
 	fi
 }
+
+#
+# Use an fmap file as index of sections to be preserved from EC flash to
+# the new image
+#
 
 function preserve_sections_with_fmap_image() {
 	local CUR_FMAP_IMG
@@ -1881,14 +1905,21 @@ function preserve_sections_with_fmap_image() {
 			SEC_FMAP_DUMP=$(dump_fmap "${CUR_FMAP_IMG}" -e "${line}")
 			SEC_OFFSET=$(echo "${SEC_FMAP_DUMP}" | awk '{print $2}')
 			SEC_SIZE=$(echo "${SEC_FMAP_DUMP}" | awk '{print $3}')
-			info "Reading ${line} section from EC chip"
+
+			info "Reading ${line} section from EC flash"
 			read_chip_partially "${CHIP_TYPE}" "${CHIP_CMD_PREFIX}"  \
 				"${SEC_OFFSET}" "${SEC_SIZE}" "${SEC_IMG}"
+
 			info "Preserving ${line} section in new image"
 			cbfstool "${NEW_IMG}" write -r "${line}" -f "${SEC_IMG}"
 		done
 	)
 }
+
+#
+# For all sections in the current image that need to be preserved,
+# copy section to the new image.
+#
 
 function preserve_sections_with_cur_image() {
 	local CUR_IMG
@@ -1906,9 +1937,15 @@ function preserve_sections_with_cur_image() {
 		do
 			local SEC_IMG
 
-			info "Preserving ${line} section on EC chip"
+			#info "Preserving ${line} section in EC flash"
+			info "Copying ${line} section from current image to new image"
+
 			SEC_IMG="${TEMP_DIR}/ec.cur.${line}.bin"
 			cbfstool "${CUR_IMG}" read -r "${line}" -f "${SEC_IMG}"
+info ================================================================
+info SECTION DATA:
+hexdump "${SEC_IMG}"
+
 			cbfstool "${NEW_IMG}" write -r "${line}" -f "${SEC_IMG}"
 		done
 	)
@@ -1943,6 +1980,9 @@ function read_chip_partially() {
 	else
 		die "${MSG_CHIP_READ_INVALID}"
 	fi
+
+	info ================================================================
+	hexdump ${FILE_PATH}
 }
 
 function read_chip() {
@@ -1967,6 +2007,11 @@ function read_chip() {
 	fi
 }
 
+#
+# Verify all sections to be preserved in current image have
+# a corresponding section in the new image.
+#
+
 function check_preserve_sections_presence() {
 	local CUR_IMG
 	local NEW_IMG
@@ -1982,7 +2027,8 @@ function check_preserve_sections_presence() {
 		while read -r line
 		do
 			if [[ -z "$(dump_fmap "${NEW_IMG}" -e "${line}")" ]]; then
-				die "New image don't contain the ${line} section"
+				die "The current image requires the ${line} section to be " \
+					"preserved, but the new image has no such section"
 			fi
 		done
 	)
