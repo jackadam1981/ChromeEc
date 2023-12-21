@@ -5,6 +5,8 @@ cmake_minimum_required(VERSION 3.20.1)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
+zephyr_library_sources("src/usbc_stubs.c")
+
 if(DEFINED CONFIG_BOARD_BROX)
 	project(brox)
 	add_subdirectory(brox)
