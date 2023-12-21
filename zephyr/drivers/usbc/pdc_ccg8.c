@@ -244,6 +244,12 @@ static int ccg_reconnect(const struct device *dev)
 	return 0;
 }
 
+static int ccg_update_retimer(const struct device *dev, bool enable)
+{
+	return ccg_write(dev, PD_ICL_CTRL_REG, PD_ICL_CTRL_REG_LEN,
+			 (uint8_t *)&enable);
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.enable = ccg_enable,
 	.get_ucsi_version = ccg_get_ucsi_version,
@@ -272,6 +278,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_pd_version = ccg_get_pd_version,
 	.set_power_level = ccg_set_power_level,
 	.reconnect = ccg_reconnect,
+	.update_retimer = ccg_update_retimer,
 };
 
 /*
