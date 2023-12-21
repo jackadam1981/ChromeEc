@@ -164,3 +164,7 @@
 			<&gpiom 6 GPIO_INPUT_PULL_DOWN>;
 	};
 };
+
+&i2c0 {
+	prescale-scl-low = <4>;
+};
