@@ -9,8 +9,6 @@
 
 #include <zephyr/dt-bindings/clock/npcx_clock.h>
 
-#include <stdnoreturn.h>
-
 /* Modules Map */
 #define WDT_NODE DT_INST(0, microchip_xec_watchdog)
 #define STRUCT_WDT_REG_BASE_ADDR ((struct wdt_regs *)(DT_REG_ADDR(WDT_NODE)))
@@ -33,7 +31,7 @@
 	(MCHP_QMSPI_STS_TXB_ERR | MCHP_QMSPI_STS_RXB_ERR | \
 	 MCHP_QMSPI_STS_PROG_ERR | MCHP_QMSPI_STS_LDMA_RX_ERR)
 
-noreturn void __keep __attribute__((section(".code_in_sram2")))
+__noreturn void __keep __attribute__((section(".code_in_sram2")))
 __start_qspi(uint32_t resetVectAddr)
 {
 	struct pcr_regs *pcr = STRUCT_PCR_REG_BASE_ADDR;

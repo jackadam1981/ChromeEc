@@ -9,8 +9,6 @@
 #include <zephyr/dt-bindings/clock/npcx_clock.h>
 #include <zephyr/sys/__assert.h>
 
-#include <stdnoreturn.h>
-
 /* Modules Map */
 #define NPCX_PMC_BASE_ADDR 0x4000D000
 #define NPCX_GDMA_BASE_ADDR 0x40011000
@@ -45,7 +43,7 @@
 
 /******************************************************************************/
 /* Sysjump utilities in low power ram for npcx series. */
-noreturn void __keep __attribute__((section(".lowpower_ram2")))
+__noreturn void __keep __attribute__((section(".lowpower_ram2")))
 __start_gdma(uint32_t exeAddr)
 {
 	/* Enable GDMA now */

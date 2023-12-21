@@ -4,6 +4,7 @@
  */
 
 #include "bbram.h"
+#include "common.h"
 #include "drivers/cros_system.h"
 #include "gpio/gpio_int.h"
 #include "rom_chip.h"
@@ -224,7 +225,7 @@ static void system_npcx_set_wakeup_gpios_before_hibernate(void)
  * Do not use global variables or call functions since we have turned off
  * the other ram blocks.
  */
-noreturn void __keep __attribute__((section(".lfw.hiber")))
+__noreturn void __keep __attribute__((section(".lfw.hiber")))
 system_npcx_hibernate_by_lfw_in_last_ram(const struct device *dev,
 					 uint32_t pd_ram_mask)
 {
