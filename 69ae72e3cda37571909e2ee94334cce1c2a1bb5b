@@ -69,6 +69,30 @@
       },
       "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92229d1_cb56a8fc",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-12-21T06:35:36Z",
+      "side": 1,
+      "message": "Moved tablet mode config to new file. Shall I  add `PLATFORM_EC_EXTERNAL_MOTIONSENSE`? And make tablet mode config dependent on  `PLATFORM_EC_MOTIONSENSE` or `PLATFORM_EC_EXTERNAL_MOTIONSENSE`? So boards are clamshell only couldn\u0027t set tablet mode.",
+      "parentUuid": "b0c6ec63_f9c86203",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
