@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e139efb9_27a66325",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-21T17:28:14Z",
+      "side": 1,
+      "message": "The intention was to use port number. Yes, the order of the DT nodes is not guaranteed. So instead, would it be okay to use similar approach to this https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/usb_pd/pd_task_intel_altmode.c;l\u003d39  which guarantees the order?",
+      "parentUuid": "125d61b8_c1ff05cc",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "effc5e84_d9462bc5",
         "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
         "patchSetId": 19
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-20T22:08:25Z",
       "side": 1,
       "message": "Is there a bug number for this?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 61
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8258ebb_729fd0a4",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-21T17:28:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "effc5e84_d9462bc5",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -106,6 +154,30 @@
       "writtenOn": "2023-12-20T22:08:25Z",
       "side": 1,
       "message": "This property isn\u0027t used.  Zephyr supports attaching multiple callbacks to the same GPIO pin, so the typical way to handle this is to ensure the ISR on a specific device checks if there is an interrupt event - if not the ISR just exits.\n\nNote that this does requires level sensitive interrupt support by the GPIO controller, and not all GPIO controller support this.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "839af239_9ca1dddd",
+        "filename": "zephyr/dts/bindings/usbc/pd/infineon,ccg8.yaml",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-21T17:28:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "38f53c12_42042da5",
       "range": {
         "startLine": 17,
         "startChar": 0,
