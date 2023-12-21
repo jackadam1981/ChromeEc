@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9760b26_116829ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-21T17:32:06Z",
+      "side": 1,
+      "message": "Tristan, In depthcharge, you\u0027ll need to register a call back and wait for the command_complete bit to get set before reading the PD information.",
+      "revId": "82b52821838c53fad9416f474c66366b3040bfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
