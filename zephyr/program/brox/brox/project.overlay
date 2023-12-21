@@ -28,13 +28,21 @@ i2c3ALT: &i2c3 {
 
 /* Brox overrides follow... */
 
+/{
+        batteries {
+                default_battery: lgc_ap18c8k {
+                        compatible = "lgc,ap18c8k", "battery-smart";
+                };
+        };
+};
+
 /*
  * When CBI in flash is enabled, setup RO flash layout as follows:
  *   RO binary:    0x00000:0x5DFFF
  *   PSTATE block: 0x5E000:0x5EFFF
  *   CBI flash:    0x5F000:0x5FFFF
  */
-&pstate {
+ &pstate {
     offset = <(0x60000 - (0x1000 * 2))>;
     size = <0x1000>;
 };
