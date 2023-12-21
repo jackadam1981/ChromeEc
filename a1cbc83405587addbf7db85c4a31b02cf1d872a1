@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06d6fc22_ce25bffa",
+        "filename": "zephyr/program/brox/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-21T00:58:12Z",
+      "side": 1,
+      "message": "It\u0027s part of the MASK_ALL_POWER_GOOD, so it\u0027s needed to compile at the moment.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/subsys/ap_pwrseq/include/x86_power_signals.h;l\u003d32",
+      "parentUuid": "63c1f71d_e24fd17d",
+      "revId": "a1cbc83405587addbf7db85c4a31b02cf1d872a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63c1f71d_e24fd17d",
         "filename": "zephyr/program/brox/power_signals.dtsi",
         "patchSetId": 2
