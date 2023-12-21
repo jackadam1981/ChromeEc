@@ -234,6 +234,30 @@
       },
       "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61a50c0_dcc7f9f2",
+        "filename": "test/nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-12-21T17:54:24Z",
+      "side": 1,
+      "message": "why 63 is not a few? 😜 yes, I can change i+\u003d4 to i+\u003d16 or so. I think more is not less, it doesn\u0027t add much to run time. Values not divisible by 4 doesn\u0027t make difference - container size is always aligned, so it will be just waste of time.",
+      "parentUuid": "de87440c_4f67460b",
+      "range": {
+        "startLine": 1752,
+        "startChar": 0,
+        "endLine": 1763,
+        "endChar": 2
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
