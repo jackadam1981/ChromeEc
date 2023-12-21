@@ -210,6 +210,30 @@
       },
       "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de87440c_4f67460b",
+        "filename": "test/nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-21T17:41:13Z",
+      "side": 1,
+      "message": "I am still struggling to make sense of this. You get close to the page boundary when the 49 iterations are over. Why not just go over few value sizes, one which would bring you exactly to the page boundary, and one which sould take you over the page boundary, how could other sizes have any different effect?\n\nAlso, maybe it is worh trying values with sizes not divisible by 4?\n\nThere is `test_nvmem_tuple_capacity()` too - does it not fit the bill?",
+      "parentUuid": "ca73950a_4e5777c5",
+      "range": {
+        "startLine": 1752,
+        "startChar": 0,
+        "endLine": 1763,
+        "endChar": 2
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
