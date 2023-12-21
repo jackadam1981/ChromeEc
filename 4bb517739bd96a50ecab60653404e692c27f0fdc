@@ -249,6 +249,24 @@
       "parentUuid": "9e13fbb8_08e4d8c4",
       "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c7e3c2_049a1c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-21T07:54:32Z",
+      "side": 1,
+      "message": "#defines PLATFORM_EC_ACCEL_BMA4XX has define it at accel_bma4xx.h\nremove allow_config ad-hoc",
+      "parentUuid": "425e9443_0ffe6884",
+      "revId": "4bb517739bd96a50ecab60653404e692c27f0fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
