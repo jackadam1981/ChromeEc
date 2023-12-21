@@ -141,6 +141,30 @@
       },
       "revId": "3801ca1fd691bd64ea5bc29ca73a368fe5798f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a144b86_5877a6f1",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-21T16:23:41Z",
+      "side": 1,
+      "message": "Devin,\n\nI think the logic should look like:\n\n* Can\u0027t identify the battery OR\n* Can identify the battery but can\u0027t find a matching config:\n  * Set battery_conf to board_get_default_battery_type() and return battery_conf.\n* Can identify the battery and can find a matching config:\n  * Set battery_conf to the config and return battery_conf.\n\nAdditionally,\n* When a battery is attached (e.g. process_battery_present_change):\n  * Reset battery_conf \u003d NULL.\n\nPlease let me know if you want me to take over the fix.",
+      "parentUuid": "00be0e15_66c5d101",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 28
+      },
+      "revId": "3801ca1fd691bd64ea5bc29ca73a368fe5798f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
