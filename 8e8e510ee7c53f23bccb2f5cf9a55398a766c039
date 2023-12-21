@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa073af_1211ab73",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-12-21T20:10:48Z",
+      "side": 1,
+      "message": "Is this intent to fall back on `2*MSEC_PER_SEC` if `s5_inactivity_timeout` is zero? If so should these args be reversed?",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "8e8e510ee7c53f23bccb2f5cf9a55398a766c039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
