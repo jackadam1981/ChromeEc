@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e5eea1_f8a47031",
+        "filename": "zephyr/program/nissa/craaskov/src/hdmi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-21T09:30:01Z",
+      "side": 1,
+      "message": "no need to initialize this one",
+      "revId": "2f551f3a2d49fcdf7aea21d416f8635a3531770a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "211596cf_71e4632d",
+        "filename": "zephyr/program/nissa/craaskov/src/hdmi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-12-21T09:30:01Z",
+      "side": 1,
+      "message": "can you check for errors on this one?",
+      "revId": "2f551f3a2d49fcdf7aea21d416f8635a3531770a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
