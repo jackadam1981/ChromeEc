@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52fc0a6_30ad319b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-21T00:46:54Z",
+      "side": 1,
+      "message": "please cache this in a variable and use in lines 1006 and 1010.\n\nSo, the assumption is that the remaining space is divisible by 4, and `.data_offset` would never be set to `CONFIG_FLASH_BANK_SIZE`. Maybe it is safer to explicitly verify that there are exactly 4 bytes left.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 22,
+        "endLine": 1006,
+        "endChar": 38
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b26075_6e563ecb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-21T00:46:54Z",
+      "side": 1,
+      "message": "good idea to fill with one object instead of multiple (key,value) tuples",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 45
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118dd291_f067872e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3214,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-21T00:46:54Z",
+      "side": 1,
+      "message": "one variable per line please",
+      "range": {
+        "startLine": 3214,
+        "startChar": 1,
+        "endLine": 3214,
+        "endChar": 32
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d210ec_1e9d051f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-21T00:46:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this logic change: why would we want to reinit nvmem if compaction failed for whateveer reason?",
+      "range": {
+        "startLine": 3268,
+        "startChar": 0,
+        "endLine": 3271,
+        "endChar": 0
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467c4eee_e17bc41f",
+        "filename": "test/nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-21T00:46:54Z",
+      "side": 1,
+      "message": "I don\u0027t understand what\u0027s happening here: there are 64 iterations in the external loop and then 49 iterations in the internal loop, i.e. setvar is ivoked 64*49 times?\n\nIs the idea that `setvar()` in line 1761 would trigger compaction? What does this test demonstrate?",
+      "range": {
+        "startLine": 1752,
+        "startChar": 0,
+        "endLine": 1763,
+        "endChar": 2
+      },
+      "revId": "c3bdf733a0cc954c5bb6f08f44857f02b9d1a414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
