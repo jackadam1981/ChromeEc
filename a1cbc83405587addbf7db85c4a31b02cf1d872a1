@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef00926_48b4e38d",
+        "filename": "zephyr/program/brox/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-21T01:00:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "51023489_fb1b5aab",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 41
+      },
+      "revId": "a1cbc83405587addbf7db85c4a31b02cf1d872a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "717ced84_27cde2eb",
@@ -95,6 +119,30 @@
       "writtenOn": "2023-12-18T23:44:25Z",
       "side": 1,
       "message": "We can remove this, we used this flag in `nissa` to keep ADC on during power up/down sequence.",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "a1cbc83405587addbf7db85c4a31b02cf1d872a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f20144_32a86481",
+        "filename": "zephyr/program/brox/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-21T01:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717ced84_27cde2eb",
       "range": {
         "startLine": 25,
         "startChar": 12,
