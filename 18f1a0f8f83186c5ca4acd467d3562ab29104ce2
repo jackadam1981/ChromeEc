@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58dfe05f_06454e46",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-22T01:25:40Z",
+      "side": 1,
+      "message": "`ret` is already declared as `int` in line 339",
+      "range": {
+        "startLine": 347,
+        "startChar": 9,
+        "endLine": 347,
+        "endChar": 18
+      },
+      "revId": "18f1a0f8f83186c5ca4acd467d3562ab29104ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
