@@ -1806,5 +1806,6 @@ void run_test(void)
 	 * RUN_TEST(test_malloc_blocking);
 	 */
 	RUN_TEST(test_nvmem_flash_failure);
+	RUN_TEST(test_configured_nvmem);
 	test_print_result();
 }
