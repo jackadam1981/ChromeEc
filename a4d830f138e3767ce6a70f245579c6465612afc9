@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07625ee_5c57efbc",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-22T21:32:26Z",
+      "side": 1,
+      "message": "Can you please explain this MAX? If CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT \u003e bi-\u003eprecharge_current, bi-\u003eprecharge_current will be ignored. Is that intended?",
+      "range": {
+        "startLine": 799,
+        "startChar": 22,
+        "endLine": 799,
+        "endChar": 25
+      },
+      "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
