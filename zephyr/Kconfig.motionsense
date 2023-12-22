@@ -189,6 +189,11 @@ config PLATFORM_EC_GESTURE_HOST_DETECTION
 	help
 	  Enable gesture host interface
 
+config PLATFORM_EC_MOTIONSENSE_PWD_IN_S3
+	bool "Gesture host detection"
+	help
+	  The power supply of the sensor is in s3
+
 rsource "Kconfig.sensor_devices"
 rsource "Kconfig.body_detection"
 

@@ -331,7 +331,9 @@ static void motion_sense_switch_sensor_rate(void)
 				 * Set ODR accordingly in case data sampling
 				 * is not supported
 				 */
+			#ifndef CONFIG_PLATFORM_EC_MOTIONSENSE_PWD_IN_S3
 				motion_sense_set_data_rate(sensor);
+			#endif
 				sensor->state = SENSOR_NOT_INITIALIZED;
 			}
 		}
