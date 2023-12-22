@@ -1180,8 +1180,6 @@ static void revive_battery(int *need_static)
 	} else if (curr.state == ST_PRECHARGE || battery_seems_dead ||
 		   battery_was_removed) {
 		CPRINTS("battery woke up");
-		/* Update the battery-specific values */
-		batt_info = battery_get_info();
 		*need_static = 1;
 	}
 
