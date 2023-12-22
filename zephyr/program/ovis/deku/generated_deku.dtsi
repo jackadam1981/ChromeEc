@@ -1,0 +1,114 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ */
+
+/ {
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_temp_sensor_3: temp_sensor_3 {
+			enum-name = "ADC_TEMP_SENSOR_3";
+			io-channels = <&adc0 7>;
+		};
+			adc_temp_sensor_4: temp_sensor_4 {
+			enum-name = "ADC_TEMP_SENSOR_4";
+			io-channels = <&adc0 9>;
+		};
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_usb_c3_rt_3p3_sx_en: usb_c3_rt_3p3_sx_en {
+			gpios = <&gpio1 4 GPIO_ODR_LOW>;
+		};
+		gpio_usb_c3_rt_rst_l: usb_c3_rt_rst_l {
+			gpios = <&gpio1 6 GPIO_OUTPUT>;
+		};
+		gpio_usb_c3_ppc_int_odl: usb_c3_ppc_int_odl {
+			gpios = <&gpio8 0 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C3_PPC_INT_ODL";
+		};
+		gpio_ec_usb_c0_sbu_mux_flt_odl: ec_usb_c0_sbu_mux_flt_odl {
+			gpios = <&gpio8 3 GPIO_INPUT>;
+		};
+		gpio_usb_c3_rt_int_odl: usb_c3_rt_int_odl {
+			gpios = <&gpio9 4 GPIO_OUTPUT>;
+		};
+		gpio_usb_c3_tcpc_int_odl: usb_c3_tcpc_int_odl {
+			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			enum-name = "GPIO_USB_C3_TCPC_INT_ODL";
+		};
+		gpio_ec_soc_rec_switch_odl: ec_soc_rec_switch_odl {
+			gpios = <&gpioe 3 GPIO_ODR_LOW>;
+			enum-name = "GPIO_PCH_REC_SWITCH_L";
+		};
+		gpio_ec_spare_gpiod7: ec_spare_gpiod7 {
+			gpios = <&gpiod 7 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio02: ec_spare_gpio02 {
+			gpios = <&gpio0 2 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio85: ec_spare_gpio85 {
+			gpios = <&gpio8 5 GPIO_OUTPUT>;
+		};
+		gpio_gsc_flash_wp_odl: gsc_flash_wp_odl {
+			gpios = <&gpioa 1 GPIO_ODR_HIGH>;
+		};
+		gpio_ec_spare_gpiod3: ec_spare_gpiod3 {
+			gpios = <&gpiod 3 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio74: ec_spare_gpio74 {
+			gpios = <&gpio7 4 GPIO_OUTPUT>;
+		};
+		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
+			gpios = <&gpio5 0 GPIO_INPUT>;
+		};
+		gpio_ec_spare_gpio17: ec_spare_gpio17 {
+			gpios = <&gpio1 7 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio23: ec_spare_gpio23 {
+			gpios = <&gpio2 3 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio24: ec_spare_gpio24 {
+			gpios = <&gpio2 4 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio25: ec_spare_gpio25 {
+			gpios = <&gpio2 5 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio67: ec_spare_gpio67 {
+			gpios = <&gpio6 7 GPIO_ODR_HIGH>;
+		};
+		gpio_usb_a4_oc_odl: usb_a4_oc_odl {
+			gpios = <&gpio2 6 GPIO_INPUT>;
+		};
+		gpio_ec_spare_gpio36: ec_spare_gpio36 {
+			gpios = <&gpio3 6 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio06: ec_spare_gpio06 {
+			gpios = <&gpio0 6 GPIO_OUTPUT>;
+		};
+		gpio_ec_spare_gpio07: ec_spare_gpio07 {
+			gpios = <&gpio0 7 GPIO_OUTPUT>;
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_usb_c3: ec_i2c_usb_c3 {
+			i2c-port = <&i2c0_0>;
+			enum-names = "I2C_USB_C3";
+		};
+	};
+};
+
+&i2c0_0 {
+	status = "okay";
+};
+&i2c_ctrl0 {
+	status = "okay";
+};

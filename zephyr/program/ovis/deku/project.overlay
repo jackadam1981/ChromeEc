@@ -1,4 +1,4 @@
-/* Copyright 2023 The ChromiumOS Authors
+/* Copyright 2024 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -10,12 +10,9 @@
 #include "../temp_sensors.dtsi"
 #include "../usbc.dtsi"
 
-/* Ovis project DTS includes */
+/* Deku project DTS includes */
 #include "led_pins.dtsi"
-#include "generated_ovis.dtsi"
-#include "ovis.dtsi"
+#include "generated_deku.dtsi"
+#include "deku.dtsi"
 #include "power_signals.dtsi"
-/*
- * TODO(b/285166688): need led_policy.dtsi once that has been
- * implemented to match Ovis requirements
- */
+#include "usbc_deku.dtsi"

@@ -62,20 +62,11 @@
 		gpio_ec_spare_gpio01: ec_spare_gpio01 {
 			gpios = <&gpio0 1 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpio14: ec_spare_gpio14 {
-			gpios = <&gpio1 4 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpio15: ec_spare_gpio15 {
 			gpios = <&gpio1 5 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpio16: ec_spare_gpio16 {
-			gpios = <&gpio1 6 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpio33: ec_spare_gpio33 {
 			gpios = <&gpio3 3 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpio50: ec_spare_gpio50 {
-			gpios = <&gpio5 0 GPIO_OUTPUT>;
 		};
 		gpio_ec_spare_gpio63: ec_spare_gpio63 {
 			gpios = <&gpio6 3 GPIO_OUTPUT>;
@@ -86,26 +77,14 @@
 		gpio_ec_spare_gpio73: ec_spare_gpio73 {
 			gpios = <&gpio7 3 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpio80: ec_spare_gpio80 {
-			gpios = <&gpio8 0 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpio81: ec_spare_gpio81 {
 			gpios = <&gpio8 1 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpio83: ec_spare_gpio83 {
-			gpios = <&gpio8 3 GPIO_OUTPUT>;
 		};
 		gpio_ec_spare_gpio93: ec_spare_gpio93 {
 			gpios = <&gpio9 3 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpio94: ec_spare_gpio94 {
-			gpios = <&gpio9 4 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpio95: ec_spare_gpio95 {
 			gpios = <&gpio9 5 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpioa1: ec_spare_gpioa1 {
-			gpios = <&gpioa 1 GPIO_OUTPUT>;
 		};
 		gpio_ec_spare_gpioa2: ec_spare_gpioa2 {
 			gpios = <&gpioa 2 GPIO_OUTPUT>;
@@ -116,32 +95,14 @@
 		gpio_ec_spare_gpiob1: ec_spare_gpiob1 {
 			gpios = <&gpiob 1 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpiob4: ec_spare_gpiob4 {
-			gpios = <&gpiob 4 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpiob5: ec_spare_gpiob5 {
-			gpios = <&gpiob 5 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpioc2: ec_spare_gpioc2 {
 			gpios = <&gpioc 2 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpioc7: ec_spare_gpioc7 {
-			gpios = <&gpioc 7 GPIO_OUTPUT>;
 		};
 		gpio_ec_spare_gpiod2: ec_spare_gpiod2 {
 			gpios = <&gpiod 2 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpioe1: ec_spare_gpioe1 {
-			gpios = <&gpioe 1 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpioe3: ec_spare_gpioe3 {
-			gpios = <&gpioe 3 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpioe4: ec_spare_gpioe4 {
 			gpios = <&gpioe 4 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpiof0: ec_spare_gpiof0 {
-			gpios = <&gpiof 0 GPIO_OUTPUT>;
 		};
 		gpio_ec_spare_gpiof3: ec_spare_gpiof3 {
 			gpios = <&gpiof 3 GPIO_OUTPUT>;
@@ -161,12 +122,6 @@
 		gpio_ec_spare_gpo86: ec_spare_gpo86 {
 			gpios = <&gpio8 6 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_psl_gpo: ec_spare_psl_gpo {
-			gpios = <&gpiod 7 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_psl_in_3: ec_spare_psl_in_3 {
-			gpios = <&gpio0 2 GPIO_OUTPUT>;
-		};
 		gpio_en_pp5000_fan: en_pp5000_fan {
 			gpios = <&gpio6 1 GPIO_OUTPUT_LOW>;
 		};
@@ -174,18 +129,12 @@
 			gpios = <&gpiob 6 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
 		};
-		gpio_en_z1_rails: en_z1_rails {
-			gpios = <&gpio8 5 GPIO_OUTPUT>;
-		};
 		gpio_en_usb_a_vbus: en_usb_a_vbus {
 			gpios = <&gpio8 2 GPIO_OUTPUT>;
 		};
 		gpio_gsc_ec_rec_btn_odl:  gsc_ec_rec_btn_odl {
 			gpios = <&gpio2 2 GPIO_INPUT>;
 			enum-name = "GPIO_RECOVERY_L";
-		};
-		gpio_gsc_flash_wp_odl: gsc_flash_wp_odl {
-			gpios = <&gpio6 0 GPIO_ODR_HIGH>;
 		};
 		gpio_imvp92_vrrdy_od: imvp92_vrrdy_od {
 			gpios = <&gpio4 3 GPIO_INPUT>;
@@ -199,12 +148,6 @@
 		gpio_mech_pwr_btn_odl: mech_pwr_btn_odl {
 			gpios = <&gpio0 0 GPIO_INPUT>;
 			enum-name = "GPIO_POWER_BUTTON_L";
-		};
-		gpio_pg_mem_vdd: pg_mem_vdd {
-			gpios = <&gpiod 3 GPIO_INPUT>;
-		};
-		gpio_pg_pp1250_soc: pg_pp1250_soc {
-			gpios = <&gpio7 4 GPIO_INPUT>;
 		};
 		gpio_seq_ec_all_sys_pg_od: seq_ec_all_sys_pg_od {
 			gpios = <&gpiof 4 GPIO_INPUT>;
@@ -231,50 +174,17 @@
 		gpio_sys_rst_odl: sys_rst_odl {
 			gpios = <&gpioc 5 GPIO_INPUT>;
 		};
-		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
-			gpios = <&gpiod 5 GPIO_INPUT>;
-		};
-		gpio_usb_a0_low_pwr_l: usb_a0_low_pwr_l {
-			gpios = <&gpio1 7 GPIO_ODR_HIGH>;
-		};
 		gpio_usb_a0_oc_odl: usb_a0_oc_odl {
 			gpios = <&gpio2 7 GPIO_INPUT>;
-		};
-		gpio_usb_a0_status_odl: usb_a0_status_odl {
-			gpios = <&gpio2 3 GPIO_INPUT_PULL_UP>;
-		};
-		gpio_usb_a1_low_pwr_l: usb_a1_low_pwr_l {
-			gpios = <&gpio2 0 GPIO_ODR_HIGH>;
 		};
 		gpio_usb_a1_oc_odl: usb_a1_oc_odl {
 			gpios = <&gpio3 0 GPIO_INPUT>;
 		};
-		gpio_usb_a1_status_odl: usb_a1_status_odl {
-			gpios = <&gpio2 4 GPIO_INPUT_PULL_UP>;
-		};
-		gpio_usb_a2_low_pwr_l: usb_a2_low_pwr_l {
-			gpios = <&gpio2 1 GPIO_ODR_HIGH>;
-		};
-		gpio_usb_a2_oc_odl: usb_a2_oc_odl {
-			gpios = <&gpio3 1 GPIO_INPUT>;
-		};
-		gpio_usb_a2_status_odl: usb_a2_status_odl {
-			gpios = <&gpio2 5 GPIO_INPUT_PULL_UP>;
-		};
-		gpio_usb_a3_low_pwr_l: usb_a3_low_pwr_l {
-			gpios = <&gpio6 7 GPIO_ODR_HIGH>;
-		};
 		gpio_usb_a3_oc_odl: usb_a3_oc_odl {
 			gpios = <&gpiof 1 GPIO_INPUT>;
 		};
-		gpio_usb_a3_status_odl: usb_a3_status_odl {
-			gpios = <&gpio2 6 GPIO_INPUT_PULL_UP>;
-		};
 		gpio_usb_c_oc_odl: usb_c_oc_odl {
 			gpios = <&gpioa 3 GPIO_INPUT>;
-		};
-		gpio_usb_c0_frs_en: usb_c0_frs_en {
-			gpios = <&gpio3 6 GPIO_OUTPUT>;
 		};
 		gpio_usb_c0_ppc_int_odl: usb_c0_ppc_int_odl {
 			gpios = <&gpio6 2 GPIO_INPUT>;
@@ -293,10 +203,6 @@
 			gpios = <&gpioe 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_USB_C0_TCPC_INT_ODL";
 		};
-
-		gpio_usb_c1_frs_en: usb_c1_frs_en {
-			gpios = <&gpio0 6 GPIO_OUTPUT>;
-		};
 		gpio_usb_c1_ppc_int_odl: usb_c1_ppc_int_odl {
 			gpios = <&gpiof 5 GPIO_INPUT>;
 			enum-name = "GPIO_USB_C1_PPC_INT_ODL";
@@ -313,9 +219,6 @@
 		gpio_usb_c1_tcpc_int_odl: usb_c1_tcpc_int_odl {
 			gpios = <&gpio3 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_USB_C1_TCPC_INT_ODL";
-		};
-		gpio_usb_c2_frs_en: usb_c2_frs_en {
-			gpios = <&gpio0 7 GPIO_OUTPUT>;
 		};
 		gpio_usb_c2_ppc_int_odl: usb_c2_ppc_int_odl {
 			gpios = <&gpioc 6 GPIO_INPUT>;
@@ -388,7 +291,6 @@
 &i2c_ctrl3 {
 	status = "okay";
 };
-
 &i2c_ctrl7 {
 	status = "okay";
 };
