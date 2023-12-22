@@ -2003,6 +2003,24 @@ static enum ec_error_list restore_ram_index_space(const uint8_t *pad,
 	return EC_SUCCESS;
 }
 
+static enum ec_error_list restore_tpm2b_space(const uint8_t *pad, size_t size,
+					      size_t space_size, TPM2B *cached)
+{
+	uint16_t index_size;
+
+	/* Check that container size is valid. */
+	if (size < sizeof(cached->size) || size > space_size)
+		return EC_ERROR_UNKNOWN;
+
+	/* Get TPM2B size from size field and check consistency. */
+	memcpy(&index_size, pad, sizeof(index_size));
+	if (index_size + sizeof(index_size) > size)
+		return EC_ERROR_UNKNOWN;
+
+	memcpy(cached, pad, size);
+	return EC_SUCCESS;
+}
+
 /* Restore a reserved object found in flash on initialization. */
 static enum ec_error_list restore_reserved(void *pad, size_t size,
 					   uint8_t *bitmap)
@@ -2030,6 +2048,21 @@ static enum ec_error_list restore_reserved(void *pad, size_t size,
 
 		case NV_STATE_RESET:
 			rv = unmarshal_state_reset(pad, size, cached);
+			break;
+
+		case NV_OWNER_POLICY:
+		case NV_ENDORSEMENT_POLICY:
+		case NV_LOCKOUT_POLICY:
+		case NV_OWNER_AUTH:
+		case NV_ENDORSEMENT_AUTH:
+		case NV_LOCKOUT_AUTH:
+		case NV_EP_SEED:
+		case NV_SP_SEED:
+		case NV_PP_SEED:
+		case NV_PH_PROOF:
+		case NV_SH_PROOF:
+		case NV_EH_PROOF:
+			rv = restore_tpm2b_space(pad, size, ri.size, cached);
 			break;
 
 		case NV_RAM_INDEX_SPACE:
