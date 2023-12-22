@@ -1393,7 +1393,9 @@ static int test_tpm_nvmem_modify_reserved_objects(void)
 
 		/* Prepare a new value for the variable. */
 		memcpy(new_values + i, addr_in_cache, copy_size);
-		for (k = 0; k < copy_size; k++)
+
+		/* Avoid changing TPM2B size for large spaces. */
+		for (k = (copy_size <= 2) ? 0 : 2; k < copy_size; k++)
 			((uint8_t *)(new_values + i))[k] ^= 0x55;
 
 		/* Update value in the cache. */

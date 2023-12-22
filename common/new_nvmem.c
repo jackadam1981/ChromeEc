@@ -2008,6 +2008,39 @@ static enum ec_error_list restore_ram_index_space(const uint8_t *pad,
 	return EC_SUCCESS;
 }
 
+/* Ensure we don't need to check for overflow. */
+BUILD_ASSERT(sizeof(((TPM2B *)0)->size) == sizeof(uint16_t));
+
+/*
+ * Restore NV reserved space containing TPM2B value. Check that TPM2B value
+ * size fits allocated space size.
+ */
+static enum ec_error_list restore_tpm2b_space(const uint8_t *pad, size_t size,
+					      size_t space_size, TPM2B *cached)
+{
+	typeof(cached->size) index_size;
+
+	/* Check that container size is large enough to contain TPM2B size, but
+	 * not larger than allocated space.
+	 */
+	if (size < sizeof(cached->size) || size > space_size)
+		return EC_ERROR_UNKNOWN;
+
+	/* Get TPM2B size from size field. */
+	memcpy(&index_size, pad + offsetof(TPM2B, size), sizeof(index_size));
+
+	/* Check that TPM2B size is less than the size of the container (and
+	 * implicitly allocated space size). It is ok for TPM2B value to be
+	 * less than allocated space. No overflow can happen as index_size is
+	 * 16-bit due to TPM2B definition.
+	 */
+	if (sizeof(index_size) + (uint32_t)index_size > size)
+		return EC_ERROR_UNKNOWN;
+
+	memcpy(cached, pad, size);
+	return EC_SUCCESS;
+}
+
 /* Restore a reserved object found in flash on initialization. */
 static enum ec_error_list restore_reserved(void *pad, size_t size,
 					   uint8_t *bitmap)
@@ -2035,6 +2068,21 @@ static enum ec_error_list restore_reserved(void *pad, size_t size,
 
 		case NV_STATE_RESET:
 			rv = unmarshal_state_reset(pad, size, cached);
+			break;
+
+		case NV_OWNER_POLICY:
+		case NV_ENDORSEMENT_POLICY:
+		case NV_LOCKOUT_POLICY:
+		case NV_OWNER_AUTH:
+		case NV_ENDORSEMENT_AUTH:
+		case NV_LOCKOUT_AUTH:
+		case NV_EP_SEED:
+		case NV_SP_SEED:
+		case NV_PP_SEED:
+		case NV_PH_PROOF:
+		case NV_SH_PROOF:
+		case NV_EH_PROOF:
+			rv = restore_tpm2b_space(pad, size, ri.size, cached);
 			break;
 
 		case NV_RAM_INDEX_SPACE:
