@@ -1,0 +1,16 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Ovis program common DTSI includes */
+#include "../fan.dtsi"
+#include "../temp_sensors.dtsi"
+
+/* Deku project DTS includes */
+#include "gpio.dtsi"
+#include "interrupts.dtsi"
+#include "power_signals.dtsi"
+#include "deku.dtsi"
+#include "led_pins.dtsi"
+#include "usbc_deku.dtsi"
