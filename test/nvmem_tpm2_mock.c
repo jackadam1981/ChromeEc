@@ -53,25 +53,36 @@ void NvGetReserved(UINT32 index, NV_RESERVED_ITEM *ri)
 {
 	uint32_t index_size;
 
-	if (index >= ARRAY_SIZE(res_sizes)) {
-		ri->size = 0;
+	ri->size = 0;
+	if (index >= ARRAY_SIZE(res_sizes))
 		return;
-	}
 
 	ri->offset = res_addrs[index];
-	if (index != NV_RAM_INDEX_SPACE) {
+	if (index < NV_RESERVE_LAST) {
 		ri->size = res_sizes[index];
 		return;
 	}
 
-	memcpy(&index_size, nvmem_cache_base(NVMEM_TPM) + ri->offset,
-	       sizeof(index_size));
+	switch (index) {
+	case NV_RAM_INDEX_SPACE:
+		/*
+		 * This is a request for the RAM index space, which is a
+		 * concatenation of the 4 byte size field and the actual RAM
+		 * index contents field. For the purposes of this function both
+		 * fields are considered as single space with the size equal 4 +
+		 * the value stored at s_ramIndexSize.
+		 */
+		memcpy(&index_size, nvmem_cache_base(NVMEM_TPM) + ri->offset,
+		       sizeof(index_size));
+		if (index_size > RAM_INDEX_SPACE)
+			index_size = 0;
+		ri->size = index_size + sizeof(index_size);
+		return;
 
-	if (index_size == ~0)
-		/* Must be starting with empty flash memeory. */
-		index_size = 0;
-
-	ri->size = index_size + sizeof(index_size);
+	case NV_MAX_COUNTER:
+		ri->size = res_sizes[index];
+		return;
+	}
 }
 
 UINT16 UINT16_Marshal(UINT16 *source, BYTE **buffer, INT32 *size)
