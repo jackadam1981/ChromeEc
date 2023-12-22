@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80892fb5_ab5af3ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-12-22T03:46:18Z",
+      "side": 1,
+      "message": "Fix motion sensor communication failure during AP shutdown. Sensors on S3 rails lose power when AP shuts down, causing i2c communication to fail.",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "4f2341cc0aafda143f36ffdb6c76fff98f360699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
