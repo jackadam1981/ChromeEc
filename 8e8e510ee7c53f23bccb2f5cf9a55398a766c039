@@ -22,6 +22,30 @@
       },
       "revId": "8e8e510ee7c53f23bccb2f5cf9a55398a766c039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4391bb_97e1dff7",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-23T20:50:30Z",
+      "side": 1,
+      "message": "Yes, if the `s5-inactivity-timoeut` property is 0, then this code sets a 2000 ms timeout.\n\nI confirmed this is working as expected.  `COND_CODE_0` expands the 2nd parameter `2*MSEC` when `s5-inactivity-timoeut` is 0.  Otherwise, is expands to `s5-inactivity-timoeut * MSEC`.",
+      "parentUuid": "5aa073af_1211ab73",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "8e8e510ee7c53f23bccb2f5cf9a55398a766c039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
