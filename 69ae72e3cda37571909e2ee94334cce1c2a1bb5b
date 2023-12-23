@@ -93,6 +93,30 @@
       },
       "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf138c24_b7a941da",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-23T20:17:11Z",
+      "side": 1,
+      "message": "I don\u0027t think PLATFORM_EC_EXTERNAL_MOTIONSENSE is needed.",
+      "parentUuid": "e92229d1_cb56a8fc",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "69ae72e3cda37571909e2ee94334cce1c2a1bb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

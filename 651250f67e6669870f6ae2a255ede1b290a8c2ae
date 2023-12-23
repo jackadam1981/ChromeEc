@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c62ff7d2_59a4a245",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-23T20:17:11Z",
+      "side": 1,
+      "message": "Add `default if PLATFORM_EC_MOTIONSENSE`",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "651250f67e6669870f6ae2a255ede1b290a8c2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
