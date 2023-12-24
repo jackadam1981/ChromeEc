@@ -8525,7 +8525,65 @@ cmd_battery_vendor_param_usage:
 	return -1;
 }
 
-static void batt_conf_dump(const struct board_batt_params *conf,
+static void batt_conf_dump_in_json(const struct board_batt_params *conf,
+			   const char *manuf_name, const char *device_name,
+			   uint8_t struct_version)
+{
+	const struct fuel_gauge_info *fg = &conf->fuel_gauge;
+	const struct ship_mode_info *ship = &conf->fuel_gauge.ship_mode;
+	const struct sleep_mode_info *sleep = &conf->fuel_gauge.sleep_mode;
+	const struct fet_info *fet = &conf->fuel_gauge.fet;
+	const struct battery_info *info = &conf->batt_info;
+
+	printf("{\n"); /* Start of root */
+	printf("\t\"%s,%s\": {\n", manuf_name, device_name);
+	printf("\t\t\"struct_version\": \"0x%02x\",\n", struct_version);
+	printf("\t\t\"fuel_gauge\": {\n");
+	printf("\t\t\t\"flags\": \"0x%x\",\n", fg->flags);
+
+	printf("\t\t\t\"ship_mode\": {\n");
+	printf("\t\t\t\t\"reg_addr\": \"0x%02x\",\n", ship->reg_addr);
+	printf("\t\t\t\t\"reg_data\": [ \"0x%04x\", \"0x%04x\" ]\n",
+	       ship->reg_data[0], ship->reg_data[1]);
+	printf("\t\t\t},\n");
+
+	printf("\t\t\t\"sleep_mode\": {\n");
+	printf("\t\t\t\t\"reg_addr\": \"0x%02x\",\n", sleep->reg_addr);
+	printf("\t\t\t\t\"reg_data\": \"0x%04x\"\n", sleep->reg_data);
+	printf("\t\t\t},\n");
+
+	printf("\t\t\t\"fet\": {\n");
+	printf("\t\t\t\t\"reg_addr\": \"0x%02x\",\n", fet->reg_addr);
+	printf("\t\t\t\t\"reg_mask\": \"0x%04x\",\n", fet->reg_mask);
+	printf("\t\t\t\t\"disconnect_val\": \"0x%04x\",\n",
+	       fet->disconnect_val);
+	printf("\t\t\t\t\"cfet_mask\": \"0x%04x\",\n", fet->cfet_mask);
+	printf("\t\t\t\t\"cfet_off_val\": \"0x%04x\"\n", fet->cfet_off_val);
+	printf("\t\t\t}\n");
+
+	printf("\t\t},\n"); /* end of fuel_gauge */
+
+	printf("\t\t\"batt_info\": {\n");
+	printf("\t\t\t\"voltage_max\": %d,\n", info->voltage_max);
+	printf("\t\t\t\"voltage_normal\": %d,\n", info->voltage_normal);
+	printf("\t\t\t\"voltage_min\": %d,\n", info->voltage_min);
+	printf("\t\t\t\"precharge_voltage\": %d,\n", info->precharge_voltage);
+	printf("\t\t\t\"precharge_current\": %d,\n", info->precharge_current);
+	printf("\t\t\t\"start_charging_min_c\": %d,\n",
+	       info->start_charging_min_c);
+	printf("\t\t\t\"start_charging_max_c\": %d,\n",
+	       info->start_charging_max_c);
+	printf("\t\t\t\"charging_min_c\": %d,\n", info->charging_min_c);
+	printf("\t\t\t\"charging_max_c\": %d,\n", info->charging_max_c);
+	printf("\t\t\t\"discharging_min_c\": %d,\n", info->discharging_min_c);
+	printf("\t\t\t\"discharging_max_c\": %d\n", info->discharging_max_c);
+	printf("\t\t}\n"); /* end of batt_info */
+
+	printf("\t}\n"); /* end of board_batt_params */
+	printf("}\n"); /* End of root */
+}
+
+static void batt_conf_dump_in_json_human(const struct board_batt_params *conf,
 			   const char *manuf_name, const char *device_name,
 			   uint8_t struct_version)
 {
@@ -8844,14 +8902,21 @@ static int cmd_battery_config_get(int argc, char *argv[])
 	uint8_t *p;
 	int expected;
 	bool in_json = true;
+    bool in_json_human = true;
 	int rv;
 	int c;
 	int index = -1;
 
-	while ((c = getopt(argc, argv, "c")) != -1) {
+	while ((c = getopt(argc, argv, "chj")) != -1) {
 		switch (c) {
 		case 'c':
 			in_json = false;
+			break;
+        case 'j':
+			in_json_human = false;
+			break;
+        case 'h':
+			in_json_human = true;
 			break;
 		case '?':
 			/* getopt prints error message. */
@@ -8926,12 +8991,18 @@ static int cmd_battery_config_get(int argc, char *argv[])
 	memcpy(device_name, p, head->device_name_size);
 	p += head->device_name_size;
 	memcpy(&conf, p, sizeof(conf));
-	if (in_json)
-		batt_conf_dump(&conf, manuf_name, device_name,
-			       head->struct_version);
-	else
-		batt_conf_dump_in_c(&conf, manuf_name, device_name,
-				    head->struct_version);
+	if (in_json) {
+      if(in_json_human) {
+        batt_conf_dump_in_json_human(&conf, manuf_name, device_name,
+                       head->struct_version);
+      } else {
+        batt_conf_dump_in_json(&conf, manuf_name, device_name,
+                       head->struct_version);
+      }
+    } else {
+      batt_conf_dump_in_c(&conf, manuf_name, device_name,
+                          head->struct_version);
+    }
 
 	return 0;
 }
