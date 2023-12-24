@@ -8543,13 +8543,13 @@ static void batt_conf_dump(const struct board_batt_params *conf,
 
 	printf("\t\t\t\"ship_mode\": {\n");
 	printf("\t\t\t\t\"reg_addr\": \"0x%02x\",\n", ship->reg_addr);
-	printf("\t\t\t\t\"reg_data\": [ \"0x%04x\", \"0x%04x\" ],\n",
+	printf("\t\t\t\t\"reg_data\": [ \"0x%04x\", \"0x%04x\" ]\n",
 	       ship->reg_data[0], ship->reg_data[1]);
 	printf("\t\t\t},\n");
 
 	printf("\t\t\t\"sleep_mode\": {\n");
 	printf("\t\t\t\t\"reg_addr\": \"0x%02x\",\n", sleep->reg_addr);
-	printf("\t\t\t\t\"reg_data\": \"0x%04x\",\n", sleep->reg_data);
+	printf("\t\t\t\t\"reg_data\": \"0x%04x\"\n", sleep->reg_data);
 	printf("\t\t\t},\n");
 
 	printf("\t\t\t\"fet\": {\n");
@@ -8558,8 +8558,8 @@ static void batt_conf_dump(const struct board_batt_params *conf,
 	printf("\t\t\t\t\"disconnect_val\": \"0x%04x\",\n",
 	       fet->disconnect_val);
 	printf("\t\t\t\t\"cfet_mask\": \"0x%04x\",\n", fet->cfet_mask);
-	printf("\t\t\t\t\"cfet_off_val\": \"0x%04x\",\n", fet->cfet_off_val);
-	printf("\t\t\t},\n");
+	printf("\t\t\t\t\"cfet_off_val\": \"0x%04x\"\n", fet->cfet_off_val);
+	printf("\t\t\t}\n");
 
 	printf("\t\t},\n"); /* end of fuel_gauge */
 
@@ -8576,10 +8576,10 @@ static void batt_conf_dump(const struct board_batt_params *conf,
 	printf("\t\t\t\"charging_min_c\": %d,\n", info->charging_min_c);
 	printf("\t\t\t\"charging_max_c\": %d,\n", info->charging_max_c);
 	printf("\t\t\t\"discharging_min_c\": %d,\n", info->discharging_min_c);
-	printf("\t\t\t\"discharging_max_c\": %d,\n", info->discharging_max_c);
-	printf("\t\t},\n"); /* end of batt_info */
+	printf("\t\t\t\"discharging_max_c\": %d\n", info->discharging_max_c);
+	printf("\t\t}\n"); /* end of batt_info */
 
-	printf("\t},\n"); /* end of board_batt_params */
+	printf("\t}\n"); /* end of board_batt_params */
 	printf("}\n"); /* End of root */
 }
 
