@@ -46,6 +46,30 @@
       },
       "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e2fd78_68225e7b",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-25T18:34:11Z",
+      "side": 1,
+      "message": "CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT is 128. That means precharge_current \u003c 128 will be ignored. Is that ok?",
+      "parentUuid": "07c14042_59d4ece9",
+      "range": {
+        "startLine": 799,
+        "startChar": 22,
+        "endLine": 799,
+        "endChar": 25
+      },
+      "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
