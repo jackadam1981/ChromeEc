@@ -237,6 +237,30 @@
       },
       "revId": "3801ca1fd691bd64ea5bc29ca73a368fe5798f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0623a3_c30a3027",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-12-25T09:04:29Z",
+      "side": 1,
+      "message": "I have a exception as b/315883344#comment26. Look likes sm5803_init calls get_batt_conf before init_battery_type.",
+      "parentUuid": "8f1d379f_233e6c89",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 28
+      },
+      "revId": "3801ca1fd691bd64ea5bc29ca73a368fe5798f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
