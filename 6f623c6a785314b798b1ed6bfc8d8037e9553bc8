@@ -16,6 +16,24 @@
       "message": "strange builder failure (unrelated to this patch):\n\n```\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/third_party/zephyr/main/scripts/build/gen_kobject_list.py\", line 62, in \u003cmodule\u003e\n    import elftools\nModuleNotFoundError: No module named \u0027elftools\n```",
       "revId": "6f623c6a785314b798b1ed6bfc8d8037e9553bc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496c2106_765c6cd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-25T01:33:47Z",
+      "side": 1,
+      "message": "Dose need resolve this problem for CLs form others?",
+      "parentUuid": "6e47f11d_9690d130",
+      "revId": "6f623c6a785314b798b1ed6bfc8d8037e9553bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
