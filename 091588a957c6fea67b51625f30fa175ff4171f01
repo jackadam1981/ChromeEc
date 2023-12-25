@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40985cfb_7e437c65",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8822,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-25T18:29:05Z",
+      "side": 1,
+      "message": "Can you make the output format selectable? I can think of -5 for json5 or -j for json.",
+      "range": {
+        "startLine": 8822,
+        "startChar": 17,
+        "endLine": 8822,
+        "endChar": 21
+      },
+      "revId": "091588a957c6fea67b51625f30fa175ff4171f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c626b9ce_ea923162",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8851,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-25T18:29:05Z",
+      "side": 1,
+      "message": "You can add an option here (e.g. \"5c\", \"cj\", etc.).",
+      "range": {
+        "startLine": 8851,
+        "startChar": 32,
+        "endLine": 8851,
+        "endChar": 35
+      },
+      "revId": "091588a957c6fea67b51625f30fa175ff4171f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
