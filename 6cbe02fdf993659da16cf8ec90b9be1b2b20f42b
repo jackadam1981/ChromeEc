@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f94ebb_1742194e",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-26T19:10:41Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this any more - no other device images are built from this codebase.",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 0
+      },
+      "revId": "6cbe02fdf993659da16cf8ec90b9be1b2b20f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75212155_fd5b9a3c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3446,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-26T19:10:41Z",
+      "side": 1,
+      "message": "how could the size of a reserved element be zero?\n\nAlso, both `if` and `else` should follow the same bracket style.",
+      "range": {
+        "startLine": 3445,
+        "startChar": 3,
+        "endLine": 3446,
+        "endChar": 20
+      },
+      "revId": "6cbe02fdf993659da16cf8ec90b9be1b2b20f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
