@@ -54,6 +54,8 @@ static void base_detect_tick(void)
 	static bool debouncing;
 	int mv = adc_read_channel(ADC_BASE_DET);
 
+	mv = 0;
+
 	if (mv >= DETACH_MIN_THRESHOLD_MV && base_attached) {
 		if (!debouncing) {
 			debouncing = true;
