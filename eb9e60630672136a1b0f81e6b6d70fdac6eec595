@@ -45,6 +45,29 @@
       },
       "revId": "eb9e60630672136a1b0f81e6b6d70fdac6eec595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c4ee46_1d682c29",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-12-26T19:13:34Z",
+      "side": 1,
+      "message": "nit: with new logic looks like these operations are true for all the cases, bring it to line 266 and remove lines 267 \u0026 268",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "eb9e60630672136a1b0f81e6b6d70fdac6eec595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
