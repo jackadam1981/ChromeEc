@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf88426a_48eb6f64",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-26T18:51:03Z",
+      "side": 1,
+      "message": "please add a comment describing what this function is supposed to accomplish.",
+      "revId": "446d53186334048109846c462a0a44c018963697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4de7588_02e1a3d9",
+        "filename": "test/nvmem_tpm2_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-26T18:51:03Z",
+      "side": 1,
+      "message": "I know this is not your change, but wouldn\u0027t it be more logical to check against the size of `res_addrs` array, where `index` is used to access the entry in line 61",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "446d53186334048109846c462a0a44c018963697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554f28e2_d376c71c",
+        "filename": "test/nvmem_tpm2_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-12-26T18:51:03Z",
+      "side": 1,
+      "message": "where does this additon come from, please comment.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "446d53186334048109846c462a0a44c018963697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
