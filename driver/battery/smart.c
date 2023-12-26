@@ -478,6 +478,7 @@ void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
 	int v;
+	static int prev_flags;
 
 	/*
 	 * Start with a copy so that only valid fields will be updated. Note
@@ -561,6 +562,12 @@ void battery_get_params(struct batt_params *batt)
 
 	if (IS_ENABLED(CONFIG_CMD_BATTFAKE))
 		apply_fake_state_of_charge(&batt_new);
+
+	if (batt_new.flags != prev_flags) {
+		CPRINTS("Battery flags changed: %x -> %x", prev_flags,
+			batt_new.flags);
+		prev_flags = batt_new.flags;
+	}
 
 	/* Update visible battery parameters */
 	memcpy(batt, &batt_new, sizeof(*batt));

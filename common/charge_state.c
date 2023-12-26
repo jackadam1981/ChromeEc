@@ -1619,6 +1619,13 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	return sleep_usec;
 }
 
+const char *batt_presence[] = {
+	"NOT_INIT", /* -1 */
+	"BP_NO",    /* 0 */
+	"BP_YES",
+	"BP_NOT_SURE",
+};
+
 /* Main loop */
 void charger_task(void *u)
 {
@@ -1655,6 +1662,9 @@ void charger_task(void *u)
 #endif /* CONFIG_OCPC */
 
 		if (prev_bp != curr.batt.is_present) {
+			CPRINTS("Battery presence changed: %s -> %s",
+				batt_presence[prev_bp+1],
+				batt_presence[curr.batt.is_present+1]);
 			process_battery_present_change(info, chgnum);
 			need_static = 1;
 		}
