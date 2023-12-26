@@ -70,6 +70,30 @@
       },
       "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8a9b92_c63a3e20",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-12-26T01:46:43Z",
+      "side": 1,
+      "message": "it based on bacttery pack precharge current seeting, it is fine.",
+      "parentUuid": "b6e2fd78_68225e7b",
+      "range": {
+        "startLine": 799,
+        "startChar": 22,
+        "endLine": 799,
+        "endChar": 25
+      },
+      "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
