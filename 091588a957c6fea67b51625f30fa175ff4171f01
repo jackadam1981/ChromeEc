@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad67c649_bb0c1286",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8822,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-12-26T09:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40985cfb_7e437c65",
+      "range": {
+        "startLine": 8822,
+        "startChar": 17,
+        "endLine": 8822,
+        "endChar": 21
+      },
+      "revId": "091588a957c6fea67b51625f30fa175ff4171f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c626b9ce_ea923162",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-25T18:29:05Z",
       "side": 1,
       "message": "You can add an option here (e.g. \"5c\", \"cj\", etc.).",
+      "range": {
+        "startLine": 8851,
+        "startChar": 32,
+        "endLine": 8851,
+        "endChar": 35
+      },
+      "revId": "091588a957c6fea67b51625f30fa175ff4171f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0103df97_b8c26141",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8851,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-12-26T09:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c626b9ce_ea923162",
       "range": {
         "startLine": 8851,
         "startChar": 32,
