@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a271aca_0a5a8cd2",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-26T15:25:22Z",
+      "side": 1,
+      "message": "nit: It\u0027s easier to read if the variable scope is limited (i.e. int precharge_current).",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 19
+      },
+      "revId": "0d269d1a0b4654e64eb303f5dc883f0774759580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
