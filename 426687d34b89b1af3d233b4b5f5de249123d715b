@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9125eae9_5b99835a",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-26T15:08:48Z",
+      "side": 1,
+      "message": "Yes, you can use the `USBC_PORT_NEW` macro as is done [here](https://crsrc.org/o/src/platform/ec/zephyr/subsys/usb_pd/pd_task_intel_altmode.c;drc\u003d460224f99b71f3312eec0bdef0c7180790cfaf34;l\u003d30).\n\nThis uses the `reg` property to set the array index.",
+      "parentUuid": "e139efb9_27a66325",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "426687d34b89b1af3d233b4b5f5de249123d715b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "effc5e84_d9462bc5",
         "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
         "patchSetId": 19
