@@ -67,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a8e63e2_4fbe85e8",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-12-26T17:51:19Z",
+      "side": 1,
+      "message": "updated the commit message.",
+      "parentUuid": "73ee43e4_37ada6b7",
+      "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d0be588_c3693e21",
         "filename": "test/cortexm_fpu.c",
         "patchSetId": 1
