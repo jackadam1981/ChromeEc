@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d94dfa_6ce462a7",
+        "filename": "include/config.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 6178,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ad42d53d_b3e6ce9b",
+      "range": {
+        "startLine": 6178,
+        "startChar": 10,
+        "endLine": 6178,
+        "endChar": 37
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52488902_6a098cbd",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-20T23:20:00Z",
       "side": 1,
       "message": "Move this to the parent directory CMake file.",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 40
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3733d018_f78bce2e",
+        "filename": "zephyr/subsys/usb_pd/CMakeLists.txt",
+        "patchSetId": 26
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "52488902_6a098cbd",
       "range": {
         "startLine": 6,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cf1853_ba3a05ef",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ad4f5c3d_a7b78cda",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 11
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "056b0b29_6782fea8",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-12-20T23:20:00Z",
       "side": 1,
       "message": "Why is this tracked per port?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 49
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b51f2b5_de03381b",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "056b0b29_6782fea8",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3e53019_4f4e8d64",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "This is the work item being created here. L:290 is making the k_work_submit which does not pass any specific queue which means it would execute in system workqueue thread.",
+      "parentUuid": "0b5c931d_205b85dc",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51c4479_444d987d",
         "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
         "patchSetId": 26
@@ -129,6 +249,30 @@
       "writtenOn": "2023-12-20T23:20:00Z",
       "side": 1,
       "message": "Please open a bug.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09206ff4_8585a200",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e51c4479_444d987d",
       "range": {
         "startLine": 152,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c330a65d_d69d062e",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "AP does not send this, as seen in the coreboot acpi code, but making it no-op since it is handled in tcpc implementation.",
+      "parentUuid": "df7257c2_ad0e5a94",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06a1e576_b2523450",
         "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
         "patchSetId": 26
@@ -175,6 +343,30 @@
       "writtenOn": "2023-12-20T23:20:00Z",
       "side": 1,
       "message": "If the retimer_state[] is incorrect, what\u0027s the recovery?  Should this throw an error to the AP from get_result()?\n\nThis might be easier to follow if you unconditionally set last_op and last_port, but set an error flag anytime the retimer_state doesn\u0027t match the expected state.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69001af9_14fa746c",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-26T17:39:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06a1e576_b2523450",
       "range": {
         "startLine": 254,
         "startChar": 0,
