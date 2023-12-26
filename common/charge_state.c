@@ -1629,6 +1629,7 @@ void charger_task(void *u)
 	int chgnum = 0;
 	bool is_full = false; /* battery not accepting current */
 	bool prev_full = false;
+	int prev_bf = 0;
 
 	/* Set up the task - note that charger_init() has already run. */
 	charger_setup(info);
@@ -1654,10 +1655,13 @@ void charger_task(void *u)
 			ocpc_get_adcs(&curr.ocpc);
 #endif /* CONFIG_OCPC */
 
-		if (prev_bp != curr.batt.is_present) {
+		if ((prev_bp != curr.batt.is_present) ||
+		    ((prev_bf ^ curr.batt.flags) & BATT_FLAG_RESPONSIVE)) {
+			CPRINTS("Battery presence/response changed");
 			process_battery_present_change(info, chgnum);
 			need_static = 1;
 		}
+		prev_bf = curr.batt.flags;
 
 		battery_validate_params(&curr.batt);
 
