@@ -110,8 +110,9 @@ EC_TEST_PATHS = [
 
 # Paths under ZEPHYR_BASE that we also wish to search for test cases.
 ZEPHYR_TEST_PATHS = [
-    Path("tests/subsys/shell"),
     Path("tests/drivers/fuel_gauge/sbs_gauge"),
+    Path("tests/drivers/gpio"),
+    Path("tests/subsys/shell"),
 ]
 
 
@@ -557,6 +558,7 @@ def main():
         # posix_native and unit_testing when nothing was requested by user.
         twister_cli.extend(["-p", "native_posix"])
         twister_cli.extend(["-p", "unit_testing"])
+        twister_cli.extend(["-p", "native_sim"])
 
     twister_cli.extend(["--outdir", intercepted_args.outdir])
 
