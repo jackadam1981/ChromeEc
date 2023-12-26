@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2800ccbf_9dad45ac",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-26T18:35:00Z",
+      "side": 1,
+      "message": "My mistake, thanks.",
+      "parentUuid": "b3e53019_4f4e8d64",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51c4479_444d987d",
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "AP does not send this, as seen in the coreboot acpi code, but making it no-op since it is handled in tcpc implementation.",
       "parentUuid": "df7257c2_ad0e5a94",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d0f2ef_59bcf5ab",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-26T18:35:00Z",
+      "side": 1,
+      "message": "As noted above, please explicitly handle this command in get_result.",
+      "parentUuid": "c330a65d_d69d062e",
       "range": {
         "startLine": 251,
         "startChar": 6,

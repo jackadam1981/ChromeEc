@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40150433_fd727927",
+        "filename": "zephyr/program/intelrvp/mtlrvp/pd.conf",
+        "patchSetId": 28
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-26T18:35:00Z",
+      "side": 1,
+      "message": "Move the board specific changes to a separate CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "eb9e60630672136a1b0f81e6b6d70fdac6eec595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d041eb67_c347a4a2",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-26T18:35:00Z",
+      "side": 1,
+      "message": "Please add all the expected operations explicitly.  Specifically USB_RETIMER_FW_UPDATE_SUSPEND_PD expects to see 0 for the return value, I\u0027m not sure if `usb_mux_get()` is guaranteed 0 on a suspended port.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 8
+      },
+      "revId": "eb9e60630672136a1b0f81e6b6d70fdac6eec595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
