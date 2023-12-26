@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2666910_c97c3c5b",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-12-26T15:35:40Z",
+      "side": 1,
+      "message": "Can you separate this into its own patch? This changes the behavior of cr50. The rest is just cleanup.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 44
+      },
+      "revId": "48e34113f61e57eebc35f41b6fc43f513f48ef96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
