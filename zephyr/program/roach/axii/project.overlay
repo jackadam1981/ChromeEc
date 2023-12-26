@@ -22,11 +22,11 @@
 		};
 
 		ec_uart_pu_tester: ec-uart-pu-tester {
-			gpios = <&gpioj 0 GPIO_INPUT>;
+			gpios = <&gpioh 3 GPIO_INPUT>;
 		};
 
 		en_pp3300_base: en-pp3300-base {
-			gpios = <&gpioa 1 GPIO_OUTPUT_LOW>;
+			gpios = <&gpiob 5 (GPIO_OUTPUT_LOW | GPIO_ACTIVE_LOW)>;
 		};
 
 		ec_flash_wp_odl: ec-flash-wp-odl {
@@ -68,8 +68,6 @@
 
 			/* gpiob2 */
 			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
-			/* gpiob5 */
-			<&gpiob 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpiob6 */
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
 			/* gpiob7 */
@@ -148,8 +146,6 @@
 			<&gpioh 0 GPIO_INPUT_PULL_DOWN>,
 			/* gpioh1 */
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
-			/* gpioh3 */
-			<&gpioh 3 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpioi2 */
 			<&gpioi 2 GPIO_INPUT_PULL_DOWN>,
@@ -159,8 +155,6 @@
 			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpioi6 */
 			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
-			/* gpioi7 */
-			<&gpioi 7 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpioj1 */
 			<&gpioj 1 GPIO_INPUT_PULL_DOWN>,
