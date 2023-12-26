@@ -94,6 +94,30 @@
       },
       "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b308309_7e1026fb",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-26T05:42:22Z",
+      "side": 1,
+      "message": "Would it be handier if we do:\n\n    precharge_current \u003d bi-\u003eprecharge_current ?\n          bi-\u003eprecharge_current : CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT;\n\n?",
+      "parentUuid": "cd8a9b92_c63a3e20",
+      "range": {
+        "startLine": 799,
+        "startChar": 22,
+        "endLine": 799,
+        "endChar": 25
+      },
+      "revId": "a4d830f138e3767ce6a70f245579c6465612afc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
