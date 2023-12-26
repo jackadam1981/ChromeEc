@@ -43,6 +43,9 @@ LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
 #define INTEL_ALTMODE_EVENT_MASK GENMASK(INTEL_ALTMODE_EVENT_COUNT - 1, 0)
 
+/* Expected string for zephyr thread state is- pending+suspended */
+#define THREAD_STATE_MAX_CHAR_COUNT 18
+
 enum intel_altmode_event {
 	INTEL_ALTMODE_EVENT_FORCE,
 	INTEL_ALTMODE_EVENT_INTERRUPT,
@@ -246,6 +249,32 @@ void intel_altmode_task_start(void)
 	k_thread_start(intel_altmode_tid);
 }
 
+void suspend_pd_intel_altmode_task(void)
+{
+	k_thread_suspend(intel_altmode_tid);
+}
+
+void resume_pd_intel_altmode_task(void)
+{
+	k_thread_resume(intel_altmode_tid);
+
+	/*
+	 * Suspended PD altmode task can miss the altmode events.
+	 * Therefore, explicitly post event so PD altmode task updates
+	 * the mux status after resuming.
+	 */
+	intel_altmode_post_event(INTEL_ALTMODE_EVENT_FORCE);
+}
+
+bool is_pd_intel_altmode_task_suspended(void)
+{
+	char buf[THREAD_STATE_MAX_CHAR_COUNT + 1];
+	if (strstr(k_thread_state_str(intel_altmode_tid, buf,
+				      THREAD_STATE_MAX_CHAR_COUNT + 1),
+		   "suspended"))
+		return true;
+	return false;
+}
 #ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
 static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 {
