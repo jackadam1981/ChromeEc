@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c6df15_5e661b8d",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T16:32:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this change is necessary. b:294550823 tracks the effort to update the pass through support to use an allowlist.",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "ccdbdb72150d1c6e54f571060dd8035124053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
