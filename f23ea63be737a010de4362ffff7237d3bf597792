@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045c7885_390c028d",
+        "filename": "zephyr/subsys/tcpmv3/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "Nit - move `default` setting before `depends on`",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a0b92c_b3c37964",
+        "filename": "zephyr/subsys/tcpmv3/pdc_power_mgnt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "Use of `tcpm` in the namespace is confusing.  How about `pdc` or `pdc_power_mgnt`?",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c413ea86_5c069d48",
+        "filename": "zephyr/subsys/tcpmv3/pdc_power_mgnt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "This should be extracted from the `named-usbc-port` node.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833756b7_4348e018",
+        "filename": "zephyr/subsys/tcpmv3/pdc_power_mgnt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "`int state \u003d 0;`",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a78f3832_47c86c4a",
+        "filename": "zephyr/subsys/tcpmv3/pdc_power_mgnt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "You can get rid of a nesting level by moving this delay outside the while loop.  But is this delay needed?\n\n\n```\nLOG_DBG(\"Delay PDC task\");\nk_skeep(K_SECONDS(5));\n\nwhile (1) {\n    switch (state) {\n    ...\n    }\n    k_sleep();\n}\n```",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aac5ef8_b14428f6",
+        "filename": "zephyr/subsys/tcpmv3/pdc_power_mgnt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "Why 1 second?  Can this be shorter?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 24
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09df442_bb3e1254",
+        "filename": "zephyr/subsys/tcpmv3/pdc_power_mgnt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:28:33Z",
+      "side": 1,
+      "message": "Will you need 2 threads per port? One in the driver and one here?  Can this thread be structured to handle multiple ports.",
+      "range": {
+        "startLine": 164,
+        "startChar": 6,
+        "endLine": 164,
+        "endChar": 19
+      },
+      "revId": "f23ea63be737a010de4362ffff7237d3bf597792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
