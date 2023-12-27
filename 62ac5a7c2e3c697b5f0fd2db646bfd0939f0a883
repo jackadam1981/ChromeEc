@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886866c3_c6b69880",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T16:28:33Z",
+      "side": 1,
+      "message": "If you\u0027re going to stick with the name change, you\u0027ll need update the Kconfig file in this CL.",
+      "range": {
+        "startLine": 1186,
+        "startChar": 7,
+        "endLine": 1186,
+        "endChar": 27
+      },
+      "revId": "62ac5a7c2e3c697b5f0fd2db646bfd0939f0a883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
