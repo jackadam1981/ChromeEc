@@ -52,6 +52,24 @@
       "parentUuid": "60daafb6_67ef4bee",
       "revId": "f1f0a6086c70d8a612a6b8be486b9df4e2dd1da3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b82818_fe475bab",
+        "filename": "power/mt8186.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-12-27T08:59:40Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to work. I\u0027ve tried move it,and it can only be placed at this location at the earliest.\n\nI tried moving above ``set_pmic_pwron()`` but it didn\u0027t work either",
+      "parentUuid": "3379f56b_38b313fe",
+      "revId": "f1f0a6086c70d8a612a6b8be486b9df4e2dd1da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
