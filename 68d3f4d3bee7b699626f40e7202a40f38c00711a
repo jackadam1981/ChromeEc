@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155ce7a4_30d4ab54",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T22:31:44Z",
+      "side": 1,
+      "message": "Is this signal set high anywhere when using `CONFIG_AP_PWRSEQ_DRIVER`?",
+      "range": {
+        "startLine": 190,
+        "startChar": 18,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "68d3f4d3bee7b699626f40e7202a40f38c00711a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
