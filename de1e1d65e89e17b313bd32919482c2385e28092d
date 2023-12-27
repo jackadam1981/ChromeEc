@@ -378,6 +378,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea404d9_8d5a63b9",
+        "filename": "zephyr/subsys/usb_pd/retimer_fw_update.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-27T01:05:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "73d0f2ef_59bcf5ab",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "de1e1d65e89e17b313bd32919482c2385e28092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a1e576_b2523450",
