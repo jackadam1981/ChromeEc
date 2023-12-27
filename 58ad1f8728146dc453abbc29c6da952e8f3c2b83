@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "104861cf_2c3eed8f",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-27T20:50:05Z",
+      "side": 1,
+      "message": "battery_fuel_gauge_type_override is used only by tests. I believe we can get rid of it. Tests should manipulate battery_conf directly.",
+      "parentUuid": "fa06b244_b3c9775f",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "58ad1f8728146dc453abbc29c6da952e8f3c2b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5970fb51_0410e70c",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 14
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-27T18:45:46Z",
       "side": 1,
       "message": "Why not avoid the extra function call?\n\n```\n  struct batt_conf_embed *batt_conf \u003d get_batt_conf();\n  if (batt_conf !\u003d NULL) {\n    return \u0026batt_conf-\u003econfig;\n  }\n  return NULL;\n```",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 58
+      },
+      "revId": "58ad1f8728146dc453abbc29c6da952e8f3c2b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943a22c7_a1c211d2",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-27T20:50:05Z",
+      "side": 1,
+      "message": "After getting rid of battery_fuel_gauge_type_override, we can do\n\n    battery_conf ? \u0026battery_conf.config : NULL;\n\nthough I think callers of get_batt_params should be challenged first. They shouldn\u0027t be calling get_batt_params before the battery is initialized.",
+      "parentUuid": "5970fb51_0410e70c",
       "range": {
         "startLine": 272,
         "startChar": 1,
