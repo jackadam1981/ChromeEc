@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this be replacing line 798? Otherwise it\u0027s clearing the bits that were just programmed.",
       "revId": "ef2689f5c451f109d5f37813bd9482d4331a8ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d00331a_b19804eb",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-27T00:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be37055c_c7231c66",
+      "revId": "ef2689f5c451f109d5f37813bd9482d4331a8ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
