@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f75141c_8748e865",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T18:18:11Z",
+      "side": 1,
+      "message": "Cast isn\u0027t needed.\n```\nmsg.buf \u003d i2c_buf;\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "9425f0ccc09190838efc6771df28058a069dbb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c9c7ab_b26c62f3",
+        "filename": "zephyr/include/drivers/pdc_ccg8.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T18:18:11Z",
+      "side": 1,
+      "message": "These don\u0027t need to public.  You can either put them directly in the C file, or you should move this header into the same directory as the C file.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "9425f0ccc09190838efc6771df28058a069dbb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
