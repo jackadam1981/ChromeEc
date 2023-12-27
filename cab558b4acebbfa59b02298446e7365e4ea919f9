@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd366beb_8dfa9cba",
+        "filename": "zephyr/subsys/usb_pd/pd_task_intel_altmode.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T18:25:41Z",
+      "side": 1,
+      "message": "I think it\u0027s acceptable to just use a static variable to track the thread state.  It\u0027s unfortunate that Zephyr doesn\u0027t provide an API to query the thread state directly.\n\nUsing `k_thread_state_str()` seems too complicated.",
+      "range": {
+        "startLine": 272,
+        "startChar": 12,
+        "endLine": 272,
+        "endChar": 30
+      },
+      "revId": "cab558b4acebbfa59b02298446e7365e4ea919f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
