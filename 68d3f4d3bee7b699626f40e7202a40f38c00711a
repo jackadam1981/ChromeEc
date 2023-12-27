@@ -22,6 +22,30 @@
       },
       "revId": "68d3f4d3bee7b699626f40e7202a40f38c00711a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9155c613_20c17dd8",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-12-27T23:10:31Z",
+      "side": 1,
+      "message": "Yes, please see [board_ap_power_s0_run](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4177239/29/zephyr/program/nissa/src/board_power.c#229).",
+      "parentUuid": "155ce7a4_30d4ab54",
+      "range": {
+        "startLine": 190,
+        "startChar": 18,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "68d3f4d3bee7b699626f40e7202a40f38c00711a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
