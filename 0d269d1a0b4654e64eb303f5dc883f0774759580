@@ -69,6 +69,30 @@
       },
       "revId": "0d269d1a0b4654e64eb303f5dc883f0774759580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a79753_a0cc70d5",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-27T00:10:03Z",
+      "side": 1,
+      "message": "Nice catch, Peter. Fix uploaded: crrev/c/5152424.",
+      "parentUuid": "3326f42d_ae29e760",
+      "range": {
+        "startLine": 803,
+        "startChar": 18,
+        "endLine": 803,
+        "endChar": 24
+      },
+      "revId": "0d269d1a0b4654e64eb303f5dc883f0774759580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
