@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f806ab14_712e7b6e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4599,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-27T16:04:38Z",
+      "side": 1,
+      "message": "A lot of cleanup is necessary, which will include removing TCPMV1 (after servoV4 has been ported), and possibly renaming TCPMV3. But for now, I think we should continue with the convention of incrementing the number after TCPMV.",
+      "parentUuid": "18e9e25e_71e51b7c",
+      "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a531cc_03fcb846",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -83,6 +101,30 @@
       "writtenOn": "2023-12-01T00:26:55Z",
       "side": 1,
       "message": "Maybe it\u0027s preferable to use CONFIG_USB_PD_PPM to differentiate this mode from either TCPMv1 or TCPMv2 where those modes are for an TCPM that controls a TCPC/PPC. But for PD controller mode, The EC is acting as the PPM connected to a TCPM (PDC)",
+      "range": {
+        "startLine": 4627,
+        "startChar": 21,
+        "endLine": 4627,
+        "endChar": 27
+      },
+      "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83feaca6_da20f036",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4627,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-12-27T16:04:38Z",
+      "side": 1,
+      "message": "The PPM/OPM terminology is kind of vague, and I don\u0027t think our naming convention should depend that UCSI terminology. For now, I think we should stick with TCPMV3 until we can come up with a more appropriate name.",
+      "parentUuid": "f4a531cc_03fcb846",
       "range": {
         "startLine": 4627,
         "startChar": 21,
