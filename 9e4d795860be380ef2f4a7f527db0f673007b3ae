@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50f9b4b_ef3254b4",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-27T01:03:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3ac7e93b_43f4b366",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "9e4d795860be380ef2f4a7f527db0f673007b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8689f7e6_1e80c79d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-26T19:02:25Z",
       "side": 1,
       "message": "Keep board specific changes in separate CLs",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "9e4d795860be380ef2f4a7f527db0f673007b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04e0a86_6a51be4f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/gpio.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-27T01:03:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8689f7e6_1e80c79d",
       "range": {
         "startLine": 11,
         "startChar": 0,
