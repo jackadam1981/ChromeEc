@@ -6,6 +6,7 @@
 #include "gpio/gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "lid_switch.h"
 
 #include <zephyr/devicetree.h>
@@ -45,8 +46,10 @@ void soc_edp_bl_interrupt(enum gpio_signal signal)
 	LOG_INF("%s: %d", __func__, state);
 
 	if (state && lid_is_open()) {
+		host_set_single_event(EC_HOST_EVENT_BACKLIGHT_ENABLE);
 		hook_call_deferred(&touch_enable_data, TOUCH_ENABLE_DELAY_MS);
 	} else {
+		host_set_single_event(EC_HOST_EVENT_BACKLIGHT_DISABLE);
 		hook_call_deferred(&touch_disable_data, TOUCH_DISABLE_DELAY_MS);
 	}
 }

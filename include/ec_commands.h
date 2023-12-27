@@ -867,6 +867,12 @@ enum host_event_code {
 	/* Body detect (lap/desk) change event */
 	EC_HOST_EVENT_BODY_DETECT_CHANGE = 33,
 
+	/* Backlight disable */
+	EC_HOST_EVENT_BACKLIGHT_DISABLE = 34,
+
+	/* Backlight enable */
+	EC_HOST_EVENT_BACKLIGHT_ENABLE = 35,
+
 	/*
 	 * Only 64 host events are supported. This enum uses 1-based counting so
 	 * it can skip 0 (NONE), so the last legal host event number is 64.
@@ -914,6 +920,8 @@ enum host_event_code {
 		[EC_HOST_EVENT_WOV] = "WOV",                                   \
 		[EC_HOST_EVENT_INVALID] = "INVALID",                           \
 		[EC_HOST_EVENT_BODY_DETECT_CHANGE] = "BODY_DETECT_CHANGE",     \
+		[EC_HOST_EVENT_BACKLIGHT_DISABLE] = "BACKLIGHT_DISABLE",       \
+		[EC_HOST_EVENT_BACKLIGHT_ENABLE] = "BACKLIGHT_ENABLE",         \
 	}
 /* clang-format on */
 
