@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d3b669_6e6d08c1",
+        "filename": "zephyr/drivers/usbc/pdc_ccg8.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-27T19:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f75141c_8748e865",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "9425f0ccc09190838efc6771df28058a069dbb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c9c7ab_b26c62f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-27T18:18:11Z",
       "side": 1,
       "message": "These don\u0027t need to public.  You can either put them directly in the C file, or you should move this header into the same directory as the C file.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "9425f0ccc09190838efc6771df28058a069dbb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913bc114_a5a0cb52",
+        "filename": "zephyr/include/drivers/pdc_ccg8.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-12-27T19:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c9c7ab_b26c62f3",
       "range": {
         "startLine": 11,
         "startChar": 0,
