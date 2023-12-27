@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9458f04d_e77000f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-27T17:07:01Z",
+      "side": 1,
+      "message": "If we want to create the TCPMv3 symbol to make the legacy code easier to follow, there\u0027s no reason why we can\u0027t have the Zephyr files use `usb_pd`.\n\nThe TCPMv3 name really doesn\u0027t make sense under the Zephyr context.  What do you think?",
+      "revId": "630014e4edc2f89813c4dc0fd6ae0b22f757d35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
