@@ -32,6 +32,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "charge_state.h"
 
 #ifdef CONFIG_BRINGUP
 #define GPIO_SET_LEVEL(signal, value) \
@@ -401,6 +402,13 @@ enum power_state power_handle_state(enum power_state state)
 		power_signal_enable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
 
 		set_pmic_pwron();
+
+		if (charge_want_shutdown()) {
+			CPRINTS("power-up inhibited");
+			chipset_force_shutdown(
+				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
+			return POWER_S3S5;
+		}
 
 		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 
