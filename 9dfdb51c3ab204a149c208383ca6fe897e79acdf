@@ -22,6 +22,30 @@
       },
       "revId": "9dfdb51c3ab204a149c208383ca6fe897e79acdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5859e106_e18e3341",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-12-28T00:01:04Z",
+      "side": 1,
+      "message": "It is true that those signals are common to ADL. However, since the logic and the hardware to manipulate those signals may vary, I opted to let the application handle it.\n\nFor this design `PWR_VCCST_PWRGD`, `PWR_PCH_PWROK` and `PWR_EC_PCH_SYS_PWROK` all depend on `PWR_ALL_SYS_PWRGD` state, but there may be another ADL design that would change this dependency or use external circuitry to generate signals.",
+      "parentUuid": "0d3604b3_242a755e",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "9dfdb51c3ab204a149c208383ca6fe897e79acdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
