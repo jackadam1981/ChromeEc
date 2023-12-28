@@ -22,4 +22,10 @@ config TEST_AP_POWER_BROX
 	  Run the AP power sequence tests using the Brox devicetree
 	  configuration and the Brox project specific source files.
 
+config TEST_AP_POWER_NEREID
+	bool "AP Power sequence tests for Nereid project"
+	help
+	  Run the AP power sequence tests using the Nereid devicetree
+	  configuration and the Brox project specific source files.
+
 source "Kconfig.zephyr"

@@ -1,0 +1,93 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <board-overlays/native_posix.dts>
+#include <dt-bindings/gpio_defines.h>
+#include "native_posix_ite.dtsi"
+#include "../../../program/nissa/nereid/power_signals.dtsi"
+#include "alderlake_emul.dtsi"
+
+/ {
+	/*
+	 * Create nodelabels matching the common alderlake emulator.
+	 * Also clear the GPIO_OPEN_DRAIN flags on any power signals
+	 * because open drain operation is not supported by the GPIO
+	 * emulator.
+	 */
+
+	en_pp3300: pwr-en-pp3300-s5 {
+	};
+	en_pp5000: pwr-en-pp5000-s5 {
+	};
+	rsmrst: pwr-pg-ec-rsmrst-odl {
+	};
+	ec_pch_rsmrst: pwr-ec-pch-rsmrst-odl {
+	};
+	slp_s0: pwr-slp-s0-l {
+	};
+	slp_s3: pwr-slp-s3-l {
+	};
+	slp_s4: pwr-slp-s4 {
+	};
+	slp_s5: pwr-slp-s5 {
+	};
+	slp_sus: pwr-slp-sus-l {
+	};
+
+	/*
+	 * The emulator doesn't support getting/setting ADC style inputs.
+	 * Override ADC inputs with GPIOs for testing.
+	 */
+	/delete-node/ pwr-adc-pp3300;
+	/delete-node/ pwr-adc-pp1p05;
+	dsw_pwrok: dsw-pwrok-gpio {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "PP3300_PROC";
+		enum-name = "PWR_DSW_PWROK";
+		gpios = <&gpioa 0 0>;
+	};
+	pg_pp1p05: pwr-pg-pp1p05-gpio {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "PP1P05_PROC";
+		enum-name = "PWR_PG_PP1P05";
+		gpios = <&gpioa 1 0>;
+	};
+
+	ec_soc_dsw_pwrok: pwr-ec-soc-dsw-pwrok {
+	};
+	pwr-vccst-pwrgd-od {
+		gpios = <&gpioe 5 0>;
+	};
+	pch_pwrok: pwr-pch-pwrok {
+		gpios = <&gpiod 6 0>;
+	};
+	pwr-sys-rst-l {
+		gpios = <&gpiod 1 GPIO_ACTIVE_LOW>;
+	};
+	all_sys_pwrgd: pwr-all-sys-pwrgd {
+	};
+	pwr_imvp9_vrrdy_od: pwr-imvp9-vrrdy-od {
+	};
+
+	/* The board code uses the ALL_SYS_PWRGD GPIO input in combination
+	 * with other signals to implement the PWR_ALL_SYS_PWRGD signal as
+	 * a board specific signal.  The test framework needs a reference
+	 * to the GPIO.
+	 */
+	named-gpios {
+		gpio_all_sys_pwrgd: all_sys_pwrgd {
+			gpios = <&gpiob 7 GPIO_INPUT>;
+		};
+	};
+};
+
+/* Emulate the PP1P05 rail rising after DSW_PWROK asserted */
+&ec_soc_dsw_pwrok_emul {
+	ec-dsw-pwrok-pg-pp1p05-emul {
+		output-signal = <&pg_pp1p05>;
+		assert-delay-ms = <10>;
+		init-value= <0>;
+	};
+};

@@ -18,6 +18,10 @@
 #include <power_signals.h>
 #include <x86_power_signals.h>
 
+#ifdef CONFIG_ZTEST
+#include <zephyr/drivers/gpio/gpio_emul.h>
+#endif
+
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS 5
@@ -167,5 +171,22 @@ int board_power_signal_get(enum power_signal signal)
 
 int board_power_signal_set(enum power_signal signal, int value)
 {
+#ifndef CONFIG_ZTEST
 	return -EINVAL;
+#else
+	/*
+	 * PWR_ALL_SYS_PWRGD is an input only signals. However,
+	 * the power sequence test harness requires the set operation to
+	 * succeed.
+	 */
+	if (signal == PWR_ALL_SYS_PWRGD) {
+		/* Set the GPIO pin state for gpio_all_sys_pwrgd */
+		const struct gpio_dt_spec *all_sys_pwrgd =
+			GPIO_DT_FROM_NODELABEL(gpio_all_sys_pwrgd);
+		LOG_INF("nissa: set gpio_all_sys_pwrgd to %d", value);
+		gpio_emul_input_set(all_sys_pwrgd->port, all_sys_pwrgd->pin,
+				    value);
+	}
+	return 0;
+#endif
 }
