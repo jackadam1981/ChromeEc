@@ -70,6 +70,24 @@
       "parentUuid": "3379f56b_38b313fe",
       "revId": "f1f0a6086c70d8a612a6b8be486b9df4e2dd1da3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d336b286_71c62bb9",
+        "filename": "power/mt8186.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-12-28T06:25:44Z",
+      "side": 1,
+      "message": "hi Ting.\n\nI found that using ```system_can_boot_ap()``` can be done on ```POWER_G3S5```,this method looks better.\n\nin this [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5151761)",
+      "parentUuid": "04b82818_fe475bab",
+      "revId": "f1f0a6086c70d8a612a6b8be486b9df4e2dd1da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
