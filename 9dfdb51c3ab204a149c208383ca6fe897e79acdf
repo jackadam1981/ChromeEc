@@ -118,6 +118,30 @@
       },
       "revId": "9dfdb51c3ab204a149c208383ca6fe897e79acdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bb90cf_ba5321cb",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-28T16:57:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "38105fac_8528d19d",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "9dfdb51c3ab204a149c208383ca6fe897e79acdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
