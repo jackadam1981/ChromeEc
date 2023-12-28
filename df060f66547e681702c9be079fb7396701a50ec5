@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac673e36_55bb6a89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-12-28T08:20:25Z",
+      "side": 1,
+      "message": "I am testing by building it, I am triggering the build by dry run\n\nI don\u0027t have physical hardware to test ectool changes, but this changes are simple which seem like the errors could be caught during build",
+      "parentUuid": "85135124_2e8afc38",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "df060f66547e681702c9be079fb7396701a50ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cb85369_9a50809a",
         "filename": "util/ectool.cc",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2023-12-27T22:03:58Z",
       "side": 1,
       "message": "Also can you mention the default is JSON5 (-h)?",
+      "revId": "df060f66547e681702c9be079fb7396701a50ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab365dfd_36448ca3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8884,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-12-28T08:20:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb85369_9a50809a",
       "revId": "df060f66547e681702c9be079fb7396701a50ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2023-12-27T22:03:58Z",
       "side": 1,
       "message": "Can you consolidate these? \n\n    void batt_conf_dump_in_json(..., bool human)\n    {\n        char *comma \u003d human ? \",\" : \"\";\n        ...\n        printf(\"\\t}%s\\n\", comma);\n        printf(\"}\\n\"); /* End of root */\n    }",
+      "range": {
+        "startLine": 8999,
+        "startChar": 0,
+        "endLine": 9004,
+        "endChar": 34
+      },
+      "revId": "df060f66547e681702c9be079fb7396701a50ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c518fc_47ed92f4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 9004,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-12-28T08:20:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75f5f302_59f30d48",
       "range": {
         "startLine": 8999,
         "startChar": 0,
