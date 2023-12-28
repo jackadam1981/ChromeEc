@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa896584_c72ac9aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-28T17:13:25Z",
+      "side": 1,
+      "message": "For example, I would write something like:\n\n    TEST\u003dRun ectool bcfg get -h/-j and visually compare the outputs.",
+      "parentUuid": "ac673e36_55bb6a89",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "df060f66547e681702c9be079fb7396701a50ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cb85369_9a50809a",
         "filename": "util/ectool.cc",
         "patchSetId": 6
