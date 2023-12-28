@@ -16,6 +16,29 @@
       "message": "m",
       "revId": "b9ae69924959bb088de123a5f2d5f8eaf69752be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1405d19c_455949c2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8827,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-28T17:11:44Z",
+      "side": 1,
+      "message": "nit: -c, -j, -h can\u0027t be used together. So, it\u0027s nice to explain it here or check invalid combinations in the code.",
+      "range": {
+        "startLine": 8826,
+        "startChar": 0,
+        "endLine": 8827,
+        "endChar": 61
+      },
+      "revId": "b9ae69924959bb088de123a5f2d5f8eaf69752be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
