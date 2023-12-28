@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b890be0d_5e30dfd8",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-12-28T04:26:20Z",
+      "side": 1,
+      "message": "Isn\u0027t this `is_not_powered`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "67fe5e32530103baf29303f80b0f10e880ab5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
