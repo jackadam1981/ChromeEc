@@ -125,4 +125,28 @@
 		#gpio-cells = <2>;
 		ngpios = <8>;
 	};
+	gpiok: gpio@b01 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0xb01 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+	gpiol: gpio@c01 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0xc01 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
 };
