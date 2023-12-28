@@ -1,0 +1,81 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+ * Because the power signals directly reference the GPIOs,
+ * the correspinding named-gpios need to have no-auto-init set.
+ */
+&gpio_ec_soc_dsw_pwrok {
+	no-auto-init;
+};
+&gpio_ec_soc_pch_pwrok_od {
+	no-auto-init;
+};
+&gpio_ec_soc_rsmrst_l {
+	no-auto-init;
+};
+&gpio_ec_soc_sys_pwrok {
+	no-auto-init;
+};
+&gpio_ec_soc_vccst_pwrgd_od {
+	no-auto-init;
+};
+&gpio_en_pp3300_s5 {
+	no-auto-init;
+};
+&gpio_en_pp5000_s5 {
+	no-auto-init;
+};
+&gpio_imvp91_vrrdy_od {
+	no-auto-init;
+};
+&gpio_rsmrst_pwrgd_l {
+	no-auto-init;
+};
+&gpio_slp_s0_l {
+	no-auto-init;
+};
+&gpio_slp_s3_l {
+	no-auto-init;
+};
+&gpio_slp_sus_l {
+	no-auto-init;
+};
+&gpio_sys_rst_odl {
+	no-auto-init;
+};
+&vcmp0 {
+	status = "okay";
+	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
+	comparison = <IT8XXX2_VCMP_GREATER>;
+	/*
+	 * This is 90% of nominal voltage considering voltage
+	 * divider on ADC input.
+	 */
+	threshold-mv = <2448>;
+	io-channels = <&adc0 0>;
+};
+&vcmp1 {
+	status = "okay";
+	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
+	comparison = <IT8XXX2_VCMP_LESS_OR_EQUAL>;
+	threshold-mv = <2448>;
+	io-channels = <&adc0 0>;
+};
+&vcmp2 {
+	status = "okay";
+	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
+	comparison = <IT8XXX2_VCMP_GREATER>;
+	/* Setting at 90% of nominal voltage */
+	threshold-mv = <945>;
+	io-channels = <&adc0 14>;
+};
+&vcmp3 {
+	status = "okay";
+	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
+	comparison = <IT8XXX2_VCMP_LESS_OR_EQUAL>;
+	threshold-mv = <945>;
+	io-channels = <&adc0 14>;
+};
