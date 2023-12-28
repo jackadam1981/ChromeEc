@@ -16,6 +16,24 @@
       "message": "CQ failed, do you need something similar with https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4916992/9/util/build_with_clang.py ?",
       "revId": "cc209edba08f5dd3b60ce49ce0cad0d7125bc20b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07be776a_1e5e7823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-12-28T07:54:44Z",
+      "side": 1,
+      "message": "After update build_with_clang.py, I got error when run \u0027repo upload . --cbr\u0027.\n```\n[FAILED] chromiumos/platform/ec: cros lint\n    Hook script \"cros lint --commit ${PRESUBMIT_COMMIT} ${PRESUBMIT_FILES}\" failed with code 1:\n      Ignoring \"board/dita/board.h\": file excluded by \"/home/sue/chromiumos/src/platform/ec/CPPLINT.cfg\". File path component \"board\" matches pattern \".*\"\n      ************* Module build_with_clang\n      util/build_with_clang.py:337:0: C0116: Missing function or method docstring (missing-function-docstring)\n      util/build_with_clang.py:349:0: C0116: Missing function or method docstring (missing-function-docstring)\n      util/build_with_clang.py:366:0: C0116: Missing function or method docstring (missing-function-docstring)\n      util/build_with_clang.py:413:19: W0703: Catching too general exception Exception (broad-except)\n      \n      ------------------------------------------------------------------\n      Your code has been rated at 9.41/10 (previous run: 9.41/10, +0.00)\n      \n      \n      --------------------------------------------------------------------\n      Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)\n      \n      13:39:16: ERROR: Found lint errors in 1 files in 1.272s.\n\nFATAL: Preupload failed due to above error(s).\n```\nThe patchset4 is upload by command \u0027repo upload . --no-verify\u0027.",
+      "parentUuid": "216aa38b_aeb18ee5",
+      "revId": "cc209edba08f5dd3b60ce49ce0cad0d7125bc20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
