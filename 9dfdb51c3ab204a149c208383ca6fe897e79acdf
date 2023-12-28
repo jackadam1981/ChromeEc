@@ -46,6 +46,30 @@
       },
       "revId": "9dfdb51c3ab204a149c208383ca6fe897e79acdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472b8e6a_2f8f95aa",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-28T00:12:20Z",
+      "side": 1,
+      "message": "The PWROK generation flow diagram shows that VCCST_PWRGD, PCH_PWROK,and SYS_PWROK should always be gated on ALL_SYS_PWRGD.\n\nMaking this board specific seems unnecessary. It\u0027s better to add board specific hooks later, only if needed.\n\nThe non-PWRSEQ driver code is currently handling SYS_PWROK and VCCST_PWRGD in the shared ADL code.  `board_ap_power_assert_pch_power_ok()` handles the PCH_PWROK - but it this should probably be moved to the shared ADL code too.",
+      "parentUuid": "5859e106_e18e3341",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "9dfdb51c3ab204a149c208383ca6fe897e79acdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
