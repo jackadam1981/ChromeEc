@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47732875_21aaeb7b",
+        "filename": "zephyr/test/nissa/src/board_power.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-12-28T17:06:59Z",
+      "side": 1,
+      "message": "Check out CL:5155208.  I was able to re-use the existing ap_power tests with the Nissa board_power.c and the nereid power signals.\n\nMy approach has the advantage re-using the actual board devicetree file instead of duplicating the power signals for the test framework.\n\nIs this board specific test suite still needed?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 73
+      },
+      "revId": "1084db7b72b66eb445b43ed677f7397d87456eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
