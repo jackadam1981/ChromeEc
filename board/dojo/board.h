@@ -17,6 +17,9 @@
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 2500
 
+#undef CONFIG_HIBERNATE_DELAY_SEC
+#define CONFIG_HIBERNATE_DELAY_SEC 30
+
 /*
  * TODO: Remove this option once the VBAT no longer keeps high when
  * system's power isn't presented.
