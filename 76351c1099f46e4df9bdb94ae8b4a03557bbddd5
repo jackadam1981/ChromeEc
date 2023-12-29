@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d55ff8_d05e0239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-12-29T02:49:41Z",
+      "side": 1,
+      "message": "hi ting.\nThis [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5113363) has modified the depends on this macro. Now the default is y. If it is not removed,`repo upload` will fail.",
+      "revId": "76351c1099f46e4df9bdb94ae8b4a03557bbddd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
