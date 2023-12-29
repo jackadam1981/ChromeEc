@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ddcb9f_2d340f7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-29T17:15:11Z",
+      "side": 1,
+      "message": "Vija, Sooraj, I believe this change should work for Intel RVPs. If it doesn\u0027t, please file a bug.",
+      "revId": "cd4b61f84a8a6f744029c76c97677bf130331136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb2555e_c110da70",
+        "filename": "zephyr/program/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-29T17:15:11Z",
+      "side": 1,
+      "message": "COVERAGE: These lines haven\u0027t been changed.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 1
+      },
+      "revId": "cd4b61f84a8a6f744029c76c97677bf130331136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcf1d82_3f3cab48",
+        "filename": "zephyr/program/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-29T17:15:11Z",
+      "side": 1,
+      "message": "COVERAGE: Verified neither configure_battery_type nor board_get_default_battery_type is tested. Thus, there is no coverage change (with respect to the number of exercised lines).",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 1
+      },
+      "revId": "cd4b61f84a8a6f744029c76c97677bf130331136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9eb1d26_c6e298ff",
+        "filename": "zephyr/program/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-12-29T17:15:11Z",
+      "side": 1,
+      "message": "COVERAGE: These lines haven\u0027t been changed. This board_pre_task_peripheral_init isn\u0027t exercised by any test.",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 1
+      },
+      "revId": "cd4b61f84a8a6f744029c76c97677bf130331136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
