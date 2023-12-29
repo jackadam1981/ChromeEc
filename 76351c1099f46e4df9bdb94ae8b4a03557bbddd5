@@ -16,6 +16,24 @@
       "message": "hi ting.\nThis [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5113363) has modified the depends on this macro. Now the default is y. If it is not removed,`repo upload` will fail.",
       "revId": "76351c1099f46e4df9bdb94ae8b4a03557bbddd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88409de0_7fe79ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-12-29T05:03:46Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_ACCEL_BMA4XX is enabled because your device tree havs a `cros-ec,bma4xx` node.\n\nIf you don\u0027t need the bma4xx driver, please remove the cros-ec,bma4xx node from device tree instead.\n\n```\n\u0026lid_accel {\n  status \u003d \"disabled\";\n};\n```",
+      "parentUuid": "e1d55ff8_d05e0239",
+      "revId": "76351c1099f46e4df9bdb94ae8b4a03557bbddd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
