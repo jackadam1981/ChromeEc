@@ -34,6 +34,24 @@
       "parentUuid": "e1d55ff8_d05e0239",
       "revId": "76351c1099f46e4df9bdb94ae8b4a03557bbddd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7380a5_1f1d3e0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-12-29T06:20:48Z",
+      "side": 1,
+      "message": "Yes,\nWe need to use the bma4xx driver,but we device tree have this `cros-ec,bma4xx` node,so now there is no need to define CONFIG_PLATFORM_EC_ACCEL_BMA4XX.",
+      "parentUuid": "88409de0_7fe79ac5",
+      "revId": "76351c1099f46e4df9bdb94ae8b4a03557bbddd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
