@@ -22,6 +22,30 @@
       },
       "revId": "8106f049a87b6525c85c2d4568a5cf772329bc75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae76b86_e17fb8cb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-02T20:22:46Z",
+      "side": 1,
+      "message": "The behavior with garbage at the end it actually the correct one - NVGetReserved returns constant size for all reserved spaces except NV_RAM_INDEX which is dynamic. TPM2B inside shall be less or equal to size of allocated space. This is what is checked. \n\nIn the case of `index_size + sizeof(index_size)` this expression is extended to 32-bit due to sizeof(index_size) being of size_t, and index_size is uint16 so can\u0027t cause overflow. I\u0027ll add comment.",
+      "parentUuid": "09281dec_27779895",
+      "range": {
+        "startLine": 2017,
+        "startChar": 37,
+        "endLine": 2017,
+        "endChar": 38
+      },
+      "revId": "8106f049a87b6525c85c2d4568a5cf772329bc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
