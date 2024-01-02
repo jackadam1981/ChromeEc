@@ -21,6 +21,7 @@
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS 5
+#define WAIT_FOR_PWR_ALL_SYS_PWRGD_MS 100
 
 static bool s0_stable;
 
@@ -98,6 +99,20 @@ void board_ap_power_action_g3_s5(void)
 
 void board_ap_power_action_s3_s0(void)
 {
+#ifdef CONFIG_BOARD_GOTHRAX
+	int timeout_ms = 0;
+
+	while (!power_signal_get(PWR_ALL_SYS_PWRGD) &&
+	       timeout_ms < WAIT_FOR_PWR_ALL_SYS_PWRGD_MS) {
+		k_msleep(1);
+		timeout_ms++;
+	};
+
+	if (timeout_ms > 0)
+		LOG_INF("Spent %d ms waiting for PWR_ALL_SYS_PWRGD",
+			timeout_ms);
+#endif
+
 	s0_stable = false;
 }
 
