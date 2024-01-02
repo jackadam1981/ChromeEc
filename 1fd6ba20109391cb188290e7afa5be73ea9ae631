@@ -157,6 +157,30 @@
       },
       "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d00b02_541ab877",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4627,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-02T18:43:02Z",
+      "side": 1,
+      "message": "Yeah, I agree at this should be renamed to CONFIG_USB_PD_CONTROLLER.",
+      "parentUuid": "e0502655_cb67c9a2",
+      "range": {
+        "startLine": 4627,
+        "startChar": 21,
+        "endLine": 4627,
+        "endChar": 27
+      },
+      "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
