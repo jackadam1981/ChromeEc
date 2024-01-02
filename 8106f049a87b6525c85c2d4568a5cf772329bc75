@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09281dec_27779895",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-02T19:30:19Z",
+      "side": 1,
+      "message": "this logic is not obvious.\n- if `index_size + sizeof(index_size) \u003e size` then we will not copy the entire TPM2B (which most likely means TPM2B size field is corrupted).\n- however, if `index_size + sizeof(index_size) \u003c size`, we will copy more than TPM2B holds including some garbage at the end. it may be harmless (since we already checked for \u0027size \u003c\u003d space_size`) but still feels wrong.\n\nalso, note that we rely on the fact that sizeof(size_t) \u003e sizeof(uint16_t), otherwise we\u0027d have to check `if (index_size \u003e size || index_size + sizeof(index_size) \u003e size)` or risk silent wrapping around 0 when index_size \u003d 0xffff or 0xfffe. btw, a better check is `if (index_size \u003e size - sizeof(index_size))` since we already verified above that `size \u003e\u003d sizeof(cached-\u003esize)`.\n\nI suggest three things:\n1) add a comment that if `index_size + sizeof(index_size) \u003e size` that means we have a corrupted size field since `size` is always chosen to accommodate max possible buffer.\n2) add a comment that copying the garbage is harmless. or better do something like below\n3) either add static_assert that `sizeof(size_t) \u003e sizeof(uint16_t)` and write the following:\n```\nstatic_assert(sizeof(size) \u003e sizeof(index_size));\nsize_t full_tpm2b_size \u003d (size_t)index_size + sizeof(index_size);\nif (full_tpm2b_size \u003e size) return EC_ERROR_UNKNOWN;\nmemcpy(cached, pad, full_tpm2b_size); // full_tpm2b_size is MIN(fulltpm2b_size, size)\n```\nor add static_assert that `sizeof(index_size) \u003c\u003d sizeof(cached-\u003esize)` and write something like\n```\nstatic_assert(sizeof(index_size) \u003c\u003d sizeof(cached-\u003esize));\nif (index_size \u003e size - sizeof(index_size)) return EC_ERROR_UNKNOWN;\nmemcpy(cached, pad, index_size + sizeof(index_size));\n\n```",
+      "range": {
+        "startLine": 2017,
+        "startChar": 37,
+        "endLine": 2017,
+        "endChar": 38
+      },
+      "revId": "8106f049a87b6525c85c2d4568a5cf772329bc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
