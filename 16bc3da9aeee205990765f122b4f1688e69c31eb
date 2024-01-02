@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929c0373_58fe0397",
+        "filename": "zephyr/program/nissa/yavilla/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-01-02T12:55:15Z",
+      "side": 1,
+      "message": "This should be `K_USEC` since `PWR_LED_CPU_DELAY_MS` is in micro-seconds.",
+      "range": {
+        "startLine": 459,
+        "startChar": 32,
+        "endLine": 459,
+        "endChar": 38
+      },
+      "revId": "16bc3da9aeee205990765f122b4f1688e69c31eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25e2c4d_01bc562b",
+        "filename": "zephyr/program/nissa/yavilla/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-01-02T12:55:15Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 467,
+        "startChar": 32,
+        "endLine": 467,
+        "endChar": 38
+      },
+      "revId": "16bc3da9aeee205990765f122b4f1688e69c31eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
