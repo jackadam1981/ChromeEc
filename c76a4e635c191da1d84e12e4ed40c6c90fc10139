@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3600b714_eadda32f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-02T19:54:58Z",
+      "side": 1,
+      "message": "Thanks for these changes!\n\nCan you also update the version of Renode in the Chrome OS chroot to this version? \n\nThere is an example of how to do it here: https://crrev.com/c/5064594.",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "c76a4e635c191da1d84e12e4ed40c6c90fc10139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9b83a390_1cb10945",
