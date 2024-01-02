@@ -46,6 +46,30 @@
       },
       "revId": "ccdbdb72150d1c6e54f571060dd8035124053711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b1d6e4_bae62d9e",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-02T18:55:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1d0208b0_a11583ba",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "ccdbdb72150d1c6e54f571060dd8035124053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
