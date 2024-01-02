@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6b35b8_52f6530d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4599,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-02T23:01:44Z",
+      "side": 1,
+      "message": "I\u0027ve update the name to CONFIG_USB_PD_CONTROLLER",
+      "parentUuid": "f806ab14_712e7b6e",
+      "revId": "1fd6ba20109391cb188290e7afa5be73ea9ae631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4a531cc_03fcb846",
