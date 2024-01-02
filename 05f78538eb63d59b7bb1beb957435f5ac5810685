@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61ae7feb_bda192d6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-02T21:24:39Z",
+      "side": 1,
+      "message": "%x is a bit faster than %d (no need for division), and values are anyway 0 or 1.",
+      "parentUuid": "74eea2c9_b000c751",
+      "revId": "05f78538eb63d59b7bb1beb957435f5ac5810685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3f33ef2_0085aff4",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-26T17:31:49Z",
       "side": 1,
       "message": "here too, why does this have to be %x?",
+      "range": {
+        "startLine": 886,
+        "startChar": 23,
+        "endLine": 886,
+        "endChar": 24
+      },
+      "revId": "05f78538eb63d59b7bb1beb957435f5ac5810685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0c56e3_bb9cc94e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-02T21:24:39Z",
+      "side": 1,
+      "message": "same, microoptimization.",
+      "parentUuid": "f3f33ef2_0085aff4",
       "range": {
         "startLine": 886,
         "startChar": 23,
