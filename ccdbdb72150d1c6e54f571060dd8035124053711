@@ -22,6 +22,30 @@
       },
       "revId": "ccdbdb72150d1c6e54f571060dd8035124053711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0208b0_a11583ba",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-02T18:43:32Z",
+      "side": 1,
+      "message": "This was added to prevent compiler errors, because tcpc_config isn\u0027t defined.",
+      "parentUuid": "53c6df15_5e661b8d",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "ccdbdb72150d1c6e54f571060dd8035124053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
