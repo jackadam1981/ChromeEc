@@ -22,6 +22,30 @@
       },
       "revId": "8f992874101fc33fbe775e90b0b7d72c69ea81b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbaeb62_4d809e79",
+        "filename": "zephyr/subsys/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-02T18:44:28Z",
+      "side": 1,
+      "message": "I renamed the directory to pd_controller",
+      "parentUuid": "604200b2_38654e15",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "8f992874101fc33fbe775e90b0b7d72c69ea81b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
