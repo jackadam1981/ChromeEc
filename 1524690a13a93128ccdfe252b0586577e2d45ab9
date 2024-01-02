@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14521c0b_9449b46f",
+        "filename": "zephyr/test/vivaldi_kbd/src/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-02T23:04:25Z",
+      "side": 1,
+      "message": "Nit: It seems to me like these different test configurations would be more naturally expressed as constant arrays of expected keys, key masks, and codes, all of which would be conditionally compiled. Then the test code could just compare the actual arrays to the expected arrays, using the same code in each configuration.",
+      "revId": "1524690a13a93128ccdfe252b0586577e2d45ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
