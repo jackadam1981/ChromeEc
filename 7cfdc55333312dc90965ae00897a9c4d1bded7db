@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af45145_19d60484",
+        "filename": "zephyr/program/ovis/ovis/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2024-01-02T07:46:09Z",
+      "side": 1,
+      "message": "The project.overlay is per project configuration. Why do you need to change the ovis configuration? Can you just modify the deku\u0027s project.overlay instead of modifying ovis? For example, copy the generated.dtsi (rename to gpio.dtsi), power_signals.dtsi, ovis.dtsi to the Deku folder and make the modifications?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "7cfdc55333312dc90965ae00897a9c4d1bded7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
