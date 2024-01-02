@@ -22,6 +22,30 @@
       },
       "revId": "48e34113f61e57eebc35f41b6fc43f513f48ef96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa6a7bc7_22f9574a",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-02T20:35:48Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/5161147",
+      "parentUuid": "d2666910_c97c3c5b",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 44
+      },
+      "revId": "48e34113f61e57eebc35f41b6fc43f513f48ef96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
