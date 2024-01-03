@@ -70,6 +70,23 @@
       },
       "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c851cd_9159ecb6",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-03T16:30:13Z",
+      "side": 1,
+      "message": "So does this change (once the default is removed) just move these configs to their own file?",
+      "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
