@@ -453,7 +453,7 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S4S3:
-		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
+		if (!chipset_is_all_power_good()) {
 			/* Required rail went away */
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
@@ -477,7 +477,7 @@ static int common_pwr_sm_run(int state)
 			LOG_WRN("RSMRST is not GOOD");
 			return SYS_POWER_STATE_S3S4;
 		}
-		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
+		if (!chipset_is_all_power_good()) {
 			/* Required rail went away, go straight to S5 */
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
@@ -489,7 +489,7 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S3S0:
-		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
+		if (!chipset_is_all_power_good()) {
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		}
@@ -522,7 +522,7 @@ static int common_pwr_sm_run(int state)
 			 * before leaving S0ix.
 			 */
 			return SYS_POWER_STATE_S0ixS0;
-		} else if (!power_signals_on(IN_PGOOD_ALL_CORE))
+		} else if (!chipset_is_all_power_good())
 			return SYS_POWER_STATE_S0;
 
 		break;
@@ -565,7 +565,7 @@ static int common_pwr_sm_run(int state)
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 
 	case SYS_POWER_STATE_S0:
-		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
+		if (!chipset_is_all_power_good()) {
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		} else if (signals_valid_and_on(IN_PCH_SLP_S3)) {
