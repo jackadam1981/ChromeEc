@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018616e4_f8e1ece3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-03T19:13:36Z",
+      "side": 1,
+      "message": "we actually need `BUILD_ASSERT(sizeof(((TPM2B *)0)-\u003esize) \u003c sizeof(size_t))`\notherwise (if they are \u003d\u003d, for example), if index_size \u003d 0xff..ff, then\nindex_size + sizeof(index_size) \u003d\u003d 1, and it is \u003c size.",
+      "range": {
+        "startLine": 2012,
+        "startChar": 0,
+        "endLine": 2012,
+        "endChar": 61
+      },
+      "revId": "d2c02a192a943bb39d9ebaebf0b2dcf052dd19ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e62e03_e8f453b0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-03T19:13:36Z",
+      "side": 1,
+      "message": "size_t ? since both size and sizeof(index_size) are size_t.",
+      "range": {
+        "startLine": 2037,
+        "startChar": 27,
+        "endLine": 2037,
+        "endChar": 35
+      },
+      "revId": "d2c02a192a943bb39d9ebaebf0b2dcf052dd19ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f08c10_fc4adae6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-03T19:13:36Z",
+      "side": 1,
+      "message": "this should be `sizeof(index_size) + (uint32_t)index_size`, right? since after the previous if-statement, if we reach here it is established that `sizeof(index_size) + (uint32_t)index_size \u003c\u003d size`, and we don\u0027t need to memcpy the rest of the garbage if is is strict less-than.",
+      "range": {
+        "startLine": 2040,
+        "startChar": 21,
+        "endLine": 2040,
+        "endChar": 25
+      },
+      "revId": "d2c02a192a943bb39d9ebaebf0b2dcf052dd19ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
