@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (fefc24 removing owners from firmware branch)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
+>>>>>>> BRANCH (975d56 PDC: Add retimer update API to PD controller API)
