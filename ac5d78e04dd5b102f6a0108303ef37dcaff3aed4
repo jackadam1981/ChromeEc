@@ -46,6 +46,30 @@
       },
       "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66948af_d7f26185",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-03T15:24:14Z",
+      "side": 1,
+      "message": "Yes, remove the `default y if PLATFORM_EC_MOTIONSENSE`.  I apologize for making the request, but it\u0027s better to leave the defaults unchanged.",
+      "parentUuid": "48ed1693_54fd45b7",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
