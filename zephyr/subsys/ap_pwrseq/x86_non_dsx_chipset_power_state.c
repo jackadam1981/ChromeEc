@@ -24,7 +24,7 @@ enum power_states_ndsx chipset_pwr_seq_get_state(void)
 	/*
 	 * Chip is shut down, G3 state.
 	 */
-	if ((sig & MASK_ALL_POWER_GOOD) == 0) {
+	if (!chipset_is_all_power_good()) {
 		LOG_DBG("All power rails off, G3 state");
 		return SYS_POWER_STATE_G3;
 	}
@@ -32,7 +32,7 @@ enum power_states_ndsx chipset_pwr_seq_get_state(void)
 	 * Not enough power rails up to read VW signals.
 	 * Force a shutdown.
 	 */
-	if ((sig & MASK_VW_POWER) != VALUE_VW_POWER) {
+	if (!chipset_is_vw_power_good()) {
 		LOG_ERR("Not enough power signals on (%#x), forcing shutdown",
 			sig);
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
@@ -249,7 +249,7 @@ enum ap_pwrseq_state chipset_pwr_seq_get_state(void)
 	/*
 	 * Chip is shut down, G3 state.
 	 */
-	if ((sig & MASK_ALL_POWER_GOOD) == 0) {
+	if (!chipset_is_all_power_good()) {
 		LOG_DBG("All power rails off, G3 state");
 		return AP_POWER_STATE_G3;
 	}
@@ -257,7 +257,7 @@ enum ap_pwrseq_state chipset_pwr_seq_get_state(void)
 	 * Not enough power rails up to read VW signals.
 	 * Force a shutdown.
 	 */
-	if ((sig & MASK_VW_POWER) != VALUE_VW_POWER) {
+	if (!chipset_is_vw_power_good()) {
 		LOG_ERR("Not enough power signals on (%#x), forcing shutdown",
 			sig);
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
