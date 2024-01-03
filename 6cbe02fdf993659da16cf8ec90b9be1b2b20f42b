@@ -93,6 +93,30 @@
       },
       "revId": "6cbe02fdf993659da16cf8ec90b9be1b2b20f42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c5e001_a7fa4441",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3446,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-03T01:32:52Z",
+      "side": 1,
+      "message": "`else` case brackets style still needs adjustment",
+      "parentUuid": "6fbf9717_b4cf454e",
+      "range": {
+        "startLine": 3445,
+        "startChar": 3,
+        "endLine": 3446,
+        "endChar": 20
+      },
+      "revId": "6cbe02fdf993659da16cf8ec90b9be1b2b20f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
