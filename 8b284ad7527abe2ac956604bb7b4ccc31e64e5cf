@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc656a88_a15c48cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-03T21:35:28Z",
+      "side": 1,
+      "message": "Note - the CQ failure is unrelated to this change as all EC changes are failing the coverage test.\n\nIt should be fixed once https://crrev.com/c/5163992 merges.",
+      "revId": "8b284ad7527abe2ac956604bb7b4ccc31e64e5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
