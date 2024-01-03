@@ -33,6 +33,24 @@
       "message": "any owners for `common/fpsensor/OWNERS`? gerrit doesn\u0027t suggest any owners to me.",
       "revId": "553a7ba39394219fffc3cfb21529fd2768feeb59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b6250e_bab3c0fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-01-03T17:21:28Z",
+      "side": 1,
+      "message": "That\u0027s one of the reasons we want to remove the OWNERS (esp. in firmware branch).",
+      "parentUuid": "399fb6ff_ad37b55a",
+      "revId": "553a7ba39394219fffc3cfb21529fd2768feeb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
