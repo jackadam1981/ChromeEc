@@ -22,6 +22,30 @@
       },
       "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ed1693_54fd45b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-01-03T06:20:55Z",
+      "side": 1,
+      "message": "This is the result: \nFailed projects by diff in binary: brox\nAll failed projects: [\u0027brox\u0027]\n\nI guess the reason is Brox doesn\u0027t set config for TABLET_MODE, but this patch enables it. Not like screebo, it explicitly override by setting`CONFIG_PLATFORM_EC_TABLET_MODE\u003dn`.\nSo remove `default y if PLATFORM_EC_MOTIONSENSE`?",
+      "parentUuid": "5b6c6cad_2b564b1c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
