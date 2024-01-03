@@ -79,9 +79,9 @@ static int set_color(enum ec_led_id id, enum led_color color, int duty)
 	}
 }
 
-#define LED_PULSE_US (2 * SECOND)
-/* 40 msec for nice and smooth transition. */
-#define LED_PULSE_TICK_US (40 * MSEC)
+#define LED_PULSE_US (500 * MSEC)
+/* 50 msec for nice and smooth transition. */
+#define LED_PULSE_TICK_US (50 * MSEC)
 
 /*
  * When pulsing is enabled, brightness is incremented by <duty_inc> every
