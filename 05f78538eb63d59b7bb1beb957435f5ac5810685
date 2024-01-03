@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f974fb1a_3d370348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-03T06:12:54Z",
+      "side": 1,
+      "message": "I think it is worth to push it earlier as it fixes potential issue with inter-task communication via shared variables. It doesn\u0027t affect code size though.",
+      "parentUuid": "9769fba9_c4d4a185",
+      "revId": "05f78538eb63d59b7bb1beb957435f5ac5810685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74eea2c9_b000c751",
