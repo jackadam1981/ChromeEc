@@ -34,6 +34,24 @@
       "parentUuid": "b13285dd_b644e80b",
       "revId": "ede00941465c5cadfff5438344a5dd3c261b13c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a85c34f_83ae9348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2024-01-03T23:52:31Z",
+      "side": 1,
+      "message": "IIRC, our design doesn\u0027t do much changes on the FPSENSOR task.\n(We only add some flag checking logics when doing the matching/enrolling.)\nI think we don\u0027t need to increase the stack size for that.",
+      "parentUuid": "66c3fe88_826bdc7b",
+      "revId": "ede00941465c5cadfff5438344a5dd3c261b13c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
