@@ -46,6 +46,30 @@
       },
       "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a950a0_5d1785d9",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2024-01-03T04:14:29Z",
+      "side": 0,
+      "message": "If Ovis doesn\u0027t need this setting, then you don\u0027t need to put the setting to the ovis/ovis/project.conf. So, i would suggest to keep this setting in ovis/program.conf until we clarify b/318408979",
+      "parentUuid": "0c81cd20_c7b62ff0",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
