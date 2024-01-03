@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657c0861_eaf6ae74",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T00:30:29Z",
+      "side": 1,
+      "message": "You should remove the depends here. In config.h, PD_CONTROLLER and TCPMV2 are both guarded by CONFIG_USB_POWER_DELIVERY. I\u0027ll need to update the comment to include CONFIG_USB_PD_CONTROLLER.\n\n```\n/******************************************************************************/\n/*\n * If CONFIG_USB_POWER_DELIVERY is enabled, make sure either\n * CONFIG_USB_PD_TCPMV1 or CONFIG_USB_PD_TCPMV2 is enabled but not both. Also\n * make sure CONFIG_USB_PD_DECODE_SOP is enabled with CONFIG_USB_PD_TCPMV2\n */\n#ifdef CONFIG_USB_POWER_DELIVERY\n#if defined(CONFIG_USB_PD_TCPMV1) \u0026\u0026 defined(CONFIG_USB_PD_TCPMV2)\n#error Only one version of the USB PD State Machine can be enabled.\n#endif\n#if !defined(CONFIG_USB_PD_TCPMV1) \u0026\u0026 !defined(CONFIG_USB_PD_TCPMV2) \u0026\u0026 \\\n\t!defined(CONFIG_USB_PD_CONTROLLER)\n#error Please enable CONFIG_USB_PD_TCPMV1 or CONFIG_USB_PD_TCPMV2 or CONFIG_USB_PD_CONTROLLER.\n#endif\n#if defined(CONFIG_USB_PD_TCPMV2) \u0026\u0026 !defined(CONFIG_USB_PD_DECODE_SOP)\n#error CONFIG_USB_PD_DECODE_SOP must be enabled with the TCPMV2 PD state machine\n#endif\n#endif\n```",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "73782af4abb7736356e9295a407892c2f2d80b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
