@@ -37,6 +37,15 @@ config PLATFORM_EC_ACCEL_BMA4XX
 	  It allows measurements of acceleration in three perpendicular axes.
 	  Currently the driver supports BMA4XX.
 
+config PLATFORM_EC_ACCEL_BMA4XX_INT_EVENT
+	bool "Enable BMA4XX Accelerometer interrupt mode"
+	default y
+	depends on DT_HAS_CROS_EC_BMA4XX_ENABLED
+	help
+	  Enable BMA4XX to operate with interrupt pin. When this option is
+	  enabled. BMA4XX runs with interrupt mode instead of polling mode
+	  (foced mode).
+
 config PLATFORM_EC_ACCEL_KX022
 	bool "KX022 Accelerometer Driver"
 	help
