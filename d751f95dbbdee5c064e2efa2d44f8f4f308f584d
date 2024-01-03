@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e472a10c_532509cc",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-03T23:28:39Z",
+      "side": 1,
+      "message": "Generally, the build is already set up to include the chip-specific config header by setting the [`CHIP` value in the `build.mk`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/helipilot/build.mk;l\u003d8-10;drc\u003d29c7712541e8f85c53bac4d23147604585a764d8). For `npcx9`, I would expect [this file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/config_chip-npcx9.h) to be automatically included.\n\nIt looks like `SET_RTC_MATCH_DELAY` for STM32F4 was changed in https://crrev.com/c/3688190. (Also, I think there\u0027s a typo in [this description](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/config-stm32f4.h;l\u003d77;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46), where it should be \"min time to set RTC match alarm\". If that looks right, can you create a CL to fix?)\n\n[This code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/system.h;l\u003d693-694;drc\u003dcc2eda2929a248b5f43161641c5b20418800e52f) mentions `HIB_SET_RTC_MATCH_DELAY_USEC`, so it\u0027s possible that is the macro we should be using instead. I\u0027m not sure if I see that defined anywhere though, so we may want to update that comment if that\u0027s changed.\n\nIn the [RTC implementation for NPCX chips](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system.c;l\u003d233-243;drc\u003d0bcf0fbafc375d4d44c2b7991d998241674936e4) I don\u0027t see any use of the `MATCH_DELAY`, so we may want to add it to avoid trying to set alarms that are too short.",
+      "parentUuid": "8c30b956_068d961d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "d751f95dbbdee5c064e2efa2d44f8f4f308f584d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19816f80_2585a8e9",
         "filename": "test/stm32f_rtc.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2023-12-19T22:34:33Z",
       "side": 1,
       "message": "@bobbycasey@google.com\n\n`set_rtc_alarm`, `get_rtc_diff`, and `reset_rtc_alarm` are defined in `clock-f.c`, which is only included for the `bloonchipper` build. They are not included for `dartmonkey`.\n\nFor `helipilot`, there are additional issues:\n\nThe `rtc_time_reg` struct is defined `clock_chip`. However, this might be a different header with different relative path for `npcx`\n```\ntest/stm32f_rtc.c:12:15: note: forward declaration of \u0027struct rtc_time_reg\u0027\n   12 | static struct rtc_time_reg rtc_irq;\n```\n\nThe below error can be resolved for `helipilot` by including `timer.h`. I am not sure if there is some circular inclusion for `bloonchipper`\n```\ntest/stm32f_rtc.c:19:33: error: use of undeclared identifier \u0027MSEC\u0027\n   19 | static const int delay_tol_us \u003d MSEC / 2;\n```\n\nthe below error can be resolved by including `atomic.h`. Not sure why this was not an issue for `bloonchipper` or `dartmonkey`\n```\ntest/stm32f_rtc.c:26:2: error: call to undeclared function \u0027atomic_add\u0027; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n   26 |         atomic_add(\u0026rtc_fired, 1);\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "d751f95dbbdee5c064e2efa2d44f8f4f308f584d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c86187e_9390132e",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-03T23:28:39Z",
+      "side": 1,
+      "message": "For `timer.h` and `atomic.h`, it looks like those includes were just missing (something must have indirectly included it on STM32). You can go ahead and pull that into a separate CL that fixes those includes and we can merge that (https://google.github.io/styleguide/cppguide.html#Include_What_You_Use).\n\nThe functions in `clock-f.c` are specific to the STM32*F*412. AFAIK the equivalents were never implemented for dartmonkey (STM32*H*743).\n\nIt looks like there are some [\"system\" functions for handling the RTC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/system.h;l\u003d682-704;drc\u003dcc2eda2929a248b5f43161641c5b20418800e52f), which have an [implementation for NPCX chips](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system.c;l\u003d233-243;drc\u003d0bcf0fbafc375d4d44c2b7991d998241674936e4). I\u0027m not sure why the ST functions don\u0027t use the same API. Generally, things in `system.h` should have chip-specific implementations for each chip.",
+      "parentUuid": "19816f80_2585a8e9",
       "range": {
         "startLine": 25,
         "startChar": 1,
