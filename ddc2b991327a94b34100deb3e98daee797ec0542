@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef1548a_f0fb9870",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "Not even a nit. Really just an inconsequential comment. Feel free to ignore. I totally understand why this is not in the dt-bindings header even though it\u0027s just the inverse of `VIVALDI_RC()`, but I wish it had some kind of reference to it to make it easier for readers for someone to look at this later.",
+      "revId": "ddc2b991327a94b34100deb3e98daee797ec0542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

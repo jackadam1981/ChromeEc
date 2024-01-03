@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7809574_313d6397",
+        "filename": "zephyr/drivers/vivaldi_kbd/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "Good catch 😊",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3ff447_cad83d6a",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "Nice that this is a compile-time assertion check now.",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2031cca8_3e9ff277",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "Can this reference a bug if there is one?",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7209c07_8aee78cd",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "Can we replace this with a named priority?",
+      "range": {
+        "startLine": 166,
+        "startChar": 40,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f099c5_158ac9a2",
+        "filename": "zephyr/include/drivers/vivaldi_kbd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "Do you think it\u0027d be better if we just used a function prototype in `vivaldi_kbd.c` so the only client of this function is `vivaldi_kbd.c`? Alternatively, we could add a comment that the only client shall be the driver.",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3b504c_8d1a0d9b",
+        "filename": "zephyr/include/dt-bindings/vivaldi_kbd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-03T23:00:09Z",
+      "side": 1,
+      "message": "If we don\u0027t change these numbers much I think this is fine, otherwise we might want to self refer like:\n\n```\n#define VIVALDI_TK_ABSENT 0\n#define VIVALDI_TK_BACK VIVALDI_TK_ABSENT + 1\n\n```\n\nBut given that these will be included into a DT overlay, I don\u0027t even know if this is feasible.\n\nIf it isn\u0027t feasible or if we don\u0027t expect these to really ever change then please resolve and ignore this comment.",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
