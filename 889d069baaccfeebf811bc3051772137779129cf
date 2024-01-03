@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f6811d_7845e13d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-03T05:37:17Z",
+      "side": 1,
+      "message": "gothrax doesn\u0027t do anything unique here, so probably every other nissa board is vulnerable to the same problem. https://crrev.com/c/5162288 should fix this for every board, but I haven\u0027t been able to test it.",
+      "revId": "889d069baaccfeebf811bc3051772137779129cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
