@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd6dd7ff_b281fb27",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T19:43:05Z",
+      "side": 1,
+      "message": "I know this function return void, but it\u0027d be nice to know if it failed so this state machine could try again, or take some other action.",
+      "range": {
+        "startLine": 490,
+        "startChar": 2,
+        "endLine": 490,
+        "endChar": 22
+      },
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6364c18_734aebe7",
         "filename": "common/usb_pd_discovery.c",
         "patchSetId": 6
@@ -31,6 +54,70 @@
       "writtenOn": "2023-11-10T19:09:52Z",
       "side": 1,
       "message": "It\u0027s basically a programming error for this function and `discovery_vdm_naked` to be called with an unexpected discovery state. Eventually (later in this CL stack), I expect that sending discovery VDMs will be controlled by this state variable, so it should be especially hard to call this function inappropriately.\n\nHowever, I could see an argument for marking the underlying discovery state as failed here to reduce even further likelihood of getting into a weird loop where we repeatedly provoke discovery responses that we aren\u0027t capable of processing.\n\nWhat do you think?",
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c5db51_cd5e1b5a",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T19:43:05Z",
+      "side": 1,
+      "message": "If it\u0027s possible that a weird loop could occur, we should try to prevent it.",
+      "parentUuid": "f6364c18_734aebe7",
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31eb714f_acce851d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5971,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T19:43:05Z",
+      "side": 1,
+      "message": "I think you can remove this bracket",
+      "range": {
+        "startLine": 5971,
+        "startChar": 1,
+        "endLine": 5971,
+        "endChar": 2
+      },
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907d0090_2707a97b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6021,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T19:43:05Z",
+      "side": 1,
+      "message": "maybe add brackets {} around this",
+      "range": {
+        "startLine": 6016,
+        "startChar": 2,
+        "endLine": 6021,
+        "endChar": 32
+      },
       "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
