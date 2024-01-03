@@ -118,6 +118,30 @@
       },
       "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13c718c_3fc916d2",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-03T04:36:20Z",
+      "side": 0,
+      "message": "warning: The choice symbol PLATFORM_EC_USB_PD_FRS_PPC (defined at\n/mnt/host/source/src/platform/ec/zephyr/Kconfig.pd_frs:31) was selected (set \u003dy), but no symbol\nended up as the choice selection. See\nhttp://docs.zephyrproject.org/latest/kconfig.html#CONFIG_PLATFORM_EC_USB_PD_FRS_PPC and/or look up\nPLATFORM_EC_USB_PD_FRS_PPC in the menuconfig/guiconfig interface. The Application Development\nPrimer, Setting Configuration Values, and Kconfig - Tips and Best Practices sections of the manual\nmight be helpful too.",
+      "parentUuid": "4178f3d9_f08c6f87",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
