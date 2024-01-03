@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff9745c_f158dcca",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-03T16:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ae7feb_bda192d6",
+      "revId": "05f78538eb63d59b7bb1beb957435f5ac5810685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f33ef2_0085aff4",
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "same, microoptimization.",
       "parentUuid": "f3f33ef2_0085aff4",
+      "range": {
+        "startLine": 886,
+        "startChar": 23,
+        "endLine": 886,
+        "endChar": 24
+      },
+      "revId": "05f78538eb63d59b7bb1beb957435f5ac5810685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe8d777_2e24ad2c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-03T16:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0c56e3_bb9cc94e",
       "range": {
         "startLine": 886,
         "startChar": 23,
