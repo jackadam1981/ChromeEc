@@ -10,6 +10,7 @@
 
 #include "task.h"
 
+#ifndef USE_BUILTIN_STDLIB
 #include <pthread.h>
 
 /**
@@ -24,14 +25,15 @@ pthread_t task_get_thread(task_id_t tskid);
 task_id_t task_get_running(void);
 
 /**
+ * Returns the process ID of the calling process.
+ */
+pid_t getpid(void);
+#endif
+
+/**
  * Initializes the interrupt semaphore and associates a signal handler with
  * SIGNAL_INTERRUPT.
  */
 void task_register_interrupt(void);
-
-/**
- * Returns the process ID of the calling process.
- */
-pid_t getpid(void);
 
 #endif /* __CROS_EC_HOST_TASK_H */

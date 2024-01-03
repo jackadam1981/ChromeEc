@@ -5,7 +5,8 @@
  * Test utilities.
  */
 
-#if defined(TEST_COVERAGE) || defined(TEST_HOSTTEST)
+#if (defined(TEST_COVERAGE) || defined(TEST_HOSTTEST)) && \
+	!defined(USE_BUILTIN_STDLIB)
 /* We need signal() and exit() only when building to run on the host. */
 #include <signal.h>
 #include <stdlib.h>

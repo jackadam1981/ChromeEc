@@ -18,8 +18,13 @@ typedef signed int int32_t;
 typedef unsigned long long uint64_t;
 typedef signed long long int64_t;
 
+#ifdef __x86_64
+typedef uint64_t uintptr_t;
+typedef int64_t intptr_t;
+#else
 typedef unsigned int uintptr_t;
 typedef int intptr_t;
+#endif
 
 /* uint_leastX_t represents the smallest type available with at least X bits.
  * uint_fastX_t represents the fastest type available with at least X bits.

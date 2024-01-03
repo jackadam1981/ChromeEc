@@ -8,8 +8,10 @@
 
 CORE:=host
 
-chip-y=system.o gpio.o uart.o persistence.o flash.o lpc.o reboot.o \
-	clock.o spi_controller.o trng.o
+chip-y=gpio.o lpc.o clock.o spi_controller.o
+ifneq ($(USE_BUILTIN_STDLIB),1)
+chip-y+=flash.o persistence.o reboot.o system.o trng.o uart.o
+endif
 
 ifndef CONFIG_KEYBOARD_DISCRETE
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
