@@ -312,6 +312,17 @@ static inline int power_wait_signals_timeout(power_signal_mask_t want,
 }
 
 /**
+ * @brief Wait until the selected power signals are deasserted, with timeout.
+ *
+ * Given a set of signals, wait until all of the signals are deasserted.
+ *
+ * @param want The value of the signals to wait for.
+ * @param timeout The amount of time to wait in ms.
+ * @return 0 if the signals matched.
+ */
+int power_wait_signals_off_timeout(power_signal_mask_t want, int timeout);
+
+/**
  * @brief Create a mask from a power signal.
  */
 #define POWER_SIGNAL_MASK(signal) (1 << (signal))
