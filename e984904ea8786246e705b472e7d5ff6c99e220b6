@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedeb9ed_684de782",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T01:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed037ec7_84228f2e",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "e984904ea8786246e705b472e7d5ff6c99e220b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b94f114_1ea89411",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "You are correct that it should be ODR_LOW.",
       "parentUuid": "1b94f114_1ea89411",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "e984904ea8786246e705b472e7d5ff6c99e220b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1255c82e_d3907c78",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T01:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7573503_283346d3",
       "range": {
         "startLine": 148,
         "startChar": 21,
