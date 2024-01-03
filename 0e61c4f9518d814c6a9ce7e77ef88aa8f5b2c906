@@ -16,6 +16,23 @@
       "message": "Is the rex FW branch still use bulk-merge, or I should cherry-pick manully? For Karis will start FW uprev now, we have some CLs not landing in rex FW branch now. It\u0027s a little urgent. Thanks!",
       "revId": "0e61c4f9518d814c6a9ce7e77ef88aa8f5b2c906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf92deae_771f4f6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-01-03T01:50:43Z",
+      "side": 1,
+      "message": "Once the firmware branch CQ/builder is in working condition we will be back-merging from ToT so no EC cherry-pick will be used.",
+      "revId": "0e61c4f9518d814c6a9ce7e77ef88aa8f5b2c906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
