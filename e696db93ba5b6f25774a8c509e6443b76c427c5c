@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c89fbca_16e3a36c",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-03T22:04:31Z",
+      "side": 1,
+      "message": "I think we can make the test easier to read by pulling out this logic into a function. For example:\n\n```\nvoid wait_for_irq()\n{\n\tif (IS_ENABLED(CHIP_FAMILY_STM32H7))\n\t        /*\n\t * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,\n\t * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so\n\t * trigger it from software.\n\t */\n\t\ttask_trigger_irq(FPU_IRQ);\n\t\t\n\telse if (IS_ENABLED(CHIP_FAMILY_NPCX9)) {\n\t        /* Add comment here that this chip doesn\u0027t have FPU interrupt support */\n\t\tfpscr \u003d read_fpscr();\n\t\tfpu_irq_handled \u003d true;\n\t}\n\t\n\t/* Wait for asynchronous FPU interrupt. */\n\twhile (!fpu_irq_handled) {\n\t}\n}\n\ntest_static int test_cortexm_fpu_overflow(void)\n{\n  ...\n  \n  result \u003d divf(3.40282e38f, 0.5f);\n  \n  TEST_ASSERT(isinf(result));\n  \n  wait_for_irq();\n  \n  TEST_ASSERT(fpscr \u0026 FPU_FPSCR_OFC);\n\n  return EC_SUCCESS;\n}\n```",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "e696db93ba5b6f25774a8c509e6443b76c427c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
