@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54caaf1_f7cb0da4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-03T01:24:26Z",
+      "side": 1,
+      "message": "sorry, I did not ask the first time around: why not to perform the same consistency checks for all reserved objects retrieved from flash.",
+      "range": {
+        "startLine": 2040,
+        "startChar": 2,
+        "endLine": 2040,
+        "endChar": 26
+      },
+      "revId": "0fa637e9474eeac4f7c10ca00d5da23c90f4e76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
