@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b963c5_8445896a",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T00:42:39Z",
+      "side": 1,
+      "message": "Should this be GPIO_INPUT? It\u0027s GPIO_INPUT in gpio.dtsi",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "e984904ea8786246e705b472e7d5ff6c99e220b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b94f114_1ea89411",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T00:42:39Z",
+      "side": 1,
+      "message": "Should this be GPIO_ODR_LOW? It\u0027s GPIO_ODR_LOW in gpio.dtsi",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "e984904ea8786246e705b472e7d5ff6c99e220b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
