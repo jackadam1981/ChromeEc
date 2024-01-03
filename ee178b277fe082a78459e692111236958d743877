@@ -46,6 +46,30 @@
       },
       "revId": "ee178b277fe082a78459e692111236958d743877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a2337f_edb321da",
+        "filename": "zephyr/program/brox/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-03T01:18:45Z",
+      "side": 1,
+      "message": "I missed that it was enabled by default.",
+      "parentUuid": "8cbe17e4_8ec16381",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 23
+      },
+      "revId": "ee178b277fe082a78459e692111236958d743877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
