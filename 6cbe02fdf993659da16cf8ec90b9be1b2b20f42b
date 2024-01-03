@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46cb5b0d_73e3fb26",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-03T16:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50a8a7bf_69c66b94",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 0
+      },
+      "revId": "6cbe02fdf993659da16cf8ec90b9be1b2b20f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75212155_fd5b9a3c",
@@ -108,6 +132,30 @@
       "writtenOn": "2024-01-03T01:32:52Z",
       "side": 1,
       "message": "`else` case brackets style still needs adjustment",
+      "parentUuid": "6fbf9717_b4cf454e",
+      "range": {
+        "startLine": 3445,
+        "startChar": 3,
+        "endLine": 3446,
+        "endChar": 20
+      },
+      "revId": "6cbe02fdf993659da16cf8ec90b9be1b2b20f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38fef45e_539aca97",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3446,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-03T16:49:05Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "6fbf9717_b4cf454e",
       "range": {
         "startLine": 3445,
