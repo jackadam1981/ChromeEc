@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6480f197_7d1aa681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2024-01-03T17:17:00Z",
+      "side": 1,
+      "message": "Sheriff\u0027s OO for //common/fpsensor/OWNERS and //driver/fingerprint/OWNERS because Gerrit didn\u0027t detect OWNERS. Note: there\u0027s a top-level OWNERS (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-rex-15709.B-main/OWNERS) and caveh@ (who has already +2ed) is part of cros-ec-reviewers@google.com.",
+      "revId": "1db4a6a75ca523219aa2e016b74086cde14c83a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
