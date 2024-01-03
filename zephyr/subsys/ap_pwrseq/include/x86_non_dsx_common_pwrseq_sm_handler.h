@@ -31,6 +31,8 @@ const char *const pwr_sm_get_state_name(enum power_states_ndsx state);
 enum ap_pwrseq_state chipset_pwr_seq_get_state(void);
 const char *const pwr_sm_get_state_name(enum ap_pwrseq_state state);
 #endif
+bool chipset_is_all_power_good(void);
+bool chipset_is_vw_power_good(void);
 void request_start_from_g3(void);
 void apshutdown(void);
 void ap_pwrseq_handle_chipset_reset(void);

@@ -10,6 +10,16 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
+bool chipset_is_all_power_good(void)
+{
+	return !power_signal_get(PWR_RSMRST);
+}
+
+bool chipset_is_vw_power_good(void)
+{
+	return !power_signal_get(PWR_RSMRST);
+}
+
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 static void ap_off(void)
 {
