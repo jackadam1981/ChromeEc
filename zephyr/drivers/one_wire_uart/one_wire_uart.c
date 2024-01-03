@@ -168,6 +168,13 @@ DECLARE_DEFERRED(wake_tx);
 
 /* retry every 2.5ms */
 #define RETRY_INTERVAL (5 * MSEC / 2)
+#define MAX_RETRY 10
+
+static void log_reset(void)
+{
+	ccprints("one_wire_uart: reached max retry count, trying reset");
+}
+DECLARE_DEFERRED(log_reset);
 
 test_export_static void load_next_message(const struct device *dev)
 {
@@ -200,13 +207,21 @@ test_export_static void load_next_message(const struct device *dev)
 
 			ring_buf_put(tx_ring_buf, (uint8_t *)msg, len);
 			data->last_send_time = get_time();
-			/* TODO: implement error recovery when retry count
-			 * exceeds some threshold
-			 */
 			++data->retry_count;
-		} else {
+		} else if (data->retry_count < MAX_RETRY) {
 			hook_call_deferred(&wake_tx_data,
 					   RETRY_INTERVAL - elapsed);
+		} else {
+			one_wire_uart_reset(dev);
+
+			/* if the failed message is not a RESET message, try to
+			 * reset the other side first. Otherwise, silently stop
+			 * ourself.
+			 */
+			if (!msg->header.reset) {
+				one_wire_uart_send_reset(dev);
+				hook_call_deferred(&log_reset_data, 0);
+			}
 		}
 	}
 }
