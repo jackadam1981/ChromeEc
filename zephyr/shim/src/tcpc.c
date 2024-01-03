@@ -27,6 +27,9 @@
 #include "usbc/tcpc_rt1718s_emul.h"
 #include "usbc/tcpci.h"
 #include "usbc/utils.h"
+#include "console.h"
+#include "util.h"
+#include "printf.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
@@ -169,6 +172,9 @@ static void tcpc_int_gpio_callback(const struct device *dev,
 	 */
 	int port = cb - &int_tcpc_cb[0];
 
+	char ts_str[22]; 
+	snprintf_timestamp_now(ts_str, sizeof(ts_str));
+	LOG_INF("###tcpc interrupt %s", ts_str);
 	schedule_deferred_pd_interrupt(port);
 }
 

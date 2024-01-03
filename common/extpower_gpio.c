@@ -12,6 +12,9 @@
 #include "host_command.h"
 #include "timer.h"
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+
 static int debounced_extpower_presence;
 
 test_mockable int extpower_is_present(void)
@@ -26,6 +29,7 @@ static void extpower_deferred(void)
 {
 	int extpower_presence = gpio_get_level(GPIO_AC_PRESENT);
 
+	CPRINTS("#####%s", __func__);
 	if (extpower_presence == debounced_extpower_presence)
 		return;
 

@@ -2406,10 +2406,10 @@ static void tc_attach_wait_snk_run(const int port)
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
 			if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC) &&
 			    is_try_src_enabled(port))
-				set_state_tc(port, TC_TRY_SRC);
-			else
-				set_state_tc(port, TC_ATTACHED_SNK);
-		} else {
+							set_state_tc(port, TC_TRY_SRC);
+						else
+							set_state_tc(port, TC_ATTACHED_SNK);
+					} else {
 			/* new_cc_state is PD_CC_DFP_DEBUG_ACC */
 			CPRINTS("C%d: Debug accessory detected", port);
 			TC_SET_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
@@ -2564,6 +2564,7 @@ static bool tc_snk_check_vbus_removed(const int port)
 						PD_T_FRS_VBUS_DEBOUNCE);
 			} else if (pd_timer_is_expired(
 					   port, TC_TIMER_VBUS_DEBOUNCE)) {
+				CPRINTS_L1("###vbus remove");
 				set_state_tc(port, TC_UNATTACHED_SNK);
 				return true;
 			}
@@ -2995,7 +2996,7 @@ static void tc_attached_src_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
 			/* Change role to source */
-			tc_set_power_role(port, PD_ROLE_SOURCE);
+						tc_set_power_role(port, PD_ROLE_SOURCE);
 			tcpm_set_msg_header(port, tc[port].power_role,
 					    tc[port].data_role);
 
@@ -3017,7 +3018,7 @@ static void tc_attached_src_entry(const int port)
 			 * Figure 4-24. DRP Initialization and Connection
 			 * Detection in TCPCI r2 v1.2 specification.
 			 */
-
+			
 			/* Get connector orientation */
 			tcpm_get_cc(port, &cc1, &cc2);
 			tc[port].polarity = get_src_polarity(cc1, cc2);
@@ -3058,16 +3059,16 @@ static void tc_attached_src_entry(const int port)
 			 */
 			if (IS_ENABLED(CONFIG_USBC_VCONN) &&
 			    !TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER))
-				set_vconn(port, 1);
-
+							set_vconn(port, 1);
+			
 			/* Enable VBUS */
 			if (tc_src_power_on(port)) {
 				/* Stop sourcing Vconn if Vbus failed
 				 * TODO(b/300691956): Take action on failure
 				 */
 				if (IS_ENABLED(CONFIG_USBC_VCONN))
-					set_vconn(port, 0);
-
+									set_vconn(port, 0);
+				
 				if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 					usb_mux_set(port, USB_PD_MUX_NONE,
 						    USB_SWITCH_DISCONNECT,
@@ -3086,7 +3087,7 @@ static void tc_attached_src_entry(const int port)
 		 * Detection in TCPCI r2 v1.2 specification.
 		 */
 
-		/* Get connector orientation */
+				/* Get connector orientation */
 		tcpm_get_cc(port, &cc1, &cc2);
 		tc[port].polarity = get_src_polarity(cc1, cc2);
 		typec_set_polarity(port, tc[port].polarity);
@@ -3188,6 +3189,11 @@ static void tc_attached_src_run(const int port)
 		tc[port].cc_state = PD_CC_NONE;
 	else
 		tc[port].cc_state = PD_CC_UFP_ATTACHED;
+	if (tc[port].cc_state == PD_CC_NONE)
+	{
+		set_vconn(port, 0);
+	}
+	
 
 	/*
 	 * When the SRC.Open state is detected on the monitored CC pin, a DRP
@@ -3213,6 +3219,12 @@ static void tc_attached_src_run(const int port)
 		else if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 			new_tc_state = tryWait ? TC_TRY_WAIT_SNK :
 						 TC_UNATTACHED_SNK;
+		if (tc[port].cc_state == PD_CC_NONE)
+		{
+			set_vconn(port, 0);
+			udelay(20*MSEC);
+		}
+			
 
 		set_state_tc(port, new_tc_state);
 		return;
@@ -3348,9 +3360,9 @@ static void tc_attached_src_exit(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON) &&
 		    !TC_CHK_FLAG(port, TC_FLAGS_CTVPD_DETECTED))
-			set_vconn(port, 0);
-	}
-
+					set_vconn(port, 0);
+		}
+	
 	/* Clear CTVPD detected after checking for Vconn */
 	TC_CLR_FLAG(port, TC_FLAGS_CTVPD_DETECTED);
 
@@ -3581,7 +3593,7 @@ static void tc_try_src_run(const int port)
 		if ((pd_timer_is_expired(port, TC_TIMER_TRY_WAIT_DEBOUNCE) &&
 		     pd_check_vbus_level(port, VBUS_SAFE0V)) ||
 		    pd_timer_is_expired(port, TC_TIMER_TIMEOUT)) {
-			set_state_tc(port, TC_TRY_WAIT_SNK);
+						set_state_tc(port, TC_TRY_WAIT_SNK);
 		}
 	}
 }
@@ -3619,7 +3631,7 @@ static void tc_try_wait_snk_entry(const int port)
 	 */
 	typec_select_pull(port, TYPEC_CC_RD);
 
-	/* Apply Rd */
+		/* Apply Rd */
 	typec_update_cc(port);
 }
 
@@ -3627,11 +3639,11 @@ static void tc_try_wait_snk_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
 	enum pd_cc_states new_cc_state;
-
+	
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
 
-	/* We only care about CCs being open */
+		/* We only care about CCs being open */
 	if (cc1 == TYPEC_CC_VOLT_OPEN && cc2 == TYPEC_CC_VOLT_OPEN)
 		new_cc_state = PD_CC_NONE;
 	else
@@ -3659,8 +3671,8 @@ static void tc_try_wait_snk_run(const int port)
 	 */
 	if (pd_timer_is_expired(port, TC_TIMER_TRY_WAIT_DEBOUNCE) &&
 	    pd_is_vbus_present(port))
-		set_state_tc(port, TC_ATTACHED_SNK);
-}
+					set_state_tc(port, TC_ATTACHED_SNK);
+		}
 
 static void tc_try_wait_snk_exit(const int port)
 {
