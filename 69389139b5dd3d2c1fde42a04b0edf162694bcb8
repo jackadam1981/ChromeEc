@@ -34,6 +34,24 @@
       "parentUuid": "61d99355_24db7c50",
       "revId": "69389139b5dd3d2c1fde42a04b0edf162694bcb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeee7d3a_8f21b96c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-01-03T19:13:28Z",
+      "side": 1,
+      "message": "update_release_branch.py should be generating all relevant info.",
+      "parentUuid": "049daf0d_b31108cb",
+      "revId": "69389139b5dd3d2c1fde42a04b0edf162694bcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
