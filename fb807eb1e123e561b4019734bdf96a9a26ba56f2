@@ -142,6 +142,30 @@
       },
       "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d90f9c_5b28c37e",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-03T22:12:13Z",
+      "side": 0,
+      "message": "I don\u0027t think we should remove this option because of the warning message. Instead we should figure out if the warning message is expected, and/or how to correct it.\n\nFRS isn\u0027t a key (or even expected to be used) feature for Deku, The ports are will support DRP, but we don\u0027t really expect power role swaps.",
+      "parentUuid": "b13c718c_3fc916d2",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
