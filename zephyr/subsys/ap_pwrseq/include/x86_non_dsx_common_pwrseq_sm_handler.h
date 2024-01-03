@@ -36,4 +36,18 @@ void apshutdown(void);
 void ap_pwrseq_handle_chipset_reset(void);
 void set_start_from_g3_delay_seconds(uint32_t d_time);
 
+/**
+ * @brief Check if primary AP power rail is good.
+ *
+ * @return true if primary AP power is good, and false otherwise.
+ */
+bool chipset_is_all_power_good(void);
+
+/**
+ * @brief Check if AP power state is good to have operational Virtual Wire (VW)
+ * interface.
+ *
+ * @return true if AP Power state is good, and false otherwise.
+ */
+bool chipset_is_vw_power_good(void);
 #endif /* __X86_NON_DSX_COMMON_PWRSEQ_SM_HANDLER_H__ */
