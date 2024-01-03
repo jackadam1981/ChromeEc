@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed037ec7_84228f2e",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-03T01:13:30Z",
+      "side": 1,
+      "message": "Good catch - this looks like a mistake in the source spreadsheet.  The signal has an external pull-up, so we shouldn\u0027t enable the internal one.",
+      "parentUuid": "d5b963c5_8445896a",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "e984904ea8786246e705b472e7d5ff6c99e220b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b94f114_1ea89411",
         "filename": "zephyr/program/brox/generated.dtsi",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-03T00:42:39Z",
       "side": 1,
       "message": "Should this be GPIO_ODR_LOW? It\u0027s GPIO_ODR_LOW in gpio.dtsi",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "e984904ea8786246e705b472e7d5ff6c99e220b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7573503_283346d3",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-03T01:13:30Z",
+      "side": 1,
+      "message": "You are correct that it should be ODR_LOW.",
+      "parentUuid": "1b94f114_1ea89411",
       "range": {
         "startLine": 148,
         "startChar": 21,
