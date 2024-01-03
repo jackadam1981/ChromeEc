@@ -94,6 +94,30 @@
       },
       "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46428c0b_b6878a7c",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-03T21:51:23Z",
+      "side": 0,
+      "message": "\u003e  clears FPSCR (it\u0027s cleared on stack in line 35, when we return from exception, we copy FPSCR from stack to the register),\n\n@patrykd@google.com For my understanding, is the \"copy FPSCR form stack to the register\" done automatically by the processor or is it in our code? (I don\u0027t think I see it in the [irq handler](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/fpu.c;l\u003d16-39;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46)).",
+      "parentUuid": "cc0af706_65df1f1f",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
