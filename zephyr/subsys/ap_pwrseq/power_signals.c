@@ -171,6 +171,17 @@ int power_wait_mask_signals_timeout(power_signal_mask_t mask,
 	return -ETIMEDOUT;
 }
 
+int power_wait_signals_off_timeout(power_signal_mask_t want, int timeout)
+{
+	while (timeout-- > 0) {
+		if ((power_get_signals() & want) == 0) {
+			return 0;
+		}
+		k_msleep(1);
+	}
+	return -ETIMEDOUT;
+}
+
 int power_signal_get(enum power_signal signal)
 {
 	const struct ps_config *cp;
