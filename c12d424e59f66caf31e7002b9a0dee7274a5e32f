@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c7f20e_afd4c979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-04T03:34:25Z",
+      "side": 1,
+      "message": "I\u0027m confused about what exactly this achieves: it looks like it\u0027s just converting RSMRST from being treated as active-high to active-low, but that seems like it would require changes to every user so the inputs are inverted again. Looking at Nissa, `RSMRST_PWRGD_L` is active-low (so it\u0027s in reset when the GPIO is low) but the input isn\u0027t inverted in configuration so this would break boot on Nissa.\n\nIn principle I think it\u0027s a good idea to treat the power signal as active-high because its name indicates it\u0027s active-high, but changing the interpretation looks like it needs to invert the inputs for every board that configures this signal to avoid breaking them.",
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
