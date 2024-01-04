@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08e46d1_16892801",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224d4918_046e4ce3",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "97c1846022f1b7bad65d1780c7212871a914b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5be4387_454283f4",

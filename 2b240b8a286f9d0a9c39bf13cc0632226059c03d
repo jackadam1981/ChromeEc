@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fed01d99_127202ec",
+        "filename": "zephyr/include/usbc/pdc_power_mgnt.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Do all of these need to be public?\n\nPlease add documentation for the items that must be public.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777879b1_63310965",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Nit, keep the namespace consistent - `PDC_POWER_MGMT_INIT_PRIORITY`",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665f724f_25cb61a7",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "`PDC_POWER_MGMT_THREAD_PRIORTY`",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98b18e4_3514c8f8",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "`PDC_POWER_MGMT_STACK_SIZE`",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6c9d6b4_b9f8dd15",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
         "patchSetId": 17
@@ -42,6 +134,329 @@
         "startChar": 1,
         "endLine": 247,
         "endChar": 26
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5dfcf35_170a09f7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "As a follow up, I think you can eliminate `struct device *dev` in both `struct pdc_port_t` and in `struct pdc_data_t`.\n\nYou can use CONTAINER_OF to get this device pointer when needed.",
+      "parentUuid": "c513128a_16f9ebca",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bea87f_6fe0e55c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "As a followup, use `ATOMIC_DEFINE(cci_flags, CCI_FLAG_COUNT)`",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 20
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b90401b_dae54a56",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "This function can change the SMF state to PDC_CMD_SEND.  What happens if the SMF is currently processing one of the substates?  For instance what if the current state is PDC_CONNECTOR_CHANGE_EVENT-\u003eCONNECTOR_GET_STATUS and a public API is called?",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9a5371_f5018bf1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "A wrapper for each type-C port isn\u0027t necessary.  Just change `pdc_thread()`  to accept two unused parameters and add the while loop directly inside `pdc_thread()`",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 0
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0bd2d6_574b639f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Call `pdc_thread` directly here.",
+      "range": {
+        "startLine": 380,
+        "startChar": 3,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff50ac98_ad9fa398",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "`\"PDC Power Mgmt\" STRINGIFY(inst)`",
+      "range": {
+        "startLine": 382,
+        "startChar": 34,
+        "endLine": 382,
+        "endChar": 39
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b02ddd_bb32851f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Nit - the PDC device pointer should be constant and should be moved into the `struct pdc_config_t`.",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fc6fac_b6c097cd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "I believe `USBC_PORT_NEW(inst)` does what you need.",
+      "range": {
+        "startLine": 396,
+        "startChar": 19,
+        "endLine": 396,
+        "endChar": 20
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a43a33_6f5e9924",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Devicetree node order isn\u0027t guaranteed.  You need to index by the `reg` property field.\n```\n#define PDC_DATA_INIT(inst) \\\n    [USBC_PORT_NEW(inst)] \u003d \u0026data_##inst,\n```",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 41
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c47ebf3_9a3e5da0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "As a followup, you need to define a separate namespace for the functions in this file that is different from `pdc_`.  As implemented, it\u0027s confusing to know when a function belongs to this module, or is calling into the PDC driver.",
+      "range": {
+        "startLine": 437,
+        "startChar": 12,
+        "endLine": 437,
+        "endChar": 24
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc52b930_918a68b9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "What is `o`?",
+      "range": {
+        "startLine": 446,
+        "startChar": 45,
+        "endLine": 446,
+        "endChar": 52
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c58026_2e85db35",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Add a `LOG_ERR` in this path.",
+      "range": {
+        "startLine": 670,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 51
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c01cb7d_208e7307",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Can this be managed as it\u0027s own state?",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 20
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2a0f76_57ac84d4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:43:58Z",
+      "side": 1,
+      "message": "Add a LOG_ERR",
+      "range": {
+        "startLine": 986,
+        "startChar": 3,
+        "endLine": 986,
+        "endChar": 9
       },
       "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
