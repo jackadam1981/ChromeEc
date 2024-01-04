@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e4a0b8_bb3b079c",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-04T03:39:51Z",
+      "side": 1,
+      "message": "This could be `power_wait_mask_signals_timeout(want, 0, timeout)` which seems easier to maintain, rather than making a copy of `power_wait_mask_signals_timeout` which is subtly different.\n\nIf it\u0027s convenient to have them, making `_on` and `_off` aliases seems reasonable though (so retaining this function, but making it call the underlying one).",
+      "revId": "012187e7f68302bfa754f7ab8ff6b014f46ba15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
