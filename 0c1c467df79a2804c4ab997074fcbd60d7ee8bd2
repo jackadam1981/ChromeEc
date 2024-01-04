@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759bd1f2_c57814e9",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-04T20:17:25Z",
+      "side": 1,
+      "message": "added comments",
+      "parentUuid": "d14fa522_73c7f1c0",
+      "range": {
+        "startLine": 2011,
+        "startChar": 0,
+        "endLine": 2014,
+        "endChar": 3
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b874b4cb_ae17f601",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c31b0d2_ba522c2a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-04T20:17:25Z",
+      "side": 1,
+      "message": "just in case someone will change it)) TPM2B is externally defined.",
+      "parentUuid": "b874b4cb_ae17f601",
+      "range": {
+        "startLine": 2018,
+        "startChar": 1,
+        "endLine": 2018,
+        "endChar": 22
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a314958_0327a2d6",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-04T19:09:04Z",
       "side": 1,
       "message": "is this cast necessary?",
+      "range": {
+        "startLine": 2038,
+        "startChar": 33,
+        "endLine": 2038,
+        "endChar": 42
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd9a8cf_467a2b20",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-04T20:17:25Z",
+      "side": 1,
+      "message": "Andrey proposed it to make sure we have no overflows due to cast to uint16_t first. I removed it since `copy_size` is now used as intermediate and we have BUILD_ASSERT that cached-\u003esize/index_size are smaller.",
+      "parentUuid": "6a314958_0327a2d6",
       "range": {
         "startLine": 2038,
         "startChar": 33,
