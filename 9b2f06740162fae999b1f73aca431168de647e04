@@ -50,6 +50,23 @@
       "message": "According to the b/295018479#comment39, thermal merber verified PASS.",
       "revId": "9b2f06740162fae999b1f73aca431168de647e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18605e4_1b308a18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-01-04T16:15:09Z",
+      "side": 1,
+      "message": "Do the CLs in the relation chain need to be split or can they be merged together?",
+      "revId": "9b2f06740162fae999b1f73aca431168de647e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
