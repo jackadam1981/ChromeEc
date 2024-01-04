@@ -16,6 +16,24 @@
       "message": "I need to do some more investigation, but we should be able to reuse more of Ovis rather than replicating so much of it here. For example there shouldn\u0027t need to be a full copy of the gpio device tree. Rather there should be a file that contains the differences in Deku relative to Ovis. Same thing for the I2C bus devicetree settings.",
       "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b077022d_55f46e1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-04T03:59:56Z",
+      "side": 1,
+      "message": "Do you mean like patchset 4?",
+      "parentUuid": "1f4a53a6_aa33eeec",
+      "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
