@@ -204,11 +204,11 @@ ZTEST(signals, test_init_outputs)
 ZTEST(signals, test_gpio_input)
 {
 	emul_set(PWR_RSMRST, 1);
-	zassert_equal(1, power_signal_get(PWR_RSMRST),
-		      "power_signal_get of PWR_RSMRST should be 1");
-	emul_set(PWR_RSMRST, 0);
 	zassert_equal(0, power_signal_get(PWR_RSMRST),
 		      "power_signal_get of PWR_RSMRST should be 0");
+	emul_set(PWR_RSMRST, 0);
+	zassert_equal(1, power_signal_get(PWR_RSMRST),
+		      "power_signal_get of PWR_RSMRST should be 1");
 	/* ACTIVE_LOW input */
 	emul_set(PWR_SLP_S0, 0);
 	zassert_equal(
@@ -328,10 +328,10 @@ ZTEST(signals, test_gpio_interrupts)
 	power_signal_mask_t s0 = POWER_SIGNAL_MASK(PWR_SLP_S0);
 
 	/* Check that GPIO pin changes update the signal mask. */
-	emul_set(PWR_RSMRST, 1);
+	emul_set(PWR_RSMRST, 0);
 	zassert_equal(true, power_signals_on(rsm),
 		      "PWR_RSMRST not updated in mask");
-	emul_set(PWR_RSMRST, 0);
+	emul_set(PWR_RSMRST, 1);
 	zassert_equal(true, power_signals_off(rsm),
 		      "PWR_RSMRST not updated in mask");
 
