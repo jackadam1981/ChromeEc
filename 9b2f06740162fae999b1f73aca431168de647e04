@@ -85,6 +85,24 @@
       "parentUuid": "b18605e4_1b308a18",
       "revId": "9b2f06740162fae999b1f73aca431168de647e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91bbbf54_a52cf09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-01-04T17:37:44Z",
+      "side": 1,
+      "message": "I\u0027m not understanding why we\u0027d want to land bad L1/L2 values and then immediately fix them rather than landing good values to begin with. I don\u0027t see how this improves review-ability either.\n\nUp to you guys though.",
+      "parentUuid": "2562395b_244dd52c",
+      "revId": "9b2f06740162fae999b1f73aca431168de647e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
