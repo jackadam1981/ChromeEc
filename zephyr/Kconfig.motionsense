@@ -64,6 +64,14 @@ config PLATFORM_EC_SENSOR_TIGHT_TIMESTAMPS
       The former format enables improved filtering of sensor event
       timestamps on the AP, but comes with stricter jitter requirements.
 
+config PLATFORM_EC_SENSOR_RAIL_ON_S3
+    bool "Sensor rails binds to S3 rails"
+    default n
+    help
+      If this is defined, skip setting sensor sampling rate to zero when the
+      sensors are being powered off. This prevents the sensor communication
+      failures when sensor powered off.
+
 # TODO(b/173507858) config PLATFORM_EC_MOTION_FILL_LPC_SENSE_DATA
 # if PLATFORM_EC_MOTION_FILL_LPC_SENSE_DATA
 #endif # PLATFORM_EC_MOTION_FILL_LPC_SENSE_DATA

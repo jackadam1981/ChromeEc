@@ -328,10 +328,18 @@ static void motion_sense_switch_sensor_rate(void)
 				sensor->collection_rate = 0;
 				mutex_unlock(&g_sensor_mutex);
 				/*
-				 * Set ODR accordingly in case data sampling
-				 * is not supported
+				 * Sensors which on S3 rails lose power when AP
+				 * shuts down, causing sensor communication
+				 * failure with set_data_rate. Skip data rate
+				 * setting when the sensor being powered off.
 				 */
-				motion_sense_set_data_rate(sensor);
+				if (!IS_ENABLED(CONFIG_SENSOR_RAIL_ON_S3)) {
+					/*
+					 * Set ODR accordingly in case data
+					 * sampling is not supported
+					 */
+					motion_sense_set_data_rate(sensor);
+				}
 				sensor->state = SENSOR_NOT_INITIALIZED;
 			}
 		}
