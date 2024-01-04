@@ -1,4 +1,4 @@
-# Copyright 2022 The ChromiumOS Authors
+# Copyright 2024 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -75,3 +75,5 @@ target_sources_ifdef(
         PRIVATE
         ${PLATFORM_EC_PROGRAM_DIR}/corsola/ponyta/src/board.c
         src/ponyta_board.c)
+
+target_sources_ifdef(CONFIG_TEST_KYOGRE_SENSOR_PROBE app PRIVATE src/kyogre_sensor.c)
