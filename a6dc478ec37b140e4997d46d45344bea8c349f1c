@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d07b4440_1c0e7837",
+        "filename": "zephyr/drivers/vivaldi_kbd/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-04T11:56:46Z",
+      "side": 1,
+      "message": "Presubmit caught it. :-)",
+      "parentUuid": "f7809574_313d6397",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ce3ff447_cad83d6a",
         "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
         "patchSetId": 9
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef2968e_f0ecf400",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-04T11:56:46Z",
+      "side": 1,
+      "message": "Oh actually this is is available now, I can just implement it, done!",
+      "parentUuid": "2031cca8_3e9ff277",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7209c07_8aee78cd",
@@ -65,6 +101,30 @@
       "writtenOn": "2024-01-03T23:00:09Z",
       "side": 1,
       "message": "Can we replace this with a named priority?",
+      "range": {
+        "startLine": 166,
+        "startChar": 40,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc402924_b9528052",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-04T11:56:46Z",
+      "side": 1,
+      "message": "Sure thing.",
+      "parentUuid": "a7209c07_8aee78cd",
       "range": {
         "startLine": 166,
         "startChar": 40,
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "506a72f3_96bf44e9",
+        "filename": "zephyr/include/drivers/vivaldi_kbd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-04T11:56:46Z",
+      "side": 1,
+      "message": "Yeah I added a comment about the usage. Don\u0027t see a problem in any other code calling it if needed though, but I would  not declare in the file, otherwise you would not have type checking by including this in the board file that declares it.",
+      "parentUuid": "67f099c5_158ac9a2",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b3b504c_8d1a0d9b",
@@ -105,6 +183,24 @@
       "writtenOn": "2024-01-03T23:00:09Z",
       "side": 1,
       "message": "If we don\u0027t change these numbers much I think this is fine, otherwise we might want to self refer like:\n\n```\n#define VIVALDI_TK_ABSENT 0\n#define VIVALDI_TK_BACK VIVALDI_TK_ABSENT + 1\n\n```\n\nBut given that these will be included into a DT overlay, I don\u0027t even know if this is feasible.\n\nIf it isn\u0027t feasible or if we don\u0027t expect these to really ever change then please resolve and ignore this comment.",
+      "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1fdd11_dfa7ad34",
+        "filename": "zephyr/include/dt-bindings/vivaldi_kbd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-04T11:56:46Z",
+      "side": 1,
+      "message": "This are harcoded in the host command definition so they\u0027ll never change, I even added a test to make sure they don\u0027t change ever. I could define them as offset from absent but don\u0027t quite see the point to be honest, this is the simplest I could come up with.\n\nBTW ideally they\u0027d only be defined once and I could get rid of the host command defines, but first, that\u0027s an enum and it\u0027s not quite automatic to kill the enum, and second I\u0027d have to include a zephyr specific file from a common header, which does not sound quite right, so this is where I landed. Should be good enough since there\u0027s a test for coherency.",
+      "parentUuid": "0b3b504c_8d1a0d9b",
       "revId": "a6dc478ec37b140e4997d46d45344bea8c349f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
