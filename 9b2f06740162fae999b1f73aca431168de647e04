@@ -67,6 +67,24 @@
       "message": "Do the CLs in the relation chain need to be split or can they be merged together?",
       "revId": "9b2f06740162fae999b1f73aca431168de647e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2562395b_244dd52c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-01-04T16:25:24Z",
+      "side": 1,
+      "message": "I think those were split for review purposes as those are two logical steps to fix the issue. \nTim you want Albert to Cl_depend them?",
+      "parentUuid": "b18605e4_1b308a18",
+      "revId": "9b2f06740162fae999b1f73aca431168de647e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
