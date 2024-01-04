@@ -16,6 +16,24 @@
       "message": "For some reason this patch, alone, makes certain unit tests fail to compile.",
       "revId": "2054912d55f851e954ef79272e4ad63314302980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2356c3_b88d91c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-04T21:54:32Z",
+      "side": 1,
+      "message": "Confirmed. This patch becomes active when unit tests are built for druid. It causes  a build issue.",
+      "parentUuid": "b944ad79_b40f7419",
+      "revId": "2054912d55f851e954ef79272e4ad63314302980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
