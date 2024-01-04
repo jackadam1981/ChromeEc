@@ -34,6 +34,24 @@
       "parentUuid": "97ea829c_fdc231a5",
       "revId": "b89c0c367e484be674522cb0e396b4383b44f710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7af578_bf9b2548",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-04T14:16:26Z",
+      "side": 1,
+      "message": "I think config option is a good approach.\n\n\u003e separate board for Zephyr RO+RW.\n\nI think we will end up with two RW versions, but it should be discussed with the team.",
+      "parentUuid": "532b0b6f_98c67c0d",
+      "revId": "b89c0c367e484be674522cb0e396b4383b44f710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
