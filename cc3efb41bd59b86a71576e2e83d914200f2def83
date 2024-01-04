@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa33e03_ae8e60c6",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T20:13:21Z",
+      "side": 1,
+      "message": "Nit - delete this comment.  The enum already documents this.",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 0
+      },
+      "revId": "cc3efb41bd59b86a71576e2e83d914200f2def83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec8ebe2_32acdefc",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T20:13:21Z",
+      "side": 1,
+      "message": "This structure is not packed, so this doesn\u0027t represent the actual data returned by the PDC.\n\nAs a follow-up CL, can this structure be defined to match the UCSI spec? This would avoid having the [driver code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/drivers/usbc/pdc_rts54xx.c;l\u003d820) having to unpack the data.",
+      "range": {
+        "startLine": 587,
+        "startChar": 6,
+        "endLine": 587,
+        "endChar": 28
+      },
+      "revId": "cc3efb41bd59b86a71576e2e83d914200f2def83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4176b9f_c1831d31",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T20:13:21Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 0
+      },
+      "revId": "cc3efb41bd59b86a71576e2e83d914200f2def83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
