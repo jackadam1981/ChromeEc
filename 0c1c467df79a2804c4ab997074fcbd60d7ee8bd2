@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14fa522_73c7f1c0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T19:09:04Z",
+      "side": 1,
+      "message": "what is the meaning of these function arguments?",
+      "range": {
+        "startLine": 2011,
+        "startChar": 0,
+        "endLine": 2014,
+        "endChar": 3
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b874b4cb_ae17f601",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T19:09:04Z",
+      "side": 1,
+      "message": "what\u0027s the point of this `typeof()` trick - isn\u0027t `TPM2B` size field type fixed to uint_16?",
+      "range": {
+        "startLine": 2018,
+        "startChar": 1,
+        "endLine": 2018,
+        "endChar": 22
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a314958_0327a2d6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T19:09:04Z",
+      "side": 1,
+      "message": "is this cast necessary?",
+      "range": {
+        "startLine": 2038,
+        "startChar": 33,
+        "endLine": 2038,
+        "endChar": 42
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
