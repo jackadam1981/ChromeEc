@@ -34,6 +34,29 @@
       "parentUuid": "e7c7f20e_afd4c979",
       "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ea57fd2_28e78e44",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T17:28:08Z",
+      "side": 1,
+      "message": "Can you rename this signal to PWR_RSMRST_PWRGD?  That seems to better match the PDG documentation for both ADL and MTL.\n\nI think that will make the pass through handler easier to understand.\n\n```\nif (PWR_RSMRST_PWRGD)\n   sleep(rsmrst_delay);\n   clear PWR_EC_PCH_RSMRST;\nelse\n   set PWR_EC_PCH_RSMRST;\n```",
+      "range": {
+        "startLine": 321,
+        "startChar": 26,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
