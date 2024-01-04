@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4679c3bb_c33a8db6",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-04T03:36:37Z",
+      "side": 0,
+      "message": "Are we able to get rid of these macros now (they\u0027re pretty confusing, and I think they\u0027re mostly holdovers from the legacy approach), or are there other users that also need to be updated if we want to delete them?",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
