@@ -46,6 +46,30 @@
       },
       "revId": "3a36ab6b33ab9410e75ad7abf7c5c0bc449c1967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c9479d_3a73fd13",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-04T21:32:37Z",
+      "side": 0,
+      "message": "I removed the buffer logic and reduced this change to adding support for the elan 80sg.",
+      "parentUuid": "e839243f_f332fee4",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "3a36ab6b33ab9410e75ad7abf7c5c0bc449c1967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
