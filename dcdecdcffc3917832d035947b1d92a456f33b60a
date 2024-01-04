@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858efd8b_12a43ecd",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:54:16Z",
+      "side": 1,
+      "message": "2024 - this should be caught be the pre-upload scripts.",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8b74e1_aca54cfb",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:54:16Z",
+      "side": 1,
+      "message": "Needs a header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 42
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d58d1f1_8037d44e",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:54:16Z",
+      "side": 1,
+      "message": "Delete the dead code.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44128d0_4461923f",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:54:16Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17de5973_514b61ff",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:54:16Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20fe02d1_ff6fb720",
+        "filename": "zephyr/test/pdc/src/pdc_host_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-04T21:54:16Z",
+      "side": 1,
+      "message": "Where does this VID get set?",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
