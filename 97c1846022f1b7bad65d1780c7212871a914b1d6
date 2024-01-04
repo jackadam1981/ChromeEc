@@ -45,6 +45,30 @@
       },
       "revId": "97c1846022f1b7bad65d1780c7212871a914b1d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9269052d_184618cd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-04T19:31:05Z",
+      "side": 1,
+      "message": "The test code has been removed and the current code will be submitted.",
+      "parentUuid": "b5be4387_454283f4",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "97c1846022f1b7bad65d1780c7212871a914b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
