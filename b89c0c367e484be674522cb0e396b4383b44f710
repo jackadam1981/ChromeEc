@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ea829c_fdc231a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-04T14:06:06Z",
+      "side": 1,
+      "message": "We need to disable TIM2 only when we use EC RO (on already released devices). In future, when we switch to Zephyr RO, disabling TIM2 won\u0027t be necessary. Could you prepare the code for that?",
+      "revId": "b89c0c367e484be674522cb0e396b4383b44f710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
