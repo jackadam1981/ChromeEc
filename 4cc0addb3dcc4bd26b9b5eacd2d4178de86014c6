@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d834c19_7ddc57ac",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-04T22:10:51Z",
+      "side": 1,
+      "message": "Please check if these three cover all of the possible command outcomes.",
+      "range": {
+        "startLine": 714,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 38
+      },
+      "revId": "4cc0addb3dcc4bd26b9b5eacd2d4178de86014c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
