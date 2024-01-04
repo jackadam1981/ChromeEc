@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad79efac_6b68238d",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-04T22:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858efd8b_12a43ecd",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce8b74e1_aca54cfb",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-04T21:54:16Z",
       "side": 1,
       "message": "Needs a header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 42
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8797e2_924fbf3f",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-04T22:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce8b74e1_aca54cfb",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda2d44a_135ab2cb",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-04T22:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d58d1f1_8037d44e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e44128d0_4461923f",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-04T21:54:16Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41e90d8_d08df359",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-04T22:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e44128d0_4461923f",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d129760_4533c8e8",
+        "filename": "zephyr/test/pdc/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-04T22:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17de5973_514b61ff",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20fe02d1_ff6fb720",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-01-04T21:54:16Z",
       "side": 1,
       "message": "Where does this VID get set?",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc819749_ea138628",
+        "filename": "zephyr/test/pdc/src/pdc_host_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-04T22:08:24Z",
+      "side": 1,
+      "message": "@honscheid@google.com - This was from your WIP CL I pulled into my changes.  I\u0027ve `ifdef` this code out as it wasn\u0027t passing.  Do you want this submitted with my changes?",
+      "parentUuid": "20fe02d1_ff6fb720",
       "range": {
         "startLine": 26,
         "startChar": 31,
