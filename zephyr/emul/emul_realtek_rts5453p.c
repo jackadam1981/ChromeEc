@@ -17,7 +17,7 @@
 #include <zephyr/ztest.h>
 #endif
 
-#define DT_DRV_COMPAT realtek_rts5453p_emul
+#define DT_DRV_COMPAT realtek_rts54_pdc
 
 #define LOG_LEVEL CONFIG_I2C_LOG_LEVEL
 LOG_MODULE_REGISTER(realtek_rts5453_emul);
