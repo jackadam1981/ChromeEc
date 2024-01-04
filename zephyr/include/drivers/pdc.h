@@ -31,7 +31,7 @@ struct pdc_info_t {
 	uint32_t fw_version;
 	/** Power Delivery Revision supported by the PDC */
 	uint16_t pd_revision;
-	/** Power Delivery Version supported byt the PDC */
+	/** Power Delivery Version supported by the PDC */
 	uint16_t pd_version;
 	/** VID:PID of the PDC (optional) */
 	uint32_t vid_pid;
@@ -86,6 +86,8 @@ typedef int (*pdc_reconnect_t)(const struct device *dev);
 typedef int (*pdc_get_current_flash_bank_t)(const struct device *dev,
 					    uint8_t *bank);
 typedef int (*pdc_update_retimer_fw_t)(const struct device *dev, bool enable);
+typedef int (*pdc_wait_for_cmd_completion_t)(const struct device *dev,
+					     k_timeout_t timeout);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -116,6 +118,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_reconnect_t reconnect;
 	pdc_get_current_flash_bank_t get_current_flash_bank;
 	pdc_update_retimer_fw_t update_retimer;
+	pdc_wait_for_cmd_completion_t wait_for_cmd_completion;
 };
 /**
  * @endcond

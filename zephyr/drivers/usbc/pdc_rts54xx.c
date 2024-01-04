@@ -287,6 +287,8 @@ struct pdc_data_t {
 	void *cb_data;
 	/** Information about the PDC */
 	struct pdc_info_t info;
+	/** Command completion semaphore to help clients with blocking calls */
+	struct k_sem sem_cmd_complete;
 };
 
 /**
@@ -671,6 +673,7 @@ static void st_ping_status_run(void *o)
 			 */
 			data->cci_event.reset_completed = 1;
 			/* Notify system of status change */
+			k_sem_give(&data->sem_cmd_complete);
 			call_cci_event_cb(data);
 			LOG_DBG("Realtek PDC reset complete");
 			/* All done, return to Init or Idle state */
@@ -690,6 +693,7 @@ static void st_ping_status_run(void *o)
 				set_state(data, ST_READ);
 			} else {
 				/* Inform the system of the event */
+				k_sem_give(&data->sem_cmd_complete);
 				call_cci_event_cb(data);
 
 				/* Return to Idle or Init state */
@@ -707,6 +711,7 @@ static void st_ping_status_run(void *o)
 		data->cci_event.command_completed = 1;
 
 		/* Notify system of status change */
+		k_sem_give(&data->sem_cmd_complete);
 		call_cci_event_cb(data);
 
 		/*
@@ -1053,6 +1058,11 @@ static int rts54_get_rtk_status(const struct device *dev, uint8_t offset,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_RTK_STATUS.cmd;
 	data->wr_buf[1] = GET_RTK_STATUS.len;
 	data->wr_buf[2] = GET_RTK_STATUS.sub + offset;
@@ -1063,6 +1073,7 @@ static int rts54_get_rtk_status(const struct device *dev, uint8_t offset,
 	data->cmd = cmd;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1100,6 +1111,11 @@ static int rts54_enable(const struct device *dev)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = VENDOR_CMD_ENABLE.cmd;
 	data->wr_buf[1] = VENDOR_CMD_ENABLE.len;
 	data->wr_buf[2] = VENDOR_CMD_ENABLE.sub;
@@ -1109,6 +1125,7 @@ static int rts54_enable(const struct device *dev)
 	data->cmd = CMD_VENDOR_ENABLE;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1123,6 +1140,11 @@ static int rts54_read_power_level(const struct device *dev)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = UCSI_READ_POWER_LEVEL.cmd;
 	data->wr_buf[1] = UCSI_READ_POWER_LEVEL.len;
 	data->wr_buf[2] = UCSI_READ_POWER_LEVEL.sub;
@@ -1132,6 +1154,7 @@ static int rts54_read_power_level(const struct device *dev)
 	data->cmd = CMD_READ_POWER_LEVEL;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1146,6 +1169,11 @@ static int rts54_reconnect(const struct device *dev)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_TPC_RECONNECT.cmd;
 	data->wr_buf[1] = SET_TPC_RECONNECT.len;
 	data->wr_buf[2] = SET_TPC_RECONNECT.sub;
@@ -1154,6 +1182,7 @@ static int rts54_reconnect(const struct device *dev)
 	data->cmd = CMD_SET_TPC_RECONNECT;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1166,7 +1195,17 @@ static int rts54_pdc_reset(const struct device *dev)
 		return -EBUSY;
 	}
 
+	k_mutex_lock(&data->mtx, K_FOREVER);
+
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->cmd = CMD_TRIGGER_PDC_RESET;
+
+	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1182,6 +1221,11 @@ static int rts54_reset(const struct device *dev)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = PPM_RESET.cmd;
 	data->wr_buf[1] = PPM_RESET.len;
 	data->wr_buf[2] = PPM_RESET.sub;
@@ -1190,6 +1234,7 @@ static int rts54_reset(const struct device *dev)
 	data->cmd = CMD_PPM_RESET;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1205,6 +1250,11 @@ static int rts54_connector_reset(const struct device *dev,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = CONNECTOR_RESET.cmd;
 	data->wr_buf[1] = CONNECTOR_RESET.len;
 	data->wr_buf[2] = CONNECTOR_RESET.sub;
@@ -1214,6 +1264,7 @@ static int rts54_connector_reset(const struct device *dev,
 	data->cmd = CMD_CONNECTOR_RESET;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1246,6 +1297,11 @@ static int rts54_set_power_level(const struct device *dev,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_TPC_RP.cmd;
 	data->wr_buf[1] = SET_TPC_RP.len;
 	data->wr_buf[2] = SET_TPC_RP.sub;
@@ -1255,6 +1311,7 @@ static int rts54_set_power_level(const struct device *dev,
 	data->cmd = CMD_SET_TPC_RP;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1276,6 +1333,11 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = FORCE_SET_POWER_SWITCH.cmd;
 	data->wr_buf[1] = FORCE_SET_POWER_SWITCH.len;
 	data->wr_buf[2] = FORCE_SET_POWER_SWITCH.sub;
@@ -1285,6 +1347,7 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 	data->cmd = CMD_SET_SINK_PATH;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1302,6 +1365,11 @@ static int rts54_set_notification_enable(const struct device *dev,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_NOTIFICATION_ENABLE.cmd;
 	data->wr_buf[1] = SET_NOTIFICATION_ENABLE.len;
 	data->wr_buf[2] = SET_NOTIFICATION_ENABLE.sub;
@@ -1314,6 +1382,7 @@ static int rts54_set_notification_enable(const struct device *dev,
 	data->cmd = CMD_SET_NOTIFICATION_ENABLE;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1333,6 +1402,11 @@ static int rts54_get_capability(const struct device *dev,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_CAPABILITY.cmd;
 	data->wr_buf[1] = GET_CAPABILITY.len;
 	data->wr_buf[2] = GET_CAPABILITY.sub;
@@ -1342,6 +1416,7 @@ static int rts54_get_capability(const struct device *dev,
 	data->cmd = CMD_GET_CAPABILITY;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1361,6 +1436,11 @@ static int rts54_get_connector_capability(const struct device *dev,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_CONNECTOR_CAPABILITY.cmd;
 	data->wr_buf[1] = GET_CONNECTOR_CAPABILITY.len;
 	data->wr_buf[2] = GET_CONNECTOR_CAPABILITY.sub;
@@ -1370,6 +1450,7 @@ static int rts54_get_connector_capability(const struct device *dev,
 	data->cmd = CMD_GET_CONNECTOR_CAPABILITY;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1412,6 +1493,11 @@ static int rts54_get_error_status(const struct device *dev,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = UCSI_GET_ERROR_STATUS.cmd;
 	data->wr_buf[1] = UCSI_GET_ERROR_STATUS.len;
 	data->wr_buf[2] = UCSI_GET_ERROR_STATUS.sub;
@@ -1421,6 +1507,7 @@ static int rts54_get_error_status(const struct device *dev,
 	data->cmd = CMD_GET_ERROR_STATUS;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1435,6 +1522,11 @@ static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_RDO.cmd;
 	data->wr_buf[1] = SET_RDO.len;
 	data->wr_buf[2] = SET_RDO.sub;
@@ -1447,6 +1539,7 @@ static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
 	data->cmd = CMD_SET_RDO;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1465,6 +1558,11 @@ static int rts54_get_rdo(const struct device *dev, uint32_t *rdo)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_RDO.cmd;
 	data->wr_buf[1] = GET_RDO.len;
 	data->wr_buf[2] = GET_RDO.sub;
@@ -1474,6 +1572,7 @@ static int rts54_get_rdo(const struct device *dev, uint32_t *rdo)
 	data->cmd = CMD_GET_RDO;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1500,6 +1599,11 @@ static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_PDOS.cmd;
 	data->wr_buf[1] = GET_PDOS.len;
 	data->wr_buf[2] = GET_PDOS.sub;
@@ -1510,6 +1614,7 @@ static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 	data->cmd = CMD_GET_PDOS;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1528,6 +1633,11 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_IC_STATUS.cmd;
 	data->wr_buf[1] = GET_IC_STATUS.len;
 	data->wr_buf[2] = GET_IC_STATUS.sub;
@@ -1538,6 +1648,7 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info)
 	data->cmd = CMD_GET_IC_STATUS;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1596,6 +1707,11 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom,
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_TPC_CSD_OPERATION_MODE.cmd;
 	data->wr_buf[1] = SET_TPC_CSD_OPERATION_MODE.len;
 	data->wr_buf[2] = SET_TPC_CSD_OPERATION_MODE.sub;
@@ -1605,6 +1721,7 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom,
 	data->cmd = CMD_SET_CCOM;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1619,6 +1736,11 @@ static int rts54_set_uor(const struct device *dev, union uor_t uor)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_UOR.cmd;
 	data->wr_buf[1] = SET_UOR.len;
 	data->wr_buf[2] = SET_UOR.sub;
@@ -1628,6 +1750,7 @@ static int rts54_set_uor(const struct device *dev, union uor_t uor)
 	data->cmd = CMD_SET_UOR;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1642,6 +1765,11 @@ static int rts54_set_pdr(const struct device *dev, union pdr_t pdr)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = SET_PDR.cmd;
 	data->wr_buf[1] = SET_PDR.len;
 	data->wr_buf[2] = SET_PDR.sub;
@@ -1651,6 +1779,7 @@ static int rts54_set_pdr(const struct device *dev, union pdr_t pdr)
 	data->cmd = CMD_SET_PDR;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
 
 	return 0;
 }
@@ -1669,6 +1798,11 @@ static int rts54_get_current_pdo(const struct device *dev, uint32_t *pdo)
 
 	k_mutex_lock(&data->mtx, K_FOREVER);
 
+	if (data->cmd != CMD_NONE) {
+		k_mutex_unlock(&data->mtx);
+		return -EBUSY;
+	}
+
 	data->wr_buf[0] = GET_CURRENT_PARTNER_SRC_PDO.cmd;
 	data->wr_buf[1] = GET_CURRENT_PARTNER_SRC_PDO.len;
 	data->wr_buf[2] = GET_CURRENT_PARTNER_SRC_PDO.sub;
@@ -1678,6 +1812,26 @@ static int rts54_get_current_pdo(const struct device *dev, uint32_t *pdo)
 	data->cmd = CMD_GET_CURRENT_PARTNER_SRC_PDO;
 
 	k_mutex_unlock(&data->mtx);
+	k_sem_reset(&data->sem_cmd_complete);
+
+	return 0;
+}
+
+static int rts54_wait_for_cmd_completion(const struct device *dev,
+					 k_timeout_t timeout)
+{
+	struct pdc_data_t *data = dev->data;
+	int ret;
+
+	ret = k_sem_take(&data->sem_cmd_complete, timeout);
+	if (ret != 0) {
+		return ret;
+	}
+
+	if (data->cci_event.error) {
+		/* Error occurred in driver while processing the command */
+		return -EIO;
+	}
 
 	return 0;
 }
@@ -1704,6 +1858,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_info = rts54_get_info,
 	.set_power_level = rts54_set_power_level,
 	.reconnect = rts54_reconnect,
+	.wait_for_cmd_completion = rts54_wait_for_cmd_completion,
 };
 
 static void interrupt_handler(struct k_work *item)
@@ -1761,6 +1916,7 @@ static int pdc_init(const struct device *dev)
 
 	k_mutex_init(&data->mtx);
 	k_work_init(&data->work, interrupt_handler);
+	k_sem_init(&data->sem_cmd_complete, 0, 1);
 
 	data->dev = dev;
 	data->cmd = CMD_NONE;
