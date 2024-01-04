@@ -1,4 +1,4 @@
-# Copyright 2022 The ChromiumOS Authors
+# Copyright 2024 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -105,6 +105,12 @@ config TEST_PONYTA
 	help
 	  Include ponyta_boart.c into the binary to test the alt sensor probe via
 	  SSFC and clamshell or convertible.
+
+config TEST_KYOGRE_SENSOR_PROBE
+	bool "Run the tests intended for kyogre sensor probe"
+	help
+	  Include kyogre_sensor.c into the binary to test the kyogre sensor probe
+	  with GPIO interrupt.
 
 config TEST_BUILD_FAKE
 	bool "Build fakes.c"
