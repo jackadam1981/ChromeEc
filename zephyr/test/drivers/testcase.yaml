@@ -1324,6 +1324,12 @@ tests:
     extra_conf_files:
     - prj.conf
     - ec_host_cmd.conf
+  drivers.usbc_pdc:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_USBC_PDC=y
+    extra_dtc_overlay_files:
+    - default/boards/native_posix.overlay
+    - ./usbc_pdc/usbc_pdc.dts
   drivers.usbc_ppc:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_USBC_PPC=y

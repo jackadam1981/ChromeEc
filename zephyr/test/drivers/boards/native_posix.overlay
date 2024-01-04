@@ -78,6 +78,7 @@
 			chg = <&isl923x_emul>;
 			tcpc = <&tcpci_emul>;
 			ppc = <&sn5s330_emul>;
+			pdc = <&rts5453p_emul>;
 			usb-mux-chain-0 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&tcpci_mux_c0
@@ -939,6 +940,11 @@
 			irq-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 			rst-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
+		rts5453p_emul: rts5453@aa {
+			compatible = "realtek,rts54-pdc";
+			reg = <0xaa>;
+			irq-gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+		};
 	};
 
 	i2c3: i2c@600 {
@@ -1236,12 +1242,6 @@
 		reg = <0x9>;
 		battery = <&battery>;
 	};
-
-	rts5453p_emul: rts5453p@aa {
-		compatible = "realtek,rts5453p-emul";
-		reg = <0xaa>;
-	};
-
 };
 
 /* Enable all thermistors for testing */

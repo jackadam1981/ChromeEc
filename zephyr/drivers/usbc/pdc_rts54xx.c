@@ -773,7 +773,7 @@ static void st_read_run(void *o)
 
 	/* Copy the received data to the user's buffer */
 	switch (data->cmd) {
-	case CMD_GET_IC_STATUS:
+	case CMD_GET_IC_STATUS: {
 		struct pdc_info_t *info = (struct pdc_info_t *)data->user_buf;
 
 		/* Realtek Is running flash code: Byte 1 */
@@ -806,6 +806,7 @@ static void st_read_run(void *o)
 				info->pd_version, info->pd_revision);
 		}
 		break;
+	}
 	case CMD_GET_VBUS_VOLTAGE:
 		/*
 		 * Realtek Voltage reading is on Byte16 and Byte17, but
@@ -817,7 +818,7 @@ static void st_read_run(void *o)
 			((data->rd_buf[2] << 8) | data->rd_buf[1]) *
 			VOLTAGE_SCALE_FACTOR;
 		break;
-	case CMD_GET_CONNECTOR_STATUS:
+	case CMD_GET_CONNECTOR_STATUS: {
 		/* Map Realtek GET_RTK_STATUS bits to UCSI GET_CONNECTOR_STATUS
 		 */
 		struct connector_status_t *cs =
@@ -882,7 +883,8 @@ static void st_read_run(void *o)
 		 * byte) */
 		cs->voltage_reading = data->rd_buf[18] << 8 | data->rd_buf[17];
 		break;
-	case CMD_GET_ERROR_STATUS:
+	}
+	case CMD_GET_ERROR_STATUS: {
 		/* Map Realtek GET_ERROR_STATUS bits to UCSI GET_ERROR_STATUS */
 		union error_status_t *es =
 			(union error_status_t *)data->user_buf;
@@ -920,6 +922,7 @@ static void st_read_run(void *o)
 		 * states
 		 */
 		break;
+	}
 	default:
 		/* No preprocessing needed for the user data */
 		memcpy(data->user_buf, data->rd_buf + offset, len);
@@ -1033,13 +1036,13 @@ static void st_irq_run(void *o)
 
 /* Populate cmd state table */
 static const struct smf_state states[] = {
-	[ST_INIT] = SMF_CREATE_STATE(st_init_entry, st_init_run, NULL, NULL),
-	[ST_IDLE] = SMF_CREATE_STATE(st_idle_entry, st_idle_run, NULL, NULL),
-	[ST_WRITE] = SMF_CREATE_STATE(st_write_entry, st_write_run, NULL, NULL),
+	[ST_INIT] = SMF_CREATE_STATE(st_init_entry, st_init_run, NULL),
+	[ST_IDLE] = SMF_CREATE_STATE(st_idle_entry, st_idle_run, NULL),
+	[ST_WRITE] = SMF_CREATE_STATE(st_write_entry, st_write_run, NULL),
 	[ST_PING_STATUS] = SMF_CREATE_STATE(st_ping_status_entry,
-					    st_ping_status_run, NULL, NULL),
-	[ST_READ] = SMF_CREATE_STATE(st_read_entry, st_read_run, NULL, NULL),
-	[ST_IRQ] = SMF_CREATE_STATE(st_irq_entry, st_irq_run, NULL, NULL),
+					    st_ping_status_run, NULL),
+	[ST_READ] = SMF_CREATE_STATE(st_read_entry, st_read_run, NULL),
+	[ST_IRQ] = SMF_CREATE_STATE(st_irq_entry, st_irq_run, NULL),
 };
 
 static int rts54_get_rtk_status(const struct device *dev, uint8_t offset,
