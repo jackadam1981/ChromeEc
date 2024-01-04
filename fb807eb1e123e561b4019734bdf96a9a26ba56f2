@@ -166,6 +166,30 @@
       },
       "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4aec604_0bfa2e2b",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-04T02:42:34Z",
+      "side": 0,
+      "message": "For deku not support FRS, in patchset 6 I move these settings to Ovis subdirectory.\nAnd it won\u0027t happen build warning.",
+      "parentUuid": "98d90f9c_5b28c37e",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "fb807eb1e123e561b4019734bdf96a9a26ba56f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
