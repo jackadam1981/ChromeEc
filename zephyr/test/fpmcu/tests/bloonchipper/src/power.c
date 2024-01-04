@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "zephyr/kernel.h"
 
+#include <zephyr/drivers/clock_control/stm32_clock_control.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/pm/policy.h>
@@ -18,6 +19,16 @@ static uint32_t hook_chip_resume_cnt;
 static uint32_t hook_chip_suspend_cnt;
 
 FAKE_VALUE_FUNC(enum fp_transport_type, get_fp_transport_type);
+FAKE_VOID_FUNC(LL_TIM_DisableCounter, void *);
+FAKE_VALUE_FUNC(int, stm32_clock_control_off, const struct device *,
+		clock_control_subsys_t);
+
+static struct clock_control_driver_api stm32_clock_control_api = {
+	.off = stm32_clock_control_off,
+};
+
+DEVICE_DT_DEFINE(STM32_CLOCK_CONTROL_NODE, NULL, NULL, NULL, NULL, PRE_KERNEL_1,
+		 0, &stm32_clock_control_api);
 
 void pm_state_set(enum pm_state state, uint8_t substate_id)
 {
@@ -207,4 +218,12 @@ ZTEST(power, test_slp_event_broken_slp_l)
 	zassert_equal(pm_policy_state_lock_is_active(PM_STATE_SUSPEND_TO_IDLE,
 						     PM_ALL_SUBSTATES),
 		      1, "Incorrect pm lock state");
+}
+
+ZTEST(power, test_tim2)
+{
+	zassert_equal(LL_TIM_DisableCounter_fake.arg0_history[0],
+		      (void *)DT_REG_ADDR(DT_NODELABEL(timers2)));
+	zassert_equal(stm32_clock_control_off_fake.arg0_history[0],
+		      DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE));
 }

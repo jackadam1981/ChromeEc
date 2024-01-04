@@ -8,14 +8,31 @@
 
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/clock_control/stm32_clock_control.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
 #include <zephyr/pm/policy.h>
 
+#include <stm32f4xx_ll_tim.h>
+
 static struct k_work slp_event_work;
 static struct gpio_callback slp_event_callback;
 static struct gpio_callback slp_alt_event_callback;
+
+#define TIMER2_NODE DT_NODELABEL(timers2)
+
+static void disable_tim2(void)
+{
+	struct stm32_pclken pclken = { .bus = DT_CLOCKS_CELL(TIMER2_NODE, bus),
+				       .enr = DT_CLOCKS_CELL(TIMER2_NODE,
+							     bits) };
+	LL_TIM_DisableCounter(DT_REG_ADDR(TIMER2_NODE));
+	irq_disable(DT_IRQN(TIMER2_NODE));
+
+	clock_control_off(DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE),
+			  (clock_control_subsys_t)&pclken);
+}
 
 static void slp_event_handler(struct k_work *work)
 {
@@ -91,3 +108,16 @@ static int slp_event_init(void)
 	return 0;
 }
 SYS_INIT(slp_event_init, POST_KERNEL, CONFIG_APPLICATION_INIT_PRIORITY);
+
+static int tim2_init(void)
+{
+	/*
+	 * Old FPMCU RO (EC based) uses TIM2 to measure system uptime and
+	 * schedule tasks. Zephyr uses different counter for these purposes, so
+	 * disable it.
+	 */
+	disable_tim2();
+
+	return 0;
+}
+SYS_INIT(tim2_init, POST_KERNEL, CONFIG_APPLICATION_INIT_PRIORITY);
