@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331071d5_ad8aa6f1",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T22:21:11Z",
+      "side": 1,
+      "message": "size of container data, right?",
+      "range": {
+        "startLine": 2015,
+        "startChar": 12,
+        "endLine": 2015,
+        "endChar": 29
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5266b4f7_b5923e0d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T22:21:11Z",
+      "side": 1,
+      "message": "this will have to become `sizeof(index_size)`\n\nand if you want to be really careful, you can have build assert that `index_size` is of the same size as `cached-\u003esize`",
+      "range": {
+        "startLine": 2029,
+        "startChar": 21,
+        "endLine": 2029,
+        "endChar": 33
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef45936_0438f072",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T22:21:11Z",
+      "side": 1,
+      "message": "here and in line 2047: should there be a console message or flog or both?",
+      "range": {
+        "startLine": 2034,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 0
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be656f6_2d7d07ff",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T22:21:11Z",
+      "side": 1,
+      "message": "how does this zero tail, was the NVMEM cache space zeroed explicitly?",
+      "range": {
+        "startLine": 2049,
+        "startChar": 25,
+        "endLine": 2049,
+        "endChar": 53
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b233258d_d3342bef",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T22:21:11Z",
+      "side": 1,
+      "message": "note that PCR_POLICY includes two TPM2B fields",
+      "range": {
+        "startLine": 2083,
+        "startChar": 7,
+        "endLine": 2083,
+        "endChar": 23
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

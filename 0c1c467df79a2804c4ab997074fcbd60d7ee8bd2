@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0f97304_e1f0061e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-04T22:21:11Z",
+      "side": 1,
+      "message": "let\u0027s not do this, this field type will never change, `typeof()` is never used in this codebase, placing it here just confuses the reader.",
+      "parentUuid": "1c31b0d2_ba522c2a",
+      "range": {
+        "startLine": 2018,
+        "startChar": 1,
+        "endLine": 2018,
+        "endChar": 22
+      },
+      "revId": "0c1c467df79a2804c4ab997074fcbd60d7ee8bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a314958_0327a2d6",
         "filename": "common/new_nvmem.c",
         "patchSetId": 4
