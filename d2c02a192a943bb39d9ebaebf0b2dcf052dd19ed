@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adff5c16_48ba7bf5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-04T02:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "018616e4_f8e1ece3",
+      "range": {
+        "startLine": 2012,
+        "startChar": 0,
+        "endLine": 2012,
+        "endChar": 61
+      },
+      "revId": "d2c02a192a943bb39d9ebaebf0b2dcf052dd19ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37e62e03_e8f453b0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e88568_96b71400",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-04T02:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e62e03_e8f453b0",
+      "range": {
+        "startLine": 2037,
+        "startChar": 27,
+        "endLine": 2037,
+        "endChar": 35
+      },
+      "revId": "d2c02a192a943bb39d9ebaebf0b2dcf052dd19ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f08c10_fc4adae6",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-03T19:13:36Z",
       "side": 1,
       "message": "this should be `sizeof(index_size) + (uint32_t)index_size`, right? since after the previous if-statement, if we reach here it is established that `sizeof(index_size) + (uint32_t)index_size \u003c\u003d size`, and we don\u0027t need to memcpy the rest of the garbage if is is strict less-than.",
+      "range": {
+        "startLine": 2040,
+        "startChar": 21,
+        "endLine": 2040,
+        "endChar": 25
+      },
+      "revId": "d2c02a192a943bb39d9ebaebf0b2dcf052dd19ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7650e3c0_80cfcff0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-04T02:13:25Z",
+      "side": 1,
+      "message": "`size` is actual size of container in nvmem, it includes TPM2B\u0027s size.\n`space_size` is allocated size (also including TPM2B\u0027s size). In `size \u003e space_size` we check that container size is less than allocated size, so we have `size\u003c\u003dspace_size`. Yes, technically we can copy `sizeof(index_size) + (uint32_t)index_size`, however it breaked tests, so had to find all dependencies in tests - plenty of simple memcmp() between old and new content which started to fail due to tail zeroization.",
+      "parentUuid": "04f08c10_fc4adae6",
       "range": {
         "startLine": 2040,
         "startChar": 21,
