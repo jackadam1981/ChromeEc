@@ -103,6 +103,24 @@
       "parentUuid": "2562395b_244dd52c",
       "revId": "9b2f06740162fae999b1f73aca431168de647e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee04c5f_b525d192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-01-04T18:00:26Z",
+      "side": 1,
+      "message": "There are two bugs to be addressed b:295018479 and b:298172923\nThe second change makes some drawbacks to performance improvement introduced by first change.\nb:298172923 was a bit controversial as it use absolute temp to start a fan which depends on ambient temp. \n\nTLDR we want to put them as two patches to keep the history of improvements self explanatory for whoever will maintain the temp table.",
+      "parentUuid": "91bbbf54_a52cf09b",
+      "revId": "9b2f06740162fae999b1f73aca431168de647e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
