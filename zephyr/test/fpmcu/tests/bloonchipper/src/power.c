@@ -21,12 +21,15 @@ static uint32_t hook_chip_suspend_cnt;
 
 FAKE_VALUE_FUNC(enum fp_transport_type, get_fp_transport_type);
 FAKE_VOID_FUNC(LL_TIM_DisableCounter, void *);
+FAKE_VALUE_FUNC(int, stm32_clock_control_on, const struct device *,
+		clock_control_subsys_t);
 FAKE_VALUE_FUNC(int, stm32_clock_control_off, const struct device *,
 		clock_control_subsys_t);
 FAKE_VALUE_FUNC(int, pm_device_action_run, const struct device *,
 		enum pm_device_action);
 
 static struct clock_control_driver_api stm32_clock_control_api = {
+	.on = stm32_clock_control_on,
 	.off = stm32_clock_control_off,
 };
 

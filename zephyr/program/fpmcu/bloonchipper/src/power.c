@@ -8,6 +8,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/clock_control/stm32_clock_control.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
@@ -17,6 +18,26 @@
 static struct k_work slp_event_work;
 static struct gpio_callback slp_event_callback;
 static struct gpio_callback slp_alt_event_callback;
+
+static void enable_rtc(void)
+{
+	/* RTC APB clock */
+	struct stm32_pclken pclken = { .bus = STM32_CLOCK_BUS_APB1,
+				       .enr = 0x00000400 };
+
+	clock_control_on(DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE),
+			 (clock_control_subsys_t)&pclken);
+}
+
+static void disable_rtc(void)
+{
+	/* RTC APB clock */
+	struct stm32_pclken pclken = { .bus = STM32_CLOCK_BUS_APB1,
+				       .enr = 0x00000400 };
+
+	clock_control_off(DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE),
+			  (clock_control_subsys_t)&pclken);
+}
 
 static void slp_event_handler(struct k_work *work)
 {
@@ -50,7 +71,9 @@ static void slp_event_handler(struct k_work *work)
 		 * consumers for this signal.
 		 */
 		hook_notify(HOOK_CHIPSET_RESUME);
+		disable_rtc();
 	} else { /* S0ix/S3 */
+		enable_rtc();
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		if (!suspend_allowed) {
 			pm_policy_state_lock_put(PM_STATE_SUSPEND_TO_IDLE,
@@ -109,3 +132,14 @@ static int gpio_init(void)
 	return 0;
 }
 SYS_INIT(gpio_init, POST_KERNEL, CONFIG_APPLICATION_INIT_PRIORITY);
+
+/* The RTC is enabled by default. Make sure it is enabled at the beginning of
+ * the boot after jump.
+ */
+static int rtc_init(void)
+{
+	enable_rtc();
+
+	return 0;
+}
+SYS_INIT(rtc_init, EARLY, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT);
