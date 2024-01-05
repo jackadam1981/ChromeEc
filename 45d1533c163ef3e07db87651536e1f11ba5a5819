@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84995b0a_b239ca21",
+        "filename": "test/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:41:42Z",
+      "side": 1,
+      "message": "Can you use the Zephyr test framework instead?  This legacy test framework will be deprecated at some point.\n\nThe Zephyr based host command tests are here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/host_cmd/",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 79
+      },
+      "revId": "45d1533c163ef3e07db87651536e1f11ba5a5819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
