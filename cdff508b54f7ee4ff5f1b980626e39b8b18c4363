@@ -80,6 +80,30 @@
       },
       "revId": "cdff508b54f7ee4ff5f1b980626e39b8b18c4363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a580160_c4727767",
+        "filename": "include/flash_log.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-05T17:10:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1f0c4678_b783f9a7",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "cdff508b54f7ee4ff5f1b980626e39b8b18c4363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
