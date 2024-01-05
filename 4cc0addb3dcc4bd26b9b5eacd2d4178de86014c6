@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcb5f211_7dc9263a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T18:17:38Z",
+      "side": 1,
+      "message": "There is a lot of duplicated code.\n\nAn alternative is to fill a temporary write buffer on the stack and pass into a common handler.\n\n`wr_buf[]` is currently 256 bytes, but I don\u0027t see any uses of `wr_buf_len` that exceed 8 bytes.\n\nThis could look like:\n```\nint rts54_post_command(*dev, cmd, *wr_buf, wr_len, *user_buf)\n    if (!IDLE)\n        return EBUSY;\n    k_mutex_lock();\n    if (data-\u003ecmd !\u003d NONE)\n        k_mutex_unlock();\n        return EBUSY;\n    \n    data-\u003ecmd \u003d cmd;\n    memcpy(data-\u003ewr_buf, wr_buf, wr_len);\n    data-\u003euser_buf \u003d user_buf;\n    \n    k_mutex_unlock()\n    k_sem_reset()\n    return 0;\n}\nint rts54_get_current_pdo(*dev, *pdo)\n    uint8_t wr_buf[4];\n   \n    wr_buf[0] \u003d GET_CURRENT_PARTNER_SRC_PDO.cmd;\n    ...\n    rts54_post_command(dev, CMD_GET_CURRENT_PARTNER_SRC_PDO, wr_buf...)\n```",
+      "range": {
+        "startLine": 1801,
+        "startChar": 0,
+        "endLine": 1806,
+        "endChar": 0
+      },
+      "revId": "4cc0addb3dcc4bd26b9b5eacd2d4178de86014c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19eb4bb7_a1de9c13",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 2
