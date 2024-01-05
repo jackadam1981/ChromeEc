@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1262c60_e26dabd8",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:16:08Z",
+      "side": 1,
+      "message": "Mostly I was copying from other designs.  I\u0027ve removed all the full-range battery levels.",
+      "parentUuid": "5c496106_99973d36",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31816b7d_794aa2a7",
         "filename": "zephyr/program/brox/led_policy.dtsi",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-05T00:31:27Z",
       "side": 1,
       "message": "The batt-lvl property is inclusive on both sides. Either this value needs to be `BATTERY_LEVEL_LOW + 1` or the value on the other policy needs to be changed to `BATTERY_LEVEL_LOW - 1`.",
+      "range": {
+        "startLine": 141,
+        "startChar": 15,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c6ac77_5b13cc73",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31816b7d_794aa2a7",
       "range": {
         "startLine": 141,
         "startChar": 15,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfac110e_365a3212",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757b302d_1b3f592a",
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a6407aa_11b1f910",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83f77d4_ebae1047",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a6407aa_11b1f910",
+      "range": {
+        "startLine": 202,
+        "startChar": 35,
+        "endLine": 202,
+        "endChar": 52
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b13bc635_93ecdc0e",
@@ -117,6 +207,30 @@
       "writtenOn": "2024-01-05T00:31:27Z",
       "side": 1,
       "message": "see `power-state-discharge-s3`",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 54
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d402b8f_ac15367c",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13bc635_93ecdc0e",
       "range": {
         "startLine": 229,
         "startChar": 3,
