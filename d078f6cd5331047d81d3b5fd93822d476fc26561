@@ -34,6 +34,24 @@
       "parentUuid": "dc942192_b76926a2",
       "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f481156d_a05efd4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-01-05T21:41:07Z",
+      "side": 1,
+      "message": "... and in suspend, this won\u0027t happen since the PMIC and sensor are still powered on, and we can safely  set the sampling rate to 0.",
+      "parentUuid": "a347f3c4_da391070",
+      "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
