@@ -52,6 +52,24 @@
       "parentUuid": "a347f3c4_da391070",
       "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4e5e1c_4b5bf1b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-01-05T21:43:38Z",
+      "side": 1,
+      "message": "... I just found you reverted the origin CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4914641. I think I can abandon this one now. Thanks Gwendal",
+      "parentUuid": "f481156d_a05efd4e",
+      "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
