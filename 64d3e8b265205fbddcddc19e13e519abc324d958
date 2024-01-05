@@ -34,6 +34,52 @@
       "parentUuid": "1f4a53a6_aa33eeec",
       "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0987d18e_ff274480",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2024-01-05T02:16:11Z",
+      "side": 1,
+      "message": "This is the same as the ovis/interrupts.dtsi. I think you can use #include \"../interrupts.dtsi\" instead.",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4dc96d9_d81e6715",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2024-01-05T02:16:11Z",
+      "side": 1,
+      "message": "#include \"../power_signals.dtsi\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
