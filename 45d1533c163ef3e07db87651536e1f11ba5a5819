@@ -46,6 +46,30 @@
       },
       "revId": "45d1533c163ef3e07db87651536e1f11ba5a5819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32361721_cfe175d5",
+        "filename": "test/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T14:18:59Z",
+      "side": 1,
+      "message": "The fizz branch doesn\u0027t have any Zephyr support.  So the tradeoffs are:\n1. Zephyr tests: better support and continuing improvements.  However, the tests will only exist in the ToT branch.  As long as the AP hang detect feature in the Fizz branch mirrors ToT, this should be fine.\n2. legacy tests: tests can be cherry picked into Fizz branch.  So unit tests provide coverage, even if the Fizz branch diverges from ToT.\n\nI lean towards option 1.  I\u0027m not sure we even run the unit tests on the branches.\n\nLooking at previous CL checked into the Fizz branch (https://crrev.com/c/4201308?tab\u003dchecks), it appears it\u0027s only running the fizz OS builder which in turn runs the chromeos-ec ebuild.  I think this only builds the fizz EC and fingerprint images, but doesn\u0027t run the tests.",
+      "parentUuid": "20180ce8_9b22f79d",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 79
+      },
+      "revId": "45d1533c163ef3e07db87651536e1f11ba5a5819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
