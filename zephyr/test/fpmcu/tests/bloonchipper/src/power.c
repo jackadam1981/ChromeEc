@@ -20,6 +20,8 @@ static uint32_t hook_chip_suspend_cnt;
 
 FAKE_VALUE_FUNC(enum fp_transport_type, get_fp_transport_type);
 FAKE_VOID_FUNC(LL_TIM_DisableCounter, void *);
+FAKE_VALUE_FUNC(int, stm32_clock_control_on, const struct device *,
+		clock_control_subsys_t);
 FAKE_VALUE_FUNC(int, stm32_clock_control_off, const struct device *,
 		clock_control_subsys_t);
 
