@@ -70,6 +70,24 @@
       "parentUuid": "f481156d_a05efd4e",
       "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "546c93f1_b3c94c26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-05T22:05:19Z",
+      "side": 1,
+      "message": "Yes, that was the source of the issue. The CL has been reverted in a branch already. The CL would erroneously change the ODR while the sensor could be off.",
+      "parentUuid": "dd4e5e1c_4b5bf1b9",
+      "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
