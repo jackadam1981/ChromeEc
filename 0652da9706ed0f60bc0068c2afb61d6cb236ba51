@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0209f59d_3dc58b71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T17:45:53Z",
+      "side": 1,
+      "message": "Now added a test for this cleaning behavior, thanks to legacy image with some garbage in R:07. Also created space with bad TPM2B and checked it is removed.",
+      "revId": "0652da9706ed0f60bc0068c2afb61d6cb236ba51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
