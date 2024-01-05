@@ -29,11 +29,9 @@ else()
 	set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# TODO(b/273639386): Remove these workarounds when the upstream supports
-# better way to disable the filesystem, threads and locks usages.
-set(CMAKE_SYSTEM_NAME Linux)
+# TODO(b/273639386): Remove ANDROID when upstream is fixed.
 set(ANDROID TRUE)
-zephyr_compile_definitions(__TRUSTY__)
+zephyr_compile_definitions(CROS_ZEPHYR)
 
 # Zephyr defines _XOPEN_SOURCE=600 when compiling 'posix' architecture,
 # but BoringSSL defines _XOPEN_SOURCE=700. Since redefining is not allowed
@@ -62,7 +60,7 @@ add_subdirectory(${BORINGSSL_SOURCES} build EXCLUDE_FROM_ALL)
 # Link 'crypto' library into boringssl library.
 zephyr_library_link_libraries(crypto)
 
-# Provide implementation of CRYPTO_sysrand() using Zephyr Entropy Device.
+# Provide implementation of getentropy() using Zephyr Entropy Device.
 zephyr_library_sources_ifdef(CONFIG_BORINGSSL_HARDWARE_ENTROPY
 	common/sysrand_zephyr.c)
 
