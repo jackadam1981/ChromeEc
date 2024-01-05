@@ -7,9 +7,13 @@
 #include "gpio.h"
 #include "touchpad.h"
 
-#ifdef CONFIG_USB_DC_HID_KEYBOARD
+#if defined(CONFIG_USB_DC_HID_KEYBOARD) || defined(CONFIG_USBD_HID_KEYBOARD)
 static const struct ec_response_keybd_config bland_kb = {
+#ifdef CONFIG_USB_DC_HID_KEYBOARD
 	.num_top_row_keys = CONFIG_USB_DC_KEYBOARD_NUM_TOP_ROW_KEYS,
+#else
+	.num_top_row_keys = CONFIG_USBD_KEYBOARD_NUM_TOP_ROW_KEYS,
+#endif
 	.action_keys = {
 		TK_BACK,
 		TK_REFRESH,
