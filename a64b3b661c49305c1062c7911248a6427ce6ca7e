@@ -16,6 +16,115 @@
       "message": "Looks fine to me, but Jason should take a look",
       "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c496106_99973d36",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-05T00:31:27Z",
+      "side": 1,
+      "message": "this property doesn\u0027t need to exist if it\u0027s just all values, but I don\u0027t know if you\u0027re using it as a placeholder for something. You can keep it if you want the specification to be explicit for some reason.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31816b7d_794aa2a7",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-05T00:31:27Z",
+      "side": 1,
+      "message": "The batt-lvl property is inclusive on both sides. Either this value needs to be `BATTERY_LEVEL_LOW + 1` or the value on the other policy needs to be changed to `BATTERY_LEVEL_LOW - 1`.",
+      "range": {
+        "startLine": 141,
+        "startChar": 15,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757b302d_1b3f592a",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-05T00:31:27Z",
+      "side": 1,
+      "message": "Either this is missing batt-lvl property or `power-state-discharge-s3-batt-low` is a copy/paste error.",
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6407aa_11b1f910",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-05T00:31:27Z",
+      "side": 1,
+      "message": "See `power-state-discharge-s0`",
+      "range": {
+        "startLine": 202,
+        "startChar": 35,
+        "endLine": 202,
+        "endChar": 52
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13bc635_93ecdc0e",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-05T00:31:27Z",
+      "side": 1,
+      "message": "see `power-state-discharge-s3`",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 54
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
