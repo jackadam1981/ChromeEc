@@ -16,6 +16,24 @@
       "message": "When the sensors lose power in S3, make sure their `active-mask` is `SENSOR_ACTIVE_S0`, not `ACTIVE_S0_S3`.",
       "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a347f3c4_da391070",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-01-05T21:37:48Z",
+      "side": 1,
+      "message": "The sensor is actually binding to S3 rails on Corsola. However, the rail is from AP PMIC. When AP issues a shutdown command, the PMIC would turn it off immediately in S0, and then EC is aware of the S0-\u003eS3 transition later. This would cause the i2c communication to fail while setting the data rate to 0 in S0-\u003eS3 transition. \n\nDo you have any other suggestion for this one?",
+      "parentUuid": "dc942192_b76926a2",
+      "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
