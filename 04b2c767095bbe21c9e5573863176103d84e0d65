@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aef9717_bdd3d79f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-01-05T16:51:49Z",
+      "side": 1,
+      "message": "Sorry, could you point me to this one?\n\nCurrent derating was introduced in cl:4109651 as a result of occasional overcurrent on some brya boards. I would leave this setting as-is to avoid overcurrent situations.",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "04b2c767095bbe21c9e5573863176103d84e0d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
