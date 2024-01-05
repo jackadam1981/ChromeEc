@@ -676,7 +676,7 @@ static void st_ping_status_run(void *o)
 			/* All done, return to Init or Idle state */
 			return_to_init_or_idle_state(data);
 		} else {
-			LOG_DBG("ping_status: %02x",
+			LOG_INF("ping_status: %02x",
 				data->ping_status.raw_value);
 
 			/*
