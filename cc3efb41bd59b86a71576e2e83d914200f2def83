@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd016b95_c47c57e3",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa33e03_ae8e60c6",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 0
+      },
+      "revId": "cc3efb41bd59b86a71576e2e83d914200f2def83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec8ebe2_32acdefc",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a39a1e7_2206848d",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:20:06Z",
+      "side": 1,
+      "message": "Realtek doesn\u0027t support the UCSI Get_Connector_Status command. I need to send the Realtek Get_RTK_STATUS command and map that data to the Get_Connector_Status. When they support the command, we can pack the structure and just memcopy to it.",
+      "parentUuid": "eec8ebe2_32acdefc",
+      "range": {
+        "startLine": 587,
+        "startChar": 6,
+        "endLine": 587,
+        "endChar": 28
+      },
+      "revId": "cc3efb41bd59b86a71576e2e83d914200f2def83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4176b9f_c1831d31",
         "filename": "zephyr/include/drivers/ucsi_v3.h",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-04T20:13:21Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 0
+      },
+      "revId": "cc3efb41bd59b86a71576e2e83d914200f2def83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e05993_93ee6cbd",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4176b9f_c1831d31",
       "range": {
         "startLine": 620,
         "startChar": 0,
