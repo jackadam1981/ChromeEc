@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4168b4c_2e9961e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-05T08:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66948af_d7f26185",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0c851cd_9159ecb6",
@@ -103,6 +127,24 @@
       "side": 1,
       "message": "The change also moves `PLATFORM_EC_TABLET_MODE` outside of the `if PLATFORM_EC_MOTIONSENSE` block.",
       "parentUuid": "e0c851cd_9159ecb6",
+      "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a112867_dbfb3516",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-05T08:02:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a2df55b1_9d5ed23d",
       "revId": "ac5d78e04dd5b102f6a0108303ef37dcaff3aed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
