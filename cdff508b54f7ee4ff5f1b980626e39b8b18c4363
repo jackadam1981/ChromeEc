@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e61d1acf_8074b043",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-05T02:38:12Z",
+      "side": 1,
+      "message": "with a couple of nits/questions to your discretion",
+      "revId": "cdff508b54f7ee4ff5f1b980626e39b8b18c4363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "69956379_0915b3c8",
         "filename": "common/new_nvmem.c",
         "patchSetId": 7
@@ -14,6 +31,29 @@
       "writtenOn": "2024-01-05T00:52:57Z",
       "side": 1,
       "message": "Here we zeroize nvmem",
+      "revId": "cdff508b54f7ee4ff5f1b980626e39b8b18c4363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8a7c79_ed8e0fae",
+        "filename": "include/flash_log.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-05T02:38:12Z",
+      "side": 1,
+      "message": "is one byte enough?",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 11
+      },
       "revId": "cdff508b54f7ee4ff5f1b980626e39b8b18c4363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

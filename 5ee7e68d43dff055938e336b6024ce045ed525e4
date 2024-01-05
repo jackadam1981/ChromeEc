@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6511180e_7571618c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-05T02:38:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2cd173e2_bf5a9c98",
+      "range": {
+        "startLine": 2049,
+        "startChar": 25,
+        "endLine": 2049,
+        "endChar": 53
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b233258d_d3342bef",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "It is a different field defined as `TPM2B_DIGEST        ownerPolicy;` in Global.h",
       "parentUuid": "b233258d_d3342bef",
+      "range": {
+        "startLine": 2083,
+        "startChar": 7,
+        "endLine": 2083,
+        "endChar": 23
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7b3f82_bc042d25",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-05T02:38:12Z",
+      "side": 1,
+      "message": "I understand, but it also a part of the reserved space, right?",
+      "parentUuid": "5a04a348_9b7ee279",
       "range": {
         "startLine": 2083,
         "startChar": 7,
