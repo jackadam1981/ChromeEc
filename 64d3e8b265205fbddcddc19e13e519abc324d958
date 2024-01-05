@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9073de75_6e341d04",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-05T04:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0987d18e_ff274480",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4dc96d9_d81e6715",
@@ -90,6 +114,30 @@
       "writtenOn": "2024-01-05T02:16:11Z",
       "side": 1,
       "message": "#include \"../power_signals.dtsi\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74a332c_f76b55cc",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-05T04:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4dc96d9_d81e6715",
       "range": {
         "startLine": 13,
         "startChar": 10,
