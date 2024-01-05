@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc942192_b76926a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-05T19:25:07Z",
+      "side": 1,
+      "message": "When the sensors lose power in S3, make sure their `active-mask` is `SENSOR_ACTIVE_S0`, not `ACTIVE_S0_S3`.",
+      "revId": "d078f6cd5331047d81d3b5fd93822d476fc26561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
