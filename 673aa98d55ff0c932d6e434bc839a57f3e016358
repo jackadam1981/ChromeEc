@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba065d5b_550086e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "ll",
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f0cb12_15fdb5d2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "General comment: `mgmt` is a more common abbreviation than `mgnt`",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad9ea14_bf755a49",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "Can this fall-through instead?  Otherwise it takes 200 ms to call `pdc_get_connector_status()` and then another 200 ms to get the eval status.",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 8
+      },
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36ae153_2b789682",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "Add LOG_ERR() to error paths.",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 51
+      },
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57813bb_8bd96fe8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "\u003e \"temparary\" is a possible misspelling of \"temporary\".\n\nPlease fix.",
+      "parentUuid": "600a2f8f_2ae4ef4c",
+      "range": {
+        "startLine": 744,
+        "startChar": 18,
+        "endLine": 744,
+        "endChar": 27
+      },
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a08fc14_e173077e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "Why not? Is the `snk_attached_local_state` guaranteed to be SNK_ATTACHED_RUN in this case?\n\nI think I see the flow now - if we\u0027re coming from PDC_CMD_SEND, then the all the SNK substates have already been run and we don\u0027t need to do it again.\n\nWhat happens if the power contract changes?  Will we transition through unattached in that case?",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 70
+      },
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c67ff59_bd9e5f11",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "This is a lot of sub-states that effectively blocks the public API calls while in flight.\n\nWith a delay of 200ms between states, it will take over a full second to transition through all these sub-states.\n\nShould public APIs be allowed between these sub-states?",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 44
+      },
+      "revId": "673aa98d55ff0c932d6e434bc839a57f3e016358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

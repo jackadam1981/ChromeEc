@@ -309,6 +309,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d8ab3cc_c5a25b36",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "See my comment regarding the `struct device *pdc` field.  If this module gets reworked to pass around the `struct device *` allocated by DEVICE_DT_INST_DEFINE, then you don\u0027t even need CONTAINER_OF.  But this is work for a follow up CL.",
+      "parentUuid": "31090c4e_5f4072ee",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4bea87f_6fe0e55c",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
         "patchSetId": 17
@@ -391,6 +415,30 @@
       "side": 1,
       "message": "Yeah, I forgot to move this to the run part of the states.",
       "parentUuid": "1b90401b_dae54a56",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d89516_6ceff5f9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b923a0_75f3db4e",
       "range": {
         "startLine": 355,
         "startChar": 0,
@@ -591,6 +639,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41d15aa4_9fbedd8d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "This can be cleaned up in a follow-up CL, but it\u0027s best practice to use _config_t for all the constant data, and _data_t for the non constant data.\n\nIn your case, pdc_config_t and pdc_data_t are provided inside the `struct device` container:\n```\nstruct device {\n    const void *config \u003d pdc_config_t;\n    void *data \u003d pdc_data_t;\n}\n```\n\nAnd `pdc_data_t` contains `pdc_port_t`.\n\nTypically, you always pass around the reference to `struct device` to your static functions so you always have access to both the const and non-const data.\n\nFor instance you could change `print_current_pdc_state` from\n\n```\nstatic void print_current_pdc_state(struct pdc_port_t *port)\n{\n\tconst struct pdc_config_t *const config \u003d port-\u003edev-\u003econfig;\n```\n\nTo this:\n\n```\nstatic void print_current_pdc_state(const struct device *dev)\n{\n\tconst struct pdc_config_t *const config \u003d dev-\u003econfig;\n\tstruct pdc_data_t *data \u003d dev-\u003edata;\n```\n\nIt probably makes sense to pass the `struct device` to the SMF instead of `pdc_port`.  But this can be done later.",
+      "parentUuid": "46434ecf_63cb28ed",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10fc6fac_b6c097cd",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
         "patchSetId": 17
@@ -685,6 +757,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d06ef1c_29995168",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "My mistake.  This should work:\n```\n#define PDC_DATA_INIT(inst) [USBC_PORT_NEW(DT_DRV_INST(inst))] \u003d \u0026data_##inst,\n```",
+      "parentUuid": "6918e813_98190326",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 41
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c47ebf3_9a3e5da0",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
         "patchSetId": 17
@@ -732,6 +828,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d07d5b8f_f08d8e3b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "`pm_` alone is used upstream for chip-level power management.\n\nI\u0027d go with `pdc_power_mgmt_` for now.\n\nOther options:\n* `pdc_power_delivery_`\n* `pdc_pd_`\n* `ppm_` # probably not a good choice",
+      "parentUuid": "f74a8007_a8cf3d01",
+      "range": {
+        "startLine": 437,
+        "startChar": 12,
+        "endLine": 437,
+        "endChar": 24
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc52b930_918a68b9",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
         "patchSetId": 17
@@ -767,6 +887,30 @@
       "side": 1,
       "message": "This is a pointer to the SMF context that\u0027s cast to pdc_port data. Do you think it should be more descriptive?",
       "parentUuid": "cc52b930_918a68b9",
+      "range": {
+        "startLine": 446,
+        "startChar": 45,
+        "endLine": 446,
+        "endChar": 52
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14c530e_529dee1a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "Expand to at least `obj` to match the smf.h header file.",
+      "parentUuid": "580407c7_b7f2b3b5",
       "range": {
         "startLine": 446,
         "startChar": 45,
@@ -861,6 +1005,30 @@
       "side": 1,
       "message": "I didn\u0027t want to do this, so I could preserve the ```port-\u003elast_state```",
       "parentUuid": "3c01cb7d_208e7307",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 20
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18f8513_9b768324",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T17:55:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "835707be_60c08e74",
       "range": {
         "startLine": 684,
         "startChar": 0,
