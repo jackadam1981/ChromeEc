@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c64931f_fcdd7e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2024-01-05T02:17:49Z",
+      "side": 1,
+      "message": "Scott, Will you submit a separate patch to refactor the changes, or will you create a new patch that completely supersedes the existing one?",
+      "parentUuid": "b077022d_55f46e1a",
+      "revId": "64d3e8b265205fbddcddc19e13e519abc324d958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0987d18e_ff274480",
         "filename": "zephyr/program/ovis/deku/project.overlay",
         "patchSetId": 8
