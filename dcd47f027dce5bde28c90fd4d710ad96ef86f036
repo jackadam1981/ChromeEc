@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9634db69_9fa8f892",
+        "filename": "zephyr/test/ap_power/boards/alderlake.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T14:24:04Z",
+      "side": 1,
+      "message": "This signals isn\u0027t active low.  The physical/raw signal is high when the power rail is good, correct?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "dcd47f027dce5bde28c90fd4d710ad96ef86f036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

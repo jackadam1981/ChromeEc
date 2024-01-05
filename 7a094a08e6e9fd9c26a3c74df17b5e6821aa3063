@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af69426_fb6f42ea",
+        "filename": "zephyr/test/ap_power/boards/alderlake_emul.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T14:24:04Z",
+      "side": 1,
+      "message": "tPCH32 specifies 95ms for the DSW_PWROK assertion to SLP_SUS de-assertion.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 26
+      },
+      "revId": "7a094a08e6e9fd9c26a3c74df17b5e6821aa3063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
