@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d088a227_823a7f86",
+        "filename": "zephyr/include/usbc/pdc_power_mgnt.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:51:10Z",
+      "side": 1,
+      "message": "We might not need all of them or more. I just copied what you had in the usb_stub.c file.",
+      "parentUuid": "fed01d99_127202ec",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "777879b1_63310965",
         "filename": "zephyr/subsys/pd_controller/Kconfig",
         "patchSetId": 17
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-04T21:43:58Z",
       "side": 1,
       "message": "Nit, keep the namespace consistent - `PDC_POWER_MGMT_INIT_PRIORITY`",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "859b36b1_3b9d83b1",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777879b1_63310965",
       "range": {
         "startLine": 18,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb8f183_5a21d819",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665f724f_25cb61a7",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c98b18e4_3514c8f8",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-04T21:43:58Z",
       "side": 1,
       "message": "`PDC_POWER_MGMT_STACK_SIZE`",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "175a2fff_3417f16c",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c98b18e4_3514c8f8",
       "range": {
         "startLine": 30,
         "startChar": 7,
