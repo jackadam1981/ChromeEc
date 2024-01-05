@@ -281,6 +281,30 @@
       },
       "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82337b51_e5138e4a",
+        "filename": "zephyr/test/pdc/src/pdc_host_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-05T20:40:33Z",
+      "side": 1,
+      "message": "This test/file probably shouldn\u0027t be here until the host command implementation lands. I\u0027d just delete this. It made more sense in with how this CL was ordered in my stack but I since broke this out to let you take it over.",
+      "parentUuid": "dc819749_ea138628",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "dcdecdcffc3917832d035947b1d92a456f33b60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
