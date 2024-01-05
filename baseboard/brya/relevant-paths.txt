@@ -4,12 +4,14 @@
 # Brya branching strategy is to merge all changes from ToT on a weekly basis.
 # No separate cherry-picks allowed for EC repo in the firmware branch.
 # How to perform a merge:
-# $ cd /path/to/src/platform/ec
-# $ git checkout cros/main
-# $ util/update_release_branch.py --baseboard brya --relevant_paths_file
-#   baseboard/brya/relevant-paths.txt firmware-brya-14505.B-main
-# $ make buildall
-# $ repo upload --cbr . --no-verify
+# (chroot) $ cd /path/to/main/src/platform/ec
+# (chroot) $ git checkout cros/main
+# (chroot) $ util/update_release_branch.py --baseboard brya --relevant_paths_file baseboard/brya/relevant-paths.txt firmware-brya-14505.B-main
+# If merge conflicts occur, resolve and run the update_release_branch step again
+# (chroot) $ make BOARD=brask -j 256
+# (chroot) $ make BOARD=brox -j 256
+# (chroot) $ make BOARD=constitution -j 256
+# (outside) $ repo upload --cbr . --no-verify
 # Remove the cq-orchestrator line form the commit message
 # Assign one of Brya EC owners as a reviewer
 #
