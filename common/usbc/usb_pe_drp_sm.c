@@ -672,6 +672,8 @@ static struct policy_engine {
 	 */
 	uint8_t src_snk_pr_swap_counter;
 
+	uint8_t snk_src_pr_swap_counter;
+
 	/*
 	 * This counter maintains a count of VCONN swap requests. If VCONN swap
 	 * isn't successful after N_VCONN_SWAP_COUNT, the port calls
@@ -805,6 +807,7 @@ static void pe_init(int port)
 	pe[port].data_role = pd_get_data_role(port);
 	pe[port].tx_type = TCPCI_MSG_INVALID;
 	pe[port].events = 0;
+	pe[port].snk_src_pr_swap_counter = 0;
 
 	tc_pd_connection(port, 0);
 
@@ -2095,6 +2098,15 @@ void pd_request_power_swap(int port)
 
 	/* Ignore requests when our power role is transitioning */
 	if (pe_is_pr_swapping(port))
+		return;
+
+	/* TODO: Do this less dirtily. This constant is already used for
+	 * counting WAITed PRS attempts, despite the the fact that those are
+	 * going in the opposite direction that the name would imply. Both
+	 * policies should really be in the DPM. It may or may not make sense
+	 * for the limit on successful PRS to apply to either direction.
+	 */
+	if (pe[port].snk_src_pr_swap_counter >= N_SNK_SRC_PR_SWAP_COUNT)
 		return;
 
 	/*
@@ -5356,6 +5368,9 @@ static void pe_prs_snk_src_source_on_run(int port)
 
 static void pe_prs_snk_src_source_on_exit(int port)
 {
+	/* TODO: Make sure this doesn't have unintended interactions with FRS.
+	 */
+	++pe[port].snk_src_pr_swap_counter;
 	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port, PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
 }
