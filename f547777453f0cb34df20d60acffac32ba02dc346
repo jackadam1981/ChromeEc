@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09779253_90489ce9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-05T16:21:35Z",
+      "side": 1,
+      "message": "I need to use usb_pd.h instead of the Zephyr defined headers because I was getting symbol errors. We can investigate after the bringup.",
+      "revId": "f547777453f0cb34df20d60acffac32ba02dc346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
