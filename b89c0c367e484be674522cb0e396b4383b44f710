@@ -52,6 +52,24 @@
       "parentUuid": "532b0b6f_98c67c0d",
       "revId": "b89c0c367e484be674522cb0e396b4383b44f710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae3cdc3_2f06742e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-05T09:57:05Z",
+      "side": 1,
+      "message": "Moved to ec_quirks.c which is guarded with the EC_QUIRKS config",
+      "parentUuid": "2f7af578_bf9b2548",
+      "revId": "b89c0c367e484be674522cb0e396b4383b44f710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
