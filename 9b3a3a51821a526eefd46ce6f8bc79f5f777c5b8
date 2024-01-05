@@ -117,6 +117,30 @@
       },
       "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6d9afd_66cb587a",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-05T13:47:15Z",
+      "side": 1,
+      "message": "I have dig deeper also on the kernel code and there is no need to care about this use case, as when setting the new timeout, kernel immediately pets the watchdog (so in turn calls the `hang_detect_reload()` in the end):\nreference:\nhttps://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-6.6/drivers/watchdog/watchdog_dev.c#804\n\nupdate: ayyyyy it looks I forgot to sent this comment before sending the CL.",
+      "parentUuid": "3466e437_417b6b3c",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
