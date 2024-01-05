@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d46b30_e24d3d08",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:37:00Z",
+      "side": 1,
+      "message": "This is unnecessary since you verify the reboot timeout during EC_HANG_DETECT_CMD_SET_PARAMS.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "f1c9288991d36b29cd62980a55967eb1ab700562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394a2b76_785a3483",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4753,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:37:00Z",
+      "side": 1,
+      "message": "Start or reload AP hang detect timer.",
+      "range": {
+        "startLine": 4753,
+        "startChar": 4,
+        "endLine": 4753,
+        "endChar": 30
+      },
+      "revId": "f1c9288991d36b29cd62980a55967eb1ab700562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd2f126_3075c309",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4776,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:37:00Z",
+      "side": 1,
+      "message": "`args` doesn\u0027t appear to be used.",
+      "range": {
+        "startLine": 4772,
+        "startChar": 0,
+        "endLine": 4776,
+        "endChar": 0
+      },
+      "revId": "f1c9288991d36b29cd62980a55967eb1ab700562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

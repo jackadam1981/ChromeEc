@@ -93,6 +93,30 @@
       },
       "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9712ccf1_7337859b",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:37:00Z",
+      "side": 1,
+      "message": "If the expected API contract is that the host sends SET_PARAM and then RELOAD before the watchdog starts, I think `hang_detect_cancel()` on any SET_PARAM makes sense.\n\nThe alternative is that SET_PARAM calls `hang_detect_reload()` to automatically arm the watchdog.  Then RELOAD is only used to pet the watchdog.",
+      "parentUuid": "3466e437_417b6b3c",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
