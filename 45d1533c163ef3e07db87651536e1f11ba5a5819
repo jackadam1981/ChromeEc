@@ -22,6 +22,30 @@
       },
       "revId": "45d1533c163ef3e07db87651536e1f11ba5a5819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20180ce8_9b22f79d",
+        "filename": "test/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-05T13:49:49Z",
+      "side": 1,
+      "message": "I can try, but what with firmware branch for Fizz that doesn\u0027t have Zephyr? Is there a reason to back-port also the unit tests? If not, I think I should go with Zephyr tests.",
+      "parentUuid": "84995b0a_b239ca21",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 79
+      },
+      "revId": "45d1533c163ef3e07db87651536e1f11ba5a5819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
