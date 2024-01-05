@@ -7,8 +7,13 @@
 #
 
 # See Makefile for description.
+<<<<<<< HEAD   (a71ecc Merge remote-tracking branch cros/main into firmware-dedede-)
 host-util-bin-y += cbi-util iteflash
 host-util-bin-cxx-y += ec_parse_panicinfo lbplay stm32mon lbcc
+=======
+host-util-bin-cxx-y += ectool ec_parse_panicinfo lbplay stm32mon lbcc iteflash \
+	cbi-util ec_coredump
+>>>>>>> BRANCH (93a977 retimer: USBC retimer f/w update using PD chips)
 build-util-art-y += util/export_taskinfo.so
 
 build-util-bin-$(CHIP_NPCX) += ecst
@@ -37,7 +42,12 @@ lbplay-objs=lbplay.o $(comm-objs)
 
 util/stm32mon.cc: $(out)/ec_version.h
 
+<<<<<<< HEAD   (a71ecc Merge remote-tracking branch cros/main into firmware-dedede-)
 ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
+=======
+ec_parse_panicinfo-objs=ec_parse_panicinfo.o
+ec_coredump-objs=ec_coredump.o $(comm-objs)
+>>>>>>> BRANCH (93a977 retimer: USBC retimer f/w update using PD chips)
 
 # USB type-C Vendor Information File generation
 ifeq ($(CONFIG_USB_POWER_DELIVERY),y)

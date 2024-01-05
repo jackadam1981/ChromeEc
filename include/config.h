@@ -1418,6 +1418,12 @@
 #define CONFIG_CHARGER_SM5803_VSYS_MON_SEL 10
 #define CONFIG_CHARGER_SM5803_IBAT_PHOT_SEL IBAT_SEL_MAX
 
+/*
+ * Precharge delay time to wait for the charger is stable
+ * to set charge current/voltage.
+ */
+#undef CONFIG_PRECHARGE_DELAY_MS
+
 /*****************************************************************************/
 
 /*
@@ -1493,7 +1499,6 @@
 #undef CONFIG_CHIPSET_GEMINILAKE /* Intel Geminilake (x86) */
 #undef CONFIG_CHIPSET_ICELAKE /* Intel Icelake (x86) */
 #undef CONFIG_CHIPSET_JASPERLAKE /* Intel Jasperlake (x86) */
-#undef CONFIG_CHIPSET_METEORLAKE /* Intel Meteorlake (x86) */
 #undef CONFIG_CHIPSET_MT817X /* MediaTek MT817x */
 #undef CONFIG_CHIPSET_MT8183 /* MediaTek MT8183 */
 #undef CONFIG_CHIPSET_MT8192 /* MediaTek MT8192 */
@@ -1730,7 +1735,6 @@
 #undef CONFIG_CMD_SCRATCHPAD
 #undef CONFIG_CMD_SEVEN_SEG_DISPLAY
 #define CONFIG_CMD_SHMEM
-#undef CONFIG_CMD_SLEEP
 #define CONFIG_CMD_SLEEPMASK
 #define CONFIG_CMD_SLEEPMASK_SET
 #undef CONFIG_CMD_SPI_FLASH
@@ -3214,6 +3218,12 @@
  */
 #undef CONFIG_8042_AUX
 
+/*
+ * Invert the IRQ1/IRQ12 interrupts that come from the NPCX keyboard controller
+ * such that they are active low.
+ */
+#undef CONFIG_NCPX_KBC_IRQ_ACTIVE_LOW
+
 /*****************************************************************************/
 
 /*
@@ -3225,11 +3235,6 @@
 
 /* Support common LED interface */
 #undef CONFIG_LED_COMMON
-
-/* Standard LED behavior according to spec given that we have a red-green
- * bicolor led for charging and one power led
- */
-#undef CONFIG_LED_POLICY_STD
 
 #ifndef CONFIG_ZEPHYR
 /*
@@ -3872,6 +3877,11 @@
  * keyboard backlight.
  */
 #undef CONFIG_KBLIGHT_ENABLE_PIN
+
+/*
+ * Call keyboard backlight init function during init hook instead of start-up
+ */
+#undef CONFIG_KBLIGHT_HOOK_INIT
 
 /*
  * RGB Keyboard
@@ -4587,6 +4597,7 @@
  * When this config option is enabled, one of the following must be enabled:
  *	CONFIG_USB_PD_TCPMV1 - legacy power delivery state machine
  *	CONFIG_USB_PD_TCPMV2 - current power delivery state machine
+ *	CONFIG_USB_PD_CONTROLLER - power delivery controller state machine
  */
 #undef CONFIG_USB_POWER_DELIVERY
 
@@ -4609,6 +4620,11 @@
  * enabled otherwise an error will be emitted.
  */
 #undef CONFIG_USB_PD_TCPMV2
+
+/*
+ * Enables the Power Delivery Controller state machine.
+ */
+#undef CONFIG_USB_PD_CONTROLLER
 
 /*
  * Enable dynamic PDO selection.
@@ -6052,8 +6068,9 @@
 #if defined(CONFIG_USB_PD_TCPMV1) && defined(CONFIG_USB_PD_TCPMV2)
 #error Only one version of the USB PD State Machine can be enabled.
 #endif
-#if !defined(CONFIG_USB_PD_TCPMV1) && !defined(CONFIG_USB_PD_TCPMV2)
-#error Please enable CONFIG_USB_PD_TCPMV1 or CONFIG_USB_PD_TCPMV2.
+#if !defined(CONFIG_USB_PD_TCPMV1) && !defined(CONFIG_USB_PD_TCPMV2) && \
+	!defined(CONFIG_USB_PD_CONTROLLER)
+#error Please enable CONFIG_USB_PD_TCPMV1 or CONFIG_USB_PD_TCPMV2 or CONFIG_USB_PD_CONTROLLER.
 #endif
 #if defined(CONFIG_USB_PD_TCPMV2) && !defined(CONFIG_USB_PD_DECODE_SOP)
 #error CONFIG_USB_PD_DECODE_SOP must be enabled with the TCPMV2 PD state machine
@@ -6160,12 +6177,16 @@
 
 /******************************************************************************/
 /*
- * Ensure CONFIG_USB_PD_TCPMV2 and CONFIG_USBC_SS_MUX both are defined. USBC
- * retimer firmware update feature requires both.
+ * Ensure CONFIG_USB_PD_TCPMV2 or CONFIG_PLATFORM_EC_USB_PD_CONTROLLER, and
+ * CONFIG_USBC_SS_MUX both are defined. USBC retimer firmware update feature
+ * requires both.
  */
-#if (defined(CONFIG_USBC_RETIMER_FW_UPDATE) && \
-     (!(defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USBC_SS_MUX))))
-#error Retimer firmware update requires TCPMv2 and USBC_SS_MUX
+#if (defined(CONFIG_USBC_RETIMER_FW_UPDATE) &&             \
+     (!((defined(CONFIG_USB_PD_TCPMV2) ||                  \
+	 defined(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER)) && \
+	defined(CONFIG_USBC_SS_MUX))))
+#error "Retimer firmware update requires TCPMv2 or USB PD controller, and" \
+	"USBC_SS_MUX."
 #endif
 
 /******************************************************************************/
@@ -6481,6 +6502,17 @@
 
 /*****************************************************************************/
 /*
+ * Define CONFIG_PRECHARGE_DELAY_MS 150ms which is the debounce
+ * time after VADP >3.2V for the first time adapter plugged in.
+ */
+#ifdef CONFIG_CHARGER_ISL9238
+#ifndef CONFIG_PRECHARGE_DELAY_MS
+#define CONFIG_PRECHARGE_DELAY_MS 150
+#endif
+#endif
+
+/*****************************************************************************/
+/*
  * Define CONFIG_BUTTON_TRIGGERED_RECOVERY if a board has a dedicated recovery
  * button.
  */
@@ -6497,6 +6529,9 @@
 #ifdef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY
 #define CONFIG_LED_PWM_CHARGE_STATE_ONLY
 #endif
+
+/* Define for to turn off power LED in suspend for boards shipped after 2022 */
+#undef CONFIG_LED_PWM_OFF_IN_SUSPEND
 
 /*****************************************************************************/
 /*
@@ -6596,7 +6631,6 @@
 #undef CONFIG_CHIPSET_GEMINILAKE
 #undef CONFIG_CHIPSET_ICELAKE
 #undef CONFIG_CHIPSET_JASPERLAKE
-#undef CONFIG_CHIPSET_METEORLAKE
 #undef CONFIG_CHIPSET_MT817X
 #undef CONFIG_CHIPSET_MT8183
 #undef CONFIG_CHIPSET_MT8192
@@ -6732,15 +6766,13 @@
 	defined(CONFIG_CHIPSET_COMETLAKE) ||          \
 	defined(CONFIG_CHIPSET_COMETLAKE_DISCRETE) || \
 	defined(CONFIG_CHIPSET_GEMINILAKE) ||         \
-	defined(CONFIG_CHIPSET_ICELAKE) ||            \
-	defined(CONFIG_CHIPSET_METEORLAKE) || defined(CONFIG_CHIPSET_SKYLAKE)
+	defined(CONFIG_CHIPSET_ICELAKE) || defined(CONFIG_CHIPSET_SKYLAKE)
 #define CONFIG_POWER_COMMON
 #endif
 
 #if defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540) || \
 	defined(CONFIG_CHIPSET_CANNONLAKE) ||        \
-	defined(CONFIG_CHIPSET_ICELAKE) ||           \
-	defined(CONFIG_CHIPSET_METEORLAKE) || defined(CONFIG_CHIPSET_SKYLAKE)
+	defined(CONFIG_CHIPSET_ICELAKE) || defined(CONFIG_CHIPSET_SKYLAKE)
 #define CONFIG_CHIPSET_X86_RSMRST_DELAY
 #endif
 
@@ -6878,7 +6910,7 @@
  * period.
  */
 #ifdef CONFIG_WATCHDOG
-#if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS)*2)
+#if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
 #endif
