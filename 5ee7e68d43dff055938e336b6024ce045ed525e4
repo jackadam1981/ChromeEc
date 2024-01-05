@@ -282,6 +282,30 @@
       },
       "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457b6197_5798ebd0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T16:23:56Z",
+      "side": 1,
+      "message": "There are `NV_PCR_POLICIES` and `NV_PCR_ALLOCATED` defined as:\n\n```\ntypedef struct {\n  UINT32              count;\n  TPMS_PCR_SELECTION  pcrSelections[HASH_COUNT];\n} TPML_PCR_SELECTION;\n\ntypedef struct\n{\n   TPMI_ALG_HASH               hashAlg[NUM_POLICY_PCR_GROUP];\n   TPM2B_DIGEST                a;\n   TPM2B_DIGEST                policy[NUM_POLICY_PCR_GROUP];\n} PCR_POLICY;\n\n\n// This structure hold the policies for those PCR that have an update policy.\n// This implementation only supports a single group of PCR controlled by\n// policy. If more are required, then this structure would be changed to\n// an array.\n     PCR_POLICY          pcrPolicies;\n\n//   This structure indicates the allocation of PCR. The structure contains a\n//   list of PCR allocations for each implemented algorithm. If no PCR are\n//   allocated for an algorithm, a list entry still exists but the bit map\n//   will contain no SET bits.\n     TPML_PCR_SELECTION pcrAllocated;\n     \n```\n\nBut I don\u0027t care much about them in this CL. Overflow in these fields unlikely to damage EPS, while anything which precede EPS is more likely to damage it. \n\nIf current diagnostics checking EPS before/after command will hint on it - we can add checks for these fields.\n\nIn general this CL is just plugging the holes - even if we prove such overflow exists it is much better to investigate how it happens rather than treating symptoms. I found TPM code very unsafe in dealing with TPM2B with max allocated space rarely checked.",
+      "parentUuid": "ab7b3f82_bc042d25",
+      "range": {
+        "startLine": 2083,
+        "startChar": 7,
+        "endLine": 2083,
+        "endChar": 23
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
