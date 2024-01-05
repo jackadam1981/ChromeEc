@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43aacd7_aa9e669c",
+        "filename": "zephyr/program/brox/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T13:17:10Z",
+      "side": 1,
+      "message": "I\u0027ve removed all the full-range batt-lvl properties for consistency.",
+      "parentUuid": "e1262c60_e26dabd8",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "a64b3b661c49305c1062c7911248a6427ce6ca7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31816b7d_794aa2a7",
