@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35cd2a6_29c71f77",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-05T20:00:49Z",
+      "side": 1,
+      "message": "I don\u0027t understand this - why do you filter the rest of the container types?",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 15
+      },
+      "revId": "00e52548c8c7f9ef58d38f00a46ea24c674ce423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
