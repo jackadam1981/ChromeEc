@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310d69cd_01257b62",
+        "filename": "zephyr/shim/include/usbc/tcpc_nct38xx.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-01-05T22:01:53Z",
+      "side": 1,
+      "message": "I\u0027m assuming this is the preference to having clang format break the 80-character limit.",
+      "revId": "a87aca3078fd253465ce80ae1e2f5a24368405f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
