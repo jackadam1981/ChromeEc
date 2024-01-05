@@ -16,6 +16,98 @@
       "message": "I need to use usb_pd.h instead of the Zephyr defined headers because I was getting symbol errors. We can investigate after the bringup.",
       "revId": "f547777453f0cb34df20d60acffac32ba02dc346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19da0174_1148d4fc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T16:33:47Z",
+      "side": 1,
+      "message": "Nit - mask with 0x3.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "f547777453f0cb34df20d60acffac32ba02dc346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408be58d_b6326378",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T16:33:47Z",
+      "side": 1,
+      "message": "BIT(29)",
+      "range": {
+        "startLine": 121,
+        "startChar": 31,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "f547777453f0cb34df20d60acffac32ba02dc346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03b374d_6ba1018b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T16:33:47Z",
+      "side": 1,
+      "message": "BIT(27)",
+      "range": {
+        "startLine": 122,
+        "startChar": 45,
+        "endLine": 122,
+        "endChar": 64
+      },
+      "revId": "f547777453f0cb34df20d60acffac32ba02dc346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4eefdf_db648d4f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T16:33:47Z",
+      "side": 1,
+      "message": "BIT(26)",
+      "range": {
+        "startLine": 123,
+        "startChar": 43,
+        "endLine": 123,
+        "endChar": 63
+      },
+      "revId": "f547777453f0cb34df20d60acffac32ba02dc346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
