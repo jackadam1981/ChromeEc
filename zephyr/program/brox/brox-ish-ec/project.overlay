@@ -1,0 +1,22 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Include base Rex */
+#include "../brox/project.overlay"
+
+/ {
+	aliases {
+		/delete-property/ bma4xx-int;
+	};
+
+	/delete-node/ motionsense-rotation-ref;
+	/delete-node/ motionsense-sensor-data;
+	/delete-node/ motionsense-sensor;
+	/delete-node/ motionsense-sensor-info;
+};
+
+&int_lid_imu {
+	status = "disabled";
+};
