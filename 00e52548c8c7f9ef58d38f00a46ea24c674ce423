@@ -22,6 +22,30 @@
       },
       "revId": "00e52548c8c7f9ef58d38f00a46ea24c674ce423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa411408_dcfbbcff",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T23:12:47Z",
+      "side": 1,
+      "message": "For correct container `container_type` shall be equal to `container_type_copy` unless it is a deleted container. I\u0027m checking this property before anything else. If it is not hold, the container is invalid.\n\nI just think that 12-bits hash can be prone to collisions, and extra check makes it stronger.",
+      "parentUuid": "f35cd2a6_29c71f77",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 15
+      },
+      "revId": "00e52548c8c7f9ef58d38f00a46ea24c674ce423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
