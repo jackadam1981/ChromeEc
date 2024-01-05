@@ -5,6 +5,7 @@
 """Types which provide many builds and composite them into a single binary."""
 
 import logging
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -173,7 +174,13 @@ class BinmanPacker(BasePacker):
             ro_dir / "zephyr" / self.ro_file, work_dir / "zephyr_ro.bin"
         )
         shutil.copy2(
+            ro_dir / "zephyr" / "zephyr.elf", work_dir / "zephyr_ro.elf"
+        )
+        shutil.copy2(
             rw_dir / "zephyr" / self.rw_file, work_dir / "zephyr_rw.bin"
+        )
+        shutil.copy2(
+            rw_dir / "zephyr" / "zephyr.elf", work_dir / "zephyr_rw.elf"
         )
 
         version_file_path = work_dir / "version.txt"
@@ -211,10 +218,24 @@ class BinmanPacker(BasePacker):
             raise OSError("Failed to run binman")
 
         yield work_dir / "ec.bin", "ec.bin"
+        yield rw_dir / "zephyr" / ".config", "ec.config"
         yield ro_dir / "zephyr" / "zephyr.elf", "zephyr.ro.elf"
         yield ro_dir / "zephyr" / "zephyr.lst", "zephyr.ro.lst"
         yield rw_dir / "zephyr" / "zephyr.elf", "zephyr.rw.elf"
         yield rw_dir / "zephyr" / "zephyr.lst", "zephyr.rw.lst"
+        yield (
+            rw_dir / "zephyr" / "component_manifest.json",
+            "component_manifest.json",
+        )
+
+        token_db_name = "database.bin"
+        token_paths = [
+            ro_dir / token_db_name,
+            rw_dir / token_db_name,
+        ]
+        if os.path.exists(token_paths[0]):
+            util.merge_token_databases(token_paths, work_dir / token_db_name)
+            yield work_dir / token_db_name, token_db_name
 
 
 class NpcxPacker(BinmanPacker):
@@ -273,6 +294,39 @@ class MchpPacker(BinmanPacker):
     """
 
     ro_file = "zephyr.mchp.bin"
+    second_loader = "second_loader_fw.bin"
+
+    def _get_max_image_bytes(self, dir_map):
+        ro_dir = dir_map["ro"]
+        rw_dir = dir_map["rw"]
+        ro_size = util.read_kconfig_autoconf_value(
+            ro_dir / "zephyr" / "include" / "generated",
+            "CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES",
+        )
+        rw_size = util.read_kconfig_autoconf_value(
+            rw_dir / "zephyr" / "include" / "generated",
+            "CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES",
+        )
+        return max(int(ro_size, 0), int(rw_size, 0))
+
+    def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+        ro_dir = dir_map["ro"]
+        for path, output_file in super().pack_firmware(
+            work_dir,
+            jobclient,
+            dir_map,
+            version_string=version_string,
+        ):
+            if output_file == "ec.bin":
+                yield (
+                    self._check_packed_file_size(path, dir_map),
+                    "ec.bin",
+                )
+            else:
+                yield path, output_file
+
+        # Include the MCHP second loader file as an output artifact.
+        yield ro_dir / self.second_loader, self.second_loader
 
 
 # A dictionary mapping packer config names to classes.
