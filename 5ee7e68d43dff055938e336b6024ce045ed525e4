@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5a435b_29c3520d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T00:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331071d5_ad8aa6f1",
+      "range": {
+        "startLine": 2015,
+        "startChar": 12,
+        "endLine": 2015,
+        "endChar": 29
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5266b4f7_b5923e0d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dae4c2a_2dad8e44",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T00:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5266b4f7_b5923e0d",
+      "range": {
+        "startLine": 2029,
+        "startChar": 21,
+        "endLine": 2029,
+        "endChar": 33
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ef45936_0438f072",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-04T22:21:11Z",
       "side": 1,
       "message": "here and in line 2047: should there be a console message or flog or both?",
+      "range": {
+        "startLine": 2034,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 0
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628a72a9_6975e4a2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T00:52:57Z",
+      "side": 1,
+      "message": "added flog, it also prints on console. also added it to RAM_INDEX.",
+      "parentUuid": "7ef45936_0438f072",
       "range": {
         "startLine": 2034,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cd173e2_bf5a9c98",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T00:52:57Z",
+      "side": 1,
+      "message": "it is cleared in line 2588 below (added comment there).\nit works fine - TPM2B size is considered zero, so `copy_size` is 2 bytes, and the rest of space is remaining zero.",
+      "parentUuid": "6be656f6_2d7d07ff",
+      "range": {
+        "startLine": 2049,
+        "startChar": 25,
+        "endLine": 2049,
+        "endChar": 53
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b233258d_d3342bef",
         "filename": "common/new_nvmem.c",
         "patchSetId": 5
@@ -106,6 +202,30 @@
       "writtenOn": "2024-01-04T22:21:11Z",
       "side": 1,
       "message": "note that PCR_POLICY includes two TPM2B fields",
+      "range": {
+        "startLine": 2083,
+        "startChar": 7,
+        "endLine": 2083,
+        "endChar": 23
+      },
+      "revId": "5ee7e68d43dff055938e336b6024ce045ed525e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a04a348_9b7ee279",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-05T00:52:57Z",
+      "side": 1,
+      "message": "It is a different field defined as `TPM2B_DIGEST        ownerPolicy;` in Global.h",
+      "parentUuid": "b233258d_d3342bef",
       "range": {
         "startLine": 2083,
         "startChar": 7,
