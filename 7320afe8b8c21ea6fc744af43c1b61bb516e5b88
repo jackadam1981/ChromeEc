@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e48d6fa_bfb994ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T14:05:30Z",
+      "side": 1,
+      "message": "As I think about this more, the RSMRST input to the EC should be renamed to RSMRST_PWRGD.\n\nThe handling for RSMRST_PWRGD should be: signal asserted \u003d RSMRST power rails are valid.  Signal deasserted \u003d RSMRST power rails lost.\n\nSo the passthru of RSMRST becomes:\n\nif (RSMRST_PWRG",
+      "revId": "7320afe8b8c21ea6fc744af43c1b61bb516e5b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d58e1f_d255fa1f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-05T14:05:30Z",
+      "side": 1,
+      "message": "See my comment above - this check assumes that both the RSMRST input and PCH_RSMRST output are both configured for either active low or active high operation.  They could be different.\n\nIf RSMRST is renamed to RSMRST_PWRGD, I think it better matches the PDG documentation.  \n\nFurthermore, the common logic should use these assumptions:\n   RSMRST_PWRGD asserted \u003d RSMRST power rails valid\n   PCH_RSMRST asserted \u003d reset signal is active (PCH/AP not allowed to boot)\n   \nThe logic becomes, if RSMRST_PWRGD is logically asserted, then the PCH_RSMRST signal should be logically de-asserted.\n\nIf RSMRST_PWRGD deasserts, then PCH_RSMRST should be asserted.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 33
+      },
+      "revId": "7320afe8b8c21ea6fc744af43c1b61bb516e5b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
