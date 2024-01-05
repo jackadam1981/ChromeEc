@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc97778_bbe3e0ae",
+        "filename": "baseboard/brya/relevant-paths.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-01-05T19:50:28Z",
+      "side": 1,
+      "message": "Let me know if you like the iteration below.",
+      "parentUuid": "b97dcf4a_e9061166",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 80
+      },
+      "revId": "49e7f5cdc2f4bcff03ae12fbbb3b98d7a56bf915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "335d6315_47a77a33",
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "Thanks for the brox check.\nbuildall runs into un-related issues.\nChecking now.  Can put it back to build all if it succeeds.  If not, we will need to decide on a plan of action.",
       "parentUuid": "335d6315_47a77a33",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "49e7f5cdc2f4bcff03ae12fbbb3b98d7a56bf915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b403fde9_2d514e16",
+        "filename": "baseboard/brya/relevant-paths.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-01-05T19:50:28Z",
+      "side": 1,
+      "message": "For this branch, the builder builds brya/brask/constitution\n\nConfig is here:\nhttp://cs/chromeos_internal/infra/config/firmware/firmware.star;l\u003d157\n\nAdded buildall back in with a caveat below.",
+      "parentUuid": "eb4f1131_42239fe3",
       "range": {
         "startLine": 12,
         "startChar": 0,
