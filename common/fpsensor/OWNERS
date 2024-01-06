@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (24de27 Revert "motion_sense: handle inactive sensors during suspend)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
+>>>>>>> BRANCH (7053ae PD: Add PDO macro for getting the type)
