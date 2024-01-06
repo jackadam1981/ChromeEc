@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddfc6d7d_147de2b3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2024-01-06T02:12:26Z",
+      "side": 1,
+      "message": "If I sit in EC console and repeatedly type \"pd \u003cport\u003e swap power\"...\n...does this mean this counter will hard-block manual attempts too?\n\nOr if I toggle the partner\u0027s SrcCap UP\u003d1 flag on and off...\n...will this eventually cause a freeze/lockup and refusal to swap?",
+      "range": {
+        "startLine": 2093,
+        "startChar": 5,
+        "endLine": 2093,
+        "endChar": 26
+      },
+      "revId": "63a087aa73e4c1efc3f6a9c324c23b6bdf084475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
