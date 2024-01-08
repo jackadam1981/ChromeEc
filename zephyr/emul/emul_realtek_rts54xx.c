@@ -116,14 +116,36 @@ static int ppm_reset(struct rts5453p_emul_pdc_data *data,
 	return 0;
 }
 
+static int connector_reset(struct rts5453p_emul_pdc_data *data,
+			   const union rts54_request *req)
+{
+	LOG_INF("CONNECTOR_RESET port=%d, hard_reset=%d",
+		req->connector_reset.port_num, req->connector_reset.hard_reset);
+
+	/* Simulate work and defer completion status */
+	set_ping_status(data, CMD_DEFERRED, 0);
+	k_work_schedule(&data->delay_work, K_MSEC(50));
+
+	return 0;
+}
+
 static int tcpm_reset(struct rts5453p_emul_pdc_data *data,
 		      const union rts54_request *req)
 {
-	LOG_INF("%s", __func__);
-
+	LOG_INF("TCPM_RESET port=%d, reset_type=0x%X", req->tcpm_reset.port_num,
+		req->tcpm_reset.reset_type);
 	set_ping_status(data, CMD_COMPLETE, 0);
 
 	return 0;
+}
+
+static void delayable_work_handler(struct k_work *w)
+{
+	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
+	struct rts5453p_emul_pdc_data *data =
+		CONTAINER_OF(dwork, struct rts5453p_emul_pdc_data, delay_work);
+
+	set_ping_status(data, CMD_COMPLETE, 0);
 }
 
 struct commands {
@@ -185,7 +207,7 @@ const struct commands sub_cmd_x08[] = {
 
 const struct commands sub_cmd_x0E[] = {
 	{ .code = 0x01, HANDLER_DEF(ppm_reset) },
-	{ .code = 0x03, HANDLER_DEF(unsupported) },
+	{ .code = 0x03, HANDLER_DEF(connector_reset) },
 	{ .code = 0x06, HANDLER_DEF(unsupported) },
 	{ .code = 0x07, HANDLER_DEF(unsupported) },
 	{ .code = 0x09, HANDLER_DEF(unsupported) },
@@ -429,6 +451,9 @@ static int rts5453p_emul_init(const struct emul *emul,
 	data->pdc_data.ic_status.pd_revision[0] = 0xEF;
 	data->pdc_data.ic_status.byte_count =
 		sizeof(struct rts54_ic_status) - 1;
+
+	k_work_init_delayable(&data->pdc_data.delay_work,
+			      delayable_work_handler);
 
 	return 0;
 }
