@@ -16,6 +16,24 @@
       "message": "This can probably be simplified once https://crrev.com/c/4821307 lands, by having this test provide the power signal functions itself so we don\u0027t need to make all of them external so the test can intercept them.",
       "revId": "c07cfe2c189f80440792a2769b228765aa027b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0226047_e409c059",
+        "filename": "zephyr/test/nissa/src/board_power.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-08T04:22:47Z",
+      "side": 1,
+      "message": "Updated to use the blessed version of mocking ap_pwrseq. Tests still pass, so I\u0027m happy enough with this to finally close out these board tests.",
+      "parentUuid": "aaa92ffd_c90d96c3",
+      "revId": "c07cfe2c189f80440792a2769b228765aa027b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
