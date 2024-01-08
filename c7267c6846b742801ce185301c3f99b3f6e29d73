@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d6d203e_3132ff24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T20:46:02Z",
+      "side": 1,
+      "message": "The `boringssl_crypto` test in Zephyr is failing. It looks like the issue is that the previous implementation [would intentionally crash](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4489070/26/third_party/boringssl/common/sysrand_zephyr.c). This was [removed in the `getentropy`](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4737152/6/third_party/boringssl/common/sysrand_zephyr.c) version when `getentropy()` was changed to return an error if more than 256 bytes are requested at a time.\n\n[`CRYPTO_sysrand()` that calls `getentropy()` in `boringssl` now only requests 256 bytes at a time](https://boringssl.googlesource.com/boringssl/+/7a813621dac6878ab53b6ed7392939a8982226e8/crypto/rand_extra/getentropy.c#34) (we shouldn\u0027t rely only on that, but good to see it\u0027s called correctly).\n\nAll this means that we can modify the [`test_rand_too_big`](https://chromium.googlesource.com/chromiumos/platform/ec/+/620836fb7e8ea754fd4b54761d2390a61ab1cbf2/zephyr/test/boringssl/main.c#47) test to succeed since it shouldn\u0027t crash anymore.",
+      "revId": "c7267c6846b742801ce185301c3f99b3f6e29d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0967f59b_a72fa50a",
         "filename": "third_party/boringssl/CMakeLists.txt",
         "patchSetId": 1
