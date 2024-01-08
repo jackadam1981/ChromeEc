@@ -22,6 +22,30 @@
       },
       "revId": "04b2c767095bbe21c9e5573863176103d84e0d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887123b5_ab7980fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-01-08T01:03:34Z",
+      "side": 1,
+      "message": "Here.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/primus/board.c;l\u003d126?q\u003dplatform%2Fec%2Fboard%2Fprimus\n\nWhen use 65w adapter, the input current will be 3A in S0 and 3.15A in S5.\n\nAnd after define `CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT`, it will derate the input current again and cause charging current down to 2.85A.",
+      "parentUuid": "4aef9717_bdd3d79f",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "04b2c767095bbe21c9e5573863176103d84e0d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
