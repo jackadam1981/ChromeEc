@@ -110,6 +110,11 @@ union rts54_request {
 		struct rts54_subcommand_header header;
 		uint8_t port_num;
 	} get_capability;
+
+	struct get_connector_capability_req {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+	} get_connector_capability;
 };
 
 union rts54xx_response {
@@ -139,6 +144,11 @@ union rts54xx_response {
 		uint8_t byte_count;
 		struct capability_t caps;
 	} __packed capability;
+
+	struct get_connector_capability_response {
+		uint8_t byte_count;
+		union connector_capability_t caps;
+	} __packed connector_capability;
 };
 
 enum cmd_sts_t {

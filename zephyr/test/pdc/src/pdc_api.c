@@ -66,3 +66,22 @@ ZTEST_USER(pdc_api, test_get_capability)
 	zassert_equal(caps.bcdPDVersion, 0x34);
 	zassert_equal(caps.bcdUSBTypeCVersion, 0x56);
 }
+
+ZTEST_USER(pdc_api, test_get_connector_capability)
+{
+	union connector_capability_t caps;
+
+	zassert_ok(pdc_get_connector_capability(dev, &caps),
+		   "Failed to get connector capability");
+
+	k_sleep(K_MSEC(500));
+
+	/* Verify data from emulator */
+	zassert_equal(caps.op_mode_rp_only, 1);
+	zassert_equal(caps.op_mode_rd_only, 0);
+	zassert_equal(caps.op_mode_drp, 0);
+	zassert_equal(caps.op_mode_usb2, 0);
+	zassert_equal(caps.op_mode_usb3, 1);
+	zassert_equal(caps.consumer, 0);
+	zassert_equal(caps.provider, 1);
+}
