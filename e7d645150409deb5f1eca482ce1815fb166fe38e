@@ -1,5 +1,46 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63921b7c_00c883d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-01-08T11:12:24Z",
+      "side": 1,
+      "message": "Geralt \u0026 Ciri can suspend with external display attached with this CL.",
+      "revId": "e7d645150409deb5f1eca482ce1815fb166fe38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d068ee4_27283ffc",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-01-08T11:12:24Z",
+      "side": 1,
+      "message": "Should we use `saved_usb_conn_status[i] \u003d\u003d USB2_CONNECTED` to ensure a consistent regulator field update behavior across suspend/resume?\n\ni.e. if this stays unchanged, the field will still get unbalanced update on resume for USB3 connection (precisely, as well as `UNKNOWN` state), which may or may not trigger undesired mux update events.",
+      "range": {
+        "startLine": 257,
+        "startChar": 31,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "e7d645150409deb5f1eca482ce1815fb166fe38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
