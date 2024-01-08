@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a51038_6f439051",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-08T17:04:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f402af64_92af360b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "a37d6aaaf014e7e70f066b780d14c3469e46b92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db84bc01_b29a42b3",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-05T20:40:33Z",
       "side": 1,
       "message": "Should we call this file emul_realtek_rts54xx.c?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "a37d6aaaf014e7e70f066b780d14c3469e46b92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a581a105_6d093aac",
+        "filename": "zephyr/emul/emul_realtek_rts5453p.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-08T17:04:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db84bc01_b29a42b3",
       "range": {
         "startLine": 19,
         "startChar": 0,
