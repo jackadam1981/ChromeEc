@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bb6e5b_1fb9837a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T21:01:52Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com was working on some changes to the tool we use to run the EC tests on device to [measure the power](https://crrev.com/c/3738761).\n\nWe don\u0027t need to do it for this change, but it would be nice to have an automated power test as part of http://b/311568657 to make sure that we don\u0027t introduce regressions in the future.\n\nFor this change, I\u0027m assuming you were using `servo`/`dut-control` to measure the power. Could you put the exact command you used on this `TEST` line? (e.g., the command from [here](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#Power))",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "f0bdbf8a9f41ee0a6d191bb40e26c57527855a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
