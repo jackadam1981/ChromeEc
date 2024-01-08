@@ -15,8 +15,6 @@
 
 #define rng DEVICE_DT_GET(DT_CHOSEN(zephyr_entropy))
 
-// We don't want to conflict with the linux getentropy.
-#if !defined(__linux__)
 int getentropy(void *buffer, size_t length)
 {
 	if (!buffer) {
@@ -46,4 +44,3 @@ int getentropy(void *buffer, size_t length)
 
 	return 0;
 }
-#endif // !defined(__linux__)
