@@ -16,6 +16,121 @@
       "message": "responded to all comments",
       "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e49d60_566f791e",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T21:24:11Z",
+      "side": 1,
+      "message": "I think it would be a little clearer if it was something like `Value to make compilation succeed for chips that don\u0027t support FPU interrupts.`",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22955e5b_d82a8f43",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T21:24:11Z",
+      "side": 1,
+      "message": "`-1` is probably a more common default \"invalid\" value.",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46eb508d_12b4afe1",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T21:24:11Z",
+      "side": 1,
+      "message": "Woops, I meant replace this text with a comment that says something like `This chip does not have FPU interrupt support.`",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc9b3c0_e33fd7a5",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T21:24:11Z",
+      "side": 1,
+      "message": "Thinking about this a bit more, I think we can make it even clearer. Ultimately what we want to do in all of these tests is read `fpscr`. We\u0027re either reading it directly by calling `read_fpscr` or reading it when the FPU interrupt is triggered. In that case, I think it would make sense to call this function `read_fpscr` (and rename the other one something like `_read_fpscr`. Then this function becomes something like (some pseudocode here):\n\n```\n#if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)\nstatic bool supports_fpu_irq \u003d true;\n#define FPU_IRQ STM32_IRQ_FPU\nstatic volatile bool fpu_irq_handled;\n#else\nstatic bool supports_fpu_irq \u003d false;\n#define FPU_IRQ -1\n#endif\n\nvoid read_fpscr(void)\n{\n  if (supports_fpu_irq)) {\n    if (STM32H7)\n      task_trigger_irq(FPU_IRQ);\n    while (!fpu_irq_handled) {}\n    return;\n  } \n  _read_fpscr();\n}\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4c357f_21929eed",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-08T21:24:11Z",
+      "side": 1,
+      "message": "Since this test doesn\u0027t trigger an interrupt in any of the configurations (H7, F4, or NPCX), how about we skip all the IRQ code and just called `_read_fpscr()` directly?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 0
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
