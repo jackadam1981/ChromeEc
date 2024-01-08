@@ -331,6 +331,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d763b0c_dc42bc13",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-08T21:19:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6d8ab3cc_c5a25b36",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4bea87f_6fe0e55c",
@@ -661,6 +685,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4eab77_740b4524",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-08T21:19:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "41d15aa4_9fbedd8d",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10fc6fac_b6c097cd",
@@ -779,6 +827,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d89313_b6781890",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-08T21:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d06ef1c_29995168",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 41
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c47ebf3_9a3e5da0",
@@ -850,6 +922,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c17efb0_6d53d081",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-08T21:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07d5b8f_f08d8e3b",
+      "range": {
+        "startLine": 437,
+        "startChar": 12,
+        "endLine": 437,
+        "endChar": 24
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc52b930_918a68b9",
@@ -911,6 +1007,30 @@
       "side": 1,
       "message": "Expand to at least `obj` to match the smf.h header file.",
       "parentUuid": "580407c7_b7f2b3b5",
+      "range": {
+        "startLine": 446,
+        "startChar": 45,
+        "endLine": 446,
+        "endChar": 52
+      },
+      "revId": "2b240b8a286f9d0a9c39bf13cc0632226059c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25804515_6dd154df",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgnt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-08T21:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14c530e_529dee1a",
       "range": {
         "startLine": 446,
         "startChar": 45,
