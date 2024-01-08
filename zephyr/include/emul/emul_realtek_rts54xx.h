@@ -104,6 +104,11 @@ union rts54_request {
 		uint8_t port_num;
 		uint8_t hard_reset;
 	} connector_reset;
+
+	struct get_capability_req {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+	} get_capability;
 };
 
 union rts54xx_response {
@@ -128,6 +133,19 @@ union rts54xx_response {
 		uint8_t pd_version[2];
 		uint8_t reserved6[6];
 	} ic_status;
+
+	struct get_capability_response {
+		uint8_t byte_count;
+		uint32_t bmAttributes;
+		uint8_t bNumConnectors;
+		uint16_t bmOptionalFeatures;
+		uint8_t reserved0;
+		uint8_t bNumAltModes;
+		uint8_t reserved1;
+		uint16_t bcdBCVersion;
+		uint16_t bcdPDVersion;
+		uint16_t bcdUSBTypeCVersion;
+	} __packed capability;
 };
 
 enum cmd_sts_t {

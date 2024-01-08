@@ -129,11 +129,27 @@ static int connector_reset(struct rts5453p_emul_pdc_data *data,
 	return 0;
 }
 
+static int get_capability(struct rts5453p_emul_pdc_data *data,
+			  const union rts54_request *req)
+{
+	LOG_INF("GET_CAPABILITY port=%d", req->get_capability.port_num);
+
+	data->response.capability.byte_count =
+		sizeof(struct get_capability_response);
+	data->response.capability.bNumConnectors = 2;
+	data->response.capability.bNumAltModes = 4;
+
+	set_ping_status(data, CMD_COMPLETE, 0);
+
+	return 0;
+}
+
 static int tcpm_reset(struct rts5453p_emul_pdc_data *data,
 		      const union rts54_request *req)
 {
 	LOG_INF("TCPM_RESET port=%d, reset_type=0x%X", req->tcpm_reset.port_num,
 		req->tcpm_reset.reset_type);
+
 	set_ping_status(data, CMD_COMPLETE, 0);
 
 	return 0;
@@ -208,7 +224,7 @@ const struct commands sub_cmd_x08[] = {
 const struct commands sub_cmd_x0E[] = {
 	{ .code = 0x01, HANDLER_DEF(ppm_reset) },
 	{ .code = 0x03, HANDLER_DEF(connector_reset) },
-	{ .code = 0x06, HANDLER_DEF(unsupported) },
+	{ .code = 0x06, HANDLER_DEF(get_capability) },
 	{ .code = 0x07, HANDLER_DEF(unsupported) },
 	{ .code = 0x09, HANDLER_DEF(unsupported) },
 	{ .code = 0x0B, HANDLER_DEF(unsupported) },
