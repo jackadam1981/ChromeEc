@@ -13,6 +13,7 @@
 #ifndef __EMUL_REALTEK_RTS5453P_H
 #define __EMUL_REALTEK_RTS5453P_H
 
+#include "drivers/ucsi_v3.h"
 #include "emul/emul_common_i2c.h"
 #include "zephyr/kernel.h"
 
@@ -104,6 +105,11 @@ union rts54_request {
 		uint8_t port_num;
 		uint8_t hard_reset;
 	} connector_reset;
+
+	struct get_capability_req {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+	} get_capability;
 };
 
 union rts54xx_response {
@@ -128,6 +134,11 @@ union rts54xx_response {
 		uint8_t pd_version[2];
 		uint8_t reserved6[6];
 	} ic_status;
+
+	struct get_capability_response {
+		uint8_t byte_count;
+		struct capability_t caps;
+	} __packed capability;
 };
 
 enum cmd_sts_t {
