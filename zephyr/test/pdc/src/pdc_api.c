@@ -6,6 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "drivers/pdc.h"
+#include "drivers/ucsi_v3.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_realtek_rts54xx.h"
 #include "i2c.h"
@@ -47,7 +48,21 @@ ZTEST_USER(pdc_api, test_reset)
 ZTEST_USER(pdc_api, test_connector_reset)
 {
 	zassert_ok(pdc_connector_reset(dev, PD_HARD_RESET),
-		   "Failed to reset PDC");
+		   "Failed to reset connector");
 
 	k_sleep(K_MSEC(500));
+}
+
+ZTEST_USER(pdc_api, test_get_capability)
+{
+	struct capability_t caps;
+
+	zassert_ok(pdc_get_capability(dev, &caps), "Failed to get capability");
+
+	k_sleep(K_MSEC(500));
+
+	/* Verify versioning from emulator */
+	zassert_equal(caps.bcdBCVersion, 0x12);
+	zassert_equal(caps.bcdPDVersion, 0x34);
+	zassert_equal(caps.bcdUSBTypeCVersion, 0x56);
 }
