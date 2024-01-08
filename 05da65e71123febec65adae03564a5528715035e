@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452372f7_c5fc93ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-08T20:26:09Z",
+      "side": 1,
+      "message": "Fix for power signal: CL:5178806\nDisable unused keyboard signals: CL:5177584 (might fix boot loop, but probably not)\nEnable USBA ports: CL:5177312",
+      "revId": "05da65e71123febec65adae03564a5528715035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
