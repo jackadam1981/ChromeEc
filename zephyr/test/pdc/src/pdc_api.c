@@ -39,7 +39,15 @@ ZTEST_USER(pdc_api, test_get_ucsi_version)
 
 ZTEST_USER(pdc_api, test_reset)
 {
-	/* TODO - why is PDC in IRQ state upon startup?
-	 * zassert_ok(pdc_reset(dev), "Failed to reset PDC");
-	 */
+	zassert_ok(pdc_reset(dev), "Failed to reset PDC");
+
+	k_sleep(K_MSEC(500));
+}
+
+ZTEST_USER(pdc_api, test_connector_reset)
+{
+	zassert_ok(pdc_connector_reset(dev, PD_HARD_RESET),
+		   "Failed to reset PDC");
+
+	k_sleep(K_MSEC(500));
 }
