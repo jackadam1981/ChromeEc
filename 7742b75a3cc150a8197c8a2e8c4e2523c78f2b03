@@ -22,6 +22,30 @@
       },
       "revId": "7742b75a3cc150a8197c8a2e8c4e2523c78f2b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ae7657_fe988461",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-09T22:44:36Z",
+      "side": 0,
+      "message": "`common/fpsensor/OWNERS` doesn\u0027t exist on fpmcu-firmware branches. If the file was modified on cros/main, git reports `deleted by us` conflict. I resolved that by removing the `common/fpsensor/OWNERS` as suggested in our docs.\n\nI don\u0027t think we need that file.",
+      "parentUuid": "0d2c1d1e_a6744e69",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "7742b75a3cc150a8197c8a2e8c4e2523c78f2b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
