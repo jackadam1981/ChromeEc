@@ -33,6 +33,70 @@
       "message": "LGTM. I will let Bobby give his feedback",
       "revId": "4de82eb67a1ac6dfe7b0f11126ed382f13ebcf21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cac9d7c_341cb76d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T19:11:16Z",
+      "side": 1,
+      "message": "Happy new year!",
+      "parentUuid": "7b60923f_38c03f1e",
+      "revId": "4de82eb67a1ac6dfe7b0f11126ed382f13ebcf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159e9dcf_301ee96a",
+        "filename": "driver/fingerprint/elan/elan_matcher.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T19:11:16Z",
+      "side": 1,
+      "message": "Why are the template sizes different for the same sensor and alg but different MCU?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "4de82eb67a1ac6dfe7b0f11126ed382f13ebcf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e8a8f1_faebcf9f",
+        "filename": "driver/fingerprint/elan/elan_matcher.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T19:11:16Z",
+      "side": 1,
+      "message": "Why are the template sizes different for the same sensor and alg?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "4de82eb67a1ac6dfe7b0f11126ed382f13ebcf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
