@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be50451e_bd0d261f",
+        "filename": "zephyr/program/skyrim/crystaldrift/src/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T18:42:44Z",
+      "side": 0,
+      "message": "You should also remove CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION from the boards that you\u0027ve enabled the CONFIG_CROS_EC_VIVALDI_KBI.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "8d0af5499e8054622cca190d77e767cddeca67dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
