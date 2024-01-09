@@ -16,6 +16,24 @@
       "message": "Can we add an emulator backend and just set it via that instead of hardcoding the values into the emulator itself?\n\nIt\u0027ll make follow-up tests easier too!",
       "revId": "c822eadc7b504cfd4b9cb21a79268437648b05b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "033c3194_ad1abb1b",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T22:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09db9ba3_e383e1dc",
+      "revId": "c822eadc7b504cfd4b9cb21a79268437648b05b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
