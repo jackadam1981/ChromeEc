@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2c1d1e_a6744e69",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:27:57Z",
+      "side": 0,
+      "message": "Why is this showing as a merge conflict? It should be safe to resolve like the below\n\n```suggestion\n# Fingerprint Sensor\n\n# Don\u0027t inherit owners from elsewhere in the manifest\nset noparent\n\ninclude chromiumos/owners:v1:/firmware/OWNERS.cros_fp\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "7742b75a3cc150a8197c8a2e8c4e2523c78f2b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
