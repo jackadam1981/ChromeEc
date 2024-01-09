@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc1a919_45613967",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-09T03:28:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "abff37c5_78cc4d0f",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "205a300fbbe10d29ec6f1045a9ee484dc01b612d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a7bbbb6_19b1caee",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-28T16:56:21Z",
       "side": 1,
       "message": "The non AP_PWRSEQ_DRIVER version waits while `((RSMRST \u003d\u003d 0) \u0026\u0026 (SLP_SUS \u003d\u003d 0))`.  This version waits while `((RSMRST \u003d\u003d 1) \u0026\u0026 (SLP_SUS \u003d\u003d 0))`.  Which is correct?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "205a300fbbe10d29ec6f1045a9ee484dc01b612d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e34e19_06a64f18",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-09T03:28:44Z",
+      "side": 1,
+      "message": "At this point (and with correct `RSMRST` edge configuration) we should deassert `DSW_PWROK`, assert `PWR_EC_PCH_RSMRST`, and wait for both `RSMRST` and `SLP_SUS` to be asserted. So code should be:\n```\n\tpower_signal_set(PWR_EC_SOC_DSW_PWROK, 0);\n\tpower_signal_set(PWR_EC_PCH_RSMRST, 1);\n\n\twhile ((power_signal_get(PWR_RSMRST) \u003d\u003d 0 ||\n\t\tpower_signal_get(PWR_SLP_SUS) \u003d\u003d 0) \u0026\u0026\n\t       timeout_ms \u003e 0) {\n\t\tk_msleep(1);\n\t\ttimeout_ms--;\n\t}\n```\nPlease note that `PWR_EC_PCH_RSMRST` and `RSMRST` edges will be fixed by CL\u0027s in topic: [rsmrst_edge_fix](https://chromium-review.googlesource.com/q/topic:%22rsmrst_edge_fix%22). This topic will extend to board specific handlers in non AP_PWRSEQ_DRIVER  version.",
+      "parentUuid": "8a7bbbb6_19b1caee",
       "range": {
         "startLine": 157,
         "startChar": 0,
