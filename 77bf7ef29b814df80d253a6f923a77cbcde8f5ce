@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc496be7_1512c2c4",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-09T18:00:25Z",
+      "side": 1,
+      "message": "Just to be safe, should we add sleep mode false here?\n\n```suggestion\n            TestConfig(\n                config_name\u003d\"power_utilization_idle\",\n                test_name\u003d\"power_utilization\",\n                apptype_to_use\u003dApplicationType.PRODUCTION,\n                toggle_power\u003dTrue,\n                pre_test_callback\u003dlambda config\u003dNone: set_sleep_mode(True),\n                post_test_callback\u003dverify_idle_power_utilization,\n                finish_regexes\u003d[RW_IMAGE_BOOTED_REGEX],\n            ),\n```",
+      "range": {
+        "startLine": 390,
+        "startChar": 12,
+        "endLine": 397,
+        "endChar": 14
+      },
+      "revId": "77bf7ef29b814df80d253a6f923a77cbcde8f5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394bdeef_aa251d30",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-09T18:00:25Z",
+      "side": 1,
+      "message": "Just to be safe, should we set sleep mode false here?\n\n```suggestion\n    \"\"\"Verifies that idle power utilization is within range for the specified board\"\"\"\n    # Make sure we weren\u0027t in sleep mode.\n    set_sleep_mode(False)\n\n    return verify_power_utilization(\n        board_config.expected_fp_power.idle,\n        board_config.expected_mcu_power.idle,\n    )\n```",
+      "range": {
+        "startLine": 1210,
+        "startChar": 3,
+        "endLine": 1215,
+        "endChar": 5
+      },
+      "revId": "77bf7ef29b814df80d253a6f923a77cbcde8f5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
