@@ -135,6 +135,10 @@
 		gpio_sen_mode1_ec_pch_wake_odl: sen_mode1_ec_pch_wake_odl {
 			gpios = <&gpiob 6 GPIO_ODR_LOW>;
 		};
+		gpio_soc_ec_ish_nb_mode_l: soc_ec_ish_nb_mode_l {
+			status = "disabled";
+			gpios = <&gpioc 7 GPIO_INPUT>;
+		};
 		gpio_sys_rst_r_odl: sys_rst_r_odl {
 			gpios = <&gpiog 0 GPIO_ODR_LOW>;
 		};
@@ -158,10 +162,6 @@
 		i2c_ec_i2c_pd_prog: ec_i2c_pd_prog {
 			i2c-port = <&i2c1>;
 			enum-names = "I2C_PORT_PD";
-		};
-		i2c_ish_i2c_e: ish_i2c_e {
-			i2c-port = <&i2c2>;
-			enum-names = "I2C_PORT_ISH";
 		};
 		i2c_i2c_ec_pmc_pd: i2c_ec_pmc_pd {
 			i2c-port = <&i2c3ALT>;
