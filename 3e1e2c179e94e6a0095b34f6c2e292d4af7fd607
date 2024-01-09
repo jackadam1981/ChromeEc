@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6169373b_e5063319",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-09T17:55:08Z",
+      "side": 1,
+      "message": "If there\u0027s a datasheet reference for this stuff, that would be nice to mention here.",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb6d1121_85003174",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-09T17:55:08Z",
+      "side": 1,
+      "message": "Can you just directly set `request` to 0 here? Then you wouldn\u0027t have to specify the size explicitly.",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3005c58e_9234e38f",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-09T17:55:08Z",
+      "side": 1,
+      "message": "guarantees",
+      "range": {
+        "startLine": 320,
+        "startChar": 63,
+        "endLine": 320,
+        "endChar": 72
+      },
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafb21b8_fd031476",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-09T17:55:08Z",
+      "side": 1,
+      "message": "Is there a scenario where the header is used by itself, or does it only ever appear inside one of these other request types?",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d13134_a190ee93",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-09T17:55:08Z",
+      "side": 1,
+      "message": "Nit: Typically, we use `[0]` when there\u0027s some other structure of dynamic size implicitly off the end of the array. In this case, it seems like we know the size. What if you declared `raw_data` second as `uint8_t raw_data[sizeof(ic_status)]`? Similar question for `rts54_request`.",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6faddcb5_ce198820",
+        "filename": "zephyr/test/pdc/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-09T17:55:08Z",
+      "side": 1,
+      "message": "Nit: Remove unless this is supposed to communicate something to the reader.",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
