@@ -70,6 +70,24 @@
       "parentUuid": "b9f24a90_fb3114fe",
       "revId": "6e38a12b083a3dc409182b4f69c9d962bf24901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57157a9b_3647dad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T23:37:56Z",
+      "side": 1,
+      "message": "It looks like the docs were updated after the bug was created (crrev.com/c/4653270). I updated the bloonchipper and dartmonkey numbers to match the docs. \n\nWith one stddev it passed intermittently on dartmonkey so I increased the mcu power range to 2 stddev (leaving fp at 1 stddev).\n\nI did the same for Bloonchipper. I\u0027m still unable to test it on bloonchipper but the numbers match Tom\u0027s above.",
+      "parentUuid": "837eb19a_24b87f2c",
+      "revId": "6e38a12b083a3dc409182b4f69c9d962bf24901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6b7dce_a45381f7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T23:37:56Z",
+      "side": 1,
+      "message": "Yeah, that probably makes sense. The suggested edit sets sleep mode to `True` rather than `False` so I\u0027ll push a patch with the change rather than just applying.",
+      "parentUuid": "cc496be7_1512c2c4",
+      "range": {
+        "startLine": 390,
+        "startChar": 12,
+        "endLine": 397,
+        "endChar": 14
+      },
+      "revId": "77bf7ef29b814df80d253a6f923a77cbcde8f5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02dee5c9_1c8a1e8e",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f535a113_e83385e2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T23:37:56Z",
+      "side": 1,
+      "message": "The suggestion seems to have duplicated the two functions below this one so I manually broke it up.",
+      "parentUuid": "02dee5c9_1c8a1e8e",
+      "range": {
+        "startLine": 1145,
+        "startChar": 0,
+        "endLine": 1145,
+        "endChar": 29
+      },
+      "revId": "77bf7ef29b814df80d253a6f923a77cbcde8f5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394bdeef_aa251d30",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-01-09T18:00:25Z",
       "side": 1,
       "message": "Just to be safe, should we set sleep mode false here?\n\n```suggestion\n    \"\"\"Verifies that idle power utilization is within range for the specified board\"\"\"\n    # Make sure we weren\u0027t in sleep mode.\n    set_sleep_mode(False)\n\n    return verify_power_utilization(\n        board_config.expected_fp_power.idle,\n        board_config.expected_mcu_power.idle,\n    )\n```",
+      "range": {
+        "startLine": 1210,
+        "startChar": 3,
+        "endLine": 1215,
+        "endChar": 5
+      },
+      "revId": "77bf7ef29b814df80d253a6f923a77cbcde8f5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44184e5a_256c943f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T23:37:56Z",
+      "side": 1,
+      "message": "It probably makes sense to do this either here or in the pre-test hook but not both. I\u0027m okay with either but I think I prefer the pre-test hook (pushed in latest patch) because if the MCU was in sleep already then it allows some settle time before calling `verify_power_utilization`.",
+      "parentUuid": "394bdeef_aa251d30",
       "range": {
         "startLine": 1210,
         "startChar": 3,

@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "933a8cb6_189baf33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T23:37:56Z",
+      "side": 1,
+      "message": "David, thanks for confirming.\n\nI\u0027ll add a TODO to avoid this lingering on any longer and we\u0027ll continue investigating in b/319314358.",
+      "parentUuid": "0635adc5_12e49bb6",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "492845ca74175ed87de443eca51280c83d25dc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b3b5d74_501d088c",
