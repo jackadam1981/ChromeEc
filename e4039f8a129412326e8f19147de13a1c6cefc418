@@ -45,6 +45,30 @@
       },
       "revId": "e4039f8a129412326e8f19147de13a1c6cefc418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37edd7cf_26d775ee",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T21:06:44Z",
+      "side": 1,
+      "message": "CL:5182336 posted to fix ISH signals.",
+      "parentUuid": "599482c4_6361457e",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 51
+      },
+      "revId": "e4039f8a129412326e8f19147de13a1c6cefc418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
