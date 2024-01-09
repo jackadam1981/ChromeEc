@@ -22,6 +22,30 @@
       },
       "revId": "a8b3543cca525e094c2133865f5f108d254e54f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ea6895_6e3b672c",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-09T22:34:13Z",
+      "side": 1,
+      "message": "STM32L5 has 256kB of RAM.  So far, I do not have much else to use it for, so I thought we might as well use it for GPIO monitoring.\n\nIf we need to support e.g. large pre-recorded SPI or I2C responses, for when HyperDebug acts as the device, and responds to requests from the GSC, then we may want to rebalance, or make some more generic memory allocation, so that the same pool could be used for either GPIO monitoring or SPI/I2C transcripts, or some combination.",
+      "parentUuid": "20610d0e_47d4b856",
+      "range": {
+        "startLine": 171,
+        "startChar": 46,
+        "endLine": 171,
+        "endChar": 64
+      },
+      "revId": "a8b3543cca525e094c2133865f5f108d254e54f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
