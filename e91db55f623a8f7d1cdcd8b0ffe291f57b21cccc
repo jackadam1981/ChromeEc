@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca66063_0d6da4b2",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T23:57:57Z",
+      "side": 1,
+      "message": "Can the emulator backend API be abstracted to higher level operations?\n\nSomething like:\n```\nemul_pdc_connect_charger(*emul, *pdo_list);\nemul_pdc_connect_sink(*emul, *snk_pdo);\nemul_pdc_connect_drp_partner(*emul, *pdo_list, *drp_properties)\nemul_pdc_disconnect_partner(*emul);\n```\n\nThis should make the test flow easier to write and follow.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
