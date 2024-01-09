@@ -17,6 +17,10 @@
 	/delete-node/ motionsense-sensor-info;
 };
 
+&gpio_soc_ec_ish_nb_mode_l {
+	status = "ok";
+};
+
 &int_lid_imu {
 	status = "disabled";
 };
