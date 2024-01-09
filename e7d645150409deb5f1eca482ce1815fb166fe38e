@@ -63,6 +63,30 @@
       },
       "revId": "e7d645150409deb5f1eca482ce1815fb166fe38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a3b4cf_0c554c4a",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-01-09T07:33:46Z",
+      "side": 1,
+      "message": "Sounds good. I sent CL:5178929 and let\u0027s discuss there.",
+      "parentUuid": "92beaebc_4f597d77",
+      "range": {
+        "startLine": 257,
+        "startChar": 31,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "e7d645150409deb5f1eca482ce1815fb166fe38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
