@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa798698_adf96ffa",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T18:01:42Z",
+      "side": 1,
+      "message": "I believe I got a complaint when I uploaded the file:\n```\nERROR: do not initialise statics to false\n    #41: FILE: test/cortexm_fpu.c:17:\n    +static bool supports_fpu_irq \u003d false;\n```",
+      "parentUuid": "e31c2d96_c9fce22d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1fed703_9a0aed6c",
         "filename": "test/cortexm_fpu.c",
         "patchSetId": 5
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c47508_afb45173",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T18:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e85e239_4f1ff95a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de83a54f_6068e229",
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bcd50f_755a6216",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T18:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de83a54f_6068e229",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b359f69_a8f125d3",
@@ -106,6 +178,30 @@
       "writtenOn": "2024-01-09T17:19:29Z",
       "side": 1,
       "message": "Based on the comment we don\u0027t expect any interrupts to be generated, so I think we can just change this to:\n\n```suggestion\n\t/* Check if result is not NaN nor infinity. */\n\tTEST_ASSERT(!isnan(result) \u0026\u0026 !isinf(result));\n\n\t/*\n\t * Inexact bit doesn\u0027t generate interrupt, so read FPSCR directly.\n\t */\n\t_read_fpscr();\n```",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7c2bd1_aa8318ae",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T18:01:42Z",
+      "side": 1,
+      "message": "this test will fail for the M4 is modified per the comment",
+      "parentUuid": "7b359f69_a8f125d3",
       "range": {
         "startLine": 180,
         "startChar": 0,
