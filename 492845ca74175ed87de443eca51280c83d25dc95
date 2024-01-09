@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0635adc5_12e49bb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-01-09T19:54:51Z",
+      "side": 1,
+      "message": "The results on my V2 match Bobby\u0027s:\n\nINFO:ppvar_fp_mw\tactual: 0.07 expected: 0.00 threshold: +/-0.10\nINFO:ppvar_mcu_mw:\tactual: 1.27 expected: 9.20 threshold: +/-0.80\nTest \"power_utilization_idle\": FAILED",
+      "parentUuid": "de3a3087_1104d2b1",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "492845ca74175ed87de443eca51280c83d25dc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b3b5d74_501d088c",
         "filename": "test/run_device_tests.py",
         "patchSetId": 10
