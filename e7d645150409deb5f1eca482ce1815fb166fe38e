@@ -39,6 +39,30 @@
       },
       "revId": "e7d645150409deb5f1eca482ce1815fb166fe38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92beaebc_4f597d77",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2024-01-09T04:27:38Z",
+      "side": 1,
+      "message": "I agree it is better to change the if condition to `saved_usb_conn_status[i] \u003d\u003d USB2_CONNECTED`. Maybe we can loop hardware team (the [original power saving proposal](https://b.corp.google.com/issues/229810117#comment17) was proposed from hardware team) to also help confirm this?",
+      "parentUuid": "0d068ee4_27283ffc",
+      "range": {
+        "startLine": 257,
+        "startChar": 31,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "e7d645150409deb5f1eca482ce1815fb166fe38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
