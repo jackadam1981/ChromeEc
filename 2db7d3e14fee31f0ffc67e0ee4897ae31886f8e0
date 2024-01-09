@@ -46,6 +46,30 @@
       },
       "revId": "2db7d3e14fee31f0ffc67e0ee4897ae31886f8e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b96040_7441ac9c",
+        "filename": "zephyr/program/brox/brox-ish-ec/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T18:52:13Z",
+      "side": 1,
+      "message": "It\u0027s more about establishing the design pattern we want partners to follow for other boards.\n\nThe TODO in brox/project.overlay can be moved to the shared i2c.dtsi file.  I\u0027ll do that when I remove the ISH I2C bus.",
+      "parentUuid": "3edc2dbd_1c94ace8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "2db7d3e14fee31f0ffc67e0ee4897ae31886f8e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
