@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20610d0e_47d4b856",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-09T22:31:12Z",
+      "side": 1,
+      "message": "this is huge! 192Kb of RAM. Do we really have that much RAM!?!",
+      "range": {
+        "startLine": 171,
+        "startChar": 46,
+        "endLine": 171,
+        "endChar": 64
+      },
+      "revId": "a8b3543cca525e094c2133865f5f108d254e54f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
