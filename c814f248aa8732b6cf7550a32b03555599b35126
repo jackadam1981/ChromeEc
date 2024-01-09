@@ -166,6 +166,30 @@
       },
       "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c241c397_b59fcd08",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-09T17:33:57Z",
+      "side": 0,
+      "message": "Although this may work, it\u0027s probably not future-proof because it looks like several of the bits in that register are reserved and some bits are control bits. We must have the control bits currently set to 0, but that\u0027s not necessarily guaranteed. For example, someone could turn on `Default NaN mode control bit, bit[25]` in EC and this test would then clear it.\n\nSimilar argument applies to the reserved bits. Future processor versions could start using those bits for something and we would be clearing it. \n\nSee \"A2.5.3 Floating-point Status and Control Register, FPSCR\" in [ARMv7-M Architecture Reference Manual](https://developer.arm.com/documentation/ddi0403/latest) for details on all the bits.",
+      "parentUuid": "b76a98ce_f4f49369",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,29 @@
       "message": "responded to all comments",
       "revId": "ed9dbac415888784328e49088206d0e3f3755cd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2085d4c_1c69bbde",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-09T17:33:57Z",
+      "side": 1,
+      "message": "Let\u0027s make it `static` to limit scope to this file:\n\n```suggestion\nstatic void clear_fpscr(void)\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "ed9dbac415888784328e49088206d0e3f3755cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
