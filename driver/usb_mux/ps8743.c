@@ -14,6 +14,9 @@
 #include "usb_pd.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
+
 enum usb_conn_status {
 	NO_DEVICE,
 	USB2_CONNECTED,
@@ -235,8 +238,11 @@ static void ps8743_suspend(void)
 
 		saved_usb_conn_status[i] = ps8743_get_usb_conn_status(mux);
 
+		CPRINTS(">>>>> %s: C%d: saved_usb_conn_status = %d", __func__, i, saved_usb_conn_status[i]);
+
 		if (ps8743_port_is_usb_mode_only(mux) &&
 		    saved_usb_conn_status[i] == USB2_CONNECTED) {
+			CPRINTS(">>>>> %s: C%d: update PS8743_REG_MODE", __func__, i);
 			ps8743_field_update(mux, PS8743_REG_MODE,
 					    PS8743_MODE_USB_ENABLE, 0);
 		}
@@ -252,9 +258,11 @@ static void ps8743_resume(void)
 		if (!mux) {
 			continue;
 		}
+		CPRINTS(">>>>> %s: C%d: saved_usb_conn_status = %d", __func__, i, saved_usb_conn_status[i]);
 
 		if (ps8743_port_is_usb_mode_only(mux) &&
 		    saved_usb_conn_status[i] != NO_DEVICE) {
+			CPRINTS(">>>>> %s: C%d: update PS8743_REG_MODE", __func__, i);
 			ps8743_field_update(mux, PS8743_REG_MODE,
 					    PS8743_MODE_USB_ENABLE,
 					    PS8743_MODE_USB_ENABLE);

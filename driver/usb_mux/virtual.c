@@ -13,6 +13,9 @@
 #include "usb_mux.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
+
 /*
  * USB PD protocol configures the USB & DP mux state and USB PD policy
  * configures the HPD mux state. Both states are independent of each other
@@ -95,6 +98,7 @@ static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	else
 		new_mux_state = mux_state;
 
+	CPRINTS(">>>>> %s: going to virtual_mux_update_state()", __func__);
 	virtual_mux_update_state(port, new_mux_state, ack_required);
 
 	return EC_SUCCESS;
@@ -123,6 +127,7 @@ void virtual_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
 	mux_state_t new_mux_state =
 		hpd_state | (virtual_mux_state[port] & USB_PD_MUX_USB_DP_STATE);
 
+	CPRINTS(">>>>> %s: going to virtual_mux_update_state()", __func__);
 	virtual_mux_update_state(port, new_mux_state, ack_required);
 }
 
