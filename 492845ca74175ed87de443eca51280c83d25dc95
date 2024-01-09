@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe43d3bd_5e71c058",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T17:34:30Z",
+      "side": 1,
+      "message": "This test is failing on a V2 board because the reported `ppvar_mcu_mw` only reports 1.26 mW rather than the expected 9.2 mW. I\u0027m guessing the failure is related to my hardware but I would like someone to confirm. \n\n```\nINFO:ppvar_fp_mw\tactual: 0.04 expected: 0.00 threshold: +/-0.10\nINFO:ppvar_mcu_mw:\tactual: 1.26 expected: 9.20 threshold: +/-0.80\n```\n\nI used numbers based on \n\n@bettytseng@google.com\u0027s [Quincy Power consumption measurement](http://docs/document/d/1cj1AhvBeznvrgIJ6pFMFxaKzb27gM9j76Yc4na9B0bU?resourcekey\u003d0-UtXoQd69NotvlJUrigwx3g\u0026tab\u003dt.0#heading\u003dh.lhl8ruvs0n36) doc and the associated [measurements data](http://docs/spreadsheets/d/1SNM7ymfYf3nX_8bM2nJh-w2_R5dGRtPeO4Odm3Jcmt8?resourcekey\u003d0-C3zt_Qcf33IS01PlA7ARJQ#gid\u003d1908422067) and",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "492845ca74175ed87de443eca51280c83d25dc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b3b5d74_501d088c",
         "filename": "test/run_device_tests.py",
         "patchSetId": 10
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "\u003e but I believe that ppvar_fp_mw should be the correct one \n\nYes, that\u0027s what I have been using in the updated numbers: https://crrev.com/c/4653270\n\n(The previous numbers in the docs were from before the servo change that renamed things.)\n\n\u003e I\u0027m getting 0.6 mW\n\nThat\u0027s what I\u0027m seeing in the measurements on the latest release firmware (which is fairly close to ToT if that\u0027s what you\u0027re testing against): https://crrev.com/c/4653270.",
       "parentUuid": "4b3b5d74_501d088c",
+      "range": {
+        "startLine": 572,
+        "startChar": 25,
+        "endLine": 572,
+        "endChar": 28
+      },
+      "revId": "492845ca74175ed87de443eca51280c83d25dc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b03819_546a422b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T17:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f2c725a_9a4dbb51",
       "range": {
         "startLine": 572,
         "startChar": 25,
