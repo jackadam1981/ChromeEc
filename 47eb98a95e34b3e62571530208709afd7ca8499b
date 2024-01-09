@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99682b26_494f0b82",
+        "filename": "zephyr/program/geralt/src/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-01-09T18:05:23Z",
+      "side": 1,
+      "message": "I think we should configure it as `mux_mode \u0026 USB_PD_MUX_USB_ENABLED`, because the other port could be a USB-DP dongle.",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "47eb98a95e34b3e62571530208709afd7ca8499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
