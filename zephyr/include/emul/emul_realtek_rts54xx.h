@@ -171,6 +171,7 @@ struct ping_status {
 
 /** @brief Emulated properties */
 struct rts5453p_emul_pdc_data {
+	uint16_t ucsi_version;
 	union vendor_cmd vnd_command;
 	union set_notification_data notification_data[2];
 	struct rts54_ic_status ic_status;

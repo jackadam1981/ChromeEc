@@ -4,8 +4,8 @@
  */
 
 #include "emul/emul_common_i2c.h"
+#include "emul/emul_pdc.h"
 #include "emul/emul_realtek_rts54xx.h"
-#include "emul/emul_stub_device.h"
 #include "zephyr/sys/util.h"
 
 #include <zephyr/device.h>
@@ -487,6 +487,7 @@ static int rts5453p_emul_init(const struct emul *emul,
 
 	i2c_common_emul_init(&data->common);
 
+	data->pdc_data.ucsi_version = UCSI_VERSION;
 	data->pdc_data.ic_status.fw_main_version = 0xAB;
 	data->pdc_data.ic_status.pd_version[0] = 0xCD;
 	data->pdc_data.ic_status.pd_revision[0] = 0xEF;
@@ -498,6 +499,21 @@ static int rts5453p_emul_init(const struct emul *emul,
 
 	return 0;
 }
+
+static int emul_realtek_rts54xx_set_ucsi_version(const struct emul *target,
+						 uint16_t version)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	data->ucsi_version = version;
+
+	return 0;
+}
+
+struct emul_pdc_api_t emul_realtek_rts54xx_api = {
+	.set_ucsi_version = emul_realtek_rts54xx_set_ucsi_version,
+};
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \
 	static struct rts5453p_emul_data rts5453p_emul_data_##n = {	\
@@ -518,7 +534,7 @@ static int rts5453p_emul_init(const struct emul *emul,
 	};                                                                  \
 	EMUL_DT_INST_DEFINE(n, rts5453p_emul_init, &rts5453p_emul_data_##n, \
 			    &rts5453p_emul_cfg_##n, &i2c_common_emul_api,   \
-			    NULL)
+			    &emul_realtek_rts54xx_api)
 
 DT_INST_FOREACH_STATUS_OKAY(RTS5453P_EMUL_DEFINE)
 
