@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8897ff77_ad479495",
+        "filename": "zephyr/program/brox/brox-ish-ec/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:49:44Z",
+      "side": 1,
+      "message": "This lost the hard tabs.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "e4039f8a129412326e8f19147de13a1c6cefc418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599482c4_6361457e",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:49:44Z",
+      "side": 1,
+      "message": "This is a generated file and shouldn\u0027t be edited.  I\u0027ll fixup the source spreadsheet and regenerate this to switch the ISH signals from I2C to GPIO inputs.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 51
+      },
+      "revId": "e4039f8a129412326e8f19147de13a1c6cefc418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
