@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21780541_3eaccb43",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:31:07Z",
+      "side": 0,
+      "message": "I\u0027m assuming this is a merge conflict because `common/fpsensor/OWNERS` was deleted in the release branch but I think it could be resolved with this change\n\n```suggestion\n# Fingerprint Sensor\n\n# Don\u0027t inherit owners from elsewhere in the manifest\nset noparent\n\ninclude chromiumos/owners:v1:/firmware/OWNERS.cros_fp\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 76
+      },
+      "revId": "c7e53014658799ba0724187c31f295691613b0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

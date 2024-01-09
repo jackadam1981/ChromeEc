@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c70aa25_f5f6b15b",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:31:07Z",
+      "side": 1,
+      "message": "As you noted in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5176886/comment/cde13767_55412675/ I think these could be removed in favor of the below",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 46
+      },
+      "revId": "75db79e661daa8e377209ad9b2f59435460227b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
