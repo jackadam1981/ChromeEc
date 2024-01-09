@@ -17,8 +17,8 @@
 /* Console output macro */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, "APHD: " format, ##args)
 
-static uint16_t reboot_timeout_sec;
-static uint8_t bootstatus = EC_HANG_DETECT_AP_BOOT_NORMAL;
+test_export_static uint16_t reboot_timeout_sec;
+test_export_static uint8_t bootstatus = EC_HANG_DETECT_AP_BOOT_NORMAL;
 
 /**
  * hang detect handlers for reboot.
