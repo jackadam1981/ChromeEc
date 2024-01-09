@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02dee5c9_1c8a1e8e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-09T18:05:16Z",
+      "side": 1,
+      "message": "nit: Since this is a large function, can we break it into two?\n\n1) get the power\n\n2) verify it meets the requirements\n\nThis was auto-generated, so check for correctness:\n\n\n```suggestion\ndef get_power_utilization() -\u003e Tuple[Optional[float], Optional[float]]:\n    \"\"\"Get the name of the console for a given board.\"\"\"\n    fp_power_signal \u003d \"ppvar_fp_mw\"\n    mcu_power_signal \u003d \"ppvar_mcu_mw\"\n    cmd \u003d [\n        \"dut-control\",\n        \"--value_only\",  # only the summary will print the field names\n        \"-t\",\n        \"10\",  # sample time in seconds\n        fp_power_signal,\n        mcu_power_signal,\n    ]\n    logging.debug(\u0027Running command: \"%s\"\u0027, \" \".join(cmd))\n\n    fp_power_mw \u003d None\n    mcu_power_mw \u003d None\n    with subprocess.Popen(cmd, stdout\u003dsubprocess.PIPE) as proc:\n        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]\n            # Only the summary is required and those lines start with @@ and have 6 other fields\n            # (NAME, COUNT, AVERAGE, STDDEV, MAX, MIN)\n            response \u003d line.split()\n            if len(response) !\u003d 7 or response[0] !\u003d \"@@\":\n                continue\n\n            resp_name, _, resp_avg, _, _, _ \u003d response[1:]\n\n            if resp_name \u003d\u003d fp_power_signal:\n                fp_power_mw \u003d float(resp_avg.strip())\n            elif resp_name \u003d\u003d mcu_power_signal:\n                mcu_power_mw \u003d float(resp_avg.strip())\n\n            logging.debug(\n                \"fp_power_mw:%s \\t mcu_power_mw:%s\", fp_power_mw, mcu_power_mw\n            )\n            if fp_power_mw is not None and mcu_power_mw is not None:\n                return (fp_power_mw, mcu_power_mw)\n\n    logging.error(\"Failed to receive required power data from FPMCU\")\n    return (None, None)\n\n\ndef verify_power_utilization(fp_power_mw: float,\n                             mcu_power_mw: float,\n                             fp_expected: RangedValue,\n                             mcu_expected: RangedValue) -\u003e bool:\n    \"\"\"Verifies that power utilization is within range for the specified board\"\"\"\n\n    fp_mw_delta \u003d abs(fp_power_mw - fp_expected.nominal)\n    mcu_mw_delta \u003d abs(mcu_power_mw - mcu_expected.nominal)\n\n    logging.info(\n        \"ppvar_fp_mw:\\tactual: %0.2f expected: %0.2f threshold: +/-%0.2f\",\n        fp_power_mw,\n        fp_expected.nominal,\n        fp_expected.range,\n    )\n    logging.info(\n        \"ppvar_mcu_mw:\\tactual: %0.2f expected: %0.2f threshold: +/-%0.2f\",\n        mcu_power_mw,\n        mcu_expected.nominal,\n        mcu_expected.range,\n    )\n\n    return (\n        fp_mw_delta \u003c\u003d fp_expected.range and mcu_mw_delta \u003c\u003d mcu_expected.range\n    )\n\n\ndef verify_idle_power_utilization(board_config: BoardConfig) -\u003e bool:\n    \"\"\"Verifies that idle power utilization is within range for the specified board\"\"\"\n\n    fp_power_mw, mcu_power_mw \u003d get_power_utilization()\n    if fp_power_mw is None or mcu_power_mw is None:\n        return False\n\n    return verify_power_utilization(\n        fp_power_mw,\n        mcu_power_mw,\n        board_config.expected_fp_power.idle,\n        board_config.expected_mcu_power.idle,\n    )\n\n\ndef verify_sleep_power_utilization(board_config: BoardConfig) -\u003e bool:\n    \"\"\"Verifies that sleep power utilization is within range for the specified board\"\"\"\n\n    fp_power_mw, mcu_power_mw \u003d get_power_utilization()\n    if fp_power_mw is None or mcu_power_mw is None:\n        return False\n\n    ret \u003d verify_power_utilization(\n        fp_power_mw,\n        mcu_power_mw,\n        board_config.expected_fp_power.sleep,\n        board_config.expected_mcu_power.sleep,\n    )\n\n    # Make sure to exit sleep mode!\n    set_sleep_mode(False)\n    return ret\n\n\ndef verify_power_utilization_for_board(\n```",
+      "range": {
+        "startLine": 1145,
+        "startChar": 0,
+        "endLine": 1145,
+        "endChar": 29
+      },
+      "revId": "77bf7ef29b814df80d253a6f923a77cbcde8f5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "394bdeef_aa251d30",
         "filename": "test/run_device_tests.py",
         "patchSetId": 11
