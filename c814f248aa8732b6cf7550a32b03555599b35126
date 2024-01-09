@@ -190,6 +190,30 @@
       },
       "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e02fb40_3e947e84",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:21:03Z",
+      "side": 0,
+      "message": "\u003e Although this may work, it\u0027s probably not future-proof because it looks like several of the bits in that register are reserved and some bits are control bits. We must have the control bits currently set to 0, but that\u0027s not necessarily guaranteed. For example, someone could turn on Default NaN mode control bit, bit[25] in EC and this test would then clear it.\n\nAgreed. As discussed yesterday, any modifications to reserved bits in these registers could result in unexpected behaviors. Explicitly clearing the relevant bits is definitely the best bet in the long term.\n\n\n\u003e Please note that fpu_irq() handler clears FPSCR (it\u0027s cleared on stack in line 35, when we return from exception, we copy FPSCR from stack to the register), so clear_fpscr() was not necessary, but since you want to run this tests on chips that don\u0027t have FPU interrupt, this function becomes essential.\n\u003e NIT: If you find this useful, you can add some comments in code.\n\nI think this warrants a comment as it is rather confusing since some chips can rely on `fpscr` being automatically cleared, while other need to explicitly clear it.",
+      "parentUuid": "c241c397_b59fcd08",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -218,6 +218,24 @@
       "parentUuid": "5f22e272_07e9cd11",
       "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d897cda_3ab6dc75",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:21:03Z",
+      "side": 1,
+      "message": "This gets a bit confusing and maybe could be cleaned up but `fpscr` is both a floating point register and a file-scoped variable, nad we also have a `CPU_FPU_FPCAR` macro that can be used by ISRs to read the `fpscr` register into `fpu_state` and the `fpscr` variable.",
+      "parentUuid": "9d0be588_c3693e21",
+      "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
