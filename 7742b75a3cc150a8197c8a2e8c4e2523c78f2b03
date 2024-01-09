@@ -46,6 +46,30 @@
       },
       "revId": "7742b75a3cc150a8197c8a2e8c4e2523c78f2b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206890a7_0f7cd6cf",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T22:55:56Z",
+      "side": 0,
+      "message": "Good enough. I don\u0027t think we need it but I believe the reason we deleted it was as a workaround for the permissions issues that were resolved by using the `include chromiumos/owners:v1:/firmware/OWNERS.cros_fp` format.",
+      "parentUuid": "71ae7657_fe988461",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "7742b75a3cc150a8197c8a2e8c4e2523c78f2b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
