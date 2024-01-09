@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5e7be6_41ebf918",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "Minor comments left for me.",
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a19f63_d87add2a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "\u003e \"breif\" is a possible misspelling of \"brief\".\n\nPlease fix.",
+      "parentUuid": "d165fb27_f3b91d6f",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a01394e_02ebf1d2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "This is the only use of next_state.",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 32
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ffece3_cb0d98ed",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "-EINVAL",
+      "range": {
+        "startLine": 796,
+        "startChar": 9,
+        "endLine": 796,
+        "endChar": 10
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed1004b_2c608c25",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "Can you open a bug to investigate whether we need to explicitly disable the sink path in this path?",
+      "range": {
+        "startLine": 983,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 53
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de71090d_80b92c33",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "PDO_NUM",
+      "range": {
+        "startLine": 998,
+        "startChar": 22,
+        "endLine": 998,
+        "endChar": 23
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bcd2cf0_ed176506",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "Convert the printk calls to LOG_INF or LOG_DBG.",
+      "range": {
+        "startLine": 999,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 36
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

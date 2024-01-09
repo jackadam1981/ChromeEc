@@ -444,6 +444,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe5f7977_9c607c6e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-09T20:47:49Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t clear.  It\u0027s clear from the code logic that you\u0027re testing PDC_RESET and CC_RESET_COMPLETED.\n\nI was suggesting you update the comment to include the context of why CMD_PDC_RESET needs special handling.",
+      "parentUuid": "e81007f0_64aed69d",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 0
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e45d201e_2a5a3f47",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 21
