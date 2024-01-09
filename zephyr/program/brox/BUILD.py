@@ -9,7 +9,7 @@ def register_brox_project(
     project_name,
 ):
     """Register a variant of brox."""
-    register_binman_project(
+    return register_binman_project(
         project_name=project_name,
         zephyr_board="it82002aw",
         dts_overlays=[
@@ -25,6 +25,14 @@ def register_brox_project(
     )
 
 
-register_brox_project(
+brox = register_brox_project(
     project_name="brox",
+)
+
+brox_tokenized = brox.variant(
+    project_name="brox-tokenized",
+    kconfig_files=[
+        here / "brox-tokenized" / "project.conf",
+    ],
+    modules=["picolibc", "ec", "pigweed"],
 )
