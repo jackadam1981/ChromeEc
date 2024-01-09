@@ -39,6 +39,30 @@
       },
       "revId": "7320afe8b8c21ea6fc744af43c1b61bb516e5b88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efaa78af_63842391",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-09T17:55:31Z",
+      "side": 1,
+      "message": "I agree. I did it this way because in schematics the signal that checks rsmrst power rails is called `RSMRSRT_PWRGD_L`, but this is more clear, I will apply the same to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5165593/comment/9634db69_9fa8f892/).",
+      "parentUuid": "03d58e1f_d255fa1f",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 33
+      },
+      "revId": "7320afe8b8c21ea6fc744af43c1b61bb516e5b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -57,6 +57,30 @@
       },
       "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5536de42_d4810512",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-09T17:55:31Z",
+      "side": 1,
+      "message": "\u003e Can you rename this signal to PWR_RSMRST_PWRGD? That seems to better match the PDG documentation for both ADL and MTL.\n\nSure, I will have this in a separate CL.",
+      "parentUuid": "8ea57fd2_28e78e44",
+      "range": {
+        "startLine": 321,
+        "startChar": 26,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
