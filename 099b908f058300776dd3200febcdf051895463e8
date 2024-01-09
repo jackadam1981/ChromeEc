@@ -362,6 +362,52 @@
       },
       "revId": "099b908f058300776dd3200febcdf051895463e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0631068a_f8fb96f6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-09T00:56:32Z",
+      "side": 1,
+      "message": "Looks to be a copy/paste holdover. I think this needs to be \u0027PD_ROLE_DISCONNECTED\u0027 or I guess it could be assumed to be UFP is the power role is sink and DFP if the power role is SRC.",
+      "range": {
+        "startLine": 1419,
+        "startChar": 9,
+        "endLine": 1419,
+        "endChar": 21
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3a2a99_e4f13a7c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-09T00:56:32Z",
+      "side": 1,
+      "message": "This and returned value just below are from the `ec_pd_data_role_cap` enum and they should be changed to PD_ROLE_UFP and PD_ROLE_DFP respectively",
+      "range": {
+        "startLine": 1424,
+        "startChar": 9,
+        "endLine": 1424,
+        "endChar": 28
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
