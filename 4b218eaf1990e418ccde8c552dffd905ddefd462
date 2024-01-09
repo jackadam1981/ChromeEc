@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb84872_8cc20b0f",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T22:02:15Z",
+      "side": 1,
+      "message": "Logically I think this works fine but it reads a bit funny as typically you have `result \u003d value \u0026 ~mask;`. Also, this leaves the `fpscr` variable with the pre-masked value. Rewriting to the following would read a bit easier and ensure the `fpscr` variable is consistent with the `fpscr` register after clearing.\n\n```suggestion\nstatic void clear_fpscr(void)\n{\n\tfpscr \u003d  _read_fpscr() \u0026 ~FPU_FPSCR_EXC_FLAGS;\n\tasm volatile(\"vmsr fpscr, %0\" : : \"r\"(fpscr));\n}\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "4b218eaf1990e418ccde8c552dffd905ddefd462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
