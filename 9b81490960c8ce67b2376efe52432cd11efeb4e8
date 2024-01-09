@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed84656_98c825fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T17:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cbef23d_2389085a",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ee43e4_37ada6b7",
@@ -121,6 +145,24 @@
       "side": 1,
       "message": "I think what @patrykd@google.com was asking is whether it\u0027s OK to write all zeroes to FPSCR. (I\u0027m not sure without looking at the documentation; some bits of the register may be reserved or for other purposes.)\n\nThe line in `fpu_irq` that clears FPSCR only clears some of the bits, not all:\n\n```\n\tfpu_state[FPU_IDX_REG_FPSCR] \u0026\u003d ~FPU_FPSCR_EXC_FLAGS;\n```\n\nTo reduce confusion, it would be good to clear them both the same way (either both set to zero or both mask with `FPU_FPSCR_EXC_FLAGS`).",
       "parentUuid": "6a8e63e2_4fbe85e8",
+      "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efaacdbc_937c6f35",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T17:14:56Z",
+      "side": 1,
+      "message": "I tried with a mask as in the above comment, the results came to be 0",
+      "parentUuid": "00ac3c5f_251a5f72",
       "revId": "9b81490960c8ce67b2376efe52432cd11efeb4e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
