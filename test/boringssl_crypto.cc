@@ -20,6 +20,7 @@ extern "C" {
 
 #include <array>
 #include <memory>
+#include <unistd.h>
 
 test_static enum ec_error_list test_rand(void)
 {
@@ -209,6 +210,45 @@ test_static enum ec_error_list test_cleanse_wrapper_normal_usage(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_getentropy_too_large()
+{
+	uint8_t buf[256 + 1] = { 0 };
+
+	int ret = getentropy(buf, sizeof(buf));
+	TEST_EQ(ret, -1, "%d");
+	TEST_EQ(errno, EIO, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static int test_getentropy_null_buffer()
+{
+	int ret = getentropy(NULL, 0);
+	TEST_EQ(ret, -1, "%d");
+	TEST_EQ(errno, EFAULT, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static int test_getentropy()
+{
+	uint8_t zero[256] = { 0 };
+	uint8_t buf1[256];
+	uint8_t buf2[256];
+
+	int ret = getentropy(buf1, sizeof(buf1));
+	TEST_EQ(ret, 0, "%d");
+
+	ret = getentropy(buf2, sizeof(buf2));
+	TEST_EQ(ret, 0, "%d");
+
+	TEST_ASSERT(memcmp(buf1, zero, sizeof(zero)) != 0);
+	TEST_ASSERT(memcmp(buf2, zero, sizeof(zero)) != 0);
+	TEST_ASSERT(memcmp(buf1, buf2, sizeof(buf1)) != 0);
+
+	return EC_SUCCESS;
+}
+
 extern "C" void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_rand);
@@ -217,5 +257,8 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_cleanse_wrapper_sha256);
 	RUN_TEST(test_cleanse_wrapper_custom_struct);
 	RUN_TEST(test_cleanse_wrapper_normal_usage);
+	RUN_TEST(test_getentropy_too_large);
+	RUN_TEST(test_getentropy_null_buffer);
+	RUN_TEST(test_getentropy);
 	test_print_result();
 }
