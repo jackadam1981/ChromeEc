@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccedd0bf_9d141367",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T18:26:49Z",
+      "side": 1,
+      "message": "We have a data sheet available internally but I can\u0027t find anything on the public web for this.  I can reference the title of the data sheet.",
+      "parentUuid": "6169373b_e5063319",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb6d1121_85003174",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-09T17:55:08Z",
       "side": 1,
       "message": "Can you just directly set `request` to 0 here? Then you wouldn\u0027t have to specify the size explicitly.",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2338c24_8902b093",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T18:26:49Z",
+      "side": 1,
+      "message": "Unfortunately no.  Tried `request\u003d0` and `request\u003d{0}` both don\u0027t compile",
+      "parentUuid": "cb6d1121_85003174",
       "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "739a062c_a50738bc",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T18:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3005c58e_9234e38f",
+      "range": {
+        "startLine": 320,
+        "startChar": 63,
+        "endLine": 320,
+        "endChar": 72
+      },
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cafb21b8_fd031476",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-01-09T17:55:08Z",
       "side": 1,
       "message": "Is there a scenario where the header is used by itself, or does it only ever appear inside one of these other request types?",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd54c8a_3f29680a",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T18:26:49Z",
+      "side": 1,
+      "message": "Yes, in the `process_request` function it uses this type to find the `sub_cmd` in the byte array.",
+      "parentUuid": "cafb21b8_fd031476",
       "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "848791bf_b8ac3f8a",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T18:26:49Z",
+      "side": 1,
+      "message": "The `raw_data` is used in the I2C bus read/write functions to access the request/response buffer byte by byte. Ideally the size would be the largest struct within their respective unions.  I\u0027m trying to break up testing each PDC API into their own CL.  Each CL will be defining more structs within their unions so this may keep changing until all PDC API tests are fully written.  I prefer to keep this as is for now.",
+      "parentUuid": "e3d13134_a190ee93",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6faddcb5_ce198820",
@@ -105,6 +201,24 @@
       "writtenOn": "2024-01-09T17:55:08Z",
       "side": 1,
       "message": "Nit: Remove unless this is supposed to communicate something to the reader.",
+      "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd066e1_dfa17cf0",
+        "filename": "zephyr/test/pdc/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-09T18:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6faddcb5_ce198820",
       "revId": "3e1e2c179e94e6a0095b34f6c2e292d4af7fd607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
