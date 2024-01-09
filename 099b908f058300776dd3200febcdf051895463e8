@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a674bda_b0311977",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "I need to look further into this. I get errors if it\u0027s less than 150.",
+      "parentUuid": "a75fd460_7012406b",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfdef5de_4e22b8f9",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 21
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "Nit - how about creating two routines: `queue_internal_cmd()` and `queue_public_cmd()`?  I think this will help readability.",
+      "range": {
+        "startLine": 536,
+        "startChar": 11,
+        "endLine": 536,
+        "endChar": 19
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123231cd_71b460e3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfdef5de_4e22b8f9",
       "range": {
         "startLine": 536,
         "startChar": 11,
@@ -77,6 +125,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "You should use Zephyr error codes.\nHowever, none of the callers are checking the return value.  The callers all appear to have checks for the appropriate pending flag, so I think you can change this to return void.",
+      "range": {
+        "startLine": 544,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 12
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3dc671_cb9ae307",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da53539_9cf35296",
       "range": {
         "startLine": 544,
         "startChar": 0,
@@ -111,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee97c447_c9591c27",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f46047_a86d440d",
+      "range": {
+        "startLine": 672,
+        "startChar": 27,
+        "endLine": 672,
+        "endChar": 34
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa492d6d_8802639a",
@@ -124,6 +220,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "I suggest moving this switch into it\u0027s own subroutine.  It will reduce nesting here, and make this function easier to read.  Something like `start_pdc_cmd(*port)`.",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 27
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b40e904_b8e0fec5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa492d6d_8802639a",
       "range": {
         "startLine": 772,
         "startChar": 0,
@@ -159,6 +279,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "720ca0d5_9894256f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Max number of PDOS. I\u0027ve changed to a macro.",
+      "parentUuid": "1cb907a5_cb7c55df",
+      "range": {
+        "startLine": 789,
+        "startChar": 7,
+        "endLine": 789,
+        "endChar": 8
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8331cdd9_be36aa96",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 21
@@ -170,6 +314,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "Nit - delete this. This is obvious from the code.",
+      "range": {
+        "startLine": 828,
+        "startChar": 0,
+        "endLine": 828,
+        "endChar": 32
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dc8115_cc78c01d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8331cdd9_be36aa96",
       "range": {
         "startLine": 828,
         "startChar": 0,
@@ -193,6 +361,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 830,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 45
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2490dd47_17d07008",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f71eead9_f53e0bfb",
       "range": {
         "startLine": 830,
         "startChar": 0,
@@ -228,6 +420,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e81007f0_64aed69d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "That\u0027s what I\u0027m checking, CCI_RESET_COMPLETED.",
+      "parentUuid": "1b89b13b_df8b2c51",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 0
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e45d201e_2a5a3f47",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 21
@@ -239,6 +455,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 36
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce0bd7fa_f2d8dcb8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45d201e_2a5a3f47",
       "range": {
         "startLine": 855,
         "startChar": 0,
@@ -272,6 +512,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f42aa5a6_87c24f82",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5809bd93_7fbb547e",
+      "range": {
+        "startLine": 863,
+        "startChar": 0,
+        "endLine": 863,
+        "endChar": 50
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2344c1c8_1c6a120d",
@@ -285,6 +549,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 60
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd8d46e_a48ddd97",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2344c1c8_1c6a120d",
       "range": {
         "startLine": 878,
         "startChar": 0,
@@ -318,6 +606,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc007c7_5a1d7f13",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac4d7bc_bf5a8be8",
+      "range": {
+        "startLine": 894,
+        "startChar": 0,
+        "endLine": 894,
+        "endChar": 50
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7ab021e_98f17833",
@@ -341,6 +653,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3926879_c2454a23",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ab021e_98f17833",
+      "range": {
+        "startLine": 930,
+        "startChar": 12,
+        "endLine": 930,
+        "endChar": 34
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f200a916_382659a7",
@@ -354,6 +690,30 @@
       "writtenOn": "2024-01-08T22:00:18Z",
       "side": 1,
       "message": "Delete - and the other instances.",
+      "range": {
+        "startLine": 963,
+        "startChar": 0,
+        "endLine": 963,
+        "endChar": 36
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5b25ea_cdc483c6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f200a916_382659a7",
       "range": {
         "startLine": 963,
         "startChar": 0,
@@ -389,6 +749,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec96f9c2_3ea2eaf2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "This was a mistake. Thanks",
+      "parentUuid": "0631068a_f8fb96f6",
+      "range": {
+        "startLine": 1419,
+        "startChar": 9,
+        "endLine": 1419,
+        "endChar": 21
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d3a2a99_e4f13a7c",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 21
@@ -400,6 +784,30 @@
       "writtenOn": "2024-01-09T00:56:32Z",
       "side": 1,
       "message": "This and returned value just below are from the `ec_pd_data_role_cap` enum and they should be changed to PD_ROLE_UFP and PD_ROLE_DFP respectively",
+      "range": {
+        "startLine": 1424,
+        "startChar": 9,
+        "endLine": 1424,
+        "endChar": 28
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702da770_03fa8cbd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-09T20:16:03Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "3d3a2a99_e4f13a7c",
       "range": {
         "startLine": 1424,
         "startChar": 9,
