@@ -53,7 +53,16 @@ i2c3ALT: &i2c3 {
     size = <0x1000>;
 };
 
-&cbi_flash {
-	offset = <(0x60000 - (0x1000 * 1))>;
-	size = <0x1000>;
+&cbi_flash
+{
+    offset = <(0x60000 - (0x1000 * 1))>;
+    size = <0x1000>;
+};
+
+&gpio_soc_ec_ish_nb_mode_l {
+	status = "ok";
+};
+
+&int_lid_imu {
+	status = "disabled";
 };
