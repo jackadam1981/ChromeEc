@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f786ece3_489853ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-09T21:23:49Z",
+      "side": 1,
+      "message": "Since there were already a lot of comments/revisions in the original CL, can we keep it there?\n\nIt looks like maybe this new CL chain was created because you added a new commit to the stack. You can actually keep the original chain by making sure that the `Change-Id` in your new commits match the original `Change-Id`. See [this codelab](http://shortn/_j8n09Vt0h4).",
+      "revId": "192c5351b7bae1b211de2b78c32af0779d224f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
