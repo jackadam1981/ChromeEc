@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55268205_850cf57b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T00:38:24Z",
+      "side": 1,
+      "message": "responded to all comments",
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37e49d60_566f791e",
@@ -41,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce237f1_a1247b0c",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T00:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e49d60_566f791e",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22955e5b_d82a8f43",
@@ -54,6 +95,30 @@
       "writtenOn": "2024-01-08T21:24:11Z",
       "side": 1,
       "message": "`-1` is probably a more common default \"invalid\" value.",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e5cdde_880de938",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T00:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22955e5b_d82a8f43",
       "range": {
         "startLine": 17,
         "startChar": 16,
@@ -110,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a1610b_5133008b",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T00:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc9b3c0_e33fd7a5",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e4c357f_21929eed",
@@ -123,6 +212,30 @@
       "writtenOn": "2024-01-08T21:24:11Z",
       "side": 1,
       "message": "Since this test doesn\u0027t trigger an interrupt in any of the configurations (H7, F4, or NPCX), how about we skip all the IRQ code and just called `_read_fpscr()` directly?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 0
+      },
+      "revId": "cd3fc6a8cf9d947588b67f7307b59dc687a2c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6355bd8c_e506a364",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T00:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e4c357f_21929eed",
       "range": {
         "startLine": 185,
         "startChar": 0,
