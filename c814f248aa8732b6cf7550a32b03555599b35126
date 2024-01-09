@@ -142,6 +142,30 @@
       },
       "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b76a98ce_f4f49369",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-09T17:14:03Z",
+      "side": 0,
+      "message": "I tried to reset only bits 0-4, 7, 28, 29, 30, and 31 using a mask:\n```\ninline void _clear_fpscr(void)\n{\n\tuint32_t val \u003d 0x0FFFFF60;\n\n\tfpscr \u003d _read_fpscr();\n\n\tval \u003d val \u0026 fpscr;\n\n\tasm volatile(\"vmsr fpscr, %0\" : : \"r\"(val));\n}\n```\n\nI tried to read the `fpscr` value before each test, reset, and read it again. It always came to zero:\n\n```\n\tfpscr \u003d _read_fpscr();\n\tccprintf(\"The value of fpscr is %d\\n\", fpscr);\n\t_clear_fpscr();\n\tfpscr \u003d _read_fpscr();\n\tccprintf(\"The value of fpscr is %d\\n\", fpscr);\n```\n\n```\nDEBUG:\u003e runtest\nDEBUG:Running test_cortexm_fpu_underflow...\nDEBUG:The value of fpscr is 0x00000000\nDEBUG:The value of fpscr is 0x00000000\nDEBUG:OK\nDEBUG:Running test_cortexm_fpu_overflow...\nDEBUG:[1.661156 The value of fpscr is 0x60000000\nDEBUG:]\nDEBUG:[1.661225 The value of fpscr is 0x00000000\nDEBUG:]\nDEBUG:OK\nDEBUG:Running test_cortexm_fpu_division_by_zero...\nDEBUG:[1.673705 The value of fpscr is 0x00000000\nDEBUG:]\nDEBUG:[1.673768 The value of fpscr is 0x00000000\nDEBUG:]\nDEBUG:OK\nDEBUG:Running test_cortexm_fpu_invalid_operation...\nDEBUG:[1.686337 The value of fpscr is 0x00000000\nDEBUG:]\nDEBUG:[1.686400 The value of fpscr is 0x00000000\nDEBUG:]\nDEBUG:OK\nDEBUG:Running test_cortexm_fpu_inexact...\nDEBUG:[1.698104 The value of fpscr is 0x80000000\nDEBUG:]\nDEBUG:[1.698172 The value of fpscr is 0x00000000\nDEBUG:]\nDEBUG:OK\nDEBUG:Pass!\n```\n\nI believe it is ok if we just right all zeros to reset based on the above findings",
+      "parentUuid": "5ac98306_565ad21c",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "c814f248aa8732b6cf7550a32b03555599b35126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
