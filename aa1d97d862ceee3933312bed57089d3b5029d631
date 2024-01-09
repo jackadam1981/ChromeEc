@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87d7e136_91f5340b",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:06:03Z",
+      "side": 1,
+      "message": "Interesting, I wonder when that check was added.",
+      "parentUuid": "aa798698_adf96ffa",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1fed703_9a0aed6c",
         "filename": "test/cortexm_fpu.c",
         "patchSetId": 5
@@ -61,6 +85,30 @@
       "writtenOn": "2024-01-09T17:19:29Z",
       "side": 1,
       "message": "Let\u0027s make it `static` to limit scope to this file:\n\n```suggestion\nstatic uint32_t _read_fpscr(void)\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee90ea8_04d29699",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:06:03Z",
+      "side": 1,
+      "message": "Is there any reason not to make it `static inline`?",
+      "parentUuid": "b1fed703_9a0aed6c",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -201,6 +249,30 @@
       "writtenOn": "2024-01-09T18:01:42Z",
       "side": 1,
       "message": "this test will fail for the M4 is modified per the comment",
+      "parentUuid": "7b359f69_a8f125d3",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db121fd2_04bff573",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-09T18:06:03Z",
+      "side": 1,
+      "message": "I think you just need to change that line to `fpscr \u003d _read_fpscr();` and it should work on all targets",
       "parentUuid": "7b359f69_a8f125d3",
       "range": {
         "startLine": 180,
