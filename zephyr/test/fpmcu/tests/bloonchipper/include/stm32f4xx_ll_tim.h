@@ -6,4 +6,6 @@
 #ifndef __STM32F4xx_LL_TIM_H
 #define __STM32F4xx_LL_TIM_H
 
+typedef uint32_t TIM_TypeDef;
+
 #endif
