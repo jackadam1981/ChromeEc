@@ -22,6 +22,30 @@
       },
       "revId": "8d0af5499e8054622cca190d77e767cddeca67dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12121382_e7fee6a0",
+        "filename": "zephyr/program/skyrim/crystaldrift/src/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-10T11:14:33Z",
+      "side": 0,
+      "message": "Hey I\u0027d love to drop that settings too but it looks like it\u0027s also used by the 8042 library at this stage and there\u0027s quite few different codes from the default `scancode_set2`. Am I missing something?",
+      "parentUuid": "be50451e_bd0d261f",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "8d0af5499e8054622cca190d77e767cddeca67dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
