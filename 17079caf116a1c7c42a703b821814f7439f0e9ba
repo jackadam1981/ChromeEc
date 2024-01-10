@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e408c1_c1d18fb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T23:39:15Z",
+      "side": 1,
+      "message": "There\u0027s a potential issue introduced with this change.\n\nThe initialization code sets all power signal GPIOS to the inactive state at startup.  When PCH_RSMRST is configured as active high, then initial state of the pin will be physical 0, which asserts reset to the AP.\n\nBut if PCH_RSMRST is configured as active low, the initial state of the pin will be physical 1.  So this will cause a bounce on PCH_RSMRST between the init code and the first time the passthru handler runs.\n\nWe have a similar problem with the SYS_RST signal, which is currently configured as active low.  We may need a DT property to mark the power signals that are reset style signals.  These signals should be logically asserted at init time.",
+      "revId": "17079caf116a1c7c42a703b821814f7439f0e9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb1696b_f11a943b",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T23:39:15Z",
+      "side": 1,
+      "message": "Add a comment here indicating that a delay is required between the RSMRST_PWRGD and releasing PCH_RSMRST.",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 46
+      },
+      "revId": "17079caf116a1c7c42a703b821814f7439f0e9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
