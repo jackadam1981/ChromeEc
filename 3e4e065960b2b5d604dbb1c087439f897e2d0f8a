@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5a0bcf_0357dc04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Please update with the manual tests you\u0027ve run against brya_pdc.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c475fa_881e2448",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Does this need a retry limit?",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ef57ca_5a76344b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "This isn\u0027t a bool field, so this is clearer written as `if (connect_status \u003d\u003d 0)`",
+      "range": {
+        "startLine": 648,
+        "startChar": 7,
+        "endLine": 648,
+        "endChar": 44
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3ee1b1_a8970267",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "This is handled by `pdc_connector_change_event_entry`, so it isn\u0027t needed here.",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 55
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c6936f_ac26fbf8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Handled by `pdc_connector_change_event_entry`",
+      "range": {
+        "startLine": 699,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 54
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4425f71e_737fcd0d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Retry limit?",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fd033c_b6abebaf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Retry limit?",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527c34bc_c26db353",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Need to guard this (and the other instances with the mutex.\n\nI recommend a helper function `complete_cmd(struct send_cmd_t *cmd, bool error)`",
+      "range": {
+        "startLine": 884,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 0
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08b0c72_e0630911",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "Retry limit here and other instances.",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1008,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb0087a_0a4dc4fe",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "-EBUSY",
+      "range": {
+        "startLine": 1266,
+        "startChar": 10,
+        "endLine": 1266,
+        "endChar": 11
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a31cef_634a951b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-10T18:25:24Z",
+      "side": 1,
+      "message": "-EIO",
+      "range": {
+        "startLine": 1272,
+        "startChar": 9,
+        "endLine": 1272,
+        "endChar": 10
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
