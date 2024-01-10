@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97ebc5b_729dc6ce",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-10T14:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d46b30_e24d3d08",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "f1c9288991d36b29cd62980a55967eb1ab700562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394a2b76_785a3483",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-05T13:37:00Z",
       "side": 1,
       "message": "Start or reload AP hang detect timer.",
+      "range": {
+        "startLine": 4753,
+        "startChar": 4,
+        "endLine": 4753,
+        "endChar": 30
+      },
+      "revId": "f1c9288991d36b29cd62980a55967eb1ab700562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e1ce95_3aa73f9a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4753,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-10T14:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394a2b76_785a3483",
       "range": {
         "startLine": 4753,
         "startChar": 4,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "yeah... that\u0027s another good question - keep it \"for future use\" (that may never come) or remove?",
       "parentUuid": "4bd2f126_3075c309",
+      "range": {
+        "startLine": 4772,
+        "startChar": 0,
+        "endLine": 4776,
+        "endChar": 0
+      },
+      "revId": "f1c9288991d36b29cd62980a55967eb1ab700562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a6f4d8_2252ccac",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4776,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-10T14:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03259ec3_83bd9cc0",
       "range": {
         "startLine": 4772,
         "startChar": 0,
