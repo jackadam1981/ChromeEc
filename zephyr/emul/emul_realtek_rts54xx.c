@@ -339,6 +339,19 @@ static int set_uor(struct rts5453p_emul_pdc_data *data,
 	return 0;
 }
 
+static int set_pdr(struct rts5453p_emul_pdc_data *data,
+		   const union rts54_request *req)
+{
+	LOG_INF("SET_PDR port=%d", req->set_pdr.port_num);
+
+	data->pdr = req->set_pdr.pdr;
+
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
 static bool send_response(struct rts5453p_emul_pdc_data *data)
 {
 	if (data->delay_ms > 0) {
@@ -432,7 +445,7 @@ const struct commands sub_cmd_x0E[] = {
 	{ .code = 0x06, HANDLER_DEF(get_capability) },
 	{ .code = 0x07, HANDLER_DEF(get_connector_capability) },
 	{ .code = 0x09, HANDLER_DEF(set_uor) },
-	{ .code = 0x0B, HANDLER_DEF(unsupported) },
+	{ .code = 0x0B, HANDLER_DEF(set_pdr) },
 	{ .code = 0x0C, HANDLER_DEF(unsupported) },
 	{ .code = 0x0D, HANDLER_DEF(unsupported) },
 	{ .code = 0x0E, HANDLER_DEF(unsupported) },
@@ -753,6 +766,17 @@ static int emul_realtek_rts54xx_get_uor(const struct emul *target,
 	return 0;
 }
 
+static int emul_realtek_rts54xx_get_pdr(const struct emul *target,
+					union pdr_t *pdr)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	*pdr = data->pdr;
+
+	return 0;
+}
+
 struct emul_pdc_api_t emul_realtek_rts54xx_api = {
 	.set_response_delay = emul_realtek_rts54xx_set_response_delay,
 	.set_capability = emul_realtek_rts54xx_set_capability,
@@ -761,6 +785,7 @@ struct emul_pdc_api_t emul_realtek_rts54xx_api = {
 	.set_error_status = emul_realtek_rts54xx_set_error_status,
 	.set_connector_status = emul_realtek_rts54xx_set_connector_status,
 	.get_uor = emul_realtek_rts54xx_get_uor,
+	.get_pdr = emul_realtek_rts54xx_get_pdr,
 };
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \
