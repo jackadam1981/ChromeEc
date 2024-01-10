@@ -87,6 +87,24 @@
       "message": "Once we have consensus on the backend API discussion above, could we add parts of the backend API one bit at a time with a test that uses it? I think it\u0027d be easier to review but also easier to understand/trace through git history because we\u0027d see each new backend API with how it\u0027s being used in a test. That way it\u0027s easier for the review to understand the backend implementation and how it relates to a given test. It also enables more parallelized reviews.",
       "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07c753f_945413b1",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-10T16:54:50Z",
+      "side": 1,
+      "message": "Consider this a soft-ask, it\u0027s a huge pain that\u0027s alright.",
+      "parentUuid": "bc780a27_3efab478",
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
