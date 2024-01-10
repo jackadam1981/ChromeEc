@@ -35,10 +35,16 @@ i2c3ALT: &i2c3 {
 /* Brox-ish-ec overrides follow... */
 
 /{
+	chosen {
+		cros,notebook-interrupt = &notebook_interrupt;
+	};
 	batteries {
 		default_battery: lgc_ap18c8k {
 			compatible = "lgc,ap18c8k", "battery-smart";
 		};
+	};
+	notebook_interrupt: notebook-interrupt {
+		gpios = <&gpioc 7 GPIO_ACTIVE_HIGH>;
 	};
 };
 
