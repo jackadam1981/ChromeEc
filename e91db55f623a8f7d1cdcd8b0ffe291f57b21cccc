@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f85bf6f0_409875d5",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-10T17:17:57Z",
+      "side": 1,
+      "message": "Ahh, so I suppose the question is should the test know the UCSI spec?\n\nIMO that\u0027s more of a driver level abstraction and not something the test needs to know in order to create test declarative scenarios. Keith, do you think this is too abstract?",
+      "parentUuid": "b36ae397_0e9f514d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc780a27_3efab478",
         "filename": "zephyr/include/emul/emul_pdc.h",
         "patchSetId": 2
