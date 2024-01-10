@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b36ae397_0e9f514d",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-10T17:07:13Z",
+      "side": 1,
+      "message": "The PDC API follows the UCSI spec, which Realtek loosely follows.  Any other chip that follows UCSI spec can reuse these APIs.  They\u0027ll just need to massage the data for how their chips use it.  Mainly I\u0027m trying to validate \n\n```\nUCSI data IN -\u003e emulator encodes to chip specific representation -\u003e driver decodes I2C data -\u003e UCSI data OUT\nVerify IN \u003d\u003d OUT\n```",
+      "parentUuid": "c7c30386_b0573075",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc780a27_3efab478",
         "filename": "zephyr/include/emul/emul_pdc.h",
         "patchSetId": 2
