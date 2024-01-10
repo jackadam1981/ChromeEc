@@ -39,6 +39,30 @@
       },
       "revId": "47eb98a95e34b3e62571530208709afd7ca8499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d13733d_871bc342",
+        "filename": "zephyr/program/geralt/src/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-10T05:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99682b26_494f0b82",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "47eb98a95e34b3e62571530208709afd7ca8499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
