@@ -29,8 +29,7 @@ else()
 	set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# TODO(b/273639386): Remove ANDROID when upstream is fixed.
-set(ANDROID TRUE)
+set(CROS_ZEPHYR YES)
 zephyr_compile_definitions(CROS_ZEPHYR)
 
 # We are not going to install BoringSSL, so don't generate install rules.

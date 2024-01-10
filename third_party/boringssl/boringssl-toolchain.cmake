@@ -7,9 +7,6 @@ set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES CROS_EC_REPO CROSS_COMPILE CC_NAME CXX_NAME)
 include("${CROS_EC_REPO}/cmake/toolchain-common.cmake")
 
-# Specify our platform, which disables filesystem, threads, etc.
-add_definitions(-DCROS_EC)
-
 # When compiling the code with the portage build system, it will generate very
 # long file path strings. This compile options will strip the source path, and
 # recude the final code size.
