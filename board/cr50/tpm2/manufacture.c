@@ -35,6 +35,7 @@ int tpm_manufactured(void)
 
 	if ((nv_ram_index == ~0) ||
 	    (tpm_nv_tpm2b_len(NV_EP_SEED) < PRIMARY_SEED_SIZE) ||
+	    (tpm_nv_tpm2b_len(NV_SP_SEED) < PRIMARY_SEED_SIZE) ||
 	    (NvIsUndefinedIndex(rsa_ek_nv_index) == TPM_RC_SUCCESS) ||
 	    (NvIsUndefinedIndex(ecc_ek_nv_index) == TPM_RC_SUCCESS)) {
 		CPRINTS("%s: NOT manufactured", __func__);
