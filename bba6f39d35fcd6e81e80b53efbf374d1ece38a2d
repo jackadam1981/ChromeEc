@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d204f3e2_4cdc0295",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-10T17:09:45Z",
+      "side": 1,
+      "message": "I\u0027m holding off on this one until there\u0027s a bit more consensus on the backend API in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5179622.",
+      "revId": "bba6f39d35fcd6e81e80b53efbf374d1ece38a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3026332_2891b30b",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-10T17:09:45Z",
+      "side": 1,
+      "message": "But where is it? Where\u0027s the 0xBEEF???",
+      "range": {
+        "startLine": 496,
+        "startChar": 44,
+        "endLine": 496,
+        "endChar": 48
+      },
+      "revId": "bba6f39d35fcd6e81e80b53efbf374d1ece38a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
