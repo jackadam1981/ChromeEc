@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63dfda37_4831bcf5",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-01-10T18:10:54Z",
+      "side": 1,
+      "message": "Why is this needed to call again since the `one_wire_urat_send_reset` will invoke the irq as well?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "89e9d35775a2e49ded6fe7750bae7bfe73c58713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
