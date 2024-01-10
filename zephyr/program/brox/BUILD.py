@@ -38,14 +38,9 @@ brox = register_brox_project(
     project_name="brox",
 )
 
-register_brox_project(
+brox.variant(
     project_name="brox-ish-ec",
     kconfig_files=[
-        # Common to all projects.
-        here / "program.conf",
-        # Parent project's config
-        here / "brox" / "project.conf",
-        # Project-specific KConfig customization.
         here / "brox-ish-ec" / "project.conf",
     ],
 )
