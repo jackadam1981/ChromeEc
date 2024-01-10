@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64079d49_0036585e",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-10T17:21:25Z",
+      "side": 1,
+      "message": "The goal is to be able to reuse this test for any other PDC that\u0027s UCSI compatible.",
+      "parentUuid": "f85bf6f0_409875d5",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc780a27_3efab478",
         "filename": "zephyr/include/emul/emul_pdc.h",
         "patchSetId": 2
