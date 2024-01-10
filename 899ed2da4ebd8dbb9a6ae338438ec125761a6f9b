@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "623ca0ae_6bcb91e2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-10T03:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a19f63_d87add2a",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a01394e_02ebf1d2",
@@ -65,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "571f3320_114bd191",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-10T03:06:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "0a01394e_02ebf1d2",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 32
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34ffece3_cb0d98ed",
@@ -78,6 +126,30 @@
       "writtenOn": "2024-01-09T20:47:49Z",
       "side": 1,
       "message": "-EINVAL",
+      "range": {
+        "startLine": 796,
+        "startChar": 9,
+        "endLine": 796,
+        "endChar": 10
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7cf28a_b8335d25",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-10T03:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34ffece3_cb0d98ed",
       "range": {
         "startLine": 796,
         "startChar": 9,
@@ -113,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b85c408_5dc8db34",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-10T03:06:24Z",
+      "side": 1,
+      "message": "If we have control to turn it on we should turn it off. But the PDC might do it when a sink is detected. I\u0027ll open a bug.",
+      "parentUuid": "8ed1004b_2c608c25",
+      "range": {
+        "startLine": 983,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 53
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de71090d_80b92c33",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 22
@@ -124,6 +220,30 @@
       "writtenOn": "2024-01-09T20:47:49Z",
       "side": 1,
       "message": "PDO_NUM",
+      "range": {
+        "startLine": 998,
+        "startChar": 22,
+        "endLine": 998,
+        "endChar": 23
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "815bc30c_d21aab2b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-10T03:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de71090d_80b92c33",
       "range": {
         "startLine": 998,
         "startChar": 22,
@@ -147,6 +267,30 @@
       "writtenOn": "2024-01-09T20:47:49Z",
       "side": 1,
       "message": "Convert the printk calls to LOG_INF or LOG_DBG.",
+      "range": {
+        "startLine": 999,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 36
+      },
+      "revId": "899ed2da4ebd8dbb9a6ae338438ec125761a6f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e286937_d1023745",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-10T03:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bcd2cf0_ed176506",
       "range": {
         "startLine": 999,
         "startChar": 0,
