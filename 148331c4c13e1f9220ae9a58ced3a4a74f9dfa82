@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ba5033_86b4cebd",
+        "filename": "zephyr/test/pdc/src/pdc_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:52:38Z",
+      "side": 1,
+      "message": "Please also add a test that this function returns -EINVAL if the 2nd parameter is NULL.\n\nA test that validates -EBUSY would also be good (assuming that back to back calls generate -EBUSY).",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 44
+      },
+      "revId": "148331c4c13e1f9220ae9a58ced3a4a74f9dfa82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
