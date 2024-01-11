@@ -92,15 +92,41 @@ __attribute__((weak)) int sensor_board_is_lid_angle_available(void)
 }
 #endif
 
+#ifndef CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS
+#define CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS 0
+#endif
+
+STATIC_IF_NOT(CONFIG_ZTEST)
+enum sensor_config motion_sense_get_ec_config(void)
+{
+	switch (sensor_active) {
+	case SENSOR_ACTIVE_S0:
+		return SENSOR_CONFIG_EC_S0;
+	case SENSOR_ACTIVE_S3:
+		return SENSOR_CONFIG_EC_S3;
+	case SENSOR_ACTIVE_S5:
+		return SENSOR_CONFIG_EC_S5;
+	default:
+		CPRINTS("get_ec_config: Invalid active state: %x",
+			sensor_active);
+		return SENSOR_CONFIG_EC_S5;
+	}
+}
+
 static inline int
 motion_sensor_in_forced_mode(const struct motion_sensor_t *sensor)
 {
-#ifdef CONFIG_ACCEL_FORCE_MODE_MASK
-	/* Sensor not in force mode, its irq_handler is getting data. */
-	if (!(CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors))))
-		return 0;
-	else
-		return 1;
+#if CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS > 0
+	/* Being in force mode depends on the sample rate */
+	int in_forced_mode =
+		(sensor->collection_rate >=
+		 CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS * 1000) ?
+			1 :
+			0;
+	return in_forced_mode;
+#elif defined(CONFIG_ACCEL_FORCE_MODE_MASK)
+	return (CONFIG_ACCEL_FORCE_MODE_MASK & BIT(sensor - motion_sensors)) !=
+	       0;
 #else
 	return 0;
 #endif
@@ -122,22 +148,6 @@ motion_sensor_time_to_read(const timestamp_t *ts,
 			  sensor->next_collection - motion_min_interval);
 }
 
-STATIC_IF_NOT(CONFIG_ZTEST)
-enum sensor_config motion_sense_get_ec_config(void)
-{
-	switch (sensor_active) {
-	case SENSOR_ACTIVE_S0:
-		return SENSOR_CONFIG_EC_S0;
-	case SENSOR_ACTIVE_S3:
-		return SENSOR_CONFIG_EC_S3;
-	case SENSOR_ACTIVE_S5:
-		return SENSOR_CONFIG_EC_S5;
-	default:
-		CPRINTS("get_ec_config: Invalid active state: %x",
-			sensor_active);
-		return SENSOR_CONFIG_EC_S5;
-	}
-}
 /* motion_sense_set_data_rate
  *
  * Set the sensor data rate. It is altered when the AP change the data
@@ -182,6 +192,29 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	if (ret)
 		return ret;
 
+	if (CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS > 0 &&
+	    sensor->drv->enable_interrupt != NULL) {
+		bool enable =
+			odr > 0 ?
+				(1000000 / odr <
+				 CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS) :
+				false;
+
+		ret = sensor->drv->enable_interrupt(sensor, enable);
+		if (ret != EC_SUCCESS) {
+			/* Not a critical error, we'll get more data than we
+			 * need.
+			 */
+			CPRINTS("Failed to set interrupts: %d", enable);
+		} else if (!enable) {
+			/* Interrupts are disabled, we might want to use a lower
+			 * rate than the ODR.
+			 */
+			sensor->config[motion_sense_get_ec_config()].ec_rate =
+				odr > 0 ? SECOND * 1000 / odr : 0;
+		}
+	}
+
 	mutex_lock(&g_sensor_mutex);
 	odr = sensor->drv->get_data_rate(sensor);
 	if (ap_odr_mhz)
@@ -198,7 +231,10 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	 * it may appear to be in the future.
 	 */
 	sensor->collection_rate = odr > 0 ? SECOND * 1000 / odr : 0;
-	sensor->next_collection = ts.le.lo + sensor->collection_rate;
+	sensor->next_collection =
+		ts.le.lo +
+		MAX(sensor->collection_rate,
+		    sensor->config[motion_sense_get_ec_config()].ec_rate);
 	sensor->oversampling = 0;
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 		motion_sense_set_data_period(sensor - motion_sensors,
@@ -568,7 +604,9 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
 					       const timestamp_t *ts)
 {
-	sensor->next_collection += sensor->collection_rate;
+	sensor->next_collection +=
+		MAX(sensor->collection_rate,
+		    sensor->config[motion_sense_get_ec_config()].ec_rate);
 
 	if (time_after(ts->le.lo, sensor->next_collection)) {
 		/*
