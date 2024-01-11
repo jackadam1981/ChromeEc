@@ -442,9 +442,12 @@ static void power_supply_change(void)
 	static bool had_active_charge_port;
 	int port = charge_manager_get_active_charge_port();
 	bool key = false;
+	bool esc_key = false;
 
-	if (IS_ENABLED(HAS_TASK_KEYSCAN))
+	if (IS_ENABLED(HAS_TASK_KEYSCAN)) {
 		key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
+		esc_key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_ESC);
+	}
 
 #ifdef CONFIG_VOLUME_BUTTONS
 	if (!key)
@@ -474,6 +477,11 @@ static void power_supply_change(void)
 
 	if (!had_active_charge_port) {
 		CUTOFFPRINTS("backoff: Haven't had active charge port");
+		return;
+	}
+
+	if (key && esc_key) {
+		CUTOFFPRINTS("backoff: entering recovery mode");
 		return;
 	}
 
