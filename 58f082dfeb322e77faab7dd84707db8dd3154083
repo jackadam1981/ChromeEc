@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d02483_6b91fa6f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa9cec3_b1ce1213",
+      "range": {
+        "startLine": 354,
+        "startChar": 18,
+        "endLine": 354,
+        "endChar": 30
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71da5020_d03491d9",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-11T22:06:42Z",
       "side": 1,
       "message": "I think it\u0027s clearer if you set this in `pdc_send_cmd_start_entry()` instead.\n\n```\nport-\u003ereturn_state \u003d port-\u003elast_state;\n```\n\nThis also means that if new states are added, they don\u0027t have to remember to set `return_state`.",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7854bf9_b2dc9a88",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71da5020_d03491d9",
       "range": {
         "startLine": 658,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1b9a10_b7928957",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "85c0f837_b4ddd1ce",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83324004_33bebbde",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-11T22:06:42Z",
       "side": 1,
       "message": "Add comment:\nTODO: b/319643480 - Brox: implement SRC policies",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c38b41b_6798588f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83324004_33bebbde",
       "range": {
         "startLine": 704,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb94574b_f1e05a85",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9527e6c4_45001416",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5dd1336_4c28078c",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-01-11T22:06:42Z",
       "side": 1,
       "message": "For later cleanup - with the refactor, the switch statement could be put back into `pdc_send_cmd_start_run`. Alternatively, move this to be adjacent to the start_run handlers.",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 69
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ba3d45_2e92706d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5dd1336_4c28078c",
       "range": {
         "startLine": 738,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b932e033_b71524c8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2301a350_7554119a",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 35
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa38dde_6fcb5f38",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-01-11T22:06:42Z",
       "side": 1,
       "message": "Handle in pdc_send_cmd_start_entry",
+      "range": {
+        "startLine": 953,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb3c647_6eb8c61f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa38dde_6fcb5f38",
       "range": {
         "startLine": 953,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cf6a5b_1252374f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49ba021e_809e4af2",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 46
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df185a9f_f38d46c0",
@@ -221,6 +437,30 @@
       "writtenOn": "2024-01-11T22:06:42Z",
       "side": 1,
       "message": "As a follow-up, investigate using a semaphore here instead.",
+      "range": {
+        "startLine": 1190,
+        "startChar": 0,
+        "endLine": 1192,
+        "endChar": 0
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9959f01_f2ae475f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df185a9f_f38d46c0",
       "range": {
         "startLine": 1190,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea458a0_f2a40ef5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe7e2e5_bf58a7ef",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1266,
+        "endChar": 57
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d6c3145_120f0a50",
@@ -267,6 +531,30 @@
       "writtenOn": "2024-01-11T22:06:42Z",
       "side": 1,
       "message": "You can move all `atomic_set_bit(pdc_cmd_flags)` into the `public_api_block()` function.",
+      "range": {
+        "startLine": 1353,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 69
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20bc136b_14c677c7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:19:59Z",
+      "side": 1,
+      "message": "I moved pdc_data[port]-\u003eport.block_counter \u003d 0; there too.",
+      "parentUuid": "3d6c3145_120f0a50",
       "range": {
         "startLine": 1353,
         "startChar": 0,
