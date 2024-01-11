@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd63da4_cb2e5a15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-11T22:08:48Z",
+      "side": 1,
+      "message": "You can modify the `binman.dtsi` to reorder the `ro-frid` and the `fmap`. The `binman.dtsi` also needs this similar change.",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "7a3778c61681026e5453393d36565e975f18e079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
