@@ -388,6 +388,8 @@ struct pdc_port_t {
 	union pdr_t pdr;
 	/** True if battery can charge from this port */
 	bool active_charge;
+	/** True if attached device is PD Capable */
+	bool pd_capable;
 };
 
 /**
@@ -599,7 +601,12 @@ static void pdc_unattached_entry(void *obj)
 	port->send_cmd.intern.pending = false;
 
 	if (get_pdc_state(port) != port->return_state) {
-		port->unattached_local_state = UNATTACHED_SET_SINK_PATH_OFF;
+		if (port->pd_capable) {
+			port->unattached_local_state =
+				UNATTACHED_SET_SINK_PATH_OFF;
+		} else {
+			port->unattached_local_state = UNATTACHED_RUN;
+		}
 	}
 }
 
@@ -630,6 +637,10 @@ static void pdc_unattached_run(void *obj)
 		send_snk_path_en_cmd(port, false);
 		return;
 	case UNATTACHED_RUN:
+		if (!port->pd_capable) {
+			break;
+		}
+
 		/* Enforce Unattached Policies */
 		if (atomic_test_and_clear_bit(port->una_policy.flags,
 					      UNA_POLICY_CC_MODE)) {
@@ -670,12 +681,16 @@ static void pdc_src_attached_entry(void *obj)
 	port->send_cmd.intern.pending = false;
 
 	if (get_pdc_state(port) != port->return_state) {
-		if (port->last_state == PDC_SNK_ATTACHED) {
-			port->src_attached_local_state =
-				SRC_ATTACHED_SET_SINK_PATH_OFF;
+		if (port->pd_capable) {
+			if (port->last_state == PDC_SNK_ATTACHED) {
+				port->src_attached_local_state =
+					SRC_ATTACHED_SET_SINK_PATH_OFF;
+			} else {
+				port->src_attached_local_state =
+					SRC_ATTACHED_SET_DR_SWAP_POLICY;
+			}
 		} else {
-			port->src_attached_local_state =
-				SRC_ATTACHED_SET_DR_SWAP_POLICY;
+			port->src_attached_local_state = SRC_ATTACHED_RUN;
 		}
 	}
 }
@@ -719,6 +734,10 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
 	case SRC_ATTACHED_RUN:
+		if (!port->pd_capable) {
+			break;
+		}
+
 		/* Run public API call */
 		run_public_api_command(port);
 		break;
@@ -808,8 +827,12 @@ static void pdc_snk_attached_entry(void *obj)
 
 	port->send_cmd.intern.pending = false;
 	if (get_pdc_state(port) != port->return_state) {
-		port->snk_attached_local_state =
-			SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
+		if (port->pd_capable) {
+			port->snk_attached_local_state =
+				SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
+		} else {
+			port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		}
 	}
 }
 
@@ -917,6 +940,10 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state = SNK_ATTACHED_RUN;
 		/* fall-through */
 	case SNK_ATTACHED_RUN:
+		if (!port->pd_capable) {
+			break;
+		}
+
 		/* Enforce Sink Policies */
 		if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					      SNK_POLICY_NEW_POWER_REQUEST)) {
@@ -1026,6 +1053,13 @@ static void pdc_send_cmd_wait_run(void *obj)
 			/* Port is not connected */
 			set_pdc_state(port, PDC_UNATTACHED);
 		} else {
+			if (port->connector_status.power_operation_mode ==
+			    PD_OPERATION) {
+				port->pd_capable = true;
+			} else {
+				port->pd_capable = false;
+			}
+
 			if (port->connector_status.power_direction) {
 				/* Port partner is a sink device */
 				set_pdc_state(port, PDC_SRC_ATTACHED);
@@ -1547,14 +1581,7 @@ bool pdc_power_mgmt_pd_capable(int port)
 		return false;
 	}
 
-	/* Check if the port partner is PD connected */
-	if (pdc_data[port]->port.connector_status.power_operation_mode !=
-	    PD_OPERATION) {
-		return false;
-	}
-
-	/* PD capable */
-	return true;
+	return pdc_data[port]->port.pd_capable;
 }
 
 bool pdc_power_mgmt_get_partner_dual_role_power(int port)
