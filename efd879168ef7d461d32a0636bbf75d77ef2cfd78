@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea52fa2_fcfd1653",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-11T17:23:24Z",
+      "side": 1,
+      "message": "how about setting sizes for xxProof fields similar to how you do for XXSeed fields?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "efd879168ef7d461d32a0636bbf75d77ef2cfd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
