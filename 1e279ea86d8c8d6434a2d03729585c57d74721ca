@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa39d107_4aa153b0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:13:45Z",
+      "side": 1,
+      "message": "If you create `SRC_SINK_TYPEC_ONLY` state, then this logic becomes;\n```\nif (PD_OPERATION)\n   pd_capable \u003d true;\n   if (power_direction)\n       set_state(SRC_ATTACHED);\n   else\n       set_state(SNK_ATTACHED);\nelse\n    pd_capable \u003d false;\n    set_state(SRC_SINK_TYPEC_ONLY);\n```",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1046,
+        "endChar": 0
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fbc5578_739dc765",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:13:45Z",
+      "side": 1,
+      "message": "Delete empty handlers.  Your SMF library upstream has NULL checks.",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 46
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a8096d_e035fdf0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:13:45Z",
+      "side": 1,
+      "message": "The SRC_TYPEC_ONLY and SNK_TYPEC_ONLY are currently identical.  Any reason not to create `SRC_SINK_TYPEC_ONLY`?",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1132,
+        "endChar": 47
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
