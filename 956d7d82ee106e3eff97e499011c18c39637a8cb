@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ea7e4b_0157f8fe",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T23:24:55Z",
+      "side": 1,
+      "message": "Line too long, run clang-format.",
+      "range": {
+        "startLine": 954,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 71
+      },
+      "revId": "956d7d82ee106e3eff97e499011c18c39637a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
