@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "685c0125_c464a8cf",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-11T19:42:31Z",
+      "side": 1,
+      "message": "So as far as I\u0027m concerned this is a good backend for that goal. I\u0027m going to give my +1 but defer to Keith if we want backend emulator APIs to be more driven by abstract scenarios as he mentioned above.\n\nAs an aside, we can always abstract it more later.",
+      "parentUuid": "64079d49_0036585e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc780a27_3efab478",
         "filename": "zephyr/include/emul/emul_pdc.h",
         "patchSetId": 2
