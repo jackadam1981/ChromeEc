@@ -46,6 +46,30 @@
       },
       "revId": "89e9d35775a2e49ded6fe7750bae7bfe73c58713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97608d8_1f111e7c",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-11T08:15:48Z",
+      "side": 1,
+      "message": "Due to the (strange) code execution flow, enqueue a new message inside the irq handler does not work very well... the deferred wake_tx call is to notify the driver that there\u0027s a new message added.\n\nMoved the whole recovery process to the deferred task to avoid confusion.",
+      "parentUuid": "deb04189_06f357d7",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "89e9d35775a2e49ded6fe7750bae7bfe73c58713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
