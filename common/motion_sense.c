@@ -95,12 +95,16 @@ __attribute__((weak)) int sensor_board_is_lid_angle_available(void)
 static inline int
 motion_sensor_in_forced_mode(const struct motion_sensor_t *sensor)
 {
-#ifdef CONFIG_ACCEL_FORCE_MODE_MASK
-	/* Sensor not in force mode, its irq_handler is getting data. */
-	if (!(CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors))))
-		return 0;
-	else
-		return 1;
+#if defined(CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS) && \
+	CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS > 0
+	/* Being in force mode depends on the sample rate */
+	return (sensor->collection_rate <=
+		CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS) ?
+		       1 :
+		       0;
+#elif defined(CONFIG_ACCEL_FORCE_MODE_MASK)
+	return (CONFIG_ACCEL_FORCE_MODE_MASK & BIT(sensor - motion_sensors)) !=
+	       0;
 #else
 	return 0;
 #endif
@@ -181,6 +185,23 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 
 	if (ret)
 		return ret;
+
+#if defined(CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS) && \
+	CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS > 0
+	if (sensor->drv->enable_interrupt != NULL) {
+		bool enable =
+			1000000 / odr >
+			CONFIG_PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS;
+
+		ret = sensor->drv->enable_interrupt(sensor, enable);
+		if (ret != EC_SUCCESS) {
+			/* Not a critical error, we'll get more data than we
+			 * need.
+			 */
+			CPRINTS("Failed to set interrupts: %d", enable);
+		}
+	}
+#endif
 
 	mutex_lock(&g_sensor_mutex);
 	odr = sensor->drv->get_data_rate(sensor);
