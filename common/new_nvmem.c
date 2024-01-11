@@ -321,6 +321,31 @@ test_export_static uint8_t page_count;
 
 static uint32_t next_evict_obj_base;
 static uint8_t init_in_progress;
+
+/*
+ * A convenience structure and array, allowing quick access to PCR banks
+ * contained in the STATE_CLEAR_DATA:pcrSave field. This helps when
+ * marshailing/unmarshaling PCR contents.
+ */
+struct pcr_descriptor {
+	uint16_t pcr_array_offset;
+	uint8_t pcr_size;
+} __packed;
+
+static const struct pcr_descriptor pcr_arrays[] = {
+	{ offsetof(PCR_SAVE, sha1), SHA1_DIGEST_SIZE },
+	{ offsetof(PCR_SAVE, sha256), SHA256_DIGEST_SIZE },
+	{ offsetof(PCR_SAVE, sha384), SHA384_DIGEST_SIZE },
+	{ offsetof(PCR_SAVE, sha512), SHA512_DIGEST_SIZE }
+};
+#define NUM_OF_PCRS (ARRAY_SIZE(pcr_arrays) * NUM_STATIC_PCR)
+
+/* Just in case we ever get to reducing the PCR set one way or another. */
+BUILD_ASSERT(ARRAY_SIZE(pcr_arrays) == 4);
+BUILD_ASSERT(NUM_OF_PCRS == 64);
+
+#define NV_FIRST_PCR_INDEX NV_VIRTUAL_RESERVE_LAST
+
 /*
  * Mutex to protect flash space containing NVMEM objects. All operations
  * modifying the flash contents or relying on its consistency (like searching
@@ -403,8 +428,9 @@ static void report_failure(struct nvmem_failure_payload *payload,
 		 init_in_progress ? "" : "not ");
 
 	cflush();
-
+#ifndef TEST_BUILD
 	system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED | SYSTEM_RESET_HARD);
+#endif
 }
 
 static void report_no_payload_failure(enum nvmem_failure_type type)
@@ -482,13 +508,29 @@ static void app_compute_hash_wrapper(void *buf, size_t size, void *hash,
 	app_compute_hash(buf, size, hash, hash_size);
 }
 
-static STATE_CLEAR_DATA *get_scd(void)
+/**
+ *  Get address of PCR index in NV cache.
+ *  @param pcr_index index of PCR from 0 to NUM_PCR-1
+ *  @param outsize output size of specified PCR register
+ *  @returns address of PCR in NV cache or NULL if error
+ */
+test_export_static uint8_t *get_pcr_nv_addr(uint32_t pcr_index, size_t *outsize)
 {
 	NV_RESERVED_ITEM ri;
+	STATE_CLEAR_DATA *scd;
+	const struct pcr_descriptor *pcrd;
+
+	*outsize = 0;
+	if (pcr_index >= NUM_OF_PCRS)
+		return NULL; /* This is an error. */
 
 	NvGetReserved(NV_STATE_CLEAR, &ri);
+	scd = (STATE_CLEAR_DATA *)(nvmem_cache_base(NVMEM_TPM) + ri.offset);
 
-	return (STATE_CLEAR_DATA *)(nvmem_cache_base(NVMEM_TPM) + ri.offset);
+	pcrd = pcr_arrays + pcr_index / NUM_STATIC_PCR;
+	*outsize = pcrd->pcr_size;
+	return (uint8_t *)&scd->pcrSave + pcrd->pcr_array_offset +
+	       pcrd->pcr_size * (pcr_index % NUM_STATIC_PCR);
 }
 
 /*
@@ -1286,27 +1328,6 @@ static size_t copy_pcr(const uint8_t *pcr_base, size_t pcr_size, uint8_t *dst)
 }
 
 /*
- * A convenience structure and array, allowing quick access to PCR banks
- * contained in the STATE_CLEAR_DATA:pcrSave field. This helps when
- * marshailing/unmarshaling PCR contents.
- */
-struct pcr_descriptor {
-	uint16_t pcr_array_offset;
-	uint8_t pcr_size;
-} __packed;
-
-static const struct pcr_descriptor pcr_arrays[] = {
-	{offsetof(PCR_SAVE, sha1), SHA1_DIGEST_SIZE},
-	{offsetof(PCR_SAVE, sha256), SHA256_DIGEST_SIZE},
-	{offsetof(PCR_SAVE, sha384), SHA384_DIGEST_SIZE},
-	{offsetof(PCR_SAVE, sha512), SHA512_DIGEST_SIZE}
-};
-#define NUM_OF_PCRS (ARRAY_SIZE(pcr_arrays) * NUM_STATIC_PCR)
-
-/* Just in case we ever get to reducing the PCR set one way or another. */
-BUILD_ASSERT(ARRAY_SIZE(pcr_arrays) == 4);
-BUILD_ASSERT(NUM_OF_PCRS == 64);
-/*
  * Iterate over PCRs contained in the STATE_CLEAR_DATA structure in the NVMEM
  * cache and save nonempty ones in the flash.
  */
@@ -1983,20 +2004,12 @@ static enum ec_error_list unmarshal_state_reset(uint8_t *pad, int size,
 static enum ec_error_list restore_pcr(size_t pcr_index, const uint8_t *pad,
 				      size_t size)
 {
-	const STATE_CLEAR_DATA *scd;
-	const struct pcr_descriptor *pcrd;
-	void *cached; /* This PCR's position in the NVMEM cache. */
+	size_t pcr_size;
+	uint8_t *cached; /* This PCR's position in the NVMEM cache. */
 
-	if (pcr_index > NUM_OF_PCRS)
+	cached = get_pcr_nv_addr(pcr_index, &pcr_size);
+	if (cached == NULL || size != pcr_size)
 		return EC_ERROR_UNKNOWN; /* This is an error. */
-
-	pcrd = pcr_arrays + pcr_index / NUM_STATIC_PCR;
-	if (pcrd->pcr_size != size)
-		return EC_ERROR_UNKNOWN; /* This is an error. */
-
-	scd = get_scd();
-	cached = (uint8_t *)&scd->pcrSave + pcrd->pcr_array_offset +
-		 pcrd->pcr_size * (pcr_index % NUM_STATIC_PCR);
 
 	memcpy(cached, pad, size);
 	return EC_SUCCESS;
@@ -2080,13 +2093,18 @@ static enum ec_error_list restore_tpm2b_space(NV_RESERVE index, uint8_t *data,
 }
 
 /* Restore a reserved object found in flash on initialization. */
-static enum ec_error_list restore_reserved(void *pad, size_t size,
-					   uint8_t *bitmap)
+static enum ec_error_list restore_reserved(void *pad, size_t size)
 {
 	NV_RESERVED_ITEM ri;
 	NV_RESERVE type;
 	void *cached;
 	enum ec_error_list rv = EC_SUCCESS;
+
+	/* Report invalid reserved object. */
+	if (size == 0) {
+		log_object_size_error(0xff, size, size);
+		return EC_ERROR_UNKNOWN;
+	}
 
 	/*
 	 * Index is saved as a single byte, update pad to point at the
@@ -2133,13 +2151,10 @@ static enum ec_error_list restore_reserved(void *pad, size_t size,
 			memcpy(cached, pad, MIN(size, ri.size));
 			break;
 		}
-		/* Only mark as loaded if successfully copied. */
-		if (rv == EC_SUCCESS)
-			bitmap_bit_set(bitmap, type);
 		return rv;
 	}
 
-	return restore_pcr(type - NV_VIRTUAL_RESERVE_LAST, pad, size);
+	return restore_pcr(type - NV_FIRST_PCR_INDEX, pad, size);
 }
 
 /* Restore an evictable object found in flash on initialization. */
@@ -2159,91 +2174,6 @@ static void restore_object(void *pad, size_t size)
 	dest += size;
 
 	memset(dest, 0, sizeof(next_evict_obj_base));
-}
-
-/*
- * When starting from scratch (flash fully erased) there would be no reserved
- * objects in NVMEM, and for the commit to work properly, every single
- * reserved object needs to be present in the flash so that its value is
- * compared with the cache contents.
- *
- * There is also an off chance of a bug where a reserved value is lost in the
- * flash - it would never be reinstated even after TPM reinitializes.
- *
- * The reserved_bitmap array is a bitmap of all detected reserved objects,
- * those not in the array are initialized to a placeholder initial value.
- */
-static enum ec_error_list verify_reserved(uint8_t *reserved_bitmap,
-					  struct nn_container *ch)
-{
-	enum ec_error_list rv;
-	int i;
-	uint8_t *container_body;
-	int delimiter_needed = 0;
-
-	/* All uninitted reserved objects set to zero. */
-	memset(ch, 0, CONFIG_FLASH_BANK_SIZE);
-
-	ch->container_type = ch->container_type_copy = NN_OBJ_TPM_RESERVED;
-	container_body = (uint8_t *)(ch + 1);
-
-	rv = EC_SUCCESS;
-
-	for (i = 0; i < NV_VIRTUAL_RESERVE_LAST; i++) {
-		NV_RESERVED_ITEM ri;
-
-		if (bitmap_bit_check(reserved_bitmap, i))
-			continue;
-
-		NvGetReserved(i, &ri);
-		container_body[0] = i;
-
-		switch (i) {
-#ifdef CONFIG_NVMEM_DEBUG_EPS
-		case NV_EP_SEED:
-			CPRINTS("%s: EPS not loaded", __func__);
-			cflush();
-			break;
-#endif
-			/*
-			 * No need to save these on initialization from
-			 * scratch, unmarshaling code will properly expand
-			 * size of zero.
-			 */
-		case NV_STATE_CLEAR:
-		case NV_STATE_RESET:
-			ri.size = 0;
-			break;
-
-			/*
-			 * This is used for Ram Index field, prepended by
-			 * size. Set the size to minimum, the size of the size
-			 * field.
-			 */
-		case NV_RAM_INDEX_SPACE:
-			ri.size = sizeof(uint32_t);
-			break;
-
-		default:
-			break;
-		}
-
-		delimiter_needed = 1;
-
-		ch->size = ri.size + 1;
-		rv = save_container(ch);
-
-		/* Clean up encrypted contents. */
-		memset(container_body + 1, 0, ri.size);
-
-		if (rv != EC_SUCCESS)
-			break;
-	}
-
-	if (delimiter_needed && (rv == EC_SUCCESS))
-		rv = add_final_delimiter();
-
-	return rv;
 }
 
 static enum ec_error_list invalidate_object(const struct nn_container *ch)
@@ -2575,7 +2505,6 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 	int tries;
 	struct max_var_container *vc;
 	struct nn_container *nc;
-	uint8_t res_bitmap[(NV_PSEUDO_RESERVE_LAST + 7) / 8];
 
 	/* No saved object will exceed CONFIG_FLASH_BANK_SIZE in size. */
 	nc = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
@@ -2588,7 +2517,6 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 		memset(&controller_at, 0, sizeof(controller_at));
 		memset(nvmem_cache_base(NVMEM_TPM), 0,
 		       nvmem_user_sizes[NVMEM_TPM]);
-		memset(res_bitmap, 0, sizeof(res_bitmap));
 		total_var_space = 0;
 		next_evict_obj_base = 0;
 
@@ -2606,7 +2534,7 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 				 * in `res_bitmap`. Invalid object will be
 				 * recreated later.
 				 */
-				restore_reserved(nc + 1, nc->size, res_bitmap);
+				restore_reserved(nc + 1, nc->size);
 				break;
 
 			case NN_OBJ_TPM_EVICTABLE:
@@ -2625,8 +2553,6 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 
 	if (rv != EC_SUCCESS)
 		report_no_payload_failure(NVMEMF_UNRECOVERABLE_INIT);
-
-	rv = verify_reserved(res_bitmap, nc);
 
 	shared_mem_release(nc);
 
@@ -2702,6 +2628,14 @@ test_export_static size_t init_object_offsets(uint16_t *offsets, size_t count)
 	return num_objects;
 }
 
+/**
+ * Update object with new content
+ * @param at - location of existing object in flash
+ * @param ch - container header (to be updated)
+ * @param cached_object - new content
+ * @param new_size - new size
+ * @return enum ec_error_list
+ */
 static enum ec_error_list update_object(const struct access_tracker *at,
 					struct nn_container *ch,
 					void *cached_object, size_t new_size)
@@ -2737,145 +2671,93 @@ static enum ec_error_list update_object(const struct access_tracker *at,
 	return delete_object(at, ch);
 }
 
-static enum ec_error_list update_pcr(const struct access_tracker *at,
-				     struct nn_container *ch, uint8_t index,
-				     uint8_t *cached)
-{
-	return update_object(at, ch, cached, ch->size);
-}
-
-static enum ec_error_list save_pcr(struct nn_container *ch,
-				   uint8_t reserved_index, const void *pcr,
-				   size_t pcr_size)
-{
-	uint8_t *container_body;
-
-	ch->container_type = ch->container_type_copy = NN_OBJ_TPM_RESERVED;
-	ch->size = pcr_size + 1;
-	ch->generation = 0;
-
-	container_body = (uint8_t *)(ch + 1);
-	container_body[0] = reserved_index;
-	memcpy(container_body + 1, pcr, pcr_size);
-
-	return save_container(ch);
-}
-
-static enum ec_error_list maybe_save_pcr(struct nn_container *ch,
-					 size_t pcr_index)
-{
-	const STATE_CLEAR_DATA *scd;
-	const struct pcr_descriptor *pcrd;
-	const void *cached;
-	size_t pcr_size;
-
-	pcrd = pcr_arrays + pcr_index / NUM_STATIC_PCR;
-	scd = get_scd();
-
-	pcr_size = pcrd->pcr_size;
-
-	cached = (const uint8_t *)&scd->pcrSave + pcrd->pcr_array_offset +
-		 pcr_size * (pcr_index % NUM_STATIC_PCR);
-
-	if (is_empty(cached, pcr_size))
-		return EC_SUCCESS;
-
-	return save_pcr(ch, pcr_index + NV_VIRTUAL_RESERVE_LAST, cached,
-			pcr_size);
-}
-
-/*
- * The process_XXX functions below are used to check and if necessary add,
- * update or delete objects from the flash based on the NVMEM cache
- * contents.
+/**
+ * Get serialized reserved object from cache.
+ * @param index virtual reserved space index (including PCRs)
+ * @param out pointer to output buffer in case serialization is needed.
+ * Will be updated with location in cache if direct access possible.
+ * @param outsize output size of object
  */
-static enum ec_error_list process_pcr(const struct access_tracker *at,
-				      struct nn_container *ch, uint8_t index,
-				      const uint8_t *saved, uint8_t *pcr_bitmap)
+static enum ec_error_list get_reserved_from_cache(uint8_t index, uint8_t **out,
+						  size_t *outsize)
 {
-	STATE_CLEAR_DATA *scd;
-	const struct pcr_descriptor *pcrd;
-	size_t pcr_bitmap_index;
-	size_t pcr_index;
-	size_t pcr_size;
-	uint8_t *cached;
+	NV_RESERVED_ITEM ri;
+	void *cached;
 
-	pcr_bitmap_index = index - NV_VIRTUAL_RESERVE_LAST;
-
-	if (pcr_bitmap_index > NUM_OF_PCRS)
+	NvGetReserved(index, &ri);
+	*outsize = ri.size;
+	if (ri.size) {
+		cached = nvmem_cache_base(NVMEM_TPM) + ri.offset;
+		/*
+		 * For NV_STATE_CLEAR and NV_STATE_RESET cases Let's marshal
+		 * cached data to be able to compare it with saved data.
+		 */
+		switch (index) {
+		case NV_STATE_CLEAR:
+			*outsize = marshal_state_clear(cached, *out);
+			break;
+		case NV_STATE_RESET:
+			*outsize = marshal_state_reset_data(cached, *out);
+			break;
+		default: /* TODO: add TPM2B garbage cleaning. */
+			*out = cached;
+			break;
+		}
+		return EC_SUCCESS;
+	}
+	/* This is a PCR. */
+	*out = get_pcr_nv_addr(index - NV_FIRST_PCR_INDEX, outsize);
+	if (*out == NULL)
 		return EC_ERROR_INVAL;
-
-	pcrd = pcr_arrays + pcr_bitmap_index / NUM_STATIC_PCR;
-	pcr_index = pcr_bitmap_index % NUM_STATIC_PCR;
-
-	pcr_size = pcrd->pcr_size;
-
-	if (pcr_size != (ch->size - 1))
-		return EC_ERROR_INVAL; /* This is an error. */
-
-	/* Find out base address of the cached PCR. */
-	scd = get_scd();
-	cached = (uint8_t *)&scd->pcrSave + pcrd->pcr_array_offset +
-		 pcr_size * pcr_index;
-
-	/* Set bitmap bit to indicate that this PCR was looked at. */
-	bitmap_bit_set(pcr_bitmap, pcr_bitmap_index);
-
-	if (memcmp(saved, cached, pcr_size))
-		return update_pcr(at, ch, index, cached);
-
 	return EC_SUCCESS;
 }
 
 static enum ec_error_list process_reserved(const struct access_tracker *at,
 					   struct nn_container *ch,
-					   uint8_t *pcr_bitmap)
+					   uint8_t *res_bitmap)
 {
-	NV_RESERVED_ITEM ri;
 	size_t new_size;
+	size_t saved_size;
 	uint8_t *saved;
 	uint8_t index;
-	void *cached;
+	uint8_t *marshalled;
+	enum ec_error_list rv;
+
+	/* Invalid reserved object, delete it. */
+	if (ch->size < 1)
+		return delete_object(at, ch);
 
 	/*
 	 * Find out this object's location in the cache (first byte of the
 	 * contents is the index of the reserved object.
 	 */
 	saved = (uint8_t *)(ch + 1);
+	saved_size = ch->size - 1;
 	index = *saved++;
 
-	NvGetReserved(index, &ri);
+	/* Placeholder for output after the current object. */
+	marshalled = ((uint8_t *)(ch + 1)) + ch->size;
+	rv = get_reserved_from_cache(index, &marshalled, &new_size);
+	/* This is possible only for invalid index (out of range). */
+	if (rv != EC_SUCCESS)
+		return delete_object(at, ch);
 
-	if (ri.size) {
-		void *marshaled;
-
-		cached = nvmem_cache_base(NVMEM_TPM) + ri.offset;
-
-		/*
-		 * For NV_STATE_CLEAR and NV_STATE_RESET cases Let's marshal
-		 * cached data to be able to compare it with saved data.
-		 */
-		if (index == NV_STATE_CLEAR) {
-			marshaled = ((uint8_t *)(ch + 1)) + ch->size;
-			new_size = marshal_state_clear(cached, marshaled);
-			cached = marshaled;
-		} else if (index == NV_STATE_RESET) {
-			marshaled = ((uint8_t *)(ch + 1)) + ch->size;
-			new_size = marshal_state_reset_data(cached, marshaled);
-			cached = marshaled;
-		} else {
-			new_size = ri.size;
-		}
-
-		if ((new_size == (ch->size - 1)) &&
-		    !memcmp(saved, cached, new_size))
-			return EC_SUCCESS;
-
-		return update_object(at, ch, cached, new_size + 1);
+	/* If this is PCR and current value is empty, just delete object. */
+	if (index >= NV_FIRST_PCR_INDEX && is_empty(marshalled, new_size)) {
+		bitmap_bit_set(res_bitmap, index);
+		return delete_object(at, ch);
 	}
 
-	/* This must be a PCR. */
-	return process_pcr(at, ch, index, saved, pcr_bitmap);
+	/* Check if content is the same. */
+	if ((new_size == saved_size) && !memcmp(saved, marshalled, new_size)) {
+		bitmap_bit_set(res_bitmap, index);
+		return EC_SUCCESS;
+	}
+
+	rv = update_object(at, ch, marshalled, new_size + 1);
+	if (rv == EC_SUCCESS)
+		bitmap_bit_set(res_bitmap, index);
+	return rv;
 }
 
 static enum ec_error_list process_object(const struct access_tracker *at,
@@ -2970,7 +2852,7 @@ static enum ec_error_list new_nvmem_save_(void)
 	uint16_t fence_offset;
 	/* We don't foresee ever storing this many objects. */
 	uint16_t tpm_object_offsets[MAX_STORED_EVICTABLE_OBJECTS];
-	uint8_t pcr_bitmap[(NUM_STATIC_PCR * ARRAY_SIZE(pcr_arrays) + 7) / 8];
+	uint8_t res_bitmap[(NV_VIRTUAL_RESERVE_LAST + NUM_OF_PCRS + 7) / 8];
 	enum ec_error_list rv = EC_SUCCESS;
 
 
@@ -2987,7 +2869,7 @@ static enum ec_error_list new_nvmem_save_(void)
 	num_objs = init_object_offsets(tpm_object_offsets,
 				       ARRAY_SIZE(tpm_object_offsets));
 
-	memset(pcr_bitmap, 0, sizeof(pcr_bitmap));
+	memset(res_bitmap, 0, sizeof(res_bitmap));
 	del_candidates = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE +
 					    sizeof(struct delete_candidates));
 	ch = (void *)(del_candidates + 1);
@@ -3006,7 +2888,7 @@ static enum ec_error_list new_nvmem_save_(void)
 		}
 
 		if (ch->container_type == NN_OBJ_TPM_RESERVED) {
-			rv = process_reserved(&at, ch, pcr_bitmap);
+			rv = process_reserved(&at, ch, res_bitmap);
 			if (rv != EC_SUCCESS)
 				goto cleanup;
 			continue;
@@ -3021,18 +2903,41 @@ static enum ec_error_list new_nvmem_save_(void)
 		}
 	}
 
+	/* Save remaining NV reserved space objects */
+	for (i = 0; i < NV_VIRTUAL_RESERVE_LAST + NUM_OF_PCRS; i++) {
+		uint8_t *container_body;
+		uint8_t *out;
+		size_t out_size = 0;
+
+		/* TODO: skip NV_RAM_INDEX_SPACE & NV_MAX_COUNTER? */
+		if (bitmap_bit_check(res_bitmap, i))
+			continue;
+
+		ch->container_type = ch->container_type_copy =
+			NN_OBJ_TPM_RESERVED;
+		container_body = (uint8_t *)(ch + 1);
+
+		container_body[0] = i;
+		out = container_body + 1;
+		rv = get_reserved_from_cache(i, &out, &out_size);
+		/* Check if this is just an empty PCR. */
+		if (rv != EC_SUCCESS ||
+		    (i >= NV_VIRTUAL_RESERVE_LAST && is_empty(out, out_size)))
+			continue;
+		/* If `out` points to NV cache, copy content to container. */
+		if (out != container_body + 1)
+			memcpy(container_body + 1, out, out_size);
+		ch->size = out_size + 1;
+		rv = save_container(ch);
+		if (rv != EC_SUCCESS)
+			goto cleanup;
+	}
+
 	/* Now save new objects, if any. */
 	for (i = 0; i < num_objs; i++) {
 		rv = save_new_object(tpm_object_offsets[i], ch);
 		if (rv != EC_SUCCESS)
 			goto cleanup;
-	}
-
-	/* And new pcrs, if any. */
-	for (i = 0; i < NUM_OF_PCRS; i++) {
-		if (bitmap_bit_check(pcr_bitmap, i))
-			continue;
-		maybe_save_pcr(ch, i);
 	}
 
 #if defined(NVMEM_TEST_BUILD)
@@ -3042,18 +2947,19 @@ static enum ec_error_list new_nvmem_save_(void)
 		return EC_SUCCESS;
 	}
 #endif
+
+cleanup:
 	/*
 	 * Add a delimiter if there have been new containers added to the
-	 * flash.
+	 * flash. Try to bring into consistent state by removing objects
+	 * which were saved or marked as invalid.
 	 */
 	if (del_candidates->num_candidates ||
 	    (fence_offset != controller_at.mt.data_offset) ||
 	    (fence_ph != controller_at.mt.ph)) {
 		const void *del = page_cursor(&controller_at.mt);
 
-		rv = add_delimiter();
-		if (rv != EC_SUCCESS)
-			goto cleanup;
+		add_delimiter();
 
 		if (del_candidates->num_candidates) {
 			/* Now delete objects which need to be deleted. */
@@ -3069,10 +2975,9 @@ static enum ec_error_list new_nvmem_save_(void)
 			return EC_SUCCESS;
 		}
 #endif
-		rv = finalize_delimiter(del);
+		finalize_delimiter(del);
 	}
 
-cleanup:
 	shared_mem_release(del_candidates);
 	del_candidates = NULL;
 	return rv;
