@@ -584,6 +584,20 @@ out:
 #ifdef BMA4XX_USE_INTERRUPTS
 static uint32_t last_irq_timestamp;
 
+static int bma4xx_enable_interrupt(struct motion_sensor_t *s, bool enable)
+{
+	mutex_lock(s->mutex);
+
+	/* Flush the FIFO */
+	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_CMD_ADDR, BMA4_FIFO_FLUSH));
+
+	/* Configure INT1 pin */
+	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT1_IO_CTRL_ADDR,
+				       enable ? BMA4_INT1_OUTPUT_EN : 0));
+out:
+	mutex_unlock(s->mutex);
+}
+
 /* Handle IRQ from sensor: schedule read from task context */
 test_mockable void bma4xx_interrupt(enum gpio_signal signal)
 {
@@ -680,6 +694,7 @@ const struct accelgyro_drv bma4_accel_drv = {
 	.get_offset = get_offset,
 	.perform_calib = perform_calib,
 #ifdef BMA4XX_USE_INTERRUPTS
+	.enable_interrupt = bma4xx_enable_interrupt,
 	.interrupt = bma4xx_interrupt,
 	.irq_handler = irq_handler,
 #endif
