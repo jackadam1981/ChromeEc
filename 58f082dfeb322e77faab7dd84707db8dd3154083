@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa9cec3_b1ce1213",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "I prefer something more explicity: `send_cmd_return_state`",
+      "range": {
+        "startLine": 354,
+        "startChar": 18,
+        "endLine": 354,
+        "endChar": 30
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71da5020_d03491d9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer if you set this in `pdc_send_cmd_start_entry()` instead.\n\n```\nport-\u003ereturn_state \u003d port-\u003elast_state;\n```\n\nThis also means that if new states are added, they don\u0027t have to remember to set `return_state`.",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c0f837_b4ddd1ce",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "For a follow up.  The retries should have some sort of limit and recovery mechanism.  Probably want to send PDC_RESET.",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83324004_33bebbde",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "Add comment:\nTODO: b/319643480 - Brox: implement SRC policies",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9527e6c4_45001416",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "Handle in pdc_send_cmd_start_entry",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5dd1336_4c28078c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "For later cleanup - with the refactor, the switch statement could be put back into `pdc_send_cmd_start_run`. Alternatively, move this to be adjacent to the start_run handlers.",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 69
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2301a350_7554119a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "For a follow up - limit the retries and add error recovery.",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 35
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa38dde_6fcb5f38",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "Handle in pdc_send_cmd_start_entry",
+      "range": {
+        "startLine": 953,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 42
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ba021e_809e4af2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "This can be deleted.",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 46
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df185a9f_f38d46c0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "As a follow-up, investigate using a semaphore here instead.",
+      "range": {
+        "startLine": 1190,
+        "startChar": 0,
+        "endLine": 1192,
+        "endChar": 0
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe7e2e5_bf58a7ef",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "Add a comment:\nTODO: b/319712834 - Brox: validate charging from multiple ports\n\nIf the active_charge flag changes, then the appropriate sub-state needs to be enabled.",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1266,
+        "endChar": 57
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6c3145_120f0a50",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:06:42Z",
+      "side": 1,
+      "message": "You can move all `atomic_set_bit(pdc_cmd_flags)` into the `public_api_block()` function.",
+      "range": {
+        "startLine": 1353,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 69
+      },
+      "revId": "58f082dfeb322e77faab7dd84707db8dd3154083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
