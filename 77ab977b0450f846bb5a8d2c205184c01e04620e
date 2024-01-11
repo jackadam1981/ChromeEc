@@ -22,6 +22,30 @@
       },
       "revId": "77ab977b0450f846bb5a8d2c205184c01e04620e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45940aa3_4a62b7a7",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T01:26:27Z",
+      "side": 1,
+      "message": "The wrappers functions were requested by Peter and me.  This naming scheme should be less error prone that passing in an extra parameter.",
+      "parentUuid": "259fa2c4_44de1d11",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 1
+      },
+      "revId": "77ab977b0450f846bb5a8d2c205184c01e04620e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
