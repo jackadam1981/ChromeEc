@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f5bd93_04a71447",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-11T21:02:42Z",
+      "side": 1,
+      "message": "let\u0027s explicitly test that things work after rebooting from the run when we disabled TPM and wiped this data. I want to make sure that there\u0027s no reliance on keeping some of this data between reboots since we now randomize/zeroize more fields. that\u0027d be a bug ofc, but let\u0027s test to make sure that we don\u0027t have such a bug (chances are low ofc).",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "e781c38e5ae90640cb9416029796f16101124cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f75a305_adc9d17f",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-11T21:02:42Z",
+      "side": 1,
+      "message": "we might also want to set them to random values. the idea is we do the wipe when we disable TPM so even if TPM commands somehow get through the disabled comm channels, they can\u0027t get to TPM secrets. having authValues set to something random in this sense is better than having null authValues for all hierarchies.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "e781c38e5ae90640cb9416029796f16101124cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd028ca_d327ab0f",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-11T21:02:42Z",
+      "side": 1,
+      "message": "let\u0027s also memset those policies to 0 (zero policy is an invalid policy) just in case - will help with detection if something wrong happens to sizes later",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "e781c38e5ae90640cb9416029796f16101124cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
