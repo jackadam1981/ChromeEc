@@ -16,6 +16,24 @@
       "message": "Can we do this in crrev/c/5183078?",
       "revId": "1bc8fdd34d586fc4cc906b04d86a45238b204f47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19004ee_797cb1fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-01-11T05:32:52Z",
+      "side": 1,
+      "message": "if keep orginal board_batt_params define, it is change less and merge quickly.if this change is ok?",
+      "parentUuid": "fd254640_4591c2ea",
+      "revId": "1bc8fdd34d586fc4cc906b04d86a45238b204f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
