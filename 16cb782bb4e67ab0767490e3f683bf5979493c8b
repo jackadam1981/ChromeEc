@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ebec88_0060d724",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T19:47:26Z",
+      "side": 1,
+      "message": "how can you be sure that `index` is that of a TPM2B like object? \n\nHow about adding a check to verify that `index` is valid",
+      "revId": "16cb782bb4e67ab0767490e3f683bf5979493c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c829a9ea_3e3cb139",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T19:47:26Z",
+      "side": 1,
+      "message": "log an error here? (unless this is strictly for debugging and you expect to always see the console log)",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "16cb782bb4e67ab0767490e3f683bf5979493c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
