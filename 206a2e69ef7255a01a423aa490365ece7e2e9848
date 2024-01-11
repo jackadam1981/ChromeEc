@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "069fa45b_7cffa738",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T18:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e95f4ec_9360ec52",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 77
+      },
+      "revId": "206a2e69ef7255a01a423aa490365ece7e2e9848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1373aa1c_688c3323",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-11T17:31:04Z",
       "side": 1,
       "message": "You need to set the local state before queing the command since that changes the PDC state and runs the exit function.",
+      "range": {
+        "startLine": 826,
+        "startChar": 0,
+        "endLine": 828,
+        "endChar": 0
+      },
+      "revId": "206a2e69ef7255a01a423aa490365ece7e2e9848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad72f795_5621b959",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T18:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1373aa1c_688c3323",
       "range": {
         "startLine": 826,
         "startChar": 0,
