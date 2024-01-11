@@ -99,6 +99,9 @@
 #define USB_PD_RETIMER_FW_UPDATE_RUN 1
 #define USB_PD_RETIMER_FW_UPDATE_LTD_RUN 2
 
+/* Total Poll iteration number */
+#define RETIMER_ITERATION_NUMBER 12
+
 LOG_MODULE_REGISTER(RETIMER_FWUPD, LOG_LEVEL_ERR);
 
 /* Retimer state before, while or after firmware update*/
@@ -126,12 +129,18 @@ static int last_op;
 static int last_result;
 /* Last port AP requested operation for */
 static int last_port;
+/* Mux state before retimer firmware update entry */
+static int initial_mux_state;
+/* Port polarity before retimer firmware update entry */
+static int initial_polarity;
 /* Retimer firmware update status to track progress of deferred functions */
 static atomic_t fw_update_status;
 /* State of retimer of respective port */
 static int retimer_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Bitmask for ports with retimer firmware updatable */
 static int port_info;
+/* Iteration number for polling result */
+static int poll_iteration_left = RETIMER_ITERATION_NUMBER;
 
 /*
  * Since AP requests retimer offline one port at a time, separate instance
@@ -204,6 +213,22 @@ static void exit_retimer_fw_update(struct k_work *work_item)
 	resume_pd_intel_altmode_task();
 }
 
+static void retry_online(int port)
+{
+	LOG_ERR("Retimer firmware update failed. Retimer retry online.");
+	usb_mux_set(port, initial_mux_state,
+		    initial_mux_state == USB_PD_MUX_NONE ?
+			    USB_SWITCH_DISCONNECT :
+			    USB_SWITCH_CONNECT,
+		    initial_polarity);
+	exit_workq_info.port = port;
+	k_work_init(&exit_workq_info.retimer_update_workq,
+		    exit_retimer_fw_update);
+	k_work_submit(&exit_workq_info.retimer_update_workq);
+	atomic_clear_bit(&fw_update_status, USB_PD_RETIMER_FW_UPDATE_ERROR);
+	retimer_state[port] = RETIMER_ONLINE;
+}
+
 int usb_retimer_fw_update_get_result(void)
 {
 	if (last_port < 0 && last_port >= CONFIG_USB_PD_PORT_MAX_COUNT)
@@ -217,8 +242,11 @@ int usb_retimer_fw_update_get_result(void)
 	 * Check retimer firmware update status flag.
 	 * TODO(b:317507791) - Error Recovery for update.
 	 */
-	if (atomic_test_bit(&fw_update_status, USB_PD_RETIMER_FW_UPDATE_ERROR))
+	if (atomic_test_bit(&fw_update_status,
+			    USB_PD_RETIMER_FW_UPDATE_ERROR)) {
+		retry_online(last_port);
 		return USB_RETIMER_FW_UPDATE_ERR;
+	}
 
 	switch (last_op) {
 	case USB_RETIMER_FW_UPDATE_QUERY_PORT:
@@ -274,6 +302,15 @@ int usb_retimer_fw_update_get_result(void)
 		break;
 	}
 
+	/* If Poll limit reached, reinstate retimer to online */
+	if (last_result == USB_RETIMER_FW_UPDATE_INVALID_MUX) {
+		poll_iteration_left -= 1;
+		if (!poll_iteration_left)
+			retry_online(last_port);
+	} else {
+		poll_iteration_left = RETIMER_ITERATION_NUMBER;
+	}
+
 	return last_result;
 }
 
@@ -303,6 +340,8 @@ void usb_retimer_fw_update_process_op(int port, int op)
 			retimer_state[port] = RETIMER_OFFLINE;
 			/* Suspend PD altmode task to ignore altmode events */
 			suspend_pd_intel_altmode_task();
+			initial_mux_state = usb_mux_get(port);
+			initial_polarity = pd_get_polarity(port);
 		} else {
 			atomic_set_bit(&fw_update_status,
 				       USB_PD_RETIMER_FW_UPDATE_ERROR);
