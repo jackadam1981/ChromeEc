@@ -22,6 +22,30 @@
       },
       "revId": "7a3778c61681026e5453393d36565e975f18e079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40bcc191_21c34a16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-11T22:41:45Z",
+      "side": 1,
+      "message": "i considered swapping `fmap` and `ro-frid` in binman.dtsi, but decided\nagainst it because it would affect most boards and i had\na hard time convincing myself it would be harmless.\n\nif reviewers agree swapping the order would be OK, i\u0027d be happy to change it.",
+      "parentUuid": "6dd63da4_cb2e5a15",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "7a3778c61681026e5453393d36565e975f18e079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
