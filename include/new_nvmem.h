@@ -12,6 +12,9 @@
 
 #define NVMEM_NOT_INITIALIZED ((unsigned int)-1)
 
+/* NV reserve space index used when index can't be determined. */
+#define NV_RESERVE_INVALID 0xFF
+
 enum nn_object_type {
 	NN_OBJ_OLD_COPY = 0,
 	NN_OBJ_TUPLE = 1,
@@ -169,6 +172,7 @@ void *evictable_offs_to_addr(uint16_t offset);
 enum ec_error_list get_next_object(struct access_tracker *at,
 				   struct nn_container *ch,
 				   bool include_deleted);
+uint8_t *get_pcr_nv_addr(uint32_t pcr_index, size_t *outsize);
 #endif
 
 #endif /* ! __TPM2_NVMEM_TEST_NEW_NVMEM_H */

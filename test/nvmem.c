@@ -235,6 +235,10 @@ static int iterate_over_flash(void)
 			return EC_SUCCESS;
 		}
 	}
+	/* Empty flash, no delimiter. */
+	if (at.dt.ph == NULL && at.dt.data_offset == 0)
+		return EC_SUCCESS;
+
 	ccprintf("%s:%d bad delimiter location: ph %pP, "
 		 "dt.ph %pP, offset %d, delim offset %d\n",
 		 __func__, __LINE__, at.mt.ph, at.dt.ph, at.mt.data_offset,
@@ -282,11 +286,11 @@ static int test_init_vars_from_scratch(void)
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
 	TEST_ASSERT(test_result.var_count == 0);
-	TEST_ASSERT(test_result.reserved_obj_count == 38);
+	TEST_ASSERT(test_result.reserved_obj_count == 0);
 	TEST_ASSERT(test_result.evictable_obj_count == 0);
 	TEST_ASSERT(test_result.deleted_obj_count == 0);
 	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 1088);
+	TEST_ASSERT(test_result.valid_data_size == 0);
 	TEST_ASSERT(total_var_space == 0);
 	return EC_SUCCESS;
 }
@@ -368,17 +372,16 @@ static int prepare_new_flash(void)
 		}
 	}
 
-	dump_nvmem_state("after first save", &test_result);
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-
-	TEST_ASSERT(test_result.deleted_obj_count == 24);
+	dump_nvmem_state("after first save", &test_result);
+	TEST_ASSERT(test_result.deleted_obj_count == 0);
 	TEST_ASSERT(test_result.var_count == 0);
 	TEST_ASSERT(test_result.reserved_obj_count == 40);
 	TEST_ASSERT(test_result.evictable_obj_count == 9);
 	TEST_ASSERT(test_result.unexpected_count == 0);
 	TEST_ASSERT(test_result.valid_data_size == 5128);
-	TEST_ASSERT(test_result.erased_data_size == 698);
+	TEST_ASSERT(test_result.erased_data_size == 0);
 
 	return EC_SUCCESS;
 }
@@ -874,12 +877,13 @@ static int test_nvmem_erase_tpm_data(void)
 	TEST_ASSERT(nvmem_erase_tpm_data() == EC_SUCCESS);
 	browse_flash_contents(1);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("After nvmem_erase_tpm_data()", &test_result);
 	TEST_ASSERT(test_result.deleted_obj_count == 0);
 	TEST_ASSERT(test_result.var_count == 3);
-	TEST_ASSERT(test_result.reserved_obj_count == 38);
+	TEST_ASSERT(test_result.reserved_obj_count == 0);
 	TEST_ASSERT(test_result.evictable_obj_count == 0);
 	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 1174);
+	TEST_ASSERT(test_result.valid_data_size == 86);
 	TEST_ASSERT(test_result.erased_data_size == 0);
 
 	return EC_SUCCESS;
@@ -1858,12 +1862,13 @@ static int test_tpm2b_garbage_clean(void)
 	tpm2b_len = ri.size; /* +2 bytes overflow */
 	addr_in_cache = nvmem_cache_base(NVMEM_TPM) + ri.offset;
 	memcpy(addr_in_cache, &tpm2b_len, sizeof(tpm2b_len));
-	browse_flash_contents(1);
-	dump_nvmem_state("after first save", &test_result);
 
 	/* Saving creates many copies as `flash` content differs. */
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+	browse_flash_contents(1);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("after first save", &test_result);
 
 	/* Check garbage at the tail of TPM2B objects. */
 	for (i = NV_OWNER_POLICY; i <= NV_EH_PROOF; i++) {
@@ -1886,15 +1891,142 @@ static int test_tpm2b_garbage_clean(void)
 	 * new_nvmem_save().
 	 */
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("after change", &test_result);
 
-	/* R:04 updated twice, R:07 - once */
-	TEST_ASSERT(test_result.deleted_obj_count == 24 + 2 + 1);
+	/* Updated R:04 and R:07 */
+	TEST_ASSERT(test_result.deleted_obj_count == 2);
 	TEST_ASSERT(test_result.var_count == 0);
-	TEST_ASSERT(test_result.reserved_obj_count == 41);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
 	TEST_ASSERT(test_result.evictable_obj_count == 9);
 	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 5128 + 67);
-	TEST_ASSERT(test_result.erased_data_size == 698 + 3 * 67);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 2 * 67);
+
+	return EC_SUCCESS;
+}
+
+static int test_pcr_updates(void)
+{
+	uint8_t *pcr;
+	size_t pcr_size;
+
+	TEST_ASSERT(prepare_new_flash() == EC_SUCCESS);
+	pcr = get_pcr_nv_addr(0, &pcr_size);
+
+	TEST_ASSERT(pcr != NULL);
+	TEST_ASSERT(pcr_size == 20);
+
+	memset(pcr, 1, pcr_size);
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+
+	browse_flash_contents(1);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("after change", &test_result);
+	TEST_ASSERT(test_result.deleted_obj_count == 1);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 21);
+
+	/* Set PCR0 as empty. */
+	memset(pcr, 0, pcr_size);
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+	browse_flash_contents(1);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+
+	/* Expect one more deleted object. */
+	dump_nvmem_state("after change", &test_result);
+	TEST_ASSERT(test_result.deleted_obj_count == 2);
+	TEST_ASSERT(test_result.reserved_obj_count == 39);
+	TEST_ASSERT(test_result.valid_data_size == 5107);
+	TEST_ASSERT(test_result.erased_data_size == 42);
+
+	memset(pcr, 2, pcr_size);
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+	browse_flash_contents(1);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("after change 3", &test_result);
+	TEST_ASSERT(test_result.deleted_obj_count == 2);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 42);
+
+	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	TEST_ASSERT(test_result.deleted_obj_count == 2);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 42);
+	TEST_ASSERT_MEMSET(pcr, 2, pcr_size);
+
+
+	/* SHA256 PCR */
+	pcr = get_pcr_nv_addr(17, &pcr_size);
+
+	TEST_ASSERT(pcr != NULL);
+	TEST_ASSERT(pcr_size == 32);
+
+	/* Set PCR17 as empty. (it exists in image) */
+	memset(pcr, 0, pcr_size);
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+	browse_flash_contents(1);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("after change 4", &test_result);
+	/* Expect PCR with default value to be deleted. */
+	TEST_ASSERT(test_result.deleted_obj_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 39);
+	TEST_ASSERT(test_result.valid_data_size == 5095);
+	TEST_ASSERT(test_result.erased_data_size == 75);
+
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	TEST_ASSERT(test_result.deleted_obj_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 39);
+	TEST_ASSERT(test_result.valid_data_size == 5095);
+	TEST_ASSERT(test_result.erased_data_size == 75);
+
+	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	TEST_ASSERT(test_result.deleted_obj_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 39);
+	TEST_ASSERT(test_result.valid_data_size == 5095);
+	TEST_ASSERT(test_result.erased_data_size == 75);
+	TEST_ASSERT_MEMSET(pcr, 0, pcr_size);
+
+	memset(pcr, 3, pcr_size);
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+	browse_flash_contents(1);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	dump_nvmem_state("after change 5", &test_result);
+	TEST_ASSERT(test_result.deleted_obj_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 75);
+
+	/* Save with no change shall not update it. */
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	TEST_ASSERT(test_result.deleted_obj_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 75);
+
+	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	TEST_ASSERT(test_result.deleted_obj_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 40);
+	TEST_ASSERT(test_result.valid_data_size == 5128);
+	TEST_ASSERT(test_result.erased_data_size == 75);
+	TEST_ASSERT_MEMSET(pcr, 3, pcr_size);
+
+	/* Test that get_pcr_nv_addr() handles corner cases properly. */
+	TEST_ASSERT(get_pcr_nv_addr(0, &pcr_size) != NULL);
+	TEST_ASSERT(pcr_size == 20); /* SHA1 PCRs */
+	TEST_ASSERT(get_pcr_nv_addr(16, &pcr_size) != NULL);
+	TEST_ASSERT(pcr_size == 32); /* SHA1 PCRs */
+	/* We have 4 banks of PCRs. */
+	TEST_ASSERT(get_pcr_nv_addr(NUM_STATIC_PCR * 4, &pcr_size) == NULL);
+	TEST_ASSERT(get_pcr_nv_addr(NUM_STATIC_PCR * 4 - 1, &pcr_size) != NULL);
+	TEST_ASSERT(pcr_size == 64); /* SHA512 PCRs */
 
 	return EC_SUCCESS;
 }
@@ -1929,5 +2061,6 @@ void run_test(void)
 	 */
 	RUN_TEST(test_nvmem_flash_failure);
 	RUN_TEST(test_tpm2b_garbage_clean);
+	RUN_TEST(test_pcr_updates);
 	test_print_result();
 }
