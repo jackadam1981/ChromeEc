@@ -142,3 +142,7 @@ anraggar = register_nissa_project(
     project_name="anraggar",
     chip="it81302bx",
 )
+glassway = register_nissa_project(
+    project_name="glassway",
+    chip="npcx9m3f",
+)
