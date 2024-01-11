@@ -16,6 +16,167 @@
       "message": "With this change, I can make the CCDCapabilitiesFlashEC capture exactly 30000 edges of the ITE waveform with no apparent slowdown.  (With the existing textual protocol, it takes more than 30 seconds for the test to retrieve the same list of captured events.)",
       "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0fb5c1_bdf2b476",
+        "filename": "board/hyperdebug/cmsis-dap.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "can you add function comments/description for these three methods please?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f815a525_cbc88557",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "just in case there is a off by one error, can we protect against `process` being larger than `count` and therefore running this loop infinitely",
+      "range": {
+        "startLine": 1119,
+        "startChar": 2,
+        "endLine": 1121,
+        "endChar": 10
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2db3ef1_f3ea46bd",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "why 2, can you add a comment please?",
+      "range": {
+        "startLine": 1177,
+        "startChar": 1,
+        "endLine": 1178,
+        "endChar": 9
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4d74e6_d5766af5",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "don\u0027t we need to perform `queue_remove_units(\u0026cmsis_dap_rx_queue, rx_buffer, 2);` before this line?",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 24
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d7dcb2_7a2a647b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "shouldn\u0027t we check the return to ensure that we have indeed pulled off that many elements (the transaction might still be in progress and we don\u0027t have all of it yet)",
+      "range": {
+        "startLine": 1197,
+        "startChar": 3,
+        "endLine": 1197,
+        "endChar": 21
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946fe96e_116f16a7",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "can you add a comment explaining these hardcoded offsets please?",
+      "range": {
+        "startLine": 1237,
+        "startChar": 40,
+        "endLine": 1238,
+        "endChar": 24
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe385126_e0687ba8",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:17:57Z",
+      "side": 1,
+      "message": "this would be really nice to single source with the console version. I see these two implementations getting out of sync otherwise.",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1343,
+        "endChar": 3
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
