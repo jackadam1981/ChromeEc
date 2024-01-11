@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7041979b_dbd59530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-11T22:42:33Z",
+      "side": 1,
+      "message": "I verified on my system that connecting a usbc--\u003eusba adapter is stable when using this CL. Without these changes, then it doesn\u0027t reach a stable connection",
+      "revId": "9dd6c0578ebe215bf4bd1517165f8372765909d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

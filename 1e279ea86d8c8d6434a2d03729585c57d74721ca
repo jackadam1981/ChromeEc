@@ -68,6 +68,30 @@
       },
       "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9689fc4_8090c3b7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-11T22:42:33Z",
+      "side": 1,
+      "message": "When port power control gets added (1.5A vs 3A) I could see a need for a different behavior with SNK vs SRC. Though some logic could be added in the common state to check whichever flag gets used to trigger any action related to a power change.",
+      "parentUuid": "06a8096d_e035fdf0",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1132,
+        "endChar": 47
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
