@@ -70,6 +70,30 @@
       },
       "revId": "89e9d35775a2e49ded6fe7750bae7bfe73c58713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad63723_7d666a36",
+        "filename": "zephyr/drivers/one_wire_uart/one_wire_uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-11T17:32:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d97608d8_1f111e7c",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "89e9d35775a2e49ded6fe7750bae7bfe73c58713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
