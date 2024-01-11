@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3ad638f_0b1fcb77",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "01c475fa_881e2448",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2ef57ca_5a76344b",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 24
@@ -60,6 +84,30 @@
       "writtenOn": "2024-01-10T18:25:24Z",
       "side": 1,
       "message": "This isn\u0027t a bool field, so this is clearer written as `if (connect_status \u003d\u003d 0)`",
+      "range": {
+        "startLine": 648,
+        "startChar": 7,
+        "endLine": 648,
+        "endChar": 44
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018be750_78cd22a1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "b2ef57ca_5a76344b",
       "range": {
         "startLine": 648,
         "startChar": 7,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0456161_96440dbe",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "9f3ee1b1_a8970267",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 55
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5c6936f_ac26fbf8",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 24
@@ -106,6 +178,30 @@
       "writtenOn": "2024-01-10T18:25:24Z",
       "side": 1,
       "message": "Handled by `pdc_connector_change_event_entry`",
+      "range": {
+        "startLine": 699,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 54
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7b5564_79c0f983",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "e5c6936f_ac26fbf8",
       "range": {
         "startLine": 699,
         "startChar": 0,
@@ -141,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daebaeb8_cdf43869",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "4425f71e_737fcd0d",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3fd033c_b6abebaf",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 24
@@ -152,6 +272,30 @@
       "writtenOn": "2024-01-10T18:25:24Z",
       "side": 1,
       "message": "Retry limit?",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af50fa9b_df00f517",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "c3fd033c_b6abebaf",
       "range": {
         "startLine": 801,
         "startChar": 0,
@@ -187,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7707883_46d0e513",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "527c34bc_c26db353",
+      "range": {
+        "startLine": 884,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 0
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d08b0c72_e0630911",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 24
@@ -198,6 +366,30 @@
       "writtenOn": "2024-01-10T18:25:24Z",
       "side": 1,
       "message": "Retry limit here and other instances.",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1008,
+        "endChar": 18
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2b004a_2516d4da",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "refactored coded. This has been removed",
+      "parentUuid": "d08b0c72_e0630911",
       "range": {
         "startLine": 1008,
         "startChar": 0,
@@ -231,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "583848bc_c17d8d74",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb0087a_0a4dc4fe",
+      "range": {
+        "startLine": 1266,
+        "startChar": 10,
+        "endLine": 1266,
+        "endChar": 11
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0a31cef_634a951b",
@@ -244,6 +460,30 @@
       "writtenOn": "2024-01-10T18:25:24Z",
       "side": 1,
       "message": "-EIO",
+      "range": {
+        "startLine": 1272,
+        "startChar": 9,
+        "endLine": 1272,
+        "endChar": 10
+      },
+      "revId": "3e4e065960b2b5d604dbb1c087439f897e2d0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2a2a4a_51dd7acc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T17:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a31cef_634a951b",
       "range": {
         "startLine": 1272,
         "startChar": 9,
