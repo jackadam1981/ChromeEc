@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fd683ef_2b61f510",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T18:59:05Z",
+      "side": 1,
+      "message": "Refactoring the code resolves the errors. This delay should be reduced in a later CL.",
+      "parentUuid": "5a674bda_b0311977",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "099b908f058300776dd3200febcdf051895463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfdef5de_4e22b8f9",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 21
