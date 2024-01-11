@@ -142,6 +142,10 @@ anraggar = register_nissa_project(
     project_name="anraggar",
     chip="it81302bx",
 )
+glassway = register_nissa_project(
+    project_name="glassway",
+    chip="npcx9m3f",
+)
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
