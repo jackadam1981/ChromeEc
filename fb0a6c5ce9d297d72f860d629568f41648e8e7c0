@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f205e14_664d9002",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:01:20Z",
+      "side": 1,
+      "message": "from",
+      "range": {
+        "startLine": 1338,
+        "startChar": 39,
+        "endLine": 1338,
+        "endChar": 43
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661b0fb3_28e39d85",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:01:20Z",
+      "side": 1,
+      "message": "this already happen in 0.24.61 -- this was a cherry-picked CL. Let\u0027s remove it from this list",
+      "range": {
+        "startLine": 1340,
+        "startChar": 0,
+        "endLine": 1341,
+        "endChar": 61
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abf591c_a39a309f",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:01:20Z",
+      "side": 1,
+      "message": "this was in 0.24.62 (we should remove it from this list)",
+      "range": {
+        "startLine": 1344,
+        "startChar": 0,
+        "endLine": 1345,
+        "endChar": 61
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a434339a_e129696f",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:01:20Z",
+      "side": 1,
+      "message": "this bug number doesn\u0027t exist",
+      "range": {
+        "startLine": 1347,
+        "startChar": 7,
+        "endLine": 1347,
+        "endChar": 14
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94eb189_e6e250f9",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:01:20Z",
+      "side": 1,
+      "message": "we probably don\u0027t need this in the list as it is an internal only clean up",
+      "range": {
+        "startLine": 1370,
+        "startChar": 0,
+        "endLine": 1370,
+        "endChar": 51
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02fe7450_87b6152c",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-11T17:01:20Z",
+      "side": 1,
+      "message": "This was released in 0.24.62, so we can remove it from this list",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1377,
+        "endChar": 75
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
