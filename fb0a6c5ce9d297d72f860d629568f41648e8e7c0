@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52d2a98_5dc474b5",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f205e14_664d9002",
+      "range": {
+        "startLine": 1338,
+        "startChar": 39,
+        "endLine": 1338,
+        "endChar": 43
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "661b0fb3_28e39d85",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-11T17:01:20Z",
       "side": 1,
       "message": "this already happen in 0.24.61 -- this was a cherry-picked CL. Let\u0027s remove it from this list",
+      "range": {
+        "startLine": 1340,
+        "startChar": 0,
+        "endLine": 1341,
+        "endChar": 61
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47496c4d_4721454e",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T18:13:03Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "661b0fb3_28e39d85",
       "range": {
         "startLine": 1340,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c324f0ea_17c21c9d",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T18:13:03Z",
+      "side": 1,
+      "message": "interesting, I got all these by runing `git log ab6858a7..91dec51b`\ndone",
+      "parentUuid": "2abf591c_a39a309f",
+      "range": {
+        "startLine": 1344,
+        "startChar": 0,
+        "endLine": 1345,
+        "endChar": 61
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a434339a_e129696f",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-11T17:01:20Z",
       "side": 1,
       "message": "this bug number doesn\u0027t exist",
+      "range": {
+        "startLine": 1347,
+        "startChar": 7,
+        "endLine": 1347,
+        "endChar": 14
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32e7c29_27793a14",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T18:13:03Z",
+      "side": 1,
+      "message": "was taken by the script from the patch descrfiption. Now I tried to look for something similar, nothing came up.",
+      "parentUuid": "a434339a_e129696f",
       "range": {
         "startLine": 1347,
         "startChar": 7,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "043abfff_0345b909",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b94eb189_e6e250f9",
+      "range": {
+        "startLine": 1370,
+        "startChar": 0,
+        "endLine": 1370,
+        "endChar": 51
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02fe7450_87b6152c",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-01-11T17:01:20Z",
       "side": 1,
       "message": "This was released in 0.24.62, so we can remove it from this list",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1377,
+        "endChar": 75
+      },
+      "revId": "fb0a6c5ce9d297d72f860d629568f41648e8e7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d3e4c1_8222f6d6",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-11T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02fe7450_87b6152c",
       "range": {
         "startLine": 1377,
         "startChar": 0,
