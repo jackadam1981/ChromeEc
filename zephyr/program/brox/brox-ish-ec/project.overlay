@@ -40,6 +40,10 @@ i2c3ALT: &i2c3 {
 			compatible = "lgc,ap18c8k", "battery-smart";
 		};
 	};
+	notebook_interrupt: notebook-interrupt {
+		compatible = "cros,notebook-interrupt";
+		gpios = <&gpioc 7 GPIO_ACTIVE_HIGH>;
+	};
 };
 
 /*
