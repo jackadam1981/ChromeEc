@@ -22,6 +22,30 @@
       },
       "revId": "16d2cb54061b9112a4ee12cd811e2989a99cf3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7315c3a_bb3c727e",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-11T23:25:55Z",
+      "side": 0,
+      "message": "No - but it got carried over when reorganizing my stack of CLs.",
+      "parentUuid": "1ab28d6b_2c62935c",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "16d2cb54061b9112a4ee12cd811e2989a99cf3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
