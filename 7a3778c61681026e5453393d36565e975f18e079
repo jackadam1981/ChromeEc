@@ -46,6 +46,30 @@
       },
       "revId": "7a3778c61681026e5453393d36565e975f18e079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8c8896_dd01ccd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-11T22:57:35Z",
+      "side": 1,
+      "message": "The `ro-frid` is floating, depending on the size of `ro-fw`. Its offset is described in the `fmap` which is in the same RO. When doing a RO update, both the `ro-frid` and the `fmap` are updated. The new offset is used.\n\nMoving the `rw-frid` is concerned. The offset of the `rw-frid` is described in the `fmap` which is in the RO. Its offset should not change once FSI. So we set the `rw-frid` a fixed offset or pointing to `current_image_data`.\n\nI am fine with moving the `ro-frid`.",
+      "parentUuid": "40bcc191_21c34a16",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "7a3778c61681026e5453393d36565e975f18e079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
