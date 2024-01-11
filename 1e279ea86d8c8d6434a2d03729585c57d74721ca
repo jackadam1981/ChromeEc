@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8177be_7e593612",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa39d107_4aa153b0",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1046,
+        "endChar": 0
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fbc5578_739dc765",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-11T22:13:45Z",
       "side": 1,
       "message": "Delete empty handlers.  Your SMF library upstream has NULL checks.",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 46
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875b576f_455dc627",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbc5578_739dc765",
       "range": {
         "startLine": 1128,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-01-11T22:42:33Z",
       "side": 1,
       "message": "When port power control gets added (1.5A vs 3A) I could see a need for a different behavior with SNK vs SRC. Though some logic could be added in the common state to check whichever flag gets used to trigger any action related to a power change.",
+      "parentUuid": "06a8096d_e035fdf0",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1132,
+        "endChar": 47
+      },
+      "revId": "1e279ea86d8c8d6434a2d03729585c57d74721ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d238fe2_a6f141b4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-11T23:20:07Z",
+      "side": 1,
+      "message": "Maybe we will have different TypeC only policies, but we probably won\u0027t. I\u0027ve made the change.",
       "parentUuid": "06a8096d_e035fdf0",
       "range": {
         "startLine": 1132,
