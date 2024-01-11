@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7404f7a0_d2639418",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-11T22:47:15Z",
+      "side": 1,
+      "message": "We discussed separately.  This first pass if focused on providing unit test of the PDC driver API.\n\nThere will be follow up tests that are more integration focused.",
+      "parentUuid": "685c0125_c464a8cf",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "e91db55f623a8f7d1cdcd8b0ffe291f57b21cccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc780a27_3efab478",
         "filename": "zephyr/include/emul/emul_pdc.h",
         "patchSetId": 2
