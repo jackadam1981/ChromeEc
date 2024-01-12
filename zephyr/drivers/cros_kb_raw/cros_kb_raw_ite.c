@@ -203,11 +203,16 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 	}
 
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
+#ifdef CONFIG_SOC_IT8XXX2_REG_SET_V1
 	/* KSO[2] output high, others output low. */
 	inst->KBS_KSOL = BIT(2);
 	/* Enable KSO2's push-pull */
 	inst->KBS_KSOLGCTRL |= IT8XXX2_KBS_KSO2GCTRL;
 	inst->KBS_KSOLGOEN |= IT8XXX2_KBS_KSO2GOEN;
+#elif CONFIG_SOC_IT8XXX2_REG_SET_V2
+
+	ECREG(EC_REG_BASE_ADDR + 0x1d4a) |= BIT(7);
+#endif
 #else
 	/* KSO[7:0] pins output low. */
 	inst->KBS_KSOL = 0x00;
