@@ -97,7 +97,9 @@
 			/* PCBEEP_EC */
 			<&gpioa 7 0>,
 			/* ADP_DET */
-			<&gpiod 0 0>;
+			<&gpiod 0 0>,
+
+			<&gpioksol 2 GPIO_OUTPUT_HIGH>;
 		};
 };
 
