@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a6d6df_8dce66e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T23:20:12Z",
+      "side": 1,
+      "message": "This CL should also depend on CL:5194743 so that the board changes are guaranteed to merge with chis change.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "d03729346c5f030ffa721c9ab0676f64a75acf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "aebe01a0_b57d7da5",
@@ -67,6 +90,30 @@
       "writtenOn": "2024-01-12T17:57:09Z",
       "side": 1,
       "message": "Should we name this signal `PWR_EC_PCH_RSMRST_L` and should we do the same for the remaining active low signals like `SLP_Sx`?\n\nFor instance:\n\n`SLP_S0` -\u003e `SLP_S0_L`",
+      "range": {
+        "startLine": 330,
+        "startChar": 23,
+        "endLine": 330,
+        "endChar": 40
+      },
+      "revId": "d03729346c5f030ffa721c9ab0676f64a75acf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ec6c76_8a8e2ace",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T23:20:12Z",
+      "side": 1,
+      "message": "That\u0027s a good idea.  But that can be done after this CL stack lands.",
+      "parentUuid": "b04a73d8_03a162b8",
       "range": {
         "startLine": 330,
         "startChar": 23,
