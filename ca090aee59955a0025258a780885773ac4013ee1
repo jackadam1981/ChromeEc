@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb18b1e4_9ec6e39d",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T16:59:52Z",
+      "side": 1,
+      "message": "`reboot_timeout_sec` could be 0 if the AP fails to call EC_HANG_DETECT_CMD_SET_TIMEOUT first (or most recently called cancel).   You should return an error to the caller if the timeout isn\u0027t yet set.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "ca090aee59955a0025258a780885773ac4013ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
