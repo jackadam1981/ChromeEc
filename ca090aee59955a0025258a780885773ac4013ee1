@@ -22,6 +22,29 @@
       },
       "revId": "ca090aee59955a0025258a780885773ac4013ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268d74d4_7684a022",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 4759,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-12T21:16:53Z",
+      "side": 1,
+      "message": "\"and cancel currently running AP hand detect timer.\"",
+      "range": {
+        "startLine": 4759,
+        "startChar": 48,
+        "endLine": 4759,
+        "endChar": 49
+      },
+      "revId": "ca090aee59955a0025258a780885773ac4013ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
