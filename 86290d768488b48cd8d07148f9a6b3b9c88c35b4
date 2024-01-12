@@ -16,6 +16,144 @@
       "message": "just trying to get feedback. The test works, sometimes in times out",
       "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ceaf510_cffe21d4",
+        "filename": "chip/npcx/gpio-npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T23:36:01Z",
+      "side": 1,
+      "message": "I think the name is a bit too generic. It\u0027s only called from `__gpio_rtc_interrupt`, so it should have `rtc` in the name. Something like `rtc_interrupt_handler` or `rtc_interrupt_hook`. (`counter` in the name is unnecessary because someone may want to use it for a different purpose than counting.)",
+      "range": {
+        "startLine": 101,
+        "startChar": 26,
+        "endLine": 101,
+        "endChar": 51
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ac3e15_146ff027",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T23:36:01Z",
+      "side": 1,
+      "message": "Probably good to pull this part of the change into its own commit.",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 36
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96babb19_755f7ebc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T23:36:01Z",
+      "side": 1,
+      "message": "From this I\u0027m assuming the current code only works on `helipilot`, right?\n\nSince the two tests are using completely different APIs, we\u0027ll probably want to rename the test files to something like `rtc-stm32f4.c` and `rtc-npcx9.c`.",
+      "range": {
+        "startLine": 366,
+        "startChar": 16,
+        "endLine": 366,
+        "endChar": 81
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e515bb_d8bea383",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T23:36:01Z",
+      "side": 1,
+      "message": "Is `s` short for seconds? If so, I would call it `rtc_delay_seconds` just to avoid any ambiguity.",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686ca443_1d85074d",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T23:36:01Z",
+      "side": 1,
+      "message": "There could be a race condition here. The load could end up requiring several assembly instructions, which would leave an opportunity for the interrupt to fire in the middle and modify the counter, which would result in reading a corrupted value ([more details](https://concurrencyfreaks.blogspot.com/2013/08/interrupt-handler-in-c11-with-atomics.html)). It would be safer to make `interrupt_counter` an `atomic_t` and use `atomic_get()` to get the value and `atomic_add()` to increment it in the interrupt handler (similar to the `stm32f_rtc.c` file).",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 50
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba23a44d_e66ad4fa",
+        "filename": "test/stm32f_rtc.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T23:36:01Z",
+      "side": 1,
+      "message": "Unintentional change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
