@@ -16,6 +16,24 @@
       "message": "@herman.lin@emc.com.tw, I have made the changes necessary to merge this sensor support and reduce the impact on the templating system.\n\nOne issue that still needs to be resolved is that `FP_ALGORITHM_TEMPLATE_SIZE` is not a multiple of 4, so it will cause all but the first enrolled template to be unaligned in memory.\n\nIs there any way to fix this?\nCan you make the template size a multiple of 4?\n\n\nThe static assert that is triggered by this size issue is the following:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor_state.cc;l\u003d37-45;drc\u003d4a8c880feb1bd2b3e595c89598828a4f21ea2b0a",
       "revId": "ce9483db631896dc1dc7a07b20c0bc1f681d1c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae90f97_bdaf42c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-01-12T02:41:41Z",
+      "side": 1,
+      "message": "I change the definition of FP_ALGORITHM_TEMPLATE_SIZE to meet multiple of 4, and fixed in patch 5.",
+      "parentUuid": "6d44cb70_f29171fe",
+      "revId": "ce9483db631896dc1dc7a07b20c0bc1f681d1c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
