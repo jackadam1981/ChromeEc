@@ -16,6 +16,29 @@
       "message": "This change requires that boards set PCH_RSMRST as active low, correct?  Otherwise nissa will have the physical polarity of the PCH_RSMRST incorrect.",
       "revId": "d03729346c5f030ffa721c9ab0676f64a75acf55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04a73d8_03a162b8",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-12T17:57:09Z",
+      "side": 1,
+      "message": "Should we name this signal `PWR_EC_PCH_RSMRST_L` and should we do the same for the remaining active low signals like `SLP_Sx`?\n\nFor instance:\n\n`SLP_S0` -\u003e `SLP_S0_L`",
+      "range": {
+        "startLine": 330,
+        "startChar": 23,
+        "endLine": 330,
+        "endChar": 40
+      },
+      "revId": "d03729346c5f030ffa721c9ab0676f64a75acf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
