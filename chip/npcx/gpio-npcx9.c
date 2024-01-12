@@ -99,8 +99,13 @@ static void set_rtc_host_event(void)
 DECLARE_DEFERRED(set_rtc_host_event);
 #endif
 
+test_mockable_static void interrupt_counter_handler(void){
+}
+
 static void __gpio_rtc_interrupt(void)
 {
+	interrupt_counter_handler();
+
 	/* Check pending bit 7 */
 #ifdef CONFIG_HOSTCMD_RTC
 	if (NPCX_WKPND(MIWU_TABLE_0, MIWU_GROUP_4) & 0x80) {
