@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2953a5_25b0097e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-12T20:03:53Z",
+      "side": 1,
+      "message": "In file included from board/nocturne_fp/board_rw.c:7:\nIn file included from include/common.h:19:\n/usr/lib64/clang/18/include/inttypes.h:21:\n15: fatal error: \u0027inttypes.h\u0027 file not found\n   21 | #include_next \u003cinttypes.h\u003e",
+      "revId": "770e1d571ebe73cf7668426c759b02b88f2cd967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
