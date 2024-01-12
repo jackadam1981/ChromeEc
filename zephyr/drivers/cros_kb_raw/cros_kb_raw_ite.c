@@ -25,6 +25,12 @@
 #include <soc_dt.h>
 LOG_MODULE_REGISTER(cros_kb_raw, LOG_LEVEL_ERR);
 
+#ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
+#if !DT_NODE_EXISTS(KBD_KSO2_NODE)
+#error gpio_kbd_kso2 alias has to point to the keyboard column 2 output pin.
+#endif
+#endif /* CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED */
+
 #define KEYBOARD_KSI_PIN_COUNT IT8XXX2_DT_INST_WUCCTRL_LEN(0)
 #define KSOH_PIN_MASK (((1 << (KEYBOARD_COLS_MAX - 8)) - 1) & 0xff)
 
@@ -203,11 +209,17 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 	}
 
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
+#ifdef CONFIG_SOC_IT8XXX2_REG_SET_V1
 	/* KSO[2] output high, others output low. */
 	inst->KBS_KSOL = BIT(2);
 	/* Enable KSO2's push-pull */
 	inst->KBS_KSOLGCTRL |= IT8XXX2_KBS_KSO2GCTRL;
 	inst->KBS_KSOLGOEN |= IT8XXX2_KBS_KSO2GOEN;
+#elif CONFIG_SOC_IT8XXX2_REG_SET_V2
+	/* TODO: */
+
+
+#endif
 #else
 	/* KSO[7:0] pins output low. */
 	inst->KBS_KSOL = 0x00;
