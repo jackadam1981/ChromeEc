@@ -81,6 +81,30 @@
       },
       "revId": "16cb782bb4e67ab0767490e3f683bf5979493c8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cffa40d_ce2847a2",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-01-12T17:38:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d37db6da_09884e35",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "16cb782bb4e67ab0767490e3f683bf5979493c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
