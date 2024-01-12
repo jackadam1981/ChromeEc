@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79eb59bd_9687d801",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-12T04:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ebec88_0060d724",
+      "revId": "16cb782bb4e67ab0767490e3f683bf5979493c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c829a9ea_3e3cb139",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-01-11T19:47:26Z",
       "side": 1,
       "message": "log an error here? (unless this is strictly for debugging and you expect to always see the console log)",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "16cb782bb4e67ab0767490e3f683bf5979493c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37db6da_09884e35",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-12T04:00:10Z",
+      "side": 1,
+      "message": "on NV loading it is already checked and reported, so no need to print here. It is highly unlikely to be hit (e.g. update with invalid data after load), so this is more a validity check in case some issues.",
+      "parentUuid": "c829a9ea_3e3cb139",
       "range": {
         "startLine": 153,
         "startChar": 6,
