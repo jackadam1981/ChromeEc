@@ -363,7 +363,7 @@ class AllTests:
             TestConfig(test_name="stdlib"),
             TestConfig(test_name="std_vector"),
             TestConfig(
-                test_name="stm32f_rtc", exclude_boards=[DARTMONKEY, HELIPILOT]
+                test_name="stm32f_rtc", exclude_boards=[BLOONCHIPPER, DARTMONKEY]
             ),
             TestConfig(
                 config_name="system_is_locked_wp_on",
