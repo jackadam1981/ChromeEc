@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (9bcb40 Merge remote-tracking branch cros/main into firmware-fpmcu-b)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
+>>>>>>> BRANCH (000ff8 zephyr: bloonchipper: disable timer2)
