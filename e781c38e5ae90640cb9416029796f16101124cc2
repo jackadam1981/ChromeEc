@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a133a2c_d49e4015",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-12T03:48:23Z",
+      "side": 1,
+      "message": "I\u0027ll do it in separate CL as it needs testing on chromebook which I don\u0027t have at hand. But how these values will be cleared later? On taking ownership?",
+      "parentUuid": "7f75a305_adc9d17f",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "e781c38e5ae90640cb9416029796f16101124cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fd028ca_d327ab0f",
         "filename": "board/cr50/tpm2/nvmem_ops.c",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2024-01-11T21:02:42Z",
       "side": 1,
       "message": "let\u0027s also memset those policies to 0 (zero policy is an invalid policy) just in case - will help with detection if something wrong happens to sizes later",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "e781c38e5ae90640cb9416029796f16101124cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "531f0ff6_a99dffb4",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-12T03:48:23Z",
+      "side": 1,
+      "message": "So I decided to remove this clearing. Will add in separate CL with additional testing.",
+      "parentUuid": "1fd028ca_d327ab0f",
       "range": {
         "startLine": 46,
         "startChar": 1,
