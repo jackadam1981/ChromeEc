@@ -42,4 +42,9 @@ void nvmem_wipe_cache(void)
 	fill_rand_or_clear(gp.shProof.t.buffer, sizeof(gp.shProof.t.buffer));
 	gp.ehProof.t.size = PROOF_SIZE;
 	fill_rand_or_clear(gp.ehProof.t.buffer, sizeof(gp.ehProof.t.buffer));
+	gp.ownerAlg = gp.endorsementAlg = gp.lockoutAlg = TPM_ALG_NULL;
+
+	memset(&gp.ownerPolicy, 0, sizeof(gp.ownerPolicy));
+	memset(&gp.endorsementPolicy, 0, sizeof(gp.endorsementPolicy));
+	memset(&gp.lockoutPolicy, 0, sizeof(gp.lockoutPolicy));
 }
