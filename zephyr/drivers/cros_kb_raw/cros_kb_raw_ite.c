@@ -25,6 +25,12 @@
 #include <soc_dt.h>
 LOG_MODULE_REGISTER(cros_kb_raw, LOG_LEVEL_ERR);
 
+#if !defined(CONFIG_SOC_IT8XXX2_REG_SET_V1) && defined(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED)
+#if !DT_NODE_EXISTS(KBD_KSO2_NODE)
+#error gpio_kbd_kso2 alias has to point to the keyboard column 2 output pin.
+#endif
+#endif
+
 #define KEYBOARD_KSI_PIN_COUNT IT8XXX2_DT_INST_WUCCTRL_LEN(0)
 #define KSOH_PIN_MASK (((1 << (KEYBOARD_COLS_MAX - 8)) - 1) & 0xff)
 
@@ -182,10 +188,8 @@ static void cros_kb_raw_ite_ksi_isr(const struct device *dev)
 
 static int cros_kb_raw_ite_init(const struct device *dev)
 {
-	unsigned int key;
 	const struct cros_kb_raw_ite_config *config = dev->config;
 	struct cros_kb_raw_ite_data *data = dev->data;
-	struct kscan_it8xxx2_regs *const inst = config->base;
 	int status;
 
 	/* Ensure top-level interrupt is disabled */
@@ -201,6 +205,10 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 		LOG_ERR("Failed to configure KSI[7:0] and KSO[15:0] pins");
 		return status;
 	}
+
+#ifdef CONFIG_SOC_IT8XXX2_REG_SET_V1
+	unsigned int key;
+	struct kscan_it8xxx2_regs *const inst = config->base;
 
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
 	/* KSO[2] output high, others output low. */
@@ -223,6 +231,9 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 	inst->KBS_KSOH1 &= ~KSOH_PIN_MASK;
 	/* restore interrupts */
 	irq_unlock(key);
+#else
+	cros_kb_raw_ite_drive_column(dev, KEYBOARD_COLUMN_ALL);
+#endif
 
 	for (int i = 0; i < KEYBOARD_KSI_PIN_COUNT; i++) {
 		/* Select wakeup interrupt falling-edge triggered of KSI[7:0] */
