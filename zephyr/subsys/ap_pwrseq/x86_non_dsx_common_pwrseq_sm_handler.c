@@ -756,6 +756,10 @@ static int pwrseq_init(void)
 {
 	LOG_INF("Pwrseq Init");
 
+	/* set i2c5 as gpio input */
+	ECREG(EC_REG_BASE_ADDR + 0x1681) = 0x80;
+	ECREG(EC_REG_BASE_ADDR + 0x1682) = 0x80;
+
 	k_sem_init(&pwrseq_sem, 0, 1);
 	/* Initialize signal handlers */
 	power_signal_init();

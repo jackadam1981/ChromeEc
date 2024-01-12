@@ -13,6 +13,10 @@ int main(void)
 {
 	ec_app_main();
 
+	/* set i2c5 as altfun */
+	ECREG(EC_REG_BASE_ADDR + 0x1681) = 0x00;
+	ECREG(EC_REG_BASE_ADDR + 0x1682) = 0x00;
+
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		host_command_main();
 	} else if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {
