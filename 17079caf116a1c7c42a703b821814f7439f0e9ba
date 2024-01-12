@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "423864cc_20e1561b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T17:44:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure if you saw this comment.  Once PCH_RSMRST is configured as active low, the init code will release PCH_SMRST on a cold boot:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/subsys/ap_pwrseq/signal_gpio.c;l\u003d150\n\nThe reset signal won\u0027t be asserted until the first time `rsmrst_pass_thru_handler()` is called.",
+      "parentUuid": "54e408c1_c1d18fb1",
+      "revId": "17079caf116a1c7c42a703b821814f7439f0e9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bb1696b_f11a943b",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 5
