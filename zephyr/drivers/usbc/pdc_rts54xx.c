@@ -1098,7 +1098,7 @@ static int rts54_get_rtk_status(const struct device *dev, uint8_t offset,
 		len,
 	};
 
-	return rts54_post_command(dev, CMD_VENDOR_ENABLE, payload,
+	return rts54_post_command(dev, cmd, payload,
 				  ARRAY_SIZE(payload), buf);
 }
 
