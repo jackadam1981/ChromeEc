@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1179d15d_20cacf46",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T22:59:43Z",
+      "side": 1,
+      "message": "It may be coming from `checkpatch`, which [is not very useful](http://b/187793457#comment14) (It was written specifically for the Linux kernel). Personally, I would just ignore this warning (uploading with `--no-verify` will ignore it).",
+      "parentUuid": "87d7e136_91f5340b",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1fed703_9a0aed6c",
         "filename": "test/cortexm_fpu.c",
         "patchSetId": 5
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "I think the only reason for `inline` in a `.c` file (as opposed to a header file) would be to tell the compiler to inline the function. That\u0027s not really necessary here (over-optimization) and [it may not work anyway](https://en.cppreference.com/w/c/language/inline):\n\n\u003e The intent of the inline specifier is to serve as a hint for the compiler to perform optimizations, such as function inlining, which usually require the definition of a function to be visible at the call site. The compilers can (and usually do) ignore presence or absence of the inline specifier for the purpose of optimization.\n\nSome additional details on `inline` in C++ [here](http://go/totw/125#summary), though that\u0027s just for reference since this is C.",
       "parentUuid": "2ee90ea8_04d29699",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d669e91_1bc79c05",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T22:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e6e0f1_475b44b6",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -322,6 +370,30 @@
       "side": 1,
       "message": "it will fail on M4 if we do not manually trigger the `FPU_IRQ`. It will pass though on F7 and helipilot.",
       "parentUuid": "db121fd2_04bff573",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9940a93_cbb11750",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T22:59:43Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com is right. I forgot to assign the result of `_read_fpscr()`. This should work:\n\n\n```suggestion\n\t/* Check if result is not NaN nor infinity. */\n\tTEST_ASSERT(!isnan(result) \u0026\u0026 !isinf(result));\n\n\tfpscr \u003d _read_fpscr();\n```",
+      "parentUuid": "50ee4e3e_6fec6faa",
       "range": {
         "startLine": 180,
         "startChar": 0,

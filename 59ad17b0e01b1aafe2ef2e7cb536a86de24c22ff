@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f0a0ea_87f1056a",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-12T22:59:43Z",
+      "side": 1,
+      "message": "Let\u0027s keep the comment that describes why we\u0027re doing this since it\u0027s not obvious:\n\n\n```suggestion\n\t        /*\n\t         * On STM32H7 FPU interrupt is not triggered (see errata ES0392 Rev 8,\n\t         * 2.1.2 Cortex-M7 FPU interrupt not present on NVIC line 81), so\n\t         * trigger it from software.\n\t         */\n\t\tif (IS_ENABLED(CHIP_FAMILY_STM32H7)) {\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "59ad17b0e01b1aafe2ef2e7cb536a86de24c22ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
