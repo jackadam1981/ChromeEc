@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed4c45dc_30bc8ee9",
+        "filename": "zephyr/program/brox/brox-ish-ec/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:07:21Z",
+      "side": 1,
+      "message": "This should be active low.  This signal has an external pull-up.  We should require the ISH to make sure it also sets this as active low.  Active low interrupts also tend to save power.",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "416afdf8f0d011df3a26ce56f7545725220ce4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
