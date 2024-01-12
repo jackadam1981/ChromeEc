@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca4f4a6_a56d0643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-12T18:07:25Z",
+      "side": 1,
+      "message": "Correct, I have a patch ready to be uploaded for that.\n\nI am observing that modifying this power signal polarity and assertion logic is conflicting with the expectations introduced by this patch: CL:5154073, since it assumes that all evaluated power signals have same polarity.",
+      "parentUuid": "aebe01a0_b57d7da5",
+      "revId": "d03729346c5f030ffa721c9ab0676f64a75acf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b04a73d8_03a162b8",
