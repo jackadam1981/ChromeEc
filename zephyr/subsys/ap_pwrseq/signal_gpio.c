@@ -143,16 +143,18 @@ int power_signal_gpio_set(enum pwr_sig_gpio index, int value)
 }
 void power_signal_gpio_init(void)
 {
-	/*
-	 * If there has been a sysjump, do not set the output
-	 * to the deasserted state.
-	 */
-	gpio_flags_t out_flags = system_jumped_to_this_image() ?
-					 GPIO_OUTPUT :
-					 GPIO_OUTPUT_INACTIVE;
-
 	for (int i = 0; i < ARRAY_SIZE(gpio_config); i++) {
 		if (gpio_config[i].output) {
+			/*
+			 * If there has been a sysjump, set the output pin to
+			 * corresponding assertion value.
+			 */
+			gpio_flags_t out_flags =
+				system_jumped_to_this_image() ?
+					GPIO_OUTPUT :
+				gpio_config[i].flags & GPIO_ACTIVE_LOW ?
+					GPIO_OUTPUT_ACTIVE :
+					GPIO_OUTPUT_INACTIVE;
 			gpio_pin_configure_dt(&spec[i], out_flags);
 		} else {
 			gpio_pin_configure_dt(&spec[i], GPIO_INPUT);
