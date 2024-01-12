@@ -267,6 +267,7 @@ rsa-y=rsa.o
 rsa3-y=rsa.o
 rtc-y=rtc.o
 rtc_stm32f4-y=rtc_stm32f4.o
+rtc_npcx9-y=rtc_npcx9.o
 scratchpad-y=scratchpad.o
 sbrk-y=sbrk.o
 sbs_charging-y=sbs_charging.o
