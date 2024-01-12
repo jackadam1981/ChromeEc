@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964229b6_3ded24f3",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T18:35:03Z",
+      "side": 1,
+      "message": "The intro section could use an overview of the token database and how the de-tokenizing is transparent to the user under most scenarios.\n\nKeep this high level, such as \"servod maintains a database and the EC console automatically decodes the tokens\" and \"the DUT has a copy of the database and decodes the tokens before the EC output is written into the log.\"",
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59cba3b_60875561",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T18:35:03Z",
+      "side": 1,
+      "message": "Use https://crrev.com/c/5182026 instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca908aa_c1832b91",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T18:35:03Z",
+      "side": 1,
+      "message": "I think organizing this document as workflows might be easier to digest by the user.\n\nSomething like:\n### Building and flashing local EC images\nLocal EC changes might add new strings, so here\u0027s how to ensure your new strings are decoded correctly.\n  * Build the EC image as normal (zmake build...)\n  * Board specific database and unified database info\n  * Starting servod (maybe link to the content you already have)\n  * Flashing EC\n  \n### Building EC images with ebuild\n  * *Where is the token database found under /build/\u003cboard\u003e?*\n  * *Does the user need to update servod?\n  \n### Using pre-built images\n  * *How does user update database?  Do they even need to update the database?*",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3da76a_6a2519f9",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T18:35:03Z",
+      "side": 1,
+      "message": "It would be helpful to define the 3 database types in one spot - maybe right after the intro.  Then still have additional sections that detail how each database is created/managed.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
