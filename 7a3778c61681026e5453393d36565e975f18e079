@@ -70,6 +70,30 @@
       },
       "revId": "7a3778c61681026e5453393d36565e975f18e079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485c7173_af042027",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-12T01:04:22Z",
+      "side": 1,
+      "message": "OK, added a patch to swap the `ro-frid`, `fmap` order.",
+      "parentUuid": "1e8c8896_dd01ccd1",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "7a3778c61681026e5453393d36565e975f18e079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
