@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42dbd44c_a0246374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T18:44:06Z",
+      "side": 1,
+      "message": "The `verify_ap_inputs()` check uses the `gpio_emul_output_get()` which reads the physical pin state.  While in G3, all signals to the AP should be at a physical 0 and while in S0 all should be physical 1.\n\nBecause the check is on the physical level, it shouldn\u0027t matter if the signal is configured for active high/active low.  Is this assumption not correct?",
+      "parentUuid": "1ca4f4a6_a56d0643",
+      "revId": "d03729346c5f030ffa721c9ab0676f64a75acf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b04a73d8_03a162b8",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 6
