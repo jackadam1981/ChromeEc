@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4689bdab_210c3349",
+        "filename": "zephyr/drivers/cros_notebook_interrupt/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "Why NOTEBOOK_INTERRUPT and not TABLETMODE_INTERRUPT?",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0fa634_d6091cda",
+        "filename": "zephyr/drivers/cros_notebook_interrupt/notebook_interrupt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "This param can be dropped.",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6b2ef8_f3bc4f7f",
+        "filename": "zephyr/drivers/cros_notebook_interrupt/notebook_interrupt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "Why are you disabling the interrupt here?   I don\u0027t think this is needed - the interrupt type is already edge triggered so it should only fire once.",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8116573_00105417",
+        "filename": "zephyr/drivers/cros_notebook_interrupt/notebook_interrupt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "Note - that GPIOs can sometimes come from an I/O expander.  In that case, this would require an I2C transaction.  This should be moved into `interrupt_handler`.\n\nThis also provide the benefit of adding some basic debounce logic.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 72
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb52a59f_493597a2",
+        "filename": "zephyr/drivers/cros_notebook_interrupt/notebook_interrupt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "Our convention is to use \"device %s not ready\" for the format string for any device not ready error to save flash space.",
+      "range": {
+        "startLine": 72,
+        "startChar": 28,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f020074_b81134af",
+        "filename": "zephyr/dts/bindings/cros_notebook_interrupt/cros,notebook-interrupt.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "Nit `irq-gpios` to follow the more common convention.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d200c6_7381dc21",
+        "filename": "zephyr/test/notebook_interrupt/boards/native_sim.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-12T19:05:55Z",
+      "side": 1,
+      "message": "Add a comment that the test logic explicitly expects an active high interrupt.",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "9a41f72b3efc3ed317447e3d9f93c0b2fe19883e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
