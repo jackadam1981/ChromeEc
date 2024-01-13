@@ -44,6 +44,15 @@ config BOARD_MTLRVP_PD
 	  Build Intel MTLRVP_PD reference board. This board is Intel MTL RVP
 	  SOC with NPCX_NPCX9M3F and CCG8 PD.
 
+config BOARD_MTLRVP_PMC_ALTMODE
+	bool "Intel MTLRVP_PMC_ALTMODE board"
+	depends on SOC_NPCX9M3F
+	help
+	  Build Intel MTLRVP_PMC_ALTMODE reference board. This board is Intel MTL RVP
+	  SOC with NPCX_NPCX9M3F and Power Delivery chip, with intel Power Management
+	  controller handling type-C altmode functionality.
+
+
 # Override the default USB-C stack choice baseed on the board type.
 # This must be done before including Kconfig.zephyr below.
 choice PLATFORM_EC_USBC_STACK
