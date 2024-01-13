@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0368b0e0_fdc0c0ff",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-13T01:03:29Z",
+      "side": 1,
+      "message": "The only way for this call to fail is if `CONFIG_USB_PD_DECODE_SOP` is disabled, which is an invalid config for TCPMv2: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/include/config.h#6065\n\nThat\u0027s a slightly weird state of affairs, and it could stand to be cleaned up, but I don\u0027t think we need to propagate a failure of `dfp_consume_identity` up through its callers.",
+      "parentUuid": "fd6dd7ff_b281fb27",
+      "range": {
+        "startLine": 490,
+        "startChar": 2,
+        "endLine": 490,
+        "endChar": 22
+      },
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6364c18_734aebe7",
@@ -76,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338a1c51_e887925a",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-13T01:03:29Z",
+      "side": 1,
+      "message": "Done. I hope this will be temporary, and I can clean it up when I\u0027ve completely transitioned control of discovery to the DPM.",
+      "parentUuid": "02c5db51_cd5e1b5a",
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31eb714f_acce851d",
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1cbf7b4_637a417d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5971,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-13T01:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31eb714f_acce851d",
+      "range": {
+        "startLine": 5971,
+        "startChar": 1,
+        "endLine": 5971,
+        "endChar": 2
+      },
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "907d0090_2707a97b",
@@ -112,6 +178,30 @@
       "writtenOn": "2024-01-03T19:43:05Z",
       "side": 1,
       "message": "maybe add brackets {} around this",
+      "range": {
+        "startLine": 6016,
+        "startChar": 2,
+        "endLine": 6021,
+        "endChar": 32
+      },
+      "revId": "b53f4b77655a3fe0ad4d3c0725fb88af57b09fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f11f76_91835211",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6021,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-13T01:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907d0090_2707a97b",
       "range": {
         "startLine": 6016,
         "startChar": 2,
