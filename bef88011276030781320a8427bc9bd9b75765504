@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c3e63f_b438c339",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2024-01-13T07:01:23Z",
+      "side": 1,
+      "message": "Detecting the presence of an error, according to http://sbs-forum.org/specs/sbdat110.pdf, involves checking the ACK signal on the SMBus.\n\nThis might not be possible for read protocols, though. If I understand this correctly, that is the case here, so the Smart Battery may signal an error by pulling the clock or data line low for longer than Ttimeout, as specified in the SMBus specification. An alternate method of signaling an error is for the smart battery to modulate the safety signal. I\u0027m not sure if either of these are readily available for you to check.",
+      "revId": "bef88011276030781320a8427bc9bd9b75765504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
