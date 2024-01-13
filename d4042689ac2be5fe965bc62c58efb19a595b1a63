@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b00cd1a_6440e345",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-01-13T02:40:39Z",
+      "side": 1,
+      "message": "It\u0027s clamshell mode while physical is 0, and active low. Here 0 and 1 has to be swapped. Like logical 0 is tablet mode; 1 is clamshell mode.",
+      "range": {
+        "startLine": 35,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "d4042689ac2be5fe965bc62c58efb19a595b1a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d23ccab_ca260254",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-01-13T02:40:39Z",
+      "side": 1,
+      "message": "Tested this patch on Rex. \nThis flag only catches logical 1. Interrupt is not triggered from clamshell to tablet mode; also tried the flags (`GPIO_INT_EDGE_TO_ACTIVE | GPIO_INT_EDGE_TO_INACTIVE`); it is even worse, no interrupt triggered at all. If  using `GPIO_INT_EDGE_BOTH`, I see tablet/clamshell working correctly along with lid angle change.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "d4042689ac2be5fe965bc62c58efb19a595b1a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
