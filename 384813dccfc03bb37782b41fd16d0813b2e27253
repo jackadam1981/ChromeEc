@@ -52,6 +52,24 @@
       "parentUuid": "4e34fe57_5d5fc906",
       "revId": "384813dccfc03bb37782b41fd16d0813b2e27253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4765b785_82a9b231",
+        "filename": "zephyr/program/rex/rex/src/board_nb_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-01-13T02:27:45Z",
+      "side": 1,
+      "message": "Rebased this patch and updated changes.",
+      "parentUuid": "cf75c532_010bf0f7",
+      "revId": "384813dccfc03bb37782b41fd16d0813b2e27253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
