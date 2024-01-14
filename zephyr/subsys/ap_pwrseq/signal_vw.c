@@ -86,6 +86,20 @@ static void vw_update_all(bool notify)
 	}
 }
 
+/*
+ * Reset all defined VW signals.
+ */
+static void vw_reset_all(void)
+{
+	for (int i = 0; i < ARRAY_SIZE(vw_config); i++) {
+		/*
+		 * Upon reset we need to set VW signals to corresponding value.
+		 * TODO: Get VW signal reset value.
+		 */
+		vw_set(i, 0, true);
+	}
+}
+
 void power_signal_espi_cb(const struct device *dev, struct espi_callback *cb,
 			  struct espi_event event)
 {
@@ -96,14 +110,23 @@ void power_signal_espi_cb(const struct device *dev, struct espi_callback *cb,
 		__ASSERT(0, "ESPI unknown event type: %d", event.evt_type);
 		break;
 
+	case ESPI_BUS_RESET:
+		if (event.evt_data) {
+			/* Reset asserted, invalidate VW signals */
+			atomic_clear(&signal_valid);
+		} else {
+			/* All VW signals are reset on bus reset deassertion */
+			vw_reset_all();
+		}
+		break;
 	case ESPI_BUS_EVENT_CHANNEL_READY:
 		/* Virtual wire channel status change */
 		if (event.evt_details == ESPI_CHANNEL_VWIRE) {
-			if (event.evt_data) {
-				/* If now ready, update all the signals */
-				vw_update_all(true);
-			} else {
-				/* If not ready, invalidate the signals */
+			if (!event.evt_data) {
+				/*
+				 * Host channel is not enabled, we need to
+				 * invalidate the signals.
+				 */
 				atomic_clear(&signal_valid);
 			}
 		}
