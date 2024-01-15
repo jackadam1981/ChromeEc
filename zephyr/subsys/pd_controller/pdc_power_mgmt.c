@@ -1599,6 +1599,10 @@ bool pdc_power_mgmt_get_partner_dual_role_power(int port)
 	 */
 	while (!pdc_data[port]->port.ccaps_ready) {
 		k_sleep(K_MSEC(LOOP_DELAY_MS));
+		/* Make sure the port is still connected */
+		if (!pdc_power_mgmt_is_connected(port)) {
+			return false;
+		}
 	}
 
 	/* Return DRP capability */
@@ -1618,6 +1622,11 @@ bool pdc_power_mgmt_get_partner_data_swap_capable(int port)
 	 */
 	while (!pdc_data[port]->port.ccaps_ready) {
 		k_sleep(K_MSEC(LOOP_DELAY_MS));
+		/* Make sure the port is still connected */
+		if (!pdc_power_mgmt_is_connected(port)) {
+			return false;
+		}
+
 	}
 
 	/* Make sure port partner is DRP, RP only, or RD only */
