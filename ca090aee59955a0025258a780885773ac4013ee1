@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b219b9_dc442eb2",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eb18b1e4_9ec6e39d",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "ca090aee59955a0025258a780885773ac4013ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "268d74d4_7684a022",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-12T21:16:53Z",
       "side": 1,
       "message": "\"and cancel currently running AP hand detect timer.\"",
+      "range": {
+        "startLine": 4759,
+        "startChar": 48,
+        "endLine": 4759,
+        "endChar": 49
+      },
+      "revId": "ca090aee59955a0025258a780885773ac4013ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9256ec63_f6ba370b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 4759,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "268d74d4_7684a022",
       "range": {
         "startLine": 4759,
         "startChar": 48,

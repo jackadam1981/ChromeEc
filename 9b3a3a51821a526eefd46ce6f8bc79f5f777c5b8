@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27db57b8_5763c8fb",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66fbbaa6_41f89e86",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ededcac_f0bd1ad7",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "If the kernel always does the pet right after SET_TIMEOUT, then a `hang_detect_cancel()` makes sense here.\n\nThat way the AP hang detect state has only 3 possible states:\n* At init time or after CANCEL: no timeout set, watchdog not running\n* After SET_TIMEOUT: timeout is set, watchdog not running\n* After RELOAD: watchdog running (if timeout set)\n\nOtherwise the state after SET_TIMEOUT differs based on whether the AP previously did a RELOAD.\n\nThis contract should be detailed in ec_commands.h.",
       "parentUuid": "cd6d9afd_66cb587a",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "9b3a3a51821a526eefd46ce6f8bc79f5f777c5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3aea53_5bef49f4",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8f4f8a86_9a9ad992",
       "range": {
         "startLine": 115,
         "startChar": 2,
