@@ -1607,15 +1607,6 @@ bool pdc_power_mgmt_get_partner_dual_role_power(int port)
 		return false;
 	}
 
-	/*
-	 * The subsystem is in an attached state, so wait until the
-	 * connector capabilities are read.
-	 */
-	while (!pdc_data[port]->port.ccaps_ready) {
-		k_sleep(K_MSEC(LOOP_DELAY_MS));
-	}
-
-	/* Return DRP capability */
 	return pdc_data[port]->port.ccaps.op_mode_drp;
 }
 
@@ -1624,14 +1615,6 @@ bool pdc_power_mgmt_get_partner_data_swap_capable(int port)
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
 		return false;
-	}
-
-	/*
-	 * The subsystem is in an attached state, so wait until the
-	 * connector capabilities are read.
-	 */
-	while (!pdc_data[port]->port.ccaps_ready) {
-		k_sleep(K_MSEC(LOOP_DELAY_MS));
 	}
 
 	/* Make sure port partner is DRP, RP only, or RD only */
