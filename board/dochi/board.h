@@ -26,11 +26,10 @@
 
 /* Sensors */
 
-#define CONFIG_ACCEL_BMA4XX
-#define CONFIG_ACCEL_BMA4XX_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCEL_LIS2DE /* Lid accel */
+
 /* Sensors without hardware FIFO are in forced mode */
-#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
+#define CONFIG_ACCEL_FORCE_MODE_MASK (BIT(BASE_ACCEL) | BIT(LID_ACCEL))
 
 /* Enable sensor fifo, must also define the _SIZE and _THRES */
 #define CONFIG_ACCEL_FIFO
