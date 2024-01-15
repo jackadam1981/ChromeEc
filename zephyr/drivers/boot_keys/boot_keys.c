@@ -55,11 +55,11 @@ BUILD_ASSERT(ARRAY_SIZE(boot_keys) == BOOT_KEY_COUNT);
 
 static bool ignore_key(uint8_t row, uint8_t col)
 {
-	if (!IS_ENABLED(CONFIG_BOOT_KEYS_COL2_WORKAROUND)) {
+	if (!IS_ENABLED(CONFIG_BOOT_KEYS_GHOST_REFRESH_WORKAROUND)) {
 		return false;
 	}
 
-	if (row == 2) {
+	if (row == boot_keys[BOOT_KEY_REFRESH].row) {
 		for (uint8_t i = 0; i < ARRAY_SIZE(boot_keys); i++) {
 			const struct boot_keys *key = &boot_keys[i];
 

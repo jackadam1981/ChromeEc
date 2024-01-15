@@ -11,9 +11,16 @@ config CROS_EC_BOOT_KEYS
 	  Enable support for detecting boot keys combination to enter recovery
 	  mode, force memory retraining and booting without starting the AP.
 
-config BOOT_KEYS_COL2_WORKAROUND
-	bool "Ignore stray col 2 keys workaround"
+config BOOT_KEYS_GHOST_REFRESH_WORKAROUND
+	bool "Ignore stray refresh keys keys workaround"
 	depends on CROS_EC_BOOT_KEYS
+	default y if PLATFORM_EC_POWER_BUTTON
 	help
-	  Ignore non boot keys on column 2, this prevents the stray key check
-	  from skipping entering boot mode due to b/300418915.
+	  Ignore stray keys on the refresh key row when looking for boot key
+	  combination.
+	  Some TI50 versions have a bug where they keep the refresh key row
+	  asserted the whole time that the power button is pressed, this causes
+	  a stray press to show up on all other column on the row corresponding
+	  to the rfresh key. This option ignores such presses, so that they
+	  don't trigger the stray key check code which would otherwise prevent
+	  from entering boot mode due (b/300418915).
