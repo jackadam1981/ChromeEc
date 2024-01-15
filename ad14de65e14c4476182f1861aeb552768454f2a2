@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08c16c5_4aad9952",
+        "filename": "zephyr/test/drivers/host_cmd/src/ap_hang_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f66172f6_afb73c17",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "ad14de65e14c4476182f1861aeb552768454f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42613369_83c287f4",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d67b43c8_e0a1715a",
+        "filename": "zephyr/test/drivers/host_cmd/src/ap_hang_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42613369_83c287f4",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 58
+      },
+      "revId": "ad14de65e14c4476182f1861aeb552768454f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "725729d4_33dda1ee",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-01-12T17:27:31Z",
       "side": 1,
       "message": "Avoid testing internal variables when there is a public API to give you the result.\n\n```\n\treq.command \u003d EC_HANG_DETECT_CMD_GET_STATUS;\n\tzassert_ok(ec_cmd_hang_detect(\u0026args, \u0026req, \u0026resp));\n\tzassert_equal(resp.status, EC_HANG_DETECT_AP_BOOT_NORMAL);\n```",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 58
+      },
+      "revId": "ad14de65e14c4476182f1861aeb552768454f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3bb0ca_a493ab4c",
+        "filename": "zephyr/test/drivers/host_cmd/src/ap_hang_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-15T15:29:34Z",
+      "side": 1,
+      "message": "Ok, I have also replaced other places with `EC_HANG_DETECT_CMD_GET_STATUS` call",
+      "parentUuid": "725729d4_33dda1ee",
       "range": {
         "startLine": 86,
         "startChar": 0,
