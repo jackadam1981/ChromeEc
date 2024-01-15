@@ -21,6 +21,8 @@
 #include <ap_power/ap_power.h>
 #include <drivers/intel_altmode.h>
 #include <usbc/pd_task_intel_altmode.h>
+#include <usbc/pdc_power_mgmt.h>
+
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
@@ -378,17 +380,17 @@ SHELL_CMD_REGISTER(altmode, &sub_altmode_cmds, "PD Altmode commands", NULL);
  */
 enum tcpc_cc_polarity pd_get_polarity(int port)
 {
-	return intel_altmode_task_data.data_status[port].conn_ori;
+	return pdc_power_mgmt_pd_get_polarity(port);
 }
 
 enum pd_data_role pd_get_data_role(int port)
 {
-	return !intel_altmode_task_data.data_status[port].data_role;
+	return pdc_power_mgmt_pd_get_data_role(port);
 }
 
 int pd_is_connected(int port)
 {
-	return intel_altmode_task_data.data_status[port].data_conn;
+	return pdc_power_mgmt_is_connected(port);
 }
 
 #ifdef CONFIG_PLATFORM_EC_USB_PD_DP_MODE
@@ -420,7 +422,7 @@ void pd_request_data_swap(int port)
 
 enum pd_power_role pd_get_power_role(int port)
 {
-	return !intel_altmode_task_data.data_status[port].dp_src_snk;
+	return pdc_power_mgmt_get_power_role(port);
 }
 
 uint8_t pd_get_task_state(int port)
@@ -440,22 +442,22 @@ bool pd_get_vconn_state(int port)
 
 bool pd_get_partner_dual_role_power(int port)
 {
-	return false;
+	return pdc_power_mgmt_get_partner_dual_role_power(port);
 }
 
 bool pd_get_partner_data_swap_capable(int port)
 {
-	return false;
+	return pdc_power_mgmt_get_partner_data_swap_capable(port);
 }
 
 bool pd_get_partner_usb_comm_capable(int port)
 {
-	return false;
+	return pdc_power_mgmt_get_partner_usb_comm_capable(port);
 }
 
 bool pd_get_partner_unconstr_power(int port)
 {
-	return false;
+	return pdc_power_mgmt_get_partner_unconstr_power(port);
 }
 
 const char *pd_get_task_state_name(int port)
@@ -465,10 +467,10 @@ const char *pd_get_task_state_name(int port)
 
 enum pd_cc_states pd_get_task_cc_state(int port)
 {
-	return PD_CC_UFP_ATTACHED;
+	return pdc_power_mgmt_get_task_cc_state(port);
 }
 
 bool pd_capable(int port)
 {
-	return true;
+	return pdc_power_mgmt_pd_capable(port);
 }
