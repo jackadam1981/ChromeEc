@@ -36,16 +36,16 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "extpower_interrupt";
 		};
-		int_volume_up: volume_up {
-			irq-pin = <&gpio_ec_volup_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "button_interrupt";
-		};
-		int_volume_down: volume_down {
-			irq-pin = <&gpio_ec_voldn_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "button_interrupt";
-		};
+		// int_volume_up: volume_up {
+		// 	irq-pin = <&gpio_ec_volup_btn_odl>;
+		// 	flags = <GPIO_INT_EDGE_BOTH>;
+		// 	handler = "button_interrupt";
+		// };
+		// int_volume_down: volume_down {
+		// 	irq-pin = <&gpio_ec_voldn_btn_odl>;
+		// 	flags = <GPIO_INT_EDGE_BOTH>;
+		// 	handler = "button_interrupt";
+		// };
 		int_accel: accel {
 			irq-pin = <&gpio_ec_accel_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;

@@ -19,7 +19,7 @@ def register_npcx9_variant(
             "gpio.dts",
             "i2c.dts",
             "interrupts.dts",
-            "keyboard.dts",
+            # "keyboard.dts",
             "motionsense.dts",
             "pwm_leds.dts",
             "temp_sensors.dts",
