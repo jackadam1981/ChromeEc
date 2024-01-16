@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cca1540_ba5a9055",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/public/tabletmode_interrupt/emul.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-16T19:01:39Z",
+      "side": 1,
+      "message": "These prototypes need to be in the C file.  `static` in a header file can create duplicated symbols.  The test needs to use `extern` to resolve these symbols.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "792297dc4839650becb8d672429ab72402ab2ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640c9a5d_85dca910",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-16T19:01:39Z",
+      "side": 1,
+      "message": "Use logging, or don\u0027t include this message at all.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "792297dc4839650becb8d672429ab72402ab2ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a70baa_8cda8977",
+        "filename": "zephyr/test/drivers/tabletmode_interrupt/src/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-16T19:01:39Z",
+      "side": 1,
+      "message": "Nit - this is a little strange.  You\u0027re always generating a pulse on the tablet mode interrupt, which will cause two interrupts to fire.  \n\nBut it does functionally test the code, so I won\u0027t block this.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "792297dc4839650becb8d672429ab72402ab2ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
