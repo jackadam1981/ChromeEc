@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec7def7c_f56bf83d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-16T21:29:20Z",
+      "side": 1,
+      "message": "Yes, but there were some conflicts - e.g. on Fizz branch there is no Zephyr or Clang builds; ectool.cc -\u003e ectool.c; etc.",
+      "parentUuid": "c9f972a3_b69098fa",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "f0224141fe8eba98e07c5ec6a506afc6b435362f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aed3e5e7_50499b2d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
