@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702d1a5f_24ec0d60",
+        "filename": "test/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2020,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-01-16T20:46:37Z",
+      "side": 1,
+      "message": "Add a test that verifies get_pcr_nv_addr works with pcr_index (NUM_PCRS - 1). And validate the error when pcr_index is set to NUM_OF_PCRS.",
+      "revId": "8283a7fa4d9dc4d35b5c880e0523ad993126bbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
