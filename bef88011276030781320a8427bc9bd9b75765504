@@ -16,6 +16,24 @@
       "message": "Detecting the presence of an error, according to http://sbs-forum.org/specs/sbdat110.pdf, involves checking the ACK signal on the SMBus.\n\nThis might not be possible for read protocols, though. If I understand this correctly, that is the case here, so the Smart Battery may signal an error by pulling the clock or data line low for longer than Ttimeout, as specified in the SMBus specification. An alternate method of signaling an error is for the smart battery to modulate the safety signal. I\u0027m not sure if either of these are readily available for you to check.",
       "revId": "bef88011276030781320a8427bc9bd9b75765504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9228d4_59b359ef",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T17:18:18Z",
+      "side": 1,
+      "message": "\u003e so the Smart Battery may signal an error by pulling the clock or data line low for longer than Ttimeout, as specified in the SMBus specification. \n\ni2c_read16 covers timeout cases. What we\u0027re addtionally trying to cover is the error code set in the status register. SBS_DOUBLE_CHECK_STATUS_READ is for catching errors in reading the status register itself. It\u0027s guarded by a macro because it might be redundant (and it\u0027s not clear in the spec).\n\nCan you please explain your concern differently if I\u0027m missing something?",
+      "parentUuid": "c6c3e63f_b438c339",
+      "revId": "bef88011276030781320a8427bc9bd9b75765504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
