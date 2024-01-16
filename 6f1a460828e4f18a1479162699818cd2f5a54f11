@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf27cd3_a09b771f",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-16T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "964229b6_3ded24f3",
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b59cba3b_60875561",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-01-12T18:35:03Z",
       "side": 1,
       "message": "Use https://crrev.com/c/5182026 instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e21e2e_b488e842",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-16T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b59cba3b_60875561",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33aad733_04aeb57d",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-16T22:17:52Z",
+      "side": 1,
+      "message": "I tweaked the headers a bit to help with the overall flow.  Let me know if you\u0027d like this modified to your suggestion above.",
+      "parentUuid": "bca908aa_c1832b91",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb3da76a_6a2519f9",
         "filename": "docs/zephyr/zephyr_tokenized_logging.md",
         "patchSetId": 13
@@ -77,6 +143,30 @@
       "writtenOn": "2024-01-12T18:35:03Z",
       "side": 1,
       "message": "It would be helpful to define the 3 database types in one spot - maybe right after the intro.  Then still have additional sections that detail how each database is created/managed.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b827dbf6_eba860ae",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-16T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb3da76a_6a2519f9",
       "range": {
         "startLine": 209,
         "startChar": 0,
