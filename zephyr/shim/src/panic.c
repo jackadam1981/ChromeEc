@@ -63,6 +63,22 @@
 #define PANIC_REG_EXCEPTION(pdata) pdata->cm.regs[1]
 #define PANIC_REG_REASON(pdata) pdata->cm.regs[3]
 #define PANIC_REG_INFO(pdata) pdata->cm.regs[4]
+
+#ifdef CONFIG_PLATFORM_EC_PANIC_STRIP_GPR
+static void strip_gpr(struct panic_data *pdata)
+{
+	for (int i = CORTEX_PANIC_FRAME_REGISTER_R0;
+	     i <= CORTEX_PANIC_FRAME_REGISTER_R12; i++) {
+		pdata->cm.frame[i] = 0;
+	}
+
+	for (int i = CORTEX_PANIC_REGISTER_R4; i <= CORTEX_PANIC_REGISTER_R11;
+	     i++) {
+		pdata->cm.regs[i] = 0;
+	}
+}
+#endif /* CONFIG_PLATFORM_EC_PANIC_STRIP_GPR */
+
 #elif defined(CONFIG_RISCV) && !defined(CONFIG_64BIT)
 /*
  * Not all registers are passed in the context from Zephyr
@@ -129,6 +145,10 @@ static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
 	pdata->magic = PANIC_DATA_MAGIC;
 
 	PANIC_REG_LIST(PANIC_COPY_REGS);
+
+#ifdef CONFIG_PLATFORM_EC_PANIC_STRIP_GPR
+	strip_gpr(pdata);
+#endif /* CONFIG_PLATFORM_EC_PANIC_STRIP_GPR */
 }
 
 void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
