@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b53f07_5a545607",
+        "filename": "zephyr/test/drivers/host_cmd/src/ap_hang_detect.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-16T08:12:48Z",
+      "side": 1,
+      "message": "\u003e \"acordingly\" is a possible misspelling of \"accordingly\".\n\nPlease fix.",
+      "parentUuid": "7d4b9717_da71d521",
+      "range": {
+        "startLine": 88,
+        "startChar": 36,
+        "endLine": 88,
+        "endChar": 46
+      },
+      "revId": "b2ee417bea957e9d5881335d231b0e08db54c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
