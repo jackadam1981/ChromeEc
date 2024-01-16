@@ -16,6 +16,24 @@
       "message": "I think we need a system test (\u003d tast test) for this feature before we release it. Does it already exist?",
       "revId": "cf425835399c280ef97b9522d5d0e1689a987acc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b184264_90a38720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-16T21:42:53Z",
+      "side": 1,
+      "message": "There is a implementation for watchdog test (server/cros/watchdog_tester.py) and used in `firmware_EventLog` (server/site_tests/firmware_EventLog/firmware_EventLog.py), but I wasn\u0027t lucky with running this test (it was failing before reaching watchdog part).\n\nThe `watchdog_tester.py` is also used in `src/third_party/labpack/files/server/site_tests/platform_HWwatchdog/platform_HWwatchdog.py`\n\nI don\u0027t know how those (labpack) are scheduled and run, but I was able to copy it to `autotest` and run as \"noramal\" tast.",
+      "parentUuid": "3467ec50_2067a3e4",
+      "revId": "cf425835399c280ef97b9522d5d0e1689a987acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
