@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6149d70c_b13990fd",
+        "filename": "driver/fingerprint/elan/elan_matcher.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-16T18:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fffe504_cac74c03",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "4de82eb67a1ac6dfe7b0f11126ed382f13ebcf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e8a8f1_faebcf9f",
