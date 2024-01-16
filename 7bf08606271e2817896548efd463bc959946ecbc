@@ -16,6 +16,24 @@
       "message": "Nice cleanup. What about those same unused macros under zephyr/program?",
       "revId": "7bf08606271e2817896548efd463bc959946ecbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3401c743_07ee4048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-16T19:56:15Z",
+      "side": 1,
+      "message": "Which ones? (I\u0027ll merge this one, happy to followup if there\u0027s more unused stuff)",
+      "parentUuid": "0ed948aa_ed06b41a",
+      "revId": "7bf08606271e2817896548efd463bc959946ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
