@@ -22,6 +22,30 @@
       },
       "revId": "114201ca1bce178668ec509184399b9a4f2b4301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25edaaa2_2b309543",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-16T17:46:24Z",
+      "side": 1,
+      "message": "Good point. I\u0027ll create pd_shim.c",
+      "parentUuid": "84a86aac_d14b5882",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "114201ca1bce178668ec509184399b9a4f2b4301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
