@@ -16,6 +16,24 @@
       "message": "Nit: `\"Skipped %d named-gpios children.\"` so it follows above logging statement?",
       "revId": "c33d76dfc46f8740deab820a91ab78fb341071fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f933471f_825e65c7",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-16T18:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b6518f_088514dd",
+      "revId": "c33d76dfc46f8740deab820a91ab78fb341071fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
