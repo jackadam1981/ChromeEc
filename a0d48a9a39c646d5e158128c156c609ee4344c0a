@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a87aee7_e95966eb",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T22:08:51Z",
+      "side": 1,
+      "message": "Would \u0027const\u0027 be applicable?",
+      "range": {
+        "startLine": 14,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "a0d48a9a39c646d5e158128c156c609ee4344c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9813a780_3058babb",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T22:08:51Z",
+      "side": 1,
+      "message": "This isn\u0027t used for STM32F4, is it? If it\u0027s ok, maybe we don\u0027t need to define FPU_IRQ as -1 below, either.\n\nOr maybe we should do \n\n    if (FPU_IRQ !\u003d -1) {\n        task_trigger_irq(FPU_IRQ); \n    }\n\nat line 68.",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "a0d48a9a39c646d5e158128c156c609ee4344c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0be8d4_d3904764",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T22:08:51Z",
+      "side": 1,
+      "message": "This is going to exhaust the cpu cycles. Is it ok (not to have a sleep)?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 7
+      },
+      "revId": "a0d48a9a39c646d5e158128c156c609ee4344c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
