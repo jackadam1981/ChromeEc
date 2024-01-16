@@ -18,28 +18,31 @@ __override struct led_descriptor
 					     LED_INDEFINITE } },
 		[STATE_CHARGING_LVL_2] = { { EC_LED_COLOR_AMBER,
 					     LED_INDEFINITE } },
-		[STATE_CHARGING_FULL_CHARGE] = { { EC_LED_COLOR_BLUE,
+		[STATE_CHARGING_FULL_CHARGE] = { { EC_LED_COLOR_WHITE,
 						   LED_INDEFINITE } },
-		[STATE_DISCHARGE_S0] = { { EC_LED_COLOR_BLUE,
+		[STATE_DISCHARGE_S0] = { { EC_LED_COLOR_WHITE,
 					   LED_INDEFINITE } },
 		[STATE_DISCHARGE_S0_BAT_LOW] = { { EC_LED_COLOR_AMBER,
-						   LED_INDEFINITE } },
-		[STATE_DISCHARGE_S3] = { { LED_OFF, LED_INDEFINITE } },
+						   1 * LED_ONE_SEC},
+						 { LED_OFF, 3 * LED_ONE_SEC } },
+		[STATE_DISCHARGE_S3] = { { EC_LED_COLOR_WHITE,
+					   2 * LED_ONE_SEC},
+					 { LED_OFF, 2 * LED_ONE_SEC} },
 		[STATE_DISCHARGE_S5] = { { LED_OFF, LED_INDEFINITE } },
 		[STATE_BATTERY_ERROR] = { { EC_LED_COLOR_AMBER,
 					    1 * LED_ONE_SEC },
 					  { LED_OFF, 1 * LED_ONE_SEC } },
-		[STATE_FACTORY_TEST] = { { EC_LED_COLOR_AMBER,
+		[STATE_FACTORY_TEST] = { { EC_LED_COLOR_WHITE,
 					   2 * LED_ONE_SEC },
-					 { EC_LED_COLOR_BLUE,
+					 { EC_LED_COLOR_AMBER,
 					   2 * LED_ONE_SEC } },
 	};
 
 __override void led_set_color_battery(enum ec_led_colors color)
 {
 	switch (color) {
-	case EC_LED_COLOR_BLUE:
-		set_pwm_led_color(PWM_LED0, EC_LED_COLOR_BLUE);
+	case EC_LED_COLOR_WHITE:
+		set_pwm_led_color(PWM_LED0, EC_LED_COLOR_WHITE);
 		break;
 	case EC_LED_COLOR_AMBER:
 		set_pwm_led_color(PWM_LED0, EC_LED_COLOR_AMBER);
