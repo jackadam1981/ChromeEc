@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37bc30f_11f617ed",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T17:43:47Z",
+      "side": 1,
+      "message": "nit: enum ec_hang_detect_status looks better to me.",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "ee9fa2b2b16f99ed6eee18cefc5a4782a9dc3cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
