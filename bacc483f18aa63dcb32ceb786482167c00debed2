@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a2ef7c_711e220c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-16T17:39:17Z",
+      "side": 1,
+      "message": "This field can now be dropped.",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 0
+      },
+      "revId": "bacc483f18aa63dcb32ceb786482167c00debed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
