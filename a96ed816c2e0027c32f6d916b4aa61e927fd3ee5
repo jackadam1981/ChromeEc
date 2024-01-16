@@ -16,6 +16,24 @@
       "message": "Unintentional change?",
       "revId": "a96ed816c2e0027c32f6d916b4aa61e927fd3ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7c8995_a92f953f",
+        "filename": "chip/npcx/gpio-npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-16T17:41:17Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9d8d3314_b106b819",
+      "revId": "a96ed816c2e0027c32f6d916b4aa61e927fd3ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
