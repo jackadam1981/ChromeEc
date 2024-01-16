@@ -6,14 +6,20 @@
 #ifndef __CROS_EC_COMPILER_H
 #define __CROS_EC_COMPILER_H
 
+#include <compile_time_macros.h>
+
 /*
  * See https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
  */
-#ifndef CONFIG_ZEPHYR
-/* If building with Zephyr, use its GCC version. */
-#define GCC_VERSION \
+#define __GCC_VERSION \
 	(__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-#endif /* !CONFIG_ZEPHYR */
+
+/* Zephyr defines TOOLCHAIN_GCC_VERSION. */
+#ifndef TOOLCHAIN_GCC_VERSION
+#define TOOLCHAIN_GCC_VERSION __GCC_VERSION
+#endif
+
+BUILD_ASSERT(TOOLCHAIN_GCC_VERSION == __GCC_VERSION);
 
 /*
  * The EC codebase assumes that typeof() is available but it is not in Zephyr.
