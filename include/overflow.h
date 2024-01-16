@@ -11,10 +11,19 @@
 /*
  * __builtin_add_overflow, __builtin_sub_overflow and __builtin_mul_overflow
  * were added in gcc 5.1: https://gcc.gnu.org/gcc-5/changes.html
+ *
+ * GCC_VERSION is only defined in CrosEC. For Zephyr, use TOOLCHAIN_GCC_VERSION
+ * instead.
  */
+#ifdef CONFIG_ZEPHYR
+#if TOOLCHAIN_GCC_VERSION > 50100
+#define COMPILER_HAS_GENERIC_BUILTIN_OVERFLOW 1
+#endif
+#else
 #if GCC_VERSION > 50100
 #define COMPILER_HAS_GENERIC_BUILTIN_OVERFLOW 1
 #endif
+#endif /* CONFIG_ZEPHYR */
 
 /*
  * __has_builtin available in
