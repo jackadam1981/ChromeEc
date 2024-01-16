@@ -134,6 +134,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08077e30_c5d5a4d0",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-16T18:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e515bb_d8bea383",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "686ca443_1d85074d",
