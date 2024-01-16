@@ -76,9 +76,6 @@
 		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
 			gpios = <&gpio6 1 GPIO_OUTPUT>;
 		};
-		gpio_ec_soc_hdmi_hpd: ec_soc_hdmi_hpd {
-			gpios = <&gpioe 4 GPIO_OUTPUT>;
-		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
 			gpios = <&gpio8 0 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_EC_INT_L";
@@ -129,9 +126,6 @@
 			gpios = <&gpio0 0 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
-		gpio_hdmi_sel: hdmi_sel {
-			gpios = <&gpioc 6 GPIO_OUTPUT>;
-		};
 		gpio_imvp91_vrrdy_od: imvp91_vrrdy_od {
 			gpios = <&gpio4 3 GPIO_INPUT>;
 		};
@@ -168,12 +162,6 @@
 		};
 		gpio_usb_c0_int_odl: usb_c0_int_odl {
 			gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
-		};
-		gpio_vccin_aux_vid0: vccin_aux_vid0 {
-			gpios = <&gpio9 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
-		gpio_vccin_aux_vid1: vccin_aux_vid1 {
-			gpios = <&gpioe 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 	};
 
