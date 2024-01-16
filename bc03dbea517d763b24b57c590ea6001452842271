@@ -52,6 +52,24 @@
       "parentUuid": "d9b11f87_2bfb26db",
       "revId": "bc03dbea517d763b24b57c590ea6001452842271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43fe949_f901fba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-01-16T17:58:57Z",
+      "side": 1,
+      "message": "This is necessary for the other CLs to work correctly.",
+      "parentUuid": "5c9200fa_36d4c4d9",
+      "revId": "bc03dbea517d763b24b57c590ea6001452842271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
