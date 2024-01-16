@@ -785,8 +785,8 @@ static void st_read_run(void *o)
 
 		/* Realtek FW main version: Byte4, Byte5, Byte6 (little-endian)
 		 */
-		info->fw_version = data->rd_buf[6] << 16 |
-				   data->rd_buf[5] << 8 | data->rd_buf[4];
+		info->fw_version = data->rd_buf[4] << 16 |
+				   data->rd_buf[5] << 8 | data->rd_buf[6];
 
 		/* Realtek VID PID: Byte10, Byte11, Byte12, Byte13
 		 * (little-endian) */
