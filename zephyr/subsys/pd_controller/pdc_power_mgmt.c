@@ -468,7 +468,14 @@ static void run_public_api_command(struct pdc_port_t *port)
 					     CMD_PDC_GET_VBUS_VOLTAGE)) {
 		queue_public_cmd(port, CMD_PDC_GET_VBUS_VOLTAGE);
 		return;
+	} else if (atomic_test_and_clear_bit(port->pdc_cmd_flags,
+					     CMD_PDC_GET_INFO)) {
+		queue_public_cmd(port, CMD_PDC_GET_INFO);
+		return;
 	}
+
+	LOG_ERR("Public API does not support this command (%ld)",
+		atomic_get(port->pdc_cmd_flags));
 }
 
 /**
@@ -1672,4 +1679,28 @@ void pdc_power_mgmt_reset(int port)
 
 	/* Block until command completes */
 	public_api_block(port, CMD_PDC_RESET);
+}
+
+int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info)
+{
+	int ret;
+
+	/* Make sure port is in range and an output buffer is provided */
+	if (port < 0 || port >= pdc_power_mgmt_get_usb_pd_port_count() ||
+	    pdc_info == NULL) {
+		return -ERANGE;
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_INFO);
+	if (ret) {
+		return ret;
+	}
+
+	/* Provide a copy of the current info struct to avoid exposing internal
+	 * data structs.
+	 */
+
+	memcpy(pdc_info, &pdc_data[port]->port.info, sizeof(struct pdc_info_t));
+	return 0;
 }

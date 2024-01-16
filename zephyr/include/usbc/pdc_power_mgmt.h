@@ -10,6 +10,11 @@
 #ifndef __CROS_EC_PDC_POWER_MGMT_H
 #define __CROS_EC_PDC_POWER_MGMT_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include <drivers/pdc.h>
+
 /**
  * @brief Get the state of the port partner connection
  *
@@ -208,5 +213,15 @@ uint32_t pdc_power_mgmt_get_vbus_voltage(int port);
  * @retval void
  */
 void pdc_power_mgmt_reset(int port);
+
+/**
+ * @brief Query info from the PD chip (USB PID/VID, FW ver, etc)
+ *
+ * @param port USB-C port number
+ * @param pdc_info Output struct for chip info
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
