@@ -34,6 +34,24 @@
       "parentUuid": "c6c3e63f_b438c339",
       "revId": "bef88011276030781320a8427bc9bd9b75765504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f4b929_dd4bcedd",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2024-01-16T21:28:30Z",
+      "side": 1,
+      "message": "I don\u0027t think that reading the status register should be error checked in this way. We should rely on different error signals to detect the presence of an error here.\n\nThere may be other values in the status register that you can check the values of, but I\u0027m not sure what may work. For instance, Initialized seemed like something we could check for a non-zero value, but it appears that it will go to zero when the battery fuel gauge calibration becomes flaky.",
+      "parentUuid": "ee9228d4_59b359ef",
+      "revId": "bef88011276030781320a8427bc9bd9b75765504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
