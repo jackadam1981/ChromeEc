@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a86aac_d14b5882",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-16T17:44:28Z",
+      "side": 1,
+      "message": "These functions don\u0027t belong in this driver.  How about creating zephyr/shim/src/pd_shim.c for these functions?\n\nYou should then be able to cleanup/eliminate a lot of the functions defined by usbc_stubs on brox/brya_pdc",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "114201ca1bce178668ec509184399b9a4f2b4301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
