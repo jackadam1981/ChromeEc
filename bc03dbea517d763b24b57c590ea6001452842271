@@ -34,6 +34,24 @@
       "parentUuid": "327c26e1_f6f42abd",
       "revId": "bc03dbea517d763b24b57c590ea6001452842271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9200fa_36d4c4d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2024-01-16T07:27:08Z",
+      "side": 1,
+      "message": "Thanks for remind, i\u0027ve cp these 2 CLs (crrev/c/5172427 crrev/c/5172808) to nissa factory branch, and looks it works.\n\nwe\u0027d like ectool support tabletmode CMD on factory branch in case we need to change some device status on factory test once there is any wrong scenario on sensor.\n\nmaybe this one is not necessary...",
+      "parentUuid": "d9b11f87_2bfb26db",
+      "revId": "bc03dbea517d763b24b57c590ea6001452842271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
