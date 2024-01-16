@@ -34,6 +34,23 @@
       "parentUuid": "3467ec50_2067a3e4",
       "revId": "cf425835399c280ef97b9522d5d0e1689a987acc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b37109f_d1ffcced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T21:57:40Z",
+      "side": 1,
+      "message": "We\u0027ll need to test this feature before we uprev FW for Fizz. That would require the kernel counterpart.",
+      "revId": "cf425835399c280ef97b9522d5d0e1689a987acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
