@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d8a845_5105eaf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-01-16T15:58:39Z",
+      "side": 1,
+      "message": "This didn\u0027t change the coverage of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5182026 at all, but it did make it stop complaining about incorrect line numbers in the picolibc headers.",
+      "revId": "fd4971d2cb43db776b41efc264c9a3ac1f9c23fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
