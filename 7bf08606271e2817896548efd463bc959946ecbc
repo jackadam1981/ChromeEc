@@ -34,6 +34,24 @@
       "parentUuid": "0ed948aa_ed06b41a",
       "revId": "7bf08606271e2817896548efd463bc959946ecbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49c6c39_97c85e5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-16T20:34:13Z",
+      "side": 1,
+      "message": "For example, zephyr/program/nissa/craaskov/include/keyboard_customization.h:#define KEYBOARD_COL_LEFT_CTRL 0.",
+      "parentUuid": "3401c743_07ee4048",
+      "revId": "7bf08606271e2817896548efd463bc959946ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
