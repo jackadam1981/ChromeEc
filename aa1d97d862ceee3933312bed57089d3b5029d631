@@ -426,6 +426,30 @@
       },
       "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf1b0b7_97efe7f6",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-16T17:24:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9940a93_cbb11750",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "aa1d97d862ceee3933312bed57089d3b5029d631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
