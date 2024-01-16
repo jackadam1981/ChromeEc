@@ -135,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ab63d0_d5f639ac",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-16T18:56:57Z",
+      "side": 1,
+      "message": "I modified the name for the helipilot test. I will modify the name for the bloonchipper test as a follow up CL",
+      "parentUuid": "96babb19_755f7ebc",
+      "range": {
+        "startLine": 366,
+        "startChar": 16,
+        "endLine": 366,
+        "endChar": 81
+      },
+      "revId": "86290d768488b48cd8d07148f9a6b3b9c88c35b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83e515bb_d8bea383",
