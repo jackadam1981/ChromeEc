@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e8b278_706a0128",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-16T09:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b00cd1a_6440e345",
+      "range": {
+        "startLine": 35,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "d4042689ac2be5fe965bc62c58efb19a595b1a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d23ccab_ca260254",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-13T02:40:39Z",
       "side": 1,
       "message": "Tested this patch on Rex. \nThis flag only catches logical 1. Interrupt is not triggered from clamshell to tablet mode; also tried the flags (`GPIO_INT_EDGE_TO_ACTIVE | GPIO_INT_EDGE_TO_INACTIVE`); it is even worse, no interrupt triggered at all. If  using `GPIO_INT_EDGE_BOTH`, I see tablet/clamshell working correctly along with lid angle change.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "d4042689ac2be5fe965bc62c58efb19a595b1a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0615f53_a3f78e83",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-16T09:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d23ccab_ca260254",
       "range": {
         "startLine": 75,
         "startChar": 11,
