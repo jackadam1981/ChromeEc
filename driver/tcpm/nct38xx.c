@@ -124,6 +124,12 @@ int nct38xx_init(int port)
 	if (rv)
 		return rv;
 
+	rv = tcpc_update8(port, 0xD1, (1 << 2), MASK_CLR);
+	if (rv)
+		CPRINTF("[Xol] C%d: Sink Output Inversion failed\n", port);
+	else
+		CPRINTF("[Xol] C%d: Sink Output Inversion success\n", port);
+
 	/* Disable OVP */
 	rv = tcpc_update8(port, TCPC_REG_FAULT_CTRL,
 			  TCPC_REG_FAULT_CTRL_VBUS_OVP_FAULT_DIS, MASK_SET);
