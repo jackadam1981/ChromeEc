@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24257dd_10910d66",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-17T21:23:30Z",
+      "side": 1,
+      "message": "I would do `sizeof(data-\u003eresponse)`, easier to see that it\u0027s the right thing.",
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b198467d_ab438ad1",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-17T21:23:30Z",
+      "side": 1,
+      "message": "would it be worth sorting these? no good reason, just hurts to see it half sorted half not :-) (assuming that the order does not matter)",
+      "range": {
+        "startLine": 455,
+        "startChar": 23,
+        "endLine": 455,
+        "endChar": 24
+      },
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd852dd4_1209aa0b",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-17T21:23:30Z",
+      "side": 1,
+      "message": "should this be a `return -Esomthing`?",
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0bb9f8_3e3bb2e7",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-17T21:23:30Z",
+      "side": 1,
+      "message": "`backend_api` is void, I don\u0027t think you need the casting, also it\u0027s const and by doing the casting I think you are silencing the fact that api should be const too",
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8101c827_db9cef70",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-01-17T21:23:30Z",
+      "side": 1,
+      "message": "if you want to be pedantic you could use `ENOSYS 38 Function not implemented`",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 17
+      },
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
