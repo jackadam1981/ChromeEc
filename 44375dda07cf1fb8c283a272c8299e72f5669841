@@ -22,6 +22,30 @@
       },
       "revId": "44375dda07cf1fb8c283a272c8299e72f5669841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90340008_96e65e59",
+        "filename": "zephyr/test/pdc/src/pdc_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-17T20:13:30Z",
+      "side": 1,
+      "message": "Clarified this offline. Table in spec indicates RDO is 32 bits.",
+      "parentUuid": "71316ec4_ca4388a8",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "44375dda07cf1fb8c283a272c8299e72f5669841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
