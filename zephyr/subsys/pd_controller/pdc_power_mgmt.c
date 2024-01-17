@@ -11,6 +11,7 @@
 
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "usbc/pdc_power_mgmt.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/kernel.h>
@@ -1275,6 +1276,17 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 			/* something went wrong */
 			LOG_ERR("Public API blocking timeout");
 			return -EBUSY;
+		}
+
+		/* Check for commands that don't require a connection */
+		if (pdc_cmd == CMD_PDC_GET_INFO) {
+			continue;
+		}
+
+		/* The system is blocking on a command that requires a
+		 * connection, so return if disconnected */
+		if (!pdc_power_mgmt_is_connected(port)) {
+			return -EIO;
 		}
 	}
 
