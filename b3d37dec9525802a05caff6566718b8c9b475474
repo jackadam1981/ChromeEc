@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd04f4d5_c1eeec89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-17T23:03:48Z",
+      "side": 1,
+      "message": "How about `test: Rename stm32f_rtc to rtc_stm32f4`?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "b3d37dec9525802a05caff6566718b8c9b475474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e834e9f_f3ba31dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-17T23:03:48Z",
+      "side": 1,
+      "message": "Technically the name already indicates that it\u0027s specific to bloonchipper since it has `stm32f4` in the name. The rename is really for convenience so that related files are alphabetically sorted next to each other: `rtc.c`, `rtc-stm32f4.c`, `rtc-npcx9.c` instead of `rtc.c`, `stm32f4-rtc.c`, `npcx9-rtc.c`.\n\nMaybe phrase it as something like:\n\n```\nUse `rtc` as the prefix for the name of the test, so that\nchip-specific files are sorted next to each other.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "b3d37dec9525802a05caff6566718b8c9b475474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
