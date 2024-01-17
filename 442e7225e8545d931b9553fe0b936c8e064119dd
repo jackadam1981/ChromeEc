@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3546e24d_7efc326c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:37:48Z",
+      "side": 1,
+      "message": "utilize",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4626d461_9b6f733b",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:37:48Z",
+      "side": 1,
+      "message": "This should be automatically enabled based on devicetree configuration.",
+      "range": {
+        "startLine": 1276,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 42
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b8f2bd_8e54351e",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:37:48Z",
+      "side": 1,
+      "message": "This should already be enabled based on CONFIG_PLATFORM_EC_USB_PD_CONTROLLER.",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 29
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13c4f61_f45d8c07",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:37:48Z",
+      "side": 1,
+      "message": "Enabled via devicetree.",
+      "range": {
+        "startLine": 1279,
+        "startChar": 6,
+        "endLine": 1279,
+        "endChar": 33
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a974302_51f1f94a",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:37:48Z",
+      "side": 1,
+      "message": "Does this test need the AP power sequence, battery, etc?\n\nPlease prune this done to only the needed components.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
