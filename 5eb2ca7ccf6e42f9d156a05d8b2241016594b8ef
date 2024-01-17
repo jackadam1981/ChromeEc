@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42190630_7cf4fc71",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:51:27Z",
+      "side": 1,
+      "message": "What about CMD_PDC_RESET?",
+      "range": {
+        "startLine": 1282,
+        "startChar": 17,
+        "endLine": 1282,
+        "endChar": 33
+      },
+      "revId": "5eb2ca7ccf6e42f9d156a05d8b2241016594b8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acecf3a1_e7268001",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1286,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:51:27Z",
+      "side": 1,
+      "message": "\u003e \"requries\" is a possible misspelling of \"requires\".\n\nPlease fix.",
+      "parentUuid": "3a232cf0_1acb1c9f",
+      "range": {
+        "startLine": 1286,
+        "startChar": 46,
+        "endLine": 1286,
+        "endChar": 54
+      },
+      "revId": "5eb2ca7ccf6e42f9d156a05d8b2241016594b8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
