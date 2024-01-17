@@ -466,10 +466,10 @@ static void run_public_api_command(struct pdc_port_t *port)
 		queue_public_cmd(port, CMD_PDC_GET_VBUS_VOLTAGE);
 		return;
 	} else if (atomic_test_and_clear_bit(port->pdc_cmd_flags,
-						CMD_PDC_SET_PDR)) {
+					     CMD_PDC_SET_PDR)) {
 		queue_public_cmd(port, CMD_PDC_SET_PDR);
 	} else if (atomic_test_and_clear_bit(port->pdc_cmd_flags,
-						CMD_PDC_SET_UOR)) {
+					     CMD_PDC_SET_UOR)) {
 		queue_public_cmd(port, CMD_PDC_SET_UOR);
 	}
 }
@@ -650,7 +650,6 @@ static void set_attached_flag(struct pdc_port_t *port,
 
 static void run_unattached_policies(struct pdc_port_t *port)
 {
-
 	if (atomic_test_and_clear_bit(port->una_policy.flags,
 				      UNA_POLICY_CC_MODE)) {
 		/* Set CC PULL Resistor and TrySrc or TrySnk */
@@ -669,7 +668,7 @@ static void run_unattached_policies(struct pdc_port_t *port)
 static void run_snk_policies(struct pdc_port_t *port)
 {
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
-						SNK_POLICY_SWAP_TO_SRC)) {
+				      SNK_POLICY_SWAP_TO_SRC)) {
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
 	} else {
@@ -680,7 +679,7 @@ static void run_snk_policies(struct pdc_port_t *port)
 static void run_src_policies(struct pdc_port_t *port)
 {
 	if (atomic_test_and_clear_bit(port->src_policy.flags,
-						SRC_POLICY_SWAP_TO_SNK)) {
+				      SRC_POLICY_SWAP_TO_SNK)) {
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
 	} else {
@@ -1507,7 +1506,8 @@ int pdc_power_mgmt_accept_power_swap(int port, bool val)
 	return EC_SUCCESS;
 }
 
-static int pdc_power_mgmt_request_data_swap_intern(int port, enum pd_data_role role)
+static int pdc_power_mgmt_request_data_swap_intern(int port,
+						   enum pd_data_role role)
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -1553,7 +1553,8 @@ void pdc_power_mgmt_request_data_swap(int port)
 	}
 }
 
-static int pdc_power_mgmt_request_power_swap_intern(int port, enum pd_power_role role)
+static int pdc_power_mgmt_request_power_swap_intern(int port,
+						    enum pd_power_role role)
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -1768,12 +1769,14 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state)
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
 		pdc_data[port]->port.una_policy.cc_mode = CCOM_DRP;
-		atomic_set_bit(pdc_data[port]->port.una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(pdc_data[port]->port.una_policy.flags,
+			       UNA_POLICY_CC_MODE);
 		break;
 	/* Stay in src until disconnect, then stay in sink forever */
 	case PD_DRP_TOGGLE_OFF:
 		pdc_data[port]->port.una_policy.cc_mode = CCOM_RD;
-		atomic_set_bit(pdc_data[port]->port.una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(pdc_data[port]->port.una_policy.flags,
+			       UNA_POLICY_CC_MODE);
 		break;
 	/* Stay in current power role, don't switch. No auto-toggle support */
 	case PD_DRP_FREEZE:
@@ -1782,22 +1785,25 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state)
 		} else {
 			pdc_data[port]->port.una_policy.cc_mode = CCOM_RD;
 		}
-		atomic_set_bit(pdc_data[port]->port.una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(pdc_data[port]->port.una_policy.flags,
+			       UNA_POLICY_CC_MODE);
 		break;
 	/* Switch to sink */
 	case PD_DRP_FORCE_SINK:
 		if (pdc_power_mgmt_is_source_connected(port)) {
 			pdc_data[port]->port.pdr.swap_to_src = 0;
-	                pdc_data[port]->port.pdr.swap_to_snk = 1;
-			atomic_set_bit(pdc_data[port]->port.src_policy.flags, SRC_POLICY_SWAP_TO_SNK);
+			pdc_data[port]->port.pdr.swap_to_snk = 1;
+			atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+				       SRC_POLICY_SWAP_TO_SNK);
 		}
 		break;
 	/* Switch to source */
 	case PD_DRP_FORCE_SOURCE:
 		if (pdc_power_mgmt_is_sink_connected(port)) {
 			pdc_data[port]->port.pdr.swap_to_src = 1;
-	                pdc_data[port]->port.pdr.swap_to_snk = 0;
-			atomic_set_bit(pdc_data[port]->port.snk_policy.flags, SNK_POLICY_SWAP_TO_SRC);
+			pdc_data[port]->port.pdr.swap_to_snk = 0;
+			atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+				       SNK_POLICY_SWAP_TO_SRC);
 		}
 		break;
 	}
