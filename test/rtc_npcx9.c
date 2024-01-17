@@ -12,23 +12,27 @@
 static const int rtc_delay_seconds = 2;
 static atomic_t interrupt_counter;
 static atomic_t rtc_fired;
+volatile timestamp_t time_initial;
+volatile uint32_t time_final;
 
 void rtc_interrupt_handler(void)
 {
 	atomic_add(&interrupt_counter, 1);
+	time_final = time_since32(time_initial);
 }
 
 test_static int test_rtc_alarm_fired(void)
 {
 	atomic_clear(&interrupt_counter);
 
+	time_initial = get_time();
 	system_set_rtc_alarm(rtc_delay_seconds, 0);
 
-	timestamp_t time1 = get_time();
+	//timestamp_t time1 = get_time();
 	sleep(2 * rtc_delay_seconds);
-	uint32_t time2 = time_since32(time1);
+	//uint32_t time2 = time_since32(time1);
 	cflush();
-	ccprints("The delay time is %d\n: ", time2);
+	ccprints("The rtc alarm time is %d\n: ", time_final);
 	cflush();
 
 	rtc_fired = atomic_sub(&interrupt_counter, 0);
