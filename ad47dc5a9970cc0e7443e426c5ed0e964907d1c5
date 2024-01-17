@@ -16,6 +16,24 @@
       "message": "Hi guys, Haven\u0027t debugged the code yet, just wanted to check that this is the general direction we want to go with this CL before proceeding.",
       "revId": "ad47dc5a9970cc0e7443e426c5ed0e964907d1c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df59824_42c343ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-17T01:37:53Z",
+      "side": 1,
+      "message": "Yes, this is the CL for b/284534293.",
+      "parentUuid": "714022e1_0005a277",
+      "revId": "ad47dc5a9970cc0e7443e426c5ed0e964907d1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
