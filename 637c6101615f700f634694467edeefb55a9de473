@@ -22,6 +22,30 @@
       },
       "revId": "637c6101615f700f634694467edeefb55a9de473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444ba702_a1cc81ac",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:39:53Z",
+      "side": 1,
+      "message": "+1 - probably need an allow list of commands that don\u0027t need a connection.",
+      "parentUuid": "663d7725_7ad46afb",
+      "range": {
+        "startLine": 1282,
+        "startChar": 0,
+        "endLine": 1282,
+        "endChar": 43
+      },
+      "revId": "637c6101615f700f634694467edeefb55a9de473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
