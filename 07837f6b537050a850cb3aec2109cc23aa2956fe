@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ac704c_ea338a68",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-01-17T06:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce19955_0e52b009",
+      "range": {
+        "startLine": 60,
+        "startChar": 14,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "07837f6b537050a850cb3aec2109cc23aa2956fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "badd07d1_b8593f7b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0620d1bb_263e7bd5",
+        "filename": "zephyr/program/corsola/woobat/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-01-17T06:18:24Z",
+      "side": 1,
+      "message": "We don\u0027t need this. Let me update with other CL.",
+      "parentUuid": "badd07d1_b8593f7b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "07837f6b537050a850cb3aec2109cc23aa2956fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59271bb7_b9dc355b",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-17T05:32:17Z",
       "side": 1,
       "message": "is this 1800 or 1600?",
+      "range": {
+        "startLine": 46,
+        "startChar": 49,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "07837f6b537050a850cb3aec2109cc23aa2956fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c352d4_d49fc6e5",
+        "filename": "zephyr/program/corsola/woobat/src/temp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-01-17T06:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59271bb7_b9dc355b",
       "range": {
         "startLine": 46,
         "startChar": 49,
