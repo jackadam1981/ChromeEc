@@ -1292,12 +1292,20 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	return 0;
 }
 
+bool is_pdc_port_valid(int port)
+{
+	if (port < 0 || port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
+                return false;
+        }
+	return true;
+}
+
 /**
  * PDC Power Management Public API
  */
 bool pdc_power_mgmt_is_sink_connected(int port)
 {
-	if (port > CONFIG_USB_PD_PORT_MAX_COUNT) {
+	if (!is_pdc_port_valid(port)) {
 		return false;
 	}
 
@@ -1306,7 +1314,7 @@ bool pdc_power_mgmt_is_sink_connected(int port)
 
 bool pdc_power_mgmt_is_source_connected(int port)
 {
-	if (port > CONFIG_USB_PD_PORT_MAX_COUNT) {
+	if (!is_pdc_port_valid(port)) {
 		return false;
 	}
 
@@ -1315,7 +1323,7 @@ bool pdc_power_mgmt_is_source_connected(int port)
 
 bool pdc_power_mgmt_is_connected(int port)
 {
-	if (port > CONFIG_USB_PD_PORT_MAX_COUNT) {
+	if (!is_pdc_port_valid(port)) {
 		return false;
 	}
 
@@ -1331,7 +1339,7 @@ uint8_t pdc_power_mgmt_get_usb_pd_port_count(void)
 
 int pdc_power_mgmt_set_active_charge_port(int charge_port)
 {
-	if (charge_port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
+	if (!is_pdc_port_valid(charge_port)) {
 		return 1;
 	}
 
