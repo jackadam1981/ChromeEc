@@ -33,6 +33,75 @@
       "message": "Hi Keith and Peter,\n\ncould you help to review the CL?\n\nThanks.",
       "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86a71c6_d9f1c364",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T16:37:15Z",
+      "side": 1,
+      "message": "What needs to be done here?  Is there a bug open?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9e4369_d8dc74a3",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T16:37:15Z",
+      "side": 1,
+      "message": "I don\u0027t see any eSPI drivers that set `event.evt_data` with ESPI_BUS_RESET.  Is there a chance that eSPI drivers might do this in the future?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14746502_ece0f5bd",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T16:37:15Z",
+      "side": 1,
+      "message": "Why is the vw_update_all() dropped?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
