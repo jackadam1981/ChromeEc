@@ -231,7 +231,8 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port);
  * @brief Set dual role state, from among enum pd_dual_role_states
  *
  * @param port USB-C port number
- * @param state New state of dual-role port, selected from enum pd_dual_role_states
+ * @param state New state of dual-role port, selected from enum
+ * pd_dual_role_states
  */
 void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state);
 
