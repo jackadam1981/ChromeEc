@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a19fcc8_91bfe1f3",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:24:37Z",
+      "side": 1,
+      "message": "Instead of creating a special macro for this, you can create Kconfig helper symbol and add it to Kconfig.tcpm\n\nEvery TCPC driver should then add a select statement.\n\n\n```\nconfig PLATFORM_EC_HAS_TCPC\n    bool # Prompt text is blank\n    help\n      This helper symbol indicates that the platform has at least on\n      TCPC enabled.\n\n...\nconfig PLATFORM_EC_USB_PD_TCPM_CCGXXF\n    select PLATFORM_EC_HAS_TCPC\n    \nconfig PLATFORM_EC_USB_PD_TCPM_ANX7406\n    select PLATFORM_EC_HAS_TCPC\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "ae4585cf9339dd0a64373e7ccb4674627289a607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
