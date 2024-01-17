@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25129b97_cba8a744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T18:09:34Z",
+      "side": 1,
+      "message": "Can you also delete brox/src/usbc_stubs.c with this change?",
+      "revId": "1ff590a1e3b36425fa9cee680e7db45b7cbf05cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7195d8f0_08773ce3",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T18:09:34Z",
+      "side": 1,
+      "message": "Needs a copyright header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 29
+      },
+      "revId": "1ff590a1e3b36425fa9cee680e7db45b7cbf05cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
