@@ -22,6 +22,30 @@
       },
       "revId": "8e1929c90831cf5ba62a7a9f5de5c62391c9c5cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d07a8f_1b5cf45f",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-17T23:19:30Z",
+      "side": 1,
+      "message": "it prints out `DEBUG:5.887815 The delay time is 4000827` or 4 secs, which is what I am expecting. the sleep delay in 2*2 sec, i.e. 4sec. So this is correct",
+      "parentUuid": "e8834de1_c1d3a55e",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "8e1929c90831cf5ba62a7a9f5de5c62391c9c5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
