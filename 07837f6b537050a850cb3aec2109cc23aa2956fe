@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce19955_0e52b009",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-17T05:32:17Z",
+      "side": 1,
+      "message": "nit: Woobat",
+      "range": {
+        "startLine": 60,
+        "startChar": 14,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "07837f6b537050a850cb3aec2109cc23aa2956fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "badd07d1_b8593f7b",
+        "filename": "zephyr/program/corsola/woobat/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-17T05:32:17Z",
+      "side": 1,
+      "message": "do you still need this?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "07837f6b537050a850cb3aec2109cc23aa2956fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59271bb7_b9dc355b",
+        "filename": "zephyr/program/corsola/woobat/src/temp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-17T05:32:17Z",
+      "side": 1,
+      "message": "is this 1800 or 1600?",
+      "range": {
+        "startLine": 46,
+        "startChar": 49,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "07837f6b537050a850cb3aec2109cc23aa2956fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
