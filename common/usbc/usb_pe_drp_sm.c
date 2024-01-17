@@ -6176,6 +6176,11 @@ static void pe_init_vdm_svids_request_entry(int port)
 
 static void pe_init_vdm_svids_request_run(int port)
 {
+	/* Retrieve the message information. */
+	uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
+	int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+	uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
+
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
 		/* If common code didn't parse a message, continue waiting. */
@@ -6188,18 +6193,14 @@ static void pe_init_vdm_svids_request_run(int port)
 		 */
 		break;
 	case VDM_RESULT_ACK: {
-		/* Retrieve the message information. */
-		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
-		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
-		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
-
 		/* PE_INIT_VDM_SVIDs_ACKed embedded here */
-		dfp_consume_svids(port, sop, cnt, payload);
+		dpm_vdm_acked(port, sop, cnt, payload);
 		break;
 	}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_VDM_SVIDs_NAKed embedded here */
-		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, pe[port].tx_type, USB_SID_PD,
+			      CMD_DISCOVER_SVID, payload[0]);
 		break;
 	}
 
@@ -6220,7 +6221,8 @@ static void pe_init_vdm_svids_request_exit(int port)
 		 * If Structured VDMs are not supported, a Structured VDM
 		 * Command received by a DFP or UFP Shall be Ignored.
 		 */
-		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		dpm_vdm_naked(port, TCPCI_MSG_SOP, USB_SID_PD,
+			      CMD_DISCOVER_SVID, 0);
 	}
 
 	/* If SVID discovery failed, discovery is done at this point */
@@ -6282,6 +6284,10 @@ static void pe_init_vdm_modes_request_run(int port)
 {
 	const struct svid_mode_data *mode_data;
 	uint16_t requested_svid;
+	/* Retrieve the message information. */
+	uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
+	int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+	uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
 
 	mode_data = pd_get_next_mode(port, pe[port].tx_type);
 
@@ -6301,23 +6307,14 @@ static void pe_init_vdm_modes_request_run(int port)
 		 */
 		break;
 	case VDM_RESULT_ACK: {
-		/* Retrieve the message information. */
-		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
-		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
-		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
-
-		/*
-		 * Accept ACK if the request and response SVIDs are equal;
-		 * otherwise, treat this as a NAK of the request SVID.
-		 */
 		/* PE_INIT_VDM_Modes_ACKed embedded here */
-		dfp_consume_modes(port, sop, cnt, payload);
+		dpm_vdm_acked(port, sop, cnt, payload);
 		break;
 	}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_VDM_Modes_NAKed embedded here */
-		pd_set_modes_discovery(port, pe[port].tx_type, requested_svid,
-				       PD_DISC_FAIL);
+		dpm_vdm_naked(port, pe[port].tx_type, requested_svid,
+			      CMD_DISCOVER_MODES, payload[0]);
 		break;
 	}
 
@@ -6327,6 +6324,8 @@ static void pe_init_vdm_modes_request_run(int port)
 
 static void pe_init_vdm_modes_request_exit(int port)
 {
+	/* TODO: Treat timeout as NAK, then move that to DPM. */
+
 	if (pd_get_modes_discovery(port, pe[port].tx_type) != PD_DISC_NEEDED)
 		/* Mode discovery done, notify the AP */
 		pd_notify_event(port,
