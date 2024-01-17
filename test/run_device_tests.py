@@ -531,7 +531,7 @@ HELIPILOT_CONFIG = BoardConfig(
         idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
     ),
     expected_mcu_power=PowerUtilization(
-        idle=RangedValue(9.2, 0.8), sleep=RangedValue(1.6, 1.3)
+        idle=RangedValue(30.05, 0.34 * 2), sleep=RangedValue(1.6, 1.3)
     ),
     variants={},
 )
@@ -1142,7 +1142,7 @@ def main():
 def get_power_utilization() -> Tuple[Optional[float], Optional[float]]:
     """Retrieve board power utilization data"""
     fp_power_signal = "ppvar_fp_mw"
-    mcu_power_signal = "ppvar_mcu_mw"
+    mcu_power_signal = "pp3300_mcu_mw"
     cmd = [
         "dut-control",
         "--value_only",  # only the summary will print the field names

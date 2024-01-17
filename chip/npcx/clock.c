@@ -40,8 +40,20 @@ static uint64_t idle_dsleep_time_us;
  * Fixed amount of time to keep the console in use flag true after boot in
  * order to give a permanent window in which the low speed clock is not used.
  */
+
+#ifdef CONFIG_CONSOLE_IN_USE_ON_BOOT_TIMEOUT_SEC
+#define CONSOLE_IN_USE_ON_BOOT_TIME (CONFIG_CONSOLE_IN_USE_ON_BOOT_TIMEOUT_SEC * SECOND)
+#else
 #define CONSOLE_IN_USE_ON_BOOT_TIME (15 * SECOND)
-static int console_in_use_timeout_sec = 15;
+#endif
+
+#ifdef CONFIG_CONSOLE_IN_USE_TIMEOUT_SEC
+#define CONSOLE_IN_USE_TIMEOUT_SEC (CONFIG_CONSOLE_IN_USE_TIMEOUT_SEC)
+#else
+#define CONSOLE_IN_USE_TIMEOUT_SEC (15)
+#endif
+
+static int console_in_use_timeout_sec = CONSOLE_IN_USE_TIMEOUT_SEC;
 static timestamp_t console_expire_time;
 #endif
 

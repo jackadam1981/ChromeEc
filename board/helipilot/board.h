@@ -199,6 +199,8 @@
 /* TODO(b/130249462): remove for release */
 #define CONFIG_CMD_FPSENSOR_DEBUG
 #define CONFIG_LOW_POWER_IDLE
+#define CONFIG_CONSOLE_IN_USE_TIMEOUT_SEC (1000)
+#define CONFIG_CONSOLE_IN_USE_ON_BOOT_TIMEOUT_SEC (1000)
 #endif
 
 /*-------------------------------------------------------------------------*
