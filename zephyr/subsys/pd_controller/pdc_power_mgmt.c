@@ -21,7 +21,7 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_DECLARE(pdc, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(pdc);
 
 /**
  * @brief maximum number of times to try and send a command
@@ -922,7 +922,7 @@ static void pdc_snk_attached_run(void *obj)
 		}
 
 		port->snk_attached_local_state = SNK_ATTACHED_RUN;
-		/* fall-through */
+		__fallthrough;
 	case SNK_ATTACHED_RUN:
 		set_attached_flag(port, SNK_ATTACHED_FLAG);
 		run_snk_policies(port);
@@ -1140,6 +1140,7 @@ static void pdc_send_cmd_wait_exit(void *obj)
 		}
 		break;
 	default:
+		break;
 	}
 }
 
@@ -1269,7 +1270,7 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 {
 	switch (pdc_cmd) {
 	case CMD_PDC_RESET:
-		/* fall-through */
+		__fallthrough;
 	case CMD_PDC_GET_INFO:
 		return true;
 	default:
@@ -1597,7 +1598,7 @@ enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port)
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
-		return PD_ROLE_SINK;
+		return POLARITY_CC1;
 	}
 
 	if (pdc_data[port]->port.connector_status.orientation) {

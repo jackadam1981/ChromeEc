@@ -16,6 +16,13 @@
 			compatible = "named-usbc-port";
 			reg = <0>;
 			pdc = <&rts5453p_emul>;
+			chg = <&isl923x_emul>;
+		};
+	};
+
+	batteries {
+		default_battery: lgc_ac17a8m {
+			compatible = "lgc,ac17a8m", "battery-smart";
 		};
 	};
 
@@ -24,12 +31,31 @@
 
 		i2c_ec_i2c_usb_c0: ec_i2c_usb_c0 {
 			i2c-port = <&i2c0>;
-			enum-names = "I2C_PORT_USB_C0_TCPC";
+			enum-names = "I2C_PORT_USB_C0_TCPC", "I2C_PORT_BATTERY";
 		};
 	};
 };
 
 &i2c0 {
+    battery: sb@b {
+        compatible = "zephyr,smart-battery-emul";
+        reg = <0xb>;
+        cycle-count = <99>;
+        version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+        /* Real battery voltages are multiples of 4.4V. */
+        desired-charg-volt = <5000>;
+        desired-charg-cur = <1000>;
+        mf-name = "LGC";
+        dev-name = "AC17A8M";
+    };
+
+	isl923x_emul: isl923x@9 {
+		compatible = "cros,isl923x-emul";
+		status = "okay";
+		reg = <0x09>;
+		battery = <&battery>;
+	};
+
 	rts5453p_emul: rts5453p@66 {
 		compatible = "realtek,rts54-pdc";
 		reg = <0x66>;

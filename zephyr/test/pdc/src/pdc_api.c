@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "common.h"
 #include "console.h"
 #include "drivers/pdc.h"
@@ -28,6 +29,12 @@ LOG_MODULE_REGISTER(test_pdc_api, LOG_LEVEL_INF);
 
 const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 const struct device *dev = DEVICE_DT_GET(RTS5453P_NODE);
+
+/* Mocks */
+FAKE_VALUE_FUNC(int, extpower_is_present);
+FAKE_VALUE_FUNC(const struct battery_info *, battery_get_info);
+FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
+FAKE_VALUE_FUNC(int, board_cut_off_battery);
 
 void pdc_before_test(void *data)
 {
