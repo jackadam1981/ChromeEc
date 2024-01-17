@@ -46,6 +46,30 @@
       },
       "revId": "66c32fb4e9ea12a71d4ec22bd1ad6f0161ca8ef1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94173020_4e28a26b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T19:41:17Z",
+      "side": 1,
+      "message": "If the APDOs are always last, then you should just break from the for loop.",
+      "parentUuid": "0557ba63_e8c1d5dd",
+      "range": {
+        "startLine": 1134,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 0
+      },
+      "revId": "66c32fb4e9ea12a71d4ec22bd1ad6f0161ca8ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
