@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b2136f4_a6636395",
+        "filename": "include/overflow.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-17T23:33:51Z",
+      "side": 1,
+      "message": "It looks like this is the only place we use `GCC_VERSION`. We define [`GCC_VERSION` here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/compiler.h;l\u003d9-16;drc\u003ddc6a5f010be58345289bfb9d2f86153ef35b2223) and it\u0027s the same as [zephyr\u0027s `TOOLCHAIN_GCC_VERSION`](https://github.com/zephyrproject-rtos/zephyr/blob/8f7e3b8123859d7d9934e438dba2cbfaffaa7a20/include/zephyr/toolchain/gcc.h#L21-L22).\n\nWhat if we change `compiler.h` to define `TOOLCHAIN_GCC_VERSION` instead of `GCC_VERSION`, so that we can just use `TOOLCHAIN_GCC_VERSION` here?\n\nSomething like this in `compiler.`h:\n```\n#define __GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)\n\n/* Zephyr defines TOOLCHAIN_GCC_VERSION. */\n#ifndef TOOLCHAIN_GCC_VERSION\n#define TOOLCHAIN_GCC_VERSION __GCC_VERSION\n#endif\n\nBUILD_ASSERT(TOOLCHAIN_GCC_VERSION \u003d\u003d __GCC_VERSION);\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "5f30d75c993e3eccf6355449d30191a93d122e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
