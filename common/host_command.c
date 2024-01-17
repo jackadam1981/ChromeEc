@@ -192,20 +192,15 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_FEATURES, host_command_get_features,
 /*****************************************************************************/
 /* Console commands */
 
-#ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */
+#ifdef CONFIG_HOST_COMMAND_STATUS
 static enum ec_status
 host_command_get_comms_status(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_comms_status *r = args->response;
 	bool command_ended;
 
-#ifndef CONFIG_EC_HOST_CMD
 	command_ended = host_command_in_process_ended();
-#else
-	command_ended = ec_host_cmd_send_in_progress_ended();
-#endif
-
 	r->flags = command_ended ? 0 : EC_COMMS_STATUS_PROCESSING;
 	args->response_size = sizeof(*r);
 
@@ -213,32 +208,54 @@ host_command_get_comms_status(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_COMMS_STATUS, host_command_get_comms_status,
 		     EC_VER_MASK(0));
+#elif CONFIG_EC_HOST_CMD_IN_PROGRESS_STATUS
+static enum ec_status
+host_command_get_comms_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_comms_status *r = args->response;
+	bool command_ended;
+
+	command_ended = ec_host_cmd_send_in_progress_ended();
+	r->flags = command_ended ? 0 : EC_COMMS_STATUS_PROCESSING;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_COMMS_STATUS, host_command_get_comms_status,
+		     EC_VER_MASK(0));
+#endif
 
 /* Resend the last saved response */
+#ifdef CONFIG_HOST_COMMAND_STATUS
 static enum ec_status
 host_command_resend_response(struct host_cmd_handler_args *args)
 {
 	uint16_t result;
 
-#ifndef CONFIG_EC_HOST_CMD
 	result = host_command_get_saved_result();
-#else
-	result = ec_host_cmd_send_in_progress_status();
-#endif
 
 	/* Handle resending response */
 	args->response_size = 0;
-
-#ifndef CONFIG_EC_HOST_CMD
 	args->result = result;
 	return EC_RES_SUCCESS;
-#else
-	return result;
-#endif
 }
 DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE, host_command_resend_response,
 		     EC_VER_MASK(0));
-#endif /* CONFIG_HOST_COMMAND_STATUS */
+#elif CONFIG_EC_HOST_CMD_IN_PROGRESS_STATUS
+static enum ec_status
+host_command_resend_response(struct host_cmd_handler_args *args)
+{
+	uint16_t result;
+
+	result = ec_host_cmd_send_in_progress_status();
+
+	/* Handle resending response */
+	args->response_size = 0;
+	return result;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE, host_command_resend_response,
+		     EC_VER_MASK(0));
+#endif
 
 #if defined(CONFIG_AP_PWRSEQ_S0IX_COUNTER) || \
 	defined(CONFIG_POWERSEQ_S0IX_COUNTER)
