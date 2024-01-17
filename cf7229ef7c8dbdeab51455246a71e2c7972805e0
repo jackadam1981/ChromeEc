@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9edc762_80446987",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-17T21:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e24257dd_10910d66",
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b198467d_ab438ad1",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-01-17T21:23:30Z",
       "side": 1,
       "message": "would it be worth sorting these? no good reason, just hurts to see it half sorted half not :-) (assuming that the order does not matter)",
+      "range": {
+        "startLine": 455,
+        "startChar": 23,
+        "endLine": 455,
+        "endChar": 24
+      },
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f15e45_eac4f231",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-17T21:52:16Z",
+      "side": 1,
+      "message": "This matches the order in the data sheet, so it makes it a little easier to see if I missed something there.",
+      "parentUuid": "b198467d_ab438ad1",
       "range": {
         "startLine": 455,
         "startChar": 23,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ecbb94_1059341d",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-17T21:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd852dd4_1209aa0b",
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e0bb9f8_3e3bb2e7",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61da34c_f33a9276",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-17T21:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0bb9f8_3e3bb2e7",
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8101c827_db9cef70",
@@ -88,6 +166,30 @@
       "writtenOn": "2024-01-17T21:23:30Z",
       "side": 1,
       "message": "if you want to be pedantic you could use `ENOSYS 38 Function not implemented`",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 17
+      },
+      "revId": "cf7229ef7c8dbdeab51455246a71e2c7972805e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea95320e_1cadd77d",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-17T21:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8101c827_db9cef70",
       "range": {
         "startLine": 382,
         "startChar": 0,
