@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56618510_961c9ca7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-17T01:27:46Z",
+      "side": 1,
+      "message": "Should this be LOG_INF? What do you think Keith?",
+      "range": {
+        "startLine": 477,
+        "startChar": 1,
+        "endLine": 477,
+        "endChar": 8
+      },
+      "revId": "b5cf1211b04055483043a42b8cdb6abd3547894b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
