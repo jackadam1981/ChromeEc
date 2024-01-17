@@ -463,6 +463,12 @@ static void run_public_api_command(struct pdc_port_t *port)
 					     CMD_PDC_GET_VBUS_VOLTAGE)) {
 		queue_public_cmd(port, CMD_PDC_GET_VBUS_VOLTAGE);
 		return;
+	} else if (atomic_test_and_clear_bit(port->pdc_cmd_flags,
+						CMD_PDC_SET_PDR)) {
+		queue_public_cmd(port, CMD_PDC_SET_PDR);
+	} else if (atomic_test_and_clear_bit(port->pdc_cmd_flags,
+						CMD_PDC_SET_UOR)) {
+		queue_public_cmd(port, CMD_PDC_SET_UOR);
 	}
 }
 
@@ -1127,6 +1133,15 @@ static void pdc_send_cmd_wait_exit(void *obj)
 			}
 		}
 		break;
+	case CMD_PDC_SET_PDR:
+		port->pdr.swap_to_src = 0;
+		port->pdr.swap_to_snk = 0;
+		break;
+	case CMD_PDC_SET_UOR:
+		port->uor.swap_to_ufp = 0;
+		port->uor.swap_to_dfp = 0;
+		break;
+
 	default:
 	}
 }
@@ -1478,7 +1493,7 @@ int pdc_power_mgmt_accept_power_swap(int port, bool val)
 	return EC_SUCCESS;
 }
 
-static int pdc_power_mgmt_request_data_swap(int port, enum pd_data_role role)
+static int pdc_power_mgmt_request_data_swap_intern(int port, enum pd_data_role role)
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -1507,15 +1522,24 @@ static int pdc_power_mgmt_request_data_swap(int port, enum pd_data_role role)
 
 void pdc_power_mgmt_request_data_swap_to_ufp(int port)
 {
-	pdc_power_mgmt_request_data_swap(port, PD_ROLE_UFP);
+	pdc_power_mgmt_request_data_swap_intern(port, PD_ROLE_UFP);
 }
 
 void pdc_power_mgmt_request_data_swap_to_dfp(int port)
 {
-	pdc_power_mgmt_request_data_swap(port, PD_ROLE_DFP);
+	pdc_power_mgmt_request_data_swap_intern(port, PD_ROLE_DFP);
 }
 
-static int pdc_power_mgmt_request_power_swap(int port, enum pd_power_role role)
+void pdc_power_mgmt_request_data_swap(int port)
+{
+	if (pdc_power_mgmt_pd_get_data_role(port) == PD_ROLE_DFP) {
+		pdc_power_mgmt_request_data_swap_intern(port, PD_ROLE_UFP);
+	} else if (pdc_power_mgmt_pd_get_data_role(port) == PD_ROLE_UFP) {
+		pdc_power_mgmt_request_data_swap_intern(port, PD_ROLE_DFP);
+	}
+}
+
+static int pdc_power_mgmt_request_power_swap_intern(int port, enum pd_power_role role)
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -1544,12 +1568,21 @@ static int pdc_power_mgmt_request_power_swap(int port, enum pd_power_role role)
 
 void pdc_power_mgmt_request_swap_to_src(int port)
 {
-	pdc_power_mgmt_request_power_swap(port, PD_ROLE_SOURCE);
+	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
 }
 
 void pdc_power_mgmt_request_swap_to_snk(int port)
 {
-	pdc_power_mgmt_request_power_swap(port, PD_ROLE_SINK);
+	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+}
+
+void pdc_power_mgmt_request_power_swap(int port)
+{
+	if (pdc_power_mgmt_is_sink_connected(port)) {
+		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+	} else if (pdc_power_mgmt_is_source_connected(port)) {
+		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+	}
 }
 
 enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port)
