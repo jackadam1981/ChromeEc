@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0eeee5_d03e67c0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-01-17T15:47:21Z",
+      "side": 1,
+      "message": "Check for EC_ERROR_UNKNOWN here or in line 2547?",
+      "range": {
+        "startLine": 2537,
+        "startChar": 4,
+        "endLine": 2537,
+        "endChar": 20
+      },
+      "revId": "258d57f0b5b783345042a3c5fdaca978bb1a202d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1abde110_d8dc9ffd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-01-17T15:47:21Z",
+      "side": 1,
+      "message": "Why did you remove checking the result of add_delimiter and finalize_delimiter?",
+      "range": {
+        "startLine": 2962,
+        "startChar": 2,
+        "endLine": 2962,
+        "endChar": 15
+      },
+      "revId": "258d57f0b5b783345042a3c5fdaca978bb1a202d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
