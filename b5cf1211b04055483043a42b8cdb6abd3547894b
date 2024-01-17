@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f62f3b_ffeb3f78",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-17T01:32:51Z",
+      "side": 1,
+      "message": "Should this be part of this CL?",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "b5cf1211b04055483043a42b8cdb6abd3547894b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56618510_961c9ca7",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 1
