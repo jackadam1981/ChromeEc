@@ -1341,6 +1341,15 @@ bool pdc_power_mgmt_is_source_connected(int port)
 	return pdc_data[port]->port.attached_src;
 }
 
+bool pdc_power_mgmt_is_typec_connected(int port)
+{
+	if (!is_pdc_port_valid(port)) {
+		return false;
+	}
+
+	return pdc_data[port]->port.attached_snk_src_typec_only;
+}
+
 bool pdc_power_mgmt_is_connected(int port)
 {
 	if (!is_pdc_port_valid(port)) {
@@ -1724,4 +1733,17 @@ const uint32_t *const pdc_power_mgmt_get_src_caps(int port)
 	}
 
 	return (const uint32_t *const)pdc_data[port]->port.snk_policy.pdos;
+}
+
+const char *pdc_power_mgmt_get_task_state_name(int port)
+{
+	if (pdc_power_mgmt_is_typec_connected(port)) {
+		return pdc_state_names[PDC_SRC_SNK_TYPEC_ONLY];
+	} else if (pdc_power_mgmt_is_sink_connected(port)) {
+		return pdc_state_names[PDC_SNK_ATTACHED];
+	} else if (pdc_power_mgmt_is_source_connected(port)) {
+		return pdc_state_names[PDC_SRC_ATTACHED];
+	}
+
+	return pdc_state_names[PDC_UNATTACHED];
 }
