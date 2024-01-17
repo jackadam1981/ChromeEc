@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d1c5f7_3f3aba9b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-17T21:20:21Z",
+      "side": 1,
+      "message": "I have no idea so far on how to react on error besides adding it in flog (and print on console as a result). Adding to flog is done in nested code where more information is available. May be at this level we can just turn these functions to void, as we can\u0027t do anything meaningful.",
+      "parentUuid": "be0eeee5_d03e67c0",
+      "range": {
+        "startLine": 2537,
+        "startChar": 4,
+        "endLine": 2537,
+        "endChar": 20
+      },
+      "revId": "258d57f0b5b783345042a3c5fdaca978bb1a202d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1abde110_d8dc9ffd",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-17T15:47:21Z",
       "side": 1,
       "message": "Why did you remove checking the result of add_delimiter and finalize_delimiter?",
+      "range": {
+        "startLine": 2962,
+        "startChar": 2,
+        "endLine": 2962,
+        "endChar": 15
+      },
+      "revId": "258d57f0b5b783345042a3c5fdaca978bb1a202d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52d633a_32e6c0fd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-17T21:20:21Z",
+      "side": 1,
+      "message": "the existing handling is incorrect and will leave filesystem in  the inconsistent state. I always need to add two delimiters, and final is even more important. the only reason it can fail is a flash write issue or be out of space.  if I return after add_delimiter() I\u0027d not be able to delete old objects which I have to delete. then technically we need to have compaction if needed to free up space. I want to add this as another CL on top. Added http://b/320703802",
+      "parentUuid": "1abde110_d8dc9ffd",
       "range": {
         "startLine": 2962,
         "startChar": 2,
