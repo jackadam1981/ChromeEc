@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8834de1_c1d3a55e",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-17T23:16:05Z",
+      "side": 1,
+      "message": "What is printed in this case? Is it consistently around 2 seconds?\n\n(You may want to make this a separate test function and run it without any of the RTC tests just to make sure they\u0027re not somehow interfering.)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "8e1929c90831cf5ba62a7a9f5de5c62391c9c5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
