@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590b1d61_480273f4",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "Tokenized EC logs",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b9bf69_962e5f32",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": ". D",
+      "range": {
+        "startLine": 13,
+        "startChar": 64,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45092b9c_1afb7bc1",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "saved to cros_ec.log on the DUT.",
+      "range": {
+        "startLine": 14,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5228a8d5_7151f3c2",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "The reader doesn\u0027t yet know what the token database is. I think you drop this sentence.  Your document covers how servod and timberslide manage detokenizing later.",
+      "range": {
+        "startLine": 14,
+        "startChar": 63,
+        "endLine": 15,
+        "endChar": 75
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41124b2_f57bd8f9",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "Delete \"management\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f06a51e_d4fa8ccc",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "It would be helpful to briefly describe the role of the token database first.  \"The detokenizing process relies on the creation of a token database that serves to map the 32-bit token back to the original format string.\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 75
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20cb40d1_93abd31f",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "You\u0027ve got some lines longer than 80 columns.  I use the Rewrap VS Vode extension to insert hard word wraps when I work on documentation.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 91
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32de98c6_71e3382d",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "\"This is the database deployed on shipping DUTs and is the database used with released firmware images.\"",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "4b614793b5319810867e6d7a22c41ef071428b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6dba7ec_907288c1",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T22:29:01Z",
+      "side": 1,
+      "message": "I still find the current organization hard to follow.  I still think documenting these workflows would be helpful.\n\nI suppose there are really only 2 workflows - Using released images and using locally built images.\n\nThe outline I\u0027m envisioning might be:\n```\nIntro\nEnabling Tokenization\nToken Databases\nWorkflows\n  Local EC images\n    Building\n    Database location\n    Start servod (see servod details)\n    Flash EC (and update on DUT database)\n  Released images\n    Nothing to do! (Can the servod database fall behind EC ToT)?\nServod details\n  Inside chroot\n  Using docker\nOn DUT logs\n  Timberslide section\nRecovering from failures\nHistorical Database Mangement\nToken Collisions\n```",
+      "parentUuid": "33aad733_04aeb57d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "6f1a460828e4f18a1479162699818cd2f5a54f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb3da76a_6a2519f9",
         "filename": "docs/zephyr/zephyr_tokenized_logging.md",
         "patchSetId": 13
