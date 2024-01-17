@@ -1760,12 +1760,14 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state)
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
 		pdc_data[port]->port.una_policy.cc_mode = CCOM_DRP;
-		atomic_set_bit(pdc_data[port]->port.una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(pdc_data[port]->port.una_policy.flags,
+			       UNA_POLICY_CC_MODE);
 		break;
 	/* Stay in src until disconnect, then stay in sink forever */
 	case PD_DRP_TOGGLE_OFF:
 		pdc_data[port]->port.una_policy.cc_mode = CCOM_RD;
-		atomic_set_bit(pdc_data[port]->port.una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(pdc_data[port]->port.una_policy.flags,
+			       UNA_POLICY_CC_MODE);
 		break;
 	/* Stay in current power role, don't switch. No auto-toggle support */
 	case PD_DRP_FREEZE:
@@ -1774,22 +1776,25 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state)
 		} else {
 			pdc_data[port]->port.una_policy.cc_mode = CCOM_RD;
 		}
-		atomic_set_bit(pdc_data[port]->port.una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(pdc_data[port]->port.una_policy.flags,
+			       UNA_POLICY_CC_MODE);
 		break;
 	/* Switch to sink */
 	case PD_DRP_FORCE_SINK:
 		if (pdc_power_mgmt_is_source_connected(port)) {
 			pdc_data[port]->port.pdr.swap_to_src = 0;
-	                pdc_data[port]->port.pdr.swap_to_snk = 1;
-			atomic_set_bit(pdc_data[port]->port.src_policy.flags, SRC_POLICY_SWAP_TO_SNK);
+			pdc_data[port]->port.pdr.swap_to_snk = 1;
+			atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+				       SRC_POLICY_SWAP_TO_SNK);
 		}
 		break;
 	/* Switch to source */
 	case PD_DRP_FORCE_SOURCE:
 		if (pdc_power_mgmt_is_sink_connected(port)) {
 			pdc_data[port]->port.pdr.swap_to_src = 1;
-	                pdc_data[port]->port.pdr.swap_to_snk = 0;
-			atomic_set_bit(pdc_data[port]->port.snk_policy.flags, SNK_POLICY_SWAP_TO_SRC);
+			pdc_data[port]->port.pdr.swap_to_snk = 0;
+			atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+				       SNK_POLICY_SWAP_TO_SRC);
 		}
 		break;
 	}
