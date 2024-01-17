@@ -1295,8 +1295,8 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 bool is_pdc_port_valid(int port)
 {
 	if (port < 0 || port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
-                return false;
-        }
+		return false;
+	}
 	return true;
 }
 
@@ -1396,13 +1396,16 @@ bool pdc_power_mgmt_get_vconn_state(int port)
 
 bool pdc_power_mgmt_get_partner_usb_comm_capable(int port)
 {
-	/* Make sure port is sink connected */
-	if (!pdc_power_mgmt_is_sink_connected(port)) {
+	/* Make sure port is connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
 		return false;
 	}
 
-	return (pdc_data[port]->port.snk_policy.pdo &
-		PDO_FIXED_GET_USB_COMM_CAPABLE);
+	return pdc_data[port]->port.ccaps.op_mode_usb2 |
+	       pdc_data[port]->port.ccaps.op_mode_usb3 |
+	       pdc_data[port]->port.ccaps.ext_op_mode_usb4_gen2 |
+	       pdc_data[port]->port.ccaps.ext_op_mode_usb4_gen3 |
+	       pdc_data[port]->port.ccaps.ext_op_mode_usb4_gen4;
 }
 
 bool pdc_power_mgmt_get_partner_unconstr_power(int port)
