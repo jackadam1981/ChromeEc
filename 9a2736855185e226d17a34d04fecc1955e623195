@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9aecfeb2_2cda1db9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-17T18:07:48Z",
+      "side": 1,
+      "message": "accept_dr_swap is set to 1 by default, but can be updated with the pdc_power_mgmt_accept_data_swap API.\n\nIMO accept_dr_swap shouldn\u0027t be part of this register.",
+      "parentUuid": "8efe6e72_09e13fea",
+      "range": {
+        "startLine": 1499,
+        "startChar": 0,
+        "endLine": 1499,
+        "endChar": 47
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab18358c_a9f659de",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-17T17:57:40Z",
       "side": 1,
       "message": "This also needs to set `accept_pr_swap`",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1545,
+        "endChar": 47
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22051f66_e5f9109e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-17T18:07:48Z",
+      "side": 1,
+      "message": "accept_pr_swap is set to 1 by default, but can be updated with the pdc_power_mgmt_accept_power_swap API.",
+      "parentUuid": "ab18358c_a9f659de",
       "range": {
         "startLine": 1545,
         "startChar": 0,
