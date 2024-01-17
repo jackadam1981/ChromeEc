@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efe6e72_09e13fea",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:57:40Z",
+      "side": 1,
+      "message": "You also need to set `accept_dr_swap`, otherwise the PDC will reject swaps.",
+      "range": {
+        "startLine": 1499,
+        "startChar": 0,
+        "endLine": 1499,
+        "endChar": 47
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab18358c_a9f659de",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-17T17:57:40Z",
+      "side": 1,
+      "message": "This also needs to set `accept_pr_swap`",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1545,
+        "endChar": 47
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
