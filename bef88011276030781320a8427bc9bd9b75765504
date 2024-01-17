@@ -52,6 +52,24 @@
       "parentUuid": "ee9228d4_59b359ef",
       "revId": "bef88011276030781320a8427bc9bd9b75765504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a8fae2_05790313",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-17T19:01:46Z",
+      "side": 1,
+      "message": "Removed SBS_DOUBLE_CHECK_STATUS_READ. I agree that it\u0027s likely an error in reading the status register is reported differently. Ptal.",
+      "parentUuid": "65f4b929_dd4bcedd",
+      "revId": "bef88011276030781320a8427bc9bd9b75765504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
