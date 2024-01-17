@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499782fb_c582028b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-17T16:50:01Z",
+      "side": 1,
+      "message": "Doing this currently eliminates pd_send_host_event(), so I added that back as a stub in pdc_host_cmd.c since we aren\u0027t using it for now anyways, but we should determine if we want it back or are creating a new version of it.",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 37
+      },
+      "revId": "a041068e76b974898164f10f7a9d88630d273212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
