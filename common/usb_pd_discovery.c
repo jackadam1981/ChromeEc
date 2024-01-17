@@ -475,6 +475,7 @@ bool is_active_cable_element_retimer(int port)
 enum discovery_states {
 	DISCOVERY_CABLE_IDENTITY = 0,
 	/* TODO(b/188578923): Add other discovery states. */
+	DISCOVERY_PORT_IDENTITY,
 	DISCOVERY_DONE,
 	DISCOVERY_STATE_COUNT
 };
@@ -540,10 +541,17 @@ static void discovery_set_failed(int port)
 void discovery_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 			 uint32_t *vdm)
 {
+	/* TODO(b/272827504): Validate VDM header for state */
+
 	switch (discovery_state[port]) {
 	case DISCOVERY_CABLE_IDENTITY:
 		dfp_consume_identity(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Cable identity ACK", port);
+		discovery_state[port] = DISCOVERY_PORT_IDENTITY;
+		break;
+	case DISCOVERY_PORT_IDENTITY:
+		dfp_consume_identity(port, type, vdo_count, vdm);
+		CPRINTS("C%d: Port identity ACK", port);
 		/* TODO(b/188578923): Add other discovery states. */
 		discovery_state[port] = DISCOVERY_DONE;
 		break;
@@ -562,6 +570,11 @@ void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 	case DISCOVERY_CABLE_IDENTITY:
 		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
 		CPRINTS("C%d: Cable identity NAK", port);
+		discovery_state[port] = DISCOVERY_DONE;
+		break;
+	case DISCOVERY_PORT_IDENTITY:
+		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
+		CPRINTS("C%d: Port identity NAK", port);
 		/* TODO(b/188578923): Add other discovery states. */
 		discovery_state[port] = DISCOVERY_DONE;
 		break;
