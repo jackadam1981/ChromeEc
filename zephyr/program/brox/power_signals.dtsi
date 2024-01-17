@@ -15,7 +15,8 @@
 		 * is 2.5 ms so set a minimum of 12.5 ms delay after enabling
 		 * EN_S5_RAILS
 		 */
-		dsw-pwrok-delay = <13>;
+		/* TODO: b/319346575 Test longer delay for DSW_PWROK */
+		dsw-pwrok-delay = <30>;
 		sys-pwrok-delay = <10>;
 		all-sys-pwrgd-timeout = <20>;
 	};
