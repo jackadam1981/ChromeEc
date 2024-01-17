@@ -24,7 +24,12 @@ test_static int test_rtc_alarm_fired(void)
 	atomic_clear(&interrupt_counter);
 	system_set_rtc_alarm(rtc_delay_seconds, 0);
 
+	timestamp_t time1 = get_time();
 	sleep(2 * rtc_delay_seconds);
+	uint32_t time2 = time_since32(time1);
+	cflush();
+	ccprints("The delay time is %d\n: ", time2);
+	cflush();
 
 	rtc_fired = atomic_get(&interrupt_counter);
 
