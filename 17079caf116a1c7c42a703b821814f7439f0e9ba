@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9073cc27_175517f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T06:06:41Z",
+      "side": 1,
+      "message": "See CL:5193706.",
+      "parentUuid": "c55fd093_b551a858",
+      "revId": "17079caf116a1c7c42a703b821814f7439f0e9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bb1696b_f11a943b",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 5
