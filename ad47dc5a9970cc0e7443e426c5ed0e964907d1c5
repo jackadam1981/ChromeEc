@@ -34,6 +34,41 @@
       "parentUuid": "714022e1_0005a277",
       "revId": "ad47dc5a9970cc0e7443e426c5ed0e964907d1c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb63c88_975609b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "for some reason I can get ectool to recognize the new `cbibin` command. More updates to follow.",
+      "revId": "ad47dc5a9970cc0e7443e426c5ed0e964907d1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f292f3b_358fc410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df59824_42c343ad",
+      "revId": "ad47dc5a9970cc0e7443e426c5ed0e964907d1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

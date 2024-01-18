@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df84d65_860a4f39",
+        "filename": "common/cbi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e567d13f_692043a4",
+      "range": {
+        "startLine": 519,
+        "startChar": 25,
+        "endLine": 519,
+        "endChar": 53
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961bf714_f424b67e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-26T01:54:29Z",
       "side": 1,
       "message": "No one uses it.",
+      "range": {
+        "startLine": 6320,
+        "startChar": 1,
+        "endLine": 6320,
+        "endChar": 14
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04786607_92b9987b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6320,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "This has been removed.",
+      "parentUuid": "961bf714_f424b67e",
       "range": {
         "startLine": 6320,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d962d2_baa33277",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6367,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d901f02_5f663e77",
+      "range": {
+        "startLine": 6367,
+        "startChar": 15,
+        "endLine": 6367,
+        "endChar": 18
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edd41f88_c080d669",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-10-26T01:54:29Z",
       "side": 1,
       "message": "Don\u0027t mention commit, just `ec_cbi_bin_flags`.",
+      "range": {
+        "startLine": 6374,
+        "startChar": 5,
+        "endLine": 6374,
+        "endChar": 26
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7a914f_799d0c5b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6374,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd41f88_c080d669",
       "range": {
         "startLine": 6374,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "660bbf7c_d4e579a1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6380,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da173343_3b2c1a40",
+      "range": {
+        "startLine": 6380,
+        "startChar": 21,
+        "endLine": 6380,
+        "endChar": 27
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3dac71c_1049636f",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-10-26T01:54:29Z",
       "side": 1,
       "message": "Use `flags` so it can be expanded to other purposes.",
+      "range": {
+        "startLine": 6388,
+        "startChar": 9,
+        "endLine": 6388,
+        "endChar": 15
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645abc61_d12453e7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6388,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3dac71c_1049636f",
       "range": {
         "startLine": 6388,
         "startChar": 9,
@@ -228,6 +372,30 @@
         "startChar": 19,
         "endLine": 8774,
         "endChar": 34
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34adfe6a_c86d2a5e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-18T01:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8af3054_6ac4166a",
+      "range": {
+        "startLine": 8774,
+        "startChar": 15,
+        "endLine": 8774,
+        "endChar": 18
       },
       "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
