@@ -421,6 +421,25 @@ const char *crec_flash_read_pstate_mac_addr(void);
  */
 int crec_flash_write_pstate_mac_addr(const char *mac_addr);
 
+/**
+ * Get the poweron config from flash.
+ *
+ * @return char * bitmasks describing specific ports
+ *     Length defined by CONFIG_POWERON_CONF_LEN
+ *     NULL if error.
+ */
+const char *crec_flash_read_pstate_poweron_conf(void);
+
+/**
+ * Set the poweron config in flash.
+ *
+ * @param poweron_conf
+ *        Length defined by CONFIG_POWERON_CONF_LEN
+ *
+ * @return success status.
+ */
+int crec_flash_write_pstate_poweron_conf(const char *poweron_conf);
+
 #ifdef CONFIG_FLASH_EX_OP_ENABLED
 /**
  * Flash device register's reset.

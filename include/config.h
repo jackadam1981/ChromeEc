@@ -4026,6 +4026,12 @@
 /* Size of the MAC address field if needed. */
 #undef CONFIG_MAC_ADDR_LEN
 
+/* Support programmable device poweron config. */
+#undef CONFIG_POWERON_CONF
+
+/* Size of the poweron config field if needed. */
+#undef CONFIG_POWERON_CONF_LEN
+
 /****************************************************************************/
 /* Shared objects library. */
 
