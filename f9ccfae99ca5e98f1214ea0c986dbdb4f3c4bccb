@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a728d34_d0fb7d9e",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-18T22:12:15Z",
+      "side": 1,
+      "message": "This should really be delta time",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "f9ccfae99ca5e98f1214ea0c986dbdb4f3c4bccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fd58512_3252c84e",
         "filename": "test/rtc_npcx9.c",
         "patchSetId": 1
@@ -133,6 +156,30 @@
       "side": 1,
       "message": "Interesting. It kind of looks like an off-by-one error.\n\nFor example, when specifying `1` second, the delay is ~0, `2` seconds, is ~1, 3 seconds is ~2, etc.\n\n(The `1` case is a bit of an outlier since it\u0027s really around 600ms, but the other numbers look like they\u0027re pretty close to exactly off by one).\n\nI would look at the documentation for the NPCX RTC registers used [in this code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system.c;l\u003d690-732;drc\u003d0bcf0fbafc375d4d44c2b7991d998241674936e4) to see if we\u0027re setting the right values. You could also file a bug against Nuvoton to see if they can review this.",
       "parentUuid": "17ba9f64_50e24576",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "f9ccfae99ca5e98f1214ea0c986dbdb4f3c4bccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4207c9b8_5f002860",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-18T22:12:15Z",
+      "side": 1,
+      "message": "We talked about this a bit offline but it\u0027s worth repeating here. The RTC timer uses the MTC peripheral which has an update rate of 1 second. Since that timer runs asynchronously from when `system_set_rtc_alarm()` is called, you could call `system_set_rtc_alarm(1)` 999 ms into the clock tick and get the RTC alarm 1ms later.  Since `get_time()` (which is used to track the delta time here) uses the ITIM32 timer (which I think has a 1khz rate) we get a better idea of actual time passed. I believe that\u0027s what we\u0027re seeing here.\n\nI suggested that Firas confirm this by seeing if the results are more consistent if we first set an rtc alarm and wait for it to complete before running the test. This won\u0027t be perfect but should yield more consistent looking results.\n\nI recall having a conversation about this with CH in a previous CL, although I cannot find it. Adding CH to get his thoughts.",
+      "parentUuid": "0a108e58_1c34cd07",
       "range": {
         "startLine": 35,
         "startChar": 0,
