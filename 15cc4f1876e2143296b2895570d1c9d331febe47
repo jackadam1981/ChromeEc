@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af1b0e8_b02a9bd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-18T22:15:12Z",
+      "side": 1,
+      "message": "This is the same as https://crrev.com/c/5173629, but targeting the `firmware-fpmcu-bloonchiopper-release branch`. Currently we don\u0027t have a release branch for `boringssl`, so `firmware-fpmcu-bloonchipper-release branch` will use the new version of boringssl as well and needs this change to compile.",
+      "revId": "15cc4f1876e2143296b2895570d1c9d331febe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
