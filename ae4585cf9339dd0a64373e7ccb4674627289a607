@@ -22,6 +22,30 @@
       },
       "revId": "ae4585cf9339dd0a64373e7ccb4674627289a607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0489b67e_d0340cb3",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T00:46:07Z",
+      "side": 1,
+      "message": "Could this be same as using `PLATFORM_EC_USB_PD_TCPM_TCPCI`?",
+      "parentUuid": "7a19fcc8_91bfe1f3",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "ae4585cf9339dd0a64373e7ccb4674627289a607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
