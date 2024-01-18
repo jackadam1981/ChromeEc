@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1085b57_9e1ad688",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T06:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c17265aa_0606db38",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "18dbfcc62e270a1bc96f85d7024af69699e8f37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3c9fc4e_6fd1c0d0",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae517398_9894ef0a",
+        "filename": "zephyr/test/ap_power/boards/alderlake_emul.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T06:07:29Z",
+      "side": 1,
+      "message": "Correct, the `invert-value` property of the output will set the `output-signal` to its `assert-value` when `input-signal` is de-asserted.\n\nThis current configuration seems correct, I see errors otherwise.",
+      "parentUuid": "a3c9fc4e_6fd1c0d0",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "18dbfcc62e270a1bc96f85d7024af69699e8f37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "490bbac9_007aec67",
         "filename": "zephyr/test/ap_power/boards/meteorlake.dts",
         "patchSetId": 7
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-12T23:30:27Z",
       "side": 1,
       "message": "Leave this one as `assert-delay-ms` and delete `invert-value`",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "18dbfcc62e270a1bc96f85d7024af69699e8f37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da993681_ea57731f",
+        "filename": "zephyr/test/ap_power/boards/meteorlake.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T06:07:29Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "490bbac9_007aec67",
       "range": {
         "startLine": 129,
         "startChar": 0,
