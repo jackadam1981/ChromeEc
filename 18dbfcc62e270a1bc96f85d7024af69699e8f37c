@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0464021_251e6c8c",
+        "filename": "zephyr/test/ap_power/boards/alderlake_emul.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T22:23:36Z",
+      "side": 1,
+      "message": "Thanks. I re-read the documentation and agree with with the change.",
+      "parentUuid": "ae517398_9894ef0a",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "18dbfcc62e270a1bc96f85d7024af69699e8f37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "490bbac9_007aec67",
         "filename": "zephyr/test/ap_power/boards/meteorlake.dts",
         "patchSetId": 7
