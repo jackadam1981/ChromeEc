@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "175e7e4f_9b6cf551",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1809,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T19:16:49Z",
+      "side": 1,
+      "message": "This file is now nearly 2000 lines long.  I would really like the policy stuff managed in a separate file.\n\nI\u0027m not sure why you would need to pass in both a port number and the `pdc_port` pointer.\n\nYou could manage this using the FOREACH macro:\n\n```\n#define DT_DRV_COMPAT named_usbc_port\n\nresume_policy(const struct device *dev)\n{\n\tstruct pdc_data_t *data \u003d dev-\u003edata;\n\tstruct pdc_port_t *port \u003d \u0026data-\u003eport;\n\t/* ... */\n}\n\n#define PDC_CHIPSET_RESUME_POLICY(inst) \\\n   const struct device *dev \u003d DEVICE_DT_INST_GET(inst); \\\n   resume_policy(dev);\n\n\nstatic void pd_chipset_resume(void) {\n    DT_INST_FOREACH_STATUS_OKAY(PDC_CHIPSET_RESUME_POLICY)\n}\n```",
+      "parentUuid": "26f4a8a4_d6e68905",
+      "range": {
+        "startLine": 1809,
+        "startChar": 0,
+        "endLine": 1809,
+        "endChar": 29
+      },
+      "revId": "f302ed6a7ab54d2bcb6407786cd96adfd37adccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0e2a7eb_8b50c4dc",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I\u0027ve tested the the polices as is and they work. Could we save this change for a follow-on CL?",
       "parentUuid": "a0e2a7eb_8b50c4dc",
+      "range": {
+        "startLine": 1859,
+        "startChar": 0,
+        "endLine": 1869,
+        "endChar": 0
+      },
+      "revId": "f302ed6a7ab54d2bcb6407786cd96adfd37adccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d7132a_f2b7d38e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T19:16:49Z",
+      "side": 1,
+      "message": "Converting to ap_power_ev_init_callback() shouldn\u0027t be too difficult.",
+      "parentUuid": "bd8aa942_ae5034b1",
       "range": {
         "startLine": 1859,
         "startChar": 0,
