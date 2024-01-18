@@ -358,6 +358,7 @@ struct ping_status {
 
 /** @brief Emulated properties */
 struct rts5453p_emul_pdc_data {
+	struct gpio_dt_spec irq_gpios;
 	uint16_t ucsi_version;
 	union vendor_cmd vnd_command;
 	uint8_t connector_reset_type;
@@ -397,5 +398,14 @@ struct rts5453p_emul_pdc_data {
  */
 struct i2c_common_emul_data *
 rts5453p_emul_get_i2c_common_data(const struct emul *emul);
+
+/**
+ * @brief Returns pointer to pdc data for argument emul
+ *
+ * @param emul Pointer to rts5453p emulator
+ * @return Pointer to pdc_data from argument emul
+ */
+struct rts5453p_emul_pdc_data *
+rts5453p_emul_get_pdc_data(const struct emul *emul);
 
 #endif /* __EMUL_REALTEK_RTS5453P_H */

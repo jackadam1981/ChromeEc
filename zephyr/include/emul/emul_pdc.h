@@ -56,6 +56,8 @@ typedef int (*emul_pdc_get_requested_power_level_t)(
 typedef int (*emul_pdc_get_reconnect_req_t)(const struct emul *target,
 					    uint8_t *expecting, uint8_t *val);
 
+typedef int (*emul_pdc_pulse_irq_t)(const struct emul *target);
+
 __subsystem struct emul_pdc_api_t {
 	emul_pdc_set_response_delay_t set_response_delay;
 	emul_pdc_set_ucsi_version_t set_ucsi_version;
@@ -77,6 +79,7 @@ __subsystem struct emul_pdc_api_t {
 	emul_pdc_get_retimer_fw_t get_retimer;
 	emul_pdc_get_requested_power_level_t get_requested_power_level;
 	emul_pdc_get_reconnect_req_t get_reconnect_req;
+	emul_pdc_pulse_irq_t pulse_irq;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -378,6 +381,20 @@ static inline int emul_pdc_get_reconnect_req(const struct emul *target,
 
 	if (api->get_reconnect_req) {
 		return api->get_reconnect_req(target, expecting, val);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_pulse_irq(const struct emul *target)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_api_t *api = target->backend_api;
+
+	if (api->pulse_irq) {
+		return api->pulse_irq(target);
 	}
 	return -ENOSYS;
 }
