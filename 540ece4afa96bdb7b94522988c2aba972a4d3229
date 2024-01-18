@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2196d1a2_9a77a28f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T22:49:12Z",
+      "side": 1,
+      "message": "There\u0027s a bit of duplicated work between this CL and CL:4800415\n\nEither Peter or Bernardo will need to do a significant refactor.\n\nI\u0027d prefer Peter\u0027s change to land first.",
+      "revId": "540ece4afa96bdb7b94522988c2aba972a4d3229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59aaecd1_1679377e",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T22:49:12Z",
+      "side": 1,
+      "message": "Nit - move this into the previous CL.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "540ece4afa96bdb7b94522988c2aba972a4d3229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc75cd9_98d16fb4",
+        "filename": "zephyr/test/nissa/boards/generic_power_signals.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T22:49:12Z",
+      "side": 1,
+      "message": "Needs a file header.",
+      "revId": "540ece4afa96bdb7b94522988c2aba972a4d3229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
