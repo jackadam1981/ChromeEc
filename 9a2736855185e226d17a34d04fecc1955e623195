@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8f1f6c_e8410010",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c191acb4_c2d6a7c8",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 59
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d055017b_e127c3b3",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff625df2_3c2ae27e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bfe58f6_da32dc00",
+      "range": {
+        "startLine": 1448,
+        "startChar": 0,
+        "endLine": 1448,
+        "endChar": 40
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3f2d48b_01957b39",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Please review latest patchset.",
       "parentUuid": "a3f2d48b_01957b39",
+      "range": {
+        "startLine": 1468,
+        "startChar": 0,
+        "endLine": 1468,
+        "endChar": 40
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c8f499_b811fcf3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb3401cd_bdf68423",
       "range": {
         "startLine": 1468,
         "startChar": 0,
@@ -237,6 +309,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65eac50d_bd61f834",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10491e86_b85c2d9c",
+      "range": {
+        "startLine": 1499,
+        "startChar": 0,
+        "endLine": 1499,
+        "endChar": 47
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab18358c_a9f659de",
@@ -298,6 +394,30 @@
       "side": 1,
       "message": "Same comments apply to `pdr` usage as the `uor` field noted above.",
       "parentUuid": "22051f66_e5f9109e",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1545,
+        "endChar": 47
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a958f6e4_b68ecf71",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c85073_b4b74545",
       "range": {
         "startLine": 1545,
         "startChar": 0,
