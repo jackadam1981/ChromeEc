@@ -947,8 +947,12 @@ static void pdc_snk_attached_exit(void *obj)
 		charge_manager_update_dualrole(config->connector_num,
 					       CAP_UNKNOWN);
 
-		/* Invalidate PDO */
+		/* Invalidate PDOS */
 		port->snk_policy.pdo = 0;
+		for (int i = 0; i < port->snk_policy.pdo_count; i++) {
+			port->snk_policy.pdos[i] = 0;
+		}
+		port->snk_policy.pdo_count = 0;
 	}
 }
 
