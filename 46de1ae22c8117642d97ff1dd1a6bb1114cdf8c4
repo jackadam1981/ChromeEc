@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d31e989_60f2bfa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "looks mostly ok, some comments and questions in-line",
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087e2a89_51c0a260",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2010,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "I\u0027d prefer still passing `index - NV_FIRST_PCR_INDEX` to `restore_pcr()`. sounds more natural this way. then here it would be just `index`.\n\nbut if we still go with `index - NV_FIRST_PCR_INDEX` here and not in the calling function then let\u0027s \n1) check that `index \u003e\u003d NV_FIRST_PCR_INDEX` before we subtract,\n2) add a comment that we expect \"reserved object index\", not \"pcr index\" as an input to this function.",
+      "range": {
+        "startLine": 2010,
+        "startChar": 26,
+        "endLine": 2010,
+        "endChar": 52
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce06fdf_64cab6ee",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "nit: add a const to the end of `enum NV_RESERVE`\n```\n     NV_RAM_INDEX_SPACE \u003d NV_RESERVE_LAST,\n*    NV_PSEUDO_RESERVE_LAST,   // End of the list including \u0027pseudo\u0027 elements.\n+ \n+    NV_RESERVE_INVALID \u003d 0xFF\n  } NV_RESERVE;\n```",
+      "range": {
+        "startLine": 2108,
+        "startChar": 24,
+        "endLine": 2108,
+        "endChar": 28
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899e8d18_ac55cb05",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2706,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "question: how do we detect garbage? or you mean the bytes in TPM2B.buffer after TPM2B.size? do you plan to add more marshal commands that just don\u0027t store the extra bytes?",
+      "range": {
+        "startLine": 2706,
+        "startChar": 11,
+        "endLine": 2706,
+        "endChar": 50
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3b8c08_fcf60ce4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "are we always guaranteed to have enough space after `ch` for the largest possible marshalled object (ch-\u003esize\u003d2047)? if not, we may corrupt memory structures that follow when marshalling the object from cache there. can we pass max_size to get_reserved_from_cache()?",
+      "range": {
+        "startLine": 2742,
+        "startChar": 1,
+        "endLine": 2743,
+        "endChar": 47
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f68a3e4_80017753",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2910,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "question: am I right that these are *new* objects that were not present in flash (so for them process_reserved() was not called by the while-loop above), and in this cycle we make sure that we save those previously not existing objects?",
+      "range": {
+        "startLine": 2910,
+        "startChar": 1,
+        "endLine": 2910,
+        "endChar": 47
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4dfb99e_21433aa3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "did you figure out if these reserved spaces need saving \u0026 restoring? I see NvGetReserved has special handling for them.",
+      "range": {
+        "startLine": 2916,
+        "startChar": 2,
+        "endLine": 2916,
+        "endChar": 55
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9d94f4_24b01e5e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2935,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "nit: extract into create_object()",
+      "range": {
+        "startLine": 2920,
+        "startChar": 2,
+        "endLine": 2935,
+        "endChar": 26
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa19cf6_74bc203b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "new *TPM* objects? we just saved new reserved objects in the loop above",
+      "range": {
+        "startLine": 2940,
+        "startChar": 13,
+        "endLine": 2940,
+        "endChar": 24
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52b9b78_50da8c0b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2967,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 1,
+      "message": "question: if we always cache on boot and can fully recover from cases with missing delimiters at that point during the initial pass through the on-flash filesystem, do we even need delimiters?",
+      "range": {
+        "startLine": 2966,
+        "startChar": 2,
+        "endLine": 2967,
+        "endChar": 18
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

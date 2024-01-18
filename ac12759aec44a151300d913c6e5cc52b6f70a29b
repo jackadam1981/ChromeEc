@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3c78e8_c07e555b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2814,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-18T23:33:07Z",
+      "side": 0,
+      "message": "question: so I see in the new code we are dropping this check and just update_object using the new data and the new size if it changed. it feels like a reasonable approach (even though the size should never change), but wanted to double-check that dropping this check was expected?",
+      "range": {
+        "startLine": 2813,
+        "startChar": 1,
+        "endLine": 2814,
+        "endChar": 48
+      },
+      "revId": "ac12759aec44a151300d913c6e5cc52b6f70a29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
