@@ -21,6 +21,8 @@
 #include "tcpm/tcpci.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "motion_sense.h"
+#include "driver/als_veml3328.h"
 
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
@@ -46,6 +48,43 @@ const static struct mp2964_reg_val rail_b[] = {
 	{ 0x46, 0x00d0 }, { 0x4d, 0xe13f }, { 0x53, 0x0028 }, { 0x60, 0x32b0 },
 	{ 0x62, 0x0cb4 }, { 0x96, 0x1e05 },
 };
+
+/* VEML3328 private data */
+struct veml3328_drv_data_t g_veml3328_data = {
+	.scale = 1,
+	.uscale = 1,
+	.offset = 0,
+};
+
+struct motion_sensor_t motion_sensors[] = {
+	[BASE_ALS] = {
+		.name = "Light",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_VEML3328,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &veml3328_drv,
+		.drv_data = &g_veml3328_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = VEML3328_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 65535,
+		.min_frequency = VEML3328_MIN_FREQ,
+		.max_frequency = VEML3328_MAX_FREQ,
+		.config = {
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = VEML3328_10000_MHZ,
+			},
+		},
+	},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
+const struct motion_sensor_t *motion_als_sensors[] = {
+	&motion_sensors[BASE_ALS],
+};
+BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
 static void mp2964_on_startup(void)
 {
