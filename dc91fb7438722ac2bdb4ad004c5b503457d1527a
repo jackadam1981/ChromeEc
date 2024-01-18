@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4bcf21d_424f9483",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T18:13:19Z",
+      "side": 1,
+      "message": "eSPI specifies signal value upon reset, we may need a DT entry to set what value we would like to set respective signal when bus reset event is received. I will open bug fort this.",
+      "parentUuid": "a86a71c6_d9f1c364",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d9e4369_d8dc74a3",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab65f6e6_ba9f8993",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T18:13:19Z",
+      "side": 1,
+      "message": "I have found some instances on zephyr:\n- [espi_npcx.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/espi/espi_npcx.c;l\u003d618)\n- [espi_it8xxx2.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/espi/espi_it8xxx2.c;l\u003d1803)\n- [espi_mchp_xec.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/espi/espi_mchp_xec.c;l\u003d858)\n\nThis is to inform the state of `eSPI Rese#` pin.",
+      "parentUuid": "9d9e4369_d8dc74a3",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14746502_ece0f5bd",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2024-01-17T16:37:15Z",
       "side": 1,
       "message": "Why is the vw_update_all() dropped?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97907305_0f56f054",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T18:13:19Z",
+      "side": 1,
+      "message": "`vw_update_all` will read the cached value of SLP_Sx vw signals from its IP registers. If we keep `vw_update_all` here, we will be overwriting VW SLP_Sx state after reset event is processed. We should wait until AP explicitly sets SLP_Sx signals value.",
+      "parentUuid": "14746502_ece0f5bd",
       "range": {
         "startLine": 125,
         "startChar": 0,
