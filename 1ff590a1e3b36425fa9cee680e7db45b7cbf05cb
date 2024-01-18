@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e79d9f09_504f7131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T16:52:37Z",
+      "side": 1,
+      "message": "This CL deletes the brya_pdc stubs, but the brox usb_stubs should also be deleted.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/brox/src/usbc_stubs.c;l\u003d1",
+      "parentUuid": "95202338_202ea175",
+      "revId": "1ff590a1e3b36425fa9cee680e7db45b7cbf05cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7195d8f0_08773ce3",
         "filename": "zephyr/shim/src/pdc_shim.c",
         "patchSetId": 6
