@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c191acb4_c2d6a7c8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-18T16:56:54Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "03a30b6c_1efeed24",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 59
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d055017b_e127c3b3",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bfe58f6_da32dc00",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-18T16:56:54Z",
+      "side": 1,
+      "message": "Please review latest patchset.",
+      "parentUuid": "d055017b_e127c3b3",
+      "range": {
+        "startLine": 1448,
+        "startChar": 0,
+        "endLine": 1448,
+        "endChar": 40
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3f2d48b_01957b39",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-18T16:47:50Z",
       "side": 1,
       "message": "This clears SNK and SRC bits - while this is allowed, we probably should set the bit corresponding to our current power role.",
+      "range": {
+        "startLine": 1468,
+        "startChar": 0,
+        "endLine": 1468,
+        "endChar": 40
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3401cd_bdf68423",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-18T16:56:54Z",
+      "side": 1,
+      "message": "Please review latest patchset.",
+      "parentUuid": "a3f2d48b_01957b39",
       "range": {
         "startLine": 1468,
         "startChar": 0,
