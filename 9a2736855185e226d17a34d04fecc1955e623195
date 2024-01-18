@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03a30b6c_1efeed24",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T16:47:50Z",
+      "side": 1,
+      "message": "Here you document the fields `uor` and `pdr` as temporary.  But you do need to track the current data role and power role. The SET_UOR command has this text:\n\n\"It is illegal for the OPM to set/clear Bit0 and Bit1 at the same time.\nThis command is valid only if connector supports PD\"\n\nFor SET_PDR, you can se just bit 2 (accept power swap), but I recommend we always set our current power role when sending SET_PDR to match the SET_UOR implementation.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 59
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d055017b_e127c3b3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T16:47:50Z",
+      "side": 1,
+      "message": "This is invalid. This clears both the DFP and UFP mode bits.  We need to retain the current data role and set the correct bit.",
+      "range": {
+        "startLine": 1448,
+        "startChar": 0,
+        "endLine": 1448,
+        "endChar": 40
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f2d48b_01957b39",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T16:47:50Z",
+      "side": 1,
+      "message": "This clears SNK and SRC bits - while this is allowed, we probably should set the bit corresponding to our current power role.",
+      "range": {
+        "startLine": 1468,
+        "startChar": 0,
+        "endLine": 1468,
+        "endChar": 40
+      },
+      "revId": "9a2736855185e226d17a34d04fecc1955e623195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8efe6e72_09e13fea",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
