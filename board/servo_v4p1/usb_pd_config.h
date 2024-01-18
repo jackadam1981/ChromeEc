@@ -291,4 +291,13 @@ static inline void pd_config_init(int port, uint8_t power_role)
 
 int pd_adc_read(int port, int cc);
 
+/**
+ * External function to allow setting resetting specific flags in cc_config.
+ * Allows similar functionality as cc console command.
+ *
+ * @param flag        cc_config flag to set/reset
+ * @param set         true to set, false to reset flag
+ */
+void set_reset_cc_flag(int flag, bool set);
+
 #endif /* __CROS_EC_USB_PD_CONFIG_H */
