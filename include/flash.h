@@ -421,6 +421,27 @@ const char *crec_flash_read_pstate_mac_addr(void);
  */
 int crec_flash_write_pstate_mac_addr(const char *mac_addr);
 
+/**
+ * Get the poweron config from flash.
+ *
+ *  @param buffer	place where we copy read data
+ *  @param length
+ *
+ * @return succcess status
+ */
+int crec_flash_read_pstate_poweron_conf(uint8_t *buffer, int length);
+
+/**
+ * Set the poweron config in flash.
+ *
+ * @param poweron_conf
+ * @param length of buffer to write
+ *
+ * @return success status.
+ */
+int crec_flash_write_pstate_poweron_conf(const uint8_t *poweron_conf,
+					 int length);
+
 #ifdef CONFIG_FLASH_EX_OP_ENABLED
 /**
  * Flash device register's reset.
