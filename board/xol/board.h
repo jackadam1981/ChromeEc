@@ -36,6 +36,16 @@
 #define GPIO_BAT_LED_GREEN_L GPIO_LED_G_ODL
 #define GPIO_PWR_LED_BLUE_L GPIO_LED_B_ODL
 
+/* ALS */
+#define CONFIG_ALS
+#define ALS_COUNT 1
+#define CONFIG_ALS
+#define CONFIG_ALS_VEML3328
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	(BIT(LID_ALS))
+
 /* USB Type A Features */
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -146,6 +156,14 @@
 #define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_BQ25710_PSYS_SENSING
 
+
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h" /* needed by registers.h */
@@ -157,6 +175,11 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_2,
 	ADC_TEMP_SENSOR_3,
 	ADC_CH_COUNT
+};
+
+enum sensor_id {
+	LID_ALS = 0,
+	SENSOR_COUNT,
 };
 
 enum temp_sensor_id {
