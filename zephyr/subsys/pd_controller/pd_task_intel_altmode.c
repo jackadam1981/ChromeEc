@@ -286,6 +286,25 @@ bool is_pd_intel_altmode_task_suspended(void)
 	return !thread_state;
 }
 
+#ifdef CONFIG_PLATFORM_EC_USB_PD_DP_MODE
+__override uint8_t get_dp_pin_mode(int port)
+{
+	return intel_altmode_task_data.data_status[port].dp_pin << 2;
+}
+#endif
+
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE
+enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
+{
+	return intel_altmode_task_data.data_status[port].cable_speed;
+}
+
+enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
+{
+	return intel_altmode_task_data.data_status[port].cable_gen;
+}
+#endif
+
 #ifdef CONFIG_CONSOLE_CMD_USBPD_INTEL_ALTMODE
 static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 {
@@ -394,25 +413,6 @@ int pd_is_connected(int port)
 {
 	return intel_altmode_task_data.data_status[port].data_conn;
 }
-
-#ifdef CONFIG_PLATFORM_EC_USB_PD_DP_MODE
-__override uint8_t get_dp_pin_mode(int port)
-{
-	return intel_altmode_task_data.data_status[port].dp_pin << 2;
-}
-#endif
-
-#ifdef CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE
-enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
-{
-	return intel_altmode_task_data.data_status[port].cable_speed;
-}
-
-enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
-{
-	return intel_altmode_task_data.data_status[port].cable_gen;
-}
-#endif
 
 /*
  * To suppress the compilation error, below functions are added with tested
