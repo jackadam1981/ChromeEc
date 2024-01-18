@@ -22,6 +22,30 @@
       },
       "revId": "5d817b0825e45a8e072d8b49037f3ec4d9e95d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d0e78c_32e795a0",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-18T19:54:24Z",
+      "side": 1,
+      "message": "Ok, looks like the issue is [probably with the RTC](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5207751/comment/de6a5378_a344e614/) then.",
+      "parentUuid": "0a9b70f8_9cd6359a",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "5d817b0825e45a8e072d8b49037f3ec4d9e95d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
