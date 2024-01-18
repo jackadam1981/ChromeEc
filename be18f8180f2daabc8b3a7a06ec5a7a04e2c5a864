@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1bf4924_9d54a0b0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "Add a new variable in `include/config.h`.",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0be84d_d946b1a3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "It should not be an #ifdef, but an OR since some sensors (light) are always in forced mode.",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61860f3e_2dc3ae54",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "Put above line 183, add enable in the CPRINTS.",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f9f5de1_5f3770a3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "I would set the ec_rate based on the ODR: \nec_rate \u003d\u003d 0 - honor `next_collection` \nec_rate \u003e 0 (set for each power state) : inhibit wakeups in the main thread to no more than every ec_rate.",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623ef41f_8da6ade3",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "remove.",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7cc18dc_015f3eed",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "We don\u0027t need this call since we will set the ODR after init call.",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42a9825_d194102a",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-18T20:22:35Z",
+      "side": 1,
+      "message": "We don\u0027t need this call since we set the ODR after init().",
+      "revId": "be18f8180f2daabc8b3a7a06ec5a7a04e2c5a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
