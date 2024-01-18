@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf74192_358add70",
+        "filename": "chip/npcx/gpio-npcx9.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-18T20:02:59Z",
+      "side": 1,
+      "message": "This function was added because `__gpio_rtc_interrupt` could not be overridden for testing, right? Please add a comment indicating that because otherwise it\u0027s likely to get removed when someone attempts to optimize.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 53
+      },
+      "revId": "e31297a1bafc61e2cd799f7e615014cd081e240c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d917cf2f_eb34b5c7",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2024-01-18T20:02:59Z",
+      "side": 1,
+      "message": "Nit: It\u0027s not a real problem but why is every other line left blank?",
+      "revId": "e31297a1bafc61e2cd799f7e615014cd081e240c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
