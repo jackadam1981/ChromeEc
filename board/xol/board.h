@@ -36,6 +36,16 @@
 #define GPIO_BAT_LED_GREEN_L GPIO_LED_G_ODL
 #define GPIO_PWR_LED_BLUE_L GPIO_LED_B_ODL
 
+/* ALS */
+#define CONFIG_ALS
+#define ALS_COUNT 1
+#define CONFIG_ALS
+#define CONFIG_ALS_VEML3328
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	(BIT(BASE_ALS))
+
 /* USB Type A Features */
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -157,6 +167,11 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_2,
 	ADC_TEMP_SENSOR_3,
 	ADC_CH_COUNT
+};
+
+enum sensor_id {
+	BASE_ALS = 0,
+	SENSOR_COUNT,
 };
 
 enum temp_sensor_id {
