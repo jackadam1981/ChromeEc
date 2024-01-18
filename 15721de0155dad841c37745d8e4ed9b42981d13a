@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779b6f57_49b6778d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:36:48Z",
+      "side": 1,
+      "message": "Line length.  This will fail CQ.",
+      "range": {
+        "startLine": 952,
+        "startChar": 15,
+        "endLine": 952,
+        "endChar": 25
+      },
+      "revId": "15721de0155dad841c37745d8e4ed9b42981d13a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
