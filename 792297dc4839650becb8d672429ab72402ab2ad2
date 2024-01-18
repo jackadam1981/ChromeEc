@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d868e449_951acda1",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/public/tabletmode_interrupt/emul.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-18T20:07:31Z",
+      "side": 1,
+      "message": "Ack. I think that we can just leave them without any modifiers in the header then. I believe we added a check for `extern` in `.c` files so we have to have them in headers.",
+      "parentUuid": "1cca1540_ba5a9055",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "792297dc4839650becb8d672429ab72402ab2ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "640c9a5d_85dca910",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9c7f0a_9ef58a56",
+        "filename": "zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-18T20:07:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "640c9a5d_85dca910",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "792297dc4839650becb8d672429ab72402ab2ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59a70baa_8cda8977",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-16T19:01:39Z",
       "side": 1,
       "message": "Nit - this is a little strange.  You\u0027re always generating a pulse on the tablet mode interrupt, which will cause two interrupts to fire.  \n\nBut it does functionally test the code, so I won\u0027t block this.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "792297dc4839650becb8d672429ab72402ab2ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dff902b_e3c2f16c",
+        "filename": "zephyr/test/drivers/tabletmode_interrupt/src/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-18T20:07:31Z",
+      "side": 1,
+      "message": "I changed this to only use the toggle in the `before` and `after` functions",
+      "parentUuid": "59a70baa_8cda8977",
       "range": {
         "startLine": 22,
         "startChar": 0,
