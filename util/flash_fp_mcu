@@ -544,6 +544,18 @@ flash_fp_mcu_board() {
   gpio 0 "${gpio_nrst}"
   sleep 0.001
 
+  if [[ "${gpio_pwren}" -gt 0 ]]; then
+    echo "Power cycling the FPMCU."
+    gpio export "${gpio_pwren}"
+    gpio out    "${gpio_pwren}"
+    gpio 0      "${gpio_pwren}"
+    # Must outlast hardware soft start, which is typically ~3ms.
+    sleep 0.5
+    gpio 1      "${gpio_pwren}"
+    # Power enable line is externally pulled down, so leave as output-high.
+    gpio unexport "${gpio_pwren}"
+  fi
+
   klog "Binding raw driver"
   if [[ "${transport}" == "UART" ]]; then
     # load AMDI0020:01 ttyS1
