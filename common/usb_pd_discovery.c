@@ -501,7 +501,11 @@ static struct message_params state_expected_message[] = {
 				    .vdm_cmd = CMD_DISCOVER_SVID },
 	[DISCOVERY_CABLE_MODES] = { .type = TCPCI_MSG_SOP_PRIME,
 				    .vdm_cmd = CMD_DISCOVER_MODES },
-	/* TODO: done state */
+	/* No VDM is expected in this state. This entry just streamlines
+	 * checking other states.
+	 */
+	[DISCOVERY_DONE] = { .type = TCPCI_MSG_INVALID,
+			     .vdm_cmd = CMD_EXIT_MODE },
 };
 
 bool discovery_is_done(int port)
@@ -570,6 +574,55 @@ static bool discovery_response_valid(int port, enum tcpci_msg_type type,
 	return type == expected.type && vdm_cmd == expected.vdm_cmd;
 }
 
+static enum discovery_states discovery_next_state(int port, bool success)
+{
+	enum discovery_states current = discovery_state[port];
+
+	/* This function shouldn't be called if discovery is done, but if it is,
+	 * stay in that state.
+	 */
+	if (current == DISCOVERY_DONE)
+		return DISCOVERY_DONE;
+
+	/* If mode discovery succeeds or fails, but there is still another SVID
+	 * to discover modes for, stay in the current state.
+	 */
+	if (current == DISCOVERY_PORT_MODES &&
+	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) == PD_DISC_NEEDED)
+		return DISCOVERY_PORT_MODES;
+	if (current == DISCOVERY_CABLE_MODES &&
+	    pd_get_modes_discovery(port, TCPCI_MSG_SOP_PRIME) == PD_DISC_NEEDED)
+		return DISCOVERY_CABLE_MODES;
+
+	/* If port mode discovery succeeds, and cable identity discovery failed,
+	 * proceed to the done state.
+	 */
+	if (current == DISCOVERY_PORT_MODES &&
+	    pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
+		    PD_DISC_FAIL)
+		return DISCOVERY_DONE;
+
+	/* In all other success cases, proceed to the next state. */
+	if (success)
+		return current + 1;
+
+	/* If SOP' identity fails, proceed with SOP identity. */
+	if (current == DISCOVERY_CABLE_IDENTITY)
+		return DISCOVERY_PORT_IDENTITY;
+	/* If SOP discovery fails, but SOP' identity succeeded, proceed with
+	 * SOP' discovery.
+	 */
+	if ((current == DISCOVERY_PORT_IDENTITY ||
+	     current == DISCOVERY_PORT_SVIDS ||
+	     current == DISCOVERY_PORT_MODES) &&
+	    pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
+		    PD_DISC_COMPLETE)
+		return DISCOVERY_CABLE_SVIDS;
+
+	/* In all other failure cases, proceed to the done state. */
+	return DISCOVERY_DONE;
+}
+
 void discovery_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 			 uint32_t *vdm)
 {
@@ -583,41 +636,35 @@ void discovery_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 	case DISCOVERY_CABLE_IDENTITY:
 		dfp_consume_identity(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Cable identity ACK", port);
-		discovery_state[port] = DISCOVERY_PORT_IDENTITY;
 		break;
 	case DISCOVERY_PORT_IDENTITY:
 		dfp_consume_identity(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Port identity ACK", port);
-		discovery_state[port] = DISCOVERY_PORT_SVIDS;
 		break;
 	case DISCOVERY_PORT_SVIDS:
 		dfp_consume_svids(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Port SVIDs ACK", port);
-		discovery_state[port] = DISCOVERY_PORT_MODES;
 		break;
 	case DISCOVERY_PORT_MODES:
 		dfp_consume_modes(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Port modes ACK", port);
-		if (pd_get_modes_discovery(port, type) != PD_DISC_NEEDED)
-			discovery_state[port] = DISCOVERY_CABLE_SVIDS;
 		break;
 	case DISCOVERY_CABLE_SVIDS:
 		dfp_consume_svids(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Cable SVIDs ACK", port);
-		discovery_state[port] = DISCOVERY_CABLE_MODES;
 		break;
 	case DISCOVERY_CABLE_MODES:
 		dfp_consume_modes(port, type, vdo_count, vdm);
 		CPRINTS("C%d: Cable modes ACK", port);
-		if (pd_get_modes_discovery(port, type) != PD_DISC_NEEDED)
-			discovery_state[port] = DISCOVERY_DONE;
 		break;
+	case DISCOVERY_DONE:
 	default:
 		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
 			discovery_state[port]);
-		discovery_state[port] = DISCOVERY_DONE;
 		discovery_set_failed(port);
 	}
+
+	discovery_state[port] = discovery_next_state(port, true);
 }
 
 void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
@@ -633,54 +680,35 @@ void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 	case DISCOVERY_CABLE_IDENTITY:
 		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
 		CPRINTS("C%d: Cable identity NAK", port);
-		discovery_state[port] = DISCOVERY_PORT_IDENTITY;
 		break;
 	case DISCOVERY_PORT_IDENTITY:
 		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
 		CPRINTS("C%d: Port identity NAK", port);
-		if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
-		    PD_DISC_COMPLETE)
-			discovery_state[port] = DISCOVERY_CABLE_SVIDS;
-		else
-			discovery_state[port] = DISCOVERY_DONE;
 		break;
 	case DISCOVERY_PORT_SVIDS:
 		pd_set_svids_discovery(port, type, PD_DISC_FAIL);
 		CPRINTS("C%d: Port SVIDs NAK", port);
-		if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
-		    PD_DISC_COMPLETE)
-			discovery_state[port] = DISCOVERY_CABLE_SVIDS;
-		else
-			discovery_state[port] = DISCOVERY_DONE;
 		break;
 	case DISCOVERY_PORT_MODES:
 		pd_set_modes_discovery(port, type, svid, PD_DISC_FAIL);
 		CPRINTS("C%d: Port modes NAK", port);
-		if (pd_get_modes_discovery(port, type) != PD_DISC_NEEDED)
-			discovery_state[port] = DISCOVERY_DONE;
-		else if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
-			 PD_DISC_COMPLETE)
-			discovery_state[port] = DISCOVERY_CABLE_SVIDS;
-		else
-			discovery_state[port] = DISCOVERY_DONE;
 		break;
 	case DISCOVERY_CABLE_SVIDS:
 		pd_set_svids_discovery(port, type, PD_DISC_FAIL);
 		CPRINTS("C%d: Cable SVIDs NAK", port);
-		discovery_state[port] = DISCOVERY_DONE;
 		break;
 	case DISCOVERY_CABLE_MODES:
 		pd_set_modes_discovery(port, type, svid, PD_DISC_FAIL);
 		CPRINTS("C%d: Port modes NAK", port);
-		if (pd_get_modes_discovery(port, type) != PD_DISC_NEEDED)
-			discovery_state[port] = DISCOVERY_DONE;
 		break;
+	case DISCOVERY_DONE:
 	default:
 		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
 			discovery_state[port]);
-		discovery_state[port] = DISCOVERY_DONE;
 		discovery_set_failed(port);
 	}
+
+	discovery_state[port] = discovery_next_state(port, false);
 }
 
 bool discovery_vdm_is_discovery(uint16_t svid, uint8_t cmd)
