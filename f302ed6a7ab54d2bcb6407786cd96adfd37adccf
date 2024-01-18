@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab6dcec_22f42d59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:02:15Z",
+      "side": 1,
+      "message": "Can",
+      "revId": "f302ed6a7ab54d2bcb6407786cd96adfd37adccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeff0210_268466f4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1809,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:02:15Z",
+      "side": 1,
+      "message": "Move the policies into a separate file.",
+      "range": {
+        "startLine": 1809,
+        "startChar": 0,
+        "endLine": 1809,
+        "endChar": 29
+      },
+      "revId": "f302ed6a7ab54d2bcb6407786cd96adfd37adccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e2a7eb_8b50c4dc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T17:02:15Z",
+      "side": 1,
+      "message": "You should use `ap_power_ev_init_callback()` and `ap_power_ev_add_callback()` instead of using the legacy DECLARE_HOOK.\n\nExample here registers a callback for both resume and suspend.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/corsola/src/board_chipset.c;l\u003d45",
+      "range": {
+        "startLine": 1859,
+        "startChar": 0,
+        "endLine": 1869,
+        "endChar": 0
+      },
+      "revId": "f302ed6a7ab54d2bcb6407786cd96adfd37adccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
