@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b649822_fff232be",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T22:38:38Z",
+      "side": 1,
+      "message": "Looks like there was bug in the non PWRSEQ_DRIVER code for Nissa.\n\nThis should be split out into a separate CL in case it needs to be reverted.",
+      "range": {
+        "startLine": 40,
+        "startChar": 41,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "ac2b29dfd6088bc73967f843e7e613823a695c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abb7dad_f8be7271",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-18T22:38:38Z",
+      "side": 1,
+      "message": "These are ADL defined signals - can this get moved to the chipset state handler?\n\nThat\u0027s where this was handled for the non PWRSEQ_DRIVER code.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "ac2b29dfd6088bc73967f843e7e613823a695c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
