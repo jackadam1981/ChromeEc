@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "498d0791_b1d74f11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T00:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3546e24d_7efc326c",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4626d461_9b6f733b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-17T17:37:48Z",
       "side": 1,
       "message": "This should be automatically enabled based on devicetree configuration.",
+      "range": {
+        "startLine": 1276,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 42
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88630253_827198df",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T00:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4626d461_9b6f733b",
       "range": {
         "startLine": 1276,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f7cbfb_c63bc4dc",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T00:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80b8f2bd_8e54351e",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 29
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13c4f61_f45d8c07",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09647a09_635e1051",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T00:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13c4f61_f45d8c07",
+      "range": {
+        "startLine": 1279,
+        "startChar": 6,
+        "endLine": 1279,
+        "endChar": 33
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a974302_51f1f94a",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-01-17T17:37:48Z",
       "side": 1,
       "message": "Does this test need the AP power sequence, battery, etc?\n\nPlease prune this done to only the needed components.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f6332d_bb810ec0",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-18T00:45:22Z",
+      "side": 1,
+      "message": "There is functionality in `zephyr/test/drivers/common` that depends on this flag. Could we target to isolate those dependencies later?",
+      "parentUuid": "0a974302_51f1f94a",
       "range": {
         "startLine": 51,
         "startChar": 0,
