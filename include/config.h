@@ -371,6 +371,8 @@
 #undef CONFIG_ALS_SI114X_INT_EVENT
 #undef CONFIG_ALS_TCS3400_INT_EVENT
 
+#undef CONFIG_ALS_VEML3328
+
 /*
  * Enable Si114x to operate in polling mode. This config is used in conjunction
  * with CONFIG_ALS_SI114X_INT_EVENT. When polling is enabled, the read is
