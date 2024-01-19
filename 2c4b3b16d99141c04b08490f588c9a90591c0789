@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d931a1_2e30bee6",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-19T00:33:27Z",
+      "side": 1,
+      "message": "let\u0027s randomize these instead of zeroizing. rationale in the next comment below.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "2c4b3b16d99141c04b08490f588c9a90591c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965a19c7_ff14a351",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-19T00:33:27Z",
+      "side": 1,
+      "message": "do we care though? nvmem_wipe_cache is calledwhen we disable TPM (e.g. when diagnostic fw boots). its purpose is to reduce the chance that the user that we don\u0027t fully trust (different fw than AP fw) doesn\u0027t get access to user data and other secrets by reading something from TPM w/o actually claering the TPm (so it will work again fine on the next boot when we return to the regular AP fw). \n\nrandomizing (or zeroing out) seeds makes sure that loading keys fails even if there\u0027s some exploit that allows sending commands in TPM-disabled state. not sure zeroing out policies helps. I wonder if it might be better to set the policy size and alg to sha256 and then have the zero policy (which is impossible to satisfy). iiuc setting size to 0 means we don\u0027t have the policy set, and idk if that simplifies attacks in certain cases (again assuming the attacker can somehow bypass the TPm-disabled barrier).\n\nan improvement would actually be randomizing auths above rather than zeroizing them. if an attacker somehow bypasses TPM-disabled block, we don\u0027t want to make it trivial to auth as an owner with NULL authValue.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "2c4b3b16d99141c04b08490f588c9a90591c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
