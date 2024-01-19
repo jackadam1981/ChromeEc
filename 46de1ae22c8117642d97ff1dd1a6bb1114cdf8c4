@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "178c3872_731b0a7c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2010,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "get_pcr_nv_addr() checks that result is within required range even if overflow happens.",
+      "parentUuid": "087e2a89_51c0a260",
+      "range": {
+        "startLine": 2010,
+        "startChar": 26,
+        "endLine": 2010,
+        "endChar": 52
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fce06fdf_64cab6ee",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-18T23:33:07Z",
       "side": 1,
       "message": "nit: add a const to the end of `enum NV_RESERVE`\n```\n     NV_RAM_INDEX_SPACE \u003d NV_RESERVE_LAST,\n*    NV_PSEUDO_RESERVE_LAST,   // End of the list including \u0027pseudo\u0027 elements.\n+ \n+    NV_RESERVE_INVALID \u003d 0xFF\n  } NV_RESERVE;\n```",
+      "range": {
+        "startLine": 2108,
+        "startChar": 24,
+        "endLine": 2108,
+        "endChar": 28
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0c646d_c47518dc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "I don\u0027t want to add it to TPM2 as it is implementation specific and only used for reporting when index can\u0027t be determined, but I\u0027d add a constant",
+      "parentUuid": "fce06fdf_64cab6ee",
       "range": {
         "startLine": 2108,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a5abb8_fec93a61",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2706,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "using TPM2B.size I can set to zero all bytes in the space after defined content. This would be applied only to spaces which are TPM2B",
+      "parentUuid": "899e8d18_ac55cb05",
+      "range": {
+        "startLine": 2706,
+        "startChar": 11,
+        "endLine": 2706,
+        "endChar": 50
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af3b8c08_fcf60ce4",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae7d775_7f34437f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "this came from original code in process_reserved():\n\n```\nif (index \u003d\u003d NV_STATE_CLEAR) {\n\t\t\tmarshaled \u003d ((uint8_t *)(ch + 1)) + ch-\u003esize;\n\t\t\tnew_size \u003d marshal_state_clear(cached, marshaled);\n\t\t\tcached \u003d marshaled;\n\t\t} else if (index \u003d\u003d NV_STATE_RESET) {\n\t\t\tmarshaled \u003d ((uint8_t *)(ch + 1)) + ch-\u003esize;\n\t\t\tnew_size \u003d marshal_state_reset_data(cached, marshaled);\n\t\t\tcached \u003d marshaled;\n\t\t}\n```\n\nI agree this is not safe, so added an explicit parameter for available room, rather than assuming \"it is enough\".",
+      "parentUuid": "af3b8c08_fcf60ce4",
+      "range": {
+        "startLine": 2742,
+        "startChar": 1,
+        "endLine": 2743,
+        "endChar": 47
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f68a3e4_80017753",
@@ -123,6 +219,30 @@
       "writtenOn": "2024-01-18T23:33:07Z",
       "side": 1,
       "message": "question: am I right that these are *new* objects that were not present in flash (so for them process_reserved() was not called by the while-loop above), and in this cycle we make sure that we save those previously not existing objects?",
+      "range": {
+        "startLine": 2910,
+        "startChar": 1,
+        "endLine": 2910,
+        "endChar": 47
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d012a74_ccc725a6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2910,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "Yes, these are new objects from NV cache which were not yet in flash (say due to init from scratch)",
+      "parentUuid": "3f68a3e4_80017753",
       "range": {
         "startLine": 2910,
         "startChar": 1,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7e43472_78659ba8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "We were storing and restoring it before, so I decided not to change this logic now as I\u0027m not sure how this would work if cr50 goes through deep sleep. Can deep sleep happen between TPM2_Startup and TPM2_Shutdown? If yes - we have to preserve it. If not - we can drop it, as they are expected to be volatile.",
+      "parentUuid": "a4dfb99e_21433aa3",
+      "range": {
+        "startLine": 2916,
+        "startChar": 2,
+        "endLine": 2916,
+        "endChar": 55
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9d94f4_24b01e5e",
         "filename": "common/new_nvmem.c",
         "patchSetId": 7
@@ -169,6 +313,30 @@
       "writtenOn": "2024-01-18T23:33:07Z",
       "side": 1,
       "message": "nit: extract into create_object()",
+      "range": {
+        "startLine": 2920,
+        "startChar": 2,
+        "endLine": 2935,
+        "endChar": 26
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd3bd06_b5d0c53d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2935,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa9d94f4_24b01e5e",
       "range": {
         "startLine": 2920,
         "startChar": 2,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93ac27c_00066168",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caa19cf6_74bc203b",
+      "range": {
+        "startLine": 2940,
+        "startChar": 13,
+        "endLine": 2940,
+        "endChar": 24
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c52b9b78_50da8c0b",
@@ -215,6 +407,30 @@
       "writtenOn": "2024-01-18T23:33:07Z",
       "side": 1,
       "message": "question: if we always cache on boot and can fully recover from cases with missing delimiters at that point during the initial pass through the on-flash filesystem, do we even need delimiters?",
+      "range": {
+        "startLine": 2966,
+        "startChar": 2,
+        "endLine": 2967,
+        "endChar": 18
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23348e47_608a1e62",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2967,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 1,
+      "message": "delimiters marks completed transaction. on init we verify their consistency in `verify_last_section()` and `verify_delimiter()`. But thinking about it more I don\u0027t understand their value - we do not mark what objects are updated, so can\u0027t really rollback transaction. It might be better to detect that objects are present in a single copy, use last copy if not as a recovery. Need to check with Vadim B if he is ok with change of the logic. Anyway, this would be a separate CL which will greater simplify NVmem code.",
+      "parentUuid": "c52b9b78_50da8c0b",
       "range": {
         "startLine": 2966,
         "startChar": 2,

@@ -22,6 +22,30 @@
       },
       "revId": "ac12759aec44a151300d913c6e5cc52b6f70a29b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01318c26_e5fcd1dd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2814,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T06:45:05Z",
+      "side": 0,
+      "message": "we have PCR size check in `restore_pcr()`. as for saving - we can update to correct size even if we had some issue.",
+      "parentUuid": "bf3c78e8_c07e555b",
+      "range": {
+        "startLine": 2813,
+        "startChar": 1,
+        "endLine": 2814,
+        "endChar": 48
+      },
+      "revId": "ac12759aec44a151300d913c6e5cc52b6f70a29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
