@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a64e007_f41bb906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-19T17:17:49Z",
+      "side": 1,
+      "message": "There are lot of little changes here. Some of them more innocuous like like enabling the configs in `prj.conf` but some seem more specific like returning `POLARITY_COUNT` instead of `PD_ROLE_SINK` in `pdc_power_mgmt.c` which deserves a more thorough description in the commit message.\n\nI think we should break these up into smaller CLs to more thoroughly describe in the commit message the why/what to each semantic change we\u0027re making.\n\nAlternatively, you could describe each of the semantic changes more thoroughly in the commit message. I just have a preference for more but smaller commits.\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "revId": "ea1ba12b5ce97ebfc0dad3e09ac1e8ad0ad30075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
