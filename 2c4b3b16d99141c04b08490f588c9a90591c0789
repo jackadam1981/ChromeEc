@@ -45,6 +45,30 @@
       },
       "revId": "2c4b3b16d99141c04b08490f588c9a90591c0789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4487d4_29dfcd4a",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T04:41:57Z",
+      "side": 1,
+      "message": "So, how test should look like? Just make sure that device can successfully go through OOBE after `ccd open`?",
+      "parentUuid": "965a19c7_ff14a351",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "2c4b3b16d99141c04b08490f588c9a90591c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
