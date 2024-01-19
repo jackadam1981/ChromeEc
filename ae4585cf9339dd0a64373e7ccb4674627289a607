@@ -46,6 +46,30 @@
       },
       "revId": "ae4585cf9339dd0a64373e7ccb4674627289a607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ad2a9c_3b1ee51c",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-19T00:12:56Z",
+      "side": 1,
+      "message": "Looks like will work.  I hadn\u0027t noticed this comment in the `PLATFORM_EC_USB_PD_TCPM_TCPCI` description:\n\n\t  This driver currently is required by all TCPM drivers below, even\n\t  drivers that do not implement the TCPCI specification.",
+      "parentUuid": "0489b67e_d0340cb3",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "ae4585cf9339dd0a64373e7ccb4674627289a607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
