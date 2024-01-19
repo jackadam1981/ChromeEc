@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac721e15_22884f7c",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-19T17:21:57Z",
+      "side": 1,
+      "message": "The problem with clearing data after writing is that there is some period of time where data is present in the memory.\n\nHow about passing another macro (let\u0027s name it MC()) to PANIC_REG_LIST and EXTRA_PANIC_REG_LIST that will copy register value if CONFIG_PLATFORM_EC_PANIC_STRIP_GPR is not defined?\n\nWe will also save some bytes of flash, because move instructions won\u0027t be present.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "0aba8fd6b742cfd29b28d5a245ef4a97f81602c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
