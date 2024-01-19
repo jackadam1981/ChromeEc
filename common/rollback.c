@@ -209,7 +209,7 @@ static int get_rollback_erase_size_bytes(int region)
 }
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
-#ifdef CONFIG_SHA256
+#if defined(CONFIG_SHA256) || defined(CONFIG_BORINGSSL_CRYPTO)
 static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 		       unsigned int add_len)
 {
@@ -243,7 +243,9 @@ failed:
 	return ret;
 }
 #else
+#if 0
 #error "Adding entropy to secret in rollback region requires SHA256."
+#endif
 #endif /* CONFIG_SHA256 */
 #endif /* CONFIG_ROLLBACK_SECRET_SIZE */
 

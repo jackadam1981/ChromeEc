@@ -109,12 +109,15 @@ static int pair_challenge(struct pair_challenge *challenge)
 	response = EC_RES_SUCCESS;
 	QUEUE_ADD_UNITS(&update_to_usb, &response, sizeof(response));
 
+	/* TODO(tomhughes): replace with boringssl API. */
+#if 0
 	/*
 	 * tmp2 = device_private
 	 *      = HMAC_SHA256(device_secret, "device-identity")
 	 */
 	hmac_SHA256(tmp2, tmp, CONFIG_ROLLBACK_SECRET_SIZE, KEY_CONTEXT,
 		    sizeof(KEY_CONTEXT) - 1);
+#endif
 
 	/* tmp = device_public = x25519(device_private, x25519_base_point) */
 	X25519_public_from_private(tmp, tmp2);
@@ -123,9 +126,12 @@ static int pair_challenge(struct pair_challenge *challenge)
 	/* tmp = shared_secret = x25519(device_private, host_public) */
 	X25519(tmp, tmp2, challenge->host_public);
 
+	/* TODO(tomhughes): replace with boringssl API. */
+#if 0
 	/* tmp2 = authenticator = HMAC_SHA256(shared_secret, nonce) */
 	hmac_SHA256(tmp2, tmp, sizeof(tmp), challenge->nonce,
 		    sizeof(challenge->nonce));
+#endif
 	QUEUE_ADD_UNITS(&update_to_usb, tmp2,
 			member_size(struct pair_challenge_response,
 				    authenticator));

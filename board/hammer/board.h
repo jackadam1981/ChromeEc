@@ -10,6 +10,8 @@
 
 #include "variants.h"
 
+#define CONFIG_BORINGSSL_CRYPTO
+
 /* TODO: Remove CONFIG_SYSTEM_UNLOCKED prior to building MP FW. */
 #define CONFIG_SYSTEM_UNLOCKED
 /* TODO(b:63378217): Define FLASH_PSTATE_LOCKED prior to building MP FW. */
@@ -262,7 +264,7 @@
 #define CONFIG_TOUCHPAD_I2C_ADDR_FLAGS 0x15
 #endif /* HAS_I2C_TOUCHPAD */
 
-#define CONFIG_CURVE25519
+#undef CONFIG_CURVE25519
 
 #define CONFIG_USB_PAIRING
 

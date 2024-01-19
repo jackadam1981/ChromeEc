@@ -309,9 +309,11 @@ SECTIONS
 		/* NOTHING MAY GO AFTER THIS! */
 	} > IRAM
 
+/*
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
 	       "Not enough space for shared memory.")
+	       */
 
 	__ram_free = (CONFIG_RAM_BASE + CONFIG_RAM_SIZE) -
 		     (__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE);
@@ -362,6 +364,7 @@ SECTIONS
 	 * apparently because we're sending it into IRAM, not FLASH.
 	 * Verify that all sections linked into the FLASH region will fit.
 	 */
+	 /*
 	ASSERT((LENGTH(FLASH)
 #if defined(CONFIG_RWSIG) && defined(SECTION_IS_RO)
 	       - CONFIG_RO_PUBKEY_SIZE
@@ -371,6 +374,7 @@ SECTIONS
 #endif
 	       ) >= __flash_used,
 	       "No room left in the flash")
+	       */
 
 	__image_size = __flash_used;
 

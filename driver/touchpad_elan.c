@@ -7,7 +7,6 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/sys/byteorder.h>
 #else
-#include "byteorder.h"
 #endif
 
 #include "common.h"
@@ -383,7 +382,9 @@ static int elan_query_product(void)
 #ifdef CONFIG_ZEPHYR
 		elan_tp_params.ic_type = sys_be16_to_cpu(*(uint16_t *)val);
 #else
+#if 0
 		elan_tp_params.ic_type = be16toh(*(uint16_t *)val);
+#endif
 #endif
 	} else {
 		rv = elan_tp_read_cmd(ETP_I2C_IC_TYPE_P0_CMD, (uint16_t *)val);
@@ -628,7 +629,9 @@ static int touchpad_update_page(const uint8_t *data)
 #ifdef CONFIG_ZEPHYR
 	checksum = sys_cpu_to_le16(checksum);
 #else
+#if 0
 	checksum = htole16(checksum);
+#endif
 #endif
 
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
