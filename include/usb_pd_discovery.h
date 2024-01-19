@@ -55,6 +55,23 @@ void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 			 uint8_t vdm_cmd);
 
 /**
+ * Constructs the discovery VDM REQ to send in the current discovery state.
+ *
+ * @param[in] port          USB-C port number
+ * @param[in,out] vdo_count The number of VDOs in the VDM; must be at least
+ *                          VDO_MAX_SIZE. On success, filled with number of VDOs
+ *                          populated.
+ * @param[out] vdm          The VDM payload to be sent; must point to at least
+ *                          VDO_MAX_SIZE elements.
+ * @param[out] tx_type      Transmit type (SOP, SOP', SOP'') for VDM to be sent
+ * @return                  MSG_SETUP_SUCCESS on VDM construction,
+ *                          MSG_SETUP_ERROR on invalid args or state
+ */
+enum dpm_msg_setup_status
+discovery_setup_next_vdm(int port, int *vdo_count, uint32_t *vdm,
+			 enum tcpci_msg_type *tx_type);
+
+/**
  * Checks whether a VDM is a discovery VDM. Discovery VDMs may have the USB SID
  * (Discover Identity and Discover SVIDs) or the VID of an alt mode (Discover
  * Modes).
