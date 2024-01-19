@@ -188,6 +188,30 @@
       },
       "revId": "f9ccfae99ca5e98f1214ea0c986dbdb4f3c4bccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ed7f65_1823bb42",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-01-19T10:10:41Z",
+      "side": 1,
+      "message": "@Bobby Casey\nDid you refer to the discussion in the [comment#6 of the issue](https://partnerissuetracker.corp.google.com/issues/290208998#comment6)?\nAs for the question of 1s difference of RTC alarm, I have to check it internally first.",
+      "parentUuid": "4207c9b8_5f002860",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "f9ccfae99ca5e98f1214ea0c986dbdb4f3c4bccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
