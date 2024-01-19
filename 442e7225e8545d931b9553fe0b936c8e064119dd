@@ -234,6 +234,30 @@
       },
       "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2c5bc8_45e09d5a",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/prj.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-19T00:10:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "53f6332d_bb810ec0",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "442e7225e8545d931b9553fe0b936c8e064119dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
