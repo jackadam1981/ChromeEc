@@ -643,32 +643,24 @@ void discovery_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 	switch (discovery_state[port]) {
 	case DISCOVERY_CABLE_IDENTITY:
 		dfp_consume_identity(port, type, vdo_count, vdm);
-		CPRINTS("C%d: Cable identity ACK", port);
 		break;
 	case DISCOVERY_PORT_IDENTITY:
 		dfp_consume_identity(port, type, vdo_count, vdm);
-		CPRINTS("C%d: Port identity ACK", port);
 		break;
 	case DISCOVERY_PORT_SVIDS:
 		dfp_consume_svids(port, type, vdo_count, vdm);
-		CPRINTS("C%d: Port SVIDs ACK", port);
 		break;
 	case DISCOVERY_PORT_MODES:
 		dfp_consume_modes(port, type, vdo_count, vdm);
-		CPRINTS("C%d: Port modes ACK", port);
 		break;
 	case DISCOVERY_CABLE_SVIDS:
 		dfp_consume_svids(port, type, vdo_count, vdm);
-		CPRINTS("C%d: Cable SVIDs ACK", port);
 		break;
 	case DISCOVERY_CABLE_MODES:
 		dfp_consume_modes(port, type, vdo_count, vdm);
-		CPRINTS("C%d: Cable modes ACK", port);
 		break;
 	case DISCOVERY_DONE:
 	default:
-		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
-			discovery_state[port]);
 		discovery_set_failed(port);
 	}
 
@@ -687,32 +679,24 @@ void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 	switch (discovery_state[port]) {
 	case DISCOVERY_CABLE_IDENTITY:
 		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
-		CPRINTS("C%d: Cable identity NAK", port);
 		break;
 	case DISCOVERY_PORT_IDENTITY:
 		pd_set_identity_discovery(port, type, PD_DISC_FAIL);
-		CPRINTS("C%d: Port identity NAK", port);
 		break;
 	case DISCOVERY_PORT_SVIDS:
 		pd_set_svids_discovery(port, type, PD_DISC_FAIL);
-		CPRINTS("C%d: Port SVIDs NAK", port);
 		break;
 	case DISCOVERY_PORT_MODES:
 		pd_set_modes_discovery(port, type, svid, PD_DISC_FAIL);
-		CPRINTS("C%d: Port modes NAK", port);
 		break;
 	case DISCOVERY_CABLE_SVIDS:
 		pd_set_svids_discovery(port, type, PD_DISC_FAIL);
-		CPRINTS("C%d: Cable SVIDs NAK", port);
 		break;
 	case DISCOVERY_CABLE_MODES:
 		pd_set_modes_discovery(port, type, svid, PD_DISC_FAIL);
-		CPRINTS("C%d: Port modes NAK", port);
 		break;
 	case DISCOVERY_DONE:
 	default:
-		CPRINTS("C%d: %s called with invalid state %d", port, __func__,
-			discovery_state[port]);
 		discovery_set_failed(port);
 	}
 
