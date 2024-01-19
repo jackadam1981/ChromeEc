@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79658a28_62a77224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-19T01:02:20Z",
+      "side": 1,
+      "message": "I cherry-picked this CL but always got build fail as below.\nFAILED: modules/pigweed/pw_build/CMakeFiles/pw_build.empty.dir/empty_file.cc.obj \nFAILED: modules/ec/zephyr/shim/chip/npcx/npcx_monitor/CMakeFiles/npcx_monitor.dir/npcx_monitor.c.obj \nFAILED: modules/pigweed/pw_build/CMakeFiles/pw_build.empty.dir/empty_file.cc.obj \nFAILED: modules/ec/zephyr/shim/chip/npcx/npcx_monitor/CMakeFiles/npcx_monitor.dir/npcx_monitor.c.obj \nINFO:root:Version string: Zephyr-Kernel-0.0.0-db685da\nINFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/deku/build-ro/modules/ec/zephyr/include/ec_version.h\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/deku/build-ro\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 379, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 914, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/deku/build-ro\n\nINFO:root:Version string: Zephyr-Kernel-0.0.0-db685da\nINFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/deku/build-rw/modules/ec/zephyr/include/ec_version.h\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/deku/build-rw\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 379, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 914, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/deku/build-rw\n\nAll failed projects: [\u0027deku\u0027]",
+      "revId": "450b392e8f3060599d37f67eac6a7cc08021596d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4888b12a_ea33d992",
