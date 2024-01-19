@@ -22,4 +22,8 @@ extern const struct ppc_drv ktu1125_drv;
  */
 void ktu1125_interrupt(int port);
 
+#ifdef TEST_BUILD
+void ktu1125_handle_interrupt(int port);
+#endif /* TEST_BUILD */
+
 #endif /* __CROS_EC_DRIVER_PPC_KTU1125_PUBLIC_H */
