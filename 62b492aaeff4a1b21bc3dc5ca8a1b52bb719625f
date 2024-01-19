@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d3ec44_88960573",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-19T19:30:16Z",
+      "side": 1,
+      "message": "This CL needs to land after https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5206178/11, which has already been approved, but hasn\u0027t merged yet.",
+      "revId": "62b492aaeff4a1b21bc3dc5ca8a1b52bb719625f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
