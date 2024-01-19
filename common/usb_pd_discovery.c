@@ -487,25 +487,33 @@ static enum discovery_states discovery_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 struct message_params {
 	enum tcpci_msg_type type;
 	int vdm_cmd;
+	uint16_t svid;
 };
-static struct message_params state_expected_message[] = {
+static const struct message_params state_expected_message[] = {
 	[DISCOVERY_CABLE_IDENTITY] = { .type = TCPCI_MSG_SOP_PRIME,
-				       .vdm_cmd = CMD_DISCOVER_IDENT },
+				       .vdm_cmd = CMD_DISCOVER_IDENT,
+				       .svid = USB_SID_PD },
 	[DISCOVERY_PORT_IDENTITY] = { .type = TCPCI_MSG_SOP,
-				      .vdm_cmd = CMD_DISCOVER_IDENT },
+				      .vdm_cmd = CMD_DISCOVER_IDENT,
+				      .svid = USB_SID_PD },
 	[DISCOVERY_PORT_SVIDS] = { .type = TCPCI_MSG_SOP,
-				   .vdm_cmd = CMD_DISCOVER_SVID },
+				   .vdm_cmd = CMD_DISCOVER_SVID,
+				   .svid = USB_SID_PD },
 	[DISCOVERY_PORT_MODES] = { .type = TCPCI_MSG_SOP,
-				   .vdm_cmd = CMD_DISCOVER_MODES },
+				   .vdm_cmd = CMD_DISCOVER_MODES,
+				   .svid = 0 },
 	[DISCOVERY_CABLE_SVIDS] = { .type = TCPCI_MSG_SOP_PRIME,
-				    .vdm_cmd = CMD_DISCOVER_SVID },
+				    .vdm_cmd = CMD_DISCOVER_SVID,
+				    .svid = USB_SID_PD },
 	[DISCOVERY_CABLE_MODES] = { .type = TCPCI_MSG_SOP_PRIME,
-				    .vdm_cmd = CMD_DISCOVER_MODES },
+				    .vdm_cmd = CMD_DISCOVER_MODES,
+				    .svid = 0 },
 	/* No VDM is expected in this state. This entry just streamlines
 	 * checking other states.
 	 */
 	[DISCOVERY_DONE] = { .type = TCPCI_MSG_INVALID,
-			     .vdm_cmd = CMD_EXIT_MODE },
+			     .vdm_cmd = CMD_RESERVED,
+			     .svid = 0 },
 };
 
 bool discovery_is_done(int port)
@@ -701,6 +709,36 @@ void discovery_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 	}
 
 	discovery_state[port] = discovery_next_state(port, false);
+}
+
+enum dpm_msg_setup_status discovery_setup_next_vdm(int port, int *vdo_count,
+						   uint32_t *vdm,
+						   enum tcpci_msg_type *tx_type)
+{
+	enum discovery_states state = discovery_state[port];
+	const struct message_params params = state_expected_message[state];
+	uint16_t svid = USB_SID_PD;
+
+	if (*vdo_count < VDO_MAX_SIZE || state == DISCOVERY_DONE)
+		return MSG_SETUP_ERROR;
+
+	/* For Discover Identity and Discover SVIDs, the SVID is the PD SID. For
+	 * Discover Modes, the SVID is specific to the requested modes.
+	 */
+	if (params.vdm_cmd == CMD_DISCOVER_MODES) {
+		const struct svid_mode_data *mode_data =
+			pd_get_next_mode(port, params.type);
+		if (!mode_data || mode_data->discovery != PD_DISC_NEEDED)
+			return MSG_SETUP_ERROR;
+		svid = mode_data->svid;
+	}
+
+	vdm[0] = pd_compose_svdm_req_header(port, params.type, svid,
+					    params.vdm_cmd);
+	*vdo_count = 1;
+	*tx_type = params.type;
+
+	return MSG_SETUP_SUCCESS;
 }
 
 bool discovery_vdm_is_discovery(uint16_t svid, uint8_t cmd)

@@ -2173,6 +2173,12 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	 * discovery spacing or BUSY spacing runs out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_DISCOVER_IDENTITY)) {
+		int vdo_count = VDO_HDR_SIZE + VDO_MAX_SIZE;
+		uint32_t vdm[vdo_count];
+		enum tcpci_msg_type tx_type;
+		enum dpm_msg_setup_status status = discovery_setup_next_vdm(
+			port, &vdo_count, vdm, &tx_type);
+
 		if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
 		    PD_DISC_NEEDED) {
 			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
@@ -2201,10 +2207,9 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
-		} else if (pd_get_modes_discovery(port, TCPCI_MSG_SOP_PRIME) ==
-			   PD_DISC_NEEDED) {
-			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
-			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
+		} else if (status == MSG_SETUP_SUCCESS) {
+			pd_setup_vdm_request(port, tx_type, vdm, vdo_count);
+			set_state_pe(port, PE_VDM_REQUEST_DPM);
 			return true;
 		} else {
 			pd_timer_disable(port, PE_TIMER_DISCOVER_IDENTITY);
