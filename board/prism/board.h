@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_BORINGSSL_CRYPTO
+
 /* Prism doesn't use WP GPIO, set WP enabled */
 #ifdef SECTION_IS_RO
 #define CONFIG_WP_ALWAYS
@@ -161,7 +163,7 @@
 
 #ifdef SECTION_IS_RW
 
-#define CONFIG_CURVE25519
+#undef CONFIG_CURVE25519
 
 #define CONFIG_USB_PAIRING
 
@@ -184,7 +186,10 @@
 /*
  * Add rollback protection, and independent RW region protection.
  */
+#if 0
 #define CONFIG_LIBCRYPTOC
+#endif
+
 #define CONFIG_ROLLBACK
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 #define CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE 32
