@@ -16,6 +16,52 @@
       "message": "This CL needs to land after https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5206178/11, which has already been approved, but hasn\u0027t merged yet.",
       "revId": "62b492aaeff4a1b21bc3dc5ca8a1b52bb719625f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e045cc_eaa97df2",
+        "filename": "zephyr/program/brya/brya_pdc/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-19T19:42:34Z",
+      "side": 1,
+      "message": "Extra whitespace",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "62b492aaeff4a1b21bc3dc5ca8a1b52bb719625f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72198a17_89521b6d",
+        "filename": "zephyr/subsys/pd_controller/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-19T19:42:34Z",
+      "side": 1,
+      "message": "Should maybe also depend on CONFIG_PLATFORM_EC_USB_PD_CONSOLE_CMD",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "62b492aaeff4a1b21bc3dc5ca8a1b52bb719625f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
