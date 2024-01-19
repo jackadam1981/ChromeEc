@@ -12,6 +12,7 @@
 #include "ec_commands.h"
 #include "flash.h"
 #include "host_command.h"
+#include "openssl/sha.h"
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -92,11 +93,11 @@ static int check_padding(const uint8_t *data, unsigned int start,
 
 int rwsig_check_signature(void)
 {
-	struct sha256_ctx ctx;
+	SHA256_CTX ctx;
 	int res;
 	const struct rsa_public_key *key;
 	const uint8_t *sig;
-	uint8_t *hash;
+	uint8_t hash[SHA256_DIGEST_LENGTH];
 	uint32_t *rsa_workbuf = NULL;
 	const uint8_t *rwdata = (uint8_t *)CONFIG_MAPPED_STORAGE_BASE +
 				CONFIG_EC_WRITABLE_STORAGE_OFF;
@@ -185,9 +186,9 @@ int rwsig_check_signature(void)
 	}
 
 	/* SHA-256 Hash of the RW firmware */
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, rwdata, rwlen);
-	hash = SHA256_final(&ctx);
+	SHA256_Init(&ctx);
+	SHA256_Update(&ctx, rwdata, rwlen);
+	SHA256_Final(hash, &ctx);
 
 	good = rsa_verify(key, sig, hash, rsa_workbuf);
 	if (!good)
