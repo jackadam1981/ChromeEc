@@ -5864,7 +5864,7 @@ uint32_t pd_compose_svdm_req_header(int port, enum tcpci_msg_type type,
 				    uint16_t svid, int cmd)
 {
 	return VDO(svid, 1,
-		   VDO_SVDM_VERS_MAJOR(pd_get_vdo_ver(port, pe[port].tx_type)) |
+		   VDO_SVDM_VERS_MAJOR(pd_get_vdo_ver(port, type)) |
 			   VDM_VERS_MINOR | cmd);
 }
 
