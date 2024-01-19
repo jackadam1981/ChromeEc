@@ -23,7 +23,7 @@
 
 static atomic_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 
-static void ktu1125_handle_interrupt(int port);
+test_export_static void ktu1125_handle_interrupt(int port);
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -492,7 +492,7 @@ void ktu1125_interrupt(int port)
 	hook_call_deferred(&ktu1125_irq_deferred_data, 0);
 }
 
-static void ktu1125_handle_interrupt(int port)
+test_export_static void ktu1125_handle_interrupt(int port)
 {
 	int attempt = 0;
 
