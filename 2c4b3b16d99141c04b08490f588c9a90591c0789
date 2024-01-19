@@ -116,6 +116,30 @@
       },
       "revId": "2c4b3b16d99141c04b08490f588c9a90591c0789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e0ab89_057ab446",
+        "filename": "board/cr50/tpm2/nvmem_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T19:39:24Z",
+      "side": 1,
+      "message": "oh, I see. and then AP off/on triggers TPM reset?",
+      "parentUuid": "019dfab4_ba11fd1d",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "2c4b3b16d99141c04b08490f588c9a90591c0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
