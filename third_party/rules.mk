@@ -83,6 +83,7 @@ $(BORINGSSL_OUTDIR)/libcrypto.a:
 		-DCMAKE_SYSTEM_PROCESSOR=$(CMAKE_SYSTEM_PROCESSOR) \
 		-DCMAKE_SYSROOT=$(SYSROOT) \
 		-DOPENSSL_NO_ASM=$(OPENSSL_NO_ASM) \
+		-DOPENSSL_SMALL=YES \
 		-DCROS_EC_REPO=$(CURDIR) \
 		-DCMAKE_TOOLCHAIN_FILE=$(BORINGSSL_TOOLCHAIN) \
 		-DCMAKE_VERBOSE_MAKEFILE=$(V) \
@@ -100,7 +101,7 @@ CPPFLAGS += -I$(shell pwd)/third_party/boringssl/include
 
 # Disable the unsupported features to prevent the usage of pthread & socket
 # related types in headers.
-CPPFLAGS += -DCROS_EC
+CPPFLAGS += -DCROS_EC -DOPENSSL_SMALL
 
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: LDFLAGS_EXTRA += $(BORINGSSL_LDFLAGS)
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: $(BORINGSSL_OUTDIR)/libcrypto.a
