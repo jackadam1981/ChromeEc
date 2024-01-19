@@ -16,6 +16,24 @@
       "message": "doesn\u0027t the dedede FW branch do bulk merges instead of individual cherry picks?",
       "revId": "840ae274c25f4b93e0664bddae03ca75238c15f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a43ab24_4caeaaa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-01-19T06:39:11Z",
+      "side": 1,
+      "message": "dedede firmware branch merge failure is tracked with b/319049711.  \nWe will do cherry-pick to unblock partner\u0027s request before it\u0027s fixed.",
+      "parentUuid": "007b9ba0_4b8dc469",
+      "revId": "840ae274c25f4b93e0664bddae03ca75238c15f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
