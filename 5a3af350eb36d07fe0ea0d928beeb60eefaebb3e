@@ -22,6 +22,30 @@
       },
       "revId": "5a3af350eb36d07fe0ea0d928beeb60eefaebb3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee678bf_2b78e2f0",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-19T19:01:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure it make sense - any lower level failure in nvmem will be logged. At high level it doesn\u0027t matter what variable was that.",
+      "parentUuid": "6389aec5_5c65ad1c",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "5a3af350eb36d07fe0ea0d928beeb60eefaebb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
