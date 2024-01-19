@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0102259c_84452b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-19T13:25:20Z",
+      "side": 1,
+      "message": "I had to replace build assert with `#if TOOLCHAIN_GCC_VERSION !\u003d __GCC_VERSION` because this file is also included in assembly files. Confirmed that the comparison works correctly.",
+      "revId": "8042177cbb5616c2b7f0d862db36b1670eefc5f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
