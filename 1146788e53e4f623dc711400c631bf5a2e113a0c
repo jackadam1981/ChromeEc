@@ -16,6 +16,24 @@
       "message": "I\u0027m curious what the test results show when compiling/running the empty files.",
       "revId": "1146788e53e4f623dc711400c631bf5a2e113a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad6978d3_79623944",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-01-19T16:33:56Z",
+      "side": 1,
+      "message": "I was a little surprised that everything ran as expected:\n```\nINFO    - Total complete:    2/   2  100%  skipped:    1, failed:    0, error:    0\nINFO    - 1 test scenarios (2 test instances) selected, 1 configurations skipped (1 by static filter, 0 at runtime).\nINFO    - 1 of 2 test configurations passed (100.00%), 0 failed, 0 errored, 1 skipped with 0 warnings in 11.18 seconds\nINFO    - In total 1 test cases were executed, 1 skipped on 2 out of total 672 platforms (0.30%)\nINFO    - 1 test configurations executed on platforms, 0 test configurations were only built.\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL\n```\n\nI wonder if there should be a warning if no test suites are present.",
+      "parentUuid": "a1695814_03e3a699",
+      "revId": "1146788e53e4f623dc711400c631bf5a2e113a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
