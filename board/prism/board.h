@@ -176,9 +176,11 @@
 #define CONFIG_RSA_KEY_SIZE 3072
 #define CONFIG_RSA_EXPONENT_3
 
+#if 0
 #define CONFIG_SHA256
 #ifdef SECTION_IS_RO
 #define CONFIG_SHA256_UNROLLED
+#endif
 #endif
 
 #define CONFIG_RWSIG_TYPE_RWSIG

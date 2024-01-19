@@ -25,6 +25,7 @@
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 #ifdef CONFIG_BORINGSSL_CRYPTO
 #include "openssl/mem.h"
+#include "openssl/sha.h"
 #define secure_clear(buffer, size) OPENSSL_cleanse(buffer, size)
 #elif defined(CONFIG_LIBCRYPTOC)
 #include "cryptoc/util.h"
@@ -215,12 +216,11 @@ static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 {
 	int ret = 0;
 	BUILD_ASSERT(SHA256_DIGEST_SIZE == CONFIG_ROLLBACK_SECRET_SIZE);
-	struct sha256_ctx ctx;
-	uint8_t *hash;
+	SHA256_CTX ctx;
 
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, src, CONFIG_ROLLBACK_SECRET_SIZE);
-	SHA256_update(&ctx, add, add_len);
+	SHA256_Init(&ctx);
+	SHA256_Update(&ctx, src, CONFIG_ROLLBACK_SECRET_SIZE);
+	SHA256_Update(&ctx, add, add_len);
 #ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
 	/* Add some locally produced entropy */
 	for (int i = 0; i < CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE; i++) {
@@ -228,12 +228,12 @@ static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 
 		if (!board_get_entropy(&extra, 1))
 			goto failed;
-		SHA256_update(&ctx, &extra, 1);
+		SHA256_Update(&ctx, &extra, 1);
 	}
 #endif
-	hash = SHA256_final(&ctx);
+	/* TODO: check return */
+	SHA256_Final(dst, &ctx);
 
-	memcpy(dst, hash, CONFIG_ROLLBACK_SECRET_SIZE);
 	ret = 1;
 
 #ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
