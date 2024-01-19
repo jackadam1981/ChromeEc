@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2974bb7_a50ae926",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Update these examples.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17216a9a_c88a4be3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6394,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Nit: Write binary into CrOS Board Info temporary buffer and then commit it to permanent storage once complete",
+      "range": {
+        "startLine": 6394,
+        "startChar": 3,
+        "endLine": 6394,
+        "endChar": 62
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c901a1c_65f5bce5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6399,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Nit: Upper case.",
+      "range": {
+        "startLine": 6399,
+        "startChar": 3,
+        "endLine": 6399,
+        "endChar": 6
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1d7822_4c8d809d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6402,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Move it to the line 6400, and make it a sentence.",
+      "range": {
+        "startLine": 6402,
+        "startChar": 3,
+        "endLine": 6402,
+        "endChar": 10
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42b450f_e55ef239",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6413,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Nit: Upper case.",
+      "range": {
+        "startLine": 6413,
+        "startChar": 19,
+        "endLine": 6413,
+        "endChar": 20
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1804f253_e0d6e7bc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9402,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "It should also work for CBI in EEPROM. Can you test it too?",
+      "range": {
+        "startLine": 9402,
+        "startChar": 21,
+        "endLine": 9402,
+        "endChar": 29
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394bd0dc_ee95e5bb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9415,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Can it be a bigger number?",
+      "range": {
+        "startLine": 9415,
+        "startChar": 23,
+        "endLine": 9415,
+        "endChar": 24
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d33452_48b5f8ee",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9455,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "The brace is not paired. Is it compiled correctly?",
+      "range": {
+        "startLine": 9455,
+        "startChar": 30,
+        "endLine": 9455,
+        "endChar": 31
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0739b6ee_882440d0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9495,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "How about the file size is not aligned to the `packet_max_size`, like the file size is 11? Better to check the return value of `fread()` to know how many bytes read.",
+      "range": {
+        "startLine": 9495,
+        "startChar": 12,
+        "endLine": 9495,
+        "endChar": 81
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe71ebe_70f654cc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9496,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-19T00:04:38Z",
+      "side": 1,
+      "message": "Need it? The buffer is cleared at line 9482.",
+      "range": {
+        "startLine": 9496,
+        "startChar": 4,
+        "endLine": 9496,
+        "endChar": 32
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
