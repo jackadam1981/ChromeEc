@@ -546,6 +546,7 @@ struct partner_active_modes {
 #define VDO_SRC_INITIATOR (0 << 5)
 #define VDO_SRC_RESPONDER BIT(5)
 
+#define CMD_RESERVED 0
 #define CMD_DISCOVER_IDENT 1
 #define CMD_DISCOVER_SVID 2
 #define CMD_DISCOVER_MODES 3
