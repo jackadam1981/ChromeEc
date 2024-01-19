@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d2f2a50d_07db075d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-19T17:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7d39e34_8e78967c",
+      "revId": "ea1ba12b5ce97ebfc0dad3e09ac1e8ad0ad30075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ddf7e18_3c28bac7",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
