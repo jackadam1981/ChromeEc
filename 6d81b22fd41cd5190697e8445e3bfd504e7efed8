@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d870d91_289fb7dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 45
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-01-20T01:55:48Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8758432997805367617) is being automatically retried for the following reasons:\n- Some child builders are now retryable:hana-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "6d81b22fd41cd5190697e8445e3bfd504e7efed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
