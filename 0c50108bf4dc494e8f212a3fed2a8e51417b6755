@@ -16,6 +16,24 @@
       "message": "I suppose the approach in https://crrev.com/c/5155208 is a bit neater because it doesn\u0027t need to redefine all the power signals that the board refers to, but thay also serve somewhat different purposes since this is a very targeted whitebox unit test whereas the other one behaves more like an integration test.",
       "revId": "0c50108bf4dc494e8f212a3fed2a8e51417b6755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c20307b_bf32c072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-22T05:20:10Z",
+      "side": 1,
+      "message": "Conclusion: we\u0027ll have both.",
+      "parentUuid": "2aaafa1d_e46dd792",
+      "revId": "0c50108bf4dc494e8f212a3fed2a8e51417b6755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
