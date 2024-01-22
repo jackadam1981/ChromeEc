@@ -16,6 +16,24 @@
       "message": "Is it possible we just use the old format instead of cherry-pick whole relation chain?",
       "revId": "233d16b174221bbfce706e10b6e659a6dbc6bb6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea9299d_f42f5728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-01-22T01:18:23Z",
+      "side": 1,
+      "message": "crrev/c/5188214 old format",
+      "parentUuid": "0bb262e9_4a5fe8f5",
+      "revId": "233d16b174221bbfce706e10b6e659a6dbc6bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
