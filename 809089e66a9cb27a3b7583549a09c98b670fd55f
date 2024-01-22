@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc629bd3_7407e322",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-01-22T10:13:40Z",
+      "side": 1,
+      "message": "Can you extend the commit message and say this is only enabled on Arm platforms (I guess?)?",
+      "range": {
+        "startLine": 502,
+        "startChar": 8,
+        "endLine": 502,
+        "endChar": 26
+      },
+      "revId": "809089e66a9cb27a3b7583549a09c98b670fd55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
