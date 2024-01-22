@@ -95,6 +95,10 @@ def launch(opts: argparse.Namespace) -> int:
     # (gdb) target remote :3333
     renode_execute.append("machine StartGdbServer 3333;")
 
+    # Enable write-protect with "Release"
+    # Disable write-protect with "Press"
+    renode_execute.append("sysbus.gpioPortB.GPIO_WP Release;")
+
     # Expose the console UART as a PTY on /tmp/renode-uart. You can connect to
     # the PTY with minicom, screen, etc.
     renode_execute.append(

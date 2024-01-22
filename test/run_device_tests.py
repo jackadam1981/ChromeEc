@@ -221,7 +221,7 @@ class TestConfig:
     toggle_power: bool = False
     test_args: List[str] = field(default_factory=list)
     num_flash_attempts: int = 2
-    timeout_secs: int = 10
+    timeout_secs: int = 30
     enable_hw_write_protect: bool = False
     ro_image: str = None
     build_board: str = None
@@ -744,20 +744,21 @@ def replace_ro(image: bytearray, ro_section: bytes):
 
 def get_console(board_config: BoardConfig) -> Optional[str]:
     """Get the name of the console for a given board."""
-    cmd = [
-        "dut-control",
-        board_config.servo_uart_name,
-    ]
-    logging.debug('Running command: "%s"', " ".join(cmd))
-
-    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
-        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]
-            logging.debug(line)
-            pty = line.split(":")
-            if len(pty) == 2 and pty[0] == board_config.servo_uart_name:
-                return pty[1].strip()
-
-    return None
+    #    cmd = [
+    #        "dut-control",
+    #        board_config.servo_uart_name,
+    #    ]
+    #    logging.debug('Running command: "%s"', " ".join(cmd))
+    #
+    #    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
+    #        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]
+    #            logging.debug(line)
+    #            pty = line.split(":")
+    #            if len(pty) == 2 and pty[0] == board_config.servo_uart_name:
+    #                return pty[1].strip()
+    #
+    #    return None
+    return "/tmp/renode-uart"
 
 
 def set_sleep_mode(enter_sleep: bool) -> bool:
@@ -1237,33 +1238,37 @@ def flash_and_run_test(
 
     logging.debug("image_path: %s", image_path)
 
-    if test.ro_image is not None:
-        try:
-            patch_image(test, image_path)
-        except Exception as exception:  # pylint: disable=broad-except
-            logging.warning(
-                "An exception occurred while patching image: %s", exception
-            )
-            return False
+    #    if test.ro_image is not None:
+    #        try:
+    #            patch_image(test, image_path)
+    #        except Exception as exception:  # pylint: disable=broad-except
+    #            logging.warning(
+    #                "An exception occurred while patching image: %s", exception
+    #            )
+    #            return False
+    #
+    #    # flash test binary
+    #    # TODO(b/158327221): First attempt to flash fails after
+    #    #  flash_write_protect test is run; works after second attempt.
+    #    flash_succeeded = False
+    #    for i in range(0, test.num_flash_attempts):
+    #        logging.debug("Flash attempt %d", i + 1)
+    #        if flash(
+    #            image_path, args.board, args.flasher, args.remote, args.jlink_port
+    #        ):
+    #            flash_succeeded = True
+    #            break
+    #        time.sleep(board_config.reboot_timeout)
+    #
+    #    if not flash_succeeded:
+    #        logging.debug(
+    #            "Flashing failed after max attempts: %d", test.num_flash_attempts
+    #        )
+    #        return False
 
-    # flash test binary
-    # TODO(b/158327221): First attempt to flash fails after
-    #  flash_write_protect test is run; works after second attempt.
-    flash_succeeded = False
-    for i in range(0, test.num_flash_attempts):
-        logging.debug("Flash attempt %d", i + 1)
-        if flash(
-            image_path, args.board, args.flasher, args.remote, args.jlink_port
-        ):
-            flash_succeeded = True
-            break
-        time.sleep(board_config.reboot_timeout)
-
-    if not flash_succeeded:
-        logging.debug(
-            "Flashing failed after max attempts: %d", test.num_flash_attempts
-        )
-        return False
+    cmd = ["./util/renode-ec-launch", build_board, test.test_name]
+    p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    time.sleep(10)
 
     with ExitStack() as stack:
         if args.remote and args.console_port:
@@ -1277,24 +1282,28 @@ def flash_and_run_test(
             console_file = open(get_console(board_config), "wb+", buffering=0)
             console = stack.enter_context(console_file)
 
-        hw_write_protect(test.enable_hw_write_protect)
-
-        if test.toggle_power:
-            power_cycle(board_config)
-        else:
-            # In some cases flash_ec leaves the board off, so just ensure it is on
-            power(board_config, power_on=True)
+        #        hw_write_protect(test.enable_hw_write_protect)
+        #
+        #        if test.toggle_power:
+        #            power_cycle(board_config)
+        #        else:
+        #            # In some cases flash_ec leaves the board off, so just ensure it is on
+        #            power(board_config, power_on=True)
 
         # run the test
         logging.info('Running test: "%s"', test.config_name)
 
-        return run_test(
+        ret = run_test(
             test,
             board_config,
             console,
             executor=executor,
             zephyr=args.zephyr,
         )
+
+        p.kill()
+
+        return ret
 
 
 def parse_remote_arg(remote: str) -> str:
