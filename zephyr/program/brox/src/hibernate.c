@@ -5,6 +5,7 @@
 
 #include "system.h"
 
+#if DT_NODE_EXISTS(gpio_en_slp_z)
 __override void board_hibernate_late(void)
 {
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_slp_z), 1);
@@ -13,3 +14,4 @@ __override void board_hibernate_late(void)
 	 * a small delay, so return.
 	 */
 }
+#endif
