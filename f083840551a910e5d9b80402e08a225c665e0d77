@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04aa16e_b4b9aba4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-22T17:34:02Z",
+      "side": 1,
+      "message": "We should make this clearer to indicate what the bug is:\n\n\n```\nThe underlying issue is that both `shmalloc` and `malloc/free` are\nboth set up to use the same memory region for allocation. If they\nare both enabled, they will overwrite each other.\n\nThe change in https://crrev.com/c/5166769 triggered this behavior\nsince it makes `CONFIG_MALLOC` take effect when \n`USE_BUILTIN_STDLIB` is `0`. \n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "f083840551a910e5d9b80402e08a225c665e0d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
