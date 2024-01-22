@@ -34,6 +34,24 @@
       "parentUuid": "0bb262e9_4a5fe8f5",
       "revId": "233d16b174221bbfce706e10b6e659a6dbc6bb6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4300fb20_027e191c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-01-22T02:01:39Z",
+      "side": 1,
+      "message": "I mean we alter this cherry-pick directly, and abandon other cherry-pick CLs in the relation chain.",
+      "parentUuid": "eea9299d_f42f5728",
+      "revId": "233d16b174221bbfce706e10b6e659a6dbc6bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
