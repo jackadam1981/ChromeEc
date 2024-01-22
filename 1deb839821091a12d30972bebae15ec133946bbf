@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac59140_0f1b339f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-22T20:52:47Z",
+      "side": 1,
+      "message": "Only minor comments from me.",
+      "revId": "1deb839821091a12d30972bebae15ec133946bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e2e5536_70927d91",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-22T20:52:47Z",
+      "side": 1,
+      "message": "Extra backtick",
+      "range": {
+        "startLine": 82,
+        "startChar": 58,
+        "endLine": 82,
+        "endChar": 59
+      },
+      "revId": "1deb839821091a12d30972bebae15ec133946bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c12378_30d37f19",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-22T20:52:47Z",
+      "side": 1,
+      "message": "Nit - move to separate line and add italics to match other \"Notes\" you have this doc.",
+      "range": {
+        "startLine": 111,
+        "startChar": 42,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "1deb839821091a12d30972bebae15ec133946bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc428fbc_d371eef9",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-22T20:52:47Z",
+      "side": 1,
+      "message": "It would be helpful to link to the timerbslide source:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/timberslide\n\nThe timberslide readme is basically empty, so linking to the source makes more sense.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 15
+      },
+      "revId": "1deb839821091a12d30972bebae15ec133946bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1038f84b_ab80eaa4",
+        "filename": "docs/zephyr/zephyr_tokenized_logging.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-22T20:52:47Z",
+      "side": 1,
+      "message": "Is this guaranteed to be set correctly?  If not, what should it be set to?",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 19
+      },
+      "revId": "1deb839821091a12d30972bebae15ec133946bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
