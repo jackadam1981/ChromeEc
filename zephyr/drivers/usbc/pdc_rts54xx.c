@@ -364,6 +364,7 @@ static void print_current_state(struct pdc_data_t *data)
 static void call_cci_event_cb(struct pdc_data_t *data)
 {
 	if (data->cci_cb) {
+		LOG_INF("cci_event_cb event=0x%x", data->cci_event);
 		data->cci_cb(data->cci_event, data->cb_data);
 	}
 }
@@ -371,8 +372,13 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 static int get_ara(const struct device *dev, uint8_t *ara)
 {
 	const struct pdc_config_t *cfg = dev->config;
-
+#ifdef CONFIG_ZTEST
+	/* TODO: Add emulator for ARA address */
+	*ara = cfg->i2c.addr << 1;
+	return 0;
+#else
 	return i2c_read(cfg->i2c.bus, ara, 1, SMBUS_ADDRESS_ARA);
+#endif
 }
 
 static void perform_pdc_init(struct pdc_data_t *data)
@@ -982,6 +988,7 @@ static void st_irq_run(void *o)
 		if (rv == 0) {
 			if ((ara >> 1) == cfg->i2c.addr) {
 				/* This port generated the interrupt */
+				LOG_INF("port generated interrupt");
 				data->irq_state = IRQ_INFORM_SUBSYSTEM;
 			} else {
 				/* This port didn't generate the interrupt */
