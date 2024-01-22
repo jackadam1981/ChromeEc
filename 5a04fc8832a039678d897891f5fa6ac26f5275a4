@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f1afc9_c385b6be",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-22T23:25:03Z",
+      "side": 0,
+      "message": "At this point we are expecting `PWR_RSMRST_PWRGD` to be de-asserted and `PWR_SLP_SUS` to be asserted.\nShouldn\u0027t we stay in this loop while any of the signals are not showing its excepted value? Currently, this is not the case.\nShould this be fixed?",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "5a04fc8832a039678d897891f5fa6ac26f5275a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
