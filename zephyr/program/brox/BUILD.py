@@ -57,3 +57,12 @@ brox.variant(
     ],
     modules=["picolibc", "ec", "pigweed"],
 )
+
+register_ish_project(
+    project_name="brox-ish",
+    zephyr_board="intel_ish_5_4_0",
+    dts_overlays=[
+        here / "brox-ish" / "project.overlay",
+    ],
+    kconfig_files=[here / "brox-ish" / "prj.conf"],
+)
