@@ -88,10 +88,22 @@ def launch(opts: argparse.Namespace) -> int:
     # https://renode.readthedocs.io/en/latest/debugging/gdb.html
     # (gdb) target remote :3333
     renode_execute.append("machine StartGdbServer 3333;")
+
+    # Enable write-protect with "Release"
+    # Disable write-protect with "Press"
+    renode_execute.append("sysbus.gpioPortB.GPIO_WP Release;")
+
+    # Expose the console UART as a PTY on /tmp/uart. You can connect to the PTY
+    # with minicom, screen, etc.
+    renode_execute.append(
+        'emulation CreateUartPtyTerminal "term" "/tmp/renode-uart" True;'
+    )
+    renode_execute.append("connector Connect sysbus.usart2 term;")
+
     renode_execute.append("start;")
 
     # Build the Renode command with script execution.
-    renode_cmd: List[str] = ["renode"]
+    renode_cmd: List[str] = ["./tmp/renode_1.15.1_portable/renode"]
     renode_cmd.append("--console")
     if renode_execute:
         # This is intentionally not shlex.join'ed, since it isn't parsed like
