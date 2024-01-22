@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8a5514_bd68a2c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-22T01:06:34Z",
+      "side": 1,
+      "message": "On what platforms? When bringing up nissa we struggled a bit with handling VW signal validity across sysjump and resets, so I think this will need some careful testing.",
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58dadf70_55ac179d",
