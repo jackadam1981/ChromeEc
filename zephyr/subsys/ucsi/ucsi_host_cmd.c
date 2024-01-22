@@ -5,7 +5,9 @@
 
 /* UCSI host command */
 
+#include "ec_commands.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "include/pd_driver.h"
 #include "include/platform.h"
 #include "include/ppm.h"
@@ -187,6 +189,12 @@ static struct ucsi_pd_driver *rts54xx_open(void)
 	return &drv;
 }
 
+static void opm_notify(void *context)
+{
+	LOG_INF("Notifying OPM");
+	pd_send_host_event(PD_EVENT_PPM);
+}
+
 /* Sort of main */
 void eppm_init(void)
 {
@@ -207,5 +215,44 @@ void eppm_init(void)
 	LOG_INF("Initialized PPM");
 
 	ppm_drv = drv->get_ppm(drv->dev);
+	ppm_drv->register_notify(ppm_drv->dev, opm_notify, NULL);
 }
 DECLARE_HOOK(HOOK_INIT, eppm_init, HOOK_PRIO_DEFAULT);
+
+static enum ec_status hc_ucsi_ppm_set(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_ucsi_ppm_set *p = args->params;
+	struct ppm_common_device *dev;
+
+	if (!ppm_drv)
+		return EC_RES_UNAVAILABLE;
+
+	if (ppm_drv->write(ppm_drv->dev, p->offset, p->data,
+			   args->params_size - sizeof(p->offset)))
+		return EC_RES_ERROR;
+
+	/* Wake up PPM task. */
+	dev = DEV_CAST_FROM(ppm_drv->dev);
+	platform_condvar_signal(dev->ppm_condvar);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_UCSI_PPM_SET, hc_ucsi_ppm_set, EC_VER_MASK(0));
+
+static enum ec_status hc_ucsi_ppm_get(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_ucsi_ppm_get *p = args->params;
+	int len;
+
+	if (!ppm_drv)
+		return EC_RES_UNAVAILABLE;
+
+	len = ppm_drv->read(ppm_drv->dev, p->offset, args->response, p->size);
+	if (len < 0)
+		return EC_RES_ERROR;
+
+	args->response_size = len;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_UCSI_PPM_GET, hc_ucsi_ppm_get, EC_VER_MASK(0));
