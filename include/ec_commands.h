@@ -7840,6 +7840,64 @@ struct ec_params_ap_fw_state {
 	uint32_t state;
 } __ec_align1;
 
+/*
+ * UCSI commands
+ *
+ * These definitions are used to support OPM(AP)-PPM(EC) communication.
+ * Only UCSI3.0 is tested.
+ */
+
+#if 1
+
+/*
+ * Pretty generic memmap read/write interface.
+ */
+#define EC_CMD_UCSI_PPM_SET 0x0140
+
+/* The data size is stored in the host command protocol header. */
+struct ec_params_ucsi_ppm_set {
+	uint16_t offset;
+	uint8_t data[];
+} __ec_align2;
+
+#define EC_CMD_UCSI_PPM_GET 0x0141
+
+struct ec_params_ucsi_ppm_get {
+	uint16_t offset;
+	uint8_t size;
+} __ec_align2;
+
+#else
+
+/*
+ * Alternative interface
+ *
+ * GETs don't specify the size. That is, GETs always return the entire memory
+ * contents to OPM (i.e. snapshot). This minimizes the chance that OPM sees
+ * inconsistent view of a memory section.
+ */
+
+#define EC_CMD_UCSI_PPM 0x0140
+
+enum ec_ucsi_subcmd {
+	EC_UCSI_SUBCMD_GET_VERSION,
+	EC_UCSI_SUBCMD_GET_CCI,
+	EC_UCSI_SUBCMD_SET_CONTROL,
+	EC_UCSI_SUBCMD_GET_MESSAGE,
+	EC_UCSI_SUBCMD_SET_MESSAGE,
+
+	EC_UCSI_SUBCMD_COUNT
+};
+
+struct ec_params_ucsi_ppm {
+	uint8_t subcmd;
+	/* For 'SET' sub-commands. Should be null for 'GET' sub-commands. */
+	uint8_t data[];
+} __ec_align1;
+#endif
+
+/* For 'GET' sub-commands, data will be returned as a raw payload. */
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
