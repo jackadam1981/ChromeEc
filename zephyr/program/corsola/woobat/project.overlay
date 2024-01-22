@@ -406,12 +406,11 @@
 	};
 
 	batteries {
-		default_battery: dynapack_c140254 {
-			compatible = "dynapack,c140254", "battery-smart";
+		default_battery: dynapack_po02037xl {
+			compatible = "dynapack,po02037xl", "battery-smart";
 		};
 	};
 };
-
 
 &adc0 {
 	pinctrl-0 = <&adc0_ch0_gpi0_default
