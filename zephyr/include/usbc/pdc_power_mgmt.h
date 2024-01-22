@@ -10,6 +10,8 @@
 #ifndef __CROS_EC_PDC_POWER_MGMT_H
 #define __CROS_EC_PDC_POWER_MGMT_H
 
+#include <zephyr/kernel.h>
+
 /**
  * @brief Get the state of the port partner connection
  *
