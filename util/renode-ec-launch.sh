@@ -81,6 +81,11 @@ main() {
   # https://renode.readthedocs.io/en/latest/debugging/gdb.html
   # (gdb) target remote :3333
   EXECUTE+=( "machine StartGdbServer 3333;" )
+  # Enable write-protect with "Release"
+  # Disable write-protect with "Press"
+  EXECUTE+=( "sysbus.gpioPortB.GPIO_WP Release;")
+  EXECUTE+=( "emulation CreateUartPtyTerminal \"term\" \"/tmp/uart\" True;" )
+  EXECUTE+=( "connector Connect sysbus.usart2 term;" )
   EXECUTE+=( "start;" )
 
   CMD=( renode )
