@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066755c6_06bb1a7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "I believe this is ready to merge after these corrections.",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6634f62_d214d27c",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (IC_SELECTION \u003d\u003d EFSA80SG)\n\t\telan_set_hv_chip(1);\n```\n\nThe preference is to use compiler rather than preprocessor.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7400ff45_e8571778",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "These have moved to https://crsrc.org/o/src/platform/ec/driver/fingerprint/elan/elan_matcher.h, since uploading PS5. This is probably the source of the merge conflict.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b088ffcd_cb777f39",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "These have moved to https://crsrc.org/o/src/platform/ec/driver/fingerprint/elan/elan_matcher.h, since uploading PS5. This is probably the source of the merge conflict.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacfd00b_6965aa40",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "```suggestion\n#include \u003cstddef.h\u003e\n#include \u003cstdint.h\u003e\n```\n\nFor `uint8_t`.",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceaa38d0_c0654be3",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif (IC_SELECTION \u003d\u003d EFSA80SG)\n\t\t\telan_set_hv_chip(0);\n```\n\nThe preference is to use the compiler rather the preprocessor.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a8d944_c5cd8b25",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tconst uint8_t Setting_Highelevel_IC[] \u003d {\n```\n\nProbably should use the matching type for the function being called.",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 15
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238159f0_cd7badec",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "Local variable names should be lowercase + snake_case.\n\nhttps://google.github.io/styleguide/cppguide.html#Variable_Names\n\n---\n\n\nAlso, is there supposed to be an `e` between \"high level\"?",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4da73b_5fa565a0",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "`(uint8_t)`",
+      "range": {
+        "startLine": 265,
+        "startChar": 9,
+        "endLine": 265,
+        "endChar": 40
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6f68fb_21b92044",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "Just to confirm. Is this part of the branch supposed to \"disable settings of high voltage chip\" (`elan_set_hv_chip(0)`)?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 15
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71837787_c1b79848",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "```suggestion\n *\n * This is only used on the EFSA80SG.\n *\n```",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bcdd9f_194c3f08",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "Maybe scope these with `ELAN_` or something to make sure they don\u0027t appear as global constants, since I don\u0027t think these have anything to do with EC DMA, right?\n```suggestion\n#define ELAN_DMA_LOOP 5\n#else\n#define ELAN_DMA_LOOP 4\n#endif\n```",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a47f1e_3e4d7cb2",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "We shouldn\u0027t use any macros that start with `CONFIG_`, since those are reserved for system-wide configs and must be added to https://crsrc.org/o/src/platform/ec/util/config_allowed.txt.\nI believe this hasn\u0027t come up previously because no builds used this code.\n\nMaybe scope these with `ELAN_` so that they don\u0027t look like global constants?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 56
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e30542_68ee028c",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-22T23:37:59Z",
+      "side": 1,
+      "message": "**IF** these need to always be defined for the `elan_set_hv_chip` function to compile, then please just put a comment here that says they are only supported on the `EFSA80SG`.\n\n```suggestion\n\n/* These are only supported on the EFSA80SG. */\n#define CHARGE_PUMP_HVIC 0x83\n#define VOLTAGE_HVIC 0x00\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
