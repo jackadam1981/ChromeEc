@@ -13,3 +13,4 @@ target_sources(app PRIVATE ${PLATFORM_EC}/zephyr/program/brya/brya_pdc/usbc_stub
 target_sources(app PRIVATE src/main.c)
 target_sources(app PRIVATE src/fakes.c)
 target_sources(app PRIVATE src/pdc_api.c)
+target_sources(app PRIVATE src/pdc_power_mgmt_api.c)
