@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2512107_f3f88c89",
+        "filename": "zephyr/program/brya/brya_pdc/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-22T21:44:20Z",
+      "side": 1,
+      "message": "The changes in this file were not required and should not have been part of this CL.",
+      "parentUuid": "18e045cc_eaa97df2",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "62b492aaeff4a1b21bc3dc5ca8a1b52bb719625f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72198a17_89521b6d",
         "filename": "zephyr/subsys/pd_controller/CMakeLists.txt",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-19T19:42:34Z",
       "side": 1,
       "message": "Should maybe also depend on CONFIG_PLATFORM_EC_USB_PD_CONSOLE_CMD",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "62b492aaeff4a1b21bc3dc5ca8a1b52bb719625f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504d32c0_249e0f6a",
+        "filename": "zephyr/subsys/pd_controller/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-22T21:44:20Z",
+      "side": 1,
+      "message": "I think we will always want/need console support when CONFIG_USB_PDC_POWER_MGMT is selected as the console commands are required for PD TAST testing.",
+      "parentUuid": "72198a17_89521b6d",
       "range": {
         "startLine": 11,
         "startChar": 0,
