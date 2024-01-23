@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1b6d43_d66e7b4b",
+        "filename": "zephyr/program/brox/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-01-23T23:08:09Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is necessary, but what about adding a comment explaining what happens if this line is not set low on this type of SOC?",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 21
+      },
+      "revId": "33ad0cb1720be5dcece5d3eb48c462b2141acd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
