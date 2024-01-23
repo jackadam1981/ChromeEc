@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d10529_93a4ba3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2024-01-23T04:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9498fdb_77b39fff",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "262660cd35c462094c3e556d8998338fc9dcd3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de0d160d_a7432e17",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada018e0_5848c2e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2024-01-23T04:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de0d160d_a7432e17",
+      "range": {
+        "startLine": 12,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "262660cd35c462094c3e556d8998338fc9dcd3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1119e8_ee91b425",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-22T17:21:46Z",
       "side": 1,
       "message": "Can you put the command you ran here? (Otherwise, it\u0027s somewhat ambiguous.)\n\nThis change shouldn\u0027t have an effect on the build, so you could run `compare_build.sh -b all` to verify.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "262660cd35c462094c3e556d8998338fc9dcd3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b29728_cd0eb6a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2024-01-23T04:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed1119e8_ee91b425",
       "range": {
         "startLine": 15,
         "startChar": 5,
