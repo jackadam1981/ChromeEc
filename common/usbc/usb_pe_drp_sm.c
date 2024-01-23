@@ -1157,26 +1157,6 @@ static bool pe_can_send_sop_prime(int port)
  * In both revisions, VDMs may only be initiated while in an explicit contract,
  * with the only exception being for cable plug discovery.
  */
-static bool pe_can_send_sop_vdm(int port, int vdm_cmd)
-{
-	if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
-		if (prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20) {
-			if (pe[port].data_role == PD_ROLE_UFP &&
-			    vdm_cmd != CMD_ATTENTION) {
-				return false;
-			}
-		} else {
-			if (pe[port].data_role == PD_ROLE_UFP &&
-			    (vdm_cmd == CMD_ENTER_MODE ||
-			     vdm_cmd == CMD_EXIT_MODE)) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	return false;
-}
 
 static const uint32_t pd_get_fixed_pdo(int port)
 {
@@ -2183,29 +2163,6 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 		    PD_DISC_NEEDED) {
 			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
-			return true;
-		} else if (pd_get_identity_discovery(port, TCPCI_MSG_SOP) ==
-				   PD_DISC_NEEDED &&
-			   pe_can_send_sop_vdm(port, CMD_DISCOVER_IDENT)) {
-			pe[port].tx_type = TCPCI_MSG_SOP;
-			set_state_pe(port, PE_INIT_PORT_VDM_IDENTITY_REQUEST);
-			return true;
-		} else if (pd_get_svids_discovery(port, TCPCI_MSG_SOP) ==
-				   PD_DISC_NEEDED &&
-			   pe_can_send_sop_vdm(port, CMD_DISCOVER_SVID)) {
-			pe[port].tx_type = TCPCI_MSG_SOP;
-			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
-			return true;
-		} else if (pd_get_modes_discovery(port, TCPCI_MSG_SOP) ==
-				   PD_DISC_NEEDED &&
-			   pe_can_send_sop_vdm(port, CMD_DISCOVER_MODES)) {
-			pe[port].tx_type = TCPCI_MSG_SOP;
-			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
-			return true;
-		} else if (pd_get_svids_discovery(port, TCPCI_MSG_SOP_PRIME) ==
-			   PD_DISC_NEEDED) {
-			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
-			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
 		} else if (status == MSG_SETUP_SUCCESS) {
 			pd_setup_vdm_request(port, tx_type, vdm, vdo_count);
