@@ -16,6 +16,24 @@
       "message": "Hi Peter,\n\nCould you help to check why it keeps failing on CQ since I cannot access the link?\n\nThanks!",
       "revId": "452389f18475ebae3eeb5cf9aeca3f7c0d751dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239749a2_684011b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-23T02:45:43Z",
+      "side": 1,
+      "message": "Formatting error:\n\n```\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/include/i2c.h:499:21: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:__override_proto int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc);\nERROR:root:                    ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/nissa/src/common.c:164:18: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:__overridable int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)\nERROR:root:                 ^\n```",
+      "parentUuid": "24d2b5ff_0de5d328",
+      "revId": "452389f18475ebae3eeb5cf9aeca3f7c0d751dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
