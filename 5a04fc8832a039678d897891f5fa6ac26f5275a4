@@ -46,6 +46,30 @@
       },
       "revId": "5a04fc8832a039678d897891f5fa6ac26f5275a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4730b337_6847bf9c",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-23T20:59:41Z",
+      "side": 0,
+      "message": "According to Craask and Nereid schematics, `SLP_SUS` assertion will eventually disable converter that generates VNN and V1P05 rails. `RSM_RST_PWRGD` is connected to POK of this converter.",
+      "parentUuid": "ac7f42da_fe0528ed",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "5a04fc8832a039678d897891f5fa6ac26f5275a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
