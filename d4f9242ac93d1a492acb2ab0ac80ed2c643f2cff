@@ -16,6 +16,24 @@
       "message": "Instead of exposing the interrupt function, can you use the gpio emulator to cause the interrupt to happen? Then you will test that the interrupt is configured correctly also.",
       "revId": "d4f9242ac93d1a492acb2ab0ac80ed2c643f2cff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95627356_43d701fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-23T10:51:29Z",
+      "side": 1,
+      "message": "i was unable to convince it to call `ktu1125_interrupt` by toggling\nthe GPIO based on what i saw in other similar driver tests.\n\nhave a look at chromium:5226451 later in this series for my attempt.\nwhat am i missing?",
+      "parentUuid": "986612d5_e8fddd56",
+      "revId": "d4f9242ac93d1a492acb2ab0ac80ed2c643f2cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
