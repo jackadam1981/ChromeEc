@@ -128,11 +128,19 @@ static void ps2_suspend(void)
 	 * Those commands was provide by Elan and Synaptics
 	 */
 	if (trackpoint_id == TP_VARIANT_ELAN)
+	{
+		ccprints("[SC] %s:This is elan trackpoint", __func__);
 		send_command_to_trackpoint(TP_TOGGLE_BURST,
 					   TP_TOGGLE_ELAN_SLEEP);
+	}
 	else if (trackpoint_id == TP_VARIANT_SYNAPTICS)
+	{
+		ccprints("[SC] %s:This is synaptics trackpoint", __func__);
 		send_command_to_trackpoint(TP_TOGGLE_SOURCE_TAG,
 					   TP_TOGGLE_SNAPTICS_SLEEP);
+	}
+	else
+		ccprints("[SC] %s:Cannot recognize this trackpoint", __func__);
 
 	/* Clear the data in queue and the counter */
 	memset(queue_data, 0, ARRAY_SIZE(queue_data));
@@ -152,6 +160,17 @@ static void ps2_resume(void)
 	 * For Synaptics trackpoint, EC need to send command to it again.
 	 * For Elan trackpoint, we just need to touch trackpoint and it wake.
 	 */
+	if (trackpoint_id == TP_VARIANT_ELAN)
+	{
+		ccprints("[SC] %s: This is elan trackpoint", __func__);
+	}
+	else if (trackpoint_id == TP_VARIANT_SYNAPTICS)
+	{
+		ccprints("[SC] %s: This is synaptics trackpoint", __func__);
+	}
+	else
+		ccprints("[SC] %s: Cannot recognize this trackpoint", __func__);
+
 	if (trackpoint_id == TP_VARIANT_SYNAPTICS)
 		send_command_to_trackpoint(TP_TOGGLE_SOURCE_TAG,
 					   TP_TOGGLE_SNAPTICS_SLEEP);

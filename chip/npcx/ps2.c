@@ -163,6 +163,8 @@ int ps2_transmit_byte(int channel, uint8_t data)
 		return EC_ERROR_INVAL;
 	}
 
+	ccprints("[SC] PS2 data: 0x%x", data);
+
 	mutex_lock(&ps2_lock);
 	while (ps2_is_busy()) {
 		usleep(PS2_TRANSACTION_TIMEOUT);
