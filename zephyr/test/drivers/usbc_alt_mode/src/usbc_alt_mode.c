@@ -17,6 +17,7 @@
 #include "test/drivers/utils.h"
 #include "test_usbc_alt_mode.h"
 #include "usb_pd_discovery.h"
+#include "usb_pd_dpm_sm.h"
 
 #include <stdint.h>
 
