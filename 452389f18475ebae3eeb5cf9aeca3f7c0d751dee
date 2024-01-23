@@ -34,6 +34,24 @@
       "parentUuid": "24d2b5ff_0de5d328",
       "revId": "452389f18475ebae3eeb5cf9aeca3f7c0d751dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba0455d_4b7dce22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-01-23T03:08:16Z",
+      "side": 1,
+      "message": "Thanks, Peter! Seems it cannot pass pre-upload hook with new envs...",
+      "parentUuid": "239749a2_684011b4",
+      "revId": "452389f18475ebae3eeb5cf9aeca3f7c0d751dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
