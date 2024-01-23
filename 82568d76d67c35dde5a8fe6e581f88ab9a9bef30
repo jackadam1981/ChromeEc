@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b4dbd8_4e1b853e",
+        "filename": "zephyr/emul/emul_ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-23T10:47:50Z",
+      "side": 1,
+      "message": "this is what all the other emulators do.",
+      "parentUuid": "ca41ce6c_81dcd9f5",
+      "range": {
+        "startLine": 109,
+        "startChar": 22,
+        "endLine": 109,
+        "endChar": 26
+      },
+      "revId": "82568d76d67c35dde5a8fe6e581f88ab9a9bef30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaba518d_2f3e0f79",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-22T19:55:25Z",
       "side": 1,
       "message": "I would add a case for registers 4,5 and 6 and print an error \"Trying to write to read-only register %d\"",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "82568d76d67c35dde5a8fe6e581f88ab9a9bef30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7b58a5_786f9408",
+        "filename": "zephyr/emul/emul_ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-23T10:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaba518d_2f3e0f79",
       "range": {
         "startLine": 119,
         "startChar": 0,
