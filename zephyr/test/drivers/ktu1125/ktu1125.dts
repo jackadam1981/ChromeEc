@@ -19,5 +19,6 @@
 		compatible = "zephyr,ktu1125-emul", "kinetic,ktu1125";
 		status = "okay";
 		reg = <0x78>;
+		irq-gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 	};
 };

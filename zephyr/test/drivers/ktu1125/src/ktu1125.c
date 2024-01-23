@@ -89,16 +89,42 @@ ZTEST(ppc_ktu1125, test_cover_reg_dump)
 	ktu1125_drv.reg_dump(KTU1125_PORT);
 }
 
+#if 1
 ZTEST(ppc_ktu1125, test_cover_interrupt)
 {
 	ppc_get_alert_status_fake.return_val = 0xff;
+
 	zassert_ok(ktu1125_emul_set_reg(ktu1125_emul, KTU1125_INT_SNK, 0xff));
 	zassert_ok(ktu1125_emul_set_reg(ktu1125_emul, KTU1125_INT_SRC, 0xff));
 	zassert_ok(ktu1125_emul_set_reg(ktu1125_emul, KTU1125_INT_DATA, 0xff));
 
-	ktu1125_drv.interrupt(KTU1125_PORT);
+	/* ktu1125_drv.interrupt(KTU1125_PORT); */
 	ktu1125_handle_interrupt(KTU1125_PORT);
 }
+#endif
+
+#if 1
+ZTEST(ppc_ktu1125, test_handle_interrupt)
+{
+	int return_vals[2] = { 0xff, 0 };
+
+	SET_RETURN_SEQ(ppc_get_alert_status, return_vals,
+		       ARRAY_SIZE(return_vals));
+
+	zassert_ok(ktu1125_emul_set_reg(ktu1125_emul, KTU1125_INT_SNK, 0xff));
+	zassert_ok(ktu1125_emul_set_reg(ktu1125_emul, KTU1125_INT_SRC, 0xff));
+	zassert_ok(ktu1125_emul_set_reg(ktu1125_emul, KTU1125_INT_DATA, 0xff));
+
+	ktu1125_emul_assert_irq(ktu1125_emul, true);
+	k_sleep(K_SECONDS(1));
+	ktu1125_emul_assert_irq(ktu1125_emul, false);
+	k_sleep(K_SECONDS(1));
+	ktu1125_emul_assert_irq(ktu1125_emul, true);
+	k_sleep(K_SECONDS(1));
+	ktu1125_emul_assert_irq(ktu1125_emul, false);
+	k_sleep(K_SECONDS(1));
+}
+#endif
 
 ZTEST(ppc_ktu1125, test_cover_init)
 {
