@@ -70,6 +70,30 @@
       },
       "revId": "5a3af350eb36d07fe0ea0d928beeb60eefaebb3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e57c34f_1981de92",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-23T03:03:08Z",
+      "side": 1,
+      "message": "I can add higher level flog, but still - how we would use it? setvar can fail in limited number of cases, and if it fails - it would mean we have some very strange issue. Check handling of erase request: https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/cr50/common/new_nvmem.c;l\u003d3220\nIt can fail only if flash write failed in invalidate_object: https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/cr50/common/new_nvmem.c;l\u003d2258 and that would be logged. Specific variable where it fails won\u0027t gives us anything.",
+      "parentUuid": "2ffc3ab0_c4e4a3a1",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "5a3af350eb36d07fe0ea0d928beeb60eefaebb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
