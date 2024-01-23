@@ -22,6 +22,30 @@
       },
       "revId": "5a04fc8832a039678d897891f5fa6ac26f5275a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7f42da_fe0528ed",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-23T17:13:37Z",
+      "side": 0,
+      "message": "I see that de-asserting DSW_PWROK should cause SLP_SUS to assert (low) from the PCH.\nWhat causes RSMRST_PWRGD to deassert in this path?",
+      "parentUuid": "f2f1afc9_c385b6be",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "5a04fc8832a039678d897891f5fa6ac26f5275a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
