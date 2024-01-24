@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "462aa059_a42acda9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-24T19:43:32Z",
+      "side": 1,
+      "message": "\u003eThere\u0027s a potential issue introduced with this change.\nThe initialization code sets all power signal GPIOS to the inactive state at startup. When PCH_RSMRST is configured as active high, then initial state of the pin will be physical 0, which asserts reset to the AP.\nBut if PCH_RSMRST is configured as active low, the initial state of the pin will be physical 1. So this will cause a bounce on PCH_RSMRST between the init code and the first time the passthru handler runs.\nWe have a similar problem with the SYS_RST signal, which is currently configured as active low. We may need a DT property to mark the power signals that are reset style signals. These signals should be logically asserted at init time.\n\nI think this can be addressed, otherwise `verify_ap_inputs` will be broken. I have created b:322173510, we can also have VW implementation to fix b:297788396.",
+      "parentUuid": "f2e36cad_a7ecb477",
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ea57fd2_28e78e44",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 3
