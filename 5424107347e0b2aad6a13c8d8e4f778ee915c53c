@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e3c0c7_27044048",
+        "filename": "board/hyperdebug/cmsis-dap.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d0fb5c1_bdf2b476",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f815a525_cbc88557",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-11T17:17:57Z",
       "side": 1,
       "message": "just in case there is a off by one error, can we protect against `process` being larger than `count` and therefore running this loop infinitely",
+      "range": {
+        "startLine": 1119,
+        "startChar": 2,
+        "endLine": 1121,
+        "endChar": 10
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4cf8e12_36a2524d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f815a525_cbc88557",
       "range": {
         "startLine": 1119,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e3f841_2a4e38d7",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2db3ef1_f3ea46bd",
+      "range": {
+        "startLine": 1177,
+        "startChar": 1,
+        "endLine": 1178,
+        "endChar": 9
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f4d74e6_d5766af5",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-01-11T17:17:57Z",
       "side": 1,
       "message": "don\u0027t we need to perform `queue_remove_units(\u0026cmsis_dap_rx_queue, rx_buffer, 2);` before this line?",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 24
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b002f948_da24a5a5",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "The convention is that the caller has done peeking (of up to 8 bytes, actual number indicated by `peek_c`) and put them into `rx_buffer`.",
+      "parentUuid": "1f4d74e6_d5766af5",
       "range": {
         "startLine": 1180,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85e68cf_e801d4ee",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "That is true, I had failed to take that into account.  Done.",
+      "parentUuid": "e8d7dcb2_7a2a647b",
+      "range": {
+        "startLine": 1197,
+        "startChar": 3,
+        "endLine": 1197,
+        "endChar": 21
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946fe96e_116f16a7",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1bade6c_c673d2b6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946fe96e_116f16a7",
+      "range": {
+        "startLine": 1237,
+        "startChar": 40,
+        "endLine": 1238,
+        "endChar": 24
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe385126_e0687ba8",
@@ -169,6 +313,30 @@
       "writtenOn": "2024-01-11T17:17:57Z",
       "side": 1,
       "message": "this would be really nice to single source with the console version. I see these two implementations getting out of sync otherwise.",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1343,
+        "endChar": 3
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d243895_11dafb20",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-24T19:28:26Z",
+      "side": 1,
+      "message": "Initially, I thought it would be to challenging to extract the common pieces of logic, but it turned out to not be too bad at all. Done.",
+      "parentUuid": "fe385126_e0687ba8",
       "range": {
         "startLine": 1249,
         "startChar": 0,
