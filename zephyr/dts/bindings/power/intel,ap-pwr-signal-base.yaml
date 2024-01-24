@@ -39,3 +39,10 @@ properties:
     - PWR_SLP_SUS
     - PWR_SYS_RST
     - PWR_VCCST_PWRGD
+
+  reset-val:
+    type: int
+    default: 0
+    description: |
+      Reset Value of power signal. Asigning this value to power signal depends
+      on signal type implementation.
