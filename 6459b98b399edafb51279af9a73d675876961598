@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a7f0f9_986f3e8a",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-24T16:35:57Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be part of the emulator backend.  Each emulator should be responsible for asserting its own interrupt based on other actions.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449987cb_14536931",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-24T16:35:57Z",
+      "side": 1,
+      "message": "I didn\u0027t notice this on the first CL stack, but this is the wrong location for this file.  This file is only used by the emul_realtek source file, correct?\n\nThis file shouldn\u0027t be public and should live adjacent to the source file.",
+      "range": {
+        "startLine": 361,
+        "startChar": 8,
+        "endLine": 361,
+        "endChar": 20
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e3eaee_c5792683",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-24T16:35:57Z",
+      "side": 1,
+      "message": "I don\u0027t see this used outside the emul source.  Can this be static to the module instead?",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 0
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f904b07a_bb34868f",
+        "filename": "zephyr/test/pdc/src/pdc_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-24T16:35:57Z",
+      "side": 1,
+      "message": "`EMUL_DATA` is unused, so I think you can drop the include of the realtek specific emulator header.\n\nThis can be cleaned up in a follow-up CL.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 57
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06e82cd_62dd4ee0",
+        "filename": "zephyr/test/pdc/src/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-24T16:35:57Z",
+      "side": 1,
+      "message": "This API should assert the interrupt on its own.  The test should not be responsible for this,",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
