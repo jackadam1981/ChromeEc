@@ -265,3 +265,13 @@ to fetch, merge, and upload the database to GCS.
 TODO(b/287267896)
 Upon CQ submission, LUCI will identify when collisions occur and notify the
 developer to alter their log statement.
+
+## TEST
+
+```sequence-diagram
+Title: Here is a title
+A->B: Normal line
+B-->C: Dashed line
+C->>D: Open arrow
+D-->>A: Dashed open arrow
+```
