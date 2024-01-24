@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "281ba04a_e07a158c",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-24T18:03:58Z",
+      "side": 1,
+      "message": "I see your point, but there may be scenarios where I don\u0027t want to trigger multiple interrupts.  I may need to configure multiple items then want the emulator to notify the driver something changed.  Maybe something like\n\n```\nset_capability(...);\nset_connector_capability(...);\nset_connector_status(...);\npulse_irq(...); \n```\n\nBut also testing\n```\nset_capability(...);\npulse_irq(...); \nset_connector_capability(...);\npulse_irq(...); \nset_connector_status(...);\npulse_irq(...); \n```\nWould be worthwhile too.  \n\nI think having some control from the test framework on when to notify the driver is needed.  Maybe this backend API should be renamed to something like `commit_changes` or `notify_driver`.  Thoughts?",
+      "parentUuid": "65a7f0f9_986f3e8a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "449987cb_14536931",
         "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-24T16:35:57Z",
       "side": 1,
       "message": "I didn\u0027t notice this on the first CL stack, but this is the wrong location for this file.  This file is only used by the emul_realtek source file, correct?\n\nThis file shouldn\u0027t be public and should live adjacent to the source file.",
+      "range": {
+        "startLine": 361,
+        "startChar": 8,
+        "endLine": 361,
+        "endChar": 20
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10b25a1_8ba063d4",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-24T18:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "449987cb_14536931",
       "range": {
         "startLine": 361,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65ff979_12a80da8",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-24T18:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e3eaee_c5792683",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 0
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f904b07a_bb34868f",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6486987c_827ab56d",
+        "filename": "zephyr/test/pdc/src/pdc_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-24T18:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f904b07a_bb34868f",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 57
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b06e82cd_62dd4ee0",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-01-24T16:35:57Z",
       "side": 1,
       "message": "This API should assert the interrupt on its own.  The test should not be responsible for this,",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2d83d1_5246d8bb",
+        "filename": "zephyr/test/pdc/src/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-24T18:03:58Z",
+      "side": 1,
+      "message": "See earlier comment.",
+      "parentUuid": "b06e82cd_62dd4ee0",
       "range": {
         "startLine": 52,
         "startChar": 1,
