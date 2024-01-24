@@ -70,6 +70,30 @@
       },
       "revId": "b3347f047b888c761b1535ffd4c674d26dad15ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63dc006d_d9c16d61",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-24T19:44:53Z",
+      "side": 0,
+      "message": "I will create CL\u0027s to properly fix this, see b:322173510.",
+      "parentUuid": "1165279f_b8988bb3",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "b3347f047b888c761b1535ffd4c674d26dad15ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
