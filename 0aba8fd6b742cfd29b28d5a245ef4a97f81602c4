@@ -22,6 +22,30 @@
       },
       "revId": "0aba8fd6b742cfd29b28d5a245ef4a97f81602c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddbbe67d_8a60355a",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-24T13:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac721e15_22884f7c",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "0aba8fd6b742cfd29b28d5a245ef4a97f81602c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
