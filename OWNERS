@@ -1,1 +1,16 @@
+<<<<<<< HEAD   (744798 magolor: add new battery LGES AP23A8L)
 *
+=======
+# GWSQ enabled alias to assign reviews. See code_reviews.md.
+cros-ec-reviewers@google.com
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_ec
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
+
+# Allow SIEs to maintain ec
+include chromiumos/owners:v1:/sie/OWNERS.chromeos_sie
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+>>>>>>> BRANCH (457d07 zephyr: Make realtek emul rts54xx header private)
