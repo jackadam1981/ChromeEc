@@ -320,6 +320,10 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
+		i2c_ec_i2c_usb_c3: ec_i2c_usb_c3 {
+			i2c-port = <&i2c0_0>;
+			enum-names = "I2C_USB_C3";
+		};
 		i2c_ec_i2c_usb_c0: ec_i2c_usb_c0 {
 			i2c-port = <&i2c1_0>;
 			enum-names = "I2C_USB_C0";
@@ -340,6 +344,10 @@
 };
 
 &adc0 {
+	status = "okay";
+};
+
+&i2c0_0 {
 	status = "okay";
 };
 

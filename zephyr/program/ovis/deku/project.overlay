@@ -6,7 +6,6 @@
 /* Ovis program common DTSI includes */
 #include "../fan.dtsi"
 #include "../temp_sensors.dtsi"
-#include "../usbc.dtsi"
 
 /* Deku project DTS includes */
 #include "gpio.dtsi"
@@ -14,6 +13,7 @@
 #include "led_pins.dtsi"
 #include "../power_signals.dtsi"
 #include "deku.dtsi"
+#include "usbc.dtsi"
 /*
  * TODO(b/285166688): need led_policy.dtsi once that has been
  * implemented to match Ovis requirements
