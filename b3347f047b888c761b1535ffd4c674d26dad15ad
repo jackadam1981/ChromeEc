@@ -46,6 +46,30 @@
       },
       "revId": "b3347f047b888c761b1535ffd4c674d26dad15ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1165279f_b8988bb3",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-24T02:09:00Z",
+      "side": 0,
+      "message": "Instead, we should be evaluating for `GPIO_OUTPUT_INIT_HIGH`, which we can pass in DT node `intel,ap-pwrseq-gpio`. We could use it to set the level during initialization, in the case of `PWR_EC_PCH_RSMRST` it needs to be initialized as asserted.",
+      "parentUuid": "717a4072_5b5eccc8",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "b3347f047b888c761b1535ffd4c674d26dad15ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
