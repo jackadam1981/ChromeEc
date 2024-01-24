@@ -120,6 +120,15 @@ uint32_t get_feature_flags1(void)
 	uint32_t result =
 		EC_FEATURE_MASK_1(EC_FEATURE_UNIFIED_WAKE_MASKS) |
 		EC_FEATURE_MASK_1(EC_FEATURE_HOST_EVENT64)
+
+#ifndef CONFIG_FINGERPRINT_MCU
+		/*
+		 * Say we are executing from RAM, since this will prevent
+		 * flashrom from successfully updating firmware.
+		 */
+		| EC_FEATURE_MASK_1(EC_FEATURE_EXEC_IN_RAM)
+#endif /* CONFIG_FINGERPRINT_MCU */
+
 #ifdef CONFIG_EXTERNAL_STORAGE
 /*
  * TODO: b/304839481 Workaround for crosec-legacy-drv/flashrom -p ec,
