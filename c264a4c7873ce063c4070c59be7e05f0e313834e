@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adcaecd0_e840cf2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-24T21:49:33Z",
+      "side": 1,
+      "message": "We only need to be defining device tree items which are different than what was previously defined for Ovis. The nodes can be added or deleted within the project.overlay file, or if the changes are more significant, we can create a Deku project specific .dtsi file which is then included in the deku project.overlay file.\n\nPlease see the preferred method:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/zephyr/project_config.md;l\u003d1",
+      "revId": "c264a4c7873ce063c4070c59be7e05f0e313834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
