@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489cae5e_b859787c",
+        "filename": "util/gen_touchpad_hash_zephyr.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-01-24T23:02:34Z",
+      "side": 1,
+      "message": "I think this should be swapped with line 90?\n```suggestion\n        help\u003d\"Path to the private signing key (*.vbprik2)\",\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "358f91b83037ee5c4535a24a40cd5a3e31c992dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
