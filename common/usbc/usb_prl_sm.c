@@ -551,6 +551,13 @@ void pd_execute_hard_reset(int port)
 	if (!prl_is_running(port))
 		return;
 
+	/*
+	 * set the mux to disconnect to ensure that it is not remaining in a
+	 * stale state during the hard reset
+	 */
+	usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
+		    polarity_rm_dts(pd_get_polarity(port)));
+
 	PRL_HR_SET_FLAG(port, PRL_FLAGS_PORT_PARTNER_HARD_RESET);
 	set_state_prl_hr(port, PRL_HR_RESET_LAYER);
 	task_wake(PD_PORT_TO_TASK_ID(port));
