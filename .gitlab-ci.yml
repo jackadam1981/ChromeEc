@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-image: jbettis/ubuntu-07sep23
+image: jbettis/ubuntu-23jan24
 
 # You can update that image using this repo:
 #   https://gitlab.com/zephyr-ec/gitlab-ci-runner/-/tree/main
@@ -365,6 +365,16 @@ brox_coverage:
     PROJECT: "brox"
   <<: *coverage_template
 
+rauru:
+  variables:
+    PROJECT: "rauru"
+  <<: *build_template
+
+rauru_coverage:
+  variables:
+    PROJECT: "rauru"
+  <<: *coverage_template
+
 ec_coverage:
   stage: test
   needs: []
@@ -385,7 +395,7 @@ ec_coverage:
 zephyr_coverage:
   stage: test
   needs: []
-  parallel: 3
+  parallel: 6
   script:
     - python3 ${EC_DIR}/twister --coverage --outdir "${TWISTER_OUT_DIR}"
       -v -i -x=ALLOW_WARNINGS=ON -y
@@ -477,7 +487,7 @@ merged_coverage:
 testall:
   stage: test
   needs: []
-  parallel: 3
+  parallel: 6
   script:
     - python3 ${EC_DIR}/twister --outdir "${TWISTER_OUT_DIR}" -v -i
       -x=ALLOW_WARNINGS=ON -y
