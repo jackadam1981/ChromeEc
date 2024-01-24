@@ -22,6 +22,30 @@
       },
       "revId": "b3347f047b888c761b1535ffd4c674d26dad15ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "717a4072_5b5eccc8",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-24T01:14:30Z",
+      "side": 0,
+      "message": "Thanks for bringing this up.\n\nAfter a deeper inspection, I do not think this change is required at all:\n`GPIO_OUTPUT_INACTIVE` includes `GPIO_OUTPUT_INIT_LOGICAL` see [gpio.h:71](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/drivers/gpio.h;l\u003d71?q\u003dzephyr%2Fmain%2Finclude%2Fzephyr%2Fdrivers%2Fgpio.h\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch)which along with `GPIO_ACTIVE_LOW` (this last one passed by DT using `intel,ap-pwrseq-gpio`) it will set output GPIO to the correct level during initialization, see [gpio.h:993](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/drivers/gpio.h;l\u003d993?q\u003dzephyr%2Fmain%2Finclude%2Fzephyr%2Fdrivers%2Fgpio.h\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch).",
+      "parentUuid": "a98d34b2_b2bbda47",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "b3347f047b888c761b1535ffd4c674d26dad15ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
