@@ -1415,6 +1415,14 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 			      sizeof(struct ec_params_flash_write)) &
 			     ~(CONFIG_FLASH_WRITE_SIZE - 1);
 
+#ifdef CONFIG_FINGERPRINT_MCU
+	/*
+	 * Fail to return flash info, since this will prevent flashrom from
+	 * successfully updating firmware.
+	 */
+	return EC_RES_ACCESS_DENIED;
+#endif /* CONFIG_FINGERPRINT_MCU */
+
 	if (args->version >= 2) {
 		args->response_size = sizeof(struct ec_response_flash_info_2);
 		r_2->flash_size =
