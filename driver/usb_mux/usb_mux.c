@@ -543,7 +543,7 @@ void usb_mux_set(int port, mux_state_t mux_mode, enum usb_switch usb_mode,
 		return;
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
-	if (IS_ENABLED(HAS_TASK_USB_MUX))
+	if (IS_ENABLED(HAS_TASK_USB_MUX) && !(mux_mode == USB_PD_MUX_NONE))
 		mux_task_enqueue(port, TYPEC_USB_MUX_SET_ALL_CHIPS,
 				 USB_MUX_SET_MODE, mux_mode, usb_mode,
 				 polarity);
