@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd0d905_25e365e6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-01-24T20:16:26Z",
+      "side": 1,
+      "message": "Hmm I thought we changed that convention and in other places to actually call queue_remove_units as the first part of this call.",
+      "parentUuid": "b002f948_da24a5a5",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 24
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d7dcb2_7a2a647b",
