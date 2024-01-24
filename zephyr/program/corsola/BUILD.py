@@ -78,3 +78,6 @@ register_corsola_project(
     project_name="ponyta",
     chip="npcx9m3f",
 )
+
+register_corsola_project("chinchou")
+register_corsola_project("woobat")
