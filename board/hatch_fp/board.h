@@ -40,6 +40,11 @@
  *
  *-------------------------------------------------------------------------*/
 
+#ifdef SECTION_IS_RW
+#define CONFIG_LIB_DRUID
+#define CONFIG_LIB_DRUID_ARMV7
+#endif
+
 #undef _IMAGE_SIZE
 #undef CONFIG_ROLLBACK_OFF
 #undef CONFIG_ROLLBACK_SIZE
