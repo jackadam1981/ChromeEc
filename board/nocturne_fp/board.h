@@ -21,6 +21,12 @@
 #define CONFIG_ALLOW_UNALIGNED_ACCESS
 #define CONFIG_LTO
 
+#ifdef SECTION_IS_RW
+#define CONFIG_LIB_DRUID
+#define CONFIG_LIB_DRUID_WRAPPER
+#define CONFIG_LIB_DRUID_ARMV7
+#endif
+
 /*
  * These allow console commands to be flagged as restricted.
  * Restricted commands will only be permitted to run when
