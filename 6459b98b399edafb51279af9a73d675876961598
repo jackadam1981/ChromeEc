@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73544142_28a3d43e",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-25T15:38:40Z",
+      "side": 1,
+      "message": "Can scenario 1 happen on real hardware?  If so, than this should be exposed by the emulator backend as a high-level function.  For instance `connect_charger()` would be responsible for setting the connector capabilities and status, and then pulse a single interrupt.\n\nI don\u0027t think having the test pulse the interrupt is a good approach for the PDC power management tests.",
+      "parentUuid": "281ba04a_e07a158c",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "449987cb_14536931",
         "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
         "patchSetId": 3
