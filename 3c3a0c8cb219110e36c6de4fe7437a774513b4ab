@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65406d80_bfa67b15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:45:31Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this CL. We still need to clarify how gpio_ec_soc_rec_switch_odl should be controlled by the EC. I think it\u0027s doubtful that we would need to create an enum for this signal as those enums are only required as a interim solution to map certain gpios from the zephyr style device tree to enums used in legacy EC code.",
+      "revId": "3c3a0c8cb219110e36c6de4fe7437a774513b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9420435a_501f221b",
@@ -19,6 +36,53 @@
         "startChar": 8,
         "endLine": 65,
         "endChar": 29
+      },
+      "revId": "3c3a0c8cb219110e36c6de4fe7437a774513b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3cd5fb_5d768c14",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:45:31Z",
+      "side": 1,
+      "message": "I\u0027m not clear on how this signal will be controlled by the EC. I think this might be a new signal that is not used in legacy EC code. If it\u0027s not used in legacy EC code, then we wouldn\u0027t need an enun-name here as these names are only required for legacy code that refers to GPIO signals via their enum name.\n\nThe dedicated recovery power button GPIO gpio_gsc_ec_rec_btn_odl, does have an enum name in this file because the leagcy EC common code that handles recovery button presses assumes a gpio named  GPIO_RECOVERY_L will exist.",
+      "parentUuid": "9420435a_501f221b",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "3c3a0c8cb219110e36c6de4fe7437a774513b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f3dbb2_f1523e9d",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:45:31Z",
+      "side": 1,
+      "message": "Both the TCPC and PPC interrupt gpios are specified directly in the device tree. Here is what we have for port C1:\n\n\t\t/* a duplicate of the \u003c\u0026gpio_usb_c1_tcpc_int_odl\u003e node in\n\t\t * \"named-gpios\". This is the Zephyr preferred style,\n\t\t * the \"named-gpios\" node will be dealt with at a later date.\n\t\t */\n\t\tirq-gpios \u003d \u003c\u0026gpioe 0 GPIO_ACTIVE_LOW\u003e;\n\t\t\n\t\t/* a duplicate of the \u003c\u0026gpio_usb_c0_ppc_int_odl\u003e node in\n\t\t * \"named-gpios\". This is the Zephyr preferred style,\n\t\t * the \"named-gpios\" node will be dealt with at a later date.\n\t\t */\n\t\tirq-gpios \u003d \u003c\u0026gpio6 2 GPIO_ACTIVE_LOW\u003e;\n\nBecause the TCPC/PPC interrupt handlers have already been converted to zephyr style, we won\u0027t need gpio enums for these signals. To clarify, these enums are added in Ovis for ports C0-C2, but that\u0027s because the zephyr style common interrupt handler code was introduced after the Ovis project was started.",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 31
       },
       "revId": "3c3a0c8cb219110e36c6de4fe7437a774513b4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
