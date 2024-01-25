@@ -18,6 +18,15 @@ menuconfig PLATFORM_EC_MOTIONSENSE
 
 if PLATFORM_EC_MOTIONSENSE
 
+config PLATFORM_EC_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS
+    int "Force mode cutoff in milliseconds"
+    default 0
+    help
+      Set this value to a value greater than 0 in order to have motionsense
+      attempt to toggle between interrupt mode and force mode (polling). As an
+      example, if this value is set to 100, then any sample rate above 10Hz will
+      use interrupts and any sample rates at or below 10Hz will be polled.
+
 config PLATFORM_EC_ACCEL_FIFO
     bool "Sensor FIFO"
     help
