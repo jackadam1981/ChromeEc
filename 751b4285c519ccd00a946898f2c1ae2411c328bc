@@ -16,6 +16,24 @@
       "message": "Is this repetition deliberate?",
       "revId": "751b4285c519ccd00a946898f2c1ae2411c328bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6213fcb0_9f5f82c1",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-01-25T18:26:27Z",
+      "side": 1,
+      "message": "Yes, lcov errors mentioned once turn them into warnings, twice silences them.",
+      "parentUuid": "78980634_c9320526",
+      "revId": "751b4285c519ccd00a946898f2c1ae2411c328bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
