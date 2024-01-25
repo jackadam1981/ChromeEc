@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01de3e3_aaa3d150",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-25T05:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31697108_097c9275",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "14a7b9d88a5fa572cc8ac0375360d1162f35312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcfc1763_07d8e27f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-25T04:49:34Z",
       "side": 1,
       "message": "move to the line after line 8?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "14a7b9d88a5fa572cc8ac0375360d1162f35312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f520ed46_f72d2a0f",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-25T05:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcfc1763_07d8e27f",
       "range": {
         "startLine": 16,
         "startChar": 0,
