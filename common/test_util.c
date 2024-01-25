@@ -191,6 +191,10 @@ enum ec_status test_send_host_command(int command, int version,
 }
 #endif /* TASK_HAS_HOSTCMD */
 
+int test_send_console_command(char *input){
+	return handle_command(input);
+}
+
 /* Linear congruential pseudo random number generator */
 uint32_t prng(uint32_t seed)
 {
