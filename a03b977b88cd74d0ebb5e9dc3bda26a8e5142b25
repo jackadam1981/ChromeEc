@@ -22,6 +22,30 @@
       },
       "revId": "a03b977b88cd74d0ebb5e9dc3bda26a8e5142b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2d30b8_1b2eb4ca",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-25T04:27:22Z",
+      "side": 1,
+      "message": "ya, 0x40 gets written to successive registers.",
+      "parentUuid": "f6958d3b_02c24a3d",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 7
+      },
+      "revId": "a03b977b88cd74d0ebb5e9dc3bda26a8e5142b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
