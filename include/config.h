@@ -77,6 +77,14 @@
  */
 #define CONFIG_ACCEL_SPOOF_MODE
 
+/*
+ * Set a threshold rate for force mode. When set to a value above 0, any sample
+ * rates above the threshold will be made in force mode ignoring any interrupt
+ * configurations. Example: Setting this value to 50 means that sample rates
+ * below 20Hz will be made via force mode.
+ */
+#define CONFIG_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS 0
+
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_BMA255
 #undef CONFIG_ACCEL_BMA4XX
