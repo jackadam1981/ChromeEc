@@ -22,6 +22,30 @@
       },
       "revId": "358f91b83037ee5c4535a24a40cd5a3e31c992dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a43ad2f_902235fe",
+        "filename": "util/gen_touchpad_hash_zephyr.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-25T09:57:12Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "489cae5e_b859787c",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "358f91b83037ee5c4535a24a40cd5a3e31c992dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
