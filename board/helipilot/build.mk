@@ -54,6 +54,7 @@ test-list-y=\
        pingpong \
        printf \
        queue \
+       restricted_console \
        rng_benchmark \
        rollback \
        rollback_entropy \
