@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2f85c96_e398a5c0",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:57:30Z",
+      "side": 1,
+      "message": "I think these are the same between Ovis and Deku and don\u0027t need to be added here",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d854ede2_14873469",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:57:30Z",
+      "side": 1,
+      "message": "Can you please arrange the GPIO nodes in alphabetical order similar to how they are listed in program/ovis/ovis.dtsi. This will make it easier to align changes here relative to Ovis.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2434643_c82deb5c",
         "filename": "zephyr/program/ovis/deku/project.overlay",
         "patchSetId": 5
@@ -19,6 +65,52 @@
         "startChar": 0,
         "endLine": 103,
         "endChar": 4
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e91f80_5333c77f",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:57:30Z",
+      "side": 1,
+      "message": "As this is the same compared to Ovis, it does not need to be added here.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53546be4_badba6d3",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T23:57:30Z",
+      "side": 1,
+      "message": "Same comment as for ppc_port0. I can\u0027t see any difference here compared to the pins used for Ovis.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 26
       },
       "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
