@@ -16,6 +16,23 @@
       "message": "I\u0027m aware this update probably isn\u0027t going to be well received. After lots of testing there was really 2 options around this, increase the mux queue very large (32 seemed to work well) or lock and disconnect as the request was received instead of adding it to the queue.",
       "revId": "390004aa44dc7afe37dd82a3585d9924d761eb9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3052427a_0970bef6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-01-25T20:58:16Z",
+      "side": 1,
+      "message": "Please ensure the CL applies to ToT. We will then back-merge the change to the firmware branch.\n\nThanks.",
+      "revId": "390004aa44dc7afe37dd82a3585d9924d761eb9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
