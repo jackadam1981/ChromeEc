@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e1750e_b11e7f7b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-25T17:44:44Z",
+      "side": 1,
+      "message": "This method is responsible for calling `queue_remove_units()` to actually consume what is in the queue (or as much of it as belongs to the particular command).  But the caller will have \"peeked\" at a number of bytes, which is convenient for deciding whether there is enough bytes in the queue to process a full command (many of the other commands will have a size field as one of the first bytes, this is a little different.)",
+      "parentUuid": "dbd0d905_25e365e6",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 24
+      },
+      "revId": "5424107347e0b2aad6a13c8d8e4f778ee915c53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d7dcb2_7a2a647b",
