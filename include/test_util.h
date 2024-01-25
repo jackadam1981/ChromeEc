@@ -210,6 +210,9 @@ enum ec_status test_send_host_command(int command, int version,
 				      const void *params, int params_size,
 				      void *resp, int resp_size);
 
+/* Simulates console command sent from the host */
+int test_send_console_command(char *input);
+
 /* Optionally defined interrupt generator entry point */
 void interrupt_generator(void);
 
@@ -244,6 +247,8 @@ uint32_t prng_no_seed(void);
 
 /* Number of failed tests */
 extern int __test_error_count;
+
+extern int handle_command(char *input);
 
 /* Simulates UART input */
 void uart_inject_char(char *s, int sz);
@@ -451,7 +456,7 @@ struct unit_test {
  */
 #define ztest_unit_test_setup_teardown(fn, setup, teardown) \
 	{                                                   \
-		#fn, fn, setup, teardown                    \
+#fn, fn, setup, teardown                    \
 	}
 
 /**

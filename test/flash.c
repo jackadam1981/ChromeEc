@@ -25,6 +25,8 @@ const char *testdata = "TestData00000000"; /* 16 bytes excluding NULL end */
 
 char flash_recorded_data[128];
 
+extern int handle_command(char *input);
+
 #define BOOT_WP_MASK TEST_STATE_MASK(TEST_STATE_STEP_2)
 
 /*****************************************************************************/
