@@ -22,6 +22,30 @@
       },
       "revId": "eaa7cd2355e870bcf8f6fb2f5c5e43bcfd3dcb7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732e1802_152390cf",
+        "filename": "zephyr/program/roach/roach/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-01-25T09:55:15Z",
+      "side": 1,
+      "message": "Yes but it\u0027s not possible to do variable calculation in DTS.\n\nOr maybe we should make binman able to get the size of this symbol...?",
+      "parentUuid": "4d6b6cd6_c3e08707",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "eaa7cd2355e870bcf8f6fb2f5c5e43bcfd3dcb7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
