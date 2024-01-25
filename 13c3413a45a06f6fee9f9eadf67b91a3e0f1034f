@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e39f639_8d48db2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2974bb7_a50ae926",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17216a9a_c88a4be3",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-19T00:04:38Z",
       "side": 1,
       "message": "Nit: Write binary into CrOS Board Info temporary buffer and then commit it to permanent storage once complete",
+      "range": {
+        "startLine": 6394,
+        "startChar": 3,
+        "endLine": 6394,
+        "endChar": 62
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f3a887_0e07305e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6394,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17216a9a_c88a4be3",
       "range": {
         "startLine": 6394,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc85696d_c21ad89f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6399,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c901a1c_65f5bce5",
+      "range": {
+        "startLine": 6399,
+        "startChar": 3,
+        "endLine": 6399,
+        "endChar": 6
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b1d7822_4c8d809d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9174a5_4cfff09c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6402,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1d7822_4c8d809d",
+      "range": {
+        "startLine": 6402,
+        "startChar": 3,
+        "endLine": 6402,
+        "endChar": 10
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d42b450f_e55ef239",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-01-19T00:04:38Z",
       "side": 1,
       "message": "Nit: Upper case.",
+      "range": {
+        "startLine": 6413,
+        "startChar": 19,
+        "endLine": 6413,
+        "endChar": 20
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27194f73_13c6aa58",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6413,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d42b450f_e55ef239",
       "range": {
         "startLine": 6413,
         "startChar": 19,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a0a322_7c8e7440",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9415,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394bd0dc_ee95e5bb",
+      "range": {
+        "startLine": 9415,
+        "startChar": 23,
+        "endLine": 9415,
+        "endChar": 24
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d33452_48b5f8ee",
@@ -175,6 +319,30 @@
       "writtenOn": "2024-01-19T00:04:38Z",
       "side": 1,
       "message": "The brace is not paired. Is it compiled correctly?",
+      "range": {
+        "startLine": 9455,
+        "startChar": 30,
+        "endLine": 9455,
+        "endChar": 31
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f0e39b_fb870b8f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9455,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Turns out I was only flashing the EC not the ectool which is why it wasn\u0027t working. This and other bugs are now fixed.",
+      "parentUuid": "09d33452_48b5f8ee",
       "range": {
         "startLine": 9455,
         "startChar": 30,
@@ -208,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd74a224_37c23cb0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9495,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0739b6ee_882440d0",
+      "range": {
+        "startLine": 9495,
+        "startChar": 12,
+        "endLine": 9495,
+        "endChar": 81
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afe71ebe_70f654cc",
@@ -221,6 +413,30 @@
       "writtenOn": "2024-01-19T00:04:38Z",
       "side": 1,
       "message": "Need it? The buffer is cleared at line 9482.",
+      "range": {
+        "startLine": 9496,
+        "startChar": 4,
+        "endLine": 9496,
+        "endChar": 32
+      },
+      "revId": "13c3413a45a06f6fee9f9eadf67b91a3e0f1034f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "174485c9_3b6c0be8",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9496,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "afe71ebe_70f654cc",
       "range": {
         "startLine": 9496,
         "startChar": 4,

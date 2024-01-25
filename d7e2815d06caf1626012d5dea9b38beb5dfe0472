@@ -399,6 +399,30 @@
       },
       "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf938681_8a17d2b2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8774,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-01-25T01:27:16Z",
+      "side": 1,
+      "message": "reading and writing is now into files. I\u0027ll look into adding host commands to make the sizing of cbi info automatic for a future update.",
+      "parentUuid": "0cae0c8c_08476565",
+      "range": {
+        "startLine": 8774,
+        "startChar": 19,
+        "endLine": 8774,
+        "endChar": 34
+      },
+      "revId": "d7e2815d06caf1626012d5dea9b38beb5dfe0472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
