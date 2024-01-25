@@ -53,11 +53,6 @@ lis2dw12_config_interrupt(const struct motion_sensor_t *s)
 	RETURN_ERROR(st_write_data_with_mask(s, LIS2DW12_FIFO_CTRL_ADDR,
 					     LIS2DW12_FIFO_THRESHOLD_MASK, 1));
 
-	/* Enable interrupt on FIFO watermark and route to int1. */
-	RETURN_ERROR(st_write_data_with_mask(s, LIS2DW12_INT1_FTH_ADDR,
-					     LIS2DW12_INT1_FTH_MASK,
-					     LIS2DW12_EN_BIT));
-
 	if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)) {
 		/*
 		 * Configure D-TAP event detection on 3 axis.
@@ -76,15 +71,8 @@ lis2dw12_config_interrupt(const struct motion_sensor_t *s)
 		RETURN_ERROR(st_write_data_with_mask(
 			s, LIS2DW12_WAKE_UP_THS_ADDR,
 			LIS2DW12_SINGLE_DOUBLE_TAP, LIS2DW12_EN_BIT));
-
-		/*
-		 * Enable D-TAP detection on int_1 pad. In any case D-TAP event
-		 * can be detected only if ODR is over 200 Hz.
-		 */
-		RETURN_ERROR(st_write_data_with_mask(s, LIS2DW12_INT1_TAP_ADDR,
-						     LIS2DW12_INT1_DTAP_MASK,
-						     LIS2DW12_EN_BIT));
 	}
+
 	return EC_SUCCESS;
 }
 
@@ -208,6 +196,26 @@ static int lis2dw12_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && commit_needed)
 		motion_sense_fifo_commit_data();
+
+	return EC_SUCCESS;
+}
+
+static int lis2dw12_enable_interrupt(const struct motion_sensor_t *s,
+				     bool enable)
+{
+	/* Enable interrupt on FIFO watermark and route to int1. */
+	RETURN_ERROR(st_write_data_with_mask(
+		s, LIS2DW12_INT1_FTH_ADDR, LIS2DW12_INT1_FTH_MASK,
+		enable ? LIS2DW12_EN_BIT : LIS2DW12_DIS_BIT));
+	if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)) {
+		/*
+		 * Enable D-TAP detection on int_1 pad. In any case D-TAP event
+		 * can be detected only if ODR is over 200 Hz.
+		 */
+		RETURN_ERROR(st_write_data_with_mask(
+			s, LIS2DW12_INT1_TAP_ADDR, LIS2DW12_INT1_DTAP_MASK,
+			enable ? LIS2DW12_EN_BIT : LIS2DW12_DIS_BIT));
+	}
 
 	return EC_SUCCESS;
 }
@@ -562,6 +570,7 @@ const struct accelgyro_drv lis2dw12_drv = {
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef ACCEL_LIS2DW12_INT_ENABLE
+	.enable_interrupt = lis2dw12_enable_interrupt,
 	.irq_handler = lis2dw12_irq_handler,
 #endif /* ACCEL_LIS2DW12_INT_ENABLE */
 #ifdef CONFIG_BODY_DETECTION
