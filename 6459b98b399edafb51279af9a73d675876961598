@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c7b4c26_96c048cd",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-25T17:42:59Z",
+      "side": 1,
+      "message": "Okay, I added a (connect|disconnect)_charger API.  The general test flow will look like \n```\n/* configure emulated PDC responses */\n\nconnect_charger() /* Moves PDC to connected state and alerts driver of changes to be read */\n\n/* Validate power mgmt is in expected state */\n```",
+      "parentUuid": "73544142_28a3d43e",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "6459b98b399edafb51279af9a73d675876961598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "449987cb_14536931",
         "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
         "patchSetId": 3
