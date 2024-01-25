@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a05dbe5_a7b2e79a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-25T04:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9511b6da_87488eb6",
+      "revId": "c264a4c7873ce063c4070c59be7e05f0e313834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b50b562_6d8e692e",
@@ -49,6 +67,24 @@
       "writtenOn": "2024-01-25T01:41:09Z",
       "side": 1,
       "message": "The changes for this file should be its own CL and decoupled from the Deku GPIO changes.",
+      "revId": "c264a4c7873ce063c4070c59be7e05f0e313834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1016068_c27c392a",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-25T04:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b50b562_6d8e692e",
       "revId": "c264a4c7873ce063c4070c59be7e05f0e313834e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
