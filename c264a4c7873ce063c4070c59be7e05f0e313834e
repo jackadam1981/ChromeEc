@@ -34,6 +34,23 @@
       "parentUuid": "adcaecd0_e840cf2c",
       "revId": "c264a4c7873ce063c4070c59be7e05f0e313834e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b50b562_6d8e692e",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-25T01:41:09Z",
+      "side": 1,
+      "message": "The changes for this file should be its own CL and decoupled from the Deku GPIO changes.",
+      "revId": "c264a4c7873ce063c4070c59be7e05f0e313834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
