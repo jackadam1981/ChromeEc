@@ -1443,7 +1443,10 @@ function ite_dfu_mode() {
 function flash_it83xx() {
 	local TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}"
 	local ITEFLASH_BIN
+	local TEMP_DIR
 	ITEFLASH_BIN=$(PATH="${TOOL_PATH}" which iteflash)
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
 
 	if [[ ! -x "${ITEFLASH_BIN}" ]]; then
 		die "no iteflash util found."
@@ -1507,6 +1510,17 @@ function flash_it83xx() {
 		if servo_is_ccd; then
 			ITEFLASH_ARGS+=( "--block-write-size=256" )
 		fi
+	fi
+
+	if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" && \
+	      -z "${FLAGS_read}" ]]; then
+		local IMG_CPY
+
+		IMG_CPY="${TEMP_DIR}/ec.new.cpy.bin"
+		cat "${IMG}" > "${IMG_CPY}"
+		IMG="${IMG_CPY}"
+		preserve_sections "ite_i2c" "${IMG}" "${TEMP_DIR}"    \
+			"${ITEFLASH_ARGS[*]}" || die "${MSG_PROGRAM_FAIL}"
 	fi
 
 	local ERROR_MSG
@@ -1955,7 +1969,7 @@ function read_chip_partially() {
 	local OFFSET
 	local SIZE
 	local FILE_PATH
-	local NPCX_BASE_ADDR
+	local UUT_CUR_FMAP_RD
 
 	CHIP_TYPE=${1:?"missing arg 1: Chip type"}
 	CHIP_CMD_PREFIX=${2:?"missing arg 2: Prefix of command"}
@@ -1963,11 +1977,11 @@ function read_chip_partially() {
 	OFFSET=${3:?"missing arg 3: Offset"}
 	SIZE=${4:?"missing arg 4: Size"}
 	FILE_PATH=${5:?"missing arg 5: Image storage path"}
-	NPCX_BASE_ADDR=0x64000000
 
 	if [ "${CHIP_TYPE}" = "npcx_uut" ]; then
-		local UUT_CUR_FMAP_RD
+		local NPCX_BASE_ADDR
 
+		NPCX_BASE_ADDR=0x64000000
 		OFFSET=$(("${NPCX_BASE_ADDR}" + "${OFFSET}"))
 		UUT_CUR_FMAP_RD=( "${CHIP_CMD_PREFIX[@]}" "--opr=rd"  \
 			"--addr=${OFFSET}" "--size=${SIZE}"  \
@@ -1975,6 +1989,26 @@ function read_chip_partially() {
 		echo "${UUT_CUR_FMAP_RD[*]}"
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
+	elif [ "${CHIP_TYPE}" == "ite_i2c" ]; then
+		# ITE flash tool can start reads on a 256 byte page boundary
+		info "ITE partial read: offset ${OFFSET} size ${SIZE}"
+
+		END=$((OFFSET + SIZE + 0xFF))
+		OFFSET=$((OFFSET & 0xFFFFFF00))
+		END=$((END & 0xFFFFFF00))
+		SIZE=$((END - OFFSET))
+		# --range requires hex representation
+		RANGE=$(printf '0x%x:0x%x' "${OFFSET}" "${SIZE}" )
+		info "ITE partial read range ${RANGE}"
+
+		UUT_CUR_FMAP_RD=( "${CHIP_CMD_PREFIX[@]}" \
+			"--read=${FILE_PATH}" "--range=${RANGE}")
+		echo "${UUT_CUR_FMAP_RD[*]}"
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+					"${UUT_CUR_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
+
+		# ITE DFU mode must be re-enabled after each operation
+		ite_dfu_mode
 	else
 		die "${MSG_CHIP_READ_INVALID}"
 	fi
@@ -1984,6 +2018,7 @@ function read_chip() {
 	local CHIP_TYPE
 	local CHIP_CMD_PREFIX
 	local FILE_PATH
+	local UUT_CUR_RD
 
 	CHIP_TYPE=${1:?"missing arg 1: Chip type"}
 	CHIP_CMD_PREFIX=${2:?"missing arg 2: Prefix of command"}
@@ -1991,12 +2026,18 @@ function read_chip() {
 	FILE_PATH=${3:?"missing arg 3: Image storage path"}
 
 	if [ "${CHIP_TYPE}" = "npcx_uut" ]; then
-		local UUT_CUR_RD
-
 		UUT_CUR_RD=( "${CHIP_CMD_PREFIX[@]}" "--read-flash" "--file=${FILE_PATH}" )
 		echo "${UUT_CUR_RD[*]}"
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
+	elif [ "${CHIP_TYPE}" == "ite_i2c" ]; then
+		UUT_CUR_RD=( "${CHIP_CMD_PREFIX[@]}" "--read=${FILE_PATH}" )
+		echo "${UUT_CUR_RD[*]}"
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
+
+		# ITE DFU mode must be re-enabled after each operation
+		ite_dfu_mode
 	else
 		die "${MSG_CHIP_READ_INVALID}"
 	fi
