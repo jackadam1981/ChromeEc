@@ -22,6 +22,30 @@
       },
       "revId": "1084db7b72b66eb445b43ed677f7397d87456eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b815f55_f59df186",
+        "filename": "zephyr/test/nissa/src/board_power.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-25T18:42:21Z",
+      "side": 1,
+      "message": "\u003eCheck out CL:5155208. I was able to re-use the existing ap_power tests with the Nissa board_power.c and the nereid power signals.\nMy approach has the advantage re-using the actual board devicetree file instead of duplicating the power signals for the test framework.\n\nI can certainly do this, are we enabling board specific tests inside ap_power testcases?\n\n\u003eIs this board specific test suite still needed?\nCreated `zephyr/test/nissa/src/board_ap_pwrseq_drv.c` to exercise driver exclusively using emulator, new testcase is introduced for this.",
+      "parentUuid": "47732875_21aaeb7b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 73
+      },
+      "revId": "1084db7b72b66eb445b43ed677f7397d87456eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

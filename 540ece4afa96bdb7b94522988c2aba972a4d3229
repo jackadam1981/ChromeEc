@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d7749d_d102a5b8",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-25T18:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59aaecd1_1679377e",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "540ece4afa96bdb7b94522988c2aba972a4d3229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cc75cd9_98d16fb4",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-01-18T22:49:12Z",
       "side": 1,
       "message": "Needs a file header.",
+      "revId": "540ece4afa96bdb7b94522988c2aba972a4d3229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d1ed69_39337184",
+        "filename": "zephyr/test/nissa/boards/generic_power_signals.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-25T18:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc75cd9_98d16fb4",
       "revId": "540ece4afa96bdb7b94522988c2aba972a4d3229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
