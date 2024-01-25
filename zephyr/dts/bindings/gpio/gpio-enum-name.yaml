@@ -62,6 +62,7 @@ properties:
       - GPIO_PCH_DSW_PWROK
       - GPIO_PCH_PWRBTN_L
       - GPIO_PCH_PWROK
+      - GPIO_PCH_REC_SWITCH_L
       - GPIO_PCH_RSMRST_L
       - GPIO_PCH_RTCRST
       - GPIO_PCH_SLP_S0_L
@@ -122,6 +123,8 @@ properties:
       - GPIO_USB_C2_BC12_INT_ODL
       - GPIO_USB_C2_DISCHARGE
       - GPIO_USB_C2_PPC_INT_ODL
+      - GPIO_USB_C3_TCPC_INT_ODL
+      - GPIO_USB_C3_PPC_INT_ODL
       - GPIO_USB1_CTL1
       - GPIO_USB1_CTL2
       - GPIO_USB1_CTL3
