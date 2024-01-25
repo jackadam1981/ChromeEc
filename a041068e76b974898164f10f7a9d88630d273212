@@ -22,6 +22,30 @@
       },
       "revId": "a041068e76b974898164f10f7a9d88630d273212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a24bbd2_b904b089",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-25T17:55:35Z",
+      "side": 1,
+      "message": "Move these options into tcpmv2.cmake instead.",
+      "parentUuid": "499782fb_c582028b",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 37
+      },
+      "revId": "a041068e76b974898164f10f7a9d88630d273212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
