@@ -133,7 +133,7 @@ test_mockable void usb_charger_task_set_event(int port, uint8_t event)
 #endif
 }
 
-void usb_charger_task_set_event_sync(int port, uint8_t event)
+test_mockable void usb_charger_task_set_event_sync(int port, uint8_t event)
 {
 	struct bc12_config *bc12_port;
 

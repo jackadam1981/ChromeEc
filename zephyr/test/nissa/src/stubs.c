@@ -6,6 +6,7 @@
  * meaningful to testing.
  */
 
+#include "battery_fuel_gauge.h"
 #include "common.h"
 
 #include <zephyr/fff.h>

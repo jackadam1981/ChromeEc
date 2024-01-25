@@ -164,3 +164,19 @@ if(CONFIG_TEST_NISSA_ANRAGGAR)
             src/anraggar.c
     )
 endif()
+
+if(CONFIG_TEST_NISSA_YAVIKS)
+    target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0 CHARGER_SECONDARY=1)
+    zephyr_include_directories("${PLATFORM_EC}/zephyr/shim/chip/it8xxx2/include")
+    zephyr_include_directories("${PLATFORM_EC}/	src/platform/ec/zephyr/shim/include")
+    target_sources(
+            app PRIVATE
+            src/yaviks.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yaviks/src/charger.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yaviks/src/sub_board.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yaviks/src/board.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yaviks/src/usbc.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yaviks/src/fan.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yaviks/src/keyboard.c
+    )
+endif()
