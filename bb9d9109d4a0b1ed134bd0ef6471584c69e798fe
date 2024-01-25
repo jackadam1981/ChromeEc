@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa25ed19_17bba520",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-25T18:42:06Z",
+      "side": 1,
+      "message": "The function doesn\u0027t return bool so you should explicitly check the return value.\n`if (send_pdc_cmd(port) !\u003d 0) {`",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1132,
+        "endChar": 27
+      },
+      "revId": "bb9d9109d4a0b1ed134bd0ef6471584c69e798fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
