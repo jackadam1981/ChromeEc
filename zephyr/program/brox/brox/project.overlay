@@ -14,7 +14,6 @@ i2c3ALT: &i2c3 {
 
 #include <cros/cbi_flash.dtsi>
 
-#include "../adc.dtsi"
 #include "../brox.dtsi"
 #include "../fan.dtsi"
 #include "../generated.dtsi"
