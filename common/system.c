@@ -192,13 +192,15 @@ test_mockable int system_is_locked(void)
 {
 	static int is_locked = -1;
 
-	if (force_locked)
-		return 1;
+	if (force_locked){
+		ccprints("I am at force locked.\n");
+		return 1;}
 	if (is_locked != -1)
 		return is_locked;
 
 #ifdef CONFIG_SYSTEM_UNLOCKED
 	/* System is explicitly unlocked */
+	ccprints("I am at CONFIG_SYSTEM_UNLOCKED.\n");
 	is_locked = 0;
 	return 0;
 
@@ -207,17 +209,26 @@ test_mockable int system_is_locked(void)
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.
 	 */
+	ccprints("I am at CONFIG_FLASH_CROS.\n");
 	if ((EC_FLASH_PROTECT_GPIO_ASSERTED | EC_FLASH_PROTECT_RO_NOW) &
 	    ~crec_flash_get_protect()) {
+		ccprints("The value of EC_FLASH_PROTECT_GPIO_ASSERTED: 0x%08x\n", EC_FLASH_PROTECT_GPIO_ASSERTED);
+		ccprints("The value of EC_FLASH_PROTECT_RO_NOW: 0x%08x\n", EC_FLASH_PROTECT_RO_NOW);
+		ccprints("The value of ~crec_flash_get_protect(): 0x%08x\n",~crec_flash_get_protect());
+		ccprints("The value it should be: 0x%08x\n", ~(EC_FLASH_PROTECT_GPIO_ASSERTED | EC_FLASH_PROTECT_RO_NOW));
+		ccprints("The value of the flags: 0x%08x\n", (EC_FLASH_PROTECT_GPIO_ASSERTED | EC_FLASH_PROTECT_RO_NOW));
+
 		is_locked = 0;
 		return 0;
 	}
 
 	/* If WP pin is asserted and lock is applied, we're locked */
+	ccprints("I am close to the end. \n");
 	is_locked = 1;
 	return 1;
 #else
 	/* Other configs are locked by default */
+	ccprints("I am locked by default.\n");
 	is_locked = 1;
 	return 1;
 #endif

@@ -236,6 +236,12 @@ test_export_static int handle_command(char *input)
 	}
 
 #ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
+	ccprints("config restricted console commands is defined.\n");
+	ccprints("The value of console restrictred: %d\n", console_is_restricted());
+	ccprints("The value of cmd-flags: %d\n", cmd->flags);
+	ccprints("the valye of flags restricted: %d\n", CMD_FLAG_RESTRICTED);
+
+
 	if (console_is_restricted() && cmd->flags & CMD_FLAG_RESTRICTED)
 		rv = EC_ERROR_ACCESS_DENIED;
 	else
