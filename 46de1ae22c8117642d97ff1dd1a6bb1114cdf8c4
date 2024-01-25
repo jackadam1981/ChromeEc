@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f99535c_d7029a19",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2010,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "still, I believe adding the explicit check here (which you did) was the right move.",
+      "parentUuid": "178c3872_731b0a7c",
+      "range": {
+        "startLine": 2010,
+        "startChar": 26,
+        "endLine": 2010,
+        "endChar": 52
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fce06fdf_64cab6ee",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I don\u0027t want to add it to TPM2 as it is implementation specific and only used for reporting when index can\u0027t be determined, but I\u0027d add a constant",
       "parentUuid": "fce06fdf_64cab6ee",
+      "range": {
+        "startLine": 2108,
+        "startChar": 24,
+        "endLine": 2108,
+        "endChar": 28
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d76eee_03344ca3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db0c646d_c47518dc",
       "range": {
         "startLine": 2108,
         "startChar": 24,
@@ -206,6 +254,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16fb60b0_9900481e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ae7d775_7f34437f",
+      "range": {
+        "startLine": 2742,
+        "startChar": 1,
+        "endLine": 2743,
+        "endChar": 47
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f68a3e4_80017753",
@@ -253,6 +325,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "101ca4f5_870db98a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2910,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "Ack, I see updated to the comment",
+      "parentUuid": "9d012a74_ccc725a6",
+      "range": {
+        "startLine": 2910,
+        "startChar": 1,
+        "endLine": 2910,
+        "endChar": 47
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4dfb99e_21433aa3",
@@ -290,6 +386,30 @@
       "side": 1,
       "message": "We were storing and restoring it before, so I decided not to change this logic now as I\u0027m not sure how this would work if cr50 goes through deep sleep. Can deep sleep happen between TPM2_Startup and TPM2_Shutdown? If yes - we have to preserve it. If not - we can drop it, as they are expected to be volatile.",
       "parentUuid": "a4dfb99e_21433aa3",
+      "range": {
+        "startLine": 2916,
+        "startChar": 2,
+        "endLine": 2916,
+        "endChar": 55
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f311d5e4_b18c70cd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "\u003e Can deep sleep happen between TPM2_Startup and TPM2_Shutdown?\n\nno, deep sleep is only allowed in the situations when there is firmware that calls TPM2_Startup(STATE) on the resume path. so, if Shutdown(STATE) was not called on suspend it would fail anyway. on request from DRM, we do have custom logic that preserves orderly counters regardless: even if there was no Shutdown(STATE), but it was only a sudden AP reboot, we still have the actual values and we keep them instead of rounding up. \nbut that\u0027s only for sudden AP reboots when GSC keeps running. if there\u0027s, for example, a sudden power loss for the entire device including GSC we\u0027d still lose the orderly spaces, of course.",
+      "parentUuid": "f7e43472_78659ba8",
       "range": {
         "startLine": 2916,
         "startChar": 2,
@@ -431,6 +551,30 @@
       "side": 1,
       "message": "delimiters marks completed transaction. on init we verify their consistency in `verify_last_section()` and `verify_delimiter()`. But thinking about it more I don\u0027t understand their value - we do not mark what objects are updated, so can\u0027t really rollback transaction. It might be better to detect that objects are present in a single copy, use last copy if not as a recovery. Need to check with Vadim B if he is ok with change of the logic. Anyway, this would be a separate CL which will greater simplify NVmem code.",
       "parentUuid": "c52b9b78_50da8c0b",
+      "range": {
+        "startLine": 2966,
+        "startChar": 2,
+        "endLine": 2967,
+        "endChar": 18
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3246987b_3d5ad81b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2967,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "\u003e  It might be better to detect that objects are present in a single copy, use last copy if not as a recovery. \n\nright.",
+      "parentUuid": "23348e47_608a1e62",
       "range": {
         "startLine": 2966,
         "startChar": 2,

@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e9c1aa_56562cd8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2011,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "nit: please mention in the comment that the index is not PCR index but reserved object index",
+      "range": {
+        "startLine": 2011,
+        "startChar": 16,
+        "endLine": 2011,
+        "endChar": 31
+      },
+      "revId": "662832acfd58196426964c140a8e4a6e417e5c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb27a8c_9be35b10",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "why going back to void here and in the 2 functions below? we can always ignore the error in the upper functions if we don\u0027t care about it, but returning it from here makes sense",
+      "range": {
+        "startLine": 2035,
+        "startChar": 7,
+        "endLine": 2035,
+        "endChar": 11
+      },
+      "revId": "662832acfd58196426964c140a8e4a6e417e5c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd27ab1_fd2dea39",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-25T00:20:53Z",
+      "side": 1,
+      "message": "do we increment it anywhere?",
+      "range": {
+        "startLine": 2922,
+        "startChar": 1,
+        "endLine": 2922,
+        "endChar": 35
+      },
+      "revId": "662832acfd58196426964c140a8e4a6e417e5c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
