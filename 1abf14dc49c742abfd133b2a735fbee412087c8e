@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6d8440_cbbd1655",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-26T17:21:59Z",
+      "side": 1,
+      "message": "Please add macros to define the sub-fields of the firmware version returned by the chip.",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 792,
+        "endChar": 0
+      },
+      "revId": "1abf14dc49c742abfd133b2a735fbee412087c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46d60b4_58b8e63f",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-26T17:21:59Z",
+      "side": 1,
+      "message": "As a follow-up, we should split the vid and pid into 2 separate fields in the source structure and eliminate these macros.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "1abf14dc49c742abfd133b2a735fbee412087c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96993d8d_f246862f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-26T17:21:59Z",
+      "side": 1,
+      "message": "Use `is_pdc_port_valid()`",
+      "range": {
+        "startLine": 1949,
+        "startChar": 5,
+        "endLine": 1949,
+        "endChar": 61
+      },
+      "revId": "1abf14dc49c742abfd133b2a735fbee412087c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
