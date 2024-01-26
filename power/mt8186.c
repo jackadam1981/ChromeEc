@@ -73,9 +73,15 @@
 #define NORMAL_SHUTDOWN_DELAY (150 * MSEC)
 #define RESET_FLAG_TIMEOUT (2 * SECOND)
 
-#if defined(CONFIG_PLATFORM_EC_POWERSEQ_MT8188) && \
-	!DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
-#error Must have dt node en_pp4200_s5 for MT8188 power sequence
+#if defined(CONFIG_PLATFORM_EC_POWERSEQ_MT8188)
+#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+#define EN_PP_S5 en_pp4200_s5
+#elif DT_NODE_EXISTS(DT_NODELABEL(gpio_en_pp3700_s5))
+#define EN_PP_S5 gpio_en_pp3700_s5
+#else
+#error Must have label en_pp4200_s5 or gpio_en_pp3700_s5 for MT8188 power \
+       sequence
+#endif
 #endif
 
 /* The timeout of the check if the system can boot AP */
@@ -405,9 +411,9 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_G3;
 #endif
 
-#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+#if DT_NODE_EXISTS(DT_NODELABEL(EN_PP_S5))
 		power_signal_enable_interrupt(GPIO_PMIC_EC_RESETB);
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 1);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(EN_PP_S5), 1);
 		if (power_wait_mask_signals_timeout(IN_PG_PP4200_S5,
 						    IN_PG_PP4200_S5,
 						    PG_PP4200_S5_DELAY))
@@ -529,12 +535,12 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S5G3:
 		is_s5g3_passed = true;
-#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+#if DT_NODE_EXISTS(DT_NODELABEL(EN_PP_S5))
 		if (power_wait_mask_signals_timeout(IN_PMIC_AP_RST,
 						    IN_PMIC_AP_RST,
 						    PMIC_AP_RESET_TIMEOUT))
 			CPRINTS("PMIC reset AP timeout. Forcing PMIC off");
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(EN_PP_S5), 0);
 		power_signal_disable_interrupt(GPIO_PMIC_EC_RESETB);
 #endif
 		return POWER_G3;
