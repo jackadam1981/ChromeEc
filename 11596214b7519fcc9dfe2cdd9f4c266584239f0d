@@ -22,6 +22,30 @@
       },
       "revId": "11596214b7519fcc9dfe2cdd9f4c266584239f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a92a86a_cbe37d8d",
+        "filename": "zephyr/test/pdc/src/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-26T17:37:46Z",
+      "side": 0,
+      "message": "No",
+      "parentUuid": "9283c52d_1713d228",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "11596214b7519fcc9dfe2cdd9f4c266584239f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
