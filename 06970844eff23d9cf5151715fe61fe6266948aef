@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9e79ef8_4a5966bf",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-01-26T07:49:25Z",
+      "side": 1,
+      "message": "I\u0027m try to rebase. Is it rebase successful in PS7?",
+      "parentUuid": "6fe0a79e_bf4c75fe",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b088ffcd_cb777f39",
         "filename": "driver/fingerprint/elan/elan_sensor.h",
         "patchSetId": 5
@@ -508,6 +532,24 @@
       "side": 1,
       "message": "nit: Can you move the comment to the second line? The first line is reserved for the \"brief comment\".",
       "parentUuid": "537ff794_3c454044",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac4bc09_b6f727d7",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-01-26T07:49:25Z",
+      "side": 1,
+      "message": "Fixed in PS7",
+      "parentUuid": "e6ed82f7_c38a2036",
       "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
