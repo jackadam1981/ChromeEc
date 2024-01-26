@@ -467,6 +467,17 @@ config PLATFORM_EC_HOOKS
 	  This option is needed by many features in the EC. Disabling it will
 	  likely cause build errors.
 
+config PLATFORM_EC_HOOK_SECOND
+	bool "Enable the one second period hook"
+	default y
+	help
+	  Enable translation of DECLARE_DEFERRED() and hook_call_deferred()
+	  to Zephyr's work queues, along with a compatible DECLARE_HOOK
+	  implementation.
+
+	  This option is needed by many features in the EC. Disabling it will
+	  likely cause build errors.
+
 menuconfig PLATFORM_EC_HOSTCMD
 	bool "Host commands"
 	default n if ARCH_POSIX
