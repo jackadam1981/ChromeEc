@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f680f9_039ca14a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-26T17:01:46Z",
+      "side": 1,
+      "message": "Can we change the message to be more specific to the change?\n\nSomething like: `pdc: Test connector status after i2c read instead of ping`",
+      "revId": "724fcf399a85e502a77cd79b538aac8e57a018ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b47e90_bd5095d7",
+        "filename": "zephyr/test/pdc/src/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-01-26T17:01:46Z",
+      "side": 1,
+      "message": "nit (not related to this change): I wish these were #define constants instead of numbers.",
+      "range": {
+        "startLine": 71,
+        "startChar": 32,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "724fcf399a85e502a77cd79b538aac8e57a018ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
