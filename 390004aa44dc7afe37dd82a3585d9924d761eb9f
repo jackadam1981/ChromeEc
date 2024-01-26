@@ -33,6 +33,23 @@
       "message": "Please ensure the CL applies to ToT. We will then back-merge the change to the firmware branch.\n\nThanks.",
       "revId": "390004aa44dc7afe37dd82a3585d9924d761eb9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab30a474_f769138e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-01-26T17:39:24Z",
+      "side": 1,
+      "message": "uploaded to main here https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5239772",
+      "revId": "390004aa44dc7afe37dd82a3585d9924d761eb9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
