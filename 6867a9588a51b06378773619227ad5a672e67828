@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8bcfec6_9a44ab66",
+        "filename": "zephyr/test/pdc/src/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-01-26T19:57:54Z",
+      "side": 1,
+      "message": "There\u0027s a lot of repeated code here. This seems like it would benefit from a fixture or at least a loop like you have for `test_pd_get_task_cc_state`.",
+      "revId": "6867a9588a51b06378773619227ad5a672e67828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
