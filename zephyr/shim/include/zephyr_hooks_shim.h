@@ -55,6 +55,9 @@ struct zephyr_shim_hook_list {
  * See include/hooks.h for documentation.
  */
 #define DECLARE_HOOK(_hooktype, _routine, _priority)                 \
+	IF_DISABLED(CONFIG_PLATFORM_EC_HOOK_SECOND,                  \
+		    (BUILD_ASSERT(_hooktype != HOOK_SECOND,          \
+				  "HOOK_SECOND is disabled.");))     \
 	static const STRUCT_SECTION_ITERABLE_ALTERNATE(              \
 		zephyr_shim_hook_##_hooktype, zephyr_shim_hook_info, \
 		_cros_hook_##_hooktype##_##_routine) = {             \
