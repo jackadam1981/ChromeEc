@@ -46,6 +46,30 @@
       },
       "revId": "a041068e76b974898164f10f7a9d88630d273212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb963a7_77c0019b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-26T17:05:25Z",
+      "side": 1,
+      "message": "Taken care of in https://crrev.com/c/5239927/",
+      "parentUuid": "2a24bbd2_b904b089",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 37
+      },
+      "revId": "a041068e76b974898164f10f7a9d88630d273212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
