@@ -178,6 +178,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74986cd_ec8f46de",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-26T22:35:45Z",
+      "side": 1,
+      "message": "Yep. Looks good, now. Thanks!",
+      "parentUuid": "c9e79ef8_4a5966bf",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b088ffcd_cb777f39",
@@ -550,6 +574,24 @@
       "side": 1,
       "message": "Fixed in PS7",
       "parentUuid": "e6ed82f7_c38a2036",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c69c19_0a790cbc",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-26T22:35:45Z",
+      "side": 1,
+      "message": "Hmm. I think this change didn\u0027t persist. All good. I\u0027ll make a follow-up change to fix this.",
+      "parentUuid": "dac4bc09_b6f727d7",
       "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
