@@ -114,6 +114,29 @@
       },
       "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f964fa14_e1f8c861",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-01-26T00:34:52Z",
+      "side": 1,
+      "message": "Same comment as for ppc_port0 and ppc_port1",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 14
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
