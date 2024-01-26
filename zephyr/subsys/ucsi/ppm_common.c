@@ -98,7 +98,7 @@ static int ppm_common_opm_notify(struct ppm_common_device* dev) {
 }
 
 static void ppm_common_handle_async_event(struct ppm_common_device* dev) {
-  uint8_t port;
+  uint8_t port = 0;
   struct ucsiv3_get_connector_status_data* port_status;
   bool alert_port = false;
 
@@ -332,6 +332,7 @@ static void ppm_common_handle_pending_command(struct ppm_common_device* dev) {
         dev->ucsi_data.cci.busy = 1;
         ppm_common_opm_notify(dev);
         // Intentional fallthrough since we are now processing.
+        /* Fallthrough */
       case PPM_STATE_PROCESSING_COMMAND:
         // Check if you're acking in the right state for ACK_CC_CI. Only CI acks
         // are allowed here.

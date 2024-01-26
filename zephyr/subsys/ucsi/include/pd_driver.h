@@ -7,7 +7,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "include/ppm.h"
+#include "ppm.h"
 
 /* Internal data structure for pd_driver implementations. */
 struct ucsi_pd_device;
