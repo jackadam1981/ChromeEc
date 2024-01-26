@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d43b276f_7cacc820",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-01-26T19:57:36Z",
+      "side": 1,
+      "message": "I bet it\u0027s been a huge undertaking debugging this issue we see in general. I think i have read through the TCPCI and PD specs more times in the last week then my entire time working on EC code",
+      "parentUuid": "a74815f7_d4ed1ba7",
+      "revId": "ca91e5b3fdef60fe95e400538614e901102094a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d920a57b_8812485f",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-26T19:42:40Z",
       "side": 1,
       "message": "I\u0027m not sure that I get this. If we perform a setting to none immediately, and the AP mux gets out of sync with the other muxes, isn\u0027t that still bad?\n\nNote that mux task shouldn\u0027t block in clearing this entry from the queue, unless the virtual mux driver tells it to, and the virtual mux driver has its own logic for doing this: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/driver/usb_mux/virtual.c#68 If there should be a special case for `USB_PD_MUX_NONE`, it should probably be in that driver.\n\nIf the concern here is instead that this change will wait on a queue full of already-blocked HPD updates that need acks, and it\u0027s considered permissible to apply the mux changes out of order, then the appropriate change might be to modify the Hard Reset logic to directly clear the mux queue and then enqueue the final change to none as normal.",
+      "revId": "ca91e5b3fdef60fe95e400538614e901102094a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc462ba_d8034cae",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-01-26T19:57:36Z",
+      "side": 1,
+      "message": "The main reason I did this is the queue would sometimes be full causing the disconnect to be dropped (maybe 30% of the time this was the case). Now that I better understand the underlying issue thanks to your expertise I think I can come up with a much better solution then just forcing disconnect.",
+      "parentUuid": "d920a57b_8812485f",
       "revId": "ca91e5b3fdef60fe95e400538614e901102094a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
