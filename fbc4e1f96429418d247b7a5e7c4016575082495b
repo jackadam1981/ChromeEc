@@ -22,6 +22,30 @@
       },
       "revId": "fbc4e1f96429418d247b7a5e7c4016575082495b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52257f68_e0900e10",
+        "filename": "common/peripheral.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-01-26T18:00:43Z",
+      "side": 1,
+      "message": "This header isn\u0027t in the include path for legacy EC builds; got an error when test-building volteer last night.",
+      "parentUuid": "dcf71e67_4379aed7",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "fbc4e1f96429418d247b7a5e7c4016575082495b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
