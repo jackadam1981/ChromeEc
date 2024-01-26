@@ -10,6 +10,7 @@
 #include "ps2.h"
 #include "ps2_chip.h"
 #include "registers.h"
+#include "task.h"
 #include "time.h"
 
 #include <stddef.h>
@@ -19,10 +20,19 @@
 
 static uint8_t queue_data[3];
 static int data_count;
+static struct mutex ps2_lock;
+
+static void ps2_transmit(uint8_t cmd)
+{
+	mutex_lock(&ps2_lock);
+	ps2_transmit_byte(PRIMUS_PS2_CH, cmd);
+	msleep(PS2_TRANSMIT_DELAY_MS);
+	mutex_unlock(&ps2_lock);
+}
 
 void send_aux_data_to_device(uint8_t data)
 {
-	ps2_transmit_byte(PRIMUS_PS2_CH, data);
+	ps2_transmit(data);
 }
 
 static void board_init(void)
@@ -54,12 +64,6 @@ static void disable_ps2(void)
 	hook_call_deferred(&enable_ps2_data, 2 * SECOND);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, disable_ps2, HOOK_PRIO_DEFAULT);
-
-static void ps2_transmit(uint8_t cmd)
-{
-	ps2_transmit_byte(PRIMUS_PS2_CH, cmd);
-	msleep(PS2_TRANSMIT_DELAY_MS);
-}
 
 /* Process the PS2 data at here */
 void get_ps2_data(uint8_t data)
