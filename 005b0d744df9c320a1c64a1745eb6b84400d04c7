@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db50e9b1_103e6b65",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-26T08:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2f85c96_e398a5c0",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d854ede2_14873469",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-25T23:57:30Z",
       "side": 1,
       "message": "Can you please arrange the GPIO nodes in alphabetical order similar to how they are listed in program/ovis/ovis.dtsi. This will make it easier to align changes here relative to Ovis.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e15e0eb_7546f207",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-26T08:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d854ede2_14873469",
       "range": {
         "startLine": 80,
         "startChar": 2,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-01-25T23:57:30Z",
       "side": 1,
       "message": "As this is the same compared to Ovis, it does not need to be added here.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49271dc1_43a7de4e",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-26T08:19:15Z",
+      "side": 1,
+      "message": "Because I need to remove frs_en for C0/C1/C2.",
+      "parentUuid": "b6e91f80_5333c77f",
       "range": {
         "startLine": 157,
         "startChar": 1,
