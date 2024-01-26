@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0626a81b_00e7441c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2024-01-26T08:16:37Z",
+      "side": 1,
+      "message": "Based EE reply, this pin is use for control switch reset.\nI will re-open this CL if we need it.",
+      "parentUuid": "65406d80_bfa67b15",
+      "revId": "3c3a0c8cb219110e36c6de4fe7437a774513b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9420435a_501f221b",
