@@ -204,7 +204,12 @@ void usart_interrupt(struct usart_config const *config);
 void usart_set_baud_f0_l(struct usart_config const *config, int baud,
 			int frequency_hz);
 void usart_set_baud_f(struct usart_config const *config, int baud,
+<<<<<<< HEAD   (01f828 sweetberry: fix crash on overflow)
 		int frequency_hz);
+=======
+		      int frequency_hz);
+int usart_get_baud_f0_l(struct usart_config const *config, int frequency_hz);
+>>>>>>> CHANGE (8cdbc4 chip/stm32: Support generating break condition)
 
 /*
  * Allow specification of parity for this usart.
@@ -224,6 +229,16 @@ int usart_get_parity(struct usart_config const *config);
  * goes to deep idle.
  */
 void usart_set_baud(struct usart_config const *config, int baud);
+
+/*
+ * Get the current baud rate for this uart.
+ */
+int usart_get_baud(struct usart_config const *config);
+
+/*
+ * Start or end "break condition" on the TX line of this uart.
+ */
+void usart_set_break(struct usart_config const *config, bool enable);
 
 /*
  * Different families provide different ways of clearing the transmit complete
