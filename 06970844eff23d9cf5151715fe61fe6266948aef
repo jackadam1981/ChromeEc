@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fe0a79e_bf4c75fe",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-26T06:09:53Z",
+      "side": 1,
+      "message": "There is still a merge conflict with the change, thus it can\u0027t be merged.\n\nCan you pull in the latest changes and rebase? The elan_matche.h files already exists and this change would just modify it.",
+      "parentUuid": "7bd19b61_0288ac3a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b088ffcd_cb777f39",
         "filename": "driver/fingerprint/elan/elan_sensor.h",
         "patchSetId": 5
@@ -466,6 +490,24 @@
       "side": 1,
       "message": "Resolved in PS6.",
       "parentUuid": "71837787_c1b79848",
+      "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ed82f7_c38a2036",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-26T06:09:53Z",
+      "side": 1,
+      "message": "nit: Can you move the comment to the second line? The first line is reserved for the \"brief comment\".",
+      "parentUuid": "537ff794_3c454044",
       "revId": "06970844eff23d9cf5151715fe61fe6266948aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
