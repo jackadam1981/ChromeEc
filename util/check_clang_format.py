@@ -53,10 +53,13 @@ def main(argv=None):
         cmd.append("-i")
     else:
         cmd.append("--dry-run")
+
     for path in all_files:
         if not path.is_file() or path.is_symlink():
             continue
         if "third_party" in path.parts:
+            continue
+        if "um_ppm" in path.parts:
             continue
         if (
             path.name.endswith(".c")
