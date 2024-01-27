@@ -13,14 +13,14 @@ struct ucsi_pd_driver;
 struct um_ppm_cdev;
 
 // Handle sigterm and sigkill.
-void um_ppm_handle_signal(struct um_ppm_cdev* cdev, int signal);
+void um_ppm_handle_signal(struct um_ppm_cdev *cdev, int signal);
 
 // Initialize the um_ppm chardev.
-struct um_ppm_cdev* um_ppm_cdev_open(char* devpath, struct ucsi_pd_driver* pd,
-                                     struct smbus_driver* smbus,
-                                     struct pd_driver_config* driver_config);
+struct um_ppm_cdev *um_ppm_cdev_open(char *devpath, struct ucsi_pd_driver *pd,
+				     struct smbus_driver *smbus,
+				     struct pd_driver_config *driver_config);
 
 // Loop handle the cdev communication and interrupts.
-void um_ppm_cdev_mainloop(struct um_ppm_cdev* cdev);
+void um_ppm_cdev_mainloop(struct um_ppm_cdev *cdev);
 
-#endif  // UM_PPM_CHARDEV_H_
+#endif // UM_PPM_CHARDEV_H_
