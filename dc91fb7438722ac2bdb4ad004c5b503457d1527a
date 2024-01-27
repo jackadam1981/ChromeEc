@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d0ea8044_30fe7917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-27T02:21:46Z",
+      "side": 1,
+      "message": "Done. See CL:5239057 \u0026 CL:5231383.",
+      "parentUuid": "993fb9ba_d3306a1e",
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "58dadf70_55ac179d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "eSPI specifies signal value upon reset, we may need a DT entry to set what value we would like to set respective signal when bus reset event is received. I will open bug fort this.",
       "parentUuid": "a86a71c6_d9f1c364",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b63839e_72b212b7",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-27T02:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4bcf21d_424f9483",
       "range": {
         "startLine": 97,
         "startChar": 0,
