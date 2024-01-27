@@ -16,6 +16,23 @@
       "message": "LGTM from TOT to FW branch",
       "revId": "611baa49afe41b2c6760b370e10cc3d6e4bac0f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f871963c_d9455b2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-01-27T15:32:22Z",
+      "side": 1,
+      "message": "I suppose we should be running another ec repo merge on brya fw branch instead of cherry-picking this?",
+      "revId": "611baa49afe41b2c6760b370e10cc3d6e4bac0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
