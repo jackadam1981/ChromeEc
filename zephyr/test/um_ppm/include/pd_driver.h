@@ -4,10 +4,10 @@
 #ifndef UM_PPM_INCLUDE_PD_DRIVER_H_
 #define UM_PPM_INCLUDE_PD_DRIVER_H_
 
+#include "include/ppm.h"
+
 #include <stddef.h>
 #include <stdint.h>
-
-#include "include/ppm.h"
 
 /* Internal data structure for pd_driver implementations. */
 struct ucsi_pd_device;
@@ -26,14 +26,14 @@ struct ucsi_ppm_driver;
  *
  * @return 0 on success, -1 on error.
  */
-typedef int(ucsi_pd_init_ppm)(struct ucsi_pd_device* dev);
+typedef int(ucsi_pd_init_ppm)(struct ucsi_pd_device *dev);
 
 /**
  * Grab a pointer to the PPM.
  *
  * @param dev: Device object for this PD controller.
  */
-typedef struct ucsi_ppm_driver*(ucsi_pd_get_ppm)(struct ucsi_pd_device* dev);
+typedef struct ucsi_ppm_driver *(ucsi_pd_get_ppm)(struct ucsi_pd_device *dev);
 
 /**
  * Execute a command in the PPM.
@@ -49,9 +49,9 @@ typedef struct ucsi_ppm_driver*(ucsi_pd_get_ppm)(struct ucsi_pd_device* dev);
  *
  * @returns -1 on error or the number of bytes read on success.
  */
-typedef int(ucsi_pd_execute_command)(struct ucsi_pd_device* dev,
-                                     struct ucsi_control* control,
-                                     uint8_t* lpm_data_out);
+typedef int(ucsi_pd_execute_command)(struct ucsi_pd_device *dev,
+				     struct ucsi_control *control,
+				     uint8_t *lpm_data_out);
 
 /**
  * Handle an interrupt from the PD controller.
@@ -62,14 +62,14 @@ typedef int(ucsi_pd_execute_command)(struct ucsi_pd_device* dev,
  *
  * @returns -1 on error. 0 on success.
  */
-typedef int(ucsi_pd_handle_interrupt)(struct ucsi_pd_device* dev);
+typedef int(ucsi_pd_handle_interrupt)(struct ucsi_pd_device *dev);
 
 /**
  * Clean up the given PD driver. Call before freeing.
  *
  * @param driver: Driver object to clean up.
  */
-typedef void(ucsi_pd_cleanup)(struct ucsi_pd_driver* driver);
+typedef void(ucsi_pd_cleanup)(struct ucsi_pd_driver *driver);
 
 /**
  * General driver for PD controllers.
@@ -77,18 +77,18 @@ typedef void(ucsi_pd_cleanup)(struct ucsi_pd_driver* driver);
  * When constructing, must be provided a PPM implementation.
  */
 struct ucsi_pd_driver {
-  struct ucsi_pd_device* dev;
+	struct ucsi_pd_device *dev;
 
-  ucsi_pd_init_ppm* init_ppm;
-  ucsi_pd_get_ppm* get_ppm;
-  ucsi_pd_execute_command* execute_cmd;
-  ucsi_pd_handle_interrupt* handle_interrupt;
+	ucsi_pd_init_ppm *init_ppm;
+	ucsi_pd_get_ppm *get_ppm;
+	ucsi_pd_execute_command *execute_cmd;
+	ucsi_pd_handle_interrupt *handle_interrupt;
 
-  ucsi_pd_cleanup* cleanup;
+	ucsi_pd_cleanup *cleanup;
 };
 
 enum lpm_transport {
-  SMBUS,
+	SMBUS,
 };
 
 /* Maximum number of addressible ports via PPM. The actual maximum depends on
@@ -101,16 +101,16 @@ enum lpm_transport {
  * Configuration data for a PD controller.
  */
 struct pd_driver_config {
-  /* Maximum number of addresses supported by this pd driver.*/
-  uint8_t max_num_ports;
+	/* Maximum number of addresses supported by this pd driver.*/
+	uint8_t max_num_ports;
 
-  /* Map of port number to port id. Will be used for distinguishing ports at the
-   * LPM.
-   */
-  uint8_t port_address_map[MAX_PORTS_SUPPORTED];
+	/* Map of port number to port id. Will be used for distinguishing ports
+	 * at the LPM.
+	 */
+	uint8_t port_address_map[MAX_PORTS_SUPPORTED];
 
-  /* What transport is used for the LPM. */
-  enum lpm_transport transport;
+	/* What transport is used for the LPM. */
+	enum lpm_transport transport;
 };
 
-#endif  // UM_PPM_INCLUDE_PD_DRIVER_H_
+#endif // UM_PPM_INCLUDE_PD_DRIVER_H_
