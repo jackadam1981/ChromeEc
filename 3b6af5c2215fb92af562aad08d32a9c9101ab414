@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43edf9ac_0e513eb9",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-28T23:04:28Z",
+      "side": 1,
+      "message": "I don\u0027t think this is accurate: we\u0027re still not setting any value on the pin after sysjump, like we were before.",
+      "range": {
+        "startLine": 151,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "3b6af5c2215fb92af562aad08d32a9c9101ab414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7769c83a_a820cf56",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-28T23:04:28Z",
+      "side": 1,
+      "message": "The nested ternaries are hard to read; I\u0027d rather split this up.\n```suggestion\n\t\t\tgpio_flags_t out_flags \u003d GPIO_OUTPUT;\n\t\t\tif (!system_jumped_to_this_image()) {\n\t\t\t    out_flags \u003d gpio_config[i].reset_val ? GPIO_OUTPUT_ACTIVE : GPIO_OUTPUT_INACTIVE;\n\t\t\t}\n```",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 31
+      },
+      "revId": "3b6af5c2215fb92af562aad08d32a9c9101ab414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
