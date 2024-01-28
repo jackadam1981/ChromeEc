@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3e04c95_09c62e3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-01-28T23:17:50Z",
+      "side": 1,
+      "message": "Can this be merged with the following CLs that set VW reset values for every platform? I think it\u0027s wrong to merge this without those (because a build containing this but not the board changes breaks them), and the board changes are straightforward enough that it\u0027s easy to include them here.",
+      "revId": "90ec761118714ccd2b212bdc58cfd28560dd1df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "313b3205_21f8c94d",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 3
