@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8bfd71_03fcb3ea",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T20:27:56Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "dcc1a919_45613967",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "205a300fbbe10d29ec6f1045a9ee484dc01b612d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a7bbbb6_19b1caee",
@@ -108,6 +132,30 @@
       "writtenOn": "2024-01-17T23:31:55Z",
       "side": 1,
       "message": "Acknowledged",
+      "parentUuid": "e5e34e19_06a64f18",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "205a300fbbe10d29ec6f1045a9ee484dc01b612d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104af8fd_f585a719",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T20:27:56Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "e5e34e19_06a64f18",
       "range": {
         "startLine": 157,

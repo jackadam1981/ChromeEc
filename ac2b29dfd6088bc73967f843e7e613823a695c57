@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9ff8607_b890539f",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T20:27:56Z",
+      "side": 1,
+      "message": "OK, I will look it up.",
+      "parentUuid": "3b649822_fff232be",
+      "range": {
+        "startLine": 40,
+        "startChar": 41,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "ac2b29dfd6088bc73967f843e7e613823a695c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2abb7dad_f8be7271",
         "filename": "zephyr/program/nissa/src/board_power.c",
         "patchSetId": 41
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-18T22:38:38Z",
       "side": 1,
       "message": "These are ADL defined signals - can this get moved to the chipset state handler?\n\nThat\u0027s where this was handled for the non PWRSEQ_DRIVER code.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "ac2b29dfd6088bc73967f843e7e613823a695c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c381f50_4ccf6a78",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T20:27:56Z",
+      "side": 1,
+      "message": "OK, I will remove this, is already taken care in ADL Chipset handler CL:4177238.",
+      "parentUuid": "2abb7dad_f8be7271",
       "range": {
         "startLine": 155,
         "startChar": 0,
