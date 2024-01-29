@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a51a76f_d2369dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-29T09:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7920e59e_35f5ed29",
+      "revId": "dd62b222cf6c8477d7032545b0d42755e9594d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49d6bf10_eda00271",
@@ -49,6 +67,30 @@
       "writtenOn": "2024-01-26T14:07:55Z",
       "side": 1,
       "message": "Could you split this comment?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 59
+      },
+      "revId": "dd62b222cf6c8477d7032545b0d42755e9594d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8e62d0_e76d919f",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-29T09:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d6bf10_eda00271",
       "range": {
         "startLine": 112,
         "startChar": 1,
