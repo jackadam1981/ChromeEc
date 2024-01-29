@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624c97b9_f06bb360",
+        "filename": "zephyr/test/fingerprint/task/boards/native_posix.overlay",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "Did you want this to be commented out?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db89818_880ac169",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "What are the Zephyr naming conventions for macros? It looks like they are using all capital letters in a lot of them. Does that mean these should be `FP_SIM` and `IMAGE_SIZE`?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2578aa_ba872647",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "`static`?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8546cdd_8673e6b1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "What does this do?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fd95ba_15a858fb",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "The other tests have a comment that says `Switch mode to capture` for this same code. Should it say that here as well?",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 28
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862811f5_49adb8b1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "Any reason not to use `memset` here?",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 22
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f32d9b_a85f2657",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "It looks like the tests assume that we start out in a state where `FP_CAPTURE_TYPE(response.mode)` is not `FP_CAPTURE_SIMPLE_IMAGE`. Is it possible to add a `zassert` here to verify that in order to prevent someone from accidentally changing these defaults in a way that would make the test pass even if switching to `FP_CAPTURE_SIMPLE_IMAGE` didn\u0027t actually work? (i.e., it was already initialized to that state.)\n\nI guess another way would be to add a helper function that you call at the beginning of each test that does the check.\n\nI don\u0027t think that either is required; just trying to see what is possible.",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf7eed0_f094b10c",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T22:10:05Z",
+      "side": 1,
+      "message": "Just to double-check: This is run before every test in the suite, right?",
+      "range": {
+        "startLine": 355,
+        "startChar": 52,
+        "endLine": 355,
+        "endChar": 67
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
