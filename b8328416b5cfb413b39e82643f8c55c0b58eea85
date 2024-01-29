@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52248094_5c55b4e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:59:41Z",
+      "side": 1,
+      "message": "This is awesome! Slight alterations, maybe",
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f265df_74ce5e20",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:59:41Z",
+      "side": 1,
+      "message": "Does this work for on-target testing for bloonchipper, too? I thought this would collide with the non-weak definition in board/bloonchipper/board.c?",
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09435313_8a6897c4",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:59:41Z",
+      "side": 1,
+      "message": "If this is actually an enum, then I would make it such. Is there some edge case with this being an enum?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ece98f_25ffc277",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:59:41Z",
+      "side": 1,
+      "message": "Instead of assuming a safe memory region, maybe we just read a valid variable of our choosing?\n\n```suggestion\n\t/* This word will be read by the md command. */\n\tconst volatile uint32_t valid_word \u003d 0x1badd00d;\n\n\t/* Compose the md console command to read |valid_word|. */\n\tchar console_input[] \u003d \"md 0x01234567\";\n\tsnprintf(console_input, sizeof(console_input), \"md %p\", \u0026valid_word);\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996e6c3a_0548a504",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:59:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure what benefit we get by changing the command from the previous \"EC_SUCCESS\" step. I would think that it would be better to run the exact known working command, again.",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
