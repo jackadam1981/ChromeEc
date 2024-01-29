@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9a61ea_dc88f1d5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-29T15:19:58Z",
+      "side": 1,
+      "message": "Is this fixed later in this CL stack?  Adding CONFIG_ZTEST to the real code should be a last resort.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 27
+      },
+      "revId": "55afb9e5defe748fe54186fe6f66bc8bbf53df06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73851bc0_8216e63f",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-29T15:19:58Z",
+      "side": 1,
+      "message": "This should be `emul_pdc_connect_partner`.  If the PDC is a SRC, then the partner probably isn\u0027t a charger.\n\nAnother alternative is to create `connect_charger` and `connect_snk` and then you don\u0027t need `configure_snk` and `configure_src`.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 24
+      },
+      "revId": "55afb9e5defe748fe54186fe6f66bc8bbf53df06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c029c6a7_dd5e2fbe",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-29T15:19:58Z",
+      "side": 1,
+      "message": "`emul_pdc_disconnect`",
+      "range": {
+        "startLine": 433,
+        "startChar": 18,
+        "endLine": 433,
+        "endChar": 45
+      },
+      "revId": "55afb9e5defe748fe54186fe6f66bc8bbf53df06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
