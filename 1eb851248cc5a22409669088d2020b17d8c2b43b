@@ -22,6 +22,30 @@
       },
       "revId": "1eb851248cc5a22409669088d2020b17d8c2b43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bec777_2697db0c",
+        "filename": "test/rtc_stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-29T19:06:25Z",
+      "side": 1,
+      "message": "just running this test without even enabling `flash_protect`, it seems that `system_is_locked` runs at the beginning of the execution not before each console command is run\n\n```\n\u003e runtest\n[85.989373 config restricted console commands is defined.\n]\n[85.989436 I am at CONFIG_FLASH_CROS.\n]\n[85.989542 The value of EC_FLASH_PROTECT_GPIO_ASSERTED: 0x00000008\n]\n[85.989615 The value of EC_FLASH_PROTECT_RO_NOW: 0x00000002\n]\n[85.989741 The value of ~crec_flash_get_protect(): 0xffffffff\n]\n[85.989815 The value it should be: 0xfffffff5\n]\n[85.989877 The value of the flags: 0x0000000a\n]\n[85.989932 The value of console restrictred: 0\n]\n[85.989989 The value of cmd-flags: 0\n]\n[85.990035 the value of flags restricted: 1\n]\nRunning test_rtc_alarm...\nOK\nPass!\n\u003e \n```",
+      "parentUuid": "6802f371_2f3b591d",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "1eb851248cc5a22409669088d2020b17d8c2b43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
