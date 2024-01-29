@@ -23,6 +23,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "keyboard_backlight.h"
+#include "lid_switch.h"
 #include "motionsense_sensors.h"
 #include "system.h"
 #include "tablet_mode.h"
@@ -37,6 +38,7 @@
 
 #include <ap_power/ap_power.h>
 #include <ap_power/ap_power_events.h>
+#include <dt-bindings/buttons.h>
 #include <dt-bindings/gpio_defines.h>
 #include <typec_control.h>
 
@@ -44,6 +46,8 @@
 #define TCPC1 EMUL_DT_GET(DT_NODELABEL(tcpc_port1))
 
 #define ANX7483_EMUL1 EMUL_DT_GET(DT_NODELABEL(anx7483_port1))
+
+#define TEST_LID_DEBOUNCE_MS (LID_DEBOUNCE_US / MSEC + 1)
 
 #define ASSERT_GPIO_FLAGS(spec, expected)                                  \
 	do {                                                               \
@@ -72,11 +76,17 @@ FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
 FAKE_VALUE_FUNC(int, mp2964_tune, const struct mp2964_reg_val *, int,
 		const struct mp2964_reg_val *, int);
+FAKE_VALUE_FUNC(int, i2c_read8, const int, const uint16_t, int, int *);
 
 FAKE_VOID_FUNC(bmi3xx_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(lsm6dso_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(bma4xx_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(lis2dw12_interrupt, enum gpio_signal);
+
+int button_disable_gpio(enum button button_type)
+{
+	return EC_SUCCESS;
+}
 
 static int get_gpio_output(const struct gpio_dt_spec *const spec)
 {
@@ -124,6 +134,7 @@ static void test_before(void *fixture)
 	RESET_FAKE(charger_discharge_on_ac);
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(cros_cbi_get_fw_config);
+	RESET_FAKE(i2c_read8);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -462,6 +473,12 @@ static int cbi_get_board_version_2(uint32_t *version)
 	return 0;
 }
 
+static int cbi_get_board_version_3(uint32_t *version)
+{
+	*version = 3;
+	return 0;
+}
+
 /* Shim GPIO initialization from devicetree. */
 int init_gpios(const struct device *unused);
 
@@ -625,6 +642,12 @@ ZTEST(uldren, test_board_anx7483_c1_mux_set)
 
 ZTEST(uldren, test_mp2964_on_startup)
 {
+	const struct gpio_dt_spec *lid_open =
+		GPIO_DT_FROM_NODELABEL(gpio_lid_open);
+
+	zassert_ok(gpio_emul_input_set(lid_open->port, lid_open->pin, 0), NULL);
+	k_sleep(K_MSEC(TEST_LID_DEBOUNCE_MS));
+	
 	hook_notify(HOOK_CHIPSET_STARTUP);
 	zassert_equal(mp2964_tune_fake.call_count, 1);
 	hook_notify(HOOK_CHIPSET_STARTUP);
@@ -878,4 +901,94 @@ ZTEST(uldren, test_lis2dw12_lsm6dso)
 	zassert_equal(lsm6dso_interrupt_fake.call_count, 1);
 	zassert_equal(bma4xx_interrupt_fake.call_count, 0);
 	zassert_equal(lis2dw12_interrupt_fake.call_count, 1);
+}
+
+static int i2c_val;
+
+static int i2c_read8_mock(uint32_t *val)
+{
+	*val = i2c_val;
+	return 0;
+}
+
+ZTEST(uldren, test_select_sensor)
+{
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+	const struct device *lid_accel_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_acc_int_l), gpios));
+	const gpio_port_pins_t lid_accel_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
+
+	/* sensor_enable_irqs enable the interrupt int_imu */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_3;
+
+	i2c_read8_fake.custom_fake = i2c_read8_mock;
+	i2c_val = 0x12;
+
+	// i2c_write8(1, BMA4_I2C_ADDR_PRIMARY, 0x00, 0x12);
+	// i2c_write8(1, LIS2DW12_ADDR1, 0x0f, 0x44);
+	// i2c_write32(1, BMI3_ADDR_I2C_PRIM, 0x00, 0x10C00000);
+	// i2c_write8(1, LSM6DS0_ADDR0_FLAGS, 0x0f, 0x6c);
+
+	hook_notify(HOOK_CHIPSET_STARTUP);
+
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	lsm6dso_interrupt_fake.call_count = 0;
+	bma4xx_interrupt_fake.call_count = 0;
+	lis2dw12_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 1);
+	zassert_equal(lsm6dso_interrupt_fake.call_count, 0);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
+	zassert_equal(lis2dw12_interrupt_fake.call_count, 0);
+}
+
+static int chipset_state;
+
+static int chipset_in_state_mock(int state_mask)
+{
+	if (state_mask & chipset_state)
+		return 1;
+
+	return 0;
+}
+
+ZTEST(uldren, test_touchpad_enable_switch)
+{
+	const struct gpio_dt_spec *lid_open =
+		GPIO_DT_FROM_NODELABEL(gpio_lid_open);
+	const struct gpio_dt_spec *touch_lid_en =
+		GPIO_DT_FROM_NODELABEL(gpio_tchpad_lid_close);
+
+	chipset_in_state_fake.custom_fake = chipset_in_state_mock;
+	chipset_state = CHIPSET_STATE_ANY_SUSPEND;
+
+	zassert_ok(gpio_emul_input_set(lid_open->port, lid_open->pin, 1), NULL);
+	k_sleep(K_MSEC(TEST_LID_DEBOUNCE_MS));
+	
+	hook_notify(HOOK_CHIPSET_STARTUP);
+
+	zassert_equal(gpio_emul_output_get(touch_lid_en->port, touch_lid_en->pin), 1);
+
+	zassert_ok(gpio_emul_input_set(lid_open->port, lid_open->pin, 0), NULL);
+	k_sleep(K_MSEC(TEST_LID_DEBOUNCE_MS));
+	
+	hook_notify(HOOK_CHIPSET_STARTUP);
+
+	zassert_equal(gpio_emul_output_get(touch_lid_en->port, touch_lid_en->pin), 0);
 }
