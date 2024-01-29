@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "133b5b99_fa1e8881",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T19:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6f498b_b67a6895",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "7718d76947fcb39318db4cca48c4964e0bbb17d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a524d3aa_b3e0987b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-28T22:58:43Z",
       "side": 1,
       "message": "This seems confusingly worded, and doesn\u0027t really provide the information you\u0027d need to write an instance. I think this is clearer, based on the following CLs\u0027 implementation:\n\n```suggestion\n      Logical level (active/inactive) to set this signal to on power sequencing\n      reset. Behavior depends on the signal type: for GPIOs this only affects\n      outputs, and for virtual wires it specifies the assumed value of the signal\n      on eSPI reset.\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "7718d76947fcb39318db4cca48c4964e0bbb17d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3840330_1beed40e",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwr-signal-base.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T19:27:29Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion.",
+      "parentUuid": "a524d3aa_b3e0987b",
       "range": {
         "startLine": 47,
         "startChar": 0,
