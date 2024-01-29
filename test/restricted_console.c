@@ -28,11 +28,28 @@ test_static int test_command_mem_dump(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_read_word(void)
+{
+	enum ec_error_list res;
+	char input[] = "rw 0x2000cfd0 0x05";
+
+	is_locked = 0;
+	res = test_send_console_command(input);
+	TEST_EQ(res, EC_SUCCESS, "%d");
+
+	is_locked = 1;
+	res = test_send_console_command(input);
+	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_command_mem_dump);
+	RUN_TEST(test_command_read_word);
 
 	test_print_result();
 }
