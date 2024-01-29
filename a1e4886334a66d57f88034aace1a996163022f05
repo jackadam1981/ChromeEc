@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2e0a4c_cc5b62f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-29T14:34:12Z",
+      "side": 1,
+      "message": "I think it\u0027s also necessary to add HOOK_SECOND to HOOK_TYPES_LIST only whem the config option is defined. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/hook_types.h;l\u003d55;drc\u003d66bb9ab754a109bdeae44f0376bf1a87a0e1fd10",
+      "revId": "a1e4886334a66d57f88034aace1a996163022f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
