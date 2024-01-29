@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7283f5a1_03197c0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T19:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3e04c95_09c62e3b",
+      "revId": "90ec761118714ccd2b212bdc58cfd28560dd1df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "313b3205_21f8c94d",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-01-28T23:14:23Z",
       "side": 1,
       "message": "Can these be made bitfields to save a byte of flash?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "90ec761118714ccd2b212bdc58cfd28560dd1df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6c97ad_23d3d9ac",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-29T19:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "313b3205_21f8c94d",
       "range": {
         "startLine": 40,
         "startChar": 0,
