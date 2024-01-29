@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd50fa8f_f018c936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-01-29T19:45:08Z",
+      "side": 1,
+      "message": "Bummer.  I thought that I had checked that all the various F and L families supported UART TX inversion in the same way.  However, it seems that the F4 family does not have support for TX inversion, unlike F0, F3, F7, L4 and L5.\n\nI am going to make the compilation of the set_break() function conditional on CONFIG_STREAM_USB, that is, only boards which expose UARTS through USB tunneling will include the support for generating break conditions, (since USB tunelling is so far the one user).  Doing so might make sense anyway, in order to not include too much dead code in production ECs.",
+      "revId": "8459cd949c6eab277078ac42a97e019264457c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
