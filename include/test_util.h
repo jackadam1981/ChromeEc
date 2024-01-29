@@ -456,7 +456,7 @@ struct unit_test {
  */
 #define ztest_unit_test_setup_teardown(fn, setup, teardown) \
 	{                                                   \
-#fn, fn, setup, teardown                    \
+		#fn, fn, setup, teardown                    \
 	}
 
 /**
