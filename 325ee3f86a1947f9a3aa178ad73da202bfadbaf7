@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4cb1fa_b332d3e7",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T21:20:14Z",
+      "side": 1,
+      "message": "Is there a way to prevent this from accidentally being compiled for the real firmware? i.e., If this was compiled into the real firmware, could it accidentally replace the real fingerprint driver?\n\nIn EC, we have a [check to prevent mocks from being compiled into non-test firmware](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/mock/fpsensor_mock.c;l\u003d17-19;drc\u003dec0b07f4b1d938abc7e3b37eabb8661c40982e8a).",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "325ee3f86a1947f9a3aa178ad73da202bfadbaf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa63f9f8_8b518783",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-29T21:20:14Z",
+      "side": 1,
+      "message": "Just for my knowledge: Does Zephyr check if pointer parameters are non-null?\n\nFrom [this comment](https://github.com/zephyrproject-rtos/zephyr/issues/21513#issuecomment-606780891), it looks like it might for syscalls, and I see these functions are marked with `__syscall`.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "325ee3f86a1947f9a3aa178ad73da202bfadbaf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
