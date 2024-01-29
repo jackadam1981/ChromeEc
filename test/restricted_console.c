@@ -35,11 +35,38 @@ test_static int test_command_mem_dump(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_read_write_word(void)
+{
+	enum ec_error_list res;
+	/* This word will be read/written by the rw command. */
+	const volatile uint32_t valid_word = 0x1badd00d;
+	/* Compose the rw console command to write |valid_word| with a value
+	 * of 5.
+	 */
+	char console_input[] = "md 0x01234567 0x05";
+	const uint32_t new_value = 0x05;
+
+	snprintf(console_input, sizeof(console_input), "rw %p 0x%02x",
+		 &valid_word, new_value);
+
+	is_locked = 0;
+	res = test_send_console_command(console_input);
+	TEST_EQ(res, EC_SUCCESS, "%d");
+	TEST_EQ(new_value, valid_word, "%d");
+
+	is_locked = 1;
+	res = test_send_console_command(console_input);
+	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_command_mem_dump);
+	RUN_TEST(test_command_read_write_word);
 
 	test_print_result();
 }
