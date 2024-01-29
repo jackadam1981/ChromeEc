@@ -4747,6 +4747,7 @@ struct ec_response_i2c_passthru {
 #define EC_CMD_HANG_DETECT 0x009F
 
 #define EC_HANG_DETECT_MIN_TIMEOUT 5
+#define EC_HANG_DETECT_MAX_TIMEOUT 65535
 
 /* EC hang detect commands */
 enum ec_hang_detect_cmds {
@@ -4757,7 +4758,7 @@ enum ec_hang_detect_cmds {
 	EC_HANG_DETECT_CMD_CANCEL = 0x1,
 
 	/* Configure watchdog with given reboot timeout and
-	 * cancel currently running AP hand detect timer.
+	 * cancel currently running AP hang detect timer.
 	 */
 	EC_HANG_DETECT_CMD_SET_TIMEOUT = 0x2,
 
@@ -4784,6 +4785,7 @@ enum ec_hang_detect_status {
 	EC_HANG_DETECT_AP_BOOT_EC_WDT = 0x1,
 	EC_HANG_DETECT_AP_BOOT_COUNT,
 };
+
 struct ec_response_hang_detect {
 	uint8_t status; /* enum ec_hang_detect_status */
 } __ec_align1;
