@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f0c6e5_4d6f4872",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2024-01-29T19:45:58Z",
+      "side": 1,
+      "message": "why are we comparing fwid_addr to fwid? Is it just variable naming?",
+      "revId": "0ce372dc2c9e89b231869f0b0cbfd21b2864ea2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
