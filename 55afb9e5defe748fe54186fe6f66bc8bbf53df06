@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0211c264_ef1b6559",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-29T18:20:27Z",
+      "side": 1,
+      "message": "Added a CL to this stack that adds an emulator for this.",
+      "parentUuid": "ba9a61ea_dc88f1d5",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 27
+      },
+      "revId": "55afb9e5defe748fe54186fe6f66bc8bbf53df06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73851bc0_8216e63f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df25e835_b0dd3d08",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-29T18:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73851bc0_8216e63f",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 24
+      },
+      "revId": "55afb9e5defe748fe54186fe6f66bc8bbf53df06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c029c6a7_dd5e2fbe",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-29T15:19:58Z",
       "side": 1,
       "message": "`emul_pdc_disconnect`",
+      "range": {
+        "startLine": 433,
+        "startChar": 18,
+        "endLine": 433,
+        "endChar": 45
+      },
+      "revId": "55afb9e5defe748fe54186fe6f66bc8bbf53df06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6c7137_b5c58792",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-01-29T18:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c029c6a7_dd5e2fbe",
       "range": {
         "startLine": 433,
         "startChar": 18,
