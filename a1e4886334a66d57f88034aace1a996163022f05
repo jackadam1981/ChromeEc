@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6379e7c1_47fa48cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-29T14:54:43Z",
+      "side": 1,
+      "message": "Done. `git add` mistake.",
+      "parentUuid": "0b2e0a4c_cc5b62f6",
+      "revId": "a1e4886334a66d57f88034aace1a996163022f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1394c034_adb39edc",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-01-29T14:43:09Z",
       "side": 1,
       "message": "Does it really work? I understand that HOOK_SECOND won\u0027t be present, so the compiler won\u0027t be able to resolve the token. Obviously, we will get compilation failure, but will it print the message? Could you paste some logs here?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 69
+      },
+      "revId": "a1e4886334a66d57f88034aace1a996163022f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfa84e0_d4608088",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-29T14:54:43Z",
+      "side": 1,
+      "message": "It doesn\u0027t fail at `BUILD_ASSER`. I just wanted to add some usage of a symbol that is not defined, `BUILD_ASSERT` looks like a good candidate. The following statements don\u0027t need to have `HOOK_SECOND` really defined, it is just \"string\" in this case.",
+      "parentUuid": "1394c034_adb39edc",
       "range": {
         "startLine": 58,
         "startChar": 1,
