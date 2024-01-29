@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa170dc5_b5c0455f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:17:12Z",
+      "side": 1,
+      "message": "Good stuff!!",
+      "revId": "3c3ef8c8851d0cf34226dd248d63fbd0af79e2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec28b0e_f0ac2428",
+        "filename": "common/test_util.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:17:12Z",
+      "side": 1,
+      "message": "Maybe isolate this forward declaration to this source file, since you intend for people to use `test_send_console_command`, anyways.\n\n```suggestion\n\n\n/* Function defined as test_export_static in common/console.c. */\nint handle_command(char *input);\n\nint test_send_console_command(char *input)\n```\n\nAlso, the extern is kinda redundant for function declarations.",
+      "revId": "3c3ef8c8851d0cf34226dd248d63fbd0af79e2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77ecbb7_51834c16",
+        "filename": "common/test_util.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:17:12Z",
+      "side": 1,
+      "message": "Is this actually `enum ec_error_list` from `common.h`?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "3c3ef8c8851d0cf34226dd248d63fbd0af79e2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9c7a6a_0e9dea5c",
+        "filename": "include/test_util.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-29T23:17:12Z",
+      "side": 1,
+      "message": "I think this should probably be hidden in test_util.h next to the only place using it, similar to crrev.com/c/4026563/2/zephyr/test/drivers/default/src/gpio.c#31.",
+      "revId": "3c3ef8c8851d0cf34226dd248d63fbd0af79e2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
