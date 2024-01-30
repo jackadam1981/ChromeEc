@@ -115,6 +115,24 @@
       "message": "I think this should probably be hidden in test_util.h next to the only place using it, similar to crrev.com/c/4026563/2/zephyr/test/drivers/default/src/gpio.c#31.",
       "revId": "3c3ef8c8851d0cf34226dd248d63fbd0af79e2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b1d4fa_0358d021",
+        "filename": "include/test_util.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T04:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c9c7a6a_0e9dea5c",
+      "revId": "3c3ef8c8851d0cf34226dd248d63fbd0af79e2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
