@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4232db4e_8f1227ad",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T19:36:29Z",
+      "side": 1,
+      "message": "`disabled`?",
+      "range": {
+        "startLine": 138,
+        "startChar": 33,
+        "endLine": 138,
+        "endChar": 40
+      },
+      "revId": "1ef74a27cb71b43ec95218a39c9346dbc88207f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d2bc6d_b6af5274",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T19:36:29Z",
+      "side": 1,
+      "message": "What happens when this returns `NULL`? The [docs say](https://docs.zephyrproject.org/latest/develop/test/ztest.html#creating-a-test-suite): `An optional setup function which returns a test fixture.`\n\nIt must work since it runs. Just curious since the docs aren\u0027t clear.",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 13
+      },
+      "revId": "1ef74a27cb71b43ec95218a39c9346dbc88207f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
