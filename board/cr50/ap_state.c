@@ -9,6 +9,7 @@
 #include "extension.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "nvmem.h"
 #include "registers.h"
 #include "system.h"
 #include "timer.h"
@@ -143,6 +144,11 @@ static void deferred_set_ap_off(void)
 
 	ccd_update_state();
 
+	/* If AP reset w/o TPM2_Shutdown, save NV on flash before deep sleep. */
+	nvmem_enable_commits();
+
+	/* In case of disorderly AP shutdown enable sleep. */
+	enable_sleep(SLEEP_MASK_NV_DIRTY);
 	/*
 	 * We don't enable deep sleep on ARM devices yet, as its processing
 	 * there will require more support on the AP side than is available

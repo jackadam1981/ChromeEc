@@ -379,6 +379,7 @@ enum {
 	SLEEP_MASK_CONSOLE  = BIT(17), /* Console is in use. */
 	SLEEP_MASK_EC_CR50_COMM = BIT(18), /* EC-CR50 commncation is active. */
 
+	SLEEP_MASK_NV_DIRTY = BIT(19), /* NV is not committed to flash yet. */
 	SLEEP_MASK_FORCE_NO_LOW_SPEED = BIT(31)  /* Force disable. */
 };
 
