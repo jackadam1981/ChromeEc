@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (65957c dexi: add thermal policy)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
+>>>>>>> BRANCH (457d07 zephyr: Make realtek emul rts54xx header private)
