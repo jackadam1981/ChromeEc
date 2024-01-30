@@ -1739,6 +1739,8 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 	for (j = 0; j < ARRAY_SIZE(page_list) / 2; j++)
 		page_list[i + j] = flash_base / CONFIG_FLASH_BANK_SIZE + j;
 
+	/* After migration NV cache matches flash. */
+	enable_sleep(SLEEP_MASK_NV_DIRTY);
 	return EC_SUCCESS;
 }
 
@@ -2631,7 +2633,8 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 	rv = verify_reserved(res_bitmap, nc);
 
 	shared_mem_release(nc);
-
+	/* After (re-)reading from flash NV cache is clean */
+	enable_sleep(SLEEP_MASK_NV_DIRTY);
 	return rv;
 }
 
@@ -3077,6 +3080,8 @@ static enum ec_error_list new_nvmem_save_(void)
 cleanup:
 	shared_mem_release(del_candidates);
 	del_candidates = NULL;
+	/* After saving content NV cache is clean. */
+	enable_sleep(SLEEP_MASK_NV_DIRTY);
 	return rv;
 }
 

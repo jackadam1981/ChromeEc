@@ -9,6 +9,7 @@
 #include "dcrypto.h"
 #include "flash.h"
 #include "new_nvmem.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -400,6 +401,7 @@ enum ec_error_list nvmem_write(uint32_t offset, uint32_t size, void *data,
 	/* Copy data from caller into destination buffer */
 	memcpy(p_dest, data, size);
 
+	disable_sleep(SLEEP_MASK_NV_DIRTY);
 	return EC_SUCCESS;
 }
 
@@ -437,6 +439,7 @@ enum ec_error_list nvmem_move(uint32_t src_offset, uint32_t dest_offset,
 	/* Move the data block in NvMem */
 	memmove(p_dest, p_src, size);
 
+	disable_sleep(SLEEP_MASK_NV_DIRTY);
 	return EC_SUCCESS;
 }
 
