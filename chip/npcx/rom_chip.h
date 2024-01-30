@@ -36,17 +36,38 @@ enum API_RETURN_STATUS_T {
 	API_RET_STATUS_INVALID_EXE_ADDR = 8,
 	/* Bad CRC value */
 	API_RET_STATUS_INVALID_SIGNATURE = 9,
+	/* OTP API succeeded */
+	API_RET_OTP_STATUS_OK         = 0xA5A5,
+	/* OTP API failed */
+	API_RET_OTP_STATUS_FAIL       = 0x5A5A
 };
 
 /******************************************************************************/
 /*
  * Macro functions of ROM api functions
+ * TODO(b/323098079): Update functions to avoid macro style
  */
 #define ADDR_DOWNLOAD_FROM_FLASH (*(volatile uint32_t *)0x40)
 #define download_from_flash(src_offset, dest_addr, size, sign, exe_addr, \
 			    status)                                      \
 	(((download_from_flash_ptr)ADDR_DOWNLOAD_FROM_FLASH)(            \
 		src_offset, dest_addr, size, sign, exe_addr, status))
+
+#define ADDR_OTPI_POWER (*(volatile uint32_t *)0x4C)
+#define otpi_power(on) \
+	(((otpi_power_ptr)ADDR_OTPI_POWER)(on))
+
+#define ADDR_OTPI_READ (*(volatile uint32_t *)0x50)
+#define otpi_read(address, data) \
+	(((otpi_read_ptr)ADDR_OTPI_READ)(address, data))
+
+#define ADDR_OTPI_WRITE (*(volatile uint32_t *)0x54)
+#define otpi_write(address, data) \
+	(((otpi_write_ptr)ADDR_OTPI_WRITE)(address, data))
+
+#define ADDR_OTPI_WRITE_PROTECT (*(volatile uint32_t *)0x5C)
+#define otpi_write_protect(address, size) \
+	(((otpi_write_prot_ptr)ADDR_OTPI_WRITE)(address, size))
 
 /******************************************************************************/
 /*
@@ -59,6 +80,25 @@ typedef void (*download_from_flash_ptr)(
 	enum API_SIGN_OPTIONS_T sign, /* Need CRC check or not */
 	uint32_t exe_addr, /* jump to this address after download if not zero */
 	enum API_RETURN_STATUS_T *status /* Status fo download */
+);
+
+typedef enum API_RETURN_STATUS_T (*otpi_power_ptr)(
+	bool on /* true: OTP hardware on, false: OTP hardware off */
+);
+
+typedef enum API_RETURN_STATUS_T (*otpi_read_ptr)(
+	uint32_t address, /* OTP address to read from */
+	uint8_t *data /* pointer to 8-bit variable to store read data */
+);
+
+typedef enum API_RETURN_STATUS_T (*otpi_write_ptr)(
+	uint32_t address, /* OTP address to write to */
+	uint8_t data /* 8-bit data value */
+);
+
+typedef enum API_RETURN_STATUS_T (*otpi_write_prot_ptr)(
+	uint32_t address, /* OTP address to protect, 16B aligned */
+	uint32_t size /* Number of bytes to be protected, 16B aligned */
 );
 
 #endif /* __CROS_EC_ROM_CHIP_H_ */
