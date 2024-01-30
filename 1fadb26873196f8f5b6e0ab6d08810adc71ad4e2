@@ -94,6 +94,30 @@
       },
       "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a69b2f_17da4271",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3337,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-30T21:00:48Z",
+      "side": 1,
+      "message": "if it fails it will be due to some issues with flash - a little we can do. But we still can delete what have to be deleted.",
+      "parentUuid": "79071cc0_875a9ebf",
+      "range": {
+        "startLine": 3337,
+        "startChar": 2,
+        "endLine": 3337,
+        "endChar": 16
+      },
+      "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
