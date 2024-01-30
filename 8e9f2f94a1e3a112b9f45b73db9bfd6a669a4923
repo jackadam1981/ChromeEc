@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e71d0b_130fa1e6",
+        "filename": "zephyr/test/fingerprint/task/boards/native_posix.overlay",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T17:20:13Z",
+      "side": 1,
+      "message": "Ah, thanks.",
+      "parentUuid": "e57a657f_94920eb6",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8db89818_880ac169",
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "We can get check fpsensor mode using following code:\n```\nparams.mode \u003d FP_MODE_DONT_CHANGE;\nzassert_ok(ec_cmd_fp_mode(NULL, \u0026params, \u0026response));\nzassert_false(response.mode \u0026 FP_MODE_CAPTURE);\n```\n\nDon\u0027t forget that `fingerprint_set_state()` is used to manipulate sensor simulator state, not the fpsensor state.",
       "parentUuid": "68f32d9b_a85f2657",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75630872_62cff9dc",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T17:20:13Z",
+      "side": 1,
+      "message": "\u003e Don\u0027t forget that `fingerprint_set_state()` is used to manipulate sensor simulator state, not the fpsensor state.\n\nYou\u0027re right, I was assuming that it was the state in `fpsensor.cc`.\n\nWhen running the test cases do the simulator and fpsensor get initialized once at startup or for every test?\n\nIf fpsensor is only initialized once (on test startup), it may be good to add the check you mentioned and/or a post-test hook that resets any state we changed.\n\nIdeally we want each test to be self-contained and not affect other tests. For example, `test_finger_capture_finger_state_partial` leaves it in capture mode and `test_finger_capture_finger_state_none` sets capture mode. These will behave correctly, but slightly differently if they are run in a different order, since in one case the state would already be set and another case it would be changing the state.\n\nIf you do end up making changes, a followup CL is fine. You don\u0027t need to update this one.",
+      "parentUuid": "e0a75045_acd88657",
       "range": {
         "startLine": 337,
         "startChar": 0,
