@@ -21,6 +21,18 @@
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 
+#define RTS5453P_MAX_EPR_PDO_OFFSET 4
+
+#define RTS5453P_FIXED_PDO_COMMON_FLAGS (PDO_FIXED_DUAL_ROLE | \
+	PDO_FIXED_UNCONSTRAINED | PDO_FIXED_COMM_CAP | PDO_FIXED_DATA_SWAP)
+
+#define RTS5453P_FIXED_SRC_FLAGS (RTS5453P_FIXED_PDO_COMMON_FLAGS | \
+	PDO_FIXED_SUSPEND | PDO_FIXED_PEAK_CURR(PDO_PEAK_CURR_110))
+#define RTS5453P_FIXED_SNK_FLAGS (RTS5453P_FIXED_PDO_COMMON_FLAGS)
+
+#define RTS5453P_FIXED_SRC PDO_FIXED(5000, 900, RTS5453P_FIXED_SRC_FLAGS)
+#define RTS5453P_FIXED_SNK PDO_FIXED(5000, 900, RTS5453P_FIXED_SNK_FLAGS)
+
 union pd_status_t {
 	uint32_t raw_value;
 	struct {
@@ -209,6 +221,30 @@ union rts54_request {
 		struct rts54_subcommand_header header;
 		uint8_t port_num;
 	} read_power_level;
+
+	struct set_pdo {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+		struct {
+			uint8_t spr_offset : 3;
+			uint8_t src : 1;
+			uint8_t epr_offset : 3;
+			uint8_t reserved : 1;
+		};
+		uint32_t pdos[PDO_OFFSET_END];
+	} set_pdos;
+
+	struct get_pdo {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+		struct {
+			uint8_t src : 1;
+			uint8_t partner : 1;
+			uint8_t offset : 3;
+			uint8_t num : 3;
+		};
+		uint32_t pdos[PDO_OFFSET_END];
+	} get_pdos;
 };
 
 union rts54_response {
@@ -341,6 +377,11 @@ union rts54_response {
 		uint8_t byte_count;
 		uint32_t rdo;
 	} __packed get_rdo;
+
+	struct get_pdo_response {
+		uint8_t byte_count;
+		uint32_t pdos[PDO_OFFSET_END];
+	} __packed get_pdos;
 };
 
 enum cmd_sts_t {
@@ -359,6 +400,11 @@ struct ping_status {
 	uint8_t cmd_sts : 2;
 	/** Length of data read to read */
 	uint8_t data_len : 6;
+};
+
+struct rts5453p_emul_pdos {
+	uint32_t src[PDO_OFFSET_END];
+	uint32_t snk[PDO_OFFSET_END];
 };
 
 /** @brief Emulated properties */
@@ -393,6 +439,9 @@ struct rts5453p_emul_pdc_data {
 
 	uint16_t delay_ms;
 	struct k_work_delayable delay_work;
+
+	struct rts5453p_emul_pdos port_pdos;
+	struct rts5453p_emul_pdos partner_pdos;
 };
 
 /**

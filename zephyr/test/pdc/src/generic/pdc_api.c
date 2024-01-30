@@ -305,3 +305,21 @@ ZTEST_USER(pdc_api, test_reconnect)
 	zassert_ok(emul_pdc_get_reconnect_req(emul, &expected, &val));
 	zassert_equal(expected, val);
 }
+
+ZTEST_USER(pdc_api, test_get_pdo)
+{
+	uint32_t fixed_pdo = 0;
+
+	/* Test source fixed pdo. */
+	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false, &fixed_pdo));
+
+	k_sleep(K_MSEC(100));
+	zassert_equal(PDO_FIXED_GET_VOLT(fixed_pdo), 5000);
+
+	/* Test sink fixed pdo. */
+	fixed_pdo = 0;
+	zassert_ok(pdc_get_pdos(dev, SINK_PDO, PDO_OFFSET_0, 1, false, &fixed_pdo));
+
+	k_sleep(K_MSEC(100));
+	zassert_equal(PDO_FIXED_GET_VOLT(fixed_pdo), 5000);
+}
