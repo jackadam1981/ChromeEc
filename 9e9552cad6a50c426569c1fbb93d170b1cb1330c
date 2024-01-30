@@ -16,6 +16,24 @@
       "message": "Since this breaks existing boards by changing the expected polarity of this signal, the changes to the boards should probably be part of this CL.",
       "revId": "9e9552cad6a50c426569c1fbb93d170b1cb1330c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c033ca6d_3dff557e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-30T20:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2c029b_ccad4159",
+      "revId": "9e9552cad6a50c426569c1fbb93d170b1cb1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
