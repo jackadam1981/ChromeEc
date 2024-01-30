@@ -118,6 +118,30 @@
       },
       "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7d2a36_ba56ddb7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3337,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-01-30T21:07:58Z",
+      "side": 1,
+      "message": "I agree with the approach for this CL, in general we lack some failed states for the filesystem, which force either powerwash and/or recovery (depending on what\u0027s lost) to reset to some defaults or write with new values. and we can force it by returning an error for TPM2_Startup (or some other commands if the effect is limited).",
+      "parentUuid": "01a69b2f_17da4271",
+      "range": {
+        "startLine": 3337,
+        "startChar": 2,
+        "endLine": 3337,
+        "endChar": 16
+      },
+      "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
