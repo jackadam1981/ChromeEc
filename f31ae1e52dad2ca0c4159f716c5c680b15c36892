@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9047d3da_43eafd86",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-30T08:05:54Z",
+      "side": 1,
+      "message": "document the meaning of 0, 1 and 2.",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcca5cb0_ffc9b85f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-30T08:05:54Z",
+      "side": 1,
+      "message": "does not matter if the sensor task is schedule every CONFIG_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS or more. We can leave the current code.",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53fafb3d_5b76acd7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-30T08:05:54Z",
+      "side": 1,
+      "message": "Not needed if we slow down the scheduling of the motion sense task.",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c602a4_91c56dc3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-30T08:05:54Z",
+      "side": 1,
+      "message": "We may have missed event, should disable the warning.",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
