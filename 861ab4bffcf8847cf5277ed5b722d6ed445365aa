@@ -67,6 +67,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58b22735_75068240",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-30T19:25:49Z",
+      "side": 1,
+      "message": "Isn\u0027t 65535 sec too long?",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22942952_473406c1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-01-30T19:25:49Z",
+      "side": 1,
+      "message": "A unit is needed either in the name or in the comment.\n\nAlso, it\u0027ll be helpful to mention it\u0027s derived from reboot_timeout_sec of struct ec_params_hang_detect (or actually derive it by member_size).",
+      "parentUuid": "3e0a355d_2de939cd",
+      "range": {
+        "startLine": 4750,
+        "startChar": 8,
+        "endLine": 4750,
+        "endChar": 34
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
