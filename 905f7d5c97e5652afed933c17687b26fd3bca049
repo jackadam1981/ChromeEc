@@ -16,6 +16,24 @@
       "message": "I think the same think applies here, maybe we try to read a variable of our making? Then, this test isn\u0027t platform dependent and can run on host.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5238955/comment/d4ece98f_25ffc277/",
       "revId": "905f7d5c97e5652afed933c17687b26fd3bca049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688356ad_34de04e7",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T18:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb87a59_cb76bcfb",
+      "revId": "905f7d5c97e5652afed933c17687b26fd3bca049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
