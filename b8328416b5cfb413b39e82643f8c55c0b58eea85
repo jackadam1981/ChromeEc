@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3f487d_f962f535",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T05:01:37Z",
+      "side": 1,
+      "message": "I made it `static`",
+      "parentUuid": "7951885f_56a9c1b8",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 8
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2f265df_74ce5e20",
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "it does. I tested it on bloonchipper `system_is_locked` is declared as `test_mockable`\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ish/common/system.c;drc\u003ddceabef37914104929e3fcb35c8d51a82869f57a;l\u003d179",
       "parentUuid": "a2f265df_74ce5e20",
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02e668c_8fec2366",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T05:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68b78243_1d2a0e04",
       "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +225,30 @@
       "writtenOn": "2024-01-29T23:59:41Z",
       "side": 1,
       "message": "I\u0027m not sure what benefit we get by changing the command from the previous \"EC_SUCCESS\" step. I would think that it would be better to run the exact known working command, again.",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39c9bec7_a10bfb1f",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T05:01:37Z",
+      "side": 1,
+      "message": "I was getting error 20 `EC_ERROR_PARAM_COUNT`. It does not seem I am getting it anymore. not sure why I got it in the first place... fixed it",
+      "parentUuid": "996e6c3a_0548a504",
       "range": {
         "startLine": 26,
         "startChar": 33,
