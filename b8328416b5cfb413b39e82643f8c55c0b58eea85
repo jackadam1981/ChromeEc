@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f53188fc_bade6f07",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-30T00:02:12Z",
+      "side": 1,
+      "message": "Why is this volatile?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 8
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2f265df_74ce5e20",
         "filename": "test/restricted_console.c",
         "patchSetId": 10
