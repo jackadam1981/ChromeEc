@@ -16,6 +16,24 @@
       "message": "Looks like this is an unrelated change.",
       "revId": "cddf743953a18749b29d7a98823f76aaf3a318a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f62f0b_9ba460e5",
+        "filename": "include/test_util.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-01-30T00:06:46Z",
+      "side": 0,
+      "message": "crrev.com/c/5246868",
+      "parentUuid": "4766ef69_eeb90bae",
+      "revId": "cddf743953a18749b29d7a98823f76aaf3a318a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
