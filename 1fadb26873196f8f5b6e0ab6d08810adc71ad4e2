@@ -46,6 +46,30 @@
       },
       "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79071cc0_875a9ebf",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3337,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-30T20:59:18Z",
+      "side": 1,
+      "message": "what should we do with the error? it will be reported in flog anyway. this is our best attempt. It seems deletion is more important for this function.",
+      "parentUuid": "a6d8e66c_c005475f",
+      "range": {
+        "startLine": 3337,
+        "startChar": 2,
+        "endLine": 3337,
+        "endChar": 16
+      },
+      "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
