@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9769420e_a9b01b8e",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-01-30T20:31:17Z",
+      "side": 1,
+      "message": "After further experimentation with different platforms, I would like to share some findings regarding this bus reset event:\n\n1. Although `event.evt_data` value is set with event `ESPI_BUS_RESET`, its interpretation does not seems to be standardized. For NPCX `event.evt_data \u003d 1` means that reset is asserted, and `0` means de-asserted. This logic is the opposite for ITE.\n\n2. ITE eSPI driver is using GPIO interruption to trigger `ESPI_BUS_RESET` (see function [espi_it8xxx2_enable_reset](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/espi/espi_it8xxx2.c;l\u003d1812)) and for some reason, ISR is only called when GPD2 level goes high (reset logically de-asserted).\nAs a workaround, I configured GPD2 pin as `ACTIVE_LOW` in `zephyr/program/nissa/nereid/generated.dtsi`. This way, we get `ESPI_BUS_RESET` with `event.evt_data \u003d 0` and `vw_reset_all` is called.\n\nI would suggest that we make sure corresponding eSPI driver handles `evt_data` during this bus reset event uniformly.",
+      "parentUuid": "ab65f6e6_ba9f8993",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14746502_ece0f5bd",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 1
