@@ -500,6 +500,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d75c7c8_b155ec5a",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T20:35:35Z",
+      "side": 1,
+      "message": "\u003e What if we refactor the fpsensor task a bit so that it exposes an API to reset its internal state?\n\nI have an idea to rewrite fpsensor logic to use the same state machine framework that TCPMv2 use. If we implement it correctly, we will only need to switch the state to the beginning.\n\nI believe that changing mode to 0 should be sufficient to reset the state. If it\u0027s not, we should fix the fpsensor code. Regarding MKBP events. In some tests we are not reading the MKBP event, because the test focuses on different properties.",
+      "parentUuid": "c374b263_1fd66648",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddf7eed0_f094b10c",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
         "patchSetId": 22
