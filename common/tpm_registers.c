@@ -906,6 +906,11 @@ static void tpm_reset_now(bool wipe_first, bool can_preserve_orderly)
 	if (can_preserve_orderly && !wipe_first)
 		tpm_orderly_state_capture(orderly_state_copy);
 
+	/* While nvmem_enable_commits() most likely enable sleep after commit,
+	 * explicitly enable sleep now.
+	 */
+	enable_sleep(SLEEP_MASK_NV_DIRTY);
+
 	/*
 	 * Clear the TPM library's zero-init data.  Note that the linker script
 	 * includes this file's .bss in the same section, so it will be cleared
