@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59414c70_6f26adf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-30T21:10:07Z",
+      "side": 1,
+      "message": "quick question. does this range map to or match a\nwrite-protect region available by the hardware?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "67fdf18d827bb79e7351cc868f735945161d48fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "549a5966_ac1e674d",
         "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512.dts",
         "patchSetId": 1
