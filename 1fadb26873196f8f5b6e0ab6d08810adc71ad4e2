@@ -22,6 +22,30 @@
       },
       "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6d3a90_194b65fd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3337,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-01-30T20:59:02Z",
+      "side": 1,
+      "message": "What happens if new_nvmem_save fails? Do we lose the uncommitted objects?",
+      "parentUuid": "a6d8e66c_c005475f",
+      "range": {
+        "startLine": 3337,
+        "startChar": 2,
+        "endLine": 3337,
+        "endChar": 16
+      },
+      "revId": "1fadb26873196f8f5b6e0ab6d08810adc71ad4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
