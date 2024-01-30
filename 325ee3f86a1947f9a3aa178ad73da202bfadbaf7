@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af64ae3_4929be57",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T15:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6482a068_cc72e5e9",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "325ee3f86a1947f9a3aa178ad73da202bfadbaf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa63f9f8_8b518783",
