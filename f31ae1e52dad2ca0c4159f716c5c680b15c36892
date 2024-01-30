@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "733544c3_e45c654c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-30T19:25:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9047d3da_43eafd86",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcca5cb0_ffc9b85f",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bac50860_4803de50",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-30T19:25:06Z",
+      "side": 1,
+      "message": "With this patch, this is how we slow down the scheduling. I made an attempt prior to do the scheduling in the motion sense loop. The issue I had there was that it was hard to tell how long to sleep for. As an example, if the `ec_rate` wasn\u0027t 0, sleeping for `ec_rate` as the duration was incorrect, because it didn\u0027t take into account other sensors which \n\nWhat I tried was modifying this line:\n```c\ntime_diff \u003d time_until(ts_end_task.le.lo, sensor-\u003enext_collection);\n```\n\nTo look more like:\n```c\ntime_diff \u003d MAX(time_until(ts_end_task.le.lo, sensor-\u003enext_collection),\n                sensor-\u003econfig[motion_sense_get_ec_config()].ec_rate);\n```\n\nThe issue I saw was that this takes the delta from when the task finished. So we were actually sleeping too long. Alternatively, I could check the time with `ec_rate` from `ts_start_task`. But there was an issue there too, I had to be sure that the reason we started the task was the previous `ec_rate` timer. It\u0027s possible that we called to sleep for `ec_rate` duration but woke up early and did\u0027t collect a sample since we weren\u0027t sleeping enough. Then we would schedule the sleep again, but for too long.\n\nUsing the existing infrastructure of `next_collection` made these edge cases simpler to navigate since we already handled them.",
+      "parentUuid": "53fafb3d_5b76acd7",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83c602a4_91c56dc3",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2024-01-30T08:05:54Z",
       "side": 1,
       "message": "We may have missed event, should disable the warning.",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4748986a_478a726b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-01-30T19:25:06Z",
+      "side": 1,
+      "message": "I didn\u0027t see this fire even with 5Hz. I think that because we update `next_collection` using `ec_rate` we don\u0027t hit this branch. So with 5Hz we increment `next_collection` by 200,000 whereas previously we would have incremented by the actual sensor `collection_rate` of 80,000.",
+      "parentUuid": "83c602a4_91c56dc3",
       "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
