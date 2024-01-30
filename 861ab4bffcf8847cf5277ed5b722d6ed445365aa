@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1cf1d5_9fdc3204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-30T13:00:12Z",
+      "side": 1,
+      "message": "Adding also Tzung Bi for awareness and an upstream patch:\nhttps://patchwork.kernel.org/project/linux-watchdog/patch/20240126095721.782782-2-lma@chromium.org/\nto put more insight to this CL.",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15042d08_35cfebf0",
