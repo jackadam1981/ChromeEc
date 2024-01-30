@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57a657f_94920eb6",
+        "filename": "zephyr/test/fingerprint/task/boards/native_posix.overlay",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:42:41Z",
+      "side": 1,
+      "message": "These are not comments. https://devicetree-specification.readthedocs.io/en/stable/devicetree-basics.html#address-cells-and-size-cells",
+      "parentUuid": "624c97b9_f06bb360",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8db89818_880ac169",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-29T22:10:05Z",
       "side": 1,
       "message": "What are the Zephyr naming conventions for macros? It looks like they are using all capital letters in a lot of them. Does that mean these should be `FP_SIM` and `IMAGE_SIZE`?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8fb8b2_626d3d87",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:42:41Z",
+      "side": 1,
+      "message": "`fp_sim` is a pointer to fingerprint sensor simulator device and the convention is that we should use small letters [example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/flash.c;l\u003d21-30;drc\u003df4d89185483add2cc8bb111c74de3cf8a92ee915)\n\n`image_size` should use capital letters.",
+      "parentUuid": "8db89818_880ac169",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-01-29T22:10:05Z",
       "side": 1,
       "message": "What does this do?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33239b47_b3e6ebde",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:42:41Z",
+      "side": 1,
+      "message": "Shim layer registers callback to be called when interrupt occurs (using `fingerprint_config()`). `fingerprint_run_callback()` is a syscall provided by sensor simulator that calls this callback. As a result we set fpsensor task as \"ready to run\" here.",
+      "parentUuid": "a8546cdd_8673e6b1",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -162,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a75045_acd88657",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:42:41Z",
+      "side": 1,
+      "message": "We can get check fpsensor mode using following code:\n```\nparams.mode \u003d FP_MODE_DONT_CHANGE;\nzassert_ok(ec_cmd_fp_mode(NULL, \u0026params, \u0026response));\nzassert_false(response.mode \u0026 FP_MODE_CAPTURE);\n```\n\nDon\u0027t forget that `fingerprint_set_state()` is used to manipulate sensor simulator state, not the fpsensor state.",
+      "parentUuid": "68f32d9b_a85f2657",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf7eed0_f094b10c",
@@ -175,6 +271,30 @@
       "writtenOn": "2024-01-29T22:10:05Z",
       "side": 1,
       "message": "Just to double-check: This is run before every test in the suite, right?",
+      "range": {
+        "startLine": 355,
+        "startChar": 52,
+        "endLine": 355,
+        "endChar": 67
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe31b2e_4d74bce8",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:42:41Z",
+      "side": 1,
+      "message": "Yup.",
+      "parentUuid": "ddf7eed0_f094b10c",
       "range": {
         "startLine": 355,
         "startChar": 52,
