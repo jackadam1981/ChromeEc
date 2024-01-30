@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7951885f_56a9c1b8",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T04:45:46Z",
+      "side": 1,
+      "message": "it does not need to. I changed it",
+      "parentUuid": "f53188fc_bade6f07",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 8
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2f265df_74ce5e20",
         "filename": "test/restricted_console.c",
         "patchSetId": 10
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68b78243_1d2a0e04",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T04:45:46Z",
+      "side": 1,
+      "message": "it does. I tested it on bloonchipper `system_is_locked` is declared as `test_mockable`\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ish/common/system.c;drc\u003ddceabef37914104929e3fcb35c8d51a82869f57a;l\u003d179",
+      "parentUuid": "a2f265df_74ce5e20",
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09435313_8a6897c4",
         "filename": "test/restricted_console.c",
         "patchSetId": 10
@@ -71,6 +113,30 @@
       "writtenOn": "2024-01-29T23:59:41Z",
       "side": 1,
       "message": "If this is actually an enum, then I would make it such. Is there some edge case with this being an enum?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "b8328416b5cfb413b39e82643f8c55c0b58eea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce52c7e_209a658f",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-01-30T04:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09435313_8a6897c4",
       "range": {
         "startLine": 17,
         "startChar": 1,
