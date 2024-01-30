@@ -16,6 +16,23 @@
       "message": "Hi, Caveh and Fabio,\n\nThe other projects found some issue while use coxms,ap20cbl-2.yaml (crrev/c/4958033 and crrev/c/5248367). However, the issue hasn\u0027t been reported on Karis yet so I use the bug number which is tracking karis EC status. Should I file a new bug for this CL?",
       "revId": "f36f3ff780d748bc67ebdc98834762d613442f5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "420a614e_d31935f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-01-30T20:57:32Z",
+      "side": 1,
+      "message": "looks like `TESTSUITE karis_charger` failed.",
+      "revId": "f36f3ff780d748bc67ebdc98834762d613442f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
