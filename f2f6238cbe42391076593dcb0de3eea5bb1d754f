@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2ca254_d0a4a140",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-01-30T08:07:55Z",
+      "side": 1,
+      "message": "My concern is we have to remember to enable disable interrupt when we change the ODR. We could disable/enable the interrupt in set_data_rate() when the right config is enabled. It is per driver, so if a driver does support it, we fall back on the interrupt mode neatly.",
+      "revId": "f2f6238cbe42391076593dcb0de3eea5bb1d754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
