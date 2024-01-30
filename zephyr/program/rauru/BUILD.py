@@ -11,7 +11,7 @@ def register_rauru_project(project_name):
 
     return register_func(
         project_name=project_name,
-        zephyr_board="it82202ax-512",
+        zephyr_board="it82202ax",
         dts_overlays=[here / project_name / "project.overlay"],
         kconfig_files=[
             here / "program.conf",
