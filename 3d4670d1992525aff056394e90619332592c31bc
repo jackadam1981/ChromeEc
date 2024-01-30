@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ac1021_664fcea1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T21:15:19Z",
+      "side": 1,
+      "message": "nit: Since the path of the modified file is `chip/npcx`, we should write it as:\n\n```\nchip/npcx: define ROM OTP functions\n```\n\n(Technically this is generic to all NPCX devices, not just helipilot.)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "3d4670d1992525aff056394e90619332592c31bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6bd22f_7c1a89c8",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T21:15:19Z",
+      "side": 1,
+      "message": "Given that we\u0027re already using this macro style, I\u0027m ok with landing this as-is. However, it would be easier to read/maintain/debug if we [avoided macros](https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros).\n\n```\nstatic inline void download_from_flash(uint32_t src_offset, uint32_t dest_addr,\n\t\t\t\t       uint32_t size,\n\t\t\t\t       enum API_SIGN_OPTIONS_T sign,\n\t\t\t\t       uint32_t exe_addr,\n\t\t\t\t       enum API_RETURN_STATUS_T *status)\n{\n\t((download_from_flash_ptr)ADDR_DOWNLOAD_FROM_FLASH)(\n\t\tsrc_offset, dest_addr, size, sign, exe_addr, status);\n}\n```\n\nWe can also use a constant for the address:\n\n```\nstatic const volatile uint32_t *ADDR_DOWNLOAD_FROM_FLASH \u003d 0x40;\n```\n\n\nI\u0027ll leave it up to you if you want to change the OTP declarations to functions in this CL and then clean up `download_from_flash` in a separate CL or submit them as macros in this CL and then create a followup CL that changes both `download_from_flash` and `opti_*`.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "3d4670d1992525aff056394e90619332592c31bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a37371_a9547bdf",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T21:15:19Z",
+      "side": 1,
+      "message": "```suggestion\n\tuint32_t address, /* OTP address to write to */\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "3d4670d1992525aff056394e90619332592c31bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
