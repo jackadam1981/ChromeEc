@@ -231,3 +231,39 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_info)
 		      out.vid_pid);
 }
 #endif
+
+ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap_snk_to_src)
+{
+	struct connector_status_t connector_status;
+	union pdr_t pdr;
+
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	k_sleep(K_MSEC(2000));
+
+	pdc_power_mgmt_request_power_swap(TEST_PORT);
+	k_sleep(K_MSEC(1000));
+
+	emul_pdc_get_pdr(emul, &pdr);
+	zassert_equal(pdr.swap_to_src, 1);
+	zassert_equal(pdr.swap_to_snk, 0);
+	zassert_equal(pdr.accept_pr_swap, 1);
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap_src_to_snk)
+{
+	struct connector_status_t connector_status;
+	union pdr_t pdr;
+
+	emul_pdc_configure_src(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	k_sleep(K_MSEC(2000));
+
+	pdc_power_mgmt_request_power_swap(TEST_PORT);
+	k_sleep(K_MSEC(1000));
+
+	emul_pdc_get_pdr(emul, &pdr);
+	zassert_equal(pdr.swap_to_src, 0);
+	zassert_equal(pdr.swap_to_snk, 1);
+	zassert_equal(pdr.accept_pr_swap, 1);
+}
