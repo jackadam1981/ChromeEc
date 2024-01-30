@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a3fe1f_8a23de90",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T19:06:18Z",
+      "side": 1,
+      "message": "Does Zephyr always use macros for these? (I\u0027m assuming so.)\n\nThe google style guide [discourages them](http://go/cstyle#Preprocessor_Macros), and I think this will end up generating the same code (replacing `fp_sensor_dev` with `fp_sensor_dev()`):\n\n```\nstatic inline const struct device * fp_sensor_dev(void)\n{\n  return DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor));\n}\n```\n\nbut I guess we\u0027ll need to see what the Zephyr style guide says.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "bbd4003868d1f7582e223c98bacd4bae387baeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
