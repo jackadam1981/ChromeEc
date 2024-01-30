@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d128e5_4738f6a3",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-30T18:01:04Z",
+      "side": 1,
+      "message": "Nit: move it inside the if clause of `[ \"${CHIP_TYPE}\" \u003d\u003d \"ite_i2c\" ]`.",
+      "range": {
+        "startLine": 1972,
+        "startChar": 1,
+        "endLine": 1972,
+        "endChar": 22
+      },
+      "revId": "a3e6b8189ba24607049ec8cc91dd9e5e6255bcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead322e3_1ceb649d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1999,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-01-30T18:01:04Z",
+      "side": 1,
+      "message": "If the given OFFSET and SIZE are not aligned, maybe show an error and then die. Otherwise, it reads extra bytes and then later \"cbfstool write\" trying to write back to the original fmap will fail as the size not matched.\n\n256 bytes are common that the fmap sections mostly align with.\n\nAnother way is to have some commands to copy the effective bytes.",
+      "range": {
+        "startLine": 1996,
+        "startChar": 0,
+        "endLine": 1999,
+        "endChar": 24
+      },
+      "revId": "a3e6b8189ba24607049ec8cc91dd9e5e6255bcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
