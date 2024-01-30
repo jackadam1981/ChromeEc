@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa47f16_73915dfd",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-30T16:49:48Z",
+      "side": 1,
+      "message": "As a follow-up, please add some Doxygen blocks for the all the APIs defined in this file.  It would be helpful to explicit note that this configures the PDC as a SRC and the partner as a SNK.\n\nI would prefer the APIs here to refer to partner actions, and then you validate that the PDC driver/manager transitions to the correct state.",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 49
+      },
+      "revId": "5074edb294ac7bcebffb19633f3a7b33fff52fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
