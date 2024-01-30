@@ -128,6 +128,27 @@ static void clear_pending_command(struct ppm_common_device *dev)
 	dev->pending.command = 0;
 }
 
+/*
+ * All calls to |execute_cmd| on the PD driver should go through here and unlock
+ * the ppm_lock before executing. This ensures that we don't accidentally create
+ * deadlocks due to events from the PDC triggering at the same time we're
+ * running commands on the driver.
+ *
+ * All calls to this function MUST be behind |ppm_lock|.
+ */
+static int ppm_common_execute_command_unlocked(struct ppm_common_device *dev,
+					       struct ucsi_control *control,
+					       uint8_t *lpm_data_out)
+{
+	int ret;
+
+	platform_mutex_unlock(dev->ppm_lock);
+	ret = dev->pd->execute_cmd(dev->pd->dev, control, lpm_data_out);
+	platform_mutex_lock(dev->ppm_lock);
+
+	return ret;
+}
+
 static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 {
 	uint8_t port = 0;
@@ -171,8 +192,9 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 				port_status, 0,
 				sizeof(struct ucsiv3_get_connector_status_data));
 
-			if (dev->pd->execute_cmd(dev->pd->dev, &get_cs_cmd,
-						 (uint8_t *)port_status) < 0) {
+			if (ppm_common_execute_command_unlocked(
+				    dev, &get_cs_cmd, (uint8_t *)port_status) ==
+			    -1) {
 				ELOG("Failed to read port %d status. No recovery.",
 				     port + 1);
 			} else {
@@ -308,7 +330,7 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 	}
 
 	/* Do driver specific execute command. */
-	ret = dev->pd->execute_cmd(dev->pd->dev, control, message_in);
+	ret = ppm_common_execute_command_unlocked(dev, control, message_in);
 
 	/* Clear command since we just executed it. */
 	platform_memset(control, 0, sizeof(struct ucsi_control));
@@ -547,8 +569,9 @@ static void ppm_common_task(void *context)
 	platform_memset(&dev->ucsi_data.control, 0,
 			sizeof(struct ucsi_control));
 	dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
-	if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control,
-				 dev->ucsi_data.message_in) != -1) {
+	if (ppm_common_execute_command_unlocked(dev, &dev->ucsi_data.control,
+						dev->ucsi_data.message_in) !=
+	    -1) {
 		/* Set platform policy before starting the state machine. */
 		ppm_common_apply_platform_policy(dev);
 

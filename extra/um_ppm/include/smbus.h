@@ -60,6 +60,23 @@ typedef int(smbus_write_block)(struct smbus_device *device,
 			       size_t length);
 
 /**
+ * Stream data over i2c to the given address.
+ *
+ * This will result in the full buffer being streamed in I2C burst mode and is
+ * different from a block write.
+ *
+ * @param device: smbus device.
+ * @param chip_address: Chip address to target.
+ * @param buf: Buffer to write from. Must be at least as big as given length.
+ * @param length: Number of bytes to write.
+ *
+ * @return Bytes written or -1 for errors.
+ */
+typedef int(i2c_streaming_write)(struct smbus_device *device,
+				 uint8_t chip_address, void *buf,
+				 size_t length);
+
+/**
  * Read the Alert Receiving Address.
  *
  * Switches to the alert receiving address and reads the byte before switching
@@ -101,6 +118,8 @@ struct smbus_driver {
 	smbus_read_byte *read_byte;
 	smbus_read_block *read_block;
 	smbus_write_block *write_block;
+
+	i2c_streaming_write* stream_write;
 
 	smbus_read_ara *read_ara;
 	smbus_block_for_interrupt *block_for_interrupt;

@@ -20,6 +20,7 @@
  * etc).
  */
 struct extra_driver_ops {
+	int (*reset_pdc)(struct ucsi_pd_driver *driver);
 	int (*get_info)(struct ucsi_pd_driver *driver);
 	int (*do_firmware_update)(struct ucsi_pd_driver *driver,
 				  const char *filepath, int dry_run);
@@ -36,6 +37,7 @@ struct extra_driver_ops rts5453_ops = {
 };
 
 struct extra_driver_ops tps6699x_ops = {
+	.reset_pdc = tps6699x_reset_pdc,
 	.get_info = tps6699x_get_info,
 	.do_firmware_update = tps6699x_do_firmware_update,
 	.smbus_lpm_open = tps6699x_open,
@@ -71,6 +73,7 @@ int main(int argc, char *argv[])
 	int fwupdate = 0;
 	char *fwupdate_file = NULL;
 	int demo = 0;
+	int reset = 0;
 	int i2c_bus = -1;
 	int i2c_chip_address = -1;
 	int gpio_chip = -1;
@@ -82,7 +85,7 @@ int main(int argc, char *argv[])
 	struct extra_driver_ops *ops;
 	uint8_t transport = 0;
 
-	while ((opt = getopt(argc, argv, ":f:k:dvb:p:g:l:")) != -1) {
+	while ((opt = getopt(argc, argv, ":f:k:dvrb:p:g:l:")) != -1) {
 		switch (opt) {
 		case 'b':
 			i2c_bus = strtol(optarg, NULL, 10);
@@ -106,6 +109,9 @@ int main(int argc, char *argv[])
 			break;
 		case 'd':
 			demo = 1;
+			break;
+		case 'r':
+			reset = 1;
 			break;
 		case 'v':
 			platform_set_debug(true);
@@ -181,6 +187,11 @@ int main(int argc, char *argv[])
 
 	DLOG("%s is initialized. Now taking desired action...",
 	     driver_config_in);
+
+	if (reset && ops->reset_pdc) {
+		DLOG("Resetting %s", driver_config_in);
+		ops->reset_pdc(pd_driver);
+	}
 
 	if (demo) {
 		return ops->get_info(pd_driver);

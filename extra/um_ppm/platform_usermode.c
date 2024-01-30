@@ -6,12 +6,14 @@
 #include "include/platform.h"
 #include "ppm_common.h"
 
+#include <errno.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include <pthread.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 bool debug_enabled = false;
@@ -157,6 +159,31 @@ void platform_condvar_wait(struct platform_condvar *condvar,
 			   struct platform_mutex *mutex)
 {
 	pthread_cond_wait(&condvar->var, &mutex->lock);
+}
+
+int platform_condvar_wait_timeout(struct platform_condvar *condvar,
+				  struct platform_mutex *mutex,
+				  uint64_t timeout_us)
+{
+#define US_TO_S 1000000ul
+
+	struct timeval now;
+	struct timespec until;
+
+	gettimeofday(&now, NULL);
+
+	until.tv_sec = now.tv_sec + (timeout_us / US_TO_S);
+	until.tv_nsec = (now.tv_usec + (timeout_us % US_TO_S)) * 1000ul;
+
+	int ret = pthread_cond_timedwait(&condvar->var, &mutex->lock, &until);
+
+	if (ret == 0) {
+		return 1;
+	} else if (ret == -ETIMEDOUT) {
+		return 0;
+	}
+
+	return -1;
 }
 
 void platform_condvar_signal(struct platform_condvar *condvar)

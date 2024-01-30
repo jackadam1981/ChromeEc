@@ -14,24 +14,30 @@
  * Platform independent utility functions.
  */
 
+#if !defined(SILENCE_DEBUG)
+#define SHOULD_LOG_DEBUG platform_debug_enabled()
+#else
+#define SHOULD_LOG_DEBUG false
+#endif
+
 #define DLOG(fmt, ...)                                          \
-	if (platform_debug_enabled()) {                         \
+	if (SHOULD_LOG_DEBUG) {                                 \
 		platform_printf("DBG: %s: " fmt "\n", __func__, \
 				##__VA_ARGS__);                 \
 	}
 
 #define DLOG_START(fmt, ...)                                               \
-	if (platform_debug_enabled()) {                                    \
+	if (SHOULD_LOG_DEBUG) {                                            \
 		platform_printf("DBG: %s: " fmt, __func__, ##__VA_ARGS__); \
 	}
 
 #define DLOG_LOOP(fmt, ...)                          \
-	if (platform_debug_enabled()) {              \
+	if (SHOULD_LOG_DEBUG) {                      \
 		platform_printf(fmt, ##__VA_ARGS__); \
 	}
 
 #define DLOG_END(fmt, ...)                                \
-	if (platform_debug_enabled()) {                   \
+	if (SHOULD_LOG_DEBUG) {                           \
 		platform_printf(fmt "\n", ##__VA_ARGS__); \
 	}
 
@@ -105,6 +111,14 @@ int platform_condvar_init(struct platform_condvar **cond);
 
 void platform_condvar_wait(struct platform_condvar *condvar,
 			   struct platform_mutex *mutex);
+
+/* Wait for condvar for some number of microseconds.
+ *
+ * @return 1 on success, 0 on timeout and -1 on error.
+ */
+int platform_condvar_wait_timeout(struct platform_condvar *condvar,
+				  struct platform_mutex *mutex,
+				  uint64_t timeout_us);
 void platform_condvar_signal(struct platform_condvar *condvar);
 
 #ifndef EBUSY
