@@ -476,6 +476,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c374b263_1fd66648",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-01-30T19:36:16Z",
+      "side": 1,
+      "message": "\u003e Manipulating the state of the fpsensor task \n\nI was thinking about this more when looking at `fpsensor_before` in https://crrev.com/c/5234757.\n\nWe have to do things like:\n\n```\n\t/* Clear MKBP events from previous tests. */\n\tfp_get_next_event((uint8_t *)\u0026fp_events);\n```\n\nand \n\n```\n\tzassert_ok(ec_cmd_fp_mode(NULL, \u0026params, \u0026response));\n\tzassert_equal(response.mode, 0);\n```\n\nto reset the fpsensor task from the test.\n\nWhat if we refactor the fpsensor task a bit so that it exposes an API to reset its internal state? That would avoid \"leaking\" the state outside of the fpsensor task and probably make it easier if we add more state to the fpsensor task in the future. (Just update the \"reset internal state\" function rather than update all the tests.) I\u0027m not sure how easy this would be given that the code in the fpsensor task is not great. At one point we tried to pull out all the stateful code/variables into `fpsensor_state.cc`, so some of the groundwork may be there. Just something to think about as you\u0027re looking at this code.",
+      "parentUuid": "f0ddb2b0_7769f05a",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddf7eed0_f094b10c",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
         "patchSetId": 22
