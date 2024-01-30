@@ -39,6 +39,30 @@
       },
       "revId": "bbd4003868d1f7582e223c98bacd4bae387baeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291c4d1c_a4a68291",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T20:44:09Z",
+      "side": 1,
+      "message": "I followed the style from EC [example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/flash.c;l\u003d21-30;drc\u003df4d89185483add2cc8bb111c74de3cf8a92ee915)",
+      "parentUuid": "22a3fe1f_8a23de90",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "bbd4003868d1f7582e223c98bacd4bae387baeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
