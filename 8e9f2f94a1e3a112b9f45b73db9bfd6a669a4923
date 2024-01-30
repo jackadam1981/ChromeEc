@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "204829ff_d0d72ade",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T15:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8fb8b2_626d3d87",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d2578aa_ba872647",
@@ -108,6 +132,30 @@
       "writtenOn": "2024-01-29T22:10:05Z",
       "side": 1,
       "message": "`static`?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68dd30b_5bbf02f3",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T15:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2578aa_ba872647",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -188,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9a1b6a_f4ee4fe8",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T15:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06fd95ba_15a858fb",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 28
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "862811f5_49adb8b1",
@@ -201,6 +273,30 @@
       "writtenOn": "2024-01-29T22:10:05Z",
       "side": 1,
       "message": "Any reason not to use `memset` here?",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 22
+      },
+      "revId": "8e9f2f94a1e3a112b9f45b73db9bfd6a669a4923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d14feb_a5846c89",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_capture.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T15:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "862811f5_49adb8b1",
       "range": {
         "startLine": 308,
         "startChar": 0,
