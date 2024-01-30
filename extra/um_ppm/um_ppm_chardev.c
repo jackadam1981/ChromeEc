@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#define SILENCE_DEBUG
 #include "include/pd_driver.h"
 #include "include/platform.h"
 #include "include/ppm.h"
@@ -146,6 +147,7 @@ static void um_ppm_notify(void *context)
 
 static int um_ppm_apply_platform_policy(void *context)
 {
+#if 0
 	struct um_ppm_cdev *cdev = (struct um_ppm_cdev *)context;
 	struct ucsi_pd_driver *pd = cdev->pd;
 
@@ -181,6 +183,8 @@ static int um_ppm_apply_platform_policy(void *context)
 			ELOG("Failed to SET_NEW_CAM enter 0xff on port %d", i);
 		}
 	}
+	return 0;
+#endif
 	return 0;
 }
 
@@ -282,7 +286,9 @@ void um_ppm_cdev_mainloop(struct um_ppm_cdev *cdev)
 	}
 
 	/* Wait for ppm to be ready before starting. */
-	cdev->pd->init_ppm(cdev->pd->dev);
+	if (cdev->pd->init_ppm(cdev->pd->dev) < 0) {
+		return;
+	};
 
 	/* Let kernel know we're ready to handle events. */
 	um_ppm_notify_ready(cdev);

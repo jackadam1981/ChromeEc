@@ -6,8 +6,10 @@
 #include "include/platform.h"
 #include "smbus_usermode.h"
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 #include <fcntl.h>
@@ -81,6 +83,11 @@ int __smbus_switch_address_nolock(struct smbus_usermode_device *dev,
 	return 0;
 }
 
+void __smbus_clear_address_nolock(struct smbus_usermode_device *dev)
+{
+	dev->chip_address = 0;
+}
+
 int __smbus_um_read_byte_nolock(struct smbus_usermode_device *dev)
 {
 	return i2c_smbus_read_byte(dev->fd);
@@ -145,8 +152,6 @@ int smbus_um_read_block(struct smbus_device *device, uint8_t chip_address,
 		 * is the SMBUS max). Read the first byte to see how much was
 		 * actually read.
 		 */
-		DLOG("I2C result was 0x%x and first byte was 0x%x", ret,
-		     dev->read_buffer[0]);
 		ret = dev->read_buffer[0];
 		copy_from = 1;
 	} else {
@@ -157,7 +162,7 @@ int smbus_um_read_block(struct smbus_device *device, uint8_t chip_address,
 		}
 	}
 
-	if (ret != length) {
+	if (ret < length) {
 		length = ret;
 	}
 
@@ -207,6 +212,70 @@ int smbus_um_write_block(struct smbus_device *device, uint8_t chip_address,
 	}
 
 unlock:
+	pthread_mutex_unlock(&dev->cmd_lock);
+	return ret;
+}
+
+int smbus_um_i2c_stream_write(struct smbus_device *device, uint8_t chip_address,
+			      void *buf, size_t length)
+{
+	struct smbus_usermode_device *dev = CAST_FROM(device);
+	struct i2c_rdwr_ioctl_data ioctl_data;
+	struct i2c_msg msg;
+	int ret = 0;
+
+	if (dev->fd < 0) {
+		ELOG("Saw fd of %d", dev->fd);
+		return -1;
+	}
+
+	if (dev->transport != SMBUS_TRANSPORT_I2C) {
+		ELOG("[0x%02x]: Attempted to stream data to non-i2c transport.",
+		     chip_address);
+		return -1;
+	}
+
+	if (length > 0xffff) {
+		ELOG("[0x%02x]: Streaming write length exceeds u16. Break it up into chunks.",
+		     chip_address);
+		return -1;
+	}
+
+	if (length > 32) {
+		DLOG("[0x%02x]: Streaming i2c data with length %u",
+		     chip_address, length);
+	} else {
+		DLOG_START("[0x%02x]: Streaming i2c data [", chip_address);
+		for (int i = 0; i < length; ++i) {
+			DLOG_LOOP("%02x, ", ((uint8_t *)buf)[i]);
+		}
+		DLOG_END("]");
+	}
+
+	pthread_mutex_lock(&dev->cmd_lock);
+
+	/* Reset chip address so we always switch to it later. */
+	__smbus_clear_address_nolock(dev);
+
+	platform_memset(&ioctl_data, 0, sizeof(ioctl_data));
+	platform_memset(&msg, 0, sizeof(msg));
+
+	/* Set up i2c message to write. */
+	msg.addr = chip_address;
+	msg.flags = 0;
+	msg.len = length & 0xffff;
+	msg.buf = (uint8_t *)buf;
+
+	ioctl_data.msgs = &msg;
+	ioctl_data.nmsgs = 1;
+
+	/* Send message via ioctl. */
+	ret = ioctl(dev->fd, I2C_RDWR, &ioctl_data);
+	if (ret < 0) {
+		ELOG("[0x%02x] I2C_RDWR failed with len=%d. Ret = %d, errno=%d / %s",
+		     chip_address, length, ret, errno, strerror(errno));
+	}
+
 	pthread_mutex_unlock(&dev->cmd_lock);
 	return ret;
 }
@@ -450,6 +519,7 @@ struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
 	drv->read_byte = smbus_um_read_byte;
 	drv->read_block = smbus_um_read_block;
 	drv->write_block = smbus_um_write_block;
+	drv->stream_write = smbus_um_i2c_stream_write;
 	drv->read_ara = smbus_um_read_ara;
 	drv->block_for_interrupt = smbus_um_block_for_interrupt;
 	drv->cleanup = smbus_um_cleanup;
