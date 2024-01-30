@@ -14,6 +14,7 @@ import multiprocessing
 import pathlib
 import re
 import shlex
+import shutil
 import subprocess
 import sys
 
@@ -37,6 +38,7 @@ SPECIAL_BOARDS = [
     "roach",
     "ovis",
     "brox",
+    "rauru",
     # Nissa variants
     "nereid",
     "nivviks",
@@ -91,6 +93,10 @@ def build(opts):
         cwd=platform_ec,
         stdin=subprocess.DEVNULL,
     )
+
+    # Validate board targets are reflected as Bazel targets
+    cmd = ["pytest", "-v", "bazel/test_gen_bazel_targets.py"]
+    subprocess.run(cmd, cwd=platform_ec, check=True, stdin=subprocess.DEVNULL)
 
     # Start with a clean build environment
     cmd = ["make", "clobber"]
@@ -279,6 +285,19 @@ def bundle_firmware(opts):
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
 
+    tokens_file = "tokens.bin"
+    tokens_path = platform_ec / "build" / tokens_file
+    print(f"{tokens_path} exists={pathlib.Path(tokens_path).is_file()}")
+    if pathlib.Path(tokens_path).is_file():
+        cmd = ["shutil.copyfile", tokens_path, bundle_dir / tokens_file]
+        log_cmd(cmd)
+        shutil.copyfile(tokens_path, bundle_dir / tokens_file)
+        meta = info.objects.add()
+        meta.file_name = tokens_file
+        meta.token_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TokenDatabaseInfo.TokenDatabaseType.EC  # pylint: disable=no-member
+        )
+
     write_metadata(opts, info)
 
 
@@ -312,9 +331,10 @@ def test(opts):
 
     if opts.code_coverage:
         build_dir = platform_ec / "build" / "zephyr"
-        _extract_lcov_summary(
-            "EC_ZEPHYR_TESTS", metrics, twister_out_dir / "coverage.info"
-        )
+        if twister_out_dir.exists():
+            _extract_lcov_summary(
+                "EC_ZEPHYR_TESTS", metrics, twister_out_dir / "coverage.info"
+            )
         _extract_lcov_summary(
             "EC_ZEPHYR_TESTS_GCC",
             metrics,
@@ -355,6 +375,8 @@ def _extract_lcov_summary(name, metrics, filename):
     zephyr_dir = pathlib.Path(__file__).parent.resolve()
     cmd = [
         "/usr/bin/lcov",
+        "--ignore-errors",
+        "inconsistent",
         "--summary",
         filename,
     ]
