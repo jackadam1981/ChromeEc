@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6482a068_cc72e5e9",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:11:36Z",
+      "side": 1,
+      "message": "\u003e Is there a way to prevent this from accidentally being compiled for the real firmware?\n\n`depends on DT_HAS_CROS_EC_FINGERPRINT_SENSOR_SIM_ENABLED` means that this driver will be compiled only when there is a node in DTS. Another thing is that [we choose which device is the sensor](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/bloonchipper.dts;l\u003d12;drc\u003d8f5c292a90521fa6c2e6dd511099d9b84daff56f). I don\u0027t think that changing DTS could be an accident 😊\n\nI can add\n```\n#if !defined(CONFIG_TEST)\n#error \"Fingerprint sensor simulator should be used only in test environment\"\n#endif\n```",
+      "parentUuid": "aa4cb1fa_b332d3e7",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "325ee3f86a1947f9a3aa178ad73da202bfadbaf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa63f9f8_8b518783",
         "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
         "patchSetId": 20
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-29T21:20:14Z",
       "side": 1,
       "message": "Just for my knowledge: Does Zephyr check if pointer parameters are non-null?\n\nFrom [this comment](https://github.com/zephyrproject-rtos/zephyr/issues/21513#issuecomment-606780891), it looks like it might for syscalls, and I see these functions are marked with `__syscall`.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "325ee3f86a1947f9a3aa178ad73da202bfadbaf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae45efb_39c40180",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-01-30T14:11:36Z",
+      "side": 1,
+      "message": "\u003e Does Zephyr check if pointer parameters are non-null?\n\nThis is a bit more complicated. Marking a function as a `__syscall` does not introduce any checks. API function may be okay with passing NULL as a pointer, it could mean that e.g. the caller don\u0027t need the result.\n\nThe `__syscall` is a information for some Zephyr preprocessing script that it should generate a code to pass arguments from user space to kernel space. Generated code is included in file that has `__syscall` functions (See line 68 in `fingerprint_sim.h` file). The syscall code for `fingerprint_set_state()` (CONFIG_USERSPACE is disabled in our case):\n\n```\nextern void z_impl_fingerprint_set_state(const struct device * dev, struct fingerprint_sensor_state * state);\n\n__pinned_func\nstatic inline void fingerprint_set_state(const struct device * dev, struct fingerprint_sensor_state * state)\n{\n#ifdef CONFIG_USERSPACE\n        if (z_syscall_trap()) {\n                union { uintptr_t x; const struct device * val; } parm0 \u003d { .val \u003d dev };\n                union { uintptr_t x; struct fingerprint_sensor_state * val; } parm1 \u003d { .val \u003d state };\n                (void) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_FINGERPRINT_SET_STATE);\n                return;\n        }\n#endif\n        compiler_barrier();\n        z_impl_fingerprint_set_state(dev, state);\n}\n```\n\nAs you can see, without `CONFIG_USERSPACE` `z_impl_fingerprint_set_state()` is called directly.\n\nFrom comment https://github.com/zephyrproject-rtos/zephyr/issues/21513#issuecomment-606780891:\n\u003e Anything that supports userspace (syscalls) already verifies parameters when actually calling from userspace into kernel mode.\n\nI think Carles was talking about `z_vrfy_*()` functions, which are responsible for verifying data. They are also responsible for mitigating TOCTOU bugs that can occur in SMP systems.\n\nExample verify function:\n```\nstatic inline int z_vrfy_flash_read(const struct device *dev, off_t offset,\n                                    void *data, size_t len)\n{\n        K_OOPS(K_SYSCALL_DRIVER_FLASH(dev, read));\n        K_OOPS(K_SYSCALL_MEMORY_WRITE(data, len));\n        return z_impl_flash_read((const struct device *)dev, offset,\n                                 (void *)data,\n                                 len);\n}\n```\n\nIn this case we check if the driver implements `read` function, later we check if the thread has write permissions to the buffer (because evil task could ask kernel to write data and corrupt some other task - kernel can write everywhere). This also means that the driver must be trusted, so I\u0027m starting to think that running FPC1025 driver in kernel is a mistake, but again - without CONFIG_USERSPACE, it doesn\u0027t matter really.\n\nhttps://docs.zephyrproject.org/latest/kernel/usermode/syscalls.html is a great document that explains syscalls better than me 😊\n\nRegarding checking for non-null parameters - usually in `z_impl_*()` functions we check if the API function we try to call is implemented(*) (but we don\u0027t check if `dev` is non-null) and arguments are checked by the driver.\n\n(*) Of course there are exceptions - SPI API has 3 functions and all 3 must be implemented, so there is no check, we just expect that they are implemented.",
+      "parentUuid": "fa63f9f8_8b518783",
       "range": {
         "startLine": 166,
         "startChar": 1,
