@@ -176,6 +176,7 @@ void timer_cancel(task_id_t tskid)
  * probability of delay longer than 2*us (and possibly infinite delay)
  * increases.
  */
+#ifndef CONFIG_POSIX_CLOCK
 void usleep(unsigned int us)
 {
 	uint32_t evt = 0;
@@ -224,6 +225,7 @@ void usleep(unsigned int us)
 		atomic_or(task_get_event_bitmap(task_get_current()),
 			  evt & ~TASK_EVENT_TIMER);
 }
+#endif
 
 #ifdef CONFIG_ZTEST
 timestamp_t *get_time_mock;
