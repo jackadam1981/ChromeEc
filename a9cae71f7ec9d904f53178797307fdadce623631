@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e458ac_c66ec950",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-01-31T19:26:45Z",
+      "side": 1,
+      "message": "changed it now.",
+      "parentUuid": "f4ee29f2_b092eff2",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 64
+      },
+      "revId": "a9cae71f7ec9d904f53178797307fdadce623631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48966087_ef0e64c5",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-31T18:15:28Z",
       "side": 1,
       "message": "how about disable this config globally for PD?",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "a9cae71f7ec9d904f53178797307fdadce623631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28742f7f_e9812d20",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-01-31T19:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48966087_ef0e64c5",
       "range": {
         "startLine": 44,
         "startChar": 12,
