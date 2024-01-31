@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f763e47_0315dcb0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2024-01-31T18:45:33Z",
+      "side": 1,
+      "message": "That is not for the driver to decide. The maximum timeout should be the maximum _supported_ timeout, not some random number determined by the developer. Frankly, I am kind of lost here. Sure, a lower timeout will potentially catch more problems. What prevents the user (us) from setting such a lower timeout ? What does that have to do with the maximum timeout that is supported ?\nFWIW, the minimum timeout should be the minimum timeout supported by the EC. It should not be \"the lowest timeout that I think makes sense\". If the EC supports a minimum timeout of 1 second, that should be the limit to use here. Again, the actual timeout is decided by the user, not by the author of the watchdog driver.\n\nIf that isn\u0027t clear enough: If you set artificial (not limited by EC) limits for minimum and maximum linits, you are abusing the watchdog kernel API. I might consider NACKing the driver if you are doing that.",
+      "parentUuid": "024d8e2a_38da4720",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
