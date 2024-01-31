@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5502c68_66591b90",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-31T11:00:47Z",
+      "side": 1,
+      "message": "This is the maximum value uint16_t reboot_timeout_sec can hold. yes, it can be long, but It is not as harmful as setting min timeout to low. I would keep it as the real timeout is much lower and set only once.\n\nI have discussed it also with Rad and the other approach he proposed is to get rid of EC_HANG_DETECT_MAX_TIMEOUT at all, as it is only used as a limiter on the kernel side and in the kernel module set explicitly the `max_timeout \u003d UINT16_MAX;` then we wouldn\u0027t drop this CL;",
+      "parentUuid": "58b22735_75068240",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
