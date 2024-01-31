@@ -100,7 +100,10 @@
 			/* PCBEEP_EC */
 			<&gpioa 7 0>,
 			/* ADP_DET */
-			<&gpiod 0 0>;
+			<&gpiod 0 0>,
+			/* FIXME - set I2C3 Alt pins as unused for testing */
+			<&gpioh 1 0>,
+			<&gpioh 2 0>;
 		};
 };
 
