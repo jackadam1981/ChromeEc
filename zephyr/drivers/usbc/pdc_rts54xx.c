@@ -931,6 +931,15 @@ static void st_read_run(void *o)
 		/* Realtek PD Version: Byte25, Byte26 (big-endian) */
 		info->pd_version = data->rd_buf[25] << 8 | data->rd_buf[26];
 
+		/* Program name string is supported on version >= 0.3.x */
+		if (PDC_FWVER_AT_LEAST(info->fw_version, 0, 3)) {
+			strncpy(info->program_name, &data->rd_buf[27],
+				sizeof(info->program_name));
+		} else {
+			memset(info->program_name, 0,
+			       sizeof(info->program_name));
+		}
+
 		/* Only print this log on init */
 		if (data->init_local_state != INIT_PDC_COMPLETE) {
 			LOG_INF("C%d: Realtek: FW Version: %04x",
@@ -1545,7 +1554,7 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info)
 		GET_IC_STATUS.len,
 		GET_IC_STATUS.sub,
 		0x00,
-		26,
+		38,
 	};
 
 	return rts54_post_command(dev, CMD_GET_IC_STATUS, payload,

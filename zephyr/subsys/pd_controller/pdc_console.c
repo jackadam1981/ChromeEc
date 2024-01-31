@@ -77,7 +77,8 @@ static int cmd_pdc_get_info(const struct shell *sh, size_t argc, char **argv)
 		      "PD Ver: %u\n"
 		      "VID/PID: %04x:%04x\n"
 		      "Running Flash Code: %c\n"
-		      "Flash Bank: %u\n",
+		      "Flash Bank: %u\n"
+		      "Program name: %s\n",
 		      PDC_FWVER_GET_MAJOR(pdc_info.fw_version),
 		      PDC_FWVER_GET_MINOR(pdc_info.fw_version),
 		      PDC_FWVER_GET_PATCH(pdc_info.fw_version),
@@ -85,7 +86,7 @@ static int cmd_pdc_get_info(const struct shell *sh, size_t argc, char **argv)
 		      PDC_VIDPID_GET_VID(pdc_info.vid_pid),
 		      PDC_VIDPID_GET_PID(pdc_info.vid_pid),
 		      pdc_info.is_running_flash_code ? 'Y' : 'N',
-		      pdc_info.running_in_flash_bank);
+		      pdc_info.running_in_flash_bank, pdc_info.program_name);
 
 	return EC_SUCCESS;
 }
