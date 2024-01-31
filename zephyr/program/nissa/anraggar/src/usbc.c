@@ -15,7 +15,9 @@
 #include "nissa_sub_board.h"
 #include "system.h"
 #include "usb_mux.h"
+#include "usb_pd_dp_hpd_gpio.h"
 #include "usbc_ppc.h"
+#include "watchdog.h"
 
 #include <zephyr/logging/log.h>
 
@@ -170,3 +172,50 @@ void board_reset_pd_mcu(void)
 	 */
 }
 /* LCOV_EXCL_STOP */
+
+__override int svdm_dp_attention(int port, uint32_t *payload)
+{
+	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
+	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+	mux_state_t mux_state;
+
+	/*
+	 * b:322731050 There are some peripheral display docks will
+	 * issue HPDs in the short time. TCPM must wake up pd_task
+	 *  continually to service the events. They may cause the
+	 * watchdog to reset. This patch placates watchdog after
+	 * receiving dp_attention.
+	 */
+	watchdog_reload();
+	dp_status[port] = payload[1];
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl))
+		/*
+		 * Wake up the AP.  IRQ or level high indicates a DP sink is now
+		 * present.
+		 */
+		if (IS_ENABLED(CONFIG_MKBP_EVENT))
+			pd_notify_dp_alt_mode_entry(port);
+
+	/* Its initial DP status message prior to config */
+	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
+		if (lvl)
+			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		return 1;
+	}
+
+	if (dp_hpd_gpio_set(port, lvl, irq) != EC_SUCCESS)
+		return 0;
+
+	mux_state = (lvl ? USB_PD_MUX_HPD_LVL : USB_PD_MUX_HPD_LVL_DEASSERTED) |
+		    (irq ? USB_PD_MUX_HPD_IRQ : USB_PD_MUX_HPD_IRQ_DEASSERTED);
+	usb_mux_hpd_update(port, mux_state);
+
+#ifdef USB_PD_PORT_TCPC_MST
+	if (port == USB_PD_PORT_TCPC_MST)
+		baseboard_mst_enable_control(port, lvl);
+#endif
+
+	/* ack */
+	return 1;
+}
