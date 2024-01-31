@@ -167,12 +167,20 @@ enum state_t {
 enum init_state_t {
 	/** Enable the PDC */
 	INIT_PDC_ENABLE,
+	/** Wait until PDC enable message is sent */
+	INIT_PDC_ENABLE_WAIT,
 	/** Get the PDC IC Status */
 	INIT_PDC_GET_IC_STATUS,
+	/** Wait until get ic status message is sent */
+	INIT_PDC_GET_IC_STATUS_WAIT,
 	/** Set the PDC Notifications */
 	INIT_PDC_SET_NOTIFICATION_ENABLE,
+	/** Wait until set PDC notificaitons message is sent */
+	INIT_PDC_SET_NOTIFICATION_ENABLE_WAIT,
 	/** Reset the PDC */
 	INIT_PDC_RESET,
+	/** Wait until PDC reset message is sent */
+	INIT_PDC_RESET_WAIT,
 	/** Initialization complete */
 	INIT_PDC_COMPLETE
 };
@@ -239,6 +247,8 @@ struct pdc_config_t {
 	struct gpio_dt_spec irq_gpios;
 	/** connector number of this port */
 	uint8_t connector_number;
+	/** Notification enable bits */
+	union notification_enable_t bits;
 	/** Create thread function */
 	void (*create_thread)(const struct device *dev);
 };
@@ -468,6 +478,7 @@ static void st_init_entry(void *o)
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	print_current_state(data);
+
 	data->init_done = false;
 	data->cmd = CMD_NONE;
 }
@@ -475,24 +486,59 @@ static void st_init_entry(void *o)
 static void st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
-	union notification_enable_t bits;
+	const struct pdc_config_t *cfg = data->dev->config;
 
 	switch (data->init_local_state) {
 	case INIT_PDC_ENABLE:
 		rts54_enable(data->dev);
-		data->init_local_state = INIT_PDC_GET_IC_STATUS;
+		data->init_local_state = INIT_PDC_ENABLE_WAIT;
+		set_state(data, ST_WRITE);
+		return;
+	case INIT_PDC_ENABLE_WAIT:
+		if (data->cci_event.command_completed) {
+			if (data->cci_event.error) {
+				data->init_local_state = INIT_PDC_ENABLE;
+			} else {
+				data->init_local_state = INIT_PDC_GET_IC_STATUS;
+			}
+		}
 		break;
 	case INIT_PDC_GET_IC_STATUS:
 		rts54_get_info(data->dev, &data->info);
-		data->init_local_state = INIT_PDC_SET_NOTIFICATION_ENABLE;
+		data->init_local_state = INIT_PDC_GET_IC_STATUS_WAIT;
+		set_state(data, ST_WRITE);
+		return;
+	case INIT_PDC_GET_IC_STATUS_WAIT:
+		if (data->cci_event.command_completed) {
+			if (data->cci_event.error) {
+				data->init_local_state = INIT_PDC_GET_IC_STATUS;
+			} else {
+				data->init_local_state =
+					INIT_PDC_SET_NOTIFICATION_ENABLE;
+			}
+		}
 		break;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
-		bits.raw_value = 0xDBE7; /* TODO: Read from device tree */
-		rts54_set_notification_enable(data->dev, bits, 0);
-		data->init_local_state = INIT_PDC_RESET;
+		rts54_set_notification_enable(data->dev, cfg->bits, 0);
+		data->init_local_state = INIT_PDC_SET_NOTIFICATION_ENABLE_WAIT;
+		set_state(data, ST_WRITE);
+		return;
+	case INIT_PDC_SET_NOTIFICATION_ENABLE_WAIT:
+		if (data->cci_event.command_completed) {
+			if (data->cci_event.error) {
+				data->init_local_state =
+					INIT_PDC_SET_NOTIFICATION_ENABLE;
+			} else {
+				data->init_local_state = INIT_PDC_RESET;
+			}
+		}
 		break;
 	case INIT_PDC_RESET:
 		rts54_reset(data->dev);
+		data->init_local_state = INIT_PDC_RESET_WAIT;
+		set_state(data, ST_WRITE);
+		return;
+	case INIT_PDC_RESET_WAIT:
 		if (data->cci_event.reset_completed) {
 			data->init_local_state = INIT_PDC_COMPLETE;
 		}
@@ -503,8 +549,6 @@ static void st_init_run(void *o)
 		data->init_done = true;
 		return;
 	}
-
-	set_state(data, ST_WRITE);
 }
 
 static void st_idle_entry(void *o)
@@ -761,6 +805,7 @@ static void st_read_entry(void *o)
 static void st_read_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
+	const struct pdc_config_t *cfg = data->dev->config;
 	uint8_t offset;
 	uint8_t len;
 	int rv;
@@ -1790,6 +1835,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.irq_gpios = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),          \
 		.connector_number =                                           \
 			USBC_PORT_FROM_DRIVER_NODE(DT_DRV_INST(inst), pdc),   \
+		.bits.raw_value = 0xDBE7, /* TODO: Read from device tree */   \
 		.create_thread = create_thread_##inst,                        \
 	};                                                                    \
                                                                               \
