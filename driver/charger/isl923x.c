@@ -1623,6 +1623,29 @@ DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, raa489000_check_ac_present,
 	     HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL */
 
+static enum ec_error_list isl923x_get_battery_cells(int chgnum, int *cells)
+{
+	enum ec_error_list rv;
+	uint32_t regval;
+
+	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
+	if (rv)
+		return rv;
+
+	regval &= ISL9237_INFO_PROG_RESISTOR_MASK;
+
+	if (regval == 0 || regval >= 0x18)
+		*cells = 1;
+	else if (regval >= 0x01 && regval <= 0x08)
+		*cells = 2;
+	else if (regval >= 0x09 && regval <= 0x10)
+		*cells = 3;
+	else
+		*cells = 4;
+
+	return EC_SUCCESS;
+}
+
 const struct charger_drv isl923x_drv = {
 	.init = &isl923x_init,
 	.post_init = &isl923x_post_init,
@@ -1672,4 +1695,5 @@ const struct charger_drv isl923x_drv = {
 #ifdef CONFIG_CMD_CHARGER_DUMP
 	.dump_registers = &command_isl923x_dump,
 #endif
+	.get_battery_cells = &isl923x_get_battery_cells,
 };
