@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5115615e_1f5d850b",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-31T18:34:29Z",
+      "side": 1,
+      "message": "Project specific changes should be in their own CL.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "b2b63f11c65d2820af1484dc8945e0d8d3dcbc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
