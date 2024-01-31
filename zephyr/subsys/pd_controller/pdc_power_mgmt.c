@@ -195,6 +195,8 @@ enum cci_flag_t {
  * @brief State Machine States
  */
 enum pdc_state_t {
+	/** PDC_INIT */
+	PDC_INIT,
 	/** PDC_UNATTACHED */
 	PDC_UNATTACHED,
 	/** PDC_SNK_ATTACHED */
@@ -234,6 +236,7 @@ static const char *const pdc_cmd_names[] = {
  * @brief State Machine State Names
  */
 static const char *const pdc_state_names[] = {
+	[PDC_INIT] = "PDC Init",
 	[PDC_UNATTACHED] = "Unattached",
 	[PDC_SNK_ATTACHED] = "Attached.SNK",
 	[PDC_SRC_ATTACHED] = "Attached.SRC",
@@ -1220,11 +1223,40 @@ static void pdc_src_snk_typec_only_run(void *obj)
 	}
 }
 
+static void pdc_init_entry(void *obj)
+{
+	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+
+	print_current_pdc_state(port);
+
+	/* Initialize Send Command data */
+	send_cmd_init(port);
+}
+
+static void pdc_init_run(void *obj)
+{
+	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *const config = port->dev->config;
+
+	/* Wait until PDC driver is initialized */
+	if (pdc_is_init_done(port->pdc)) {
+		LOG_INF("C%d: PDC Subsystem Started", config->connector_num);
+		/* Send the connector status command to determine which state to
+		 * enter
+		 */
+		port->send_cmd.intern.cmd = CMD_PDC_GET_CONNECTOR_STATUS;
+		port->send_cmd.intern.pending = true;
+		set_pdc_state(port, PDC_SEND_CMD_START);
+		return;
+	}
+}
+
 /**
  * @brief Populate state table
  */
 static const struct smf_state pdc_states[] = {
 	/* Normal States */
+	[PDC_INIT] = SMF_CREATE_STATE(pdc_init_entry, pdc_init_run, NULL, NULL),
 	[PDC_UNATTACHED] = SMF_CREATE_STATE(pdc_unattached_entry,
 					    pdc_unattached_run, NULL, NULL),
 	[PDC_SNK_ATTACHED] = SMF_CREATE_STATE(pdc_snk_attached_entry,
@@ -1304,14 +1336,7 @@ static int pdc_subsys_init(const struct device *dev)
 
 	/* Initialize command mutex */
 	k_mutex_init(&port->mtx);
-	/* Initialize Send Command data */
-	send_cmd_init(port);
-
-	/* Send the connector status command to determine which state to enter
-	 */
-	port->send_cmd.intern.cmd = CMD_PDC_GET_CONNECTOR_STATUS;
-	port->send_cmd.intern.pending = true;
-	smf_set_initial(&port->ctx, &pdc_states[PDC_SEND_CMD_START]);
+	smf_set_initial(&port->ctx, &pdc_states[PDC_INIT]);
 
 	/* Create the thread for this port */
 	config->create_thread(dev);
