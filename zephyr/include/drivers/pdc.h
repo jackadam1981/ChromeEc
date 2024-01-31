@@ -34,6 +34,14 @@ extern "C" {
 #define PDC_VIDPID_INVALID (0x00000000)
 
 /**
+ * Compare PDC versions
+ */
+#define PDC_FWVER_AT_LEAST(ver_in, major, minor)    \
+	(PDC_FWVER_GET_MAJOR(ver_in) > (major) ||   \
+	 (PDC_FWVER_GET_MAJOR(ver_in) == (major) && \
+	  PDC_FWVER_GET_MINOR(ver_in) >= (minor)))
+
+/**
  * Extract the major, minor, and patch elements from a 32-bit version in
  * `struct pdc_info_t`
  */
@@ -59,6 +67,8 @@ struct pdc_info_t {
 	uint8_t is_running_flash_code;
 	/** Set to the currently used flash bank (optional) */
 	uint8_t running_in_flash_bank;
+	/** 12-byte program name string plus space for a NUL byte */
+	char project_name[12 + 1];
 	/** Extra information (optional) */
 	uint16_t extra;
 };
