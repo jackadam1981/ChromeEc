@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085669a8_4b7dcf38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-01-31T19:24:25Z",
+      "side": 1,
+      "message": "Original logic comes from https://crrev.com/c/366757, which seems was based on assumption that commit can only happen once. In our case we disable commits for long time and single failure means all commits won\u0027t be saved.",
+      "revId": "bbf89d329680b4d6ed4f82b084ce6efb55e1eeac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
