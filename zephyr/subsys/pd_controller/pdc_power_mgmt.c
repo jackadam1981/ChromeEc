@@ -27,7 +27,7 @@ LOG_MODULE_REGISTER(pdc_power_mgmt);
 /**
  * @brief maximum number of times to try and send a command
  */
-#define RETRY_MAX 10
+#define RETRY_MAX 40
 
 /**
  * @brief maximum number of counts to wait the subsystem to respond to an API
