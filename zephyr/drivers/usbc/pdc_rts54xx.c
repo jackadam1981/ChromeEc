@@ -366,9 +366,9 @@ static void print_current_state(struct pdc_data_t *data)
 	int st = get_state(data);
 
 	if (st == ST_WRITE) {
-		LOG_INF("ST: %s %s", state_names[st], cmd_names[data->cmd]);
+		LOG_INF("ST %s %s", state_names[st], cmd_names[data->cmd]);
 	} else {
-		LOG_INF("ST: %s", state_names[get_state(data)]);
+		LOG_INF("ST %s", state_names[get_state(data)]);
 	}
 }
 
@@ -702,8 +702,7 @@ static void st_ping_status_run(void *o)
 			/* All done, return to Init or Idle state */
 			TRANSITION_TO_INIT_OR_IDLE_STATE(data);
 		} else {
-			LOG_DBG("ping_status: %02x",
-				data->ping_status.raw_value);
+			LOG_DBG("ping_status: %02x", data->ping_status.raw_value);
 
 			/*
 			 * The command completed successfully,
@@ -825,7 +824,8 @@ static void st_read_run(void *o)
 		if (data->init_local_state != INIT_PDC_COMPLETE) {
 			LOG_INF("Realtek: FW Version: %04x", info->fw_version);
 			LOG_INF("Realtek: PD Version: %04x, Rev %04x",
-				info->pd_version, info->pd_revision);
+				info->pd_version,
+				info->pd_revision);
 		}
 		break;
 	}
