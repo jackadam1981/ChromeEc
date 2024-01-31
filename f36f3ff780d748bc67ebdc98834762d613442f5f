@@ -33,6 +33,24 @@
       "message": "looks like `TESTSUITE karis_charger` failed.",
       "revId": "f36f3ff780d748bc67ebdc98834762d613442f5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0081697_4c392649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-01-31T01:01:50Z",
+      "side": 1,
+      "message": "Done. \"./twister -T zephyr/test/rex/ -v -i -s rex.karis.charger\" pass with patchset4.",
+      "parentUuid": "420a614e_d31935f3",
+      "revId": "f36f3ff780d748bc67ebdc98834762d613442f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
