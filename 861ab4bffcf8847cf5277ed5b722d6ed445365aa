@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "024d8e2a_38da4720",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1442602
+      },
+      "writtenOn": "2024-01-31T18:26:47Z",
+      "side": 1,
+      "message": "Got it, ok so let me add Guenter to the discussion as he has reviewed kernel part on the kernel side",
+      "parentUuid": "50b1544a_10228eb6",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
