@@ -22,6 +22,30 @@
       },
       "revId": "7996d034d8d7190618f0c1674593d60aa5b01a17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b105dba_6b638945",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-01-31T17:44:17Z",
+      "side": 1,
+      "message": "Good point. CrosEC did that, but I don\u0027t think it is necessary. I haven\u0027t found a test that relies on that output.",
+      "parentUuid": "8a1fb056_6e2ff3cb",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "7996d034d8d7190618f0c1674593d60aa5b01a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
