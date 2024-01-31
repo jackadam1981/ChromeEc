@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa4b7c4_0fa9bff3",
+        "filename": "zephyr/program/brox/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-01-31T19:36:49Z",
+      "side": 1,
+      "message": "Can this file be moved into a separate CL?  It makes for a cleaner commit history.",
+      "range": {
+        "startLine": 12,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "a7daab694655d6154a5a1b4aff0167f5671a2f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
