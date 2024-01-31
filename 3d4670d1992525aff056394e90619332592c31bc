@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5a9f4b_c794a551",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-01-31T05:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ac1021_664fcea1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "3d4670d1992525aff056394e90619332592c31bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff6bd22f_7c1a89c8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e0ecca_2cc406c1",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-01-31T05:25:30Z",
+      "side": 1,
+      "message": "Created b/323098079 with cros-ec-reviewers and added TODO",
+      "parentUuid": "ff6bd22f_7c1a89c8",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "3d4670d1992525aff056394e90619332592c31bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10a37371_a9547bdf",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-30T21:15:19Z",
       "side": 1,
       "message": "```suggestion\n\tuint32_t address, /* OTP address to write to */\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "3d4670d1992525aff056394e90619332592c31bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c46a24_31f16483",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-01-31T05:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a37371_a9547bdf",
       "range": {
         "startLine": 90,
         "startChar": 37,
