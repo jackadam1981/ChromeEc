@@ -344,6 +344,7 @@ static const char *const state_names[] = {
 	[ST_READ] = "READ",   [ST_IRQ] = "IRQ",
 };
 
+static bool irq_init_done = false;
 static volatile bool irq_pending;
 static const struct smf_state states[];
 static int rts54_enable(const struct device *dev);
@@ -1715,30 +1716,34 @@ static int pdc_init(const struct device *dev)
 		return -ENODEV;
 	}
 
-	rv = gpio_pin_configure_dt(&cfg->irq_gpios, GPIO_INPUT);
-	if (rv < 0) {
-		LOG_ERR("Unable to configure GPIO");
-		return rv;
-	}
+	if (!irq_init_done) {
+		rv = gpio_pin_configure_dt(&cfg->irq_gpios, GPIO_INPUT);
+		if (rv < 0) {
+			LOG_ERR("Unable to configure GPIO");
+			return rv;
+		}
 
-	gpio_init_callback(&data->gpio_cb, pdc_interrupt_callback,
-			   BIT(cfg->irq_gpios.pin));
+		gpio_init_callback(&data->gpio_cb, pdc_interrupt_callback,
+				   BIT(cfg->irq_gpios.pin));
 
-	rv = gpio_add_callback(cfg->irq_gpios.port, &data->gpio_cb);
-	if (rv < 0) {
-		LOG_ERR("Unable to add callback");
-		return rv;
-	}
+		rv = gpio_add_callback(cfg->irq_gpios.port, &data->gpio_cb);
+		if (rv < 0) {
+			LOG_ERR("Unable to add callback");
+			return rv;
+		}
 
-	rv = gpio_pin_interrupt_configure_dt(&cfg->irq_gpios,
-					     GPIO_INT_EDGE_FALLING);
-	if (rv < 0) {
-		LOG_ERR("Unable to configure interrupt");
-		return rv;
+		rv = gpio_pin_interrupt_configure_dt(&cfg->irq_gpios,
+						     GPIO_INT_EDGE_FALLING);
+		if (rv < 0) {
+			LOG_ERR("Unable to configure interrupt");
+			return rv;
+		}
+
+		k_work_init(&data->work, interrupt_handler);
+		irq_init_done = true;
 	}
 
 	k_mutex_init(&data->mtx);
-	k_work_init(&data->work, interrupt_handler);
 
 	data->dev = dev;
 	data->cmd = CMD_NONE;
