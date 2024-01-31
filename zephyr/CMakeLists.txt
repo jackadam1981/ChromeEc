@@ -570,6 +570,7 @@ if (CONFIG_PLATFORM_EC_USB_PD_TCPMV2)
 endif ()
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_HOST_CMD
+                                                "${PLATFORM_EC}/common/usb_pd_host_cmd.c"
                                                 "${PLATFORM_EC}/common/pd_host_event.c")
 
 zephyr_library_sources_ifdef(CONFIG_SVDM_RSP_DFP_ONLY

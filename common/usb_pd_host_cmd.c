@@ -20,8 +20,8 @@
 
 #include <string.h>
 #ifdef CONFIG_COMMON_RUNTIME
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USB, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ##args)
 #else /* CONFIG_COMMON_RUNTIME */
 #define CPRINTF(format, args...)
 #define CPRINTS(format, args...)
@@ -40,6 +40,7 @@ static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORTS, hc_pd_ports, EC_VER_MASK(0));
 
+#if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2)
 #if defined(CONFIG_HOSTCMD_RWHASHPD) && defined(CONFIG_COMMON_RUNTIME)
 static enum ec_status
 hc_remote_rw_hash_entry(struct host_cmd_handler_args *args)
@@ -100,6 +101,7 @@ static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_PD_CHIP_INFO, hc_remote_pd_chip_info,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 #endif /* CONFIG_HOSTCMD_PD_CHIP_INFO && !CONFIG_USB_PD_TCPC */
+#endif /* CONFIG_PLATFORM_EC_USB_PD_TCPMV2 */
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
