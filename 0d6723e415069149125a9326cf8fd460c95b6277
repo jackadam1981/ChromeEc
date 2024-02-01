@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbdd813_ea0d951a",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-01T16:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950ce718_e617469a",
+      "revId": "0d6723e415069149125a9326cf8fd460c95b6277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b7adfce_51c63f84",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-01-31T18:12:22Z",
       "side": 1,
       "message": "nit: remove, add it as part of retimer f/w update code (separate CL)",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "0d6723e415069149125a9326cf8fd460c95b6277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395494c0_4bafa478",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-01T16:36:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4b7adfce_51c63f84",
       "range": {
         "startLine": 27,
         "startChar": 3,
