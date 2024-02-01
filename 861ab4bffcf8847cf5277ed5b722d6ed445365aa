@@ -484,6 +484,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7ead707_79f71027",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2024-02-01T19:07:10Z",
+      "side": 1,
+      "message": "Sorry, I wasn\u0027t trying to imply that 0xffff (or 65535, or MAX_UINT16) would be arbitrary. I was just repeating, or trying to repeat, the requirements from the watchdog subsystem\u0027s perspective.",
+      "parentUuid": "774283fb_f3423cf7",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
