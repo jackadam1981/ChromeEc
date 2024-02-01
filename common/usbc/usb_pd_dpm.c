@@ -689,6 +689,8 @@ static void balance_source_ports(void)
 {
 	uint32_t removed_ports, new_ports;
 	static bool deferred_waiting;
+	int num_max_3a_ports = CONFIG_USB_PD_3A_PORTS;
+	__maybe_unused int num_sourcing_ports = 0;
 
 	if (in_deferred_context())
 		deferred_waiting = false;
@@ -715,13 +717,23 @@ static void balance_source_ports(void)
 			  non_pd_sink_max_requested);
 	max_current_claimed &= ~removed_ports;
 
+#ifdef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
+	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (pd_get_power_role(i) == PD_ROLE_SOURCE) {
+			num_sourcing_ports++;
+		}
+	}
+	num_max_3a_ports = (CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT -
+			    num_sourcing_ports * 1500) /
+			   1500;
+#endif /* CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT */
+
 	/* Allocate 3.0 A to new PD sink ports that need it */
 	new_ports = sink_max_pdo_requested & ~max_current_claimed;
 	while (new_ports) {
 		int new_max_port = LOWEST_PORT(new_ports);
 
-		if (count_port_bits(max_current_claimed) <
-		    CONFIG_USB_PD_3A_PORTS) {
+		if (count_port_bits(max_current_claimed) < num_max_3a_ports) {
 			max_current_claimed |= BIT(new_max_port);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
@@ -763,8 +775,7 @@ static void balance_source_ports(void)
 	while (new_ports) {
 		int new_frs_port = LOWEST_PORT(new_ports);
 
-		if (count_port_bits(max_current_claimed) <
-		    CONFIG_USB_PD_3A_PORTS) {
+		if (count_port_bits(max_current_claimed) < num_max_3a_ports) {
 			max_current_claimed |= BIT(new_frs_port);
 			pd_dpm_request(new_frs_port,
 				       DPM_REQUEST_FRS_DET_ENABLE);
@@ -793,8 +804,7 @@ static void balance_source_ports(void)
 	while (new_ports) {
 		int new_max_port = LOWEST_PORT(new_ports);
 
-		if (count_port_bits(max_current_claimed) <
-		    CONFIG_USB_PD_3A_PORTS) {
+		if (count_port_bits(max_current_claimed) < num_max_3a_ports) {
 			max_current_claimed |= BIT(new_max_port);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);

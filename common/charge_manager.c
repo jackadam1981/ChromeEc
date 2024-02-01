@@ -116,7 +116,8 @@ static timestamp_t delayed_override_deadline;
 /* Source-out Rp values for TCPMv1 */
 __maybe_unused static uint8_t source_port_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-#ifdef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
+#if defined(CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT) && \
+	!defined(CONFIG_USB_PD_TCPMV2)
 /* 3A on one port and 1.5A on the rest */
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT * 1500 + 1500 <=
 	     CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT);
