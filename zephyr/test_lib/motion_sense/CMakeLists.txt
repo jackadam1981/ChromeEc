@@ -1,0 +1,1 @@
+zephyr_library_sources(runtime_interrupt_toggle_test.cc)

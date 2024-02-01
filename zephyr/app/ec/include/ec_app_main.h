@@ -3,4 +3,7 @@
  * found in the LICENSE file.
  */
 
+#ifdef __cplusplus
+extern "C"
+#endif
 void ec_app_main(void);

@@ -1,0 +1,30 @@
+
+#include <program/brox/motionsense.dtsi>
+#include <dt-bindings/gpio_defines.h>
+
+/ {
+  gpio-interrupts {
+    compatible = "cros-ec,gpio-interrupts";
+
+    int_lid_imu: int-lid-imu {
+      irq-pin = <&gpio_ec_accel_db_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "bma4xx_interrupt";
+    };
+  };
+
+  named-gpios {
+		compatible = "named-gpios";
+    gpio_ec_accel_db_int_l: ec_accel_db_int_l {
+			gpios = <&gpio0 0 GPIO_INPUT>;
+		};
+  };
+
+  named-i2c-ports {
+    compatible = "named-i2c-ports";
+    i2c_ec_i2c_sensor: ec_i2c_sensor {
+      i2c-port = <&i2c0>;
+      enum-names = "I2C_PORT_SENSOR";
+    };
+  };
+};

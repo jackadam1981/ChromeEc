@@ -20,6 +20,9 @@
 #include "timer.h"
 #include "util.h"
 
+/* Pre declarations */
+struct accelgyro_drv;
+
 enum sensor_state {
 	/* Sensor state is unknown, out of reset. Maybe powered down */
 	SENSOR_NOT_INITIALIZED = 0,

@@ -1,0 +1,2 @@
+add_subdirectory_ifdef(CONFIG_PLATFORM_EC_GTEST_MAIN gtest_main)
+add_subdirectory_ifdef(CONFIG_MOTION_SENSE_TESTS motion_sense)

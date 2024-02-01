@@ -3,8 +3,9 @@
 # found in the LICENSE file.
 
 cros_ec_library_include_directories(include)
+message("Linking ec_app_main.c to ${ZEPHYR_CURRENT_LIBRARY}")
 zephyr_library_sources(ec_app_main.c)
-if(NOT DEFINED CONFIG_ZTEST)
+if(NOT DEFINED CONFIG_TEST)
     zephyr_library_sources(main_shim.c)
 endif()
 
