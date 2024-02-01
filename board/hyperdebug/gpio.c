@@ -6,6 +6,7 @@
 
 #include "atomic.h"
 #include "builtin/assert.h"
+#include "clock_chip.h"
 #include "cmsis-dap.h"
 #include "common.h"
 #include "console.h"
@@ -18,6 +19,12 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+/* Hardware timer used for bitbanging. */
+#define BITBANG_TIMER 5
+
+/* Size of buffer used for bitbanging waveform. */
+#define BITBANG_BUFFER_SIZE 16384
 
 /* Size of buffer used for gpio monitoring. */
 #define CYCLIC_BUFFER_SIZE 65536
@@ -349,6 +356,10 @@ static void board_gpio_init(void)
 		sram_vectors[16 + STM32_IRQ_EXTI0 + i] =
 			DATA_TO_THUMB_CODE_PTR(&monitoring_slots[i].code);
 	}
+
+	/* Prepare timer for use in GPIO bit-banging. */
+	__hw_timer_enable_clock(BITBANG_TIMER, 1);
+	task_enable_irq(IRQ_TIM(BITBANG_TIMER));
 }
 DECLARE_HOOK(HOOK_INIT, board_gpio_init, HOOK_PRIO_DEFAULT);
 
@@ -1050,6 +1061,195 @@ static int command_gpio_monitoring(int argc, const char **argv)
 	return EC_ERROR_PARAM2;
 }
 
+/*
+ * For speed of interrupt handler, each pin to be manipulated by bitbanging is
+ * recorded as the base address of the GPIO bank, as well as the 16-bit "mask"
+ * to use to access the particular pin in the bank.
+ */
+static uint8_t num_bitbang_pins;
+static size_t bitbang_pin_bases[7];
+static uint32_t bitbang_pin_masks[7];
+
+/*
+ * Cyclic buffer storing the waveform to output, as well as recorded samples.
+ */
+static uint8_t bitbang_data[BITBANG_BUFFER_SIZE];
+
+/*
+ * Organization of bitbang_data: 
+ * +----+--------------------------+----------------------------+------------+
+ * |    | samples to be sent to PC | waveform data from PC      |            |
+ * +----+--------------------------+----------------------------+------------+
+ *      ^                          ^                            ^
+ *      bitbang_head               bitbang_ptr                  bitbang_tail
+ */
+
+/* Pointer incremented when data arrives from PC. */
+static uint8_t *volatile bitbang_tail = bitbang_data;
+
+/* Pointer incremented by timer interrupt handler. */
+static uint8_t *volatile bitbang_ptr = bitbang_data;
+
+/* Pointer incremented when data is sent to PC. */
+static uint8_t *volatile bitbang_head = bitbang_data;
+
+/*
+ * For the cases where encoded data indicates a "pause" of several clock ticks
+ * between waveform adges, this counter is used to record how many future
+ * interrupts should "do nothing", before the next byte is applied to GPIOs.
+ */
+static uint32_t bitbang_countdown;
+
+/*
+ * Bitbang timer interrupt handler.  Will read the status of GPIOs, then set
+ * GPIO output according to the byte at `bitbang_ptr`, before overwriting it
+ * with the sampled GPIOs and incrementing `bitbang_ptr`.  (Except when high
+ * bit of byte it set, which means to pause for a number of cycles.)
+ */
+void IRQ_HANDLER(IRQ_TIM(BITBANG_TIMER))(void)
+{
+	uint32_t triggered = STM32_TIM_SR(BITBANG_TIMER);
+	if (!(triggered & 1)) {
+		ccprintf("IRQ %08x\n", triggered);
+		return;
+	}
+	STM32_TIM_SR(BITBANG_TIMER) = 0xFFFE;
+	if (bitbang_ptr == bitbang_tail) {
+		/* End of waveform, stop timer */
+		STM32_TIM_CR1(BITBANG_TIMER) = 0;
+		return;
+	}
+	if (bitbang_countdown) {
+		bitbang_countdown--;
+		return;
+	}
+	uint8_t data_byte = *bitbang_ptr++;
+	if (bitbang_ptr == bitbang_data + sizeof(bitbang_data))
+		bitbang_ptr = bitbang_data;
+	if (data_byte & 0x80) {
+		/* Maintain current levels for a number of cycles. */
+		bitbang_countdown = (data_byte & 0x7F);
+		uint8_t delay_scale = 7;
+		data_byte = *bitbang_ptr;
+		while (data_byte & 0x80) {
+			bitbang_ptr++;
+			if (bitbang_ptr == bitbang_data + sizeof(bitbang_data))
+				bitbang_ptr = bitbang_data;
+			bitbang_countdown +=
+				((data_byte & 0x7F) << delay_scale);
+			delay_scale += 7;
+			data_byte = *bitbang_ptr;
+		}
+		bitbang_countdown--; /* One cycle of delay already spent
+					processing */
+		return;
+	}
+	uint8_t input_data = 0;
+	/*
+	 * Read current level of all pins part of bit-banging.  If some of the
+	 * pins are in push-pull mode, this will have no use.
+	 */
+	for (uint8_t i = 0; i < num_bitbang_pins; i++) {
+		input_data |= !!(STM32_GPIO_IDR(bitbang_pin_bases[i]) &
+				 bitbang_pin_masks[i])
+			      << i;
+	}
+	/*
+	 * Set drive of all pins which are part of bit-banging.  If some of the
+	 * pins are in input mode, this will have no effect.
+	 */
+	for (uint8_t i = 0; i < num_bitbang_pins; i++) {
+		if (data_byte & (1 << i)) {
+			STM32_GPIO_BSRR(bitbang_pin_bases[i]) =
+				bitbang_pin_masks[i];
+		} else {
+			STM32_GPIO_BSRR(bitbang_pin_bases[i]) =
+				bitbang_pin_masks[i] << 16;
+		}
+	}
+}
+
+static void stop_all_gpio_bitbanging(void)
+{
+	/* Stop timer */
+	STM32_TIM_CR1(BITBANG_TIMER) = 0;
+
+	/*
+	 * Empty the queue.  No guard against CMSIS-DAP task simultaneously
+	 * operating on the queue, we count on OpenTitanTool not simultaneously
+	 * requesting big-banging via one USB endpoint and re-initialization on
+	 * another.
+	 */
+	bitbang_tail = bitbang_data;
+	bitbang_ptr = bitbang_data;
+	bitbang_head = bitbang_data;
+}
+
+static int command_gpio_bit_bang(int argc, const char **argv)
+{
+	if (argc < 4)
+		return EC_ERROR_PARAM_COUNT;
+	int gpio_num = argc - 3;
+	if (gpio_num > 7)
+		return EC_ERROR_PARAM_COUNT;
+
+	const uint32_t timer_freq = clock_get_timer_freq();
+	char *e;
+	uint64_t desired_period_ns = strtoull(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM3;
+
+	if (desired_period_ns > 0xFFFFFFFFFFFFFFFFULL / timer_freq) {
+		/* Would overflow below. */
+		return EC_ERROR_PARAM3;
+	}
+
+	/*
+	 * Calculate number of hardware timer cycles for each bit-banging
+	 * sample.
+	 */
+	uint64_t divisor = desired_period_ns * timer_freq / 1000000000;
+
+	if (divisor > (1ULL << 32)) {
+		/* Would overflow the 32-bit timer. */
+		return EC_ERROR_PARAM3;
+	}
+
+	int gpios[7];
+	for (int i = 0; i < gpio_num; i++) {
+		gpios[i] = gpio_find_by_name(argv[3 + i]);
+		if (gpios[i] == GPIO_COUNT) {
+			return EC_ERROR_PARAM3 + i;
+		}
+	}
+
+	if (STM32_TIM_CR1(BITBANG_TIMER) & 1) {
+		ccprintf("Error: Ongoing operation, cannot change settings.\n");
+		return EC_ERROR_INVAL;
+	}
+
+	/*
+	 * All input valid, now record the request.
+	 */
+	num_bitbang_pins = gpio_num;
+	for (int i = 0; i < num_bitbang_pins; i++) {
+		bitbang_pin_bases[i] = gpio_list[gpios[i]].port;
+		bitbang_pin_masks[i] = gpio_list[gpios[i]].mask;
+	}
+
+	/* Set clock divisor to achieve requested tick period. */
+	STM32_TIM32_ARR(BITBANG_TIMER) = divisor - 1;
+
+	/* Update prescaler to increment every tick */
+	STM32_TIM_PSC(BITBANG_TIMER) = 0;
+
+	/* Set up the overflow interrupt */
+	STM32_TIM_SR(BITBANG_TIMER) = 0;
+	STM32_TIM_DIER(BITBANG_TIMER) = 0x0001;
+
+	return EC_SUCCESS;
+}
+
 static int command_gpio(int argc, const char **argv)
 {
 	if (argc < 2)
@@ -1062,6 +1262,8 @@ static int command_gpio(int argc, const char **argv)
 		return command_gpio_multiset(argc, argv);
 	if (!strcasecmp(argv[1], "set-reset"))
 		return command_gpio_set_reset(argc, argv);
+	if (!strcasecmp(argv[1], "bit-bang"))
+		return command_gpio_bit_bang(argc, argv);
 	return EC_ERROR_PARAM1;
 }
 DECLARE_CONSOLE_COMMAND_FLAGS(
@@ -1071,7 +1273,8 @@ DECLARE_CONSOLE_COMMAND_FLAGS(
 	"\nset-reset name"
 	"\nmonitoring start name..."
 	"\nmonitoring read name..."
-	"\nmonitoring stop name...",
+	"\nmonitoring stop name..."
+	"\nbit-bang clock_ns name...",
 	"GPIO manipulation", CMD_FLAG_RESTRICTED);
 
 static void gpio_reinit(void)
@@ -1080,6 +1283,7 @@ static void gpio_reinit(void)
 	int i;
 
 	stop_all_gpio_monitoring();
+	stop_all_gpio_bitbanging();
 
 	/* Set all GPIOs to defaults */
 	for (i = 0; i < GPIO_COUNT; i++, g++) {
@@ -1197,6 +1401,8 @@ struct gpio_monitoring_header_t {
 
 /* Sub-requests */
 const uint8_t GPIO_REQ_MONITORING_READ = 0x00;
+const uint8_t GPIO_REQ_BITBANG = 0x10;
+const uint8_t GPIO_REQ_BITBANG_STREAMING = 0x11;
 
 /* Values for gpio_monitoring_header_t::status */
 const uint16_t MON_SUCCESS = 0;
@@ -1327,6 +1533,105 @@ static void dap_goog_gpio_monitoring_read(size_t peek_c)
 	buf->tail = tail;
 }
 
+/* Compute distance between two pointers in cyclic buffer, in bytes. */
+uint16_t bitbang_dist(uint8_t *volatile from, uint8_t *volatile to)
+{
+	if (to >= from)
+		return to - from;
+	else
+		return to - from + sizeof(bitbang_data);
+}
+
+void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
+{
+	if (peek_c < 4)
+		return;
+	uint16_t data_len = rx_buffer[2] + (rx_buffer[3] << 8);
+	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 4);
+
+	if (bitbang_tail + data_len < bitbang_data + sizeof(bitbang_data)) {
+		queue_blocking_remove(&cmsis_dap_rx_queue, bitbang_tail,
+				      data_len);
+		bitbang_tail += data_len;
+	} else {
+		uint16_t remaning_space =
+			bitbang_data + sizeof(bitbang_data) - bitbang_tail;
+		queue_blocking_remove(&cmsis_dap_rx_queue, bitbang_tail,
+				      remaning_space);
+		queue_blocking_remove(&cmsis_dap_rx_queue, bitbang_data,
+				      data_len - remaning_space);
+		bitbang_tail += data_len - sizeof(bitbang_data);
+	}
+
+	uint32_t timer_cr1 = STM32_TIM_CR1(BITBANG_TIMER);
+	if (!(timer_cr1 & 1) && bitbang_tail != bitbang_ptr) {
+		uint32_t divisor = STM32_TIM32_ARR(BITBANG_TIMER);
+
+		if (divisor > 0x10000) {
+			/*
+			 * Slow bit-banging clock.  Override the count with a
+			 * start value such that the first overflow interrupt
+			 * will happen soon'ish.
+			 */
+			STM32_TIM32_CNT(BITBANG_TIMER) = divisor - 0x10000;
+			bitbang_countdown = 0;
+		} else {
+			/*
+			 * Fast bit-banging clock.  First few interrupts may
+			 * have higher latency.  In order to avoid jitter in the
+			 * bit-banged waveform, set up such that the first three
+			 * timer interrupts will be skipped, before the
+			 * requested waveform begins..
+			 */
+			STM32_TIM32_CNT(BITBANG_TIMER) = 0;
+			bitbang_countdown = 3;
+		}
+
+		/* Start counting */
+		STM32_TIM_CR1(BITBANG_TIMER) |= 1;
+	}
+
+	timestamp_t start = get_time();
+	do {
+		if (!streaming) {
+			if (!(STM32_TIM_CR1(BITBANG_TIMER) & 1))
+				break;
+		} else {
+			uint16_t used_bytes = bitbang_dist(bitbang_head, bitbang_tail);
+			if (bitbang_dist(bitbang_head, bitbang_ptr) >=
+			    (used_bytes + 1) / 2)
+				break;
+		}
+	} while (time_since32(start) < 25000);
+
+	uint8_t *ptr = bitbang_ptr;
+	tx_buffer[1] = bitbang_head != bitbang_tail ? 1 : 0;
+
+	/* How much will be free after sending this batch of data. */
+	uint16_t free_bytes = bitbang_dist(bitbang_tail, ptr);
+	if (!free_bytes)
+		free_bytes = sizeof(bitbang_data);
+	free_bytes -= 1;
+	*(uint16_t *)(tx_buffer + 2) = free_bytes;
+
+	if (bitbang_head <= ptr) {
+		*(uint16_t *)(tx_buffer + 4) = ptr - bitbang_head;
+		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 6);
+		queue_blocking_add(&cmsis_dap_tx_queue, bitbang_head,
+				   ptr - bitbang_head);
+	} else {
+		*(uint16_t *)(tx_buffer + 4) =
+			ptr + sizeof(bitbang_data) - bitbang_head;
+		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 6);
+		queue_blocking_add(&cmsis_dap_tx_queue, bitbang_head,
+				   bitbang_data + sizeof(bitbang_data) -
+					   bitbang_head);
+		queue_blocking_add(&cmsis_dap_tx_queue, bitbang_data,
+				   ptr - bitbang_data);
+	}
+	bitbang_head = ptr;
+}
+
 /*
  * Entry point for CMSIS-DAP vendor command for GPIO operations.
  */
@@ -1342,6 +1647,12 @@ void dap_goog_gpio(size_t peek_c)
 	switch (rx_buffer[1]) {
 	case GPIO_REQ_MONITORING_READ:
 		dap_goog_gpio_monitoring_read(peek_c);
+		break;
+	case GPIO_REQ_BITBANG:
+		dap_goog_gpio_bitbang(peek_c, false);
+		break;
+	case GPIO_REQ_BITBANG_STREAMING:
+		dap_goog_gpio_bitbang(peek_c, true);
 		break;
 	}
 }
