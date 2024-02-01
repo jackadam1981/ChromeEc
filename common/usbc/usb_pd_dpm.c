@@ -689,6 +689,8 @@ static void balance_source_ports(void)
 {
 	uint32_t removed_ports, new_ports;
 	static bool deferred_waiting;
+	int num_max_3a_ports = CONFIG_USB_PD_3A_PORTS;
+	__maybe_unused int num_sourcing_ports = 0;
 
 	if (in_deferred_context())
 		deferred_waiting = false;
@@ -715,13 +717,67 @@ static void balance_source_ports(void)
 			  non_pd_sink_max_requested);
 	max_current_claimed &= ~removed_ports;
 
+#ifdef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
+	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (tc_is_attached_src(i)) {
+			num_sourcing_ports++;
+		}
+	}
+	num_max_3a_ports = (CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT -
+			    num_sourcing_ports * 1500) /
+			   1500;
+
+	/* we might need to downgrade 3A port to fit total budget */
+	if (count_port_bits(max_current_claimed) > num_max_3a_ports) {
+		if (non_pd_sink_max_requested & max_current_claimed) {
+			/* Always downgrade non-PD ports first */
+			int rem_non_pd = LOWEST_PORT(non_pd_sink_max_requested &
+						     max_current_claimed);
+			typec_select_src_current_limit_rp(
+				rem_non_pd,
+				typec_get_default_current_limit_rp(rem_non_pd));
+			max_current_claimed &= ~BIT(rem_non_pd);
+
+			/* Wait tSinkAdj before using current */
+			deferred_waiting = true;
+			hook_call_deferred(&balance_source_ports_data,
+					   PD_T_SINK_ADJ);
+			goto unlock;
+		} else if (source_frs_max_requested & max_current_claimed) {
+			/* Downgrade lowest FRS port from 3.0 A slot */
+			int rem_frs = LOWEST_PORT(source_frs_max_requested &
+						  max_current_claimed);
+			pd_dpm_request(rem_frs, DPM_REQUEST_FRS_DET_DISABLE);
+			max_current_claimed &= ~BIT(rem_frs);
+
+			/* Give 20 ms for the PD task to process DPM flag */
+			deferred_waiting = true;
+			hook_call_deferred(&balance_source_ports_data,
+					   20 * MSEC);
+			goto unlock;
+		} else {
+			int rem_pd = LOWEST_PORT(sink_max_pdo_requested &
+						 max_current_claimed);
+
+			typec_select_src_current_limit_rp(rem_pd, TYPEC_RP_1A5);
+			max_current_claimed &= ~BIT(rem_pd);
+
+			/* Give 20 ms for the PD task to process DPM flag */
+			deferred_waiting = true;
+			hook_call_deferred(&balance_source_ports_data,
+					   20 * MSEC);
+			/* No lower priority ports to downgrade */
+			goto unlock;
+		}
+	}
+#endif /* CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT */
+
 	/* Allocate 3.0 A to new PD sink ports that need it */
 	new_ports = sink_max_pdo_requested & ~max_current_claimed;
 	while (new_ports) {
 		int new_max_port = LOWEST_PORT(new_ports);
 
-		if (count_port_bits(max_current_claimed) <
-		    CONFIG_USB_PD_3A_PORTS) {
+		if (count_port_bits(max_current_claimed) < num_max_3a_ports) {
 			max_current_claimed |= BIT(new_max_port);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
@@ -763,8 +819,7 @@ static void balance_source_ports(void)
 	while (new_ports) {
 		int new_frs_port = LOWEST_PORT(new_ports);
 
-		if (count_port_bits(max_current_claimed) <
-		    CONFIG_USB_PD_3A_PORTS) {
+		if (count_port_bits(max_current_claimed) < num_max_3a_ports) {
 			max_current_claimed |= BIT(new_frs_port);
 			pd_dpm_request(new_frs_port,
 				       DPM_REQUEST_FRS_DET_ENABLE);
@@ -793,8 +848,7 @@ static void balance_source_ports(void)
 	while (new_ports) {
 		int new_max_port = LOWEST_PORT(new_ports);
 
-		if (count_port_bits(max_current_claimed) <
-		    CONFIG_USB_PD_3A_PORTS) {
+		if (count_port_bits(max_current_claimed) < num_max_3a_ports) {
 			max_current_claimed |= BIT(new_max_port);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
@@ -870,28 +924,10 @@ void dpm_add_non_pd_sink(int port)
 
 void dpm_evaluate_request_rdo(int port, uint32_t rdo)
 {
-	int idx;
-	int op_ma;
-
 	if (CONFIG_USB_PD_3A_PORTS == 0)
 		return;
 
-	idx = RDO_POS(rdo);
-	/* Check for invalid index */
-	if (!idx)
-		return;
-
-	op_ma = (rdo >> 10) & 0x3FF;
-	if ((BIT(port) & sink_max_pdo_requested) && (op_ma <= 150)) {
-		/*
-		 * sink_max_pdo_requested will be set when we get 5V/3A sink
-		 * capability from port partner. If port partner only request
-		 * 5V/1.5A, we need to provide 5V/1.5A.
-		 */
-		atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
-
-		balance_source_ports();
-	}
+	balance_source_ports();
 }
 
 void dpm_remove_sink(int port)
@@ -899,6 +935,7 @@ void dpm_remove_sink(int port)
 	if (CONFIG_USB_PD_3A_PORTS == 0)
 		return;
 
+	balance_source_ports();
 	if (!(BIT(port) & (uint32_t)sink_max_pdo_requested) &&
 	    !(BIT(port) & (uint32_t)non_pd_sink_max_requested))
 		return;
@@ -910,7 +947,6 @@ void dpm_remove_sink(int port)
 	typec_select_src_current_limit_rp(
 		port, typec_get_default_current_limit_rp(port));
 
-	balance_source_ports();
 }
 
 void dpm_remove_source(int port)
@@ -921,12 +957,13 @@ void dpm_remove_source(int port)
 	if (!IS_ENABLED(CONFIG_USB_PD_FRS))
 		return;
 
+	balance_source_ports();
+
 	if (!(BIT(port) & (uint32_t)source_frs_max_requested))
 		return;
 
 	atomic_clear_bits(&source_frs_max_requested, BIT(port));
 
-	balance_source_ports();
 }
 
 void dpm_bist_shared_mode_enter(int port)
