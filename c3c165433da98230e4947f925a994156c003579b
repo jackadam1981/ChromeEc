@@ -70,6 +70,24 @@
       "parentUuid": "d4bdb6f4_33ffc734",
       "revId": "c3c165433da98230e4947f925a994156c003579b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2906641_a27e921c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T18:41:57Z",
+      "side": 1,
+      "message": "Can you add the run time check that validates the IRQ is the same across the ports?\n\nPlease also add\n```\n/* TODO: b/323371550 */\nBUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) \u003c\u003d 2,\n\t     \"rts54xx driver supports a maximum of 2 ports\");\n```",
+      "parentUuid": "088fb1f6_0012d524",
+      "revId": "c3c165433da98230e4947f925a994156c003579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
