@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7b0ace_2e8b9cfd",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-01T16:17:13Z",
+      "side": 1,
+      "message": "Are there any scenarios where the `irq-gpios` entry could be different per device tree node? Would it be better to refactor the device tree binding to help illustrate the PDC ports are tied to the same `irq-gpios`?",
+      "revId": "c3c165433da98230e4947f925a994156c003579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
