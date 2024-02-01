@@ -283,4 +283,15 @@ int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info);
  */
 int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
 
+/**
+ * @brief Called by a host command to get the PDC chip information
+ *
+ * @param port USB-C port number
+ * @param live ignored, data is never cached and is always read from the PDC
+ * @param chip_info structure where PDC info is stored
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_get_chip_info(int port, int live,
+				 struct ec_response_pd_chip_info_v1 *chip_info);
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
