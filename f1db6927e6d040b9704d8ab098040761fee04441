@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff72aed1_0e2d0237",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T22:51:29Z",
+      "side": 1,
+      "message": "Do you mean you don\u0027t want to process interrupts while in any state except ST_IDLE?  Can you disable the interrupt until you read the ST_IDLE?",
+      "parentUuid": "870dd7b5_55944843",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 28
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7639dbdd_8c5f5e70",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 6
