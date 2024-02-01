@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3168d5a_7471c88e",
+        "filename": "zephyr/test/pdc/src/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-01T17:34:44Z",
+      "side": 1,
+      "message": "Print out the ccap params too so we don\u0027t need to look at the code",
+      "range": {
+        "startLine": 258,
+        "startChar": 3,
+        "endLine": 258,
+        "endChar": 44
+      },
+      "revId": "b085ff1c8d2e0a7c48ffb79ab02cfae0fe729eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
