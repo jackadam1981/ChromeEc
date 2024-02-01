@@ -66,7 +66,9 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 	int max, i;
 
 	if (sensor_id >= TEMP_SENSOR_COUNT) {
+#ifdef CONFIG_DPTF_DEBUG_PRINTS
 		CPRINTS("DPTF: Invalid sensor ID");
+#endif
 		return 0;
 	}
 
@@ -81,12 +83,16 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 			cond_set_false(&dptf_threshold[sensor_id][i].over);
 
 		if (cond_went_true(&dptf_threshold[sensor_id][i].over)) {
+#ifdef CONFIG_DPTF_DEBUG_PRINTS
 			CPRINTS("DPTF over threshold [%d][%d", sensor_id, i);
+#endif
 			atomic_or(&dptf_seen, BIT(sensor_id));
 			tripped = 1;
 		}
 		if (cond_went_false(&dptf_threshold[sensor_id][i].over)) {
+#ifdef CONFIG_DPTF_DEBUG_PRINTS
 			CPRINTS("DPTF under threshold [%d][%d", sensor_id, i);
+#endif
 			atomic_or(&dptf_seen, BIT(sensor_id));
 			tripped = 1;
 		}
@@ -97,8 +103,10 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 
 void dptf_set_temp_threshold(int sensor_id, int temp, int idx, int enable)
 {
+#ifdef CONFIG_DPTF_DEBUG_PRINTS
 	CPRINTS("DPTF sensor %d, threshold %d C, index %d, %sabled", sensor_id,
 		K_TO_C(temp), idx, enable ? "en" : "dis");
+#endif
 
 	if ((sensor_id >= TEMP_SENSOR_COUNT) ||
 	    (idx >= DPTF_THRESHOLDS_PER_SENSOR)) {
