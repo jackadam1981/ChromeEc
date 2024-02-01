@@ -22,6 +22,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f01596_6df590d7",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-01T22:08:02Z",
+      "side": 1,
+      "message": "In order to verify mux state, I need to find a way to add flags `CONFIG_PLATFORM_EC_USB_PD_DP_MODE`, `CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE` and `CONFIG_PLATFORM_EC_USB_PD_USB4` to this test build.",
+      "parentUuid": "9ae4eb81_2a9a9a9a",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
