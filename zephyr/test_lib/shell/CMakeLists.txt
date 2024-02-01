@@ -1,0 +1,2 @@
+zephyr_library_sources(shell.cc)
+zephyr_library_include_directories(public)

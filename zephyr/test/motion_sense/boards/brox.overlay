@@ -1,0 +1,64 @@
+
+#include <program/brox/motionsense.dtsi>
+#include <dt-bindings/gpio_defines.h>
+
+/ {
+  gpio-interrupts {
+    compatible = "cros-ec,gpio-interrupts";
+
+    int_lid_imu: int-lid-imu {
+      irq-pin = <&gpio_ec_accel_db_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "bma4xx_interrupt";
+    };
+  };
+
+  named-gpios {
+		compatible = "named-gpios";
+    gpio_ec_accel_db_int_l: ec_accel_db_int_l {
+			gpios = <&gpio0 0 GPIO_INPUT>;
+		};
+		/*
+		gpio_gsc_ec_pwr_btn: gsc_ec_pwr_btn {
+		  gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
+		  enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_pch_pwrbtn_l: pch_pwrbtn_l {
+			gpios = <&gpio0 2 GPIO_OUTPUT>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+		gpio_slp_s3_l: slp_s3_l {
+			gpios = <&gpio0 3 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S3_L";
+			alias = "GPIO_PCH_SLP_S0_L";
+		};
+		gpio_slp_s5_l: slp_s5_l {
+			gpios = <&gpio0 4 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S5_L";
+		};
+		*/
+  };
+
+  named-i2c-ports {
+    compatible = "named-i2c-ports";
+    i2c_ec_i2c_sensor: ec_i2c_sensor {
+      i2c-port = <&i2c0>;
+      enum-names = "I2C_PORT_SENSOR";
+    };
+  };
+};
+
+&i2c0 {
+		bma422_lid_emul: bma4xx@18 {
+			compatible = "cros,bma4xx-emul";
+			status = "okay";
+			reg = <0x18>;
+			motionsense-sensor = <&lid_accel>;
+		};
+		bma422_base_emul: bma4xx@19 {
+			compatible = "cros,bma4xx-emul";
+			status = "okay";
+			reg = <0x19>;
+			motionsense-sensor = <&base_accel>;
+		};
+};
