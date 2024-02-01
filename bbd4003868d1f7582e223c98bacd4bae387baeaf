@@ -63,6 +63,30 @@
       },
       "revId": "bbd4003868d1f7582e223c98bacd4bae387baeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9251f09_d6570784",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 67
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-01T23:30:20Z",
+      "side": 1,
+      "message": "Ok, it looks like this is consistent.",
+      "parentUuid": "291c4d1c_a4a68291",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "bbd4003868d1f7582e223c98bacd4bae387baeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
