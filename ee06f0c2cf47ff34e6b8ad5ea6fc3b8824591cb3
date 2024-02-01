@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10feef1e_892a75f3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-01T22:25:12Z",
+      "side": 1,
+      "message": "this runs very early in the init stage, and by default sleep is enabled. it is only disabled due to nvmem_write/move",
+      "parentUuid": "9dd4baf4_ef4b9503",
+      "range": {
+        "startLine": 1684,
+        "startChar": 0,
+        "endLine": 1696,
+        "endChar": 2
+      },
+      "revId": "ee06f0c2cf47ff34e6b8ad5ea6fc3b8824591cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "556a1198_154583d8",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-31T00:42:06Z",
       "side": 1,
       "message": "Do we need to reenable sleep here?",
+      "range": {
+        "startLine": 2986,
+        "startChar": 3,
+        "endLine": 2986,
+        "endChar": 9
+      },
+      "revId": "ee06f0c2cf47ff34e6b8ad5ea6fc3b8824591cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa94c34_99e4692a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2986,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-01T22:25:12Z",
+      "side": 1,
+      "message": "good question. if compaction failed, but NV is modified, we are still in the state where NV cache doesn\u0027t match flash. So, it may succeed next time. But practically if compact failed - we probably have more serious problem with flash or overall with logic.",
+      "parentUuid": "556a1198_154583d8",
       "range": {
         "startLine": 2986,
         "startChar": 3,
