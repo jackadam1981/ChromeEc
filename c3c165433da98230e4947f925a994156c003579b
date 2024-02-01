@@ -52,6 +52,24 @@
       "parentUuid": "0a7b0ace_2e8b9cfd",
       "revId": "c3c165433da98230e4947f925a994156c003579b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088fb1f6_0012d524",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-01T18:14:45Z",
+      "side": 1,
+      "message": "The bug has been created: https://b.corp.google.com/issues/323371550\n\nWhat do you think about modifying the DT node to accept an optional I2C port, so that we would only have one driver instance that can control up to two ports, for each PDC chip?",
+      "parentUuid": "d4bdb6f4_33ffc734",
+      "revId": "c3c165433da98230e4947f925a994156c003579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
