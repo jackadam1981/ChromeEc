@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736a0efd_5e114faf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1900,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-01T20:54:42Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what the purpose of this function is. The `pdchipinfo` (`EC_CMD_PD_CHIP_INFO`) host command is implemented and working in `zephyr/subsys/pd_controller/pdc_host_cmd.c` and calls into `pdc_power_mgmt_get_info()`. Do you want to avoid passing along the lower-level `pdc_info_t` struct?",
+      "range": {
+        "startLine": 1900,
+        "startChar": 4,
+        "endLine": 1900,
+        "endChar": 32
+      },
+      "revId": "7a3940d64be2ed9f066c831f6a4dbaaafb50e3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
