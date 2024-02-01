@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f4c0ab_7b3ae1a8",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-01T17:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377b1bbe_5a6945a4",
+      "range": {
+        "startLine": 344,
+        "startChar": 35,
+        "endLine": 344,
+        "endChar": 63
+      },
+      "revId": "0bca15ac069d1dd8fda17105bfdc0e91cbe74d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f845722e_0ed4515f",
@@ -48,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d360fd_9f3fd98c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-01T17:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f845722e_0ed4515f",
+      "range": {
+        "startLine": 675,
+        "startChar": 43,
+        "endLine": 675,
+        "endChar": 48
+      },
+      "revId": "0bca15ac069d1dd8fda17105bfdc0e91cbe74d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b394c6e_d4151241",
@@ -61,6 +109,30 @@
       "writtenOn": "2024-02-01T17:05:43Z",
       "side": 1,
       "message": "Is this outer loop needed?",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 986,
+        "endChar": 57
+      },
+      "revId": "0bca15ac069d1dd8fda17105bfdc0e91cbe74d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0a475d_640aefbf",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-01T17:21:51Z",
+      "side": 1,
+      "message": "Yes the outer loop is needed; it reads address\u0027s from the ARA and the inner loop compares that address to all port I2C address.",
+      "parentUuid": "7b394c6e_d4151241",
       "range": {
         "startLine": 986,
         "startChar": 0,
