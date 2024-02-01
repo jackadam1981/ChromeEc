@@ -113,3 +113,9 @@ uint8_t pd_get_src_cap_cnt(int port)
 {
 	return pdc_power_mgmt_get_src_cap_cnt(port);
 }
+
+int tcpm_get_chip_info(int port, int live,
+		       struct ec_response_pd_chip_info_v1 *chip_info)
+{
+	return pdc_power_mgmt_get_chip_info(port, live, chip_info);
+}
