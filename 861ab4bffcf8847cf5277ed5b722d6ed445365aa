@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ba99c0c_5d14a973",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4749,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T13:32:10Z",
+      "side": 1,
+      "message": "Add comment: \"Design decision to prevent reboot loop - enforced in EC code.\"",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15042d08_35cfebf0",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -252,6 +269,23 @@
         "endLine": 4750,
         "endChar": 40
       },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6f7538_354aa51b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T13:32:10Z",
+      "side": 1,
+      "message": "If you do not like comment, instead of 65535 which might be perceived as magic use U16_MAX or similar. Problem is this those defines are different in kernel and EC and this header is used in both.",
       "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
