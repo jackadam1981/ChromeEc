@@ -16,6 +16,24 @@
       "message": "Did this work on the actual hardware?  I wrote a test case using this API and it\u0027s not working.",
       "revId": "0506c959a8a6056b1533770df638a34ef0c314a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e73322_9dbdb0c2",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-01T21:22:32Z",
+      "side": 1,
+      "message": "(Per IRL converation) This console command is doing the right thing but there is a driver bug (http://b/322851061) that causes this to return a blank result on the first run.",
+      "parentUuid": "a9297e8b_18284d18",
+      "revId": "0506c959a8a6056b1533770df638a34ef0c314a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
