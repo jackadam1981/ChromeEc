@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40775865_4cf647bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4749,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T15:57:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c40f91fd_1f10422b",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15042d08_35cfebf0",
@@ -340,6 +358,48 @@
       "side": 1,
       "message": "The watchdog kernel API says \"the watchdog timer\u0027s {minimum, maximum} timeout value\". It doesn\u0027t say \"the {minimum, maximum} timeout thought to be reasonable by the driver developer\". I think that is defined well enough, or at least well enough that it was never questioned up to now. Also, if there is a \"thought to be reasonable\" maximum timeout, it seems to me that it should be enforced by the watchdog core, not on a per driver basis (not that I have any idea what such a maximum timeout might be).",
       "parentUuid": "b4586623_4dddc524",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f281c1d_d0ea53f1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T15:57:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "53778105_ace430c0",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f7336f_bbb39bb4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T15:57:04Z",
+      "side": 1,
+      "message": "I was under impression the values needed justification (miscommunication).\nThe only point I actually want to discuss is as this define is not used in EC but only in kernel, if it would not be better to drop this define and instead of\nwdd-\u003emax_timeout \u003d EC_HANG_DETECT_MAX_TIMEOUT;\nuse\nwdd-\u003emax_timeout \u003d U16_MAX;\n\nhttps://patchwork.kernel.org/project/linux-watchdog/patch/20240126095721.782782-3-lma@chromium.org/",
+      "parentUuid": "4ff62232_47216fe3",
       "range": {
         "startLine": 4750,
         "startChar": 35,
