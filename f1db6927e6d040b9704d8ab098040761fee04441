@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcfd86b_5ead990f",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T18:59:27Z",
+      "side": 1,
+      "message": "You should drop the ST_IRQ state.  All this handling should be done by `interrupt_handler()`, including the `get_ara()` calls and the check for which port has an interrupt..",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 28
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7639dbdd_8c5f5e70",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T18:59:27Z",
+      "side": 1,
+      "message": "NUM_PDC_RTS54XX_PORTS",
+      "range": {
+        "startLine": 991,
+        "startChar": 21,
+        "endLine": 991,
+        "endChar": 49
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5832a23_6469fc24",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T18:59:27Z",
+      "side": 1,
+      "message": "You can improve the nesting:\n```suggestion\n\t\trv \u003d get_ara(data-\u003edev, \u0026ara);\n\t\tif (rv !\u003d 0) {\n\t\t\tcontinue;\n\t\t}\n\t\t/* Search for port with matching I2C address */\n```",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 998,
+        "endChar": 0
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

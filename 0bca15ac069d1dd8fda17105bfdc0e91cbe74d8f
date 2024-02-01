@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf2271d3_f6541513",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T18:59:27Z",
+      "side": 1,
+      "message": "So if poth ports have a pending interrupt, the first time `get_ara()` is called, one port responds with it\u0027s address, and the second time `get_ara()` is called the other port responds?",
+      "parentUuid": "9a0a475d_640aefbf",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 986,
+        "endChar": 57
+      },
+      "revId": "0bca15ac069d1dd8fda17105bfdc0e91cbe74d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "374ed35e_7ab600b6",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 2
@@ -156,6 +180,30 @@
       "writtenOn": "2024-02-01T17:05:43Z",
       "side": 1,
       "message": "If the outer loop isn\u0027t needed, then you can return if `get_ara` fails, and save another nesting level.",
+      "range": {
+        "startLine": 992,
+        "startChar": 0,
+        "endLine": 992,
+        "endChar": 16
+      },
+      "revId": "0bca15ac069d1dd8fda17105bfdc0e91cbe74d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ed0c7e_d5ed57ac",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374ed35e_7ab600b6",
       "range": {
         "startLine": 992,
         "startChar": 0,
