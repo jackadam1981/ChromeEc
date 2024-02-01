@@ -16,6 +16,24 @@
       "message": "I think if no condition would be validated in this case, the test could probably be removed.",
       "revId": "d1a9a167bc54a7be39a9afeec2336ae3c7fdb646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875b385c_e90c4560",
+        "filename": "zephyr/test/nissa/src/uldren.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-02-01T02:19:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b621826e_117a3d2f",
+      "revId": "d1a9a167bc54a7be39a9afeec2336ae3c7fdb646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
