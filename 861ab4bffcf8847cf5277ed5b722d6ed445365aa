@@ -412,6 +412,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86676007_fa140338",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T16:27:59Z",
+      "side": 1,
+      "message": "@Daisuke Can you please clarify, what code exactly you have in mind by: \"It makes sense but you probably want to use member_size() instead of UINT16_MAX.\"?",
+      "parentUuid": "a5f7336f_bbb39bb4",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
