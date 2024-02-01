@@ -16,6 +16,29 @@
       "message": "Original logic comes from https://crrev.com/c/366757, which seems was based on assumption that commit can only happen once. In our case we disable commits for long time and single failure means all commits won\u0027t be saved.",
       "revId": "bbf89d329680b4d6ed4f82b084ce6efb55e1eeac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0745689_610afe5d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-02-01T01:01:37Z",
+      "side": 1,
+      "message": "can we still get a printout if an error happened? or it\u0027s covered at a lower levle?\nwith this change, if there was an error we\u0027ll save whatever changes were made still, but have no indication that something went wrong in the console.\n\nmaybe even move printouts to nvmem_write/move level so that we know what exactly was not flushed",
+      "range": {
+        "startLine": 476,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 10
+      },
+      "revId": "bbf89d329680b4d6ed4f82b084ce6efb55e1eeac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
