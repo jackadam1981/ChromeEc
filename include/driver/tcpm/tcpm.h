@@ -408,6 +408,10 @@ static inline int tcpc_i2c_write(const int port, const uint16_t addr_flags,
 }
 #endif
 
+#ifdef CONFIG_USB_PD_CONTROLLER
+int tcpm_get_chip_info(int port, int live,
+		       struct ec_response_pd_chip_info_v1 *info);
+#else
 static inline int tcpm_get_chip_info(int port, int live,
 				     struct ec_response_pd_chip_info_v1 *info)
 {
@@ -415,6 +419,7 @@ static inline int tcpm_get_chip_info(int port, int live,
 		return tcpc_config[port].drv->get_chip_info(port, live, info);
 	return EC_ERROR_UNIMPLEMENTED;
 }
+#endif
 
 static inline int tcpm_hard_reset_reinit(int port)
 {
