@@ -1645,7 +1645,7 @@ const uint8_t STATUS_ERROR_WAVEFORM = 0x80;
  * is valid, increments bitbang_tail by exactly data_len, and sets
  * bitbang_irq_tail at or a few bytes before the new bitbang_tail.
  */
-uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
+static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
 {
 	uint32_t tail_goal = bitbang_tail + data_len;
 
