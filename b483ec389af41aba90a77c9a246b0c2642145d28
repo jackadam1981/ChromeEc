@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7247c5f8_2d4ac561",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-02-01T21:47:39Z",
+      "side": 1,
+      "message": "nit: default value is false",
+      "range": {
+        "startLine": 356,
+        "startChar": 25,
+        "endLine": 356,
+        "endChar": 33
+      },
+      "revId": "b483ec389af41aba90a77c9a246b0c2642145d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6607c26f_4e7f2a67",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1728,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-02-01T21:47:39Z",
+      "side": 1,
+      "message": "To handle dual port or single port solutions,\nhow about adding irq-shared: flag in dts file like in intel,pd-altmode.yaml?",
+      "range": {
+        "startLine": 1728,
+        "startChar": 6,
+        "endLine": 1728,
+        "endChar": 19
+      },
+      "revId": "b483ec389af41aba90a77c9a246b0c2642145d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
