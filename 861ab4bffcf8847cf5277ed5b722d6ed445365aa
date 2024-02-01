@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4586623_4dddc524",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2024-02-01T13:29:05Z",
+      "side": 1,
+      "message": "Minimal is design decision to prevent booting loop, enforced in EC code.\nMaximal is delivered from maximal value that can be stored in u16 protocol field.\nThis discussion suggest, both should have those mentioned in comments of *.h file to clarify similar questions IMO.",
+      "parentUuid": "23460c7e_7dd9c71d",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
