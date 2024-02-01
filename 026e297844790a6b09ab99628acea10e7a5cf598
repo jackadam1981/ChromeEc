@@ -16,6 +16,24 @@
       "message": "is this missing something? The brackets are unbalanced",
       "revId": "026e297844790a6b09ab99628acea10e7a5cf598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920ee8dd_55ba4fb0",
+        "filename": "common/dptf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-02-01T22:51:47Z",
+      "side": 1,
+      "message": "I only changed the D the rest of the lines were left as is. I can add the bracket if deemed necessary",
+      "parentUuid": "91485ecd_9ae5f2b7",
+      "revId": "026e297844790a6b09ab99628acea10e7a5cf598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
