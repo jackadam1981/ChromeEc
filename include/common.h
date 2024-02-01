@@ -29,6 +29,10 @@
 #endif /* CONFIG_ZTEST */
 #endif /* CONFIG_ZEPHYR */
 
+#ifndef __THROW
+#define __THROW
+#endif
+
 /*
  * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
  * #line marks the *next* line, so it is off by one.
