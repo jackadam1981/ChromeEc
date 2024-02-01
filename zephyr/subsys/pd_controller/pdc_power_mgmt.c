@@ -40,7 +40,6 @@ LOG_MODULE_REGISTER(pdc_power_mgmt);
  */
 #define BLOCK_COUNTER_MAX (500 / LOOP_DELAY_MS)
 
-
 /**
  * @brief maximum number of PDOs
  */
@@ -1365,6 +1364,19 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 
 	/* Set flag to send the command */
 	atomic_set_bit(pdc_data[port]->port.pdc_cmd_flags, pdc_cmd);
+
+	/* Wait until the subsystem is ready to send the command */
+	while (!pdc_data[port]->port.send_cmd.public.pending) {
+		pdc_data[port]->port.block_counter++;
+		if (pdc_data[port]->port.block_counter > BLOCK_COUNTER_MAX) {
+			LOG_ERR("Public API blocking timeout");
+			return -EBUSY;
+		}
+		k_sleep(K_MSEC(LOOP_DELAY_MS));
+	}
+
+	/* Reset block counter */
+	pdc_data[port]->port.block_counter = 0;
 
 	/* TODO: Investigate using a semaphore here instead of while loop */
 	/* Block calling thread until command is processed, errors or timeout
