@@ -16,6 +16,24 @@
       "message": "Are there any scenarios where the `irq-gpios` entry could be different per device tree node? Would it be better to refactor the device tree binding to help illustrate the PDC ports are tied to the same `irq-gpios`?",
       "revId": "c3c165433da98230e4947f925a994156c003579b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a01cd8_0e155902",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T17:00:17Z",
+      "side": 1,
+      "message": "There is a single interrupt pin from the PDC for both ports, so they will always be the same.\n\nHowever, if we want to support more than 2 ports, that will require 2 separate PDC chips, each with their own interrupt.\n\nThis driver can validate that only 2 ports are present with a build assert  using `DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)`.\n\nSam - can you open a bug for supporting more than 2 ports with the RTS54xx driver?\n\nAs for modifying the devicetree binding, I think it\u0027s sufficient for now to validate that all ports use the interrupt.\n\nIt\u0027s probably possible to create some macrobatics to validate that all ports specify the same interrupt.  But a run-time check would be acceptable in the short term.\n\nSomething like\n```\nif (!irq_init_done) {\n    /* Existing code - configure GPIO and interrupt... */\n    shared_irq_gpio_port \u003d cfg-\u003eirq_gpios.port;\n    shared_irq_gpio_pin \u003d cfg-\u003eirq_gpios.pin;\n} else {\n    /* Validate this port matches IRQ settings */\n    if (cfg-\u003eirq_gpios.port !\u003d shared_irq_gpio_port)\n        return -EINVAL;\n}\n```",
+      "parentUuid": "0a7b0ace_2e8b9cfd",
+      "revId": "c3c165433da98230e4947f925a994156c003579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
