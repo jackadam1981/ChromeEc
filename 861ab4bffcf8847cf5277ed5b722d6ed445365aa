@@ -436,6 +436,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd4e47aa_1bdd9142",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2024-02-01T18:16:25Z",
+      "side": 1,
+      "message": "As a note from the watchdog subsystem\u0027s perspective: There does not have to be _any_ define, neither for minimum nor for maximum limits. There is also no \"rule\" or preference for how this is defined or assigned. Just using constants in the driver is fine as long as those cnstants reflect the actual limits. This can be 0xffff, 65535, UINT16_MAX or whatever else the driver implementor prefers. sizeof() or __member_size() would be acceptable, but I do have to say that, as far as I can see, it would be a first. It is most definitely neither preferred nor required. The only requirement, from watchdog subsystem perspective, is that it is not an arbitrary limit.",
+      "parentUuid": "86676007_fa140338",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
