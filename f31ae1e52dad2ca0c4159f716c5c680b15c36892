@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84eb4473_22d52da3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-01T21:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcca5cb0_ffc9b85f",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53fafb3d_5b76acd7",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb47a8e_71879cea",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-01T21:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bac50860_4803de50",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83c602a4_91c56dc3",
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "I didn\u0027t see this fire even with 5Hz. I think that because we update `next_collection` using `ec_rate` we don\u0027t hit this branch. So with 5Hz we increment `next_collection` by 200,000 whereas previously we would have incremented by the actual sensor `collection_rate` of 80,000.",
       "parentUuid": "83c602a4_91c56dc3",
+      "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34811e15_a044ecc7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-01T21:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4748986a_478a726b",
       "revId": "f31ae1e52dad2ca0c4159f716c5c680b15c36892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
