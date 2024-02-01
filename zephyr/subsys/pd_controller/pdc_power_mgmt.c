@@ -1869,6 +1869,29 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state)
 	}
 }
 
+int pdc_power_mgmt_get_chip_info(int port, int live,
+				 struct ec_response_pd_chip_info_v1 *chip_info)
+{
+	struct pdc_info_t pdc_info;
+	int rv;
+
+	if (!chip_info) {
+		return 1;
+	}
+
+	rv = pdc_power_mgmt_get_info(port, &pdc_info);
+	if (rv) {
+		return rv;
+	}
+
+	chip_info->vendor_id = PDC_VIDPID_GET_VID(pdc_info.vid_pid);
+	chip_info->product_id = PDC_VIDPID_GET_PID(pdc_info.vid_pid);
+	chip_info->device_id = 0;
+	chip_info->fw_version_number = pdc_info.fw_version;
+
+	return EC_SUCCESS;
+}
+
 /**
  * PDC Chipset state Policies
  */
