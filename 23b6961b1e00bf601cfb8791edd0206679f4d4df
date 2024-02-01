@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2e3309_9bca7588",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-01T10:59:53Z",
+      "side": 1,
+      "message": "Add `bloonchipper: ` here",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "23b6961b1e00bf601cfb8791edd0206679f4d4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a6c279_9c108334",
+        "filename": "zephyr/program/fpmcu/bloonchipper/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-01T10:59:53Z",
+      "side": 1,
+      "message": "Could you add information that this is in microseconds? Values above are in miliseconds, so it could be confusing.",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "23b6961b1e00bf601cfb8791edd0206679f4d4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
