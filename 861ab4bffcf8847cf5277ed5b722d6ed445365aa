@@ -508,6 +508,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72e47bab_7e5acfee",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-01T22:59:45Z",
+      "side": 1,
+      "message": "I meant member_size(struct ec_params_hang_detect, reboot_timeout_sec). It sets the limit to UINT16_MAX and explains why at the same time.",
+      "parentUuid": "86676007_fa140338",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22fa4617_2a39491a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
