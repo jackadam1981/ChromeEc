@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "823127e8_85b12dc2",
+        "filename": "zephyr/program/brox/interrupts_motionsense.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-01T23:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94253926_14037e88",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "b258a3e264d5e120777a9eef439438241ecd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f3161e3_703a9ca2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-01T21:05:27Z",
       "side": 1,
       "message": "our current drivers can\u0027t handle 2 instances of the same driver running in interrupt mode. We can only use one here because both the lid and base are using the bma422",
+      "range": {
+        "startLine": 107,
+        "startChar": 31,
+        "endLine": 107,
+        "endChar": 43
+      },
+      "revId": "b258a3e264d5e120777a9eef439438241ecd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8085c3ed_530d26f4",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-01T23:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3161e3_703a9ca2",
       "range": {
         "startLine": 107,
         "startChar": 31,
