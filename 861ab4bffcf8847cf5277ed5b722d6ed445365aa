@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c40f91fd_1f10422b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4749,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2024-02-01T15:03:31Z",
+      "side": 1,
+      "message": "I personally think that is irrelevant. The limit is relevant, not the reason why the {firmware, hardware} designers / implementors} chose the limit.",
+      "parentUuid": "0ba99c0c_5d14a973",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15042d08_35cfebf0",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -286,6 +304,48 @@
       "writtenOn": "2024-02-01T13:32:10Z",
       "side": 1,
       "message": "If you do not like comment, instead of 65535 which might be perceived as magic use U16_MAX or similar. Problem is this those defines are different in kernel and EC and this header is used in both.",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53778105_ace430c0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2024-02-01T15:03:31Z",
+      "side": 1,
+      "message": "The enforced limits should hopefully be the same in both.",
+      "parentUuid": "bc6f7538_354aa51b",
+      "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff62232_47216fe3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4750,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2024-02-01T15:03:31Z",
+      "side": 1,
+      "message": "The watchdog kernel API says \"the watchdog timer\u0027s {minimum, maximum} timeout value\". It doesn\u0027t say \"the {minimum, maximum} timeout thought to be reasonable by the driver developer\". I think that is defined well enough, or at least well enough that it was never questioned up to now. Also, if there is a \"thought to be reasonable\" maximum timeout, it seems to me that it should be enforced by the watchdog core, not on a per driver basis (not that I have any idea what such a maximum timeout might be).",
+      "parentUuid": "b4586623_4dddc524",
+      "range": {
+        "startLine": 4750,
+        "startChar": 35,
+        "endLine": 4750,
+        "endChar": 40
+      },
       "revId": "861ab4bffcf8847cf5277ed5b722d6ed445365aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
