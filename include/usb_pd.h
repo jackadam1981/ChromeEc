@@ -105,6 +105,12 @@ enum pd_rx_errors {
 
 #define PDO_GET_TYPE(pdo) (((pdo) >> 30) & 3)
 
+/* Peak overcurrent, naming follows 10ms @ 50% duty cycle percentages*/
+#define PDO_PEAK_CURR_100 0x0
+#define PDO_PEAK_CURR_110 0x1
+#define PDO_PEAK_CURR_125 0x2
+#define PDO_PEAK_CURR_150 0x3
+
 #define PDO_FIXED_SUSPEND BIT(28) /* USB Suspend supported */
 /* Higher capability in vSafe5V sink PDO */
 #define PDO_FIXED_SNK_HIGHER_CAP BIT(28)
@@ -113,7 +119,7 @@ enum pd_rx_errors {
 #define PDO_FIXED_FRS_CURR_1A5_AT_5V (2 << 23)
 #define PDO_FIXED_FRS_CURR_3A0_AT_5V (3 << 23)
 #define PDO_FIXED_EPR_MODE_CAPABLE BIT(23)
-#define PDO_FIXED_PEAK_CURR () /* [21..20] Peak current */
+#define PDO_FIXED_PEAK_CURR(peak) ((peak & 3) << 20) /* Peak current */
 #define PDO_FIXED_VOLT(mv) (((mv) / 50) << 10) /* Voltage in 50mV units */
 #define PDO_FIXED_CURR(ma) (((ma) / 10) << 0) /* Max current in 10mA units */
 #define PDO_FIXED_GET_VOLT(pdo) (((pdo >> 10) & 0x3FF) * 50)
