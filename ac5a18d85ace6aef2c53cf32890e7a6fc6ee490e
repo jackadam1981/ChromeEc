@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c6d791_3a6c975c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-01T17:48:15Z",
+      "side": 1,
+      "message": "There\u0027s a lot of duplication here.  Can you use the same strategy that you used in PDC power management to handle retries in one spot?\n\nMaybe something like:\n\n```\n\ncase INIT_PDC_CMD_WAIT:\n    if (!data-\u003ecci_event.command_completed)\n        return;\n    if (data-\u003ecci_event.error) {\n        data-\u003einit_local_state \u003d data-\u003einit_local_last_state;\n    } else {\n        data-\u003einit_local_state \u003d data-\u003einit_local_next_state;\n    }\n```\n\nI think exploring a semaphore here is also a possible path.",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 0
+      },
+      "revId": "ac5a18d85ace6aef2c53cf32890e7a6fc6ee490e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
