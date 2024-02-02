@@ -16,17 +16,7 @@ LOG_MODULE_REGISTER(charger, LOG_LEVEL_INF);
 
 int extpower_is_present(void)
 {
-	int port;
-	int rv;
-	bool acok;
-
-	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
-		rv = raa489000_is_acok(port, &acok);
-		if ((rv == EC_SUCCESS) && acok)
-			return 1;
-	}
-
-	return 0;
+	return 1;
 }
 
 /*
@@ -54,7 +44,6 @@ __override void board_check_extpower(void)
 
 __override void board_hibernate(void)
 {
-	raa489000_hibernate(0, true);
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }
