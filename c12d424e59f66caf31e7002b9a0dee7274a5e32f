@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e947e95_57e1f4f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-02T02:27:27Z",
+      "side": 1,
+      "message": "This has been fixed with `reset-val` implementation for GPIO.",
+      "parentUuid": "462aa059_a42acda9",
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ea57fd2_28e78e44",
