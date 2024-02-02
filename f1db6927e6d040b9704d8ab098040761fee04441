@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61035899_fbb8787d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-02T00:53:53Z",
+      "side": 1,
+      "message": "From the realtek documentation, the sequence of commands sent to the PDC should not be interrupted, for example, 1: write command, 2: read ping status, 3: read optional data. An interrupt can fire in between the sequence that results in an I2C call to ARA. To prevent this, I let the interrupt fire and handle it after any command sequence finishes. I think keeping interrupts on and just handling the interrupt at an appropriate time is safer than disabling/enabling interrupts.",
+      "parentUuid": "ff72aed1_0e2d0237",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 28
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7639dbdd_8c5f5e70",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 6
