@@ -22,6 +22,53 @@
       },
       "revId": "997834901c50de18110c665602eb03684c64f36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608b2b33_d64e3a54",
+        "filename": "common/console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-02T20:11:28Z",
+      "side": 1,
+      "message": "Yeah, I think this might be a bigger refactor. It does seem like all usages of this return value are indeed `enum ec_error_list`, but there are many places that it would need to be changed.\n\n\nI\u0027m okay to return `enum ec_error_list test_send_console_command(char *input)` back to `int test_send_console_command(char *input)` and change all of them to enum in follow-up.",
+      "parentUuid": "82734565_c8b7e71f",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d9146f_05b14efb",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-02T20:11:28Z",
+      "side": 1,
+      "message": "Probably want `const char *input`.",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
