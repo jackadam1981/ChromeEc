@@ -24,13 +24,13 @@
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ##args)
 
-#ifdef CONFIG_I2C_DEBUG_PASSTHRU
+// #ifdef CONFIG_I2C_DEBUG_PASSTHRU
 #define PTHRUPRINTS(format, args...) CPRINTS("I2C_PTHRU " format, ##args)
 #define PTHRUPRINTF(format, args...) CPRINTF(format, ##args)
-#else
-#define PTHRUPRINTS(format, args...)
-#define PTHRUPRINTF(format, args...)
-#endif
+// #else
+// #define PTHRUPRINTS(format, args...)
+// #define PTHRUPRINTF(format, args...)
+// #endif
 
 #define EC_PARAMS_I2C_PASSTHRU_PORT(args) \
 	(((struct ec_params_i2c_passthru *)(args->params))->port)

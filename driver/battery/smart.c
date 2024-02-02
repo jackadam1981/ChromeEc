@@ -245,20 +245,28 @@ int battery_state_of_charge_abs(int *percent)
 
 int battery_remaining_capacity(int *capacity)
 {
+	int val;
 	int rv = battery_force_mah_mode();
 	if (rv)
 		return rv;
 
+	battery_get_mode(&val);
+	CPRINTS("---battery_get_mode 1 : %d---",val);
 	return sb_read(SB_REMAINING_CAPACITY, capacity);
+	CPRINTS("---battery_get_mode 1 : %d---",val);
 }
 
 int battery_full_charge_capacity(int *capacity)
 {
+	int val;
 	int rv = battery_force_mah_mode();
 	if (rv)
 		return rv;
 
+	battery_get_mode(&val);
+	CPRINTS("---battery_get_mode 2 : %d---",val);
 	return sb_read(SB_FULL_CHARGE_CAPACITY, capacity);
+	CPRINTS("---battery_get_mode 2 : %d---",val);
 }
 
 int battery_time_to_empty(int *minutes)
