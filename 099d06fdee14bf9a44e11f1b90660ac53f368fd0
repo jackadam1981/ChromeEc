@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5daa797_b3b0b5dc",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-02T20:37:13Z",
+      "side": 1,
+      "message": "Drop `const` if you are writing to it.\n\n```suggestion\n\tvolatile uint32_t valid_word \u003d 0x1badd00d;\n```",
+      "revId": "099d06fdee14bf9a44e11f1b90660ac53f368fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "224d0acc_b089042c",
         "filename": "test/restricted_console.c",
         "patchSetId": 10
@@ -54,6 +71,30 @@
       "writtenOn": "2024-02-02T19:43:32Z",
       "side": 1,
       "message": "It would be good to reset `valid_word` and then make sure that it doesn\u0027t change after calling `test_send_console_command`.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "099d06fdee14bf9a44e11f1b90660ac53f368fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d07739_876a5577",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-02T20:37:13Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "5bcb5ac1_8d73b3c9",
       "range": {
         "startLine": 57,
         "startChar": 1,
