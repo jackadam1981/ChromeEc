@@ -1760,10 +1760,8 @@ static int pdc_init(const struct device *dev)
 
 static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 {
-	struct pdc_data_t *data = ((const struct device *)dev)->data;
-
+	/* remove rts54xx task for bring up, wait PD firmware */
 	while (1) {
-		smf_run_state(SMF_CTX(data));
 		k_sleep(K_MSEC(T_PING_STATUS));
 	}
 }
