@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecaed67f_2d1540cc",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-02T18:54:01Z",
+      "side": 1,
+      "message": "Can this not be derived from the state machine state?",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 16
+      },
+      "revId": "2a14754f118e5de11518115da06879ac10a6e988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
