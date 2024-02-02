@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576f1913_abbdf8a2",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T19:04:36Z",
+      "side": 1,
+      "message": "Since LIS2DW12_INT1_FTH_MASK is one bit, we don\u0027t need to go through LIS2DW12_EN_BIT and LIS2DW12_DIS_BIT:\n\n```suggestion\n\t\tenable));\n```",
+      "revId": "7c057fd4e24cc8fbdbc39566285ee0fea39c8fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f767bad_6b9ca9c9",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T19:04:36Z",
+      "side": 1,
+      "message": "Same as above\n```suggestion\n\t\t\tenable));\n```",
+      "revId": "7c057fd4e24cc8fbdbc39566285ee0fea39c8fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
