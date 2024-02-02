@@ -11,6 +11,9 @@ Action            | Renode command for `bloonchipper`
 **Enable HW-WP**  | `sysbus.gpioPortB.GPIO_WP Release`
 **Disable HW-WP** | `sysbus.gpioPortB.GPIO_WP Press`
 
+Note, the renode set HW-WP state automatically resets to the enabled state when
+EC OS reboots.
+
 Note, you can just type `sysbus`, `sysbus.gpioPortB`, or
 `sysbus.gpioPortB.GPIO_WP` to learn more about these modules and the available
 functions.
