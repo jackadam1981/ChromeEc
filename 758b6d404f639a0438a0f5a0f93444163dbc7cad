@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc909e40_1c1f4e8f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-02T19:02:58Z",
+      "side": 1,
+      "message": "Is this safe to update while a command is pending?",
+      "range": {
+        "startLine": 1373,
+        "startChar": 1,
+        "endLine": 1373,
+        "endChar": 61
+      },
+      "revId": "758b6d404f639a0438a0f5a0f93444163dbc7cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19fa6325_2e2e37ee",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 5
