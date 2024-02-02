@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05e0406_d14314f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T19:53:59Z",
+      "side": 1,
+      "message": "This looks good, but when we start running the [EC unit tests](https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/ec/+/db551dae11cbcf1a8fa4e57b92480dc7d04f309b:board/hatch_fp/build.mk;l\u003d28-78) on Zephyr, we\u0027ll want to make sure that the RTC is enabled for the RTC unit tests [1](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rtc_stm32f4.c;drc\u003d42ac2e87ae35b073d9a3aa571ac59acb028e8f54) and [2](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rtc_npcx9.c;drc\u003ddef51a7ab9cd438c2590770205043c8b26bcb849).",
+      "revId": "f97da467b1624e10ddfb7e561b0e9aa440a1e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
