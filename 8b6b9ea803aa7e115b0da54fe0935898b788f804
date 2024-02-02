@@ -16,6 +16,24 @@
       "message": "We need to somehow add in the motion_sensorsp[] array:\n\n   .config \u003d {\n...\n     [SENSOR_CONFIG_EC_S3] \u003d {\n      .odr \u003d ..., ## will come from motion_sense.dtsi: \"odr \u003d \u003c(10000 | ROUND_UP_FLAG)\u003e\"\n      .ec_rate \u003d CONFIG_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS ,\n     },",
       "revId": "8b6b9ea803aa7e115b0da54fe0935898b788f804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561517a2_4bc44f1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T19:34:37Z",
+      "side": 1,
+      "message": "I misunderstood |CONFIG_ACCEL_FORCE_MODE_THRESHOLD_RATE_MS|. We need another one to not schedule the EC every 200ms or more.",
+      "parentUuid": "00ba9b0c_f330a0c1",
+      "revId": "8b6b9ea803aa7e115b0da54fe0935898b788f804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
