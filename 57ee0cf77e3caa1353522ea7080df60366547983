@@ -118,6 +118,30 @@
       },
       "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1a5021_fd077770",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T19:40:28Z",
+      "side": 1,
+      "message": "But it breaks the case when we are in S3 and want to collect samples every 200ms. The |ec_rate| is  what will delay the scheduling.",
+      "parentUuid": "71f06e18_a39c8df8",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
