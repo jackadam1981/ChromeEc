@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "700e2761_7bad5d85",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T19:35:01Z",
+      "side": 1,
+      "message": "This is a generated file and should not be edited directly.\n\nI already fixed the issue with named_gpio.py script complaining about mismatched flags here https://crrev.com/c/5239218",
+      "revId": "f568a2378c68562c503f52f6a432311b5c3adfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9603a7f9_dd9b8331",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T19:35:01Z",
+      "side": 1,
+      "message": "Why is this here?  The `enum-names` are used by the legacy EC code.  Any code found under platform/ec/zephyr should use Zephyr\u0027s APIs directly.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "f568a2378c68562c503f52f6a432311b5c3adfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06ee3a1_e1bacf08",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T19:35:01Z",
+      "side": 1,
+      "message": "This label is already defined here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/brox/i2c.dtsi;l\u003d11\n\nI\u0027d be okay with changing the name to \"I2C_PORT_PD_PROG\" to match the schematic.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "f568a2378c68562c503f52f6a432311b5c3adfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a647586_f552bcb5",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T19:35:01Z",
+      "side": 1,
+      "message": "The I2C bus is already enabled by the generated.dtsi file.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "f568a2378c68562c503f52f6a432311b5c3adfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3244a341_c2167590",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T19:35:01Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "f568a2378c68562c503f52f6a432311b5c3adfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
