@@ -639,6 +639,7 @@ void battery_compensate_params(struct batt_params *batt)
 	int numer, denom;
 	int *remain = &(batt->remaining_capacity);
 	int full = batt->full_capacity;
+	static int last_display_charge;
 
 	if ((batt->flags & BATT_FLAG_BAD_FULL_CAPACITY) ||
 	    (batt->flags & BATT_FLAG_BAD_REMAINING_CAPACITY))
@@ -676,6 +677,15 @@ void battery_compensate_params(struct batt_params *batt)
 	denom = full * (batt_host_full_factor - batt_host_shutdown_pct);
 	/* Rounding (instead of truncating) */
 	batt->display_charge = (numer + denom / 2) / denom;
+	
+	if (last_display_charge == 0)
+		last_display_charge = batt->display_charge;
+
+	if (abs(last_display_charge - batt->display_charge) > 10)
+		batt->display_charge = last_display_charge;
+	else
+		last_display_charge = batt->display_charge;
+	
 	if (batt->display_charge < 0)
 		batt->display_charge = 0;
 	if (batt->display_charge > 1000)
