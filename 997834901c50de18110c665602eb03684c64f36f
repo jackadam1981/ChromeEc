@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "464784b7_13ca2609",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-02T20:12:58Z",
+      "side": 1,
+      "message": "Any reason not to put comment here?\n\n```suggestion\n/* Defined as test_export_static in common/console.c. */\nint handle_command(char *input);\n```",
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41d9146f_05b14efb",
         "filename": "common/test_util.c",
         "patchSetId": 10
