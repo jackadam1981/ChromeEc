@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5804d7_194eaad1",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwr-signal-base.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T18:34:30Z",
+      "side": 1,
+      "message": "Nit - line length.  This may fail CQ.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 81
+      },
+      "revId": "5f98e07465c77aad16e71d42ce963faccb545617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
