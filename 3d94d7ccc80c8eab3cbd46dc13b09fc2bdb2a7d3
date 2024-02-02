@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "375a7d7c_59f32231",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T18:22:00Z",
+      "side": 1,
+      "message": "Nit - you could drop `irq_init_done` and test if `irq_shared_port` is not NULL instead.",
+      "range": {
+        "startLine": 358,
+        "startChar": 12,
+        "endLine": 358,
+        "endChar": 25
+      },
+      "revId": "3d94d7ccc80c8eab3cbd46dc13b09fc2bdb2a7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
