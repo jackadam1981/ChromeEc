@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ae00c70_241017bf",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T18:56:31Z",
+      "side": 1,
+      "message": "Does the workaround need to be applied as part of this CL?\nI\u0027ve opened b/323559196 for Nuvoton to comment.  However, any changes they make won\u0027t be available for a few weeks due to the Zephyr RC1 freeze.",
+      "parentUuid": "9769420e_a9b01b8e",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14746502_ece0f5bd",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 1
@@ -267,6 +291,30 @@
       "side": 1,
       "message": "`vw_update_all` will read the cached value of SLP_Sx vw signals from its IP registers. If we keep `vw_update_all` here, we will be overwriting VW SLP_Sx state after reset event is processed. We should wait until AP explicitly sets SLP_Sx signals value.",
       "parentUuid": "14746502_ece0f5bd",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8005a527_617d6b40",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T18:56:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "97907305_0f56f054",
       "range": {
         "startLine": 125,
         "startChar": 0,
