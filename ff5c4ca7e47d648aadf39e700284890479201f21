@@ -22,6 +22,30 @@
       },
       "revId": "ff5c4ca7e47d648aadf39e700284890479201f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4684105_55a99171",
+        "filename": "zephyr/test/nissa/boards/ap_pwrseq_drv_power_signals.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-02T22:52:16Z",
+      "side": 1,
+      "message": "Test cases inside `zephyr/test/nissa/src/board_ap_pwrseq_drv.c` use Power signals emulator which requires to have power signals defined as `intel,ap-pwrseq-gpio`.\n\n`ec/zephyr/test/nissa/boards/generic_power_signals.dts` defines all power signals as `intel,ap-pwrseq-external`, I am guessing is because of `DEFINE_FAKE_VALUE_FUNC`.",
+      "parentUuid": "9641446f_731c1c69",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "ff5c4ca7e47d648aadf39e700284890479201f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
