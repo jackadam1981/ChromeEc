@@ -256,6 +256,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58b32e34_5919f9cc",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-02T21:33:59Z",
+      "side": 1,
+      "message": "I can apply a workaround in a separate CL so we can revert it when Nuvoton correction lands.\n\nMost likely nuvoton will have to do this change. [zephy-pr:68492](https://github.com/zephyrproject-rtos/zephyr/pull/68492) updates driver headers to specify `event.evt_data` for event `ESPI_BUS_RESET`.",
+      "parentUuid": "4ae00c70_241017bf",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "dc91fb7438722ac2bdb4ad004c5b503457d1527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14746502_ece0f5bd",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 1
