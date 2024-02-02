@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c64b36_148c3e0e",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "It means that we wait for FPSENSOR task to check the finger status rather than forcing it by pinging the task.",
+      "parentUuid": "b24608c0_370e6891",
+      "range": {
+        "startLine": 207,
+        "startChar": 62,
+        "endLine": 207,
+        "endChar": 74
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bedbad5e_3da80d5d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-01T23:27:21Z",
       "side": 1,
       "message": "Why 100 ms? Can you add the reason to the comment?\n\n(e.g., `FINGER_POLLING_DELAY`)\n\nCould you also include why it is `100ms` + `1ms`? (e.g., additional time for processing).",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 15
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2e443b_443e4954",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Additional 1ms turned out to be unnecessary. Added `FPSENSOR_POLLING_DELAY_MS` define with a comment why it\u0027s set to 100ms.",
+      "parentUuid": "bedbad5e_3da80d5d",
       "range": {
         "startLine": 230,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a9018d_948696ad",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c738e22_10eed00e",
+      "range": {
+        "startLine": 240,
+        "startChar": 24,
+        "endLine": 240,
+        "endChar": 28
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f6e61d0_6fe201f1",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-01T23:27:21Z",
       "side": 1,
       "message": "`after the finger is up`?",
+      "range": {
+        "startLine": 240,
+        "startChar": 45,
+        "endLine": 241,
+        "endChar": 12
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68850066_7d17ac05",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "In this tests there was no finger on the sensor (but fixed in other tests).",
+      "parentUuid": "3f6e61d0_6fe201f1",
       "range": {
         "startLine": 240,
         "startChar": 45,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf10116_bc3941bf",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6591bf76_bf2d88a1",
+      "range": {
+        "startLine": 270,
+        "startChar": 4,
+        "endLine": 270,
+        "endChar": 24
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3765ad8e_ceac29f9",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-02-01T23:27:21Z",
       "side": 1,
       "message": "`up`",
+      "range": {
+        "startLine": 285,
+        "startChar": 24,
+        "endLine": 285,
+        "endChar": 28
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be73efc_7e3bc838",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3765ad8e_ceac29f9",
       "range": {
         "startLine": 285,
         "startChar": 24,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69620085_1f2a0889",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b50280d0_cf54454f",
+      "range": {
+        "startLine": 315,
+        "startChar": 4,
+        "endLine": 315,
+        "endChar": 25
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09cabd40_e9904781",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-02-01T23:27:21Z",
       "side": 1,
       "message": "Same as above about adding explanation for 100ms.",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 320,
+        "endChar": 15
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc8946c_7ef9fbf1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09cabd40_e9904781",
       "range": {
         "startLine": 319,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8363cdf1_3f8d1deb",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5adc9ab0_9c154463",
+      "range": {
+        "startLine": 362,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 15
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea104e1b_d2e39fa8",
@@ -221,6 +437,30 @@
       "writtenOn": "2024-02-01T23:27:21Z",
       "side": 1,
       "message": "nit: `Remove finger from the`",
+      "range": {
+        "startLine": 396,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 24
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1921744_ba2bae70",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea104e1b_d2e39fa8",
       "range": {
         "startLine": 396,
         "startChar": 4,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c854e9_94c57f47",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4589d4ee_50429409",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 15
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "928c8ae5_d5684080",
@@ -267,6 +531,30 @@
       "writtenOn": "2024-02-01T23:27:21Z",
       "side": 1,
       "message": "`up`",
+      "range": {
+        "startLine": 410,
+        "startChar": 24,
+        "endLine": 410,
+        "endChar": 28
+      },
+      "revId": "8c242d969a58bc1049ae9b5ab081fa5479cdb684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e46c69_1800bb07",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_finger_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T13:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "928c8ae5_d5684080",
       "range": {
         "startLine": 410,
         "startChar": 24,
