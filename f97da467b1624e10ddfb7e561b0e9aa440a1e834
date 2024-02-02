@@ -16,6 +16,52 @@
       "message": "This looks good, but when we start running the [EC unit tests](https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/ec/+/db551dae11cbcf1a8fa4e57b92480dc7d04f309b:board/hatch_fp/build.mk;l\u003d28-78) on Zephyr, we\u0027ll want to make sure that the RTC is enabled for the RTC unit tests [1](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rtc_stm32f4.c;drc\u003d42ac2e87ae35b073d9a3aa571ac59acb028e8f54) and [2](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rtc_npcx9.c;drc\u003ddef51a7ab9cd438c2590770205043c8b26bcb849).",
       "revId": "f97da467b1624e10ddfb7e561b0e9aa440a1e834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02391122_60fede2e",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T21:01:17Z",
+      "side": 1,
+      "message": "You should take these values from [DTS](https://github.com/zephyrproject-rtos/zephyr/blob/main/dts/arm/st/f4/stm32f4.dtsi#L515) using `STM32_DT_INST_CLOCKS()` macro (or `STM32_CLOCK_INFO()` if only APB1 clock should be disabled), instead of providing register and bit here.\n\nUnfortunately, the bit in DTS is different. According to the reference manual (RM0402 Rev 6 6.3.13) your version is correct.\n\nHave you considered disabling LSI clock?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "f97da467b1624e10ddfb7e561b0e9aa440a1e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cfac9ba_b19f61e0",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-02T21:01:17Z",
+      "side": 1,
+      "message": "RTC clocks are enabled by the driver. I believe we should disable RTC clocks here.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 14
+      },
+      "revId": "f97da467b1624e10ddfb7e561b0e9aa440a1e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
