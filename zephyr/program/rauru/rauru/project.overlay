@@ -4,6 +4,7 @@
  */
 
 #include <cros/cbi_flash.dtsi>
+#include <dt-bindings/motionsense/utils.h>
 
 #include "../arbitrage.dtsi"
 #include "../common.dtsi"
@@ -16,6 +17,75 @@
 #include "../power_signal.dtsi"
 
 / {
+	aliases {
+		bmi3xx-int = &base_accel;
+	};
+
+	/* Rotation matrix used by drivers. */
+	motionsense-rotation-ref {
+		compatible = "cros-ec,motionsense-rotation-ref";
+		base_rot_ref_bmi: base-rotation-ref-bmi {
+			mat33 = <(-1) 0 0
+				 0 (-1) 0
+				 0 0 1>;
+		};
+	};
+
+	motionsense-sensor-data {
+		bmi323_data: bmi323-drv-data {
+			compatible = "cros-ec,drvdata-bmi3xx";
+			status = "okay";
+		};
+	};
+	/*
+	 * Declare mutexes used by sensor drivers.
+	 * A mutex node is used to create an instance of mutex_t.
+	 * A mutex node is referenced by a sensor node if the
+	 * corresponding sensor driver needs to use the
+	 * instance of the mutex.
+	 */
+	motionsense-mutex {
+		compatible = "cros-ec,motionsense-mutex";
+		base_mutex: base-mutex {
+		};
+
+	};
+
+	motionsense-sensor {
+		base_accel: base-accel {
+			compatible = "cros-ec,bmi3xx-accel";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&base_mutex>;
+			port = <&i2c_ec_i2c_sensor_scl_1v8>;
+			rot-standard-ref = <&base_rot_ref_bmi>;
+			drv-data = <&bmi323_data>;
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+		base_gyro: base-gyro {
+			compatible = "cros-ec,bmi3xx-gyro";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&base_mutex>;
+			port = <&i2c_ec_i2c_sensor_scl_1v8>;
+			rot-standard-ref = <&base_rot_ref_bmi>;
+			drv-data = <&bmi323_data>;
+		};
+	};
+
 	batteries {
 		default_battery: cosmx-3 {
 			compatible = "cosmx,ap20cbl-3", "battery-smart";
