@@ -46,6 +46,30 @@
       },
       "revId": "1084db7b72b66eb445b43ed677f7397d87456eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175bc0fc_b11ed21b",
+        "filename": "zephyr/test/nissa/src/board_power.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-02T02:28:14Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "parentUuid": "9b815f55_f59df186",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 73
+      },
+      "revId": "1084db7b72b66eb445b43ed677f7397d87456eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
