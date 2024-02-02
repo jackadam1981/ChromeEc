@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dab3c09_9a2491dc",
+        "filename": "util/renode/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T23:36:03Z",
+      "side": 1,
+      "message": "```suggestion\nNote, Renode sets the HW-WP state automatically resets to the enabled state when\n```",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "1932ff5a897089a6590eca56ea2131726d0258e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
