@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3891261f_a524af8e",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T19:29:43Z",
+      "side": 1,
+      "message": "How about adding a `BUILD_ASSERT(params_buffer_size \u003e sizeof(*params));` (or whatever equivalent in Zephyr is).",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 48
+      },
+      "revId": "eed56965725ccc0653a167970e5899636fde32b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb00e49_8c5121b1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T19:29:43Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 48
+      },
+      "revId": "eed56965725ccc0653a167970e5899636fde32b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
