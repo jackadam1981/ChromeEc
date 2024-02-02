@@ -22,6 +22,30 @@
       },
       "revId": "af7175c653e88f6f946f7a33df65c13197665f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c376d5cb_b0694349",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-02T19:20:03Z",
+      "side": 1,
+      "message": "I assume Sam is tying the original TCPM1/2 EC_CMD_PD_CHIP_INFO implementation in, which calls tcpm_get_chip_info(), but a PDC impl of this HC has already been taken care of in https://crrev.com/c/5202124/9 and is being used by Depthcharge PDC FWUP. \n\nIf you desire to have one common HC impl, I\u0027d rather call this `pd_get_chip_info` across the board to make it TCPM vs PDC agnostic",
+      "parentUuid": "3cf94938_1a6eb3f3",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "af7175c653e88f6f946f7a33df65c13197665f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
