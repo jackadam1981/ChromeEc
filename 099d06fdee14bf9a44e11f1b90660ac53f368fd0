@@ -16,6 +16,52 @@
       "message": "responded to all comments",
       "revId": "099d06fdee14bf9a44e11f1b90660ac53f368fd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "224d0acc_b089042c",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T19:43:32Z",
+      "side": 1,
+      "message": "Should this be `rw`?",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "099d06fdee14bf9a44e11f1b90660ac53f368fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bcb5ac1_8d73b3c9",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T19:43:32Z",
+      "side": 1,
+      "message": "It would be good to reset `valid_word` and then make sure that it doesn\u0027t change after calling `test_send_console_command`.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "099d06fdee14bf9a44e11f1b90660ac53f368fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
