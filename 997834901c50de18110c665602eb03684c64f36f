@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82734565_c8b7e71f",
+        "filename": "common/console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-02T19:35:26Z",
+      "side": 1,
+      "message": "Can you create a followup CL to change this to `enum ec_error_list` so that we\u0027re not implicitly converting between `int` and `enum ec_error_list`?\n\nYou can run the `compare_build.sh` script on that CL since it shouldn\u0027t change the generated code.",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
