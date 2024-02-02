@@ -76,7 +76,7 @@
 		gpio_ec_prochot_odl: ec_prochot_odl {
 			gpios = <&gpiof 1 GPIO_ODR_HIGH>;
 		};
-		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
+		gpio_ec_soc_dsw_pwrok: pch_dpwrok {
 			gpios = <&gpio6 1 GPIO_OUTPUT>;
 		};
 		gpio_ec_soc_hdmi_hpd: ec_soc_hdmi_hpd {
@@ -86,14 +86,14 @@
 			gpios = <&gpio8 0 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_EC_INT_L";
 		};
-		gpio_ec_soc_pch_pwrok_od: ec_soc_pch_pwrok_od {
+		gpio_ec_soc_pch_pwrok_od: pch_pwrok {
 			gpios = <&gpio7 2 GPIO_ODR_HIGH>;
 		};
 		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
 			gpios = <&gpioc 1 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
-		gpio_ec_soc_rsmrst_l: ec_soc_rsmrst_l {
+		gpio_ec_soc_rsmrst_l: ec_rsmrst {
 			gpios = <&gpioa 6 GPIO_OUTPUT>;
 		};
 		gpio_ec_soc_rtcrst: ec_soc_rtcrst {
@@ -102,7 +102,7 @@
 		gpio_ec_soc_sys_pwrok: ec_soc_sys_pwrok {
 			gpios = <&gpio3 7 GPIO_OUTPUT>;
 		};
-		gpio_ec_soc_vccst_pwrgd_od: ec_soc_vccst_pwrgd_od {
+		gpio_ec_soc_vccst_pwrgd_od: ec_vccst_pg_r {
 			gpios = <&gpioa 4 GPIO_ODR_HIGH>;
 		};
 		gpio_ec_wp_odl: ec_wp_odl {
@@ -111,9 +111,6 @@
 		gpio_en_pp3300_s5: en_pp3300_s5 {
 			gpios = <&gpiob 6 GPIO_OUTPUT>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
-		};
-		gpio_en_pp5000_pen_x: en_pp5000_pen_x {
-			gpios = <&gpioe 2 GPIO_OUTPUT>;
 		};
 		gpio_en_pp5000_s5: en_pp5000_s5 {
 			gpios = <&gpio4 0 GPIO_OUTPUT>;
@@ -150,16 +147,16 @@
 		gpio_rsmrst_pwrgd_l: rsmrst_pwrgd_l {
 			gpios = <&gpio9 4 GPIO_INPUT_PULL_UP>;
 		};
-		gpio_slp_s0_l: slp_s0_l {
+		gpio_slp_s0_l: pm_slp_s0 {
 			gpios = <&gpio9 7 GPIO_INPUT>;
 		};
-		gpio_slp_s3_l: slp_s3_l {
+		gpio_slp_s3_l: pm_slp_s3 {
 			gpios = <&gpioa 5 GPIO_INPUT>;
 		};
-		gpio_slp_s4_l: slp_s4_l {
+		gpio_slp_s4_l: pm_slp_s4 {
 			gpios = <&gpio7 0 GPIO_INPUT>;
 		};
-		gpio_slp_sus_l: slp_sus_l {
+		gpio_slp_sus_l: slp_sus {
 			gpios = <&gpio6 2 GPIO_INPUT>;
 		};
 		gpio_sys_rst_odl: sys_rst_odl {
@@ -168,9 +165,6 @@
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpio9 5 GPIO_INPUT>;
 			enum-name = "GPIO_TABLET_MODE_L";
-		};
-		gpio_usb_c0_int_odl: usb_c0_int_odl {
-			gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
 		};
 		gpio_vccin_aux_vid0: vccin_aux_vid0 {
 			gpios = <&gpio9 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
@@ -199,9 +193,9 @@
 			i2c-port = <&i2c1_0>;
 			enum-names = "I2C_PORT_SENSOR";
 		};
-		i2c_ec_i2c_usb_c0: ec_i2c_usb_c0 {
+		i2c_i2c_ec_pmc_pd: i2c_ec_pmc_pd {
 			i2c-port = <&i2c3_0>;
-			enum-names = "I2C_PORT_USB_C0_TCPC";
+			enum-names = "I2C_PORT_PMC_PD";
 		};
 		i2c_ec_i2c_batt: ec_i2c_batt {
 			i2c-port = <&i2c7_0>;
