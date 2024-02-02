@@ -22,6 +22,30 @@
       },
       "revId": "4ebbddf6888ac7109a654fb4f40f5f72ebecc188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77fe0a8_b43e0a77",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-02T21:56:10Z",
+      "side": 1,
+      "message": "I expect this to be read from the DT as a list of OR macros and will result in a 16-bit number being set here. Or do you want 16 individual fields in the DT?",
+      "parentUuid": "4137dd45_06b217de",
+      "range": {
+        "startLine": 1820,
+        "startChar": 0,
+        "endLine": 1820,
+        "endChar": 65
+      },
+      "revId": "4ebbddf6888ac7109a654fb4f40f5f72ebecc188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
