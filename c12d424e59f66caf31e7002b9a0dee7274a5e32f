@@ -46,6 +46,30 @@
       },
       "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c15acd_d6c0a624",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-02T02:26:16Z",
+      "side": 0,
+      "message": "Done, removing unused macros.",
+      "parentUuid": "e7fbe27b_e70e1102",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "c12d424e59f66caf31e7002b9a0dee7274a5e32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
