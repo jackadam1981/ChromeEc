@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4137dd45_06b217de",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T18:27:46Z",
+      "side": 1,
+      "message": "Please use the bit fields instead of the raw_value.  I don\u0027t know what 0xDBE7 is.",
+      "range": {
+        "startLine": 1820,
+        "startChar": 0,
+        "endLine": 1820,
+        "endChar": 65
+      },
+      "revId": "4ebbddf6888ac7109a654fb4f40f5f72ebecc188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
