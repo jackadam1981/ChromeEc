@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d982dd3a_d2f7e002",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T16:01:29Z",
+      "side": 1,
+      "message": "I don\u0027t like that ST_IRQ is effectively an empty state for one of the ports.  The IRQ flow is difficult to follow, and processing in a state adds up to an extra 10ms latency.  It\u0027s also random as to which port ends up processing the interrupt and sending the `get_ara()`,\n\nI don\u0027t agree that enabling/disabling interrupts is less safe. All you need to do is disable the interrupt during init, enable the interrupt in ST_IDLE entry, and disable the interrupt in ST_WRITE entry.",
+      "parentUuid": "61035899_fbb8787d",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 28
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7639dbdd_8c5f5e70",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 6
