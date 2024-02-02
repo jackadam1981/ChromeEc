@@ -34,6 +34,24 @@
       "parentUuid": "bb2c029b_ccad4159",
       "revId": "9e9552cad6a50c426569c1fbb93d170b1cb1330c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac65410f_56025ae4",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-02T19:04:34Z",
+      "side": 1,
+      "message": "Note the CQ-depend includes all CLs with the board changes.",
+      "parentUuid": "c033ca6d_3dff557e",
+      "revId": "9e9552cad6a50c426569c1fbb93d170b1cb1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
