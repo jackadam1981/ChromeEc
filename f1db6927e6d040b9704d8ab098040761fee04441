@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bda3d97_5280d38f",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-02T17:42:15Z",
+      "side": 1,
+      "message": "From our conversation, I\u0027ve removed the IRQ state and the code to the IDLE state. I\u0027ll add a followup CL that adds event logic.",
+      "parentUuid": "d982dd3a_d2f7e002",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 28
+      },
+      "revId": "f1db6927e6d040b9704d8ab098040761fee04441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7639dbdd_8c5f5e70",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 6
