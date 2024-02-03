@@ -401,13 +401,6 @@ static int get_ara(const struct device *dev, uint8_t *ara)
 	return i2c_read(cfg->i2c.bus, ara, 1, SMBUS_ADDRESS_ARA);
 }
 
-static void perform_pdc_init(struct pdc_data_t *data)
-{
-	/* Set initial local state of Init */
-	data->init_local_state = INIT_PDC_ENABLE;
-	set_state(data, ST_INIT);
-}
-
 /**
  * @brief This function performs a state change, so a return should
  * be placed after its immediate call.
@@ -577,14 +570,7 @@ static void st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
-	/*
-	 * Priority of events:
-	 *  1: CMD_TRIGGER_PDC_RESET
-	 *  2: Non-Reset command
-	 */
-	if (data->cmd == CMD_TRIGGER_PDC_RESET) {
-		perform_pdc_init(data);
-	} else if (data->cmd != CMD_NONE) {
+	if (data->cmd != CMD_NONE) {
 		set_state(data, ST_WRITE);
 	}
 }
