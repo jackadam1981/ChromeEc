@@ -122,6 +122,14 @@ void power_signal_espi_cb(const struct device *dev, struct espi_callback *cb,
 		 * `event.evt_data` in event `ESPI_BUS_RESET` holds Reset# pin
 		 * state. Low: Reset Asserted & High: Reset De-asserted.
 		 */
+#if defined(CONFIG_ESPI_NPCX)
+		/*
+		 * eSPI NPCX implementation uses reverse logic to report reset
+		 * state with `event.evt_data`.
+		 * TODO: Remove after b:323559196 is addressed.
+		 */
+		event.evt_data = !event.evt_data;
+#endif
 		if (event.evt_data) {
 			/* All VW signals are reset on bus reset deassertion */
 			vw_reset_all();
