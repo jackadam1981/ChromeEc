@@ -170,9 +170,15 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_sensor_1 {
+			temp_host_high = <72>;
+			temp_host_halt = <75>;
+			temp_host_release_high = <69>;
 			sensor = <&temp_sensor_1_thermistor>;
 		};
 		temp_charger: charger {
+			temp_host_high = <85>;
+			temp_host_halt = <88>;
+			temp_host_release_high = <83>;
 			sensor = <&charger_bc12_port1>;
 		};
 	};
