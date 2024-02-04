@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443c6c4d_7c38d71b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-04T06:59:29Z",
+      "side": 1,
+      "message": "This function has the exact code that used to be inside the switch statement in `dap_goog_gpio()` below.",
+      "revId": "51adc65968d6600c1670db543156c2e3f8c861bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
