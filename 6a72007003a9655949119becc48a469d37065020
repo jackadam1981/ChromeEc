@@ -22,6 +22,30 @@
       },
       "revId": "6a72007003a9655949119becc48a469d37065020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1dca03a_e11ea74d",
+        "filename": "board/hyperdebug/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-04T05:48:37Z",
+      "side": 1,
+      "message": "I have been thinking about it.  The names of pins are of the form `CNxx_xx` meaning that even if a we do gpio monitoring of the maximum of 16 pins it would use 128 characters worst case, leaving another 128 for the rest of the parameters on the command line.  I do not think that we will run into issues with a 256 character limit.\n\nAlso, the EC code by default reserves space for a command history of length 8, so any increase will be multiplied.  We do have the RAM, but I think it also makes sense to save some for future uses, since I doubt there is any benefit from going above 256.",
+      "parentUuid": "8af38474_d8621fb5",
+      "range": {
+        "startLine": 109,
+        "startChar": 39,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "6a72007003a9655949119becc48a469d37065020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
