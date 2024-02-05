@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc37dc5f_9fac39cf",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-05T21:51:31Z",
+      "side": 0,
+      "message": "Should this `update_ap_boot_time` be retained?",
+      "revId": "14d863de2a0036982f1740f8ceff0d8286a9a0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
