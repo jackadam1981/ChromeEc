@@ -1,0 +1,75 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aec87dd_f99a2282",
+        "filename": "extra/um_ppm/include/pd_driver.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-05T23:17:00Z",
+      "side": 1,
+      "message": "\u003e \"addressible\" is a possible misspelling of \"addressable\".\n\nPlease fix.",
+      "parentUuid": "695c21ff_43bfb64e",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "0fc02f9fd01fa2624a9a69d79dceee40cd9b25cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caed884_b8b92399",
+        "filename": "extra/um_ppm/include/pd_driver.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-05T23:17:00Z",
+      "side": 1,
+      "message": "\u003e \"addressible\" is a possible misspelling of \"addressable\".\n\nPlease fix.",
+      "parentUuid": "fd471d5e_159ac962",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "0fc02f9fd01fa2624a9a69d79dceee40cd9b25cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e525632_e7450704",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-05T23:17:00Z",
+      "side": 1,
+      "message": "What\u0027s the plan for addressing the code style deviations?  Will that be fixed in the first CL or with a follow up?\n\nDoes `cros format` fix C++ style comments?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "0fc02f9fd01fa2624a9a69d79dceee40cd9b25cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
