@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "254e01e2_d656a28b",
+        "filename": "common/console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-05T17:52:23Z",
+      "side": 1,
+      "message": "I will do this as a follow up CL. I created a bug for this purpose and assigned it to myself",
+      "parentUuid": "608b2b33_d64e3a54",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "464784b7_13ca2609",
@@ -65,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a67f87_583c9b59",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-05T17:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464784b7_13ca2609",
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41d9146f_05b14efb",
@@ -78,6 +120,30 @@
       "writtenOn": "2024-02-02T20:11:28Z",
       "side": 1,
       "message": "Probably want `const char *input`.",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce22747c_ab9626c0",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-05T17:52:23Z",
+      "side": 1,
+      "message": "but `handle_command` does not take a `const char *input`. This makes things incompatible.",
+      "parentUuid": "41d9146f_05b14efb",
       "range": {
         "startLine": 196,
         "startChar": 45,
