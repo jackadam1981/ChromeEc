@@ -46,6 +46,30 @@
       },
       "revId": "af7175c653e88f6f946f7a33df65c13197665f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453ed7c2_7120c85e",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-05T20:50:03Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "c376d5cb_b0694349",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "af7175c653e88f6f946f7a33df65c13197665f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
