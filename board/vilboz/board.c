@@ -501,6 +501,7 @@ const int usb_port_enable[USBA_PORT_COUNT] = {
 	GPIO_EN_USB_A1_5V,
 };
 
+<<<<<<< HEAD   (8e68c7 Battery: Apply fake SoC to display charge)
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 			int max_ma, int charge_mv)
 {
@@ -513,4 +514,35 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	charge_set_input_current_limit(MAX(charge_ma,
 				CONFIG_CHARGER_INPUT_CURRENT),
 				charge_mv);
+=======
+void board_hibernate_late(void)
+{
+	NPCX_KBSINPU = 0x08;
+}
+
+__override void zork_board_hibernate(void)
+{
+	/**
+	 * CONFIG_HIBERNATE_PSL is disabled on vilboz, so PPC is powered while
+	 * EC hibernates. Make sure the source FET is off and sink FET is on.
+	 */
+	ppc_vbus_source_enable(0, 0);
+	ppc_vbus_sink_enable(0, 1);
+
+	/**
+	 * Disable the SNKEN gpio on the TCPC so it goes into Hi-Z
+	 * state (same as dead battery state) which allows the board to
+	 * wake from AC.
+	 *
+	 * Disable low power mode temporarily since the SNKEN register
+	 * will be overwritten during low power exit.
+	 */
+	pd_prevent_low_power_mode(0, 1);
+	pd_wait_exit_low_power(0);
+	/* Delay to allow PD task to settle after low power exit */
+	msleep(100);
+	tcpc_update8(0, NCT38XX_REG_CTRL_OUT_EN, NCT38XX_REG_CTRL_OUT_EN_SNKEN,
+		     MASK_CLR);
+	pd_prevent_low_power_mode(0, 0);
+>>>>>>> CHANGE (d1affe Vilboz:undef hibernate psl and keep KSI3 high in deep sleep)
 }
