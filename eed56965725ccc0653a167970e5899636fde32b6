@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d947e8_7b6bb6e6",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:07:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3891261f_a524af8e",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 48
+      },
+      "revId": "eed56965725ccc0653a167970e5899636fde32b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbb00e49_8c5121b1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-02T19:29:43Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 48
+      },
+      "revId": "eed56965725ccc0653a167970e5899636fde32b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197cc524_eae4c993",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:07:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb00e49_8c5121b1",
       "range": {
         "startLine": 348,
         "startChar": 0,
