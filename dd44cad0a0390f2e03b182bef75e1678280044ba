@@ -46,6 +46,30 @@
       },
       "revId": "dd44cad0a0390f2e03b182bef75e1678280044ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d23cf63_405613a4",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-05T22:05:22Z",
+      "side": 1,
+      "message": "Reading the Realtek SMBUS programming guide, I see that the flow here does match their suggested initialization steps. I didn\u0027t realize that SET_NOTIFICATION_ENABLE is considered Realtek defined even though that register is also defined in UCSI.",
+      "parentUuid": "123baaf7_bd05e3d0",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "dd44cad0a0390f2e03b182bef75e1678280044ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
