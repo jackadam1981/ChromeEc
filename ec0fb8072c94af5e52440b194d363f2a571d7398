@@ -33,6 +33,24 @@
       "message": "Is there any reason why you didn\u0027t mock the specific [console_is_restricted function](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/hatch_fp/board.c;l\u003d17-25;drc\u003dec0b07f4b1d938abc7e3b37eabb8661c40982e8a), instead?",
       "revId": "ec0fb8072c94af5e52440b194d363f2a571d7398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0470b5_5283de14",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-05T17:58:38Z",
+      "side": 1,
+      "message": "I believe it leads to the same result, right?",
+      "parentUuid": "413929a8_f9cae685",
+      "revId": "ec0fb8072c94af5e52440b194d363f2a571d7398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

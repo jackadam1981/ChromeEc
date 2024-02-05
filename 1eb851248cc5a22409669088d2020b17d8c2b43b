@@ -70,6 +70,30 @@
       },
       "revId": "1eb851248cc5a22409669088d2020b17d8c2b43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3213f3_04e3225e",
+        "filename": "test/rtc_stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-05T17:58:38Z",
+      "side": 1,
+      "message": "this was resolved. I was doing some logging to understand this issue.",
+      "parentUuid": "a514b026_b3180486",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "1eb851248cc5a22409669088d2020b17d8c2b43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
