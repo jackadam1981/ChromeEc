@@ -100,7 +100,7 @@ __attribute__((weak)) int sensor_board_is_lid_angle_available(void)
 #define CONFIG_ACCEL_FORCE_MODE_MASK 0
 #endif
 
-STATIC_IF_NOT(CONFIG_ZTEST)
+STATIC_IF_NOT(CONFIG_TEST)
 enum sensor_config motion_sense_get_ec_config(void)
 {
 	switch (sensor_active) {
