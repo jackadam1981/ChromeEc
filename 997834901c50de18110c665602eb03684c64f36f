@@ -152,6 +152,30 @@
       },
       "revId": "997834901c50de18110c665602eb03684c64f36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2acf62e_28f9d5bf",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-05T18:18:16Z",
+      "side": 1,
+      "message": "If you change `handle_command` to `const char *input`, does everything compile?\n\nIt would probably be a good change to make if it does. (I would make a separate CL for it though since it\u0027s somewhat tangential to this CL.)",
+      "parentUuid": "ce22747c_ab9626c0",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
