@@ -46,6 +46,30 @@
       },
       "revId": "4ebbddf6888ac7109a654fb4f40f5f72ebecc188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d64cc1_0c467629",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-05T20:47:43Z",
+      "side": 1,
+      "message": "This magic number forces the reader to look up the bit definition.\n\nIf you use the bitfield names, it\u0027s a lot clearer of the intent.\n```\n.bits.command_completed \u003d 1,\n.bits.external_supply_change \u003d 1,\n.bits.power_operation_mode_change \u003d 1,\n/* ... */\n```\n\nWhen this gets moved to the devicetree, it will be much easier for a reviewer to confirm correctness.  You can then revert back to using the raw_value.\n\n```\n/* DT policy */\n.notifications \u003d \u003c(COMMAND_COMPLETE\n    | EXTERNAL_SUPPLY_CHANGE\n    | POWER_OPERATION_MODE_CHANGE\n    | /* ... */)\u003e;\n    \n/* Driver code */\n.bits.raw_value \u003d DT_PROP(notifications),\n```",
+      "parentUuid": "f77fe0a8_b43e0a77",
+      "range": {
+        "startLine": 1820,
+        "startChar": 0,
+        "endLine": 1820,
+        "endChar": 65
+      },
+      "revId": "4ebbddf6888ac7109a654fb4f40f5f72ebecc188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
