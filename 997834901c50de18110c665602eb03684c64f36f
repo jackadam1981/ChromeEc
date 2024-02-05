@@ -200,6 +200,30 @@
       },
       "revId": "997834901c50de18110c665602eb03684c64f36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb9cf464_552dd9e0",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-05T21:06:19Z",
+      "side": 1,
+      "message": "Small nit: Instead of adding it after this change like https://crrev.com/c/5269635, can you create a CL that comes before this one that changes\n\n`int handle_command(char *input)` \n\nin `console.c` to\n\n`int handle_command(const char *input)`?\n\nThen this CL can have the changes to `test_util.c`/`test_util.h` to be `const`.\n\nI think it\u0027s a little bit clearer that way since it separates the change to `console.c` from the changes to the test functions.",
+      "parentUuid": "a84ba7e6_5c0b99f0",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
