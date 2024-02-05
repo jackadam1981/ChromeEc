@@ -104,7 +104,7 @@ void udelay(unsigned int us);
  *
  * @param us		Number of microseconds to sleep.
  */
-void usleep(unsigned int us);
+int usleep(unsigned int us);
 
 /**
  * Sleep for milliseconds.
@@ -125,9 +125,10 @@ static inline void msleep(unsigned int ms)
  *
  * @param sec		Number of seconds to sleep.
  */
-static inline void sleep(unsigned int sec)
+static inline unsigned int sleep(unsigned int sec)
 {
 	usleep(sec * SECOND);
+	return 0;
 }
 
 /**
