@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e01696_29cd2d89",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-02-05T22:01:54Z",
+      "side": 1,
+      "message": "Confirm if the ITE flash tool is OK with a not-256-byte-aligned size, or it needs to be rounded it up.",
+      "range": {
+        "startLine": 2007,
+        "startChar": 2,
+        "endLine": 2007,
+        "endChar": 14
+      },
+      "revId": "cdd7a34345ae2de1bb3bc6963f3efb9ba6f072db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
