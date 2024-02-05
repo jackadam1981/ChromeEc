@@ -142,6 +142,30 @@
       },
       "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6375f8fb_57d732c3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-05T09:38:33Z",
+      "side": 1,
+      "message": "I don\u0027t think it does, here\u0027s the sample I ran:\n\n- Assuming a threshold of 50ms and an S3 ODR of 5Hz\n- Set the ODR to 5000mHz (200ms delay)\n- `enable` will be `false` since 1000000 / 5000 (200ms) is above the threshold of 50ms\n- call `enable_interrupt(sensor, false)` to turn off interrupts\n- `ec_rate \u003d 1000000000 / 5000 \u003d 200000` which gives us the 200ms sleep. If we used the threshold we would only sleep for 50ms.",
+      "parentUuid": "fa1a5021_fd077770",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
