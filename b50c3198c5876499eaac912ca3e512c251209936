@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a85451_5c857b7f",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-02-05T21:40:36Z",
+      "side": 1,
+      "message": "are you sure you want to sleep with the lock held?\n\nlooks like the two tasks that may go through this lock\nare the hook task for CHIPSET_SUSPEND and the keyboard task.\n\nwhat is the purpose of the sleep? are you trying to avoid\nover-running a transmit FIFO?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "b50c3198c5876499eaac912ca3e512c251209936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
