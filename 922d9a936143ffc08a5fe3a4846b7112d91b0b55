@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f19e8cb_dd7d6e98",
+        "filename": "board/xol/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-02-05T10:44:26Z",
+      "side": 1,
+      "message": "We should continuously use this function to change the values.",
+      "parentUuid": "0b43b19c_61582523",
+      "revId": "922d9a936143ffc08a5fe3a4846b7112d91b0b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a5891d_6e59e6f4",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9333390f_85934c00",
+        "filename": "board/xol/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-02-05T10:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a5891d_6e59e6f4",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 6
+      },
+      "revId": "922d9a936143ffc08a5fe3a4846b7112d91b0b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96dc35a7_a914aba5",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-02-04T06:25:48Z",
       "side": 1,
       "message": "This function should be unnecessary for xol",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 1
+      },
+      "revId": "922d9a936143ffc08a5fe3a4846b7112d91b0b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ca8d8c_a5cbdace",
+        "filename": "board/xol/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-02-05T10:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96dc35a7_a914aba5",
       "range": {
         "startLine": 191,
         "startChar": 0,
