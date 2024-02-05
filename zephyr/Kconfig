@@ -26,6 +26,7 @@ rsource "fake/Kconfig"
 rsource "mock/Kconfig"
 rsource "subsys/Kconfig"
 rsource "subsys/emul/Kconfig"
+rsource "test_lib/Kconfig"
 
 if ZTEST
 
