@@ -16,6 +16,24 @@
       "message": "Why are you making this file public.  This header was made private on https://crrev.com/c/5234583",
       "revId": "8dedb3c5a1c2b48eb132002142e8241384038a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59863af3_6e7d3665",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-05T20:58:22Z",
+      "side": 1,
+      "message": "Proper emulator tests will require definitions from this file. In particular, the rts54xx only allows putting EPR PDOs in certain PDOs offsets. This header is a natural place to define that value for use in both the emulator and the tests. Though I could either put that into its own separate public header, make the commit message a little more clear, or break that out into its own CL.",
+      "parentUuid": "b244becb_a240f0b0",
+      "revId": "8dedb3c5a1c2b48eb132002142e8241384038a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
