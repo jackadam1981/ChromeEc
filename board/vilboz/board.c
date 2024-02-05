@@ -13,6 +13,7 @@
 #include "driver/ioexpander/pcal6408.h"
 #include "driver/ppc/aoz1380_public.h"
 #include "driver/tcpm/nct38xx.h"
+#include "driver/tcpm/tcpci.h"
 #include "driver/usb_mux/amd_fp5.h"
 #include "extpower.h"
 #include "fan.h"
@@ -505,3 +506,36 @@ const int usb_port_enable[USBA_PORT_COUNT] = {
 	IOEX_EN_USB_A0_5V,
 	GPIO_EN_USB_A1_5V,
 };
+
+void board_hibernate_late(void)
+{
+	NPCX_KBSINPU = 0x08;
+}
+
+__override int nct38xx_tcpm_set_cc(int port, int pull)
+{
+	enum mask_update_action action = MASK_CLR;
+	int rv;
+
+	rv = tcpc_update8(port, NCT38XX_REG_CTRL_OUT_EN,
+			  NCT38XX_REG_CTRL_OUT_EN_SNKEN, action);
+	if (rv)
+		return rv;
+
+	return tcpci_tcpm_set_cc(port, pull);
+}
+
+__override int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
+{
+	int rv;
+
+	if (!enable) {
+		rv = tcpc_update8(port, NCT38XX_REG_CTRL_OUT_EN,
+				  NCT38XX_REG_CTRL_OUT_EN_SNKEN, MASK_CLR);
+
+		if (rv)
+			return rv;
+	}
+
+	return tcpci_tcpm_set_snk_ctrl(port, enable);
+}

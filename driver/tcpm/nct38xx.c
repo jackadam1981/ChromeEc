@@ -203,7 +203,7 @@ test_export_static int nct38xx_tcpm_init(int port)
 	return nct38xx_init(port);
 }
 
-test_export_static int nct38xx_tcpm_set_cc(int port, int pull)
+__overridable int nct38xx_tcpm_set_cc(int port, int pull)
 {
 	/*
 	 * Setting the CC lines to open/open requires that the NCT CTRL_OUT
@@ -241,7 +241,7 @@ test_export_static int nct38xx_tcpm_set_cc(int port, int pull)
 	return tcpci_tcpm_set_cc(port, pull);
 }
 
-test_export_static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
+__overridable int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 {
 	int rv;
 

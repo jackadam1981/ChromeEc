@@ -28,6 +28,7 @@
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
+#include "nct38xx.h"
 #include "power.h"
 #include "power_button.h"
 #include "printf.h"
@@ -42,6 +43,7 @@
 #include "temp_sensor/thermistor.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #define SAFE_RESET_VBUS_MV 5000
@@ -213,6 +215,13 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 void board_hibernate(void)
 {
 	int port;
+
+	if (!IS_ENABLED(CONFIG_HIBERNATE_PSL)) {
+		ppc_vbus_source_enable(0, 0);
+		ppc_vbus_sink_enable(0, 0);
+		nct38xx_tcpm_set_snk_ctrl(0, 0);
+		msleep(100);
+	}
 
 	/*
 	 * If we are charging, then drop the Vbus level down to 5V to ensure
