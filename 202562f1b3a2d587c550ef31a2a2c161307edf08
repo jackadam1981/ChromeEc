@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d64e32e4_44b7329c",
+        "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T17:04:53Z",
+      "side": 1,
+      "message": "Yeah, unfortunately. BEP functions take image as `void *`.",
+      "parentUuid": "2803fa9d_c5eb70e5",
+      "range": {
+        "startLine": 105,
+        "startChar": 44,
+        "endLine": 105,
+        "endChar": 55
+      },
+      "revId": "202562f1b3a2d587c550ef31a2a2c161307edf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48492726_ef46ab40",
         "filename": "zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c",
         "patchSetId": 1
