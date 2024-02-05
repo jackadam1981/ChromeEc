@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2a31b2_188954dd",
+        "filename": "extra/um_ppm/include/pd_driver.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-05T23:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aec87dd_f99a2282",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "0fc02f9fd01fa2624a9a69d79dceee40cd9b25cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7caed884_b8b92399",
@@ -49,6 +73,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1887403b_d6e90171",
+        "filename": "extra/um_ppm/include/pd_driver.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-05T23:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7caed884_b8b92399",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "0fc02f9fd01fa2624a9a69d79dceee40cd9b25cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e525632_e7450704",
@@ -62,6 +110,30 @@
       "writtenOn": "2024-02-05T23:17:00Z",
       "side": 1,
       "message": "What\u0027s the plan for addressing the code style deviations?  Will that be fixed in the first CL or with a follow up?\n\nDoes `cros format` fix C++ style comments?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "0fc02f9fd01fa2624a9a69d79dceee40cd9b25cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7964d410_03d0adf7",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-05T23:25:38Z",
+      "side": 1,
+      "message": "cros format doesn\u0027t fix C++ comments. I expect them to be fixed as they\u0027re moved to the right directories.",
+      "parentUuid": "9e525632_e7450704",
       "range": {
         "startLine": 17,
         "startChar": 0,
