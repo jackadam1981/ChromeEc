@@ -22,6 +22,30 @@
       },
       "revId": "31014a69d68a070a6ee5c730288b68f4f23ec6ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83dc3cf8_a7c7b5ef",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-05T21:23:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5dfcf14f_91d3e6f5",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 49
+      },
+      "revId": "31014a69d68a070a6ee5c730288b68f4f23ec6ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
