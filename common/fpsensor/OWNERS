@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (f354f1 Merge remote-tracking branch cros/main into firmware-fpmcu-h)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/owners:v1:/firmware/OWNERS.cros_fp
+>>>>>>> BRANCH (829086 anraggar: Add PPC smart discharge for detecting VBUS)
