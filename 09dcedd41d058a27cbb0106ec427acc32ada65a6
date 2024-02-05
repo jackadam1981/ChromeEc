@@ -22,6 +22,30 @@
       },
       "revId": "09dcedd41d058a27cbb0106ec427acc32ada65a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9914f1_328d2dcf",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-05T11:21:02Z",
+      "side": 1,
+      "message": "The `LOG_OUTPUT_FORMAT_CUSTOM_TIMESTAMP` config [depends on](https://github.com/zephyrproject-rtos/zephyr/blob/main/subsys/logging/Kconfig#L28) `!LOG_MODE_MINIMAL` so I think it is not necessary here.",
+      "parentUuid": "05092817_87a9a041",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "09dcedd41d058a27cbb0106ec427acc32ada65a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
