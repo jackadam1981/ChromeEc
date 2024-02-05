@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a289f512_3b2f6fbd",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:23:53Z",
+      "side": 1,
+      "message": "\u003e Move to the top with the rest of the static variables?\n\nDone\n\n\u003e It might be good to set them all to 0 in the fpsensor_before\n\nDone\n\n\u003e is it possible to use the ztest \"fixture\" to pass this data around?\n\nNo. I use these values in `custom_match()` which is called by the fpsensor task, so I would need to inject fixture to this function somehow. I don\u0027t think this is supported by FFF.",
+      "parentUuid": "4e972e24_801f55ff",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 38
+      },
+      "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e87eb91b_bfe28d29",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-02T18:38:21Z",
       "side": 1,
       "message": "Does the fpsensor state for tracking dirty templates get reset between tests?",
+      "range": {
+        "startLine": 529,
+        "startChar": 1,
+        "endLine": 529,
+        "endChar": 41
+      },
+      "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512086df_8b19797d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:23:53Z",
+      "side": 1,
+      "message": "Yes. Changing context clears `template_dirty`.",
+      "parentUuid": "e87eb91b_bfe28d29",
       "range": {
         "startLine": 529,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93db290a_f2d5d78f",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742af5f8_1d6fd355",
+      "range": {
+        "startLine": 780,
+        "startChar": 1,
+        "endLine": 780,
+        "endChar": 15
+      },
+      "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16695bf7_8b1d0f80",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-02T18:38:21Z",
       "side": 1,
       "message": "Same as comment above.",
+      "range": {
+        "startLine": 826,
+        "startChar": 1,
+        "endLine": 826,
+        "endChar": 15
+      },
+      "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a3ee02_3c126f80",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16695bf7_8b1d0f80",
       "range": {
         "startLine": 826,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec30ffd_a471cd30",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4e72c92_d1e970e7",
+      "range": {
+        "startLine": 872,
+        "startChar": 1,
+        "endLine": 872,
+        "endChar": 15
+      },
+      "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58be8cdf_90cae0eb",
@@ -129,6 +249,24 @@
       "writtenOn": "2024-02-02T18:38:21Z",
       "side": 1,
       "message": "`Match failed`?",
+      "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee665cd_8c07f469",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T14:23:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58be8cdf_90cae0eb",
       "revId": "8d54afd2bc4161a02f93a99c282d78345b96727c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
