@@ -16,6 +16,24 @@
       "message": "Should this `update_ap_boot_time` be retained?",
       "revId": "14d863de2a0036982f1740f8ceff0d8286a9a0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c662f156_f9fabdfb",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-05T23:49:09Z",
+      "side": 0,
+      "message": "Done, I also included Log message for debugging.",
+      "parentUuid": "cc37dc5f_9fac39cf",
+      "revId": "14d863de2a0036982f1740f8ceff0d8286a9a0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
