@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192af4ed_e0215a3f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-05T20:32:49Z",
+      "side": 1,
+      "message": "Nit: Can you make this an enum? This file has a lot of macros, but I\u0027d like to use more expressive types going forward.",
+      "revId": "f8b9898f30751c4f811467ccafbee24f542ee096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
