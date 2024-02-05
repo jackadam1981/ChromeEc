@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3ed9de_15439a26",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-05T21:49:43Z",
+      "side": 1,
+      "message": "I recognize the basic order of operations isn\u0027t being changed, but it\u0027s not clear to me why setting the notification enable register is done prior to PPM_RESET. If PPM_RESET is supposed to reset all of the UCSI registers to their default state, does that not include the notification enable register?",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "dd44cad0a0390f2e03b182bef75e1678280044ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
