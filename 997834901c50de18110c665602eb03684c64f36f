@@ -224,6 +224,30 @@
       },
       "revId": "997834901c50de18110c665602eb03684c64f36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f16c89_a6b3374c",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-05T21:52:02Z",
+      "side": 1,
+      "message": "I created this CL. However, with this change, I get this error:\n```\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ make BOARD\u003dbloonchipper test-restricted_console\n  BUILD   build/bloonchipper/restricted_console\n  VERSION ec_version.h\n  CC      RW/common/console.o\ncommon/console.c:225:14: error: passing \u0027const char *\u0027 to parameter of type \u0027char *\u0027 discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]\n  225 |         split_words(input, \u0026argc, argv);\n      |                     ^~~~~\ncommon/console.c:88:30: note: passing argument to parameter \u0027input\u0027 here\n   88 | static int split_words(char *input, int *argc, const char **argv)\n      |                              ^\n1 error generated.\nmake[1]: *** [Makefile.rules:637: build/bloonchipper/restricted_console/RW/common/console.o] Error 1\nmake: *** [Makefile.rules:345: test-restricted_console] Error 2\n```\nI believe that `split_words` does not accept a const pointer.",
+      "parentUuid": "bb9cf464_552dd9e0",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
