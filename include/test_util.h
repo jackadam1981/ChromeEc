@@ -211,7 +211,7 @@ enum ec_status test_send_host_command(int command, int version,
 				      void *resp, int resp_size);
 
 /* Simulates console command sent from the host send_con*/
-enum ec_error_list test_send_console_command(char *input);
+enum ec_error_list test_send_console_command(const char *input);
 
 /* Optionally defined interrupt generator entry point */
 void interrupt_generator(void);
