@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8ef24f_c3ddf4a0",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-05T11:04:38Z",
+      "side": 1,
+      "message": "Could you move it under the `# Logging` to keep all logging related configs in one place?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 41
+      },
+      "revId": "f36defe9d053896c858bf37f96fa7ca9cf23b127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
