@@ -248,6 +248,30 @@
       },
       "revId": "997834901c50de18110c665602eb03684c64f36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a150b0_6698bdaa",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-06T19:15:07Z",
+      "side": 1,
+      "message": "\u003e I believe that split_words does not accept a const pointer.\n\nYes, that is correct: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5270682/comments/c3c10c4a_19582efa\n\nSince the `const` needs to propagate we\u0027ll need to remove it from `handle_command`. We don\u0027t want to cast it away because that is \"lying\" about `input`\u0027s `const`-ness (i.e., it is *not* `const`).",
+      "parentUuid": "b8f16c89_a6b3374c",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
