@@ -2,5 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-add_subdirectory_ifdef(CONFIG_PLATFORM_EC_GTEST_MAIN gtest_main)
-add_subdirectory_ifdef(CONFIG_SHELL shell)
+zephyr_library_sources(main.cc)
+zephyr_library_link_libraries(
+    pw_unit_test.light
+    pw_unit_test.logging_event_handler
+)
