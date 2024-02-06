@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcdbbf40_6abe3ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-06T03:29:38Z",
+      "side": 1,
+      "message": "PTAL, I changed the file naming to use `base_` prefix. This allows it to be consistent with the next change that adds `base_gpio.inc` and `base_ec.tasklist`.",
+      "revId": "fccf70493b94f8ccd5715e4665444e2ea0f49119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
