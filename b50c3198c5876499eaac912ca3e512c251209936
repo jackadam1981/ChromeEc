@@ -22,6 +22,30 @@
       },
       "revId": "b50c3198c5876499eaac912ca3e512c251209936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ecfb02_a86b3da1",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-02-06T01:26:54Z",
+      "side": 1,
+      "message": "Add the delay to make sure we get the ACK(0xFA) from PS2 device before we send another PS2 command to the device.\n\nWithout the delay, the PS2 command may not take affact due to PS2 device didn\u0027t return ACK.",
+      "parentUuid": "82a85451_5c857b7f",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "b50c3198c5876499eaac912ca3e512c251209936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
