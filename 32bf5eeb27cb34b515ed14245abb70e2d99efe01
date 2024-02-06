@@ -94,6 +94,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a22e6a5_6e263c6a",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-06T21:19:13Z",
+      "side": 1,
+      "message": "`PLATFORM_EC_USB_PD_DP_MODE` depends on `PLATFORM_EC_USB_POWER_DELIVERY` which depends on choosing `PLATFORM_EC_USBC_STACK` as `PLATFORM_EC_USB_PD_TCPMV2`.\n\n`PLATFORM_EC_USB_PD_TBT_COMPAT_MODE` depends on `PLATFORM_EC_USB_PD_REV30` which depends on `PLATFORM_EC_USB_POWER_DELIVERY` which depends on choosing `PLATFORM_EC_USBC_STACK` as `PLATFORM_EC_USB_PD_TCPMV2`.",
+      "parentUuid": "a6ac1993_dcb62ee1",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
