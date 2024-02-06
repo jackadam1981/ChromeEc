@@ -1,3 +1,23 @@
 # Copyright 2024 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+
+config PLATFORM_EC_GTEST_LIB
+  bool
+  default y
+  depends on TEST
+  depends on CPP
+  depends on REQUIRES_FULL_LIBCPP
+  depends on STD_CPP20
+  depends on PIGWEED_ASSERT
+  depends on LOG
+  depends on LOG_MODE_MINIMAL
+  depends on PIGWEED_LOG_ZEPHYR
+  depends on PIGWEED_SYS_IO
+
+config PLATFORM_EC_GTEST_MAIN
+  bool "Include a default test_main which runs gTest"
+  default y
+  depends on !ZTEST
+  depends on TEST
+  depends on PLATFORM_EC_GTEST_LIB
