@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16733ae_3b64fbd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "This is another really cool feature! 😊",
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32edf2b_542849e3",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "do you still want this print?",
+      "range": {
+        "startLine": 1113,
+        "startChar": 2,
+        "endLine": 1113,
+        "endChar": 36
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3157f97b_465050f8",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "so with this kind of circular buffer, we only get ((2^n) - 1) elements instead of 2^n. We should document that somewhere in the header comments 😊",
+      "range": {
+        "startLine": 1117,
+        "startChar": 5,
+        "endLine": 1117,
+        "endChar": 32
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c224f735_86e2708a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "this if statement needs a comment and/or `0x80` needs to be a named constant",
+      "range": {
+        "startLine": 1127,
+        "startChar": 0,
+        "endLine": 1127,
+        "endChar": 24
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a7524c_e660b520",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "I am sure this stanza will repeat. We should pull this out into a function",
+      "range": {
+        "startLine": 1132,
+        "startChar": 3,
+        "endLine": 1134,
+        "endChar": 31
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f50035_1a53ea0f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "named constant",
+      "range": {
+        "startLine": 1136,
+        "startChar": 18,
+        "endLine": 1136,
+        "endChar": 22
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268ba869_9706ec05",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "we need to have overflow checking for this incoming data",
+      "range": {
+        "startLine": 1137,
+        "startChar": 3,
+        "endLine": 1137,
+        "endChar": 14
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3eb7812_d201ce52",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "why not? Because they are just what we wrote out?",
+      "range": {
+        "startLine": 1146,
+        "startChar": 32,
+        "endLine": 1146,
+        "endChar": 53
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "260cdcd2_f569a94f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "does this need to be `|\u003d`? Are we loosing other other values otherwise?",
+      "range": {
+        "startLine": 1166,
+        "startChar": 41,
+        "endLine": 1166,
+        "endChar": 42
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be64128_bb6ba742",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "why not just stop then start interrupts around these three set operations?",
+      "range": {
+        "startLine": 1178,
+        "startChar": 21,
+        "endLine": 1178,
+        "endChar": 68
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c80f018_bd76a483",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "why do this line before removing the units?",
+      "range": {
+        "startLine": 1553,
+        "startChar": 0,
+        "endLine": 1553,
+        "endChar": 56
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b58ec86_602a007b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1571,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "needs comments",
+      "range": {
+        "startLine": 1571,
+        "startChar": 1,
+        "endLine": 1571,
+        "endChar": 55
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ef42e5_21de00ce",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "why do we need to do this?",
+      "range": {
+        "startLine": 1576,
+        "startChar": 31,
+        "endLine": 1578,
+        "endChar": 27
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04882819_1fad2dec",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "needs comments for why",
+      "range": {
+        "startLine": 1610,
+        "startChar": 15,
+        "endLine": 1610,
+        "endChar": 37
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f313c8_8e3bd110",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-06T16:39:18Z",
+      "side": 1,
+      "message": "the binary protocol for this data needs to be document explicitly at least somewhere in this code. Thoughts?",
+      "range": {
+        "startLine": 1665,
+        "startChar": 2,
+        "endLine": 1665,
+        "endChar": 23
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
