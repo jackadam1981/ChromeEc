@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c10c4a_19582efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-06T19:12:50Z",
+      "side": 1,
+      "message": "@fsammoura@google.com mentioned that this does not compile. It looks like the issue is that `split_words` modifies the `input` in-place, so therefore is not `const`.",
+      "revId": "1a05055fbf0dcfd030a9f08edbc865e86b3c2c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
