@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385f3b49_1e85d3c7",
+        "filename": "driver/fingerprint/fpsensor_matcher.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-06T09:22:31Z",
+      "side": 1,
+      "message": "Oops. Forgot to add to endif comment.\n\n```suggestion\n#endif /* FP_SENSOR_ELAN80 || FP_SENSOR_ELAN515 || FP_SENSOR_ELAN80SG */\n```",
+      "revId": "c8551767aac5550c0605fa69e7ec4011f50c7925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
