@@ -46,6 +46,30 @@
       },
       "revId": "b50c3198c5876499eaac912ca3e512c251209936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10613d8a_4ee610ff",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-02-06T03:08:56Z",
+      "side": 1,
+      "message": "ok, sounds like the sleep is a more robust way of dealing with potential PS2 issues.\n\ni\u0027m still concerned about doing a sleep with the lock held.\nit\u0027s no big deal if it\u0027s done from the keyboard task since there\u0027s\nprobably nothing else for the task to do.\n\nfor the CHIPSET_SUSPEND, CHIPSET_RESUME cases, these sleeps happen\nin the hook task which may delay everything else scheduled to run\nas hooks.",
+      "parentUuid": "b7ecfb02_a86b3da1",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "b50c3198c5876499eaac912ca3e512c251209936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
