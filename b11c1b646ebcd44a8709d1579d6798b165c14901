@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23e3928_272d1d98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-02-06T01:17:46Z",
+      "side": 1,
+      "message": "Failed due to ld.lld: error: undefined symbol: keyscan_config",
+      "revId": "b11c1b646ebcd44a8709d1579d6798b165c14901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
