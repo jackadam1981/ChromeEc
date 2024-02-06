@@ -34,6 +34,24 @@
       "parentUuid": "b244becb_a240f0b0",
       "revId": "8dedb3c5a1c2b48eb132002142e8241384038a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956db7ae_08a3bbea",
+        "filename": "zephyr/include/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-06T16:49:57Z",
+      "side": 1,
+      "message": "There\u0027s nothing in this CL that needs public routines from the rts54xx emulator.  So please only add this when it\u0027s needed.  Instead of moving the existing header, I recommend creating a new public header that includes only the needed public references.  But also consider if a public interface to the rts54xx emulator is needed instead of just enhancing the existing backend PDC emulator API.",
+      "parentUuid": "59863af3_6e7d3665",
+      "revId": "8dedb3c5a1c2b48eb132002142e8241384038a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
