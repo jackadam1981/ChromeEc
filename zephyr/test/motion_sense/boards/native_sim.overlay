@@ -1,0 +1,22 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+  chosen {
+		zephyr,shell-uart = &test_uart;
+  };
+
+	ec-console {
+		compatible = "ec-console";
+		disabled = "events", "lpc", "hostcmd";
+	};
+
+	test_uart: uart@55556666 {
+	   compatible = "vnd,serial";
+	   reg = <0x55556666 0x1000>;
+	   status = "okay";
+	   buffer-size = <200>;
+	};
+};
