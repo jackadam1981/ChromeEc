@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e5bdbf0_492360b0",
+        "filename": "zephyr/test/nissa/src/board_ap_pwrseq_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-06T23:59:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bda7f749_68d04ec5",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "d4519525fe11d363eb4a3bd72c69358b0ecb2503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b740513_48e02e04",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-06T16:17:30Z",
       "side": 1,
       "message": "Shouldn\u0027t you include a sleep here to ensure that the AP power sequence thread has run?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "d4519525fe11d363eb4a3bd72c69358b0ecb2503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b3ce4f_e6b55877",
+        "filename": "zephyr/test/nissa/src/board_ap_pwrseq_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-06T23:59:24Z",
+      "side": 1,
+      "message": "This first test ensure `board_ap_power_force_shutdown` is called when G3 entry handler is invoked, `ap_pwrseq_start` will do this without needing to wait.\n\nI will include details in description.",
+      "parentUuid": "5b740513_48e02e04",
       "range": {
         "startLine": 42,
         "startChar": 0,
