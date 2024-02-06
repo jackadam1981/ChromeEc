@@ -22,6 +22,30 @@
       },
       "revId": "14e89f83dde97fe22992b3c239ec0c5a4e486597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f44dd0_97f1ce36",
+        "filename": "baseboard/helipilot/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-06T18:55:47Z",
+      "side": 1,
+      "message": "Both CLs landed. I will remove these comments once this CL lands",
+      "parentUuid": "933b68aa_df02e3e4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 76
+      },
+      "revId": "14e89f83dde97fe22992b3c239ec0c5a4e486597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
