@@ -110,6 +110,7 @@ if(CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
     SOURCES
       pw_log_zephyr_tokenized.cc
     PUBLIC_INCLUDES
+      ${PLATFORM_EC}/include
       ${PLATFORM_EC}/zephyr/shim/include
     PUBLIC_DEPS
       pw_log_zephyr.tokenized_lib
