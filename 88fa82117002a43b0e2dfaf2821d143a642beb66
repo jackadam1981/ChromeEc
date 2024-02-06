@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7b4aca_46e6b837",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-06T19:06:37Z",
+      "side": 1,
+      "message": "FWIW, it looks like there are [some scripts](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md) to help with this. Not sure if it applies in this case though since the fingerprint setup is a bit different.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "88fa82117002a43b0e2dfaf2821d143a642beb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
