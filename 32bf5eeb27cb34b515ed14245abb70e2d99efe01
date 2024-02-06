@@ -70,6 +70,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ac1993_dcb62ee1",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-06T20:18:48Z",
+      "side": 1,
+      "message": "Function [process_altmode_pd_data](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-nocturne/zephyr/subsys/pd_controller/pd_task_intel_altmode.c;l\u003d115?q\u003dCONFIG_PLATFORM_EC_USB_PD_DP_MODE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d21) modifies `mux` state. `CONFIG_PLATFORM_EC_USB_PD_DP_MODE`, `CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE` are guarding most of the `mux` state changes. If not `mux` change is made, connection is not recognized see [pd_task_intel_altmode.c:191](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-nocturne/zephyr/subsys/pd_controller/pd_task_intel_altmode.c;l\u003d191?q\u003dCONFIG_PLATFORM_EC_USB_PD_DP_MODE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d21):\n```\n\tusb_mux_set(port, mux,\n\t\t    mux \u003d\u003d USB_PD_MUX_NONE ? USB_SWITCH_DISCONNECT :\n\t\t\t\t\t     USB_SWITCH_CONNECT,\n\t\t    status.conn_ori);\n```\nAt least `pd_is_connected` fails in some tests because of this condition.\n\nShould we evaluate for `status.data_conn` to determine parameter `usb_mode` in function call `usb_mux_set`?",
+      "parentUuid": "c7f1a047_93611d0c",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
