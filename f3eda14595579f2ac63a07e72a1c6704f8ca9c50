@@ -16,6 +16,24 @@
       "message": "this actually passes locally, but i think i see why it could potentially fail:\n\nthe builder seems to match on \"kandou,kb8010\" while the local\nbuild uses \"zephyr,kb8010-emul\". investigating...",
       "revId": "f3eda14595579f2ac63a07e72a1c6704f8ca9c50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59dc8576_60192ddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-02-06T08:29:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34529d3_8d209b51",
+      "revId": "f3eda14595579f2ac63a07e72a1c6704f8ca9c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
