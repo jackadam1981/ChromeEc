@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113918b4_d00db1b5",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-06T23:45:51Z",
+      "side": 1,
+      "message": "This should be equivalent\n```suggestion\ncommon-$(CONFIG_SHA256_SW)+\u003dsha256.o\n```\n\nIf not, then there is a board with a misconfiguration.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "234695925477bc4efee66ae03930c3de643dab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c9eec2_dc18dc64",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2721,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-06T23:45:51Z",
+      "side": 1,
+      "message": "This should be dropped - the Kconfig makes the HW based and SW based SHA256 mutually exclusive.",
+      "range": {
+        "startLine": 2721,
+        "startChar": 0,
+        "endLine": 2721,
+        "endChar": 24
+      },
+      "revId": "234695925477bc4efee66ae03930c3de643dab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
