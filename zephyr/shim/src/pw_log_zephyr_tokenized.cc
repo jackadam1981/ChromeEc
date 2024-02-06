@@ -13,6 +13,17 @@
 
 extern "C" {
 #include "zephyr_console_shim.h"
+/* including console.h will chain other files to be included.
+ * extern function of interest only */
+enum console_channel {
+#define CONSOLE_CHANNEL(enumeration, string) enumeration,
+#include "console_channel.inc"
+#undef CONSOLE_CHANNEL
+
+	/* Channel count; not itself a channel */
+	CC_CHANNEL_COUNT
+};
+bool console_channel_is_disabled(enum console_channel channel);
 }
 
 namespace pw::log_zephyr
@@ -36,6 +47,13 @@ extern "C" void pw_log_tokenized_HandleLog(uint32_t metadata,
 					   size_t size_bytes)
 {
 	pw::log_tokenized::Metadata meta(metadata);
+
+	if (IS_ENABLED(CONFIG_CONSOLE_CHANNEL)) {
+		if (console_channel_is_disabled(
+			    (enum console_channel)meta.flags())) {
+			return;
+		}
+	}
 
 	// Encode the tokenized message as Base64.
 	InlineBasicString base64_string =

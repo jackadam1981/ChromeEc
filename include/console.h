@@ -196,15 +196,19 @@ int snprintf_timestamp_now(char *str, size_t size);
 	} while (false)
 #endif
 
-#define cputs(channel, outstr) PW_LOG_INFO(outstr)
+#define cputs(channel, outstr) \
+	PW_LOG(PW_LOG_LEVEL_INFO, PW_LOG_MODULE_NAME, channel, outstr)
 
-#define cprintf(channel, format, ...) PW_LOG_INFO(format, ##__VA_ARGS__)
+#define cprintf(channel, format, ...)                                  \
+	PW_LOG(PW_LOG_LEVEL_INFO, PW_LOG_MODULE_NAME, channel, format, \
+	       ##__VA_ARGS__)
 
-#define cprints(channel, format, ...)                                    \
-	do {                                                             \
-		char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];                  \
-		snprintf_timestamp_now(ts_str, sizeof(ts_str));          \
-		PW_LOG_INFO("[%s " format "]\n", ts_str, ##__VA_ARGS__); \
+#define cprints(channel, format, ...)                                  \
+	do {                                                           \
+		char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];                \
+		snprintf_timestamp_now(ts_str, sizeof(ts_str));        \
+		PW_LOG(PW_LOG_LEVEL_INFO, PW_LOG_MODULE_NAME, channel, \
+		       "[%s " format "]\n", ts_str, ##__VA_ARGS__);    \
 	} while (false)
 #else
 
