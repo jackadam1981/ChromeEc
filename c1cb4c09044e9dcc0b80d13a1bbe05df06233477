@@ -16,6 +16,24 @@
       "message": "I\u0027m ok with either name. I see that most of the other baseboards seem to use `baseboard.h`/`baseboard.c`.",
       "revId": "c1cb4c09044e9dcc0b80d13a1bbe05df06233477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61dcaee_e960092e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-06T19:08:53Z",
+      "side": 1,
+      "message": "[This doc](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md#key-files) does suggest using `baseboard.x`",
+      "parentUuid": "df40d8d6_344a409f",
+      "revId": "c1cb4c09044e9dcc0b80d13a1bbe05df06233477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
