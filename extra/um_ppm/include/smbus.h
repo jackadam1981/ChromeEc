@@ -9,6 +9,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#define SMBUS_MAX_BLOCK_SIZE 32
+
 /* Internal data structure for smbus driver implementations. */
 struct smbus_device;
 
