@@ -2369,6 +2369,10 @@ def all_targets():
         board = "yavilla",
     )
     ec_target(
+        name = "yavista",
+        board = "yavista",
+    )
+    ec_target(
         name = "yorp",
         baseboard = "octopus",
         board = "yorp",
