@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd5e0b5_81fd6d86",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-06T21:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db558571_06fa2776",
+      "range": {
+        "startLine": 1669,
+        "startChar": 0,
+        "endLine": 1669,
+        "endChar": 28
+      },
+      "revId": "1dee4469b0f9f022801c76d0dcfc052fe885203d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe58a331_ba893cb8",
@@ -60,6 +84,30 @@
       "writtenOn": "2024-02-05T20:35:31Z",
       "side": 1,
       "message": "```suggestion\n\t\tk_event_post(\u0026irq_event, RTS54XX_IRQ_EVENT);\n```",
+      "range": {
+        "startLine": 1717,
+        "startChar": 2,
+        "endLine": 1717,
+        "endChar": 13
+      },
+      "revId": "1dee4469b0f9f022801c76d0dcfc052fe885203d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de89ddc_25dec07d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-06T21:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe58a331_ba893cb8",
       "range": {
         "startLine": 1717,
         "startChar": 2,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db06b211_6c655827",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-06T21:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b48908b8_06b1307a",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 0
+      },
+      "revId": "1dee4469b0f9f022801c76d0dcfc052fe885203d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "718c0318_7d112937",
@@ -106,6 +178,30 @@
       "writtenOn": "2024-02-05T20:35:31Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\tk_event_clear(\u0026irq_event, RTS54XX_IRQ_EVENT);\n```",
+      "range": {
+        "startLine": 1756,
+        "startChar": 0,
+        "endLine": 1756,
+        "endChar": 33
+      },
+      "revId": "1dee4469b0f9f022801c76d0dcfc052fe885203d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63459377_f0ef8b13",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-06T21:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "718c0318_7d112937",
       "range": {
         "startLine": 1756,
         "startChar": 0,
