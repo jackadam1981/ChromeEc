@@ -1,0 +1,67 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <program/rex/motionsense.dtsi>
+#include <dt-bindings/gpio_defines.h>
+
+/ {
+  gpio-interrupts {
+    compatible = "cros-ec,gpio-interrupts";
+
+		int_imu: ec_imu {
+			irq-pin = <&gpio_ec_imu_int_r_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "lsm6dso_interrupt";
+		};
+		int_als_rgb: ec_als_rgb {
+			irq-pin = <&gpio_ec_als_rgb_int_r_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "tcs3400_interrupt";
+		};
+		int_accel: ec_accel {
+			irq-pin = <&gpio_ec_accel_int_r_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "lis2dw12_interrupt";
+		};
+  };
+
+  named-gpios {
+    compatible = "named-gpios";
+		gpio_ec_imu_int_r_l: ec_imu_int_r_l {
+			gpios = <&gpio0 0 GPIO_INPUT>;
+		};
+		gpio_ec_als_rgb_int_r_l: ec_als_rgb_int_r_l {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+		};
+		gpio_ec_accel_int_r_l: ec_accel_int_r_l {
+			gpios = <&gpio0 2 GPIO_INPUT>;
+		};
+    /* unimplemented GPIOs */
+    entering-rw {
+      enum-name = "GPIO_ENTERING_RW";
+    };
+  };
+
+  named-i2c-ports {
+    compatible = "named-i2c-ports";
+    i2c_ec_i2c_sensor_scl_r: ec_i2c_sensor {
+      i2c-port = <&i2c0>;
+      enum-names = "I2C_PORT_SENSOR";
+    };
+  };
+};
+
+&i2c0 {
+  lis2dw12_emul: lis2dw12@18 {
+    compatible = "cros,lis2dw12-emul";
+    status = "okay";
+    reg = <0x18>;
+  };
+  lsm6dso_emul: lsm6dso@6a {
+    compatible = "cros,lsm6dso-emul";
+    status = "okay";
+    reg = <0x6a>;
+  };
+};

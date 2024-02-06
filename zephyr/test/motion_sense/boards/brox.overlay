@@ -1,0 +1,39 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <it8xxx2_emul.dts>
+
+/* Arbitrage generates an incorrect node label when using alternate pins.
+ * Create a 2nd node label on I2C3 as a workaround.
+ * TODO: b/310227384 - I2C alternate selection not detected automatically.
+ */
+i2c3ALT: &i2c3 {
+};
+
+/ {
+  gpio_interrupts: gpio-interrupts {
+    compatible = "cros-ec,gpio-interrupts";
+  };
+};
+
+#include "../../../program/brox/generated.dtsi"
+#include "../../../program/brox/gpio.dtsi"
+#include "../../../program/brox/interrupts_motionsense.dtsi"
+#include "../../../program/brox/motionsense.dtsi"
+
+&i2c5 {
+		bma422_lid_emul: bma4xx@18 {
+			compatible = "cros,bma4xx-emul";
+			status = "okay";
+			reg = <0x18>;
+			motionsense-sensor = <&lid_accel>;
+		};
+		bma422_base_emul: bma4xx@19 {
+			compatible = "cros,bma4xx-emul";
+			status = "okay";
+			reg = <0x19>;
+			motionsense-sensor = <&base_accel>;
+		};
+};
