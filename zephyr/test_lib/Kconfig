@@ -21,3 +21,11 @@ config PLATFORM_EC_GTEST_MAIN
   depends on !ZTEST
   depends on TEST
   depends on PLATFORM_EC_GTEST_LIB
+
+config MOTION_SENSE_TESTS
+  bool "Include tests which verify behavior of motion_sense"
+  default y
+  depends on PLATFORM_EC_MOTIONSENSE
+  depends on TEST
+  depends on PLATFORM_EC_GTEST_LIB
+  depends on PLATFORM_EC_ACCEL_FIFO
