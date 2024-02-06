@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933b68aa_df02e3e4",
+        "filename": "baseboard/helipilot/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-06T18:50:00Z",
+      "side": 1,
+      "message": "I think @fsammoura@google.com fixed these. Don\u0027t change this CL, but @fsammoura@google.com, can you remove the comment once this CL lands if these are fixed?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 76
+      },
+      "revId": "14e89f83dde97fe22992b3c239ec0c5a4e486597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
