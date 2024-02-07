@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebaa33d_66276b72",
+        "filename": "zephyr/include/pigweed/pw_zephyr_tokenized_custom_log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-07T19:36:48Z",
+      "side": 1,
+      "message": "I wonder if it would be clearer to just having a dedicated 1 bit flag that signifies log channels is in use and 5 bits for channel? I guess in this scheme we would have a hard limit of 32 channels. Do we actually use more than 32 channels?",
+      "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c6300e6_08918bdb",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-07T19:36:48Z",
+      "side": 1,
+      "message": "Is this bug? Seems like including console.h shouldn\u0027t break anything.",
+      "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
