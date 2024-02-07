@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c061fbe7_c62764f1",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T02:05:39Z",
+      "side": 1,
+      "message": "I had this change in PS1 and dry run failed.  I can try and fix the misconfigured board(s) in a follow-up CL.\n\n```\nFailed boards/tests:\n\thelipilot\n```",
+      "parentUuid": "113918b4_d00db1b5",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "234695925477bc4efee66ae03930c3de643dab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2c9eec2_dc18dc64",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-06T23:45:51Z",
       "side": 1,
       "message": "This should be dropped - the Kconfig makes the HW based and SW based SHA256 mutually exclusive.",
+      "range": {
+        "startLine": 2721,
+        "startChar": 0,
+        "endLine": 2721,
+        "endChar": 24
+      },
+      "revId": "234695925477bc4efee66ae03930c3de643dab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b117ef40_6d34db91",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2721,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T02:05:39Z",
+      "side": 1,
+      "message": "Does this request change with having a misconfiguration?",
+      "parentUuid": "b2c9eec2_dc18dc64",
       "range": {
         "startLine": 2721,
         "startChar": 0,
