@@ -19,9 +19,11 @@ static void brox_suspend_resume_handler(struct ap_power_ev_callback *callback,
 	switch (data.event) {
 	case AP_POWER_RESUME:
 		gpio_pin_set_dt(EN_PP3300_WLAN_DT_SPEC, 1);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_amp_mute_l),1);
 		break;
 	case AP_POWER_SUSPEND:
 		gpio_pin_set_dt(EN_PP3300_WLAN_DT_SPEC, 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_amp_mute_l),0);
 		break;
 	default:
 		/* Other events ignored */

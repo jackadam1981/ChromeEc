@@ -149,7 +149,6 @@
 		enum-name = "PWR_ALL_SYS_PWRGD";
 		gpios = <&gpiob 3 0>;
 	};
-
 	ap-power {
 		compatible = "ap-pwrseq-sub-states";
 		chipset = "AP_POWER_STATE_S0IX";
