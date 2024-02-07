@@ -122,6 +122,114 @@
       "parentUuid": "0a3dedf4_e844f2ff",
       "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee2b2dcb_5bebfb61",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-07T23:42:04Z",
+      "side": 1,
+      "message": "This value should also control the identity, SVIDs, and modes responses, so that the behavior in response to Enter Mode always makes sense for the discovery response. See the corresponding code for brya.",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd8fed5_bd02c5d8",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-07T23:42:04Z",
+      "side": 1,
+      "message": "This seems oddly structured. If a test wants to call `board_set_tbt_ufp_reply`, it can do so directly. A test can also redefine these config items as it desires. Is this required?",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a5bc6e_c9ba79d2",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-07T23:42:04Z",
+      "side": 1,
+      "message": "Why is this disabled for a test build?",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e75cb1f_e13c54b4",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2245,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-07T23:42:04Z",
+      "side": 1,
+      "message": "It seems odd to me to reference configs for specific tests in a file outside those tests. I only see a very few instances of `CONFIG_TEST_*` items being referenced in this very long file. That suggests to me that the dependency between tests and the features they test doesn\u0027t need to be encoded here, and there is probably a better way.\n1. Do the rex board tests run with the rex build config? If so, do you need to do anything else at all to enable `CONFIG_USB_PD_TBT_COMPAT_MODE`?\n2. Can you write the test `Kconfig` such that the test configs require their corresponding feature configs?",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6db509c_3f538ef7",
+        "filename": "zephyr/test/rex/tests/program/src/usb_pd_ufp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-07T23:42:04Z",
+      "side": 1,
+      "message": "Can you give these test cases more descriptive names?",
+      "range": {
+        "startLine": 72,
+        "startChar": 23,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0f85b6_924f5772",
+        "filename": "zephyr/test/rex/tests/program/src/usb_pd_ufp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-07T23:42:04Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer it if these tests set up a PD connection and actually performed the discovery and entry requests from the partner.",
+      "revId": "33d04a72e4811c173a724e3d3cf332e0a5b2fdc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
