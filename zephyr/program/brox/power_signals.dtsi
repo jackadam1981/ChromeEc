@@ -149,7 +149,13 @@
 		enum-name = "PWR_ALL_SYS_PWRGD";
 		gpios = <&gpiob 3 0>;
 	};
-
+	pwr-ec-amp-mute-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "EC-AMP-MUTE-L output to Amplifier";
+		enum-name = "PWR_EC_AMP_MUTE";
+		gpios = <&gpioj 6 0>;
+		output;
+	};
 	ap-power {
 		compatible = "ap-pwrseq-sub-states";
 		chipset = "AP_POWER_STATE_S0IX";
