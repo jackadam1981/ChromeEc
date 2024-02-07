@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83882986_7d6287d3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T20:00:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5134448e_935ab724",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 45
+      },
+      "revId": "5b4084ec5f5510ee6b133d91e1945d4cac1addd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3312d222_f261d28f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-07T19:23:45Z",
       "side": 1,
       "message": "Nit - since you\u0027re already modifying this function, the `else` branch isn\u0027t needed because the other paths of returns.",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 0
+      },
+      "revId": "5b4084ec5f5510ee6b133d91e1945d4cac1addd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46b6875_6604c238",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T20:00:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3312d222_f261d28f",
       "range": {
         "startLine": 717,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5678dc1d_39264f6a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T20:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a54f6c3a_b597c557",
+      "range": {
+        "startLine": 729,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 37
+      },
+      "revId": "5b4084ec5f5510ee6b133d91e1945d4cac1addd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6ef9fb4_7c3261ba",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-07T19:23:45Z",
       "side": 1,
       "message": "Drop `else`",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 37
+      },
+      "revId": "5b4084ec5f5510ee6b133d91e1945d4cac1addd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11860a15_83143396",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T20:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ef9fb4_7c3261ba",
       "range": {
         "startLine": 740,
         "startChar": 0,
