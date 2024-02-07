@@ -296,6 +296,30 @@
       },
       "revId": "997834901c50de18110c665602eb03684c64f36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80405cc1_ac7b28c1",
+        "filename": "common/test_util.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-07T07:47:32Z",
+      "side": 1,
+      "message": "Sorry Firas, I didn\u0027t know that handle_command mutated input. Given this revelation, I don\u0027t think we can keep the `const` here.\n\n* Modifies input here - https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/console.c;l\u003d203;drc\u003d0d1b98c7183e8bc058a00ace0c30c1ea0e736a8a\n* States that it modifies the input here - https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/console.c;l\u003d163;drc\u003d0d1b98c7183e8bc058a00ace0c30c1ea0e736a8a",
+      "parentUuid": "58dd0de2_14a74a3b",
+      "range": {
+        "startLine": 196,
+        "startChar": 45,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "997834901c50de18110c665602eb03684c64f36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
