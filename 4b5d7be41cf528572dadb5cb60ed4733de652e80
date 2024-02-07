@@ -39,6 +39,47 @@
       "message": "I am hoping you used find and replace, right? e.g. tail -\u003e TEMP, head -\u003e tail, TEMP -\u003e head",
       "revId": "4b5d7be41cf528572dadb5cb60ed4733de652e80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7595f4b_0a78b105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T16:35:26Z",
+      "side": 1,
+      "message": "Yes, followed by replacing \"tailer\" with \"header\", since we did not want the original \"head\" -\u003e \"tail\" replacement to apply to the word \"header\".",
+      "parentUuid": "1873e178_f415933f",
+      "revId": "4b5d7be41cf528572dadb5cb60ed4733de652e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae83e60b_0f8b9008",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T16:35:26Z",
+      "side": 1,
+      "message": "This line was manually edited, since I think it is more natural to set the end pointer (where head and tail will wrap around) based on the start of the buffer, rather than beased on one of the pointers which we happen to have just set to point at the start of the buffer.",
+      "range": {
+        "startLine": 721,
+        "startChar": 17,
+        "endLine": 721,
+        "endChar": 21
+      },
+      "revId": "4b5d7be41cf528572dadb5cb60ed4733de652e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
