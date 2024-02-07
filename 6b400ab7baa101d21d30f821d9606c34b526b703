@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dd98ba5_3c583ab3",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T16:18:13Z",
+      "side": 1,
+      "message": "Yes what you describe is the typical implementation.\n\nFull is when head + size \u003d tail, and empty is when head \u003d tail. Access is always masked 😊\n\n\nE.g. https://source.corp.google.com/h/chrome-internal/chromeos/codesearch/+/main:src/platform/ti50/common/libs/buf_circular/src/reentrant.rs\n\n(looks like I am also a fan of the \"dog\" naming convention 😊)",
+      "parentUuid": "86c0d3fc_cdff7555",
+      "range": {
+        "startLine": 1117,
+        "startChar": 5,
+        "endLine": 1117,
+        "endChar": 32
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c224f735_86e2708a",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 12
@@ -290,6 +314,30 @@
       "side": 1,
       "message": "That is true.  But I think that this location in the code, in the interrupt handler, is not the right place.  I will add some logic to `dap_goog_gpio_bitbang()`, to make sure that it never places invalid data into the buffer range to be processed by the interrupt, and then I need to add a way for the code to report back to the USB host that the given data was rejected.",
       "parentUuid": "268ba869_9706ec05",
+      "range": {
+        "startLine": 1137,
+        "startChar": 3,
+        "endLine": 1137,
+        "endChar": 14
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be8e07a_91b6a4ff",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T16:18:13Z",
+      "side": 1,
+      "message": "That sounds like a good idea",
+      "parentUuid": "c3547c04_a1b691c8",
       "range": {
         "startLine": 1137,
         "startChar": 3,
