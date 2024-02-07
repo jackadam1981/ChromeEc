@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06f24f4_23119f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T23:28:13Z",
+      "side": 1,
+      "message": "Thanks for the many useful comments.  I have addressed all of them, except the issue with race between CMSIS task and console task, which I want to defer.",
+      "revId": "69736f441963cb7b4cc388a2e539f32c996b36a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

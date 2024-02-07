@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9144a657_b9a48c71",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T23:28:13Z",
+      "side": 1,
+      "message": "I have changed the code to work that way, and I was very pleased to see debugging statements in opentitantool report that it handed off 128 bytes of waveform data, followed by 64 bytes in each of several subsequent requests.  (I had artificially reduced the HyperDebug buffer to just 128 bytes.)  Prior to this change, the first request would always carry only 127 bytes of data, which annoyed me out of principle, even though there are no alignment requirements in the data stream.",
+      "parentUuid": "6dd98ba5_3c583ab3",
+      "range": {
+        "startLine": 1117,
+        "startChar": 5,
+        "endLine": 1117,
+        "endChar": 32
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c224f735_86e2708a",
@@ -338,6 +362,30 @@
       "side": 1,
       "message": "That sounds like a good idea",
       "parentUuid": "c3547c04_a1b691c8",
+      "range": {
+        "startLine": 1137,
+        "startChar": 3,
+        "endLine": 1137,
+        "endChar": 14
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "522bfacb_9baa603e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T23:28:13Z",
+      "side": 1,
+      "message": "I have added `validate_received_waveform()` to `dap_goog_gpio_bitbang()`, such that we are sure that invalid sequences will not be encountered here.  (And also be sure that there will be one byte with zero `DELAY_BIT` following any delay sequences, making the lack of tail-checking in this inner loop OK.)",
+      "parentUuid": "5be8e07a_91b6a4ff",
       "range": {
         "startLine": 1137,
         "startChar": 3,
@@ -668,6 +716,30 @@
       "side": 1,
       "message": "Ah, I agree that we opentitantool string implies the first event to be immediate, not waiting for a clock edge first.\n\nCan you add to the comment saying that the first event should happen immediately without the full \"clock\" delay.\n\nAnother way to say it would be to target the first event to occur within 50ms of the command (whether the clock is slow of fast). Is that something that is current happening (or some other reasonable time)?",
       "parentUuid": "bf17226e_ca190916",
+      "range": {
+        "startLine": 1576,
+        "startChar": 31,
+        "endLine": 1578,
+        "endChar": 27
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb406e82_5c00be94",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T23:28:13Z",
+      "side": 1,
+      "message": "I have updated the comment to mention explicitly that we do not want to wait a full clock period, if the clock is slow.\n\nI had chosen 0x10000 rather arbitrarily, and with the current 55MHz timer base frequency, it would result in ~1.2ms delay before the first timer interrupt.  I have changed the code to set up the counter such that exactly 1 millisecond remains before first overflow, and documented that.",
+      "parentUuid": "bb5f51c6_aa703996",
       "range": {
         "startLine": 1576,
         "startChar": 31,
