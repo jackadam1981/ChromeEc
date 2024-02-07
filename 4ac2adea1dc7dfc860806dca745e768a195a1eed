@@ -16,6 +16,24 @@
       "message": "It is possible to change the name from AVL to align the probe name.",
       "revId": "4ac2adea1dc7dfc860806dca745e768a195a1eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246b1bde_0f8ebf85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525872
+      },
+      "writtenOn": "2024-02-07T01:39:54Z",
+      "side": 1,
+      "message": "Our probe manuf_name is \"POW-TEC\" as same as this CL.\nThis CL is match actual battery probe content.",
+      "parentUuid": "3a200ee8_37dca62d",
+      "revId": "4ac2adea1dc7dfc860806dca745e768a195a1eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
