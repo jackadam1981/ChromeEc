@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58484f4_d95c3ab7",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-07T18:26:59Z",
+      "side": 0,
+      "message": "Why is this deleted?  Doesn\u0027t helipilot need this enabled to compile in the rollback code?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
