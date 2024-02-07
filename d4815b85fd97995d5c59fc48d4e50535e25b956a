@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41c3ec7_0fa5d962",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-07T22:17:11Z",
+      "side": 1,
+      "message": "Consider an array with X, Y, Z indexes so you can use loops.",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e326e20_7df7a0ab",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-07T22:17:11Z",
+      "side": 1,
+      "message": "no need of (float).",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45fddc0_b6a64870",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-07T22:17:11Z",
+      "side": 1,
+      "message": "You may consider an array with index like R, G, B, IR, allowing you to use loop. See enum crbg_index in `include/driver/als_tcs3400.h`.",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d564d3_138edba9",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-07T22:17:11Z",
+      "side": 1,
+      "message": "FPU may not be on all EC. We have usually used fp_t which can be float or fixed point when the EC does not have FPU.",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bee6d48_b4f3d307",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2902,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-07T22:17:11Z",
+      "side": 1,
+      "message": "Define the string in `src/platform/ec/util/ectool.cc`. See MOTIONSENSE_CHIP_BMI220.",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84bf5fca_6f51a64e",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-07T22:17:11Z",
+      "side": 1,
+      "message": "Describe it in `include/config.h`, see `#undef CONFIG_ALS_TCS3400`.",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
