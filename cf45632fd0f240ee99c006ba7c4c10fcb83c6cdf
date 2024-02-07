@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "617d48be_12dc56fd",
+        "filename": "zephyr/include/pigweed/pw_zephyr_tokenized_custom_log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T19:50:16Z",
+      "side": 1,
+      "message": "We can define up to 46 channels in http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/include/console_channel.inc\nAlthough I don\u0027t think we have ever enabled all the configs to exhaust the bitmask.",
+      "parentUuid": "eebaa33d_66276b72",
+      "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c6300e6_08918bdb",
         "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-07T19:36:48Z",
       "side": 1,
       "message": "Is this bug? Seems like including console.h shouldn\u0027t break anything.",
+      "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d6ac5c_2643e472",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T19:50:16Z",
+      "side": 1,
+      "message": "`console.h` includes other files, which I\u0027ll need to keep updating `CMakeLists.txt` to add those paths until they are all satisfied.",
+      "parentUuid": "3c6300e6_08918bdb",
       "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
