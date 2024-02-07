@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5121f099_7c7fe904",
+        "filename": "common/test_util.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-07T04:33:12Z",
+      "side": 1,
+      "message": "```suggestion\n/* Defined as test_export_static in common/console.c. */\nint handle_command(const char *input);\n```\n\nI think the comment was applied to the wrong func signature.",
+      "revId": "8c6dc443315db2e37e51bb76509768dd55b7e4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434cb401_a1a465c2",
+        "filename": "common/test_util.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-07T04:33:12Z",
+      "side": 1,
+      "message": "```suggestion\nenum ec_error_list test_send_console_command(const char *input)\n```",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 63
+      },
+      "revId": "8c6dc443315db2e37e51bb76509768dd55b7e4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
