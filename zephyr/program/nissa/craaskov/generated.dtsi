@@ -138,6 +138,9 @@
 			gpios = <&gpiod 2 GPIO_INPUT>;
 			enum-name = "GPIO_LID_OPEN";
 		};
+		gpio_en_z1_rails_r: en_z1_rails_r {
+			gpios = <&gpio8 5 GPIO_OUTPUT>;
+		};
 		gpio_pg_pp1050_mem_s3_od: pg_pp1050_mem_s3_od {
 			gpios = <&gpiof 0 GPIO_INPUT>;
 		};
@@ -180,6 +183,9 @@
 			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
+		gpio_usb_pd_int_odl: usb_pd_int_odl {
+			gpios = <&gpio0 2 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
 	};
 
 	named-i2c-ports {
@@ -193,8 +199,12 @@
 			i2c-port = <&i2c1_0>;
 			enum-names = "I2C_PORT_SENSOR";
 		};
-		i2c_i2c_ec_pmc_pd: i2c_ec_pmc_pd {
+		i2c_ec_i2c_pd_prog: ec_i2c_pd_prog {
 			i2c-port = <&i2c3_0>;
+			enum-names = "I2C_PORT_PD";
+		};
+		i2c_i2c_ec_pmc_pd: i2c_ec_pmc_pd {
+			i2c-port = <&i2c4_1>;
 			enum-names = "I2C_PORT_PMC_PD";
 		};
 		i2c_ec_i2c_batt: ec_i2c_batt {
@@ -233,6 +243,12 @@
 	pinctrl-names = "default";
 };
 
+&i2c4_1 {
+	status = "okay";
+	pinctrl-0 = <&i2c4_1_sda_scl_gpf2_f3>;
+	pinctrl-names = "default";
+};
+
 &i2c7_0 {
 	status = "okay";
 	pinctrl-0 = <&i2c7_0_sda_scl_gpb2_b3>;
@@ -248,6 +264,10 @@
 };
 
 &i2c_ctrl3 {
+	status = "okay";
+};
+
+&i2c_ctrl4 {
 	status = "okay";
 };
 
