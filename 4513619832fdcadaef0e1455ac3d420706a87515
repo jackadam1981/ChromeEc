@@ -22,6 +22,30 @@
       },
       "revId": "4513619832fdcadaef0e1455ac3d420706a87515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a870d6af_70c38094",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T20:35:55Z",
+      "side": 1,
+      "message": "Maybe I\u0027m reading the documentation wrong:\n```\nreset – If true, clear the set of events tracked by the event object before waiting. If false, do not clear the events.\n```\nI set it true so I don\u0027t need to explicitly clear the event.",
+      "parentUuid": "4110bd48_4ec824ad",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "4513619832fdcadaef0e1455ac3d420706a87515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
