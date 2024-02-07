@@ -34,6 +34,24 @@
       "parentUuid": "3a200ee8_37dca62d",
       "revId": "4ac2adea1dc7dfc860806dca745e768a195a1eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c33a97_02aad4c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-02-07T01:50:59Z",
+      "side": 1,
+      "message": "Do you see the same after https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5271185 ?",
+      "parentUuid": "246b1bde_0f8ebf85",
+      "revId": "4ac2adea1dc7dfc860806dca745e768a195a1eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
