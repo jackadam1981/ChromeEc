@@ -16,6 +16,7 @@ from __future__ import print_function
 
 import argparse
 import os
+from pathlib import Path
 import re
 import subprocess
 import sys
@@ -330,7 +331,7 @@ def main(argv):
     parser.add_argument(
         "--srcbase",
         help=("The base directory where the src tree exists."),
-        default="/mnt/host/source/",
+        default=os.path.join(Path.home(), "chromiumos"),
     )
     parser.add_argument(
         "--relevant_paths_file",
