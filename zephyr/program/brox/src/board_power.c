@@ -44,6 +44,7 @@ void board_ap_power_force_shutdown(void)
 	}
 
 	power_signal_set(PWR_EN_PP5000_A, 0);
+	power_signal_set(PWR_EC_AMP_MUTE, 0);
 }
 
 void board_ap_power_action_g3_s5(void)
@@ -58,6 +59,9 @@ void board_ap_power_action_g3_s5(void)
 	 */
 	k_msleep(AP_PWRSEQ_DT_VALUE(dsw_pwrok_delay));
 	power_signal_set(PWR_EC_SOC_DSW_PWROK, 1);
+
+	/* Enable Amplifier power */
+	power_signal_set(PWR_EC_AMP_MUTE,1);
 }
 
 void board_ap_power_action_s3_s0(void)
