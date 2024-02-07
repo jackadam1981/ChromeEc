@@ -69,6 +69,24 @@
       "parentUuid": "3c6300e6_08918bdb",
       "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbe7124_2a9b31e3",
+        "filename": "zephyr/shim/src/pw_log_zephyr_tokenized.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T21:07:46Z",
+      "side": 1,
+      "message": "The list of paths to include ended up not being too extensive.  Done.",
+      "parentUuid": "63d6ac5c_2643e472",
+      "revId": "cf45632fd0f240ee99c006ba7c4c10fcb83c6cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
