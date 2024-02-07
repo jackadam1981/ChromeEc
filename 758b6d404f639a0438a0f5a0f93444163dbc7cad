@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1eb5e235_76e06b8b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T17:59:46Z",
+      "side": 1,
+      "message": "This was temporary code and has been removed. Please see patchset 31",
+      "parentUuid": "bc909e40_1c1f4e8f",
+      "range": {
+        "startLine": 1373,
+        "startChar": 1,
+        "endLine": 1373,
+        "endChar": 61
+      },
+      "revId": "758b6d404f639a0438a0f5a0f93444163dbc7cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19fa6325_2e2e37ee",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 5
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "This approach seems very fragile.  Do you have a plan to come up with a better fix here?",
       "parentUuid": "19fa6325_2e2e37ee",
+      "range": {
+        "startLine": 1376,
+        "startChar": 0,
+        "endLine": 1376,
+        "endChar": 56
+      },
+      "revId": "758b6d404f639a0438a0f5a0f93444163dbc7cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdf9840_0df139ce",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T17:59:46Z",
+      "side": 1,
+      "message": "The previous approach was just a quick fix to unblock some local tests. Patchset 31 is the implementation that should be reviewed.",
+      "parentUuid": "699229b8_bd41a206",
       "range": {
         "startLine": 1376,
         "startChar": 0,
