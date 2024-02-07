@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7e39f8_de7ad3fa",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-07T19:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c59803_f0ba96c5",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "0fe13fb56199d5000164fe80fb5c483614b5ce89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df37df88_c33303f4",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-07T07:49:10Z",
       "side": 1,
       "message": "I think this should probably be `\"%u\"` or even better `PRIu32`, from [inttypes.h](https://cplusplus.com/reference/cinttypes/).",
+      "range": {
+        "startLine": 63,
+        "startChar": 33,
+        "endLine": 63,
+        "endChar": 36
+      },
+      "revId": "0fe13fb56199d5000164fe80fb5c483614b5ce89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56802c5_daa11926",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-07T19:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df37df88_c33303f4",
       "range": {
         "startLine": 63,
         "startChar": 33,
