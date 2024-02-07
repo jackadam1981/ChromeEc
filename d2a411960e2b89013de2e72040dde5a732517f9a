@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e2b0ca_e6079301",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-07T06:37:55Z",
+      "side": 1,
+      "message": "Building all tests is blocked on b/324016424. Otherwise, we could manually disabled all druid tests for buccaneer.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "d2a411960e2b89013de2e72040dde5a732517f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
