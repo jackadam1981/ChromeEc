@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f2d97d_8740576e",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-07T23:05:30Z",
+      "side": 1,
+      "message": "```suggestion\n#include \u003cinttypes.h\u003e\n#include \u003cstdio.h\u003e\n```",
+      "revId": "6050dd4ccb78a9ced1138c38e0cdda1238fee2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
