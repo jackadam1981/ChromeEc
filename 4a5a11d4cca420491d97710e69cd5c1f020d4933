@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75bb0b2_008e952b",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-02-07T20:25:05Z",
+      "side": 1,
+      "message": "looking upwards from `__file__` would be more reliable.  people checkout cros many places.\n\nHere\u0027s a good example: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/firmware_builder.py#81",
+      "range": {
+        "startLine": 334,
+        "startChar": 16,
+        "endLine": 334,
+        "endChar": 56
+      },
+      "revId": "4a5a11d4cca420491d97710e69cd5c1f020d4933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
