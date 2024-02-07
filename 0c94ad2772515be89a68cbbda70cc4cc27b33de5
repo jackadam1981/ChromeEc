@@ -22,6 +22,30 @@
       },
       "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af61033_8f1d3661",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T19:00:38Z",
+      "side": 0,
+      "message": "Since we allowed `SHA256_HW_ACCELERATE` it allows rollback code to compile now. Adding these back in with rollback change gives a bunch of errors like below\n```\ncommon/sha256.c:109:8: error: no member named \u0027h\u0027 in \u0027struct sha256_ctx\u0027\n  109 |                 ctx-\u003eh[i] \u003d sha256_h0[i];\n```\n\nComparison output shows a match with this CL\n```\n./util/compare_build.sh -b helipilot --ref1\u003dcros/main --ref2\u003dHEAD\n:\n:\n  CHECK_ALLOWED build/helipilot/.config\n  MKDIR   build-966b06840f47d1d132fe4c050dfdc45be0d85cae\n  CP -l   \u0027ec-966b06840f47d1d132fe4c050dfdc45be0d85cae/build/helipilot/ec.bin\u0027 to \u0027build-966b06840f47d1d132fe4c050dfdc45be0d85cae/helipilot-ec.bin\u0027\n  MKDIR   build-f0b960c617a2ba13d38d2aa8b5a8b6d4d3159b4c\n  CP -l   \u0027ec-f0b960c617a2ba13d38d2aa8b5a8b6d4d3159b4c/build/helipilot/ec.bin\u0027 to \u0027build-f0b960c617a2ba13d38d2aa8b5a8b6d4d3159b4c/helipilot-ec.bin\u0027\n\n# Comparing Files\n\n# Verdict: MATCH\n```",
+      "parentUuid": "b58484f4_d95c3ab7",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
