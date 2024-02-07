@@ -46,6 +46,30 @@
       },
       "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6882a242_8db0b8c3",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-07T21:47:41Z",
+      "side": 0,
+      "message": "Ack.\n\nI see on ToT that helipilot had all these defined:\n```\nCONFIG_SHA256\u003dy                                                                                                                             \nCONFIG_SHA256_HW_ACCELERATE\u003dy                                                                                                               \nCONFIG_SHA256_UNROLLED\u003dy                                                                                                                    \n```\nWith your change helipilot only defines `CONFIG_SHA256_HW_ACCELERATE`, which is the correct behavior.",
+      "parentUuid": "8af61033_8f1d3661",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
