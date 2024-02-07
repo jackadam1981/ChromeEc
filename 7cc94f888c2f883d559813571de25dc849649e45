@@ -16,6 +16,23 @@
       "message": "Tristan - do you already have a CL for this host command?",
       "revId": "7cc94f888c2f883d559813571de25dc849649e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e84a32_8fc22c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-02-07T17:46:50Z",
+      "side": 1,
+      "message": "Make sure to enable the mux Kconfig(s) to get the original host command back. This doesn\u0027t necessarily have to happen in the CL.",
+      "revId": "7cc94f888c2f883d559813571de25dc849649e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
