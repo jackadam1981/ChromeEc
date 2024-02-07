@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac4103a_9da34f26",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-07T16:15:32Z",
+      "side": 1,
+      "message": "The upstream PR https://github.com/zephyrproject-rtos/zephyr/pull/68519 has merged.  This should be available in our downstream repo tomorrow (Feb 8th).  So please rebase and retest after that fix is available.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "fb9d4453392972ea875703854859da238c26811a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
