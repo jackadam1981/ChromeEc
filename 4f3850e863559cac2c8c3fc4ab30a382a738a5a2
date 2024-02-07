@@ -16,6 +16,211 @@
       "message": "Hi, I would be really grateful if you could find some time for review soon. I am aiming to cherry-pick new beta servo FW with this feature for nearest labstation release if possible (deadline for changes 02/09).\n\nAlso soon I would prepare another CL with simple interface in servod to use this feature. Probably tomorrow.",
       "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea48660a_8e131160",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "Since this function is overridable, shouldn\u0027t it be wrapped in either ifdef or check for NULL?",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd997f5_5b5d9c97",
+        "filename": "board/servo_v4p1/pathsel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "A0",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f388d848_fc0b1d1f",
+        "filename": "board/servo_v4p1/pathsel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "A1",
+      "range": {
+        "startLine": 15,
+        "startChar": 30,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ba30e8_192083e6",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "Is there an easy way to auto set this config? If not, then you can ignore my suggestion, but I am thinking if there is a need for this to be configurable if this will be only used by one module at a time. Maybe basing on the board value? If servo, then define 4, otherwise, #error board not supported? Or just an error somewhere if the length is not defined?",
+      "range": {
+        "startLine": 55,
+        "startChar": 35,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10424b9c_922112e8",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "nit: Won\u0027t there be any problems with conversion between signed char and unsigned int?",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d59003_42b5a327",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "nit: should this (and other places) use the naming from the servo\u0027s schematics? usb_a0, usb_a1, usb_uservo?",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe8d88b9_7d6ed764",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "nit: does it make sense to create a wrapper function for this pin, since rest of them are wrapped in functions?",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c2ba75_2872a186",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "It should be ifdefed by config enabled, not length specified",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f17b6e4_9a0e994e",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "Is there a need for this to be converted to `const char *` instead of pointer to uint8_t?",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88afa75_31f946e1",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "Now I understand why this is `const char *`. Since these fields are bitfields, this cannot use the strnlen and any other string function. In case of any field being zeroed, rest of the data would not be loaded properly.",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbe6a9a_a33b6c3f",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-07T18:34:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it return NULL to signal the error? Especially because it is binary data, not NULL-terminated.",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
