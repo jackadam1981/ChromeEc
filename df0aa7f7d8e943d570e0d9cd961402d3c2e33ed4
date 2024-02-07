@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4554deca_49dbdc0f",
+        "filename": "include/console.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-07T21:09:42Z",
+      "side": 1,
+      "message": "naive question, why do we need it as a string? can\u0027t we log it as an int?",
+      "revId": "df0aa7f7d8e943d570e0d9cd961402d3c2e33ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
