@@ -70,6 +70,30 @@
       },
       "revId": "d2a411960e2b89013de2e72040dde5a732517f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5008aa9e_11c41618",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-07T21:48:56Z",
+      "side": 1,
+      "message": "I will disable the tests in a follow-up, until we have a proper fix.",
+      "parentUuid": "01e170f1_be3923e6",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "d2a411960e2b89013de2e72040dde5a732517f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
