@@ -16,6 +16,144 @@
       "message": "I will review more when I get back later today 😊",
       "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbf3f1c_93025231",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "This data needs to be described too, e.g. the The DELAY_BIT isn\u0027t documented here",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304d2f6b_3c02e693",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "Device to Host? Or how is this the response then?",
+      "range": {
+        "startLine": 66,
+        "startChar": 29,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba03c38_b4767db5",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "just",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bac2063_3d050de5",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "safely",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca8ab31_f76e1bf6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "learning",
+      "range": {
+        "startLine": 94,
+        "startChar": 66,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c28204a_564438ba",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "too",
+      "range": {
+        "startLine": 1707,
+        "startChar": 16,
+        "endLine": 1707,
+        "endChar": 19
+      },
+      "revId": "91cb98d7b30340b1257421c338e17f70c508bf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

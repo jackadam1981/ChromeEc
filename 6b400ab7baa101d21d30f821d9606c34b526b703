@@ -442,6 +442,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f342dc84_58758c64",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "Ah, good to know. Thanks!",
+      "parentUuid": "cbd354a0_b0ee4af2",
+      "range": {
+        "startLine": 1166,
+        "startChar": 41,
+        "endLine": 1166,
+        "endChar": 42
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3be64128_bb6ba742",
@@ -620,6 +644,30 @@
       "side": 1,
       "message": "One could generate a five-second pulse on the power button by: `opentitantool gpio bit-bang --clock \"5s\" PWR_BTN_L -s \"0 1\"`, that is, two samples with a really slow clock.\n\nIf we set the counter to zero unconditionally, then there would be a five second delay from the time of the USB request to the FIRST generated edge (and then another five seconds to the rising edge).\n\nSo we do not strictly need this, as one could work around it by using a faster base clock, with `--clock \"1ms\" -s \"0 5s 1\"`, but I think that it is not that much complication in the HyperDebug firmware, and users may have trouble understanding why one and not the other example above works efficiently.",
       "parentUuid": "68ef42e5_21de00ce",
+      "range": {
+        "startLine": 1576,
+        "startChar": 31,
+        "endLine": 1578,
+        "endChar": 27
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5f51c6_aa703996",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-07T17:57:17Z",
+      "side": 1,
+      "message": "Ah, I agree that we opentitantool string implies the first event to be immediate, not waiting for a clock edge first.\n\nCan you add to the comment saying that the first event should happen immediately without the full \"clock\" delay.\n\nAnother way to say it would be to target the first event to occur within 50ms of the command (whether the clock is slow of fast). Is that something that is current happening (or some other reasonable time)?",
+      "parentUuid": "bf17226e_ca190916",
       "range": {
         "startLine": 1576,
         "startChar": 31,
