@@ -46,6 +46,30 @@
       },
       "revId": "4513619832fdcadaef0e1455ac3d420706a87515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa481c20_da21a3ea",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-07T20:47:45Z",
+      "side": 1,
+      "message": "I see your point. I\u0027ll set to false and explicitly clear the event.",
+      "parentUuid": "a870d6af_70c38094",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "4513619832fdcadaef0e1455ac3d420706a87515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
