@@ -1266,11 +1266,13 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 		return -EBUSY;
 	}
 
-	if (en) {
+	/*if (en) {
 		byte = VBSIN_EN_ON;
 	} else {
 		byte = VBSIN_EN_OFF;
-	}
+	}*/
+
+	byte = VBSIN_EN_OFF;
 
 	uint8_t payload[] = {
 		FORCE_SET_POWER_SWITCH.cmd,
