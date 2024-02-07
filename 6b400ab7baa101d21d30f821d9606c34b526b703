@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6118df_5dd02078",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "No, this was left over from some initial debugging.",
+      "parentUuid": "a32edf2b_542849e3",
+      "range": {
+        "startLine": 1113,
+        "startChar": 2,
+        "endLine": 1113,
+        "endChar": 36
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3157f97b_465050f8",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "so with this kind of circular buffer, we only get ((2^n) - 1) elements instead of 2^n. We should document that somewhere in the header comments 😊",
+      "range": {
+        "startLine": 1117,
+        "startChar": 5,
+        "endLine": 1117,
+        "endChar": 32
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c0d3fc_cdff7555",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Yes, I know, and it annoys me a little.\n\nAs the buffer size is a power of two, we could store integer indices, and let the indices run all the way to 32-bit wrapping, while masking all but the lowest bits every time one of the indices were used to index into the array.  That may not be such a bad idea, since it would also eliminate any timing jitter from the conditional wraparound logic.  (Maybe what I describe is actually how cyclic buffers are usually implemented, I just did not know about it.)",
+      "parentUuid": "3157f97b_465050f8",
       "range": {
         "startLine": 1117,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2908d3_147c23fc",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c224f735_86e2708a",
+      "range": {
+        "startLine": 1127,
+        "startChar": 0,
+        "endLine": 1127,
+        "endChar": 24
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a7524c_e660b520",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae2f712_1dc4902a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a7524c_e660b520",
+      "range": {
+        "startLine": 1132,
+        "startChar": 3,
+        "endLine": 1134,
+        "endChar": 31
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87f50035_1a53ea0f",
@@ -123,6 +219,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "named constant",
+      "range": {
+        "startLine": 1136,
+        "startChar": 18,
+        "endLine": 1136,
+        "endChar": 22
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a72715c_aa42c86a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87f50035_1a53ea0f",
       "range": {
         "startLine": 1136,
         "startChar": 18,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3547c04_a1b691c8",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "That is true.  But I think that this location in the code, in the interrupt handler, is not the right place.  I will add some logic to `dap_goog_gpio_bitbang()`, to make sure that it never places invalid data into the buffer range to be processed by the interrupt, and then I need to add a way for the code to report back to the USB host that the given data was rejected.",
+      "parentUuid": "268ba869_9706ec05",
+      "range": {
+        "startLine": 1137,
+        "startChar": 3,
+        "endLine": 1137,
+        "endChar": 14
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3eb7812_d201ce52",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 12
@@ -169,6 +313,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "why not? Because they are just what we wrote out?",
+      "range": {
+        "startLine": 1146,
+        "startChar": 32,
+        "endLine": 1146,
+        "endChar": 53
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9882129_8d06c84a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Yes, I have re-written the comment to state that fact.  (And it may be of some use, if the caller traverses the data that came back, maybe it is useful to correlate e.g. the clock that was produced by HyperDebug with data coming in on a different pin.)",
+      "parentUuid": "a3eb7812_d201ce52",
       "range": {
         "startLine": 1146,
         "startChar": 32,
@@ -192,6 +360,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "does this need to be `|\u003d`? Are we loosing other other values otherwise?",
+      "range": {
+        "startLine": 1166,
+        "startChar": 41,
+        "endLine": 1166,
+        "endChar": 42
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd354a0_b0ee4af2",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "No, this is the \"Bit set/reset\" register, which allows setting or clearing any of the 16 bits of the output register without touching the rest, and without needing a read/modify/write roundtrip.  A one in any of the lower 16 bits will set the corresponding output to one, a one in any of the upper 16 bits will set the corresponding output to zero.",
+      "parentUuid": "260cdcd2_f569a94f",
       "range": {
         "startLine": 1166,
         "startChar": 41,
@@ -227,6 +419,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9f7ab9c_13d4183b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Stopping interrupts would be good for preventing the IRQ handler from making simultaneous changes, however, that I think I have taken care of by stopping the timer above.  (If the timer overflowed just before I stopped it, and the interrupt status was latched, then execution can only reach this point in this (non-interrupt) routine after the interrupt handler has completed for the last time.)\n\nThe danger that I am noting is if for instance the CMSIS-DAP task is sitting in `queue_blocking_add()` towards the bottom of `dap_goog_gpio_bitbang()`, as the console task reaches this point (in response to `reinit` command).  As you see, `dap_goog_gpio_bitbang()` will execute `bitbang_head \u003d ptr` just before exiting, which is incompatible with the console task having reset all the pointers here, while execution was paused in the middle of `dap_goog_gpio_bitbang()`.\n\nIf we wanted to protect against this, which could make sense, and could apply to the I2C and JTAG protocols as well, then we need to devise some handshake protocol between the console task and the CMSIS-DAP task, to be used when `reinit` runs.  The console task would probably set a global variable, requesting that the CMSIS-DAP task should abort any operation, and go into a \"parked\" state, in which it rejects any requests.  The console task would then probably invoke `task_wake()` to  wake up the CMSIS-DAP task, then then we would have to modify `queue_blocking_add()` and every other callsite of `task_wait_event()` done by the CMSIS-DAP task, to check this global flag, and if set, then immediately bubble up the request to park, until it reaches the top `cmsis_dap_task()` function, which would set another flag and signal the console process that the CMSIS-DAP task now is \"parked\" and will not process any requests that could update state.  Then this code can run, and then the global flag can be changed back to allow the CMSIS-DAP task to again process requests.\n\nGetting safely out of a blocked call stack in the CMSIS-DAP task is not all, we would also need to empty any queued-up data in `cmsis_dap_tx_queue` or `cmsis_dap_rx_queue`, and even further, we would need to revoke any data that the USB driver has pulled off the TX queue, and put into USB buffer memory, ready to serve a future bulk IN transfer.\n\nAll of the above would guard against some scenarios which I do not believe are very likely, though could happen if a previous opentitantool process had been killed before completing some bitbanging, and then a next invocation doing `transport init`.  With all the above, opentitantool would be guaranteed that HyperDebug has returned to a clean CMSIS-DAP protocol state after re-initialization.  I would prefer to look into this in a separate CL, and probably only if it turns out to actually cause test flakiness.",
+      "parentUuid": "3be64128_bb6ba742",
+      "range": {
+        "startLine": 1178,
+        "startChar": 21,
+        "endLine": 1178,
+        "endChar": 68
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c80f018_bd76a483",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 12
@@ -238,6 +454,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "why do this line before removing the units?",
+      "range": {
+        "startLine": 1553,
+        "startChar": 0,
+        "endLine": 1553,
+        "endChar": 56
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6937be24_43371e48",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "There is no particular reason.  The fact that peek_c is greater than or equal to four means that the caller has already placed at least four \"peeked\" bytes into rx_buffer[], the same bytes that the next call overwrites.  I have changed the code to call `queue_advance_head()` instead, in order to make it clear that retreiving the bytes is not the purpose of the call.",
+      "parentUuid": "4c80f018_bd76a483",
       "range": {
         "startLine": 1553,
         "startChar": 0,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e36e23_de60eff8",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1571,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b58ec86_602a007b",
+      "range": {
+        "startLine": 1571,
+        "startChar": 1,
+        "endLine": 1571,
+        "endChar": 55
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ef42e5_21de00ce",
@@ -284,6 +548,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "why do we need to do this?",
+      "range": {
+        "startLine": 1576,
+        "startChar": 31,
+        "endLine": 1578,
+        "endChar": 27
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf17226e_ca190916",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "One could generate a five-second pulse on the power button by: `opentitantool gpio bit-bang --clock \"5s\" PWR_BTN_L -s \"0 1\"`, that is, two samples with a really slow clock.\n\nIf we set the counter to zero unconditionally, then there would be a five second delay from the time of the USB request to the FIRST generated edge (and then another five seconds to the rising edge).\n\nSo we do not strictly need this, as one could work around it by using a faster base clock, with `--clock \"1ms\" -s \"0 5s 1\"`, but I think that it is not that much complication in the HyperDebug firmware, and users may have trouble understanding why one and not the other example above works efficiently.",
+      "parentUuid": "68ef42e5_21de00ce",
       "range": {
         "startLine": 1576,
         "startChar": 31,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ab7ab4_cdc8ac5d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04882819_1fad2dec",
+      "range": {
+        "startLine": 1610,
+        "startChar": 15,
+        "endLine": 1610,
+        "endChar": 37
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07f313c8_8e3bd110",
@@ -330,6 +642,30 @@
       "writtenOn": "2024-02-06T16:39:18Z",
       "side": 1,
       "message": "the binary protocol for this data needs to be document explicitly at least somewhere in this code. Thoughts?",
+      "range": {
+        "startLine": 1665,
+        "startChar": 2,
+        "endLine": 1665,
+        "endChar": 23
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75e2c7e_afeb30c1",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-07T03:36:37Z",
+      "side": 1,
+      "message": "You are right, this binary protocol ought to be documented in the source, I have attemted to do so at the top of this file.  Please let me know if some aspects are still ambiguous.\n\nI suppose I should also document the existing GPIO monitoring protocol, the same way, that will have to be later.",
+      "parentUuid": "07f313c8_8e3bd110",
       "range": {
         "startLine": 1665,
         "startChar": 2,
