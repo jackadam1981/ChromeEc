@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2bbcee_a9b9b238",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T16:17:31Z",
+      "side": 1,
+      "message": "Resolved in next CL in stack",
+      "parentUuid": "c061fbe7_c62764f1",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "234695925477bc4efee66ae03930c3de643dab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c9eec2_dc18dc64",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Does this request change with having a misconfiguration?",
       "parentUuid": "b2c9eec2_dc18dc64",
+      "range": {
+        "startLine": 2721,
+        "startChar": 0,
+        "endLine": 2721,
+        "endChar": 24
+      },
+      "revId": "234695925477bc4efee66ae03930c3de643dab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d99e89_40a85bae",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2721,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-07T16:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b117ef40_6d34db91",
       "range": {
         "startLine": 2721,
         "startChar": 0,
