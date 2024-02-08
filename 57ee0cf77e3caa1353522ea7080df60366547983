@@ -190,6 +190,30 @@
       },
       "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72ab8c9_c93cb0da",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-08T09:35:05Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I think I\u0027m doing a terrible job explaining. I mean we set to 5Hz as the requested ODR, with the round up flag the sensor actual ODR is set to 12.5Hz. But calculating the ec rate based on the requested ODR let\u0027s us promise the sleep duration. The config value is just the threshold to use. If the threshold is 50ms and we use 10Hz then the sensor will be set to 12.5Hz (after rounding) and the ec_rate to 100ms.",
+      "parentUuid": "9dd25550_e17f42bb",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
