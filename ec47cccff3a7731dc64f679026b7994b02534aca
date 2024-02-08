@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "855bf2aa_4a3a8dd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "n you",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f13bf80_f584f2e5",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "Nit: These config deps, particularly `CONFIG_CPP`, seem like implementation details of `test_lib` that should probably be checked in `test_lib/CMakeLists.txt`. By way of analogy, consider that `emul` is included without first checking `CONFIG_EMUL`.",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed69dcd_dc88f8f9",
@@ -31,6 +65,91 @@
       "writtenOn": "2024-02-08T15:53:43Z",
       "side": 1,
       "message": "There is already a `zephyr/test/test_utils` directory.  Does this make sense to move there?  The other alternative would be create `zephyr/lib/test`.\n\n`zephyr/test_lib` doesn\u0027t match any existing directory patterns in Zephyr upstream.",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2615f75f_dbe7a77e",
+        "filename": "zephyr/test_lib/shell/public/test_lib/shell/shell.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "This isn\u0027t completely portable. I see it used in a few places in our libraries and also upstream, but it\u0027s not widely used. Chromium style prohibits it. If everyone will reliably be using a compiler that supports it, I don\u0027t have a problem with it, but I could imagine getting pushback from various corners.",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4d8869_530b3c43",
+        "filename": "zephyr/test_lib/shell/public/test_lib/shell/shell.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "It looks like this returns `Shell` to allow chaining together `operator\u003c\u003c` calls. But if I\u0027m reading this right, only the first one will do anything, because of this check for an empty buffer. Am I missing something?",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d382b01a_94186de7",
+        "filename": "zephyr/test_lib/shell/public/test_lib/shell/shell.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "Is there supposed to be a way to recover a shell when its last status is bad? It seems like it will just silently drop inputs forever?",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d515afec_e84f0d24",
+        "filename": "zephyr/test_lib/shell/public/test_lib/shell/shell.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "Assuming you need this, why not just `std::ostream`? Or `std::result_of\u003cdecltype(std::endl)\u003e::type`?",
+      "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e0e32a_c2af9040",
+        "filename": "zephyr/test_lib/shell/public/test_lib/shell/shell.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-08T17:49:20Z",
+      "side": 1,
+      "message": "This seems a bit oddly constructed.\n1. Can you just declare this as `Shell \u0026operator\u003c\u003c(decltype(std::endl) endl`?\n2. If not can your `using` declarations be private? It seems odd to make them part of the public API.",
       "revId": "ec47cccff3a7731dc64f679026b7994b02534aca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
