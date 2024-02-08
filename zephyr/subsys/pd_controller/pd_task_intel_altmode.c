@@ -24,6 +24,7 @@
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
+
 #define INTEL_ALTMODE_COMPAT_PD intel_pd_altmode
 
 #define PD_CHIP_ENTRY(usbc_id, pd_id, config_fn) \
@@ -124,8 +125,9 @@ static void process_altmode_pd_data(int port)
 	bool prv_hpd_lvl;
 #endif
 
+#if !CONFIG_USBPD_POLL_PDC
 	LOG_INF("Process p%d data", port);
-
+#endif
 	/* Clear the interrupt */
 	rv = pd_altmode_write_control(pd_config_array[port], &control);
 	if (rv) {
@@ -222,11 +224,17 @@ static void intel_altmode_thread(void *unused1, void *unused2, void *unused3)
 
 	LOG_INF("Intel Altmode thread start");
 
+#if CONFIG_USBPD_POLL_PDC
+	events = intel_altmode_wait_event();
+#endif
 	while (1) {
+#if CONFIG_USBPD_POLL_PDC
+		events = BIT(INTEL_ALTMODE_EVENT_FORCE);
+#else
 		events = intel_altmode_wait_event();
 
 		LOG_DBG("Altmode events=0x%x", events);
-
+#endif
 		/*
 		 * Process the forced event first so that they are not
 		 * overlooked in the if-else conditions.
@@ -243,6 +251,9 @@ static void intel_altmode_thread(void *unused1, void *unused2, void *unused3)
 					process_altmode_pd_data(i);
 			}
 		}
+#if CONFIG_USBPD_POLL_PDC
+		k_msleep(100);
+#endif
 	}
 }
 
@@ -379,6 +390,7 @@ SHELL_CMD_REGISTER(altmode, &sub_altmode_cmds, "PD Altmode commands", NULL);
 #ifdef CONFIG_PLATFORM_EC_USB_PD_DP_MODE
 __override uint8_t get_dp_pin_mode(int port)
 {
+	LOG_INF("DP_PIN_MODE: %02x\n", intel_altmode_task_data.data_status[port].dp_pin << 2);
 	return intel_altmode_task_data.data_status[port].dp_pin << 2;
 }
 #endif
