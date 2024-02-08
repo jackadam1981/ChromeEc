@@ -174,6 +174,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "695d2196_48d9e385",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2024-02-08T21:55:43Z",
+      "side": 1,
+      "message": "You\u0027re creating the buffer here on the stack then returning it to the calling functions which now assume that the higher positions of the stack are free to use how they see fit. Other locations copy the persist_state struct to avoid this problem.",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f17b6e4_9a0e994e",
         "filename": "common/flash.c",
         "patchSetId": 1
