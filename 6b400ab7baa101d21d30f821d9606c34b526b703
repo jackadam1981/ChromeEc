@@ -585,6 +585,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca8d2d3_0882535a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-08T20:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e7f2b7_f65ac23e",
+      "range": {
+        "startLine": 1178,
+        "startChar": 21,
+        "endLine": 1178,
+        "endChar": 68
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c80f018_bd76a483",

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37200558_d513beb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-08T20:51:54Z",
+      "side": 1,
+      "message": "Thank you for the many review.\n\nThe last snapshot accidentally contained debugging code which I used when making the somewhat intrusive change of going from pointer to indices.  The code works well after the change, and now without clutter.  PTAL.",
+      "revId": "0818f354eb28b243bec8c6968ec04702f38abc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
