@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "408744d9_7015b4ec",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T22:35:07Z",
+      "side": 1,
+      "message": "Ah, yes. lgtm.",
+      "parentUuid": "f861bee0_71b56c9b",
+      "range": {
+        "startLine": 68,
+        "startChar": 44,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e7106c8_e02acc27",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "The way that is handled is that the \"effective tail, as we want it to be seen by the IRQ consumer\" (AKA bitbang_irq_tail), is set such that it does not include the partially received wait operation.  When we later receive the rest of the wait encoding, we will move the bitbang_irq_tail past it.\n\nIf there is severe USB delay, the IRQ handler may stall if it runs out of data, and we do not make any attempt at counting how many ticks it was stalled, such that we could subtract from the remaning number of ticks to delay, once the complete encoding was received.\n\nThis approach allows streaming processing of long sample runs with delays to work.",
       "parentUuid": "755153cb_f3a83720",
+      "range": {
+        "startLine": 1686,
+        "startChar": 1,
+        "endLine": 1686,
+        "endChar": 29
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd64823_36b28161",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1686,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T22:35:07Z",
+      "side": 1,
+      "message": "I see it now. LGTM",
+      "parentUuid": "a201ebf8_25035099",
       "range": {
         "startLine": 1686,
         "startChar": 1,
