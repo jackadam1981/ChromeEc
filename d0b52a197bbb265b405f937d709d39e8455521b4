@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedb0094_c5cc47af",
+        "filename": "common/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T15:46:20Z",
+      "side": 1,
+      "message": "Split the usleep API change into a separate CL.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "d0b52a197bbb265b405f937d709d39e8455521b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7668d284_6babcbb1",
+        "filename": "include/timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T15:46:20Z",
+      "side": 1,
+      "message": "Move to separate CL and document the return value.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "d0b52a197bbb265b405f937d709d39e8455521b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6486273_ec1074f1",
+        "filename": "zephyr/app/ec/include/ec_app_main.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T15:46:20Z",
+      "side": 1,
+      "message": "```suggestion\nextern \"C\" {\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d0b52a197bbb265b405f937d709d39e8455521b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751ca3a7_17199184",
+        "filename": "zephyr/app/ec/include/ec_app_main.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T15:46:20Z",
+      "side": 1,
+      "message": "Add\n```\n#ifdef __cplusplus\n}\n#endif\n```",
+      "revId": "d0b52a197bbb265b405f937d709d39e8455521b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
