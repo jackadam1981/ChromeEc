@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee8a180_d00fe3ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-08T21:11:33Z",
+      "side": 1,
+      "message": "This CL polls the PDC for alt-mode data to get around the non-functional interrupt problem.",
+      "revId": "e8a3c88ecd7e1e7e8e1468cf64b3c79f8c7feb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
