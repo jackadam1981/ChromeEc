@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e200e53_865be843",
+        "filename": "zephyr/test_lib/motion_sense/runtime_interrupt_toggle_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:03:27Z",
+      "side": 1,
+      "message": "What\u0027s the rationale for using gtest in place of ztest for all this code?  \n\nI see Zephyr upstream supports the gtest harness, but I don\u0027t see any test implementations using it.\n\nAlso, I was thing `test_lib` would be a library of helper routines for tests and I wasn\u0027t expecting the actual test body to implemented under this path.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 6
+      },
+      "revId": "cf971dc85c11fd78eb412306d964fc81cdb8e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
