@@ -39,6 +39,24 @@
       "message": "Shouldn\u0027t this be `ctrl4_reg`?",
       "revId": "ce970c60bfc26ce4087397ced2de31ba632aa659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb728b10_c55cf5b3",
+        "filename": "zephyr/emul/emul_lis2dw12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-08T03:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34f29232_ce55c300",
+      "revId": "ce970c60bfc26ce4087397ced2de31ba632aa659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
