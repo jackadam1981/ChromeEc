@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cb77a9_3b20f1b6",
+        "filename": "zephyr/test/nissa/src/board_ap_pwrseq_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:35:15Z",
+      "side": 1,
+      "message": "```suggestion\n * G3 action handler does not respond to `AP_PWRSEQ_EVENT_POWER_SIGNAL` event.\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 30,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "cdf4a10520bea115dce8d346a3c0ad32555ceee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
