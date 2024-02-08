@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b08314_ba7ae5fc",
+        "filename": "zephyr/test/motion_sense/boards/brox.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:07:38Z",
+      "side": 1,
+      "message": "Needs formattting",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "81c4cfd1de717ce2c6fd3b628fe3dec9121f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63dacbc7_b55e7c14",
+        "filename": "zephyr/test/motion_sense/boards/native_sim.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:07:38Z",
+      "side": 1,
+      "message": "Nit - leading spaces.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "81c4cfd1de717ce2c6fd3b628fe3dec9121f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
