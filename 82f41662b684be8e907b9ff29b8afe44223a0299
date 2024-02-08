@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c8a552_18897703",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:48:23Z",
+      "side": 1,
+      "message": "This isn\u0027t the correct approach for handling this signal.",
+      "revId": "82f41662b684be8e907b9ff29b8afe44223a0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500dc9c1_910de2ea",
+        "filename": "zephyr/program/brox/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:48:23Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the correct approach.  AMP_MUTE is not a power sequencing signal.\n\nInstead, this signal can be set high/low as part of the brox suspend/resume handler.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/brox/src/suspend_resume.c;l\u003d16",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "82f41662b684be8e907b9ff29b8afe44223a0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
