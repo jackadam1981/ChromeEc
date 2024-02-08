@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73594f40_ea995d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:49:55Z",
+      "side": 1,
+      "message": "This cherry pick is not needed. The cros/master branch has long been deprecated. All changes should be applied on top of cros/main.",
+      "revId": "e52485809599310b3088a45ea5b354dc5d47d246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
