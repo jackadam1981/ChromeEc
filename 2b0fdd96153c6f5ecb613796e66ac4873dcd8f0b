@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674acb0a_41bb82a0",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "`device to host` here too",
+      "range": {
+        "startLine": 68,
+        "startChar": 44,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7106c8_e02acc27",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "nit: change these comments from \"Pointer\" to \"Index\"",
+      "range": {
+        "startLine": 1188,
+        "startChar": 3,
+        "endLine": 1188,
+        "endChar": 10
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a84fd1e_90a81047",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "also for all 4 of these variables, can you describe in the comments the expect access pattern, e.g. X is only read in interrupt and written in tasks, or vise versa.",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 42
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5699926_3220fc75",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "why not name this variable `bitbang_head_irq`? Am I missing some subtlety?",
+      "range": {
+        "startLine": 1220,
+        "startChar": 5,
+        "endLine": 1220,
+        "endChar": 16
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788b5a4e_e205ff3c",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "this is very clever! It took me a while to figure out why this worked. Can you add a comment please?",
+      "range": {
+        "startLine": 1658,
+        "startChar": 4,
+        "endLine": 1659,
+        "endChar": 31
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45a81a3_66c0308b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1661,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "do you still want this print? If so, can you name `reject A` a little more descriptively",
+      "range": {
+        "startLine": 1661,
+        "startChar": 5,
+        "endLine": 1661,
+        "endChar": 13
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b235763_e69d8733",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "nit: remove this a white space new lines\n\n---\n\nThere are more whitespaces issues in the file. Please run `cros format` on this file",
+      "range": {
+        "startLine": 1672,
+        "startChar": 0,
+        "endLine": 1672,
+        "endChar": 1
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbc03a5_b40f6c58",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "do you still want this print? If so, can you name `reject B` a little more descriptively",
+      "range": {
+        "startLine": 1680,
+        "startChar": 2,
+        "endLine": 1680,
+        "endChar": 10
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755153cb_f3a83720",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1686,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "Can streaming handle an incomplete wait? I wasn\u0027t sure. What does it do when it receives only the first 7 bits of a wait operation?",
+      "range": {
+        "startLine": 1686,
+        "startChar": 1,
+        "endLine": 1686,
+        "endChar": 29
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e6af51_f525e48d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1704,
+        "startChar": 1,
+        "endLine": 1704,
+        "endChar": 105
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd3c471_cc3d7fdf",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 1732,
+        "startChar": 1,
+        "endLine": 1732,
+        "endChar": 9
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff56272_dc68ac99",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1828,
+        "startChar": 1,
+        "endLine": 1828,
+        "endChar": 9
+      },
+      "revId": "2b0fdd96153c6f5ecb613796e66ac4873dcd8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

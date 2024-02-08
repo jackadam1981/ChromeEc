@@ -563,6 +563,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35e7f2b7_f65ac23e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-08T16:16:20Z",
+      "side": 1,
+      "message": "Separate CL or never it okay.\n\nCan you also add these \"No guard -- potentially dangerous\" comment to the CMSIS-DAP handler as well and describe the bad scenario that is unlikely. It will help us out greatly in the future if we have to come back and figure out why something is flaky.",
+      "parentUuid": "f9f7ab9c_13d4183b",
+      "range": {
+        "startLine": 1178,
+        "startChar": 21,
+        "endLine": 1178,
+        "endChar": 68
+      },
+      "revId": "6b400ab7baa101d21d30f821d9606c34b526b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c80f018_bd76a483",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 12
