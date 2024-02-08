@@ -22,6 +22,30 @@
       },
       "revId": "cf971dc85c11fd78eb412306d964fc81cdb8e3f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e085e30_24f72235",
+        "filename": "zephyr/test_lib/motion_sense/runtime_interrupt_toggle_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-08T16:07:25Z",
+      "side": 1,
+      "message": "I see that the board tests inherit this test, so I can see the rationale for keeping this inside the library, but there could be value in this test code residing along other tests.\n\nThis is a pretty big departure from our existing test approaches.  I think a green doc is warranted that articulates the design goals, alternatives, etc.",
+      "parentUuid": "6e200e53_865be843",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 6
+      },
+      "revId": "cf971dc85c11fd78eb412306d964fc81cdb8e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
