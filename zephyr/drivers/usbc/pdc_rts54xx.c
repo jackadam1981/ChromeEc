@@ -109,7 +109,7 @@ struct smbus_cmd_t {
 
 const struct smbus_cmd_t VENDOR_CMD_ENABLE = { 0x01, 0x03, 0xDA };
 const struct smbus_cmd_t SET_NOTIFICATION_ENABLE = { 0x08, 0x06, 0x01 };
-const struct smbus_cmd_t SET_PDOS = { 0x08, 0x03, 0x03 };
+const struct smbus_cmd_t SET_PDOS = { 0x08, 0x00, 0x03 };
 const struct smbus_cmd_t SET_RDO = { 0x08, 0x06, 0x04 };
 const struct smbus_cmd_t SET_TPC_RP = { 0x08, 0x03, 0x05 };
 const struct smbus_cmd_t SET_TPC_CSD_OPERATION_MODE = { 0x08, 0x03, 0x1D };
@@ -219,6 +219,8 @@ enum cmd_t {
 	CMD_SET_PDR,
 	/** Get PDOs */
 	CMD_GET_PDOS,
+	/** Set PDOs */
+	CMD_SET_PDOS,
 	/** Get Connector Status */
 	CMD_GET_CONNECTOR_STATUS,
 	/** Get Error Status */
@@ -334,6 +336,7 @@ static const char *const cmd_names[] = {
 	[CMD_SET_UOR] = "SET_UOR",
 	[CMD_SET_PDR] = "SET_PDR",
 	[CMD_GET_PDOS] = "GET_PDOS",
+	[CMD_SET_PDOS] = "SET_PDOS",
 	[CMD_GET_CONNECTOR_STATUS] = "GET_CONNECTOR_STATUS",
 	[CMD_GET_ERROR_STATUS] = "GET_ERROR_STATUS",
 	[CMD_GET_VBUS_VOLTAGE] = "GET_VBUS_VOLTAGE",
