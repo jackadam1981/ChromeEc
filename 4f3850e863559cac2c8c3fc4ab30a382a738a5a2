@@ -106,6 +106,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdc28191_5eb66b5f",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2024-02-08T22:03:56Z",
+      "side": 1,
+      "message": "From another location I escalate a problem with the buffer.\n\nI recommend passing the servo_poweron_conf to the function and just populating it that way, this is basically how the strings are handled. If the read is successful the location where the buffer is initiated should copy it to the destination.",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10424b9c_922112e8",
         "filename": "board/servo_v4p1/poweron_conf.c",
         "patchSetId": 1
