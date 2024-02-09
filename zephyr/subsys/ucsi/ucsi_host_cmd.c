@@ -22,6 +22,37 @@ LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
 
 static struct ucsi_ppm_driver *ec_ppm_drv;
 
+struct ucsi_pd_driver *rts5453_open(void);
+
+static void ucsi_notify(void *context)
+{
+	LOG_INF("Notified");
+}
+
+/* Sort of main */
+void ucsi_init(void)
+{
+	struct ucsi_pd_driver *drv;
+
+	drv = rts5453_open();
+	if (!drv) {
+		LOG_ERR("Failed to open rts5453");
+		return;
+	}
+
+	/* Start a PPM task. */
+	if (drv->init_ppm(drv->dev)) {
+		LOG_ERR("Failed to init PPM");
+		return;
+	}
+
+	LOG_INF("Initialized PPM");
+
+	ec_ppm_drv = drv->get_ppm(drv->dev);
+	ec_ppm_drv->register_notify(ec_ppm_drv->dev, ucsi_notify, NULL);
+}
+DECLARE_HOOK(HOOK_INIT, ucsi_init, HOOK_PRIO_DEFAULT);
+
 static enum ec_status hc_ucsi_ppm_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_ucsi_ppm_set *p = args->params;
