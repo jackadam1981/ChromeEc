@@ -128,6 +128,7 @@ struct smbus_cmd_t {
 };
 
 /** @brief Realtek SMbus commands */
+#define REALTEK_PD_COMMAND 0x0e
 
 const struct smbus_cmd_t VENDOR_CMD_ENABLE = { 0x01, 0x03, 0xDA };
 const struct smbus_cmd_t SET_NOTIFICATION_ENABLE = { 0x08, 0x06, 0x01 };
@@ -2202,6 +2203,59 @@ static int rts54_set_comms_state(const struct device *dev, bool comms_active)
 	return 0;
 }
 
+#define SMBUS_MAX_BLOCK_SIZE 32
+
+static int rts54_execute_command_sync(const struct device *dev,
+				      uint8_t ucsi_command, uint8_t data_size,
+				      uint8_t *command_specific,
+				      uint8_t *lpm_data_out)
+{
+	struct pdc_data_t *data = dev->data;
+	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
+	int call_counter;
+	int rv;
+
+	/* We don't know yet if the PDC driver is busy or not. */
+	if (get_state(data) != ST_IDLE || data->cmd != CMD_NONE) {
+		LOG_ERR("%s: Failed to run (-EBUSY)", __func__);
+		return -EBUSY;
+	}
+
+	cmd_buffer[0] = REALTEK_PD_COMMAND;
+	cmd_buffer[1] = data_size + 2;
+	cmd_buffer[2] = ucsi_command; /* sub-cmd */
+	cmd_buffer[3] = 0;
+	memcpy(&cmd_buffer[4], command_specific, data_size);
+
+	rv = rts54_post_command(dev, ucsi_command, cmd_buffer, data_size + 4,
+				lpm_data_out);
+	if (rv < 0) {
+		LOG_ERR("%s: Failed to run (%d)", __func__, rv);
+		return rv;
+	}
+
+	call_counter = 0;
+
+	do {
+		/* Wait for timeout or event */
+		k_sleep(K_MSEC(20));
+
+		call_counter++;
+		if (call_counter > 100) {
+			LOG_ERR("%s: Block call timeout", __func__);
+			rv = -ETIMEDOUT;
+			break;
+		}
+	} while (!data->cci_event.command_completed && !data->cci_event.error);
+
+	if (rv == 0) {
+		/* May have read some data. */
+		rv = data->cci_event.data_len;
+	}
+
+	return rv;
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
@@ -2233,6 +2287,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_identity_discovery = rts54_get_identity_discovery,
 	.set_comms_state = rts54_set_comms_state,
 	.is_vconn_sourcing = rts54_is_vconn_sourcing,
+	.execute_command_sync = rts54_execute_command_sync,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
