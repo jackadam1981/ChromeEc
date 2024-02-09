@@ -20,6 +20,8 @@
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys/util.h>
 LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
+#include "include/pd_driver.h"
+#include "ppm_common.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -155,6 +157,52 @@ const struct smbus_cmd_t UCSI_READ_POWER_LEVEL = { 0x0E, 0x05, 0x1E };
 const struct smbus_cmd_t GET_IC_STATUS = { 0x3A, 0x03, 0x00 };
 const struct smbus_cmd_t SET_RETIMER_FW_UPDATE_MODE = { 0x20, 0x03, 0x00 };
 const struct smbus_cmd_t GET_CABLE_PROPERTY = { 0x0E, 0x02, 0x11 };
+
+struct rts5453_ucsi_commands {
+	uint8_t command;
+	uint8_t command_copy_length;
+};
+
+#define UCSI_CMD_ENTRY(cmd, length)                            \
+	{                                                      \
+		.command = cmd, .command_copy_length = length, \
+	}
+
+struct rts5453_ucsi_commands ucsi_commands[UCSI_CMD_VENDOR_CMD + 1] = {
+	UCSI_CMD_ENTRY(UCSI_CMD_RESERVED, 0),
+	UCSI_CMD_ENTRY(UCSI_CMD_PPM_RESET, 0),
+	UCSI_CMD_ENTRY(UCSI_CMD_CANCEL, 0),
+	UCSI_CMD_ENTRY(UCSI_CMD_CONNECTOR_RESET, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_ACK_CC_CI, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_NOTIFICATION_ENABLE, 3),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CAPABILITY, 0),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CONNECTOR_CAPABILITY, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_CCOM, 2),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_UOR, 2),
+	UCSI_CMD_ENTRY(obsolete_UCSI_CMD_SET_PDM, 0),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_PDR, 2),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_ALTERNATE_MODES, 4),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CAM_SUPPORTED, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CURRENT_CAM, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_NEW_CAM, 6),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_PDOS, 3),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CABLE_PROPERTY, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CONNECTOR_STATUS, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_ERROR_STATUS, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_POWER_LEVEL, 6),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_PD_MESSAGE, 4),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_ATTENTION_VDO, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_reserved_0x17, 0),
+	UCSI_CMD_ENTRY(UCSI_CMD_GET_CAM_CS, 2),
+	UCSI_CMD_ENTRY(UCSI_CMD_LPM_FW_UPDATE_REQUEST, 4),
+	UCSI_CMD_ENTRY(UCSI_CMD_SECURITY_REQUEST, 5),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_RETIMER_MODE, 5),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_SINK_PATH, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_SET_PDOS, 3),
+	UCSI_CMD_ENTRY(UCSI_CMD_READ_POWER_LEVEL, 3),
+	UCSI_CMD_ENTRY(UCSI_CMD_CHUNKING_SUPPORT, 1),
+	UCSI_CMD_ENTRY(UCSI_CMD_VENDOR_CMD, 6),
+};
 
 /**
  * @brief PDC Command states
@@ -2353,3 +2401,137 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			      &pdc_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(PDC_DEFINE)
+
+#define SMBUS_MAX_BLOCK_SIZE 32
+#define UCSI_7BIT_PORTMASK(p) ((p) & 0x7F)
+
+struct rts5453_device {
+	/* PPM driver (common implementation). */
+	struct ucsi_ppm_driver *ppm;
+
+	/* Re-usable command buffer for active command. */
+	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
+
+	/* Number of active ports from |GET_CAPABILITIES|. */
+	uint8_t active_port_count;
+
+	struct pdc_data_t *data;
+};
+
+#define CAST_FROM(v) (struct rts5453_device *)(v)
+
+static int rts54xx_ucsi_init_ppm(struct ucsi_pd_device *device)
+{
+	struct rts5453_device *dev = CAST_FROM(device);
+
+	return dev->ppm->init_and_wait(dev->ppm->dev, NUM_PDC_RTS54XX_PORTS);
+}
+
+static struct ucsi_ppm_driver *
+rts54xx_ucsi_get_ppm(struct ucsi_pd_device *device)
+{
+	struct rts5453_device *dev = CAST_FROM(device);
+
+	return dev->ppm;
+}
+
+static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
+				    struct ucsi_control *control,
+				    uint8_t *lpm_data_out)
+{
+	struct rts5453_device *dev = CAST_FROM(device);
+	uint8_t ucsi_command = control->command;
+	uint8_t conn; /* 1:port=0, 2:port=1, ... */
+	uint8_t data_size;
+	int rv = 0;
+
+	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
+		LOG_ERR("Invalid command 0x%x", control->command);
+		return -1;
+	}
+
+	switch (ucsi_command) {
+	case UCSI_CMD_CONNECTOR_RESET:
+	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
+	case UCSI_CMD_GET_CAM_SUPPORTED:
+	case UCSI_CMD_GET_CURRENT_CAM:
+	case UCSI_CMD_SET_NEW_CAM:
+	case UCSI_CMD_GET_PDOS:
+	case UCSI_CMD_GET_CABLE_PROPERTY:
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+	case UCSI_CMD_GET_ERROR_STATUS:
+	case UCSI_CMD_GET_PD_MESSAGE:
+	case UCSI_CMD_GET_ATTENTION_VDO:
+	case UCSI_CMD_GET_CAM_CS:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[0]);
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+			return -EINVAL;
+		break;
+
+	/* The following UCSI commands change the port being addressed.
+	 * These commands have the connector number at offset 24.
+	 */
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+			return -EINVAL;
+		break;
+	default:
+		conn = 1;
+	}
+
+	switch (ucsi_command) {
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+	case UCSI_CMD_PPM_RESET:
+	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
+		rv = -ENOTSUP;
+		break;
+	default:
+		data_size = ucsi_commands[ucsi_command].command_copy_length;
+		dev->cmd_buffer[0] = 0xe; /* Cmd */
+		dev->cmd_buffer[1] = data_size + 2;
+		dev->cmd_buffer[2] = ucsi_command; /* sub-cmd */
+		dev->cmd_buffer[3] = data_size;
+		memcpy(&dev->cmd_buffer[4], control->command_specific,
+		       data_size);
+		rv = rts54_post_command(pdc_data[conn - 1]->dev,
+					CMD_NONE + ucsi_command,
+					dev->cmd_buffer, data_size + 4,
+					lpm_data_out);
+		break;
+	}
+
+	return rv;
+}
+
+static void rts54xx_ucsi_cleanup(struct ucsi_pd_driver *driver)
+{
+}
+
+struct ucsi_pd_driver *rts54xx_open(void)
+{
+	static struct rts5453_device dev;
+	static struct ucsi_pd_driver drv;
+	static struct ucsiv3_get_connector_status_data
+		port_status[NUM_PDC_RTS54XX_PORTS];
+	struct ppm_common_device *ppm_dev;
+
+	drv.dev = (struct ucsi_pd_device *)&dev;
+	drv.init_ppm = rts54xx_ucsi_init_ppm;
+	drv.get_ppm = rts54xx_ucsi_get_ppm;
+	drv.execute_cmd = rts54xx_ucsi_execute_cmd;
+	drv.cleanup = rts54xx_ucsi_cleanup;
+
+	/* Initialize the PPM. */
+	dev.ppm = ppm_open(&drv);
+	if (!dev.ppm) {
+		LOG_ERR("Failed to open PPM");
+		return NULL;
+	}
+
+	ppm_dev = (struct ppm_common_device *)dev.ppm->dev;
+	ppm_dev->num_ports = ARRAY_SIZE(port_status);
+	ppm_dev->per_port_status = port_status;
+
+	return &drv;
+}
