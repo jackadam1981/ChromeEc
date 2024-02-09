@@ -740,26 +740,35 @@ def flash(
     """Flash specified test to specified board."""
     logging.info("Flashing test")
 
-    cmd = []
-    if flasher == JTRACE:
-        cmd.append(JTRACE_FLASH_SCRIPT)
-        if remote_ip:
-            cmd.extend(["--remote", remote_ip + ":" + str(remote_port)])
-    elif flasher == SERVO_MICRO:
-        cmd.append(SERVO_MICRO_FLASH_SCRIPT)
-    else:
-        logging.error('Unknown flasher: "%s"', flasher)
-        return False
-    cmd.extend(
-        [
-            "--board",
-            board,
-            "--image",
-            image_path,
-        ]
-    )
+#    cmd = []
+#    if flasher == JTRACE:
+#        cmd.append(JTRACE_FLASH_SCRIPT)
+#        if remote_ip:
+#            cmd.extend(["--remote", remote_ip + ":" + str(remote_port)])
+#    elif flasher == SERVO_MICRO:
+#        cmd.append(SERVO_MICRO_FLASH_SCRIPT)
+#    else:
+#        logging.error('Unknown flasher: "%s"', flasher)
+#        return False
+#    cmd.extend(
+#        [
+#            "--board",
+#            board,
+#            "--image",
+#            image_path,
+#        ]
+#    )
+
+    with open(image_path, 'rb') as file:
+      file_contents = file.read()
+
+    cmd = [
+      "ssh",
+      "home",
+      f"mkdir -p ~/chromiumos/src/platform/ec/build/{board}; cat > ~/chromiumos/src/platform/ec/build/{board}/test.bin; cd ~/chromiumos; ~/depot_tools/cros_sdk ~/chromiumos/src/platform/ec/util/flash_ec --board {board} --image ~/chromiumos/src/platform/ec/build/{board}/test.bin"
+    ]
     logging.debug('Running command: "%s"', " ".join(cmd))
-    completed_process = subprocess.run(cmd, check=False)
+    completed_process = subprocess.run(cmd, input=file_contents, check=False)
     return completed_process.returncode == 0
 
 
@@ -1038,12 +1047,12 @@ def validate_args_combination(args: argparse.Namespace):
         )
         sys.exit(1)
 
-    if args.remote and args.flasher == SERVO_MICRO:
-        logging.error(
-            "The remote option is not supported when flashing with servo "
-            "micro. Use J-Link instead or flash with a local servo micro."
-        )
-        sys.exit(1)
+#    if args.remote and args.flasher == SERVO_MICRO:
+#        logging.error(
+#            "The remote option is not supported when flashing with servo "
+#            "micro. Use J-Link instead or flash with a local servo micro."
+#        )
+#        sys.exit(1)
 
     if args.board not in BOARD_CONFIGS:
         logging.error('Unable to find a config for board: "%s"', args.board)
