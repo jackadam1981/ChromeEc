@@ -1,0 +1,16 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+  USBC UCSI PDC driver
+
+compatible: "ucsi,pdc-driver"
+
+include: base.yaml
+
+properties:
+  pdc:
+    type: phandles
+    description: |
+      List of PDC ports connected to the PDC driver.

@@ -45,10 +45,18 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+		ucsi_ppm {
+			compatible = "ppm";
+			pdc-driver = <&pdc_driver>;
+		};
 	};
 };
 
 &i2c1 {
+	pdc_driver: rts5453 {
+		compatible = "ucsi,pdc-driver";
+		pdc = <&pdc_power_p0 &pdc_power_p1>;
+	};
 	pdc_power_p0: rts54-pdc@66 {
 		compatible = "realtek,rts54-pdc";
 		reg = <0x66>;
