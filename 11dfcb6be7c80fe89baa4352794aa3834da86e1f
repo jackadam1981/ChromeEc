@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20818d1_98205942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:34:03Z",
+      "side": 1,
+      "message": "GET_PDOs was returning ping status 2 and immediately returning (which resulted in a ping status of 0x3 for ACK_CC_CI). After this fix, only GET_PDOs returns 0x3 😊",
+      "revId": "11dfcb6be7c80fe89baa4352794aa3834da86e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
