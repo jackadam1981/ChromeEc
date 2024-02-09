@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a40f674_4802c9d9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6613,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-09T21:09:07Z",
+      "side": 1,
+      "message": "Nit: With your `BUILD_ASSERT`, would it make more sense for this to be an `else`? or maybe \n```\nname \u003d (r.action_keys[i] \u003c TK_COUNT ? action_key_names[r.action_keys[i]] : \"Unknown key\");\n```\nI\u0027m only seeing `name` being `NULL` here if there\u0027s a NULL entry in `action_keys_name` or out of bounds, unless I\u0027m missing something",
+      "revId": "b7a4855fb9ddea9075fcc2142f4dfabd8575895d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
