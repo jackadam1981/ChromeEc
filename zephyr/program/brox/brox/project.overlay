@@ -38,12 +38,11 @@ i2c3ALT: &i2c3 {
 /* Brox overrides follow... */
 
 /{
-        batteries {
-                default_battery: lgc_ap18c8k {
-                        compatible = "lgc,ap18c8k", "battery-smart";
-                };
-        };
-
+  batteries {
+    default_battery: lgc_ap18c8k {
+      compatible = "lgc,ap18c8k", "battery-smart";
+    };
+  };
   named-gpios {
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpiod 1 GPIO_INPUT>;
