@@ -49,6 +49,13 @@ int svdm_get_hpd_gpio(int port)
 }
 #endif
 
+__overridable void svdm_set_hpd_gpio_irq(int port)
+{
+	svdm_set_hpd_gpio(port, 0);
+	usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
+	svdm_set_hpd_gpio(port, 1);
+}
+
 enum ec_error_list dp_hpd_gpio_set(int port, bool level, bool irq)
 {
 	int cur_level = svdm_get_hpd_gpio(port);
@@ -68,10 +75,7 @@ enum ec_error_list dp_hpd_gpio_set(int port, bool level, bool irq)
 		if (now < svdm_hpd_deadline[port])
 			usleep(svdm_hpd_deadline[port] - now);
 
-		/* generate IRQ_HPD pulse */
-		svdm_set_hpd_gpio(port, 0);
-		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
-		svdm_set_hpd_gpio(port, 1);
+		svdm_set_hpd_gpio_irq(port);
 	} else {
 		svdm_set_hpd_gpio(port, level);
 	}
