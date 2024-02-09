@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62b1a47_2eef6902",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43545db8_c79669b6",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "5808cf57a4f72683a516521342bb65139bd11013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fda9137b_1e2caa63",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "2df78270_6015fd90",
+      "range": {
+        "startLine": 773,
+        "startChar": 14,
+        "endLine": 773,
+        "endChar": 18
+      },
+      "revId": "5808cf57a4f72683a516521342bb65139bd11013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd499a1_f7a40e07",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:30:43Z",
+      "side": 1,
+      "message": "I tried to do a port# to connector# refactor and it looked much worse. IMO, a better option is probably to add a macro that iterates macros instead.\n\nWe need to look at connector number mapping again when we support multiple PD LPMs with a single PPM. Let\u0027s tackle the problem of port numbers again then.",
+      "parentUuid": "04458c41_d0f10506",
       "range": {
         "startLine": 773,
         "startChar": 14,
