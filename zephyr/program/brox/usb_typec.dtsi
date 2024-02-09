@@ -45,6 +45,10 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+		ppm-driver {
+			compatible = "ucsi,ppm-driver";
+			lpm = <&pdc_power_p0 &pdc_power_p1>;
+		};
 	};
 };
 
