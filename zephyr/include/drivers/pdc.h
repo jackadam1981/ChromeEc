@@ -154,6 +154,11 @@ typedef int (*pdc_is_vconn_sourcing_t)(const struct device *dev,
 				       bool *vconn_sourcing);
 typedef int (*pdc_set_pdos_t)(const struct device *dev, enum pdo_type_t type,
 			      uint32_t *pdo, int count);
+typedef int (*pdc_execute_command_sync_t)(const struct device *dev,
+					  uint8_t ucsi_command,
+					  uint8_t data_size,
+					  uint8_t *command_specific,
+					  uint8_t *lpm_data_out);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -193,6 +198,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_set_comms_state_t set_comms_state;
 	pdc_is_vconn_sourcing_t is_vconn_sourcing;
 	pdc_set_pdos_t set_pdos;
+	pdc_execute_command_sync_t execute_command_sync;
 };
 /**
  * @endcond
@@ -1020,6 +1026,39 @@ void pdc_trace_msg_req(int port, enum pdc_trace_chip_type msg_type,
  */
 void pdc_trace_msg_resp(int port, enum pdc_trace_chip_type msg_type,
 			const uint8_t *buf, const int count);
+
+/**
+ * @brief Execute UCSI command synchronously
+ *
+ * @param dev PDC device structure pointer
+ * @param ucsi_command UCSI command
+ * @param data_size Size of the command specific data.
+ * @param command_specific Command specific data to be sent
+ * @param lpm_data_out Buffer to receive data returned from a PDC
+ *
+ * @return 0 on success
+ * @return -EBUSY if PDC is busy with serving another request.
+ * @return -ECONNREFUSED if PDC is suspended.
+ * @retval -ENOSYS if not implemented
+ * @return -ETIMEDOUT if timer expires while waiting for write or read operation
+ *         to finish.
+ */
+static inline int pdc_execute_command_sync(const struct device *dev,
+					   uint8_t ucsi_command,
+					   uint8_t data_size,
+					   uint8_t *command_specific,
+					   uint8_t *lpm_data_out)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->execute_command_sync == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->execute_command_sync(dev, ucsi_command, data_size,
+					 command_specific, lpm_data_out);
+}
 
 #ifdef __cplusplus
 }
