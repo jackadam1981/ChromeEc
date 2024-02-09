@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0337f336_1f0cd2f7",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cf7bb5_65b43ecb",
+      "range": {
+        "startLine": 106,
+        "startChar": 51,
+        "endLine": 106,
+        "endChar": 59
+      },
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d15c404_dde3d219",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cf7bb5_65b43ecb",
+      "range": {
+        "startLine": 106,
+        "startChar": 51,
+        "endLine": 106,
+        "endChar": 59
+      },
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f70dca25_e093b5de",
@@ -47,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7644f6fb_d8836f51",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f70dca25_e093b5de",
+      "range": {
+        "startLine": 322,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 40
+      },
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cebd51f_b4272506",
@@ -60,6 +132,24 @@
       "writtenOn": "2024-02-09T18:31:50Z",
       "side": 1,
       "message": "We don\u0027t set a platform policy if PPM_RESET fails on start-up?",
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df711ab7_bbd265f0",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-09T23:32:07Z",
+      "side": 1,
+      "message": "Yup. In that case, `init_and_wait` will fail after 1s as initial PPM reset didn\u0027t succeed. PPM_RESET should always succeed unless there is something wrong w/ the PDC itself (or I2C) and the only recovery for that is probably a power cutoff reset. \n\nBy design, the policy only applies on a successful ppm reset (meaning previous policies were removed).",
+      "parentUuid": "2cebd51f_b4272506",
       "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
