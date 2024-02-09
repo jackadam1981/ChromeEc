@@ -22,6 +22,30 @@
       },
       "revId": "c2bd469a38f6364b3025313fb69cc1970c2af1ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3fbddd_1568aa99",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-09T11:00:59Z",
+      "side": 1,
+      "message": "I\u0027m trying to reuse as much code as possible in release scripts. Ebulds put zephyr code into `zephyr-base` while everywhere else the code is under `zephyr/main`. That\u0027s why I need only one `../`\n\nOf course the problem could be easily solved by adding 2 files to the BoringSSL repository which could effectively make it a Zephyr module. BoringSSL developers rejected that change. On the other side creating another chromiumos repository just for one change (and downstreaming changes later) is an overkill to me.",
+      "parentUuid": "8cf71668_f3c35ebb",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "c2bd469a38f6364b3025313fb69cc1970c2af1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
