@@ -44,6 +44,12 @@ i2c3ALT: &i2c3 {
                 };
         };
 
+  named-gpios {
+		gpio_tablet_mode_l: tablet_mode_l {
+			gpios = <&gpiod 1 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
+  };
 };
 
 /* These GPIOS are initialized by the PDC driver */
