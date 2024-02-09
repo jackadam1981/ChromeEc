@@ -22,6 +22,30 @@
       },
       "revId": "c7716ab8a01f07d02fbd166398aaea40c6c81bd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdfee93_53d86248",
+        "filename": "zephyr/program/fpmcu/bloonchipper/rwsig.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-09T10:42:13Z",
+      "side": 1,
+      "message": "Almost. The default `rw-fwid` section is defined in `stm32.dtsi`. By default it\u0027s placed in last 32 bytes if `rw-fw`. This also applies to other SoCs.\n\nBy including [`cros/integrated_fwid.dtsi`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/integrated_fwid.dtsi;l\u003d9-23;drc\u003d8c1f76ded9df24e7a64026991563964e7b4dfd59) `rw-fwid` is modified to point to the `current_image_data` structure in RW firmware.",
+      "parentUuid": "3f13a058_2a593dce",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "c7716ab8a01f07d02fbd166398aaea40c6c81bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
