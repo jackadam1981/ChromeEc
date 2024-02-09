@@ -118,6 +118,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72bf9f0_41824620",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-09T16:03:09Z",
+      "side": 1,
+      "message": "Regarding setting `usb_mux_set` based on `status.data_conn`,  that\u0027s probably the correct behavior. If data_conn isn\u0027t set by the PDC, we have to assume the USB signals are not connected.\n\nRegarding the Kconfigs, Brox has the USBC related configs set as follows.  `PLATFOFRM_EC_USB_POWER_DELIVERY` is not present. \n\nIt looks like Deepti landed a fix to allow the TBT, REV30, USB4 configs when `PLATFORM_EC_USB_PD_CONTROLLER` is present.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/Kconfig.usbc_common_altmode;l\u003d5\n\n```\nCONFIG_PLATFORM_EC_USBC\u003dy\n# CONFIG_PLATFORM_EC_USBC_RETIMER_ANX7451 is not set\n# CONFIG_PLATFORM_EC_USBC_RETIMER_KB800X is not set\n# CONFIG_PLATFORM_EC_CONSOLE_CMD_RETIMER is not set\n# CONFIG_PLATFORM_EC_USBC_RETIMER_PS8811 is not set\nCONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_NOT_PRESENT\u003dy\n# CONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_CHARGER is not set\n# CONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_TCPC is not set\n# CONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_ADC_EACH_PORT is not set\n# CONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_BY_BOARD is not set\n# CONFIG_PLATFORM_EC_CMD_VBUS is not set\nCONFIG_PLATFORM_EC_USB_PD_HOST_CMD\u003dy\n# CONFIG_PLATFORM_EC_HOSTCMD_PD_CONTROL is not set\n# CONFIG_PLATFORM_EC_USB_PD_LOGGING is not set\nCONFIG_PLATFORM_EC_HOSTCMD_PD_CHIP_INFO\u003dy\nCONFIG_PLATFORM_EC_HOSTCMD_RWHASHPD\u003dy\nCONFIG_PLATFORM_EC_HOSTCMD_TYPEC_DISCOVERY\u003dy\nCONFIG_PLATFORM_EC_HOSTCMD_TYPEC_CONTROL\u003dy\nCONFIG_PLATFORM_EC_HOSTCMD_TYPEC_STATUS\u003dy\nCONFIG_PLATFORM_EC_USB_MUX\u003dy\nCONFIG_PLATFORM_EC_USB_MUX_TASK\u003dy\n# CONFIG_PLATFORM_EC_USB_MUX_AP_CONTROL is not set\nCONFIG_PLATFORM_EC_USB_MUX_TUSB_NONE\u003dy\n# CONFIG_PLATFORM_EC_USB_MUX_TUSB546 is not set\n# CONFIG_PLATFORM_EC_USB_MUX_TUSB1044 is not set\n# CONFIG_PLATFORM_EC_USB_MUX_TUSB1064 is not set\nCONFIG_PLATFORM_EC_USBC_SS_MUX\u003dy\nCONFIG_PLATFORM_EC_USB_MUX_RUNTIME_CONFIG\u003dy\n# CONFIG_PLATFORM_EC_USBC_SS_MUX_DFP_ONLY is not set\nCONFIG_PLATFORM_EC_USB_MUX_VIRTUAL\u003dy\n# CONFIG_PLATFORM_EC_USBC_RETIMER_FW_UPDATE is not set\nCONFIG_PLATFORM_EC_CONSOLE_CMD_TYPEC\u003dy\nCONFIG_PLATFORM_EC_USB_PD_DP_MODE\u003dy\nCONFIG_PLATFORM_EC_USB_PD_REV30\u003dy\nCONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE\u003dy\nCONFIG_PLATFORM_EC_USB_PD_USB4\u003dy\n# CONFIG_PLATFORM_EC_USB_CHARGER is not set\n# CONFIG_PLATFORM_EC_USB_PD_TCPMV2 is not set\nCONFIG_PLATFORM_EC_USB_PD_CONTROLLER\u003dy\n```",
+      "parentUuid": "0a22e6a5_6e263c6a",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
