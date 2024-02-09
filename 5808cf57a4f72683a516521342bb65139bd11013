@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca3dd9d_9b9a5bae",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-09T23:50:25Z",
+      "side": 1,
+      "message": "I still don\u0027t see a default case. I assume repocheck is happy.",
+      "parentUuid": "b62b1a47_2eef6902",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "5808cf57a4f72683a516521342bb65139bd11013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fda9137b_1e2caa63",
