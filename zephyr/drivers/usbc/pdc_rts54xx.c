@@ -18,6 +18,8 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/smf.h>
 LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
+#include "include/pd_driver.h"
+#include "ppm_common.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -2138,3 +2140,124 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			      &pdc_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(PDC_DEFINE)
+
+#define SMBUS_MAX_BLOCK_SIZE 32
+#define UCSI_7BIT_PORTMASK(p) ((p) & 0x7F)
+
+struct rts5453_device {
+	/* LPM smbus driver. */
+	struct smbus_driver *smbus;
+
+	/* PPM driver (common implementation). */
+	struct ucsi_ppm_driver *ppm;
+
+	/* Re-usable command buffer for active command. */
+	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
+
+	/* Configuration for this driver. */
+	struct pd_driver_config *driver_config;
+
+	/* Number of active ports from |GET_CAPABILITIES|. */
+	uint8_t active_port_count;
+
+	/* IRQ task for LPM interrupts. */
+	struct task_handle *lpm_interrupt_task;
+};
+
+#define CAST_FROM(v) (struct rts5453_device *)(v)
+
+static int rts5453_ucsi_init_ppm(struct ucsi_pd_device *device)
+{
+	struct rts5453_device *dev = CAST_FROM(device);
+	return dev->ppm->init_and_wait(dev->ppm->dev, NUM_PDC_RTS54XX_PORTS);
+}
+
+static struct ucsi_ppm_driver *
+rts5453_ucsi_get_ppm(struct ucsi_pd_device *device)
+{
+	struct rts5453_device *dev = CAST_FROM(device);
+	return dev->ppm;
+}
+
+static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
+				    struct ucsi_control *control,
+				    uint8_t *lpm_data_out)
+{
+	uint8_t ucsi_command = control->command;
+	const struct device *dev;
+	uint8_t port_num = 0;
+
+	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
+		LOG_ERR("Invalid command 0x%x", control->command);
+		return -1;
+	}
+
+	switch (ucsi_command) {
+	case UCSI_CMD_CONNECTOR_RESET:
+	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
+	case UCSI_CMD_GET_CAM_SUPPORTED:
+	case UCSI_CMD_GET_CURRENT_CAM:
+	case UCSI_CMD_SET_NEW_CAM:
+	case UCSI_CMD_GET_PDOS:
+	case UCSI_CMD_GET_CABLE_PROPERTY:
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+	case UCSI_CMD_GET_ERROR_STATUS:
+	case UCSI_CMD_GET_PD_MESSAGE:
+	case UCSI_CMD_GET_ATTENTION_VDO:
+	case UCSI_CMD_GET_CAM_CS:
+		port_num = UCSI_7BIT_PORTMASK(control->command_specific[0]);
+		break;
+
+	/* The following UCSI commands change the port being addressed.
+	 * These commands have the connector number at offset 24.
+	 */
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+		port_num = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		break;
+	}
+
+	dev = pdc_data[port_num]->dev;
+	switch (ucsi_command) {
+	case UCSI_CMD_CONNECTOR_RESET:
+		pdc_reset(dev);
+		break;
+	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
+		union notification_enable_t bits;
+		platform_memcpy(&bits, control->command_specific, sizeof(bits));
+		rts54_set_notification_enable(dev, bits, 0);
+		break;
+	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
+		//pdc_get_connector_capability(dev, lpm_data_out);
+		break;
+	case UCSI_CMD_GET_PDOS:
+		//pdc_get_pdos(dev, pdo_type, pdo_offset, num_pdos, port_partner_pdo, pdos)
+		break;
+	}
+
+	return 0;
+}
+
+static void rts5453_ucsi_cleanup(struct ucsi_pd_driver *driver)
+{
+}
+
+struct ucsi_pd_driver *rts5453_open(void)
+{
+	static struct rts5453_device dev;
+	static struct ucsi_pd_driver drv;
+
+	drv.dev = (struct ucsi_pd_device *)&dev;
+	drv.init_ppm = rts5453_ucsi_init_ppm;
+	drv.get_ppm = rts5453_ucsi_get_ppm;
+	drv.execute_cmd = rts5453_ucsi_execute_cmd;
+	drv.cleanup = rts5453_ucsi_cleanup;
+
+	/* Initialize the PPM. */
+	dev.ppm = ppm_open(&drv);
+	if (!dev.ppm) {
+		LOG_ERR("Failed to open PPM");
+		return NULL;
+	}
+
+	return &drv;
+}
