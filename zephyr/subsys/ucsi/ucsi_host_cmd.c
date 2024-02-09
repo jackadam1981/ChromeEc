@@ -15,20 +15,25 @@
 
 #include <zephyr/logging/log.h>
 
+#define PDC_I2C_PORT 0
+#define PDC_I2C_ADDRESS 0
+#define GPIO_PDC_INTERRUPT 0
+
 static struct ucsi_ppm_driver *ec_ppm_drv;
 
 LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_ERR);
 
 static int rts5453_ucsi_init_ppm(struct ucsi_pd_device* device)
 {
-	return 0;
+	struct rts5453_device* dev = (struct rts5453_device*)device;
+
+	return dev->ppm->init_and_wait(dev->ppm->dev, 1);
 }
 
 static struct ucsi_ppm_driver* rts5453_ucsi_get_ppm(
 		struct ucsi_pd_device* device)
 {
-	struct rts5453_device *dev = (struct rts5453_device*)device;
-	return dev->ppm;
+	return ((struct rts5453_device*)device)->ppm;
 }
 
 static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device* device,
@@ -48,48 +53,50 @@ static void rts5453_ucsi_cleanup(struct ucsi_pd_driver* driver)
 	return;
 }
 
-static void ucsi_init(void)
+static struct ucsi_pd_driver *rts5453_open(struct smbus_driver *smbus)
 {
-	struct rts5453_device *dev = NULL;
-	struct ucsi_pd_driver *drv = NULL;
+	static struct rts5453_device dev;
+	static struct ucsi_pd_driver drv;
 
-	dev = platform_calloc(1, sizeof(struct rts5453_device));
-	if (!dev) {
-		goto handle_error;
-	}
+	dev.smbus = smbus;
+	dev.driver_config = NULL;
 
-	dev->smbus = NULL;
-	dev->driver_config = NULL;
+	/*
+	 * struct ucsi_pd_device is virtual. It must be cast (e.g. to struct
+	 * rts5453_device) before being referenced.
+	 */
+	drv.dev = (struct ucsi_pd_device*)&dev;
 
-	drv = platform_calloc(1, sizeof(struct ucsi_pd_driver));
-	if (!drv) {
-		goto handle_error;
-	}
-
-	drv->dev = (struct ucsi_pd_device*) dev;
-
-	drv->init_ppm = rts5453_ucsi_init_ppm;
-	drv->get_ppm = rts5453_ucsi_get_ppm;
-	drv->execute_cmd = rts5453_ucsi_execute_cmd;
-	drv->handle_interrupt = rts5453_ucsi_handle_interrupt;
-	drv->cleanup = rts5453_ucsi_cleanup;
+	drv.init_ppm = rts5453_ucsi_init_ppm;
+	drv.get_ppm = rts5453_ucsi_get_ppm;
+	drv.execute_cmd = rts5453_ucsi_execute_cmd;
+	drv.handle_interrupt = rts5453_ucsi_handle_interrupt;
+	drv.cleanup = rts5453_ucsi_cleanup;
 
 	// Initialize the PPM.
-	dev->ppm = ppm_open(drv);
-	if (!dev->ppm) {
+	dev.ppm = ppm_open(&drv);
+	if (!dev.ppm)
 		ELOG("Failed to open PPM");
-		goto handle_error;
-	}
-	ec_ppm_drv = dev->ppm;
 
-handle_error:
-	if (dev && dev->ppm) {
-		dev->ppm->cleanup(dev->ppm);
-		dev->ppm = NULL;
-	}
+	return &drv;
+}
 
-	platform_free(dev);
-	platform_free(drv);
+/* Sort of main */
+static void ucsi_init(void)
+{
+	struct smbus_driver *smbus;
+	struct ucsi_pd_driver *drv;
+
+	smbus = smbus_open(PDC_I2C_PORT, PDC_I2C_ADDRESS, GPIO_PDC_INTERRUPT);
+
+	drv = rts5453_open(smbus);
+	if (!drv)
+		return;
+
+	ec_ppm_drv = drv->get_ppm();
+
+	/* This will start a PPM task. Do what cdev_prepare_um_ppm does. */
+	drv->init_ppm();
 }
 DECLARE_HOOK(HOOK_INIT, ucsi_init, HOOK_PRIO_DEFAULT);
 
@@ -104,6 +111,8 @@ static enum ec_status hc_ucsi_ppm_set(struct host_cmd_handler_args *args)
 	if (ec_ppm_drv->write(ec_ppm_drv->dev, p->offset, p->data,
 			      args->params_size - sizeof(p->offset)))
 		return EC_RES_ERROR;
+
+	/* Wake up PPM. */
 
 	return EC_RES_SUCCESS;
 }
