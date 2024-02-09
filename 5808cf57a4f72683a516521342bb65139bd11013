@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46da3ca4_d8c97a95",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-09T18:01:32Z",
+      "side": 1,
+      "message": "Does this pass repocheck without a default case?",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "5808cf57a4f72683a516521342bb65139bd11013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda9137b_1e2caa63",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-09T18:01:32Z",
+      "side": 1,
+      "message": "This \u0027port\u0027 is 0-index, isn\u0027t it? With the change in port_to_chip_address, the port has to reach max_num_ports but the loop terminates before that.\n\nI think mixing 1-based port# (also in the spec) and 0-based port# is confusing. Shall we use different names (e.g. 0-based:port# v.s. 1-based:connector#)?",
+      "range": {
+        "startLine": 773,
+        "startChar": 14,
+        "endLine": 773,
+        "endChar": 18
+      },
+      "revId": "5808cf57a4f72683a516521342bb65139bd11013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
