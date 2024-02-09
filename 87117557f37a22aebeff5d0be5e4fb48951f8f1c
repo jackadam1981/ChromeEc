@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cf7bb5_65b43ecb",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-09T18:31:50Z",
+      "side": 1,
+      "message": "nit: sizeof(cci) looks better to me.",
+      "range": {
+        "startLine": 106,
+        "startChar": 51,
+        "endLine": 106,
+        "endChar": 59
+      },
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70dca25_e093b5de",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-09T18:31:50Z",
+      "side": 1,
+      "message": "nit: Can you combine this with line 327 below?",
+      "range": {
+        "startLine": 322,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 40
+      },
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cebd51f_b4272506",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-09T18:31:50Z",
+      "side": 1,
+      "message": "We don\u0027t set a platform policy if PPM_RESET fails on start-up?",
+      "revId": "87117557f37a22aebeff5d0be5e4fb48951f8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
