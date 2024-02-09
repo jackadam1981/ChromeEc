@@ -2353,3 +2353,55 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			      &pdc_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(PDC_DEFINE)
+
+#define SMBUS_MAX_BLOCK_SIZE 32
+
+int rts54_execute_command(const struct device *dev, uint8_t ucsi_command,
+			  uint8_t data_size, uint8_t *command_specific,
+			  uint8_t *lpm_data_out)
+{
+	struct pdc_data_t *data = dev->data;
+	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
+	int call_counter;
+	int rv;
+
+	/* We don't know yet if the PDC driver is busy or not. */
+	if (get_state(data) != ST_IDLE) {
+		LOG_ERR("%s: Failed to run (-EBUSY)", __func__);
+		return -EBUSY;
+	}
+
+	cmd_buffer[0] = 0xe; /* Cmd */
+	cmd_buffer[1] = data_size + 2;
+	cmd_buffer[2] = ucsi_command; /* sub-cmd */
+	cmd_buffer[3] = 0;
+	memcpy(&cmd_buffer[4], command_specific, data_size);
+
+	rv = rts54_post_command(dev, ucsi_command, cmd_buffer, data_size + 4,
+				lpm_data_out);
+	if (rv < 0) {
+		LOG_ERR("%s: Failed to run (%d)", __func__, rv);
+		return rv;
+	}
+
+	call_counter = 0;
+
+	while (!data->cci_event.command_completed && !data->cci_event.error) {
+		/* Wait for timeout or event */
+		k_sleep(K_MSEC(20));
+
+		call_counter++;
+		if (call_counter > 100) {
+			LOG_ERR("%s: Block call timeout", __func__);
+			rv = -ETIMEDOUT;
+			break;
+		}
+	}
+
+	if (rv == 0) {
+		/* May have read some data. */
+		rv = data->cci_event.data_len;
+	}
+
+	return rv;
+}
