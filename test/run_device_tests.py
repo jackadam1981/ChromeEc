@@ -1146,7 +1146,7 @@ def main():
 def get_power_utilization() -> Tuple[Optional[float], Optional[float]]:
     """Retrieve board power utilization data"""
     fp_power_signal = "ppvar_fp_mw"
-    mcu_power_signal = "ppvar_mcu_mw"
+    mcu_power_signal = "pp3300_mcu_mw"
     cmd = [
         "dut-control",
         "--value_only",  # only the summary will print the field names
