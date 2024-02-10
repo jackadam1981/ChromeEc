@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d79066c_58c086da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-02-10T00:43:39Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8756536261186149249) is being automatically retried for the following reasons:\n- Some child builders are now retryable:chromiumos-sdk-uprev-arm-generic-llvm-next-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "3131eae387ead3f43f11bb46dc0344d4ed4a0b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
