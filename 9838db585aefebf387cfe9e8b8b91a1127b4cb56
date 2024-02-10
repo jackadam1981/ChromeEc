@@ -40,6 +40,30 @@
       },
       "revId": "9838db585aefebf387cfe9e8b8b91a1127b4cb56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f516f5_d27e601d",
+        "filename": "zephyr/include/cros/st/stm32.dtsi",
+        "patchSetId": 29
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-10T00:38:26Z",
+      "side": 1,
+      "message": "Fixed in https://crrev.com/c/5281645",
+      "parentUuid": "76c66206_325442c3",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "9838db585aefebf387cfe9e8b8b91a1127b4cb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
