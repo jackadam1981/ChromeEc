@@ -16,6 +16,29 @@
       "message": "I ended up fixing all the comments with a bunch of regex and some manual fixes. PTAL",
       "revId": "fd2c683a6826333cb2eb98d0b2b259fb18eebf76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa04cdcc_36ed7a58",
+        "filename": "extra/um_ppm/smbus_usermode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-10T00:30:10Z",
+      "side": 1,
+      "message": "Not related to this change but we need to handle error (-1).",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 17
+      },
+      "revId": "fd2c683a6826333cb2eb98d0b2b259fb18eebf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
