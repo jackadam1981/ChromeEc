@@ -83,4 +83,9 @@ struct ucsi_ppm_driver *ppm_open(const struct ucsi_pd_driver *pd_driver,
  */
 struct ucsi_ppm_driver *platform_allocate_ppm(void);
 
+/**
+ * Stringify given UCSI command.
+ */
+const char *ucsi_command_to_string(uint8_t command);
+
 #endif /* UM_PPM_PPM_COMMON_H_ */

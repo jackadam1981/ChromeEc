@@ -174,7 +174,7 @@ struct rts5453_ucsi_commands {
 		.command = cmd, .command_copy_length = length, \
 	}
 
-struct rts5453_ucsi_commands ucsi_commands[UCSI_CMD_MAX] = {
+static struct rts5453_ucsi_commands ucsi_commands[UCSI_CMD_MAX] = {
 	UCSI_CMD_ENTRY(UCSI_CMD_RESERVED, 0),
 	UCSI_CMD_ENTRY(UCSI_CMD_PPM_RESET, 0),
 	UCSI_CMD_ENTRY(UCSI_CMD_CANCEL, 0),
@@ -1291,6 +1291,7 @@ struct pd_driver_config rts5453_get_driver_config()
 			0x67,
 			0x68,
 		},
+		.transport = I2C,
 	};
 
 	return config;

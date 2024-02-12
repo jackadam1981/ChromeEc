@@ -6,6 +6,7 @@
 #include "include/platform.h"
 #include "rts5453.h"
 #include "smbus_usermode.h"
+#include "tps6699x.h"
 #include "um_ppm_chardev.h"
 
 #include <stdio.h>
@@ -36,6 +37,12 @@ struct extra_driver_ops rts5453_ops = {
 	.smbus_lpm_open = rts5453_open,
 };
 
+struct extra_driver_ops tps6699x_ops = {
+	.get_info = tps6699x_get_info,
+	.do_firmware_update = tps6699x_do_firmware_update,
+	.smbus_lpm_open = tps6699x_open,
+};
+
 static const char *usage_str =
 	("um_ppm [options]\n"
 	 "\n"
@@ -43,7 +50,8 @@ static const char *usage_str =
 	 "develop against and test new devkits.\n"
 	 "\n"
 	 "General options:\n"
-	 "\t-p        PD driver config to use. Valid values: ['rts5453']\n"
+	 "\t-p        PD driver config to use. Valid values: ['rts5453', "
+	 "'tps6699x']\n"
 	 "\t-b        I2C Bus number (/dev/i2c-N) (required)\n"
 	 "\t-g        /dev/gpiochip[N] (required)\n"
 	 "\t-l        Gpio line for LPM alert (required)\n"
@@ -75,6 +83,7 @@ int main(int argc, char *argv[])
 	char *driver_config_in = NULL;
 	struct pd_driver_config driver_config;
 	struct extra_driver_ops *ops;
+	uint8_t transport = 0;
 
 	while ((opt = getopt(argc, argv, ":f:k:dvrb:p:g:l:")) != -1) {
 		switch (opt) {
@@ -139,13 +148,31 @@ int main(int argc, char *argv[])
 
 		/* Use port-0 for smbus addressing */
 		i2c_chip_address = driver_config.port_address_map[0];
+	} else if (strcmp(driver_config_in, "tps6699x") == 0) {
+		driver_config = tps6699x_get_driver_config();
+		ops = &tps6699x_ops;
+
+		i2c_chip_address = driver_config.port_address_map[0];
 	} else {
 		ELOG("Unsupported PD driver config: %s", driver_config_in);
 		return -1;
 	}
 
+	DLOG("Initializing %s driver config", driver_config_in);
+
+	switch (driver_config.transport) {
+	case I2C:
+		transport = SMBUS_TRANSPORT_I2C;
+		break;
+	case SMBUS:
+	default:
+		transport = SMBUS_TRANSPORT_DEFAULT;
+		break;
+	}
+
 	/* Open usermode smbus. */
-	smbus = smbus_um_open(i2c_bus, i2c_chip_address, gpio_chip, gpio_line);
+	smbus = smbus_um_open(i2c_bus, i2c_chip_address, gpio_chip, gpio_line,
+			      transport);
 	if (!smbus) {
 		ELOG("Failed to open smbus");
 		goto handle_error;
@@ -158,7 +185,8 @@ int main(int argc, char *argv[])
 		goto handle_error;
 	}
 
-	DLOG("RTS5453 is initialized. Now taking desired action...");
+	DLOG("%s is initialized. Now taking desired action...",
+	     driver_config_in);
 
 	if (reset && ops->reset_pdc) {
 		DLOG("Resetting %s", driver_config_in);
