@@ -75,6 +75,30 @@
       },
       "revId": "c7267c6846b742801ce185301c3f99b3f6e29d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e399a21_e8f00e16",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-12T19:08:28Z",
+      "side": 1,
+      "message": "Fixed in https://boringssl-review.googlesource.com/c/boringssl/+/65568.",
+      "parentUuid": "0967f59b_a72fa50a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "c7267c6846b742801ce185301c3f99b3f6e29d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
