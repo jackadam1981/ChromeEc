@@ -12,6 +12,7 @@ if(DEFINED CONFIG_BOARD_BROX)
 	project(brox)
 	add_subdirectory(brox)
 
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY "src/battery_present.c")
 	zephyr_library_sources("src/hibernate.c")
 	zephyr_library_sources("src/suspend_resume.c")
 	zephyr_library_sources("src/usbc.c")
