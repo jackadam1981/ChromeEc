@@ -16,6 +16,24 @@
       "message": "zephyr team seems wants to migrate to upstream host command \n\nsee https://crrev.com/c/5132257, and b:315152090",
       "revId": "06e1446b9ae3fe96a770eda751ecc3bc42327659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b89924_55f057e8",
+        "filename": "zephyr/program/rauru/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-02-12T18:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79771155_379ea967",
+      "revId": "06e1446b9ae3fe96a770eda751ecc3bc42327659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
