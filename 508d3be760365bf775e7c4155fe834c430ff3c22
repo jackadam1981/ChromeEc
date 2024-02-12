@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c940064_7f9526cf",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-02-12T20:45:38Z",
+      "side": 1,
+      "message": "Nit: I prefer seeing `CNT` or `MAX` suffixes for indicating the last enum.",
+      "revId": "508d3be760365bf775e7c4155fe834c430ff3c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
