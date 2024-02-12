@@ -20,6 +20,8 @@ extern "C" {
 #include "common.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "otp_key.h"
+#include "rom_chip.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -135,6 +137,16 @@ static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 {
 	const auto *params =
 		static_cast<const ec_params_fp_seed *>(args->params);
+
+#ifdef CONFIG_OTP_KEY
+	uint32_t status = API_RET_OTP_STATUS_FAIL;
+
+	status = otp_key_provision();
+	if (status != API_RET_OTP_STATUS_OK) {
+		CPRINTS("failed to provision OTP key with status=%d", status);
+		return EC_RES_ACCESS_DENIED;
+	}
+#endif
 
 	if (params->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
 		CPRINTS("Invalid seed format %d", params->struct_version);
