@@ -14,8 +14,10 @@
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
+#include "otp_key.h"
 #include "rollback.h"
 #include "rollback_private.h"
+#include "rom_chip.h"
 #include "sha256.h"
 #include "system.h"
 #include "task.h"
@@ -460,6 +462,16 @@ hc_rollback_add_entropy(struct host_cmd_handler_args *args)
 		add_entropy_rv = EC_RES_BUSY;
 		hook_call_deferred(&add_entropy_deferred_data, 0);
 
+#ifdef CONFIG_OTP_KEY
+		uint32_t status = API_RET_OTP_STATUS_FAIL;
+
+		status = otp_key_provision();
+		if (status != API_RET_OTP_STATUS_OK) {
+			CPRINTS("failed to provision OTP key with status=%d",
+				status);
+			return EC_RES_ACCESS_DENIED;
+		}
+#endif
 		return EC_RES_SUCCESS;
 
 	case ADD_ENTROPY_GET_RESULT:
