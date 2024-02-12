@@ -19,6 +19,7 @@
 / {
 	aliases {
 		bmi3xx-int = &base_accel;
+		gpio-en-hdmi-pwr = &gpio_en_hdmi_pwr;
 	};
 
 	/* Rotation matrix used by drivers. */
