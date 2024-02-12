@@ -26,6 +26,12 @@
 
 #define GPIOD_CONSUMER "um_ppm"
 
+/* Spec defines 32 bytes as SMBUS max block size. */
+#define SMBUS_READ_BLOCK_MAX_SIZE 32
+
+/* Arbitrary block size max for I2C. One byte extra for read length. */
+#define I2C_READ_BLOCK_MAX_SIZE 65
+
 /**
  * Internal structure for usermode smbus implementation.
  */
@@ -35,10 +41,17 @@ struct smbus_usermode_device {
 	/* Currently active chip address. */
 	uint8_t chip_address;
 
+	/* Transport type. */
+	uint8_t transport;
+
 	pthread_mutex_t cmd_lock;
 	pthread_mutex_t gpio_lock;
 	struct gpiod_chip *chip;
 	struct gpiod_line *line;
+
+	/* Read buffer for cache. */
+	uint8_t *read_buffer;
+	size_t read_buffer_size;
 
 	volatile bool cleaning_up;
 };
@@ -97,17 +110,17 @@ int smbus_um_read_block(struct smbus_device *device, uint8_t chip_address,
 			uint8_t address, void *buf, size_t length)
 {
 	struct smbus_usermode_device *dev = CAST_FROM(device);
-	uint8_t local_data[32];
 	int ret = 0;
+	int copy_from = 0;
 
 	if (dev->fd < 0) {
 		ELOG("Saw fd of %d", dev->fd);
 		return -1;
 	}
 
-	/* Block read will read at most 32 bytes. */
-	if (length > 32) {
-		ELOG("Got length > 32 for block read");
+	if (length > dev->read_buffer_size) {
+		ELOG("Got length %d for block read > max %d", length,
+		     dev->read_buffer_size);
 		return -1;
 	}
 
@@ -120,16 +133,35 @@ int smbus_um_read_block(struct smbus_device *device, uint8_t chip_address,
 		goto unlock;
 	}
 
-	ret = i2c_smbus_read_block_data(dev->fd, address, local_data);
-	if (ret <= 0) {
-		goto unlock;
+	if (dev->transport == SMBUS_TRANSPORT_I2C) {
+		/* Add 1 to length so we can also read the size read. */
+		ret = i2c_smbus_read_i2c_block_data(
+			dev->fd, address, length + 1, dev->read_buffer);
+		if (ret <= 0) {
+			goto unlock;
+		}
+
+		/* The SMBUS apis wrongly truncate the return value at 32 (which
+		 * is the SMBUS max). Read the first byte to see how much was
+		 * actually read.
+		 */
+		DLOG("I2C result was 0x%x and first byte was 0x%x", ret,
+		     dev->read_buffer[0]);
+		ret = dev->read_buffer[0];
+		copy_from = 1;
+	} else {
+		ret = i2c_smbus_read_block_data(dev->fd, address,
+						dev->read_buffer);
+		if (ret <= 0) {
+			goto unlock;
+		}
 	}
 
 	if (ret != length) {
 		length = ret;
 	}
 
-	platform_memcpy(buf, local_data, length);
+	platform_memcpy(buf, &dev->read_buffer[copy_from], length);
 	DLOG_START("[0x%02x]: Reading data from %02x [", chip_address, address);
 	for (int i = 0; i < length; ++i) {
 		DLOG_LOOP("%02x, ", ((uint8_t *)buf)[i]);
@@ -163,7 +195,16 @@ int smbus_um_write_block(struct smbus_device *device, uint8_t chip_address,
 	if (ret != 0) {
 		goto unlock;
 	}
-	ret = i2c_smbus_write_block_data(dev->fd, address, length, buf);
+
+	if (dev->transport == SMBUS_TRANSPORT_I2C) {
+		dev->read_buffer[0] = length;
+		platform_memcpy(&dev->read_buffer[1], buf, length);
+		length = length + 1;
+		ret = i2c_smbus_write_i2c_block_data(dev->fd, address, length,
+						     dev->read_buffer);
+	} else {
+		ret = i2c_smbus_write_block_data(dev->fd, address, length, buf);
+	}
 
 unlock:
 	pthread_mutex_unlock(&dev->cmd_lock);
@@ -175,6 +216,11 @@ int smbus_um_read_ara(struct smbus_device *device, uint8_t ara_address)
 	struct smbus_usermode_device *dev = CAST_FROM(device);
 	uint8_t chip_address;
 	int ret;
+
+	if (dev->transport == SMBUS_TRANSPORT_I2C) {
+		ELOG("ARA for I2C is not supported!");
+		return -1;
+	}
 
 	pthread_mutex_lock(&dev->cmd_lock);
 
@@ -346,7 +392,8 @@ cleanup:
 }
 
 struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
-				   int gpio_chip, int gpio_line)
+				   int gpio_chip, int gpio_line,
+				   uint8_t transport)
 {
 	struct smbus_usermode_device *dev = NULL;
 	struct smbus_driver *drv = NULL;
@@ -372,8 +419,21 @@ struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
 		goto handle_error;
 	}
 
+	if (transport == SMBUS_TRANSPORT_DEFAULT) {
+		dev->read_buffer = calloc(1, SMBUS_READ_BLOCK_MAX_SIZE);
+		dev->read_buffer_size = SMBUS_READ_BLOCK_MAX_SIZE;
+	} else if (transport == SMBUS_TRANSPORT_I2C) {
+		dev->read_buffer = calloc(1, I2C_READ_BLOCK_MAX_SIZE);
+		dev->read_buffer_size = I2C_READ_BLOCK_MAX_SIZE;
+	}
+
+	if (!dev->read_buffer) {
+		goto handle_error;
+	}
+
 	dev->fd = fd;
 	dev->chip_address = chip_address;
+	dev->transport = transport;
 
 	/* Initialize the gpio lines */
 	if (init_interrupt(dev, gpio_chip, gpio_line) == -1) {
@@ -404,6 +464,11 @@ struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
 
 handle_error:
 	close(fd);
+
+	if (dev && dev->read_buffer) {
+		free(dev->read_buffer);
+	}
+
 	free(dev);
 	free(drv);
 

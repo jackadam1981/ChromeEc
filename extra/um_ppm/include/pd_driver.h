@@ -100,7 +100,8 @@ struct ucsi_pd_driver {
 };
 
 enum lpm_transport {
-	SMBUS,
+	SMBUS = 0,
+	I2C,
 };
 
 /* Maximum number of addressable ports via PPM. The actual maximum depends on

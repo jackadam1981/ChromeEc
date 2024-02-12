@@ -15,6 +15,11 @@ struct smbus_device;
 /* Forward declaration only. */
 struct smbus_driver;
 
+enum smbus_transport_type {
+	SMBUS_TRANSPORT_DEFAULT = 0, // Standard smbus calls
+	SMBUS_TRANSPORT_I2C, // I2C block transfer (not SMBUS)
+};
+
 /**
  * Read byte over smbus.
  *
