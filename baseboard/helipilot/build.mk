@@ -43,6 +43,7 @@ test-list-y=\
        malloc \
        mpu \
        mutex \
+       otp_key \
        panic \
        panic_data \
        pingpong \
