@@ -11,6 +11,7 @@
 #include "fpsensor/fpsensor_detect.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "otp_key.h"
 #include "registers.h"
 #include "shi_chip.h"
 #include "spi.h"
@@ -88,5 +89,8 @@ static void board_init(void)
 	 * avoid incurring that cost when generating random numbers
 	 */
 	npcx_trng_hw_init();
+
+	/* Power on OTP Memory */
+	otp_key_init();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
