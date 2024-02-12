@@ -14,6 +14,8 @@
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
+#include "otp_key.h"
+#include "panic.h"
 #include "rollback.h"
 #include "rollback_private.h"
 #include "sha256.h"
@@ -422,6 +424,17 @@ static void add_entropy_deferred(void)
 {
 	uint8_t rand[CONFIG_ROLLBACK_SECRET_SIZE];
 	int repeat = 1;
+
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		uint32_t status = EC_ERROR_UNKNOWN;
+
+		status = otp_key_provision();
+		if (status != EC_SUCCESS) {
+			ccprintf("failed to provision OTP key with status=%d",
+				 status);
+			software_panic(PANIC_SW_ASSERT, task_get_current());
+		}
+	}
 
 	/*
 	 * If asked to reset the old secret, just add entropy multiple times,
