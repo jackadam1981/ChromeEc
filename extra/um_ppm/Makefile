@@ -9,7 +9,11 @@ SUBDIRS=test
 %.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-um_ppm: rts5453.o rts5453_usermode.o smbus_usermode.o um_ppm_chardev.o platform_usermode.o main.o ppm_common.o
+um_ppm: rts5453.o tps6699x.o \
+	rts5453_usermode.o tps6699x_usermode.o \
+	smbus_usermode.o um_ppm_chardev.o platform_usermode.o \
+	ppm_common.o \
+	main.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
 .PHONY: clean local_tests

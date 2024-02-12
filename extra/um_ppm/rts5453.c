@@ -1291,6 +1291,7 @@ struct pd_driver_config rts5453_get_driver_config()
 			0x67,
 			0x68,
 		},
+		.transport = SMBUS,
 	};
 
 	return config;

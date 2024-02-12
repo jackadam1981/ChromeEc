@@ -15,10 +15,12 @@
  * @param chip_address: What chip address to open smbus operations on.
  * @param gpio_chip: Which gpiochip has the smbus alert line?
  * @param gpio_line: What line on that gpiochip has the smbus alert?
+ * @param transport: Type of transport for underlying SMBUS/I2C.
  *
  * @return Smbus driver for chosen bus + chip + gpio (alert#) or NULL on error.
  */
 struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
-				   int gpio_chip, int gpio_line);
+				   int gpio_chip, int gpio_line,
+				   uint8_t transport);
 
 #endif /* UM_PPM_SMBUS_USERMODE_H_ */
