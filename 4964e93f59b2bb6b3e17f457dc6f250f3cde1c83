@@ -16,6 +16,24 @@
       "message": "did you intend to push to helipilot branch?",
       "revId": "4964e93f59b2bb6b3e17f457dc6f250f3cde1c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5af335_b6eedd3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-12T19:09:17Z",
+      "side": 1,
+      "message": "Yes, this is the same as https://crrev.com/c/5173629, but targeting the `firmware-fpmcu-helipilot-release` branch. Currently we don\u0027t have a release branch for boringssl, so `firmware-fpmcu-helipilot-release` branch will use the new version of boringssl as well and needs this change to compile.",
+      "parentUuid": "ef0405f1_e5712623",
+      "revId": "4964e93f59b2bb6b3e17f457dc6f250f3cde1c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
