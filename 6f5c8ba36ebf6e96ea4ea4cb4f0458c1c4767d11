@@ -16,6 +16,23 @@
       "message": "Are there any performance issues with creating such a large git blame ignore?",
       "revId": "6f5c8ba36ebf6e96ea4ea4cb4f0458c1c4767d11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b048d5_ab5bce66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-13T23:19:58Z",
+      "side": 1,
+      "message": "I wonder why this reformat was done per file not per directory or even per tree (in the first place).",
+      "revId": "6f5c8ba36ebf6e96ea4ea4cb4f0458c1c4767d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
