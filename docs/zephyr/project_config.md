@@ -201,12 +201,14 @@ When `BUILD.py` is sourced, the following two globals are defined:
   `boards/${ARCH}/${ZEPHYR_BOARD_NAME}`. For the Zephyr EC application, the EC
   chip is mapped onto the Zephyr board organization. Supported `zephyr_boards`
   include:
-   - `mec1727`: Microchip MEC1727, 416 KiB RAM, 512 KiB flash
+   - `mec172x/mec172x_nsz/mec1727`: Microchip MEC1727, 416 KiB RAM, 512 KiB flash
    - `npcx7`: Nuvoton NPCX7m7FC, 384 KiB, 512 KiB flash
-   - `npcx9m3f`: Nuvoton NPCX9m3F, 320 KiB RAM, 512 KiB flash
-   - `npcx9m7f`: Nuvoton NPCX9m7F, 384 KiB RAM, 1 MiB flash
-   - `it81202bx`: ITE IT81202, 60 KiB RAM, 1 MiB flash
-   - `it81302bx`: ITE IT81302, 60 KiB RAM, 1 MiB flash
+   - `npcx9/npcx9m3f`: Nuvoton NPCX9m3F, 320 KiB RAM, 512 KiB flash
+   - `npcx9/npcx9m7f`: Nuvoton NPCX9m7F, 384 KiB RAM, 1 MiB flash
+   - `it8xxx2/it81202bx`: ITE IT81202, 60 KiB RAM, 1 MiB flash
+   - `it8xxx2/it81302bx`: ITE IT81302, 60 KiB RAM, 1 MiB flash
+   - other supported boards are defined in the project
+   [`boards`](../../zephyr/boards) directory
 - `supported_toolchains` (required): A list of the toolchain names
   supported by the build.  Valid values are:
   - `coreboot-sdk`: only supported in the chroot
