@@ -60,7 +60,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="adlrvp_npcx",
-    chip="npcx9m7f",
+    chip="npcx9/npcx9m7f",
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
         here / "adlrvp/adlrvp_npcx/fan.dts",
@@ -131,7 +131,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="mtlrvpp_npcx",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_npcx/fan.dts",
         here / "mtlrvp/mtlrvpp_npcx/gpio.dts",
@@ -157,7 +157,7 @@ register_intelrvp_project(
 
 register_intelrvp_project(
     project_name="mtlrvpp_pd",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_npcx/fan.dts",
         here / "mtlrvp/mtlrvpp_npcx/gpio.dts",
