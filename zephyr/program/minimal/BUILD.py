@@ -11,7 +11,7 @@ register_host_project(
 
 register_npcx_project(
     project_name="minimal-npcx9",
-    zephyr_board="npcx9m3f",
+    zephyr_board="npcx9/npcx9m3f",
     dts_overlays=[here / "npcx9.dts"],
 )
 
