@@ -16,6 +16,23 @@
       "message": "Hi Brian, did I get this right and this board definition is not needed anymore?",
       "revId": "96f7b7fc517589394b88c20b7b6c66e172d3573a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c238e32e_95fd6ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2024-02-13T19:24:12Z",
+      "side": 1,
+      "message": "Yeah, we moved it to a non EC-Zephyr repo.",
+      "revId": "96f7b7fc517589394b88c20b7b6c66e172d3573a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
