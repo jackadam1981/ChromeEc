@@ -222,6 +222,15 @@ ZTEST_F(isl9241_driver, test_dc_prochot)
 		      ISL9241_DC_PROCHOT_CURRENT_MIN);
 }
 
+ZTEST_F(isl9241_driver, test_dump_registers)
+{
+	/* Must define CONFIG_CMD_CHARGER_DUMP for this sub-command */
+	int rv = shell_execute_cmd(get_ec_shell(), "charger dump");
+
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+}
+
 ZTEST(isl9241_driver, test_prochot_dump)
 {
 	/*
