@@ -458,6 +458,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0222b73b_99feaa71",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2024-02-13T19:20:26Z",
+      "side": 1,
+      "message": "My mistake there, you\u0027re correct.\n\nI became confused with EC and Zephyr\u0027s implementations of persistent state objects used for settings. In Zephyr the `settings_read_cb` and writes to a buffer directly rather than providing a pointer to flash space.",
+      "parentUuid": "9e7b814d_fa7338ab",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f17b6e4_9a0e994e",
