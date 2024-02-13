@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c8444b_fae25bc0",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-13T22:58:25Z",
+      "side": 1,
+      "message": "When using CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO, board specific code shouldn\u0027t be required.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 81
+      },
+      "revId": "9a1bb6205114711e48be82865448cbf60be8d037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e593aa_9e9dfb7b",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-13T22:58:25Z",
+      "side": 1,
+      "message": "Brox already defines `CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO`.  A custom override should not be needed.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "9a1bb6205114711e48be82865448cbf60be8d037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc1ccc0_04e30443",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-13T22:58:25Z",
+      "side": 1,
+      "message": "I also don\u0027t think this option is needed.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "9a1bb6205114711e48be82865448cbf60be8d037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
