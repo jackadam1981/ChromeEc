@@ -201,6 +201,8 @@ enum init_state_t {
 	INIT_PDC_RESET,
 	/** Initialization complete */
 	INIT_PDC_COMPLETE,
+	/** Initialization error */
+	INIT_ERROR,
 	/** Wait for command to send */
 	INIT_PDC_CMD_WAIT
 };
@@ -333,6 +335,8 @@ struct pdc_data_t {
 	uint16_t error_recovery_delay_counter;
 	/** Error recovery counter */
 	uint16_t error_recovery_counter;
+	/** Error Status used during initialization */
+	union error_status_t es;
 };
 
 /**
@@ -368,9 +372,12 @@ static const char *const cmd_names[] = {
  * @brief List of human readable state names for console debugging
  */
 static const char *const state_names[] = {
-	[ST_INIT] = "INIT",   [ST_IDLE] = "IDLE",
-	[ST_WRITE] = "WRITE", [ST_PING_STATUS] = "PING_STATUS",
-	[ST_READ] = "READ",   [ST_ERROR_RECOVERY] = "ERROR_RECOVERY",
+	[ST_INIT] = "INIT",
+	[ST_IDLE] = "IDLE",
+	[ST_WRITE] = "WRITE",
+	[ST_PING_STATUS] = "PING_STATUS",
+	[ST_READ] = "READ",
+	[ST_ERROR_RECOVERY] = "ERROR_RECOVERY",
 	[ST_DISABLE] = "PDC_DISABLED",
 };
 
@@ -384,6 +391,8 @@ static int rts54_set_notification_enable(const struct device *dev,
 					 union notification_enable_t bits,
 					 uint16_t ext_bits);
 static int rts54_get_info(const struct device *dev, struct pdc_info_t *info);
+static int rts54_get_error_status(const struct device *dev,
+				  union error_status_t *es);
 
 /**
  * @brief PDC port data used in interrupt handler
@@ -410,7 +419,9 @@ static void print_current_state(struct pdc_data_t *data)
 		LOG_INF("ST%d: %s %s", cfg->connector_number, state_names[st],
 			cmd_names[data->cmd]);
 	} else if (st == ST_ERROR_RECOVERY) {
-		LOG_INF("ST%d: %s %s %d", cfg->connector_number, state_names[st], cmd_names[data->cmd], data->error_recovery_counter);
+		LOG_INF("ST%d: %s %s %d", cfg->connector_number,
+			state_names[st], cmd_names[data->cmd],
+			data->error_recovery_counter);
 	} else {
 		LOG_INF("ST%d: %s", cfg->connector_number,
 			state_names[get_state(data)]);
@@ -530,6 +541,40 @@ static void init_write_cmd_and_change_state(struct pdc_data_t *data,
 	set_state(data, ST_WRITE);
 }
 
+static void init_display_error_status(struct pdc_data_t *data)
+{
+	if (data->es.unrecognized_command) {
+		LOG_INF("ERR%d: Unrecognized Command", cfg->connector_number);
+	}
+
+	if (data->es.non_existent_connector_number) {
+		LOG_INF("ERR%d: Invalid Connector Number",
+			cfg->connector_number);
+	}
+
+	if (data->es.invalid_command_specific_param) {
+		LOG_INF("ERR%d: Invalid Param", cfg->connector_number);
+	}
+
+	if (data->es.incompatible_connector_partner) {
+		LOG_INF("ERR%d: Invalid Connector Partner",
+			cfg->connector_number);
+	}
+
+	if (data->es.cc_communication_error) {
+		LOG_INF("ERR:%d CC Comm Error", cfg->connector_number);
+	}
+
+	if (data->es.cmd_unsuccessful_dead_batt) {
+		LOG_INF("ERR:%d Dead Batt Error", cfg->connector_number);
+	}
+
+	if (data->es.contract_negotiation_failed) {
+		LOG_INF("ERR:%d Contract Negotiation Failed",
+			cfg->connector_number);
+	}
+}
+
 static void st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -558,6 +603,11 @@ static void st_init_run(void *o)
 		set_state(data, ST_IDLE);
 		data->init_done = true;
 		return;
+	case INIT_ERROR:
+		/* Get error status, and re-start the init process */
+		rts54_get_error_status(data->dev, &data->es);
+		init_write_cmd_and_change_state(data, INIT_PDC_ENABLE);
+		return;
 	case INIT_PDC_CMD_WAIT:
 		/* If PDC_RESET was sent, check the reset_completed flag */
 		if (data->init_local_current_state == INIT_PDC_RESET) {
@@ -569,8 +619,41 @@ static void st_init_run(void *o)
 		}
 
 		if (data->cci_event.error) {
-			data->init_local_state = data->init_local_current_state;
+			/* I2C read Error. No way to recover, so disable the PDC
+			 */
+			if (data->error_status.i2c_read_error) {
+				LOG_INF("C%d: PDC I2C problem",
+					cfg->connector_number);
+				set_state(data, ST_DISABLE);
+				return;
+			}
+
+			/* PDC not responding to Ping Status reads. Try error
+			 * recovery */
+			if (data->error_status.ping_retry_count) {
+				LOG_INF("C%d: PDC not responding",
+					cfg->connector_number);
+				set_state(data, ST_ERROR_RECOVERY);
+				return;
+			}
+
+			/* PDC  not responding to Error Status reads. Try error
+			 * recovery */
+			if (data->init_local_current_state == INIT_ERROR) {
+				LOG_INF("C%d: PDC error status read fail ",
+					cfg->connector_number);
+				set_state(data, ST_ERROR_RECOVERY);
+				return;
+			}
+
+			/* PDC returned an error */
+			data->init_local_state = INIT_ERROR;
 		} else {
+			/* PDC Error status was read. Display it */
+			if (data->init_local_current_state == INIT_ERROR) {
+				init_display_error_status(data);
+			}
+
 			data->init_local_state = data->init_local_next_state;
 		}
 		break;
@@ -1143,14 +1226,14 @@ static void st_disable_entry(void *o)
 	const struct pdc_config_t *cfg = data->dev->config;
 
 	print_current_state(data);
-	LOG_INF("C%d: Realtek: FW Version: %04x", cfg->connector_number, data->info.fw_version);
+	LOG_INF("C%d: Realtek: FW Version: %04x", cfg->connector_number,
+		data->info.fw_version);
 }
 
 static void st_disable_run(void *o)
 {
 	/* Stay here until reset */
 }
-
 
 /* Populate cmd state table */
 static const struct smf_state states[] = {
@@ -1162,8 +1245,8 @@ static const struct smf_state states[] = {
 	[ST_READ] = SMF_CREATE_STATE(st_read_entry, st_read_run, NULL, NULL),
 	[ST_ERROR_RECOVERY] = SMF_CREATE_STATE(
 		st_error_recovery_entry, st_error_recovery_run, NULL, NULL),
-	[ST_DISABLE] = SMF_CREATE_STATE(
-		st_disable_entry, st_disable_run, NULL, NULL),
+	[ST_DISABLE] =
+		SMF_CREATE_STATE(st_disable_entry, st_disable_run, NULL, NULL),
 
 };
 
