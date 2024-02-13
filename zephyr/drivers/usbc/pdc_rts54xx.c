@@ -141,6 +141,16 @@ const struct smbus_cmd_t UCSI_READ_POWER_LEVEL = { 0x0E, 0x03, 0x1E };
 const struct smbus_cmd_t GET_IC_STATUS = { 0x3A, 0x03, 0x00 };
 
 /**
+ * @brief Type of I2C operation
+ */
+enum i2c_xfer_t {
+	/** I2C Read operation */
+	I2C_XFER_READ,
+	/* I2C Write operation */
+	I2C_XFER_WRITE,
+};
+
+/**
  * @brief PDC Command states
  */
 enum cmd_sts_t {
@@ -201,6 +211,8 @@ enum init_state_t {
 	INIT_PDC_RESET,
 	/** Initialization complete */
 	INIT_PDC_COMPLETE,
+	/** Initialization error */
+	INIT_ERROR,
 	/** Wait for command to send */
 	INIT_PDC_CMD_WAIT
 };
@@ -389,6 +401,8 @@ static int rts54_set_notification_enable(const struct device *dev,
 					 union notification_enable_t bits,
 					 uint16_t ext_bits);
 static int rts54_get_info(const struct device *dev, struct pdc_info_t *info);
+static int rts54_get_error_status(const struct device *dev,
+				  union error_status_t *es);
 
 /**
  * @brief PDC port data used in interrupt handler
@@ -451,6 +465,43 @@ static void perform_pdc_init(struct pdc_data_t *data)
 	/* Set initial local state of Init */
 	data->init_local_state = INIT_PDC_ENABLE;
 	set_state(data, ST_INIT);
+}
+
+/**
+ * @brief This function should be called after any I2C transfer that failed.
+ * It increments a counter, notifies the subsystem of the I2C error and then
+ * enters the recovery state. NOTE: the data->i2c_transaction_retry_counter
+ * should be set to zero in the calling states entry action.
+ */
+static bool max_i2c_retry_reached(struct pdc_data_t *data, enum i2c_xfer_t type)
+{
+	const struct pdc_config_t *cfg = data->dev->config;
+
+	data->i2c_transaction_retry_counter++;
+	if (data->i2c_transaction_retry_counter > N_I2C_TRANSACTION_COUNT) {
+		/* MAX I2C transactions exceeded */
+		LOG_ERR("C%d: %s i2c error", cfg->connector_number,
+			(type == I2C_XFER_READ) ? "Read" : "Write");
+		/*
+		 * The command was not successfully completed,
+		 * so set cci.error to 1b.
+		 */
+		data->cci_event.error = 1;
+		/* Command has completed */
+		data->cci_event.command_completed = 1;
+		/* Clear busy event */
+		data->cci_event.busy = 0;
+		/* Set error, I2C read error */
+		if (type == I2C_XFER_READ) {
+			data->error_status.i2c_read_error = 1;
+		} else {
+			data->error_status.i2c_write_error = 1;
+		}
+		/* Notify system of status change */
+		call_cci_event_cb(data);
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -537,6 +588,42 @@ static void init_write_cmd_and_change_state(struct pdc_data_t *data,
 	set_state(data, ST_WRITE);
 }
 
+static void init_display_error_status(struct pdc_data_t *data)
+{
+	const struct pdc_config_t *cfg = data->dev->config;
+
+	if (data->es.unrecognized_command) {
+		LOG_INF("ERR%d: Unrecognized Command", cfg->connector_number);
+	}
+
+	if (data->es.non_existent_connector_number) {
+		LOG_INF("ERR%d: Invalid Connector Number",
+			cfg->connector_number);
+	}
+
+	if (data->es.invalid_command_specific_param) {
+		LOG_INF("ERR%d: Invalid Param", cfg->connector_number);
+	}
+
+	if (data->es.incompatible_connector_partner) {
+		LOG_INF("ERR%d: Invalid Connector Partner",
+			cfg->connector_number);
+	}
+
+	if (data->es.cc_communication_error) {
+		LOG_INF("ERR:%d CC Comm Error", cfg->connector_number);
+	}
+
+	if (data->es.cmd_unsuccessful_dead_batt) {
+		LOG_INF("ERR:%d Dead Batt Error", cfg->connector_number);
+	}
+
+	if (data->es.contract_negotiation_failed) {
+		LOG_INF("ERR:%d Contract Negotiation Failed",
+			cfg->connector_number);
+	}
+}
+
 static void st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -565,6 +652,11 @@ static void st_init_run(void *o)
 		set_state(data, ST_IDLE);
 		data->init_done = true;
 		return;
+	case INIT_ERROR:
+		/* Get error status, and re-start the init process */
+		rts54_get_error_status(data->dev, &data->es);
+		init_write_cmd_and_change_state(data, INIT_PDC_ENABLE);
+		return;
 	case INIT_PDC_CMD_WAIT:
 		/* If PDC_RESET was sent, check the reset_completed flag */
 		if (data->init_local_current_state == INIT_PDC_RESET) {
@@ -576,8 +668,41 @@ static void st_init_run(void *o)
 		}
 
 		if (data->cci_event.error) {
-			data->init_local_state = data->init_local_current_state;
+			/* I2C read Error. No way to recover, so disable the PDC
+			 */
+			if (data->error_status.i2c_read_error) {
+				LOG_INF("C%d: PDC I2C problem",
+					cfg->connector_number);
+				set_state(data, ST_DISABLE);
+				return;
+			}
+
+			/* PDC not responding to Ping Status reads. Try error
+			 * recovery */
+			if (data->error_status.ping_retry_count) {
+				LOG_INF("C%d: PDC not responding",
+					cfg->connector_number);
+				set_state(data, ST_ERROR_RECOVERY);
+				return;
+			}
+
+			/* PDC  not responding to Error Status reads. Try error
+			 * recovery */
+			if (data->init_local_current_state == INIT_ERROR) {
+				LOG_INF("C%d: PDC error status read fail ",
+					cfg->connector_number);
+				set_state(data, ST_ERROR_RECOVERY);
+				return;
+			}
+
+			/* PDC returned an error */
+			data->init_local_state = INIT_ERROR;
 		} else {
+			/* PDC Error status was read. Display it */
+			if (data->init_local_current_state == INIT_ERROR) {
+				init_display_error_status(data);
+			}
+
 			data->init_local_state = data->init_local_next_state;
 		}
 		break;
@@ -687,27 +812,8 @@ static void st_write_run(void *o)
 	/* Write the command */
 	rv = rts54_i2c_write(data->dev);
 	if (rv < 0) {
-		/* I2C write failed */
-		data->i2c_transaction_retry_counter++;
-		if (data->i2c_transaction_retry_counter >
-		    N_I2C_TRANSACTION_COUNT) {
-			/* MAX I2C transactions exceeded */
-
-			/*
-			 * The command was not successfully completed,
-			 * so set cci.error to 1b.
-			 */
-			data->cci_event.error = 1;
-			data->cci_event.command_completed = 1;
-			data->error_status.i2c_write_error = 1;
-			/* Notify system of status change */
-			call_cci_event_cb(data);
-
-			/*
-			 * This state can only be entered from the Init or
-			 * Idle state, so return to one of them.
-			 */
-			TRANSITION_TO_INIT_OR_IDLE_STATE(data);
+		if (max_i2c_retry_reached(data, I2C_XFER_WRITE)) {
+			set_state(data, ST_ERROR_RECOVERY);
 		}
 		return;
 	}
@@ -747,29 +853,8 @@ static void st_ping_status_run(void *o)
 	/* Read the Ping Status */
 	rv = get_ping_status(data->dev);
 	if (rv < 0) {
-		/* I2C transaction failed */
-		data->i2c_transaction_retry_counter++;
-		if (data->i2c_transaction_retry_counter >
-		    N_I2C_TRANSACTION_COUNT) {
-			/* MAX I2C transactions exceeded */
-			LOG_ERR("C%d: Ping Status i2c error",
-				cfg->connector_number);
-			/*
-			 * The command was not successfully completed,
-			 * so set cci.error to 1b.
-			 */
-			data->cci_event.error = 1;
-			/* Command has completed */
-			data->cci_event.command_completed = 1;
-			/* Clear busy event */
-			data->cci_event.busy = 0;
-			/* Set error, I2C read error */
-			data->error_status.i2c_read_error = 1;
-			/* Notify system of status change */
-			call_cci_event_cb(data);
-
-			/* An error occurred, return to idle state */
-			TRANSITION_TO_INIT_OR_IDLE_STATE(data);
+		if (max_i2c_retry_reached(data, I2C_XFER_READ)) {
+			set_state(data, ST_ERROR_RECOVERY);
 		}
 		return;
 	}
@@ -873,7 +958,8 @@ static void st_ping_status_run(void *o)
 		/* Notify system of status change */
 		call_cci_event_cb(data);
 
-		/* An error occurred, return to idle state */
+		/* A command error occurred, return to idle state. The subsystem
+		 * should read the status_register to determine the cause. */
 		TRANSITION_TO_INIT_OR_IDLE_STATE(data);
 		break;
 	default:
@@ -898,6 +984,8 @@ static void st_read_entry(void *o)
 
 	/* Clear the CCI Event */
 	data->cci_event.raw_value = 0;
+	/* Clear I2c Transaction Retry Counter */
+	data->i2c_transaction_retry_counter = 0;
 	/* Set the port the CCI Event occurred on */
 	data->cci_event.connector_change = cfg->connector_number;
 }
@@ -935,21 +1023,10 @@ static void st_read_run(void *o)
 
 	rv = rts54_i2c_read(data->dev);
 	if (rv < 0) {
-		LOG_ERR("I2C Read Error");
-		/*
-		 * The command was not successfully completed,
-		 * so set cci.error to 1b.
-		 */
-		data->cci_event.error = 1;
-		/* Command completed */
-		data->cci_event.command_completed = 1;
-		/* I2C read error */
-		data->error_status.i2c_read_error = 1;
-		/* Notify system of status change */
-		call_cci_event_cb(data);
-
-		/* An error occurred, return to idle state */
-		TRANSITION_TO_INIT_OR_IDLE_STATE(data);
+		if (max_i2c_retry_reached(data, I2C_XFER_READ)) {
+			set_state(data, ST_ERROR_RECOVERY);
+		}
+		return;
 	}
 
 	/* Get length of data returned */
@@ -1561,7 +1638,7 @@ static int rts54_get_error_status(const struct device *dev,
 		return 0;
 	}
 
-	if (get_state(data) != ST_IDLE) {
+	if ((get_state(data) != ST_IDLE) && (get_state(data) != ST_INIT)) {
 		return -EBUSY;
 	}
 
