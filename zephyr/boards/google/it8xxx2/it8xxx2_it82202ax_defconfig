@@ -1,14 +1,6 @@
-# Copyright 2022 The ChromiumOS Authors
+# Copyright 2023 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-
-# Zephyr Kernel Configuration
-CONFIG_SOC_SERIES_ITE_IT8XXX2=y
-CONFIG_SOC_IT8XXX2=y
-CONFIG_SOC_IT81302_CX=y
-
-# Platform Configuration
-CONFIG_BOARD_IT8XXX2=y
 
 # Power Management
 CONFIG_PM=y
