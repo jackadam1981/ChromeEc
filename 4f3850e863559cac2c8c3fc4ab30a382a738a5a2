@@ -213,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6fbb431_036e0153",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2024-02-13T18:15:30Z",
+      "side": 1,
+      "message": "I\u0027d change the arguments of from:\n\n`crec_flash_read_pstate_poweron_conf(uint8_t *buffer, int length)`\n\nTo `crec_flash_read_pstate_poweron_conf(struct persist_state* buf)`\n\nThen you can do a sizeof on the sizeof(struct persist_state) to extract the length. \n\nThis make it impossible to send the wrong size buffer back and forth, you could probably use it to replace the [CONFIG_POWERON_CONF_LEN] entry with just the struct.\n\nMagic number indexes are inevitably going to lead to problems over time and can be avoided in almost all cases.",
+      "parentUuid": "53610286_daa3bd47",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10424b9c_922112e8",
         "filename": "board/servo_v4p1/poweron_conf.c",
         "patchSetId": 1
@@ -382,6 +400,24 @@
       "side": 1,
       "message": "To be honest I was basing this on crec_flash_read_pstate_serial and crec_flash_read_pstate_mac_addr implementations, which are the same. So do you think we should adjust also them?\n\nI see the problem, for my case I would go with solution proposed below",
       "parentUuid": "695d2196_48d9e385",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60b901a_90ba2f54",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2024-02-13T18:15:30Z",
+      "side": 1,
+      "message": "The modified version with the memcpy is correcting the issue.",
+      "parentUuid": "2f0547a2_3b66837d",
       "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
