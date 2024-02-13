@@ -16,6 +16,23 @@
       "message": "Hi,\nCan you please help review this patch?. Thank you.",
       "revId": "ad985bcae0225c68d3188384c347992d0f12cc17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc2476e_a57bcb3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-13T19:43:58Z",
+      "side": 1,
+      "message": "CQ Error:\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/brya_pdc/build-ro\n\n/mnt/host/source/src/platform/ec/build/zephyr/brya_pdc/modules/ec/common/usb_pd_host_cmd_common.c:212: undefined reference to `get_dp_pin_mode\u0027\ncollect2: error: ld returned 1 exit status",
+      "revId": "ad985bcae0225c68d3188384c347992d0f12cc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
