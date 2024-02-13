@@ -109,6 +109,30 @@
       },
       "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41c280c_41f75c50",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-13T04:48:52Z",
+      "side": 1,
+      "message": "Couldn\u0027t we avoid leaving they key in memory through a simpler method, i.e.:\n\nmemset(otp_key_buffer, 0xFF, FP_POSITIVE_MATCH_SECRET_BYTES);\n?",
+      "parentUuid": "219613b3_b97a5ea0",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
