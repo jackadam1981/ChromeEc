@@ -463,6 +463,30 @@
       },
       "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bf599f_c01cd43d",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-13T21:41:53Z",
+      "side": 1,
+      "message": "\u003e and I think is also what Patryk is referring to.\n\nYup. The key in OTP regions is used to encrypt/decrypt secret in rollback regions, so it seems natural to keep it in EC rollback code.",
+      "parentUuid": "278e13d7_2afaf904",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
