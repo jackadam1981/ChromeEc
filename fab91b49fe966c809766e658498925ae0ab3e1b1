@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8437511_6474bbea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T00:29:21Z",
+      "side": 1,
+      "message": "Can you add a unit test?\n\nYou can use the [\"mock\" framework](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/mock/README.md) to mock the behavior of the OTP APIs since we can\u0027t run it multiple times on real hardware.",
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e09ef2_5d874a41",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T00:29:21Z",
+      "side": 1,
+      "message": "Let\u0027s check for `null` and return error.",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d485d88_f2e53663",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T00:29:21Z",
+      "side": 1,
+      "message": "Based on our other discussions, this should probably be 256 bits for future-proofing. It would be good to go ahead and write the design doc I mentioned in the bug, so that we can make sure this works with the migration path.",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219613b3_b97a5ea0",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T00:29:21Z",
+      "side": 1,
+      "message": "To avoid leaving the key in memory, you can use [`CleanseWrapper`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor_auth_crypto_stateful.cc;l\u003d47;drc\u003dec0b07f4b1d938abc7e3b37eabb8661c40982e8a). You\u0027ll need to make this a `.cc` file.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
