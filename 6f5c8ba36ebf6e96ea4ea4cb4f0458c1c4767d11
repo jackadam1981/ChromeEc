@@ -51,6 +51,24 @@
       "parentUuid": "49b048d5_ab5bce66",
       "revId": "6f5c8ba36ebf6e96ea4ea4cb4f0458c1c4767d11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75279356_484f14bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-02-13T23:50:59Z",
+      "side": 1,
+      "message": "It was requested by firmware branch maintainers to make it easier to cherry-pick CLs.",
+      "parentUuid": "125451cb_39d0e0a0",
+      "revId": "6f5c8ba36ebf6e96ea4ea4cb4f0458c1c4767d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
