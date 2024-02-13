@@ -110,10 +110,18 @@ static
 			pd_comm_enable(port, 1);
 			ccprintf("Port C%d enabled\n", port);
 			return EC_SUCCESS;
-		} else if (!strcasecmp(argv[2], "hard")) {
-			pd_dpm_request(port, DPM_REQUEST_HARD_RESET_SEND);
-		} else if (!strcasecmp(argv[2], "soft")) {
-			pd_dpm_request(port, DPM_REQUEST_SOFT_RESET_SEND);
+		} else if (!strcasecmp(argv[2], "reset")) {
+			if (argc < 4)
+				return EC_ERROR_PARAM_COUNT;
+			if (!strcasecmp(argv[3], "hard")) {
+				pd_dpm_request(port,
+					       DPM_REQUEST_HARD_RESET_SEND);
+			} else if (!strcasecmp(argv[3], "soft")) {
+				pd_dpm_request(port,
+					       DPM_REQUEST_SOFT_RESET_SEND);
+			} else {
+				return EC_ERROR_PARAM3;
+			}
 		} else if (!strcasecmp(argv[2], "swap")) {
 			if (argc < 4)
 				return EC_ERROR_PARAM_COUNT;
@@ -259,9 +267,10 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 #endif /* CONFIG_CMD_PD_TIMER */
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			"|tx|charger|dev"
-			"\n\t<port> disable|enable|soft|hard"
+			"\n\t<port> disable|enable"
 			"\n\t<port> suspend|resume"
 			"\n\t<port> dualrole [on|off|freeze|sink|source]"
+			"\n\t<port> reset [soft|hard]"
 			"\n\t<port> swap [power|data|vconn]"
 #ifdef CONFIG_USB_PD_EPR
 			"\n\t<port> epr [enter|exit]"
