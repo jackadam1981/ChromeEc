@@ -16,7 +16,7 @@ def register_corsola_project(
     if chip.startswith("npcx"):
         register_func = register_npcx_project
 
-    chip_kconfig = {"it81202bx": "ite", "npcx9m3f": "npcx"}[chip]
+    chip_kconfig = {"it81202bx": "ite", "npcx9/npcx9m3f": "npcx"}[chip]
 
     register_func(
         project_name=project_name,
@@ -37,7 +37,7 @@ def register_kingler_project(
     """Wrapper function for registering a variant of kingler."""
     return register_corsola_project(
         project_name=project_name,
-        chip="npcx9m3f",
+        chip="npcx9/npcx9m3f",
     )
 
 
@@ -55,12 +55,12 @@ register_corsola_project("krabby")
 
 register_corsola_project(
     project_name="kingler",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 register_corsola_project(
     project_name="steelix",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 register_corsola_project("starmie")
@@ -71,12 +71,12 @@ register_corsola_project("magikarp")
 
 register_corsola_project(
     project_name="voltorb",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 register_corsola_project(
     project_name="ponyta",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 register_corsola_project("chinchou")

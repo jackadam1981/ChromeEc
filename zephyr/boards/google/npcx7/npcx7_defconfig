@@ -1,17 +1,6 @@
-# Copyright 2021 The ChromiumOS Authors
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-
-# Zephyr Kernel Configuration
-CONFIG_SOC_SERIES_NPCX9=y
-# NPCX9 soc list
-#  CONFIG_SOC_NPCX9M3F
-#  CONFIG_SOC_NPCX9M6F
-#  CONFIG_SOC_NPCX9M7F
-CONFIG_SOC_NPCX9M6F=y
-
-# Platform Configuration
-CONFIG_BOARD_NPCX9_EVB=y
 
 # Serial Drivers
 CONFIG_SERIAL=y

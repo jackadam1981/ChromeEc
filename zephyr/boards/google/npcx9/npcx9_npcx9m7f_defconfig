@@ -1,17 +1,6 @@
-# Copyright 2021 The ChromiumOS Authors
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-
-# Zephyr Kernel Configuration
-CONFIG_SOC_SERIES_NPCX7=y
-# NPCX7 soc list
-#  CONFIG_SOC_NPCX7M6FB
-#  CONFIG_SOC_NPCX7M6FC
-#  CONFIG_SOC_NPCX7M7FC
-CONFIG_SOC_NPCX7M6FC=y
-
-# Platform Configuration
-CONFIG_BOARD_NPCX7_EVB=y
 
 # Serial Drivers
 CONFIG_SERIAL=y
@@ -33,9 +22,6 @@ CONFIG_CLOCK_CONTROL=y
 
 # WATCHDOG configuration
 CONFIG_WATCHDOG=y
-
-# I2C
-CONFIG_I2C=y
 
 # Power Management
 CONFIG_PM=y

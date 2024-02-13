@@ -17,7 +17,7 @@ def register_nissa_project(
     if chip.startswith("npcx"):
         register_func = register_npcx_project
 
-    chip_kconfig = {"it81302bx": "it8xxx2", "npcx9m3f": "npcx"}[chip]
+    chip_kconfig = {"it81302bx": "it8xxx2", "npcx9/npcx9m3f": "npcx"}[chip]
 
     return register_func(
         project_name=project_name,
@@ -38,7 +38,7 @@ def register_nivviks_project(
     """Wrapper function for registering a variant of nivviks."""
     return register_nissa_project(
         project_name=project_name,
-        chip="npcx9m3f",
+        chip="npcx9/npcx9m3f",
     )
 
 
@@ -54,7 +54,7 @@ def register_nereid_project(
 
 nivviks = register_nissa_project(
     project_name="nivviks",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 nereid = register_nissa_project(
@@ -76,7 +76,7 @@ nereid_cx = register_binman_project(
 
 nokris = register_nissa_project(
     project_name="nokris",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 naktal = register_nissa_project(
@@ -86,22 +86,22 @@ naktal = register_nissa_project(
 
 craask = register_nissa_project(
     project_name="craask",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 pujjo = register_nissa_project(
     project_name="pujjo",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 xivu = register_nissa_project(
     project_name="xivu",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 xivur = register_nissa_project(
     project_name="xivur",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 
 joxer = register_nissa_project(
@@ -121,7 +121,7 @@ yavilla = register_nissa_project(
 
 uldren = register_nissa_project(
     project_name="uldren",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 gothrax = register_nissa_project(
     project_name="gothrax",
@@ -129,7 +129,7 @@ gothrax = register_nissa_project(
 )
 craaskov = register_nissa_project(
     project_name="craaskov",
-    chip="npcx9m3f",
+    chip="npcx9/npcx9m3f",
 )
 pirrha = register_nissa_project(
     project_name="pirrha",
