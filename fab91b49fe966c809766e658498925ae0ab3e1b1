@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a021e1f9_fb525877",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-13T04:43:37Z",
+      "side": 1,
+      "message": "FP_POSITIVE_MATCH_SECRET_BYTES evaluates to 32 bytes \u003d 256 bits, so we should be good here, yes?",
+      "parentUuid": "3d485d88_f2e53663",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "219613b3_b97a5ea0",
