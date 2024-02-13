@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e85d43d_286ee629",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-13T17:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e09ef2_5d874a41",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05e415fe_a04d223b",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-02-13T09:44:44Z",
       "side": 1,
       "message": "This should be `static uint32_t` to avoid using it from outside.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bb3263_ccb14531",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-13T17:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e415fe_a04d223b",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -219,6 +267,30 @@
       "writtenOn": "2024-02-13T09:44:44Z",
       "side": 1,
       "message": "We should check if these bytes are not trivial.",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "674346d4_d5f55869",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-13T17:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e923e4_6f6f956e",
       "range": {
         "startLine": 85,
         "startChar": 25,
