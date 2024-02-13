@@ -16,6 +16,24 @@
       "message": "Vijay - Feel free to take ownership of this.  This will be needed, but it looks like the Realtek PDC driver needs some changes to support the retimer FW update.",
       "revId": "3a8c531e1f7207da88987dca2524000d5fc3cf29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b100c905_29dc1120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-02-13T22:46:33Z",
+      "side": 1,
+      "message": "Hi Keith, sure. Deepti has a WIP CL:5273992\nI will sync up with here to close on this",
+      "parentUuid": "fd296c49_3014f1da",
+      "revId": "3a8c531e1f7207da88987dca2524000d5fc3cf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
