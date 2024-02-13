@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4912026d_2dd2bc39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-02-13T21:24:26Z",
+      "side": 1,
+      "message": "@keithshort@chromium.org @peress@google.com this is more or less the hwmv2 port for the npcx boards, Gerrit messes up the diff a bit but there\u0027s not much into it, just shuffling few files around. This works against the current upstream branch cherry picked on top of our downstream one (`git cherry-pick upstream/main..upstream/collab-hwm`), the `mec` and `it82xx2` soc definitions haven\u0027t been ported yet.",
+      "revId": "4d8cb0139ab0ff4233bbdb877e6a9d460b461684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
