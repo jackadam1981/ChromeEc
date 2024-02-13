@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbcaa654_ee552af7",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T19:33:27Z",
+      "side": 1,
+      "message": "Let\u0027s not do an implicit cast. This should return same type as `status` (`enum API_RETURN_STATUS_T`).",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05e415fe_a04d223b",
         "filename": "chip/npcx/otp_key.c",
         "patchSetId": 1
@@ -154,6 +177,29 @@
         "startChar": 17,
         "endLine": 60,
         "endChar": 47
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a5f9a2_91bd37e6",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T19:33:27Z",
+      "side": 1,
+      "message": "Let\u0027s not do an implicit cast. This should return same type as `status` (`enum API_RETURN_STATUS_T`).",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 8
       },
       "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -256,6 +302,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e89c6f3a_f910ffc4",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T19:33:27Z",
+      "side": 1,
+      "message": "\u003e Coudn\u0027t we solve that with a #pragma around the memset to avoid the compiler optimizing it out?\n\nIt\u0027s tricky to get right, so we rely on canonical implementations rather than re-implementing it everywhere it\u0027s needed.\n\nWe do have a C version that can be used: `OPENSSL_cleanse`. The C++ version is nice because it leverages RAII to make sure that all return paths are covered.\n\nHere\u0027s an [example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d573-578;drc\u003d1285bf7bb93a88bef3432b30e4b6a14bb18cc985).",
+      "parentUuid": "fb997557_92664c76",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80bf5047_ee0b8d23",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T19:33:27Z",
+      "side": 1,
+      "message": "It\u0027s a bit easier to read if you use [\"guard clauses\" (early return)](http://shortn/_HXS2Us5Zsx):\n\n\n```\nif (status !\u003d API_RET_OTP_STATUS_OK) {\n  ccprints(\"Failed to read OTP key with status\u003d%d\", status);\n  return status;\n}\n\nif (!bytes_are_trivial(otp_key_buffer, FP_POSITIVE_MATCH_SECRET_BYTES)) {\n  OPENSSL_cleanse(...)\n  return API_RET_OTP_STATUS_OK;\n}\n\nccprints(\"stored OTP bytes trivial, generating key\");\n\ntrng_init();\ntrng_rand_bytes(otp_key_buffer, FP_POSITIVE_MATCH_SECRET_BYTES);\ntrng_exit();\n...\n...\nreturn status;\n\n}\n```",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e923e4_6f6f956e",
         "filename": "chip/npcx/otp_key.c",
         "patchSetId": 1
@@ -338,6 +431,30 @@
       "side": 1,
       "message": "The agreement with Tom in b/323094297 was to add this code to the bio_wash --factory_init path. If you have a different proposal, maybe we should discuss in the bug as a first step?",
       "parentUuid": "cda955c6_68624fb1",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cfb8359_0467ce07",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-13T19:33:27Z",
+      "side": 1,
+      "message": "This placement is a bit different than what I was suggesting. During `bio_wash --factory_init`, we call [`InitEntropy()`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/biod/tools/bio_wash.cc;l\u003d42;drc\u003dc65a5e685b0c9676cd00f140c5a0017a55d6e3b0), which ultimately sends the `EC_CMD_ADD_ENTROPY` command to the FPMCU, which is handled [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/rollback.c;l\u003d448-472;drc\u003d91be0dcf45a0be7a630e2ee21ccabb5d739187e2). That is what I was thinking about when you asked about the `bio_wash --factory_init` path, and I think is also what Patryk is referring to. \n\nBefore we go much farther with this CL, let\u0027s go ahead and write the design doc and share with the team so that we can make sure we\u0027re all in agreement and will have a reference for the future when questions come up.",
+      "parentUuid": "278e13d7_2afaf904",
       "range": {
         "startLine": 141,
         "startChar": 0,
