@@ -214,6 +214,30 @@
       },
       "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c6403f8_3fcfb41c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-13T20:53:55Z",
+      "side": 1,
+      "message": "I refactored to a function that might make it easier for us to discuss the algorithm.",
+      "parentUuid": "d72ab8c9_c93cb0da",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "57ee0cf77e3caa1353522ea7080df60366547983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
