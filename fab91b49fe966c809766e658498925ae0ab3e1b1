@@ -250,6 +250,30 @@
       },
       "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "278e13d7_2afaf904",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-13T17:12:45Z",
+      "side": 1,
+      "message": "The agreement with Tom in b/323094297 was to add this code to the bio_wash --factory_init path. If you have a different proposal, maybe we should discuss in the bug as a first step?",
+      "parentUuid": "cda955c6_68624fb1",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
