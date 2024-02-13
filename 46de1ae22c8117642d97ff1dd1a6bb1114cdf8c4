@@ -422,6 +422,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5848fb0_0cc40c25",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-13T01:26:38Z",
+      "side": 1,
+      "message": "So I found that tpm_orderly_state_capture()/tpm_orderly_state_restore() do that, so we can probably remove this logic. Will do it in separate CL though.\n\nAs for NV_MAX_COUNTER - i\u0027m not sure if we need to save it. It seems to be updated in NvInitialCounter as maximum of active counters and this number. \nNvWriteMaxCount only called from NvDeleteEntity() index to update counter to max value in the deleted. And NvInitialCounter() use it as base value to get max counter value across indexes. NvInitialCounter() seems to be called from TPM2_NV_Increment(). So, I\u0027m not sure wherever it needs to be saved,",
+      "parentUuid": "f311d5e4_b18c70cd",
+      "range": {
+        "startLine": 2916,
+        "startChar": 2,
+        "endLine": 2916,
+        "endChar": 55
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9d94f4_24b01e5e",
         "filename": "common/new_nvmem.c",
         "patchSetId": 7

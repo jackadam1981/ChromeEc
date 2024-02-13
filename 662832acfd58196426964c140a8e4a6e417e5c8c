@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "365e33b0_7742e1f9",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2011,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-13T01:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17e9c1aa_56562cd8",
+      "range": {
+        "startLine": 2011,
+        "startChar": 16,
+        "endLine": 2011,
+        "endChar": 31
+      },
+      "revId": "662832acfd58196426964c140a8e4a6e417e5c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cb27a8c_9be35b10",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8385bf8a_a2bfd94c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-13T01:26:38Z",
+      "side": 1,
+      "message": "1. it reduce code size a bit\n2. higher level function have no details to report what went wrong and no specific reaction on it.\nAt first I wanted to move flog code to higher level and use return codes, but then found that specific issue is only known at lower level (or I need to pack this data in output of function somehow). And beyond adding flog record not much can be done with error code - the nvmem cache will remain in same state as before (e.g. filled with zeroes).",
+      "parentUuid": "8cb27a8c_9be35b10",
+      "range": {
+        "startLine": 2035,
+        "startChar": 7,
+        "endLine": 2035,
+        "endChar": 11
+      },
+      "revId": "662832acfd58196426964c140a8e4a6e417e5c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecd27ab1_fd2dea39",
         "filename": "common/new_nvmem.c",
         "patchSetId": 8
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-25T00:20:53Z",
       "side": 1,
       "message": "do we increment it anywhere?",
+      "range": {
+        "startLine": 2922,
+        "startChar": 1,
+        "endLine": 2922,
+        "endChar": 35
+      },
+      "revId": "662832acfd58196426964c140a8e4a6e417e5c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73119d32_03d90cf7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-13T01:26:38Z",
+      "side": 1,
+      "message": "yes, when we mark object for deletion in `delete_object` above , it is added to `del_candidates` array. This happens in `process_reserved()` if object is updated.",
+      "parentUuid": "ecd27ab1_fd2dea39",
       "range": {
         "startLine": 2922,
         "startChar": 1,
