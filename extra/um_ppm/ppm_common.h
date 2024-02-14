@@ -75,4 +75,12 @@ struct ppm_common_device {
  */
 struct ucsi_ppm_driver *ppm_open(struct ucsi_pd_driver *pd_driver);
 
+/**
+ * Initialize PPM variables (lock, condvar, task handle, etc.) in a platform
+ * dependent way.
+ *
+ * @param dev PPM common device
+ */
+void platform_init_ppm_vars(struct ppm_common_device *dev);
+
 #endif /* UM_PPM_PPM_COMMON_H_ */
