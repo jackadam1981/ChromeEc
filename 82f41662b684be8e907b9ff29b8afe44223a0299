@@ -39,6 +39,30 @@
       },
       "revId": "82f41662b684be8e907b9ff29b8afe44223a0299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7356b5_c7301405",
+        "filename": "zephyr/program/brox/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-02-14T14:08:36Z",
+      "side": 1,
+      "message": "As this is a power signal to codec, i thought that it can come under powersequencing signals. Now, made as a normal gpio in latest Cl\nAlso, based on the comment from cross bug, made it high during s5/Soix resume \u0026 made low during S0/Soixsuspend.",
+      "parentUuid": "500dc9c1_910de2ea",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "82f41662b684be8e907b9ff29b8afe44223a0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
