@@ -22,6 +22,8 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
+void intel_altmode_post_event(int);
+
 LOG_MODULE_REGISTER(pdc_power_mgmt);
 
 /**
@@ -696,6 +698,8 @@ static void handle_connector_status(struct pdc_port_t *port)
 			set_pdc_state(port, PDC_SRC_SNK_TYPEC_ONLY);
 		}
 	}
+	/* Post INTEL_ALTMODE_EVENT_FORCE event */
+	intel_altmode_post_event(0);
 }
 
 static void run_unattached_policies(struct pdc_port_t *port)
