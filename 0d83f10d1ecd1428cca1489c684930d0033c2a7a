@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdcb2d6_e6504b65",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-14T04:26:11Z",
+      "side": 1,
+      "message": "To clarify, this error state is entered when when the PDC is active via SMBUS (replying to reads/writes), but doesn\u0027t update the ping status to either complete or error? If that\u0027s the case, then I wonder if the naming will be confusing relative to the case where rts54xx is replying as expected, but returns the error status, which should lead to reading the error status register.\n\nIf I\u0027m understanding correctly, the error state below will wait a specified period of time, then attempt to re-initialize the rts54xx.",
+      "range": {
+        "startLine": 809,
+        "startChar": 3,
+        "endLine": 809,
+        "endChar": 38
+      },
+      "revId": "0d83f10d1ecd1428cca1489c684930d0033c2a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
