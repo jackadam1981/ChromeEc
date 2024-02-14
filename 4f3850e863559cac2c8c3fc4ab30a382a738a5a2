@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0a6134_8bfb865b",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-14T15:40:02Z",
+      "side": 1,
+      "message": "Talked about this offline, this feature is required for servo\u0027s functionality, the check is added so the firmware wouldn\u0027t build without this function\u0027s definition.",
+      "parentUuid": "ea48660a_8e131160",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdd997f5_5b5d9c97",
