@@ -72,23 +72,48 @@ struct task_handle {
 	pthread_t thread;
 };
 
-struct task_handle *platform_task_init(void *start_fn, void *arg)
+#ifdef __ZEPHYR__
+#include <zephyr/kernel/thread_stack.h>
+#define STACK_SIZE (1024)
+K_THREAD_STACK_DEFINE(stack, STACK_SIZE);
+#endif
+
+int platform_task_init(void *start_fn, void *arg, struct task_handle **handle)
 {
-	struct task_handle *handle = malloc(sizeof(struct task_handle));
-	if (!handle) {
-		ELOG("Failed to allocate task handle");
-		return NULL;
+	int res;
+
+	if (!*handle) {
+		ELOG("Handle=NULL not supported");
+		return -1;
 	}
 
-	int res = pthread_create(&handle->thread, NULL, start_fn, arg);
+#ifdef __ZEPHYR__
+	pthread_attr_t attr;
+
+	/* Zephyr requires a non-NULL attribute for pthread_create */
+	res = pthread_attr_init(&attr);
+	if (res != 0) {
+		errno = res;
+		perror("pthread_attr_init");
+		return -1;
+	}
+
+	res = pthread_attr_setstack(&attr, &stack, STACK_SIZE);
+	if (res != 0) {
+		errno = res;
+		perror("pthread_attr_setstack");
+		return -1;
+	}
+#endif
+
+	res = pthread_create(&(*handle)->thread, NULL, start_fn, arg);
 	if (res != 0) {
 		ELOG("Failed to start thread with error %d for start_fn %p",
 		     res, start_fn);
-		free(handle);
-		return NULL;
+		return -1;
 	}
 
-	return handle;
+	return 0;
 }
 
 void platform_task_exit()
@@ -105,19 +130,17 @@ struct platform_mutex {
 	pthread_mutex_t lock;
 };
 
-struct platform_mutex *platform_mutex_init()
+int platform_mutex_init(struct platform_mutex **mutex)
 {
-	struct platform_mutex *mutex = malloc(sizeof(struct platform_mutex));
-	if (!mutex) {
-		return NULL;
+	if (!*mutex) {
+		return -1;
 	}
 
-	if (pthread_mutex_init(&mutex->lock, NULL)) {
-		free(mutex);
-		return NULL;
+	if (pthread_mutex_init(&(*mutex)->lock, NULL)) {
+		return -1;
 	}
 
-	return mutex;
+	return 0;
 }
 
 void platform_mutex_lock(struct platform_mutex *mutex)
@@ -133,19 +156,17 @@ struct platform_condvar {
 	pthread_cond_t var;
 };
 
-struct platform_condvar *platform_condvar_init()
+int platform_condvar_init(struct platform_condvar **cond)
 {
-	struct platform_condvar *cond = malloc(sizeof(struct platform_condvar));
-	if (!cond) {
-		return NULL;
+	if (!*cond) {
+		return -1;
 	}
 
-	if (pthread_cond_init(&cond->var, NULL)) {
-		free(cond);
-		return NULL;
+	if (pthread_cond_init(&(*cond)->var, NULL)) {
+		return -1;
 	}
 
-	return cond;
+	return 0;
 }
 
 void platform_condvar_wait(struct platform_condvar *condvar,
