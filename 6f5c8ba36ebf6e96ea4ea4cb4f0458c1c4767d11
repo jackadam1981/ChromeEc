@@ -87,6 +87,24 @@
       "parentUuid": "75279356_484f14bd",
       "revId": "6f5c8ba36ebf6e96ea4ea4cb4f0458c1c4767d11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0beb60a8_7bbddff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-14T00:09:21Z",
+      "side": 1,
+      "message": "Which branch are you refering to? For example, I see crrev/c/3730445 cherry-picked to only dedede and brya but those branches are sync\u0027ed to ToT. So, there is no cherry-pick conflicts.\n\nCherry-picking this many CLs to a branch would be a lot of work. Separating them per file doesn\u0027t make it particularly easier, I believe. Besides, weren\u0027t these formated automatically by clang-format? I wonder why we didn\u0027t simply run clang-format for all the files per branch.",
+      "parentUuid": "75279356_484f14bd",
+      "revId": "6f5c8ba36ebf6e96ea4ea4cb4f0458c1c4767d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
