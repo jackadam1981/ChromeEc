@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include <usbc-policy.dtsi>
+
 / {
 	aliases {
 		gpio-wp = &gpio_ec_wp_odl;
