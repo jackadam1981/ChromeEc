@@ -37,7 +37,6 @@ void ucsi_opm_notify(void *context);
 template <typename T> struct FreeDeleter {
 	void operator()(T *obj)
 	{
-		platform_free(static_cast<void *>(obj));
 	}
 };
 
@@ -277,6 +276,7 @@ class PpmTest : public testing::Test {
 
 	void TearDown() override
 	{
+		cleanup();
 		EXPECT_TRUE(expected_commands_queue_.empty());
 	}
 
