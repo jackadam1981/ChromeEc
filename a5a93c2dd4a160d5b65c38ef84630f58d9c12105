@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edfe2dd9_4c814de3",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-14T00:15:11Z",
+      "side": 1,
+      "message": "Since there isn\u0027t a way to recover from a locked up PDC, should we just go to the disable state? I really think we should add a reset circuit or have realtek add a reset pin.",
+      "range": {
+        "startLine": 1124,
+        "startChar": 8,
+        "endLine": 1124,
+        "endChar": 33
+      },
+      "revId": "a5a93c2dd4a160d5b65c38ef84630f58d9c12105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
