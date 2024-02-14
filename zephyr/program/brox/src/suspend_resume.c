@@ -25,6 +25,7 @@ static void brox_suspend_resume_handler(struct ap_power_ev_callback *callback,
 		break;
 	default:
 		/* Other events ignored */
+		break;
 	}
 }
 
