@@ -492,13 +492,14 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 		.port.dev = DEVICE_DT_INST_GET(inst), /* Initial policy read   \
 							 from device tree */   \
 		.port.pdc = DEVICE_DT_GET(DT_INST_PROP(inst, pdc)),            \
-		.port.una_policy.tcc = TC_CURRENT_1_5A, /* TODO: Read From DT  \
-							 */                    \
-                                                                               \
-		.port.una_policy.cc_mode = CCOM_DRP, /* TODO: Read From DT */  \
-		.port.una_policy.drp_mode = DRP_TRY_SRC, /* TODO: Read From DT \
+		.port.una_policy.tcc = DT_STRING_TOKEN(                        \
+			DT_INST_PROP(inst, policy), unattached_rp_value),      \
+		.port.una_policy.cc_mode = CCOM_DRP, /* TODO(b/325301161): Get \
+						      * from DT                \
+						      */                       \
+		.port.una_policy.drp_mode = DRP_TRY_SRC, /* TODO(b/325301161): \
+							  * Get from DT        \
 							  */                   \
-                                                                               \
 	};                                                                     \
                                                                                \
 	static struct pdc_config_t config_##inst = {                           \
