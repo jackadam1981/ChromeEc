@@ -680,6 +680,12 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		curr_state = pwr_sm_get_state();
 
 		/*
+		 * Add a sleep to the power
+		 * TODO: b/324442084 - EC is bootlooping just before
+		 * kernel launch */
+		k_msleep(100);
+
+		/*
 		 * In order to prevent repeated console spam, only print the
 		 * current power state if something has actually changed.  It's
 		 * possible that one of the power signals goes away briefly and
