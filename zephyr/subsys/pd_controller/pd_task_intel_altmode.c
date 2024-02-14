@@ -72,7 +72,7 @@ static struct intel_altmode_data intel_altmode_task_data;
  */
 static bool thread_state;
 
-static void intel_altmode_post_event(enum intel_altmode_event event)
+void intel_altmode_post_event(enum intel_altmode_event event)
 {
 	k_event_post(&intel_altmode_task_data.evt, BIT(event));
 }
