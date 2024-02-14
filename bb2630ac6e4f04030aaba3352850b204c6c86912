@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29286bb5_249208a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-02-14T21:31:35Z",
+      "side": 1,
+      "message": "Reported this upstream as https://github.com/zephyrproject-rtos/zephyr/issues/68999 but I think it\u0027s fine to remove the condition for now",
+      "revId": "bb2630ac6e4f04030aaba3352850b204c6c86912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
