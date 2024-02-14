@@ -31,6 +31,7 @@ static void ucsi_notify(void *context)
 }
 
 /* Sort of main */
+
 void ucsi_init(void)
 {
 	struct ucsi_pd_driver *drv;
