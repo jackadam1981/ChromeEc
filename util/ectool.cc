@@ -806,6 +806,51 @@ static const char *reset_cause_to_str(uint16_t cause)
 	return "(shutdown unknown)";
 }
 
+int cmd_ppm(int argc, char *argv[])
+{
+	int rv;
+
+	if (argc == 2 && !strcmp(argv[1], "reset")) {
+		struct ec_params_ucsi_ppm_set *p =
+				(struct ec_params_ucsi_ppm_set *)ec_outbuf;
+
+		p->offset = 8;
+		p->data[0] = 0x01; /* PPM_RESET */
+		rv = ec_command(EC_CMD_UCSI_PPM_SET, 0, p,
+				sizeof(p->offset) + 1, NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr,
+				"ERROR: EC_CMD_UCSI_PPM_SET failed: %d\n", rv);
+			return rv;
+		}
+	} else if (argc == 2 && !strcmp(argv[1], "cci")) {
+		struct ec_params_ucsi_ppm_get p = {
+			.offset = 4,
+			.size = 4,
+		};
+		uint32_t cci;
+
+		rv = ec_command(EC_CMD_UCSI_PPM_GET, 0, &p, sizeof(p), &cci,
+				sizeof(cci));
+		if (rv < 0) {
+			fprintf(stderr,
+				"ERROR: EC_CMD_UCSI_PPM_GET failed: %d\n", rv);
+			return rv;
+		}
+		printf("CCI=0x%08x\n", cci);
+	} else {
+		if (argc < 2) {
+			fprintf(stderr, "ERROR: Invalid number of args.\n");
+			return -1;
+		}
+
+		fprintf(stderr, "Sub-command '%s' is unknown.\n", argv[1]);
+		return -1;
+	}
+
+	return 0;
+}
+
 int cmd_uptimeinfo(int argc, char *argv[])
 {
 	struct ec_response_uptime_info r;
@@ -12350,6 +12395,9 @@ const struct command commands[] = {
 	{ "typecvdmresponse", cmd_typec_vdm_response,
 	  "<port>\n"
 	  "\tGet last VDM response for AP-requested VDM." },
+	{ "ppm", cmd_ppm,
+	  "reset\n"
+	  "\tReset PPM." },
 	{ "uptimeinfo", cmd_uptimeinfo,
 	  "\n\tGet info about how long the EC has been running and the most\n"
 	  "\trecent AP resets." },
