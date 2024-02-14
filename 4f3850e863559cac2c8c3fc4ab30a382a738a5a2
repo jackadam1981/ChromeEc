@@ -178,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0941c0fb_e6e3efae",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-14T11:30:24Z",
+      "side": 1,
+      "message": "Michał, are you okey to mark this resolved or still have some doubts?",
+      "parentUuid": "608e6e4b_cb243dbf",
+      "range": {
+        "startLine": 55,
+        "startChar": 35,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdc28191_5eb66b5f",
         "filename": "board/servo_v4p1/poweron_conf.c",
         "patchSetId": 1
@@ -225,6 +249,24 @@
       "side": 1,
       "message": "I\u0027d change the arguments of from:\n\n`crec_flash_read_pstate_poweron_conf(uint8_t *buffer, int length)`\n\nTo `crec_flash_read_pstate_poweron_conf(struct persist_state* buf)`\n\nThen you can do a sizeof on the sizeof(struct persist_state) to extract the length. \n\nThis make it impossible to send the wrong size buffer back and forth, you could probably use it to replace the [CONFIG_POWERON_CONF_LEN] entry with just the struct.\n\nMagic number indexes are inevitably going to lead to problems over time and can be avoided in almost all cases.",
       "parentUuid": "53610286_daa3bd47",
+      "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406b65fa_259f4766",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-14T11:30:24Z",
+      "side": 1,
+      "message": "If I understand correctly what you mean: switching to this struct would require moving `struct persist_state` declaration to flash.h, then using it in a poweron_conf, etc. Declaration currently is in flash.c under ifdefs, so that would require some changes in general code, not sure if its worth for this case only.\n\nBut it got me thinking of getting rid of `int length`. As I am putting everywhere CONFIG_POWERON_CONF_LEN, I define it specifically for board, there is no sense of using smaller/bigger portions of data. Maybe it would be cleaner to get rid of this argument and then assume everywhere that we use CONFIG_POWERON_CONF_LEN, what do you think?",
+      "parentUuid": "e6fbb431_036e0153",
       "revId": "4f3850e863559cac2c8c3fc4ab30a382a738a5a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
