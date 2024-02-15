@@ -12,10 +12,93 @@ choice TEST_BOARD_VARIANT
 	# Nissa variants
 	config TEST_BOARD_CRAASK
 		bool "Run craask tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_CRAASKOV
+		bool "Run craaskov tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_GOTHRAX
+		bool "Run gothrax tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_NIVVIKS
+		bool "Run nivvkis tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_PIRRHA
+		bool "Run pirrha tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_PUJJO
+		bool "Run pujjo tests"
+		select TEST_CHARGER_SOLO_DEF
+
+	config TEST_BOARD_ULDREN
+		bool "Run uldren tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_XIVU
+		bool "Run xivu tests"
+		select TEST_CHARGER_MULTI_DEF
+
+	config TEST_BOARD_XIVUR
+		bool "Run xivur tests"
+		select TEST_CHARGER_MULTI_DEF
 endchoice
+
+choice TEST_PROGRAM
+	prompt "Select program for tests"
+	default TEST_PROGRAM_BROX if TEST_BOARD_BROX
+	default TEST_PROGRAM_NISSA if \
+		TEST_BOARD_CRAASK || \
+		TEST_BOARD_CRAASKOV || \
+		TEST_BOARD_GOTHRAX || \
+		TEST_BOARD_NIVVIKS || \
+		TEST_BOARD_PIRRHA || \
+		TEST_BOARD_PUJJO || \
+		TEST_BOARD_ULDREN || \
+		TEST_BOARD_XIVU || \
+		TEST_BOARD_XIVUR
+
+	config TEST_PROGRAM_BROX
+		bool "Brox"
+
+	config TEST_PROGRAM_NISSA
+		bool "Nissa"
+endchoice # TEST_PROGRAM
+
+config TEST_PROGRAM_NAME
+	string "Program name"
+	default "brox" if TEST_PROGRAM_BROX
+	default "nissa" if TEST_PROGRAM_NISSA
+
+config TEST_BOARD_NAME
+	string "Board name"
+	default "brox" if TEST_BOARD_BROX
+	default "craask" if TEST_BOARD_CRAASK
+	default "craaskov" if TEST_BOARD_CRAASKOV
+	default "gothrax" if TEST_BOARD_GOTHRAX
+	default "nivviks" if TEST_BOARD_NIVVIKS
+	default "pirrha" if TEST_BOARD_PIRRHA
+	default "pujjo" if TEST_BOARD_PUJJO
+	default "uldren" if TEST_BOARD_ULDREN
+	default "xivu" if TEST_BOARD_XIVU
+	default "xivur" if TEST_BOARD_XIVUR
 
 choice TEST_CHARGER
 	prompt "Select charger for tests"
+	default TEST_ISL923X if \
+		TEST_BOARD_BROX || \
+		TEST_BOARD_CRAASK || \
+		TEST_BOARD_CRAASKOV || \
+		TEST_BOARD_GOTHRAX || \
+		TEST_BOARD_NIVVIKS || \
+		TEST_BOARD_PIRRHA || \
+		TEST_BOARD_PUJJO || \
+		TEST_BOARD_ULDREN || \
+		TEST_BOARD_XIVU || \
+		TEST_BOARD_XIVUR
 
 	config TEST_ISL923X
 		bool "Use ISL923x test variants"
@@ -23,10 +106,20 @@ choice TEST_CHARGER
 
 endchoice # TEST_CHARGER
 
-config TEST_EXTPOWER
-	bool "Run external power tests"
+choice TEST_TARGET
+	prompt "Test to run"
+
+	config TEST_EXTPOWER
+		bool "Run external power tests"
+endchoice # TEST_TARGET
 
 config TEST_SRC
-	string "Path for the file to test"
+	string "Override default file to test"
+
+config TEST_CHARGER_SOLO_DEF
+	bool "Define CHARGER_SOLO"
+
+config TEST_CHARGER_MULTI_DEF
+	bool "Define CHARGER_PRIMARY and CHARGER_SECONDARY"
 
 source "Kconfig.zephyr"
