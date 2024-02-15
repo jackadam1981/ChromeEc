@@ -70,6 +70,30 @@
       },
       "revId": "b50c3198c5876499eaac912ca3e512c251209936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091067bd_b28c10ca",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-02-15T07:15:25Z",
+      "side": 1,
+      "message": "Not pretty sure how to delay in the keyboard task. Could you please help to provide more information?",
+      "parentUuid": "10613d8a_4ee610ff",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "b50c3198c5876499eaac912ca3e512c251209936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
