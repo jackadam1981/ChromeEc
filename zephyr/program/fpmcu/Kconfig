@@ -31,4 +31,15 @@ config BLOONCHIPPER_EC_RO_QUIRKS
 
 endif
 
+if CROS_EC_RO
+
+# Override default RSA parameters.
+config PLATFORM_EC_RSA_KEY_SIZE
+	default 3072
+
+config PLATFORM_EC_RSA_EXPONENT_3
+	default y
+
+endif
+
 source "Kconfig.zephyr"
