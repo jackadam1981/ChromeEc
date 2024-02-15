@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69f84ecc_773ddf61",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-15T23:16:57Z",
+      "side": 1,
+      "message": "I don\u0027t think this case should go directly to the disabled state without having some retry loop. In other places where the i2c transactions fail there a number of attempts prior to failing.",
+      "parentUuid": "4bece5ca_434b440b",
+      "range": {
+        "startLine": 602,
+        "startChar": 3,
+        "endLine": 602,
+        "endChar": 9
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e740fd19_9a7d0c07",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-15T22:30:50Z",
       "side": 1,
       "message": "Should we go to disable state?",
+      "range": {
+        "startLine": 707,
+        "startChar": 3,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3fe4ec_fae2f7ab",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-15T23:16:57Z",
+      "side": 1,
+      "message": "I do think that this error case and the other 2 you highlighted should either go the error recovery state, or the disabled state. It\u0027s maybe cleaner to only have the the error recovery state lead to the the disabled state.\n\nThere should also be LOG_ERR() associated with going to the error state.",
+      "parentUuid": "e740fd19_9a7d0c07",
       "range": {
         "startLine": 707,
         "startChar": 3,
