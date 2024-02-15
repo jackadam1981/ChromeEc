@@ -21,4 +21,17 @@ properties:
       - "TC_CURRENT_3_0A"
       - "TC_CURRENT_1_5A"
       - "TC_CURRENT_USB_DEFAULT"
-
+  unattached_cc_mode:
+    type: string
+    # Must match enum ccom_t
+    enum:
+      - "CCOM_RP"
+      - "CCOM_RD"
+      - "CCOM_DRP"
+  unattached_try:
+    type: string
+    # Must match enum drp_mode_t
+    enum:
+      - "DRP_NORMAL"
+      - "DRP_TRY_SRC"
+      - "DRP_TRY_SNK"

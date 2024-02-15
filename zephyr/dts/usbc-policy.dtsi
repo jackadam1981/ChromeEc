@@ -9,6 +9,8 @@
 		cros_policy: usbc-policy {
 			compatible = "usbc-port-policy";
 			unattached_rp_value = "TC_CURRENT_1_5A";
+			unattached_cc_mode = "CCOM_RD";
+			unattached_try = "DRP_TRY_SRC";
 		};
 	};
 };
