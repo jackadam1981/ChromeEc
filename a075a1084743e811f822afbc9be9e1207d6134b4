@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a3a5ca_bdaf18e8",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-15T22:26:18Z",
+      "side": 1,
+      "message": "We should only get here if the ping_status wrongfully indicates that data is available. Should we go back to the previous state or disable the port?",
+      "range": {
+        "startLine": 892,
+        "startChar": 2,
+        "endLine": 892,
+        "endChar": 41
+      },
+      "revId": "a075a1084743e811f822afbc9be9e1207d6134b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
