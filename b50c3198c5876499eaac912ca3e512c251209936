@@ -94,6 +94,30 @@
       },
       "revId": "b50c3198c5876499eaac912ca3e512c251209936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960a425a_1964b582",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-02-15T22:08:18Z",
+      "side": 1,
+      "message": "from your description, it sounds like i8042_handle_from_host()\nsends data to the trackpad on resume from the keyboard task but\nyou also send a wake from ps2_resume on CHIPSET_RESUME which\nruns on the hook task. i\u0027m guessing the hook task is taking a\nlong time while the rest of the system boots up and expects the\ntrackpad to be functional but it hasn\u0027t finished waking up.\n\nlooks like these aren\u0027t just single-byte commands, so putting\na lock around ps2_transmit_byte may not delay the keyboard task\nuntil the trackpad wake sequence sent by\nsend_command_to_trackpoint is complete.\ndoes that sound right or am i misreading the code?\n\ni\u0027m kind of thinking out loud here:\nyou might need a local state variable to track the wake\nstate of the trackpad and block\nsend_aux_data_to_device() until the trackpad wake sequence\nis complete.\n\nmy original concern was that\nthere are a lot of sleeps here that run on the hook\ntask for suspend/resume due to the trackpad and that interacts\nwith the keyboard task. it\u0027s not ideal but\nmaybe there isn\u0027t an elegant alternative here.\nhopefully, overall system suspend/resume times are OK.",
+      "parentUuid": "091067bd_b28c10ca",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "b50c3198c5876499eaac912ca3e512c251209936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
