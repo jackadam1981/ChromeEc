@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04bd2d9_d4fa0e1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-15T18:37:24Z",
+      "side": 1,
+      "message": "When you ran the script, was the change committed?\n\nI\u0027m seeing differences reported when I run the script. As a shortcut, you can try just `helipilot`:\n\n```\n(chroot) $ ./util/compare_build.sh -b helipilot\n```\n\nHere\u0027s what I get:\n\n```\n...\n# Comparing Files\n\nBinary files /tmp/compare_build.RnHt/build-6059f4d4350c0257ee3a2929ab1e3955135ebf4f/helipilot-ec.bin and /tmp/compare_build.RnHt/build-63d6b4215ffe41166418bb7d19ca3bd3f4c42730/helipilot-ec.bin differ\n# Verdict: FAILURE\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
