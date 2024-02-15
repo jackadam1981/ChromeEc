@@ -22,6 +22,30 @@
       },
       "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adabfd2e_d3d991b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-15T19:02:05Z",
+      "side": 1,
+      "message": "The change was cherry-picked, yes, not sure what you mean by committed? Yes, I saw that helipilot fails the binary comparison and posted the build files in the bug. It looks like the change increases the size of the OUTLINED FUNCTIONS for some reason.",
+      "parentUuid": "d04bd2d9_d4fa0e1a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
