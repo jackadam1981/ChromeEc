@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a85cc9d_28059e55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-02-15T18:24:44Z",
+      "side": 1,
+      "message": "Alright go the ITE soc migration done upstream (https://github.com/zephyrproject-rtos/zephyr/pull/69026), updated this to fix all ITE boards as well. Only the mchp are missing:\n\n`All failed projects: [\u0027mtlrvpp_m1723\u0027, \u0027mtlrvpp_mchp\u0027, \u0027adlrvp_mchp\u0027]`",
+      "revId": "e3f19f586fac394989ab011910031aa6e6414378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
