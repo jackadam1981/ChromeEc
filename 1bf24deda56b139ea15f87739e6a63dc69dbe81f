@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37f98e6_81605f4c",
+        "filename": "zephyr/dts/bindings/usbc/usbc-port-policy.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-15T23:44:40Z",
+      "side": 1,
+      "message": "Do you think these properties should be required? A missing required property seems like an easier error to debug than a missing devicetree attribute.\n\nI like the idea of a property being required more than the idea of specifying a default value here. This binding would be generally applicable upstream. The default values for a CrOS device probably aren\u0027t.",
+      "revId": "1bf24deda56b139ea15f87739e6a63dc69dbe81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
