@@ -109,6 +109,10 @@
 gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
 };
 
+&gpio_ec_prochot_odl {
+	gpios = <&gpioi 0 GPIO_ODR_HIGH>;
+};
+
 &gpio_ec_voldn_btn_odl {
 	enum-name = "GPIO_VOLUME_DOWN_L";
 };
