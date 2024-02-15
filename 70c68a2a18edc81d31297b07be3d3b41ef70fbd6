@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180089e9_d6092584",
+        "filename": "zephyr/dts/bindings/usbc/usbc-port-policy.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-15T21:58:23Z",
+      "side": 1,
+      "message": "An alternative location for this would be `zephyr/include/cros/`. Is one of these locations better?",
+      "revId": "70c68a2a18edc81d31297b07be3d3b41ef70fbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95330fe_4b024b74",
+        "filename": "zephyr/dts/usbc-policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-15T21:58:23Z",
+      "side": 1,
+      "message": "Should the names of these policies match something in UCSI? If so, what is the appropriate thing?",
+      "revId": "70c68a2a18edc81d31297b07be3d3b41ef70fbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
