@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032f0f47_edd88655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-15T23:59:26Z",
+      "side": 1,
+      "message": "Hey, just wanted to note that in newest patchsets I decided to change interface a little to make it much closer to what we have in servod controls. Servod CL is WiP but it probably would be most popular interference to use this feature, therefore I did these adjustments for better integration/unification. \n\nCurrently usage works like this:\n```\n\u003e poweron_conf                                                                                                                                 \nOn port top_usb - mux_sel:servo_sees_usbkey, mux_en:on, pwr_en:on                                                                              \nOn port bottom_usb - mux_sel:dut_sees_usbkey, mux_en:on, pwr_en:on                                                                             \nOn port uservo_usb - mux_sel:fastboot, mux_en:on, pwr_en:on                                                                                    \nCC settings - dts:off                                                                                                                          \n\u003e poweron_conf default                                                                                                                         \nPoweron config brought to default. Reboot to apply new config.                                                                                 \n\u003e poweron_conf                                                                                                                                 \nOn port top_usb - mux_sel:dut_sees_usbkey, mux_en:on, pwr_en:on                                                                                \nOn port bottom_usb - mux_sel:dut_sees_usbkey, mux_en:on, pwr_en:on                                                                             \nOn port uservo_usb - mux_sel:uservo, mux_en:on, pwr_en:on                                                                                    \nCC settings - dts:on                                                                                                                           \n\u003e poweron_conf bottom_usb mux_sel servo_sees_usbkey mux_en on pwr_en off                                                                       \nChanges saved. Reboot to apply new config.                                                                                                                                                                                                      \n\u003e poweron_conf                                                                                                                                 \nOn port top_usb - mux_sel:dut_sees_usbkey, mux_en:on, pwr_en:on                                                                                \nOn port bottom_usb - mux_sel:servo_sees_usbkey, mux_en:on, pwr_en:off                                                                          \nOn port uservo_usb - mux_sel:fastboot, mux_en:on, pwr_en:on                                                                                    \nCC settings - dts:on\n```",
+      "revId": "1eb93522e1c35df2bf384f136f5fdd9cb90e2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
