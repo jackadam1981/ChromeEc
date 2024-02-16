@@ -140,6 +140,10 @@ static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
 void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 {
 	struct panic_data *pdata = get_panic_data_write();
+	uint32_t reason_ec = 0;
+	uint32_t info = 0;
+	uint8_t exception = 0;
+
 	/*
 	 * If CONFIG_LOG is on, the exception details
 	 * have already been logged to the console.
@@ -171,6 +175,13 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 		pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS;
 	}
 
+	/* If a panic reason is not set by EC sources, store the reason provided
+	 * by Zephyr.
+	 */
+	panic_get_reason(&reason_ec, &info, &exception);
+	if (!(reason_ec || info || exception)) {
+		panic_set_reason((uint32_t)reason, PANIC_INFO_ZEPHYR_MAGIC, 0);
+	}
 	/*
 	 * Reboot immediately, don't wait for watchdog, otherwise
 	 * the watchdog will overwrite this panic.
