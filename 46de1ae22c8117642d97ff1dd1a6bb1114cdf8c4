@@ -470,6 +470,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d07e2b66_e1b7c900",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-16T21:56:56Z",
+      "side": 1,
+      "message": "What we essentially capture is a content of NV_RAM_INDEX, see http://cs/h/chromium/chromiumos/codesearch/+/main:src/third_party/tpm2/NV.c?l\u003d1031\n\nNow, the question is if we shall save it on flash? Should they persist between TPM2_Shutdown/TPM2_Startup? I\u0027m not sure if we need to - just for the case of GSC reset, but TPM spec says that the content of this space can be destroyed.",
+      "parentUuid": "0cbd8e0c_cb81c3cf",
+      "range": {
+        "startLine": 2916,
+        "startChar": 2,
+        "endLine": 2916,
+        "endChar": 55
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9d94f4_24b01e5e",
         "filename": "common/new_nvmem.c",
         "patchSetId": 7
