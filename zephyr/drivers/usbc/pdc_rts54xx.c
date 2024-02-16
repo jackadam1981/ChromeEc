@@ -714,6 +714,7 @@ static void st_init_run(void *o)
  */
 static void handle_irqs(struct pdc_data_t *data)
 {
+	const struct pdc_config_t *cfg = data->dev->config;
 	uint8_t ara;
 	int rv;
 
@@ -724,6 +725,20 @@ static void handle_irqs(struct pdc_data_t *data)
 		 */
 		rv = get_ara(data->dev, &ara);
 		if (rv) {
+			/* Found pending interrupt, handle it */
+			/* Inform subsystem of the interrupt */
+			/* Clear the CCI Event */
+			data->cci_event.raw_value = 0;
+			/* Set the port the CCI Event occurred
+			 * on */
+			data->cci_event.connector_change =
+				cfg->connector_number;
+			/* An error occurred while processing the interrupt */
+			data->cci_event.error = 1;
+			/* Set the interrupt event */
+			data->cci_event.vendor_defined_indicator = 1;
+			/* Notify system of status change */
+			call_cci_event_cb(data);
 			return;
 		}
 
