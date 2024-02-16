@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868641aa_c73ae5b4",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-16T16:44:39Z",
+      "side": 1,
+      "message": "Is this path needed?  The subsystem doesn\u0027t seem to be checking `cci_event.error` when processing `cci_event.vendor_defined_indicator`.\n\nAt this point you don\u0027t actually know which port returned an error.",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 43
+      },
+      "revId": "580dddcceef7a6e3fc0411bf35fa59e7c83edac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
