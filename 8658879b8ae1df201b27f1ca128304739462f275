@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d79ae43_c3d26460",
+        "filename": "zephyr/test/charger/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-16T01:41:12Z",
+      "side": 1,
+      "message": "These 2 can be added to prj.conf, they appear common.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "8658879b8ae1df201b27f1ca128304739462f275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149c7797_ffce391d",
+        "filename": "zephyr/test/charger/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-16T01:41:12Z",
+      "side": 1,
+      "message": "Can we not calculate this from the board?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "8658879b8ae1df201b27f1ca128304739462f275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
