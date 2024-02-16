@@ -122,6 +122,9 @@ static int cros_system_it8xxx2_init(const struct device *dev)
 	/* System triggers a soft reset by default (command: reboot). */
 	gctrl_base->GCTRL_ETWDUARTCR &= ~IT8XXX2_GCTRL_ETWD_HW_RST_EN;
 
+	/* Set JTAGEN and JTAGSEL */
+	gctrl_base->GCTRL_PMER3 |= BIT(1) | BIT(0);
+
 	return 0;
 }
 
