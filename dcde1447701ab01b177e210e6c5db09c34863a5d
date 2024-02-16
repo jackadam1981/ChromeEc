@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb9d3ef4_eb5dd450",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:32:03Z",
+      "side": 1,
+      "message": "I set some error bits and inform the subsystem. It\u0027s in a following CL.",
+      "parentUuid": "69f84ecc_773ddf61",
+      "range": {
+        "startLine": 602,
+        "startChar": 3,
+        "endLine": 602,
+        "endChar": 9
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e740fd19_9a7d0c07",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 5
@@ -95,6 +119,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ddb2646_cb54280e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3fe4ec_fae2f7ab",
+      "range": {
+        "startLine": 707,
+        "startChar": 3,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "324dd4c2_edbda21e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3fe4ec_fae2f7ab",
+      "range": {
+        "startLine": 707,
+        "startChar": 3,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4df2529a_7b55a8e3",
@@ -118,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e181d467_26e9641a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df2529a_7b55a8e3",
+      "range": {
+        "startLine": 771,
+        "startChar": 3,
+        "endLine": 771,
+        "endChar": 42
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f98e120_feb48f40",
@@ -131,6 +227,30 @@
       "writtenOn": "2024-02-15T22:30:50Z",
       "side": 1,
       "message": "Should we go to disabled state?",
+      "range": {
+        "startLine": 946,
+        "startChar": 2,
+        "endLine": 946,
+        "endChar": 41
+      },
+      "revId": "dcde1447701ab01b177e210e6c5db09c34863a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb960f9_37913ce4",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f98e120_feb48f40",
       "range": {
         "startLine": 946,
         "startChar": 2,
