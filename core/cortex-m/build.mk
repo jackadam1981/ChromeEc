@@ -33,7 +33,8 @@ else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
 endif
-CFLAGS_CPU+=-mno-unaligned-access
+# https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html#index-munaligned-access
+CFLAGS_CPU+=-m$(if $(CONFIG_ALLOW_UNALIGNED_ACCESS),,no-)unaligned-access
 CFLAGS_CPU+=$(CFLAGS_FPU-y)
 
 ifneq ($(CONFIG_LTO),)
