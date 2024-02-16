@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e248f1_60793610",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-02-16T07:08:32Z",
+      "side": 1,
+      "message": "Don\u0027t need this `default n`\n\nAnd should this be enabled on ITE EC by default?",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 10
+      },
+      "revId": "5f1d580f181076e2b6eaa3e5b062b2e253420dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
