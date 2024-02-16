@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c680d9_4df1d32d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-16T16:39:04Z",
+      "side": 1,
+      "message": "Nit, use the existing I2C_MSG_WRITE and I2C_MSG_READ flags instead of defining a new enum.",
+      "range": {
+        "startLine": 476,
+        "startChar": 59,
+        "endLine": 476,
+        "endChar": 79
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6708056c_39d8356d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-16T16:39:04Z",
+      "side": 1,
+      "message": "LOG_ERR?",
+      "range": {
+        "startLine": 596,
+        "startChar": 2,
+        "endLine": 596,
+        "endChar": 9
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c52465_f0fd4901",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-16T16:39:04Z",
+      "side": 1,
+      "message": "Nit, rename to `ping_status_error`.  As is this is easy to confuse with `data-\u003eping_retry_counter`",
+      "range": {
+        "startLine": 682,
+        "startChar": 26,
+        "endLine": 682,
+        "endChar": 42
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5b36d2_fa930a2d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-16T16:39:04Z",
+      "side": 1,
+      "message": "`init_local_current_state` really tracks the last init state doesn\u0027t it?\n\nConsider renaming in a separate CL.",
+      "range": {
+        "startLine": 702,
+        "startChar": 13,
+        "endLine": 702,
+        "endChar": 37
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
