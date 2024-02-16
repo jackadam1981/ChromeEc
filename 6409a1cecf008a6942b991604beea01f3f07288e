@@ -33,6 +33,24 @@
       "message": "Ohhhh, this error is in the ec-public build, where we shouldn\u0027t have the private repos. This is probably an incorrectly written build script.\n\n```\ndriver/fingerprint/elan/build.mk:16: driver/fingerprint/elan/../../../private/fingerprint/elan/build.mk: No such file or directory\nmake[2]: *** No rule to make target \u0027driver/fingerprint/elan/../../../private/fingerprint/elan/build.mk\u0027.  Stop.\nmake[1]: *** [Makefile.rules:301: proj-buccaneer] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n```",
       "revId": "6409a1cecf008a6942b991604beea01f3f07288e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d93da3_f3fb3dcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-16T20:41:38Z",
+      "side": 1,
+      "message": "Confirmed. The `driver/fingerprint/elan/build.mk` includes a private build.mk without having a fallback plan.",
+      "parentUuid": "aad48ffa_d6efb3c2",
+      "revId": "6409a1cecf008a6942b991604beea01f3f07288e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
