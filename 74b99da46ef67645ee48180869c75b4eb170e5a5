@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa97df72_657a4696",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-16T19:47:36Z",
+      "side": 1,
+      "message": "Line 234 can update ec_rate for non S0 power states.",
+      "parentUuid": "ccea095b_dba1eef3",
+      "revId": "74b99da46ef67645ee48180869c75b4eb170e5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a32b0e8_ed248bb5",
         "filename": "common/motion_sense.c",
         "patchSetId": 17
