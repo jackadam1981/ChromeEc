@@ -22,6 +22,30 @@
       },
       "revId": "00e453a62bbb3b46f05f5e22645c7e6e94a5a274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc00084_dc71b204",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T16:15:32Z",
+      "side": 1,
+      "message": "This is to catch ping_status errors when it states data is available for commands that don\u0027t send data. I explained this in the comment above.",
+      "parentUuid": "fee4e9e7_bd01b831",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 23
+      },
+      "revId": "00e453a62bbb3b46f05f5e22645c7e6e94a5a274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
