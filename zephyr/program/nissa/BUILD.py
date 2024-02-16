@@ -163,3 +163,7 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="xivu", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="xivur", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yaviks", addr=0xAFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yavilla", addr=0xB7FE0)
+yavista = register_nereid_project(
+    project_name="yavista",
+)
+assert_rw_fwid_DO_NOT_EDIT(project_name="yavista", addr=0xBFFE0)
