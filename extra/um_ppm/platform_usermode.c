@@ -5,6 +5,7 @@
 
 #include "include/platform.h"
 
+#include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -157,4 +158,16 @@ void platform_condvar_wait(struct platform_condvar *condvar,
 void platform_condvar_signal(struct platform_condvar *condvar)
 {
 	pthread_cond_signal(&condvar->var);
+}
+
+int platform_install_sigterm_hndlr(void (*handler)(int))
+{
+	struct sigaction act = { .sa_handler = handler };
+
+	return sigaction(SIGTERM, &act, NULL);
+}
+
+void platform_kill(struct task_handle *handle, int sig)
+{
+	pthread_kill(handle->thread, sig);
 }

@@ -83,4 +83,10 @@ void platform_condvar_wait(struct platform_condvar *condvar,
 			   struct platform_mutex *mutex);
 void platform_condvar_signal(struct platform_condvar *condvar);
 
+/* Install sigterm handler */
+int platform_install_sigterm_hndlr(void (*handler)(int));
+
+/* Send signal to task */
+void platform_kill(struct task_handle *handle, int sig);
+
 #endif /* UM_PPM_INCLUDE_PLATFORM_H_ */
