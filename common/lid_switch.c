@@ -18,6 +18,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
 
@@ -73,12 +74,24 @@ static void lid_switch_close(void)
 		return;
 	}
 
-	CPRINTS("lid close");
-	debounced_lid_open = 0;
-	hook_notify(HOOK_LID_CHANGE);
-#ifdef CONFIG_HOSTCMD_EVENTS
-	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+#ifdef CONFIG_TABLET_MODE_SKIP_LID_CLOSE
+	bool in_tablet_mode = tablet_get_mode();
+#else
+	bool in_tablet_mode = false;
 #endif
+
+	if (in_tablet_mode) {
+		/* Ignore spurious event */
+		CPRINTS("in tablet mode skip lid close");
+	} else {
+		/* Notify host */
+		CPRINTS("lid close");
+		debounced_lid_open = 0;
+		hook_notify(HOOK_LID_CHANGE);
+#ifdef CONFIG_HOSTCMD_EVENTS
+		host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+#endif
+	}
 }
 
 test_mockable int lid_is_open(void)
