@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f63af2ba_8f8d5aa9",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:46:27Z",
+      "side": 1,
+      "message": "The INIT_ERROR state is only entered in case #3. See line 699.",
+      "parentUuid": "88ed4034_024fde1f",
+      "range": {
+        "startLine": 610,
+        "startChar": 2,
+        "endLine": 610,
+        "endChar": 25
+      },
+      "revId": "d276abbdff30ddd562951d7d4ede33ed41e29c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bead82f1_7c5a4ab5",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-16T00:19:04Z",
       "side": 1,
       "message": "Referring to the cases in my comment above, I feel that case #3 should be treated differently than the other 2 cases. If the PDC is able to update the ping status, then the CMD can be sent again with some max retry threshold.",
+      "range": {
+        "startLine": 623,
+        "startChar": 2,
+        "endLine": 623,
+        "endChar": 28
+      },
+      "revId": "d276abbdff30ddd562951d7d4ede33ed41e29c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bcd0559_800bfc97",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:46:27Z",
+      "side": 1,
+      "message": "The cci_event.error is set for all errors, and the cause of the error is checked below. Case #3 is handled on line 699 and if it fails, we try to recover at line 691.",
+      "parentUuid": "bead82f1_7c5a4ab5",
       "range": {
         "startLine": 623,
         "startChar": 2,
