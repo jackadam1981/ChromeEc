@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "661cc5c9_d3af5a56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-16T10:52:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aae99b5_d95318c5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "ad985bcae0225c68d3188384c347992d0f12cc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c5845c5d_83ae7e8d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2024-02-13T19:43:58Z",
       "side": 1,
       "message": "CQ Error:\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/brya_pdc/build-ro\n\n/mnt/host/source/src/platform/ec/build/zephyr/brya_pdc/modules/ec/common/usb_pd_host_cmd_common.c:212: undefined reference to `get_dp_pin_mode\u0027\ncollect2: error: ld returned 1 exit status",
+      "revId": "ad985bcae0225c68d3188384c347992d0f12cc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63aa3131_ef03bc0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-16T10:52:00Z",
+      "side": 1,
+      "message": "On Brya PDC variant INTEL ALT mode is not enabled causing failure.",
+      "parentUuid": "7dc2476e_a57bcb3c",
       "revId": "ad985bcae0225c68d3188384c347992d0f12cc17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
