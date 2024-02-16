@@ -311,6 +311,16 @@ success:
 	     ucsi_command_to_string(ucsi_command));
 	clear_cci(dev);
 
+	if (ret > 0) {
+		DLOG_START("Command 0x%x Response : [ ", ucsi_command);
+		for (int i = 0; i < ret; i++) {
+			DLOG_LOOP("0x%x", message_in[i]);
+			if (i != ret - 1)
+				DLOG_LOOP(", ");
+		}
+		DLOG_END(" ]");
+	}
+
 	/* Post-success command handling */
 	if (ack_ci) {
 		struct ucsiv3_get_connector_status_data *port_status =
