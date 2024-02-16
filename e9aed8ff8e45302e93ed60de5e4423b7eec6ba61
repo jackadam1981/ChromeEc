@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42553a49_2d6d138b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-02-16T15:12:18Z",
+      "side": 1,
+      "message": "Opened https://github.com/zephyrproject-rtos/zephyr/pull/69082 for MEC support, `zmake build -a` passes with that PR cherry picked, I think this is ready for when hwmv2 is going to get merged.",
+      "revId": "e9aed8ff8e45302e93ed60de5e4423b7eec6ba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
