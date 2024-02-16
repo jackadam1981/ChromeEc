@@ -16,6 +16,40 @@
       "message": "Opened https://github.com/zephyrproject-rtos/zephyr/pull/69082 for MEC support, `zmake build -a` passes with that PR cherry picked, I think this is ready for when hwmv2 is going to get merged.",
       "revId": "e9aed8ff8e45302e93ed60de5e4423b7eec6ba61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135427a3_f3c59b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-16T17:08:00Z",
+      "side": 1,
+      "message": "Great work, thank you!",
+      "revId": "e9aed8ff8e45302e93ed60de5e4423b7eec6ba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ccfcb25_764e5f2e",
+        "filename": "zephyr/boards/google/it8xxx2/it8xxx2_it81202bx_defconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-16T17:08:00Z",
+      "side": 1,
+      "message": "Can you add a blurb in `zephyr/README.md` that describes the boards? I don\u0027t know that it would be obvious to those that haven\u0027t followed the hwm collab branch why we renamed `riscv` to `google`.",
+      "revId": "e9aed8ff8e45302e93ed60de5e4423b7eec6ba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
