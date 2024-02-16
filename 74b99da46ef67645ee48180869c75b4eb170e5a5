@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f278358e_e51bf046",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-16T19:45:12Z",
+      "side": 1,
+      "message": "we can not do that, we will lose the initial configuration. We can expect to already be 0 in S0. Note that when interrupt are enabled, ec_rate is moot since the motion sense task will be scheduled by the interrupt handler.",
+      "revId": "74b99da46ef67645ee48180869c75b4eb170e5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccea095b_dba1eef3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-16T19:45:12Z",
+      "side": 1,
+      "message": "always true (for now).",
+      "revId": "74b99da46ef67645ee48180869c75b4eb170e5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a32b0e8_ed248bb5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-16T19:45:12Z",
+      "side": 1,
+      "message": "You can remove this code for now since we are not dealing with ec_rate \u003e 0.",
+      "revId": "74b99da46ef67645ee48180869c75b4eb170e5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
