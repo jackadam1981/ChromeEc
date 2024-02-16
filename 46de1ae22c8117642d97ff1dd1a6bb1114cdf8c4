@@ -446,6 +446,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cbd8e0c_cb81c3cf",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-02-16T20:03:30Z",
+      "side": 1,
+      "message": "yes, tpm_orderly_state_capture()/tpm_orderly_state_restore() added logic for when AP is reset (not necessarily GSC goes to deep sleep) w/o orderly shutdown. we chose to preserve orderly counters in such case (ofc if GSC is suddenly reset, orderly counters will be gone), and did it in the least invasive way possible. see b/201101365",
+      "parentUuid": "c5848fb0_0cc40c25",
+      "range": {
+        "startLine": 2916,
+        "startChar": 2,
+        "endLine": 2916,
+        "endChar": 55
+      },
+      "revId": "46de1ae22c8117642d97ff1dd1a6bb1114cdf8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9d94f4_24b01e5e",
         "filename": "common/new_nvmem.c",
         "patchSetId": 7
