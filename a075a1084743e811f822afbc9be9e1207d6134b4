@@ -22,6 +22,30 @@
       },
       "revId": "a075a1084743e811f822afbc9be9e1207d6134b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08527110_c0f5dc26",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-16T15:30:29Z",
+      "side": 1,
+      "message": "This should be okay since the subsystem is notified of the null_buffer_error.",
+      "parentUuid": "01a3a5ca_bdaf18e8",
+      "range": {
+        "startLine": 892,
+        "startChar": 2,
+        "endLine": 892,
+        "endChar": 41
+      },
+      "revId": "a075a1084743e811f822afbc9be9e1207d6134b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
