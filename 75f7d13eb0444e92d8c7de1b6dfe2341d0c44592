@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36050723_3603d207",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "nit: check for error, remove else and return EC_SUCCESS unconditionally\nI remember that sometimes the repo complained that the else statement with return is not required and can be unconditional",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65800656_6585615a",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "I missed this one earlier, why are you not reading this directly to the servo_poweron_conf, since you are saving it directly?\nAlso one more thing, in case of failed read and re-saving the default values, the buffer will contain garbage data.",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd61858_e1320a1e",
+        "filename": "board/servo_v4p1/usb_pd_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "nit: setting or clearing?\nI usually see \"clear flag\", instead of reset, this setting resetting made me a little confused. I thought that it means to set the value after reset. Should this function just be `set_cc_flag`?",
+      "range": {
+        "startLine": 295,
+        "startChar": 38,
+        "endLine": 295,
+        "endChar": 47
+      },
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e06178_27c27473",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "nit: reverse the conditions?\nI think that it\u0027s clearer when the success route is at the bottom. But it\u0027s up to you if you want to change that",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ec9210_16ac9bcd",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "Since this field is a buffer with `CONFIG_POWERON_CONF_LEN` bytes, there\u0027s no way for it to be different",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36627931_c319138e",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "There\u0027s no need to memset if you copy the same size immediately after",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832957c5_dc4ff1a6",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-02-16T17:29:01Z",
+      "side": 1,
+      "message": "It may return the same error as write: `EC_ERROR_UNIMPLEMENTED`",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
