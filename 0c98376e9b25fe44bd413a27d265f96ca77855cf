@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df5f6e4_95d936f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-16T21:38:32Z",
+      "side": 1,
+      "message": "I would re-write this commit message to make it clearer why we need to return the 1 byte extra as a VDM header.\n\nFrom the spec:\n```\nIf the command completed successfully and the Data Length field (in GET_PD_MESSAGE Status) is \nnot 0x00, then the PPM shall return the entire Data Block of Extended Message, the Data Object(s) of \nData Message, or the VDM Header and Object(s) of Structured VDM Command in the MESSAGE IN \nData Structure.\n```\n\nAnd the response message for Discover Identity:\n```\nDiscover Identity \nResponse – ACK, NAK or \nBUSY (Structured VDM)\n```\n\n\nSuggest the following:\n```\nGET_PD_MESSAGE requires a Structured VDM to return both the header\nAND object. For the Discover Identity Response, add a placeholder\nVDO to return a correctly formatted result. The VDM header is not \nused in ChromeOS.\n```",
+      "revId": "0c98376e9b25fe44bd413a27d265f96ca77855cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "130da65d_5a7e1734",
