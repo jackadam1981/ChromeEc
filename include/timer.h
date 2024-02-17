@@ -103,8 +103,9 @@ void udelay(unsigned int us);
  * This may only be called from a task function, with interrupts enabled.
  *
  * @param us		Number of microseconds to sleep.
+ * @return 0 on success, negative on error
  */
-void usleep(unsigned int us);
+int usleep(unsigned int us);
 
 /**
  * Sleep for milliseconds.
@@ -125,9 +126,10 @@ static inline void msleep(unsigned int ms)
  *
  * @param sec		Number of seconds to sleep.
  */
-static inline void sleep(unsigned int sec)
+static inline unsigned int sleep(unsigned int sec)
 {
 	usleep(sec * SECOND);
+	return 0;
 }
 
 /**
