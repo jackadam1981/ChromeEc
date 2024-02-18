@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438553f7_149932f7",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-18T23:43:05Z",
+      "side": 1,
+      "message": "Not all devices use MKBP, so this function doesn\u0027t always exist. I suggest using the tablet mode function instead:\n\n```c\n#ifdef CONFIG_TABLET_MODE\n    bool in_tablet_mode \u003d tablet_get_mode();\n#else\n    bool in_tablet_mode \u003d false;\n#endif\n\n    if (in_tablet_mode) {\n        /* Ignore spurious event */\n    } else {\n        /* Notify host */\n    }   \n```",
+      "revId": "c331e01ecf773a6377c4f009fc4274964bdb3cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
