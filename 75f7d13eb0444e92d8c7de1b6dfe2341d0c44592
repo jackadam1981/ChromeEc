@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "929bb3fc_ae0c6934",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "36050723_3603d207",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65800656_6585615a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-16T17:29:01Z",
       "side": 1,
       "message": "I missed this one earlier, why are you not reading this directly to the servo_poweron_conf, since you are saving it directly?\nAlso one more thing, in case of failed read and re-saving the default values, the buffer will contain garbage data.",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "198ece22_da7013f2",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "Originally I thought that \"parsing\" stage would be more complicated, wanted it to be more clear and easier to modify in future. But looking on it now it may it is a little overhead, will switch for simpler/direct read.\n\nGood catch with garbage path, changed implementation to prevent it.",
+      "parentUuid": "65800656_6585615a",
       "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e3bfc5_a371924c",
+        "filename": "board/servo_v4p1/usb_pd_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "yes I meant \"clear\". This function should be able to set and clear specific flag in cc config. Renaming it to set_cc_flag and changing resetting-\u003eclearing SGTM.",
+      "parentUuid": "fdd61858_e1320a1e",
+      "range": {
+        "startLine": 295,
+        "startChar": 38,
+        "endLine": 295,
+        "endChar": 47
+      },
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91e06178_27c27473",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-02-16T17:29:01Z",
       "side": 1,
       "message": "nit: reverse the conditions?\nI think that it\u0027s clearer when the success route is at the bottom. But it\u0027s up to you if you want to change that",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe089c6_67c541de",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91e06178_27c27473",
       "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "306b465f_75fe0579",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "removed the if",
+      "parentUuid": "18ec9210_16ac9bcd",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36627931_c319138e",
@@ -109,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34175b6a_7d08b04a",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "removed the memset",
+      "parentUuid": "36627931_c319138e",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "832957c5_dc4ff1a6",
@@ -122,6 +236,24 @@
       "writtenOn": "2024-02-16T17:29:01Z",
       "side": 1,
       "message": "It may return the same error as write: `EC_ERROR_UNIMPLEMENTED`",
+      "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615a3192_b7610714",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-02-19T11:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "832957c5_dc4ff1a6",
       "revId": "75f7d13eb0444e92d8c7de1b6dfe2341d0c44592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
