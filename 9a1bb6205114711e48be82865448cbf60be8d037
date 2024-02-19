@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f7c58b_c07a8b12",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-19T15:13:48Z",
+      "side": 1,
+      "message": "Removed CONFIG_PLATFORM_EC_BATTERY_HW_PRESENT_CUSTOM hence this is not needed.",
+      "parentUuid": "12c8444b_fae25bc0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 81
+      },
+      "revId": "9a1bb6205114711e48be82865448cbf60be8d037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e593aa_9e9dfb7b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3387520d_20bf11cf",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-19T15:13:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b5e593aa_9e9dfb7b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "9a1bb6205114711e48be82865448cbf60be8d037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dc1ccc0_04e30443",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-13T22:58:25Z",
       "side": 1,
       "message": "I also don\u0027t think this option is needed.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "9a1bb6205114711e48be82865448cbf60be8d037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "758b1761_90174c27",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-19T15:13:48Z",
+      "side": 1,
+      "message": "Removed it but i see the below scenarios/checks will not be applicable for Brox.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_state.c;l\u003d1776\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_state.c;l\u003d1789\n\nshould we re enable these?",
+      "parentUuid": "1dc1ccc0_04e30443",
       "range": {
         "startLine": 65,
         "startChar": 0,
