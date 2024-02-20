@@ -46,6 +46,30 @@
       },
       "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e759c1_cd8c6177",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-20T20:02:17Z",
+      "side": 1,
+      "message": "\u003e The change was cherry-picked, yes, not sure what you mean by committed? \n\nThe `compare_build.sh` script tests against the `HEAD` git commit and the previous git commit by default, so if changes were not committed in git (i.e., `git diff` shows pending changes) then it wouldn\u0027t be testing the change. If you ran `git cherry-pick`, then the change was committed.\n\nOriginally I didn\u0027t read through the associated bug. Reading http://b/323098079#comment7, it looks like you are seeing the same thing as me, which is that there are differences.\n\nThat\u0027s not really a problem, we just shouldn\u0027t put `./util/compare_build.sh -b all \u003d\u003e MATCH` because that indicates that all of the builds *do* match.\n\nI would change the comment to something like:\n\n```\nTEST\u003d./util/compare_build.sh -b all\n      The following boards differ:\n      board_a\n      board_b\n      etc.\n      See linked bug for complete output\n```\n\nThat way if there are any problems in the future on other boards (I don\u0027t expect any), it will make it easy to see what boards are affected and what changed.",
+      "parentUuid": "adabfd2e_d3d991b5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
