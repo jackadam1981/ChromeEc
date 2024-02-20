@@ -22,12 +22,35 @@
 #include <zephyr/pm/policy.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/sys/printk.h>
+#include <zephyr/debug/hw_breakpoint.h>
+
+void hw_bp_init(void);
 
 static struct k_timer no_sleep_boot_timer;
 static void boot_allow_sleep(struct k_timer *timer)
 {
 	pm_policy_state_lock_put(PM_STATE_SUSPEND_TO_IDLE, PM_ALL_SUBSTATES);
 }
+
+volatile uint8_t test_val = 0;
+
+static void test_func()
+{
+	printk("RPZ %s\n", __func__);
+	test_val = 5;
+}
+
+
+static void handler1(int bp, z_arch_esf_t *esf, void *data)
+{
+	printk("RPZ %s, %p\n", __func__, esf);
+	printk("mepc: %lx, addr: %p\n", esf->mepc, &test_func);
+}
+
+/*static void handler2()
+{
+	printk("RPZ %s\n", __func__);
+}*/
 
 /* For testing purposes this is not named main. See main_shim.c for the real
  * main() function.
@@ -135,4 +158,12 @@ void ec_app_main(void)
 	if (IS_ENABLED(CONFIG_USB_PD_ALTMODE_INTEL)) {
 		intel_altmode_task_start();
 	}
+
+	hw_bp_init();
+
+	hw_bp_set((uintptr_t)&test_func, HW_BP_TYPE_INSTRUCTION, HW_BP_FLAGS_NONE, &handler1, NULL);
+	//hw_bp_set((uintptr_t)&test_val, HW_BP_TYPE_MEMORY, HW_BP_FLAGS_STORE, &handler2, NULL);
+
+	test_func();
+	//printk("RPZ %d\n", test_val);
 }
