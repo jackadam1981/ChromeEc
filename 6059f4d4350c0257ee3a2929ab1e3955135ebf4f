@@ -70,6 +70,30 @@
       },
       "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e06d28a_259cc193",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-20T23:16:25Z",
+      "side": 1,
+      "message": "Thanks for clarifying, there were no uncommitted changes during the test. However, all of the below boards changed because of it, so not sure that it is safe to merge in the current state, at least without further testing.\n\nadlrvpp_npcx\nakemi\naleena\nambassador\nanahera\natlas\naurash\nbanshee\nberknip\nbloog\nbobba\nboldar\nbrask\nbrya\nbuccaneer\nbugzzy\ncappy2\ncareena\ncasta\nchronicler\ncoachz\ncollis\nconstitution\ncopano\ncorori\ncorori2\ncret\ncrota\ndalboz\ndelbin\ndewatt\ndirinboz\ndochi\ndood\ndooly\ndratini\ndriblee\ndrobit\ndrobit_ecmodeentry\neldrid\nelemi\nezkinil\nfelwinter\nfleex\nfoob\ngaelin\ngarg\ngelarshie\ngenesis\ngimble\ngladios\ngrunt\ngumboz\nguybrush\nhatch\nhelios\nhelipilot\nhomestar\njinlon\nkano\nkindred\nkingoftown\nkinox\nkohaku\nkuldax\nlalala\nlazor\nliara\nlick\nlindar\nlisbon\nmadoo\nmagolor\nmarasov\nmarzipan\nmeep\nmetaknight\nmithrax\nmoli\nmoonbuggy\nmorphius\nmrbland\nmushu\nnightfury\nnipperkin\nnocturne\nnpcx7_evb\nnpcx9_evb\nnuwani\nomnigul\nosiris\npalkia\npazquel\nphaser\npompom\nprimus\npuff\nquackingstick\nredrix\nsasuke\nscout\nshuboz\nstryke\ntaeko\ntaniks\nterrador\ntreeya\ntrembyle\ntrogdor\nvell\nvilboz\nvoema\nvolet\nvolmar\nvolteer\nvolteer_npcx797f\nvoxel\nvoxel_ecmodeentry\nvoxel_npcx797fc\nwaddledoo\nwaddledoo2\nwoomax\nwormdingler\nxol\nyorp",
+      "parentUuid": "f3e759c1_cd8c6177",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
