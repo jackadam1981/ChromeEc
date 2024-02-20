@@ -53,6 +53,9 @@
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
+/* Additional PPC second source */
+#define CONFIG_USBC_PPC_SYV682X
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -100,10 +103,18 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+<<<<<<< HEAD   (32e050 cortex-m: Set WATCHDOG_WARN panic reason on watchdog warning)
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
 #endif
+=======
+enum ppc_type {
+	PPC_NX20P348X,
+	PPC_SYV682X,
+	PPC_TYPE_COUNT,
+};
+>>>>>>> CHANGE (a7d728 bloog: Enable 2nd source ppc syv682x)
 
 int board_is_convertible(void);
 
