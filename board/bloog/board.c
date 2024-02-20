@@ -379,13 +379,13 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 		return flags0;
 }
 
-const struct ppc_config_t ppc_syv682x_port0 = {
+static const struct ppc_config_t ppc_syv682x_port0 = {
 	.i2c_port = I2C_PORT_TCPC0,
 	.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 	.drv = &syv682x_drv,
 };
 
-const struct ppc_config_t ppc_syv682x_port1 = {
+static const struct ppc_config_t ppc_syv682x_port1 = {
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 	.drv = &syv682x_drv,
@@ -396,11 +396,25 @@ static void board_setup_ppc(void)
 	if (c0_port_ppc == PPC_SYV682X) {
 		memcpy(&ppc_chips[USB_PD_PORT_TCPC_0], &ppc_syv682x_port0,
 		       sizeof(struct ppc_config_t));
+
+		gpio_set_flags(GPIO_USB_PD_C0_INT_ODL, GPIO_INT_BOTH);
 	}
 
 	if (c1_port_ppc == PPC_SYV682X) {
 		memcpy(&ppc_chips[USB_PD_PORT_TCPC_1], &ppc_syv682x_port1,
 		       sizeof(struct ppc_config_t));
+
+		gpio_set_flags(GPIO_USB_PD_C0_INT_ODL, GPIO_INT_BOTH);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_ppc, HOOK_PRIO_INIT_I2C + 2);
+
+int ppc_get_alert_status(int port)
+{
+	if (port == 0)
+		return gpio_get_level(GPIO_USB_PD_C0_INT_ODL) == 0;
+
+	return gpio_get_level(GPIO_USB_PD_C1_INT_ODL) == 0;
+}
+
+/* TOT */
