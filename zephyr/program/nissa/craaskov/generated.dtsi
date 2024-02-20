@@ -184,7 +184,10 @@
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
 		gpio_usb_pd_int_odl: usb_pd_int_odl {
-			gpios = <&gpio0 2 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			gpios = <&gpio0 2 GPIO_INPUT>;
+		};
+		gpio_ec_i2c_pmc_pd_int_odl: ec_i2c_pmc_pd_int_odl {
+			gpios = <&gpio3 6 GPIO_INPUT>;
 		};
 	};
 
