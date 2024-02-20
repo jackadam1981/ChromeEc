@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a9e142_3fb7a0e9",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c680d9_4df1d32d",
+      "range": {
+        "startLine": 476,
+        "startChar": 59,
+        "endLine": 476,
+        "endChar": 79
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6708056c_39d8356d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-16T16:39:04Z",
       "side": 1,
       "message": "LOG_ERR?",
+      "range": {
+        "startLine": 596,
+        "startChar": 2,
+        "endLine": 596,
+        "endChar": 9
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef3592e_5dc3b7c0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6708056c_39d8356d",
       "range": {
         "startLine": 596,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cffb2c8_f1a668b9",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c52465_f0fd4901",
+      "range": {
+        "startLine": 682,
+        "startChar": 26,
+        "endLine": 682,
+        "endChar": 42
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f5b36d2_fa930a2d",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-16T16:39:04Z",
       "side": 1,
       "message": "`init_local_current_state` really tracks the last init state doesn\u0027t it?\n\nConsider renaming in a separate CL.",
+      "range": {
+        "startLine": 702,
+        "startChar": 13,
+        "endLine": 702,
+        "endChar": 37
+      },
+      "revId": "4bf7c49bf737e373d1873e3914912f51a1f01f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acfea29c_69e2de03",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0f5b36d2_fa930a2d",
       "range": {
         "startLine": 702,
         "startChar": 13,

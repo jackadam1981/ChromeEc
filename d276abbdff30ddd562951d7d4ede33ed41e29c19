@@ -93,6 +93,30 @@
       },
       "revId": "d276abbdff30ddd562951d7d4ede33ed41e29c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933cad1d_66f69bae",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:55Z",
+      "side": 1,
+      "message": "From our conversation, I\u0027ve added code to retry before disabling the port.",
+      "parentUuid": "0bcd0559_800bfc97",
+      "range": {
+        "startLine": 623,
+        "startChar": 2,
+        "endLine": 623,
+        "endChar": 28
+      },
+      "revId": "d276abbdff30ddd562951d7d4ede33ed41e29c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
