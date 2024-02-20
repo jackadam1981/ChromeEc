@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba9478b_d195a6d1",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-20T23:02:41Z",
+      "side": 1,
+      "message": "For readability, let\u0027s use a constant instead of a macro (similar to https://crrev.com/c/5294757):\n\n```\nconst uint32_t OTP_KEY_ADDR \u003d 0x300;\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "3eb100db97b0e8d66585b1cfc579202dd4534a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be5d35a_31655afb",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-20T23:02:41Z",
+      "side": 1,
+      "message": "The preferred style `IS_ENABLED(CONFIG_OTP_KEY)`. Search for `IS_ENABLED` to see some examples.",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 21
+      },
+      "revId": "3eb100db97b0e8d66585b1cfc579202dd4534a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c0943b_db9faa4a",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-20T23:02:41Z",
+      "side": 1,
+      "message": "This should also be in the deferred function (`add_entropy_deferred`) for clarity (and in case it takes some time like the random number generation).",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 3
+      },
+      "revId": "3eb100db97b0e8d66585b1cfc579202dd4534a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
