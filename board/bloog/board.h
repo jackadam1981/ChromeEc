@@ -55,6 +55,7 @@
 
 /* Additional PPC second source */
 #define CONFIG_USBC_PPC_SYV682X
+#define CONFIG_USBC_PPC_DEDICATED_INT
 
 #ifndef __ASSEMBLER__
 
