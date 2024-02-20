@@ -16,6 +16,24 @@
       "message": "Keith, do you have maybe a better idea, how to handle setting configs when they are available only in RW copy?",
       "revId": "67a98e68b54a275763f7df32904b4036cbf12eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507da2e9_a688a7ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-20T22:09:42Z",
+      "side": 1,
+      "message": "I think you can add the logic to [fpmcu/Kconfig](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/fpmcu/Kconfig;l\u003d32) to only enable `CONFIG_PLATFORM_EC_RSA` in the RW image.\n\n```\nconfig PLATFORM_EC_RSA\n    default y if CROS_EC_RW\n    \nconfig PLATFORM_EC_RSA_KEY_SIZE\n    default 3072\n    \nconfig PLATFORM_EC_RSA_EXPONENT_3\n    default y if CROS_EC_RW\n```",
+      "parentUuid": "4a73c249_3de39cff",
+      "revId": "67a98e68b54a275763f7df32904b4036cbf12eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
