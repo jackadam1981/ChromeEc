@@ -103,6 +103,7 @@ cmd_fuzz_exe = $(CXX) $^ $(HOST_TEST_LDFLAGS) $(LDFLAGS_EXTRA) -o $@
 cmd_run_fuzz = build/host/$*/$*.exe -seed=1 -runs=1 $(silent) \
 	$(silent_err) || (echo "Test $* failed!" && false)
 cmd_exe = $(CXX) $(ro-objs) $(HOST_TEST_LDFLAGS) $(LDFLAGS_EXTRA) -o $@
+cmd_clang_ir_to_elf = llc -filetype=obj -o $@ $<
 cmd_c_to_o = $(CC) -std=gnu11 $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $< \
 		-MT $(@D)/$(@F) -o $(@D)/$(@F)
 cmd_c_to_s = $(cmd_c_to_o) -S
@@ -660,6 +661,15 @@ $(out)/RW/%.s:%.cc
 	$(if $(CONFIG_LTO),$(info # You may want to disable CONFIG_LTO.))
 	$(info # Use 'c++filt <$@' to demangle names)
 	$(call quiet,cxx_to_s,CXX     )
+
+# When compiling with clang and LTO is enabled, we need to use llc to compile
+# and pack as an elf.
+$(out)/%.elf:$(out)/%.o
+ifneq ($(and $(findstring clang,$(cc-name)),$(CONFIG_LTO)),)
+	$(call quiet,clang_ir_to_elf,LLC    )
+else
+	$(call quiet,cp,CP     )
+endif
 
 $(out)/RO/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
 $(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
