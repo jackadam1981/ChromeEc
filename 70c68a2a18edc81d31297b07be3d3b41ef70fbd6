@@ -33,6 +33,24 @@
       "message": "Should the names of these policies match something in UCSI? If so, what is the appropriate thing?",
       "revId": "70c68a2a18edc81d31297b07be3d3b41ef70fbd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c76188_a45088c3",
+        "filename": "zephyr/dts/usbc-policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T15:32:20Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be any official names for Type-C current. The spec only names the bits that reflect the Type-C current.\n\n```\nValue   Meaning\n0       PPM defined default\n1       3A\n2       1.5A\n3       USB Type-C Default\n```",
+      "parentUuid": "c95330fe_4b024b74",
+      "revId": "70c68a2a18edc81d31297b07be3d3b41ef70fbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

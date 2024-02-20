@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3442e394_05eb7f3d",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T15:32:20Z",
+      "side": 1,
+      "message": "Could you put this file and related usbc-port-policy.yaml in a separate commit? Then this commit would just be for updating the boards.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "6c6573bd1203159dc74455f890756f58dcd51de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
