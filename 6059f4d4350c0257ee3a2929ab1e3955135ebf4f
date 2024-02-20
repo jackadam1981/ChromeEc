@@ -94,6 +94,30 @@
       },
       "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7faa5ecd_9d594bb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-20T23:24:19Z",
+      "side": 1,
+      "message": "In general, I usually opt for making the code better, so I\u0027m ok with it. New ECs should be using Zephyr and older ones generally have \"long-lived\" branches, so it wouldn\u0027t affect them.\n\nWe can get a second opinion by adding @cros-ec-reviewers@google.com.",
+      "parentUuid": "9e06d28a_259cc193",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "6059f4d4350c0257ee3a2929ab1e3955135ebf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
