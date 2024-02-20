@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "794dd53b_e2e5605a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-20T22:38:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this byte be set to 0 to start FW update and 1 to end FW update?",
+      "range": {
+        "startLine": 1209,
+        "startChar": 2,
+        "endLine": 1209,
+        "endChar": 8
+      },
+      "revId": "14cf8e7cf7c63582c0987f126401b2c4fdf8656b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
