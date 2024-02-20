@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d787b3_2a3e2df8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-20T19:27:53Z",
+      "side": 1,
+      "message": "These pass on my bloonchipper v0.3:\n\n`power_utilization_idle`:\n\n```\nDEBUG:Calling post-test callback\nDEBUG:Running command: \"dut-control --value_only -t 10 ppvar_fp_mw ppvar_mcu_mw\"\nDEBUG:fp_power_mw:None   mcu_power_mw:None\nDEBUG:fp_power_mw:None   mcu_power_mw:None\nDEBUG:fp_power_mw:0.6841         mcu_power_mw:None\nDEBUG:fp_power_mw:0.6841         mcu_power_mw:16.1399\nINFO:fp power:  actual: 0.68 expected: 0.71 threshold: +/-0.53\nINFO:mcu power: actual: 16.14 expected: 16.05 threshold: +/-0.28\nTest \"power_utilization_idle\": PASSED\n```\n\n`power_utilization_sleep`:\n\n```\nDEBUG:Calling post-test callback\nDEBUG:Running command: \"dut-control --value_only -t 10 ppvar_fp_mw ppvar_mcu_mw\"\nDEBUG:fp_power_mw:None   mcu_power_mw:None\nDEBUG:fp_power_mw:None   mcu_power_mw:None\nDEBUG:fp_power_mw:0.7254         mcu_power_mw:None\nDEBUG:fp_power_mw:0.7254         mcu_power_mw:0.2649\nINFO:fp power:  actual: 0.73 expected: 0.69 threshold: +/-0.51\nINFO:mcu power: actual: 0.26 expected: 0.53 threshold: +/-0.70\nDEBUG:Running command: \"[\u0027dut-control\u0027, \u0027fpmcu_slp:off\u0027]\"\nTest \"power_utilization_sleep\": PASSED\n```",
+      "parentUuid": "0bf67fb7_63f27545",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 43
+      },
+      "revId": "9435fa9e4830cc2ae3f243f65f52656057addcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "361087e2_b6d38403",
