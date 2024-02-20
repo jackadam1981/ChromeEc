@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebefb13_1f31c9c7",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-20T17:07:48Z",
+      "side": 1,
+      "message": "`type \u0026 I2C_MSG_READ` since this is a bit mask field.",
+      "range": {
+        "startLine": 484,
+        "startChar": 4,
+        "endLine": 484,
+        "endChar": 24
+      },
+      "revId": "9b2216ccc2b51f2f69b6a5812ad95968a005ce51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac6f34f_6ef43a09",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-20T17:07:48Z",
+      "side": 1,
+      "message": "`type \u0026 I2C_MSG_READ`",
+      "range": {
+        "startLine": 495,
+        "startChar": 6,
+        "endLine": 495,
+        "endChar": 26
+      },
+      "revId": "9b2216ccc2b51f2f69b6a5812ad95968a005ce51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
