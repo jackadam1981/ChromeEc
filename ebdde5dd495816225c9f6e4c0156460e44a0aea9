@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ef0344_bf83dc08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-20T22:32:46Z",
+      "side": 1,
+      "message": "I added a break statement in the original code to fix a compiler error. I think that\u0027s why CQ reports %0 incremental coverage.",
+      "revId": "ebdde5dd495816225c9f6e4c0156460e44a0aea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
