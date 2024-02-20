@@ -53,6 +53,9 @@
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
+/* Additional PPC second source */
+#define CONFIG_USBC_PPC_SYV682X
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -90,6 +93,12 @@ enum battery_type {
 	BATTERY_COS,
 	BATTERY_COS_2,
 	BATTERY_TYPE_COUNT,
+};
+
+enum ppc_type {
+	PPC_NX20P348X,
+	PPC_SYV682X,
+	PPC_TYPE_COUNT,
 };
 
 int board_is_convertible(void);
