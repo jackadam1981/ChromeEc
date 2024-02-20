@@ -22,6 +22,30 @@
       },
       "revId": "6c6573bd1203159dc74455f890756f58dcd51de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aef054d_0b7f7188",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-20T19:55:53Z",
+      "side": 1,
+      "message": "I\u0027ve reorganized the commits so that this one is just the bindings and default policy. The next one is just board policy, and the one after that is just the code that uses it.",
+      "parentUuid": "3442e394_05eb7f3d",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "6c6573bd1203159dc74455f890756f58dcd51de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
