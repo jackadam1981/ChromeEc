@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641c8106_7b4a27e1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-20T16:49:13Z",
+      "side": 1,
+      "message": "Line length. Run clang-format.",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1162,
+        "endChar": 74
+      },
+      "revId": "34650b455c820923115d127434b8410d223025cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
