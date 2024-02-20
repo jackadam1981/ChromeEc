@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include <usbc-policy.dtsi>
+
  /{
 	usbc {
 		#address-cells = <1>;
@@ -18,6 +20,7 @@
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_0>;
 			};
+			policy = <&cros_policy>;
 		};
 		port0-muxes {
 			virtual_mux_0: virtual-mux-0 {
@@ -33,6 +36,7 @@
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_1>;
 			};
+			policy = <&cros_policy>;
 		};
 		port1-muxes {
 			virtual_mux_1: virtual-mux-1 {
