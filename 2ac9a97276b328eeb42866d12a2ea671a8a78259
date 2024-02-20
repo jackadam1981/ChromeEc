@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f13ace0_b4f1a5b3",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a716ff48_db9e4f0f",
+      "range": {
+        "startLine": 1154,
+        "startChar": 34,
+        "endLine": 1154,
+        "endChar": 37
+      },
+      "revId": "2ac9a97276b328eeb42866d12a2ea671a8a78259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69de0b9e_2b132fc4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37162aa_9a1fc461",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69de0b9e_2b132fc4",
+      "range": {
+        "startLine": 1161,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 73
+      },
+      "revId": "2ac9a97276b328eeb42866d12a2ea671a8a78259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2311fb0_cb5eb103",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-16T16:19:14Z",
       "side": 1,
       "message": "This message doesn\u0027t make it clear to the developer that this is an error. \n Also use `LOG_ERR`",
+      "range": {
+        "startLine": 1176,
+        "startChar": 1,
+        "endLine": 1176,
+        "endChar": 8
+      },
+      "revId": "2ac9a97276b328eeb42866d12a2ea671a8a78259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a9f8e1_78d6d305",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:29:09Z",
+      "side": 1,
+      "message": "That was part of my debug statements. I\u0027ve removed it.",
+      "parentUuid": "e2311fb0_cb5eb103",
       "range": {
         "startLine": 1176,
         "startChar": 1,
