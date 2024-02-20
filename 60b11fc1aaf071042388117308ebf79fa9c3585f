@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ed13d8_510769e6",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-20T16:36:57Z",
+      "side": 1,
+      "message": "thank you for not just putting the `if condition` in the `ifdef`. I have seen that before 😞",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
