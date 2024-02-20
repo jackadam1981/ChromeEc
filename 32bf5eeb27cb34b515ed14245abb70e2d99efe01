@@ -142,6 +142,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8746de9a_0deb4e2d",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-20T23:18:26Z",
+      "side": 1,
+      "message": "\u003e It looks like Deepti landed a fix to allow the TBT, REV30, USB4 configs when PLATFORM_EC_USB_PD_CONTROLLER is present.\n\nOK, I see this is working now, I am seeing `CONFIG_PLATFORM_EC_USB_PD_DP_MODE` enabled.\n\n \u003eRegarding setting usb_mux_set based on status.data_conn, that\u0027s probably the correct behavior. If data_conn isn\u0027t set by the PDC, we have to assume the USB signals are not connected.\n \nShould there be a connection between `emul_intel_pd_controller` and `emul_pdc` to handle this? This way when `emul_intel_pd_controller_connect_data` is called, it will notify `emul_pdc`.",
+      "parentUuid": "b72bf9f0_41824620",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
