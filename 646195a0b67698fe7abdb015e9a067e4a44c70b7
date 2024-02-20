@@ -69,6 +69,30 @@
       },
       "revId": "646195a0b67698fe7abdb015e9a067e4a44c70b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60969c3f_210f3bfb",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-20T00:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e452aadb_716f4338",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "646195a0b67698fe7abdb015e9a067e4a44c70b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
