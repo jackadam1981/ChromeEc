@@ -3024,7 +3024,10 @@ static void pe_src_ready_run(int port)
 				return;
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
 			case PD_CTRL_DATA_RESET:
-				if (pe[port].data_role == PD_ROLE_DFP)
+				if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30)
+					set_state_pe(port,
+						     PE_SEND_NOT_SUPPORTED);
+				else if (pe[port].data_role == PD_ROLE_DFP)
 					set_state_pe(
 						port,
 						PE_DDR_DATA_RESET_RECEIVED);
@@ -3934,7 +3937,10 @@ static void pe_snk_ready_run(int port)
 				return;
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
 			case PD_CTRL_DATA_RESET:
-				if (pe[port].data_role == PD_ROLE_DFP)
+				if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30)
+					set_state_pe(port,
+						     PE_SEND_NOT_SUPPORTED);
+				else if (pe[port].data_role == PD_ROLE_DFP)
 					set_state_pe(
 						port,
 						PE_DDR_DATA_RESET_RECEIVED);
