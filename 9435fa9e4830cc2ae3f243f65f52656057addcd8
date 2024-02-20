@@ -22,6 +22,23 @@
       },
       "revId": "9435fa9e4830cc2ae3f243f65f52656057addcd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361087e2_b6d38403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-20T17:22:16Z",
+      "side": 1,
+      "message": "TAST tests pass on Zork (`firmware.FpROOnlyBootsValidRW` failed because it flashes DEV signed RW, but I use DEV key, so it boots to RW as expected)\n```\n2024-02-20T17:01:57.933813Z biod.CrosConfig                 [ PASS ] \n2024-02-20T17:01:57.933813Z biod.CrosConfigMatchesDevice    [ PASS ] \n2024-02-20T17:01:57.933813Z biod.DeviceAccess               [ PASS ] \n2024-02-20T17:01:57.933813Z biod.DevicePermissions          [ PASS ] \n2024-02-20T17:01:57.933813Z biod.FirmwareFile               [ PASS ] \n2024-02-20T17:01:57.933813Z biod.Running                    [ PASS ] \n2024-02-20T17:01:57.933813Z example.CommandContextUser      [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpUpdaterSucceeded     [ PASS ] \n2024-02-20T17:01:57.933813Z timberslide.RunningForFPMCU     [ PASS ] \n2024-02-20T17:01:57.933813Z example.UpstartArgs             [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpAddEntropy           [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpBioWash              [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpCheckWriteProtect    [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpFlashFpMcuHello      [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpRDP0                 [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpRDP1                 [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpReadFlash            [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpRebootPowerCycle     [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpRebootToRO           [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpSoftwareWriteProtect [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpSystemIsLocked       [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpTpmSeed              [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpUpdater              [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpObeysRollback        [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpROCanUpdateRW        [ PASS ] \n2024-02-20T17:01:57.933813Z firmware.FpROOnlyBootsValidRW   [ FAIL ] Dev key signed test failed: not running RO firmware: failed to validate the firmware image, got \"RW\", want \"RO\"\n2024-02-20T17:01:57.933813Z firmware.FpRWNoUpdateRO         [ PASS ]\n```",
+      "revId": "9435fa9e4830cc2ae3f243f65f52656057addcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
