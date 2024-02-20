@@ -671,6 +671,9 @@ else
 	$(call quiet,cp,CP     )
 endif
 
+$(out)/%.o.asm:$(out)/%.elf
+	$(call quiet,elf_to_dis,OBJDUMP)
+
 $(out)/RO/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
 $(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
 	$(call quiet,cxx_to_o,CXX    )
