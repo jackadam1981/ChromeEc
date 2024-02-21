@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e4bbbf_eb42fafe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2024-02-21T00:10:10Z",
+      "side": 1,
+      "message": "putting this up as a speculative revert for now. I think maybe there was a conflict with another CL as this landed. (See b/326135018)",
+      "revId": "470245bae2d8d0bbd576a8a397b67f7e62ed91ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
