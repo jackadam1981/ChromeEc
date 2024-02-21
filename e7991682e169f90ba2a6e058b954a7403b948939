@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d70e2d_9107b93d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-21T22:54:29Z",
+      "side": 1,
+      "message": "This comment in the bug:\n\n\u003e making it seem that it take almost 10 seconds for the device to enter sleep after reboot with SLP asserted\n\nsounds like a bug that we should understand.\n\nI\u0027m ok with submitting this if we create a new bug to track that issue and put a `TODO(b/124)` here and by the `time.sleep` below.",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 31
+      },
+      "revId": "e7991682e169f90ba2a6e058b954a7403b948939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
