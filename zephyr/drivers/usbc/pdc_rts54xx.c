@@ -138,11 +138,11 @@ const struct smbus_cmd_t GET_RTK_STATUS = { 0x09, 0x03, 0x00 };
 const struct smbus_cmd_t PPM_RESET = { 0x0E, 0x02, 0x01 };
 const struct smbus_cmd_t CONNECTOR_RESET = { 0x0E, 0x03, 0x03 };
 const struct smbus_cmd_t GET_CAPABILITY = { 0x0E, 0x02, 0x06 };
-const struct smbus_cmd_t GET_CONNECTOR_CAPABILITY = { 0x0E, 0x02, 0x07 };
-const struct smbus_cmd_t SET_UOR = { 0x0E, 0x03, 0x09 };
-const struct smbus_cmd_t SET_PDR = { 0x0E, 0x03, 0x0B };
-const struct smbus_cmd_t UCSI_GET_ERROR_STATUS = { 0x0E, 0x02, 0x13 };
-const struct smbus_cmd_t UCSI_READ_POWER_LEVEL = { 0x0E, 0x03, 0x1E };
+const struct smbus_cmd_t GET_CONNECTOR_CAPABILITY = { 0x0E, 0x03, 0x07 };
+const struct smbus_cmd_t SET_UOR = { 0x0E, 0x04, 0x09 };
+const struct smbus_cmd_t SET_PDR = { 0x0E, 0x04, 0x0B };
+const struct smbus_cmd_t UCSI_GET_ERROR_STATUS = { 0x0E, 0x03, 0x13 };
+const struct smbus_cmd_t UCSI_READ_POWER_LEVEL = { 0x0E, 0x05, 0x1E };
 const struct smbus_cmd_t GET_IC_STATUS = { 0x3A, 0x03, 0x00 };
 const struct smbus_cmd_t SET_RETIMER_FW_UPDATE_MODE = { 0x20, 0x03, 0x00 };
 
@@ -1442,10 +1442,18 @@ static int rts54_read_power_level(const struct device *dev)
 		return -EBUSY;
 	}
 
+	/*
+	 * TODO(b/326276531): The implementation of this command is not yet
+	 * complete. The fields 'time to read power` and `time interval between
+	 * readings` are not being set and need to be both passed into this
+	 * function from the PDC subsys API and set below.
+	 */
 	uint8_t payload[] = {
 		UCSI_READ_POWER_LEVEL.cmd,
 		UCSI_READ_POWER_LEVEL.len,
 		UCSI_READ_POWER_LEVEL.sub,
+		0x00, /* Data Length --> set to 0x00 */
+		0x00, /* Connector number  */
 		0x00,
 		0x00,
 	};
@@ -1520,11 +1528,9 @@ static int rts54_connector_reset(const struct device *dev,
 	}
 
 	uint8_t payload[] = {
-		CONNECTOR_RESET.cmd,
-		CONNECTOR_RESET.len,
-		CONNECTOR_RESET.sub,
-		0x00,
-		type,
+		CONNECTOR_RESET.cmd, CONNECTOR_RESET.len,
+		CONNECTOR_RESET.sub, 0x00, /* Data Length --> set to 0x00 */
+		type << 7, /* Reset_Type (bit 7) | connector num (bits 6:0) */
 	};
 
 	return rts54_post_command(dev, CMD_CONNECTOR_RESET, payload,
@@ -1659,7 +1665,8 @@ static int rts54_get_connector_capability(const struct device *dev,
 		GET_CONNECTOR_CAPABILITY.cmd,
 		GET_CONNECTOR_CAPABILITY.len,
 		GET_CONNECTOR_CAPABILITY.sub,
-		0x00,
+		0x00, /* Data Length --> set to 0x00 */
+		0x00, /* Connector number --> don't care for Realtek */
 	};
 
 	return rts54_post_command(dev, CMD_GET_CONNECTOR_CAPABILITY, payload,
@@ -1713,7 +1720,8 @@ static int rts54_get_error_status(const struct device *dev,
 		UCSI_GET_ERROR_STATUS.cmd,
 		UCSI_GET_ERROR_STATUS.len,
 		UCSI_GET_ERROR_STATUS.sub,
-		0x00,
+		0x00, /* Data Length --> set to 0x00 */
+		0x00, /* Connector number --> don't care for Realtek */
 	};
 
 	return rts54_post_command(dev, CMD_GET_ERROR_STATUS, payload,
@@ -1895,13 +1903,22 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom,
 static int rts54_set_uor(const struct device *dev, union uor_t uor)
 {
 	struct pdc_data_t *data = dev->data;
+	uint8_t conn_num;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
 
+	/*
+	 * Connector number (5th byte)) is 7 bits and the MSbit of this byte is
+	 * bit 0 (DFP) of the USB Operation Role. Bits 2:1 of USB operation role
+	 * need to be shifted by 1 bit
+	 */
+	conn_num = uor.swap_to_dfp << 7;
+
 	uint8_t payload[] = {
-		SET_UOR.cmd, SET_UOR.len, SET_UOR.sub, 0x00, uor.raw_value,
+		SET_UOR.cmd, SET_UOR.len, SET_UOR.sub,
+		0x00,	     conn_num,	  uor.raw_value >> 1,
 	};
 
 	return rts54_post_command(dev, CMD_SET_UOR, payload,
@@ -1911,13 +1928,22 @@ static int rts54_set_uor(const struct device *dev, union uor_t uor)
 static int rts54_set_pdr(const struct device *dev, union pdr_t pdr)
 {
 	struct pdc_data_t *data = dev->data;
+	uint8_t conn_num;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
 
+	/*
+	 * Connector number (5th byte)) is 7 bits and the MSbit of this byte is
+	 * bit 0 (SRC)) of the Power Direction Role. Bits 2:1 of Power Direction
+	 * Role need to be shifted right by 1 bit
+	 */
+	conn_num = pdr.swap_to_src << 7;
+
 	uint8_t payload[] = {
-		SET_PDR.cmd, SET_PDR.len, SET_PDR.sub, 0x00, pdr.raw_value,
+		SET_PDR.cmd, SET_PDR.len, SET_PDR.sub,
+		0x00,	     conn_num,	  pdr.raw_value >> 1,
 	};
 
 	return rts54_post_command(dev, CMD_SET_PDR, payload,
