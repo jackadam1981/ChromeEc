@@ -16,6 +16,52 @@
       "message": "Ping...",
       "revId": "e4d9840089200d5bb100a1c908810d21d5e5de6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7d599a_e2cf3092",
+        "filename": "zephyr/test/ap_power/boards/brox_native_posix.overlay",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-21T00:02:32Z",
+      "side": 1,
+      "message": "You can just override the properties directly instead of replacing the entire node.  Then you can document each exception individually.\n\n```\nec-pch-rsmrst-s4-dsw-pwrok-fail-emul {\n\t/* Override edge setting because... */\n\tedge \u003d \"EDGE_ACTIVE_ON_DEASSERT\";\n\tpch-pwrok-dsw-pwrok-emul {\n\t\t/* Brox doesn\u0027t have a DSW_PWROK, Use SLP_SUS instead. */\n\t\toutput-signal \u003d \u003c\u0026slp_sus\u003e;\n\t\tdeassert-delay-ms \u003d \u003c50\u003e;\n\t\tinvert-value;\n\t};\n};\n```",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "e4d9840089200d5bb100a1c908810d21d5e5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8770cfc9_d13fa072",
+        "filename": "zephyr/test/ap_power/boards/brox_native_posix.overlay",
+        "patchSetId": 20
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-21T00:02:32Z",
+      "side": 1,
+      "message": "Same here, you just need to delete the `ppch-pwrok-dswwrok-emul` subnode and fixup the properties of `ec-pch-rsmrst-slp-sus-emul`",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 38
+      },
+      "revId": "e4d9840089200d5bb100a1c908810d21d5e5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
