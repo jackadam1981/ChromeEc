@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0089f8be_c7517dba",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-21T23:15:25Z",
+      "side": 1,
+      "message": "Does this also need to configure port 1 if present?",
+      "revId": "9d42d9834ba49d845d4f51cedd22a03fb374a020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853e72a7_80264e93",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-21T23:15:25Z",
+      "side": 1,
+      "message": "I don\u0027t think replacing the existing `set_cc` function is a good idea, because this is throwing away the existing safety measures that prevent both the source and sink switches from being enabled at the same time. It looks like doing this would reintroduce b/166850036 which can cause damage to devices connected to type-C ports.\n\nCan you instead use `tcpc_update` functions directly to configure the TCPC as needed in `board_hibernate` instead of calling the driver functions that don\u0027t work for your needs? That way you wouldn\u0027t need to override any driver functionality that\u0027s important to safety.",
+      "revId": "9d42d9834ba49d845d4f51cedd22a03fb374a020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
