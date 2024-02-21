@@ -46,6 +46,30 @@
       },
       "revId": "8c4bb0f687e5c6eedb9662675570dfa9bda806ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e640f04_3313c988",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-21T16:24:18Z",
+      "side": 1,
+      "message": "Acknowledged.  Thanks for making the change, it does help readability.",
+      "parentUuid": "1bf92f41_267c6d55",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 0
+      },
+      "revId": "8c4bb0f687e5c6eedb9662675570dfa9bda806ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
