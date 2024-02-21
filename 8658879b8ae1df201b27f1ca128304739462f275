@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8478c67a_0b4c3596",
+        "filename": "zephyr/test/charger/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-21T18:50:19Z",
+      "side": 1,
+      "message": "Done. I did originally try with CONFIG_PLATFORM_EC_OCPC, but it ends up pulling in too many dependencies.",
+      "parentUuid": "3b1ce7b4_4e280582",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "8658879b8ae1df201b27f1ca128304739462f275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d79ae43_c3d26460",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57c1615_ac522159",
+        "filename": "zephyr/test/charger/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-21T18:50:19Z",
+      "side": 1,
+      "message": "My goal is to use this as a place for charger tests that can be re-used across multiple projects/variants so it\u0027s not ISL923x specific nor specific to a certain test. A couple of Nissa variants use the sm5803, so ideally that would end up here too. But Brox uses the ISL923x so that\u0027s what I focused on. I\u0027ve re-arranged the Kconfigs to automatically select the appropriate charger based on the board to help clean this up a bit.",
+      "parentUuid": "7d79ae43_c3d26460",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "8658879b8ae1df201b27f1ca128304739462f275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "149c7797_ffce391d",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-16T01:41:12Z",
       "side": 1,
       "message": "Can we not calculate this from the board?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "8658879b8ae1df201b27f1ca128304739462f275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d15798_2c02c83a",
+        "filename": "zephyr/test/charger/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-21T18:50:19Z",
+      "side": 1,
+      "message": "Done. But I\u0027ve kept this config for cases where we need to override the path.",
+      "parentUuid": "149c7797_ffce391d",
       "range": {
         "startLine": 31,
         "startChar": 26,
