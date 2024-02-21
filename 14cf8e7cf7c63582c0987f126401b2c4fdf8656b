@@ -22,6 +22,30 @@
       },
       "revId": "14cf8e7cf7c63582c0987f126401b2c4fdf8656b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1b0780_91b43806",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-02-21T05:01:13Z",
+      "side": 1,
+      "message": "at line 1202 this is handled.\nApplication will set \"enable\" to 1 if firmware update starts and 0 if firmware update ends.",
+      "parentUuid": "794dd53b_e2e5605a",
+      "range": {
+        "startLine": 1209,
+        "startChar": 2,
+        "endLine": 1209,
+        "endChar": 8
+      },
+      "revId": "14cf8e7cf7c63582c0987f126401b2c4fdf8656b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
