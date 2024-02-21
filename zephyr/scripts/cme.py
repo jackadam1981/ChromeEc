@@ -4,7 +4,8 @@
 
 """Component Manifest Engine"""
 
-import json
+from google.protobuf import json_format
+import component_manifest_pb2
 import logging
 from pathlib import Path
 import sys
@@ -104,12 +105,11 @@ def parse_args(argv: Optional[List[str]] = None):
 class Manifest:
     """Manifest class to operate the component manifest."""
 
-    def __init__(self, ec_version):
-        self.manifest = {
-            "manifest_version": 1,
-            "ec_version": ec_version,
-            "component_list": [],
-        }
+    def __init__(self, ec_version_string):
+        self.manifest = component_manifest_pb2.manifest_t(
+            manifest_version = 1,
+            ec_version = ec_version_string
+        )
 
     def insert_component(
         self, ctype, name, i2c_port, i2c_addr, usbc_port=None, ssfc=None
@@ -124,25 +124,36 @@ class Manifest:
             usbc_port: USB-C port number.
             ssfc: SSFC element to be inserted as is.
         """
-        component = {
-            "component_type": ctype,
-            "component_name": name,
-            "i2c": {"port": i2c_port, "addr": i2c_addr},
-        }
+        component = component_manifest_pb2.manifest_t.component_t(
+            component_type = ctype,
+            component_name = name,
+            i2c = component_manifest_pb2.manifest_t.component_t.i2c_t(
+                port = i2c_port,
+                addr = i2c_addr,
+            ),
+        )
         if usbc_port:
-            component.update({"usbc": {"port": usbc_port}})
+            component.usbc.port = usbc_port
         if ssfc:
-            component.update({"ssfc": ssfc})
+            component.ssfc.mask = ssfc["mask"]
+            component.ssfc.value = ssfc["value"]
 
-        for comp in self.manifest["component_list"]:
-            if comp == component:
+        for comp in self.manifest.component_list:
+            if comp.SerializeToString() == component.SerializeToString():
                 return
-        self.manifest["component_list"].append(component)
+        self.manifest.component_list.add().MergeFrom(component)
 
     def json_dump(self, filepath):
-        """Dump the component manifest to a JSON file."""
+        """Dump the component manifest to a JSON file.
+
+        Args:
+            manifest: manifest object.
+            filepath: full path to the json file output.
+        """
+
+        json_str = json_format.MessageToJson(self.manifest)
         with open(filepath, "w", encoding="utf-8") as outfile:
-            outfile.write(json.dumps(self.manifest, indent=4))
+            outfile.write(json_str)
 
 
 def node_is_valid(node, i2c_node, i2c_portmap):
@@ -364,7 +375,7 @@ def insert_i2c_component(ctype, node, usbc_port, i2c_portmap, manifest):
         compatible_name_parser(ctype, node.props["compatible"].val[0]),
         i2c_portmap[i2c_node.name],
         hex(reg_node.props["reg"].val[0]),
-        usbc_port,
+        usbc_port=usbc_port,
     )
 
 
@@ -550,8 +561,6 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     iterate_motionsensor_components(
         edtlib, edt, i2c_portmap, ssfc_map, manifest
     )
-
-    # TODO(b/308028560): Iterate all sensor components.
 
     manifest.json_dump(args.manifest_file)
 
