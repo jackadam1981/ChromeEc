@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef5453b_e899985b",
+        "filename": "zephyr/test/ap_power/boards/brox_native_posix.overlay",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-21T01:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7d599a_e2cf3092",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "e4d9840089200d5bb100a1c908810d21d5e5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8770cfc9_d13fa072",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-02-21T00:02:32Z",
       "side": 1,
       "message": "Same here, you just need to delete the `ppch-pwrok-dswwrok-emul` subnode and fixup the properties of `ec-pch-rsmrst-slp-sus-emul`",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 38
+      },
+      "revId": "e4d9840089200d5bb100a1c908810d21d5e5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad041e7_97af52da",
+        "filename": "zephyr/test/ap_power/boards/brox_native_posix.overlay",
+        "patchSetId": 20
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-21T01:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8770cfc9_d13fa072",
       "range": {
         "startLine": 119,
         "startChar": 0,
