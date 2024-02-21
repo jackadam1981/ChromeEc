@@ -33,6 +33,24 @@
       "message": "Am I right in thinking this doesn\u0027t actually need to be reverted now?",
       "revId": "470245bae2d8d0bbd576a8a397b67f7e62ed91ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7c0fcb_1d83c4f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-21T17:34:38Z",
+      "side": 1,
+      "message": "Yes, I\u0027m able to build locally after a repo sync.",
+      "parentUuid": "3ff9c0d8_96eb3ceb",
+      "revId": "470245bae2d8d0bbd576a8a397b67f7e62ed91ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
