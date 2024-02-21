@@ -5,3 +5,7 @@
 config HW_TEST_ABORT
 	bool "Abort test"
 	select ZTEST
+
+config HW_TEST_ALWAYS_MEMSET
+	bool "Always_memset test"
+	select ZTEST
