@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668ecc96_814e6756",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-21T17:23:17Z",
+      "side": 1,
+      "message": "This feels a bit complicated, can we turn this into a choice?\n\n```\nchoice HW_TEST_MODE\n  default HW_TEST_MODE_OFF\n\nconfig HW_TEST_MODE_OFF\n  bool \"Don\u0027t use hardware tests\"\n  \nconfig HW_TEST_MODE_RW_ONLY\n  bool \"Only run tests in RW\"\n  \nconfig HW_TEST_MODE_RO_RW\n  bool \"Run tests in both RO and RW\"\n\nendchoice # HW_TEST_MODE\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "48218338c90f91a419c4fdf48e681e1d49f8ec46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bed478_4fe3d386",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-21T17:23:17Z",
+      "side": 1,
+      "message": "I also don\u0027t see a need for another choice here, we can already check if `CONFIG_ZTEST` is enabled.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "48218338c90f91a419c4fdf48e681e1d49f8ec46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
