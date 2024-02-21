@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c0ce37_a901e2cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-21T21:47:48Z",
+      "side": 1,
+      "message": "Rob, can you also take a look?",
+      "revId": "eb9cb983d178005e11dbd29c8ed60efa356468eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef12051d_6102e243",
+        "filename": "zephyr/test/drivers/panic_reason/src/panic_reason.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-21T21:47:48Z",
+      "side": 1,
+      "message": "is",
+      "range": {
+        "startLine": 24,
+        "startChar": 61,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "eb9cb983d178005e11dbd29c8ed60efa356468eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
