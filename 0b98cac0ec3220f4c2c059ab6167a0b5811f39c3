@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03babd8_4297cf9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-02-21T00:55:15Z",
+      "side": 1,
+      "message": "ugh, i think we have multiple build errors unrelated to this patach:\n\n```\ncc1plus: error: command-line option \u0027-Wno-pointer-sign\u0027 is valid for C/ObjC but not for C++ [-Werror]\n[17/351] Building C object CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/power_host_sleep.c.obj\nIn file included from /mnt/host/source/src/third_party/pigweed/pw_tokenizer/public/pw_tokenizer/tokenize.h:28,\n                 from /mnt/host/source/src/third_party/pigweed/pw_tokenizer/public/pw_tokenizer/base64.h:69,\n                 from /mnt/host/source/src/third_party/pigweed/pw_log_tokenized/public/pw_log_tokenized/base64.h:20,\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/pw_log_zephyr_tokenized.cc:9:\n/mnt/host/source/src/third_party/pigweed/pw_preprocessor/public/pw_preprocessor/arguments.h:152:25: internal compiler error: unspellable token PADDING\n  152 | #if PW_VA_OPT_SUPPORTED()\n      |                         ^\n```",
+      "revId": "0b98cac0ec3220f4c2c059ab6167a0b5811f39c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
