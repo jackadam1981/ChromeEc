@@ -22,6 +22,30 @@
       },
       "revId": "f243a8d59aad0231866211ebcbbeb1d796c4a7af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "341e50cc_175887fc",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-21T17:17:21Z",
+      "side": 1,
+      "message": "If practical, I\u0027d like to define a structure that\u0027s applicable to both designs without too much baggage. In any case, I think the same policy structure would be applicable to a PDC design and a TCPC design, even if the implementation uses the policy fields differently.",
+      "parentUuid": "f830fc95_5fe7723c",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "f243a8d59aad0231866211ebcbbeb1d796c4a7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
