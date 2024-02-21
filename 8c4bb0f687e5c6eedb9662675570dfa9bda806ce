@@ -22,6 +22,30 @@
       },
       "revId": "8c4bb0f687e5c6eedb9662675570dfa9bda806ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bf92f41_267c6d55",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2024-02-21T06:35:33Z",
+      "side": 1,
+      "message": "After separating out the reg set V1 into a routine, this routine still needs to behind the #ifdef CONFIG_SOC_IT8XXX2_REG_SET_V1 condition, otherwise, there will be an error of unused function when building non-V1 boards.",
+      "parentUuid": "8f33d232_4758e45a",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 0
+      },
+      "revId": "8c4bb0f687e5c6eedb9662675570dfa9bda806ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
