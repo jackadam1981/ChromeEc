@@ -175,6 +175,7 @@ if(DEFINED CONFIG_BOARD_CRAASKOV)
 	zephyr_include_directories("craaskov/include")
 	zephyr_library_sources(
 			"craaskov/src/keyboard.c"
+			"craaskov/src/sub_board.c"
 			"craaskov/src/usbc_stubs.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "craaskov/src/charger.c")
