@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "103d4cf7_cfadc3f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-02-22T17:45:59Z",
+      "side": 1,
+      "message": "`zmake` what?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "502b8310_078f4569",
         "filename": "zephyr/zmake/zmake/signers.py",
         "patchSetId": 1
