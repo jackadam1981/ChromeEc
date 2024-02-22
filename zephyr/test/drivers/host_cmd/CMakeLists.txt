@@ -2,6 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# TODO(b/325661196): Remove this once this target builds with this flag.
+zephyr_cc_option(-Wno-int-conversion)
+
 target_sources(app PRIVATE
     src/adc.c
     src/battery_cut_off.c
@@ -25,6 +28,7 @@ target_sources(app PRIVATE
     src/tablet_mode.c
     src/usb_pd_control.c
     src/usb_pd_host_cmd.c
+    src/ap_hang_detect.c
 )
 
 add_subdirectory(
