@@ -6,6 +6,7 @@
  */
 
 #include "console.h"
+#include "led_onoff_states.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -97,6 +98,7 @@ static const char *const cable_curr[] = {
 	[USB_VBUS_CUR_5A] = "5A",
 };
 
+#ifdef CONFIG_USB_PD_DP21_MODE
 static const char *const dp21_cable_type[] = {
 	[DP21_PASSIVE_CABLE] = "Passive",
 	[DP21_ACTIVE_RETIMER_CABLE] = "Active-Retimer",
@@ -109,6 +111,7 @@ static const char *const dp21_cable_speed[] = {
 	[DP_UHBR10] = "UHBR10",
 	[DP_UHBR20] = "UHBR20",
 };
+#endif
 
 static int command_cable(int argc, const char **argv)
 {
@@ -119,8 +122,6 @@ static int command_cable(int argc, const char **argv)
 	int cable_rev;
 	union tbt_mode_resp_cable cable_tbt_mode_resp;
 	union dp_mode_resp_cable cable_dp_mode_resp;
-	uint8_t dp_bit_rate;
-	enum dp21_cable_type active_comp;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
@@ -144,10 +145,12 @@ static int command_cable(int argc, const char **argv)
 		IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) ?
 			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
 			0;
+#ifdef CONFIG_USB_PD_DP21_MODE
 	cable_dp_mode_resp.raw_value =
-		IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
-			dp_get_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
-			0;
+		dp_get_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+#else
+	cable_dp_mode_resp.raw_value = 0;
+#endif
 
 	/* Cable revision */
 	ccprintf("Cable Rev: %d.0\n", cable_rev + 1);
@@ -205,11 +208,14 @@ static int command_cable(int argc, const char **argv)
 		}
 	}
 
-	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
-	    cable_dp_mode_resp.raw_value) {
+#ifdef CONFIG_USB_PD_DP21_MODE
+	if (cable_dp_mode_resp.raw_value) {
 		enum dpam_version dp_ver =
 			dp_resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME);
 		if (dp_ver == DPAM_VERSION_21) {
+			uint8_t dp_bit_rate;
+			enum dp21_cable_type active_comp;
+
 			ccprintf("DPAM Version : %s\n",
 				 (dp_ver ? "2.1 or higher" : "2.0 or earlier"));
 			dp_bit_rate = dp_get_cable_bit_rate(port);
@@ -226,6 +232,7 @@ static int command_cable(int argc, const char **argv)
 				 dp21_cable_type[active_comp]);
 		}
 	}
+#endif
 
 	if (!cable_tbt_mode_resp.raw_value)
 		return EC_SUCCESS;

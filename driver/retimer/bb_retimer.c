@@ -298,13 +298,11 @@ static void retimer_handle_tbt_dfp(int port, mux_state_t mux_state,
 		BB_RETIMER_TBT_CABLE_GENERATION(cable_resp.tbt_rounded);
 }
 
+#ifdef CONFIG_USB_PD_DP21_MODE
 static void retimer_handle_dp21_dfp(int port, uint32_t *set_retimer_con)
 {
 	union dp_mode_resp_cable cable_dp_mode_resp = {
-		.raw_value =
-			IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
-				dp_get_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
-				0
+		.raw_value = dp_get_mode_vdo(port, TCPCI_MSG_SOP_PRIME)
 	};
 	union tbt_mode_resp_cable tbt_cable_resp = {
 		.raw_value = pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME)
@@ -371,6 +369,8 @@ static void retimer_handle_dp21_dfp(int port, uint32_t *set_retimer_con)
 					      get_usb4_cable_speed(port));
 }
 
+#else
+
 static void retimer_handle_dp_dfp(int port, uint32_t *set_retimer_con)
 {
 	union tbt_mode_resp_cable cable_resp = {
@@ -408,6 +408,7 @@ static void retimer_handle_dp_dfp(int port, uint32_t *set_retimer_con)
 	if (cable_type == IDH_PTYPE_ACABLE)
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 }
+#endif
 
 static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 				  uint32_t *set_retimer_con)
@@ -419,13 +420,15 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	    mux_state & USB_PD_MUX_USB4_ENABLED)
 		retimer_handle_tbt_dfp(port, mux_state, set_retimer_con);
 
-	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
-	    (mux_state & USB_PD_MUX_DP_ENABLED)) {
+#ifdef CONFIG_USB_PD_DP21_MODE
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		retimer_handle_dp21_dfp(port, set_retimer_con);
-	} else if (!IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
-		   (mux_state & USB_PD_MUX_DP_ENABLED)) {
+	}
+#else
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		retimer_handle_dp_dfp(port, set_retimer_con);
 	}
+#endif
 }
 
 static void retimer_set_state_ufp(int port, mux_state_t mux_state,
