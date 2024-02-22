@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "300a5595_571219ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T01:02:15Z",
+      "side": 1,
+      "message": "I didn\u0027t realize I had this draft comment remaining. I think it\u0027s cleaner overall to remove FRS_EN from ovis as well as it\u0027s not a feature needed for Ovis either. As opposed to copying this node just to delete it for Deku",
+      "revId": "4a1841fee1374248615aa97033bae69cde72f3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

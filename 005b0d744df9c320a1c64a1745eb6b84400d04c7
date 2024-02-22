@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7c003e1_f63b8e30",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T01:02:15Z",
+      "side": 1,
+      "message": "Let\u0027s just move the FRS_EN part to Ovis platform. The same reason FRS is not required for Deku does apply to Ovis as well. that\u0027s probably cleaner to just make it common for Ovis platform.",
+      "parentUuid": "49271dc1_43a7de4e",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "005b0d744df9c320a1c64a1745eb6b84400d04c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53546be4_badba6d3",
         "filename": "zephyr/program/ovis/deku/project.overlay",
         "patchSetId": 5
