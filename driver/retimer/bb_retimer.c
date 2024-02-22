@@ -301,10 +301,7 @@ static void retimer_handle_tbt_dfp(int port, mux_state_t mux_state,
 static void retimer_handle_dp21_dfp(int port, uint32_t *set_retimer_con)
 {
 	union dp_mode_resp_cable cable_dp_mode_resp = {
-		.raw_value =
-			IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
-				dp_get_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
-				0
+		.raw_value = dp_get_mode_vdo(port, TCPCI_MSG_SOP_PRIME)
 	};
 	union tbt_mode_resp_cable tbt_cable_resp = {
 		.raw_value = pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME)
