@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4571f2a_877cca05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T15:37:23Z",
+      "side": 1,
+      "message": "There\u0027s no formatters which handle naming for you as far as I know. You\u0027ll have to find+replace.",
+      "parentUuid": "e9ee0bfb_1bcac7f8",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c553cdc_e0c82d22",
         "filename": "extra/um_ppm/ppm_common.c",
         "patchSetId": 2
@@ -390,6 +408,24 @@
       "side": 1,
       "message": "You\u0027re right that current strict use of WillOnce causes the unit tests to be not stable. I agree that order and number of calls is not so important as the result (sysfs entries). I will use ON_CALL where it is possible.\nBut I will need to also use EXPECT_CALL for example for get connector status because the get connector status message is the same each but the replies differ.",
       "parentUuid": "5eea6363_91236406",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01318c20_300752cd",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T15:37:23Z",
+      "side": 1,
+      "message": "Sure but those EXPECT_CALL should be in-line with other things being called in your test.\n\ni.e.\n\n```\nconstexpr int kDefaultPort \u003d 1;\n\nTEST_F(Foo, Bar) {\n  SetupMock();\n  \n  // Trigger a partner connected event. Should result in connector status check\n  // at least twice.\n  EXPECT_CALL(*pd_driver_mock_, \n    ExecuteCmd(_, CommandPortMatches(UCSI_CMD_GET_CONNECTOR_STATUS, kDefaultPort))\n    .WillRepeatedly(Invoke(\u0026kConstatPartnerChange, fptr));\n    .Times(Ge(2));\n    \n  ppm_drv-\u003elpm_alert(ppm_drv-\u003edev, kDefaultPort);\n}\n```",
+      "parentUuid": "99a44739_f42e4ee3",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
