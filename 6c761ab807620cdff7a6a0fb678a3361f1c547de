@@ -39,6 +39,30 @@
       },
       "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40f41f2_3944de18",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T19:54:23Z",
+      "side": 1,
+      "message": "Yes, if you compare v.21 (and earlier) to v.22, the changes reflected in this CL are documented. There is a bit more detail about which commands needed to be changed in the rst54xx driver. Some number of the v.21 to v.22 changes are not reflected in this CL, because those commands are not included in the current driver. But, all 0xE CMDs that are implemented have been modified (if required) in this CL",
+      "parentUuid": "d7c44ec1_bfec92f7",
+      "range": {
+        "startLine": 141,
+        "startChar": 60,
+        "endLine": 141,
+        "endChar": 64
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
