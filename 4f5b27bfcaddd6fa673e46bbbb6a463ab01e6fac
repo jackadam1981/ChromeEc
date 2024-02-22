@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13558be1_44707a18",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T00:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6aa12fc_fd9c6fab",
+      "revId": "4f5b27bfcaddd6fa673e46bbbb6a463ab01e6fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4971906_dd062347",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-20T21:35:32Z",
       "side": 1,
       "message": "not your change, but does this need updating to LOG_ERR? Is the todo handle error now handled with port-\u003ecmd-\u003eerror \u003d true?",
+      "revId": "4f5b27bfcaddd6fa673e46bbbb6a463ab01e6fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cabe8c_02957b41",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T00:53:48Z",
+      "side": 1,
+      "message": "I think the TODO here still needs to be addressed. This wait counter is being used to track the max time that pdc API should wait for a command to be completed. The wait counter gets reset above each time a command is resent due to it returning an error status.",
+      "parentUuid": "b4971906_dd062347",
       "revId": "4f5b27bfcaddd6fa673e46bbbb6a463ab01e6fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f9972d_0a0cf4cf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T00:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c8c943_b07a41ac",
+      "revId": "4f5b27bfcaddd6fa673e46bbbb6a463ab01e6fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45080352_560cb11d",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-02-20T21:35:32Z",
       "side": 1,
       "message": "does this need to downgrade to a WARN given that you can now resend the command twice?",
+      "revId": "4f5b27bfcaddd6fa673e46bbbb6a463ab01e6fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0febcd3a_b36475d9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1413,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-22T00:53:48Z",
+      "side": 1,
+      "message": "I have added a TODO here for this section. This public timeout value needs to be revisited since an internal command may be retried up to 2 more times in the case of an error ping status from the PDC. In normal operation, it will likely only be SET_UOR and SET_PDR (role swaps) commands that will return an error status because the either PDC is in a state where it won\u0027t attempt a role swap or the port partner may reject it.",
+      "parentUuid": "45080352_560cb11d",
       "revId": "4f5b27bfcaddd6fa673e46bbbb6a463ab01e6fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
