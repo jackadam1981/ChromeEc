@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70ab47d7_6160c11f",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-22T09:36:43Z",
+      "side": 1,
+      "message": "I don\u0027t think it is a good idea. An additional config like `HW_TEST_ON` would need to be introduced anyway to include CMake from zephyr/test/hwtest/. The complexity is mainly caused by RO/RW.\n\nAdditionally, the current version simplifies setting configs per test. Every test has to set `HW_TEST`, `HW_TEST_RW_ONLY` is set by default and if any test has to be run in RO, `HW_TEST_RW_ONLY` can be unset manually or even by test runner e.g. I use it [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5310657/3/test/run_device_tests.py#791). I feel like using one choice for enabling and selecting RO/RW can introduce setting mutually exclusive configs.",
+      "parentUuid": "668ecc96_814e6756",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "48218338c90f91a419c4fdf48e681e1d49f8ec46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98bed478_4fe3d386",
         "filename": "zephyr/Kconfig.test",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-21T17:23:17Z",
       "side": 1,
       "message": "I also don\u0027t see a need for another choice here, we can already check if `CONFIG_ZTEST` is enabled.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "48218338c90f91a419c4fdf48e681e1d49f8ec46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97055662_9eb69448",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-22T09:36:43Z",
+      "side": 1,
+      "message": "True.",
+      "parentUuid": "98bed478_4fe3d386",
       "range": {
         "startLine": 51,
         "startChar": 0,
