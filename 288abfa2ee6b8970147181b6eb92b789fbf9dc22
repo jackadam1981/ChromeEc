@@ -54,6 +54,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9ee0bfb_1bcac7f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-02-22T12:00:28Z",
+      "side": 1,
+      "message": "Thanks for the comments. I guess cros format does not adhere to the Google C++ style guidelines ? Is there available a formater I could use ?",
+      "parentUuid": "60a330df_2413e680",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78eb20b_9bdbd0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-02-22T12:00:28Z",
+      "side": 1,
+      "message": "Thank you for the review.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c553cdc_e0c82d22",
         "filename": "extra/um_ppm/ppm_common.c",
         "patchSetId": 2
@@ -337,6 +372,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "Using `WillOnce` makes this a very fragile mock. Instead, I think we need to do the following:\n\nUse `ON_CALL` to point to a default response that returns default values for all the supported/expected commands.\n\nUse a custom matcher that lets you identify a specific UCSI command to respond to.\nUse another custom matcher that is a combination of UCSI command + port.\n\nFor example:\n\n```\n  ON_CALL(*pd_driver_mock_, ExecuteCmd).WillByDefault(ReturnDefaultValuesForCmds);\n  \n  ON_CALL(*pd_driver_mock, ExecuteCmd(_, CommandMatches(UCSI_CMD_GET_PDO), _))\n     .WillOnce(Invoke(\u0026kGetPdoUniqueRsp, fptr));\n     \n  ON_CALL(*pd_driver_mock, \n    ExecuteCmd(_, CommandPortMatches(UCSI_CMD_GET_CONNECTOR_STATUS, 1))\n    .WillByDefault(Invoke(\u0026kConnectorStatusOn1, fptr));\n```\n\nWe want to validate that providing a certain response to various UCSI commands result in the correct changes in OPM / sysfs and not strictly care about what does get called.\n\nIn case, we DO care and want to enforce it, we can still use `EXPECT_CALL(...).Times(N)` to enforce it using the matchers described above.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a44739_f42e4ee3",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-02-22T12:00:28Z",
+      "side": 1,
+      "message": "You\u0027re right that current strict use of WillOnce causes the unit tests to be not stable. I agree that order and number of calls is not so important as the result (sysfs entries). I will use ON_CALL where it is possible.\nBut I will need to also use EXPECT_CALL for example for get connector status because the get connector status message is the same each but the replies differ.",
+      "parentUuid": "5eea6363_91236406",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
