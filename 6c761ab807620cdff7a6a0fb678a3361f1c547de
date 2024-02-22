@@ -91,6 +91,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db3cc7b0_95393a61",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-22T22:29:53Z",
+      "side": 1,
+      "message": "UCSI specifies an additional 5 bytes of data that Realtek hasn\u0027t implemented.  So we need to open a bug to get Realtek to fix this.\n\nBut we probably want to transition to defining a packed struct matching the UCSI spec.\n\n```\nstruct connector_reset {\n    uint8_t connector_number : 7;\n    enum reset_type reset_type : 1;\n}\n```\n\nThen each driver doesn\u0027t need to pack the data.  It becomes the responsibility of the subsystem to deal with the data.",
+      "range": {
+        "startLine": 1533,
+        "startChar": 0,
+        "endLine": 1533,
+        "endChar": 64
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7dde7b7_05146de2",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-22T22:29:53Z",
+      "side": 1,
+      "message": "Another mismatch between Realtek and UCSI. UCSI specifies 38 bits of reserved at the end, Realtek only specifies 6.\n\nBut I think you should update `union uor_t` to match the UCSI spec.\n\n```\nunion uor_t {\n\tstruct {\n\t\tuint16_t connector_number : 7;\n\t\tuint16_t swap_to_dfp : 1;\n\t\tuint16_t swap_to_ufp : 1;\n\t\tuint16_t accept_dr_swap : 1;\n\t\t/* Reserved */\n\t\tuint16_t reserved_1 : 6;\n\t\tuint32_t reserved_2;\n\t};\n\tuint8_t raw_value[6];\n\n```",
+      "range": {
+        "startLine": 1903,
+        "startChar": 0,
+        "endLine": 1903,
+        "endChar": 67
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a858c86_59992a12",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-22T22:29:53Z",
+      "side": 1,
+      "message": "Suggest the same as the others, update ucsi_v3.h with a corrected data structure.",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1928,
+        "endChar": 67
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b1f71ba_4dbd641d",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
