@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73491c63_1bdf8124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Please use forward slashes here.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505639c0_0305bc8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Remove TODO from commit message (this can go in Makefile if you really want it)",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a330df_2413e680",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Sorry about the large number of comments (many are style). Please read the comment at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5307699/comment/5eea6363_91236406/ which covers a suggestion to refactor how the `EXPECT_CALL` is used. \n\nWe do not want to enforce that a certain sequence of commands are called but that the OPM correctly uses calls to the PPM to fill out the sysfs.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c553cdc_e0c82d22",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Looks like debug changes that weren\u0027t reverted",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8396ba0b_01fd4aab",
+        "filename": "extra/um_ppm/test/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Use full name: `remote_unit_tests` \n\nshortening it does nothing since you\u0027re always going to be running `make remote_tests` anyways",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6763d71b_88b44465",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "`using namespace` is not allowed by style guide.\n\nhttps://google.github.io/styleguide/cppguide.html#Namespaces",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0573c26e_7dcc80f7",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Style: `PdDriverMock`\n\nhttps://google.github.io/styleguide/cppguide.html#Function_Names",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67e7e4c_575a4a2c",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "You\u0027re going to want to document why this exists.\n\ni.e. Used for the C `execute_cmd` implementation and reset per test run.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5d6af6_c1c90c6a",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: `pd_driver_mock_`\n\nhttps://google.github.io/styleguide/cppguide.html#Variable_Names",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c81c3d_cc0aeb5d",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: General Google C++ style is to exclude the `this`. Naming convention of `variable_` tells you when it\u0027s a class variable.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ba79c0_e81088c1",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: Append `_` to end for all non-const.\n\nhttps://google.github.io/styleguide/cppguide.html#Variable_Names",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afae5c49_e8be437f",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: Rename as `kUcsiCmdLen`\n\nhttps://google.github.io/styleguide/cppguide.html#Constant_Names",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e52ddbd_c0be5511",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "naming: `SysfsVerifier` seems to describe this better.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdb4d38_4744f5c0",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: `kTimeoutMs`",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18e098c_00f0ce9a",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: `AddDirToCheck` (and all other method names that are expected to be called by C++ code)\n\nhttps://google.github.io/styleguide/cppguide.html#Function_Names",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc7d7e37_fa89ef02",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "You can use tuple destructuring:\n\n`auto\u0026 [loc, exist, val] \u003d tuple;`\n\nhttps://en.cppreference.com/w/cpp/language/structured_binding",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0fdf02_e5f845c1",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Reduce to `file_exist \u003d\u003d exist`",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a67494e_afe30015",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "nit: Complete sentences in comments please (capitalization + punctuation).",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af0ab88_c5e54968",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "style: `OpmInitialization`",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eea6363_91236406",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Using `WillOnce` makes this a very fragile mock. Instead, I think we need to do the following:\n\nUse `ON_CALL` to point to a default response that returns default values for all the supported/expected commands.\n\nUse a custom matcher that lets you identify a specific UCSI command to respond to.\nUse another custom matcher that is a combination of UCSI command + port.\n\nFor example:\n\n```\n  ON_CALL(*pd_driver_mock_, ExecuteCmd).WillByDefault(ReturnDefaultValuesForCmds);\n  \n  ON_CALL(*pd_driver_mock, ExecuteCmd(_, CommandMatches(UCSI_CMD_GET_PDO), _))\n     .WillOnce(Invoke(\u0026kGetPdoUniqueRsp, fptr));\n     \n  ON_CALL(*pd_driver_mock, \n    ExecuteCmd(_, CommandPortMatches(UCSI_CMD_GET_CONNECTOR_STATUS, 1))\n    .WillByDefault(Invoke(\u0026kConnectorStatusOn1, fptr));\n```\n\nWe want to validate that providing a certain response to various UCSI commands result in the correct changes in OPM / sysfs and not strictly care about what does get called.\n\nIn case, we DO care and want to enforce it, we can still use `EXPECT_CALL(...).Times(N)` to enforce it using the matchers described above.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3745b432_caacce9e",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "These are `port 2` and `port 3` on our test Chromebooks but we should really look these up using the driver instead.\n\nFor example, `cros-ec-typec` would show up at:\n`/sys/bus/platform/drivers/cros-ec-typec/GOOG0014\\:00/typec/port0`\n\nI haven\u0027t started `ucsi_um_test` but I\u0027d expect:\n`/sys/bus/platform/drivers/ucsi_um_test/typec/port2`\n\nYou\u0027ll need to figure out how to handle offsets but the actual constants I\u0027d use for ports are 1 and 2.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa1d54a_c160e2cb",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "Why the sleep at the end?",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904ff4df_83b2b991",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T04:18:55Z",
+      "side": 1,
+      "message": "I would make the tests more descriptive (both the name and the comment here).\n\nThis seems to be `VerifyPartnerPropertiesOnConnect`.\n\n```\nEmit an LPM alert and connector status marking a port partner as connected\nand confirm the OPM fills out all the relevant partner properties.\n```",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
