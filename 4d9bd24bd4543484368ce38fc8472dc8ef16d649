@@ -16,6 +16,24 @@
       "message": "```\n\u003e       assert (\n            gen_bazel_targets.DEFAULT_OUTPUT.read_text(encoding\u003d\"utf-8\")\n            \u003d\u003d gen_bazel_targets.gen_bazel()\n        ), \"Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.\"\nE       AssertionError: Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.\n```\n\nDid you run `./bazel/gen_bazel_targets.py`?",
       "revId": "4d9bd24bd4543484368ce38fc8472dc8ef16d649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f95c29_722f2c89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-02-22T03:41:08Z",
+      "side": 1,
+      "message": "Thanks. I run ./bazel/gen_bazel_targets.py\nAnd add bazel/all_targets.generated.bzl.",
+      "parentUuid": "51c9940f_b4810cce",
+      "revId": "4d9bd24bd4543484368ce38fc8472dc8ef16d649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
