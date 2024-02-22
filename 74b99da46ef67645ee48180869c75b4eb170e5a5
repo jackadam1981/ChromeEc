@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e3d534f_ae9b318a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-22T07:04:41Z",
+      "side": 1,
+      "message": "I don\u0027t see the code to bail when in S0 in that function. Is S5 a typo on line 188.\nMy concern is still valid: sensor-\u003econfig was meant to be read-only.",
+      "parentUuid": "fa97df72_657a4696",
+      "revId": "74b99da46ef67645ee48180869c75b4eb170e5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a32b0e8_ed248bb5",
         "filename": "common/motion_sense.c",
         "patchSetId": 17
