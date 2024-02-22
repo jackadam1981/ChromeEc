@@ -39,6 +39,30 @@
       },
       "revId": "eb9cb983d178005e11dbd29c8ed60efa356468eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd656bc_2ba4d0ae",
+        "filename": "zephyr/test/drivers/panic_reason/src/panic_reason.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-22T07:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef12051d_6102e243",
+      "range": {
+        "startLine": 24,
+        "startChar": 61,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "eb9cb983d178005e11dbd29c8ed60efa356468eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
