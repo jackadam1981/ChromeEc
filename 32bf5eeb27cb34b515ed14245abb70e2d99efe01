@@ -166,6 +166,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f996e115_71fd0988",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-22T22:48:36Z",
+      "side": 1,
+      "message": "\u003e Should there be a connection between emul_intel_pd_controller and emul_pdc to handle this? This way when emul_intel_pd_controller_connect_data is called, it will notify emul_pdc.\n\nThat\u0027s probably a good idea, but is it needed for this test?  I thought you were asking if `pd_task_intel_altmode.c` should change to do the following:\n\n```\n\tusb_mux_set(port, mux,\n\t\t    status_data.conn ? USB_SWITCH_DISCONNECT :\n\t\t\t\t\t     USB_SWITCH_CONNECT,\n\t\t    status.conn_ori);\n```",
+      "parentUuid": "8746de9a_0deb4e2d",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
