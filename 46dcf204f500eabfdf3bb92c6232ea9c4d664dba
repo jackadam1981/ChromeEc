@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502b8310_078f4569",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-02-22T17:45:42Z",
+      "side": 1,
+      "message": "```suggestion\n                yield from self.sign_ec(path, work_dir, jobclient)\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839bc0bd_3ad8fd22",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-02-22T17:45:42Z",
+      "side": 1,
+      "message": "```suggestion\n    ) -\u003e Iterator[Tuple[Path, str]]:\n```",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0323707_6596b694",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-02-22T17:45:42Z",
+      "side": 1,
+      "message": "```suggestion\n        Yields:\n            2-tuples (output_name, output_path) which should be copied into\n            the output directory, and the output filename.\n```",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 70
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
