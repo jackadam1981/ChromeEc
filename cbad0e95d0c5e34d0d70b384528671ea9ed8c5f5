@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec46aff7_eea33c5c",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T03:25:59Z",
+      "side": 1,
+      "message": "Probably better to print using `ucsi_command_to_string` as it\u0027s nicer for debugging.",
+      "revId": "cbad0e95d0c5e34d0d70b384528671ea9ed8c5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0369e35d_77bd457c",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-22T03:25:59Z",
+      "side": 1,
+      "message": "nit: We do this `DLOG_LOOP` pretty often. Maybe we just write a platform api that says:\n\n```\n#define DLOG_ARRAY_U8(array, array_size, prefix_fmt, ...) { \\\n  DLOG_START(prefix_fmt \": [ \", __VA_ARGS__); \\\n  for (int _i \u003d 0; _i \u003c array_size; ++_i) { \\\n    DLOG_LOOP(\"0x%02x\", array[_i]); \\\n  } \\\n  DLOG_END(\" ]\"); \\\n}\n```",
+      "revId": "cbad0e95d0c5e34d0d70b384528671ea9ed8c5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
