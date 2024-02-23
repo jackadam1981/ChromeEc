@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8561537_240abdf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-23T23:50:41Z",
+      "side": 1,
+      "message": "Can you split this into two CLs?\n\n* One that adds the \"OTP key\" APIs (i.e., the `chip/npcx/otp_key.c` file and associated test)\n* A second one that adds the code that uses the \"OTP key\" APIs (i.e., the `common/rollback.c` and `common/fpsensor/fpsensor_crypto.cc` changes)\n\nContext: go/small-cls",
+      "revId": "3af299b19dd561ae868e45b91984930bef998ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
