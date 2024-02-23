@@ -35,6 +35,24 @@
       "parentUuid": "cf9dd7fa_4330fefa",
       "revId": "f1b837c383cf244bb7077c221e32716925eee581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb78d1a4_31bbc561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-02-23T15:44:51Z",
+      "side": 1,
+      "message": "Hi Rob, this is just for triggering a firmware version for Anraggar EVT1 devices.  \nI will revert this from fw branch once the new build is generated. It\u0027s expected it will not break the ec branch merge rules.",
+      "parentUuid": "052b6fa1_4c9bdbdd",
+      "revId": "f1b837c383cf244bb7077c221e32716925eee581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
