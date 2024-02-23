@@ -190,6 +190,30 @@
       },
       "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c32844_521b9a43",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-02-23T01:56:58Z",
+      "side": 1,
+      "message": "Using `status_data.conn` for setting `usb_mode` (`USB_SWITCH_CONNECT` or `USB_SWITCH_DISCONNECT`) does not make any difference in `pd_is_connected` result. `usb_mode` is only used to decide whether to enter in low power mode.\n\nIf we want to evaluate `pd_is_connected` in this test, we need to either connect `emul_intel_pd_controller` with `emul_pdc`, or manipulate `emul_pdc_rts54`.\n\nCould we unblock these CL\u0027s, by removing `pd_is_connected` evaluation, and we address handling connection in a separate tracker?",
+      "parentUuid": "f996e115_71fd0988",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "32bf5eeb27cb34b515ed14245abb70e2d99efe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
