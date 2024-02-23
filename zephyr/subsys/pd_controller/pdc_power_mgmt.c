@@ -1169,6 +1169,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 		} else {
 			LOG_ERR("%s resend attempts exceeded!",
 				pdc_cmd_names[port->cmd->cmd]);
+			port->cmd->error = true;
 			set_pdc_state(port, port->send_cmd_return_state);
 			return;
 		}
