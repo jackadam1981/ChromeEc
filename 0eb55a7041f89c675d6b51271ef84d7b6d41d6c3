@@ -118,6 +118,29 @@
       },
       "revId": "0eb55a7041f89c675d6b51271ef84d7b6d41d6c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61bb627_8406a125",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-23T23:04:38Z",
+      "side": 1,
+      "message": "If this naming is confusing, we could rename ti50_stats_v2 to ti50_stats.\n\nIf we ever increase the size again, we could rename this back to ti50_stats_v2 and create \nti50_stats {\n   struct ti50_stats_v2 v2;\n   new_fields.\n}",
+      "range": {
+        "startLine": 363,
+        "startChar": 18,
+        "endLine": 363,
+        "endChar": 20
+      },
+      "revId": "0eb55a7041f89c675d6b51271ef84d7b6d41d6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
