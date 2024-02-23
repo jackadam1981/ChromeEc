@@ -4347,6 +4347,21 @@ static int print_ti50_stats(struct ti50_stats_v0 *stats, size_t size)
 				(stats_v1->misc_status & METRICSV_CCD_MODE_MASK)
 				>> METRICSV_CCD_MODE_SHIFT);
 		}
+		if (bits_used >= 7) {
+			/* These were added in version 3 */
+			printf("wp_asserted:           %d\n",
+				(stats_v1->misc_status &
+				METRICSV_WP_ASSERTED_MASK)
+				>> METRICSV_WP_ASSERTED_SHIFT);
+			printf("allow_unverified_ro:   %d\n",
+				(stats_v1->misc_status &
+				METRICSV_ALLOW_UNVERIFIED_RO_MASK)
+				>> METRICSV_ALLOW_UNVERIFIED_RO_SHIFT);
+			printf("is_prod:               %d\n",
+				(stats_v1->misc_status &
+				METRICSV_IS_PROD_MASK)
+				>> METRICSV_IS_PROD_SHIFT);
+		}
 	}
 	if (size >= sizeof(struct ti50_stats_v2)) {
 		struct ti50_stats_v2 *stats_v2 = (struct ti50_stats_v2 *) stats;
