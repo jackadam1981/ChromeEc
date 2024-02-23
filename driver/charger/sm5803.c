@@ -45,7 +45,7 @@
 
 #define UNKNOWN_DEV_ID -1
 test_export_static int dev_id = UNKNOWN_DEV_ID;
-
+static int idle_charge;
 static const struct charger_info sm5803_charger_info = {
 	.name = CHARGER_NAME,
 	.voltage_max = CHARGE_V_MAX,
@@ -1527,6 +1527,20 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 		rv = sm5803_flow1_update(chgnum, 0xFF, MASK_CLR);
 		rv |= sm5803_flow2_update(chgnum, SM5803_FLOW2_AUTO_ENABLED,
 					  MASK_CLR);
+	} else if ((get_chg_ctrl_mode() == CHARGE_CONTROL_IDLE) && !idle_charge) {
+		rv = sm5803_flow1_update(chgnum, SM5803_FLOW1_MODE, MASK_CLR);
+		rv |= sm5803_flow2_update(chgnum, SM5803_FLOW2_AUTO_ENABLED,
+					  MASK_CLR);
+		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK,
+				  MASK_SET);
+		idle_charge = 1;
+	} else if ((get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) && idle_charge) {
+		rv = sm5803_flow1_update(chgnum, SM5803_FLOW1_MODE, MASK_CLR);
+		rv |= sm5803_flow2_update(chgnum, SM5803_FLOW2_AUTO_ENABLED,
+					  MASK_SET);
+		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK,
+				  MASK_SET);
+		idle_charge = 0;
 	}
 
 	return rv;
