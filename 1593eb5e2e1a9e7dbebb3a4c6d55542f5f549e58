@@ -16,6 +16,24 @@
       "message": "FYI, @davidmcross@google.com confirmed that this seems to work on a Karis device that has not been reworked.\n\nHowever, to avoid masking a hardware issue we prefer to rework the boards that have this problem. We\u0027ll keep this CL as a workaround that people can use if they don\u0027t have the hardware fix.",
       "revId": "1593eb5e2e1a9e7dbebb3a4c6d55542f5f549e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0eed64_d077e36e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-02-23T23:58:13Z",
+      "side": 1,
+      "message": "I was able to create a version of this that should only apply to early hardware revisions: https://crrev.com/c/5322266.\n\nOnce those changes land, this CL will no longer be needed.",
+      "parentUuid": "7ee96b96_aee62d7f",
+      "revId": "1593eb5e2e1a9e7dbebb3a4c6d55542f5f549e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
