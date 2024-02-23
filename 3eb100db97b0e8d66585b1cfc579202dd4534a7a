@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d36c4c_533b7a3b",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-23T05:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ba9478b_d195a6d1",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "3eb100db97b0e8d66585b1cfc579202dd4534a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4be5d35a_31655afb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "008a71d2_aecdb5c6",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-23T05:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4be5d35a_31655afb",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 21
+      },
+      "revId": "3eb100db97b0e8d66585b1cfc579202dd4534a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1c0943b_db9faa4a",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-20T23:02:41Z",
       "side": 1,
       "message": "This should also be in the deferred function (`add_entropy_deferred`) for clarity (and in case it takes some time like the random number generation).",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 3
+      },
+      "revId": "3eb100db97b0e8d66585b1cfc579202dd4534a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bf55ea_25c00857",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-23T05:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c0943b_db9faa4a",
       "range": {
         "startLine": 466,
         "startChar": 0,

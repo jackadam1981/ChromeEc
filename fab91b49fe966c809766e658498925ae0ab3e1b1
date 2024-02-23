@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "580c2a15_89d2e16e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-23T05:23:10Z",
+      "side": 1,
+      "message": "I added a simple unit test and looked into the mock framework. After writing the initial test which calls otp_key_provision and otp_key_read, I don\u0027t really understand how the test would be improved by using the mock framework. To mock the write, think we\u0027d also need to mock the read to return trivial bytes initially. If we wanted to use the real read back when OTP was already written, we could mock trng_rand to return the values in OTP. I don\u0027t follow what error causes either would help us uncover? Please help to provide more detail if further modifications or mock functions would improve the test.",
+      "parentUuid": "e8437511_6474bbea",
+      "revId": "fab91b49fe966c809766e658498925ae0ab3e1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99e09ef2_5d874a41",
         "filename": "chip/npcx/otp_key.c",
         "patchSetId": 1
