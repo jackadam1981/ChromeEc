@@ -140,14 +140,15 @@ uint32_t pd_get_events(int port)
 
 struct rmdo pd_get_partner_rmdo(int port)
 {
-	struct rmdo value = {0};
+	struct rmdo value = { 0 };
 
 	/* TODO:b/326466602 */
 
 	return value;
 }
 
-enum pd_discovery_state pd_get_identity_discovery(int port, enum tcpci_msg_type type)
+enum pd_discovery_state pd_get_identity_discovery(int port,
+						  enum tcpci_msg_type type)
 {
 	/* TODO:b/326468310 */
 
@@ -156,7 +157,5 @@ enum pd_discovery_state pd_get_identity_discovery(int port, enum tcpci_msg_type 
 
 int pd_get_rev(int port, enum tcpci_msg_type type)
 {
-	/* TODO:b/326466765 */
-
-	return PD_REV30;
+	return pdc_power_mgmt_get_rev(port, type);
 }
