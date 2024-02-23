@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e74e39b_77a72be2",
+        "filename": "zephyr/test/charger/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-23T18:22:38Z",
+      "side": 1,
+      "message": "Done. Also applied this to the charger selection config as well.",
+      "parentUuid": "fc70a389_93bcfef7",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "4ecd8cf8b787112253e690f02dbd3828cb93f903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94db0c6f_71bf522b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e46b74_7eb06919",
+        "filename": "zephyr/test/charger/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-23T18:22:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94db0c6f_71bf522b",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 17
+      },
+      "revId": "4ecd8cf8b787112253e690f02dbd3828cb93f903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d89ad9_4f0bd8b7",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-22T18:03:24Z",
       "side": 1,
       "message": "Nit - make this promptless so that it can only be selected by other symbols.  Also add help text.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 27
+      },
+      "revId": "4ecd8cf8b787112253e690f02dbd3828cb93f903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e189d0e4_e0cd75a9",
+        "filename": "zephyr/test/charger/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-23T18:22:38Z",
+      "side": 1,
+      "message": "Done. I also cleaned up a couple of other symbols as well.",
+      "parentUuid": "e4d89ad9_4f0bd8b7",
       "range": {
         "startLine": 120,
         "startChar": 0,
