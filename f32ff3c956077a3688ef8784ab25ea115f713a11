@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411229fd_63e03bcc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4386,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-23T23:06:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this anymore. The version is enough to tell what bits are in the misc status field.",
+      "range": {
+        "startLine": 4384,
+        "startChar": 3,
+        "endLine": 4386,
+        "endChar": 24
+      },
+      "revId": "f32ff3c956077a3688ef8784ab25ea115f713a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
