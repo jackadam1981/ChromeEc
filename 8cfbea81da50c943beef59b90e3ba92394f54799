@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a3785c_b338f509",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-02-23T18:26:04Z",
+      "side": 1,
+      "message": "That will work here, but it doesn\u0027t work for the cases where the function being called is #ifdef\u0027d in the header file, and so creates an implicit function warning even if it is not really called because of IS_ENABLED().\n\nBut I suppose that is a bug in itself, don\u0027t put conditionals in the header files either?",
+      "parentUuid": "92dd9533_ed0dc151",
+      "revId": "8cfbea81da50c943beef59b90e3ba92394f54799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9349415_417cee13",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-23T17:50:22Z",
       "side": 1,
       "message": "I\u0027ve been under the impression that our pre-upload hooks would reject declarations not at the top of the block. Is that no longer true?",
+      "revId": "8cfbea81da50c943beef59b90e3ba92394f54799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0677b4_82d45b89",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-02-23T18:26:04Z",
+      "side": 1,
+      "message": "I ran them, they didn\u0027t complain.",
+      "parentUuid": "d9349415_417cee13",
       "revId": "8cfbea81da50c943beef59b90e3ba92394f54799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
