@@ -116,8 +116,6 @@ struct cmd_t {
 	enum pdc_cmd_t cmd;
 	/** True if command is pending */
 	bool pending;
-	/** True if command failed to send */
-	bool error;
 };
 
 /**
@@ -779,15 +777,6 @@ static void pdc_unattached_run(void *obj)
 		return;
 	}
 
-	/* TODO: Limit the number of retries and try to reset PDC, then
-	 * ultimately disable port */
-	if (port->send_cmd.intern.error) {
-		/* The last command could not be sent, so send it again */
-		port->unattached_local_state = port->unattached_last_state;
-	} else {
-		port->unattached_last_state = port->unattached_local_state;
-	}
-
 	switch (port->unattached_local_state) {
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
@@ -826,15 +815,6 @@ static void pdc_src_attached_run(void *obj)
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		return;
-	}
-
-	/* TODO: Limit the number of retries and try to reset PDC, then
-	 * ultimately disable port */
-	if (port->send_cmd.intern.error) {
-		/* The last command could not be sent, so send it again */
-		port->src_attached_local_state = port->src_attached_last_state;
-	} else {
-		port->src_attached_last_state = port->src_attached_local_state;
 	}
 
 	/* TODO: b/319643480 - Brox: implement SRC policies */
@@ -893,15 +873,6 @@ static void pdc_snk_attached_run(void *obj)
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		return;
-	}
-
-	/* TODO: Limit the number of retries and try to reset PDC, then
-	 * ultimately disable port */
-	if (port->send_cmd.intern.error) {
-		/* The last command could not be sent, so send it again */
-		port->snk_attached_local_state = port->snk_attached_last_state;
-	} else {
-		port->snk_attached_last_state = port->snk_attached_local_state;
 	}
 
 	switch (port->snk_attached_local_state) {
@@ -1103,7 +1074,6 @@ static void pdc_send_cmd_start_run(void *obj)
 			/* Could not send command: TODO handle error */
 			LOG_INF("Command (%s) retry timeout",
 				pdc_cmd_names[port->cmd->cmd]);
-			port->cmd->error = true;
 			port->cmd->pending = false;
 			set_pdc_state(port, port->send_cmd_return_state);
 		}
@@ -1135,7 +1105,6 @@ static void pdc_send_cmd_wait_run(void *obj)
 	 */
 	if (port->cmd->cmd == CMD_PDC_RESET) {
 		if (pdc_is_init_done(port->pdc)) {
-			port->cmd->error = false;
 			set_pdc_state(port, port->send_cmd_return_state);
 			return;
 		}
@@ -1185,7 +1154,6 @@ static void pdc_send_cmd_wait_run(void *obj)
 
 	port->send_cmd.wait_counter++;
 	if (port->send_cmd.wait_counter > WAIT_MAX) {
-		port->cmd->error = true;
 		if (port->cmd->cmd == CMD_PDC_GET_CONNECTOR_STATUS) {
 			/* Can't get connector status. Enter unattached state
 			 * with error flag set, so it can reset the PDC */
