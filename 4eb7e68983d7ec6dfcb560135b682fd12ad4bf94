@@ -16,6 +16,24 @@
       "message": "Hi Ashley, \nbecause of the D4 cannot be pull down, then forgive to compatible EVT2 unit， just add CL for the final one. EVT1 was used the E0, the old version should be OK. what do you think?",
       "revId": "4eb7e68983d7ec6dfcb560135b682fd12ad4bf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c5f0f2_8c1bd350",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2024-02-23T09:07:12Z",
+      "side": 1,
+      "message": "This ec change LGTM. The EVT2 board needs reworking to match this change.",
+      "parentUuid": "b69273ea_62ec82d9",
+      "revId": "4eb7e68983d7ec6dfcb560135b682fd12ad4bf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
