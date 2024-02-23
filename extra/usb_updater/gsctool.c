@@ -4378,6 +4378,27 @@ static int print_ti50_stats(struct ti50_stats_v0 *stats, size_t size)
 			stats_v2->timeslices_expired);
 		printf("crypto_init_time:      %d\n",
 			stats_v2->crypto_init_time);
+
+		/* Display version 3 metrics */
+		if (stats_v2->version >= 3) {
+			uint32_t bits_used = stats_v2->v1.misc_status >>
+				METRICSV_BITS_USED_SHIFT;
+			if (bits_used >= 7) {
+				/* These were added in version 3 */
+				printf("wp_asserted:           %d\n",
+					(stats_v2->v1.misc_status &
+					METRICSV_WP_ASSERTED_MASK)
+					>> METRICSV_WP_ASSERTED_SHIFT);
+				printf("allow_unverified_ro:   %d\n",
+					(stats_v2->v1.misc_status &
+					METRICSV_ALLOW_UNVERIFIED_RO_MASK)
+					>> METRICSV_ALLOW_UNVERIFIED_RO_SHIFT);
+				printf("is_prod:               %d\n",
+					(stats_v2->v1.misc_status &
+					METRICSV_IS_PROD_MASK)
+					>> METRICSV_IS_PROD_SHIFT);
+			}
+		}
 	}
 	return 0;
 }
