@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c94a81_ead61a04",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-23T23:08:04Z",
+      "side": 1,
+      "message": "Just a heads up for future use, this doesn\u0027t work on all platforms. I know this isn\u0027t an issue for karis.\n\n```\ncoachz-rev2 ~ # ectool cbi get 0; echo The result was $?\nEC result 1 (INVALID_COMMAND)\nError code: -1001\nThe result was 1\n```",
+      "range": {
+        "startLine": 229,
+        "startChar": 19,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "3c07bdac78ccbe059997c309d55df2e44ddcaf75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
