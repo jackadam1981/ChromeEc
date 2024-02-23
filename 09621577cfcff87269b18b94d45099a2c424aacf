@@ -16,6 +16,24 @@
       "message": "Looks like this is failing to build the brox unit tests.  Try running `./twister -ivc -T zephyr/test/brox` to recreate the issue.",
       "revId": "09621577cfcff87269b18b94d45099a2c424aacf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c10ad24_1263b5a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2024-02-23T07:07:28Z",
+      "side": 1,
+      "message": "Thank you for providing the information.",
+      "parentUuid": "4b481f62_2e77a90a",
+      "revId": "09621577cfcff87269b18b94d45099a2c424aacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
