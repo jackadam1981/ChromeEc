@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b154b4_43bacf84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-02-23T10:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103d4cf7_cfadc3f1",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "502b8310_078f4569",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-22T17:45:42Z",
       "side": 1,
       "message": "```suggestion\n                yield from self.sign_ec(path, work_dir, jobclient)\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f17027_a6b17a3f",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-02-23T10:13:38Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "502b8310_078f4569",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa8e80b_cd6eadf9",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-02-23T10:13:38Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "839bc0bd_3ad8fd22",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0323707_6596b694",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-22T17:45:42Z",
       "side": 1,
       "message": "```suggestion\n        Yields:\n            2-tuples (output_name, output_path) which should be copied into\n            the output directory, and the output filename.\n```",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 70
+      },
+      "revId": "46dcf204f500eabfdf3bb92c6232ea9c4d664dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db967c7_4f08639d",
+        "filename": "zephyr/zmake/zmake/signers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-02-23T10:13:38Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d0323707_6596b694",
       "range": {
         "startLine": 109,
         "startChar": 0,
