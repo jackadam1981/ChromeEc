@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094c5ed1_1e4e6820",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4364,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-23T22:58:26Z",
+      "side": 1,
+      "message": "This should go in line 4374. No stats_v1 objects support these bits. Print them if stats_v2-\u003e version \u003e\u003d 3.",
+      "range": {
+        "startLine": 4350,
+        "startChar": 0,
+        "endLine": 4364,
+        "endChar": 3
+      },
+      "revId": "6db0e214b07670266fe2cc56567d672668371b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
