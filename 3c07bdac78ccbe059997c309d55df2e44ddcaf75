@@ -46,6 +46,30 @@
       },
       "revId": "3c07bdac78ccbe059997c309d55df2e44ddcaf75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12c9ede_23915390",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-23T23:10:03Z",
+      "side": 1,
+      "message": "Hmm. I think this is fine for now, but I think we also want to check ectool return code (PIPESTATUS).",
+      "parentUuid": "35c94a81_ead61a04",
+      "range": {
+        "startLine": 229,
+        "startChar": 19,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "3c07bdac78ccbe059997c309d55df2e44ddcaf75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
