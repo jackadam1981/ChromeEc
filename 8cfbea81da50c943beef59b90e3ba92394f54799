@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92dd9533_ed0dc151",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-23T17:50:22Z",
+      "side": 1,
+      "message": "Would it be sufficient here to declare this as `__maybe_unused`, keep the `IS_ENABLED` below, and let the linker optimize it out?\n\nI think this could also be asked of some of your other changes.",
+      "revId": "8cfbea81da50c943beef59b90e3ba92394f54799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9349415_417cee13",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-23T17:50:22Z",
+      "side": 1,
+      "message": "I\u0027ve been under the impression that our pre-upload hooks would reject declarations not at the top of the block. Is that no longer true?",
+      "revId": "8cfbea81da50c943beef59b90e3ba92394f54799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
