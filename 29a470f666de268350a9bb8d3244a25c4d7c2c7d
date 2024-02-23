@@ -16,6 +16,24 @@
       "message": "hmmm... this seems like a serious oops. nice catch! please document.",
       "revId": "29a470f666de268350a9bb8d3244a25c4d7c2c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15712932_f8108336",
+        "filename": "zephyr/test/drivers/nct38xx/src/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-02-23T00:17:59Z",
+      "side": 1,
+      "message": "Where would I document it?",
+      "parentUuid": "7b3551fe_f5a6b35b",
+      "revId": "29a470f666de268350a9bb8d3244a25c4d7c2c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
