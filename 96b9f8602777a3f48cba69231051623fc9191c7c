@@ -22,6 +22,30 @@
       },
       "revId": "96b9f8602777a3f48cba69231051623fc9191c7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0383abba_dfd97083",
+        "filename": "zephyr/scripts/component_manifest.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-02-25T01:04:51Z",
+      "side": 1,
+      "message": "The guide says fields basically have to be optional or repeated:\n\ngo/proto2-docs",
+      "parentUuid": "59fc84eb_b6999bd2",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 9
+      },
+      "revId": "96b9f8602777a3f48cba69231051623fc9191c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
