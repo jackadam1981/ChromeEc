@@ -78,7 +78,7 @@
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_ADC
-#undef CONFIG_SHA256_SW
+#undef CONFIG_SHA256
 
 #ifndef __ASSEMBLER__
 
