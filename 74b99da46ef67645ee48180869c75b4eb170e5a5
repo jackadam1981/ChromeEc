@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d75575ad_60d37e1b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-26T17:11:26Z",
+      "side": 1,
+      "message": "In line 234, since we are not in S0, we have full control and the ODR is set by the sensor-\u003econfig[] already. We don\u0027t have to set |ec_rate| again as it has been set to an acceptable value already at compilation time.",
+      "parentUuid": "05884a80_82a035d9",
+      "revId": "74b99da46ef67645ee48180869c75b4eb170e5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a32b0e8_ed248bb5",
         "filename": "common/motion_sense.c",
         "patchSetId": 17
