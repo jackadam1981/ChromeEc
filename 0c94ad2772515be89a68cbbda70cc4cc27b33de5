@@ -70,6 +70,30 @@
       },
       "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c21c7b_b628f901",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-26T19:07:28Z",
+      "side": 0,
+      "message": "Looks like we are seeing a similar error on ToT with helipilot unit tests - b/326982748. Reverting this change does fix the build issue.",
+      "parentUuid": "6882a242_8db0b8c3",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
