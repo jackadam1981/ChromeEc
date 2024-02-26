@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e471a6_5edc45f8",
+        "filename": "zephyr/program/nissa/glassway/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-02-26T02:03:24Z",
+      "side": 1,
+      "message": "Can you please let me know if this SUB_BOARD \u003d n is on purpose?  \nWe have sub board claimed in zephyr/program/nissa/glassway/cbi.dtsi, but CONFIG_NISSA_SUB_BOARD \u003d n here.",
+      "revId": "8e74e8564616a1cf3e209945fe5278fdad982155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ab5468_ae820fc2",
+        "filename": "zephyr/program/nissa/glassway/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-02-26T02:03:24Z",
+      "side": 1,
+      "message": "Besides, please let me know below will be used, or just reserved for future usage?\nzephyr/program/nissa/glassway/src/sub_board.c and zephyr/program/nissa/include/glassway_sub_board.h",
+      "revId": "8e74e8564616a1cf3e209945fe5278fdad982155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
