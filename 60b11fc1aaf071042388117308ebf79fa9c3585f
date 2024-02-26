@@ -142,6 +142,30 @@
       },
       "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe50b3c_ed127932",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-26T21:05:26Z",
+      "side": 1,
+      "message": "Thanks for consideration. I\u0027ll leave it to you.\n \nI\u0027m concerned using STM32_USART_CR1_FIFOEN as a compile swtich as well as a bit mask leads to confusion. So, it looks cleaner to me to guard the sections by IS_ENABLED(CHIP_FAMILY_STM32L5). Bit masks tend to be defined whether they exist in the chip or not (in most directories of this codebase, IIUC). chip/stm32 is a bit different in that regards.",
+      "parentUuid": "07fe0397_fa2684ec",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
