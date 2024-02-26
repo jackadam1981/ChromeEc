@@ -141,6 +141,30 @@
       },
       "revId": "0eb55a7041f89c675d6b51271ef84d7b6d41d6c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617d38e8_b9328b5c",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-26T18:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61bb627_8406a125",
+      "range": {
+        "startLine": 363,
+        "startChar": 18,
+        "endLine": 363,
+        "endChar": 20
+      },
+      "revId": "0eb55a7041f89c675d6b51271ef84d7b6d41d6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
