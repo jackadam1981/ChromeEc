@@ -15,6 +15,8 @@
 #include "crypto/fipsmodule/modes/internal.h"
 
 extern "C" {
+#include "otp_key.h"
+#include "panic.h"
 #include "rollback.h"
 #include "sha256.h"
 #include "util.h"
