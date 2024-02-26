@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f235d5ba_dd25cfd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-26T17:13:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c382c3a_2896b1b1",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "58ed13d8_510769e6",
         "filename": "chip/stm32/usart_tx_interrupt.c",
         "patchSetId": 1
@@ -86,6 +110,30 @@
       "side": 1,
       "message": "Oh yes, I had forgotten about that. Good idea\n\n```\nif (!IS_ENABLED(STM32_USART_CR1_FIFOEN) || !(STM32_USART_SR(base) \u0026 STM32_USART_SR_TXE)) {\n   return;\n}\n```",
       "parentUuid": "9152bec2_9ae182ba",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07fe0397_fa2684ec",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-02-26T17:13:12Z",
+      "side": 1,
+      "message": "The suggestion does not work exactly, because `STM32_USART_CR1_FIFOEN` is not a `CONFIG_xxx`-type define from `board.h`, but rather a bitfield which may be defined in some `registers-stm32xxx.h` files (currently only `registers-stm32l5.h`).\n\nOther drivers, which need to differ by chip family will typically do something like `#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)`.  I feel that it can make sense to check the register bit field directly, rather than having to list each of the various variants which have support for that bit.\n\nIn this case, if the hardware supports FIFO, I do not see any disadvantage to using it (8-byte FIFO instead of effectively one-byte FIFO), which is why I found no need to introduce a `CONFIG_xxx` setting.",
+      "parentUuid": "9b909e79_5a87724a",
       "range": {
         "startLine": 61,
         "startChar": 1,
