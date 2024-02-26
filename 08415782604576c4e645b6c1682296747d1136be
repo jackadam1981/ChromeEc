@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ed1b4a_251713ac",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4340,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-26T18:09:39Z",
+      "side": 1,
+      "message": "This is unrelated to the change, but were there ever different versions of the v1 misc_status bits? Did we have a build that had nothing in misc_status? Can we drop the bits_used check here?",
+      "range": {
+        "startLine": 4340,
+        "startChar": 0,
+        "endLine": 4340,
+        "endChar": 23
+      },
+      "revId": "08415782604576c4e645b6c1682296747d1136be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
