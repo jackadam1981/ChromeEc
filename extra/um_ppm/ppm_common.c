@@ -846,10 +846,9 @@ static int ppm_common_write(struct ucsi_ppm_device *device, unsigned int offset,
 	}
 
 	if (offset >= UCSI_MESSAGE_OUT_OFFSET &&
-	    offset + length >= UCSI_MESSAGE_OUT_OFFSET + MESSAGE_OUT_SIZE) {
-		ELOG("UCSI write to MESSAGE_OUT exceeds bounds: offset(0x%x) + size(0x%x) "
-		     ">= "
-		     "end(0x%x)",
+	    offset + length > UCSI_MESSAGE_OUT_OFFSET + MESSAGE_OUT_SIZE) {
+		ELOG("UCSI write to MESSAGE_OUT exceeds bounds: "
+		     "offset(0x%x) + size(0x%x) > end(0x%x)",
 		     offset, length,
 		     UCSI_MESSAGE_OUT_OFFSET + MESSAGE_OUT_SIZE);
 		return -1;
