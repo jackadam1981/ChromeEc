@@ -183,12 +183,22 @@ test_mockable __keep int main(void)
 	if (IS_ENABLED(CONFIG_EEPROM_CBI_WP) && system_is_locked())
 		cbi_latch_eeprom_wp();
 
-		/*
-		 * Keyboard scan init/Button init can set recovery events to
-		 * indicate to host entry into recovery mode. Before this is
-		 * done, LPC_HOST_EVENT_ALWAYS_REPORT mask needs to be
-		 * initialized correctly.
-		 */
+#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
+#ifdef CONFIG_MPU
+#ifndef CONFIG_ZEPHYR
+	if (system_is_locked()) {
+		mpu_protect_code_ram_script();
+	}
+#endif
+#endif
+#endif
+
+	/*
+	 * Keyboard scan init/Button init can set recovery events to
+	 * indicate to host entry into recovery mode. Before this is
+	 * done, LPC_HOST_EVENT_ALWAYS_REPORT mask needs to be
+	 * initialized correctly.
+	 */
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_init_mask();
 #endif
