@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb89871_ed93f68b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-26T23:36:57Z",
+      "side": 1,
+      "message": "Split the GET_CABLE_PROPERTY support into separate CL.",
+      "range": {
+        "startLine": 148,
+        "startChar": 25,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
