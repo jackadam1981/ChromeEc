@@ -46,6 +46,30 @@
       },
       "revId": "96b9f8602777a3f48cba69231051623fc9191c7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf582f9c_e92602bc",
+        "filename": "zephyr/scripts/component_manifest.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-02-26T16:47:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0383abba_dfd97083",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 9
+      },
+      "revId": "96b9f8602777a3f48cba69231051623fc9191c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
