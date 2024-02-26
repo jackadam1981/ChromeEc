@@ -50,6 +50,10 @@ test_static int test_ro_protection_enabled(void)
 
 test_static int test_system_is_locked(void)
 {
+	if (system_is_locked())
+		ccprints("The system is locked.\n");
+		cflush();
+
 	if (!write_protect_is_asserted() ||
 	    (~crec_flash_get_protect() & EC_FLASH_PROTECT_RO_NOW))
 		TEST_EQ(system_is_locked(), 0, "%d");
