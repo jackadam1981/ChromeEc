@@ -15,6 +15,8 @@
 #include "crypto/fipsmodule/modes/internal.h"
 
 extern "C" {
+#include "otp_key.h"
+#include "panic.h"
 #include "rollback.h"
 #include "sha256.h"
 #include "util.h"
@@ -54,6 +56,32 @@ test_export_static enum ec_error_list get_ikm(uint8_t *ikm)
 	 * the TPM.
 	 */
 	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
+
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		uint32_t status = EC_ERROR_UNKNOWN;
+		uint32_t i;
+		uint8_t otp_key[FP_POSITIVE_MATCH_SECRET_BYTES] = { 0 };
+
+		status = otp_key_read(otp_key);
+		if (status != EC_SUCCESS) {
+			ccprintf("Failed to read OTP key with status=%d",
+				 status);
+			software_panic(PANIC_SW_ASSERT, task_get_current());
+		}
+		if (FP_POSITIVE_MATCH_SECRET_BYTES !=
+		    CONFIG_ROLLBACK_SECRET_SIZE) {
+			ccprintf(
+				"Positive Match != Rollback Secret size, %d != %d",
+				FP_POSITIVE_MATCH_SECRET_BYTES,
+				CONFIG_ROLLBACK_SECRET_SIZE);
+			software_panic(PANIC_SW_ASSERT, task_get_current());
+		}
+
+		for (i = 0; i < FP_POSITIVE_MATCH_SECRET_BYTES; i++)
+			ikm[i] ^= otp_key[i];
+
+		OPENSSL_cleanse(otp_key, FP_POSITIVE_MATCH_SECRET_BYTES);
+	}
 
 	return EC_SUCCESS;
 }
