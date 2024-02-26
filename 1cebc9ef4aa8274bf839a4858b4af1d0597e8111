@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "904f9a0a_2b24f048",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-02-26T23:38:45Z",
+      "side": 1,
+      "message": "Am I correct in understanding that the logic here is that in scenarios where a crash cause isn\u0027t provided (WATCHDOG, ASSERT, DIV_BY_ZERO, etc.) that we\u0027d instead provide something Zephyr specific? If that\u0027s the case, please reach out to me with a breakdown of the format (and any potential mappings) so we can properly detect them in the crash processor and build the magic signature using them. See how we\u0027re handling it for crash causes already: \n\nhttps://source.corp.google.com/piper///depot/google3/net/crash/processor/chromeos_ec_constants.h;l\u003d95\n\nhttps://source.corp.google.com/piper///depot/google3/net/crash/processor/chromeos_ec_log_parser.cc;l\u003d29",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 4
+      },
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c349d83_a3e71171",
         "filename": "zephyr/shim/src/panic.c",
         "patchSetId": 5
