@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de19dc7_3aa2decc",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-26T16:00:08Z",
+      "side": 1,
+      "message": "Note - `if/endif` blocks only add a dependency to the symbols inside the block.  These are not preprocessor blocks.\n\nI think this would be easier to follow if you just list the dependencies directly under HW_TEST_ON.\n\n```\nconfig HW_TEST_ON\n    bool\n    default y if HW_TEST_RW_ONLY \u0026\u0026 CROS_EC_RW\n    default y if !HW_TEST_RW_ONLY\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "f5aa1ba13891c4f5b4d91b7a09f2105b5b86fe16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
