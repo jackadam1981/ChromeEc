@@ -177,7 +177,7 @@
 #ifdef SECTION_IS_RO
 #define CONFIG_RSA_OPTIMIZED
 #endif
-#define CONFIG_SHA256_SW
+#define CONFIG_SHA256
 #ifdef SECTION_IS_RO
 #define CONFIG_SHA256_UNROLLED
 #endif

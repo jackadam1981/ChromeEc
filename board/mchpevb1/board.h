@@ -283,7 +283,7 @@
 #define CONFIG_CMD_SPI_XFER
 
 /* common software SHA256 required by vboot and rollback */
-#define CONFIG_SHA256_SW
+#define CONFIG_SHA256
 
 /*
  * Enable MCHP SHA256 hardware accelerator module.
