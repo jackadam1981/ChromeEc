@@ -10,6 +10,7 @@
 #include "cpu.h"
 #include "mpu.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "util.h"
 
@@ -459,3 +460,10 @@ int mpu_pre_init(void)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_PROTECT_CODE_RAM
+void mpu_post_init(void)
+{
+	mpu_protect_code_ram_script();
+}
+#endif

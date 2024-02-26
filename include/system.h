@@ -691,6 +691,8 @@ void delay_sleep_by(uint32_t us);
 void disable_deep_sleep(void);
 void enable_deep_sleep(void);
 
+void mpu_protect_code_ram_script(void);
+
 /**
  * This function is made visible for tests only, it allows overriding the RTC.
  *
