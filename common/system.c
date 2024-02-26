@@ -188,6 +188,18 @@ static uint32_t __attribute__((unused)) get_size(enum ec_image copy)
 	}
 }
 
+void mpu_protect_code_ram_script(void)
+{
+	int ret;
+
+	ret = mpu_protect_code_ram();
+	if (ret == EC_SUCCESS) {
+		CPRINTS("code RAM locked.");
+	} else {
+		CPRINTS("Failed to lock code RAM (%d)", ret);
+	}
+}
+
 test_mockable int system_is_locked(void)
 {
 	static int is_locked = -1;
