@@ -14,6 +14,7 @@
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
+#include "otp_key.h"
 #include "rollback.h"
 #include "rollback_private.h"
 #include "sha256.h"
@@ -183,6 +184,7 @@ test_mockable enum ec_error_list rollback_get_secret(uint8_t *secret)
 		goto failed;
 
 	memcpy(secret, data.secret, sizeof(data.secret));
+
 	ret = EC_SUCCESS;
 failed:
 	clear_rollback(&data);
@@ -366,6 +368,17 @@ int rollback_update_version(int32_t next_min_version)
 
 int rollback_add_entropy(const uint8_t *data, unsigned int len)
 {
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		uint32_t status = EC_ERROR_UNKNOWN;
+
+		status = otp_key_provision();
+		if (status != EC_SUCCESS) {
+			ccprintf("failed to provision OTP key with status=%d",
+				 status);
+			return status;
+		}
+	}
+
 	return rollback_update(-1, data, len);
 }
 

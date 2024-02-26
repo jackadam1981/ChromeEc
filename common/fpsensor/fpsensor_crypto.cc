@@ -15,6 +15,7 @@
 #include "crypto/fipsmodule/modes/internal.h"
 
 extern "C" {
+#include "otp_key.h"
 #include "rollback.h"
 #include "sha256.h"
 #include "util.h"
@@ -54,6 +55,30 @@ test_export_static enum ec_error_list get_ikm(uint8_t *ikm)
 	 * the TPM.
 	 */
 	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
+
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		uint8_t otp_key[OTP_KEY_SIZE_BYTES] = { 0 };
+
+		ret = (enum ec_error_list)otp_key_read(otp_key);
+		if (ret != EC_SUCCESS) {
+			CPRINTS("Failed to read OTP key with ret=%d", ret);
+			return EC_ERROR_HW_INTERNAL;
+		}
+
+		if (bytes_are_trivial(otp_key, sizeof(otp_key))) {
+			CPRINTS("ERROR: bytes read from OTP are trivial!");
+			return EC_ERROR_HW_INTERNAL;
+		}
+
+		/*
+		 * IKM is now the concatenation of the rollback secret, the seed
+		 * from the TPM and the key stored in OTP
+		 */
+		memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed),
+		       otp_key, sizeof(otp_key));
+
+		OPENSSL_cleanse(otp_key, OTP_KEY_SIZE_BYTES);
+	}
 
 	return EC_SUCCESS;
 }
@@ -168,7 +193,12 @@ derive_positive_match_secret(uint8_t *output,
 			     const uint8_t *input_positive_match_salt)
 {
 	enum ec_error_list ret;
+#ifdef CONFIG_OTP_KEY
+	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed) +
+		    OTP_KEY_SIZE_BYTES];
+#else
 	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
+#endif
 	uint8_t prk[SHA256_DIGEST_SIZE];
 	static const char info_prefix[] = "positive_match_secret for user ";
 	uint8_t info[sizeof(info_prefix) - 1 + sizeof(user_id)];
