@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c24789f_18a12848",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-26T17:45:55Z",
+      "side": 1,
+      "message": "Note -- we may also want to fix MESSAGE_OUT_SIZE. I checked the spec and it is actually 255 bytes (2040 bits), not 256.",
+      "revId": "3705ed894e01a2f0fe4b4519befc2deb59cc3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6277b5dc_0a4cce85",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-02-26T17:45:55Z",
+      "side": 1,
+      "message": "Should merge this line (`\"\u003e \"`) with the one below (`\"end(0x%x)\"`). Must have been messed up by clang-format during transition to EC codebase.",
+      "revId": "3705ed894e01a2f0fe4b4519befc2deb59cc3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
