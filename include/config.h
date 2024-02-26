@@ -4046,7 +4046,7 @@
 #undef CONFIG_SCI_GPIO
 
 /* Support computing of other hash sizes (without the VBOOT code) */
-#undef CONFIG_SHA256_SW
+#undef CONFIG_SHA256
 
 /* Compute SHA256 by using chip's hardware accelerator */
 #undef CONFIG_SHA256_HW_ACCELERATE
@@ -7106,7 +7106,7 @@
 
 /* EC Codec Wake-on-Voice related definitions */
 #ifdef CONFIG_AUDIO_CODEC_WOV
-#define CONFIG_SHA256_SW
+#define CONFIG_SHA256
 #endif
 
 #ifdef CONFIG_SMBUS_PEC
