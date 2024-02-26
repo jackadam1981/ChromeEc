@@ -16,6 +16,24 @@
       "message": "Is this really needed?",
       "revId": "fbf846d730ed164b9451054e6890fcde421cb0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0e9b35_4fa7f63f",
+        "filename": "zephyr/program/fpmcu/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-26T12:28:32Z",
+      "side": 1,
+      "message": "It\u0027s not, but if I remove it, then the values will appear in config-rw file. Should I remove it, what do you think?",
+      "parentUuid": "e0027d1a_69dcd008",
+      "revId": "fbf846d730ed164b9451054e6890fcde421cb0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
