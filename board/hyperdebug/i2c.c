@@ -259,6 +259,7 @@ static void usb_i2c_execute(unsigned int expected_size)
 	/* Payload is ready to execute. */
 	int portindex = rx_buffer[1] & 0xf;
 	uint16_t addr_flags = rx_buffer[2] & 0x7f;
+	bool no_stop = rx_buffer[2] & 0x80;
 	int write_count = ((rx_buffer[1] << 4) & 0xf00) | rx_buffer[3];
 	int read_count = rx_buffer[4];
 	int offset = 0; /* Offset for extended reading header. */
@@ -287,11 +288,11 @@ static void usb_i2c_execute(unsigned int expected_size)
 		i2c_status = USB_I2C_PORT_INVALID;
 	} else {
 		i2c_lock(i2c_ports[portindex].port, 1);
-		int ret = i2c_xfer_unlocked(i2c_ports[portindex].port,
-					    addr_flags, rx_buffer + 5 + offset,
-					    write_count, rx_buffer + 5,
-					    read_count,
-					    I2C_XFER_START | I2C_XFER_STOP);
+		int ret = i2c_xfer_unlocked(
+			i2c_ports[portindex].port, addr_flags,
+			rx_buffer + 5 + offset, write_count, rx_buffer + 5,
+			read_count,
+			I2C_XFER_START | (no_stop ? 0 : I2C_XFER_STOP));
 		i2c_lock(i2c_ports[portindex].port, 0);
 		i2c_status = usb_i2c_map_error(ret);
 	}
