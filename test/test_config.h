@@ -116,7 +116,7 @@ enum battery_type {
 	defined(TEST_FPSENSOR_AUTH_COMMANDS)
 #define CONFIG_BORINGSSL_CRYPTO
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
-#define CONFIG_SHA256_SW
+/*#define CONFIG_SHA256_SW*/
 #endif
 
 #if defined(TEST_BORINGSSL_CRYPTO)
@@ -274,12 +274,17 @@ enum sensor_id {
 #endif
 
 #ifdef TEST_SHA256
-#define CONFIG_SHA256_SW
+/*#define CONFIG_SHA256_SW*/
 #endif
 
 #ifdef TEST_SHA256_UNROLLED
-#define CONFIG_SHA256_SW
+/*#define CONFIG_SHA256_SW*/
 #define CONFIG_SHA256_UNROLLED
+#endif
+
+/* This is only supported on NPCX. */
+#ifdef TEST_SHA256_HW
+/*#define CONFIG_SHA256_SW*/
 #endif
 
 #ifdef TEST_SHMALLOC
