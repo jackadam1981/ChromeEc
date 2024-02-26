@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c349d83_a3e71171",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-26T17:13:27Z",
+      "side": 1,
+      "message": "Do you have an examples of zephyr fatal errors that result in reason, info and exception all being zero? I wonder if it would be better to map to existing PANIC_SW_* reason?",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e2b8e1_4d26ff52",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-26T17:13:27Z",
+      "side": 1,
+      "message": "Typically reason holds PANIC_SW_* and info holds arbitrary context specific info (e.g. PC or assert line number). Exception is sometimes used to hold the task/thread id. This isn\u0027t ideal, but there is existing infrastructure that handles this form. So I\u0027d suggest something like: \npanic_set_reason(PANIC_SW_ZEPHYR_FATAL_ERROR, reason, task_get_current())",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
