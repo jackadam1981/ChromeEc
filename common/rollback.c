@@ -14,6 +14,8 @@
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
+#include "otp_key.h"
+#include "panic.h"
 #include "rollback.h"
 #include "rollback_private.h"
 #include "sha256.h"
@@ -183,6 +185,31 @@ test_mockable enum ec_error_list rollback_get_secret(uint8_t *secret)
 		goto failed;
 
 	memcpy(secret, data.secret, sizeof(data.secret));
+
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		uint32_t i;
+		uint8_t otp_key[FP_POSITIVE_MATCH_SECRET_BYTES] = { 0 };
+
+		ret = otp_key_read(otp_key);
+		if (ret != EC_SUCCESS) {
+			ccprintf("Failed to read OTP key with ret=%d", ret);
+			goto failed;
+		}
+
+		if (bytes_are_trivial(otp_key, sizeof(otp_key)))
+			goto failed;
+
+		BUILD_ASSERT(
+			FP_POSITIVE_MATCH_SECRET_BYTES ==
+				CONFIG_ROLLBACK_SECRET_SIZE,
+			"FP_POSITIVE_MATCH_SECRET_BYTES != CONFIG_ROLLBACK_SECRET_SIZE");
+
+		for (i = 0; i < FP_POSITIVE_MATCH_SECRET_BYTES; i++)
+			secret[i] ^= otp_key[i];
+
+		OPENSSL_cleanse(otp_key, FP_POSITIVE_MATCH_SECRET_BYTES);
+	}
+
 	ret = EC_SUCCESS;
 failed:
 	clear_rollback(&data);
@@ -366,6 +393,17 @@ int rollback_update_version(int32_t next_min_version)
 
 int rollback_add_entropy(const uint8_t *data, unsigned int len)
 {
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		uint32_t status = EC_ERROR_UNKNOWN;
+
+		status = otp_key_provision();
+		if (status != EC_SUCCESS) {
+			ccprintf("failed to provision OTP key with status=%d",
+				 status);
+			return status;
+		}
+	}
+
 	return rollback_update(-1, data, len);
 }
 
