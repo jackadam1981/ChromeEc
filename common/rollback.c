@@ -209,7 +209,7 @@ static int get_rollback_erase_size_bytes(int region)
 }
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
-#if (defined CONFIG_SHA256_SW || defined CONFIG_SHA256_HW_ACCELERATE)
+#ifdef CONFIG_SHA256_SW
 static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 		       unsigned int add_len)
 {
