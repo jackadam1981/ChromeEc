@@ -22,6 +22,30 @@
       },
       "revId": "6fe92837f51da5b0b1128dd6add65c1ea4b259dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b1cd15_8a89f7af",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2024-02-26T21:37:00Z",
+      "side": 1,
+      "message": "Lets say offset is 0, length is 0x100, and MESSAGE_OUT_SIZE\u003d0xFF\nThen we would read\nsize(0x100) \u003e end(0xFF), which makes sense to the user, right?",
+      "parentUuid": "ab3d890c_dc0e973d",
+      "range": {
+        "startLine": 851,
+        "startChar": 36,
+        "endLine": 851,
+        "endChar": 45
+      },
+      "revId": "6fe92837f51da5b0b1128dd6add65c1ea4b259dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
