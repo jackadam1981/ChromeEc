@@ -368,6 +368,13 @@ class AllTests:
             TestConfig(test_name="sbrk", imagetype_to_use=ImageType.RO),
             TestConfig(test_name="sha256"),
             TestConfig(test_name="sha256_unrolled"),
+            TestConfig(
+                test_name="sram_mpu_protection",
+                toggle_power=True,
+                enable_hw_write_protect=False,
+                pre_test_callback=lambda config=None: hw_write_protect(True),
+                post_test_callback=lambda config=None: hw_write_protect(False),
+            ),
             TestConfig(test_name="static_if"),
             TestConfig(test_name="stdlib"),
             TestConfig(test_name="std_vector"),
@@ -703,7 +710,7 @@ def fp_sensor_sel(
     return True
 
 
-def hw_write_protect(enable: bool) -> None:
+def hw_write_protect(enable: bool) -> bool:
     """Enable/disable hardware write protect."""
     if enable:
         state = "force_on"
@@ -715,7 +722,8 @@ def hw_write_protect(enable: bool) -> None:
         "fw_wp_state:" + state,
     ]
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    proc = subprocess.run(cmd, check=False)
+    return proc.returncode == 0
 
 
 def build(
