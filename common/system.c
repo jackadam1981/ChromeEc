@@ -188,6 +188,24 @@ static uint32_t __attribute__((unused)) get_size(enum ec_image copy)
 	}
 }
 
+#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
+#ifdef CONFIG_MPU
+#ifndef CONFIG_ZEPHYR
+void mpu_protect_code_ram_script(void)
+{
+	int ret;
+
+	ret = mpu_protect_code_ram();
+	if (ret == EC_SUCCESS) {
+		CPRINTS("code RAM locked.");
+	} else {
+		CPRINTS("Failed to lock code RAM (%d)", ret);
+	}
+}
+#endif
+#endif
+#endif
+
 test_mockable int system_is_locked(void)
 {
 	static int is_locked = -1;
