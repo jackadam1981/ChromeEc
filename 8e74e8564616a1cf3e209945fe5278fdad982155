@@ -33,6 +33,42 @@
       "message": "Besides, please let me know below will be used, or just reserved for future usage?\nzephyr/program/nissa/glassway/src/sub_board.c and zephyr/program/nissa/include/glassway_sub_board.h",
       "revId": "8e74e8564616a1cf3e209945fe5278fdad982155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d892314e_ef66a822",
+        "filename": "zephyr/program/nissa/glassway/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-02-26T02:12:40Z",
+      "side": 1,
+      "message": "Because glassway CBI FW_CONIG is defferent with nissa sub board define.",
+      "parentUuid": "92e471a6_5edc45f8",
+      "revId": "8e74e8564616a1cf3e209945fe5278fdad982155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04661396_f725e10f",
+        "filename": "zephyr/program/nissa/glassway/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-02-26T02:12:40Z",
+      "side": 1,
+      "message": "Depend on glassway CBI FW_CONFIG. We will use these for glassway project.\nhttps://docs.google.com/spreadsheets/d/1fP7aK1sMH2KKKIMnqIMu4W3e58s-obc3/edit#gid\u003d1921410860",
+      "parentUuid": "31ab5468_ae820fc2",
+      "revId": "8e74e8564616a1cf3e209945fe5278fdad982155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
