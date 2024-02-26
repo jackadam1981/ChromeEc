@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fb2a2ee_8002f5b4",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-26T18:32:27Z",
+      "side": 1,
+      "message": "Yes there are a number of commands which the UCSI spec has with 6 bytes of data following the `data_len` field. However, the realtek programming guide appears to always truncate the message_len field (2nd byte of the command) to include only up until the last byte which includes at least 1 bit of non-reserved information.",
+      "parentUuid": "db3cc7b0_95393a61",
+      "range": {
+        "startLine": 1533,
+        "startChar": 0,
+        "endLine": 1533,
+        "endChar": 64
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7dde7b7_05146de2",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
@@ -125,6 +149,30 @@
       "writtenOn": "2024-02-22T22:29:53Z",
       "side": 1,
       "message": "Another mismatch between Realtek and UCSI. UCSI specifies 38 bits of reserved at the end, Realtek only specifies 6.\n\nBut I think you should update `union uor_t` to match the UCSI spec.\n\n```\nunion uor_t {\n\tstruct {\n\t\tuint16_t connector_number : 7;\n\t\tuint16_t swap_to_dfp : 1;\n\t\tuint16_t swap_to_ufp : 1;\n\t\tuint16_t accept_dr_swap : 1;\n\t\t/* Reserved */\n\t\tuint16_t reserved_1 : 6;\n\t\tuint32_t reserved_2;\n\t};\n\tuint8_t raw_value[6];\n\n```",
+      "range": {
+        "startLine": 1903,
+        "startChar": 0,
+        "endLine": 1903,
+        "endChar": 67
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09aebd3c_0719ebf7",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-26T18:32:27Z",
+      "side": 1,
+      "message": "I have modified the data structure to include the connector number as that\u0027s also the most straight forward way to update the unit tests. As mentioned in the comment above, I don\u0027t think we should include the full message length (all of the reserved bits) until realtek makes a similar change.",
+      "parentUuid": "c7dde7b7_05146de2",
       "range": {
         "startLine": 1903,
         "startChar": 0,
@@ -160,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a191ab81_4484cdec",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-26T18:32:27Z",
+      "side": 1,
+      "message": "I have updated both the structs for uor and pdr and created one for connector_reset as those 3 tests were failing.",
+      "parentUuid": "6a858c86_59992a12",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1928,
+        "endChar": 67
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b1f71ba_4dbd641d",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
@@ -171,6 +243,30 @@
       "writtenOn": "2024-02-22T22:19:28Z",
       "side": 1,
       "message": "I think we need a full spec from Realtek that explains all the fields. For Realtek, they set the connector number to 0 but this is an error in the UCSI spec. And pdr_t struct doesn\u0027t know about connector numbers.",
+      "range": {
+        "startLine": 1942,
+        "startChar": 1,
+        "endLine": 1942,
+        "endChar": 9
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa650b77_aec428ea",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-26T18:32:27Z",
+      "side": 1,
+      "message": "I think in realtek\u0027s implementation the value of connector_number is a don\u0027t care. The programming guide has a mixture of language for this value. For commands that already had a connector number field, they use \"set value to 0\", but for commands that had port number, or where they\u0027d ignored connector number and now have added it, they are using the usci language that states \"setting this value to 0 is illegal\".\n\nThe kernel version of this driver is setting the connector number as expected in ucsi (port number + 1), and that\u0027s working. I didn\u0027t modify what this driver is doing as it seems like the current FW is still just relaying on with i2c address is used to infer the connector number.\n\nI have verified that setting the connector number to 0, as is currently being done, is working correctly.",
+      "parentUuid": "7b1f71ba_4dbd641d",
       "range": {
         "startLine": 1942,
         "startChar": 1,
