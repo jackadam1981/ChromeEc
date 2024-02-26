@@ -22,6 +22,30 @@
       },
       "revId": "08415782604576c4e645b6c1682296747d1136be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5fb88f_f0375341",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4340,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-02-26T18:31:40Z",
+      "side": 1,
+      "message": "Actually I don\u0027t know, they might have been added in a V1.5 where this change from `0` to `4` for the upper bits. We would have to double check",
+      "parentUuid": "08ed1b4a_251713ac",
+      "range": {
+        "startLine": 4340,
+        "startChar": 0,
+        "endLine": 4340,
+        "endChar": 23
+      },
+      "revId": "08415782604576c4e645b6c1682296747d1136be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
