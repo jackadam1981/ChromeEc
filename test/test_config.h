@@ -282,6 +282,11 @@ enum sensor_id {
 #define CONFIG_SHA256_UNROLLED
 #endif
 
+/* This is only supported on NPCX. */
+#ifdef TEST_SHA256_HW
+/*#define CONFIG_SHA256_SW*/
+#endif
+
 #ifdef TEST_SHMALLOC
 #define CONFIG_SHARED_MALLOC
 #endif
