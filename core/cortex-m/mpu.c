@@ -10,6 +10,7 @@
 #include "cpu.h"
 #include "mpu.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "util.h"
 
@@ -458,4 +459,11 @@ int mpu_pre_init(void)
 		cpu_enable_caches();
 
 	return EC_SUCCESS;
+}
+
+void mpu_post_init(void)
+{
+	if (IS_ENABLED(CONFIG_PROTECT_CODE_RAM)) {
+		mpu_protect_code_ram_script();
+	}
 }
