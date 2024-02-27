@@ -21,6 +21,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d769b860_5cd1d950",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-02-27T00:08:32Z",
+      "side": 1,
+      "message": "I\u0027ll leave it to you but the following looks clear to me:\n\n    \"UCSI write [0x%x ~ 0x%x] exceeds the MESSAGE_OUT range [0x%x ~ 0x%x]\",\n    offset, offset + length - 1,\n    UCSI_MESSAGE_OUT_OFFSET, UCSI_MESSAGE_OUT_OFFSET + MESSAGE_OUT_SIZE - 1",
+      "parentUuid": "57f691c1_07f36efe",
+      "revId": "6fe92837f51da5b0b1128dd6add65c1ea4b259dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab3d890c_dc0e973d",
         "filename": "extra/um_ppm/ppm_common.c",
         "patchSetId": 2
