@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c14aa8a_8e4f73d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-27T16:59:58Z",
+      "side": 1,
+      "message": "I\u0027d be more comfortable with this if we disabled deep sleep instead of regular sleep. I",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "ee06f0c2cf47ff34e6b8ad5ea6fc3b8824591cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd4baf4_ef4b9503",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1

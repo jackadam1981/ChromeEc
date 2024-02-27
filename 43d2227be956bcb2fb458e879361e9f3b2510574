@@ -16,6 +16,29 @@
       "message": "I\u0027m ok with the idea, but Mary please review - I\u0027m not that familiar with the initial state for the sleep mask, so let\u0027s make sure we don\u0027t miss something on boot or on wakeup from deep sleep that would prevent going to sleep later.",
       "revId": "43d2227be956bcb2fb458e879361e9f3b2510574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d7ee0b_d17e326f",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-27T16:59:58Z",
+      "side": 1,
+      "message": "Do nvmem commits get disabled when TPM_RST_L gets deasserted?\n\nWe\u0027re having some issues with boards that double reset .They boot up to a point then they reset and TPM_RST_L may be asserted for more than 1s triggering the \"AP off call\" \nIf nvmem commits get enabled, will commits stay enabled when the AP comes out of the second reset?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "43d2227be956bcb2fb458e879361e9f3b2510574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
