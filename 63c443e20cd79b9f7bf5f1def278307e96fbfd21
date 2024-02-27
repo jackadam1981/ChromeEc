@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2caf61b3_d267aad4",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-02-27T17:24:40Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I\u0027m having a hard time seeing the difference between `HW_TEST_ON` and `HW_TEST`. I think overall this is the right approach, I did it slightly differently at https://crrev.com/c/5273874. I think that\n\n(1) we\u0027ll need to converge our main.c/main.cc (that will likely be on me, because I think you\u0027re much closer to merging than I am).\n\n(2) You should be able to gate the main on something that\u0027s more automated:\n```\nconfig HW_TEST_MAIN\n  bool \"Add main function to handle running the tests\"\n  default y\n  depends on TEST\n  depends on !ARCH_POSIX\n  help\n    Include one of 4 variants of a main function with the following choice\n    permutations.\n    (1) a main function that automatically runs vs a shell command\n    (2) runs zTest vs gTest test framework\n```",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "63c443e20cd79b9f7bf5f1def278307e96fbfd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
