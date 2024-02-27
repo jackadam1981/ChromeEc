@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80fe2fd_61cd56ea",
+        "filename": "zephyr/include/test/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-27T17:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9d526f_e8b56d5e",
+      "revId": "93feba53baa5346d0716f226dad53fcf614f42eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9eb989_1324c715",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7650712_30b7969e",
+        "filename": "zephyr/include/test/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-27T17:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d76505_8aa17d08",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "93feba53baa5346d0716f226dad53fcf614f42eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538b7a06_e4dd26c4",
+        "filename": "zephyr/include/test/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-27T17:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9eb989_1324c715",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "93feba53baa5346d0716f226dad53fcf614f42eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cf6f9d1_81dd762d",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-02-27T08:55:33Z",
       "side": 1,
       "message": "Please add doxygen",
+      "revId": "93feba53baa5346d0716f226dad53fcf614f42eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e4b4a6_c9928bf5",
+        "filename": "zephyr/include/test/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-27T17:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf6f9d1_81dd762d",
       "revId": "93feba53baa5346d0716f226dad53fcf614f42eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
