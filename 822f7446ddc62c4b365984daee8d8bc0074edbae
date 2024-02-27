@@ -16,6 +16,24 @@
       "message": "I think it might be easier to just fix the issue directly.",
       "revId": "822f7446ddc62c4b365984daee8d8bc0074edbae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11f3f05_e9a1fee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-27T00:13:54Z",
+      "side": 1,
+      "message": "The difficulty here is that CONFIG_SHA256 was a generic dependency for either SW or HW SHA256 backing, but now it is specifically the SW version.\n\nThe tests don\u0027t care which one is provided, but they need to have a dep on one. The test wants to test whichever one the platform is intending on using.",
+      "parentUuid": "b219238f_7f044d70",
+      "revId": "822f7446ddc62c4b365984daee8d8bc0074edbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
