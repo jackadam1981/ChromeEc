@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9516baff_9ade8f2e",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-27T09:03:32Z",
+      "side": 1,
+      "message": "Yes, you are right. Sure, I will do that once we agree on the change.",
+      "parentUuid": "904f9a0a_2b24f048",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 4
+      },
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c349d83_a3e71171",
         "filename": "zephyr/shim/src/panic.c",
         "patchSetId": 5
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76dc2db7_edadedeb",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-27T09:03:32Z",
+      "side": 1,
+      "message": "Basically, all fatal errors that occur within Zephyr codebase have all fields zeroed, right?\nI\u0027ve bumped into this while writing [abort](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5307705) test that runs on hardware. FPMCU uses newlib with the common [abort](https://github.com/zephyrproject-rtos/zephyr/blob/main/lib/libc/common/source/stdlib/abort.c#L10) call implementation, which causes kernel panic. It doesn\u0027t set the reason as it is done in [EC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/libc/syscalls.c;l\u003d34).",
+      "parentUuid": "2c349d83_a3e71171",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17e2b8e1_4d26ff52",
         "filename": "zephyr/shim/src/panic.c",
         "patchSetId": 5
@@ -54,6 +96,24 @@
       "writtenOn": "2024-02-26T17:13:27Z",
       "side": 1,
       "message": "Typically reason holds PANIC_SW_* and info holds arbitrary context specific info (e.g. PC or assert line number). Exception is sometimes used to hold the task/thread id. This isn\u0027t ideal, but there is existing infrastructure that handles this form. So I\u0027d suggest something like: \npanic_set_reason(PANIC_SW_ZEPHYR_FATAL_ERROR, reason, task_get_current())",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01524db_a86fdb60",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-27T09:03:32Z",
+      "side": 1,
+      "message": "Make sense. One note is that it doesn\u0027t have to be software panic, there is a list of [arch specific errors](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/arch/arm/arch.h#L62). So I would go for `panic_set_reason(PANIC_ZEPHYR_FATAL_ERROR, reason, task_get_current())`. What do you think?",
+      "parentUuid": "17e2b8e1_4d26ff52",
       "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
