@@ -22,6 +22,30 @@
       },
       "revId": "a1ee432ba0de5e863ee2c7e4bf6ada8438bf2cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70674744_f4bde6bd",
+        "filename": "zephyr/program/nissa/yavilla/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-27T23:29:07Z",
+      "side": 1,
+      "message": "Looks like it fixes build errors for tests, since I don\u0027t think the nissa test build configuration actually includes much of the ap_pwrseq machinery (and in ap_pwrseq configurations `chipset_in_state` is a thin wrapper for `ap_power_in_state` that provides compatibility for either configuration).",
+      "parentUuid": "b2dd9f27_1943803e",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "a1ee432ba0de5e863ee2c7e4bf6ada8438bf2cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
