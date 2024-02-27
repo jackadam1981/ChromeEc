@@ -64,6 +64,7 @@ typedef struct ucsi_ppm_driver *(ucsi_pd_get_ppm)(struct ucsi_pd_device *dev);
  */
 typedef int(ucsi_pd_execute_command)(struct ucsi_pd_device *dev,
 				     struct ucsi_control *control,
+				     uint8_t *lpm_data_in,
 				     uint8_t *lpm_data_out);
 
 /**

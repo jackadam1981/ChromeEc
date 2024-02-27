@@ -84,7 +84,7 @@ class PpmTest : public testing::Test {
 		return ppm_.get();
 	}
 
-	int execute_cmd(struct ucsi_control *control, uint8_t *lpm_data_out)
+	int execute_cmd(struct ucsi_control *control, uint8_t *lpm_data_in, uint8_t *lpm_data_out)
 	{
 		uint8_t ucsi_command = control->command;
 

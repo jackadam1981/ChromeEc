@@ -326,6 +326,7 @@ static int rts5453_set_notification_per_port(struct rts5453_device *dev,
 
 static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 				    struct ucsi_control *control,
+				    uint8_t *lpm_data_in,
 				    uint8_t *lpm_data_out)
 {
 	struct rts5453_device *dev = CAST_FROM(device);
@@ -337,6 +338,11 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	 */
 	uint8_t data_size = 0;
 	uint8_t port_num = RTS_DEFAULT_PORT;
+	
+	static int flash_bank = 0;
+	static struct rts5453_ic_status status;
+	static unsigned long offset = 0;
+	static int fw_update_in_progress = 0;
 
 	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
 		ELOG("Invalid command 0x%x", control->command);
@@ -371,6 +377,125 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	}
 
 	switch (ucsi_command) {
+	case UCSI_CMD_LPM_FW_UPDATE_REQUEST:
+		DLOG("UCSI_CMD_LPM_FW_UPDATE_REQUEST");
+
+		uint64_t control_fw;
+		int end_of_message, data_index;
+		platform_memcpy(&control_fw, control, sizeof(uint64_t));
+		end_of_message = ((control_fw & ((uint64_t)1 << 40)) > 0);
+		data_index = (uint64_t)((control_fw >> 33) & 0x7F);
+
+		DLOG("data_index: %d", data_index);
+		/* Do fwupdate commands:
+		 * - VENDOR_CMD_ENABLE (smbus)
+		 * - GET_IC_STATUS to figure out which bank to write to
+		 * - VENDOR_CMD_ENABLE (smbus|flash)
+		 * - SET_FLASH_PROTECTION (unlock)
+		 * - Loop
+		 * - Write to bank 0/1 (32-3 = 27 bytes per loop)
+		 * - VENDOR_CMD_ENABLE (smbus) (disable flash access)
+		 * - ISP_VALIDATION
+		 * - SET_FLASH_PROTECTION (lock)
+		 * - (!dry_run) RESET_TO_FLASH
+		 */
+		if (data_index == 0 && !fw_update_in_progress) {
+			offset = 0;
+			fw_update_in_progress = 1;
+			if (rts5453_vendor_cmd_enable_smbus(
+				    dev, RTS_DEFAULT_PORT) == -1) {
+				ELOG("Failed to enable vendor commands");
+				return -1;
+			}
+
+			if (rts5453_get_ic_status(dev, &status) == -1) {
+				ELOG("Failed to GET_IC_STATUS");
+				goto cleanup;
+			}
+
+			/* Set the flash bank as the opposite of the one
+			 * currently in-use */
+			flash_bank = status.flash_bank == 1 ? 0 : 1;
+			DLOG("Writing to flash_bank %d\n", flash_bank);
+
+			if (rts5453_vendor_cmd_enable_smbus_flash_access(
+				    dev, RTS_DEFAULT_PORT) == -1) {
+				ELOG("Failed to enable flash access");
+				goto cleanup;
+			}
+
+#ifdef DO_FLASH_PROTECT
+			if (rts5453_set_flash_protection(
+				    dev, RTS5453_FLASH_PROTECT_DISABLE) == -1) {
+				ELOG("Failed to disable flash protection");
+				goto cleanup;
+			}
+#endif
+		}
+		/* Keep writing while there's data in the firmware image. */
+		/*
+		while ((bytes_read = read(fd, fbuf, FW_BLOCK_CHUNK_SIZE)) > 0) {
+			if (rts5453_write_to_flash(dev, flash_bank, fbuf,
+						   bytes_read, offset) == -1) {
+				ELOG("Failed to write to flash at bank %d (bytes = %d, offset = %d)",
+				     flash_bank, (int)bytes_read, offset);
+				goto cleanup;
+			}
+
+			offset += bytes_read;
+		}*/
+		for (unsigned int i =0 ;i < control->data_length; i+=FW_BLOCK_CHUNK_SIZE) {
+			int write_size = (FW_BLOCK_CHUNK_SIZE <  (control->data_length -i)) ? FW_BLOCK_CHUNK_SIZE :  (control->data_length -i); 
+			if (rts5453_write_to_flash(dev, flash_bank, (char *)lpm_data_out + i,
+						   write_size, offset) == -1) {
+				ELOG("Failed to write to flash at bank %d (bytes = %d, offset = %d)",
+				     flash_bank, (int)write_size, offset);
+				goto cleanup;
+			}
+			DLOG("offset=%d, %.*s", offset, write_size,(char *)lpm_data_out + i)
+			offset += write_size;
+		}
+
+		if (end_of_message) {
+			fw_update_in_progress = 0;
+			DLOG("End of FW update");
+			if (rts5453_vendor_cmd_enable_smbus(
+				    dev, RTS_DEFAULT_PORT) == -1) {
+				ELOG("Failed to disable smbus flash access.");
+				goto cleanup;
+			}
+
+			if (rts5453_isp_validation(dev) == -1) {
+				ELOG("Failed ISP validation.");
+				goto cleanup;
+			}
+
+#ifdef DO_FLASH_PROTECT
+			if (rts5453_set_flash_protection(
+				    dev, RTS5453_FLASH_PROTECT_ENABLE) == -1) {
+				ELOG("Failed to enable flash protection");
+				goto cleanup;
+			}
+#endif
+
+			/* Only commit changes if not dry run */
+			if (false) {
+				if (rts5453_reset_to_flash(dev) == -1) {
+					ELOG("Reset to flash failed.");
+					goto cleanup;
+				}
+			}
+		}
+		return 0;
+	cleanup:
+		fw_update_in_progress = 0;
+		/* Protect flash and disable smbus */
+		if (rts5453_vendor_cmd_disable(dev, RTS_DEFAULT_PORT) == -1) {
+			ELOG("Failed to disable vendor commands and flash access");
+			return -1;
+		}
+		return -1;
+
 	case UCSI_CMD_ACK_CC_CI:
 		struct ucsiv3_ack_cc_ci_cmd *ack_cmd =
 			(struct ucsiv3_ack_cc_ci_cmd *)control->command_specific;

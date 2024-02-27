@@ -7,6 +7,7 @@
 #include "include/platform.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
+#include <stdint.h>
 
 const char *ppm_state_strings[PPM_STATE_MAX] = {
 	"PPM_STATE_NOT_READY",	    "PPM_STATE_IDLE",
@@ -171,7 +172,7 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 				port_status, 0,
 				sizeof(struct ucsiv3_get_connector_status_data));
 
-			if (dev->pd->execute_cmd(dev->pd->dev, &get_cs_cmd,
+			if (dev->pd->execute_cmd(dev->pd->dev, &get_cs_cmd, dev->ucsi_data.message_out,
 						 (uint8_t *)port_status) ==
 			    -1) {
 				ELOG("Failed to read port %d status. No recovery.",
@@ -292,10 +293,7 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 	}
 
 	/* Do driver specific execute command. */
-	ret = dev->pd->execute_cmd(dev->pd->dev, control, message_in);
-
-	/* Clear command since we just executed it. */
-	platform_memset(control, 0, sizeof(struct ucsi_control));
+	ret = dev->pd->execute_cmd(dev->pd->dev, control, dev->ucsi_data.message_out, message_in);
 
 	if (ret < 0) {
 		ELOG("Error with UCSI command 0x%x. Return was %d",
@@ -303,6 +301,8 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 		clear_last_error(dev);
 		dev->last_error = ERROR_LPM;
 		set_cci_error(dev);
+		/* Clear command since we just executed it. */
+		platform_memset(control, 0, sizeof(struct ucsi_control));
 		return ret;
 	}
 
@@ -323,18 +323,25 @@ success:
 		 */
 		dev->pending.async_event = 1;
 	}
-
+	if (ucsi_command == UCSI_CMD_LPM_FW_UPDATE_REQUEST) {
+		uint64_t control;
+		platform_memcpy(&control,&dev->ucsi_data.control,sizeof(uint64_t));
+		dev->ucsi_data.cci.end_of_message = (control & ((uint64_t)1<<40)) > 0;
+		DLOG("data_index: %d", (uint64_t)((control>>33)&0x7F));
+		// TODO: connector change
+	}
 	/* If we reset, we only surface up the reset completed event after busy.
 	 */
 	if (ucsi_command == UCSI_CMD_PPM_RESET) {
 		/* Handle platform policy if we just completed a PPM Reset. */
 		ppm_common_apply_platform_policy(dev);
-
 		cci->reset_completed = 1;
 	} else {
 		cci->data_length = ret & 0xFF;
 		cci->cmd_complete = 1;
 	}
+	/* Clear command since we just executed it. */
+	platform_memset(control, 0, sizeof(struct ucsi_control));
 	return 0;
 }
 
@@ -447,6 +454,8 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 
 				clear_cci(dev);
 				dev->ucsi_data.cci.ack_command = 1;
+			} else if (next_command == UCSI_CMD_LPM_FW_UPDATE_REQUEST) {
+				dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
 			} else {
 				dev->ppm_state = PPM_STATE_WAITING_CC_ACK;
 			}
@@ -513,7 +522,7 @@ static void ppm_common_task(void *context)
 	platform_memset(&dev->ucsi_data.control, 0,
 			sizeof(struct ucsi_control));
 	dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
-	if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control,
+	if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control, dev->ucsi_data.message_out,
 				 dev->ucsi_data.message_in) != -1) {
 		/* Set platform policy before starting the state machine. */
 		ppm_common_apply_platform_policy(dev);
@@ -788,6 +797,10 @@ static int ppm_common_handle_control_message(struct ppm_common_device *dev,
 	DLOG("Got valid control message: 0x%x (%s)", cmd[0],
 	     ucsi_command_to_string(cmd[0]));
 
+	if (cmd[0] == UCSI_CMD_LPM_FW_UPDATE_REQUEST) {
+		DLOG("%s: %.*s", __func__, cmd[1], dev->ucsi_data.message_out);
+	}
+
 	/* Schedule command send. */
 	{
 		platform_mutex_lock(dev->ppm_lock);
@@ -854,7 +867,7 @@ static int ppm_common_write(struct ucsi_ppm_device *device, unsigned int offset,
 
 		return -1;
 	}
-
+    DLOG("%.*s", length, (char *) buf);
 	/* Copy from input buffer to offset within MESSAGE_OUT. */
 	platform_memcpy(dev->ucsi_data.message_out +
 				(offset - UCSI_MESSAGE_OUT_OFFSET),

@@ -12,6 +12,9 @@ SUBDIRS=test
 um_ppm: rts5453.o rts5453_usermode.o smbus_usermode.o um_ppm_chardev.o platform_usermode.o main.o ppm_common.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
+fw_dump: fw_dump.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
 .PHONY: clean local_tests
 
 local_tests:
