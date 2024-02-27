@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee29298_71ebc1d4",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-27T11:25:34Z",
+      "side": 1,
+      "message": "Similar to comment https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5288836/comment/cda955c6_68624fb1/ I think this should be moved to `rollback_get_secret()`",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "bafc7f7c5f0042997d8b942bb59511b1227efc89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
