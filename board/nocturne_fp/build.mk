@@ -57,8 +57,8 @@ test-list-y=\
        rtc \
        sbrk \
        scratchpad \
-       sha256 \
-       sha256_unrolled \
+       sha256_sw \
+       sha256_sw_unrolled \
        static_if \
        stdlib \
        std_vector \

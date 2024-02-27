@@ -11,7 +11,7 @@ CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f07x
 
 # Build tests that we care about for hammer
-test-list-y=entropy rsa3 sha256 sha256_unrolled x25519
+test-list-y=entropy rsa3 sha256_sw sha256_sw_unrolled x25519
 
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o

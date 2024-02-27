@@ -272,11 +272,19 @@ enum sensor_id {
 #define CONFIG_RWSIG_TYPE_RWSIG
 #endif
 
-#ifdef TEST_SHA256
-/* Test whichever sha256 implementation the platform provides. */
+#ifdef TEST_SHA256_HW
+#ifndef CONFIG_SHA256_HW_ACCELERATE
+#error This platform doesn't support SHA256 HW acceleration.
+#endif
 #endif
 
-#ifdef TEST_SHA256_UNROLLED
+#ifdef TEST_SHA256_SW
+#undef CONFIG_SHA256_HW_ACCELERATE
+#define CONFIG_SHA256_SW
+#undef CONFIG_SHA256_UNROLLED
+#endif
+
+#ifdef TEST_SHA256_SW_UNROLLED
 #undef CONFIG_SHA256_HW_ACCELERATE
 #define CONFIG_SHA256_SW
 #define CONFIG_SHA256_UNROLLED
