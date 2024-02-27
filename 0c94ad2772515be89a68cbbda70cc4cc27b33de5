@@ -118,6 +118,30 @@
       },
       "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4a5d6e_06e90397",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-27T02:09:44Z",
+      "side": 0,
+      "message": "We can revert, but reverting just this one CL doesn\u0027t necessarily put ToT back into a consistent state, since helipilot config then says it is using SW SHA256 + `CONFIG_SHA256_HW_ACCELERATE` could still override `CONFIG_SHA256_SW`.\n\n---\n\nAnyways, it doesn\u0027t seem to me that separating the config switches for SW and HW SHA256 is a net benefit, but I prepared a change that hopefully remedies the current issue -- https://crrev.com/c/5326001.\n\nLet me know what you all think and if you would like to proceed.",
+      "parentUuid": "74772332_c27c4e88",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c94ad2772515be89a68cbbda70cc4cc27b33de5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
