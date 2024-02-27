@@ -383,6 +383,20 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			return 1;
 		}
 #endif
+		case UPDATE_EXTRA_CMD_GET_VERSION_STRING: {
+			enum ec_image active_slot = system_get_active_copy();
+			char version_str[35] = {};
+
+			response = EC_RES_SUCCESS;
+			snprintf(version_str, sizeof(version_str), "%s:%s",
+				 active_slot == EC_IMAGE_RO ? "RO" : "RW",
+				 system_get_version(active_slot));
+			response = EC_SUCCESS;
+			QUEUE_ADD_UNITS(&update_to_usb, &response, 1);
+			QUEUE_ADD_UNITS(&update_to_usb, version_str,
+					sizeof(version_str));
+			return 1;
+		}
 		default:
 			response = EC_RES_INVALID_COMMAND;
 		}
