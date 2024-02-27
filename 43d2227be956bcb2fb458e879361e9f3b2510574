@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec61d143_b36358bb",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-27T20:17:25Z",
+      "side": 1,
+      "message": "This is for the case when commits were disabled, and next AP on with TPM_RST_L is postponed long enough for cr50 to deep sleep.",
+      "parentUuid": "35d7ee0b_d17e326f",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "43d2227be956bcb2fb458e879361e9f3b2510574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9625cbd3_beba394f",
