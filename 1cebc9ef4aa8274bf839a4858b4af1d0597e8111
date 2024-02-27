@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44818063_a86ad7e8",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-02-27T18:36:13Z",
+      "side": 1,
+      "message": "Rad. SGTM, and thanks!",
+      "parentUuid": "9516baff_9ade8f2e",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 4
+      },
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c349d83_a3e71171",
