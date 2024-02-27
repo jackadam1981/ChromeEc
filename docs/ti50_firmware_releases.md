@@ -8,8 +8,8 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.71        | 0.23.71
-M122                | 0.24.71        | 0.23.71
+[ToT][ToT ebuild]   | 0.24.72        | 0.23.71
+M122                | 0.24.72        | 0.23.71
 [M121][121 release] | 0.24.62        | 0.23.62
 [M120][120 release] | 0.24.60        | 0.23.60
 [M119][119 release] | 0.24.51        | 0.23.51
@@ -1486,6 +1486,30 @@ Build:   ti50_common_prepvt-15086.B:v0.0.934-720e4c92
          tock:v0.0.9662-478a746e5
          ms-tpm-20-ref:v0.0.329-138a187
          @chromeos-ci-firmware-us-central1-b-x32-0-e7r7 2024-01-17 13:26:11
+```
+
+### 0.24.72 Released on 2/27/2024 in M122
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/5328662)
+
+Builder
+[86](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15086.B-branch/86/overview)
+
+Artifacts:
+[15086.81.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/canary-channel/betty/15086.81.0)
+
+**Features**
+
+*   Fix FRE enrollment error
+    [b/324441573](https://b.corp.google.com/issues/324441573)
+
+```
+Build:   ti50_common_prepvt-15086.B:v0.0.936-8d4a82e8
+         libtock-rs:v0.0.929-ecde39c
+         tock:v0.0.9662-478a746e5
+         ms-tpm-20-ref:v0.0.329-138a187
+         @chromeos-ci-firmware-us-east1-d-x32-0-g0dj 2024-02-26 13:31:34
 ```
 
 <!-- Links -->
