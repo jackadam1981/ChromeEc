@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe63cc2_9e2491bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-02-27T06:59:13Z",
+      "side": 1,
+      "message": "You can refer to https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_coverage.md for code coverage \n\nAs reference: zephyr/test/nissa/testcase.yaml FYI",
+      "revId": "8e74e8564616a1cf3e209945fe5278fdad982155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92e471a6_5edc45f8",
