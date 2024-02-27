@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5adfbe_a7a4994c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-27T23:23:14Z",
+      "side": 1,
+      "message": "The charge controller only ever passes `INHIBIT_CHARGE` or 0 to `charger_set_mode`, so it seems wrong to make this an else branch. I think the idle setup should be in the `INHIBIT_CHARGE` block above, and the reset logic in a plain `else` (rather than `else if`).",
+      "range": {
+        "startLine": 1536,
+        "startChar": 3,
+        "endLine": 1536,
+        "endChar": 10
+      },
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfd9e2d_696cdaa1",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-27T23:23:14Z",
+      "side": 1,
+      "message": "This seems like it could interfere with normal control over source/sink modes; for example this would break forcing discharge on AC. It doesn\u0027t seem like this is necessary in any case; does it still behave as expected if you don\u0027t do this?",
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f1bad1_f57b5443",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-27T23:23:14Z",
+      "side": 1,
+      "message": "It seems especially wrong to enable sinking again when entering normal mode, since if this does anything it seems to indicate this code is fighting with some other component that wants to control sink/source mode.",
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
