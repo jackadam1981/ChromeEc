@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32681776_5eb14be9",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-02-27T19:09:58Z",
+      "side": 1,
+      "message": "Do we need to align to the version string length reported by the EC? Its length defaults to 32 with NULL-terminated, too, but it doesn\u0027t include the \"RO/W:\" prefix.",
+      "range": {
+        "startLine": 388,
+        "startChar": 22,
+        "endLine": 388,
+        "endChar": 23
+      },
+      "revId": "69827088eb1bef91981628bf6c2add508df317d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
