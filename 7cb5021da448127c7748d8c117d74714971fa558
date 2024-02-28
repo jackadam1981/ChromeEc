@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d8d609_885ddd26",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-28T21:51:28Z",
+      "side": 1,
+      "message": "Why aren\u0027t we using the existing mechanism in `system_disable_jump`? Also, is it okay to lock code-ram while in RO, before jump?\n\nAdditionally, I think this is going to interfere with other ECs.",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "7cb5021da448127c7748d8c117d74714971fa558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
