@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef556f87_e044ec98",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-28T17:40:18Z",
+      "side": 1,
+      "message": "True.",
+      "parentUuid": "8c7a198b_621ec884",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17e2b8e1_4d26ff52",
@@ -174,6 +192,24 @@
       "side": 1,
       "message": "There probably won\u0027t be many scenarios where esf(/pdata) will be blank but reason will be set to one of the arch specific errors. Either way, having this in place will allow us to monitor this.",
       "parentUuid": "c01524db_a86fdb60",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f33ee3_e001f5df",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-28T17:40:18Z",
+      "side": 1,
+      "message": "Agree, I hope esf is always filled, but it is a different thing than setting the reason with `panic_set_reason` within EC codebase, so storing the Zephyr reason doesn\u0027t hurt as at all, right?",
+      "parentUuid": "58982bea_586e4fe9",
       "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
