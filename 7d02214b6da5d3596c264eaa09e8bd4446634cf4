@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2ec876_fef81ccf",
+        "filename": "board/cr50/tpm_nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-02-28T21:28:28Z",
+      "side": 1,
+      "message": "nit: Can you name all of these NV_INDEX....\n\nNV_INDEX_FIRMWARE, NV_INDEX_KERNEL, NV_INDEX_FWMP...",
+      "revId": "7d02214b6da5d3596c264eaa09e8bd4446634cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
