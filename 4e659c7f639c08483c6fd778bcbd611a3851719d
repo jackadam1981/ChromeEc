@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14ba23c_822b6318",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-28T22:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8346e2e9_7d738cc5",
+      "range": {
+        "startLine": 200,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 33
+      },
+      "revId": "4e659c7f639c08483c6fd778bcbd611a3851719d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a9efe8_6c6cabaa",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-28T21:11:48Z",
       "side": 1,
       "message": "Should we use XOR here? Not AES, HMAC-SHA256, etc.?\n\nI\u0027m not saying it\u0027s wrong, just to make sure. I think there was some mail saying that we can do anything except concatenation.",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 27
+      },
+      "revId": "4e659c7f639c08483c6fd778bcbd611a3851719d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1e0e10_33099cdf",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-02-28T22:30:50Z",
+      "side": 1,
+      "message": "PTAL at b/306245237#comment7, the XOR operation is what the security team agreed to (over concatenation). This is also reflected in the Design document (go/helipilot-otp-design). Happy to discuss alternate encryption options if you\u0027d like, but we may want to discuss this in the design doc as a first step.",
+      "parentUuid": "33a9efe8_6c6cabaa",
       "range": {
         "startLine": 210,
         "startChar": 3,
