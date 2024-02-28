@@ -16,6 +16,24 @@
       "message": "Note - I\u0027ve uploaded https://crrev.com/c/5318952 which deasserts AMP_MUTE at S5 and above, and asserts AMP_MUTE in G3.\n\nCL:5318952 is my preferred approach for handling AMP_MUTE instead of adding it to the power sequencing code.",
       "revId": "c5d8cf91646ecaef85c5b36f7edb4a7680d17490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f35e82_a8821af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-02-28T22:33:48Z",
+      "side": 1,
+      "message": "Ok. Thnks Keith! Will abandon this change.",
+      "parentUuid": "223ca46a_d87f4681",
+      "revId": "c5d8cf91646ecaef85c5b36f7edb4a7680d17490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
