@@ -22,6 +22,30 @@
       },
       "revId": "63c443e20cd79b9f7bf5f1def278307e96fbfd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a6ec33_f31da810",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-28T06:55:23Z",
+      "side": 1,
+      "message": "`HW_TEST` is a user configurable config to include hardware tests. It is \u003dy in RO/RW, even if `HW_TEST_RW_ONLY\u003dy`. `HW_TEST_ON` is a helper config, noT-user configurable, that is \u003dy only in RW if `HW_TEST_RW_ONLY\u003dy`. It is used in CMakeFile\n`add_subdirectory_ifdef(CONFIG_HW_TEST_ON \"test/hwtest\")` and to include Kconfig file to avoid complicated if statements like\n```\nif HW_TEST \u0026\u0026 ((HW_TEST_RW_ONLY \u0026\u0026 CROS_EC_RW) || (!HW_TEST_RW_ONLY))\n...\n```\n\n(1) I\u0027m ready to do some adjustment if needed.\n\n(2) I\u0027m always building `main.c` if `HW_TEST\u003dy`, because `ec_app_main` has to be called in every cases anyway. Then I\u0027m using `ZTEST_SHELL` config to determine if tests should be run automatically or not. I don\u0027t know how it is done with gTest.\nDo you think another config `HW_TEST_MAIN` is really needed, or you are think `HW_TEST` is not necessary? There has to be any config to add CMake subdirectory or gate building test main.",
+      "parentUuid": "2caf61b3_d267aad4",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "63c443e20cd79b9f7bf5f1def278307e96fbfd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
