@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8d4e5a_69001802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-02-28T21:30:06Z",
+      "side": 1,
+      "message": "Looks like CQ was failing to to a `raa489000_is_acok_fake.custom_fake \u003d raa489000_is_acok_absent;` line accidentally being removed. This wasn\u0027t triggering a failure locally for whatever reason.",
+      "revId": "569c45edf533c685ba41ce93a928893fb8f357d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
