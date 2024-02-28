@@ -16,6 +16,23 @@
       "message": "@fsammoura@google.com, Tom previously +2\u0027ed this, but I needed to fix unit test build failure (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5316258/comments/d83b9eb2_652e33bb) before merging.",
       "revId": "1f01b9e700b1acb05fb52612e053c572c3bb458f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf8684f_3474e319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-02-28T08:01:31Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8754870958714126321) is being automatically retried for the following reasons:\n- Some child builders are now retryable:cq-orchestrator\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "1f01b9e700b1acb05fb52612e053c572c3bb458f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
