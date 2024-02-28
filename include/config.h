@@ -3572,6 +3572,13 @@
 #undef CONFIG_ISL9238C_DISABLE_CMOUT_LATCH
 
 /*
+ * ISL9238C input voltage setting.  -1 uses the default setting of 4096 mV.
+ */
+#ifndef CONFIG_ZEPHYR
+#define CONFIG_PLATFORM_EC_ISL9238C_INPUT_VOLTAGE_MV -1
+#endif
+
+/*
  * ISL9238C enable Force Buck mode.
  */
 #undef CONFIG_ISL9238C_ENABLE_BUCK_MODE
