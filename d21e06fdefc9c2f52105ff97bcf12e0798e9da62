@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45d53f64_cad2eb63",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-02-28T02:57:36Z",
+      "side": 1,
+      "message": "In idle mode, it will pass 0 to charger_set_mode. So I change to separate it from `INHIBIT_CHARGE`",
+      "parentUuid": "5a5adfbe_a7a4994c",
+      "range": {
+        "startLine": 1536,
+        "startChar": 3,
+        "endLine": 1536,
+        "endChar": 10
+      },
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbfd9e2d_696cdaa1",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 5
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72d9a474_2474399f",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-02-28T02:57:36Z",
+      "side": 1,
+      "message": "For normal charge: 0x1c\u003d0x1, 0x1d\u003d0x47.\nFor discharge: 0x1c\u003d0x0, 0x1d\u003d0x40.\nAnd in this CL, it make idle: 0x1c\u003d0x1, 0x1d\u003d0x40.\n\nIf we don\u0027t enable sink mode back, the battery will discharge instead of idle.",
+      "parentUuid": "dbfd9e2d_696cdaa1",
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79f1bad1_f57b5443",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 5
@@ -54,6 +96,24 @@
       "writtenOn": "2024-02-27T23:23:14Z",
       "side": 1,
       "message": "It seems especially wrong to enable sinking again when entering normal mode, since if this does anything it seems to indicate this code is fighting with some other component that wants to control sink/source mode.",
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b196d1_2ef23494",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-02-28T02:57:36Z",
+      "side": 1,
+      "message": "If I set `ectool chargecontrol discharge`, it will disable sink mode. And I set `ectool chargecontrol normal`, it will enable sink mode again. That why I enable sine mode back.",
+      "parentUuid": "79f1bad1_f57b5443",
       "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
