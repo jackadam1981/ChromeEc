@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12b3bea2_9513a72c",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-28T21:58:48Z",
+      "side": 1,
+      "message": "let us discuss in a meeting. We can constrain this to helipilot using an ifdef statement",
+      "parentUuid": "89d8d609_885ddd26",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "7cb5021da448127c7748d8c117d74714971fa558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "faaf1dd9_d8c3b587",
         "filename": "test/sram_mpu_protection.c",
         "patchSetId": 4
