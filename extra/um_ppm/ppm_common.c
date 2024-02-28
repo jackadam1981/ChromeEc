@@ -158,7 +158,7 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 			int block_call_counter = 0;
 			int rv;
 
-			DLOG("Calling GET_CONNECTOR_STATUS on port %d",
+			DLOG("Calling GET_CONNECTOR_STATUS on conn %d",
 			     dev->last_connector_alerted);
 
 			struct ucsi_control get_cs_cmd;
@@ -241,9 +241,9 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 
 		/* Should we alert? */
 		if (alert_port) {
-			DLOG("Notifying async event for port %d and changing state from %d (%s)",
-			     port + 1, dev->ppm_state,
-			     ppm_state_to_string(dev->ppm_state));
+			DLOG("Notifying async event for port %d and changing state from %s (%d)",
+			     port + 1, ppm_state_to_string(dev->ppm_state),
+			     dev->ppm_state);
 			/* Notify the OPM that we have data for it to read. */
 			clear_cci(dev);
 			dev->last_connector_changed = port;
@@ -460,9 +460,9 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 		/* Check what command is currently pending. */
 		next_command = dev->ucsi_data.control.command;
 
-		DLOG("PEND_CMD: Started command processing in state %d (%s), cmd 0x%x (%s)",
-		     dev->ppm_state, ppm_state_to_string(dev->ppm_state),
-		     next_command, ucsi_command_to_string(next_command));
+		DLOG("Started command processing in %s (%d), %s (0x%x)",
+		     ppm_state_to_string(dev->ppm_state), dev->ppm_state,
+		     ucsi_command_to_string(next_command), next_command);
 		switch (dev->ppm_state) {
 		case PPM_STATE_IDLE:
 		case PPM_STATE_IDLE_NOTIFY:
@@ -540,8 +540,8 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 			break;
 		}
 
-		DLOG("PEND_CMD: Ended command processing in state %d (%s)",
-		     dev->ppm_state, ppm_state_to_string(dev->ppm_state));
+		DLOG("Ended command processing in %s (%d)",
+		     ppm_state_to_string(dev->ppm_state), dev->ppm_state);
 
 		/* Last thing is to clear the pending command bit before
 		 * executing the command.
@@ -600,14 +600,16 @@ static void ppm_common_task(void *context)
 		 */
 		if (dev->ppm_state != PPM_STATE_PROCESSING_COMMAND &&
 		    !is_pending_command(dev) && !handle_async_event) {
-			DLOG("Waiting for next command at state %d (%s)...",
-			     dev->ppm_state,
-			     ppm_state_to_string(dev->ppm_state));
+			DLOG("Waiting for next command at %s (%d)...",
+			     ppm_state_to_string(dev->ppm_state),
+			     dev->ppm_state);
 			platform_condvar_wait(dev->ppm_condvar, dev->ppm_lock);
 		}
 
-		DLOG("Handling next task at state %d (%s)", dev->ppm_state,
-		     ppm_state_to_string(dev->ppm_state));
+		DLOG("Handling next task at %s (%d).",
+		     ppm_state_to_string(dev->ppm_state), dev->ppm_state);
+		DLOG("Async event is %spending.",
+		     is_pending_async_event(dev) ? "" : "not ");
 
 		bool is_ppm_reset =
 			match_pending_command(dev, UCSI_CMD_PPM_RESET);
@@ -722,6 +724,8 @@ static int ppm_common_init_and_wait(struct ucsi_ppm_device *device,
 	struct ucsi_memory_region *ucsi_data = &dev->ucsi_data;
 	bool ready_to_exit = false;
 
+	DLOG("%s", __func__);
+
 	/* First clear the PPM shared memory region. */
 	platform_memset(ucsi_data, 0, sizeof(*ucsi_data));
 
@@ -774,7 +778,7 @@ static int ppm_common_init_and_wait(struct ucsi_ppm_device *device,
 		platform_usleep(POLL_EVERY_MS * 1000);
 	}
 
-	DLOG("PPM initialized result: Success=%b", ready_to_exit);
+	DLOG("PPM initialized result: %seady", ready_to_exit ? "R" : "Not r");
 
 	return (ready_to_exit ? 0 : -1);
 }

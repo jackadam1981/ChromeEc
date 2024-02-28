@@ -2696,7 +2696,7 @@
 	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_USB_PD_DISCOVERY, \
 		EC_CMD_USB_PD_POWER_INFO, EC_CMD_PD_GET_LOG_ENTRY,             \
 		EC_CMD_MOTION_SENSE_CMD, EC_CMD_GET_NEXT_EVENT,                \
-		EC_CMD_GET_UPTIME_INFO
+		EC_CMD_GET_UPTIME_INFO, EC_CMD_USB_PD_MUX_INFO
 
 /*****************************************************************************/
 

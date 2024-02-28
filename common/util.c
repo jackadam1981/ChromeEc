@@ -319,6 +319,33 @@ void hexdump(const uint8_t *data, int len)
 	}
 }
 
+void hexdumpk(const uint8_t *data, int len)
+{
+	int i, j;
+
+	if (!data || !len)
+		return;
+
+	for (i = 0; i < len; i += 16) {
+		/* Left column (Hex) */
+		for (j = i; j < i + 16; j++) {
+			if (j < len)
+				printk(" %02x", data[j]);
+			else
+				printk("   ");
+			if (j % 8 == 7)
+				printk(" ");
+		}
+		/* Right column (ASCII) */
+		printk(" |");
+		for (j = i; j < i + 16; j++) {
+			int c = j < len ? data[j] : ' ';
+			printk("%c", isprint(c) ? c : '.');
+		}
+		printk("|\n");
+	}
+}
+
 void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready)
 {
 	if (*reg & ready)
