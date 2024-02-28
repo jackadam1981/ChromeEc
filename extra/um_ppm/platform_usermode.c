@@ -44,7 +44,7 @@ void platform_set_debug(bool enable)
 }
 bool platform_debug_enabled()
 {
-	return debug_enabled;
+	return true;//debug_enabled;
 }
 
 void platform_printf(const char *format, ...)
