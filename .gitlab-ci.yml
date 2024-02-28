@@ -180,6 +180,7 @@ before_script:
       "${EC_DIR}/zephyr/shim/chip/npcx/npcx_monitor/**"
       "${EC_DIR}/zephyr/emul/**" "${EC_DIR}/zephyr/test/**"
       "**/testsuite/**" "**/subsys/emul/**"
+      --include "$(EC_DIR)/zephyr/drivers/usbc/*"
     - util/lcov_stencil.py -o "${BUILD_DIR}/${PROJECT}/output/prefiltered.info"
       "${BUILD_DIR}/${PROJECT}/output/no_zephyr.info"
       "${BUILD_DIR}/${PROJECT}/output/merged.info"
@@ -214,6 +215,7 @@ before_script:
       "${EC_DIR}/zephyr/shim/src/test_util.c"
       "${EC_DIR}/zephyr/shim/src/ztest_system.c"
       "${EC_DIR}/driver/tcpm/it8xxx2.c"
+      --include "$(EC_DIR)/zephyr/drivers/usbc/*"
     - /usr/bin/genhtml --branch-coverage -q
       -o "${BUILD_DIR}/${PROJECT}/output/filtered_no_zephyr_rpt"
       -t "${PROJECT} coverage w/o zephyr"
