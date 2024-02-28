@@ -93,6 +93,30 @@
       },
       "revId": "4e659c7f639c08483c6fd778bcbd611a3851719d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca502b13_3be50903",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-02-28T22:34:39Z",
+      "side": 1,
+      "message": "\u003e Happy to discuss alternate encryption options if you\u0027d like\n\nNo. I just wanted to make sure that the security team agreed to XOR.",
+      "parentUuid": "be1e0e10_33099cdf",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 27
+      },
+      "revId": "4e659c7f639c08483c6fd778bcbd611a3851719d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
