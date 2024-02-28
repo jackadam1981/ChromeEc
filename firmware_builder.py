@@ -107,15 +107,6 @@ def build(opts):
     print(f"# Running {' '.join(cmd)}.")
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
-    # extra/rma_reset is used in chromeos-base/ec-utils-test
-    cmd = ["make", "-C", "extra/rma_reset", "clean"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
-
-    cmd = ["make", "-C", "extra/rma_reset", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
-
     # extra/usb_updater is used in chromeos-base/ec-devutils
     cmd = ["make", "-C", "extra/usb_updater", "clean"]
     print(f"# Running {' '.join(cmd)}.")
@@ -358,6 +349,12 @@ def main(args):
     try:
         opts.func(opts)
     except subprocess.CalledProcessError:
+        ec_dir = os.path.dirname(__file__)
+        failed_dir = os.path.join(ec_dir, ".failedboards")
+        if os.path.isdir(failed_dir):
+            print("Failed boards/tests:")
+            for fail in os.listdir(failed_dir):
+                print(f"\t{fail}")
         return 1
     else:
         return 0
