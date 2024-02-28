@@ -34,6 +34,24 @@
       "parentUuid": "16b4ca1f_2b1c5618",
       "revId": "815de6d7c2911ee09678da24243c237ffe7338a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d528c2_7d87363a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-28T16:43:52Z",
+      "side": 1,
+      "message": "Without the firmware update flow, the stub driver no longer serves a purpose.\n\nThere\u0027s an outside chance we might want to resurrect this for the VESA plugfest, but we can revert the delete if required.  The presence of this driver in the tree has already led to some confusion, so I think it\u0027s time to delete it.",
+      "parentUuid": "37739364_edde7b14",
+      "revId": "815de6d7c2911ee09678da24243c237ffe7338a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
