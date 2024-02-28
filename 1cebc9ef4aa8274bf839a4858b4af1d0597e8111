@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7a198b_621ec884",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-28T16:56:00Z",
+      "side": 1,
+      "message": "abort() \u003d\u003e k_panic() \u003d\u003e z_except_reason(K_ERR_KERNEL_PANIC), so there won\u0027t be much additional info in this case unfortunately.",
+      "parentUuid": "76dc2db7_edadedeb",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17e2b8e1_4d26ff52",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Make sense. One note is that it doesn\u0027t have to be software panic, there is a list of [arch specific errors](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/arch/arm/arch.h#L62). So I would go for `panic_set_reason(PANIC_ZEPHYR_FATAL_ERROR, reason, task_get_current())`. What do you think?",
       "parentUuid": "17e2b8e1_4d26ff52",
+      "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58982bea_586e4fe9",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-28T16:56:00Z",
+      "side": 1,
+      "message": "There probably won\u0027t be many scenarios where esf(/pdata) will be blank but reason will be set to one of the arch specific errors. Either way, having this in place will allow us to monitor this.",
+      "parentUuid": "c01524db_a86fdb60",
       "revId": "1cebc9ef4aa8274bf839a4858b4af1d0597e8111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

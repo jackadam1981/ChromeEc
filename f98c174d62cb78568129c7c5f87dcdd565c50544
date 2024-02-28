@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a0a85d_9d20d56c",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-02-28T16:56:00Z",
+      "side": 1,
+      "message": "nit: 6850655a isn\u0027t easily recognizable for humans scanning register dumps (PANIC_SW errors start with 0xDEAD6660). Maybe use something like 0xDEAD6800 for these zephyr errors.",
+      "revId": "f98c174d62cb78568129c7c5f87dcdd565c50544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
