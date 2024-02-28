@@ -16,6 +16,24 @@
       "message": "nit: Can you name all of these NV_INDEX....\n\nNV_INDEX_FIRMWARE, NV_INDEX_KERNEL, NV_INDEX_FWMP...",
       "revId": "7d02214b6da5d3596c264eaa09e8bd4446634cf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2542b818_59c6c174",
+        "filename": "board/cr50/tpm_nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-02-28T23:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f2ec876_fef81ccf",
+      "revId": "7d02214b6da5d3596c264eaa09e8bd4446634cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
