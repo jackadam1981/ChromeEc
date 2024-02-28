@@ -22,7 +22,7 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt);
+LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_DBG);
 
 /**
  * @brief Event triggered by sending an internal command
@@ -756,7 +756,11 @@ static void print_current_pdc_state(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
 
-	LOG_INF("C%d: %s", config->connector_num,
+	if (get_pdc_state(port) == PDC_SEND_CMD_START)
+	LOG_INF("PDM%d: %s cmd=0x%02x", config->connector_num,
+		pdc_state_names[get_pdc_state(port)], port->cmd->cmd);
+	else
+	LOG_INF("PDM%d: %s", config->connector_num,
 		pdc_state_names[get_pdc_state(port)]);
 }
 
@@ -1491,8 +1495,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	}
 
 	if (rv) {
-		LOG_DBG("Unable to send command: %s",
-			pdc_cmd_names[port->cmd->cmd]);
+		LOG_DBG("Unable to send command: %s (%d)",
+			pdc_cmd_names[port->cmd->cmd], rv);
 	}
 
 	return rv;
@@ -1504,10 +1508,6 @@ static void pdc_send_cmd_start_run(void *obj)
 	int rv;
 
 	rv = send_pdc_cmd(port);
-	if (rv) {
-		LOG_DBG("Unable to send command: %s",
-			pdc_cmd_names[port->cmd->cmd]);
-	}
 
 	/*
 	 * If the PDC is still processing a command (not in the IDLE state),
@@ -1904,6 +1904,8 @@ static int pdc_subsys_init(const struct device *dev)
 	struct pdc_data_t *data = dev->data;
 	struct pdc_port_t *port = &data->port;
 	const struct pdc_config_t *const config = dev->config;
+
+	printk("%s\n", __func__);
 
 	/* Make sure PD Controller is ready */
 	if (!device_is_ready(port->pdc)) {

@@ -277,6 +277,7 @@ int parse_offset_size(int argc, const char **argv, int shift, int *offset,
  * @param len	Size of data
  */
 void hexdump(const uint8_t *data, int len);
+void hexdumpk(const uint8_t *data, int len);
 
 #ifdef CONFIG_ASSEMBLY_MULA32
 /*
