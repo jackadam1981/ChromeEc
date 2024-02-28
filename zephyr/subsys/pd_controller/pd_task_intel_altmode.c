@@ -148,11 +148,6 @@ static bool process_altmode_pd_data(int port)
 	bool prv_hpd_lvl;
 #endif
 
-/* TODO(b/325624686): The polling mechanism is temporary and will be removed
- * after the bug is resolved */
-#if !CONFIG_USBPD_POLL_PDC
-	LOG_INF("Process p%d data", port);
-#endif
 	/* Clear the interrupt */
 	rv = pd_altmode_write_control(pd_config_array[port], &control);
 	if (rv) {

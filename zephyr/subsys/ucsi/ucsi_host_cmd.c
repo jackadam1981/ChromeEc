@@ -13,11 +13,12 @@
 #include "include/ppm.h"
 #include "ppm_common.h"
 #include "usb_pd.h"
+#include "util.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
 
-LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_DBG);
 
 #define DEV_CAST_FROM(v) (struct ppm_common_device *)(v)
 
@@ -60,6 +61,8 @@ static int eppm_init(void)
 	const struct device *pdc_dev;
 	struct ppm_common_device *ppm_dev;
 
+	LOG_DBG("%s", __func__);
+
 	pdc_dev = DEVICE_DT_GET(DT_INST(0, ucsi_ppm_driver));
 	drv = pdc_dev->api;
 	if (!drv) {
@@ -89,6 +92,11 @@ static enum ec_status hc_ucsi_ppm_set(struct host_cmd_handler_args *args)
 	if (!ppm_drv)
 		return EC_RES_UNAVAILABLE;
 
+	size_t len = args->params_size - sizeof(p->offset);
+	LOG_DBG("%s: offset=0x%02x size=%u", __func__, p->offset, len);
+	hexdumpk(p->data, len);
+	cflush();
+
 	if (ppm_drv->write(ppm_drv->dev, p->offset, p->data,
 			   args->params_size - sizeof(p->offset)))
 		return EC_RES_ERROR;
@@ -110,6 +118,11 @@ static enum ec_status hc_ucsi_ppm_get(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 
 	args->response_size = len;
+
+	LOG_DBG("%s: offset=0x%02x size=%u len=%d", __func__, p->offset,
+		p->size, len);
+	hexdumpk(args->response, len);
+	cflush();
 
 	return EC_RES_SUCCESS;
 }

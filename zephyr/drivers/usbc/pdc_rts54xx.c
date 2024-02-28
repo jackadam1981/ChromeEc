@@ -19,7 +19,7 @@
 #include <zephyr/smf.h>
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys/util.h>
-LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_DBG);
 #include "usbc/utils.h"
 
 #include <include/ppm.h>
@@ -487,14 +487,14 @@ static void print_current_state(struct pdc_data_t *data)
 	int st = get_state(data);
 
 	if (st == ST_WRITE) {
-		LOG_INF("ST%d: %s %s", cfg->connector_number, state_names[st],
+		LOG_INF("PDC%d: %s %s", cfg->connector_number, state_names[st],
 			cmd_names[data->cmd]);
 	} else if (st == ST_ERROR_RECOVERY) {
-		LOG_INF("ST%d: %s %s %d", cfg->connector_number,
+		LOG_INF("PDC%d: %s %s %d", cfg->connector_number,
 			state_names[st], cmd_names[data->cmd],
 			data->error_recovery_counter);
 	} else {
-		LOG_INF("ST%d: %s", cfg->connector_number,
+		LOG_INF("PDC%d: %s", cfg->connector_number,
 			state_names[get_state(data)]);
 	}
 }
@@ -509,7 +509,7 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 	}
 
 	if (data->cci_cb) {
-		LOG_INF("C%d: cci_event_cb event=0x%x", cfg->connector_number,
+		LOG_INF("C%d: cci_event_cb CCI=0x%x", cfg->connector_number,
 			data->cci_event.raw_value);
 		data->cci_cb(cci, data->cb_data);
 	}
@@ -551,7 +551,7 @@ static bool max_i2c_retry_reached(struct pdc_data_t *data, int type)
 	data->i2c_transaction_retry_counter++;
 	if (data->i2c_transaction_retry_counter > N_I2C_TRANSACTION_COUNT) {
 		/* MAX I2C transactions exceeded */
-		LOG_ERR("C%d: %s i2c error", cfg->connector_number,
+		LOG_ERR("PDC%d: %s i2c error", cfg->connector_number,
 			(type & I2C_MSG_READ) ? "Read" : "Write");
 		/*
 		 * The command was not successfully completed,
@@ -667,31 +667,31 @@ static void init_display_error_status(struct pdc_data_t *data)
 	int cnum = cfg->connector_number;
 
 	if (data->es.unrecognized_command) {
-		LOG_ERR("C%d: Unrecognized Command", cnum);
+		LOG_ERR("PDC%d: Unrecognized Command", cnum);
 	}
 
 	if (data->es.non_existent_connector_number) {
-		LOG_ERR("C%d: Invalid Connector Number", cnum);
+		LOG_ERR("PDC%d: Invalid Connector Number", cnum);
 	}
 
 	if (data->es.invalid_command_specific_param) {
-		LOG_ERR("C%d: Invalid Param", cnum);
+		LOG_ERR("PDC%d: Invalid Param", cnum);
 	}
 
 	if (data->es.incompatible_connector_partner) {
-		LOG_ERR("C%d: Invalid Connector Partner", cnum);
+		LOG_ERR("PDC%d: Invalid Connector Partner", cnum);
 	}
 
 	if (data->es.cc_communication_error) {
-		LOG_ERR("C:%d CC Comm Error", cnum);
+		LOG_ERR("PDC%d CC Comm Error", cnum);
 	}
 
 	if (data->es.cmd_unsuccessful_dead_batt) {
-		LOG_ERR("C:%d Dead Batt Error", cnum);
+		LOG_ERR("PDC%d Dead Batt Error", cnum);
 	}
 
 	if (data->es.contract_negotiation_failed) {
-		LOG_ERR("C:%d Contract Negotiation Failed", cnum);
+		LOG_ERR("PDC%d Contract Negotiation Failed", cnum);
 	}
 }
 
@@ -772,7 +772,7 @@ static void st_init_run(void *o)
 			/* I2C read Error. No way to recover, so disable the PDC
 			 */
 			if (data->error_status.i2c_read_error) {
-				LOG_INF("C%d: PDC I2C problem",
+				LOG_INF("PDC%d: PDC I2C problem",
 					cfg->connector_number);
 				set_state(data, ST_DISABLE);
 				return;
@@ -781,7 +781,7 @@ static void st_init_run(void *o)
 			/* PDC not responding to Ping Status reads. Try error
 			 * recovery */
 			if (data->error_status.pdc_internal_error) {
-				LOG_INF("C%d: PDC not responding",
+				LOG_INF("PDC%d: PDC not responding",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
 				return;
@@ -790,7 +790,7 @@ static void st_init_run(void *o)
 			/* PDC not responding to Error Status reads. Try error
 			 * recovery */
 			if (data->init_local_current_state == INIT_ERROR) {
-				LOG_INF("C%d: PDC error status read fail ",
+				LOG_INF("PDC%d: PDC error status read fail ",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
 				return;
@@ -846,7 +846,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				pdc_int_data->dev->config;
 
 			if ((ara >> 1) == cfg->i2c.addr) {
-				LOG_INF("C%d: IRQ", cfg->connector_number);
+				LOG_INF("PDC%d: IRQ", cfg->connector_number);
 
 				/* Found pending interrupt, handle it */
 				/* Inform subsystem of the interrupt */
@@ -987,7 +987,7 @@ static void st_ping_status_run(void *o)
 		data->ping_retry_counter++;
 		if (data->ping_retry_counter > N_RETRY_COUNT) {
 			/* MAX Ping Retries exceeded */
-			LOG_ERR("C%d: Failed to read Ping Status",
+			LOG_ERR("PDC%d: Failed to read Ping Status",
 				cfg->connector_number);
 			/*
 			 * The command was not successfully completed,
@@ -1031,12 +1031,12 @@ static void st_ping_status_run(void *o)
 			data->cci_event.reset_completed = 1;
 			/* Notify system of status change */
 			call_cci_event_cb(data);
-			LOG_DBG("C%d: Realtek PDC reset complete",
+			LOG_DBG("PDC%d: Realtek PDC reset complete",
 				cfg->connector_number);
 			/* All done, return to Init or Idle state */
 			TRANSITION_TO_INIT_OR_IDLE_STATE(data);
 		} else {
-			LOG_DBG("C%d: ping_status: %02x", cfg->connector_number,
+			LOG_DBG("PDC%d: ping_status: %02x", cfg->connector_number,
 				data->ping_status.raw_value);
 			/*
 			 * The command completed successfully,
@@ -1057,7 +1057,7 @@ static void st_ping_status_run(void *o)
 		}
 		break;
 	case CMD_ERROR:
-		LOG_ERR("C%d: Ping Status Error", cfg->connector_number);
+		LOG_DBG("PDC%d: Ping Status Error", cfg->connector_number);
 		/*
 		 * The command was not successfully completed,
 		 * so set cci.error to 1b.
@@ -1076,7 +1076,7 @@ static void st_ping_status_run(void *o)
 		break;
 	default:
 		/* Ping Status returned an unknown command */
-		LOG_ERR("C%d: unknown ping_status: %02x", cfg->connector_number,
+		LOG_ERR("PDC%d: unknown ping_status: %02x", cfg->connector_number,
 			data->ping_status.raw_value);
 		/* An error occurred, try to recover */
 		set_state(data, ST_ERROR_RECOVERY);
@@ -1177,12 +1177,12 @@ static void st_read_run(void *o)
 
 		/* Only print this log on init */
 		if (data->init_local_state != INIT_PDC_COMPLETE) {
-			LOG_INF("C%d: Realtek: FW Version: %u.%u.%u",
+			LOG_INF("PDC%d: Realtek: FW Version: %u.%u.%u",
 				cfg->connector_number,
 				PDC_FWVER_GET_MAJOR(info->fw_version),
 				PDC_FWVER_GET_MINOR(info->fw_version),
 				PDC_FWVER_GET_PATCH(info->fw_version));
-			LOG_INF("C%d: Realtek: PD Version: %u, Rev %u",
+			LOG_INF("PDC%d: Realtek: PD Version: %u, Rev %u",
 				cfg->connector_number, info->pd_version,
 				info->pd_revision);
 		}
@@ -2348,6 +2348,8 @@ static int pdc_init(const struct device *dev)
 	struct pdc_data_t *data = dev->data;
 	int rv;
 
+	LOG_INF("%s", __func__);
+
 	rv = i2c_is_ready_dt(&cfg->i2c);
 	if (rv < 0) {
 		LOG_ERR("device %s not ready", cfg->i2c.bus->name);
@@ -2412,7 +2414,7 @@ static int pdc_init(const struct device *dev)
 	/* Create the thread for this port */
 	cfg->create_thread(dev);
 
-	LOG_INF("C%d: Realtek RTS545x PDC DRIVER", cfg->connector_number);
+	LOG_INF("PDC%d: Realtek RTS545x PDC DRIVER", cfg->connector_number);
 
 	return 0;
 }
