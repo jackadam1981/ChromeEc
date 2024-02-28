@@ -1,0 +1,39 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config PLATFORM_EC_GDBSTUB
+	bool "Enable GDB debugging support"
+	select GDBSTUB
+	select GDBSTUB_BACKEND_NONE
+	select GDBSTUB_FEATURE_MULTIPROCESS
+	select GDBSTUB_FEATURE_HWBREAK
+
+if PLATFORM_EC_GDBSTUB
+
+choice PLATFORM_EC_GDBSTUB_BACKEND
+	prompt "GDB stub backend"
+	default PLATFORM_EC_GDBSTUB_BACKEND_CONSOLE
+
+	config PLATFORM_EC_GDBSTUB_BACKEND_CONSOLE
+    	bool "Console GDB stub backend"
+		help
+		  Communicate to GDB stub through console commands
+
+endchoice # PLATFORM_EC_GDBSTUB_BACKEND
+
+config PLATFORM_EC_GDBSTUB_BACKEND_PRIORITY
+	int "Priority for GDB stub backend thread"
+	default 0
+
+if PLATFORM_EC_GDBSTUB_BACKEND_CONSOLE
+
+config PLATFORM_EC_GDBSTUB_BACKEND_CONSOLE_BUFFER_LEN
+	int "Console GDB stub backend buffer size"
+	default 256
+	help
+	  Size of buffer used to store GDB packets sent through the console
+
+endif # PLATFORM_EC_GDBSTUB_BACKEND_CONSOLE
+
+endif # PLATFORM_EC_GDBSTUB
