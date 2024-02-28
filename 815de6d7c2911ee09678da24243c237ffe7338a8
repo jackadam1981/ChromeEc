@@ -16,6 +16,24 @@
       "message": "Why not just delete the files instead of reverting the original CLs?",
       "revId": "815de6d7c2911ee09678da24243c237ffe7338a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37739364_edde7b14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-02-28T16:36:31Z",
+      "side": 1,
+      "message": "I was not sure if you wanted to retain the stub driver for other purposes. If you feel the stub driver has no other purpose, I can go ahead and delete the file itself.",
+      "parentUuid": "16b4ca1f_2b1c5618",
+      "revId": "815de6d7c2911ee09678da24243c237ffe7338a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
