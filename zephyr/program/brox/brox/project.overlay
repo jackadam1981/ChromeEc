@@ -43,6 +43,10 @@ i2c3ALT: &i2c3 {
                         compatible = "lgc,ap18c8k", "battery-smart";
                 };
         };
+
+        chosen {
+                zephyr,host-cmd-espi-backend = &espi0;
+        };
 };
 
 &gpio_tablet_mode_l {
