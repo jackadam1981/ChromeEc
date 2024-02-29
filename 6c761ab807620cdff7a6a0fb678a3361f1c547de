@@ -207,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5c0b16_1c28f6ba",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-29T23:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09aebd3c_0719ebf7",
+      "range": {
+        "startLine": 1903,
+        "startChar": 0,
+        "endLine": 1903,
+        "endChar": 67
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a858c86_59992a12",
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "I have updated both the structs for uor and pdr and created one for connector_reset as those 3 tests were failing.",
       "parentUuid": "6a858c86_59992a12",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1928,
+        "endChar": 67
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4cc203_536d98ea",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-29T23:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a191ab81_4484cdec",
       "range": {
         "startLine": 1928,
         "startChar": 0,
