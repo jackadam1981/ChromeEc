@@ -5,6 +5,8 @@
  * Power and battery LED control.
  */
 
+// testing to check which lines lost coverage
+
 #define DT_DRV_COMPAT cros_ec_led_policy
 
 #include "battery.h"
