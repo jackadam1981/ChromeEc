@@ -15,7 +15,19 @@
  */
 
 #ifdef SECTION_IS_RW
+
 #define CONFIG_FP_SENSOR_FPC1025
+
+/*
+ * Druid is purely a private repo feature that overrides existing
+ * functionality.
+ */
+#ifdef HAVE_PRIVATE
+#define CONFIG_LIB_DRUID
+#define CONFIG_LIB_DRUID_WRAPPER
+#define CONFIG_LIB_DRUID_ARMV7
+#endif /* HAVE_PRIVATE */
+
 #endif /* SECTION_IS_RW */
 
 #endif /* __CROS_EC_BOARD_H */
