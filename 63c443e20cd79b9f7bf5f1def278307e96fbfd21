@@ -87,6 +87,30 @@
       },
       "revId": "63c443e20cd79b9f7bf5f1def278307e96fbfd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc64d4c_2d5c704d",
+        "filename": "zephyr/Kconfig.test",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-02-29T18:15:52Z",
+      "side": 1,
+      "message": "True, but you can\u0027t set CONFIG_HW_TEST_ON manually.",
+      "parentUuid": "afde0f7d_02d37637",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "63c443e20cd79b9f7bf5f1def278307e96fbfd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
