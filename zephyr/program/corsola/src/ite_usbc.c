@@ -64,7 +64,7 @@ void board_reset_pd_mcu(void)
 	 */
 }
 
-int board_set_active_charge_port(int port)
+__overridable int board_set_active_charge_port(int port)
 {
 	int i;
 	int is_valid_port =
