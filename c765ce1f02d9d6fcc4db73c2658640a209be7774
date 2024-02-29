@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bf698b_04bbb1d9",
+        "filename": "test/sram_mpu_protection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-29T03:32:13Z",
+      "side": 1,
+      "message": "@hesling@chromium.org I am using the `test_get_state()` for the mocked version of `system_is_locked`. The test is passing. I do not need to modify anything in `run_device_tests.py`",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "c765ce1f02d9d6fcc4db73c2658640a209be7774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
