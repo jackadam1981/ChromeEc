@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c77530_aaeec577",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-29T00:00:56Z",
+      "side": 1,
+      "message": "This new code isn\u0027t covered by tests, which it should be. You\u0027ll have to add a few test cases to zephyr/test/drivers/sm5803/src/sm5803.c",
+      "revId": "5a0734ce08dffea415ed230a562662279a349e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

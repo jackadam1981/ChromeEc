@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "778227e8_0c9d25c8",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-29T00:00:56Z",
+      "side": 1,
+      "message": "Makes sense, thanks.",
+      "parentUuid": "45d53f64_cad2eb63",
+      "range": {
+        "startLine": 1536,
+        "startChar": 3,
+        "endLine": 1536,
+        "endChar": 10
+      },
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbfd9e2d_696cdaa1",
@@ -83,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa506118_3a2d0d72",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-29T00:00:56Z",
+      "side": 1,
+      "message": "Okay, I think that makes sense; it seemed like the idle mode was more widely used than it actually is.",
+      "parentUuid": "72d9a474_2474399f",
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79f1bad1_f57b5443",
@@ -114,6 +156,24 @@
       "side": 1,
       "message": "If I set `ectool chargecontrol discharge`, it will disable sink mode. And I set `ectool chargecontrol normal`, it will enable sink mode again. That why I enable sine mode back.",
       "parentUuid": "79f1bad1_f57b5443",
+      "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5e6f45_49f73132",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-02-29T00:00:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "64b196d1_2ef23494",
       "revId": "d21e06fdefc9c2f52105ff97bcf12e0798e9da62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
