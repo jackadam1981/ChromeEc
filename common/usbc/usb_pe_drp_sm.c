@@ -1531,9 +1531,10 @@ static void pe_clear_port_data(int port)
 
 	/* Clear any pending alerts */
 	pe_clear_ado(port);
-
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 	dpm_remove_sink(port);
 	dpm_remove_source(port);
+#endif
 	dpm_init(port);
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
@@ -1981,7 +1982,12 @@ static void print_current_state(const int port)
 static void send_source_cap(int port)
 {
 	const uint32_t *src_pdo;
+	#if defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
+	defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
+	const int src_pdo_cnt = charge_manager_get_source_pdo(&src_pdo, port);
+	#else
 	const int src_pdo_cnt = dpm_get_source_pdo(&src_pdo, port);
+	#endif
 
 	if (src_pdo_cnt == 0) {
 		/* No source capabilities defined, sink only */
@@ -2403,6 +2409,7 @@ static void pe_src_startup_entry(int port)
 		 * Evaluate port's sink caps for preferred current, if
 		 * already available
 		 */
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 		if (pd_get_snk_cap_cnt(port) > 0)
 			dpm_evaluate_sink_fixed_pdo(port,
 						    *pd_get_snk_caps(port));
@@ -2413,6 +2420,7 @@ static void pe_src_startup_entry(int port)
 		 * potentially receiving a 3.0 A claim between calls.
 		 */
 		dpm_remove_source(port);
+#endif
 	} else {
 		/*
 		 * SwapSourceStartTimer delay is not needed, so trigger now.
@@ -2740,8 +2748,9 @@ static void pe_src_negotiate_capability_entry(int port)
 	/*
 	 * Evaluate the Request from the Attached Sink
 	 */
-
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 	dpm_evaluate_request_rdo(port, payload);
+#endif
 	/*
 	 * Transition to the PE_SRC_Capability_Response state when:
 	 *  1) The Request cannot be met.
@@ -3115,10 +3124,10 @@ static void pe_src_disabled_entry(int port)
 		 */
 		tc_ctvpd_detected(port);
 	}
-
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 	if (pd_get_power_role(port) == PD_ROLE_SOURCE)
 		dpm_add_non_pd_sink(port);
-
+#endif
 	/*
 	 * Unresponsive to USB Power Delivery messaging, but not to Hard Reset
 	 * Signaling. See pe_got_hard_reset
@@ -3329,8 +3338,9 @@ static void pe_snk_startup_entry(int port)
 		 */
 		if (tc_is_vconn_src(port))
 			tcpm_sop_prime_enable(port, false);
-
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 		dpm_remove_sink(port);
+#endif
 	} else {
 		/*
 		 * Set DiscoverIdentityTimer to trigger when we enter
@@ -3729,9 +3739,11 @@ static void pe_snk_transition_sink_run(int port)
 			 * Evaluate port's sink caps for FRS current, if
 			 * already available
 			 */
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 			if (pd_get_snk_cap_cnt(port) > 0)
 				dpm_evaluate_sink_fixed_pdo(
 					port, *pd_get_snk_caps(port));
+#endif
 
 			set_state_pe(port, PE_SNK_READY);
 		} else {
@@ -7336,8 +7348,9 @@ static void pe_dr_get_sink_cap_run(int port)
 					rx_emsg[port].len / sizeof(uint32_t);
 
 				pe_set_snk_caps(port, cap_cnt, payload);
-
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
 				dpm_evaluate_sink_fixed_pdo(port, payload[0]);
+#endif
 				pe_set_ready_state(port);
 				return;
 			} else if (cnt == 0 &&

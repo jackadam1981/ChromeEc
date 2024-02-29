@@ -403,6 +403,16 @@ config PLATFORM_EC_CONFIG_USB_PD_3A_PORTS
 	 To turn off the TCPMv2 3.0 A current allocation from the DPM, set
 	 CONFIG_USB_PD_3A_PORTS to 0.
 
+config PLATFORM_EC_USB_PD_SOURCE_CURRENT_OLD
+	bool "Use old source current solution"
+	help
+	  <WIP>
+
+config PLATFORM_EC_USB_PD_MAX_SINGLE_SOURCE_CURRENT
+	int "Set single port max source current"
+	help
+	  <WIP>
+
 config PLATFORM_EC_USB_PD_TEMP_SENSOR
 	int "Temperature sensor used in PD messages"
 	depends on PLATFORM_EC_TEMP_SENSOR

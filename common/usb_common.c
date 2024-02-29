@@ -211,13 +211,16 @@ __overridable int pd_board_check_request(uint32_t rdo, int pdo_cnt)
 
 int pd_get_source_pdo(const uint32_t **src_pdo_p, const int port)
 {
-#if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)
+#if !defined(CONFIG_USB_PD_SOURCE_CURRENT_OLD) && \
+defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)
 	const uint32_t *src_pdo;
 	const int pdo_cnt = dpm_get_source_pdo(&src_pdo, port);
+	ccprintf("#### 111 ");
 #elif defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
 	defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
 	const uint32_t *src_pdo;
 	const int pdo_cnt = charge_manager_get_source_pdo(&src_pdo, port);
+		ccprintf("#### 222 ");
 #else
 	const uint32_t *src_pdo = pd_src_pdo;
 	const int pdo_cnt = pd_src_pdo_cnt;

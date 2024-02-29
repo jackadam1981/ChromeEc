@@ -643,14 +643,8 @@ static void dpm_run_pd_button_sm(int port)
 	DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
 	DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED);
 }
-
-/*
- * Source-out policy variables and APIs
- *
- * Priority for the available 3.0 A ports is given in the following order:
- * - sink partners which report requiring > 1.5 A in their Sink_Capabilities
- */
-
+/* BIST shared test mode */
+static bool bist_shared_mode_enabled;
 /*
  * Bitmasks of port numbers in each following category
  *
@@ -660,6 +654,16 @@ static void dpm_run_pd_button_sm(int port)
 static uint32_t max_current_claimed;
 K_MUTEX_DEFINE(max_current_claimed_lock);
 
+#ifndef CONFIG_USB_PD_SOURCE_CURRENT_OLD
+/*
+ * Source-out policy variables and APIs
+ *
+ * Priority for the available 3.0 A ports is given in the following order:
+ * - sink partners which report requiring > 1.5 A in their Sink_Capabilities
+ */
+
+
+
 /* Ports with PD sink needing > 1.5 A */
 static atomic_t sink_max_pdo_requested;
 /* Ports with FRS source needing > 1.5 A */
@@ -667,8 +671,7 @@ static atomic_t source_frs_max_requested;
 /* Ports with non-PD sinks, so current requirements are unknown */
 static atomic_t non_pd_sink_max_requested;
 
-/* BIST shared test mode */
-static bool bist_shared_mode_enabled;
+
 
 #define LOWEST_PORT(p) __builtin_ctz(p) /* Undefined behavior if p == 0 */
 
@@ -933,6 +936,7 @@ void dpm_remove_source(int port)
 
 	balance_source_ports();
 }
+#endif
 
 void dpm_bist_shared_mode_enter(int port)
 {
@@ -1032,6 +1036,7 @@ int dpm_get_source_current(const int port)
 	else
 		return 500;
 }
+
 
 __overridable enum pd_sdb_power_indicator
 board_get_pd_sdb_power_indicator(enum pd_sdb_power_state power_state)

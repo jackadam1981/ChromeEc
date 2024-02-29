@@ -478,7 +478,8 @@ charge_manager_fill_power_info(int port,
 			r->meas.voltage_now =
 				r->role == USB_PD_PORT_POWER_SOURCE ? 5000 : 0;
 			/* TCPMv2 tracks source-out current in the DPM */
-			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
+			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2) && \
+			!IS_ENABLED(CONFIG_USB_PD_SOURCE_CURRENT_OLD))
 				r->meas.current_max =
 					dpm_get_source_current(port);
 			else
@@ -1424,8 +1425,9 @@ int charge_manager_get_power_limit_uw(void)
 		return current_ma * voltage_mv;
 }
 
-#if defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) && \
-	!defined(CONFIG_USB_PD_TCPMV2)
+#if defined(CONFIG_USB_PD_SOURCE_CURRENT_OLD) && \
+	defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) 
+	
 /* Note: this functionality is a part of the TCPMv2 Device Poicy Manager */
 
 /* Bitmap of ports used as power source */
@@ -1495,6 +1497,8 @@ void charge_manager_source_port(int port, int enable)
 		if (is_connected(p) && !is_sink(p))
 			charge_manager_save_log(p);
 #endif
+
+		ccprintf("#### [p%d]: rp=%d\n",p, rp);
 
 		typec_set_source_current_limit(p, rp);
 		if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))

@@ -6162,11 +6162,10 @@
  * To turn off the TCPMv2 3.0 A current allocation from the DPM, set
  * CONFIG_USB_PD_3A_PORTS to 0.
  */
-#ifdef CONFIG_USB_PD_TCPMV2
-#if defined(CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT) || \
-	defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
-#error Define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is limited to TCPMv1
-#endif
+#define CONFIG_USB_PD_SOURCE_CURRENT_OLD
+
+#ifdef CONFIG_USB_PD_TCPMV2  
+
 #ifndef CONFIG_USB_PD_3A_PORTS
 #define CONFIG_USB_PD_3A_PORTS 1
 #endif
