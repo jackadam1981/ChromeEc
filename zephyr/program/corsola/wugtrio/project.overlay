@@ -1,0 +1,35 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Corsola program common DTS includes */
+
+#include "../common.dtsi"
+#include "../power_signal.dtsi"
+#include "../ite_adc.dtsi"
+#include "../ite_gpio.dtsi"
+#include "../ite_i2c.dtsi"
+#include "../ite_interrupts.dtsi"
+#include "../ite_keyboard.dtsi"
+#include "../ite_led.dtsi"
+#include "../ite_usbc.dtsi"
+#include "../ite_shi.dtsi"
+
+/ {	
+	named-gpios {
+		compatible = "named-gpios";
+
+		adp_present: adp_present{
+			gpios = <&gpiom 2 GPIO_INPUT>;
+		};
+	};
+
+	gpio-interrupts {
+		adp_present: adp_present {
+			irq-pin = <&adp_present>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "adp_connect_interrupt";
+		};
+	};
+};
