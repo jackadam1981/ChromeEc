@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f011e5_84043f93",
+        "filename": "zephyr/test/nissa/boards/glassway.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-02-29T08:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e357045b_e3299a6a",
+      "revId": "46b96b15a22bbc8fa1fd085e3c880360f77e3ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb1d96ac_bd4b179f",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-29T08:22:00Z",
       "side": 1,
       "message": "s/2023/2024",
+      "revId": "46b96b15a22bbc8fa1fd085e3c880360f77e3ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da00207_c7ff0cad",
+        "filename": "zephyr/test/nissa/src/glassway.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-02-29T08:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1d96ac_bd4b179f",
       "revId": "46b96b15a22bbc8fa1fd085e3c880360f77e3ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
