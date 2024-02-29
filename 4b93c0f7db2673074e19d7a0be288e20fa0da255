@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7263ba25_2c721cb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-29T17:08:47Z",
+      "side": 1,
+      "message": "To clarify, setting to 3754 is the actual limit as it\u0027s highest value relative to the actual input limit of 4000, without going higher? When just looking at the config option setting (4000), the 3754 number could be a little confusing.",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "4b93c0f7db2673074e19d7a0be288e20fa0da255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
