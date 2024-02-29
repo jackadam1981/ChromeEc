@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89f919b_e689e026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-02-29T23:03:49Z",
+      "side": 1,
+      "message": "What are some examples of not rentrant functions in newlib, that use global state?\n\nI\u0027m guessing malloc, but do you know of other std functions that are not rentrant?",
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
