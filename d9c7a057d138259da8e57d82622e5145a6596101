@@ -46,6 +46,30 @@
       },
       "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2aadc0_3b5b8f6e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-29T23:16:00Z",
+      "side": 1,
+      "message": "I looked closer, I see pd_get_rev shim requires the GET_CABLE_PROPERTY message.  Please update the commit message to call this out.",
+      "parentUuid": "64b6f04f_c844be44",
+      "range": {
+        "startLine": 148,
+        "startChar": 25,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
