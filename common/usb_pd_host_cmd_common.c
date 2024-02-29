@@ -72,6 +72,7 @@ static const mux_state_t typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 	[USB_PD_CTRL_MUX_DOCK] = USB_PD_MUX_DOCK,
 };
 
+#if !defined(CONFIG_USB_PD_CONTROLLER)
 /*
  * Combines the following information into a single byte
  * Bit 0: Active/Passive cable
@@ -80,7 +81,7 @@ static const mux_state_t typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
  * Bit 3: Active Link Uni-Direction/Bi-Direction
  * Bit 4: Retimer/Rediriver cable
  */
-static uint8_t get_pd_control_flags(int port)
+uint8_t get_pd_control_flags(int port)
 {
 	union tbt_mode_resp_cable cable_resp;
 	union tbt_mode_resp_device device_resp;
@@ -116,6 +117,7 @@ static uint8_t get_pd_control_flags(int port)
 				 0;
 	return control_flags;
 }
+#endif
 
 static uint8_t pd_get_role_flags(int port)
 {
