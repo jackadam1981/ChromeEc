@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cf570c_8a5181ac",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-29T23:54:07Z",
+      "side": 1,
+      "message": "This is backwards based on the logic.  The environment variables are used only if the user does not specify the `board` or `project` arguments.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "9fc1ccef31ef52834a9ed95f328f20d6157cee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
