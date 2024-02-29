@@ -73,6 +73,7 @@
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec_rate = <100000>;
 				};
 			};
 		};
@@ -96,6 +97,7 @@
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec_rate = <100000>;
 				};
 			};
 		};
