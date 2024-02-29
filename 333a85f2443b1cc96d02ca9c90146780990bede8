@@ -22,6 +22,30 @@
       },
       "revId": "333a85f2443b1cc96d02ca9c90146780990bede8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecfa30d_251d5c70",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-02-29T22:31:26Z",
+      "side": 1,
+      "message": "Using -1 means that we won\u0027t overwrite the register value at all and will just use the default setting defined by the chip.  I updated the comment to drop the 4096 mV language in case a new chip version changes the default.",
+      "parentUuid": "7f7ea46d_0b6382e8",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "333a85f2443b1cc96d02ca9c90146780990bede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
