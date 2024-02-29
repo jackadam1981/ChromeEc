@@ -71,3 +71,6 @@ test-list-y=\
        unaligned_access_benchmark \
        utils \
        utils_str
+
+# This is relative to the EC root directory.
+-include private/board/helipilot/build.mk
