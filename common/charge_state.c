@@ -1636,6 +1636,7 @@ void charger_task(void *u)
 
 	while (1) {
 		/* Let's see what's going on... */
+		CPRINTS("---charger_task---");
 		curr.ts = get_time();
 		sleep_usec = 0;
 		problems_exist = 0;
