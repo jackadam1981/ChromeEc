@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7ea46d_0b6382e8",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-02-29T17:00:47Z",
+      "side": 1,
+      "message": "What is the advantage here to adding -1 means default as opposed to setting the default 4096, so then there wouldn\u0027t need to be any special test?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "333a85f2443b1cc96d02ca9c90146780990bede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
