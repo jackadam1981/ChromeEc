@@ -39,6 +39,30 @@
       },
       "revId": "69827088eb1bef91981628bf6c2add508df317d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a205924_3ae4fc77",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-02-29T06:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32681776_5eb14be9",
+      "range": {
+        "startLine": 388,
+        "startChar": 22,
+        "endLine": 388,
+        "endChar": 23
+      },
+      "revId": "69827088eb1bef91981628bf6c2add508df317d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
