@@ -69,6 +69,30 @@
       },
       "revId": "7cb5021da448127c7748d8c117d74714971fa558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d9faa1_577395b7",
+        "filename": "test/sram_mpu_protection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-02-29T03:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faaf1dd9_d8c3b587",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "7cb5021da448127c7748d8c117d74714971fa558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
