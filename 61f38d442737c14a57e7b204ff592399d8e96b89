@@ -16,6 +16,24 @@
       "message": "How does this PD revision differ from the value returned in GET_IC_STATUS?",
       "revId": "61f38d442737c14a57e7b204ff592399d8e96b89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094d02f7_d88e6846",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-29T21:48:16Z",
+      "side": 1,
+      "message": "The GET_IC_STATUS return the PD revision that\u0027s supported by the PDC. This CL returns the PD revisions supported by the Port Partner and Cable. For example, the PDC supports 3.0 but the Port Partner might only support 2.0.",
+      "parentUuid": "ea3cb670_e5b2522f",
+      "revId": "61f38d442737c14a57e7b204ff592399d8e96b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

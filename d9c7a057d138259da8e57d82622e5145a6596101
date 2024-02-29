@@ -22,6 +22,30 @@
       },
       "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b6f04f_c844be44",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-29T21:48:16Z",
+      "side": 1,
+      "message": "Do you mean split the driver changes into a separate CL from the subsystem?",
+      "parentUuid": "bbb89871_ed93f68b",
+      "range": {
+        "startLine": 148,
+        "startChar": 25,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
