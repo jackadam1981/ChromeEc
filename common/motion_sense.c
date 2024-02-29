@@ -92,17 +92,42 @@ __attribute__((weak)) int sensor_board_is_lid_angle_available(void)
 }
 #endif
 
-static inline int
+STATIC_IF_NOT(CONFIG_TEST)
+enum sensor_config motion_sense_get_ec_config(void)
+{
+	switch (sensor_active) {
+	case SENSOR_ACTIVE_S0:
+		return SENSOR_CONFIG_EC_S0;
+	case SENSOR_ACTIVE_S3:
+		return SENSOR_CONFIG_EC_S3;
+	case SENSOR_ACTIVE_S5:
+		return SENSOR_CONFIG_EC_S5;
+	default:
+		CPRINTS("get_ec_config: Invalid active state: %x",
+			sensor_active);
+		return SENSOR_CONFIG_EC_S5;
+	}
+}
+
+static inline bool
 motion_sensor_in_forced_mode(const struct motion_sensor_t *sensor)
 {
 #ifdef CONFIG_ACCEL_FORCE_MODE_MASK
-	/* Sensor not in force mode, its irq_handler is getting data. */
-	if (!(CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors))))
-		return 0;
-	else
-		return 1;
+	/* Sensor in force mode */
+	if ((CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors)))) {
+		return true;
+	}
+
+	/* Sensor might be in force mode depending on ec_rate */
+	enum sensor_config cfg_index = motion_sense_get_ec_config();
+
+	if (cfg_index == SENSOR_CONFIG_EC_S0) {
+		/* Can't override interrupt mode in S0 */
+		return false;
+	}
+	return sensor->config[cfg_index].ec_rate > 0;
 #else
-	return 0;
+	return false;
 #endif
 }
 
@@ -122,22 +147,37 @@ motion_sensor_time_to_read(const timestamp_t *ts,
 			  sensor->next_collection - motion_min_interval);
 }
 
-STATIC_IF_NOT(CONFIG_ZTEST)
-enum sensor_config motion_sense_get_ec_config(void)
+enum motion_sense_interrupt_mode {
+	MOTION_SENSE_INTERRUPT_MODE_UNCHANGED,
+	MOTION_SENSE_INTERRUPT_MODE_ENABLED,
+	MOTION_SENSE_INTERRUPT_MODE_DISABLED,
+};
+
+#define MOTION_SENSE_INTERRUPT_MODE_STRING(mode)                         \
+	((mode) == MOTION_SENSE_INTERRUPT_MODE_UNCHANGED ?               \
+		 "UNCHANGED" :                                           \
+		 ((mode) == MOTION_SENSE_INTERRUPT_MODE_ENABLED ? "ON" : \
+								  "OFF"))
+
+static enum motion_sense_interrupt_mode
+motion_sense_handle_interrupt_change(struct motion_sensor_t *sensor,
+				     bool enable_interrupt)
 {
-	switch (sensor_active) {
-	case SENSOR_ACTIVE_S0:
-		return SENSOR_CONFIG_EC_S0;
-	case SENSOR_ACTIVE_S3:
-		return SENSOR_CONFIG_EC_S3;
-	case SENSOR_ACTIVE_S5:
-		return SENSOR_CONFIG_EC_S5;
-	default:
-		CPRINTS("get_ec_config: Invalid active state: %x",
-			sensor_active);
-		return SENSOR_CONFIG_EC_S5;
+	/* If the driver can't toggle the interrupt just bail here. */
+	if (sensor->drv->enable_interrupt == NULL) {
+		return MOTION_SENSE_INTERRUPT_MODE_UNCHANGED;
 	}
+
+	if (sensor->drv->enable_interrupt(sensor, enable_interrupt) !=
+	    EC_SUCCESS) {
+		/* Failed to set sensor interrupt */
+		return MOTION_SENSE_INTERRUPT_MODE_UNCHANGED;
+	}
+
+	return enable_interrupt ? MOTION_SENSE_INTERRUPT_MODE_ENABLED :
+				  MOTION_SENSE_INTERRUPT_MODE_DISABLED;
 }
+
 /* motion_sense_set_data_rate
  *
  * Set the sensor data rate. It is altered when the AP change the data
@@ -148,6 +188,8 @@ enum sensor_config motion_sense_get_ec_config(void)
 int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 {
 	int roundup, ap_odr_mhz = 0, ec_odr_mhz, odr, ret;
+	enum motion_sense_interrupt_mode interrupt_mode =
+		MOTION_SENSE_INTERRUPT_MODE_UNCHANGED;
 	enum sensor_config config_id;
 	timestamp_t ts = get_time();
 
@@ -170,14 +212,25 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 
 	ret = sensor->drv->set_data_rate(sensor, odr, roundup);
 
-	if (IS_ENABLED(CONFIG_CONSOLE_VERBOSE))
-		CPRINTS("%s ODR: %d - roundup %d from config %d [AP %d]: %d",
-			sensor->name, odr, roundup, config_id,
+	if (ret == EC_SUCCESS) {
+		interrupt_mode = motion_sense_handle_interrupt_change(
+			sensor, !motion_sensor_in_forced_mode(sensor));
+	}
+
+	if (IS_ENABLED(CONFIG_CONSOLE_VERBOSE)) {
+		CPRINTS("%s ODR: %d INT: %s - roundup %d from config %d [AP %d]"
+			": %d",
+			sensor->name, odr,
+			MOTION_SENSE_INTERRUPT_MODE_STRING(interrupt_mode),
+			roundup, config_id,
 			BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr), ret);
-	else
-		CPRINTS("%c%d ODR %d rup %d cfg %d AP %d: %d", sensor->name[0],
-			sensor->type, odr, roundup, config_id,
+	} else {
+		CPRINTS("%c%d ODR %d INT: %s rup %d cfg %d AP %d: %d",
+			sensor->name[0], sensor->type, odr,
+			MOTION_SENSE_INTERRUPT_MODE_STRING(interrupt_mode),
+			roundup, config_id,
 			BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr), ret);
+	}
 
 	if (ret)
 		return ret;
@@ -921,13 +974,21 @@ void motion_sense_task(void *u)
 
 		for (i = 0; i < motion_sensor_count; i++) {
 			struct motion_sensor_t *sensor = &motion_sensors[i];
+			enum sensor_config cfg_index =
+				motion_sense_get_ec_config();
+			unsigned int ec_rate = 0;
 
 			if (!motion_sensor_in_forced_mode(sensor) ||
 			    sensor->collection_rate == 0)
 				continue;
 
-			time_diff = time_until(ts_end_task.le.lo,
-					       sensor->next_collection);
+			if (cfg_index != SENSOR_CONFIG_EC_S0) {
+				ec_rate = sensor->config[cfg_index].ec_rate;
+			}
+
+			time_diff = MAX(time_until(ts_end_task.le.lo,
+						   sensor->next_collection),
+					ec_rate);
 
 			/* We missed our collection time so wake soon */
 			if (time_diff <= 0) {
