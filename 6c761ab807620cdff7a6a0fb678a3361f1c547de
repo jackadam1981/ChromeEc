@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6efd71f_d8fd4436",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-29T21:42:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f1e89f15_709af43a",
+      "range": {
+        "startLine": 141,
+        "startChar": 60,
+        "endLine": 141,
+        "endChar": 64
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db3cc7b0_95393a61",
@@ -267,6 +291,30 @@
       "side": 1,
       "message": "I think in realtek\u0027s implementation the value of connector_number is a don\u0027t care. The programming guide has a mixture of language for this value. For commands that already had a connector number field, they use \"set value to 0\", but for commands that had port number, or where they\u0027d ignored connector number and now have added it, they are using the usci language that states \"setting this value to 0 is illegal\".\n\nThe kernel version of this driver is setting the connector number as expected in ucsi (port number + 1), and that\u0027s working. I didn\u0027t modify what this driver is doing as it seems like the current FW is still just relaying on with i2c address is used to infer the connector number.\n\nI have verified that setting the connector number to 0, as is currently being done, is working correctly.",
       "parentUuid": "7b1f71ba_4dbd641d",
+      "range": {
+        "startLine": 1942,
+        "startChar": 1,
+        "endLine": 1942,
+        "endChar": 9
+      },
+      "revId": "6c761ab807620cdff7a6a0fb678a3361f1c547de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d18c3a7_23f2985c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-02-29T21:42:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "aa650b77_aec428ea",
       "range": {
         "startLine": 1942,
         "startChar": 1,
