@@ -3733,6 +3733,8 @@ static void pe_snk_transition_sink_run(int port)
 				dpm_evaluate_sink_fixed_pdo(
 					port, *pd_get_snk_caps(port));
 
+			pd_set_input_current_limit(port, pe[port].curr_limit,
+						   pe[port].supply_voltage);
 			set_state_pe(port, PE_SNK_READY);
 		} else {
 			/*
@@ -3756,10 +3758,6 @@ static void pe_snk_transition_sink_run(int port)
 
 static void pe_snk_transition_sink_exit(int port)
 {
-	/* Transition Sink's power supply to the new power level */
-	pd_set_input_current_limit(port, pe[port].curr_limit,
-				   pe[port].supply_voltage);
-
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		/* Set ceiling based on what's negotiated */
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
