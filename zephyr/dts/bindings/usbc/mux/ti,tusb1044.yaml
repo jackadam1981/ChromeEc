@@ -2,6 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-if (DEFINED CONFIG_TEST_EXTPOWER)
-	target_sources(app PRIVATE src/extpower.c)
-endif()
+description: |
+  TUSB1044 or TUSB1046 USB-C MUX
+
+include: ["i2c-device.yaml", "cros-ec,usbc-mux.yaml"]
+
+compatible: "ti,tusb1044"
