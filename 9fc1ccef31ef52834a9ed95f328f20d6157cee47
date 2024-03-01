@@ -22,6 +22,30 @@
       },
       "revId": "9fc1ccef31ef52834a9ed95f328f20d6157cee47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d43685_18117c35",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-01T01:09:25Z",
+      "side": 1,
+      "message": "Ohh, I think I communicated that poorly. I meant that the environment variables just allow you to override the defaults. I\u0027ll try to correct the wording here.",
+      "parentUuid": "b3cf570c_8a5181ac",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "9fc1ccef31ef52834a9ed95f328f20d6157cee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
