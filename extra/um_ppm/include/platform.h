@@ -38,6 +38,17 @@
 #define ELOG(fmt, ...) \
 	platform_eprintf("ERR: %s: " fmt "\n", __func__, ##__VA_ARGS__)
 
+#define DLOG_ARRAY_U8(array, array_size, prefix_fmt, ...)    \
+	{                                                    \
+		DLOG_START(prefix_fmt " : [ ", __VA_ARGS__); \
+		for (int _i = 0; _i < array_size; ++_i) {    \
+			DLOG_LOOP("0x%02x", array[_i]);      \
+			if (_i != array_size - 1)            \
+				DLOG_LOOP(", ");             \
+		}                                            \
+		DLOG_END(" ]");                              \
+	}
+
 void *platform_malloc(size_t size);
 void *platform_calloc(size_t nmemb, size_t size);
 void platform_free(void *ptr);
