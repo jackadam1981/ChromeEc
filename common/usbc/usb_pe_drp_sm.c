@@ -3756,15 +3756,15 @@ static void pe_snk_transition_sink_run(int port)
 
 static void pe_snk_transition_sink_exit(int port)
 {
-	/* Transition Sink's power supply to the new power level */
-	pd_set_input_current_limit(port, pe[port].curr_limit,
+	if (!tc_get_pd_enabled(port) && !pd_is_disconnected(port)) {
+		CPRINTS("stop the snk transition sink ext");
+		pd_set_input_current_limit(port, pe[port].curr_limit,
 				   pe[port].supply_voltage);
-
-	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
-		/* Set ceiling based on what's negotiated */
-		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
+		if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
+			/* Set ceiling based on what's negotiated */
+			charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 					pe[port].curr_limit);
-
+	}
 	pd_timer_disable(port, PE_TIMER_PS_TRANSITION);
 
 	if (IS_ENABLED(CONFIG_USB_PD_DPS))
