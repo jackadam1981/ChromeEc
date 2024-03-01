@@ -166,6 +166,30 @@
       },
       "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d96de4_3a79dc2d",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-03-01T05:43:48Z",
+      "side": 1,
+      "message": "I see examples in other files (not all introduced by me, e.g. `chip/stm32/dma.c`), where `#if defined(...)` is used to guard conditional compilation depending on the presence of registers or particular bits in them.  You may be right that this is special for `chip/stm32`.",
+      "parentUuid": "4fe50b3c_ed127932",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "60b11fc1aaf071042388117308ebf79fa9c3585f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
