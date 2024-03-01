@@ -156,7 +156,8 @@
 			gpios = <&gpio5 7 GPIO_INPUT>;
 		};
 		tp-gpio95 {
-			gpios = <&gpio9 5 GPIO_INPUT>;
+			gpios = <&gpio9 5 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_DEBUG_TCPC";
 		};
 		cpu-c10-gate {
 			gpios = <&gpio9 6 GPIO_INPUT>;

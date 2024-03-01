@@ -16,6 +16,7 @@ properties:
       any names that are not referenced by Zephyr projects (or
       are not in included common legacy code)
     enum:
+      - GPIO_DEBUG_TCPC
       - GPIO_AC_PRESENT
       - GPIO_AP_EC_SYSRST_ODL
       - GPIO_AP_EC_WARM_RST_REQ

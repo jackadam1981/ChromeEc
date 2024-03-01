@@ -19,6 +19,7 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "gpio.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
@@ -542,6 +543,8 @@ void usb_mux_set(int port, mux_state_t mux_mode, enum usb_switch usb_mode,
 	if (port >= board_get_usb_pd_port_count())
 		return;
 
+	gpio_set_level(GPIO_DEBUG_TCPC, 1);
+	gpio_set_level(GPIO_DEBUG_TCPC, 0);
 	/* Block if we have no mux task, but otherwise queue it up and return */
 	if (IS_ENABLED(HAS_TASK_USB_MUX))
 		mux_task_enqueue(port, TYPEC_USB_MUX_SET_ALL_CHIPS,
