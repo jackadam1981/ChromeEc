@@ -283,4 +283,13 @@ int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info);
  */
 int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
 
+/**
+ * @brief Resets the PDC
+ *
+ * @param port USB-C port number
+ *
+ * @retval void
+ */
+int pdc_power_mgmt_connector_reset(int port, union connector_reset_t reset);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
