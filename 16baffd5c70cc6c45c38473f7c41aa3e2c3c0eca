@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae25bbe_97eac06f",
+        "filename": "zephyr/test/drivers/usbc_intel_alt_mode/src/usbc_intel_alt_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-02T19:25:36Z",
+      "side": 1,
+      "message": "This assertion can never fail.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 0
+      },
+      "revId": "16baffd5c70cc6c45c38473f7c41aa3e2c3c0eca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
