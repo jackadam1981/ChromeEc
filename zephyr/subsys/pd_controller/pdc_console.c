@@ -175,6 +175,32 @@ static int cmd_pdc_reset(const struct shell *sh, size_t argc, char **argv)
 	return EC_SUCCESS;
 }
 
+static int cmd_pdc_connector_reset(const struct shell *sh, size_t argc,
+				   char **argv)
+{
+	int rv;
+	uint8_t port;
+	union connector_reset_t reset;
+
+	reset.raw_value = 0;
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strcmp(argv[2], "hard")) {
+		reset.reset_type = PD_HARD_RESET;
+	} else if (!strcmp(argv[2], "data")) {
+		reset.reset_type = PD_DATA_RESET;
+	} else {
+		shell_error(sh, "Invalid connector reset tyep");
+		return -EINVAL;
+	}
+
+	/* Trigger a PDC connector reset */
+	return pdc_power_mgmt_connector_reset(port, reset);
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -201,6 +227,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Set dualrole mode\n"
 		      "Usage: pdc dualrole  <port> [on|off|freeze|sink|source]",
 		      cmd_pdc_dualrole, 3, 0),
+	SHELL_CMD_ARG(conn_reset, NULL,
+		      "Trigger hard or data reset\n"
+		      "Usage: pdc conn_reset  <port> [hard|data]",
+		      cmd_pdc_connector_reset, 3, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
