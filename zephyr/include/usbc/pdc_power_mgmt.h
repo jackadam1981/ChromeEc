@@ -310,4 +310,14 @@ uint16_t pdc_power_mgmt_get_identity_pid(int port);
  */
 uint8_t pdc_power_mgmt_get_product_type(int port);
 
+/**
+ * @brief Triggers hard or data reset
+ *
+ * @param port USB-C port number
+ * @param reset Reset Type (Hard or Data)
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_connector_reset(int port, union connector_reset_t reset);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
