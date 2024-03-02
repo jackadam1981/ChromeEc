@@ -94,6 +94,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_CONNECTOR_STATUS,
 	/** CMD_PDC_GET_VDO */
 	CMD_PDC_GET_VDO,
+	/** CMD_PDC_CONNECTOR_RESET */
+	CMD_PDC_CONNECTOR_RESET,
 
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
@@ -249,7 +251,8 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_UOR] = "PDC_SET_UOR",
 	[CMD_PDC_SET_PDR] = "PDC_SET_PDR",
 	[CMD_PDC_GET_CONNECTOR_STATUS] = "PDC_GET_CONNECTOR_STATUS",
-	[CMD_PDC_GET_VDO] = "PDC_GET_VDO"
+	[CMD_PDC_GET_VDO] = "PDC_GET_VDO",
+	[CMD_PDC_CONNECTOR_RESET] = "PDC_CONNECTOR_RESET",
 };
 
 /**
@@ -459,6 +462,8 @@ struct pdc_port_t {
 	uint8_t vdo_type[VDO_NUM];
 	/** Array used to store VDOs returned from the GET_VDO command */
 	uint32_t vdo[VDO_NUM];
+	/** CONNECTOR_RESET temp variable used with CMD_PDC_CONNECTOR_RESET */
+	union connector_reset_t connector_reset;
 };
 
 /**
@@ -1104,6 +1109,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_vdo(port->pdc, port->vdo_req, port->vdo_type,
 				 port->vdo);
 		break;
+	case CMD_PDC_CONNECTOR_RESET:
+		rv = pdc_connector_reset(port->pdc,
+					      port->connector_reset);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -1459,7 +1468,7 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 		 * adjusted given that internal commands may be resent up to 2
 		 * times with a 2 second timeout for each send attempt.
 		 */
-		if (pdc_data[port]->port.block_counter > WAIT_MAX) {
+		if (pdc_data[port]->port.block_counter > (WAIT_MAX * 2)) {
 			/* something went wrong */
 			LOG_ERR("Public API blocking timeout");
 			return -EBUSY;
@@ -2120,6 +2129,24 @@ int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info)
 	 */
 
 	return pdc_get_bus_info(pdc_data[port]->port.pdc, pdc_bus_info);
+}
+
+int pdc_power_mgmt_connector_reset(int port, union connector_reset_t reset)
+{
+	/* Make sure port is in range and that an output buffer is provided */
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	/* Make sure port is connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
+		return EC_SUCCESS;
+	}
+
+	pdc_data[port]->port.connector_reset = reset;
+
+	/* Block until command completes */
+	return public_api_block(port, CMD_PDC_CONNECTOR_RESET);
 }
 
 static int pdc_run_get_discovery(int port)
