@@ -191,6 +191,7 @@ static uint32_t __attribute__((unused)) get_size(enum ec_image copy)
 test_mockable int system_is_locked(void)
 {
 	static int is_locked = -1;
+	ccprints("I am at system_is_locked");
 
 	if (force_locked)
 		return 1;
@@ -427,6 +428,7 @@ test_mockable const uint8_t *system_get_jump_tag(uint16_t tag, int *version,
 
 test_mockable void system_disable_jump(void)
 {
+	ccprints("I am at system_disable_jump");
 	disable_jump = 1;
 
 #ifdef CONFIG_MPU
