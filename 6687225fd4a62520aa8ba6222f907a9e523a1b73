@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41afa14d_6b7b5afd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-03-04T21:09:36Z",
+      "side": 1,
+      "message": "The mechanics make sense.  Can you walk me through how this would be applied to achieve a specific goal?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "6687225fd4a62520aa8ba6222f907a9e523a1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e13df36_5dc4d137",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-03-04T21:09:36Z",
+      "side": 1,
+      "message": "Can you make this into another CL? A sample for you: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2627632. Also, please ensure labeling __override_proto in `include/usb_pd_dpm_sm.h`",
+      "revId": "6687225fd4a62520aa8ba6222f907a9e523a1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
