@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "963795fa_2d43322c",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-04T22:19:45Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027ll prepare patch.",
+      "parentUuid": "b1a6ccfa_44943fdd",
+      "range": {
+        "startLine": 143,
+        "startChar": 46,
+        "endLine": 143,
+        "endChar": 73
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42dce245_14f0258e",
         "filename": "libc/syscalls.c",
         "patchSetId": 1
@@ -176,6 +200,30 @@
       "writtenOn": "2024-03-04T21:56:07Z",
       "side": 1,
       "message": "How about putting the recursive mutex logic into `core/cortex-m/task.c` with the other mutex functions and just wrap them here like you did with others?\n\nThen we can also write a basic unit test for those recursive lock functions.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffe4bff_8af58065",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-04T22:19:45Z",
+      "side": 1,
+      "message": "\u003e How about putting the recursive mutex logic into core/cortex-m/task.c\n\nPlease note that this implementation is compatible with architectures that provide atomic operations. I think we could put them in some common directory. On the other hand, I don\u0027t think this code will be used somewhere else. Zephyr mutexes are recursive, so I don\u0027t think we will reuse them.\n\nThat\u0027s why I decided to leave it here.",
+      "parentUuid": "74e5346b_d612f9cf",
       "range": {
         "startLine": 196,
         "startChar": 0,
