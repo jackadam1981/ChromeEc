@@ -34,6 +34,41 @@
       "parentUuid": "c89f919b_e689e026",
       "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfa1390_1cbb4183",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-04T18:11:52Z",
+      "side": 1,
+      "message": "I had to define static mutexes for these functions in this change:\n```\nK_MUTEX_R_DEFINE(__lock___sinit_recursive_mutex);\nK_MUTEX_R_DEFINE(__lock___sfp_recursive_mutex);\nK_MUTEX_R_DEFINE(__lock___atexit_recursive_mutex);\nK_MUTEX_R_DEFINE(__lock___malloc_recursive_mutex);\nK_MUTEX_R_DEFINE(__lock___env_recursive_mutex);\n\nstruct mutex __lock___at_quick_exit_mutex;\nstruct mutex __lock___tz_mutex;\nstruct mutex __lock___dd_hash_mutex;\nstruct mutex __lock___arc4random_mutex;\n```\n\nWe only use `malloc` from this list.",
+      "parentUuid": "398f41fb_8e646897",
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b66db3_43966aa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-04T18:11:52Z",
+      "side": 1,
+      "message": "Dropping V+1 because I found some improvements over the weekend, but I don\u0027t have a time slot to implement them.",
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
