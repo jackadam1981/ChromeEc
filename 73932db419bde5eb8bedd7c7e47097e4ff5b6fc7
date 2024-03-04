@@ -16,6 +16,24 @@
       "message": "/mnt/host/source/src/platform/ec $ make -j BOARD\u003dshotzo\n  LD      RW/ec.RW.elf\n  LD      RO/ec.RO.elf\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/11.3.0/../../../../nds32le-elf/bin/ld: /opt/coreboot-sdk/lib/gcc/nds32le-elf/11.3.0/../../../../nds32le-elf/bin/ld: DWARF error: found dwarf version \u00277490\u0027, this reader only handles version 2, 3, 4 and 5 information\n/tmp/ccDMdHGA.ltrans0.ltrans.o: in function `.LVL5122\u0027:\n\u003cartificial\u003e:(.text+0xb552): undefined reference to `get_chg_ctrl_mode\u0027\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/11.3.0/../../../../nds32le-elf/bin/ld: /tmp/ccDMdHGA.ltrans0.ltrans.o: in function `pd_notify_event\u0027:\n\u003cartificial\u003e:(.text+0xb582): undefined reference to `get_chg_ctrl_mode\u0027\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:614: build/shotzo/RO/ec.RO.elf] Error 1\nmake: *** Waiting for unfinished jobs....\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/11.3.0/../../../../nds32le-elf/bin/ld: /tmp/ccnAtgJA.ltrans0.ltrans.o: in function `.LVL5158\u0027:\n\u003cartificial\u003e:(.text+0xb734): undefined reference to `get_chg_ctrl_mode\u0027\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/11.3.0/../../../../nds32le-elf/bin/ld: /tmp/ccnAtgJA.ltrans0.ltrans.o: in function `.LVL5164\u0027:\n\u003cartificial\u003e:(.text+0xb764): undefined reference to `get_chg_ctrl_mode\u0027\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:609: build/shotzo/RW/ec.RW.elf] Error 1\n\n\nNot sure why `shotzo` got failed?",
       "revId": "73932db419bde5eb8bedd7c7e47097e4ff5b6fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9737abbb_cedd470e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-03-04T05:20:11Z",
+      "side": 1,
+      "message": "For boards use SM5803 and without battery, need to add `#ifdef CONFIG_BATTERY`.",
+      "parentUuid": "86c47898_cc814000",
+      "revId": "73932db419bde5eb8bedd7c7e47097e4ff5b6fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
