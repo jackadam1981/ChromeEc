@@ -232,6 +232,30 @@
       },
       "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08dae793_f56e7c80",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-04T23:14:05Z",
+      "side": 1,
+      "message": "\u003e this implementation is compatible with architectures that provide atomic operations.\n\nOh, right.\n\nI don\u0027t love it, but we could surround the declarations in `task.h` for `mutex_lock_recursive`, etc. with `#if defined(CORTEX_M) \u0026\u0026 !defined(CONFIG_ZEPHYR)` and put the definition in `core/cortex-m/task.c`.\n\nI agree that we don\u0027t need it for Zephyr, but it seems *slightly* cleaner. (Or maybe it\u0027s just more consistent.)\n\nActually, as I\u0027m writing this I think I agree with you.\n\nWhat if we pull the recursive mutex code into a new file in the `libc` directory (e.g., `recursive_mutex.c` and `recursive_mutex.h`)? Then we could still use similar API names that we use in EC (e.g., `mutex_lock_recursive`, `mutex_unlock_recursive`, etc.), call those from this file, and write a unit test for those APIs. That would also avoid exposing the recursive mutex API to boards that don\u0027t use `libc`.",
+      "parentUuid": "7ffe4bff_8af58065",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
