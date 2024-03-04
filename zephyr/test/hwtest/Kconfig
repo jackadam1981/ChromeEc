@@ -14,3 +14,8 @@ config HW_TEST_ALWAYS_MEMSET
 	bool "Always_memset test"
 	select ZTEST
 	depends on BOARD_FINGERPRINT
+
+config HW_TEST_CORTEXM_FPU
+	bool "Cortex-M FPU test"
+	select ZTEST
+	depends on BOARD_FINGERPRINT
