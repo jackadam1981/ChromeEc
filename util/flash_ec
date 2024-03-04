@@ -1441,7 +1441,7 @@ function ite_dfu_mode() {
 }
 
 function flash_it83xx() {
-	local TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}"
+	local TOOL_PATH="${EC_DIR}/build/host/util:${PATH}"
 	local ITEFLASH_BIN
 	local TEMP_DIR
 	ITEFLASH_BIN=$(PATH="${TOOL_PATH}" which iteflash)
@@ -1504,11 +1504,14 @@ function flash_it83xx() {
 	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
 		ITEFLASH_ARGS+=( "--send-waveform=1" "--i2c-interface=ftdi" )
 	else
-		ITEFLASH_ARGS=( "sudo" "--" "${ITEFLASH_ARGS[@]}" \
-			"--send-waveform=0" "--i2c-interface=linux" \
-			"--i2c-dev-path=$(dut_i2c_dev)" )
 		if servo_is_ccd; then
-			ITEFLASH_ARGS+=( "--block-write-size=256" )
+			ITEFLASH_ARGS+=( "--send-waveform=0" \
+				"--i2c-interface=ccd" "-s" "$(get_serial)" \
+				"--block-write-size=256" )
+		else
+			ITEFLASH_ARGS=( "sudo" "--" "${ITEFLASH_ARGS[@]}" \
+				"--send-waveform=0" "--i2c-interface=linux" \
+				"--i2c-dev-path=$(dut_i2c_dev)" )
 		fi
 	fi
 
@@ -2014,6 +2017,10 @@ function read_chip_partially() {
 
 		UUT_CUR_FMAP_RD=( "${CHIP_CMD_PREFIX[@]}" \
 			"--read=${ALIGNED_FILE}" "--range=${RANGE}")
+		if [[ "${FLAGS_verbose}" == "${FLAGS_TRUE}" ]]; then
+			echo timeout -k 10 -s 9 "${FLAGS_timeout}" \
+				"${UUT_CUR_FMAP_RD[@]}"
+		fi
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
 
