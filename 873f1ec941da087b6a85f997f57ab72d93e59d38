@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eeab2e5_5805cbe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-04T22:39:03Z",
+      "side": 1,
+      "message": "Can you add a unit test for it?\n\nWe have a unit test for mutexes in `test/mutex.c`. Instead of adding to that, it might make sense to create a new `test/mutex_trylock.c`.",
+      "revId": "873f1ec941da087b6a85f997f57ab72d93e59d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972f9ec5_d132e772",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-04T22:39:03Z",
+      "side": 1,
+      "message": "To avoid code duplication, should `mutex_lock` call `mutex_try_lock` in the `while` loop?",
+      "range": {
+        "startLine": 906,
+        "startChar": 1,
+        "endLine": 920,
+        "endChar": 45
+      },
+      "revId": "873f1ec941da087b6a85f997f57ab72d93e59d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441f9a14_607f732d",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-04T22:39:03Z",
+      "side": 1,
+      "message": "Let\u0027s add a note that it shouldn\u0027t be used in interrupt context (like `mutex_lock`).",
+      "revId": "873f1ec941da087b6a85f997f57ab72d93e59d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
