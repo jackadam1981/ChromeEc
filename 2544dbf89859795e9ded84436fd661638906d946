@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eea3a8b_1584dd6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-04T23:40:52Z",
+      "side": 1,
+      "message": "This CL looks like it\u0027s trying to address something like a race condition between different calls to `pd_set_input_current_limit`. It\u0027s to catch the TC in a very specific weird state at a very specific time. Offhand, I\u0027m not sure this is the only time this race can happen, and I suspect that there\u0027s a more unconditional and final way to set the limit correctly on disconnect. More speculation from me in the bug.",
+      "revId": "2544dbf89859795e9ded84436fd661638906d946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
