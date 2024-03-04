@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744e442b_6e37062a",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-04T21:11:11Z",
+      "side": 1,
+      "message": "Use `elif` and you can drop a nesting level.",
+      "range": {
+        "startLine": 1507,
+        "startChar": 2,
+        "endLine": 1507,
+        "endChar": 4
+      },
+      "revId": "d86dc646c237ecb1614af2837ab1527c4b40b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
