@@ -67,6 +67,24 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8754824721583931745) is being automatically retried for the following reasons:\n- Some child builders are now retryable:amd64-generic-goma-rbe-prod-candidate-client-cq, amd64-generic-goma-rbe-prod-latest-client-cq, amd64-generic-goma-rbe-staging-release-client-cq, chromiumos-sdk-uprev-amd64-generic-cq, chromiumos-sdk-uprev-arm-generic-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "1f01b9e700b1acb05fb52612e053c572c3bb458f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf586b7a_2713cb89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-04T23:40:32Z",
+      "side": 1,
+      "message": "Added +2",
+      "parentUuid": "edfb332f_6ecbe9da",
+      "revId": "1f01b9e700b1acb05fb52612e053c572c3bb458f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
