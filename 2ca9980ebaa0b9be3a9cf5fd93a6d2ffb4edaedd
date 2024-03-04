@@ -16,6 +16,24 @@
       "message": "You can remove this `disconnect` since the `after_test` hook will call it automatically.",
       "revId": "2ca9980ebaa0b9be3a9cf5fd93a6d2ffb4edaedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e3fd62_e83caf4e",
+        "filename": "zephyr/test/drivers/sm5803/src/sm5803.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2024-03-04T02:39:38Z",
+      "side": 1,
+      "message": "Remove `pd_disconnect(fixture);`, And make sure `./twister -p native_posix -p unit_testing --coverage -s drivers/drivers.sm5803` pass.",
+      "parentUuid": "b037d39d_416b9acc",
+      "revId": "2ca9980ebaa0b9be3a9cf5fd93a6d2ffb4edaedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
