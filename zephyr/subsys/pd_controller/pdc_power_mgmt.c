@@ -54,6 +54,15 @@ LOG_MODULE_REGISTER(pdc_power_mgmt);
 #define PDO_NUM 7
 
 /**
+ * @brief maximum number of VDOs
+ */
+#define VDO_NUM 8
+
+#define IDENTITY_VID_VDO_IDX 0
+#define IDENTITY_PTYPE_VDO_IDX 0
+#define IDENTITY_PID_VDO_IDX 1
+
+/**
  * @brief PDC driver commands
  */
 enum pdc_cmd_t {
@@ -89,6 +98,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_CONNECTOR_STATUS,
 	/** CMD_PDC_CONNECTOR_RESET */
 	CMD_PDC_CONNECTOR_RESET,
+	/** CMD_PDC_GET_VDO */
+	CMD_PDC_GET_VDO,
 
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
@@ -152,6 +163,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_GET_PDOS */
 	SNK_ATTACHED_GET_PDOS,
+	/** SNK_ATTACHED_GET_VDO */
+	SNK_ATTACHED_GET_VDO,
 	/** SNK_ATTACHED_GET_RDO */
 	SNK_ATTACHED_GET_RDO,
 	/** SNK_ATTACHED_SET_SINK_PATH_ON */
@@ -172,6 +185,8 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SRC_ATTACHED_SET_PR_SWAP_POLICY */
 	SRC_ATTACHED_SET_PR_SWAP_POLICY,
+	/** SRC_ATTACHED_RUN */
+	SRC_ATTACHED_GET_VDO,
 	/** SRC_ATTACHED_RUN */
 	SRC_ATTACHED_RUN,
 };
@@ -241,6 +256,7 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_PDR] = "PDC_SET_PDR",
 	[CMD_PDC_GET_CONNECTOR_STATUS] = "PDC_GET_CONNECTOR_STATUS",
 	[CMD_PDC_CONNECTOR_RESET] = "PDC_CONNECTOR_RESET",
+	[CMD_PDC_GET_VDO] = "PDC_GET_VDO"
 };
 
 /**
@@ -350,6 +366,11 @@ struct pdc_src_attached_policy_t {
 	ATOMIC_DEFINE(flags, SRC_POLICY_COUNT);
 };
 
+static const enum vdo_type_t vdo_discovery_list[] = {
+	VDO_ID_HEADER,
+	VDO_PRODUCT,
+};
+
 /**
  * @brief PDC Port object
  */
@@ -431,6 +452,12 @@ struct pdc_port_t {
 	bool pd_capable;
 	/** CONNECTOR_RESET temp variable used with CMD_PDC_CONNECTOR_RESET */
 	union connector_reset_t connector_reset;
+	/** CONNECTOR_RESET temp variable used with CMD_PDC_CONNECTOR_RESET */
+	union get_vdo_t vdo_req;
+	/** */
+	uint8_t vdo_type[VDO_NUM];
+	/** */
+	uint32_t vdo[VDO_NUM];
 };
 
 /**
@@ -711,6 +738,23 @@ static void handle_connector_status(struct pdc_port_t *port)
 	}
 }
 
+static void discovery_info_init(struct pdc_port_t *port)
+{
+	int i;
+
+	port->vdo_req.raw_value = 0;
+	/* Request VDOs from port partner */
+	port->vdo_req.vdo_origin = VDO_ORIGIN_SOP;
+	port->vdo_req.num_vdos = ARRAY_SIZE(vdo_discovery_list);
+
+	/* Create the list of VDO types being requested */
+	for (i = 0; i < ARRAY_SIZE(vdo_discovery_list); i++)
+	{
+		port->vdo_type[i] = vdo_discovery_list[i];
+		port->vdo[i] = 0;
+	}
+}
+
 static void run_unattached_policies(struct pdc_port_t *port)
 {
 	if (atomic_test_and_clear_bit(port->una_policy.flags,
@@ -721,6 +765,7 @@ static void run_unattached_policies(struct pdc_port_t *port)
 	} else if (atomic_test_and_clear_bit(port->una_policy.flags,
 					     UNA_POLICY_TCC)) {
 		/* Set RP current policy */
+		LOG_INF("unattached_policy: Rp = %d", port->una_policy.tcc);
 		queue_internal_cmd(port, CMD_PDC_SET_POWER_LEVEL);
 		return;
 	}
@@ -764,6 +809,9 @@ static void pdc_unattached_entry(void *obj)
 	port->send_cmd.intern.pending = false;
 
 	invalidate_charger_settings(port);
+
+	/* Ensure VDOs aren't valid from previous connection */
+	discovery_info_init(port);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->unattached_local_state = UNATTACHED_RUN;
@@ -857,9 +905,13 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SRC_ATTACHED_SET_PR_SWAP_POLICY:
-		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		port->src_attached_local_state = SRC_ATTACHED_GET_VDO;
 		port->pdr.accept_pr_swap = 1; /* TODO read from DT */
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
+		return;
+	case SRC_ATTACHED_GET_VDO:
+		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SRC_ATTACHED_RUN:
 		set_attached_flag(port, SRC_ATTACHED_FLAG);
@@ -931,8 +983,12 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SNK_ATTACHED_GET_PDOS:
-		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
+		port->snk_attached_local_state = SNK_ATTACHED_GET_VDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+		return;
+	case SNK_ATTACHED_GET_VDO:
+		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
+		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SNK_ATTACHED_GET_RDO:
 		/* Test if battery can be charged from this port */
@@ -1070,6 +1126,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_CONNECTOR_RESET:
 		rv = pdc_connector_reset(port->pdc,
 					      port->connector_reset);
+		break;
+	case CMD_PDC_GET_VDO:
+		rv = pdc_get_vdo(port->pdc, port->vdo_req, port->vdo_type,
+				 port->vdo);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
@@ -1265,6 +1325,8 @@ static void pdc_init_entry(void *obj)
 
 	/* Initialize Send Command data */
 	send_cmd_init(port);
+	/* Set up GET_VDO command data */
+	discovery_info_init(port);
 }
 
 static void pdc_init_run(void *obj)
@@ -1674,6 +1736,9 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 	if (!pdc_power_mgmt_is_connected(port)) {
 		return 1;
 	}
+
+	/* Must set power role swap accept to 0 */
+	pdc_data[port]->port.pdr.accept_pr_swap = 0;
 
 	/* Set PR accept swap policy */
 	if (role == PD_ROLE_SOURCE) {
@@ -2100,4 +2165,85 @@ int pdc_power_mgmt_connector_reset(int port, union connector_reset_t reset)
 
 	/* Block until command completes */
 	return public_api_block(port, CMD_PDC_CONNECTOR_RESET);
+}
+
+int pdc_run_get_discovery(int port)
+{
+	int ret;
+
+	/* Make sure port is in range and that an output buffer is provided */
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	/* Make sure port is connected and PD capable */
+	if (!pdc_power_mgmt_is_connected(port) ||
+		!pdc_power_mgmt_pd_capable(port)) {
+		return 0;
+	}
+
+	pdc_data[port]->port.vdo_req.raw_value = 0;
+	pdc_data[port]->port.vdo_req.vdo_origin = VDO_ORIGIN_SOP;
+	pdc_data[port]->port.vdo_req.num_vdos = 2;
+
+	pdc_data[port]->port.vdo_type[0] = VDO_ID_HEADER;
+	pdc_data[port]->port.vdo_type[1] = VDO_PRODUCT;
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_VDO);
+	if (ret) {
+		return ret;
+	}
+
+	LOG_INF("GET_VDO[%d]: vid = %04x, pid = %04x, prod_type = %d",
+		port, PD_IDH_VID(pdc_data[port]->port.vdo[0]),
+		PD_PRODUCT_PID(pdc_data[port]->port.vdo[1]),
+		PD_IDH_PTYPE(pdc_data[port]->port.vdo[0]));
+
+	return 0;
+}
+
+uint16_t pd_get_identity_vid(int port)
+{
+	uint16_t vid = 0;
+
+	if (!pdc_data[port]->port.vdo[IDENTITY_VID_VDO_IDX]) {
+		pdc_run_get_discovery(port);
+	}
+
+	if (pdc_data[port]->port.vdo[IDENTITY_VID_VDO_IDX]) {
+		vid = PD_IDH_VID(pdc_data[port]->port.vdo[IDENTITY_VID_VDO_IDX]);
+	}
+
+	return vid;
+}
+
+uint16_t pd_get_identity_pid(int port)
+{
+	uint16_t pid = 0;
+
+	if (!pdc_data[port]->port.vdo[IDENTITY_VID_VDO_IDX]) {
+		pdc_run_get_discovery(port);
+	}
+
+	if (pdc_data[port]->port.vdo[IDENTITY_PID_VDO_IDX]) {
+		pid = PD_PRODUCT_PID(pdc_data[port]->port.vdo[IDENTITY_PID_VDO_IDX]);
+	}
+
+	return pid;
+}
+
+uint8_t pd_get_product_type(int port)
+{
+	uint8_t ptype = 0;
+
+	if (!pdc_data[port]->port.vdo[IDENTITY_VID_VDO_IDX]) {
+		pdc_run_get_discovery(port);
+	}
+
+	if (pdc_data[port]->port.vdo[IDENTITY_PTYPE_VDO_IDX]) {
+		ptype = PD_IDH_PTYPE(pdc_data[port]->port.vdo[IDENTITY_PTYPE_VDO_IDX]);
+	}
+
+	return ptype;
 }
