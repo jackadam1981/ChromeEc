@@ -991,6 +991,17 @@ function claim_pty() {
 	done
 }
 
+# Returns if get_serial used CCD.
+function get_serial_is_ccd() {
+	if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_servo_micro ]]; then
+		false
+	elif [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
+		true
+	else
+		false
+	fi
+}
+
 # Returns the serialnumber of the specified servo.
 function get_serial() {
 	if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_servo_micro ]]; then
@@ -1505,9 +1516,8 @@ function flash_it83xx() {
 		ITEFLASH_ARGS+=( "--send-waveform=1" "--i2c-interface=ftdi" )
 	else
 		ITEFLASH_ARGS=( "sudo" "--" "${ITEFLASH_ARGS[@]}" \
-			"--send-waveform=0" "--i2c-interface=linux" \
-			"--i2c-dev-path=$(dut_i2c_dev)" )
-		if servo_is_ccd; then
+			"--send-waveform=0" "--i2c-interface=ccd" "-s" "$(get_serial)" )
+		if get_serial_is_ccd; then
 			ITEFLASH_ARGS+=( "--block-write-size=256" )
 		fi
 	fi
