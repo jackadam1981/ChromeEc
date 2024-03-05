@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a03fc53_891978d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-03-05T06:24:01Z",
+      "side": 1,
+      "message": "There are still fails by using new patchset\n\n22:20:51.233: INFO: run: /mnt/host/source/src/platform/ec/zephyr/firmware_builder.py --metrics /tmp/tmpsedguxt3 --code-coverage build\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:348:36: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        zassert_ok(gpio_pin_get_config_dt(\nERROR:root:                                          ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:350:58: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        zassert_equal(flags, GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW,\nERROR:root:                                                                ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:368:36: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        zassert_ok(gpio_pin_get_config_dt(\nERROR:root:                                          ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:381:36: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        zassert_ok(gpio_pin_get_config_dt(\nERROR:root:",
+      "revId": "e33bed447e479ecf9719442d8253498066fdde2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
