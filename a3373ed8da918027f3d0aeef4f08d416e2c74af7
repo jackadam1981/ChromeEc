@@ -46,6 +46,30 @@
       },
       "revId": "a3373ed8da918027f3d0aeef4f08d416e2c74af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555d45ea_514f1f14",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-05T00:37:57Z",
+      "side": 1,
+      "message": "It looks like it may only be called when [RW verification fails](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/rwsig.c;l\u003d232-234;drc\u003d0cfd0c67574c0022fe9af2bee63f117f643df74a).\n\nAre there any other places that call `mpu_protect_code_ram()` other than `system_disable_jump()`?",
+      "parentUuid": "033107ed_262f0d2a",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 41
+      },
+      "revId": "a3373ed8da918027f3d0aeef4f08d416e2c74af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
