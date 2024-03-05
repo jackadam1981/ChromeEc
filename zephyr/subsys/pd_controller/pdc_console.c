@@ -201,6 +201,23 @@ static int cmd_pdc_connector_reset(const struct shell *sh, size_t argc,
 	return pdc_power_mgmt_connector_reset(port, reset);
 }
 
+static int cmd_pdc_get_vdo(const struct shell *sh, size_t argc, char **argv)
+{
+	uint8_t port;
+	int rv;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	/* Trigger a PDC reset for this port. */
+	pdc_run_get_discovery(port);
+
+	return EC_SUCCESS;
+}
+
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -231,6 +248,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Trigger hard or data reset\n"
 		      "Usage: pdc conn_reset  <port> [hard|data]",
 		      cmd_pdc_connector_reset, 3, 0),
+	SHELL_CMD_ARG(vdo, NULL,
+		      "Request Discovery Identity info \n"
+		      "Usage: pdc vdo <port>",
+		      cmd_pdc_get_vdo, 2, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
