@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3903cfb8_9de64a68",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-03-05T19:49:51Z",
+      "side": 1,
+      "message": "Can you split this step into 2 steps if a port needs to be downgraded:\n\n1. downgrade the 3A port to 1.5A\n2. set all the port to 1.5A\n\nThis could prevent the over sourcing issues potentially.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "cd8c7a250bc507cf716c46efae502bc0ec6d3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
