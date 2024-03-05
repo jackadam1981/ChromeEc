@@ -46,6 +46,30 @@
       },
       "revId": "9fc1ccef31ef52834a9ed95f328f20d6157cee47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b2a4b3_2dbee5b4",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-05T02:20:45Z",
+      "side": 1,
+      "message": "I think the latest edit describes the expected behavior better. Feel free to reopen if there is something I\u0027m missing. I can do a follow-up change.",
+      "parentUuid": "37d43685_18117c35",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "9fc1ccef31ef52834a9ed95f328f20d6157cee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
