@@ -9,6 +9,7 @@
 #include "gpio_signal.h"
 
 void fps_event(enum gpio_signal signal);
+void slp_event(enum gpio_signal signal);
 
 void board_init_rw(void);
 

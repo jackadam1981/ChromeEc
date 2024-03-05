@@ -300,7 +300,6 @@
 #include "gpio_signal.h" /* needed by registers.h */
 #include "registers.h"
 
-void slp_event(enum gpio_signal signal);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BASEBOARD_HELIPILOT_BASE_BOARD_H */
