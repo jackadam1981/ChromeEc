@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "901150dc_3f7553f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-05T12:54:05Z",
+      "side": 1,
+      "message": "it is dpm_get_source_pdo,not dpm_get_source_current, dpm_get_source_current is used for ectool usbpdpower",
+      "parentUuid": "dcb53b03_7bc4ecf1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "6687225fd4a62520aa8ba6222f907a9e523a1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e13df36_5dc4d137",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 6
