@@ -137,7 +137,7 @@ struct i2c_state_t {
 	 */
 	volatile size_t prepared_read_len;
 	volatile bool prepared_read_sticky;
-	uint8_t prepared_read_data[256];
+	uint8_t prepared_read_data[4096];
 
 	/*
 	 * If non-zero, I2C host is currently waiting in READ transfer, with
@@ -164,7 +164,7 @@ struct i2c_state_t {
 	struct i2c_transfer_t *cur_transfer;
 
 	/* Cyclic buffer recording transfers on the I2C bus */
-	uint8_t data_buffer[4096] __attribute__((aligned(4)));
+	uint8_t data_buffer[256] __attribute__((aligned(4)));
 	;
 };
 
@@ -177,6 +177,7 @@ const uint8_t PREPARE_READ_PORT_MASK = 0x0F;
 
 /* Bitfield, i2c_transfer_t, flags */
 const uint8_t TRANSFER_FLAG_TIMEOUT = BIT(0);
+const uint8_t TRANSFER_FLAG_INTERFERENCE = BIT(1);
 
 /*
  * This header is used both on each transaction in the in-memory cyclic buffer,
@@ -586,6 +587,16 @@ static void i2c_interrupt(int index)
 		 * interrupts from before it was reset.
 		 */
 		return;
+	}
+	if ((isr & STM32_I2C_ISR_ARLO)) {
+		/*
+		 * Some other device on the I2C bus is responding to the same
+		 * address as HyperDebug, (or otherwise interfering with the bus
+		 * signals.)  Record that fact.
+		 */
+		if (state->cur_transfer)
+			state->cur_transfer->flags |= TRANSFER_FLAG_INTERFERENCE;
+		STM32_I2C_ICR(index) = STM32_I2C_ICR_ARLOCF;
 	}
 	if (isr & STM32_I2C_ISR_TXIS) {
 		if (state->cur_transfer->num_bytes >=
