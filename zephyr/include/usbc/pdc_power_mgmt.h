@@ -292,4 +292,6 @@ int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
  */
 int pdc_power_mgmt_connector_reset(int port, union connector_reset_t reset);
 
+int pdc_run_get_discovery(int port);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
