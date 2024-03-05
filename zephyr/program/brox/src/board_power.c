@@ -18,6 +18,10 @@
 #include <power_signals.h>
 #include <x86_power_signals.h>
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#include "ap_power/ap_pwrseq_sm.h"
+#endif
+
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS 5
@@ -44,32 +48,6 @@ void board_ap_power_force_shutdown(void)
 	}
 
 	power_signal_set(PWR_EN_PP5000_A, 0);
-}
-
-void board_ap_power_action_g3_s5(void)
-{
-	LOG_DBG("Turning on EN_S5_RAILS");
-	power_signal_set(PWR_EN_PP5000_A, 1);
-
-	update_ap_boot_time(ARAIL);
-
-	/* Assert DSW_PWROK after 3.3V rail stable.  No power good
-	 * signal is available, so use a fixed delay.
-	 */
-	k_msleep(AP_PWRSEQ_DT_VALUE(dsw_pwrok_delay));
-	power_signal_set(PWR_EC_SOC_DSW_PWROK, 1);
-}
-
-void board_ap_power_action_s3_s0(void)
-{
-}
-
-void board_ap_power_action_s0_s3(void)
-{
-}
-
-void board_ap_power_action_s0(void)
-{
 }
 
 int board_ap_power_assert_pch_power_ok(void)
@@ -101,6 +79,65 @@ bool board_ap_power_check_power_rails_enabled(void)
 	return power_signal_get(PWR_EN_PP5000_A) &&
 	       power_signal_get(PWR_EC_SOC_DSW_PWROK);
 }
+
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+int board_ap_power_action_g3_entry(void *data)
+{
+	board_ap_power_force_shutdown();
+
+	return 0;
+}
+
+static int board_ap_power_action_g3_run(void *data)
+{
+	if (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
+		LOG_DBG("Turning on EN_S5_RAILS");
+		/* Turn on the PP3300_PRIM rail. */
+		power_signal_set(PWR_EN_PP5000_A, 1);
+
+		/* Assert DSW_PWROK after 3.3V rail stable.  No power good
+		 * signal is available, so use a fixed delay.
+		 */
+		k_msleep(AP_PWRSEQ_DT_VALUE(dsw_pwrok_delay));
+		power_signal_set(PWR_EC_SOC_DSW_PWROK, 1);
+	}
+
+	/*
+	 * Return zero to move forward on state action handlers hierarchy only
+	 * if board power rails are enabled.
+	 */
+	return !board_ap_power_check_power_rails_enabled();
+}
+
+AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
+			  board_ap_power_action_g3_run, NULL);
+#else
+void board_ap_power_action_g3_s5(void)
+{
+	LOG_DBG("Turning on EN_S5_RAILS");
+	power_signal_set(PWR_EN_PP5000_A, 1);
+
+	update_ap_boot_time(ARAIL);
+
+	/* Assert DSW_PWROK after 3.3V rail stable.  No power good
+	 * signal is available, so use a fixed delay.
+	 */
+	k_msleep(AP_PWRSEQ_DT_VALUE(dsw_pwrok_delay));
+	power_signal_set(PWR_EC_SOC_DSW_PWROK, 1);
+}
+
+void board_ap_power_action_s3_s0(void)
+{
+}
+
+void board_ap_power_action_s0_s3(void)
+{
+}
+
+void board_ap_power_action_s0(void)
+{
+}
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 int board_power_signal_get(enum power_signal signal)
 {
