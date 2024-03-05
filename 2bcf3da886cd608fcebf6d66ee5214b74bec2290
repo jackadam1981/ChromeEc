@@ -46,6 +46,30 @@
       },
       "revId": "2bcf3da886cd608fcebf6d66ee5214b74bec2290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a5e7348_4293e19d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3762,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-05T22:50:02Z",
+      "side": 0,
+      "message": "Looks like set_state_pe is the one which calls an exit function. So, I think pe_snk_transition_sink_exit should see get_state_pe[] is PE_SNK_TRANSITION_SINK. Thus,  get_state_pe(port) \u003d\u003d PE_SNK_READY would be false. For the same observation, I\u0027m afraid patchset 2 doesn\u0027t seem effective. Maybe you can explain why \u0027the current PE state is NULL\u0027 is the case.\n\nThe TC and the PE run in the same task. So, how about letting the PE (specifically pe_snk_transition_sink_run) also handle a disconnect event? Whichever runs \u0026 sees  disconnect first will set the limit to 0. The one which runs next will also set the limit to 0 but it\u0027s benign. \n\nOnce the PE enters the section starting from line 3711, it\u0027s atomic in the sense that the TC won\u0027t run until the PE finishes pe_snk_transition_sink_exit. So, my guess is that the race happens while the PE is looping in pe_snk_transition_sink_run, waiting for PS_RDY. It makes me think PD_INT_Cx task delivers PS_RDY after a disconnect event...",
+      "parentUuid": "f0ebce78_50f1cc04",
+      "range": {
+        "startLine": 3759,
+        "startChar": 0,
+        "endLine": 3762,
+        "endChar": 0
+      },
+      "revId": "2bcf3da886cd608fcebf6d66ee5214b74bec2290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
