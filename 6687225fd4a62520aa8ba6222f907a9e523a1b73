@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb53b03_7bc4ecf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-05T12:48:05Z",
+      "side": 1,
+      "message": "By overriding dpm_get_source_current, ensure that the inserted dongle requests the corresponding PDO (single-port 5V3A, dual-port 5V1.5A requirements), and then manage_source_port mainly modifies one port source current output because another port needs to be changed to insert/unplug the device/change the power role status.",
+      "parentUuid": "41afa14d_6b7b5afd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "6687225fd4a62520aa8ba6222f907a9e523a1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e13df36_5dc4d137",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2024-03-04T21:09:36Z",
       "side": 1,
       "message": "Can you make this into another CL? A sample for you: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2627632. Also, please ensure labeling __override_proto in `include/usb_pd_dpm_sm.h`",
+      "revId": "6687225fd4a62520aa8ba6222f907a9e523a1b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61573aa_81b7e308",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-05T12:48:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e13df36_5dc4d137",
       "revId": "6687225fd4a62520aa8ba6222f907a9e523a1b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
