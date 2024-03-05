@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1b87f2_2a068241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-05T00:58:04Z",
+      "side": 1,
+      "message": "mtlrvp_pd project build was failing because pdc_ccg8.c had not been updated for the connector_reset_t modification",
+      "revId": "746a7ace4870226e067db2da284ae8920b7e8f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
