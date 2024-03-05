@@ -1234,6 +1234,11 @@ static void pdc_src_snk_typec_only_entry(void *obj)
 	print_current_pdc_state(port);
 }
 
+static void run_snk_only_policies(struct pdc_port_t *port)
+{
+	send_pending_public_commands(port);
+}
+
 static void pdc_src_snk_typec_only_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
@@ -1246,6 +1251,8 @@ static void pdc_src_snk_typec_only_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		return;
 	}
+
+	run_snk_only_policies(port);
 }
 
 static void pdc_init_entry(void *obj)
