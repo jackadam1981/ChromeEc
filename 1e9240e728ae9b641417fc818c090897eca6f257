@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce75b2b_57a7a9e8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-05T20:10:38Z",
+      "side": 0,
+      "message": "Scott, what do you think about this change? The reties are tried in the wait state, so I think it\u0027s okay to remove this.",
+      "range": {
+        "startLine": 782,
+        "startChar": 4,
+        "endLine": 782,
+        "endChar": 8
+      },
+      "revId": "1e9240e728ae9b641417fc818c090897eca6f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
