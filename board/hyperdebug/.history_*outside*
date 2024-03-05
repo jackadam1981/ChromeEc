@@ -1,0 +1,500 @@
+diff <(hexdump -C ../common/build/ti50/opentitan/earlgrey/full_image.signed.bin.presigned.bin) <(hexdump -C image.A.presigned)
+objcopy
+ls
+diff ot_signing_cmds.sh.bak ot_signing_cmds.sh
+ls
+ls -l
+hexdump -C fullimage.bin | less
+hexdump -C image.A.truncated.bin | less
+hexdump -C image.A.signed.bin | less
+hexdump -C fullimage.bin | less
+hexdump -C image.A.signed.bin | less
+ls ../../../third_party/lowrisc/opentitan/sw/device/silicon_creator/rom_ext/prodc/binaries
+find ../../../third_party/lowrisc/opentitan --name fpga_cw310_hyp_lcdev_prodc.bit
+find ../../../third_party/lowrisc/opentitan -name fpga_cw310_hyp_lcdev_prodc.bit
+man make
+cd ../../..
+cd ../
+cd chromeos-admin/
+ls
+cd docker/satlab/
+ls
+cd gsc_dev_board/
+ls
+cat script.sh
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=205635783236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /opt/gscdevboard/start_devboardsvc.sh
+docker kill gscdevboard_hyperdebug
+docker ls
+docker ps
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /opt/gscdevboard/start_devboardsvc.sh
+docker ps
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 -it /bin/bash
+docker run --name gscdevboard_hyperdebug --it -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /bin/bash
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /bin/bash
+docker ps
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /opt/gscdevboard/start_devboardsvc.sh
+docker ps
+docker kill gscdevboard_hyperdebug
+docker run --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /bin/bash
+docker ps
+docker run -it --name gscdevboard_hyperdebug -d --volume "/dev:/dev" --privileged --network host --rm -e TESTBED=dauntless_andreishield -e DEBUGGER_SERIAL=2042355F3236 -e DEVBOARDSVC_PORT=39999 -e GSC_SERIAL=14820055-4c2ac261 gcr.io/satlab-images/gsc_dev_board:1.26 /bin/bash
+docker ps
+docker exec -it gscdevboard_hyperdebug /bin/bash
+docker kill gscdevboard_hyperdebug
+tio /dev/ttyACM0
+tio /dev/ttyACM`
+tio /dev/ttyACM1
+tio /dev/ttyACM2
+tio /dev/ttyACM0
+xmodmap ~/.Xmodmap
+sudo apt install -y google-cloud-cli
+gcloud auth login
+gcloud auth application-default login
+cd Downloads/
+wget https://github.com/lowRISC/hyperdebug-firmware/releases/download/20240112_01/hyperdebug-firmware.tar.gz
+sha256sum hyperdebug-firmware.tar.gz.6 
+cd Downloads/
+gsutil cp gs://chromeos-test-logs/test-runner/prod/2024-01-24/54ff4c40-fa56-4102-9e7d-fb3a188eb403/autoserv_test/tast/results/tests/gscdevboard.GSCTPMI2CCorners/i2c.vcd ./
+pulseview i2c.vcd 
+bg
+netstat -l
+netstat -l -p
+netstat -l -p | less
+wget "https://github.com/lowRISC/hyperdebug-firmware/releases/download/20240125_01/hyperdebug-firmware.tar.gz"
+sha256sum hyperdebug-firmware.tar.gz.7
+killall pulseview
+killall -9 pulseview
+evince stm32l4.pdf 
+bg
+evince stm32f0.pdf
+bg
+evince stm32f3.pdf &
+evince stm32f7.pdf &
+evince stm32h7.pdf &
+emacslist
+DISPLAY= emacsclient -c -s emacs-1005730
+emacslist
+echo DISPLAY
+echo $DISPLAY
+export DISPLAY=
+emacsclient -c -s emacs-3629873 
+emacslist
+emacsclient -c -s emacs-294444
+emacslist
+emacsclient -c -s emacs-964156 
+emacslist
+emacsclient -c -s emacs-99928
+emacslist
+reboot
+ls *.vcd
+cat i2c.vcd
+ls src/chromiumos-2/out/tmp/tast/results/20240119-133806/tests/gscdevboard.GSCTPMI2CCorners/
+ls ~/src/chromiumos-2/out/tmp/tast/results/latest/tests/gscdevboard.GSCTPMI2CCorners/i2c.vcd 
+pulseview ~/src/chromiumos-2/out/tmp/tast/results/latest/tests/gscdevboard.GSCTPMI2CCorners/i2c.vcd 
+tio /dev/ttyACM2
+tio /dev/ttyACM0
+tio /dev/ttyACM1
+tio /dev/ttyACM2
+cd Downloads/
+evince nucleo-l552ze-q.pdf 
+bg
+tio /dev/ttyACM3
+tio /dev/ttyACM0
+tio /dev/ttyACM1
+tio /dev/ttyACM2
+tio /dev/ttyACM3
+killall tio
+tio /dev/ttyACM1
+cros_sdk 
+tio /dev/ttyUSB20
+dc
+cd src/gcc-arm-none-eabi-10.3-2021.10/
+cd bin/
+./arm-none-eabi-gdb
+killall openocd
+killall -9 openocd
+./arm-none-eabi-gdb
+cd /opt
+ls
+cd google/
+ls
+cd ..
+cd tools/
+ls
+cd riscv/
+ls
+cd bin/
+ls
+./riscv32-unknown-elf-gdb
+./riscv32-unknown-elf-gdb --help
+./riscv32-unknown-elf-gdb -ex 'target extended-remote localhost:3333'
+y
+./riscv32-unknown-elf-gdb -ex 'target extended-remote localhost:3333'
+killall -9 openocd
+./riscv32-unknown-elf-gdb -ex 'target extended-remote localhost:3333'
+dc
+emacslist
+xauth -f ~/.Xauthority merge /run/user/121292/gdm/Xauthority
+emacsclient -c -s emacs-99928 &
+emacs &
+scp jesk@gateway.bodi-klinke.dk:src/drscrape/dr-3.2.136.pkg .
+gnome-control-center
+cd src/ec/
+arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RO/ec.RO.elf 
+../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RO/ec.RO.elf 
+../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RW/ec.RW.elf 
+../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RO/ec.RO.elf 
+../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RW/ec.RW.elf 
+../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RO/ec.RO.elf 
+../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -ex 'target extended-remote localhost:3333'                     -ex 'monitor reset halt'                     -ex 'load'                     -ex 'break exception_panic'                     -ex 'break bus_fault_handler'                     -ex 'break panic_assert_fail'                     build/hyperdebug/RW/ec.RW.elf 
+dats -d@1625960620
+date -d@1625960620
+date -d@1583731845
+dc
+man tac
+man objdump
+man objcopy
+gnome-control-center sound
+mixer
+sudo apt install pavucontrol
+pstree
+gsettings
+cd Downloads/
+./Logic-2.3.50-master.AppImage 
+sudo apt-get install fuse
+cat /etc/fuse.conf
+./Logic-2.3.50-master.AppImage 
+less  /var/log/apt/history.log
+sudo apt-undo
+sudo apt undo
+apt-get install glinux-gnome
+sudo apt-get install glinux-gnome
+less  /var/log/apt/history.log
+sudo apt-get install glinux-x20
+less  /var/log/apt/history.log
+sudo apt-get install google-x20
+less  /var/log/apt/history.log
+sudo apt-get install srcfs
+sudo apt-get install srcfs-impl
+less  /var/log/apt/history.log
+sudo apt-get install google-objfsd
+less  /var/log/apt/history.log
+sudo apt-get install google-hg
+sudo apt-get install ntfs-3g
+apt-get install gtkwave
+sudo apt-get install gtkwave
+gtkwave ~/i2c.vcd
+sudo apt remove gtkwave
+bzip2
+bzip2 --help
+bunzip2 hyperdebug_beagle.tdc.bz2 
+file hyperdebug_beagle.tdc 
+tar tvf hyperdebug_beagle.tdc
+mv hyperdebug_beagle.tdc hyp.tar
+tar xvf hyp.tar 
+rm hyp.tar 
+sudo apt install snipit-cli
+snipit
+man ascii
+mv fullimage.bin ~/src/chromiumos-2/
+cd ..
+mkdir -p ~/.config/ot-kms
+cd ~/.config/ot-kms
+wget https://github.com/GoogleCloudPlatform/kms-integrations/releases/download/pkcs11-v1.2/libkmsp11-1.2-linux-amd64.tar.gz
+tar -xvf libkmsp11-1.2-linux-amd64.tar.gz
+tar -xvfz libkmsp11-1.2-linux-amd64.tar.gz
+tar -xvzf libkmsp11-1.2-linux-amd64.tar.gz
+ls
+cd libkmsp11-1.2-linux-amd64/
+ls
+cd ..
+emacs ~/.config/ot-kms/earlgrey_z1_prodc.yaml
+chmod 600 ~/.config/ot-kms/earlgrey_z1_prodc.yaml
+dc
+cd
+cd Downloads/
+ls ti50_build.tgz 
+tar vtzf ti50_build.tgz 
+tar vxzf ti50_build.tgz 
+cd ti50_build/
+ls
+cat ot_signing_cmds.sh 
+cd ..
+mv ti50_build ~/src/chromiumos-2/src/platform/ti50
+mv fpga_cw310_sam3_prodc.bit ~/src/chromiumos-2/src/platform/ti50
+mv fpga_cw310_hyp_lcdev_prodc.bit ~$
+ls ~/src/chromiumos-2/src/platform/ti50
+ls
+mv ~$ ~/src/chromiumos-2/src/platform/ti50
+ls ~/src/chromiumos-2/src/platform/ti50
+mv ~/src/chromiumos-2/src/platform/ti50/\~\$ ~/src/chromiumos-2/src/platform/ti50/fpga_cw310_hyp_lcdev_prodc.bit
+ls ~/src/chromiumos-2/src/platform/ti50
+cd ..
+cd src/openocd-code/
+ls
+ls .*
+cat .emacs.savehist 
+emacs &
+killall openocd
+killall -9 openocd
+openocd -f ./tcl/interface/cmsis-dap.cfg -c 'cmsis_dap_vid_pid 0x18d1 0x520e; adapter serial "2071365F3452"' -c "adapter speed 300; transport select jtag; reset_config none" -f ../ti50/third_party/lowrisc/opentitan/util/openocd/target/lowrisc-earlgrey.cfg 
+openocd -f ./tcl/interface/cmsis-dap.cfg -c 'cmsis_dap_vid_pid 0x18d1 0x520e; adapter serial "2071365F3452"' -c "adapter speed 100; transport select jtag; reset_config none" -f ../ti50/third_party/lowrisc/opentitan/util/openocd/target/lowrisc-earlgrey.cfg 
+openocd -f ./tcl/interface/cmsis-dap.cfg -c 'cmsis_dap_vid_pid 0x18d1 0x520e; adapter serial "2071365F3452"' -c "adapter speed 100; transport select jtag; reset_config none" -f ../ti50/third_party/lowrisc/opentitan/util/openocd/target/lowrisc-earlgrey.cfg -c "reset halt"
+man openocd
+openocd -f ./tcl/interface/cmsis-dap.cfg -c 'cmsis_dap_vid_pid 0x18d1 0x520e; adapter serial "2071365F3452"' -c "adapter speed 100; transport select jtag; reset_config none" -f ../ti50/third_party/lowrisc/opentitan/util/openocd/target/lowrisc-earlgrey.cfg -c "init; reset halt"
+openocd -f interface/stlink.cfg -c "transport select hla_swd"           -f target/stm32l5x.cfg
+pulseview ~/src/chromiumos-2/out/tmp/tast/results/20240109-095735/tests/gscdevboard.CCDCapabilitiesFlashEC.cap_always/ite.vcd
+cd src/ec/
+git status
+git diff
+git status
+git add board/
+git status
+git commit --amend
+exit
+emacslist
+DISPLAY= emacsclient -c -s emacs-615293
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-615293 &
+cd Downloads/
+killall pulseview
+pulseview &
+killall pulseview
+killall -9 pulseview
+pulseview &
+killall tio
+tio /dev/ttyACM1
+cd src/third_party/lowrisc/opentitan/
+git status
+git branch -l
+git checkout break
+git log -n1
+git status
+git diff
+cd ../../..
+cd ..
+cd src/
+pwd
+cd third_party/lowrisc/opentitan/
+git status
+git add third_party/
+git commit --amend
+git push -f jesultra HEAD
+git branch -l
+git checkout earlgrey_es_sival
+sudo echo fisk
+cd ../../..
+cd platform/tast-tests
+find -name \*_sleep\*.go
+repo sync .
+git status
+git log -n1
+git stash list
+git stash push -m"Lots of random changes"
+git checkout m/main
+git stash pop
+git stash push -m"Lots of random changes"
+cd ../tast
+repo sync .
+repo sync
+cd ../../..
+cd chromite/
+ls
+repo sync .
+git status
+git diff README.md 
+git status
+git restore --staged
+git restore --staged .
+git restore .
+git status
+rm	api/gen/chromiumos/test/api/device_leasing_pb2.py
+rm	api/gen/chromiumos/test/api/device_manager_pb2.py
+rm	api/gen/test_platform/cros_test_platform/
+rm	api/gen_sdk/chromiumos/test/api/device_leasing_pb2.py
+rm	api/gen_sdk/chromiumos/test/api/device_manager_pb2.py
+rm -rf	api/gen_sdk/test_platform/cros_test_platform/
+rm -rf	api/gen/test_platform/cros_test_platform/
+rm	contrib/codemod/auto_type_dunders.py
+rm	lib/flexor.py
+rm	scripts/build_flexor
+rm	scripts/build_flexor.py
+rm -rf	sdk/chroot_version_hooks.d/
+rm -rf	shell/
+git status
+rm .history_\*EC\* 
+git fetch
+git checkout m/main
+ls -l third_party/pyelftools/elftools/elf/__pycache__/constants.cpython-38.pyc
+ls -l third_party/pyelftools/elftools/elf/__pycache__
+ls -l third_party/pyelftools/elftools/elf
+ls -l third_party/pyelftools/elftools
+sudo rm -rf third_party/pyelftools/elftools/__pycache__/
+git status
+git restore
+git restore .
+ls -l third_party/pyelftools/elftools
+git fetch m/main
+git checkout m/main
+repo sync .
+repo sync --force-sync .
+rm -rf	contrib/package_index_cros/main; rm -rf	contrib/package_index_cros/scripts/print_deps; rm -rf	contrib/you_dont_need_libchrome; rm -rf	scripts/build_flexor; rm -rf	scripts/image_to_lvm; rm -rf	sdk/chroot_version_hooks.d/240_rewrite_sudoers; rm -rf	sdk/chroot_version_hooks.d/241_rewrite_sudoers; rm -rf	sdk/chroot_version_hooks.d/242_force_perl
+repo sync --force-sync .
+ls -l third_party/pyelftools/elftools/elf/__pycache__
+ls -l third_party/pyelftools/elftools/elf
+ls -l third_party/pyelftools/elftools
+chown -R jbk:primarygroup  third_party/pyelftools/elftools/elf/__pycache__
+sudo chown -R jbk:primarygroup  third_party/pyelftools/elftools/elf/__pycache__
+git checkout m/main
+rm -rf	contrib/package_index_cros/main; rm -rf	contrib/package_index_cros/scripts/print_deps; rm -rf	contrib/you_dont_need_libchrome; rm -rf	scripts/build_flexor; rm -rf	scripts/image_to_lvm; rm -rf	sdk/chroot_version_hooks.d/240_rewrite_sudoers; rm -rf	sdk/chroot_version_hooks.d/241_rewrite_sudoers; rm -rf	sdk/chroot_version_hooks.d/242_force_perl
+git checkout m/main
+sudo chown -R jbk:primarygroup  third_party/pyelftools/elftools/elf/__pycache__
+find -name __pycache__
+find -name __pycache__ | xargs sudo chown -R jbk:primarygroup  
+git checkout m/main
+rm -rf	contrib/package_index_cros/main; rm -rf	contrib/package_index_cros/scripts/print_deps; rm -rf	contrib/you_dont_need_libchrome; rm -rf	scripts/build_flexor; rm -rf	scripts/image_to_lvm; rm -rf	sdk/chroot_version_hooks.d/240_rewrite_sudoers; rm -rf	sdk/chroot_version_hooks.d/241_rewrite_sudoers; rm -rf	sdk/chroot_version_hooks.d/242_force_perl
+git checkout m/main
+repo sync .
+cd ../
+cd src/platform/tast-tests
+find -name \*.go | xargs grep GscH1Shield
+sudo echo fisk
+git status
+cd ../ti50
+cd common/
+find -name \*.rs | while read a; do echo $a; head -n 332 < $a | tail -n 1; done
+find -name \*.rs | xargs grep erase_page
+git status
+git log -n3
+git fetch
+git status
+git stash
+git rebase
+git status
+git stash pop
+git status
+git diff
+git status
+git add ports/opentitan/software/tools/ot_shield_hyperdebug.json
+git status
+git commit
+git status
+git stash
+git rebase -i HEAD~2
+git stash pop
+git add applications/ ports/ tools/
+git commit --amend
+repo upload . --cbr
+git diff HEAD~2 HEAD~1
+repo upload . --cbr --no-verify
+cd ../..
+cd tast-tests
+git fetch
+git status
+git diff
+git restore src/go.chromium.org/tast-tests/cros/common/firmware/ti50/dev_board.go src/go.chromium.org/tast-tests/cros/remote/bundles/cros/gscdevboard/utils/ti50_devboard_helper.go
+git status
+git stash
+git branch -l
+git checkout m/main
+git checkout ina
+git status
+git rebase
+git rebase --abort
+git checkout m/main
+git checkout -b pac
+git stash pop
+git add src/
+git status
+git restore src
+git status
+git restore --staged src
+git status
+git add src/go.chromium.org/tast-tests/cros/remote/bundles/cros/gscdevboard/ti50_sleep.go
+git status
+git commit
+git status
+git branch -u m/main
+git status
+git fetch https://chromium.googlesource.com/chromiumos/platform/tast-tests refs/changes/35/5255035/1 && git rebase HEAD~1 --onto FETCH_HEAD
+git status
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-615293 &
+emacsclient -c -s emacs-1789882 &
+killall tio
+tio /dev/ttyACM1
+exit
+emacslist
+DISPLAY= emacsclient -c -s emacs-615293
+cd Downloads/
+ls *Tax*
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-615293 &
+exit
+cd src/openocd-code/
+grep openocd .history_\*shell\* 
+find -name cmsis\*
+grep openocd ~/.bash_history 
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-1789882
+bg
+emacsclient -c -s emacs-615293 &
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-615293 &
+emacsclient -c -s emacs-1789882 &
+cd src/openocd-code/
+openocd -f ./tcl/interface/cmsis-dap.cfg -c 'cmsis_dap_vid_pid 0x18d1 0x520e; adapter serial "2071365F3452"' -c "adapter speed 100; transport select jtag; reset_config none" -f ../ti50/third_party/lowrisc/opentitan/util/openocd/target/lowrisc-earlgrey.cfg -c "init; reset halt"
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-615293 &
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-1789882 &
+exit
+cinnamon-settings
+exit
+git status
+git diff
+git log -n2
+git add gpio.c 
+git commit --amend
+git status
+git add gpio.c 
+git commit --amend
+git push cros HEAD:refs/for/main
+sudo echo fisk
+git status
+git diff
+git restore board/hyperdebug/gpio.inc
+git restore gpio.inc
+git status
+git diff
+git diff
+git status
+git checkout -b qspi_flaw
+git branch -u m/main
+git add spi.c 
+git commit
+git status
+git push cros HEAD:refs/for/main
+git status
+git log -n2
+git branch l
+git branch -l
+git checkout HEAD~1
+git checkout -b jtag_pins
+git checkout qspi_flaw
+git log -n2
+git rebase HEAD~1 --onto m/main
+git push cros HEAD:refs/for/main
+git status
+git branch -l
+git diff pwm~1 pwm
+exit
