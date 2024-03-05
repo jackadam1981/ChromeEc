@@ -136,6 +136,7 @@ const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02, 0xA7 };
 const struct smbus_cmd_t GET_POWER_SWITCH_STATE = { 0x08, 0x02, 0xA9 };
 const struct smbus_cmd_t GET_RTK_STATUS = { 0x09, 0x03, 0x00 };
 const struct smbus_cmd_t PPM_RESET = { 0x0E, 0x02, 0x01 };
+const struct smbus_cmd_t RESET_TO_FLASH = { 0x05, 0x03, 0xDA };
 const struct smbus_cmd_t CONNECTOR_RESET = { 0x0E, 0x03, 0x03 };
 const struct smbus_cmd_t GET_CAPABILITY = { 0x0E, 0x02, 0x06 };
 const struct smbus_cmd_t GET_CONNECTOR_CAPABILITY = { 0x0E, 0x02, 0x07 };
@@ -227,6 +228,8 @@ enum cmd_t {
 	CMD_SET_NOTIFICATION_ENABLE,
 	/** PDC Reset */
 	CMD_PPM_RESET,
+	/** PDC Reset to flash */
+	CMD_RESET_TO_FLASH,
 	/** Connector Reset */
 	CMD_CONNECTOR_RESET,
 	/** Get Capability */
@@ -358,6 +361,7 @@ static const char *const cmd_names[] = {
 	[CMD_VENDOR_ENABLE] = "VENDOR_ENABLE",
 	[CMD_SET_NOTIFICATION_ENABLE] = "SET_NOTIFICATION_ENABLE",
 	[CMD_PPM_RESET] = "PPM_RESET",
+	[CMD_RESET_TO_FLASH] = "RESET_TO_FLASH",
 	[CMD_CONNECTOR_RESET] = "CONNECTOR_RESET",
 	[CMD_GET_CAPABILITY] = "GET_CAPABILITY",
 	[CMD_GET_CONNECTOR_CAPABILITY] = "GET_CONNECTOR_CAPABILITY",
@@ -1039,7 +1043,7 @@ static void st_read_run(void *o)
 
 	/*
 	 * The data->user_buf is checked for NULL before a command is queued.
-	 * The check here gauards against an eronious ping_status indicating
+	 * The check here guards against an erroneous ping_status indicating
 	 * data is available for a command that doesn't send data.
 	 */
 	if (!data->user_buf) {
@@ -1510,6 +1514,28 @@ static int rts54_reset(const struct device *dev)
 				  ARRAY_SIZE(payload), NULL);
 }
 
+static int rts54_reset_to_flash(const struct device *dev)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE && get_state(data) != ST_INIT) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		RESET_TO_FLASH.cmd,
+		RESET_TO_FLASH.len,
+		RESET_TO_FLASH.sub,
+		0x0B,
+		0x01,
+	};
+
+	LOG_INF("Send reset to flash");
+
+	return rts54_post_command(dev, CMD_RESET_TO_FLASH, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static int rts54_connector_reset(const struct device *dev,
 				 enum connector_reset_t type)
 {
@@ -1958,6 +1984,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
 	.reset = rts54_pdc_reset,
+	.reset_to_flash = rts54_reset_to_flash,
 	.connector_reset = rts54_connector_reset,
 	.get_capability = rts54_get_capability,
 	.get_connector_capability = rts54_get_connector_capability,

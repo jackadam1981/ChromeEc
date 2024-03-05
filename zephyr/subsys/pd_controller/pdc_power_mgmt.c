@@ -61,6 +61,8 @@ enum pdc_cmd_t {
 	CMD_PDC_NONE,
 	/** CMD_PDC_RESET */
 	CMD_PDC_RESET,
+	/** CMD_PDC_RESET_TO_FLASH */
+	CMD_PDC_RESET_TO_FLASH,
 	/** CMD_PDC_SET_POWER_LEVEL */
 	CMD_PDC_SET_POWER_LEVEL,
 	/** CMD_PDC_SET_CCOM */
@@ -225,6 +227,7 @@ enum pdc_state_t {
 static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_NONE] = "",
 	[CMD_PDC_RESET] = "PDC_RESET",
+	[CMD_PDC_RESET_TO_FLASH] = "PDC_RESET_TO_FLASH",
 	[CMD_PDC_SET_POWER_LEVEL] = "PDC_SET_POWER_LEVEL",
 	[CMD_PDC_SET_CCOM] = "PDC_SET_CCOM",
 	[CMD_PDC_GET_PDOS] = "PDC_GET_PDOS",
@@ -1020,6 +1023,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_RESET:
 		rv = pdc_reset(port->pdc);
 		break;
+	case CMD_PDC_RESET_TO_FLASH:
+		rv = pdc_reset_to_flash(port->pdc);
+		break;
 	case CMD_PDC_GET_INFO:
 		rv = pdc_get_info(port->pdc, &port->info);
 		break;
@@ -1129,7 +1135,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 	/* Wait for command status notification from driver */
 
 	/*
-	 * On a PDC_RESET, the PDC initiates an initializtion and the
+	 * On a PDC_RESET, the PDC initiates an initialization and the
 	 * pdc_is_init_done() function is called to check if the initialization
 	 * is complete
 	 */
@@ -1375,6 +1381,8 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 {
 	switch (pdc_cmd) {
 	case CMD_PDC_RESET:
+		__fallthrough;
+	case CMD_PDC_RESET_TO_FLASH:
 		__fallthrough;
 	case CMD_PDC_GET_INFO:
 		return true;
@@ -1833,6 +1841,12 @@ void pdc_power_mgmt_reset(int port)
 {
 	/* Block until command completes */
 	public_api_block(port, CMD_PDC_RESET);
+}
+
+void pdc_power_mgmt_reset_to_flash(int port)
+{
+	/* Block until command completes */
+	public_api_block(port, CMD_PDC_RESET_TO_FLASH);
 }
 
 uint8_t pdc_power_mgmt_get_src_cap_cnt(int port)

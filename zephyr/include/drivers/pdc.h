@@ -86,6 +86,7 @@ struct pdc_bus_info_t {
 typedef int (*pdc_get_ucsi_version_t)(const struct device *dev,
 				      uint16_t *version);
 typedef int (*pdc_reset_t)(const struct device *dev);
+typedef int (*pdc_reset_to_flash_t)(const struct device *dev);
 typedef int (*pdc_connector_reset_t)(const struct device *dev,
 				     enum connector_reset_t type);
 typedef int (*pdc_get_capability_t)(const struct device *dev,
@@ -135,6 +136,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_is_init_done_t is_init_done;
 	pdc_get_ucsi_version_t get_ucsi_version;
 	pdc_reset_t reset;
+	pdc_reset_to_flash_t reset_to_flash;
 	pdc_connector_reset_t connector_reset;
 	pdc_get_capability_t get_capability;
 	pdc_get_connector_capability_t get_connector_capability;
@@ -247,6 +249,27 @@ static inline int pdc_reset(const struct device *dev)
 	__ASSERT(api->reset != NULL, "RESET is not optional");
 
 	return api->reset(dev);
+}
+
+/**
+ * @brief Resets the PDC back to flash
+ *
+ * @param dev PDC device structure pointer
+ *
+ * @retval 0 on API call success
+ * @retval -NOSYS if not implemented
+ */
+static inline int pdc_reset_to_flash(const struct device *dev)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	/* This is an optional feature, so it might not be implemented */
+	if (api->reset_to_flash == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->reset_to_flash(dev);
 }
 
 /**

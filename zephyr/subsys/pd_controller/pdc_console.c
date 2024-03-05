@@ -175,6 +175,23 @@ static int cmd_pdc_reset(const struct shell *sh, size_t argc, char **argv)
 	return EC_SUCCESS;
 }
 
+static int cmd_pdc_reset_to_flash(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	uint8_t port;
+	int rv;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	/* Trigger a PDC reset for this port. */
+	pdc_power_mgmt_reset_to_flash(port);
+
+	return EC_SUCCESS;
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -197,6 +214,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Trigger a PDC reset\n"
 		      "Usage: pdc reset <port>",
 		      cmd_pdc_reset, 2, 0),
+	SHELL_CMD_ARG(reset_to_flash, NULL,
+		      "Trigger a PDC reset to flash\n"
+		      "Usage: pdc reset <port>",
+		      cmd_pdc_reset_to_flash, 2, 0),
 	SHELL_CMD_ARG(dualrole, NULL,
 		      "Set dualrole mode\n"
 		      "Usage: pdc dualrole  <port> [on|off|freeze|sink|source]",

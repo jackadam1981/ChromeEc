@@ -217,6 +217,15 @@ uint32_t pdc_power_mgmt_get_vbus_voltage(int port);
 void pdc_power_mgmt_reset(int port);
 
 /**
+ * @brief Resets the PDC to flash and causes its firmware to restart
+ *
+ * @param port USB-C port number
+ *
+ * @retval void
+ */
+void pdc_power_mgmt_reset_to_flash(int port);
+
+/**
  * @brief Get the source caps list sent by the port partner
  *
  * @param port USB-C port number
