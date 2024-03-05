@@ -54,6 +54,11 @@ LOG_MODULE_REGISTER(pdc_power_mgmt);
 #define PDO_NUM 7
 
 /**
+ * @brief maximum number of VDOs
+ */
+#define VDO_NUM 8
+
+/**
  * @brief PDC driver commands
  */
 enum pdc_cmd_t {
@@ -87,6 +92,8 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_PDR,
 	/** CMD_PDC_GET_CONNECTOR_STATUS */
 	CMD_PDC_GET_CONNECTOR_STATUS,
+	/** CMD_PDC_GET_VDO */
+	CMD_PDC_GET_VDO,
 
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
@@ -150,6 +157,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_GET_PDOS */
 	SNK_ATTACHED_GET_PDOS,
+	/** SNK_ATTACHED_GET_VDO */
+	SNK_ATTACHED_GET_VDO,
 	/** SNK_ATTACHED_GET_RDO */
 	SNK_ATTACHED_GET_RDO,
 	/** SNK_ATTACHED_SET_SINK_PATH_ON */
@@ -170,6 +179,8 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SRC_ATTACHED_SET_PR_SWAP_POLICY */
 	SRC_ATTACHED_SET_PR_SWAP_POLICY,
+	/** SRC_ATTACHED_GET_VDO */
+	SRC_ATTACHED_GET_VDO,
 	/** SRC_ATTACHED_RUN */
 	SRC_ATTACHED_RUN,
 };
@@ -238,6 +249,7 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_UOR] = "PDC_SET_UOR",
 	[CMD_PDC_SET_PDR] = "PDC_SET_PDR",
 	[CMD_PDC_GET_CONNECTOR_STATUS] = "PDC_GET_CONNECTOR_STATUS",
+	[CMD_PDC_GET_VDO] = "PDC_GET_VDO"
 };
 
 /**
@@ -348,6 +360,21 @@ struct pdc_src_attached_policy_t {
 };
 
 /**
+ * @brief Indicies used to map which VDO to use to extract the desired field
+ */
+#define IDENTITY_VID_VDO_IDX 0
+#define IDENTITY_PTYPE_VDO_IDX 0
+#define IDENTITY_PID_VDO_IDX 1
+
+/**
+ * @brief Table of VDO types to request in the GET_VDO command
+ */
+static const enum vdo_type_t vdo_discovery_list[] = {
+	VDO_ID_HEADER,
+	VDO_PRODUCT,
+};
+
+/**
  * @brief PDC Port object
  */
 struct pdc_port_t {
@@ -426,6 +453,12 @@ struct pdc_port_t {
 	bool attached_snk_src_typec_only;
 	/** True if attached device is PD Capable */
 	bool pd_capable;
+	/** GET_VDO temp variable used with CMD_GET_VDO */
+	union get_vdo_t vdo_req;
+	/** Array used to hold the list of VDO types to requrest */
+	uint8_t vdo_type[VDO_NUM];
+	/** Array used to store VDOs returned from the GET_VDO command */
+	uint32_t vdo[VDO_NUM];
 };
 
 /**
@@ -706,6 +739,27 @@ static void handle_connector_status(struct pdc_port_t *port)
 	}
 }
 
+/**
+ * @brief This function is used to format the GET_VDO command which is used to
+ * extract VID, PID, and Product Type values from the port partners Discovery
+ * Identity response message.
+ */
+static void discovery_info_init(struct pdc_port_t *port)
+{
+	int i;
+
+	port->vdo_req.raw_value = 0;
+	/* Request VDOs from port partner */
+	port->vdo_req.vdo_origin = VDO_ORIGIN_SOP;
+	port->vdo_req.num_vdos = ARRAY_SIZE(vdo_discovery_list);
+
+	/* Create the list of VDO types being requested */
+	for (i = 0; i < ARRAY_SIZE(vdo_discovery_list); i++) {
+		port->vdo_type[i] = vdo_discovery_list[i];
+		port->vdo[i] = 0;
+	}
+}
+
 static void run_unattached_policies(struct pdc_port_t *port)
 {
 	if (atomic_test_and_clear_bit(port->una_policy.flags,
@@ -759,6 +813,9 @@ static void pdc_unattached_entry(void *obj)
 	port->send_cmd.intern.pending = false;
 
 	invalidate_charger_settings(port);
+
+	/* Ensure VDOs aren't valid from previous connection */
+	discovery_info_init(port);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->unattached_local_state = UNATTACHED_RUN;
@@ -834,9 +891,13 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SRC_ATTACHED_SET_PR_SWAP_POLICY:
-		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		port->src_attached_local_state = SRC_ATTACHED_GET_VDO;
 		port->pdr.accept_pr_swap = 1; /* TODO read from DT */
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
+		return;
+	case SRC_ATTACHED_GET_VDO:
+		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SRC_ATTACHED_RUN:
 		set_attached_flag(port, SRC_ATTACHED_FLAG);
@@ -899,8 +960,12 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SNK_ATTACHED_GET_PDOS:
-		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
+		port->snk_attached_local_state = SNK_ATTACHED_GET_VDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+		return;
+	case SNK_ATTACHED_GET_VDO:
+		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
+		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SNK_ATTACHED_GET_RDO:
 		/* Test if battery can be charged from this port */
@@ -1034,6 +1099,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_GET_CONNECTOR_STATUS:
 		rv = pdc_get_connector_status(port->pdc,
 					      &port->connector_status);
+		break;
+	case CMD_PDC_GET_VDO:
+		rv = pdc_get_vdo(port->pdc, port->vdo_req, port->vdo_type,
+				 port->vdo);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
@@ -1232,6 +1301,8 @@ static void pdc_init_entry(void *obj)
 
 	/* Initialize Send Command data */
 	send_cmd_init(port);
+	/* Set up GET_VDO command data */
+	discovery_info_init(port);
 }
 
 static void pdc_init_run(void *obj)
@@ -2049,4 +2120,114 @@ int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info)
 	 */
 
 	return pdc_get_bus_info(pdc_data[port]->port.pdc, pdc_bus_info);
+}
+
+static int pdc_run_get_discovery(int port)
+{
+	int ret;
+
+	/* Make sure port is in range and that an output buffer is provided */
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	/* Make sure port is connected and PD capable */
+	if (!pdc_power_mgmt_is_connected(port) ||
+	    !pdc_power_mgmt_pd_capable(port)) {
+		return 0;
+	}
+
+	/* Format the GET_VDO command */
+	discovery_info_init(&pdc_data[port]->port);
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_VDO);
+	if (ret) {
+		return ret;
+	}
+
+	LOG_INF("GET_VDO[%d]: vid = %04x, pid = %04x, prod_type = %d", port,
+		PD_IDH_VID(pdc_data[port]->port.vdo[0]),
+		PD_PRODUCT_PID(pdc_data[port]->port.vdo[1]),
+		PD_IDH_PTYPE(pdc_data[port]->port.vdo[0]));
+
+	return 0;
+}
+
+uint16_t pd_get_identity_vid(int port)
+{
+	uint16_t vid = 0;
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port)) {
+		return vid;
+	}
+
+	pdc = &pdc_data[port]->port;
+	/*
+	 * TODO(b/327283662); GET_VDO completes with 0 length bytes to read
+	 *
+	 * The VDOs should be retrieved as part of either the src_attached or
+	 * snk_attached state flows. However, if the port is connected during an
+	 * EC reboot, then the GET_VDO command will complete successfully, but
+	 * indicates a 0 VDO length and so the ST_READ state is skipped in the
+	 * driver. Adding a work-around here such that if the first VDO is all
+	 * 0s, then trigger another GET_VDO command in order to get the values
+	 * required. GET_VDO is only sent, if the port is connected and pd
+	 * capable.
+	 *
+	 */
+	if (!pdc->vdo[IDENTITY_VID_VDO_IDX]) {
+		pdc_run_get_discovery(port);
+	}
+
+	if (pdc->vdo[IDENTITY_VID_VDO_IDX]) {
+		vid = PD_IDH_VID(pdc->vdo[IDENTITY_VID_VDO_IDX]);
+	}
+
+	return vid;
+}
+
+uint16_t pd_get_identity_pid(int port)
+{
+	uint16_t pid = 0;
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port)) {
+		return pid;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	if (!pdc->vdo[IDENTITY_VID_VDO_IDX]) {
+		pdc_run_get_discovery(port);
+	}
+
+	if (pdc->vdo[IDENTITY_PID_VDO_IDX]) {
+		pid = PD_PRODUCT_PID(pdc->vdo[IDENTITY_PID_VDO_IDX]);
+	}
+
+	return pid;
+}
+
+uint8_t pd_get_product_type(int port)
+{
+	uint8_t ptype = 0;
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port)) {
+		return ptype;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	if (!pdc->vdo[IDENTITY_PTYPE_VDO_IDX]) {
+		pdc_run_get_discovery(port);
+	}
+
+	if (pdc->vdo[IDENTITY_PTYPE_VDO_IDX]) {
+		ptype = PD_IDH_VID(pdc->vdo[IDENTITY_PTYPE_VDO_IDX]);
+	}
+
+	return ptype;
 }
