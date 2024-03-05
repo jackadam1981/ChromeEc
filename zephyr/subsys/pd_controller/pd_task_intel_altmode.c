@@ -368,6 +368,28 @@ static int cmd_altmode_write(const struct shell *sh, size_t argc, char **argv)
 	return rv;
 }
 
+static int cmd_altmode_thread(const struct shell *sh, size_t argc, char **argv)
+{
+	if (argc >= 2) {
+		/* Suspend or resume thread */
+		if (!strncmp(argv[1], "suspend", strlen("suspend"))) {
+			shell_info(sh, "Suspend altmode thread");
+			suspend_pd_intel_altmode_task();
+		} else if (!strncmp(argv[1], "resume", strlen("resume"))) {
+			shell_info(sh, "Resume altmode thread");
+			resume_pd_intel_altmode_task();
+		} else {
+			shell_error(sh, "Invalid value");
+			return -EINVAL;
+		}
+	}
+
+	/* Print altmode thread status in all successful cases. */
+	shell_fprintf(sh, SHELL_INFO, "Altmode thread state: %s\n",
+		      is_pd_intel_altmode_task_suspended() ? "suspend" : "run");
+	return 0;
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_altmode_cmds,
 	SHELL_CMD_ARG(read, NULL,
@@ -379,6 +401,11 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Usage: altmode write <port> [<byte0>, ...]",
 		      cmd_altmode_write, 3,
 		      INTEL_ALTMODE_DATA_CONTROL_REG_LEN - 1),
+	SHELL_CMD_ARG(
+		thread, NULL,
+		"Suspend or resume the altmode thread state or get status\n"
+		"Usage: altmode thread [suspend|resume]",
+		cmd_altmode_thread, 1, 1),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(altmode, &sub_altmode_cmds, "PD Altmode commands", NULL);
