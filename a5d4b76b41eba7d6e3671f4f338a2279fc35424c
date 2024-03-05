@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2514aacb_f7a51f80",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b37b0481_d59c83fd",
+      "range": {
+        "startLine": 133,
+        "startChar": 29,
+        "endLine": 133,
+        "endChar": 37
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1a6ccfa_44943fdd",
@@ -141,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddcb35c2_d99b6cda",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:25:11Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5345992",
+      "parentUuid": "963795fa_2d43322c",
+      "range": {
+        "startLine": 143,
+        "startChar": 46,
+        "endLine": 143,
+        "endChar": 73
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42dce245_14f0258e",
@@ -164,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01091f1_844496c5",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:25:11Z",
+      "side": 1,
+      "message": "Oops 😕",
+      "parentUuid": "42dce245_14f0258e",
+      "range": {
+        "startLine": 144,
+        "startChar": 17,
+        "endLine": 144,
+        "endChar": 26
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf242a17_c52095e9",
@@ -177,6 +249,30 @@
       "writtenOn": "2024-03-04T21:56:07Z",
       "side": 1,
       "message": "Instead of `struct mutex`, should we be using the typedef: `mutex_t`?",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 12
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389bb648_4ab0ecfa",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf242a17_c52095e9",
       "range": {
         "startLine": 146,
         "startChar": 0,
@@ -248,6 +344,30 @@
       "side": 1,
       "message": "\u003e this implementation is compatible with architectures that provide atomic operations.\n\nOh, right.\n\nI don\u0027t love it, but we could surround the declarations in `task.h` for `mutex_lock_recursive`, etc. with `#if defined(CORTEX_M) \u0026\u0026 !defined(CONFIG_ZEPHYR)` and put the definition in `core/cortex-m/task.c`.\n\nI agree that we don\u0027t need it for Zephyr, but it seems *slightly* cleaner. (Or maybe it\u0027s just more consistent.)\n\nActually, as I\u0027m writing this I think I agree with you.\n\nWhat if we pull the recursive mutex code into a new file in the `libc` directory (e.g., `recursive_mutex.c` and `recursive_mutex.h`)? Then we could still use similar API names that we use in EC (e.g., `mutex_lock_recursive`, `mutex_unlock_recursive`, etc.), call those from this file, and write a unit test for those APIs. That would also avoid exposing the recursive mutex API to boards that don\u0027t use `libc`.",
       "parentUuid": "7ffe4bff_8af58065",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "a5d4b76b41eba7d6e3671f4f338a2279fc35424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c94739_8432c3a2",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:25:11Z",
+      "side": 1,
+      "message": "Introduced `recursive_mutex.c` file. Let\u0027s continue this discussion in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5345993",
+      "parentUuid": "08dae793_f56e7c80",
       "range": {
         "startLine": 196,
         "startChar": 0,
