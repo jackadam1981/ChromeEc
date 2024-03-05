@@ -125,6 +125,8 @@ typedef int (*pdc_get_current_flash_bank_t)(const struct device *dev,
 					    uint8_t *bank);
 typedef int (*pdc_update_retimer_fw_t)(const struct device *dev, bool enable);
 typedef bool (*pdc_is_init_done_t)(const struct device *dev);
+typedef int (*pdc_get_vdo_t)(const struct device *dev, union get_vdo_t req,
+			     uint8_t *req_list, uint32_t *vdo);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -157,6 +159,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_reconnect_t reconnect;
 	pdc_get_current_flash_bank_t get_current_flash_bank;
 	pdc_update_retimer_fw_t update_retimer;
+	pdc_get_vdo_t get_vdo;
 };
 /**
  * @endcond
@@ -783,6 +786,31 @@ static inline int pdc_update_retimer_fw(const struct device *dev, bool enable)
 	}
 
 	return api->update_retimer(dev, enable);
+}
+
+/**
+ * @brief Get the Requested Data Object sent to the Source
+ * @note CCI Events set
+ *           busy: if PDC is busy
+ *           error: if the port partner is a Sink
+ *           command_commpleted: if the RDO was retrieved
+ *
+ * @param dev PDC device structure pointer
+ * @param rdo pointer to where the RDO is stored
+ *
+ * @retval 0 on success
+ * @retval -EBUSY if not ready to execute the command
+ * @retval -EINVAL if rdo pointer is NULL
+ */
+static inline int pdc_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
+			      uint8_t *vdo_list, uint32_t *vdo)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	__ASSERT(api->get_vdo != NULL, "GET_VDO is not optional");
+
+	return api->get_vdo(dev, vdo_req, vdo_list, vdo);
 }
 
 #ifdef __cplusplus
