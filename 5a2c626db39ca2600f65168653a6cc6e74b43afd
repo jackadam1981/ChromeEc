@@ -22,6 +22,30 @@
       },
       "revId": "5a2c626db39ca2600f65168653a6cc6e74b43afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7752e2be_2f343f01",
+        "filename": "common/usb_pd_host_cmd_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-03-05T08:17:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "060a42f7_5882d1b7",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "5a2c626db39ca2600f65168653a6cc6e74b43afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
