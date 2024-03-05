@@ -161,3 +161,18 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 
 	return PD_REV30;
 }
+
+uint16_t pd_get_identity_vid(int port)
+{
+	return pdc_power_mgmt_get_identity_vid(port);
+}
+
+uint16_t pd_get_identity_pid(int port)
+{
+	return pdc_power_mgmt_get_identity_pid(port);
+}
+
+uint8_t pd_get_product_type(int port)
+{
+	return pdc_power_mgmt_get_product_type(port);
+}
