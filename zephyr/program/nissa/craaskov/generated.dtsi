@@ -59,6 +59,9 @@
 			gpios = <&gpiod 3 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
+		gpio_ec_touch_en: ec_touch_en {
+			gpios = <&gpio8 3 GPIO_OUTPUT>;
+		};
 		gpio_ec_entering_rw: ec_entering_rw {
 			gpios = <&gpio0 3 GPIO_OUTPUT>;
 			enum-name = "GPIO_ENTERING_RW";
@@ -185,6 +188,9 @@
 		gpio_volup_btn_odl: volup_btn_odl {
 			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
+		};
+		gpio_soc_edp_bl_en: soc_edp_bl_en {
+			gpios = <&gpioc 7 GPIO_INPUT>;
 		};
 	};
 
