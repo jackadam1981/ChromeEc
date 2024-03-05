@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a473c1_b4459ee7",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972f9ec5_d132e772",
+      "range": {
+        "startLine": 906,
+        "startChar": 1,
+        "endLine": 920,
+        "endChar": 45
+      },
+      "revId": "873f1ec941da087b6a85f997f57ab72d93e59d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "441f9a14_607f732d",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-03-04T22:39:03Z",
       "side": 1,
       "message": "Let\u0027s add a note that it shouldn\u0027t be used in interrupt context (like `mutex_lock`).",
+      "revId": "873f1ec941da087b6a85f997f57ab72d93e59d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5005ce_3e6a6f5c",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-05T19:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441f9a14_607f732d",
       "revId": "873f1ec941da087b6a85f997f57ab72d93e59d38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
