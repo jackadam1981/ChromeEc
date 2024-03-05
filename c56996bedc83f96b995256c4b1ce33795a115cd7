@@ -16,6 +16,24 @@
       "message": "ERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:36:74: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,\nERROR:root:                                                                         ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:59:31: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        RESET_FAKE(chipset_in_state);\nERROR:root:                                     ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:60:44: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        RESET_FAKE(cros_cbi_get_fw_config);\nERROR:root:                                           ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:324:69: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:static int get_fan_config_present(enum cbi_fw_config_field_id field,\nERROR:root:                                                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:326:2: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:{\nERROR:root: ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:327:38: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        zassert_equal(field, FW_FAN);\nERROR:root:                                     ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:328:33: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        *value \u003d FW_FAN_PRESENT;\nERROR:root:                                ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:332:68: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:static int get_fan_config_absent(enum cbi_fw_config_field_id field,\nERROR:root:                                                                   ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:334:2: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:{\nERROR:root: ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:335:38: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        zassert_equal(field, FW_FAN);\nERROR:root:                                     ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:336:37: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        *value \u003d FW_FAN_NOT_PRESENT;\nERROR:root:                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:341:2: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:{\nERROR:root: ^",
       "revId": "c56996bedc83f96b995256c4b1ce33795a115cd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4060c29e_e0241b70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-03-05T06:06:01Z",
+      "side": 1,
+      "message": "Thanks, fix it.",
+      "parentUuid": "de701bbc_f7d85239",
+      "revId": "c56996bedc83f96b995256c4b1ce33795a115cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
