@@ -295,4 +295,31 @@ int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
  */
 int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type);
 
+/**
+ * @brief Get port partner VID
+ *
+ * @param port USB-C port number
+ *
+ * @retval VID if available, 0 otherwise
+ */
+uint16_t pdc_power_mgmt_get_identity_vid(int port);
+
+/**
+ * @brief Get port partner PID
+ *
+ * @param port USB-C port number
+ *
+ * @retval PID if available, 0 otherwise
+ */
+uint16_t pdc_power_mgmt_get_identity_pid(int port);
+
+/**
+ * @brief Get port partner prodcut type
+ *
+ * @param port USB-C port number
+ *
+ * @retval product type if available, 0 otherwise
+ */
+uint8_t pdc_power_mgmt_get_product_type(int port);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
