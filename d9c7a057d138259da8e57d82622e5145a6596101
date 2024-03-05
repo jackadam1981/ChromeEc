@@ -70,6 +70,30 @@
       },
       "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2010580b_fee97e0d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-05T20:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2aadc0_3b5b8f6e",
+      "range": {
+        "startLine": 148,
+        "startChar": 25,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "d9c7a057d138259da8e57d82622e5145a6596101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
