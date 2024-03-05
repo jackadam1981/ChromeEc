@@ -51,6 +51,24 @@
       "message": "Hi YH and Caveh,\n\nIt seems the `firmware-rex-15709.B of third_party/zephyr` is not tracking to the main branch after the branched out.\n\nthe `76e73db58a ap_pwrseq: Enable VW to handle ESPI bus reset` depends on CL:5280333 of zephyr so it does not take effect at present.",
       "revId": "1413fc2ffcb1e50a8e1bd6a880bb4ee4779cbb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4047590_71bbd1fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-03-05T00:16:11Z",
+      "side": 1,
+      "message": "The CL is in 15709.83.0 now.",
+      "parentUuid": "79e92b8e_8193ae90",
+      "revId": "1413fc2ffcb1e50a8e1bd6a880bb4ee4779cbb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
