@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45b411e0_326baf4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-05T19:53:47Z",
+      "side": 1,
+      "message": "Daisuke: Comparing the code to ss 8.3.3.3, I\u0027m wondering if the real issue here is that we\u0027re setting the current limit, etc. based on stored data in the PE instead of some shared data between the TC and PE. At the time that we\u0027re exiting this PE state (to the null state) as a result of a disconnect, we _do_ need to make a power supply change as described in ss 8.3.3.3.6. It\u0027s just not the change that we negotiated. The TC already knows that we\u0027ve disconnected and that the current limit should be 0. Is there some state in the TC that we could query in `pe_snk_transition_sink_exit` to get the real new current limit and set it correctly, if redundantly?",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c117ccae_88180247",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
