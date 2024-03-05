@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261d074d_ca143d29",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-05T00:20:29Z",
+      "side": 1,
+      "message": "We should probably add a `bytes_are_trivial` check after this like is done above after reading rollback.",
+      "range": {
+        "startLine": 194,
+        "startChar": 11,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c61703_223b7b44",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-05T00:20:29Z",
+      "side": 1,
+      "message": "I need to review the error handling in `clear_rollback`, but the other error cases in this function use `goto failed`. That\u0027s probably what we want here.",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 55
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb85c712_953dac64",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-05T00:20:29Z",
+      "side": 1,
+      "message": "Looking through the code again, I think this should actually be in the `rollback_add_entropy` function (which is called below). The reason is that we do have other places that call `rollback_add_entropy`, such as `command_rollback_add_entropy`.\n\nAlso, we have a unit test in `test/rollback_entropy.c` that verifies the entropy written to the rollback section. We should add a check to make sure OTP was provisioned. That\u0027s not going to tell us much if we\u0027ve already set the OTP bits, so we could [mock the `otp_key_provision` function](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/mock/README.md) in the test and make sure it is called.",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b0f76c_1513fa90",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-05T00:20:29Z",
+      "side": 1,
+      "message": "We need to make sure we set the return value (`add_entropy_rv`) and return instead of panicking so that we send an error back to the AP (rebooting the FPMCU with `software_panic` will cause the command sent from the AP to time out, but we won\u0027t know why it failed).",
+      "range": {
+        "startLine": 459,
+        "startChar": 3,
+        "endLine": 459,
+        "endChar": 55
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
