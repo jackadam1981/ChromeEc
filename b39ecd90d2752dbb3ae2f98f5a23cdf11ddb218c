@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19404cfc_e00258a1",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-03-05T18:10:57Z",
+      "side": 1,
+      "message": "nit:\n#ifdef CONFIG_COMMON_RUNTIME",
+      "revId": "b39ecd90d2752dbb3ae2f98f5a23cdf11ddb218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
