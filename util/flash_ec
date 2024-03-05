@@ -991,6 +991,19 @@ function claim_pty() {
 	done
 }
 
+# Returns if get_serial used CCD.
+function get_serial_is_ccd() {
+	if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_servo_micro ]]; then
+		false
+	elif [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_c2d2 ]]; then
+		false
+	elif [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
+		true
+	else
+		false
+	fi
+}
+
 # Returns the serialnumber of the specified servo.
 function get_serial() {
 	if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_servo_micro ]]; then
@@ -1002,6 +1015,16 @@ function get_serial() {
 			sn_ctl="servo_micro_"
 		else
 			sn_ctl="servo_micro_for_${BOARD}_"
+		fi
+	elif [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_c2d2 ]]; then
+		if [[ -z "${BOARD}" ]]; then
+			sn_ctl="c2d2_"
+		elif [[ "$(dut_control_get "c2d2_for_${BOARD}_serialname")" =~ \
+				"unknown" ]] ; then
+			# Fall back to c2d2_ if S/N is uknown.
+			sn_ctl="c2d2_"
+		else
+			sn_ctl="c2d2_for_${BOARD}_"
 		fi
 	elif [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
 		sn_ctl="ccd_"
@@ -1391,29 +1414,6 @@ function flash_stm32_dfu() {
 		-d "${DFU_DEVICE}" -s "${ADDR}:${SIZE}" -D "${IMG}"
 }
 
-function dut_i2c_dev() {
-	if [ -n "${DUT_I2C_DEV}" ]; then
-		[ -e "${DUT_I2C_DEV}" ] ||
-			die "\$DUT_I2C_DEV is a non-existent path: ${DUT_I2C_DEV}"
-		echo "${DUT_I2C_DEV}"
-		return
-	fi
-
-	local has_i2c_pseudo
-	has_i2c_pseudo="$(dut_control_get_or_die \
-		"${ACTIVE_DEVICE}_i2c_pseudo_is_running")"
-	if [[ "${has_i2c_pseudo}" == False ]]; then
-		error "i2c-pseudo module is not running on ${ACTIVE_DEVICE}."
-		error "Please follow https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md#i2c-pseudo"
-		die "to install i2c-pseudo module."
-	fi
-
-	local adap_num=
-	adap_num="$(dut_control_get_or_die \
-	    "${ACTIVE_DEVICE}_i2c_pseudo_adapter_num")"
-	echo /dev/i2c-"${adap_num}"
-}
-
 function ite_dfu_mode() {
 	# Send the special waveform to the ITE EC.
 	if [[ "${SERVO_TYPE}" =~ "servo_micro" || \
@@ -1504,10 +1504,9 @@ function flash_it83xx() {
 	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
 		ITEFLASH_ARGS+=( "--send-waveform=1" "--i2c-interface=ftdi" )
 	else
-		ITEFLASH_ARGS=( "sudo" "--" "${ITEFLASH_ARGS[@]}" \
-			"--send-waveform=0" "--i2c-interface=linux" \
-			"--i2c-dev-path=$(dut_i2c_dev)" )
-		if servo_is_ccd; then
+		ITEFLASH_ARGS+=( "--send-waveform=0" "--i2c-interface=usb" \
+			"-s" "$(get_serial)" )
+		if get_serial_is_ccd; then
 			ITEFLASH_ARGS+=( "--block-write-size=256" )
 		fi
 	fi
@@ -2025,6 +2024,13 @@ function read_chip_partially() {
 			print_or_run mv "${ALIGNED_FILE}" "${FILE_PATH}"
 		fi
 
+		# Reset EC before setting DFU mode
+		if [[ "${SERVO_TYPE}" =~ "c2d2" ]]; then
+			dut_control gsc_ec_reset:on
+			dut_control gsc_ec_reset:off
+		elif servo_has_cold_reset; then
+			servo_ec_hard_reset_or_die
+		fi
 		# ITE DFU mode must be re-enabled after each operation
 		ite_dfu_mode
 	else
@@ -2053,6 +2059,13 @@ function read_chip() {
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
 
+		# Reset EC before setting DFU mode
+		if [[ "${SERVO_TYPE}" =~ "c2d2" ]]; then
+			dut_control gsc_ec_reset:on
+			dut_control gsc_ec_reset:off
+		elif servo_has_cold_reset; then
+			servo_ec_hard_reset_or_die
+		fi
 		# ITE DFU mode must be re-enabled after each operation
 		ite_dfu_mode
 	else
