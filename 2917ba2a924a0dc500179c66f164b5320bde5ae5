@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8402db_de264fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-05T17:27:42Z",
+      "side": 1,
+      "message": "I like this better than the previous version. It\u0027s possible there\u0027s an even better place to do this, and I\u0027ll inquire on the bug. If we can\u0027t find a better place, I think this is fine.",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c117ccae_88180247",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3736,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-05T17:27:42Z",
+      "side": 1,
+      "message": "Can you add a comment like this?:\n\nPer PD r3.1 v1.8 ss 8.3.3.3.6, the PE should start actually sinking according to the new power contract upon exit from PE_SNK_Transition_Sink. Setting the current limit here in the run function instead of the exit function ensures that this happens before the next run of the type-C state machine. This avoids a race condition in the case where the TC transitions to Unattached immediately after contract negotiation. In this case, the TC sets the current limit to 0, and this should happen last.",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5771eb_1d28a509",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3763,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-05T17:27:42Z",
+      "side": 1,
+      "message": "Does this need to move too?",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
