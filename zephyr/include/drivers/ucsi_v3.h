@@ -184,6 +184,31 @@ enum power_operation_mode_t {
 	USB_TC_CURRENT_5A = 6,
 };
 
+enum vdo_origin_t {
+	VDO_ORIGIN_PORT = 0,
+	VDO_ORIGIN_SOP = 1,
+	VDO_ORIGIN_SOP_PRIME = 2,
+	VDO_ORIGIN_SOP_PRIME_PRIME = 3,
+};
+
+enum vdo_type_t {
+	VDO_ID_HEADER = 1,
+	VDO_CERT_STATE = 2,
+	VDO_PRODUCT = 3,
+	VDO_PRODUCT_TYPE_1 = 4,
+	VDO_PRODUCT_TYPE_2 = 5,
+	VDO_PRODUCT_TYPE_3 = 6,
+	VDO_SVID_RESPONSE_1 = 7,
+	VDO_SVID_RESPONSE_2 = 8,
+	VDO_SVID_RESPONSE_3 = 9,
+	VDO_SVID_RESPONSE_4 = 10,
+	VDO_SVID_RESPONSE_5 = 11,
+	VDO_SVID_RESPONSE_6 = 12,
+	VDO_PD_DP_CAPS = 13,
+	VDO_PD_DP_STATUS = 14,
+	VDO_PD_DP_CFG = 15,
+};
+
 /**
  * @brief CCI - USB Type-C Command Status and Connector Change Indication
  */
@@ -1011,6 +1036,23 @@ union connector_reset_t {
 		 * else the reset type is HARD_RESET
 		 */
 		uint8_t reset_type : 1;
+	};
+	uint8_t raw_value;
+};
+
+union get_vdo_t {
+	struct {
+		/**
+		 * Number of VDOs requested
+		 */
+		uint8_t num_vdos : 3;
+		/**
+		 * Used to specify if VDOs requested are from the PDC,
+		 * port parter, or cable.
+		 */
+		uint8_t vdo_origin : 2;
+		/** Reserved, set to 0. */
+		uint8_t reserved : 3;
 	};
 	uint8_t raw_value;
 };
