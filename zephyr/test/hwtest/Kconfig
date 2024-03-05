@@ -21,3 +21,7 @@ config HW_TEST_CRC
 config HW_TEST_FLASH_PHYSICAL
 	bool "Flash physical test"
 	select ZTEST
+
+config HW_TEST_FLASH_WRITE_PROTECT
+	bool "Flash write protect test"
+	select ZTEST
