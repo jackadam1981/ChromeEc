@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37801899_6f9b88a3",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T00:28:29Z",
+      "side": 1,
+      "message": "Can you add a pointer to the source in `newlib`? I think it\u0027s `newlib/libc/misc/lock.c`? A gitweb or documentation link like lines 9 or 11 would be great.",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "ca2401af96666f138776c49b8a93e6a9051fbe46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd280b8f_f0965189",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T00:28:29Z",
+      "side": 1,
+      "message": "In `newlib/libc/misc/lock.c` it says:\n\n\u003e For multi-threaded applications the target platform is required to provide\nan implementation for @strong{all} these routines and static locks.  If some\nroutines or static locks are missing, the link will fail with doubly defined\nsymbols.\n\nWould you be able to do a quick test to see if that actually works? e.g., remove one of the locks and see if it fails to link. I just want to make sure if we ever update newlib and we don\u0027t keep this in sync we\u0027ll get an obvious build failure rather than a very subtle bug.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 47
+      },
+      "revId": "ca2401af96666f138776c49b8a93e6a9051fbe46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
