@@ -268,6 +268,8 @@ enum cmd_t {
 	CMD_SET_RETIMER_FW_UPDATE_MODE,
 	/** Get the cable properties */
 	CMD_GET_CABLE_PROPERTY,
+	/** CMD_GET_IDENTITY_DISCOVERY */
+	CMD_GET_IDENTITY_DISCOVERY,
 };
 
 /**
@@ -381,6 +383,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_CURRENT_PARTNER_SRC_PDO] = "GET_CURRENT_PARTNER_SRC_PDO",
 	[CMD_SET_RETIMER_FW_UPDATE_MODE] = "SET_RETIMER_FW_UPDATE_MODE",
 	[CMD_GET_CABLE_PROPERTY] = "GET_CABLE_PROPERTY",
+	[CMD_GET_IDENTITY_DISCOVERY] = "CMD_GET_IDENTITY_DISCOVERY",
 };
 
 /**
@@ -1235,6 +1238,13 @@ static void st_read_run(void *o)
 		 */
 		break;
 	}
+	case CMD_GET_IDENTITY_DISCOVERY: {
+		uint8_t *disc_state = (uint8_t *)data->user_buf;
+
+		/* Realtek Altmode related state, Byte 14 bits 0-2*/
+		*disc_state = (data->rd_buf[14] & 0x07);
+		break;
+	}
 	default:
 		/* No preprocessing needed for the user data */
 		memcpy(data->user_buf, data->rd_buf + offset, len);
@@ -1982,6 +1992,23 @@ static int rts54_get_current_pdo(const struct device *dev, uint32_t *pdo)
 				  ARRAY_SIZE(payload), (uint8_t *)pdo);
 }
 
+static int rts54_get_identity_discovery(const struct device *dev,
+					uint8_t *disc_state)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (disc_state == NULL) {
+		return -EINVAL;
+	}
+
+	return rts54_get_rtk_status(dev, 0, 18, CMD_GET_IDENTITY_DISCOVERY,
+				    disc_state);
+}
+
 static bool rts54_is_init_done(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2015,6 +2042,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.reconnect = rts54_reconnect,
 	.update_retimer = rts54_set_retimer_update_mode,
 	.get_cable_property = rts54_get_cable_property,
+	.get_identity_discovery = rts54_get_identity_discovery,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
