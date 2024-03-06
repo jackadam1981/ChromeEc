@@ -127,6 +127,9 @@ typedef int (*pdc_update_retimer_fw_t)(const struct device *dev, bool enable);
 typedef bool (*pdc_is_init_done_t)(const struct device *dev);
 typedef int (*pdc_get_cable_property_t)(const struct device *dev,
 					union cable_property_t *cable_prop);
+typedef int (*pdc_get_identity_vid_t)(const struct device *dev, uint16_t *identity_vid);
+typedef int (*pdc_get_identity_pid_t)(const struct device *dev, uint16_t *identity_pid);
+typedef int (*pdc_get_product_type_t)(const struct device *dev, uint8_t *product_type);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -160,6 +163,9 @@ __subsystem struct pdc_driver_api_t {
 	pdc_get_current_flash_bank_t get_current_flash_bank;
 	pdc_update_retimer_fw_t update_retimer;
 	pdc_get_cable_property_t get_cable_property;
+	pdc_get_identity_vid_t get_identity_vid;
+	pdc_get_identity_pid_t get_identity_pid;
+	pdc_get_product_type_t get_product_type;
 };
 /**
  * @endcond
@@ -812,6 +818,45 @@ static inline int pdc_get_cable_property(const struct device *dev,
 		 "GET_CABLE_PROPERTY is not optional");
 
 	return api->get_cable_property(dev, cable_prop);
+}
+
+static inline int pdc_get_identity_vid(const struct device *dev, uint16_t *identity_vid)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->get_identity_vid == NULL) {
+		*identity_vid = 0;
+		return -ENOSYS;
+	}
+
+	return api->get_identity_vid(dev, identity_vid);
+}
+
+static inline int pdc_get_identity_pid(const struct device *dev, uint16_t *identity_pid)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->get_identity_pid == NULL) {
+		*identity_pid = 0;
+		return -ENOSYS;
+	}
+
+	return api->get_identity_pid(dev, identity_pid);
+}
+
+static inline int pdc_get_product_type(const struct device *dev, uint8_t *product_type)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->get_product_type == NULL) {
+		*product_type = 0;
+		return -ENOSYS;
+	}
+
+	return api->get_product_type(dev, product_type);
 }
 
 #ifdef __cplusplus

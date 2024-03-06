@@ -89,6 +89,12 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_CONNECTOR_STATUS,
 	/** CMD_PDC_GET_CABLE_PROPERTY */
 	CMD_PDC_GET_CABLE_PROPERTY,
+	/** CMD_PDC_GET_IDENTITY_VID */
+	CMD_PDC_GET_IDENTITY_VID,
+	/** CMD_PDC_GET_IDENTITY_PID */
+	CMD_PDC_GET_IDENTITY_PID,
+	/** CMD_PDC_GET_PRODUCT_TYPE */
+	CMD_PDC_GET_PRODUCT_TYPE,
 
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
@@ -435,6 +441,14 @@ struct pdc_port_t {
 	bool attached_snk_src_typec_only;
 	/** True if attached device is PD Capable */
 	bool pd_capable;
+
+	/** USB PD port partner's VID returned in Discovery Indentity */
+	uint16_t identity_vid;
+	/** USB PD port partner's PID returned in Discovery Indentity */
+	uint16_t identity_pid;
+	/** USB PD port partner's Product Type returned in Discovery Indentity
+	 */
+	uint8_t product_type;
 };
 
 /**
@@ -1060,6 +1074,15 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_GET_CABLE_PROPERTY:
 		rv = pdc_get_cable_property(port->pdc, &port->cable_prop);
+		break;
+	case CMD_PDC_GET_IDENTITY_VID:
+		rv = pdc_get_identity_vid(port->pdc, &port->identity_vid);
+		break;
+	case CMD_PDC_GET_IDENTITY_PID:
+		rv = pdc_get_identity_pid(port->pdc, &port->identity_pid);
+		break;
+	case CMD_PDC_GET_PRODUCT_TYPE:
+		rv = pdc_get_product_type(port->pdc, &port->product_type);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
@@ -2096,4 +2119,58 @@ int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type)
 	}
 
 	return rev;
+}
+
+uint16_t pdc_power_mgmt_get_identity_vid(int port)
+{
+	int ret;
+
+	/* Make sure port is connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
+		return 0;
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_IDENTITY_VID);
+	if (ret) {
+		return 0;
+	}
+
+	return pdc_data[port]->port.identity_vid;
+}
+
+uint16_t pdc_power_mgmt_get_identity_pid(int port)
+{
+	int ret;
+
+	/* Make sure port is connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
+		return 0;
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_IDENTITY_PID);
+	if (ret) {
+		return 0;
+	}
+
+	return pdc_data[port]->port.identity_pid;
+}
+
+uint8_t pdc_power_mgmt_get_product_type(int port)
+{
+	int ret;
+
+	/* Make sure port is connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
+		return 0;
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_PRODUCT_TYPE);
+	if (ret) {
+		return 0;
+	}
+
+	return pdc_data[port]->port.product_type;
 }
