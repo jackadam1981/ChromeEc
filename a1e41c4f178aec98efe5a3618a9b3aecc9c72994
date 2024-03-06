@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16639f65_6db38ded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-06T00:00:49Z",
+      "side": 1,
+      "message": "Note: there is currently no handling of re-initializing the PDC and threads after the reset-to-flash. Keith is going to look into that part and experiment with this to see if a reset to flash can help with some of our open issues.",
+      "revId": "a1e41c4f178aec98efe5a3618a9b3aecc9c72994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
