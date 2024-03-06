@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "35113b08_058dd0b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-06T21:01:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df67a37f_5a783327",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "ab950339e8c4fadd4585b7394b952d6bb128a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "01dfbb4a_7f0e6515",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2024-03-06T00:48:13Z",
       "side": 1,
       "message": "Can we guarantee that this fits into `waiters`? Maybe add an `ASSERT` (or `BUILD_ASSERT` if we can determine based on size of variable returned by `task_get_current()`).",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "ab950339e8c4fadd4585b7394b952d6bb128a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de78cc9d_ecccf5a6",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-06T21:01:34Z",
+      "side": 1,
+      "message": "It\u0027s checked that task id can fit in `unsigned int` [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/task.c;l\u003d162-163;drc\u003df7a558d5c5bda9fc1e8adb0a97e820e14760ef72). Do you think it\u0027s enough or should I also add check for `atomic_t`?\n\nPlease note that the same is assumed in cortex-m/task.c",
+      "parentUuid": "29ddfad3_2b0f1cea",
       "range": {
         "startLine": 32,
         "startChar": 1,
