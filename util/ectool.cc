@@ -20,6 +20,7 @@
 #include "panic.h"
 #include "tablet_mode.h"
 #include "usb_pd.h"
+#include "extra/um_ppm/include/ppm.h"
 
 #include <assert.h>
 #include <ctype.h>
@@ -806,45 +807,175 @@ static const char *reset_cause_to_str(uint16_t cause)
 	return "(shutdown unknown)";
 }
 
-int cmd_ppm(int argc, char *argv[])
+static int ppm_set_control(const struct ucsi_control *ctrl)
 {
+	struct ec_params_ucsi_ppm_set *p =
+			(struct ec_params_ucsi_ppm_set *)ec_outbuf;
 	int rv;
 
+	memset(ec_outbuf, 0, ec_max_outsize);
+
+	p->offset = UCSI_CONTROL_OFFSET;
+	memcpy(p->data, ctrl, sizeof(*ctrl));
+
+	rv = ec_command(EC_CMD_UCSI_PPM_SET, 0, p,
+			sizeof(p->offset) + sizeof(*ctrl), NULL, 0);
+	if (rv < 0)
+		fprintf(stderr, "ERROR: EC_CMD_UCSI_PPM_GET failed: %d\n", rv);
+	return rv;
+}
+
+static int ppm_get_message_in(uint8_t *data, uint8_t len)
+{
+	struct ec_params_ucsi_ppm_get p = {
+		.offset = UCSI_MESSAGE_IN_OFFSET,
+		.size = len,
+	};
+	int rv;
+
+	if (len > MESSAGE_IN_SIZE)
+		return -1;
+
+	rv = ec_command(EC_CMD_UCSI_PPM_GET, 0, &p, sizeof(p), data, len);
+	if (rv < 0)
+		fprintf(stderr, "ERROR: EC_CMD_UCSI_PPM_GET failed: %d\n", rv);
+
+	return rv;
+}
+
+static int ppm_get_cci(struct ucsi_cci *cci)
+{
+	struct ec_params_ucsi_ppm_get p = {
+		.offset = UCSI_CCI_OFFSET,
+		.size = sizeof(*cci),
+	};
+	int rv;
+
+	rv = ec_command(EC_CMD_UCSI_PPM_GET, 0, &p, sizeof(p), cci,
+			sizeof(*cci));
+	if (rv < 0)
+		fprintf(stderr, "ERROR: EC_CMD_UCSI_PPM_GET failed: %d\n", rv);
+
+	return rv;
+}
+
+static void ppm_dump_cci(const struct ucsi_cci *cci)
+{
+	printf("CCI:\n");
+	printf(cci->end_of_message ? "\tEnd of Message\n" : "");
+	printf(cci->connector_changed ? "\tConnector Change\n" : "");
+	printf(cci->cancel_completed ? "\tCancel Completed\n" : "");
+	printf(cci->reset_completed ? "\tReset Completed\n" : "");
+	printf(cci->busy ? "\tBusy\n" : "");
+	printf(cci->ack_command ? "\tAcknowledge Command\n" : "");
+	printf(cci->error ? "\tError\n" : "");
+	printf(cci->cmd_complete ? "\tCommand Completed\n" : "");
+	printf("\tData Length = %d\n", cci->data_length);
+}
+
+static void ppm_dump_capability(const uint8_t *cap)
+{
+	uint32_t val;
+
+	printf("Capability:\n");
+	memcpy(&val, &cap[0], sizeof(val));
+	printf("\tbmAttributes = 0x%04x\n", val);
+	printf(val & BIT(1) ? "\t\tBattery Charging\n" : "");
+	printf(val & BIT(2) ? "\t\tUSB Power Delivery\n" : "");
+	printf(val & BIT(6) ? "\t\tUSB Type-C Current\n" : "");
+	printf(val & BIT(8) ? "\t\tAC Supply\n" : "");
+	memcpy(&val, &cap[5], 3);
+	printf("\tbmOptionalFeatures= 0x%03x\n", val & 0xffffff);
+	printf("\tbNumConnectors = %d\n", cap[4] & 0x7f);
+	printf("\tbNumAltModes = %d\n", cap[8]);
+}
+
+int cmd_ppm(int argc, char *argv[])
+{
 	if (argc == 2 && !strcmp(argv[1], "reset")) {
-		struct ec_params_ucsi_ppm_set *p =
-				(struct ec_params_ucsi_ppm_set *)ec_outbuf;
-
-		p->offset = 8;
-		p->data[0] = 0x01; /* PPM_RESET */
-		rv = ec_command(EC_CMD_UCSI_PPM_SET, 0, p,
-				sizeof(p->offset) + 1, NULL, 0);
-		if (rv < 0) {
-			fprintf(stderr,
-				"ERROR: EC_CMD_UCSI_PPM_SET failed: %d\n", rv);
-			return rv;
-		}
-	} else if (argc == 2 && !strcmp(argv[1], "cci")) {
-		struct ec_params_ucsi_ppm_get p = {
-			.offset = 4,
-			.size = 4,
+		struct ucsi_control ctrl = {
+			.command = UCSI_CMD_PPM_RESET,
+			.data_length = 0,
+			.command_specific = {},
 		};
-		uint32_t cci;
-
-		rv = ec_command(EC_CMD_UCSI_PPM_GET, 0, &p, sizeof(p), &cci,
-				sizeof(cci));
-		if (rv < 0) {
-			fprintf(stderr,
-				"ERROR: EC_CMD_UCSI_PPM_GET failed: %d\n", rv);
-			return rv;
+		if (ppm_set_control(&ctrl) < 0)
+			return -1;
+		printf("Successfully executed PPM_RESET.\n");
+	} else if (argc == 3 && !strcmp(argv[1], "dump")) {
+		if (!strcmp(argv[2], "cci")) {
+			struct ucsi_cci cci;
+			if (ppm_get_cci(&cci) < 0)
+				return -1;
+			ppm_dump_cci(&cci);
+		} else if (!strcmp(argv[2], "cap")) {
+			uint8_t cap[128];
+			if (ppm_get_message_in(cap, 128) < 0)
+				return -1;
+			ppm_dump_capability(cap);
+		} else if (!strcmp(argv[2], "msg")) {
+			uint8_t msg[MESSAGE_IN_SIZE - 8 /* HC header size */];
+			if (ppm_get_message_in(msg, sizeof(msg)) < 0)
+				return -1;
+			hexdump_canonical(msg, sizeof(msg), 16);
 		}
-		printf("CCI=0x%08x\n", cci);
-	} else {
-		if (argc < 2) {
-			fprintf(stderr, "ERROR: Invalid number of args.\n");
+	} else if (argc == 3 && !strcmp(argv[1], "notify")) {
+		uint32_t notify;
+		char *e;
+
+		notify = strtoul(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "ERROR: Invalid arg: '%s'\n", argv[2]);
 			return -1;
 		}
 
-		fprintf(stderr, "Sub-command '%s' is unknown.\n", argv[1]);
+		struct ucsi_control ctrl = {
+			.command = UCSI_CMD_SET_NOTIFICATION_ENABLE,
+			.data_length = 0,
+			.command_specific = {},
+		};
+		memcpy(ctrl.command_specific, &notify, sizeof(notify));
+		if (ppm_set_control(&ctrl) < 0)
+			return -1;
+		printf("Successfully executed SET_NOTIFICATION_ENABLE.\n");
+	} else if (argc == 3 && !strcmp(argv[1], "ack")) {
+		uint8_t ack;
+		char *e;
+
+		ack = strtoul(argv[2], &e, 0);
+		if ((e && *e) || ack > BIT(0) + BIT(1)) {
+			fprintf(stderr, "ERROR: Invalid arg: '%s'\n", argv[2]);
+			return -1;
+		}
+
+		struct ucsi_control ctrl = {
+			.command = UCSI_CMD_ACK_CC_CI,
+			.data_length = 0,
+			.command_specific = {},
+		};
+		memcpy(ctrl.command_specific, &ack, sizeof(ack));
+		if (ppm_set_control(&ctrl) < 0)
+			return -1;
+		printf("Successfully executed ACK_CC_CI. Acknowledged:%s%s.\n",
+		       ack & BIT(0) ? " CI" : "", ack & BIT(1) ? " CC" : "");
+	} else if (argc == 2 && !strcmp(argv[1], "cap")) {
+		struct ucsi_control ctrl = {
+			.command = UCSI_CMD_GET_CAPABILITY,
+			.data_length = 0,
+			.command_specific = {},
+		};
+		struct ucsi_cci cci;
+
+		if (ppm_set_control(&ctrl) < 0)
+			return -1;
+		printf("Successfully executed GET_CAPABILITY.\n");
+
+		if (ppm_get_cci(&cci) < 0)
+			return -1;
+		ppm_dump_cci(&cci);
+	} else {
+		fprintf(stderr,
+			"Sub-command '%s' is unknown or number of args for '%s' is invalid.\n",
+			argv[1], argv[1]);
 		return -1;
 	}
 
