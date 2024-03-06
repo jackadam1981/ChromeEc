@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "df67a37f_5a783327",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T00:48:13Z",
+      "side": 1,
+      "message": "Looking forward to the unit test. 😊",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "ab950339e8c4fadd4585b7394b952d6bb128a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "01dfbb4a_7f0e6515",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-03-05T19:30:41Z",
       "side": 1,
       "message": "Need to implement tests and improve the implementation.",
+      "revId": "ab950339e8c4fadd4585b7394b952d6bb128a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ddfad3_2b0f1cea",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T00:48:13Z",
+      "side": 1,
+      "message": "Can we guarantee that this fits into `waiters`? Maybe add an `ASSERT` (or `BUILD_ASSERT` if we can determine based on size of variable returned by `task_get_current()`).",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 40
+      },
       "revId": "ab950339e8c4fadd4585b7394b952d6bb128a4c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
