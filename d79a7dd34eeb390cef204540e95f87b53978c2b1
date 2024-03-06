@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da64ca6_363a36ba",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-06T14:35:45Z",
+      "side": 1,
+      "message": "We need to restructure Kconfig.pd to properly define this config. Or should we remove the guards here and always include the PD_DISCOVERY HC when using a PDC?",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "d79a7dd34eeb390cef204540e95f87b53978c2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bb1b76_cc45ceed",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-06T14:35:45Z",
+      "side": 1,
+      "message": "These functions will be implemented in the next CL.",
+      "range": {
+        "startLine": 2103,
+        "startChar": 1,
+        "endLine": 2103,
+        "endChar": 10
+      },
+      "revId": "d79a7dd34eeb390cef204540e95f87b53978c2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
