@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ce1357_9651cecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-03-06T01:05:59Z",
+      "side": 1,
+      "message": "```\n17:35:38.082: INFO: run: /mnt/host/source/src/platform/ec/zephyr/firmware_builder.py --metrics /tmp/tmp1km53ehq --code-coverage build\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/pirika/board.c:434:40: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        if (get_cbi_fw_config_keyboard() \u003d\u003d 1)\nERROR:root:                                              ^\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 511, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 436, in main\n    opts.func(opts)\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 102, in build\n    subprocess.run(\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\n    ```",
+      "revId": "8ce4f3bdb1c0760e6e1e29077c9e9c1f2032224f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
