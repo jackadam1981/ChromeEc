@@ -267,6 +267,19 @@ static enum tcpc_transmit_complete it8xxx2_tx_data(enum usbpd_port port,
 				/* HW had automatically resent message twice */
 				tx_error_status[port] &=
 					~USBPD_REG_MASK_TX_NO_RESPONSE_STAT;
+				/*
+				 * HW gets PD header data role from Tx buffer.
+				 * If we are DFP and had transmitted SOP'/SOP''
+				 * (cable not response), then need to restore
+				 * from reserved (= 0) to data role DFP (= 1).
+				 * To resolve that HW replies goodcrc UFP data
+				 * role (= 0) to partner initial SOP message.
+				 */
+				if (((type == TCPCI_MSG_SOP_PRIME) ||
+				     (type == TCPCI_MSG_SOP_PRIME_PRIME)) &&
+				     (pd_get_data_role(port) == PD_ROLE_DFP)) {
+					IT83XX_USBPD_MHSR0(port) |= BIT(5);
+				}
 				return TCPC_TX_COMPLETE_FAILED;
 			} else if (evt & TASK_EVENT_TIMER) {
 				CPRINTS("p%d TxErr: Timeout", port);
