@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877797fe_e7ddfad5",
+        "filename": "util/flash_ec",
+        "patchSetId": 9
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-06T23:53:18Z",
+      "side": 1,
+      "message": "Can you move this logic into `servo_ec_hard_reset_or_die`?",
+      "range": {
+        "startLine": 2062,
+        "startChar": 0,
+        "endLine": 2065,
+        "endChar": 0
+      },
+      "revId": "cd3be420a56bd7a8598e5f24f7cb3b326e977ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
