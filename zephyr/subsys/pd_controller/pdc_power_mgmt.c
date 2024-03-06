@@ -89,6 +89,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_CONNECTOR_STATUS,
 	/** CMD_PDC_GET_CABLE_PROPERTY */
 	CMD_PDC_GET_CABLE_PROPERTY,
+	/** CMD_PDC_GET_IDENTITY_DISCOVERY */
+	CMD_PDC_GET_IDENTITY_DISCOVERY,
 
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
@@ -118,6 +120,8 @@ struct cmd_t {
 	enum pdc_cmd_t cmd;
 	/** True if command is pending */
 	bool pending;
+	/** True if command failed to send */
+	bool error;
 };
 
 /**
@@ -243,6 +247,7 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_PDR] = "PDC_SET_PDR",
 	[CMD_PDC_GET_CONNECTOR_STATUS] = "PDC_GET_CONNECTOR_STATUS",
 	[CMD_PDC_GET_CABLE_PROPERTY] = "PDC_GET_CABLE_PROPERTY",
+	[CMD_PDC_GET_IDENTITY_DISCOVERY] = "PDC_GET_IDENTITY_DISCOVERY",
 };
 
 /**
@@ -433,6 +438,8 @@ struct pdc_port_t {
 	bool attached_snk_src_typec_only;
 	/** True if attached device is PD Capable */
 	bool pd_capable;
+	/** PD Port Partner discovery state */
+	uint8_t discovery_state;
 };
 
 /**
@@ -1059,6 +1066,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_GET_CABLE_PROPERTY:
 		rv = pdc_get_cable_property(port->pdc, &port->cable_prop);
 		break;
+	case CMD_PDC_GET_IDENTITY_DISCOVERY:
+		rv = pdc_get_identity_discovery(port->pdc,
+						&port->discovery_state);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -1100,6 +1111,7 @@ static void pdc_send_cmd_start_run(void *obj)
 			/* Could not send command: TODO handle error */
 			LOG_INF("Command (%s) retry timeout",
 				pdc_cmd_names[port->cmd->cmd]);
+			port->cmd->error = true;
 			port->cmd->pending = false;
 			set_pdc_state(port, port->send_cmd_return_state);
 		}
@@ -1131,6 +1143,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 	 */
 	if (port->cmd->cmd == CMD_PDC_RESET) {
 		if (pdc_is_init_done(port->pdc)) {
+			port->cmd->error = false;
 			set_pdc_state(port, port->send_cmd_return_state);
 			return;
 		}
@@ -1163,6 +1176,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 		} else {
 			LOG_ERR("%s resend attempts exceeded!",
 				pdc_cmd_names[port->cmd->cmd]);
+			port->cmd->error = true;
 			set_pdc_state(port, port->send_cmd_return_state);
 			return;
 		}
@@ -1180,6 +1194,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 
 	port->send_cmd.wait_counter++;
 	if (port->send_cmd.wait_counter > WAIT_MAX) {
+		port->cmd->error = true;
 		if (port->cmd->cmd == CMD_PDC_GET_CONNECTOR_STATUS) {
 			/* Can't get connector status. Enter unattached state
 			 * with error flag set, so it can reset the PDC */
@@ -2125,9 +2140,40 @@ struct rmdo pdc_power_mgmt_get_partner_rmdo(int port)
 enum pd_discovery_state
 pdc_power_mgmt_get_identity_discovery(int port, enum tcpci_msg_type type)
 {
-	/* TODO:b/326468310 */
+	enum pdc_cmd_t cmd;
+	int ret;
 
-	return 0;
+	/* Make sure port is Sink connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
+		return PD_DISC_NEEDED;
+	}
+
+	switch (type) {
+	case TCPCI_MSG_SOP:
+		cmd = CMD_PDC_GET_IDENTITY_DISCOVERY;
+		break;
+	case TCPCI_MSG_SOP_PRIME:
+		cmd = CMD_PDC_GET_CABLE_PROPERTY;
+		break;
+	default:
+		return PD_DISC_FAIL;
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, cmd);
+	if (ret) {
+		return PD_DISC_NEEDED;
+	}
+
+	if (cmd == CMD_PDC_GET_IDENTITY_DISCOVERY) {
+		return pdc_data[port]->port.discovery_state ? PD_DISC_COMPLETE :
+							      PD_DISC_FAIL;
+	} else {
+		return (pdc_data[port]->port.cable_prop.cable_type &&
+			pdc_data[port]->port.cable_prop.mode_support) ?
+			       PD_DISC_COMPLETE :
+			       PD_DISC_FAIL;
+	}
 }
 
 void pd_pdc_power_mgmt_set_new_power_request(int port)
