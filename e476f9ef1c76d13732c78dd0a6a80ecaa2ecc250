@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecffd657_0ca925dd",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T23:07:33Z",
+      "side": 1,
+      "message": "Was there a specific reason to re-use `FP_POSITIVE_MATCH_SECRET_BYTES`, other than that it is the correct size? I think it would be clearer if we created a new `#define` specifically for the OTP key size (e.g., `OTP_KEY_SIZE_BYTES`).",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb5f45d_41f8d3d3",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T23:07:33Z",
+      "side": 1,
+      "message": "\"or all 1\u0027s\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c67389_cd610895",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T23:07:33Z",
+      "side": 1,
+      "message": "nit: Add period at the end and a space before asterisk.",
+      "range": {
+        "startLine": 88,
+        "startChar": 66,
+        "endLine": 88,
+        "endChar": 69
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f6bf89_612462a4",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T23:07:33Z",
+      "side": 1,
+      "message": "Let\u0027s invert for readability",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 73
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4ac466_5d9c2edf",
+        "filename": "test/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-06T23:07:33Z",
+      "side": 1,
+      "message": "nit: no need for `else` since `if` statement returns.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
