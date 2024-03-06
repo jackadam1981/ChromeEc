@@ -6,6 +6,7 @@
  */
 
 #include "atomic.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "host_command.h"
 #include "usb_mux.h"
@@ -217,6 +218,10 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 			r_v2->cable_speed = get_tbt_cable_speed(p->port);
 			r_v2->cable_gen = get_tbt_rounded_support(p->port);
 		}
+
+		ccprintf("HC_PD[%d]: ena = %d, role = %d, pol = %d, cc = %d,"
+			 "state = %s\n", p->port, r_v2->enabled, r_v2->role,
+			 r_v2->polarity, r_v2->cc_state, task_state_name);
 
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);

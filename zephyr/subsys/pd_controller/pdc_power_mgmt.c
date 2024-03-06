@@ -2200,10 +2200,12 @@ int pdc_run_get_discovery(int port)
 		return -ERANGE;
 	}
 
-	/* Make sure port is connected */
-	if (!pdc_power_mgmt_is_connected(port)) {
+	/* Make sure port is connected and PD capable */
+	if (!pdc_power_mgmt_is_connected(port) || !pdc_power_mgmt_pd_capable(port)) {
 		return 0;
 	}
+
+	LOG_INF("pdc_run_get_disc: about to send command");
 
 	pdc_data[port]->port.vdo_req.raw_value = 0;
 	pdc_data[port]->port.vdo_req.vdo_origin = VDO_ORIGIN_SOP;
