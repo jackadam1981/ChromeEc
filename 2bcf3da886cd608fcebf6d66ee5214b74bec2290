@@ -94,6 +94,30 @@
       },
       "revId": "2bcf3da886cd608fcebf6d66ee5214b74bec2290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ebadd9_26e39a0b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-06T23:06:26Z",
+      "side": 0,
+      "message": "\u003e Maybe you can explain why \u0027the current PE state is NULL\u0027 is the case.\n\nThis is the control flow when the TC detaches:\n* Attached.SNK exit:\n  * https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_tc_drp_acc_trysrc_sm.c#2764\n  * https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_tc_drp_acc_trysrc_sm.c#1828\n* Unattached.SNK entry\n  * https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_tc_drp_acc_trysrc_sm.c#2205\n  * https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_tc_drp_acc_trysrc_sm.c#735\n* AFAIK, all of that happens before the PE has a chance to run\n* Next time the PE runs: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_pe_drp_sm.c#857\n  * Setting the state to NULL exits the current PE state, triggering the PE code we\u0027re talking about.\n\n\u003e So, how about letting the PE (specifically pe_snk_transition_sink_run) also handle a disconnect event?\n\nI think that having the TC act as a the source of truth for the current limit to be applied would accomplish this, if it\u0027s possible.",
+      "parentUuid": "a6ca337b_7711b92b",
+      "range": {
+        "startLine": 3759,
+        "startChar": 0,
+        "endLine": 3762,
+        "endChar": 0
+      },
+      "revId": "2bcf3da886cd608fcebf6d66ee5214b74bec2290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
