@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5481cb35_de665928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-06T18:08:03Z",
+      "side": 1,
+      "message": "That is a test I\u0027d like to try eventually, but this command is able to put the device **into** ROM code if you send this during a firmware update. So that could be useful for reproducing b/327283953 and making sure our update process can recover from this.",
+      "parentUuid": "d0055131_e3012dc4",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "a1e41c4f178aec98efe5a3618a9b3aecc9c72994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16639f65_6db38ded",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
