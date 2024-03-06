@@ -14,6 +14,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lpc.h"
 #include "power.h"
 #include "system.h"
 #include "timer.h"
@@ -247,30 +248,60 @@ void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
 	}
 
 	/*
-	 * Start a timer to manually reset the AP, in case it's just slow.
+	 * Start a timer to manually reset the AP, in case waking/crashing it
+	 * doesn't successfully recover it.
 	 */
 	hook_call_deferred(&board_handle_hard_sleep_hang_data,
 			   CONFIG_HARD_SLEEP_HANG_TIMEOUT * MSEC);
 
-	/*
-	 * Always send a host event, in case the AP is stuck in FW.
-	 * This will be ignored if the AP is in the OS.
-	 */
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
-
-	if (IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+	if (IS_ENABLED(CONFIG_POWER_SUSPEND_HANG_WAKE_HOST) &&
+	    hang_type == SLEEP_HANG_S0IX_SUSPEND) {
 		/*
-		 * Send |SysRq| signal to generate a kernel panic. If the AP is
-		 * in the OS, this will generate stack traces for all of the
-		 * running CPUs and trigger a reboot. A single |SysRq| restarts
-		 * chrome, while two trigger a kernel panic.
-		 * Otherwise, if the AP is not in the kernel, this will do
-		 * nothing, so the device will continue to be hung until the
-		 * timer expires and sysrq_reboot_timeout() is called to
-		 * reboot the AP.
+		 * Some Intel Big Core boards are expected to fail X% of
+		 * suspend attempts. The EC works around the issue by "waking"
+		 * the AP with a host event (technically, it was never fully
+		 * suspended, hence the EC hang recovery). Once the AP has
+		 * resumed, it will reattempt the suspend because (for example)
+		 * the device is still idle, or the lid is closed, etc. The
+		 * EC's hang detection counters will be reset once the AP
+		 * successfully resumes, losing track of any previously failed
+		 * attempts. Retrying the suspend should work, but is not
+		 * guaranteed, so if the AP continues to fail to suspend, we
+		 * rely on powerd detecting 10 consecutive failed attempts and
+		 * shutting down the AP.
+		 */
+		CPRINTS("Warning: Detected suspend hang! Waking host up!");
+
+		/*
+		 * The S0ix wake mask is not set until the AP asserts the S0ix
+		 * line. Unfortunately, the EC detected a sleep hang (and is
+		 * now handling it) so the line was never asserted and the
+		 * wake mask was never updated. Work around the issue by
+		 * manually setting the wake mask to allow the host event to
+		 * wake the AP.
+		 */
+#ifdef CONFIG_POWER_S0IX
+		host_event_t sleep_wake_mask;
+
+		get_lazy_wake_mask(POWER_S0ix, &sleep_wake_mask);
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
+
+		/* This will be ignored if the AP is in the OS. */
+		host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+#endif
+	} else if (IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+		/*
+		 * If CONFIG_EMULATED_SYSRQ is enabled, send |SysRq| signal to
+		 * generate a kernel panic. If the AP is in the OS, this will
+		 * generate stack traces for all of the running CPUs and
+		 * trigger a reboot. A single |SysRq| restarts chrome, while
+		 * two trigger a kernel panic. However, if the AP is not in the
+		 * kernel, this will do nothing so the device will continue to
+		 * be hung until the hard sleep hang timer expires and the
+		 * forcibly resets the AP.
 		 */
 		CPRINTS("Sending SysRq to trigger AP kernel panic and reboot!");
+
 		host_send_sysrq('x');
 		/*
 		 * Wait a bit so the AP can treat them as separate SysRq
@@ -278,6 +309,13 @@ void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
 		 */
 		usleep(SYSRQ_WAIT_MSEC * MSEC);
 		host_send_sysrq('x');
+	} else {
+		/*
+		 * None of the recovery mechanisms were used, so promote the
+		 * hang to a "hard" hang and handle it now, rather than waiting
+		 * for the hard recovery timeout.
+		 */
+		board_handle_hard_sleep_hang();
 	}
 }
 

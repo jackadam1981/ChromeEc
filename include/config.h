@@ -3796,6 +3796,9 @@
 /* Support detecting failure to enter a sleep state (S0ix/S3) */
 #undef CONFIG_POWER_SLEEP_FAILURE_DETECTION
 
+/* Support waking the host if it fails to suspend */
+#undef CONFIG_POWER_WAKE_HOST_DURING_SUSPEND_FAILURE_RECOVERY
+
 /*
  * Allow the host to self-report its sleep state, in case there is some delay
  * between the host beginning to enter the sleep state and power signals
