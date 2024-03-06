@@ -2186,6 +2186,7 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	uint8_t ucsi_command = control->command;
 	const struct device *dev;
 	uint8_t port_num = 0;
+	int rv = 0;
 
 	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
 		LOG_ERR("Invalid command 0x%x", control->command);
@@ -2218,13 +2219,23 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 
 	dev = pdc_data[port_num]->dev;
 	switch (ucsi_command) {
+	case UCSI_CMD_PPM_RESET:
+		rts54_reset(dev);
+		break;
 	case UCSI_CMD_CONNECTOR_RESET:
-		pdc_reset(dev);
+		union connector_reset_t cr;
+		cr.connector_number = 0;
+		cr.reset_type = 0;
+		rts54_connector_reset(dev, cr);
 		break;
 	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
 		union notification_enable_t bits;
 		platform_memcpy(&bits, control->command_specific, sizeof(bits));
 		rts54_set_notification_enable(dev, bits, 0);
+		break;
+	case UCSI_CMD_GET_CAPABILITY:
+		rv = rts54_get_capability(dev,
+					  (struct capability_t *)lpm_data_out);
 		break;
 	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
 		//pdc_get_connector_capability(dev, lpm_data_out);
@@ -2234,7 +2245,7 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 		break;
 	}
 
-	return 0;
+	return rv;
 }
 
 static void rts5453_ucsi_cleanup(struct ucsi_pd_driver *driver)
