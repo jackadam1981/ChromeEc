@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d45b438_4894b3a0",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-06T18:50:31Z",
+      "side": 1,
+      "message": "Non-blocking: would it be cleaner to do a `shift` after each arg, instead of mixing use of `$1`, `$2`, and `shift`?",
+      "range": {
+        "startLine": 1847,
+        "startChar": 0,
+        "endLine": 1847,
+        "endChar": 43
+      },
+      "revId": "50918e10a9123e6944fbc417ed1f019817011921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
