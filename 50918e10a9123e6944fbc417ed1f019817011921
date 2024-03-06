@@ -22,6 +22,30 @@
       },
       "revId": "50918e10a9123e6944fbc417ed1f019817011921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c436c29_b321abeb",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-03-06T18:58:09Z",
+      "side": 1,
+      "message": "Yes, probably. That would make it easier to add a new arg without making a mistake.",
+      "parentUuid": "8d45b438_4894b3a0",
+      "range": {
+        "startLine": 1847,
+        "startChar": 0,
+        "endLine": 1847,
+        "endChar": 43
+      },
+      "revId": "50918e10a9123e6944fbc417ed1f019817011921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
