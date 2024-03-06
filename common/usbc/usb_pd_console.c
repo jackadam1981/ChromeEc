@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "board.h"
 #include "common.h"
 #include "console.h"
 #include "usb_common.h"
@@ -81,7 +82,7 @@ static
 	if (argc < 3)
 		return EC_ERROR_PARAM_COUNT;
 
-	if (*e || port >= CONFIG_USB_PD_PORT_MAX_COUNT)
+	if (*e || port >= board_get_usb_pd_port_count())
 		return EC_ERROR_PARAM2;
 
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE)) {
