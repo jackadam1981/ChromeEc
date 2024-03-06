@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0055131_e3012dc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-06T00:23:45Z",
+      "side": 1,
+      "message": "Could you add the reason this command is needed to the commit message? Also, has this been verified to recover a PDC that\u0027s stuck in ROM code?",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "a1e41c4f178aec98efe5a3618a9b3aecc9c72994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16639f65_6db38ded",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
