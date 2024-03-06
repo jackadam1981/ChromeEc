@@ -2097,3 +2097,18 @@ int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type)
 
 	return rev;
 }
+
+uint16_t pdc_power_mgmt_get_identity_vid(int port)
+{
+	return 0;
+}
+
+uint16_t pdc_power_mgmt_get_identity_pid(int port)
+{
+	return 0;
+}
+
+uint8_t pdc_power_mgmt_get_product_type(int port)
+{
+	return 0;
+}

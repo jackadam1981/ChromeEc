@@ -295,4 +295,30 @@ int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
  */
 int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type);
 
+/**
+ * brief Return the VID of the USB PD accessory connected to a specified port
+ *
+ * @param port USB-C port number
+ *
+ * @retval VID of USB PD accessory or 0
+ */
+uint16_t pdc_power_mgmt_get_identity_vid(int port);
+
+/**
+ * brief Return the PID of the USB PD accessory connected to a specified port
+ *
+ * @param port USB-C port number
+ *
+ * @retval PID of USB PD accessory or 0
+ */
+uint16_t pdc_power_mgmt_get_identity_pid(int port);
+
+/**
+ * brief Return the product type connected to a specified port
+ *
+ * @param port USB-C port number
+ *
+ * @retval Product type of USB PD accessory or 0
+ */
+uint8_t pdc_power_mgmt_get_product_type(int port);
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
