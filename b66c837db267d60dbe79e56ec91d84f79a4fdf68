@@ -16,6 +16,23 @@
       "message": "There is a functional dependence on https://crrev.com/i/6991191, but compilation seems to succeed with one or the other applied in any order.",
       "revId": "b66c837db267d60dbe79e56ec91d84f79a4fdf68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a2f9ff_5337032b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-06T19:02:04Z",
+      "side": 1,
+      "message": "Verified this is functional on Chromebook.",
+      "revId": "b66c837db267d60dbe79e56ec91d84f79a4fdf68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
