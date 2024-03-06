@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f17bf9_39fd2654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-06T18:43:45Z",
+      "side": 1,
+      "message": "There is a functional dependence on https://crrev.com/i/6991191, but compilation seems to succeed with one or the other applied in any order.",
+      "revId": "b66c837db267d60dbe79e56ec91d84f79a4fdf68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
