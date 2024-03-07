@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80043f0_bf40fe54",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-07T19:20:18Z",
+      "side": 1,
+      "message": "The existing state variables that are implicit parameters to commands say so in the comments. If this one is too, please list the commands it affects.",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dce7aef_f6b88adf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-07T19:20:18Z",
+      "side": 1,
+      "message": "Is this supposed to be in the next case?",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408dc180_cc27186e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-07T19:20:18Z",
+      "side": 1,
+      "message": "If it\u0027s not too late to change this interface, it seems a little safer to have one API function that returns the count and has the caps as an output param. That would avoid the possibility of a race on the caller side, and it would make it more obvious to the caller that they need to check the count.",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
