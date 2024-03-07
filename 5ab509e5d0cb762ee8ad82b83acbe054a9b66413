@@ -39,6 +39,30 @@
       },
       "revId": "5ab509e5d0cb762ee8ad82b83acbe054a9b66413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffb0ac5_f8066501",
+        "filename": "driver/fingerprint/fpsensor_matcher.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T19:37:40Z",
+      "side": 1,
+      "message": "Hmmm. I assumed this is slightly different, since we *can* compile druid for emu/host, whereas we *can\u0027t* use the private pre-compiled arm binaries on host.\n\nThat being said, I don\u0027t think we are testing any druid-wrapper stuff on host, but there isn\u0027t any serious reason why we can\u0027t. Plus, these are just setting the correct FP_ALGORITHM_TEMPLATE_SIZE and FP_MAX_FINGER_COUNT for druid.\n\n---\n\nI don\u0027t see any issues with leaving these active for EMU/host tests. Do you?",
+      "parentUuid": "2bc2c56e_a56f4ec6",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "5ab509e5d0cb762ee8ad82b83acbe054a9b66413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
