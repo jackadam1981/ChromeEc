@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4f9178_bac18640",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-07T16:56:54Z",
+      "side": 1,
+      "message": "Your mask is 0x3, which is only bits 0 and 1.",
+      "range": {
+        "startLine": 1244,
+        "startChar": 48,
+        "endLine": 1244,
+        "endChar": 53
+      },
+      "revId": "df6c6f695723215d62db03011b01a49fa0048e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9189288f_53818bdf",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-07T16:56:54Z",
+      "side": 1,
+      "message": "The TCPMv2 implementation passes in an SOP type.  How will that be handled?\n\nThe function prototype also needs a doxygen comment.",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 70
+      },
+      "revId": "df6c6f695723215d62db03011b01a49fa0048e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
