@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227df487_fd9a7839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-07T12:28:57Z",
+      "side": 1,
+      "message": "This functionality seems to only work when CONFIG_USBPD_POLL_PDC is enabled, so it should be guarded by the config, or maybe add hook that\u0027ll delay a short while before setting the mux.",
+      "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4b66ef_4b55a2a2",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-07T12:28:57Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
