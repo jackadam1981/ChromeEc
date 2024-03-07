@@ -159,6 +159,13 @@ config PLATFORM_EC_BATTERY_CUTOFF_TIMEOUT_MSEC
 	  After the EC executes battery cutoff, it'll wait for this amount of
 	  time in msec before deciding the cutoff failed.
 
+config PLATFORM_EC_BATTERY_CUTOFF_NO_DIS_PIN
+	bool "Support key combination cutoff for no disable pin battery"
+	default y
+	help
+	  Add a soft cut off way to support volup(refresh) + unplug ac for no disable
+	  pin battery.
+
 config PLATFORM_EC_BATTERY_FUEL_GAUGE
 	bool "Board supplies battery info"
 	help
