@@ -16,6 +16,23 @@
       "message": "Test was added in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5334939.",
       "revId": "d12af78017c80686de45b3b24c579892fa00bf77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbd414c_d70bc937",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-03-07T09:29:57Z",
+      "side": 1,
+      "message": "ERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/test/nissa/src/glassway.c:447:50: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        glassway_cached_sub_board \u003d GLASSWAY_SB_UNKNOWN;\nERROR:root:",
+      "revId": "d12af78017c80686de45b3b24c579892fa00bf77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
