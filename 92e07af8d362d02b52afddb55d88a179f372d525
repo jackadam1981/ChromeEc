@@ -46,6 +46,30 @@
       },
       "revId": "92e07af8d362d02b52afddb55d88a179f372d525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a456386c_c51e848a",
+        "filename": "board/bloonchipper-druid/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-07T19:26:39Z",
+      "side": 1,
+      "message": "\u003e started adding/annotating them in private/private_config.h.\n\nOh, that\u0027s fine. I haven\u0027t synced private, so missed that.",
+      "parentUuid": "e721f1f8_3d287c3a",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "92e07af8d362d02b52afddb55d88a179f372d525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
