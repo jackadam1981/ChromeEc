@@ -71,4 +71,16 @@ __override uint8_t get_dp_pin_mode(int port)
 	/* To support EC_CMD_USB_PD_CONTROL  */
 	return 0;
 }
+void resume_pd_intel_altmode_task(void)
+{
+	return;
+}
+void suspend_pd_intel_altmode_task(void)
+{
+	return;
+}
+bool is_pd_intel_altmode_task_suspended(void)
+{
+	return true;
+}
 #endif
