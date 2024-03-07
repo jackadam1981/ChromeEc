@@ -45,6 +45,30 @@
       },
       "revId": "7805e4b560d314da27d0c1da43d801a63b2584b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4c56b9_6c3017cd",
+        "filename": "baseboard/helipilot/base_gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-07T03:12:45Z",
+      "side": 1,
+      "message": "This is also part of the SPIP connection to the FP sensor. Since the other related I/O configurations are moving, we should probably move this too",
+      "parentUuid": "b84aa377_0e79a1c2",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "7805e4b560d314da27d0c1da43d801a63b2584b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
