@@ -436,6 +436,7 @@ static void battery_on_ac_change(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, battery_on_ac_change, HOOK_PRIO_DEFAULT);
 
+#ifdef CONFIG_BATTERY_CUTOFF_NO_DIS_PIN
 #ifdef CONFIG_CHARGE_MANAGER
 static void power_supply_change(void)
 {
@@ -483,6 +484,7 @@ static void power_supply_change(void)
 			   CONFIG_BATTERY_CUTOFF_DELAY_US);
 }
 DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, power_supply_change, HOOK_PRIO_DEFAULT);
+#endif
 #endif
 
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
