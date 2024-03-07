@@ -22,6 +22,30 @@
       },
       "revId": "92e07af8d362d02b52afddb55d88a179f372d525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e721f1f8_3d287c3a",
+        "filename": "board/bloonchipper-druid/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T19:24:45Z",
+      "side": 1,
+      "message": "I was trying to keep these private and started adding/annotating them in private/private_config.h. I\u0027m more than willing to add/annotate in public config.h if you think that\u0027s okay.",
+      "parentUuid": "f198f177_f116760c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "92e07af8d362d02b52afddb55d88a179f372d525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
