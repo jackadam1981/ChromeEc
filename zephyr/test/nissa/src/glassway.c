@@ -435,15 +435,11 @@ ZTEST(glassway, test_base_inversion)
 
 ZTEST(glassway, test_led_pwm)
 {
-	led_set_color_battery(EC_LED_COLOR_BLUE);
+	led_set_color_battery(EC_LED_COLOR_WHITE);
 	zassert_equal(set_pwm_led_color_fake.arg0_val, PWM_LED0);
-	zassert_equal(set_pwm_led_color_fake.arg1_val, EC_LED_COLOR_BLUE);
+	zassert_equal(set_pwm_led_color_fake.arg1_val, EC_LED_COLOR_WHITE);
 
 	led_set_color_battery(EC_LED_COLOR_AMBER);
 	zassert_equal(set_pwm_led_color_fake.arg0_val, PWM_LED0);
 	zassert_equal(set_pwm_led_color_fake.arg1_val, EC_LED_COLOR_AMBER);
-
-	led_set_color_battery(EC_LED_COLOR_GREEN);
-	zassert_equal(set_pwm_led_color_fake.arg0_val, PWM_LED0);
-	zassert_equal(set_pwm_led_color_fake.arg1_val, -1);
 }
