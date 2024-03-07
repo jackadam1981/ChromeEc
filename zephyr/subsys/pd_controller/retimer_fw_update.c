@@ -332,6 +332,16 @@ void usb_retimer_fw_update_process_op(int port, int op)
 			k_work_init(&enter_workq_info.retimer_update_workq,
 				    enter_retimer_fw_update);
 			k_work_submit(&enter_workq_info.retimer_update_workq);
+			/*
+			 * PMC handles the PD I2C DATA.
+			 * Hence force the mux mode to TBT mode as retimer
+			 */
+			if (!IS_ENABLED(CONFIG_USBC_INTEL_ALTMODE) &&
+			    IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER)) {
+				usb_mux_set(port, USB_PD_MUX_TBT_COMPAT_ENABLED,
+					    USB_SWITCH_CONNECT,
+					    pd_get_polarity(port));
+			}
 		} else {
 			atomic_set_bit(&fw_update_status,
 				       USB_PD_RETIMER_FW_UPDATE_ERROR);
