@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33724b8f_09746556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-07T19:26:16Z",
+      "side": 1,
+      "message": "The charge manager manages the limits separately (i.e. CHARGE_SUPPLIER_PD v.s. CHARGE_SUPPLIER_TYPEC). So, I think TC and PE should individually try to keep each of the limits in sync with each of their SM states.\n\nAs long as there is no bypass route where a current limit is set like this bug, I think we\u0027re fine. (And I don\u0027t see other such case in usb_pe_drp_sm.c.)",
+      "parentUuid": "45b411e0_326baf4c",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c117ccae_88180247",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
