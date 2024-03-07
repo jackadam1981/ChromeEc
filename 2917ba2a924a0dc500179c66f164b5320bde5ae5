@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bca8620_ffe2e88b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-07T19:44:29Z",
+      "side": 1,
+      "message": "Are you saying that the TC should stop calling `pd_set_input_current_limit` and `charge_manager_set_ceil` and let the PE do it when it shuts down?",
+      "parentUuid": "33724b8f_09746556",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c117ccae_88180247",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
