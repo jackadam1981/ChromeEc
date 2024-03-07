@@ -22,6 +22,30 @@
       },
       "revId": "ba3a1a59f698f7de16ddbd568fd7599698f8a311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada6cbd1_eb53e1d9",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-03-07T21:39:35Z",
+      "side": 1,
+      "message": "I created this CL, because without it HyperDebug could hit watchdog reset in case of bus inteference, something which could disrupt test execution in confusing ways.  With this CL, HyperDebug firmware will survive and report what it saw on the bus.\n\nI do not want to spend too much effort on improving something which is an error in the test scripts.  But I see that I can make HyperDebug send all high bits on the SDA line going forward, in case it detected something else driving the bus.",
+      "parentUuid": "3d9e4153_29f9b366",
+      "range": {
+        "startLine": 597,
+        "startChar": 6,
+        "endLine": 597,
+        "endChar": 25
+      },
+      "revId": "ba3a1a59f698f7de16ddbd568fd7599698f8a311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
