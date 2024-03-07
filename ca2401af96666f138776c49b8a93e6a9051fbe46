@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d9be0b_734e06ec",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-07T13:11:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37801899_6f9b88a3",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "ca2401af96666f138776c49b8a93e6a9051fbe46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd280b8f_f0965189",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-06T00:28:29Z",
       "side": 1,
       "message": "In `newlib/libc/misc/lock.c` it says:\n\n\u003e For multi-threaded applications the target platform is required to provide\nan implementation for @strong{all} these routines and static locks.  If some\nroutines or static locks are missing, the link will fail with doubly defined\nsymbols.\n\nWould you be able to do a quick test to see if that actually works? e.g., remove one of the locks and see if it fails to link. I just want to make sure if we ever update newlib and we don\u0027t keep this in sync we\u0027ll get an obvious build failure rather than a very subtle bug.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 47
+      },
+      "revId": "ca2401af96666f138776c49b8a93e6a9051fbe46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5234a615_f7ac5ed2",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-07T13:11:42Z",
+      "side": 1,
+      "message": "It fails with lots of duplicate symbol errors e.g.:\n```\nld.lld: error: duplicate symbol: __retarget_lock_init\n\u003e\u003e\u003e defined in build/bloonchipper/RW/libc/syscalls.o\n\u003e\u003e\u003e defined in /usr/armv7m-cros-eabi/lib/libc.a(lib_a-lock.o)\n```",
+      "parentUuid": "cd280b8f_f0965189",
       "range": {
         "startLine": 140,
         "startChar": 0,
