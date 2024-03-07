@@ -40,6 +40,30 @@
       },
       "revId": "4f5fa27a07d4ae4614501a6d8009bab198f13a80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9def1231_650cbdb4",
+        "filename": "baseboard/helipilot/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T00:47:28Z",
+      "side": 1,
+      "message": "Hmm. The relative path seems to be correct. We use this same relative OWNERS inheritance in board/dartmonkey/OWNERS and the same for bloonchipper.\n\nAre you seeing an issue with one of the firmware branches? Is there a way to reproduce the issue?",
+      "parentUuid": "df3c913a_39b2fb04",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "4f5fa27a07d4ae4614501a6d8009bab198f13a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
