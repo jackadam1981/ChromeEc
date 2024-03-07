@@ -52,6 +52,24 @@
       "parentUuid": "86b50ea2_144b01c4",
       "revId": "b5523aad134f43692252428cf8733a6d4124e03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec457a63_310e980e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T18:50:54Z",
+      "side": 1,
+      "message": "Alright, I added a public build path for the DRUID configs.\n\nhttps://crrev.com/c/5353787",
+      "parentUuid": "a6957926_052f2c36",
+      "revId": "b5523aad134f43692252428cf8733a6d4124e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
