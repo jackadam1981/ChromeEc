@@ -69,6 +69,24 @@
       "parentUuid": "343780e4_8bcdc843",
       "revId": "4b927408d3e32e34a9923758eb637e5f2e19f88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96092085_9feda472",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3777,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-07T20:43:51Z",
+      "side": 1,
+      "message": "Please scratch this. This doesn\u0027t work, either, because it\u0027s still PE_SNK_TRANSITION_SINK in either route.",
+      "parentUuid": "44502b88_fc78ca7a",
+      "revId": "4b927408d3e32e34a9923758eb637e5f2e19f88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
