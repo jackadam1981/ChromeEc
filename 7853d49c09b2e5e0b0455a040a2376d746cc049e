@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afab1acd_1f7dde61",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-03-07T22:34:20Z",
+      "side": 1,
+      "message": "You don\u0027t have to memorize this. We have an API `typec_get_active_select_rp` in `usb_tc_drp_acc_trysrc_sm.c`, and you can expose it and use this API.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "7853d49c09b2e5e0b0455a040a2376d746cc049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
