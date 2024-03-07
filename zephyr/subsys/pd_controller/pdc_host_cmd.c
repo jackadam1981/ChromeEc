@@ -71,4 +71,14 @@ uint8_t get_pd_control_flags(int port)
 	/* To support EC_CMD_USB_PD_CONTROL  */
 	return 0;
 }
+void resume_pd_intel_altmode_task(void)
+{
+}
+void suspend_pd_intel_altmode_task(void)
+{
+}
+bool is_pd_intel_altmode_task_suspended(void)
+{
+	return true;
+}
 #endif
