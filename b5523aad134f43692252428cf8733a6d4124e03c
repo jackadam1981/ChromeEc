@@ -34,6 +34,24 @@
       "parentUuid": "bcfcbd73_85d330f3",
       "revId": "b5523aad134f43692252428cf8733a6d4124e03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6957926_052f2c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T04:20:06Z",
+      "side": 1,
+      "message": "Oops. This is failing for the public ec builder, which intentionally doesn\u0027t have access to private repos. This change needs to be fixed to have a safe/reasonable plan for handling public-only builds.",
+      "parentUuid": "86b50ea2_144b01c4",
+      "revId": "b5523aad134f43692252428cf8733a6d4124e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
