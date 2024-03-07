@@ -70,3 +70,21 @@ static int init_suspend_resume(void)
 	return 0;
 }
 SYS_INIT(init_suspend_resume, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+
+#if !defined(CONFIG_USBC_INTEL_ALTMODE) && \
+	defined(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER)
+/*
+ * EC do not handle PD DATA path Hence Therefore, stub
+ * APIs are provided to support retime firmware update flows.
+ */
+void resume_pd_intel_altmode_task(void)
+{
+}
+void suspend_pd_intel_altmode_task(void)
+{
+}
+bool is_pd_intel_altmode_task_suspended(void)
+{
+	return true;
+}
+#endif
