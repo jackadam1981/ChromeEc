@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9363c682_5ad4fb86",
+        "filename": "baseboard/helipilot/base_gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-07T00:26:25Z",
+      "side": 1,
+      "message": "I think this one needs to be moved as well since the comment says it\u0027s SPI to the FP sensor.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 46
+      },
+      "revId": "7805e4b560d314da27d0c1da43d801a63b2584b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b84aa377_0e79a1c2",
+        "filename": "baseboard/helipilot/base_gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-07T00:26:25Z",
+      "side": 1,
+      "message": "@davidmcross@google.com do you know what this one is offhand?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "7805e4b560d314da27d0c1da43d801a63b2584b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
