@@ -118,6 +118,30 @@
       },
       "revId": "2bcf3da886cd608fcebf6d66ee5214b74bec2290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c00c04_d8386cea",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3762,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-07T18:42:58Z",
+      "side": 0,
+      "message": "I now agree patchset 2 (with charge_manager_set_ceil moved) will fix the race issue. Thanks for the explanation.\n\n--- \u003e8 ---\n\nIIUC, get_state_pe(port) would return SNK_TRANSITION_SINK here whether the exit function is called by pe_snk_transition_sink_run ([code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d3736)) or by pe_run ([code](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_pe_drp_sm.c#857)) because when set_state calls the exit function, it hasn\u0027t updated ctx-\u003ecurrent ([code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_sm.c;l\u003d148)).\n\nWith patchset 2, pd_set_input_current_limit will be called only when PS_RDY is received. If AC is unplugged around this time, TC will run only after PE reaches SNK_READY. Thus, current limit won\u0027t be overwritten by PE, exiting SNK_READY.",
+      "parentUuid": "d1ebadd9_26e39a0b",
+      "range": {
+        "startLine": 3759,
+        "startChar": 0,
+        "endLine": 3762,
+        "endChar": 0
+      },
+      "revId": "2bcf3da886cd608fcebf6d66ee5214b74bec2290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
