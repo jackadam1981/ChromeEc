@@ -48,7 +48,7 @@
 #define FP_SENSOR_IMAGE_OFFSET (0)
 #endif
 
-#ifdef CONFIG_LIB_DRUID_WRAPPER
+#if defined(CONFIG_LIB_DRUID_WRAPPER) && defined(HAVE_PRIVATE)
 #include "mcu/primitives/templates.h"
 
 #undef FP_ALGORITHM_TEMPLATE_SIZE
@@ -57,6 +57,6 @@
 #undef FP_MAX_FINGER_COUNT
 #define FP_MAX_FINGER_COUNT 2
 
-#endif /* CONFIG_LIB_DRUID_WRAPPER */
+#endif /* CONFIG_LIB_DRUID_WRAPPER && HAVE_PRIVATE */
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_MATCHER_H_ */
