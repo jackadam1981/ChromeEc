@@ -25,3 +25,7 @@ config HW_TEST_FLASH_PHYSICAL
 config HW_TEST_FLASH_WRITE_PROTECT
 	bool "Flash write protect test"
 	select ZTEST
+
+config HW_TEST_FPSENSOR
+	bool "FP sensor test"
+	select ZTEST

@@ -33,3 +33,8 @@ tests:
     - CONFIG_HW_TEST_FLASH_WRITE_PROTECT=y
     extra_conf_files:
     - prj_hw_tests.conf
+  fpsensor:
+    extra_configs:
+    - CONFIG_HW_TEST_FPSENSOR=y
+    extra_conf_files:
+    - prj_hw_tests.conf
