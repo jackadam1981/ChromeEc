@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7700fd4c_4bf8d350",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-07T05:07:58Z",
+      "side": 1,
+      "message": "It seemed like the most appropriate #define and was used in the fpsensor_crypto code, updated to OTP_KEY_SIZE_BYTES. I had to use #define rather than const uint32_t \u003d to avoid a compilation error:\n\"variable length array folded to constant array as an extension [-Werror,-Wgnu-folding-constant]\n   80 |         uint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES] \u003d { 0 };\"",
+      "parentUuid": "ecffd657_0ca925dd",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fb5f45d_41f8d3d3",
@@ -60,6 +84,54 @@
       "writtenOn": "2024-03-06T23:07:33Z",
       "side": 1,
       "message": "nit: Add period at the end and a space before asterisk.",
+      "range": {
+        "startLine": 88,
+        "startChar": 66,
+        "endLine": 88,
+        "endChar": 69
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c39cb5_95ef1d4b",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-07T05:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fb5f45d_41f8d3d3",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3566950b_73c05f46",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-07T05:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89c67389_cd610895",
       "range": {
         "startLine": 88,
         "startChar": 66,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66c0398_19970732",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-07T05:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d09b873_2a8a4e86",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 73
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c4ac466_5d9c2edf",
@@ -130,6 +226,30 @@
       "writtenOn": "2024-03-06T23:07:33Z",
       "side": 1,
       "message": "nit: no need for `else` since `if` statement returns.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "e476f9ef1c76d13732c78dd0a6a80ecaa2ecc250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4272707_96496422",
+        "filename": "test/otp_key.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-07T05:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4ac466_5d9c2edf",
       "range": {
         "startLine": 47,
         "startChar": 1,
