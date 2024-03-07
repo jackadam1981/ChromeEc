@@ -94,6 +94,30 @@
       },
       "revId": "92e07af8d362d02b52afddb55d88a179f372d525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8391e78b_307d5e3a",
+        "filename": "board/bloonchipper-druid/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T20:29:48Z",
+      "side": 1,
+      "message": "Fixed in https://crrev.com/i/7043882.",
+      "parentUuid": "24489774_39f7cd5a",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "92e07af8d362d02b52afddb55d88a179f372d525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
