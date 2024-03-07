@@ -16,6 +16,24 @@
       "message": "Ohhh fun. Looks like this build somehow doesn\u0027t have access to druid\u0027s private repo.\n\n```\nIn file included from common/fpsensor/fpsensor.cc:39:\nIn file included from include/fpsensor/fpsensor_state.h:15:\ndriver/fingerprint/fpsensor_matcher.h:52:10: fatal error: \u0027mcu/primitives/templates.h\u0027 file not found\n   52 | #include \"mcu/primitives/templates.h\"\n      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  CC      RW/baseboard/grunt/baseboard.o\n  CC      RW/common/usbc_ocp.o\n1 error generated.\n  CC      RW/common/backlight_lid.o\nmake[2]: *** [Makefile.rules:652: build/bloonchipper-druid/RW/common/fpsensor/fpsensor.o] Error 1\nmake[1]: *** [Makefile.rules:306: proj-bloonchipper-druid] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n```",
       "revId": "b5523aad134f43692252428cf8733a6d4124e03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b50ea2_144b01c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T04:08:57Z",
+      "side": 1,
+      "message": "Opening as unresolved.",
+      "parentUuid": "bcfcbd73_85d330f3",
+      "revId": "b5523aad134f43692252428cf8733a6d4124e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
