@@ -181,7 +181,9 @@ static void enter_retimer_fw_update(struct k_work *work_item)
 	if (val != 0)
 		LOG_ERR("Enter Retimer firmware update mode failed");
 
+#if defined(CONFIG_PLATFORM_USB_PDC_PMC_ALTMODE_DEBUG)
 	resume_pd_intel_altmode_task();
+#endif
 }
 
 static void exit_retimer_fw_update(struct k_work *work_item)
@@ -200,8 +202,10 @@ static void exit_retimer_fw_update(struct k_work *work_item)
 	atomic_clear_bit(&fw_update_status, USB_PD_RETIMER_FW_UPDATE_LTD_RUN);
 	atomic_clear_bit(&fw_update_status, USB_PD_RETIMER_FW_UPDATE_RUN);
 
+#if defined(CONFIG_PLATFORM_USB_PDC_PMC_ALTMODE_DEBUG)
 	/* Resume PD altmode task */
 	resume_pd_intel_altmode_task();
+#endif
 }
 
 int usb_retimer_fw_update_get_result(void)
@@ -232,9 +236,13 @@ int usb_retimer_fw_update_get_result(void)
 			last_result = USB_RETIMER_FW_UPDATE_INVALID_MUX;
 		break;
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
+#if defined(CONFIG_PLATFORM_USB_PDC_PMC_ALTMODE_DEBUG)
 		last_result = is_pd_intel_altmode_task_suspended() ?
 				      0 :
 				      USB_RETIMER_FW_UPDATE_INVALID_MUX;
+#else
+		last_result = 0;
+#endif
 		break;
 	case USB_RETIMER_FW_UPDATE_SET_USB:
 		last_result =
@@ -301,8 +309,10 @@ void usb_retimer_fw_update_process_op(int port, int op)
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
 		if (retimer_state[port] == RETIMER_ONLINE) {
 			retimer_state[port] = RETIMER_OFFLINE;
+#if defined(CONFIG_PLATFORM_USB_PDC_PMC_ALTMODE_DEBUG)
 			/* Suspend PD altmode task to ignore altmode events */
 			suspend_pd_intel_altmode_task();
+#endif
 		} else {
 			atomic_set_bit(&fw_update_status,
 				       USB_PD_RETIMER_FW_UPDATE_ERROR);
@@ -340,8 +350,10 @@ void usb_retimer_fw_update_process_op(int port, int op)
 	case USB_RETIMER_FW_UPDATE_DISCONNECT:
 		if (retimer_state[port] == RETIMER_OFFLINE) {
 			retimer_state[port] = RETIMER_ONLINE_REQUESTED;
+#if defined(CONFIG_PLATFORM_USB_PDC_PMC_ALTMODE_DEBUG)
 			/* Suspend PD altmode task to ignore altmode events */
 			suspend_pd_intel_altmode_task();
+#endif
 			usb_mux_set(port, USB_PD_MUX_NONE,
 				    USB_SWITCH_DISCONNECT,
 				    pd_get_polarity(port));
