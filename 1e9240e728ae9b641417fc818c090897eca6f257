@@ -22,6 +22,30 @@
       },
       "revId": "1e9240e728ae9b641417fc818c090897eca6f257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03f2652_33c3b2d4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-07T13:17:30Z",
+      "side": 0,
+      "message": "This is the larger change in the CL, so I changed the commit message.",
+      "parentUuid": "0ce75b2b_57a7a9e8",
+      "range": {
+        "startLine": 782,
+        "startChar": 4,
+        "endLine": 782,
+        "endChar": 8
+      },
+      "revId": "1e9240e728ae9b641417fc818c090897eca6f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
