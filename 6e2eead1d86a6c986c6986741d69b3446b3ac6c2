@@ -22,6 +22,30 @@
       },
       "revId": "6e2eead1d86a6c986c6986741d69b3446b3ac6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcf7c9a_c632f574",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-07T20:17:00Z",
+      "side": 1,
+      "message": "\u003e On the host, we do want to test the builtins\n\n[USE_BUILTIN_STDLIB is 0](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.toolchain;l\u003d57-59;drc\u003d30b151d172fe111e1c19a55787b6c9cb8c504946) for `host`, so `host` is compiling `libc/syscalls.c` which is wrong, because host doesn\u0027t use newlib.\n\nThe test uses [nice hack](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/stdlib.c;l\u003d19-23) to check it 😊",
+      "parentUuid": "2e4c7353_a06015c6",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 21
+      },
+      "revId": "6e2eead1d86a6c986c6986741d69b3446b3ac6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
