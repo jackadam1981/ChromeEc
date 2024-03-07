@@ -63,6 +63,30 @@
       },
       "revId": "5ab509e5d0cb762ee8ad82b83acbe054a9b66413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb5e1fb_d3f9163b",
+        "filename": "driver/fingerprint/fpsensor_matcher.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-07T19:39:41Z",
+      "side": 1,
+      "message": "Ohhhh, I guess we might not want to override our default of `0` and `5` above, just in case some public host test relied on that.",
+      "parentUuid": "8ffb0ac5_f8066501",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "5ab509e5d0cb762ee8ad82b83acbe054a9b66413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
