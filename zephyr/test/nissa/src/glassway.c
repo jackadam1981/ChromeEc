@@ -36,7 +36,7 @@ void form_factor_init(void);
 FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
 FAKE_VOID_FUNC(fan_set_count, int);
-FAKE_VOID_FUNC(set_pwm_led_color, enum pwm_led_id, int);
+FAKE_VOID_FUNC(led_set_color_battery, enum ec_led_colors);
 FAKE_VALUE_FUNC(int, raa489000_enable_asgate, int, bool);
 FAKE_VALUE_FUNC(int, raa489000_set_output_current, int, enum tcpc_rp_value);
 FAKE_VOID_FUNC(raa489000_hibernate, int, bool);
@@ -433,17 +433,11 @@ ZTEST(glassway, test_base_inversion)
 		"inverted orientation should use the inverted rotation matrix");
 }
 
-ZTEST(glassway, test_led_pwm)
+ZTEST(glassway, test_led)
 {
-	led_set_color_battery(EC_LED_COLOR_BLUE);
-	zassert_equal(set_pwm_led_color_fake.arg0_val, PWM_LED0);
-	zassert_equal(set_pwm_led_color_fake.arg1_val, EC_LED_COLOR_BLUE);
+	led_set_color_battery(EC_LED_COLOR_WHITE);
+	zassert_equal(led_set_color_battery_fake.arg0_val, EC_LED_COLOR_WHITE);
 
 	led_set_color_battery(EC_LED_COLOR_AMBER);
-	zassert_equal(set_pwm_led_color_fake.arg0_val, PWM_LED0);
-	zassert_equal(set_pwm_led_color_fake.arg1_val, EC_LED_COLOR_AMBER);
-
-	led_set_color_battery(EC_LED_COLOR_GREEN);
-	zassert_equal(set_pwm_led_color_fake.arg0_val, PWM_LED0);
-	zassert_equal(set_pwm_led_color_fake.arg1_val, -1);
+	zassert_equal(led_set_color_battery_fake.arg0_val, EC_LED_COLOR_AMBER);
 }
