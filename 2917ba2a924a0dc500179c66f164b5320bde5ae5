@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94692eb6_8cff9bc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-07T20:34:06Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I meant. TC calling pd_set_input_current_limit doesn\u0027t seem right and may cause another race issue. All TC is supposed to do is to disable PD (tc_enable_pd(port, 0)) and let PE, in the next run, reset the ceiling and the limit. As you hinted, [code](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_pe_drp_sm.c#857) seems like a candidate location.",
+      "parentUuid": "8bca8620_ffe2e88b",
+      "revId": "2917ba2a924a0dc500179c66f164b5320bde5ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c117ccae_88180247",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2

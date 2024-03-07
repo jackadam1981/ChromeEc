@@ -51,6 +51,24 @@
       "parentUuid": "219d93b9_d0f1bd61",
       "revId": "4b927408d3e32e34a9923758eb637e5f2e19f88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44502b88_fc78ca7a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3777,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-07T20:34:06Z",
+      "side": 1,
+      "message": "Actually guarding by\n\n    pe[port].ctx.current !\u003d NULL\n\ninstead, seems to work. It\u0027s kind of not as readable, though, unless you know the SM internals (i.e. how exit function is called).",
+      "parentUuid": "343780e4_8bcdc843",
+      "revId": "4b927408d3e32e34a9923758eb637e5f2e19f88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
