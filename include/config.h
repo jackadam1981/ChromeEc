@@ -591,6 +591,12 @@
 #define CONFIG_BATTERY_CUTOFF_TIMEOUT_MSEC 8000
 
 /*
+ * Add a soft cut off way to support volup(refresh) + unplug ac for no disable
+ * pin battery
+ */
+#undef CONFIG_BATTERY_CUTOFF_NO_DIS_PIN
+
+/*
  * The board-specific battery.c implements get and set functions to read and
  * write arbirary vendor-specific parameters stored in the battery.
  * See include/battery.h for prototypes.
