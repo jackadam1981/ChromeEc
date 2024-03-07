@@ -45,6 +45,40 @@
       },
       "revId": "df6c6f695723215d62db03011b01a49fa0048e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509ef89a_87daeb9e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-07T19:08:03Z",
+      "side": 1,
+      "message": "Should this be enum-typed?",
+      "revId": "df6c6f695723215d62db03011b01a49fa0048e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f60590_cb5df929",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-07T19:08:03Z",
+      "side": 1,
+      "message": "It looks like this is just to get the status. How does the caller get the actual discovery data?",
+      "revId": "df6c6f695723215d62db03011b01a49fa0048e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
