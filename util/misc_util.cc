@@ -201,11 +201,12 @@ void hexdump_canonical(const uint8_t *data, size_t len, uint32_t offset_start)
 				printf("   ");
 		}
 		printf(" |");
-		for (j = i; j < i + 16 && j < len; j++)
-			if (isprint(data[i + j]))
-				printf("%c", data[i + j]);
-			else
-				printf(".");
+		for (j = i; j < i + 16; j++) {
+			int c = ' ';
+			if (j < len)
+				c = isprint(data[j]) ? data[j] : '.';
+			printf("%c", c);
+		}
 		printf("|\n");
 	}
 	printf("%08x\n", i + offset_start);
