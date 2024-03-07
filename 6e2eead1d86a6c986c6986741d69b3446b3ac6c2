@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4c7353_a06015c6",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-07T19:59:34Z",
+      "side": 1,
+      "message": "There has been some subtlety on this. On the host, we *do* want to test the builtins: http://b/237823627.\n\nI haven\u0027t looked closely at the [associated CL](https://crrev.com/c/5166769). Does this change still work with that?",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 21
+      },
+      "revId": "6e2eead1d86a6c986c6986741d69b3446b3ac6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
