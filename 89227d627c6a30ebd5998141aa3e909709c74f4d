@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e71d290_fc2c48b1",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-08T17:22:03Z",
+      "side": 1,
+      "message": "\u003e \"wher\" is a possible misspelling of \"where\" or \"were\".\n\nPlease fix.",
+      "parentUuid": "c1493860_8d295065",
+      "range": {
+        "startLine": 824,
+        "startChar": 29,
+        "endLine": 824,
+        "endChar": 33
+      },
+      "revId": "89227d627c6a30ebd5998141aa3e909709c74f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
