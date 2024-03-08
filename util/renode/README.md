@@ -76,7 +76,7 @@ BOARD=bloonchipper PROJECT=aes gdb-multiarch
 
 For more details, please see the comments in [`util/gdbinit`](../gdbinit),
 [`util/gdbinit.py`](../gdbinit.py), and
-[`util/renode-ec-launch`](../renode-ec-launch.py).
+[`util/renode-ec-launch`](../renode_ec_launch.py).
 
 For help with GDB, you can checkout the
 [GDB Manual](https://sourceware.org/gdb/current/onlinedocs/gdb.html/).
