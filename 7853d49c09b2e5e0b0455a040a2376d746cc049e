@@ -22,6 +22,30 @@
       },
       "revId": "7853d49c09b2e5e0b0455a040a2376d746cc049e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f624b994_9ec7cda8",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-08T02:52:23Z",
+      "side": 1,
+      "message": "use this function cannot meet the function",
+      "parentUuid": "afab1acd_1f7dde61",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "7853d49c09b2e5e0b0455a040a2376d746cc049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
