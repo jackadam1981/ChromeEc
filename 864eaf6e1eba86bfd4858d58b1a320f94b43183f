@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ff48cb_a08fc0a4",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "Nice. 😊",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c3f947_f2b2602a",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "Notes to myself:\n\nexpected: MUTEX_R_UNLOCKED\ndesired: MUTEX_R_LOCKED\n\non success, mtx-\u003estate becomes MUTEX_R_LOCKED\non failure, state becomes mtx-\u003estate (MUTEX_R_LOCKED or MUTEX_R_LOCKED_WAITING)",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9567145_6d15682b",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "What breaks if you try to make it simpler (no \"LOCKED_WAITING\" state)?\n\n(Somewhat pseudocode, haven\u0027t totally thought it through.)\n\nlock:\n```\n\tatomic_or(\u0026mtx-\u003ewaiters, id);\n\n\tdo {\n\t        state \u003d MUTEX_R_UNLOCKED;\n\t\tatomic_compare_exchange(\u0026mtx,state, \u0026state, MUTEX_R_LOCKED);\n\t\t\n\t\tif (state \u003d\u003d MUTEX_R_LOCKED) {\n\t\t   mtx-\u003eowner \u003d current;\n\t\t   mtx-\u003ecount++;\n\t\t   break;\n\t\t}\n\t\t\n\t\ttask_wait_event_mask(TASK_EVENT_MUTEX, 0)\n\t} while (true);\n\n\tatomic_clear_bits(\u0026mtx-\u003ewaiters, id);\n```\n\nunlock:\n```\t\n\tmtx-\u003ecount--;\n\tif (mtx-\u003ecount \u003d\u003d 0) {\n\t\tmtx-\u003eowner \u003d -1;\n\n                atomic_exchange(\u0026mtx-\u003estate, MUTEX_R_UNLOCKED);\n                \n                waiters \u003d atomic_load(\u0026mtx-\u003ewaiters);\n                if (waiters) {\n\t\t\ttask_set_event(__fls(waiters),\n\t\t\t\t\t       TASK_EVENT_MUTEX);\n\t\t}\n\t}\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acc7b61_be4c172c",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "When we exit this loop, the mutex will be in state `MUTEX_R_LOCKED_WAITING`, right? \n\nBut at that point, there may not actually be any waiters (if this is the only task waiting). Is that what you are referring to on line 152?\n\n\u003e  It\u0027s possible that there will be no waiting tasks\n\t\t\t * (because waiting bit could be cleared by task that\n\t\t\t * got the mutex after unlocking it).",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2b38dd_668acaff",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "Notes to myself:\n\nptr: mtx-\u003estate\nval: MUTEX_R_LOCKED_WAITING\n\nwrites MUTEX_R_LOCKED_WAITING into mtx-\u003estate and returns previous state\n\nif mutex is not unlocked (MUTEX_R_UNLOCKED), then we wait",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ce0f3f_784edd3e",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "Should we add an `ASSERT` that the `mtx-\u003estate` is either `MUTEX_R_LOCKED` or `MUTEX_R_LOCKED_WAITING`?",
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c48a71_bb522b8a",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-08T00:02:27Z",
+      "side": 1,
+      "message": "Is this what you mean: \"Invalidate mutex owner before releasing mutex so that current task doesn\u0027t overwrite the new owner.\"? Or something different?",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
