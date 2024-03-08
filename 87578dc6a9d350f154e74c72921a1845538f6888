@@ -46,6 +46,52 @@
       },
       "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8decb3dd_10c5c301",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2149,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-08T16:43:55Z",
+      "side": 1,
+      "message": "Is this meant to be private?",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2149,
+        "endChar": 6
+      },
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1170786c_0b27559a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-08T16:43:55Z",
+      "side": 1,
+      "message": "All public API should be prefixed with ```pdc_power_mgmt_``` and called through the shim code.",
+      "range": {
+        "startLine": 2181,
+        "startChar": 9,
+        "endLine": 2181,
+        "endChar": 11
+      },
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
