@@ -16,6 +16,24 @@
       "message": "`default y` to preserve existing behavior on other boards",
       "revId": "d30cbbcad442d9158d3df4232b8104a109032c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "127c2a51_492295b5",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-08T03:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93cf808c_1bcb1bc0",
+      "revId": "d30cbbcad442d9158d3df4232b8104a109032c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
