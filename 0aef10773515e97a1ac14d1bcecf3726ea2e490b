@@ -39,6 +39,29 @@
       },
       "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748220bd_1f3e5958",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-08T17:20:23Z",
+      "side": 1,
+      "message": "Nit, `if ((mux_pend-\u003emux_mode !\u003d USB_PD_MUX_NONE) \u0026\u0026 ...)`",
+      "range": {
+        "startLine": 175,
+        "startChar": 6,
+        "endLine": 175,
+        "endChar": 24
+      },
+      "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
