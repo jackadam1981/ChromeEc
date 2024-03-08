@@ -397,17 +397,16 @@
 	pinctrl-names = "default";
 };
 
-/* Omit BC12 of USBC port0 */
+/* Delete BC12 */
 /delete-node/ &int_usb_c0_bc12;
 /delete-node/ &gpio_usb_c0_bc12_int_odl;
 /delete-node/ &bc12_port0;
+/delete-node/ &bc12_port1;
 
-/ {
- usbc {
-
-   port0@0 {
-   /delete-property/ bc12;
-   };
- };
+&{/usbc/port0@0} {
+	/delete-property/ bc12;
 };
 
+&{/usbc/port1@1} {
+	/delete-property/ bc12;
+};
