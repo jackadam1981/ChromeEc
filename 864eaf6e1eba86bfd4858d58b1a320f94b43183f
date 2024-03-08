@@ -70,6 +70,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1bda94_40fca19d",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-08T10:12:39Z",
+      "side": 1,
+      "message": "Performance.\n\nCurrently, when locking unlocked mutex, it\u0027s just one atomic operation. Unlocking mutex with no waiters is also one atomic operation. My first implementation was similar to yours, but without `state` (`owner` was used to determine whether mutex is locked).",
+      "parentUuid": "c9567145_6d15682b",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0acc7b61_be4c172c",
@@ -83,6 +107,30 @@
       "writtenOn": "2024-03-08T00:02:27Z",
       "side": 1,
       "message": "When we exit this loop, the mutex will be in state `MUTEX_R_LOCKED_WAITING`, right? \n\nBut at that point, there may not actually be any waiters (if this is the only task waiting). Is that what you are referring to on line 152?\n\n\u003e  It\u0027s possible that there will be no waiting tasks\n\t\t\t * (because waiting bit could be cleared by task that\n\t\t\t * got the mutex after unlocking it).",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a71771e_869f3624",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-08T10:12:39Z",
+      "side": 1,
+      "message": "\u003e When we exit this loop, the mutex will be in state MUTEX_R_LOCKED_WAITING, right?\n\nYes.\n\n\u003e But at that point, there may not actually be any waiters (if this is the only task waiting). Is that what you are referring to on line 152?\n\nYes.\n\nWhen implementing this I was thinking about SMP case (I know, SMP is not supported in EC, but I thought it would be nice to implement it this way) or just tasks randomly interrupted and switched.",
+      "parentUuid": "0acc7b61_be4c172c",
       "range": {
         "startLine": 51,
         "startChar": 5,
@@ -133,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5cf06e_d0145b32",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-08T10:12:39Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027t necessary.",
+      "parentUuid": "21ce0f3f_784edd3e",
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c48a71_bb522b8a",
@@ -146,6 +212,30 @@
       "writtenOn": "2024-03-08T00:02:27Z",
       "side": 1,
       "message": "Is this what you mean: \"Invalidate mutex owner before releasing mutex so that current task doesn\u0027t overwrite the new owner.\"? Or something different?",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "864eaf6e1eba86bfd4858d58b1a320f94b43183f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1703f1_747ded28",
+        "filename": "libc/recursive_mutex.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-08T10:12:39Z",
+      "side": 1,
+      "message": "Something different. After the mutex was locked, but before setting `owner`, the old owner could try to lock again (using `mtx-\u003eowner !\u003d current` check), but when writing this comment I realized that it\u0027s not possible.\n\n\u003e \"Invalidate mutex owner before releasing mutex so that current task doesn\u0027t overwrite the new owner.\"\n\nThis is correct!",
+      "parentUuid": "29c48a71_bb522b8a",
       "range": {
         "startLine": 118,
         "startChar": 4,
