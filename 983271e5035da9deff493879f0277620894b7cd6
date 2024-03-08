@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0abc2819_e8212616",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-08T16:28:35Z",
+      "side": 1,
+      "message": "Is there a bug associated with this fix?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfe8aad_dec6e345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-08T16:28:35Z",
+      "side": 1,
+      "message": "How is the data role restored in the MHSR registers when an SOP\u0027/SOP\u0027\u0027 message is successful?",
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325ae15b_55cf75c3",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-08T16:28:35Z",
+      "side": 1,
+      "message": "Suggested rewording:\n\"The power role and data role bits in the message header are only \nset for SOP messages. If an SOP\u0027/SOP\u0027\u0027 message fails, restore the\npower role and data role bits.\"",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 0
+      },
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873f5b03_32c33c64",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-08T16:28:35Z",
+      "side": 1,
+      "message": "What about restoring the power role? \n\nI think it would be better to just call `it8xxx2_tcpm_set_msg_header()` here.\n\nAlso, should you restore the message header register anytime the packet time is not SOP?\n\n```\nif (type !\u003d TCPCI_MSG_SOP) {\n     it8xxx2_tcpm_set_msg_header(port, \n                                 pd_get_power_role(port),\n                                 pd_get_data_role(port));\n}\n```",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 50
+      },
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
