@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deee1c9f_561fce2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-03-08T16:28:39Z",
+      "side": 1,
+      "message": "+2 with comment update",
+      "revId": "bf388c59f1c581aab01903e31d43df2ebc6b515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7137e76_e6ef1801",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-03-08T16:28:39Z",
+      "side": 1,
+      "message": "this new flag needs to be documented in the incoming binary interface. We should also make this a named constant",
+      "range": {
+        "startLine": 262,
+        "startChar": 31,
+        "endLine": 262,
+        "endChar": 35
+      },
+      "revId": "bf388c59f1c581aab01903e31d43df2ebc6b515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
