@@ -1539,7 +1539,7 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 
 #ifdef CONFIG_BATTERY
 	if ((get_chg_ctrl_mode() == CHARGE_CONTROL_IDLE) &&
-	    !charge_idle_enabled) {
+		!charge_idle_enabled) {
 		/*
 		 * Writes to the FLOW2_AUTO_ENABLED bits below have no effect if
 		 * flow1 is set to an active state, so disable sink mode first
@@ -1557,13 +1557,19 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK, MASK_SET);
 		charge_idle_enabled = 1;
 	} else if ((get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) &&
-		   charge_idle_enabled) {
+			charge_idle_enabled) {
 		rv = sm5803_flow1_update(chgnum, SM5803_FLOW1_MODE, MASK_CLR);
 		rv |= sm5803_flow2_update(chgnum, SM5803_FLOW2_AUTO_ENABLED,
 					  MASK_SET);
 		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK, MASK_SET);
 		charge_idle_enabled = 0;
-	}
+	} else if ((get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE) &&
+		   charge_idle_enabled)
+		/*
+		 * Discharge is controlled by discharge_on_ac, so only need to reset
+		 * charge_idle_enabled.
+		 */
+			charge_idle_enabled = 0;
 #endif
 
 	return rv;
