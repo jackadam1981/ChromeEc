@@ -46,6 +46,30 @@
       },
       "revId": "7853d49c09b2e5e0b0455a040a2376d746cc049e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ca19d7_8dd834ac",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-08T06:10:48Z",
+      "side": 1,
+      "message": "when plug a 5V3A dongle in one port, and then plug in another dongle into second typec port, and the typec_get_active_select_rp still return rp value 2, so the 5V3A dongle can work normal, and this doesn\u0027t meet the single port 5V3A, two port work in5V1.5A requirement.",
+      "parentUuid": "f624b994_9ec7cda8",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "7853d49c09b2e5e0b0455a040a2376d746cc049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
