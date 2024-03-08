@@ -20,7 +20,9 @@
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys/util.h>
 LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_DBG);
+#include "console.h"
 #include "usbc/utils.h"
+#include "util.h"
 
 #include <include/ppm.h>
 #include <drivers/pdc.h>
@@ -2500,3 +2502,50 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			      &pdc_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(PDC_DEFINE)
+
+static int cc_rts(int argc, const char **argv)
+{
+	static struct capability_t cap;
+	int port;
+	int rv = EC_SUCCESS;
+	char *e;
+	const struct device *dev;
+
+	if (argc == 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 0);
+	if (*e || port >= NUM_PDC_RTS54XX_PORTS)
+		return EC_ERROR_PARAM1;
+	dev = pdc_data[port]->dev;
+
+	if (argc == 4 && strcasecmp(argv[2], "get") == 0) {
+		if (strcasecmp(argv[3], "cap") == 0) {
+			memset(&cap, 0, sizeof(cap));
+			rv = rts54_get_capability(dev, &cap);
+		} else {
+			return EC_ERROR_PARAM3;
+		}
+	} else if (argc == 3 && strcasecmp(argv[2], "reset") == 0) {
+		rv = rts54_reset(dev);
+	} else if (argc == 4 && strcasecmp(argv[2], "dump") == 0) {
+		if (strcasecmp(argv[3], "cap") == 0) {
+			hexdumpk((const uint8_t *)&cap, 32);
+			cflush();
+		} else {
+			return EC_ERROR_PARAM3;
+		}
+	} else if (argc == 4 && strcasecmp(argv[2], "notify") == 0) {
+		union notification_enable_t bits;
+		bits.raw_value = strtoi(argv[3], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM3;
+		rv = rts54_set_notification_enable(dev, bits, 0);
+	} else {
+		ccprintf("Syntax error\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(rts, cc_rts, NULL, NULL);
