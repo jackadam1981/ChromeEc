@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b2a013e_08a6287b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-08T22:34:17Z",
+      "side": 1,
+      "message": "You might want to reference b:328819306 or add a blocking bug for this specific part of the API.",
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c690b8b8_77106795",
         "filename": "common/usb_pd_host_cmd.c",
         "patchSetId": 7
