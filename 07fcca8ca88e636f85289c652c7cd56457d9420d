@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3e8f4e_4e1a6f81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-08T19:33:28Z",
+      "side": 1,
+      "message": "For future reference, this should be `--baseboard helipilot`, since this branch is use for helipilot and buccaneer. The documentation was updated.",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "07fcca8ca88e636f85289c652c7cd56457d9420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
