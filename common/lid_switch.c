@@ -18,6 +18,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "power.h"
 #include "timer.h"
 #include "util.h"
 
@@ -50,7 +51,7 @@ static int raw_lid_open(void)
  */
 static void lid_switch_open(void)
 {
-	if (debounced_lid_open) {
+	if (debounced_lid_open && power_get_state() != POWER_G3) {
 		CPRINTS("lid already open");
 		return;
 	}
