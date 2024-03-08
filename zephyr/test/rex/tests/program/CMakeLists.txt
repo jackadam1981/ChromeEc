@@ -11,3 +11,10 @@ target_sources_ifdef(CONFIG_TEST_PROGRAM_BOARD_POWER app PRIVATE ${PLATFORM_EC_P
 target_sources_ifdef(CONFIG_TEST_PROGRAM_BATTERY_PRESENT app PRIVATE src/battery_present.c)
 target_sources_ifdef(CONFIG_TEST_PROGRAM_BATTERY_PRESENT app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rex/src/battery_present.c)
 target_sources_ifdef(CONFIG_TEST_PROGRAM_BATTERY_PRESENT app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rex/src/usb_pd_policy.c)
+
+target_sources_ifdef(CONFIG_TEST_PROGRAM_USBC_CONFIG app PRIVATE
+	${PLATFORM_EC_PROGRAM_DIR}/rex/src/usbc_config.c
+	src/main.c)
+
+target_include_directories(app PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}/include)
