@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecc08b7_610bd8c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-09T01:14:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b2a013e_08a6287b",
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c690b8b8_77106795",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "I need to remove this.",
       "parentUuid": "c690b8b8_77106795",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcac5ad3_9fad22de",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-09T01:14:43Z",
+      "side": 1,
+      "message": "I have removed this. It wasn\u0027t causing an error because it\u0027s not included in a brox build, which is why that spurious text was in there when I wasn\u0027t sure if that file was being included.",
+      "parentUuid": "cdd5ca9a_f732b3cc",
       "range": {
         "startLine": 43,
         "startChar": 0,
