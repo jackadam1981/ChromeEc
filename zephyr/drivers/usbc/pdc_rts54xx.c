@@ -21,6 +21,7 @@
 #include <zephyr/sys/util.h>
 LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #include "include/pd_driver.h"
+#include "include/ppm.h"
 #include "ppm_common.h"
 #include "usbc/utils.h"
 
@@ -401,8 +402,10 @@ struct pdc_data_t {
 	union cci_event_t cci_event;
 	/** CCI Event callback */
 	pdc_cci_handler_cb_t cci_cb;
+	pdc_cci_handler_cb_t cci_cb_ex;
 	/** CCI Event callback data */
 	void *cb_data;
+	void *cb_data_ex;
 	/** Information about the PDC */
 	struct pdc_info_t info;
 	/** Init done flag */
@@ -413,6 +416,8 @@ struct pdc_data_t {
 	uint16_t error_recovery_counter;
 	/** Error Status used during initialization */
 	union error_status_t es;
+	/** */
+	uint8_t block_call_counter;
 };
 
 /**
@@ -539,15 +544,30 @@ static void print_current_state(struct pdc_data_t *data)
 static void call_cci_event_cb(struct pdc_data_t *data)
 {
 	const struct pdc_config_t *cfg = data->dev->config;
+	const union cci_event_t cci = data->cci_event;
 
 	if (!data->init_done) {
 		return;
 	}
 
-	if (data->cci_cb) {
-		LOG_INF("C%d: cci_event_cb event=0x%x", cfg->connector_number,
-			data->cci_event.raw_value);
-		data->cci_cb(data->cci_event, data->cb_data);
+	LOG_INF("C%d: %s %s%s(0x%08x)", cfg->connector_number, __func__,
+		cci.connector_change ? "CI " : "",
+		cci.command_completed ? "CC " : "", cci.raw_value);
+
+	/*
+	 * Currently, connector_change is set only by handle_irqs and when it's
+	 * set, no other flags (e.g. command_completed) are set.
+	 */
+	if (cci.connector_change) {
+		if (data->cci_cb)
+			data->cci_cb(cci, data->cb_data);
+		if (data->cci_cb_ex)
+			data->cci_cb_ex(cci, data->cb_data_ex);
+		/* Is this right? */
+		data->cci_event.connector_change = 0;
+	} else {
+		if (data->cci_cb)
+			data->cci_cb(cci, data->cb_data);
 	}
 }
 
@@ -1448,6 +1468,7 @@ static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
 	data->wr_buf_len = len;
 	data->user_buf = user_buf;
 	data->cmd = cmd;
+	data->cci_event.raw_value = 0;
 
 	k_mutex_unlock(&data->mtx);
 
@@ -1497,6 +1518,17 @@ static int rts54_set_handler_cb(const struct device *dev,
 
 	data->cci_cb = cci_cb;
 	data->cb_data = cb_data;
+
+	return 0;
+}
+
+static int rts54_set_handler_cb_ex(const struct device *dev,
+				   pdc_cci_handler_cb_t cci_cb, void *cb_data)
+{
+	struct pdc_data_t *data = dev->data;
+
+	data->cci_cb_ex = cci_cb;
+	data->cb_data_ex = cb_data;
 
 	return 0;
 }
@@ -2443,6 +2475,7 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	uint8_t ucsi_command = control->command;
 	uint8_t conn; /* 1:port=0, 2:port=1, ... */
 	uint8_t data_size;
+	struct pdc_data_t *data;
 	int rv = 0;
 
 	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
@@ -2464,8 +2497,15 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	case UCSI_CMD_GET_ATTENTION_VDO:
 	case UCSI_CMD_GET_CAM_CS:
 		conn = UCSI_7BIT_PORTMASK(control->command_specific[0]);
-		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+		/*
+		 * The OPS can set conn=0 for ERROR_STATUS if the error happened
+		 * in PPM. The OPS will know it was an error specific to a
+		 * connector when it sees -EINVAL.
+		 */
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data)) {
+			LOG_ERR("Invalid conn=%d", conn);
 			return -EINVAL;
+		}
 		break;
 
 	/* The following UCSI commands change the port being addressed.
@@ -2473,11 +2513,22 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	 */
 	case UCSI_CMD_GET_ALTERNATE_MODES:
 		conn = UCSI_7BIT_PORTMASK(control->command_specific[1]);
-		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data)) {
+			LOG_ERR("Invalid connector: %d", conn);
 			return -EINVAL;
+		}
 		break;
 	default:
 		conn = 1;
+	}
+
+	LOG_INF("%s: conn=%u lpm_data=%p", __func__, conn, lpm_data_out);
+	data = pdc_data[conn - 1]->dev->data;
+
+	/* We don't know yet if the PDC driver is busy or not. */
+	if (get_state(data) != ST_IDLE) {
+		LOG_ERR("%s: Failed to run (-EBUSY)", __func__);
+		return -EBUSY;
 	}
 
 	switch (ucsi_command) {
@@ -2501,11 +2552,58 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 		break;
 	}
 
+	if (rv < 0) {
+		LOG_ERR("%s: Failed to run (%d)", __func__, rv);
+		return rv;
+	}
+
+	data->block_call_counter = 0;
+
+	while (!data->cci_event.command_completed && !data->cci_event.error) {
+		/* Wait for timeout or event */
+		k_sleep(K_MSEC(20));
+
+		data->block_call_counter++;
+		if (data->block_call_counter > 100) {
+			LOG_ERR("%s: Block call timeout", __func__);
+			rv = -ETIMEDOUT;
+			break;
+		}
+	}
+
+	if (rv == 0) {
+		/* Read some data. */
+		rv = data->cci_event.data_len;
+	}
+
 	return rv;
 }
 
 static void rts54xx_ucsi_cleanup(struct ucsi_pd_driver *driver)
 {
+}
+
+static void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
+{
+	struct ucsi_ppm_driver *drv = cb_data;
+	struct ppm_common_device *dev = (struct ppm_common_device *)drv->dev;
+
+	if (dev->ppm_state == PPM_STATE_IDLE ||
+	    dev->ppm_state == PPM_STATE_NOT_READY) {
+		LOG_INF("%s: Not ready to handle CCI", __func__);
+		return;
+	}
+
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+
+	if (cci_event.connector_change) {
+		LOG_INF("%s: CI conn=%d", __func__, cci_event.connector_change);
+		dev->pending.async_event = 1;
+		dev->last_connector_alerted = cci_event.connector_change;
+	}
+
+	LOG_INF("%s: Waking up PPM", __func__);
+	platform_condvar_signal(dev->ppm_condvar);
 }
 
 struct ucsi_pd_driver *rts54xx_open(void)
@@ -2532,6 +2630,9 @@ struct ucsi_pd_driver *rts54xx_open(void)
 	ppm_dev = (struct ppm_common_device *)dev.ppm->dev;
 	ppm_dev->num_ports = ARRAY_SIZE(port_status);
 	ppm_dev->per_port_status = port_status;
+
+	for (int i = 0; i < ppm_dev->num_ports; i++)
+		rts54_set_handler_cb_ex(pdc_data[i]->dev, ppm_cci_cb, dev.ppm);
 
 	return &drv;
 }
