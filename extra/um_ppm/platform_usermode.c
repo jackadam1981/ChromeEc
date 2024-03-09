@@ -99,6 +99,7 @@ int platform_task_init(void *start_fn, void *arg, struct task_handle **handle)
 
 #ifdef __ZEPHYR__
 	pthread_attr_t attr;
+	struct sched_param schedparam = { .sched_priority = 10 };
 
 	/* Zephyr requires a non-NULL attribute for pthread_create */
 	res = pthread_attr_init(&attr);
@@ -114,6 +115,14 @@ int platform_task_init(void *start_fn, void *arg, struct task_handle **handle)
 		perror("pthread_attr_setstack");
 		return -1;
 	}
+
+	res = pthread_attr_setschedparam(&attr, &schedparam);
+	if (res != 0) {
+		errno = res;
+		perror("pthread_attr_setschedparam");
+		return -1;
+	}
+
 	res = pthread_create(&(*handle)->thread, &attr, start_fn, arg);
 #else
 	res = pthread_create(&(*handle)->thread, NULL, start_fn, arg);

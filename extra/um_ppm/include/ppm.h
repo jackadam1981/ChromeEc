@@ -186,6 +186,18 @@ struct ucsiv3_set_new_cam_cmd {
 	unsigned am_specific : 32;
 } __attribute__((__packed__));
 
+struct ucsiv3_get_pdos_cmd {
+	unsigned connector_number : 7;
+	unsigned partner_pdo : 1;
+	unsigned pdo_offset : 8;
+	unsigned number_of_pdos : 2;
+	unsigned source_or_sink_pdos : 1;
+	unsigned source_capabilities_type : 2;
+	unsigned range : 2;
+
+	unsigned reserved_0 : 25;
+} __attribute__((__packed__));
+
 /* GET_CAPABILITY data */
 struct ucsiv3_get_capability_data {
 	uint32_t attributes;

@@ -19,6 +19,62 @@
 
 #include <drivers/pdc.h>
 
+enum pdc_cmd_t {
+	/** CMD_PDC_NONE */
+	CMD_PDC_NONE,
+	/** CMD_PDC_RESET */
+	CMD_PDC_RESET,
+	/** CMD_PDC_SET_POWER_LEVEL */
+	CMD_PDC_SET_POWER_LEVEL,
+	/** CMD_PDC_SET_CCOM */
+	CMD_PDC_SET_CCOM,
+	/** CMD_PDC_GET_PDOS */
+	CMD_PDC_GET_PDOS,
+	/** CMD_PDC_GET_RDO */
+	CMD_PDC_GET_RDO,
+	/** CMD_PDC_SET_RDO */
+	CMD_PDC_SET_RDO,
+	/** CMD_PDC_GET_VBUS_VOLTAGE */
+	CMD_PDC_GET_VBUS_VOLTAGE,
+	/** CMD_PDC_SET_SINK_PATH */
+	CMD_PDC_SET_SINK_PATH,
+	/** CMD_PDC_READ_POWER_LEVEL */
+	CMD_PDC_READ_POWER_LEVEL,
+	/** CMD_PDC_GET_INFO */
+	CMD_PDC_GET_INFO,
+	/** CMD_PDC_GET_CONNECTOR_CAPABILITY */
+	CMD_PDC_GET_CONNECTOR_CAPABILITY,
+	/** CMD_PDC_SET_UOR */
+	CMD_PDC_SET_UOR,
+	/** CMD_PDC_SET_PDR */
+	CMD_PDC_SET_PDR,
+	/** CMD_PDC_GET_CONNECTOR_STATUS */
+	CMD_PDC_GET_CONNECTOR_STATUS,
+	/** CMD_PDC_GET_CABLE_PROPERTY */
+	CMD_PDC_GET_CABLE_PROPERTY,
+	/** CMD_PDC_GET_VDO */
+	CMD_PDC_GET_VDO,
+	/** CMD_PDC_CONNECTOR_RESET */
+	CMD_PDC_CONNECTOR_RESET,
+	/** CMD_PDC_GET_IDENTITY_DISCOVERY */
+	CMD_PDC_GET_IDENTITY_DISCOVERY,
+	/** Meta command used by PPM */
+	CMD_PDC_RUN_FOR_PPM,
+
+	/** CMD_PDC_COUNT */
+	CMD_PDC_COUNT
+};
+
+/**
+ * @brief Send UCSI command through PDM synchronously.
+ *
+ * @param port USB-C port number
+ * @param ucsi_cmd UCSI command
+ *
+ * @retval 0 for success or negative int for error.
+ */
+int pdc_send_ucsi_command(int port, uint8_t ucsi_cmd);
+
 /**
  * @brief Get the state of the port partner connection
  *
@@ -416,5 +472,7 @@ int pdc_power_mgmt_set_comms_state(bool run);
  */
 int pdc_power_mgmt_get_connector_status(
 	int port, union connector_status_t *connector_status);
+
+bool pdm_is_idle(int port);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
