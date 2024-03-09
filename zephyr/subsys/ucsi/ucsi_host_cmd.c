@@ -159,6 +159,32 @@ static void rts54xx_ucsi_cleanup(struct ucsi_pd_driver *driver)
 {
 }
 
+static void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
+{
+	struct ucsi_ppm_driver *drv = cb_data;
+	struct ppm_common_device *dev = (struct ppm_common_device *)drv->dev;
+
+	if (dev->ppm_state == PPM_STATE_IDLE ||
+	    dev->ppm_state == PPM_STATE_NOT_READY) {
+		LOG_INF("%s: Not ready to handle CCI", __func__);
+		return;
+	}
+
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+
+	if (cci_event.connector_change) {
+		LOG_INF("%s: CI conn=%d", __func__, cci_event.connector_change);
+		dev->pending.async_event = 1;
+		dev->last_connector_alerted = cci_event.connector_change;
+	}
+
+	LOG_INF("%s: Waking up PPM", __func__);
+	platform_condvar_signal(dev->ppm_condvar);
+}
+
+int rts54_set_handler_cb_ex(const struct device *dev,
+			    pdc_cci_handler_cb_t cci_cb, void *cb_data);
+
 static struct ucsi_pd_driver *rts54xx_open(void)
 {
 	static struct rts5453_device dev;
@@ -185,6 +211,10 @@ static struct ucsi_pd_driver *rts54xx_open(void)
 	ppm_dev = DEV_CAST_FROM(dev.ppm->dev);
 	ppm_dev->num_ports = ARRAY_SIZE(port_status);
 	ppm_dev->per_port_status = port_status;
+
+	for (int i = 0; i < ARRAY_SIZE(dev.pdc); i++) {
+		rts54_set_handler_cb_ex(dev.pdc[i], ppm_cci_cb, dev.ppm);
+	}
 
 	return &drv;
 }
