@@ -332,6 +332,9 @@ success:
 		ppm_common_apply_platform_policy(dev);
 
 		cci->reset_completed = 1;
+	} else if (ret == 0) {
+		/* Write is done. Read may be pending. */
+		return ret;
 	} else {
 		cci->data_length = ret & 0xFF;
 		cci->cmd_complete = 1;
@@ -419,6 +422,13 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 			 */
 			/* fallthrough */
 		case PPM_STATE_PROCESSING_COMMAND:
+			if (next_command == UCSI_CMD_RESERVED) {
+				/* Waiting for command completion. */
+				if (dev->ucsi_data.cci.cmd_complete)
+					dev->ppm_state =
+						PPM_STATE_WAITING_CC_ACK;
+				break;
+			}
 			/* TODO - Handle the case where we have a command that
 			 * takes multiple smbus calls to process (i.e. firmware
 			 * update). If we were handling something that requires
@@ -449,6 +459,10 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 
 				clear_cci(dev);
 				dev->ucsi_data.cci.ack_command = 1;
+			} else if (ret == 0) {
+				/* Command takes some time to complete. */
+				clear_cci(dev);
+				dev->ucsi_data.cci.busy = 1;
 			} else {
 				dev->ppm_state = PPM_STATE_WAITING_CC_ACK;
 			}
@@ -534,6 +548,11 @@ static void ppm_common_task(void *context)
 		 */
 		if (dev->ppm_state != PPM_STATE_PROCESSING_COMMAND) {
 			DLOG("Waiting for next command at state %d (%s)...",
+			     dev->ppm_state,
+			     ppm_state_to_string(dev->ppm_state));
+			platform_condvar_wait(dev->ppm_condvar, dev->ppm_lock);
+		} else if (!dev->ucsi_data.cci.cmd_complete) {
+			DLOG("Waiting for command completion at state %d (%s)...",
 			     dev->ppm_state,
 			     ppm_state_to_string(dev->ppm_state));
 			platform_condvar_wait(dev->ppm_condvar, dev->ppm_lock);

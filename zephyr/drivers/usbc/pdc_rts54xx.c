@@ -24,6 +24,8 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 
 #include <drivers/pdc.h>
 
+#include "include/ppm.h"
+
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
 #define BYTE0(n) ((n) & 0xff)
@@ -2252,6 +2254,17 @@ static void rts5453_ucsi_cleanup(struct ucsi_pd_driver *driver)
 {
 }
 
+static void rts5453_cci_cb(union cci_event_t cci_event, void *cb_data)
+{
+	struct ucsi_ppm_driver *drv = cb_data;
+	struct ppm_common_device *dev = (struct ppm_common_device *)drv->dev;
+
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+	platform_condvar_signal(dev->ppm_condvar);
+	if (dev->opm_notify)
+		dev->opm_notify(dev->opm_context);
+}
+
 struct ucsi_pd_driver *rts5453_open(void)
 {
 	static struct rts5453_device dev;
@@ -2269,6 +2282,8 @@ struct ucsi_pd_driver *rts5453_open(void)
 		LOG_ERR("Failed to open PPM");
 		return NULL;
 	}
+
+	rts54_set_handler_cb(pdc_data[0]->dev, rts5453_cci_cb, dev.ppm);
 
 	return &drv;
 }
