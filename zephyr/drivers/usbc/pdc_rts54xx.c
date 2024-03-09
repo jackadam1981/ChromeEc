@@ -378,8 +378,10 @@ struct pdc_data_t {
 	union cci_event_t cci_event;
 	/** CCI Event callback */
 	pdc_cci_handler_cb_t cci_cb;
+	pdc_cci_handler_cb_t cci_cb_ex;
 	/** CCI Event callback data */
 	void *cb_data;
+	void *cb_data_ex;
 	/** Information about the PDC */
 	struct pdc_info_t info;
 	/** Init done flag */
@@ -520,6 +522,7 @@ static void print_current_state(struct pdc_data_t *data)
 static void call_cci_event_cb(struct pdc_data_t *data)
 {
 	const struct pdc_config_t *cfg = data->dev->config;
+	const union cci_event_t cci = data->cci_event;
 
 	if (!data->init_done) {
 		return;
@@ -528,8 +531,15 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 	if (data->cci_cb) {
 		LOG_INF("C%d: cci_event_cb event=0x%x", cfg->connector_number,
 			data->cci_event.raw_value);
-		data->cci_cb(data->cci_event, data->cb_data);
+		data->cci_cb(cci, data->cb_data);
 	}
+
+	/*
+	 * Currently, connector_change is set only by handle_irqs and when it's
+	 * set, no other flags (e.g. command_completed) are set.
+	 */
+	if (cci.connector_change && data->cci_cb_ex)
+		data->cci_cb_ex(cci, data->cb_data_ex);
 }
 
 static int get_ara(const struct device *dev, uint8_t *ara)
@@ -1510,6 +1520,17 @@ static int rts54_set_handler_cb(const struct device *dev,
 	return 0;
 }
 
+int rts54_set_handler_cb_ex(const struct device *dev,
+			    pdc_cci_handler_cb_t cci_cb, void *cb_data)
+{
+	struct pdc_data_t *data = dev->data;
+
+	data->cci_cb_ex = cci_cb;
+	data->cb_data_ex = cb_data;
+
+	return 0;
+}
+
 static int rts54_enable(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2428,6 +2449,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_vbus_voltage = rts54_get_vbus_voltage,
 	.get_current_pdo = rts54_get_current_pdo,
 	.set_handler_cb = rts54_set_handler_cb,
+	.set_handler_cb_ex = rts54_set_handler_cb_ex,
 	.read_power_level = rts54_read_power_level,
 	.get_info = rts54_get_info,
 	.get_bus_info = rts54_get_bus_info,

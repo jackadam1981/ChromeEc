@@ -186,6 +186,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_get_connector_status_t get_connector_status;
 	pdc_get_error_status_t get_error_status;
 	pdc_set_handler_cb_t set_handler_cb;
+	pdc_set_handler_cb_t set_handler_cb_ex;
 	pdc_get_vbus_t get_vbus_voltage;
 	pdc_get_current_pdo_t get_current_pdo;
 	pdc_get_pdos_t get_pdos;
@@ -574,6 +575,29 @@ static inline void pdc_set_handler_cb(const struct device *dev,
 	__ASSERT(api->set_handler_cb != NULL, "SET_HANDLER_CB is not optional");
 
 	api->set_handler_cb(dev, cci_cb, cb_data);
+}
+
+/**
+ * @brief Sets the callback the driver uses to communicate events to an extended
+ *        entity (e.g. PPM).
+ * @note CCI Events set
+ *           <none>
+ *
+ * @param dev PDC device structure pointer
+ * @param cci_cb pointer to callback
+ * @param cb_data point to data that's passed to the callback
+ */
+static inline void pdc_set_handler_cb_ex(const struct device *dev,
+					 pdc_cci_handler_cb_t cci_cb,
+					 void *cb_data)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	__ASSERT(api->set_handler_cb_ex != NULL,
+		 "SET_HANDLER_CB_EX is not optional");
+
+	api->set_handler_cb_ex(dev, cci_cb, cb_data);
 }
 
 /**
