@@ -1217,13 +1217,18 @@ bool pd_get_partner_unconstr_power(int port)
 	return pd_check_fixed_flag(port, PDO_FIXED_UNCONSTRAINED);
 }
 
+__overridable int bc12_detect_data_role_is_not_enable(void)
+{
+	return !IS_ENABLED(CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER);
+}
+
 static void bc12_role_change_handler(int port, enum pd_data_role prev_data_role,
 				     enum pd_data_role data_role)
 {
 	int event = 0;
 	bool role_changed = (data_role != prev_data_role);
 
-	if (!IS_ENABLED(CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER))
+	if (bc12_detect_data_role_is_not_enable())
 		return;
 
 	/* Get the data role of our device */

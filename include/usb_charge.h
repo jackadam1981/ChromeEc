@@ -234,4 +234,6 @@ int board_is_sourcing_vbus(int port);
  */
 int board_vbus_sink_enable(int port, int enable);
 
+__override_proto int bc12_detect_data_role_is_not_enable(void);
+
 #endif /* __CROS_EC_USB_CHARGE_H */
