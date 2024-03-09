@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03da1a4b_9125c1d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-03-09T01:46:17Z",
+      "side": 1,
+      "message": "after some tests, the previous patch did not restore all coverage. This should now make led.c 100% covered.",
+      "revId": "02859fa7eef284974fb7fa78d9eab351f92262ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
