@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93840d7d_d1c76f88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-09T01:11:02Z",
+      "side": 1,
+      "message": "I modified this to include the config guard as you suggested.",
+      "parentUuid": "227df487_fd9a7839",
+      "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b4b66ef_4b55a2a2",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "307821a3_206e7c8c",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-09T01:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4b66ef_4b55a2a2",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "748220bd_1f3e5958",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-03-08T17:20:23Z",
       "side": 1,
       "message": "Nit, `if ((mux_pend-\u003emux_mode !\u003d USB_PD_MUX_NONE) \u0026\u0026 ...)`",
+      "range": {
+        "startLine": 175,
+        "startChar": 6,
+        "endLine": 175,
+        "endChar": 24
+      },
+      "revId": "0aef10773515e97a1ac14d1bcecf3726ea2e490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17deeb41_346a65aa",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-09T01:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "748220bd_1f3e5958",
       "range": {
         "startLine": 175,
         "startChar": 6,
