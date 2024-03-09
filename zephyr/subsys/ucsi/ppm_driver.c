@@ -175,6 +175,8 @@ static int ucsi_get_active_port_count(const struct device *dev)
 	return NUM_PORTS;
 }
 
+void ppm_cci_cb(union cci_event_t cci_event, void *cb_data);
+
 static struct ucsi_pd_driver ppm_drv = {
 	.init_ppm = ucsi_ppm_init,
 	.get_ppm = ucsi_ppm_get,
@@ -184,6 +186,8 @@ static struct ucsi_pd_driver ppm_drv = {
 
 static int ppm_init(const struct device *device)
 {
+	const struct ppm_config *cfg =
+		(const struct ppm_config *)device->config;
 	struct ppm_data *dat = (struct ppm_data *)device->data;
 	const struct ucsi_pd_driver *drv = device->api;
 	union ec_common_control ctrl;
@@ -199,6 +203,9 @@ static int ppm_init(const struct device *device)
 		LOG_ERR("Failed to open PPM");
 		return -ENODEV;
 	}
+
+	for (int i = 0; i < cfg->active_port_count; i++)
+		pdc_set_handler_cb_ex(cfg->lpm[i], ppm_cci_cb, NULL);
 
 	return 0;
 }
