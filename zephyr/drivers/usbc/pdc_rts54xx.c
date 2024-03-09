@@ -24,6 +24,8 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 
 #include <drivers/pdc.h>
 
+#include "include/ppm.h"
+
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
 #define BYTE0(n) ((n) & 0xff)
@@ -348,8 +350,10 @@ struct pdc_data_t {
 	union cci_event_t cci_event;
 	/** CCI Event callback */
 	pdc_cci_handler_cb_t cci_cb;
+	pdc_cci_handler_cb_t cci_cb_ex;
 	/** CCI Event callback data */
 	void *cb_data;
+	void *cb_data_ex;
 	/** Information about the PDC */
 	struct pdc_info_t info;
 	/** Init done flag */
@@ -469,6 +473,9 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 			data->cci_event.raw_value);
 		data->cci_cb(data->cci_event, data->cb_data);
 	}
+
+	if (data->cci_cb_ex)
+		data->cci_cb_ex(data->cci_event, data->cb_data_ex);
 }
 
 static int get_ara(const struct device *dev, uint8_t *ara)
@@ -1418,6 +1425,17 @@ static int rts54_set_handler_cb(const struct device *dev,
 
 	data->cci_cb = cci_cb;
 	data->cb_data = cb_data;
+
+	return 0;
+}
+
+static int rts54_set_handler_cb_ex(const struct device *dev,
+				   pdc_cci_handler_cb_t cci_cb, void *cb_data)
+{
+	struct pdc_data_t *data = dev->data;
+
+	data->cci_cb_ex = cci_cb;
+	data->cb_data_ex = cb_data;
 
 	return 0;
 }
@@ -2381,6 +2399,26 @@ static void rts5453_ucsi_cleanup(struct ucsi_pd_driver *driver)
 {
 }
 
+static void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
+{
+	struct ucsi_ppm_driver *drv = cb_data;
+	struct ppm_common_device *dev = (struct ppm_common_device *)drv->dev;
+
+	LOG_INF("%s: CCI=0x%x (%s%s)", __func__, cci_event.raw_value,
+		cci_event.connector_change ? "CI" : "",
+		cci_event.command_completed ? "CC" : "");
+
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+	if (cci_event.connector_change) {
+		dev->pending.async_event = 1;
+		dev->last_connector_alerted = (cci_event.raw_value >> 1) & 0x7f;
+	}
+
+	platform_condvar_signal(dev->ppm_condvar);
+	if (dev->opm_notify)
+		dev->opm_notify(dev->opm_context);
+}
+
 struct ucsi_pd_driver *rts5453_open(void)
 {
 	static struct rts5453_device dev;
@@ -2398,6 +2436,9 @@ struct ucsi_pd_driver *rts5453_open(void)
 		LOG_ERR("Failed to open PPM");
 		return NULL;
 	}
+
+	for (int i = 0; i < NUM_PDC_RTS54XX_PORTS; i++)
+		rts54_set_handler_cb_ex(pdc_data[i]->dev, ppm_cci_cb, dev.ppm);
 
 	return &drv;
 }
