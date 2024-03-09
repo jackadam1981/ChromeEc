@@ -12,6 +12,7 @@
 #include "charge_manager.h"
 #include "hooks.h"
 #include "usbc/pdc_power_mgmt.h"
+#include "extra/um_ppm/ppm_common.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/kernel.h>
@@ -71,50 +72,6 @@ LOG_MODULE_REGISTER(pdc_power_mgmt);
 /**
  * @brief PDC driver commands
  */
-enum pdc_cmd_t {
-	/** CMD_PDC_NONE */
-	CMD_PDC_NONE,
-	/** CMD_PDC_RESET */
-	CMD_PDC_RESET,
-	/** CMD_PDC_SET_POWER_LEVEL */
-	CMD_PDC_SET_POWER_LEVEL,
-	/** CMD_PDC_SET_CCOM */
-	CMD_PDC_SET_CCOM,
-	/** CMD_PDC_GET_PDOS */
-	CMD_PDC_GET_PDOS,
-	/** CMD_PDC_GET_RDO */
-	CMD_PDC_GET_RDO,
-	/** CMD_PDC_SET_RDO */
-	CMD_PDC_SET_RDO,
-	/** CMD_PDC_GET_VBUS_VOLTAGE */
-	CMD_PDC_GET_VBUS_VOLTAGE,
-	/** CMD_PDC_SET_SINK_PATH */
-	CMD_PDC_SET_SINK_PATH,
-	/** CMD_PDC_READ_POWER_LEVEL */
-	CMD_PDC_READ_POWER_LEVEL,
-	/** CMD_PDC_GET_INFO */
-	CMD_PDC_GET_INFO,
-	/** CMD_PDC_GET_CONNECTOR_CAPABILITY */
-	CMD_PDC_GET_CONNECTOR_CAPABILITY,
-	/** CMD_PDC_SET_UOR */
-	CMD_PDC_SET_UOR,
-	/** CMD_PDC_SET_PDR */
-	CMD_PDC_SET_PDR,
-	/** CMD_PDC_GET_CONNECTOR_STATUS */
-	CMD_PDC_GET_CONNECTOR_STATUS,
-	/** CMD_PDC_GET_CABLE_PROPERTY */
-	CMD_PDC_GET_CABLE_PROPERTY,
-	/** CMD_PDC_GET_VDO */
-	CMD_PDC_GET_VDO,
-	/** CMD_PDC_CONNECTOR_RESET */
-	CMD_PDC_CONNECTOR_RESET,
-	/** CMD_PDC_GET_IDENTITY_DISCOVERY */
-	CMD_PDC_GET_IDENTITY_DISCOVERY,
-
-	/** CMD_PDC_COUNT */
-	CMD_PDC_COUNT
-};
-
 /**
  * @brief Send Local States
  */
@@ -283,6 +240,7 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_VDO] = "PDC_GET_VDO",
 	[CMD_PDC_CONNECTOR_RESET] = "PDC_CONNECTOR_RESET",
 	[CMD_PDC_GET_IDENTITY_DISCOVERY] = "PDC_GET_IDENTITY_DISCOVERY",
+	[CMD_PDC_RUN_FOR_PPM] = "PDC_RUN_FOR_PPM",
 };
 
 /**
@@ -495,6 +453,8 @@ struct pdc_port_t {
 	bool active_charge;
 	/** Tracks current connection state */
 	enum attached_state_t attached_state;
+	/** UCSI command currently being executed */
+	uint8_t ucsi_cmd;
 	/** GET_VDO temp variable used with CMD_GET_VDO */
 	union get_vdo_t vdo_req;
 	/** Array used to hold the list of VDO types to request */
@@ -1221,6 +1181,8 @@ static void pdc_send_cmd_start_entry(void *obj)
 	}
 }
 
+int rts54_run_for_ppm(void);
+
 static int send_pdc_cmd(struct pdc_port_t *port)
 {
 	int rv;
@@ -1293,6 +1255,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_identity_discovery(port->pdc,
 						&port->discovery_state);
 		break;
+	case CMD_PDC_RUN_FOR_PPM:
+		rv = rts54_run_for_ppm();
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -1328,7 +1293,19 @@ static void pdc_send_cmd_start_run(void *obj)
 
 	/* Test if command was successful. If not, try again until max
 	 * retries is reached */
-	if (rv) {
+	if (rv == -ENOTSUP) {
+		if (port->ucsi_cmd)
+			LOG_INF("UCSI command %d not supported",
+				port->ucsi_cmd);
+		else
+			LOG_INF("Command (%s) not supported",
+				pdc_cmd_names[port->cmd->cmd]);
+		port->cmd->error = true;
+		port->cmd->pending = false;
+		port->ucsi_cmd = 0;
+		set_pdc_state(port, port->send_cmd_return_state);
+		return;
+	} else if (rv) {
 		port->send_cmd.wait_counter++;
 		if (port->send_cmd.wait_counter > WAIT_MAX) {
 			/* Could not send command: TODO handle error */
@@ -1336,6 +1313,7 @@ static void pdc_send_cmd_start_run(void *obj)
 				pdc_cmd_names[port->cmd->cmd]);
 			port->cmd->error = true;
 			port->cmd->pending = false;
+			port->ucsi_cmd = 0;
 			set_pdc_state(port, port->send_cmd_return_state);
 		}
 		return;
@@ -1457,6 +1435,7 @@ static void pdc_send_cmd_wait_exit(void *obj)
 	/* Completed with error. Clear complete bit */
 	atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
 	port->cmd->pending = false;
+	port->ucsi_cmd = 0;
 
 	switch (port->cmd->cmd) {
 	case CMD_PDC_GET_PDOS:
@@ -1701,8 +1680,8 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 {
 	switch (pdc_cmd) {
 	case CMD_PDC_RESET:
-		__fallthrough;
 	case CMD_PDC_GET_INFO:
+	case CMD_PDC_RUN_FOR_PPM:
 		return true;
 	default:
 		return false;
@@ -1773,6 +1752,13 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	}
 
 	return 0;
+}
+
+int pdc_send_ucsi_command(int port, uint8_t ucsi_cmd)
+{
+	pdc_data[port]->port.ucsi_cmd = ucsi_cmd;
+
+	return public_api_block(port, CMD_PDC_RUN_FOR_PPM);
 }
 
 bool is_pdc_port_valid(int port)

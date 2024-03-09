@@ -7,6 +7,7 @@
 #include "include/platform.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
+#include "usbc/pdc_power_mgmt.h"
 #include <pthread.h>
 
 const char *ppm_state_strings[PPM_STATE_MAX] = {
@@ -153,17 +154,15 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 		 * LPM alert.
 		 */
 		if (dev->last_connector_alerted != -1) {
+			struct ucsi_control *control = &dev->ucsi_data.control;
+			int rv;
+
 			DLOG("Calling GET_CONNECTOR_STATUS on port %d",
 			     dev->last_connector_alerted);
 
-			struct ucsi_control get_cs_cmd;
-			platform_memset((void *)&get_cs_cmd, 0,
-					sizeof(struct ucsi_control));
-
-			get_cs_cmd.command = UCSI_CMD_GET_CONNECTOR_STATUS;
-			get_cs_cmd.data_length = 0x0;
-			get_cs_cmd.command_specific[0] =
-				dev->last_connector_alerted;
+			control->command = UCSI_CMD_GET_CONNECTOR_STATUS;
+			control->data_length = 0;
+			control->command_specific[0] = dev->last_connector_alerted;
 
 			/* Clear port status before reading. */
 			port = dev->last_connector_alerted - 1;
@@ -172,12 +171,18 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 				port_status, 0,
 				sizeof(struct ucsiv3_get_connector_status_data));
 
-			if (dev->pd->execute_cmd(dev->pd->dev, &get_cs_cmd,
-						 (uint8_t *)port_status) ==
-			    -1) {
-				ELOG("Failed to read port %d status. No recovery.",
-				     port + 1);
+			rv = pdc_send_ucsi_command(
+				port, UCSI_CMD_GET_CONNECTOR_STATUS);
+			if (rv < 0) {
+				ELOG("Failed to read port %d status (%d). No recovery.",
+				     rv, port + 1);
 			} else {
+				/* Copy port status on success. */
+				uint8_t *message_in =
+					(uint8_t *)&dev->ucsi_data.message_in;
+				struct ucsi_cci *cci = &dev->ucsi_data.cci;
+				memcpy(port_status, message_in,
+				       cci->data_length);
 				DLOG("Port status change on %d: 0x%x", port + 1,
 				     (uint16_t)port_status
 					     ->connector_status_change);
@@ -210,7 +215,10 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 			 * OPM.
 			 */
 			if (port < dev->num_ports) {
-				alert_port = true;
+				/* Mask only enabled notifications. */
+				if (dev->notif_mask.raw_value &
+				    dev->per_port_status[port].connector_status_change)
+					alert_port = true;
 			} else {
 				DLOG("No more ports needing OPM alerting");
 			}
@@ -248,6 +256,8 @@ static bool match_pending_command(struct ppm_common_device *dev,
 	       dev->ucsi_data.control.command == command;
 }
 
+#define UCSI_7BIT_PORTMASK(p) ((p) & 0x7F)
+
 static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 {
 	struct ucsi_control *control = &dev->ucsi_data.control;
@@ -257,6 +267,8 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 	struct ucsiv3_ack_cc_ci_cmd *ack_cmd;
 	int ret = -1;
 	bool ack_ci = false;
+	uint8_t conn;
+	bool internal = false;
 
 	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
 		ELOG("Invalid command 0x%x", control->command);
@@ -276,8 +288,9 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 				  control->command_specific;
 		/* The ack should already validated before we reach here. */
 		ack_ci = ack_cmd->connector_change_ack;
+		internal = true;
+		goto success;
 		break;
-
 	case UCSI_CMD_GET_ERROR_STATUS:
 		/* If the error status came from the PPM, return the cached
 		 * value and skip the |execute_cmd| in the pd_driver.
@@ -286,15 +299,59 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 			ret = sizeof(struct ucsiv3_get_error_status_data);
 			platform_memcpy(message_in, &dev->ppm_error_result,
 					ret);
+			internal = true;
 			goto success;
 		}
+		break;
+	case UCSI_CMD_PPM_RESET:
+		dev->notif_mask.raw_value = 0;
+		ret = 0;
+		internal = true;
+		goto success;
+		break;
+	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
+		/* Save the notification mask. */
+		memcpy(&dev->notif_mask, control->command_specific,
+		       sizeof(dev->notif_mask));
+		ret = 0;
+		internal = true;
+		goto success;
 		break;
 	default:
 		break;
 	}
 
+	switch (ucsi_command) {
+	case UCSI_CMD_CONNECTOR_RESET:
+	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
+	case UCSI_CMD_GET_CAM_SUPPORTED:
+	case UCSI_CMD_GET_CURRENT_CAM:
+	case UCSI_CMD_SET_NEW_CAM:
+	case UCSI_CMD_GET_PDOS:
+	case UCSI_CMD_GET_CABLE_PROPERTY:
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+	case UCSI_CMD_GET_ERROR_STATUS:
+	case UCSI_CMD_GET_PD_MESSAGE:
+	case UCSI_CMD_GET_ATTENTION_VDO:
+	case UCSI_CMD_GET_CAM_CS:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[0]);
+		if (conn == 0 || conn > dev->num_ports)
+			return -EINVAL;
+		break;
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		if (conn == 0 || conn > dev->num_ports)
+			return -EINVAL;
+		break;
+	default:
+		conn = 0;
+	}
+
 	/* Do driver specific execute command. */
-	ret = dev->pd->execute_cmd(dev->pd->dev, control, message_in);
+	//ret = dev->pd->execute_cmd(dev->pd->dev, control, message_in);
+	/* This blocks until the cmd finishes, whether successfully or not. */
+	DLOG("%s: Sending command to PDM for conn=%d", __func__, conn);
+	ret = pdc_send_ucsi_command(conn ? conn - 1 : 0, ucsi_command);
 
 	/* Clear command since we just executed it. */
 	platform_memset(control, 0, sizeof(struct ucsi_control));
@@ -308,15 +365,29 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 		return ret;
 	}
 
+	/* pdc_send_ucsi_command returns 0 for success. */
+	ret = cci->data_length;
+
 success:
+	/*
+	 * Internal commands skip pdc_send_ucsi_command and jump here.
+	 *
+	 * For external commands, the result is already stored in message_in
+	 * and the length is already set in cci.data_length by ppm_cci_cb.
+	 */
 	DLOG("Completed UCSI command 0x%x (%s). Read %d bytes.", ucsi_command,
 	     ucsi_command_to_string(ucsi_command), ret);
-	clear_cci(dev);
 
 	if (ret > 0)
 		DLOG_HEXDUMP(message_in, ret, "Command 0x%x (%s) response",
 			     ucsi_command,
 			     ucsi_command_to_string(ucsi_command));
+
+	if (!internal)
+		return 0;
+
+	/* CCI is set for internal commands. */
+	clear_cci(dev);
 
 	/* Post-success command handling */
 	if (ack_ci) {

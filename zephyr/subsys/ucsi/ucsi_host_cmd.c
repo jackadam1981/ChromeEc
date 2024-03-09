@@ -30,6 +30,11 @@ static void opm_notify(void *context)
 	pd_send_host_event(PD_EVENT_PPM);
 }
 
+struct ucsi_ppm_driver *eppm_get(void)
+{
+	return eppm_drv;
+}
+
 /* Sort of main */
 void eppm_init(void)
 {

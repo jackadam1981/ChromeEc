@@ -26,6 +26,8 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 
 #include <drivers/pdc.h>
 
+#include "include/ppm.h"
+
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
 #define BYTE0(n) ((n) & 0xff)
@@ -353,8 +355,10 @@ struct pdc_data_t {
 	union cci_event_t cci_event;
 	/** CCI Event callback */
 	pdc_cci_handler_cb_t cci_cb;
+	pdc_cci_handler_cb_t cci_cb_ex;
 	/** CCI Event callback data */
 	void *cb_data;
+	void *cb_data_ex;
 	/** Information about the PDC */
 	struct pdc_info_t info;
 	/** Init done flag */
@@ -365,6 +369,10 @@ struct pdc_data_t {
 	uint16_t error_recovery_counter;
 	/** Error Status used during initialization */
 	union error_status_t es;
+	/** Connector Status */
+	union connector_status_t conn_status;
+	/** */
+	bool run_for_ppm;
 };
 
 /**
@@ -490,15 +498,30 @@ static void print_current_state(struct pdc_data_t *data)
 static void call_cci_event_cb(struct pdc_data_t *data)
 {
 	const struct pdc_config_t *cfg = data->dev->config;
+	const union cci_event_t cci = data->cci_event;
 
 	if (!data->init_done) {
 		return;
 	}
 
-	if (data->cci_cb) {
-		LOG_INF("C%d: cci_event_cb event=0x%x", cfg->connector_number,
-			data->cci_event.raw_value);
-		data->cci_cb(data->cci_event, data->cb_data);
+	LOG_INF("C%d: %s event=0x%x", cfg->connector_number, __func__,
+		data->cci_event.raw_value);
+
+	/*
+	 * Currently, connector_change is set only by handle_irqs and when it's
+	 * set, no other flags (e.g. command_completed) are set.
+	 */
+	if (data->cci_cb)
+		data->cci_cb(cci, data->cb_data);
+	if (cci.connector_change) {
+		if (data->cci_cb_ex)
+			data->cci_cb_ex(cci, data->cb_data_ex);
+		/* Is this right? */
+		data->cci_event.connector_change = 0;
+	} else if (data->run_for_ppm) {
+		if (data->cci_cb_ex)
+			data->cci_cb_ex(cci, data->cb_data_ex);
+		data->run_for_ppm = false;
 	}
 }
 
@@ -1236,6 +1259,10 @@ static void st_read_run(void *o)
 		memcpy(data->user_buf, data->rd_buf + offset, len);
 	}
 
+	if (data->cmd == CMD_GET_CONNECTOR_STATUS)
+		/* Save connector status in cache. */
+		memcpy(&data->conn_status, data->user_buf, len);
+
 	/* Clear the read buffer */
 	memset(data->rd_buf, 0, 256);
 
@@ -1432,6 +1459,17 @@ static int rts54_set_handler_cb(const struct device *dev,
 
 	data->cci_cb = cci_cb;
 	data->cb_data = cb_data;
+
+	return 0;
+}
+
+static int rts54_set_handler_cb_ex(const struct device *dev,
+				   pdc_cci_handler_cb_t cci_cb, void *cb_data)
+{
+	struct pdc_data_t *data = dev->data;
+
+	data->cci_cb_ex = cci_cb;
+	data->cb_data_ex = cb_data;
 
 	return 0;
 }
@@ -2336,11 +2374,121 @@ static int rts5453_ucsi_init_ppm(struct ucsi_pd_device *device)
 	return dev->ppm->init_and_wait(dev->ppm->dev, NUM_PDC_RTS54XX_PORTS);
 }
 
+struct ucsi_ppm_driver *eppm_get(void);
+
 static struct ucsi_ppm_driver *
 rts5453_ucsi_get_ppm(struct ucsi_pd_device *device)
 {
 	struct rts5453_device *dev = CAST_FROM(device);
 	return dev->ppm;
+}
+
+int rts54_run_for_ppm(void)
+{
+	struct ucsi_ppm_driver *ppm_drv = eppm_get();
+	struct ppm_common_device *ppm_dev =
+			(struct ppm_common_device *)ppm_drv->dev;
+	struct ucsi_control *control = &ppm_dev->ucsi_data.control;
+	uint8_t *lpm_data_out = (uint8_t *)&ppm_dev->ucsi_data.message_in;
+	uint8_t ucsi_command = control->command;
+	const struct device *dev;
+	uint8_t conn;  /* 1:port=0, 2:port=1, ... */
+	int rv = 0;
+
+	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
+		LOG_ERR("Invalid command 0x%x", control->command);
+		return -1;
+	}
+
+	switch (ucsi_command) {
+	case UCSI_CMD_CONNECTOR_RESET:
+	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
+	case UCSI_CMD_GET_CAM_SUPPORTED:
+	case UCSI_CMD_GET_CURRENT_CAM:
+	case UCSI_CMD_SET_NEW_CAM:
+	case UCSI_CMD_GET_PDOS:
+	case UCSI_CMD_GET_CABLE_PROPERTY:
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+	case UCSI_CMD_GET_ERROR_STATUS:
+	case UCSI_CMD_GET_PD_MESSAGE:
+	case UCSI_CMD_GET_ATTENTION_VDO:
+	case UCSI_CMD_GET_CAM_CS:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[0]);
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+			return -EINVAL;
+		break;
+
+	/* The following UCSI commands change the port being addressed.
+	 * These commands have the connector number at offset 24.
+	 */
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+			return -EINVAL;
+		break;
+	default:
+		conn = 0;
+	}
+
+	dev = pdc_data[conn ? conn - 1 : 0]->dev;
+	struct pdc_data_t *data = dev->data;
+
+	switch (ucsi_command) {
+	case UCSI_CMD_CONNECTOR_RESET:
+		union connector_reset_t cr;
+		cr.connector_number = conn;
+		cr.reset_type = 0;
+		rv = rts54_connector_reset(dev, cr);
+		break;
+	case UCSI_CMD_GET_CABLE_PROPERTY:
+		rv = rts54_get_cable_property(
+			dev, (union cable_property_t *)lpm_data_out);
+		break;
+	case UCSI_CMD_GET_CAPABILITY:
+		rv = rts54_get_capability(
+			dev, (struct capability_t *)lpm_data_out);
+		break;
+	case UCSI_CMD_GET_CONNECTOR_CAPABILITY:
+		rv = rts54_get_connector_capability(
+			dev, (union connector_capability_t *)lpm_data_out);
+		break;
+	case UCSI_CMD_GET_PDOS:
+		struct ucsiv3_get_pdos_cmd *gp =
+			(struct ucsiv3_get_pdos_cmd *)control->command_specific;
+		rv = rts54_get_pdos(dev, gp->source_or_sink_pdos,
+				    gp->pdo_offset, gp->number_of_pdos,
+				    gp->partner_pdo, (uint32_t *)lpm_data_out);
+		break;
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+		rv = rts54_get_connector_status(
+			dev, (union connector_status_t *)lpm_data_out);
+		break;
+	case UCSI_CMD_GET_ERROR_STATUS:
+		rv = rts54_get_error_status(
+			dev, (union error_status_t *)lpm_data_out);
+		break;
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+	default:
+		return -ENOTSUP;
+	}
+
+	/*
+	 * This will allow ppm_cci_cb to know whether it needs to copy cci_event
+	 * to PPM's buffer or not.
+	 */
+	if (rv >= 0)
+		data->run_for_ppm = true;
+
+	/*
+	 * If the command requires READ, cci_event.data_len will be set by
+	 * st_read_run, which will call call_cci_event_cb, which will set
+	 * CCI_CMD_COMPLETED. This flag will be picked up by the PDM thread
+	 * looping in pdc_send_cmd_wait_run.
+	 *
+	 * WRITE-only commands return 0. Their completion will be handled by
+	 * st_ping_status_run.
+	 */
+	return rv >= 0 ? 0 : -1;
 }
 
 static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
@@ -2399,10 +2547,7 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 		cr.reset_type = 0;
 		rts54_connector_reset(dev, cr);
 		break;
-	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
-		union notification_enable_t bits;
-		platform_memcpy(&bits, control->command_specific, sizeof(bits));
-		rv = rts54_set_notification_enable(dev, bits, 0);
+	case UCSI_CMD_ACK_CC_CI:
 		break;
 	case UCSI_CMD_GET_CAPABILITY:
 		rv = rts54_get_capability(dev,
@@ -2417,8 +2562,9 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 				    true, (uint32_t *)lpm_data_out);
 		break;
 	case UCSI_CMD_GET_CONNECTOR_STATUS:
-		rv = rts54_get_connector_status(
-			dev, (struct connector_status_t *)lpm_data_out);
+		struct pdc_data_t *data = dev->data;
+		rv = sizeof(data->conn_status);
+		memcpy(lpm_data_out, &data->conn_status, rv);
 		break;
 	case UCSI_CMD_GET_ALTERNATE_MODES:
 		/* Report all modes as 0. */
@@ -2440,6 +2586,43 @@ static void rts5453_ucsi_cleanup(struct ucsi_pd_driver *driver)
 {
 }
 
+static void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
+{
+	struct ucsi_ppm_driver *drv = cb_data;
+	struct ppm_common_device *dev = (struct ppm_common_device *)drv->dev;
+
+	if (dev->ppm_state == PPM_STATE_IDLE ||
+	    dev->ppm_state == PPM_STATE_NOT_READY) {
+		LOG_INF("%s: Not ready to handle CCI", __func__);
+		return;
+	}
+
+	/*
+	 * We wake up PPM for CI here but it won't be able to send any commands
+	 * until PDM becomes ready to accept any public command.
+	 */
+	if (cci_event.connector_change) {
+		if (dev->ppm_state == PPM_STATE_WAITING_ASYNC_EV_ACK) {
+			LOG_INF("%s: Ignore CI. Waiting for OPM to ACK previous CI",
+				__func__);
+			return;
+		}
+
+		memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+
+		LOG_INF("%s: Waking up PPM for CI(conn=%d) ", __func__,
+			cci_event.connector_change);
+		dev->pending.async_event = 1;
+		dev->last_connector_alerted = cci_event.connector_change;
+		platform_condvar_signal(dev->ppm_condvar);
+
+		return;
+	}
+
+	/* For CC */
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+}
+
 struct ucsi_pd_driver *rts5453_open(void)
 {
 	static struct rts5453_device dev;
@@ -2457,6 +2640,9 @@ struct ucsi_pd_driver *rts5453_open(void)
 		LOG_ERR("Failed to open PPM");
 		return NULL;
 	}
+
+	for (int i = 0; i < NUM_PDC_RTS54XX_PORTS; i++)
+		rts54_set_handler_cb_ex(pdc_data[i]->dev, ppm_cci_cb, dev.ppm);
 
 	return &drv;
 }
