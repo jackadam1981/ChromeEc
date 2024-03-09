@@ -10,6 +10,7 @@
 #define DT_DRV_COMPAT named_usbc_port
 
 #include "charge_manager.h"
+#include "extra/um_ppm/ppm_common.h"
 #include "hooks.h"
 #include "usbc/pdc_power_mgmt.h"
 
@@ -580,6 +581,7 @@ static int pdc_subsys_init(const struct device *dev);
 static void send_cmd_init(struct pdc_port_t *port);
 static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
+struct ucsi_ppm_driver *eppm_get(void);
 static void init_port_variables(struct pdc_port_t *port);
 
 static bool should_suspend(struct pdc_port_t *port)
@@ -1023,7 +1025,7 @@ static void pdc_unattached_run(void *obj)
 		port->sink_path_en = false;
 		port->unattached_local_state = UNATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
-		return;
+		break;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
 		break;
@@ -1098,12 +1100,12 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SRC_ATTACHED_GET_PDOS:
+		port->attached_state = SRC_ATTACHED_STATE;
 		port->src_attached_local_state = SRC_ATTACHED_RUN;
 		port->pdo_type = SINK_PDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
-		return;
+		break;
 	case SRC_ATTACHED_RUN:
-		port->attached_state = SRC_ATTACHED_STATE;
 		run_src_policies(port);
 		break;
 	}
@@ -1230,14 +1232,14 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
 		break;
 	case SNK_ATTACHED_SET_SINK_PATH:
+		port->attached_state = SNK_ATTACHED_STATE;
 		port->snk_attached_local_state = SNK_ATTACHED_RUN;
 
 		/* Test if battery can be charged from this port */
 		port->sink_path_en = port->active_charge;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
-		return;
+		break;
 	case SNK_ATTACHED_RUN:
-		port->attached_state = SNK_ATTACHED_STATE;
 		run_snk_policies(port);
 		break;
 	}

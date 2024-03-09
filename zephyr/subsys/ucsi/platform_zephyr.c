@@ -94,6 +94,7 @@ K_THREAD_STACK_DEFINE(stack, STACK_SIZE);
 int platform_task_init(void *start_fn, void *arg, struct task_handle **handle)
 {
 	pthread_attr_t attr;
+	struct sched_param schedparam = { .sched_priority = 10 };
 	int res;
 
 	if (!*handle) {
@@ -115,6 +116,14 @@ int platform_task_init(void *start_fn, void *arg, struct task_handle **handle)
 		perror("pthread_attr_setstack");
 		return -1;
 	}
+
+	res = pthread_attr_setschedparam(&attr, &schedparam);
+	if (res != 0) {
+		errno = res;
+		perror("pthread_attr_setschedparam");
+		return -1;
+	}
+
 	res = pthread_create(&(*handle)->thread, &attr, start_fn, arg);
 	if (res != 0) {
 		ELOG("Failed to start thread with error %d for start_fn %p",
