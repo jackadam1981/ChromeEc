@@ -216,7 +216,11 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 			 * OPM.
 			 */
 			if (port < dev->num_ports) {
-				alert_port = true;
+				/* Let through only enabled notifications. */
+				port_status = &dev->per_port_status[port];
+				if (dev->notif_mask.raw_value &
+				    port_status->connector_status_change)
+					alert_port = true;
 			} else {
 				DLOG("No more ports needing OPM alerting");
 			}
@@ -284,7 +288,6 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 		/* The ack should already validated before we reach here. */
 		ack_ci = ack_cmd->connector_change_ack;
 		break;
-
 	case UCSI_CMD_GET_ERROR_STATUS:
 		/* If the error status came from the PPM, return the cached
 		 * value and skip the |execute_cmd| in the pd_driver.
@@ -296,6 +299,12 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 			goto success;
 		}
 		break;
+	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
+		/* Save the notification mask. */
+		platform_memcpy(&dev->notif_mask, control->command_specific,
+				sizeof(dev->notif_mask));
+		ret = 0;
+		goto success;
 	default:
 		break;
 	}
