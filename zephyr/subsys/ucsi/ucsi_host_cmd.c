@@ -23,6 +23,19 @@ LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
 
 static struct ucsi_ppm_driver *ppm_drv;
 
+void ppm_cci_cb(union cci_event_t cci, void *cb_data)
+{
+	LOG_INF("%s %s%s(0x%08x)", __func__, cci.connector_change ? "CI " : "",
+		cci.command_completed ? "CC " : "", cci.raw_value);
+
+	/*
+	 * Forward connector change (i.e. interrupt) as an LPM alert to the OPM.
+	 */
+	if (cci.connector_change) {
+		ppm_drv->lpm_alert(ppm_drv->dev, cci.connector_change);
+	}
+}
+
 static void opm_notify(void *context)
 {
 	LOG_INF("Notifying OPM");
