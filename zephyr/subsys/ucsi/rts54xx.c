@@ -154,6 +154,10 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 				   control->command_specific, lpm_data_out);
 }
 
+void ppm_cci_cb(union cci_event_t cci_event, void *cb_data);
+int rts54_set_handler_cb_ex(const struct device *dev,
+			    pdc_cci_handler_cb_t cci_cb, void *cb_data);
+
 #define PHANDLE_TO_DEV(node_id, prop, idx) \
 	[idx] = DEVICE_DT_GET(DT_PHANDLE_BY_IDX(node_id, prop, idx)),
 
@@ -187,6 +191,10 @@ static int rts54xx_init(const struct device *device)
 	ppm_dev = DEV_CAST_FROM(dev->ppm->dev);
 	ppm_dev->num_ports = ARRAY_SIZE(port_status);
 	ppm_dev->per_port_status = port_status;
+
+	for (int i = 0; i < ARRAY_SIZE(dev->pdc); i++) {
+		rts54_set_handler_cb_ex(dev->pdc[i], ppm_cci_cb, dev->ppm);
+	}
 
 	return 0;
 }

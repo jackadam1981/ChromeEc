@@ -24,6 +24,29 @@ LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
 
 static struct ucsi_ppm_driver *ppm_drv;
 
+void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
+{
+	struct ucsi_ppm_driver *drv = cb_data;
+	struct ppm_common_device *dev = DEV_CAST_FROM(drv->dev);
+
+	if (dev->ppm_state == PPM_STATE_IDLE ||
+	    dev->ppm_state == PPM_STATE_NOT_READY) {
+		LOG_INF("%s: Not ready to handle CCI", __func__);
+		return;
+	}
+
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+
+	if (cci_event.connector_change) {
+		LOG_INF("%s: CI conn=%d", __func__, cci_event.connector_change);
+		dev->pending.async_event = 1;
+		dev->last_connector_alerted = cci_event.connector_change;
+	}
+
+	LOG_INF("%s: Waking up PPM", __func__);
+	platform_condvar_signal(dev->ppm_condvar);
+}
+
 static void opm_notify(void *context)
 {
 	LOG_INF("Notifying OPM");
