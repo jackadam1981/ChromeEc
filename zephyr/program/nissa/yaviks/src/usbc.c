@@ -5,12 +5,14 @@
 
 #include "charge_state.h"
 #include "chipset.h"
+#include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/sm5803.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
 #include "hooks.h"
 #include "system.h"
+#include "usb_charge.h"
 #include "usb_mux.h"
 #include "watchdog.h"
 
@@ -264,6 +266,29 @@ void board_reset_pd_mcu(void)
 	 */
 }
 
+static int pi3usb9201_is_exist;
+
+static void board_has_bc12_detected(void)
+{
+	int rv, value;
+
+	rv = i2c_read8(I2C_PORT_USB_C0_TCPC, PI3USB9201_I2C_ADDR_3_FLAGS,
+		       PI3USB9201_REG_CLIENT_STS, &value);
+
+	/* Enable BC1.2 data role detection if PI3USB9201 ACKed */
+	if (rv == EC_SUCCESS)
+		pi3usb9201_is_exist = 1;
+	else
+		pi3usb9201_is_exist = 0;
+
+	LOG_INF("PI3USB9201 is exist: %d", pi3usb9201_is_exist);
+}
+
+__override int bc12_detect_data_role_is_not_enable(void)
+{
+	return !pi3usb9201_is_exist;
+}
+
 #define INT_RECHECK_US 5000
 
 /* C0 interrupt line shared by BC 1.2 and charger */
@@ -273,7 +298,8 @@ DECLARE_DEFERRED(check_c0_line);
 
 static void notify_c0_chips(void)
 {
-	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
+	if (pi3usb9201_is_exist)
+		usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
 	sm5803_interrupt(0);
 }
 
@@ -318,6 +344,8 @@ void usb_c1_interrupt(enum gpio_signal s)
  */
 void board_handle_initial_typec_irq(void)
 {
+	board_has_bc12_detected();
+
 	check_c0_line();
 	/*
 	 * C1 port IRQ already handled by board_process_pd_alert(), we don't
@@ -351,7 +379,8 @@ void board_process_pd_alert(int port)
 
 	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
 		sm5803_handle_interrupt(port);
-		usb_charger_task_set_event_sync(1, USB_CHG_EVENT_BC12);
+		if (pi3usb9201_is_exist)
+			usb_charger_task_set_event_sync(1, USB_CHG_EVENT_BC12);
 	}
 	/*
 	 * Immediately schedule another TCPC interrupt if it seems we haven't
