@@ -167,6 +167,10 @@ static int ucsi_execute_cmd(const struct device *device,
 					lpm_data_out);
 }
 
+void ppm_cci_cb(union cci_event_t cci_event, void *cb_data);
+int rts54_set_handler_cb_ex(const struct device *dev,
+			    pdc_cci_handler_cb_t cci_cb, void *cb_data);
+
 static struct ucsi_pd_driver ppm_drv = {
 	.init_ppm = ucsi_init_ppm,
 	.get_ppm = ucsi_get_ppm,
@@ -197,6 +201,10 @@ static int ppm_init(const struct device *device)
 	ppm_dev = (struct ppm_common_device *)dat->ppm->dev;
 	ppm_dev->num_ports = cfg->active_port_count;
 	ppm_dev->per_port_status = dat->port_status;
+
+	for (int i = 0; i < cfg->active_port_count; i++) {
+		rts54_set_handler_cb_ex(cfg->lpm[i], ppm_cci_cb, NULL);
+	}
 
 	return 0;
 }
