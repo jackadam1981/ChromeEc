@@ -8239,6 +8239,13 @@ struct ec_params_fp_unlock_template {
 	uint16_t fgr_num;
 } __ec_align4;
 
+/* Regenerate the template's match secret salt and allow it to be read. */
+#define EC_CMD_FP_MIGRATE_LEGACY_TEMPLATE 0x0418
+
+struct ec_params_fp_migrate_legacy_template {
+	uint32_t userid[FP_CONTEXT_USERID_WORDS];
+};
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 

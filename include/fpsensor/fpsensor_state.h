@@ -125,6 +125,8 @@ enum ec_status fp_read_match_secret(
 	int8_t fgr,
 	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES]);
 
+enum ec_status fp_commit_template(const uint8_t *id, size_t id_size);
+
 #ifdef __cplusplus
 }
 #endif
