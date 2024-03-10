@@ -15,6 +15,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include <zephyr/sys/atomic.h>
+
 #include <drivers/pdc.h>
 
 /**
@@ -323,15 +325,6 @@ const uint32_t *const pdc_power_mgmt_get_snk_caps(int port);
 uint8_t pdc_power_mgmt_get_snk_cap_cnt(int port);
 
 /**
- * @brief Get the Type-C port events
- *
- * @param port USB-C port number
- *
- * @retval PD_STATUS_EVENT_* bitmask
- */
-uint32_t pdc_power_mgmt_get_events(int port);
-
-/**
  * @brief Gets the port partner's Revision Message Data Object (RMDO)
  *
  * @param port USB-C port number
@@ -384,5 +377,30 @@ uint16_t pdc_power_mgmt_get_identity_pid(int port);
  * @retval product type if available, 0 otherwise
  */
 uint8_t pdc_power_mgmt_get_product_type(int port);
+
+/**
+ * @brief Get the current events for the port.
+ *
+ * @param port USB-C port number
+ *
+ * @retval PD_STATUS_EVENT_* bitmask
+ */
+atomic_val_t pdc_power_mgmt_get_events(int port);
+
+/**
+ * @brief Clear specified events for the port.
+ *
+ * @param port USB-C port number
+ * @param event_mask PD_STATUS_EVENT_* bitmask to clear
+ */
+void pdc_power_mgmt_clear_event(int port, atomic_t event_mask);
+
+/**
+ * Notify the host of an event on the port.
+ *
+ * @param port USB-C port number
+ * @param event_mask PD_STATUS_EVENT_* bitmask to set
+ */
+void pdc_power_mgmt_notify_event(int port, atomic_t event_mask);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
