@@ -15,6 +15,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include <zephyr/sys/atomic.h>
+
 #include <drivers/pdc.h>
 
 /**
@@ -282,5 +284,30 @@ int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info);
  * @retval 0 if successful or error code
  */
 int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
+
+/**
+ * @brief Get the current events for the port.
+ *
+ * @param port USB-C port number
+ *
+ * @retval PD_STATUS_EVENT_* bitmask
+ */
+atomic_val_t pdc_power_mgmt_get_events(int port);
+
+/**
+ * @brief Clear specified events for the port.
+ *
+ * @param port USB-C port number
+ * @param event_mask PD_STATUS_EVENT_* bitmask to clear
+ */
+void pdc_power_mgmt_clear_event(int port, atomic_t event_mask);
+
+/**
+ * Notify the host of an event on the port.
+ *
+ * @param port USB-C port number
+ * @param event_mask PD_STATUS_EVENT_* bitmask to set
+ */
+void pdc_power_mgmt_notify_event(int port, atomic_t event_mask);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
