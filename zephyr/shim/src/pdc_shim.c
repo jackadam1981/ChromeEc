@@ -133,9 +133,13 @@ uint8_t pd_get_snk_cap_cnt(int port)
 
 uint32_t pd_get_events(int port)
 {
-	/* TODO:b/326468316 */
+	/* TODO: Assert that uint32_t fits atomic_val_t */
+	return pdc_power_mgmt_get_events(port);
+}
 
-	return 0;
+void pd_clear_events(int port, uint32_t clear_mask)
+{
+	pdc_clear_event(port, clear_mask);
 }
 
 struct rmdo pd_get_partner_rmdo(int port)
