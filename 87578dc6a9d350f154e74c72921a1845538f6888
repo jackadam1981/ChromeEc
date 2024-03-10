@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc392af_99b1ee3b",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-10T19:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcac5ad3_9fad22de",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8decb3dd_10c5c301",
@@ -144,6 +168,30 @@
       "side": 1,
       "message": "I had added this function at first just to have a way to trigger sending GET_VDO via a console command when I was validating the changes to the driver. But, I found that when there is a port partner attached and the EC reboots, then GET_VDO will complete, but ping_status returns a length of 0 for bytes to be read, and so ST_READ state is skipped.\n\nAs a work around for this issue, I kept this function as a way to trigger GET_VDO from the host command path if the VDOs are 0, but the port is in an attached state and the port partner is pd capable. Without the console command path, there was nothing else that was calling this function.",
       "parentUuid": "8decb3dd_10c5c301",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2149,
+        "endChar": 6
+      },
+      "revId": "87578dc6a9d350f154e74c72921a1845538f6888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f1c91b_993b16cf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2149,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-10T19:11:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9a91ea15_6835a22c",
       "range": {
         "startLine": 2149,
         "startChar": 0,
