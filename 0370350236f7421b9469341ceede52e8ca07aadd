@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21aa3da5_390f5fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2024-03-11T08:39:36Z",
+      "side": 1,
+      "message": "According",
+      "revId": "0370350236f7421b9469341ceede52e8ca07aadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df28a01_a4129031",
+        "filename": "board/dexi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2024-03-11T08:39:36Z",
+      "side": 1,
+      "message": "According to CEC spec, the messages are not used to bring the device out of standby. AFAIK, the messages to bring the device out of standby are:\n\n`CEC_MSG_ACTIVE_SOURCE`, `CEC_MSG_TEXT_VIEW_ON` , `CEC_MSG_IMAGE_VIEW_ON` and `CEC_MSG_SET_STREAM_PATH`",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "0370350236f7421b9469341ceede52e8ca07aadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
