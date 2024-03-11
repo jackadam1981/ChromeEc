@@ -83,10 +83,6 @@
 	};
 
 	motionsense-sensor {
-		/delete-node/ lid_accel;
-		/delete-node/ base_accel;
-		/delete-node/ base_gyro;
-
 		lid_accel: lid-accel {
 			compatible = "cros-ec,lis2dw12";
 			status = "okay";
