@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "677df2bf_4934190b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T21:58:19Z",
+      "side": 1,
+      "message": "```\n# ectool typecstatus 0\nPort C0: enabled, connected  State:Attached.SNK\nRole:SNK DFP VCONN, Polarity:CC1\nCC State: UFP attached\nPort events: 0x00000000\nSOP  PD Rev: 2.0\n```",
+      "parentUuid": "9b2f02e2_a81784ea",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25e689b5_8225d68b",
         "filename": "zephyr/shim/src/pdc_shim.c",
         "patchSetId": 2
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "I was hoping to do it statically. This seems like a good spot, because it\u0027s a boundary between the natural Zephyr type for this information and our legacy type. Everywhere else is only in terms of one type.\n\nThere\u0027s actually `ATOMIC_DEFINE` that creates an array of `atomic_t` big enough to store a specified number of bits. Hypothetically, this whole API could be defined in terms of a portably big enough object flag array. I started trying to use that to ensure that the events object was big enough to hold the number of events that we have, but I couldn\u0027t figure out the idiomatic way to then access the object without repeating the size calculation, and it seemed like it was going to end up being very verbose anyway.",
       "parentUuid": "25e689b5_8225d68b",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 8
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be5fa50_cf1c982f",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T21:58:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "330f2a50_48f4a181",
       "range": {
         "startLine": 136,
         "startChar": 4,
