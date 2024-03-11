@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21132ac3_cef41d2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-11T16:25:05Z",
+      "side": 1,
+      "message": "It changes CL:5300377. I wasn\u0027t aware at that time that the panic reason/info/exception are stored in the register fields in the panic structure, so it is overwritten by data from esf.",
+      "revId": "6e2ed6173b8b98639173db7a215f9a6643ef0ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
