@@ -96,7 +96,7 @@ static bool is_pending_async_event(struct ppm_common_device *dev)
 
 static int ppm_common_opm_notify(struct ppm_common_device *dev)
 {
-	uint32_t cci;
+	struct ucsi_cci cci = dev->ucsi_data.cci;
 
 	if (!dev->opm_notify) {
 		ELOG("User error: No notifier!");
@@ -105,7 +105,7 @@ static int ppm_common_opm_notify(struct ppm_common_device *dev)
 
 	platform_memcpy(&cci, &dev->ucsi_data.cci, sizeof(cci));
 	DLOG("Notifying with CCI = 0x%08x", cci);
-	dev->opm_notify(dev->opm_context);
+	dev->opm_notify(dev->opm_context, cci);
 	return 0;
 }
 
