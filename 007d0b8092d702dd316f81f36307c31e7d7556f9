@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118ec09a_67985f0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-11T22:46:02Z",
+      "side": 1,
+      "message": "I think you already reverted this in https://crrev.com/c/5362359, right?\n\nI would split the original CL (https://crrev.com/c/5346157) into two CLs as [described here](http://b/329096927#comment10).\n\nThen we can test and land each one separately.",
+      "revId": "007d0b8092d702dd316f81f36307c31e7d7556f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
