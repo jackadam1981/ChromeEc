@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d01110_38d6ffdf",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-03-11T10:05:36Z",
+      "side": 1,
+      "message": "I add `restore_sop_header_pwr_data_role()` function for restoring the SOP header power and data role.\n\nHow is the data role restored in the MHSR registers when an SOP\u0027/SOP\u0027\u0027 message is successful?\n-\u003e I add the restore role for successful case here. Also, call the restore function for the fail case in others.",
+      "range": {
+        "startLine": 616,
+        "startChar": 3,
+        "endLine": 616,
+        "endChar": 35
+      },
+      "revId": "e1b3a5e4392502bc12d8c2bdd688b23b4acd0480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

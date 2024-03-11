@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ad5da7_fc1867b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-03-11T10:05:36Z",
+      "side": 1,
+      "message": "add b:329010117",
+      "parentUuid": "0abc2819_e8212616",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8bfe8aad_dec6e345",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7c9fb4_06953345",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-03-11T10:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325ae15b_55cf75c3",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 0
+      },
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "873f5b03_32c33c64",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-03-08T16:28:35Z",
       "side": 1,
       "message": "What about restoring the power role? \n\nI think it would be better to just call `it8xxx2_tcpm_set_msg_header()` here.\n\nAlso, should you restore the message header register anytime the packet time is not SOP?\n\n```\nif (type !\u003d TCPCI_MSG_SOP) {\n     it8xxx2_tcpm_set_msg_header(port, \n                                 pd_get_power_role(port),\n                                 pd_get_data_role(port));\n}\n```",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 50
+      },
+      "revId": "983271e5035da9deff493879f0277620894b7cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4162c9e0_4187a684",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-03-11T10:05:36Z",
+      "side": 1,
+      "message": "Done. I move `it8xxx2_tx_data()` after the `it8xxx2_tcpm_set_msg_header()` for calling it.",
+      "parentUuid": "873f5b03_32c33c64",
       "range": {
         "startLine": 280,
         "startChar": 0,
