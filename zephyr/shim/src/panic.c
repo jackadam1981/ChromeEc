@@ -120,6 +120,10 @@ void panic_data_print(const struct panic_data *pdata)
 {
 	PANIC_REG_LIST(PANIC_PRINT_REGS, PANIC_PRINT_REGS);
 	PANIC_REG_LIST(PANIC_PRINT_REGS, PANIC_PRINT_REGS);
+#if defined(CONFIG_RISCV) && !defined(CONFIG_64BIT)
+	PANIC_PRINT_REGS(NULL, riscv.regs[10], S1);
+	PANIC_PRINT_REGS(NULL, riscv.regs[11], S0);
+#endif
 }
 
 static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
