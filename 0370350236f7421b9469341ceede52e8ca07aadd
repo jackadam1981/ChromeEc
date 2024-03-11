@@ -39,6 +39,30 @@
       },
       "revId": "0370350236f7421b9469341ceede52e8ca07aadd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dde15f7_f914e16b",
+        "filename": "board/dexi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-03-11T09:19:18Z",
+      "side": 1,
+      "message": "add for reminds msg for boot on DUT",
+      "parentUuid": "1df28a01_a4129031",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "0370350236f7421b9469341ceede52e8ca07aadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
