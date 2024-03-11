@@ -30,7 +30,7 @@ class PpmTest;
 namespace
 {
 struct ucsi_pd_driver *open_test_pd(PpmTest *ppm_test);
-void ucsi_opm_notify(void *context);
+void ucsi_opm_notify(void *context, struct ucsi_cci cci);
 
 // Allocations made using platform_{malloc|calloc} need to use platform_free to
 // delete. Use this as a custom deleter for std::unique_ptr for those structs.
@@ -441,7 +441,7 @@ void cleanup(struct ucsi_pd_driver *driver)
 	ppm_cast(driver->dev)->cleanup();
 }
 
-void ucsi_opm_notify(void *context)
+void ucsi_opm_notify(void *context, struct ucsi_cci cci)
 {
 	ppm_cast(static_cast<ucsi_pd_device *>(context))->opm_notify();
 }
