@@ -13,6 +13,7 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -110,33 +111,31 @@ static void pretty_print_message(const char *prefix,
 	DLOG_LOOP("Offset = 0x%x, Data Length = 0x%x, ", msg->offset,
 		  msg->data_length);
 
-	/* Only write and read responses will have valid data within. */
-	switch (msg->type) {
-	case UM_MSG_WRITE:
-	case UM_MSG_READ_RSP:
+	/* Print data. */
+	if (msg->data_length) {
 		DLOG_LOOP("[ ");
 		for (int i = 0; i < msg->data_length; ++i) {
 			DLOG_LOOP("0x%x, ", msg->data[i]);
 		}
 		DLOG_LOOP("]");
-		break;
 	}
 
 	DLOG_END("");
 }
 
-static void um_ppm_notify(void *context)
+static void um_ppm_notify(void *context, struct ucsi_cci cci)
 {
+	uint8_t data[sizeof(struct um_message_skeleton) + sizeof(cci)];
 	struct um_ppm_cdev *cdev = (struct um_ppm_cdev *)context;
-	uint8_t data[sizeof(struct um_message_skeleton)];
 
 	struct um_message_skeleton *msg = (struct um_message_skeleton *)data;
 	msg->type = UM_MSG_NOTIFY;
 	msg->offset = 0;
-	msg->data_length = 0;
+	msg->data_length = sizeof(cci);
+	memcpy(msg->data, &cci, sizeof(cci));
 
 	pretty_print_message("Notify", msg);
-	write_to_cdev(cdev->fd, msg, sizeof(struct um_message_skeleton));
+	write_to_cdev(cdev->fd, msg, sizeof(data));
 }
 
 static int um_ppm_apply_platform_policy(void *context)

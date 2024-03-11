@@ -306,8 +306,9 @@ typedef int(ucsi_ppm_write)(struct ucsi_ppm_device *device, unsigned int offset,
  * Function to send OPM a notification (doorbell).
  *
  * @param context: Context data for the OPM notifier.
+ * @param cci : Command Status and Connector Change Indication.
  */
-typedef void(ucsi_ppm_notify)(void *context);
+typedef void(ucsi_ppm_notify)(void *context, struct ucsi_cci cci);
 
 /**
  * Register a notification callback with the driver. If there is already an
