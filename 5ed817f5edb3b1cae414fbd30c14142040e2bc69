@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b2f02e2_a81784ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T20:01:34Z",
+      "side": 1,
+      "message": "As a test, could you add a fake events, and run ```ectool typecstatus \u003c1|0\u003e```",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e689b5_8225d68b",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T20:01:34Z",
+      "side": 1,
+      "message": "Maybe we should add the assert in the init function, but will we ever run this code on a 64-bit machine?",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 8
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0a461a_cf6c8919",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T20:01:34Z",
+      "side": 1,
+      "message": "So there will be a followup CL to set the events?",
+      "range": {
+        "startLine": 406,
+        "startChar": 10,
+        "endLine": 406,
+        "endChar": 20
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
