@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effc5ff0_5ffe77f3",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T13:57:27Z",
+      "side": 1,
+      "message": "prefix with \"pdc_power_mgmt_\"",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "88acf892240e85a7c1267774701192eabd5f26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0e09f3_bd12e65f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T13:57:27Z",
+      "side": 1,
+      "message": "pdc_power_mgmt_",
+      "range": {
+        "startLine": 584,
+        "startChar": 5,
+        "endLine": 584,
+        "endChar": 9
+      },
+      "revId": "88acf892240e85a7c1267774701192eabd5f26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13244a17_5634faf4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-11T13:57:27Z",
+      "side": 1,
+      "message": "pdc_power_mgmt_",
+      "range": {
+        "startLine": 590,
+        "startChar": 5,
+        "endLine": 590,
+        "endChar": 8
+      },
+      "revId": "88acf892240e85a7c1267774701192eabd5f26d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
