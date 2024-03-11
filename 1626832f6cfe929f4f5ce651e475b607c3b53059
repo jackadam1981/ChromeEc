@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995f41ed_bd54e83f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-11T02:33:42Z",
+      "side": 1,
+      "message": "This seems like the wrong state, but it also seems like it was wrong before. Should there be a separate CL to fix this?",
+      "revId": "1626832f6cfe929f4f5ce651e475b607c3b53059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
