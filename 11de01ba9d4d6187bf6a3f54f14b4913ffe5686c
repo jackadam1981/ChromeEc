@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e6f80a_53eb6c3f",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-11T03:24:38Z",
+      "side": 1,
+      "message": "Added mock framework to the unit test by mocking the OTPI (ROM) functions in crrev/c/5288836. My first implementation mocked the otp_key functions, but this negatively impacted test coverage",
+      "parentUuid": "3fb05045_9b707173",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1b0f76c_1513fa90",
