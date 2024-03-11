@@ -1573,13 +1573,6 @@ static int rts54_pdc_reset(const struct device *dev)
 
 static int rts54_reset(const struct device *dev)
 {
-	struct pdc_data_t *data = dev->data;
-
-	/* Can only be called from Init State */
-	if (get_state(data) != ST_INIT) {
-		return -EBUSY;
-	}
-
 	uint8_t payload[] = {
 		PPM_RESET.cmd,
 		PPM_RESET.len,
@@ -1672,13 +1665,6 @@ static int rts54_set_notification_enable(const struct device *dev,
 					 union notification_enable_t bits,
 					 uint16_t ext_bits)
 {
-	struct pdc_data_t *data = dev->data;
-
-	/* Can only be called from Init State */
-	if (get_state(data) != ST_INIT) {
-		return -EBUSY;
-	}
-
 	uint8_t payload[] = {
 		SET_NOTIFICATION_ENABLE.cmd,
 		SET_NOTIFICATION_ENABLE.len,
