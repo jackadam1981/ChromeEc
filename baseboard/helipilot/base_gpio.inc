@@ -9,6 +9,7 @@ GPIO_INT(HOST_MCU_WP_OD,       PIN(A, 4), GPIO_INT_BOTH, switch_interrupt)
 
 /* SHI CS Ready, Low Active. */
 GPIO_INT(SPI_HOST_CS_MCU_ODL,  PIN(5, 3), GPIO_INT_FALLING,shi_cs_event)
+GPIO_INT(SLP_L,                PIN(A, 0), GPIO_INT_BOTH, slp_event)
 
 /* Inputs */
 GPIO(TRANSPORT_SEL,            PIN(4, 3), GPIO_INPUT)
