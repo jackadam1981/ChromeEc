@@ -79,6 +79,20 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A3_VBUS, GPIO_EN_USB_A4_VBUS,
 };
 
+/* Power on Dita through CEC */
+struct cec_offline_policy dita_cec_policy[] = {
+	{
+		.command = CEC_MSG_REPORT_PHYSICAL_ADDRESS,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	{
+		.command = CEC_MSG_DEVICE_VENDOR_ID,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	/* Terminator */
+	{ 0 },
+};
+
 /* CEC ports */
 static const struct bitbang_cec_config bitbang_cec_config = {
 	.gpio_out = GPIO_HDMI2_CEC,
@@ -92,13 +106,13 @@ const struct cec_config_t cec_config[] = {
 	[CEC_PORT_0] = {
 		.drv = &it83xx_cec_drv,
 		.drv_config = NULL,
-		.offline_policy = cec_default_policy,
+		.offline_policy = dita_cec_policy,
 	},
 	/* HDMI2 */
 	[CEC_PORT_1] = {
 		.drv = &bitbang_cec_drv,
 		.drv_config = &bitbang_cec_config,
-		.offline_policy = cec_default_policy,
+		.offline_policy = dita_cec_policy,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(cec_config) == CEC_PORT_COUNT);
