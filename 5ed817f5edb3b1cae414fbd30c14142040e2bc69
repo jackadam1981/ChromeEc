@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "330f2a50_48f4a181",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-11T21:49:12Z",
+      "side": 1,
+      "message": "I was hoping to do it statically. This seems like a good spot, because it\u0027s a boundary between the natural Zephyr type for this information and our legacy type. Everywhere else is only in terms of one type.\n\nThere\u0027s actually `ATOMIC_DEFINE` that creates an array of `atomic_t` big enough to store a specified number of bits. Hypothetically, this whole API could be defined in terms of a portably big enough object flag array. I started trying to use that to ensure that the events object was big enough to hold the number of events that we have, but I couldn\u0027t figure out the idiomatic way to then access the object without repeating the size calculation, and it seemed like it was going to end up being very verbose anyway.",
+      "parentUuid": "25e689b5_8225d68b",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 8
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e0a461a_cf6c8919",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2024-03-11T20:01:34Z",
       "side": 1,
       "message": "So there will be a followup CL to set the events?",
+      "range": {
+        "startLine": 406,
+        "startChar": 10,
+        "endLine": 406,
+        "endChar": 20
+      },
+      "revId": "5ed817f5edb3b1cae414fbd30c14142040e2bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d53713f9_18924e4f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-11T21:49:12Z",
+      "side": 1,
+      "message": "Yeah. I\u0027m probably going to do that one CL per event type and not submit this CL until at least some of those are ready.",
+      "parentUuid": "2e0a461a_cf6c8919",
       "range": {
         "startLine": 406,
         "startChar": 10,
