@@ -474,6 +474,14 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 		/* Wait for timeout or event */
 		k_event_wait(&port->sm_event, PDC_SM_EVENT, false,
 			     K_MSEC(LOOP_DELAY_MS));
+		/*
+		 * Always clear PDC_SM_EVENT to ensure that the thread goes to
+		 * sleep in cases where PDC_SM_EVENT can't be handled
+		 * immediately such as when a public cmd is posted, but is
+		 * waiting on an internal cmd to be sent.
+		 */
+		k_event_clear(&port->sm_event, PDC_SM_EVENT);
+
 		/* Run port connection state machine */
 		smf_run_state(&port->ctx);
 	}
