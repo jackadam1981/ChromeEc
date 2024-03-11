@@ -5,8 +5,10 @@
 
 #ifndef __CROS_EC_STDBOOL_H__
 #define __CROS_EC_STDBOOL_H__
-
-#define bool    _Bool
+#include "common.h"
+#include "ocpc.h"
+#include "stdbool.h"
+#define bool    0
 #define true    1
 #define false   0
 
