@@ -1826,8 +1826,22 @@ uint32_t pdc_power_mgmt_get_vbus_voltage(int port)
 
 int pdc_power_mgmt_reset(int port)
 {
+	int rv;
+
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
 	/* Block until command completes */
-	return public_api_block(port, CMD_PDC_RESET);
+	rv = public_api_block(port, CMD_PDC_RESET);
+	if (rv) {
+		return rv;
+	}
+
+	/* Revert back to init state */
+	set_pdc_state(&pdc_data[port]->port, PDC_INIT);
+
+	return 0;
 }
 
 uint8_t pdc_power_mgmt_get_src_cap_cnt(int port)
