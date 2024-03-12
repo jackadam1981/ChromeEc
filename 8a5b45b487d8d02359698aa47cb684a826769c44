@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "145b8e6b_175caebd",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-12T16:48:21Z",
+      "side": 1,
+      "message": "+1 to attaching an abstracted cable/partner object as the backend operation instead of having the test directly specify the cable property.\n\nI understand your point about failure isolation, but I don\u0027t agree that it\u0027s necessary. I prefer to keep the backend API surface small so that the tests are easier to follow.  The goal is to provide coverate of the real driver/subsystem code.  This kind of isolation just serves as a unit test of the emulator",
+      "parentUuid": "95320ec5_ab1abe86",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 72
+      },
+      "revId": "8a5b45b487d8d02359698aa47cb684a826769c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57e4d8f_8846d20a",
