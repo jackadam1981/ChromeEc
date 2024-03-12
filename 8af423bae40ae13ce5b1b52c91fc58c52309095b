@@ -16,6 +16,29 @@
       "message": "Hi Abe and Caveh,\ncan you help review this change. I think there is a race condition here causing retimer access errors. Let me know if you have any questions.",
       "revId": "8af423bae40ae13ce5b1b52c91fc58c52309095b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd329b9_62f910fb",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-12T19:48:06Z",
+      "side": 1,
+      "message": "don\u0027t you run into the same problem here?\nmux task (et. al.) indirectly call perform_mux_set() which gets us here\nand we still have a race condition because the flag is set after the\nINIT operation.\n\nat the same time, restart_tc_sm can call usb_mux_init() directly,\npotentially from a different task.\n\ncan the global usb_mux_init() simply clear USB_MUX_FLAG_INIT,\nthen rely on perform_mux_set to call an unlocked version of this\nusb_mux_init()? i think perform_mux_set() is guaranteed to run\nin the same thread, no additional locks needed.\n\nexit_low_power_mode() and similar functions that check\nUSB_MUX_FLAG_INIT become simpler.\nusb_mux_task() may need to do an initial perform_mux_set()\nso we still have the startup/boot scenario handled.",
+      "range": {
+        "startLine": 487,
+        "startChar": 26,
+        "endLine": 487,
+        "endChar": 43
+      },
+      "revId": "8af423bae40ae13ce5b1b52c91fc58c52309095b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
