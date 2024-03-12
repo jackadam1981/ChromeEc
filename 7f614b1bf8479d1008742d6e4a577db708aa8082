@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce2529f_c14c888c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-12T19:42:37Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to add some comments here about the scope of the reset being done. It wasn\u0027t obvious to me at first that this is not sending any command to the PDC itself, but rather providing a mechanism for the rts54xx driver to run its initialization steps.",
+      "range": {
+        "startLine": 1836,
+        "startChar": 1,
+        "endLine": 1836,
+        "endChar": 44
+      },
+      "revId": "7f614b1bf8479d1008742d6e4a577db708aa8082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
