@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1441a2c1_a4a44a93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73491c63_1bdf8124",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "505639c0_0305bc8e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "Remove TODO from commit message (this can go in Makefile if you really want it)",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24f295f_486bcc62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "I created a simple bash script that run unit tests on target",
+      "parentUuid": "505639c0_0305bc8e",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -125,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ae69d08_22e41678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04c746ee_c30d8b5e",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c553cdc_e0c82d22",
         "filename": "extra/um_ppm/ppm_common.c",
         "patchSetId": 2
@@ -136,6 +190,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "Looks like debug changes that weren\u0027t reverted",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3daf816_8fc64dd0",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "It is not debug code but compilation error fix when compiling in cros_sdk.\nRemote_tests have to be compiled in the cros_sdk in order to match libstdc++.\nI moved this change to a separate commit.",
+      "parentUuid": "9c553cdc_e0c82d22",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -159,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "748eee4a_7aab14ad",
+        "filename": "extra/um_ppm/test/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8396ba0b_01fd4aab",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6763d71b_88b44465",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -170,6 +260,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "`using namespace` is not allowed by style guide.\n\nhttps://google.github.io/styleguide/cppguide.html#Namespaces",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efb0cb1_9226f06f",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6763d71b_88b44465",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -193,6 +301,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbeb573f_89c77c23",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0573c26e_7dcc80f7",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67e7e4c_575a4a2c",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -204,6 +330,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "You\u0027re going to want to document why this exists.\n\ni.e. Used for the C `execute_cmd` implementation and reset per test run.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a8c3a5_fcc27c8e",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "I added explanation",
+      "parentUuid": "e67e7e4c_575a4a2c",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -227,6 +371,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "841c5b4e_b956e747",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be5d6af6_c1c90c6a",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1c81c3d_cc0aeb5d",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -238,6 +400,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "style: General Google C++ style is to exclude the `this`. Naming convention of `variable_` tells you when it\u0027s a class variable.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3d1c8f_ac69e3a5",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1c81c3d_cc0aeb5d",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -261,6 +441,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddb0ba90_a2498b78",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1ba79c0_e81088c1",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afae5c49_e8be437f",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -272,6 +470,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "style: Rename as `kUcsiCmdLen`\n\nhttps://google.github.io/styleguide/cppguide.html#Constant_Names",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a810a6c4_10668426",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afae5c49_e8be437f",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -295,6 +511,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e780b72_48d790d1",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e52ddbd_c0be5511",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fdb4d38_4744f5c0",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -306,6 +540,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "style: `kTimeoutMs`",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693b6d40_dc983563",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fdb4d38_4744f5c0",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -329,6 +581,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc53908f_39f05c1f",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c18e098c_00f0ce9a",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc7d7e37_fa89ef02",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -340,6 +610,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "You can use tuple destructuring:\n\n`auto\u0026 [loc, exist, val] \u003d tuple;`\n\nhttps://en.cppreference.com/w/cpp/language/structured_binding",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9786cccf_c027aba3",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc7d7e37_fa89ef02",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -363,6 +651,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a83fd105_1e869cbf",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b0fdf02_e5f845c1",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a67494e_afe30015",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -380,6 +686,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a8894fc_3f9afb06",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a67494e_afe30015",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1af0ab88_c5e54968",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -391,6 +715,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "style: `OpmInitialization`",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e466b0_e9141384",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1af0ab88_c5e54968",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -468,6 +810,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e73c9c0f_1ac4a394",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Actually mixing ON_CALL with EXPECT_CALL is not very good idea because EXPECT_CALL has precedence which ends with an error for example:\n```\n\nunknown file: Failure\n\nUnexpected mock function call - taking default action specified at:\nopm_tests.cc:785:\n    Function call: execute_cmd(0x5ce40125d3a0, 0x5ce40125d592, 0x5ce40125d59a)\n          Returns: 0\nGoogle Mock tried the following 25 expectations, but none matched:\n```\n\nON_CALL\u0027s default action was executed from line 785:\n```\n        ON_CALL(*_pdDriverMock, execute_cmd(_,\n                MatchCmd(UCSI_CMD_PPM_RESET), _))\n                .WillByDefault(Invoke(\u0026ppm_reset, fptr));\n```\n\nBut even though test was declared as failed.\nBased on that I will stick only to EXPECT_CALL.",
+      "parentUuid": "7fd73ab1_cf18f1d6",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3745b432_caacce9e",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -479,6 +839,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "These are `port 2` and `port 3` on our test Chromebooks but we should really look these up using the driver instead.\n\nFor example, `cros-ec-typec` would show up at:\n`/sys/bus/platform/drivers/cros-ec-typec/GOOG0014\\:00/typec/port0`\n\nI haven\u0027t started `ucsi_um_test` but I\u0027d expect:\n`/sys/bus/platform/drivers/ucsi_um_test/typec/port2`\n\nYou\u0027ll need to figure out how to handle offsets but the actual constants I\u0027d use for ports are 1 and 2.",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de1399c_77661903",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "I added detection of ports",
+      "parentUuid": "3745b432_caacce9e",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -502,6 +880,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55700844_3868d9ab",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "1aa1d54a_c160e2cb",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "904ff4df_83b2b991",
         "filename": "extra/um_ppm/test/opm_tests.cc",
         "patchSetId": 2
@@ -513,6 +909,24 @@
       "writtenOn": "2024-02-22T04:18:55Z",
       "side": 1,
       "message": "I would make the tests more descriptive (both the name and the comment here).\n\nThis seems to be `VerifyPartnerPropertiesOnConnect`.\n\n```\nEmit an LPM alert and connector status marking a port partner as connected\nand confirm the OPM fills out all the relevant partner properties.\n```",
+      "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a901a1d_6d362189",
+        "filename": "extra/um_ppm/test/opm_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:42:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "904ff4df_83b2b991",
       "revId": "288abfa2ee6b8970147181b6eb92b789fbf9dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
