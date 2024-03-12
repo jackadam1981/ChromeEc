@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7530a17_1a489e19",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T15:17:21Z",
+      "side": 1,
+      "message": "Now that we have the mock, you can add a check to make sure that `otp_key_provision` is called in the [`rollback_entropy.c`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rollback_entropy.c;l\u003d91;drc\u003dadae543afc2c9a23428426c0ac3de63a9e4de9a6) test.",
+      "parentUuid": "12e6f80a_53eb6c3f",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1b0f76c_1513fa90",
         "filename": "common/rollback.c",
         "patchSetId": 5

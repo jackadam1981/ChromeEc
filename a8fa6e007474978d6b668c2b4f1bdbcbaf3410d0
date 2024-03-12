@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b327077d_6fff4d61",
+        "filename": "common/rollback.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T15:17:21Z",
+      "side": 1,
+      "message": "This (and other instances) should be `OTP_KEY_SIZE_BYTES`.",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 48
+      },
+      "revId": "a8fa6e007474978d6b668c2b4f1bdbcbaf3410d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
