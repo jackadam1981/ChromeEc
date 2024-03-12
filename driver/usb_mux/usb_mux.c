@@ -45,6 +45,9 @@ static atomic_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Coordinate mux accesses by-port among the tasks */
 static mutex_t mux_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Coordinate low power mode entry and exit among the tasks */
+static mutex_t lpm_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /* Coordinate which task requires an ACK event */
 static task_id_t ack_task[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[0 ... CONFIG_USB_PD_PORT_MAX_COUNT - 1] = TASK_ID_INVALID
@@ -129,6 +132,7 @@ static int init_mux_mutex(void)
 
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		k_mutex_init(&mux_lock[port]);
+		k_mutex_init(&lpm_lock[port]);
 
 		if (IS_ENABLED(HAS_TASK_USB_MUX))
 			k_mutex_init(&queue_lock[port]);
@@ -437,11 +441,13 @@ static void enter_low_power_mode(int port)
 	 * want know know that we tried to put the device in low power mode
 	 * so we can re-initialize the device on the next access.
 	 */
+	mutex_lock(&lpm_lock[port]);
 	atomic_or(&flags[port], USB_MUX_FLAG_IN_LPM);
 
 	/* Apply any low power customization if present */
 	configure_mux(port, TYPEC_USB_MUX_SET_ALL_CHIPS, USB_MUX_LOW_POWER,
 		      NULL);
+	mutex_unlock(&lpm_lock[port]);
 }
 
 static int exit_low_power_mode(int port)
@@ -473,6 +479,7 @@ void usb_mux_init(int port)
 		return;
 	}
 
+	mutex_lock(&lpm_lock[port]);
 	rv = configure_mux(port, TYPEC_USB_MUX_SET_ALL_CHIPS, USB_MUX_INIT,
 			   NULL);
 
@@ -487,6 +494,8 @@ void usb_mux_init(int port)
 		atomic_or(&flags[port], USB_MUX_FLAG_IN_LPM);
 	else
 		atomic_clear_bits(&flags[port], USB_MUX_FLAG_IN_LPM);
+
+	mutex_unlock(&lpm_lock[port]);
 }
 
 static void perform_mux_set(int port, int index, mux_state_t mux_mode,
