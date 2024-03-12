@@ -761,6 +761,8 @@ int crec_flash_physical_restore_state(void)
 
 int crec_flash_pre_init(void)
 {
+	crec_flash_physical_restore_state();
+
 #if !defined(NPCX_INT_FLASH_SUPPORT)
 	/* Enable FIU interface */
 	flash_pinmux(1);
@@ -790,7 +792,6 @@ int crec_flash_pre_init(void)
 	flash_protect_int_flash(!gpio_get_level(GPIO_WP_L));
 #endif /*CONFIG_WP_ACTIVE_HIGH */
 #endif
-	crec_flash_physical_restore_state();
 
 	return EC_SUCCESS;
 }
