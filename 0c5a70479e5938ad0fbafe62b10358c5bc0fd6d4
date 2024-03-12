@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a222a155_ec2c3114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T22:00:38Z",
+      "side": 1,
+      "message": "Is there anything different about this change than before when it caused http://b/329096927?\n\nBased on @hesling@chromium.org\u0027s comments in chat this change making this work may be more complicated than we thought. It looks like we ended up [moving the GPIO back to RO on `bloonchipper`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/bloonchipper/base_gpio.inc;l\u003d8-9;drc\u003dc9590e5abb7b27563857e3f59b918ca55c4ffed6), so probably not too bad to keep it in RO on `helipilot`.",
+      "revId": "0c5a70479e5938ad0fbafe62b10358c5bc0fd6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b216be8_57b20dfc",
+        "filename": "baseboard/helipilot/base_gpio_rw.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T22:00:38Z",
+      "side": 1,
+      "message": "I think this is the wrong comment. This comment applies to `SPI_HOST_CS_MCU_ODL`.\n\nFor this line you could put something like: `Sleep signal. Active Low.`",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "0c5a70479e5938ad0fbafe62b10358c5bc0fd6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
