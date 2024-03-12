@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95ad6a8_90f854b0",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-12T18:55:37Z",
+      "side": 1,
+      "message": "Hi Mike. This makes sense to me at a glance. Can you please explain how things went wrong without this change? I bet you found some code which interrupts board_cut_off_battery and checks battery_cutoff_state.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 57
+      },
+      "revId": "7293d9c1855f4bbd8e5aa7583889598c30d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
