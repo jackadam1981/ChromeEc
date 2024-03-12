@@ -94,6 +94,30 @@
       },
       "revId": "76aa142e585941c377c64b604f8f507ee3776486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9dd104_3cabd0df",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2180,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-12T20:29:22Z",
+      "side": 1,
+      "message": "Do other vendors support this message?  If we\u0027re not planning to support this command with PDCs, then I\u0027m okay with dropping the bug number.  But add some additional context to the comment.",
+      "parentUuid": "a89144f2_a23ab7df",
+      "range": {
+        "startLine": 2180,
+        "startChar": 0,
+        "endLine": 2180,
+        "endChar": 50
+      },
+      "revId": "76aa142e585941c377c64b604f8f507ee3776486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
