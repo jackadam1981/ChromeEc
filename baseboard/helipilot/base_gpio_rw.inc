@@ -11,6 +11,9 @@
 /* Interrupts */
 GPIO_INT(FP_MCU_INT_L,         PIN(B, 0), GPIO_INT_RISING, fps_event)
 
+/* SHI CS Ready, Low Active. */
+GPIO_INT(SLP_L,                PIN(A, 0), GPIO_INT_BOTH, slp_event)
+
 /* Inputs */
 GPIO(FP_SENSOR_SEL,            PIN(4, 4), GPIO_INPUT)
 
