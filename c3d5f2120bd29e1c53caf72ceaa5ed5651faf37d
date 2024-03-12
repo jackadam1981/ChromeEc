@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73215689_c46ee2ec",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-12T17:49:29Z",
+      "side": 1,
+      "message": "`sink_path_en` earlier in this structure is functionally an argument to `pdc_set_sink_path`, and that call is triggered by `CMD_PDC_SET_SINK_PATH`. `sink_path_en` has a comment noting the relationship between the variable and the command.\n\n`pdo_type` should have a similar comment WRT `CMD_PDC_GET_PDOS`.",
+      "parentUuid": "44746b8e_eab6d142",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1dce7aef_f6b88adf",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Yes this should be the next state.",
       "parentUuid": "1dce7aef_f6b88adf",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354b2583_38fa3a53",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-12T17:49:29Z",
+      "side": 1,
+      "message": "OK, I think this was the same misunderstanding I had on the other CL.",
+      "parentUuid": "5a56e8d2_88a7a36d",
       "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "I agree, but that change might need to wait until we remove the shim, because the EC API is ```const uint32_t *const pd_get_snk_caps(int port)``` and ```uint8_t pd_get_snk_cap_cnt(int port)```.",
       "parentUuid": "408dc180_cc27186e",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97cefd7_1e316b35",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-12T17:49:29Z",
+      "side": 1,
+      "message": "Acknowledged.\n\nFWIW, neither of these functions do much work. It would be relatively cheap to have a single `pdc_` function that does both things, and have each `pd_*` function call that `pdc_` function. But until we de-shim, that wouldn\u0027t do much for the client.",
+      "parentUuid": "95659c18_7026f22c",
       "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
