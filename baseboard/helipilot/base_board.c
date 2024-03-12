@@ -50,8 +50,7 @@ static void ap_deferred(void)
 	 * in S0:   SLP_ALT_L is 1 and SLP_L is 1.
 	 * in S5/G3, the FP MCU should not be running.
 	 */
-	int running = gpio_get_level(GPIO_SLP_ALT_L) &&
-		      (gpio_get_level(GPIO_SLP_L));
+	int running = gpio_get_level(GPIO_SLP_L);
 
 	if (running) { /* S0 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
@@ -108,7 +107,6 @@ static void board_init(void)
 	board_init_transport();
 
 	/* Enable interrupt on PCH power signals */
-	gpio_enable_interrupt(GPIO_SLP_ALT_L);
 	gpio_enable_interrupt(GPIO_SLP_L);
 
 	if (IS_ENABLED(SECTION_IS_RW)) {
