@@ -99,9 +99,6 @@ static void board_init(void)
 
 	board_init_transport();
 
-	/* Enable interrupt on PCH power signals */
-	gpio_enable_interrupt(GPIO_SLP_L);
-
 	if (IS_ENABLED(SECTION_IS_RW)) {
 		board_init_rw();
 	}
@@ -110,18 +107,5 @@ static void board_init(void)
 	 * avoid incurring that cost when generating random numbers
 	 */
 	npcx_trng_hw_init();
-
-	/*
-	 * Enable the SPI slave interface if the PCH is up.
-	 * Do not use hook_call_deferred(), because ap_deferred() will be
-	 * called after tasks with priority higher than HOOK task (very late).
-	 */
-	ap_deferred();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-/* PCH power state changes */
-void slp_event(enum gpio_signal signal)
-{
-	hook_call_deferred(&ap_deferred_data, 0);
-}
