@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98a9527_014fd61e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-12T18:40:23Z",
+      "side": 1,
+      "message": "I though that restoring flash state from sysjump at the end of `crec_flash_pre_init()` was some oversight, but I was wrong. When HW WP is enabled, it\u0027s not possible to read status registers from RW (I always read 0x00). I suspect that UMA lock can\u0027t be disabled when the WP_IF bit is set, but since this is not a part of the fix, I\u0027ll just rebase without this.",
+      "revId": "9d089be335a3a3cb9b7470c424d790a6940f2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
