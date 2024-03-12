@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "584d68dc_272d79a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-12T23:44:03Z",
+      "side": 1,
+      "message": "This patch triggers a hard fault on helipilot, even without test code calling the functions in place. Trace below, looks like a pointer is getting mangled.\n\n\u003d\u003d\u003d PROCESS EXCEPTION: 03 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 60000000 \u003d\u003d\u003d\nr0 :00000000 r1 :00000000 r2 :00000000 r3 :00000000\nr4 :00000000 r5 :00000000 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:00000000 sp :200b2168 lr :1005af03 pc :00000040\nInvalid state, Forced hard fault\ncfsr \u003d 20000, shcsr \u003d 70000, hfsr \u003d 40000000, dfsr \u003d 0\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Process Stack Contents \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n200b2188: 10058195 200b2194 0015fcb8 00000000\n200b2198: 00000002 4000c009 200b21b8 1005fca1\n200b21a8: 10063548 00000000 00000000 00000000\n200b21b8: 200b2468 1005f733 200b22a8 200b6128",
+      "revId": "28b3e82c8b00cb2d57278cc31cdb60340eb5072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
