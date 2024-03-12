@@ -768,6 +768,12 @@ int crec_flash_physical_restore_state(void)
 
 int crec_flash_pre_init(void)
 {
+#ifdef NPCX_INT_FLASH_SUPPORT
+	uint8_t sr1, sr2;
+	unsigned int prot_start, prot_length;
+	int rv;
+#endif
+
 	crec_flash_physical_restore_state();
 
 #if !defined(NPCX_INT_FLASH_SUPPORT)
@@ -787,6 +793,41 @@ int crec_flash_pre_init(void)
 	 * Disable flash quad enable to avoid /WP pin function is not
 	 * available. */
 	flash_set_quad_enable(0);
+
+#ifdef NPCX_INT_FLASH_SUPPORT
+	/*
+	 * Fix situation when flash protect bit (SRP0) is enabled, but the size
+	 * of protected area is 0 or it's not possible to decode protected range
+	 * from SR1 and SR2 registers (spi_flash_reg_to_protect() returned
+	 * error). This situation can occur if flashing was interrupted
+	 * e.g. flashrom was killed while reading from flash.
+	 *
+	 * Status registers can be modified only when the SRP0 bit and the WP_IF
+	 * bit (in DEV_CTL4 register) are not enabled at the same time. The
+	 * WP_IF bit is cleared when MCU reboots, it means that once enabled,
+	 * the bit can't be cleared by the software.
+	 *
+	 * The WP_IF bit is set by flash_protect_int_flash() function basing on
+	 * GPIO_WP status. In our case, the WP_IF bit is clear in RO (because we
+	 * are after reboot), but not in RW (because it will be set later in
+	 * this function).
+	 *
+	 * Clearing the status registers before the WP_IF bit is enabled avoids
+	 * situation in which we protect status registers with size of protected
+	 * area set to 0. We rely on other parts of the system to enable
+	 * protection like we rely on them to enable protection when HW WP is
+	 * enabled for the first time (e.g. RWSIG).
+	 */
+	if (!is_int_flash_protected()) {
+		flash_get_status(&sr1, &sr2);
+		rv = spi_flash_reg_to_protect(sr1, sr2, &prot_start,
+					      &prot_length);
+
+		if (rv || ((sr1 & SPI_FLASH_SR1_SRP0) && prot_length == 0)) {
+			flash_set_status(0, 0);
+		}
+	}
+#endif
 
 	/*
 	 * Protect status registers of internal spi-flash if WP# is active
