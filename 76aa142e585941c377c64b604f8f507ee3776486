@@ -70,6 +70,30 @@
       },
       "revId": "76aa142e585941c377c64b604f8f507ee3776486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e31660a_35ecfa06",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2180,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-12T20:28:41Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll add back the bug. The command should return the maximum supported revision, but the RT PDC only returns the currently negotiated revision.",
+      "parentUuid": "3bcdb55f_08213942",
+      "range": {
+        "startLine": 2180,
+        "startChar": 0,
+        "endLine": 2180,
+        "endChar": 50
+      },
+      "revId": "76aa142e585941c377c64b604f8f507ee3776486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
