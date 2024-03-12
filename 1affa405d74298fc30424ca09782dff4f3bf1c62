@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1e8851_e308d034",
+        "filename": "baseboard/helipilot/base_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-03-12T21:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf86123_dd073c47",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 47
+      },
+      "revId": "1affa405d74298fc30424ca09782dff4f3bf1c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1e749ff_0547cbb5",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-12T21:50:30Z",
       "side": 1,
       "message": "Let\u0027s remove `S3`. I think the only states we use are `S0` and `S0ix` (lines 43 and 44).",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "1affa405d74298fc30424ca09782dff4f3bf1c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b51eff_aaa4815c",
+        "filename": "baseboard/helipilot/base_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-03-12T21:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1e749ff_0547cbb5",
       "range": {
         "startLine": 54,
         "startChar": 17,
