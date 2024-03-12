@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b920329e_3d15dd52",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:41:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec46aff7_eea33c5c",
+      "revId": "cbad0e95d0c5e34d0d70b384528671ea9ed8c5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0369e35d_77bd457c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-22T03:25:59Z",
       "side": 1,
       "message": "nit: We do this `DLOG_LOOP` pretty often. Maybe we just write a platform api that says:\n\n```\n#define DLOG_ARRAY_U8(array, array_size, prefix_fmt, ...) { \\\n  DLOG_START(prefix_fmt \": [ \", __VA_ARGS__); \\\n  for (int _i \u003d 0; _i \u003c array_size; ++_i) { \\\n    DLOG_LOOP(\"0x%02x\", array[_i]); \\\n  } \\\n  DLOG_END(\" ]\"); \\\n}\n```",
+      "revId": "cbad0e95d0c5e34d0d70b384528671ea9ed8c5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a79f2b_3ecf4a32",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-12T09:41:06Z",
+      "side": 1,
+      "message": "I added DLOG_ARRAY_U8 to the platform API",
+      "parentUuid": "0369e35d_77bd457c",
       "revId": "cbad0e95d0c5e34d0d70b384528671ea9ed8c5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
