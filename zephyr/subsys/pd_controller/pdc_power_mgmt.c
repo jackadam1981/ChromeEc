@@ -2176,7 +2176,7 @@ struct rmdo pdc_power_mgmt_get_partner_rmdo(int port)
 {
 	struct rmdo value = { 0 };
 
-	/* TODO:b/326466602 */
+	/* PD 3.1 Get_Revsion Message is not supported */
 
 	return value;
 }
