@@ -16,6 +16,24 @@
       "message": "I already implemented this in my failing CL. Sorry, I didn\u0027t understand your question when you asked if you should implement the command. Can we remove this and just merge the test?",
       "revId": "57d6f77f11d792add0d50e905a24ba38f81b6a49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0450ab4b_2861b7f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-03-12T15:23:07Z",
+      "side": 1,
+      "message": "Unfortunately the emulator changes and test depend on this. If you want to split out your original CL and just submit this portion then I\u0027d be fine waiting for that to land and abandon this one. I didn\u0027t wait to risk changing any ownership info on your patch train so that\u0027s why I didn\u0027t checkout that branch and re-submit it with this change on top. But I\u0027d be willing to go that route as well. Let me know what works best for you.",
+      "parentUuid": "6822ace3_98700c80",
+      "revId": "57d6f77f11d792add0d50e905a24ba38f81b6a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
