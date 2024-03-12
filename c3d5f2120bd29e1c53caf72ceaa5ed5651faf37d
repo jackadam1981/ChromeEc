@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44746b8e_eab6d142",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-12T15:21:06Z",
+      "side": 1,
+      "message": "could you explain further?",
+      "parentUuid": "b80043f0_bf40fe54",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1dce7aef_f6b88adf",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a56e8d2_88a7a36d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-12T15:21:06Z",
+      "side": 1,
+      "message": "Yes this should be the next state.",
+      "parentUuid": "1dce7aef_f6b88adf",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "408dc180_cc27186e",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2024-03-07T19:20:18Z",
       "side": 1,
       "message": "If it\u0027s not too late to change this interface, it seems a little safer to have one API function that returns the count and has the caps as an output param. That would avoid the possibility of a race on the caller side, and it would make it more obvious to the caller that they need to check the count.",
+      "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95659c18_7026f22c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-12T15:21:06Z",
+      "side": 1,
+      "message": "I agree, but that change might need to wait until we remove the shim, because the EC API is ```const uint32_t *const pd_get_snk_caps(int port)``` and ```uint8_t pd_get_snk_cap_cnt(int port)```.",
+      "parentUuid": "408dc180_cc27186e",
       "revId": "c3d5f2120bd29e1c53caf72ceaa5ed5651faf37d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
