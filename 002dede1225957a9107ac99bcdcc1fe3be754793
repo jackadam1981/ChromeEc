@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8371a8_863a2628",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T15:06:28Z",
+      "side": 1,
+      "message": "I think we\u0027ve given the reviewers on https://crrev.com/c/5294757 enough time. I gave it a +2. Let\u0027s go ahead and submit that one and we won\u0027t have to do this.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a876966_fcd2710e",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T15:06:28Z",
+      "side": 1,
+      "message": "Did you verify that the mock definitely gets called? (I don\u0027t think we have any other cases where we try to mock a function pointer, so I just want to make sure it works.)\n\nHowever, see above comment. If you go ahead and submit https://crrev.com/c/5294757 then we can just mock the functions, which will definitely work.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b9ea48_b1088a60",
+        "filename": "common/mock/otpi_mock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T15:06:28Z",
+      "side": 1,
+      "message": "For read and write, power needs to be on, right?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06bcbab7_2e89ce15",
+        "filename": "common/mock/otpi_mock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-12T15:06:28Z",
+      "side": 1,
+      "message": "Is this actually how it works? What happens if you do multiple writes? (I think you said the data was OR\u0027ed in?)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
