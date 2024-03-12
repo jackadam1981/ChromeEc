@@ -210,6 +210,38 @@ static int cmd_pdc_connector_reset(const struct shell *sh, size_t argc,
 	return rv;
 }
 
+static int cmd_pdc_comms_state(const struct shell *sh, size_t argc, char **argv)
+{
+	bool enable;
+	int rv;
+
+	/* Suspend or resume PDC comms */
+	if (!strncmp(argv[1], "suspend", strlen("suspend"))) {
+		shell_fprintf(sh, SHELL_INFO, "Suspend port threads\n");
+		enable = false;
+	} else if (!strncmp(argv[1], "resume", strlen("resume"))) {
+		shell_fprintf(sh, SHELL_INFO, "Resume port threads\n");
+		enable = true;
+	} else {
+		shell_error(sh, "Invalid value");
+		return -EINVAL;
+	}
+
+	/* Apply to all ports
+	 *
+	 * TODO(b/323371550): This command should take a chip argument and
+	 * target only ports serviced by that chip.
+	 */
+	rv = pdc_power_mgmt_comms_state(enable);
+
+	if (rv) {
+		shell_fprintf(sh, SHELL_ERROR, "Could not %s PDC: %d", argv[1],
+			      rv);
+	}
+
+	return rv;
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -240,6 +272,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Trigger hard or data reset\n"
 		      "Usage: pdc conn_reset  <port> [hard|data]",
 		      cmd_pdc_connector_reset, 3, 0),
+	SHELL_CMD_ARG(comms, NULL,
+		      "Suspend/resume PDC command communication\n"
+		      "Usage: pdc comms [suspend|resume]",
+		      cmd_pdc_comms_state, 2, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
