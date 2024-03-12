@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0887797f_0defe3c0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2180,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-12T20:12:01Z",
+      "side": 1,
+      "message": "This isn\u0027t fixing b:326466602, so why drop the TODO?",
+      "range": {
+        "startLine": 2180,
+        "startChar": 0,
+        "endLine": 2180,
+        "endChar": 50
+      },
+      "revId": "76aa142e585941c377c64b604f8f507ee3776486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
