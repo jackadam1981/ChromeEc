@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95320ec5_ab1abe86",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-03-12T16:40:40Z",
+      "side": 1,
+      "message": "In general I prefer directly exposing the corresponding emulator properties/functions even when they correspond to a driver function. This allows for tests that give a clearer signal if something is wrong specifically in the emulator vs something being wrong in the PDC subsystem or in the I2C layer. Eventually I think we\u0027d want to move toward an architecture where we\u0027d be attaching some sort of cable object to the emulator instead of directly touching emulator properties and a function like this would help facilitate testing since that would something specific to the emulator.",
+      "parentUuid": "fa9e70ac_80d141b5",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 72
+      },
+      "revId": "8a5b45b487d8d02359698aa47cb684a826769c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57e4d8f_8846d20a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-12T15:41:24Z",
       "side": 1,
       "message": "This seems unnecessary.  This is effectively just testing the emulator code, but the `pdc_get_cable_property()` call should also verify the emulator is populating the cable property data.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 0
+      },
+      "revId": "8a5b45b487d8d02359698aa47cb684a826769c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfaa51d7_0d02f008",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-03-12T16:40:40Z",
+      "side": 1,
+      "message": "See other comment as well, but this helps to localize any possible test failures. If this portion passes, but the actual pdc call fails, that gives a different signal as to what\u0027s actually failing vs just having the pdc call.",
+      "parentUuid": "b57e4d8f_8846d20a",
       "range": {
         "startLine": 372,
         "startChar": 0,
