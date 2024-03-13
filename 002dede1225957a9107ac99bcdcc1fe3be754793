@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4630ade_d271c7cd",
+        "filename": "common/mock/otpi_mock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-13T04:29:32Z",
+      "side": 1,
+      "message": "Yes, checking for powered on now, also added mock_otp struct to manage mock state",
+      "parentUuid": "d4b9ea48_b1088a60",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06bcbab7_2e89ce15",
@@ -107,6 +131,30 @@
       "writtenOn": "2024-03-12T15:06:28Z",
       "side": 1,
       "message": "Is this actually how it works? What happens if you do multiple writes? (I think you said the data was OR\u0027ed in?)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50009ab1_deff7c43",
+        "filename": "common/mock/otpi_mock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-13T04:29:32Z",
+      "side": 1,
+      "message": "Multiple writes to the same bit can result in data corruption, it is not guaranteed to be OR\u0027d or ignored. Implemented as OR since that should be the more probable case",
+      "parentUuid": "06bcbab7_2e89ce15",
       "range": {
         "startLine": 47,
         "startChar": 0,
