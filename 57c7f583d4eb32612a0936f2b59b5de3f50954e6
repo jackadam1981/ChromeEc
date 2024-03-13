@@ -16,6 +16,23 @@
       "message": "Ran TAST tests. This patch breaks firmware.FpUpdater test because the older firmware used in the test think the rollback region size is 128KB",
       "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934cb581_fa436f73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-13T17:00:42Z",
+      "side": 1,
+      "message": "This is great.\n\nDid you double check that the `CONFIG_ROLLBACK_SIZE` is used when configuring the MPU rollback protection region?",
+      "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
