@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab1d2414_f47b43bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T00:21:11Z",
+      "side": 1,
+      "message": "I think I found it. Page 398 of the datasheet has \"Status Register Protect (SRP)\" section. Is that the right one?",
+      "parentUuid": "5727db6b_b04aa06c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "5c16c3a5166a6e8c7b4c5263bf0339f492ba4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8972ab54_6a5c089a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
