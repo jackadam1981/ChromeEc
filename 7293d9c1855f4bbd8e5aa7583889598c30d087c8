@@ -22,6 +22,30 @@
       },
       "revId": "7293d9c1855f4bbd8e5aa7583889598c30d087c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c41910_f5e457b6",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-13T01:01:43Z",
+      "side": 1,
+      "message": "I recorded the battery I2C log when the issue occurred, and found that the battery temperature register data was read between the two cutoff commands, and when this register was read, BATTERY_CUTOFF_STATE_IN_PROGRESS did not seem to be set. For details, please view the issue b/329026599,thanks",
+      "parentUuid": "f95ad6a8_90f854b0",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 57
+      },
+      "revId": "7293d9c1855f4bbd8e5aa7583889598c30d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
