@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1e82fe8_7b68a274",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T08:21:04Z",
+      "side": 1,
+      "message": "\u003e That will set all_protected to 0, but UPDATE_BIT(NPCX_UMA_ECTS...) won\u0027t have any effect, right? And then all_protected is out of sync with NPCX_UMA_ECTS.\n\nExactly. In the driver it was hidden by restoring flash state from jump data at the end of `crec_flash_pre_init()`. `all_protected` will be set back to 1, if it was enabled in RO which \"fixes\" the problem.",
+      "parentUuid": "cd7a2fd3_fd81dd2f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "9d089be335a3a3cb9b7470c424d790a6940f2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56c1b9af_b0f0bc2b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
