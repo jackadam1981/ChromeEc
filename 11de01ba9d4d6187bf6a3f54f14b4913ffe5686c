@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa68861c_4dfb0b67",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T23:35:45Z",
+      "side": 1,
+      "message": "Generally we try to make sure that every new CL has some automated test associated with it.\n\nAs to whether that test is in a separate CL or part of this one, I think a separate CL is probably preferred, since it helps keep the CLs small (go/small-cls).\n\nBut ideally the test CL exists before we submit this CL, since it helps confirm that this CL is correct (versus submitting this CL, writing a test, finding something is broken, creating another CL, etc.).\n\nWe do this so that we can more confidently release at any time, since we have some level of test coverage for features we care about through the unit tests.",
+      "parentUuid": "3e6ba4ca_9f2300d9",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1b0f76c_1513fa90",
         "filename": "common/rollback.c",
         "patchSetId": 5

@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cb12a9_b9532290",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T23:35:45Z",
+      "side": 1,
+      "message": "It would be good to add a unit test that covers this code. (It can be a separate CL, see other comment.)\n\nWe have some tests in `test/fpsensor_crypto.cc`; we should add the OTP mock and make sure that we get the expected values in the `CONFIG_OTP` case.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7759698d_a5ea8b37",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T23:35:45Z",
+      "side": 1,
+      "message": "Let\u0027s use a constant for this as well. See other comment where I added `IKM_OTP_OFFSET_BYTES`.\n\nThen we can also add something like `BUILD_ASSERT((sizeof(ikm) - IKM_OTP_OFFSET_BYTES) \u003d\u003d sizeof(otp_key));` here.",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc40b8a_104efa04",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T23:35:45Z",
+      "side": 1,
+      "message": "For readability, can you create a new `#define`?\n\nSomething like:\n\n```\n#ifdef CONFIG_OTP_KEY\nconstexpr uint8_t IKM_OTP_OFFSET_BYTES \u003d CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed);\nconstexpr uint8_t IKM_SIZE_BYTES \u003d IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES;\nBUILD_ASSERT(sizeof(IKM_SIZE_BYTES) \u003d\u003d 96);\n\n#else\nconstexpr uint8_t IKM_SIZE_BYTES \u003d CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed);\nBUILD_ASSERT(sizeof(IKM_SIZE_BYTES) \u003d\u003d 64);\n#endif\n```\n\n(I think the `constexpr` should work since this is C++ code, but you can use a `#define` if it doesn\u0027t.)\n\nThen this code just becomes:\n\n```\nuint8_t ikm[IKM_SIZE_BYTES];\n```",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 6
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6189396_ddc122c7",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T23:35:45Z",
+      "side": 1,
+      "message": "This needs to be changed as well, right?\n\nDouble-check that there are no other places that `get_ikm` is called, such as in `test/fpsensor_crypto.cc`. Did you try running those tests? I don\u0027t think they will pass anymore?",
+      "range": {
+        "startLine": 244,
+        "startChar": 13,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
