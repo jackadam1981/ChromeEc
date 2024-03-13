@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5f36d6_616e78f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T11:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b1b05a_c5d9cd3a",
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28718742_51ce203a",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "243db247_b9df456e",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T11:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21da9f26_8a581204",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 8
+      },
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2511e9_a6a094d1",
@@ -88,6 +130,30 @@
       "writtenOn": "2024-03-13T00:18:41Z",
       "side": 1,
       "message": "Might be good to put a link to your reproduction case:\n\n`e.g. flashrom was killed while reading from flash: http://b/328066864#comment12`",
+      "range": {
+        "startLine": 801,
+        "startChar": 4,
+        "endLine": 801,
+        "endChar": 54
+      },
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f083fc_018e22da",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T11:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b2511e9_a6a094d1",
       "range": {
         "startLine": 801,
         "startChar": 4,
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55488f82_c998cbad",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T11:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41cb83c_ed9c5443",
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca63a779_a14fe4b3",
@@ -128,6 +212,30 @@
       "writtenOn": "2024-03-13T00:18:41Z",
       "side": 1,
       "message": "Check return value?",
+      "range": {
+        "startLine": 825,
+        "startChar": 3,
+        "endLine": 825,
+        "endChar": 19
+      },
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdbe4f0_38870a0c",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T11:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca63a779_a14fe4b3",
       "range": {
         "startLine": 825,
         "startChar": 3,
