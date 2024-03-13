@@ -16,6 +16,24 @@
       "message": "i\u0027m a bit surprised that board level code needs to issue a\nUSB PD hard reset. is every board that supports TBT going\nto need to do something similar?\nare we missing something in the common TBT support code?",
       "revId": "4632b9c3139dfe6c10690ec1f92f0d64dd3d144d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2114875_8675ec10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-13T21:05:05Z",
+      "side": 1,
+      "message": "I asked for clarification on the bug. My quick take is that this probably not the appropriate fix.",
+      "parentUuid": "636f7dcc_ec262294",
+      "revId": "4632b9c3139dfe6c10690ec1f92f0d64dd3d144d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
