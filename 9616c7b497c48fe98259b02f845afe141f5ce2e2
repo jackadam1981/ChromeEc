@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dab37b_5965efc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-03-13T06:20:07Z",
+      "side": 1,
+      "message": "LGTM. Just be surprised that how the Flashrom enable the SRP0 while the protection size is zero.",
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21da9f26_8a581204",
