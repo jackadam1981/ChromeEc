@@ -22,6 +22,54 @@
       },
       "revId": "11bde5b3bccb0a4a97641d6775dee86e85cd92a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd1aaca_1d90fd81",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9695,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-13T22:55:52Z",
+      "side": 1,
+      "message": "Indeed, that is cleaner.",
+      "parentUuid": "ff8a01ef_bfa5563d",
+      "range": {
+        "startLine": 9695,
+        "startChar": 34,
+        "endLine": 9695,
+        "endChar": 40
+      },
+      "revId": "11bde5b3bccb0a4a97641d6775dee86e85cd92a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391cf543_8ad60f02",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9695,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-13T22:55:52Z",
+      "side": 1,
+      "message": "Indeed, that\u0027s much cleaner.",
+      "parentUuid": "ff8a01ef_bfa5563d",
+      "range": {
+        "startLine": 9695,
+        "startChar": 34,
+        "endLine": 9695,
+        "endChar": 40
+      },
+      "revId": "11bde5b3bccb0a4a97641d6775dee86e85cd92a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
