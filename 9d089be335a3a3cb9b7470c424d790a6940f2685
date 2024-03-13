@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f48b3f5_1ae5a516",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-13T09:52:04Z",
+      "side": 1,
+      "message": "It would be better if the code looked like this\n```\nint crec_flash_pre_init(void)\n{\n\n    /* Code that executes in RO and RW */\n    ...\n    \n    if (!crec_flash_physical_restore_state()) {\n        /* Code that executes in RO only */\n    }\n\n    ...\n```\n\nFor me, it was obvious that UMA lock can be cleared, because we are calling `flash_uma_lock(0)` which doesn\u0027t have an effect.\n\nNow I suspect that on some other chips it should be possible to disable the lock, because we are disabling it in `flash_set_status_for_prot()` if all_protected is 1, but the flash protection is disabled.",
+      "parentUuid": "5d1f453d_1fc45dc4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "9d089be335a3a3cb9b7470c424d790a6940f2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56c1b9af_b0f0bc2b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
