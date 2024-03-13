@@ -9699,6 +9699,8 @@ static int cmd_memory_dump(int argc, char *argv[])
 		rv = -1;
 		goto cmd_memory_dump_cleanup;
 	}
+	/* Init segments structure to zero */
+	memset(segments, 0, sizeof(struct mem_segment) * entry_count);
 
 	/* Fetch all memory segments */
 	for (uint16_t entry_index = 0; entry_index < entry_count;
