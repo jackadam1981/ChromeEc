@@ -23,6 +23,8 @@
 /* eSPI device */
 #define espi_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))
 
+static bool pd_reset_on_resume;
+
 void board_reset_pd_mcu(void)
 {
 	/* Nothing to do */
@@ -39,6 +41,8 @@ static void usbc_interrupt_init(void)
 	if (!system_jumped_late()) {
 		board_reset_pd_mcu();
 	}
+	/* initialize pd_reset_on_resume to false */
+	pd_reset_on_resume = false;
 }
 DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_POST_I2C);
 
@@ -111,3 +115,42 @@ int board_set_active_charge_port(int port)
 
 	return EC_SUCCESS;
 }
+
+void pd_reset_deferred(void)
+{
+	/* reset both Typec port */
+	pd_execute_hard_reset(USBC_PORT_C0);
+	pd_execute_hard_reset(USBC_PORT_C1);
+}
+DECLARE_DEFERRED(pd_reset_deferred);
+
+void pd_enter_suspend_setting(void)
+{
+	pd_reset_on_resume = true;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_enter_suspend_setting, HOOK_PRIO_DEFAULT);
+
+void pd_reset_resume(void)
+{
+	/*
+	 * Reset the port 0 (TBT port) PD connection 30 seconds after resume to
+	 * ensure correct TBT init.
+	 * TODO(b/296493322): Craft a more targeted fix.
+	 */
+	if (pd_reset_on_resume) {
+		hook_call_deferred(&pd_reset_deferred_data, 30 * SECOND);
+		pd_reset_on_resume = false;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_reset_resume, HOOK_PRIO_DEFAULT);
+
+void pd_reset_reboot(void)
+{
+	/*
+	 * Reset the port 0 (TBT port) PD connection 30 seconds after reboot to
+	 * ensure correct TBT init.
+	 * TODO(b/296493322): Craft a more targeted fix.
+	 */
+	hook_call_deferred(&pd_reset_deferred_data, 30 * SECOND);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, pd_reset_reboot, HOOK_PRIO_DEFAULT);
