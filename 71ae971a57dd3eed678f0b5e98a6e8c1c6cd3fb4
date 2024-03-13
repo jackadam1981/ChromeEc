@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d694d17_363f16d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-03-13T15:20:12Z",
+      "side": 1,
+      "message": "Can you also test the following items:\n\n```\n         * Cold reset:\n           $ dut-control cold_reset:on sleep:0.2 cold_reset:off\n           Result: G3 -\u003e S0\n         * Long power press to shutdown:\n           $ dut-control dut-control power_key:8.2\n           Result: S0 -\u003e S5 -\u003e G3\n         * Long power press to power-on but then shutdown:\n           $ dut-control dut-control power_key:9.2\n           Result: G3 -\u003e S0 -\u003e S5 -\u003e G3\n         * Short power press to power-on:\n           $ dut-control dut-control power_key:tab\n           Result: G3 -\u003e S0\n         * Console command: apreset\n           Result: S0 -\u003e S0, AP reboots\n         * Console command: apshutdown\n           Result: S0 -\u003e S5 -\u003e G3\n         * Lid open to power-on:\n           $ dut-control lid_open:no sleep:0.2 lid_open:yes\n           Result: G3 -\u003e S0\n         * AP console: reboot\n           Reulst: S0 -\u003e S0\n         * AP console: poweroff\n           Reulst: S0 -\u003e G3\n         * Short power press to power-on:\n           $ dut-control dut-control power_key:tab\n           Result: G3 -\u003e S0\n         * Servo issue warm reset:\n           $ dut-control power_state:warm_reset\n           Result: S0 -\u003e S5 -\u003e S0\n         * Servo hold warm_reset and release:\n           $ dut-control warm_reset:on sleep:2 warm_reset:off\n           Result: S0 -\u003e S5 -\u003e S0\n\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "71ae971a57dd3eed678f0b5e98a6e8c1c6cd3fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
