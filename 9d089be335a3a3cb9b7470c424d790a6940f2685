@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d1f453d_1fc45dc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-03-13T09:26:11Z",
+      "side": 1,
+      "message": "* For EC core domain reboot, `UMA_LOCK` is cleared. So `all_protected \u003d 0` matches it.\n* For EC sysjump, `UMA_LOCK` is not cleared. So `all_protected` needs to be restored from jumped data to make sure it matches the state before sysjump.",
+      "parentUuid": "b1e82fe8_7b68a274",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "9d089be335a3a3cb9b7470c424d790a6940f2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56c1b9af_b0f0bc2b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
