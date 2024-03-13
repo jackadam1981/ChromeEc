@@ -51,6 +51,23 @@
       "parentUuid": "44e34a33_4b1bd7fd",
       "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c4d541_25f40e42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T19:05:24Z",
+      "side": 1,
+      "message": "I think this is good, with the caveat that I want to make sure it doesn\u0027t affect the amount of SRAM that we have available for data. `helipilot` is different from `bloonchipper`/`dartmonkey` in that code is executed out of RAM, not Flash. `helipilot` has 512 KB RAM and 1024 KB Flash.\n\nI haven\u0027t looked into all the details on how this is actually set up yet, but the idea is that all the code is copied from Flash to RAM before executing (separately for RO/RW I think). If we increase the size of Flash available to RW, it seems like that would shrink the amount of RAM available, which would decrease the amount of heap space we have.\n\nHaving said that, when I build `helipilot` with and without this change I get the exact same `bytes in RAM` message (using commit `3ee1f05e01eba92130a736cdb2953ddc90fe66cc`):\n\n```\n*** 70376 bytes in flash and 134112 bytes in RAM still available on helipilot RO ****\n*** 95856 bytes in flash and 73248 bytes in RAM still available on helipilot RW ****\n```\n\nand the same amount of free heap space listed in the console:\n\n```\n\u003e shmem\nSystem Total:     74224\nMalloc Reserved:  544\nMalloc Allocated: 16\nMalloc Free:      528\n```\n\n[This doc](https://docs.google.com/document/d/1AL1A6i3P-w4_x8SFVYwrGOay9S6Il1y6C4-oS6bvKFk/edit?resourcekey\u003d0-i1kZ1CrszqTIdZslOVTQgA\u0026disco\u003dAAAAsOAntD8) suggests that we may be hardcoding the split of SRAM, which would explain why the amount of RAM for data does not change with this CL.",
+      "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
