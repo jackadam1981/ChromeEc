@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5727db6b_b04aa06c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T00:04:23Z",
+      "side": 1,
+      "message": "CH (or Patryk if you know): I was trying to find the documentation for the status registers (`SRP0` and `SRP1`). I see that [this file mentions `W25Q16CV`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/registers.h;l\u003d1423;drc\u003d7a2194fc3d1b4b3e8715adfead3a4a30bfb7e892) and found [this datasheet](https://www.winbond.com/resource-files/da00-w25q16cvf1.pdf#page\u003d15). I\u0027m assuming it\u0027s not the exact datasheet our chip, but that the `Status Register Protect Bits` are the same. \n\nCan you confirm?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "5c16c3a5166a6e8c7b4c5263bf0339f492ba4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
