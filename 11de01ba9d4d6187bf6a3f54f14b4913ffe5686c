@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e6ba4ca_9f2300d9",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-13T05:10:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a TODO and a separate CL or do you think it needs to be part of this one? Seems we\u0027d need to add the otpi mock to the existing rollback_entropy test and increase the size of this commit if included here.",
+      "parentUuid": "d7530a17_1a489e19",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1b0f76c_1513fa90",
         "filename": "common/rollback.c",
         "patchSetId": 5
