@@ -33,6 +33,24 @@
       "message": "This is great.\n\nDid you double check that the `CONFIG_ROLLBACK_SIZE` is used when configuring the MPU rollback protection region?",
       "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e873a3a8_63de2cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "Ohhhhhh, gotcha.",
+      "parentUuid": "44e34a33_4b1bd7fd",
+      "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
