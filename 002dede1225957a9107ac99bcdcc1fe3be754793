@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2039a9fa_6f0e5bb5",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T22:45:06Z",
+      "side": 1,
+      "message": "Ok, can you add a `TODO(b/323098079)` comment for removing it and then see if you can figure out what is going on? (The EC code is littered with things like this that make the code hard to read, so it\u0027s nice to avoid adding more. If we don\u0027t do it soon, it\u0027s unlikely to ever be done.)",
+      "parentUuid": "9be2097a_49acbed7",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4b9ea48_b1088a60",
         "filename": "common/mock/otpi_mock.c",
         "patchSetId": 10
