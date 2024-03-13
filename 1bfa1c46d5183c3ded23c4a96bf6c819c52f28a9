@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8777e617_80cfcdc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2024-03-13T23:27:35Z",
+      "side": 1,
+      "message": "Probably silly question, but are we notifying the AP on attach too? We do that on TCPMv2 (I think as soon as we go into some sort of Attached state, the bit is set and a host event is generated).",
+      "revId": "1bfa1c46d5183c3ded23c4a96bf6c819c52f28a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
