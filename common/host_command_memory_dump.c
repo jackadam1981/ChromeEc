@@ -5,6 +5,7 @@
 
 #include "console.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "host_command_memory_dump.h"
 #include "string.h"
@@ -133,3 +134,36 @@ static enum ec_status read_memory_dump(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_MEMORY_DUMP_READ_MEMORY, read_memory_dump,
 		     EC_VER_MASK(0));
+
+static bool task_is_excluded_from_memory_dump(task_id_t task_id)
+{
+	switch (task_id) {
+	case TASK_ID_COUNT:
+		/* fallthrough */
+#ifdef CONFIG_HAS_TASK_KEYSCAN
+	case TASK_ID_KEYSCAN:
+		/* fallthrough */
+#endif
+#ifdef CONFIG_HAS_TASK_KEYPROTO
+	case TASK_ID_KEYPROTO:
+		/* fallthrough */
+#endif
+#ifdef CONFIG_HAS_TASK_WOV
+	case TASK_ID_WOV:
+		/* fallthrough */
+#endif
+		return true;
+	}
+	return false;
+}
+
+static void register_task_memory_dump(void)
+{
+	for (task_id_t id = 0; id < TASK_ID_COUNT + EXTRA_TASK_COUNT; id++) {
+		if (task_is_excluded_from_memory_dump(id))
+			continue;
+		register_memory_dump((uint32_t)task_stack_start(id),
+				     task_stack_size(id));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, register_task_memory_dump, HOOK_PRIO_FIRST);

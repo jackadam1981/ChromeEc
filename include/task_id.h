@@ -72,5 +72,8 @@ enum {
 };
 #undef TASK
 
+/* EXTRA_TASK_COUNT is only meaningful in Zephyr EC, always zero for CrOS EC */
+#define EXTRA_TASK_COUNT (0)
+
 #endif /* CONFIG_ZEPHYR */
 #endif /* __CROS_EC_TASK_ID_H */
