@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8a01ef_bfa5563d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9695,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-13T17:02:41Z",
+      "side": 1,
+      "message": "nit: calloc?",
+      "range": {
+        "startLine": 9695,
+        "startChar": 34,
+        "endLine": 9695,
+        "endChar": 40
+      },
+      "revId": "11bde5b3bccb0a4a97641d6775dee86e85cd92a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
