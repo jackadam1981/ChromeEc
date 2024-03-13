@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28718742_51ce203a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-13T00:19:05Z",
+      "side": 1,
+      "message": "Logic looks correct to me, but would be nice for @chlin56@nuvoton.com",
+      "revId": "9616c7b497c48fe98259b02f845afe141f5ce2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21da9f26_8a581204",
         "filename": "chip/npcx/flash.c",
         "patchSetId": 2
