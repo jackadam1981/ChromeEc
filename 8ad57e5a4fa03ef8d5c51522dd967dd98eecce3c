@@ -16,6 +16,24 @@
       "message": "we have a script that can be used to set up new variants. for example,\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4861369\n\nwill that work here?",
       "revId": "8ad57e5a4fa03ef8d5c51522dd967dd98eecce3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622650b1_bea8f06d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2024-03-13T02:16:41Z",
+      "side": 1,
+      "message": "Hi Caveh\nNova is modified from the Constitution. Since Constitution and Brask already have many differences, I wonder if we can consider this CL instead of Auto-Generated CL?",
+      "parentUuid": "17f91bf7_e51d49e7",
+      "revId": "8ad57e5a4fa03ef8d5c51522dd967dd98eecce3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
