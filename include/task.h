@@ -404,6 +404,16 @@ void task_clear_pending_irq(int irq);
  */
 bool task_is_irq_pending(int irq);
 
+/**
+ * Return the starting address of the task stack.
+ */
+void *task_stack_start(task_id_t id);
+
+/**
+ * Return the size in bytes of the task stack.
+ */
+uint32_t task_stack_size(task_id_t id);
+
 #ifdef CONFIG_ZEPHYR
 typedef struct k_mutex mutex_t;
 

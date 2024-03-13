@@ -554,6 +554,18 @@ void task_trigger_irq(int irq)
 	CPU_NVIC_SWTRIG = irq;
 }
 
+inline void *task_stack_start(task_id_t id)
+{
+	ASSERT(id < TASK_ID_COUNT);
+	return tasks[id].stack;
+}
+
+inline uint32_t task_stack_size(task_id_t id)
+{
+	ASSERT(id < TASK_ID_COUNT);
+	return tasks_init[id].stack_size;
+}
+
 static uint32_t init_task_context(task_id_t id)
 {
 	uint32_t *sp;

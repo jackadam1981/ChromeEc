@@ -467,3 +467,23 @@ inline bool in_deferred_context(void)
 	 */
 	return (k_current_get() == get_sysworkq_thread());
 }
+
+inline void *task_stack_start(task_id_t id)
+{
+	k_tid_t thread;
+
+	thread = task_id_to_thread_id(id);
+	if (!thread)
+		return NULL;
+	return (void *)thread->stack_info.start;
+}
+
+inline uint32_t task_stack_size(task_id_t id)
+{
+	k_tid_t thread;
+
+	thread = task_id_to_thread_id(id);
+	if (!thread)
+		return 0;
+	return thread->stack_info.size;
+}
