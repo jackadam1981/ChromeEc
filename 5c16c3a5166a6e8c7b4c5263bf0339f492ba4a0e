@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c83957f4_a8522423",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-03-13T03:47:57Z",
+      "side": 1,
+      "message": "\u003e  I\u0027m assuming it\u0027s not the exact datasheet our chip, \n\nThe internal flash of NPCX9 is using [W25Q80](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/config_chip-npcx9.h;l\u003d132). Here is the [datasheet](https://www.winbond.com/resource-files/w25q80dv%20dl_revh_10022015.pdf).\n\u003e I\u0027m assuming it\u0027s not the exact datasheet our chip, but that the Status Register Protect Bits are the same.  \n\nRight, it is the same mechanism.",
+      "parentUuid": "ab1d2414_f47b43bc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "5c16c3a5166a6e8c7b4c5263bf0339f492ba4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8972ab54_6a5c089a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
