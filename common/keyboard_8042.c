@@ -36,8 +36,8 @@
 #define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ##args)
 #else
-#define CPUTS5(outstr)
-#define CPRINTS5(format, args...)
+#define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
+#define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ##args)
 #endif
 
 /*
