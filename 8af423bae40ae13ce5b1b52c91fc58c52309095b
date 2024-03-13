@@ -39,6 +39,30 @@
       },
       "revId": "8af423bae40ae13ce5b1b52c91fc58c52309095b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76246f82_f94febdf",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-03-13T22:50:52Z",
+      "side": 1,
+      "message": "\u003e can the global usb_mux_init() simply clear USB_MUX_FLAG_INIT,\nthen rely on perform_mux_set to call an unlocked version of this\nusb_mux_init()?\n\nSorry, I am a little unclear what you mean by this. I don\u0027t see separate versions of usb_mux_init(). It looks to me like the usb_mux_init call in restart_tc_sm is just calling this directly. Are you suggesting we replace that call with a new function which just clears the flag?",
+      "parentUuid": "7dd329b9_62f910fb",
+      "range": {
+        "startLine": 487,
+        "startChar": 26,
+        "endLine": 487,
+        "endChar": 43
+      },
+      "revId": "8af423bae40ae13ce5b1b52c91fc58c52309095b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
