@@ -11,20 +11,18 @@
 #include "fpsensor/fpsensor_state.h"
 #include "mock/fpsensor_crypto_mock.h"
 #include "mock/fpsensor_state_mock.h"
+#include "mock/otpi_mock.h"
 #include "mock/rollback_mock.h"
 #include "mock/timer_mock.h"
+#include "otp_key.h"
 #include "sha256.h"
 #include "test_util.h"
 #include "util.h"
 
+#include <stdbool.h>
+
 #include <algorithm>
 #include <array>
-
-extern enum ec_error_list
-get_ikm(std::span<uint8_t, 64> ikm,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
-
-#include <stdbool.h>
 
 static const uint8_t fake_positive_match_salt[] = {
 	0x04, 0x1f, 0x5a, 0xac, 0x5f, 0x79, 0x10, 0xaf,
@@ -39,78 +37,104 @@ static const uint8_t fake_user_id[] = {
 
 /*
  * |expected_positive_match_secret_for_empty_user_id| is obtained by running
- * BoringSSL locally.
- * From https://boringssl.googlesource.com/boringssl
- * commit 365b7a0fcbf273b1fa704d151059e419abd6cfb8
+ * openssl locally.
  *
- * Steps to reproduce:
+ * Command to reproduce on gLinux:
+ *$ openssl kdf -keylen 32 -kdfopt digest:SHA2-256\
+ * -kdfopt hexkey:cfe323763504c20f0db602a968ba2a61862a85d1ca09548a6be2e338de5d5\
+ *914d971afc4cd36e360f85aa0a62cb3f5e2ebb9d82fb5785c7982ce063fcc23b9e7\
+ * -kdfopt hexsalt:041f5aac5f7910af041d463a5f08eecb\
+ * -kdfopt hexinfo:706f7369746976655f6d617463685f73656372657420666f722075736572\
+ *200000000000000000000000000000000000000000000000000000000000000000 HKDF
+ *(output)$ 8D:C4:5B:DF:55:1E:A8:72:D6:DD:A1:4C:B8:A1:76:2B:DE:38:D5:03:CE:E4:\
+ *74:\51:63:6C:6A:26:A9:B7:FA:68
  *
- * Open boringssl/crypto/hkdf/hkdf_test.cc
- * Add the following case to static const HKDFTestVector kTests[]
+ *$ openssl kdf -keylen 32 -kdfopt digest:SHA2-256\
+ * -kdfopt hexkey:cfe323763504c20f0db602a968ba2a61862a85d1ca09548a6be2e338de5d5\
+ *914d971afc4cd36e360f85aa0a62cb3f5e2ebb9d82fb5785c7982ce063fcc23b9e7\
+ * -kdfopt hexsalt:041f5aac5f7910af041d463a5f08eecb\
+ * -kdfopt hexinfo:706f7369746976655f6d617463685f73656372657420666f722075736572\
+ *2028b55a55571b2688cec5d1fe1d585b9451a260499feab1eaf7042f0b20a59364 HKDF
+ *(output)$ 0D:F5:AC:7C:AD:37:0A:66:2F:71:F6:C6:CA:8A:41:69:8A:D3:CF:0B:C4:5A:\
+ *5F:4D:54:EB:7B:AD:5D:1B:BE:30
  *
- * // test positive match secret
- * {
- *   EVP_sha256,
- *   {
- *     // IKM:
- *     // fake_rollback_secret
- *     [ ***Copy 32 octets of fake_rollback_secret here*** ]
- *     // fake_tpm_seed
- *     [ ***Copy 32 octets of fake_tpm_seed here*** ]
- *   }, 64,
- *   {
- *     // fake_positive_match_salt
- *     [ ***Copy 16 octets of fake_positive_match_salt here*** ]
- *   }, 16,
- *   {
- *     // Info:
- *     // "positive_match_secret for user "
- *     0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x76, 0x65,
- *     0x5f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x5f, 0x73,
- *     0x65, 0x63, 0x72, 0x65, 0x74, 0x20, 0x66, 0x6f,
- *     0x72, 0x20, 0x75, 0x73, 0x65, 0x72, 0x20,
- *     // user_id
- *     [ ***Type 32 octets of 0x00 here*** ]
- *   }, 63,
- *   {  // Expected PRK:
- *     0xc2, 0xff, 0x50, 0x2d, 0xb1, 0x7e, 0x87, 0xb1,
- *     0x25, 0x36, 0x3a, 0x88, 0xe1, 0xdb, 0x4f, 0x98,
- *     0x22, 0xb5, 0x66, 0x8c, 0xab, 0xb7, 0xc7, 0x5e,
- *     0xd7, 0x56, 0xbe, 0xde, 0x82, 0x3f, 0xd0, 0x62,
- *   }, 32,
- *   32, { // 32 = L = FP_POSITIVE_MATCH_SECRET_BYTES
- *     // Expected positive match secret:
- *     [ ***Copy 32 octets of expected positive_match_secret here*** ]
- *   }
- * },
+ *$ openssl kdf -keylen 32 -kdfopt digest:SHA2-256\
+ * -kdfopt hexkey:cfe323763504c20f0db602a968ba2a61862a85d1ca09548a6be2e338de5d5\
+ *914d971afc4cd36e360f85aa0a62cb3f5e2ebb9d82fb5785c7982ce063fcc23b9e74671322d02\
+ *e385c76b78d46e0d6ccc758362353a53b7801079fa9ae4db97966d\
+ * -kdfopt hexsalt:041f5aac5f7910af041d463a5f08eecb\
+ * -kdfopt hexinfo:706f7369746976655f6d617463685f73656372657420666f722075736572\
+ *200000000000000000000000000000000000000000000000000000000000000000 HKDF
+ *(output)$ 2F:78:2D:D2:0A:A9:A2:17:C6:4D:A3:1A:02:EF:4E:2C:F9:23:E1:2D:12:3E:\
+ *A9:E3:C9:16:6F:98:39:8B:0E:C5
  *
- * Then from boringssl/ execute:
- * mkdir build
- * cd build
- * cmake ..
- * make
- * cd ..
- * go run util/all_tests.go
+ *$ openssl kdf -keylen 32 -kdfopt digest:SHA2-256\
+ * -kdfopt hexkey:cfe323763504c20f0db602a968ba2a61862a85d1ca09548a6be2e338de5d5\
+ *914d971afc4cd36e360f85aa0a62cb3f5e2ebb9d82fb5785c7982ce063fcc23b9e74671322d02\
+ *e385c76b78d46e0d6ccc758362353a53b7801079fa9ae4db97966d\
+ * -kdfopt hexsalt:041f5aac5f7910af041d463a5f08eecb\
+ * -kdfopt hexinfo:706f7369746976655f6d617463685f73656372657420666f722075736572\
+ *2028b55a55571b2688cec5d1fe1d585b9451a260499feab1eaf7042f0b20a59364 HKDF
+ *(output)$ 2C:97:56:3C:3D:26:7F:87:32:D1:B1:8D:B1:47:2D:62:45:B0:A6:8F:51:1E:\
+ *C3:78:30:48:36:97:8F:00:7B:5D
  */
+#ifdef CONFIG_OTP_KEY
+static const uint8_t expected_positive_match_secret_for_empty_user_id[] = {
+	0x2f, 0x78, 0x2d, 0xd2, 0x0a, 0xa9, 0xa2, 0x17, 0xc6, 0x4d, 0xa3,
+	0x1a, 0x02, 0xef, 0x4e, 0x2c, 0xf9, 0x23, 0xe1, 0x2d, 0x12, 0x3e,
+	0xa9, 0xe3, 0xc9, 0x16, 0x6f, 0x98, 0x39, 0x8b, 0x0e, 0xc5,
+};
+#else
 static const uint8_t expected_positive_match_secret_for_empty_user_id[] = {
 	0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72, 0xd6, 0xdd, 0xa1,
 	0x4c, 0xb8, 0xa1, 0x76, 0x2b, 0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4,
 	0x74, 0x51, 0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
 };
+#endif
 
 /*
  * Same as |expected_positive_match_secret_for_empty_user_id| but use
  * |fake_user_id| instead of all-zero user_id.
  */
+#ifdef CONFIG_OTP_KEY
+static const uint8_t expected_positive_match_secret_for_fake_user_id[] = {
+	0x2c, 0x97, 0x56, 0x3c, 0x3d, 0x26, 0x7f, 0x87, 0x32, 0xd1, 0xb1,
+	0x8d, 0xb1, 0x47, 0x2d, 0x62, 0x45, 0xb0, 0xa6, 0x8f, 0x51, 0x1e,
+	0xc3, 0x78, 0x30, 0x48, 0x36, 0x97, 0x8f, 0x00, 0x7b, 0x5d,
+};
+#else
 static const uint8_t expected_positive_match_secret_for_fake_user_id[] = {
 	0x0d, 0xf5, 0xac, 0x7c, 0xad, 0x37, 0x0a, 0x66, 0x2f, 0x71, 0xf6,
 	0xc6, 0xca, 0x8a, 0x41, 0x69, 0x8a, 0xd3, 0xcf, 0x0b, 0xc4, 0x5a,
 	0x5f, 0x4d, 0x54, 0xeb, 0x7b, 0xad, 0x5d, 0x1b, 0xbe, 0x30,
 };
+#endif
+
+#ifdef CONFIG_OTP_KEY
+static const uint8_t default_fake_otp_key[] = {
+	0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3, 0x85, 0xc7, 0x6b, 0x78, 0xd4,
+	0x6e, 0x0d, 0x6c, 0xcc, 0x75, 0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7,
+	0x80, 0x10, 0x79, 0xfa, 0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d,
+};
+BUILD_ASSERT(sizeof(default_fake_otp_key) == OTP_KEY_SIZE_BYTES);
+
+constexpr uint8_t IKM_OTP_OFFSET_BYTES =
+	CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES;
+constexpr uint8_t IKM_SIZE_BYTES = IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES;
+BUILD_ASSERT(IKM_SIZE_BYTES == 96);
+#else
+constexpr uint8_t IKM_SIZE_BYTES =
+	CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES;
+BUILD_ASSERT(IKM_SIZE_BYTES == 64);
+#endif
+
+extern enum ec_error_list
+get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
 
 test_static int test_get_ikm_failure_seed_not_set(void)
 {
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES];
+	std::array<uint8_t, IKM_SIZE_BYTES> ikm;
 	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed{};
 
 	TEST_ASSERT(get_ikm(ikm, tpm_seed) == EC_ERROR_ACCESS_DENIED);
@@ -119,7 +143,7 @@ test_static int test_get_ikm_failure_seed_not_set(void)
 
 test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
 {
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES];
+	std::array<uint8_t, IKM_SIZE_BYTES> ikm;
 
 	/* Given that the TPM seed has been set. */
 	TEST_ASSERT(!bytes_are_trivial(default_fake_tpm_seed,
@@ -141,14 +165,52 @@ test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list init_otp_key(void)
+{
+#ifdef CONFIG_OTP_KEY
+	uint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES] = { 0 };
+
+	otp_key_init();
+
+	/*
+	 * Called to initialize the OTP Key to a known value
+	 */
+	TEST_EQ(otp_key_write(default_fake_otp_key), EC_SUCCESS, "%d");
+	TEST_EQ(otp_key_read(otp_key_buffer), EC_SUCCESS, "%d");
+	TEST_EQ(bytes_are_trivial(otp_key_buffer, OTP_KEY_SIZE_BYTES), false,
+		"%d");
+#endif
+
+	return EC_SUCCESS;
+}
+
 test_static int test_get_ikm_success(void)
 {
+	uint8_t ikm[IKM_SIZE_BYTES];
+
+#ifdef CONFIG_OTP_KEY
 	/*
-	 * Expected ikm is the concatenation of the rollback secret and the
-	 * seed from the TPM.
+	 * Expected ikm is the concatenation of the rollback secret, the
+	 * seed from the TPM and the OTP key.
 	 */
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES];
-	static const uint8_t expected_ikm[] = {
+	constexpr std::array<uint8_t, IKM_SIZE_BYTES> expected_ikm = {
+		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
+		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
+		0xca, 0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d,
+		0x59, 0x14, 0xd9, 0x71, 0xaf, 0xc4, 0xcd, 0x36, 0xe3, 0x60,
+		0xf8, 0x5a, 0xa0, 0xa6, 0x2c, 0xb3, 0xf5, 0xe2, 0xeb, 0xb9,
+		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
+		0xcc, 0x23, 0xb9, 0xe7, 0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3,
+		0x85, 0xc7, 0x6b, 0x78, 0xd4, 0x6e, 0x0d, 0x6c, 0xcc, 0x75,
+		0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7, 0x80, 0x10, 0x79, 0xfa,
+		0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d
+	};
+#else
+	/*
+	 * Expected ikm is the concatenation of the rollback secret and
+	 * the seed from the TPM.
+	 */
+	constexpr std::array<uint8_t, IKM_SIZE_BYTES> expected_ikm = {
 		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
 		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
 		0xca, 0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d,
@@ -157,6 +219,7 @@ test_static int test_get_ikm_success(void)
 		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
 		0xcc, 0x23, 0xb9, 0xe7
 	};
+#endif
 
 	/* GIVEN that the TPM seed has been set. */
 	TEST_ASSERT(!bytes_are_trivial(default_fake_tpm_seed,
@@ -167,9 +230,7 @@ test_static int test_get_ikm_success(void)
 
 	/* THEN get_ikm will succeed. */
 	TEST_ASSERT(get_ikm(ikm, default_fake_tpm_seed) == EC_SUCCESS);
-	TEST_ASSERT_ARRAY_EQ(ikm, expected_ikm,
-			     CONFIG_ROLLBACK_SECRET_SIZE +
-				     FP_CONTEXT_TPM_BYTES);
+	TEST_ASSERT_ARRAY_EQ(ikm, expected_ikm, IKM_SIZE_BYTES);
 
 	return EC_SUCCESS;
 }
@@ -236,9 +297,15 @@ test_static int test_derive_encryption_key(void)
 			0xd0, 0x88, 0x34, 0x15, 0xc0, 0xfa, 0x8e, 0x22,
 			0x9f, 0xb4, 0xd5, 0xa9, 0xee, 0xd3, 0x15, 0x19,
 		},
+
 		.key = {
+#ifdef CONFIG_OTP_KEY
+			0xf8, 0x7b, 0x12, 0x83, 0xc0, 0xee, 0x73, 0x36,
+			0x20, 0xc8, 0xff, 0xf0, 0xef, 0xa1, 0xc9, 0x3b,
+#else
 			0xdb, 0x49, 0x6e, 0x1b, 0x67, 0x8a, 0x35, 0xc6,
 			0xa0, 0x9d, 0xb6, 0xa0, 0x13, 0xf4, 0x21, 0xb3,
+#endif
 		}
 	};
 
@@ -252,8 +319,13 @@ test_static int test_derive_encryption_key(void)
 			0x5a, 0xac, 0x5b, 0x0b, 0x06, 0x67, 0xe1, 0x53,
 		},
 		.key = {
+#ifdef CONFIG_OTP_KEY
+			0xa3, 0x38, 0x1e, 0x4e, 0x60, 0xf1, 0xd4, 0xd3,
+			0xf5, 0x44, 0xbc, 0xe0, 0xfb, 0x4c, 0x87, 0x0a,
+#else
 			0x8d, 0x53, 0xaf, 0x4c, 0x96, 0xa2, 0xee, 0x46,
 			0x9c, 0xe2, 0xe2, 0x6f, 0xe6, 0x66, 0x3d, 0x3a,
+#endif
 		}
 	};
 
@@ -702,6 +774,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_derive_positive_match_secret_fail_seed_not_set);
 	RUN_TEST(test_get_ikm_failure_seed_not_set);
 	RUN_TEST(test_get_ikm_failure_cannot_get_rollback_secret);
+	RUN_TEST(init_otp_key);
 	RUN_TEST(test_get_ikm_success);
 	RUN_TEST(test_derive_new_pos_match_secret);
 	RUN_TEST(test_derive_positive_match_secret_fail_rollback_fail);
