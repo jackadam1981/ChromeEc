@@ -114,4 +114,12 @@ config PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP
 	  debugging panics. May not dump all memory, e.g. sensitive memory will
 	  not be dumped.
 
+config PLATFORM_EC_SYSTEM_SHUTDOWN_BEFORE_COLD_REBOOT
+	bool "Shutdown before cold reboot"
+	default n
+	help
+	  When EC trigger cold reboot, for some SoC, the power down sequence
+	  cannot meet specification, may cause data lost or SoC stay an error
+	  state. We need force shutdown before cold reboot.
+
 endif # PLATFORM_EC

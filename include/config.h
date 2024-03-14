@@ -1792,6 +1792,9 @@
  */
 #undef CONFIG_HOST_COMMAND_MEMORY_DUMP
 
+/* When defined, system will force shutdown before cold reboot. */
+#undef CONFIG_SYSTEM_SHUTDOWN_BEFORE_COLD_REBOOT
+
 /*
  * Panic on watchdog warning instead of waiting for a regular watchdog.
  * Combined with with system safe mode, this allows for capturing
