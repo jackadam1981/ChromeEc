@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53accabb_5fd947d2",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T19:10:21Z",
+      "side": 1,
+      "message": "What we really want to test is the new code that we\u0027re adding with this CL, which is in `get_ikm`.\n\nFor example, we have [`test_get_ikm_success`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_crypto.cc;l\u003d139-168;drc\u003dec0b07f4b1d938abc7e3b37eabb8661c40982e8a), which directly tests `get_ikm` and [`test_derive_encryption_key`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_crypto.cc;l\u003d316-370;drc\u003dec0b07f4b1d938abc7e3b37eabb8661c40982e8a), which indirectly tests it, since `derive_encryption_key` calls `get_ikm`.\n\n\nIt looks like the tests in `test/fpsensor_crypto.cc` are [only built for the host](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/build.mk;l\u003d52;drc\u003def21e4e8cd640012fc67447685ca46379867b4ae). I don\u0027t see them in the [device-specific tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/helipilot/build.mk;l\u003d22-75;drc\u003def21e4e8cd640012fc67447685ca46379867b4ae). I can\u0027t remember offhand why.\n\nI think those host tests would fail if they were built with `CONFIG_OTP_KEY` (you can try it). We\u0027ll want to fix the tests so that they pass in that case. This is useful because it would have caught [this bug](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5325084/comment/c6189396_ddc122c7/) and will ensure we don\u0027t have any others like that.\n\nIn terms of getting the `test/fpsensor_crypto.cc` test running with `CONFIG_OTP_KEY`, I think we have two options:\n\n1. See if the test runs on the dev board (`bloonchipper`/`dartmonkey` would be good to test with since we know those boards are in good working condition.) Then add the additional code to `test/fpsensor_crypto.cc` to make it handle the `CONFIG_OTP_KEY` case for `helipilot`.\n2. We know the `test/fpsensor_crypto.cc` passes on the host, but the host test doesn\u0027t compile for `CONFIG_OTP_KEY`. We want to be able to test both variants (`CONFIG_OTP_KEY` enabled and disabled). We could create a symlink to `test/fpesnsor_crypto.cc` called `test/fpsensor_crypto_otp.cc` and then add `fpsensor_crypto_otp` to the [host test list](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/build.mk;l\u003d18-150;drc\u003def21e4e8cd640012fc67447685ca46379867b4ae). Then we need to figure out how to set `CONFIG_OTP_KEY` for that test. I\u0027ll have to see what the options are. For manual testing, you could just run the test with and without `CONFIG_OTP_KEY` defined in the [host board config](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/host/board.h).",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
