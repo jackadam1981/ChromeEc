@@ -86,6 +86,24 @@
       "parentUuid": "f2c4d541_25f40e42",
       "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cc9c5a_f6d0e805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-14T13:17:54Z",
+      "side": 1,
+      "message": "\u003e Open question on whether the split is permanent\n\nIt is IMO. [`system_jump_to_booter`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system.c;l\u003d1326-1330?q\u003dsystem_jump_to_booter) have hardcoded RW size, so it\u0027s not possible to change RW size (because it\u0027s in the RO part).\n\n\u003e choosing to load one of two algorithms from Flash into RAM\n\nI think it\u0027s possible.",
+      "parentUuid": "008f2786_c5bdd67a",
+      "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
