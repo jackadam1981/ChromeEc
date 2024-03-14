@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee09b144_f7eb24fe",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T04:12:41Z",
+      "side": 1,
+      "message": "Done, resolved since duplicate of another comment",
+      "parentUuid": "4a8371a8_863a2628",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "002dede1225957a9107ac99bcdcc1fe3be754793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a876966_fcd2710e",
