@@ -12,7 +12,6 @@
 
 #define SCP_CORE1_RAM_START 0xd0000
 #define SCP_CORE1_RAM_SIZE 0x2F000 /* 124K */
-#define SCP_CORE1_RAM_PADDING 0xc00 /* for 4K-alignment */
 
 #ifdef BOARD_GERALT_SCP_CORE1
 
@@ -38,8 +37,7 @@
 #define CONFIG_ROM_BASE 0x0
 #define CONFIG_RAM_BASE 0x10000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
-#define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
-			 CONFIG_RAM_BASE)
+#define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - CONFIG_RAM_BASE)
 
 /* SCP_FW_END is used to calc the base of IPI buffer for AP.
  * Provide AP view physical address which include the offset.
@@ -67,10 +65,9 @@
 #define CONFIG_ROM_BASE 0x0
 #define CONFIG_RAM_BASE 0x68000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
-#define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
-			 CONFIG_RAM_BASE - SCP_CORE1_RAM_SIZE - SCP_CORE1_RAM_PADDING)
+#define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - CONFIG_RAM_BASE)
 
-#define SCP_FW_END 0x100000
+#define SCP_FW_END 0xd0000
 
 #endif /* BOARD_GERALT_SCP_CORE1 */
 #endif /* __CROS_EC_BOARD_H */
