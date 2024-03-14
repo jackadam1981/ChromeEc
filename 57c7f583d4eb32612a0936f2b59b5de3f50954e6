@@ -122,6 +122,24 @@
       "parentUuid": "934cb581_fa436f73",
       "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5acf342e_72ebcce3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-14T14:55:51Z",
+      "side": 1,
+      "message": "\u003e the older firmware used in the test think the rollback region size is 128KB\n\nMore precisely: RO has hardcoded address where RW starts. If we change rollback size, RW will start at different address.\n\n\nOne more thing about this change. Cortex-M MPU requires the offset alignment to be the same as size of protected region. Currently on helipilot (and bloonchipper) we use 2 MPU regions to protect rollback (because rollback starts at 128KB, and size of both regions is 256KB). With this patch, both rollback regions can be protected with one MPU region.",
+      "parentUuid": "e873a3a8_63de2cd0",
+      "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
