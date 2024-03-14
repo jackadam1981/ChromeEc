@@ -47,6 +47,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <ap_power_override_functions.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -1142,8 +1144,10 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 
 static void system_common_shutdown(void)
 {
-	if (reboot_at_shutdown.cmd)
+	if (reboot_at_shutdown.cmd) {
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown.cmd);
+		board_ap_power_force_shutdown();
+	}
 	handle_pending_reboot(&reboot_at_shutdown);
 
 	/* Reset cnt on cold boot */
