@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "471bccdd_2d4af90b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T16:17:18Z",
+      "side": 1,
+      "message": "\u003e So we can abandon this CL.\n\nOk.",
+      "parentUuid": "94ef1a97_611d7f8b",
+      "revId": "0c5a70479e5938ad0fbafe62b10358c5bc0fd6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b216be8_57b20dfc",
         "filename": "baseboard/helipilot/base_gpio_rw.inc",
         "patchSetId": 1
