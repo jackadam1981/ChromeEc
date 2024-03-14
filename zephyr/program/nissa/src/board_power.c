@@ -72,6 +72,8 @@ void board_ap_power_force_shutdown(void)
 	}
 	/* LCOV_EXCL_STOP */
 
+	k_msleep(1);
+
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
 	power_signal_set(PWR_EN_PP5000_A, 0);
