@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7805ba0_58054a7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-03-14T17:54:55Z",
+      "side": 1,
+      "message": "I would posit then that this is a bug in the PPM implementation and sending CCI via notify is not the correct thing to do.\n\nIf we are seeing races because CCI is being updated AFTER a notify is sent but before the OPM has read it, that is definitely a PPM bug and we need to fix it.",
+      "revId": "989f6111781ed6317261394bb825335cb7de494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec71ab37_d49537ff",
+        "filename": "extra/um_ppm/um_ppm_chardev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-03-14T17:54:55Z",
+      "side": 1,
+      "message": "UM_MSG_READ fills out `msg-\u003edata_length` because it\u0027s the length it expects to read back. The contents are not valid.\n\nYou should add a `case UM_MSG_NOTIFY` here instead.",
+      "revId": "989f6111781ed6317261394bb825335cb7de494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
