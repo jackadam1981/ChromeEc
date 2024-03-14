@@ -3,5 +3,11 @@
  * found in the LICENSE file.
  */
 
+#ifdef CONFIG_OTP_KEY
 #define CONFIG_TEST_MOCK_LIST \
+	MOCK(OTPI) \
 	MOCK(ROLLBACK)
+#else
+	#define CONFIG_TEST_MOCK_LIST \
+	MOCK(ROLLBACK)
+#endif

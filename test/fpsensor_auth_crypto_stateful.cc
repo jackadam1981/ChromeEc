@@ -1,4 +1,4 @@
-/* Copyright 2023 The ChromiumOS Authors
+/* Copyright 2024 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -12,6 +12,9 @@
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/obj_mac.h"
+extern "C" {
+#include "otp_key.h"
+}
 #include "test_util.h"
 #include "util.h"
 
@@ -37,6 +40,22 @@ void init_tpm_seed(void)
 	std::copy(fake_tpm_seed.begin(), fake_tpm_seed.end(), tpm_seed);
 
 	fp_encryption_status |= FP_ENC_STATUS_SEED_SET;
+}
+
+test_static enum ec_error_list test_otp_key(void)
+{
+#ifdef CONFIG_OTP_KEY
+	uint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES] = { 0 };
+
+	otp_key_init();
+
+	TEST_EQ(otp_key_provision(), EC_SUCCESS, "%d");
+	TEST_EQ(otp_key_read(otp_key_buffer), EC_SUCCESS, "%d");
+	TEST_EQ(bytes_are_trivial(otp_key_buffer, OTP_KEY_SIZE_BYTES), false,
+		"%d");
+#endif
+
+	return EC_SUCCESS;
 }
 
 test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
@@ -293,6 +312,7 @@ extern "C" void run_test(int argc, const char **argv)
 {
 	init_tpm_seed();
 
+	RUN_TEST(test_otp_key);
 	RUN_TEST(test_fp_encrypt_decrypt_data);
 	RUN_TEST(test_fp_encrypt_decrypt_key);
 	RUN_TEST(test_fp_generate_gsc_session_key);
