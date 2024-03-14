@@ -46,6 +46,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9db151_15a81670",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T20:10:46Z",
+      "side": 1,
+      "message": "\u003e  So, it doesn\u0027t look like the direct/manual test case was \"only built on the host\"?\n\nThe `fpsensor_auth_crypto_stateful` test is a different test than what I was referring to. It sounds like that one was broken too and is exercising some of the new code indirectly. It\u0027s great that that one is fixed, but we still need to make sure the `fpsensor_crypto` test passes in both the `CONFIG_OTP_KEY` case and non-`CONFIG_OTP_KEY` case as well.\n\nGenerally the test files are named to correspond with the source files that they test. In this case, you\u0027re modifying `fpsensor_crypto.cc`, so the corresponding test file is `test/fpsensor_crypto.cc`. See my previous comment about how this test looks like it is only built for the \"host\" (emulator) board and is almost certainly not exercising the `CONFIG_OTP_KEY` case. If it were, it would have caught [this bug](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5325084/comment/c6189396_ddc122c7/), since it verifies that `derive_encryption_key` is working correctly.",
+      "parentUuid": "aed70314_c6a11cc7",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
