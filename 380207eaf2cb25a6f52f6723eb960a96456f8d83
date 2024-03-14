@@ -94,6 +94,30 @@
       },
       "revId": "380207eaf2cb25a6f52f6723eb960a96456f8d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c6554b_610a1cc4",
+        "filename": "extra/um_ppm/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-14T16:47:22Z",
+      "side": 1,
+      "message": "Daisuke, \n\nI see but I\u0027m still running uPpm in Linux userspace that\u0027s why I don\u0027t want to compile EC related code.\n\nBy the way wasn\u0027t uPpm supposed to be left as is in src/platform/ec/extra/um_ppm/ and ePpm adaptation to be done in different location ?\n\nThanks,\nLukasz",
+      "parentUuid": "ee5d00d7_bab4e816",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "380207eaf2cb25a6f52f6723eb960a96456f8d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
