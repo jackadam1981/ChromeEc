@@ -72,6 +72,14 @@ void board_ap_power_force_shutdown(void)
 	}
 	/* LCOV_EXCL_STOP */
 
+	/* Intel DSx Sequence, tPCH12: RSMRST/DSW_PWROK to
+	 * PP3300(VccPRIM_3P3), RSMRST asserting to VccPRIM
+	 * dropping 5% of norminal value.
+	 * RSMRST need drop lower 1V then deaassert PP3000 after 400ns.
+	 * Delay 1ms to meet tPCH12 sequence.
+	 */
+	k_msleep(1);
+
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
 	power_signal_set(PWR_EN_PP5000_A, 0);
