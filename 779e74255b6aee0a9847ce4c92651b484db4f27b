@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebaa4ed_47548e79",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:08:25Z",
+      "side": 1,
+      "message": "Done, added OTP to fpsensor_auth_crypto_stateful in crrev/c/5371373, need to run more tests/testing, but closing this comment out as it no longer applies to this CL",
+      "parentUuid": "b5cb12a9_b9532290",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7759698d_a5ea8b37",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-13T23:35:45Z",
       "side": 1,
       "message": "Let\u0027s use a constant for this as well. See other comment where I added `IKM_OTP_OFFSET_BYTES`.\n\nThen we can also add something like `BUILD_ASSERT((sizeof(ikm) - IKM_OTP_OFFSET_BYTES) \u003d\u003d sizeof(otp_key));` here.",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6f9b6a_df568856",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:08:25Z",
+      "side": 1,
+      "message": "Done in crrev/c/5371373",
+      "parentUuid": "7759698d_a5ea8b37",
       "range": {
         "startLine": 77,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "457429ff_5c3874f9",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:08:25Z",
+      "side": 1,
+      "message": "Done in crrev/c/5371373",
+      "parentUuid": "9bc40b8a_104efa04",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 6
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6189396_ddc122c7",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-13T23:35:45Z",
       "side": 1,
       "message": "This needs to be changed as well, right?\n\nDouble-check that there are no other places that `get_ikm` is called, such as in `test/fpsensor_crypto.cc`. Did you try running those tests? I don\u0027t think they will pass anymore?",
+      "range": {
+        "startLine": 244,
+        "startChar": 13,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "779e74255b6aee0a9847ce4c92651b484db4f27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83427b7_c7f8fb7d",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:08:25Z",
+      "side": 1,
+      "message": "Done in crrev/c/5371373, also checked the source for any other calls to get_ikm and didn\u0027t find any. fpsensor_auth_crypto_stateful failed before this (and other) changes but is passing with that CL",
+      "parentUuid": "c6189396_ddc122c7",
       "range": {
         "startLine": 244,
         "startChar": 13,

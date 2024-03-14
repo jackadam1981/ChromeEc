@@ -286,6 +286,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c352570b_03a12e82",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:08:25Z",
+      "side": 1,
+      "message": "Done, submitted crrev/c/5371373 for fpsensor_crypto changes",
+      "parentUuid": "e1f7bc15_d5654923",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1b0f76c_1513fa90",
