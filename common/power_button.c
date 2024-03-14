@@ -32,6 +32,7 @@
 /* Debounced power button state */
 test_export_static int debounced_power_pressed;
 static int simulate_power_pressed;
+static int simulate_power_released = 1;
 static volatile int power_button_is_stable = 1;
 
 static const struct button_config power_button = {
@@ -198,6 +199,7 @@ static void power_button_simulate_deferred(void)
 	simulate_power_pressed = 0;
 	power_button_is_stable = 0;
 	power_button_change_deferred();
+	simulate_power_released = 1;
 }
 DECLARE_DEFERRED(power_button_simulate_deferred);
 
@@ -219,6 +221,7 @@ void power_button_interrupt(enum gpio_signal signal)
 
 void power_button_simulate_press(unsigned int duration)
 {
+	simulate_power_released = 0;
 	ccprintf("Simulating %d ms %s press.\n", duration, power_button.name);
 	simulate_power_pressed = 1;
 	power_button_is_stable = 0;
@@ -240,8 +243,8 @@ static int command_powerbtn(int argc, const char **argv)
 		if (*e || ms < 0)
 			return EC_ERROR_PARAM1;
 	}
-
-	power_button_simulate_press(ms);
+	while (simulate_power_released)
+		power_button_simulate_press(ms);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn, "[msec]",
