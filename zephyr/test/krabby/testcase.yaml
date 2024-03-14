@@ -98,3 +98,8 @@ tests:
     - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
     extra_dtc_overlay_files:
     - krabby.woobat.overlay
+  krabby.wugtrio:
+    extra_configs:
+    - CONFIG_TEST_WUGTRIO=y
+    extra_dtc_overlay_files:
+    - krabby.wugtrio.overlay

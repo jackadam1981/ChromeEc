@@ -40,6 +40,12 @@ config TEST_WOOBAT
 	  Include temp_woobat test into the binary to test temperature
 	  threshold trigger current control.
 
+config TEST_WUGTRIO
+	bool "Run the tests intended for wugtrio"
+	help
+	  Include board_wugtrio test into the binary to test alt_motionsense.c
+	  base_detect.c and ppc.c code.
+
 endchoice
 
 source "Kconfig.zephyr"
