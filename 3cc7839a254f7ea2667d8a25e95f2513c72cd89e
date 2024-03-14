@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95f36154_f81f1b85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-14T20:27:24Z",
+      "side": 1,
+      "message": "Has this been tested for resume hangs as well?",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19af8206_3016510f",
         "filename": "power/host_sleep.c",
         "patchSetId": 4
@@ -20,6 +37,23 @@
         "endLine": 214,
         "endChar": 10
       },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e165b07_e6020898",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-14T20:27:24Z",
+      "side": 1,
+      "message": "Does `if (IS_ENABLED(CONFIG_EMULATED_SYSRQ) \u0026\u0026 hard_sleep_hang_count \u003d\u003d 1)` not work?",
       "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -66,6 +100,46 @@
         "endLine": 225,
         "endChar": 25
       },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74b921f_c3fa07d7",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-14T20:27:24Z",
+      "side": 1,
+      "message": "nit: msleep",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 9
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973382b8_cb9874fa",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-14T20:27:24Z",
+      "side": 1,
+      "message": "nit: `if (IS_ENABLED(CONFIG_POWER_S0IX))`",
       "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
