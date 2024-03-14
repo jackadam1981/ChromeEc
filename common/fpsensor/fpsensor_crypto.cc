@@ -36,7 +36,7 @@ BUILD_ASSERT(IKM_SIZE_BYTES == 64);
 #endif
 
 #ifdef CONFIG_OTP_KEY
-static enum ec_error_list
+test_mockable_static enum ec_error_list
 get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> otp_key)
 {
 	otp_key_init();
