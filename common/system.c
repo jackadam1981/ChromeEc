@@ -47,6 +47,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <ap_power_override_functions.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -1046,6 +1048,15 @@ static int handle_pending_reboot(struct ec_params_reboot_ec *p)
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
 	case EC_REBOOT_COLD_AP_OFF:
+		/*
+		 * When EC trigger cold reboot, for some SoC, the power down
+		 * sequence cannot meet specification, may cause data lost
+		 * or SoC stay an error state. We need force shutdown before
+		 * cold reboot.
+		 */
+#ifdef CONFIG_ZEPHYR
+		board_ap_power_force_shutdown();
+#endif
 		/*
 		 * Reboot the PD chip(s) as well, but first suspend the ports
 		 * if this board has PD tasks running so they don't query the
