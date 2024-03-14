@@ -26,6 +26,8 @@ enum API_RETURN_STATUS_T {
 	API_RET_OTP_STATUS_FAIL = 0x5A5A
 };
 
+enum ec_error_list otp_key_write(const uint8_t *key_buffer);
+
 struct mock_otp {
 	bool powered_on;
 	uint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES];

@@ -1,4 +1,4 @@
-/* Copyright 2023 The ChromiumOS Authors
+/* Copyright 2024 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -11,6 +11,7 @@
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/obj_mac.h"
+#include "otp_key.h"
 #include "test_util.h"
 #include "util.h"
 
@@ -19,6 +20,13 @@
 
 #include <algorithm>
 #include <array>
+
+enum ec_error_list get_otp_key(std::span<uint8_t, 32> otp_key)
+{
+	std::array<uint8_t, 32> fake_otp_key = { 1, 2, 3 };
+	std::ranges::copy(fake_otp_key, otp_key.begin());
+	return EC_SUCCESS;
+}
 
 namespace
 {
