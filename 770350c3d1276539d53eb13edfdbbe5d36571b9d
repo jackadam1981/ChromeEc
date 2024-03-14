@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14100d77_8db82691",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T16:10:01Z",
+      "side": 1,
+      "message": "I see, so `BUG\u003db:326343840` is the wrong bug number. I don\u0027t think it\u0027s worth reverting and re-applying just for that. I think we can just leave it as-is and you can put a link to the CL that removed the delay in b/326343480.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "770350c3d1276539d53eb13edfdbbe5d36571b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
