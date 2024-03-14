@@ -104,6 +104,24 @@
       "parentUuid": "008f2786_c5bdd67a",
       "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6591f101_39479eb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-14T14:38:12Z",
+      "side": 1,
+      "message": "Yup. It\u0027s common [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/mpu.c;l\u003d340-342;drc\u003dd4aa274081c99f3443886977f004721670cc3b35) for all Cortex-M MCUs",
+      "parentUuid": "934cb581_fa436f73",
+      "revId": "57c7f583d4eb32612a0936f2b59b5de3f50954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
