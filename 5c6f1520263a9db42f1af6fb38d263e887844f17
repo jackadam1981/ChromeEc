@@ -16,6 +16,23 @@
       "message": "Hi Keith, Sam,\nCan you please help review this patch.",
       "revId": "5c6f1520263a9db42f1af6fb38d263e887844f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae173816_bbe6a78f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-14T17:05:01Z",
+      "side": 1,
+      "message": "Hi Deepti, CQ failure is from `zmake build brya_pdc`.\n\n/mnt/host/source/src/platform/ec/build/zephyr/brya_pdc/modules/ec/common/usb_pd_host_cmd_common.c:167: undefined reference to `get_pd_control_flags\u0027",
+      "revId": "5c6f1520263a9db42f1af6fb38d263e887844f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
