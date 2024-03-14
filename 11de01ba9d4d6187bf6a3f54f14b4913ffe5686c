@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1f7bc15_d5654923",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T16:42:42Z",
+      "side": 1,
+      "message": "One additional thought I had that might make things simpler. The only part of this CL that affects RO is the code in `rollback_add_entropy` (`fpsensor_crypto.cc` is only in RW). So we could split this into two CLs, where this CL just becomes the `rollback_add_entropy` change with the test change in to make sure that otp_key_provision is called in the `rollback_entropy.c` test.\n\nThen the followup CL can have the changes to `fpsensor_crypto.cc` and associated tests.\n\nThe benefit of doing it this way is that we\u0027ll have everything we need for RO in the first CL and it\u0027s pretty simple.",
+      "parentUuid": "e02309b7_a9f20946",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "11de01ba9d4d6187bf6a3f54f14b4913ffe5686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1b0f76c_1513fa90",
         "filename": "common/rollback.c",
         "patchSetId": 5
