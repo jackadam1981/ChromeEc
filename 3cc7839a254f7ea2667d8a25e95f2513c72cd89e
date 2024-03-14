@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19af8206_3016510f",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-14T17:53:03Z",
+      "side": 1,
+      "message": "nit: single words don\u0027t need to be wrapped in `|`, I.e. CONFIG_EMULATED_SYSRQ or SysRq or host_send_sysrq()",
+      "range": {
+        "startLine": 214,
+        "startChar": 9,
+        "endLine": 214,
+        "endChar": 10
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4f4448_016895b9",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-14T17:53:03Z",
+      "side": 1,
+      "message": "The counter seems to be reset at resume only, not on reboot. Do you think it makes sense to add one more case here (if count \u003e 2) to reset it? For the case when the first suspend after boot fails (counter++) -\u003e reboot -\u003e first suspend fails again (counter++)",
+      "range": {
+        "startLine": 223,
+        "startChar": 28,
+        "endLine": 223,
+        "endChar": 32
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d3a76a_1f60a792",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-14T17:53:03Z",
+      "side": 1,
+      "message": "nit: event",
+      "range": {
+        "startLine": 225,
+        "startChar": 19,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
