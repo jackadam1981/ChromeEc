@@ -13,8 +13,10 @@ extern "C" {
 #include "ec_commands.h"
 #include "mock/fpsensor_crypto_mock.h"
 #include "mock/fpsensor_state_mock.h"
+#include "mock/otpi_mock.h"
 #include "mock/rollback_mock.h"
 #include "mock/timer_mock.h"
+#include "otp_key.h"
 #include "test_util.h"
 #include "util.h"
 }
@@ -105,6 +107,24 @@ static const uint8_t expected_positive_match_secret_for_fake_user_id[] = {
 	0x5f, 0x4d, 0x54, 0xeb, 0x7b, 0xad, 0x5d, 0x1b, 0xbe, 0x30,
 };
 
+#ifdef CONFIG_OTP_KEY
+const uint8_t default_fake_otp_key[] = {
+	0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3, 0x85, 0xc7, 0x6b, 0x78, 0xd4,
+	0x6e, 0x0d, 0x6c, 0xcc, 0x75, 0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7,
+	0x80, 0x10, 0x79, 0xfa, 0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d,
+};
+BUILD_ASSERT(sizeof(default_fake_otp_key) == OTP_KEY_SIZE_BYTES);
+
+constexpr uint8_t IKM_OTP_OFFSET_BYTES =
+	CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES;
+constexpr uint8_t IKM_SIZE_BYTES = IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES;
+BUILD_ASSERT(IKM_SIZE_BYTES == 96);
+#else
+constexpr uint8_t IKM_SIZE_BYTES =
+	CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES;
+BUILD_ASSERT(IKM_SIZE_BYTES == 64);
+#endif
+
 test_static int test_get_ikm_failure_seed_not_set(void)
 {
 	uint8_t ikm;
@@ -116,7 +136,7 @@ test_static int test_get_ikm_failure_seed_not_set(void)
 
 test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
 {
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES];
+	uint8_t ikm[IKM_SIZE_BYTES];
 
 	/* Given that the tmp seed has been set. */
 	TEST_ASSERT(fp_tpm_seed_is_set());
@@ -136,13 +156,52 @@ test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list init_otp_key(void)
+{
+#ifdef CONFIG_OTP_KEY
+	uint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES] = { 0 };
+
+	otp_key_init();
+
+	/*
+	 * Called to initialize the OTP Key to a known value
+	 */
+	TEST_EQ(otp_key_write((uint8_t *)default_fake_otp_key), EC_SUCCESS,
+		"%d");
+	TEST_EQ(otp_key_read(otp_key_buffer), EC_SUCCESS, "%d");
+	TEST_EQ(bytes_are_trivial(otp_key_buffer, OTP_KEY_SIZE_BYTES), false,
+		"%d");
+#endif
+
+	return EC_SUCCESS;
+}
+
 test_static int test_get_ikm_success(void)
 {
+	uint8_t ikm[IKM_SIZE_BYTES];
+
+#ifdef CONFIG_OTP_KEY
+	/*
+	 * Expected ikm is the concatenation of the rollback secret, the
+	 * seed from the TPM and the OTP key.
+	 */
+	static const uint8_t expected_ikm[] = {
+		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
+		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
+		0xca, 0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d,
+		0x59, 0x14, 0xd9, 0x71, 0xaf, 0xc4, 0xcd, 0x36, 0xe3, 0x60,
+		0xf8, 0x5a, 0xa0, 0xa6, 0x2c, 0xb3, 0xf5, 0xe2, 0xeb, 0xb9,
+		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
+		0xcc, 0x23, 0xb9, 0xe7, 0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3,
+		0x85, 0xc7, 0x6b, 0x78, 0xd4, 0x6e, 0x0d, 0x6c, 0xcc, 0x75,
+		0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7, 0x80, 0x10, 0x79, 0xfa,
+		0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d
+	};
+#else
 	/*
 	 * Expected ikm is the concatenation of the rollback secret and the
 	 * seed from the TPM.
 	 */
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES];
 	static const uint8_t expected_ikm[] = {
 		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
 		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
@@ -152,6 +211,7 @@ test_static int test_get_ikm_success(void)
 		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
 		0xcc, 0x23, 0xb9, 0xe7
 	};
+#endif
 
 	/* GIVEN that the TPM seed has been set. */
 	TEST_ASSERT(fp_tpm_seed_is_set());
@@ -161,10 +221,8 @@ test_static int test_get_ikm_success(void)
 
 	/* THEN get_ikm will succeed. */
 	TEST_ASSERT(get_ikm(ikm) == EC_SUCCESS);
-	TEST_ASSERT_ARRAY_EQ(ikm, expected_ikm,
-			     CONFIG_ROLLBACK_SECRET_SIZE +
-				     FP_CONTEXT_TPM_BYTES);
 
+	TEST_ASSERT_ARRAY_EQ(ikm, expected_ikm, IKM_SIZE_BYTES);
 	return EC_SUCCESS;
 }
 
@@ -770,6 +828,7 @@ void run_test(int argc, const char **argv)
 
 	/* The following test requires TPM seed to be already set. */
 	RUN_TEST(test_get_ikm_failure_cannot_get_rollback_secret);
+	RUN_TEST(init_otp_key);
 	RUN_TEST(test_get_ikm_success);
 	RUN_TEST(test_derive_encryption_key);
 	RUN_TEST(test_derive_encryption_key_failure_rollback_fail);
