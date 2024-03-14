@@ -62,3 +62,11 @@ target_sources_ifdef(CONFIG_TEST_WOOBAT
 	${PLATFORM_EC_PROGRAM_DIR}/corsola/woobat/src/ppc.c
 	${PLATFORM_EC_PROGRAM_DIR}/corsola/woobat/src/temp.c
 	${PLATFORM_EC_PROGRAM_DIR}/corsola/woobat/src/sensor.c)
+
+target_sources_ifdef(CONFIG_TEST_WUGTRIO
+	app PRIVATE
+	src/fake.c
+	src/ppc_wugtrio.c
+	src/motionsense_wugtrio.c
+	${PLATFORM_EC_PROGRAM_DIR}/corsola/wugtrio/src/ppc.c
+	${PLATFORM_EC_PROGRAM_DIR}/corsola/wugtrio/src/alt_motionsense.c)
