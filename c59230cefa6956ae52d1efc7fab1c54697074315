@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6935390_beb6d957",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-14T22:50:38Z",
+      "side": 1,
+      "message": "We don\u0027t need this for this CL as it\u0027s only modifying the .dtsi file. The CQ failed only because the following CL failed because of the code coverage failing.",
+      "parentUuid": "9de5cc7d_9ca6ff10",
+      "revId": "c59230cefa6956ae52d1efc7fab1c54697074315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d06033e8_6d9b4cbd",
