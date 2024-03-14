@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af314330_5aecf751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-14T21:26:50Z",
+      "side": 1,
+      "message": "IMHO this is not the PPM bug. Here is how the code behaves without the fix:\n\nuserspace ppm -\u003e notify -\u003e write -\u003e kernel ucsi_um_test -\u003e schedule worker -\u003e ucsi_um_test_notify -\u003e read cci -\u003e complete if (COMMAND_PENDING \u0026\u0026 (UCSI_CCI_ACK_COMPLETE | UCSI_CCI_COMMAND_COMPLETE)\n\nNot all notifications trigger complete call.\n\nWhen OPM receives complete it reads cci and continues processing.\n\nNow what can happen is that if ppm issues a notify which should not result in calling complete call but before worker thread reads cci, ppm completes the command and after worker thread reads cci it determines it should call complete which is incorrect. So we have a race condition here. Completion has counter of number of times it was signalled.  The incorrect additional complete will result that next time OPM is expected to wait on completion var it determines that it is already signalled and will sending next command which in turn causes Ppm to protest as it is busy.\n\nThat\u0027s why it is crucial to pass value of cci from userspace to kernel from the moment the notify was issued.\n\nI don\u0027t understand what is the reason of reading cci value in kernel worker which executes ucsi_um_test_notify as I view this entire path\n\nuserspace ppm -\u003e notify -\u003e write -\u003e kernel ucsi_um_test -\u003e schedule worker -\u003e ucsi_um_test_notify -\u003e read cci -\u003e complete if (COMMAND_PENDING \u0026\u0026 (UCSI_CCI_ACK_COMPLETE | UCSI_CCI_COMMAND_COMPLETE)\n\nlogically as a Ppm domain which is expected to notify the Opm. \n\nI hope I made it more clear. If not let\u0027s talk on tomorrow\u0027s 1:1 ;)",
+      "parentUuid": "d7805ba0_58054a7c",
+      "revId": "989f6111781ed6317261394bb825335cb7de494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec71ab37_d49537ff",
         "filename": "extra/um_ppm/um_ppm_chardev.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-14T17:54:55Z",
       "side": 1,
       "message": "UM_MSG_READ fills out `msg-\u003edata_length` because it\u0027s the length it expects to read back. The contents are not valid.\n\nYou should add a `case UM_MSG_NOTIFY` here instead.",
+      "revId": "989f6111781ed6317261394bb825335cb7de494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151e3439_69b3a9ea",
+        "filename": "extra/um_ppm/um_ppm_chardev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-14T21:26:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec71ab37_d49537ff",
       "revId": "989f6111781ed6317261394bb825335cb7de494a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
