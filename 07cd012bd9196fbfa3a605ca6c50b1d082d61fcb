@@ -22,6 +22,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed70314_c6a11cc7",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T19:24:47Z",
+      "side": 1,
+      "message": "Not sure I follow. Before the changes to the test, the fpsensor_auth_crypto_stateful test failed on quincy/helipilot because OTP wasn\u0027t provisioned (bytes_are_trival check in get_ikm() failed), indicating get_ikm was called and the code tested. The fpsensor_auth_crypto_stateful test now passes on helipilot (CONFIG_OTP_KEY enabled) with the changes in place to mock provision OTP and firmware is flashed to the device to run the test. So, it doesn\u0027t look like the direct/manual test case was \"only built on the host\"? I\u0027ve compiled for bloonchipper but not run the test since the current code changes shouldn\u0027t have any impact. I\u0027m happy to run more testing and plan to anyway, but some of the results I\u0027ve seen so far don\u0027t seem to match with this comment.",
+      "parentUuid": "53accabb_5fd947d2",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
