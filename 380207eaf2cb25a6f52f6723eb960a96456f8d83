@@ -70,6 +70,30 @@
       },
       "revId": "380207eaf2cb25a6f52f6723eb960a96456f8d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5d00d7_bab4e816",
+        "filename": "extra/um_ppm/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-14T16:12:01Z",
+      "side": 1,
+      "message": "I\u0027m referring to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/util.c;l\u003d297.",
+      "parentUuid": "8597039d_eb17dbc3",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "380207eaf2cb25a6f52f6723eb960a96456f8d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
