@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "775fca80_7085fac0",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bd9ee4_e9587cd0",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34095bc1_959e03d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-14T18:13:09Z",
       "side": 1,
       "message": "Does this compile for MCUs that don\u0027t use OTP? (e.g., `make BOARD\u003dbloonchipper`)\n\nI think it will need to be inside `if (CONFIG_ENABLED(CONFIG_OTP_KEY))`.\n\nSame for below.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd078e6_4a24504e",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:46:28Z",
+      "side": 1,
+      "message": "Good catch, I\u0027ll add similar changes to crrev/c/5371373. It compiles for bloonchipper now with the IS_ENABLED in the test and #ifdef in the mocklist.",
+      "parentUuid": "34095bc1_959e03d7",
       "range": {
         "startLine": 132,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ab2515_158e3c59",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771ffa31_abef5a47",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 34
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f87a0b3b_326fdecc",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-14T18:13:09Z",
       "side": 1,
       "message": "2024",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85530e12_6ae8f65b",
+        "filename": "test/rollback_entropy.mocklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-14T18:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f87a0b3b_326fdecc",
       "range": {
         "startLine": 1,
         "startChar": 13,
