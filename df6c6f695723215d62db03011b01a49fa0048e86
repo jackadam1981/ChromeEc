@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "776b92e8_2fd73c82",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-14T17:22:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b31abe6e_2b5066bf",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 70
+      },
+      "revId": "df6c6f695723215d62db03011b01a49fa0048e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "509ef89a_87daeb9e",
