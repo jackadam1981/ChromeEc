@@ -190,6 +190,30 @@
       },
       "revId": "380207eaf2cb25a6f52f6723eb960a96456f8d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67e5741_be12c7e2",
+        "filename": "extra/um_ppm/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-14T23:27:10Z",
+      "side": 1,
+      "message": "Until we integrate ePPM with the EC\u0027s build system (and have buildall check every CL being merged), it\u0027s not a good idea for uPPM to use the code outside extra/um_ppm (like my original proposal). In that sence, I\u0027m ok with either platform_hexdump or patchset 2.",
+      "parentUuid": "60d7a676_260362da",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "380207eaf2cb25a6f52f6723eb960a96456f8d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
