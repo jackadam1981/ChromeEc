@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bd9ee4_e9587cd0",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T18:13:09Z",
+      "side": 1,
+      "message": "nit: Use same style as rest of file: `/* Check OTP key is unset initially. */`",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34095bc1_959e03d7",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T18:13:09Z",
+      "side": 1,
+      "message": "Does this compile for MCUs that don\u0027t use OTP? (e.g., `make BOARD\u003dbloonchipper`)\n\nI think it will need to be inside `if (CONFIG_ENABLED(CONFIG_OTP_KEY))`.\n\nSame for below.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771ffa31_abef5a47",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T18:13:09Z",
+      "side": 1,
+      "message": "nit: Use same style as rest of file: `/* Check OTP key has been written. */`",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 34
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87a0b3b_326fdecc",
+        "filename": "test/rollback_entropy.mocklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-14T18:13:09Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
