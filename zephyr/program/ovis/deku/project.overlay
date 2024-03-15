@@ -18,7 +18,8 @@
 #include "temp_sensors.dtsi"
 /*
  * TODO(b/285166688): need led_policy.dtsi once that has been
- * implemented to match Ovis requirements
+ * implemented to match Deku requirements
+ * #include "led_policy.dtsi"
  */
 
 / {
