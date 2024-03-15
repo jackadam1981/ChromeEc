@@ -865,7 +865,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				/* Set the port the CCI Event occurred
 				 * on */
 				pdc_int_data->cci_event.connector_change =
-					cfg->connector_number;
+					cfg->connector_number + 1;
 				/* Set the interrupt event */
 				pdc_int_data->cci_event
 					.vendor_defined_indicator = 1;
@@ -913,7 +913,6 @@ static void st_idle_run(void *o)
 static void st_write_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
-	const struct pdc_config_t *cfg = data->dev->config;
 
 	print_current_state(data);
 
@@ -929,8 +928,6 @@ static void st_write_entry(void *o)
 	}
 	/* Clear the CCI Event */
 	data->cci_event.raw_value = 0;
-	/* Set the port the CCI Event occurred on */
-	data->cci_event.connector_change = cfg->connector_number;
 }
 
 static void st_write_run(void *o)
@@ -954,7 +951,6 @@ static void st_write_run(void *o)
 static void st_ping_status_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
-	const struct pdc_config_t *cfg = data->dev->config;
 
 	print_current_state(data);
 
@@ -969,8 +965,6 @@ static void st_ping_status_entry(void *o)
 	data->ping_status.raw_value = 0;
 	/* Clear the CCI Event */
 	data->cci_event.raw_value = 0;
-	/* Set the port the CCI Event occurred on */
-	data->cci_event.connector_change = cfg->connector_number;
 }
 
 static void st_ping_status_run(void *o)
@@ -1103,7 +1097,6 @@ static void st_ping_status_run(void *o)
 static void st_read_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
-	const struct pdc_config_t *cfg = data->dev->config;
 
 	print_current_state(data);
 
@@ -1114,8 +1107,6 @@ static void st_read_entry(void *o)
 	data->cci_event.raw_value = 0;
 	/* Clear I2c Transaction Retry Counter */
 	data->i2c_transaction_retry_counter = 0;
-	/* Set the port the CCI Event occurred on */
-	data->cci_event.connector_change = cfg->connector_number;
 }
 
 static void st_read_run(void *o)
