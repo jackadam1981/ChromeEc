@@ -52,6 +52,24 @@
       "parentUuid": "d3704cae_f9fdce84",
       "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f74aec_6a949f06",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-15T07:04:00Z",
+      "side": 1,
+      "message": "Add CONFIG_ZEPHYR and check this function can trigger in uldren",
+      "parentUuid": "d3704cae_f9fdce84",
+      "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
