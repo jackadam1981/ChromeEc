@@ -113,6 +113,20 @@ K_EVENT_DEFINE(irq_event);
 BUILD_ASSERT(NUM_PDC_RTS54XX_PORTS <= 2,
 	     "rts54xx driver supports a maximum of 2 ports");
 
+#if 1
+
+test_mockable void _pdc_trace_rts_req(const uint8_t * const buf,
+				      const int count)
+{
+}
+
+test_mockable void _pdc_trace_rts_resp(const uint8_t * const buf,
+				       const int count)
+{
+}
+
+#endif
+
 /**
  * @brief SMbus Command struct for Realtek commands
  */
@@ -570,6 +584,10 @@ static int rts54_i2c_read(const struct device *dev)
 	}
 
 	data->rd_buf_len = data->ping_status.data_len;
+
+#if 1
+	_pdc_trace_rts_resp(data->rd_buf, data->ping_status.data_len + 1);
+#endif
 
 	return rv;
 }
@@ -1364,6 +1382,13 @@ static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
 	data->wr_buf_len = len;
 	data->user_buf = user_buf;
 	data->cmd = cmd;
+
+#if 1
+	{
+		//_trace_resp(data->wr_buf, data->wr_buf_len);
+		_pdc_trace_rts_req(data->wr_buf, data->wr_buf_len);
+	}
+#endif
 
 	k_mutex_unlock(&data->mtx);
 
