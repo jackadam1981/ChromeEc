@@ -187,6 +187,30 @@
       },
       "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53347922_e7d0e326",
+        "filename": "test/rollback_entropy.mocklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-15T01:07:55Z",
+      "side": 1,
+      "message": "I think it didn\u0027t get changed?",
+      "parentUuid": "85530e12_6ae8f65b",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
