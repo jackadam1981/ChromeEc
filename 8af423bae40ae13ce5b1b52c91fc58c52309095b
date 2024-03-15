@@ -87,6 +87,30 @@
       },
       "revId": "8af423bae40ae13ce5b1b52c91fc58c52309095b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5db0b0_bd65721c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-03-15T21:40:02Z",
+      "side": 1,
+      "message": "I think even clearing the INIT flag could cause some issues. For example, if the USB mux task was running `perform_mux_set` it may initialize the mux, then later run `exit_low_power_mode`. That will return an error if the INIT flag is not set. So, another task clearing the INIT flag between the `usb_mux_init` call and `exit_low_power_mode` call in `perform_mux_set` would prevent the driver from configuring the mux.\n\nWhat about the fix in PS2? This structures mux initialization similar to mux setting. There is a `perform_*` function which actually initializes the mux. All the calls in usb_mux.c use `perform_mux_init`. And the global `usb_mux_*` will que the event instead of directly calling it when the mux task is enabled.",
+      "parentUuid": "960168d9_233f35c7",
+      "range": {
+        "startLine": 487,
+        "startChar": 26,
+        "endLine": 487,
+        "endChar": 43
+      },
+      "revId": "8af423bae40ae13ce5b1b52c91fc58c52309095b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
