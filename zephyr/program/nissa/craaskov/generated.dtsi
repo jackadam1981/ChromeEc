@@ -128,6 +128,10 @@
 		gpio_ec_acok_otg_c0: ec_acok_otg_c0 {
 			gpios = <&gpioc 6 GPIO_OUTPUT>;
 		};
+		gpio_ec_acok_od: ec_acok_od {
+			gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
 		gpio_imu_int_l: imu_int_l {
 			gpios = <&gpio5 6 GPIO_INPUT>;
 		};

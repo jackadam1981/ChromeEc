@@ -14,11 +14,6 @@
 
 LOG_MODULE_REGISTER(charger, LOG_LEVEL_INF);
 
-int extpower_is_present(void)
-{
-	return 1;
-}
-
 /*
  * Nivviks does not have a GPIO indicating whether extpower is present,
  * so detect using the charger(s).
