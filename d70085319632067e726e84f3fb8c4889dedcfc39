@@ -211,6 +211,30 @@
       },
       "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c53e87_3ce747de",
+        "filename": "test/rollback_entropy.mocklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-15T16:54:47Z",
+      "side": 1,
+      "message": "Sorry about that, thought for sure I had changed it before. Definitely changed now.",
+      "parentUuid": "53347922_e7d0e326",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d70085319632067e726e84f3fb8c4889dedcfc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

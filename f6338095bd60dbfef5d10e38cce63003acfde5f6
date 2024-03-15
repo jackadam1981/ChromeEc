@@ -16,6 +16,24 @@
       "message": "I think this CL and the previous one (https://crrev.com/c/5288836) can be submitted. Then we should have everything we need for OTP for RO.",
       "revId": "f6338095bd60dbfef5d10e38cce63003acfde5f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54f9856_1490f5ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-15T16:54:47Z",
+      "side": 1,
+      "message": "Sounds good, thanks. https://crrev.com/c/5288836 just merged, will kick off CQ for this one",
+      "parentUuid": "d8363cc2_df741ccb",
+      "revId": "f6338095bd60dbfef5d10e38cce63003acfde5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
