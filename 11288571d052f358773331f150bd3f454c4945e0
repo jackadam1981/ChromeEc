@@ -16,6 +16,24 @@
       "message": "This is ap_pwrseq specific and will fail to build on any board that doesn\u0027t use Zephyr ap_pwrseq. It seems like this indicates there\u0027s a bug in power sequencing that should be fixed, rather than hacking EC reboot.\n\nIt seems like this tells us that if the EC were to crash with the AP in S5 then the AP would get stuck, and that\u0027s just as much a bug as it is if we get stuck doing a soft restart.",
       "revId": "11288571d052f358773331f150bd3f454c4945e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8061468_1d31f98c",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-15T00:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e6e339_31d18335",
+      "revId": "11288571d052f358773331f150bd3f454c4945e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
