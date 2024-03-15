@@ -105,6 +105,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "berknip",
     "bloog",
     "bobba",
+    "bujia",
     "boldar",
     "brask",
     "brya",
