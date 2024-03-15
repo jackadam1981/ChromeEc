@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c964a0_e6e72e2f",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-15T16:43:22Z",
+      "side": 1,
+      "message": "Hi Ridden,\n\nThis is a known limitation of the command (\u003dEC_REBOOT_COLD). The design decision is to let the callers take proper actions before cold reset.\n\nHave you tried to call EC_CMD_REBOOT_EC with cmd\u003dEC_REBOOT_COLD \u0026 flag\u003dEC_REBOOT_FLAG_ON_AP_SHUTDOWN? If so, how did it work differently from your expectation?",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1057,
+        "endChar": 17
+      },
+      "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
