@@ -88,6 +88,24 @@
       "parentUuid": "b3f74aec_6a949f06",
       "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68502c50_6d858bc3",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-15T07:16:08Z",
+      "side": 1,
+      "message": "\u003e Ignore what I just said.Check with build other project,this CL can build other zephry like `crasskov`and legacy ec `omnigul`.But I need add `#ifdef CONFIG_ZEPHYR` in `#include \u003cap_power_override_functions.h\u003e` to make legacy ec can build success",
+      "parentUuid": "9310c6f9_129ad711",
+      "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
