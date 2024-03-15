@@ -24,6 +24,20 @@
 extern "C" {
 #endif
 
+
+#if 1
+
+extern void _pdc_trace_enable(void);
+extern void _pdc_trace_disable(void);
+
+extern void _pdc_trace_rts_req(const uint8_t * buf, const int count);
+extern void _pdc_trace_rts_resp(const uint8_t * buf, const int count);
+
+//extern void _pdc_trace__req(uint8_t command_code,
+//		       const uint8_t * const buf, const int count);
+
+#endif
+
 /**
  * Extract the 16-bit VID or PID from the 32-bit container in
  * `struct pdc_info_t`
