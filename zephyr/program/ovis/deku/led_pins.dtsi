@@ -7,21 +7,21 @@
 	gpio-led-pins {
 		compatible = "cros-ec,gpio-led-pins";
 
-		left_led: left-led {
-			led-id = "EC_LED_ID_LEFT_LED";
+		power_led: power-led {
+			led-id = "EC_LED_ID_POWER_LED";
 			led-pins = <&gpio_led_1_l &gpio_led_2_l>;
-			color-off-left {
+			color-off-power {
 				led-color = "LED_OFF";
-				led-values = <1 1>;
+				led-values = <0 0>;
 			};
 
-			color-amber-left {
-				led-color = "LED_AMBER";
+			color-green-power {
+				led-color = "LED_GREEN";
 				led-values = <0 1>;
 			};
 
-			color-white-left {
-				led-color = "LED_WHITE";
+			color-red-power {
+				led-color = "LED_RED";
 				led-values = <1 0>;
 			};
 		};
