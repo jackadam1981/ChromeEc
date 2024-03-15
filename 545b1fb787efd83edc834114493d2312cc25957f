@@ -16,6 +16,24 @@
       "message": "Hi Scott, is it possible to verify this change on Ovis?",
       "revId": "545b1fb787efd83edc834114493d2312cc25957f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34b5a84_008dbaf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-03-15T21:14:43Z",
+      "side": 1,
+      "message": "I\u0027m not able to verify this on Ovis. I can\u0027t start up my Ovis system currently. HOwever, the changes for GPIO nodes that are common to Ovis are just updating the LED values to the correct default value, and the retimer_reset line to be open_drain high, which is how it\u0027s defaulted to on Rex and what was added for port C3 on Deku. So it\u0027s just making those consistent.",
+      "parentUuid": "b43417ea_aaa3acbf",
+      "revId": "545b1fb787efd83edc834114493d2312cc25957f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
