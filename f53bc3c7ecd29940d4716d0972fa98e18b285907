@@ -34,6 +34,24 @@
       "parentUuid": "dbbb845b_e2bb5fdd",
       "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7158a827_8d04dfa7",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-03-15T06:49:31Z",
+      "side": 1,
+      "message": "Could you confirm that zephyr boards like corsola and non-zephyr boards like brya could build successfully before voting V+1 ?",
+      "parentUuid": "d3704cae_f9fdce84",
+      "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
