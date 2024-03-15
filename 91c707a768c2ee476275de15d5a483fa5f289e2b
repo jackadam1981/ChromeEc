@@ -16,6 +16,40 @@
       "message": "I fixed \"make clean\" for remote_unit_tests",
       "revId": "91c707a768c2ee476275de15d5a483fa5f289e2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd96fe0_ae0fb01d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-03-15T23:33:30Z",
+      "side": 1,
+      "message": "I think the current mock is fine but I\u0027m still not quite satisfied with the need to always define both the inputs and outputs in tests.\n\nIdeally, you would have a default mock that returns default values for all commands which is initially in a disconnected state. Any changes we want to test should then be introduced in the test itself.\n\nFor example, an initialization test would look like the following:\n\n```\nTEST_F(OpmUnitTest, Initialize) {\n  // Always start with PPM reset.\n  EXPECT_CALL(pd_mock_, MatchCmd(UCSI_CMD_PPM_RESET)).Times(Exactly(1));\n  EXPECT_CALL(pd_mock_, MatchCmdList({UCSI_CMD_SET_NOTIFICATION, UCSI_CMD_GET_CAPABILITY, UCSI_CMD_GET_CONNECTOR_STATUS, UCSI_CMD_GET_PDOS, UCSI_CMD_GET_ALTERNATE_MODES}).Times(AtLeast(1));\n  \n  StartMainloop();\n}\n```\n\nThen I\u0027d want to test that alternate modes are properly populated:\n\n```\nTEST_F(OpmUnitTest, Init_PortAltModesPopulated) {\n  SyfsVerifier verifier;\n\n  EXPECT_CALL(pd_mock_, MatchCmd(UCSI_GET_CAPABILITY)).WillRepeatedly(Invoke(kGetCapWithBasicAltmodes, fptr));\n  EXPECT_CALL(pd_mock_, MatchGetAltMode(kSop, _)).WillRepeatedly(Invoke(kGetAltModeForSop, fptr));\n  \n  StartMainLoop();\n  \n  verifier.VerifyPortAltModes();\n}\n```\n\nI think the current set of tests may provide this already but do too much in a single test. Let\u0027s commit this for now and refactor the tests to split up functionality more.",
+      "revId": "91c707a768c2ee476275de15d5a483fa5f289e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1dcbd1_c42b79dd",
+        "filename": "extra/um_ppm/test/run_remote_unit_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-03-15T23:33:30Z",
+      "side": 1,
+      "message": "Test images have a test specific RSA key you can use (testing_rsa). We should not be using sshpass to log in.\n\nYou want to do just `ssh root@bar` or `ssh -i ~/.ssh/testing_rsa root@bar`",
+      "revId": "91c707a768c2ee476275de15d5a483fa5f289e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
