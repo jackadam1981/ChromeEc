@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db37d3e4_700da1e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-15T22:48:55Z",
+      "side": 1,
+      "message": "I think this is a nice improvement, but am hesitant to make too many last minute changes to RO.\n\nIf this does not make it in RO, will it still work in RW? IIRC, the MPU initialization code disables the MPU and the re-enables it, so if that same code runs in RW it should be OK if RO and RW have different MPU configurations, right?",
+      "revId": "0833e7a33b78049df5768c30a3f1618c72655448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
