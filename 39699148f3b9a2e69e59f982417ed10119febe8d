@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414cdff9_595d63da",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-15T08:09:08Z",
+      "side": 1,
+      "message": "Is this really needed?\n\nbase_init_setting does the same thing again.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "39699148f3b9a2e69e59f982417ed10119febe8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
