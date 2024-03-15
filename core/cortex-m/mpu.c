@@ -336,10 +336,12 @@ int mpu_lock_rollback(int lock)
 {
 	int rv;
 	int num_mpu_regions = mpu_num_regions();
+	uint32_t consumed;
 
-	const uint32_t rollback_region_start_address =
+	uint32_t rollback_region_start_address =
 		CONFIG_MAPPED_STORAGE_BASE + CONFIG_ROLLBACK_OFF;
-	const uint32_t rollback_region_total_size = CONFIG_ROLLBACK_SIZE;
+	uint32_t rollback_region_total_size = CONFIG_ROLLBACK_SIZE;
+
 	const uint16_t mpu_attr =
 		MPU_ATTR_XN /* Execute never */ |
 		MPU_ATTR_NO_NO /* No access (privileged or unprivileged */;
@@ -373,18 +375,29 @@ int mpu_lock_rollback(int lock)
 	 */
 
 	rollback_mpu_region = REGION_CHIP_RESERVED;
-	rv = mpu_config_region(rollback_mpu_region,
-			       rollback_region_start_address,
-			       rollback_region_total_size / 2, mpu_attr, lock);
+	rv = mpu_config_region_greedy(rollback_mpu_region,
+				      rollback_region_start_address,
+				      rollback_region_total_size, mpu_attr,
+				      lock, &consumed);
+	if (rv != EC_SUCCESS || consumed == rollback_region_total_size)
+		return rv;
+
+	ASSERT(consumed <= rollback_region_total_size);
+	rollback_region_start_address += consumed;
+	rollback_region_total_size -= consumed;
+
+	rollback_mpu_region = REGION_CODE_RAM;
+	rv = mpu_config_region_greedy(rollback_mpu_region,
+				      rollback_region_start_address,
+				      rollback_region_total_size, mpu_attr,
+				      lock, &consumed);
 	if (rv != EC_SUCCESS)
 		return rv;
 
-	rollback_mpu_region = REGION_CODE_RAM;
-	rv = mpu_config_region(rollback_mpu_region,
-			       rollback_region_start_address +
-				       (rollback_region_total_size / 2),
-			       rollback_region_total_size / 2, mpu_attr, lock);
-	return rv;
+	if (consumed != rollback_region_total_size)
+		return EC_ERROR_OVERFLOW;
+
+	return EC_SUCCESS;
 }
 #endif
 
