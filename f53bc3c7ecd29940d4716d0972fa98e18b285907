@@ -106,6 +106,24 @@
       "parentUuid": "9310c6f9_129ad711",
       "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef1ecb9_b2e92f5e",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-03-15T10:45:53Z",
+      "side": 1,
+      "message": "Could you determine if we could use chipset_force_shutdown(CHIPSET_SHUTDOWN_G3) instead here ?",
+      "parentUuid": "68502c50_6d858bc3",
+      "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
