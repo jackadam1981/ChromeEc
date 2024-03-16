@@ -46,6 +46,30 @@
       },
       "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccacc05_93a7e027",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-16T02:10:03Z",
+      "side": 1,
+      "message": "Do you expect cold reset in G3 but you see cold reset in S5 and that\u0027s a violation of the spec?\n\nHmm... it seems too harsh for the spec to allow cold reset only in G3. Maybe the real issue is that the EC drops to S5 too early (in the sense it should still be in S3 or S4)?",
+      "parentUuid": "d1aaf003_2297931b",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1057,
+        "endChar": 17
+      },
+      "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
