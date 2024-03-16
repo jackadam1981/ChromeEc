@@ -70,6 +70,30 @@
       },
       "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a3fa39_77be3bd7",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-16T07:51:47Z",
+      "side": 1,
+      "message": "But the desired effect was to disable PP3300 before ec reset, which would require switching from S5 to G3.",
+      "parentUuid": "2ccacc05_93a7e027",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1057,
+        "endChar": 17
+      },
+      "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
