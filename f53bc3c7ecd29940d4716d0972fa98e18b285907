@@ -124,6 +124,24 @@
       "parentUuid": "68502c50_6d858bc3",
       "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256435d7_bdca8d80",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-16T11:29:54Z",
+      "side": 1,
+      "message": "Have use chipset_force_shutdown(CHIPSET_SHUTDOWN_G3) instead here, check it can work same as past",
+      "parentUuid": "0ef1ecb9_b2e92f5e",
+      "revId": "f53bc3c7ecd29940d4716d0972fa98e18b285907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
