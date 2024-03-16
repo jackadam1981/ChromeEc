@@ -94,6 +94,30 @@
       },
       "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1ec7a2_0cab3ee2",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-03-16T10:11:37Z",
+      "side": 1,
+      "message": "Since the reboot is triggered at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;drc\u003d73528c0fbba08f7b709af48c7fedde698e44cc75;l\u003d1143, which should be already in S5. Tried to add few delays (100ms) before calling into handle_pending_reboot but seems doesn\u0027t help which aligns intel\u0027s recommendation that system should enter G3 to complete the power sequence.",
+      "parentUuid": "27a3fa39_77be3bd7",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1057,
+        "endChar": 17
+      },
+      "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
