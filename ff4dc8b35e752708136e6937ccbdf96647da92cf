@@ -22,6 +22,30 @@
       },
       "revId": "ff4dc8b35e752708136e6937ccbdf96647da92cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f786ad1_8d0bdfc3",
+        "filename": "zephyr/test/nissa/src/glassway.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-03-17T22:23:04Z",
+      "side": 1,
+      "message": "Yes, good catch. Removed.",
+      "parentUuid": "e44c6560_41b6d2c5",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 37
+      },
+      "revId": "ff4dc8b35e752708136e6937ccbdf96647da92cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
