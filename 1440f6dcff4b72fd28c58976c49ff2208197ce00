@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9a4a30_b8550360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-03-17T23:04:01Z",
+      "side": 1,
+      "message": "Since this seems okay only as a temporary hack to unblock the factory, I\u0027ve filed b/330069312 to ensure it gets removed once we agree on a more general solution that can be landed on main.",
+      "revId": "1440f6dcff4b72fd28c58976c49ff2208197ce00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
