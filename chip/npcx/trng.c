@@ -172,10 +172,11 @@ void npcx_trng_hw_init(void)
 		return;
 	}
 
-	/* Configure trng to generate new 128 byte random seed every N (second
-	 * parameter) calls to NCL_DRBG->generate()
+	/* b/322827873: Disable automatic reseeding since it takes a long time
+	 * and can cause host commands to timeout.
 	 */
-	state_p->trng_init = NCL_DRBG->config(ctx_p, 100, false);
+	const uint32_t reseed_interval = UINT32_MAX;
+	state_p->trng_init = NCL_DRBG->config(ctx_p, reseed_interval, false);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG config returned %x\r",
 			 state_p->trng_init);
