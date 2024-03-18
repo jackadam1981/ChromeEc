@@ -16,6 +16,29 @@
       "message": "I don\u0027t think this is a good general solution, but to unblock the factory I don\u0027t mind cherry-picking to the nissa firmware branch: https://crrev.com/c/5373951",
       "revId": "23071122db847fc1be0a7e0aa16168cb252f668f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a65f68_2a453fc5",
+        "filename": "common/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-18T18:19:45Z",
+      "side": 1,
+      "message": "\u003e power down sequence cannot meet specification\n\nWhich spec? If it\u0027s Intel\u0027s, can you guard this call accordingly?",
+      "range": {
+        "startLine": 1055,
+        "startChar": 2,
+        "endLine": 1055,
+        "endChar": 46
+      },
+      "revId": "23071122db847fc1be0a7e0aa16168cb252f668f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
