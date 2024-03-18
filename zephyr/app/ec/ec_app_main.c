@@ -22,11 +22,42 @@
 #include <zephyr/pm/policy.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/sys/printk.h>
+#include <zephyr/debug/hw_breakpoint.h>
+
+static struct k_thread test_thread;
+K_THREAD_STACK_DEFINE(test_thread_stack, 1024);
 
 static struct k_timer no_sleep_boot_timer;
 static void boot_allow_sleep(struct k_timer *timer)
 {
 	pm_policy_state_lock_put(PM_STATE_SUSPEND_TO_IDLE, PM_ALL_SUBSTATES);
+}
+
+static void rpz_test_a(void) {
+	cprints(CC_SYSTEM, "RPZ %s a\n", __func__);	
+}
+
+static void rpz_test_b(void) {
+	cprints(CC_SYSTEM, "RPZ %s b\n", __func__);	
+}
+
+static void rpz_test_func(void)
+{
+	rpz_test_a();
+	rpz_test_b();
+}
+
+static void test_thread_work(void *unused1, void *unused2, void *unused3)
+{
+	while (1) {
+		rpz_test_func();
+		k_msleep(5000);
+	}
+}
+
+static void handler(int handle, z_arch_esf_t *esf, void *data)
+{
+	printk("RPZ BP hit\n");
 }
 
 /* For testing purposes this is not named main. See main_shim.c for the real
@@ -123,7 +154,7 @@ void ec_app_main(void)
 		cbi_latch_eeprom_wp();
 
 	/*
-	 * Print the init time.  Not completely accurate because it can't take
+	 * Print the init time.  Not completely accurate because it can't takec
 	 * into account the time before timer_init(), but it'll at least catch
 	 * the majority of the time.
 	 */
@@ -143,4 +174,14 @@ void ec_app_main(void)
 	if (IS_ENABLED(CONFIG_USB_PD_ALTMODE_INTEL)) {
 		intel_altmode_task_start();
 	}
+
+	k_msleep(5000);
+	hw_bp_set((uintptr_t) &rpz_test_b, HW_BP_TYPE_INSTRUCTION, HW_BP_FLAGS_NONE, &handler, NULL);
+
+	k_thread_create(
+			&test_thread, test_thread_stack,
+			K_THREAD_STACK_SIZEOF(test_thread_stack),
+			test_thread_work, NULL, NULL, NULL,
+			0, 0,
+			K_MSEC(1000));
 }
