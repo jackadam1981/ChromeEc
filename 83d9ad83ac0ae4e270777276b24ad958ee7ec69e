@@ -34,6 +34,24 @@
       "parentUuid": "23f9afb1_4dd710c2",
       "revId": "83d9ad83ac0ae4e270777276b24ad958ee7ec69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496083ec_a0acbca5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-18T20:22:15Z",
+      "side": 1,
+      "message": "Ok, there are some things I would do differently here like using the public API command pathway to send the `CMD_PDC_SET_RDO` cmd and have `pdc_power_mgmt_get_pdos()` output a copy of the current PDOs and print those out within the console command using shell prints. (the log messages may or may not be turned off). I can deal with these things if you want.",
+      "parentUuid": "e5826120_05443f77",
+      "revId": "83d9ad83ac0ae4e270777276b24ad958ee7ec69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
