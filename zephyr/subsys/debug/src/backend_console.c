@@ -12,7 +12,7 @@
 
 #define BUF_LEN CONFIG_PLATFORM_EC_GDBSTUB_BACKEND_CONSOLE_BUFFER_LEN
 
-LOG_MODULE_REGISTER(ec_chip_it8xxx2_espi, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(gdbstub_backend_console, LOG_LEVEL_DBG);
 
 BUILD_ASSERT(CONFIG_SHELL_CMD_BUFF_SIZE >= BUF_LEN);
 
@@ -48,14 +48,20 @@ static bool tx_skip;
 
 K_THREAD_STACK_DEFINE(gdb_thread_stack, 1024);
 
+struct k_thread *gdb_nonstop_get_thread(void) {
+	return &gdb_thread_data;
+}
+
 static void gdbstub_thread(void *unused1, void *unused2, void *unused3)
 {
-	struct gdb_ctx ctx;
+	struct gdb_ctx *ctx = NULL;
 
-	memset(&ctx, 0, sizeof(struct gdb_ctx));
 	while (1) {
-		z_gdb_main_loop(&ctx);
-		LOG_DBG("Processed packet");
+		if(!gdb_nonstop_select_stopped(&ctx, NULL)) {
+			k_msleep(100);
+			continue;
+		}
+		z_gdb_main_loop(ctx);
 	}
 }
 
@@ -75,6 +81,7 @@ int z_gdb_backend_init(void)
 
 void z_gdb_putchar(unsigned char ch)
 {
+	//LOG_INF("GDBCH:%c", ch);
 	if (!tx_skip) {
 		tx_buf.buf[tx_buf.index] = ch;
 		tx_buf.index++;
@@ -98,8 +105,8 @@ void z_gdb_putchar(unsigned char ch)
 				LOG_INF("gdbresponse$+#2b");
 				tx_buf.index = 0;
 				break;
-			} else if (ch != '$') {
-				LOG_ERR("Failed to find packet start");
+			} else if (ch != '$' && ch != '%') {
+				LOG_ERR("Failed to find packet start, got %c", ch);
 				break;
 			}
 			tx_state = TX_WRITE;
