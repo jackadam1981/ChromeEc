@@ -369,4 +369,7 @@ uint8_t pdc_power_mgmt_get_product_type(int port);
  */
 int pdc_power_mgmt_connector_reset(int port, enum connector_reset reset_type);
 
+int pdc_power_mgmt_get_pdos(int port);
+
+int pdc_power_mgmt_set_rdo(int port, int rdo);
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
