@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85e3e6fb_ff9ee7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "The same resume hang testing was done by emptying `cros_ec_send_resume_event()` and verifying the EC detects the hard resume hang and resets the AP.\n\nI\u0027ve updated the commit message with this testing on Guybrush.",
+      "parentUuid": "95f36154_f81f1b85",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19af8206_3016510f",
         "filename": "power/host_sleep.c",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-14T17:53:03Z",
       "side": 1,
       "message": "nit: single words don\u0027t need to be wrapped in `|`, I.e. CONFIG_EMULATED_SYSRQ or SysRq or host_send_sysrq()",
+      "range": {
+        "startLine": 214,
+        "startChar": 9,
+        "endLine": 214,
+        "endChar": 10
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9662bae6_e3ab033b",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19af8206_3016510f",
       "range": {
         "startLine": 214,
         "startChar": 9,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5dbda2_4bac3e4a",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "Hm, I thought I had tried that, but CQ seems to be happy with it.",
+      "parentUuid": "9e165b07_e6020898",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe4f4448_016895b9",
@@ -71,6 +131,30 @@
       "writtenOn": "2024-03-14T17:53:03Z",
       "side": 1,
       "message": "The counter seems to be reset at resume only, not on reboot. Do you think it makes sense to add one more case here (if count \u003e 2) to reset it? For the case when the first suspend after boot fails (counter++) -\u003e reboot -\u003e first suspend fails again (counter++)",
+      "range": {
+        "startLine": 223,
+        "startChar": 28,
+        "endLine": 223,
+        "endChar": 32
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "544a8575_4dbf51ed",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "\u003e Do you think it makes sense to add one more case here (if count \u003e 2) to reset it?\n\nUnless I\u0027m misunderstanding what you\u0027re describing here, that\u0027s what the final case is doing.\n\nCan you expand on what you\u0027re describing here?",
+      "parentUuid": "fe4f4448_016895b9",
       "range": {
         "startLine": 223,
         "startChar": 28,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "433a4acf_2a545948",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d3a76a_1f60a792",
+      "range": {
+        "startLine": 225,
+        "startChar": 19,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e74b921f_c3fa07d7",
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b1c024_cd827725",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74b921f_c3fa07d7",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 9
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973382b8_cb9874fa",
@@ -140,6 +272,24 @@
       "writtenOn": "2024-03-14T20:27:24Z",
       "side": 1,
       "message": "nit: `if (IS_ENABLED(CONFIG_POWER_S0IX))`",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec943355_bafee89c",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-18T20:17:37Z",
+      "side": 1,
+      "message": "This fails to build:\n\n```\n(cr) timvp@timvp-p620-9115096 /mnt/host/source/src/platform/ec $ ./twister -v -i -p native_posix -p unit_testing\n...\n/mnt/host/source/src/platform/ec/power/host_sleep.c:292:22: error: use of undeclared identifier \u0027POWER_S0ix\u0027\n  292 |                 get_lazy_wake_mask(POWER_S0ix, \u0026sleep_wake_mask);\n```\n\nAdmittedly, I\u0027m not sure why this isn\u0027t optimized out like the `IS_ENABLED(CONFIG_EMULATED_SYSRQ)` case above.",
+      "parentUuid": "973382b8_cb9874fa",
       "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
