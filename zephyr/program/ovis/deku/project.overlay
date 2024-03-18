@@ -85,9 +85,6 @@
 		gpio_ec_spare_gpiod3: ec_spare_gpiod3 {
 			gpios = <&gpiod 3 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpio74: ec_spare_gpio74 {
-			gpios = <&gpio7 4 GPIO_OUTPUT>;
-		};
 		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
 			gpios = <&gpio5 0 GPIO_INPUT>;
 		};
