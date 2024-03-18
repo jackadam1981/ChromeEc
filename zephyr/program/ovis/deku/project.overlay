@@ -111,9 +111,6 @@
 		gpio_ec_spare_gpio67: ec_spare_gpio67 {
 			gpios = <&gpio6 7 GPIO_OUTPUT>;
 		};
-		gpio_ec_spare_gpio74: ec_spare_gpio74 {
-			gpios = <&gpio7 4 GPIO_OUTPUT>;
-		};
 		gpio_ec_spare_gpio85: ec_spare_gpio85 {
 			gpios = <&gpio8 5 GPIO_OUTPUT>;
 		};
