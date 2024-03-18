@@ -94,6 +94,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7dd2d9_bd346b8d",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-18T23:47:55Z",
+      "side": 1,
+      "message": "\u003e This unit test call the get_ikm function, where the bulk of the changes were made, directly. So, not sure what you mean by indirectly? \n\nAs I mentioned in the earlier comment, the name of the unit test files correspond to the files that thye are testing. Thus the tests in `test/fpsensor_auth_crypto_stateful.cc` were designed to test `fpsensor_auth_crypto_stateful.cc`. You\u0027ll note that `test/fpsensor_auth_crypto_stateful.cc` does not actually call `get_ikm` directly in the test; the functions that it calls *do* end up calling `get_ikm`; this is what I mean by directly vs indirectly.\n\n\u003e  If we need additional test coverage in a unit test, wouldn\u0027t it be simpler to modify the test that is already running on hardware and working rather than trying to refresh a test (fpsensor_crypto) which hasn\u0027t been running on fingerprint hardware for some time?\n\nThe `fpsensor_crypto` test does run as part of the \"emulator\" tests. It would be nice if it ran on the hardware, but since it sounds like that doesn\u0027t work out-of-the-box, let\u0027s treat it as an orthogonal problem that we don\u0027t need to solve now. Having the `fpsensor_crypto` test pass in the emulator with both `CONFIG_OTP_KEY` enabled and `CONFIG_OTP_KEY` disabled will directly exercise `get_ikm` (i.e., call it directly from the test), as well as the associated functions that directly call `get_ikm`, such as `derive_encryption_key`. Option 2 in my original comment gives some details on how to run the test with `CONFIG_OTP_KEY` enabled.",
+      "parentUuid": "7927d672_e6102370",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
