@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59648a22_444b1852",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-18T22:54:51Z",
+      "side": 1,
+      "message": "We still get 4 bytes per one call to `generate`. How this improves security? Is this something related to entropy?",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 187,
+        "endChar": 40
+      },
+      "revId": "12f9a234d52be1510debf93316c1e32d18b307cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
