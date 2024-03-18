@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23396076_12c02475",
+        "filename": "zephyr/subsys/pd_controller/Kconfig.usbc_altmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-18T23:22:12Z",
+      "side": 1,
+      "message": "You should move this change after the interrupt fix.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "893db55fd85fac0323d46505767fd9c1006a98d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
