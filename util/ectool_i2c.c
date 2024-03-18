@@ -56,7 +56,7 @@ int cmd_i2c_protect(int argc, char *argv[])
 	return 0;
 }
 
-static int do_i2c_xfer(unsigned int port, unsigned int addr,
+int do_i2c_xfer(unsigned int port, unsigned int addr,
 		       uint8_t *write_buf, int write_len,
 		       uint8_t **read_buf, int read_len)
 {

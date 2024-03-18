@@ -49,3 +49,5 @@ int cmd_i2c_read(int argc, char *argv[]);
 int cmd_i2c_speed(int argc, char *argv[]);
 int cmd_i2c_write(int argc, char *argv[]);
 int cmd_i2c_xfer(int argc, char *argv[]);
+int do_i2c_xfer(unsigned int port, unsigned int addr, uint8_t *write_buf,
+		       int write_len, uint8_t **read_buf, int read_len);

@@ -459,18 +459,6 @@ static uint32_t read_mapped_mem32(uint8_t offset)
 	return val;
 }
 
-static int read_mapped_string(uint8_t offset, char *buffer, int max_size)
-{
-	int ret;
-
-	ret = ec_readmem(offset, max_size, buffer);
-	if (ret <= 0) {
-		fprintf(stderr, "failure in %s(): %d\n", __func__, ret);
-		exit(1);
-	}
-	return ret;
-}
-
 static int wait_event(long event_type,
 		      struct ec_response_get_next_event_v1 *buffer,
 		      size_t buffer_size, long timeout)
@@ -7951,10 +7939,184 @@ cmd_error:
 	return -1;
 }
 
+char* get_oem_name(void)
+{
+	unsigned int port, addr;
+	int read_len, write_len = 0, icnt;
+	uint8_t *write_buf = NULL;
+	uint8_t *read_buf;
+	char* oem_name;
+
+	port = 1;
+	addr = 0x0b;
+	read_len = 8;
+	write_len = 1;
+	write_buf = (uint8_t *)(malloc(write_len));
+	read_buf = (uint8_t *)(malloc(read_len));
+	write_buf[0] = 0x20;
+
+	do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
+/*
+	printf("read_len = %d\n", read_buf[0]);
+	for(int icnt = 0; icnt < 32; icnt++)
+		printf("%02X ", read_buf[icnt]);
+
+	printf("\n");
+
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%c ", read_buf[icnt]);
+
+	printf("\n");
+*/
+	oem_name = (char *)(malloc(32));
+	memset(oem_name, 0, 32);
+	for(icnt = 0; icnt < read_buf[0]; icnt++)
+	{
+		if(read_buf[icnt + 1] == 0x00)
+			break;
+		else
+			oem_name[icnt] = (char)(read_buf[icnt + 1]);
+	}
+
+	if (write_len)
+		free(write_buf);
+
+	return oem_name;
+}
+
+char* get_model_number(void)
+{
+	unsigned int port, addr;
+	int read_len, write_len = 0, icnt;
+	uint8_t *write_buf = NULL;
+	uint8_t *read_buf;
+	char* model_number;
+
+	port = 1;
+	addr = 0x0b;
+	read_len = 8;
+	write_len = 1;
+	write_buf = (uint8_t *)(malloc(write_len));
+	read_buf = (uint8_t *)(malloc(read_len));
+	write_buf[0] = 0x21;
+
+	do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
+/*
+	printf("read_len = %d\n", read_buf[0]);
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%X ", read_buf[icnt]);
+
+	printf("\n");
+
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%c ", read_buf[icnt]);
+
+	printf("\n");
+*/
+	model_number = (char *)(malloc(32));
+	memset(model_number, 0, 32);
+	for(icnt = 0; icnt < read_buf[0]; icnt++)
+	{
+		if(read_buf[icnt + 1] == 0x00)
+			break;
+		else
+			model_number[icnt] = (char)(read_buf[icnt + 1]);
+	}
+
+	if (write_len)
+		free(write_buf);
+
+	return model_number;
+}
+
+char* get_chemistry(void)
+{
+	unsigned int port, addr;
+	int read_len, write_len = 0, icnt;
+	uint8_t *write_buf = NULL;
+	uint8_t *read_buf;
+	char* chemistry;
+
+	port = 1;
+	addr = 0x0b;
+	read_len = 5;
+	write_len = 1;
+	write_buf = (uint8_t *)(malloc(write_len));
+	read_buf = (uint8_t *)(malloc(read_len));
+	write_buf[0] = 0x22;
+
+	do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
+/*
+	printf("read_len = %d\n", read_buf[0]);
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%X ", read_buf[icnt]);
+
+	printf("\n");
+
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%c ", read_buf[icnt]);
+
+	printf("\n");
+*/
+	chemistry = (char *)(malloc(32));
+	memset(chemistry, 0, 32);
+	for(icnt = 0; icnt < read_buf[0]; icnt++)
+	{
+		if(read_buf[icnt + 1] == 0x00)
+			break;
+		else
+			chemistry[icnt] = (char)(read_buf[icnt + 1]);
+	}
+
+	if (write_len)
+		free(write_buf);
+
+	return chemistry;
+}
+
+char* get_serial_number(void)
+{
+	unsigned int port, addr;
+	int read_len, write_len = 0;
+	uint8_t *write_buf = NULL;
+	uint8_t *read_buf;
+	char* serial_number;
+
+	port = 1;
+	addr = 0x0b;
+	read_len = 2;
+	write_len = 1;
+	write_buf = (uint8_t *)(malloc(write_len));
+	read_buf = (uint8_t *)(malloc(read_len));
+	write_buf[0] = 0x1c;
+
+	do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
+/*
+	printf("read_len = %d\n", read_buf[0]);
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%X ", read_buf[icnt]);
+
+	printf("\n");
+
+	for(int icnt = 0; icnt < read_len; icnt++)
+		printf("%c ", read_buf[icnt]);
+
+	printf("\n");
+*/
+	serial_number = (char *)(malloc(32));
+	memset(serial_number, 0, 32);
+	sprintf(serial_number, "%02X%02X", read_buf[1], read_buf[0]);
+
+	if (write_len)
+		free(write_buf);
+
+	return serial_number;
+
+}
+
 int cmd_battery(int argc, char *argv[])
 {
-	char batt_text[EC_MEMMAP_TEXT_MAX];
-	int rv, val;
+	int val;
 	char *e;
 	int index = 0;
 	uint8_t flags;
@@ -7988,27 +8150,13 @@ int cmd_battery(int argc, char *argv[])
 
 	printf("Battery info:\n");
 
-	rv = read_mapped_string(EC_MEMMAP_BATT_MFGR, batt_text,
-			sizeof(batt_text));
-	if (rv < 0 || !is_string_printable(batt_text))
-		goto cmd_error;
-	printf("  OEM name:               %s\n", batt_text);
+	printf("  OEM name:               %s\n", get_oem_name());
 
-	rv = read_mapped_string(EC_MEMMAP_BATT_MODEL, batt_text,
-			sizeof(batt_text));
-	if (rv < 0 || !is_string_printable(batt_text))
-		goto cmd_error;
-	printf("  Model number:           %s\n", batt_text);
+	printf("  Model number:           %s\n", get_model_number());
 
-	rv = read_mapped_string(EC_MEMMAP_BATT_TYPE, batt_text,
-			sizeof(batt_text));
-	if (rv < 0 || !is_string_printable(batt_text))
-		goto cmd_error;
-	printf("  Chemistry   :           %s\n", batt_text);
+	printf("  Chemistry   :           %s\n", get_chemistry());
 
-	rv = read_mapped_string(EC_MEMMAP_BATT_SERIAL, batt_text,
-			sizeof(batt_text));
-	printf("  Serial number:          %s\n", batt_text);
+	printf("  Serial number:          %s\n", get_serial_number());
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_DCAP);
 	if (!is_battery_range(val))
