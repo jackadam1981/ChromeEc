@@ -93,6 +93,30 @@
       },
       "revId": "dc1600d9e090a77a67d646c0b9b160245b27a7cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194f3ce1_07302898",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-18T23:01:54Z",
+      "side": 1,
+      "message": "Yup. It looked like TODO. Reword looks good.",
+      "parentUuid": "fb8372ec_c81dd30e",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 15
+      },
+      "revId": "dc1600d9e090a77a67d646c0b9b160245b27a7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
