@@ -22,6 +22,30 @@
       },
       "revId": "12f9a234d52be1510debf93316c1e32d18b307cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f5b28a_75f6d4fb",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-18T22:59:18Z",
+      "side": 1,
+      "message": "Let me get confirmation on my questions in http://b/322827873#comment26, so I can confirm my assumptions and write a better description.",
+      "parentUuid": "59648a22_444b1852",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 187,
+        "endChar": 40
+      },
+      "revId": "12f9a234d52be1510debf93316c1e32d18b307cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
