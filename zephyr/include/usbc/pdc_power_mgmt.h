@@ -396,4 +396,7 @@ void pdc_power_mgmt_clear_event(int port, atomic_t event_mask);
  */
 void pdc_power_mgmt_notify_event(int port, atomic_t event_mask);
 
+int pdc_power_mgmt_get_pdos(int port);
+
+int pdc_power_mgmt_set_rdo(int port, int rdo);
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

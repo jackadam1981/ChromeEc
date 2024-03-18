@@ -210,6 +210,33 @@ static int cmd_pdc_connector_reset(const struct shell *sh, size_t argc,
 	return rv;
 }
 
+static int cmd_pdc_get_pdos(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	return pdc_power_mgmt_get_pdos(port);
+};
+
+static int cmd_pdc_set_rdo(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	char *e;
+	uint8_t rdo;
+	uint8_t port;
+
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+	rdo = strtoul(argv[2], &e, 0);
+
+	return pdc_power_mgmt_set_rdo(port, rdo);
+};
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -240,6 +267,14 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Trigger hard or data reset\n"
 		      "Usage: pdc conn_reset  <port> [hard|data]",
 		      cmd_pdc_connector_reset, 3, 0),
+	SHELL_CMD_ARG(get_pdos, NULL,
+		      "Get PDOs\n"
+		      "Usage: pdc get_pdos  <port>",
+		      cmd_pdc_get_pdos, 2, 0),
+	SHELL_CMD_ARG(set_rdo, NULL,
+		      "Set RDO indexed from list of PDOs\n"
+		      "Usage: pdc set_rdo  <port> <PDO#>",
+		      cmd_pdc_set_rdo, 3, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);

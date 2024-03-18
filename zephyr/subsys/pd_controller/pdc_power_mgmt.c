@@ -2481,3 +2481,33 @@ uint8_t pdc_power_mgmt_get_product_type(int port)
 
 	return ptype;
 }
+
+int pdc_power_mgmt_get_pdos(int port)
+{
+	struct pdc_port_t *pdc;
+
+	pdc = &pdc_data[port]->port;
+	for (int i = 0; i < PDO_NUM; i++) {
+		LOG_INF("PDO%d: %08x, %d %d", i, pdc->snk_policy.pdos[i],
+			PDO_FIXED_GET_VOLT(pdc->snk_policy.pdos[i]),
+			PDO_FIXED_GET_CURR(pdc->snk_policy.pdos[i]));
+	}
+	return EC_SUCCESS;
+}
+
+int pdc_power_mgmt_set_rdo(int port, int rdo)
+{
+	uint16_t i;
+	struct pdc_port_t *pdc;
+
+	pdc = &pdc_data[port]->port;
+	pdc->cmd->cmd = CMD_PDC_SET_RDO;
+	i = pdc->snk_policy.pdos[rdo] & 0x3ff;
+	invalidate_charger_settings(pdc);
+
+	pdc->snk_policy.rdo_to_send = 0x03840000 | i | (i << 10) |
+				      ((rdo + 1) << 28);
+	send_pdc_cmd(pdc);
+	pdc->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
+	return EC_SUCCESS;
+}
