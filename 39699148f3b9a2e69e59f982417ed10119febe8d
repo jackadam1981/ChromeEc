@@ -22,6 +22,30 @@
       },
       "revId": "39699148f3b9a2e69e59f982417ed10119febe8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5dad79c_436ff1c0",
+        "filename": "zephyr/program/geralt/src/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1436607
+      },
+      "writtenOn": "2024-03-18T02:40:31Z",
+      "side": 1,
+      "message": "Removed. Test passed firmware_FwScreenCloseLid and firmware.FWScreenCloseLid.broken",
+      "parentUuid": "414cdff9_595d63da",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "39699148f3b9a2e69e59f982417ed10119febe8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
