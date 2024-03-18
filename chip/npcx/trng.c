@@ -184,7 +184,7 @@ void npcx_trng_hw_init(void)
 	}
 
 	state_p->trng_init = NCL_DRBG->instantiate(
-		ctx_p, NCL_DRBG_SECURITY_STRENGTH_128b, NULL, 0);
+		ctx_p, NCL_DRBG_SECURITY_STRENGTH_256b, NULL, 0);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG instantiate returned %x\r",
 			 state_p->trng_init);
