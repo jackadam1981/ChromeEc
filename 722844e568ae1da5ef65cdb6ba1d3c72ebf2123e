@@ -118,6 +118,30 @@
       },
       "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb5b67a_d424c14d",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-18T16:35:29Z",
+      "side": 1,
+      "message": "Would this work?\n1. Add EC_REBOOT_FLAG_ON_HARD_OFF to EC_CMD_REBOOT_EC.\n1. Add HOOK_CHIPSET_HARD_OFF, which triggers EC_REBOOT_COLD on G3 entry.\n1. Have the AP issue cmd\u003dEC_REBOOT_COLD \u0026 flag\u003dEC_REBOOT_FLAG_ON_HARD_OFF.",
+      "parentUuid": "2f1ec7a2_0cab3ee2",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1057,
+        "endChar": 17
+      },
+      "revId": "722844e568ae1da5ef65cdb6ba1d3c72ebf2123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
