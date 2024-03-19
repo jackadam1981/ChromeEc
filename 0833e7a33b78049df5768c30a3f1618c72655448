@@ -16,6 +16,24 @@
       "message": "I think this is a nice improvement, but am hesitant to make too many last minute changes to RO.\n\nIf this does not make it in RO, will it still work in RW? IIRC, the MPU initialization code disables the MPU and the re-enables it, so if that same code runs in RW it should be OK if RO and RW have different MPU configurations, right?",
       "revId": "0833e7a33b78049df5768c30a3f1618c72655448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db67b0b_b876e2ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-19T12:09:55Z",
+      "side": 1,
+      "message": "\u003e If this does not make it in RO, will it still work in RW?\n\nYes. RW reconfigures MPU, so we can use different region configuration.",
+      "parentUuid": "db37d3e4_700da1e8",
+      "revId": "0833e7a33b78049df5768c30a3f1618c72655448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
