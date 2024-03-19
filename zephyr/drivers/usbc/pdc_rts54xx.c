@@ -1125,9 +1125,9 @@ static void st_read_run(void *o)
 	}
 	case CMD_GET_VBUS_VOLTAGE:
 		/*
-		 * Realtek Voltage reading is on Byte16 and Byte17, but
+		 * Realtek Voltage reading is on Byte18 and Byte19, but
 		 * the READ_RTK_STATUS command was issued with reading
-		 * 2-bytes from offset 16, so the data is read from
+		 * 2-bytes from offset 18, so the data is read from
 		 * rd_buf at Byte1 and Byte2.
 		 */
 		*(uint16_t *)data->user_buf =
@@ -1195,9 +1195,9 @@ static void st_read_run(void *o)
 		/* Realtek voltage scale is 1010b - 50mV */
 		cs->voltage_scale = 0xa;
 
-		/* Realtek Voltage Reading Byte 17 (low byte) and Byte 18 (high
+		/* Realtek Voltage Reading Byte 18 (low byte) and Byte 19 (high
 		 * byte) */
-		cs->voltage_reading = data->rd_buf[18] << 8 | data->rd_buf[17];
+		cs->voltage_reading = data->rd_buf[19] << 8 | data->rd_buf[18];
 		break;
 	}
 	case CMD_GET_ERROR_STATUS: {
@@ -1884,7 +1884,7 @@ static int rts54_get_vbus_voltage(const struct device *dev, uint16_t *voltage)
 		return -EINVAL;
 	}
 
-	return rts54_get_rtk_status(dev, 16, 2, CMD_GET_VBUS_VOLTAGE,
+	return rts54_get_rtk_status(dev, 18, 2, CMD_GET_VBUS_VOLTAGE,
 				    (uint8_t *)voltage);
 }
 
