@@ -39,6 +39,30 @@
       },
       "revId": "23071122db847fc1be0a7e0aa16168cb252f668f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c2d303_8699277d",
+        "filename": "common/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-19T17:05:03Z",
+      "side": 1,
+      "message": "Hi Ridden. This is a comment for patchset 12.\n\nI was expecting one of CONFIG_CHIPSET_* as a guard:\n\n    if (IS_ENABLED(CONFIG_CHIPSET_*))\n        chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);\n\nIf it\u0027s applicable to ALL intel chipsets, can you define a new macro in include/power/intel_x86.h:\n\n    #define SYSTEM_SHUTDOWN_BEFORE_COLD_REBOOT\n\nI don\u0027t think this needs to be configurable (because it\u0027s required by the spec). Sorry if I didn\u0027t make myself clear.",
+      "parentUuid": "b5a65f68_2a453fc5",
+      "range": {
+        "startLine": 1055,
+        "startChar": 2,
+        "endLine": 1055,
+        "endChar": 46
+      },
+      "revId": "23071122db847fc1be0a7e0aa16168cb252f668f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
