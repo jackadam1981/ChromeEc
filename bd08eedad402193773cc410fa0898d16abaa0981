@@ -22,6 +22,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257d767f_1dee8089",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-19T23:33:30Z",
+      "side": 1,
+      "message": "\u003e add a way to request the power sequencing logic immediately drop to G3 from S5 without waiting for the usual inactivity timeout.\n\nThis can be done by setting s5_inactivity_timeout to 0. Ridden, would it violate the spec?",
+      "parentUuid": "3e2fbdfc_6f6b2f3f",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
