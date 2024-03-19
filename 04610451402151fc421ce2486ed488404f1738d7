@@ -22,6 +22,30 @@
       },
       "revId": "04610451402151fc421ce2486ed488404f1738d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf04d406_d16d8030",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-19T21:36:28Z",
+      "side": 1,
+      "message": "Does this invoke section invoke HOOK_CHIPSET_RESUME? (to reset `hard_sleep_hang_count`)",
+      "parentUuid": "ea358134_49ab89d8",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 42
+      },
+      "revId": "04610451402151fc421ce2486ed488404f1738d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
