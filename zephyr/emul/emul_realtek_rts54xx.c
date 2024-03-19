@@ -603,8 +603,7 @@ static int get_cable_property(struct rts5453p_emul_pdc_data *data,
 	LOG_INF("GET_CABLE_PROPERTY property=%x", property);
 	memset(&data->response, 0, sizeof(data->response));
 
-	data->response.get_cable_property.byte_count =
-		sizeof(struct get_cable_property_response);
+	data->response.get_cable_property.byte_count = sizeof(property);
 	data->response.get_cable_property.raw_value[0] = property.raw_value[0];
 	data->response.get_cable_property.raw_value[1] = property.raw_value[1];
 
