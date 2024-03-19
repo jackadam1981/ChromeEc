@@ -45,6 +45,13 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+
+		/* Associate ports served by the same PDC */
+		pdc-chip@0 {
+			reg = <0>;
+			compatible = "cros-ec,pdc-port-group";
+			ports = <&usbc_port0 &usbc_port1>;
+		};
 	};
 };
 

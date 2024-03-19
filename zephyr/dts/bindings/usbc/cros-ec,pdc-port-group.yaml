@@ -1,0 +1,21 @@
+# Copyright 2024 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Associates USB-C port drivers that are served by the same PDC.
+
+compatible: "cros-ec,pdc-port-group"
+
+include: [base.yaml]
+
+properties:
+  ports:
+    type: phandles
+    required: true
+    description: |
+      List of handles to the USB power/data drivers for each port served by this
+      PDC.
+
+  reg:
+    required: true
+    description: Index of this chip / port group.
