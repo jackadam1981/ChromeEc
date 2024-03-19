@@ -69,6 +69,24 @@
       "parentUuid": "36723af1_f3c3a3af",
       "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86710096_42a1e19a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-03-19T19:04:39Z",
+      "side": 1,
+      "message": "I don\u0027t actually see `brox-tokenized` referenced in the cros-config for any devices, so it\u0027s possible that this code never actually executes for any boards yet.\n\nWhich I guess means it\u0027s fine for you to land this, but I\u0027d expect it to fail when you go add it to an ebuild.  We should have Python 3.11 in the SDK later this year (~Q3 possibly) if that helps.",
+      "parentUuid": "fc819f61_338154dd",
+      "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
