@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ca583d_50dceedd",
+        "filename": "extra/um_ppm/platform_usermode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-19T16:33:22Z",
+      "side": 1,
+      "message": "Do you like printing a newline (\u0027\\n\u0027) after every 16th char? It would be consistent with embedded hexdump.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 19
+      },
+      "revId": "af441711d07b2c2d50b4d10463b3a4b14fdd9f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
