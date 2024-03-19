@@ -56,7 +56,7 @@
 					type = "blob";
 					filename = "zephyr_rw.bin";
 					elf-filename = "zephyr_rw.elf";
-					elf-base-sym = "rom_start";
+					elf-base-sym = "__rom_start_address";
 				};
 				rw-fwid {
 					compatible = "cros-ec,flash-layout";
