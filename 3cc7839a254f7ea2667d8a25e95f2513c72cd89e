@@ -292,6 +292,24 @@
       "parentUuid": "973382b8_cb9874fa",
       "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb3fa93_1205df7d",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-03-19T15:44:48Z",
+      "side": 1,
+      "message": "Can you share more of the log. It may just be one unit test that is missing CONFIG_AP_PWRSEQ_S0IX\u003dy",
+      "parentUuid": "ec943355_bafee89c",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
