@@ -69,6 +69,24 @@
       "parentUuid": "ec71ab37_d49537ff",
       "revId": "989f6111781ed6317261394bb825335cb7de494a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d814017_f1d50fa6",
+        "filename": "extra/um_ppm/um_ppm_chardev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-19T10:59:26Z",
+      "side": 1,
+      "message": "I updated the code and added `case UM_MSG_NOTIFY`",
+      "parentUuid": "151e3439_69b3a9ea",
+      "revId": "989f6111781ed6317261394bb825335cb7de494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
