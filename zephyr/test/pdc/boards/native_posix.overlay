@@ -15,7 +15,7 @@
 		/* Configure just the DB port
 		 */
 		port0@0 {
-			compatible = "named-usbc-port";
+			compatible = "named-pdc-port";
 			reg = <0>;
 			chg = <&charger>;
 			pdc = <&rts5453p_emul>;
@@ -35,7 +35,7 @@
 		};
 
 		port1@0 {
-			compatible = "named-usbc-port";
+			compatible = "named-pdc-port";
 			reg = <1>;
 			pdc = <&rts5453p_emul2>;
 			policy = <&cros_policy>;

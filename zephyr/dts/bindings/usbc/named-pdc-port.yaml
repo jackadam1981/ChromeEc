@@ -1,0 +1,69 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+  PDC counterpart for a named USB-C port node
+
+  Example:
+        usbc {
+                #address-cells = <1>;
+                #size-cells = <0>;
+                usbc_port0: port0@0 {
+                        compatible = "named-pdc-port";
+                        reg = <0>;
+                        chg = <&charger>;
+                        alt-mode = <&pdc_data_port0>;
+                        pdc = <&pdc_power_p0>;
+                        pd-retimer;
+                        usb-mux-chain-0 {
+                              compatible = "cros-ec,usb-mux-chain";
+                              usb-muxes = <&virtual_mux_0>;
+                        };
+                        policy = <&cros_policy>;
+                };
+
+                port0-muxes {
+                        virtual_mux_0: virtual-mux-0 {
+                               compatible = "cros-ec,usbc-mux-virtual";
+                        };
+                usbc_port1: port0@1 {
+                        ...
+                };
+                port1-muxes {
+                        ...
+                };
+
+                /* Associate ports served by the same PDC */
+                pdc-chip@0 {
+                        reg = <0>;
+                        compatible = "cros-ec,pdc-port-group";
+                        ports = <&usbc_port0 &usbc_port1>;
+                };
+        };
+
+compatible: "named-pdc-port"
+
+include: base.yaml
+
+properties:
+  alt-mode:
+    type: phandle
+    description: |
+      PD chip for configuring the alternate modes of the USB-C port.
+  chg:
+    type: phandle
+    description: |
+      Charger chip for the USB-C port.
+  pdc:
+    type: phandle
+    description: |
+      PD chip for managing Power Delivery
+  pd-retimer:
+    type: boolean
+    description: |
+      If present, this PD port has a retimer and connected to PD chip.
+  policy:
+    type: phandle
+    description: |
+      The static policies of the USB-C port.

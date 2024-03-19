@@ -117,7 +117,7 @@ struct retimer_update_workq_info {
 
 /* Get Power Delivery chip device object retimer is connected to */
 static const struct device *pd_retimer_ports[] = { DT_FOREACH_STATUS_OKAY(
-	named_usbc_port, PD_RETIMER) };
+	named_pdc_port, PD_RETIMER) };
 BUILD_ASSERT(ARRAY_SIZE(pd_retimer_ports) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 /* Last operation received from AP via ACPI_WRITE for the last port */

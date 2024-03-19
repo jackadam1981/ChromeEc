@@ -11,7 +11,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		usbc_port0: port0@0 {
-			compatible = "named-usbc-port";
+			compatible = "named-pdc-port";
 			reg = <0>;
 			chg = <&charger>;
 			alt-mode = <&pdc_data_port0>;
@@ -29,7 +29,7 @@
 			};
 		};
 		usbc_port1: port0@1 {
-			compatible = "named-usbc-port";
+			compatible = "named-pdc-port";
 			reg = <1>;
 			alt-mode = <&pdc_data_port1>;
 			pdc = <&pdc_power_p1>;

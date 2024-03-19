@@ -11,7 +11,7 @@
 		#size-cells = <0>;
 
 		port0@0 {
-			compatible = "named-usbc-port";
+			compatible = "named-pdc-port";
 			reg = <0>;
 			chg = <&charger>;
 			alt-mode = <&pd_port0>;
@@ -29,7 +29,7 @@
 			};
 		};
 		port1@1 {
-			compatible = "named-usbc-port";
+			compatible = "named-pdc-port";
 			reg = <1>;
 			alt-mode = <&pd_port1>;
 			pdc = <&pd_pow_port1>;

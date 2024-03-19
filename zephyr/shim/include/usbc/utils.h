@@ -106,7 +106,7 @@
  */
 #define USBC_PORT_FROM_DRIVER_NODE(nodeid, prop) \
 	DT_FOREACH_STATUS_OKAY_VARGS(            \
-		named_usbc_port, GET_USBC_PORT_IF_MATCHES_PROP, nodeid, prop)
+		named_pdc_port, GET_USBC_PORT_IF_MATCHES_PROP, nodeid, prop)
 
 /*
  * Check that the TCPC interrupt flag defined in the devicetree is the same as

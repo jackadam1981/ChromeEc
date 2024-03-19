@@ -1788,8 +1788,14 @@ extern char mock_jump_data[CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE];
 #define CONFIG_USB_PD_TCPM_ANX7447_OCM_ERASE_COMMAND
 #endif
 
+/* For PDC-equipped devices, use the newer named-pdc-port nodes. For TCPM
+ * devices, use the older named-usbc-port nodes.
+ */
 #undef CONFIG_USB_PD_PORT_MAX_COUNT
-#define CONFIG_USB_PD_PORT_MAX_COUNT DT_NUM_INST_STATUS_OKAY(named_usbc_port)
+#define CONFIG_USB_PD_PORT_MAX_COUNT                              \
+	DT_NUM_INST_STATUS_OKAY(                                  \
+		COND_CODE_1(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER, \
+			    (named_pdc_port), (named_usbc_port)))
 
 #if defined(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY) && \
 	defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2)
