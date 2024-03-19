@@ -34,6 +34,23 @@
       "parentUuid": "8d1a67db_a5d70c53",
       "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13adca38_f61fa0c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-03-19T18:21:28Z",
+      "side": 1,
+      "message": "`failed to get user home directory: neither $XDG_CACHE_HOME nor $HOME are defined`\n\ntrying to pass HOME through",
+      "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
