@@ -276,7 +276,9 @@ def merge_token_databases(databases, merged_db):
 
     proc = jobclient.popen(
         [
-            sys.executable,
+            get_tool_path("vpython3"),
+            "-vpython-spec",
+            checkout / modules["ec"] / "zephyr" / "pigweed-vpython3",
             checkout
             / modules["pigweed"]
             / "pw_tokenizer"
