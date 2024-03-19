@@ -50,6 +50,24 @@
       "message": "Test images have a test specific RSA key you can use (testing_rsa). We should not be using sshpass to log in.\n\nYou want to do just `ssh root@bar` or `ssh -i ~/.ssh/testing_rsa root@bar`",
       "revId": "91c707a768c2ee476275de15d5a483fa5f289e2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8d3fcc_8dca6b0a",
+        "filename": "extra/um_ppm/test/run_remote_unit_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-19T10:57:26Z",
+      "side": 1,
+      "message": "Good point. I changed to use key auth.",
+      "parentUuid": "fb1dcbd1_c42b79dd",
+      "revId": "91c707a768c2ee476275de15d5a483fa5f289e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
