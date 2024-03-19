@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19af424_deedf786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-03-19T11:13:50Z",
+      "side": 1,
+      "message": "Hi reviewers, please help me review this CL, thanks. I haven\u0027t add tests because I want you to take a first pass and agree with the general direction modulo nits, before I continue with the tests.\n\nFor reference of how migration works, check this doc and especially this section: https://docs.google.com/document/d/1dCc_DFuhTtIMl0YUkQSI-lShdpraHELonVQEhVm6grc/edit?tab\u003dt.0#bookmark\u003did.ivwll7f5hv6p",
+      "revId": "83963d3c842c15c4544e4161411723f050145b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359ede0f_54c0d792",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-03-19T11:13:50Z",
+      "side": 1,
+      "message": "This is just moving the commit part outside the fp_command_template to reuse.",
+      "revId": "83963d3c842c15c4544e4161411723f050145b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
