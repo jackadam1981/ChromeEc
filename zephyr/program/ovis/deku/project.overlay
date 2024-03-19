@@ -53,7 +53,6 @@
 		/delete-node/ en_z1_rails;
 		/delete-node/ gsc_flash_wp_odl;
 		/delete-node/ pg_mem_vdd;
-		/delete-node/ pg_pp1250_soc;
 		/delete-node/ sys_slp_s0ix_l;
 		/delete-node/ usb_a0_low_pwr_l;
 		/delete-node/ usb_a0_status_odl;
@@ -110,9 +109,6 @@
 		};
 		gpio_ec_spare_gpio67: ec_spare_gpio67 {
 			gpios = <&gpio6 7 GPIO_OUTPUT>;
-		};
-		gpio_ec_spare_gpio74: ec_spare_gpio74 {
-			gpios = <&gpio7 4 GPIO_OUTPUT>;
 		};
 		gpio_ec_spare_gpio85: ec_spare_gpio85 {
 			gpios = <&gpio8 5 GPIO_OUTPUT>;
