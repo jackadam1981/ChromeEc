@@ -51,6 +51,24 @@
       "message": "`failed to get user home directory: neither $XDG_CACHE_HOME nor $HOME are defined`\n\ntrying to pass HOME through",
       "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc819f61_338154dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-03-19T18:36:17Z",
+      "side": 1,
+      "message": "@jrosenth@chromium.org `cros build-packages --board brox` finished successfully if that means anything for this.",
+      "parentUuid": "36723af1_f3c3a3af",
+      "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
