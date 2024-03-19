@@ -42,6 +42,7 @@ test-list-y = \
        libcxx \
        malloc \
        mpu \
+       mpu_chip \
        mutex \
        mutex_trylock \
        mutex_recursive \

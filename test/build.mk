@@ -81,6 +81,7 @@ test-list-host += motion_angle
 test-list-host += motion_angle_tablet
 test-list-host += motion_lid
 test-list-host += motion_sense_fifo
+test-list-host += mpu_chip
 test-list-host += mutex
 test-list-host += newton_fit
 test-list-host += nvidia_gpu
@@ -252,6 +253,7 @@ libc_printf-y=libc_printf.o
 endif
 libcxx-y=libcxx.o
 mpu-y=mpu.o
+mpu_chip-y=mpu_chip.o
 mutex-y=mutex.o
 mutex_trylock-y=mutex_trylock.o
 mutex_recursive-y=mutex_recursive.o
