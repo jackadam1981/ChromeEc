@@ -16,6 +16,24 @@
       "message": "Does this work with `cros build-packages`?  It runs in a network sandbox and Python may not be downloadable from there.",
       "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36723af1_f3c3a3af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-03-19T17:42:30Z",
+      "side": 1,
+      "message": "Great question, I never ran anything on brox beyond ec build here, kicked `cros build-packages --board brox` now but I\u0027d imagine it\u0027ll take a while to complete. Honestly this CL is a bit of a hack, if you have a better way of doing and you feel like taking over feel free to go with it.",
+      "parentUuid": "8d1a67db_a5d70c53",
+      "revId": "8a00ff1ad4330c9ee399bef8d3bc42f1654585f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
