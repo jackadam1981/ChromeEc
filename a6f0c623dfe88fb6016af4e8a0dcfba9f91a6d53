@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae6b393_c3aa9330",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-19T16:40:02Z",
+      "side": 1,
+      "message": "nit: I believe it\u0027s helpful if we print \u0027ret\u0027 here.",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 310,
+        "endChar": 39
+      },
+      "revId": "a6f0c623dfe88fb6016af4e8a0dcfba9f91a6d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9e1588_b99379e2",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-19T16:40:02Z",
+      "side": 1,
+      "message": "Do we need to validate \u0027ret\u0027 (i.e. if (ret \u003e MESSAGE_IN_SIZE) return -EMSGSIZE) prior to dumping message_in?",
+      "range": {
+        "startLine": 315,
+        "startChar": 27,
+        "endLine": 315,
+        "endChar": 30
+      },
+      "revId": "a6f0c623dfe88fb6016af4e8a0dcfba9f91a6d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
