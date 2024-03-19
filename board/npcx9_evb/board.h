@@ -30,6 +30,7 @@
 #undef CONFIG_PSTORE
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_VBOOT_HASH
+#define CONFIG_SUPPORT_CHIP_RAM_PROTECT
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands */
 
 /* EC console commands */
