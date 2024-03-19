@@ -74,7 +74,7 @@ struct intel_altmode_data {
 
 /* Generate device tree for available PDs */
 static const struct device *pd_config_array[] = { DT_FOREACH_STATUS_OKAY(
-	named_usbc_port, PD_CHIP) };
+	named_pdc_port, PD_CHIP) };
 
 BUILD_ASSERT(ARRAY_SIZE(pd_config_array) == CONFIG_USB_PD_PORT_MAX_COUNT);
 

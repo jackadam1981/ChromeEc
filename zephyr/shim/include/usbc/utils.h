@@ -5,6 +5,13 @@
 
 #ifndef __CROS_EC_ZEPHYR_SHIM_USBC_UTIL
 
+/* There should not be a mixture of named-usbc-ports (TCPMv2) and
+ * named-pdc-ports (PDC)
+ */
+BUILD_ASSERT(MIN(DT_NUM_INST_STATUS_OKAY(named_usbc_port),
+		 DT_NUM_INST_STATUS_OKAY(named_pdc_port)) == 0,
+	     "Cannot mix 'named-usbc-port' and 'named-pdc-port'");
+
 /*
  * Enable interrupt from the `irq` property of an instance's node.
  *
@@ -83,13 +90,13 @@
  *
  * Usage:
  *	usbc_port0: port0@0 {
- *		compatible = "named-usbc-port";
+ *		compatible = "named-pdc-port";
  *		reg = < 0x0 >;
  *		chg = < &charger >;
  *		pdc = < &pdc_power_p0 >;
  *	};
  *	usbc_port1: port1@1 {
- *		compatible = "named-usbc-port";
+ *		compatible = "named-pdc-port";
  *		reg = < 0x1 >;
  *		pdc = < &pdc_power_p1 >;
  *	};
@@ -97,16 +104,20 @@
  *		pdc_power_p1: driver@88 {
  *			compatible = "my-driver";
  *		}
- *
+ *		...
+ *	};
  *
  *
  * @param nodeid Devicetree node to search for
- * @param prop named-usbc-port property to check
+ * @param prop named-usbc-port (TCPMv2) or named-pdc-port (PDC devices) property
+ *             to check.
  * @returns USB-C port number
  */
-#define USBC_PORT_FROM_DRIVER_NODE(nodeid, prop) \
-	DT_FOREACH_STATUS_OKAY_VARGS(            \
-		named_usbc_port, GET_USBC_PORT_IF_MATCHES_PROP, nodeid, prop)
+#define USBC_PORT_FROM_DRIVER_NODE(nodeid, prop)                  \
+	DT_FOREACH_STATUS_OKAY_VARGS(                             \
+		COND_CODE_1(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER, \
+			    (named_pdc_port), (named_usbc_port)), \
+		GET_USBC_PORT_IF_MATCHES_PROP, nodeid, prop)
 
 /*
  * Check that the TCPC interrupt flag defined in the devicetree is the same as
