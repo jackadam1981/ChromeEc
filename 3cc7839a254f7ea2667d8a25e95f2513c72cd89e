@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f2d9d3c_abb3623c",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-03-19T21:33:09Z",
+      "side": 1,
+      "message": "Everything after the `return` in this block (ref1 below).",
+      "parentUuid": "aa625f1d_80cc6378",
+      "range": {
+        "startLine": 223,
+        "startChar": 28,
+        "endLine": 223,
+        "endChar": 32
+      },
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0d3a76a_1f60a792",
         "filename": "power/host_sleep.c",
         "patchSetId": 4
