@@ -28,6 +28,9 @@
 #include "lpc.h"
 #ifdef CONFIG_MPU
 #include "mpu.h"
+#ifdef CONFIG_SUPPORT_CHIP_RAM_PROTECT
+#include "mpu_chip.h"
+#endif
 #endif
 #include "panic.h"
 #include "rwsig.h"
