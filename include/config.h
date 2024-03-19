@@ -3654,6 +3654,8 @@
 #ifndef CONFIG_ZEPHYR
 /* Support memory protection unit (MPU) */
 #undef CONFIG_MPU
+
+#undef CONFIG_SUPPORT_CHIP_RAM_PROTECT
 #endif /* CONFIG_ZEPHYR */
 
 /* Do not try hold I/O pins at frozen level during deep sleep */
