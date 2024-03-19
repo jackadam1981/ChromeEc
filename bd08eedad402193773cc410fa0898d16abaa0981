@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2fbdfc_6f6b2f3f",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-03-19T22:47:31Z",
+      "side": 1,
+      "message": "Rather than using this function that\u0027s more intended for handling power failures, I would prefer to add a way to request the power sequencing logic immediately drop to G3 from S5 without waiting for the usual inactivity timeout. However that might be difficult to do here because you\u0027d have to wait for the power state to change in a different thread (but blocking would probably be okay).",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
