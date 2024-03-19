@@ -43,11 +43,15 @@
 
 /* Charger chips */
 MAYBE_CONST struct charger_config_t chg_chips[] = { DT_FOREACH_STATUS_OKAY(
-	named_usbc_port, CHG_CHIP) };
+	COND_CODE_1(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER, (named_pdc_port),
+		    (named_usbc_port)),
+	CHG_CHIP) };
 
 /* Alternate options */
 const struct charger_config_t chg_chips_alt[] = { DT_FOREACH_STATUS_OKAY(
-	named_usbc_port, CHG_CHIP_ALT) };
+	COND_CODE_1(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER, (named_pdc_port),
+		    (named_usbc_port)),
+	CHG_CHIP_ALT) };
 
 #ifdef CONFIG_PLATFORM_EC_CHARGER_SINGLE_CHIP
 BUILD_ASSERT(ARRAY_SIZE(chg_chips) == 1,

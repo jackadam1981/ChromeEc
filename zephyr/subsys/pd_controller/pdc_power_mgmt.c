@@ -7,7 +7,7 @@
  * PD Controller subsystem
  */
 
-#define DT_DRV_COMPAT named_usbc_port
+#define DT_DRV_COMPAT named_pdc_port
 
 #include "charge_manager.h"
 #include "charge_state.h"

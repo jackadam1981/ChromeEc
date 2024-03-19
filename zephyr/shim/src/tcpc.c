@@ -34,6 +34,13 @@
 
 LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
 
+/* There should not be a mixture of named-usbc-ports (TCPMv2) and
+ * named-pdc-ports (PDC)
+ */
+BUILD_ASSERT(MIN(DT_NUM_INST_STATUS_OKAY(named_usbc_port),
+		 DT_NUM_INST_STATUS_OKAY(named_pdc_port)) == 0,
+	     "Cannot mix 'named-usbc-port' and 'named-pdc-port'");
+
 #define HAS_TCPC_PROP(usbc_id) \
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, tcpc), (|| 1), ())
 
