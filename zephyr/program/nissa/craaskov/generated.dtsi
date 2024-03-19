@@ -59,6 +59,9 @@
 			gpios = <&gpiod 3 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
+		gpio_soc_enbkl: soc_enbkl {
+			gpios = <&gpioc 7 GPIO_INPUT>;
+		};
 		gpio_ec_entering_rw: ec_entering_rw {
 			gpios = <&gpio0 3 GPIO_OUTPUT>;
 			enum-name = "GPIO_ENTERING_RW";
