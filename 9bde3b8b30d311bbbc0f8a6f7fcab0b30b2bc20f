@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0e6a98_35af16dc",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "https://www.vishay.com/docs/80010/designingveml3328.pdf\nhttps://www.vishay.com/docs/84968/veml3328.pdf",
+      "parentUuid": "f5d249ee_004775ae",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d13fe0_d86ed88b",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "Put this variable in the \u0027veml3328_drv_data_t\u0027 structure.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9a275b_a21c62c3",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "removing as this is constant",
+      "parentUuid": "04d13fe0_d86ed88b",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b165fa74_8181df56",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0aad114_e103faf0",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7f156dd_2d2f388d",
@@ -88,6 +148,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "need conversion. see below.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3563edfd_9596d47f",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d7f156dd_2d2f388d",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b67796_5d3ce79e",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5124c392_969cc1fb",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5867821c_c54c948f",
@@ -128,6 +230,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "c is a fp_t, raw_data an int, you need a conversion function:\n\n```suggestion\n\tc \u003d INT_TO_FP(raw_data[0]);\n```",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403137bb_609d69b6",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "5867821c_c54c948f",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edc811b_12d96d97",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Great suggestion, cleaned this up. Thanks!",
+      "parentUuid": "28014128_c4cf6dcf",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9786af6c_fe9b50a2",
@@ -172,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb61cad_16e9c947",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9786af6c_fe9b50a2",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83394802_3d629839",
@@ -185,6 +347,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "```suggestion\n\t\tc \u003d FLOAT_TO_FP(1.0);\n```",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d1f376_44f2d164",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83394802_3d629839",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +409,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f46b63_71ae0e20",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4d43dc_5906e362",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c000017a_4de7c943",
@@ -242,6 +440,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "What\u0027s the point of these conversion since veml3328_conf is constant. Do you need to implement some gain adaptation when raw values are too high/too low?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3620a4b6_f0f15ab4",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Good call. I thought this might be changed in future, but for now this is really unnecessary. Removing...",
+      "parentUuid": "c000017a_4de7c943",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -263,6 +479,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93685d44_5cf61577",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "298bea93_406907e0",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e44cf90c_c7956452",
@@ -276,6 +510,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "You will need to have a calibration mode (see tcs3400 driver) to return the RGB values. It will be required to calculate the calibration data).",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abc9632_8725e6d0",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "TBD in follow-up CL",
+      "parentUuid": "e44cf90c_c7956452",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -314,6 +566,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b920db61_3176af66",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "I just took the numbers from reference code in the b:312586806",
+      "parentUuid": "bb68a43f_7c54ff3d",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81f6c509_7651bc6d",
@@ -327,6 +597,24 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "The purpose of the MIN/MAX_FREQ is to present sane frequencies. Is [.1Hz, 1Hz] more appropriate?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a23d58_343fcdd7",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Checked tcs3400 driver, the values are 149 and 1k. Here we have 100 and 10k - is that too much?",
+      "parentUuid": "81f6c509_7651bc6d",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -348,6 +636,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adadf053_a70c9155",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "in the board.c/sensors.c files - see CL:5379432",
+      "parentUuid": "f4377d88_b476f209",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9f3dbf6_9618efdd",
@@ -365,6 +671,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff52a92_0e0d08df",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b9f3dbf6_9618efdd",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "725e0405_dd476bda",
@@ -378,6 +702,30 @@
       "writtenOn": "2024-03-20T02:32:04Z",
       "side": 1,
       "message": "most of this file looks to be driver private.\ni don\u0027t mind the #defines here but the driver state structs\nshould probably move to the $driver.c file.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2411e6_82211b08",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:05:06Z",
+      "side": 1,
+      "message": "Calibration struct to be defined in the board/sensor.c file so it has to be public. I\u0027ll remove the rest.",
+      "parentUuid": "725e0405_dd476bda",
       "range": {
         "startLine": 92,
         "startChar": 0,
