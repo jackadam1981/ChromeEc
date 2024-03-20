@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ff7f6b_7bcb141b",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-20T22:02:10Z",
+      "side": 1,
+      "message": "Do we know what the latency is for powering OTP on/off?\n\nI\u0027m not really worried about it for this function since it is infrequently called, but if it\u0027s slow we may not want to power it on/off in [`get_ikm`](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5371373/8/common/fpsensor/fpsensor_crypto.cc). I guess if we merge this and and find that powering it on/off is slow, we could add code in the [RW initialization](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/helipilot/base_board_rw.c;l\u003d40-44;drc\u003d1194cf102149ece9de292c29120416b3e1104314) to leave it on all the time. (I\u0027m just trying to think about the tradeoffs for including include this in RO vs not.)",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 17
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b09caab_c5d16ae0",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-20T22:02:10Z",
+      "side": 1,
+      "message": "Missing the `otp_key_exit()` here?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
