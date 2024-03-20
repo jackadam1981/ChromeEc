@@ -354,6 +354,9 @@
 /* Define to include the clear channel driver for the tcs3400 light sensor */
 #undef CONFIG_ALS_TCS3400
 
+/* Define to include Vishay VEML3328 driver */
+#undef CONFIG_ALS_VEML3328
+
 /*
  * Define the event to raise when a sensor interrupt triggers.
  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
@@ -370,6 +373,7 @@
 #undef CONFIG_ACCEL_LIS2DW12_INT_EVENT
 #undef CONFIG_ALS_SI114X_INT_EVENT
 #undef CONFIG_ALS_TCS3400_INT_EVENT
+#undef CONFIG_ALS_VEML3328_INT_EVENT
 
 /*
  * Enable Si114x to operate in polling mode. This config is used in conjunction
