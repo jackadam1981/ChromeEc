@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d81d86_d8328792",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "You should be able to check the values from the EC console, even the AP.",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c1d3b3_47cd6927",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "Keep naming space clean:\n```suggestion\n#define VEML3328_CH_MAX (65535)\n```",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c2b5e8_ac8f7939",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "```suggestion\n\tuint16_t raw_data[5];\n```",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb82e86_1940fcdb",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "No need of ret, use:\n```suggestion\n\t\tRETURN_ERROR(i2c_read16(s-\u003eport, s-\u003ei2c_spi_addr_flags,\n```",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9049b60_1b04dba3",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "use `fp_div`.\n```suggestion\n\tir_div_c \u003d fp_div(INT_TO_FP(ir), INT_TO_FP(c));\n```",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85315b1b_1574cd54",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "You can not use \u0027*\u0027 with fp_t. You must use `fp_mul`.",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a06e1f3_1f67990f",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T21:37:51Z",
+      "side": 1,
+      "message": "We assume not automatic gain calculation, it will come back to deal with low light condition. Or not if the goal is just to get the clear channel, we will just crank up the screen brightness to the max.",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
