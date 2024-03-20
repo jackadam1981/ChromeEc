@@ -22,6 +22,30 @@
       },
       "revId": "c2fbc9792c7d6040f78ee081ca1e01bc7a000af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5a7185_413f7d25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-03-20T07:07:29Z",
+      "side": 1,
+      "message": "I actually provided the local build EC with CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4505541 for Allion to test pass. I think I can modified it in project.overlay. I use ectool i2cspeed to check this change works.",
+      "parentUuid": "0fcd27e7_1465276a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "c2fbc9792c7d6040f78ee081ca1e01bc7a000af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
