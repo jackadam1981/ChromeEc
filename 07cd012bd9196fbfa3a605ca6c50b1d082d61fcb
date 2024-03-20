@@ -118,6 +118,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc2a588_290a71e8",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-20T20:07:28Z",
+      "side": 1,
+      "message": "Since there are some more changes to get the tests working and we\u0027re running short on time, how about we split the CL into two:\n\n1. Just the changes in `fpsensor_crypto.cc`.\n2. The remaining files for testing.\n\nThen we can go ahead and speculatively create a build now that has the full OTP changes, while we get the tests all working (still by 3/22). If we find a bug while implementing the tests we will have to spin a new build, but hopefully that won\u0027t be the case.",
+      "parentUuid": "5d7dd2d9_bd346b8d",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
