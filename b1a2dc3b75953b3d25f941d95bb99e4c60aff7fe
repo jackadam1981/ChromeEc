@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f623c4_45b19a5b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-20T21:00:39Z",
+      "side": 1,
+      "message": "This should be bytes 17 and 18",
+      "range": {
+        "startLine": 1198,
+        "startChar": 34,
+        "endLine": 1198,
+        "endChar": 65
+      },
+      "revId": "b1a2dc3b75953b3d25f941d95bb99e4c60aff7fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
