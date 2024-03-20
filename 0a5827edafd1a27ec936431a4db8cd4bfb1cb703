@@ -16,6 +16,24 @@
       "message": "The CQ failure is building the `brox-tokenized` project.  Does this project build for you locally?",
       "revId": "0a5827edafd1a27ec936431a4db8cd4bfb1cb703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2731bfda_22c2b124",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-03-20T01:30:05Z",
+      "side": 1,
+      "message": "The EC build is broken because of recent changes in src/third_party/pigweed. It should pass when the pigweed issue is resolved.",
+      "parentUuid": "61727c5a_e7aa8885",
+      "revId": "0a5827edafd1a27ec936431a4db8cd4bfb1cb703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
