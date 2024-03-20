@@ -27,6 +27,8 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
+#include "usbc/pdc_power_mgmt.h"
+
 #ifdef HAS_MOCK_CHARGE_MANAGER
 #error Mock defined HAS_MOCK_CHARGE_MANAGER
 #endif
@@ -392,7 +394,14 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 	if (current_role == USB_PD_PORT_POWER_SINK_NOT_CHARGING) {
 		voltage_mv = 5000;
 	} else {
-#if defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
+#if 1
+		{
+			uint32_t pdc_mv;
+
+			pdc_mv = pdc_power_mgmt_get_vbus_voltage(port);
+			voltage_mv = pdc_mv;
+		}
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
 		/*
 		 * Try to get VBUS from the charger. If that fails, default to 0
 		 * mV.
