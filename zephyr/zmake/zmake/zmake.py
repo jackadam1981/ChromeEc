@@ -84,6 +84,9 @@ def ninja_stdout_log_level_override(line, current_log_level):
     # if a particular file fails it shows the build line used, but that is not
     # useful except for debugging.
     if line.startswith("ccache"):
+        if line.startswith("ccache: error:"):
+            # Provide visibility to a common permission error
+            return logging.ERROR
         return logging.DEBUG
     if ninja_warnings.match(line):
         return logging.WARNING
