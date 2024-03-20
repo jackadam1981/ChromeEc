@@ -142,6 +142,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4aa9904_739993d7",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-20T22:47:06Z",
+      "side": 1,
+      "message": "Created http://crrev/c/5384417 for (1), leaving this comment unresolved until the fpsensor_crypto unit test is updated",
+      "parentUuid": "afc2a588_290a71e8",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
