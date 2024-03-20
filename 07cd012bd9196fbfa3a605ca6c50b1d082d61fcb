@@ -166,6 +166,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4584f9_f2e91df5",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-20T23:13:10Z",
+      "side": 1,
+      "message": "Thanks! I +2\u0027ed that one and triggered CQ.",
+      "parentUuid": "f4aa9904_739993d7",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
