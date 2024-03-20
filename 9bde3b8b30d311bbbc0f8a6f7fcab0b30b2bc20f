@@ -427,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea36567_ee19b02c",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:13:44Z",
+      "side": 1,
+      "message": "should be in board/sensor.c",
+      "parentUuid": "19780d11_b4c485d6",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 14
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c000017a_4de7c943",
@@ -562,6 +586,24 @@
       "writtenOn": "2024-03-20T20:12:17Z",
       "side": 1,
       "message": "FYI - The lux table optimization option that the original TCS3400 driver had used for faster retraining has been removed, so retraining process due to light change could take longer.  While this is not really an issue for ALS driver, the RGB driver response may not be fast enough for real-time color adjust, not sure.",
+      "parentUuid": "a43cbd2d_2859f6ea",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a252c18_80058818",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-20T20:13:44Z",
+      "side": 1,
+      "message": "The assumption is correct, chip only has 4 pins: VCC, GND and SDA/SCL.\n\nWhat would be reasonable \"good\" rate bounds?",
       "parentUuid": "a43cbd2d_2859f6ea",
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
