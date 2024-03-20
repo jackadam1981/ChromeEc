@@ -551,6 +551,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "975a8164_c5d201aa",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-03-20T20:12:17Z",
+      "side": 1,
+      "message": "FYI - The lux table optimization option that the original TCS3400 driver had used for faster retraining has been removed, so retraining process due to light change could take longer.  While this is not really an issue for ALS driver, the RGB driver response may not be fast enough for real-time color adjust, not sure.",
+      "parentUuid": "a43cbd2d_2859f6ea",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb68a43f_7c54ff3d",
         "filename": "driver/als_veml3328.h",
         "patchSetId": 1
