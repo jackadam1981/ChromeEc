@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0aad114_e103faf0",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-20T02:32:04Z",
+      "side": 1,
+      "message": "const struct?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7f156dd_2d2f388d",
         "filename": "driver/als_veml3328.c",
         "patchSetId": 1
@@ -71,6 +94,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5124c392_969cc1fb",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-20T02:32:04Z",
+      "side": 1,
+      "message": "ret !\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5867821c_c54c948f",
         "filename": "driver/als_veml3328.c",
         "patchSetId": 1
@@ -82,6 +128,29 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "c is a fp_t, raw_data an int, you need a conversion function:\n\n```suggestion\n\tc \u003d INT_TO_FP(raw_data[0]);\n```",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28014128_c4cf6dcf",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-20T02:32:04Z",
+      "side": 1,
+      "message": "so, raw_data[i] is an int, presumably a 16 bit unsigned value\nreported by the chip. why convert these to FP at this stage?\nint should be OK here since that accurately represents the reported data.\nshould only need to do the mul/div in FP later.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 18
+      },
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +202,29 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "you can\u0027t use `/` directly, use fp_div() instead.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19780d11_b4c485d6",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-20T02:32:04Z",
+      "side": 1,
+      "message": "where is *calib initalized? is that the TODO later in the file?\nis this all going to get multiplied by 0 right now?",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 14
+      },
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -269,6 +361,52 @@
       "writtenOn": "2024-03-20T02:24:15Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725e0405_dd476bda",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-20T02:32:04Z",
+      "side": 1,
+      "message": "most of this file looks to be driver private.\ni don\u0027t mind the #defines here but the driver state structs\nshould probably move to the $driver.c file.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c5dda1_1503ec4a",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-20T02:32:04Z",
+      "side": 1,
+      "message": "add the kconfig instead.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 19
+      },
       "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
