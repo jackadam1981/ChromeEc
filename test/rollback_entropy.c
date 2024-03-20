@@ -129,6 +129,9 @@ test_static int test_add_entropy(void)
 	}
 
 	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		/* Power on OTP memory. */
+		otp_key_init();
+
 		/* Check OTP key is unset initially. */
 		rv = otp_key_read(otp_key_buffer);
 		TEST_EQ(rv, EC_SUCCESS, "%d");
@@ -195,6 +198,9 @@ test_static int test_add_entropy(void)
 		TEST_EQ(rv, EC_SUCCESS, "%d");
 		TEST_EQ(bytes_are_trivial(otp_key_buffer, OTP_KEY_SIZE_BYTES),
 			false, "%d");
+
+		/* Power off OTP memory. */
+		otp_key_exit();
 	}
 
 	return rv;
