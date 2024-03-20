@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d49d37_1fd73edf",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-20T09:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e326e20_7df7a0ab",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45fddc0_b6a64870",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3eca4e_ffe3277c",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-20T09:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d564d3_138edba9",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bee6d48_b4f3d307",
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce59e006_edfbebe6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2902,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-20T09:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bee6d48_b4f3d307",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84bf5fca_6f51a64e",
@@ -99,6 +153,24 @@
       "writtenOn": "2024-02-07T22:17:11Z",
       "side": 1,
       "message": "Describe it in `include/config.h`, see `#undef CONFIG_ALS_TCS3400`.",
+      "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "577b4902_67451fdf",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-20T09:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84bf5fca_6f51a64e",
       "revId": "d4815b85fd97995d5c59fc48d4e50535e25b956a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
