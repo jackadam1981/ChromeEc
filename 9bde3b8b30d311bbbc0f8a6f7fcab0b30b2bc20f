@@ -1,0 +1,276 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88d6cdb_6bb123cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "utt",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d249ee_004775ae",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "Add pointer to data sheet, esp. for the formulae.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d13fe0_d86ed88b",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "Put this variable in the \u0027veml3328_drv_data_t\u0027 structure.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f156dd_2d2f388d",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "need conversion. see below.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5867821c_c54c948f",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "c is a fp_t, raw_data an int, you need a conversion function:\n\n```suggestion\n\tc \u003d INT_TO_FP(raw_data[0]);\n```",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9786af6c_fe9b50a2",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "You need to convert to fp_t:\n```suggestion\n\tif (c \u003c FLOAT_TO_FP(1.0))\n```\nBut is it really a float, or you just want to avoid a c to be \u003e 0?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83394802_3d629839",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tc \u003d FLOAT_TO_FP(1.0);\n```",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4d43dc_5906e362",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "you can\u0027t use `/` directly, use fp_div() instead.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c000017a_4de7c943",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "What\u0027s the point of these conversion since veml3328_conf is constant. Do you need to implement some gain adaptation when raw values are too high/too low?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298bea93_406907e0",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "Use a constant instead of 65535.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44cf90c_c7956452",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "You will need to have a calibration mode (see tcs3400 driver) to return the RGB values. It will be required to calculate the calibration data).",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43cbd2d_2859f6ea",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "I assume the device is always in forced mode, since no interrupt is defined. Can a rate too low interfere with the integration time?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb68a43f_7c54ff3d",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "What happen when a longer integration time is selected?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f6c509_7651bc6d",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "The purpose of the MIN/MAX_FREQ is to present sane frequencies. Is [.1Hz, 1Hz] more appropriate?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4377d88_b476f209",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "How we will set these parameters? Will they come from the VPD?",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f3dbf6_9618efdd",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-20T02:24:15Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
