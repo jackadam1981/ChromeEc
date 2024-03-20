@@ -22,6 +22,30 @@
       },
       "revId": "af441711d07b2c2d50b4d10463b3a4b14fdd9f36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb04d44e_3ad848d4",
+        "filename": "extra/um_ppm/platform_usermode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1498599
+      },
+      "writtenOn": "2024-03-20T02:25:49Z",
+      "side": 1,
+      "message": "I\u0027ll leave it as it for the uPPM because the prints IMHO look better without \\n every 16th character. Here is an example print without the \\n:\n\n```\nDBG: ppm_common_execute_pending_cmd: Command 0x15 (UCSI_CMD_GET_PD_MESSAGE) response : [ 0x3c, 0x41, 0x00, 0x6c, 0x00, 0x00, 0x00, 0x00, 0x12, 0x07, 0x69, 0xb0, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ]\n```",
+      "parentUuid": "a9ca583d_50dceedd",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 19
+      },
+      "revId": "af441711d07b2c2d50b4d10463b3a4b14fdd9f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
