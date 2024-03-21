@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "419d0ac7_38c11e65",
+        "filename": "zephyr/shim/include/usbc/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-21T16:40:17Z",
+      "side": 1,
+      "message": "Will add a `COND_CODE_1()` here too.",
+      "parentUuid": "618c3f0c_c0361d0e",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b94252fc_ccffec6b",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-21T16:36:32Z",
       "side": 1,
       "message": "The TCPC driver requires TCPMv2 and `named-usbc-ports`.  It will never be used with `named-pdc-ports`.\n\nThis check might be more appropriate in the `usbc/utils.h` header.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e7ad2e_e6ae73fb",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-21T16:40:17Z",
+      "side": 1,
+      "message": "Great, will move it there.\n\nThis source is actually included in Brox so I thought it might still have some common code, but maybe that is a mistake due to an overly-broad Kconfig (CONFIG_PLATFORM_EC_USBC) gating it",
+      "parentUuid": "b94252fc_ccffec6b",
       "range": {
         "startLine": 40,
         "startChar": 0,
