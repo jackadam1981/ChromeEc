@@ -117,6 +117,30 @@
       },
       "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b45cdaa_e9804ce9",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-21T16:44:16Z",
+      "side": 1,
+      "message": "I can gate it on CONFIG_PLATFORM_EC_USB_TCPMV2 (or whatever it is called) and see what happens.",
+      "parentUuid": "fb786240_0b40b116",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
