@@ -68,26 +68,6 @@ def build(opts):
     metric_list = firmware_pb2.FwBuildMetricList()  # pylint: disable=no-member
     ec_dir = pathlib.Path(__file__).parent
 
-    # Run formatting checks on all python files.
-    cmd = ["black", "--check", "."]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
-    chromite_dir = ec_dir.resolve().parent.parent.parent / "chromite"
-    cmd = [
-        "isort",
-        f"--settings-file={chromite_dir / '.isort.cfg'}",
-        "--check",
-        "--gitignore",
-        "--dont-follow-links",
-        ".",
-    ]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(
-        cmd,
-        cwd=os.path.dirname(__file__),
-        check=True,
-    )
-
     if opts.code_coverage:
         print(
             "When --code-coverage is selected, 'build' is a no-op. "
@@ -97,7 +77,23 @@ def build(opts):
             file.write(json_format.MessageToJson(metric_list))
         return
 
-    subprocess.run([ec_dir / "util" / "check_clang_format.py"], check=True)
+    # Run formatting checks.
+    subprocess.run(
+        [
+            "cros",
+            "format",
+            "--check",
+            "--exclude",
+            "*.xml",
+            "--exclude",
+            "extra/usb_updater/*.json",
+            "--exclude",
+            "third_party/*",
+            ".",
+        ],
+        cwd=ec_dir,
+        check=True,
+    )
 
     cmd = ["make", "clobber"]
     print(f"# Running {' '.join(cmd)}.")
