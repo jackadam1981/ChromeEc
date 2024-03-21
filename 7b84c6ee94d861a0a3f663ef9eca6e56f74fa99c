@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfce96e_de3317ab",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-21T16:10:21Z",
+      "side": 1,
+      "message": "Ok, that\u0027s fast enough that we shouldn\u0027t have to worry. Thanks.",
+      "parentUuid": "26c78d09_898c50ff",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 17
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b09caab_c5d16ae0",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Intentionally omitted since the rollback_entropy will power it back on anyway and we turn it off at the end of the test. I\u0027m OK to add in for consistency if you prefer?",
       "parentUuid": "7b09caab_c5d16ae0",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2079d632_86da2d4c",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-21T16:10:21Z",
+      "side": 1,
+      "message": "Let\u0027s add it for consistency.",
+      "parentUuid": "9df05788_186d8cbf",
       "range": {
         "startLine": 132,
         "startChar": 2,
