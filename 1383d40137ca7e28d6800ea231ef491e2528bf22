@@ -94,6 +94,30 @@
       },
       "revId": "1383d40137ca7e28d6800ea231ef491e2528bf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9909c01_ec8a5230",
+        "filename": "baseboard/helipilot/base_gpio_rw.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-03-21T19:58:39Z",
+      "side": 1,
+      "message": "I did",
+      "parentUuid": "37743403_181e9e6e",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "1383d40137ca7e28d6800ea231ef491e2528bf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
