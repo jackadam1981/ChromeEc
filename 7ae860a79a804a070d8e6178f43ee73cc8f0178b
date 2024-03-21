@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee1e23e_1beeb8a1",
+        "filename": "zephyr/shim/include/usbc/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-21T22:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "419d0ac7_38c11e65",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b94252fc_ccffec6b",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "I can gate it on CONFIG_PLATFORM_EC_USB_TCPMV2 (or whatever it is called) and see what happens.",
       "parentUuid": "fb786240_0b40b116",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9488822a_d283e4e2",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-21T22:46:15Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/5384282",
+      "parentUuid": "2b45cdaa_e9804ce9",
       "range": {
         "startLine": 40,
         "startChar": 0,
