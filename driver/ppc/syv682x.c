@@ -777,6 +777,8 @@ static int syv682x_init(int port)
 			 /* !SYV682X_CONTROL_1_HV_DR */
 			 SYV682X_CONTROL_1_CH_SEL;
 		rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
+		/* Clear source enable flag */
+		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
 		if (rv)
 			return rv;
 	} else {
