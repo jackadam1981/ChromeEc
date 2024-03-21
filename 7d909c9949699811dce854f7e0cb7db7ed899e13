@@ -22,6 +22,30 @@
       },
       "revId": "7d909c9949699811dce854f7e0cb7db7ed899e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0314b871_b64e0574",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-21T16:43:08Z",
+      "side": 1,
+      "message": "I see this as a \"minimally-disruptive\" idea, but if there is increasing buy-in that we need some kind of parent device and we\u0027re willing to put in the work for that, I am happy to brainstorm other options. I can list out a few ideas.",
+      "parentUuid": "39d56621_ff24c29f",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "7d909c9949699811dce854f7e0cb7db7ed899e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
