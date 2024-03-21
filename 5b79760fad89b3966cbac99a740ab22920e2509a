@@ -22,6 +22,30 @@
       },
       "revId": "5b79760fad89b3966cbac99a740ab22920e2509a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7336f5b4_184efa7e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-03-21T19:43:18Z",
+      "side": 1,
+      "message": "Acknowledged\n\n(`black` formats docstrings like `\"\"\"subject\\n\\nbody\\n\"\"\"`, and this appears to have no subject)",
+      "parentUuid": "963ed476_54eadc9f",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 6,
+        "endChar": 2
+      },
+      "revId": "5b79760fad89b3966cbac99a740ab22920e2509a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
