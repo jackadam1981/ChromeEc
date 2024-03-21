@@ -16,6 +16,24 @@
       "message": "host test make run-fpsensor_crypto is failing currently since generated keys (expected results) need to be updated for CONFIG_OTP_KEY.",
       "revId": "a838abc84155889a4c9bdcf630484ea72fef276d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edad0d9_251c1f92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-21T00:47:43Z",
+      "side": 1,
+      "message": "Both tests are passing with patchset 10, need to confirm outputs using boringssl tests before flipping Verified flag",
+      "parentUuid": "36ba9da0_d04bb91b",
+      "revId": "a838abc84155889a4c9bdcf630484ea72fef276d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
