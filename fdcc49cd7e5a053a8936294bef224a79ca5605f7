@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66ce3be_86dde848",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-21T21:46:54Z",
+      "side": 1,
+      "message": "Move this into https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/tcpmv2.cmake;l\u003d2",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "fdcc49cd7e5a053a8936294bef224a79ca5605f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
