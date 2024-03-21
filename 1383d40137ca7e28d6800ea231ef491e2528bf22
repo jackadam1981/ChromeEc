@@ -70,6 +70,30 @@
       },
       "revId": "1383d40137ca7e28d6800ea231ef491e2528bf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37743403_181e9e6e",
+        "filename": "baseboard/helipilot/base_gpio_rw.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-21T18:39:29Z",
+      "side": 1,
+      "message": "I can\u0027t access. Can you add the steps you did on a `TEST\u003d` line?",
+      "parentUuid": "97cdf7bf_bab20dfa",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "1383d40137ca7e28d6800ea231ef491e2528bf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
