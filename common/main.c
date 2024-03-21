@@ -183,7 +183,7 @@ test_mockable __keep int main(void)
 	if (IS_ENABLED(CONFIG_EEPROM_CBI_WP) && system_is_locked())
 		cbi_latch_eeprom_wp();
 
-#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
+/*#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
 #ifdef CONFIG_MPU
 #ifndef CONFIG_ZEPHYR
 	if (system_is_locked()) {
@@ -191,7 +191,7 @@ test_mockable __keep int main(void)
 	}
 #endif
 #endif
-#endif
+#endif*/
 
 	/*
 	 * Keyboard scan init/Button init can set recovery events to

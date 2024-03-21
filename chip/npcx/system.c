@@ -16,6 +16,7 @@
 #include "host_command.h"
 #include "hwtimer_chip.h"
 #include "lct_chip.h"
+#include "mpu_private.h"
 #include "panic.h"
 #include "registers.h"
 #include "rom_chip.h"
@@ -1365,6 +1366,7 @@ void system_jump_to_booter(void)
 						 download */
 	);
 #else
+	mpu_disable();
 	download_from_flash(flash_offset, /* The offset of the data in spi flash
 					   */
 			    CONFIG_PROGRAM_MEMORY_BASE, /* RAM Addr of

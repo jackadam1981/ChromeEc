@@ -10,6 +10,7 @@
 #include "cpu.h"
 #include "mpu.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "util.h"
 
@@ -438,6 +439,16 @@ int mpu_pre_init(void)
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
+
+#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
+#ifdef CONFIG_MPU
+#ifndef CONFIG_ZEPHYR
+	if (system_is_locked()) {
+		mpu_protect_code_ram_script();
+	}
+#endif
+#endif
+#endif
 
 	if (IS_ENABLED(CONFIG_ARMV7M_CACHE)) {
 #ifdef CONFIG_CHIP_UNCACHED_REGION
