@@ -141,6 +141,30 @@
       },
       "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fe213e_2e5239ce",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-21T16:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2079d632_86da2d4c",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
