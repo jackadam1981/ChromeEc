@@ -22,6 +22,30 @@
       },
       "revId": "361e48783e43b2f6df55ba99ceed5f0bfe3107c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559322f6_3e65a58b",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-03-21T21:07:37Z",
+      "side": 0,
+      "message": "We only need it in one place.  Doesn\u0027t matter which builder does it I guess.\n\nAs an advantage of doing it in this one, the style checks won\u0027t run for downstreaming CLs.",
+      "parentUuid": "162df346_1dd94147",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 5
+      },
+      "revId": "361e48783e43b2f6df55ba99ceed5f0bfe3107c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
