@@ -63,6 +63,30 @@
       },
       "revId": "23071122db847fc1be0a7e0aa16168cb252f668f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2277853e_f5462b69",
+        "filename": "common/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-03-21T08:15:33Z",
+      "side": 1,
+      "message": "Based on b/326190136#comment87, please apply it to all intel platforms.",
+      "parentUuid": "99c2d303_8699277d",
+      "range": {
+        "startLine": 1055,
+        "startChar": 2,
+        "endLine": 1055,
+        "endChar": 46
+      },
+      "revId": "23071122db847fc1be0a7e0aa16168cb252f668f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

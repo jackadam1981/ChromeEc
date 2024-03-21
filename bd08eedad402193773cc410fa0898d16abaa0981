@@ -94,6 +94,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "280fefec_14322824",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-03-21T08:15:33Z",
+      "side": 1,
+      "message": "If prefer to handle it by power state transition, I think setting s5_inactivity_timeout to 0 to enter G3 immediately should be fine. The sequencing is handled in board_ap_power_force_shutdown.",
+      "parentUuid": "2d17a447_f3eecde5",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
