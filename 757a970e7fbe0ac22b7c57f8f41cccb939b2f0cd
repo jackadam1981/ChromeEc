@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ee75b3_63399f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474597
+      },
+      "writtenOn": "2024-03-21T22:43:00Z",
+      "side": 1,
+      "message": "Verifying with:\n`bb add -cl crrev.com/c/5373305 -cl crrev.com/i/7067551 -cl crrev.com/c/2599698 -cl crrev.com/i/7090625 -cl crrev.com/c/5386643 chromeos/cq/cq-orchestrator`\n\u003d\u003e http://ci.chromium.org/b/8752816385701550849",
+      "revId": "757a970e7fbe0ac22b7c57f8f41cccb939b2f0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
