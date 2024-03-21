@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26c78d09_898c50ff",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-21T04:31:32Z",
+      "side": 1,
+      "message": "Using simple profiling code partially borrowed from one of Bobby\u0027s past CLs\n\n{\n\ttimestamp_t t0 \u003d get_time();\n\t/* Power on OTP Memory. */\n\totp_key_init();\n\n\tccprints(\"otp_key_init time: %d\", time_since32(t0));\n}\n\n{\n\ttimestamp_t t1 \u003d get_time();\n\t/* Power off OTP Memory. */\n\totp_key_exit();\n\n\tccprints(\"otp_key_exit time: %d\", time_since32(t1));\n}\n\t\n[1.688198 otp_key_init time: 19] (sometimes 18)\n[1.688263 otp_key_exit time: 2]\n\nSo, about 19 microseconds to power on consistently 2 microseconds to power off",
+      "parentUuid": "c7ff7f6b_7bcb141b",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 17
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b09caab_c5d16ae0",
         "filename": "test/rollback_entropy.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-20T22:02:10Z",
       "side": 1,
       "message": "Missing the `otp_key_exit()` here?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "7b84c6ee94d861a0a3f663ef9eca6e56f74fa99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df05788_186d8cbf",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-21T04:31:32Z",
+      "side": 1,
+      "message": "Intentionally omitted since the rollback_entropy will power it back on anyway and we turn it off at the end of the test. I\u0027m OK to add in for consistency if you prefer?",
+      "parentUuid": "7b09caab_c5d16ae0",
       "range": {
         "startLine": 132,
         "startChar": 2,
