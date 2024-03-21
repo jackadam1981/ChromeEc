@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d56621_ff24c29f",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-21T16:40:42Z",
+      "side": 1,
+      "message": "I\u0027m still not sold on this approach.  Maybe the PDC driver should be responsible for disable the power mgmt thread.\n\nConsidering we may need a mutex around PDC communication between the two ports, we may end up with a parent PDC driver.  I think the parent PDC driver node more naturally matches the actual HW configuration.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "7d909c9949699811dce854f7e0cb7db7ed899e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
