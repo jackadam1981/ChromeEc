@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03b3735_fac3d893",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3047,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-03-21T16:23:07Z",
+      "side": 1,
+      "message": "Do you think this struct will ever change ? \n\nCould we use 7 bits of the allow_unverified_ro status for a version?\n\nOr can you create a 32 bit version field.",
+      "range": {
+        "startLine": 3047,
+        "startChar": 2,
+        "endLine": 3047,
+        "endChar": 9
+      },
+      "revId": "1e196d886377c02f3b84924194954520bcf381da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
