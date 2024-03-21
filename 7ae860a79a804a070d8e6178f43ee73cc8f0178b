@@ -93,6 +93,30 @@
       },
       "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb786240_0b40b116",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-21T16:42:36Z",
+      "side": 1,
+      "message": "Hopefully we\u0027re not pulling in any actual code from the TCPC shim.  This file shouldn\u0027t be compiled for PDC platforms, so we probably need a fix to the CMake rules and/or Kconfig dependencies.",
+      "parentUuid": "03e7ad2e_e6ae73fb",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "7ae860a79a804a070d8e6178f43ee73cc8f0178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
