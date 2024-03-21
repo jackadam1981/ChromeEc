@@ -680,6 +680,8 @@ static void invalidate_charger_settings(struct pdc_port_t *port)
 	port->snk_policy.pdo = 0;
 	memset(port->snk_policy.pdos, 0, sizeof(uint32_t) * PDO_NUM);
 	port->snk_policy.pdo_count = 0;
+	memset(port->src_policy.pdos, 0, sizeof(uint32_t) * PDO_NUM);
+	port->src_policy.pdo_count = 0;
 }
 
 /**
@@ -1096,7 +1098,7 @@ static void pdc_snk_attached_run(void *obj)
 		}
 
 		LOG_INF("RDO: %d", RDO_POS(port->snk_policy.rdo));
-		/* TODO:b/xxxxxxxxx - Currently only the RDO is retrieved and
+		/* TODO:b/330758295 - Currently only the RDO is retrieved and
 		converted to a PDO, which is sent to the charge manager.
 		Instead, the PDOs should be evaluated, and a proper PDO selected
 		and sent to the charge manager. */
@@ -1394,11 +1396,23 @@ static void pdc_send_cmd_wait_exit(void *obj)
 		 * after the regular PDOS, so it's safe to exclude them from the
 		 * pdo_count. */
 		/* TODO This is temporary until APDOs can be handled  */
-		for (int i = 0; i < PDO_NUM; i++) {
-			if (port->snk_policy.pdos[i] & PDO_TYPE_AUGMENTED) {
-				port->snk_policy.pdos[i] = 0;
-			} else {
-				port->snk_policy.pdo_count++;
+		if (port->pdo_type == SOURCE_PDO) {
+			for (int i = 0; i < PDO_NUM; i++) {
+				if (port->src_policy.pdos[i] &
+				    PDO_TYPE_AUGMENTED) {
+					port->src_policy.pdos[i] = 0;
+				} else {
+					port->src_policy.pdo_count++;
+				}
+			}
+		} else {
+			for (int i = 0; i < PDO_NUM; i++) {
+				if (port->snk_policy.pdos[i] &
+				    PDO_TYPE_AUGMENTED) {
+					port->snk_policy.pdos[i] = 0;
+				} else {
+					port->snk_policy.pdo_count++;
+				}
 			}
 		}
 		break;
