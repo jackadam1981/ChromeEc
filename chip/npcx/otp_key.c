@@ -74,6 +74,7 @@ static enum ec_error_list otp_key_write(uint8_t *key_buffer)
 
 enum ec_error_list otp_key_provision(void)
 {
+#if 0
 	enum API_RETURN_STATUS_T otpi_status = API_RET_OTP_STATUS_FAIL;
 	enum ec_error_list ec_status = EC_ERROR_UNKNOWN;
 	uint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES] = { 0 };
@@ -115,6 +116,7 @@ enum ec_error_list otp_key_provision(void)
 			 otpi_status);
 		return EC_ERROR_UNKNOWN;
 	}
+#endif
 
 	return EC_SUCCESS;
 }

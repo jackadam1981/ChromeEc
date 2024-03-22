@@ -24,6 +24,7 @@ extern "C" {
 #include "host_command.h"
 #include "link_defs.h"
 #include "mkbp_event.h"
+#include "otp_key.h"
 #include "overflow.h"
 #include "spi.h"
 #include "system.h"
@@ -274,10 +275,25 @@ static void fp_process_finger(void)
 
 extern "C" void fp_task(void)
 {
+	uint8_t otp_key[OTP_KEY_SIZE_BYTES] = { 0 };
 	int timeout_us = -1;
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(fpsensor_detect_get_type()));
+
+	otp_key_init();
+	enum ec_error_list ret = (enum ec_error_list)otp_key_read(otp_key);
+	otp_key_exit();
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to read OTP key with ret=%d", ret);
+	}
+
+	if (bytes_are_trivial(otp_key, sizeof(otp_key))) {
+		CPRINTS("OTP is NOT initialized");
+	} else {
+		CPRINTS("OTP is initialized");
+	}
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */

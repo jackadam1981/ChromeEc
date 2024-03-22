@@ -367,6 +367,7 @@ int rollback_update_version(int32_t next_min_version)
 
 int rollback_add_entropy(const uint8_t *data, unsigned int len)
 {
+#if 0
 	if (IS_ENABLED(CONFIG_OTP_KEY)) {
 		uint32_t status = EC_ERROR_UNKNOWN;
 
@@ -382,6 +383,7 @@ int rollback_add_entropy(const uint8_t *data, unsigned int len)
 			return status;
 		}
 	}
+#endif
 
 	return rollback_update(-1, data, len);
 }
