@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d05bc2d_96575e0b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-22T17:24:23Z",
+      "side": 1,
+      "message": "Nit: Comment style, and there should be a bug number.",
+      "revId": "138eb3ee130f4705a1446fc7ebdeac09d3575df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb9bebb_784f000a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-22T17:24:23Z",
+      "side": 1,
+      "message": "`port-\u003esink_path_en \u003d port-\u003eactive_charge`?",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1092,
+        "endChar": 3
+      },
+      "revId": "138eb3ee130f4705a1446fc7ebdeac09d3575df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
