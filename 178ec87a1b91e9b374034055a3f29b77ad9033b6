@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40960a73_0aeee389",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-22T16:01:16Z",
+      "side": 1,
+      "message": "See below, I think it\u0027s better to do this right before sending the command to the driver.",
+      "range": {
+        "startLine": 889,
+        "startChar": 2,
+        "endLine": 889,
+        "endChar": 29
+      },
+      "revId": "178ec87a1b91e9b374034055a3f29b77ad9033b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bad374_60662333",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-22T16:01:16Z",
+      "side": 1,
+      "message": "Invalidate the charger settings here:\n```\nif (!port-\u003esink_path_en) {\n    invalidate_charger_settings(port);\n}\n```",
+      "range": {
+        "startLine": 1166,
+        "startChar": 0,
+        "endLine": 1166,
+        "endChar": 56
+      },
+      "revId": "178ec87a1b91e9b374034055a3f29b77ad9033b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
