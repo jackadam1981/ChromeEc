@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "124a5a43_64afa1c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-03-22T22:28:37Z",
+      "side": 1,
+      "message": "Can you run this with allow unverified ro set and unverified ro not set. Add the output to the commit message.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "c6c913ed3ec2f0e03098cfc67e000f113c82154e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac7dd2f7_0d20eadd",
@@ -14,6 +37,23 @@
       "writtenOn": "2024-03-22T19:04:07Z",
       "side": 1,
       "message": "This is ready for review. PTAL. Also this is used in CL:5386022",
+      "revId": "c6c913ed3ec2f0e03098cfc67e000f113c82154e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd7598c_8fc61db8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-03-22T22:28:37Z",
+      "side": 1,
+      "message": "LGTM with the TEST change.",
       "revId": "c6c913ed3ec2f0e03098cfc67e000f113c82154e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
