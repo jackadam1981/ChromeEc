@@ -118,6 +118,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9218346d_6a039e40",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-22T18:29:00Z",
+      "side": 1,
+      "message": "Ridden, it seems the first option being proposed is to set s5_inactivity_timeout to zero. It\u0027s in power/common.c. If it doesn\u0027t violate Intel\u0027s spec, can you please try that and see if it works without affecting normal shutdown sequences?",
+      "parentUuid": "280fefec_14322824",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
