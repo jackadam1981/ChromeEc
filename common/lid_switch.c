@@ -73,11 +73,11 @@ static void lid_switch_close(void)
 		return;
 	}
 
-	CPRINTS("lid close");
+	CPRINTS("[DEBUG] ignore lid close");
 	debounced_lid_open = 0;
-	hook_notify(HOOK_LID_CHANGE);
+	//hook_notify(HOOK_LID_CHANGE);
 #ifdef CONFIG_HOSTCMD_EVENTS
-	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+	//host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
 #endif
 }
 
