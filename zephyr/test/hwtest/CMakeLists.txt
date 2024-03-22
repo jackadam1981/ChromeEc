@@ -11,3 +11,4 @@ zephyr_library_sources_ifdef(CONFIG_HW_TEST_CRC ${PLATFORM_EC}/zephyr/test/crc/m
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FLASH_PHYSICAL src/flash_physical.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FLASH_WRITE_PROTECT src/flash_write_protect.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR src/fpsensor.c)
+zephyr_library_sources_ifdef(CONFIG_HW_TEST_FTRAPV src/ftrapv.c)
