@@ -288,11 +288,13 @@ static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
 #endif
 	}
 
-	/*
-	 * Eflash protect lock register which can only be write 1 and only be
-	 * cleared by power-on reset.
-	 */
-	gctrl_base->GCTRL_EPLR |= IT8XXX2_GCTRL_EPLR_ENABLE;
+	if (IS_ENABLED(CONFIG_CROS_FLASH_IT8XXX2_LOCK_EPLR_ON_BOOT) || all) {
+		/*
+		 * Eflash protect lock register which can only be write 1 and
+		 * only be cleared by power-on reset.
+		 */
+		gctrl_base->GCTRL_EPLR |= IT8XXX2_GCTRL_EPLR_ENABLE;
+	}
 
 	return EC_SUCCESS;
 }

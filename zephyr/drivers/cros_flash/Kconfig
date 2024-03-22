@@ -36,6 +36,17 @@ config CROS_FLASH_IT8XXX2
 	  access the flash by read, write and erase. The it8xxx2 flash size
 	  is 1M byte.
 
+if CROS_FLASH_IT8XXX2
+
+config CROS_FLASH_IT8XXX2_LOCK_EPLR_ON_BOOT
+	bool "<WIP>"
+	default y
+	help
+	  Unset this to make flash protect configurable at runtime.
+	  If unset, the flash driver locks EPLR when all region is locked.
+
+endif # CROS_FLASH_IT8XXX2
+
 config CROS_FLASH_XEC
 	bool "Microchip XEC flash driver for the Zephyr shim"
 	default y
