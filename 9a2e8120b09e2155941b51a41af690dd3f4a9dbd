@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0b8090_0b2ece58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-22T15:40:18Z",
+      "side": 1,
+      "message": "Does this also fix b/329529879?  Specifically, if you run `chgoverride -2` on the EC console, does battery charging stop?",
+      "revId": "9a2e8120b09e2155941b51a41af690dd3f4a9dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca22770_75eb7b2b",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1ca22770_75eb7b2b",
+      "range": {
+        "startLine": 1045,
+        "startChar": 12,
+        "endLine": 1045,
+        "endChar": 21
+      },
+      "revId": "9a2e8120b09e2155941b51a41af690dd3f4a9dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89e31b5_672a4a4d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-22T15:40:18Z",
+      "side": 1,
+      "message": "This still needs the bug number",
+      "parentUuid": "036f41fb_bd3626d1",
       "range": {
         "startLine": 1045,
         "startChar": 12,
