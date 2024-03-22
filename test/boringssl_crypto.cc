@@ -15,6 +15,7 @@
 #include "util.h"
 
 extern "C" {
+#include "fpsensor/fpsensor_state_without_driver_info.h"
 #include "sha256.h"
 }
 
@@ -209,6 +210,96 @@ test_static enum ec_error_list test_cleanse_wrapper_normal_usage(void)
 	return EC_SUCCESS;
 }
 
+static enum ec_error_list
+hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
+		     size_t prk_size, const uint8_t *info, size_t info_size)
+{
+	uint8_t key_buf[SHA256_DIGEST_SIZE];
+	uint8_t message_buf[SHA256_DIGEST_SIZE + 1];
+
+	if (out_key_size > SHA256_DIGEST_SIZE) {
+		ccprints("Deriving key material longer than SHA256_DIGEST_SIZE "
+			 "requires more steps of HKDF expand.");
+		return EC_ERROR_INVAL;
+	}
+
+	if (info_size > SHA256_DIGEST_SIZE) {
+		ccprints("Info size too big for HKDF.");
+		return EC_ERROR_INVAL;
+	}
+
+	memcpy(message_buf, info, info_size);
+	/* 1 step, set the counter byte to 1. */
+	message_buf[info_size] = 0x01;
+	hmac_SHA256(key_buf, prk, prk_size, message_buf, info_size + 1);
+
+	memcpy(out_key, key_buf, out_key_size);
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_hkdf(void)
+{
+	uint8_t prk[SHA256_DIGEST_SIZE];
+	uint8_t out_key[SBP_ENC_KEY_LEN];
+
+	static const uint8_t ikm[] = {
+		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
+		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
+		0xca, 0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d,
+		0x59, 0x14, 0xd9, 0x71, 0xaf, 0xc4, 0xcd, 0x36, 0xe3, 0x60,
+		0xf8, 0x5a, 0xa0, 0xa6, 0x2c, 0xb3, 0xf5, 0xe2, 0xeb, 0xb9,
+		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
+		0xcc, 0x23, 0xb9, 0xe7, 0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3,
+		0x85, 0xc7, 0x6b, 0x78, 0xd4, 0x6e, 0x0d, 0x6c, 0xcc, 0x75,
+		0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7, 0x80, 0x10, 0x79, 0xfa,
+		0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d
+	};
+
+	static const uint8_t salt1[] = {
+		0xd0, 0x88, 0x34, 0x15, 0xc0, 0xfa, 0x8e, 0x22,
+		0x9f, 0xb4, 0xd5, 0xa9, 0xee, 0xd3, 0x15, 0x19,
+	};
+
+	static const uint32_t user_id1[] = {
+		0x608b1b0b, 0xe10d3d24, 0x0bbbe4e6, 0x807b36d9,
+		0x2a1f8abc, 0xea38104a, 0x562d9431, 0x64d721c5,
+	};
+
+	static const uint32_t user_id2[] = {
+		0x2546a2ca, 0xf1891f7a, 0x44aad8b8, 0x0d6aac74,
+		0x6a4ab846, 0x9c279796, 0x5a72eae1, 0x8276d2a3,
+	};
+
+	static const uint8_t salt2[] = {
+		0x72, 0x6b, 0xc1, 0xe4, 0x64, 0xd4, 0xff, 0xa2,
+		0x5a, 0xac, 0x5b, 0x0b, 0x06, 0x67, 0xe1, 0x53,
+	};
+
+	static const uint8_t key1[] = {
+		0xf8, 0x7b, 0x12, 0x83, 0xc0, 0xee, 0x73, 0x36,
+		0x20, 0xc8, 0xff, 0xf0, 0xef, 0xa1, 0xc9, 0x3b,
+	};
+
+	static const uint8_t key2[] = { 0xa3, 0x38, 0x1e, 0x4e, 0x60, 0xf1,
+					0xd4, 0xd3, 0xf5, 0x44, 0xbc, 0xe0,
+					0xfb, 0x4c, 0x87, 0x0a };
+
+	hmac_SHA256(prk, salt1, sizeof(salt1), ikm, sizeof(ikm));
+	TEST_ASSERT(hkdf_expand_one_step(out_key, SBP_ENC_KEY_LEN, prk,
+					 sizeof(prk), (uint8_t *)user_id1,
+					 sizeof(user_id1)) == EC_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(out_key, key1, sizeof(key1));
+
+	hmac_SHA256(prk, salt2, sizeof(salt2), ikm, sizeof(ikm));
+	TEST_ASSERT(hkdf_expand_one_step(out_key, SBP_ENC_KEY_LEN, prk,
+					 sizeof(prk), (uint8_t *)user_id2,
+					 sizeof(user_id2)) == EC_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(out_key, key2, sizeof(key2));
+
+	return EC_SUCCESS;
+}
+
 extern "C" void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_rand);
@@ -217,5 +308,6 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_cleanse_wrapper_sha256);
 	RUN_TEST(test_cleanse_wrapper_custom_struct);
 	RUN_TEST(test_cleanse_wrapper_normal_usage);
+	RUN_TEST(test_hkdf);
 	test_print_result();
 }
