@@ -190,6 +190,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484673c2_67a095f6",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-03-22T05:49:41Z",
+      "side": 1,
+      "message": "Created http://crrev/c/5386947 to confirm the outputs of the fpsensor_crypto test using more direct calls to the boringssl APIs. It would be better to confirm using the boringssl/util tests directly but I haven\u0027t been able to run the hkdf_test using \"go run util/all_tests.go\". The wycheproof tests that call hkdf_test appear disabled by default.",
+      "parentUuid": "4f4584f9_f2e91df5",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
