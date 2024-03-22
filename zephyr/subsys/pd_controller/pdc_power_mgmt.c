@@ -481,7 +481,7 @@ struct pdc_port_t {
 	union connector_capability_t ccaps;
 	/** CONNECTOR_STATUS temp variable used with CONNECTOR_GET_STATUS
 	 * command */
-	struct connector_status_t connector_status;
+	union connector_status_t connector_status;
 	/** SINK_PATH_EN temp variable used with CMD_PDC_SET_SINK_PATH command
 	 */
 	bool sink_path_en;
