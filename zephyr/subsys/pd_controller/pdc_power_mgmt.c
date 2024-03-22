@@ -2474,3 +2474,23 @@ uint8_t pdc_power_mgmt_get_product_type(int port)
 
 	return ptype;
 }
+
+int pdc_power_mgmt_get_connector_status(
+	int port, union connector_status_t *connector_status)
+{
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	if (connector_status == NULL) {
+		return -EINVAL;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	*connector_status = pdc->connector_status;
+
+	return 0;
+}
