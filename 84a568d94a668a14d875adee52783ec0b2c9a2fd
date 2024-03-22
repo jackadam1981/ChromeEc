@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df81bd88_1fd44fa9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-22T17:32:21Z",
+      "side": 1,
+      "message": "Nit: Maybe this code should use an array mapping `power_operation_mode` values to currents.",
+      "revId": "84a568d94a668a14d875adee52783ec0b2c9a2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
