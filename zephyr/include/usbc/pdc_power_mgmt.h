@@ -507,4 +507,10 @@ enum usb_typec_current_t pdc_power_mgmt_get_default_current_limit_rp(int port);
  */
 int pdc_power_mgmt_frs_enable(int port_num, bool enable);
 
+/**
+ *
+ */
+const uint32_t *const pdc_power_mgmt_get_lpm_src_caps(int port);
+uint8_t pdc_power_mgmt_get_lpm_src_cap_cnt(int port);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

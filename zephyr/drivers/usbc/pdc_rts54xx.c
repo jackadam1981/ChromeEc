@@ -1031,8 +1031,10 @@ static void st_ping_status_run(void *o)
 			/* All done, return to Init or Idle state */
 			TRANSITION_TO_INIT_OR_IDLE_STATE(data);
 		} else {
-			LOG_DBG("C%d: ping_status: %02x", cfg->connector_number,
-				data->ping_status.raw_value);
+			LOG_INF("C%d: ping_status: %02x, read_bytes = %d",
+				cfg->connector_number,
+				data->ping_status.raw_value,
+				data->ping_status.data_len);
 			/*
 			 * The command completed successfully,
 			 * so set cci.command_completed to 1b.
@@ -1893,6 +1895,9 @@ static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 		return -EINVAL;
 	}
 
+	LOG_INF("get_pdos: type = %d, num_pdos = %d, offset = %d,"
+		"port_partner = %d", pdo_type, num_pdos, pdo_offset,
+		port_partner_pdo);
 	byte4 = (num_pdos << 5) | (pdo_offset << 2) | (port_partner_pdo << 1) |
 		pdo_type;
 
