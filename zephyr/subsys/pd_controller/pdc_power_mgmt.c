@@ -112,6 +112,9 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_IDENTITY_DISCOVERY,
 	/** CMD_PDC_IS_SOURCING_VCONN */
 	CMD_PDC_IS_VCONN_SOURCING,
+	/** CMD_PDC_SET_PDOS */
+	CMD_PDC_SET_PDOS,
+
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -309,6 +312,7 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_VDO] = "PDC_GET_VDO",
 	[CMD_PDC_CONNECTOR_RESET] = "PDC_CONNECTOR_RESET",
 	[CMD_PDC_GET_IDENTITY_DISCOVERY] = "PDC_GET_IDENTITY_DISCOVERY",
+	[CMD_PDC_SET_PDOS] = "PDC_SET_PDOS",
 };
 
 /**
@@ -397,6 +401,18 @@ struct pdc_pdos_t {
 	uint32_t pdos[PDO_NUM];
 	/** PDO count */
 	uint8_t pdo_count;
+};
+
+/**
+ * @brief Struct for SET_PDOS command
+ */
+struct set_pdo_t {
+	/** PDOs supported by the Sink */
+	uint32_t pdos[PDO_NUM];
+	/** PDO count */
+	uint8_t count;
+	/** */
+	enum pdo_type_t type;
 };
 
 /**
@@ -558,6 +574,8 @@ struct pdc_port_t {
 	uint8_t *public_api_buff;
 	/** Type of PDOs to get: SNK|SRC from PDC or Port Partner */
 	struct get_pdo_t get_pdo;
+	/** Variable used to store/set PDC LPM SRC CAPs */
+	struct set_pdo_t set_pdo;
 };
 
 /**
@@ -1373,6 +1391,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		}
 		rv = pdc_is_vconn_sourcing(port->pdc,
 					   (bool *)port->public_api_buff);
+		break;
+	case CMD_PDC_SET_PDOS:
+		rv = pdc_set_pdos(port->pdc, port->set_pdo.type,
+				  port->set_pdo.pdos, port->set_pdo.count);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);

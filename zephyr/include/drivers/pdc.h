@@ -134,6 +134,9 @@ typedef int (*pdc_get_identity_discovery_t)(const struct device *dev,
 typedef int (*pdc_set_comms_state_t)(const struct device *dev, bool active);
 typedef int (*pdc_is_vconn_sourcing_t)(const struct device *dev,
 				       bool *vconn_sourcing);
+typedef int (*pdc_set_pdos_t)(const struct device *dev,
+			      enum pdo_type_t type, uint32_t *pdo,
+			      int count);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -171,6 +174,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_get_identity_discovery_t get_identity_discovery;
 	pdc_set_comms_state_t set_comms_state;
 	pdc_is_vconn_sourcing_t is_vconn_sourcing;
+	pdc_set_pdos_t set_pdos;
 };
 /**
  * @endcond
@@ -894,6 +898,29 @@ static inline int pdc_set_comms_state(const struct device *dev,
 		 "set_comms_state is not optional");
 
 	return api->set_comms_state(dev, comms_active);
+}
+
+/**
+ * @brief Sends a Requested Data Object to the attached Source
+ * @note CCI Events set
+ *           busy: if the PDC is busy
+ *           error: if the port partner is a Sink
+ *           command_commpleted: RDO was sent to port partner
+ *
+ * @param dev PDC device structure pointer
+ * @param pdo PDO  to send to the Source
+ *
+ * @retval 0 on success
+ * @retval -EBUSY if not ready to execute the command
+ */
+static inline int pdc_set_pdos(const struct device *dev, enum pdo_type_t type,
+			  uint32_t *pdo, int count)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+
+	return api->set_pdos(dev, type, pdo, count);
 }
 
 /**
