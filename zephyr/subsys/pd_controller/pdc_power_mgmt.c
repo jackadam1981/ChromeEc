@@ -393,6 +393,8 @@ struct pdc_snk_attached_policy_t {
 enum policy_src_attached_t {
 	/** Enables swap to Sink */
 	SRC_POLICY_SWAP_TO_SNK,
+	/** Enables swap to Sink */
+	SRC_POLICY_SET_RP,
 
 	/** SRC_POLICY_COUNT */
 	SRC_POLICY_COUNT
@@ -901,6 +903,9 @@ static void run_src_policies(struct pdc_port_t *port)
 				      SRC_POLICY_SWAP_TO_SNK)) {
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+				      SRC_POLICY_SET_RP)) {
+		queue_internal_cmd(port, CMD_PDC_SET_POWER_LEVEL);
 	}
 
 	send_pending_public_commands(port);
@@ -2534,4 +2539,57 @@ uint8_t pdc_power_mgmt_get_product_type(int port)
 	}
 
 	return ptype;
+}
+
+int pdc_power_mgmt_set_src_pdo(int port, const uint32_t *src_pdo, uint8_t pdo_count)
+{
+	struct pdc_port_t *pdc;
+	int i;
+	int ret;
+
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	if (pdo_count > PDO_NUM) {
+		return -ERANGE;
+	}
+	/* Set up */
+	pdc->set_pdo.count = pdo_count;
+	pdc->set_pdo.type = SOURCE_PDO;
+	for (i = 0; i < pdo_count; i++) {
+		pdc->set_pdo.pdos[i] = src_pdo[i];
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_SET_PDOS);
+	if (ret) {
+		return ret;
+	}
+
+	return EC_SUCCESS;
+}
+
+int pdc_power_mgmt_set_typec_curr_limit(int port, enum usb_typec_current_t tcc)
+{
+	struct pdc_port_t *pdc;
+	int ret;
+
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	pdc = &pdc_data[port]->port;
+	pdc->una_policy.tcc = tcc;
+	/* atomic_set_bit(pdc->una_policy.flags, UNA_POLICY_TCC ); */
+	/* atomic_set_bit(pdc->src_policy.flags, SRC_POLICY_SET_RP); */
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_SET_POWER_LEVEL);
+	if (ret) {
+		return ret;
+	}
+
+	return EC_SUCCESS;
 }
