@@ -344,6 +344,16 @@ enum attached_flag_t {
 };
 
 /**
+ * @brief Commaon struct for PDOs
+ */
+struct pdc_pdos_t {
+	/** PDOs */
+	uint32_t pdos[PDO_NUM];
+	/** PDO count */
+	uint8_t pdo_count;
+};
+
+/**
  * @brief Sink attached policy object
  */
 struct pdc_snk_attached_policy_t {
@@ -351,10 +361,10 @@ struct pdc_snk_attached_policy_t {
 	ATOMIC_DEFINE(flags, SNK_POLICY_COUNT);
 	/** Currently active PDO */
 	uint32_t pdo;
-	/** PDOs supported by the Source */
-	uint32_t pdos[PDO_NUM];
-	/** PDO count */
-	uint8_t pdo_count;
+	/** PDOs for Sink Caps */
+	struct pdc_pdos_t snk;
+	/** PDOs for Source Caps */
+	struct pdc_pdos_t src;
 	/** Sent RDO */
 	uint32_t rdo;
 	/** New RDO to send */
@@ -378,10 +388,10 @@ enum policy_src_attached_t {
 struct pdc_src_attached_policy_t {
 	/** SRC Attached policy flags */
 	ATOMIC_DEFINE(flags, SRC_POLICY_COUNT);
-	/** PDOs supported by the Sink */
-	uint32_t pdos[PDO_NUM];
-	/** PDO count */
-	uint8_t pdo_count;
+	/** PDOs for Sink caps */
+	struct pdc_pdos_t snk;
+	/** PDOs for Source caps */
+	struct pdc_pdos_t src;
 };
 
 /**
@@ -493,9 +503,8 @@ struct pdc_port_t {
 	/** PD Port Partner discovery state: True if discovery is complete, else
 	 * false */
 	bool discovery_state;
-	/** Type of PDOs to get: SINK or SOURCE.  Used with CMD_PDC_GET_PDOS
-	 * command */
-	enum pdo_type_t pdo_type;
+	/** Type of PDOs to get: SNK|SRC from PDC or Port Partner */
+	struct get_pdo_t get_pdo;
 };
 
 /**
@@ -688,8 +697,8 @@ static void invalidate_charger_settings(struct pdc_port_t *port)
 
 	/* Invalidate PDOS */
 	port->snk_policy.pdo = 0;
-	memset(port->snk_policy.pdos, 0, sizeof(uint32_t) * PDO_NUM);
-	port->snk_policy.pdo_count = 0;
+	memset(port->snk_policy.src.pdos, 0, sizeof(uint32_t) * PDO_NUM);
+	port->snk_policy.src.pdo_count = 0;
 }
 
 /**
@@ -819,6 +828,26 @@ static void discovery_info_init(struct pdc_port_t *port)
 		port->vdo_type[i] = vdo_discovery_list[i];
 		port->vdo[i] = 0;
 	}
+}
+
+static struct pdc_pdos_t *get_pdc_pdos_ptr(struct pdc_port_t *port,
+					   struct get_pdo_t *pdo_req)
+{
+	struct pdc_pdos_t *pdc_pdos;
+
+	if (pdo_req->pdo_source == LPM_PDO && pdo_req->pdo_type == SINK_PDO) {
+		pdc_pdos = &port->snk_policy.snk;
+	} else if (pdo_req->pdo_source == LPM_PDO &&
+		   pdo_req->pdo_type == SOURCE_PDO) {
+		pdc_pdos = &port->src_policy.src;
+	} else if (pdo_req->pdo_source == PARTNER_PDO &&
+		   pdo_req->pdo_type == SINK_PDO) {
+		pdc_pdos = &port->src_policy.snk;
+	} else {
+		pdc_pdos = &port->snk_policy.src;
+	}
+
+	return pdc_pdos;
 }
 
 static void run_unattached_policies(struct pdc_port_t *port)
@@ -981,7 +1010,8 @@ static void pdc_src_attached_run(void *obj)
 		return;
 	case SRC_ATTACHED_GET_PDOS:
 		port->src_attached_local_state = SRC_ATTACHED_RUN;
-		port->pdo_type = SINK_PDO;
+		port->get_pdo.pdo_type = SINK_PDO;
+		port->get_pdo.pdo_source = PARTNER_PDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	case SRC_ATTACHED_RUN:
@@ -1055,7 +1085,8 @@ static void pdc_snk_attached_run(void *obj)
 		return;
 	case SNK_ATTACHED_GET_PDOS:
 		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
-		port->pdo_type = SOURCE_PDO;
+		port->get_pdo.pdo_type = SOURCE_PDO;
+		port->get_pdo.pdo_source = PARTNER_PDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	case SNK_ATTACHED_GET_RDO:
@@ -1065,9 +1096,11 @@ static void pdc_snk_attached_run(void *obj)
 	case SNK_ATTACHED_EVALUATE_PDOS:
 		for (int i = 0; i < PDO_NUM; i++) {
 			LOG_INF("PDO%d: %08x, %d %d", i,
-				port->snk_policy.pdos[i],
-				PDO_FIXED_GET_VOLT(port->snk_policy.pdos[i]),
-				PDO_FIXED_GET_CURR(port->snk_policy.pdos[i]));
+				port->snk_policy.src.pdos[i],
+				PDO_FIXED_GET_VOLT(
+					port->snk_policy.src.pdos[i]),
+				PDO_FIXED_GET_CURR(
+					port->snk_policy.src.pdos[i]));
 		}
 
 		LOG_INF("RDO: %d", RDO_POS(port->snk_policy.rdo));
@@ -1076,7 +1109,8 @@ static void pdc_snk_attached_run(void *obj)
 		Instead, the PDOs should be evaluated, and a proper PDO selected
 		and sent to the charge manager. */
 		port->snk_policy.pdo =
-			port->snk_policy.pdos[RDO_POS(port->snk_policy.rdo) - 1];
+			port->snk_policy.src
+				.pdos[RDO_POS(port->snk_policy.rdo) - 1];
 
 		/* Extract Current, Voltage, and calculate Power */
 		max_ma = PDO_FIXED_GET_CURR(port->snk_policy.pdo);
@@ -1158,11 +1192,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 				  port->una_policy.drp_mode);
 		break;
 	case CMD_PDC_GET_PDOS:
-		rv = pdc_get_pdos(port->pdc, port->pdo_type, PDO_OFFSET_0,
-				  PDO_NUM, true,
-				  (port->pdo_type == SOURCE_PDO) ?
-					  &port->snk_policy.pdos[0] :
-					  &port->src_policy.pdos[0]);
+		rv = pdc_get_pdos(port->pdc, port->get_pdo.pdo_type,
+				  PDO_OFFSET_0, PDO_NUM,
+				  port->get_pdo.pdo_source,
+				  get_pdc_pdos_ptr(port, &port->get_pdo)->pdos);
 		break;
 	case CMD_PDC_GET_RDO:
 		rv = pdc_get_rdo(port->pdc, &port->snk_policy.rdo);
@@ -1351,23 +1384,27 @@ static void pdc_send_cmd_wait_run(void *obj)
 static void pdc_send_cmd_wait_exit(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	uint32_t pdo;
+	struct pdc_pdos_t *pdc_pdos;
 
 	/* Completed with error. Clear complete bit */
 	atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
 	port->cmd->pending = false;
-	port->snk_policy.pdo_count = 0;
 
 	switch (port->cmd->cmd) {
 	case CMD_PDC_GET_PDOS:
+		/* Get pointer to struct for pdos array and count */
+		pdc_pdos = get_pdc_pdos_ptr(port, &port->get_pdo);
+		pdc_pdos->pdo_count = 0;
+
 		/* Filter out Augmented Power Data Objects (APDO). APDOs come
 		 * after the regular PDOS, so it's safe to exclude them from the
 		 * pdo_count. */
 		/* TODO This is temporary until APDOs can be handled  */
 		for (int i = 0; i < PDO_NUM; i++) {
-			if (port->snk_policy.pdos[i] & PDO_TYPE_AUGMENTED) {
-				port->snk_policy.pdos[i] = 0;
-			} else {
-				port->snk_policy.pdo_count++;
+			pdo = pdc_pdos->pdos[i];
+			if (pdo && !(pdo & PDO_TYPE_AUGMENTED)) {
+				pdc_pdos->pdo_count++;
 			}
 		}
 		break;
@@ -2021,7 +2058,7 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port)
 		return 0;
 	}
 
-	return pdc_data[port]->port.snk_policy.pdo_count;
+	return pdc_data[port]->port.snk_policy.src.pdo_count;
 }
 
 const uint32_t *const pdc_power_mgmt_get_src_caps(int port)
@@ -2031,7 +2068,7 @@ const uint32_t *const pdc_power_mgmt_get_src_caps(int port)
 		return NULL;
 	}
 
-	return (const uint32_t *const)pdc_data[port]->port.snk_policy.pdos;
+	return (const uint32_t *const)pdc_data[port]->port.snk_policy.src.pdos;
 }
 
 const char *pdc_power_mgmt_get_task_state_name(int port)
@@ -2114,7 +2151,7 @@ static void enforce_pd_chipset_resume_policy_1(int port)
 	}
 
 	/* b) No source caps were received from the port partner */
-	if (pdc_data[port]->port.snk_policy.pdo_count == 0) {
+	if (pdc_data[port]->port.snk_policy.src.pdo_count == 0) {
 		return;
 	}
 
@@ -2284,17 +2321,20 @@ const uint32_t *const pdc_power_mgmt_get_snk_caps(int port)
 		return NULL;
 	}
 
-	return (const uint32_t *const)pdc_data[port]->port.src_policy.pdos;
+	return (const uint32_t *const)pdc_data[port]->port.src_policy.snk.pdos;
 }
 
 uint8_t pdc_power_mgmt_get_snk_cap_cnt(int port)
 {
+	LOG_INF("get_snk_cap_cnt[%d]: count = %d, src_connected = %d", port,
+		pdc_data[port]->port.src_policy.snk.pdo_count,
+		pdc_power_mgmt_is_source_connected(port));
 	/* Make sure port is Sink connected */
 	if (!pdc_power_mgmt_is_source_connected(port)) {
 		return 0;
 	}
 
-	return pdc_data[port]->port.src_policy.pdo_count;
+	return pdc_data[port]->port.src_policy.snk.pdo_count;
 }
 
 struct rmdo pdc_power_mgmt_get_partner_rmdo(int port)
