@@ -456,4 +456,45 @@ unsigned int pdc_power_mgmt_get_max_voltage(void);
  */
 void pdc_power_mgmt_request_source_voltage(int port, int mv);
 
+/**
+ * @brief Sets the SRC CAPs sent by the PDC to its port partner when attached in
+ * a source power role
+ *
+ * @param port USB-C port number
+ * @param src_pdo Pointer to array of PDOs
+ * @param pdc_count Number of PDOs to write
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_set_src_pdo(int port, const uint32_t *src_pdo,
+			       uint8_t pdo_count);
+
+/**
+ * @brief Set current limit for USB-C port acting in a source power role
+ *
+ * @param port USB-C port number
+ * @param tcc Desired source current limit (1.5 or 3.0A)
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_set_current_limit(int port, enum usb_typec_current_t tcc);
+
+/**
+ * @brief Get the default source current limit for a USB-C port
+ *
+ * @param port USB-C port number
+ *
+ * @retval USB-C current limit enum value
+ */
+enum usb_typec_current_t pdc_power_mgmt_get_default_current_limit_rp(int port);
+
+/**
+ * @brief Enable/Disable FRS for a given port
+ *
+ * @param port USB-C port number
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_frs_enable(int port_num, bool enable);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
