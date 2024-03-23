@@ -273,6 +273,8 @@ enum cmd_t {
 	CMD_GET_VDO,
 	/** CMD_GET_IDENTITY_DISCOVERY */
 	CMD_GET_IDENTITY_DISCOVERY,
+	/**  */
+	CMD_SET_PDOS,
 };
 
 /**
@@ -386,6 +388,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_CABLE_PROPERTY] = "GET_CABLE_PROPERTY",
 	[CMD_GET_VDO] = "GET VDO",
 	[CMD_GET_IDENTITY_DISCOVERY] = "CMD_GET_IDENTITY_DISCOVERY",
+	[CMD_SET_PDOS] = "SET_PDOS",
 };
 
 /**
@@ -2062,6 +2065,36 @@ static int rts54_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
 				  (uint8_t *)vdo);
 }
 
+static int rts54_set_pdos(const struct device *dev, enum pdo_type_t type,
+			  uint32_t *pdo, int count)
+{
+	struct pdc_data_t *data = dev->data;
+	uint8_t pdo_info = 0;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	/*
+	 * TODO(b/): Current implementation only supports setting the first
+	 * SNK or SRC CAP.
+	 */
+	if(count != 1) {
+		LOG_WRN("rt54: set_pdos only sets the first PDO passed in");
+	}
+
+	pdo_info = 1 | (type << 3);
+
+	uint8_t payload[] = {
+		SET_PDOS.cmd, SET_PDOS.len + sizeof(uint32_t) * count,
+		SET_PDOS.sub, 0x00, pdo_info,
+		BYTE0(pdo[0]),  BYTE1(pdo[0]),  BYTE2(pdo[0]),  BYTE3(pdo[0]),
+	};
+
+	return rts54_post_command(dev, CMD_SET_PDOS, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
@@ -2090,6 +2123,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_cable_property = rts54_get_cable_property,
 	.get_vdo = rts54_get_vdo,
 	.get_identity_discovery = rts54_get_identity_discovery,
+	.set_pdos = rts54_set_pdos,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
