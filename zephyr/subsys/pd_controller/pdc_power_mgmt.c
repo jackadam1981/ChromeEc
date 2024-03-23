@@ -2897,6 +2897,39 @@ const uint32_t *const pdc_power_mgmt_get_snk_caps(int port)
 	return (const uint32_t *const)pdc_data[port]->port.src_policy.snk.pdos;
 }
 
+const uint32_t *const pdc_power_mgmt_get_lpm_src_caps(int port)
+{
+	uint32_t src_pdo;
+	uint32_t max_mv;
+	uint32_t max_ma;
+	uint32_t max_mw;
+
+	/* Make sure port is Sink connected */
+	/* if (!pdc_power_mgmt_is_source_connected(port)) { */
+	/* 	return NULL; */
+	/* } */
+
+	pdc_data[port]->port.get_pdo.pdo_type = SOURCE_PDO;
+	pdc_data[port]->port.get_pdo.pdo_source = LPM_PDO;
+
+	/* Block until command completes */
+	public_api_block(port, CMD_PDC_GET_PDOS);
+
+	src_pdo = pdc_data[port]->port.src_policy.src.pdos[0];
+	max_ma = PDO_FIXED_GET_CURR(src_pdo);
+	max_mv = PDO_FIXED_GET_VOLT(src_pdo);
+	max_mw = max_ma * max_mv / 1000;
+	LOG_INF("SRC_CAP_%d: mv = %u, ma = %u, mw = %u",
+		port, max_mv, max_ma, max_mw);
+
+	return (const uint32_t *const)pdc_data[port]->port.src_policy.src.pdos;
+}
+
+uint8_t pdc_power_mgmt_get_lpm_src_cap_cnt(int port)
+{
+	return pdc_data[port]->port.src_policy.src.pdo_count;
+}
+
 uint8_t pdc_power_mgmt_get_snk_cap_cnt(int port)
 {
 	/* Make sure port is Sink connected */
