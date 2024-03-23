@@ -1564,6 +1564,7 @@ static int rts54_set_power_level(const struct device *dev,
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t byte = 0;
+	int i;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
@@ -1585,9 +1586,17 @@ static int rts54_set_power_level(const struct device *dev,
 		break;
 	}
 
+	byte |= (byte << 2);
+
 	uint8_t payload[] = {
 		SET_TPC_RP.cmd, SET_TPC_RP.len, SET_TPC_RP.sub, 0x00, byte,
 	};
+
+	printk("SET_TPC_RP: ");
+	for (i=0; i < ARRAY_SIZE(payload); i++) {
+		printk("%02x ", payload[i]);
+	}
+	printk("\n");
 
 	return rts54_post_command(dev, CMD_SET_TPC_RP, payload,
 				  ARRAY_SIZE(payload), NULL);
