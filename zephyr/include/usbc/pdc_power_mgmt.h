@@ -305,7 +305,10 @@ int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type);
  * @retval List of sink capabilities
  */
 const uint32_t *const pdc_power_mgmt_get_snk_caps(int port);
-
+const uint32_t *const pdc_power_mgmt_get_lpm_src_caps(int port);
+uint8_t pdc_power_mgmt_get_lpm_src_cap_cnt(int port);
+int pdc_power_mgmt_set_src_pdo(int port, const uint32_t *src_pdo, uint8_t pdo_count);
+int pdc_power_mgmt_set_typec_curr_limit(int port, enum usb_typec_current_t tcc);
 /**
  * @brief Returns the number of sink caps
  *
