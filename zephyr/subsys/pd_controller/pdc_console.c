@@ -13,6 +13,7 @@
 #include <drivers/pdc.h>
 #include <usbc/pdc_power_mgmt.h>
 
+
 static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 {
 	char *e;
@@ -347,6 +348,149 @@ static int cmd_pdc_comms_state(const struct shell *sh, size_t argc, char **argv)
 	return rv;
 }
 
+static int cmd_pdc_get_snk_caps(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	uint32_t pdos[7];
+	uint8_t cnt;
+	int i;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	cnt = pdc_power_mgmt_get_snk_cap_cnt(port);
+	shell_fprintf(sh, SHELL_INFO,"SNK PDO cnt = %d\n", cnt);
+	if (cnt) {
+		memcpy(pdos, pdc_power_mgmt_get_snk_caps(port),
+		       sizeof(uint32_t) * cnt);
+		for (i = 0; i < cnt; i++) {
+			shell_fprintf(sh, SHELL_INFO,"[SNK PDO %d]: 0x%08x\n", i,
+				      pdos[i]);
+		}
+	}
+
+	cnt = pdc_power_mgmt_get_snk_cap_cnt(port);
+	memcpy(pdos, pdc_power_mgmt_get_lpm_src_caps(port),
+		       sizeof(uint32_t) * cnt);
+	if (cnt) {
+		memcpy(pdos, pdc_power_mgmt_get_snk_caps(port),
+		       sizeof(uint32_t) * cnt);
+		for (i = 0; i < cnt; i++) {
+			shell_fprintf(sh, SHELL_INFO,"[SRC PDO %d]: 0x%08x\n", i,
+				      pdos[i]);
+		}
+	}
+
+	return EC_SUCCESS;
+}
+
+static int cmd_pdc_get_src_caps(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	uint32_t pdos[7];
+	uint8_t cnt;
+	int i;
+	const uint32_t *lpm_pdo;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	cnt = pdc_power_mgmt_get_src_cap_cnt(port);
+	shell_fprintf(sh, SHELL_INFO,"PARTNER SRC PDO cnt = %d\n", cnt);
+	if (cnt) {
+		memcpy(pdos, pdc_power_mgmt_get_src_caps(port),
+		       sizeof(uint32_t) * cnt);
+		for (i = 0; i < cnt; i++) {
+			shell_fprintf(sh, SHELL_INFO,"[SRC PDO %d]: 0x%08x\n", i,
+				      pdos[i]);
+		}
+	}
+
+	lpm_pdo = pdc_power_mgmt_get_lpm_src_caps(port);
+	cnt = pdc_power_mgmt_get_snk_cap_cnt(port);
+	memcpy(pdos, lpm_pdo,
+		       sizeof(uint32_t) * cnt);
+
+	for (i = 0; i < cnt; i++) {
+		shell_fprintf(sh, SHELL_INFO,"[SRC PDO %d]: 0x%08x\n", i,
+			      pdos[i]);
+	}
+
+
+	return EC_SUCCESS;
+}
+
+static int cmd_pdc_set_src_caps(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	enum usb_typec_current_t tcc;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strcmp(argv[2], "hi")) {
+		tcc = TC_CURRENT_3_0A;
+	} else if (!strcmp(argv[2], "mid")) {
+		tcc = TC_CURRENT_1_5A;
+	} else if (!strcmp(argv[2], "lo")) {
+		tcc = TC_CURRENT_USB_DEFAULT;
+	} else {
+		shell_error(sh, "Invalid selection");
+		return -EINVAL;
+	}
+
+	pdc_power_mgmt_set_current_limit(port, tcc);
+
+	if (rv) {
+		shell_error(sh, "SET_PDOS not sent to port %u (%d)",
+			    port, rv);
+	}
+
+
+	return EC_SUCCESS;
+}
+
+static int cmd_pdc_set_rp(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	enum usb_typec_current_t tcc;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strcmp(argv[2], "hi")) {
+		tcc = TC_CURRENT_3_0A;
+	} else if (!strcmp(argv[2], "mid")) {
+		tcc = TC_CURRENT_1_5A;
+	} else if (!strcmp(argv[2], "lo")) {
+		tcc = TC_CURRENT_USB_DEFAULT;
+	} else {
+		shell_error(sh, "Invalid selection");
+		return -EINVAL;
+	}
+
+	rv = pdc_power_mgmt_set_current_limit(port, tcc);
+
+	if (rv) {
+		shell_error(sh, "SET_PDOS not sent to port %u (%d)",
+			    port, rv);
+	}
+
+	return EC_SUCCESS;
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -385,6 +529,22 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Print the UCSI GET_CONNECTOR_STATUS\n"
 		      "Usage pdc connector_status <port>",
 		      cmd_pdc_get_connector_status, 2, 0),
+	SHELL_CMD_ARG(snk_caps, NULL,
+		      "Get snk caps from port partner\n"
+		      "Usage: pdc snk_caps <port>",
+		      cmd_pdc_get_snk_caps, 2, 0),
+	SHELL_CMD_ARG(src_caps, NULL,
+		      "Get src caps from port partner\n"
+		      "Usage: pdc src_caps <port>",
+		      cmd_pdc_get_src_caps, 2, 0),
+	SHELL_CMD_ARG(src_caps_set, NULL,
+		      "Set src caps from port partner\n"
+		      "Usage: pdc src_caps <port>",
+		      cmd_pdc_set_src_caps, 3, 0),
+	SHELL_CMD_ARG(set_rp, NULL,
+		      "Set Rp level\n"
+		      "Usage: pdc set_rp <port> [hi|med|lo]",
+		      cmd_pdc_set_rp, 3, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
