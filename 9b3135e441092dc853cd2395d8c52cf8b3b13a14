@@ -16,6 +16,23 @@
       "message": "Hi Peter, could you help to review this common code change? It\u0027s for clearing SYV682X_FLAGS_SOURCE_ENABLED flag in init stage, could you help to see if it\u0027s reasonable change?",
       "revId": "9b3135e441092dc853cd2395d8c52cf8b3b13a14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49a546e_d4b7a1c8",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-03-24T22:33:36Z",
+      "side": 1,
+      "message": "Since it seems like all of the flags should be cleared on reinit instead of treating this one specially, can you `atomic_clear(\u0026flags[port])` instead? Right after `sink_ocp_count` gets cleared on line 759 seems like a good place to do that.",
+      "revId": "9b3135e441092dc853cd2395d8c52cf8b3b13a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
