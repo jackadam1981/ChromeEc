@@ -315,8 +315,12 @@ static void intel_altmode_thread(void *unused1, void *unused2, void *unused3)
 		} else if (events & BIT(INTEL_ALTMODE_EVENT_INTERRUPT)) {
 			/* Process data of interrupted port */
 			for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-				if (pd_altmode_is_interrupted(
-					    pd_config_array[i]))
+				/*
+				 * Process the data until the interrupt is
+				 * cleared.
+				 */
+				while (pd_altmode_is_interrupted(
+					pd_config_array[i]))
 					process_altmode_pd_data(i);
 			}
 		}
