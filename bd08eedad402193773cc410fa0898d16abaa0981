@@ -190,6 +190,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d36920_15bce663",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-25T08:56:23Z",
+      "side": 1,
+      "message": "Probably not a good idea. After my own testing, if s5_inactivity_timeout is 0 from the beginning, it will trigger S5G3 directly every time it goes to S5. Even driving into S0 is problematic.",
+      "parentUuid": "eb3c70b8_9d054e28",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
