@@ -238,6 +238,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1325cd_987e7775",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-03-25T22:23:23Z",
+      "side": 1,
+      "message": "Correct, it should not be hard-coded that way. A way needs to be added to signal to the power sequencer that it should immediately drop to G3, so the reboot-on-shutdown path can send that signal then wait for the AP to reach G3.\n\nThe same functionality for legacy power sequencing (common/power.c) can be implemented in terms of setting `s5_inactivity_timeout`, but that ends up being two different implementations of the same function depending on which power sequencer a given firmware is built with.",
+      "parentUuid": "727bff8e_fef27841",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
