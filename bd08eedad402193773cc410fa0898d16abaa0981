@@ -214,6 +214,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727bff8e_fef27841",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-25T09:07:29Z",
+      "side": 1,
+      "message": "The function check s5_inactivity_timeout in S5\n```\nif (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) \u003d\u003d 0)\n\t\t\treturn SYS_POWER_STATE_S5G3;\n```\n\nAnd the dts to set s5_inactivity_timeout to 0\n```\ns5-inactivity-timeout:\n    type: int\n    default: 0\n    description: |\n      Timeout in seconds for dropping back from S5 to G3.\n```\nIt will alway trigger S5G3 when powerstate into S5",
+      "parentUuid": "92d36920_15bce663",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
