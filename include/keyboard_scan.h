@@ -50,6 +50,18 @@ struct boot_key_entry {
 };
 
 /**
+ * Get the current keyboard column size.
+ */
+uint8_t keyboard_get_cols(void);
+
+/**
+ * Set keyboard scan matrix column size. The size can be only reduced since
+ * there are statically allocated variables of size KEYBOARD_COLS_MAX. Also,
+ * the size can be safely changed only before scanning starts.
+ */
+void keyboard_set_cols(uint8_t cols);
+
+/**
  * Initializes the module.
  */
 void keyboard_scan_init(void);
