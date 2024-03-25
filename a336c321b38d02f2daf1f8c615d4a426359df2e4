@@ -34,6 +34,52 @@
       "parentUuid": "d3af6347_b9adf4e7",
       "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984fbdaa_704f934d",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-25T06:04:08Z",
+      "side": 1,
+      "message": "given the variable name on the next line, should this be PD_ROLE_SINK?",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119b0aad_450cedda",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-25T06:04:08Z",
+      "side": 1,
+      "message": "is there any difference between the `if` and `else` block?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
