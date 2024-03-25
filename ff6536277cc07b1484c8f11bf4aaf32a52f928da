@@ -33,6 +33,24 @@
       "message": "Nit: These loops look identical except for the addresses of `pdos` and `pdo_count`. You could get pointers to them from `src_policy` or `snk_policy` based on `pdo_type` and then update those objects in a single loop.",
       "revId": "ff6536277cc07b1484c8f11bf4aaf32a52f928da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7f6e44_1df3bbff",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-25T17:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e6235b_8b66efa3",
+      "revId": "ff6536277cc07b1484c8f11bf4aaf32a52f928da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
