@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80747f98_05bcf2a4",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-25T06:41:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3abb2ff6_3b0db459",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "119b0aad_450cedda",
@@ -144,6 +168,30 @@
       "side": 1,
       "message": "if you want to increase to current_level 2, the dut need plug in snk device to the another typeC port, but if the current level from 0 to 1, we don\u0027t need to check the other typec port status.",
       "parentUuid": "e3f029da_fa606a38",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99d7da3_2eaa689f",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-25T06:41:22Z",
+      "side": 1,
+      "message": "so the `else` on line 88 should be `else if (!thermal_up[current_level].typecStatus)`, right?",
+      "parentUuid": "15c36fd7_5fb6ccf6",
       "range": {
         "startLine": 82,
         "startChar": 1,
