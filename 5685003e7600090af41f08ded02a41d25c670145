@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c49eb5d_d6a48ad0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-25T17:07:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147fbb74_0de2a069",
+      "range": {
+        "startLine": 1955,
+        "startChar": 0,
+        "endLine": 1955,
+        "endChar": 127
+      },
+      "revId": "5685003e7600090af41f08ded02a41d25c670145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abbe98c3_2b51d5fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-22T19:21:24Z",
       "side": 1,
       "message": "This can now be managed as an array lookup.\n```\nstatic const uint_8 pdc_attach_flag_to_state[] \u003d\n{\n    [UNATTACHED_FLAG] \u003d PDC_UNATTACHED,\n    [SRC_ATTACHED_FLAG] \u003d PDC_SRC_TYPEC_ONLY,\n};\n```",
+      "range": {
+        "startLine": 2048,
+        "startChar": 0,
+        "endLine": 2057,
+        "endChar": 0
+      },
+      "revId": "5685003e7600090af41f08ded02a41d25c670145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b55f25_2765d6d6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-25T17:07:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abbe98c3_2b51d5fa",
       "range": {
         "startLine": 2048,
         "startChar": 0,
