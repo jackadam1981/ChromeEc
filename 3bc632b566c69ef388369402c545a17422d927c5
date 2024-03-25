@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eefe538e_1d666547",
+        "filename": "common/system.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-25T16:25:17Z",
+      "side": 1,
+      "message": "nit: Can you use if (IS_ENABLED(CONFIG_AP_X86_INTEL) ...?",
+      "range": {
+        "startLine": 1049,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 26
+      },
+      "revId": "3bc632b566c69ef388369402c545a17422d927c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
