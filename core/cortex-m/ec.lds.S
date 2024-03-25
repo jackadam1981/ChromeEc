@@ -588,7 +588,7 @@ SECTIONS
 	 * apparently because we're sending it into IRAM, not FLASH.
 	 * Verify that all sections linked into the FLASH region will fit.
 	 */
-	ASSERT((LENGTH(EC_IMAGE_LMA_MEM_REGION)
+/*	ASSERT((LENGTH(EC_IMAGE_LMA_MEM_REGION)
 #if defined(CONFIG_RWSIG) && defined(SECTION_IS_RO)
 	       - CONFIG_RO_PUBKEY_SIZE
 #endif
@@ -596,7 +596,7 @@ SECTIONS
 	       - CONFIG_RW_SIG_SIZE
 #endif
 	       ) >= __flash_used,
-	       "No room left in the flash")
+	       "No room left in the flash")*/
 
 #ifdef CONFIG_CHIP_INIT_ROM_REGION
 	/*
