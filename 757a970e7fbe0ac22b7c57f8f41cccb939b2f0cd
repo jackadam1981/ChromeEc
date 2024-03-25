@@ -34,6 +34,24 @@
       "parentUuid": "52ee75b3_63399f24",
       "revId": "757a970e7fbe0ac22b7c57f8f41cccb939b2f0cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b8c1e0_675d4806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474597
+      },
+      "writtenOn": "2024-03-25T21:20:57Z",
+      "side": 1,
+      "message": "chromeos-fpmcu-unittests built successfully in http://ci.chromium.org/b/8752728543958642833 so this is now verified!",
+      "parentUuid": "ee2007ad_774a583e",
+      "revId": "757a970e7fbe0ac22b7c57f8f41cccb939b2f0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
