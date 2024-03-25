@@ -142,6 +142,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5bf439_5cced2a4",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-03-25T02:26:19Z",
+      "side": 1,
+      "message": "In fact, according to my tests, set s5_inactivity_timeout to zero has no effect. \n```\n#ifdef CONFIG_CMD_S5_TIMEOUT\nstatic int s5_inactivity_timeout \u003d 0;\n#else\nstatic const int s5_inactivity_timeout \u003d 0;\n#endif\n```\nMaybe it\u0027s because uldren or nissa don\u0027t have CONFIG_EC_POWERSEQ\n\n```\nzephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ\n                                                 \"${PLATFORM_EC}/power/common.c\")\n```",
+      "parentUuid": "9218346d_6a039e40",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
