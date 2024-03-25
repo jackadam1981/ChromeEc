@@ -16,6 +16,24 @@
       "message": "Nit: Maybe this code should use an array mapping `power_operation_mode` values to currents.",
       "revId": "84a568d94a668a14d875adee52783ec0b2c9a2fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e15d6d_ba10c6a4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-03-25T17:13:33Z",
+      "side": 1,
+      "message": "I considered this, but thought it better to explicitly show what current is being set with each power_operation_mode, although I\u0027m open to changing to a table lookup if you feel strongly about it.",
+      "parentUuid": "df81bd88_1fd44fa9",
+      "revId": "84a568d94a668a14d875adee52783ec0b2c9a2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
