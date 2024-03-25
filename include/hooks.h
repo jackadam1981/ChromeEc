@@ -80,6 +80,13 @@ enum hook_type {
 	HOOK_INIT = 0,
 
 	/*
+	 * This hook is called before HOOK_INIT and some early init routines.
+	 * Hook routines of this type are expected to be called multiple times.
+	 * So, make sure your routine takes care of 'initialized' state.
+	 */
+	HOOK_EARLY_INIT,
+
+	/*
 	 * System clock changed frequency.
 	 *
 	 * The "pre" frequency hook is called before we change the frequency.
@@ -369,6 +376,13 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 		__hook_, hooktype, _, routine)                               \
 		__attribute__((section(".rodata." STRINGIFY(hooktype)))) = { \
 			routine, priority                                    \
+		}
+
+#define DECLARE_EARLY_HOOK(routine, priority)                        \
+	const struct hook_data __keep __no_sanitize_address CONCAT2( \
+		__early_hook__, routine)                             \
+		__attribute__((section(".rodata.HOOK_EARLY_INIT"))) = {  \
+			routine, priority                            \
 		}
 
 /**
