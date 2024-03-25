@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3abb2ff6_3b0db459",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-25T06:22:02Z",
+      "side": 1,
+      "message": "en, this represents whether we have inserted the SNK device，",
+      "parentUuid": "984fbdaa_704f934d",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "119b0aad_450cedda",
         "filename": "zephyr/program/geralt/ciri/src/power_config.c",
         "patchSetId": 11
@@ -72,6 +96,30 @@
       "writtenOn": "2024-03-25T06:04:08Z",
       "side": 1,
       "message": "is there any difference between the `if` and `else` block?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f029da_fa606a38",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-25T06:22:02Z",
+      "side": 1,
+      "message": "yes, the if block would also judge the typec_snk_status status,This means we need to check if another port is plugged into the device",
+      "parentUuid": "119b0aad_450cedda",
       "range": {
         "startLine": 82,
         "startChar": 1,
