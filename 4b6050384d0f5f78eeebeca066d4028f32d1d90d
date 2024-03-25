@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccecc2e_eaae0491",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-03-25T02:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3dfae03_c4c24b73",
+      "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58b38264_425dd356",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-22T22:19:53Z",
       "side": 1,
       "message": "aligned rather than alignment",
+      "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c27022_91bd0315",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-03-25T02:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b38264_425dd356",
       "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "673c5c0f_15fd4fe3",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-03-25T02:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76fb6fe_d8db6433",
+      "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20fac954_1abf1315",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b1f09b_3246fab2",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-03-25T02:26:20Z",
+      "side": 1,
+      "message": "Done. This is not needed and has been removed.",
+      "parentUuid": "20fac954_1abf1315",
+      "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b11573_7d1210af",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-03-22T22:19:53Z",
       "side": 1,
       "message": "Its usually easier to read if you define the test functions in the same order they are called (test_mpu_chip_config_lock_region_invalid_addr at the top)",
+      "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2593553_4d4b7034",
+        "filename": "test/mpu_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-03-25T02:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b11573_7d1210af",
       "revId": "4b6050384d0f5f78eeebeca066d4028f32d1d90d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
