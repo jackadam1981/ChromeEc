@@ -166,6 +166,30 @@
       },
       "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3c70b8_9d054e28",
+        "filename": "common/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-03-25T03:14:36Z",
+      "side": 1,
+      "message": "`ap_pwrseq` hard-codes the timeout so needs a way to kick it out of S5 manually: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c#408",
+      "parentUuid": "7d5bf439_5cced2a4",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 24
+      },
+      "revId": "bd08eedad402193773cc410fa0898d16abaa0981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
