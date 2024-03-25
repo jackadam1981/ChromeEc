@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41985050_79556a5b",
+        "filename": "test/aes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-25T22:08:46Z",
+      "side": 1,
+      "message": "Can this just be `auto`?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "38cff9ca923d2f601d6456b6ce44f5872ed4910f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
