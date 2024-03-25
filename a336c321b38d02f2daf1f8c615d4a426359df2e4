@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "302bd9d0_02f7d8ff",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-25T07:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81db5fdb_7c71f0e4",
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "984fbdaa_704f934d",
@@ -216,6 +234,30 @@
       "side": 1,
       "message": "yes, that\u0027s right, we don\u0027t test this situation, but it is really need to check the typecStatus, i will change it.",
       "parentUuid": "c99d7da3_2eaa689f",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "a336c321b38d02f2daf1f8c615d4a426359df2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1789087_cc0e423f",
+        "filename": "zephyr/program/geralt/ciri/src/power_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-03-25T07:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8034a8_6e1c7cf6",
       "range": {
         "startLine": 82,
         "startChar": 1,
