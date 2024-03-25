@@ -137,7 +137,6 @@ static void keyboard_matrix_init(void)
 {
 	CPRINTS("%s", __func__);
 
-	register_scancode_set2((uint16_t *)&scancode_set2_rgb,
-			       sizeof(scancode_set2_rgb));
+	register_scancode_set2(&scancode_set2_rgb, KEYBOARD_COLS_MAX);
 }
 DECLARE_HOOK(HOOK_INIT, keyboard_matrix_init, HOOK_PRIO_PRE_DEFAULT);
