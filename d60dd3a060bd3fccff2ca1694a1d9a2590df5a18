@@ -22,6 +22,30 @@
       },
       "revId": "d60dd3a060bd3fccff2ca1694a1d9a2590df5a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9497e6b4_9ff13d7b",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-26T15:28:10Z",
+      "side": 1,
+      "message": "Right. I didn\u0027t want to change too many things in one go. It is coming.",
+      "parentUuid": "3988dbdd_4faf5730",
+      "range": {
+        "startLine": 121,
+        "startChar": 23,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "d60dd3a060bd3fccff2ca1694a1d9a2590df5a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
