@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f87ad4_99dd4b21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-03-26T21:47:35Z",
+      "side": 1,
+      "message": "I did this because in the next CL, I add handling for a bit that does not directly influence the next state. But this function will still always return true for now. If you can\u0027t foresee a response to this command that would not prompt a state change, then we don\u0027t need this CL.",
+      "revId": "fb073e5e70d1a9252494e316e80d8576f303d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
