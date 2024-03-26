@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca72923_b9b492c5",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-26T07:19:23Z",
+      "side": 1,
+      "message": "you may be able to use scancode_set2_t, but that won\u0027t guarantee\nthat you have reserved KEYBOARD_COLS. maybe cover that with\nan assert?",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "a63cc96cf155d6c9ea68139f44b370699f75b5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
