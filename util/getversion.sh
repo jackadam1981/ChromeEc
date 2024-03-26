@@ -117,8 +117,8 @@ main() {
     cr50)
       dir_list+=( ../../third_party/tpm2 ../../third_party/cryptoc )
       ;;
-    # Examples: hatch_fp, nucleo-bloonchipper, helipilot, helipiot-druid
-    *_fp|*dartmonkey|*bloonchipper|helipilot*)
+    # Common/shared repos for fingerprint boards.
+    *_fp|*dartmonkey*|*bloonchipper*|helipilot*|buccaneer*)
       if [[ -d ../../third_party/boringssl ]]; then
         dir_list+=( ../../third_party/boringssl )
       fi
@@ -128,13 +128,24 @@ main() {
       if [[ -d ./private ]]; then
         dir_list+=( ./private )
       fi
-      if [[ -d ./private/fingerprint/fpc ]]; then
-        dir_list+=( ./private/fingerprint/fpc )
-      fi
       ;;
     *_scp)
       if [[ -d ./private-mt-scp ]]; then
         dir_list+=( ./private-mt-scp )
+      fi
+      ;;
+  esac
+
+  # Add fingerprint board specific repos.
+  case "${BOARD}" in
+    *_fp|*dartmonkey*|*bloonchipper*|helipilot*)
+      if [[ -d ./private/fingerprint/fpc ]]; then
+        dir_list+=( ./private/fingerprint/fpc )
+      fi
+      ;;
+    buccaneer*)
+      if [[ -d ./private/fingerprint/elan ]]; then
+        dir_list+=( ./private/fingerprint/elan )
       fi
       ;;
   esac
