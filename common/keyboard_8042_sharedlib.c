@@ -19,7 +19,7 @@
 
 #ifndef CONFIG_KEYBOARD_CUSTOMIZATION
 /* The standard Chrome OS keyboard matrix table in scan code set 2. */
-static uint16_t scancode_set2_default[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
+static uint16_t scancode_set2_default[KEYBOARD_COLS][KEYBOARD_ROWS] = {
 	{ 0x0000, 0x0000, 0x0014, 0xe01f, 0xe014, 0xe007, 0x0000, 0x0000 },
 	{ 0xe01f, 0x0076, 0x000d, 0x000e, 0x001c, 0x001a, 0x0016, 0x0015 },
 	{ 0x0005, 0x000c, 0x0004, 0x0006, 0x0023, 0x0021, 0x0026, 0x0024 },
