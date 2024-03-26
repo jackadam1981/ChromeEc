@@ -30,6 +30,11 @@ LOG_MODULE_REGISTER(pdc_power_mgmt);
 #define PDC_SM_EVENT BIT(0)
 
 /**
+ * @brief Event triggered when a public command has completed
+ */
+#define PUBLIC_CMD_COMPLETE_EVENT BIT(0)
+
+/**
  * @brief Time delay before running the state machine loop
  */
 #define LOOP_DELAY_MS 25
@@ -433,7 +438,8 @@ struct pdc_port_t {
 	enum src_attached_local_state_t src_attached_last_state;
 	/** State machine run event */
 	struct k_event sm_event;
-
+	/** Public command complete event */
+	struct k_event public_cmd_complete_event;
 	/** Transitioning from last_state */
 	enum pdc_state_t last_state;
 	/* Transitioning to next state */
@@ -1355,6 +1361,11 @@ static void pdc_send_cmd_wait_exit(void *obj)
 	uint32_t *pdos;
 	uint8_t *pdo_count;
 
+	if (port->send_cmd.public.pending) {
+		k_event_post(&port->public_cmd_complete_event,
+			     PUBLIC_CMD_COMPLETE_EVENT);
+	}
+
 	/* Completed with error. Clear complete bit */
 	atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
 	port->cmd->pending = false;
@@ -1551,6 +1562,8 @@ static int pdc_subsys_init(const struct device *dev)
 
 	/* Initialize state machine run event */
 	k_event_init(&port->sm_event);
+	/* Initialize public command complete event */
+	k_event_init(&port->public_cmd_complete_event);
 
 	/* Initialize command mutex */
 	k_mutex_init(&port->mtx);
@@ -1602,8 +1615,18 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 		/* block until command completes or max block count is reached
 		 */
 
-		/* give time for command to be processed */
-		k_sleep(K_MSEC(LOOP_DELAY_MS));
+		/* Wait for timeout or event */
+		ret = k_event_wait(
+			&pdc_data[port]->port.public_cmd_complete_event,
+			PUBLIC_CMD_COMPLETE_EVENT, false,
+			K_MSEC(LOOP_DELAY_MS));
+
+		if (ret != 0) {
+			k_event_clear(
+				&pdc_data[port]->port.public_cmd_complete_event,
+				PUBLIC_CMD_COMPLETE_EVENT);
+		}
+
 		pdc_data[port]->port.block_counter++;
 		/*
 		 * TODO(b/325070749): This timeout value likely needs to be
