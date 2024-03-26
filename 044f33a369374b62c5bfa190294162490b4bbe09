@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a6ad98_91b3e397",
+        "filename": "common/main.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-03-26T21:06:42Z",
+      "side": 1,
+      "message": "On Coverage: There is no condition on this line. That is, if it were not tested, the rest of the files wouldn\u0027t be tested either.",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 30
+      },
+      "revId": "044f33a369374b62c5bfa190294162490b4bbe09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
