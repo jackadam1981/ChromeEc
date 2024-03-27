@@ -108,6 +108,30 @@
       },
       "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65776558_de1bae4a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2588,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-27T17:04:53Z",
+      "side": 1,
+      "message": "I was undecided on this matter. Calling suspend again shouldn\u0027t hurt because everything would already be transitioned to or transitioning to the respected suspended state. Calling resume twice would trigger an additional reset which may be disruptive, but not sure if that is something we need to protect against. We could add a static flag to the function to track this.",
+      "parentUuid": "a7b9ed67_2badd4da",
+      "range": {
+        "startLine": 2588,
+        "startChar": 5,
+        "endLine": 2588,
+        "endChar": 17
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
