@@ -121,21 +121,16 @@ void boot_button_clear(enum button button);
 
 ZTEST_USER(host_cmd_battery_cut_off, test_cutoff_by_unplug)
 {
-	const struct charge_port_info charge = {
-		.current = 3000,
-		.voltage = 15000,
-	};
-
 	boot_key_set(BOOT_KEY_REFRESH);
 
 	/* This fails because !had_active_charge_port. */
-	hook_notify(HOOK_POWER_SUPPLY_CHANGE);
+	hook_notify(HOOK_AC_CHANGE);
 	zassert_false(battery_cutoff_in_progress());
 	zassert_false(battery_is_cut_off());
 
 	/* Plug AC. */
-	charge_manager_update_dualrole(0, CAP_DEDICATED);
-	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, &charge);
+	set_ac_enabled(true);
+	hook_notify(HOOK_AC_CHANGE);
 	/* No cutoff because there is active charge port. */
 	zassert_false(
 		WAIT_FOR(battery_cutoff_in_progress(), 1500000, k_msleep(250)));
@@ -147,7 +142,6 @@ ZTEST_USER(host_cmd_battery_cut_off, test_cutoff_by_unplug)
 	 */
 	set_ac_enabled(false);
 	hook_notify(HOOK_AC_CHANGE);
-	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, NULL);
 	zassert_true(
 		WAIT_FOR(battery_cutoff_in_progress(), 1500000, k_msleep(250)));
 
@@ -157,8 +151,6 @@ ZTEST_USER(host_cmd_battery_cut_off, test_cutoff_by_unplug)
 	 * Plug AC to cancel cutoff, before the operation started by AC unplug
 	 * times out and cancels automatically.
 	 */
-	charge_manager_update_dualrole(0, CAP_DEDICATED);
-	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, &charge);
 	set_ac_enabled(true);
 	hook_notify(HOOK_AC_CHANGE);
 	zassert_false(
@@ -167,26 +159,23 @@ ZTEST_USER(host_cmd_battery_cut_off, test_cutoff_by_unplug)
 	boot_button_set(BUTTON_VOLUME_UP);
 
 	/* Unplug AC to trigger cutoff, which completes with AC connected. */
-	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, NULL);
-	zassert_true(WAIT_FOR(battery_is_cut_off(), 1500000, k_msleep(250)));
+	set_ac_enabled(false);
+	hook_notify(HOOK_AC_CHANGE);
+	zassert_true(
+		WAIT_FOR(battery_cutoff_in_progress(), 1500000, k_msleep(250)));
 
 	boot_button_clear(BUTTON_VOLUME_UP);
 }
 
 ZTEST_USER(host_cmd_battery_cut_off, test_no_cutoff_by_key)
 {
-	const struct charge_port_info charge = {
-		.current = 3000,
-		.voltage = 15000,
-	};
-
 	/* Plug AC. */
-	charge_manager_update_dualrole(0, CAP_DEDICATED);
-	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, &charge);
-	/* Let charge manager update available charge. */
-	k_msleep(500);
+	set_ac_enabled(true);
+	hook_notify(HOOK_AC_CHANGE);
 	/* Unplug AC. */
-	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, NULL);
+	set_ac_enabled(false);
+	hook_notify(HOOK_AC_CHANGE);
+	/* Cutoff shouldn't be in progress because key wasn't pressed. */
 	zassert_false(
 		WAIT_FOR(battery_cutoff_in_progress(), 1500000, k_msleep(250)));
 }
