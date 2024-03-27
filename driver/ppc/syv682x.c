@@ -261,6 +261,31 @@ static bool syv682x_interrupt_filter(int port, int regval, int regmask,
 	return false;
 }
 
+#ifdef CONFIG_USB_PD_FRS_PPC
+#define CC_RP_DEBOUNCE 1000
+/*
+ * According to the syv682 manual, the FRS process of SYV682 only determines
+ * Rd pull down. Unplugging the DOCK may trigger FRS. Base on USB PD 3.2 spec,
+ * Version 1.0,Sections 8.3.2.9. The source Port drives CC to ground for
+ * no larger than tFRSwapTx(MAX). In order to avoid FRS errors in syv682,
+ * Add CC status judgment after FRS trigger.
+ */
+static int check_cc_rp_timeout(int port, int timeout)
+{
+	enum tcpc_cc_voltage_status cc1, cc2;
+
+	tcpm_get_cc(port, &cc1, &cc2);
+
+	while (((cc_is_rp(cc1)) || (cc_is_rp(cc2))) != true) {
+		if (task_wait_event(timeout) == TASK_EVENT_TIMER) {
+			return EC_ERROR_TIMEOUT;
+		}
+		tcpm_get_cc(port, &cc1, &cc2);
+	}
+	return EC_SUCCESS;
+}
+#endif
+
 /*
  * Two status registers can trigger the ALERT_L pin, STATUS and CONTROL_4
  * These registers are clear on read if the condition has been cleared.
@@ -282,6 +307,14 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC)) {
 		if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_FRS,
 					     SYV682X_FLAGS_FRS)) {
+			/*.
+			 * Add CC status judgment after FRS trigger.
+			 */
+			if (check_cc_rp_timeout(port, CC_RP_DEBOUNCE)) {
+				pd_set_error_recovery(port);
+				return;
+			}
+
 			atomic_or(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
 			atomic_clear_bits(&flags[port],
 					  SYV682X_FLAGS_SINK_ENABLED);
