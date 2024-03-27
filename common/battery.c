@@ -440,11 +440,9 @@ static void battery_on_ac_change(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, battery_on_ac_change, HOOK_PRIO_DEFAULT);
 
-#ifdef CONFIG_CHARGE_MANAGER
-static void power_supply_change(void)
+static void ac_change(void)
 {
-	static bool had_active_charge_port;
-	int port = charge_manager_get_active_charge_port();
+	static bool was_ac_on;
 	bool key = false;
 
 	if (IS_ENABLED(HAS_TASK_KEYSCAN))
@@ -458,26 +456,26 @@ static void power_supply_change(void)
 
 	if (!key) {
 		/*
-		 * Need to set had_active_charge_port also here because refresh
-		 * boot key can be registered when the power button is released.
+		 * Need to set was_ac_on also here because refresh boot key can
+		 * be registered when the power button is released.
 		 */
-		if (port != CHARGE_PORT_NONE)
-			had_active_charge_port = true;
+		if (extpower_is_present())
+			was_ac_on = true;
 		return;
 	}
 
-	if (port != CHARGE_PORT_NONE) {
-		had_active_charge_port = true;
+	if (extpower_is_present()) {
+		was_ac_on = true;
 		if (key) {
 			/* Cancel cutoff if AC is backoff again */
 			hook_call_deferred(&pending_cutoff_deferred_data, -1);
-			CUTOFFPRINTS("backoff: P%d is active", port);
+			CUTOFFPRINTS("backoff: Ac is on");
 		}
 		return;
 	}
 
-	if (!had_active_charge_port) {
-		CUTOFFPRINTS("backoff: Haven't had active charge port");
+	if (!was_ac_on) {
+		CUTOFFPRINTS("backoff: Haven't seen AC on");
 		return;
 	}
 
@@ -486,8 +484,7 @@ static void power_supply_change(void)
 	hook_call_deferred(&pending_cutoff_deferred_data,
 			   CONFIG_BATTERY_CUTOFF_DELAY_US);
 }
-DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, power_supply_change, HOOK_PRIO_DEFAULT);
-#endif
+DECLARE_HOOK(HOOK_AC_CHANGE, ac_change, HOOK_PRIO_DEFAULT);
 
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
