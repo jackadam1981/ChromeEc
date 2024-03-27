@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7882465c_874d02b6",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-03-27T09:27:15Z",
+      "side": 1,
+      "message": "Please add some descriptions.",
+      "revId": "12752eb07c1762d607553e1280e6740761775478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f317c727_c76e8472",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-03-27T09:27:15Z",
+      "side": 1,
+      "message": "Use static to define function.",
+      "revId": "12752eb07c1762d607553e1280e6740761775478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73225e8_5ce2e427",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-03-27T09:27:15Z",
+      "side": 1,
+      "message": "Use `true` instead of `1`.",
+      "revId": "12752eb07c1762d607553e1280e6740761775478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
