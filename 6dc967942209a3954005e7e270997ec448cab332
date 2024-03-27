@@ -22,6 +22,30 @@
       },
       "revId": "6dc967942209a3954005e7e270997ec448cab332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275f2ef0_3b1aa9cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-03-27T21:38:56Z",
+      "side": 1,
+      "message": "My apologies. I updated the strategy in code, but didn\u0027t update the commit description. I will update.\n\nJust for future reference, it says \"Avoid the ;\u0026 and ;;\u0026\" in the Google Shell style guide:\nhttps://google.github.io/styleguide/shellguide.html#case-statement\n\nUsing `;;\u0026` would allow for more cases to be evaluated, thus allowing multiple pattern/cases to apply and add their paths, but I went with a more direct strategy, here.",
+      "parentUuid": "e44b4f13_db44324d",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "6dc967942209a3954005e7e270997ec448cab332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
