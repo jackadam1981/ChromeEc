@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5b3e99_a3b27c96",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-27T13:44:55Z",
+      "side": 1,
+      "message": "Nit `comms_active`\nYou also need to document the `dev` parameter",
+      "range": {
+        "startLine": 878,
+        "startChar": 10,
+        "endLine": 878,
+        "endChar": 13
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7b03d3_e981b57d",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-27T13:44:55Z",
+      "side": 1,
+      "message": "Nit- `pdc_power_mgmt_set_comms_state`",
+      "range": {
+        "startLine": 407,
+        "startChar": 4,
+        "endLine": 407,
+        "endChar": 30
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a725fd6f_cfb061fe",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-27T13:44:55Z",
+      "side": 1,
+      "message": "As a followup, can you implement tab completion for suspend/resume parameters?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 0
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf8f191_e354886c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-27T13:44:55Z",
+      "side": 1,
+      "message": "`pdc_power_mgmt_set_comms_state`",
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b9ed67_2badd4da",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2588,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-27T13:44:55Z",
+      "side": 1,
+      "message": "Should this check the current state before attempting to re-suspend or re-resume?",
+      "range": {
+        "startLine": 2588,
+        "startChar": 5,
+        "endLine": 2588,
+        "endChar": 17
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
