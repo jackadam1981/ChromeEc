@@ -175,3 +175,19 @@ uint8_t pd_get_product_type(int port)
 {
 	return pdc_power_mgmt_get_product_type(port);
 }
+
+void pd_comm_enable(int port, int enable)
+{
+	ARG_UNUSED(port);
+
+	(void)pdc_power_mgmt_comms_state(enable);
+}
+
+/* No-op on PDC devices. The suspend/enable operation is handled within
+ * pd_comm_enable() entirely.
+ */
+void pd_set_suspend(int port, int suspend)
+{
+	ARG_UNUSED(port);
+	ARG_UNUSED(suspend);
+}

@@ -19,3 +19,11 @@ enum ec_pd_port_location board_get_pd_port_location(int port)
 	}
 	return EC_PD_PORT_LOCATION_UNKNOWN;
 }
+
+/**
+ * Board function for resetting the PD chips through EC_CMD_PD_CONTROL. This
+ * feature is not used on PDC devices.
+ */
+void board_reset_pd_mcu(void)
+{
+}
