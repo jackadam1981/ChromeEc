@@ -681,6 +681,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13ebf0db_b556c908",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-27T14:28:06Z",
+      "side": 1,
+      "message": "Joseph said [1Hz, 5Hz] is better.\n#define VEML3328_MAX_FREQ (5)\n#define VEML3328_MIN_FREQ (1)",
+      "parentUuid": "92a23d58_343fcdd7",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4377d88_b476f209",
         "filename": "driver/als_veml3328.h",
         "patchSetId": 1
