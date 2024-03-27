@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad199242_39f4f524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-27T17:54:10Z",
+      "side": 1,
+      "message": "LGTM, pending Rob\u0027s approval",
+      "revId": "04610451402151fc421ce2486ed488404f1738d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea358134_49ab89d8",
@@ -79,6 +96,30 @@
       "side": 1,
       "message": "Yes, the counters are reset when the hang recovery is performed.\n\n### Force suspend hang\n\nIn `drivers/base/power/main.c::__device_suspend()`, add a second `device_lock(dev);` to force AP hang in OS.\n\n```\n24-03-20 19:57:17.535 power state 4 \u003d S0, in 0x001f\n24-03-20 19:57:17.538 \u003e [3834.265463 S0ix suspend sleep hang detected!]\n24-03-20 19:57:22.788 [3834.265882 Consecutive sleep hang count: soft\u003d1 hard\u003d0]\n24-03-20 19:57:22.791 [3834.266377 Warning: Detected sleep hang! Waking host up!]\n24-03-20 19:57:22.798 [3834.266839 event set 0x0000000000080000]\n...\n24-03-20 19:57:32.767 [3844.266583 Sending SysRq to trigger AP kernel panic and reboot!]\n24-03-20 19:57:32.818 [3844.317445 AP will be force reset in 10000ms if hang persists]\n...\n24-03-20 19:57:41.420 [3852.922314 HC 0x00a9]\n24-03-20 19:57:41.423 [3852.922852 TIM[3852.923238 HC 0x0067 err 9]\n24-03-20 19:57:41.427 TIM \u003e\u003e power/host_sleep.c::305 \u003e\u003e resetting ha[3852.924182 HC 0x00d3]\n24-03-20 19:57:41.433 ng counters]\n24-03-20 19:57:41.437 [3[3852.924890 HC 0x0008]\n24-03-20 19:57:41.437 852.924748 Successful S0ix resume after consecutive hangs: soft\u003d1 hard\u003d1]\n```\n\n----\n\n### Force resume hang\n\nIn `drivers/platform/chrome/cros_ec.c::cros_ec_send_resume_event()`, `#if 0` the function contents to force resume hang in OS.\n\n```\n24-03-20 20:04:13.009 power state 5 \u003d S0ix, in 0x0014\n...\n24-03-20 20:04:25.812 [4257.932689 S0ix resume sleep hang detected!]\n24-03-20 20:04:25.815 [4257.933103 Consecutive sleep hang count: soft\u003d1 hard\u003d0]\n24-03-20 20:04:25.818 [4257.933598 Warning: Detected sleep hang! Waking host up!]\n24-03-20 20:04:25.825 [4257.934473 event set 0x0000000000080000]\n...\n24-03-20 20:04:35.792 [4267.933772 Sending SysRq to trigger AP kernel panic and reboot!]\n24-03-20 20:04:35.844 [4267.985261 AP will be force reset in 10000ms if hang persists]\n...\n24-03-20 20:04:44.326 [4276.472100 HC 0x00a9]\n24-03-20 20:04:44.330 [4276.472641 TIMTIM \u003e\u003e power/host_sleep.c::305 \u003e\u003e resetting [4276.473959 HC 0x00d3]\n24-03-20 20:04:44.336 hang counters]\n24-03-20 20:04:44.340 [4276.475004 HC 0x0008]\n24-03-20 20:04:44.340 [4276.474537 Successful S0ix resume after consecutive hangs: soft\u003d1 hard\u003d1]\n```\n\n----\n\nAdmittedly, I\u0027m not entirely familiar with all the details, but from the description of `HOOK_CHIPSET_RESUME`, this appears to be working as expected due to the \"or booting and has reached the point where all voltage rails are on\" step:\n\n```\n\t/*\n\t * System is resuming from suspend, or booting and has reached the\n\t * point where all voltage rails are on.\n\t *\n\t * Hook routines are called from the chipset task.\n\t */\n\tHOOK_CHIPSET_RESUME,\n```",
       "parentUuid": "cf04d406_d16d8030",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 42
+      },
+      "revId": "04610451402151fc421ce2486ed488404f1738d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9440b80d_08fddba5",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-27T17:54:10Z",
+      "side": 1,
+      "message": "Awesome, thanks for the detailed explanation!\nI saw that comment but wasn\u0027t sure if it includes AP reboot, since we don\u0027t cut off all the power",
+      "parentUuid": "e06586ed_3b667cd8",
       "range": {
         "startLine": 244,
         "startChar": 0,
