@@ -12,6 +12,7 @@
 #include "charge_manager.h"
 #include "hooks.h"
 #include "usbc/pdc_power_mgmt.h"
+#include "extra/um_ppm/ppm_common.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/kernel.h>
@@ -183,6 +184,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_SET_SINK_PATH,
 	/** SNK_ATTACHED_EVALUATE_PDOS */
 	SNK_ATTACHED_EVALUATE_PDOS,
+	/** SNK_ATTACHED_RUN_POLICY */
+	SNK_ATTACHED_RUN_POLICY,
 	/** SNK_ATTACHED_RUN */
 	SNK_ATTACHED_RUN,
 };
@@ -205,6 +208,8 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_GET_VDO,
 	/** SRC_ATTACHED_GET_PDOS */
 	SRC_ATTACHED_GET_PDOS,
+	/** SRC_ATTACHED_RUN_POLICY */
+	SRC_ATTACHED_RUN_POLICY,
 	/** SRC_ATTACHED_RUN */
 	SRC_ATTACHED_RUN,
 };
@@ -215,6 +220,8 @@ enum src_attached_local_state_t {
 enum unattached_local_state_t {
 	/** UNATTACHED_SET_SINK_PATH_OFF */
 	UNATTACHED_SET_SINK_PATH_OFF,
+	/** UNATTACHED_RUN */
+	UNATTACHED_RUN_POLICY,
 	/** UNATTACHED_RUN */
 	UNATTACHED_RUN,
 };
@@ -539,6 +546,7 @@ static int pdc_subsys_init(const struct device *dev);
 static void send_cmd_init(struct pdc_port_t *port);
 static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
+struct ucsi_ppm_driver *eppm_get(void);
 
 /**
  * @brief PDC thread
@@ -664,6 +672,43 @@ static void send_pending_public_commands(struct pdc_port_t *port)
 	if (port->send_cmd.public.pending) {
 		set_pdc_state(port, PDC_SEND_CMD_START);
 	}
+}
+
+static bool pdc_is_idle(struct pdc_port_t *port)
+{
+	if (port->send_cmd.intern.pending || port->send_cmd.public.pending)
+		return false;
+
+	switch (get_pdc_state(port)) {
+	case PDC_SNK_ATTACHED:
+		return (port->snk_attached_local_state == SNK_ATTACHED_RUN ||
+			port->snk_attached_local_state == SNK_ATTACHED_RUN_POLICY) &&
+		       port->attached_state == SNK_ATTACHED_STATE;
+	case PDC_SRC_ATTACHED:
+		return (port->src_attached_local_state == SRC_ATTACHED_RUN ||
+			port->src_attached_local_state == SRC_ATTACHED_RUN_POLICY) &&
+		       port->attached_state == SRC_ATTACHED_STATE;
+	case PDC_UNATTACHED:
+		return port->unattached_local_state == UNATTACHED_RUN_POLICY ||
+		       port->unattached_local_state == UNATTACHED_RUN;
+	default:
+		return false;
+	}
+}
+
+static void wakeup_ppm(void)
+{
+	struct ucsi_ppm_driver *eppm_drv = eppm_get();
+	struct ppm_common_device *dev;
+
+	if (!eppm_drv) {
+		LOG_INF("Not waking up PPM because it's not initialized");
+		return;
+	}
+
+	dev = (struct ppm_common_device *)eppm_drv->dev;
+	LOG_INF("Waking up PPM");
+	platform_condvar_signal(dev->ppm_condvar);
 }
 
 atomic_val_t pdc_power_mgmt_get_events(int port)
@@ -917,9 +962,18 @@ static void pdc_unattached_run(void *obj)
 	switch (port->unattached_local_state) {
 	case UNATTACHED_SET_SINK_PATH_OFF:
 		port->sink_path_en = false;
-		port->unattached_local_state = UNATTACHED_RUN;
+		port->unattached_local_state = UNATTACHED_RUN_POLICY;
+		LOG_INF("Transitioning to UNATTACHED_RUN_POLICY");
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
+	case UNATTACHED_RUN_POLICY:
+		run_unattached_policies(port);
+		if (pdc_is_idle(port)) {
+			wakeup_ppm();
+			port->unattached_local_state = UNATTACHED_RUN;
+			LOG_INF("Transitioning to UNATTACHED_RUN");
+		}
+		break;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
 		break;
@@ -991,12 +1045,20 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SRC_ATTACHED_GET_PDOS:
-		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		port->src_attached_local_state = SRC_ATTACHED_RUN_POLICY;
 		port->pdo_type = SINK_PDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
-	case SRC_ATTACHED_RUN:
+	case SRC_ATTACHED_RUN_POLICY:
 		port->attached_state = SRC_ATTACHED_STATE;
+		run_src_policies(port);
+		if (pdc_is_idle(port)) {
+			wakeup_ppm();
+			port->src_attached_local_state = SRC_ATTACHED_RUN;
+			LOG_INF("Transitioning to SRC_ATTACHED_RUN");
+		}
+		break;
+	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
 		break;
 	}
@@ -1120,14 +1182,24 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
 		break;
 	case SNK_ATTACHED_SET_SINK_PATH:
-		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		port->snk_attached_local_state = SNK_ATTACHED_RUN_POLICY;
+		LOG_INF("Transitioning to SNK_ATTACHED_RUN_POLICY");
 
 		/* Test if battery can be charged from this port */
 		port->sink_path_en = port->active_charge;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
-	case SNK_ATTACHED_RUN:
+	case SNK_ATTACHED_RUN_POLICY:
 		port->attached_state = SNK_ATTACHED_STATE;
+		run_snk_policies(port);
+		/* Make sure we're done before waking up the PPM. */
+		if (pdc_is_idle(port)) {
+			wakeup_ppm();
+			port->snk_attached_local_state = SNK_ATTACHED_RUN;
+			LOG_INF("Transitioning to SNK_ATTACHED_RUN");
+		}
+		break;
+	case SNK_ATTACHED_RUN:
 		run_snk_policies(port);
 		break;
 	}
@@ -2518,4 +2590,12 @@ uint8_t pdc_power_mgmt_get_product_type(int port)
 	}
 
 	return ptype;
+}
+
+bool pdm_is_idle(int port)
+{
+	if (!is_pdc_port_valid(port))
+		return false;
+
+	return pdc_is_idle(&pdc_data[port]->port);
 }

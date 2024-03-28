@@ -7,6 +7,7 @@
 #include "include/platform.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
+#include "usbc/pdc_power_mgmt.h"
 #include <pthread.h>
 
 const char *ppm_state_strings[PPM_STATE_MAX] = {
@@ -160,6 +161,11 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 			platform_memset((void *)&get_cs_cmd, 0,
 					sizeof(struct ucsi_control));
 
+			/*
+			 * TODO: Remove this GET_CONNECTOR_STATUS execution.
+			 * Instead, PPM should notify OPM and let it send
+			 * GET_CONNECTOR_STATUS (or whatever it wants).
+			 */
 			get_cs_cmd.command = UCSI_CMD_GET_CONNECTOR_STATUS;
 			get_cs_cmd.data_length = 0x0;
 			get_cs_cmd.command_specific[0] =
@@ -407,6 +413,11 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 	uint8_t next_command = 0;
 	int ret;
 
+	if (!pdm_is_idle(0) || !pdm_is_idle(1)) {
+		DLOG("PDM is busy. Not handling command.");
+		return;
+	}
+
 	if (dev->pending.command) {
 		/* Check what command is currently pending. */
 		next_command = dev->ucsi_data.control.command;
@@ -522,25 +533,33 @@ static void ppm_common_task(void *context)
 		return;
 	}
 
-	DLOG("PPM: Starting the ppm task");
+	DLOG("%sPPM: Starting PPM task",
+	     IS_ENABLED(UCSI_USERMODE_PPM) ? "u" : "e");
 
 	platform_mutex_lock(dev->ppm_lock);
 
-	/* Initialize the system state. */
-	dev->ppm_state = PPM_STATE_NOT_READY;
+	/*
+	 * RESET and SET_NOTIFICATION_ENABLE are done by the PDC driver.
+	 */
+	dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
 
-	/* Send PPM reset and set state to IDLE if successful. */
-	platform_memset(&dev->ucsi_data.control, 0,
-			sizeof(struct ucsi_control));
-	dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
-	if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control,
-				 dev->ucsi_data.message_in) != -1) {
-		/* Set platform policy before starting the state machine. */
-		ppm_common_apply_platform_policy(dev);
+	if (IS_ENABLED(UCSI_USERMODE_PPM)) {
+		/* Initialize the system state. */
+		dev->ppm_state = PPM_STATE_NOT_READY;
 
-		dev->ppm_state = PPM_STATE_IDLE;
-		platform_memset(&dev->ucsi_data.cci, 0,
-				sizeof(struct ucsi_cci));
+		/* Send PPM reset and set state to IDLE if successful. */
+		platform_memset(&dev->ucsi_data.control, 0,
+				sizeof(struct ucsi_control));
+		dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
+		if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control,
+					 dev->ucsi_data.message_in) != -1) {
+			/* Set platform policy before starting the state machine. */
+			ppm_common_apply_platform_policy(dev);
+
+			dev->ppm_state = PPM_STATE_IDLE;
+			platform_memset(&dev->ucsi_data.cci, 0,
+					sizeof(struct ucsi_cci));
+		}
 	}
 
 	/* TODO - Note to self:  Smbus function calls are currently done with
