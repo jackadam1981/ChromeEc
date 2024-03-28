@@ -94,6 +94,7 @@ struct motion_sensor_t motion_sensors[] = {
 			/* Sensor on for lid angle detection */
 			[SENSOR_CONFIG_EC_S3] = {
 				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 200 * MSEC,
 			},
 		},
 	},
@@ -117,11 +118,10 @@ struct motion_sensor_t motion_sensors[] = {
 		.config = {
 			[SENSOR_CONFIG_EC_S0] = {
 				.odr = 13000 | ROUND_UP_FLAG,
-				.ec_rate = 100 * MSEC,
 			},
 			[SENSOR_CONFIG_EC_S3] = {
 				.odr = 10000 | ROUND_UP_FLAG,
-				.ec_rate = 100 * MSEC,
+				.ec_rate = 200 * MSEC,
 			},
 		},
 	},
@@ -165,12 +165,11 @@ struct motion_sensor_t bmi260_base_accel = {
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
 		},
 		/* Sensor on in S3 */
 		[SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+			.ec_rate = 200 * MSEC,
 		},
 	},
 };
