@@ -89,6 +89,29 @@
 				 */
 			};
 		};
+		cbi_flash: cbi {
+			/*
+			 * Placeholder only.  The PSTATE section must be the
+			 * last block in the RO region. binman doesn't support
+			 * specifying the section offsets out of order, so this
+			 * node serves as an anchor for CBI.
+			 *
+			 * If CBI in flash is enabled, then include the common
+			 * CBI flash definition and set the location and size
+			 * in the project overlay file.
+			 *
+			 * Exammple:
+			 *
+			 *	#include <cros/cbi_flash.dtsi>
+			 *	&cbi_flash {
+			 *		offset = <(0x60000 - (0x1000 * 2))>;
+			 *		size = <0x1000>;
+			 *	};
+			 *
+			 * The fmap section offset must also be adjusted to
+			 * not overlap CBI.
+			 */
+		};
 		pstate: pstate {
 			type = "section";
 			offset = <(0x60000 - 4096)>;
