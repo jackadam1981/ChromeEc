@@ -2393,14 +2393,26 @@ static void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
 		cci_event.command_completed ? "CC" : "");
 
 	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+
+	/*
+	 * We don't wake up PPM for CI here because we want PDM to handle CI
+	 * thoroughly first. PDM will wake up PPM when it's done with CI.
+	 */
 	if (cci_event.connector_change) {
 		dev->pending.async_event = 1;
 		dev->last_connector_alerted = (cci_event.raw_value >> 1) & 0x7f;
 	}
 
-	platform_condvar_signal(dev->ppm_condvar);
-	if (dev->opm_notify)
-		dev->opm_notify(dev->opm_context);
+	/*
+	 * Wake up PPM for CC if it's in PPM_STATE_PROCESSING_COMMAND. We know
+	 * this CC is for PPM because PPM is allowed to start a command only
+	 * when PDM is idle.
+	 */
+	if (cci_event.command_completed &&
+	    dev->ppm_state == PPM_STATE_PROCESSING_COMMAND) {
+		LOG_INF("%s: Waking up PPM", __func__);
+		platform_condvar_signal(dev->ppm_condvar);
+	}
 }
 
 struct ucsi_pd_driver *rts5453_open(void)
