@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b30aca_43f69825",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-28T18:07:18Z",
+      "side": 1,
+      "message": "```suggestion\n    # using a derivative board, like buccaneer which is based on helipilot.\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 14,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "dddbd551747b760cf906bfdbad2fc192a89f1351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
