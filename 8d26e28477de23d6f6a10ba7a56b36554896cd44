@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899f56cb_0b891297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527357
+      },
+      "writtenOn": "2024-03-28T21:56:20Z",
+      "side": 1,
+      "message": "Hi Tommy, the initialization looks correct. However, the gpios are still named as spares. Can you update their node name to match the pinecone schematic? \nGPIO   \u003d Netname     --\u003e Initialization \nGPIO06 \u003d POE_CS_OUT  --\u003e OUTPUT LOW \nGPIO07 \u003d POE_CHECK_L --\u003e INPUT No Pull-Up",
+      "revId": "8d26e28477de23d6f6a10ba7a56b36554896cd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
