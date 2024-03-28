@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "577e5917_640d9e0f",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5b3e99_a3b27c96",
+      "range": {
+        "startLine": 878,
+        "startChar": 10,
+        "endLine": 878,
+        "endChar": 13
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90c6d27_def48b36",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5b3e99_a3b27c96",
+      "range": {
+        "startLine": 878,
+        "startChar": 10,
+        "endLine": 878,
+        "endChar": 13
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f7b03d3_e981b57d",
@@ -37,6 +85,54 @@
       "writtenOn": "2024-03-27T13:44:55Z",
       "side": 1,
       "message": "Nit- `pdc_power_mgmt_set_comms_state`",
+      "range": {
+        "startLine": 407,
+        "startChar": 4,
+        "endLine": 407,
+        "endChar": 30
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b244b48f_ca7da1b9",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7b03d3_e981b57d",
+      "range": {
+        "startLine": 407,
+        "startChar": 4,
+        "endLine": 407,
+        "endChar": 30
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a35230_35046c6a",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7b03d3_e981b57d",
       "range": {
         "startLine": 407,
         "startChar": 4,
@@ -70,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7b3597_31eef283",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Did it in this CL",
+      "parentUuid": "a725fd6f_cfb061fe",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 0
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf8f191_e354886c",
@@ -83,6 +203,42 @@
       "writtenOn": "2024-03-27T13:44:55Z",
       "side": 1,
       "message": "`pdc_power_mgmt_set_comms_state`",
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f154263d_622fae45",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf8f191_e354886c",
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27f3a33_2f3fc7dc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf8f191_e354886c",
       "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -148,6 +304,30 @@
       "side": 1,
       "message": "Because you\u0027ve provided a console command, I think blocking re-suspend and re-resume is a good idea.",
       "parentUuid": "65776558_de1bae4a",
+      "range": {
+        "startLine": 2588,
+        "startChar": 5,
+        "endLine": 2588,
+        "endChar": 17
+      },
+      "revId": "7bbc6f7f2656fb5466fcb4fa57aa1b3062ce96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec85ebfe_a667c02b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2588,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-03-28T17:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2456232d_945d9c1d",
       "range": {
         "startLine": 2588,
         "startChar": 5,
