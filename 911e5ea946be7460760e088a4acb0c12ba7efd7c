@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9762dd_fa9a23c1",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31c1d3b3_47cd6927",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c2b5e8_ac8f7939",
@@ -65,6 +83,24 @@
       "writtenOn": "2024-03-20T21:37:51Z",
       "side": 1,
       "message": "No need of ret, use:\n```suggestion\n\t\tRETURN_ERROR(i2c_read16(s-\u003eport, s-\u003ei2c_spi_addr_flags,\n```",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e37543_61a161b9",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb82e86_1940fcdb",
       "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
