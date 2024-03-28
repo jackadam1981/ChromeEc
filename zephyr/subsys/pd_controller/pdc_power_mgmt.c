@@ -371,6 +371,8 @@ struct pdc_snk_attached_policy_t {
 enum policy_src_attached_t {
 	/** Enables swap to Sink */
 	SRC_POLICY_SWAP_TO_SNK,
+	/** Forces sink-only operation, even if it requires a disconnect */
+	SRC_POLICY_FORCE_SNK,
 
 	/** SRC_POLICY_COUNT */
 	SRC_POLICY_COUNT
@@ -853,6 +855,10 @@ static void run_src_policies(struct pdc_port_t *port)
 	if (atomic_test_and_clear_bit(port->src_policy.flags,
 				      SRC_POLICY_SWAP_TO_SNK)) {
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_FORCE_SNK)) {
+		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
 		return;
 	}
 
@@ -2107,6 +2113,14 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state)
 			port_data->pdr.swap_to_snk = 1;
 			atomic_set_bit(port_data->src_policy.flags,
 				       SRC_POLICY_SWAP_TO_SNK);
+
+			/*
+			 * If PRS to Sink fails, disconnect and reconnect as
+			 * Sink.
+			 */
+			port_data->una_policy.cc_mode = CCOM_RD;
+			atomic_set_bit(port_data->src_policy.flags,
+				       SRC_POLICY_FORCE_SNK);
 		}
 		break;
 	/* Switch to source */
