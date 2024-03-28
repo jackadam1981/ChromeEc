@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2f6524_faab9fe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d81d86_d8328792",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31c1d3b3_47cd6927",
@@ -66,6 +84,24 @@
       "writtenOn": "2024-03-20T21:37:51Z",
       "side": 1,
       "message": "```suggestion\n\tuint16_t raw_data[5];\n```",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd03e02c_bcabd718",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c2b5e8_ac8f7939",
       "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca6e686_90fb3389",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:53:58Z",
+      "side": 1,
+      "message": "Done, no more FP!!!",
+      "parentUuid": "a9049b60_1b04dba3",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85315b1b_1574cd54",
@@ -139,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1886c15e_c4ddd118",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85315b1b_1574cd54",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a06e1f3_1f67990f",
@@ -152,6 +224,24 @@
       "writtenOn": "2024-03-20T21:37:51Z",
       "side": 1,
       "message": "We assume not automatic gain calculation, it will come back to deal with low light condition. Or not if the goal is just to get the clear channel, we will just crank up the screen brightness to the max.",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ae0d16_28bf284d",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-28T01:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a06e1f3_1f67990f",
       "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
