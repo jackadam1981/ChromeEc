@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea2e126_c4815f41",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-28T23:23:49Z",
+      "side": 1,
+      "message": "nit: use units:\n1\n```suggestion\n\t\t\t\t\tec-rate \u003d \u003c10 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e3976f_d01875d7",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-28T23:23:49Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c10 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
