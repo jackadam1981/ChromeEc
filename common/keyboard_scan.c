@@ -1047,10 +1047,12 @@ void keyboard_scan_task(void *u)
 			     !gpio_get_level(GPIO_RFR_KEY_L)))
 				break;
 #endif
-			else
+			else {
+				boot_key_value =
+					check_boot_key(debounced_state);
 				task_wait_event(-1);
+			}
 		}
-
 		/* We're about to poll, so any existing forces are fulfilled */
 		force_poll = 0;
 
