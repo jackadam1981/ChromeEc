@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df81f6f_ede48ac2",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-03-28T11:35:42Z",
+      "side": 1,
+      "message": "We need to wrap this with CONFIG_USB_PD_FRS_PPC as well otherwise it will fail for those without the config.",
+      "revId": "3cbbf6e7cf9ad63df76c80e91e2497b4636172cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
