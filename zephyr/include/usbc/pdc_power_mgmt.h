@@ -396,4 +396,6 @@ void pdc_power_mgmt_clear_event(int port, atomic_t event_mask);
  */
 void pdc_power_mgmt_notify_event(int port, atomic_t event_mask);
 
+bool pdm_is_idle(int port);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
