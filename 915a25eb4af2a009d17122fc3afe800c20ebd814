@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cb0173_2e07b576",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-28T08:11:29Z",
+      "side": 1,
+      "message": "No, also a spurious interrupt causes that `esf` is `NULL` for ARM.",
+      "parentUuid": "c876f9e7_409a1051",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 9
+      },
+      "revId": "915a25eb4af2a009d17122fc3afe800c20ebd814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7375709_619f0cd0",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "959d58ff_a3c263d2",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-28T08:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7375709_619f0cd0",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 47
+      },
+      "revId": "915a25eb4af2a009d17122fc3afe800c20ebd814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc31e399_2d09cf3b",
@@ -94,6 +142,30 @@
       "writtenOn": "2024-03-27T19:15:32Z",
       "side": 1,
       "message": "Do we need to clear panic reason if it\u0027s not checked?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "915a25eb4af2a009d17122fc3afe800c20ebd814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e44f2d_ca283779",
+        "filename": "zephyr/test/drivers/panic_reason/src/panic_reason.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-28T08:11:29Z",
+      "side": 1,
+      "message": "No, good catch.",
+      "parentUuid": "bc31e399_2d09cf3b",
       "range": {
         "startLine": 21,
         "startChar": 1,
