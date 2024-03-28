@@ -369,6 +369,8 @@ struct pdc_data_t {
 	uint16_t error_recovery_counter;
 	/** Error Status used during initialization */
 	union error_status_t es;
+	/** Connector Status */
+	union connector_status_t conn_status;
 };
 
 /**
@@ -1242,6 +1244,10 @@ static void st_read_run(void *o)
 		/* No preprocessing needed for the user data */
 		memcpy(data->user_buf, data->rd_buf + offset, len);
 	}
+
+	if (data->cmd == CMD_GET_CONNECTOR_STATUS)
+		/* Save connector status in cache. */
+		memcpy(&data->conn_status, data->user_buf, len);
 
 	/* Clear the read buffer */
 	memset(data->rd_buf, 0, 256);
@@ -2417,10 +2423,7 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 		cr.reset_type = 0;
 		rts54_connector_reset(dev, cr);
 		break;
-	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
-		union notification_enable_t bits;
-		platform_memcpy(&bits, control->command_specific, sizeof(bits));
-		rv = rts54_set_notification_enable(dev, bits, 0);
+	case UCSI_CMD_ACK_CC_CI:
 		break;
 	case UCSI_CMD_GET_CAPABILITY:
 		rv = rts54_get_capability(dev,
@@ -2435,8 +2438,9 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 				    true, (uint32_t *)lpm_data_out);
 		break;
 	case UCSI_CMD_GET_CONNECTOR_STATUS:
-		rv = rts54_get_connector_status(
-			dev, (struct connector_status_t *)lpm_data_out);
+		struct pdc_data_t *data = dev->data;
+		rv = sizeof(data->conn_status);
+		memcpy(lpm_data_out, &data->conn_status, rv);
 		break;
 	case UCSI_CMD_GET_ALTERNATE_MODES:
 		/* Report all modes as 0. */
@@ -2467,15 +2471,48 @@ static void ppm_cci_cb(union cci_event_t cci_event, void *cb_data)
 		cci_event.connector_change ? "CI" : "",
 		cci_event.command_completed ? "CC" : "");
 
-	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
-	if (cci_event.connector_change) {
-		dev->pending.async_event = 1;
-		dev->last_connector_alerted = (cci_event.raw_value >> 1) & 0x7f;
+	if (dev->ppm_state == PPM_STATE_IDLE ||
+	    dev->ppm_state == PPM_STATE_NOT_READY) {
+		LOG_INF("%s: Not ready to handle CCI", __func__);
+		return;
 	}
 
-	platform_condvar_signal(dev->ppm_condvar);
-	if (dev->opm_notify)
-		dev->opm_notify(dev->opm_context);
+	/*
+	 * What we (=PPM) are interested in are:
+	 * 1. CC for the command we're executing.
+	 * 2. CI.
+	 * 3. Other async events which happened not as a result of the commands
+	 *    executed by PDM.
+	 */
+	/* If this call is CC for PDM, don't copy CCI. */
+	if (!cci_event.connector_change && cci_event.command_completed &&
+	    dev->ppm_state != PPM_STATE_PROCESSING_COMMAND) {
+		LOG_INF("%s: Not interested", __func__);
+		return;
+	}
+
+	memcpy(&dev->ucsi_data.cci, &cci_event, sizeof(cci_event));
+
+	/*
+	 * We don't wake up PPM for CI here because we want PDM to handle CI
+	 * thoroughly first. PDM will wake up PPM when it's done with CI.
+	 */
+	if (cci_event.connector_change) {
+		LOG_INF("%s: CI conn=%d", __func__, cci_event.connector_change);
+		dev->pending.async_event = 1;
+		dev->last_connector_alerted = cci_event.connector_change;
+	}
+
+	/*
+	 * Wake up PPM for CC if it's in PPM_STATE_PROCESSING_COMMAND. We know
+	 * this CC is for PPM because PPM is allowed to start a command only
+	 * when PDM is idle.
+	 */
+	if (cci_event.command_completed &&
+	    dev->ppm_state == PPM_STATE_PROCESSING_COMMAND) {
+		LOG_INF("%s: Waking up PPM", __func__);
+		platform_condvar_signal(dev->ppm_condvar);
+	}
 }
 
 struct ucsi_pd_driver *rts5453_open(void)

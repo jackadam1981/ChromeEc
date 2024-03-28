@@ -7,6 +7,7 @@
 #include "include/platform.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
+#include "usbc/pdc_power_mgmt.h"
 #include <pthread.h>
 
 const char *ppm_state_strings[PPM_STATE_MAX] = {
@@ -160,6 +161,11 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 			platform_memset((void *)&get_cs_cmd, 0,
 					sizeof(struct ucsi_control));
 
+			/*
+			 * TODO: Remove this GET_CONNECTOR_STATUS execution.
+			 * Instead, PPM should notify OPM and let it send
+			 * GET_CONNECTOR_STATUS (or whatever it wants).
+			 */
 			get_cs_cmd.command = UCSI_CMD_GET_CONNECTOR_STATUS;
 			get_cs_cmd.data_length = 0x0;
 			get_cs_cmd.command_specific[0] =
@@ -210,7 +216,10 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 			 * OPM.
 			 */
 			if (port < dev->num_ports) {
-				alert_port = true;
+				/* Mask only enabled notifications. */
+				if (dev->notif_mask.raw_value &
+				    dev->per_port_status[port].connector_status_change)
+					alert_port = true;
 			} else {
 				DLOG("No more ports needing OPM alerting");
 			}
@@ -289,6 +298,13 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 			goto success;
 		}
 		break;
+	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
+		/* Save the notification mask. */
+		memcpy(&dev->notif_mask, control->command_specific,
+		       sizeof(dev->notif_mask));
+		ret = 0;
+		goto success;
+		break;
 	default:
 		break;
 	}
@@ -338,8 +354,11 @@ success:
 		ppm_common_apply_platform_policy(dev);
 
 		cci->reset_completed = 1;
+	} else if (ucsi_command == UCSI_CMD_SET_NOTIFICATION_ENABLE) {
+		cci->data_length = 0;
+		cci->cmd_complete = 1;
 	} else if (ret == 0) {
-		/* Write is done. Read may be pending. */
+		/* Write is done. Read may be pending. Also cover ACK_CC_CI. */
 		return ret;
 	} else {
 		cci->data_length = ret & 0xFF;
@@ -407,6 +426,11 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 	uint8_t next_command = 0;
 	int ret;
 
+	if (!pdm_is_idle(0) || !pdm_is_idle(1)) {
+		DLOG("PDM is busy. Not handling command.");
+		return;
+	}
+
 	if (dev->pending.command) {
 		/* Check what command is currently pending. */
 		next_command = dev->ucsi_data.control.command;
@@ -465,6 +489,8 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 
 				clear_cci(dev);
 				dev->ucsi_data.cci.ack_command = 1;
+			} else if (dev->ucsi_data.cci.cmd_complete) {
+				dev->ppm_state = PPM_STATE_WAITING_CC_ACK;
 			} else if (ret == 0) {
 				/* Command takes some time to complete. */
 			} else {
@@ -526,21 +552,25 @@ static void ppm_common_task(void *context)
 
 	platform_mutex_lock(dev->ppm_lock);
 
-	/* Initialize the system state. */
-	dev->ppm_state = PPM_STATE_NOT_READY;
-
-	/* Send PPM reset and set state to IDLE if successful. */
-	platform_memset(&dev->ucsi_data.control, 0,
-			sizeof(struct ucsi_control));
-	dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
-	if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control,
-				 dev->ucsi_data.message_in) != -1) {
-		/* Set platform policy before starting the state machine. */
-		ppm_common_apply_platform_policy(dev);
-
+	if (IS_ENABLED(CONFIG_UCSI_PPM)) {
 		dev->ppm_state = PPM_STATE_IDLE;
-		platform_memset(&dev->ucsi_data.cci, 0,
-				sizeof(struct ucsi_cci));
+	} else {
+		/* Initialize the system state. */
+		dev->ppm_state = PPM_STATE_NOT_READY;
+
+		/* Send PPM reset and set state to IDLE if successful. */
+		platform_memset(&dev->ucsi_data.control, 0,
+				sizeof(struct ucsi_control));
+		dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
+		if (dev->pd->execute_cmd(dev->pd->dev, &dev->ucsi_data.control,
+					 dev->ucsi_data.message_in) != -1) {
+			/* Set platform policy before starting the state machine. */
+			ppm_common_apply_platform_policy(dev);
+
+			dev->ppm_state = PPM_STATE_IDLE;
+			platform_memset(&dev->ucsi_data.cci, 0,
+					sizeof(struct ucsi_cci));
+		}
 	}
 
 	/* TODO - Note to self:  Smbus function calls are currently done with

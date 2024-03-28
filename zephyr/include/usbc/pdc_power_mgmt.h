@@ -417,4 +417,6 @@ int pdc_power_mgmt_set_comms_state(bool run);
 int pdc_power_mgmt_get_connector_status(
 	int port, union connector_status_t *connector_status);
 
+bool pdm_is_idle(int port);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
