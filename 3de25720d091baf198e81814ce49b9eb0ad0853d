@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9d43c7_c28e8d34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-28T10:44:12Z",
+      "side": 1,
+      "message": "Please add `TEST\u003dtwister -v -i -T zephyr/test/ --test boringssl.selftest`",
+      "revId": "3de25720d091baf198e81814ce49b9eb0ad0853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f1390e_d7774549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-03-28T10:44:12Z",
+      "side": 1,
+      "message": "Could you add `CONFIG_BORINGSSL_HARDWARE_ENTROPY\u003dy` to `zephyr/program/fpmcu/prj.conf` to avoid disabling it silently when `CONFIG_ENTROPY_GENERATOR` is not enabled?\n\nTo fix compilation failure, you need to add the following to the `zephyr/test/boringssl/prj.conf`\n```\ndiff --git a/zephyr/test/boringssl/prj.conf b/zephyr/test/boringssl/prj.conf\nindex ce2369ef95..7d48d13194 100644\n--- a/zephyr/test/boringssl/prj.conf\n+++ b/zephyr/test/boringssl/prj.conf\n@@ -4,5 +4,7 @@\n \n CONFIG_ZTEST\u003dy\n CONFIG_BORINGSSL_CRYPTO\u003dy\n+CONFIG_BORINGSSL_HARDWARE_ENTROPY\u003dy\n CONFIG_COMMON_LIBC_MALLOC\u003dy\n CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE\u003d131070\n+CONFIG_ENTROPY_GENERATOR\u003dy\n```",
+      "revId": "3de25720d091baf198e81814ce49b9eb0ad0853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
