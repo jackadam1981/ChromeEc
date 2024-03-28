@@ -320,7 +320,7 @@ test_static int test_low_battery(void)
 	sb_write(SB_CURRENT, -1000);
 	wait_charging_state();
 	sleep(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT);
-	TEST_ASSERT(is_hibernated);
+	TEST_ASSERT(!is_hibernated);
 
 	ccprintf("[CHARGING TEST] Low battery shutdown S0->S5\n");
 	mock_chipset_state = CHIPSET_STATE_ON;
