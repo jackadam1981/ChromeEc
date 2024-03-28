@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5900a18_b375e358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-28T21:56:57Z",
+      "side": 1,
+      "message": "The placeholder cbi_flash node broke builds for ITE boards without CBI flash.  The latest patchset uses the `/delete_node/` function to ensure the pstate section is last.",
+      "revId": "17bfd10c690764042cf4e8164c54d9768ddef9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
