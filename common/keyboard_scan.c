@@ -1062,8 +1062,11 @@ void keyboard_scan_task(void *u)
 			     !gpio_get_level(GPIO_RFR_KEY_L)))
 				break;
 #endif
-			else
+			else {
+				if (boot_key_value & ~BIT(BOOT_KEY_POWER))
+					boot_key_value &= BIT(BOOT_KEY_POWER);
 				task_wait_event(-1);
+			}
 		}
 
 		/* We're about to poll, so any existing forces are fulfilled */
