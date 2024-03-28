@@ -320,7 +320,7 @@ test_static int test_low_battery(void)
 	sb_write(SB_CURRENT, -1000);
 	wait_charging_state();
 	sleep(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT);
-	TEST_ASSERT(is_hibernated);
+	TEST_ASSERT(!is_hibernated);
 
 	ccprintf("[CHARGING TEST] Low battery shutdown S0->S5\n");
 	mock_chipset_state = CHIPSET_STATE_ON;
@@ -334,9 +334,9 @@ test_static int test_low_battery(void)
 	mock_chipset_state = CHIPSET_STATE_SOFT_OFF;
 	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 	wait_charging_state();
-	/* after a while, the EC should hibernate */
+	/* If AC on, EC should not hibernate */
 	sleep(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT);
-	TEST_ASSERT(is_hibernated);
+	TEST_ASSERT(!is_hibernated);
 
 	ccprintf("[CHARGING TEST] Low battery shutdown S5\n");
 	is_hibernated = 0;
@@ -344,9 +344,9 @@ test_static int test_low_battery(void)
 	wait_charging_state();
 	sb_write(SB_RELATIVE_STATE_OF_CHARGE, 2);
 	wait_charging_state();
-	/* after a while, the EC should hibernate */
+	/* If AC on, EC should not hibernate */
 	sleep(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT);
-	TEST_ASSERT(is_hibernated);
+	TEST_ASSERT(!is_hibernated);
 
 	ccprintf("[CHARGING TEST] Low battery AP shutdown\n");
 	is_shutdown = 0;
