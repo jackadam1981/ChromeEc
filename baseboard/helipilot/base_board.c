@@ -105,7 +105,9 @@ static void board_init(void)
 	/* Initialize trng peripheral before kicking off the application to
 	 * avoid incurring that cost when generating random numbers
 	 */
-	npcx_trng_hw_init();
+	if (IS_ENABLED(SECTION_IS_RO)) {
+		npcx_trng_hw_init();
+	}
 
 	if (IS_ENABLED(SECTION_IS_RW)) {
 		board_init_rw();
