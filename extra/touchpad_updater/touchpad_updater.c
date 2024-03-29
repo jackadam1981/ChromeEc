@@ -7,13 +7,22 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include <fcntl.h>
 #include <getopt.h>
+#include <glob.h>
 #include <libusb.h>
+#include <linux/hidraw.h>
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
+#include <linux/input.h>
+#include <linux/types.h>
 #include <poll.h>
+#include <sys/ioctl.h>
 #include <sys/select.h>
 #include <unistd.h>
 
@@ -23,6 +32,11 @@ static uint16_t pid = 0x5022; /* Hammer */
 static uint8_t ep_num = 4; /* console endpoint */
 static uint8_t extended_i2c_exercise; /* non-zero to exercise */
 static char *firmware_binary = "144.0_2.0.bin"; /* firmware blob */
+
+/* device info */
+static int bus_type = -1;
+static int i2c_devnum;
+static int i2c_addr;
 
 /* Firmware binary blob related */
 #define MAX_FW_PAGE_SIZE 512
@@ -296,6 +310,72 @@ static int check_read_status(int r, int expected, int actual)
 #define MAX_USB_PACKET_SIZE 64
 #define PRIMITIVE_READING_SIZE 60
 
+static int i2c_single_write_and_read(const uint8_t *to_write,
+				     uint16_t write_length, uint8_t *to_read,
+				     uint16_t read_length)
+{
+	char devpath[32];
+
+	snprintf(devpath, sizeof(devpath), "/dev/i2c-%d", i2c_devnum);
+
+	int fd = open(devpath, O_RDWR);
+	int ret = 0;
+
+	ioctl(fd, I2C_SLAVE_FORCE, i2c_addr);
+
+	memmove(tx_buf + 3, to_write, write_length);
+	tx_buf[0] = 0x12;
+	tx_buf[1] = read_length & 0xFF;
+	tx_buf[2] = read_length >> 8;
+
+	do {
+		struct i2c_msg msgs[1] = {
+			{ 0x56, 0, write_length + 3, tx_buf },
+		};
+		struct i2c_rdwr_ioctl_data msg_set = { msgs, 1 };
+
+		ret = ioctl(fd, I2C_RDWR, &msg_set);
+		if (ret < 0) {
+			close(fd);
+			return 0;
+		}
+	} while (0);
+
+	to_read += I2C_RESPONSE_OFFSET; /* ???? */
+
+	while (read_length) {
+		static uint8_t read_buf[4096] = {};
+		uint8_t reg = 0x13;
+		struct i2c_msg msgs[2] = {
+			{ i2c_addr, 0, 1, &reg },
+			{ i2c_addr, I2C_M_RD, read_length + 1, read_buf },
+		};
+		struct i2c_rdwr_ioctl_data msg_set = { msgs, 2 };
+
+		usleep(1000);
+		ret = ioctl(fd, I2C_RDWR, &msg_set);
+		if (ret < 0) {
+			close(fd);
+			return 0;
+		}
+
+		if (read_buf[0] > 0) {
+			int length = read_buf[0];
+
+			if (read_buf[0] > read_length) {
+				length = read_length;
+			}
+
+			memcpy(to_read, read_buf + 1, length);
+			read_length -= length;
+			to_read += length;
+		}
+	}
+	close(fd);
+
+	return 0;
+}
+
 static int libusb_single_write_and_read(const uint8_t *to_write,
 					uint16_t write_length, uint8_t *to_read,
 					uint16_t read_length)
@@ -352,6 +432,20 @@ static int libusb_single_write_and_read(const uint8_t *to_write,
 	return r;
 }
 
+static int single_write_and_read(const uint8_t *to_write, uint16_t write_length,
+				 uint8_t *to_read, uint16_t read_length)
+{
+	if (bus_type == BUS_USB) {
+		return libusb_single_write_and_read(to_write, write_length,
+						    to_read, read_length);
+	}
+	if (bus_type == BUS_I2C) {
+		return i2c_single_write_and_read(to_write, write_length,
+						 to_read, read_length);
+	}
+	return -1;
+}
+
 /* Control Elan trackpad I2C over USB */
 #define ETP_I2C_INF_LENGTH 2
 
@@ -364,8 +458,8 @@ static int elan_write_and_read(int reg, uint8_t *buf, int read_length,
 		tx_buf[2] = (cmd >> 0) & 0xff;
 		tx_buf[3] = (cmd >> 8) & 0xff;
 	}
-	return libusb_single_write_and_read(tx_buf, with_cmd ? 4 : 2, rx_buf,
-					    read_length);
+	return single_write_and_read(tx_buf, with_cmd ? 4 : 2, rx_buf,
+				     read_length);
 }
 
 static int elan_read_block(int reg, uint8_t *buf, int read_length)
@@ -582,8 +676,7 @@ static int elan_write_fw_block(uint8_t *raw_data, uint16_t checksum)
 	page_store[fw_page_size + 2 + 0] = (checksum >> 0) & 0xff;
 	page_store[fw_page_size + 2 + 1] = (checksum >> 8) & 0xff;
 
-	rv = libusb_single_write_and_read(page_store, fw_page_size + 4, rx_buf,
-					  0);
+	rv = single_write_and_read(page_store, fw_page_size + 4, rx_buf, 0);
 	if (rv)
 		return rv;
 	usleep((fw_page_size >= 512 ? 50 : 35) * 1000);
@@ -627,13 +720,65 @@ static void pretty_print_buffer(uint8_t *buf, int len)
 	printf("\n");
 }
 
+static void probe_device()
+{
+	glob_t globbuf;
+	bool found = false;
+
+	if (glob("/dev/hidraw*", 0, NULL, &globbuf) != 0) {
+		return;
+	}
+
+	for (size_t i = 0; i < globbuf.gl_pathc; i++) {
+		int fd = open(globbuf.gl_pathv[i], O_RDWR | O_NONBLOCK);
+		struct hidraw_devinfo info;
+
+		if (fd < 0) {
+			continue;
+		}
+		if (ioctl(fd, HIDIOCGRAWINFO, &info) < 0) {
+			close(fd);
+			continue;
+		}
+
+		if (info.vendor == vid && info.product == pid) {
+			bus_type = info.bustype;
+			found = true;
+
+			if (bus_type == BUS_I2C) {
+				char phys[256];
+
+				ioctl(fd, HIDIOCGRAWPHYS(256), phys);
+				sscanf(phys, "%d-%04x", &i2c_devnum, &i2c_addr);
+			}
+		}
+
+		close(fd);
+
+		if (found) {
+			break;
+		}
+	}
+
+	globfree(&globbuf);
+
+	return;
+}
+
 int main(int argc, char *argv[])
 {
 	uint16_t local_checksum;
 	uint16_t remote_checksum;
 
 	parse_cmdline(argc, argv);
-	init_with_libusb();
+
+	probe_device();
+	if (bus_type == BUS_USB) {
+		init_with_libusb();
+	} else if (bus_type != BUS_I2C) {
+		printf("device %04hx:%04hx not found\n", vid, pid);
+		exit(1);
+	}
 	register_sigaction();
 
 	/*
@@ -660,7 +805,7 @@ int main(int argc, char *argv[])
 		tx_buf[3] = 0x02;
 		tx_buf[4] = 0x06;
 		tx_buf[5] = 0x00;
-		libusb_single_write_and_read(tx_buf, 6, rx_buf, 633);
+		single_write_and_read(tx_buf, 6, rx_buf, 633);
 		pretty_print_buffer(rx_buf, 637);
 	}
 
