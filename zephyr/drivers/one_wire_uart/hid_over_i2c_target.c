@@ -9,6 +9,7 @@
 #include "drivers/one_wire_uart_internal.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "system.h"
 #include "usb_hid_touchpad.h"
 
 #include <string.h>
@@ -28,10 +29,15 @@
 #define USB_UPDATER_WRITE_REG 0x10
 #define USB_UPDATER_READ_REG 0x11
 
+#define TP_PASSTHRU_WRITE_REG 0x12
+#define TP_PASSTHRU_READ_REG 0x13
+
 #define HID_DESC_LENGTH 30
 
 #define OP_CODE_RESET 1
 #define OP_CODE_GET_REPORT 2
+
+LOG_MODULE_REGISTER(hid_i2c, LOG_LEVEL_INF);
 
 const static struct device *one_wire_uart =
 	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
@@ -157,6 +163,26 @@ static int hid_handler(const struct device *dev, const uint8_t *in, int in_size,
 		return out[0] + 1;
 	}
 
+	if (reg == TP_PASSTHRU_WRITE_REG) {
+		if (system_is_locked()) {
+			return 0;
+		}
+		one_wire_uart_send(one_wire_uart, ROACH_CMD_TP_PASSTHRU,
+				   in + 1, in_size - 1);
+		return 0;
+	}
+
+	if (reg == TP_PASSTHRU_READ_REG) {
+		if (system_is_locked()) {
+			out[0] = 0;
+
+			return 0;
+		}
+		out[0] = ring_buf_get(data->tp_passthru_queue, out + 1, 255);
+
+		return out[0] + 1;
+	}
+
 	return 0;
 }
 
@@ -251,6 +277,7 @@ void hid_i2c_touchpad_add(const struct device *dev,
 	K_MSGQ_DEFINE(touchpad_report_queue##inst,                             \
 		      sizeof(struct usb_hid_touchpad_report), 16, 1);          \
 	RING_BUF_DECLARE(usb_update_queue##inst, 256);                         \
+	RING_BUF_DECLARE(tp_passthru_queue##inst, 256);                        \
 	static const uint8_t report_desc##inst[] =                             \
 		REPORT_DESC(DT_INST_PROP(inst, max_pressure),                  \
 			    DT_INST_PROP(inst, logical_max_x),                 \
@@ -290,6 +317,7 @@ void hid_i2c_touchpad_add(const struct device *dev,
 		.in_reset = true,                                            \
 		.touchpad_report_queue = &touchpad_report_queue ## inst,     \
 		.usb_update_queue = &usb_update_queue ## inst,               \
+		.tp_passthru_queue = &tp_passthru_queue ## inst,             \
 	}; \
 	I2C_DEVICE_DT_INST_DEFINE(inst, hid_i2c_target_init, NULL,             \
 				  &i2c_target_data##inst,                      \
