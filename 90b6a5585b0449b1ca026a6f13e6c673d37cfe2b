@@ -16,6 +16,23 @@
       "message": "touching core RISC-V assembly file",
       "revId": "90b6a5585b0449b1ca026a6f13e6c673d37cfe2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d72886_d5ed7a0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-29T08:02:03Z",
+      "side": 1,
+      "message": "if you just want to put variable to a specific section, is it possible to use `__attribute__((section(...))` instead?",
+      "revId": "90b6a5585b0449b1ca026a6f13e6c673d37cfe2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
