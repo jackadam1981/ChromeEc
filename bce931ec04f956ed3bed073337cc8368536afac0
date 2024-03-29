@@ -16,6 +16,23 @@
       "message": "+Ting for common EC code",
       "revId": "bce931ec04f956ed3bed073337cc8368536afac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207de915_32cfb154",
+        "filename": "common/main.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-29T08:39:41Z",
+      "side": 1,
+      "message": "This looks like clear up all regions defined in memory_regions.inc?",
+      "revId": "bce931ec04f956ed3bed073337cc8368536afac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
