@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffbd028_b741adff",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-29T00:41:53Z",
+      "side": 1,
+      "message": "don\u0027t need ()",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fe8fa2_0c9b1054",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-29T00:41:53Z",
+      "side": 1,
+      "message": "is the gain ever not an integer?",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dcd168_f45b87ea",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-29T00:41:53Z",
+      "side": 1,
+      "message": "shouldn\u0027t be needed now that you added kconfig.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
