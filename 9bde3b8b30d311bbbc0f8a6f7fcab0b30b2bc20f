@@ -627,6 +627,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "029f6648_5f7776dd",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T00:56:33Z",
+      "side": 1,
+      "message": "We start with constant integration time for now. I plan to add gain control if needed, but according to Vishay comment we should be ok with constant",
+      "parentUuid": "6a252c18_80058818",
+      "revId": "9bde3b8b30d311bbbc0f8a6f7fcab0b30b2bc20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb68a43f_7c54ff3d",

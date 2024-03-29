@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e867faf0_2da043c1",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T00:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ffbd028_b741adff",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23fe8fa2_0c9b1054",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3614eba4_1b9cc840",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T00:56:33Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "23fe8fa2_0c9b1054",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31dcd168_f45b87ea",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-03-29T00:41:53Z",
       "side": 1,
       "message": "shouldn\u0027t be needed now that you added kconfig.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f255639_4cce1225",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T00:56:33Z",
+      "side": 1,
+      "message": "i thought we need to keep both for legacy builds",
+      "parentUuid": "31dcd168_f45b87ea",
       "range": {
         "startLine": 51,
         "startChar": 0,
