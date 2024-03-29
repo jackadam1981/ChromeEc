@@ -16,6 +16,29 @@
       "message": "there\u0027s symlink",
       "revId": "ab5963cb089ce4650a88f406fda41112e8576e6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9031b6ce_7235571d",
+        "filename": "board/geralt_scp/ec.tasklist",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-29T08:34:45Z",
+      "side": 1,
+      "message": "why ifdef?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "ab5963cb089ce4650a88f406fda41112e8576e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
