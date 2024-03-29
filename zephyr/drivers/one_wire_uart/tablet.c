@@ -4,6 +4,7 @@
  */
 
 #include "ap_power/ap_power.h"
+#include "console.h"
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
 #include "hooks.h"
@@ -35,6 +36,11 @@ static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 		struct i2c_target_data *data = touchpad->data;
 
 		ring_buf_put(data->usb_update_queue, (void *)payload, length);
+	}
+	if (cmd == ROACH_CMD_TP_PASSTHRU) {
+		struct i2c_target_data *data = touchpad->data;
+
+		ring_buf_put(data->tp_passthru_queue, (void *)payload, length);
 	}
 }
 

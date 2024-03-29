@@ -67,6 +67,7 @@ enum RoachCommand {
 	ROACH_CMD_SUSPEND,
 	ROACH_CMD_RESUME,
 	ROACH_CMD_UPDATER_COMMAND,
+	ROACH_CMD_TP_PASSTHRU,
 };
 
 struct i2c_target_dev_config {
@@ -88,6 +89,7 @@ struct i2c_target_data {
 	struct k_msgq *touchpad_report_queue;
 	/* usb update stream to the host */
 	struct ring_buf *usb_update_queue;
+	struct ring_buf *tp_passthru_queue;
 };
 
 /**
