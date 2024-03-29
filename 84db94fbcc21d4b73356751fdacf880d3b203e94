@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a949eac1_7b785fe8",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-29T18:27:11Z",
+      "side": 1,
+      "message": "GCC wouldn\u0027t let me.  It generated an error `offset of packed bit-field has changed in GCC 4.4`.  I interpreted this to mean GCC thought the structure was crossing an alignment boundary,",
+      "parentUuid": "3cd84fc7_dd3a8afa",
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa1cba33_db380068",
         "filename": "zephyr/include/drivers/ucsi_v3.h",
         "patchSetId": 1
@@ -54,6 +72,24 @@
       "writtenOn": "2024-03-26T22:29:47Z",
       "side": 1,
       "message": "Nit: `battery_charging_cap_status`?",
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "841ab75a_678e93e0",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-29T18:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1cba33_db380068",
       "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f98e4f_60c7005e",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-29T18:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42fe343c_51918f75",
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f686a1a0_ab91eaf0",
@@ -88,6 +142,24 @@
       "writtenOn": "2024-03-26T22:29:47Z",
       "side": 1,
       "message": "Nit: Maybe we don\u0027t need to include the reserved field here until they add something after it, to save memory. But a comment reminding the reader that it exists might be nice.",
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39643715_e1ba1d15",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-29T18:27:11Z",
+      "side": 1,
+      "message": "Good catch - there\u0027s no memory savings because of the union with `raw_value[19]`.",
+      "parentUuid": "f686a1a0_ab91eaf0",
       "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
