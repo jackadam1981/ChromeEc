@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53707123_f0d5247c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T19:07:25Z",
+      "side": 1,
+      "message": "How do you check the power_manager exactly?",
+      "parentUuid": "1a133fac_681fd624",
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bda28f51_96758cb0",
         "filename": "board/xol/board.h",
         "patchSetId": 3
@@ -48,6 +66,30 @@
       "writtenOn": "2024-03-29T08:09:36Z",
       "side": 1,
       "message": "We don\u0027t need this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fe7123_0d541c9e",
+        "filename": "board/xol/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T19:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda28f51_96758cb0",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -71,6 +113,30 @@
       "writtenOn": "2024-03-29T17:33:00Z",
       "side": 1,
       "message": "no comma here",
+      "range": {
+        "startLine": 195,
+        "startChar": 13,
+        "endLine": 195,
+        "endChar": 14
+      },
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e537bf9_ee61dfd8",
+        "filename": "board/xol/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T19:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d02074_033fcd77",
       "range": {
         "startLine": 195,
         "startChar": 13,
