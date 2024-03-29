@@ -33,6 +33,69 @@
       "message": "Touching core riscv assembly",
       "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5958c43c_b09015ee",
+        "filename": "baseboard/mtscp-rv32i/cam.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-29T08:33:14Z",
+      "side": 1,
+      "message": "remove these if not needed.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3956c03_5fd18446",
+        "filename": "chip/mt_scp/rv32i_common/ipi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-29T08:33:14Z",
+      "side": 1,
+      "message": "is this intended?",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 3
+      },
+      "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3eb9c57_493e962f",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-03-29T08:33:14Z",
+      "side": 1,
+      "message": "please try `__attribute__((section(...))`",
+      "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
