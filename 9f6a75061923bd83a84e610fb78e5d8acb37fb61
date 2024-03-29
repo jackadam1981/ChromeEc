@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c586e96_6a3bf255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-03-29T19:36:12Z",
+      "side": 1,
+      "message": "not sure what the context is, maybe this helps:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/power_manager/docs/als_backlight_prefs.md\nin other words, is the OS configured to use an ALS?",
+      "parentUuid": "53707123_f0d5247c",
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bda28f51_96758cb0",
         "filename": "board/xol/board.h",
         "patchSetId": 3
