@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6646a2e2_b538327a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-29T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e98548e0_9149d97d",
+      "range": {
+        "startLine": 1138,
+        "startChar": 1,
+        "endLine": 1142,
+        "endChar": 65
+      },
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cd84fc7_dd3a8afa",
@@ -160,6 +184,24 @@
       "side": 1,
       "message": "Good catch - there\u0027s no memory savings because of the union with `raw_value[19]`.",
       "parentUuid": "f686a1a0_ab91eaf0",
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0697b0f0_02e286ef",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-03-29T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39643715_e1ba1d15",
       "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
