@@ -19,6 +19,8 @@
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
+#include "driver/ppc/syv682x_public.h"
+#include "gpio.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -76,4 +78,16 @@ enum battery_present battery_hw_present(void)
 
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+
+__overridable void board_frs_handler(int port)
+{
+	cprints(0, "%s !!!!!!!", __func__);
+	gpio_or_ioex_set_level(ppc_chips[port].frs_en, 1);
+}
+
+__overridable int board_pd_set_frs_enable(int port, int enable)
+{
+	cprints(0, "%s !!!!!!!",__func__);
+	return syv682x_set_frs_enable_CUSTOM(port, enable);
 }

@@ -17,5 +17,6 @@
 extern const struct ppc_drv syv682x_drv;
 
 void syv682x_interrupt(int port);
+int syv682x_set_frs_enable_CUSTOM(int port, int enable);
 
 #endif /* __CROS_EC_DRIVER_PPC_SYV682X_PUBLIC_H */

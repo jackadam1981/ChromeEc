@@ -645,6 +645,22 @@ test_mockable void syv682x_interrupt(int port)
  * The frs_en signal can be driven from the TCPC as well (preferred).
  * In that case, no PPC configuration needs to be done to enable FRS
  */
+int syv682x_set_frs_enable_CUSTOM(int port, int enable)
+{
+	int regval;
+
+	read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+	syv682x_handle_control_4_interrupt(port, regval);
+	regval &= ~(SYV682X_CONTROL_4_CC1_BPS |
+			    SYV682X_CONTROL_4_CC2_BPS);
+		regval |= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
+				  SYV682X_CONTROL_4_CC2_BPS :
+				  SYV682X_CONTROL_4_CC1_BPS;
+		regval |= SYV682X_CONTROL_4_CC_FRS;
+		/* set GPIO after configuring */
+	write_reg(port, SYV682X_CONTROL_4_REG, regval);
+	return EC_SUCCESS;
+}
 #ifdef CONFIG_USB_PD_FRS_PPC
 static int syv682x_set_frs_enable(int port, int enable)
 {
