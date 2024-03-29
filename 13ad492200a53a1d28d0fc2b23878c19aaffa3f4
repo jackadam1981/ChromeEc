@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a168a83_3c57f80a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "When we move this into the separate function, we can [reduce nesting by adding a guard clause](https://testing.googleblog.com/2017/06/code-health-reduce-nesting-reduce.html):\n\n```\n  if app_type !\u003d ApplicationType.TEST:\n    return\n```",
+      "range": {
+        "startLine": 760,
+        "startChar": 7,
+        "endLine": 760,
+        "endChar": 44
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a4ba73_0c3ce4fd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "For readability, can we create separate functions: `build_ec` and `build_zephyr` and call those?\n\n\nAlso, let\u0027s change conditionals to be \"[positive](http://shortn/_SvoBhiEqfJ)\": `if zephyr` instead of `if not zephyr.`",
+      "range": {
+        "startLine": 739,
+        "startChar": 3,
+        "endLine": 807,
+        "endChar": 69
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20bbf194_49d5a1f1",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "passing",
+      "range": {
+        "startLine": 930,
+        "startChar": 44,
+        "endLine": 930,
+        "endChar": 51
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9bff75e_81f9bf20",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "For readability, can we create functions called `zephyr_run_test` and `ec_run_test` and use those here?\n\nAlso, let\u0027s change conditionals to be \"positive\": `if zephyr` instead of `if not zephyr.`",
+      "range": {
+        "startLine": 925,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 44
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5373822_6829daab",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "For readability, can we move this into its own function?\n\nThen this becomes:\n\n```\nimage_path \u003d get_image_path(...)\n```\n\nAlso, let\u0027s change conditionals to be \"positive\": `if zephyr` instead of `if not zephyr`.",
+      "range": {
+        "startLine": 1029,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 70
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fac5660_4080d0e3",
+        "filename": "zephyr/program/fpmcu/prj_hw_tests.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "Yikes. Is that because Zephyr asserts are very verbose?",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cb9f03_a70af327",
+        "filename": "zephyr/program/fpmcu/prj_hw_tests.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:34:37Z",
+      "side": 1,
+      "message": "\"usage\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 37,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
