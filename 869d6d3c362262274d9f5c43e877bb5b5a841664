@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9351a93_c3d50668",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-29T19:46:38Z",
+      "side": 1,
+      "message": "Need to remove this warning when ec_rate \u003e 0, since it is expected.",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aea2e126_c4815f41",
         "filename": "zephyr/dts/program/rex/motionsense.dtsi",
         "patchSetId": 10
