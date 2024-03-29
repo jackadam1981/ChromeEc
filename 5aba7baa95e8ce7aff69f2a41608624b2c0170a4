@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5261671_0e694339",
+        "filename": "zephyr/test/hwtest/src/abort.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-29T12:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bdbdb9a_a9870ce1",
+      "revId": "5aba7baa95e8ce7aff69f2a41608624b2c0170a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e41782eb_23ff4d8b",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8fd9b2_f8e69a4f",
+        "filename": "zephyr/test/hwtest/src/abort.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-29T12:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e41782eb_23ff4d8b",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "5aba7baa95e8ce7aff69f2a41608624b2c0170a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5434a2a0_b08db97d",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-03-20T15:11:23Z",
       "side": 1,
       "message": "nit: prefer logging or document why printk is needed.",
+      "revId": "5aba7baa95e8ce7aff69f2a41608624b2c0170a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee301b9f_d2a92a48",
+        "filename": "zephyr/test/hwtest/src/abort.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-29T12:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5434a2a0_b08db97d",
       "revId": "5aba7baa95e8ce7aff69f2a41608624b2c0170a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +155,30 @@
       "side": 1,
       "message": "I agree, I think it would be better to launch the test from the `ZTEST` then have the test wait for a result. twister will timeout if anything goes wrong.",
       "parentUuid": "333d02fc_25bb8aff",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "5aba7baa95e8ce7aff69f2a41608624b2c0170a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a2da93_abf9803c",
+        "filename": "zephyr/test/hwtest/src/abort.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-03-29T12:55:59Z",
+      "side": 1,
+      "message": "The thing is that is we use start the test run with a console command e.g. `ztest run-all` it is done only once by a test runner. The `abort` call causes reboot and after reboot the test is not running anymore, so we need to trigger the run one more time based on the test state.",
+      "parentUuid": "3afdcd86_c381dc60",
       "range": {
         "startLine": 72,
         "startChar": 0,
