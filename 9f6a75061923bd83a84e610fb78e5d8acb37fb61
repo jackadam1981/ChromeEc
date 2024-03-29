@@ -16,6 +16,46 @@
       "message": "I just rebased to fix conflict and verified.",
       "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a133fac_681fd624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-29T08:09:36Z",
+      "side": 1,
+      "message": "I can read lux with ectool but power_manager didn\u0027t get lux. I am not sure if it is related with rgb.",
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda28f51_96758cb0",
+        "filename": "board/xol/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-29T08:09:36Z",
+      "side": 1,
+      "message": "We don\u0027t need this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
