@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72093ab7_52538eaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-03-29T07:35:48Z",
+      "side": 1,
+      "message": "+Ting to review code touching common EC",
+      "revId": "901a3c51e39efeb3c131520006cb3423be329cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07881d87_aad7cd13",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-03-29T07:35:48Z",
+      "side": 1,
+      "message": "Move this down and\n\n```\n\t/* \n\t * The MCU is a System Companion Processor (SCP) Core 1.\n\t */\n\tEC_FEATURE_SCP_C1 \u003d 53,\n```",
+      "range": {
+        "startLine": 1629,
+        "startChar": 0,
+        "endLine": 1630,
+        "endChar": 24
+      },
+      "revId": "901a3c51e39efeb3c131520006cb3423be329cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
