@@ -160,6 +160,11 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 	}
 }
 
+__override void board_frs_handler(int port)
+{
+	/* TODO: provide vbus here */
+}
+
 /* LCOV_EXCL_START function does nothing, but is required for build */
 void board_reset_pd_mcu(void)
 {
