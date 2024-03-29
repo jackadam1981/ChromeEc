@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84299fd4_e6daa4a1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-03-29T18:34:10Z",
+      "side": 1,
+      "message": "With this change:\n```suggestion\n\treturn (sensor-\u003econfig[cfg_index].ec_rate \u003e 0) ||\n\t       (sensor-\u003econfig[cfg_index].odr \u003d\u003d 0);\n```\n\nThe interrupt are disabled:\n```\n24-03-29 18:07:46.328 [178.408779 Lid Accel ODR: 10000 INT: OFF - roundup 1 from config 2 [AP 0]: 0]\n24-03-29 18:07:46.334 [178.407615 body d[178.410935 GG: enable 0 - value 0x00000000 - ret: 1]\n24-03-29 18:07:46.341 [178.411421 Base Accel ODR: 10000 INT: UNCHANGED - roundup 1 from config 2 [AP 0]: 0]\n24-03-29 18:07:46.350 etec[178.414604 GG: enable 0 - value 0x00000000 - ret: 0]\n24-03-29 18:07:46.351 [178.415087 Base Gyro ODR: 0 INT: OFF - roundup 1 from config 0 [AP 0]: 0]\n```",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6890614_e1c3019b",
         "filename": "common/motion_sense.c",
         "patchSetId": 10
