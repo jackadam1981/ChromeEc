@@ -9,6 +9,7 @@
 #include "drivers/one_wire_uart_internal.h"
 #include "drivers/one_wire_uart_stream.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "keyboard_scan.h"
 #include "queue.h"
 #include "touchpad.h"
@@ -17,6 +18,7 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/uart.h>
 #include <zephyr/kernel.h>
+#include <zephyr/sys/byteorder.h>
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ##args)
 
@@ -40,6 +42,10 @@ void updater_stream_written(const struct consumer *consumer, size_t count)
 	}
 }
 
+#define TP_NODE DT_INST(0, elan_ekth3000)
+#define CONFIG_TOUCHPAD_I2C_ADDR_FLAGS DT_REG_ADDR(TP_NODE)
+#define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_BY_DEV(TP_NODE)
+
 static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 {
 	/* TODO(b/277667319): handle ROACH_CMD_SUSPEND/RESUME after touchpad
@@ -50,6 +56,55 @@ static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 		const struct queue *usb_to_update = usb_update.producer.queue;
 
 		QUEUE_ADD_UNITS(usb_to_update, payload, length);
+	}
+
+	if (cmd == ROACH_CMD_TP_PASSTHRU) {
+		static uint8_t writebuf[2048] = {};
+		static int writebuf_count = 0;
+
+		bool is_last_chunk;
+		static uint8_t readbuf[2048] = {};
+		int readcount;
+		int rv;
+
+		if (system_is_locked()) {
+			return;
+		}
+
+		if (length < 1) {
+			return;
+		}
+
+		is_last_chunk = !!payload[0];
+
+		memcpy(writebuf + writebuf_count, payload + 1, length - 1);
+		writebuf_count += length - 1;
+
+		if (!is_last_chunk) {
+			return;
+		}
+
+		readcount = sys_get_le16(writebuf);
+		readcount = MIN(readcount, sizeof(readbuf));
+
+		rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+			      CONFIG_TOUCHPAD_I2C_ADDR_FLAGS, writebuf + 2,
+			      writebuf_count - 2, readbuf, readcount);
+
+		if (!rv) {
+			uint8_t *ptr = readbuf;
+
+			while (readcount > 0) {
+				int transfer_size = MIN(readcount, 32);
+
+				one_wire_uart_send(one_wire_uart,
+						   ROACH_CMD_TP_PASSTHRU, ptr,
+						   transfer_size);
+				readcount -= transfer_size;
+				ptr += transfer_size;
+			}
+		}
+		writebuf_count = 0;
 	}
 }
 
