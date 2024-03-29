@@ -102,12 +102,14 @@ static void board_init(void)
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_SLP_L);
 
+#if 0
 	/* Initialize trng peripheral before kicking off the application to
 	 * avoid incurring that cost when generating random numbers
 	 */
 	if (IS_ENABLED(SECTION_IS_RO)) {
 		npcx_trng_hw_init();
 	}
+#endif
 
 	if (IS_ENABLED(SECTION_IS_RW)) {
 		board_init_rw();
