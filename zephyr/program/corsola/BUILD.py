@@ -81,6 +81,7 @@ register_corsola_project(
 
 register_corsola_project("chinchou")
 register_corsola_project("woobat")
+register_corsola_project("skitty")
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
