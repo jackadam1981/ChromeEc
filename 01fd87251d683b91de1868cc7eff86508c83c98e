@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba436b5_9def39ea",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:13:03Z",
+      "side": 0,
+      "message": "It would be nice to have a record of the mapping from schematic name to the name in the code. Can you add a comment to the names in the `base_gpio.inc` and `base_gpio_rw.inc` files to indicate the schematic name?\n\ne.g.,\n\n```\n/* HOST_MCU_WP_OD in the schematic. */\nGPIO_INT(WP,                   PIN(A, 4), GPIO_INT_BOTH, switch_interrupt)\n```",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "01fd87251d683b91de1868cc7eff86508c83c98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
