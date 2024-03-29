@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27835a79_ff96a87c",
+        "filename": "zephyr/test/hwtest/src/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:39:35Z",
+      "side": 1,
+      "message": "cryptoc",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e873b9_f10a7bc7",
+        "filename": "zephyr/test/hwtest/src/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-03-29T21:39:35Z",
+      "side": 1,
+      "message": "I guess since we have switched from `always_memset` to `OPENSSL_cleanse` in the FP sensor we should see if we can adapt the test to test `OPENSSL_cleanse`. We don\u0027t need to that now, but can you file a bug with go/cros-fp-bug and add a `TODO(b/123)` here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
