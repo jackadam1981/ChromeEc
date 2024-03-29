@@ -140,6 +140,30 @@
       },
       "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f004e133_a0490b78",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-03-29T01:03:20Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "5f255639_4cce1225",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "b9e60099a5e3a121a2c670a19be343c9bfd69cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
