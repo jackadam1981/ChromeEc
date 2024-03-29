@@ -11,9 +11,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <fcntl.h>
 #include <getopt.h>
 #include <libusb.h>
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 #include <poll.h>
+#include <sys/ioctl.h>
 #include <sys/select.h>
 #include <unistd.h>
 
@@ -296,6 +300,67 @@ static int check_read_status(int r, int expected, int actual)
 #define MAX_USB_PACKET_SIZE 64
 #define PRIMITIVE_READING_SIZE 60
 
+static int i2c_passthru(const uint8_t *to_write, uint16_t write_length,
+			uint8_t *to_read, uint16_t read_length)
+{
+	int fd = open("/dev/i2c-4", O_RDWR);
+	int ret = 0;
+
+	ioctl(fd, I2C_SLAVE_FORCE, 0x56);
+
+	memmove(tx_buf + 3, to_write, write_length);
+	tx_buf[0] = 0x12;
+	tx_buf[1] = read_length & 0xFF;
+	tx_buf[2] = read_length >> 8;
+
+	do {
+		struct i2c_msg msgs[1] = {
+			{ 0x56, 0, write_length + 3, tx_buf },
+		};
+		struct i2c_rdwr_ioctl_data msg_set = { msgs, 1 };
+
+		ret = ioctl(fd, I2C_RDWR, &msg_set);
+		if (ret < 0) {
+			close(fd);
+			return 0;
+		}
+	} while (0);
+
+	to_read += I2C_RESPONSE_OFFSET; /* ???? */
+
+	while (read_length) {
+		static uint8_t read_buf[4096] = {};
+		uint8_t reg = 0x13;
+		struct i2c_msg msgs[2] = {
+			{ 0x56, 0, 1, &reg },
+			{ 0x56, I2C_M_RD, read_length + 1, read_buf },
+		};
+		struct i2c_rdwr_ioctl_data msg_set = { msgs, 2 };
+
+		usleep(1000);
+		ret = ioctl(fd, I2C_RDWR, &msg_set);
+		if (ret < 0) {
+			close(fd);
+			return 0;
+		}
+
+		if (read_buf[0] > 0) {
+			int length = read_buf[0];
+
+			if (read_buf[0] > read_length) {
+				length = read_length;
+			}
+
+			memcpy(to_read, read_buf + 1, length);
+			read_length -= length;
+			to_read += length;
+		}
+	}
+	close(fd);
+
+	return 0;
+}
+
 static int libusb_single_write_and_read(const uint8_t *to_write,
 					uint16_t write_length, uint8_t *to_read,
 					uint16_t read_length)
@@ -307,6 +372,10 @@ static int libusb_single_write_and_read(const uint8_t *to_write,
 	int actual_length = -1;
 	int offset = read_length > PRIMITIVE_READING_SIZE ? 6 : 4;
 	tx_transfer = rx_transfer = 0;
+
+	if (1)
+		return i2c_passthru(to_write, write_length, to_read,
+				    read_length);
 
 	memmove(tx_buf + offset, to_write, write_length);
 	tx_buf[0] = I2C_PORT_ON_HAMMER | ((write_length >> 8) << 4);
@@ -633,7 +702,8 @@ int main(int argc, char *argv[])
 	uint16_t remote_checksum;
 
 	parse_cmdline(argc, argv);
-	init_with_libusb();
+	if (0)
+		init_with_libusb();
 	register_sigaction();
 
 	/*
