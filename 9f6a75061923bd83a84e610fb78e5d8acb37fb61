@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c31a237_aaf92630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-03-30T00:43:04Z",
+      "side": 1,
+      "message": "Here is ambient configuration. \nhttps://chrome-internal.googlesource.com/chromeos/project/brya/xol/+/refs/heads/main/config.star#222\n\nIf OS configuration has problem, W/A CL to read lux didn\u0027t work corretly as well.\n\nAnd as I add log in here(https://chromium.googlesource.com/chromiumos/platform/ec/+/6832f78d97fcf91e31c82244c6e74f84fbdf1fbb/driver/als_veml3328.c#23), I can see log periodically.",
+      "parentUuid": "efab3be0_a1f3c7a0",
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bda28f51_96758cb0",
         "filename": "board/xol/board.h",
         "patchSetId": 3
