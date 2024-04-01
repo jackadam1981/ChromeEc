@@ -1693,6 +1693,30 @@ enum ec_feature_code {
 	 * The EC supports DP2.1 capability
 	 */
 	EC_FEATURE_TYPEC_DP2_1 = 52,
+<<<<<<< HEAD   (49c8bd utils: flash_fp_mcu: add buccaneer board name)
+||||||| BASE
+	/*
+	 * The MCU is System Companion Processor Core 1
+	 */
+	EC_FEATURE_SCP_C1 = 53,
+	/*
+	 * The EC supports UCSI PPM.
+	 */
+	EC_FEATURE_UCSI_PPM = 54,
+=======
+	/*
+	 * The MCU is System Companion Processor Core 1
+	 */
+	EC_FEATURE_SCP_C1 = 53,
+	/*
+	 * The EC supports UCSI PPM.
+	 */
+	EC_FEATURE_UCSI_PPM = 54,
+	/*
+	 * The EC supports Strauss keyboard.
+	 */
+	EC_FEATURE_STRAUSS = 55,
+>>>>>>> CHANGE (d306bc features: Add feature flag for Strauss)
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)

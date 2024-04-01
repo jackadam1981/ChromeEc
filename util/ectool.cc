@@ -973,6 +973,13 @@ static const char *const ec_feature_names[] = {
 	[EC_FEATURE_TOKENIZED_LOGGING] = "Tokenized Logging",
 	[EC_FEATURE_AMD_STB_DUMP] = "AMD STB dump",
 	[EC_FEATURE_MEMORY_DUMP] = "Memory Dump",
+<<<<<<< HEAD   (49c8bd utils: flash_fp_mcu: add buccaneer board name)
+||||||| BASE
+	[EC_FEATURE_UCSI_PPM] = "UCSI PPM",
+=======
+	[EC_FEATURE_UCSI_PPM] = "UCSI PPM",
+	[EC_FEATURE_STRAUSS] = "Strauss",
+>>>>>>> CHANGE (d306bc features: Add feature flag for Strauss)
 };
 
 int cmd_inventory(int argc, char *argv[])
