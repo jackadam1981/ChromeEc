@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55120459_9778fb5b",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-01T18:12:45Z",
+      "side": 1,
+      "message": "Acknowledged. That\u0027s unfortunate.",
+      "parentUuid": "a949eac1_7b785fe8",
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1cba33_db380068",
@@ -243,6 +261,30 @@
       "side": 1,
       "message": "Zephyr has a `DIV_ROUND_UP()` that would work here: https://docs.zephyrproject.org/apidoc/latest/group__sys-util.html#gae664e7492e37d324831caf2321ddda37",
       "parentUuid": "1e76deb7_1a758bf5",
+      "range": {
+        "startLine": 774,
+        "startChar": 49,
+        "endLine": 774,
+        "endChar": 51
+      },
+      "revId": "84db94fbcc21d4b73356751fdacf880d3b203e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc41c54_ca4d942f",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-01T18:12:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5629528_fe964c98",
       "range": {
         "startLine": 774,
         "startChar": 49,
