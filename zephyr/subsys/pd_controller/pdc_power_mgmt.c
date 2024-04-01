@@ -566,6 +566,8 @@ struct pdc_port_t {
 	bool active_charge;
 	/** Tracks current connection state */
 	enum attached_state_t attached_state;
+	/* VDO queried already or not. */
+	bool vdo_queried;
 	/** GET_VDO temp variable used with CMD_GET_VDO */
 	union get_vdo_t vdo_req;
 	/** Array used to hold the list of VDO types to request */
@@ -1156,6 +1158,7 @@ static void pdc_src_attached_entry(void *obj)
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
+		port->vdo_queried = false;
 	}
 }
 
@@ -1241,6 +1244,7 @@ static void pdc_snk_attached_entry(void *obj)
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->snk_attached_local_state =
 			SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
+		port->vdo_queried = false;
 	}
 }
 
@@ -2887,8 +2891,18 @@ static int pdc_run_get_discovery(int port)
 		return 0;
 	}
 
+	if (pdc_data[port]->port.vdo_queried) {
+		/*
+		 * TODO: Revisit this. Host is very eager to get VDOs. It should
+		 * wait for a reasonable event before sending another query.
+		 */
+		LOG_INF("%s: Ignored redundant GET VDO", __func__);
+		return 0;
+	}
+
 	/* Format the GET_VDO command */
 	discovery_info_init(&pdc_data[port]->port);
+	pdc_data[port]->port.vdo_queried = true;
 
 	/* Block until command completes */
 	ret = public_api_block(port, CMD_PDC_GET_VDO);
