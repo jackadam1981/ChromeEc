@@ -224,7 +224,11 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			CPRINTS("Rebooting!");
 			CPRINTF("\n\n");
 			cflush();
-			system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+			if (IS_ENABLED(CONFIG_SOC_SERIES_ITE_IT8XXX2))
+				system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
+					     SYSTEM_RESET_HARD);
+			else
+				system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
 			/* Unreachable, unless something bad happens. */
 			response = EC_RES_ERROR;
 			break;
