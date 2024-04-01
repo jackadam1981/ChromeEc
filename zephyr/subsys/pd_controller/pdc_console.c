@@ -183,27 +183,25 @@ static int cmd_pdc_connector_reset(const struct shell *sh, size_t argc,
 				   char **argv)
 {
 	int rv;
+	char *e;
 	uint8_t port;
-	enum connector_reset reset_type;
+	unsigned long byte;
 
 	/* Get PD port number */
 	rv = cmd_get_pd_port(sh, argv[1], &port);
 	if (rv)
 		return rv;
 
-	if (!strcmp(argv[2], "hard")) {
-		reset_type = PD_HARD_RESET;
-	} else if (!strcmp(argv[2], "data")) {
-		reset_type = PD_DATA_RESET;
-	} else {
-		shell_error(sh, "Invalid connector reset type");
+	byte = strtoul(argv[2], &e, 0);
+	if (*e || byte >= UINT8_MAX) {
+		shell_error(sh, "Invalid parameter byte");
 		return -EINVAL;
 	}
 
 	/* Trigger a PDC connector reset */
-	rv = pdc_power_mgmt_connector_reset(port, reset_type);
+	rv = pdc_power_mgmt_connector_reset(port, byte);
 	if (rv) {
-		shell_error(sh, "CONNECTOR_RESET not sent to port %u (%d)",
+		shell_error(sh, "FORCE_SET_POWER_SWITCH not sent to port %u (%d)",
 			    port, rv);
 	}
 
@@ -292,9 +290,9 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Set dualrole mode\n"
 		      "Usage: pdc dualrole  <port> [on|off|freeze|sink|source]",
 		      cmd_pdc_dualrole, 3, 0),
-	SHELL_CMD_ARG(conn_reset, NULL,
-		      "Trigger hard or data reset\n"
-		      "Usage: pdc conn_reset  <port> [hard|data]",
+	SHELL_CMD_ARG(force_sw, NULL,
+		      "Send FORCE_SET_POWER_SWITCH\n"
+		      "Usage: pdc conn_reset  <port> <byte>",
 		      cmd_pdc_connector_reset, 3, 0),
 	SHELL_CMD_ARG(comms, &dsub_suspend_or_resume,
 		      "Suspend/resume PDC command communication\n"

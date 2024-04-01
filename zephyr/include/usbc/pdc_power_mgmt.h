@@ -369,7 +369,7 @@ uint8_t pdc_power_mgmt_get_product_type(int port);
  *
  * @retval 0 if successful or error code
  */
-int pdc_power_mgmt_connector_reset(int port, enum connector_reset reset_type);
+int pdc_power_mgmt_connector_reset(int port, uint8_t reset_type);
 
 /**
  * @brief Get the current events for the port.

@@ -2475,20 +2475,19 @@ pdc_power_mgmt_get_identity_discovery(int port, enum tcpci_msg_type type)
 	}
 }
 
-int pdc_power_mgmt_connector_reset(int port, enum connector_reset reset_type)
+int pdc_power_mgmt_connector_reset(int port, uint8_t byte)
 {
 	/* Make sure port is in range and that an output buffer is provided */
 	if (!is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
-	/* Make sure port is connected */
-	if (!pdc_power_mgmt_is_connected(port)) {
-		return EC_SUCCESS;
-	}
+	// /* Make sure port is connected */
+	// if (!pdc_power_mgmt_is_connected(port)) {
+	// 	return EC_SUCCESS;
+	// }
 
-	pdc_data[port]->port.connector_reset.raw_value = 0;
-	pdc_data[port]->port.connector_reset.reset_type = reset_type;
+	pdc_data[port]->port.connector_reset.raw_value = byte;
 
 	/* Block until command completes */
 	return public_api_block(port, CMD_PDC_CONNECTOR_RESET);
