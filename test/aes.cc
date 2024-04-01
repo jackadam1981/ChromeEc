@@ -29,7 +29,10 @@ extern "C" {
 }
 
 #include "aes_gcm_helpers.h"
+#include "openssl/aead.h"
 #include "openssl/aes.h"
+#include "openssl/cipher.h"
+#include "openssl/err.h"
 
 /* These must be included after the "openssl/aes.h" */
 #include "crypto/fipsmodule/aes/internal.h"
@@ -47,16 +50,53 @@ static int test_aes_gcm_encrypt(uint8_t *result, const uint8_t *key,
 				const uint8_t *nonce, int nonce_size,
 				const uint8_t *tag, int tag_size)
 {
-	static AES_KEY aes_key;
-	static GCM128_CONTEXT ctx;
+	bssl::ScopedEVP_AEAD_CTX ctx;
 
-	TEST_ASSERT(AES_set_encrypt_key(key, 8 * key_size, &aes_key) == 0);
+	int init_result = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(),
+					    key, key_size, tag_size, nullptr);
 
-	CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
-	CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
-	TEST_ASSERT(CRYPTO_gcm128_encrypt(&ctx, &aes_key, plaintext, result,
-					  plaintext_size));
-	TEST_ASSERT(CRYPTO_gcm128_finish(&ctx, tag, tag_size));
+	if (init_result == 0) {
+		const char *error_string = nullptr;
+		int error_flags = 0;
+		int error_id = ERR_get_error_line_data(
+			nullptr, nullptr, &error_string, &error_flags);
+		if (!(error_flags & ERR_TXT_STRING)) {
+			error_string = "";
+		}
+		// ERR_LIB_CIPHER
+		// CIPHER_R_UNSUPPORTED_KEY_SIZE
+		if (ERR_GET_LIB(error_id) == ERR_LIB_CIPHER &&
+		    ERR_GET_REASON(error_id) == CIPHER_R_UNSUPPORTED_KEY_SIZE) {
+			ccprints("Unsupported key size");
+		}
+
+		ccprints("Error: %x: %d, %d %s", error_id,
+			 ERR_GET_REASON(error_id), ERR_GET_LIB(error_id),
+			 error_string);
+	}
+	TEST_ASSERT(init_result == 1);
+
+	uint8_t *out = result;
+	uint8_t out_tag[512];
+	size_t out_tag_len = 0;
+	size_t max_out_tag_len = tag_size;
+
+	const uint8_t *non = nonce;
+	size_t nonce_len = nonce_size;
+
+	const uint8_t *in = plaintext;
+	size_t in_len = plaintext_size;
+	const uint8_t *extra_in = nullptr;
+	size_t extra_in_len = 0;
+	const uint8_t *ad = nullptr;
+	size_t ad_len = 0;
+
+	int seal_result = EVP_AEAD_CTX_seal_scatter(
+		ctx.get(), out, out_tag, &out_tag_len, max_out_tag_len, non,
+		nonce_len, in, in_len, extra_in, extra_in_len, ad, ad_len);
+	TEST_ASSERT(seal_result == 1);
+	TEST_ASSERT(out_tag_len == (size_t)tag_size);
+
 	TEST_ASSERT_ARRAY_EQ(ciphertext, result, plaintext_size);
 
 	return EC_SUCCESS;
@@ -86,12 +126,12 @@ static int test_aes_gcm_decrypt(uint8_t *result, const uint8_t *key,
 	return EC_SUCCESS;
 }
 
-static int test_aes_gcm_raw_inplace(const uint8_t *key, int key_size,
-				    const uint8_t *plaintext,
-				    const uint8_t *ciphertext,
-				    int plaintext_size, const uint8_t *nonce,
-				    int nonce_size, const uint8_t *tag,
-				    int tag_size)
+test_static int test_aes_gcm_raw_inplace(const uint8_t *key, int key_size,
+					 const uint8_t *plaintext,
+					 const uint8_t *ciphertext,
+					 int plaintext_size,
+					 const uint8_t *nonce, int nonce_size,
+					 const uint8_t *tag, int tag_size)
 {
 	/*
 	 * Make copies that will be clobbered during in-place encryption or
@@ -118,12 +158,10 @@ static int test_aes_gcm_raw_inplace(const uint8_t *key, int key_size,
 	return EC_SUCCESS;
 }
 
-static int test_aes_gcm_raw_non_inplace(const uint8_t *key, int key_size,
-					const uint8_t *plaintext,
-					const uint8_t *ciphertext,
-					int plaintext_size,
-					const uint8_t *nonce, int nonce_size,
-					const uint8_t *tag, int tag_size)
+test_static int test_aes_gcm_raw_non_inplace(
+	const uint8_t *key, int key_size, const uint8_t *plaintext,
+	const uint8_t *ciphertext, int plaintext_size, const uint8_t *nonce,
+	int nonce_size, const uint8_t *tag, int tag_size)
 {
 	TEST_ASSERT(test_aes_gcm_encrypt(tmp, key, key_size, plaintext,
 					 ciphertext, plaintext_size, nonce,
@@ -138,11 +176,12 @@ static int test_aes_gcm_raw_non_inplace(const uint8_t *key, int key_size,
 	return EC_SUCCESS;
 }
 
-static int test_aes_gcm_raw(const uint8_t *key, int key_size,
-			    const uint8_t *plaintext, const uint8_t *ciphertext,
-			    std::size_t plaintext_size, const uint8_t *nonce,
-			    std::size_t nonce_size, const uint8_t *tag,
-			    std::size_t tag_size)
+test_static int test_aes_gcm_raw(const uint8_t *key, int key_size,
+				 const uint8_t *plaintext,
+				 const uint8_t *ciphertext,
+				 std::size_t plaintext_size,
+				 const uint8_t *nonce, std::size_t nonce_size,
+				 const uint8_t *tag, std::size_t tag_size)
 {
 	TEST_ASSERT(plaintext_size <= sizeof(tmp));
 
@@ -150,6 +189,7 @@ static int test_aes_gcm_raw(const uint8_t *key, int key_size,
 						 ciphertext, plaintext_size,
 						 nonce, nonce_size, tag,
 						 tag_size) == EC_SUCCESS);
+
 	TEST_ASSERT(test_aes_gcm_raw_inplace(key, key_size, plaintext,
 					     ciphertext, plaintext_size, nonce,
 					     nonce_size, tag,
@@ -158,33 +198,42 @@ static int test_aes_gcm_raw(const uint8_t *key, int key_size,
 	return EC_SUCCESS;
 }
 
-static int test_aes_gcm(void)
+struct TestVector {
+	std::vector<uint8_t> key;
+	std::array<uint8_t, 12> nonce; // Assuming 96-bit nonce
+	std::vector<uint8_t> in;
+	std::vector<uint8_t> ct;
+	std::array<uint8_t, 16> tag; // 128-bit tag
+};
+
+test_static int test_aes_gcm(void)
 {
 	/*
 	 * Test vectors from BoringSSL crypto/fipsmodule/modes/gcm_tests.txt
 	 * (only the ones with actual data, and no additional data).
 	 */
-	static const uint8_t key1[] = {
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	TestVector test_vector = {
+		.key = {
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+			},
+		.nonce = {
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		},
+		.in = {
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		},
+		.ct = {
+				0x03, 0x88, 0xda, 0xce, 0x60, 0xb6, 0xa3, 0x92,
+				0xf3, 0x28, 0xc2, 0xb9, 0x71, 0xb2, 0xfe, 0x78,
+		},
+		.tag = {
+				0xab, 0x6e, 0x47, 0xd4, 0x2c, 0xec, 0x13, 0xbd,
+				0xf5, 0x3a, 0x67, 0xb2, 0x12, 0x57, 0xbd, 0xdf,
+		}
 	};
-	static const uint8_t plain1[] = {
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	};
-	static const uint8_t nonce1[] = {
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	};
-	static const uint8_t cipher1[] = {
-		0x03, 0x88, 0xda, 0xce, 0x60, 0xb6, 0xa3, 0x92,
-		0xf3, 0x28, 0xc2, 0xb9, 0x71, 0xb2, 0xfe, 0x78,
-	};
-	static const uint8_t tag1[] = {
-		0xab, 0x6e, 0x47, 0xd4, 0x2c, 0xec, 0x13, 0xbd,
-		0xf5, 0x3a, 0x67, 0xb2, 0x12, 0x57, 0xbd, 0xdf,
-	};
-
 	static const uint8_t key2[] = {
 		0xfe, 0xff, 0xe9, 0x92, 0x86, 0x65, 0x73, 0x1c,
 		0x6d, 0x6a, 0x8f, 0x94, 0x67, 0x30, 0x83, 0x08,
@@ -407,24 +456,34 @@ static int test_aes_gcm(void)
 		0xb0, 0x26, 0xa9, 0xed, 0x3f, 0xe1, 0xe8, 0x5f,
 	};
 
-	TEST_ASSERT(!test_aes_gcm_raw(key1, sizeof(key1), plain1, cipher1,
-				      sizeof(plain1), nonce1, sizeof(nonce1),
-				      tag1, sizeof(tag1)));
+	ccprints("test case 1");
+	TEST_ASSERT(!test_aes_gcm_raw(
+		test_vector.key.data(), test_vector.key.size(),
+		test_vector.in.data(), test_vector.ct.data(),
+		test_vector.in.size(), test_vector.nonce.data(),
+		test_vector.nonce.size(), test_vector.tag.data(),
+		test_vector.tag.size()));
+	ccprints("test case 2");
 	TEST_ASSERT(!test_aes_gcm_raw(key2, sizeof(key2), plain2, cipher2,
 				      sizeof(plain2), nonce2, sizeof(nonce2),
 				      tag2, sizeof(tag2)));
+	ccprints("test case 3");
 	TEST_ASSERT(!test_aes_gcm_raw(key3, sizeof(key3), plain3, cipher3,
 				      sizeof(plain3), nonce3, sizeof(nonce3),
 				      tag3, sizeof(tag3)));
+	ccprints("test case 4");
 	TEST_ASSERT(!test_aes_gcm_raw(key4, sizeof(key4), plain4, cipher4,
 				      sizeof(plain4), nonce4, sizeof(nonce4),
 				      tag4, sizeof(tag4)));
+	ccprints("test case 5");
 	TEST_ASSERT(!test_aes_gcm_raw(key5, sizeof(key5), plain5, cipher5,
 				      sizeof(plain5), nonce5, sizeof(nonce5),
 				      tag5, sizeof(tag5)));
+	ccprints("test case 6");
 	TEST_ASSERT(!test_aes_gcm_raw(key6, sizeof(key6), plain6, cipher6,
 				      sizeof(plain6), nonce6, sizeof(nonce6),
 				      tag6, sizeof(tag6)));
+	ccprints("test case 7");
 	TEST_ASSERT(!test_aes_gcm_raw(key7, sizeof(key7), plain7, cipher7,
 				      sizeof(plain7), nonce7, sizeof(nonce7),
 				      tag7, sizeof(tag7)));
@@ -432,7 +491,7 @@ static int test_aes_gcm(void)
 	return EC_SUCCESS;
 }
 
-static void test_aes_gcm_speed(void)
+test_static void test_aes_gcm_speed(void)
 {
 	Benchmark benchmark({ .num_iterations = 1000 });
 	static const uint8_t key[] = {
@@ -480,8 +539,9 @@ static void test_aes_gcm_speed(void)
 	benchmark.print_results();
 }
 
-static int test_aes_raw(const uint8_t *key, int key_size,
-			const uint8_t *plaintext, const uint8_t *ciphertext)
+test_static int test_aes_raw(const uint8_t *key, int key_size,
+			     const uint8_t *plaintext,
+			     const uint8_t *ciphertext)
 {
 	AES_KEY aes_key;
 	uint8_t *block = tmp;
@@ -513,7 +573,7 @@ static int test_aes_raw(const uint8_t *key, int key_size,
 	return EC_SUCCESS;
 }
 
-static int test_aes(void)
+test_static int test_aes(void)
 {
 	/* Test vectors from FIPS-197, Appendix C. */
 	static const uint8_t key1[] = {
@@ -565,7 +625,7 @@ static int test_aes(void)
 	return EC_SUCCESS;
 }
 
-static void test_aes_speed(void)
+test_static void test_aes_speed(void)
 {
 	Benchmark benchmark({ .num_iterations = 1000 });
 	/* Test vectors from FIPS-197, Appendix C. */
