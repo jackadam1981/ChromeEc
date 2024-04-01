@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3ee87da_df5227e2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-01T16:54:02Z",
+      "side": 1,
+      "message": "\u003e Also, we might want to change the name of this function, since it will handle only the connection status bits.\n\nIn your view, should I handle the other CONNECTOR_STATUS bits in this function or make a new function to handle bits other than `power_operation` and `power_direction`?",
+      "parentUuid": "056750f6_73e6f0ef",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 49
+      },
+      "revId": "fb073e5e70d1a9252494e316e80d8576f303d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd1a373c_fd327f0c",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 1
