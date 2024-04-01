@@ -5,11 +5,13 @@
 
 #define DT_DRV_COMPAT ite_it8xxx2_cros_flash
 
+#include "bbram.h"
 #include "flash.h"
 #include "host_command.h"
 #include "system.h"
 #include "watchdog.h"
 
+#include <zephyr/drivers/bbram.h>
 #include <zephyr/drivers/flash.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -48,6 +50,11 @@ enum flash_wp_status {
 	FLASH_WP_STATUS_PROTECT_RO = EC_FLASH_PROTECT_RO_NOW,
 	FLASH_WP_STATUS_PROTECT_ALL = EC_FLASH_PROTECT_ALL_NOW,
 };
+
+/* AT_BOOT flags for the next boot */
+#define IT8XXX2_UNLOCK_RW_AT_BOOT BIT(0)
+#define IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT BIT(1)
+#define IT8XXX2_UNLOCK_ALL_AT_BOOT BIT(2)
 
 /**
  * Protect flash banks until reboot.
@@ -94,6 +101,66 @@ static enum flash_wp_status flash_check_wp(void)
 	return wp_status;
 }
 
+static int read_bbram_flags(uint8_t *data)
+{
+#ifdef CONFIG_FLASH_PROTECT_NEXT_BOOT
+	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
+
+	return bbram_read(bbram_dev, BBRAM_REGION_OFFSET(unlock_flash_at_boot),
+			  BBRAM_REGION_SIZE(unlock_flash_at_boot), data);
+#else
+	*data = 0;
+
+	return 0;
+#endif
+}
+
+static int write_bbram_flags(uint8_t data)
+{
+#ifdef CONFIG_FLASH_PROTECT_NEXT_BOOT
+	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
+
+	return bbram_write(bbram_dev, BBRAM_REGION_OFFSET(unlock_flash_at_boot),
+			   BBRAM_REGION_SIZE(unlock_flash_at_boot), &data);
+#else
+	return 0;
+#endif
+}
+
+static void lock_rw_rb(void)
+{
+#ifdef CONFIG_FLASH_PROTECT_RW
+	bool need_reset = false;
+	uint8_t unlock_flags = 0;
+	bool lock_rw, lock_rb;
+
+	/* Failed to read bbram, assume all region should be locked */
+	if (read_bbram_flags(&unlock_flags)) {
+		LOG_ERR("read_unlock_flags failed");
+		unlock_flags = 0;
+	}
+
+	lock_rw = !(unlock_flags & IT8XXX2_UNLOCK_RW_AT_BOOT);
+	if (lock_rw) {
+		LOG_ERR("lock rw");
+		flash_protect_banks(RW_BANK_OFFSET, RW_BANK_COUNT, FLASH_WP_EC);
+	}
+
+	lock_rb = !(unlock_flags & IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT);
+	if (lock_rb) {
+		LOG_ERR("lock rollback");
+		flash_protect_banks(ROLLBACK_BANK_OFFSET, ROLLBACK_BANK_COUNT,
+				    FLASH_WP_EC);
+	}
+
+	/* TODO: check if RW/RB state is correct, hard reset if needed */
+	if (need_reset) {
+		LOG_ERR("Can't modify flash protection, try hard reset!");
+		system_reset(SYSTEM_RESET_HARD);
+	}
+#endif
+}
+
 /* cros ec flash api functions */
 static int cros_flash_it8xxx2_init(const struct device *dev)
 {
@@ -121,6 +188,9 @@ static int cros_flash_it8xxx2_init(const struct device *dev)
 		flash_protect_banks(
 			0, CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE,
 			FLASH_WP_DBGR);
+
+		lock_rw_rb();
+
 		/*
 		 * Write protect is asserted.  If we want RO flash protected,
 		 * protect it now.
@@ -245,11 +315,9 @@ static uint32_t cros_flash_it8xxx2_get_protect_flags(const struct device *dev)
 {
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
 	uint32_t flags = 0;
+	uint8_t unlock_flags;
 
 	flags |= flash_check_wp();
-
-	if (data->all_protected)
-		flags |= EC_FLASH_PROTECT_ALL_NOW;
 
 	/* Check if blocks were stuck locked at pre-init */
 	if (data->stuck_locked)
@@ -259,19 +327,59 @@ static uint32_t cros_flash_it8xxx2_get_protect_flags(const struct device *dev)
 	if (data->inconsistent_locked)
 		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
+#ifdef CONFIG_FLASH_PROTECT_RW
+	if (!read_bbram_flags(&unlock_flags)) {
+		if (!(unlock_flags & IT8XXX2_UNLOCK_RW_AT_BOOT)) {
+			flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
+		}
+		if (!(unlock_flags & IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT)) {
+			flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+		}
+		if (!(unlock_flags & IT8XXX2_UNLOCK_ALL_AT_BOOT)) {
+			flags |= EC_FLASH_PROTECT_ALL_AT_BOOT;
+		}
+	}
+#endif
+
 	return flags;
 }
 
 static int cros_flash_it8xxx2_protect_at_boot(const struct device *dev,
 					      uint32_t new_flags)
 {
+#ifdef CONFIG_FLASH_PROTECT_RW
+	uint8_t unlock_flags = 0;
+
+	/* ALL implies RW + RB */
+	if (new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) {
+		new_flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
+		new_flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+	}
+
+	if (!(new_flags & EC_FLASH_PROTECT_RW_AT_BOOT)) {
+		unlock_flags |= IT8XXX2_UNLOCK_RW_AT_BOOT;
+	}
+	if (!(new_flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)) {
+		unlock_flags |= IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT;
+	}
+	if (!(new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
+		unlock_flags |= IT8XXX2_UNLOCK_ALL_AT_BOOT;
+	}
+
+	return write_bbram_flags(unlock_flags);
+#else
 	return -ENOTSUP;
+#endif
 }
 
 static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
 {
 	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
+
+	if (gctrl_base->GCTRL_EPLR & IT8XXX2_GCTRL_EPLR_ENABLE) {
+		return -EACCES;
+	}
 
 	if (all) {
 		/* Protect the entire flash */
