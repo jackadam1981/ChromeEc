@@ -681,7 +681,7 @@ def power_cycle(board_config: BoardConfig) -> None:
 
 def fp_sensor_sel(
     board_config: BoardConfig, sensor_type: FPSensorType = FPSensorType.FPC
-) -> None:
+) -> bool:
     """
     Explicitly select the appropriate fingerprint sensor.
     This function assumes that the fp_sensor_sel servo control is connected to
