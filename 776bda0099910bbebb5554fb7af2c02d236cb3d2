@@ -16,6 +16,24 @@
       "message": "Please refer to CL:5403871 and add a OWNER file in this dir so that I can approve the code here.\n\nOnce we got Ting to approve this CL, I can start approving the subsequent CLs.",
       "revId": "776bda0099910bbebb5554fb7af2c02d236cb3d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a5521e_d19c2572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-01T09:12:30Z",
+      "side": 1,
+      "message": "Correction: I mean `OWNERS` file",
+      "parentUuid": "14afa9ac_72f32734",
+      "revId": "776bda0099910bbebb5554fb7af2c02d236cb3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
