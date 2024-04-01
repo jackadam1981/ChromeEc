@@ -452,11 +452,15 @@ static inline enum ec_error_list tcpc_get_bist_test_mode(int port, bool *enable)
  */
 static inline int tcpm_tcpc_has_frs_control(int port)
 {
+	printk("C%d: tcpm check tcpc frs control \n", port);
+
 	if (!IS_ENABLED(CONFIG_USB_PD_FRS))
 		return 0;
 
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {
+		printk("C%d: yes \n", port);
 		return 1;
+	}
 
 	if (tcpc_config[port].flags & TCPC_FLAGS_CONTROL_FRS)
 		return 1;
@@ -475,8 +479,10 @@ static inline int tcpm_set_frs_enable(int port, int enable)
 	 * if it is handled by the tcpci for the tcpc chipset
 	 */
 	tcpc = tcpc_config[port].drv;
-	if (tcpc->set_frs_enable)
+	if (tcpc->set_frs_enable) {
+		printk("C%d: tcpc has set_frs_enable() func \n", port);
 		rv = tcpc->set_frs_enable(port, enable);
+	}
 	return rv;
 }
 #endif /* defined(CONFIG_USB_PD_FRS) */

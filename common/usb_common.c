@@ -714,6 +714,8 @@ int pd_set_frs_enable(int port, int enable)
 {
 	int rv = EC_SUCCESS;
 
+	CPRINTS("C%d: set FRS En/Dis %d", port, enable);
+
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))
 		rv = ppc_set_frs_enable(port, enable);
 	if ((rv == EC_SUCCESS || rv == EC_ERROR_UNIMPLEMENTED) &&
