@@ -1760,6 +1760,10 @@ enum ec_feature_code {
 	 * The EC supports UCSI PPM.
 	 */
 	EC_FEATURE_UCSI_PPM = 54,
+	/*
+	 * The EC supports feature finch.
+	 */
+	EC_FEATURE_FINCH = 55,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
