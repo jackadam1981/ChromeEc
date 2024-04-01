@@ -16,6 +16,24 @@
       "message": "Gwendal, how did you come across this?",
       "revId": "5f2604a444de40ea1f87510e88aba5f737a3b43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "715015b7_4412ce25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-01T17:52:15Z",
+      "side": 1,
+      "message": "I am debugging b/326343165, I was worried the fingerprint sensor (cros-fp) could go in v2 mode. Luckily, nobody has compiled an EC image with v2 support in years.",
+      "parentUuid": "983673b5_184ffc50",
+      "revId": "5f2604a444de40ea1f87510e88aba5f737a3b43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
