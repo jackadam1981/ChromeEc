@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fef5611_dc5ca14e",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-04-01T15:09:11Z",
+      "side": 1,
+      "message": "Mismatched quotes. Starts with \" but ends with \u0027",
+      "range": {
+        "startLine": 199,
+        "startChar": 53,
+        "endLine": 199,
+        "endChar": 54
+      },
+      "revId": "1565d46a19af18ff95cebc1a232e64403dad265a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04fca7cd_dd3a4766",
