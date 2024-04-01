@@ -187,6 +187,9 @@ uint32_t get_feature_flags1(void)
 #ifdef CONFIG_USB_PD_DP21_MODE
 		| EC_FEATURE_MASK_1(EC_FEATURE_TYPEC_DP2_1)
 #endif
+#ifdef CONFIG_KEYBOARD_STRAUSS
+		| EC_FEATURE_MASK_1(EC_FEATURE_STRAUSS)
+#endif
 		;
 	return board_override_feature_flags1(result);
 }
