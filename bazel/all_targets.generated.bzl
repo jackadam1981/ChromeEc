@@ -2093,6 +2093,10 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "sundance",
+        board = "sundance",
+    )
+    ec_target(
         name = "sweetberry",
         board = "sweetberry",
         chip = "stm32",
