@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbac3bb_f387dfdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-01T23:33:58Z",
+      "side": 1,
+      "message": "I have resolved the merge conflicts, which arose in part bacause of whitespace cleanup in the `registers-stmXXX.h` files and in part because support for the stm32l5 family also touched by the original CL is not present in the servo release branch.\n\nI am not sure how to mark this as no longer \"work in progress\", maybe only Brian can do that.  In any case, I consider this one ready for official review.",
+      "revId": "676a88ff291607e6e06760203328c3925bd3207e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
