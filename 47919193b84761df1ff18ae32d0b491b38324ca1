@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41ef702_20a10d07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-01T15:51:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "de9ebf0b_70c540ec",
+      "revId": "47919193b84761df1ff18ae32d0b491b38324ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a0d2357_fc6bb886",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-29T21:17:05Z",
       "side": 1,
       "message": "Since we don\u0027t understand why changing this fixes the test, can you add a comment that mentions increasing the delay causes the test to fail when run with `run_device_tests.py`. Something like:\n\n```\nb/328779928: If you increase this value to 2, the test fails when run with\nrun_device_tests.py, but passes when run on the console manually.\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "47919193b84761df1ff18ae32d0b491b38324ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effc55fd_9c3287f9",
+        "filename": "test/rtc_npcx9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-01T15:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a0d2357_fc6bb886",
       "range": {
         "startLine": 13,
         "startChar": 0,
