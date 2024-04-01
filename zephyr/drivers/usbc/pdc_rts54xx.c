@@ -144,7 +144,10 @@ const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02, 0xA7 };
 const struct smbus_cmd_t GET_POWER_SWITCH_STATE = { 0x08, 0x02, 0xA9 };
 const struct smbus_cmd_t GET_RTK_STATUS = { 0x09, 0x03, 0x00 };
 const struct smbus_cmd_t PPM_RESET = { 0x0E, 0x02, 0x01 };
-const struct smbus_cmd_t CONNECTOR_RESET = { 0x0E, 0x03, 0x03 };
+const struct smbus_cmd_t CONNECTOR_RESET = { 0x08, 0x03,
+					     0x21 }; /* Modified for
+							FORCE_SET_POWER_SWITCH
+						      */
 const struct smbus_cmd_t GET_CAPABILITY = { 0x0E, 0x02, 0x06 };
 const struct smbus_cmd_t GET_CONNECTOR_CAPABILITY = { 0x0E, 0x03, 0x07 };
 const struct smbus_cmd_t SET_UOR = { 0x0E, 0x04, 0x09 };
@@ -373,7 +376,7 @@ static const char *const cmd_names[] = {
 	[CMD_VENDOR_ENABLE] = "VENDOR_ENABLE",
 	[CMD_SET_NOTIFICATION_ENABLE] = "SET_NOTIFICATION_ENABLE",
 	[CMD_PPM_RESET] = "PPM_RESET",
-	[CMD_CONNECTOR_RESET] = "CONNECTOR_RESET",
+	[CMD_CONNECTOR_RESET] = "FORCE_SET_POWER_SWITCH",
 	[CMD_GET_CAPABILITY] = "GET_CAPABILITY",
 	[CMD_GET_CONNECTOR_CAPABILITY] = "GET_CONNECTOR_CAPABILITY",
 	[CMD_SET_UOR] = "SET_UOR",
@@ -1632,7 +1635,12 @@ static int rts54_reset(const struct device *dev)
 static int rts54_connector_reset(const struct device *dev,
 				 union connector_reset_t reset)
 {
+	/*
+	 * Modified to send FORCE_SET_POWER_SWITCH
+	 */
+
 	struct pdc_data_t *data = dev->data;
+	const struct pdc_config_t *cfg = dev->config;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
@@ -1640,6 +1648,9 @@ static int rts54_connector_reset(const struct device *dev,
 
 	uint8_t payload[] = { CONNECTOR_RESET.cmd, CONNECTOR_RESET.len,
 			      CONNECTOR_RESET.sub, 0x00, reset.raw_value };
+
+	LOG_INF("\nC%d: Post command for FORCE_SET_POWER_SWITCH w/ param %02x\n",
+		cfg->connector_number, reset.raw_value);
 
 	return rts54_post_command(dev, CMD_CONNECTOR_RESET, payload,
 				  ARRAY_SIZE(payload), NULL);
