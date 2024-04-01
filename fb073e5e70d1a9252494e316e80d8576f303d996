@@ -39,6 +39,30 @@
       },
       "revId": "fb073e5e70d1a9252494e316e80d8576f303d996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bbba32_f7fd372e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-01T16:32:38Z",
+      "side": 1,
+      "message": "It seemed like I might need to change the purpose of this function as we add handling for more connector status bits. But if Sam confirms that we\u0027ll always want to change state anyway, then I can drop this.",
+      "parentUuid": "006e0a9c_efe83565",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 49
+      },
+      "revId": "fb073e5e70d1a9252494e316e80d8576f303d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
