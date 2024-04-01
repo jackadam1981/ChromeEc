@@ -2427,3 +2427,7 @@ def all_targets():
         core = "cortex-m0",
         zephyr = False,
     )
+    ec_target(
+        name = "sundance",
+        board = "sundance",
+    )
