@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc923df0_1f79c11f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-01T08:16:27Z",
+      "side": 1,
+      "message": "The warnings are all clang-format related:\n\n```\n01:11:35.908: INFO: run: /mnt/host/source/src/platform/ec/zephyr/firmware_builder.py --metrics /tmp/tmpfb7avlkv build\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/baseboard/mtscp-rv32i/baseboard.c:29:35: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { CONFIG_DRAM_BASE, DRAM_NC_BASE, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R },\nERROR:root:                                         ^\nERROR:root:/mnt/host/source/src/platform/ec/baseboard/mtscp-rv32i/baseboard.h:85:25: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#define CONFIG_DRAM_SIZE (DRAM_TOTAL_SIZE - CONFIG_PANIC_DRAM_SIZE - DRAM_NC_SIZE - KERNEL_SIZE)\nERROR:root:                        ^\n...\n```\n\n\nPlease run `clang-format`",
+      "revId": "ada0f299782c77256068424d6d9628a23a912e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
