@@ -2181,11 +2181,13 @@
 #undef CONFIG_MAPPED_STORAGE_BASE
 
 #undef CONFIG_FLASH_PROTECT_NEXT_BOOT
+#define CONFIG_FLASH_PROTECT_NEXT_BOOT
 
 /*
  * Some platforms need to write protect RW independently of all flash.
  */
 #undef CONFIG_FLASH_PROTECT_RW
+#define CONFIG_FLASH_PROTECT_RW
 
 /*
  * Enable Flash Write Protect by default. Some platforms like Servo_v4

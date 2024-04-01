@@ -5,11 +5,13 @@
 
 #define DT_DRV_COMPAT ite_it8xxx2_cros_flash
 
+#include "bbram.h"
 #include "flash.h"
 #include "host_command.h"
 #include "system.h"
 #include "watchdog.h"
 
+#include <zephyr/drivers/bbram.h>
 #include <zephyr/drivers/flash.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -48,6 +50,10 @@ enum flash_wp_status {
 	FLASH_WP_STATUS_PROTECT_RO = EC_FLASH_PROTECT_RO_NOW,
 	FLASH_WP_STATUS_PROTECT_ALL = EC_FLASH_PROTECT_ALL_NOW,
 };
+
+#define IT8XXX2_UNLOCK_RW_AT_BOOT BIT(0)
+#define IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT BIT(1)
+#define IT8XXX2_UNLOCK_ALL_AT_BOOT BIT(2)
 
 /**
  * Protect flash banks until reboot.
@@ -92,6 +98,32 @@ static enum flash_wp_status flash_check_wp(void)
 		wp_status = 0;
 
 	return wp_status;
+}
+
+static int read_bbram_flags(uint8_t *data)
+{
+#ifdef CONFIG_FLASH_PROTECT_RW
+	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
+
+	return bbram_read(bbram_dev, BBRAM_REGION_OFFSET(unlock_flash_at_boot),
+			  BBRAM_REGION_SIZE(unlock_flash_at_boot), data);
+#else
+	*data = 0;
+
+	return 0;
+#endif
+}
+
+static int write_bbram_flags(uint8_t data)
+{
+#ifdef CONFIG_FLASH_PROTECT_RW
+	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
+
+	return bbram_write(bbram_dev, BBRAM_REGION_OFFSET(unlock_flash_at_boot),
+			   BBRAM_REGION_SIZE(unlock_flash_at_boot), &data);
+#else
+	return 0;
+#endif
 }
 
 /* cros ec flash api functions */
@@ -245,6 +277,7 @@ static uint32_t cros_flash_it8xxx2_get_protect_flags(const struct device *dev)
 {
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
 	uint32_t flags = 0;
+	uint8_t unlock_flags;
 
 	flags |= flash_check_wp();
 
@@ -259,19 +292,56 @@ static uint32_t cros_flash_it8xxx2_get_protect_flags(const struct device *dev)
 	if (data->inconsistent_locked)
 		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
+#ifdef CONFIG_FLASH_PROTECT_RW
+	if (!read_bbram_flags(&unlock_flags)) {
+		if (!(unlock_flags & IT8XXX2_UNLOCK_RW_AT_BOOT)) {
+			flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
+		}
+		if (!(unlock_flags & IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT)) {
+			flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+		}
+		if (!(unlock_flags & IT8XXX2_UNLOCK_ALL_AT_BOOT)) {
+			flags |= EC_FLASH_PROTECT_ALL_AT_BOOT;
+		}
+	}
+#endif
+
 	return flags;
 }
 
 static int cros_flash_it8xxx2_protect_at_boot(const struct device *dev,
 					      uint32_t new_flags)
 {
+#ifdef CONFIG_FLASH_PROTECT_RW
+	uint8_t unlock_flags;
+	int ret;
+
+	ret = read_bbram_flags(&unlock_flags);
+	if (ret) {
+		return ret;
+	}
+
+	if (!(new_flags & EC_FLASH_PROTECT_RW_AT_BOOT)) {
+		unlock_flags |= IT8XXX2_UNLOCK_RW_AT_BOOT;
+	}
+	if (!(new_flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)) {
+		unlock_flags |= IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT;
+	}
+	if (!(new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
+		unlock_flags |= IT8XXX2_UNLOCK_ALL_AT_BOOT;
+	}
+
+	return write_bbram_flags(unlock_flags);
+#else
 	return -ENOTSUP;
+#endif
 }
 
 static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
 {
 	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
+	__maybe_unused uint8_t unlock_flags = 0;
 
 	if (all) {
 		/* Protect the entire flash */
@@ -280,8 +350,34 @@ static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
 			FLASH_WP_EC);
 		data->all_protected = 1;
 	} else {
+#ifdef CONFIG_FLASH_PROTECT_RW
+		/* Failed to read bbram, assume all region should be locked */
+		if (read_bbram_flags(&unlock_flags)) {
+			LOG_ERR("read_bbram_flags failed");
+			unlock_flags = 0;
+		}
+		LOG_ERR("\x1b[1;33mread_bbram_flags %02x\x1b[m", unlock_flags);
+
+		if (!(unlock_flags & IT8XXX2_UNLOCK_RW_AT_BOOT)) {
+			flash_protect_banks(RW_BANK_OFFSET, RW_BANK_COUNT,
+					    FLASH_WP_EC);
+		} else {
+			LOG_ERR("\x1b[1;31munlock rw\x1b[m");
+		}
+
+		if (!(unlock_flags & IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT)) {
+			flash_protect_banks(ROLLBACK_BANK_OFFSET,
+					    ROLLBACK_BANK_COUNT, FLASH_WP_EC);
+		} else {
+			LOG_ERR("\x1b[1;31munlock rollback\x1b[m");
+		}
+
+		/* clear all UNLOCK_* flags */
+		write_bbram_flags(0);
+#endif
 		/* Protect the read-only section and persistent state */
 		flash_protect_banks(WP_BANK_OFFSET, WP_BANK_COUNT, FLASH_WP_EC);
+
 #ifdef PSTATE_BANK
 		flash_protect_banks(PSTATE_BANK, PSTATE_BANK_COUNT,
 				    FLASH_WP_EC);
