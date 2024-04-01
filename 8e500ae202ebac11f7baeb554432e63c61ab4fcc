@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4488b0ee_f721dfcb",
+        "filename": "zephyr/program/corsola/skitty/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-04-01T06:12:03Z",
+      "side": 1,
+      "message": "add a space between # and B",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "8e500ae202ebac11f7baeb554432e63c61ab4fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa63ee52_0defae61",
+        "filename": "zephyr/program/corsola/skitty/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-04-01T06:12:03Z",
+      "side": 1,
+      "message": "Did we do this on purpose?",
+      "revId": "8e500ae202ebac11f7baeb554432e63c61ab4fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff43304_94bafe74",
+        "filename": "zephyr/program/corsola/skitty/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-04-01T06:12:03Z",
+      "side": 1,
+      "message": "Did we do this on purpose?",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 10
+      },
+      "revId": "8e500ae202ebac11f7baeb554432e63c61ab4fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
