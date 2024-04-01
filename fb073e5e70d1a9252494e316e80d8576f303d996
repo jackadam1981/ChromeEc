@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8902b97b_dca0538d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-01T17:01:27Z",
+      "side": 1,
+      "message": "Sorry, that\u0027s what I meant; keep the same name and add additional functionality to the function.",
+      "parentUuid": "a13a847d_45a25e09",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 49
+      },
+      "revId": "fb073e5e70d1a9252494e316e80d8576f303d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd1a373c_fd327f0c",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 1
