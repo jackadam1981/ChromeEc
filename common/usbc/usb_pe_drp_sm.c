@@ -997,6 +997,7 @@ static void pe_set_frs_enable(int port, int enable)
 {
 	int current = PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
 
+	CPRINTS("C%d: pe set FRS En/Dis %d", port, enable);
 	/* This should only be called from the PD task */
 	if (!IS_ENABLED(TEST_BUILD))
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
@@ -3825,6 +3826,7 @@ static void pe_snk_ready_entry(int port)
 	}
 }
 
+//int ii = 1;
 static void pe_snk_ready_run(int port)
 {
 	/*
@@ -4015,6 +4017,10 @@ static void pe_snk_ready_run(int port)
 		if (sink_dpm_requests(port))
 			return;
 
+		//if (ii == 1) {
+		//	pe_set_frs_enable(port, 1);
+		//	ii = 0;
+		//}
 		/*
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.

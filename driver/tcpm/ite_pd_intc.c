@@ -23,6 +23,7 @@ void chip_pd_irq(enum usbpd_port port)
 		 * the interrupt -> board_frs_handler latency-critical time.
 		 */
 		if (USBPD_IS_FAST_SWAP_DETECT(port)) {
+			printk("FRS signal\n");
 			/* clear detect FRS signal (cc to GND) status */
 			USBPD_CLEAR_FRS_DETECT_STATUS(port);
 			if (board_frs_handler)

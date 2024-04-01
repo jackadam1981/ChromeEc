@@ -717,6 +717,8 @@ static int it8xxx2_tcpm_set_frs_enable(int port, int enable)
 	uint8_t mask = (USBPD_REG_FAST_SWAP_REQUEST_ENABLE |
 			USBPD_REG_FAST_SWAP_DETECT_ENABLE);
 
+	CPRINTS("port %d, en/dis %d", port, enable);
+
 	if (enable) {
 		/*
 		 * Disable HW auto turn off FRS requestion and detection
@@ -738,6 +740,10 @@ static int it8xxx2_tcpm_set_frs_enable(int port, int enable)
 		 * GPH3(port0)/GPH4(port1) output H/L after we detect FRS cc
 		 * low signal.
 		 */
+		 CPRINTS("02h bit6 0x%x (0 Dis Auto)", IT83XX_USBPD_PDMSR(port));
+		 CPRINTS("12h bit4,5 0x%x (0 Status)", IT83XX_USBPD_IFS(port));
+		 CPRINTS("13h bit4,7 0x%x (0 Unmask)", IT83XX_USBPD_MIFS(port));
+		 CPRINTS("0ch bit0 0x%x (1 En Detect)", IT83XX_USBPD_PDFSCR(port));
 	} else {
 		/* Disable FRS detection (cc to GND) interrupt */
 		IT83XX_USBPD_MIFS(port) |=
