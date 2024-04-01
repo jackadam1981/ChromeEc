@@ -16,6 +16,86 @@
       "message": "Ting can you +2 this?",
       "revId": "7c506d62d77de85ee3d5e8206ae377a2fa3d016e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d5b398_d06531a5",
+        "filename": "board/geralt_scp/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-01T11:27:10Z",
+      "side": 1,
+      "message": "fix the copyright header\n\n```suggestion\n/* Copyright 2024 The ChromiumOS Authors\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "7c506d62d77de85ee3d5e8206ae377a2fa3d016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f39e279_d6715e9f",
+        "filename": "board/geralt_scp/build.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-01T11:27:10Z",
+      "side": 1,
+      "message": "```suggestion\n# Copyright 2024 The ChromiumOS Authors\n```",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 62
+      },
+      "revId": "7c506d62d77de85ee3d5e8206ae377a2fa3d016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e09d683_60d48d01",
+        "filename": "board/geralt_scp/ec.tasklist",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-01T11:27:10Z",
+      "side": 1,
+      "message": "```suggestion\n/* Copyright 2024 The ChromiumOS Authors\n```",
+      "revId": "7c506d62d77de85ee3d5e8206ae377a2fa3d016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace4e953_51039a35",
+        "filename": "board/geralt_scp/gpio.inc",
+        "patchSetId": 24
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-01T11:27:10Z",
+      "side": 1,
+      "message": "```suggestion\n * Copyright 2024 The ChromiumOS Authors\n```",
+      "revId": "7c506d62d77de85ee3d5e8206ae377a2fa3d016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
