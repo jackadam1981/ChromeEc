@@ -16,6 +16,24 @@
       "message": "I wonder if these should be put in board or chip level baseboard.h?",
       "revId": "9b1c0ea4c59dc9c58478d2b7d4fa8ea3a2179cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3a4e2c_2ef7b966",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-01T07:47:14Z",
+      "side": 1,
+      "message": "Not shre if moving these to chive level will break other dependency.\n\nBut since the header file is bloating after CL:3845332,\nI think it\u0027s better to move these constants to `chip/mt_scp/mt*` if possible.",
+      "parentUuid": "4e2e4a40_a4dde09f",
+      "revId": "9b1c0ea4c59dc9c58478d2b7d4fa8ea3a2179cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
