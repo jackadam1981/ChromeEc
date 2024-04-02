@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9269ea_507a0744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-02T09:04:30Z",
+      "side": 1,
+      "message": "Argh, CQ is so annoying...\n\nSince we added a new build target here, you need to run `./bazel/gen_bazel_targets.py` (sync the repo and rebase to have that) to update a bazel related file.\n\nRun `./zephyr/firmware_builder.py --metrics /tmp/tmpfsp9n0ur build` for more details.",
+      "revId": "a54b6e5378bf90493b15d1277d13df4731dff972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
