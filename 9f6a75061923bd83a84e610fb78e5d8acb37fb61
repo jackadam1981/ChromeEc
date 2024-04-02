@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a708531_91daed3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-04-02T05:58:16Z",
+      "side": 1,
+      "message": "Finally, I can get lux, X, Y and Z from user space(power manger/iio client).\nPlease check https://partnerissuetracker.corp.google.com/issues/312586806#comment31.",
+      "parentUuid": "1c31a237_aaf92630",
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda28f51_96758cb0",
