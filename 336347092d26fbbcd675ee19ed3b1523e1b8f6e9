@@ -16,6 +16,29 @@
       "message": "@dnojiri@chromium.org\nshould I need any action or modify to make CL merged?",
       "revId": "336347092d26fbbcd675ee19ed3b1523e1b8f6e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bc19df_a513700d",
+        "filename": "common/system.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-02T02:50:35Z",
+      "side": 1,
+      "message": "Can you call chipset_force_g3() instead?",
+      "range": {
+        "startLine": 1050,
+        "startChar": 3,
+        "endLine": 1050,
+        "endChar": 47
+      },
+      "revId": "336347092d26fbbcd675ee19ed3b1523e1b8f6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
