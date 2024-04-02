@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2275f521_50fa5380",
+        "filename": "baseboard/mtscp-rv32i/cam.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1566653
+      },
+      "writtenOn": "2024-04-02T05:39:11Z",
+      "side": 1,
+      "message": "Done, ps24",
+      "parentUuid": "5958c43c_b09015ee",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3956c03_5fd18446",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9becf71_025c60db",
+        "filename": "chip/mt_scp/rv32i_common/ipi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1566653
+      },
+      "writtenOn": "2024-04-02T05:39:11Z",
+      "side": 1,
+      "message": "Done, ps24",
+      "parentUuid": "c3956c03_5fd18446",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 3
+      },
+      "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3eb9c57_493e962f",
@@ -94,6 +142,24 @@
       "writtenOn": "2024-03-29T08:33:14Z",
       "side": 1,
       "message": "please try `__attribute__((section(...))`",
+      "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de163bb_03b8294d",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1566653
+      },
+      "writtenOn": "2024-04-02T05:39:11Z",
+      "side": 1,
+      "message": "According to the discussion, because there are too many symbols that need to be modified, the original writing method is retained.",
+      "parentUuid": "e3eb9c57_493e962f",
       "revId": "67573cf8f20ea0a55c015306017db13f521ca7e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
