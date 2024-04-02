@@ -135,9 +135,15 @@ void usb_stream_event(struct usb_stream_config const *config,
 
 	config->state->rx_waiting = 0;
 
+<<<<<<< HEAD   (289111 chip/stm32: Support generating break condition)
 	STM32_USB_EP(i) = ((i <<  0) | /* Endpoint Addr*/
 			   (2 <<  4) | /* TX NAK */
 			   (0 <<  9) | /* Bulk EP */
+=======
+	STM32_USB_EP(i) = ((i << 0) | /* Endpoint Addr*/
+			   (tx_write(config) ? EP_TX_VALID : EP_TX_NAK) |
+			   (0 << 9) | /* Bulk EP */
+>>>>>>> CHANGE (9503ba chip/stm32: Fix for "deadlock" in UART forwarding)
 			   (rx_disabled(config) ? EP_RX_NAK : EP_RX_VALID));
 }
 
