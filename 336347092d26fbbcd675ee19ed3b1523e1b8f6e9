@@ -39,6 +39,30 @@
       },
       "revId": "336347092d26fbbcd675ee19ed3b1523e1b8f6e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07870edb_b6c9e096",
+        "filename": "common/system.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-04-02T05:57:16Z",
+      "side": 1,
+      "message": "Assume it is equivalent on x86 if we don\u0027t need the returned power state and chipset_force_shutdown is defined on all platforms as chipset_force_g3 is only limited to x86, or we want to avoid faultily called by other platforms ?",
+      "parentUuid": "28bc19df_a513700d",
+      "range": {
+        "startLine": 1050,
+        "startChar": 3,
+        "endLine": 1050,
+        "endChar": 47
+      },
+      "revId": "336347092d26fbbcd675ee19ed3b1523e1b8f6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
