@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82cc1ff_60d6e728",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-02T17:20:51Z",
+      "side": 1,
+      "message": "I agree. What do you think about the new implementation?",
+      "parentUuid": "db51962d_1fbea0fe",
+      "revId": "3eed6e6697015f6b911897d0ab993392a87d07e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "30ddcbad_7f63dd38",
