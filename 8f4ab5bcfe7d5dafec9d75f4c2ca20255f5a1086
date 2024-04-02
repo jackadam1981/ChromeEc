@@ -22,6 +22,30 @@
       },
       "revId": "8f4ab5bcfe7d5dafec9d75f4c2ca20255f5a1086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48abd9b7_6d5a2893",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-02T22:26:21Z",
+      "side": 1,
+      "message": "Thanks. Just submitted a CL to fix it: https://crrev.com/c/5415556\n\nAlso reverted your change back to `span` now that it works: https://crrev.com/c/5415558",
+      "parentUuid": "82de0328_f54d8d1c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "8f4ab5bcfe7d5dafec9d75f4c2ca20255f5a1086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
