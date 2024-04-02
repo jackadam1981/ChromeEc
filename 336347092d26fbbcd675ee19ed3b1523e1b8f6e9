@@ -63,6 +63,30 @@
       },
       "revId": "336347092d26fbbcd675ee19ed3b1523e1b8f6e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6073014_e0620ccf",
+        "filename": "common/system.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-04-02T06:52:20Z",
+      "side": 1,
+      "message": "In fact this instead can not wake\nFirst,uldren didn\u0027t have config `PLATFORM_EC_POWERSEQ_INTEL`.\nSecond,base on first point,uldren didn\u0027t run `power/intel_x86.c`\n```\nzephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_INTEL\n                                                \"${PLATFORM_EC}/power/intel_x86.c\")\n```\nIt will cause uldren can\u0027t call `chipset_force_g3()`\n\nThird,`chipset_force_shutdown()` is called by `shim/src/chipset_api.c`\n```\nvoid chipset_force_shutdown(enum chipset_shutdown_reason reason)\n{\n\tap_power_force_shutdown((enum ap_power_shutdown_reason)reason);\n}\n```",
+      "parentUuid": "28bc19df_a513700d",
+      "range": {
+        "startLine": 1050,
+        "startChar": 3,
+        "endLine": 1050,
+        "endChar": 47
+      },
+      "revId": "336347092d26fbbcd675ee19ed3b1523e1b8f6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
