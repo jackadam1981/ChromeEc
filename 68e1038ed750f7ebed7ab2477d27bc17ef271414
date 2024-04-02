@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4035e5a2_4048a13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-02T06:41:46Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t provide the instruction clearly.\n\nIf a file already exists \"before landing this series\", they\u0027ll likely have the correct header format (`ChromiumOS` instead of `Chromium OS`, and without `All rights reserved.`).\nIn this case, don\u0027t update the year to 2024. Leave them as is.\nThis refers to the files in:\n- `common/`\n- `core/`\n- `include/`\n- `chip/mt_scp/rv32i_common`\n- `chip/mt_scp/xxx` (exclude `chip/mt_scp/mt8188`)\n- Some of files in `baseboard/mtscp-rv32i/`\n- etc.\n\nAnd if a file has header with `All rights reserved.`, it uses the old header and it\u0027s likely a new file. In this case, the changes makes sense.\nThis includes:\n- `baseboard/mtscp-rv32i/cam.*`\n- `board/geralt_scp/*`\n- `chip_mt_scp/mt8188/*`\n- `chip_mt_scp/mt8195/intc_group.c`\n- `chip_mt_scp/rv32i_common/clock_s3.*`\n- `chip_mt_scp/rv32i_common/ipi_ops.c`",
+      "revId": "68e1038ed750f7ebed7ab2477d27bc17ef271414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
