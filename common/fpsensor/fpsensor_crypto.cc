@@ -278,7 +278,7 @@ enum ec_error_list derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 	return ret;
 }
 
-enum ec_error_list aes_gcm_encrypt(const uint8_t *key, size_t key_size,
+enum ec_error_list aes_gcm_encrypt(std::span<const uint8_t> key,
 				   const uint8_t *plaintext,
 				   uint8_t *ciphertext, size_t text_size,
 				   const uint8_t *nonce, size_t nonce_size,
@@ -290,8 +290,8 @@ enum ec_error_list aes_gcm_encrypt(const uint8_t *key, size_t key_size,
 	}
 
 	bssl::ScopedEVP_AEAD_CTX ctx;
-	int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(), key,
-				    key_size, tag_size, nullptr);
+	int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(),
+				    key.data(), key.size(), tag_size, nullptr);
 	if (!ret) {
 		CPRINTS("Failed to initialize encryption context");
 		return EC_ERROR_UNKNOWN;

@@ -52,9 +52,8 @@ encrypt_data_in_place(uint16_t version,
 	}
 
 	/* Encrypt the secret blob in-place. */
-	ret = aes_gcm_encrypt(enc_key.data(), enc_key.size(), data, data,
-			      data_size, info.nonce, sizeof(info.nonce),
-			      info.tag, sizeof(info.tag));
+	ret = aes_gcm_encrypt(enc_key, data, data, data_size, info.nonce,
+			      sizeof(info.nonce), info.tag, sizeof(info.tag));
 	if (ret != EC_SUCCESS) {
 		return ret;
 	}
