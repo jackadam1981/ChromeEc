@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d412427_99be70f6",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-02T04:22:27Z",
+      "side": 1,
+      "message": "You want to wake up the task every 100ms (10Hz).\n```suggestion\n\t\t\t\t\tec-rate \u003d \u003c(100 * USEC_PER_MSEC)\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f2db50_a1792eba",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-02T04:22:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c(100 * USEC_PER_MSEC)\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe3a3aa_fd8c5b56",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-02T04:22:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c100 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b85e033_7ab3a53b",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-02T04:22:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c100 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d218633_1ec15570",
+        "filename": "zephyr/program/brya/motionsense.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-02T04:22:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c100 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
