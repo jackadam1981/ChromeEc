@@ -121,6 +121,24 @@
       "parentUuid": "26cd4cd4_a8711c2a",
       "revId": "c9c95f2c47b2ba2d4580def8bf09a3f9c2fe7cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b172fbb_757c60ff",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3658,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-04-02T10:46:53Z",
+      "side": 1,
+      "message": "Hi David,  \nI update the b:309557100 to track the RAM lock feature for Zephyr.\nNote that there is no existing driver API for the chip-specific RAM lock feature.\nWe plan to implement it the EC\u0027s zephyr [SHIM](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/) layer.",
+      "parentUuid": "4f3244e9_11f9b87b",
+      "revId": "c9c95f2c47b2ba2d4580def8bf09a3f9c2fe7cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
