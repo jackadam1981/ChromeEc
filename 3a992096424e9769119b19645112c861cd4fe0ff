@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a1cee1_64da42e2",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-04-02T02:12:33Z",
+      "side": 1,
+      "message": "If refresh should be ignored for all non-recovery features if we\u0027re entering recovery, I think this is the right place to do it (where we\u0027re actually triggering recovery). It seems like battery cutoff is normally expected to immediately trigger an EC reset (since power+refresh should do that), so blocking cutoff on recovery entry seems like an okay thing to do.",
+      "revId": "3a992096424e9769119b19645112c861cd4fe0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
