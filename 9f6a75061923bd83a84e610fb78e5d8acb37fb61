@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5d05e5_74bd8ae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-02T19:03:17Z",
+      "side": 1,
+      "message": "Updated the driver code to force interrupt mode. Please test it one more time. As far as I see the clear [lux] works pretty well. However I tried to shine some R/G/B light on the sensor and the readings don\u0027t follow the individual R/G/B channels",
+      "parentUuid": "8a708531_91daed3f",
+      "revId": "9f6a75061923bd83a84e610fb78e5d8acb37fb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda28f51_96758cb0",
