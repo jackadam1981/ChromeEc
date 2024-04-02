@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82de0328_f54d8d1c",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2024-04-02T21:09:18Z",
+      "side": 1,
+      "message": "IIRC, the Zephyr SDK don\u0027t support C++20, and it will break something.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5096013\n\nIs that fixed?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "8f4ab5bcfe7d5dafec9d75f4c2ca20255f5a1086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
