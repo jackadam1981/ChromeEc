@@ -574,9 +574,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		       sizeof(fp_positive_match_salt[0]));
 
 		/* Encrypt the secret blob in-place. */
-		ret = aes_128_gcm_encrypt(key, SBP_ENC_KEY_LEN,
-					  encrypted_template,
-					  encrypted_template,
+		ret = aes_128_gcm_encrypt(key, encrypted_template,
 					  encrypted_template,
 					  encrypted_blob_size, enc_info->nonce,
 					  FP_CONTEXT_NONCE_BYTES, enc_info->tag,
