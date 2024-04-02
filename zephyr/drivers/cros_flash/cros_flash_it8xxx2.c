@@ -103,7 +103,7 @@ static enum flash_wp_status flash_check_wp(void)
 
 static int read_bbram_flags(uint8_t *data)
 {
-#ifdef CONFIG_FLASH_PROTECT_RW
+#ifdef CONFIG_FLASH_PROTECT_NEXT_BOOT
 	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
 
 	return bbram_read(bbram_dev, BBRAM_REGION_OFFSET(unlock_flash_at_boot),
@@ -117,7 +117,7 @@ static int read_bbram_flags(uint8_t *data)
 
 static int write_bbram_flags(uint8_t data)
 {
-#ifdef CONFIG_FLASH_PROTECT_RW
+#ifdef CONFIG_FLASH_PROTECT_NEXT_BOOT
 	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
 
 	return bbram_write(bbram_dev, BBRAM_REGION_OFFSET(unlock_flash_at_boot),
@@ -141,13 +141,12 @@ static void lock_rw_rb(void)
 	}
 
 	lock_rw = !(unlock_flags & IT8XXX2_UNLOCK_RW_AT_BOOT);
-	lock_rb = !(unlock_flags & IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT);
-
 	if (lock_rw) {
 		LOG_ERR("lock rw");
 		flash_protect_banks(RW_BANK_OFFSET, RW_BANK_COUNT, FLASH_WP_EC);
 	}
 
+	lock_rb = !(unlock_flags & IT8XXX2_UNLOCK_ROLLBACK_AT_BOOT);
 	if (lock_rb) {
 		LOG_ERR("lock rollback");
 		flash_protect_banks(ROLLBACK_BANK_OFFSET, ROLLBACK_BANK_COUNT,
