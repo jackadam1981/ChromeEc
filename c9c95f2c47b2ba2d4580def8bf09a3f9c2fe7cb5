@@ -139,6 +139,24 @@
       "parentUuid": "4f3244e9_11f9b87b",
       "revId": "c9c95f2c47b2ba2d4580def8bf09a3f9c2fe7cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533333f9_92dfef75",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3658,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-02T14:08:04Z",
+      "side": 1,
+      "message": "\u003e We plan to implement it the EC\u0027s zephyr SHIM layer.\n\nThe shim layer was introduced as a **temporary** solution to allow using the same sources on both systems CrosEC and Zephyr. It implements CrosEC API using Zephyr calls, and it\u0027s not a good place for implementing drivers/features. We are gradually reducing the shim layer by upstreaming the code to Zephyr (e.g. Host Commands).\n\n\u003e Note that there is no existing driver API for the chip-specific RAM lock feature.\n\nThis statement is partially correct. There is no driver API for chip-specific MPU, but chip-specific MPU implementation exists actually (and it\u0027s used):\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/arch/arm/core/mpu/nxp_mpu.c\n\nThe trick is that, there is no support for both Cortex-M MPU and the chip MPU at the same time. It might be a problem, because protection can\u0027t be disabled which excludes chip MPU from some uses (userspace).\n\nYou can always design API and create Zephyr RFC.",
+      "parentUuid": "5b172fbb_757c60ff",
+      "revId": "c9c95f2c47b2ba2d4580def8bf09a3f9c2fe7cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
