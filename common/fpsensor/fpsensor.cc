@@ -11,6 +11,8 @@
 #include <zephyr/shell/shell.h>
 #endif
 
+#include "crypto/cleanse_wrapper.h"
+
 #include <array>
 #include <variant>
 
@@ -472,7 +474,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 	uint32_t offset = params->offset & FP_FRAME_OFFSET_MASK;
 	uint32_t size = params->size;
 	uint16_t fgr;
-	uint8_t key[SBP_ENC_KEY_LEN];
+	CleanseWrapper<std::array<uint8_t, SBP_ENC_KEY_LEN> > key;
 	struct ec_fp_template_encryption_metadata *enc_info;
 	enum ec_error_list ret;
 
@@ -555,7 +557,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			trng_exit();
 		}
 
-		ret = derive_encryption_key(key, enc_info->encryption_salt);
+		ret = derive_encryption_key(key.data(),
+					    enc_info->encryption_salt);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", fgr);
 			return EC_RES_UNAVAILABLE;
@@ -574,10 +577,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		ret = aes_128_gcm_encrypt(key, SBP_ENC_KEY_LEN,
 					  encrypted_template,
 					  encrypted_template,
+					  encrypted_template,
 					  encrypted_blob_size, enc_info->nonce,
 					  FP_CONTEXT_NONCE_BYTES, enc_info->tag,
 					  FP_CONTEXT_TAG_BYTES);
-		OPENSSL_cleanse(key, sizeof(key));
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to encrypt template", fgr);
 			return EC_RES_UNAVAILABLE;
