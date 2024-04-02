@@ -782,9 +782,8 @@ test_static ec_error_list test_aes_128_gcm_encrypt_in_place()
 	};
 
 	ec_error_list ret = aes_128_gcm_encrypt(
-		key.data(), key.size(), plaintext.data(), plaintext.data(),
-		plaintext.size(), nonce.data(), nonce.size(), tag.data(),
-		tag.size());
+		key, plaintext.data(), plaintext.data(), plaintext.size(),
+		nonce.data(), nonce.size(), tag.data(), tag.size());
 	TEST_EQ(ret, EC_SUCCESS, "%d");
 	TEST_ASSERT_ARRAY_EQ(plaintext.data(), expected_ciphertext.data(),
 			     plaintext.size());
