@@ -10,6 +10,8 @@
 
 #include "compile_time_macros.h"
 
+#include <span>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -64,7 +66,6 @@ derive_positive_match_secret(uint8_t *output,
  * Encrypt |plaintext| using AES-GCM128.
  *
  * @param key the key to use in AES.
- * @param key_size the size of |key| in bytes.
  * @param plaintext the plain text to encrypt.
  * @param ciphertext buffer to hold encryption result.
  * @param text_size size of both |plaintext| and output ciphertext in bytes.
@@ -74,7 +75,7 @@ derive_positive_match_secret(uint8_t *output,
  * @param tag_size the size of |tag|.
  * @return EC_SUCCESS on success and error code otherwise.
  */
-enum ec_error_list aes_128_gcm_encrypt(const uint8_t *key, size_t key_size,
+enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
 				       const uint8_t *plaintext,
 				       uint8_t *ciphertext, size_t text_size,
 				       const uint8_t *nonce, size_t nonce_size,
