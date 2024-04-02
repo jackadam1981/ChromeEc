@@ -16,6 +16,24 @@
       "message": "Removing Could be a different CL: it is not needed since we will get an interrupt every 10ms, and process the lid angle.",
       "revId": "81b57cb52e22c53e7c7018d2961ae09eeebce777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b260abf5_a8418939",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-02T04:18:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "53344408_02e69374",
+      "revId": "81b57cb52e22c53e7c7018d2961ae09eeebce777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

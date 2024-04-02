@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b956a143_9ea44b90",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-02T04:18:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "84299fd4_e6daa4a1",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6890614_e1c3019b",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-29T17:59:55Z",
       "side": 1,
       "message": "There is actually a problem: when I change the ec_rate for the accelerometers only, the gyroscope, when setting the ODR to 0 in S3, will re-enable the interrupt, since it is not in forced mode:\n\nSee the EC debug (ignore the UNCHANGED, see b:331948354):\n```\n24-03-29 17:45:09.656 [583.181543 Lid Accel ODR: 10000 INT: OFF - roundup 1 from config 2 [AP 0]: 0]\n24-03-29 17:45:09.666 [583.184237 Base Accel ODR: 10000 INT: UNCHANGED - roundup 1 from config 2 [AP 0]: 0]\n24-03-29 17:45:09.679 [583.187915 Base Gyro ODR: 0 INT: ON - roundup 1 from config 0 [AP 0]: 0]\n```\n\nWe need to allow forced mode when ODR is 0.",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c667e3a_a05aeda5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-02T04:18:04Z",
+      "side": 1,
+      "message": "Seems to be done with your suggested change on line 135.",
+      "parentUuid": "d6890614_e1c3019b",
       "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3492e31_d3ebb744",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-02T04:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9351a93_c3d50668",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aea2e126_c4815f41",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f11fd9_5dd1c481",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-02T04:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aea2e126_c4815f41",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78e3976f_d01875d7",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-03-28T23:23:49Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c10 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a554eee0_5705b74f",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-02T04:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e3976f_d01875d7",
       "revId": "869d6d3c362262274d9f5c43e877bb5b5a841664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
