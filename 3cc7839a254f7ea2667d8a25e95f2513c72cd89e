@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca15d488_99b7d316",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-04-02T16:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85e3e6fb_ff9ee7d7",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19af8206_3016510f",
@@ -398,6 +416,24 @@
       "side": 1,
       "message": "Using `if (IS_ENABLED(CONFIG_POWER_S0IX))` causes the following build failures:\n\n```\nINFO    - The following issues were found (showing the top 10 items):\nINFO    - 1) drivers/drivers.default.console_cmds_rw on native_posix error (Build failure)\nINFO    - 2) krabby/krabby.default_rw on native_posix error (Build failure)\nINFO    - 3) qcom_power/qcom_power.power_gpio_keys_rw on native_posix error (Build failure)\n```\n\nHere are the logs for `qcom_power/qcom_power.power_gpio_keys_rw`:\n\nhttps://paste.googleplex.com/4626769572790272",
       "parentUuid": "6fb3fa93_1205df7d",
+      "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d88837a_22fe27b3",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-04-02T16:58:33Z",
+      "side": 1,
+      "message": "I\u0027d like to get to the bottom of this, but no need to block the CL.",
+      "parentUuid": "1a35a479_69ffb668",
       "revId": "3cc7839a254f7ea2667d8a25e95f2513c72cd89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
