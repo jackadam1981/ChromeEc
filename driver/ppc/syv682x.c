@@ -369,6 +369,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 				     SYV682X_FLAGS_VCONN_OCP)) {
 		vconn_oc_timer[port].val =
 			get_time().val + VCONN_OC_DEGLITCH_MS * MSEC;
+		ppc_prints("VCONN OC flag set", port);
 	} else if ((regval & SYV682X_CONTROL_4_VCONN_OCP) &&
 		   (get_time().val > vconn_oc_timer[port].val)) {
 		vconn_oc_timer[port].val = UINT64_MAX;
@@ -379,7 +380,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 			~(SYV682X_CONTROL_4_VCONN2 | SYV682X_CONTROL_4_VCONN1);
 		write_reg(port, SYV682X_CONTROL_4_REG, regval);
 
-		ppc_prints("VCONN OC!", port);
+		ppc_prints("VCONN OC 100 ms!", port);
 	}
 
 	/*
