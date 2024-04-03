@@ -16,6 +16,24 @@
       "message": "```suggestion\n#define CONFIG_ACCEL_FORCE_MODE_MASK (BIT(CLEAR_ALS) | BIT(RGB_ALS))\n```",
       "revId": "9e3c2308d26345819757cb13fd235f59b2015bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae8051f_0db68892",
+        "filename": "board/xol/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d39ec2a_e821c0ea",
+      "revId": "9e3c2308d26345819757cb13fd235f59b2015bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
