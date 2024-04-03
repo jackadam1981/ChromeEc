@@ -580,6 +580,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adbb74de_eda0fa9b",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-04-03T03:12:01Z",
+      "side": 1,
+      "message": "From code, Dx_max \u003d 0.55, Dy_max \u003d 0.65 So, x + y can be greater than 1.\nBut I am not sure if it happened in real case.\nI just asked it to Chip vendor.",
+      "parentUuid": "b21b20ad_2f9bb09b",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "754ef2fb_a72d9d16",
         "filename": "driver/als_veml3328.h",
         "patchSetId": 16
