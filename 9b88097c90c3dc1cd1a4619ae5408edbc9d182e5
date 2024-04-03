@@ -22,6 +22,30 @@
       },
       "revId": "9b88097c90c3dc1cd1a4619ae5408edbc9d182e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d431b21d_f288cf0a",
+        "filename": "test/sbs_charging.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-04-03T09:14:41Z",
+      "side": 1,
+      "message": "gpio_set_level(GPIO_AC_PRESENT, 0); means AC removed,  got it, but why Comment writes `CHARGING TEST`.",
+      "parentUuid": "18b8bca4_dfb7d63e",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 40
+      },
+      "revId": "9b88097c90c3dc1cd1a4619ae5408edbc9d182e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
