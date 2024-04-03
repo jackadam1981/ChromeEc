@@ -16,6 +16,23 @@
       "message": "Please wait for servo branch owner though",
       "revId": "16fc4863fc2ff9935a38e88a4d7a91746d00d6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f08e5698_12b067f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-03T18:39:41Z",
+      "side": 1,
+      "message": "I have already had email conversation with Łukasz Hajec, and he informally approved of the original CL being cherry-picked for servo, stating that he would start the process of creating a release once it had landed on the release branch.  So I feel confident going through with merging this.",
+      "revId": "16fc4863fc2ff9935a38e88a4d7a91746d00d6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
