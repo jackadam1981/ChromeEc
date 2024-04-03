@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d39ec2a_e821c0ea",
+        "filename": "board/xol/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T00:15:40Z",
+      "side": 1,
+      "message": "```suggestion\n#define CONFIG_ACCEL_FORCE_MODE_MASK (BIT(CLEAR_ALS) | BIT(RGB_ALS))\n```",
+      "revId": "9e3c2308d26345819757cb13fd235f59b2015bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
