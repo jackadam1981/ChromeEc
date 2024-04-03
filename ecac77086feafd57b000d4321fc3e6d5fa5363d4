@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c562d71f_5b2acdff",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-03T17:32:52Z",
+      "side": 1,
+      "message": "Can you use `if (IS_ENABLED(CONFIG_PLATFORM_EC_CHARGE_MANAGER))` here and in place of the other #ifdefs?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 40
+      },
+      "revId": "ecac77086feafd57b000d4321fc3e6d5fa5363d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
