@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d756541_2a2f6265",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:26:45Z",
+      "side": 1,
+      "message": "\u0027\u003e\u003d\u0027 in case we decide to set MAX to less than 2^16-1.\n```suggestion\n\t} else if ((r \u003e\u003d VEML3328_MAX_LIGHT_THRES) ||\n```",
+      "revId": "30ae5b23cef5954fc65a3871a55de87264b1e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
