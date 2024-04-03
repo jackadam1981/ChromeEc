@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "033639eb_6f5400fa",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a168a83_3c57f80a",
+      "range": {
+        "startLine": 760,
+        "startChar": 7,
+        "endLine": 760,
+        "endChar": 44
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03a4ba73_0c3ce4fd",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-29T21:34:37Z",
       "side": 1,
       "message": "For readability, can we create separate functions: `build_ec` and `build_zephyr` and call those?\n\n\nAlso, let\u0027s change conditionals to be \"[positive](http://shortn/_SvoBhiEqfJ)\": `if zephyr` instead of `if not zephyr.`",
+      "range": {
+        "startLine": 739,
+        "startChar": 3,
+        "endLine": 807,
+        "endChar": 69
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d3becce_179303cf",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03a4ba73_0c3ce4fd",
       "range": {
         "startLine": 739,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73dd99d_bf1fa4f7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20bbf194_49d5a1f1",
+      "range": {
+        "startLine": 930,
+        "startChar": 44,
+        "endLine": 930,
+        "endChar": 51
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9bff75e_81f9bf20",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe73a90_93e9095c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9bff75e_81f9bf20",
+      "range": {
+        "startLine": 925,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 44
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5373822_6829daab",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-03-29T21:34:37Z",
       "side": 1,
       "message": "For readability, can we move this into its own function?\n\nThen this becomes:\n\n```\nimage_path \u003d get_image_path(...)\n```\n\nAlso, let\u0027s change conditionals to be \"positive\": `if zephyr` instead of `if not zephyr`.",
+      "range": {
+        "startLine": 1029,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 70
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4a75bd_5dec5717",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5373822_6829daab",
       "range": {
         "startLine": 1029,
         "startChar": 0,
@@ -152,6 +272,54 @@
       "writtenOn": "2024-03-29T21:34:37Z",
       "side": 1,
       "message": "\"usage\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 37,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d11ca6_d8b467c6",
+        "filename": "zephyr/program/fpmcu/prj_hw_tests.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Verbosity is a huge part of that. Also the amount of the assert statement is high.",
+      "parentUuid": "5fac5660_4080d0e3",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "13ad492200a53a1d28d0fc2b23878c19aaffa3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe06dd97_f7818d33",
+        "filename": "zephyr/program/fpmcu/prj_hw_tests.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-03T13:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7cb9f03_a70af327",
       "range": {
         "startLine": 6,
         "startChar": 37,
