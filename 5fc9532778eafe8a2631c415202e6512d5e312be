@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa48c043_5358521f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-03T12:03:58Z",
+      "side": 1,
+      "message": "Build error\n\n```\nbaseboard/mtscp-rv32i/cam.c:55:6: error: redefinition of \u0027img_task_working\u0027\n   55 | bool img_task_working \u003d false;\n      |      ^~~~~~~~~~~~~~~~\nIn file included from baseboard/mtscp-rv32i/cam.c:6:\nbaseboard/mtscp-rv32i/cam.h:32:6: note: previous definition of \u0027img_task_working\u0027 with type \u0027_Bool\u0027\n   32 | bool img_task_working \u003d false;\n      |      ^~~~~~~~~~~~~~~~\nbaseboard/mtscp-rv32i/cam.c: In function \u0027startRED\u0027:\nbaseboard/mtscp-rv32i/cam.c:51:1: error: control reaches end of non-void function [-Werror\u003dreturn-type]\n   51 | }\n      | ^\ncc1: all warnings being treated as errors\n  CC      RW/baseboard/mtscp-rv32i/mdp.o\nmake[2]: *** [Makefile.rules:642: build/geralt_scp_core1/RW/baseboard/mtscp-rv32i/cam.o] Error 1\n```",
+      "revId": "5fc9532778eafe8a2631c415202e6512d5e312be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf12c5a7_8e60a322",
+        "filename": "baseboard/mtscp-rv32i/cam.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-03T12:03:58Z",
+      "side": 1,
+      "message": "Either add a `return 0;` or change the return type to void.",
+      "revId": "5fc9532778eafe8a2631c415202e6512d5e312be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e5b7b5_f14e629e",
+        "filename": "baseboard/mtscp-rv32i/cam.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-03T12:03:58Z",
+      "side": 1,
+      "message": "Delete this line. You\u0027ve defined it in cam.h.",
+      "revId": "5fc9532778eafe8a2631c415202e6512d5e312be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
