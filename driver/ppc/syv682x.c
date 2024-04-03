@@ -290,6 +290,14 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 		}
 	}
 
+#ifdef CONFIG_USBC_PPC_SYV682X_SET_FRS_DETECE_VBUS
+	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_FRS,
+				     SYV682X_FLAGS_FRS)) {
+		atomic_or(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
+		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SINK_ENABLED);
+		gpio_or_ioex_set_level(ppc_chips[port].frs_en, 0);
+	}
+#endif
 	/*
 	 * 5V OC is actually notifying that it is current limiting
 	 * to 3.3A. If this happens for a long time, we will trip TSD

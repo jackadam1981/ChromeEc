@@ -195,6 +195,13 @@ config PLATFORM_EC_USBC_PPC_SYV682X_OVP_SET_15V
 	  Enable 15v power profile application when setting over ovltage protection
 	  for HV channel.
 
+config PLATFORM_EC_USBC_PPC_SYV682X_SET_FRS_DETECE_VBUS
+	bool "Configure PPC SYV682X to use VBUS to determine FRS."
+	help
+	  Add the case of using vbus to trigger FRS. To use this case, you need to set
+	  PPC to enable FRS in board_pd_set_frs_enable. Not shared with
+	  CONFIG_USB_PD_FRS_PPC.
+
 config PLATFORM_EC_USBC_PPC_DEDICATED_INT
 	bool "Power Power Controller has a dedicated interrupt pin"
 	help
