@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9e062014_0d38a4f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ec522b_0bcfc1ed",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a32d22b0_a933780e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 16
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6537e52_407638c5",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "593bf95b_025198cb",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38548c30_b8e7e825",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "Use a sinlge variable instead of `clear` or `green`:\n\nif (drv_data-\u003ecalibration_mode)\n  RETURN_ERROR(i2c_read16(port, addr, VEML3328_REG_C, \u0026raw));\nelse\n  RETURN_ERROR(i2c_read16(port, addr, VEML3328_REG_G, \u0026raw));",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c95212d_447b3cab",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38548c30_b8e7e825",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e367d1_a6519252",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe88f52_272aca88",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33ed37b5_885dac74",
@@ -99,6 +171,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "you don\u0027t need to record timestamp in forced mode. motion_sense task is doing that for you. See common/motion_sense.c around line 682.",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6fa8be_cfe51977",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ed37b5_885dac74",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9765b315_1ddf4260",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "no, removing",
+      "parentUuid": "5645ee1d_f420e1ed",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "476a8796_82e5181b",
@@ -133,6 +241,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "```suggestion\n\t/* TODO(b/312586806): validate rate is valid */\n```",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a7fb782_d172ce26",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476a8796_82e5181b",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9aa124d_840dbafa",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de9a9e9_ce2b7d6f",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd84df3a_d23b1639",
@@ -167,6 +311,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "not needed since are always in forced mdoe.",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50dadbe5_fcff86f4",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd84df3a_d23b1639",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +350,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13c6c06_5545bf8b",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "No, they are not integers",
+      "parentUuid": "3bd64f84_85525883",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fdf6d50_f2dbe8de",
@@ -201,6 +381,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "s/10/VEML3328_MIN_LIGHT_THRES/g",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6cd0b1b_77203891",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fdf6d50_f2dbe8de",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -222,6 +420,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8261528_0b55e641",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6058edec_defae8d9",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd61f7e_8d127a49",
@@ -235,6 +451,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "s/\u003d\u003d VEML3328_CH_MAX/\u003e\u003d VEML3328_MAX_LIGHT_THRES/g",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478aa950_7bbf0aa9",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcd61f7e_8d127a49",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -256,6 +490,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2aed386_6d02c5c6",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055cecf4_c251dd08",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ba127f2_70b09c7c",
@@ -269,6 +521,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "not possible, y between Dy_min and Dy_max.",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8abccd_f81c8753",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "D_min is NOT guaranteed to be a non-zero value (it is defined per-board)",
+      "parentUuid": "4ba127f2_70b09c7c",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -307,6 +577,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b089438_a0ba20be",
+        "filename": "driver/als_veml3328.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "754ef2fb_a72d9d16",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a124ad_f289218e",
@@ -320,6 +608,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "remove",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a22b20c_5666907e",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a124ad_f289218e",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -341,6 +647,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "783ade15_87858b4f",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7347ba80_ca53a6f5",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ad336b1_364a5ff5",
@@ -354,6 +678,24 @@
       "writtenOn": "2024-04-02T20:44:39Z",
       "side": 1,
       "message": "remove",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09603a9_4fb52b4d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2523,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad336b1_364a5ff5",
       "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
