@@ -290,6 +290,15 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 		}
 	}
 
+#ifdef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
+	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_FRS,
+				     SYV682X_FLAGS_FRS)) {
+		atomic_or(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
+		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SINK_ENABLED);
+		if (!tcpm_tcpc_has_frs_control(port))
+			pd_got_frs_signal(port);
+	}
+#endif
 	/*
 	 * 5V OC is actually notifying that it is current limiting
 	 * to 3.3A. If this happens for a long time, we will trip TSD
