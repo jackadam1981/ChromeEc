@@ -483,7 +483,21 @@ SHELL_CMD_REGISTER(altmode, &sub_altmode_cmds, "PD Altmode commands", NULL);
 #ifdef CONFIG_PLATFORM_EC_USB_PD_DP_MODE
 __override uint8_t get_dp_pin_mode(int port)
 {
-	return intel_altmode_task_data.data_status[port].dp_pin << 2;
+	uint8_t dp_pin = intel_altmode_task_data.data_status[port].dp_pin;
+
+	/* <11:10> : DP_Pin_Assignment
+	 *           00: Pin assignments E/E’
+	 *           01: Pin assignments C/C’/D/D’
+	 *           10: Reserved
+	 *           11:Reserved
+	 */
+	if (dp_pin == 0x00)
+		return MODE_DP_PIN_E;
+	/* TODO: b:333089879 to address pinmode D */
+	else if (dp_pin == 0x01)
+		return MODE_DP_PIN_C;
+	else
+		return 0;
 }
 #endif
 
