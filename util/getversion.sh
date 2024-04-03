@@ -124,6 +124,10 @@ main() {
   if [[ -d ./private ]]; then
     fp_common_dir_list+=( ./private )
   fi
+  # Example: bloonchipper-druid
+  if [[ "${BOARD}" =~ -druid$ ]]; then
+    fp_common_dir_list+=( ./private/fingerprint/druid )
+  fi
 
   case "${BOARD}" in
     cr50)
