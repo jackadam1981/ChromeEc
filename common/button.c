@@ -81,6 +81,8 @@ static int raw_button_pressed(const struct button_config *button)
 			physical_value =
 				(!!gpio_get_level(button->gpio) ==
 				 !!(button->flags & BUTTON_FLAG_ACTIVE_HIGH));
+			CPRINTS("raw_button: rec_btn, phy_val = %d, read_val = %d",
+				physical_value, gpio_get_level(button->gpio));
 		}
 #ifdef CONFIG_SIMULATED_BUTTON
 		simulated_value = simulated_button_pressed(button);
@@ -126,6 +128,8 @@ static int is_recovery_button_pressed(void)
 	for (i = 0; i < recovery_buttons_count; i++) {
 		pressed = raw_button_pressed(recovery_buttons[i]);
 		if (IS_ENABLED(CONFIG_DEDICATED_RECOVERY_BUTTON)) {
+			CPRINTS("recovery_button: is pressed = %s",
+				pressed ? "y" : "n");
 			if (pressed)
 				return 1;
 		} else {
@@ -206,6 +210,9 @@ static void button_reset(enum button button_type,
 {
 	state[button_type].debounced_pressed = raw_button_pressed(button);
 	state[button_type].debounce_time = 0;
+	CPRINTS("button_reset: type = %d, pressed = %d, gpio = %d",
+		button_type, state[button_type].debounced_pressed,
+		button->gpio);
 	gpio_enable_interrupt(button->gpio);
 }
 
@@ -233,6 +240,7 @@ void button_init(void)
 {
 	int i;
 
+	gpio_set_level(GPIO_TEST, 1);
 	CPRINTS("init buttons");
 	next_deferred_time = 0;
 	for (i = 0; i < BUTTON_COUNT; i++)
@@ -251,7 +259,9 @@ void button_init(void)
 		if (raw_button_pressed(&buttons[i]))
 			boot_button_set(i);
 	}
-	CPRINTS("boot buttons: 0x%x", boot_button);
+	CPRINTS("boot buttons: 0x%x, BUTTON_COUNT = %d", boot_button,
+		BUTTON_COUNT);
+	gpio_set_level(GPIO_TEST, 0);
 }
 
 #ifdef CONFIG_BUTTONS_RUNTIME_CONFIG
@@ -305,6 +315,8 @@ static void button_change_deferred(void)
 	uint64_t time_now = get_time().val;
 
 	for (i = 0; i < BUTTON_COUNT; i++) {
+		CPRINTS("btn_chg[%d]: debounce_time = %u", i,
+			(uint32_t)(state[i].debounce_time & 0xffffffff));
 		/* Skip this button if we are not waiting to debounce */
 		if (state[i].debounce_time == 0)
 			continue;
@@ -314,6 +326,8 @@ static void button_change_deferred(void)
 			new_pressed = raw_button_pressed(&buttons[i]);
 			if (state[i].debounced_pressed != new_pressed) {
 				state[i].debounced_pressed = new_pressed;
+				CPRINTS("btn_chg[%d]: new_pressed = %d, REC = %d",
+					i, new_pressed, BUTTON_RECOVERY);
 #ifdef CONFIG_EMULATED_SYSRQ
 				/*
 				 * Calling deferred function for handling debug
@@ -533,11 +547,14 @@ static void debug_mode_handle(void)
 {
 	static int recovery_button_pressed = 0;
 
+	CPRINTS("dbg_mode_handle: rec_btn_pressed = %d",
+		recovery_button_pressed);
 	if (!recovery_button_pressed) {
 		if (is_recovery_button_pressed()) {
 			/* User pressed recovery button. Wait for 4 seconds
 			 * to see if warm reset is requested. */
 			recovery_button_pressed = 1;
+			CPRINTS("dbg_mode_handle: starting 4 sec timer");
 			hook_call_deferred(&debug_mode_handle_data, 4 * SECOND);
 		}
 	} else {
@@ -882,7 +899,7 @@ struct button_config buttons[BUTTON_COUNT] = {
 		.name = "Recovery",
 		.type = KEYBOARD_BUTTON_RECOVERY,
 		.gpio = GPIO_RECOVERY_L,
-		.debounce_us = BUTTON_DEBOUNCE_US,
+		.debounce_us = (BUTTON_DEBOUNCE_US / 1),
 		.flags = CONFIG_DEDICATED_RECOVERY_BUTTON_FLAGS,
 	},
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON_2
