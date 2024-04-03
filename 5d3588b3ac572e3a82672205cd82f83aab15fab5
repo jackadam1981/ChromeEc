@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54ed5aa_c99e57b3",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "remove until needed.",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04e1a83_9bc8e919",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "is there a pointer to some doc to any explain these values?",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7b832c_789d25b7",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "you can remove fields that are 0, this is a static variable.",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799c2fa2_14a735c9",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "needed?",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92f8142_aeea7a39",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "not needed since we are not reporting sensor via ACPI anymore.",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad7d04f_49615ee7",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c66899_85af05d6",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "needed?",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1119d1_84b926d2",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-04-03T05:32:01Z",
+      "side": 1,
+      "message": "not needed since we are not reporting sensor via ACPI (see https://chromium-review.googlesource.com/c/chromiumos/third_party/coreboot/+/3963264)",
+      "revId": "5d3588b3ac572e3a82672205cd82f83aab15fab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
