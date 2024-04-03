@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b8a56b_da19978e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-03T17:03:35Z",
+      "side": 1,
+      "message": "Line length here and below.",
+      "revId": "68b57e515f2e53247ed61bd0e729cad230a8ef0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a5cd2e_106bf5cd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-03T17:03:35Z",
+      "side": 1,
+      "message": "This is only valid if `argc \u003e\u003d 1`.",
+      "revId": "68b57e515f2e53247ed61bd0e729cad230a8ef0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
