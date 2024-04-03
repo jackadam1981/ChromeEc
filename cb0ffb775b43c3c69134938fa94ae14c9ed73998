@@ -52,6 +52,23 @@
       "parentUuid": "bd1f2ee3_6a83389a",
       "revId": "cb0ffb775b43c3c69134938fa94ae14c9ed73998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dacbc4f_96d052c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1593632
+      },
+      "writtenOn": "2024-04-03T05:53:00Z",
+      "side": 1,
+      "message": "I have discussed with our thermal team,\nThey think it is a low risk if add the 65w adp setting in gothrax/gothraxcs.\nBecause the maximum charging current has been limit to 1C,\nSo, even adp input current increased, the charging current won\u0027t increase too much to affect the skin temp.",
+      "revId": "cb0ffb775b43c3c69134938fa94ae14c9ed73998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
