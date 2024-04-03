@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35471c64_2b5eee54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-03T08:42:06Z",
+      "side": 1,
+      "message": "The build failure is\n\n```\ncommon/ec_features.c: In function \u0027get_feature_flags1\u0027:\ncommon/ec_features.c:150:5: error: \"SCP_CORE_SN\" is not defined, evaluates to 0 [-Werror\u003dundef]\n  150 | #if SCP_CORE_SN \u003d\u003d 1\n      |     ^~~~~~~~~~~\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:642: build/kukui_scp/RW/common/ec_features.o] Error 1\nmake[1]: *** [Makefile.rules:304: proj-kukui_scp] Error 2\n```",
+      "revId": "76c3ab50acae47b84cda9b1176c924e537964496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c269097_49ff4d09",
+        "filename": "common/ec_features.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-03T08:42:06Z",
+      "side": 1,
+      "message": "`#if defined(SCP_CORE_SN) \u0026\u0026 SCP_CORE_SN \u003d\u003d 1`\n\nkukui_scp and corsola_scp doesn\u0027t have `BASEBOARD:\u003dmtscp-rv32i` in their build.mk",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "revId": "76c3ab50acae47b84cda9b1176c924e537964496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
