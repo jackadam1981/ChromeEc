@@ -8,17 +8,22 @@
  * and shares the same firmware.
  * So some functions should be disabled for clamshell.
  */
+
 #include "accelgyro.h"
 #include "battery.h"
 #include "common.h"
 #include "cros_cbi.h"
 #include "driver/accelgyro_bmi323.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/ppc/syv682x_public.h"
+#include "emul/emul_syv682x.h"
+#include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
+#include "usbc_ppc.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -76,4 +81,37 @@ enum battery_present battery_hw_present(void)
 
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+__overridable void board_frs_handler(int port)
+{
+	printk("%s", __func__);
+	gpio_or_ioex_set_level(ppc_chips[port].frs_en, 1);
+}
+
+static int syv682x_set_frs_enable_CUSTOM(int port, int enable)
+{
+	int regval;
+
+	i2c_read8(ppc_chips[port].i2c_port, ppc_chips[port].i2c_addr_flags,
+		  SYV682X_CONTROL_4_REG, &regval);
+
+	if (enable) {
+		regval |= SYV682X_CONTROL_4_CC_FRS;
+		i2c_write8(ppc_chips[port].i2c_port,
+			   ppc_chips[port].i2c_addr_flags,
+			   SYV682X_CONTROL_4_CC_FRS, regval);
+	} else {
+		regval |= SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
+		i2c_write8(ppc_chips[port].i2c_port,
+			   ppc_chips[port].i2c_addr_flags,
+			   SYV682X_CONTROL_4_CC_FRS, regval);
+		gpio_or_ioex_set_level(ppc_chips[port].frs_en, 0);
+	}
+
+	return EC_SUCCESS;
+}
+
+__overridable int board_pd_set_frs_enable(int port, int enable)
+{
+	return syv682x_set_frs_enable_CUSTOM(port, enable);
 }
