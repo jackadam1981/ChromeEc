@@ -562,6 +562,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b21b20ad_2f9bb09b",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-03T01:13:56Z",
+      "side": 1,
+      "message": "This is suggested by manufacturer. I want to say NO, it couldn\u0027t (if x+y \u003c 1) but I\u0027m not 100% certain. Maybe Jongpil knows?",
+      "parentUuid": "42713c93_ee340dcb",
+      "revId": "7ce0d2de65009dd3d1c2c5929520230d093e9e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "754ef2fb_a72d9d16",
         "filename": "driver/als_veml3328.h",
         "patchSetId": 16
