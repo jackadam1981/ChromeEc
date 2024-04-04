@@ -302,6 +302,7 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port);
  *			other ec_error_list status otherwise.
  */
 int board_set_active_charge_port(int charge_port);
+int board_dc_jack_present(void);
 
 /**
  * Set the charge current limit.
