@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3bb86a_3914ab65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-04T23:41:37Z",
+      "side": 1,
+      "message": "@patrykd@google.com FYI, this is an uprev for `boringssl`.\n\nIt\u0027s currently failing when building zephyr due to:\n\n```\nmodules/ec/third_party/boringssl/build/crypto/CMakeFiles/crypto.dir/err/err.c.obj -c /mnt/host/source/src/third_party/boringssl/crypto/err/err.c\n/mnt/host/source/src/third_party/boringssl/crypto/err/err.c:182:15: error: incompatible integer to pointer conversion assigning to \u0027char *\u0027 from \u0027int\u0027 [-Wint-conversion]\n  182 |     dst-\u003edata \u003d strdup(src-\u003edata);\n      |               ^ ~~~~~~~~~~~~~~~~~\n/mnt/host/source/src/third_party/boringssl/crypto/err/err.c:757:9: error: incompatible integer to pointer conversion initializing \u0027char *\u0027 with an expression of type \u0027int\u0027 [-Wint-conversion]\n  757 |   char *copy \u003d strdup(data);\n      |         ^      ~~~\n      \n```\n\nWhen I run the preprocessor (add `-E`), I see that there is no declaration of `strdup` even though `string.h` is included. The above warning is a bit misleading; it\u0027s assuming return type is `int` since there is no declaration.\n\nIt looks like `strdup` is guarded by these macros:\n\n```\n#if __MISC_VISIBLE || __POSIX_VISIBLE \u003e\u003d 200809 || __XSI_VISIBLE \u003e\u003d 4                                                                                                                                                                               \nchar    *strdup (const char *) __malloc_like __result_use_check;                                                                                                                                                                                    \n#endif \n```\n\nEC builds fine. I\u0027ll look at this tomorrow. I just wanted to give you a heads up since you are also making boringssl changes.",
+      "revId": "6f22a15a4aa3233057a5d785fe4ca549c17eef73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
