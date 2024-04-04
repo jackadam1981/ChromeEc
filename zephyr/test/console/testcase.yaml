@@ -1,0 +1,7 @@
+common:
+  platform_allow: native_posix
+tests:
+  console.restricted:
+    extra_configs:
+    - CONFIG_TEST_CONSOLE_RESTRICTED=y
+    - CONFIG_BOARD_FINGERPRINT=y
