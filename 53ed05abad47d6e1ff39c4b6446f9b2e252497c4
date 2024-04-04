@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f538bb87_badaf1ac",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-04T23:06:41Z",
+      "side": 1,
+      "message": "@patrykd@google.com it does not work in this location because `crec_flash_pre_init()` comes after `mpu_pre_init()`, so technically it is too early to know anything about the flash protect state at this point.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/main.c;l\u003d127#:~:text\u003d126-,127,-128",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 451,
+        "endChar": 6
+      },
+      "revId": "53ed05abad47d6e1ff39c4b6446f9b2e252497c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
