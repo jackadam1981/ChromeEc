@@ -835,7 +835,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				/* Set the port the CCI Event occurred
 				 * on */
 				pdc_int_data->cci_event.connector_change =
-					cfg->connector_number;
+					cfg->connector_number + 1;
 				/* Set the interrupt event */
 				pdc_int_data->cci_event
 					.vendor_defined_indicator = 1;
@@ -2363,7 +2363,7 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 {
 	uint8_t ucsi_command = control->command;
 	const struct device *dev;
-	uint8_t port_num = 0;
+	uint8_t conn;  /* 1:port=0, 2:port=1, ... */
 	int rv = 0;
 
 	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
@@ -2384,18 +2384,25 @@ static int rts5453_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	case UCSI_CMD_GET_PD_MESSAGE:
 	case UCSI_CMD_GET_ATTENTION_VDO:
 	case UCSI_CMD_GET_CAM_CS:
-		port_num = UCSI_7BIT_PORTMASK(control->command_specific[0]);
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[0]);
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+			return -EINVAL;
 		break;
 
 	/* The following UCSI commands change the port being addressed.
 	 * These commands have the connector number at offset 24.
 	 */
 	case UCSI_CMD_GET_ALTERNATE_MODES:
-		port_num = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		if (conn == 0 || conn > ARRAY_SIZE(pdc_data))
+			return -EINVAL;
 		break;
+	default:
+		conn = 0;
 	}
 
-	dev = pdc_data[port_num]->dev;
+	dev = pdc_data[conn ? conn - 1 : 0]->dev;
+
 	switch (ucsi_command) {
 	case UCSI_CMD_PPM_RESET:
 		rv = rts54_reset(dev);
