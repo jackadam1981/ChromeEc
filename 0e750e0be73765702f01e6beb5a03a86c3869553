@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f07f446_b317f42b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-04T16:57:15Z",
+      "side": 1,
+      "message": "I know it\u0027s kind of a pain, but since we are using this same branch to release helipilot, can we run the unit tests for helipilot on quincy?\n\nI just want to make sure we leave the release branch in a good state in case we need to make another quick release of helipilot to fix something.\n\nLet me know if you want me to run the them to help out.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "0e750e0be73765702f01e6beb5a03a86c3869553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
