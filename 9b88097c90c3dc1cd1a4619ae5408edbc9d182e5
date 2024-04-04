@@ -46,6 +46,30 @@
       },
       "revId": "9b88097c90c3dc1cd1a4619ae5408edbc9d182e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcb58bf_6747e606",
+        "filename": "test/sbs_charging.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-04-04T23:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d431b21d_f288cf0a",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 40
+      },
+      "revId": "9b88097c90c3dc1cd1a4619ae5408edbc9d182e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
