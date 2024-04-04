@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff710da_a6db15b7",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T22:59:19Z",
+      "side": 1,
+      "message": "We should consider moving all the non-usermode code from `extra/um_ppm` into zephyr/subsys/ucsi.\n\nThis would be:\n\n* ppm_common.{h,c}\n* include/{pd_driver,platform,ppm}.h\n\nWe can leave `include/smbus.h` alone as it\u0027s part of the implementation detail. Do you want to stage that before this commit or separately?",
+      "revId": "f304a795c803097930a32448b8b39fdede60106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd306aa_5e7e8902",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T22:59:19Z",
+      "side": 1,
+      "message": "nit: Called PPM_SET, message says PPM_GET",
+      "revId": "f304a795c803097930a32448b8b39fdede60106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc47099_6e00f69e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T22:59:19Z",
+      "side": 1,
+      "message": "You should print the raw message as well (cast to uint32_t and print as `0x%08x`).",
+      "revId": "f304a795c803097930a32448b8b39fdede60106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec592e37_c5ce1b48",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T22:59:19Z",
+      "side": 1,
+      "message": "nit: why not use `struct ucsiv3_get_capability_data`?",
+      "revId": "f304a795c803097930a32448b8b39fdede60106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0c3323_501c5253",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 12552,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T22:59:19Z",
+      "side": 1,
+      "message": "Add rest of commands [dump, notify, ack and get]",
+      "revId": "f304a795c803097930a32448b8b39fdede60106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
