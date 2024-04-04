@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407ba753_86defd0d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 5816,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T23:45:32Z",
+      "side": 1,
+      "message": "Does this belong in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5280910/ instead?",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7bfe60_f28956ab",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T23:45:32Z",
+      "side": 1,
+      "message": "Same comment as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5327448/comment/3ff710da_a6db15b7/\n\nLet\u0027s move these files to `zephyr/subsys/ucsi`",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10579a7_9cd72a37",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2326,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T23:45:32Z",
+      "side": 1,
+      "message": "Unused:\n  * smbus\n  * driver_config\n  * lpm_interrupt_task",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b25c9ba_6ccd3651",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T23:45:32Z",
+      "side": 1,
+      "message": "Since `port_num` is coming from outside EC, we should validate it before using.",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c329e3c1_cde123b5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2399,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-04T23:45:32Z",
+      "side": 1,
+      "message": "I think we only need to handle custom implementations here and just forward the rest of these as-is:\n\n```\nswitch(ucsi_command) {\n  /* Custom only because of the idle state. */\n  case UCSI_CMD_PPM_RESET:\n    rv \u003d rts54_reset(dev);\n    break;\n    \n  /* Needed to clear interrupt bits on Connection Indicator. */\n  case UCSI_CMD_ACK_CC_CI:\n    /* Handle acks. Looks like the driver doesn\u0027t do this today. */\n    break;\n    \n  /* All other commands should mostly be passed through as-is. */\n  default:\n    if (get_state(data) \u003d\u003d ST_IDLE) {\n      data_size \u003d ucsi_commands[ucsi_command].command_copy_length;\n      dev-\u003ecmd_buffer[0] \u003d 0xE; /* Cmd */\n      dev-\u003ecmd_buffer[1] \u003d data_size + 2;\n      dev-\u003ecmd_buffer[2] \u003d ucsi_command; /* sub-cmd */\n      memcpy(\u0026dev-\u003ecmd_buffer[3], control-\u003ecommand_specific_data,\n        data_size);\n        \n      rv \u003d rts54_post_command(dev, CMD_PPM_RESET + ucsi_command, dev-\u003ecmd_buffer, data_size + 2, lpm_data_out);\n    } else {\n      rv \u003d -EBUSY;\n    }\n    \n    break;\n}\n\nreturn rv;\n\n```",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
