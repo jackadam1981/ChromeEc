@@ -884,8 +884,37 @@ static bool handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
-		conn_status_change_bits.raw_value);
+	LOG_INF("C%d: Connector status\n"
+		"Change bits %#04x\n"
+		"Operation mode %u\n"
+		"Connect status %u\n"
+		"Power direction %u\n"
+		"partner flags %#02x\n"
+		"partner type %u\n"
+		"rdo %#08x\n"
+		"battery status %u\n"
+		"reason %u\n"
+		"pd_ver %#04x\n"
+		"orientation %u\n"
+		"sink_path_status %u\n"
+		"reverse_current_protection_status %u\n"
+		"power_reading_ready %u\n"
+		"current_scale %u\n"
+		"peak_current %u\n"
+		"average_current %u\n"
+		"voltage_scale %u\n"
+		"voltage_reading %u",
+		port_number, status->raw_conn_status_change_bits,
+		status->power_operation_mode, status->connect_status,
+		status->power_direction, status->conn_partner_flags,
+		status->conn_partner_type, status->rdo,
+		status->battery_charging_cap_status,
+		status->provider_caps_limited_reason, status->bcd_pd_version,
+		status->orientation, status->sink_path_status,
+		status->reverse_current_protection_status,
+		status->power_reading_ready, status->current_scale,
+		status->peak_current, status->average_current,
+		status->voltage_scale, status->voltage_reading);
 
 	if (conn_status_change_bits.pd_reset_complete) {
 		LOG_INF("C%d: Reset complete indicator", port_number);
