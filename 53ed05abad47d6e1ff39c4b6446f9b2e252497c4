@@ -22,6 +22,30 @@
       },
       "revId": "53ed05abad47d6e1ff39c4b6446f9b2e252497c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a736a1_4e6497eb",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-04T23:07:51Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org, I forgot to mention you in the comment above. It seems that the best option is still to add it to the main function",
+      "parentUuid": "f538bb87_badaf1ac",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 451,
+        "endChar": 6
+      },
+      "revId": "53ed05abad47d6e1ff39c4b6446f9b2e252497c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
