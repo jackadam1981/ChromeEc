@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1824440_605fb375",
+        "filename": "driver/als_veml3328.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-04T20:08:51Z",
+      "side": 1,
+      "message": "`i2c_read16` expects int. Adding casting to c,r,g,b,ir instead",
+      "parentUuid": "00c2b5e8_ac8f7939",
+      "revId": "911e5ea946be7460760e088a4acb0c12ba7efd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcb82e86_1940fcdb",
