@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9dc563b_baa4b01e",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-04T14:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d412427_99be70f6",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45f2db50_a1792eba",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-02T04:22:27Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c(100 * USEC_PER_MSEC)\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5c7bb8_d9b079e3",
+        "filename": "zephyr/dts/program/rex/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-04T14:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f2db50_a1792eba",
       "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "874cd851_ef81a6e0",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-04T14:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe3a3aa_fd8c5b56",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b85e033_7ab3a53b",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "044c30d9_b46a79f7",
+        "filename": "zephyr/program/brox/motionsense.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-04T14:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b85e033_7ab3a53b",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d218633_1ec15570",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-04-02T04:22:27Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\t\tec-rate \u003d \u003c100 * USEC_PER_MSEC\u003e;\n```",
+      "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4dffba_a77f163d",
+        "filename": "zephyr/program/brya/motionsense.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-04T14:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d218633_1ec15570",
       "revId": "733d63cc404e299fe48ff8835444dd348ef85c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
