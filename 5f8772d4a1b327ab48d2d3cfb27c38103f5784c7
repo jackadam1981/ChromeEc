@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3d2cde_2c902e63",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2366,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-05T03:54:50Z",
+      "side": 1,
+      "message": "nit: `conn` is confusing because it\u0027s short for `connection`. Maybe `conn_num` instead.",
+      "revId": "5f8772d4a1b327ab48d2d3cfb27c38103f5784c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da03659_cbb2e0f3",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2366,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-05T03:54:50Z",
+      "side": 1,
+      "message": "nit: `uint8_t conn \u003d 1;` so you don\u0027t need a `default:` later.",
+      "revId": "5f8772d4a1b327ab48d2d3cfb27c38103f5784c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba099e2_5e173917",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2401,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-05T03:54:50Z",
+      "side": 1,
+      "message": "Get rid of this assignment and the two checks on `conn` above. The new code below should be:\n\n```\n\nif (conn \u003d\u003d 0 || conn \u003e ARRAY_SIZE(pdc_data)) {\n  return -EINVAL;\n}\n\ndev \u003d pdc_data[conn - 1]-\u003edev;\n\n```",
+      "revId": "5f8772d4a1b327ab48d2d3cfb27c38103f5784c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
