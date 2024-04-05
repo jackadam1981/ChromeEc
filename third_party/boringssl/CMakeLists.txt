@@ -63,7 +63,7 @@ zephyr_library_link_libraries(crypto)
 
 # Provide implementation of getentropy() using Zephyr Entropy Device.
 zephyr_library_sources_ifdef(CONFIG_BORINGSSL_HARDWARE_ENTROPY
-	common/sysrand_zephyr.c)
+	common/getentropy_zephyr.c)
 
 # Change language to C11 because sysrand_zephyr.c includes header from
 # BoringSSL which requires that.
