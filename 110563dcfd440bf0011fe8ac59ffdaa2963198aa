@@ -22,6 +22,30 @@
       },
       "revId": "110563dcfd440bf0011fe8ac59ffdaa2963198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c991cf2_e35372ed",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-05T19:37:24Z",
+      "side": 1,
+      "message": "\u003e Can you push this change upstream to BoringSSL?\n\nShould `CMakeLists.txt` define `_XOPEN_SOURCE` when `CMAKE_SYSTEM_NAME` is `Generic`? Or you think about something different?",
+      "parentUuid": "1db59d7b_f4b41c31",
+      "range": {
+        "startLine": 96,
+        "startChar": 30,
+        "endLine": 96,
+        "endChar": 55
+      },
+      "revId": "110563dcfd440bf0011fe8ac59ffdaa2963198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
