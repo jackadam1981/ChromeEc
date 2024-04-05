@@ -45,10 +45,12 @@ import argparse
 from collections import namedtuple
 import concurrent
 from concurrent.futures.thread import ThreadPoolExecutor
+from dataclasses import asdict
 from dataclasses import dataclass
 from dataclasses import field
 from enum import Enum
 import io
+import json
 import logging
 import os
 from pathlib import Path
@@ -197,6 +199,21 @@ class BoardConfig:
     variants: Dict
 
 
+def noop_test_callback(_board_config: BoardConfig) -> bool:
+    """No-op callback."""
+    return True
+
+
+def set_sleep_mode_on_test_callback(_board_config: BoardConfig = None) -> bool:
+    """Set sleep mode to on."""
+    set_sleep_mode(True)
+
+
+def set_sleep_mode_off_test_callback(_board_config: BoardConfig = None) -> bool:
+    """Set sleep mode to off."""
+    set_sleep_mode(False)
+
+
 @dataclass
 class TestConfig:
     """Configuration for a given test."""
@@ -226,8 +243,8 @@ class TestConfig:
     # that do not otherwise fit into the test workflow. The default behavior is
     # to simply return True and if either callback returns False then the test
     # is reported a failure.
-    pre_test_callback: Callable = field(init=True, default=lambda board: True)
-    post_test_callback: Callable = field(init=True, default=lambda board: True)
+    pre_test_callback: Callable = field(init=True, default=noop_test_callback)
+    post_test_callback: Callable = field(init=True, default=noop_test_callback)
 
     def __post_init__(self):
         if self.finish_regexes is None:
@@ -413,7 +430,7 @@ class AllTests:
                 test_name="power_utilization",
                 apptype_to_use=ApplicationType.PRODUCTION,
                 toggle_power=True,
-                pre_test_callback=lambda config=None: set_sleep_mode(False),
+                pre_test_callback=set_sleep_mode_off_test_callback,
                 post_test_callback=verify_idle_power_utilization,
                 finish_regexes=[RW_IMAGE_BOOTED_REGEX],
             ),
@@ -422,7 +439,7 @@ class AllTests:
                 test_name="power_utilization",
                 apptype_to_use=ApplicationType.PRODUCTION,
                 toggle_power=True,
-                pre_test_callback=lambda config=None: set_sleep_mode(True),
+                pre_test_callback=set_sleep_mode_on_test_callback,
                 post_test_callback=verify_sleep_power_utilization,
                 finish_regexes=[RW_IMAGE_BOOTED_REGEX],
             ),
@@ -1254,6 +1271,12 @@ def main():
         "--zephyr", help="Use Zephyr build", action="store_true"
     )
 
+    parser.add_argument(
+        "--print_config_json",
+        help="Print json formatted test configs",
+        action="store_true",
+    )
+
     args = parser.parse_args()
     logging.basicConfig(
         format="%(levelname)s:%(message)s", level=args.log_level
@@ -1262,7 +1285,14 @@ def main():
 
     board_config = BOARD_CONFIGS[args.board]
     test_list = get_test_list(board_config, args.tests, args.with_private)
-    logging.debug("Running tests: %s", [test.config_name for test in test_list])
+
+    if args.print_config_json:
+        print_config_json(test_list)
+        sys.exit(0)
+    else:
+        logging.debug(
+            "Running tests: %s", [test.config_name for test in test_list]
+        )
 
     with ThreadPoolExecutor(max_workers=1) as executor:
         for test in test_list:
@@ -1389,6 +1419,27 @@ def verify_sleep_power_utilization(board_config: BoardConfig) -> bool:
     # Make sure to exit sleep mode!
     set_sleep_mode(False)
     return ret
+
+
+def print_config_json(tests: List[TestConfig]):
+    """Print tests object as json formatted string"""
+
+    jsons = []
+    for test in tests:
+        conf = {}
+        for key, value in asdict(test).items():
+            # Print names of callbacks.
+            if key in ("pre_test_callback", "post_test_callback"):
+                value = value.__name__
+            # Print regex pattern strings.
+            if key.endswith("_regexes"):
+                value = [str((i.pattern)) for i in value]
+            # Print enum strings.
+            if issubclass(type(value), Enum):
+                value = value.__str__()
+            conf[key] = value
+        jsons.append(conf)
+    print(json.dumps(jsons))
 
 
 if __name__ == "__main__":
