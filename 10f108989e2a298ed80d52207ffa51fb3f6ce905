@@ -34,6 +34,24 @@
       "parentUuid": "1932988e_21bcfd6b",
       "revId": "10f108989e2a298ed80d52207ffa51fb3f6ce905",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cecd739_06e2f2ed",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-05T17:39:49Z",
+      "side": 1,
+      "message": "It might make more sense to me to add the init hook first and then these commands, but I\u0027ll allow it.",
+      "parentUuid": "02e39bb6_158d73a0",
+      "revId": "10f108989e2a298ed80d52207ffa51fb3f6ce905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
