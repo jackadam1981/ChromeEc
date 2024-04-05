@@ -122,13 +122,14 @@ void dfp_consume_svids(int port, enum tcpci_msg_type type, int cnt,
 			break;
 
 		svid0 = PD_VDO_SVID_SVID0(*ptr);
+		svid1 = PD_VDO_SVID_SVID1(*ptr);
+
 		if (!svid0)
 			break;
 
 		if (!is_svid_duplicated(disc, svid0))
 			disc->svids[disc->svid_cnt++].svid = svid0;
 
-		svid1 = PD_VDO_SVID_SVID1(*ptr);
 		if (!svid1)
 			break;
 
@@ -138,11 +139,13 @@ void dfp_consume_svids(int port, enum tcpci_msg_type type, int cnt,
 		ptr++;
 		vdo++;
 	}
-	/* TODO(tbroch) need to re-issue discover svids if > 12 */
-	if (i && ((i % 12) == 0))
-		CPRINTF("ERR:SVID+12\n");
 
-	pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
+	/* If there are more SVIDs after this ACK, the ACK will contain a
+	 * non-zero SVID in every available slot. In that case, send another
+	 * Discover SVIDs REQ to get the next batch.
+	 */
+	if (!(cnt == VDO_MAX_SIZE && svid1 != 0) || i >= SVID_DISCOVERY_MAX)
+		pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
 }
 
 void dfp_consume_modes(int port, enum tcpci_msg_type type, int cnt,
