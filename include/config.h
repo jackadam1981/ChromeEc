@@ -1848,6 +1848,9 @@
 /* Allow unaligned access */
 #undef CONFIG_ALLOW_UNALIGNED_ACCESS
 
+/* Protect code RAM */
+#undef CONFIG_PROTECT_CODE_RAM
+
 /*
  * Provide common runtime layer code (tasks, hooks ...)
  * You want this unless you are doing a really tiny firmware.
