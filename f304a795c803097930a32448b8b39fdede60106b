@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33cbbbed_591647ea",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-04-05T17:24:18Z",
+      "side": 1,
+      "message": "Ectool is build by an ebuild, and it should be possible to get coverage from that.",
+      "parentUuid": "8d8bf491_7363d0d6",
+      "revId": "f304a795c803097930a32448b8b39fdede60106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cd306aa_5e7e8902",
