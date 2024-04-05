@@ -1772,6 +1772,7 @@ static int rts54_get_cable_property(const struct device *dev,
 		GET_CABLE_PROPERTY.len,
 		GET_CABLE_PROPERTY.sub,
 		0x00,
+		0x00,
 	};
 
 	return rts54_post_command(dev, CMD_GET_CABLE_PROPERTY, payload,
