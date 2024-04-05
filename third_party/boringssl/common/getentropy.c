@@ -5,11 +5,9 @@
 
 /* Implement getentropy (used by BoringSSL) using the EC TRNG. */
 
-#include "openssl/base.h"
 #include "trng.h"
 
 #include <errno.h>
-
 #include <unistd.h>
 
 int getentropy(void *buffer, size_t length)

@@ -6,12 +6,10 @@
 /* Implement getentropy (used by BoringSSL) using Zephyr Entropy Device. */
 
 #include <errno.h>
+#include <stddef.h>
 
 #include <zephyr/drivers/entropy.h>
 #include <zephyr/kernel.h>
-
-#include <../crypto/fipsmodule/rand/internal.h>
-#include <openssl/base.h>
 
 #define rng DEVICE_DT_GET(DT_CHOSEN(zephyr_entropy))
 
