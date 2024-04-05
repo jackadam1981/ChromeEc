@@ -7184,6 +7184,11 @@
 #undef CONFIG_HOSTCMD_TYPEC_CONTROL
 #endif /* CONFIG_USB_PD_TCPMV1 */
 
+/*
+ * CONFIG_FEATURE_FINCH is not enabled by default.
+ */
+#undef CONFIG_FEATURE_FINCH
+
 /******************************************************************************/
 /* Check body detection setup */
 #if defined(CONFIG_BODY_DETECTION)
