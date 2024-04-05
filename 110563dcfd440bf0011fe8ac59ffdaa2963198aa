@@ -46,6 +46,30 @@
       },
       "revId": "110563dcfd440bf0011fe8ac59ffdaa2963198aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297310f3_e31ccee2",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-05T20:16:09Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I was thinking. There was some question about `Generic` in a [past discussion](https://boringssl-review.googlesource.com/c/boringssl/+/65568/comment/47c60710_8654151b/), so you can point to that if there are any questions. Technically I guess `_XOPEN_SOURCE` wouldn\u0027t necessarily apply to all baremetal targets, but it seems that EC and Zephyr are the only ones right now.\n\nThere may be a way to use cmake\u0027s [`check_symbol_exists`](https://cmake.org/cmake/help/latest/module/CheckSymbolExists.html) to make the check more generic and not have to rely on `CMAKE_SYSTEM_NAME`. For example, check if the `strdup` symbol exists, then if it fails try adding `_XOPEN_SOURCE` to `CMAKE_REQUIRED_DEFINITIONS` and see if `strdup` exists.",
+      "parentUuid": "7c991cf2_e35372ed",
+      "range": {
+        "startLine": 96,
+        "startChar": 30,
+        "endLine": 96,
+        "endChar": 55
+      },
+      "revId": "110563dcfd440bf0011fe8ac59ffdaa2963198aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
