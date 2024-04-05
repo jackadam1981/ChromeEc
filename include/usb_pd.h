@@ -232,7 +232,12 @@ enum pdo_augmented_pps {
 #define BIST_SHARED_MODE_ENTER 9
 #define BIST_SHARED_MODE_EXIT 10
 
-#define SVID_DISCOVERY_MAX 16
+/* Each Discover SVIDs ACK may contain up to 12 SVIDs. If the total number is a
+ * multiople of 12, the next response will contain two SVIDs with value 0. Set
+ * this limit to the amount needed to store 2 full ACKs worth of SVIDs and still
+ * at least evaluate the next ACK.
+ */
+#define SVID_DISCOVERY_MAX (12 + 12 + 2)
 
 /* Timers */
 #define PD_T_SINK_TX (18 * MSEC) /* between 16ms and 20 */

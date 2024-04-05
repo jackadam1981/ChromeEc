@@ -108,6 +108,7 @@ void dfp_consume_svids(int port, enum tcpci_msg_type type, int cnt,
 	uint16_t svid0, svid1;
 	struct pd_discovery *disc =
 		pd_get_am_discovery_and_notify_access(port, type);
+	bool svids_complete = false;
 
 	for (i = disc->svid_cnt; i < disc->svid_cnt + 12; i += 2) {
 		if (i >= SVID_DISCOVERY_MAX) {
@@ -122,15 +123,20 @@ void dfp_consume_svids(int port, enum tcpci_msg_type type, int cnt,
 			break;
 
 		svid0 = PD_VDO_SVID_SVID0(*ptr);
-		if (!svid0)
+		svid1 = PD_VDO_SVID_SVID1(*ptr);
+
+		if (!svid0) {
+			svids_complete = true;
 			break;
+		}
 
 		if (!is_svid_duplicated(disc, svid0))
 			disc->svids[disc->svid_cnt++].svid = svid0;
 
-		svid1 = PD_VDO_SVID_SVID1(*ptr);
-		if (!svid1)
+		if (!svid1) {
+			svids_complete = true;
 			break;
+		}
 
 		if (!is_svid_duplicated(disc, svid1))
 			disc->svids[disc->svid_cnt++].svid = svid1;
@@ -138,11 +144,16 @@ void dfp_consume_svids(int port, enum tcpci_msg_type type, int cnt,
 		ptr++;
 		vdo++;
 	}
-	/* TODO(tbroch) need to re-issue discover svids if > 12 */
-	if (i && ((i % 12) == 0))
-		CPRINTF("ERR:SVID+12\n");
 
-	pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
+	/* If there are more SVIDs after this ACK, the ACK will contain a
+	 * non-zero SVID in every available slot. In that case, send another
+	 * Discover SVIDs REQ to get the next batch.
+	 */
+	if (svids_complete || i >= SVID_DISCOVERY_MAX) {
+		CPRINTS("C%d: svids_complete = %d, i = %d", port,
+			svids_complete, i);
+		pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
+	}
 }
 
 void dfp_consume_modes(int port, enum tcpci_msg_type type, int cnt,
