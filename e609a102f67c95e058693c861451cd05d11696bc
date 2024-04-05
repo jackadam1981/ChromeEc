@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9829f6_b885b6ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-05T16:36:30Z",
+      "side": 1,
+      "message": "Technically should go in at the same time (or after) https://crrev.com/c/5426039: `Cq-Depend: chromium:5426039`.",
+      "revId": "e609a102f67c95e058693c861451cd05d11696bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22039d92_012158fc",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-05T16:36:30Z",
+      "side": 1,
+      "message": "Looks good assuming this is generic for all NPCX chips (i.e., not just for `helipilot` or NPCX9): https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/5426039/comment/d7e90a2a_780e5b04/. If it\u0027s specific to a given NPCX chip, probably better to install into something like: `/usr/local/usr/share/ec-devutils/npcx9/npcx_monitor.bin`.",
+      "range": {
+        "startLine": 424,
+        "startChar": 13,
+        "endLine": 424,
+        "endChar": 62
+      },
+      "revId": "e609a102f67c95e058693c861451cd05d11696bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
