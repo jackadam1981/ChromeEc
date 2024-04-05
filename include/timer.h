@@ -128,11 +128,7 @@ static inline void msleep(unsigned int ms)
  * @return 0 if the requested time has elapsed, or the number of seconds left
  *   to sleep, if the call was interrupted by a signal handler.
  */
-static inline unsigned int sleep(unsigned int sec)
-{
-	usleep(sec * SECOND);
-	return 0;
-}
+unsigned int sleep(unsigned int sec);
 
 /**
  * Get the current timestamp from the system timer.
