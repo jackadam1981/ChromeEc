@@ -229,6 +229,12 @@ int usleep(unsigned int us)
 	return 0;
 }
 
+unsigned int sleep(unsigned int sec)
+{
+	usleep(sec * SECOND);
+	return 0;
+}
+
 #ifdef CONFIG_ZTEST
 timestamp_t *get_time_mock;
 #endif /* CONFIG_ZTEST */
