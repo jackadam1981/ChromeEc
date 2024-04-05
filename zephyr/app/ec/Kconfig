@@ -212,4 +212,9 @@ config PWM_SHELL
 config WDT_SHELL
 	default y if WATCHDOG
 
+config FEATURE_FINCH
+	default n
+	help
+	  Enable experimental features (aka finch).
+
 endif # CROS_EC
