@@ -2186,6 +2186,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 		} else if (pd_get_svids_discovery(port, TCPCI_MSG_SOP) ==
 				   PD_DISC_NEEDED &&
 			   pe_can_send_sop_vdm(port, CMD_DISCOVER_SVID)) {
+			CPRINTS("C%d: Still need SOP SVIDs", port);
 			pe[port].tx_type = TCPCI_MSG_SOP;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
@@ -2197,6 +2198,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 			return true;
 		} else if (pd_get_svids_discovery(port, TCPCI_MSG_SOP_PRIME) ==
 			   PD_DISC_NEEDED) {
+			CPRINTS("C%d: Still need SOP' SVIDs", port);
 			pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
@@ -6186,6 +6188,7 @@ static void pe_init_vdm_svids_request_run(int port)
 		/* If common code didn't parse a message, continue waiting. */
 		return;
 	case VDM_RESULT_NO_ACTION:
+		CPRINTS("C%d: No action", port);
 		/*
 		 * If the received message doesn't change the discovery state,
 		 * there is nothing to do but return to the previous ready
@@ -6198,12 +6201,14 @@ static void pe_init_vdm_svids_request_run(int port)
 		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
 
+		CPRINTS("C%d: SVIDs ACK/timeout", port);
 		/* PE_INIT_VDM_SVIDs_ACKed embedded here */
 		dfp_consume_svids(port, sop, cnt, payload);
 		break;
 	}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_VDM_SVIDs_NAKed embedded here */
+		CPRINTS("C%d: SVIDs NAK/timeout", port);
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		break;
 	}
