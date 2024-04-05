@@ -45,6 +45,54 @@
       },
       "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bc2768_b2c2a32e",
+        "filename": "zephyr/test/hwtest/src/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-05T12:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e873b9_f10a7bc7",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8fac40_db012115",
+        "filename": "zephyr/test/hwtest/src/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-05T12:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27835a79_ff96a87c",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
