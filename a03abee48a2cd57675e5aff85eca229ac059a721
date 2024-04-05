@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fa56f5_52c8a31d",
+        "filename": "extra/um_ppm/platform_usermode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-05T03:49:33Z",
+      "side": 0,
+      "message": "There should be a `platform_zephyr.c` instead of looking for `#ifdef __ZEPHYR__` here. It doesn\u0027t make sense for this file to contain implementations for firmware.",
+      "revId": "a03abee48a2cd57675e5aff85eca229ac059a721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

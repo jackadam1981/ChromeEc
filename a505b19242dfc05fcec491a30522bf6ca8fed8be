@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3fd9750_c7c82bdb",
+        "filename": "extra/um_ppm/platform_usermode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-05T03:49:33Z",
+      "side": 1,
+      "message": "This looks unnecessary",
+      "revId": "a505b19242dfc05fcec491a30522bf6ca8fed8be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0be7db_4ba0edd2",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-05T03:49:33Z",
+      "side": 1,
+      "message": "Dependency-injection is preferred here. The caller should construct the dev object and pass it into ppm_open.\n\nWe can create a new definition in `ppm_common.h`\n```\nstruct ppm_common_dev* create_ppm_common_dev();\n```\n\nWith implementations in `platform_zephyr.c` and `platform_usermode.c`.",
+      "revId": "a505b19242dfc05fcec491a30522bf6ca8fed8be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
