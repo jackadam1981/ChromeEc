@@ -195,6 +195,13 @@ config PLATFORM_EC_PREINIT_HW_CYCLES_PER_SEC
 	  This option specifies the frequency (in Hz) of the CPU core when
 	  coming out of a power on reset.
 
+config PLATFORM_EC_PROTECT_CODE_RAM
+	bool "Protect code RAM"
+	default y
+	help
+	  Protect the Code RAM section of the CPU. This will prevent write access
+	  to code RAM for CPUs that have code on RAM rather than flash.
+
 config PLATFORM_EC_BRINGUP
 	bool "Enable early bringup debugging features"
 	help

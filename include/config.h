@@ -1852,6 +1852,13 @@
 #undef CONFIG_ALLOW_UNALIGNED_ACCESS
 
 /*
+ * Protect the code RAM section on devices that execute code from RAM. On these
+ * devices, this mechanism protects the code from being modified using the MPU.
+ * The MPU protections are setup on boot.
+ */
+#undef CONFIG_PROTECT_CODE_RAM
+
+/*
  * Provide common runtime layer code (tasks, hooks ...)
  * You want this unless you are doing a really tiny firmware.
  */
@@ -6929,7 +6936,7 @@
  * period.
  */
 #ifdef CONFIG_WATCHDOG
-#if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
+#if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS)*2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
 #endif
