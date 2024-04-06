@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86989cbe_25f58091",
+        "filename": "zephyr/subsys/pd_controller/pd_task_intel_altmode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1447572
+      },
+      "writtenOn": "2024-04-06T02:07:10Z",
+      "side": 1,
+      "message": "Need to map PIN_D as it\u0027s needed for MFD devices.",
+      "revId": "284355e6ef21ef6214a603318e9f970b29f6dca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
