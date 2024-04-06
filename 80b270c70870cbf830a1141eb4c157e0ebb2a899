@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d089fc0_fb7dcaf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-06T00:04:39Z",
+      "side": 1,
+      "message": "General question about this series of changes:\n\nAre you planning on creating copies of all of the hardware tests we use for the FPMCU?\n\nI haven\u0027t tried it, but the [documentation on testing](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md#file-headers) says:\n\n\u003e test_util.h includes ztest.h if CONFIG_ZEPHYR is defined, or defines a mapping from the zassert macros to the EC TEST_ASSERT macros if CONFIG_ZEPHYR is not defined.\n\nWould that let us re-use the same tests for EC and Zephyr? It would be nice to share code so that the tests don\u0027t get out of sync between EC and Zephyr.",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3598ad9d_fedd1118",
+        "filename": "zephyr/test/hwtest/src/crc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-06T00:04:39Z",
+      "side": 1,
+      "message": "```suggestion\n/* Cover only CRC functions used with Zephyr. */\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 38,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
