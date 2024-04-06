@@ -233,6 +233,14 @@ union rts54_request {
 		union get_vdo_t vdo_req;
 		uint8_t vdo_type[7];
 	} get_vdo;
+
+	struct get_ic_status_req {
+		uint8_t command_code;
+		uint8_t data_len;
+		uint8_t offset;
+		uint8_t reserved;
+		uint8_t sts_len;
+	} get_ic_status;
 };
 
 union rts54_response {
@@ -244,7 +252,7 @@ union rts54_response {
 		uint8_t reserved0[2];
 		uint8_t fw_main_version;
 		uint8_t fw_sub_version[2];
-		uint8_t reserved1[2];
+		uint8_t reserved1[2]; /* TODO: verify size */
 		uint8_t pd_ready : 1;
 		uint8_t reserved2 : 2;
 		uint8_t typec_connected : 1;
@@ -256,7 +264,7 @@ union rts54_response {
 		uint8_t reserved5[7];
 		uint8_t pd_revision[2];
 		uint8_t pd_version[2];
-		uint8_t reserved6[6];
+		uint8_t reserved6[6]; /* TODO: verify size */
 	} ic_status;
 
 	struct get_capability_response {
