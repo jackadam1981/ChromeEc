@@ -11,4 +11,11 @@ config TEST_SUITE_PDC_RTS54XX
 config TEST_SUITE_PDC_RETIMER_FW_UPDATE
 	bool "Enable retimer FW update tests"
 
+config TEST_PDC_PROTOCOL_TRACING
+	bool "Enable PDC protocol message tracing"
+	help
+	  Trace PDC protocol messages between the EC and the PDC
+	  chip. These can be standard UCSI messages or vendor specific
+	  messages such as those defined for the rts54xx chip.
+
 source "Kconfig.zephyr"

@@ -12,6 +12,10 @@ add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
 target_sources(app PRIVATE src/main.c)
 target_sources(app PRIVATE src/fakes.c)
 
+target_sources_ifdef(CONFIG_TEST_PDC_PROTOCOL_TRACING  app PRIVATE
+	src/util-pcap.c
+	src/trace.c)
+
 if (DEFINED CONFIG_TEST_SUITE_PDC_GENERIC)
 	target_sources(app PRIVATE src/generic/pdc_api.c)
 	target_sources(app PRIVATE src/generic/pdc_power_mgmt_api.c)
