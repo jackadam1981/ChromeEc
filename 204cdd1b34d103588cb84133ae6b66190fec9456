@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cff95b_91a35ce4",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-08T18:01:06Z",
+      "side": 1,
+      "message": "We don\u0027t have bc1.2 so we can drop this.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "204cdd1b34d103588cb84133ae6b66190fec9456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
