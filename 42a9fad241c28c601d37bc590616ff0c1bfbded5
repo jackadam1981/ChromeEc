@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a687e522_ae1b9beb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-08T09:45:46Z",
+      "side": 1,
+      "message": "Hit another build failure:\n\n```\nbaseboard/mtscp-rv32i/cam.c: In function \u0027event_img_written\u0027:\nbaseboard/mtscp-rv32i/cam.c:65:19: error: \u0027TASK_ID_IMG_SERVICE\u0027 undeclared (first use in this function); did you mean \u0027TASK_ID_CAM_SERVICE\u0027?\n   65 |         task_wake(TASK_ID_IMG_SERVICE);\n      |                   ^~~~~~~~~~~~~~~~~~~\n      |                   TASK_ID_CAM_SERVICE\nbaseboard/mtscp-rv32i/cam.c:65:19: note: each undeclared identifier is reported only once for each function it appears in\nbaseboard/mtscp-rv32i/cam.c: In function \u0027img_service_task\u0027:\nbaseboard/mtscp-rv32i/cam.c:134:43: error: \u0027TASK_ID_IMG_HANDLER\u0027 undeclared (first use in this function); did you mean \u0027TASK_ID_IDLE\u0027?\n  134 |                                 task_wake(TASK_ID_IMG_HANDLER);\n      |                                           ^~~~~~~~~~~~~~~~~~~\n      |                                           TASK_ID_IDLE\n  CC      RW/common/espi.o\nmake[2]: *** [Makefile.rules:642: build/cherry_scp_core1/RW/baseboard/mtscp-rv32i/cam.o] Error 1\nmake[1]: *** [Makefile.rules:306: proj-cherry_scp_core1] Error 2\n```",
+      "revId": "42a9fad241c28c601d37bc590616ff0c1bfbded5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
