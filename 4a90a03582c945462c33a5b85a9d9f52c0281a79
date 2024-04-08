@@ -22,6 +22,30 @@
       },
       "revId": "4a90a03582c945462c33a5b85a9d9f52c0281a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f44a4b7_70921707",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-08T07:29:20Z",
+      "side": 1,
+      "message": "Zephyr doesn\u0027t use FPU interrupt at the moment. I\u0027ve checked one more time and I think it can be enabled dynamically with `arch_irq_connect_dynamic`. I\u0027ve created a bug for that.",
+      "parentUuid": "11b15a5b_c447b9e6",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "4a90a03582c945462c33a5b85a9d9f52c0281a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
