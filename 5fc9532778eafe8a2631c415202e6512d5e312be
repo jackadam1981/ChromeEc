@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd239e2_e7fde5a2",
+        "filename": "baseboard/mtscp-rv32i/cam.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1566653
+      },
+      "writtenOn": "2024-04-08T00:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf12c5a7_8e60a322",
+      "revId": "5fc9532778eafe8a2631c415202e6512d5e312be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e5b7b5_f14e629e",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-04-03T12:03:58Z",
       "side": 1,
       "message": "Delete this line. You\u0027ve defined it in cam.h.",
+      "revId": "5fc9532778eafe8a2631c415202e6512d5e312be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e966517_62826fff",
+        "filename": "baseboard/mtscp-rv32i/cam.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1566653
+      },
+      "writtenOn": "2024-04-08T00:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e5b7b5_f14e629e",
       "revId": "5fc9532778eafe8a2631c415202e6512d5e312be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
