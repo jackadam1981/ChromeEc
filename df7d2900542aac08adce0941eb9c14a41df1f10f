@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09b8b8d_2c46cc5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-04-08T23:26:32Z",
+      "side": 1,
+      "message": "Hey Abhishek and Daisuke, can you review this change? It is required to merge https://lore.kernel.org/lkml/20240315171836.343830-1-jthies@google.com into the v6.6 kernel. If b/331801899 gets fixed, we can revert it.",
+      "revId": "df7d2900542aac08adce0941eb9c14a41df1f10f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
