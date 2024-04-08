@@ -348,6 +348,18 @@ static int rts5453_smbus_command(struct rts5453_device *dev, uint8_t port,
 		int bytes_read = dev->smbus->read_block(
 			dev->smbus->dev, chip_address, 0x80, out, out_length);
 		DLOG("Read_block at 0x80 read %d bytes", bytes_read);
+
+		/* As of FW Version 0.11.x, the RTS5453 does not support
+		 * GET_PD_MESSAGE. But the UM_PPM supports portions of
+		 * GET_PD_MESSAGE using the GET_VDO command. Manually set the
+		 * bit in GET_CAPABILIY data, indicating GET_PD_MESSAGE support
+		 * from the UM_PPM.
+		 */
+		if (cmd_val == commands[SC_UCSI_COMMANDS].command_value &&
+		    cmd_data[0] == UCSI_CMD_GET_CAPABILITY && out_length > 6) {
+			out[6] |= 0x1;
+		}
+
 		return bytes_read;
 	}
 
