@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec03d7ab_654fd5b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-08T07:29:58Z",
+      "side": 1,
+      "message": "That is very reasonable question. Yes, my plan is to copy all hardware tests for FPMCU.\n\nI agree that coping is awful. We\u0027ve discussed it with Patryk and decided it is a better way. There is a few reasons for that: \n- It\u0027s a long term solution. It is better to use native Zephyr testing solution, instead of basing on what is shimed or not. Our goal is to reduced the shim layer as much as we can.\n- Some tests are different with Zephyr. A simple example is this test, not all crc functions from CrosEC are supported and tested with Zephyr. But there are more complex problems. The abort test, which is already merged - in Zephyr we don\u0027t set a panic reason before abort call as it is done with [CrosEC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/abort.c;l\u003d25). In Zephyr we rely on saved registers, so checking [panic data](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/abort.c;l\u003d52) is different. The tests would need to be #ifdef a lot.\n- There are testing features needed for hardware tests like test staging after reboot/crash or benchmark (I haven\u0027t used it with Zephyr yet) that would need additional shimming.\n\nI\u0027m open to any suggestions. I wasn\u0027t 100% it is a right way to do it when I was starting. ATM I think it was a good decision.",
+      "parentUuid": "1d089fc0_fb7dcaf3",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-06T00:04:39Z",
       "side": 1,
       "message": "```suggestion\n/* Cover only CRC functions used with Zephyr. */\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 38,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8277f817_2d9385e5",
+        "filename": "zephyr/test/hwtest/src/crc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-08T07:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3598ad9d_fedd1118",
       "range": {
         "startLine": 15,
         "startChar": 38,
