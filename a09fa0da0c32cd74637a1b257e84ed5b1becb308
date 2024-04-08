@@ -16,6 +16,24 @@
       "message": "update CL:4899976/33",
       "revId": "a09fa0da0c32cd74637a1b257e84ed5b1becb308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d131b53c_6d625322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 54
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1566653
+      },
+      "writtenOn": "2024-04-08T01:01:44Z",
+      "side": 1,
+      "message": "It should sync with https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/4259239 ps294.",
+      "parentUuid": "b3a5312f_360e2105",
+      "revId": "a09fa0da0c32cd74637a1b257e84ed5b1becb308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
