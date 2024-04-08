@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe9267c_7caf6d24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-04-08T23:39:48Z",
+      "side": 1,
+      "message": "Hi Abhishek and Daisuke. I noticed we were not getting the expected logs from um_ppm for UCSI commands where the command is fully decoded. The issue was that the cmd_val (0x3) was compared directly to SC_UCSI_COMMANDS (0x10). This CL resolved the issue, can help review. From what I can tell, this is the only place in rts5453.c that we were directly comparing against one of the values in rts5453_smbus_commands.",
+      "revId": "2636fc48fc9bc3dc2118c42fdf3b8138af8225b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
