@@ -39,6 +39,30 @@
       },
       "revId": "df7d2900542aac08adce0941eb9c14a41df1f10f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd5eb0e_0e181374",
+        "filename": "extra/um_ppm/rts5453.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-04-09T19:32:24Z",
+      "side": 1,
+      "message": "I\u0027ve added a check on bytes_read to this condition. I figure that the command being GET_CAPABILITY is less common than read_block failing, so I\u0027ve left that as the first check in the condition.",
+      "parentUuid": "c95f1827_08c71146",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 3
+      },
+      "revId": "df7d2900542aac08adce0941eb9c14a41df1f10f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
