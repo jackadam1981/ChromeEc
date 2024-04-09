@@ -16,6 +16,24 @@
       "message": "For clarity could you add a `SENSE_5MILLIOHM` definition?",
       "revId": "5ca935940fc61ca17c60cd82518c489534c90fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6adec28_fdc12133",
+        "filename": "zephyr/test/drivers/isl923x/src/isl9238c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-09T16:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b8e08c_5e6efc6b",
+      "revId": "5ca935940fc61ca17c60cd82518c489534c90fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
