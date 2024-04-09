@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9a9b07_8d0e3427",
+        "filename": "zephyr/program/rauru/power_signal.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-09T04:44:41Z",
+      "side": 1,
+      "message": "this gpio needs a enum-name",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "1c100c36c00f7a26f4a6917742010007963979d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
