@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bd0217_1f8b03f9",
+        "filename": "zephyr/program/rauru/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-09T06:13:45Z",
+      "side": 1,
+      "message": "add `GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW`",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "d270637304bd3bcaf5775a4b963353440fe09fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
