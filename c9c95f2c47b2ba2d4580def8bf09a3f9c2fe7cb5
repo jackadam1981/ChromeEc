@@ -157,6 +157,24 @@
       "parentUuid": "5b172fbb_757c60ff",
       "revId": "c9c95f2c47b2ba2d4580def8bf09a3f9c2fe7cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9ea88e_9ac6ea51",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3658,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-04-09T09:53:25Z",
+      "side": 1,
+      "message": "Nuvoton can support to add the RAM lock in the SHIM layer.\nTo support it in Zephyr upstream, we may need to look if we have resource in the further. If Google is eager to implement it in the zephyr upstream, you may consider to move the shim layer implementation to Zephyr by yourself, just like what you did for the EC host command.",
+      "parentUuid": "533333f9_92dfef75",
+      "revId": "c9c95f2c47b2ba2d4580def8bf09a3f9c2fe7cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
