@@ -16,6 +16,23 @@
       "message": "Charging works when the system is rebooted with an attached TypeC only charger, but doesn\u0027t work when connecting after boot. I still think Realtek has an issue in their FW. Initially, external power is detected, and then several seconds later, it goes away.",
       "revId": "05d8ba1b53cd75e60c71dc6b8bffef95e011a8ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9b951d_538bca9d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-09T19:12:05Z",
+      "side": 1,
+      "message": "If the sink path is enabled before the current limit is set, could this trigger an overcurrent event?",
+      "revId": "05d8ba1b53cd75e60c71dc6b8bffef95e011a8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
