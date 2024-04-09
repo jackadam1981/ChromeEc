@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f202d8c_b425c3db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-09T17:31:16Z",
+      "side": 1,
+      "message": "Charging works when the system is rebooted with an attached TypeC only charger, but doesn\u0027t work when connecting after boot. I still think Realtek has an issue in their FW. Initially, external power is detected, and then several seconds later, it goes away.",
+      "revId": "05d8ba1b53cd75e60c71dc6b8bffef95e011a8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
