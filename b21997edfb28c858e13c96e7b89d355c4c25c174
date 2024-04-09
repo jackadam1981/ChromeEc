@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496424a0_b1b1bac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-04-09T09:22:19Z",
+      "side": 1,
+      "message": "I had to move the gpio interrupt DT node to the project overlay as the gpio node name doesn\u0027t exist in Ovis. We won\u0027t have this interrupt for Ovis, but this feature already wasn\u0027t working on Ovis because no interrupt had been added.",
+      "revId": "b21997edfb28c858e13c96e7b89d355c4c25c174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
