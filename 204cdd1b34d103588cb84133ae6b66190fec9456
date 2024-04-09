@@ -22,6 +22,30 @@
       },
       "revId": "204cdd1b34d103588cb84133ae6b66190fec9456",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f081b5_7f8e7207",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-09T04:22:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16cff95b_91a35ce4",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "204cdd1b34d103588cb84133ae6b66190fec9456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
