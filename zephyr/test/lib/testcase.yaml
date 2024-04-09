@@ -1,0 +1,7 @@
+common:
+  platform_allow: native_sim
+tests:
+  lib.sbrk:
+    extra_configs:
+    - CONFIG_TEST_LIB_SBRK=y
+    - CONFIG_PLATFORM_EC_SBRK=y
