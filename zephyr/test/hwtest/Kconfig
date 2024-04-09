@@ -99,3 +99,16 @@ config HW_TEST_SBRK
 	depends on NEWLIB_LIBC_SUPPORTED
 	help
 	  The test verifies sbrk return values.
+
+config HW_TEST_SHA256
+	bool "SHA256 test"
+	select ZTEST
+	help
+	  The test verifies SHA256 functions.
+
+config HW_TEST_SHA256_UNROLLED
+	bool "SHA256 unrolled test"
+	select ZTEST
+	select PLATFORM_EC_SHA256_UNROLLED
+	help
+	  The test verifies SHA256 functions with forced unrolled config.
