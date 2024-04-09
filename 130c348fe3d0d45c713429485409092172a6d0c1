@@ -22,6 +22,30 @@
       },
       "revId": "130c348fe3d0d45c713429485409092172a6d0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f24ba37_cd8c0b08",
+        "filename": "zephyr/program/geralt/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-09T07:34:48Z",
+      "side": 1,
+      "message": "yes. default behavior is open drain if we don\u0027t explicitly write push-pull in the device tree.\n\n(so we need to fix corsola/nissa/rauru as well?)",
+      "parentUuid": "533a9666_d59c794b",
+      "range": {
+        "startLine": 78,
+        "startChar": 11,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "130c348fe3d0d45c713429485409092172a6d0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
