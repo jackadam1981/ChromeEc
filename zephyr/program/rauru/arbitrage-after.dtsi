@@ -1,0 +1,27 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Patch arbitrage auto-generated files.
+ * Put this after generated.dtsi
+ */
+
+/* Arbitrage doesn't support INPUT | ACTIVE_LOW gpios */
+&gpio_als_int_odl {
+	gpios = <&gpiob 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
+};
+&gpio_ap_ec_sysrst_odl {
+	gpios = <&gpioj 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
+};
+&gpio_ap_ec_wdtrst_l {
+	gpios = <&gpioj 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
+};
+&gpio_ap_in_sleep_l {
+	gpios = <&gpiom 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
+};
+&gpio_charger_prochot_odl {
+	gpios = <&gpioc 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+};
+&gpio_pmic_ec_resetb {
+	gpios = <&gpioj 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
+};

@@ -10,6 +10,7 @@
 #include "../common.dtsi"
 #include "../usbc.dtsi"
 #include "../generated.dtsi"
+#include "../arbitrage-after.dtsi"
 #include "../interrupts.dtsi"
 #include "../motionsense.dtsi"
 #include "../keyboard.dtsi"
