@@ -40,6 +40,7 @@
 		};
 		gpio_ap_ec_sysrst_odl: ap_ec_sysrst_odl {
 			gpios = <&gpioj 2 GPIO_INPUT>;
+			enum-name = "GPIO_AP_EC_SYSRST_ODL";
 		};
 		gpio_ap_ec_warm_rst_req: ap_ec_warm_rst_req {
 			gpios = <&gpiom 3 GPIO_INPUT>;
