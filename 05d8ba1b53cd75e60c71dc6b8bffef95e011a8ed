@@ -33,6 +33,24 @@
       "message": "If the sink path is enabled before the current limit is set, could this trigger an overcurrent event?",
       "revId": "05d8ba1b53cd75e60c71dc6b8bffef95e011a8ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a38d41_5d815ce1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-09T19:24:05Z",
+      "side": 1,
+      "message": "I agree about the overcurrent problem. I swapped the states and this matches what the PD Sink state does.",
+      "parentUuid": "1f9b951d_538bca9d",
+      "revId": "05d8ba1b53cd75e60c71dc6b8bffef95e011a8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
