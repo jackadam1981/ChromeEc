@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb70a9dc_10d97672",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6017,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-10T19:21:30Z",
+      "side": 1,
+      "message": "Use the same help text as the Kconfig.\n\"When this option is enabled, some of the experimental features (aka finch)\n will be enabled for CROS_EC\"",
+      "range": {
+        "startLine": 6017,
+        "startChar": 0,
+        "endLine": 6017,
+        "endChar": 24
+      },
+      "revId": "b0d08631e7a0b445e8da980c897e0a8dfc6d424f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c395a6ac_2687b91c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-10T19:21:30Z",
+      "side": 1,
+      "message": "Nit - line length should be \u003c 80.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 0,
+        "endLine": 1038,
+        "endChar": 77
+      },
+      "revId": "b0d08631e7a0b445e8da980c897e0a8dfc6d424f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
