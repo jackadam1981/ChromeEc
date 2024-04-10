@@ -55,7 +55,6 @@ config CONSOLE_CMD_USBPD_INTEL_ALTMODE
 	  Enable this to read/write to the status/control registers of
 	  PD that are compliant with Intel alternate mode configuration
 	  specification.
-
 endif # USB_PD_ALTMODE_INTEL
 
 endif # USB_PD_ALTMODE
