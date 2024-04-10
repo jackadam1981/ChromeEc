@@ -51,12 +51,14 @@
 		compatible = "intel,pd-altmode";
 		reg = <0x50>;
 		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
+		irq-flags = <GPIO_INT_EDGE_FALLING>;
 	};
 	pd_port1: ccg@51 {
 		compatible = "intel,pd-altmode";
 		reg = <0x51>;
 		irq-gpios = <&gpio9 5 GPIO_ACTIVE_LOW>;
 		irq-shared;
+		irq-flags = <GPIO_INT_EDGE_FALLING>;
 	};
 };
 
