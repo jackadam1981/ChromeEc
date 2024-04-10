@@ -52,6 +52,24 @@
       "parentUuid": "02e39bb6_158d73a0",
       "revId": "10f108989e2a298ed80d52207ffa51fb3f6ce905",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92755dd2_f2bdf64e",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-10T20:44:26Z",
+      "side": 1,
+      "message": "Rolocated the CLs as suggested.",
+      "parentUuid": "1cecd739_06e2f2ed",
+      "revId": "10f108989e2a298ed80d52207ffa51fb3f6ce905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
