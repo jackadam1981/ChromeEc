@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c09e7a4_3fde6d04",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-04-10T17:15:28Z",
+      "side": 1,
+      "message": "Yes, this is only for legacy EC. In this case do we still need to add the namespace in zephyr?",
+      "parentUuid": "557fedd8_a216d7af",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 20
+      },
+      "revId": "5bfdbd23f219e907089092cbfafe28af6302cddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35591689_88d7ea4e",
         "filename": "zephyr/app/ec/Kconfig",
         "patchSetId": 7
