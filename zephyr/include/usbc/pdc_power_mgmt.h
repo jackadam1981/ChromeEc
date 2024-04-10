@@ -417,4 +417,14 @@ int pdc_power_mgmt_set_comms_state(bool run);
 int pdc_power_mgmt_get_connector_status(
 	int port, union connector_status_t *connector_status);
 
+/**
+ * @brief Return the current UCSI cable property on a port
+ *
+ * @param port USB-C port number
+ * @param cable_prop Output variable to store the cable property
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

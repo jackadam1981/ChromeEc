@@ -2848,3 +2848,18 @@ int pdc_power_mgmt_get_connector_status(
 
 	return 0;
 }
+
+int pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop)
+{
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	if (cable_prop == NULL) {
+		return -EINVAL;
+	}
+
+	*cable_prop = pdc_data[port]->port.cable_prop;
+
+	return 0;
+}
