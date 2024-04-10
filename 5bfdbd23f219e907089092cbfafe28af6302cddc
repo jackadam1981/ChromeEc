@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09265840_7778e580",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-10T00:44:38Z",
+      "side": 1,
+      "message": "we typically update `zephyr/shim/include/config_chip.h` when we mirror a\ncros-ec config flag on the zephyr side. example:\n\n```\n#undef CONFIG_BATTERY_CUT_OFF\n#ifdef CONFIG_PLATFORM_EC_BATTERY_CUT_OFF\n#define CONFIG_BATTERY_CUT_OFF\n#endif\n```\n\ni wonder if this is the best Kconfig file to mirror this config option.",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 20
+      },
+      "revId": "5bfdbd23f219e907089092cbfafe28af6302cddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35591689_88d7ea4e",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-10T00:44:38Z",
+      "side": 1,
+      "message": "i think `default n` is only needed if you\u0027re\nover-riding another `default y`.\nis this enabled somewhere else?",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 10
+      },
+      "revId": "5bfdbd23f219e907089092cbfafe28af6302cddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
