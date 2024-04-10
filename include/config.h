@@ -6013,6 +6013,11 @@
  */
 #undef CONFIG_GOOGLETEST
 
+/*
+ * Add a "finch" feature
+ */
+#undef CONFIG_FRATURE_FINCH
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
