@@ -112,6 +112,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_IDENTITY_DISCOVERY,
 	/** CMD_PDC_IS_SOURCING_VCONN */
 	CMD_PDC_IS_VCONN_SOURCING,
+	/** CMD_PDC_GET_PCH_DATA_STATUS */
+	CMD_PDC_GET_PCH_DATA_STATUS,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -287,6 +289,7 @@ static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_VDO] = "PDC_GET_VDO",
 	[CMD_PDC_CONNECTOR_RESET] = "PDC_CONNECTOR_RESET",
 	[CMD_PDC_GET_IDENTITY_DISCOVERY] = "PDC_GET_IDENTITY_DISCOVERY",
+	[CMD_PDC_GET_PCH_DATA_STATUS] = "PDC_GET_PCH_DATA_STATUS",
 };
 
 /**
@@ -520,6 +523,8 @@ struct pdc_port_t {
 	uint32_t typec_current_ma;
 	/** Buffer used by public api to receive data from the driver */
 	uint8_t *public_api_buff;
+	/** Buffer used by public api to receive data from the driver */
+	uint8_t pch_data_status[5];
 };
 
 /**
@@ -1236,6 +1241,7 @@ static void pdc_send_cmd_start_entry(void *obj)
 static int send_pdc_cmd(struct pdc_port_t *port)
 {
 	int rv;
+	const struct pdc_config_t *config = port->dev->config;
 
 	/* Send PDC command via driver API */
 	switch (port->cmd->cmd) {
@@ -1311,6 +1317,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		}
 		rv = pdc_is_vconn_sourcing(port->pdc,
 					   (bool *)port->public_api_buff);
+		break;
+	case CMD_PDC_GET_PCH_DATA_STATUS:
+		rv = pdc_get_pch_data_status(port->pdc, config->connector_num,
+					     port->pch_data_status);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
@@ -2789,5 +2799,25 @@ int pdc_power_mgmt_get_connector_status(
 
 	*connector_status = pdc->connector_status;
 
+	return 0;
+}
+
+int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
+{
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	if (status == NULL) {
+		return -EINVAL;
+	}
+
+	/* Block until command completes */
+	if (public_api_block(port, CMD_PDC_GET_PCH_DATA_STATUS)) {
+		/* something went wrong */
+		return -EIO;
+	}
+
+	memcpy(status, pdc_data[port]->port.pch_data_status, 5);
 	return 0;
 }
