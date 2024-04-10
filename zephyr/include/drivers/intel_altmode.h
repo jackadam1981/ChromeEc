@@ -14,6 +14,8 @@
 #ifndef ZEPHYR_INCLUDE_DRIVERS_INTEL_ALTMODE_H_
 #define ZEPHYR_INCLUDE_DRIVERS_INTEL_ALTMODE_H_
 
+#include "usb_mux.h"
+
 #include <zephyr/device.h>
 
 #ifdef __cplusplus
