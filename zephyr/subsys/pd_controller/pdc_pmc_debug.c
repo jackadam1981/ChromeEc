@@ -7,6 +7,7 @@
  * Source file for PD task to configure USB-C Alternate modes on Intel SoC.
  */
 
+#include "console.h"
 #include "drivers/intel_altmode.h"
 #include "drivers/pdc.h"
 #include "usb_mux.h"
@@ -113,3 +114,37 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO, hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
+
+#ifdef CONFIG_CMD_TYPEC
+static int command_typec(const struct shell *sh, int argc, const char **argv)
+{
+	char *e;
+	int port;
+	mux_state_t mux_state = 0;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 10);
+	if (*e || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM1;
+
+	pdc_pmc_alt_mode_get_mux(port, &mux_state);
+	shell_fprintf(sh, SHELL_INFO,
+		      "Port %d: USB=%d DP=%d POLARITY=%s HPD_IRQ=%d "
+		      "HPD_LVL=%d SAFE=%d TBT=%d USB4=%d\n",
+		      port, !!(mux_state & USB_PD_MUX_USB_ENABLED),
+		      !!(mux_state & USB_PD_MUX_DP_ENABLED),
+		      mux_state & USB_PD_MUX_POLARITY_INVERTED ? "INVERTED" :
+								 "NORMAL",
+		      !!(mux_state & USB_PD_MUX_HPD_IRQ),
+		      !!(mux_state & USB_PD_MUX_HPD_LVL),
+		      !!(mux_state & USB_PD_MUX_SAFE_MODE),
+		      !!(mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED),
+		      !!(mux_state & USB_PD_MUX_USB4_ENABLED));
+
+	return EC_SUCCESS;
+}
+SHELL_CMD_REGISTER(typec, NULL, "gets typec port status.Usage:typec <port>",
+		   command_typec);
+#endif
