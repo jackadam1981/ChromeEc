@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5bacf5d_4c2064c3",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-10T13:08:09Z",
+      "side": 1,
+      "message": "Is the CONFIG_FEATURE_FINCH needed for both Zephyr ECs and legacy ECs?\n\nIf yes, then you need to create CONFIG_FEATURE_FINCH in include/config.h, and create the Kconfig namespace to legacy EC mapping as noted by Caveh.\n\nThe better location for the Kconfig option is `zephyr/Kconfig`.",
+      "parentUuid": "09265840_7778e580",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 20
+      },
+      "revId": "5bfdbd23f219e907089092cbfafe28af6302cddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35591689_88d7ea4e",
         "filename": "zephyr/app/ec/Kconfig",
         "patchSetId": 7
