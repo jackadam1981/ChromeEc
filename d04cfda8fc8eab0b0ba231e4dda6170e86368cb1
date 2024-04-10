@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a7ddd4_b0483a11",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-10T20:39:33Z",
+      "side": 1,
+      "message": "Yes. Statically allocated memory blocks won\u0027t be reused. They will continue to exist in memory after being freed.\n\nOne option is to clear them (since statically allocated memory blocks are set to 0 by default). That\u0027ll allow them to be reused.",
+      "parentUuid": "c19d0a90_b9a04932",
+      "revId": "d04cfda8fc8eab0b0ba231e4dda6170e86368cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d01fbfa1_713ebffc",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-04-10T16:13:56Z",
       "side": 1,
       "message": "nit: Rename to `platform_alloc_ppm` and change comment to reflect it is only allocating and not initializing.",
+      "revId": "d04cfda8fc8eab0b0ba231e4dda6170e86368cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ea8487_70f66ce1",
+        "filename": "extra/um_ppm/ppm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-10T20:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01fbfa1_713ebffc",
       "revId": "d04cfda8fc8eab0b0ba231e4dda6170e86368cb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
