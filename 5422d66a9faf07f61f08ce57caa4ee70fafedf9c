@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6207503_e9329624",
+        "filename": "board/reef_mchp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-10T17:09:20Z",
+      "side": 1,
+      "message": "Nit: This comment seems like it may have already been slightly odd, and updating it in this way may be inaccurate. If checkpatch was flagging a use of `msleep`, it was presumably talking about the Linux version of `msleep`. I don\u0027t know that the warning would would apply to us. In any case, I presume that checkpatch has not flagged `crec_msleep`.",
+      "revId": "5422d66a9faf07f61f08ce57caa4ee70fafedf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b1b500_9836ce8a",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-10T17:09:20Z",
+      "side": 1,
+      "message": "Nit: The code that this comment seems to refer to is now using `crec_usleep`.",
+      "revId": "5422d66a9faf07f61f08ce57caa4ee70fafedf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
