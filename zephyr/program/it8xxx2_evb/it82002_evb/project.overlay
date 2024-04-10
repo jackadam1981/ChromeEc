@@ -48,3 +48,7 @@
 		reg = <0x68>;
 	};
 };
+
+&sha0 {
+	status = "okay";
+};
