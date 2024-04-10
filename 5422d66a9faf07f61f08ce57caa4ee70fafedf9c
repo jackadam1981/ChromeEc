@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb772a79_b9fee059",
+        "filename": "board/reef_mchp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T17:21:50Z",
+      "side": 1,
+      "message": "I reverted change in this comment. Thanks.",
+      "parentUuid": "a6207503_e9329624",
+      "revId": "5422d66a9faf07f61f08ce57caa4ee70fafedf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52b1b500_9836ce8a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-10T17:09:20Z",
       "side": 1,
       "message": "Nit: The code that this comment seems to refer to is now using `crec_usleep`.",
+      "revId": "5422d66a9faf07f61f08ce57caa4ee70fafedf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc864edb_3592160d",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T17:21:50Z",
+      "side": 1,
+      "message": "Indeed. Fixed comment.",
+      "parentUuid": "52b1b500_9836ce8a",
       "revId": "5422d66a9faf07f61f08ce57caa4ee70fafedf9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
