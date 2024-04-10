@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed29f7cc_97693d75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T08:57:33Z",
+      "side": 1,
+      "message": "Please provide details.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "a0a462b305b5b493d3f77e745e3c75ad43a484d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2f8ec5_b111e6c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T08:57:33Z",
+      "side": 1,
+      "message": "Could you provide information how migration is performed?",
+      "revId": "a0a462b305b5b493d3f77e745e3c75ad43a484d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29aa5d2b_22e39399",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T08:57:33Z",
+      "side": 1,
+      "message": "Why clearing salt is necessary?",
+      "range": {
+        "startLine": 783,
+        "startChar": 3,
+        "endLine": 783,
+        "endChar": 35
+      },
+      "revId": "a0a462b305b5b493d3f77e745e3c75ad43a484d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d4cd6b_049247a6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T08:57:33Z",
+      "side": 1,
+      "message": "This look like a hack. I think there should be a comment why is this necessary.",
+      "range": {
+        "startLine": 795,
+        "startChar": 1,
+        "endLine": 795,
+        "endChar": 31
+      },
+      "revId": "a0a462b305b5b493d3f77e745e3c75ad43a484d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62588229_7278f1bd",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-10T08:57:33Z",
+      "side": 1,
+      "message": "Do we really need to introduce new host command just for template migration? Is it possible to return template in new format, when biod requests that? I mean, we can always download encrypted template from FPMCU, even when it was not matched. So from biod perspective it could be loading template and downloading it if it uses old format.",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 20
+      },
+      "revId": "a0a462b305b5b493d3f77e745e3c75ad43a484d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
