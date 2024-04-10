@@ -5,3 +5,6 @@ tests:
     extra_configs:
     - CONFIG_TEST_LIB_SBRK=y
     - CONFIG_PLATFORM_EC_SBRK=y
+  lib.stdlib:
+    extra_configs:
+    - CONFIG_TEST_LIB_STDLIB=y

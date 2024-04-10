@@ -7,4 +7,9 @@ config TEST_LIB_SBRK
 	help
 	  sbrk tests.
 
+config TEST_LIB_STDLIB
+	bool "stdlib tests"
+	help
+	  stdlib tests.
+
 source "Kconfig.zephyr"
