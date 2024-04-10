@@ -14,6 +14,7 @@
 #ifndef ZEPHYR_INCLUDE_DRIVERS_INTEL_ALTMODE_H_
 #define ZEPHYR_INCLUDE_DRIVERS_INTEL_ALTMODE_H_
 
+#include "usb_mux.h"
 #include <zephyr/device.h>
 
 #ifdef __cplusplus
@@ -211,6 +212,25 @@ union data_control_reg {
 	};
 	uint8_t raw_value[INTEL_ALTMODE_DATA_CONTROL_REG_LEN];
 };
+
+/**
+ * @brief inline function to set mux_state based on condition.
+ * @param condition if set to true mux_state is updated
+ * @param mux_state pointer pointing to mux_state value
+ * @param flag which indicates bit position to be set in mux_state
+ *
+ * @retval None
+ */
+static inline void set_mux_state_if(int condition, mux_state_t *mux_state,
+				    mux_state_t flag)
+{
+	if (condition) {
+		*mux_state |= flag;
+	}
+}
+
+#define SET_MUX_STATE_IF(condition, mux_state, flag) \
+	set_mux_state_if((condition), (mux_state), (flag))
 
 /**
  * @brief Callback for PD Alternate mode event
