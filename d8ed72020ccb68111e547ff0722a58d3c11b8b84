@@ -46,6 +46,30 @@
       },
       "revId": "d8ed72020ccb68111e547ff0722a58d3c11b8b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "874475f7_925bf700",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-04-10T18:15:02Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "c4e274ef_f60d2fcb",
+      "range": {
+        "startLine": 4399,
+        "startChar": 2,
+        "endLine": 4399,
+        "endChar": 23
+      },
+      "revId": "d8ed72020ccb68111e547ff0722a58d3c11b8b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
