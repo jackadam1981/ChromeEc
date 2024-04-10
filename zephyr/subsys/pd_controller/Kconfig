@@ -44,6 +44,13 @@ config PDC_POWER_MGMT_STACK_SIZE
 	help
 	  Stack size of thread created for each instance.
 
+config PLATFORM_USB_PDC_PMC_ALTMODE_DEBUG
+	bool "PDC-PMC USB-C Alternate modes Debug Interface"
+	default n
+	help
+	  Enable this to debug USB-C alternate modes when using PD chips
+	  in PD mode and PD chip directly interfaced with Intel PMC.
+
 module = USB_PDC
 module-str = USB PDC
 source "subsys/logging/Kconfig.template.log_config"
