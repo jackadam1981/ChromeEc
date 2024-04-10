@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d0e29b_da28f107",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-04-10T12:03:55Z",
+      "side": 1,
+      "message": "Build failure:\n\n```\nIn file included from include/common.h:17,\n                 from chip/mt_scp/rv32i_common/ipi_chip.h:9,\n                 from baseboard/mtscp-rv32i/cam.h:9,\n                 from baseboard/mtscp-rv32i/cam.c:6:\ninclude/compile_time_macros.h:29:24: error: static assertion failed: \"baseboard/mtscp-rv32i/cam.h:24: \"\n   29 | #define _STATIC_ASSERT _Static_assert\n      |                        ^~~~~~~~~~~~~~\ninclude/compile_time_macros.h:34:9: note: in expansion of macro \u0027_STATIC_ASSERT\u0027\n   34 |         _STATIC_ASSERT(cond, file \":\" #line \": \" msg)\n      |         ^~~~~~~~~~~~~~\ninclude/compile_time_macros.h:35:29: note: in expansion of macro \u0027_BA1_\u0027\n   35 | #define _BA0_(c, f, l, msg) _BA1_(c, f, l, msg)\n      |                             ^~~~~\ninclude/compile_time_macros.h:39:33: note: in expansion of macro \u0027_BA0_\u0027\n   39 | #define BUILD_ASSERT(cond, ...) _BA0_(cond, __FILE__, __LINE__, __VA_ARGS__)\n      |                                 ^~~~~\nbaseboard/mtscp-rv32i/cam.h:24:1: note: in expansion of macro \u0027BUILD_ASSERT\u0027\n   24 | BUILD_ASSERT(member_size(struct cam_msg, msg) \u003c\u003d\n      | ^~~~~~~~~~~~\nmake[2]: *** [Makefile.rules:642: build/cherry_scp_core1/RW/baseboard/mtscp-rv32i/cam.o] Error 1\nmake[1]: *** [Makefile.rules:306: proj-cherry_scp_core1] Error 2\n```",
+      "revId": "6800fdfdfe71f5777cf478ebfafeb66cc6a0edcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
