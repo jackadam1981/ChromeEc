@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "557fedd8_a216d7af",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-10T17:13:49Z",
+      "side": 1,
+      "message": "This CONFIG change is for legacy EC",
+      "parentUuid": "d5bacf5d_4c2064c3",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 20
+      },
+      "revId": "5bfdbd23f219e907089092cbfafe28af6302cddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35591689_88d7ea4e",
         "filename": "zephyr/app/ec/Kconfig",
         "patchSetId": 7
