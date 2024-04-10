@@ -133,6 +133,8 @@ typedef int (*pdc_get_identity_discovery_t)(const struct device *dev,
 typedef int (*pdc_set_comms_state_t)(const struct device *dev, bool active);
 typedef int (*pdc_is_vconn_sourcing_t)(const struct device *dev,
 				       bool *vconn_sourcing);
+typedef int (*pdc_get_pch_data_status_t)(const struct device *dev,
+					 uint8_t port_num, uint8_t *status_reg);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -170,6 +172,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_get_identity_discovery_t get_identity_discovery;
 	pdc_set_comms_state_t set_comms_state;
 	pdc_is_vconn_sourcing_t is_vconn_sourcing;
+	pdc_get_pch_data_status_t get_pch_data_status;
 };
 /**
  * @endcond
@@ -796,6 +799,29 @@ static inline int pdc_update_retimer_fw(const struct device *dev, bool enable)
 	}
 
 	return api->update_retimer(dev, enable);
+}
+
+/**
+ * @brief Command to get the PDC PCH DATA STATUS REG value.
+ *
+ * @param enable True->enter, False->exit get pch data status.
+ *
+ * @retval 0 if success.
+ * @retval -EIO if input/output error.
+ * @retval -ENOSYS if API not implemented.
+ */
+static inline int pdc_get_pch_data_status(const struct device *dev,
+					  uint8_t port_num, uint8_t *status_reg)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	/* Temporarily optional feature, so it might not be implemented */
+	if (api->get_pch_data_status == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->get_pch_data_status(dev, port_num, status_reg);
 }
 
 /**
