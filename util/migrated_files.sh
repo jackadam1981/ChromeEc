@@ -28,7 +28,8 @@ test/rollback.c
 test/rollback_entropy.c
 test/sbrk.c
 test/sha256.c
-test/static_if.c"
+test/static_if.c
+test/stdlib.c"
 
 for file in "$@"; do
   ec_file="${file##**/platform/ec/}"
