@@ -858,6 +858,55 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status)
 				   PDC_TEST_TIMEOUT));
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_get_cable_prop)
+{
+	union cable_property_t in, out;
+	union connector_status_t in_conn_status, out_conn_status;
+	union conn_status_change_bits_t in_conn_status_change_bits;
+
+	zassert_equal(-ERANGE, pdc_power_mgmt_get_cable_prop(
+				       CONFIG_USB_PD_PORT_MAX_COUNT, &out));
+	zassert_equal(-EINVAL, pdc_power_mgmt_get_cable_prop(TEST_PORT, NULL));
+
+	in.raw_value[0] = 0x1a2b3c4d;
+	in.raw_value[1] = 0x5a6b7c8d;
+	emul_pdc_set_cable_property(emul, in);
+
+	in_conn_status_change_bits.external_supply_change = 1;
+	in_conn_status_change_bits.connector_partner = 1;
+	in_conn_status_change_bits.connect_change = 1;
+	in_conn_status.raw_conn_status_change_bits =
+		in_conn_status_change_bits.raw_value;
+
+	in_conn_status.conn_partner_flags = 1;
+	in_conn_status.conn_partner_type = UFP_ATTACHED;
+	in_conn_status.rdo = 0x01234567;
+
+	emul_pdc_configure_snk(emul, &in_conn_status);
+	emul_pdc_connect_partner(emul, &in_conn_status);
+	zassert_true(TEST_WAIT_FOR(pdc_power_mgmt_is_connected(TEST_PORT),
+				   PDC_TEST_TIMEOUT));
+
+	zassert_ok(pdc_power_mgmt_get_connector_status(TEST_PORT,
+						       &out_conn_status));
+
+	zassert_ok(pdc_power_mgmt_get_cable_prop(TEST_PORT, &out));
+
+	zassert_equal(in.raw_value[0], out.raw_value[0],
+		      "in0=0x%X != out0=0x%X", in.raw_value[0],
+		      out.raw_value[0]);
+	/*
+	 * The RTS54xx only returns 5 bytes of cable property.
+	 */
+	zassert_equal(in.raw_value[1] & 0xff, out.raw_value[1],
+		      "in1=0x%X & 0xFF != out1=0x%X", in.raw_value[1],
+		      out.raw_value[1]);
+
+	emul_pdc_disconnect(emul);
+	zassert_true(TEST_WAIT_FOR(!pdc_power_mgmt_is_connected(TEST_PORT),
+				   PDC_TEST_TIMEOUT));
+}
+
 /*
  * Validate that all possible PDC power management states have a name
  * assigned.  This could possibly be done with some macrobatics, but
