@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3893470_4afafe80",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6019,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-04-10T19:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c20a38_bc3bb3c4",
+      "range": {
+        "startLine": 6019,
+        "startChar": 7,
+        "endLine": 6019,
+        "endChar": 27
+      },
+      "revId": "badefcb87c13be63529b86ac5abbe1b798d9696b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23944d20_98083ad6",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-10T18:37:21Z",
       "side": 1,
       "message": "please add the Kconfig file update for this as well.",
+      "range": {
+        "startLine": 3422,
+        "startChar": 7,
+        "endLine": 3422,
+        "endChar": 39
+      },
+      "revId": "badefcb87c13be63529b86ac5abbe1b798d9696b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bf700b_69ab5c35",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3422,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-04-10T19:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23944d20_98083ad6",
       "range": {
         "startLine": 3422,
         "startChar": 7,
