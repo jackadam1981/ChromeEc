@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ba786f_8e57e5ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-10T16:13:56Z",
+      "side": 1,
+      "message": "Overall lgtm with some nits",
+      "revId": "d04cfda8fc8eab0b0ba231e4dda6170e86368cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19d0a90_b9a04932",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-10T16:13:56Z",
+      "side": 1,
+      "message": "How will these frees be handled by EC? Is the expectation that they will all just no-op?",
+      "revId": "d04cfda8fc8eab0b0ba231e4dda6170e86368cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01fbfa1_713ebffc",
+        "filename": "extra/um_ppm/ppm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-10T16:13:56Z",
+      "side": 1,
+      "message": "nit: Rename to `platform_alloc_ppm` and change comment to reflect it is only allocating and not initializing.",
+      "revId": "d04cfda8fc8eab0b0ba231e4dda6170e86368cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
