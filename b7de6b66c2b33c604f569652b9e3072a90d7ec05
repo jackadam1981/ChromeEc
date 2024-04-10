@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b81c1c_f41830f9",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-10T20:26:12Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c10579a7_9cd72a37",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b25c9ba_6ccd3651",
@@ -65,6 +83,24 @@
       "writtenOn": "2024-04-04T23:45:32Z",
       "side": 1,
       "message": "Since `port_num` is coming from outside EC, we should validate it before using.",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b59933_8a237758",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-10T20:26:12Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "2b25c9ba_6ccd3651",
       "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +136,24 @@
       "side": 1,
       "message": "GET_CAPABILITY fails. rts54_get_capability passes 4 to rts54_post_command as a payload size while your code passes 2. The last few bytes of the payload seem to be different command to command. Can you double check if there is a generic way to call ucsi commands on rts54xx?",
       "parentUuid": "c329e3c1_cde123b5",
+      "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35ff974_26fc62ea",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2399,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-10T20:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5045f831_dcc80e5f",
       "revId": "b7de6b66c2b33c604f569652b9e3072a90d7ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
