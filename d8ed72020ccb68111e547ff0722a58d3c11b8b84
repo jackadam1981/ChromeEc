@@ -22,6 +22,30 @@
       },
       "revId": "d8ed72020ccb68111e547ff0722a58d3c11b8b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e274ef_f60d2fcb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-04-10T18:10:21Z",
+      "side": 0,
+      "message": "There wasn\u0027t a version included in the orignal version of ti50 metrics. It used the top 4(?) bits of misc_status to specify the number of bits that were valid.\n\nWe added a version in v2, so we don\u0027t need to use this anymore.",
+      "parentUuid": "17efaa5d_3455cdef",
+      "range": {
+        "startLine": 4399,
+        "startChar": 2,
+        "endLine": 4399,
+        "endChar": 23
+      },
+      "revId": "d8ed72020ccb68111e547ff0722a58d3c11b8b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "66588bfd4e700bb675dd79f3747705dfa2181c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb2371d_0dd28958",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4411,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-04-10T18:10:21Z",
+      "side": 1,
+      "message": "\u003e Maybe it is worth to have a union including all possible layouts and pass a pointer to that union, letting this fuction figure out what vertion it is. Just a thought.\n\nSounds good. I\u0027ll create a followup cl.\n\n\u003e Also, looks like comments in https://chromium.googlesource.com/chromiumos/platform/ec/+/c060a44d/include/tpm_vendor_cmds.h#352 got stale, more bits are now used at the bottom of the status word?\n\n\nI think that comment just applies to the v1 metcics. \n\nThere\u0027s no comment, but METRICSV describes the rest of the bits for other versions.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/c060a44d/include/tpm_vendor_cmds.h#374",
+      "parentUuid": "3bdc3ead_470e6bea",
+      "range": {
+        "startLine": 4411,
+        "startChar": 50,
+        "endLine": 4411,
+        "endChar": 58
+      },
+      "revId": "66588bfd4e700bb675dd79f3747705dfa2181c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
