@@ -155,6 +155,8 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 		if (dev->last_connector_alerted != -1) {
 			const struct device *ppm =
 				DEVICE_DT_GET(DT_INST(0, ucsi_ppm_driver));
+			int block_call_counter = 0;
+			int rv;
 
 			DLOG("Calling GET_CONNECTOR_STATUS on port %d",
 			     dev->last_connector_alerted);
@@ -175,8 +177,23 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 				port_status, 0,
 				sizeof(struct ucsiv3_get_connector_status_data));
 
-			if (dev->pd->execute_cmd(ppm, &get_cs_cmd,
-						 (uint8_t *)port_status) < 0) {
+			rv = dev->pd->execute_cmd(ppm, &get_cs_cmd,
+						  (uint8_t *)port_status);
+			while (rv == -EBUSY) {
+				/*
+				 * Maybe PDM is getting connector status. Wait
+				 * and retry.
+				 */
+				block_call_counter++;
+				if (block_call_counter > 100)
+					break;
+				platform_usleep(20000);
+				rv = dev->pd->execute_cmd(
+					ppm, &get_cs_cmd,
+					(uint8_t *)port_status);
+			}
+
+			if (rv < 0) {
 				ELOG("Failed to read port %d status. No recovery.",
 				     port + 1);
 			} else {
