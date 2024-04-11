@@ -443,7 +443,10 @@ class AllTests:
                 enable_hw_write_protect=False,
             ),
             TestConfig(test_name="timer"),
-            TestConfig(test_name="timer_dos"),
+            # task_wait_event works only with the shimed task list, which is
+            # hardcoded. The task synchronisation functions are covered by
+            # Zephyr tests.
+            TestConfig(test_name="timer_dos", skip_for_zephyr=True),
             TestConfig(test_name="tpm_seed_clear"),
             TestConfig(test_name="uart"),
             TestConfig(test_name="unaligned_access"),
