@@ -34,6 +34,414 @@
       "parentUuid": "3f027d90_6df46b63",
       "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a86aa9f_0e65a1f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Please go through an internal code review first.  There are a lot of style problems with this CL.\n\nIt would also be helpful if ITE can share some documentation on how the UART programming works on the EC side.  There are a lot of magic numbers used and large blocks of byte sequences, which will be hard to maintain.",
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1dbb60_2b71f02f",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "This should be the first line of the file.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ca7f6d_e9d236a0",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Are both styles needed?  Should NACK/ACK mode be configured from the command line instead?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a619b52_caf57849",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Include stdbool.h and use `bool`.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10e3151_2fae5fb2",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Use types provided by stdint.h such as `uint8_t` and uint32_t`.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33efb37_23f35758",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "What is NACK_mode?  Why is NACK mode and non NACK mode required?  Should this be a command line parameter?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b554ec8c_25527528",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Define an array instead of a macro so you can use `write_com()`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a29dc77_4a8df05b",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "This is a lot of global variables.  Move this into a data structure, and then pass the data structure to all functions that need it.\n\nExample here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/util/iteflash.cc;l\u003d115",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b8f5ecf_deecf714",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "0xB4 seems to be used for many commands.  Can you create #defines fro the command type?  Is there documentation for the format of these commands sent to the ITE chip?",
+      "range": {
+        "startLine": 287,
+        "startChar": 30,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5a60c2_0556805e",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "General style issue.  You use both mixed case names `WriteEnable` and lower case names with underscores `init_file`.\n\nPlease use lower case and underscores.",
+      "range": {
+        "startLine": 292,
+        "startChar": 14,
+        "endLine": 292,
+        "endChar": 25
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e0cdfd_37b7318b",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "I recommend making all these array sizes anonymous: `const uint8_t *write_disable[] \u003d {...}`\n\nWhen calling into `WriteCom()` you should use the array size.\n```\nwrite_com(write_disable, ARRAY_SIZE(write_disable));\n```",
+      "range": {
+        "startLine": 298,
+        "startChar": 27,
+        "endLine": 298,
+        "endChar": 29
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f54528_82fb72b0",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "All these arrays should use `const uint8_t`.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 13
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8329ab9_33162167",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "The flash size shouldn\u0027t be fixed.  Won\u0027t ITE support multiple flash sizes?",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe0db83_5a493c79",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "This seems inefficient.  I recommend constructing the data bytes into a local array and then calling `write_com()`.",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f04b73_86186159",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Move the polling inside `chk_aah()`.  You should also add a timeout check so there are no unbounded loops.",
+      "range": {
+        "startLine": 506,
+        "startChar": 8,
+        "endLine": 506,
+        "endChar": 15
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26505277_985cd4ad",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "`perror` is meant to be used when making system calls and to provide debug information about the system call that failed.\n\nExamples: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/extra/i2c_pseudo/samples/i2c-pseudo/i2c-adapter-example.c;l\u003d34\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/extra/i2c_pseudo/samples/i2c-pseudo/i2c-adapter-example.c;l\u003d148\n\nThis call here should use `fprintf(stderr,...)`",
+      "range": {
+        "startLine": 1693,
+        "startChar": 2,
+        "endLine": 1693,
+        "endChar": 8
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd4e657_94d73fbb",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Add support for `-h` to show the usage.",
+      "range": {
+        "startLine": 1823,
+        "startChar": 0,
+        "endLine": 1823,
+        "endChar": 14
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858f705d_850210c5",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-11T22:24:50Z",
+      "side": 1,
+      "message": "Please add help text that describes all the parameters.  This should also include details for required and optional parameters.",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 40
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
