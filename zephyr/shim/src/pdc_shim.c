@@ -199,3 +199,13 @@ void pd_set_suspend(int port, int suspend)
 void board_reset_pd_mcu(void)
 {
 }
+
+void pd_set_mux_voltage(unsigned int mv)
+{
+	pdc_power_mgmt_set_max_voltage(mv);
+}
+
+unsigned int pd_get_max_voltage(void)
+{
+	return pdc_power_mgmt_get_max_voltage();
+}

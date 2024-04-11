@@ -417,4 +417,18 @@ int pdc_power_mgmt_set_comms_state(bool run);
 int pdc_power_mgmt_get_connector_status(
 	int port, union connector_status_t *connector_status);
 
+/**
+ * @brief Put a cap on the max voltage requested as a sink.
+ *
+ * @param mv maximum voltage in millivolts.
+ */
+void pdc_power_mgmt_set_max_voltage(unsigned int mv);
+
+/**
+ * @brief Get the max voltage that can be requested as set by pd_set_max_voltage().
+ *
+ * @return max voltage
+ */
+unsigned int pdc_power_mgmt_get_max_voltage(void);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
