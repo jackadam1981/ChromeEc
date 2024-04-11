@@ -16,6 +16,24 @@
       "message": "Can we use `pm_device_busy_set` instead of the lock not to suspend/resume device during every system suspend/wake-up procedure?",
       "revId": "b41639a1a7e7720cfbac2a155449ad3783dbb46c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e5b9d7_1e3540bd",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-11T06:36:58Z",
+      "side": 0,
+      "message": "Ignore the previous comment. The device won\u0027t be resumed, because it is not suspended during the system suspend. My bad.",
+      "parentUuid": "e5538c12_b523428d",
+      "revId": "b41639a1a7e7720cfbac2a155449ad3783dbb46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
