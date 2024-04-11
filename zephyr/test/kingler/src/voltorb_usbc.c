@@ -20,7 +20,9 @@ FAKE_VALUE_FUNC(int, chipset_in_state, int);
 FAKE_VALUE_FUNC(int, tc_is_attached_src, int);
 
 FAKE_VOID_FUNC(x_ec_interrupt);
+#ifndef CONFIG_TEST_SQUIRTLE
 FAKE_VOID_FUNC(bmi3xx_interrupt);
+#endif
 FAKE_VOID_FUNC(pd_update_contract, int);
 FAKE_VOID_FUNC(check_src_port);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_src_port, HOOK_PRIO_DEFAULT);
