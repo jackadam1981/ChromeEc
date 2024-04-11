@@ -17,10 +17,13 @@
 
 #include "adlrvp.h"
 
+#undef CONFIG_CMD_ACCELSPOOF
 #undef CONFIG_CMD_ADC
 #undef CONFIG_CMD_APTHROTTLE
 #undef CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_GETTIME
+#undef CONFIG_CMD_CRASH
+#undef CONFIG_CMD_DEVICE_EVENT
 
 /* Enable LTO */
 #define CONFIG_LTO
