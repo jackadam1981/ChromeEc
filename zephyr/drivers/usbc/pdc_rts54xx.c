@@ -418,6 +418,8 @@ struct pdc_data_t {
 	union error_status_t es;
 	/** Connector Status */
 	union connector_status_t conn_status;
+	/** Connector Status Cache State */
+	bool conn_status_cached;
 	/** */
 	uint8_t block_call_counter;
 };
@@ -910,6 +912,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				/* Set the interrupt event */
 				pdc_int_data->cci_event
 					.vendor_defined_indicator = 1;
+				pdc_int_data->conn_status_cached = false;
 				/* Notify system of status change */
 				call_cci_event_cb(pdc_int_data);
 				/* done with this port */
@@ -1323,9 +1326,12 @@ static void st_read_run(void *o)
 		memcpy(data->user_buf, data->rd_buf + offset, len);
 	}
 
-	if (data->cmd == CMD_GET_CONNECTOR_STATUS)
+	if (data->cmd == CMD_GET_CONNECTOR_STATUS &&
+			!data->conn_status_cached) {
 		/* Save connector status in cache. */
-		memcpy(&data->conn_status, data->user_buf, len);
+		memcpy(&data->conn_status, data->rd_buf, len);
+		data->conn_status_cached = true;
+	}
 
 	/* Clear the read buffer */
 	memset(data->rd_buf, 0, 256);
@@ -1337,6 +1343,7 @@ static void st_read_run(void *o)
 	data->cci_event.data_len = len;
 	/* Command has completed */
 	data->cci_event.command_completed = 1;
+
 	/* Inform the system of the event */
 	call_cci_event_cb(data);
 	/* All done, return to Init or Idle state */
@@ -1823,6 +1830,17 @@ static int rts54_get_connector_status(const struct device *dev,
 				      union connector_status_t *cs)
 {
 	struct pdc_data_t *data = dev->data;
+
+#ifndef PDC_RTS54XX_CACHE_CONN_STATUS_FOR_PPM_ONLY
+	if (data->conn_status_cached) {
+		LOG_INF("%s: Copy conn status from cache", __func__);
+		memcpy(cs, &data->conn_status, sizeof(*cs));
+		data->cci_event.data_len = sizeof(*cs);
+		data->cci_event.command_completed = 1;
+		call_cci_event_cb(data);
+		return 0;
+	}
+#endif
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
@@ -2530,6 +2548,15 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 
 	LOG_INF("%s: conn=%u lpm_data=%p", __func__, conn, lpm_data_out);
 	data = pdc_data[conn - 1]->dev->data;
+
+#ifdef PDC_RTS54XX_CACHE_CONN_STATUS_FOR_PPM_ONLY
+	if (data->conn_status_cached) {
+		LOG_INF("%s: Copy conn status from cache", __func__);
+		rv = sizeof(data->conn_status);
+		memcpy(lpm_data_out, &data->conn_status, rv);
+		return rv;
+	}
+#endif
 
 	/* We don't know yet if the PDC driver is busy or not. */
 	if (get_state(data) != ST_IDLE) {
