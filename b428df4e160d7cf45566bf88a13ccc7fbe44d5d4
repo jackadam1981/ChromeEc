@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b5def8_329c6dc5",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 18
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-11T00:16:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ce0d56_8f66cc3d",
+      "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2860a7_1e76ce87",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-04-11T00:03:12Z",
       "side": 1,
       "message": "This should be `platform_zephyr.c`",
+      "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c84b58_1874d358",
+        "filename": "zephyr/subsys/ucsi/platform_usermode.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-11T00:16:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2860a7_1e76ce87",
       "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
