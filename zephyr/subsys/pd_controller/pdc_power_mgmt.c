@@ -112,6 +112,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_IDENTITY_DISCOVERY,
 	/** CMD_PDC_IS_SOURCING_VCONN */
 	CMD_PDC_IS_VCONN_SOURCING,
+	/** CMD_PDC_GET_PD_VDO_DP_CFG */
+	CMD_PDC_GET_PD_VDO_DP_CFG_SELF,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -310,6 +312,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_CONNECTOR_RESET] = "PDC_CONNECTOR_RESET",
 	[CMD_PDC_GET_IDENTITY_DISCOVERY] = "PDC_GET_IDENTITY_DISCOVERY",
 	[CMD_PDC_IS_VCONN_SOURCING] = "PDC_IS_VCONN_SOURCING",
+	[CMD_PDC_GET_PD_VDO_DP_CFG_SELF] = "PDC_GET_PD_VDO_DP_CFG_SELF",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -546,6 +549,8 @@ struct pdc_port_t {
 	uint8_t vdo_type[VDO_NUM];
 	/** Array used to store VDOs returned from the GET_VDO command */
 	uint32_t vdo[VDO_NUM];
+	/** Store the VDO returned for the PD_VDO_DP_CFG */
+	uint32_t vdo_dp_cfg;
 	/** CONNECTOR_RESET temp variable used with CMD_PDC_CONNECTOR_RESET */
 	union connector_reset_t connector_reset;
 	/** PD Port Partner discovery state: True if discovery is complete, else
@@ -875,6 +880,9 @@ static bool handle_connector_status(struct pdc_port_t *port)
 	union conn_status_change_bits_t conn_status_change_bits;
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
+
+	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+		conn_status_change_bits.raw_value);
 
 	if (conn_status_change_bits.pd_reset_complete) {
 		LOG_INF("C%d: Reset complete indicator", port_number);
@@ -1286,6 +1294,11 @@ static void pdc_send_cmd_start_entry(void *obj)
 static int send_pdc_cmd(struct pdc_port_t *port)
 {
 	int rv;
+	const struct pdc_config_t *const config = port->dev->config;
+
+	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
+		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
 	/* Send PDC command via driver API */
 	switch (port->cmd->cmd) {
@@ -1348,6 +1361,20 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_vdo(port->pdc, port->vdo_req, port->vdo_type,
 				 port->vdo);
 		break;
+	case CMD_PDC_GET_PD_VDO_DP_CFG_SELF: {
+		union get_vdo_t vdo_req;
+		uint8_t vdo_type;
+
+		vdo_req.raw_value = 0;
+		vdo_req.num_vdos = 1;
+		vdo_req.vdo_origin = VDO_ORIGIN_PORT;
+
+		vdo_type = VDO_PD_DP_CFG;
+
+		rv = pdc_get_vdo(port->pdc, vdo_req, &vdo_type,
+				 &port->vdo_dp_cfg);
+		break;
+	}
 	case CMD_PDC_CONNECTOR_RESET:
 		rv = pdc_connector_reset(port->pdc, port->connector_reset);
 		break;
@@ -2872,3 +2899,38 @@ int pdc_power_mgmt_get_connector_status(
 
 	return 0;
 }
+
+#ifdef CONFIG_PLATFORM_EC_USB_PD_DP_MODE
+uint8_t pdc_power_mgmt_get_dp_pin_mode(int port)
+{
+	int ret;
+	uint8_t pin_mode;
+
+	/* Make sure port is in range and that an output buffer is provided */
+	if (!is_pdc_port_valid(port)) {
+		LOG_ERR("get_dp_pin_mode: invalid port %d", port);
+		return 0;
+	}
+
+	/* Make sure port is connected and PD capable */
+	if (!pdc_power_mgmt_is_connected(port)) {
+		return 0;
+	}
+
+	/* Block until command completes */
+	ret = public_api_block(port, CMD_PDC_GET_PD_VDO_DP_CFG_SELF);
+	if (ret) {
+		LOG_ERR("%s: failed %d",
+			pdc_cmd_names[CMD_PDC_GET_PD_VDO_DP_CFG_SELF], ret);
+		return 0;
+	}
+
+	/*
+	 * Byte 1 (bits 15:8) contains the DP Source Device Pin assignment.
+	 * The VDO pin assignments match our MODE_DP_PIN_x definitions.
+	 */
+	pin_mode = (pdc_data[port]->port.vdo_dp_cfg >> 8) & 0xFF;
+
+	return pin_mode;
+}
+#endif
