@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d4f56d_285ee4e8",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2511,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-11T00:03:12Z",
+      "side": 1,
+      "message": "We should add a TODO to move these static allocations of per port status into the per port PDC_DATA structure instead. We don\u0027t want static defines and want devicetree providing this info.",
+      "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ce0d56_8f66cc3d",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 18
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-11T00:03:12Z",
+      "side": 1,
+      "message": "platform_zephyr.c",
+      "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2860a7_1e76ce87",
+        "filename": "zephyr/subsys/ucsi/platform_usermode.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-11T00:03:12Z",
+      "side": 1,
+      "message": "This should be `platform_zephyr.c`",
+      "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
