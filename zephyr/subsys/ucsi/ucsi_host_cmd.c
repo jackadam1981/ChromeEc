@@ -117,7 +117,6 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 	}
 
 	switch (ucsi_command) {
-	case UCSI_CMD_GET_ALTERNATE_MODES:
 	case UCSI_CMD_PPM_RESET:
 	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
 		return -ENOTSUP;
@@ -143,6 +142,11 @@ static int rts54xx_ucsi_execute_cmd(struct ucsi_pd_device *device,
 			LOG_ERR("Invalid conn=%d", conn);
 			return -EINVAL;
 		}
+		break;
+	case UCSI_CMD_GET_ALTERNATE_MODES:
+		conn = UCSI_7BIT_PORTMASK(control->command_specific[1]);
+		if (conn == 0 || conn > dev->num_ports)
+			return -EINVAL;
 		break;
 	default:
 		conn = 1;
