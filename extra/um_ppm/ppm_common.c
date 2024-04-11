@@ -263,6 +263,7 @@ static void ppm_common_reset_data(struct ppm_common_device *dev)
 	clear_last_error(dev);
 	dev->last_connector_changed = -1;
 	dev->last_connector_alerted = -1;
+	dev->notif_mask.raw_value = 0;
 	memset(&dev->pending, 0, sizeof(dev->pending));
 	memset(dev->per_port_status, 0,
 	       sizeof(struct ucsiv3_get_connector_status_data) *
