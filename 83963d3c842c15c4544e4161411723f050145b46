@@ -33,6 +33,24 @@
       "message": "This is just moving the commit part outside the fp_command_template to reuse.",
       "revId": "83963d3c842c15c4544e4161411723f050145b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af8926a_4812f84f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-11T06:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "359ede0f_54c0d792",
+      "revId": "83963d3c842c15c4544e4161411723f050145b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
