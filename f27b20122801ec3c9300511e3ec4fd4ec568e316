@@ -70,6 +70,30 @@
       },
       "revId": "f27b20122801ec3c9300511e3ec4fd4ec568e316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a239bbc6_d4420d25",
+        "filename": "board/xol/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-04-11T05:11:55Z",
+      "side": 1,
+      "message": "If I remove thermal_a and thermal_params at all, then build error occurs(undefined reference to `thermal_params\u0027).\nSo I removed thermal_a and changed thermal_params.",
+      "parentUuid": "cc5b5959_125e6282",
+      "range": {
+        "startLine": 133,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "f27b20122801ec3c9300511e3ec4fd4ec568e316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
