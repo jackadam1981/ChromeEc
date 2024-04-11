@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95dbb48_098e564a",
+        "filename": "zephyr/shim/chip/stm32/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-11T18:47:55Z",
+      "side": 1,
+      "message": "Any reason why we are only looking at the domain 1? It looks like the original looks at D3, also.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
