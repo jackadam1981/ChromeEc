@@ -16,6 +16,24 @@
       "message": "How is the file built?  Can you add a Makefile target to the `make utils BOARD\u003dhost` target?",
       "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a629fcc_509c1967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-11T21:51:44Z",
+      "side": 1,
+      "message": "for testing, you could just build with `gcc until/itecomdbgr.c`",
+      "parentUuid": "3f027d90_6df46b63",
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
