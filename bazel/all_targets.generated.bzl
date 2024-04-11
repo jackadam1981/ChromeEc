@@ -2044,6 +2044,10 @@ def all_targets():
         board = "skitty",
     )
     ec_target(
+        name = "veluza",
+        board = "veluza",
+    )
+    ec_target(
         name = "skyrim",
         board = "skyrim",
         extra_modules = ["cmsis"],
