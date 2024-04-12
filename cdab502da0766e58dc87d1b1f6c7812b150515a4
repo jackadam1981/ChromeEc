@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5916206e_79c20fca",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-12T18:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e285df8_bc9c80bf",
+      "revId": "cdab502da0766e58dc87d1b1f6c7812b150515a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb3158d_f67c843b",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "501edbd7_39dc466f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-12T18:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfb3158d_f67c843b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "cdab502da0766e58dc87d1b1f6c7812b150515a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55dac165_758737de",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-04-11T18:05:16Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "cdab502da0766e58dc87d1b1f6c7812b150515a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b533438c_b949b1b3",
+        "filename": "zephyr/program/intelrvp/src/chg_usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-12T18:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55dac165_758737de",
       "range": {
         "startLine": 14,
         "startChar": 0,
