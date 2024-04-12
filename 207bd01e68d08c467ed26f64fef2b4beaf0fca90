@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a872e8_baa8dfd5",
+        "filename": "zephyr/program/intelrvp/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-12T19:30:01Z",
+      "side": 1,
+      "message": "how about enable only if DC JACK present and bring it to line 16 so that all boards can use it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "207bd01e68d08c467ed26f64fef2b4beaf0fca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5622363f_66680ef4",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-12T19:30:01Z",
+      "side": 1,
+      "message": "if not used by PD driver, how about changing name as chg_usb_tcpc.c?",
+      "revId": "207bd01e68d08c467ed26f64fef2b4beaf0fca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c23a748_8d71b2e2",
+        "filename": "zephyr/program/intelrvp/src/chg_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-12T19:30:01Z",
+      "side": 1,
+      "message": "how about naming this file as dc_jack.c ?\n/* DC Jack configuration */",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "207bd01e68d08c467ed26f64fef2b4beaf0fca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
