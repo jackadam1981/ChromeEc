@@ -22,6 +22,30 @@
       },
       "revId": "bbe67fd55c4758087d6898411c5646e23bbd1987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62329d05_671ad631",
+        "filename": "board/bloonchipper-druid/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-12T19:41:23Z",
+      "side": 1,
+      "message": "Ohhh, gotcha. I\u0027ll try that.\n\nDo note that using 21 seemed to cause template upload issues, already.",
+      "parentUuid": "a581fc01_8c1cdd41",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "bbe67fd55c4758087d6898411c5646e23bbd1987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
