@@ -104,7 +104,7 @@ BUILD_ASSERT(ARRAY_SIZE(led_names) == EC_LED_ID_COUNT);
 int ascii_mode;
 
 /* Message verbosity */
-static int verbose = 0;
+int verbose = 0;
 
 /* Check SBS numerical value range */
 int is_battery_range(int val)
@@ -12254,6 +12254,16 @@ const struct command commands[] = {
 	{ "pdcontrol", cmd_pd_control,
 	  "[suspend|resume|reset|disable|on]\n"
 	  "\tControls the PD chip." },
+	/* clang-format off */
+	{ "pdctrace", cmd_pdc_trace,
+	  " ...\n\tCollect USB PDC messages\n"
+	  "\t-p <port>  collect on USB-C port <port> (default all)\n"
+	  "\t-d <host>  send to <host> (UDP port "
+			STRINGIFY(USB_PDC_UDP_PORT) ")\n"
+	  "\t-v         send to crostini VM (UDP port "
+			STRINGIFY(USB_PDC_UDP_PORT) ", on-device only)\n"
+	  "\t-w <file>  write to <file>" },
+	/* clang-format on */
 	{ "pdgetmode", cmd_pd_get_amode,
 	  "<port>\n"
 	  "\tGet All USB-PD alternate SVIDs and modes on <port>." },
