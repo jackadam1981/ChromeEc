@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "ectool_pdc.h"
+
 /** @brief A handler for an `ectool` command.  */
 struct command {
 	/** The name of the command. */
@@ -48,6 +50,9 @@ int cmd_keyscan(int argc, char *argv[]);
 
 /* ASCII mode for printing, default off */
 extern int ascii_mode;
+
+/* Message verbosity */
+extern int verbose;
 
 int cmd_i2c_protect(int argc, char *argv[]);
 int cmd_i2c_read(int argc, char *argv[]);
