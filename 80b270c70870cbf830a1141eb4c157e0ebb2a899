@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "777b9abe_7d709fca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-12T12:14:57Z",
+      "side": 1,
+      "message": "I would add that we plan to migrate all boards to Zephyr, perform deshimming and finally cut our connections with EC. I believe we will drop fingerprint specific EC unit tests at some point in future.\n\n\u003e We\u0027ve discussed it with Patryk and decided it is a better way\n\nI was more radical. My opinion was that we should abandon EC style (compile whole firmware + test code) and implement tests in Zephyr style (compiling only necessary things + test code). For example, `system_is_locked` test doesn\u0027t really need FPSENSOR code, BoringSSL, matching algorithm, etc.",
+      "parentUuid": "ec03d7ab_654fd5b1",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
