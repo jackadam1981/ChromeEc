@@ -61,3 +61,20 @@ two mechanisms:
    Note: in all cases, accumulated messages are reported. The idea is
    that after the command executes, the FIFO is empty or contains fresh
    data.
+
+2. AP terminal: `ectool pdctrace` with options:
+
+   * `-d <IP>`   Forward trace messages to host at IP addr <IP>.
+                  Trace messages are encapsulated in UDP packets on port 2012.
+   * `-p <PORT>` Enable tracing on port <PORT>. By default, tracing is
+                  enabled all ports.
+   * `-s`         Additionally report trace messages on stdout when alternate
+                  destinations are specified.
+   * `-v`         Forward trace messages a crostini VM. This is a special
+                  shorthand notation to forwarded messages to the local
+                  crostini VM instance's IP address instead of an arbitrary
+                  IP address using `-d <IP>`.
+   * `-w <FILE>` Write trace messages to PCAP file.
+
+   `ectool pdctrace` continues running, performing the requested operation
+   until interrupted with `^C`.
