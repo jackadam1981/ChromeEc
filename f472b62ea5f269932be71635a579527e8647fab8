@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e3c8a1_3c4f21c3",
+        "filename": "zephyr/dts/bindings/usbc/pd/intel,pd-altmode.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-12T19:22:02Z",
+      "side": 1,
+      "message": "is it possible to set default val as GPIO_INT_EDGE_FALLING ? so that we don\u0027t have to compare the value in driver and let board file override it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "f472b62ea5f269932be71635a579527e8647fab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
