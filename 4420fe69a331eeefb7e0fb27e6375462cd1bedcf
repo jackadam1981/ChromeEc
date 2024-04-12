@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1de94e_c81bbcb2",
+        "filename": "zephyr/program/rauru/CMakeLists.txt",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-12T17:29:26Z",
+      "side": 1,
+      "message": "Do we need CONFIG_PLATFORM_EC_USB_PORT_POWER_DUMB\u003dy?",
+      "revId": "4420fe69a331eeefb7e0fb27e6375462cd1bedcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbee3db8_72652d12",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-12T17:29:26Z",
+      "side": 1,
+      "message": "rauru_common_init",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "4420fe69a331eeefb7e0fb27e6375462cd1bedcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
