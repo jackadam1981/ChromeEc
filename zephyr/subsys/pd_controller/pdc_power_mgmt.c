@@ -1451,11 +1451,20 @@ static void pdc_send_cmd_wait_run(void *obj)
 	} else if (atomic_test_and_clear_bit(port->cci_flags,
 					     CCI_CMD_COMPLETED)) {
 		LOG_DBG("CCI_CMD_COMPLETED");
-		if (port->cmd->cmd == CMD_PDC_GET_CONNECTOR_STATUS) {
+		switch (port->cmd->cmd) {
+		case CMD_PDC_GET_CONNECTOR_STATUS:
 			if (handle_connector_status(port)) {
 				return;
 			}
-		} else {
+			break;
+		case CMD_PDC_GET_IDENTITY_DISCOVERY:
+			pd_notify_event(port, PD_STATUS_EVENT_SOP_DISC_DONE);
+			break;
+		case CMD_PDC_GET_CABLE_PROPERTY:
+			pd_notify_event(port,
+					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+			break;
+		default:
 			set_pdc_state(port, port->send_cmd_return_state);
 			return;
 		}
