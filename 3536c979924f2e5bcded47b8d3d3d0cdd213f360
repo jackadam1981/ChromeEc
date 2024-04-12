@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bf7407_1a8d7261",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-12T18:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ba9aa5_d62f4105",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "3536c979924f2e5bcded47b8d3d3d0cdd213f360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d05db77_dd7ba6e2",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-04-11T17:56:12Z",
       "side": 1,
       "message": "nit: add a comment, if the board specific GPIO flags available use them else use falling edge interrupt\n\nrv \u003d gpio_pin_interrupt_configure_dt(\u0026cfg-\u003eint_gpio,\n\t\t\t\tcfg-\u003eirq_flags ? cfg-\u003eirq_flags: \n                                GPIO_INT_LEVEL_LOW)",
+      "revId": "3536c979924f2e5bcded47b8d3d3d0cdd213f360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26346ac_64015570",
+        "filename": "zephyr/drivers/usbc/intel_altmode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-12T18:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d05db77_dd7ba6e2",
       "revId": "3536c979924f2e5bcded47b8d3d3d0cdd213f360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
