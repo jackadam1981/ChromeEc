@@ -105,7 +105,7 @@ BUILD_ASSERT(ARRAY_SIZE(led_names) == EC_LED_ID_COUNT);
 int ascii_mode;
 
 /* Message verbosity */
-static int verbose = 0;
+int verbose = 0;
 
 /* Check SBS numerical value range */
 int is_battery_range(int val)
@@ -12405,6 +12405,7 @@ const struct command commands[] = {
 	{ "pdcontrol", cmd_pd_control,
 	  "[suspend|resume|reset|disable|on]\n"
 	  "\tControls the PD chip." },
+	{ "pdctrace", cmd_pdc_trace, cmd_pdc_trace_usage },
 	{ "pdgetmode", cmd_pd_get_amode,
 	  "<port>\n"
 	  "\tGet All USB-PD alternate SVIDs and modes on <port>." },
