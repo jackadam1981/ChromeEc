@@ -46,6 +46,30 @@
       },
       "revId": "bbe67fd55c4758087d6898411c5646e23bbd1987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e74d796_5f1136d8",
+        "filename": "board/bloonchipper-druid/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-12T20:37:30Z",
+      "side": 1,
+      "message": "I am not sure why the filter size should affect the template size. It should not depend on it",
+      "parentUuid": "62329d05_671ad631",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "bbe67fd55c4758087d6898411c5646e23bbd1987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
