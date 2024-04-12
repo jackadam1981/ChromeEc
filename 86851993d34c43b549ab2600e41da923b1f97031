@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f19725f_fd19b57d",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-12T20:55:47Z",
+      "side": 1,
+      "message": "Try check if it can be made as Zephyr implementation as in line 65",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 23
+      },
+      "revId": "86851993d34c43b549ab2600e41da923b1f97031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
