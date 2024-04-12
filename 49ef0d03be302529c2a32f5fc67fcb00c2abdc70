@@ -22,6 +22,30 @@
       },
       "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb01a75d_4a239ae0",
+        "filename": "zephyr/shim/chip/stm32/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-12T05:32:55Z",
+      "side": 1,
+      "message": "I\u0027ve checked RM0433 for STM32H743 (dartmonkey) and there are no D3 bits in `DBGMCU_CR` definition - https://screenshot.googleplex.com/BcwJgW5w5YTmMa3.\n\nHAL says [the same](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/hal_stm32/stm32cube/stm32h7xx/soc/stm32h743xx.h;l\u003d21134).\n\nHowever some H7 chips indeed [define](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/hal_stm32/stm32cube/stm32h7xx/soc/stm32h723xx.h;l\u003d21566) the D3 bits. I should probably change the `elif` to a specific chip. What do you think?",
+      "parentUuid": "d95dbb48_098e564a",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
