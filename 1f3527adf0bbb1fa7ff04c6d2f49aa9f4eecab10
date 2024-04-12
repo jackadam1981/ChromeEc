@@ -16,6 +16,24 @@
       "message": "@alvishsu@google.com should we wait for `pg_pp3700_s5_od` deasserted instead rather than a fixed timeout?",
       "revId": "1f3527adf0bbb1fa7ff04c6d2f49aa9f4eecab10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7fed13_8bbe8c97",
+        "filename": "power/mt8186.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2024-04-12T08:41:00Z",
+      "side": 1,
+      "message": "pg_pp3700_s5_od drops immediately when en_pp3700_s3 goes down, they\u0027re similar.\nSo a fixed discharge time is needed regardless.\n\nSo to me either EN + fixed delay, or PG + fixed delay are fine.\nPG + fixed delay is actually more precise.\n\nNote that the long CONST discharge time is a workaround certainly for Rauru, it should be able to remove on Navi and the remaining.",
+      "parentUuid": "948c2960_4ebb7db9",
+      "revId": "1f3527adf0bbb1fa7ff04c6d2f49aa9f4eecab10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
