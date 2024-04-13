@@ -262,6 +262,30 @@
       },
       "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0fc32b_69961c38",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-04-13T21:19:46Z",
+      "side": 1,
+      "message": "Based on feedback in boringssl CL, updated test procedure to run openssl from the command line on gLinux to verify calculations",
+      "parentUuid": "d597d0ef_e2c9b0ad",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "07cd012bd9196fbfa3a605ca6c50b1d082d61fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
