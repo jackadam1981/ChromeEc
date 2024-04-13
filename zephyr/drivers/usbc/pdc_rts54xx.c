@@ -605,6 +605,10 @@ static int rts54_i2c_read(const struct device *dev)
 
 	data->rd_buf_len = data->ping_status.data_len;
 
+	for (size_t i = 0; i < data->rd_buf_len; ++i) {
+		LOG_INF("RTS54 RD: %u: 0x%02x", i, data->rd_buf[i]);
+	}
+
 	return rv;
 }
 
@@ -617,6 +621,10 @@ static int rts54_i2c_write(const struct device *dev)
 	msg.buf = data->wr_buf;
 	msg.len = data->wr_buf_len;
 	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
+
+	for (size_t i = 0; i < data->wr_buf_len; ++i) {
+		LOG_INF("RTS54 WR: %u: 0x%02x", i, data->wr_buf[i]);
+	}
 
 	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
 }
