@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "711d3035_30511e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-15T23:09:27Z",
+      "side": 1,
+      "message": "Thanks for the explanation. There doesn\u0027t seem to be a great solution here, and I think what you are proposing is reasonable. Could you write a small design doc on the plan? That will provide a nice reference in case questions come up. We can also use that to brainstorm ways to make the copying less likely to cause problems. For example, maybe we should add the EC test files to the [migrated files script](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/migrated_files.sh) so that we get a warning if we make a change to the EC version.\n\n\u003e My opinion was that we should abandon EC style (compile whole firmware + test code) and implement tests in Zephyr style (compiling only necessary things + test code).\n\nIn general, I think we should follow Zephyr style if we can. (I\u0027m not sure what is required to do so, so I\u0027m not sure if this is more or less complicated.)\n\nFor example, for the CRC tests in this CL we really only need to care about whether the CRC logic is correct and don\u0027t need those dependencies like Patryk mentioned.\n\nThe area where it\u0027s less clear are for tests that fall more into the category of \"integration test\". For example, if we want to test the behavior of something in a way that is as close as possible to what we are shipping. An example might be testing that fpsensor commands with `CMD_FLAG_RESTRICTED` do not work when the system is locked. I don\u0027t think that we have any tests like that though in the EC code; we\u0027ve generally had integration tests in Tast. (The `restricted_console` test is definitely a unit test and doesn\u0027t test specific fpsensor commands.)\n\nIt looks like Zephyr has a concept of \"[integration test](https://docs.zephyrproject.org/latest/develop/test/ztest.html#quick-start-unit-testing)\" vs \"[unit test](https://docs.zephyrproject.org/latest/develop/test/ztest.html#quick-start-unit-testing)\". Can we follow that?\n\nOne other item to think about related to testing to think about. I saw @peress@google.com was [able to get `gtest` to work](https://github.com/zephyrproject-rtos/zephyr/issues/66053), but I\u0027m not totally sure about the current status. I\u0027m not suggesting we use `gtest` for these tests, but it would be good to know if we can use it [if we have a need for it](http://b/254530679).",
+      "parentUuid": "777b9abe_7d709fca",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
