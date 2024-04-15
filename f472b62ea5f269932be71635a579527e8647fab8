@@ -22,6 +22,30 @@
       },
       "revId": "f472b62ea5f269932be71635a579527e8647fab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c20c19_25eb4c89",
+        "filename": "zephyr/dts/bindings/usbc/pd/intel,pd-altmode.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-15T23:44:26Z",
+      "side": 1,
+      "message": "Tried using GPIO_INT_EDGE_FALLING, but this macro not recognized. I explored but couldn\u0027t find a way to include zephyr macro in dts binding yaml file.",
+      "parentUuid": "42e3c8a1_3c4f21c3",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "f472b62ea5f269932be71635a579527e8647fab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
