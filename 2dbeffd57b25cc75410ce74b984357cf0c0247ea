@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4682b895_96bda4d6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-15T12:41:48Z",
+      "side": 1,
+      "message": "`id` is not a good name for context. You could change it to the name used in fp login documents (`LabelSeed` or just `context`?)",
+      "range": {
+        "startLine": 635,
+        "startChar": 49,
+        "endLine": 635,
+        "endChar": 51
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e18c984_3fb532f6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-15T12:41:48Z",
+      "side": 1,
+      "message": "Could you add\n```\nTODO(b/xxxxxxxxx) Remove all support for older templates\n(with struct_version \u003c 4) after migration is completed.\n```\n\nIf we don\u0027t have cleanup bug, please create it.",
+      "range": {
+        "startLine": 665,
+        "startChar": 1,
+        "endLine": 665,
+        "endChar": 37
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ab3360_6d76a792",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-15T12:41:48Z",
+      "side": 1,
+      "message": "It\u0027s no longer `user_id` isn\u0027t it?",
+      "range": {
+        "startLine": 748,
+        "startChar": 56,
+        "endLine": 748,
+        "endChar": 63
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eccfb9d_a46a39a3",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-15T12:41:48Z",
+      "side": 1,
+      "message": "Does the migration create a new template?",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 25
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1861c306_f4ba518e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-15T12:41:48Z",
+      "side": 1,
+      "message": "I don\u0027t see loading templates here, only commit.\n\nYou use `fp_command_template()` to load the template, but at the end biod won\u0027t set `FP_TEMPLATE_COMMIT` bit which would cause decryption, but this function will be called instead?\n\nDo I understand it corectly?",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 26
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
