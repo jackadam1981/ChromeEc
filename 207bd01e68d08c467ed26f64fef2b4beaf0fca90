@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f400ea9_c5357891",
+        "filename": "zephyr/program/intelrvp/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-15T23:41:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "64a872e8_baa8dfd5",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "207bd01e68d08c467ed26f64fef2b4beaf0fca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5622363f_66680ef4",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34658b7b_fab0d4d7",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-15T23:41:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5622363f_66680ef4",
+      "revId": "207bd01e68d08c467ed26f64fef2b4beaf0fca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c23a748_8d71b2e2",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-04-12T19:30:01Z",
       "side": 1,
       "message": "how about naming this file as dc_jack.c ?\n/* DC Jack configuration */",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "207bd01e68d08c467ed26f64fef2b4beaf0fca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111ea9d0_b3d8cfc3",
+        "filename": "zephyr/program/intelrvp/src/chg_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-15T23:41:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6c23a748_8d71b2e2",
       "range": {
         "startLine": 6,
         "startChar": 2,
