@@ -1804,6 +1804,15 @@
  */
 #undef CONFIG_PANIC_ON_WATCHDOG_WARNING
 
+/**
+ * Enables nesting for the `crash` console command.
+ * Calling the crash console command with multiple crash arguments
+ * will result in nested crashes in the order specified.
+ */
+#ifdef CONFIG_CMD_CRASH
+#define CONFIG_CMD_CRASH_NESTED
+#endif
+
 /*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.
