@@ -366,12 +366,68 @@ ENABLE_CLANG_WARNING("-Winfinite-recursion")
 ENABLE_GCC_WARNING("-Winfinite-recursion")
 #endif
 
+#ifdef CONFIG_CMD_CRASH_NESTED
+static bool command_crash_nested_enabled;
+static int command_crash_nested_argc;
+static const char **command_crash_nested_argv;
+static void command_crash_nested_enable(int argc, const char **argv)
+{
+	command_crash_nested_argc = argc;
+	command_crash_nested_argv = argv;
+	command_crash_nested_enabled = true;
+}
+static void command_crash_nested_disable(void)
+{
+	command_crash_nested_enabled = false;
+}
+/* Forward declare command_crash so it can be referenced in
+ * command_crash_nested_handler.
+ */
+static int command_crash(int argc, const char **argv);
+/*
+ * Called from the panic handler.
+ * Triggers a nested crash when enabled.
+ */
+int command_crash_nested_handler(void)
+{
+	if (!command_crash_nested_enabled)
+		return EC_SUCCESS;
+	/* Must be re-enabled after each run */
+	command_crash_nested_enabled = false;
+	/* Decrement argc and shift argv */
+	return command_crash(command_crash_nested_argc - 1,
+			     command_crash_nested_argv + 1);
+}
+#else
+static void command_crash_nested_enable(int argc, const char **argv)
+{
+	/* Do nothing */
+}
+static void command_crash_nested_disable(void)
+{
+	/* Do nothing */
+}
+int command_crash_nested_handler(void)
+{
+	/* Default implementation just returns success */
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CMD_CRASH_NESTED */
+
 /*****************************************************************************/
 /* Console commands */
 static int command_crash(int argc, const char **argv)
 {
 	if (argc < 2)
 		return EC_ERROR_PARAM1;
+
+	if (argc > 2) {
+		if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED)) {
+			command_crash_nested_enable(argc, argv);
+		} else {
+			return EC_ERROR_PARAM_COUNT;
+		}
+	}
 
 	if (!strcasecmp(argv[1], "assert")) {
 		ASSERT(0);
@@ -417,17 +473,31 @@ static int command_crash(int argc, const char **argv)
 		cflush();
 		ccprintf("%08x\n", *(volatile unsigned int *)null_ptr);
 	} else {
+		/* Disable nested crash on error */
+		if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED))
+			command_crash_nested_disable();
 		return EC_ERROR_PARAM1;
 	}
+
+	/* Disable nested crash on error */
+	if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED))
+		command_crash_nested_disable();
 
 	/* Everything crashes, so shouldn't get back here */
 	return EC_ERROR_UNKNOWN;
 }
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
+#ifndef CONFIG_CMD_CRASH_NESTED
 			"[assert | divzero | udivzero | stack"
 			" | unaligned | watchdog | hang | null]",
 			"Crash the system (for testing)");
+#else
+			"[assert | divzero | udivzero | stack"
+			" | unaligned | watchdog | hang | null]...",
+			"Crash the system (for testing). "
+			"Repeat argument for nested crashes.");
+#endif /* CONFIG_CMD_CRASH_NESTED */
 
 #ifdef TEST_BUILD
 int test_command_crash(int argc, const char **argv)
