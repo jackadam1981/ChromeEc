@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5afc12_4beead87",
+        "filename": "zephyr/test/krabby/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-04-15T02:14:48Z",
+      "side": 1,
+      "message": "Please remove the space ahead of `target_sources_ifdef`",
+      "revId": "7a0b3c621ae248f20652e86754e12133d004e4e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62847542_768b1ce8",
+        "filename": "zephyr/test/krabby/krabby.veluza.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-04-15T02:14:48Z",
+      "side": 1,
+      "message": "s/2022/2024",
+      "revId": "7a0b3c621ae248f20652e86754e12133d004e4e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
