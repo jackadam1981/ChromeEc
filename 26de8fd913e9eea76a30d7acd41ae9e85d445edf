@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b51470d_0cf18f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2024-04-15T16:35:24Z",
+      "side": 1,
+      "message": "Fei, basic question. I thought we don\u0027t need to land separately for firmware branch. But We are landing here as well as we are late with below change and and firmware branch already started before that?\n\n4700246: chip/mt_scp: Add capability to support vdec 10bit | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4700246",
+      "revId": "26de8fd913e9eea76a30d7acd41ae9e85d445edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
