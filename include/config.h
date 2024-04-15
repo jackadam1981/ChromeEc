@@ -6904,6 +6904,17 @@
 #define CONFIG_CMD_RETIMER
 #endif
 
+/**
+ * Enables nesting for the `crash` console command.
+ * Calling the crash console command with multiple crash arguments
+ * will result in nested crashes in the order specified.
+ */
+#if defined(CONFIG_CMD_CRASH) && !defined(CONFIG_CMD_CRASH_NESTED)
+#define CONFIG_CMD_CRASH_NESTED
+#elif !defined(CONFIG_CMD_CRASH) && defined(CONFIG_CMD_CRASH_NESTED)
+#error "CONFIG_CMD_CRASH_NESTED depends on CONFIG_CMD_CRASH"
+#endif
+
 /*****************************************************************************/
 
 /*
