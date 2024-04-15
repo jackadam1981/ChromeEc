@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471bbe65_66335b59",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-15T15:09:15Z",
+      "side": 1,
+      "message": "If we\u0027re charging on the other, do we need to evaluate the PDOs on this port and potentially switch to the more powerful source?",
+      "range": {
+        "startLine": 1262,
+        "startChar": 0,
+        "endLine": 1262,
+        "endChar": 28
+      },
+      "revId": "e14acb56e355ede567e022f75611673d92c15713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57876323_cd35fa79",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-15T15:09:15Z",
+      "side": 1,
+      "message": "Is the PDO with the maximum voltage guaranteed to provide max power?",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 39
+      },
+      "revId": "e14acb56e355ede567e022f75611673d92c15713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
