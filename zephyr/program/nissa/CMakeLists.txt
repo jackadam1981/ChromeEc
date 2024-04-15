@@ -184,6 +184,21 @@ if(DEFINED CONFIG_BOARD_CRAASKOV)
 	"craaskov/src/keyboard_customization.c"
 	)
 endif()
+if(DEFINED CONFIG_BOARD_ORISA)
+	project(orisa)
+	zephyr_include_directories("orisa/include")
+	zephyr_library_sources(
+			"orisa/src/keyboard.c"
+			"orisa/src/sub_board.c"
+			"orisa/src/touch_panel.c"
+			"orisa/src/usbc_stubs.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "orisa/src/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+	"orisa/src/keyboard.c"
+	"orisa/src/keyboard_customization.c"
+	)
+endif()
 if(DEFINED CONFIG_BOARD_QUANDISO)
 	project(quandiso)
 	zephyr_library_sources(
