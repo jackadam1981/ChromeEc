@@ -193,6 +193,9 @@ void report_panic(uint32_t *regs, uint32_t itype)
 
 	print_panic_information(regs, itype, regs[16], regs[17]);
 
+	if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED))
+		command_crash_nested_handler();
+
 	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE)) {
 		if (start_system_safe_mode() == EC_SUCCESS) {
 			pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_STARTED;
