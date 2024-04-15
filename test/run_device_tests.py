@@ -707,10 +707,14 @@ def fp_sensor_sel(
     ]
 
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    proc = subprocess.run(cmd, check=False)
 
-    # power cycle after setting sensor type to ensure detection
-    power_cycle(board_config)
+    if proc.returncode == 0:
+        # power cycle after setting sensor type to ensure detection
+        power_cycle(board_config)
+        return True
+
+    return False
 
 
 def hw_write_protect(enable: bool) -> None:
