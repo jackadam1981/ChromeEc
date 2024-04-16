@@ -16,6 +16,24 @@
       "message": "This does not yet work, due to not-currently-understood PDC behavior.",
       "revId": "9e209200e852d3729ecf03d2d8eb2250ad02a252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87473e2_29ae4ffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-16T02:54:26Z",
+      "side": 1,
+      "message": "Per crrev/c/5451078, this is now passing. Setting verified +1.",
+      "parentUuid": "c6303591_519a7291",
+      "revId": "9e209200e852d3729ecf03d2d8eb2250ad02a252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
