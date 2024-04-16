@@ -28,10 +28,12 @@ if((DEFINED CONFIG_BOARD_MTLRVP_M1723) OR (DEFINED CONFIG_BOARD_MTLRVP_MCHP) OR 
   zephyr_library_sources("src/intelrvp.c")
   zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_pd_policy_mecc_1_1.c")
   zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/chg_usb_pd_mecc_1_1.c")
-  zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/chg_usb_pd.c")
+  zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/dc_jack.c")
+  zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/chg_usb_tcpc.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_MTLRVP_PD)
   add_subdirectory(mtlrvp)
   zephyr_library_sources("src/intelrvp.c")
+  zephyr_library_sources("src/dc_jack.c")
 endif()
