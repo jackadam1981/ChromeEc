@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f711e5b3_05e01f8d",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T10:47:56Z",
+      "side": 1,
+      "message": "Renamed to `context`",
+      "parentUuid": "4682b895_96bda4d6",
+      "range": {
+        "startLine": 635,
+        "startChar": 49,
+        "endLine": 635,
+        "endChar": 51
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e18c984_3fb532f6",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-15T12:41:48Z",
       "side": 1,
       "message": "Could you add\n```\nTODO(b/xxxxxxxxx) Remove all support for older templates\n(with struct_version \u003c 4) after migration is completed.\n```\n\nIf we don\u0027t have cleanup bug, please create it.",
+      "range": {
+        "startLine": 665,
+        "startChar": 1,
+        "endLine": 665,
+        "endChar": 37
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc82c1f_d54e0bee",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e18c984_3fb532f6",
       "range": {
         "startLine": 665,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb5f84c_87bab4b1",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T10:47:56Z",
+      "side": 1,
+      "message": "Here it is user_id. If we commit through FP_TEMPLATE command it\u0027s always using user_id.",
+      "parentUuid": "96ab3360_6d76a792",
+      "range": {
+        "startLine": 748,
+        "startChar": 56,
+        "endLine": 748,
+        "endChar": 63
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eccfb9d_a46a39a3",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08af3ea_ab81fc8c",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T10:47:56Z",
+      "side": 1,
+      "message": "Yes, added more comment.",
+      "parentUuid": "8eccfb9d_a46a39a3",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 25
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1861c306_f4ba518e",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-04-15T12:41:48Z",
       "side": 1,
       "message": "I don\u0027t see loading templates here, only commit.\n\nYou use `fp_command_template()` to load the template, but at the end biod won\u0027t set `FP_TEMPLATE_COMMIT` bit which would cause decryption, but this function will be called instead?\n\nDo I understand it corectly?",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 26
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26351c10_07ac8ed7",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T10:47:56Z",
+      "side": 1,
+      "message": "Your understanding is correct. Added this info to the comments.",
+      "parentUuid": "1861c306_f4ba518e",
       "range": {
         "startLine": 777,
         "startChar": 0,
