@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9aec3d3_44ff1f53",
+        "filename": "board/xol/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-16T01:17:33Z",
+      "side": 1,
+      "message": "nit: This message is about board_id not for finch. So, I believe it should be printed by a function or in a section where board_id is set.\n\nIt\u0027s probably cleaner to define set_board_id, which does line 96 ~ 103.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 63
+      },
+      "revId": "d981be3a9ebd46390aa4096fae2dcc5c0d4db4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
