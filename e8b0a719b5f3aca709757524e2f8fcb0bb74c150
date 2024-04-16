@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b81252e_c9660155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-04-16T23:41:46Z",
+      "side": 1,
+      "message": "I don\u0027t think orissa should be treated as an EC project under /zephyr/program/nissa/. This CL is not merely adding/removing things from program/nissa as would be expected for variant of the reference platform. The PDC introduction requires a number of changes which do not apply otherwise to any other nissa device.\n\nAlso, this CL is too large. I would expect a series of patches and not simply one CL with every feature already included. That\u0027s too difficult to review removes the value of having CLs in the first place.",
+      "revId": "e8b0a719b5f3aca709757524e2f8fcb0bb74c150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
