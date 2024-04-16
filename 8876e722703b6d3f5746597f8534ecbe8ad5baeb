@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5af5d5_82e96c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-16T21:56:32Z",
+      "side": 1,
+      "message": "There\u0027s small clean-ups still necessary that I recommend leaving TODOs in code for:\n\n\n* Updating allocation to use the per-driver data from pdc_rts54xx.c\n* Better support for device tree enumerated port definitions\n* Moving the rts54_* functions into the driver itself instead of the common ucsi_host_cmd file\n\nOtherwise, ok to start landing to make it easier to test this implementation.",
+      "revId": "8876e722703b6d3f5746597f8534ecbe8ad5baeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
