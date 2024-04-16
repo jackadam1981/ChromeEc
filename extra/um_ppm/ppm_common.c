@@ -7,6 +7,7 @@
 #include "include/platform.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
+#include "util.h"
 
 const char *ppm_state_strings[PPM_STATE_MAX] = {
 	"PPM_STATE_NOT_READY",	    "PPM_STATE_IDLE",
