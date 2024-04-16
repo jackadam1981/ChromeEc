@@ -16,6 +16,24 @@
       "message": "Could you determine if it\u0027s workable to keep only greenbayupoc devicetree and includes from brox only when needed ?",
       "revId": "b023419473fac5b9301a63e4618caf1ec16127c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79596e7d_199c6d68",
+        "filename": "zephyr/program/brox/greenbayupoc/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2024-04-16T06:50:12Z",
+      "side": 1,
+      "message": "It need other brox\u0027s dsti file to build ec fw for greenbayupoc, the CL only pulls out the dtsi which greenbayupoc is different from brox(ex: gpio name and setting)",
+      "parentUuid": "fe48e0e2_fc524699",
+      "revId": "b023419473fac5b9301a63e4618caf1ec16127c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
