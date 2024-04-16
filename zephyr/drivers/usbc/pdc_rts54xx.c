@@ -1119,6 +1119,8 @@ static void st_read_run(void *o)
 	uint8_t len;
 	int rv;
 
+	printk("%s(%d) cmd=0x%02x user_buf=%p\n", __func__, __LINE__,
+	       data->cmd, data->user_buf);
 	/*
 	 * The data->user_buf is checked for NULL before a command is queued.
 	 * The check here gauards against an eronious ping_status indicating
