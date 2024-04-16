@@ -45,6 +45,30 @@
       },
       "revId": "b67dd97fd34c26ff092412b38e24140631fdae45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7da4c4b_27007893",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 8255,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T16:04:57Z",
+      "side": 1,
+      "message": "It is not in fact migrating template to v4. Template version has already been v4 for a while; v3 are those without match secret at all. We don\u0027t need to update the struct version in this migration.\n\nI agree we can change the name though, but can\u0027t think of really good names. MIGRATE_TEMPLATE_TO_GSC_ENCRYPTED? And in fact we seldom need to migrate templates. Even when we do, it doesn\u0027t necessary needs an EC command (like v3-\u003ev4 is done automatically when using a template). I think we can also keep it as is.",
+      "parentUuid": "02235a80_e081359b",
+      "range": {
+        "startLine": 8255,
+        "startChar": 8,
+        "endLine": 8255,
+        "endChar": 41
+      },
+      "revId": "b67dd97fd34c26ff092412b38e24140631fdae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9556d56c_3a6608c0",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-16T16:04:57Z",
+      "side": 1,
+      "message": "Without some faulty behavior it\u0027s unlikely that we\u0027ll run into this condition because we try to ensure we\u0027re in clean state with no template when migration starts. But still nice to put a check here IMO.",
+      "parentUuid": "ce6f46a2_1c17598c",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 25
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1861c306_f4ba518e",
