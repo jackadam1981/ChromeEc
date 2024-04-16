@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0ab3b7_dc41a0b2",
+        "filename": "board/xol/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-16T16:17:16Z",
+      "side": 1,
+      "message": "Sorry, you need to return something other than 0x23 or 0x30 to disable finch.",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "e5a403e2eaa2d86ddbb1e514e193006fa8fc3198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
