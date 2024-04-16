@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6b41f44_9cd5138e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-16T12:25:45Z",
+      "side": 1,
+      "message": "The variable has name `user_id` and it keeps User ID now, but in new flow it will be nonce context. Maybe it\u0027s good time to change it to `context`, so it won\u0027t confuse people in future? You can do this in separate patch.",
+      "parentUuid": "5bb5f84c_87bab4b1",
+      "range": {
+        "startLine": 748,
+        "startChar": 56,
+        "endLine": 748,
+        "endChar": 63
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eccfb9d_a46a39a3",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 6
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Yes, added more comment.",
       "parentUuid": "8eccfb9d_a46a39a3",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 25
+      },
+      "revId": "2dbeffd57b25cc75410ce74b984357cf0c0247ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6f46a2_1c17598c",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-16T12:25:45Z",
+      "side": 1,
+      "message": "I see that FP_TEMPLATE also performs this check. This is not harmful to check it once again I was worried that migration won\u0027t be possible if user has maximal number of fingers enrolled.",
+      "parentUuid": "a08af3ea_ab81fc8c",
       "range": {
         "startLine": 773,
         "startChar": 0,

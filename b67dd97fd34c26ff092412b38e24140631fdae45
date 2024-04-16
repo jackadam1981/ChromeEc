@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06413299_fbb18b93",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-16T12:25:45Z",
+      "side": 1,
+      "message": "This is not correct bug id\n```suggestion\n\t// TODO(b/335132437): Remove support for older templates (with\n```",
+      "range": {
+        "startLine": 665,
+        "startChar": 11,
+        "endLine": 665,
+        "endChar": 21
+      },
+      "revId": "b67dd97fd34c26ff092412b38e24140631fdae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02235a80_e081359b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 8255,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-16T12:25:45Z",
+      "side": 1,
+      "message": "I think the name of this command is too generic. Can we change it to something that is unique to this migration (e.g `EC_CMD_FP_MIGRATE_TEMPLATE_TO_V4`?)\n\nWe won\u0027t reuse this command in future migrations, because it takes `user_id` as an argument.",
+      "range": {
+        "startLine": 8255,
+        "startChar": 8,
+        "endLine": 8255,
+        "endChar": 41
+      },
+      "revId": "b67dd97fd34c26ff092412b38e24140631fdae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
