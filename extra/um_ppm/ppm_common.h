@@ -60,7 +60,7 @@ struct ppm_common_device {
 	int8_t last_connector_alerted;
 
 	/* Data dedicated to UCSI operation. */
-	struct ucsi_memory_region ucsi_data;
+	struct ucsi_memory_region ucsi_data __attribute((aligned(4)));
 
 	/* Last error status info. */
 	enum last_error_type last_error;
