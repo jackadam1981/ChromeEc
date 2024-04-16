@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "634532a8_595604d9",
+        "filename": "board/xol/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-04-16T15:50:42Z",
+      "side": 1,
+      "message": "Yes, board id can also be 0 to start.",
+      "parentUuid": "2d6dbcc0_1faeeb6c",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "30784c88ff1e34b59090e6056022daf0c817fc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448415d3_a78272b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-16T06:38:43Z",
       "side": 1,
       "message": "%u?",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "30784c88ff1e34b59090e6056022daf0c817fc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20dc5d6_4b8ef24b",
+        "filename": "board/xol/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-04-16T15:50:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "448415d3_a78272b0",
       "range": {
         "startLine": 102,
         "startChar": 26,
