@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c47486_0273854d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-16T02:42:23Z",
+      "side": 1,
+      "message": "One note here: There might be some cases other than AP shutdown where we actually want to use `SET_TPC_CSD_OPERATION_MODE`. We might need to have two separate API functions for these two different commands, if that\u0027s the case.",
+      "revId": "03ce901b282efcc0e2c946b66cc163b52ccb55a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
