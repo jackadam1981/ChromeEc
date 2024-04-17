@@ -46,6 +46,30 @@
       },
       "revId": "dbcffaad3c200894ac1c7eb74131929870c84144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c496837c_ae3904f2",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T18:11:23Z",
+      "side": 1,
+      "message": "That\u0027s right, this is the emulator.",
+      "parentUuid": "7187f3f8_1256ce89",
+      "range": {
+        "startLine": 185,
+        "startChar": 24,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "dbcffaad3c200894ac1c7eb74131929870c84144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
