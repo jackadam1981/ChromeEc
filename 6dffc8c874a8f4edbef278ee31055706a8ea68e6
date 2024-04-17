@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfaac9f8_ad9f7f91",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-17T16:23:37Z",
+      "side": 0,
+      "message": "check if i2c3 needs to be removed from zephyr/program/brox/i2c.dtsi",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "6dffc8c874a8f4edbef278ee31055706a8ea68e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
