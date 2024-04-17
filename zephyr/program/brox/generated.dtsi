@@ -42,10 +42,10 @@
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpioe 6 GPIO_ODR_LOW>;
 		};
-		gpio_ec_accel_db_int_l: ec_accel_db_int_l {
+		gpio_ec_gpj7: ec_gpj7 {
 			gpios = <&gpioj 7 GPIO_INPUT>;
 		};
-		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
+		gpio_ec_gpj0: ec_gpj0 {
 			gpios = <&gpioj 0 GPIO_INPUT>;
 		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
@@ -97,10 +97,10 @@
 		gpio_ec_slp_sus_l: ec_slp_sus_l {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 		};
-		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+		gpio_ec_gpd4: ec_gpd4 {
 			gpios = <&gpiod 4 GPIO_INPUT>;
 		};
-		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+		gpio_ec_gpd7: ec_gpd7 {
 			gpios = <&gpiod 7 GPIO_INPUT>;
 		};
 		gpio_ec_wp_odl: ec_wp_odl {
@@ -147,7 +147,10 @@
 		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
 			gpios = <&gpioj 5 GPIO_INPUT>;
 		};
-		gpio_tablet_mode_l: tablet_mode_l {
+		gpio_notebook_mode_r: notebook_mode_r {
+			gpios = <&gpiod 0 GPIO_INPUT>;
+		};
+		gpio_ec_gpd1: ec_gpd1 {
 			gpios = <&gpiod 1 GPIO_INPUT>;
 		};
 		gpio_usb_pd_int_odl: usb_pd_int_odl {
