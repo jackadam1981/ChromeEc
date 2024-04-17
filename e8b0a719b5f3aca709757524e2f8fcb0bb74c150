@@ -16,6 +16,24 @@
       "message": "I don\u0027t think orissa should be treated as an EC project under /zephyr/program/nissa/. This CL is not merely adding/removing things from program/nissa as would be expected for variant of the reference platform. The PDC introduction requires a number of changes which do not apply otherwise to any other nissa device.\n\nAlso, this CL is too large. I would expect a series of patches and not simply one CL with every feature already included. That\u0027s too difficult to review removes the value of having CLs in the first place.",
       "revId": "e8b0a719b5f3aca709757524e2f8fcb0bb74c150",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "154f5c12_c6073f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-04-17T00:56:31Z",
+      "side": 1,
+      "message": "It\u0027s a temporary CL to make me convenient to work for local build and debug to avoid conflicts since the original one is from craaskov which is in development phase as well. Actually we are still in pending state for overlay and repo of ref design begin created, and then we would ask ODM to upload a new chain listed in b/327990307 once the desired place is available.",
+      "parentUuid": "0b81252e_c9660155",
+      "revId": "e8b0a719b5f3aca709757524e2f8fcb0bb74c150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
