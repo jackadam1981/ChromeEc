@@ -16,6 +16,24 @@
       "message": "Tried this with Teledyne test equipment, the SVID test still failed",
       "revId": "4811a63f1a77adffcb0eeed0d78191d46c005ba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1862cd58_4dd15baa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-17T02:07:19Z",
+      "side": 1,
+      "message": "Added some debug.",
+      "parentUuid": "cf2ddcd0_262c9816",
+      "revId": "4811a63f1a77adffcb0eeed0d78191d46c005ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
