@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe8018d_306f90ac",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T00:50:52Z",
+      "side": 1,
+      "message": "The UCSI 3.0 Spec states that this should be 37 bits.",
+      "range": {
+        "startLine": 185,
+        "startChar": 24,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "dbcffaad3c200894ac1c7eb74131929870c84144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

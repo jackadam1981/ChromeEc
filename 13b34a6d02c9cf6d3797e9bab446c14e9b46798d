@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e64d466_ea5564f2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T00:50:52Z",
+      "side": 0,
+      "message": "We still need TrySrc. This should be added in a follow up CL. I don\u0027t see a UCSI command for it, so vendor commands must be used.",
+      "range": {
+        "startLine": 703,
+        "startChar": 19,
+        "endLine": 703,
+        "endChar": 27
+      },
+      "revId": "13b34a6d02c9cf6d3797e9bab446c14e9b46798d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
