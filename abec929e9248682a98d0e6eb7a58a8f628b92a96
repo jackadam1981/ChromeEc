@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c49f143_b9bcdfbc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-17T17:47:57Z",
+      "side": 1,
+      "message": "Should you set `SYSTEM_RESET_PRESERVE_FLAGS` as well?",
+      "range": {
+        "startLine": 177,
+        "startChar": 15,
+        "endLine": 177,
+        "endChar": 32
+      },
+      "revId": "abec929e9248682a98d0e6eb7a58a8f628b92a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
