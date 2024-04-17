@@ -424,7 +424,7 @@ static uint64_t prev_activity_timestamp;
 static uint8_t data_was_transferred;
 
 /* Reply with an error to remote side, reset state. */
-static void send_error_reset(uint8_t resp_value)
+test_export_static void send_error_reset(uint8_t resp_value)
 {
 	QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
 	rx_state_ = rx_idle;
