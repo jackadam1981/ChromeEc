@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ccec9e_7ba2391b",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T00:26:25Z",
+      "side": 1,
+      "message": "Why are these memory allocation function needed? Why not just use them directly? https://docs.zephyrproject.org/apidoc/latest/string_8h.html#af0f01bffcd16daa9143f6014d10a25ad",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac68904_65338087",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T00:26:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure where this is called, but is should be initialized with DEVICE_DEFINE:\n\nhttps://docs.zephyrproject.org/apidoc/latest/group__device__model.html#gac12521f4d900e8947aac45c1b228366d",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7407cbc0_ef1f5784",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T00:26:25Z",
+      "side": 1,
+      "message": "The device should be initialized from the devicetree. See pdc_subsys_init in https://chromium.googlesource.com/chromiumos/platform/ec/+/d41d5845207b8f8d79871e4231ea6c813e60a27d/zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4b080d_6a91b925",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-17T00:26:25Z",
+      "side": 1,
+      "message": "eppm_init should be called with DEVICE_DT_INST_DEFINE\n\nhttps://docs.zephyrproject.org/apidoc/latest/group__device__model.html#gada5ba4aca9e0662ccebb2232c7256419\n\nAlso, see pdc_subsys_init in https://chromium.googlesource.com/chromiumos/platform/ec/+/d41d5845207b8f8d79871e4231ea6c813e60a27d/zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 54
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
