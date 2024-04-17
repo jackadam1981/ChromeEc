@@ -46,6 +46,30 @@
       },
       "revId": "4a90a03582c945462c33a5b85a9d9f52c0281a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f64de7_42e7da2c",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-17T19:58:23Z",
+      "side": 1,
+      "message": "Sorry, I meant that the Nuvoton MCU doesn\u0027t support the FPU IRQ, so Firas made changes to the test to read FPSCR instead. See the CLs linked to [this bug](http://b/298697667). Can you use the same approach for the Zephyr test?",
+      "parentUuid": "0f44a4b7_70921707",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "4a90a03582c945462c33a5b85a9d9f52c0281a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
