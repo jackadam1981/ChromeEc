@@ -121,6 +121,7 @@ DATA_ACCESS_VIOLATION_200B0000_REGEX = re.compile(
 PRINTF_CALLED_REGEX = re.compile(r"printf called\r\n")
 
 BLOONCHIPPER = "bloonchipper"
+BUCCANEER = "buccaneer"
 DARTMONKEY = "dartmonkey"
 HELIPILOT = "helipilot"
 
@@ -508,6 +509,25 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     },
 )
 
+BUCCANEER_CONFIG = BoardConfig(
+    name=BUCCANEER,
+    servo_uart_name="raw_fpmcu_console_uart_pty",
+    servo_power_enable="fpmcu_pp3300",
+    reboot_timeout=1.5,
+    rollback_region0_regex=DATA_ACCESS_VIOLATION_64020000_REGEX,
+    rollback_region1_regex=DATA_ACCESS_VIOLATION_64030000_REGEX,
+    mpu_regex=DATA_ACCESS_VIOLATION_200B0000_REGEX,
+    mcu_power_supply="pp3300_mcu_mw",
+    # Power utilization numbers were experimentally derived via onboard ADCs and verified with a DMM
+    expected_fp_power=PowerUtilization(
+        idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
+    ),
+    expected_mcu_power=PowerUtilization(
+        idle=RangedValue(34.8, 3.0), sleep=RangedValue(2.7, 2.5)
+    ),
+    variants={},
+)
+
 DARTMONKEY_CONFIG = BoardConfig(
     name=DARTMONKEY,
     servo_uart_name="raw_fpmcu_console_uart_pty",
@@ -559,6 +579,7 @@ HELIPILOT_CONFIG = BoardConfig(
 
 BOARD_CONFIGS = {
     "bloonchipper": BLOONCHIPPER_CONFIG,
+    "buccaneer": BUCCANEER_CONFIG,
     "dartmonkey": DARTMONKEY_CONFIG,
     "helipilot": HELIPILOT_CONFIG,
 }
