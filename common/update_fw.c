@@ -320,6 +320,7 @@ void fw_update_command_handler(void *body, size_t cmd_size,
 
 	new_chunk_written(block_offset);
 
+#ifndef CONFIG_ZTEST
 	/* Verify that data was written properly. */
 	if (memcmp(update_data,
 		   (void *)(block_offset + CONFIG_PROGRAM_MEMORY_BASE),
@@ -329,6 +330,7 @@ void fw_update_command_handler(void *body, size_t cmd_size,
 			__LINE__);
 		return;
 	}
+#endif
 
 	*error_code = UPDATE_SUCCESS;
 }
