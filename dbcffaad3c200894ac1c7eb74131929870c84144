@@ -22,6 +22,30 @@
       },
       "revId": "dbcffaad3c200894ac1c7eb74131929870c84144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7187f3f8_1256ce89",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-17T04:54:44Z",
+      "side": 1,
+      "message": "UCSI spec describes the control size as 8 bytes (1 byte command, 1 byte length, and 6 bytes command specific). The reserved 37 bits in the spec simply pad this out to the full size of the control region. We don\u0027t need to do that here for the emulator since it\u0027s unused (and by definition zeroes).\n\nI could leave out the `reserved : 5` here but wanted to pad it out to uint16_t. Do you prefer I leave it out or call it something like `unused`?",
+      "parentUuid": "bfe8018d_306f90ac",
+      "range": {
+        "startLine": 185,
+        "startChar": 24,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "dbcffaad3c200894ac1c7eb74131929870c84144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

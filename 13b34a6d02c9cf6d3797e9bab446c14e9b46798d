@@ -22,6 +22,30 @@
       },
       "revId": "13b34a6d02c9cf6d3797e9bab446c14e9b46798d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0bc202_2fb48b04",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-17T04:54:44Z",
+      "side": 0,
+      "message": "Ack. We may want to add a new entry to `pdc_api_t` called `configure_port_policy` which gets called in two scenarios:\n\n* Successful call to `Connector Reset` with reset_type\u003dhard.\n* Connector Status Change bit for \"PD reset complete\" is set.\n\nDoes this sound alright?",
+      "parentUuid": "3e64d466_ea5564f2",
+      "range": {
+        "startLine": 703,
+        "startChar": 19,
+        "endLine": 703,
+        "endChar": 27
+      },
+      "revId": "13b34a6d02c9cf6d3797e9bab446c14e9b46798d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
