@@ -20,6 +20,7 @@
 
 LOG_MODULE_REGISTER(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+#if DT_NODE_EXISTS(DT_NODELABEL(gpio_en_pp5000_pen_x))
 __overridable void board_power_change(struct ap_power_ev_callback *cb,
 				      struct ap_power_ev_data data)
 {
@@ -51,6 +52,7 @@ static void board_setup_init(void)
 	ap_power_ev_add_callback(&cb);
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_INIT_I2C);
+#endif
 
 int pd_check_vconn_swap(int port)
 {
