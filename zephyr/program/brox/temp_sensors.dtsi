@@ -19,8 +19,8 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		ddr_soc {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
+			temp_fan_off = <20>;
+			temp_fan_max = <35>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;
@@ -29,8 +29,8 @@
 		};
 
 		ambient {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
+			temp_fan_off = <20>;
+			temp_fan_max = <35>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;

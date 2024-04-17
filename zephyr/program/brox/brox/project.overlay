@@ -1,4 +1,4 @@
-/* Copyright 2023 The ChromiumOS Authors
+/* Copyright 2024 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -25,7 +25,6 @@ i2c3ALT: &i2c3 {
 #include "../led_pins.dtsi"
 #include "../led_policy.dtsi"
 #include "../keyboard.dtsi"
-#include "../motionsense.dtsi"
 #include "../power_signals.dtsi"
 #include "../power_signals_gpios.dtsi"
 #include "../pwm.dtsi"
