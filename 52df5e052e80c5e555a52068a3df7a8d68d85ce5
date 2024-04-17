@@ -22,6 +22,30 @@
       },
       "revId": "52df5e052e80c5e555a52068a3df7a8d68d85ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a4b145_090953c3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-04-17T23:54:18Z",
+      "side": 1,
+      "message": "Yes, same as helipilot except for the name.\nThe examples in the file that appear to use inheritance are nami and nocturne, \"variants\" of dartmonkey. If we were to set buccaneer up in the same way, as a helipilot variant, it looks like we would need to add an RO for buccaneer into the TEST_ASSETS_BUCKET (gs:/chromiumos-test-assets-public/fpmcu/RO) as a first step, right?",
+      "parentUuid": "2a535136_d564a560",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 1
+      },
+      "revId": "52df5e052e80c5e555a52068a3df7a8d68d85ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
