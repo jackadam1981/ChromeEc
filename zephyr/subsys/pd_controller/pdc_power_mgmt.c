@@ -482,6 +482,8 @@ struct pdc_port_t {
 	ATOMIC_DEFINE(pdc_cmd_flags, CMD_PDC_COUNT);
 	/** Flag to suspend the PDC Power Mgmt state machine */
 	atomic_t suspend;
+	/** Flag to notify that a Hard Reset was sent */
+	atomic_t hard_reset_sent;
 
 	/** Source TypeC attached local state variable */
 	enum src_typec_attached_local_state_t src_typec_attached_local_state;
@@ -905,6 +907,8 @@ static bool handle_connector_status(struct pdc_port_t *port)
 		LOG_INF("C%d: Reset complete indicator", port_number);
 		pdc_power_mgmt_notify_event(port_number,
 					    PD_STATUS_EVENT_HARD_RESET);
+
+		atomic_set(&port->hard_reset_sent, true);
 	}
 
 	if (!status->connect_status) {
@@ -1201,16 +1205,25 @@ static void pdc_snk_attached_run(void *obj)
 	uint32_t max_ma, max_mv, max_mw;
 	uint32_t flags;
 
-	/* The CCI_EVENT is set on a connector disconnect, so check the
-	 * connector status and take the appropriate action. */
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
-	}
+	/* The Sink FET is disabled when a hard reset is sent, so re-enable it
+	 */
+	if (atomic_get(&port->hard_reset_sent)) {
+		atomic_clear(&port->hard_reset_sent);
+		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
+	} else {
+		/* The CCI_EVENT is set on a connector disconnect, so check the
+		 * connector status and take the appropriate action. */
+		if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
+			queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
+			return;
+		}
 
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_CAM_CHANGE)) {
-		queue_internal_cmd(port, CMD_PDC_GET_PD_VDO_DP_CFG_SELF);
-		return;
+		if (atomic_test_and_clear_bit(port->cci_flags,
+					      CCI_CAM_CHANGE)) {
+			queue_internal_cmd(port,
+					   CMD_PDC_GET_PD_VDO_DP_CFG_SELF);
+			return;
+		}
 	}
 
 	switch (port->snk_attached_local_state) {
@@ -1711,6 +1724,14 @@ static void pdc_snk_typec_only_run(void *obj)
 	const struct pdc_config_t *const config = port->dev->config;
 
 	set_attached_pdc_state(port, SNK_ATTACHED_TYPEC_ONLY_STATE);
+
+	/* The Sink FET is disabled when a hard reset is sent, so re-enable it
+	 */
+	if (atomic_get(&port->hard_reset_sent)) {
+		atomic_clear(&port->hard_reset_sent);
+		port->snk_typec_attached_local_state =
+			SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT;
+	}
 
 	/* The CCI_EVENT is set on a connector disconnect, so check the
 	 * connector status and take the appropriate action. */
