@@ -302,10 +302,26 @@ $(1)-incs-y += $(addprefix $(2)/,$($(3)-incs-y))
 $(1)-dirs-y += $(addprefix $(2)/,$($(3)-dirs-y))
 endef
 
-# Include all subdirs under feature-x.
-feature-x-builds = $(wildcard private/feature-x/*/build.mk)
-include $(feature-x-builds)
-$(eval $(call vars_from_dir,private,feature-x,feature-x))
+# Include all subdirs under feature-x. Expected dir structure is:
+#
+# platform/feature-x/foo/ec
+#   build.mk
+#   file1.c
+#   file2.c
+#   ...
+#
+# This code works as follows:
+#   For each dir found as platform/feature-x/*/ec,
+#   1. Clear feautre-x-y.
+#   2. Read build.mk.
+#   3. Append the directory to fx-dirs (without ..).
+#   4. Append all files listed in feature-x-y to fx-y (without ../feature-x).
+$(foreach dir,$(wildcard ../feature-x/*/ec), \
+	$(eval feature-x-y=) \
+	$(eval include $(dir)/build.mk) \
+	$(eval d=$(subst ../feature-x/,,$(dir))) \
+	$(eval fx-dirs+=$(subst ../,,$(dir))) \
+	$(foreach src,$(feature-x-y),$(eval fx-y+=$(d)/$(src))))
 
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
@@ -368,6 +384,7 @@ all-obj-$(1)+=$(call objs_from_dir_p,chip/$(CHIP),chip,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BASEDIR),baseboard,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BDIR),board,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,private,private,$(1))
+all-obj-$(1)+=$(call objs_from_dir_p,feature-x,fx,$(1))
 ifneq ($(PDIR),)
 all-obj-$(1)+=$(call objs_from_dir_p,$(PDIR),$(PDIR),$(1))
 endif
@@ -445,6 +462,7 @@ ifeq ($(CONFIG_BORINGSSL_CRYPTO), y)
 dirs+=third_party/boringssl/common
 dirs+=crypto
 endif
+dirs+=$(fx-dirs)
 common_dirs=util
 
 ifeq ($(custom-ro_objs-y),)
@@ -461,6 +479,7 @@ $(eval $(call get_sources,rw))
 rw-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RW/$(obj)))
 rw-only-objs := $(sort $(foreach obj, $(all-obj-rw), $(out)/RW/$(obj)))
 rw-objs := $(sort $(rw-common-objs) $(rw-only-objs))
+#$(warning rw-objs=$(rw-objs))
 
 # Don't include the shared objects in the RO/RW image if we're enabling
 # the shared objects library.
@@ -469,6 +488,7 @@ ro-objs := $(filter-out %_sharedlib.o, $(ro-objs))
 endif
 ro-deps := $(addsuffix .d, $(ro-objs))
 rw-deps := $(addsuffix .d, $(rw-objs))
+#$(warning rw-deps=$(rw-deps))
 
 deps := $(ro-deps) $(rw-deps) $(deps-y)
 
