@@ -64,10 +64,6 @@
 			gpios = <&gpiog 1 GPIO_ODR_LOW>;
 			enum-name = "GPIO_EC_INT_L";
 		};
-		gpio_ec_kb_bl_en: ec_kb_bl_en {
-			gpios = <&gpioi 2 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
-		};
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
 			gpios = <&gpioksol 2 GPIO_OUTPUT_HIGH>;
 		};
@@ -106,7 +102,9 @@
 			/* ADP_DET */
 			<&gpiod 0 0>,
 			/* ec_batt_pres_odl */
-			<&gpioi 7 0>;
+			<&gpioi 7 0>,
+			/* EC_EN_KB_BL */
+			<&gpioi 2 0>;
 		};
 };
 
@@ -127,14 +125,6 @@ gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
  */
 &gpio_ec_prochot_odl {
 	gpios = <&gpioi 0 GPIO_ODR_HIGH>;
-};
-
-&gpio_ec_voldn_btn_odl {
-	enum-name = "GPIO_VOLUME_DOWN_L";
-};
-
-&gpio_ec_volup_btn_odl {
-	enum-name = "GPIO_VOLUME_UP_L";
 };
 
 &gpio_ec_wp_odl {
