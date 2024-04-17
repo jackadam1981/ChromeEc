@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77a0c3c4_02978e8b",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-17T20:44:33Z",
+      "side": 1,
+      "message": "`um_ppm` (where this code originally comes from) was written to be easily portable to other platforms (Zephyr, kernel, other OS-es) and defines the platform header for memory operations, task operations, locking and signaling. I think Keith gave feedback early on to do static allocations instead of dynamic hence the implementations are zero-ed out here.\n\nYou can see how these apis are used in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/extra/um_ppm/. I think refactoring this implementation to remove dynamic allocations entirely from common code is a fair request but we\u0027d probably do this as a follow-up.",
+      "parentUuid": "d8ccec9e_7ba2391b",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac68904_65338087",
         "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
         "patchSetId": 28

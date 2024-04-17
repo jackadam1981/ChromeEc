@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d037d7c9_5f57484e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2511,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-17T20:44:33Z",
+      "side": 1,
+      "message": "@shurst - I think your feedback to use DEVICE_DEFINE makes the most sense to be here (instead of using static declarations).\n\nLet\u0027s try to do this as a follow-on CL.",
+      "parentUuid": "25d4f56d_285ee4e8",
+      "revId": "b428df4e160d7cf45566bf88a13ccc7fbe44d5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87ce0d56_8f66cc3d",
         "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
         "patchSetId": 18
