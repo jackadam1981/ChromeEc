@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0abcfa_a0f5c23d",
+        "filename": "zephyr/subsys/pd_controller/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-17T16:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "225df64f_34f87f23",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 70
+      },
+      "revId": "729d9d5b7bcf5ca8806216bd5a0f6726ac8c4fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e5c436a_b664b7b7",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a9feeb_e00a6cd5",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-17T16:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad0aabb_5a54bae3",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "729d9d5b7bcf5ca8806216bd5a0f6726ac8c4fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13e8aa86_d87fbe33",
@@ -83,6 +131,30 @@
       "writtenOn": "2024-04-12T20:54:44Z",
       "side": 1,
       "message": "how about submitting this as a new CL which removes hc_usb_pd_mux_info taken from common files too",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "729d9d5b7bcf5ca8806216bd5a0f6726ac8c4fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9826bc22_3acf87cf",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-17T16:06:22Z",
+      "side": 1,
+      "message": "I think hc_usb_pd_mux_info() is still needed for platforms with TCPC implementation and also with PDC with Intel ALT mode enabled.",
+      "parentUuid": "13e8aa86_d87fbe33",
       "range": {
         "startLine": 73,
         "startChar": 0,
