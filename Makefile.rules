@@ -634,6 +634,11 @@ $(out)/$(PROJECT).exe: $(ro-objs)
 	$(call quiet,exe,EXE    )
 endif
 
+$(out)/RO/feature-x/%.o:../feature-x/%.c
+	$(call quiet,c_to_o,CC     )
+$(out)/RW/feature-x/%.o:../feature-x/%.c
+	$(call quiet,c_to_o,CC     )
+
 $(out)/RO/%.o.cmd:%.c
 	$(file > $@,$(subst .o.cmd,.o,$(cmd_c_to_o)))
 $(out)/RO/%.o:%.c
