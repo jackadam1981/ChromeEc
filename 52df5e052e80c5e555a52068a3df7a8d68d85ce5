@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a535136_d564a560",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-17T23:41:51Z",
+      "side": 1,
+      "message": "Is this the same as `helipilot` except for the name?\n\nLet\u0027s see if we can use inheritance so we don\u0027t have to duplicate everything (and have it get out of sync when we make a change).",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 1
+      },
+      "revId": "52df5e052e80c5e555a52068a3df7a8d68d85ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
