@@ -34,6 +34,24 @@
       "message": "Tom, have you run `fpsensor_hw` test?\n\n```\nDEBUG:Calling pre-test callback\nDEBUG:Running command: \"dut-control fp_sensor_sel:1\"\nDEBUG:power_cycling board\nDEBUG:Running command: \"dut-control fpmcu_pp3300:off\"\nDEBUG:Running command: \"dut-control fpmcu_pp3300:pp3300\"\nERROR:pre-test callback failed, aborting \u003c\u003d\u003d\u003d ???\nTest \"fpsensor_hw\": FAILED\n```\n\nIf I revert this patch it magically starts passing.",
       "revId": "28feaec63b03e3ba8b369ca6a56a67f48dcd702b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f63200_cb6b83e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-17T20:46:49Z",
+      "side": 1,
+      "message": "Sorry, I did not. Thanks @dawidn@google.com for fixing it in https://crrev.com/c/5453452.",
+      "parentUuid": "31d12c09_66a80e0f",
+      "revId": "28feaec63b03e3ba8b369ca6a56a67f48dcd702b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
