@@ -736,8 +736,7 @@ static uint32_t pdc_max_request_mv = CONFIG_PLATFORM_EC_PD_MAX_VOLTAGE_MV;
 /**
  * @brief As a sink, this is the max power (in milliwatts) needed to operate
  */
-static uint32_t pdc_max_operating_power =
-	CONFIG_PLATFORM_EC_PD_OPERATING_POWER_MW;
+static uint32_t pdc_max_operating_power = CONFIG_PLATFORM_EC_PD_MAX_POWER_MW;
 
 static enum pdc_state_t get_pdc_state(struct pdc_port_t *port)
 {
@@ -1205,6 +1204,8 @@ static void pdc_snk_attached_run(void *obj)
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t max_ma, max_mv, max_mw;
+	uint32_t tmp_curr, tmp_volt, tmp_pow;
+	uint32_t pdo_pow;
 	uint32_t flags;
 
 	/* The CCI_EVENT is set on a connector disconnect, so check the
@@ -1259,20 +1260,27 @@ static void pdc_snk_attached_run(void *obj)
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
 		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
-		/* Select vSafe5V */
-		port->snk_policy.pdo_index = 1;
-		port->snk_policy.pdo = port->snk_policy.pdos[0];
+		pdo_pow = 0;
 		flags = 0;
 
 		for (int i = 0; i < PDO_NUM; i++) {
-			LOG_INF("PDO%d: %08x, %d %d", i,
-				port->snk_policy.pdos[i],
-				PDO_FIXED_GET_VOLT(port->snk_policy.pdos[i]),
-				PDO_FIXED_GET_CURR(port->snk_policy.pdos[i]));
+			if ((port->snk_policy.pdos[i] & PDO_TYPE_MASK) !=
+			    PDO_TYPE_FIXED) {
+				continue;
+			}
 
-			/* Select maximum charge voltage */
-			if (pdc_max_request_mv ==
-			    PDO_FIXED_GET_VOLT(port->snk_policy.pdos[i])) {
+			tmp_volt = PDO_FIXED_GET_VOLT(port->snk_policy.pdos[i]);
+			tmp_curr = PDO_FIXED_GET_CURR(port->snk_policy.pdos[i]);
+			tmp_pow = (tmp_volt * tmp_curr) / 1000;
+
+			LOG_INF("PDO%d: %08x, %d %d %d", i,
+				port->snk_policy.pdos[i], tmp_volt, tmp_curr,
+				tmp_pow);
+
+			if ((tmp_pow > pdo_pow) &&
+			    (tmp_pow <= pdc_max_operating_power) &&
+			    (tmp_volt <= pdc_max_request_mv)) {
+				pdo_pow = tmp_pow;
 				port->snk_policy.pdo_index = i + 1;
 				port->snk_policy.pdo = port->snk_policy.pdos[i];
 			}
