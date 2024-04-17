@@ -71,15 +71,15 @@
 
 /* pd-aic-data */
 &i2c3 {
-	pdc_data_port0: rts@68 {
+	pdc_data_port0: rts@50 {
 		compatible = "intel,pd-altmode";
-		reg = <0x68>;
+		reg = <0x50>;
 		irq-gpios = <&gpioj 1 GPIO_ACTIVE_LOW>;
 		irq-flags = <GPIO_INT_LEVEL_LOW>;
 	};
-	pdc_data_port1: rts@69 {
+	pdc_data_port1: rts@52 {
 		compatible = "intel,pd-altmode";
-		reg = <0x69>;
+		reg = <0x52>;
 		irq-gpios = <&gpioj 1 GPIO_ACTIVE_LOW>;
 		irq-shared;
 		irq-flags = <GPIO_INT_LEVEL_LOW>;
