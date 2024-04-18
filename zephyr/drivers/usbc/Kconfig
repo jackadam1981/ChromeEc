@@ -58,4 +58,40 @@ config USBC_PDC_TRACE_MSG
 	  Messages between the EC and PDC are saved in a pre-allocated
 	  FIFO so they can be retrieved by EC host and console commands.
 
+config USBC_PDC_TRACE_MSG_FIFO_SIZE
+	int "PDC message tracing FIFO size"
+	range 7 16
+	default 10
+	depends on USBC_PDC_TRACE_MSG
+	help
+	  This is the byte size of the PDC message tracing FIFO
+	  expressed as log2. A value of 10 results in a 1024 byte deep
+	  FIFO. When tracing is active, the FIFO needs to be deep enough
+	  to abosrb delays on the AP side when retrieving messages. When
+	  the FIFO is full, messages are tail-dropped which effectively
+	  disables tracing until the FIFO drains.
+	  The FIFO is allocated in EC RAM, so some sizing judgement may
+	  be necessary on ECs with limited RAM.
+
+config USBC_PDC_TRACE_MSG_VERBOSE
+	bool "Verbose USB-C PDC message tracing"
+	depends on USBC_PDC_TRACE_MSG
+	help
+	  Enable console output for PDC message tracing operations.
+	  Used primarily for debugging.
+
+config USBC_PDC_TRACE_MSG_CONSOLE_CMD
+	bool "Enable pdctrace console command"
+	default y if USBC_PDC_TRACE_MSG
+	help
+	  Enable console command for printing PDC communication trace
+	  messages.
+
+config USBC_PDC_TRACE_MSG_HOST_CMD
+	bool "Enable PDC_TRACE host command"
+	default y if USBC_PDC_TRACE_MSG
+	help
+	  Enable host command for collecting PDC communication trace
+	  messages.
+
 endif # PLATFORM_EC_USBC
