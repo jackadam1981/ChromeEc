@@ -41,6 +41,6 @@ void lid_interrupt(enum gpio_signal signal);
  *
  * @param enable    Flag that enables or disables lid interrupt.
  */
-void enable_lid_detect(bool enable);
+void enable_lid_event(bool enable);
 
 #endif /* __CROS_EC_LID_SWITCH_H */
