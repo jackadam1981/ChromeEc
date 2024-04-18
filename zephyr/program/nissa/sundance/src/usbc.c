@@ -91,7 +91,7 @@ void reset_nct38xx_port(int port)
 	if (port == USBC_PORT_C0) {
 		reset_gpio_l = &tcpc_config[0].rst_gpio;
 		ioex_port0 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port0));
-		ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port1));
+		ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c1_port0));
 #if DT_NODE_EXISTS(DT_NODELABEL(nct3807_C1))
 	} else if (port == USBC_PORT_C1) {
 		reset_gpio_l = &tcpc_config[1].rst_gpio;
