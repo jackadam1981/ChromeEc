@@ -31,3 +31,9 @@ tests:
     extra_configs:
     - CONFIG_TEST_SUITE_PDC_HOSTCMD=y
     - CONFIG_PLATFORM_EC_HOSTCMD_PD_CHIP_INFO=y
+
+  pdc.trace_msg:
+    extra_configs:
+    - CONFIG_TEST_SUITE_PDC_TRACE_MSG=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USBC_PDC_TRACE_MSG_VERBOSE=y
