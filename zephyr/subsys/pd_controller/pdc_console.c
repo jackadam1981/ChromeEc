@@ -14,6 +14,7 @@
 
 #include <drivers/pdc.h>
 #include <usbc/pdc_power_mgmt.h>
+#include <usbc/pdc_trace_msg.h>
 
 static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 {
@@ -661,6 +662,12 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Get PDC chip info via GET_LPM_PPM_INFO UCSI cmd\n"
 		      "Usage: pdc lpm_ppm_info <port>",
 		      cmd_lpm_ppm_info, 2, 0),
+	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
+			   trace, NULL,
+			   "Dump accumulated PDC trace messages "
+			   "and optionally set trace port\n"
+			   "<Type-C port number>|all|on|none|off",
+			   cmd_pdc_trace, 1, 1),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
