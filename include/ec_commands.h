@@ -6357,6 +6357,8 @@ enum cbi_data_tag {
 	CBI_TAG_COUNT,
 };
 
+#define CBI_COMMON_CONTROL_UCSI_ENABLED BIT(0)
+
 union ec_common_control {
 	struct {
 		uint32_t ucsi_enabled : 1;
