@@ -4,6 +4,8 @@
 
 if PLATFORM_EC_USBC
 
+rsource "Kconfig.pdc_trace"
+
 config USBC_INTEL_ALTMODE
 	bool "USB-C Intel alternate mode configuration driver"
 	default y if DT_HAS_INTEL_PD_ALTMODE_ENABLED
