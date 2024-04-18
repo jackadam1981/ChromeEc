@@ -52,6 +52,24 @@
       "parentUuid": "8b8539c5_4e91e0ce",
       "revId": "dfd5d165e0fe9ff11852284cf7af0c483c07b53f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11e9196_bea5c319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2024-04-18T13:15:25Z",
+      "side": 1,
+      "message": "I understand, but many user-related migrations can only be performed when they log in. The way we usually deal with it is to assume users that don\u0027t log-in in an N-month interval won\u0027t likely login again in the future. Current plan is removing migration after 6 months of landing.\n\nNot much we can do about this: we can\u0027t even track and report the number of unmigrated templates because we don\u0027t have access to the user\u0027s templates (even the number of templates) if they don\u0027t log in.",
+      "parentUuid": "b45db0a5_b45dae5d",
+      "revId": "dfd5d165e0fe9ff11852284cf7af0c483c07b53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
