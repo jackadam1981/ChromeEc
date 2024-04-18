@@ -1036,6 +1036,17 @@ static void run_src_policies(struct pdc_port_t *port)
 	send_pending_public_commands(port);
 }
 
+static void run_typec_src_policies(struct pdc_port_t *port)
+{
+	if (atomic_test_and_clear_bit(port->src_policy.flags,
+				      SRC_POLICY_FORCE_SNK)) {
+		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
+		return;
+	}
+
+	send_pending_public_commands(port);
+}
+
 /**
  * @brief Entering unattached state
  */
@@ -1688,7 +1699,7 @@ static void pdc_src_typec_only_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SRC_TYPEC_ATTACHED_RUN:
-		send_pending_public_commands(port);
+		run_typec_src_policies(port);
 		break;
 	}
 }
@@ -2001,11 +2012,16 @@ static bool pdc_power_mgmt_is_sink_connected(int port)
 
 static bool pdc_power_mgmt_is_source_connected(int port)
 {
+	enum attached_state_t attached_state;
+
 	if (!is_pdc_port_valid(port)) {
 		return false;
 	}
 
-	return pdc_data[port]->port.attached_state == SRC_ATTACHED_STATE;
+	attached_state = pdc_data[port]->port.attached_state;
+
+	return attached_state == SRC_ATTACHED_STATE ||
+	       attached_state == SRC_ATTACHED_TYPEC_ONLY_STATE;
 }
 
 bool pdc_power_mgmt_is_connected(int port)
