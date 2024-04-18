@@ -731,3 +731,12 @@
 	enable-pins = <&en_pp5000_usb_a0_vbus
 		       &en_pp5000_usb_a1_vbus_x>;
 };
+
+&binman {
+	reserve: reserve {
+		type = "section";
+		offset = <0xc0000>;
+		size = <0x1000>;
+	};
+	pad-after = <0x3f000>;
+};
