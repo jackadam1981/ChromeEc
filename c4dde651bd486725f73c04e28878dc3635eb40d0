@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642d8987_eb9029e2",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-04-18T17:48:39Z",
+      "side": 1,
+      "message": "The `UUT_CUR_` prefix is specific for the above `npcx_uut` chip. It is actually a flashrom command; better to use the `FLASH_` prefix.",
+      "range": {
+        "startLine": 2084,
+        "startChar": 2,
+        "endLine": 2084,
+        "endChar": 10
+      },
+      "revId": "c4dde651bd486725f73c04e28878dc3635eb40d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f49edd5_f1ac9e28",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-04-18T17:48:39Z",
+      "side": 1,
+      "message": "Same here, use the `FLASH_` prefix.",
+      "range": {
+        "startLine": 2119,
+        "startChar": 2,
+        "endLine": 2119,
+        "endChar": 9
+      },
+      "revId": "c4dde651bd486725f73c04e28878dc3635eb40d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
