@@ -32,6 +32,7 @@
 
 static int debounced_lid_open; /* Debounced lid state */
 static int forced_lid_open; /* Forced lid open */
+static bool detect_lid_events = true;
 
 /**
  * Get raw lid switch state.
@@ -57,10 +58,12 @@ static void lid_switch_open(void)
 
 	CPRINTS("lid open");
 	debounced_lid_open = 1;
-	hook_notify(HOOK_LID_CHANGE);
+	if (detect_lid_events) {
+		hook_notify(HOOK_LID_CHANGE);
 #ifdef CONFIG_HOSTCMD_EVENTS
-	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+		host_set_single_event(EC_HOST_EVENT_LID_OPEN);
 #endif
+	}
 }
 
 /**
@@ -75,10 +78,12 @@ static void lid_switch_close(void)
 
 	CPRINTS("lid close");
 	debounced_lid_open = 0;
-	hook_notify(HOOK_LID_CHANGE);
+	if (detect_lid_events) {
+		hook_notify(HOOK_LID_CHANGE);
 #ifdef CONFIG_HOSTCMD_EVENTS
-	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+		host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
 #endif
+	}
 }
 
 test_mockable int lid_is_open(void)
@@ -125,19 +130,10 @@ void lid_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&lid_change_deferred_data, LID_DEBOUNCE_US);
 }
 
-void enable_lid_detect(bool enable)
+void enable_lid_event(bool enable)
 {
-	CPRINTS("lid detect %sabled", enable ? "en" : "dis");
-	if (enable) {
-#define LID_GPIO(gpio) gpio_enable_interrupt(gpio);
-		CONFIG_LID_SWITCH_GPIO_LIST
-#undef LID_GPIO
-	} else {
-#define LID_GPIO(gpio) gpio_disable_interrupt(gpio);
-		CONFIG_LID_SWITCH_GPIO_LIST
-#undef LID_GPIO
-		lid_switch_open();
-	}
+	CPRINTS("lid event %sabled", enable ? "en" : "dis");
+	detect_lid_events = enable;
 }
 
 static int command_lidopen(int argc, const char **argv)
