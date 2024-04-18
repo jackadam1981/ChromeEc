@@ -93,6 +93,30 @@
       },
       "revId": "f472b62ea5f269932be71635a579527e8647fab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d32c8d_90ed5d09",
+        "filename": "zephyr/dts/bindings/usbc/pd/intel,pd-altmode.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-04-18T18:52:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "daff1fa3_bfecee21",
+      "range": {
+        "startLine": 27,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "f472b62ea5f269932be71635a579527e8647fab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
