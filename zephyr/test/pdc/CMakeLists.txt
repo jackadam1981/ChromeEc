@@ -41,3 +41,7 @@ if (DEFINED CONFIG_TEST_SUITE_PDC_HOSTCMD)
 	target_sources(app PRIVATE src/generic/pdc_host_cmd.c)
 	target_sources(app PRIVATE src/mock_pdc_power_mgmt.c)
 endif()
+
+if (DEFINED CONFIG_TEST_SUITE_PDC_TRACE_MSG)
+	target_sources(app PRIVATE src/generic/pdc_trace_msg.c)
+endif()
