@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5516c8_6b5108f5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8582,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-18T16:47:50Z",
+      "side": 1,
+      "message": "It would be nice if manuf_name and device_name are automatically retrieved from the EC if they\u0027re omitted.",
+      "range": {
+        "startLine": 8582,
+        "startChar": 32,
+        "endLine": 8582,
+        "endChar": 58
+      },
+      "revId": "44bca75528896d5b4f785600c75d6c8c7e1cabf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64141fe_a9abe1c4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8583,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-18T16:47:50Z",
+      "side": 1,
+      "message": "nit: Search for a matching config in the config file.",
+      "range": {
+        "startLine": 8583,
+        "startChar": 14,
+        "endLine": 8583,
+        "endChar": 17
+      },
+      "revId": "44bca75528896d5b4f785600c75d6c8c7e1cabf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
