@@ -151,8 +151,8 @@ struct ucsi_memory_region {
 	struct ucsi_control control;
 	/* TODO - Message sizes depends on chunking support. */
 	/* May not need to be full 256. */
-	uint8_t message_in[MESSAGE_IN_SIZE]; /* OPM to PPM buffer */
-	uint8_t message_out[MESSAGE_OUT_SIZE]; /* PPM to OPM buffer */
+	uint8_t message_in[MESSAGE_IN_SIZE + 1]; /* OPM to PPM buffer */
+	uint8_t message_out[MESSAGE_OUT_SIZE + 1]; /* PPM to OPM buffer */
 } __attribute__((__packed__));
 
 /* Commands and data below */
