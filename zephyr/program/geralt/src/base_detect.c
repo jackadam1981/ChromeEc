@@ -27,7 +27,7 @@ static void base_update(bool attached)
 		GPIO_DT_FROM_NODELABEL(en_cc_lid_base_pu);
 
 	if (IS_ENABLED(CONFIG_GERALT_LID_DETECTION_SELECTED)) {
-		enable_lid_detect(attached);
+		enable_lid_event(attached);
 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x),
 					false);
