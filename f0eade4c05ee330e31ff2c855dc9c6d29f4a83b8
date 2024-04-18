@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e6b988_0b5cf7dc",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-18T01:46:19Z",
+      "side": 1,
+      "message": "we need to be a bit careful here because i think all the features\nin subdirs will end up using the `feature-x` namespace instead of\none that\u0027s subdir specific.",
+      "range": {
+        "startLine": 308,
+        "startChar": 46,
+        "endLine": 308,
+        "endChar": 56
+      },
+      "revId": "f0eade4c05ee330e31ff2c855dc9c6d29f4a83b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
