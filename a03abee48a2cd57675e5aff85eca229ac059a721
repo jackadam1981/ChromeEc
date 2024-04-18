@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7f1622_e353112b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2024-04-18T18:38:21Z",
+      "side": 1,
+      "message": "I\u0027d recommend waiting for the CBI bit to be read and the PPM disabled before committing the change. Otherwise, cros_ec_ucsi will be able to change the state of PDC and so will cros_ec_typec.",
+      "revId": "a03abee48a2cd57675e5aff85eca229ac059a721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
