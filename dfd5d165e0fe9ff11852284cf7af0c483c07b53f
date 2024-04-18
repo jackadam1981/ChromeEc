@@ -34,6 +34,24 @@
       "parentUuid": "8e1ef63f_fd3e40a6",
       "revId": "dfd5d165e0fe9ff11852284cf7af0c483c07b53f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45db0a5_b45dae5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-18T13:09:46Z",
+      "side": 1,
+      "message": "Not good. We need to track number of templates that need migration before removing migration code in future.",
+      "parentUuid": "8b8539c5_4e91e0ce",
+      "revId": "dfd5d165e0fe9ff11852284cf7af0c483c07b53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
