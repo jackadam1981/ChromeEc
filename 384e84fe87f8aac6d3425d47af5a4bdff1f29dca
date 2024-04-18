@@ -22,6 +22,30 @@
       },
       "revId": "384e84fe87f8aac6d3425d47af5a4bdff1f29dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7af30e_60198c94",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1752,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-04-18T06:04:29Z",
+      "side": 1,
+      "message": "Done.\n\nThis CL is waiting upstream PR merged to zephyr trunk and thirdparty trunk. After PR is merged, then we can merge this CL.",
+      "parentUuid": "1957a48e_c0e35538",
+      "range": {
+        "startLine": 1747,
+        "startChar": 1,
+        "endLine": 1752,
+        "endChar": 38
+      },
+      "revId": "384e84fe87f8aac6d3425d47af5a4bdff1f29dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
