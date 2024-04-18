@@ -100,7 +100,7 @@ static void base_detect_change(enum base_status status)
 	base_set_state(connected);
 	current_base_status = status;
 	current_base_enable_allow = base_enable_allow;
-	enable_lid_detect(connected);
+	enable_lid_event(connected);
 }
 
 /* Measure detection pin pulse duration (used to wake AP from deep S3). */
