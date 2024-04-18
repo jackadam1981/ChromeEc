@@ -16,6 +16,24 @@
       "message": "Hi Kyle,\nDo we need this CONFIG to build the lsm6dso driver?",
       "revId": "75fcbd8f3f993d34b08ec006a434aa3e89ea79bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "406e90ee_64c8bb5b",
+        "filename": "zephyr/program/corsola/kyogre/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-04-18T09:01:33Z",
+      "side": 0,
+      "message": "No. It\u0027s dependent on DT setting.",
+      "parentUuid": "29696574_83e0cad2",
+      "revId": "75fcbd8f3f993d34b08ec006a434aa3e89ea79bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
