@@ -70,6 +70,24 @@
       "parentUuid": "b45db0a5_b45dae5d",
       "revId": "dfd5d165e0fe9ff11852284cf7af0c483c07b53f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e443f7e_82fe4020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-18T13:18:30Z",
+      "side": 1,
+      "message": "\u003e we can\u0027t even track and report the number of unmigrated templates because we don\u0027t have access to the user\u0027s templates\n\nYeah, I forgot about this. Removing migration code after 6 months sounds good.",
+      "parentUuid": "b11e9196_bea5c319",
+      "revId": "dfd5d165e0fe9ff11852284cf7af0c483c07b53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
