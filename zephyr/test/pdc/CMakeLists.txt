@@ -59,3 +59,7 @@ if (DEFINED CONFIG_TEST_SUITE_PPM)
 	target_sources(app PRIVATE ${PLATFORM_EC}/extra/um_ppm/ppm_common.c)
 	target_sources(app PRIVATE ${PLATFORM_EC}/zephyr/subsys/ucsi/platform_zephyr.c)
 endif()
+
+if (DEFINED CONFIG_TEST_SUITE_PDC_TRACE_MSG)
+	target_sources(app PRIVATE src/generic/pdc_trace_msg.c)
+endif()
