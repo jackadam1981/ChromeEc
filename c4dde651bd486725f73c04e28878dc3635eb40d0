@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24de8092_687ae806",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-04-18T17:49:07Z",
+      "side": 1,
+      "message": "Typo, should be `FLASHROM_`.",
+      "parentUuid": "642d8987_eb9029e2",
+      "range": {
+        "startLine": 2084,
+        "startChar": 2,
+        "endLine": 2084,
+        "endChar": 10
+      },
+      "revId": "c4dde651bd486725f73c04e28878dc3635eb40d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f49edd5_f1ac9e28",
         "filename": "util/flash_ec",
         "patchSetId": 1
