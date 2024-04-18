@@ -349,3 +349,12 @@
 &usbpd1 {
 	status = "okay";
 };
+
+&binman {
+	reserve: reserve {
+		type = "section";
+		offset = <0xc0000>;
+		size = <0x1000>;
+	};
+	pad-after = <0x3f000>;
+};
