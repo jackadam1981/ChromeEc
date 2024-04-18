@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c344f56_a2e5e41c",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-18T17:55:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24de8092_687ae806",
+      "range": {
+        "startLine": 2084,
+        "startChar": 2,
+        "endLine": 2084,
+        "endChar": 10
+      },
+      "revId": "c4dde651bd486725f73c04e28878dc3635eb40d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f49edd5_f1ac9e28",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-04-18T17:48:39Z",
       "side": 1,
       "message": "Same here, use the `FLASH_` prefix.",
+      "range": {
+        "startLine": 2119,
+        "startChar": 2,
+        "endLine": 2119,
+        "endChar": 9
+      },
+      "revId": "c4dde651bd486725f73c04e28878dc3635eb40d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c7280b_24a88d2f",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-04-18T17:55:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f49edd5_f1ac9e28",
       "range": {
         "startLine": 2119,
         "startChar": 2,
