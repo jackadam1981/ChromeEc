@@ -51,6 +51,24 @@
       "message": "Since we\u0027re trying to contain the Servo code changes to an experimental board for now, you\u0027ll want to make sure that checks like this in common code (that builds for Servo TCPMv1) only apply to the new board. We don\u0027t want to mess with the existing board yet.",
       "revId": "3baac815bc145be41d0691b0efd3171c69b6ea81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af995393_f87a05d8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-19T21:26:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2be7b82d_0ade8a60",
+      "revId": "3baac815bc145be41d0691b0efd3171c69b6ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

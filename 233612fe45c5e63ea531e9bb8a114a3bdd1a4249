@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3103db52_750ae4b5",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-19T21:26:23Z",
+      "side": 1,
+      "message": "Yes, using the Servo timer module would waste RAM and recreating the timers here wastes FLASH. Since we have more FLASH than RAM, I opted to waste the FLASH.",
+      "parentUuid": "7efb386d_4e36e999",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81c3e4f5_e7999192",
         "filename": "common/usb_common.c",
         "patchSetId": 17
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "This `#else` is the code that would be called on Servo, right? It looks like you\u0027re already overriding `dpm_get_source_pdo` in `board.c`. Could you just use the code on 223 and avoid the `CONFIG_USB_SERVO` check here?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 36
+      },
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2f583b_04df1ad4",
+        "filename": "common/usb_common.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-19T21:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c3e4f5_e7999192",
       "range": {
         "startLine": 229,
         "startChar": 0,
@@ -197,6 +239,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df39941b_37679f6a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-19T21:26:23Z",
+      "side": 1,
+      "message": "Yeah this should be okay. Not much code is being removed here with the IS_ENABLE check.",
+      "parentUuid": "24a6b451_418cc860",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "990f0db4_fc7b6fbf",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -208,6 +268,24 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "It seems like these clauses should already be disabled on Servo by the `IS_ENABLED` checks for configs that are `#undef`ed in board.h. Is this `#ifndef` necessary? Same question about `tc_unattached_snk_run`.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb2dc7f_97bcb5ca",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-19T21:26:23Z",
+      "side": 1,
+      "message": "Even though ```tcpm_auto_togge_supported``` is defined in ```driver/tcpm/tcpm.h```, \n I get the following error with ```IS_ENABLED```:\n```\nusb_tc_drp_acc_trysrc_sm.c:2899:18: error: implicit declaration of function \u0027tcpm_auto_toggle_supported\u0027\n```",
+      "parentUuid": "990f0db4_fc7b6fbf",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
