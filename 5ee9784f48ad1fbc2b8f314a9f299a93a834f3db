@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "216e9787_52b01fd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-19T05:04:56Z",
+      "side": 1,
+      "message": "I modified the commit message. I mainly wanted to get a function that get the fingerprint MCU board name in order to use it to construct file paths that depend on the fingerprint MCU board such as:\n`--file /usr/local/share/helipilot/npcx/npcx_monitor.bin`",
+      "parentUuid": "cf96ba01_a1ea83e7",
+      "revId": "5ee9784f48ad1fbc2b8f314a9f299a93a834f3db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa838f04_457c3073",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 1
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39cf9dc6_88008b86",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-19T05:04:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a58f27f8_4cc4bcf5",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 17
+      },
+      "revId": "5ee9784f48ad1fbc2b8f314a9f299a93a834f3db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a1a3443_13b20a37",
@@ -96,6 +138,24 @@
       "writtenOn": "2024-04-18T23:24:52Z",
       "side": 1,
       "message": "```suggestion\n  board\u003d\"$(get_fp_mcu_board)\"\n```",
+      "revId": "5ee9784f48ad1fbc2b8f314a9f299a93a834f3db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4395f1d0_70e3d4bc",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-19T05:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a1a3443_13b20a37",
       "revId": "5ee9784f48ad1fbc2b8f314a9f299a93a834f3db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
