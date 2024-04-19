@@ -63,6 +63,30 @@
       },
       "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c86345c_7b4a3b31",
+        "filename": "zephyr/shim/chip/stm32/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-19T18:28:22Z",
+      "side": 1,
+      "message": "Whoaaa. That\u0027s really odd. My RM0433 has the D3 bits:\n* https://screenshot.googleplex.com/6AKAhqpQuAJLz3T.png\n* https://screenshot.googleplex.com/5RmhbBwvnKTJrWF.png\n\n\nMine is `RM0433 Rev 6` - http://shortn/_a3gWPePYK1.\n\nI think the HAL might just be missing these, since they were documented on later revs?",
+      "parentUuid": "bb01a75d_4a239ae0",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
