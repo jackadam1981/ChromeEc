@@ -12,6 +12,7 @@
 #include <zephyr/drivers/spi.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/pm/device.h>
 
 #include <drivers/fingerprint.h>
 #include <fingerprint/v4l2_types.h>
@@ -35,18 +36,24 @@ enum fpc1025_cmd {
 
 void fp_sensor_lock(const struct device *dev)
 {
+	const struct fpc1025_cfg *cfg = dev->config;
 	struct fpc1025_data *data = dev->data;
 
 	if (!((k_sem_count_get(&data->sensor_lock) == 0) &&
 	      (data->sensor_owner == k_current_get()))) {
 		k_sem_take(&data->sensor_lock, K_FOREVER);
 		data->sensor_owner = k_current_get();
+
+		pm_device_action_run(cfg->spi.bus, PM_DEVICE_ACTION_RESUME);
 	}
 }
 
 void fp_sensor_unlock(const struct device *dev)
 {
+	const struct fpc1025_cfg *cfg = dev->config;
 	struct fpc1025_data *data = dev->data;
+
+	pm_device_action_run(cfg->spi.bus, PM_DEVICE_ACTION_SUSPEND);
 
 	data->sensor_owner = NULL;
 	k_sem_give(&data->sensor_lock);
