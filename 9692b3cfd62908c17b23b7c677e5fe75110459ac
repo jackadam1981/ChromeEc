@@ -81,6 +81,24 @@
       },
       "revId": "9692b3cfd62908c17b23b7c677e5fe75110459ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eeca6e0_645586f3",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-19T22:11:16Z",
+      "side": 1,
+      "message": "My personal bias would be `/usr/local/share/npcx/npcx_monitor_$(get_fp_mcu_name).bin`, since it makes it pretty easy to see all contexts of the `npcx` directory.\n\nAdditionally, when you are tab completing the the firmware file name, you would spell out `/usr/local/share/npcx/npcx_monitor\u003ctab\u003e\u003ctab\u003e` and see all the boards that the monitor has been built for.",
+      "parentUuid": "0ff644ec_908e69ac",
+      "revId": "9692b3cfd62908c17b23b7c677e5fe75110459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
