@@ -16,6 +16,24 @@
       "message": "Not for this CL and optional, but FYI if you do multiple operations with the same key, you can save a little work by retaining the EVP_AEAD_CTX. (Only need to compute the key schedule and the GCM `H` value once.)",
       "revId": "4089d8baeb1ff3663457784b7b24f2b18eec2ead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efabba91_e1cb74be",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-19T17:50:48Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "c080a110_ebb26a32",
+      "revId": "4089d8baeb1ff3663457784b7b24f2b18eec2ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
