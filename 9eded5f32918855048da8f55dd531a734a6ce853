@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f491ee9a_a23d0edd",
+        "filename": "zephyr/drivers/fingerprint/fpc1025_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-19T12:14:34Z",
+      "side": 1,
+      "message": "nit:\n```suggestion\n * to be called only once to unlock the access.\n```",
+      "range": {
+        "startLine": 213,
+        "startChar": 16,
+        "endLine": 213,
+        "endChar": 41
+      },
+      "revId": "9eded5f32918855048da8f55dd531a734a6ce853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367b2224_e9c0be28",
+        "filename": "zephyr/drivers/fingerprint/fpc1025_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-04-19T12:14:34Z",
+      "side": 1,
+      "message": "nit\n\n```suggestion\n * Unlock access to the FP sensor.\n```",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 54
+      },
+      "revId": "9eded5f32918855048da8f55dd531a734a6ce853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
