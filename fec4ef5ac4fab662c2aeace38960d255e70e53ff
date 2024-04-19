@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6807210a_dab3e2f3",
+        "filename": "extra/um_ppm/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T16:55:20Z",
+      "side": 1,
+      "message": "nit: Can you add \u0027uint8_t reserved0 and reserved1\u0027 instead for clarification? That matches table 4-1 of the spec.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 67
+      },
+      "revId": "fec4ef5ac4fab662c2aeace38960d255e70e53ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
