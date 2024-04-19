@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdb6b1b_e219873c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-04-19T05:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c59cac_7e348251",
+      "revId": "dc1dae97986f8096240aeb68343df6015e8bd227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "150e93f4_d36c922c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-18T04:33:27Z",
       "side": 1,
       "message": "Perhaps put the #if directive to pen power enablement block only?    \nin this case you will remove the board init hook for all those do not have gpio_en_pp5000_pen_x.",
+      "revId": "dc1dae97986f8096240aeb68343df6015e8bd227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57683a1_2f28dcd3",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-04-19T05:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150e93f4_d36c922c",
       "revId": "dc1dae97986f8096240aeb68343df6015e8bd227",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
