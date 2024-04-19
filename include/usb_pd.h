@@ -2700,7 +2700,9 @@ void pd_control_port_enable(int port);
  *
  * @param mask host event mask.
  */
-#if defined(CONFIG_USB_PD_HOST_CMD) && !defined(CONFIG_USB_PD_TCPM_STUB)
+#if (defined(CONFIG_USB_PD_HOST_CMD) && !defined(CONFIG_USB_PD_TCPM_STUB)) || \
+	(defined(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER) &&                     \
+	 !defined(CONFIG_USBC_INTEL_ALTMODE))
 void pd_send_host_event(int mask);
 #else
 static inline void pd_send_host_event(int mask)
