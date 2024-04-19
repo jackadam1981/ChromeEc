@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a5a605d_ba019866",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8582,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T18:45:27Z",
+      "side": 1,
+      "message": "If an index isn\u0027t specified for `bcfg set`, how about doing the following?\n\n* If a config for the given manuf_name,device_name already exists in CBI, that\u0027ll be the index to be used.\n* If a config doesn\u0027t exist, the first available slot will be used.\n\nThis way, we\u0027ll be able to avoid human errors of adding duplicate configs. (FYI: when two configs exist in CBI for the same battery, the first entry will be used. That is,  bcfg set 1 succeeds but the config will never be used if slot 0 has another config for the same battery.)",
+      "parentUuid": "798f1a41_73ff6e25",
+      "range": {
+        "startLine": 8582,
+        "startChar": 32,
+        "endLine": 8582,
+        "endChar": 58
+      },
+      "revId": "44bca75528896d5b4f785600c75d6c8c7e1cabf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c64141fe_a9abe1c4",
         "filename": "util/ectool.cc",
         "patchSetId": 1
