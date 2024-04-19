@@ -16,6 +16,24 @@
       "message": "For project specific fan overrides, we should not be adding a duplicate fans{} entry in the DT. Instead, the node should be pointed to and the overrides specified.\n\n\u0026fan0 {\n\tpwms \u003d \u003c\u0026pwm5 0 PWM_KHZ(25) PWM_POLARITY_NORMAL\u003e;\n\trpm_min \u003d \u003c2300\u003e;\n\trpm_start \u003d \u003c2300\u003e;\n\trpm_max \u003d \u003c4050\u003e;\n};\n\nI don\u0027t think the pwms needs to be included here if it\u0027s not being changed from the value in fan.dtsi, but this value seems to be included in all the other examples of fan overrides that I looked at in other programs (rex, skyrim, etc)",
       "revId": "a615158f996cae2892f86a3329767fc32c28fba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c6d906_62ee6630",
+        "filename": "zephyr/program/ovis/deku/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-04-19T01:48:03Z",
+      "side": 1,
+      "message": "Hi Scott,\n\nReferring to rex seems if we apply the way to override specific properties in node, we have to specify the name of the node.",
+      "parentUuid": "4a07c81f_8f81ad12",
+      "revId": "a615158f996cae2892f86a3329767fc32c28fba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
