@@ -16,6 +16,24 @@
       "message": "how about adding ifdef CONFIG_USB_PD_ALTMODE_INTEL wherever these are getting called?",
       "revId": "744c0c2a18fee9fc5700eb3b1f99c575dd5ad298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290c12b7_b50e41e8",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-19T10:37:42Z",
+      "side": 1,
+      "message": "All these three api\u0027s are called multiple places in retimer_fw_update.c.\nHence too many ifdef\u0027s needs to be added.",
+      "parentUuid": "319ca6ae_1553208b",
+      "revId": "744c0c2a18fee9fc5700eb3b1f99c575dd5ad298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
