@@ -65,6 +65,26 @@ static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORTS, hc_pd_ports, EC_VER_MASK(0));
 
+#if !defined(CONFIG_USB_PD_ALTMODE_INTEL) && !defined(CONFIG_USB_PD_HOST_CMD)
+/*
+ * PD host event status for host command
+ * Note: this variable must be aligned on 4-byte boundary because we pass the
+ * address to atomic_ functions which use assembly to access them.
+ */
+static atomic_t pd_host_event_status __aligned(4);
+
+test_mockable void pd_send_host_event(int mask)
+{
+	/* mask must be set */
+	if (!mask)
+		return;
+
+	atomic_or(&pd_host_event_status, mask);
+	/* interrupt the AP */
+	host_set_single_event(EC_HOST_EVENT_PD_MCU);
+}
+#endif
+
 #if !defined(CONFIG_USB_PD_ALTMODE_INTEL)
 uint8_t get_pd_control_flags(int port)
 {
