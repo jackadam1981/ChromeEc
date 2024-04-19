@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b743a37_96143803",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-19T23:04:48Z",
+      "side": 1,
+      "message": "Nit: You might want to make this part of `snk_policy.flags`, which would allow you to 1) naturally handle it in `run_snk_policy` and 2) use the `atomic_test_and_clear_bit` convenience function.",
+      "revId": "b6832db9bb3f14bfe8279fc3b004b3280ff23d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
