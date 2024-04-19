@@ -16,6 +16,29 @@
       "message": "```suggestion\n      --file /usr/local/share/npcx/npcx_monitor_$(get_fp_mcu_name).bin\"\n```",
       "revId": "9692b3cfd62908c17b23b7c677e5fe75110459ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0e13ba_ab2a7060",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-19T22:00:14Z",
+      "side": 1,
+      "message": "I think in https://crrev.com/c/5464413, you are installing into `npcx/$get_fp_mcu_name`?",
+      "range": {
+        "startLine": 431,
+        "startChar": 30,
+        "endLine": 431,
+        "endChar": 54
+      },
+      "revId": "9692b3cfd62908c17b23b7c677e5fe75110459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
