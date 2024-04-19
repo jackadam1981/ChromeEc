@@ -202,4 +202,8 @@ void fp_sensor_configure_detect(void);
  */
 int fp_sensor_finger_status(void);
 
+void fp_sensor_lock(const struct device *dev);
+
+void fp_sensor_unlock(const struct device *dev);
+
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_FPC1025_PRIVATE_H_ */
