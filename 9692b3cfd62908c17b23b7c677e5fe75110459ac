@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42098aca_5f293489",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-19T22:00:07Z",
+      "side": 1,
+      "message": "```suggestion\n      --file /usr/local/share/npcx/npcx_monitor_$(get_fp_mcu_name).bin\"\n```",
+      "revId": "9692b3cfd62908c17b23b7c677e5fe75110459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
