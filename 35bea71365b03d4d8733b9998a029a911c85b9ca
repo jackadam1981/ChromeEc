@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa72fbbb_f71ad1b2",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-19T23:39:25Z",
+      "side": 1,
+      "message": "I need to remove this. It doesn\u0027t copy with gcc, but does with clang.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 6
+      },
+      "revId": "35bea71365b03d4d8733b9998a029a911c85b9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
