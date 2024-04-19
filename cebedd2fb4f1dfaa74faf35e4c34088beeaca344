@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "875154c1_8cc44bf5",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 28
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40be907f_eb4f395f",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 57
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b4c2301_5c6580dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-18T14:42:26Z",
       "side": 1,
       "message": "Should be static.",
+      "range": {
+        "startLine": 2164,
+        "startChar": 0,
+        "endLine": 2164,
+        "endChar": 3
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ed142c_7f4cf551",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 2164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b4c2301_5c6580dc",
       "range": {
         "startLine": 2164,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21f46b8_ab01e6db",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Done. This file is using 0xe throughout, though.",
+      "parentUuid": "f9e69dae_0389d1b3",
+      "range": {
+        "startLine": 2179,
+        "startChar": 17,
+        "endLine": 2179,
+        "endChar": 20
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4505c717_75de24cd",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf22cbe_902b71e2",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 28
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "It\u0027s tracked by b:333765670.",
+      "parentUuid": "4505c717_75de24cd",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b7d7ba5_79c6ad5a",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-04-18T14:42:26Z",
       "side": 1,
       "message": "What\u0027s the code size impact of enabling POSIX support?\n\nIt looks like the `platform_xxx()` functions are already providing a wrapper for the Kernel services.  Can you just call the Zephyr kernel services directly instead of passing through a 2nd translation layer?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc996f9_525dfc7f",
+        "filename": "zephyr/subsys/ucsi/Kconfig",
+        "patchSetId": 28
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Removed posix. FYI:\n\nWith Posix:\n```\n    Memory region         Used Size  Region Size  %age Used\n                 ROM:      268516 B         1 MB     25.61%\n                 RAM:       59904 B       256 KB     22.85%\n            IDT_LIST:          0 GB         2 KB      0.00%\n```\nWithout Posix:\n```\n   Memory region         Used Size  Region Size  %age Used\n                 ROM:      264216 B         1 MB     25.20%\n                 RAM:       59904 B       256 KB     22.85%\n            IDT_LIST:          0 GB         2 KB      0.00%\n```",
+      "parentUuid": "7b7d7ba5_79c6ad5a",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -187,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0074f93_061af2f9",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Removed platform_malloc. platform_calloc is used in ppm_common.c.",
+      "parentUuid": "7c801136_0b7f37fa",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f2149d_b3fb1cfd",
@@ -212,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db06fb07_a1846bbe",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Abhishek?  I\u0027ll follow how ppm_common.c is implemented.",
+      "parentUuid": "31f2149d_b3fb1cfd",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac68904_65338087",
         "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
         "patchSetId": 28
@@ -223,6 +391,30 @@
       "writtenOn": "2024-04-17T00:26:25Z",
       "side": 1,
       "message": "I\u0027m not sure where this is called, but is should be initialized with DEVICE_DEFINE:\n\nhttps://docs.zephyrproject.org/apidoc/latest/group__device__model.html#gac12521f4d900e8947aac45c1b228366d",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c084d19_31d66350",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "This is called from ppm_common_init_and_wait in ppm_common.c, which is shared with uPPM. So, ePPM follows how ppm_common.c is implemented.",
+      "parentUuid": "3ac68904_65338087",
       "range": {
         "startLine": 94,
         "startChar": 4,
@@ -258,6 +450,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d7dbce0_93504a5c",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Sounds like this is a question for ppm_common.c? ePPM follows how ppm_common.c is implemented.",
+      "parentUuid": "528c5d39_005ac2bf",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 18
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc2abeac_1184e69e",
         "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
         "patchSetId": 28
@@ -269,6 +485,30 @@
       "writtenOn": "2024-04-18T14:42:26Z",
       "side": 1,
       "message": "This module is called `ucsi_host_cmd.c`, but the implementation is specific to the Realtek chip.  What\u0027s the plan for supporting other vendors?\n\nCan the Realtek specific code be put into the existing driver?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76ec2b4_2ed5415d",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Moved realtek code to rts54xx.c.",
+      "parentUuid": "bc2abeac_1184e69e",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -292,6 +532,30 @@
       "writtenOn": "2024-04-17T00:26:25Z",
       "side": 1,
       "message": "The device should be initialized from the devicetree. See pdc_subsys_init in https://chromium.googlesource.com/chromiumos/platform/ec/+/d41d5845207b8f8d79871e4231ea6c813e60a27d/zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ddd1fb_ea24398c",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7407cbc0_ef1f5784",
       "range": {
         "startLine": 162,
         "startChar": 1,
@@ -338,6 +602,30 @@
       "writtenOn": "2024-04-18T14:42:26Z",
       "side": 1,
       "message": "Another alternative is to use `SYS_INIT()`, if the Realtek specific stuff is moved to a separate file.\n\nThe Realtek specific stuff probably should be part of the existing driver.\n\nNothing under the `platform/ec/zephyr` directory should use legacy EC services, such as HOOKs and deferred calls.  You should use the Zephyr equivalent instead.",
+      "parentUuid": "bc4b080d_6a91b925",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 54
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba9f29e_43402a40",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-19T23:01:07Z",
+      "side": 1,
+      "message": "Done.",
       "parentUuid": "bc4b080d_6a91b925",
       "range": {
         "startLine": 211,
