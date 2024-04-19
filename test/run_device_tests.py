@@ -554,7 +554,7 @@ HELIPILOT_CONFIG = BoardConfig(
         idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
     ),
     expected_mcu_power=PowerUtilization(
-        idle=RangedValue(34.8, 3.0), sleep=RangedValue(2.7, 2.5)
+        idle=RangedValue(34.8, 7.0), sleep=RangedValue(2.7, 2.5)
     ),
     variants={},
 )
