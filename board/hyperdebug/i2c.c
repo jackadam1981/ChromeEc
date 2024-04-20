@@ -402,6 +402,8 @@ void dap_goog_i2c_device(size_t peek_c)
 					1 + sizeof(*status));
 			queue_blocking_add(&cmsis_dap_tx_queue, state->tail,
 					   status->transcript_size);
+			if (cmsis_dap_unwind_requested())
+				return;
 		} else {
 			/* Data wraps around */
 			status->transcript_size =
@@ -412,9 +414,13 @@ void dap_goog_i2c_device(size_t peek_c)
 					   state->data_buffer +
 						   sizeof(state->data_buffer) -
 						   state->tail);
+			if (cmsis_dap_unwind_requested())
+				return;
 			queue_blocking_add(&cmsis_dap_tx_queue,
 					   state->data_buffer,
 					   state->head - state->data_buffer);
+			if (cmsis_dap_unwind_requested())
+				return;
 		}
 		state->tail = head;
 		return;
@@ -427,8 +433,12 @@ void dap_goog_i2c_device(size_t peek_c)
 		/* TODO Check that len does not exceed size of
 		 * prepared_data_data */
 		queue_blocking_remove(&cmsis_dap_rx_queue, rx_buffer, 5);
+		if (cmsis_dap_unwind_requested())
+			return;
 		queue_blocking_remove(&cmsis_dap_rx_queue,
 				      state->prepared_read_data, len);
+		if (cmsis_dap_unwind_requested())
+			return;
 
 		queue_add_unit(&cmsis_dap_tx_queue, rx_buffer);
 		state->prepared_read_len = len;
