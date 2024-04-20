@@ -83,6 +83,34 @@ struct consumer_ops const usb_stream_consumer_ops = {
 	.written = usb_written,
 };
 
+void usb_usart_clear(struct usb_stream_config const *config,
+		     struct usart_config const *usart)
+{
+	/* Remove any data in the queue for UART transmission. */
+	queue_advance_head(config->producer.queue, (size_t)-1);
+
+	usart_clear_fifos(usart);
+
+	/* Remove any data in the queue for USB transmission. */
+	queue_advance_head(config->consumer.queue, (size_t)-1);
+	/* Revoke any data already in USB memory marked as ready for sending. */
+	STM32_TOGGLE_EP(config->endpoint, EP_TX_MASK, EP_TX_NAK, 0);
+}
+
+void usb_stream_clear_rx(struct usb_stream_config const *config)
+{
+	/* Remove any data in the queue received via UAB. */
+	queue_advance_head(config->producer.queue, (size_t)-1);
+}
+
+void usb_stream_clear_tx(struct usb_stream_config const *config)
+{
+	/* Remove any data in the queue for USB transmission. */
+	queue_advance_head(config->consumer.queue, (size_t)-1);
+	/* Revoke any data already in USB memory marked as ready for sending. */
+	STM32_TOGGLE_EP(config->endpoint, EP_TX_MASK, EP_TX_NAK, 0);
+}
+
 void usb_stream_deferred(struct usb_stream_config const *config)
 {
 	if (!tx_valid(config) && tx_write(config))

@@ -242,6 +242,8 @@ int usart_get_baud(struct usart_config const *config);
  */
 void usart_set_break(struct usart_config const *config, bool enable);
 
+void usart_clear_fifos(struct usart_config const *config);
+
 /*
  * Different families provide different ways of clearing the transmit complete
  * flag.  This function will be provided by the family specific implementation.
