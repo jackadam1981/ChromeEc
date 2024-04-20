@@ -215,8 +215,10 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-static void usart_reinit(struct usart_config const *usart)
+static void usart_reinit(struct usb_stream_config const *usart_usb,
+			 struct usart_config const *usart)
 {
+	usb_usart_clear(usart_usb, usart, CLEAR_BOTH_FIFOS);
 	usart_set_parity(usart, 0);
 	usart_set_baud(usart, 115200);
 	usart_set_break(usart, false);
@@ -224,10 +226,10 @@ static void usart_reinit(struct usart_config const *usart)
 
 static void usart_reinit_all(void)
 {
-	usart_reinit(&usart2);
-	usart_reinit(&usart3);
-	usart_reinit(&usart4);
-	usart_reinit(&usart5);
+	usart_reinit(&usart2_usb, &usart2);
+	usart_reinit(&usart3_usb, &usart3);
+	usart_reinit(&usart4_usb, &usart4);
+	usart_reinit(&usart5_usb, &usart5);
 }
 DECLARE_HOOK(HOOK_REINIT, usart_reinit_all, HOOK_PRIO_DEFAULT);
 
@@ -242,6 +244,19 @@ DECLARE_CONSOLE_COMMAND_FLAGS(
 	reinit, command_reinit, "",
 	"Stop any ongoing operation, revert to power-on state.",
 	CMD_FLAG_RESTRICTED);
+
+static int command_spam(int argc, const char **argv)
+{
+	queue_add_units(&usart2_to_usb, "HELLO\r\n", 7);
+	queue_add_units(&usart3_to_usb, "HELLO\r\n", 7);
+	queue_add_units(&usart4_to_usb, "HELLO\r\n", 7);
+	queue_add_units(&usart5_to_usb, "HELLO\r\n", 7);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND_FLAGS(spam, command_spam, "",
+			      "Enqueue fake data to all UART USB interfaces",
+			      CMD_FLAG_RESTRICTED);
 
 const char *board_read_serial(void)
 {
