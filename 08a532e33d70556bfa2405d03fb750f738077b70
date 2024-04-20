@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7603bf99_dfce45dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-20T00:20:06Z",
+      "side": 1,
+      "message": "Given that this situation arises entirely in the RAA489000, I\u0027d prefer it if the fix was confined to that driver, instead of changing the logic for the entire TC. This is kind of a manufactured situation for the TC, so I\u0027m not sure if there\u0027s fundamentally a best way to do this.\n\nMaybe Renesas will give us a way to modify the debug detach procedure to suit this situation. If not, this is fine.",
+      "revId": "08a532e33d70556bfa2405d03fb750f738077b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
