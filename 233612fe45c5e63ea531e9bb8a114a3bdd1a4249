@@ -255,6 +255,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0462e11e_c65d95d3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-20T00:33:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df39941b_37679f6a",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "990f0db4_fc7b6fbf",
@@ -286,6 +304,24 @@
       "side": 1,
       "message": "Even though ```tcpm_auto_togge_supported``` is defined in ```driver/tcpm/tcpm.h```, \n I get the following error with ```IS_ENABLED```:\n```\nusb_tc_drp_acc_trysrc_sm.c:2899:18: error: implicit declaration of function \u0027tcpm_auto_toggle_supported\u0027\n```",
       "parentUuid": "990f0db4_fc7b6fbf",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effdf903_2ad9a269",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-04-20T00:33:39Z",
+      "side": 1,
+      "message": "Acknowledged. I\u0027m not sure what to make of that.",
+      "parentUuid": "8cb2dc7f_97bcb5ca",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
