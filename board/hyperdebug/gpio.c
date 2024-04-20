@@ -1557,7 +1557,11 @@ static void dap_goog_gpio_monitoring_read(size_t peek_c)
 	for (int i = 0; i < gpio_num; i++) {
 		uint8_t str_len;
 		queue_blocking_remove(&cmsis_dap_rx_queue, &str_len, 1);
+		if (cmsis_dap_unwind_requested())
+			return;
 		queue_blocking_remove(&cmsis_dap_rx_queue, rx_buffer, str_len);
+		if (cmsis_dap_unwind_requested())
+			return;
 		rx_buffer[str_len] = '\0';
 		gpios[i] = gpio_find_by_name(rx_buffer);
 	}
@@ -1642,6 +1646,8 @@ static void dap_goog_gpio_monitoring_read(size_t peek_c)
 				encapsulated_header_size);
 		queue_blocking_add(&cmsis_dap_tx_queue, buf->head,
 				   header->transcript_size);
+		if (cmsis_dap_unwind_requested())
+			return;
 	} else {
 		/* Data wraps around */
 		header->transcript_size =
@@ -1650,8 +1656,12 @@ static void dap_goog_gpio_monitoring_read(size_t peek_c)
 				encapsulated_header_size);
 		queue_blocking_add(&cmsis_dap_tx_queue, buf->head,
 				   buf->end - buf->head);
+		if (cmsis_dap_unwind_requested())
+			return;
 		queue_blocking_add(&cmsis_dap_tx_queue, buf->data,
 				   head - buf->data);
+		if (cmsis_dap_unwind_requested())
+			return;
 	}
 
 	buf->head = head;
@@ -1732,13 +1742,19 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 	uint8_t *tail_ptr = bitbang_data_ptr(bitbang_tail);
 	if (tail_ptr + data_len <= bitbang_data + sizeof(bitbang_data)) {
 		queue_blocking_remove(&cmsis_dap_rx_queue, tail_ptr, data_len);
+		if (cmsis_dap_unwind_requested())
+			return;
 	} else {
 		uint16_t remaning_space =
 			bitbang_data + sizeof(bitbang_data) - tail_ptr;
 		queue_blocking_remove(&cmsis_dap_rx_queue, tail_ptr,
 				      remaning_space);
+		if (cmsis_dap_unwind_requested())
+			return;
 		queue_blocking_remove(&cmsis_dap_rx_queue, bitbang_data,
 				      data_len - remaning_space);
+		if (cmsis_dap_unwind_requested())
+			return;
 	}
 
 	uint8_t status = validate_received_waveform(data_len, streaming);
@@ -1842,14 +1858,20 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 	if (head_ptr + data_len <= bitbang_data + sizeof(bitbang_data)) {
 		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 6);
 		queue_blocking_add(&cmsis_dap_tx_queue, head_ptr, data_len);
+		if (cmsis_dap_unwind_requested())
+			return;
 	} else {
 		uint16_t remaining_space =
 			bitbang_data + sizeof(bitbang_data) - head_ptr;
 		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 6);
 		queue_blocking_add(&cmsis_dap_tx_queue, head_ptr,
 				   remaining_space);
+		if (cmsis_dap_unwind_requested())
+			return;
 		queue_blocking_add(&cmsis_dap_tx_queue, bitbang_data,
 				   data_len - remaining_space);
+		if (cmsis_dap_unwind_requested())
+			return;
 	}
 	bitbang_head = idx;
 }
@@ -1859,10 +1881,24 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
  *
  * CAUTION: This handler routine runs on the CMSIS-DAP task, and the code below
  * may block waiting to receive/send data via USB.  This has the potential to
- * conflict with the console task, particularly if that one invokes
- * `stop_all_gpio_bitbanging()`.  There is currently no attempt at detecting
- * the conflict, or handling it by unwinding any partially completed invocation
- * of this function.
+ * conflict with the console task, particularly if that one invokes a function
+ * like `stop_all_gpio_bitbanging()`, which modifies the same state as methods
+ * below.
+ *
+ * As long as clients behave, and do not simultaneously request monitoring or
+ * bitbanging operations though the CMSIS-DAP interface while also sending
+ * `reinit` console command, the one case we are worried about is a bitbanging
+ * or monitoring client having stopped "in the middle" of performing some
+ * CMSIS-DAP operation, leaving the CMSIS-DAP task stuck in one of the handler
+ * functions in this file.  Then the next test session would presumably start by
+ * invoking `reinit`, which will be handled this way: In `cmsis-dap.c` a REINIT
+ * hook is registered with high priority, which will set
+ * `cmsis_dap_unwind_requested()` and will cause any blocking queue operation of
+ * the CMSIS-DAP task to exit.  Handler functions above will respond by exiting
+ * immediately, even if that means possibly leaving inconsistent state (such as
+ * having updated `head_level` but not moved the `head` pointer to match).  The
+ * normal priority REINIT hook in this file will then be called, which resets
+ * the state, such that it will be in a consistent and known initial state.
  */
 void dap_goog_gpio(size_t peek_c)
 {
