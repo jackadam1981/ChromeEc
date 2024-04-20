@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d87516d_cc07cfc3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-04-20T00:11:45Z",
+      "side": 1,
+      "message": "What values are you measuring? Current consumption on my boards in sleep mode was consistently below 3 mA except in cases where OTP was left powered on, which consumed ~5 mA additional. We should make sure that this change is needed based on idle current variation and not a firmware error like leaving OTP powered on.",
+      "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
