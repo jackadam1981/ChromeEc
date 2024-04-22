@@ -380,6 +380,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ffe4bf0_4badab51",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-22T17:15:33Z",
+      "side": 1,
+      "message": "I was trying to get rid of the need to `#include \u003cstring\u003e` in the common implementations. I wasn\u0027t sure it would work in Zephyr. We can call `memcpy/memset` directly and get rid of these since these are easily available.",
+      "parentUuid": "db06fb07_a1846bbe",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac68904_65338087",
         "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
         "patchSetId": 28
@@ -462,6 +486,30 @@
       "side": 1,
       "message": "Sounds like this is a question for ppm_common.c? ePPM follows how ppm_common.c is implemented.",
       "parentUuid": "528c5d39_005ac2bf",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 18
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b98356f9_c45fcb1f",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-22T17:15:33Z",
+      "side": 1,
+      "message": "If Zephyr events work like condvar underneath, they can be used. However, condvar is a common concept across multiple platforms.",
+      "parentUuid": "3d7dbce0_93504a5c",
       "range": {
         "startLine": 184,
         "startChar": 1,
