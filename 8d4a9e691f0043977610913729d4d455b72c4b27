@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c45eebdf_22aa3873",
+        "filename": "zephyr/program/intelrvp/ptlrvp/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T20:59:48Z",
+      "side": 1,
+      "message": "this is MCHP specific file, should go under ptlrvp_mchp folder",
+      "revId": "8d4a9e691f0043977610913729d4d455b72c4b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691dfd96_3216b7f2",
+        "filename": "zephyr/program/intelrvp/ptlrvp/battery.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T20:59:48Z",
+      "side": 1,
+      "message": "we are not using 2s battery, how about removing it?",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 35
+      },
+      "revId": "8d4a9e691f0043977610913729d4d455b72c4b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a024ee98_a0e752e5",
+        "filename": "zephyr/program/intelrvp/ptlrvp/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T20:59:48Z",
+      "side": 1,
+      "message": "this is MCHP specific file, should go under ptlrvp_mchp folder",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "8d4a9e691f0043977610913729d4d455b72c4b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5f4e31_cede88d2",
+        "filename": "zephyr/program/intelrvp/ptlrvp/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T20:59:48Z",
+      "side": 1,
+      "message": "this is MCHP specific file, should go under ptlrvp_mchp folder",
+      "revId": "8d4a9e691f0043977610913729d4d455b72c4b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4b80a6_e03b0c1c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T20:59:48Z",
+      "side": 1,
+      "message": "this is MCHP specific file, should go under ptlrvp_mchp folder",
+      "revId": "8d4a9e691f0043977610913729d4d455b72c4b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d269ac70_ddf369a6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/power_signals.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T20:59:48Z",
+      "side": 1,
+      "message": "this is MCHP specific file, should go under ptlrvp_mchp folder",
+      "revId": "8d4a9e691f0043977610913729d4d455b72c4b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
