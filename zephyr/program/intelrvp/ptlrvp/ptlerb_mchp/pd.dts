@@ -1,0 +1,40 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+
+/* typec-aic1-power */
+&i2c_smb_1 {
+	label = "I2C_PD_POWER";
+	status = "okay";
+
+	pd_pow_port0: rts54-pdc@20 {
+		compatible = "realtek,rts54-pdc";
+		reg = <0x20>;
+		irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
+	};
+	pd_pow_port1: rts54-pdc@24 {
+		compatible = "realtek,rts54-pdc";
+		reg = <0x24>;
+		irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
+	};
+};
+
+/* typec-aic-data */
+&i2c_smb_2 {
+	label = "I2C_PD_DATA";
+	status = "okay";
+
+	pd_port0: pd-data@50 {
+		compatible = "intel,pd-altmode";
+		reg = <0x50>;
+		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
+	};
+	pd_port1: pd-data@51 {
+		compatible = "intel,pd-altmode";
+		reg = <0x51>;
+		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
+		irq-shared;
+	};
+};
