@@ -34,6 +34,24 @@
       "parentUuid": "4d87516d_cc07cfc3",
       "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54ba2ec_a8e358de",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-04-22T21:35:52Z",
+      "side": 1,
+      "message": "This is what I measure with a repo sync from today (should include that CL):\n\nINFO:fp power:\tactual: 0.06 expected: 0.00 threshold: +/-0.10\nINFO:mcu power:\tactual: 32.15 expected: 34.80 threshold: +/-3.00\n\nTaking another look at this, I had misunderstood the changing limits to be related to sleep rather than idle. That said, it would still be good to understand the underlying firmware root cause that is affecting a change in consumption test limits.",
+      "parentUuid": "559ac5ea_58d0340b",
+      "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
