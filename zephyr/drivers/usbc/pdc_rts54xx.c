@@ -112,8 +112,8 @@ K_EVENT_DEFINE(irq_event);
 #define RTS54XX_BLOCK_READ_CMD 0x80
 
 /* TODO: b/323371550 */
-BUILD_ASSERT(NUM_PDC_RTS54XX_PORTS <= 2,
-	     "rts54xx driver supports a maximum of 2 ports");
+BUILD_ASSERT(NUM_PDC_RTS54XX_PORTS <= 4,
+	     "rts54xx driver supports a maximum of 4 ports");
 
 /**
  * @brief SMbus Command struct for Realtek commands
