@@ -1,0 +1,18 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* PTLRVP (ERB) MCHP program common DTSI includes */
+#include "adc.dtsi"
+#include "battery.dts"
+#include "fan.dtsi"
+#include "gpio.dtsi"
+#include "power_signals.dtsi"
+#include "../ioex.dts"
+#include "../pd.dts"
+#include "ioexp_gpios.dtsi"
+#include "i2c.dtsi"
+#include "pd_i2c.dts"
+#include "interrupts.dtsi"
+#include "keyboard.dtsi"
