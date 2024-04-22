@@ -1,0 +1,26 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <usbc-policy.dtsi>
+
+&usbc {
+	port2@2 {
+		compatible = "named-usbc-port";
+		reg = <2>;
+		alt-mode = <&pd_port2>;
+		pdc = <&pd_pow_port2>;
+		pd-retimer;
+		usb-mux-chain-2 {
+			compatible = "cros-ec,usb-mux-chain";
+			usb-muxes = <&virtual_mux_2>;
+		};
+		policy = <&cros_policy>;
+	};
+	port2-muxes {
+		virtual_mux_2: virtual-mux-2 {
+			compatible = "cros-ec,usbc-mux-virtual";
+		};
+	};
+};
