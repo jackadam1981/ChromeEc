@@ -111,6 +111,30 @@
       },
       "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3420eb8b_6f5c751e",
+        "filename": "zephyr/shim/chip/stm32/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-22T22:32:37Z",
+      "side": 1,
+      "message": "Ohhhhhhh. Thanks for getting to the bottom of this.\n\nI filed a bug to get STM\u0027s understanding of this discrepancy - b/336375638.\n\nGiven these bits aren\u0027t used to actually setup the debug-friendly environment, we can probably safely omit them (as per the latest rev). Can you just add a comment about the `DBGSTBY_D3` and `DBGSTOP_D3` being removed in rev 7 of RM..., so people understand why they were omitted?",
+      "parentUuid": "9216f8bf_fb87792c",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
