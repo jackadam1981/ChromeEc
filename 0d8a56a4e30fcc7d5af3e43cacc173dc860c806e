@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a25f511_f16e8914",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/ioexp_gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T21:05:35Z",
+      "side": 1,
+      "message": "this is generic file, should go under ptlrvp folder",
+      "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0286c1a_c7e747ca",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T21:05:35Z",
+      "side": 1,
+      "message": "may of these configs are generic to ptlrvp, move under prj.conf",
+      "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425d9fcd_cb16de3a",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-22T21:05:35Z",
+      "side": 1,
+      "message": "these configs are generic to ptlrvp, move under ptlrvp",
+      "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
