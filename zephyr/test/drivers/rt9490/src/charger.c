@@ -54,6 +54,10 @@ ZTEST(rt9490_chg, test_current)
 
 ZTEST(rt9490_chg, test_voltage)
 {
+	const uint16_t *battery_max_voltage;
+	const struct batt_conf_embed *battery_conf;
+	uint16_t battery_max_reg;
+
 	struct {
 		int reg;
 		int expected; /* expected voltage in mV */
@@ -61,33 +65,72 @@ ZTEST(rt9490_chg, test_voltage)
 			 { 0x1A4, 4200 },  { 0x348, 8400 },  { 0x4EC, 12600 },
 			 { 0x690, 16800 }, { 0x757, 18790 }, { 0x758, 18800 } };
 
+	battery_conf = get_batt_conf();
+	battery_max_voltage = &battery_conf[0].config.batt_info.voltage_max;
+	battery_max_reg = *battery_max_voltage / 10;
+
 	for (int i = 0; i < ARRAY_SIZE(testdata); i++) {
 		int voltage = -1;
 
-		zassert_ok(rt9490_drv.set_voltage(chgnum, testdata[i].expected),
-			   "case %d failed", i);
-		zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL),
-			      testdata[i].reg >> 8, "case %d failed", i);
-		zassert_equal(rt9490_emul_peek_reg(emul,
-						   RT9490_REG_VCHG_CTRL + 1),
-			      testdata[i].reg & 0xFF, "case %d failed", i);
+		if (testdata[i].expected < *battery_max_voltage) {
+			zassert_ok(rt9490_drv.set_voltage(chgnum,
+							  testdata[i].expected),
+				   "case %d failed", i);
+			zassert_equal(rt9490_emul_peek_reg(
+					      emul, RT9490_REG_VCHG_CTRL),
+				      testdata[i].reg >> 8, "case %d failed",
+				      i);
+			zassert_equal(rt9490_emul_peek_reg(
+					      emul, RT9490_REG_VCHG_CTRL + 1),
+				      testdata[i].reg & 0xFF, "case %d failed",
+				      i);
 
-		zassert_ok(rt9490_drv.get_voltage(chgnum, &voltage),
-			   "case %d failed", i);
-		zassert_equal(testdata[i].expected, voltage, "case %d failed",
-			      i);
+			zassert_ok(rt9490_drv.get_voltage(chgnum, &voltage),
+				   "case %d failed", i);
+			zassert_equal(testdata[i].expected, voltage,
+				      "case %d failed", i);
+		} else {
+			zassert_ok(rt9490_drv.set_voltage(chgnum,
+							  testdata[i].expected),
+				   "case %d failed", i);
+			zassert_equal(rt9490_emul_peek_reg(
+					      emul, RT9490_REG_VCHG_CTRL),
+				      battery_max_reg >> 8, "case %d failed",
+				      i);
+			zassert_equal(rt9490_emul_peek_reg(
+					      emul, RT9490_REG_VCHG_CTRL + 1),
+				      battery_max_reg & 0xFF, "case %d failed",
+				      i);
+
+			zassert_ok(rt9490_drv.get_voltage(chgnum, &voltage),
+				   "case %d failed", i);
+			zassert_equal(battery_max_reg * 10, voltage,
+				      "case %d over battery max voltage failed",
+				      i);
+		}
 	}
 
-	/* special case: set_voltage(0) means 3.0V */
+	/* special case: set_voltage(0) means battery max voltage */
 	zassert_ok(rt9490_drv.set_voltage(chgnum, 0), NULL);
-	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL), 0x1,
+
+	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL),
+		      battery_max_reg >> 8, NULL);
+	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL + 1),
+		      battery_max_reg & 0xFF, NULL);
+
+	/* special case: set_voltage(18801) means battery max voltage */
+	zassert_ok(rt9490_drv.set_voltage(chgnum, 18801), NULL);
+	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL),
+		      battery_max_reg >> 8, NULL);
+	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL + 1),
+		      battery_max_reg & 0xFF, NULL);
+
+	/* special case: set_voltage(2999) means charger voltage_min */
+	zassert_ok(rt9490_drv.set_voltage(chgnum, 2999), NULL);
+	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL), 0x01,
 		      NULL);
 	zassert_equal(rt9490_emul_peek_reg(emul, RT9490_REG_VCHG_CTRL + 1),
-		      0x2C, NULL);
-
-	/* values outside (3V, 18.8V) are illegal */
-	zassert_not_equal(rt9490_drv.set_voltage(chgnum, 2999), 0, NULL);
-	zassert_not_equal(rt9490_drv.set_voltage(chgnum, 18801), 0, NULL);
+		      0x2c, NULL);
 }
 
 ZTEST(rt9490_chg, test_otg)
