@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa5c63c_79953d95",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-22T18:22:25Z",
+      "side": 1,
+      "message": "For readability, can you specify the variable name?\n\n\n```suggestion\n                pre_test_callback\u003dlambda config: power_util_pre(\n                    config, enter_sleep\u003dFalse\n                ),\n```",
+      "range": {
+        "startLine": 416,
+        "startChar": 72,
+        "endLine": 416,
+        "endChar": 77
+      },
+      "revId": "4054d792f9cd06a66204238a57ffb1e12692fcf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a785c33_058bb273",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-22T18:22:25Z",
+      "side": 1,
+      "message": "For readability, can you specify the variable name?\n\n```suggestion\n                pre_test_callback\u003dlambda config: power_util_pre(config, enter_sleep\u003dTrue),\n```",
+      "range": {
+        "startLine": 425,
+        "startChar": 16,
+        "endLine": 425,
+        "endChar": 78
+      },
+      "revId": "4054d792f9cd06a66204238a57ffb1e12692fcf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9b9a18_89fd9c7f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-22T18:22:25Z",
+      "side": 1,
+      "message": "nit: `power_pre_test`?\n\n```suggestion\ndef power_pre_test(board_config: BoardConfig, enter_sleep: bool) -\u003e bool:\n```",
+      "range": {
+        "startLine": 720,
+        "startChar": 4,
+        "endLine": 720,
+        "endChar": 18
+      },
+      "revId": "4054d792f9cd06a66204238a57ffb1e12692fcf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
