@@ -194,8 +194,12 @@ static enum ec_error_list rt9490_set_voltage(int chgnum, int voltage)
 {
 	uint16_t reg_cv;
 	const struct charger_info *const info = rt9490_get_info(chgnum);
+	const int battery_voltage_max = battery_get_info()->voltage_max;
 
-	if (voltage == 0)
+	if (voltage == 0 || voltage > battery_voltage_max)
+		voltage = battery_voltage_max;
+
+	if (voltage < info->voltage_min)
 		voltage = info->voltage_min;
 
 	if (!IN_RANGE(voltage, info->voltage_min, info->voltage_max))
