@@ -46,6 +46,30 @@
       },
       "revId": "35bea71365b03d4d8733b9998a029a911c85b9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101145cb_9af29c3a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-22T22:26:05Z",
+      "side": 1,
+      "message": "Typo in my original comment. It should be \"It doesn\u0027t compile with gcc, but does with clang.\"\n\nWe\u0027re on an older version of gcc, which may be the reason, but I need to look at it more.",
+      "parentUuid": "e5dc1299_2eec5224",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 6
+      },
+      "revId": "35bea71365b03d4d8733b9998a029a911c85b9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
