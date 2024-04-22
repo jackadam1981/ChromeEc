@@ -22,6 +22,30 @@
       },
       "revId": "ece9249e055ae73059b118aac9fce479bf6e2e44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dced1aa_13c0f562",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-22T17:34:55Z",
+      "side": 1,
+      "message": "Yes. \n\nI think we need to implement retry in ppm_common.c in case EBUSY is returned.",
+      "parentUuid": "3d90128e_870c8409",
+      "range": {
+        "startLine": 309,
+        "startChar": 16,
+        "endLine": 309,
+        "endChar": 27
+      },
+      "revId": "ece9249e055ae73059b118aac9fce479bf6e2e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
