@@ -195,6 +195,8 @@ class BoardConfig:
     expected_fp_power: PowerUtilization
     expected_mcu_power: PowerUtilization
     variants: Dict
+    expected_fp_power_zephyr: PowerUtilization = None
+    expected_mcu_power_zephyr: PowerUtilization = None
 
 
 @dataclass
@@ -413,7 +415,9 @@ class AllTests:
                 test_name="power_utilization",
                 apptype_to_use=ApplicationType.PRODUCTION,
                 toggle_power=True,
-                pre_test_callback=lambda config: power_util_pre(config, False),
+                pre_test_callback=lambda config: power_pre_test(
+                    board_config=config, enter_sleep=False
+                ),
                 post_test_callback=verify_idle_power_utilization,
                 finish_regexes=[RW_IMAGE_BOOTED_REGEX],
             ),
@@ -422,7 +426,9 @@ class AllTests:
                 test_name="power_utilization",
                 apptype_to_use=ApplicationType.PRODUCTION,
                 toggle_power=True,
-                pre_test_callback=lambda config: power_util_pre(config, True),
+                pre_test_callback=lambda config: power_pre_test(
+                    board_config=config, enter_sleep=True
+                ),
                 post_test_callback=verify_sleep_power_utilization,
                 finish_regexes=[RW_IMAGE_BOOTED_REGEX],
             ),
@@ -499,6 +505,13 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     ),
     expected_mcu_power=PowerUtilization(
         idle=RangedValue(16.05, 0.14 * 2), sleep=RangedValue(0.53, 0.35 * 2)
+    ),
+    expected_fp_power_zephyr=PowerUtilization(
+        idle=RangedValue(0.17, 0.04), sleep=RangedValue(0.17, 0.04)
+    ),
+    # TODO(b/311568657) Update expected value once b/311568657 is closed.
+    expected_mcu_power_zephyr=PowerUtilization(
+        idle=RangedValue(14.61, 0.14 * 2), sleep=RangedValue(0.28, 0.04)
     ),
     variants={
         "bloonchipper_v2.0.4277": {
@@ -717,7 +730,7 @@ def fp_sensor_sel(
     return False
 
 
-def power_util_pre(board_config: BoardConfig, enter_sleep: bool) -> bool:
+def power_pre_test(board_config: BoardConfig, enter_sleep: bool) -> bool:
     """
     Prepare a board for a power_utilization test
     """
@@ -1272,6 +1285,11 @@ def main():
     validate_args_combination(args)
 
     board_config = BOARD_CONFIGS[args.board]
+    # Use expected values for Zephyr
+    if args.zephyr:
+        board_config.expected_fp_power = board_config.expected_fp_power_zephyr
+        board_config.expected_mcu_power = board_config.expected_mcu_power_zephyr
+
     test_list = get_test_list(board_config, args.tests, args.with_private)
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
 
