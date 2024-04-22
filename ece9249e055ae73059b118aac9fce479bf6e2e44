@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d90128e_870c8409",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2024-04-22T16:22:17Z",
+      "side": 1,
+      "message": "This command can also fail with EBUSY if PDM is active, right?",
+      "range": {
+        "startLine": 309,
+        "startChar": 16,
+        "endLine": 309,
+        "endChar": 27
+      },
+      "revId": "ece9249e055ae73059b118aac9fce479bf6e2e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
