@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "286b765e_e60c58f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-22T20:44:15Z",
+      "side": 1,
+      "message": "\u003e It looks like Zephyr has a concept of \"integration test\" vs \"unit test\". Can we follow that?\n\n\u003e\u003e Can you say something more why we need this distinction?\n\nI think it is good to be clear on whether a given test is a unit test or an integration test.\n\nA single test should avoid mixing the two concepts. Unit tests are much easier to write and debug, but sometimes integration tests are useful for making sure that things behave correctly in \"production\" (i.e., in the real firmware).\n\nFor example, the `restricted_console` unit test verifies that `CMD_FLAG_RESTRICTED` restricts a console command when the system is locked, so we know that the `CMD_FLAG_RESTRICTED` restricted functionality works in the general case. However, if we want to verify that the \"debug\" commands in `fpsensor_debug.cc` are definitely restricted, we could add an integration test for those specific commands (such as [`fpcapture`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor_debug.cc;l\u003d156-158;drc\u003d3d7c68e00e202c3a258f5d1679881a259a79c548)). Currently I think all of our integration tests are Tast. For example, [this test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/go.chromium.org/tast-tests/cros/remote/bundles/cros/firmware/fp_system_is_locked.go), which checks that we can\u0027t get a frame. I think it\u0027s fine to keep the integration tests in Tast, but if there were an easy way to write and run integration tests with Zephyr itself that would make them easier to maintain/run since we could catch bugs sooner. When the tests are \"close\" to the source code they tend to stay in sync better.\n\nSome internal resources:\n\n* http://shortn/_5AL5tle150\n* http://shortn/_enh3BqKXcO",
+      "parentUuid": "15dbca72_e05dd188",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
