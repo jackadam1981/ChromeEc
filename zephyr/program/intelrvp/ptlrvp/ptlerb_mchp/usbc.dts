@@ -45,5 +45,22 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+		port2@2 {
+			compatible = "named-usbc-port";
+			reg = <2>;
+			alt-mode = <&pd_port2>;
+			pdc = <&pd_pow_port2>;
+			pd-retimer;
+			usb-mux-chain-2 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_2>;
+			};
+			policy = <&cros_policy>;
+		};
+		port2-muxes {
+			virtual_mux_2: virtual-mux-2 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+		};
 	};
 };

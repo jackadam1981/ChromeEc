@@ -19,6 +19,11 @@
 		reg = <0x24>;
 		irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
 	};
+	pd_pow_port2: rts54-pdc@22 {
+		compatible = "realtek,rts54-pdc";
+		reg = <0x22>;
+		irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
+	};
 };
 
 /* typec-aic-data */
@@ -34,6 +39,12 @@
 	pd_port1: pd-data@51 {
 		compatible = "intel,pd-altmode";
 		reg = <0x51>;
+		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
+		irq-shared;
+	};
+	pd_port2: pd-data@53 {
+		compatible = "intel,pd-altmode";
+		reg = <0x53>;
 		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
 		irq-shared;
 	};
