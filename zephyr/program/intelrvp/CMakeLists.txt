@@ -35,3 +35,7 @@ if(DEFINED CONFIG_BOARD_MTLRVP_PD)
   add_subdirectory(mtlrvp)
   zephyr_library_sources("src/intelrvp.c")
 endif()
+
+if(DEFINED CONFIG_BOARD_PTLERB_MCHP)
+  add_subdirectory(ptlrvp)
+endif()
