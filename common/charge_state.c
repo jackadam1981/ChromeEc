@@ -455,6 +455,10 @@ int charge_request(bool use_curr, bool is_full)
 		voltage = MAX(voltage, battery_get_info()->voltage_normal);
 #else
 		voltage = current = 0;
+#ifdef CONFIG_CHARGER_BATTERY_FULL_CONTROL
+		if (is_full)
+			voltage = battery_get_info()->voltage_max;
+#endif
 #endif
 	}
 

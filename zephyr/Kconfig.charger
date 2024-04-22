@@ -231,6 +231,7 @@ config PLATFORM_EC_CHARGER_RT9490
 	depends on DT_HAS_RICHTEK_RT9490_ENABLED || DT_HAS_ZEPHYR_RT9490_EMUL_ENABLED
 	depends on PLATFORM_EC_I2C
 	select PLATFORM_EC_CHARGER_OTG_SUPPORTED
+	select PLATFORM_EC_CHARGER_BATTERY_FULL_CONTROL
 	help
 	  Enables the driver for the Richtek RT9490 battery charger
 	  controller. This is a highly-integrated 5A Buck-Boost switch mode
@@ -578,6 +579,13 @@ config PLATFORM_EC_CHARGER_NARROW_VDC
 
 	  This should be enabled by charger drivers which need it. It cannot
 	  be set otherwise, even in prj.conf
+
+config PLATFORM_EC_CHARGER_BATTERY_FULL_CONTROL
+	bool
+	help
+	  When Battery is charged full, some charger need keep CV to battery maximum
+	  voltage to prevent the CV value from being reset and causing battery discharge
+	  under certain circumstances.
 
 config PLATFORM_EC_CHARGER_TRICKLE
 	bool

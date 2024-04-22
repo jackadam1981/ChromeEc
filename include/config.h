@@ -1317,6 +1317,9 @@
 /* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
 
+/* Set CV to battery max voltage at battery full */
+#undef CONFIG_CHARGER_BATTERY_FULL_CONTROL
+
 /*
  * Low energy thresholds - when battery level is below BAT_PCT and an external
  * charger provides less than CHG_MW of power, inform the AP of the situation
