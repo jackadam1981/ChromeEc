@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15dbca72_e05dd188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-22T09:39:40Z",
+      "side": 1,
+      "message": "\u003eCould you write a small design doc on the plan\n\nSure, I should have started with this.\n\n\u003eFor example, maybe we should add the EC test files to the migrated files script so that we get a warning if we make a change to the EC version.\n\nAgree, I need to add the check.\n\n\u003eIn general, I think we should follow Zephyr style if we can. (I\u0027m not sure what is required to do so, so I\u0027m not sure if this is more or less complicated.)\n\nUnit tests run on native_posix platform follow the Zephyr style. There are more problems with on device tests - building with zmake/flashing with flash_ec/running console commands like sysjump/controlling signals like wp via servo. That\u0027s why I\u0027ve decided to run_device_tests instead of twister. However tests itself are written in Zephyr style. I\u0027ll describe that in the doc.\n\n\u003e It looks like Zephyr has a concept of \"integration test\" vs \"unit test\". Can we follow that?\n\nCan you say something more why we need this distinction?\n\n\u003eI\u0027m not suggesting we use gtest for these tests, but it would be good to know if we can use it if we have a need for it.\n\nI\u0027m going to try to use gtest soon. I\u0027ve finished migrating *.c tests and I would like to try gtest for *.cc tests.",
+      "parentUuid": "711d3035_30511e50",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
