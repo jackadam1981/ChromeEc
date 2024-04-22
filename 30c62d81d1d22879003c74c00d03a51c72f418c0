@@ -16,6 +16,24 @@
       "message": "What values are you measuring? Current consumption on my boards in sleep mode was consistently below 3 mA except in cases where OTP was left powered on, which consumed ~5 mA additional. We should make sure that this change is needed based on idle current variation and not a firmware error like leaving OTP powered on.",
       "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559ac5ea_58d0340b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-22T18:59:30Z",
+      "side": 1,
+      "message": "Just for reference, here\u0027s what I see on my board with commit: `573a09e9b58f9bd43d33bd87720cbe48d53afe23`:\n\n```\nINFO:fp power:  actual: 0.05 expected: 0.00 threshold: +/-0.10\nINFO:mcu power: actual: 32.63 expected: 34.80 threshold: +/-3.00\n```\n\n@hesling@chromium.org and @davidmcross@google.com, what does your board show with that commit?",
+      "parentUuid": "4d87516d_cc07cfc3",
+      "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
