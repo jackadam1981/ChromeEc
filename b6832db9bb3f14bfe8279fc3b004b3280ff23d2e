@@ -16,6 +16,24 @@
       "message": "Nit: You might want to make this part of `snk_policy.flags`, which would allow you to 1) naturally handle it in `run_snk_policy` and 2) use the `atomic_test_and_clear_bit` convenience function.",
       "revId": "b6832db9bb3f14bfe8279fc3b004b3280ff23d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849f3f21_4ed98cbe",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-22T18:31:13Z",
+      "side": 1,
+      "message": "I thought about this, but the hard_reset_sent flag is shared between snk_attached and snk_typec_attached states, and I didn\u0027t want to call atomic_bit_set twice or check which state is currently running.",
+      "parentUuid": "3b743a37_96143803",
+      "revId": "b6832db9bb3f14bfe8279fc3b004b3280ff23d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
