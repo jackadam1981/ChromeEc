@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264d5f0a_1cf46934",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-04-22T19:02:53Z",
+      "side": 1,
+      "message": "This is incorrect. `ACK_CC_CI` needs to go to the driver so we can clear the `Connector Status Change` bits. Otherwise, the OPM might act on the same status change bits multiple times.\n\nSee: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/extra/um_ppm/rts5453.c;l\u003d640\n\nACK_CC_CI and GET_PD_MESSAGE will probably both need custom handlers.",
+      "revId": "fbb87dfbbb03db11719d72ad0e210baba37603d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
