@@ -86,6 +86,24 @@
       "message": "these configs are generic to ptlrvp, move under ptlrvp",
       "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3094476c_08484fa7",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-04-23T03:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "425d9fcd_cb16de3a",
+      "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
