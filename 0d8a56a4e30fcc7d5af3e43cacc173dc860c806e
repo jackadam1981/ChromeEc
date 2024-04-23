@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f532ff22_c4043aa5",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/ioexp_gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-04-23T00:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a25f511_f16e8914",
+      "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0286c1a_c7e747ca",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-22T21:05:35Z",
       "side": 1,
       "message": "may of these configs are generic to ptlrvp, move under prj.conf",
+      "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d332613_3f6dc818",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-04-23T00:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0286c1a_c7e747ca",
       "revId": "0d8a56a4e30fcc7d5af3e43cacc173dc860c806e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
