@@ -5,6 +5,8 @@
 
 /* UCSI PPM Driver */
 
+#include "cros_board_info.h"
+#include "ec_commands.h"
 #include "include/pd_driver.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
@@ -182,6 +184,12 @@ static int ppm_init(const struct device *device)
 	struct ppm_data *dat = (struct ppm_data *)device->data;
 	const struct ucsi_pd_driver *drv = device->api;
 	struct ppm_common_device *ppm_dev;
+#if 0
+	union ec_common_control ctrl;
+
+	if (cbi_get_common_control(&ctrl) || !ctrl.ucsi_enabled)
+		return -ENODEV;
+#endif
 
 	/* Initialize the PPM. */
 	dat->ppm = ppm_open(drv);
