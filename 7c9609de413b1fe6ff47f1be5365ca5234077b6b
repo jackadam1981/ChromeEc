@@ -16,6 +16,98 @@
       "message": "Sam, Keith, friendly ping. Thanks.",
       "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d4319d_0dac23f6",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:47:06Z",
+      "side": 1,
+      "message": "nit: comment\n```\n/**\n * @brief XXX\n */\n ```",
+      "range": {
+        "startLine": 2150,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 30
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b02349_4a9f257b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:47:06Z",
+      "side": 1,
+      "message": "This API doesn\u0027t seem to fit with the interface of this driver. Would it make sense to move this to a new driver file called ```ucsi_pdc_rts54xx.c```?",
+      "range": {
+        "startLine": 2153,
+        "startChar": 11,
+        "endLine": 2153,
+        "endChar": 32
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094ace23_65806ca1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:47:06Z",
+      "side": 1,
+      "message": "This duplicates code in the driver and subsystem. Is there a reason why this needs to be done?",
+      "range": {
+        "startLine": 2176,
+        "startChar": 1,
+        "endLine": 2200,
+        "endChar": 11
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a5f746_5c4aa43d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2233,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:47:06Z",
+      "side": 1,
+      "message": "This seems too generic, could you give a more descriptive name?",
+      "range": {
+        "startLine": 2233,
+        "startChar": 2,
+        "endLine": 2233,
+        "endChar": 17
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
