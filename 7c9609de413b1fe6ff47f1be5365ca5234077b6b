@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ea05711_dad3913a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-23T23:44:42Z",
+      "side": 1,
+      "message": "Nit - move this up with the Realtek SMbus commands defined at the top of the file (around line 130)",
+      "range": {
+        "startLine": 2151,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 31
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07b02349_4a9f257b",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 30
@@ -77,6 +100,30 @@
       "writtenOn": "2024-04-23T15:47:06Z",
       "side": 1,
       "message": "This duplicates code in the driver and subsystem. Is there a reason why this needs to be done?",
+      "range": {
+        "startLine": 2176,
+        "startChar": 1,
+        "endLine": 2200,
+        "endChar": 11
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257cd2e1_019bf8e5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-23T23:44:42Z",
+      "side": 1,
+      "message": "Running `rts54_post_command()` will also call `call_cci_event_cb()` when the command completes.   That may cause problems in the pdc_power_mgmt.c module.\n\nI haven\u0027t reviewed the full CL stack.  How is synchronization between pdc_power_mgmt.c and the ucsi/rts54xx.c driver managed?\n\nAs Sam notes, `public_api_block` in pdc_power_mgmt.c is already setup to generate a blocking PDC command.",
+      "parentUuid": "094ace23_65806ca1",
       "range": {
         "startLine": 2176,
         "startChar": 1,

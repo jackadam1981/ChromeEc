@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855f135a_05777e74",
+        "filename": "zephyr/subsys/ucsi/rts54xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-23T23:44:42Z",
+      "side": 1,
+      "message": "Nothing in this file is Realtek specific.  Why is this tied to the Realtek part number?  This probably should just be called lpm_driver.c\n\nAlso, instead of creating an array of PDC ports, lpm_driver.c could support multiple driver instances by using the `DT_INST_FOREACH_STATUS_OKAY` macro.\n\nIt\u0027s slightly more costly in terms of flash space, but eliminates all of the arrays that you\u0027ve allocated of `NUM_PORTS` size.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "8d310845453bab5eb67018a452b9fb163287e88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e531cd29_ab343a4c",
+        "filename": "zephyr/subsys/ucsi/rts54xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-23T23:44:42Z",
+      "side": 1,
+      "message": "Nit - These macros aren\u0027t needed and don\u0027t help readability in my opinion.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "8d310845453bab5eb67018a452b9fb163287e88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
