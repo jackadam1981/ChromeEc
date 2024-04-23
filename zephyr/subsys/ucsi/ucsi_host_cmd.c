@@ -85,8 +85,12 @@ SYS_INIT(eppm_init, APPLICATION, 99);
 static enum ec_status hc_ucsi_ppm_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_ucsi_ppm_set *p = args->params;
+	union ec_common_control ctrl;
 
-	if (!ppm_drv)
+	if (cbi_get_common_control(&ctrl))
+		return EC_RES_UNAVAILABLE;
+
+	if (!ppm_drv || !ctrl.ucsi_enabled)
 		return EC_RES_UNAVAILABLE;
 
 	if (ppm_drv->write(ppm_drv->dev, p->offset, p->data,
@@ -102,7 +106,10 @@ static enum ec_status hc_ucsi_ppm_get(struct host_cmd_handler_args *args)
 	const struct ec_params_ucsi_ppm_get *p = args->params;
 	int len;
 
-	if (!ppm_drv)
+	if (cbi_get_common_control(&ctrl))
+		return EC_RES_UNAVAILABLE;
+
+	if (!ppm_drv || !ctrl.ucsi_enabled)
 		return EC_RES_UNAVAILABLE;
 
 	len = ppm_drv->read(ppm_drv->dev, p->offset, args->response, p->size);
