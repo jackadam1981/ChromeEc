@@ -113,35 +113,6 @@ static void hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size,
 	compute_hmac_sha256(prk, salt, salt_size, ikm, ikm_size);
 }
 
-static enum ec_error_list
-hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
-		     size_t prk_size, const uint8_t *info, size_t info_size)
-{
-	uint8_t key_buf[SHA256_DIGEST_SIZE];
-	uint8_t message_buf[SHA256_DIGEST_SIZE + 1];
-
-	if (out_key_size > SHA256_DIGEST_SIZE) {
-		CPRINTS("Deriving key material longer than SHA256_DIGEST_SIZE "
-			"requires more steps of HKDF expand.");
-		return EC_ERROR_INVAL;
-	}
-
-	if (info_size > SHA256_DIGEST_SIZE) {
-		CPRINTS("Info size too big for HKDF.");
-		return EC_ERROR_INVAL;
-	}
-
-	memcpy(message_buf, info, info_size);
-	/* 1 step, set the counter byte to 1. */
-	message_buf[info_size] = 0x01;
-	compute_hmac_sha256(key_buf, prk, prk_size, message_buf, info_size + 1);
-
-	memcpy(out_key, key_buf, out_key_size);
-	OPENSSL_cleanse(key_buf, sizeof(key_buf));
-
-	return EC_SUCCESS;
-}
-
 enum ec_error_list hkdf_expand(uint8_t *out_key, size_t L, const uint8_t *prk,
 			       size_t prk_size, const uint8_t *info,
 			       size_t info_size)
@@ -277,8 +248,8 @@ derive_encryption_key_with_info(std::span<uint8_t> out_key,
 	 * (user_id in our case) is exactly SHA256_DIGEST_SIZE.
 	 * https://tools.ietf.org/html/rfc5869#section-2.3
 	 */
-	ret = hkdf_expand_one_step(out_key.data(), out_key.size(), prk,
-				   sizeof(prk), info.data(), info.size());
+	ret = hkdf_expand(out_key.data(), out_key.size(), prk, sizeof(prk),
+			  info.data(), info.size());
 	OPENSSL_cleanse(prk, sizeof(prk));
 
 	return ret;
