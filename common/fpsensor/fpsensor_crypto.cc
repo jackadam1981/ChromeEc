@@ -103,7 +103,12 @@ test_mockable void compute_hmac_sha256(uint8_t *output, const uint8_t *key,
 				       const uint8_t *message,
 				       const int message_len)
 {
-	hmac_SHA256(output, key, key_len, message, message_len);
+	std::array<uint8_t, EVP_MAX_MD_SIZE> buf;
+	size_t output_len = 0;
+
+	HKDF_extract(buf.data(), &output_len, EVP_sha256(), key, key_len,
+		     message, message_len);
+	std::copy_n(buf.data(), output_len, output);
 }
 
 static void hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size,
@@ -220,7 +225,16 @@ enum ec_error_list derive_encryption_key_with_info(uint8_t *out_key,
 		return ret;
 	}
 
-	/* TODO (b/276344630): Replace with boringssl version. */
+	std::array<uint8_t, 32> output;
+
+	if (!HKDF(output.data(), output.size(), EVP_sha256(), prk, sizeof(prk),
+		  ikm, sizeof(ikm), info, SHA256_DIGEST_SIZE)) {
+		CPRINTS("Failed to perform HKDF");
+		return EC_ERROR_UNKNOWN;
+	}
+	std::copy_n(output.data(), SBP_ENC_KEY_LEN, out_key);
+
+#if 0
 	/* "Extract step of HKDF. */
 	hkdf_extract(prk, salt, FP_CONTEXT_ENCRYPTION_SALT_BYTES, ikm,
 		     sizeof(ikm));
@@ -234,6 +248,7 @@ enum ec_error_list derive_encryption_key_with_info(uint8_t *out_key,
 	ret = hkdf_expand(out_key, SBP_ENC_KEY_LEN, prk, sizeof(prk), info,
 			  SHA256_DIGEST_SIZE);
 	OPENSSL_cleanse(prk, sizeof(prk));
+#endif
 
 	return ret;
 }
