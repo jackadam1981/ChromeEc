@@ -600,6 +600,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe6fa872_4e90dc3b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "I agree but if the return type is checked (which we\u0027re not doing here), it could lead to performing some action that should not be taken. For example, \n```\nif (tcpm_debug_accessory(port, 1)) {\n   // Take Action A\n} else {\n   // Take Action B\n}\n```",
+      "parentUuid": "a90dbe69_168f8dc5",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1768cc52_d448005f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 14

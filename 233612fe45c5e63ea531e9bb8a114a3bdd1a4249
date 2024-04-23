@@ -119,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47d6c457_1774f607",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "The bist functions return a value that\u0027s not being check here. But adding your suggested code ```if (!IS_ENABLED(CONFIG_USB_PD_BIST)) return \u003csuccess | fail\u003e;``` could lead to a problem because returning SUCCESS or FAILURE, if the return value is checked, would direct the code into taking an action it shouldn\u0027t.",
+      "parentUuid": "4f863854_9cc53b27",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a71db7c_f3104112",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 17
@@ -169,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c231d437_8b087fdd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "Yeah, it shouldn\u0027t matter.",
+      "parentUuid": "577c4f0a_0440ebc1",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "010894e0_588f02a6",
@@ -182,6 +218,24 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "Nit: Would anything bad happen if we moved all of the not-Servo settings into the `if (!IS_ENABLED(CONFIG_USB_SERVO))` block above? I think that would be easier to follow.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0047971_16eb915c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "010894e0_588f02a6",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -203,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2684d713_ad437ef7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61dfca56_7f1ef56d",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e306abf5_3c88252b",
@@ -216,6 +288,24 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "Nit: I\u0027ve usually been confused by the flow of this function when I look at it even without the Servo stuff. It might be good to have a little comment blurb explaining the modified operation and timer use on Servo.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd2f23b_7638dd89",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2723,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "I agree this state is confusing and should be refactored. I added a comment but essentially, the servo doesn\u0027t wait for SRC transition timer to expire before transitioning the power supply voltage.",
+      "parentUuid": "e306abf5_3c88252b",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -345,6 +435,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cde7639f_657eb5f5",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "for servo:\n```\nif (paused[port]) {\n   timeout \u003d -1;\n} else {\n   timeout \u003d USBC_EVENT_TIMEOUT;\n}\n```",
+      "parentUuid": "e5777d91_42f8e779",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5edc3872_70833eec",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 17
@@ -356,6 +464,24 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "Remind me, are we doing this because the stripped-down timer implementation won\u0027t send `TASK_EVENT_TIMER` to the PD task?",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34b76f5_4ac4391a",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "Servo uses counters to measure time, and ```pd_timer_update``` increments those counters at a fixed interval.",
+      "parentUuid": "5edc3872_70833eec",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -408,6 +534,30 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "I think we talked about this in January, but I don\u0027t really get this interface change. It looks like these functions are made to take the place of `pd_timer_disable_range` on Servo due to the different Servo timer implementation. The delta in the PE straightforwardly does this.\n\nIn the PRL, this CL disables the `pd_timer_disable_range` call in the Servo case, but I don\u0027t see a corresponding call to `pr_timer_init`. In the TC, this CL adds a call to `tc_timer_init` in the Servo case, but I don\u0027t see a corresponding call to `pd_timer_disable_range`.\n\nCan you clarify?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 29
+      },
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d8b195_d37d955f",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-04-23T15:09:57Z",
+      "side": 1,
+      "message": "Good catch on ```pr_timer_init`` not getting called. But I\u0027m not sure why pd_timer_disable_range isn\u0027t called in the TC layer.",
+      "parentUuid": "8f7f0e0d_db1808b4",
       "range": {
         "startLine": 259,
         "startChar": 0,
