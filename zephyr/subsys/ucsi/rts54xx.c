@@ -5,6 +5,8 @@
 
 /* UCSI host command */
 
+#include "cbi.h"
+#include "ec_commands.h"
 #include "include/pd_driver.h"
 #include "include/ppm.h"
 #include "ppm_common.h"
@@ -180,6 +182,10 @@ static int rts54xx_init(const struct device *device)
 	const struct ucsi_pd_driver *drv = device->api;
 	struct ppm_common_device *ppm_dev;
 	struct rts5453_device *dev = device->data;
+	union ec_common_control ctrl;
+
+	if (cbi_get_common_control(&ctrl) || !ctrl.ucsi_enabled)
+		return -ENODEV;
 
 	/* Initialize the PPM. */
 	dev->ppm = ppm_open(drv);
