@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa6bab67_96a20864",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-23T16:42:23Z",
+      "side": 1,
+      "message": "nit: can you make this an `if .. else`?",
+      "range": {
+        "startLine": 667,
+        "startChar": 2,
+        "endLine": 673,
+        "endChar": 37
+      },
+      "revId": "1ffaa87e14eac6751130578ed55ff7e9dff7d225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792c7757_a97ad0b9",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-23T16:42:23Z",
+      "side": 1,
+      "message": "do you really need these early returns since the blocking function will return immediately?\n\nThe number of gpios really isn\u0027t that much\n\nSame question for all of the other checks after blocking calls",
+      "range": {
+        "startLine": 1560,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 10
+      },
+      "revId": "1ffaa87e14eac6751130578ed55ff7e9dff7d225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
