@@ -10,13 +10,13 @@
 #include "../usba.dtsi"
 #include "../ite_adc.dtsi"
 #include "../ite_gpio.dtsi"
-#include "../ite_keyboard.dtsi"
 #include "../ite_i2c.dtsi"
 #include "../ite_interrupts.dtsi"
 #include "../ite_led.dtsi"
 #include "../ite_usbc.dtsi"
 #include "../ite_shi.dtsi"
 #include "./cbi.dtsi"
+#include "./keyboard.dtsi"
 #include "./thermistor.dtsi"
 / {
 	named-gpios {
