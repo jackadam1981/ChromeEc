@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d476170_272072be",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-23T04:37:32Z",
+      "side": 1,
+      "message": "this does not match the commit message.\nmaybe you need to check battery state of charge here",
+      "revId": "f59e52986aa5b451a4744aa673a77a7dbfd3f5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
