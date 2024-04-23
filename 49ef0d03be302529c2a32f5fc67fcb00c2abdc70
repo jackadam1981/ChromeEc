@@ -135,6 +135,30 @@
       },
       "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ea208a_5635f40d",
+        "filename": "zephyr/shim/chip/stm32/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-23T00:32:53Z",
+      "side": 1,
+      "message": "Also noteworthy, it doesn\u0027t look like the [upstream OpenOCD](review.openocd.org/gitweb?p\u003dopenocd.git;a\u003dblob;f\u003dtcl/target/stm32h7x.cfg;h\u003d5aae93861909293c1ab4f67d8a86c66c24691506;hb\u003dHEAD#l175) nor ST\u0027s version of OpenOCD ever set those D3 DBGMCU_CR bits, so this seems less important. They do, oddly enough, set reserved bits for D2.",
+      "parentUuid": "3420eb8b_6f5c751e",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "49ef0d03be302529c2a32f5fc67fcb00c2abdc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
