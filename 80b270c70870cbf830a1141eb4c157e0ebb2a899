@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4952cf0_db24b4a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-23T16:22:40Z",
+      "side": 1,
+      "message": "Thanks for the additional context Yuval.\n\n\u003e I don\u0027t think we should block this CL on that because it would require a massive restructuring of the code.\n\nYeah, I definitely don\u0027t want to block this CL on that. However, since this is the first of a bunch of tests that are being migrating over from EC, I wanted to see if there\u0027s some way that we can indicate whether a test is a unit test or integration test. Even if that\u0027s only a comment in the test source file, I think that will make it easier to refactor in the future as well as make the purpose of a given test clearer in the short term.",
+      "parentUuid": "ef82e052_2a603b10",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
