@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47394e5_78df5f90",
+        "filename": "zephyr/drivers/usbc/intel_altmode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-23T18:01:34Z",
+      "side": 1,
+      "message": "See comment below.  If you use `DT_INST_PROP_OR` you don\u0027t need the conditional assignment here.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "87f8ab065c94950d8d8454c1a2b6be1cca4fe2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55bf653_46564aae",
+        "filename": "zephyr/drivers/usbc/intel_altmode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-23T18:01:34Z",
+      "side": 1,
+      "message": "Use `DT_INST_PROP_OR()` to set a default value when the property isn\u0027t specified in the devicetree.",
+      "range": {
+        "startLine": 206,
+        "startChar": 15,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "87f8ab065c94950d8d8454c1a2b6be1cca4fe2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
