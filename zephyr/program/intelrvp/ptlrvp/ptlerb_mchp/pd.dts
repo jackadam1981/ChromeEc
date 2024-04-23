@@ -30,22 +30,4 @@
 &i2c_smb_2 {
 	label = "I2C_PD_DATA";
 	status = "okay";
-
-	pd_port0: pd-data@50 {
-		compatible = "intel,pd-altmode";
-		reg = <0x50>;
-		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
-	};
-	pd_port1: pd-data@51 {
-		compatible = "intel,pd-altmode";
-		reg = <0x51>;
-		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
-		irq-shared;
-	};
-	pd_port2: pd-data@53 {
-		compatible = "intel,pd-altmode";
-		reg = <0x53>;
-		irq-gpios = <MCHP_GPIO_DECODE_002 GPIO_ACTIVE_LOW>;
-		irq-shared;
-	};
 };
