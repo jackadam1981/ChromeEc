@@ -37,6 +37,12 @@ static int eppm_init(void)
 	struct ppm_common_device *ppm_dev;
 
 	pdc_dev = DEVICE_DT_GET(DT_INST(0, ucsi_ppm_driver));
+	if (pdc_dev->state->init_res) {
+		LOG_ERR("%s: Error in PPM driver init (%d)", __func__,
+			pdc_dev->state->init_res);
+		return -ENODEV;
+	}
+
 	drv = pdc_dev->api;
 	if (!drv) {
 		LOG_ERR("Failed to open PDC");
