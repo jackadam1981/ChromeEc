@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55509dd_c0bc8942",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-23T16:35:32Z",
+      "side": 1,
+      "message": "can you reuse the helper function you created?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 57
+      },
+      "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
