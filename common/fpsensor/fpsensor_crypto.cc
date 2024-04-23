@@ -7,8 +7,11 @@
 #include "fpsensor/fpsensor_state_without_driver_info.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "openssl/aead.h"
+#include "openssl/evp.h"
+#include "openssl/hkdf.h"
 #include "openssl/mem.h"
 
+#include <algorithm>
 #include <span>
 
 extern "C" {
@@ -117,19 +120,8 @@ enum ec_error_list hkdf_expand(uint8_t *out_key, size_t L, const uint8_t *prk,
 			       size_t prk_size, const uint8_t *info,
 			       size_t info_size)
 {
-	/*
-	 * "Expand" step of HKDF.
-	 * https://tools.ietf.org/html/rfc5869#section-2.3
-	 */
-#define HASH_LEN SHA256_DIGEST_SIZE
-	uint8_t count = 1;
-	const uint8_t *T = out_key;
-	size_t T_len = 0;
-	uint8_t T_buffer[HASH_LEN];
-	/* Number of blocks. */
-	const uint32_t N = DIV_ROUND_UP(L, HASH_LEN);
-	uint8_t info_buffer[HASH_LEN + HKDF_MAX_INFO_SIZE + sizeof(count)];
 	bool arguments_valid = false;
+	// const uint32_t N = DIV_ROUND_UP(L, HASH_LEN);
 
 	if (out_key == NULL || L == 0)
 		CPRINTS("HKDF expand: output buffer not valid.");
@@ -140,34 +132,24 @@ enum ec_error_list hkdf_expand(uint8_t *out_key, size_t L, const uint8_t *prk,
 	else if (info_size > HKDF_MAX_INFO_SIZE)
 		CPRINTF("HKDF expand: info size larger than %d bytes.\n",
 			HKDF_MAX_INFO_SIZE);
+#if 0
 	else if (N > HKDF_SHA256_MAX_BLOCK_COUNT)
 		CPRINTS("HKDF expand: output key size too large.");
+#endif
 	else
 		arguments_valid = true;
 
 	if (!arguments_valid)
 		return EC_ERROR_INVAL;
 
-	while (L > 0) {
-		const size_t block_size = L < HASH_LEN ? L : HASH_LEN;
+	int ret = HKDF_expand(out_key, L, EVP_sha256(), prk, prk_size, info,
+			      info_size);
 
-		memcpy(info_buffer, T, T_len);
-		memcpy(info_buffer + T_len, info, info_size);
-		info_buffer[T_len + info_size] = count;
-		compute_hmac_sha256(T_buffer, prk, prk_size, info_buffer,
-				    T_len + info_size + sizeof(count));
-		memcpy(out_key, T_buffer, block_size);
-
-		T += T_len;
-		T_len = HASH_LEN;
-		count++;
-		out_key += block_size;
-		L -= block_size;
+	if (ret == 1) {
+		return EC_SUCCESS;
 	}
-	OPENSSL_cleanse(T_buffer, sizeof(T_buffer));
-	OPENSSL_cleanse(info_buffer, sizeof(info_buffer));
-	return EC_SUCCESS;
-#undef HASH_LEN
+
+	return EC_ERROR_INVAL;
 }
 
 enum ec_error_list
