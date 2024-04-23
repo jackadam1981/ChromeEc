@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48341044_6428968a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8582,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-04-23T09:13:07Z",
+      "side": 1,
+      "message": "Currenlty we only use one slot. There will be only one battery config saved in CBI. I think we can consider the multiple battery configs in CBI case in the future.",
+      "parentUuid": "0a5a605d_ba019866",
+      "range": {
+        "startLine": 8582,
+        "startChar": 32,
+        "endLine": 8582,
+        "endChar": 58
+      },
+      "revId": "44bca75528896d5b4f785600c75d6c8c7e1cabf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c64141fe_a9abe1c4",
         "filename": "util/ectool.cc",
         "patchSetId": 1
