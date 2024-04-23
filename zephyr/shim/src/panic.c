@@ -14,6 +14,17 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_ctrl.h>
 
+/* Arch-specific include for arch_is_in_nested_exception */
+#if defined(CONFIG_CPU_CORTEX_M)
+#include <cortex_m/exception.h>
+#elif defined(CONFIG_CPU_AARCH32_CORTEX_R) || \
+	defined(CONFIG_CPU_AARCH32_CORTEX_A)
+#include <cortex_a_r/exception.h>
+#else
+/* Forward declare unused function for other architectures */
+bool arch_is_in_nested_exception(const struct arch_esf *esf);
+#endif
+
 /*
  * Arch-specific configuration
  *
@@ -141,6 +152,19 @@ static void copy_esf_to_panic_data(const struct arch_esf *esf,
 	PANIC_REG_LIST(PANIC_COPY_REGS, PANIC_COPY_REGS_GPR);
 }
 
+/*
+ * Returns true if the exception described by the esf
+ * is a nested exception, i.e. the exception occurred
+ * while in the interrupt context. Returns false if
+ * not able to be determined.
+ */
+static inline bool is_in_nested_exception(const struct arch_esf *esf)
+{
+	if (IS_ENABLED(CONFIG_ARCH_HAS_NESTED_EXCEPTION_DETECTION))
+		return (esf != NULL) && arch_is_in_nested_exception(esf);
+	return false;
+}
+
 void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 {
 	struct panic_data *pdata = get_panic_data_write();
@@ -177,6 +201,7 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 	/* Start system safe mode if possible */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE)) {
 		if (reason != K_ERR_KERNEL_PANIC &&
+		    !is_in_nested_exception(esf) &&
 		    start_system_safe_mode() == EC_SUCCESS) {
 			/* Returning from k_sys_fatal_error_handler will cause
 			 * the faulting thread to be aborted and resume the
