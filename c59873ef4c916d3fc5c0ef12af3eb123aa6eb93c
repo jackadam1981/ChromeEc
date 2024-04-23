@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff3392c_8ef2140d",
+        "filename": "zephyr/test/hwtest/src/crc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-23T14:51:46Z",
+      "side": 1,
+      "message": "I would recommend adding the error message with the actual value since zassert will just show `crc was not 170`.",
+      "revId": "c59873ef4c916d3fc5c0ef12af3eb123aa6eb93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

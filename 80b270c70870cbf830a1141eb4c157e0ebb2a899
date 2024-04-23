@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef82e052_2a603b10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-04-23T14:51:46Z",
+      "side": 1,
+      "message": "This is a very very long discussion that I\u0027ve been trying to take on for over a year now. I would personally like to see unit tests mixed with code in a clean directory structure similar to how Google3 does it, then integration tests in a separate directory (where the current mixed bag of tests are). I don\u0027t think we should block this CL on that because it would require a massive restructuring of the code.",
+      "parentUuid": "286b765e_e60c58f4",
+      "revId": "80b270c70870cbf830a1141eb4c157e0ebb2a899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3598ad9d_fedd1118",
         "filename": "zephyr/test/hwtest/src/crc.c",
         "patchSetId": 2
