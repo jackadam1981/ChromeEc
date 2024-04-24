@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32609f0c_a4acdea6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-04-24T22:32:09Z",
+      "side": 1,
+      "message": "Yes, that would have been 1000x too long. Initially I just had a number there (500) and was replacing it with a number that had some reasoning behind it. This constant though has been removed as I\u0027ve replaced the delay with an explicit timer",
+      "parentUuid": "298eaf28_f78e7e7d",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "4fd96f461eaf06633dfac043a88af89bef254701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddba0aa8_962e6a3c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-24T18:05:53Z",
       "side": 1,
       "message": "How about using Zephyr\u0027s timer framework instead of a counter?\n\n```\n/* Add to init routine, expiration and stop callbacks not needed */\n\nk_timer_init(\u0026typec_timer, NULL, NULL);\n\n/*...*/\npdc_src_typec_only_run()\n{\ncase SRC_TYPEC_ATTACHED_SET_SINK_PATH_OFF:\n    /* Start one shot timer */\n    k_timer_start(\u0026typec_timer, K_MSEC(PD_T_SINK_WAIT_CAP), K_NO_WAIT);\n    \ncase SRC_TYPEC_ATTACHED_DEBOUNCE:\n    if (k_timer_status_get(\u0026typec_timer) \u003e 0)\n        set SRC_TYPEC_ATTACHED_RUN;\n}\n       \npdc_snk_typec_only_exit() \n{\n    k_timer_stop(\u0026typec_timer);\n}\n```",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 29
+      },
+      "revId": "4fd96f461eaf06633dfac043a88af89bef254701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9f2bb4_76c9f5ae",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-04-24T22:32:09Z",
+      "side": 1,
+      "message": "I have modified this to use the Zephyr timer framework as you suggested. One note is that I didn\u0027t put an explicit k_timer_stop call as the src.attached or snk.attached state transitions can happen from the send_cmd or send_cmd_wait states so there is not a single location where the timer can always be stopped. Letting the timer expire only has an effect if still in either the snk_typec_only or src_typec_only states.",
+      "parentUuid": "ddba0aa8_962e6a3c",
       "range": {
         "startLine": 583,
         "startChar": 0,
