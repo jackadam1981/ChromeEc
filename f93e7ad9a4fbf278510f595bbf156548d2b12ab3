@@ -85,6 +85,52 @@
       },
       "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097c67b5_cce3234c",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T21:05:52Z",
+      "side": 1,
+      "message": "Please use the IS_ENABLED() for configs an leave this new hook function for all boards.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 6
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f63e93_610f7ec5",
+        "filename": "include/system.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T21:05:52Z",
+      "side": 1,
+      "message": "Does this need to be exported if you call it from within mpu.c?",
+      "range": {
+        "startLine": 694,
+        "startChar": 5,
+        "endLine": 694,
+        "endChar": 32
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
