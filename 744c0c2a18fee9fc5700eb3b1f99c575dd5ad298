@@ -52,6 +52,24 @@
       "parentUuid": "290c12b7_b50e41e8",
       "revId": "744c0c2a18fee9fc5700eb3b1f99c575dd5ad298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921e727e_ab44173b",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-24T18:13:03Z",
+      "side": 1,
+      "message": "Why is retimer_fw_update.c compiled in when using the PMC to PD path?",
+      "parentUuid": "e9fba97d_599b7a65",
+      "revId": "744c0c2a18fee9fc5700eb3b1f99c575dd5ad298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
