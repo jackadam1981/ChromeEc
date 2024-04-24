@@ -69,6 +69,30 @@
       },
       "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7484cd6_d728bd46",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T21:15:22Z",
+      "side": 1,
+      "message": "As in, I don\u0027t think this CL blocks CPU access to code ram, since the intention is to allow access to code ram, but block writes to code ram, right?",
+      "parentUuid": "c69bae48_9172eb90",
+      "range": {
+        "startLine": 202,
+        "startChar": 44,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
