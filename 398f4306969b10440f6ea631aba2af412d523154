@@ -62,6 +62,75 @@
       },
       "revId": "398f4306969b10440f6ea631aba2af412d523154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f825a4_1ee23df2",
+        "filename": "chip/npcx/mpu_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-24T20:24:59Z",
+      "side": 1,
+      "message": "\"RAM Lock\" isn\u0027t really utilizing the ARM MPU, right?\n\nIf it\u0027s not using the MPU, let\u0027s avoid confusion by renaming the file to \"ram_lock.h\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fed2afd_78fe91a1",
+        "filename": "test/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-24T20:24:59Z",
+      "side": 1,
+      "message": "Unit tests should be deterministic.\n\nInstead of using a random value, try [using the address of a variable](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5325938/19/test/sram_mpu_protection.c).",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aac68b3_ec77bf13",
+        "filename": "test/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-24T20:24:59Z",
+      "side": 1,
+      "message": "Don\u0027t use macros when they\u0027re not needed. Use a function instead:\n\n```\ntest_static void verify_no_write(uint32_t addr)\n{\n  TEST_ASSERT(write_verify(addr) \u003d\u003d EC_ERROR_UNKNOWN);\n  return EC_SUCCESS;\n}\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
