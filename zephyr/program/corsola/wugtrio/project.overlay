@@ -16,10 +16,11 @@
 #include "./thermistor.dtsi"
 #include "../ite_keyboard.dtsi"
 #include "../usba.dtsi"
+
 #include <dt-bindings/battery.h>
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/motionsense/utils.h>
-
+#include <cros/cbi_flash.dtsi>
 
 / {
 	batteries {
@@ -618,6 +619,7 @@
 };
 
 &i2c0{
+	/delete-node/ eeprom@50;
 	charger_bc12_port1: rt9490@53{
 		compatible = "richtek,rt9490";
 		thermistor = <&thermistor_rt9490>;
@@ -666,4 +668,29 @@
 
 &thermistor_1V8_100K_100K_4250B{
 	status = "okay";
+};
+
+&binman {
+	/delete-node/ rollback0;
+	/delete-node/ rollback1;
+
+	wp-ro {
+
+		/delete-node/ pstate;
+
+		ec-ro {
+			fmap {
+				offset =  <(0x60000 - (0x1000 * 2) - 0x400)>;
+			};
+		};
+		cbi {
+			offset = <(0x60000 - (0x1000 * 2))>;
+			size = <0x1000>;
+		};
+		pstate {
+			type = "section";
+			offset = <(0x60000 - (0x1000 * 1))>;
+			size = <0x1000>;
+		};
+	};
 };
