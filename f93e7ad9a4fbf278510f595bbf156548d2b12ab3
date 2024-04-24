@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6f898ef_3b2411c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T21:02:58Z",
+      "side": 1,
+      "message": "Can you mention in the commit message:\n\nHow does this work? When is it triggered?\n\nHow do handle the situation that Patryk mentioned, where the ROM rewrite the code ram before jumping to RW?\n\nWhy do we not lock down the MPU in pre_init?",
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fbfc935_9e7ca48c",
         "filename": "common/main.c",
         "patchSetId": 19
