@@ -46,6 +46,30 @@
       },
       "revId": "49add90c27271ff70009e00be28d083dc3518a51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df529d7c_4e961104",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-24T18:46:40Z",
+      "side": 1,
+      "message": "i\u0027ll upload the EC side implementation for review soon - i\u0027m still working\non some polish and test coverage. as for the scope of the feature - it\u0027ll\nbe (optionally) available on real hardware, including ectool and wireshark\ndissector support.\n\nthis feature is guarded by `CONFIG_USBC_PDC_TRACE_MSG`,\nso i didn\u0027t include it in this patch series.",
+      "parentUuid": "9c9fcfb7_ac09e494",
+      "range": {
+        "startLine": 937,
+        "startChar": 5,
+        "endLine": 937,
+        "endChar": 22
+      },
+      "revId": "49add90c27271ff70009e00be28d083dc3518a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
