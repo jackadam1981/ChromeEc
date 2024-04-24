@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1139f0f_014d224e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-04-24T10:03:04Z",
+      "side": 1,
+      "message": "This cherry-pick is for b/335790604.\nI only run firmware.ECSystemLocked test pass on ezkinil.",
+      "revId": "bc14f9575129da91e9764e17c5239c87d2d6d3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
