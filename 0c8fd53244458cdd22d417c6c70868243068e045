@@ -22,6 +22,29 @@
       },
       "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d805e4_144fc7bf",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-24T06:02:04Z",
+      "side": 1,
+      "message": "`queue_advance_head` triggers the `producer_ops` callback (the `usb_read()` on line 79).\n\nuse `queue_init` if you don\u0027t want this side effect.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
