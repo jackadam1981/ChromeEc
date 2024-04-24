@@ -22,6 +22,7 @@
 
 #include <zephyr/devicetree.h>
 
+
 /**
  * @brief Evaluate whether system state is OK to start the AP.
  *
@@ -41,6 +42,7 @@ bool board_ap_power_is_startup_ok(void);
 void board_ap_power_force_shutdown(void);
 
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
+#define X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS 50
 /**
  * @brief Called to transition from G3 to S5
  *

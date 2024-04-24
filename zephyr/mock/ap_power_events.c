@@ -8,3 +8,8 @@
 #include <mock/ap_power_events.h>
 
 LOG_MODULE_REGISTER(mock_ap_power_events);
+
+void mock_ap_power_ev_send_callbacks(enum ap_power_events event)
+{
+	zassert_equal(event, AP_POWER_PRE_INIT);
+}

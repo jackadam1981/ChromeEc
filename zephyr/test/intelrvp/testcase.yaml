@@ -1,0 +1,55 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+common:
+  platform_allow: native_sim
+tests:
+  intelrvp.mtlrvp.board_power:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp/board_power.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_BOARD_POWER=y
+      - CONFIG_AP_POWER_EVENTS_MOCK=y
+      - CONFIG_POWER_SIGNALS_MOCK=y
+      - CONFIG_AP_EVENTS=n
+      - CONFIG_TEST_X86_NON_DSX_PWRSEQ_MTL=y
+      - CONFIG_PLATFORM_EC_HOOKS=n
+      - CONFIG_PLATFORM_EC_HIBERNATE=n
+      - CONFIG_AP_PWRSEQ_DRIVER=n
+      
+  intelrvp.mtlrvp.mtlrvp:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp/mtlrvp.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVP=y
+      - CONFIG_TEST_MTLRVP_BOARD_ID=y
+      - CONFIG_GPIO_EMUL=y
+
+  intelrvp.mtlrvp_npcx.tcpc:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp_npcx/tcpc_gpio.dtsi
+      - boards/mtlrvp_npcx/tcpc_interrupts.dtsi
+      - boards/mtlrvp_npcx/tcpc_i2c.dtsi
+      - boards/mtlrvp_npcx/tcpc_ioex.dtsi
+      - boards/mtlrvp/usbc.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_NPCX=y
+      - CONFIG_TEST_PROJECT_TCPC=y
+      - CONFIG_PLATFORM_EC_USB_MUX=y
+      - CONFIG_EMUL=y
+      - CONFIG_GPIO_EMUL=y
+      - CONFIG_I2C_EMUL=y
+      - CONFIG_EMUL_TCPCI=y
+      - CONFIG_PLATFORM_EC_USBC=y
+      - CONFIG_PLATFORM_EC_USBC_PPC=y
+      - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
+
+      
+

@@ -11,12 +11,12 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include <zephyr/fff.h>
-
+#include <zephyr/ztest.h>
 #include <ap_power/ap_power.h>
 
 /* Mocks for ec/zephyr/include/ap_power/ap_power_events.h */
 DECLARE_FAKE_VOID_FUNC(ap_power_ev_send_callbacks, enum ap_power_events);
 
-void ap_power_ev_send_callbacks_custom_fake(enum ap_power_events event);
+void mock_ap_power_ev_send_callbacks(enum ap_power_events event);
 
 #endif /* ZEPHYR_TEST_MOCK_AP_POWER_EVENTS_H_ */
