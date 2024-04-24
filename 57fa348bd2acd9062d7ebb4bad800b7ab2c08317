@@ -22,6 +22,30 @@
       },
       "revId": "57fa348bd2acd9062d7ebb4bad800b7ab2c08317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e026d0_a6ca0d37",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-24T19:06:49Z",
+      "side": 1,
+      "message": "ah, yes... underscore is the convention here.",
+      "parentUuid": "8b7fdd77_cbfa2c8b",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "57fa348bd2acd9062d7ebb4bad800b7ab2c08317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
