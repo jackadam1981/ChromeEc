@@ -3,7 +3,11 @@
  * found in the LICENSE file.
  */
 
+#include "include/power_signals.h"
+
 #include "adc.dtsi"
 #include "fan.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dtsi"
+#include "../interrupts.dtsi"
+#include "../power_signals.dtsi"
