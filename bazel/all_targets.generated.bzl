@@ -1892,6 +1892,11 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "ptlrvp_mchp",
+        board = "ptlrvp_mchp",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "puff",
         board = "puff",
         chip = "npcx",
