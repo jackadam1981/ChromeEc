@@ -16,6 +16,52 @@
       "message": "Friendly ping.\n@tomhughes@chromium.org look forward your further comment.",
       "revId": "398f4306969b10440f6ea631aba2af412d523154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee53d11_345bbb4e",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-24T20:13:17Z",
+      "side": 1,
+      "message": "This was just copied from `mpu.c`, right? Let\u0027s re-use code instead of copy/paste.\n\nBut we may not need it based on comment below.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b825afa_97af52ea",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-24T20:13:17Z",
+      "side": 1,
+      "message": "It looks like this was just copied from `mpu.c`.\n\nDoes all of the alignment need to happen for RAM lock?\n\nCan this end up locking more than what is requested? It may be clearer if we are required to specify a valid size when trying to lock it rather than trying to calculate the \"correct size\". (And return error if requested size is not correct like the address/size alignment checks).",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
