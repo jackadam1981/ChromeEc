@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e736c0_316742d2",
+        "filename": "power/mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T16:03:53Z",
+      "side": 1,
+      "message": "nit: Do you mind rephrasing it to \"In recovery. Scheduled reboot_ap_off.\"?",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 59
+      },
+      "revId": "82810b9196c0e492b73a085fc8acffa012a15a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
