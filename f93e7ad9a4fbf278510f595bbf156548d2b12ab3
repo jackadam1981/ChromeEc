@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fbfc935_9e7ca48c",
+        "filename": "common/main.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T20:45:22Z",
+      "side": 1,
+      "message": "We need a comment about why this is not being done in pre_init.\n\n... We use system_is_locked to gate this action...This relies on flash to be functional and whatnot.",
+      "range": {
+        "startLine": 198,
+        "startChar": 44,
+        "endLine": 198,
+        "endChar": 62
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5338dc4b_b7641e2a",
+        "filename": "common/main.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T20:45:22Z",
+      "side": 1,
+      "message": "The idea behind creating these generic functions (like mpu_pre_init.. gpio_pre_init) is so that they can hook into the boot process, unconditionally, and hide the messy logic from the main routine.\n\nAll of these macros conditionals and logic should be inside this hook function. This hook function should have documentation about why it exists, like mentioning that it is designed to be run after other pre_init initialization functions.",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 15
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce6cf30_4b9d0a21",
+        "filename": "common/main.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T20:45:22Z",
+      "side": 1,
+      "message": "Is this accidental?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
