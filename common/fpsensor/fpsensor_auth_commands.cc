@@ -323,11 +323,9 @@ static enum ec_status unlock_template(uint16_t idx)
 		      global_context.fp_enc_buffer.size_bytes());
 #endif
 
-	std::copy(fp_template[idx], fp_template[idx] + enc_template.size(),
-		  enc_template.begin());
-	std::copy(global_context.fp_positive_match_salt[idx],
-		  global_context.fp_positive_match_salt[idx] + enc_salt.size(),
-		  enc_salt.begin());
+	std::ranges::copy(fp_template[idx], enc_template.begin());
+	std::ranges::copy(global_context.fp_positive_match_salt[idx],
+			  enc_salt.begin());
 
 	CleanseWrapper<std::array<uint8_t, SBP_ENC_KEY_LEN> > key;
 	if (derive_encryption_key(key, enc_info.encryption_salt,
