@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f656df4_a8524a8a",
+        "filename": "zephyr/program/intelrvp/src/dc_jack.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-04-24T20:19:17Z",
+      "side": 1,
+      "message": "Please enable interruption:\n```\ngpio_enable_interrupt(GPIO_DC_JACK_PRESENT);\n```\nSimilarly make sure gpio interruption is added to `\"cros-ec,gpio-interrupts\"`.",
+      "revId": "12344c6a607670b1a7baf16b5ddc787143d08a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
