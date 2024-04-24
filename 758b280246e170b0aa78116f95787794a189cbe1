@@ -22,6 +22,29 @@
       },
       "revId": "758b280246e170b0aa78116f95787794a189cbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24486314_f0062281",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-24T18:24:05Z",
+      "side": 1,
+      "message": "What\u0027s the long term plan for getting the mux configuration for debugging?\n\nUsing a host command to ask the EC to query a vendor specific command from the PDC introduces many surfaces for bugs, while the PMC should already know this information directly.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "758b280246e170b0aa78116f95787794a189cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
