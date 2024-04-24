@@ -187,6 +187,7 @@ register_intelrvp_project(
         here / "ptlrvp/ptlerb_mchp/project.overlay",
     ],
     extra_kconfig_files=[
+        here / "zephyr_ap_pwrseq.conf",
         here / "ptlrvp/ptlerb_mchp/project.conf",
     ],
 )
