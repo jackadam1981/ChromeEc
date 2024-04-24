@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ace19c_d735d580",
+        "filename": "common/panic_output.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-24T16:49:48Z",
+      "side": 1,
+      "message": "is the \"else\" case really needed?",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 1
+      },
+      "revId": "4206ef1485bdc3564d98aeedee6241a6bfd11551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3447c0e1_fb265f86",
+        "filename": "common/panic_output.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-24T16:49:48Z",
+      "side": 1,
+      "message": "suggestion:\n```\nDECLARE_CONSOLE_COMMAND(crash, command_crash,\n\t\t\t\"[assert | divzero | udivzero | stack\"\n\t\t\t\" | unaligned | watchdog | hang | null]\",\n\t\t\t\"Crash the system (for testing)\"\n#ifdef CONFIG_CMD_CRASH_NESTED\n\t\t\t\"Repeat argument for nested crashes.\"\n#endif /* CONFIG_CMD_CRASH_NESTED */\n\t\t\t );\n```",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 36
+      },
+      "revId": "4206ef1485bdc3564d98aeedee6241a6bfd11551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
