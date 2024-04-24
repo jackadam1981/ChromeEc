@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa5d799_d86291b3",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T20:54:57Z",
+      "side": 1,
+      "message": "Can you add a bit more to the comment?\n\nLike something that mentions these points:\n\n* Some devices execute code from RAM.\n* On these devices, this mechanism protects the code ram from modification using the MPU.\n* The MPU protections are setup on boot.",
+      "range": {
+        "startLine": 1851,
+        "startChar": 0,
+        "endLine": 1851,
+        "endChar": 22
+      },
+      "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
