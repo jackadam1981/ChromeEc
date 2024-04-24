@@ -184,12 +184,15 @@ register_intelrvp_project(
     project_name="ptlerb_mchp",
     chip="mec172x/mec172x_nsz/mec1727",
     extra_dts_overlays=[
+        here / "ptlrvp/interrupts.dtsi",
         here / "ptlrvp/ptlerb_mchp/adc.dtsi",
         here / "ptlrvp/ptlerb_mchp/fan.dtsi",
         here / "ptlrvp/ptlerb_mchp/gpio.dtsi",
         here / "ptlrvp/ptlerb_mchp/i2c.dtsi",
+        here / "ptlrvp/ptlerb_mchp/power_signals.dtsi",
     ],
     extra_kconfig_files=[
+        here / "zephyr_ap_pwrseq.conf",
         here / "ptlrvp/ptlerb_mchp/project.conf",
     ],
 )
