@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10dcb0c4_af4113c8",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d4319d_0dac23f6",
+      "range": {
+        "startLine": 2150,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 30
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abcf1d5_f4ccdeab",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea05711_dad3913a",
+      "range": {
+        "startLine": 2151,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 31
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07b02349_4a9f257b",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-04-23T15:47:06Z",
       "side": 1,
       "message": "This API doesn\u0027t seem to fit with the interface of this driver. Would it make sense to move this to a new driver file called ```ucsi_pdc_rts54xx.c```?",
+      "range": {
+        "startLine": 2153,
+        "startChar": 11,
+        "endLine": 2153,
+        "endChar": 32
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75955a6d_3cecd428",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "It\u0027s intended not to be used by PDM, which interacts with a PDC asynchronously. Added _sync to the name. I think pdc_rts54xx.c is a better place (especially for get_state, rts54_post_command, LOG_MODULE_REGISTER).",
+      "parentUuid": "07b02349_4a9f257b",
       "range": {
         "startLine": 2153,
         "startChar": 11,
@@ -136,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2317bc9_4680db4d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "\u003e This duplicates code in the driver and subsystem. Is there a reason why this needs to be done?\n\nrts54_execute_command is a blocking command executer. (Renamed to rts54_execute_command_sync.) It allows a PDC driver not to worry about how to route a CC event back to the caller. uPPM also works with blocking smbus APIs. \n\n\u003e I haven\u0027t reviewed the full CL stack. How is synchronization between pdc_power_mgmt.c and the ucsi/rts54xx.c driver managed?\n\nPDM isn\u0027t supposed to use rts54_execute_command. When PDM is accessing a PDC, PPM will get -EBUSY and when PPM is accessing a PDC, PDM will get -EBUSY.\n\n\u003e public_api_block in pdc_power_mgmt.c is already setup to generate a blocking PDC command.\n\nThat was explored as the serial architecture described in https://docs.google.com/document/d/1pNZuFHzxrFhKH3xy1_F61dySB9c9Ttu4IZRPhD8KmNA/edit?resourcekey\u003d0-JBLbWckIUZyPMwb3PbOYtw\u0026tab\u003dt.0#bookmark\u003did.h79q0zj86q07. An observation is transitioning to the final architecture from the parallel architecture is more seamless than transitioning from the serial architecture: https://docs.google.com/document/d/1pNZuFHzxrFhKH3xy1_F61dySB9c9Ttu4IZRPhD8KmNA/edit?resourcekey\u003d0-JBLbWckIUZyPMwb3PbOYtw\u0026tab\u003dt.0#bookmark\u003did.5qbxnvh3gfr1.",
+      "parentUuid": "257cd2e1_019bf8e5",
+      "range": {
+        "startLine": 2176,
+        "startChar": 1,
+        "endLine": 2200,
+        "endChar": 11
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8a5f746_5c4aa43d",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 30
@@ -147,6 +243,30 @@
       "writtenOn": "2024-04-23T15:47:06Z",
       "side": 1,
       "message": "This seems too generic, could you give a more descriptive name?",
+      "range": {
+        "startLine": 2233,
+        "startChar": 2,
+        "endLine": 2233,
+        "endChar": 17
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684b112c_3fae430a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2233,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a5f746_5c4aa43d",
       "range": {
         "startLine": 2233,
         "startChar": 2,

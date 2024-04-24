@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fdfabec_d1b63204",
+        "filename": "zephyr/subsys/ucsi/rts54xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "ppm_common supports only one instance of ppm_common_device:\n\n     dev-\u003epd-\u003eexecute_cmd(dev-\u003epd-\u003edev, control, message_in);\n\nSo, making lpm_driver route commands to PDCs seems reasonable.",
+      "parentUuid": "855f135a_05777e74",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "8d310845453bab5eb67018a452b9fb163287e88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e531cd29_ab343a4c",
         "filename": "zephyr/subsys/ucsi/rts54xx.c",
         "patchSetId": 31
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-23T23:44:42Z",
       "side": 1,
       "message": "Nit - These macros aren\u0027t needed and don\u0027t help readability in my opinion.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "8d310845453bab5eb67018a452b9fb163287e88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496b5e98_2aded5e3",
+        "filename": "zephyr/subsys/ucsi/rts54xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-24T19:23:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "e531cd29_ab343a4c",
       "range": {
         "startLine": 22,
         "startChar": 0,
