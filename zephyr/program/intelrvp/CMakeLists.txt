@@ -12,7 +12,7 @@ cros_ec_library_include_directories("${PLATFORM_EC}/driver/charger")
 cros_ec_library_include_directories("${PLATFORM_EC}/driver/ppc")
 cros_ec_library_include_directories("${PLATFORM_EC}/driver/tcpm")
 cros_ec_library_include_directories("${PLATFORM_EC}/driver/usb_mux")
-zephyr_library_sources("src/intelrvp.c")
+#zephyr_library_sources("src/intelrvp.c")
 zephyr_library_sources("src/intel_rvp_board_id.c")
 
 if((DEFINED CONFIG_BOARD_ADLRVP_MCHP) OR (DEFINED CONFIG_BOARD_ADLRVP_NPCX))
@@ -30,4 +30,8 @@ if((DEFINED CONFIG_BOARD_MTLRVP_M1723) OR (DEFINED CONFIG_BOARD_MTLRVP_MCHP) OR
   zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPMV2 "src/chg_usb_pd_mecc_1_1.c")
   zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPMV2 "src/chg_usb_tcpc.c")
   zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT "src/dc_jack.c")
+endif()
+
+if(DEFINED CONFIG_BOARD_PTLERB_MCHP)
+  add_subdirectory(ptlrvp)
 endif()
