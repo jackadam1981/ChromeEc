@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60aa3299_e364a55c",
+        "filename": "zephyr/program/corsola/veluza/src/keyboard_customization.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-24T06:19:14Z",
+      "side": 1,
+      "message": "This is for 8042 keyboard only.\n\nYou might need to modify the device tree in kernel instead.",
+      "revId": "876eb6e9b3e0afec7d5cee1be14e7bd4557f858f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
