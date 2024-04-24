@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0585b86a_e4eb1bb4",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-24T18:20:43Z",
+      "side": 1,
+      "message": "This duplicates logic from pd_task_intel_altmode.c\n\nI suggest wrapping this logic into a macro defined in either usb_mux.h or intel_altmode.h",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "758b280246e170b0aa78116f95787794a189cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
