@@ -22,6 +22,30 @@
       },
       "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26575e96_92d18cfc",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-04-24T20:57:33Z",
+      "side": 1,
+      "message": "* go/doc-tips/codecomments1#dont-comment-the-obvious\n* go/tott/563",
+      "parentUuid": "0fa5d799_d86291b3",
+      "range": {
+        "startLine": 1851,
+        "startChar": 0,
+        "endLine": 1851,
+        "endChar": 22
+      },
+      "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
