@@ -29,6 +29,8 @@ def register_intelrvp_project(
     if project_name.startswith("mtlrvp"):
         kconfig_files.append(here / "mtlrvp/prj.conf")
         dts_overlays.append(here / "adlrvp/battery.dts")
+    if project_name.startswith("ptlerb"):
+        kconfig_files.append(here / "ptlrvp/program.conf")
     kconfig_files.extend(extra_kconfig_files)
     dts_overlays.extend(extra_dts_overlays)
 
@@ -178,6 +180,16 @@ register_intelrvp_project(
         here / "mtlrvp/pd.conf",
     ],
 )
+register_intelrvp_project(
+    project_name="ptlerb_mchp",
+    chip="mec172x/mec172x_nsz/mec1727",
+    extra_dts_overlays=[
+        here / "ptlrvp/ptlerb_mchp/project.overlay",
+    ],
+    extra_kconfig_files=[
+        here / "ptlrvp/ptlerb_mchp/project.conf",
+    ],
+)
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
@@ -187,3 +199,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="mtlrvpp_m1723", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="mtlrvpp_mchp", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="mtlrvpp_npcx", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="mtlrvpp_pd", addr=0x7FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ptlerb_mchp", addr=0x7FFE0)
