@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a30fb43_9f217d10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T20:21:29Z",
+      "side": 1,
+      "message": "retimer: Enable retimer f/w update flow for PMC-\u003ePD interface",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fceed00f_7e317464",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T20:21:29Z",
+      "side": 1,
+      "message": "usb_mux.c needs to be disabled for CONFIG_USBC_INTEL_ALTMODE.\nHow about adding this as inline function in pd_task_intel_altmode.h ?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 15
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
