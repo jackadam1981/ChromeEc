@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53414113_e93c2261",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-25T20:27:04Z",
+      "side": 1,
+      "message": "No, because `cmsis_dap_unwind_requested()` could become true while `cmsis_dap_dispatch()` was executing, so both if statements could be taken.\n\nI have re-arranged the loop slightly, in an attempt to make the logic more clear.",
+      "parentUuid": "fa6bab67_96a20864",
+      "range": {
+        "startLine": 667,
+        "startChar": 2,
+        "endLine": 673,
+        "endChar": 37
+      },
+      "revId": "1ffaa87e14eac6751130578ed55ff7e9dff7d225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792c7757_a97ad0b9",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-23T16:42:23Z",
       "side": 1,
       "message": "do you really need these early returns since the blocking function will return immediately?\n\nThe number of gpios really isn\u0027t that much\n\nSame question for all of the other checks after blocking calls",
+      "range": {
+        "startLine": 1560,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 10
+      },
+      "revId": "1ffaa87e14eac6751130578ed55ff7e9dff7d225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ff25f6_0b216e12",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-25T20:27:04Z",
+      "side": 1,
+      "message": "I do see your point in the cases where the code is putting data in the output queue, we can just continue the control flow knowing that further calls will also return immediately.\n\nBut for the code reading from USB I feel it could be dangerous, if some future developer copies based on this style, without realizing that they could be working with uninitialized data.\n\nYou could conter that argument by saying that this is protocol code, which should be able to cope with any sequence of bytes coming via USB, so uninitialized data is not any worse.\n\nI have changed the logic to have just a single check for `cmsis_dap_unwind_requested()` in each method, after all input data has been gathered, before the main processing takes place.",
+      "parentUuid": "792c7757_a97ad0b9",
       "range": {
         "startLine": 1560,
         "startChar": 2,
