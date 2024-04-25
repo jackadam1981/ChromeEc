@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08d56b1_cc289ff3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T19:23:35Z",
+      "side": 1,
+      "message": "is it possible to make this file common for ptlrvp by defining marcos something like below in ptlerb_mchp? \n#define PWR_EN_PP3300_S5 MCHP_GPIO_DECODE_226\n\nwith this, we don\u0027t have to redefine this for other ECs over MECC?",
+      "revId": "3fbf79f1272580ab6ad3d87cfc6e5f483d0a071c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924808d0_35a4bd9f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T19:23:35Z",
+      "side": 1,
+      "message": "this should go under \nzephyr/program/intelrvp/ptlrvp/program.conf",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "3fbf79f1272580ab6ad3d87cfc6e5f483d0a071c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
