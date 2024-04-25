@@ -52,6 +52,24 @@
       "parentUuid": "559ac5ea_58d0340b",
       "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ceebbd4_e7f67cab",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-25T21:15:32Z",
+      "side": 1,
+      "message": "@hesling@chromium.org and I spoke today. He thinks that his board just has a lower baseline than our boards, but will post some numbers from a run on his board.\n\nI\u0027m ok with expanding the range to account for board variance and avoid false positives; we just need to document that we know we haven\u0027t been rigorous in trying to define the range so that when someone in the future looks at it, they don\u0027t go through the same questions of \"why is it set like this?\".\n\nIt would be nice if we had a past case of power regression to see if it would still be caught with the expanded range. The only one I remember recently was http://b/329908048, and it was only caught by the `sleep` version of the test; it must have still fallen within the current expected range for idle.",
+      "parentUuid": "b54ba2ec_a8e358de",
+      "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
