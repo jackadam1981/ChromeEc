@@ -213,7 +213,7 @@ get_model_name() {
   echo "Getting model name." 1>&2
   model_name="$(cros_config / name)"
   if [[ -z "${model_name}" ]]; then
-    return 1
+    return 2
   fi
 
   echo "${model_name}"
