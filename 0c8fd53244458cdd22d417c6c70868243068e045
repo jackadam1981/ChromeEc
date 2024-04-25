@@ -45,6 +45,54 @@
       },
       "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2f857a_108d9bfa",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-25T20:26:44Z",
+      "side": 1,
+      "message": "It would be weird for the USB host to be attempting to transmit data via the USB interface, to the point of blocking as the UART is slower, and then simultaneously request that the UART transmission queue should be cleared.\n\nIf we do not invoke the producer_ops callback, though, then the endpoint may never be able to receive data again, as it is left in a NAK state, and will never receive another callback to indicate that more space has become available in the queue.  Because of that, I feel that the best thing to do is in fact to have the callback invoked.",
+      "parentUuid": "d6d805e4_144fc7bf",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9700973b_831a64b7",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-25T20:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d55509dd_c0bc8942",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 57
+      },
+      "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
