@@ -88,6 +88,24 @@
       "parentUuid": "921e727e_ab44173b",
       "revId": "744c0c2a18fee9fc5700eb3b1f99c575dd5ad298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0090b19b_18bbb4b4",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-25T13:45:23Z",
+      "side": 1,
+      "message": "I think retimer_fw_update.c is still needed to support retimer firmware update.\nI have moved the changes to new file.",
+      "parentUuid": "407871b4_20943da6",
+      "revId": "744c0c2a18fee9fc5700eb3b1f99c575dd5ad298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
