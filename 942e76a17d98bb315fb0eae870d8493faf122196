@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e955b959_991dcbfb",
+        "filename": "zephyr/test/pdc/src/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-25T15:51:38Z",
+      "side": 1,
+      "message": "How about an enum here?  Makes it easier to extend the header in the future.\n```\nenum pdc_header_byte {\n    LINK_HDR_PORT \u003d 0,\n    ...\n    LINK_HDR_SIZE\n}\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "942e76a17d98bb315fb0eae870d8493faf122196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe911ad_72e294c0",
+        "filename": "zephyr/test/pdc/src/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-25T15:51:38Z",
+      "side": 1,
+      "message": "Can you implement this has an FFF fake?  It will make it more obvious that this implementation is only part of the unit tests.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "942e76a17d98bb315fb0eae870d8493faf122196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc0ee8f_4cd69a41",
+        "filename": "zephyr/test/pdc/src/util_pcap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-25T15:51:38Z",
+      "side": 1,
+      "message": "Where does this file get created?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "942e76a17d98bb315fb0eae870d8493faf122196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
