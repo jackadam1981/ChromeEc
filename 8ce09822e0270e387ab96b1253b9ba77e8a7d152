@@ -45,6 +45,30 @@
       },
       "revId": "8ce09822e0270e387ab96b1253b9ba77e8a7d152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf5ce07_0e13440f",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-25T19:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3599c01a_d683189e",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 0
+      },
+      "revId": "8ce09822e0270e387ab96b1253b9ba77e8a7d152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
