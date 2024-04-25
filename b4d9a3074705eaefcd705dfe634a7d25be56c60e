@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1f0be3_660dc20c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-25T23:34:03Z",
+      "side": 1,
+      "message": "When I make this change and run\n\n```\n strings build/helipilot/ec.bin | grep boringssl\n``` \n\nI still get a bunch of paths:\n\n``` \n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/oct.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bn/bn.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bn/random.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/scalar.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/simple.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/modes/ctr.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bn/exponentiation.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/../internal.h\n/mnt/host/source/src/third_party/boringssl/crypto/engine/engine.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/p256.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ecdh/ecdh.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/ec_key.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bn/div.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/sha/sha256.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/felem.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bn/bytes.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/cipher/aead.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/cipher/e_aes.c\n/mnt/host/source/src/third_party/boringssl/crypto/mem.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/md4/../digest/md32_common.h\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bn/montgomery.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/ec.c\n/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/ec/wnaf.c\n```\n\nI thought we were stripping this out [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/third_party/boringssl/boringssl-toolchain.cmake;l\u003d13-18;drc\u003da5171b272b59c859ed130160d5d77ea816b0511b). Any ideas on why this isn\u0027t working?",
+      "revId": "b4d9a3074705eaefcd705dfe634a7d25be56c60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
