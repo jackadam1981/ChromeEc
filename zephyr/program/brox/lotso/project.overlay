@@ -52,3 +52,11 @@
 &gpio_ec_i2c_pmc_pd_int_odl {
 	no-auto-init;
 };
+
+/* Disable PDC DATA path I2C */
+&i2c_i2c_ec_pmc_pd {
+	status = "disabled";
+};
+&i2c3 {
+	status = "disabled";
+};
