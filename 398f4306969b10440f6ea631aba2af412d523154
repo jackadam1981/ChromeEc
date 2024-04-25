@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "441c326a_a586b2e5",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-04-25T02:57:15Z",
+      "side": 1,
+      "message": "Each bit of the LOCK BLOCK register in NPCX will lock a specific range (EX. Set RAM_WLK_ADR_58.WLK_SK0 will lock 0x10058000 - 0x10058FFF).\n \nThus, the alignment is needed for the RAM lock. If it does not do the alignment check, it will lock more than what is requested. \n\nIn addition, this function intends to know which bit of the lock block register needs to be set instead of calculating the \"correct size\".",
+      "parentUuid": "9b825afa_97af52ea",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7f825a4_1ee23df2",
         "filename": "chip/npcx/mpu_chip.h",
         "patchSetId": 4
