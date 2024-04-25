@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d071a530_9b501e98",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-25T14:45:05Z",
+      "side": 1,
+      "message": "This should be done in pdc_subsys_init",
+      "range": {
+        "startLine": 1814,
+        "startChar": 1,
+        "endLine": 1814,
+        "endChar": 13
+      },
+      "revId": "ed2c5bf2aa8449e432e69133871ee2906d871b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
