@@ -111,16 +111,6 @@ test_mockable void compute_hmac_sha256(uint8_t *output, const uint8_t *key,
 	std::copy_n(buf.data(), output_len, output);
 }
 
-static void hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size,
-			 const uint8_t *ikm, size_t ikm_size)
-{
-	/*
-	 * Derive a key with the "extract" step of HKDF
-	 * https://tools.ietf.org/html/rfc5869#section-2.2
-	 */
-	compute_hmac_sha256(prk, salt, salt_size, ikm, ikm_size);
-}
-
 enum ec_error_list hkdf_expand(uint8_t *out_key, size_t L, const uint8_t *prk,
 			       size_t prk_size, const uint8_t *info,
 			       size_t info_size)
@@ -163,7 +153,6 @@ derive_positive_match_secret(std::span<uint8_t> output,
 {
 	enum ec_error_list ret;
 	uint8_t ikm[IKM_SIZE_BYTES];
-	uint8_t prk[SHA256_DIGEST_SIZE];
 	static const char info_prefix[] = "positive_match_secret for user ";
 	uint8_t info[sizeof(info_prefix) - 1 + sizeof(user_id)];
 
@@ -180,18 +169,15 @@ derive_positive_match_secret(std::span<uint8_t> output,
 		return ret;
 	}
 
-	/* "Extract" step of HKDF. */
-	hkdf_extract(prk, input_positive_match_salt.data(),
-		     input_positive_match_salt.size(), ikm, sizeof(ikm));
-	OPENSSL_cleanse(ikm, sizeof(ikm));
-
 	memcpy(info, info_prefix, strlen(info_prefix));
 	memcpy(info + strlen(info_prefix), user_id, sizeof(user_id));
 
-	/* "Expand" step of HKDF. */
-	ret = hkdf_expand(output.data(), output.size(), prk, sizeof(prk), info,
-			  sizeof(info));
-	OPENSSL_cleanse(prk, sizeof(prk));
+	if (!HKDF(output.data(), output.size(), EVP_sha256(), ikm, sizeof(ikm),
+		  input_positive_match_salt.data(),
+		  input_positive_match_salt.size(), info, sizeof(info))) {
+		CPRINTS("Failed to perform HKDF");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	/* Check that secret is not full of 0x00 or 0xff. */
 	if (bytes_are_trivial(output.data(), output.size())) {
