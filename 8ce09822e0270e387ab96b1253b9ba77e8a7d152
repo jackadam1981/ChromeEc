@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d5feac_fd8415f5",
+        "filename": "zephyr/program/brox/src/suspend_resume.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-25T19:59:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5f06af8f_01182f85",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 39
+      },
+      "revId": "8ce09822e0270e387ab96b1253b9ba77e8a7d152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3599c01a_d683189e",
