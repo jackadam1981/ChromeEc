@@ -1444,7 +1444,7 @@ int cmd_flash_erase(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("done.\n");
+	printf("The process is done.\n");
 	return 0;
 }
 
