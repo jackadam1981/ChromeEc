@@ -33,6 +33,24 @@
       "message": "Is `Cq-Depend` needed for this change?",
       "revId": "5095da8ba20c331b5f7785a74d6fbd0d2fa383a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e0aecf_5f3d91ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-04-25T08:04:26Z",
+      "side": 1,
+      "message": "Yes, after third-party merge the sha v2 driver CLs, I will create a enable sha0 node CL for roach. I tested on roach, after enable the sha v2 driver, it can save about 465ms ([Verifying RW image] -\u003e [RW verify OK]) on computing hash.",
+      "parentUuid": "67520b43_45166f8e",
+      "revId": "5095da8ba20c331b5f7785a74d6fbd0d2fa383a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
