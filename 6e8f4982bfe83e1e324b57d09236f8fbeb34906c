@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5f122b_e323e3af",
+        "filename": "util/preupload/lib.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-04-25T13:15:07Z",
+      "side": 1,
+      "message": "`str` is implied by formatting it into an f-string",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5f7daa6b_a663686f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/preupload/lib.py",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "        raise Exception(f\"filename \u003d {filename}\") from err\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e8f4982bfe83e1e324b57d09236f8fbeb34906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee79648_20226f49",
+        "filename": "util/preupload/lib.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-04-25T13:15:07Z",
+      "side": 1,
+      "message": "the pre-upload framework is designed to handle this for you.  it passes the files changed as `PRESUBMIT_FILES`.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 79
+      },
+      "revId": "6e8f4982bfe83e1e324b57d09236f8fbeb34906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
