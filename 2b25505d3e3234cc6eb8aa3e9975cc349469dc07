@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d00fad_ca411b7f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/adc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T18:59:13Z",
+      "side": 1,
+      "message": "nit: Add these in separate CL and enable temp sensors along with it",
+      "revId": "2b25505d3e3234cc6eb8aa3e9975cc349469dc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77e1374_02ac1944",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/fan.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T18:59:13Z",
+      "side": 1,
+      "message": "nit: Add these in separate CL and enable fan along with it",
+      "revId": "2b25505d3e3234cc6eb8aa3e9975cc349469dc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c360b686_e9385e13",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T18:59:13Z",
+      "side": 1,
+      "message": "this is a different signal (PCH-INTR for MKBP), pls remove",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "2b25505d3e3234cc6eb8aa3e9975cc349469dc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2f0a7e_3c8b3aad",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T18:59:13Z",
+      "side": 1,
+      "message": "name is slightly confusing on RVP. Its a Notebook mode indication from ISH to EC. Refer Rex/Brox code to use correct name",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "2b25505d3e3234cc6eb8aa3e9975cc349469dc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e93f95_ba584b9e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T18:59:13Z",
+      "side": 1,
+      "message": "how about listing all the GPIOs in the order they appear in schematics?\nComment the signals which are internally configured\nex: I2C, eSPI, Keyboard",
+      "revId": "2b25505d3e3234cc6eb8aa3e9975cc349469dc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f72fd00_2cd33fa5",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T18:59:13Z",
+      "side": 1,
+      "message": "nit: Add these in separate CL",
+      "revId": "2b25505d3e3234cc6eb8aa3e9975cc349469dc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
