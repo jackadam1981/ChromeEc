@@ -22,6 +22,30 @@
       },
       "revId": "cd6b65d4d46f44c73bef5baa87d02de9a6810611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee67235_3b442252",
+        "filename": "zephyr/program/intelrvp/src/dc_jack.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-25T04:00:44Z",
+      "side": 1,
+      "message": "This seems correct to me. Default is 60W.\nWe have to change the CONFIG_PLATFORM_EC_PD_MAX_POWER_MW in board file to map the RVP requirements (100W)\n\nMay be rename to CONFIG_PLATFORM_EC_PD_MAX_POWER_MW",
+      "parentUuid": "68e594b2_51c55922",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "cd6b65d4d46f44c73bef5baa87d02de9a6810611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
