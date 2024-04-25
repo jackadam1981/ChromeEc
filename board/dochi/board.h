@@ -13,6 +13,10 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/* Heavy I2C communication as POR, increase WDT expired time */
+#undef CONFIG_WATCHDOG_PERIOD_MS
+#define CONFIG_WATCHDOG_PERIOD_MS 10000
+
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
