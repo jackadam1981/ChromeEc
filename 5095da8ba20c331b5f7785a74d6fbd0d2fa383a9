@@ -51,6 +51,24 @@
       "parentUuid": "67520b43_45166f8e",
       "revId": "5095da8ba20c331b5f7785a74d6fbd0d2fa383a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "096cc43a_b5ac95d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-04-25T08:10:49Z",
+      "side": 1,
+      "message": "Probably no, this CL should merge first, then third-party cherry-pick CLs.",
+      "parentUuid": "1d4dccc3_4900a9fb",
+      "revId": "5095da8ba20c331b5f7785a74d6fbd0d2fa383a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
