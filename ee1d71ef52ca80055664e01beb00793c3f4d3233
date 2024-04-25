@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0cb945_ef994c2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2024-04-25T00:36:17Z",
+      "side": 1,
+      "message": "should we still need to use the CONFIG_KEYBOARD_CUSTOMIZATION?\n\nI checked the function key location is the same as the common code, we only need to update the actual-key-mask.\n\nPlease confirm and remove CONFIG_KEYBOARD_CUSTOMIZATION if unnecessary.",
+      "revId": "ee1d71ef52ca80055664e01beb00793c3f4d3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
