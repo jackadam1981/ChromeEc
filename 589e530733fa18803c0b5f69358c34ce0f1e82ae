@@ -16,6 +16,24 @@
       "message": "Pending on fast forward cehcking",
       "revId": "589e530733fa18803c0b5f69358c34ce0f1e82ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85624a53_559eb1fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-04-25T03:47:58Z",
+      "side": 1,
+      "message": "I mean cherry-picking to FW branch, not main.",
+      "parentUuid": "4d39114e_6815c21c",
+      "revId": "589e530733fa18803c0b5f69358c34ce0f1e82ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
