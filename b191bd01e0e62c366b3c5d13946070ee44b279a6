@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d580bc85_289732d8",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-26T22:43:52Z",
+      "side": 1,
+      "message": "suggestion:\nHandle return from the exception handler, after the task was removed from the scheduler. This time `task disable` function will be executed in the task context, to force task switch.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 50
+      },
+      "revId": "b191bd01e0e62c366b3c5d13946070ee44b279a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
