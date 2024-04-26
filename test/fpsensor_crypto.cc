@@ -6,6 +6,8 @@
 #include "compile_time_macros.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
+#include "openssl/evp.h"
+#include "openssl/hkdf.h"
 
 #include <array>
 #include <vector>
@@ -293,7 +295,6 @@ test_static int test_hkdf_expand(void)
 		}
 	};
 
-	std::array<uint8_t, SHA256_DIGEST_SIZE> unused_output{};
 
 	const std::array test_vectors = { test_vector1, test_vector2,
 					  test_vector3 };
@@ -302,21 +303,25 @@ test_static int test_hkdf_expand(void)
 		const auto &expected_okm = test_vector.okm;
 		std::vector<uint8_t> actual_okm(expected_okm.size());
 
-		TEST_ASSERT(hkdf_expand(actual_okm.data(), actual_okm.size(),
-					test_vector.prk.data(),
-					test_vector.prk.size(),
-					test_vector.info.data(),
-					test_vector.info.size()) == EC_SUCCESS);
+		TEST_EQ(HKDF(actual_okm.data(), actual_okm.size(), EVP_sha256(),
+			     test_vector.ikm.data(), test_vector.ikm.size(),
+			     test_vector.salt.data(), test_vector.salt.size(),
+			     test_vector.info.data(), test_vector.info.size()),
+			1, "%d");
+
 		TEST_ASSERT_ARRAY_EQ(expected_okm.data(), actual_okm.data(),
 				     expected_okm.size());
 	}
 
 	/* OKM size too big. */
-	TEST_ASSERT(hkdf_expand(unused_output.data(), 256 * SHA256_DIGEST_SIZE,
-				test_vector1.prk.data(),
-				test_vector1.prk.size(),
-				test_vector1.info.data(),
-				test_vector1.info.size()) == EC_ERROR_INVAL);
+	std::array<uint8_t, 256 * SHA256_DIGEST_SIZE> unused_output{};
+	const auto &test_vector = test_vector1;
+	TEST_EQ(HKDF(unused_output.data(), unused_output.size(), EVP_sha256(),
+		     test_vector.ikm.data(), test_vector.ikm.size(),
+		     test_vector.salt.data(), test_vector.salt.size(),
+		     test_vector.info.data(), test_vector.info.size()),
+		0, "%d");
+
 	return EC_SUCCESS;
 }
 
