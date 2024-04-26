@@ -70,6 +70,30 @@
       },
       "revId": "4a90a03582c945462c33a5b85a9d9f52c0281a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba553df8_6cf022d7",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-04-26T08:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f64de7_42e7da2c",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "4a90a03582c945462c33a5b85a9d9f52c0281a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
