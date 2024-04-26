@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6d90783_5e3cb7a1",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T15:59:09Z",
+      "side": 1,
+      "message": "This should be `!IS_ENABLED(CONFIG_PLATFORM_EC_USBC_SS_MUX)`",
+      "range": {
+        "startLine": 339,
+        "startChar": 19,
+        "endLine": 339,
+        "endChar": 44
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b63331_9f00a7af",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T15:59:09Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USB_PD_CONTROLLER guaranteed to be enabled when this file is compiled.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/subsys/CMakeLists.txt;l\u003d6",
+      "range": {
+        "startLine": 340,
+        "startChar": 18,
+        "endLine": 340,
+        "endChar": 54
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fceed00f_7e317464",
         "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
         "patchSetId": 13
