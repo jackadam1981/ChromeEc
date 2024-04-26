@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4a10821_66582d72",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T17:17:06Z",
+      "side": 1,
+      "message": "This is true as it is written today. We should add these comments here why we don\u0027t need to use a mutex since this reasoning may not be valid after a refactor.",
+      "parentUuid": "9fc74d86_e8cf5c14",
+      "revId": "3468ac04bba5ced858e1ae579812c61ab130a5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0e60851_efc71971",
         "filename": "board/hyperdebug/cmsis-dap.c",
         "patchSetId": 6
