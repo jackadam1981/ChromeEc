@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832300bf_af4c986a",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-26T18:02:47Z",
+      "side": 1,
+      "message": "EC style now prefers \n\n```\nif (IS_ENABLED(CONFIG_RAM_PROTECT) {\n ...\n}\n```",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 31
+      },
+      "revId": "296d7a9f2fe04bc7989609d56bc5b5820fdba809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5403a9_56df392f",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-26T18:02:47Z",
+      "side": 1,
+      "message": "It would be clearer as:\n\n```\ntest_static bool write_succeeds(uint32_t addr)\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "296d7a9f2fe04bc7989609d56bc5b5820fdba809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
