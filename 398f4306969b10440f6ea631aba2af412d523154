@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8a9b44_c9e00bd4",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-04-26T06:24:33Z",
+      "side": 1,
+      "message": "Done. Re-use the code from mpu.c.",
+      "parentUuid": "8ee53d11_345bbb4e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b825afa_97af52ea",
@@ -111,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4537621b_f924ff87",
+        "filename": "chip/npcx/mpu_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-04-26T06:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f825a4_1ee23df2",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fed2afd_78fe91a1",
@@ -134,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f96c74_18554086",
+        "filename": "test/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-04-26T06:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fed2afd_78fe91a1",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aac68b3_ec77bf13",
@@ -147,6 +219,30 @@
       "writtenOn": "2024-04-24T20:24:59Z",
       "side": 1,
       "message": "Don\u0027t use macros when they\u0027re not needed. Use a function instead:\n\n```\ntest_static void verify_no_write(uint32_t addr)\n{\n  TEST_ASSERT(write_verify(addr) \u003d\u003d EC_ERROR_UNKNOWN);\n  return EC_SUCCESS;\n}\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f240539_626a99e6",
+        "filename": "test/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-04-26T06:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aac68b3_ec77bf13",
       "range": {
         "startLine": 28,
         "startChar": 0,
