@@ -93,6 +93,30 @@
       },
       "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e6da55c_f603743c",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-04-26T05:12:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c2f857a_108d9bfa",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "0c8fd53244458cdd22d417c6c70868243068e045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
