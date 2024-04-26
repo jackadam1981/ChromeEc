@@ -16,6 +16,167 @@
       "message": "Sam, Keith, any more comments?",
       "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c198bb8_b2df3e84",
+        "filename": "zephyr/dts/bindings/usbc/ucsi-lpm-driver.yaml",
+        "patchSetId": 32
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "Per UCSI, LPM manages a single USB type-c connector, so it doesn\u0027t make sense to have multiple PDCs associated with an LPM driver.\n\nAs I think about this more, you\u0027ve really implemented a PPM driver here, and the `pdc` property is really the list of LPMs supported by the PPM.\n\nSo this should be \"ucsi,ppm-driver\", and the property would be \"lpm\".",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687f7c43_1e4e8256",
+        "filename": "zephyr/subsys/CMakeLists.txt",
+        "patchSetId": 32
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "add_subdirecotry_ifdef(CONFIG_UCSI_PPM ucsi)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828f4bd1_8554bd06",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 32
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "Move the CONFIG_UCSI_PPM check to the parent directory.",
+      "range": {
+        "startLine": 5,
+        "startChar": 29,
+        "endLine": 5,
+        "endChar": 44
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2244b67_2be6cc67",
+        "filename": "zephyr/subsys/ucsi/lpm_driver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "ucsi_commands",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1119150_ab58c581",
+        "filename": "zephyr/subsys/ucsi/lpm_driver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "You need to define 2 structures, one to hold const data, and the other to hold the mutable state of the driver.\n\nZephyr convention is to use `_config` suffix for the constant data and `_data` for the mutable data.\n\n\n```\nstruct ppm_config {\n    struct device *pdc[num_ports];\n    uint8_t active_port_count;\n};\n\nstruct ppm_data {\n    struct ucsi_ppm_driver *ppm;\n    struct ucsiv3_get_connector_status_data\n\tport_status[NUM_PORTS];\n};\n\nDEVICE_DT_INST_DEFINE(0, \u0026lpm_init, \u0026ppm_data, \u0026ppm_config, POST_KERNEL,\n\t\t      CONFIG_PDC_POWER_MGMT_INIT_PRIORITY, \u0026lpm_drv);\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 19
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1911b3ea_184fe256",
+        "filename": "zephyr/subsys/ucsi/lpm_driver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "These routines should pass `struct device *dev` as the first parameter.\nYou then can access the const and run-time data with\n\n```\nstatic int ucsi_init_ppm(struct device *dev)\n{\n    const struct ppm_config *config \u003d dev-\u003econfig;\n    struct ppm_data *data \u003d dev-\u003edata;\n}\n```\n\nThis will also eliminate the need to include `\tstruct ucsi_pd_device *dev;` in the `struct ucsi_pd_driver` definition.\n\nHowever, I\u0027m not sure the `struct ucsi_pd_driver` is even needed.  There will only ever be one PPM in the system, so passing a handle to the \"PPM instance\" isn\u0027t needed.\n\nThere are instances in Zephyr upstream where this is done.  The `pinctrl_configure_pins()` routine is implemented once per MCU type, so the function definition is overloaded without passing in a `struct device *dev` handle.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 55
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c4a323_6841839b",
+        "filename": "zephyr/subsys/ucsi/lpm_driver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-04-26T20:25:40Z",
+      "side": 1,
+      "message": "Move this into the mutable data for the driver.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
