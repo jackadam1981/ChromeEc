@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece9e0c1_f305acc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-26T20:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f529ca01_21e655f5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "4ad7247449c06f97ce59d4441ab309d32f4845fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e57bd885_e4320114",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-25T23:34:06Z",
       "side": 1,
       "message": "Verified input current is 5263 mA with DC Jack",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "4ad7247449c06f97ce59d4441ab309d32f4845fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e10b608_5d320420",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-04-26T20:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e57bd885_e4320114",
       "range": {
         "startLine": 13,
         "startChar": 5,
