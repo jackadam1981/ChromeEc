@@ -242,3 +242,17 @@ if(DEFINED CONFIG_BOARD_SUNDANCE)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "sundance/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "sundance/src/charger.c")
 endif()
+if(DEFINED CONFIG_BOARD_RIVEN)
+	zephyr_library_sources(
+			"riven/src/fan.c"
+			"riven/src/form_factor.c"
+			"riven/src/keyboard.c"
+			"riven/src/kb_backlight.c"
+			"riven/src/led.c"
+			"riven/src/thermal.c"
+			"riven/src/touch_panel.c"
+	)
+	project(riven)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "riven/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "riven/src/charger.c")
+endif()
