@@ -16,6 +16,24 @@
       "message": "the coverage is strange, I have b:335385095 opened before.",
       "revId": "c3d4d4ac3b1d830deacfbd37d9d01c68df87e246",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e970f28e_39feaacf",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-26T16:00:57Z",
+      "side": 1,
+      "message": "Yes, I agree. This doesn\u0027t make any sense.\n\nLet me move the bug to infra.",
+      "parentUuid": "114b2bd7_b83d84de",
+      "revId": "c3d4d4ac3b1d830deacfbd37d9d01c68df87e246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
