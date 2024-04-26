@@ -111,42 +111,6 @@ test_mockable void compute_hmac_sha256(uint8_t *output, const uint8_t *key,
 	std::copy_n(buf.data(), output_len, output);
 }
 
-enum ec_error_list hkdf_expand(uint8_t *out_key, size_t L, const uint8_t *prk,
-			       size_t prk_size, const uint8_t *info,
-			       size_t info_size)
-{
-	bool arguments_valid = false;
-	// const uint32_t N = DIV_ROUND_UP(L, HASH_LEN);
-
-	if (out_key == NULL || L == 0)
-		CPRINTS("HKDF expand: output buffer not valid.");
-	else if (prk == NULL)
-		CPRINTS("HKDF expand: prk is NULL.");
-	else if (info == NULL && info_size > 0)
-		CPRINTS("HKDF expand: info is NULL but info size is not zero.");
-	else if (info_size > HKDF_MAX_INFO_SIZE)
-		CPRINTF("HKDF expand: info size larger than %d bytes.\n",
-			HKDF_MAX_INFO_SIZE);
-#if 0
-	else if (N > HKDF_SHA256_MAX_BLOCK_COUNT)
-		CPRINTS("HKDF expand: output key size too large.");
-#endif
-	else
-		arguments_valid = true;
-
-	if (!arguments_valid)
-		return EC_ERROR_INVAL;
-
-	int ret = HKDF_expand(out_key, L, EVP_sha256(), prk, prk_size, info,
-			      info_size);
-
-	if (ret == 1) {
-		return EC_SUCCESS;
-	}
-
-	return EC_ERROR_INVAL;
-}
-
 enum ec_error_list
 derive_positive_match_secret(std::span<uint8_t> output,
 			     std::span<const uint8_t> input_positive_match_salt)
