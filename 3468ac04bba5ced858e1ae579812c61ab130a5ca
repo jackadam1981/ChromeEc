@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8e004b_a67674fe",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T16:46:29Z",
+      "side": 1,
+      "message": "you need to lock and unlock the mutex around this read write access too otherwise there is still a race",
+      "revId": "3468ac04bba5ced858e1ae579812c61ab130a5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e60851_efc71971",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T16:46:29Z",
+      "side": 1,
+      "message": "`static K_MUTEX_DEFINE(reinit_mutex);`\n\nOtherwise I do not think this mutex is initialize properly",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 27
+      },
+      "revId": "3468ac04bba5ced858e1ae579812c61ab130a5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
