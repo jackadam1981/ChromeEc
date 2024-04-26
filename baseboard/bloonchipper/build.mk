@@ -76,4 +76,4 @@ test-list-y = \
        utils_str
 
 # This is relative to the EC root directory.
--include private/board/hatch_fp/build.mk
+-include ../ec-private/board/hatch_fp/build.mk
