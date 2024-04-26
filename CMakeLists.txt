@@ -30,7 +30,7 @@ add_subdirectory(common)
 add_subdirectory(third_party)
 
 # The EXISTS behavior is only well defined for full paths.
-get_filename_component(private_repo_abs_path "private/fingerprint" ABSOLUTE)
+get_filename_component(private_repo_abs_path "../ec-private/fingerprint" ABSOLUTE)
 if (EXISTS "${private_repo_abs_path}")
-  add_subdirectory(private/fingerprint)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../ec-private/fingerprint ${CMAKE_CURRENT_BINARY_DIR}/fingerprint)
 endif()
