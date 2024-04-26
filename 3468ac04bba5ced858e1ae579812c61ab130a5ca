@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fc74d86_e8cf5c14",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-26T17:08:49Z",
+      "side": 1,
+      "message": "If I attempt to lock the mutex here, without further changes to `cmsis_dap_reinit()`, then it will deadlock, because `cmsis_dap_reinit()` would have already locked the mutex, and not yet unlocked it.\n\nI do not see a race.  The logic goes like this:  By default `cmsis_dap_unwind_requested_by` is `TASK_ID_INVALID`, and the only way that it gets set to any real task ID is after that task has locked the mutex.  Once set this way, the task holding the mutex enters a polling loop, in which it does not further update the shared variable, and the one place where it can get assigned again (back to `TASK_ID_INVALID`) is here by the CMSIS_DAP task.  So by the time the mutex is unlocked, it will be back to being `TASK_ID_INVALID`.",
+      "parentUuid": "4b8e004b_a67674fe",
+      "revId": "3468ac04bba5ced858e1ae579812c61ab130a5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0e60851_efc71971",
         "filename": "board/hyperdebug/cmsis-dap.c",
         "patchSetId": 6
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-26T16:46:29Z",
       "side": 1,
       "message": "`static K_MUTEX_DEFINE(reinit_mutex);`\n\nOtherwise I do not think this mutex is initialize properly",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 27
+      },
+      "revId": "3468ac04bba5ced858e1ae579812c61ab130a5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e03e5a_268a864b",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-04-26T17:08:49Z",
+      "side": 1,
+      "message": "Using the macro does not hurt, but it is only required in code that compiles with the Zephyr kernel.",
+      "parentUuid": "a0e60851_efc71971",
       "range": {
         "startLine": 739,
         "startChar": 0,
