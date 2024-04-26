@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0e51a7_3e151411",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T14:59:59Z",
+      "side": 1,
+      "message": "nit: extra spaces here (use `cros format` please)",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 2
+      },
+      "revId": "96cc4ffa1aeac61f46a37b33aa068a170f708f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b16332_fbeb392e",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T14:59:59Z",
+      "side": 1,
+      "message": "if a second task requests an abort/reinit while the first task is waiting for it, then the first task would not get the wake up event.\n\nAlso there is a data race on the access of the `cmsis_dap_unwind_requested_by` if a higher priority task gets woken up and peforms this entire function between line 670 and 671.\n\nWe probably need more synchronization between read/modify/write operation on this static variable",
+      "range": {
+        "startLine": 749,
+        "startChar": 1,
+        "endLine": 749,
+        "endChar": 52
+      },
+      "revId": "96cc4ffa1aeac61f46a37b33aa068a170f708f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffef5935_02112825",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T14:59:59Z",
+      "side": 1,
+      "message": "can we just have one check after the `if..else`?",
+      "revId": "96cc4ffa1aeac61f46a37b33aa068a170f708f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ad2b93_fcbb26d2",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-04-26T14:59:59Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 437,
+        "endChar": 10
+      },
+      "revId": "96cc4ffa1aeac61f46a37b33aa068a170f708f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
