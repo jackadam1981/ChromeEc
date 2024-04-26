@@ -33,6 +33,24 @@
       "message": "could this make FPMCU more unstable? Will there be some scenarios in the past where crypto error happens and the command fails, but the overall FP logic still is working fine; but now with this change FPMCU will reboot and all FP operations will fail (because it doesn\u0027t have TPM seed)?",
       "revId": "b4d9a3074705eaefcd705dfe634a7d25be56c60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cabad746_06f36458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-26T15:56:13Z",
+      "side": 1,
+      "message": "\u003e Will there be some scenarios in the past where crypto error happens and the command fails, but the overall FP logic still is working fine;\n\nNo the asserts in boringssl are around real logic errors. If we hit one, then we\u0027re using the boringssl API incorrectly.\n\n\u003e could this make FPMCU more unstable? \n\nPossibly, but if we\u0027re using boringssl incorrectly we want to know about it. It would be worse to have silent memory corruption or bad crypto. We have a metric that [monitors the FPMCU reboots and it alerts if there is an increase](http://b/335456755), so we will be able to observe if this is happening.",
+      "parentUuid": "146e96a3_9609c7a7",
+      "revId": "b4d9a3074705eaefcd705dfe634a7d25be56c60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
