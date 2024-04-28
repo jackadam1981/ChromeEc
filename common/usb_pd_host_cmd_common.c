@@ -23,6 +23,7 @@ __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
 	return EC_PD_PORT_LOCATION_UNKNOWN;
 }
 
+#if defined(CONFIG_HOSTCMD_GET_PD_PORT_CAPS)
 static enum ec_status hc_get_pd_port_caps(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_get_pd_port_caps *p = args->params;
@@ -57,6 +58,7 @@ static enum ec_status hc_get_pd_port_caps(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PD_PORT_CAPS, hc_get_pd_port_caps,
 		     EC_VER_MASK(0));
+#endif
 
 #ifdef CONFIG_COMMON_RUNTIME
 static const enum pd_dual_role_states dual_role_map[USB_PD_CTRL_ROLE_COUNT] = {

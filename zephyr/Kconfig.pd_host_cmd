@@ -81,3 +81,10 @@ config PLATFORM_EC_HOSTCMD_TYPEC_STATUS
 
 	  This host command can be manually executed using the
 	  "ectool typecstatus" command from the Chromium OS shell.
+
+config PLATFORM_EC_HOSTCMD_GET_PD_PORT_CAPS
+	bool "Host command: EC_CMD_GET_PD_PORT_CAPS"
+	default y
+	help
+	  Enables EC_CMD_GET_PD_PORT_CAPS host command. This allows AP to
+	  get port capabilities.
