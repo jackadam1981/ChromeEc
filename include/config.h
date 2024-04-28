@@ -2630,6 +2630,9 @@
 /* EC supports EC_CMD_TYPEC_STATUS */
 #define CONFIG_HOSTCMD_TYPEC_STATUS
 
+/* EC supports EC_CMD_GET_PD_PORT_CAPS */
+#define CONFIG_HOSTCMD_GET_PD_PORT_CAPS
+
 /*
  * Use if PD MCU controls charging (selecting charging port and input
  * current limit).
