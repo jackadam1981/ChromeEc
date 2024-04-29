@@ -158,6 +158,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47140dcc_a8517142",
+        "filename": "zephyr/subsys/ucsi/lpm_driver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-29T16:41:49Z",
+      "side": 1,
+      "message": "This is a question/suggestion for ppm_common.c. Abhishek?",
+      "parentUuid": "1911b3ea_184fe256",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 55
+      },
+      "revId": "745385b0739c729bf8f3c9f5805b03f125276799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27c4a323_6841839b",
         "filename": "zephyr/subsys/ucsi/lpm_driver.c",
         "patchSetId": 32
