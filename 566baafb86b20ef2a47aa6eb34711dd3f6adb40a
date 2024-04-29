@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6ee68c_c7f505d6",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T17:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26575e96_92d18cfc",
+      "range": {
+        "startLine": 1851,
+        "startChar": 0,
+        "endLine": 1851,
+        "endChar": 22
+      },
+      "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c69bae48_9172eb90",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "As in, I don\u0027t think this CL blocks CPU access to code ram, since the intention is to allow access to code ram, but block writes to code ram, right?",
       "parentUuid": "c69bae48_9172eb90",
+      "range": {
+        "startLine": 202,
+        "startChar": 44,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "566baafb86b20ef2a47aa6eb34711dd3f6adb40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5a0e10_c8a08cc2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T17:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7484cd6_d728bd46",
       "range": {
         "startLine": 202,
         "startChar": 44,
