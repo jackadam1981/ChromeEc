@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9882c68d_f2eb94c2",
+        "filename": "board/xol/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-29T17:28:34Z",
+      "side": 1,
+      "message": "nit: Can you fix indents?",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "2990a578e0b9e77860dcd4be825363529fca73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b351cf9f_28fa8107",
+        "filename": "board/xol/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-29T17:28:34Z",
+      "side": 1,
+      "message": "nit: Can you please call set_board_id here as well? That\u0027ll reduce the chance things will get broken when this code is copied.",
+      "revId": "2990a578e0b9e77860dcd4be825363529fca73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f636fe70_b058b357",
+        "filename": "board/xol/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-29T17:28:34Z",
+      "side": 1,
+      "message": "nit: Not your change but this should be named get_board_id and return board_id.",
+      "range": {
+        "startLine": 122,
+        "startChar": 12,
+        "endLine": 122,
+        "endChar": 24
+      },
+      "revId": "2990a578e0b9e77860dcd4be825363529fca73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
