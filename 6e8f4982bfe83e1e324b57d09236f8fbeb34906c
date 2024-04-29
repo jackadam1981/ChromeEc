@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2086f8_aafbcfab",
+        "filename": "util/preupload/lib.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-04-29T15:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b5f122b_e323e3af",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "6e8f4982bfe83e1e324b57d09236f8fbeb34906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ee79648_20226f49",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-04-25T13:15:07Z",
       "side": 1,
       "message": "the pre-upload framework is designed to handle this for you.  it passes the files changed as `PRESUBMIT_FILES`.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 79
+      },
+      "revId": "6e8f4982bfe83e1e324b57d09236f8fbeb34906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3f07cf_d4c5d725",
+        "filename": "util/preupload/lib.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-04-29T15:20:23Z",
+      "side": 1,
+      "message": "I assumed that you knew that fullupload-presubmit skips all hooks that use PRESUBMIT_FILES, so you can\u0027t rely on that if you want to use that presubmit.",
+      "parentUuid": "6ee79648_20226f49",
       "range": {
         "startLine": 42,
         "startChar": 0,
