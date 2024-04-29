@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbc5f68_6149c635",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:20:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "daf1c249_71a4cad6",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "9df623a283dec42ca0a731e55cc7e6428ca66f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d739b8b5_438fbfe3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87bd0c0_5bbab4b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:20:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d739b8b5_438fbfe3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "9df623a283dec42ca0a731e55cc7e6428ca66f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8886570_02739cf4",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-04-26T16:03:24Z",
       "side": 1,
       "message": "We shouldn\u0027t need any of the following, as this should be handled by the PMC directly:\nCONFIG_PLATFORM_EC_USBC_SS_MUX\nCONFIG_PLATFORM_EC_USB_MUX_TASK\nCONFIG_PLATFORM_EC_USB_PD_DP_MODE\nCONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE\nCONFIG_PLATFORM_EC_USB_PD_USB4",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "9df623a283dec42ca0a731e55cc7e6428ca66f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8ac272_318f9096",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8886570_02739cf4",
       "range": {
         "startLine": 57,
         "startChar": 0,
