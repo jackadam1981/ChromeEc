@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e10ada5_96e779e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f898ef_3b2411c4",
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fbfc935_9e7ca48c",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-24T20:45:22Z",
       "side": 1,
       "message": "We need a comment about why this is not being done in pre_init.\n\n... We use system_is_locked to gate this action...This relies on flash to be functional and whatnot.",
+      "range": {
+        "startLine": 198,
+        "startChar": 44,
+        "endLine": 198,
+        "endChar": 62
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c426b7_cddeee0d",
+        "filename": "common/main.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fbfc935_9e7ca48c",
       "range": {
         "startLine": 198,
         "startChar": 44,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f7020c_218ca8d7",
+        "filename": "common/main.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5338dc4b_b7641e2a",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 15
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ce6cf30_4b9d0a21",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-04-24T20:45:22Z",
       "side": 1,
       "message": "Is this accidental?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6155539f_91d16baa",
+        "filename": "common/main.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ce6cf30_4b9d0a21",
       "range": {
         "startLine": 204,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0599589_c336ca69",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "097c67b5_cce3234c",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 6
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11f63e93_610f7ec5",
@@ -123,6 +237,30 @@
       "writtenOn": "2024-04-24T21:05:52Z",
       "side": 1,
       "message": "Does this need to be exported if you call it from within mpu.c?",
+      "range": {
+        "startLine": 694,
+        "startChar": 5,
+        "endLine": 694,
+        "endChar": 32
+      },
+      "revId": "f93e7ad9a4fbf278510f595bbf156548d2b12ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ff4ecc_299f4bf3",
+        "filename": "include/system.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "yes, because I create it inside `system.c`",
+      "parentUuid": "11f63e93_610f7ec5",
       "range": {
         "startLine": 694,
         "startChar": 5,

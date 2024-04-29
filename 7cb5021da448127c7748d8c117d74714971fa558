@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d614674_4abe6b9a",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-04-29T18:47:37Z",
+      "side": 1,
+      "message": "`system_disable_jump` is only called when [RW verification fails](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/rwsig.c;l\u003d232-234;drc\u003d0cfd0c67574c0022fe9af2bee63f117f643df74a).",
+      "parentUuid": "ddf5dc12_fea2239e",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "7cb5021da448127c7748d8c117d74714971fa558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faaf1dd9_d8c3b587",
