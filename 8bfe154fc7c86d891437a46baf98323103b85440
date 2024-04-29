@@ -22,6 +22,30 @@
       },
       "revId": "8bfe154fc7c86d891437a46baf98323103b85440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a50aba_c25289ab",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:47:38Z",
+      "side": 1,
+      "message": "I have updated the SHELL_CMD_REGISTER() now, with this it is functional. \n\u0027typec 0\u0027, \u0027typec 1\u0027 both are fine.",
+      "parentUuid": "0ee79352_e06f12f5",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "8bfe154fc7c86d891437a46baf98323103b85440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
