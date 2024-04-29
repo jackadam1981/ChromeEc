@@ -41,5 +41,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "board_dc_jack_interrupt";
 		};
+		int_tablet_mode: tablet-mode {
+			irq-pin = <&ec_tabletmode>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "gmr_tablet_switch_isr";
+		};
 	};
 };
