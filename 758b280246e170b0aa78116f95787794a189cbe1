@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd85f800_3cbaafb5",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0585b86a_e4eb1bb4",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "758b280246e170b0aa78116f95787794a189cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24486314_f0062281",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-24T18:24:05Z",
       "side": 1,
       "message": "What\u0027s the long term plan for getting the mux configuration for debugging?\n\nUsing a host command to ask the EC to query a vendor specific command from the PDC introduces many surfaces for bugs, while the PMC should already know this information directly.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "758b280246e170b0aa78116f95787794a189cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31de944b_0dfdff72",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:45:30Z",
+      "side": 1,
+      "message": "Thanks, this is only initial implementation. \nWill use same cross bug:330475942 to check if we can have similar implementation using UCSI commands and if those commands are supported from PDC firmware.\nI hope this is fine.",
+      "parentUuid": "24486314_f0062281",
       "range": {
         "startLine": 137,
         "startChar": 0,
