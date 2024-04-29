@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8821d4_faf66208",
+        "filename": "zephyr/program/brox/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T10:03:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "128917db_bbc30957",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "bfcfc388750716ef0a97282b2c5d2dbe5e175642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13deb75c_67b0ce6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-25T15:37:23Z",
       "side": 0,
       "message": "Leave i2c3 defined in the generated file, here you can disable the bus by doing:\n\n```\n\u0026i2c3 {\n    status \u003d \"disabled\";\n};\n```\n\nIn brox/gpio.dtsi, you should also configure the GPH1 and GPH2 pins as unused.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "bfcfc388750716ef0a97282b2c5d2dbe5e175642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b371ba8b_a983b1a4",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T10:03:26Z",
+      "side": 0,
+      "message": "I am observing build issues if i declare GPH1 and GPH2 as unused.\nWill check and comeback.",
+      "parentUuid": "13deb75c_67b0ce6d",
       "range": {
         "startLine": 16,
         "startChar": 0,
