@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab34b841_21723075",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a30fb43_9f217d10",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d90783_5e3cb7a1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-26T15:59:09Z",
       "side": 1,
       "message": "This should be `!IS_ENABLED(CONFIG_PLATFORM_EC_USBC_SS_MUX)`",
+      "range": {
+        "startLine": 339,
+        "startChar": 19,
+        "endLine": 339,
+        "endChar": 44
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ccc6a6e_c065c30d",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d90783_5e3cb7a1",
       "range": {
         "startLine": 339,
         "startChar": 19,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-04-25T20:21:29Z",
       "side": 1,
       "message": "usb_mux.c needs to be disabled for CONFIG_USBC_INTEL_ALTMODE.\nHow about adding this as inline function in pd_task_intel_altmode.h ?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 15
+      },
+      "revId": "15b63be1cb2110375d356ead5502db2a3bf485ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a32bcbd_6bd0e4e3",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-04-29T06:19:54Z",
+      "side": 1,
+      "message": "i have added inline functions for usb_mux in CL:5493484.",
+      "parentUuid": "fceed00f_7e317464",
       "range": {
         "startLine": 341,
         "startChar": 4,
