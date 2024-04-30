@@ -15,10 +15,6 @@
 #include "stdint.h"
 #include "timer.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define SBP_ENC_KEY_LEN 16
 #define FP_NO_SUCH_TEMPLATE (UINT16_MAX)
 
@@ -58,9 +54,5 @@ extern struct positive_match_secret_state positive_match_secret_state;
  * @return 1 if the seed has been set, 0 otherwise.
  */
 int fp_tpm_seed_is_set(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_STATE_WITHOUT_DRIVER_INFO_H */

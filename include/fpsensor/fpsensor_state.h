@@ -23,10 +23,6 @@
 
 #include <span>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
@@ -55,7 +51,7 @@ extern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				     [FP_POSITIVE_MATCH_SALT_BYTES];
 
 /* Simulation for unit tests. */
-__test_only void fp_task_simulate(void);
+__test_only extern "C" void fp_task_simulate(void);
 
 /*
  * Clear one fingerprint template.
@@ -124,8 +120,5 @@ fp_read_match_secret(int8_t fgr,
 		     std::span<uint8_t, FP_POSITIVE_MATCH_SECRET_BYTES>
 			     positive_match_secret);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_STATE_H */
