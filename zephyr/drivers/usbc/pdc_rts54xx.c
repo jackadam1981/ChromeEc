@@ -2475,6 +2475,48 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 	case UCSI_CMD_GET_CONNECTOR_STATUS:
 		use_cmd = CMD_GET_CONNECTOR_STATUS;
 		break;
+	case UCSI_CMD_GET_PD_MESSAGE: {
+		/* The Realtek PDC does not support GET_PD_MESSAGE, but it can
+		 * return SOP/SOP' identity with GET_VDO. If the GET_PD_MESSAGE
+		 * request is for the discover identity response, map it to the
+		 * corresponding GET_VDO command.
+		 */
+		struct ucsiv3_get_pd_message_cmd *get_pd_message_cmd =
+			(struct ucsiv3_get_pd_message_cmd *)command_specific;
+
+		if (get_pd_message_cmd->response_message_type != 4) {
+			LOG_ERR("%s: Unsupported Response Message type in GET_PD_MESSAGE: %d",
+				__func__,
+				get_pd_message_cmd->response_message_type);
+			return -ENOTSUP;
+		}
+
+		data_size = 8;
+		memset(cmd_buffer, 0, data_size + 4);
+		cmd_buffer[0] = 0x8;
+		cmd_buffer[1] = data_size + 2;
+
+		/* GET_VDO sub command */
+		cmd_buffer[2] = 0x9A;
+		/* Fixed port-num = 0 */
+		cmd_buffer[3] = 0x00;
+		/* Recipient | Num VDOs (7) */
+		cmd_buffer[4] = (get_pd_message_cmd->recipient << 3) | 7;
+		/* VDOs in the Discover identity response. GET_PD_MESSAGE
+		 * also returns the VDM header, so cmd_buffer[3] requests a
+		 * reserved value as a placeholder. cmd_buffer[4] through
+		 * cmd_buffer[9] request the ID header VDO, Cert Stat VDO,
+		 * and Product VDO followed by Product Type VDOs 1-3.
+		 */
+		cmd_buffer[5] = 0x00;
+		cmd_buffer[6] = 0x01;
+		cmd_buffer[7] = 0x02;
+		cmd_buffer[8] = 0x03;
+		cmd_buffer[9] = 0x04;
+		cmd_buffer[10] = 0x05;
+		cmd_buffer[11] = 0x06;
+		break;
+	}
 	default:
 		break;
 	}
