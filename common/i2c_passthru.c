@@ -34,6 +34,8 @@
 
 #define EC_PARAMS_I2C_PASSTHRU_PORT(args) \
 	(((struct ec_params_i2c_passthru *)(args->params))->port)
+#define EC_PARAMS_I2C_PASSTHRU_PORT_PROTECT(args) \
+	(((struct ec_params_i2c_passthru_protect *)(args->params))->port)
 
 static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];
 
@@ -303,8 +305,8 @@ i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 	/* For Zephyr, convert the received remote port number to a port number
 	 * used in EC.
 	 */
-	EC_PARAMS_I2C_PASSTHRU_PORT(args) = i2c_get_port_from_remote_port(
-		EC_PARAMS_I2C_PASSTHRU_PORT(args));
+	EC_PARAMS_I2C_PASSTHRU_PORT_PROTECT(args) = i2c_get_port_from_remote_port(
+		EC_PARAMS_I2C_PASSTHRU_PORT_PROTECT(args));
 #endif
 	const struct ec_params_i2c_passthru_protect *params = args->params;
 	struct ec_response_i2c_passthru_protect *resp = args->response;
