@@ -35,31 +35,6 @@ extern "C" {
 #include "fpsensor_driver.h"
 #include "fpsensor_matcher.h"
 
-/* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
-uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
-/* Fingers templates for the current user */
-test_mockable
-	uint8_t fp_template[FP_MAX_FINGER_COUNT]
-			   [FP_ALGORITHM_TEMPLATE_SIZE] FP_TEMPLATE_SECTION
-				   __aligned(4);
-static_assert(
-	sizeof(fp_template[0]) % 4 == 0,
-	"The size of each template must be a multiple of 4 to ensure that the next "
-	"template will still be aligned by 4.");
-
-/* Encryption/decryption buffer */
-/* TODO: On-the-fly encryption/decryption without a dedicated buffer */
-/*
- * Store the encryption metadata at the beginning of the buffer containing the
- * ciphered data.
- */
-uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
-/* Salt used in derivation of positive match secret. */
-uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
-			      [FP_POSITIVE_MATCH_SALT_BYTES];
-/* The states for different fingers. */
-std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
-
 /* LCOV_EXCL_START */
 __test_only void fp_task_simulate(void)
 {
