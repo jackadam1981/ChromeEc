@@ -22,6 +22,30 @@
       },
       "revId": "33a1a03655eba4aa8809c49b5f39c4c368f0cb29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5b4e7f_54ec5d60",
+        "filename": "board/xol/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-04-30T22:04:43Z",
+      "side": 1,
+      "message": "Hi, Y Sung. These are not quite the same as the design we agreed upon? I\u0027m referring to https://issuetracker.google.com/327656989#comment23. For example, I see F1\u003dBack, F2\u003dRefresh, F12\u003dPLAY_PAUSE. Can you please double-check?",
+      "parentUuid": "d8a4ac99_134b581a",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "33a1a03655eba4aa8809c49b5f39c4c368f0cb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
