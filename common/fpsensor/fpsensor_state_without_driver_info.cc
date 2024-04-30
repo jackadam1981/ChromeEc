@@ -7,8 +7,6 @@
 
 /* TODO(b/286119221): Refactor fingerprint sensor state. */
 
-extern "C" {
-
 struct fpsensor_context global_context = {
 	.template_newly_enrolled = FP_NO_SUCH_TEMPLATE,
 	.templ_valid = 0,
@@ -28,5 +26,4 @@ struct fpsensor_context global_context = {
 int fp_tpm_seed_is_set(void)
 {
 	return global_context.fp_encryption_status & FP_ENC_STATUS_SEED_SET;
-}
 }
