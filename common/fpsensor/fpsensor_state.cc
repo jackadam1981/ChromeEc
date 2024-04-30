@@ -59,7 +59,7 @@ void fp_reset_context()
 	templ_dirty = 0;
 	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(fp_enc_buffer.data(), fp_enc_buffer.size());
 	OPENSSL_cleanse(user_id, sizeof(user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
 	fp_disable_positive_match_secret(&positive_match_secret_state);

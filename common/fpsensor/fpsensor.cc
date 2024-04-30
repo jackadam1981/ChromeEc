@@ -488,7 +488,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	if (fgr >= templ_valid)
 		return EC_RES_UNAVAILABLE;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = validate_fp_buffer_offset(fp_enc_buffer.size(), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
@@ -498,7 +498,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		/* Host has requested the first chunk, do the encryption. */
 		timestamp_t now = get_time();
 		/* Encrypted template is after the metadata. */
-		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
+		uint8_t *encrypted_template =
+			fp_enc_buffer.data() + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
 		uint8_t *positive_match_salt =
 			encrypted_template + sizeof(fp_template[0]);
@@ -510,14 +511,14 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 		encryption_deadline.val = now.val + (1 * SECOND);
 
-		memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+		memset(fp_enc_buffer.data(), 0, fp_enc_buffer.size());
 		/*
 		 * The beginning of the buffer contains nonce, encryption_salt
 		 * and tag.
 		 */
 		enc_info = reinterpret_cast<
 			struct ec_fp_template_encryption_metadata *>(
-			fp_enc_buffer);
+			fp_enc_buffer.data());
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
 		trng_init();
 		trng_rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
@@ -566,7 +567,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		}
 		templ_dirty &= ~BIT(fgr);
 	}
-	memcpy(out, fp_enc_buffer + offset, size);
+	memcpy(out, fp_enc_buffer.data() + offset, size);
 	args->response_size = size;
 
 	return EC_RES_SUCCESS;
@@ -621,7 +622,7 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	uint16_t idx = templ_valid;
 	struct ec_fp_template_encryption_metadata *enc_info;
 	/* Encrypted template is after the metadata. */
-	uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
+	uint8_t *encrypted_template = fp_enc_buffer.data() + sizeof(*enc_info);
 	/* Positive match salt is after the template. */
 	uint8_t *positive_match_salt =
 		encrypted_template + sizeof(fp_template[0]);
@@ -637,7 +638,8 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	 * The beginning of the buffer contains nonce, encryption_salt
 	 * and tag.
 	 */
-	enc_info = (struct ec_fp_template_encryption_metadata *)fp_enc_buffer;
+	enc_info = (struct ec_fp_template_encryption_metadata *)
+			   fp_enc_buffer.data();
 	enum ec_status res = validate_template_format(enc_info);
 	if (res != EC_RES_SUCCESS) {
 		CPRINTS("fgr%d: Template format not supported", idx);
@@ -721,7 +723,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	    size + offsetof(struct ec_params_fp_template, data))
 		return EC_RES_INVALID_PARAM;
 	enum ec_error_list ret =
-		validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+		validate_fp_buffer_offset(fp_enc_buffer.size(), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
