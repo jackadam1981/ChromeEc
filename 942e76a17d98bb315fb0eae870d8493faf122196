@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9cfdc69_afb79cb2",
+        "filename": "zephyr/test/pdc/src/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-30T01:48:23Z",
+      "side": 1,
+      "message": "these are struct offsets (effectively file format offsets).\nchanged implementation to better reflect intended usage.",
+      "parentUuid": "e955b959_991dcbfb",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "942e76a17d98bb315fb0eae870d8493faf122196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fe911ad_72e294c0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd692c3b_302758c3",
+        "filename": "zephyr/test/pdc/src/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-30T01:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe911ad_72e294c0",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "942e76a17d98bb315fb0eae870d8493faf122196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcc0ee8f_4cd69a41",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-04-25T15:51:38Z",
       "side": 1,
       "message": "Where does this file get created?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "942e76a17d98bb315fb0eae870d8493faf122196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0592acb6_5c415d1b",
+        "filename": "zephyr/test/pdc/src/util_pcap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-30T01:48:23Z",
+      "side": 1,
+      "message": "it goes to the test output directory, for example\n`twister-out/native_posix/pdc.rts54xx/rts.pcap`.\nthis is the same place where `build.log` and `handler.log`\ngo for each test.",
+      "parentUuid": "fcc0ee8f_4cd69a41",
       "range": {
         "startLine": 39,
         "startChar": 0,
