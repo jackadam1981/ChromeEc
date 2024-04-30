@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2b8323_9e43f0d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-04-30T03:14:49Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nUpstream sha v2 driver is for it82xx2 series, but geralt and ciri are it81xx2 series (it81202). Now it81202 use CL : 4037230 ec native sha driver, so I think you needn\u0027t cherry-pick this CL (this CL is for roach).",
+      "revId": "f0c466de6906173a80b7adeb415a9b93d7f99174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
