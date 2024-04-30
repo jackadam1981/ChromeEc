@@ -15,10 +15,6 @@
 #include "stdint.h"
 #include "timer.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define FP_NO_SUCH_TEMPLATE (UINT16_MAX)
 
 /* --- Global variables defined in fpsensor_state_without_driver_info.c --- */
@@ -58,9 +54,5 @@ struct fpsensor_state {
  * @return 1 if the seed has been set, 0 otherwise.
  */
 int fp_tpm_seed_is_set(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_STATE_WITHOUT_DRIVER_INFO_H */
