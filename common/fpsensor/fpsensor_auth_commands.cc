@@ -305,12 +305,13 @@ static enum ec_status unlock_template(uint16_t idx)
 	/* We reuse the fp_enc_buffer for the data decryption, because we don't
 	 * want to allocate a huge array on the stack.
 	 * Note: fp_enc_buffer = fp_template || fp_positive_match_salt */
-	constexpr std::span enc_template(fp_enc_buffer, sizeof(fp_template[0]));
+	constexpr std::span enc_template(fp_enc_buffer.data(),
+					 sizeof(fp_template[0]));
 	constexpr std::span enc_salt(enc_template.end(),
 				     sizeof(fp_positive_match_salt[0]));
-	constexpr std::span enc_buffer(fp_enc_buffer,
+	constexpr std::span enc_buffer(fp_enc_buffer.data(),
 				       enc_template.size() + enc_salt.size());
-	static_assert(enc_buffer.size() <= sizeof(fp_enc_buffer));
+	static_assert(enc_buffer.size() <= fp_enc_buffer.size());
 
 #if 0
 	std::ranges::copy(fp_template[idx], enc_template.begin());
@@ -329,14 +330,14 @@ static enum ec_status unlock_template(uint16_t idx)
 		      sizeof(global_context.user_id) },
 		    global_context.tpm_seed) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
-		OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+		OPENSSL_cleanse(fp_enc_buffer.data(), fp_enc_buffer.size());
 		return EC_RES_UNAVAILABLE;
 	}
 
 	if (aes_128_gcm_decrypt(key, enc_buffer, enc_buffer, enc_info.nonce,
 				enc_info.tag) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
-		OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+		OPENSSL_cleanse(fp_enc_buffer.data(), fp_enc_buffer.size());
 		return EC_RES_UNAVAILABLE;
 	}
 
@@ -344,7 +345,7 @@ static enum ec_status unlock_template(uint16_t idx)
 	std::ranges::copy(enc_salt, fp_positive_match_salt[idx]);
 
 	fp_init_decrypted_template_state_with_user_id(idx);
-	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(fp_enc_buffer.data(), fp_enc_buffer.size());
 	return EC_RES_SUCCESS;
 }
 
