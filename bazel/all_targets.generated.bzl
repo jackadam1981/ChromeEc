@@ -1304,6 +1304,11 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "kyogre",
+        board = "kyogre",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "lalala",
         baseboard = "keeby",
         board = "lalala",
@@ -1363,6 +1368,10 @@ def all_targets():
         chip = "npcx",
         core = "cortex-m",
         zephyr = False,
+    )
+    ec_target(
+        name = "lotso",
+        board = "lotso",
     )
     ec_target(
         name = "lux",
@@ -1891,6 +1900,11 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "pujjoga",
+        board = "pujjoga",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "quackingstick",
         baseboard = "trogdor",
         board = "quackingstick",
@@ -2035,6 +2049,10 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "skitty",
+        board = "skitty",
+    )
+    ec_target(
         name = "skyrim",
         board = "skyrim",
         extra_modules = ["cmsis"],
@@ -2054,6 +2072,10 @@ def all_targets():
         chip = "it83xx",
         core = "riscv-rv32i",
         zephyr = False,
+    )
+    ec_target(
+        name = "spikyrock",
+        board = "spikyrock",
     )
     ec_target(
         name = "staff",
@@ -2117,6 +2139,11 @@ def all_targets():
         chip = "npcx",
         core = "cortex-m",
         zephyr = False,
+    )
+    ec_target(
+        name = "sundance",
+        board = "sundance",
+        extra_modules = ["cmsis"],
     )
     ec_target(
         name = "sweetberry",
@@ -2227,6 +2254,10 @@ def all_targets():
         chip = "npcx",
         core = "cortex-m",
         zephyr = False,
+    )
+    ec_target(
+        name = "veluza",
+        board = "veluza",
     )
     ec_target(
         name = "vilboz",
