@@ -70,6 +70,30 @@
       },
       "revId": "49add90c27271ff70009e00be28d083dc3518a51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7a501c_9f2b08db",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-04-30T01:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df529d7c_4e961104",
+      "range": {
+        "startLine": 937,
+        "startChar": 5,
+        "endLine": 937,
+        "endChar": 22
+      },
+      "revId": "49add90c27271ff70009e00be28d083dc3518a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
