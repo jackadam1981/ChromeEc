@@ -7,8 +7,6 @@
 
 /* TODO(b/286119221): Refactor fingerprint sensor state. */
 
-extern "C" {
-
 struct positive_match_secret_state
 	positive_match_secret_state = { .template_matched = FP_NO_SUCH_TEMPLATE,
 					.readable = false,
@@ -36,5 +34,4 @@ uint32_t sensor_mode;
 int fp_tpm_seed_is_set(void)
 {
 	return fp_encryption_status & FP_ENC_STATUS_SEED_SET;
-}
 }

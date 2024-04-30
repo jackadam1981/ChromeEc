@@ -21,10 +21,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
@@ -53,7 +49,13 @@ extern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				     [FP_POSITIVE_MATCH_SALT_BYTES];
 
 /* Simulation for unit tests. */
+#ifdef __cplusplus
+extern "C" {
+#endif
 __test_only void fp_task_simulate(void);
+#ifdef __cplusplus
+}
+#endif
 
 /*
  * Clear one fingerprint template.
@@ -83,7 +85,13 @@ void fp_reset_and_clear_context(void);
  *
  * @param out the pointer to the output event.
  */
+#ifdef __cplusplus
+extern "C" {
+#endif
 int fp_get_next_event(uint8_t *out);
+#ifdef __cplusplus
+}
+#endif
 
 /**
  * Change the sensor mode.
@@ -121,8 +129,5 @@ enum ec_status fp_read_match_secret(
 	int8_t fgr,
 	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES]);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_STATE_H */
