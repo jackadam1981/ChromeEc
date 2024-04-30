@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63087e5b_4ce34e15",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-30T18:24:39Z",
+      "side": 1,
+      "message": "Why does this have `-` added?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "e72231e47904db27c9310f91711a858f0bb57b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90ec277_1c333a7f",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-30T18:24:39Z",
+      "side": 1,
+      "message": "nit: remove extra blank line",
+      "revId": "e72231e47904db27c9310f91711a858f0bb57b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc4a56c_2ae1a15b",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-04-30T18:24:39Z",
+      "side": 1,
+      "message": "It\u0027s hard for me to tell, but is this a variable called `board-ec-private`? If so, did it need to change or was this a search and replace bug?",
+      "range": {
+        "startLine": 376,
+        "startChar": 46,
+        "endLine": 376,
+        "endChar": 62
+      },
+      "revId": "e72231e47904db27c9310f91711a858f0bb57b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
