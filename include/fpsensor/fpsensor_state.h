@@ -58,8 +58,8 @@ static_assert(
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-inline uint8_t
-	fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
+inline std::array<uint8_t, FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE> fp_enc_buffer
+	FP_TEMPLATE_SECTION;
 
 /* Salt used in derivation of positive match secret. */
 inline uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
