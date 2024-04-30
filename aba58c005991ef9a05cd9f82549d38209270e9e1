@@ -34,6 +34,24 @@
       "message": "spikyrock is not ref board.",
       "revId": "aba58c005991ef9a05cd9f82549d38209270e9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04675900_580e8c61",
+        "filename": "zephyr/program/roach/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2024-04-30T04:30:10Z",
+      "side": 1,
+      "message": "Fix in this [CL](ttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5500677)",
+      "parentUuid": "e7d11b6b_62d180bd",
+      "revId": "aba58c005991ef9a05cd9f82549d38209270e9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
