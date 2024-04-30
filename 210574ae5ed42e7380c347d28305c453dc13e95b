@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fa6bad_afdf2c6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-04-30T17:12:47Z",
+      "side": 1,
+      "message": "Hi Ting: \n The previous cherry-pick code has conflicts, so wait for the conflicting code to be merged and then cherry-pick again",
+      "revId": "210574ae5ed42e7380c347d28305c453dc13e95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
