@@ -22,10 +22,6 @@
 
 #include <span>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
@@ -94,7 +90,13 @@ extern struct fpsensor_context global_context;
 int fp_tpm_seed_is_set(void);
 
 /* Simulation for unit tests. */
+#ifdef __cplusplus
+extern "C" {
+#endif
 __test_only void fp_task_simulate(void);
+#ifdef __cplusplus
+}
+#endif
 
 /*
  * Clear one fingerprint template.
@@ -124,7 +126,13 @@ void fp_reset_and_clear_context(void);
  *
  * @param out the pointer to the output event.
  */
+#ifdef __cplusplus
+extern "C" {
+#endif
 int fp_get_next_event(uint8_t *out);
+#ifdef __cplusplus
+}
+#endif
 
 /**
  * Change the sensor mode.
@@ -162,9 +170,5 @@ enum ec_status
 fp_read_match_secret(int8_t fgr,
 		     std::span<uint8_t, FP_POSITIVE_MATCH_SECRET_BYTES>
 			     positive_match_secret);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_STATE_H */
