@@ -32,9 +32,6 @@
 #define PTHRUPRINTF(format, args...)
 #endif
 
-#define EC_PARAMS_I2C_PASSTHRU_PORT(args) \
-	(((struct ec_params_i2c_passthru *)(args->params))->port)
-
 static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];
 
 /**
@@ -136,14 +133,14 @@ static inline int is_i2c_port_virtual_battery(int port)
 
 static enum ec_status i2c_command_passthru(struct host_cmd_handler_args *args)
 {
+	/* Force casting (const void *) to (struct ec_params_i2c_passthru *) */
+	struct ec_params_i2c_passthru *params = (struct ec_params_i2c_passthru *)(args->params);
 #ifdef CONFIG_ZEPHYR
 	/* For Zephyr, convert the received remote port number to a port number
 	 * used in EC.
 	 */
-	EC_PARAMS_I2C_PASSTHRU_PORT(args) = i2c_get_port_from_remote_port(
-		EC_PARAMS_I2C_PASSTHRU_PORT(args));
+	params->port = i2c_get_port_from_remote_port(params->port);
 #endif
-	const struct ec_params_i2c_passthru *params = args->params;
 	const struct ec_params_i2c_passthru_msg *msg;
 	struct ec_response_i2c_passthru *resp = args->response;
 	const struct i2c_port_t *i2c_port;
@@ -299,14 +296,14 @@ static void i2c_passthru_protect_tcpc_ports(void)
 static enum ec_status
 i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 {
+	/* Force casting (const void *) to (struct ec_params_i2c_passthru_protect *) */
+	struct ec_params_i2c_passthru_protect *params = (struct ec_params_i2c_passthru_protect *)(args->params);
 #ifdef CONFIG_ZEPHYR
 	/* For Zephyr, convert the received remote port number to a port number
 	 * used in EC.
 	 */
-	EC_PARAMS_I2C_PASSTHRU_PORT(args) = i2c_get_port_from_remote_port(
-		EC_PARAMS_I2C_PASSTHRU_PORT(args));
+	params->port = i2c_get_port_from_remote_port(params->port);
 #endif
-	const struct ec_params_i2c_passthru_protect *params = args->params;
 	struct ec_response_i2c_passthru_protect *resp = args->response;
 
 	if (args->params_size < sizeof(*params)) {
