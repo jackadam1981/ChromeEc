@@ -329,6 +329,7 @@ class AllTests:
                 test_name="fpsensor",
                 test_args=["uart"],
             ),
+            TestConfig(test_name="fpsensor_utils"),
             TestConfig(test_name="ftrapv"),
             TestConfig(
                 test_name="libc_printf",
