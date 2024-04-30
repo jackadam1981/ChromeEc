@@ -33,19 +33,34 @@
 	(FP_ALGORITHM_TEMPLATE_SIZE + FP_POSITIVE_MATCH_SALT_BYTES + \
 	 sizeof(struct ec_fp_template_encryption_metadata))
 
-/* --- Global variables defined in fpsensor_state.c --- */
+/* --- Global variables. --- */
+
+/* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
+extern "C" {
+inline uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
+}
 
 /* Fingers templates for the current user */
-extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
+test_mockable inline uint8_t
+	fp_template[FP_MAX_FINGER_COUNT]
+		   [FP_ALGORITHM_TEMPLATE_SIZE] FP_TEMPLATE_SECTION
+			   __aligned(4);
+static_assert(
+	sizeof(fp_template[0]) % 4 == 0,
+	"The size of each template must be a multiple of 4 to ensure that the next "
+	"template will still be aligned by 4.");
+
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+inline uint8_t
+	fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
+
 /* Salt used in derivation of positive match secret. */
-extern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
+inline uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				     [FP_POSITIVE_MATCH_SALT_BYTES];
 
 /* Simulation for unit tests. */
