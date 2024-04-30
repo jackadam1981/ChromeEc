@@ -183,6 +183,7 @@ const struct smbus_cmd_t GET_IC_STATUS = { 0x3A, 0x03 };
 const struct smbus_cmd_t SET_RETIMER_FW_UPDATE_MODE = { 0x20, 0x03, 0x00 };
 const struct smbus_cmd_t GET_CABLE_PROPERTY = { 0x0E, 0x03, 0x11 };
 const struct smbus_cmd_t GET_PCH_DATA_STATUS = { 0x08, 0x02, 0xE0 };
+const struct smbus_cmd_t ACK_CC_CI = { 0x0A, 0x07, 0x00 };
 
 /**
  * @brief PDC Command states
@@ -319,6 +320,9 @@ enum cmd_t {
 	CMD_SET_PDO,
 	/** Get PDC ALT MODE Status Register value */
 	CMD_GET_PCH_DATA_STATUS,
+	/** Raw UCSI call.
+	 * Special handling of the data read from a PDC will be skipped. */
+	CMD_RAW_UCSI,
 };
 
 /**
@@ -442,6 +446,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_IS_VCONN_SOURCING] = "CMD_GET_IS_VCONN_SOURCING",
 	[CMD_SET_PDO] = "CMD_SET_PDO",
 	[CMD_GET_PCH_DATA_STATUS] = "CMD_GET_PCH_DATA_STATUS",
+	[CMD_RAW_UCSI] = "CMD_RAW_UCSI",
 };
 
 /**
@@ -2403,6 +2408,7 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
+	enum cmd_t use_cmd = CMD_RAW_UCSI;
 
 	if (ucsi_command == UCSI_CMD_GET_CONNECTOR_STATUS &&
 	    data->conn_status_cached) {
@@ -2430,7 +2436,53 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 	cmd_buffer[3] = 0;
 	memcpy(&cmd_buffer[4], command_specific, data_size);
 
-	return rts54_post_command_with_callback(dev, ucsi_command, cmd_buffer,
+	/* Convert standard UCSI command to Realtek vendor specific formats. */
+	switch (ucsi_command) {
+	case UCSI_CMD_ACK_CC_CI: {
+		struct ucsiv3_ack_cc_ci_cmd *cmd =
+			(struct ucsiv3_ack_cc_ci_cmd *)command_specific;
+
+		data_size = 5;
+		memset(cmd_buffer, 0, ACK_CC_CI.len + 2);
+		cmd_buffer[0] = ACK_CC_CI.cmd;
+		cmd_buffer[1] = ACK_CC_CI.len;
+
+		if (cmd->connector_change_ack) {
+			union conn_status_change_bits_t csc = {};
+
+			/*
+			 * We ack the connector status change bits stored in the
+			 * cache. Since ACK_CC_CI doesn't specify an individual
+			 * connector, we ack all: merge the bits from all the
+			 * connectors.
+			 *
+			 * Note there is concurrency issue here: b/343733474.
+			 */
+			for (int p = 0; p < ARRAY_SIZE(pdc_data); p++) {
+				struct pdc_data_t *d = pdc_data[p];
+				csc.raw_value |=
+					d->conn_status
+						.raw_conn_status_change_bits;
+			}
+			cmd_buffer[4] = BYTE0(csc.raw_value);
+			cmd_buffer[5] = BYTE1(csc.raw_value);
+			cmd_buffer[6] = 0xff;
+			cmd_buffer[7] = 0xff;
+		}
+
+		if (cmd->command_complete_ack) {
+			cmd_buffer[8] = 0x1;
+		}
+		break;
+	}
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+		use_cmd = CMD_GET_CONNECTOR_STATUS;
+		break;
+	default:
+		break;
+	}
+
+	return rts54_post_command_with_callback(dev, use_cmd, cmd_buffer,
 						data_size + 4, lpm_data_out,
 						callback);
 }
