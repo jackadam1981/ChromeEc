@@ -85,14 +85,14 @@ void test_run_step(uint32_t state)
 		run_test_step2();
 	}
 }
-int task_test(void *unused)
+extern "C" int task_test(void *unused)
 {
 	if (IS_ENABLED(SECTION_IS_RW))
 		test_run_multistep();
 	return EC_SUCCESS;
 }
 
-void run_test(int argc, const char **argv)
+extern "C" void run_test(int argc, const char **argv)
 {
 	test_reset();
 	crec_msleep(100); /* Wait for TASK_ID_TEST to initialize */
