@@ -22,6 +22,7 @@
 LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #include "usbc/utils.h"
 
+#include <include/ppm.h>
 #include <drivers/pdc.h>
 
 #define DT_DRV_COMPAT realtek_rts54_pdc
@@ -286,6 +287,8 @@ enum cmd_t {
 	CMD_GET_IDENTITY_DISCOVERY,
 	/** CMD_GET_IS_VCONN_SOURCING */
 	CMD_GET_IS_VCONN_SOURCING,
+	/* Raw UCSI call */
+	CMD_RAW_UCSI,
 };
 
 /**
@@ -406,6 +409,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_VDO] = "GET VDO",
 	[CMD_GET_IDENTITY_DISCOVERY] = "CMD_GET_IDENTITY_DISCOVERY",
 	[CMD_GET_IS_VCONN_SOURCING] = "CMD_GET_IS_VCONN_SOURCING",
+	[CMD_RAW_UCSI] = "CMD_RAW_UCSI",
 };
 
 /**
@@ -2184,6 +2188,7 @@ static int rts54_execute_command_sync(const struct device *dev,
 	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
 	int call_counter;
 	int rv;
+	enum cmd_t use_cmd = CMD_RAW_UCSI;
 
 	if (ucsi_command == UCSI_CMD_GET_CONNECTOR_STATUS &&
 			data->conn_status_cached) {
@@ -2205,7 +2210,80 @@ static int rts54_execute_command_sync(const struct device *dev,
 	cmd_buffer[3] = 0;
 	memcpy(&cmd_buffer[4], command_specific, data_size);
 
-	rv = rts54_post_command(dev, ucsi_command, cmd_buffer, data_size + 4,
+	/* Hacks for Realtek */
+	switch (ucsi_command) {
+	case UCSI_CMD_ACK_CC_CI:
+		struct ucsiv3_ack_cc_ci_cmd *cmd =
+			(struct ucsiv3_ack_cc_ci_cmd *)command_specific;
+
+		data_size = 5;
+		memset(cmd_buffer, 0, data_size + 4);
+		cmd_buffer[0] = 0x0A;
+		cmd_buffer[1] = data_size + 2;
+
+		if (cmd->connector_change_ack) {
+			/* Update command specific to add bits */
+			cmd_buffer[4] = 0xff;
+			cmd_buffer[5] = 0xff;
+			cmd_buffer[6] = 0xff;
+			cmd_buffer[7] = 0xff;
+
+		}
+
+		if (cmd->command_complete_ack) {
+			cmd_buffer[8] = 0x1;
+		}
+		break;
+	case UCSI_CMD_GET_PD_MESSAGE:
+		/* The Realtek PDC does not support GET_PD_MESSAGE, but it can
+		 * return SOP/SOP' identity with GET_VDO. If the GET_PD_MESSAGE
+		 * request is for the discover identity response, map it to the
+		 * corresponding GET_VDO command.
+		 */
+		struct ucsiv3_get_pd_message_cmd *get_pd_message_cmd =
+			(struct ucsiv3_get_pd_message_cmd *)command_specific;
+
+		if (get_pd_message_cmd->response_message_type != 4) {
+			LOG_ERR("%s: Unsupported Response Message type in GET_PD_MESSAGE: %d",
+				__func__,
+				get_pd_message_cmd->response_message_type);
+			return -ENOTSUP;
+		}
+
+		data_size = 8;
+		memset(cmd_buffer, 0, data_size + 4);
+		cmd_buffer[0] = 0x8;
+		cmd_buffer[1] = data_size + 2;
+
+		/* GET_VDO sub command */
+		cmd_buffer[2] = 0x9A;
+		/* Fixed port-num = 0 */
+		cmd_buffer[3] = 0x00;
+		/* Recipient | Num VDOs (7) */
+		cmd_buffer[4] = (get_pd_message_cmd->recipient << 3) | 7;
+		/* VDOs in the Discover identity response. GET_PD_MESSAGE
+		 * also returns the VDM header, so cmd_buffer[3] requests a
+		 * reserved value as a placeholder. cmd_buffer[4] through
+		 * cmd_buffer[9] request the ID header VDO, Cert Stat VDO,
+		 * and Product VDO followed by Product Type VDOs 1-3.
+		 */
+		cmd_buffer[5] = 0x00;
+		cmd_buffer[6] = 0x01;
+		cmd_buffer[7] = 0x02;
+		cmd_buffer[8] = 0x03;
+		cmd_buffer[9] = 0x04;
+		cmd_buffer[10] = 0x05;
+		cmd_buffer[11] = 0x06;
+		break;
+
+	case UCSI_CMD_GET_CONNECTOR_STATUS:
+		use_cmd = CMD_GET_CONNECTOR_STATUS;
+		break;
+	default:
+		break;
+	}
+
+	rv = rts54_post_command(dev, use_cmd, cmd_buffer, data_size + 4,
 				lpm_data_out);
 	if (rv < 0) {
 		LOG_ERR("%s: Failed to run (%d)", __func__, rv);
