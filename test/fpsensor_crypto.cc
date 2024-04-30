@@ -293,9 +293,9 @@ test_static int test_derive_encryption_key_failure_seed_not_set(void)
 	return EC_SUCCESS;
 }
 
-static int test_derive_encryption_key_raw(const uint32_t *user_id_,
-					  const uint8_t *salt,
-					  const uint8_t *expected_key)
+static int test_derive_encryption_key_raw(std::span<const uint32_t> user_id_,
+					  std::span<const uint8_t> salt,
+					  std::span<const uint8_t> expected_key)
 {
 	uint8_t key[SBP_ENC_KEY_LEN];
 	enum ec_error_list rv;
@@ -304,13 +304,28 @@ static int test_derive_encryption_key_raw(const uint32_t *user_id_,
 	 * |user_id| is a global variable used as "info" in HKDF expand
 	 * in derive_encryption_key().
 	 */
-	memcpy(user_id, user_id_, sizeof(user_id));
+	memcpy(user_id, user_id_.data(), sizeof(user_id));
 	rv = derive_encryption_key(key, salt);
 
 	TEST_ASSERT(rv == EC_SUCCESS);
 	TEST_ASSERT_ARRAY_EQ(key, expected_key, sizeof(key));
 
 	memset(user_id, 0, sizeof(user_id));
+
+	return EC_SUCCESS;
+}
+
+static int test_derive_encryption_key_with_info_raw(
+	std::span<const uint32_t> user_id_, std::span<const uint8_t> salt,
+	std::span<const uint8_t> info, std::span<const uint8_t> expected_key)
+{
+	uint8_t key[SBP_ENC_KEY_LEN];
+	enum ec_error_list rv;
+
+	rv = derive_encryption_key_with_info(key, salt, info);
+
+	TEST_ASSERT(rv == EC_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(key, expected_key, sizeof(key));
 
 	return EC_SUCCESS;
 }
@@ -354,6 +369,12 @@ test_static int test_derive_encryption_key(void)
 		0x9c, 0xe2, 0xe2, 0x6f, 0xe6, 0x66, 0x3d, 0x3a,
 	};
 
+	static uint8_t unused_key[SBP_ENC_KEY_LEN];
+	static const uint8_t unused_salt[FP_CONTEXT_ENCRYPTION_SALT_BYTES] = {
+		0
+	};
+	static const uint8_t info_wrong_size[] = { 0x01, 0x02, 0x03 };
+
 	/*
 	 * GIVEN that the TPM seed is set, and reading the rollback secret will
 	 * succeed.
@@ -367,6 +388,17 @@ test_static int test_derive_encryption_key(void)
 
 	TEST_ASSERT(test_derive_encryption_key_raw(user_id2, salt2, key2) ==
 		    EC_SUCCESS);
+
+	/* Providing user_id1 as custom info should still result in key1. */
+	TEST_ASSERT(test_derive_encryption_key_with_info_raw(
+			    user_id1, salt1,
+			    { reinterpret_cast<const uint8_t *>(user_id1),
+			      sizeof(user_id1) },
+			    key1) == EC_SUCCESS);
+	/* Providing custom info with invalid size should fail. */
+	TEST_ASSERT(derive_encryption_key_with_info(unused_key, unused_salt,
+						    info_wrong_size) ==
+		    EC_ERROR_INVAL);
 
 	return EC_SUCCESS;
 }
@@ -757,7 +789,7 @@ test_static int test_command_read_match_secret_unreadable(void)
 	return EC_SUCCESS;
 }
 
-test_static ec_error_list test_aes_gcm_encrypt_in_place()
+test_static ec_error_list test_aes_128_gcm_encrypt_in_place()
 {
 	constexpr std::array<uint8_t, SBP_ENC_KEY_LEN> key = {
 		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -781,11 +813,8 @@ test_static ec_error_list test_aes_gcm_encrypt_in_place()
 		0xa1, 0xab, 0x8f, 0xb3, 0x70, 0x75, 0xab, 0x48,
 	};
 
-	ec_error_list ret = aes_gcm_encrypt(key.data(), key.size(),
-					    plaintext.data(), plaintext.data(),
-					    plaintext.size(), nonce.data(),
-					    nonce.size(), tag.data(),
-					    tag.size());
+	ec_error_list ret =
+		aes_128_gcm_encrypt(key, plaintext, plaintext, nonce, tag);
 	TEST_EQ(ret, EC_SUCCESS, "%d");
 	TEST_ASSERT_ARRAY_EQ(plaintext.data(), expected_ciphertext.data(),
 			     plaintext.size());
@@ -794,7 +823,7 @@ test_static ec_error_list test_aes_gcm_encrypt_in_place()
 	return EC_SUCCESS;
 }
 
-test_static ec_error_list test_aes_gcm_decrypt_in_place()
+test_static ec_error_list test_aes_128_gcm_decrypt_in_place()
 {
 	constexpr std::array<uint8_t, SBP_ENC_KEY_LEN> key = {
 		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -820,10 +849,8 @@ test_static ec_error_list test_aes_gcm_decrypt_in_place()
 		0xa1, 0xab, 0x8f, 0xb3, 0x70, 0x75, 0xab, 0x48,
 	};
 
-	ec_error_list ret = aes_gcm_decrypt(
-		key.data(), key.size(), ciphertext.data(), ciphertext.data(),
-		ciphertext.size(), nonce.data(), nonce.size(), tag.data(),
-		tag.size());
+	ec_error_list ret =
+		aes_128_gcm_decrypt(key, ciphertext, ciphertext, nonce, tag);
 	;
 	TEST_EQ(ret, EC_SUCCESS, "%d");
 	TEST_ASSERT_ARRAY_EQ(ciphertext.data(), expected_plaintext.data(),
@@ -832,10 +859,72 @@ test_static ec_error_list test_aes_gcm_decrypt_in_place()
 	return EC_SUCCESS;
 }
 
+test_static ec_error_list test_aes_128_gcm_encrypt_invalid_nonce_size()
+{
+	constexpr std::array<uint8_t, SBP_ENC_KEY_LEN> key{};
+	std::array<uint8_t, 16> text{};
+	std::array<uint8_t, FP_CONTEXT_TAG_BYTES> tag{};
+
+	/* Use an invalid nonce size. */
+	constexpr std::array<uint8_t, FP_CONTEXT_NONCE_BYTES - 1> nonce{};
+
+	ec_error_list ret = aes_128_gcm_encrypt(key, text, text, nonce, tag);
+	TEST_EQ(ret, EC_ERROR_INVAL, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static ec_error_list test_aes_128_gcm_decrypt_invalid_nonce_size()
+{
+	constexpr std::array<uint8_t, SBP_ENC_KEY_LEN> key{};
+	std::array<uint8_t, 16> text{};
+	constexpr std::array<uint8_t, FP_CONTEXT_TAG_BYTES> tag{};
+
+	/* Use an invalid nonce size. */
+	constexpr std::array<uint8_t, FP_CONTEXT_NONCE_BYTES - 1> nonce{};
+
+	ec_error_list ret = aes_128_gcm_decrypt(key, text, text, nonce, tag);
+	TEST_EQ(ret, EC_ERROR_INVAL, "%d");
+	return EC_SUCCESS;
+}
+
+test_static ec_error_list test_aes_128_gcm_encrypt_invalid_key_size()
+{
+	std::array<uint8_t, 16> text{};
+	std::array<uint8_t, FP_CONTEXT_TAG_BYTES> tag{};
+	constexpr std::array<uint8_t, FP_CONTEXT_NONCE_BYTES> nonce{};
+
+	/* Use an invalid key size. Key must be exactly 128 bits. */
+	constexpr std::array<uint8_t, SBP_ENC_KEY_LEN - 1> key{};
+
+	ec_error_list ret = aes_128_gcm_encrypt(key, text, text, nonce, tag);
+	TEST_EQ(ret, EC_ERROR_UNKNOWN, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static ec_error_list test_aes_128_gcm_decrypt_invalid_key_size()
+{
+	std::array<uint8_t, 16> text{};
+	constexpr std::array<uint8_t, FP_CONTEXT_TAG_BYTES> tag{};
+	constexpr std::array<uint8_t, FP_CONTEXT_NONCE_BYTES> nonce{};
+
+	/* Use an invalid key size. Key must be exactly 128 bits. */
+	constexpr std::array<uint8_t, SBP_ENC_KEY_LEN - 1> key{};
+
+	ec_error_list ret = aes_128_gcm_decrypt(key, text, text, nonce, tag);
+	TEST_EQ(ret, EC_ERROR_UNKNOWN, "%d");
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
-	RUN_TEST(test_aes_gcm_encrypt_in_place);
-	RUN_TEST(test_aes_gcm_decrypt_in_place);
+	RUN_TEST(test_aes_128_gcm_encrypt_in_place);
+	RUN_TEST(test_aes_128_gcm_decrypt_in_place);
+	RUN_TEST(test_aes_128_gcm_encrypt_invalid_nonce_size);
+	RUN_TEST(test_aes_128_gcm_decrypt_invalid_nonce_size);
+	RUN_TEST(test_aes_128_gcm_encrypt_invalid_key_size);
+	RUN_TEST(test_aes_128_gcm_decrypt_invalid_key_size);
 	RUN_TEST(test_hkdf_expand);
 	RUN_TEST(test_derive_encryption_key_failure_seed_not_set);
 	RUN_TEST(test_derive_positive_match_secret_fail_seed_not_set);
