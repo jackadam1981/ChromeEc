@@ -16,6 +16,24 @@
       "message": "Forest, as far as you know, did this CL allow screebo to get one step further in the test, or did we fail in the exact same spot?",
       "revId": "008c71c2450d97294d9423a8de6cf9f9c24c9212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0afe9fe_433bb43a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-04-30T23:12:53Z",
+      "side": 1,
+      "message": "Failed the same way, but I still think it is a good change",
+      "parentUuid": "0778be08_318e4303",
+      "revId": "008c71c2450d97294d9423a8de6cf9f9c24c9212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
