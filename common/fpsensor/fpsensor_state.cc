@@ -59,7 +59,7 @@ void fp_reset_context()
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(fp_enc_buffer.data(), fp_enc_buffer.size());
 	OPENSSL_cleanse(global_context.user_id, sizeof(global_context.user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
 	fp_disable_positive_match_secret(
