@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "charger.h"
 #include "common.h"
 #include "cros_board_info.h"
 #include "driver/mp2964.h"
@@ -117,4 +118,13 @@ uint8_t board_get_finch_version(void)
 			board_id);
 		return 0;
 	}
+}
+
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+				       int max_ma, int charge_mv)
+{
+	charger_set_input_current_limit(
+		CHARGER_SOLO,
+		charge_ma * (100 - CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT) /
+			100);
 }
