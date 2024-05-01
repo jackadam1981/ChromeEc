@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90da275_89bc70ca",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-01T19:50:01Z",
+      "side": 1,
+      "message": "Maybe `zassert_mem_equal()` here unless it makes sense to interpret this as two separate 32-bit fields?",
+      "range": {
+        "startLine": 895,
+        "startChar": 1,
+        "endLine": 903,
+        "endChar": 26
+      },
+      "revId": "571374bc7328f8ce53e53f10c72a955b22dc7ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
