@@ -39,6 +39,30 @@
       },
       "revId": "50c337c38e58316b7117a3912206ab1e03771b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e8d814_3ce6c030",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-01T22:40:41Z",
+      "side": 1,
+      "message": "It does technically violate our guidelines for pre-upload checks at the moment:\n\nhttps://chromium.googlesource.com/chromiumos/repohooks/+/HEAD/README.md#guidelines-for-hooks-and-hook-scripts\n\nOne of the problems with it is that this potentially requires you to enter your password for sudo, and repohooks squelches that in the background.  You\u0027ll observe that the repohooks \"hang\" in this scenario.\n\nIs there no way to make this work without an SDK?",
+      "parentUuid": "ef5acc1c_c64fe651",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "50c337c38e58316b7117a3912206ab1e03771b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
