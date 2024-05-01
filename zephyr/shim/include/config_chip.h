@@ -2597,4 +2597,9 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_IO_EXPANDER_CCGXXF
 #endif
 
+#undef CONFIG_HOSTCMD_CONSOLE_PRINT
+#ifdef CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_PRINT
+#define CONFIG_HOSTCMD_CONSOLE_PRINT
+#endif
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
