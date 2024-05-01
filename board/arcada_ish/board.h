@@ -49,10 +49,17 @@
 #undef CONFIG_FMAP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_SWITCH
+<<<<<<< HEAD   (1ca04d51f595cd68c6132a6a1a0dd52f91088d16 charge_manager: Make charge OVERRIDE_DONT_CHARGE persistent)
 /* TODO: Watch Dog is supported but temporarily removed. Currently under 
  * development on KBL and will be carried over to WHL.
  */
 #undef CONFIG_WATCHDOG
+||||||| BASE   (5b42e4670d58fc19e82da4e955ef06fbc67bfd66 tcpmv2: Don't call tcpm_debug_detach during PRS)
+#undef CONFIG_CONSOLE_VERBOSE
+=======
+#undef CONFIG_CONSOLE_VERBOSE
+#undef CONFIG_HOSTCMD_CONSOLE_PRINT
+>>>>>>> CHANGE (655c2c33c22933d7a492282882ec3781893d3521 host_cmd: Add console_print host command)
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_ACCELS
