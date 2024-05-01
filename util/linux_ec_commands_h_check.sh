@@ -7,25 +7,21 @@
 set -e
 
 : "${ZEPHYR_BASE:=$(realpath ../../../src/third_party/zephyr/main)}"
+CHROOT_TMP="$(realpath ../../../out/tmp)"
 
-ec_commands_file_in="include/ec_commands.h"
-ec_commands_file_out="build/kernel/include/linux/mfd/cros_ec_commands.h"
+ec_commands_file_out="${CHROOT_TMP}/$$/cros_ec_commands.h"
 
-# Check if ec_commands.h has changed.
-echo "${PRESUBMIT_FILES:?}" | xargs -d'\n' -- grep -q \
-  "${ec_commands_file_in}" || exit 0
+cleanup() {
+  rm -rf "${CHROOT_TMP:?}/$$"
+}
 
-if [ ! -f "${ec_commands_file_out}" ]; then
-  echo "A new cros_ec_commands.h must be generated."
-  echo 'Please run "make buildall" or "make build_cros_ec_commands"'.
-  exit 1
-fi
+trap cleanup EXIT
 
-if [ "${ec_commands_file_out}" -ot "${ec_commands_file_in}" ]; then
-  echo "cros_ec_commands.h is out of date."
-  echo 'Please run "make buildall" or "make build_cros_ec_commands"'.
-  exit 1
-fi
+cros_sdk --working-dir /mnt/host/source/src/platform/ec -- \
+  ./util/make_linux_ec_commands_h.sh include/ec_commands.h \
+  /tmp/$$/cros_ec_commands.h
 
 "${ZEPHYR_BASE}/scripts/checkpatch.pl" -f "${ec_commands_file_out}" \
   --ignore=BRACKET_SPACE
+
+cleanup
