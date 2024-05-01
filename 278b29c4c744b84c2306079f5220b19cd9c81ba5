@@ -93,6 +93,30 @@
       },
       "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f230f1_ef26b1cc",
+        "filename": "zephyr/test/hwtest/src/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-01T23:17:42Z",
+      "side": 1,
+      "message": "I found that there actually is [already a test for `secure_clear`](http://b/333039464#comment2). Does that one run on hardware?",
+      "parentUuid": "c0bc2768_b2c2a32e",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
