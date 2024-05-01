@@ -652,6 +652,11 @@
 /* Max length of a single line of input */
 #define CONFIG_CONSOLE_INPUT_LINE_SIZE 80
 
+/* Enable the console print command. This allows the host to print messages
+ * directly in the EC console.
+ */
+#define CONFIG_HOSTCMD_CONSOLE_PRINT
+
 /*
  * Disable EC console input if the system is locked.  This is needed for
  * security on platforms where the EC console is accessible from outside the
