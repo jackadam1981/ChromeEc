@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb340a1_ff63bccb",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-01T01:07:40Z",
+      "side": 1,
+      "message": "This isn\u0027t UCSI specific, so maybe pdc.h would be a better place for this code.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "38b0b4b520a4de3a6b9d641db62e2a2dd79e35aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
