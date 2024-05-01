@@ -70,6 +70,30 @@
       },
       "revId": "33a1a03655eba4aa8809c49b5f39c4c368f0cb29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86ce225_c90d7eab",
+        "filename": "board/xol/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2024-05-01T02:40:44Z",
+      "side": 1,
+      "message": "Updated in patch#3",
+      "parentUuid": "c564333e_621f8a3d",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "33a1a03655eba4aa8809c49b5f39c4c368f0cb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
