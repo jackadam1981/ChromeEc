@@ -66,3 +66,10 @@ menuconfig PLATFORM_EC_CONSOLE_DEBUG
 	  Write all zephyr_print() messages to printk() also. Not recommended
 	  outside of tests.
 
+config PLATFORM_EC_HOSTCMD_CONSOLE_PRINT
+	bool "Console Print Command"
+	depends on CONSOLE && PLATFORM_EC_HOSTCMD
+	default y
+	help
+	  Enable the EC_CMD_CONSOLE_PRINT host command. This allows the host
+	  to print messages directly to the EC console.
