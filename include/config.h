@@ -756,6 +756,55 @@
 /* Max length of a single line of input */
 #define CONFIG_CONSOLE_INPUT_LINE_SIZE 80
 
+<<<<<<< HEAD   (56d1e2cbe101b7f277f17729c47cb81f5826a19c system: Add wait-ext option to ec reboot command)
+||||||| BASE   (5b42e4670d58fc19e82da4e955ef06fbc67bfd66 tcpmv2: Don't call tcpm_debug_detach during PRS)
+/* Amount of time to keep the console in use flag */
+#define CONFIG_CONSOLE_IN_USE_ON_BOOT_TIME (15 * SECOND)
+
+/* Enable verbose output to UART console and extra timestamp print precision. */
+#define CONFIG_CONSOLE_VERBOSE
+
+/*****************************************************************************/
+/* Support for EC-EC communication */
+
+/*
+ * Board is client or server in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_CLIENT
+#undef CONFIG_EC_EC_COMM_SERVER
+
+/*
+ * Board support battery-related functions in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_BATTERY
+
+=======
+/* Amount of time to keep the console in use flag */
+#define CONFIG_CONSOLE_IN_USE_ON_BOOT_TIME (15 * SECOND)
+
+/* Enable verbose output to UART console and extra timestamp print precision. */
+#define CONFIG_CONSOLE_VERBOSE
+
+/* Enable the console print command. This allows the host to print messages
+ * directly in the EC console.
+ */
+#define CONFIG_HOSTCMD_CONSOLE_PRINT
+
+/*****************************************************************************/
+/* Support for EC-EC communication */
+
+/*
+ * Board is client or server in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_CLIENT
+#undef CONFIG_EC_EC_COMM_SERVER
+
+/*
+ * Board support battery-related functions in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_BATTERY
+
+>>>>>>> CHANGE (655c2c33c22933d7a492282882ec3781893d3521 host_cmd: Add console_print host command)
 /*
  * Enable the experimental console.
  *
