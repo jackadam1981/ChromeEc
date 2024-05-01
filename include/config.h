@@ -873,6 +873,43 @@
 /* Enable verbose output to UART console and extra timestamp print precision. */
 #define CONFIG_CONSOLE_VERBOSE
 
+<<<<<<< HEAD   (edcafc4b7201fdcfe33a671b1996a6126ba9bb4a coral: assert RSMRST to PCH while force shutdown)
+||||||| BASE   (5b42e4670d58fc19e82da4e955ef06fbc67bfd66 tcpmv2: Don't call tcpm_debug_detach during PRS)
+/*****************************************************************************/
+/* Support for EC-EC communication */
+
+/*
+ * Board is client or server in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_CLIENT
+#undef CONFIG_EC_EC_COMM_SERVER
+
+/*
+ * Board support battery-related functions in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_BATTERY
+
+=======
+/* Enable the console print command. This allows the host to print messages
+ * directly in the EC console.
+ */
+#define CONFIG_HOSTCMD_CONSOLE_PRINT
+
+/*****************************************************************************/
+/* Support for EC-EC communication */
+
+/*
+ * Board is client or server in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_CLIENT
+#undef CONFIG_EC_EC_COMM_SERVER
+
+/*
+ * Board support battery-related functions in EC-EC communication.
+ */
+#undef CONFIG_EC_EC_COMM_BATTERY
+
+>>>>>>> CHANGE (655c2c33c22933d7a492282882ec3781893d3521 host_cmd: Add console_print host command)
 /*
  * Enable the experimental console.
  *
