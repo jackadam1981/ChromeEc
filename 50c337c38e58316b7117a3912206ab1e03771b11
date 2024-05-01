@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58ce50ca_99e4a654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-05-01T23:51:23Z",
+      "side": 1,
+      "message": "It has moved to `./include/linux/platform_data/cros_ec_commands.h`.\nThe script is also useful for other code base where we want a properly formatted `ec_commands.h` (coreboot).\nHaving said that, kernel maintainers do not like cosmetic fixes, so change to the kernel include file is only done when a new feature described in `ec_commands.h` is actually added (via a driver) into the kernel.",
+      "parentUuid": "fc0eee56_c2062fd2",
+      "revId": "50c337c38e58316b7117a3912206ab1e03771b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef5acc1c_c64fe651",
         "filename": "util/linux_ec_commands_h_check.sh",
         "patchSetId": 1

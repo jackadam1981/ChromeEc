@@ -34,6 +34,24 @@
       "parentUuid": "de38c607_104518ec",
       "revId": "4c4e7f6907c6e277b23708ec9af72d561f13941d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607d64be_0c505265",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-05-01T23:51:23Z",
+      "side": 0,
+      "message": "Even with a `repo upload --no-verify`?",
+      "parentUuid": "97611f40_fd2a49ad",
+      "revId": "4c4e7f6907c6e277b23708ec9af72d561f13941d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
