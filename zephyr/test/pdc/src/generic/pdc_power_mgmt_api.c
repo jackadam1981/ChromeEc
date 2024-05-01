@@ -23,6 +23,9 @@ static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 #define SMBUS_ARA_NODE DT_NODELABEL(smbus_ara_emul)
 static const struct emul *ara = EMUL_DT_GET(SMBUS_ARA_NODE);
 
+bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port);
+bool test_pdc_power_mgmt_is_src_typec_attached_run(int port);
+
 void pdc_power_mgmt_setup(void)
 {
 	zassume(TEST_PORT < CONFIG_USB_PD_PORT_MAX_COUNT,
@@ -869,4 +872,32 @@ ZTEST_USER(pdc_power_mgmt_api, test_names)
 		zassert_not_null(pdc_cmd_names[i],
 				 "PDC command %d missing name", i);
 	}
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_snk_typec_attached)
+{
+	union connector_status_t connector_status;
+
+	memset(&connector_status, 0, sizeof(connector_status));
+	emul_pdc_configure_snk(emul, &connector_status);
+	connector_status.power_operation_mode = PD_OPERATION;
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	/* Give the state plenty of time to settle. */
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+	zassert_true(test_pdc_power_mgmt_is_snk_typec_attached_run(TEST_PORT));
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_src_typec_attached)
+{
+	union connector_status_t connector_status;
+
+	memset(&connector_status, 0, sizeof(connector_status));
+	emul_pdc_configure_src(emul, &connector_status);
+	connector_status.power_operation_mode = PD_OPERATION;
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	/* Give the state plenty of time to settle. */
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+	zassert_true(test_pdc_power_mgmt_is_src_typec_attached_run(TEST_PORT));
 }

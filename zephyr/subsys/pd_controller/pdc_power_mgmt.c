@@ -3061,3 +3061,19 @@ void pdc_power_mgmt_request_source_voltage(int port, int mv)
 		pdc_power_mgmt_request_swap_to_snk(port);
 	}
 }
+
+#ifdef CONFIG_ZTEST
+
+bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)
+{
+	return pdc_data[port]->port.snk_typec_attached_local_state ==
+	       SNK_TYPEC_ATTACHED_RUN;
+}
+
+bool test_pdc_power_mgmt_is_src_typec_attached_run(int port)
+{
+	return pdc_data[port]->port.src_typec_attached_local_state ==
+	       SRC_TYPEC_ATTACHED_RUN;
+}
+
+#endif
