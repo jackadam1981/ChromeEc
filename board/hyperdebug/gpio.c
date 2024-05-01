@@ -15,6 +15,7 @@
 #include "gpio_chip.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "panic.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -1240,6 +1241,14 @@ static volatile uint32_t bitbang_head = 0;
  */
 static uint32_t bitbang_countdown;
 
+/*
+ * In case the encoded data indicates a "pause" until certain input trigger,
+ * this is represented by `bitbang_mask` being non-zero.  Only once the sampled
+ * input pins match `bitbang_pattern` for all of the bits set in `bitbang_mask`
+ * will processing of the remaining part of the bitbanging waveform resume.
+ */
+static uint8_t bitbang_mask, bitbang_pattern;
+
 #define BITBANG_DELAY_BIT 0x80
 #define BITBANG_DATA_MASK 0x7F
 
@@ -1265,22 +1274,7 @@ void IRQ_HANDLER(IRQ_TIM(BITBANG_TIMER))(void)
 		bitbang_countdown--;
 		return;
 	}
-	uint8_t data_byte = *bitbang_data_ptr(bitbang_irq);
-	if (data_byte & BITBANG_DELAY_BIT) {
-		/* Maintain current levels for a number of cycles. */
-		uint8_t delay_scale = 0;
-		bitbang_countdown = 0;
-		do {
-			bitbang_irq++;
-			bitbang_countdown += ((data_byte & BITBANG_DATA_MASK)
-					      << delay_scale);
-			delay_scale += 7;
-			data_byte = *bitbang_data_ptr(bitbang_irq);
-		} while (data_byte & BITBANG_DELAY_BIT);
-		/* One cycle of delay already spent processing */
-		bitbang_countdown--;
-		return;
-	}
+
 	/*
 	 * Read current level of all pins part of bit-banging.  If some of the
 	 * pins are in push-pull mode, this will be what was written the
@@ -1291,6 +1285,57 @@ void IRQ_HANDLER(IRQ_TIM(BITBANG_TIMER))(void)
 		input_data |= !!(STM32_GPIO_IDR(bitbang_pin_bases[i]) &
 				 bitbang_pin_masks[i])
 			      << i;
+	}
+
+	if (bitbang_mask) {
+		/*
+		 * We are waiting for a particular trigger pattern, before
+		 * generating the remaning part of the bitbang waveform.
+		 */
+		if ((input_data ^ bitbang_pattern) & bitbang_mask) {
+			/* No match, sample again next cycle */
+			return;
+		}
+		/* Match, proceed */
+		bitbang_mask = 0;
+	}
+
+	uint8_t data_byte = *bitbang_data_ptr(bitbang_irq);
+	while (data_byte & BITBANG_DELAY_BIT) {
+		/* Maintain current levels for a number of cycles. */
+		uint8_t delay_scale = 0;
+		bitbang_countdown = 0;
+		do {
+			bitbang_irq++;
+			bitbang_countdown += ((data_byte & BITBANG_DATA_MASK)
+					      << delay_scale);
+			delay_scale += 7;
+			data_byte = *bitbang_data_ptr(bitbang_irq);
+		} while (data_byte & BITBANG_DELAY_BIT);
+		if (bitbang_countdown > 0) {
+			/* One cycle of delay already spent processing */
+			bitbang_countdown--;
+			return;
+		}
+		/*
+		 * Zero-cycle delay is not possible, the encoding is used as
+		 * escape for "special" commands, in this case waiting
+		 * indefinitely for a particular trigger.
+		 */
+		bitbang_mask = *bitbang_data_ptr(bitbang_irq++);
+		bitbang_pattern = *bitbang_data_ptr(bitbang_irq++);
+
+		if ((input_data ^ bitbang_pattern) & bitbang_mask) {
+			/* No match, sample again next cycle */
+			return;
+		}
+		/*
+		 * Match, immediately proceed, taking care that next byte could
+		 * either be a sample or another delay/wait, hence the need for
+		 * another iteration in the loop.
+		 */
+		bitbang_mask = 0;
+		data_byte = *bitbang_data_ptr(bitbang_irq);
 	}
 	*bitbang_data_ptr(bitbang_irq++) = input_data;
 	/*
@@ -1687,7 +1732,8 @@ static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
 			valid_idx = idx;
 			continue;
 		}
-		uint8_t delay_scale = 0;
+		uint8_t delay_scale = 0, num_bytes = 0;
+		bool all_zeroes = true;
 		while (idx != tail_goal &&
 		       *bitbang_data_ptr(idx) & BITBANG_DELAY_BIT) {
 			uint8_t data = *bitbang_data_ptr(idx) &
@@ -1703,7 +1749,32 @@ static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
 				return STATUS_ERROR_WAVEFORM;
 			}
 			delay_scale += 7;
+			num_bytes++;
+			if (data != 0)
+				all_zeroes = false;
 			idx++;
+		}
+		if (all_zeroes) {
+			/*
+			 * Zero-cycle delay is invalid, the encoding is used as
+			 * escape for "special" commands.
+			 */
+			if (num_bytes == 2) {
+				/*
+				 * Request to wait for particular pattern of
+				 * input pins.  Verify that required parameters
+				 * are present.
+				 */
+				if (++idx == tail_goal)
+					break;
+				if (++idx == tail_goal)
+					break;
+			} else {
+				/*
+				 * Unrecognized special request encoding.
+				 */
+				return STATUS_ERROR_WAVEFORM;
+			}
 		}
 	}
 
