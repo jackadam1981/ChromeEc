@@ -79,6 +79,13 @@
 #undef CONFIG_FLASH
 #undef CONFIG_FMAP
 #undef CONFIG_SWITCH
+<<<<<<< HEAD   (37814bf291fc0b9a8d3f24e64573048e44757c81 Clear OWNERS for factory/firmware branch)
+||||||| BASE   (5b42e4670d58fc19e82da4e955ef06fbc67bfd66 tcpmv2: Don't call tcpm_debug_detach during PRS)
+#undef CONFIG_CONSOLE_VERBOSE
+=======
+#undef CONFIG_CONSOLE_VERBOSE
+#undef CONFIG_HOSTCMD_CONSOLE_PRINT
+>>>>>>> CHANGE (655c2c33c22933d7a492282882ec3781893d3521 host_cmd: Add console_print host command)
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_HASH
