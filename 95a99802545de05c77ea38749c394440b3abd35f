@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b677a93_42e141fb",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-01T17:57:05Z",
+      "side": 1,
+      "message": "do we need this in a header?\nInstead of inline function . How about just using macro is C file?",
+      "range": {
+        "startLine": 225,
+        "startChar": 19,
+        "endLine": 225,
+        "endChar": 35
+      },
+      "revId": "95a99802545de05c77ea38749c394440b3abd35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c300abd8_fa6e4c35",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-01T17:57:05Z",
+      "side": 1,
+      "message": "at init it\u0027s 0. Remove",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "95a99802545de05c77ea38749c394440b3abd35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3b0a1f_08eebc3c",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-01T17:57:05Z",
+      "side": 1,
+      "message": "how about simple assignments everywhere? easy to read.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "95a99802545de05c77ea38749c394440b3abd35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ce4bb1_007bdac6",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-01T17:57:05Z",
+      "side": 1,
+      "message": "Get",
+      "revId": "95a99802545de05c77ea38749c394440b3abd35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a39daf_c7785cc0",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-01T17:57:05Z",
+      "side": 1,
+      "message": "add a newline",
+      "range": {
+        "startLine": 95,
+        "startChar": 55,
+        "endLine": 95,
+        "endChar": 56
+      },
+      "revId": "95a99802545de05c77ea38749c394440b3abd35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
