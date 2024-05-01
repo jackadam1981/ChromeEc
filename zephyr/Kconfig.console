@@ -100,3 +100,11 @@ config PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER_TMP_BUF_SIZE
 	  The logging subsystem will buffer up to this many bytes before calling
 	  the backend in deferred logging mode. Ideally this will be large
 	  enough to fit an entire log line.
+
+config PLATFORM_EC_HOSTCMD_CONSOLE_PRINT
+	bool "Console Print Command"
+	depends on CONSOLE && PLATFORM_EC_HOSTCMD
+	default y
+	help
+	  Enable the EC_CMD_CONSOLE_PRINT host command. This allows the host
+	  to print messages directly to the EC console.
