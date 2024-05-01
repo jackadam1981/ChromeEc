@@ -16,6 +16,24 @@
       "message": "Don\u0027t we still want to skip if I want to submit a change that does not affect `ec_commands.h` when the previous submitter forced a change in `ec_commands.h` that trigger a check_patch error but was ignored?",
       "revId": "4c4e7f6907c6e277b23708ec9af72d561f13941d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97611f40_fd2a49ad",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-01T22:29:21Z",
+      "side": 0,
+      "message": "fullcheckout-presubmit will prevent the previous submitter from doing that. It won\u0027t be possible to ignore check_patch errors.",
+      "parentUuid": "de38c607_104518ec",
+      "revId": "4c4e7f6907c6e277b23708ec9af72d561f13941d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
