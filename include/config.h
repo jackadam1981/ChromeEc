@@ -652,6 +652,33 @@
 /* Max length of a single line of input */
 #define CONFIG_CONSOLE_INPUT_LINE_SIZE 80
 
+<<<<<<< HEAD   (1473136d99c8008ae3656dc3e51624bc83ab713d Clear OWNERS for factory/firmware branch)
+||||||| BASE   (5b42e4670d58fc19e82da4e955ef06fbc67bfd66 tcpmv2: Don't call tcpm_debug_detach during PRS)
+/* Amount of time to keep the console in use flag */
+#define CONFIG_CONSOLE_IN_USE_ON_BOOT_TIME (15 * SECOND)
+
+/* Enable verbose output to UART console and extra timestamp print precision. */
+#define CONFIG_CONSOLE_VERBOSE
+
+/*****************************************************************************/
+/* Support for EC-EC communication */
+
+=======
+/* Amount of time to keep the console in use flag */
+#define CONFIG_CONSOLE_IN_USE_ON_BOOT_TIME (15 * SECOND)
+
+/* Enable verbose output to UART console and extra timestamp print precision. */
+#define CONFIG_CONSOLE_VERBOSE
+
+/* Enable the console print command. This allows the host to print messages
+ * directly in the EC console.
+ */
+#define CONFIG_HOSTCMD_CONSOLE_PRINT
+
+/*****************************************************************************/
+/* Support for EC-EC communication */
+
+>>>>>>> CHANGE (655c2c33c22933d7a492282882ec3781893d3521 host_cmd: Add console_print host command)
 /*
  * Disable EC console input if the system is locked.  This is needed for
  * security on platforms where the EC console is accessible from outside the
