@@ -16,6 +16,23 @@
       "message": "I\u0027m okay with this, but Caveh I think you had a different suggestion.",
       "revId": "faddb6918982371a393310a3ec2301cd9419c5a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d4bfe8_3b4c60c8",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-01T22:50:42Z",
+      "side": 1,
+      "message": "ideally, this should be:\n`params-\u003eport \u003d i2c_get_port_from_remote_port(params-\u003eport)`\nafter `params` is declared in these functions, but we would\nalso need to remove the `const` storage qualifier.",
+      "revId": "faddb6918982371a393310a3ec2301cd9419c5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
