@@ -148,10 +148,10 @@ const struct smbus_cmd_t GET_CAPABILITY = { 0x0E, 0x02, 0x06 };
 const struct smbus_cmd_t GET_CONNECTOR_CAPABILITY = { 0x0E, 0x03, 0x07 };
 const struct smbus_cmd_t SET_UOR = { 0x0E, 0x04, 0x09 };
 const struct smbus_cmd_t SET_PDR = { 0x0E, 0x04, 0x0B };
-const struct smbus_cmd_t UCSI_GET_CONNECTOR_STATUS = { 0x0E, 0x3, 0x12 };
-const struct smbus_cmd_t UCSI_GET_ERROR_STATUS = { 0x0E, 0x03, 0x13 };
-const struct smbus_cmd_t UCSI_READ_POWER_LEVEL = { 0x0E, 0x05, 0x1E };
-const struct smbus_cmd_t UCSI_SET_CCOM = { 0x0E, 0x04, 0x08 };
+const struct smbus_cmd_t RTS_UCSI_GET_CONNECTOR_STATUS = { 0x0E, 0x3, 0x12 };
+const struct smbus_cmd_t RTS_UCSI_GET_ERROR_STATUS = { 0x0E, 0x03, 0x13 };
+const struct smbus_cmd_t RTS_UCSI_READ_POWER_LEVEL = { 0x0E, 0x05, 0x1E };
+const struct smbus_cmd_t RTS_UCSI_SET_CCOM = { 0x0E, 0x04, 0x08 };
 const struct smbus_cmd_t GET_IC_STATUS = { 0x3A, 0x03 };
 const struct smbus_cmd_t SET_RETIMER_FW_UPDATE_MODE = { 0x20, 0x03, 0x00 };
 const struct smbus_cmd_t GET_CABLE_PROPERTY = { 0x0E, 0x03, 0x11 };
@@ -1508,9 +1508,9 @@ static int rts54_read_power_level(const struct device *dev)
 	 * function from the PDC subsys API and set below.
 	 */
 	uint8_t payload[] = {
-		UCSI_READ_POWER_LEVEL.cmd,
-		UCSI_READ_POWER_LEVEL.len,
-		UCSI_READ_POWER_LEVEL.sub,
+		RTS_UCSI_READ_POWER_LEVEL.cmd,
+		RTS_UCSI_READ_POWER_LEVEL.len,
+		RTS_UCSI_READ_POWER_LEVEL.sub,
 		0x00, /* Data Length --> set to 0x00 */
 		0x00, /* Connector number  */
 		0x00,
@@ -1743,9 +1743,9 @@ static int rts54_get_connector_status(const struct device *dev,
 	}
 
 	uint8_t payload[] = {
-		UCSI_GET_CONNECTOR_STATUS.cmd,
-		UCSI_GET_CONNECTOR_STATUS.len,
-		UCSI_GET_CONNECTOR_STATUS.sub,
+		RTS_UCSI_GET_CONNECTOR_STATUS.cmd,
+		RTS_UCSI_GET_CONNECTOR_STATUS.len,
+		RTS_UCSI_GET_CONNECTOR_STATUS.sub,
 		0x00, /* Data Length --> set to 0x00 */
 		0x00, /* Connector number --> don't care for Realtek */
 	};
@@ -1800,9 +1800,9 @@ static int rts54_get_error_status(const struct device *dev,
 	}
 
 	uint8_t payload[] = {
-		UCSI_GET_ERROR_STATUS.cmd,
-		UCSI_GET_ERROR_STATUS.len,
-		UCSI_GET_ERROR_STATUS.sub,
+		RTS_UCSI_GET_ERROR_STATUS.cmd,
+		RTS_UCSI_GET_ERROR_STATUS.len,
+		RTS_UCSI_GET_ERROR_STATUS.sub,
 		0x00, /* Data Length --> set to 0x00 */
 		0x00, /* Connector number --> don't care for Realtek */
 	};
@@ -1958,9 +1958,9 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom)
 	}
 
 	uint8_t payload[] = {
-		UCSI_SET_CCOM.cmd,  UCSI_SET_CCOM.len,
-		UCSI_SET_CCOM.sub,  0x00 /* data length */,
-		conn_opmode & 0xff, (conn_opmode >> 8) & 0xff,
+		RTS_UCSI_SET_CCOM.cmd, RTS_UCSI_SET_CCOM.len,
+		RTS_UCSI_SET_CCOM.sub, 0x00 /* data length */,
+		conn_opmode & 0xff,    (conn_opmode >> 8) & 0xff,
 	};
 
 	return rts54_post_command(dev, CMD_SET_CCOM, payload,
