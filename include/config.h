@@ -1407,6 +1407,11 @@
  */
 #undef CONFIG_EC_EC_COMM_BATTERY
 
+/* Enable the console print command. This allows the host to print messages
+ * directly in the EC console.
+ */
+#define CONFIG_HOSTCMD_CONSOLE_PRINT
+
 /*
  * Enable the experimental console.
  *
