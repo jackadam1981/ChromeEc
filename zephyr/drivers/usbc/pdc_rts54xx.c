@@ -2341,6 +2341,7 @@ static int rts54_set_pdo(const struct device *dev, enum pdo_type_t type,
 }
 
 #define SMBUS_MAX_BLOCK_SIZE 32
+#define SYNC_CMD_RETRY_COUNT 100
 
 static int rts54_execute_command_sync(const struct device *dev,
 				      uint8_t ucsi_command, uint8_t data_size,
@@ -2353,6 +2354,7 @@ static int rts54_execute_command_sync(const struct device *dev,
 	void *cb_data_copy;
 	int call_counter;
 	int rv;
+	bool cmd_posted = false;
 
 	if (ucsi_command == UCSI_CMD_GET_CONNECTOR_STATUS &&
 	    data->conn_status_cached) {
@@ -2362,41 +2364,51 @@ static int rts54_execute_command_sync(const struct device *dev,
 		return sizeof(data->conn_status);
 	}
 
-	/* We don't know yet if the PDC driver is busy or not. */
-	if (get_state(data) != ST_IDLE || data->cmd != CMD_NONE) {
-		LOG_ERR("%s: Failed to run (-EBUSY)", __func__);
-		return -EBUSY;
-	}
-
 	cmd_buffer[0] = REALTEK_PD_COMMAND;
 	cmd_buffer[1] = data_size + 2;
 	cmd_buffer[2] = ucsi_command; /* sub-cmd */
 	cmd_buffer[3] = 0;
 	memcpy(&cmd_buffer[4], command_specific, data_size);
 
-	rv = rts54_post_command(dev, ucsi_command, cmd_buffer, data_size + 4,
-				lpm_data_out);
-	if (rv < 0) {
-		LOG_ERR("%s: Failed to run (%d)", __func__, rv);
-		return rv;
-	}
-
-	cci_cb_copy = data->cci_cb;
-	cb_data_copy = data->cb_data;
-	rts54_set_handler_cb(dev, NULL, NULL);
+	/*
+	 * This loop combines two timers: timer for posting a command + timer
+	 * for receiving the result. It doesn't matter (from OPM's perspective)
+	 * which part caused the delay.
+	 */
 	call_counter = 0;
-
 	do {
+		if (!cmd_posted && get_state(data) == ST_IDLE) {
+			rv = rts54_post_command(dev, use_cmd, cmd_buffer,
+						data_size + 4, lpm_data_out);
+
+			/* Try again if busy. All other errors should exit. */
+			if (rv < 0) {
+				if (rv != -EBUSY) {
+					LOG_ERR("%s: Failed to run (%d)",
+						__func__, rv);
+					return rv;
+				}
+			} else {
+				/*
+				 * Temporarily clear the CCI callback to prevent
+				 * results from polluting the other handler.
+				 */
+				cmd_posted = true;
+				cci_cb_copy = data->cci_cb;
+				cb_data_copy = data->cb_data;
+				rts54_set_handler_cb(dev, NULL, NULL);
+			}
+		}
 		/* Wait for timeout or event */
-		k_sleep(K_MSEC(20));
+		k_sleep(K_MSEC(T_PING_STATUS));
 
 		call_counter++;
-		if (call_counter > 100) {
-			LOG_ERR("%s: Block call timeout", __func__);
+		if (call_counter > SYNC_CMD_RETRY_COUNT) {
 			rv = -ETIMEDOUT;
 			break;
 		}
-	} while (!data->cci_event.command_completed && !data->cci_event.error);
+	} while (!cmd_posted || (!data->cci_event.command_completed &&
+				 !data->cci_event.error));
 
 	rts54_set_handler_cb(dev, cci_cb_copy, cb_data_copy);
 
