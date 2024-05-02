@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56beca40_30816b41",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-02T19:33:00Z",
+      "side": 1,
+      "message": "no need for the backslash in regular C.",
+      "range": {
+        "startLine": 137,
+        "startChar": 41,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7bfd32_dbba7d46",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-02T19:33:00Z",
+      "side": 1,
+      "message": "no need for () here.",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 49
+      },
+      "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b127333_c647fbfd",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-02T19:33:00Z",
+      "side": 1,
+      "message": "next time we touch this code, we should turn `port` into\na local variable so we can avoid this awkward\nno-const casting.",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 13
+      },
+      "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
