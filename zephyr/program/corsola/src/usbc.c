@@ -28,7 +28,9 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
 /* a flag for indicating the tasks are inited. */
+#ifndef CONFIG_BOARD_VELUZA
 test_export_static bool tasks_inited;
+#endif /* CONFIG_BOARD_VELUZA */
 
 /* Baseboard */
 test_export_static void baseboard_init(void)
@@ -50,6 +52,7 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	 * HDMI display functions using the USB virtual mux to * communicate
 	 * with the DP bridge.
 	 */
+#ifndef CONFIG_BOARD_VELUZA
 	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
 		if (tasks_inited) {
 			return CONFIG_USB_PD_PORT_MAX_COUNT;
@@ -59,12 +62,13 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	} else if (corsola_get_db_type() == CORSOLA_DB_NONE) {
 		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 	}
-
+#endif /* CONFIG_BOARD_VELUZA */
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
 uint8_t board_get_adjusted_usb_pd_port_count(void)
 {
+#ifndef CONFIG_BOARD_VELUZA
 	const enum corsola_db_type db = corsola_get_db_type();
 
 	if (db == CORSOLA_DB_TYPEC || db == CORSOLA_DB_NO_DETECTION) {
@@ -72,8 +76,9 @@ uint8_t board_get_adjusted_usb_pd_port_count(void)
 	} else {
 		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 	}
+#endif /* CONFIG_BOARD_VELUZA */
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
-
 /* USB-A */
 void xhci_interrupt(enum gpio_signal signal)
 {
@@ -125,6 +130,7 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	 */
 }
 
+#ifndef CONFIG_BOARD_VELUZA
 /* HDMI/TYPE-C function shared subboard interrupt */
 void x_ec_interrupt(enum gpio_signal signal)
 {
@@ -139,6 +145,7 @@ void x_ec_interrupt(enum gpio_signal signal)
 		CPRINTS("Undetected subboard interrupt.");
 	}
 }
+#endif /* CONFIG_BOARD_VELUZA */
 
 #ifdef CONFIG_VARIANT_CORSOLA_DB_DETECTION
 static void board_hdmi_handler(struct ap_power_ev_callback *cb,
@@ -161,7 +168,6 @@ static void board_hdmi_handler(struct ap_power_ev_callback *cb,
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_en_hdmi_pwr), value);
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_pwrdn_odl), value);
 }
-#endif /* CONFIG_VARIANT_CORSOLA_DB_DETECTION */
 
 static void tasks_init_deferred(void)
 {
@@ -176,7 +182,6 @@ static void tasks_init_deferred(void)
 }
 DECLARE_DEFERRED(tasks_init_deferred);
 
-#ifdef CONFIG_VARIANT_CORSOLA_DB_DETECTION
 test_export_static void baseboard_x_ec_gpio2_init(void)
 {
 	static struct ppc_drv virtual_ppc_drv = { 0 };
@@ -206,7 +211,6 @@ test_export_static void baseboard_x_ec_gpio2_init(void)
 					  AP_POWER_RESUME | AP_POWER_SUSPEND);
 		ap_power_ev_add_callback(&cb);
 	}
-
 	/* drop related C1 port drivers when it's a HDMI DB. */
 	ppc_chips[USBC_PORT_C1] =
 		(const struct ppc_config_t){ .drv = &virtual_ppc_drv };
