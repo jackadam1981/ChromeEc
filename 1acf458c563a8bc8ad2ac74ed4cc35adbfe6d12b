@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba60c44_80cb4539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "I\u0027ll finish reviewing later but wanted to leave some initial feedback. The I2C1/I2C2 thing is probably going to prevent one of the ports from working FYI.",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c291d025_8398f66e",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "Might want to call out that this isn\u0027t either UCSI nor TI related :) \n\nGET_PPM_LPM_INFO is really what we should be abstracting this behind. A TODO here (or in the ic_status api) would be appropriate.",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c31a71_72cdbe1b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "Why is this starting at 2? I see useful interrupts at offsets:\n* 0x1 - PD hard reset\n* 0x3 - plug insert or removal\n\n\nI also don\u0027t see the mask being set anywhere. Are we just depending on the default mask?",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c71d2d_7aff14ff",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "nit: missing break?",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c609f0e1_56fcdc4c",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "Writing to data register and then writing to cmd register should probably be a single function call in each of these state handlers (I see lots of duplicated code).",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c634c14_aea8025c",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "I2C2 refers to the TBT controller. For EC code, we should only be writing to CMD1/DATA1.\n\nWe distinguish ports via the i2c controller address anyway.",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc20248_4ac117d3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "We should be caching the connector status as this gets cleared on each call. The eng FW adds a new interrupt bit for UCSI interrupts but I\u0027m not sure which interrupts would trigger new values for GET_CONNECTOR_STATUS.\n\nI\u0027d anticipate that we may get spurious interrupts without a correct connector status a result here.",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

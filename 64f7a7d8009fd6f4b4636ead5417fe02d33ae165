@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5134d99_f5fda6ce",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "The fact that this isn\u0027t aligned to UCSI constants makes this very confusing. \n\nCan we simply reserve values 0x0 - 0xff for UCSI and add vendor specific commands from 0x100 onwards? (Or some other magic constant values if we want to keep this within uint8_t)?\n\nIt will make it easier to know which commands are pure UCSI vs modified for the PDC driver.",
+      "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ad2eec_4127ca10",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T21:52:10Z",
+      "side": 1,
+      "message": "All the `if (!i2c || !buf)` can be removed since `tps_xfer_reg` already does the same check.",
+      "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
