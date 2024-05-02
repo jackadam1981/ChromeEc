@@ -22,6 +22,30 @@
       },
       "revId": "206853f0355bb00f5d312ef71aeaa32cf6fac5af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c2a895_c7e31534",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-02T19:37:19Z",
+      "side": 1,
+      "message": "Please make FPC repo a zephyr module as I mentioned on the chat.",
+      "parentUuid": "9c052e0d_3da407dd",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "206853f0355bb00f5d312ef71aeaa32cf6fac5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
