@@ -46,8 +46,6 @@
 			<&gpioe 1 GPIO_INPUT>,
 			/* ec_pen_chg_dis_odl */
 			<&gpioh 3 GPIO_ODR_HIGH>,
-			/* usb_c1_bc12_charger_int_odl */
-			<&gpioj 4 GPIO_INPUT>,
 			/* unnamed nc pins */
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
@@ -72,6 +70,7 @@
 		/delete-node/ usb_c0_ppc_bc12;
 		/delete-node/ base_imu;
 		/delete-node/ lid_imu;
+		/delete-node/ usb_c1_bc12_charger;
 		int_usb_c0_ppc: usb_c0_ppc {
 			irq-pin = <&usb_c0_ppc_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;
@@ -80,9 +79,24 @@
 	};
 	usbc {
 		port0@0 {
+			/delete-property/ bc12;
 			ppc = <&ppc_port0>;
 		};
-		/delete-node/ port1@1;
+		port1@1 {
+			/delete-property/ bc12;
+			/delete-property/ ppc;
+			/delete-property/ tcpc;
+			/delete-property/ usb-mux-chain-1;
+			usb-mux-chain-1 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_1>;
+			};
+			usb_mux_chain_1_hdmi_db: usb-mux-chain-1-hdmi-db {
+				compatible = "cros-ec,usb-mux-chain";
+				alternative-chain;
+				usb-muxes = <&virtual_mux_1>;
+			};
+		};
 	};
 	named-adc-channels {
 		adc_ambient: ambient {
@@ -93,6 +107,11 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 		/delete-node/ usb-c1;
+		i2c_hdmi: i2c_hdmi {
+			i2c-port = <&i2c4>;
+			enum-names = "I2C_PORT_USB_C1",
+				"I2C_PORT_USB_MUX1";
+		};
 	};
 	temp_ambient: ambient {
 		compatible = "cros-ec,temp-sensor-thermistor";
@@ -251,10 +270,12 @@
 };
 &i2c0 {
 	charger_bc12_port1: rt9490@53 {
+		/delete-property/ irq;
 		thermistor = <&thermistor_rt9490>;
 	};
 };
 &i2c2 {
+	/delete-node/ rt1739@70;
 	ppc_port0: syv682x@40 {
 		compatible = "silergy,syv682x";
 		status = "okay";
