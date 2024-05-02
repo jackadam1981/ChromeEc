@@ -22,6 +22,30 @@
       },
       "revId": "571374bc7328f8ce53e53f10c72a955b22dc7ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1170717e_b433b20c",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-02T01:16:12Z",
+      "side": 1,
+      "message": "zassert_mem_equal() doesn\u0027t really make this any prettier, but it does\nrepresent the intent better. cable_property.raw_value[*] should really\na byte array, not words.",
+      "parentUuid": "b90da275_89bc70ca",
+      "range": {
+        "startLine": 895,
+        "startChar": 1,
+        "endLine": 903,
+        "endChar": 26
+      },
+      "revId": "571374bc7328f8ce53e53f10c72a955b22dc7ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
