@@ -33,6 +33,24 @@
       "message": "Interesting, I did see some messages disappearing on boot as well in other situations, I think that the upstream patch should be revisited, I\u0027ll do some test and come up with something, thanks for spotting this.",
       "revId": "7a173e968bf3bd4926f7a141ca1921bcc43d1251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2ae89c_032e1ea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-02T15:37:11Z",
+      "side": 1,
+      "message": "Nah nevermind, that was something else. Anyway, I think would be fair to change this in `Kconfig.defaults`, up to you.",
+      "parentUuid": "8ecee2a4_3de2a1f4",
+      "revId": "7a173e968bf3bd4926f7a141ca1921bcc43d1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
