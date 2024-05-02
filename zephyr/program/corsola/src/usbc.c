@@ -179,11 +179,14 @@ DECLARE_DEFERRED(tasks_init_deferred);
 #ifdef CONFIG_VARIANT_CORSOLA_DB_DETECTION
 test_export_static void baseboard_x_ec_gpio2_init(void)
 {
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+
 	static struct ppc_drv virtual_ppc_drv = { 0 };
 	static struct tcpm_drv virtual_tcpc_drv = { 0 };
 #ifdef CONFIG_PLATFORM_EC_USB_CHARGER
 	static struct bc12_drv virtual_bc12_drv = { 0 };
 #endif
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 
 	/* no sub board */
 	if (corsola_get_db_type() == CORSOLA_DB_NONE) {
@@ -206,7 +209,7 @@ test_export_static void baseboard_x_ec_gpio2_init(void)
 					  AP_POWER_RESUME | AP_POWER_SUSPEND);
 		ap_power_ev_add_callback(&cb);
 	}
-
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	/* drop related C1 port drivers when it's a HDMI DB. */
 	ppc_chips[USBC_PORT_C1] =
 		(const struct ppc_config_t){ .drv = &virtual_ppc_drv };
@@ -218,6 +221,7 @@ test_export_static void baseboard_x_ec_gpio2_init(void)
 #endif
 	/* Use virtual mux to notify AP the mainlink direction. */
 	USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_hdmi_db);
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 
 	/*
 	 * If a HDMI DB is attached, C1 port tasks will be exiting in that
@@ -235,6 +239,7 @@ DECLARE_HOOK(HOOK_INIT, baseboard_x_ec_gpio2_init, HOOK_PRIO_DEFAULT);
 
 __override uint8_t get_dp_pin_mode(int port)
 {
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	if (corsola_get_db_type() == CORSOLA_DB_HDMI && port == USBC_PORT_C1) {
 		if (usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED) {
 			return MODE_DP_PIN_E;
@@ -242,6 +247,7 @@ __override uint8_t get_dp_pin_mode(int port)
 			return 0;
 		}
 	}
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 
 	return pd_dfp_dp_get_pin_mode(port, dp_status[port]);
 }

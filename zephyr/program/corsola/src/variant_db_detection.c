@@ -126,6 +126,7 @@ DECLARE_HOOK(HOOK_INIT, corsola_db_init, HOOK_PRIO_PRE_I2C);
  */
 void ps185_hdmi_hpd_mux_set(void)
 {
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
 
@@ -149,10 +150,12 @@ void ps185_hdmi_hpd_mux_set(void)
 			    0 /* polarity, don't care */);
 		CPRINTS("HDMI plug");
 	}
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 }
 
 static void ps185_hdmi_hpd_deferred(void)
 {
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
 
@@ -173,6 +176,7 @@ static void ps185_hdmi_hpd_deferred(void)
 
 		return;
 	}
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 
 	ps185_hdmi_hpd_mux_set();
 }
@@ -196,6 +200,7 @@ DECLARE_DEFERRED(hdmi_hpd_high);
 
 static void hdmi_hpd_interrupt_deferred(void)
 {
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	const int hpd =
 		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
 
@@ -216,6 +221,7 @@ static void hdmi_hpd_interrupt_deferred(void)
 	}
 
 	svdm_set_hpd_gpio(USBC_PORT_C1, hpd);
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 }
 DECLARE_DEFERRED(hdmi_hpd_interrupt_deferred);
 
