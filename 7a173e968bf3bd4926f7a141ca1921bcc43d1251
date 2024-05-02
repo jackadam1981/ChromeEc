@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1278de_0a951882",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-02T14:52:55Z",
+      "side": 1,
+      "message": "I prepared a fix, but only for FPMCU (had no time for more sophisticated fix). If it affects more boards, we will probably need to change default value in our configs.",
+      "revId": "7a173e968bf3bd4926f7a141ca1921bcc43d1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
