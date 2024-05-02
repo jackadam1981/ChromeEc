@@ -328,6 +328,18 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 
 	/* Do driver specific execute command. */
 	ret = dev->pd->execute_cmd(ppm, control, message_in);
+	/* Retry in case PDM is using PDC. Instead, OPM may control retries. */
+	if (ucsi_command == UCSI_CMD_GET_CONNECTOR_STATUS) {
+		/* Maybe PDM is getting connector status. Wait and retry. */
+		int call_counter = 0;
+		while (ret == -EBUSY) {
+			call_counter++;
+			if (call_counter > 100)
+				break;
+			platform_usleep(20000);
+			ret = dev->pd->execute_cmd(ppm, control, message_in);
+		}
+	}
 
 	/* Clear command since we just executed it. */
 	platform_memset(control, 0, sizeof(struct ucsi_control));
