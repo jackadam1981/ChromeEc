@@ -1522,6 +1522,7 @@ static void pdc_send_cmd_start_run(void *obj)
 	 * was just sent to the PDC.
 	 */
 	atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
+	atomic_clear_bit(port->cci_flags, CCI_ERROR);
 
 	/* Test if command was successful. If not, try again until max
 	 * retries is reached */
@@ -1880,6 +1881,7 @@ static void pdc_cci_handler_cb(union cci_event_t cci_event, void *cb_data)
 	/* Handle generic vendor defined event from driver */
 	if (cci_event.vendor_defined_indicator) {
 		atomic_set_bit(port->cci_flags, CCI_EVENT);
+		k_event_post(&port->sm_event, PDC_SM_EVENT);
 	}
 }
 

@@ -2194,7 +2194,7 @@ static int rts54_execute_command_sync(const struct device *dev,
 	}
 
 	/* We don't know yet if the PDC driver is busy or not. */
-	if (get_state(data) != ST_IDLE) {
+	if (get_state(data) != ST_IDLE || data->cmd != CMD_NONE) {
 		LOG_ERR("%s: Failed to run (-EBUSY)", __func__);
 		return -EBUSY;
 	}
