@@ -135,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b861c1_361c001e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-02T21:27:03Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "47d6c457_1774f607",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a71db7c_f3104112",
@@ -310,6 +328,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f5eaaa_c6a349fe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2723,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-02T21:27:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd2f23b_7638dd89",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24a6b451_418cc860",
@@ -451,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0711bb27_abdb0da2",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-02T21:27:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cde7639f_657eb5f5",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5edc3872_70833eec",
@@ -482,6 +536,24 @@
       "side": 1,
       "message": "Servo uses counters to measure time, and ```pd_timer_update``` increments those counters at a fixed interval.",
       "parentUuid": "5edc3872_70833eec",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0944335_2b9f1033",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-02T21:27:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c34b76f5_4ac4391a",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

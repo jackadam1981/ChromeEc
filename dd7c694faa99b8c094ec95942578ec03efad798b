@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a3bd94_a04f9820",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 2905,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-02T21:27:03Z",
+      "side": 1,
+      "message": "I would have thought that on Servo, this call would always return false (since Servo doesn\u0027t use this timer). Does `pd_timer_is_expired` not link on Servo? (I\u0027m refreshing my memory from 2022, apparently.)",
+      "revId": "dd7c694faa99b8c094ec95942578ec03efad798b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
