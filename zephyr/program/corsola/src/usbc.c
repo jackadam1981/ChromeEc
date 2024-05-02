@@ -161,7 +161,6 @@ static void board_hdmi_handler(struct ap_power_ev_callback *cb,
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_en_hdmi_pwr), value);
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_pwrdn_odl), value);
 }
-#endif /* CONFIG_VARIANT_CORSOLA_DB_DETECTION */
 
 static void tasks_init_deferred(void)
 {
@@ -176,7 +175,6 @@ static void tasks_init_deferred(void)
 }
 DECLARE_DEFERRED(tasks_init_deferred);
 
-#ifdef CONFIG_VARIANT_CORSOLA_DB_DETECTION
 test_export_static void baseboard_x_ec_gpio2_init(void)
 {
 	static struct ppc_drv virtual_ppc_drv = { 0 };
