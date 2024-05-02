@@ -568,6 +568,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18197d72_b8c15acc",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-02T23:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c2701e_02f708ab",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 18
+      },
+      "revId": "cebedd2fb4f1dfaa74faf35e4c34088beeaca344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc2abeac_1184e69e",
