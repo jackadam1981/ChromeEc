@@ -206,7 +206,6 @@ test_export_static void baseboard_x_ec_gpio2_init(void)
 					  AP_POWER_RESUME | AP_POWER_SUSPEND);
 		ap_power_ev_add_callback(&cb);
 	}
-
 	/* drop related C1 port drivers when it's a HDMI DB. */
 	ppc_chips[USBC_PORT_C1] =
 		(const struct ppc_config_t){ .drv = &virtual_ppc_drv };
