@@ -24,4 +24,8 @@ elseif(DEFINED CONFIG_BOARD_KELPIE)
 	project(kelpie)
 elseif(DEFINED CONFIG_BOARD_SPIKYROCK)
 	project(spikyrock)
+<<<<<<< HEAD   (8e35ea roach: disable unused components)
+=======
+	add_subdirectory(spikyrock)
+>>>>>>> BRANCH (b096a8 nova: Enable ALS TCS3400 interrupt)
 endif()
