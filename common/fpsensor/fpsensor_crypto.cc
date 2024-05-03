@@ -29,13 +29,13 @@ test_mockable void compute_hmac_sha256(uint8_t *output, const uint8_t *key,
 
 #ifdef CONFIG_OTP_KEY
 constexpr uint8_t IKM_OTP_OFFSET_BYTES =
-	CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed);
+	CONFIG_ROLLBACK_SECRET_SIZE + sizeof(global_context.tpm_seed);
 constexpr uint8_t IKM_SIZE_BYTES = IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES;
 BUILD_ASSERT(IKM_SIZE_BYTES == 96);
 
 #else
 constexpr uint8_t IKM_SIZE_BYTES =
-	CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed);
+	CONFIG_ROLLBACK_SECRET_SIZE + sizeof(global_context.tpm_seed);
 BUILD_ASSERT(IKM_SIZE_BYTES == 64);
 #endif
 
@@ -65,7 +65,8 @@ test_export_static enum ec_error_list get_ikm(uint8_t *ikm)
 	 * IKM is the concatenation of the rollback secret and the seed from
 	 * the TPM.
 	 */
-	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
+	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, global_context.tpm_seed,
+	       sizeof(global_context.tpm_seed));
 
 #ifdef CONFIG_OTP_KEY
 	uint8_t otp_key[OTP_KEY_SIZE_BYTES] = { 0 };
