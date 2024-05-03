@@ -155,10 +155,10 @@ enum ec_error_list derive_positive_match_secret(
 	return ret;
 }
 
-enum ec_error_list
-derive_encryption_key_with_info(std::span<uint8_t> out_key,
-				std::span<const uint8_t> salt,
-				std::span<const uint8_t> info)
+enum ec_error_list derive_encryption_key_with_info(
+	std::span<uint8_t> out_key, std::span<const uint8_t> salt,
+	std::span<const uint8_t> info,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
 {
 	enum ec_error_list ret;
 	CleanseWrapper<std::array<uint8_t, IKM_SIZE_BYTES> > ikm;
@@ -171,7 +171,7 @@ derive_encryption_key_with_info(std::span<uint8_t> out_key,
 		return EC_ERROR_INVAL;
 	}
 
-	ret = get_ikm(ikm, global_context.tpm_seed);
+	ret = get_ikm(ikm, tpm_seed);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("Failed to get IKM: %d", ret);
 		return ret;
@@ -194,7 +194,8 @@ enum ec_error_list derive_encryption_key(std::span<uint8_t> out_key,
 	return derive_encryption_key_with_info(
 		out_key, salt,
 		{ reinterpret_cast<uint8_t *>(global_context.user_id),
-		  sizeof(global_context.user_id) });
+		  sizeof(global_context.user_id) },
+		global_context.tpm_seed);
 }
 
 enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
