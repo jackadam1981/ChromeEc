@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bf72bb_12277293",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T17:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1ae854_f541e0e5",
+      "revId": "6ab862b5cafa591ebf0220b7565b95a48d5a25a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30e0ae26_e5fd3b23",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd8ea36_2cd14148",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1997,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T17:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e0ae26_e5fd3b23",
+      "revId": "6ab862b5cafa591ebf0220b7565b95a48d5a25a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "840b6db8_61119e4e",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-05-03T16:31:35Z",
       "side": 1,
       "message": "nit: For documentation, maybe just add a commented:\n```\nbyte |\u003d (0 \u003c\u003c 3);\n```",
+      "revId": "6ab862b5cafa591ebf0220b7565b95a48d5a25a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad62287_c3659adf",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T17:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840b6db8_61119e4e",
       "revId": "6ab862b5cafa591ebf0220b7565b95a48d5a25a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
