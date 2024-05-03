@@ -22,6 +22,30 @@
       },
       "revId": "66d8c76e92c37ef294d1c5cb75fa09891a0b022b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f835907_de2dcf43",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-03T02:50:26Z",
+      "side": 1,
+      "message": "checked actual data on brox.\nimplementation seems to be correct but the datasheet is quirky.",
+      "parentUuid": "25afcde5_a55edd32",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 47
+      },
+      "revId": "66d8c76e92c37ef294d1c5cb75fa09891a0b022b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
