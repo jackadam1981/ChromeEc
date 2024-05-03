@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33cfa13e_4390eac1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T20:04:17Z",
+      "side": 1,
+      "message": "I\u0027ll remove this, its outside the scope of what this function should be doing. This was in the original implementation.",
+      "parentUuid": "70adfca1_bc59c2b5",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16ba0b75_eec3a45d",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-03T18:45:41Z",
       "side": 1,
       "message": "These are valid, even if we don\u0027t have a policy that sets them yet.",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd174b0_8a5b40dc",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T20:04:17Z",
+      "side": 1,
+      "message": "The CSD mode will be set via set_ccom.  If its not set to DRP, then fetching the DRP mode is invalid.  I can update the err message to be a little clearer.",
+      "parentUuid": "16ba0b75_eec3a45d",
       "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71d31a0d_5dff247e",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T20:04:17Z",
+      "side": 1,
+      "message": "Yeah, I agree it would be nice, but having a driver and test implementation does help verify all the bit offsets are correct 😊.  Especially when two developers interpret the data sheet, but if I were to copy/paste the driver code into my test it doesn\u0027t really help validate the driver code.",
+      "parentUuid": "42155171_5d9a72fd",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fca5b1e_2930e74c",
         "filename": "zephyr/include/drivers/ucsi_v3.h",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2024-05-03T18:45:41Z",
       "side": 1,
       "message": "Why add this?\n\nJust as an aside. I don\u0027t think these values come from UCSI, and they\u0027re not used with any UCSI interfaces. We might want to limit this file to UCSI-defined interfaces and put other stuff in `pdc.h`. But that\u0027s out of scope here.",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809da7f9_632632bb",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-05-03T20:04:17Z",
+      "side": 1,
+      "message": "To have an value indicating INVALID when CSD is not set to DRP when fetching DRP mode from PDC.",
+      "parentUuid": "7fca5b1e_2930e74c",
       "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
