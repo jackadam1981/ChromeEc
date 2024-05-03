@@ -4,6 +4,7 @@
  */
 
 #include "ap_power/ap_power.h"
+#include "base_state.h"
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
 #include "hooks.h"
@@ -55,6 +56,16 @@ static void base_shutdown_hook(struct ap_power_ev_callback *cb,
 	}
 }
 
+static void base_attached_hook(void)
+{
+	if (base_get_state()) {
+		one_wire_uart_enable(one_wire_uart);
+	} else {
+		one_wire_uart_disable(one_wire_uart);
+	}
+}
+DECLARE_HOOK(HOOK_BASE_ATTACHED_CHANGE, base_attached_hook, HOOK_PRIO_DEFAULT);
+
 static void ec_ec_comm_init(void)
 {
 	static struct ap_power_ev_callback cb;
@@ -64,7 +75,7 @@ static void ec_ec_comm_init(void)
 	ap_power_ev_add_callback(&cb);
 
 	one_wire_uart_set_callback(one_wire_uart, recv_cb);
-	one_wire_uart_enable(one_wire_uart);
+	base_attached_hook();
 
 #ifdef CONFIG_I2C_TARGET
 	i2c_target_driver_register(DEVICE_DT_GET(DT_NODELABEL(hid_i2c_target)));

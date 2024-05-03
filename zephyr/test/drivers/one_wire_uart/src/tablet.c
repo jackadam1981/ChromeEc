@@ -25,6 +25,7 @@ const static struct device *touchpad =
 	DEVICE_DT_GET(DT_NODELABEL(hid_i2c_target));
 
 FAKE_VALUE_FUNC(int, mkbp_keyboard_add, const uint8_t *);
+FAKE_VALUE_FUNC(int, base_get_state);
 
 ZTEST(one_wire_uart_tablet, test_keyboard_event)
 {
@@ -124,10 +125,12 @@ static void tablet_before(void *fixture)
 	const struct gpio_dt_spec *hid_irq =
 		GPIO_DT_FROM_NODELABEL(gpio_ec_ap_hid_int_odl);
 
+	one_wire_uart_enable(dev);
 	one_wire_uart_reset(dev);
 
 	RESET_FAKE(mkbp_keyboard_add);
 	gpio_pin_set_dt(hid_irq, 0);
+	base_get_state_fake.return_val = 1;
 }
 
 ZTEST_SUITE(one_wire_uart_tablet, drivers_predicate_post_main, NULL,
