@@ -33,6 +33,24 @@
       "message": "All the `if (!i2c || !buf)` can be removed since `tps_xfer_reg` already does the same check.",
       "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6097437_d4641e56",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-03T18:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27ad2eec_4127ca10",
+      "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
