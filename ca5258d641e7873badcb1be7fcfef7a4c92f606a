@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b779109e_2c918a06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-03T20:50:01Z",
+      "side": 1,
+      "message": "I\u0027m afraid I don\u0027t have the background to really thoroughly review this like before. 😞 I\u0027ll add someone else as a reviewer. Let me know if you want to sync on it because I\u0027m more than happy to learn.",
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5adcf554_2aefb063",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-03T20:50:01Z",
+      "side": 1,
+      "message": "Why are we using a bool here for an int32 value?",
+      "range": {
+        "startLine": 32,
+        "startChar": 42,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8578ea32_d3b05ee0",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-03T20:50:01Z",
+      "side": 1,
+      "message": "Which keys are these supposed to be? Is it just the recovery mode keys?",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fdfef3e_27920dab",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-03T20:50:01Z",
+      "side": 1,
+      "message": "What is `_stray`? Are we testing the scenario that a user presses some of the recovery keys but then also other keys?",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af9b6c5e_21b270bf",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-03T20:50:01Z",
+      "side": 1,
+      "message": "Here we\u0027ve set the value from 1 (probably but it\u0027s bool) to 0, why is that? It\u0027s probably because I don\u0027t know what `stray` is.",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
