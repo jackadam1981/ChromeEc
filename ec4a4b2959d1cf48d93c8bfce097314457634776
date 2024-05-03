@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70adfca1_bc59c2b5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-03T18:45:41Z",
+      "side": 1,
+      "message": "Nit: I\u0027d suggest passing in an argument for this and setting it to true in the task. Technically, this is a policy, and it should be above the driver level.",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ba0b75_eec3a45d",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-03T18:45:41Z",
+      "side": 1,
+      "message": "These are valid, even if we don\u0027t have a policy that sets them yet.",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42155171_5d9a72fd",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-03T18:45:41Z",
+      "side": 1,
+      "message": "Nit: So far, we haven\u0027t used bitfields like this in the driver, but it would be nice if we did. This is a structure that the driver header file could be the source of truth for.",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fca5b1e_2930e74c",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-03T18:45:41Z",
+      "side": 1,
+      "message": "Why add this?\n\nJust as an aside. I don\u0027t think these values come from UCSI, and they\u0027re not used with any UCSI interfaces. We might want to limit this file to UCSI-defined interfaces and put other stuff in `pdc.h`. But that\u0027s out of scope here.",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
