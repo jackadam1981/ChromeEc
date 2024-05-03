@@ -466,4 +466,14 @@ void pdc_power_mgmt_request_source_voltage(int port, int mv);
  */
 int pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop);
 
+/**
+ * @brief Enable/Disable PDC TrySRC on a port
+ *
+ * @param port USB-C port number
+ * @param enable enable or disable TrySRC on port
+ *
+ * @retval 0 if successful or error code
+ */
+int pdc_power_mgmt_set_trysrc(int port, bool enable);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
