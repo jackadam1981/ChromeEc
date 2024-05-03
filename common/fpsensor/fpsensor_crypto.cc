@@ -171,7 +171,7 @@ enum ec_error_list derive_encryption_key_with_info(
 		return EC_ERROR_INVAL;
 	}
 
-	ret = get_ikm(ikm, global_context.tpm_seed);
+	ret = get_ikm(ikm, tpm_seed);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("Failed to get IKM: %d", ret);
 		return ret;
