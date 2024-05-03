@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-#ifdef __cplusplus
+#ifdef __cpluspluskdhk
 extern "C" {
 #endif
 
