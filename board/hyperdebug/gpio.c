@@ -142,7 +142,6 @@ const struct pwm_pin_t pwm_pins[GPIO_COUNT] = {
 	[GPIO_CN12_41] = { PWM_TIMER(4), 2, 2 }, /* PD13 */
 	[GPIO_CN7_16] = { PWM_TIMER(4), 3, 2 }, /* PD14 */
 	[GPIO_CN7_18] = { PWM_TIMER(4), 4, 2 }, /* PD15 */
-#ifdef PWM_TIMER_5
 	[GPIO_CN10_29] = { PWM_TIMER(5), 1, 2 }, /* PA0 */
 	[GPIO_CN11_9] = { PWM_TIMER(5), 1, 2 }, /* PF6 */
 	[GPIO_CN10_11] = { PWM_TIMER(5), 2, 2 }, /* PA1 */
@@ -151,7 +150,6 @@ const struct pwm_pin_t pwm_pins[GPIO_COUNT] = {
 	[GPIO_CN9_24] = { PWM_TIMER(5), 3, 2 }, /* PF8 */
 	[GPIO_CN9_1] = { PWM_TIMER(5), 4, 2 }, /* PA3 */
 	[GPIO_CN9_28] = { PWM_TIMER(5), 4, 2 }, /* PF9 */
-#endif
 	[GPIO_CN7_1] = { PWM_TIMER(8), 1, 3 }, /* PC6 */
 	[GPIO_NUCLEO_LED1] = { PWM_TIMER(8), 2, 3 }, /* PC7 */
 	[GPIO_CN8_2] = { PWM_TIMER(8), 3, 3 }, /* PC8 */
@@ -1496,11 +1494,23 @@ static int command_gpio_bit_bang(int argc, const char **argv)
 		bitbang_pin_masks[i] = gpio_list[gpios[i]].mask;
 	}
 
-	/* Set clock divisor to achieve requested tick period. */
-	STM32_TIM32_ARR(BITBANG_TIMER) = divisor - 1;
+	/* Find power of two for prescaling */
+	uint8_t prescaler_shift = 0;
 
-	/* Update prescaler to increment every tick */
-	STM32_TIM_PSC(BITBANG_TIMER) = 0;
+	while (divisor > (0x10000ULL << prescaler_shift))
+		prescaler_shift++;
+
+	if (prescaler_shift > 0) {
+		// Divide by power of two, rounding to nearest.
+		divisor = (divisor >> prescaler_shift) +
+			  ((divisor >> (prescaler_shift - 1)) & 1);
+	}
+
+	/* Set clock divisor to achieve requested tick period. */
+	STM32_TIM_ARR(BITBANG_TIMER) = divisor - 1;
+
+	/* Update prescaler. */
+	STM32_TIM_PSC(BITBANG_TIMER) = (1U << prescaler_shift) - 1;
 
 	/* Set up the overflow interrupt */
 	STM32_TIM_SR(BITBANG_TIMER) = 0;
@@ -1618,20 +1628,20 @@ static int command_gpio_pwm(int argc, const char **argv)
 		/* Disable counter during setup (should be already). */
 		tim->cr1 = 0x0000;
 
-		tim->psc = (1 << prescaler_shift) - 1;
+		tim->psc = (1U << prescaler_shift) - 1;
 		tim->arr = divisor - 1;
 
 		/* Output, PWM mode 1, preload enable. */
 		tim->ccmr1 = (6 << 12) | BIT(11) | (6 << 4) | BIT(3);
 		tim->ccmr2 = (6 << 12) | BIT(11) | (6 << 4) | BIT(3);
 
-	} else if (tim->psc != (1 << prescaler_shift) - 1 ||
+	} else if (tim->psc != (1U << prescaler_shift) - 1 ||
 		   tim->arr != divisor - 1) {
 		if (timer_pwm_use[timer_no].num_channels_in_use == 1 &&
 		    current_pin == gpio) {
 			/* We can switch timer frequency. */
 			tim->cr1 = 0x0000;
-			tim->psc = (1 << prescaler_shift) - 1;
+			tim->psc = (1U << prescaler_shift) - 1;
 			tim->arr = divisor - 1;
 		} else {
 			/*
