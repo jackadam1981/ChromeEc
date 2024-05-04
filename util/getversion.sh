@@ -141,8 +141,8 @@ main() {
       ;;
     buccaneer*)
       dir_list+=( "${fp_common_dir_list[@]}" )
-      if [[ -d ./private/fingerprint/elan ]]; then
-        dir_list+=( ./private/fingerprint/elan )
+      if [[ -d ../fingerprint/elan ]]; then
+        dir_list+=( ../fingerprint/elan )
       fi
       ;;
     *_scp)
