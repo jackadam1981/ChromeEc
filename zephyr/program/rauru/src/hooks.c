@@ -27,7 +27,7 @@ void xhci_interrupt(enum gpio_signal signal)
 
 #ifdef USB_PORT_ENABLE_COUNT
 	enum usb_charge_mode mode = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
-					    gpio_ap_xhci_init_done)) ?
+					    gpio_ap_xhci_init_done_r)) ?
 					    USB_CHARGE_MODE_ENABLED :
 					    USB_CHARGE_MODE_DISABLED;
 
@@ -55,7 +55,7 @@ void xhci_interrupt(enum gpio_signal signal)
 
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 {
-	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ap_xhci_init_done))) {
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ap_xhci_init_done_r))) {
 		return PD_DRP_TOGGLE_ON;
 	} else {
 		return PD_DRP_FORCE_SINK;
