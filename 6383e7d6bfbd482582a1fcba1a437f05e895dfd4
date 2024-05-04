@@ -164,6 +164,30 @@
       },
       "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e14ba2_b35b2f66",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-05-04T01:01:32Z",
+      "side": 1,
+      "message": "`params-\u003eport` is exclusively used within the `check_i2c_params` (for printing) function, which is itself only called by `i2c_command_passthru`. I think we could refactor `check_i2c_params` to adapt to this change.",
+      "parentUuid": "7a6c21e0_a53930e6",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 13
+      },
+      "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
