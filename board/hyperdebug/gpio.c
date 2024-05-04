@@ -148,7 +148,6 @@ const struct pwm_pin_t pwm_pins[GPIO_COUNT] = {
 	[GPIO_CN12_41] = { PWM_TIMER(4), 2, 2 }, /* PD13 */
 	[GPIO_CN7_16] = { PWM_TIMER(4), 3, 2 }, /* PD14 */
 	[GPIO_CN7_18] = { PWM_TIMER(4), 4, 2 }, /* PD15 */
-#ifdef PWM_TIMER_5
 	[GPIO_CN10_29] = { PWM_TIMER(5), 1, 2 }, /* PA0 */
 	[GPIO_CN11_9] = { PWM_TIMER(5), 1, 2 }, /* PF6 */
 	[GPIO_CN10_11] = { PWM_TIMER(5), 2, 2 }, /* PA1 */
@@ -157,7 +156,6 @@ const struct pwm_pin_t pwm_pins[GPIO_COUNT] = {
 	[GPIO_CN9_24] = { PWM_TIMER(5), 3, 2 }, /* PF8 */
 	[GPIO_CN9_1] = { PWM_TIMER(5), 4, 2 }, /* PA3 */
 	[GPIO_CN9_28] = { PWM_TIMER(5), 4, 2 }, /* PF9 */
-#endif
 	[GPIO_CN7_1] = { PWM_TIMER(8), 1, 3 }, /* PC6 */
 	[GPIO_NUCLEO_LED1] = { PWM_TIMER(8), 2, 3 }, /* PC7 */
 	[GPIO_CN8_2] = { PWM_TIMER(8), 3, 3 }, /* PC8 */
@@ -1570,11 +1568,15 @@ static int command_gpio_bit_bang(int argc, const char **argv)
 		bitbang_pin_masks[i] = gpio_list[gpios[i]].mask;
 	}
 
-	/* Set clock divisor to achieve requested tick period. */
-	STM32_TIM32_ARR(BITBANG_TIMER) = divisor - 1;
+	/* Appropriate power of two for prescaling */
+	uint32_t prescaler = find_suitable_prescaler(divisor);
 
-	/* Update prescaler to increment every tick */
-	STM32_TIM_PSC(BITBANG_TIMER) = 0;
+	/* Set clock divisor to achieve requested tick period. */
+	STM32_TIM_ARR(BITBANG_TIMER) =
+		DIV_ROUND_NEAREST(divisor, prescaler) - 1;
+
+	/* Update prescaler. */
+	STM32_TIM_PSC(BITBANG_TIMER) = prescaler - 1;
 
 	/* Set up the overflow interrupt */
 	STM32_TIM_SR(BITBANG_TIMER) = 0;
@@ -2155,7 +2157,10 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 		 * to start the timer, so that the next interrupt will begin
 		 * producing the waveform.
 		 */
-		uint32_t divisor = STM32_TIM32_ARR(BITBANG_TIMER);
+		uint32_t prescaler = STM32_TIM_PSC(BITBANG_TIMER) + 1;
+		uint64_t divisor =
+			(uint64_t)(STM32_TIM32_ARR(BITBANG_TIMER) + 1) *
+			prescaler;
 
 		/* Number of timer increments per millisecond. */
 		uint32_t counts_in_1ms = clock_get_timer_freq() / 1000;
@@ -2169,7 +2174,8 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 			 * seconds.
 			 */
 			STM32_TIM32_CNT(BITBANG_TIMER) =
-				divisor - counts_in_1ms;
+				STM32_TIM32_ARR(BITBANG_TIMER) -
+				DIV_ROUND_UP(counts_in_1ms, prescaler);
 			bitbang_countdown = 0;
 		} else {
 			/*
