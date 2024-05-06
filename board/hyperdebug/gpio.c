@@ -1677,29 +1677,33 @@ static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
 	uint32_t idx = bitbang_irq_tail;
 	uint32_t valid_idx = idx;
 	while (idx != tail_goal) {
-		if (*bitbang_data_ptr(idx) & BITBANG_DELAY_BIT) {
-			uint8_t delay_scale = 0;
-			while (idx != tail_goal &&
-			       *bitbang_data_ptr(idx) & BITBANG_DELAY_BIT) {
-				/*
-				 * Shifting right by 32 - delay_scale
-				 * effectively gives us the low bytes of the
-				 * upper 32 bits of what we would have gotten by
-				 * shifting left by delay_scale.  If that is
-				 * non-zero, it means that the encoded value
-				 * would exceed 32 bits.
-				 */
-				if ((*bitbang_data_ptr(idx) &
-				     BITBANG_DATA_MASK) >>
-				    (32 - delay_scale)) {
-					return STATUS_ERROR_WAVEFORM;
-				}
-				delay_scale += 7;
-				idx++;
-			}
-		} else {
+		if (!(*bitbang_data_ptr(idx) & BITBANG_DELAY_BIT)) {
+			/*
+			 * Single-byte sample for output.  The interrupt routine
+			 * is prepared for this being the last byte in the valid
+			 * range of the buffer.
+			 */
 			idx++;
 			valid_idx = idx;
+			continue;
+		}
+		uint8_t delay_scale = 0;
+		while (idx != tail_goal &&
+		       *bitbang_data_ptr(idx) & BITBANG_DELAY_BIT) {
+			uint8_t data = *bitbang_data_ptr(idx) &
+				       BITBANG_DATA_MASK;
+			/*
+			 * Shifting right by 32 - delay_scale effectively gives
+			 * us the low bytes of the upper 32 bits of what we
+			 * would have gotten by shifting left by delay_scale.
+			 * If that is non-zero, it means that the encoded value
+			 * would exceed 32 bits.
+			 */
+			if (data >> (32 - delay_scale)) {
+				return STATUS_ERROR_WAVEFORM;
+			}
+			delay_scale += 7;
+			idx++;
 		}
 	}
 
