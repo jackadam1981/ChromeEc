@@ -2071,6 +2071,12 @@ static void pdc_cci_handler_cb(union cci_event_t cci_event, void *cb_data)
 	if (cci_event.vendor_defined_indicator) {
 		atomic_set_bit(port->cci_flags, CCI_EVENT);
 	}
+
+	if (atomic_test_bit(port->cci_flags, CCI_BUSY) &&
+	    atomic_test_bit(port->cci_flags, CCI_ERROR) &&
+	    atomic_test_bit(port->cci_flags, CCI_CMD_COMPLETED) &&
+	    atomic_test_bit(port->cci_flags, CCI_EVENT))
+		k_event_post(&port->sm_event, PDC_SM_EVENT);
 }
 
 static void init_port_variables(struct pdc_port_t *port)
