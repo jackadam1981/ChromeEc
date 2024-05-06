@@ -46,6 +46,30 @@
       },
       "revId": "2c91294f00076eb7ad847236e499426169ba8dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de84fe8_fa3dce80",
+        "filename": "docs/fingerprint/fingerprint-firmware-testing-for-partners.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-06T21:14:04Z",
+      "side": 1,
+      "message": "Ok, let\u0027s split out the servod part of the change into a separate CL from the Tast part. We can submit the tast part, but let\u0027s make sure the servod part is up-to-date (the link you provided doesn\u0027t mention the non-chroot version).",
+      "parentUuid": "905e735c_25f72a3e",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "2c91294f00076eb7ad847236e499426169ba8dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
