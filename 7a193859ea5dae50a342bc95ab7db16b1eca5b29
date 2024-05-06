@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5779934_52015af5",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Yes, it probably is. We do have the same function in our TCPMv2 implementation. I had just pulled that in and prepended with pcd_power_mgmt instead of pd_ as we\u0027ve been doing. But, I did end up changing the name of the set_current_limit function as well, so I can drop the _rp here to be consistent.",
+      "parentUuid": "5e924fa8_57595831",
+      "range": {
+        "startLine": 499,
+        "startChar": 25,
+        "endLine": 499,
+        "endChar": 68
+      },
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d591e1b8_0f23ba79",
         "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
         "patchSetId": 7
@@ -37,6 +61,24 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "Then sources with \u003e1.5A FRS requirements, then type-C sinks?",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1362bd1d_22bc7eb4",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Yeah, I had noticed this comment seemed incomplete. Apparently it had got removed from the tcpmv2 version of this function.",
+      "parentUuid": "d591e1b8_0f23ba79",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "556fe4b5_b9d12455",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "I think this is a bit more special purpose than just counting bits set in a variable as it\u0027s being limited by the number of ports defined.",
+      "parentUuid": "b0b53598_8db0addf",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "528c44a4_1afc7cdf",
         "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
         "patchSetId": 7
@@ -71,6 +131,24 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "IIUC, this function makes at most one change on a call, but it ends up being rerun on state changes until the port reaches an optimal, steady state. A comment to that effect would be helpful here. Otherwise, it looks at first glance like the function just leaves new 3.0A sinks hanging.",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ba1b02_d96a5759",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "I added brief description at the top of the function and indicated that this function is both called directly from a PDC thread or can be called from the system workqueue.",
+      "parentUuid": "528c44a4_1afc7cdf",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8455f40_cdf12009",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "I think that\u0027s the case. I would guess that if the default current for all ports is 3.0A then 3.0A can always be allocated and would always be allocated for each port in a source role. So the whole algorithm would be effectively be a no-op",
+      "parentUuid": "603cad3a_d87bd7fa",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ff931ff_8f0f8d9b",
         "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
         "patchSetId": 7
@@ -105,6 +201,24 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "As calculated here, this value is in centiamps. The math still works, but to make it a little more normal, can you multiply by 10 here and then compare to 1500 ma in the next line?",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa5d3d3e_94b40e3b",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ff931ff_8f0f8d9b",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +236,24 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "Nit: Why not use `atomic_test_bit` here?",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ea4f69_823ed4d6",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e15b745_0d5e1f28",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +277,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73cc7625_52d9aefb",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "I think it could be either way, but this method matches the TCPMv2 implementation.",
+      "parentUuid": "5bdc2df0_701d2f27",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88165f44_c5fb477b",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 7
@@ -156,6 +306,24 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "Nit: If this is just going to live in this .c file, how about `static const uint32_t pdo_fixed_flags` for easier type reasoning?",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6377adf2_3a0770b3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88165f44_c5fb477b",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "772a185a_7c6a233a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c606824_5835d915",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13108565_1bff52af",
@@ -190,6 +376,30 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "Nit: \"it\u0027s\"",
+      "range": {
+        "startLine": 1288,
+        "startChar": 28,
+        "endLine": 1288,
+        "endChar": 31
+      },
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e043a93_1bf7946c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13108565_1bff52af",
       "range": {
         "startLine": 1288,
         "startChar": 28,
@@ -219,6 +429,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45e24e4a_22721bc6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "If that change is being made it should be in some subsequent CL that is also modifying .get_connector_status \u003d rts54_get_connector_status, to use the UCSI version for this command.",
+      "parentUuid": "222ccae0_eccdf54a",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0841810_aa44f724",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 7
@@ -230,6 +458,30 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "Nit: This function deals in both Type-C source and PD source policy. I\u0027d suggest just `current` for this variable name.",
+      "range": {
+        "startLine": 3297,
+        "startChar": 76,
+        "endLine": 3297,
+        "endChar": 79
+      },
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaf6419_e1ba3659",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3297,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0841810_aa44f724",
       "range": {
         "startLine": 3297,
         "startChar": 76,
@@ -265,6 +517,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1811a96d_65f1de13",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "no, this was not correct. It was intended to be \u0027tcc \u003d TC_CURRENT_3_0A ?\u0027. I have fixed that.",
+      "parentUuid": "b749bf69_75933571",
+      "range": {
+        "startLine": 3319,
+        "startChar": 25,
+        "endLine": 3319,
+        "endChar": 40
+      },
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d3574ae_dfccde00",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 7
@@ -276,6 +552,24 @@
       "writtenOn": "2024-05-02T21:08:51Z",
       "side": 1,
       "message": "Should anything happen to the unattached policy if this function is called in an attached source state? What about attached sink? Is there any risk of a race where the state changes while this function is running or after the flags are set but before they are checked?",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85999637_d3263a67",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3333,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:50Z",
+      "side": 1,
+      "message": "If this is called in an attached source state, then either the Rp value should be changed if it\u0027s a type-c only connection, or a new SRC_CAP should be sent if it\u0027s a USB-PD connection. The default Rp value should always track what was passed into this function. But, because pdc-\u003euna_policy is only checked if the port is in an unattached state, only setting the flag bit to force a write to the PDC if its unattached.",
+      "parentUuid": "7d3574ae_dfccde00",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
