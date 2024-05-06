@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0466478_a418455e",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-06T15:59:58Z",
+      "side": 1,
+      "message": "See comment above. This is used in a case statement and doesn\u0027t reflect the actual UCSI value.",
+      "parentUuid": "c291d025_8398f66e",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26c31a71_72cdbe1b",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "734cadd2_242b231e",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-06T15:59:58Z",
+      "side": 1,
+      "message": "Yes this is confusing. Byte 0 holds the register that was written to, and byte 1 holds the length of the data received. I\u0027ll add a comment explaining this.\n\nYes, just the default mask is being used, but setting the mask will be added.",
+      "parentUuid": "26c31a71_72cdbe1b",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50c71d2d_7aff14ff",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -65,6 +101,24 @@
       "writtenOn": "2024-05-02T21:52:10Z",
       "side": 1,
       "message": "nit: missing break?",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "261175a6_11015c62",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-06T15:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c71d2d_7aff14ff",
       "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db9e1027_2517f4cf",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-06T15:59:58Z",
+      "side": 1,
+      "message": "I agree",
+      "parentUuid": "c609f0e1_56fcdc4c",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c634c14_aea8025c",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -99,6 +171,24 @@
       "writtenOn": "2024-05-02T21:52:10Z",
       "side": 1,
       "message": "I2C2 refers to the TBT controller. For EC code, we should only be writing to CMD1/DATA1.\n\nWe distinguish ports via the i2c controller address anyway.",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2eb7ed_9f0710b3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-06T15:59:58Z",
+      "side": 1,
+      "message": "That\u0027s right, and this is most likely why things aren\u0027t working as expected.",
+      "parentUuid": "2c634c14_aea8025c",
       "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

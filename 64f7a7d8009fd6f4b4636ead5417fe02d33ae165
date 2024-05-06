@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "504d5cf2_236229bd",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-06T15:59:58Z",
+      "side": 1,
+      "message": "The values of these enums are used to trigger an action via a case statement, and could be anything. I added the number\u0027s in the comments for my debugging have I\u0027ve removed them.",
+      "parentUuid": "c5134d99_f5fda6ce",
+      "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27ad2eec_4127ca10",
         "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
         "patchSetId": 2
