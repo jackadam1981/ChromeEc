@@ -64,10 +64,10 @@ This document will assume you are using Servo V4.
 ### Start servod
 
 ```bash
-(chroot) $ sudo servod --board=<BOARD>
+(outside) $ start-servod --channel=release --board=$BOARD -p 9999
 ```
 
-At this point the servod daemon should be running and listening to port 9999 by default. If it isn't, check the hardware connection.
+At this point the servod daemon should be running and listening to port 9999. If it isn't, check the hardware connection.
 
 ## Run a Single Fingerprint Firmware Test
 
@@ -103,6 +103,6 @@ tast run <IP> '("group:fingerprint-cq")'
 [servo debugger]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo.md
 [developer mode]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_mode.md
 [CCD]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/cr50_stab/docs/case_closed_debugging.md
-[Servo V4]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo_v4.md
+[Servo V4]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servod_outside_chroot.md
 [have the prerequisites]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#Prerequisites
 [get the source]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#get-the-source
