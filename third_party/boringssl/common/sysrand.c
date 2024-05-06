@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (3e935b third_party: boringssl: Set _POSIX_C_SOURCE)
 /* Copyright 2023 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -32,3 +33,5 @@ int getentropy(void *buffer, size_t length)
 	return 0;
 }
 #endif // !defined(__linux__)
+=======
+>>>>>>> BRANCH (b8d524 zephyr: fpmcu: change a way of running test in run_device_te)

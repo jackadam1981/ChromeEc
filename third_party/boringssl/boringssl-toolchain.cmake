@@ -9,12 +9,15 @@ include("${CROS_EC_REPO}/cmake/toolchain-common.cmake")
 
 # Specify our platform, which disables filesystem, threads, etc.
 add_definitions(-DCROS_EC)
+<<<<<<< HEAD   (3e935b third_party: boringssl: Set _POSIX_C_SOURCE)
 
 # TODO(b/287661706): This can be removed once https://crrev.com/c/4610318 lands.
 if (CMAKE_SYSTEM_PROCESSOR STREQUAL armv7)
     add_compile_options(-mcpu=cortex-m4)
     add_compile_options(-mfloat-abi=hard)
 endif ()
+=======
+>>>>>>> BRANCH (b8d524 zephyr: fpmcu: change a way of running test in run_device_te)
 
 # When compiling the code with the portage build system, it will generate very
 # long file path strings. This compile options will strip the source path, and
