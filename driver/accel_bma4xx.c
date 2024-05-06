@@ -14,6 +14,7 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
@@ -586,6 +587,7 @@ static uint32_t last_irq_timestamp;
 static int bma4xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 {
 	int ret;
+	int interrupt_status_reg;
 
 	mutex_lock(s->mutex);
 
@@ -595,6 +597,25 @@ static int bma4xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 	/* Configure INT1 pin */
 	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT1_IO_CTRL_ADDR,
 				       enable ? BMA4_INT1_OUTPUT_EN : 0));
+
+	GOTO_ON_ERROR(out,
+		      bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
+
+	if (enable) {
+		GOTO_ON_ERROR(out, gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L));
+	} else {
+		GOTO_ON_ERROR(out,
+			      gpio_disable_interrupt(GPIO_LID_ACCEL_INT_L));
+	}
+#ifdef CONFIG_ZEPHYR
+	const struct device *port = DEVICE_DT_GET(DT_NODELABEL(gpio0));
+	GOTO_ON_ERROR(out,
+		      gpio_pin_interrupt_configure(port, 2,
+						   enable ? GPIO_INT_ENABLE :
+							    GPIO_INT_DISABLE));
+	GOTO_ON_ERROR(out,
+		      gpio_pin_configure(port, 2, GPIO_INPUT | GPIO_PULL_UP));
+#endif /* CONFIG_ZEPHYR */
 out:
 	mutex_unlock(s->mutex);
 	return ret;
