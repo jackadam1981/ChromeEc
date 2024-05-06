@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54528ea6_4b33dd81",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T14:56:48Z",
+      "side": 1,
+      "message": "Thank you, Ting. It\u0027s a nice catch, which I didn\u0027t consider the case for legacy EC.",
+      "parentUuid": "7323e2ac_bbb63a39",
+      "revId": "cf8faab9f306c5c15b286b9131f10cb69f230e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19b3d6da_4229ebfd",
         "filename": "common/i2c_passthru.c",
         "patchSetId": 8
