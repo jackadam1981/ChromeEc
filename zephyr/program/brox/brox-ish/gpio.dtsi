@@ -9,17 +9,19 @@
 		compatible = "named-gpios";
 
 		gpio_ec_accel_db_int_l: ec_accel_db_int_l {
-			gpios = <&gpio0 2 GPIO_INPUT>;
+			gpios = <&gpio0 2 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_LID_ACCEL_INT_L";
 		};
 
+		/*
 		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
-			gpios = <&gpio0 3 GPIO_INPUT>;
+			gpios = <&gpio0 3 (GPIO_INPUT | GPIO_PULL_UP)>;
 		};
-
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpio0 5 GPIO_INPUT>;
 			enum-name = "GPIO_TABLET_MODE_L";
 		};
+		*/
 
 		gpio_lid_open: lid_open {
 			gpios = <&gpio0 7 GPIO_INPUT>;
