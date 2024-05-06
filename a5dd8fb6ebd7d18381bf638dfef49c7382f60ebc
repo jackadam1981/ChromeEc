@@ -22,6 +22,29 @@
       },
       "revId": "a5dd8fb6ebd7d18381bf638dfef49c7382f60ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27be2eb5_ee32ddd2",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-06T23:34:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what this sentence means.\n \nDo you mean \"If the change does not apply, ignore the warning?\"\n\nYou could probably just leave this sentence out.",
+      "range": {
+        "startLine": 23,
+        "startChar": 14,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "a5dd8fb6ebd7d18381bf638dfef49c7382f60ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
