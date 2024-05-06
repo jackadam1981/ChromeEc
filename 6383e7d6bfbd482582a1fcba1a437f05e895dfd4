@@ -188,6 +188,30 @@
       },
       "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55836d65_2445595c",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T10:30:35Z",
+      "side": 1,
+      "message": "Done, please help to review patchset#8 to see if it matches your expectation. Thank you so much for providing precious feedback. Caveh, Ting and Yilin.",
+      "parentUuid": "80e14ba2_b35b2f66",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 13
+      },
+      "revId": "6383e7d6bfbd482582a1fcba1a437f05e895dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c8290f_21e368cb",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T10:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "502e152e_880833ed",
+      "range": {
+        "startLine": 137,
+        "startChar": 40,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "655c7ddba40fbf72dd5adbec7af28eba6abffd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56427a2a_e0d44b38",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-04T01:01:32Z",
       "side": 1,
       "message": "Please run `cros format common/i2c_passthru.c` before upload.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 80
+      },
+      "revId": "655c7ddba40fbf72dd5adbec7af28eba6abffd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090a8b67_f27b097a",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T10:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56427a2a_e0d44b38",
       "range": {
         "startLine": 300,
         "startChar": 0,
