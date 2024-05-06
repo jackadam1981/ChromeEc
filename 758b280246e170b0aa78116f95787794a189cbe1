@@ -93,6 +93,30 @@
       },
       "revId": "758b280246e170b0aa78116f95787794a189cbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc3a2c1_fed2a0b1",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-06T08:58:18Z",
+      "side": 1,
+      "message": "implemented ec console commands \"typec\" and \"altmode\" for debugging.\nOnce we have UCSI3.0 implementation available this may not be needed.",
+      "parentUuid": "31de944b_0dfdff72",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "758b280246e170b0aa78116f95787794a189cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
