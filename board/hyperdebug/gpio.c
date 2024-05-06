@@ -133,7 +133,6 @@ const struct pwm_pin_t pwm_pins[GPIO_COUNT] = {
 	[GPIO_CN10_6] = { PWM_TIMER(1), 2, 1 }, /* PE11, QSPI CS */
 	[GPIO_NUCLEO_LED3] = { PWM_TIMER(1), 2, 1 }, /* PA9 */
 	[GPIO_CN12_33] = { PWM_TIMER(1), 3, 1 }, /* PA10 */
-#ifdef PWM_TIMER_3
 	[GPIO_CN9_22] = { PWM_TIMER(3), 1, 2 }, /* PE3 */
 	[GPIO_CN7_11] = { PWM_TIMER(3), 1, 2 }, /* PB4 */
 	[GPIO_CN9_16] = { PWM_TIMER(3), 2, 2 }, /* PE4 */
@@ -141,7 +140,6 @@ const struct pwm_pin_t pwm_pins[GPIO_COUNT] = {
 	[GPIO_CN9_7] = { PWM_TIMER(3), 3, 2 }, /* PB0 */
 	[GPIO_CN9_20] = { PWM_TIMER(3), 4, 2 }, /* PE6 */
 	[GPIO_CN10_7] = { PWM_TIMER(3), 4, 2 }, /* PB1 */
-#endif
 	[GPIO_CN9_15] = { PWM_TIMER(4), 1, 2 }, /* PB6 */
 	[GPIO_CN7_7] = { PWM_TIMER(4), 1, 2 }, /* PD12 */
 	[GPIO_NUCLEO_LED2] = { PWM_TIMER(4), 2, 2 }, /* PB7 */
@@ -508,6 +506,12 @@ static void board_gpio_init(void)
 		sram_vectors[16 + STM32_IRQ_EXTI0 + i] =
 			DATA_TO_THUMB_CODE_PTR(&monitoring_slots[i].code);
 	}
+
+	/*
+	 * Enable TIMER7 for precise JTAG bit-banging.
+	 */
+	__hw_timer_enable_clock(JTAG_TIMER, 1);
+	STM32_TIM_CR1(JTAG_TIMER) = STM32_TIM_CR1_CEN;
 
 	/* Prepare timer for use in GPIO bit-banging. */
 	__hw_timer_enable_clock(BITBANG_TIMER, 1);
