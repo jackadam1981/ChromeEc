@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6472c81c_e04247d7",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T15:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3123132e_002c906d",
+      "revId": "cf8faab9f306c5c15b286b9131f10cb69f230e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7323e2ac_bbb63a39",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3422bb9_bf285896",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T15:08:56Z",
+      "side": 1,
+      "message": "Verify with both legacy EC and Zephyr cases.\n- zmake build kyogre\n- make -j BOARD\u003d${BOARD}",
+      "parentUuid": "54528ea6_4b33dd81",
+      "revId": "cf8faab9f306c5c15b286b9131f10cb69f230e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19b3d6da_4229ebfd",
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0429a163_c4bb9edf",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T15:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b3d6da_4229ebfd",
+      "revId": "cf8faab9f306c5c15b286b9131f10cb69f230e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e73923d0_dc884423",
@@ -83,6 +137,24 @@
       "writtenOn": "2024-05-06T10:38:07Z",
       "side": 1,
       "message": "same here",
+      "revId": "cf8faab9f306c5c15b286b9131f10cb69f230e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe636f1_f24e3ec3",
+        "filename": "common/i2c_passthru.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-06T15:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e73923d0_dc884423",
       "revId": "cf8faab9f306c5c15b286b9131f10cb69f230e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
