@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a977fec2_c36b5ea8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-06T23:04:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we can/should go even one-level up: wake up the pdc thread for all events (busy, error, command_completed).",
+      "range": {
+        "startLine": 1950,
+        "startChar": 2,
+        "endLine": 1950,
+        "endChar": 46
+      },
+      "revId": "e0e9635aa5f631ab62e5e7d2f5f9dae5fcefbcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
