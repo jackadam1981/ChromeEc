@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7758def4_013f607e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:35Z",
+      "side": 1,
+      "message": "I changed the driver instances to SET_PDO and the API instances to set_pdos as you suggested.",
+      "parentUuid": "2a0c1590_5ce77b94",
+      "revId": "db25be8631ef5aef06c67c89be1b1dd4aaa594a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8d8c882_41da287d",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-02T18:39:45Z",
       "side": 1,
       "message": "Should there be something here?",
+      "revId": "db25be8631ef5aef06c67c89be1b1dd4aaa594a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd8d4990_29db83e2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-06T19:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d8c882_41da287d",
       "revId": "db25be8631ef5aef06c67c89be1b1dd4aaa594a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
