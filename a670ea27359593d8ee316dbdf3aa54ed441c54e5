@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aae14e4_64bf6eb4",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c1dbb60_2b71f02f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ca7f6d_e9d236a0",
@@ -89,6 +113,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "Are both styles needed?  Should NACK/ACK mode be configured from the command line instead?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca62df31_67eb6017",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ca7f6d_e9d236a0",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "648e7f6f_6b904656",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a619b52_caf57849",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d10e3151_2fae5fb2",
@@ -135,6 +207,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "Use types provided by stdint.h such as `uint8_t` and uint32_t`.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb2ee06_72ba1063",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10e3151_2fae5fb2",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -168,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d917fc02_8ac5e515",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33efb37_23f35758",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b554ec8c_25527528",
@@ -181,6 +301,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "Define an array instead of a macro so you can use `write_com()`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c977eb7_0e0b1f8d",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b554ec8c_25527528",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -214,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58673b3d_9a7825ee",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a29dc77_4a8df05b",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b8f5ecf_deecf714",
@@ -227,6 +395,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "0xB4 seems to be used for many commands.  Can you create #defines fro the command type?  Is there documentation for the format of these commands sent to the ITE chip?",
+      "range": {
+        "startLine": 287,
+        "startChar": 30,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b852753b_1479f5ec",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b8f5ecf_deecf714",
       "range": {
         "startLine": 287,
         "startChar": 30,
@@ -260,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb4de25_b66abdd7",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e5a60c2_0556805e",
+      "range": {
+        "startLine": 292,
+        "startChar": 14,
+        "endLine": 292,
+        "endChar": 25
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e0cdfd_37b7318b",
@@ -273,6 +489,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "I recommend making all these array sizes anonymous: `const uint8_t *write_disable[] \u003d {...}`\n\nWhen calling into `WriteCom()` you should use the array size.\n```\nwrite_com(write_disable, ARRAY_SIZE(write_disable));\n```",
+      "range": {
+        "startLine": 298,
+        "startChar": 27,
+        "endLine": 298,
+        "endChar": 29
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8546714e_e6edd53d",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e0cdfd_37b7318b",
       "range": {
         "startLine": 298,
         "startChar": 27,
@@ -306,6 +546,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80eb770_c3b3fcd5",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f54528_82fb72b0",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 13
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8329ab9_33162167",
@@ -319,6 +583,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "The flash size shouldn\u0027t be fixed.  Won\u0027t ITE support multiple flash sizes?",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c4644e_de3335b2",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8329ab9_33162167",
       "range": {
         "startLine": 431,
         "startChar": 0,
@@ -352,6 +640,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7b0c32_9539f45c",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe0db83_5a493c79",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3f04b73_86186159",
@@ -365,6 +677,30 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "Move the polling inside `chk_aah()`.  You should also add a timeout check so there are no unbounded loops.",
+      "range": {
+        "startLine": 506,
+        "startChar": 8,
+        "endLine": 506,
+        "endChar": 15
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd9344e_70d45daa",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f04b73_86186159",
       "range": {
         "startLine": 506,
         "startChar": 8,
@@ -398,6 +734,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4881990_2e8bb1e4",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26505277_985cd4ad",
+      "range": {
+        "startLine": 1693,
+        "startChar": 2,
+        "endLine": 1693,
+        "endChar": 8
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31a4fed_c751c5e0",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26505277_985cd4ad",
+      "range": {
+        "startLine": 1693,
+        "startChar": 2,
+        "endLine": 1693,
+        "endChar": 8
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd4e657_94d73fbb",
@@ -421,6 +805,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa71036_276a9a5b",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcd4e657_94d73fbb",
+      "range": {
+        "startLine": 1823,
+        "startChar": 0,
+        "endLine": 1823,
+        "endChar": 14
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "858f705d_850210c5",
@@ -434,6 +842,54 @@
       "writtenOn": "2024-04-11T22:24:50Z",
       "side": 1,
       "message": "Please add help text that describes all the parameters.  This should also include details for required and optional parameters.",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 40
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2cb7e25_3f5a5839",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858f705d_850210c5",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 40
+      },
+      "revId": "a670ea27359593d8ee316dbdf3aa54ed441c54e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d48a6d_1816e75c",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-06T10:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858f705d_850210c5",
       "range": {
         "startLine": 1835,
         "startChar": 0,
