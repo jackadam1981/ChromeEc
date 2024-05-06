@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e26847f_1bf24606",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-05-06T09:02:20Z",
+      "side": 1,
+      "message": "With this line, you\u0027ll see that the EC toggling stops, but we also no longer stay in the deep suspend state. So I\u0027m not sure why we can\u0027t deep suspend with the GPIO disabled, but I\u0027m tempted to say it\u0027s the GPIO driver for the ISH (https://github.com/zephyrproject-rtos/hal_intel/blob/main/bsp_sedi/drivers/gpio/sedi_gpio.c).",
+      "revId": "61aa93698414cea5675cf1e1f7c43e6a292f07c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
