@@ -22,7 +22,7 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt);
+LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_DBG);
 
 /**
  * @brief Event triggered by sending an internal command
@@ -566,6 +566,8 @@ struct pdc_port_t {
 	bool active_charge;
 	/** Tracks current connection state */
 	enum attached_state_t attached_state;
+	/* VDO queried already or not. */
+	bool vdo_queried;
 	/** GET_VDO temp variable used with CMD_GET_VDO */
 	union get_vdo_t vdo_req;
 	/** Array used to hold the list of VDO types to request */
@@ -773,7 +775,11 @@ static void print_current_pdc_state(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
 
-	LOG_INF("C%d: %s", config->connector_num,
+	if (get_pdc_state(port) == PDC_SEND_CMD_START)
+	LOG_INF("PDM%d: %s cmd=0x%02x", config->connector_num,
+		pdc_state_names[get_pdc_state(port)], port->cmd->cmd);
+	else
+	LOG_INF("PDM%d: %s", config->connector_num,
 		pdc_state_names[get_pdc_state(port)]);
 }
 
@@ -1152,6 +1158,7 @@ static void pdc_src_attached_entry(void *obj)
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
+		port->vdo_queried = false;
 	}
 }
 
@@ -1237,6 +1244,7 @@ static void pdc_snk_attached_entry(void *obj)
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->snk_attached_local_state =
 			SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
+		port->vdo_queried = false;
 	}
 }
 
@@ -1439,9 +1447,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	int rv;
 	const struct pdc_config_t *const config = port->dev->config;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_DBG("C%d: Send %s (%d) %s cci_flags=0x%x", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
-		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
+		(port->cmd == &port->send_cmd.intern) ? "internal" : "public",
+		(uint16_t)atomic_get(port->cci_flags));
 
 	/* Send PDC command via driver API */
 	switch (port->cmd->cmd) {
@@ -1536,8 +1545,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	}
 
 	if (rv) {
-		LOG_DBG("Unable to send command: %s",
-			pdc_cmd_names[port->cmd->cmd]);
+		LOG_DBG("Unable to send command: %s (%d)",
+			pdc_cmd_names[port->cmd->cmd], rv);
 	}
 
 	return rv;
@@ -1549,10 +1558,6 @@ static void pdc_send_cmd_start_run(void *obj)
 	int rv;
 
 	rv = send_pdc_cmd(port);
-	if (rv) {
-		LOG_DBG("Unable to send command: %s",
-			pdc_cmd_names[port->cmd->cmd]);
-	}
 
 	/*
 	 * If the PDC is still processing a command (not in the IDLE state),
@@ -1947,6 +1952,7 @@ static void pdc_cci_handler_cb(union cci_event_t cci_event, void *cb_data)
 	/* Handle generic vendor defined event from driver */
 	if (cci_event.vendor_defined_indicator) {
 		atomic_set_bit(port->cci_flags, CCI_EVENT);
+		k_event_post(&port->sm_event, PDC_SM_EVENT);
 	}
 }
 
@@ -1976,6 +1982,8 @@ static int pdc_subsys_init(const struct device *dev)
 	struct pdc_data_t *data = dev->data;
 	struct pdc_port_t *port = &data->port;
 	const struct pdc_config_t *const config = dev->config;
+
+	printk("%s\n", __func__);
 
 	/* Make sure PD Controller is ready */
 	if (!device_is_ready(port->pdc)) {
@@ -2884,8 +2892,18 @@ static int pdc_run_get_discovery(int port)
 		return 0;
 	}
 
+	if (pdc_data[port]->port.vdo_queried) {
+		/*
+		 * TODO: Revisit this. Host is very eager to get VDOs. It should
+		 * wait for a reasonable event before sending another query.
+		 */
+		LOG_INF("%s: Ignored redundant GET VDO", __func__);
+		return 0;
+	}
+
 	/* Format the GET_VDO command */
 	discovery_info_init(&pdc_data[port]->port);
+	pdc_data[port]->port.vdo_queried = true;
 
 	/* Block until command completes */
 	ret = public_api_block(port, CMD_PDC_GET_VDO);
