@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f1efc0_4abb0210",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-06T10:38:48Z",
+      "side": 1,
+      "message": "`input_report_key` resolves back to boolean with an implicit conversion (https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/input/input.h#L84, it\u0027s the same in the Linux version), so it\u0027s boolean in spirit :-)",
+      "parentUuid": "5adcf554_2aefb063",
+      "range": {
+        "startLine": 32,
+        "startChar": 42,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8578ea32_d3b05ee0",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-03T20:50:01Z",
       "side": 1,
       "message": "Which keys are these supposed to be? Is it just the recovery mode keys?",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c956784_0196ae23",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-06T10:38:48Z",
+      "side": 1,
+      "message": "row, col from devicetree, adding some defines for them",
+      "parentUuid": "8578ea32_d3b05ee0",
       "range": {
         "startLine": 54,
         "startChar": 13,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b85015_6dd7a599",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-06T10:38:48Z",
+      "side": 1,
+      "message": "yeah it\u0027s stray keys, renamed the test to be more explicit",
+      "parentUuid": "1fdfef3e_27920dab",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af9b6c5e_21b270bf",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-05-03T20:50:01Z",
       "side": 1,
       "message": "Here we\u0027ve set the value from 1 (probably but it\u0027s bool) to 0, why is that? It\u0027s probably because I don\u0027t know what `stray` is.",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "ca5258d641e7873badcb1be7fcfef7a4c92f606a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5162757_d9d0e48c",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-06T10:38:48Z",
+      "side": 1,
+      "message": "it\u0027s to test the key release code path, added a comment",
+      "parentUuid": "af9b6c5e_21b270bf",
       "range": {
         "startLine": 107,
         "startChar": 21,
