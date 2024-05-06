@@ -247,6 +247,24 @@
       "parentUuid": "809da7f9_632632bb",
       "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94845260_64e7f8a6",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T17:14:56Z",
+      "side": 1,
+      "message": "I\u0027m fine with this being a separate CL.",
+      "parentUuid": "df666740_9614ede9",
+      "revId": "ec4a4b2959d1cf48d93c8bfce097314457634776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
