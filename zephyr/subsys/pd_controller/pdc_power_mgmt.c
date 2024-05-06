@@ -1947,6 +1947,7 @@ static void pdc_cci_handler_cb(union cci_event_t cci_event, void *cb_data)
 	/* Handle generic vendor defined event from driver */
 	if (cci_event.vendor_defined_indicator) {
 		atomic_set_bit(port->cci_flags, CCI_EVENT);
+		k_event_post(&port->sm_event, PDC_SM_EVENT);
 	}
 }
 
