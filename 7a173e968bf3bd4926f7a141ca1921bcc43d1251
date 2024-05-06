@@ -51,6 +51,24 @@
       "parentUuid": "8ecee2a4_3de2a1f4",
       "revId": "7a173e968bf3bd4926f7a141ca1921bcc43d1251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3562ecc5_163dec43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-06T07:52:26Z",
+      "side": 1,
+      "message": "Moved this to Kconfig.defaults.",
+      "parentUuid": "8e2ae89c_032e1ea8",
+      "revId": "7a173e968bf3bd4926f7a141ca1921bcc43d1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
