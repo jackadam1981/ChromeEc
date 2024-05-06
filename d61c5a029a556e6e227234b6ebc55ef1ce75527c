@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d305e804_883d4735",
+        "filename": "docs/fingerprint/fingerprint-firmware-testing-for-partners.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-06T21:41:32Z",
+      "side": 1,
+      "message": "This still mentions autotest. I would change to something like \"set up the chroot\".",
+      "range": {
+        "startLine": 54,
+        "startChar": 14,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "d61c5a029a556e6e227234b6ebc55ef1ce75527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
