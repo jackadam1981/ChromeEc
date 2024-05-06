@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc228a06_b7466bb3",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5779934_52015af5",
+      "range": {
+        "startLine": 499,
+        "startChar": 25,
+        "endLine": 499,
+        "endChar": 68
+      },
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d591e1b8_0f23ba79",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Yeah, I had noticed this comment seemed incomplete. Apparently it had got removed from the tcpmv2 version of this function.",
       "parentUuid": "d591e1b8_0f23ba79",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31651833_49629d5a",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1362bd1d_22bc7eb4",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69999647_683cc950",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "556fe4b5_b9d12455",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "528c44a4_1afc7cdf",
@@ -153,6 +213,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0c0fb8_6785dee5",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ba1b02_d96a5759",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "603cad3a_d87bd7fa",
@@ -184,6 +262,24 @@
       "side": 1,
       "message": "I think that\u0027s the case. I would guess that if the default current for all ports is 3.0A then 3.0A can always be allocated and would always be allocated for each port in a source role. So the whole algorithm would be effectively be a no-op",
       "parentUuid": "603cad3a_d87bd7fa",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88da5ea2_0c9806df",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "I think the algorithm as defined here would work for all of our actual boards that default to 1.5A and can supply 3.0A to at most one port. But hypothetically, if you had a board that defaulted to 3.0 on a port, I think this would do something weird.\n\n3 lines down, the code removes `rem_non_pd` from `max_curent_claimed`. If the default current was in fact 3.0A, then the accounting in the bit fields in this file wouldn\u0027t match the actual current allocation. This policy could end up offering 3.0A on more ports than the board supported.\n\nIt\u0027s probably OK to wait for another CL to address this.",
+      "parentUuid": "f8455f40_cdf12009",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -289,6 +385,24 @@
       "side": 1,
       "message": "I think it could be either way, but this method matches the TCPMv2 implementation.",
       "parentUuid": "5bdc2df0_701d2f27",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8188c418_7d3acbd4",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "73cc7625_52d9aefb",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -447,6 +561,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4061c8c9_94d0e3aa",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Keith made that change recently: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/drivers/usbc/pdc_rts54xx.c#1760.\n\nI\u0027m OK with this change taking place in a subsequent CL, though.",
+      "parentUuid": "45e24e4a_22721bc6",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0841810_aa44f724",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 7
@@ -539,6 +671,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb49b841_896ab15f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1811a96d_65f1de13",
+      "range": {
+        "startLine": 3319,
+        "startChar": 25,
+        "endLine": 3319,
+        "endChar": 40
+      },
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d3574ae_dfccde00",
@@ -570,6 +726,24 @@
       "side": 1,
       "message": "If this is called in an attached source state, then either the Rp value should be changed if it\u0027s a type-c only connection, or a new SRC_CAP should be sent if it\u0027s a USB-PD connection. The default Rp value should always track what was passed into this function. But, because pdc-\u003euna_policy is only checked if the port is in an unattached state, only setting the flag bit to force a write to the PDC if its unattached.",
       "parentUuid": "7d3574ae_dfccde00",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247acff2_12df3560",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3333,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "IIUC, this function will always update `una_policy.tcc`, which is the source of truth for the current limit to be applied. However, depending on the state, this function will set a different flag to trigger a different write to the PDC to implement the policy expressed in `tcc`, based on the current state?\n\nIs there any risk of that write not happening, because the state changed between the time that this function set the flag and the time that the state checked flags? Or would a state change override the effects of this function call anyway?",
+      "parentUuid": "85999637_d3263a67",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

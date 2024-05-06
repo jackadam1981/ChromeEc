@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156b1616_7938aa3c",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-06T20:16:35Z",
+      "side": 1,
+      "message": "Nit: \"reported in multiples of 10 mA\"?",
+      "range": {
+        "startLine": 255,
+        "startChar": 43,
+        "endLine": 255,
+        "endChar": 64
+      },
+      "revId": "d23fed90bcd498cb4d9577d32af66c259f2bdd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
