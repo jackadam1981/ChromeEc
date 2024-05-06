@@ -36,6 +36,7 @@ test-list-y=\
        fpsensor \
        fpsensor_auth_crypto_stateful \
        fpsensor_auth_crypto_stateless \
+       fpsensor_crypto \
        fpsensor_hw \
        ftrapv \
        global_initialization \
@@ -44,6 +45,8 @@ test-list-y=\
        malloc \
        mpu \
        mutex \
+       mutex_trylock \
+       mutex_recursive \
        panic \
        panic_data \
        pingpong \
