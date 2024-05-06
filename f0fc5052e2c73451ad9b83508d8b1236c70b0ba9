@@ -46,6 +46,30 @@
       },
       "revId": "f0fc5052e2c73451ad9b83508d8b1236c70b0ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a589e7a2_5ecb72e3",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-06T23:53:25Z",
+      "side": 1,
+      "message": "Then, it\u0027ll include irrelevant dirs (e.g. feature-x/foo/coreboot). Not all feature-x dirs are expected to have an ec dir.",
+      "parentUuid": "a68552eb_4bd80ecd",
+      "range": {
+        "startLine": 319,
+        "startChar": 25,
+        "endLine": 319,
+        "endChar": 42
+      },
+      "revId": "f0fc5052e2c73451ad9b83508d8b1236c70b0ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
