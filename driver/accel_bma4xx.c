@@ -14,6 +14,7 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
@@ -583,6 +584,8 @@ out:
 #ifdef BMA4XX_USE_INTERRUPTS
 static uint32_t last_irq_timestamp;
 
+#define SLP_S0_TOGGLE_FIX
+
 static int bma4xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 {
 	int ret;
@@ -595,6 +598,22 @@ static int bma4xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 	/* Configure INT1 pin */
 	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT1_IO_CTRL_ADDR,
 				       enable ? BMA4_INT1_OUTPUT_EN : 0));
+
+	if (enable) {
+		GOTO_ON_ERROR(out, gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L));
+	} else {
+		GOTO_ON_ERROR(out,
+			      gpio_disable_interrupt(GPIO_LID_ACCEL_INT_L));
+	}
+#ifdef CONFIG_ZEPHYR
+#ifdef SLP_S0_TOGGLE_FIX
+	const struct device *port = DEVICE_DT_GET(DT_NODELABEL(gpio0));
+	GOTO_ON_ERROR(out,
+		      gpio_pin_interrupt_configure(port, 2,
+						   enable ? GPIO_INT_ENABLE :
+							    GPIO_INT_DISABLE));
+#endif /* SLP_S0_TOGGLE_FIX */
+#endif /* CONFIG_ZEPHYR */
 out:
 	mutex_unlock(s->mutex);
 	return ret;

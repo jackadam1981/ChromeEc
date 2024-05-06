@@ -107,7 +107,7 @@
 			<&gpiod 0 0>,
 			/* ec_batt_pres_odl */
 			<&gpioi 7 0>;
-		};
+	};
 };
 
 /* The eSPI shim requires this GPIO nodelabel */

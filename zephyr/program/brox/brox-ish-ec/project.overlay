@@ -46,6 +46,36 @@ i2c3ALT: &i2c3 {
 		compatible = "cros,tabletmode-interrupt";
 		irq-gpios = <&gpiod 0 GPIO_ACTIVE_LOW>;
 	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+
+		unused-gpios =
+			/* SPI_EC_DI_BIOS_DO */
+			<&gpiog 5 0>,
+			/* SPI_EC_CS_BIOS_L */
+			<&gpiog 3 0>,
+			/* EC_PCH_PECI */
+			<&gpiof 6 0>,
+			/* SPI_EC_CLK */
+			<&gpiog 7 0>,
+			/* SPI_EC_DO_BIOS_DI */
+			<&gpiog 4 0>,
+			/* EC_EN_IMVP91_NC */
+			<&gpioh 6 0>,
+			/* EC_ESPI_ALERT_L_NC */
+			<&gpiom 6 0>,
+			/* PCBEEP_EC */
+			<&gpioa 7 0>,
+			/* ADP_DET */
+			<&gpiod 0 0>,
+			/* ec_batt_pres_odl */
+			<&gpioi 7 0>,
+			/* gpio_ec_accel_db_int_l */
+			<&gpioj 7 0>,
+			/* gpio_ec_accel_mb_int_l */
+			<&gpioj 0 0>;
+	};
 };
 
 /* TODO: b:332805291; remove the node and enable for proto 2 */
@@ -56,6 +86,8 @@ i2c3ALT: &i2c3 {
 /* Disable sensor I2C nodes */
 /delete-node/ &i2c5;
 /delete-node/ &i2c_ec_i2c_sensor;
+/delete-node/ &gpio_ec_accel_db_int_l;
+/delete-node/ &gpio_ec_accel_mb_int_l;
 
 /* These GPIOS are initialized by the PDC driver */
 &gpio_usb_pd_int_odl {
