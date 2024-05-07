@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5054f50b_cde8abe9",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "As a follow up, create a single option for setting the driver thread priority for all PDC drivers.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19cf3bbd_4d201b21",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "Declaring a name space for the logging such as `CONFIG_PDC_TPS_LOG_LEVEL` allows the log level to be changed via Kconfig.",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4a9db6_0f113748",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "These are standard UCSI commands, this should be defined somewhere shared.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 45
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d782a9c_92e67829",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "I\u0027m still reviewing, but why does the TI driver need separate states for each sub-command?  Can a common state be used?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 0
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be997693_b8a70fad",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "You keep this debug code by using:\n```\n#if CONFIG_PDC_TPS_LOG_LEVEL \u003e\u003d LOG_LEVEL_DBG\n```",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 5
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3d13dc_6f51f905",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "If you make this switch operate on UCSI_xxx command names, then you don\u0027t need separate states to just to convert the `data-\u003ecmd` to `data-\u003eucsi_command`. \n\nI like Abhishek\u0027s suggestion of extending `enum ucsu_command_t` with a vendor specific area.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 0
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

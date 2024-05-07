@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dd57529_d60e4868",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:51:58Z",
+      "side": 1,
+      "message": "Should the `2` be replaced by `RV_DATA_START`?",
+      "parentUuid": "734cadd2_242b231e",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50c71d2d_7aff14ff",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
