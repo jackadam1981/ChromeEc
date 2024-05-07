@@ -45,6 +45,75 @@
       },
       "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c22697d_a9e7d756",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T16:54:46Z",
+      "side": 1,
+      "message": "nit: how about using macro here too?",
+      "range": {
+        "startLine": 304,
+        "startChar": 17,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b4539a_bca7c1b9",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T16:54:46Z",
+      "side": 1,
+      "message": "nit: how about using macro here too?",
+      "range": {
+        "startLine": 310,
+        "startChar": 10,
+        "endLine": 310,
+        "endChar": 12
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edbde44e_898142b8",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T16:54:46Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 331,
+        "startChar": 2,
+        "endLine": 331,
+        "endChar": 8
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
