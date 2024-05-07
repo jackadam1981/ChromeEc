@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3fe77e_84bef45f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T18:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3884259a_f5744e77",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7db50233_a796f446",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-07T16:43:00Z",
       "side": 1,
       "message": "if the USB4 is disabled, is this needed?",
+      "range": {
+        "startLine": 6117,
+        "startChar": 1,
+        "endLine": 6117,
+        "endChar": 4
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3989721_1dc8921a",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6117,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T18:58:05Z",
+      "side": 1,
+      "message": "not needed. Hence reverting this change.",
+      "parentUuid": "7db50233_a796f446",
       "range": {
         "startLine": 6117,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37940c44_439aab9d",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6118,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T18:58:05Z",
+      "side": 1,
+      "message": "original change is removed, hence not needed.",
+      "parentUuid": "6331e55f_f21b45f4",
+      "range": {
+        "startLine": 6118,
+        "startChar": 7,
+        "endLine": 6118,
+        "endChar": 63
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41a3cf0e_2e1e4940",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-07T14:58:51Z",
       "side": 1,
       "message": "Nit - update error message to match logic.",
+      "range": {
+        "startLine": 6218,
+        "startChar": 0,
+        "endLine": 6220,
+        "endChar": 0
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74ff8e6_b227a50b",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T18:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a3cf0e_2e1e4940",
       "range": {
         "startLine": 6218,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78bf67a3_66f9403e",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T18:58:05Z",
+      "side": 1,
+      "message": "this is used in usb_pd_host_cmd_common.c file.",
+      "parentUuid": "26d1d36b_63720a6b",
+      "range": {
+        "startLine": 320,
+        "startChar": 19,
+        "endLine": 320,
+        "endChar": 37
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46e0a572_03052fee",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-05-07T16:43:00Z",
       "side": 1,
       "message": "is this function needed?",
+      "range": {
+        "startLine": 362,
+        "startChar": 19,
+        "endLine": 362,
+        "endChar": 37
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a87aea7_423684cd",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T18:58:05Z",
+      "side": 1,
+      "message": "looks not needed, hence removed this.",
+      "parentUuid": "46e0a572_03052fee",
       "range": {
         "startLine": 362,
         "startChar": 19,
