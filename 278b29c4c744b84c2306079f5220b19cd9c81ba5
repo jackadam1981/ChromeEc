@@ -141,6 +141,30 @@
       },
       "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980f68c3_6b95a25f",
+        "filename": "zephyr/test/hwtest/src/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-07T08:25:58Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org is there any blocker for this patch?",
+      "parentUuid": "c8c9da03_61cec47b",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "278b29c4c744b84c2306079f5220b19cd9c81ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
