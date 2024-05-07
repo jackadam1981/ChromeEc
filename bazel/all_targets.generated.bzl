@@ -1936,6 +1936,10 @@ def all_targets():
         board = "rauru",
     )
     ec_target(
+        name = "navi",
+        board = "navi",
+    )
+    ec_target(
         name = "redrix",
         baseboard = "brya",
         board = "redrix",
