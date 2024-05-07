@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c51faf3_39f48c1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:47:38Z",
+      "side": 1,
+      "message": "Does the upstream `flash_stm32` test cover the same test cases that we have in our test? Specifically, the [option bytes and flash control register](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/flash_physical.c;l\u003d140-147;drc\u003d7c924380b3754fc8fc83c57beb88c7ae86dd0c8a).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3f73402_a450e3e3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
