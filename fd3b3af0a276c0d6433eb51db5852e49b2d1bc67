@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f56ad3b8_9de4dbeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T19:12:14Z",
+      "side": 1,
+      "message": "\"fpsensor\"?",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "fd3b3af0a276c0d6433eb51db5852e49b2d1bc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f404a25c_32d5bbc3",
         "filename": "zephyr/test/hwtest/src/fpsensor.c",
         "patchSetId": 1
