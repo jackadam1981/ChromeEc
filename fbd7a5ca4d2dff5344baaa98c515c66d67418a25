@@ -22,6 +22,30 @@
       },
       "revId": "fbd7a5ca4d2dff5344baaa98c515c66d67418a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaebff5a_30f14c54",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:00:48Z",
+      "side": 1,
+      "message": "yes this is needed. I see few API\u0027s like pdc_power_mgmt_get_dp_pin_mode() are implemented under this config.",
+      "parentUuid": "8c4fa63c_88193756",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "fbd7a5ca4d2dff5344baaa98c515c66d67418a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
