@@ -66,6 +66,10 @@ FAKE_VOID_FUNC(set_pwm_led_color, enum pwm_led_id, int);
 FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
 FAKE_VOID_FUNC(lpc_keyboard_resume_irq);
 
+FAKE_VALUE_FUNC(int, increase_charger_switch_frequency, int);
+FAKE_VOID_FUNC(update_charger_config);
+DECLARE_HOOK(HOOK_INIT, update_charger_config, HOOK_PRIO_DEFAULT);
+
 static void test_before(void *fixture)
 {
 	RESET_FAKE(cbi_get_board_version);
@@ -83,6 +87,8 @@ static void test_before(void *fixture)
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(charger_discharge_on_ac);
 	RESET_FAKE(set_pwm_led_color);
+	RESET_FAKE(update_charger_config);
+	RESET_FAKE(increase_charger_switch_frequency);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -1207,4 +1213,33 @@ ZTEST(craask, test_touch_enable)
 
 	k_sleep(K_MSEC(TOUCH_ENABLE_DELAY_MS));
 	zassert_equal(gpio_emul_output_get(touch_en->port, touch_en->pin), 0);
+}
+
+ZTEST(craask, test_update_charger_config)
+{
+	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_mock;
+
+	// update craask
+	board_version = 0x01;
+	hook_notify(HOOK_INIT);
+	zassert_equal(1, update_charger_config_fake.call_count);
+	zassert_equal(1, increase_charger_switch_frequency_fake.call_count);
+
+	// don't update craaskana
+	board_version = 0x0b;
+	hook_notify(HOOK_INIT);
+	zassert_equal(2, update_charger_config_fake.call_count);
+	zassert_equal(1, increase_charger_switch_frequency_fake.call_count);
+
+	// don't update craaswell
+	board_version = 0x0d;
+	hook_notify(HOOK_INIT);
+	zassert_equal(3, update_charger_config_fake.call_count);
+	zassert_equal(1, increase_charger_switch_frequency_fake.call_count);
+
+	// update craasneto
+	board_version = 0x20;
+	hook_notify(HOOK_INIT);
+	zassert_equal(4, update_charger_config_fake.call_count);
+	zassert_equal(2, increase_charger_switch_frequency_fake.call_count);
 }
