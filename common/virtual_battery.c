@@ -390,6 +390,7 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head, uint8_t *dest,
 		break;
 
 	case SB_MANUFACTURE_INFO:
+	case SB_OPTIONAL_MFG_FUNC5:
 		if (sb_read_string(*batt_cmd_head, str, sizeof(str)))
 			return EC_ERROR_INVAL;
 		memcpy(dest, &str, MIN(read_len, sizeof(str)));
