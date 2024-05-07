@@ -7,6 +7,7 @@
 
 #include "gpio.h"
 #include "gpio/gpio_int.h"
+#include "hooks.h"
 #include "intelrvp.h"
 #include "tcpm/tcpci.h"
 
@@ -46,7 +47,7 @@ void board_dc_jack_interrupt(enum gpio_signal signal)
 	board_dc_jack_handle();
 }
 
-static int board_charge_init(void)
+static void board_charge_init(void)
 {
 	int port, supplier;
 	struct charge_port_info charge_init = {
@@ -65,7 +66,18 @@ static int board_charge_init(void)
 
 	board_dc_jack_handle();
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_dc_jack_present));
-
+}
+#ifdef CONFIG_USB_PDC_POWER_MGMT
+static int board_charge_sys_init(void)
+{
+	board_charge_init();
 	return 0;
 }
-SYS_INIT(board_charge_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+SYS_INIT(board_charge_sys_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+#else
+BUILD_ASSERT(
+	HOOK_PRIO_DEFAULT > HOOK_PRIO_INIT_CHARGE_MANAGER,
+	"The charge manager initialization must be hight priority than board charger
+	initialization");
+DECLARE_HOOK(HOOK_INIT, board_charge_init, HOOK_PRIO_DEFAULT);
+#endif
