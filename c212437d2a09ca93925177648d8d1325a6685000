@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f873282f_b1567fde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T22:21:36Z",
+      "side": 1,
+      "message": "Same comment as the other brox changes.  Are there AP changes that need to land with this?",
+      "revId": "c212437d2a09ca93925177648d8d1325a6685000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c46030_99286132",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T22:21:36Z",
+      "side": 1,
+      "message": "You need to add pins `gpioh 1` and `gpioh 2` to the unused pin list to ensure these signals are configured as inputs and pulled up.  Otherwise there could be leakage.",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "c212437d2a09ca93925177648d8d1325a6685000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
