@@ -40,6 +40,30 @@
       },
       "revId": "ed09a9ed5fbeca90dec800a14ca2cbc29caa113e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e3833f_263687a0",
+        "filename": "baseboard/helipilot/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T16:09:30Z",
+      "side": 1,
+      "message": "No, thanks for catching that. Fixed in https://crrev.com/c/5522654.",
+      "parentUuid": "c6f49c16_508aeea1",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "ed09a9ed5fbeca90dec800a14ca2cbc29caa113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
