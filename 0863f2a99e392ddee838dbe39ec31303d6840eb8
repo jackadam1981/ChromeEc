@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1925034_f0f5713e",
+        "filename": "zephyr/program/corsola/squirtle/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1886a2e_b28d755c",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 9
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5fc58eb_da34ad3c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-06T06:51:56Z",
       "side": 1,
       "message": "```suggestion\n# Squirtle only use D2, drop the workaround config for H1\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 9
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27395434_78bd809e",
+        "filename": "zephyr/program/corsola/squirtle/project.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5fc58eb_da34ad3c",
       "range": {
         "startLine": 8,
         "startChar": 2,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f241cd77_9ac6299d",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a91c121_68f62b54",
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ec2df1d_990aec3d",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-05-06T06:51:56Z",
       "side": 1,
       "message": "```suggestion\n\t\t/* Squirtle LED bat charge */\n```",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 12
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d49cad_7bb53ff6",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ec2df1d_990aec3d",
       "range": {
         "startLine": 203,
         "startChar": 5,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0fe032_97f764dc",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5309b55_27472b6f",
+      "range": {
+        "startLine": 218,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 12
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49a53ca4_bb28a27b",
@@ -123,6 +237,30 @@
       "writtenOn": "2024-05-06T06:51:56Z",
       "side": 1,
       "message": "```suggestion\n\t\t/* Squirtle LED bat charge near full */\n```",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 12
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0993dca_92a994c8",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a53ca4_bb28a27b",
       "range": {
         "startLine": 233,
         "startChar": 5,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d515735_f68b1d96",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8efdb1c9_60db2cd5",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f93f33a_f7523cdf",
@@ -169,6 +331,30 @@
       "writtenOn": "2024-05-06T06:51:56Z",
       "side": 1,
       "message": "```suggestion\n\t\t/* Squirtle LED bat error */\n```",
+      "range": {
+        "startLine": 289,
+        "startChar": 5,
+        "endLine": 289,
+        "endChar": 12
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad280444_8535c7dd",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f93f33a_f7523cdf",
       "range": {
         "startLine": 289,
         "startChar": 5,
@@ -196,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b04a2f_c95fd2cb",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a03ba50_c393acea",
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592c75dc_a042fdf1",
@@ -209,6 +413,30 @@
       "writtenOn": "2024-05-06T06:51:56Z",
       "side": 1,
       "message": "```suggestion\n\t\t/* Squirtle LED power forced idle */\n```",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 12
+      },
+      "revId": "0863f2a99e392ddee838dbe39ec31303d6840eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f228e8_aeef2dac",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-07T09:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592c75dc_a042fdf1",
       "range": {
         "startLine": 320,
         "startChar": 5,
