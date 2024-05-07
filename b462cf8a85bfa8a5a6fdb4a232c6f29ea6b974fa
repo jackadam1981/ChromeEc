@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09fac38f_804e0392",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-07T22:56:10Z",
+      "side": 1,
+      "message": "automated end-to-end testing would likely require making\nwireshark/tshark or tcpdump (as fallback) available in the\nchroot/SDK. i\u0027m not sure that\u0027s feasible, but examining the\nfile using a desktop environment is what i\u0027ve been doing.",
+      "parentUuid": "49eb6f73_9947fa44",
+      "revId": "b462cf8a85bfa8a5a6fdb4a232c6f29ea6b974fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bade4c5b_45c5faab",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-07T22:14:27Z",
       "side": 1,
       "message": "Document location of the file.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "b462cf8a85bfa8a5a6fdb4a232c6f29ea6b974fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17326ed8_243aa3ea",
+        "filename": "zephyr/test/pdc/src/util_pcap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-07T22:56:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bade4c5b_45c5faab",
       "range": {
         "startLine": 39,
         "startChar": 0,
