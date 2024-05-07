@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee3ff9f_84f32a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:28:43Z",
+      "side": 1,
+      "message": "It looks like there are some [crc32 tests in the original](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/crc.c;l\u003d15-72;drc\u003d4f33b3bdd8024de044b70229aa19de553b78fc47). Are you going to add those as well?\n\nIf not, can you updated the `migrated_files.sh` script to contain this test?",
+      "revId": "b13dd54a799ac0dd667f57a0d47c85c5d26c0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
