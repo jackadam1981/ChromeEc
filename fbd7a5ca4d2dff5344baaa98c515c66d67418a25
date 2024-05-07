@@ -94,6 +94,30 @@
       },
       "revId": "fbd7a5ca4d2dff5344baaa98c515c66d67418a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29f6732_a9d13048",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T19:47:16Z",
+      "side": 1,
+      "message": "This seems like for debug only. As all the platforms support at-least DP,\nI think CONFIG_PLATFORM_EC_USB_PD_DP_MODE can be removed from pdc_power_mgmt.c",
+      "parentUuid": "7adb665e_dca6fe11",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "fbd7a5ca4d2dff5344baaa98c515c66d67418a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
