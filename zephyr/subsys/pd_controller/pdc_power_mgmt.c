@@ -1372,6 +1372,15 @@ static void pdc_snk_attached_run(void *obj)
 	}
 }
 
+static void pdc_snk_attached_exit(void *obj)
+{
+	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+
+	if (port->next_state != PDC_SEND_CMD_START) {
+		invalidate_charger_settings(port);
+	}
+}
+
 static void pdc_send_cmd_start_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
@@ -1428,10 +1437,6 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_vbus_voltage(port->pdc, &port->vbus);
 		break;
 	case CMD_PDC_SET_SINK_PATH:
-		/* Charger settings are invalid when sink path is off */
-		if (!port->sink_path_en) {
-			invalidate_charger_settings(port);
-		}
 		rv = pdc_set_sink_path(port->pdc, port->sink_path_en);
 		break;
 	case CMD_PDC_READ_POWER_LEVEL:
@@ -1773,6 +1778,15 @@ static void pdc_snk_typec_only_run(void *obj)
 	}
 }
 
+static void pdc_snk_typec_only_exit(void *obj)
+{
+	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+
+	if (port->next_state != PDC_SEND_CMD_START) {
+		invalidate_charger_settings(port);
+	}
+}
+
 static void pdc_init_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
@@ -1834,7 +1848,8 @@ static const struct smf_state pdc_states[] = {
 	[PDC_UNATTACHED] = SMF_CREATE_STATE(pdc_unattached_entry,
 					    pdc_unattached_run, NULL, NULL),
 	[PDC_SNK_ATTACHED] = SMF_CREATE_STATE(pdc_snk_attached_entry,
-					      pdc_snk_attached_run, NULL, NULL),
+					      pdc_snk_attached_run,
+					      pdc_snk_attached_exit, NULL),
 	[PDC_SRC_ATTACHED] = SMF_CREATE_STATE(pdc_src_attached_entry,
 					      pdc_src_attached_run, NULL, NULL),
 	[PDC_SEND_CMD_START] = SMF_CREATE_STATE(
@@ -1844,8 +1859,9 @@ static const struct smf_state pdc_states[] = {
 					       pdc_send_cmd_wait_exit, NULL),
 	[PDC_SRC_TYPEC_ONLY] = SMF_CREATE_STATE(
 		pdc_src_typec_only_entry, pdc_src_typec_only_run, NULL, NULL),
-	[PDC_SNK_TYPEC_ONLY] = SMF_CREATE_STATE(
-		pdc_snk_typec_only_entry, pdc_snk_typec_only_run, NULL, NULL),
+	[PDC_SNK_TYPEC_ONLY] = SMF_CREATE_STATE(pdc_snk_typec_only_entry,
+						pdc_snk_typec_only_run,
+						pdc_snk_typec_only_exit, NULL),
 	[PDC_SUSPENDED] = SMF_CREATE_STATE(pdc_suspended_entry,
 					   pdc_suspended_run, NULL, NULL),
 };
