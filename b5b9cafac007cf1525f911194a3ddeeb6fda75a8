@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5306d5_0a5ece7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cbd06f_a1fdbba5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32bd98a2_e067066a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-07T15:03:25Z",
       "side": 1,
       "message": "To",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52feb107_4401c821",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32bd98a2_e067066a",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ddbf3b0_5141261c",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:00:24Z",
+      "side": 1,
+      "message": "vales assigned depends on the operation requested. \nI will clean this up in a separate CL.",
+      "parentUuid": "3c22697d_a9e7d756",
+      "range": {
+        "startLine": 304,
+        "startChar": 17,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28b4539a_bca7c1b9",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac50810_829896fa",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:00:24Z",
+      "side": 1,
+      "message": "vales assigned depends on the operation requested. \nI will clean this up in a separate CL.",
+      "parentUuid": "28b4539a_bca7c1b9",
+      "range": {
+        "startLine": 310,
+        "startChar": 10,
+        "endLine": 310,
+        "endChar": 12
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edbde44e_898142b8",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-05-07T16:54:46Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 331,
+        "startChar": 2,
+        "endLine": 331,
+        "endChar": 8
+      },
+      "revId": "b5b9cafac007cf1525f911194a3ddeeb6fda75a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc8a9b3_b58dda2d",
+        "filename": "zephyr/subsys/pd_controller/retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edbde44e_898142b8",
       "range": {
         "startLine": 331,
         "startChar": 2,
