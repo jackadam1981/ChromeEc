@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21d3bcbe_223ee3fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T23:25:48Z",
+      "side": 1,
+      "message": "Hi Deepti, I commented in other CL.\n\nHi Keith, currently PMC doesn\u0027t support read option as it only passed the information to IOM. \nBelow are PMC team recommendation:\nFor EC side debug: use multiple UCSI commands to derive intended data.\nFor Kernel side debug: Directly use IOM port status register (document is available in b:285870326 )",
+      "parentUuid": "6e3c103b_3686dc04",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "360bda8d3dc9b815a6ff254ac4a2267f168b8cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7930227_fd8ff134",
         "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
         "patchSetId": 22
