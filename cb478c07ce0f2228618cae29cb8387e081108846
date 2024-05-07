@@ -33,6 +33,24 @@
       "message": "Make this change to brox/i2c.dtsi instead.  This file is shared by all projects.",
       "revId": "cb478c07ce0f2228618cae29cb8387e081108846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc125ce1_bb495f4d",
+        "filename": "zephyr/program/brox/brox-ish-ec/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:02:31Z",
+      "side": 1,
+      "message": "Thanks, i have clubbed this change in CL:5491939 and uploaded.",
+      "parentUuid": "31a17c6b_a08f468e",
+      "revId": "cb478c07ce0f2228618cae29cb8387e081108846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
