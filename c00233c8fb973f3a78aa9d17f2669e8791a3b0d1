@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85e77e85_c4fbdcca",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T19:08:22Z",
+      "side": 1,
+      "message": "Also, can you add this to the list of tests in `migrated_files.sh`?",
+      "parentUuid": "6e5b39af_61830b3a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65edf8a0_83fd1497",
         "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
         "patchSetId": 7
