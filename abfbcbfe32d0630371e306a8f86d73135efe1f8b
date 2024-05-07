@@ -16,6 +16,24 @@
       "message": "Are there any AP firmware or OS changes that need to land with this?",
       "revId": "abfbcbfe32d0630371e306a8f86d73135efe1f8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b51a15a_3c0c82d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T22:27:56Z",
+      "side": 1,
+      "message": "No Keith.\ncros_ec_typec driver at OS will still be supported only for populating the typec information at kernel.",
+      "parentUuid": "5ad3e8a6_d6b4243f",
+      "revId": "abfbcbfe32d0630371e306a8f86d73135efe1f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
