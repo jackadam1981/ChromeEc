@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb13be77_16448691",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:23:58Z",
+      "side": 1,
+      "message": "I think Abhishek is suggesting that you can make the name change and also declare all these arrays as `static const struct smbus_cmd_t`",
+      "parentUuid": "206fa5b6_abaf51bd",
+      "revId": "a6c8791c884c4cd52bdc210382ed6fe49b43d306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00baf955_146743c2",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 2
