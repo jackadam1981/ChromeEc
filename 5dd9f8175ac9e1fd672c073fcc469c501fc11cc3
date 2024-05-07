@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3884259a_f5744e77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T14:58:51Z",
+      "side": 1,
+      "message": "change",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6331e55f_f21b45f4",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T14:58:51Z",
+      "side": 1,
+      "message": "Nit - update error message.",
+      "range": {
+        "startLine": 6118,
+        "startChar": 7,
+        "endLine": 6118,
+        "endChar": 63
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a3cf0e_2e1e4940",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T14:58:51Z",
+      "side": 1,
+      "message": "Nit - update error message to match logic.",
+      "range": {
+        "startLine": 6218,
+        "startChar": 0,
+        "endLine": 6220,
+        "endChar": 0
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
