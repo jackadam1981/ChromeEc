@@ -8,16 +8,16 @@
 #ifndef __CROS_EC_BENCHMARK_H
 #define __CROS_EC_BENCHMARK_H
 
+#include "console.h"
+
 #include <stdint.h>
 
 #include <array>
 #include <functional>
 #include <optional>
 #include <string_view>
-
 extern "C" {
 #include "clock.h"
-#include "console.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
