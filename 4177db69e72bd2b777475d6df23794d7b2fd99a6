@@ -43,6 +43,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64837b1a_dd586d2e",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:24:42Z",
+      "side": 1,
+      "message": "Could you provide a link to the doc that specifies this? That will help others in the future understand the context.",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb5d031_6c32ce74",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:24:42Z",
+      "side": 1,
+      "message": "\"its\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 51,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b8e07d_ba53f382",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:24:42Z",
+      "side": 1,
+      "message": "The [original test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/cortexm_fpu.c;l\u003d35;drc\u003d0c23c9fca25fe414a3b4ee0efab3b1aa8a647dc3) only clears some of the bits. Should that behavior be maintained?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f00ef39e_cac276ae",
         "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
         "patchSetId": 7
