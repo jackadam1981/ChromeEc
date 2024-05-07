@@ -22,6 +22,30 @@
       },
       "revId": "2476bd798f8623f70cc1ada75341f2a5c89d0b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0907ff4a_55053aed",
+        "filename": "board/vell/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-07T16:15:31Z",
+      "side": 1,
+      "message": "Good point, checked a couple of other brya boards and they overflow the same way. Thanks!",
+      "parentUuid": "57cfcec6_70f489e8",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "2476bd798f8623f70cc1ada75341f2a5c89d0b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
