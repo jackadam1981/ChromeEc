@@ -16,6 +16,24 @@
       "message": "Would it be cleaner to tie this call to the exit state criteria for SNK_ATTACHED and SNK_TYPEC_ONLY states? It seems like we should be doing this when exiting a SNK state where charging could have been active as opposed to entering a SRC state.",
       "revId": "08da1260541eabaf5ff787cff9a3df95d8a15182",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6710a7b6_04206979",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-07T21:54:10Z",
+      "side": 1,
+      "message": "I tried that, but ```invalidate_charger_settings``` wouldn\u0027t be called sometimes or will be called when it shouldn\u0027t.\n\n```\nsnk_state --\u003e send_cmd_start_state (not called)\ninterrupt occurs\nsnd_cmd_start_state --\u003e unattached_state (should be called, but wasn\u0027t)\n```",
+      "parentUuid": "18c6dda7_3590ce2f",
+      "revId": "08da1260541eabaf5ff787cff9a3df95d8a15182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
