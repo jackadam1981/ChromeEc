@@ -577,6 +577,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8723f1d8_7fe5076b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-07T15:00:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4061c8c9_94d0e3aa",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0841810_aa44f724",
@@ -744,6 +762,24 @@
       "side": 1,
       "message": "IIUC, this function will always update `una_policy.tcc`, which is the source of truth for the current limit to be applied. However, depending on the state, this function will set a different flag to trigger a different write to the PDC to implement the policy expressed in `tcc`, based on the current state?\n\nIs there any risk of that write not happening, because the state changed between the time that this function set the flag and the time that the state checked flags? Or would a state change override the effects of this function call anyway?",
       "parentUuid": "85999637_d3263a67",
+      "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cc4ebf_c30e2ea0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3333,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-07T15:00:03Z",
+      "side": 1,
+      "message": "Prior to this set of changes, even though there was an API to set the value of una_policy.tcc, there was no event to trigger writing that value. So setting it to any particular value would have been a don\u0027t care.\n\nSetting the Rp values in the PDC will only happen if the PDC state is unattached. The call into the source current sharing code happens upon entry to the unattached state, so Rp is guaranteed to have been updated (if necessary) prior to the flag bit being checked as that check happens in the run portion of the state, and happens after the sink FET disconnect command is sent. \n\nIf there were a case where the SET_TPC_RP command isn\u0027t sent following a detach before a new attach event, then the correct current limit will still be applied by either sending new an updated SRC_CAP message or changing the Rp value in a type-c only connection. Note that RTK is currently always using their default SRC_CAP message that\u0027s fixed in their FW.",
+      "parentUuid": "247acff2_12df3560",
       "revId": "7a193859ea5dae50a342bc95ab7db16b1eca5b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
