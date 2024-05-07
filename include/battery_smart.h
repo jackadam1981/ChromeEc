@@ -63,6 +63,7 @@
 /* Extension of smart battery spec, may not be supported on all platforms */
 #define SB_PACK_STATUS 0x43
 #define SB_ALT_MANUFACTURER_ACCESS 0x44
+#define SB_OPTIONAL_MFG_FUNC5 0x2F
 #define SB_MANUFACTURE_INFO 0x70
 
 /* Battery mode */
