@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ad010c_b222bb2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:01:22Z",
+      "side": 1,
+      "message": "Thanks, updated this to right one 330475942",
+      "parentUuid": "82e61124_9294eec2",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60394c88_740331c6",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-07T15:21:13Z",
       "side": 1,
       "message": "The build is failing due to a clang format error.  Please run clang format against all CLs in the stack.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353902b9_1edf4410",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:01:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "60394c88_740331c6",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -106,6 +154,30 @@
       "writtenOn": "2024-05-07T15:21:13Z",
       "side": 1,
       "message": "@param status",
+      "range": {
+        "startLine": 514,
+        "startChar": 3,
+        "endLine": 514,
+        "endChar": 11
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07111b0_7ef23b2a",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:01:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f8a3e16e_2d12f263",
       "range": {
         "startLine": 514,
         "startChar": 3,
