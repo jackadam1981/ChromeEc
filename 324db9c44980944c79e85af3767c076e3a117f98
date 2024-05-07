@@ -16,6 +16,24 @@
       "message": "Have you checked this doesn\u0027t need corresponding changes in libec side?",
       "revId": "324db9c44980944c79e85af3767c076e3a117f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d2b20f_f01a977f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T20:53:13Z",
+      "side": 1,
+      "message": "This won\u0027t [change the definition in the public ec_commands.h header file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8075-8092;drc\u003d655c2c33c22933d7a492282882ec3781893d3521) that is used by `libec`. It\u0027s only for the representation used in the code that runs on the FPMCU.",
+      "parentUuid": "80c37d62_08eef1f1",
+      "revId": "324db9c44980944c79e85af3767c076e3a117f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
