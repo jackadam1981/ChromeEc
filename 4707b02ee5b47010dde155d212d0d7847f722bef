@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f55435b_711fb3c2",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T21:39:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9eb58e67_b8805f3f",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "4707b02ee5b47010dde155d212d0d7847f722bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05327d39_b3b81c0f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-07T21:20:33Z",
       "side": 1,
       "message": "nit: these are all bit fields, no need to convert to bool again.",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "4707b02ee5b47010dde155d212d0d7847f722bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377ff974_7de54fef",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T21:39:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05327d39_b3b81c0f",
       "range": {
         "startLine": 96,
         "startChar": 13,
