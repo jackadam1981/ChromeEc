@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e61124_9294eec2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:21:13Z",
+      "side": 1,
+      "message": "This isn\u0027t the correct bug number.",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60394c88_740331c6",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:21:13Z",
+      "side": 1,
+      "message": "The build is failing due to a clang format error.  Please run clang format against all CLs in the stack.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b24282_a204678f",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:21:13Z",
+      "side": 1,
+      "message": "This isn\u0027t specific to the altmode driver.\n\nMove this to usb_mux.h or to pdc_pmc_debug.c",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 74
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42352adc_c8a8b342",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:21:13Z",
+      "side": 1,
+      "message": "Nit - why wrap the inline function a macro?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 0
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a3e16e_2d12f263",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:21:13Z",
+      "side": 1,
+      "message": "@param status",
+      "range": {
+        "startLine": 514,
+        "startChar": 3,
+        "endLine": 514,
+        "endChar": 11
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
