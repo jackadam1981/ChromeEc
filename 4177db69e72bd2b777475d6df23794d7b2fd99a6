@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5933df_c6b6c250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:18:31Z",
+      "side": 1,
+      "message": "Can you add this test to the [migrated files script](https://crrev.com/c/5488762)?",
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fc9620_37becd38",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:18:31Z",
+      "side": 1,
+      "message": "Can you add a bug for this and TODO(b/123)? It seems like something we can upstream to Zephyr.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00ef39e_cac276ae",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:18:31Z",
+      "side": 1,
+      "message": "This comment is just [restating what the code does](https://google.github.io/styleguide/cppguide.html#Implementation_Comment_Donts), so you can probably leave it out.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
