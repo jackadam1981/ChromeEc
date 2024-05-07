@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49eb6f73_9947fa44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T22:14:27Z",
+      "side": 1,
+      "message": "Any plans to explicitly test the PDC message tracing feature?  For instance a test that reads the `rts.pcap` file to confirm the contents?",
+      "revId": "b462cf8a85bfa8a5a6fdb4a232c6f29ea6b974fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bade4c5b_45c5faab",
+        "filename": "zephyr/test/pdc/src/util_pcap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T22:14:27Z",
+      "side": 1,
+      "message": "Document location of the file.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "b462cf8a85bfa8a5a6fdb4a232c6f29ea6b974fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
