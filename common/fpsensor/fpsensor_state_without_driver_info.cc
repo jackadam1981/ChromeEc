@@ -9,7 +9,8 @@
 
 extern "C" {
 
-struct fpsensor_context global_context = {
+#if 0
+struct fpsensor_state global_context.state = {
 	.template_newly_enrolled = FP_NO_SUCH_TEMPLATE,
 	.templ_valid = 0,
 	.templ_dirty = 0,
@@ -24,9 +25,13 @@ struct fpsensor_context global_context = {
 			.val = 0,
 		}},
 };
+#endif
 
+#if 0
 int fp_tpm_seed_is_set(void)
 {
-	return global_context.fp_encryption_status & FP_ENC_STATUS_SEED_SET;
+	return global_context.state.fp_encryption_status &
+	       FP_ENC_STATUS_SEED_SET;
 }
+#endif
 }

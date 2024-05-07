@@ -56,6 +56,12 @@ extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
 extern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				     [FP_POSITIVE_MATCH_SALT_BYTES];
 
+struct fpsensor_context {
+	struct fpsensor_state state;
+};
+
+extern struct fpsensor_context global_context;
+
 /* Simulation for unit tests. */
 __test_only void fp_task_simulate(void);
 

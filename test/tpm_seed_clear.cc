@@ -27,20 +27,21 @@ test_static const uint8_t zero_fake_tpm_seed[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
+extern uint8_t *get_tpm_seed();
+
 test_static int test_tpm_seed_before_reboot(void)
 {
-	TEST_ASSERT_ARRAY_EQ(global_context.tpm_seed, zero_fake_tpm_seed,
+	TEST_ASSERT_ARRAY_EQ(get_tpm_seed(), zero_fake_tpm_seed,
 			     FP_CONTEXT_TPM_BYTES);
-	memcpy(global_context.tpm_seed, default_fake_tpm_seed,
-	       FP_CONTEXT_TPM_BYTES);
-	TEST_ASSERT_ARRAY_EQ(global_context.tpm_seed, default_fake_tpm_seed,
+	memcpy(get_tpm_seed(), default_fake_tpm_seed, FP_CONTEXT_TPM_BYTES);
+	TEST_ASSERT_ARRAY_EQ(get_tpm_seed(), default_fake_tpm_seed,
 			     FP_CONTEXT_TPM_BYTES);
 	return EC_SUCCESS;
 }
 
 test_static int test_tpm_seed_after_reboot(void)
 {
-	TEST_ASSERT_ARRAY_EQ(global_context.tpm_seed, zero_fake_tpm_seed,
+	TEST_ASSERT_ARRAY_EQ(get_tpm_seed(), zero_fake_tpm_seed,
 			     FP_CONTEXT_TPM_BYTES);
 	return EC_SUCCESS;
 }

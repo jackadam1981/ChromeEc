@@ -32,7 +32,7 @@ struct positive_match_secret_state {
 	timestamp_t deadline;
 };
 
-struct fpsensor_context {
+struct fpsensor_state {
 	/** Index of the last enrolled but not retrieved template. */
 	uint16_t template_newly_enrolled;
 	/** Number of used templates */
@@ -51,8 +51,6 @@ struct fpsensor_context {
 	uint8_t user_id[FP_CONTEXT_USERID_BYTES];
 	struct positive_match_secret_state positive_match_secret_state;
 };
-
-extern struct fpsensor_context global_context;
 
 /*
  * Check if FP TPM seed has been set.

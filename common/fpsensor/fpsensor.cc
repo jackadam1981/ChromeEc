@@ -77,7 +77,7 @@ void fps_event(enum gpio_signal signal)
 
 static void send_mkbp_event(uint32_t event)
 {
-	atomic_or(&global_context.fp_events, event);
+	atomic_or(&global_context.state.fp_events, event);
 	mkbp_send_event(EC_MKBP_EVENT_FINGERPRINT);
 }
 
@@ -112,35 +112,37 @@ static uint32_t fp_process_enroll(void)
 	int percent = 0;
 	int res;
 
-	if (global_context.template_newly_enrolled != FP_NO_SUCH_TEMPLATE)
+	if (global_context.state.template_newly_enrolled != FP_NO_SUCH_TEMPLATE)
 		CPRINTS("Warning: previously enrolled template has not been "
 			"read yet.");
 
 	/* begin/continue enrollment */
-	CPRINTS("[%d]Enrolling ...", global_context.templ_valid);
+	CPRINTS("[%d]Enrolling ...", global_context.state.templ_valid);
 	res = fp_finger_enroll(fp_buffer, &percent);
-	CPRINTS("[%d]Enroll =>%d (%d%%)", global_context.templ_valid, res,
+	CPRINTS("[%d]Enroll =>%d (%d%%)", global_context.state.templ_valid, res,
 		percent);
 	if (res < 0)
 		return EC_MKBP_FP_ENROLL |
 		       EC_MKBP_FP_ERRCODE(EC_MKBP_FP_ERR_ENROLL_INTERNAL);
-	global_context.templ_dirty |= BIT(global_context.templ_valid);
+	global_context.state.templ_dirty |=
+		BIT(global_context.state.templ_valid);
 	if (percent == 100) {
 		res = fp_enrollment_finish(
-			fp_template[global_context.templ_valid]);
+			fp_template[global_context.state.templ_valid]);
 		if (res) {
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
 		} else {
-			global_context.template_newly_enrolled =
-				global_context.templ_valid;
+			global_context.state.template_newly_enrolled =
+				global_context.state.templ_valid;
 			fp_enable_positive_match_secret(
-				global_context.templ_valid,
-				&global_context.positive_match_secret_state);
+				global_context.state.templ_valid,
+				&global_context.state
+					 .positive_match_secret_state);
 			fp_init_decrypted_template_state_with_user_id(
-				global_context.templ_valid);
-			global_context.templ_valid++;
+				global_context.state.templ_valid);
+			global_context.state.templ_valid++;
 		}
-		global_context.sensor_mode &= ~FP_MODE_ENROLL_SESSION;
+		global_context.state.sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
 	return EC_MKBP_FP_ENROLL | EC_MKBP_FP_ERRCODE(res) |
@@ -151,18 +153,18 @@ static bool authenticate_fp_match_state(void)
 {
 	/* The rate limit is only meanful for the nonce context, and we don't
 	 * have rate limit for the legacy FP user unlock flow. */
-	if (!(global_context.fp_encryption_status &
+	if (!(global_context.state.fp_encryption_status &
 	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
 		return true;
 	}
 
-	if (!(global_context.fp_encryption_status &
+	if (!(global_context.state.fp_encryption_status &
 	      FP_CONTEXT_TEMPLATE_UNLOCKED_SET)) {
 		CPRINTS("Cannot process match without unlock template");
 		return false;
 	}
 
-	if (global_context.fp_encryption_status &
+	if (global_context.state.fp_encryption_status &
 	    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
 		CPRINTS("Cannot process match twice in nonce context");
 		return false;
@@ -180,7 +182,7 @@ static uint32_t fp_process_match(void)
 
 	/* match finger against current templates */
 	fp_disable_positive_match_secret(
-		&global_context.positive_match_secret_state);
+		&global_context.state.positive_match_secret_state);
 
 	if (!authenticate_fp_match_state()) {
 		res = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
@@ -193,14 +195,14 @@ static uint32_t fp_process_match(void)
 	 * operation after match processed in a nonce context. If we don't do
 	 * that, the attacker can unlock template multiple times in a single
 	 * nonce context. */
-	global_context.fp_encryption_status |=
+	global_context.state.fp_encryption_status |=
 		FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
 
-	CPRINTS("Matching/%d ...", global_context.templ_valid);
-	if (global_context.templ_valid) {
+	CPRINTS("Matching/%d ...", global_context.state.templ_valid);
+	if (global_context.state.templ_valid) {
 		res = fp_finger_match(fp_template[0],
-				      global_context.templ_valid, fp_buffer,
-				      &fgr, &updated);
+				      global_context.state.templ_valid,
+				      fp_buffer, &fgr, &updated);
 		CPRINTS("Match =>%d (finger %d)", res, fgr);
 
 		if (fp_match_success(res)) {
@@ -212,7 +214,7 @@ static uint32_t fp_process_match(void)
 			if (fgr >= 0 && fgr < FP_MAX_FINGER_COUNT) {
 				fp_enable_positive_match_secret(
 					fgr,
-					&global_context
+					&global_context.state
 						 .positive_match_secret_state);
 			} else {
 				res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
@@ -228,7 +230,7 @@ static uint32_t fp_process_match(void)
 		}
 
 		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
-			global_context.templ_dirty |= updated;
+			global_context.state.templ_dirty |= updated;
 	} else {
 		CPRINTS("No enrolled templates");
 		res = EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES;
@@ -250,7 +252,7 @@ static void fp_process_finger(void)
 
 	CPRINTS("Capturing ...");
 	res = fp_acquire_image_with_mode(
-		fp_buffer, FP_CAPTURE_TYPE(global_context.sensor_mode));
+		fp_buffer, FP_CAPTURE_TYPE(global_context.state.sensor_mode));
 	capture_time_us = time_since32(t0);
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
@@ -268,12 +270,12 @@ static void fp_process_finger(void)
 		/* we need CPU power to do the computations */
 		ScopedFastCpu fast_cpu;
 
-		if (global_context.sensor_mode & FP_MODE_ENROLL_IMAGE)
+		if (global_context.state.sensor_mode & FP_MODE_ENROLL_IMAGE)
 			evt = fp_process_enroll();
-		else if (global_context.sensor_mode & FP_MODE_MATCH)
+		else if (global_context.state.sensor_mode & FP_MODE_MATCH)
 			evt = fp_process_match();
 
-		global_context.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
+		global_context.state.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
 		overall_time_us = time_since32(overall_t0);
 		send_mkbp_event(evt);
 	} else {
@@ -301,7 +303,7 @@ extern "C" void fp_task(void)
 		evt = task_wait_event(timeout_us);
 
 		if (evt & TASK_EVENT_UPDATE_CONFIG) {
-			uint32_t mode = global_context.sensor_mode;
+			uint32_t mode = global_context.state.sensor_mode;
 			/*
 			 * TODO(b/316859625): Remove CONFIG_ZEPHYR block after
 			 * migration to Zephyr is completed.
@@ -318,29 +320,34 @@ extern "C" void fp_task(void)
 			if ((mode ^ enroll_session) & FP_MODE_ENROLL_SESSION) {
 				if (mode & FP_MODE_ENROLL_SESSION) {
 					if (fp_enrollment_begin())
-						global_context.sensor_mode &=
+						global_context.state
+							.sensor_mode &=
 							~FP_MODE_ENROLL_SESSION;
 				} else {
 					fp_enrollment_finish(NULL);
 				}
-				enroll_session = global_context.sensor_mode &
-						 FP_MODE_ENROLL_SESSION;
+				enroll_session =
+					global_context.state.sensor_mode &
+					FP_MODE_ENROLL_SESSION;
 			}
 			if (is_test_capture(mode)) {
 				fp_acquire_image_with_mode(
 					fp_buffer, FP_CAPTURE_TYPE(mode));
-				global_context.sensor_mode &= ~FP_MODE_CAPTURE;
+				global_context.state.sensor_mode &=
+					~FP_MODE_CAPTURE;
 				send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
 				continue;
-			} else if (global_context.sensor_mode &
+			} else if (global_context.state.sensor_mode &
 				   FP_MODE_ANY_DETECT_FINGER) {
 				/* wait for a finger on the sensor */
 				fp_configure_detect();
 			}
-			if (global_context.sensor_mode & FP_MODE_DEEPSLEEP)
+			if (global_context.state.sensor_mode &
+			    FP_MODE_DEEPSLEEP)
 				/* Shutdown the sensor */
 				fp_sensor_low_power();
-			if (global_context.sensor_mode & FP_MODE_FINGER_UP)
+			if (global_context.state.sensor_mode &
+			    FP_MODE_FINGER_UP)
 				/* Poll the sensor to detect finger removal */
 				timeout_us = FINGER_POLLING_DELAY;
 			else
@@ -358,11 +365,11 @@ extern "C" void fp_task(void)
 #endif
 			} else if (mode & FP_MODE_RESET_SENSOR) {
 				fp_reset_and_clear_context();
-				global_context.sensor_mode &=
+				global_context.state.sensor_mode &=
 					~FP_MODE_RESET_SENSOR;
 			} else if (mode & FP_MODE_SENSOR_MAINTENANCE) {
 				fp_maintenance();
-				global_context.sensor_mode &=
+				global_context.state.sensor_mode &=
 					~FP_MODE_SENSOR_MAINTENANCE;
 			} else {
 				fp_sensor_low_power();
@@ -381,21 +388,21 @@ extern "C" void fp_task(void)
 #else
 			gpio_disable_interrupt(GPIO_FPS_INT);
 #endif
-			if (global_context.sensor_mode &
+			if (global_context.state.sensor_mode &
 			    FP_MODE_ANY_DETECT_FINGER) {
 				st = fp_finger_status();
 				if (st == FINGER_PRESENT &&
-				    global_context.sensor_mode &
+				    global_context.state.sensor_mode &
 					    FP_MODE_FINGER_DOWN) {
 					CPRINTS("Finger!");
-					global_context.sensor_mode &=
+					global_context.state.sensor_mode &=
 						~FP_MODE_FINGER_DOWN;
 					send_mkbp_event(EC_MKBP_FP_FINGER_DOWN);
 				}
 				if (st == FINGER_NONE &&
-				    global_context.sensor_mode &
+				    global_context.state.sensor_mode &
 					    FP_MODE_FINGER_UP) {
-					global_context.sensor_mode &=
+					global_context.state.sensor_mode &=
 						~FP_MODE_FINGER_UP;
 					timeout_us = -1;
 					send_mkbp_event(EC_MKBP_FP_FINGER_UP);
@@ -403,10 +410,12 @@ extern "C" void fp_task(void)
 			}
 
 			if (st == FINGER_PRESENT &&
-			    global_context.sensor_mode & FP_MODE_ANY_CAPTURE)
+			    global_context.state.sensor_mode &
+				    FP_MODE_ANY_CAPTURE)
 				fp_process_finger();
 
-			if (global_context.sensor_mode & FP_MODE_ANY_WAIT_IRQ) {
+			if (global_context.state.sensor_mode &
+			    FP_MODE_ANY_WAIT_IRQ) {
 				fp_configure_detect();
 
 				/* In Zephyr FPMCU interrupts are enabled by the
@@ -451,8 +460,8 @@ static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 
 	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
 	r->template_max = FP_MAX_FINGER_COUNT;
-	r->template_valid = global_context.templ_valid;
-	r->template_dirty = global_context.templ_dirty;
+	r->template_valid = global_context.state.templ_valid;
+	r->template_dirty = global_context.state.templ_dirty;
 	r->template_version = FP_TEMPLATE_FORMAT_VERSION;
 
 	/* V1 is identical to V0 with more information appended */
@@ -485,7 +494,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		/* The host requested a frame. */
 		if (system_is_locked())
 			return EC_RES_ACCESS_DENIED;
-		if (!is_raw_capture(global_context.sensor_mode))
+		if (!is_raw_capture(global_context.state.sensor_mode))
 			offset += FP_SENSOR_IMAGE_OFFSET;
 
 		ret = validate_fp_buffer_offset(sizeof(fp_buffer), offset,
@@ -505,7 +514,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 
 	if (fgr >= FP_MAX_FINGER_COUNT)
 		return EC_RES_INVALID_PARAM;
-	if (fgr >= global_context.templ_valid)
+	if (fgr >= global_context.state.templ_valid)
 		return EC_RES_UNAVAILABLE;
 	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
 	if (ret != EC_SUCCESS)
@@ -544,13 +553,13 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 				FP_CONTEXT_ENCRYPTION_SALT_BYTES);
 		trng_exit();
 
-		if (fgr == global_context.template_newly_enrolled) {
+		if (fgr == global_context.state.template_newly_enrolled) {
 			/*
 			 * Newly enrolled templates need new positive match
 			 * salt, new positive match secret and new validation
 			 * value.
 			 */
-			global_context.template_newly_enrolled =
+			global_context.state.template_newly_enrolled =
 				FP_NO_SUCH_TEMPLATE;
 			trng_init();
 			trng_rand_bytes(fp_positive_match_salt[fgr],
@@ -560,8 +569,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 
 		CleanseWrapper<std::array<uint8_t, SBP_ENC_KEY_LEN> > key;
 		ret = derive_encryption_key(key, enc_info->encryption_salt,
-					    global_context.user_id,
-					    global_context.tpm_seed);
+					    global_context.state.user_id,
+					    global_context.state.tpm_seed);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", fgr);
 			return EC_RES_UNAVAILABLE;
@@ -586,7 +595,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			CPRINTS("fgr%d: Failed to encrypt template", fgr);
 			return EC_RES_UNAVAILABLE;
 		}
-		global_context.templ_dirty &= ~BIT(fgr);
+		global_context.state.templ_dirty &= ~BIT(fgr);
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
 	args->response_size = size;
@@ -609,8 +618,8 @@ static enum ec_status fp_command_stats(struct host_cmd_handler_args *args)
 	 * Note that this is set to FP_NO_SUCH_TEMPLATE when positive match
 	 * secret is read/disabled, and we are not using this field in biod.
 	 */
-	r->template_matched =
-		global_context.positive_match_secret_state.template_matched;
+	r->template_matched = global_context.state.positive_match_secret_state
+				      .template_matched;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -641,7 +650,7 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 {
 	ScopedFastCpu fast_cpu;
 
-	uint16_t idx = global_context.templ_valid;
+	uint16_t idx = global_context.state.templ_valid;
 	struct ec_fp_template_encryption_metadata *enc_info;
 	/* Encrypted template is after the metadata. */
 	uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
@@ -677,9 +686,11 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	}
 
 	enum ec_error_list ret;
-	if (global_context.fp_encryption_status & FP_CONTEXT_USER_ID_SET) {
+	if (global_context.state.fp_encryption_status &
+	    FP_CONTEXT_USER_ID_SET) {
 		ret = derive_encryption_key(key, enc_info->encryption_salt,
-					    context, global_context.tpm_seed);
+					    context,
+					    global_context.state.tpm_seed);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", idx);
 			return EC_RES_UNAVAILABLE;
@@ -723,7 +734,7 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	memcpy(fp_positive_match_salt[idx], positive_match_salt,
 	       sizeof(fp_positive_match_salt[0]));
 
-	global_context.templ_valid++;
+	global_context.state.templ_valid++;
 	return EC_RES_SUCCESS;
 }
 
@@ -734,7 +745,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	uint32_t size = params->size & ~FP_TEMPLATE_COMMIT;
 	bool xfer_complete = params->size & FP_TEMPLATE_COMMIT;
 	uint32_t offset = params->offset;
-	uint16_t idx = global_context.templ_valid;
+	uint16_t idx = global_context.state.templ_valid;
 
 	/* Can we store one more template ? */
 	if (idx >= FP_MAX_FINGER_COUNT)
@@ -751,7 +762,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	memcpy(&fp_enc_buffer[offset], params->data, size);
 
 	if (xfer_complete) {
-		return fp_commit_template(global_context.user_id);
+		return fp_commit_template(global_context.state.user_id);
 	}
 
 	return EC_RES_SUCCESS;
@@ -764,13 +775,13 @@ fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)
 	const auto *params = static_cast<
 		const ec_params_fp_migrate_template_to_nonce_context *>(
 		args->params);
-	uint16_t idx = global_context.templ_valid;
+	uint16_t idx = global_context.state.templ_valid;
 
 	/*
 	 * The command is used for migrating legacy templates to be encrypted by
 	 * nonce sessions. No point to call this outside a nonce context.
 	 */
-	if (!(global_context.fp_encryption_status &
+	if (!(global_context.state.fp_encryption_status &
 	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
 		return EC_RES_ACCESS_DENIED;
 	}
@@ -800,7 +811,7 @@ fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)
 	 */
 	memset(fp_positive_match_salt[idx], 0, FP_POSITIVE_MATCH_SALT_BYTES);
 	int ret = fp_enable_positive_match_secret(
-		idx, &global_context.positive_match_secret_state);
+		idx, &global_context.state.positive_match_secret_state);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_ACCESS_DENIED;
 	}
@@ -811,8 +822,8 @@ fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)
 	 * be fetched again (and encrypted differently) and its match secret
 	 * needs to be freshly generated.
 	 */
-	global_context.templ_dirty |= BIT(idx);
-	global_context.template_newly_enrolled = idx;
+	global_context.state.templ_dirty |= BIT(idx);
+	global_context.state.template_newly_enrolled = idx;
 
 	return EC_RES_SUCCESS;
 }
