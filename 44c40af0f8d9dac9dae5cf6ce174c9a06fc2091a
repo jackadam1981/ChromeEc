@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fbe508_88dcf04e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-07T15:35:04Z",
+      "side": 1,
+      "message": "Minor comments. Apologies I didn\u0027t pick these out in the first review. But I feel good to +2 once these are resolved.",
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f1ca45_368239e5",
+        "filename": "zephyr/test/boot_keys/include/tablet_mode.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-07T15:35:04Z",
+      "side": 1,
+      "message": "I don\u0027t see it being used in this CL.\n\nIs this to remove a compile warning for a global symbol that\u0027s included in test but we don\u0027t have an associated header in test? If so we should probably comment that this is a stub that\u0027s unused.",
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f58d91_fe123dd7",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-07T15:35:04Z",
+      "side": 1,
+      "message": "This would probably be more immediately readable if we just or\u0027ed the pressed keys defined in `zephyr/test/boot_keys/include/keyboard_scan.h`",
+      "range": {
+        "startLine": 70,
+        "startChar": 46,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e0250e_a313151d",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-07T15:35:04Z",
+      "side": 1,
+      "message": "See above and similar for those below.",
+      "range": {
+        "startLine": 95,
+        "startChar": 46,
+        "endLine": 95,
+        "endChar": 56
+      },
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
