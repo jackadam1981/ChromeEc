@@ -46,6 +46,30 @@
       },
       "revId": "fbd7a5ca4d2dff5344baaa98c515c66d67418a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca81372_43c42a16",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T19:18:41Z",
+      "side": 1,
+      "message": "pdc_power_mgmt_get_dp_pin_mode() is unused if PMC configures mux.",
+      "parentUuid": "eaebff5a_30f14c54",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "fbd7a5ca4d2dff5344baaa98c515c66d67418a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
