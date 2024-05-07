@@ -10,9 +10,11 @@
 #include "charger/isl923x_public.h"
 #include "console.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 
+#include <cros_board_info.h>
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(charger, LOG_LEVEL_INF);
@@ -68,3 +70,26 @@ __override int board_get_leave_safe_mode_delay_ms(void)
 	else
 		return 500;
 }
+
+test_mockable int increase_charger_switch_frequency(int freq)
+{
+	return charger_set_frequency(freq);
+}
+
+static void update_charger_config(void)
+{
+	uint32_t board_version;
+	int ret;
+
+	ret = cbi_get_board_version(&board_version);
+	if (ret != 0)
+		return;
+
+	/* ignore craaskana and craaswell */
+	if (board_version >= 0x0b && board_version <= 0x0F) {
+		return;
+	}
+
+	increase_charger_switch_frequency(1050);
+}
+DECLARE_HOOK(HOOK_INIT, update_charger_config, HOOK_PRIO_DEFAULT);
