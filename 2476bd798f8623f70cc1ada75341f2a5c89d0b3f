@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57cfcec6_70f489e8",
+        "filename": "board/vell/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-07T00:21:14Z",
+      "side": 1,
+      "message": "this looks like a generic problem that\u0027ll show up on all variants.\nis there anything special on vell that requires a larger HC stack?\n\nat the very least, we should also bump up board/brya\nbut we should probably define BASEBOARD_HOSTCMD_TASK_STACK_SIZE\nand use it on brya, vell.",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "2476bd798f8623f70cc1ada75341f2a5c89d0b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
