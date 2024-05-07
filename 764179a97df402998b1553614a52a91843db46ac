@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf603fc2_4ff420c9",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b24282_a204678f",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 74
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42352adc_c8a8b342",
@@ -131,6 +155,30 @@
       "writtenOn": "2024-05-07T15:21:13Z",
       "side": 1,
       "message": "Nit - why wrap the inline function a macro?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 0
+      },
+      "revId": "764179a97df402998b1553614a52a91843db46ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1c3205_42e447ae",
+        "filename": "zephyr/include/drivers/intel_altmode.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T19:01:57Z",
+      "side": 1,
+      "message": "removed this. Thanks.",
+      "parentUuid": "42352adc_c8a8b342",
       "range": {
         "startLine": 233,
         "startChar": 0,
