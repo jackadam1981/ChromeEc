@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5b39af_61830b3a",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T19:05:28Z",
+      "side": 1,
+      "message": "Is this something that we will eventually want to implement or is it not used anymore? If we may eventually want it, let\u0027s go ahead and file a bug to track it. Since it\u0027s not something we need for fingerprint, we can put it in the [EC component](http://b/issues/new?component\u003d960650\u0026template\u003d0).",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65edf8a0_83fd1497",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T19:05:28Z",
+      "side": 1,
+      "message": "Just for my knowledge: Is the typical convention in Zephyr to have a function return 0 on success and negative error code on failure?",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc184fc8_0f51aba8",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T19:05:28Z",
+      "side": 1,
+      "message": "Just for my knowledge: Is this the pattern Zephyr tests use for tests that need to reboot? If there is no well-defined pattern, maybe we should propose something upstream like the \"multistep\" test API that we use in EC.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 79
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
