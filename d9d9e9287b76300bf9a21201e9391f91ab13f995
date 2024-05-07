@@ -16,6 +16,466 @@
       "message": "Can you integrate `itecomdbgr` in the build script?",
       "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ccbf81_e8e3fc00",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "`cs_low`\n\nPlease convert all names to lower case with underscores.",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6ed6dd_b0b70cae",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "This wrapper isn\u0027t needed.  Call `msleep` directly.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 28
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c573b3_7d5c0324",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Move the polling inside this routine by passing the status bits you want to wait on to this function.\n\nYou should also add a timeout.\n\n```\n/* Return 0 on success, non-zero on a timeout */\nint check_status(struct itecomdbgr_config *conf, uint8_t wait_mask)\n\n    do {\n        /* Read status */\n        \n    } while ((status \u0026 wait_mask) \u003d\u003d 0) \u0026\u0026 !timeout);\n    \n    return timeout;\n\n```",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 52
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5e60d1_aef75347",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Move outside the while loop.",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae54bb9_3305db83",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Move outside the while loop.",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca144164_a0d425f3",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Create a constant for the erase block size.",
+      "range": {
+        "startLine": 608,
+        "startChar": 16,
+        "endLine": 608,
+        "endChar": 22
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66f8d2c_ee2950ed",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "This wrapper isn\u0027t needed.",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 48
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53be621_6f0976e7",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Use a more descriptive name such as `bool check_erased`.",
+      "range": {
+        "startLine": 631,
+        "startChar": 8,
+        "endLine": 631,
+        "endChar": 20
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88cbde3d_1cd5755d",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Does follow mode and the address need to be sent on every block?",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dbfc9d_ef8aee41",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Reading the data one byte at a time is slow. Use a burst read and then use `memcmp` to check the data.",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 33
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff1edd7_4a0c34b2",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "This assumes the new image is a multiple of 256 bytes.",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 702,
+        "endChar": 22
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f841ea_0637181c",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Can you move the enable_follow_mode and spi_write_enable outside the loop?",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69800e0c_1a281763",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Can you write multiple blocks at once and avoid sending the address on every block?",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04578f9_8c222b9d",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Use `write_com` instead of a loop.  This should help performance.\n```\nwrite_com(conf, \u0026wr_data[start_addr], 0x100)\u0027\n```",
+      "range": {
+        "startLine": 745,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a7fe69_cd783f0e",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Does this support image sizes that are not multiples of 0x100?",
+      "range": {
+        "startLine": 756,
+        "startChar": 2,
+        "endLine": 756,
+        "endChar": 21
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cf6c12_0d4b317a",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "These local variables are unused.  If you add itecomdbgr to the build script, I believe the default warnings will catch this.",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ad4595_0f0ac286",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "The erase occurs in 0x1000 chunks, but verify step only reads up to the new image size.\n\nThis step should verify the same extent that was erased.",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 43
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6888979_270bf10a",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Return an error code to the user instead of hanging on this error.",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 784,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab032e79_d660cc44",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "Exit the program instead of hanging.",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 803,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd80b56_74356f25",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T20:48:04Z",
+      "side": 1,
+      "message": "msleep",
+      "range": {
+        "startLine": 813,
+        "startChar": 1,
+        "endLine": 813,
+        "endChar": 9
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
