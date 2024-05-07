@@ -6,6 +6,7 @@
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "extpower.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "led_common.h"
 #include "led_onoff_states.h"
@@ -67,6 +68,11 @@ static void test_before(void *fixture)
 	RESET_FAKE(extpower_is_present);
 	RESET_FAKE(extpower_handle_update);
 	RESET_FAKE(cros_cbi_get_fw_config);
+}
+
+static int gpio_emul_output_get_dt(const struct gpio_dt_spec *dt)
+{
+	return gpio_emul_output_get(dt->port, dt->pin);
 }
 
 ZTEST_SUITE(pujjoga, NULL, NULL, test_before, NULL, NULL);
@@ -383,4 +389,22 @@ ZTEST(pujjoga, test_cbi_error)
 	 */
 	cros_cbi_get_fw_config_fake.custom_fake = get_fw_config_error;
 	zassert_equal(pujjoga_get_sb_type(), PUJJOGA_SB_NONE, "SB: None");
+}
+
+ZTEST(pujjoga, test_pen_detect_interrupt)
+{
+	const struct gpio_dt_spec *const pen_irq =
+		GPIO_DT_FROM_NODELABEL(gpio_pen_detect_odl);
+
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_pen_det_l));
+	gpio_emul_input_set(pen_irq->port, pen_irq->pin, 0);
+	zassert_equal(gpio_emul_output_get_dt(
+			      GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_pen_x)),
+		      1);
+
+	/*  De-assert the IRQ */
+	gpio_emul_input_set(pen_irq->port, pen_irq->pin, 1);
+	zassert_equal(gpio_emul_output_get_dt(
+			      GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_pen_x)),
+		      0);
 }
