@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a54290_1b20b04a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-07T23:00:33Z",
+      "side": 1,
+      "message": "also, the on-device implementation should be ready for review soon:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5519707",
+      "parentUuid": "09fac38f_804e0392",
+      "revId": "b462cf8a85bfa8a5a6fdb4a232c6f29ea6b974fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bade4c5b_45c5faab",
