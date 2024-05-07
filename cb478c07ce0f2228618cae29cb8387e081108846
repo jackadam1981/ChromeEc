@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7daa8c9_5da233f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:10:12Z",
+      "side": 1,
+      "message": "You also need to mark the I2C3 pins as unused in brox/gpio.dtsi\n\n```\n\tunused-pins {\n\t...\n\t\t\t/* I2C3_CLK */\n\t\t\t\u003c\u0026gpioh 1 0\u003e,\n\t\t\t/* I2C3_DATA */\n\t\t\t\u003c\u0026gpioh 2 0\u003e,\n```",
+      "revId": "cb478c07ce0f2228618cae29cb8387e081108846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a17c6b_a08f468e",
+        "filename": "zephyr/program/brox/brox-ish-ec/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T15:10:12Z",
+      "side": 1,
+      "message": "Make this change to brox/i2c.dtsi instead.  This file is shared by all projects.",
+      "revId": "cb478c07ce0f2228618cae29cb8387e081108846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
