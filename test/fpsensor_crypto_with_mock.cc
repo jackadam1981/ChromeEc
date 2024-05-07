@@ -568,7 +568,8 @@ test_static int test_command_read_match_secret(void)
 	timestamp_t now = get_time();
 
 	/* For empty user_id. */
-	memset(global_context.user_id, 0, sizeof(global_context.user_id));
+	memset(global_context.state.user_id, 0,
+	       sizeof(global_context.state.user_id));
 
 	/* Invalid finger index should be rejected. */
 	params.fgr = FP_NO_SUCH_TEMPLATE;
@@ -586,7 +587,7 @@ test_static int test_command_read_match_secret(void)
 
 	/* GIVEN that positive match secret is enabled. */
 	fp_enable_positive_match_secret(
-		params.fgr, &global_context.positive_match_secret_state);
+		params.fgr, &global_context.state.positive_match_secret_state);
 
 	/* GIVEN that salt is non-trivial. */
 	memcpy(fp_positive_match_salt[0], fake_positive_match_salt,
@@ -599,7 +600,7 @@ test_static int test_command_read_match_secret(void)
 		return -1;
 	}
 	/* AND the readable bit should be cleared after the read. */
-	TEST_ASSERT(global_context.positive_match_secret_state.readable ==
+	TEST_ASSERT(global_context.state.positive_match_secret_state.readable ==
 		    false);
 
 	TEST_ASSERT_ARRAY_EQ(
@@ -611,7 +612,7 @@ test_static int test_command_read_match_secret(void)
 	 * Now try reading secret again.
 	 * EVEN IF the deadline has not passed.
 	 */
-	global_context.positive_match_secret_state.deadline.val =
+	global_context.state.positive_match_secret_state.deadline.val =
 		now.val + 1 * SECOND;
 	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
 				    sizeof(params), NULL, 0);
@@ -637,7 +638,8 @@ test_static int test_command_read_match_secret_wrong_finger(void)
 	 * finger.
 	 */
 	fp_enable_positive_match_secret(
-		params.fgr + 1, &global_context.positive_match_secret_state);
+		params.fgr + 1,
+		&global_context.state.positive_match_secret_state);
 
 	/* Reading secret will fail. */
 	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
@@ -654,8 +656,8 @@ test_static int test_command_read_match_secret_timeout(void)
 	params.fgr = 0;
 	/* GIVEN that the read is too late. */
 	fp_enable_positive_match_secret(
-		params.fgr, &global_context.positive_match_secret_state);
-	set_time(global_context.positive_match_secret_state.deadline);
+		params.fgr, &global_context.state.positive_match_secret_state);
+	set_time(global_context.state.positive_match_secret_state.deadline);
 
 	/* EVEN IF encryption salt is non-trivial. */
 	memcpy(fp_positive_match_salt[0], fake_positive_match_salt,
@@ -675,13 +677,12 @@ test_static int test_command_read_match_secret_unreadable(void)
 	params.fgr = 0;
 	/* GIVEN that the readable bit is not set. */
 	fp_enable_positive_match_secret(
-		params.fgr, &global_context.positive_match_secret_state);
-	global_context.positive_match_secret_state.readable = false;
+		params.fgr, &global_context.state.positive_match_secret_state);
+	global_context.state.positive_match_secret_state.readable = false;
 
 	/* EVEN IF the finger is just matched. */
-	TEST_ASSERT(
-		global_context.positive_match_secret_state.template_matched ==
-		params.fgr);
+	TEST_ASSERT(global_context.state.positive_match_secret_state
+			    .template_matched == params.fgr);
 
 	/* EVEN IF encryption salt is non-trivial. */
 	memcpy(fp_positive_match_salt[0], fake_positive_match_salt,
