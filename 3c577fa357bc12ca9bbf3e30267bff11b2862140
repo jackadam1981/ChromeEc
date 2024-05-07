@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29407f01_4df09969",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T20:16:16Z",
+      "side": 1,
+      "message": "are these needed?\nhow about directly using status reg to print the values? in command_typec()?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "3c577fa357bc12ca9bbf3e30267bff11b2862140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
