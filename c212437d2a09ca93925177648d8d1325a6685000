@@ -39,6 +39,30 @@
       },
       "revId": "c212437d2a09ca93925177648d8d1325a6685000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd2f3d0_a521e15c",
+        "filename": "zephyr/program/brox/i2c.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T23:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c46030_99286132",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "c212437d2a09ca93925177648d8d1325a6685000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
