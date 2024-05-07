@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c689b536_8a3fd9ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T22:24:27Z",
+      "side": 1,
+      "message": "This still isn\u0027t the correct bug.\nIs there a bug open for reading the mux configuration  directly from the PMC driver?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "360bda8d3dc9b815a6ff254ac4a2267f168b8cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7930227_fd8ff134",
         "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
         "patchSetId": 22
