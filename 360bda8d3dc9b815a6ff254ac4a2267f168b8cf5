@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "249a96ed_ab8ec216",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T22:41:55Z",
+      "side": 1,
+      "message": "No.\nWe have commands to read the IOM mux register values from kernel which will help troubleshoot issues at PMC side.\n\nChanges here helps troubleshoot issues related to PD controller.\nOnce we have UCSI3.0 implemented, we can relook into this implementation.",
+      "parentUuid": "c689b536_8a3fd9ed",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "360bda8d3dc9b815a6ff254ac4a2267f168b8cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7930227_fd8ff134",
         "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
         "patchSetId": 22
