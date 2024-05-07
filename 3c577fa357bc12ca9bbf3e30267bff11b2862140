@@ -22,6 +22,30 @@
       },
       "revId": "3c577fa357bc12ca9bbf3e30267bff11b2862140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882bb373_dbf388ca",
+        "filename": "zephyr/subsys/pd_controller/pdc_pmc_debug.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-07T21:03:50Z",
+      "side": 1,
+      "message": "Thanks. In Initial change to support implement other debug commands this API was added. Removed it now.",
+      "parentUuid": "29407f01_4df09969",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "3c577fa357bc12ca9bbf3e30267bff11b2862140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
