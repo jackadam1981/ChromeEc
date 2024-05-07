@@ -16,6 +16,24 @@
       "message": "Is there a bug open to query this information directly from the PMC instead?  The PCH_DATA_STATUS command is Realtek specific and not supported by other vendors.",
       "revId": "b2308669514cbb556dfffce72a1dc67d456852ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daba8f85_ab757dc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T15:54:35Z",
+      "side": 1,
+      "message": "Hi Keith, currently PMC doesn\u0027t support read option as it only passed the information to IOM. We have an option to read the IOM status register and gather the info.\nPMC team recommendation:\nFor EC side debug: use multiple UCSI commands to derive intended data.\nFor Kernel side debug: Directly use IOM status register (document is available in  b:285870326 )",
+      "parentUuid": "13165248_ab4b94d4",
+      "revId": "b2308669514cbb556dfffce72a1dc67d456852ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
