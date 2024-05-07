@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaf8746_c61e3081",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:43:36Z",
+      "side": 1,
+      "message": "\"noop\" or \"no-op\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c0b1c4_dcc0c050",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:43:36Z",
+      "side": 1,
+      "message": "Do you have a link to the test results for that test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f73402_a450e3e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:43:36Z",
+      "side": 1,
+      "message": "It would be nice to automate this so that we can run the test on our board in case there is a regression that we want to bisect. You could add the functionality to the `run_device_tests.py` script to be able to run existing Zephyr tests. (I\u0027m guessing there may be more upstream Zephyr tests that we want to run.)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353e5433_1ef3d1fc",
+        "filename": "zephyr/test/hwtest/src/flash_physical.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-07T18:43:36Z",
+      "side": 1,
+      "message": "How about for Nuvoton chips (`helipilot`)? AFAIK Nuvoton is [working with upstream](http://b/309557100), so we can ask them to write the test if it doesn\u0027t already exist. Can you [file a bug to track that](http://shortn/_6rysOrTdIs) and add a TODO(b/123)?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
