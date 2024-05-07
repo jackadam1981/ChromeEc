@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7db50233_a796f446",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6117,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T16:43:00Z",
+      "side": 1,
+      "message": "if the USB4 is disabled, is this needed?",
+      "range": {
+        "startLine": 6117,
+        "startChar": 1,
+        "endLine": 6117,
+        "endChar": 4
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6331e55f_f21b45f4",
         "filename": "include/config.h",
         "patchSetId": 12
@@ -65,6 +88,52 @@
         "startChar": 0,
         "endLine": 6220,
         "endChar": 0
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d1d36b_63720a6b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T16:43:00Z",
+      "side": 1,
+      "message": "is this function needed? Retimer f/w update only needs get \u0026 set functions.",
+      "range": {
+        "startLine": 320,
+        "startChar": 19,
+        "endLine": 320,
+        "endChar": 37
+      },
+      "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e0a572_03052fee",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-07T16:43:00Z",
+      "side": 1,
+      "message": "is this function needed?",
+      "range": {
+        "startLine": 362,
+        "startChar": 19,
+        "endLine": 362,
+        "endChar": 37
       },
       "revId": "5dd9f8175ac9e1fd672c073fcc469c501fc11cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
