@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c58b4ba_b2b7e94d",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T18:23:29Z",
+      "side": 1,
+      "message": "Move the #if 0 blocks into a follow up CL.",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 0
+      },
+      "revId": "22288c9a2d6a7f9f392a58ffa795d175468a8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ca267d_525d9d3b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-07T18:23:29Z",
+      "side": 1,
+      "message": "A separate state for each command adds 50 ms of latency.  Can you dispatch the command directly from the ST_IDLE state instead?\n\nYou could refactor this by just calling `st_task_gaid_run` directly.",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 33
+      },
+      "revId": "22288c9a2d6a7f9f392a58ffa795d175468a8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
