@@ -158,8 +158,8 @@ host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 
 	args->response_size = sizeof(*r);
+        update_dynamic_battery_info();
 	memcpy(r, &battery_dynamic[p->index], sizeof(*r));
-
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_DYNAMIC,
@@ -309,6 +309,8 @@ void update_dynamic_battery_info(void)
 		&battery_dynamic[BATT_IDX_MAIN];
 
 	curr = charge_get_status();
+	battery_get_params(&curr->batt);
+
 	tmp = 0;
 	if (curr->ac)
 		tmp |= EC_BATT_FLAG_AC_PRESENT;
