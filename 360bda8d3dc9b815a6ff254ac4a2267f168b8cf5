@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3ca625_5fd45e30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-05-08T21:58:39Z",
+      "side": 1,
+      "message": "corrected the cross bug number. Thanks.",
+      "parentUuid": "ae4357b3_7d467cc1",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "360bda8d3dc9b815a6ff254ac4a2267f168b8cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7930227_fd8ff134",
