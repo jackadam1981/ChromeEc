@@ -234,6 +234,30 @@
       },
       "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5710b88c_6fa3e80c",
+        "filename": "zephyr/test/hwtest/src/flash_physical.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-08T18:34:44Z",
+      "side": 1,
+      "message": "\u003e My assumption is that support for npcx chips should be done as a part of porting Helipilot to Zephyr.\n\nYes, that is the plan. I just want to make sure that we don\u0027t miss porting the tests as part of the porting work. I filed this bug to track: http://b/339471110.",
+      "parentUuid": "a7d57b69_adbdb457",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
