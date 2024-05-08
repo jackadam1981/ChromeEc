@@ -22,6 +22,30 @@
       },
       "revId": "3677dc8209996edb56a3af9ef2d9dccbf4c77716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eef8e0e_f0028245",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-08T17:24:32Z",
+      "side": 1,
+      "message": "I agree we need not to break builds for external developers. Chatted with Firas and he\u0027ll investigate.",
+      "parentUuid": "6fdd013f_bad7f6c7",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "3677dc8209996edb56a3af9ef2d9dccbf4c77716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
