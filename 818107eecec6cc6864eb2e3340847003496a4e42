@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59eb1da9_154d681d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2024-05-08T18:15:17Z",
+      "side": 1,
+      "message": "Oh nevermind, it seems like this is being done automatically.\n\nI tested this and it works for me on C1 although it does not work with servov4.",
+      "parentUuid": "1e4ce9c7_6e69cc11",
+      "revId": "818107eecec6cc6864eb2e3340847003496a4e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8c1378_681a4630",
