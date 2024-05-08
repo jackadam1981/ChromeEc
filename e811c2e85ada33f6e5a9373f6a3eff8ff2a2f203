@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64201159_d4619239",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-08T20:29:21Z",
+      "side": 1,
+      "message": "You should create a C file to store these names and provide an access routine.  As is, this encourages each driver to allocate their own command name array, which wastes space.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 78
+      },
+      "revId": "e811c2e85ada33f6e5a9373f6a3eff8ff2a2f203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
