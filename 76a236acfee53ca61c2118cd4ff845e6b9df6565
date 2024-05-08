@@ -51,6 +51,24 @@
       "message": "Looks like Nick is no longer on ChromeOS.  Keith H. - do you have any objections to removing this?",
       "revId": "76a236acfee53ca61c2118cd4ff845e6b9df6565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e993d4ee_bea1151d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2024-05-08T21:37:25Z",
+      "side": 1,
+      "message": "I don\u0027t really know what it does so no objection,  in general I am a fan of delete first and revert and document if we find a problem.",
+      "parentUuid": "800e98db_5ea289e3",
+      "revId": "76a236acfee53ca61c2118cd4ff845e6b9df6565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
