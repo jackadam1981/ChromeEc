@@ -95,6 +95,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a900c9a8_db2cc650",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 35
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-08T21:00:27Z",
+      "side": 1,
+      "message": "The original `um_ppm` was added into the extras area as a placeholder for testing with minimal code review.\n\nWhat\u0027s the plan to move this code out of extras?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 64
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "716f374c_08bc5a10",
         "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
         "patchSetId": 35
