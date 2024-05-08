@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4213af5e_6c7c6c8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d5933df_c6b6c250",
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1fc9620_37becd38",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-07T18:18:31Z",
       "side": 1,
       "message": "Can you add a bug for this and TODO(b/123)? It seems like something we can upstream to Zephyr.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4071e5_f961c7cd",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:44:05Z",
+      "side": 1,
+      "message": "Done. It is about CMSIS. I\u0027ve linked already existing issue in the bug.",
+      "parentUuid": "e1fc9620_37becd38",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -87,6 +129,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2148446_be1c8480",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:44:05Z",
+      "side": 1,
+      "message": "Current version doesn\u0027t touch the LTPSIZE, however if you would like to know more context, here is a [PR](https://github.com/zephyrproject-rtos/zephyr/pull/44816) with docs and all needed info.",
+      "parentUuid": "64837b1a_dd586d2e",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7148430_0f2f6371",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb5d031_6c32ce74",
+      "range": {
+        "startLine": 28,
+        "startChar": 51,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24b8e07d_ba53f382",
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e32d32_f3998dd4",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:44:05Z",
+      "side": 1,
+      "message": "I think it is a better approach for this test, so I updated the Zephyr version.",
+      "parentUuid": "24b8e07d_ba53f382",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f00ef39e_cac276ae",
@@ -123,6 +237,30 @@
       "writtenOn": "2024-05-07T18:18:31Z",
       "side": 1,
       "message": "This comment is just [restating what the code does](https://google.github.io/styleguide/cppguide.html#Implementation_Comment_Donts), so you can probably leave it out.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4177db69e72bd2b777475d6df23794d7b2fd99a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1e0e9e_b144a99d",
+        "filename": "zephyr/test/hwtest/src/cortexm_fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00ef39e_cac276ae",
       "range": {
         "startLine": 52,
         "startChar": 1,
