@@ -16,6 +16,24 @@
       "message": "The last functional updates were made less than a year ago.  It might be premature to delete this.",
       "revId": "76a236acfee53ca61c2118cd4ff845e6b9df6565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00b6627_a39d4c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-08T21:23:00Z",
+      "side": 1,
+      "message": "The ecusb code was copied to src/third_party/hdctools/servo_updater/ecusb, so this copy should be unused.",
+      "parentUuid": "4ffb9c2f_cfb50484",
+      "revId": "76a236acfee53ca61c2118cd4ff845e6b9df6565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
