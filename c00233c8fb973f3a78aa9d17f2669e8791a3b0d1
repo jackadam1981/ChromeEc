@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb0e1a8f_8c7fda46",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T13:07:36Z",
+      "side": 1,
+      "message": "Kind of. It is common that 0 or positive values signals success, but negative that something went wrong. Here are simple examples from UART API [1](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/uart.h#L916) [2](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/uart.h#L837).",
+      "parentUuid": "65edf8a0_83fd1497",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc184fc8_0f51aba8",
         "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
         "patchSetId": 7
@@ -84,6 +108,30 @@
       "writtenOn": "2024-05-07T19:05:28Z",
       "side": 1,
       "message": "Just for my knowledge: Is this the pattern Zephyr tests use for tests that need to reboot? If there is no well-defined pattern, maybe we should propose something upstream like the \"multistep\" test API that we use in EC.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 79
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3590297_3fb082ee",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T13:07:36Z",
+      "side": 1,
+      "message": "I haven\u0027t found such thing, but I will take a look one more time. It is connected with a test runner, if a test starts automatically or additional shell command. Also, some memory is needed that keeps a test state across reboots.",
+      "parentUuid": "dc184fc8_0f51aba8",
       "range": {
         "startLine": 78,
         "startChar": 0,
