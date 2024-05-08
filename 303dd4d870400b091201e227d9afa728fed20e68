@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014af33d_307d5a8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-05-08T00:33:53Z",
+      "side": 1,
+      "message": "There are some build errors, please fix this:\n\n  CC      RW/chip/npcx/watchdog.o\ncommon/i2c_passthru.c: In function \u0027i2c_command_passthru\u0027:\ncommon/i2c_passthru.c:169:32: error: passing argument 1 of \u0027check_i2c_params\u0027 makes integer from pointer without a cast [-Werror\u003dint-conversion]\n  169 |         ret \u003d check_i2c_params(args, port);\n      |                                ^~~~\n      |                                |\n      |                                struct host_cmd_handler_args *\ncommon/i2c_passthru.c:44:43: note: expected \u0027uint8_t\u0027 {aka \u0027const unsigned char\u0027} but argument is of type \u0027struct host_cmd_handler_args *\u0027\n   44 | static int check_i2c_params(const uint8_t port,\n      |                             ~~~~~~~~~~~~~~^~~~\ncommon/i2c_passthru.c:169:38: error: passing argument 2 of \u0027check_i2c_params\u0027 makes pointer from integer without a cast [-Werror\u003dint-conversion]\n  169 |         ret \u003d check_i2c_params(args, port);\n      |                                      ^~~~\n      |                                      |\n      |                                      uint8_t {aka unsigned char}\ncommon/i2c_passthru.c:45:65: note: expected \u0027const struct host_cmd_handler_args *\u0027 but argument is of type \u0027uint8_t\u0027 {aka \u0027unsigned char\u0027}\n   45 |                             const struct host_cmd_handler_args *args)\n      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:642: build/coffeecake/RW/common/i2c_passthru.o] Error 1\nmake[1]: *** [Makefile.rules:306: proj-coffeecake] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n  CC      RW/common/extpower_common.o\n  AS      RW/core/cortex-m0/ldivmod.o\n  CC      RW/common/chargen.o\n  CC      RW/common/gettimeofday.o\n  CC      RW/chip/npcx/watchdog.o\n  CC      RW/common/charge_manager.o\n  CC      RW/common/ec_features.o\n  CC      RW/common/gettimeofday.o\n  CC      RW/common/ec_features.o\ncommon/i2c_passthru.c: In function \u0027i2c_command_passthru\u0027:\ncommon/i2c_passthru.c:169:32: error: passing argument 1 of \u0027check_i2c_params\u0027 makes integer from pointer without a cast [-Werror\u003dint-conversion]\n  169 |         ret \u003d check_i2c_params(args, port);\n      |                                ^~~~\n      |                                |\n      |                                struct host_cmd_handler_args *\ncommon/i2c_passthru.c:44:43: note: expected \u0027uint8_t\u0027 {aka \u0027const unsigned char\u0027} but argument is of type \u0027struct host_cmd_handler_args *\u0027\n   44 | static int check_i2c_params(const uint8_t port,\n      |                             ~~~~~~~~~~~~~~^~~~\ncommon/i2c_passthru.c:169:38: error: passing argument 2 of \u0027check_i2c_params\u0027 makes pointer from integer without a cast [-Werror\u003dint-conversion]\n  169 |         ret \u003d check_i2c_params(args, port);\n      |                                      ^~~~\n      |                                      |\n      |                                      uint8_t {aka unsigned char}\ncommon/i2c_passthru.c:45:65: note: expected \u0027const struct host_cmd_handler_args *\u0027 but argument is of type \u0027uint8_t\u0027 {aka \u0027unsigned char\u0027}\n   45 |                             const struct host_cmd_handler_args *args)\n      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~\ncc1: all warnings being treated as errors",
+      "revId": "303dd4d870400b091201e227d9afa728fed20e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
