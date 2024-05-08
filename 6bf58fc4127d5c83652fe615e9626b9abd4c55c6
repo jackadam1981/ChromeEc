@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f865d30_7fca77e0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 7875,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-08T20:16:46Z",
+      "side": 1,
+      "message": "You should also have a size field so the EC knows how big this data is.",
+      "range": {
+        "startLine": 7875,
+        "startChar": 0,
+        "endLine": 7875,
+        "endChar": 16
+      },
+      "revId": "6bf58fc4127d5c83652fe615e9626b9abd4c55c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
