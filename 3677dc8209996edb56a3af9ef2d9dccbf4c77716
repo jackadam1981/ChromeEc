@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdd013f_bad7f6c7",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-08T11:21:27Z",
+      "side": 1,
+      "message": "FPC repository is private, so it won\u0027t be available in public builds. I think, we need support this situation. @dnojiri@chromium.org what do you think?\n\nSorry about not mentioning about it earlier. I wasn\u0027t aware that this problem will occur.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "3677dc8209996edb56a3af9ef2d9dccbf4c77716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
