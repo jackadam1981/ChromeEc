@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00407ea8_a8c02c6c",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-08T16:49:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5054f50b_cde8abe9",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cf3bbd_4d201b21",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52d11514_09bde2d1",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-08T16:49:40Z",
+      "side": 1,
+      "message": "I needed to modify the KConfig:\n```\nmodule \u003d USBC\nmodule-str \u003d usbc\nsource \"subsys/logging/Kconfig.template.log_config\"\n```\n\nSo I used USBC instead of PDC_TPS in the CONFIG_ name.",
+      "parentUuid": "19cf3bbd_4d201b21",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e4a9db6_0f113748",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-07T15:51:58Z",
       "side": 1,
       "message": "These are standard UCSI commands, this should be defined somewhere shared.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 45
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7657d9fa_d28a846d",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-08T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e4a9db6_0f113748",
       "range": {
         "startLine": 243,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28122308_c42064d4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-08T16:49:40Z",
+      "side": 1,
+      "message": "The command states are now just function calls.",
+      "parentUuid": "9d782a9c_92e67829",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 0
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be997693_b8a70fad",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 6
@@ -106,6 +202,30 @@
       "writtenOn": "2024-05-07T15:51:58Z",
       "side": 1,
       "message": "You keep this debug code by using:\n```\n#if CONFIG_PDC_TPS_LOG_LEVEL \u003e\u003d LOG_LEVEL_DBG\n```",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 5
+      },
+      "revId": "db9b88ff05045637f81c2e370c2235f38aebd46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f383fb_6a7a6d0a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-08T16:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be997693_b8a70fad",
       "range": {
         "startLine": 376,
         "startChar": 0,
