@@ -39,6 +39,30 @@
       },
       "revId": "b261499820409d5c5e99f6c579701a8dcd270c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2500614f_f2f54eab",
+        "filename": "zephyr/program/brox/gpio.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-08T19:52:51Z",
+      "side": 1,
+      "message": "Hi Keith, As there is an external pull-up on this I2C and I2C is used by PMC, I think we have to keep these lines as GPIO_INPUT. Datasheet doesn\u0027t have info about the pull-up resistance val.",
+      "parentUuid": "3a1e1d84_215c583c",
+      "range": {
+        "startLine": 111,
+        "startChar": 13,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "b261499820409d5c5e99f6c579701a8dcd270c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
