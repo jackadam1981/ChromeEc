@@ -16,6 +16,24 @@
       "message": "It looks like there are some [crc32 tests in the original](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/crc.c;l\u003d15-72;drc\u003d4f33b3bdd8024de044b70229aa19de553b78fc47). Are you going to add those as well?\n\nIf not, can you updated the `migrated_files.sh` script to contain this test?",
       "revId": "b13dd54a799ac0dd667f57a0d47c85c5d26c0155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e5a68f_75ede0c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-08T12:47:42Z",
+      "side": 1,
+      "message": "Zephyr doesn\u0027t shim the crc32 functions so I dropped that part from the test.",
+      "parentUuid": "7ee3ff9f_84f32a42",
+      "revId": "b13dd54a799ac0dd667f57a0d47c85c5d26c0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
