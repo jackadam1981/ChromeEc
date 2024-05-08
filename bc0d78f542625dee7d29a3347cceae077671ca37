@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d407a7f0_07b92496",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 35
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-08T21:09:37Z",
+      "side": 1,
+      "message": "Eventually, this should move to `zephyr/subsys/ucsi` and we deprecate `um_ppm`. We\u0027re eventually going to run EC virtually in QEMU to support EVMs instead of using `um_ppm`.\n\nShort-term, we need to maintain the code in `um_ppm` until we\u0027re confident in the EC PPM integration and then we can switch to the virtualized version.\n\nFull plan here: https://docs.google.com/document/d/12bcT4G9zemAEs8Z-hEfdEVAHQuhzry3QMad1JmSp9yQ/edit?tab\u003dt.0#heading\u003dh.6weoztwwjhky",
+      "parentUuid": "a900c9a8_db2cc650",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 64
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "716f374c_08bc5a10",
         "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
         "patchSetId": 35
