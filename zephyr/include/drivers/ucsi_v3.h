@@ -40,6 +40,120 @@ extern "C" {
 #define PDC_MAX_DATA_LENGTH 256
 
 /**
+ * @brief UCSI Commands
+ */
+enum ucsi_command_t {
+	/** UCSI COMMAND 0x00 RESERVED */
+	/** UCSI PPM RESET */
+	UCSI_PPM_RESET = 0x01,
+	/** UCSI CANCEL */
+	UCSI_CANCEL = 0x02,
+	/** UCSI CONNECTOR RESET */
+	UCSI_CONNECTOR_RESET = 0x03,
+	/** UCSI ACK CC CI */
+	UCSI_ACK_CC_CI = 0x04,
+	/** UCSI SET NOTIFICATION ENABLE */
+	UCSI_SET_NOTIFICATION_ENABLE = 0x05,
+	/** UCSI CAPABILITY */
+	UCSI_GET_CAPABILITY = 0x06,
+	/** UCSI CONNECTOR CAPABILITY */
+	UCSI_GET_CONNECTOR_CAPABILITY = 0x07,
+	/** UCSI SET CCOM */
+	UCSI_SET_CCOM = 0x08,
+	/** UCSI SET UOR */
+	UCSI_SET_UOR = 0x09,
+	/** UCSI SET PDM 0x0a OBSOLETE*/
+	/** UCSI SET PDR */
+	UCSI_SET_PDR = 0x0b,
+	/** UCSI ALTERNATE MODES */
+	UCSI_GET_ALTERNATE_MODES = 0x0c,
+	/** UCSI GET CAM SUPPORTED */
+	UCSI_GET_CAM_SUPPORTED = 0x0d,
+	/** UCSI GET CURRENT CAM */
+	UCSI_GET_CURRENT_CAM = 0x0e,
+	/** UCSI NEW CAM */
+	UCSI_SET_NEW_CAM = 0x0f,
+	/** UCSI GET PDOS */
+	UCSI_GET_PDOS = 0x10,
+	/** UCSI GET CABLE PROPERTY */
+	UCSI_GET_CABLE_PROPERTY = 0x11,
+	/** UCSI GET CONNECTOR STATUS */
+	UCSI_GET_CONNECTOR_STATUS = 0x12,
+	/** UCSI GET ERROR STATUS */
+	UCSI_GET_ERROR_STATUS = 0x13,
+	/** UCSI SET POWER LEVEL */
+	UCSI_SET_POWER_LEVEL = 0x14,
+	/** UCSI GET PD MESSAGE */
+	UCSI_GET_PD_MESSAGE = 0x15,
+	/** UCSI GET ATTENTION VDO */
+	UCSI_GET_ATTENTION_VDO = 0x16,
+	/** UCSI COMMAND 0x17 RESERVED */
+	/** UCSI GET CAM CS */
+	UCSI_GET_CAM_CS = 0x18,
+	/** UCSI LPM FW UPDATE REQUEST */
+	UCSI_LPM_FW_UPDATE_REQUEST = 0x19,
+	/** UCSI SECURITY REQUEST */
+	UCSI_SECURITY_REQUEST = 0x1a,
+	/** UCSI SET RETIMER MODE */
+	UCSI_SET_RETIMER_MODE = 0x1b,
+	/** UCSI SET SINK PATH */
+	UCSI_SET_SINK_PATH = 0x1c,
+	/** UCSI SET PDOS */
+	UCSI_SET_PDOS = 0x1d,
+	/** UCSI READ POWER LEVEL */
+	UCSI_READ_POWER_LEVEL = 0x1e,
+	/** UCSI CHUNKING SUPPORTED */
+	UCSI_CHUNKING_SUPPORT = 0x1f,
+	/** UCSI VENDOR DEFINED COMMAND */
+	UCSI_VENDOR_DEFINED_COMMAND = 0x20,
+	/** UCSI SET USB */
+	UCSI_SET_USB = 0x21,
+	/** UCSI GET LPM PPM INFO */
+	UCSI_GET_LPM_PPM_INFO = 0x22,
+};
+
+/* clang-format off */
+/**
+ * @brief UCSI Command Names
+ */
+#define UCSI_COMMAND_NAMES                                                   \
+	{                                                                     \
+		[UCSI_PPM_RESET] = "PPM_RESET",                               \
+		[UCSI_CANCEL] = "CANCEL",                                     \
+		[UCSI_CONNECTOR_RESET] = "CONNECTOR_RESET",                   \
+		[UCSI_ACK_CC_CI] = "ACK_CC_CI",                               \
+		[UCSI_SET_NOTIFICATION_ENABLE] = "SET_NOTIFICATION_ENABLE",   \
+		[UCSI_GET_CAPABILITY] = "GET_CAPABILITY",                     \
+		[UCSI_GET_CONNECTOR_CAPABILITY] = "GET_CONNECTOR_CAPABILITY", \
+		[UCSI_SET_CCOM] = "SET_CCOM",                                 \
+		[UCSI_SET_UOR] = "SET_UOR",                                   \
+		[UCSI_SET_PDR] = "SET_PDR",                                   \
+		[UCSI_GET_ALTERNATE_MODES] = "GET_ALTERNATE_MODES",           \
+		[UCSI_GET_CAM_SUPPORTED] = "GET_CAM_SUPPORTED",               \
+		[UCSI_GET_CURRENT_CAM] = "GET_CURRENT_CAM",                   \
+		[UCSI_SET_NEW_CAM] = "SET_NEW_CAM",                           \
+		[UCSI_GET_PDOS] = "GET_PDOS",                                 \
+		[UCSI_GET_CABLE_PROPERTY] = "GET_CABLE_PROPERTY",             \
+		[UCSI_GET_CONNECTOR_STATUS] = "GET_CONNECTOR_STATUS",         \
+		[UCSI_GET_ERROR_STATUS] = "GET_ERROR_STATUS",                 \
+		[UCSI_SET_POWER_LEVEL] = "SET_POWER_LEVEL",                   \
+		[UCSI_GET_PD_MESSAGE] = "GET_PD_MESSAGE",                     \
+		[UCSI_GET_ATTENTION_VDO] = "GET_ATTENTION_VDO",               \
+		[UCSI_GET_CAM_CS] = "GET_CAM_CS",                             \
+		[UCSI_LPM_FW_UPDATE_REQUEST] = "LPM_FW_UPDATE_REQUEST",       \
+		[UCSI_SECURITY_REQUEST] = "SECURITY_REQUEST",                 \
+		[UCSI_SET_RETIMER_MODE] = "SET_RETIMER_MODE",                 \
+		[UCSI_SET_SINK_PATH] = "SET_SINK_PATH",                       \
+		[UCSI_SET_PDOS] = "SET_PDOS",                                 \
+		[UCSI_READ_POWER_LEVEL] = "READ_POWER_LEVEL",                 \
+		[UCSI_CHUNKING_SUPPORT] = "CHUNKING_SUPPORTED",               \
+		[UCSI_VENDOR_DEFINED_COMMAND] = "VENDOR_DEFINED",             \
+		[UCSI_SET_USB] = "SET_USB",                                   \
+		[UCSI_GET_LPM_PPM_INFO] = "GET_LPM_PPM_INFO",                 \
+	}
+/* clang-format on */
+
+/**
  * @brief PDO Offset to start reading PDOs
  */
 enum pdo_offset_t {
