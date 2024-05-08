@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8c1378_681a4630",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-08T17:50:04Z",
+      "side": 1,
+      "message": "This is in here because the old `pd N dev V` command had it, but I don\u0027t know its purpose. `pd_get_max_voltage()` returns the current limit, which starts at 20V and then reflects what you previously requested. So it doesn\u0027t help you to restore the original max of 20 or whatever the charger/PSU\u0027s max is.",
+      "range": {
+        "startLine": 417,
+        "startChar": 2,
+        "endLine": 417,
+        "endChar": 28
+      },
+      "revId": "818107eecec6cc6864eb2e3340847003496a4e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
