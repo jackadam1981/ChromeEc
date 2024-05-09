@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a600088d_4c093664",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T16:56:08Z",
+      "side": 1,
+      "message": "Ran on my `icetower` and they passed:\n\n```\nINFO:fp power:  actual: 0.03 expected: 0.03 threshold: +/-0.05\nINFO:mcu power: actual: 42.13 expected: 42.67 threshold: +/-0.70\nTest \"power_utilization_idle\": PASSED\n```\n\n```\nINFO:fp power:  actual: 0.04 expected: 0.03 threshold: +/-0.05\nINFO:mcu power: actual: 4.46 expected: 4.46 threshold: +/-0.46\nDEBUG:Running command: \"[\u0027dut-control\u0027, \u0027fpmcu_slp:off\u0027]\"\nTest \"power_utilization_sleep\": PASSED\n\n```",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 68
+      },
+      "revId": "f91d370699ed27f68d4c11dbe6f59f9e21c19c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ba986a6c_608b2c2a",
