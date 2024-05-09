@@ -17,15 +17,6 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
 static bool key_pad = FW_KB_NUMERIC_PAD_ABSENT;
 
-int8_t board_vivaldi_keybd_idx(void)
-{
-	if (key_pad == FW_KB_NUMERIC_PAD_ABSENT) {
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
-	} else {
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
-	}
-}
-
 /*
  * Keyboard function decided by FW config.
  */
@@ -43,7 +34,6 @@ test_export_static void kb_init(void)
 
 	if (val == FW_KB_NUMERIC_PAD_ABSENT) {
 		/* Disable scanning KSO13 & 14 if keypad isn't present. */
-		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
 		key_pad = FW_KB_NUMERIC_PAD_ABSENT;
 	} else {
 		key_pad = FW_KB_NUMERIC_PAD_PRESENT;
