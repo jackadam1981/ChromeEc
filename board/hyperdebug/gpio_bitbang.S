@@ -580,6 +580,87 @@ apply_gpio_table:
 apply_gpio_table_end:
 
 /*
+ * Retrieve 12-bit value by comsuming 1 bytes of waveform data, appending
+ * 4 bits from the value in r1 (the register holding 7 bits used for GPIO
+ * bitbanging.)
+ */
+.data
+.global fetch_dac_value_snippet
+fetch_dac_value_snippet:
+	.long 1
+	.long fetch_dac_value_table
+	.long fetch_dac_value_table_end
+
+.text
+fetch_dac_value_table:
+	/* r1: high 4 bits of DAC value (in low 4 bits) */
+	/* r3: address of bitbang struct */
+	mov r0, #BITBANG_BUFFER_SIZE - 1
+	and r7, r2, r0
+	add r2, r2, #1
+	add r7, r7, #BITBANG_DATA_OFF
+	ldrb r0, [r3, r7]
+
+	/* r0: lower 8 bits of DAC value */
+
+	and r1, r1, #0x0F
+	add r0, r0, r1, lsl 8
+fetch_dac_value_table_end:
+
+/*
+ * Retrieve 16-bit value by consuming 2 bytes of waveform data.
+ */
+.data
+.global fetch_dac_value2_snippet
+fetch_dac_value2_snippet:
+	.long 1
+	.long fetch_dac_value2_table
+	.long fetch_dac_value2_table_end
+
+.text
+fetch_dac_value2_table:
+	/* r3: address of bitbang struct */
+
+	mov r0, #BITBANG_BUFFER_SIZE - 1
+	and r7, r2, r0
+	add r2, r2, #1
+	add r7, r7, #BITBANG_DATA_OFF
+	ldrb r1, [r3, r7]
+
+	and r7, r2, r0
+	add r2, r2, #1
+	add r7, r7, #BITBANG_DATA_OFF
+	ldrb r0, [r3, r7]
+
+	/* r0: lower 8 bits of DAC value */
+
+	and r1, r1, #0x0F
+	add r0, r0, r1, lsl 8
+fetch_dac_value2_table_end:
+
+/*
+ * Apply value in lower 12 bits of r0 to one of the DAC channels.
+ */
+.data
+.global apply_dac_snippet
+apply_dac_snippet:
+	.long 2
+	.long apply_dac_table
+	.long apply_dac_table_end
+
+.text
+apply_dac_table:
+	mov r2, #0x40000000
+	add r2, r2, #0x7400 /* STM32_DAC_BASE */
+	str r0, [r2, #0x08] /* STM32_DAC_DHR12R1 */
+
+	mov r2, #0x40000000
+	add r2, r2, #0x7400 /* STM32_DAC_BASE */
+	str r0, [r2, #0x14] /* STM32_DAC_DHR12R2 */
+apply_dac_table_end:
+
+
+/*
  * Write current index into bitbang.irq_off, then return from interrupt.
  */
 .data
