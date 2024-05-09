@@ -605,8 +605,6 @@ struct pdc_port_t {
 	uint32_t vdo[VDO_NUM];
 	/** Store the VDO returned for the PD_VDO_DP_CFG */
 	uint32_t vdo_dp_cfg;
-	/** CONNECTOR_RESET temp variable used with CMD_PDC_CONNECTOR_RESET */
-	union connector_reset_t connector_reset;
 	/** PD Port Partner discovery state: True if discovery is complete, else
 	 * false */
 	bool discovery_state;
@@ -620,6 +618,16 @@ struct pdc_port_t {
 	struct get_pdo_t get_pdo;
 	/** Variable used to store/set PDC LPM SRC CAPs */
 	struct set_pdos_t set_pdos;
+	/** Union of temporary parameters passed along with commands. This
+	 *  saves some memory since only one is needed at a time.
+	 */
+	union {
+		/** CMD_PDC_CONNECTOR_RESET - encodes type of reset */
+		union connector_reset_t connector_reset;
+		/** CMD_PDC_GET_INFO - live flag to force a fresh read of chip
+		 *  info or return a cached set of values. */
+		bool live;
+	} cmd_params;
 };
 
 /**
@@ -1538,7 +1546,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_reset(port->pdc);
 		break;
 	case CMD_PDC_GET_INFO:
-		rv = pdc_get_info(port->pdc, &port->info);
+		rv = pdc_get_info(port->pdc, &port->info,
+				  port->cmd_params.live);
 		break;
 	case CMD_PDC_SET_POWER_LEVEL:
 		rv = pdc_set_power_level(port->pdc, port->una_policy.tcc);
@@ -1608,7 +1617,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	}
 	case CMD_PDC_CONNECTOR_RESET:
-		rv = pdc_connector_reset(port->pdc, port->connector_reset);
+		rv = pdc_connector_reset(port->pdc,
+					 port->cmd_params.connector_reset);
 		break;
 	case CMD_PDC_GET_IDENTITY_DISCOVERY:
 		rv = pdc_get_identity_discovery(port->pdc,
@@ -2852,7 +2862,7 @@ static void pd_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
-int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info)
+int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info, bool live)
 {
 	int ret;
 
@@ -2864,6 +2874,11 @@ int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info)
 	if (pdc_info == NULL) {
 		return -EINVAL;
 	}
+
+	/* Set command parameter -- this indicates if a fresh read should be
+	 * performed or if a cached value may be returned.
+	 */
+	pdc_data[port]->port.cmd_params.live = live;
 
 	/* Block until command completes */
 	ret = public_api_block(port, CMD_PDC_GET_INFO);
@@ -2992,8 +3007,8 @@ int pdc_power_mgmt_connector_reset(int port, enum connector_reset reset_type)
 		return EC_SUCCESS;
 	}
 
-	pdc_data[port]->port.connector_reset.raw_value = 0;
-	pdc_data[port]->port.connector_reset.reset_type = reset_type;
+	pdc_data[port]->port.cmd_params.connector_reset.raw_value = 0;
+	pdc_data[port]->port.cmd_params.connector_reset.reset_type = reset_type;
 
 	/* Block until command completes */
 	return public_api_block(port, CMD_PDC_CONNECTOR_RESET);

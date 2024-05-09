@@ -432,7 +432,8 @@ static int rts54_reset(const struct device *dev);
 static int rts54_set_notification_enable(const struct device *dev,
 					 union notification_enable_t bits,
 					 uint16_t ext_bits);
-static int rts54_get_info(const struct device *dev, struct pdc_info_t *info);
+static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
+			  bool live);
 static int rts54_get_error_status(const struct device *dev,
 				  union error_status_t *es);
 
@@ -713,7 +714,7 @@ static void st_init_run(void *o)
 		init_write_cmd_and_change_state(data, INIT_PDC_GET_IC_STATUS);
 		return;
 	case INIT_PDC_GET_IC_STATUS:
-		rv = rts54_get_info(data->dev, &data->info);
+		rv = rts54_get_info(data->dev, &data->info, true);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_GET_IC_STATUS)", cnum);
 			set_state(data, ST_DISABLE);
@@ -1151,6 +1152,11 @@ static void st_read_run(void *o)
 	case CMD_GET_IC_STATUS: {
 		struct pdc_info_t *info = (struct pdc_info_t *)data->user_buf;
 
+		/* When GET_IC_STATUS is called internally from the init
+		 * routine, the user_buf is data->info, caching a copy of the
+		 * chip info for later use.
+		 */
+
 		/* Realtek Is running flash code: Byte 1 */
 		info->is_running_flash_code = data->rd_buf[1];
 
@@ -1188,6 +1194,7 @@ static void st_read_run(void *o)
 				cfg->connector_number, info->pd_version,
 				info->pd_revision);
 		}
+
 		break;
 	}
 	case CMD_GET_VBUS_VOLTAGE:
@@ -1915,18 +1922,42 @@ static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 				  ARRAY_SIZE(payload), (uint8_t *)pdos);
 }
 
-static int rts54_get_info(const struct device *dev, struct pdc_info_t *info)
+static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
+			  bool live)
 {
 	struct pdc_data_t *data = dev->data;
-
-	if ((get_state(data) != ST_IDLE) && (get_state(data) != ST_INIT)) {
-		return -EBUSY;
-	}
 
 	if (info == NULL) {
 		return -EINVAL;
 	}
 
+	/* If caller is OK with a non-live value and we have one, we can
+	 * immediately return a cached value.
+	 */
+	if (!live) {
+		k_mutex_lock(&data->mtx, K_FOREVER);
+
+		/* Check FW ver and VID/PID fields for valid values to ensure
+		 * we have a resident value.
+		 */
+		if (data->info.fw_version != PDC_FWVER_INVALID &&
+		    data->info.vid_pid != PDC_VIDPID_INVALID) {
+			*info = data->info;
+
+			k_mutex_unlock(&data->mtx);
+			return 0;
+		}
+
+		k_mutex_unlock(&data->mtx);
+
+		/* No cached value present; proceed with a live read instead */
+	}
+
+	if ((get_state(data) != ST_IDLE) && (get_state(data) != ST_INIT)) {
+		return -EBUSY;
+	}
+
+	/* Post a command and perform a chip operation */
 	uint8_t payload[] = {
 		GET_IC_STATUS.cmd, GET_IC_STATUS.len, 0, 0x00, 26,
 	};
@@ -2354,6 +2385,11 @@ static int pdc_init(const struct device *dev)
 	data->cmd = CMD_NONE;
 	data->error_recovery_counter = 0;
 	data->init_retry_counter = 0;
+	data->info = (struct pdc_info_t){
+		.fw_version = PDC_FWVER_INVALID,
+		.vid_pid = PDC_VIDPID_INVALID,
+	};
+
 	pdc_data[cfg->connector_number] = data;
 
 	/* Set initial state */
