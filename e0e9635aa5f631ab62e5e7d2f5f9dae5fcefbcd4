@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b495166_e5695ce3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-09T15:43:25Z",
+      "side": 1,
+      "message": "Can you point to the CL that does this?  The PPM CLs I\u0027ve reviewed only implement the synchronous UCSI passthrough command.\n\nI think this CL makes sense, even without the PPM synchronization issues.",
+      "range": {
+        "startLine": 16,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "e0e9635aa5f631ab62e5e7d2f5f9dae5fcefbcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a977fec2_c36b5ea8",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -14,6 +37,30 @@
       "writtenOn": "2024-05-06T23:04:52Z",
       "side": 1,
       "message": "I\u0027m not sure if we can/should go even one-level up: wake up the pdc thread for all events (busy, error, command_completed).",
+      "range": {
+        "startLine": 1950,
+        "startChar": 2,
+        "endLine": 1950,
+        "endChar": 46
+      },
+      "revId": "e0e9635aa5f631ab62e5e7d2f5f9dae5fcefbcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648cdf36_92cc3a2d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-09T15:43:25Z",
+      "side": 1,
+      "message": "This event serves to bypass the 25ms delay.  Generating the event on any callback makes sense.",
+      "parentUuid": "a977fec2_c36b5ea8",
       "range": {
         "startLine": 1950,
         "startChar": 2,
