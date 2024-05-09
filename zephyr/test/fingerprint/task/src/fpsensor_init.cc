@@ -14,12 +14,14 @@
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
+extern "C" {
 #include <drivers/fingerprint.h>
 #include <drivers/fingerprint_sim.h>
 #include <ec_commands.h>
 #include <ec_tasks.h>
 #include <fpsensor/fpsensor_state.h>
 #include <host_command.h>
+}
 
 DEFINE_FFF_GLOBALS;
 
@@ -33,7 +35,7 @@ ZTEST_USER(fpsensor_init, test_tpm_seed_init)
 	struct ec_params_fp_seed params = {
 		.struct_version = 4,
 		.reserved = 0,
-		.seed = "very_secret_32_bytes_of_tpm_seed",
+		.seed = "very_secret_32_byte_of_tpm_seed",
 	};
 
 	/* Get FP encryption flags. */
@@ -63,7 +65,7 @@ ZTEST_USER(fpsensor_init, test_tpm_seed_invalid)
 		/* 0 is not a valid structure version. */
 		.struct_version = 0,
 		.reserved = 0,
-		.seed = "very_secret_32_bytes_of_tpm_seed",
+		.seed = "very_secret_32_byte_of_tpm_seed",
 	};
 
 	/* Try to set TPM seed (should fail). */
