@@ -54,4 +54,13 @@
 			ec-led-name = "EC_LED_ID_BATTERY_LED";
 		};
 	};
+
+	batteries {
+		default_battery: getac_pg01jh3353 {
+			compatible = "getac,pg01jh3353", "battery-smart";
+		};
+		default_battery_3s: getac_pg01lj3353 {
+			compatible = "getac,pg01lj3353", "battery-smart";
+		};
+	};
 };
