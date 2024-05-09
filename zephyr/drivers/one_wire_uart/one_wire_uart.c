@@ -9,6 +9,7 @@
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
 #include "hooks.h"
+#include "system.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/uart.h>
@@ -381,6 +382,8 @@ void uart_handler(const struct device *bus, void *user_data)
 {
 	const struct device *dev = user_data;
 
+	disable_sleep(SLEEP_MASK_UART);
+
 	uart_irq_update(bus);
 
 	if (uart_irq_rx_ready(bus)) {
@@ -391,6 +394,8 @@ void uart_handler(const struct device *bus, void *user_data)
 	if (uart_irq_tx_ready(bus)) {
 		process_tx_irq(dev);
 	}
+
+	enable_sleep(SLEEP_MASK_UART);
 }
 
 /* reset internal state */
