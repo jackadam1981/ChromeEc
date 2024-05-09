@@ -271,6 +271,7 @@ if(CONFIG_TEST_NISSA_GLASSWAY)
 endif()
 
 if(CONFIG_TEST_NISSA_RIVEN)
+    zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/include")
     target_sources(
 	    app PRIVATE
 	    src/riven.c
@@ -278,6 +279,7 @@ if(CONFIG_TEST_NISSA_RIVEN)
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/form_factor.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/kb_backlight.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/keyboard.c
+	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/keyboard_customization.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/led.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/touch_panel.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/riven/src/usbc.c
