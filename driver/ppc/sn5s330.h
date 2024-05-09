@@ -26,6 +26,8 @@ enum sn5s330_pp_idx {
 	SN5S330_PP_COUNT,
 };
 
+#define SN5S330_INT_TRESHOLD (10)
+
 #define SN5S330_FUNC_SET1 0x50
 #define SN5S330_FUNC_SET2 0x51
 #define SN5S330_FUNC_SET3 0x52
