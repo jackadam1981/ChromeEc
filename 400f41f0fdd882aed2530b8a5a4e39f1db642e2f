@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5988bde1_4feba2ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-09T08:36:26Z",
+      "side": 1,
+      "message": "I\u0027ve created a bug for that b/339562427. Actually, I will start with adding support for running the upstream tests. Then we can try to locate upstream tests that should be run on google_dragonclaw as a part of run_device_tests.py run.",
+      "parentUuid": "de76acd6_0ec97c65",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "353e5433_1ef3d1fc",
         "filename": "zephyr/test/hwtest/src/flash_physical.c",
         "patchSetId": 7
