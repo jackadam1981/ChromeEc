@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83020aa_ed0dc3c0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:30:15Z",
+      "side": 1,
+      "message": "Resolved offline.",
+      "parentUuid": "75955a6d_3cecd428",
+      "range": {
+        "startLine": 2153,
+        "startChar": 11,
+        "endLine": 2153,
+        "endChar": 32
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "094ace23_65806ca1",
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "\u003e This duplicates code in the driver and subsystem. Is there a reason why this needs to be done?\n\nrts54_execute_command is a blocking command executer. (Renamed to rts54_execute_command_sync.) It allows a PDC driver not to worry about how to route a CC event back to the caller. uPPM also works with blocking smbus APIs. \n\n\u003e I haven\u0027t reviewed the full CL stack. How is synchronization between pdc_power_mgmt.c and the ucsi/rts54xx.c driver managed?\n\nPDM isn\u0027t supposed to use rts54_execute_command. When PDM is accessing a PDC, PPM will get -EBUSY and when PPM is accessing a PDC, PDM will get -EBUSY.\n\n\u003e public_api_block in pdc_power_mgmt.c is already setup to generate a blocking PDC command.\n\nThat was explored as the serial architecture described in https://docs.google.com/document/d/1pNZuFHzxrFhKH3xy1_F61dySB9c9Ttu4IZRPhD8KmNA/edit?resourcekey\u003d0-JBLbWckIUZyPMwb3PbOYtw\u0026tab\u003dt.0#bookmark\u003did.h79q0zj86q07. An observation is transitioning to the final architecture from the parallel architecture is more seamless than transitioning from the serial architecture: https://docs.google.com/document/d/1pNZuFHzxrFhKH3xy1_F61dySB9c9Ttu4IZRPhD8KmNA/edit?resourcekey\u003d0-JBLbWckIUZyPMwb3PbOYtw\u0026tab\u003dt.0#bookmark\u003did.5qbxnvh3gfr1.",
       "parentUuid": "257cd2e1_019bf8e5",
+      "range": {
+        "startLine": 2176,
+        "startChar": 1,
+        "endLine": 2200,
+        "endChar": 11
+      },
+      "revId": "7c9609de413b1fe6ff47f1be5365ca5234077b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493f0126_9381c206",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:30:15Z",
+      "side": 1,
+      "message": "Resolved offline.",
+      "parentUuid": "a2317bc9_4680db4d",
       "range": {
         "startLine": 2176,
         "startChar": 1,
