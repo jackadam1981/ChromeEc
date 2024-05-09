@@ -9,6 +9,7 @@
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
 #include "hooks.h"
+#include "system.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/uart.h>
@@ -377,9 +378,17 @@ void load_rx_fifo(const struct device *dev)
 	}
 }
 
+void resume_sleep(void)
+{
+	enable_sleep(SLEEP_MASK_UART);
+}
+DECLARE_DEFERRED(resume_sleep);
+
 void uart_handler(const struct device *bus, void *user_data)
 {
 	const struct device *dev = user_data;
+
+	disable_sleep(SLEEP_MASK_UART);
 
 	uart_irq_update(bus);
 
@@ -391,6 +400,9 @@ void uart_handler(const struct device *bus, void *user_data)
 	if (uart_irq_tx_ready(bus)) {
 		process_tx_irq(dev);
 	}
+
+	/* back to sleep if idle for 100ms */
+	hook_call_deferred(&resume_sleep_data, 100 * MSEC);
 }
 
 /* reset internal state */
