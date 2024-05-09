@@ -52,6 +52,24 @@
       "parentUuid": "71873b7d_e6e4367a",
       "revId": "2f5bf9f7d5313e0713815a4ebebff1ee84734b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7d7134_dc232c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-09T17:21:24Z",
+      "side": 1,
+      "message": "No, `locate_from_checkout()` is used. I don\u0027t understand why this works actually, maybe symlinks are not created if directory doesn\u0027t exist or something like that.",
+      "parentUuid": "5a53458b_ad62dfab",
+      "revId": "2f5bf9f7d5313e0713815a4ebebff1ee84734b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
