@@ -34,6 +34,24 @@
       "parentUuid": "241a2709_5f0d8cc9",
       "revId": "2f5bf9f7d5313e0713815a4ebebff1ee84734b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a53458b_ad62dfab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T17:04:55Z",
+      "side": 1,
+      "message": "Interesting. I guess if the CQ passes, then it should be fine. I guess it\u0027s because [this code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/modules.py;l\u003d69-72;drc\u003d4474772237cf30cd3e22f127b1b2934e3a78fe2f) only adds it as a module if the file exists.",
+      "parentUuid": "71873b7d_e6e4367a",
+      "revId": "2f5bf9f7d5313e0713815a4ebebff1ee84734b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
