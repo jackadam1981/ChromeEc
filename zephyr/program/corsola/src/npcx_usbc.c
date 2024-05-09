@@ -135,6 +135,15 @@ __override int board_rt1718s_init(int port)
 					  RT1718S_RT2_BC12_SRC_FUNC_BC12_SRC_EN,
 					  0));
 
+#ifndef CONFIG_BC12_DETECT_RT1718S
+	RETURN_ERROR(
+		rt1718s_update_bits8(port, RT1718S_RT2_SBU_CTRL_01,
+				     RT1718S_RT2_SBU_CTRL_01_DPDM_VIEN |
+					     RT1718S_RT2_SBU_CTRL_01_DM_SWEN |
+					     RT1718S_RT2_SBU_CTRL_01_DP_SWEN,
+				     0xFF));
+#endif
+
 	return EC_SUCCESS;
 }
 
