@@ -45,7 +45,6 @@ test_export_static void kb_init(void)
 
 	if (val == FW_KB_NUMERIC_PAD_ABSENT) {
 		/* Disable scanning KSO13 & 14 if keypad isn't present. */
-		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
 		key_pad = FW_KB_NUMERIC_PAD_ABSENT;
 	} else {
 		key_pad = FW_KB_NUMERIC_PAD_PRESENT;
