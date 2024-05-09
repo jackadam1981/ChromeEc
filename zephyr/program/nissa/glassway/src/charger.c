@@ -53,3 +53,19 @@ __override void board_hibernate(void)
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }
+
+__override void board_get_default_battery_type(void)
+{
+	int cells;
+
+	if (charger_get_battery_cells(CHARGER_PRIMARY, &cells) == EC_SUCCESS) {
+		if (cells == 3) {
+			LOG_INF("Default battery 3S type");
+			return BATTERY(DT_ALIAS(battery_3s));
+		} else {
+			LOG_INF("Default battery 2S type");
+			return BATTERY(DT_ALIAS(battery_2s));
+		}
+	}
+	return BATTERY(DT_ALIAS(battery_3s));
+}
