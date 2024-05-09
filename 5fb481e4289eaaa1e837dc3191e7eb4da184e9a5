@@ -16,6 +16,24 @@
       "message": "These sensors seems been used for Craask relevant projects from boxster config perspective.",
       "revId": "5fb481e4289eaaa1e837dc3191e7eb4da184e9a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d90796f_fdea53ac",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2024-05-09T01:11:21Z",
+      "side": 0,
+      "message": "util/check_zephyr_project_config.py now prevents cl uploads with unnecessary config:\n```\n      ERROR: zephyr/program/nissa/craask/project.conf:11: unnecessary config option CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSO\u003dy (depends on (DT_HAS_CROS_EC_LSM6DSO_ACCEL_ENABLED || DT_HAS_CROS_EC_LSM6DSO_GYRO_ENABLED) \u0026\u0026 PLATFORM_EC_MOTIONSENSE \u0026\u0026 PLATFORM_EC)\n      ERROR: zephyr/program/nissa/craask/project.conf:12: unnecessary config option CONFIG_PLATFORM_EC_ACCEL_BMA4XX\u003dy (depends on DT_HAS_CROS_EC_BMA4XX_ENABLED \u0026\u0026 PLATFORM_EC_MOTIONSENSE \u0026\u0026 PLATFORM_EC)\n```\nI also checked that the option can be automatically enabled by the devicetree dependency:\n```\n(cr) yuan@zgm /mnt/host/source/src/platform/ec $ cat ./build/zephyr/craask/build-rw/zephyr/.config |grep EC_ACCEL |gr\nep \u003dy\nCONFIG_PLATFORM_EC_ACCEL_FIFO\u003dy\nCONFIG_PLATFORM_EC_ACCEL_SPOOF_MODE\u003dy\nCONFIG_PLATFORM_EC_ACCELGYRO_BMI\u003dy\nCONFIG_PLATFORM_EC_ACCEL_BMA4XX\u003dy\nCONFIG_PLATFORM_EC_ACCEL_LIS2DW12\u003dy\nCONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX\u003dy\nCONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSO\u003dy\nCONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C\u003dy\n```",
+      "parentUuid": "cced35d8_b0df8bc2",
+      "revId": "5fb481e4289eaaa1e837dc3191e7eb4da184e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
