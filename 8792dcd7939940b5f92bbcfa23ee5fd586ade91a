@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56b94b8_4fad598a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-09T20:31:11Z",
+      "side": 1,
+      "message": "The CQ failed on in the skyrim/skyrim.skyrim.usb_mux_config test with a build failure.\n\nRun `./twister -ivc -T zephyr/test/skyrim` to reproduce the failure locally.",
+      "revId": "8792dcd7939940b5f92bbcfa23ee5fd586ade91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
