@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32cf2947_d6212b1a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-09T21:35:41Z",
+      "side": 1,
+      "message": "Please open a bug for supporting multiple listeners for connector change events.",
+      "parentUuid": "b74fe065_b7921b50",
+      "range": {
+        "startLine": 2285,
+        "startChar": 0,
+        "endLine": 2296,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdc98c34_edd9c7d3",
         "filename": "zephyr/dts/bindings/usbc/ucsi-ppm-driver.yaml",
         "patchSetId": 35
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "Eventually, this should move to `zephyr/subsys/ucsi` and we deprecate `um_ppm`. We\u0027re eventually going to run EC virtually in QEMU to support EVMs instead of using `um_ppm`.\n\nShort-term, we need to maintain the code in `um_ppm` until we\u0027re confident in the EC PPM integration and then we can switch to the virtualized version.\n\nFull plan here: https://docs.google.com/document/d/12bcT4G9zemAEs8Z-hEfdEVAHQuhzry3QMad1JmSp9yQ/edit?tab\u003dt.0#heading\u003dh.6weoztwwjhky",
       "parentUuid": "a900c9a8_db2cc650",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 64
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45936478_c66f674a",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 35
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-09T21:35:41Z",
+      "side": 1,
+      "message": "Is there a bug open for deleting extras/um_ppm?",
+      "parentUuid": "d407a7f0_07b92496",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -592,6 +640,30 @@
       "writtenOn": "2024-05-09T21:21:29Z",
       "side": 1,
       "message": "It does: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/extra/um_ppm/rts5453.c;l\u003d607\n\nYou\u0027ve got this check above:\n```\nif (control-\u003ecommand \u003d\u003d 0 || control-\u003ecommand \u003e UCSI_CMD_VENDOR_CMD) {\n\t\tLOG_ERR(\"Invalid command 0x%x\", control-\u003ecommand);\n\t\treturn -1;\n\t}\n```\n\n(though this check needs to be expanded as GET_LPM_PPM_INFO comes after UCSI_CMD_VENDOR_CMD)",
+      "parentUuid": "988f88e2_5c107173",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6377b85a_0d8658e8",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-09T21:35:41Z",
+      "side": 1,
+      "message": "I now see what you\u0027re doing here.  Most commands pass the connector number starting at bit offset 16 - which aligns to `command_specific[0]`.  But GET_ALTERNATE_MODE moves this to bit offset 24 and some commands don\u0027t use a connector number at all.\n\nPlease add some comments explaining the 3 use cases.",
       "parentUuid": "988f88e2_5c107173",
       "range": {
         "startLine": 157,
