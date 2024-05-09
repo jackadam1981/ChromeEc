@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac1a1d00_744b763d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-09T12:33:45Z",
+      "side": 1,
+      "message": "CL:5527016 for upstream tests.",
+      "parentUuid": "5988bde1_4feba2ff",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "353e5433_1ef3d1fc",
         "filename": "zephyr/test/hwtest/src/flash_physical.c",
         "patchSetId": 7
