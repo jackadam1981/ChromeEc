@@ -13,6 +13,8 @@
 		gpio-wp = &gpio_ec_wp_odl;
 		int-wp = &int_wp_l;
 		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
+		battery-3s = &default_battery;
+		battery-2s = &getac_pg01jh3353;
 	};
 
 	ec-console {
@@ -26,6 +28,9 @@
 		};
 		cosmx_pg01lj3353 {
 			compatible = "cosmx,pg01lj3353", "battery-smart";
+		};
+		getac_pg01jh3353: getac_pg01jh3353 {
+			compatible = "getac,pg01jh3353", "battery-smart";
 		};
 	};
 
