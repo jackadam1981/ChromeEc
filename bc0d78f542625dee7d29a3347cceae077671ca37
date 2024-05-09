@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "333ba47a_3672cd46",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "Yes but I am accepting breakages in order to merge the ePPM implementation for now. I will move these into platform specific abstractions after this merge is complete.",
+      "parentUuid": "c95c8cb7_0c637873",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57cca6f1_c5028658",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5792ca3d_a1e3ca47",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 35
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "This is not necessary in `zephyr/drivers/usbc` (only in zephyr/drivers/ucsi)",
+      "parentUuid": "57cca6f1_c5028658",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 63
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6bfb5fb_4537e210",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 35
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-08T20:11:38Z",
       "side": 1,
       "message": "I\u0027m still concerned that the `rts54_post_command()` will call the `call_cci_event_cb()` when this synchronous command completes.  That can potentially corrupt state in the PDM.\n\nCan the PPM register a new callback using `pdc_set_handler_cb()` before starting the synchronous command?  You would need to trigger the PDM to re-register it\u0027s callback when done.\n\nThis would allow you to do the polling in the PPM layer instead of each driver.",
+      "range": {
+        "startLine": 2285,
+        "startChar": 0,
+        "endLine": 2296,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66f5283_5bfededf",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "I agree with your concern but disagree with the solution.\n\nThis driver overloads CCI_CB for two purposes -- one for the actual cmd response/result indication and another for the LPM alert. CCI is used for the OPM-PPM interface and doesn\u0027t quite fit into how things work with the Realtek board.\n\nThis driver needs to be refactored instead to separate command callbacks and alerts so that each API call must provide a callback for commands and each client must register a generic callback for connector change events.\n\n----\n\nWrt/ the race here:\n\n* pdc_power_mgmt only checks the CCI bits setting if sending a command (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/pd_controller/pdc_power_mgmt.c;l\u003d2013)\n* Calls in pdc_rts54xx are serialized such that you can only queue new commands after the previous one has gone fully idle (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/usbc/pdc_rts54xx.c;l\u003d871)\n\nExcept for the LPM alert (I.e. CCI_EVENT in pdc_power_mgmt), the other CCI indicators are no-ops in the power management code.\n\nWe can add the suggested refactor of callbacks to the top of the stack but that should not block this current `_sync` function from landing.",
+      "parentUuid": "c6bfb5fb_4537e210",
       "range": {
         "startLine": 2285,
         "startChar": 0,
@@ -165,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbdebb90_5013e51c",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "Yes -- let\u0027s put a TODO here. We can move the device allocation into user mode specific files for `um_ppm` as well so that we don\u0027t need these alloc functions.",
+      "parentUuid": "716f374c_08bc5a10",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "319b09d3_4e4fbe41",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 35
@@ -251,6 +347,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55106d6e_6521a506",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "No -- see `GET CAPABILITY` as an example. I think the intent is that the PPM should implement this (since you can have multiple PDC in a system).\n\nThe current PPM implementation is incomplete in this regard as we simply forward this to the port PDC instead of collecting information from all PDCs and responding with the cached response.",
+      "parentUuid": "69aeb654_1ef701a1",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77c9977_177cd243",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "nit: Rename to data instead of `dat`",
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47415d51_adf881fb",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 35
@@ -262,6 +399,30 @@
       "writtenOn": "2024-05-08T20:11:38Z",
       "side": 1,
       "message": "Should the ucsi_ppm driver update these fields directly?  I see there is a `get_active_port_count` API that you\u0027re not using.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a74b79_19f50fda",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T17:40:19Z",
+      "side": 1,
+      "message": "Yes - this is intended to be part of the PPM initialization.\n\n`um_ppm` was querying this via `get capability` but using device tree configuration is probably preferred.",
+      "parentUuid": "47415d51_adf881fb",
       "range": {
         "startLine": 190,
         "startChar": 0,
