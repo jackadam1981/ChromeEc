@@ -22,6 +22,29 @@
       },
       "revId": "2f38def33bd9842ae222a2e19191a7d61f6d9b74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016ff8ac_eb92d2d4",
+        "filename": "zephyr/program/intelrvp/src/dc_jack.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-09T19:25:28Z",
+      "side": 1,
+      "message": "how about putting it in workqueue in same CL?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "2f38def33bd9842ae222a2e19191a7d61f6d9b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
