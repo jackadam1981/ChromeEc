@@ -361,6 +361,28 @@ ZTEST(ppc_sn5s330, test_sn5s330_disable_vbus_low_interrupt_late_jump)
 	zassert_equal(sn5s330_emul_interrupt_set_stub_fake.call_count, 0);
 }
 
+ZTEST(ppc_sn5s330, test_sn5s330_sticky_interrupt)
+{
+	const struct emul *emul = EMUL;
+
+	/*
+	 * The sn5s330 interrupt handler takes evasive action after
+	 * SN5S330_INT_TRESHOLD attempts to clear chip interrupts.
+	 * Verify evasive aciton is called.
+	 */
+	int vals[] = { [0 ...(SN5S330_INT_TRESHOLD + 1)] = 0xff, 0, 0 };
+
+	SET_RETURN_SEQ(ppc_get_alert_status, vals, ARRAY_SIZE(vals));
+
+	sn5s330_emul_assert_interrupt(emul);
+	sn5s330_emul_deassert_interrupt(emul);
+
+	/* Wait for deferred irq handler to run. */
+	k_sleep(K_SECONDS(1));
+
+	RESET_FAKE(ppc_get_alert_status);
+}
+
 ZTEST(ppc_sn5s330, test_sn5s330_set_vconn_fet)
 {
 	if (!IS_ENABLED(CONFIG_USBC_PPC_VCONN)) {
