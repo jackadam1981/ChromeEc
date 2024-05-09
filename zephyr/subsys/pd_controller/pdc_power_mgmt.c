@@ -816,8 +816,9 @@ static void print_current_pdc_state(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
 
-	LOG_INF("C%d: %s", config->connector_num,
-		pdc_state_names[get_pdc_state(port)]);
+	LOG_INF("C%d: %s, return %s", config->connector_num,
+		pdc_state_names[get_pdc_state(port)],
+		pdc_state_names[port->send_cmd_return_state]);
 }
 
 static void set_attached_pdc_state(struct pdc_port_t *port,
@@ -1880,6 +1881,8 @@ static void pdc_snk_typec_only_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
+	print_current_pdc_state(port);
+
 	port->send_cmd.intern.pending = false;
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->snk_typec_attached_local_state =
@@ -1895,8 +1898,6 @@ static void pdc_snk_typec_only_entry(void *obj)
 		k_timer_start(&port->typec_only_timer,
 			      K_USEC(PD_T_SINK_WAIT_CAP), K_NO_WAIT);
 	}
-
-	print_current_pdc_state(port);
 }
 
 static void pdc_snk_typec_only_run(void *obj)
@@ -3347,4 +3348,41 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable)
 	 */
 
 	return EC_SUCCESS;
+}
+
+void pdc_power_mgmt_debug(const struct shell *sh, int port)
+{
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port)) {
+		return;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	shell_fprintf(sh, SHELL_INFO, "Port state debug\n");
+	shell_fprintf(sh, SHELL_INFO,
+		      "  cci_flags                      = 0x%08x\n",
+		      (uint32_t)pdc->cci_flags);
+	shell_fprintf(sh, SHELL_INFO,
+		      "  pdc_cmd_flags                  = 0x%08x\n",
+		      (uint32_t)pdc->pdc_cmd_flags);
+	shell_fprintf(sh, SHELL_INFO, "  src_typec_attached_local_state = %d\n",
+		      pdc->src_typec_attached_local_state);
+	shell_fprintf(sh, SHELL_INFO, "  snk_typec_attached_local_state = %d\n",
+		      pdc->snk_typec_attached_local_state);
+	shell_fprintf(sh, SHELL_INFO, "  unattached_local_state         = %d\n",
+		      pdc->unattached_local_state);
+	shell_fprintf(sh, SHELL_INFO, "  unattached_last_state          = %d\n",
+		      pdc->unattached_last_state);
+	shell_fprintf(sh, SHELL_INFO, "  snk_attached_local_state       = %d\n",
+		      pdc->snk_attached_local_state);
+	shell_fprintf(sh, SHELL_INFO, "  snk_attached_last_state        = %d\n",
+		      pdc->snk_attached_last_state);
+	shell_fprintf(sh, SHELL_INFO, "  src_attached_local_state       = %d\n",
+		      pdc->src_attached_local_state);
+	shell_fprintf(sh, SHELL_INFO, "  src_attached_last_state        = %d\n",
+		      pdc->src_attached_last_state);
+	shell_fprintf(sh, SHELL_INFO, "  attached_state                 = %d\n",
+		      pdc->attached_state);
 }

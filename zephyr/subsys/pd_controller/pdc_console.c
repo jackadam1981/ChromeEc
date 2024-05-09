@@ -26,6 +26,8 @@ static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 	return 0;
 }
 
+extern void pdc_power_mgmt_debug(const struct shell *sh, int port);
+
 static int cmd_pdc_get_status(const struct shell *sh, size_t argc, char **argv)
 {
 	int rv;
@@ -51,6 +53,8 @@ static int cmd_pdc_get_status(const struct shell *sh, size_t argc, char **argv)
 		      pr == PD_ROLE_SINK ? "SNK" : "SRC",
 		      dr == PD_ROLE_DFP ? "DFP" : "UFP",
 		      pdc_power_mgmt_get_task_state_name(port));
+
+	pdc_power_mgmt_debug(sh, port);
 
 	return EC_SUCCESS;
 }
