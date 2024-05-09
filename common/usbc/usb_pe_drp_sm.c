@@ -2855,6 +2855,16 @@ static void pe_src_transition_supply_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		pe_set_hard_reset(port);
 	}
+
+	/*
+	 * Transition to the PE_SRC_Ready state when:
+	 *  1) PD_CTRL_ACCEPT is discarded by Rx receiving message,
+	 *     then go back to ready state to handle incoming message
+	 *     (instead of stuck in this state).
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		set_state_pe(port, PE_SRC_READY);
+	}
 }
 
 static void pe_src_transition_supply_exit(int port)
