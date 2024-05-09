@@ -581,6 +581,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c152015_6fc8136c",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-09T21:21:29Z",
+      "side": 1,
+      "message": "It does: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/extra/um_ppm/rts5453.c;l\u003d607\n\nYou\u0027ve got this check above:\n```\nif (control-\u003ecommand \u003d\u003d 0 || control-\u003ecommand \u003e UCSI_CMD_VENDOR_CMD) {\n\t\tLOG_ERR(\"Invalid command 0x%x\", control-\u003ecommand);\n\t\treturn -1;\n\t}\n```\n\n(though this check needs to be expanded as GET_LPM_PPM_INFO comes after UCSI_CMD_VENDOR_CMD)",
+      "parentUuid": "988f88e2_5c107173",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e77c9977_177cd243",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 35
