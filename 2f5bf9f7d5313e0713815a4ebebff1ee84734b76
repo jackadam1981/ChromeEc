@@ -16,6 +16,24 @@
       "message": "This still needs the change to check if the directory exists, right? (Otherwise it won\u0027t work for the public build.)",
       "revId": "2f5bf9f7d5313e0713815a4ebebff1ee84734b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71873b7d_e6e4367a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-09T16:54:25Z",
+      "side": 1,
+      "message": "It does not. If I delete all private fingerprint directories, the `zmake --debug build bloonchipper --clobber` builds correctly. The public zephyr CQ also passes",
+      "parentUuid": "241a2709_5f0d8cc9",
+      "revId": "2f5bf9f7d5313e0713815a4ebebff1ee84734b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
