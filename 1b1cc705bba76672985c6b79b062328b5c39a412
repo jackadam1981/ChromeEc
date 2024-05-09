@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96e6eda_ad744adb",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T17:19:39Z",
+      "side": 1,
+      "message": "This is a zephyr-specific name, right? How about `zephyr_dev_board_name` or `zephyr_board_name`?",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 18
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47385bad_66712063",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T17:19:39Z",
+      "side": 1,
+      "message": "I don\u0027t think it needs to be done for this CL, but I wonder if we could make the code cleaner by creating a `class ZephyrTestConfig` that inherits from `TestConfig` and adds the Zephyr-specific configuration. Same with `BoardConfig`.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 27
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "57efc573_5d7fc87e",
@@ -19,6 +65,29 @@
         "startChar": 4,
         "endLine": 596,
         "endChar": 37
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304eada8_2a53b519",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T17:19:39Z",
+      "side": 1,
+      "message": "Can we pull this out into a function? e.g., `get_zephyr_image_path`",
+      "range": {
+        "startLine": 1127,
+        "startChar": 0,
+        "endLine": 1143,
+        "endChar": 13
       },
       "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
