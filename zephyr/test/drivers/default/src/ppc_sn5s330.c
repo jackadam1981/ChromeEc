@@ -25,6 +25,10 @@
 #define FUNC_SET1_ILIMPP1_MSK 0x1F
 #define SN5S330_INTERRUPT_DELAYMS 15
 
+FAKE_VALUE_FUNC(int, ppc_get_alert_status, int);
+
+#define FFF_FAKES_LIST(FAKE) FAKE(ppc_get_alert_status)
+
 FAKE_VOID_FUNC(sn5s330_emul_interrupt_set_stub);
 
 /*
@@ -359,6 +363,26 @@ ZTEST(ppc_sn5s330, test_sn5s330_disable_vbus_low_interrupt_late_jump)
 	/* Would normally cause a vbus low interrupt */
 	sn5s330_emul_lower_vbus_below_minv(emul);
 	zassert_equal(sn5s330_emul_interrupt_set_stub_fake.call_count, 0);
+}
+
+ZTEST(ppc_sn5s330, test_sn5s330_sticky_interrupt)
+{
+	const struct emul *emul = EMUL;
+
+	/*
+	 * The sn5s330 interrupt handler takes evasive action after
+	 * SN5S330_INT_TRESHOLD attempts to clear chip interrupts.
+	 * Verify evasive aciton is called.
+	 */
+	int vals[] = { [0 ...(SN5S330_INT_TRESHOLD + 1)] = 0xff, 0, 0 };
+
+	SET_RETURN_SEQ(ppc_get_alert_status, vals, ARRAY_SIZE(vals));
+
+	sn5s330_emul_assert_interrupt(emul);
+	sn5s330_emul_deassert_interrupt(emul);
+
+	/* Wait for deferred irq handler to run. */
+	k_sleep(K_SECONDS(1));
 }
 
 ZTEST(ppc_sn5s330, test_sn5s330_set_vconn_fet)

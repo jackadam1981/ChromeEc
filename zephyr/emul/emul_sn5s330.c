@@ -108,6 +108,12 @@ test_mockable_static void sn5s330_emul_interrupt_set_stub(void)
 	/* Stub to be used by fff fakes during test */
 }
 
+test_mockable_static int ppc_get_alert_status(int port)
+{
+	/* Stub to be used by fff fakes during test */
+	return 1;
+}
+
 /* Workhorse for mapping i2c reg to internal emulator data access */
 static uint8_t *sn5s330_emul_get_reg_ptr(struct sn5s330_emul_data *data,
 					 int reg)
@@ -194,13 +200,13 @@ static void sn5s330_emul_set_int_pin(const struct emul *emul, bool val)
 	__ASSERT_NO_MSG(res == 0);
 }
 
-static void sn5s330_emul_assert_interrupt(const struct emul *emul)
+void sn5s330_emul_assert_interrupt(const struct emul *emul)
 {
 	sn5s330_emul_interrupt_set_stub();
 	sn5s330_emul_set_int_pin(emul, false);
 }
 
-static void sn5s330_emul_deassert_interrupt(const struct emul *emul)
+void sn5s330_emul_deassert_interrupt(const struct emul *emul)
 {
 	sn5s330_emul_set_int_pin(emul, true);
 }
