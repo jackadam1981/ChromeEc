@@ -238,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5cc2f6_5605ece5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "Done. b/339703938.",
+      "parentUuid": "32cf2947_d6212b1a",
+      "range": {
+        "startLine": 2285,
+        "startChar": 0,
+        "endLine": 2296,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdc98c34_edd9c7d3",
@@ -665,6 +689,30 @@
       "side": 1,
       "message": "I now see what you\u0027re doing here.  Most commands pass the connector number starting at bit offset 16 - which aligns to `command_specific[0]`.  But GET_ALTERNATE_MODE moves this to bit offset 24 and some commands don\u0027t use a connector number at all.\n\nPlease add some comments explaining the 3 use cases.",
       "parentUuid": "988f88e2_5c107173",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e6e34c_cd43b9c8",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6377b85a_0d8658e8",
       "range": {
         "startLine": 157,
         "startChar": 0,

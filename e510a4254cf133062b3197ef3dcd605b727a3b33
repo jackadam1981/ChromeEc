@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e778ebda_6134525e",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 36
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "Done. This is actually needed for a following CL.",
+      "parentUuid": "9402767d_4b25dc0b",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 63
+      },
+      "revId": "e510a4254cf133062b3197ef3dcd605b727a3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96b51a68_8804edcd",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-09T21:35:41Z",
       "side": 1,
       "message": "File needs to be renamed to match the compatible string.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "e510a4254cf133062b3197ef3dcd605b727a3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fcf84e3_3245147a",
+        "filename": "zephyr/dts/bindings/usbc/ucsi-ppm-driver.yaml",
+        "patchSetId": 36
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96b51a68_8804edcd",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae2b30c7_88261c9a",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "This is used by ppm_common.c. So, we can\u0027t remove it. Can you please elaborate on your request?",
+      "parentUuid": "6069e550_0a4e8a71",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "e510a4254cf133062b3197ef3dcd605b727a3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e99a6486_9f88a2e5",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 36
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-09T21:35:41Z",
       "side": 1,
       "message": "Move this check outside the switch.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 0
+      },
+      "revId": "e510a4254cf133062b3197ef3dcd605b727a3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5dc9df_2a4e0553",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e99a6486_9f88a2e5",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -106,6 +202,30 @@
       "writtenOn": "2024-05-09T21:35:41Z",
       "side": 1,
       "message": "This duplicates the check at line 150.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "e510a4254cf133062b3197ef3dcd605b727a3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c47c51e_f806398d",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T22:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08fb28b4_460f1eb8",
       "range": {
         "startLine": 157,
         "startChar": 0,
