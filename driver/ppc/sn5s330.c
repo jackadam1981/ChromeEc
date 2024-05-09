@@ -663,6 +663,13 @@ static void sn5s330_handle_interrupt(int port)
 				   "try, retrying",
 				   port);
 
+		if (attempt > 10) {
+			ppc_prints("Rescheduling interrupt handler", port);
+			atomic_or(&irq_pending, BIT(port));
+			hook_call_deferred(&sn5s330_irq_deferred_data, MSEC);
+			return;
+		}
+
 		read_reg(port, SN5S330_INT_TRIP_RISE_REG1, &rise);
 		read_reg(port, SN5S330_INT_TRIP_FALL_REG1, &fall);
 
