@@ -22,6 +22,30 @@
       },
       "revId": "16c2bd412cc8070aad4d1900f65f74fbba553785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ce27b3_6e88ab65",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T21:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77553292_5d05fd50",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "16c2bd412cc8070aad4d1900f65f74fbba553785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
