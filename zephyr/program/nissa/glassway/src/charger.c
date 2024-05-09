@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "console.h"
@@ -52,4 +53,20 @@ __override void board_hibernate(void)
 	raa489000_hibernate(CHARGER_PRIMARY, true);
 	LOG_INF("Charger(s) hibernated");
 	cflush();
+}
+
+__override int board_get_default_battery_type(void)
+{
+	int cells;
+
+	if (charger_get_battery_cells(CHARGER_PRIMARY, &cells) == EC_SUCCESS) {
+		if (cells == 3) {
+			LOG_INF("Default battery 3S type");
+			return BATTERY_TYPE(DT_ALIAS(battery_3s));
+		} else {
+			LOG_INF("Default battery 2S type");
+			return BATTERY_TYPE(DT_ALIAS(battery_2s));
+		}
+	}
+	return BATTERY_TYPE(DT_ALIAS(battery_3s));
 }
