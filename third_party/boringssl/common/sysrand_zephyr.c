@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (14190f third_party/boringssl: Use CROS_EC/CROS_ZEPHYR define instea)
 /* Copyright 2023 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -47,3 +48,5 @@ int getentropy(void *buffer, size_t length)
 	return 0;
 }
 #endif // !defined(__linux__)
+=======
+>>>>>>> BRANCH (6fcf1f squirtle: Enable DPDM switch)
