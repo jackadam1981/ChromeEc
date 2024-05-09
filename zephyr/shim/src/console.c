@@ -49,7 +49,7 @@ char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];
 LOG_MODULE_REGISTER(shim_console, LOG_LEVEL_ERR);
 
 static const struct device *uart_shell_dev =
-	DEVICE_DT_GET(DT_CHOSEN(zephyr_shell_uart));
+	DEVICE_DT_GET_OR_NULL(DT_CHOSEN(zephyr_shell_uart));
 static const struct shell *shell_zephyr;
 static struct k_poll_signal shell_uninit_signal;
 static struct k_poll_signal shell_init_signal;
@@ -184,8 +184,10 @@ static void shell_init_from_work(struct k_work *work)
 #endif
 
 	/* Initialize the shell and re-enable both RX and TX */
-	shell_init(shell_zephyr, uart_shell_dev, shell_cfg_flags, log_backend,
-		   level);
+	if (uart_shell_dev != NULL) {
+		shell_init(shell_zephyr, uart_shell_dev, shell_cfg_flags,
+			   log_backend, level);
+	}
 
 #if defined(CONFIG_UART_INTERRUPT_DRIVEN)
 	uart_irq_rx_enable(uart_shell_dev);
@@ -338,7 +340,9 @@ int uart_tx_char_raw(void *context, int c)
 
 void uart_write_char(char c)
 {
-	uart_poll_out(uart_shell_dev, c);
+	if (uart_shell_dev != NULL) {
+		uart_poll_out(uart_shell_dev, c);
+	}
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr())
 		console_buf_notify_chars(&c, 1);
@@ -375,7 +379,7 @@ int uart_getc(void)
 		if (ring_buf_get(&rx_buffer, &c, 1)) {
 			rv = c;
 		}
-	} else {
+	} else if (uart_shell_dev != NULL) {
 		rv = uart_poll_in(uart_shell_dev, &c);
 		if (!rv) {
 			rv = c;
