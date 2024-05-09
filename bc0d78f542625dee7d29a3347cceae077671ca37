@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47635412_3f010c3f",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "I think we\u0027re leaving uPPM in favor of running ePPM inside Qemu: go/ucsi_compliance_testing.",
+      "parentUuid": "c95c8cb7_0c637873",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57cca6f1_c5028658",
@@ -84,6 +108,30 @@
       "writtenOn": "2024-05-09T17:40:19Z",
       "side": 1,
       "message": "This is not necessary in `zephyr/drivers/usbc` (only in zephyr/drivers/ucsi)",
+      "parentUuid": "57cca6f1_c5028658",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 63
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "066873eb_7271caa0",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 35
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done. No longer needed.",
       "parentUuid": "57cca6f1_c5028658",
       "range": {
         "startLine": 5,
@@ -144,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b74fe065_b7921b50",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e This would allow you to do the polling in the PPM layer instead of each driver.\n\nI\u0027m not sure whether this polling will be common or unique to RTS5453. We probably want to generalize the interface when we have more PDC drivers.",
+      "parentUuid": "c6bfb5fb_4537e210",
+      "range": {
+        "startLine": 2285,
+        "startChar": 0,
+        "endLine": 2296,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdc98c34_edd9c7d3",
         "filename": "zephyr/dts/bindings/usbc/ucsi-ppm-driver.yaml",
         "patchSetId": 35
@@ -155,6 +227,30 @@
       "writtenOn": "2024-05-08T20:11:38Z",
       "side": 1,
       "message": "Nit - \"ucsi,ppm\" is probably a better name.  Adding \"-driver\" seems redundant.",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea52810_6a7685d4",
+        "filename": "zephyr/dts/bindings/usbc/ucsi-ppm-driver.yaml",
+        "patchSetId": 35
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdc98c34_edd9c7d3",
       "range": {
         "startLine": 8,
         "startChar": 13,
@@ -259,6 +355,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabee5a7_9cd61d9e",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "716f374c_08bc5a10",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "319b09d3_4e4fbe41",
@@ -272,6 +392,30 @@
       "writtenOn": "2024-05-08T20:11:38Z",
       "side": 1,
       "message": "DT_DRV_COMPAT",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63debb14_f7e6bc50",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319b09d3_4e4fbe41",
       "range": {
         "startLine": 23,
         "startChar": 30,
@@ -299,6 +443,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54762889_882da0e1",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36b2384e_b8861918",
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea547b76_807233f7",
@@ -312,6 +474,30 @@
       "writtenOn": "2024-05-08T20:11:38Z",
       "side": 1,
       "message": "Nit - use `ucsi_ppm_` as the prefix for all functions.  So this",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0448fe4_db49c9ce",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea547b76_807233f7",
       "range": {
         "startLine": 91,
         "startChar": 11,
@@ -358,6 +544,30 @@
       "writtenOn": "2024-05-09T17:40:19Z",
       "side": 1,
       "message": "No -- see `GET CAPABILITY` as an example. I think the intent is that the PPM should implement this (since you can have multiple PDC in a system).\n\nThe current PPM implementation is incomplete in this regard as we simply forward this to the port PDC instead of collecting information from all PDCs and responding with the cached response.",
+      "parentUuid": "69aeb654_1ef701a1",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988f88e2_5c107173",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Abhishek, why doesn\u0027t rts5453.c reject unknown commands?",
       "parentUuid": "69aeb654_1ef701a1",
       "range": {
         "startLine": 157,
@@ -422,6 +632,30 @@
       "writtenOn": "2024-05-09T17:40:19Z",
       "side": 1,
       "message": "Yes - this is intended to be part of the PPM initialization.\n\n`um_ppm` was querying this via `get capability` but using device tree configuration is probably preferred.",
+      "parentUuid": "47415d51_adf881fb",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd8b401_7c8a307d",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T17:56:03Z",
+      "side": 1,
+      "message": "Done.",
       "parentUuid": "47415d51_adf881fb",
       "range": {
         "startLine": 190,
