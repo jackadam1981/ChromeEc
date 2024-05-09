@@ -12,12 +12,14 @@
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
+extern "C" {
 #include <drivers/fingerprint.h>
 #include <drivers/fingerprint_sim.h>
 #include <ec_commands.h>
 #include <ec_tasks.h>
 #include <fpsensor/fpsensor_state.h>
 #include <host_command.h>
+}
 
 DEFINE_FFF_GLOBALS;
 
