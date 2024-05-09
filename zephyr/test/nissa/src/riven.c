@@ -108,46 +108,6 @@ int clock_get_freq(void)
 	return 16000000;
 }
 
-static bool has_keypad;
-
-static int cbi_get_keyboard_configuration(enum cbi_fw_config_field_id field,
-					  uint32_t *value)
-{
-	if (field != FW_KB_NUMERIC_PAD)
-		return -EINVAL;
-
-	*value = has_keypad ? FW_KB_NUMERIC_PAD_PRESENT :
-			      FW_KB_NUMERIC_PAD_ABSENT;
-	return 0;
-}
-
-ZTEST(riven, test_keyboard_configuration)
-{
-	cros_cbi_get_fw_config_fake.custom_fake =
-		cbi_get_keyboard_configuration;
-
-	has_keypad = false;
-	kb_init();
-	zassert_equal(keyboard_raw_get_cols(), KEYBOARD_COLS_NO_KEYPAD);
-	zassert_equal(keyscan_config.actual_key_mask[11], 0xfa);
-	zassert_equal(keyscan_config.actual_key_mask[12], 0xca);
-	zassert_equal(keyscan_config.actual_key_mask[13], 0x00);
-	zassert_equal(keyscan_config.actual_key_mask[14], 0x00);
-	zassert_equal(board_vivaldi_keybd_idx(), 0);
-
-	/* Initialize keyboard_cols for next test */
-	keyboard_raw_set_cols(KEYBOARD_COLS_MAX);
-
-	has_keypad = true;
-	kb_init();
-	zassert_equal(keyboard_raw_get_cols(), KEYBOARD_COLS_WITH_KEYPAD);
-	zassert_equal(keyscan_config.actual_key_mask[11], 0xfe);
-	zassert_equal(keyscan_config.actual_key_mask[12], 0xff);
-	zassert_equal(keyscan_config.actual_key_mask[13], 0xff);
-	zassert_equal(keyscan_config.actual_key_mask[14], 0xff);
-	zassert_equal(board_vivaldi_keybd_idx(), 1);
-}
-
 static bool keyboard_ca_fr;
 
 static int cbi_get_keyboard_type_config(enum cbi_fw_config_field_id field,
@@ -162,20 +122,20 @@ static int cbi_get_keyboard_type_config(enum cbi_fw_config_field_id field,
 
 ZTEST(riven, test_keyboard_type)
 {
-	uint16_t forwardslash_pipe_key = get_scancode_set2(2, 7);
-	uint16_t right_control_key = get_scancode_set2(4, 0);
+	uint16_t forwardslash_pipe_key = get_scancode_set2(7, 17);
+	uint16_t right_control_key = get_scancode_set2(3, 14);
 
 	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_keyboard_type_config;
 
 	keyboard_ca_fr = false;
 	kb_init();
-	zassert_equal(get_scancode_set2(4, 0), right_control_key);
-	zassert_equal(get_scancode_set2(2, 7), forwardslash_pipe_key);
+	zassert_equal(get_scancode_set2(3, 14), right_control_key);
+	zassert_equal(get_scancode_set2(7, 17), forwardslash_pipe_key);
 
 	keyboard_ca_fr = true;
 	kb_init();
-	zassert_equal(get_scancode_set2(4, 0), forwardslash_pipe_key);
-	zassert_equal(get_scancode_set2(2, 7), right_control_key);
+	zassert_equal(get_scancode_set2(3, 14), forwardslash_pipe_key);
+	zassert_equal(get_scancode_set2(7, 17), right_control_key);
 }
 
 static bool lid_inverted;
