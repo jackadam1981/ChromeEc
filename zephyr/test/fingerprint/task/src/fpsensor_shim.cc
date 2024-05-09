@@ -14,14 +14,18 @@
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
+extern "C" {
 #include <drivers/fingerprint.h>
 #include <drivers/fingerprint_sim.h>
 #include <fpsensor/fpsensor.h>
 #include <fpsensor/fpsensor_detect.h>
+}
 
 DEFINE_FFF_GLOBALS;
 
+extern "C" {
 FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
+}
 
 #define fp_sim DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
 
@@ -163,7 +167,7 @@ ZTEST_USER(fpsensor_shim, test_shim_finger_status_error)
 	struct fingerprint_sensor_state state;
 
 	fingerprint_get_state(fp_sim, &state);
-	state.finger_state = -EINVAL;
+	state.finger_state = static_cast<fingerprint_finger_state>(-EINVAL);
 	fingerprint_set_state(fp_sim, &state);
 
 	zassert_equal(fp_finger_status(), FINGER_NONE);
