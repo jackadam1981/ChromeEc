@@ -1948,6 +1948,8 @@ static void pdc_snk_typec_only_run(void *obj)
 			atomic_clear(&port->hard_reset_sent);
 			port->snk_typec_attached_local_state =
 				SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON;
+			k_timer_start(&port->typec_only_timer,
+				      K_USEC(PD_T_SINK_WAIT_CAP), K_NO_WAIT);
 		} else {
 			send_pending_public_commands(port);
 		}
