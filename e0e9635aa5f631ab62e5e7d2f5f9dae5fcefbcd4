@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a4c814e_1367c65b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-09T18:06:27Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5450145/",
+      "parentUuid": "2b495166_e5695ce3",
+      "range": {
+        "startLine": 16,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "e0e9635aa5f631ab62e5e7d2f5f9dae5fcefbcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a977fec2_c36b5ea8",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
