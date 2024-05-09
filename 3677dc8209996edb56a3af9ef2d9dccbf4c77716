@@ -46,6 +46,30 @@
       },
       "revId": "3677dc8209996edb56a3af9ef2d9dccbf4c77716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1958f808_05c47469",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-09T16:19:09Z",
+      "side": 1,
+      "message": "if you remove all private fingerprint directories, the build passes. I believe yesterday, we only deleted the `fpc` repo. \nThese 2 CLs pass the CQ:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/fpc/+/7271620/2\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5526762/8",
+      "parentUuid": "3eef8e0e_f0028245",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "3677dc8209996edb56a3af9ef2d9dccbf4c77716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
