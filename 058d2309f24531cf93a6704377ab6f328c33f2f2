@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c2f0b8_5673e035",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T16:46:48Z",
+      "side": 1,
+      "message": "If we keep two copies, they will inevitably get out of sync. Let\u0027s delete the contents of the doc in go/zephyr-fpmcu-test and replace it with a link to this page. (And also update the go link to point to this page.)\n\nI know it\u0027s not easy to add comments against the doc in git, but if you add the author info like I suggest in the other comment people can send an email. They can also open up a CL against the doc to start a discussion.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "058d2309f24531cf93a6704377ab6f328c33f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff93c52_8c38d425",
+        "filename": "docs/zephyr/zephyr_fpmcu_test_migration.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-09T16:46:48Z",
+      "side": 1,
+      "message": "Can you add a header with the following:\n\n```\nAuthors: dawidn@google.com\n\nReviewers: tomhughes@chromium.org\n\nLast Updated: 2024-05-09\n```\n\nsimilar to https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md?",
+      "revId": "058d2309f24531cf93a6704377ab6f328c33f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
