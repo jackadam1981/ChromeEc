@@ -11,12 +11,14 @@
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "dma.h"
 #include "gpio.h"
 #include "gpio_chip.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "panic.h"
 #include "registers.h"
+#include "stm32-dma.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -182,14 +184,15 @@ struct timer_pwm_use_t {
 struct timer_pwm_use_t timer_pwm_use[18];
 
 struct dac_t {
+	uint8_t channel_no;
 	uint32_t enable_mask;
 	volatile uint32_t *data_register;
 };
 
 /* Sparse array of DAC capabilities for GPIO pins. */
 const struct dac_t dac_channels[GPIO_COUNT] = {
-	[GPIO_CN7_9] = { STM32_DAC_CR_EN1, &STM32_DAC_DHR12R1 },
-	[GPIO_CN7_10] = { STM32_DAC_CR_EN2, &STM32_DAC_DHR12R2 },
+	[GPIO_CN7_9] = { 0, STM32_DAC_CR_EN1, &STM32_DAC_DHR12R1 },
+	[GPIO_CN7_10] = { 1, STM32_DAC_CR_EN2, &STM32_DAC_DHR12R2 },
 };
 
 /*
@@ -1354,6 +1357,11 @@ struct bitbang_state_t {
 	 * the bitbanging waveform resume.
 	 */
 	uint8_t mask, pattern;
+	/*
+	 * If non-zero indicates how many bytes of 8-bit sample data follows the
+	 * 7-bits of sample data in a byte not having BITBANG_DELAY_BIT.
+	 */
+	uint8_t additional_sample_bytes;
 
 	/*
 	 * Cyclic buffer storing the waveform to output, as well as recorded
@@ -1446,6 +1454,10 @@ extern struct snippet_t set_bit_snippet;
 extern struct snippet_t set_additional_bit_snippet;
 extern struct snippet_t apply_gpio_snippet;
 
+extern struct snippet_t fetch_dac_value_snippet;
+extern struct snippet_t fetch_dac_value2_snippet;
+extern struct snippet_t apply_dac_snippet;
+
 extern struct snippet_t finish_snippet;
 
 void append_snippet(uint8_t **code_ptr, const struct snippet_t *snippet,
@@ -1508,6 +1520,7 @@ static int command_gpio_bit_bang(int argc, const char **argv)
 	/*
 	 * All input valid, now record the request.
 	 */
+	bitbang.additional_sample_bytes = 0;
 
 	/* Appropriate power of two for prescaling */
 	uint32_t prescaler = find_suitable_prescaler(divisor);
@@ -1568,6 +1581,109 @@ static int command_gpio_bit_bang(int argc, const char **argv)
 
 	if (code_ptr > bitbang_code + sizeof(bitbang_code))
 		panic("Interrupt handler does not fit");
+	return EC_SUCCESS;
+}
+
+static const struct dma_option dma_dacbang_option = {
+	.channel = STM32_DMAC_CH14,
+	.periph = (void *)&STM32_DAC_DHR12R1,
+	.flags = STM32_DMA_CCR_MSIZE_16_BIT | STM32_DMA_CCR_PSIZE_16_BIT,
+};
+
+static int command_gpio_dac_bang(int argc, const char **argv)
+{
+	if (argc < 4)
+		return EC_ERROR_PARAM_COUNT;
+	int gpio_num = argc - 3;
+	if (gpio_num > 7)
+		return EC_ERROR_PARAM_COUNT;
+
+	const uint32_t timer_freq = clock_get_timer_freq();
+	char *e;
+	uint64_t desired_period_ns = strtoull(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM3;
+
+	if (desired_period_ns > 0xFFFFFFFFFFFFFFFFULL / timer_freq) {
+		/* Would overflow below. */
+		return EC_ERROR_PARAM3;
+	}
+
+	/*
+	 * Calculate number of hardware timer cycles for each bit-banging
+	 * sample.
+	 */
+	uint64_t divisor = desired_period_ns * timer_freq / 1000000000;
+
+	if (divisor > (1ULL << 32)) {
+		/* Would overflow the 32-bit timer. */
+		return EC_ERROR_PARAM3;
+	}
+
+	int gpios[7];
+	for (int i = 0; i < gpio_num; i++) {
+		gpios[i] = gpio_find_by_name(argv[3 + i]);
+		if (gpios[i] == GPIO_COUNT) {
+			return EC_ERROR_PARAM3 + i;
+		}
+		if (dac_channels[gpios[i]].enable_mask == 0) {
+			ccprintf("Error: Pin %s does not support DAC\n",
+				 gpio_list[gpios[i]].name);
+			return EC_ERROR_PARAM3 + i;
+		}
+	}
+
+	if (STM32_TIM_CR1(BITBANG_TIMER) & STM32_TIM_CR1_CEN) {
+		ccprintf("Error: Ongoing operation, cannot change settings.\n");
+		return EC_ERROR_INVAL;
+	}
+
+	/*
+	 * All input valid, now record the request.
+	 */
+	bitbang.additional_sample_bytes = 0;
+
+	/* Appropriate power of two for prescaling */
+	uint32_t prescaler = find_suitable_prescaler(divisor);
+
+	/* Set clock divisor to achieve requested tick period. */
+	STM32_TIM_ARR(BITBANG_TIMER) =
+		DIV_ROUND_NEAREST(divisor, prescaler) - 1;
+
+	/* Update prescaler. */
+	STM32_TIM_PSC(BITBANG_TIMER) = prescaler - 1;
+
+	/* Set up the overflow interrupt */
+	STM32_TIM_SR(BITBANG_TIMER) = 0;
+	STM32_TIM_DIER(BITBANG_TIMER) = 0x0001;
+
+	/* Make copy of interrupt routine */
+	size_t initial_size = &bitbang_int_end - &bitbang_int_begin;
+	memcpy(bitbang_code, THUMB_CODE_TO_DATA_PTR(&bitbang_int_begin),
+	       initial_size);
+
+	sram_vectors[16 + IRQ_TIM(BITBANG_TIMER)] = (void (*)(void))(
+		&bitbang_int - &bitbang_int_begin + bitbang_code);
+
+	uint8_t *code_ptr = bitbang_code + initial_size;
+	append_snippet(&code_ptr, &midway_snippet, 0);
+	for (int i = 0; i < gpio_num; i++) {
+		size_t num_digital_pins = 0;
+		if (i == 0 && num_digital_pins <= 3) {
+			append_snippet(&code_ptr, &fetch_dac_value_snippet, 0);
+			bitbang.additional_sample_bytes += 1;
+		} else {
+			append_snippet(&code_ptr, &fetch_dac_value2_snippet, 0);
+			bitbang.additional_sample_bytes += 2;
+		}
+		append_snippet(&code_ptr, &apply_dac_snippet,
+			       dac_channels[gpios[i]].channel_no);
+	}
+	append_snippet(&code_ptr, &finish_snippet, 0);
+
+	if (code_ptr > bitbang_code + sizeof(bitbang_code))
+		panic("Interrupt handler does not fit");
+
 	return EC_SUCCESS;
 }
 
@@ -1744,6 +1860,8 @@ static int command_gpio(int argc, const char **argv)
 		return command_gpio_set_reset(argc, argv);
 	if (!strcasecmp(argv[1], "bit-bang"))
 		return command_gpio_bit_bang(argc, argv);
+	if (!strcasecmp(argv[1], "dac-bang"))
+		return command_gpio_dac_bang(argc, argv);
 	if (!strcasecmp(argv[1], "pwm"))
 		return command_gpio_pwm(argc, argv);
 	return EC_ERROR_PARAM1;
@@ -1871,6 +1989,8 @@ struct gpio_monitoring_header_t {
 const uint8_t GPIO_REQ_MONITORING_READ = 0x00;
 const uint8_t GPIO_REQ_BITBANG = 0x10;
 const uint8_t GPIO_REQ_BITBANG_STREAMING = 0x11;
+const uint8_t GPIO_REQ_DACBANG = 0x12;
+const uint8_t GPIO_REQ_DACBANG_STREAMING = 0x13;
 
 /* Values for gpio_monitoring_header_t::status */
 const uint16_t MON_SUCCESS = 0;
@@ -2026,10 +2146,16 @@ static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
 			 * Single-byte sample for output.  The interrupt routine
 			 * is prepared for this being the last byte in the valid
 			 * range of the buffer.
+			 *
+			 * TODO: Update this comment wrt. multi-byte samples.
 			 */
-			idx++;
-			valid_idx = idx;
-			continue;
+			idx += 1 + bitbang.additional_sample_bytes;
+			if ((int32_t)(tail_goal - idx) >= 0) {
+				valid_idx = idx;
+				continue;
+			} else {
+				break;
+			}
 		}
 		uint8_t delay_scale = 0, num_bytes = 0;
 		bool all_zeroes = true;
@@ -2101,6 +2227,8 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 {
 	if (peek_c < 4)
 		return;
+
+	ccprintf("DAC_MCR = %08x\n", STM32_DAC_MCR);
 
 	uint16_t data_len = rx_buffer[2] + (rx_buffer[3] << 8);
 	queue_advance_head(&cmsis_dap_rx_queue, 4);
@@ -2246,6 +2374,137 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 }
 
 /*
+ * Receive more bitbanging data to be inserted at bitbang.tail.
+ */
+void dap_goog_gpio_dacbang(size_t peek_c, bool streaming)
+{
+	if (peek_c < 4)
+		return;
+
+	uint16_t data_len = rx_buffer[2] + (rx_buffer[3] << 8);
+	queue_advance_head(&cmsis_dap_rx_queue, 4);
+
+	uint8_t *tail_ptr = bitbang_data_ptr(bitbang.tail);
+	if (tail_ptr + data_len <= bitbang.data + sizeof(bitbang.data)) {
+		queue_blocking_remove(&cmsis_dap_rx_queue, tail_ptr, data_len);
+	} else {
+		uint16_t remaning_space =
+			bitbang.data + sizeof(bitbang.data) - tail_ptr;
+		queue_blocking_remove(&cmsis_dap_rx_queue, tail_ptr,
+				      remaning_space);
+		queue_blocking_remove(&cmsis_dap_rx_queue, bitbang.data,
+				      data_len - remaning_space);
+	}
+	if (cmsis_dap_unwind_requested())
+		return;
+
+	bitbang.tail = bitbang.tail + data_len;
+	bitbang.irq_tail = bitbang.tail & ~1U;
+
+	uint32_t timer_cr1 = STM32_TIM_CR1(BITBANG_TIMER);
+	if (!(timer_cr1 & STM32_TIM_CR1_CEN) &&
+	    bitbang.irq_tail != bitbang.irq) {
+		/* Select DMA channel */
+		dma_select_channel(STM32_DMAC_CH14, DMAMUX_REQ_DAC1);
+
+		dma_chan_t *txdma = dma_get_channel(dma_dacbang_option.channel);
+		dma_prepare_tx(&dma_dacbang_option,
+			       (bitbang.irq_tail - bitbang.irq) / 2,
+			       bitbang_data_ptr(bitbang.irq));
+		dma_go(txdma);
+		// STM32_DAC_DHR12R1 = 0x0FFF;
+
+		STM32_TIM_CR2(BITBANG_TIMER) |= 2 << 4; /* Overflow as external
+							   trigger */
+		STM32_DAC_CR = STM32_DAC_CR_EN1 | 0x1000 | /* DMA enabled */
+			       0x0002 | /* Trigger enabled */
+			       (5 << 2) /* trigger: TIMER6 */;
+		//(0 << 2) /* trigger: software */;
+
+		/*
+		 * Hardware timer is not running, and we have received one or
+		 * more byte of bitbang waveform.  This means that it is time
+		 * to start the timer, so that the next interrupt will begin
+		 * producing the waveform.
+		 */
+		uint32_t prescaler = STM32_TIM_PSC(BITBANG_TIMER) + 1;
+		uint64_t divisor =
+			(uint64_t)(STM32_TIM32_ARR(BITBANG_TIMER) + 1) *
+			prescaler;
+
+		/* Number of timer increments per millisecond. */
+		uint32_t counts_in_1ms = clock_get_timer_freq() / 1000;
+
+		if (divisor > counts_in_1ms) {
+			/*
+			 * Slow bit-banging clock.  Use non-zero counter start
+			 * value, such that the first overflow interrupt will
+			 * happen in one millisecond, rather than waiting for a
+			 * full clock tick delay, which could be multiple
+			 * seconds.
+			 */
+			STM32_TIM32_CNT(BITBANG_TIMER) =
+				STM32_TIM32_ARR(BITBANG_TIMER) -
+				DIV_ROUND_UP(counts_in_1ms, prescaler);
+			bitbang.countdown = 0;
+		} else {
+			/*
+			 * Fast bit-banging clock.  First few interrupts may
+			 * have higher latency.  In order to avoid jitter in the
+			 * bit-banged waveform, set up such that the first three
+			 * timer interrupts will be skipped, before the
+			 * requested waveform begins.
+			 */
+			STM32_TIM32_CNT(BITBANG_TIMER) = 0;
+			bitbang.countdown = 3;
+		}
+
+		/* Start counting */
+		STM32_TIM_CR1(BITBANG_TIMER) |= STM32_TIM_CR1_CEN;
+	}
+
+	/*
+	 * At this point, the timer interrupt is clocking out data, and
+	 * placing sampled values into the same buffer.  For streaming
+	 * requests, we want to send a reply once half of the given data has
+	 * been processed, for non-streaming, we want to wait until all the
+	 * data has been processed.
+	 *
+	 * In any case, we do not want to delay responding to the USB request
+	 * for too long, as that could cause timeout in the handling on the host
+	 * computer.  So if necessary, we will respond with fewer bytes of data
+	 * than indicated above, possibly no data bytes at all, in which case
+	 * the host computer will have to issue a new USB request (probably with
+	 * zero bytes of waveform data), in order to inquire if data has become
+	 * available.
+	 */
+	timestamp_t start = get_time();
+	const uint32_t MAX_USB_RESPONSE_TIME_US = 25000;
+	do {
+		if (!streaming) {
+			if (!(STM32_TIM_CR1(BITBANG_TIMER) & STM32_TIM_CR1_CEN))
+				break;
+		} else {
+			uint16_t used_bytes = bitbang.tail - bitbang.head;
+			if (bitbang.irq - bitbang.head >= used_bytes / 2)
+				break;
+		}
+	} while (time_since32(start) < MAX_USB_RESPONSE_TIME_US);
+
+	uint32_t idx = bitbang.irq;
+	tx_buffer[1] = bitbang.head != bitbang.tail ? STATUS_BITBANG_ONGOING :
+						      STATUS_BITBANG_IDLE;
+
+	/* How much buffer space will be free after sending this response. */
+	uint16_t free_bytes = idx + BITBANG_BUFFER_SIZE - bitbang.tail;
+
+	*(uint16_t *)(tx_buffer + 2) = free_bytes;
+	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 4);
+
+	bitbang.head = idx;
+}
+
+/*
  * Entry point for CMSIS-DAP vendor command for GPIO operations.
  *
  * CAUTION: This handler routine runs on the CMSIS-DAP task, and the code below
@@ -2300,6 +2559,14 @@ void dap_goog_gpio(size_t peek_c)
 		 * invoked again before data runs out.
 		 */
 		dap_goog_gpio_bitbang(peek_c, true);
+		break;
+	case GPIO_REQ_DACBANG:
+		/* Accept data for bitbanging. */
+		dap_goog_gpio_dacbang(peek_c, false);
+		break;
+	case GPIO_REQ_DACBANG_STREAMING:
+		/* Accept data for bitbanging. */
+		dap_goog_gpio_dacbang(peek_c, true);
 		break;
 	}
 }
