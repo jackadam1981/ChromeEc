@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "926c9946_2569fe07",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-05-10T05:35:05Z",
+      "side": 1,
+      "message": "Why not `STATIC_IF_NOT(CONFIG_TEST)`?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7f1ca45_368239e5",
         "filename": "zephyr/test/boot_keys/include/tablet_mode.h",
         "patchSetId": 7
