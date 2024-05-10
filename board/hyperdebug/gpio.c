@@ -464,6 +464,38 @@ __attribute((section(".bss.vector_table"))) void (*sram_vectors[125])(void);
 
 #define CORTEX_VTABLE REG32(0xE000ED08)
 
+static void (*saved_gpio_edge_vectors[16])(void);
+
+static void enable_asm_gpio_edge_handlers(void)
+{
+	gpio_disable_interrupt(GPIO_NUCLEO_USER_BTN);
+	for (int i = 0; i < 16; i++) {
+		/*
+		 * Update GPIO edge interrupt vector to point directly at a copy
+		 * of edge_int(), thereby bypassing the scheduling wrapper of
+		 * DECLARE_IRQ().
+		 *
+		 * This is safe because these interrupts do not cause any task
+		 * to become runnable.
+		 *
+		 * Set low bit of address to indicate thumb instruction set.
+		 */
+		sram_vectors[16 + STM32_IRQ_EXTI0 + i] =
+			DATA_TO_THUMB_CODE_PTR(&monitoring_slots[i].code);
+	}
+}
+
+static void disable_asm_gpio_edge_handlers(void)
+{
+	for (int i = 0; i < 16; i++) {
+		/* Reinstate default edge interrupt handlers. */
+		sram_vectors[16 + STM32_IRQ_EXTI0 + i] =
+			saved_gpio_edge_vectors[i];
+	}
+	gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
+	gpio_enable_interrupt(GPIO_NUCLEO_USER_BTN);
+}
+
 static void board_gpio_init(void)
 {
 	size_t interrupt_handler_size = THUMB_CODE_TO_DATA_PTR(&edge_int_end) -
@@ -488,23 +520,15 @@ static void board_gpio_init(void)
 	 * presses will not be handled while gpio monitoring is ongoing.)
 	 */
 	memcpy(sram_vectors, vectors, sizeof(sram_vectors));
+	CORTEX_VTABLE = (uint32_t)(sram_vectors);
+
 	for (int i = 0; i < 16; i++) {
 		memcpy(monitoring_slots[i].code,
 		       THUMB_CODE_TO_DATA_PTR(&edge_int),
 		       interrupt_handler_size);
 		replace(&monitoring_slots[i], &load_pin_mask_replacement, i);
-		/*
-		 * Update GPIO edge interrupt vector to point directly at
-		 * gpio_interrupt(), thereby bypassing the scheduling wrapper of
-		 * DECLARE_IRQ().
-		 *
-		 * This is safe because these interrupts do not cause any task
-		 * to become runnable.
-		 *
-		 * Set low bit of address to indicate thumb instruction set.
-		 */
-		sram_vectors[16 + STM32_IRQ_EXTI0 + i] =
-			DATA_TO_THUMB_CODE_PTR(&monitoring_slots[i].code);
+		saved_gpio_edge_vectors[i] =
+			sram_vectors[16 + STM32_IRQ_EXTI0 + i];
 	}
 
 	/*
@@ -587,9 +611,7 @@ static void stop_all_gpio_monitoring(void)
 
 	/* Ensure handling of the blue user button of Nucleo-L552ZE-Q is
 	 * enabled. */
-	CORTEX_VTABLE = (uint32_t)(vectors);
-	gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
-	gpio_enable_interrupt(GPIO_NUCLEO_USER_BTN);
+	disable_asm_gpio_edge_handlers();
 }
 
 /*
@@ -946,10 +968,8 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 
 	/* Disable handling of the blue user button while monitoring is ongoing.
 	 */
-	if (!num_cur_monitoring) {
-		gpio_disable_interrupt(GPIO_NUCLEO_USER_BTN);
-		CORTEX_VTABLE = (uint32_t)(sram_vectors);
-	}
+	if (!num_cur_monitoring)
+		enable_asm_gpio_edge_handlers();
 
 	buf->head = buf->tail = buf->data;
 	buf->end = buf->data + cyclic_buffer_size;
@@ -1261,11 +1281,8 @@ static int command_gpio_monitoring_stop(int argc, const char **argv)
 
 	/* Re-enable handling of the blue user button once monitoring is done.
 	 */
-	if (!num_cur_monitoring) {
-		CORTEX_VTABLE = (uint32_t)(vectors);
-		gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
-		gpio_enable_interrupt(GPIO_NUCLEO_USER_BTN);
-	}
+	if (!num_cur_monitoring)
+		disable_asm_gpio_edge_handlers();
 
 	free_cyclic_buffer(buf);
 	return EC_SUCCESS;
@@ -1340,22 +1357,15 @@ struct bitbang_state_t {
 	uint8_t mask, pattern;
 
 	/*
-	 * For speed of interrupt handler, each pin to be manipulated by
-	 * bitbanging is recorded as the base address of the GPIO bank, as well
-	 * as the 16-bit "mask" to use to access the particular pin in the bank.
-	 */
-	uint8_t num_pins;
-	size_t pin_bases[7];
-	uint32_t pin_masks[7];
-
-	/*
 	 * Cyclic buffer storing the waveform to output, as well as recorded
 	 * samples.
 	 */
-	uint8_t data[BITBANG_BUFFER_SIZE];
+	uint8_t data[BITBANG_BUFFER_SIZE] __attribute__((aligned(4)));
 };
 
 struct bitbang_state_t bitbang;
+
+uint8_t bitbang_code[512] __attribute__((aligned(4)));
 
 /*
  * Obtain address into bitbang_data, corresponding to given index.
@@ -1368,116 +1378,6 @@ static inline uint8_t *bitbang_data_ptr(uint32_t idx)
 
 #define BITBANG_DELAY_BIT 0x80
 #define BITBANG_DATA_MASK 0x7F
-
-/*
- * Bitbang timer interrupt handler.  Will read the status of GPIOs, then set
- * GPIO output according to the byte at `bitbang.irq`, before overwriting it
- * with the sampled GPIOs and incrementing `bitbang.irq`.  (Except when high
- * bit of byte it set, which means to pause for a number of cycles.)
- */
-void IRQ_HANDLER(IRQ_TIM(BITBANG_TIMER))(void)
-{
-	uint32_t triggered = STM32_TIM_SR(BITBANG_TIMER);
-	if (!(triggered & 1)) {
-		return;
-	}
-	STM32_TIM_SR(BITBANG_TIMER) = 0xFFFE;
-	if (bitbang.irq == bitbang.irq_tail) {
-		/* End of waveform, stop timer */
-		STM32_TIM_CR1(BITBANG_TIMER) = 0;
-		return;
-	}
-
-	/*
-	 * Read current level of all pins part of bit-banging.  If some of the
-	 * pins are in push-pull mode, this will be what was written the
-	 * previous tick.
-	 */
-	uint8_t input_data = 0;
-	for (uint8_t i = 0; i < bitbang.num_pins; i++) {
-		input_data |= !!(STM32_GPIO_IDR(bitbang.pin_bases[i]) &
-				 bitbang.pin_masks[i])
-			      << i;
-	}
-
-	/*
-	 * See if there are reasons for not yet proceeding with the remaining
-	 * part of the waveform.
-	 */
-	if (bitbang.countdown) {
-		/* Waiting for a fixed duration to pass. */
-		bitbang.countdown--;
-		return;
-	}
-	if (bitbang.mask) {
-		/* Waiting for a particular trigger pattern. */
-		if ((input_data ^ bitbang.pattern) & bitbang.mask) {
-			/* No match, sample again next cycle */
-			return;
-		}
-		/* Match, proceed */
-		bitbang.mask = 0;
-	}
-
-	/*
-	 * Past reasons to pause have been resolved.  Now inspect the next byte
-	 * of the waveform encoding.
-	 */
-	uint8_t data_byte = *bitbang_data_ptr(bitbang.irq);
-	while (data_byte & BITBANG_DELAY_BIT) {
-		/* Maintain current levels for a number of cycles. */
-		uint8_t delay_scale = 0;
-		bitbang.countdown = 0;
-		do {
-			bitbang.irq++;
-			bitbang.countdown += ((data_byte & BITBANG_DATA_MASK)
-					      << delay_scale);
-			delay_scale += 7;
-			data_byte = *bitbang_data_ptr(bitbang.irq);
-		} while (data_byte & BITBANG_DELAY_BIT);
-		if (bitbang.countdown > 0) {
-			/* One cycle of delay already spent processing */
-			bitbang.countdown--;
-			return;
-		}
-		/*
-		 * Zero-cycle delay is not possible, the encoding is used as
-		 * escape for "special" commands, in this case waiting
-		 * indefinitely for a particular trigger.
-		 */
-		bitbang.mask = *bitbang_data_ptr(bitbang.irq++);
-		bitbang.pattern = *bitbang_data_ptr(bitbang.irq++);
-
-		if ((input_data ^ bitbang.pattern) & bitbang.mask) {
-			/* No match, sample again next cycle */
-			return;
-		}
-		/*
-		 * Match, immediately proceed, taking care that next byte could
-		 * either be a sample or another delay/wait, hence the need for
-		 * another iteration in the loop.
-		 */
-		bitbang.mask = 0;
-		data_byte = *bitbang_data_ptr(bitbang.irq);
-	}
-
-	/*
-	 * Set drive of all pins which are part of bit-banging.  If some of the
-	 * pins are in input mode, this will have no effect.
-	 */
-	for (uint8_t i = 0; i < bitbang.num_pins; i++) {
-		if (data_byte & (1 << i)) {
-			STM32_GPIO_BSRR(bitbang.pin_bases[i]) =
-				bitbang.pin_masks[i];
-		} else {
-			STM32_GPIO_BSRR(bitbang.pin_bases[i]) =
-				bitbang.pin_masks[i] << 16;
-		}
-	}
-
-	/* Record sampled data, overwriting the given waveform. */
-	*bitbang_data_ptr(bitbang.irq++) = input_data;
-}
 
 /*
  * Bitbanging timer interrupt one level below the GPIO edge detection
@@ -1528,6 +1428,41 @@ static void stop_all_gpio_bitbanging(void)
 	bitbang.head = 0;
 }
 
+void bitbang_int_begin(void); /* Not a real function */
+void bitbang_int(void);
+void bitbang_int_end(void); /* Not a real function */
+
+struct snippet_t {
+	uint32_t count;
+	uint8_t *table, *table_end;
+};
+
+extern struct snippet_t read_gpio_snippet;
+extern struct snippet_t get_bit_snippet;
+
+extern struct snippet_t align_bits_snippet;
+extern struct snippet_t midway_snippet;
+
+extern struct snippet_t set_bit_snippet;
+extern struct snippet_t set_additional_bit_snippet;
+extern struct snippet_t apply_gpio_snippet;
+
+extern struct snippet_t finish_snippet;
+
+void append_snippet(uint8_t **code_ptr, const struct snippet_t *snippet,
+		    size_t index)
+{
+	ASSERT(index < snippet->count);
+	ASSERT((snippet->table_end - snippet->table) % (snippet->count * 2) ==
+	       0);
+	size_t snippet_size =
+		(snippet->table_end - snippet->table) / snippet->count;
+	memcpy(*code_ptr,
+	       THUMB_CODE_TO_DATA_PTR(snippet->table) + index * snippet_size,
+	       snippet_size);
+	*code_ptr += snippet_size;
+}
+
 static int command_gpio_bit_bang(int argc, const char **argv)
 {
 	if (argc < 4)
@@ -1574,11 +1509,6 @@ static int command_gpio_bit_bang(int argc, const char **argv)
 	/*
 	 * All input valid, now record the request.
 	 */
-	bitbang.num_pins = gpio_num;
-	for (int i = 0; i < bitbang.num_pins; i++) {
-		bitbang.pin_bases[i] = gpio_list[gpios[i]].port;
-		bitbang.pin_masks[i] = gpio_list[gpios[i]].mask;
-	}
 
 	/* Appropriate power of two for prescaling */
 	uint32_t prescaler = find_suitable_prescaler(divisor);
@@ -1594,6 +1524,51 @@ static int command_gpio_bit_bang(int argc, const char **argv)
 	STM32_TIM_SR(BITBANG_TIMER) = 0;
 	STM32_TIM_DIER(BITBANG_TIMER) = 0x0001;
 
+	/* Make copy of interrupt routine */
+	size_t initial_size = &bitbang_int_end - &bitbang_int_begin;
+	memcpy(bitbang_code, THUMB_CODE_TO_DATA_PTR(&bitbang_int_begin),
+	       initial_size);
+
+	sram_vectors[16 + IRQ_TIM(BITBANG_TIMER)] = (void (*)(void))(
+		&bitbang_int - &bitbang_int_begin + bitbang_code);
+
+	uint8_t *code_ptr = bitbang_code + initial_size;
+
+	for (int i = 0; i < gpio_num; i++) {
+		append_snippet(&code_ptr, &read_gpio_snippet,
+			       (gpio_list[gpios[i]].port - STM32_GPIOA_BASE) /
+				       (STM32_GPIOB_BASE - STM32_GPIOA_BASE));
+		append_snippet(&code_ptr, &get_bit_snippet,
+			       GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask));
+		while (i + 1 < gpio_num && gpio_list[gpios[i + 1]].port ==
+						   gpio_list[gpios[i]].port) {
+			i++;
+			append_snippet(
+				&code_ptr, &get_bit_snippet,
+				GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask));
+		}
+	}
+	append_snippet(&code_ptr, &align_bits_snippet, gpio_num - 1);
+	append_snippet(&code_ptr, &midway_snippet, 0);
+
+	for (int i = 0; i < gpio_num; i++) {
+		append_snippet(&code_ptr, &set_bit_snippet,
+			       GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask));
+		while (i + 1 < gpio_num && gpio_list[gpios[i + 1]].port ==
+						   gpio_list[gpios[i]].port) {
+			i++;
+			append_snippet(
+				&code_ptr, &set_additional_bit_snippet,
+				GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask));
+		}
+		append_snippet(&code_ptr, &apply_gpio_snippet,
+			       (gpio_list[gpios[i]].port - STM32_GPIOA_BASE) /
+				       (STM32_GPIOB_BASE - STM32_GPIOA_BASE));
+	}
+	append_snippet(&code_ptr, &finish_snippet, 0);
+
+	if (code_ptr > bitbang_code + sizeof(bitbang_code))
+		panic("Interrupt handler does not fit");
 	return EC_SUCCESS;
 }
 
@@ -2224,8 +2199,11 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 	const uint32_t MAX_USB_RESPONSE_TIME_US = 25000;
 	do {
 		if (!streaming) {
-			if (!(STM32_TIM_CR1(BITBANG_TIMER) & STM32_TIM_CR1_CEN))
+			if (!(STM32_TIM_CR1(BITBANG_TIMER) &
+			      STM32_TIM_CR1_CEN)) {
+				ccprintf("Timer stopped");
 				break;
+			}
 		} else {
 			uint16_t used_bytes = bitbang.tail - bitbang.head;
 			if (bitbang.irq - bitbang.head >= used_bytes / 2)
@@ -2239,6 +2217,12 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 
 	/* Number of data bytes to return in this response. */
 	data_len = idx - bitbang.head;
+
+	for (int i = 0; i < data_len; i++) {
+		ccprintf(" %02x", *bitbang_data_ptr(bitbang.head + i));
+	}
+	ccprintf(", mask: %02x, pattern: %02x\n", bitbang.mask,
+		 bitbang.pattern);
 
 	/* How much buffer space will be free after sending this response. */
 	uint16_t free_bytes = idx + BITBANG_BUFFER_SIZE - bitbang.tail;
