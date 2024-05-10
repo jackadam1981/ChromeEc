@@ -284,7 +284,7 @@ GPIO_INT(CN12_65,		PIN(D, 10), GPIO_INPUT | ANY_EDGE, gpio_edge)
 /*GPIO_INT(CN12_67,		PIN(G, 7), GPIO_INPUT | ANY_EDGE, gpio_edge)*/
 GPIO_INT(CN12_68,		PIN(G, 5), GPIO_INPUT | ANY_EDGE, gpio_edge)
 GPIO_INT(CN12_69,		PIN(G, 4), GPIO_INPUT | ANY_EDGE, gpio_edge)
-GPIO_INT(CN12_70,		PIN(G, 6), GPIO_INPUT | ANY_EDGE, gpio_edge)
+GPIO_INT(CN12_70,		PIN(G, 6), GPIO_OUT_HIGH | ANY_EDGE, gpio_edge)
 
 /* Unimplemented signals since we are not an EC */
 UNIMPLEMENTED(ENTERING_RW)
