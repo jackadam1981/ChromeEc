@@ -70,6 +70,30 @@
       },
       "revId": "6bf58fc4127d5c83652fe615e9626b9abd4c55c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4276044_1c5f678f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 7875,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-10T17:53:37Z",
+      "side": 1,
+      "message": "Shall we stop being redundant? For any host command, senders are always supposed to set the packet size (i.e. args-\u003eparams_size). We probably don\u0027t want senders to set sizes in two places. I can\u0027t think of a compelling advantage with this redundancy. It seems Abe is also ok with it.",
+      "parentUuid": "c2a785c7_4b2eb3a9",
+      "range": {
+        "startLine": 7875,
+        "startChar": 0,
+        "endLine": 7875,
+        "endChar": 16
+      },
+      "revId": "6bf58fc4127d5c83652fe615e9626b9abd4c55c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
