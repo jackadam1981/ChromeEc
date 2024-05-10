@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a12941_d67aa3b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-10T17:24:53Z",
+      "side": 1,
+      "message": "As noted on b/337721162, any future CLs related to PDC support will no longer be able to bypass test coverage before submitting.",
+      "revId": "7062bff71486a2f2d2b3d4e7abe3898acbc1d3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
