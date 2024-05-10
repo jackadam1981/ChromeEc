@@ -857,8 +857,13 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 	std::ranges::fill(salt_data, 0xab);
 
 	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
+	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id = {
+		0x53, 0x0c, 0xe4, 0xfc, 0x45, 0x5f, 0xab, 0x7b,
+		0xe3, 0xbc, 0xe6, 0xe3, 0xe6, 0x2e, 0xac, 0xf4,
+		0x26, 0xb5, 0xcb, 0x3c, 0xeb, 0x3d, 0x51, 0x6d,
+		0xa6, 0x95, 0x86, 0x72, 0x37, 0x65, 0x85, 0xf9
+	};
+	encrypt_data_in_place(1, info, user_id, default_fake_tpm_seed,
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
@@ -956,8 +961,13 @@ test_static enum ec_error_list test_fp_command_unlock_template(void)
 	std::ranges::fill(salt_data, 0xab);
 
 	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
+	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id = {
+		0xdb, 0xf1, 0xd3, 0x6e, 0x6f, 0x30, 0xec, 0xf7,
+		0xbe, 0x2c, 0x65, 0x8b, 0xe7, 0x44, 0x5d, 0x5f,
+		0x34, 0x56, 0xd5, 0xec, 0x5f, 0x6c, 0x0f, 0x3e,
+		0x79, 0x9d, 0xc1, 0x12, 0xfa, 0x66, 0x32, 0xbc,
+	};
+	encrypt_data_in_place(1, info, user_id, default_fake_tpm_seed,
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
@@ -1185,8 +1195,13 @@ test_fp_command_unlock_template_pre_encrypted(void)
 	std::ranges::fill(salt_data, 0xab);
 
 	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
+	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id = {
+		0x9d, 0x0f, 0xb8, 0xeb, 0x9a, 0xfd, 0xa9, 0x81,
+		0xca, 0x54, 0x92, 0xdb, 0x8e, 0x9d, 0x80, 0x18,
+		0xf3, 0x4f, 0xa1, 0x29, 0x8d, 0xdf, 0x0c, 0xbb,
+		0x03, 0x5c, 0x3a, 0xea, 0xd5, 0x67, 0xd7, 0xcb,
+	};
+	encrypt_data_in_place(1, info, user_id, default_fake_tpm_seed,
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
@@ -1207,9 +1222,6 @@ test_fp_command_unlock_template_pre_encrypted(void)
 
 	static_assert(metadata_size == sizeof(enc_metadata_data));
 	memcpy(enc_metadata.data(), &enc_metadata_data, enc_metadata.size());
-
-	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> backup_user_id;
-	std::ranges::copy(global_context.user_id, backup_user_id.begin());
 
 	fp_reset_and_clear_context();
 
@@ -1232,7 +1244,7 @@ test_fp_command_unlock_template_pre_encrypted(void)
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
-	std::ranges::copy(backup_user_id, global_context.user_id);
+	std::ranges::copy(user_id, global_context.user_id);
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
 				       &unlock_params, sizeof(unlock_params),
@@ -1278,8 +1290,9 @@ test_static enum ec_error_list test_fp_command_commit_v3(void)
 	std::ranges::fill(template_data, 0xc4);
 
 	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed, template_data);
+	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id{};
+	encrypt_data_in_place(1, info, user_id, default_fake_tpm_seed,
+			      template_data);
 
 	struct ec_fp_template_encryption_metadata enc_metadata_data {
 		.struct_version = 3
@@ -1348,8 +1361,9 @@ test_static enum ec_error_list test_fp_command_commit_trivial_salt(void)
 	std::ranges::fill(template_data, 0xc4);
 
 	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
+	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id{};
+	memcpy(user_id.data(), ctx_params.userid, sizeof(ctx_params.userid));
+	encrypt_data_in_place(1, info, user_id, default_fake_tpm_seed,
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
@@ -1481,8 +1495,8 @@ test_fp_command_migrate_template_to_nonce_context(void)
 	std::ranges::fill(salt_data, 0xab);
 
 	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
+	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id{};
+	encrypt_data_in_place(1, info, user_id, default_fake_tpm_seed,
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
