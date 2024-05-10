@@ -61,3 +61,26 @@ ZTEST_USER(console_cmd_pdc, test_trysrc)
 	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 2");
 	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
 }
+
+ZTEST_USER(console_cmd_pdc, test_info)
+{
+	int rv;
+
+	/* Bad chip number */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc info x");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Bad live param (should be int) */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc info 0 y");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Get chip #0 info live */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc info 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	/* Get chip #0 info cached */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc info 0 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+}
