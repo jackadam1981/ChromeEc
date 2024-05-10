@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0b0c47_0e96e010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-10T02:58:50Z",
+      "side": 1,
+      "message": "responded to all comments",
+      "revId": "958ab9b34f867fbe5ef300cfe9010415dd82921e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e712db6b_c5ce02f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-10T02:58:50Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "af0c1c04_6299f3af",
+      "revId": "958ab9b34f867fbe5ef300cfe9010415dd82921e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f572efab_044cffc7",
@@ -31,6 +66,30 @@
       "writtenOn": "2024-05-09T20:16:50Z",
       "side": 1,
       "message": "I think you can remove this comment since it mentions private board directory, which you\u0027re removing.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 61
+      },
+      "revId": "958ab9b34f867fbe5ef300cfe9010415dd82921e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af815015_a617d373",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-10T02:58:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f572efab_044cffc7",
       "range": {
         "startLine": 21,
         "startChar": 1,
