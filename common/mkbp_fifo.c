@@ -30,7 +30,7 @@ static uint32_t fifo_start; /* first entry */
 static uint32_t fifo_end; /* last entry */
 static atomic_t fifo_entries; /* number of existing entries */
 static uint8_t fifo_max_depth = FIFO_DEPTH;
-static struct ec_response_get_next_event_v1 fifo[FIFO_DEPTH];
+static struct ec_response_get_next_event_v3 fifo[FIFO_DEPTH];
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 /* Check the FIFO size from the keyboard perspective. */
@@ -52,7 +52,7 @@ static int get_data_size(enum ec_mkbp_event e)
 {
 	switch (e) {
 	case EC_MKBP_EVENT_KEY_MATRIX:
-		return KEYBOARD_COLS_MAX;
+		return keyboard_cols;
 
 	case EC_MKBP_EVENT_HOST_EVENT64:
 		return sizeof(uint64_t);
