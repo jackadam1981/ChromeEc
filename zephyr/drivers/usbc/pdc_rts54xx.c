@@ -1939,6 +1939,8 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 		/* Check FW ver and VID/PID fields for valid values to ensure
 		 * we have a resident value.
 		 */
+		LOG_INF("******Request live, FW VER = %08x, VID/PID = %08x",
+			data->info.fw_version, data->info.vid_pid); // REMOVE ME
 		if (data->info.fw_version != PDC_FWVER_INVALID &&
 		    data->info.vid_pid != PDC_VIDPID_INVALID) {
 			*info = data->info;

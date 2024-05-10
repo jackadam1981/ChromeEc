@@ -297,9 +297,10 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_info)
 	in.pd_revision = 0x0708;
 	in.vid_pid = 0xFEEDBEEF;
 
-	zassert_equal(-ERANGE, pdc_power_mgmt_get_info(
-				       CONFIG_USB_PD_PORT_MAX_COUNT, &out));
-	zassert_equal(-EINVAL, pdc_power_mgmt_get_info(TEST_PORT, NULL));
+	zassert_equal(-ERANGE,
+		      pdc_power_mgmt_get_info(CONFIG_USB_PD_PORT_MAX_COUNT,
+					      &out, true));
+	zassert_equal(-EINVAL, pdc_power_mgmt_get_info(TEST_PORT, NULL, true));
 
 	emul_pdc_set_info(emul, &in);
 	emul_pdc_configure_src(emul, &connector_status);
@@ -307,7 +308,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_info)
 	zassert_true(
 		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
 
-	zassert_ok(pdc_power_mgmt_get_info(TEST_PORT, &out));
+	zassert_ok(pdc_power_mgmt_get_info(TEST_PORT, &out, true));
 	zassert_equal(in.fw_version, out.fw_version, "in=0x%X, out=0x%X",
 		      in.fw_version, out.fw_version);
 	zassert_equal(in.pd_version, out.pd_version);
