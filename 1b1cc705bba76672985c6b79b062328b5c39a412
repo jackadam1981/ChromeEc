@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c950505_bab91222",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-10T05:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e96e6eda_ad744adb",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 18
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47385bad_66712063",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-09T17:19:39Z",
       "side": 1,
       "message": "I don\u0027t think it needs to be done for this CL, but I wonder if we could make the code cleaner by creating a `class ZephyrTestConfig` that inherits from `TestConfig` and adds the Zephyr-specific configuration. Same with `BoardConfig`.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 27
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb5d77a_f03f634f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-10T05:52:01Z",
+      "side": 1,
+      "message": "\"Zephyr test\" may refer to:\n1. Our, newly migrated test running with EC based on ZephyrRTOS\n2. The Zephyr upstream test, built with twister and run on our dev board.\n\nFor 1. I wouldn\u0027t create a new `class ZephyrTestConfig`. For 2. I\u0027m not sure, I don\u0027t think it is needed for now. There is only one additional member `zephyr_name` needed for running the upstream tests. I don\u0027t have strong opinion here.\n\nRegarding a new `class BoardConfig` for boards using Zephyr. I think we may even need new objects for Zephyr boards, with new RO variants",
+      "parentUuid": "47385bad_66712063",
       "range": {
         "startLine": 232,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-05-09T17:19:39Z",
       "side": 1,
       "message": "Can we pull this out into a function? e.g., `get_zephyr_image_path`",
+      "range": {
+        "startLine": 1127,
+        "startChar": 0,
+        "endLine": 1143,
+        "endChar": 13
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bbdbe0_cc0556b5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-10T05:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304eada8_2a53b519",
       "range": {
         "startLine": 1127,
         "startChar": 0,
