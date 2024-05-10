@@ -63,6 +63,30 @@
       },
       "revId": "992304a33b4cd913805c5231f68146c343eac636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c591c5_2837c93d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-10T16:52:38Z",
+      "side": 1,
+      "message": "To clarify my comment. The hard reset isn\u0027t real. It\u0027s more the case that we aren\u0027t correctly handling the status change bits. Bit 7 (PD Reset Complete) to me implies that there was a hard reset and then a USB-PD connection has been established again.\n\nHard reset is a special k-code that can only be sent/detected by a USB-PD capable partner. In TCPMv2, hard reset is sent to a port partner that isn\u0027t responding to SRC CAPs if in a source power role, and similarly if SRC CAPs aren\u0027t received in a SNK power role. Even if the PDC was doing something similar, if it worked, then connector status would change showing that it\u0027s a USB-PD connection.",
+      "parentUuid": "9973eeda_35420be4",
+      "range": {
+        "startLine": 1947,
+        "startChar": 5,
+        "endLine": 1952,
+        "endChar": 49
+      },
+      "revId": "992304a33b4cd913805c5231f68146c343eac636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
