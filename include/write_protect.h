@@ -11,6 +11,10 @@
 #else
 #include "gpio.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static inline bool write_protect_is_asserted(void)
 {
 #ifdef CONFIG_WP_ALWAYS
@@ -47,5 +51,8 @@ static inline void write_protect_set(int value)
 }
 #endif /* TEST_BUILD */
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* !CONFIG_ZEPHYR */
 #endif /* __CROS_EC_WRITE_PROTECT_H */

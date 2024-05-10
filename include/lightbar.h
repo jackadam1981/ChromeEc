@@ -13,6 +13,10 @@
 /* Define the types of sequences */
 #define LBMSG(state) LIGHTBAR_##state
 #include "lightbar_msg_list.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 enum lightbar_sequence { LIGHTBAR_MSG_LIST LIGHTBAR_NUM_SEQUENCES };
 #undef LBMSG
 
@@ -53,5 +57,9 @@ void lightbar_sequence_f(enum lightbar_sequence num, const char *f);
 extern void demo_battery_level(int inc);
 extern void demo_is_charging(int ischarge);
 extern void demo_brightness(int inc);
+
+#ifdef __cplusplus
+}
+#endif
 extern void demo_tap(void);
 #endif /* __CROS_EC_LIGHTBAR_H */

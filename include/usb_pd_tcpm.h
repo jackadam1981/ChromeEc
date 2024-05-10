@@ -571,6 +571,10 @@ struct tcpm_drv {
 
 #include "dt-bindings/usb_pd_tcpm.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #else /* !CONFIG_ZEPHYR */
 
 /*
@@ -714,5 +718,9 @@ void tcpc_dump_std_registers(int port);
  */
 void tcpc_dump_registers(int port, const struct tcpc_reg_dump_map *reg,
 			 int count);
+
+#ifdef __cplusplus
+}
+#endif
 #endif
 #endif /* __CROS_EC_USB_PD_TCPM_H */

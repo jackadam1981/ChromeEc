@@ -36,6 +36,10 @@ void keyboard_update_button(enum keyboard_button_type button, int is_pressed);
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 #include "keyboard_mkbp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* MKBP protocol takes the whole keyboard matrix, and does not care about
  * individual key presses.
  */
@@ -64,5 +68,9 @@ int board_has_keyboard_backlight(void);
  */
 __override_proto const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_KEYBOARD_PROTOCOL_H */

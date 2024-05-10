@@ -30,4 +30,12 @@
 
 #include "third_party/linux/overflow.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* __CROS_EC_OVERFLOW_H */

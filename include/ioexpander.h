@@ -10,6 +10,10 @@
 #ifdef CONFIG_ZEPHYR
 #define ioex_signal gpio_signal
 #include "gpio.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 #else
 enum ioex_signal; /* from gpio_signal.h */
 #endif
@@ -245,5 +249,9 @@ int ioex_save_gpio_state(int ioex, int *state, int state_len);
 int ioex_restore_gpio_state(int ioex, const int *state, int state_len);
 
 #endif /* CONFIG_ZEPHYR */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_IOEXPANDER_H */

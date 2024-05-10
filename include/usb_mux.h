@@ -22,6 +22,10 @@
 
 #include "dt-bindings/usbc_mux.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #else /* !CONFIG_ZEPHYR */
 
 /* Flags used for usb_mux.flags */
@@ -354,5 +358,9 @@ int usb_mux_retimer_fw_update_port_info(void);
  * @param  port USB-C port number
  * @return True if all pending mux sets have completed
  */
+
+#ifdef __cplusplus
+}
+#endif
 bool usb_mux_set_completed(int port);
 #endif

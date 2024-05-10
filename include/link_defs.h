@@ -19,6 +19,10 @@
 #include <linker.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Console commands */
 extern const struct console_command __cmds[];
 extern const struct console_command __cmds_end[];
@@ -162,6 +166,10 @@ extern void *__dram_bss_end;
 #define __uncached __SECTION(CONFIG_CHIP_UNCACHED_REGION)
 #else
 #define __uncached
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* __CROS_EC_LINK_DEFS_H */

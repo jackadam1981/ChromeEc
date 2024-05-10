@@ -16,5 +16,12 @@ static inline atomic_val_t atomic_get(const atomic_t *target)
 
 #include "third_party/zephyr/atomic.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
 #endif /* CONFIG_ZEPHYR */
 #endif /* __CROS_EC_ATOMIC_BIT_H */

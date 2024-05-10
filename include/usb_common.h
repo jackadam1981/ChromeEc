@@ -10,6 +10,10 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 enum pd_drp_next_states {
 	DRP_TC_DEFAULT,
 	DRP_TC_UNATTACHED_SNK,
@@ -282,5 +286,9 @@ void usb_retimer_fw_update_process_op_cb(int port);
  *
  * @param port USB-C port number
  */
+
+#ifdef __cplusplus
+}
+#endif
 void pd_srccaps_dump(int port);
 #endif /* __CROS_EC_USB_COMMON_H */

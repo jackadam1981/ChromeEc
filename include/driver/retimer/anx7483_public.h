@@ -12,6 +12,10 @@
 
 #include "usb_mux.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* I2C interface addresses */
 #define ANX7483_I2C_ADDR0_FLAGS 0x3E
 #define ANX7483_I2C_ADDR1_FLAGS 0x38
@@ -71,5 +75,8 @@ enum ec_error_list anx7483_set_fg(const struct usb_mux *me,
  */
 int anx7483_set_default_tuning(const struct usb_mux *me, mux_state_t mux_state);
 
+#ifdef __cplusplus
+}
+#endif
 extern const struct usb_mux_driver anx7483_usb_retimer_driver;
 #endif /* __CROS_EC_USB_RETIMER_ANX7483_PUBLIC_H */

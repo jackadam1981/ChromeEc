@@ -7,6 +7,10 @@
 
 #include "gpio.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __CROS_EC_INDUCTIVE_CHARGING_H
 #define __CROS_EC_INDUCTIVE_CHARGING_H
 
@@ -16,5 +20,9 @@
  * @param signal  Signal which triggered the interrupt.
  */
 void inductive_charging_interrupt(enum gpio_signal);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

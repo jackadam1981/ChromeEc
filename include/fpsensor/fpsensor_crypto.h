@@ -14,6 +14,10 @@
 extern "C" {
 #include "common.h"
 #include "ec_commands.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 }
 
 #define HKDF_MAX_INFO_SIZE 128
@@ -102,5 +106,9 @@ enum ec_error_list aes_128_gcm_decrypt(std::span<const uint8_t> key,
 				       std::span<const uint8_t> ciphertext,
 				       std::span<const uint8_t> nonce,
 				       std::span<const uint8_t> tag);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_CRYPTO_H */

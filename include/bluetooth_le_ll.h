@@ -6,6 +6,10 @@
 #include "btle_hci_int.h"
 #include "common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 enum ll_state_t {
 	UNINITIALIZED,
 	STANDBY,

@@ -117,6 +117,10 @@ struct bmm150_private_data {
 #ifdef CONFIG_MAG_BMI_BMM150
 #include "accelgyro_bmi_common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define BMM150_COMP_REG(_s) (&BMI_GET_DATA(_s)->compass.comp)
 
 #define BMM150_CAL(_s) (&BMI_GET_DATA(_s)->compass.cal)
@@ -142,5 +146,9 @@ void bmm150_normalize(const struct motion_sensor_t *s, intv3_t v,
 int bmm150_set_offset(const struct motion_sensor_t *s, const intv3_t offset);
 
 int bmm150_get_offset(const struct motion_sensor_t *s, intv3_t offset);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_MAG_BMM150_H */

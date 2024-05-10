@@ -8,6 +8,10 @@
 
 #include <cstdint>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 inline constexpr uint32_t FP_MODE_ANY_CAPTURE =
 	(FP_MODE_CAPTURE | FP_MODE_ENROLL_IMAGE | FP_MODE_MATCH);
 
@@ -16,5 +20,9 @@ inline constexpr uint32_t FP_MODE_ANY_DETECT_FINGER =
 
 inline constexpr uint32_t FP_MODE_ANY_WAIT_IRQ =
 	(FP_MODE_FINGER_DOWN | FP_MODE_ANY_CAPTURE);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_MODES_H */

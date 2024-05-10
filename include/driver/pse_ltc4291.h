@@ -12,6 +12,10 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define LTC4291_I2C_ADDR 0x2C
 
 #define LTC4291_REG_SUPEVN_COR 0x0B

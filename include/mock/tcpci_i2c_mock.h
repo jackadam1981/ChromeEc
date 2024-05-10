@@ -7,6 +7,10 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define MOCK_TCPCI_I2C_ADDR_FLAGS 0x99
 
 void mock_tcpci_reset(void);

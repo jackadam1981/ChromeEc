@@ -15,6 +15,10 @@
 
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* DMA channel options */
 struct dma_option {
 	enum dma_channel channel; /* DMA channel */
@@ -167,5 +171,8 @@ int dma_wait(enum dma_channel channel);
  */
 void dma_init(void);
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* CONFIG_DMA_CROS */
 #endif

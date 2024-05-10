@@ -8,6 +8,10 @@
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr_cec.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 #endif
 
 /* Size of the buffer inside the rx queue */
@@ -249,5 +253,9 @@ void cec_task_set_event(int port, uint32_t event);
  * @param port		Port the event occurred on
  * @param event		Event type (enum mkbp_cec_event)
  */
+
+#ifdef __cplusplus
+}
+#endif
 void send_mkbp_event(int port, uint32_t event);
 #endif

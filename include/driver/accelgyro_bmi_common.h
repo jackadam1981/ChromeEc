@@ -13,6 +13,10 @@
 #include "accelgyro_bmi_common_public.h"
 #include "mag_bmm150.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if !defined(CONFIG_ACCELGYRO_BMI_COMM_SPI) && \
 	!defined(CONFIG_ACCELGYRO_BMI_COMM_I2C)
 #error "BMI must use either SPI or I2C communication"
@@ -315,5 +319,9 @@ int bmi_set_gyro_offset(const struct motion_sensor_t *gyro, intv3_t v,
 			int *val98_ptr);
 
 int bmi_list_activities(const struct motion_sensor_t *s, uint32_t *enabled,
+
+#ifdef __cplusplus
+}
+#endif
 			uint32_t *disabled);
 #endif /* __CROS_EC_ACCELGYRO_BMI_COMMON_H */

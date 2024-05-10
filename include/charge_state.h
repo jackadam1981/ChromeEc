@@ -376,4 +376,12 @@ int board_should_charger_bypass(void);
 /* Config Charger */
 #include "charge_state.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* __CROS_EC_CHARGE_STATE_H */

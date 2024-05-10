@@ -15,6 +15,10 @@
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr_adc.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 #endif /* CONFIG_ZEPHYR */
 
 #ifdef CONFIG_ADC
@@ -81,5 +85,9 @@ int adc_disable_watchdog(void);
  * @return              EC_SUCCESS, or non-zero if any error or not supported.
  */
 int adc_set_watchdog_delay(int delay_ms);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_ADC_H */

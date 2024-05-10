@@ -12,6 +12,10 @@
 
 #include <stdarg.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * Put a null-terminated string to the USB console, like fputs().
  *
@@ -81,6 +85,10 @@ int usb_console_tx_blocked(void);
 #define usb_va_start(x, y)
 #define usb_va_end(x)
 #define usb_console_tx_blocked() (0)
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* __CROS_EC_USB_CONSOLE_H */

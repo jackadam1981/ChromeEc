@@ -17,6 +17,10 @@
 
 extern "C" {
 #include "fpsensor_driver.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 }
 
 /* The extra information for the encrypted template.
@@ -41,5 +45,9 @@ using fp_template_state =
 
 /* The states for different fingers. */
 extern std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPSENSOR_TEMPLATE_STATE_H */

@@ -11,6 +11,10 @@
 #include "util.h"
 #include "vec3.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef float mat33_float_t[3][3];
 typedef size_t sizev3_t[3];
 
@@ -27,5 +31,9 @@ void mat33_fp_get_eigenbasis(mat33_fp_t S, fpv3_t eigenvals,
 size_t mat33_fp_maxind(mat33_fp_t A, size_t k);
 
 void mat33_fp_rotate(mat33_fp_t A, fp_t c, fp_t s, size_t k, size_t l, size_t i,
+
+#ifdef __cplusplus
+}
+#endif
 		     size_t j);
 #endif /* __CROS_EC_MAT_33_H */

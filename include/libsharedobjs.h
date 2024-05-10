@@ -9,6 +9,10 @@
 
 #include "common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef CONFIG_SHAREDLIB
 /*
  * The shared library currently only works with those platforms in which both
@@ -40,5 +44,9 @@
 /* By default, the SHAREDLIB() macro maps to its contents. */
 #define SHAREDLIB(...) __VA_ARGS__
 #define SHAREDLIB_FUNC(...) __VA_ARGS__
+
+#ifdef __cplusplus
+}
+#endif
 #endif /* defined(CONFIG_SHAREDLIB) */
 #endif /* __CROS_EC_LIBSHAREDOBJS_H */

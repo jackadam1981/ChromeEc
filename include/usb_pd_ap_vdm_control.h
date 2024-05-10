@@ -20,6 +20,10 @@
 #include "ec_commands.h"
 #include "usb_pd_tcpm.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef CONFIG_USB_PD_VDM_AP_CONTROL
 /*
  * Informs the AP VDM module of a received Attention message.  Note: all
@@ -84,5 +88,8 @@ static inline void ap_vdm_naked(int port, enum tcpci_msg_type type,
 {
 }
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* CONFIG_USB_PD_VDM_AP_CONTROL */
 #endif /* __CROS_EC_USB_AP_VDM_H */

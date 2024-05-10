@@ -10,6 +10,10 @@
 
 #include "btle_hci_int.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct hciCmdHdr {
 	uint16_t opcode;
 	uint8_t paramLen;

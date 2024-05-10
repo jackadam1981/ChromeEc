@@ -9,6 +9,10 @@
 
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Use this instead of '3' for readability where applicable. */
 #define SIZE_OF_RGB sizeof(struct rgb_s)
 

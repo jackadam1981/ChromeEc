@@ -7,6 +7,10 @@
 #include "common.h"
 #include "tcpm/tcpm.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Copied from usb_prl_sm.c, line 99. */
 #define MOCK_CHK_BUF_SIZE 7
 

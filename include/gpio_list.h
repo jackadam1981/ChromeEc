@@ -135,3 +135,7 @@ const int ioex_ih_count = ARRAY_SIZE(ioex_irq_handlers);
 	BUILD_ASSERT(a < CONFIG_IO_EXPANDER_PORT_COUNT);
 
 #include "gpio.wrap"
+
+#ifdef __cplusplus
+extern "C" {
+#endif

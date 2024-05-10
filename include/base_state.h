@@ -5,6 +5,10 @@
 
 #include "ec_commands.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * Return 1 if base attached, 0 otherwise.
  */

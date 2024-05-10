@@ -6,6 +6,10 @@
 
 #include "usb_mux.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Controller for mux state */
 struct mock_usb_mux_ctrl {
 	mux_state_t state;

@@ -10,6 +10,10 @@
 
 #include "clock.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 class ScopedFastCpu {
     public:
 	ScopedFastCpu()
@@ -32,5 +36,9 @@ class ScopedFastCpu {
 	int previous_state_;
 	static inline int current_state_;
 };
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_SCOPED_FAST_CPU_H */

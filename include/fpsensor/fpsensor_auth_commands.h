@@ -12,6 +12,10 @@
 
 extern "C" {
 #include "common.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 }
 
 /* The auth nonce for GSC session key. */
@@ -24,5 +28,9 @@ extern std::array<uint8_t, FP_CK_AUTH_NONCE_LEN> auth_nonce;
  * @return EC_ERROR_ACCESS_DENIED on the other cases.
  */
 enum ec_error_list check_context_cleared();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_AUTH_COMMANDS_H */
