@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a8f27a_ca402391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-05-10T15:04:02Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8748319480459754337) is being automatically retried for the following reasons:\n- Some tests are now retryable:betty-arc-r-cq.hw.bvt-tast-cq, betty-arc-r-sdknext-cq.hw.bvt-tast-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "de5b84c427735a7ef874653dd880d5f0a5ed4a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
