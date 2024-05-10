@@ -68,7 +68,7 @@ static uint8_t timestamps_invalid;
 BUILD_ASSERT(sizeof(struct ec_fp_template_encryption_metadata) % 4 == 0);
 
 /* Interrupt line from the fingerprint sensor */
-void fps_event(enum gpio_signal signal)
+extern "C" void fps_event(enum gpio_signal signal)
 {
 	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_SENSOR_IRQ);
 }

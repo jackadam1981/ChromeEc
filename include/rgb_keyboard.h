@@ -9,6 +9,10 @@
 
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Use this instead of '3' for readability where applicable. */
 #define SIZE_OF_RGB sizeof(struct rgb_s)
 
@@ -195,3 +199,7 @@ extern const size_t rgbkbd_map_size;
  * Driver for keyboard_backlight.
  */
 extern const struct kblight_drv kblight_rgbkbd;
+
+#ifdef __cplusplus
+}
+#endif
