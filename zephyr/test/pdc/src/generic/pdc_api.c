@@ -334,27 +334,84 @@ ZTEST_USER(pdc_api, test_reconnect)
 	zassert_equal(expected, val);
 }
 
+/**
+ * @brief Clears the cached PDC FW info struct inside the driver.
+ */
+void helper_clear_cached_chip_info(void)
+{
+	struct pdc_info_t zero = { 0 }, out;
+
+	emul_pdc_set_info(emul, &zero);
+	zassert_ok(pdc_get_info(dev, &out, true));
+	k_sleep(K_MSEC(SLEEP_MS));
+}
+
 ZTEST_USER(pdc_api, test_get_info)
 {
-	struct pdc_info_t in, out;
+	struct pdc_info_t in1 = {
+		.fw_version = 0x001a2b3c,
+		.pd_version = 0xabcd,
+		.pd_revision = 0x1234,
+		.vid_pid = 0x12345678,
+	};
+	struct pdc_info_t in2 = {
+		.fw_version = 0x002a3b4c,
+		.pd_version = 0xef01,
+		.pd_revision = 0x5678,
+		.vid_pid = 0x9abcdef0,
+	};
+	struct pdc_info_t out = { 0 };
 
-	zassert_equal(-EINVAL, pdc_get_info(dev, NULL));
+	/* Test output param NULL check */
+	zassert_equal(-EINVAL, pdc_get_info(dev, NULL, true));
 
-	in.fw_version = 0x010203;
-	in.pd_version = 0x0506;
-	in.pd_revision = 0x0708;
-	in.vid_pid = 0xFEEDBEEF;
+	/* Part 0: Cached read, but driver does not have valid cached info */
 
-	emul_pdc_set_info(emul, &in);
-	zassert_ok(pdc_get_info(dev, &out));
+	helper_clear_cached_chip_info();
+	zassert_equal(-EAGAIN, pdc_get_info(dev, &out, false));
 	k_sleep(K_MSEC(SLEEP_MS));
 
-	zassert_equal(in.fw_version, out.fw_version, "in=0x%X, out=0x%X",
-		      in.fw_version, out.fw_version);
-	zassert_equal(in.pd_version, out.pd_version);
-	zassert_equal(in.pd_revision, out.pd_revision);
-	zassert_equal(in.vid_pid, out.vid_pid, "in=0x%X, out=0x%X", in.vid_pid,
-		      out.vid_pid);
+	/* Part 1: Live read -- Set `in1`, `out` should match `in1` */
+
+	emul_pdc_set_info(emul, &in1);
+	zassert_ok(pdc_get_info(dev, &out, true));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	zassert_equal(in1.fw_version, out.fw_version, "in=0x%X, out=0x%X",
+		      in1.fw_version, out.fw_version);
+	zassert_equal(in1.pd_version, out.pd_version);
+	zassert_equal(in1.pd_revision, out.pd_revision);
+	zassert_equal(in1.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
+		      in1.vid_pid, out.vid_pid);
+
+	/* Part 2: Cached read -- Set `in2`, `out` should match the cached
+	 * `in1` again
+	 */
+
+	emul_pdc_set_info(emul, &in2);
+	zassert_ok(pdc_get_info(dev, &out, false));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	zassert_equal(in1.fw_version, out.fw_version, "in=0x%X, out=0x%X",
+		      in1.fw_version, out.fw_version);
+	zassert_equal(in1.pd_version, out.pd_version);
+	zassert_equal(in1.pd_revision, out.pd_revision);
+	zassert_equal(in1.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
+		      in1.vid_pid, out.vid_pid);
+
+	/* Part 3: Live read -- Don't set emul, `out` should match `in2` this
+	 * time
+	 */
+
+	zassert_ok(pdc_get_info(dev, &out, true));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	zassert_equal(in2.fw_version, out.fw_version, "in=0x%X, out=0x%X",
+		      in2.fw_version, out.fw_version);
+	zassert_equal(in2.pd_version, out.pd_version);
+	zassert_equal(in2.pd_revision, out.pd_revision);
+	zassert_equal(in2.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
+		      in2.vid_pid, out.vid_pid);
 }
 
 /* PDO0 is reserved for a fixed PDO at 5V. */
