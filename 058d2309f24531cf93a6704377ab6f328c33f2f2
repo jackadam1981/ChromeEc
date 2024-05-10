@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee08707_19414372",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-10T06:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c2f0b8_5673e035",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "058d2309f24531cf93a6704377ab6f328c33f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff93c52_8c38d425",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-05-09T16:46:48Z",
       "side": 1,
       "message": "Can you add a header with the following:\n\n```\nAuthors: dawidn@google.com\n\nReviewers: tomhughes@chromium.org\n\nLast Updated: 2024-05-09\n```\n\nsimilar to https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md?",
+      "revId": "058d2309f24531cf93a6704377ab6f328c33f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d622c6_74c38705",
+        "filename": "docs/zephyr/zephyr_fpmcu_test_migration.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-10T06:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff93c52_8c38d425",
       "revId": "058d2309f24531cf93a6704377ab6f328c33f2f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
