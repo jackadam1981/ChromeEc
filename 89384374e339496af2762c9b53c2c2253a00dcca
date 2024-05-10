@@ -16,6 +16,24 @@
       "message": "Hi Michael,\nWhy do you use battery-3s and battery-2s, what do they mean?",
       "revId": "89384374e339496af2762c9b53c2c2253a00dcca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b000d3c7_2004fab5",
+        "filename": "zephyr/program/nissa/glassway/overlay.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-05-10T07:57:46Z",
+      "side": 1,
+      "message": "Because getac_pg01lj3353 and cosmx_pg01lj3353 is 3S1P battery, and getac_pg01jh3353 is 2S1P battery. We need set default battery for 2S or 3S battery",
+      "parentUuid": "0cab735e_110c9d66",
+      "revId": "89384374e339496af2762c9b53c2c2253a00dcca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
