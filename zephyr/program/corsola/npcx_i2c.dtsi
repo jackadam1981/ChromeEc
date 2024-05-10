@@ -35,7 +35,7 @@
 		};
 		battery {
 			i2c-port = <&i2c5_0>;
-			remote-port = <1>;
+			remote-port = <8>;
 			enum-names = "I2C_PORT_BATTERY",
 				"I2C_PORT_VIRTUAL_BATTERY";
 		};
