@@ -11,29 +11,31 @@
 #include "common.h"
 
 #ifdef CONFIG_KEYBOARD_CUSTOMIZATION
+
 /* include the board layer keyboard header file */
 #include "keyboard_customization.h"
 #define KEYBOARD_COLS KEYBOARD_COLS_MAX
+
 #else /* CONFIG_KEYBOARD_CUSTOMIZATION */
 
-/* Keyboard matrix is 13 (or 15 with keypad) output columns x 8 input rows */
-#define KEYBOARD_COLS_WITH_KEYPAD 15
-#define KEYBOARD_COLS_NO_KEYPAD 13
-
 /*
- * KEYBOARD_COLS has the column size of the default matrix. KEYBOARD_COLS_MAX
+ * KEYBOARD_COLS is the column size of the default matrix. KEYBOARD_COLS_MAX
  * has the column size of the largest matrix. It's used to statically allocate
  * arrays used by the scanner. keyboard_cols holds a runtime column size. The
  * scanner uses it as a loop terminal.
  */
-#ifdef CONFIG_KEYBOARD_KEYPAD
-#define KEYBOARD_COLS KEYBOARD_COLS_WITH_KEYPAD
+#ifdef CONFIG_KEYBOARD_COLS
+#define KEYBOARD_COLS CONFIG_KEYBOARD_COLS
+#elif defined(CONFIG_KEYBOARD_KEYPAD)
+#define KEYBOARD_COLS 15
 #else
-#define KEYBOARD_COLS KEYBOARD_COLS_NO_KEYPAD
+#define KEYBOARD_COLS 13
 #endif
+
 #ifndef KEYBOARD_COLS_MAX
 #define KEYBOARD_COLS_MAX KEYBOARD_COLS
 #endif
+
 #define KEYBOARD_ROWS 8
 
 #ifdef __cplusplus
