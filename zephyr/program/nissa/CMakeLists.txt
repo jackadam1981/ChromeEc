@@ -251,6 +251,15 @@ if(DEFINED CONFIG_BOARD_PUJJOGA)
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "pujjoga/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "pujjoga/src/charger.c")
+if(DEFINED CONFIG_BOARD_PUJJOGB)
+	project(pujjogb)
+	zephyr_library_sources(
+			"pujjogb/src/led.c"
+			"pujjogb/src/hdmi.c"
+			"pujjogb/src/sub_board.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "pujjogb/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "pujjogb/src/charger.c")
 endif()
 if(DEFINED CONFIG_BOARD_RIVEN)
 	zephyr_library_sources(
