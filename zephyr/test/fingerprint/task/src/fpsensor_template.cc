@@ -21,20 +21,22 @@
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
-extern "C" {
 #include <drivers/fingerprint.h>
 #include <drivers/fingerprint_sim.h>
 #include <ec_commands.h>
 #include <ec_tasks.h>
 #include <fpsensor/fpsensor_state.h>
 #include <host_command.h>
+#include <mkbp_event.h>
 #include <rollback.h>
-}
+#include <system.h>
 
 DEFINE_FFF_GLOBALS;
 
+FFF_EXTERN_C
 FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
 FAKE_VALUE_FUNC(int, system_is_locked);
+FFF_END_EXTERN_C
 
 #define fp_sim DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
 #define IMAGE_SIZE                          \
