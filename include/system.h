@@ -27,6 +27,10 @@
  */
 #line 29
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef CONFIG_ZEPHYR
 #ifdef CONFIG_CPU_CORTEX_M
 /*
@@ -815,5 +819,9 @@ uint32_t flash_get_rw_offset(enum ec_image copy);
  * Compensate for the RTC after hibernation wake-up.
  */
 void system_compensate_rtc(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_SYSTEM_H */

@@ -10,6 +10,10 @@
 
 #include "common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Last time the host received an interrupt.
  *
@@ -58,6 +62,7 @@ struct mkbp_event_source {
 #endif
 
 #ifdef TEST_BUILD
+
 /* Allow directly raising events in unit tests */
 void activate_mkbp_with_events(uint32_t events_to_add);
 
@@ -68,5 +73,9 @@ void activate_mkbp_with_events(uint32_t events_to_add);
  */
 __test_only void mkbp_event_clear_all(void);
 #endif /* TEST_BUILD */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_MKBP_EVENT_H */
