@@ -699,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e0b190_df11d774",
+        "filename": "include/fpsensor/fpsensor_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T02:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03fdc2d_9af80fb8",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b1b6897_1d13e5f2",
@@ -1517,6 +1541,30 @@
       "writtenOn": "2024-05-11T01:07:44Z",
       "side": 1,
       "message": "Move inside the endif",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7fea42_1168d17b",
+        "filename": "include/usb_console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T02:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10010770_5b636544",
       "range": {
         "startLine": 88,
         "startChar": 0,
