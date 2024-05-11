@@ -4,6 +4,9 @@
  */
 /* Mock for the TCPM interface */
 
+#ifndef __MOCK_TCPM_MOCK_H
+#define __MOCK_TCPM_MOCK_H
+
 #include "common.h"
 #include "tcpm/tcpm.h"
 
@@ -29,3 +32,5 @@ void mock_tcpm_rx_msg(int port, uint16_t header, int cnt, const uint32_t *data);
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* __MOCK_TCPM_MOCK_H */

@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#ifndef __MOCK_TCPCI_I2C_MOCK_H
+#define __MOCK_TCPCI_I2C_MOCK_H
+
 #include "common.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -56,3 +59,5 @@ void tcpci_register_dump(void);
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* __MOCK_TCPCI_I2C_MOCK_H */

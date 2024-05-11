@@ -4,6 +4,9 @@
  */
 /* Mock USB Type-C mux */
 
+#ifndef __MOCK_USB_MUX_MOCK_H
+#define __MOCK_USB_MUX_MOCK_H
+
 #include "usb_mux.h"
 
 #ifdef __cplusplus
@@ -25,3 +28,5 @@ extern struct mock_usb_mux_ctrl mock_usb_mux;
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* __MOCK_USB_MUX_MOCK_H */
