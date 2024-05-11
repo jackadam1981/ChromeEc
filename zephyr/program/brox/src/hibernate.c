@@ -9,7 +9,9 @@
 
 __override void board_hibernate(void)
 {
+#ifdef CONFIG_CHARGER_ISL9238C
 	isl9238c_hibernate(CHARGER_SOLO);
+#endif
 }
 
 __override void board_hibernate_late(void)
