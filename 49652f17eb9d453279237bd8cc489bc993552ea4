@@ -1,0 +1,1102 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3060e5a5_00e2a223",
+        "filename": "include/atomic_bit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Needs fix.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d816d6ef_82643800",
+        "filename": "include/base_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing header guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f81d368_03adb250",
+        "filename": "include/base_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing closure",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1910b5_9b53f3e7",
+        "filename": "include/bluetooth_le_ll.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Not for this change, but it\u0027s missing a header guard.",
+      "fixSuggestions": [
+        {
+          "fixId": "83d0e95c_50b856fb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/bluetooth_le_ll.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 6,
+                "endChar": 0
+              },
+              "replacement": "#ifndef INCLUDE_BLUETOOTH_LE_LL_H_\n#define INCLUDE_BLUETOOTH_LE_LL_H_\n\n"
+            },
+            {
+              "path": "include/bluetooth_le_ll.h",
+              "range": {
+                "startLine": 156,
+                "startChar": 0,
+                "endLine": 156,
+                "endChar": 0
+              },
+              "replacement": "\n#endif  // INCLUDE_BLUETOOTH_LE_LL_H_\n"
+            }
+          ]
+        }
+      ],
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf8f649_a1d18cb2",
+        "filename": "include/bluetooth_le_ll.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing closure?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af0a0d5_4ae1b5c6",
+        "filename": "include/btle_hci2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing header guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35bc3fa_5a188238",
+        "filename": "include/btle_hci2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing closure",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57d6d35_ea239e30",
+        "filename": "include/byteorder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9955d695_d375387b",
+        "filename": "include/cec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3060969b_aa31d5f2",
+        "filename": "include/charge_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move up",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e98dd5_76f53d8e",
+        "filename": "include/driver/pse_ltc4291.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing header guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c11e0b_993df966",
+        "filename": "include/driver/pse_ltc4291.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Needs closure",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec284c4_63ea593a",
+        "filename": "include/driver/retimer/anx7483_public.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17305cf7_215ab18e",
+        "filename": "include/driver/tcpm/anx7447_public.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe3c7be_ff3f1720",
+        "filename": "include/fpsensor/fpsensor_crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8447a0b5_d1b8090c",
+        "filename": "include/fpsensor/fpsensor_modes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0b10b8ca_35e8eeca",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor_modes.h",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "include/fpsensor/fpsensor_modes.h",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0464ff9_33a6dd1c",
+        "filename": "include/fpsensor/fpsensor_template_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03fdc2d_9af80fb8",
+        "filename": "include/fpsensor/fpsensor_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1b6897_1d13e5f2",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56803943_7a9dd674",
+        "filename": "include/keyboard_protocol.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move up",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3104398b_9e7149d3",
+        "filename": "include/link_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "This should be inside the header guard?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1dcc490_e3046e31",
+        "filename": "include/mag_cal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e44515_b25bf3de",
+        "filename": "include/mat33.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cbbb146_bce817af",
+        "filename": "include/mat44.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b170e0b_6fb0af88",
+        "filename": "include/mock/otpi_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbf852e_e4a0e8c5",
+        "filename": "include/mock/tcpc_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing include guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c65a6b_a643938a",
+        "filename": "include/mock/tcpc_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Add clsoure",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd17112_b603f7b4",
+        "filename": "include/mock/tcpci_i2c_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing include guard",
+      "fixSuggestions": [
+        {
+          "fixId": "434fedc8_84175115",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/mock/tcpci_i2c_mock.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 6,
+                "endChar": 0
+              },
+              "replacement": "#ifndef INCLUDE_MOCK_TCPCI_I2C_MOCK_H_\n#define INCLUDE_MOCK_TCPCI_I2C_MOCK_H_\n\n"
+            },
+            {
+              "path": "include/mock/tcpci_i2c_mock.h",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "\n#endif  // INCLUDE_MOCK_TCPCI_I2C_MOCK_H_\n"
+            }
+          ]
+        }
+      ],
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b11280_3a9b9773",
+        "filename": "include/mock/tcpci_i2c_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Add clsoure",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0019cea7_db2e9e33",
+        "filename": "include/mock/tcpm_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing header guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b079476_28a8d958",
+        "filename": "include/mock/tcpm_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Add closure",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d4aab4_bccef636",
+        "filename": "include/mock/usb_mux_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing header guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83aa95e0_443169bb",
+        "filename": "include/mock/usb_mux_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Add closure",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b6db4e_38b86e7c",
+        "filename": "include/overflow.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57bbbafe_730a6979",
+        "filename": "include/pwm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2a2a26_22345fae",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Missing header guard",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d4cd60_2c4a15a9",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Needs closure",
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ea4522_890c0020",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "782d18f2_85673d9e",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10010770_5b636544",
+        "filename": "include/usb_console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move inside the endif",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d95f88_846af6c7",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec4d2b7_00d320cf",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move inside CONFIG_ZEPHYR",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883215ed_e84eadcf",
+        "filename": "include/usb_pd_ap_vdm_control.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549afae3_cb457d5e",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down outside",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a29e0c2_e57068ec",
+        "filename": "include/usb_pd_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move down",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32297e79_4e210566",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move to line 23",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6675b1e8_588a33b9",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move outside",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af9ea0a_62255b7c",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-11T01:07:44Z",
+      "side": 1,
+      "message": "Move outside",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 6
+      },
+      "revId": "49652f17eb9d453279237bd8cc489bc993552ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
