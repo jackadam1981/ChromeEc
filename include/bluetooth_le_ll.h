@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#ifndef __CROS_EC_BLUETOOTH_LE_LL_H
+#define __CROS_EC_BLUETOOTH_LE_LL_H
+
 #include "btle_hci_int.h"
 #include "common.h"
 
@@ -157,3 +160,5 @@ void ll_ble_test_rx(void);
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* __CROS_EC_BLUETOOTH_LE_LL_H */
