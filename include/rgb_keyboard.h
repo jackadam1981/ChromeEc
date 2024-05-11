@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#ifndef __CROS_EC_RBG_KEYBOARD_H
+#define __CROS_EC_RGB_KEYBOARD_H
+
 #include "common.h"
 #include "ec_commands.h"
 #include "stddef.h"
@@ -203,3 +206,5 @@ extern const struct kblight_drv kblight_rgbkbd;
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* __CROS_EC_RGB_KEYBOARD_H */
