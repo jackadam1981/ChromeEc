@@ -161,6 +161,8 @@ typedef int (*pdc_execute_command_sync_t)(const struct device *dev,
 					  uint8_t data_size,
 					  uint8_t *command_specific,
 					  uint8_t *lpm_data_out);
+typedef int (*pdc_ack_cc_ci_t)(const struct device *dev, uint32_t ci,
+			       uint8_t cc);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -202,6 +204,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_set_pdos_t set_pdos;
 	pdc_get_pch_data_status_t get_pch_data_status;
 	pdc_execute_command_sync_t execute_command_sync;
+	pdc_ack_cc_ci_t ack_cc_ci;
 };
 /**
  * @endcond
@@ -1020,6 +1023,33 @@ static inline int pdc_is_vconn_sourcing(const struct device *dev,
 	}
 
 	return api->is_vconn_sourcing(dev, vconn_sourcing);
+}
+
+/**
+ * @brief Acknowledge command complete (cc) or change indicator (ci)
+ * @note CCI Events set
+ *           busy: if the PDC is busy
+ *           error: if command fails
+ *           command_commpleted: ack_cc_ci write successful
+ *
+ * @param dev PDC device structure pointer
+ * @param ci Change Indicator bits
+ * @param cc Complete complete bit
+ *
+ * @retval 0 on success
+ * @retval -EBUSY if not ready to execute the command
+ */
+static inline int pdc_ack_cc_ci(const struct device *dev, uint32_t ci,
+				uint8_t cc)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->ack_cc_ci == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->ack_cc_ci(dev, ci, cc);
 }
 
 /**
