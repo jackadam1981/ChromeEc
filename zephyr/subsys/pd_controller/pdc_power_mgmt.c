@@ -119,6 +119,8 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_PDOS,
 	/** CMD_PDC_GET_PCH_DATA_STATUS */
 	CMD_PDC_GET_PCH_DATA_STATUS,
+	/** CMD_PDC_ACK_CC_CI */
+	CMD_PDC_ACK_CC_CI,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -271,6 +273,8 @@ enum cci_flag_t {
 	CCI_EVENT,
 	/** CCI_CAM_CHANGE */
 	CCI_CAM_CHANGE,
+	/** CCI_ACK */
+	CCI_ACK,
 	/** CCI_FLAGS_COUNT */
 	CCI_FLAGS_COUNT
 };
@@ -329,6 +333,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_PD_VDO_DP_CFG_SELF] = "PDC_GET_PD_VDO_DP_CFG_SELF",
 	[CMD_PDC_SET_PDOS] = "PDC_SET_PDOS",
 	[CMD_PDC_GET_PCH_DATA_STATUS] = "PDC_GET_PCH_DATA_STATUS",
+	[CMD_PDC_ACK_CC_CI] = "PDC_ACK_CC_CI",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -625,6 +630,8 @@ struct pdc_port_t {
 	struct set_pdos_t set_pdos;
 	/** Buffer used by public api to receive data from the driver */
 	uint8_t pch_data_status[5];
+	/** */
+	uint32_t cc_ci;
 };
 
 /**
@@ -962,8 +969,16 @@ static bool handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+	LOG_INF("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
+
+	/*
+	 * Set CCI_ACK flag to trigger sending ACK_CC_CI to clear the connector
+	 * change indicator bits which were just read as part of the connector
+	 * status message.
+	 */
+	port->cc_ci = conn_status_change_bits.raw_value;
+	atomic_set_bit(port->cci_flags, CCI_ACK);
 
 	if (conn_status_change_bits.pd_reset_complete) {
 		LOG_INF("C%d: Reset complete indicator", port_number);
@@ -1216,6 +1231,11 @@ static void pdc_unattached_run(void *obj)
 		return;
 	}
 
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
+		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+		return;
+	}
+
 	switch (port->unattached_local_state) {
 	case UNATTACHED_SET_SINK_PATH_OFF:
 		port->sink_path_en = false;
@@ -1256,6 +1276,11 @@ static void pdc_src_attached_run(void *obj)
 	 * connector status and take the appropriate action. */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
+		return;
+	}
+
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
+		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
 		return;
 	}
 
@@ -1349,6 +1374,11 @@ static void pdc_snk_attached_run(void *obj)
 	 * connector status and take the appropriate action. */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
+		return;
+	}
+
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
+		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
 		return;
 	}
 
@@ -1634,6 +1664,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_pch_data_status(port->pdc, config->connector_num,
 					     port->pch_data_status);
 		break;
+	case CMD_PDC_ACK_CC_CI:
+		rv = pdc_ack_cc_ci(port->pdc, port->cc_ci);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -1866,6 +1899,11 @@ static void pdc_src_typec_only_run(void *obj)
 		return;
 	}
 
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
+		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+		return;
+	}
+
 	switch (port->src_typec_attached_local_state) {
 	case SRC_TYPEC_ATTACHED_SET_SINK_PATH_OFF:
 		port->src_typec_attached_local_state =
@@ -1925,6 +1963,11 @@ static void pdc_snk_typec_only_run(void *obj)
 	 * connector status and take the appropriate action. */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
+		return;
+	}
+
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
+		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
 		return;
 	}
 
