@@ -174,6 +174,7 @@ const struct smbus_cmd_t GET_IC_STATUS = { 0x3A, 0x03 };
 const struct smbus_cmd_t SET_RETIMER_FW_UPDATE_MODE = { 0x20, 0x03, 0x00 };
 const struct smbus_cmd_t GET_CABLE_PROPERTY = { 0x0E, 0x03, 0x11 };
 const struct smbus_cmd_t GET_PCH_DATA_STATUS = { 0x08, 0x02, 0xE0 };
+const struct smbus_cmd_t ACK_CC_CI = { 0x0A, 0x07, 0x00 };
 
 /**
  * @brief PDC Command states
@@ -310,6 +311,8 @@ enum cmd_t {
 	CMD_SET_PDO,
 	/** Get PDC ALT MODE Status Register value */
 	CMD_GET_PCH_DATA_STATUS,
+	/** CMD_ACK_CC_CI */
+	CMD_ACK_CC_CI,
 };
 
 /**
@@ -427,6 +430,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_IS_VCONN_SOURCING] = "CMD_GET_IS_VCONN_SOURCING",
 	[CMD_SET_PDO] = "CMD_SET_PDO",
 	[CMD_GET_PCH_DATA_STATUS] = "CMD_GET_PCH_DATA_STATUS",
+	[CMD_ACK_CC_CI] = "CMD_ACK_CC_CI",
 };
 
 /**
@@ -2408,6 +2412,30 @@ static int rts54_execute_command_sync(const struct device *dev,
 	return rv;
 }
 
+static int rts54_ack_cc_ci(const struct device *dev,
+			   union conn_status_change_bits_t ci, bool cc,
+			   uint16_t vendor_defined)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = { ACK_CC_CI.cmd,
+			      ACK_CC_CI.len,
+			      ACK_CC_CI.sub,
+			      0x00,
+			      BYTE0(ci.raw_value),
+			      BYTE1(ci.raw_value),
+			      BYTE2(vendor_defined),
+			      BYTE3(vendor_defined),
+			      cc };
+
+	return rts54_post_command(dev, CMD_ACK_CC_CI, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
@@ -2442,6 +2470,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.set_pdos = rts54_set_pdo,
 	.get_pch_data_status = rts54_get_pch_data_status,
 	.execute_command_sync = rts54_execute_command_sync,
+	.ack_cc_ci = rts54_ack_cc_ci,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
