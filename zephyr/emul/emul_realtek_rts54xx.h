@@ -255,6 +255,18 @@ union rts54_request {
 		uint8_t reserved;
 		uint8_t sts_len;
 	} get_ic_status;
+
+	struct ack_cc_ci_req {
+		uint8_t command_code;
+		uint8_t data_len;
+		uint8_t reserved;
+		uint8_t port_num;
+		uint32_t data;
+		struct {
+			uint8_t cc_ack : 1;
+			uint8_t rsvd : 7;
+		};
+	} __packed ack_cc_ci;
 };
 
 union rts54_response {
