@@ -777,6 +777,15 @@ union connector_status_t {
 BUILD_ASSERT(sizeof(union connector_status_t) == DIV_ROUND_UP(145, 8),
 	     "sizeof(connector_status_t) incorrect size");
 
+struct cc_ci_t {
+	union conn_status_change_bits_t ci;
+	uint16_t rtk_ci;
+	struct {
+		uint8_t cc : 1;
+		uint8_t reserved : 7;
+	};
+};
+
 /**
  * @brief Plug End Type
  */
