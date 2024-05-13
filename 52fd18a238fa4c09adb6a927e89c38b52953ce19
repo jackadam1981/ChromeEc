@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4bcb1a_6111d249",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-13T17:50:54Z",
+      "side": 1,
+      "message": "We\u0027ve been using a consistent error string for the `device_is_ready` errors to save code size.\n\n```suggestion\n\t\tLOG_ERR(\"device %s not ready\", pdc_dev-\u003ename);\n\t\treturn -ENODEV;\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "52fd18a238fa4c09adb6a927e89c38b52953ce19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
