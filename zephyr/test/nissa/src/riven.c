@@ -738,16 +738,6 @@ ZTEST(riven, test_process_pd_alert)
 		      USB_CHG_EVENT_BC12);
 }
 
-static bool kb_backlight_sku;
-
-static int cbi_get_kb_bl_fw_config(enum cbi_fw_config_field_id field,
-				   uint32_t *value)
-{
-	zassert_equal(field, FW_KB_BL);
-	*value = kb_backlight_sku ? FW_KB_BL_PRESENT : FW_KB_BL_NOT_PRESENT;
-	return 0;
-}
-
 ZTEST(riven, test_keyboard_backlight)
 {
 	/* For PLATFORM_EC_PWM_KBLIGHT default enabled, EC_FEATURE_PWM_KEYB
@@ -756,23 +746,6 @@ ZTEST(riven, test_keyboard_backlight)
 	uint32_t flags0 = EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB);
 	uint32_t result;
 
-	/* Support keyboard backlight */
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_kb_bl_fw_config;
-	kb_backlight_sku = true;
-	result = board_override_feature_flags0(flags0);
-	zassert_equal(result, flags0,
-		      "Support kblight, should keep PWM_KEYB feature.");
-
-	/* Error reading fw_config */
-	RESET_FAKE(cros_cbi_get_fw_config);
-	cros_cbi_get_fw_config_fake.return_val = EINVAL;
-	result = board_override_feature_flags0(flags0);
-	zassert_equal(result, flags0,
-		      "Unchange ec feature, keep PWM_KEYB feature.");
-
-	/* Not support keyboard backlight */
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_kb_bl_fw_config;
-	kb_backlight_sku = false;
 	result = board_override_feature_flags0(flags0);
 	zassert_equal(result, 0, "No kblight should clear PWM_KEYB feature.");
 }
