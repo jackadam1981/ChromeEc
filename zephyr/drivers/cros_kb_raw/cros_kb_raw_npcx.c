@@ -103,6 +103,7 @@ static int cros_kb_raw_npcx_enable_interrupt(const struct device *dev,
 {
 	const struct cros_kb_raw_npcx_config *const config = DRV_CONFIG(dev);
 
+	printk("xxx enable:%d\n", enable);
 	if (enable)
 		irq_enable(config->irq);
 	else
@@ -165,7 +166,8 @@ static void cros_kb_raw_npcx_ksi_isr(const struct device *dev,
 	ARG_UNUSED(dev);
 	ARG_UNUSED(wui);
 
-	LOG_DBG("%s: KSI%d is changed", __func__, wui->bit);
+	//printk("xxx %s: KSI%d is changed\n", __func__, wui->bit);
+	printk("xxx KSI%d\n", wui->bit);
 	/* Wake-up keyboard scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
