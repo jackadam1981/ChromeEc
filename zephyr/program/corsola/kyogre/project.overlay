@@ -63,6 +63,9 @@
 		pen_fault_od {
 			gpios = <&gpiof 3 GPIO_INPUT>;
 		};
+		wrg_kb_det_od: wrg_kb_det_od {
+			gpios = <&gpio6 6 GPIO_INPUT>;
+		};
 	};
 
 	/*
