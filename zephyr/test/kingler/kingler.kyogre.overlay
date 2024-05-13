@@ -34,6 +34,12 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lis2dw12_interrupt";
 		};
+
+		int_pen_fault: pen_fault {
+			irq-pin = <&pen_fault_od>;
+			flags = <GPIO_INT_EDGE_RISING>;
+			handler = "pen_fault_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -43,6 +49,14 @@
 		lid_accel_int_l:lid_accel_int_l {
 			gpios = <&gpiob 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
+
+		ec_pen_chg_dis_odl: ec_pen_chg_dis_odl {
+ 			gpios = <&gpioe 4 GPIO_ODR_HIGH>;
+		};
+		
+		pen_fault_od: pen_fault_od {
+			gpios = <&gpiof 3 GPIO_INPUT>;
+		};	
 	};
 
 	motionsense-sensor-info {
