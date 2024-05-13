@@ -394,6 +394,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 			 * bits does not introduce more inconsistency.
 			 * Let's ignore this rare case for now.
 			 */
+			printk("xxx state[%d]:%x  state[%d]:%x\n", c, state[c], c2, state[c2]);
 			if ((state[c] & state[c2]) && (state[c] != state[c2])) {
 				uint8_t merged = state[c] | state[c2];
 
@@ -417,6 +418,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 
 		/* Mask off keys that don't exist on the actual keyboard */
 		state[c] &= keyscan_config.actual_key_mask[c];
+		printk("xxx state[%d]:%x\n", c, state[c]);
 	}
 
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
@@ -622,8 +624,10 @@ static int check_keys_changed(uint8_t *state)
 
 	if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC)) {
 		/* Ignore if so many keys are pressed that we're ghosting. */
-		if (has_ghosting(new_state))
+		if (has_ghosting(new_state)) {
+			printk("xxx ghosting\n");
 			return any_pressed;
+		}
 	}
 
 	/* Check for changes between previous scan and this one */
@@ -1054,8 +1058,10 @@ void keyboard_scan_task(void *u)
 			 */
 #ifndef CONFIG_KEYBOARD_SCAN_ADC
 			if (!local_disable_scanning &&
-			    (keyboard_raw_read_rows() || force_poll))
+			    (keyboard_raw_read_rows() || force_poll)) {
+				printk("xxx 1 - break\n");
 				break;
+			    }
 #else
 			if (!local_disable_scanning &&
 			    (keyboard_read_adc_rows() || force_poll ||
@@ -1085,6 +1091,7 @@ void keyboard_scan_task(void *u)
 					start.val +
 					keyscan_config.poll_timeout_us;
 			} else if (timestamp_expired(poll_deadline, &start)) {
+				printk("xxx break\n");
 				break;
 			}
 
@@ -1099,7 +1106,7 @@ void keyboard_scan_task(void *u)
 			if (wait_time < post_scan_clock_us)
 				wait_time = post_scan_clock_us;
 
-			printk("xxx waiting:%d\n", wait_time);
+			printk("xxx waiting\n");
 			crec_usleep(wait_time);
 		}
 	}
