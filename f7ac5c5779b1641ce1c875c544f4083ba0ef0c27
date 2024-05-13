@@ -68,6 +68,29 @@
       },
       "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81615b2e_f7cfe175",
+        "filename": "test/sram_mpu_protection.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T20:20:51Z",
+      "side": 1,
+      "message": "add a comment this should cause a reboot",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
