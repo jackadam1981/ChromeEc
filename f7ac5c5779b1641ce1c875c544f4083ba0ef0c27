@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21454603_07115529",
+        "filename": "common/main.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T20:13:27Z",
+      "side": 1,
+      "message": "It looks like the indentation may have been wrong on the comment, but let\u0027s not change it for this CL, since it\u0027s unrelated. You can create a separate CL for it.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584cdcb2_e22622aa",
+        "filename": "common/system.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T20:13:27Z",
+      "side": 1,
+      "message": "We\u0027ll want this same functionality in Zephyr. I\u0027m not sure if it already exists. Can you file a bug to track it?",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7884f7_8f1017eb",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T20:13:27Z",
+      "side": 1,
+      "message": "Do we call `mpu_protect_code_ram_script` anywhere else? If not, since it\u0027s just calling `mpu_protect_code_ram()`, let\u0027s just move that logic here and remove `mpu_protect_code_ram_script`. That will resolve [Craig\u0027s comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5325938/comment/11f63e93_610f7ec5/) as well.",
+      "range": {
+        "startLine": 470,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 32
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
