@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "138d3739_ca8deca2",
+        "filename": "zephyr/subsys/ucsi/rts54xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-13T20:13:35Z",
+      "side": 1,
+      "message": "Looks like this file was removed. Closing this comment.",
+      "parentUuid": "8fdfabec_d1b63204",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "8d310845453bab5eb67018a452b9fb163287e88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e531cd29_ab343a4c",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Removed.",
       "parentUuid": "e531cd29_ab343a4c",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "8d310845453bab5eb67018a452b9fb163287e88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcae4f99_165fcd54",
+        "filename": "zephyr/subsys/ucsi/rts54xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-13T20:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "496b5e98_2aded5e3",
       "range": {
         "startLine": 22,
         "startChar": 0,
