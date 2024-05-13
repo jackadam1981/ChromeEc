@@ -142,7 +142,7 @@ void watchdog_reload(void)
 {
 	if (!watchdog_initialized)
 		return;
-
+	printk("xxx watchdog_reload...\n");
 	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
 		if (wdt_chan[i] < 0)
 			continue;

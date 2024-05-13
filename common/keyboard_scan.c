@@ -39,7 +39,7 @@
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_KEYSCAN, "KB " format, ##args)
 
-#ifdef CONFIG_KEYBOARD_DEBUG
+#if 1//def CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYSCAN, outstr)
 #define CPRINTS5(format, args...) cprints(CC_KEYBOARD, "KB " format, ##args)
 #else
@@ -1077,6 +1077,7 @@ void keyboard_scan_task(void *u)
 		/* Busy polling keyboard state. */
 		while (keyboard_scan_is_enabled()) {
 			start = get_time();
+			printk("xxx scaning...\n");
 
 			/* Check for keys down */
 			if (check_keys_changed(debounced_state)) {
@@ -1098,6 +1099,7 @@ void keyboard_scan_task(void *u)
 			if (wait_time < post_scan_clock_us)
 				wait_time = post_scan_clock_us;
 
+			printk("xxx waiting:%d\n", wait_time);
 			crec_usleep(wait_time);
 		}
 	}
