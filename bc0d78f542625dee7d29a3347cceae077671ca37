@@ -428,6 +428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de226ebb_1cb9b8ee",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 35
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-13T19:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d9f33d_f2162cb2",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 64
+      },
+      "revId": "bc0d78f542625dee7d29a3347cceae077671ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "716f374c_08bc5a10",

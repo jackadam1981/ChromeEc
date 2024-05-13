@@ -22,6 +22,30 @@
       },
       "revId": "c403c3fd149bc04b7fec4d4de14142297ecbe3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bf8cb0_0b6967cf",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-13T19:04:14Z",
+      "side": 1,
+      "message": "The PDM\u0027s callback is removed at line 2287 and restored at line 2302.",
+      "parentUuid": "64aef09a_f5fef344",
+      "range": {
+        "startLine": 2278,
+        "startChar": 0,
+        "endLine": 2278,
+        "endChar": 70
+      },
+      "revId": "c403c3fd149bc04b7fec4d4de14142297ecbe3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
