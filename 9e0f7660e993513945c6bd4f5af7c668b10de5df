@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0304eac_51f9cbb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T23:06:49Z",
+      "side": 1,
+      "message": "Just for my knowledge: Is ASAN only supported with `native_sim`?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "9e0f7660e993513945c6bd4f5af7c668b10de5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1eddb1fa_20188f7e",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.c",
         "patchSetId": 2
