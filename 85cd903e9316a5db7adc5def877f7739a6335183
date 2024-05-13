@@ -16,6 +16,24 @@
       "message": "How verbose is an `INF` log? This notification goes out a lot so it\u0027s better to make this a debug log (or remove it entirely).",
       "revId": "85cd903e9316a5db7adc5def877f7739a6335183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e91f9f_e461f52c",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-13T20:30:12Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "cc9fe982_5dbfbcf4",
+      "revId": "85cd903e9316a5db7adc5def877f7739a6335183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
