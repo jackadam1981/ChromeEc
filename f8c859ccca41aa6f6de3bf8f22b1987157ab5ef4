@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2b91ea_750699fa",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-13T17:51:59Z",
+      "side": 1,
+      "message": "It would be better to inform the user that they still need to enable the PPM feature in CBI before the PPM module is used.",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 59
+      },
+      "revId": "f8c859ccca41aa6f6de3bf8f22b1987157ab5ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
