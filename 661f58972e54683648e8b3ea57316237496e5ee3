@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab9dc91_143a21f0",
+        "filename": "baseboard/bloonchipper/build.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-13T21:54:27Z",
+      "side": 1,
+      "message": "What do you think of using a macro to reference this path? I think that\u0027ll increase the readability and allow us to easily change it.",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "661f58972e54683648e8b3ea57316237496e5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
