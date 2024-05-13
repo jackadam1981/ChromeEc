@@ -38,7 +38,12 @@ FAKE_VALUE_FUNC(int, system_is_locked);
 #define IMAGE_SIZE                          \
 	FINGERPRINT_SENSOR_REAL_IMAGE_SIZE( \
 		DT_CHOSEN(cros_fp_fingerprint_sensor))
-static uint8_t frame_buffer[IMAGE_SIZE];
+/*
+ * The 'frame_buffer' has additional byte for
+ * test_fp_frame_raw_image_size_too_big. It's necessary because host command
+ * subsystem clears response buffer.
+ */
+static uint8_t frame_buffer[IMAGE_SIZE + 1];
 
 static const char fake_rollback_entropy[] = "some_rollback_entropy";
 
