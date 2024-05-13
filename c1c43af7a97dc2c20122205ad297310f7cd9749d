@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af27a565_d717c0e7",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-05-13T15:31:46Z",
+      "side": 1,
+      "message": "The attempt count and delay should be #define const. I\u0027m not sure what the right values are for this part. The syv682 driver is using 15ms, but that is also working around a hardware based deglitch circuit.",
+      "revId": "c1c43af7a97dc2c20122205ad297310f7cd9749d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
