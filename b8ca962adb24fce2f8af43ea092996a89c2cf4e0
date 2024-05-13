@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f774c67e_3616b5ff",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 2287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-13T20:23:48Z",
+      "side": 1,
+      "message": "A callback is removed here because rts54_post_command \u003d\u003d 0 guarantees the queue is reserved (by PPM).",
+      "parentUuid": "a8fe04dc_0d1204a4",
+      "range": {
+        "startLine": 2287,
+        "startChar": 0,
+        "endLine": 2287,
+        "endChar": 39
+      },
+      "revId": "b8ca962adb24fce2f8af43ea092996a89c2cf4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39afc88c_e592a4ca",
         "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
         "patchSetId": 38
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-13T19:43:59Z",
       "side": 1,
       "message": "Wrong copyright header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "b8ca962adb24fce2f8af43ea092996a89c2cf4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ca868b_48c4574d",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 38
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-13T20:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39afc88c_e592a4ca",
       "range": {
         "startLine": 1,
         "startChar": 0,
