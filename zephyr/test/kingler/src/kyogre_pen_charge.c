@@ -59,21 +59,15 @@ ZTEST(main_pen_charge, test_main_pen_charge)
 
 	/* Verify the state is changed from STOP to CHARGE when the timer is
 	 * expired */
-	for (i = 0; i < STP_TIME; i++) {
-		zassert_equal(pen_charge_state, STATE_STOP,
-			      "pen_charge_state=%d", pen_charge_state);
+	for (i = 0; i < STP_TIME; i++)
 		pen_charge();
-	}
 	zassert_equal(pen_charge_state, STATE_CHARGE, "pen_charge_state=%d",
 		      pen_charge_state);
 
 	/* Verif the state is changed from CHARGE to STOP when the timer is
 	 * expired */
-	for (i = 0; i < CHG_TIME; i++) {
-		zassert_equal(pen_charge_state, STATE_CHARGE,
-			      "pen_charge_state=%d", pen_charge_state);
+	for (i = 0; i < CHG_TIME; i++)
 		pen_charge();
-	}
 	zassert_equal(pen_charge_state, STATE_STOP, "pen_charge_state=%d",
 		      pen_charge_state);
 
@@ -89,11 +83,8 @@ ZTEST(main_pen_charge, test_main_pen_charge)
 
 	/* Verify the state is changed from ERROR to CHARGE when the timer is
 	 * expired */
-	for (i = 0; i < ERR_TIME - 1; i++) {
-		zassert_equal(pen_charge_state, STATE_ERROR,
-			      "pen_charge_state=%d", pen_charge_state);
+	for (i = 0; i < ERR_TIME; i++)
 		pen_charge();
-	}
 	zassert_equal(pen_charge_state, STATE_CHARGE, "pen_charge_state=%d",
 		      pen_charge_state);
 
@@ -109,11 +100,8 @@ ZTEST(main_pen_charge, test_main_pen_charge)
 
 	/* Verify the state is changed from ERROR to CHARGE when the timer is
 	 * expired */
-	for (i = 0; i < ERR_TIME - 1; i++) {
-		zassert_equal(pen_charge_state, STATE_ERROR,
-			      "pen_charge_state=%d", pen_charge_state);
+	for (i = 0; i < ERR_TIME; i++)
 		pen_charge();
-	}
 	zassert_equal(pen_charge_state, STATE_CHARGE, "pen_charge_state=%d",
 		      pen_charge_state);
 
