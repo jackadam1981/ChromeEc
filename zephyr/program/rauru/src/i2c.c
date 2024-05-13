@@ -14,5 +14,9 @@ board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
 	 * firmware. AP firmware separately sends a command to block tunneling
 	 * to these ports after it's done updating chips.
 	 */
-	return cmd_desc->port == I2C_PORT_BATTERY;
+	return cmd_desc->port == I2C_PORT_BATTERY
+#if DT_NODE_EXISTS(DT_NODELABEL(dp_bridge))
+	       || (cmd_desc->port == I2C_PORT_BY_DEV(DT_NODELABEL(dp_bridge)))
+#endif
+		;
 }
