@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9fe982_5dbfbcf4",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-13T20:22:09Z",
+      "side": 1,
+      "message": "How verbose is an `INF` log? This notification goes out a lot so it\u0027s better to make this a debug log (or remove it entirely).",
+      "revId": "85cd903e9316a5db7adc5def877f7739a6335183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
