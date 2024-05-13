@@ -164,6 +164,30 @@
       },
       "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3826b4_ebbdb8fe",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-13T13:11:27Z",
+      "side": 1,
+      "message": "Nothing new here. I don\u0027t see Zephyr needs such thing. There are several mechanisms that they use:\n1. Custom regex per test if needed e.g. [recovery retention](https://github.com/zephyrproject-rtos/zephyr/blob/main/tests/boot/mcuboot_recovery_retention/testcase.yaml#L12)\n2. [Overwriting](https://github.com/zephyrproject-rtos/zephyr/blob/main/tests/arch/arm/arm_hardfault_validation/src/arm_hardfault.c#L16) the fatal error handler if a tests causes one.\n3. [storage_partition](https://github.com/zephyrproject-rtos/zephyr/blob/main/tests/subsys/settings/fcb/src/settings_test_fcb.c#L14) mechanism if non-volatile memory is needed by test.\n4. Some [custom](https://github.com/zephyrproject-rtos/zephyr/blob/main/tests/bsim/bluetooth/mesh/src/test_replay_cache.c#L476) solution, which I don\u0027t fully get.\n\nI think we can use some of these once we switch to twister.",
+      "parentUuid": "b3590297_3fb082ee",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 79
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
