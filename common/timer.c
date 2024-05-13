@@ -118,6 +118,7 @@ int timestamp_expired(timestamp_t deadline, const timestamp_t *now)
 		now_val = get_time();
 		now = &now_val;
 	}
+	printk("xxx deadline:%lld\n", deadline.val);
 
 	return ((int64_t)(now->val - deadline.val) >= 0);
 }
