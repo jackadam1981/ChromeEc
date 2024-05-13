@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c0ce0c_4ed1a08c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T23:30:34Z",
+      "side": 1,
+      "message": "I think it could make sense to combine (1) and (2) into a `ZephyrTestConfig`, since they\u0027re both tests that are built with Zephyr. Whether the test is one that we have locally or one that is upstream is kind of an \"implementation detail\". If we wanted to distinguish between migrated tests and usptream tests we could structure it something like this:\n\n```\nTestConfig\n  ZephyrTestConfig\n    skip: bool \u003d False\n    UpstreamZephyrTestConfig\n      upstream_test_name: str \u003d None\n```",
+      "parentUuid": "bbb5d77a_f03f634f",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 27
+      },
+      "revId": "1b1cc705bba76672985c6b79b062328b5c39a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "57efc573_5d7fc87e",
