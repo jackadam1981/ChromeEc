@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d745c30_c382792e",
+        "filename": "common/main.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T21:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21454603_07115529",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "584cdcb2_e22622aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-13T20:13:27Z",
       "side": 1,
       "message": "We\u0027ll want this same functionality in Zephyr. I\u0027m not sure if it already exists. Can you file a bug to track it?",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "549009de_04043ba8",
+        "filename": "common/system.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T21:08:28Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/340309874",
+      "parentUuid": "584cdcb2_e22622aa",
       "range": {
         "startLine": 200,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955301da_023bdd1c",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T21:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e7884f7_8f1017eb",
+      "range": {
+        "startLine": 470,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 32
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81615b2e_f7cfe175",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-13T20:20:51Z",
       "side": 1,
       "message": "add a comment this should cause a reboot",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "f7ac5c5779b1641ce1c875c544f4083ba0ef0c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0f05fc_b17a7e7a",
+        "filename": "test/sram_mpu_protection.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T21:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81615b2e_f7cfe175",
       "range": {
         "startLine": 68,
         "startChar": 0,
