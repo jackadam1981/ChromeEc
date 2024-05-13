@@ -196,12 +196,12 @@ test_mockable __keep int main(void)
 	mpu_post_init();
 #endif
 
-		/*
-		 * Keyboard scan init/Button init can set recovery events to
-		 * indicate to host entry into recovery mode. Before this is
-		 * done, LPC_HOST_EVENT_ALWAYS_REPORT mask needs to be
-		 * initialized correctly.
-		 */
+	/*
+	 * Keyboard scan init/Button init can set recovery events to
+	 * indicate to host entry into recovery mode. Before this is
+	 * done, LPC_HOST_EVENT_ALWAYS_REPORT mask needs to be
+	 * initialized correctly.
+	 */
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_init_mask();
 #endif
