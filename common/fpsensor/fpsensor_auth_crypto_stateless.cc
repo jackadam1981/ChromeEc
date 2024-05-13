@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <array>
 
-/* Boringssl headers need to be included before extern "C" section. */
 #include "crypto/cleanse_wrapper.h"
 #include "crypto/elliptic_curve_key.h"
 #include "openssl/aes.h"
@@ -18,10 +17,8 @@
 #include "openssl/obj_mac.h"
 #include "openssl/rand.h"
 
-extern "C" {
 #include "ec_commands.h"
 #include "sha256.h"
-}
 
 #include "fpsensor/fpsensor_auth_crypto.h"
 

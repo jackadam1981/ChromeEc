@@ -5,10 +5,8 @@
 
 #include "fpsensor/fpsensor_utils.h"
 
-extern "C" {
 #include "ec_commands.h"
 #include "overflow.h"
-}
 
 bool fp_match_success(int match_result)
 {

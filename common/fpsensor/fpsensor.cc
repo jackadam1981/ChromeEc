@@ -14,7 +14,6 @@
 #include <array>
 #include <variant>
 
-extern "C" {
 #include "assert.h"
 #include "atomic.h"
 #include "clock.h"
@@ -32,7 +31,6 @@ extern "C" {
 #include "trng.h"
 #include "util.h"
 #include "watchdog.h"
-}
 
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"

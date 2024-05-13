@@ -9,14 +9,12 @@
 #include <array>
 #include <variant>
 
-/* Boringssl headers need to be included before extern "C" section. */
 #include "openssl/mem.h"
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/shell/shell.h>
 #endif
 
-extern "C" {
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
@@ -24,7 +22,6 @@ extern "C" {
 #include "system.h"
 #include "task.h"
 #include "util.h"
-}
 
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_auth_commands.h"
