@@ -45,6 +45,30 @@
       },
       "revId": "9c8208e88cfebf55bfc9c1ba4e0bbf4f0165e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ce7bcb_1f3307d1",
+        "filename": "driver/fingerprint/elan/build.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T18:46:26Z",
+      "side": 0,
+      "message": "ok, will move it into a separate CL",
+      "parentUuid": "1cb04cda_abb5c7aa",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "9c8208e88cfebf55bfc9c1ba4e0bbf4f0165e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
