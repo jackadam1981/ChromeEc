@@ -39,6 +39,30 @@
       },
       "revId": "cdda56cc12a6485c7bab5d54aa291f053268e1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67243b82_fc44c9e8",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-13T23:05:13Z",
+      "side": 1,
+      "message": "ya, 3.3.24 is still not quite right\n\nhttps://b.corp.google.com/issues/339063396#comment6",
+      "parentUuid": "20dea776_5bfcffff",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 64
+      },
+      "revId": "cdda56cc12a6485c7bab5d54aa291f053268e1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
