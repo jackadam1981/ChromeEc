@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2493bf5b_c83c158e",
+        "filename": "zephyr/subsys/ucsi/platform_zephyr.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-13T17:45:54Z",
+      "side": 1,
+      "message": "The usermode and Zephyr versions of this function do the exact same thing.  So this function doesn\u0027t belong as part of the \"platform API\".\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/extra/um_ppm/platform_usermode.c;l\u003d72",
+      "parentUuid": "ae2b30c7_88261c9a",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "e510a4254cf133062b3197ef3dcd605b727a3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e99a6486_9f88a2e5",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 36

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64aef09a_f5fef344",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-13T17:45:54Z",
+      "side": 1,
+      "message": "Please reference b/339703938 here.  I\u0027m still concerned that this synchronous command generates a callback into the PDM, potentially causing state to change in the PDM for a command the PDM didn\u0027t initiate.",
+      "range": {
+        "startLine": 2278,
+        "startChar": 0,
+        "endLine": 2278,
+        "endChar": 70
+      },
+      "revId": "c403c3fd149bc04b7fec4d4de14142297ecbe3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
