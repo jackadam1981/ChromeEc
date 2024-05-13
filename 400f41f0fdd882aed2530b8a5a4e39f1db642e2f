@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49cc8397_5c3e9146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T23:41:06Z",
+      "side": 1,
+      "message": "Can you add it to the commit message? It looks like there are a bunch of XML files. Is there an HTML rendering of it somewhere that makes it easy to read? e.g., like https://zephyr-dashboard.renode.io?\n\nWho monitors these test results? i.e., what happens if the one of the `flash_stm32` tests fail in one of these periodic runs?",
+      "parentUuid": "1cda05ec_8b09bf26",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3f73402_a450e3e3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
