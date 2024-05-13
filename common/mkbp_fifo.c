@@ -179,6 +179,7 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 {
 	uint8_t size;
 
+	printk("xxx mkbp_fifo_add start\n");
 	mutex_lock(&fifo_add_mutex);
 	if (fifo_entries >= fifo_max_depth) {
 		mutex_unlock(&fifo_add_mutex);
@@ -202,6 +203,7 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 		fifo_remove(NULL);
 
 	mutex_unlock(&fifo_add_mutex);
+	printk("xxx mkbp_fifo_add end\n");
 	return EC_SUCCESS;
 }
 

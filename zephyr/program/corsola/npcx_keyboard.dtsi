@@ -7,7 +7,7 @@
 	status = "okay";
 	/* No KSO2 (it's inverted and implemented by GPIO) */
 	pinctrl-0 = <
-		&ksi0_gp31
+		
 		&ksi1_gp30
 		&ksi2_gp27
 		&ksi3_gp26
