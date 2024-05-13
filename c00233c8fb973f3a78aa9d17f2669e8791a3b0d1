@@ -188,6 +188,30 @@
       },
       "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed56977_523aab78",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T23:49:53Z",
+      "side": 1,
+      "message": "Ok. This type of pattern is used a lot in the EC tests. To make it more readable and simpler to port those tests without error, I think it would make sense to create an API for it.\n\nYou could either re-use the [`test_multistep` API](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/test_util.h;l\u003d274-282;drc\u003d0f215789555c49d12584a2e1a5fdd7d1c4010803) or create something else.",
+      "parentUuid": "bf3826b4_ebbdb8fe",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 79
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
