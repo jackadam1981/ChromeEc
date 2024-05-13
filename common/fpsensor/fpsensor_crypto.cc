@@ -13,12 +13,10 @@
 
 #include <span>
 
-extern "C" {
 #include "otp_key.h"
 #include "rollback.h"
 #include "sha256.h"
 #include "util.h"
-}
 
 #include <stdbool.h>
 

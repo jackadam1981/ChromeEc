@@ -8,7 +8,6 @@
 #include <zephyr/shell/shell.h>
 #endif
 
-extern "C" {
 #include "atomic.h"
 #include "clock.h"
 #include "common.h"
@@ -25,7 +24,6 @@ extern "C" {
 #include "trng.h"
 #include "util.h"
 #include "watchdog.h"
-}
 
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
