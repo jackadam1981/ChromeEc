@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "886ae7ef_c30ee240",
+        "filename": "Makefile.rules",
+        "patchSetId": 24
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T18:47:27Z",
+      "side": 0,
+      "message": "yes, this logic was moved into the provate `build.mk` files.",
+      "parentUuid": "43919724_099c1ea4",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 25
+      },
+      "revId": "9c8208e88cfebf55bfc9c1ba4e0bbf4f0165e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cb04cda_abb5c7aa",
         "filename": "driver/fingerprint/elan/build.mk",
         "patchSetId": 24
