@@ -93,6 +93,30 @@
       },
       "revId": "c7ff533619da8359ec79682ed130e7997da6618d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe6e7b3_bf5dd31d",
+        "filename": "Makefile",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-13T17:53:34Z",
+      "side": 1,
+      "message": "This issue has been resolved after rebasing on top of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5529459",
+      "parentUuid": "ff33ddde_dca15789",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "c7ff533619da8359ec79682ed130e7997da6618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
