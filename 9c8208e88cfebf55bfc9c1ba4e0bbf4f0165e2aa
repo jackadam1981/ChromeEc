@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43919724_099c1ea4",
+        "filename": "Makefile.rules",
+        "patchSetId": 24
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T18:34:44Z",
+      "side": 0,
+      "message": "This logic was moved to the private `build.mk`, right?",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 25
+      },
+      "revId": "9c8208e88cfebf55bfc9c1ba4e0bbf4f0165e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb04cda_abb5c7aa",
+        "filename": "driver/fingerprint/elan/build.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-13T18:34:44Z",
+      "side": 0,
+      "message": "Is this change needed? Is it just a bug in the original `build.mk`? If so, it would probably be a little cleaner/clearer if you pulled it into a separate CL.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "9c8208e88cfebf55bfc9c1ba4e0bbf4f0165e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
