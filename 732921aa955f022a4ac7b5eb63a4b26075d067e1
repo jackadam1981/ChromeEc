@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0b3424_160ceb2c",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:34Z",
+      "side": 1,
+      "message": "nit: You can use:\n\n```\nint ret \u003d mpu_protect_code_ram();\n```",
+      "range": {
+        "startLine": 471,
+        "startChar": 3,
+        "endLine": 473,
+        "endChar": 32
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c860ad0_fc421d55",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:34Z",
+      "side": 1,
+      "message": "Let\u0027s say: `Code RAM protected.\"` since the function being called is \"protect_code_ram\".",
+      "range": {
+        "startLine": 475,
+        "startChar": 24,
+        "endLine": 475,
+        "endChar": 40
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b7bcbb_1cfc2103",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:34Z",
+      "side": 1,
+      "message": "Let\u0027s say: `Failed to protect code RAM` since the function being called is \"protect_code_ram\".",
+      "range": {
+        "startLine": 478,
+        "startChar": 6,
+        "endLine": 478,
+        "endChar": 29
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafbb939_26b56403",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:34Z",
+      "side": 1,
+      "message": "To [avoid too much nesting](), let\u0027s do:\n\n```\nif (ret \u003d\u003d EC_SUCCESS) {\n  ccprints(sucess message)\n  return;\n}\n\nccprints(fail message)\n```",
+      "range": {
+        "startLine": 474,
+        "startChar": 3,
+        "endLine": 479,
+        "endChar": 4
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
