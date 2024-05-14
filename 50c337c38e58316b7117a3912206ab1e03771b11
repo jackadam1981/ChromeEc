@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e8de452_88ddbee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-14T23:35:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "58ce50ca_99e4a654",
+      "revId": "50c337c38e58316b7117a3912206ab1e03771b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef5acc1c_c64fe651",
@@ -121,6 +139,30 @@
       "side": 1,
       "message": "You can add `unifdef` as a subtool to the subtools builder and pull it from cipd instead of requiring the SDK here.",
       "parentUuid": "906b9a51_1224b159",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "50c337c38e58316b7117a3912206ab1e03771b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15737a43_c82ae931",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-14T23:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a05f777d_ae5626a1",
       "range": {
         "startLine": 20,
         "startChar": 0,
