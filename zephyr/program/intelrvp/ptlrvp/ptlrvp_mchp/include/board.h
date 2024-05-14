@@ -16,4 +16,19 @@
 #define PWR_EC_PCH_SYS_PWROK MCHP_GPIO_DECODE_015
 #define PWR_ALL_SYS_PWRGD MCHP_GPIO_DECODE_057
 
+/* I2C Ports */
+#define CHARGER_I2C i2c_smb_0
+#define CHARGER_I2C_PIN_CTRL_SCL &i2c00_scl_gpio004
+#define CHARGER_I2C_PIN_CTRL_SDA &i2c00_sda_gpio003
+#define CHARGER_I2C_VENDOR_PROP      \
+	pinctrl-names = "default";   \
+	port_sel = <0>;
+
+#define PD_POW_I2C i2c_smb_1
+#define PD_POW_I2C_PIN_CTRL_SCL &i2c06_scl_gpio140
+#define PD_POW_I2C_PIN_CTRL_SDA &i2c06_sda_gpio132
+#define PD_POW_I2C_VENDOR_PROP       \
+	pinctrl-names = "default";   \
+	port_sel = <6>;
+
 #endif /* PTLRVP_MCHP_BOARD_H_ */
