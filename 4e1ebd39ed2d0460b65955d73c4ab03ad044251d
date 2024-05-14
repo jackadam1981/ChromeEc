@@ -22,6 +22,30 @@
       },
       "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d064b72f_06976e89",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-14T19:34:40Z",
+      "side": 1,
+      "message": "Until a new GET_CONNECTOR_STATUS finishes successfully, the cached data is valid, right? Are you saying even attempting to get new status should invalidate the previous data? Can you please elaborate?",
+      "parentUuid": "0a140bd0_e56b5e76",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 34
+      },
+      "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
