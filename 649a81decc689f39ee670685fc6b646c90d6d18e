@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e64a61_78369225",
+        "filename": "extra/um_ppm/ppm_common.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T20:42:34Z",
+      "side": 1,
+      "message": "Did this end up being necessary even with the `ucsi_memory_region` being correctly sized? I\u0027m wondering why this data structure specifically needed alignment.",
+      "fixSuggestions": [
+        {
+          "fixId": "81e5dcb7_08e7c7c3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/um_ppm/ppm_common.h",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "\tstruct ucsi_memory_region ucsi_data;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "649a81decc689f39ee670685fc6b646c90d6d18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
