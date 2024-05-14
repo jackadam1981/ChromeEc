@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd2fae8_9409addc",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-14T22:52:58Z",
+      "side": 1,
+      "message": "Given that CL:5445288 adds [intelrvp.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/intelrvp/src/intelrvp.c) unconditionally, we need to rename this tag to `ec_spi_oe_mecc`.",
+      "parentUuid": "7e0f87c4_cd8aba75",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "fe8af061d0c85e4185cd7b119e8ad56e7bf68e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c33af540_865bd9c0",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f107fd_3ae2de7d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-14T22:52:58Z",
+      "side": 1,
+      "message": "See comment above.",
+      "parentUuid": "c33af540_865bd9c0",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "fe8af061d0c85e4185cd7b119e8ad56e7bf68e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "230beab5_03e84d25",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-04-25T18:19:05Z",
       "side": 1,
       "message": "its a WP signal",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "fe8af061d0c85e4185cd7b119e8ad56e7bf68e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59011e2_2d1be95e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-14T22:52:58Z",
+      "side": 1,
+      "message": "This is required by [system.c:581](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d581), otherwise build fails.",
+      "parentUuid": "230beab5_03e84d25",
       "range": {
         "startLine": 15,
         "startChar": 3,
