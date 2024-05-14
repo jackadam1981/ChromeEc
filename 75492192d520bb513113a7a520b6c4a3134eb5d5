@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ea241c4_8eab8348",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-14T02:24:07Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 787,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e0efc697_5e952bb3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/ucsi_v3.h",
+              "range": {
+                "startLine": 780,
+                "startChar": 0,
+                "endLine": 781,
+                "endChar": 0
+              },
+              "replacement": "struct cc_ci_t {  // NOLINT\n"
+            }
+          ]
+        }
+      ],
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
