@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "381e95eb_2ce5b3d1",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T18:49:17Z",
+      "side": 1,
+      "message": "This should probably interact with `data-\u003econnector_status` so that we can properly test that `ack_cc_ci` properly clears the status bits.",
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92d25c9a_56e5ca83",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
@@ -14,6 +31,30 @@
       "writtenOn": "2024-05-14T15:02:29Z",
       "side": 1,
       "message": "I\u0027m not sure it makes sense to wrap all the Realtek specific fields into a shared data structure.\n\nWhat about passing in the \"change indication mask\" as one parameter, and the \"command completed acknowledge\" bit as a second parameter.  This will allow other drivers ignore the \"change indication mask\".",
+      "range": {
+        "startLine": 1040,
+        "startChar": 58,
+        "endLine": 1040,
+        "endChar": 78
+      },
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863c8e1b_0ae5b351",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T18:49:17Z",
+      "side": 1,
+      "message": "+1. Something like the following:\n\n```\nint pd_ack_cc_ci(const struct device *dev, const union connection_status_change ack_conn_indicator, bool ack_cmd_complete) {\n  bool ack_ci \u003d ack_conn_indicator.raw_value !\u003d 0;\n  ...\n}\n```",
+      "parentUuid": "92d25c9a_56e5ca83",
       "range": {
         "startLine": 1040,
         "startChar": 58,
@@ -61,6 +102,23 @@
           ]
         }
       ],
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa2b425_879bda39",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T18:49:17Z",
+      "side": 1,
+      "message": "Can you get multiple connector statuses without acking? Should we handle all events here or just a diff w/ the last cached value?",
       "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
