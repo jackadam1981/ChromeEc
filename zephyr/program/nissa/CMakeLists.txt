@@ -117,6 +117,7 @@ if(DEFINED CONFIG_BOARD_YAVILLA)
 			"yavilla/src/keyboard.c"
 			"yavilla/src/board.c"
 			"yavilla/src/thermal.c"
+			"yavilla/src/mp2964_update.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "yavilla/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "yavilla/src/charger.c")
