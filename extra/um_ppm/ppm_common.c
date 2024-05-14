@@ -258,6 +258,21 @@ static bool match_pending_command(struct ppm_common_device *dev,
 	       dev->ucsi_data.control.command == command;
 }
 
+static void ppm_common_reset_data(struct ppm_common_device *dev)
+{
+	memset(&dev->pending, 0, sizeof(dev->pending));
+	for (int i = 0; i < dev->num_ports; i++) {
+		memset(dev->per_port_status + i, 0,
+		       sizeof(struct ucsiv3_get_connector_status_data));
+	}
+	dev->last_connector_changed = -1;
+	dev->last_connector_alerted = -1;
+	memset(&dev->ucsi_data, 0, sizeof(dev->ucsi_data));
+	clear_last_error(dev);
+	memset(&dev->ppm_error_result, 0, sizeof(dev->ppm_error_result));
+	dev->notif_mask.raw_value = 0;
+}
+
 static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 {
 	struct ucsi_control *control = &dev->ucsi_data.control;
@@ -299,6 +314,10 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 			goto success;
 		}
 		break;
+	case UCSI_CMD_PPM_RESET:
+		ppm_common_reset_data(dev);
+		ret = 0;
+		goto success;
 	case UCSI_CMD_SET_NOTIFICATION_ENABLE:
 		/* Save the notification mask. */
 		platform_memcpy(&dev->notif_mask, control->command_specific,
