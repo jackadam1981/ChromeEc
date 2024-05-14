@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da92b8d4_650aa9fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:34:53Z",
+      "side": 1,
+      "message": "I think it looks ok, but adding Patryk since he\u0027s a lot more familiar with Zephyr.",
+      "revId": "b247c0bc4edb32f91dd960baf6db9b0e61b987da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02d9e64_5b8d7ab1",
+        "filename": "zephyr/test/hwtest/include/multistep_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:34:53Z",
+      "side": 1,
+      "message": "Would also be good to mention the return type. Maybe \"void function that takes no arguments\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "b247c0bc4edb32f91dd960baf6db9b0e61b987da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604f1cdd_854a0d57",
+        "filename": "zephyr/test/hwtest/include/multistep_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:34:53Z",
+      "side": 1,
+      "message": "For symmetry, and in case some other test does not restore the scratchpad, we should probably create a \"setup\" function that also clears the scratchpad.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "b247c0bc4edb32f91dd960baf6db9b0e61b987da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2049eae4_5a84bba7",
+        "filename": "zephyr/test/hwtest/include/multistep_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:34:53Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand this. If the test shell is automatically running the test, why does the crash/reboot behave differently than when we run it directly?",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "b247c0bc4edb32f91dd960baf6db9b0e61b987da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1757574_150279d7",
+        "filename": "zephyr/test/hwtest/src/abort.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:34:53Z",
+      "side": 1,
+      "message": "nit: can you split this CL into two CLs? (go/smallcls)\n\nOne CL that adds `multistep_test.h` and a followup CL that changes the `abort.c` test to use it?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "b247c0bc4edb32f91dd960baf6db9b0e61b987da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
