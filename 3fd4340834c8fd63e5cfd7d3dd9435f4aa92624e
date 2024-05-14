@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69906682_362c4608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:27:53Z",
+      "side": 1,
+      "message": "I don\u0027t love this change, but as I\u0027m refactoring `fpsensor_state.h`, I\u0027d like to be able to use C++ in it. Right now the fpsensor headers are kind of a mess, so it\u0027s hard for me to break up the `fpsensor_state.h` into a C++ vs C version. AFAICT, compiling these files with C++ shouldn\u0027t cause any problems, but let me know your thoughts.",
+      "revId": "3fd4340834c8fd63e5cfd7d3dd9435f4aa92624e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
