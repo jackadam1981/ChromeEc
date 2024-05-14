@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a32b22_7ff97f80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T22:03:46Z",
+      "side": 1,
+      "message": "You don\u0027t need to add this to commit message. I don\u0027t know if zephyr has a `Co-Developed-By:` tag like Linux but you could use that here:\n```\nCo-Developed-By: Abhishek Pandit-Subedi \u003cabhishekpandit@chromium.org\u003e\n```\n\nOr if we don\u0027t do that, just leave it out entirely.",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636cf2d5_2cc78406",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2381,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T22:03:46Z",
+      "side": 1,
+      "message": "Also note that we clear and restore the CCI callback to avoid the sync cmd\u0027s results from polluting the other callbacks.",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a38efb1_38d6a4c0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T22:03:46Z",
+      "side": 1,
+      "message": "nit: Should turn this `100` into a `#define SYNC_CMD_RETRY_COUNT 100`",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
