@@ -33,9 +33,10 @@ def fetch_records(basename):
 
 
 def main(argv):
+    """Main function."""
     if len(argv) != 2:
         print("usage:")
-        print(" %s input.py" % argv[0])
+        print(f" {argv[0]} input.py")
         return
 
     inputf = argv[1]
@@ -43,40 +44,33 @@ def main(argv):
     outputf = basename + ".board"
     outputs = basename + ".scenario"
 
-    print("Converting %s to %s, %s" % (inputf, outputf, outputs))
+    print(f"Converting {inputf} to {outputf}, {outputs}")
 
     inas = fetch_records(basename)
 
-    boardfile = open(outputf, "w")
-    scenario = open(outputs, "w")
+    with open(outputf, "w", encoding="utf-8") as boardfile, open(
+        outputs, "w", encoding="utf-8"
+    ) as scenario:
+        boardfile.write("[\n")
+        scenario.write("[\n")
+        start = True
 
-    boardfile.write("[\n")
-    scenario.write("[\n")
-    start = True
+        for rec in inas:
+            if start:
+                start = False
+            else:
+                boardfile.write(",\n")
+                scenario.write(",\n")
 
-    for rec in inas:
-        if start:
-            start = False
-        else:
-            boardfile.write(",\n")
-            scenario.write(",\n")
+            record = f'  {{"name": "{rec[2]}", "rs": {rec[4]:f}, "sweetberry": "A", "channel": {rec[1] - 64:d}}}'
+            boardfile.write(record)
+            scenario.write(f'"{rec[2]}"')
 
-        record = (
-            '  {"name": "%s", "rs": %f, "sweetberry": "A", "channel": %d}'
-            % (
-                rec[2],
-                rec[4],
-                rec[1] - 64,
-            )
-        )
-        boardfile.write(record)
-        scenario.write('"%s"' % rec[2])
+        boardfile.write("\n")
+        boardfile.write("]")
 
-    boardfile.write("\n")
-    boardfile.write("]")
-
-    scenario.write("\n")
-    scenario.write("]")
+        scenario.write("\n")
+        scenario.write("]")
 
 
 if __name__ == "__main__":

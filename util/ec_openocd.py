@@ -7,7 +7,7 @@
 
 import argparse
 import dataclasses
-import distutils.spawn
+import distutils.spawn  # pylint:disable=no-name-in-module,import-error
 import os
 import pathlib
 import signal
@@ -64,9 +64,13 @@ def create_gdb_args(board, port, executable, attach):
 
     board_info = boards[board]
 
-    if distutils.spawn.find_executable(board_info.gdb_variant):
+    if distutils.spawn.find_executable(
+        board_info.gdb_variant
+    ):  # pylint:disable=no-member
         gdb_path = board_info.gdb_variant
-    elif distutils.spawn.find_executable(FALLBACK_GDB_VARIANT):
+    elif distutils.spawn.find_executable(
+        FALLBACK_GDB_VARIANT
+    ):  # pylint:disable=no-member
         print(
             f"GDB executable {board_info.gdb_variant} not found, "
             f"using {FALLBACK_GDB_VARIANT} instead"

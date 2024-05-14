@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright 2018 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Note: This is a py2/3 compatible file.
+"""Unpacks ftb apparently."""
 
 from __future__ import print_function
 
@@ -13,6 +13,8 @@ import os
 
 
 class Header(ctypes.Structure):
+    """A container for FTP Header."""
+
     _pack_ = 1
     _fields_ = [
         ("signature", ctypes.c_uint32),
@@ -57,50 +59,51 @@ OUTPUT_FILE_SIZE = UPDATE_PDU_SIZE + 128 * 1024
 
 
 def main():
+    """Main function."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", "-i", required=True)
     parser.add_argument("--output", "-o", required=True)
     args = parser.parse_args()
 
-    with open(args.input, "rb") as f:
-        bs = f.read()
+    with open(args.input, "rb") as fff:
+        bbs = fff.read()
 
-    size = len(bs)
+    size = len(bbs)
     if size < FW_HEADER_SIZE + FW_BYTES_ALIGN:
-        raise Exception("FW size too small")
+        raise ValueError("FW size too small")
 
     print("FTB file size:", size)
 
     header = Header()
     assert ctypes.sizeof(header) == FW_HEADER_SIZE
 
-    ctypes.memmove(ctypes.addressof(header), bs, ctypes.sizeof(header))
+    ctypes.memmove(ctypes.addressof(header), bbs, ctypes.sizeof(header))
     if (
         header.signature != FW_HEADER_SIGNATURE
         or header.ftb_ver != FW_FTB_VER
         or header.chip_id != FW_CHIP_ID
     ):
-        raise Exception("Invalid header")
+        raise ValueError("Invalid header")
 
-    for key, _ in header._fields_:
-        v = getattr(header, key)
-        if isinstance(v, ctypes.Array):
-            print(key, list(map(hex, v)))
+    for key, _ in header._fields_:  # pylint:disable=protected-access
+        vvv = getattr(header, key)
+        if isinstance(vvv, ctypes.Array):
+            print(key, list(map(hex, vvv)))
         else:
-            print(key, hex(v))
+            print(key, hex(vvv))
 
     dimension = sum(header.sec_size)
 
     assert dimension + FW_HEADER_SIZE + FW_BYTES_ALIGN == size
-    data = bs[FW_HEADER_SIZE : FW_HEADER_SIZE + dimension]
+    data = bbs[FW_HEADER_SIZE : FW_HEADER_SIZE + dimension]
 
-    with open(args.output, "wb") as f:
+    with open(args.output, "wb") as fff:
         # ensure the file size
-        f.seek(OUTPUT_FILE_SIZE - 1, os.SEEK_SET)
-        f.write(b"\x00")
+        fff.seek(OUTPUT_FILE_SIZE - 1, os.SEEK_SET)
+        fff.write(b"\x00")
 
-        f.seek(0, os.SEEK_SET)
-        f.write(bs[0 : ctypes.sizeof(header)])
+        fff.seek(0, os.SEEK_SET)
+        fff.write(bbs[0 : ctypes.sizeof(header)])
 
         offset = 0
         # write each sections
@@ -111,11 +114,11 @@ def main():
             if size == 0:
                 continue
 
-            f.seek(UPDATE_PDU_SIZE + addr, os.SEEK_SET)
-            f.write(data[offset : offset + size])
+            fff.seek(UPDATE_PDU_SIZE + addr, os.SEEK_SET)
+            fff.write(data[offset : offset + size])
             offset += size
 
-        f.flush()
+        fff.flush()
 
 
 if __name__ == "__main__":
