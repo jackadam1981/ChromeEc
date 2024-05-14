@@ -360,4 +360,8 @@ int tps_rw_connection_manager_control(const struct i2c_dt_spec *i2c,
 int tps_rd_connection_manager_status(const struct i2c_dt_spec *i2c,
 				     union reg_connection_manager_status *buf);
 
+int tps_stream_data(const struct i2c_dt_spec *i2c,
+		    const uint8_t broadcast_address, const uint8_t *buf,
+		    size_t buf_len);
+
 #endif /* ZEPHYR_DRIVERS_USBC_TPS6699X_H_ */

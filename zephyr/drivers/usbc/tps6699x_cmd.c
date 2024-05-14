@@ -294,3 +294,26 @@ int tps_rd_connection_manager_status(const struct i2c_dt_spec *i2c,
 			    sizeof(union reg_connection_manager_status),
 			    I2C_MSG_READ);
 }
+
+int tps_stream_data(const struct i2c_dt_spec *i2c,
+		    const uint8_t broadcast_address, const uint8_t *buf,
+		    size_t buf_len)
+{
+	struct i2c_msg msg[1];
+	int msg_len;
+
+	/* Create new i2c target for transfer. */
+	const struct i2c_dt_spec stream_i2c = {
+		.bus = i2c->bus,
+		.addr = (uint16_t)broadcast_address,
+	};
+
+	msg[0].buf = (uint8_t *)buf;
+	msg[0].len = buf_len;
+	msg[0].flags = I2C_MSG_WRITE | I2C_MSG_STOP;
+
+	/* 1 message to send */
+	msg_len = 1;
+
+	return i2c_transfer_dt(&stream_i2c, msg, msg_len);
+}
