@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c667270e_d120c6a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "\"command\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7ed297_45d403c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "\"command\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ff83cd_9c771eda",
+        "filename": "chip/npcx/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "To avoid confusion with [the generic MPU protections](https://crrev.com/c/5325938), let\u0027s call this `CONFIG_RAM_LOCK`.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e793f5_4b625b7c",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "We probably still want to continue in this case so that `mpu_config_region` runs.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 14
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57de344b_c6afd480",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "We probably still want to continue in this case so that `mpu_config_region` runs.",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 14
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24516d3_c0209b02",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "You can remove this.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49bd8d2_be488b9d",
+        "filename": "test/ram_lock.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:02:39Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
