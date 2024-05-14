@@ -184,6 +184,7 @@ register_intelrvp_project(
     project_name="ptlerb_mchp",
     chip="mec172x/mec172x_nsz/mec1727",
     extra_dts_overlays=[
+        here / "ptlrvp/ptlerb_mchp/adc.dtsi",
         here / "ptlrvp/ptlerb_mchp/gpio.dtsi",
     ],
     extra_kconfig_files=[
