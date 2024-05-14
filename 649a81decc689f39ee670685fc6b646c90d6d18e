@@ -52,6 +52,24 @@
       "parentUuid": "a8e64a61_78369225",
       "revId": "649a81decc689f39ee670685fc6b646c90d6d18e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7944655b_7e7e47f1",
+        "filename": "extra/um_ppm/ppm_common.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-14T21:14:39Z",
+      "side": 1,
+      "message": "This CL is still required. \n\n\u003e __aligned(sizeof(uint32_t)) in ppm.h where struct ucsi_memory_region is actually defined.\n\nDone.",
+      "parentUuid": "0e821b1a_25f4811d",
+      "revId": "649a81decc689f39ee670685fc6b646c90d6d18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
