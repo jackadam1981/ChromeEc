@@ -6,6 +6,7 @@
 #include "include/power_signals.h"
 
 #include "adc.dtsi"
+#include "fan.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dtsi"
 #include "../ioexp.dtsi"
