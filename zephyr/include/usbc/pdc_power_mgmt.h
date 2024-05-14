@@ -547,4 +547,7 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status);
  */
 int pdc_power_mgmt_get_lpm_ppm_info(int port, struct lpm_ppm_info_t *info);
 
+/* Hack to fwupdate TI board. */
+int pdc_do_firmware_update();
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
