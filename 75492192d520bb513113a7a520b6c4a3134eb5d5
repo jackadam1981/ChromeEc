@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92d25c9a_56e5ca83",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-14T15:02:29Z",
+      "side": 1,
+      "message": "I\u0027m not sure it makes sense to wrap all the Realtek specific fields into a shared data structure.\n\nWhat about passing in the \"change indication mask\" as one parameter, and the \"command completed acknowledge\" bit as a second parameter.  This will allow other drivers ignore the \"change indication mask\".",
+      "range": {
+        "startLine": 1040,
+        "startChar": 58,
+        "endLine": 1040,
+        "endChar": 78
+      },
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ea241c4_8eab8348",
         "filename": "zephyr/include/drivers/ucsi_v3.h",
         "patchSetId": 3
