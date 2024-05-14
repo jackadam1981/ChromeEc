@@ -102,10 +102,19 @@ int svdm_get_hpd_gpio(int port)
 
 void svdm_set_hpd_gpio(int port, int en)
 {
+	const struct gpio_dt_spec *typec_hpd[] = {
+		GPIO_DT_FROM_NODELABEL(gpio_usb_c0_dp_in_hpd),
+		GPIO_DT_FROM_NODELABEL(gpio_usb_c1_dp_in_hpd),
+	};
+
 	if (port != active_dp_port)
 		return;
 
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_ap_dp_hpd_l), !en);
+
+	if (port == DP_PORT_C0 || port == DP_PORT_C1) {
+		gpio_pin_set_dt(typec_hpd[port], en);
+	}
 }
 
 __override void svdm_dp_post_config(int port)
