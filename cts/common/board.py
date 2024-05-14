@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Note: This is a py2/3 compatible file.
+"""Class representing a single board connected to a host machine."""
 
 from __future__ import print_function
 
@@ -12,7 +12,6 @@ import shutil
 import subprocess as sp
 
 import serial  # pylint:disable=import-error
-import six
 
 
 OCD_SCRIPT_DIR = "/usr/share/openocd/scripts"
@@ -29,13 +28,7 @@ FLASH_OFFSETS = {
 REBOOT_MARKER = "UART initialized after reboot"
 
 
-def get_subprocess_args():
-    if six.PY3:
-        return {"encoding": "utf-8"}
-    return {}
-
-
-class Board(six.with_metaclass(ABCMeta, object)):
+class Board(metaclass=ABCMeta):
     """Class representing a single board connected to a host machine.
 
     Attributes:
@@ -93,7 +86,7 @@ class Board(six.with_metaclass(ABCMeta, object)):
           List of serials
         """
         usb_args = ["sudo", "lsusb", "-v", "-d", "0x0483:0x374b"]
-        st_link_info = sp.check_output(usb_args, **get_subprocess_args())
+        st_link_info = sp.check_output(usb_args, encoding="utf-8")
         st_serials = []
         for line in st_link_info.split("\n"):
             if "iSerial" not in line:
@@ -107,7 +100,6 @@ class Board(six.with_metaclass(ABCMeta, object)):
     @abstractmethod
     def get_serial(self):
         """Subclass should implement this."""
-        pass
 
     def send_openocd_commands(self, commands):
         """Send a command to the board via openocd.
@@ -133,17 +125,18 @@ class Board(six.with_metaclass(ABCMeta, object)):
             args += ["-c", cmd]
         args += ["-c", "shutdown"]
 
-        rv = 1
-        with open(self.openocd_log, "a") as output:
-            rv = sp.call(args, stdout=output, stderr=sp.STDOUT)
+        rvv = 1
+        with open(self.openocd_log, "a", encoding="utf-8") as output:
+            rvv = sp.call(args, stdout=output, stderr=sp.STDOUT)
 
-        if rv != 0:
+        if rvv != 0:
             self.dump_openocd_log()
 
-        return rv == 0
+        return rvv == 0
 
     def dump_openocd_log(self):
-        with open(self.openocd_log) as log:
+        """Prints the openocd log file."""
+        with open(self.openocd_log, encoding="utf-8") as log:
             print(log.read())
 
     def build(self, ec_dir):
@@ -163,17 +156,18 @@ class Board(six.with_metaclass(ABCMeta, object)):
             "-j",
         ]
 
-        rv = 1
-        with open(self.build_log, "a") as output:
-            rv = sp.call(cmds, stdout=output, stderr=sp.STDOUT)
+        ret = 1
+        with open(self.build_log, "a", encoding="utf-8") as output:
+            ret = sp.call(cmds, stdout=output, stderr=sp.STDOUT)
 
-        if rv != 0:
+        if ret != 0:
             self.dump_build_log()
 
-        return rv == 0
+        return ret == 0
 
     def dump_build_log(self):
-        with open(self.build_log) as log:
+        """Prints the build log."""
+        with open(self.build_log, encoding="utf-8") as log:
             print(log.read())
 
     def flash(self, image_path):
@@ -182,12 +176,13 @@ class Board(six.with_metaclass(ABCMeta, object)):
             "reset_config connect_assert_srst",
             "init",
             "reset init",
-            "flash write_image erase %s %s" % (image_path, self.flash_offset),
+            f"flash write_image erase {image_path} {self.flash_offset}",
         ]
         return self.send_openocd_commands(cmd)
 
     def to_string(self):
-        s = (
+        """Returns a string representation of this object."""
+        return (
             "Type: Board\n"
             "board: " + self.board + "\n"
             "hla_serial: " + self.hla_serial + "\n"
@@ -195,7 +190,6 @@ class Board(six.with_metaclass(ABCMeta, object)):
             "tty_port: " + self.tty_port + "\n"
             "tty: " + str(self.tty) + "\n"
         )
-        return s
 
     def reset_halt(self):
         """Reset then halt board."""
@@ -218,7 +212,7 @@ class Board(six.with_metaclass(ABCMeta, object)):
         tty = None
         try:
             tty = serial.Serial(self.tty_port, 115200, timeout=1)
-        except serial.SerialException:
+        except serial.SerialException as err:
             raise ValueError(
                 "Failed to open "
                 + self.tty_port
@@ -227,7 +221,7 @@ class Board(six.with_metaclass(ABCMeta, object)):
                 + ". Please make sure the port is available and you have"
                 + " permission to read it. Create dialout group and run:"
                 + " sudo usermod -a -G dialout <username>."
-            )
+            ) from err
         self.tty = tty
 
     def read_tty(self, max_boot_count=1):
@@ -244,21 +238,21 @@ class Board(six.with_metaclass(ABCMeta, object)):
         line = []
         boot = 0
         while True:
-            c = self.tty.read().decode("utf-8")
-            if not c:
+            ccc = self.tty.read().decode("utf-8")
+            if not ccc:
                 break
-            line.append(c)
-            if c == "\n":
-                l = "".join(line)
-                buf.append(l)
-                if REBOOT_MARKER in l:
+            line.append(ccc)
+            if ccc == "\n":
+                lll = "".join(line)
+                buf.append(lll)
+                if REBOOT_MARKER in lll:
                     boot += 1
                 line = []
                 if boot > max_boot_count:
                     break
 
-        l = "".join(line)
-        buf.append(l)
+        lll = "".join(line)
+        buf.append(lll)
         result = "".join(buf)
 
         return result, boot
@@ -280,7 +274,7 @@ class Board(six.with_metaclass(ABCMeta, object)):
                     self.tty_port,
                     "--query=property",
                 ],
-                **get_subprocess_args()
+                encoding="utf-8",
             )
             for line in [l.strip() for l in properties.split("\n")]:
                 if line.startswith(id_prefix):
@@ -323,16 +317,16 @@ class TestHarness(Board):
         if self.hla_serial:
             return  # serial was already loaded
         try:
-            with open(self.serial_path, mode="r") as f:
-                s = f.read()
-                self.hla_serial = s.strip()
+            with open(self.serial_path, mode="r", encoding="utf-8") as fff:
+                sss = fff.read()
+                self.hla_serial = sss.strip()
                 return
-        except IOError:
+        except IOError as err:
             msg = (
                 "Your TH board has not been identified.\n"
                 "Connect only TH and run the script --setup, then try again."
             )
-            raise RuntimeError(msg)
+            raise RuntimeError(msg) from err
 
     def save_serial(self):
         """Saves the TH serial number to a file."""
@@ -344,19 +338,18 @@ class TestHarness(Board):
             )
             raise RuntimeError(msg)
         if len(serials) < 1:
-            msg = "No test boards were found.\n" "Check boards are connected."
+            msg = "No test boards were found.\nCheck boards are connected."
             raise RuntimeError(msg)
 
-        s = serials[0]
+        sss = serials[0]
         serial_dir = os.path.dirname(self.serial_path)
         if not os.path.exists(serial_dir):
             os.makedirs(serial_dir)
-        with open(self.serial_path, mode="w") as f:
-            f.write(s)
-            self.hla_serial = s
+        with open(self.serial_path, mode="w", encoding="utf-8") as fff:
+            fff.write(sss)
+            self.hla_serial = sss
 
-        print("Your TH serial", s, "has been saved as", self.serial_path)
-        return
+        print("Your TH serial", sss, "has been saved as", self.serial_path)
 
 
 class DeviceUnderTest(Board):
@@ -377,7 +370,7 @@ class DeviceUnderTest(Board):
           hla_ser: Serial number if board uses an HLA adaptor
         """
         Board.__init__(self, board, module, hla_serial=hla_ser)
-        self.th = th
+        self.th = th  # pylint:disable=invalid-name
         self.log_dir = log_dir
         self.openocd_log = os.path.join(log_dir, "openocd_dut.log")
         self.build_log = os.path.join(log_dir, "build_dut.log")
