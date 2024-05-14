@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9abf48e_53c2d305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:46:55Z",
+      "side": 1,
+      "message": "I think this looks good, but I like [Daisuke\u0027s suggestion](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5492728/comment/3ab9dc91_143a21f0/), so please do that before submitting.",
+      "revId": "661f58972e54683648e8b3ea57316237496e5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ab9dc91_143a21f0",
         "filename": "baseboard/bloonchipper/build.mk",
         "patchSetId": 28
