@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abfb7167_0be4a913",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-14T12:25:42Z",
+      "side": 1,
+      "message": "\u003eCan you add it to the commit message? \n\nDone\n\n\u003eIs there an HTML rendering of it somewhere that makes it easy to read?\n\nUnfortunately, I\u0027m not aware of such thing, but still waiting for a response from one guy.\n\n\u003eWho monitors these test results?\n\nI don\u0027t think there are clear guidelines. It depends on maintainers e.g. if ST found that my commit causes some failures, they created an [issue](\nhttps://github.com/zephyrproject-rtos/zephyr/issues/66312).",
+      "parentUuid": "49cc8397_5c3e9146",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3f73402_a450e3e3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
