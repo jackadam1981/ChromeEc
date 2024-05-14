@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b758e5a_392139e5",
+        "filename": "extra/um_ppm/include/ppm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T21:32:53Z",
+      "side": 1,
+      "message": "nit: `__attribute__((__packed__, aligned(4)))`",
+      "fixSuggestions": [
+        {
+          "fixId": "8d960123_8f17720a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/um_ppm/include/ppm.h",
+              "range": {
+                "startLine": 158,
+                "startChar": 0,
+                "endLine": 159,
+                "endChar": 0
+              },
+              "replacement": "} __attribute__((__packed__, aligned(4)));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "35931d95458fba73aeb04a6249e4fd4ab770a4ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
