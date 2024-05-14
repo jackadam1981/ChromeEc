@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "259adeeb_1242d4cd",
+        "filename": "test/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T23:06:30Z",
+      "side": 1,
+      "message": "Can you add the `ram_lock` test to the [`run_device_tests.py`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py) script too? [Example](https://crrev.com/c/5238955).",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 10
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e24516d3_c0209b02",
         "filename": "test/ram_lock.c",
         "patchSetId": 6
