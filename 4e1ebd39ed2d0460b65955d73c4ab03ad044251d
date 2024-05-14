@@ -46,6 +46,30 @@
       },
       "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e115e6_255841ef",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T21:57:03Z",
+      "side": 1,
+      "message": "I agree with Daisuke -- I think this is the correct behavior:\n\n* Alert should clear cached conn status\n* Next successful conn status should get cached\n* All subsequent conn status reads from cached until alert is processed again\n\nAlerts don\u0027t get handled while a command is being executed (I.e. state !\u003d ST_IDLE) so ordering should be correctly preserved.",
+      "parentUuid": "d064b72f_06976e89",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 34
+      },
+      "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
