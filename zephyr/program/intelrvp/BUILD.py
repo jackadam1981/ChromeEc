@@ -186,6 +186,7 @@ register_intelrvp_project(
     extra_dts_overlays=[
         here / "ptlrvp/ptlerb_mchp/adc.dtsi",
         here / "ptlrvp/ptlerb_mchp/gpio.dtsi",
+        here / "ptlrvp/ptlerb_mchp/i2c.dtsi",
     ],
     extra_kconfig_files=[
         here / "ptlrvp/ptlerb_mchp/project.conf",
