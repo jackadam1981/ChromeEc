@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30ec8c6_5f5b0a88",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T20:59:29Z",
+      "side": 1,
+      "message": "nit: Let\u0027s reorder this to keep similar lines together.",
+      "revId": "cded2018a26aa71a9beff1d0c9da0c341eea118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba103bed_a7336123",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T20:59:29Z",
+      "side": 1,
+      "message": "nit: replace with single memset\n```\nmemset(dev-\u003eper_port_status, 0, sizeof(struct ucsiv3_get_connector_status_data) * dev-\u003enum_ports);\n```",
+      "revId": "cded2018a26aa71a9beff1d0c9da0c341eea118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548bd65f_fcd5cc56",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T20:59:29Z",
+      "side": 1,
+      "message": "clear_last_error already memsets. This is not needed.",
+      "revId": "cded2018a26aa71a9beff1d0c9da0c341eea118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
