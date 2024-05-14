@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8cafa92_5d48f972",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-14T06:57:07Z",
+      "side": 1,
+      "message": "No, it also works on `native_posix` and their 64 bit flavors. It should work on both `host` toolchain and `llvm`, but for me only `llvm` worked. I\u0027ve investigated if it\u0027s possible to run our tests with ASAN, but the trick is that it needs environment variable `ASAN_OPTIONS\u003d\"log_path\u003dstdout\"`, to print errors. That\u0027s why they added the `--enable-asan` option (which basically sets `CONFIG_ASAN\u003dy` during build and `ASAN_OPTIONS` during runtime) to `twister`. IMHO, it would be better if we could just enable ASAN on specific tests.",
+      "parentUuid": "f0304eac_51f9cbb3",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "9e0f7660e993513945c6bd4f5af7c668b10de5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eddb1fa_20188f7e",
