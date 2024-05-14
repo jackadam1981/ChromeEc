@@ -6,6 +6,7 @@
 #include "include/board.h"
 
 #include "adc.dtsi"
+#include "fan.dtsi"
 #include "gpio.dtsi"
 #include "ioexp_gpio.dtsi"
 #include "temp_sensor.dts"
