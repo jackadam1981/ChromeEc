@@ -93,6 +93,30 @@
       },
       "revId": "e0e9635aa5f631ab62e5e7d2f5f9dae5fcefbcd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c7e832_d0d5fec7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-14T16:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648cdf36_92cc3a2d",
+      "range": {
+        "startLine": 1950,
+        "startChar": 2,
+        "endLine": 1950,
+        "endChar": 46
+      },
+      "revId": "e0e9635aa5f631ab62e5e7d2f5f9dae5fcefbcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
