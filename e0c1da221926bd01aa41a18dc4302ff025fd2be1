@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f226980_89d64eff",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-14T19:45:14Z",
+      "side": 1,
+      "message": "We probably want to create a separate project that includes the TI PDC until we can add the necessary hooks to support multiple PD chip types in the same build.  Something like \"brox-sku4\"?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "e0c1da221926bd01aa41a18dc4302ff025fd2be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
