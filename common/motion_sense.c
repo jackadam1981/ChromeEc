@@ -179,9 +179,11 @@ motion_sense_handle_interrupt_change(struct motion_sensor_t *sensor,
 	if (sensor->drv->enable_interrupt(sensor, enable_interrupt) !=
 	    EC_SUCCESS) {
 		/* Failed to set sensor interrupt */
+		CPRINTS("enable_interrupt(%d, %d) FAILED", (int)(sensor - motion_sensors), enable_interrupt);
 		return MOTION_SENSE_INTERRUPT_MODE_UNCHANGED;
 	}
 
+	CPRINTS("enable_interrupt(%d, %d) SUCCESS", (int)(sensor - motion_sensors), enable_interrupt);
 	return enable_interrupt ? MOTION_SENSE_INTERRUPT_MODE_ENABLED :
 				  MOTION_SENSE_INTERRUPT_MODE_DISABLED;
 }
@@ -890,7 +892,7 @@ static void check_and_queue_gestures(uint32_t *event)
  */
 void motion_sense_task(void *u)
 {
-	int i, ret, sample_id = 0;
+	int sample_id = 0;
 	timestamp_t ts_end_task;
 	int32_t time_diff;
 	uint32_t event = 0;
@@ -910,20 +912,21 @@ void motion_sense_task(void *u)
 	while (1) {
 		ts_begin_task = get_time();
 		atomic_add(&motion_sense_task_loops, 1);
-		for (i = 0; i < motion_sensor_count; ++i) {
+		for (int i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
 
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
-				ret = motion_sense_process(sensor, &event,
-							   &ts_begin_task);
+				int ret = motion_sense_process(sensor, &event,
+							       &ts_begin_task);
 				if (ret != EC_SUCCESS)
 					continue;
 				ready_status |= BIT(i);
 			}
 		}
-		if (IS_ENABLED(CONFIG_GESTURE_DETECTION))
+		if (IS_ENABLED(CONFIG_GESTURE_DETECTION)) {
 			check_and_queue_gestures(&event);
+		}
 		if (IS_ENABLED(CONFIG_LID_ANGLE)) {
 			const uint16_t lid_angle_sensors =
 				BIT(CONFIG_LID_ANGLE_SENSOR_BASE) |
@@ -944,7 +947,7 @@ void motion_sense_task(void *u)
 
 			snprintf_timestamp_now(ts_str, sizeof(ts_str));
 			CPRINTF("[%s event 0x%08x ", ts_str, event);
-			for (i = 0; i < motion_sensor_count; ++i) {
+			for (int i = 0; i < motion_sensor_count; ++i) {
 				sensor = &motion_sensors[i];
 				CPRINTF("%s=%-5d, %-5d, %-5d ", sensor->name,
 					sensor->xyz[X], sensor->xyz[Y],
@@ -991,7 +994,7 @@ void motion_sense_task(void *u)
 		ts_end_task = get_time();
 		wait_us = -1;
 
-		for (i = 0; i < motion_sensor_count; i++) {
+		for (int i = 0; i < motion_sensor_count; i++) {
 			struct motion_sensor_t *sensor = &motion_sensors[i];
 			enum sensor_config cfg_index =
 				motion_sense_get_ec_config();
@@ -1585,7 +1588,7 @@ DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD, host_cmd_motion_sense,
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_ACCELS
-static int command_accelrange(int argc, const char **argv)
+__maybe_unused static int command_accelrange(int argc, const char **argv)
 {
 	char *e;
 	int id, data, round = 1;
@@ -1630,7 +1633,7 @@ static int command_accelrange(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(accelrange, command_accelrange, "id [data [roundup]]",
 			"Read or write accelerometer range");
 
-static int command_accelresolution(int argc, const char **argv)
+__maybe_unused static int command_accelresolution(int argc, const char **argv)
 {
 	char *e;
 	int id, data, round = 1;
@@ -1678,7 +1681,7 @@ DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution,
 			"id [data [roundup]]",
 			"Read or write accelerometer resolution");
 
-static int command_accel_data_rate(int argc, const char **argv)
+__maybe_unused static int command_accel_data_rate(int argc, const char **argv)
 {
 	char *e;
 	int id, data, round = 1;
@@ -1734,7 +1737,7 @@ DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate,
 			"id [data [roundup]]",
 			"Read or write accelerometer ODR");
 
-static int command_accel_read_xyz(int argc, const char **argv)
+__maybe_unused static int command_accel_read_xyz(int argc, const char **argv)
 {
 	char *e;
 	int id, n = 1, ret;
@@ -1772,7 +1775,7 @@ static int command_accel_read_xyz(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz, "id [n]",
 			"Read sensor x/y/z");
 
-static int command_accel_init(int argc, const char **argv)
+__maybe_unused static int command_accel_init(int argc, const char **argv)
 {
 	char *e;
 	int id, ret;
@@ -1806,7 +1809,7 @@ static int command_accel_init(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init, "id", "Init sensor");
 
 #ifdef CONFIG_CMD_ACCEL_INFO
-static int command_display_accel_info(int argc, const char **argv)
+__maybe_unused static int command_display_accel_info(int argc, const char **argv)
 {
 	int val, i, j;
 
@@ -1854,7 +1857,7 @@ DECLARE_CONSOLE_COMMAND(accelinfo, command_display_accel_info, "on/off",
 #endif /* CONFIG_CMD_ACCELS */
 
 #ifdef CONFIG_ACCEL_SPOOF_MODE
-static void print_spoof_mode_status(int id)
+__maybe_unused static void print_spoof_mode_status(int id)
 {
 	CPRINTS("Sensor %d spoof mode is %s. <%d, %d, %d>", id,
 		(motion_sensors[id].flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) ?

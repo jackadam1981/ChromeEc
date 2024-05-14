@@ -28,8 +28,15 @@
 #define BMA4XX_USE_INTERRUPTS
 #endif
 
+//#define ENABLE_LOGGING
+
+#ifdef ENABLE_LOGGING
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
+#else
+#define CPUTS(outstr)
+#define CPRINTF(format, args...)
+#endif
 
 #define GOTO_ON_ERROR(label, expr)  \
 	do {                        \
@@ -43,13 +50,19 @@
 static inline int bma4_read8(const struct motion_sensor_t *s, const int reg,
 			     int *data_ptr)
 {
-	return i2c_read8(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
+	int rc = i2c_read8(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
+	CPRINTF("bma4xx[%d].read(reg=0x%02x) = rc(%d) => 0x%02x\n",
+	       (int)(s - motion_sensors), reg, rc, (*data_ptr) & 0xff);
+	return rc;
 }
 
 __maybe_unused static inline int bma4_read16(const struct motion_sensor_t *s,
 					     const int reg, int *data_ptr)
 {
-	return i2c_read16(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
+	int rc = i2c_read16(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
+	CPRINTF("bma4xx[%d].read(reg=0x%02x) = rc(%d) => 0x%04x\n",
+	       (int)(s - motion_sensors), reg, rc, (*data_ptr) & 0xffff);
+	return rc;
 }
 
 /**
@@ -61,6 +74,7 @@ static inline int bma4_write8(const struct motion_sensor_t *s, const int reg,
 	int ret;
 
 	ret = i2c_write8(s->port, s->i2c_spi_addr_flags, reg, data);
+	CPRINTF("bma4xx[%d].write(reg=0x%02x, data=0x%02x)\n", (int)(s - motion_sensors), reg, data);
 
 	/*
 	 * From Bosch: BMA needs a delay of 450us after each write if it
@@ -520,6 +534,11 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 			     acc, 6);
 
 	mutex_unlock(s->mutex);
+	CPRINTF("bma4xx[%d].read_data() = rc(%d) => [0x%04x, 0x%04x, 0x%04x]\n",
+	       (int)(s - motion_sensors), ret,
+	       (uint16_t)(acc[0] >> 4) | ((uint16_t)acc[1] << 4),
+	       (uint16_t)(acc[2] >> 4) | ((uint16_t)acc[3] << 4),
+	       (uint16_t)(acc[4] >> 4) | ((uint16_t)acc[5] << 4));
 
 	if (ret)
 		return ret;
@@ -534,6 +553,8 @@ static int init(struct motion_sensor_t *s)
 	int ret = 0, reg_val;
 	struct accelgyro_saved_data_t *data = s->drv_data;
 
+	CPRINTF("bma4xx[%d].init()\n", (int)(s - motion_sensors));
+
 	/* This driver requires a mutex. Assert if mutex is not supplied. */
 	ASSERT(s->mutex);
 
@@ -544,6 +565,9 @@ static int init(struct motion_sensor_t *s)
 		return EC_ERROR_HW_INTERNAL;
 
 	mutex_lock(s->mutex);
+
+
+	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_CMD_ADDR, BMA4_SOFT_RESET));
 
 	/*
 	 * Disable accelerometer by default, set ODR to match. This avoids
@@ -563,15 +587,9 @@ static int init(struct motion_sensor_t *s)
 		 */
 		GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT_LATCH_ADDR,
 					       BMA4_INT_LATCH));
-		GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT_MAP_DATA_ADDR,
-					       BMA4_INT1_DRDY | BMA4_INT1_FWM |
-						       BMA4_INT1_FFULL));
-		/* Enable FIFO in headerless mode, accel data only */
-		GOTO_ON_ERROR(out, bma4_write8(s, BMA4_FIFO_CONFIG_1_ADDR,
-					       BMA4_FIFO_ACC_EN));
+
 		GOTO_ON_ERROR(out, s->drv->enable_interrupt(s, true));
 	}
-
 out:
 	mutex_unlock(s->mutex);
 
@@ -588,35 +606,60 @@ static int bma4xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 {
 	int ret;
 	int interrupt_status_reg;
+	struct accelgyro_saved_data_t *data = s->drv_data;
 
 	mutex_lock(s->mutex);
+	if (enable == data->metadata.interrupt_enabled) {
+		ret = 0;
+		CPRINTF("\nbma4xx[%d] interrupt_enabled(%d) BYPASSED\n", (int)(s - motion_sensors), enable);
+		goto out;
+	}
 
-	/* Flush the FIFO */
-	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_CMD_ADDR, BMA4_FIFO_FLUSH));
+	CPRINTF("\nbma4xx[%d] interrupt_enable(%d)\n", (int)(s - motion_sensors),
+	       enable);
+
+	GOTO_ON_ERROR(out,
+		      bma4_write8(s, BMA4_INT_MAP_DATA_ADDR,
+				  enable ? (BMA4_INT1_DRDY | BMA4_INT1_FWM |
+					    BMA4_INT1_FFULL) :
+					   0));
 
 	/* Configure INT1 pin */
 	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT1_IO_CTRL_ADDR,
 				       enable ? BMA4_INT1_OUTPUT_EN : 0));
 
+	/* Enable FIFO in headerless mode, accel data only */
+	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_FIFO_CONFIG_1_ADDR,
+				       enable ? BMA4_FIFO_ACC_EN : 0));
+
+	/* Disable advance power save mode */
+	GOTO_ON_ERROR(out,
+		      bma4_write8(s, BMA4_POWER_CONF_ADDR, enable ? 0 : 1));
+
+	/* Flush the FIFO */
+	CPRINTF("  Flushing FIFO\n");
+	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_CMD_ADDR, BMA4_FIFO_FLUSH));
+
+	CPRINTF("  Clearing INT1 STATUS\n");
 	GOTO_ON_ERROR(out,
 		      bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
 
-	if (enable) {
-		GOTO_ON_ERROR(out, gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L));
-	} else {
-		GOTO_ON_ERROR(out,
-			      gpio_disable_interrupt(GPIO_LID_ACCEL_INT_L));
+	if (s->location == MOTIONSENSE_LOC_LID) {
+		if (enable) {
+			CPRINTF("  Calling gpio_enable_interrupt()\n");
+			GOTO_ON_ERROR(out, gpio_enable_interrupt(
+						   GPIO_LID_ACCEL_INT_L));
+		} else {
+			CPRINTF("  Calling gpio_disable_interrupt()\n");
+			GOTO_ON_ERROR(out, gpio_disable_interrupt(
+						   GPIO_LID_ACCEL_INT_L));
+		}
 	}
-#ifdef CONFIG_ZEPHYR
-	const struct device *port = DEVICE_DT_GET(DT_NODELABEL(gpio0));
-	GOTO_ON_ERROR(out,
-		      gpio_pin_interrupt_configure(port, 2,
-						   enable ? GPIO_INT_ENABLE :
-							    GPIO_INT_DISABLE));
-	GOTO_ON_ERROR(out,
-		      gpio_pin_configure(port, 2, GPIO_INPUT | GPIO_PULL_UP));
-#endif /* CONFIG_ZEPHYR */
 out:
+	CPRINTF("  ret=%d\n", ret);
+	if (ret == 0) {
+		data->metadata.interrupt_enabled = enable;
+	}
 	mutex_unlock(s->mutex);
 	return ret;
 }

@@ -158,8 +158,10 @@ k_tid_t task_id_to_thread_id(task_id_t task_id)
 		case TASK_ID_IDLE:
 			return get_idle_thread();
 
+#ifdef CONFIG_SHELL
 		case TASK_ID_SHELL:
 			return get_shell_thread();
+#endif /* CONFIG_SHELL */
 		}
 	}
 	__ASSERT(false, "Failed to map task %d to thread", task_id);
@@ -193,9 +195,11 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		return TASK_ID_IDLE;
 	}
 
+#ifdef CONFIG_SHELL
 	if (get_shell_thread() == thread_id) {
 		return TASK_ID_SHELL;
 	}
+#endif /* CONFIG_SHELL */
 
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		if (task_to_k_tid[i] == thread_id) {

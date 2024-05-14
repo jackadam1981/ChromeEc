@@ -703,7 +703,7 @@ DECLARE_CONSOLE_COMMAND(hostcmd, command_host_command, "cmd ver param",
 #endif /* CONFIG_CMD_HOSTCMD */
 
 #ifdef CONFIG_CMD_HCDEBUG
-static int command_hcdebug(int argc, const char **argv)
+__maybe_unused static int command_hcdebug(int argc, const char **argv)
 {
 	if (argc >= 3)
 		return EC_ERROR_PARAM_COUNT;

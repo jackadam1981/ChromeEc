@@ -57,6 +57,10 @@ int zshim_run_ec_console_command(const struct zephyr_console_command *command,
 				     UTIL_CAT(zshim_wrapper_, ROUTINE_ID), \
 				     UTIL_CAT(zshim_entry_, ROUTINE_ID))
 
+
+
+
+#ifdef CONFIG_CONSOLE
 /* These macros mirror the macros provided by the CrOS EC. */
 #define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
 	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
@@ -67,8 +71,14 @@ int zshim_run_ec_console_command(const struct zephyr_console_command *command,
  */
 #define DECLARE_CONSOLE_COMMAND_FLAGS(NAME, ROUTINE, ARGDESC, HELP, FLAGS) \
 	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
+
 #define DECLARE_SAFE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
 	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
+#else
+#define DECLARE_CONSOLE_COMMAND_FLAGS(NAME, ROUTINE, ARGDESC, HELP, FLAGS)
+#define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP)
+#define DECLARE_SAFE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP)
+#endif
 
 /**
  * console_buf_notify_chars() - Notify the console host command buffer

@@ -2,7 +2,11 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-zephyr_library_sources(console.c)
+if (DEFINED CONFIG_SHELL)
+  zephyr_library_sources(console.c)
+else()
+  zephyr_library_sources(console_devnull.c)
+endif()
 zephyr_library_sources(crc.c)
 zephyr_library_sources(gpio.c)
 zephyr_library_sources(gpio_int.c)

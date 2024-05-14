@@ -200,6 +200,10 @@ enum rgb_index {
 /* Used to save sensor information */
 struct accelgyro_saved_data_t {
 	int odr;
+	struct {
+		uint8_t interrupt_enabled : 1;
+		uint8_t reserved : 7;
+	} metadata;
 	uint16_t scale[3];
 };
 

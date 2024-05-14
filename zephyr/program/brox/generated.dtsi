@@ -44,6 +44,7 @@
 		};
 		gpio_ec_accel_db_int_l: ec_accel_db_int_l {
 			gpios = <&gpioj 7 GPIO_INPUT>;
+			enum-name = "GPIO_LID_ACCEL_INT_L";
 		};
 		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
 			gpios = <&gpioj 0 GPIO_INPUT>;

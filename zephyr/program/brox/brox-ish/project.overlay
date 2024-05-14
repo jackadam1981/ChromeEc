@@ -7,5 +7,19 @@
 #include "gpio.dtsi"
 #include "i2c.dtsi"
 #include "interrupts.dtsi"
-#include "ish.dtsi"
 #include "../motionsense.dtsi"
+
+/ {
+	chosen {
+		zephyr,sram = &sram;
+		/*
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		*/
+		zephyr,flash = &sram;
+	};
+};
+
+&uart0 {
+	status = "disabled";
+};

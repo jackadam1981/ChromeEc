@@ -443,7 +443,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clear_events_copy_b, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Console commands */
-static int command_host_event(int argc, const char **argv)
+__maybe_unused static int command_host_event(int argc, const char **argv)
 {
 	/* Handle sub-commands */
 	if (argc == 3) {

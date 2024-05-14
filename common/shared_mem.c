@@ -72,7 +72,7 @@ void shared_mem_release(void *ptr)
 }
 
 #ifdef CONFIG_CMD_SHMEM
-static int command_shmem(int argc, const char **argv)
+__maybe_unused static int command_shmem(int argc, const char **argv)
 {
 	ccprintf("Size:%6d\n", shared_mem_size());
 	ccprintf("Used:%6d\n", buf_in_use);

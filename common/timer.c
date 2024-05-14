@@ -376,7 +376,7 @@ static void timer_sysjump(void)
 DECLARE_HOOK(HOOK_SYSJUMP, timer_sysjump, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_WAITMS
-static int command_wait(int argc, const char **argv)
+__maybe_unused static int command_wait(int argc, const char **argv)
 {
 	char *e;
 	int i;
@@ -445,7 +445,7 @@ DECLARE_CONSOLE_COMMAND(forcetime, command_force_time, "hi lo",
 #endif
 
 #ifdef CONFIG_CMD_GETTIME
-static int command_get_time(int argc, const char **argv)
+__maybe_unused static int command_get_time(int argc, const char **argv)
 {
 	timestamp_t ts = get_time();
 	ccprintf("Time: 0x%016llx = %.6lld s\n", ts.val, ts.val);
@@ -457,7 +457,7 @@ DECLARE_SAFE_CONSOLE_COMMAND(gettime, command_get_time, NULL,
 #endif
 
 #ifdef CONFIG_CMD_TIMERINFO
-static int command_timer_info(int argc, const char **argv)
+__maybe_unused static int command_timer_info(int argc, const char **argv)
 {
 	timer_print_info();
 

@@ -332,7 +332,7 @@ DECLARE_HOST_COMMAND(EC_CMD_SET_TABLET_MODE, tablet_mode_command,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 #ifdef CONFIG_TABLET_MODE
-static int command_settabletmode(int argc, const char **argv)
+__maybe_unused static int command_settabletmode(int argc, const char **argv)
 {
 	if (argc == 1) {
 		print_tablet_mode();

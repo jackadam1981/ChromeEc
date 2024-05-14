@@ -7,7 +7,6 @@ config PLATFORM_EC_I2C
 	default y
 	depends on DT_HAS_NAMED_I2C_PORTS_ENABLED
 	select I2C
-	select I2C_SHELL
 	help
 	  Enable compilation of the EC i2c module. Once enabled, it will be
 	  possible to make calls using the old platform/ec i2c APIs defined
@@ -43,6 +42,7 @@ config PLATFORM_EC_I2C_DEBUG_PASSTHRU
 
 config PLATFORM_EC_CONSOLE_CMD_I2C_PORTMAP
 	bool "Console command: i2c_portmap"
+	depends on CONSOLE
 	default y
 	help
 	  Enable the 'i2c_portmap' console command. This comamnd is used to

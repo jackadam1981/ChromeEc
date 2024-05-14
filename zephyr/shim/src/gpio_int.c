@@ -221,8 +221,9 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 {
 	const struct gpio_int_config *ic = signal_to_interrupt(signal);
 
-	if (ic == NULL)
+	if (ic == NULL) {
 		return -1;
+	}
 
 	return gpio_disable_dt_interrupt(ic);
 }

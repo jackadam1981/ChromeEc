@@ -1192,7 +1192,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 	return EC_SUCCESS;
 }
 
-static int command_sysinfo(int argc, const char **argv)
+__maybe_unused static int command_sysinfo(int argc, const char **argv)
 {
 	struct ec_response_sysinfo info;
 	int rv;
@@ -1348,7 +1348,7 @@ static void print_build_string(void)
 	ccprintf("\n");
 }
 
-static int command_version(int argc, const char **argv)
+__maybe_unused static int command_version(int argc, const char **argv)
 {
 	int board_version;
 	const char *fw_version;
@@ -1464,7 +1464,7 @@ DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
 			"Jump to a system image or address");
 #endif
 
-static int command_reboot(int argc, const char **argv)
+__maybe_unused static int command_reboot(int argc, const char **argv)
 {
 	int flags = SYSTEM_RESET_MANUALLY_TRIGGERED;
 	int i;
@@ -1511,7 +1511,7 @@ DECLARE_CONSOLE_COMMAND(
 	"Reboot the EC");
 
 #ifdef CONFIG_CMD_SYSLOCK
-static int command_system_lock(int argc, const char **argv)
+__maybe_unused static int command_system_lock(int argc, const char **argv)
 {
 	force_locked = 1;
 	return EC_SUCCESS;
