@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4825d7_5aee6695",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:21Z",
+      "side": 1,
+      "message": "Just to double-check: Does our Zephyr build use the `mpu.c` file that you modified in https://crrev.com/c/5325938? (I just want to make sure it\u0027s not using some file from upstream Zephyr instead.)",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 35
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c058e8_60b98650",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:21Z",
+      "side": 1,
+      "message": "I would just remove this part.",
+      "range": {
+        "startLine": 202,
+        "startChar": 32,
+        "endLine": 202,
+        "endChar": 42
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25bf41b1_587448c6",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-14T22:41:21Z",
+      "side": 1,
+      "message": "\"execute code from\"",
+      "range": {
+        "startLine": 203,
+        "startChar": 29,
+        "endLine": 203,
+        "endChar": 40
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
