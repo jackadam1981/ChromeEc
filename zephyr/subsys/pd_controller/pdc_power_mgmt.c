@@ -2399,8 +2399,8 @@ bool pdc_power_mgmt_get_vconn_state(int port)
 {
 	bool vconn_sourcing;
 
-	/* Make sure port is source connected */
-	if (!pdc_power_mgmt_is_source_connected(port)) {
+	/* Make sure port is connected */
+	if (!pdc_power_mgmt_is_connected(port)) {
 		return false;
 	}
 
