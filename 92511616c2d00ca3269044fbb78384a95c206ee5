@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3270d1a5_66d8e845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-14T04:40:54Z",
+      "side": 1,
+      "message": "I have addressed the comment, and also added missing declaration to registers-stm32l4.h, such that the code compiles for the L4 variant.",
+      "revId": "92511616c2d00ca3269044fbb78384a95c206ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
