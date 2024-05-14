@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d011695_0a26402f",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-14T21:37:11Z",
+      "side": 1,
+      "message": "It looks like we only call this from `pdc_rts54xx.c` for connector change so there\u0027s no point in printing the `command completed`. \n\nMaybe we simplify this by only printing the function name and raw value. This looks useful for debugging so I would be ok keeping this.",
+      "revId": "e5094d634ac4bb87d76d0e5302b34447439073d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
