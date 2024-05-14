@@ -5,8 +5,6 @@
 
 """Allow creation of uart/console interface via usb google serial endpoint."""
 
-# Note: This is a py2/3 compatible file.
-
 from __future__ import print_function
 
 import argparse
@@ -29,20 +27,10 @@ except ModuleNotFoundError:
     print()
     sys.exit(-1)
 
-import six
 
-
-def GetBuffer(stream):
-    if six.PY3:
-        return stream.buffer
-    return stream
-
-
-"""Class Susb covers USB device discovery and initialization.
-
-  It can find a particular endpoint by vid:pid, serial number,
-  and interface number.
-"""
+def GetBuffer(stream):  # pylint:disable=invalid-name
+    """Returns the stream's buffer."""
+    return stream.buffer
 
 
 class SusbError(Exception):
@@ -55,7 +43,7 @@ class SusbError(Exception):
           msg: string, message describing error in detail
           value: integer, value of error when non-zero status returned.  Default=0
         """
-        super(SusbError, self).__init__(msg, value)
+        super().__init__(msg, value)
         self.msg = msg
         self.value = value
 
@@ -97,20 +85,20 @@ class Susb:
         # Check if we have multiple devices.
         dev = None
         if serialname:
-            for d in dev_list:
-                dev_serial = usb.util.get_string(d, d.iSerialNumber)
+            for ddd in dev_list:
+                dev_serial = usb.util.get_string(ddd, ddd.iSerialNumber)
                 if dev_serial == serialname:
-                    dev = d
+                    dev = ddd
                     break
             if dev is None:
-                raise SusbError("USB device(%s) not found" % (serialname,))
+                raise SusbError(f"USB device({serialname}) not found")
         else:
             try:
                 dev = dev_list[0]
-            except IndexError:
+            except IndexError as err:
                 raise SusbError(
-                    "USB device %04x:%04x not found" % (vendor, product)
-                )
+                    f"USB device {vendor:04x}:{product:04x} not found"
+                ) from err
 
         # If we can't set configuration, it's already been set.
         try:
@@ -127,7 +115,7 @@ class Susb:
             raise SusbError("Interface not found")
 
         # Detach raiden.ko if it is loaded.
-        if dev.is_kernel_driver_active(intf.bInterfaceNumber) is True:
+        if dev.is_kernel_driver_active(intf.bInterfaceNumber):
             dev.detach_kernel_driver(intf.bInterfaceNumber)
 
         read_ep_number = intf.bInterfaceNumber + self.READ_ENDPOINT
@@ -143,13 +131,6 @@ class Susb:
         self._write_ep = write_ep
 
 
-"""Suart class implements a stream interface, to access Google's USB class.
-
-  This creates a send and receive thread that monitors USB and console input
-  and forwards them across. This particular class is hardcoded to stdin/out.
-"""
-
-
 class SuartError(Exception):
     """Class for exceptions of Suart."""
 
@@ -160,7 +141,7 @@ class SuartError(Exception):
           msg: string, message describing error in detail
           value: integer, value of error when non-zero status returned.  Default=0
         """
-        super(SuartError, self).__init__(msg, value)
+        super().__init__(msg, value)
         self.msg = msg
         self.value = value
 
@@ -171,7 +152,7 @@ class Suart:
     def __init__(
         self, vendor=0x18D1, product=0x501C, interface=0, serialname=None
     ):
-        """Suart contstructor.
+        """Suart constructor.
 
         Initializes USB stream interface.
 
@@ -191,40 +172,48 @@ class Suart:
             interface=interface,
             serialname=serialname,
         )
+        self._exit = False
+        self._rx_thread = None
+        self._tx_thread = None
 
     def wait_until_done(self, timeout=None):
+        """Wait until the background threads are done."""
         return self._done.wait(timeout=timeout)
 
     def run_rx_thread(self):
+        """Runs the reading background thread."""
         try:
             while True:
                 try:
-                    r = self._susb._read_ep.read(64, self._susb.TIMEOUT_MS)
-                    if r:
-                        GetBuffer(sys.stdout).write(r.tobytes())
+                    rrr = self._susb._read_ep.read(  # pylint:disable=protected-access
+                        64, self._susb.TIMEOUT_MS
+                    )
+                    if rrr:
+                        GetBuffer(sys.stdout).write(rrr.tobytes())
                         GetBuffer(sys.stdout).flush()
 
-                except Exception as e:
+                except Exception as err:  # pylint:disable=broad-except
                     # If we miss some characters on pty disconnect, that's fine.
                     # ep.read() also throws USBError on timeout, which we discard.
-                    if not isinstance(e, (OSError, usb.core.USBError)):
-                        print("rx %s" % e)
+                    if not isinstance(err, (OSError, usb.core.USBError)):
+                        print(f"rx {err}")
         finally:
             self._done.set()
 
     def run_tx_thread(self):
+        """Runs the writing background thread."""
         try:
             while True:
                 try:
-                    r = GetBuffer(sys.stdin).read(1)
-                    if not r or r == b"\x03":
+                    rrr = GetBuffer(sys.stdin).read(1)
+                    if not rrr or rrr == b"\x03":
                         break
-                    if r:
-                        self._susb._write_ep.write(
-                            array.array("B", r), self._susb.TIMEOUT_MS
+                    if rrr:
+                        self._susb._write_ep.write(  # pylint:disable=protected-access
+                            array.array("B", rrr), self._susb.TIMEOUT_MS
                         )
-                except Exception as e:
-                    print("tx %s" % e)
+                except Exception as err:  # pylint:disable=broad-except
+                    print(f"tx {err}")
         finally:
             self._done.set()
 
@@ -240,12 +229,6 @@ class Suart:
         self._tx_thread.daemon = True
         self._tx_thread.start()
 
-
-"""Command line functionality
-
-  Allows specifying vid:pid, serialnumber, interface.
-  Ctrl-C exits.
-"""
 
 parser = argparse.ArgumentParser(
     description="Open a console to a USB device",
@@ -301,17 +284,18 @@ def runconsole():
 
 
 def main():
+    """The main function."""
     stdin_isatty = sys.stdin.isatty()
     if stdin_isatty:
-        fd = sys.stdin.fileno()
+        ffd = sys.stdin.fileno()
         os.system("stty -echo")
-        old_settings = termios.tcgetattr(fd)
+        old_settings = termios.tcgetattr(ffd)
 
     try:
         runconsole()
     finally:
         if stdin_isatty:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+            termios.tcsetattr(ffd, termios.TCSADRAIN, old_settings)
             os.system("stty echo")
         # Avoid having the user's shell prompt start mid-line after the final output
         # from this program.
