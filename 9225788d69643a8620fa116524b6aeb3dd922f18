@@ -16,6 +16,24 @@
       "message": "Why do we need to reset `before` and `after`? Can we just use `before`?",
       "revId": "9225788d69643a8620fa116524b6aeb3dd922f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4b4ce2_fbbda9ca",
+        "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-14T18:46:13Z",
+      "side": 1,
+      "message": "Just for safety in case some other suite starts calling into the fakes. Trying to clean up anything I used. I think we use this pattern in other tests too",
+      "parentUuid": "a1b5ab3a_a8650c63",
+      "revId": "9225788d69643a8620fa116524b6aeb3dd922f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
