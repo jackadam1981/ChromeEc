@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad36fece_a7080e15",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5750,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-14T18:52:15Z",
+      "side": 1,
+      "message": "i don\u0027t think we\u0027re adding new codes in this range.\nthis should go after `#define EC_CMD_AP_FW_STATE 0x013E`\n\nalso, define `struct ec_params_set_alarm_slp_s0_dbg`\nfor this new command instead of reusing `struct ec_params_rtc`.\n\nalso, update `ec_cmd_api.h` to include this new command.",
+      "range": {
+        "startLine": 5750,
+        "startChar": 36,
+        "endLine": 5750,
+        "endChar": 42
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb90488_ff377e29",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 12456,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-14T18:52:15Z",
+      "side": 1,
+      "message": "please preserve alphabetical order.",
+      "range": {
+        "startLine": 12456,
+        "startChar": 4,
+        "endLine": 12456,
+        "endChar": 20
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da757d4_6de861a4",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-14T18:52:15Z",
+      "side": 1,
+      "message": "would POWER_BUTTON be a better event to use\nsince some devices don\u0027t have a lid?\n\n`EC_HOST_EVENT_HANG_DETECT` is used below.\nis that a good one to use or will that confuse the AP?",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
