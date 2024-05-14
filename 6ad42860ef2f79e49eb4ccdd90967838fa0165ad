@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ca5454c_23da3394",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:48:07Z",
+      "side": 1,
+      "message": "```\nWARNING: core/cortex-m/mpu.c is not used in Zephyr EC. There is probably another file in the zephyr/shim directory that needs the same fix that you just made. Alternativly, you might have edited the wrong file.\n```",
+      "parentUuid": "eb4825d7_5aee6695",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 35
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58c058e8_60b98650",
         "filename": "zephyr/Kconfig",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-14T22:41:21Z",
       "side": 1,
       "message": "I would just remove this part.",
+      "range": {
+        "startLine": 202,
+        "startChar": 32,
+        "endLine": 202,
+        "endChar": 42
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc28ecc_6a258722",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58c058e8_60b98650",
       "range": {
         "startLine": 202,
         "startChar": 32,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-14T22:41:21Z",
       "side": 1,
       "message": "\"execute code from\"",
+      "range": {
+        "startLine": 203,
+        "startChar": 29,
+        "endLine": 203,
+        "endChar": 40
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2384bd99_3f83b253",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25bf41b1_587448c6",
       "range": {
         "startLine": 203,
         "startChar": 29,
