@@ -35,7 +35,7 @@
 
 		ec-ro {
 			fmap {
-				offset =  <(0x60000 - (0x1000 * 2) - 0x400)>;
+				offset =  <(0x65000 - (0x1000 * 2) - 0x400)>;
 				/*
 				 * don't specify 'size = <0x400>' here so
 				 * it is auto-assigned to the fmap size.
@@ -43,12 +43,12 @@
 			};
 		};
 		cbi {
-			offset = <(0x60000 - (0x1000 * 2))>;
+			offset = <(0x65000 - (0x1000 * 2))>;
 			size = <0x1000>;
 		};
 		pstate {
 			type = "section";
-			offset = <(0x60000 - (0x1000 * 1))>;
+			offset = <(0x65000 - (0x1000 * 1))>;
 			size = <0x1000>;
 		};
 	};

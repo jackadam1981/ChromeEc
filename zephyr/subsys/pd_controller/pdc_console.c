@@ -450,6 +450,29 @@ static int cmd_pdc_src_voltage(const struct shell *sh, size_t argc, char **argv)
 	return 0;
 }
 
+static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+
+	/* Disable all comms before doing update. */
+	rv = pdc_power_mgmt_set_comms_state(/*enable=*/false);
+	if (rv) {
+		shell_fprintf(sh, SHELL_ERROR, "Could not suspend PDC: %d\n", rv);
+		return rv;
+	}
+
+	rv = pdc_do_firmware_update();
+	if (rv) {
+		shell_fprintf(sh, SHELL_ERROR, "Could not update fw: %d\n", rv);
+	}
+
+	if (pdc_power_mgmt_set_comms_state(/*enable=*/true)) {
+		shell_fprintf(sh, SHELL_ERROR, "Could not resume PDC. May want to restart EC.");
+	}
+
+	return rv;
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -501,6 +524,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Omit last arg to use maximum supported voltage.\n"
 		      "Usage: pdc src_voltage <port> [volts]",
 		      cmd_pdc_src_voltage, 2, 1),
+	SHELL_CMD_ARG(fwupdate, NULL,
+		      "Updates TPS6699x firmware\n"
+		      "Usage pdc fwupdate",
+		      cmd_pdc_fwupdate, 1, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);

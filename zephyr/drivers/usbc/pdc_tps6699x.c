@@ -23,6 +23,11 @@ LOG_MODULE_REGISTER(usbc, CONFIG_USBC_LOG_LEVEL);
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
+#include <timer.h>
+#define INCBIN_PREFIX g_
+#define INCBIN_STYLE INCBIN_STYLE_SNAKE
+#include "third_party/incbin/incbin.h"
+INCBIN(tps6699x_fw, "../../../modules/ec/zephyr/drivers/usbc/tps6699x_fw.bin");
 
 #define DT_DRV_COMPAT ti_tps6699_pdc
 
@@ -30,6 +35,8 @@ LOG_MODULE_REGISTER(usbc, CONFIG_USBC_LOG_LEVEL);
 #define PDC_IRQ_EVENT BIT(0)
 /** @brief PDC COMMAND EVENT bit */
 #define PDC_CMD_EVENT BIT(1)
+/** @brief Sync command completed bit */
+#define PDC_CMD_SYNC_EVENT BIT(2)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -108,6 +115,8 @@ enum cmd_t {
 	CMD_GET_VDO,
 	/** CMD_GET_IDENTITY_DISCOVERY */
 	CMD_GET_IDENTITY_DISCOVERY,
+	/* Synchronously run command */
+	CMD_SYNC,
 };
 
 /**
@@ -130,6 +139,8 @@ enum state_t {
 	ST_TASK_GAID,
 	/** TASK_SRDY */
 	ST_TASK_SRDY,
+	/** Synchronous task */
+	ST_TASK_SYNC,
 	/** PDC Enable */
 	ST_CMD_VENDOR_ENABLE,
 	/** Set Notification Enable */
@@ -173,6 +184,22 @@ struct pdc_config_t {
 	/** Create thread function */
 	void (*create_thread)(const struct device *dev);
 };
+
+#define GAID_MAGIC_VALUE 0xAC
+union gaid_params_t {
+	struct {
+		uint8_t switch_banks;
+		uint8_t copy_banks;
+	} __packed;
+	uint8_t raw[2];
+};
+
+struct sync_task_data_t {
+	const char *task_str;
+	bool has_data;
+	bool no_validate_and_wait;
+	union reg_data data;
+} __packed;
 
 /**
  * @brief PDC Data object
@@ -234,6 +261,8 @@ struct pdc_data_t {
 	enum vdo_type_t vdo_req_list[8];
 	/* Request VDO */
 	union get_vdo_t vdo_req;
+	/* Next sync task to run */
+	struct sync_task_data_t sync_task;
 	/* PDC event: Interrupt or Command */
 	struct k_event pdc_event;
 };
@@ -259,6 +288,7 @@ static const char *const state_names[] = {
 	[ST_CMD_GET_RDO] = "CMD_GET_RDO",
 	[ST_CMD_SET_RDO] = "CMD_SET_RDO",
 	[ST_TASK_SRDY] = "CMD_SET_SINK_PATH",
+	[ST_TASK_SYNC] = "CMD_TASK_SYNC",
 	[ST_CMD_GET_CURRENT_PARTNER_SRC_PDO] =
 		"CMD_GET_CURRENT_PARTNER_SRC_PDO",
 	[ST_CMD_SET_TPC_RP] = "CMD_SET_TPC_RP",
@@ -281,6 +311,7 @@ static void st_task_gaid(struct pdc_data_t *data);
 static void st_task_srdy(struct pdc_data_t *data);
 static void st_task_ucsi(struct pdc_data_t *data,
 			 enum ucsi_command_t ucsi_command);
+static void st_task_sync(struct pdc_data_t *data);
 static void st_cmd_vendor_enable(struct pdc_data_t *data);
 static void st_cmd_set_notification_enable(struct pdc_data_t *data);
 static void st_cmd_get_error_status(struct pdc_data_t *data);
@@ -520,6 +551,9 @@ static void st_idle_run(void *o)
 			break;
 		case CMD_GET_IDENTITY_DISCOVERY:
 			st_cmd_get_identity_discovery(data);
+			break;
+		case CMD_SYNC:
+			st_task_sync(data);
 			break;
 		}
 	}
@@ -819,7 +853,7 @@ static void st_cmd_set_tpc_reconnect(struct pdc_data_t *data)
 	// TODO
 }
 
-static int write_task_cmd(struct pdc_config_t const *cfg, char *task_str,
+static int write_task_cmd(struct pdc_config_t const *cfg, const char *task_str,
 			  union reg_data *cmd_data)
 {
 	union reg_command cmd;
@@ -968,6 +1002,38 @@ static void st_task_ucsi(struct pdc_data_t *data,
 	return;
 }
 
+static void st_task_sync(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_data *cmd_data = NULL;
+	int rv;
+
+	/* Empty task given. Go straight to idle. */
+	if (!data->sync_task.task_str) {
+		set_state(data, ST_IDLE);
+		return;
+	}
+
+	if (data->sync_task.has_data) {
+		cmd_data = &data->sync_task.data;
+	}
+
+	rv = write_task_cmd(cfg, data->sync_task.task_str, cmd_data);
+
+	if (data->sync_task.no_validate_and_wait) {
+		/* Mark task completed. */
+		data->sync_task.task_str = NULL;
+
+		k_event_post(&data->pdc_event, PDC_CMD_SYNC_EVENT);
+		set_state(data, ST_IDLE);
+	} else {
+		/* Transition to wait state */
+		set_state(data, ST_TASK_WAIT);
+	}
+
+	return;
+}
+
 static void st_task_wait_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -1044,6 +1110,13 @@ static void st_task_wait_run(void *o)
 			memcpy(data->user_buf + 4, &cmd_data.data[offset], len);
 			break;
 		}
+		case CMD_SYNC:
+			/* Mark task completed. */
+			data->sync_task.task_str = NULL;
+
+			/* Unpend sync callers. */
+			k_event_post(&data->pdc_event, PDC_CMD_SYNC_EVENT);
+			break;
 		default:
 			/* No data for this command */
 			len = 0;
@@ -1507,6 +1580,431 @@ static int pdc_init(const struct device *dev)
 	LOG_INF("TI TPS6699X PDC DRIVER FOR PORT %d", cfg->connector_number);
 
 	return 0;
+}
+
+struct tfu_initiate {
+	uint16_t num_blocks;
+	uint16_t data_block_size;
+	uint16_t timeout_secs;
+	uint16_t broadcast_address;
+} __attribute__((__packed__));
+
+struct tfu_download {
+	uint16_t num_blocks;
+	uint16_t data_block_size;
+	uint16_t timeout_secs;
+	uint16_t broadcast_address;
+} __attribute__((__packed__));
+
+/*
+ * Complete uses custom values for switch/copy instead of true false.
+ * Write these values to the register instead of true/false.
+ */
+#define DO_SWITCH 0xAC
+#define DO_COPY 0xAC
+struct tfu_complete {
+	uint8_t do_switch;
+	uint8_t do_copy;
+} __attribute__((__packed__));
+
+struct tfu_query {
+	uint8_t bank;
+	uint8_t cmd;
+} __attribute__((__packed__));
+
+struct tps6699x_tfu_query_output {
+	uint8_t result;
+	uint8_t tfu_state;
+	uint8_t complete_image;
+	uint16_t blocks_written;
+	uint8_t header_block_status;
+	uint8_t per_block_status[12];
+	uint8_t num_header_bytes_written;
+	uint8_t num_data_bytes_written;
+	uint8_t num_appconfig_bytes_written;
+} __attribute__((__packed__));
+
+/* Largest chunk we want to read before writing. */
+#define MAX_READ_CHUNK_SIZE 0x4000
+
+/* Send metadata with TFUi */
+#define METADATA_OFFSET 0x4
+#define METADATA_LENGTH 0x8
+
+/* Stream header with i2c_stream AFTER TFUi */
+#define HEADER_BLOCK_OFFSET 0xC
+#define HEADER_BLOCK_LENGTH 0x800
+
+/* Size of fw not including appconfig and header block is at this offset. */
+#define FW_SIZE_OFFSET 0x4F8
+
+/* Stream data blocks after you write metadata with TFUd. */
+#define DATA_REGION_OFFSET 0x80C
+#define DATA_BLOCK_SIZE 0x4000
+#define DATA_METADATA_LENGTH 0x8
+#define DATA_METADATA_OFFSET_AT(block)                        \
+	(((DATA_BLOCK_SIZE + DATA_METADATA_LENGTH) * block) + \
+	 DATA_REGION_OFFSET)
+#define DATA_AT(block) (DATA_METADATA_OFFSET_AT(block) + DATA_METADATA_LENGTH)
+
+#define MAX_NUM_BLOCKS 12
+
+static int get_and_print_device_info(const struct device* dev)
+{
+	struct pdc_config_t const *cfg = dev->config;
+	union reg_version version;
+	int rv;
+
+	rv = tps_rd_version(&cfg->i2c, &version);
+	if (rv != 0) {
+		return rv;
+	}
+
+	return 0;
+}
+
+
+static int run_task_sync(const struct device *dev, char *task_str,
+		  union reg_data *cmd_data, uint8_t *user_buf,
+		  bool no_wait)
+{
+	struct pdc_data_t *data = dev->data;
+	uint32_t events;
+	int rv;
+
+	data->sync_task.task_str = task_str;
+	if (cmd_data) {
+		data->sync_task.has_data = true;
+		memcpy(&data->sync_task.data, cmd_data, sizeof(*cmd_data));
+	} else {
+		data->sync_task.has_data = false;
+	}
+
+	/* Post command */
+	rv = tps_post_command(dev, CMD_SYNC, user_buf);
+	if (rv != 0) {
+		return rv;
+	}
+
+	/* Clear the CMD_SYNC event before waiting. */
+	k_event_clear(&data->pdc_event, PDC_CMD_SYNC_EVENT);
+
+	/* Don't wait for completion event. This makes it "async" but we depend
+	 * on the sync task calling api.
+	 */
+	if (no_wait) {
+		return 0;
+	}
+
+	/* Wait for command to complete. */
+	events = k_event_wait(&data->pdc_event, (PDC_CMD_SYNC_EVENT), false, K_MSEC(1000));
+	if (!(events & PDC_CMD_SYNC_EVENT)) {
+		return -ETIMEDOUT;
+	}
+
+	k_event_clear(&data->pdc_event, PDC_CMD_SYNC_EVENT);
+
+	return 0;
+}
+
+static int do_reset_pdc(const struct device* dev)
+{
+	union reg_data cmd_data;
+	union gaid_params_t params;
+	int rv;
+
+	/* Default behavior is to switch banks. */
+	params.switch_banks = GAID_MAGIC_VALUE;
+	params.copy_banks = 0;
+
+	memcpy(cmd_data.data, &params, sizeof(params));
+
+	rv = run_task_sync(dev, "GAID", &cmd_data, NULL, true);
+
+	if (rv == 0) {
+		k_msleep(1000);
+	}
+
+	return rv;
+}
+
+/* Simply point to the offset in the file */
+static int read_file_offset(int offset, const uint8_t **buf, int len)
+{
+	/* Exceed size of file. */
+	if (g_tps6699x_fw_data + offset + len > g_tps6699x_fw_end) {
+		return -1;
+	}
+
+	*buf = &g_tps6699x_fw_data[offset];
+
+	return len;
+}
+
+int get_appconfig_offsets(uint16_t num_data_blocks, int *metadata_offset,
+			  int *data_block_offset)
+{
+	int bytes_read;
+	uint32_t *fw_size;
+
+	bytes_read = read_file_offset(FW_SIZE_OFFSET, (const uint8_t **)&fw_size,
+				      sizeof(fw_size));
+
+	if (bytes_read < 0) {
+		LOG_ERR("Failed to read firmware size from binary: %d",
+		     bytes_read);
+		return -1;
+	}
+
+	// The Application Configuration is stored at the following offset
+	// FirmwareImageSize (Which excludes Header and App Config) + 0x800
+	// (Header Block Size)
+	// + (8 (Meta Data for Each Block including Header block) * Number of
+	// Data block + 1)
+	// + 4 (File Identifier)
+	*metadata_offset = *fw_size + HEADER_BLOCK_LENGTH +
+			   (DATA_METADATA_LENGTH * (num_data_blocks + 1)) +
+			   METADATA_OFFSET;
+
+	*data_block_offset = *metadata_offset + DATA_METADATA_LENGTH;
+
+	return 0;
+}
+
+static int tfud_block(const struct device* dev, uint8_t *fbuf,
+	       int metadata_offset, int data_block_offset)
+{
+	struct pdc_config_t const *cfg = dev->config;
+	struct tfu_download *tfud;
+	union reg_data cmd_data;
+	int bytes_read;
+	uint8_t rbuf[64];
+	int ret;
+
+	/* First read the block metadata. */
+	bytes_read =
+		read_file_offset(metadata_offset, (const uint8_t **)&tfud, DATA_METADATA_LENGTH);
+
+	if (bytes_read < 0 || bytes_read != DATA_METADATA_LENGTH) {
+		LOG_ERR("Failed to read block metadata. Wanted %d, got %d",
+		     DATA_METADATA_LENGTH, bytes_read);
+		return -1;
+	}
+
+	if (tfud->data_block_size > DATA_BLOCK_SIZE) {
+		LOG_ERR("TFUd block size too big: 0x%x (max is 0x%x)",
+		     tfud->data_block_size, DATA_BLOCK_SIZE);
+		return -1;
+	}
+
+	memcpy(&cmd_data.data, tfud, sizeof(*tfud));
+	ret = run_task_sync(dev, "TFUd", &cmd_data, rbuf, /*no_wait=*/false);
+
+	if (ret < 0 || rbuf[0] != 0) {
+		LOG_ERR("Failed to run TFUd. Ret=%d, rbuf[0] = %u", ret, rbuf[0]);
+		return -1;
+	}
+
+	bytes_read = read_file_offset(data_block_offset, (const uint8_t **)&fbuf,
+				      tfud->data_block_size);
+
+	if (bytes_read < 0 || bytes_read != tfud->data_block_size) {
+		LOG_ERR("Failed to read block. Wanted %d, got %d",
+		     tfud->data_block_size, bytes_read);
+		return -1;
+	}
+
+	ret = tps_stream_data(&cfg->i2c, tfud->broadcast_address, fbuf, tfud->data_block_size);
+
+	if (ret < 0 || ret != tfud->data_block_size) {
+		LOG_ERR("Streaming data block failed. Expected to write %d but result was %d",
+		     tfud->data_block_size, ret);
+		return -1;
+	}
+
+	/* Wait 150ms after each data block. */
+	k_msleep(150);
+
+	return 0;
+}
+
+int tfuq_run(const struct device *dev, uint8_t *output)
+{
+	union reg_data cmd_data;
+	struct tfu_query *tfuq = (struct tfu_query *)cmd_data.data;
+	tfuq->bank = 0;
+	tfuq->cmd = 0;
+
+	return run_task_sync(dev, "TFUq", &cmd_data, output, /*no_wait=*/false);
+};
+
+/* Firmware update DO NOT SUBMIT */
+int tps6699x_do_firmware_update(const struct device *dev)
+{
+	int appconfig_metadata_offset, appconfig_data_offset;
+	struct tps6699x_tfu_query_output *tfuq_out;
+	struct tfu_initiate *tfui;
+	union reg_data cmd_data;
+	struct pdc_config_t const *cfg = dev->config;
+	int bytes_read = 0;
+	uint8_t rbuf[64];
+	int ret = 0;
+	uint8_t *fbuf;
+
+	bool dry_run = false;
+
+	/*
+	 * Flow of operations for firmware update:
+	 *   - TFUs: Start TFU process (puts device into bootloader mode)
+	 *   - TFUi: Initiate firmware update. This also validates header.
+	 *   - TFUd - Loop to download firmware.
+	 *   - TFUc - Complete firmware update.
+	 *
+	 * To cancel or query current status, you can also do the following:
+	 *   - TFUq: Query the TFU process
+	 *   - TFUe: Cancel back to initial download state.
+	 */
+
+	/* Start TFU process. Return should be 0 in rbuf[0]. */
+	ret = run_task_sync(dev, "TFUs", /*cmd_data=*/NULL,
+			    /*user_buf=*/NULL, /*no_wait=*/false);
+	if (ret < 0) {
+		LOG_ERR("Failed to run TFUs. Ret=%d", ret);
+		goto reset_pdc;
+	}
+
+	/*
+	 * TFUs unconditionally succeeds but needs 200ms to get into bootloader
+	 * mode.
+	 */
+	k_msleep(200);
+
+	LOG_INF("TFUs complete.");
+
+	/* Read metadata header. */
+	bytes_read = read_file_offset(METADATA_OFFSET, (const uint8_t **)&tfui,
+				      METADATA_LENGTH);
+	if (bytes_read < 0) {
+		LOG_ERR("Failed to read metadata. Wanted %d, got %d",
+			METADATA_LENGTH, bytes_read);
+		goto cleanup;
+	}
+
+	LOG_INF("Sending TFUi.");
+
+	/* Write TFUi with header. */
+	memcpy(cmd_data.data, tfui, sizeof(*tfui));
+	ret = run_task_sync(dev, "TFUi", &cmd_data, rbuf, /*nowait=*/false);
+
+	if (ret < 0 || rbuf[0] != 0) {
+		LOG_ERR("Failed to run TFUi. Ret=%d, rbuf[0]=%u", ret, rbuf[0]);
+		goto cleanup;
+	}
+
+	/* Read metadata buffer and stream at address given. */
+	bytes_read = read_file_offset(HEADER_BLOCK_OFFSET, (const uint8_t **)&fbuf,
+				      HEADER_BLOCK_LENGTH);
+	if (bytes_read < 0 || bytes_read != HEADER_BLOCK_LENGTH) {
+		LOG_ERR("Failed to read header stream. Wanted %d but got %d",
+			HEADER_BLOCK_LENGTH, bytes_read);
+		goto cleanup;
+	}
+
+	LOG_INF("Streaming header.");
+
+	ret = tps_stream_data(&cfg->i2c, tfui->broadcast_address, fbuf, HEADER_BLOCK_LENGTH);
+	if (ret < 0 || ret != HEADER_BLOCK_LENGTH) {
+		LOG_ERR("Streaming header failed. Expected to write %d but result was %d",
+			HEADER_BLOCK_LENGTH, ret);
+		goto cleanup;
+	}
+
+	LOG_INF("TFUi complete and header streamed.");
+
+	/* Wait 200ms after streaming header to do data block. */
+	k_msleep(200);
+
+	/* Iterate through all image blocks. */
+	for (int block = 0; block < tfui->num_blocks; ++block) {
+		LOG_INF("Flashing block %d", block);
+		tfud_block(dev, fbuf, DATA_METADATA_OFFSET_AT(block),
+			   DATA_AT(block));
+
+		LOG_INF("Finished flashing block. Do we need to retry?");
+		memset(&rbuf, 0, sizeof(*tfuq_out));
+		ret = tfuq_run(dev, rbuf);
+		tfuq_out = (struct tps6699x_tfu_query_output *)rbuf;
+		if (ret >= 0) {
+			LOG_INF("TFUq says current block was written=%d, status = 0x%02x",
+			     (tfuq_out->blocks_written & (1 << block)) ? 1 : 0,
+			     tfuq_out->per_block_status[block]);
+		}
+	}
+
+	LOG_INF("Flashing appconfig to block %d", tfui->num_blocks);
+	if (get_appconfig_offsets(tfui->num_blocks, &appconfig_metadata_offset,
+				  &appconfig_data_offset) < 0) {
+		LOG_ERR("Failed to get appconfig offsets!");
+		goto cleanup;
+	}
+
+	tfud_block(dev, fbuf, appconfig_metadata_offset,
+		   appconfig_data_offset);
+
+	LOG_INF("All data blocks flashed.");
+
+	/* Only commit changes if not dry run */
+	if (!dry_run) {
+		/* Finish update with a TFU copy. */
+		struct tfu_complete tfuc;
+		tfuc.do_switch = 0;
+		tfuc.do_copy = DO_COPY;
+
+		LOG_INF("Running TFUc [Switch: 0x%02x, Copy: 0x%02x]",
+		     tfuc.do_switch, tfuc.do_copy);
+		memcpy(cmd_data.data, &tfuc, sizeof(tfuc));
+		ret = run_task_sync(dev, "TFUc", &cmd_data, rbuf,
+				    /*no_wait=*/false);
+
+		if (ret < 0 || rbuf[0] != 0) {
+			LOG_ERR("Failed 4cc task with result %d, rbuf[0] = %d",
+				ret, rbuf[0]);
+			goto cleanup;
+		}
+
+		LOG_INF("TFUq bytes [Success: 0x%02x, State: 0x%02x, Complete: 0x%02x]",
+		     rbuf[1], rbuf[2], rbuf[3]);
+
+		/* Wait 1600ms for reset to complete. */
+		k_msleep(1600);
+
+		/* Confirm we're on the new firmware now. */
+		get_and_print_device_info(dev);
+	} else {
+		LOG_INF("Exiting dry run with TFUe");
+		ret = run_task_sync(dev, "TFUe", NULL, rbuf, /*no_wait=*/false);
+		if (ret < 0 || rbuf[0] != 0) {
+			LOG_ERR("Cleaning up resulted in ret=%d and result byte=0x%02x",
+				ret, rbuf[0]);
+		}
+
+		do_reset_pdc(dev);
+		get_and_print_device_info(dev);
+	}
+
+	return 0;
+
+cleanup:
+	ret = run_task_sync(dev, "TFUe", NULL, rbuf, /*no_wait=*/false);
+	LOG_ERR("Cleaning up resulted in ret=%d and result byte=0x%02x", ret,
+		rbuf[0]);
+
+reset_pdc:
+	/* Reset and confirm we restored original firmware. */
+	do_reset_pdc(dev);
+	get_and_print_device_info(dev);
+
+	return -1;
 }
 
 static void tps_thread(void *dev, void *unused1, void *unused2)

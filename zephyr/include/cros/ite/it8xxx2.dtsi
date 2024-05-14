@@ -82,11 +82,11 @@
 &binman {
 	wp-ro {
 		offset = <0x0>;
-		size = <0x60000>;
+		size = <0x65000>;
 
 		ec-ro {
 			fmap {
-				offset = <(0x60000 - 4096 - 0x400)>;
+				offset = <(0x65000 - 4096 - 0x400)>;
 				/*
 				 * don't specify 'size = <0x400>' here so
 				 * it is auto-assigned to the fmap size.
@@ -95,13 +95,13 @@
 		};
 		pstate: pstate {
 			type = "section";
-			offset = <(0x60000 - 4096)>;
+			offset = <(0x65000 - 4096)>;
 			size = <4096>;
 		};
 	};
 	ec-rw {
-		offset = <0x60000>;
-		size = <0x60000>;
+		offset = <0x65000>;
+		size = <0x65000>;
 		rw-fw {
 			rw-fwid {
 				/* Fix the lcoation of the FWID to the
@@ -110,10 +110,10 @@
 				 * stored in the RO section of flash
 				 * are always correct.
 				 */
-				offset = <(0x60000 - 32)>;
+				offset = <(0x65000 - 32)>;
 			};
 		};
 	};
 	pad-byte = <0xff>;
-	pad-after = <0x40000>;
+	pad-after = <0x36000>;
 };

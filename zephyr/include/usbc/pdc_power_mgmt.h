@@ -526,4 +526,8 @@ int pdc_power_mgmt_set_trysrc(int port, bool enable);
  * @retval 0 if successful or error code
  */
 int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status);
+
+/* Hack to fwupdate TI board. */
+int pdc_do_firmware_update();
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

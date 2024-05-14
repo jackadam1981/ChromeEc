@@ -3400,3 +3400,13 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
 	memcpy(status, pdc_data[port]->port.pch_data_status, 5);
 	return 0;
 }
+
+extern int tps6699x_do_firmware_update(const struct device* dev);
+
+int pdc_do_firmware_update() {
+#ifdef CONFIG_USBC_PDC_TPS6699X
+  return tps6699x_do_firmware_update(pdc_data[0]->port.pdc);
+#else
+  return 0;
+#endif
+}
