@@ -16,6 +16,24 @@
       "message": "Please cherrypick to firmware branch as well",
       "revId": "feda3d7a202fbba40886b9d0b1e0ebdfd8c9ebfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9521ed_caeebf1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520832
+      },
+      "writtenOn": "2024-05-14T07:05:42Z",
+      "side": 1,
+      "message": "https://crrev.com/c/5526712",
+      "parentUuid": "0bd8cdd8_7eb78491",
+      "revId": "feda3d7a202fbba40886b9d0b1e0ebdfd8c9ebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
