@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1936097_87a57dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:42:44Z",
+      "side": 1,
+      "message": "responded to all comments",
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b0b3424_160ceb2c",
@@ -14,6 +31,30 @@
       "writtenOn": "2024-05-14T22:41:34Z",
       "side": 1,
       "message": "nit: You can use:\n\n```\nint ret \u003d mpu_protect_code_ram();\n```",
+      "range": {
+        "startLine": 471,
+        "startChar": 3,
+        "endLine": 473,
+        "endChar": 32
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d1581e_180e9426",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0b3424_160ceb2c",
       "range": {
         "startLine": 471,
         "startChar": 3,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a81895_b0b74772",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c860ad0_fc421d55",
+      "range": {
+        "startLine": 475,
+        "startChar": 24,
+        "endLine": 475,
+        "endChar": 40
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76b7bcbb_1cfc2103",
@@ -60,6 +125,30 @@
       "writtenOn": "2024-05-14T22:41:34Z",
       "side": 1,
       "message": "Let\u0027s say: `Failed to protect code RAM` since the function being called is \"protect_code_ram\".",
+      "range": {
+        "startLine": 478,
+        "startChar": 6,
+        "endLine": 478,
+        "endChar": 29
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec72f7b5_02b82b8b",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b7bcbb_1cfc2103",
       "range": {
         "startLine": 478,
         "startChar": 6,
@@ -107,6 +196,30 @@
       "side": 1,
       "message": "Forgot to add link for previous comment: http://shortn/_uuRqFyVSBp",
       "parentUuid": "bafbb939_26b56403",
+      "range": {
+        "startLine": 474,
+        "startChar": 3,
+        "endLine": 479,
+        "endChar": 4
+      },
+      "revId": "732921aa955f022a4ac7b5eb63a4b26075d067e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "330a7cba_942a1fe3",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-14T23:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858bfdf7_542a183a",
       "range": {
         "startLine": 474,
         "startChar": 3,
