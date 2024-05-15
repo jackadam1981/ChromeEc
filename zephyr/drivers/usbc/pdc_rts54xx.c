@@ -23,6 +23,7 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
+#include <include/ppm.h>
 
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
@@ -380,6 +381,8 @@ struct pdc_data_t {
 	pdc_cci_handler_cb_t cci_cb;
 	/** CCI Event callback data */
 	void *cb_data;
+	/** Asynchronous (CI) Event callbacks */
+	sys_slist_t async_cb;
 	/** Information about the PDC */
 	struct pdc_info_t info;
 	/** Init done flag */
@@ -524,9 +527,14 @@ static void print_current_state(struct pdc_data_t *data)
 static void call_cci_event_cb(struct pdc_data_t *data)
 {
 	const struct pdc_config_t *cfg = data->dev->config;
+	const union cci_event_t cci = data->cci_event;
 
 	if (!data->init_done) {
 		return;
+	}
+
+	if (cci.connector_change) {
+		pdc_fire_callbacks(&data->async_cb, data->dev, cci);
 	}
 
 	if (data->cci_cb) {
@@ -2431,6 +2439,14 @@ static int rts54_execute_command_sync(const struct device *dev,
 	return rv;
 }
 
+static int rts54_manage_callback(const struct device *dev,
+				 struct pdc_callback *callback, bool set)
+{
+	struct pdc_data_t *const data = dev->data;
+
+	return pdc_manage_callbacks(&data->async_cb, callback, set);
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
@@ -2465,6 +2481,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.set_pdos = rts54_set_pdo,
 	.get_pch_data_status = rts54_get_pch_data_status,
 	.execute_command_sync = rts54_execute_command_sync,
+	.manage_callback = rts54_manage_callback,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
