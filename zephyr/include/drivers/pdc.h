@@ -18,6 +18,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/i2c.h>
+#include <zephyr/sys/slist.h>
 #include <zephyr/types.h>
 
 #ifdef __cplusplus
@@ -101,6 +102,8 @@ struct get_pdo_t {
 	enum pdo_source_t pdo_source;
 };
 
+struct pdc_callback;
+
 /**
  * @typedef
  * @brief These are the API function types
@@ -127,6 +130,9 @@ typedef void (*pdc_cci_handler_cb_t)(union cci_event_t cci_event,
 				     void *cb_data);
 typedef int (*pdc_set_handler_cb_t)(const struct device *dev,
 				    pdc_cci_handler_cb_t cci_cb, void *cb_data);
+typedef void (*pdc_cci_cb_t)(const struct device *dev,
+			     const struct pdc_callback *callback,
+			     union cci_event_t cci_event);
 typedef int (*pdc_get_vbus_t)(const struct device *dev, uint16_t *vbus);
 typedef int (*pdc_get_pdos_t)(const struct device *dev,
 			      enum pdo_type_t pdo_type,
@@ -165,6 +171,8 @@ typedef int (*pdc_execute_command_sync_t)(const struct device *dev,
 					  uint8_t data_size,
 					  uint8_t *command_specific,
 					  uint8_t *lpm_data_out);
+typedef int (*pdc_manage_callback_t)(const struct device *dev,
+				     struct pdc_callback *callback, bool set);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -206,6 +214,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_set_pdos_t set_pdos;
 	pdc_get_pch_data_status_t get_pch_data_status;
 	pdc_execute_command_sync_t execute_command_sync;
+	pdc_manage_callback_t manage_callback;
 };
 /**
  * @endcond
@@ -1093,6 +1102,108 @@ static inline int pdc_execute_command_sync(const struct device *dev,
 
 	return api->execute_command_sync(dev, ucsi_command, data_size,
 					 command_specific, lpm_data_out);
+}
+
+/**
+ * @brief Add callback for connector change events.
+ *
+ * @param dev PDC device structure pointer
+ * @param callback Callback handler and data
+ *
+ * @return 0 on success
+ * @return -ENOSYS if not implemented
+ * @return -EINVAL for other errors
+ */
+static inline int pdc_add_ci_callback(const struct device *dev,
+				      struct pdc_callback *callback)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->manage_callback == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->manage_callback(dev, callback, true);
+}
+
+/**
+ * @brief PDC callback structure
+ *
+ * Used to register a callback in the driver instance callback list.
+ * As many callbacks as needed can be added as long as each of them
+ * are unique pointers of struct pdc_callback.
+ * Beware such structure should not be allocated on stack.
+ */
+struct pdc_callback {
+	/** This is meant to be used in the driver and the user should not
+	 * mess with it (see drivers/gpio/gpio_utils.h)
+	 */
+	sys_snode_t node;
+
+	/** Actual callback function being called when relevant. */
+	pdc_cci_cb_t handler;
+
+	/** A mask of CCI events the callback is interested in, if 0 the
+	 * callback will never be called. Such pin_mask can be modified whenever
+	 * necessary by the owner, and thus will affect the handler being called
+	 * or not. The selected pins must be configured to trigger an interrupt.
+	 */
+	union cci_event_t cci_event_mask;
+};
+
+/**
+ * @brief Generic function to append or remove a callback from a callback list
+ *
+ * @param callbacks A pointer to the original list of callbacks (can be NULL)
+ * @param callback A pointer of the callback to append or remove from the list
+ * @param set A boolean indicating insertion or removal of the callback
+ *
+ * @return 0 on success, negative errno otherwise.
+ */
+static inline int pdc_manage_callbacks(sys_slist_t *callbacks,
+				       struct pdc_callback *callback, bool set)
+{
+	__ASSERT(callback, "No callback!");
+	__ASSERT(callback->handler, "No callback handler!");
+
+	if (!sys_slist_is_empty(callbacks)) {
+		if (!sys_slist_find_and_remove(callbacks, &callback->node)) {
+			if (!set) {
+				return -EINVAL;
+			}
+		}
+	} else if (!set) {
+		return -EINVAL;
+	}
+
+	if (set) {
+		sys_slist_append(callbacks, &callback->node);
+	}
+
+	return 0;
+}
+
+/**
+ * @brief Generic function to go through and fire callback from a callback list
+ *
+ * @param list A pointer on the gpio callback list
+ * @param port A pointer on the gpio driver instance
+ * @param pins The actual pin mask that triggered the interrupt
+ */
+static inline void pdc_fire_callbacks(sys_slist_t *list,
+				      const struct device *dev,
+				      union cci_event_t cci_event)
+{
+	struct pdc_callback *cb, *tmp;
+
+	SYS_SLIST_FOR_EACH_CONTAINER_SAFE(list, cb, tmp, node)
+	{
+		if (cb->cci_event_mask.raw_value & cci_event.raw_value) {
+			__ASSERT(cb->handler, "No callback handler!");
+			cb->handler(dev, cb, cci_event);
+		}
+	}
 }
 
 #ifdef __cplusplus
