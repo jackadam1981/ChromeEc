@@ -39,6 +39,30 @@
       },
       "revId": "92511616c2d00ca3269044fbb78384a95c206ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2540a16_b340e987",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-15T18:09:00Z",
+      "side": 1,
+      "message": "I have added all the relevant declarations that I can think of.  (With the exception of STM32L4 interrupt for TIMER17, which is shared with TIMER1, and I do not want to rename the defines, similar to how `STM32_IRQ_TIM1_UP_TIM16` shows that it is used by both TIMER1 and TIMER16.",
+      "parentUuid": "62e735e4_d63ef8da",
+      "range": {
+        "startLine": 1322,
+        "startChar": 8,
+        "endLine": 1322,
+        "endChar": 33
+      },
+      "revId": "92511616c2d00ca3269044fbb78384a95c206ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
