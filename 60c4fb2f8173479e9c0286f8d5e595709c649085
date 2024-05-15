@@ -70,6 +70,30 @@
       },
       "revId": "60c4fb2f8173479e9c0286f8d5e595709c649085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a185dd63_d4c77d80",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T16:46:38Z",
+      "side": 1,
+      "message": "I tried that, but `cipd install` requires that you first run `cipd init`, and that complains that the root dir is inside an existing root dir. Whereas `cipd ensure` just works, but has annoying command line args.\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/fullcheckout-presubmit/b8747920220593402641/infra\n\n```\n[FAILED] chromiumos/platform/ec: ec_commands_h\n    Hook script \"util/linux_ec_commands_h_check.sh\" failed with code 1:\n      Error: directory /b/s/w/ir/x/t/tmp.uCLjxD14uj is already inside a site root (/b/s/w/ir).\n```",
+      "parentUuid": "1c92a737_58e4aedc",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "60c4fb2f8173479e9c0286f8d5e595709c649085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
