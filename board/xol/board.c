@@ -17,6 +17,9 @@
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
+/* For contorl PWM */
+#include "pwm.h"
+
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
@@ -146,3 +149,23 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 		charge_ma * (100 - CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT) /
 			100);
 }
+
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	/* Allow keyboard backlight to be enabled */
+
+	if (IS_ENABLED(CONFIG_PWM_KBLIGHT))
+		pwm_enable(PWM_CH_KBLIGHT, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	/* Turn off the keyboard backlight if it's on. */
+
+	if (IS_ENABLED(CONFIG_PWM_KBLIGHT))
+		pwm_enable(PWM_CH_KBLIGHT, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
