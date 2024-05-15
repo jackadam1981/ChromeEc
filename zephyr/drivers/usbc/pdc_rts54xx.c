@@ -379,12 +379,12 @@ struct pdc_data_t {
 	union error_status_t error_status;
 	/** CCI Event */
 	union cci_event_t cci_event;
-	/** CCI Event callback */
-	pdc_cci_handler_cb_t cci_cb;
-	pdc_cci_handler_cb_t cci_cb_ex;
-	/** CCI Event callback data */
-	void *cb_data;
-	void *cb_data_ex;
+	/** CC Event callback */
+	struct pdc_callback *cci_cb;
+	/** CC Event temporary callback. If it's NULL, cci_cb will be called. */
+	struct pdc_callback *cci_cb_tmp;
+	/** Asynchronous (CI) Event callbacks */
+	sys_slist_t async_cb;
 	/** Information about the PDC */
 	struct pdc_info_t info;
 	/** Init done flag */
@@ -536,18 +536,17 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 		return;
 	}
 
-	if (data->cci_cb) {
-		LOG_INF("C%d: cci_event_cb event=0x%x", cfg->connector_number,
-			data->cci_event.raw_value);
-		data->cci_cb(cci, data->cb_data);
-	}
+	LOG_INF("C%d: cci_event=0x%x", cfg->connector_number, cci.raw_value);
 
-	/*
-	 * Currently, connector_change is set only by handle_irqs and when it's
-	 * set, no other flags (e.g. command_completed) are set.
-	 */
-	if (cci.connector_change && data->cci_cb_ex)
-		data->cci_cb_ex(cci, data->cb_data_ex);
+	if (cci.connector_change) {
+		pdc_fire_callbacks(&data->async_cb, data->dev, cci);
+	} else {
+		if (data->cci_cb_tmp)
+			data->cci_cb_tmp->handler(data->dev, data->cci_cb_tmp,
+						  cci);
+		else
+			data->cci_cb->handler(data->dev, data->cci_cb, cci);
+	}
 }
 
 static int get_ara(const struct device *dev, uint8_t *ara)
@@ -1452,9 +1451,10 @@ static const struct smf_state states[] = {
  * @return -EBUSY if command is already pending.
  * @return -ECONNREFUSED if chip communication is disabled
  */
-static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
-			      const uint8_t *buf, uint8_t len,
-			      uint8_t *user_buf)
+static int rts54_post_command_with_callback(const struct device *dev,
+					    enum cmd_t cmd, const uint8_t *buf,
+					    uint8_t len, uint8_t *user_buf,
+					    struct pdc_callback *callback)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -1478,6 +1478,7 @@ static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
 	data->wr_buf_len = len;
 	data->user_buf = user_buf;
 	data->cmd = cmd;
+	data->cci_cb_tmp = callback;
 
 	if (IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG)) {
 		const struct pdc_config_t *cfg = dev->config;
@@ -1490,6 +1491,14 @@ static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
 	k_mutex_unlock(&data->mtx);
 
 	return 0;
+}
+
+static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
+			      const uint8_t *buf, uint8_t len,
+			      uint8_t *user_buf)
+{
+	return rts54_post_command_with_callback(dev, cmd, buf, len, user_buf,
+						NULL);
 }
 
 /**
@@ -1525,23 +1534,11 @@ static int rts54_get_ucsi_version(const struct device *dev, uint16_t *version)
 }
 
 static int rts54_set_handler_cb(const struct device *dev,
-				pdc_cci_handler_cb_t cci_cb, void *cb_data)
+				struct pdc_callback *callback)
 {
 	struct pdc_data_t *data = dev->data;
 
-	data->cci_cb = cci_cb;
-	data->cb_data = cb_data;
-
-	return 0;
-}
-
-int rts54_set_handler_cb_ex(const struct device *dev,
-			    pdc_cci_handler_cb_t cci_cb, void *cb_data)
-{
-	struct pdc_data_t *data = dev->data;
-
-	data->cci_cb_ex = cci_cb;
-	data->cb_data_ex = cb_data;
+	data->cci_cb = callback;
 
 	return 0;
 }
@@ -2385,20 +2382,15 @@ static int rts54_set_pdo(const struct device *dev, enum pdo_type_t type,
 }
 
 #define SMBUS_MAX_BLOCK_SIZE 32
-#define SYNC_CMD_RETRY_COUNT 100
 
-static int rts54_execute_command_sync(const struct device *dev,
+static int rts54_execute_ucsi_cmd(const struct device *dev,
 				      uint8_t ucsi_command, uint8_t data_size,
 				      uint8_t *command_specific,
-				      uint8_t *lpm_data_out)
+				      uint8_t *lpm_data_out,
+				      struct pdc_callback *callback)
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
-	pdc_cci_handler_cb_t cci_cb_copy;
-	void *cb_data_copy;
-	int call_counter;
-	int rv;
-	bool cmd_posted = false;
 	enum cmd_t use_cmd = CMD_RAW_UCSI;
 
 	if (ucsi_command == UCSI_CMD_GET_CONNECTOR_STATUS &&
@@ -2408,6 +2400,9 @@ static int rts54_execute_command_sync(const struct device *dev,
 		       sizeof(data->conn_status));
 		return sizeof(data->conn_status);
 	}
+
+	if (get_state(data) == ST_IDLE)
+		return -EBUSY;
 
 	cmd_buffer[0] = REALTEK_PD_COMMAND;
 	cmd_buffer[1] = data_size + 2;
@@ -2488,54 +2483,17 @@ static int rts54_execute_command_sync(const struct device *dev,
 		break;
 	}
 
-	/*
-	 * This loop combines two timers: timer for posting a command + timer
-	 * for receiving the result. It doesn't matter (from OPM's perspective)
-	 * which part caused the delay.
-	 */
-	call_counter = 0;
-	do {
-		if (!cmd_posted && get_state(data) == ST_IDLE) {
-			rv = rts54_post_command(dev, use_cmd, cmd_buffer,
-						data_size + 4, lpm_data_out);
+	return rts54_post_command_with_callback(dev, use_cmd, cmd_buffer,
+						data_size + 4, lpm_data_out,
+						callback);
+}
 
-			/* Try again if busy. All other errors should exit. */
-			if (rv < 0) {
-				if (rv != -EBUSY) {
-					LOG_ERR("%s: Failed to run (%d)",
-						__func__, rv);
-					return rv;
-				}
-			} else {
-				/*
-				 * Temporarily clear the CCI callback to prevent
-				 * results from polluting the other handler.
-				 */
-				cmd_posted = true;
-				cci_cb_copy = data->cci_cb;
-				cb_data_copy = data->cb_data;
-				rts54_set_handler_cb(dev, NULL, NULL);
-			}
-		}
-		/* Wait for timeout or event */
-		k_sleep(K_MSEC(T_PING_STATUS));
+static int rts54_manage_callback(const struct device *dev,
+				 struct pdc_callback *callback, bool set)
+{
+	struct pdc_data_t *const data = dev->data;
 
-		call_counter++;
-		if (call_counter > SYNC_CMD_RETRY_COUNT) {
-			rv = -ETIMEDOUT;
-			break;
-		}
-	} while (!cmd_posted || (!data->cci_event.command_completed &&
-				 !data->cci_event.error));
-
-	rts54_set_handler_cb(dev, cci_cb_copy, cb_data_copy);
-
-	if (rv == 0) {
-		/* May have read some data. */
-		rv = data->cci_event.data_len;
-	}
-
-	return rv;
+	return pdc_manage_callbacks(&data->async_cb, callback, set);
 }
 
 static const struct pdc_driver_api_t pdc_driver_api = {
@@ -2558,7 +2516,6 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_vbus_voltage = rts54_get_vbus_voltage,
 	.get_current_pdo = rts54_get_current_pdo,
 	.set_handler_cb = rts54_set_handler_cb,
-	.set_handler_cb_ex = rts54_set_handler_cb_ex,
 	.read_power_level = rts54_read_power_level,
 	.get_info = rts54_get_info,
 	.get_bus_info = rts54_get_bus_info,
@@ -2572,7 +2529,8 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_vconn_sourcing = rts54_is_vconn_sourcing,
 	.set_pdos = rts54_set_pdo,
 	.get_pch_data_status = rts54_get_pch_data_status,
-	.execute_command_sync = rts54_execute_command_sync,
+	.execute_ucsi_cmd = rts54_execute_ucsi_cmd,
+	.manage_callback = rts54_manage_callback,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
