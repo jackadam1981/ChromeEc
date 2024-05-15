@@ -70,6 +70,30 @@
       },
       "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2995c93f_c553aa89",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:12:25Z",
+      "side": 1,
+      "message": "Is there a potential race condition with this code updating the cache at the same time the PPM requests UCSI_CMD_GET_CONNECTOR_STATUS?\n\nA mutex around the memcpy into and from `data-\u003econn_status` is probably needed.",
+      "parentUuid": "73e115e6_255841ef",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 34
+      },
+      "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
