@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eeef62a7_ace8f3f2",
+        "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-15T06:49:23Z",
+      "side": 1,
+      "message": "\u003eI\u0027m hoping that long-term EC and FPMCU will converge and do the same testing.\n\nSure, IMO it is doable. We just need to switch to native Zephyr tools as much as possible (twister), instead of ones prepared only for FPMCU testing.",
+      "parentUuid": "81ca10db_02af55b5",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "c00233c8fb973f3a78aa9d17f2669e8791a3b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65edf8a0_83fd1497",
         "filename": "zephyr/test/hwtest/src/flash_write_protect.c",
         "patchSetId": 7
