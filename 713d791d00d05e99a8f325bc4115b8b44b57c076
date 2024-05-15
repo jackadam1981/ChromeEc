@@ -16,6 +16,144 @@
       "message": "iteflash for it513xx",
       "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd74ea1_fdb2aed9",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:17:49Z",
+      "side": 1,
+      "message": "Nit - name this `it5xxxx`",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7afa6c_87ade2df",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:17:49Z",
+      "side": 1,
+      "message": "5xxxx",
+      "range": {
+        "startLine": 593,
+        "startChar": 24,
+        "endLine": 593,
+        "endChar": 29
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ce7859_aaf3628f",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:17:49Z",
+      "side": 1,
+      "message": "it5xxxx_get_eflash_size",
+      "range": {
+        "startLine": 594,
+        "startChar": 11,
+        "endLine": 594,
+        "endChar": 31
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "372bf721_dc47c6de",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:17:49Z",
+      "side": 1,
+      "message": "Use `else if`.  Otherwise this breaks non it5xxxx parts.",
+      "range": {
+        "startLine": 715,
+        "startChar": 2,
+        "endLine": 715,
+        "endChar": 4
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1c4430_9320034e",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:17:49Z",
+      "side": 1,
+      "message": "In all cases, set the flash size in kilobytes directly.\n```\n\t\tif (eflash_size \u003d\u003d 0x01) {\n\t\t\tchnd-\u003eflash_size \u003d 128 * 1024;\n```",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 0
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6823f287_2e24bf78",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:17:49Z",
+      "side": 1,
+      "message": "Delete - just set the flash size in kilobytes above.",
+      "range": {
+        "startLine": 747,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 0
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
