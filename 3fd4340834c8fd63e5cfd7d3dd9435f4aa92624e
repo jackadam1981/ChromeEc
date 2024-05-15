@@ -16,6 +16,24 @@
       "message": "I don\u0027t love this change, but as I\u0027m refactoring `fpsensor_state.h`, I\u0027d like to be able to use C++ in it. Right now the fpsensor headers are kind of a mess, so it\u0027s hard for me to break up the `fpsensor_state.h` into a C++ vs C version. AFAICT, compiling these files with C++ shouldn\u0027t cause any problems, but let me know your thoughts.",
       "revId": "3fd4340834c8fd63e5cfd7d3dd9435f4aa92624e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f179b4_61857585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-15T10:28:10Z",
+      "side": 1,
+      "message": "These are tests for our application (from zephyr perspective) code, so we can use C++, but please keep in mind that writing tests in C++ for zephyr (the RTOS) was rejected https://github.com/zephyrproject-rtos/zephyr/issues/66053.\n\nI\u0027m fine with using C++ if it improves our codebase, but in my opinion the problem we have is architectural. We should transform our codebase into state machines with clear connections between states.",
+      "parentUuid": "69906682_362c4608",
+      "revId": "3fd4340834c8fd63e5cfd7d3dd9435f4aa92624e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
