@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71190259_1746dffe",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2385,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:28:38Z",
+      "side": 1,
+      "message": "Use `cc ? BIT(0) : 0` instead.  Otherwise the caller could pass in a value that isn\u0027t 1 or 0, and write to the reserved bits.",
+      "range": {
+        "startLine": 2385,
+        "startChar": 39,
+        "endLine": 2385,
+        "endChar": 41
+      },
+      "revId": "becaf689f174e80b25079fbc3ba2f20e40e1a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0834e3_27922052",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:28:38Z",
+      "side": 1,
+      "message": "How about splitting this into 2 parameters `union conn_status_change_bits_t` and `uint16_t vendor_defined`?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 58,
+        "endLine": 1042,
+        "endChar": 69
+      },
+      "revId": "becaf689f174e80b25079fbc3ba2f20e40e1a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5aa058b_61aab9f4",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:28:38Z",
+      "side": 1,
+      "message": "Use a bool here.",
+      "range": {
+        "startLine": 1043,
+        "startChar": 4,
+        "endLine": 1043,
+        "endChar": 14
+      },
+      "revId": "becaf689f174e80b25079fbc3ba2f20e40e1a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292cdb09_31acbb74",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:28:38Z",
+      "side": 1,
+      "message": "Use `union conn_status_change_bits_t` type instead.",
+      "range": {
+        "startLine": 634,
+        "startChar": 1,
+        "endLine": 634,
+        "endChar": 12
+      },
+      "revId": "becaf689f174e80b25079fbc3ba2f20e40e1a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1cddad_8c2aa867",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:28:38Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 636,
+        "startChar": 1,
+        "endLine": 636,
+        "endChar": 8
+      },
+      "revId": "becaf689f174e80b25079fbc3ba2f20e40e1a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

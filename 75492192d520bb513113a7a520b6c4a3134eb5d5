@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8220e091_a1e6e732",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T16:28:38Z",
+      "side": 1,
+      "message": "+1.  That allows the test to validate the side effect of sending ack_cc_ci.",
+      "parentUuid": "381e95eb_2ce5b3d1",
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92d25c9a_56e5ca83",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
