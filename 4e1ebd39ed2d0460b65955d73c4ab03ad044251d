@@ -94,6 +94,30 @@
       },
       "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cffbeb6_19105001",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-15T16:52:51Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be. Both the interrupt handler and command execution occur on the same thread and the PPM initiated synchronous tasks also post + run on that thread.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/usbc/pdc_rts54xx.c;l\u003d2500",
+      "parentUuid": "2995c93f_c553aa89",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 34
+      },
+      "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
