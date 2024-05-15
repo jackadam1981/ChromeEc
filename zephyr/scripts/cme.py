@@ -72,6 +72,126 @@ CTYPE_SUFFIXES = {
     "accel": ["accel", "gyro"],
 }
 
+# A Dictionary that stores additional information that may not be stored based
+# on their compatible.
+# The first index stores the corrected compatible name.
+# The second index stores the register for the PID.
+# The third index stores the PID for drivers that match to multiple devices.
+DISAMBIGUATION_DICTIONARY = {
+    "cros-ec,bma4xx": (
+        "bosch,bma4xx",
+        "0x00",
+        {
+            "0x12": "bma422",
+        },
+    ),
+    "cros-ec,bma255": (
+        "bosch,bma255",
+        None,
+        None,
+    ),
+    "cros-ec,bmi3xx": (
+        "bosch,bmi3xx",
+        "0x00",
+        {
+            "0x43": "bmi323",
+        },
+    ),
+    "cros-ec,bmi160": (
+        "bosch,bmi160",
+        "0x00",
+        {
+            "0xd1": "bmi160",
+            "0xd2": "bmi168",
+        },
+    ),
+    "cros-ec,bmi260": (
+        "bosch,bmi260",
+        "0x00",
+        {
+            "0x27": "bmi260",
+            "0x26": "bmi220",
+        },
+    ),
+    "cros-ec,icm426xx": (
+        "invensense,icm426xx",
+        "0x0075",
+        {
+            "0x39": "icm40608",
+            "0x42": "icm42605",
+        },
+    ),
+    "cros-ec,icm42607": (
+        "invensense,icm42607",
+        "0x0075",
+        {
+            "0x60": "icm40607P",
+            "0x3f": "icm42608P",
+        },
+    ),
+    "cros-ec,kx022": (
+        "kionix,kx022",
+        None,
+        None,
+    ),
+    "cros-ec,lis2de": (
+        "st,lis2de",
+        None,
+        None,
+    ),
+    "cros-ec,lis2ds": (
+        "st,lis2ds",
+        None,
+        None,
+    ),
+    "cros-ec,lis2dw12": (
+        "st,lis2dw12",
+        None,
+        None,
+    ),
+    "cros-ec,lsm6dsm": (
+        "st,lsm6dsm",
+        "0x0f",
+        {
+            "0x6a": "lsm6dsm",
+            "0x69": "lsm6ds3",
+        },
+    ),
+    "cros-ec,lsm6dso": (
+        "st,lsm6dso",
+        None,
+        None,
+    ),
+    "cros-ec,tcs3400": (
+        "ams,tcs3400",
+        None,
+        None,
+    ),
+    "parade,ps8xxx": (
+        None,
+        None,
+        {
+            "0x8705",
+            "ps8705",
+            "0x8745",
+            "ps8745",
+            "0x8751",
+            "ps8751",
+            "0x8755",
+            "ps8755",
+            "0x8805",
+            "ps8805",
+            "0x8815",
+            "ps8815",
+        },
+    ),
+    "nuvoton,nct38xx": (
+        "nuvoton,nct380x",
+        None,
+        None,
+    ),
+}
+
 
 def parse_args(argv: Optional[List[str]] = None):
     """Returns parsed command-line arguments"""
@@ -144,6 +264,25 @@ class Manifest:
         """Dump the component manifest to a JSON file."""
         with open(filepath, "w", encoding="utf-8") as outfile:
             outfile.write(json.dumps(self.manifest, indent=4))
+
+
+def disambiguify(manifest):
+    """updates information in the manifest that may be ambiguous
+
+    Args:
+        manifest: Manifest object.
+    """
+    for component in manifest.manifest["component_list"]:
+        if component["component_name"] in DISAMBIGUATION_DICTIONARY:
+            comp = DISAMBIGUATION_DICTIONARY[component["component_name"]]
+
+            if comp[0] is not None:
+                component["component_name"] = comp[0]
+
+            if comp[1] is not None:
+                component.update(
+                    {"PID": {"PID_reg": comp[1], "product_name": comp[2]}}
+                )
 
 
 def node_is_valid(node, i2c_node, i2c_portmap):
@@ -557,6 +696,8 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     )
 
     # TODO(b/308028560): Iterate all sensor components.
+
+    disambiguify(manifest)
 
     manifest.json_dump(args.manifest_file)
 
