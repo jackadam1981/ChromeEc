@@ -1,0 +1,599 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5405a04a_bafae48f",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    manifest \u003d bytearray(MANIFEST_ENTRY_SIZE)\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72f24b2_e4737009",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    with open(args.output, \"wb\") as output_file:\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 36,
+        "endLine": 81,
+        "endChar": 39
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ce48dc_8a80c50a",
+        "filename": "chip/mchp/util/pack_ec_mec152x.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    with open(args.output, \"wb\") as output_file:\n```",
+      "range": {
+        "startLine": 912,
+        "startChar": 36,
+        "endLine": 912,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cb83fac9_4a2dee2e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "chip/mchp/util/pack_ec_mec152x.py",
+              "range": {
+                "startLine": 912,
+                "startChar": 0,
+                "endLine": 913,
+                "endChar": 0
+              },
+              "replacement": "    with open(args.output, \"wb\") as output_file:\n"
+            },
+            {
+              "path": "chip/mchp/util/pack_ec_mec152x.py",
+              "range": {
+                "startLine": 924,
+                "startChar": 0,
+                "endLine": 925,
+                "endChar": 0
+              },
+              "replacement": "                output_file.write(b\"\\xff\" * (sss[0] - addr))\n"
+            },
+            {
+              "path": "chip/mchp/util/pack_ec_mec152x.py",
+              "range": {
+                "startLine": 934,
+                "startChar": 0,
+                "endLine": 935,
+                "endChar": 0
+              },
+              "replacement": "            output_file.write(sss[1])\n"
+            },
+            {
+              "path": "chip/mchp/util/pack_ec_mec152x.py",
+              "range": {
+                "startLine": 945,
+                "startChar": 0,
+                "endLine": 946,
+                "endChar": 0
+              },
+              "replacement": "            output_file.write(b\"\\xff\" * (spi_size - addr))\n"
+            },
+            {
+              "path": "chip/mchp/util/pack_ec_mec152x.py",
+              "range": {
+                "startLine": 947,
+                "startChar": 0,
+                "endLine": 948,
+                "endChar": 0
+              },
+              "replacement": "        output_file.flush()\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a26a2ca_1633e989",
+        "filename": "chip/mchp/util/pack_ec_mec172x.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    mylist.append((loc, data, description))\n```",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 22
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5197ea_ea128c76",
+        "filename": "chip/mchp/util/pack_ec_mec172x.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    with open(args.output, \"wb\") as output_file:\n```",
+      "range": {
+        "startLine": 959,
+        "startChar": 36,
+        "endLine": 959,
+        "endChar": 39
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a08dfa_81392202",
+        "filename": "chip/mchp/util/pack_ec_mec172x.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n        for loc, data, _ in spi_list:\n            if addr \u003c loc:\n                debug_print(\n                    \"Offset \",\n                    hex(addr),\n                    \" Length\",\n                    hex(loc - addr),\n                    \"fill with 0xff\",\n                )\n                fff.write(b\"\\xff\" * (sss[0] - addr))\n                addr \u003d loc\n                debug_print(\n                    \"Offset \",\n                    hex(addr),\n                    \" Length\",\n                    hex(len(data)),\n                    \"write data\",\n                )\n\n            fff.write(data)\n            addr +\u003d len(data)\n```",
+      "range": {
+        "startLine": 962,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 31
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d0acbb_5a123a8b",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "While you\u0027re cleaning up Py2 support here, you can delete this.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8370d5d4_9a5be050",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n            char \u003d self.tty.read().decode(\"utf-8\")\n            if not char:\n                break\n            line.append(char)\n            if char \u003d\u003d \"\\n\":\n                full_line \u003d \"\".join(line)\n                buf.append(full_line)\n                if REBOOT_MARKER in full_line:\n                    boot +\u003d 1\n                line \u003d []\n                if boot \u003e max_boot_count:\n                    break\n\n        full_line \u003d \"\".join(line)\n        buf.append(full_line)\n```",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 23
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23efa2d9_ebc34937",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n            self.hla_serial \u003d Path(self.serial_path).read_text(encoding\u003d\"utf-8\").strip()\n```",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 45
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2dfaf0_9f849cb5",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n        serial_path \u003d Path(self.serial_path)\n        serial_path.parent.mkdir(parents\u003dTrue, exist_ok\u003dTrue)\n        self.hla_serial \u003d serials[0]\n        serial_path.write_text(self.hla_serial, encoding\u003d\"utf-8\")\n```",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 33
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e66740_a15825ed",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n        with open(filepath, \"r\", encoding\u003d\"utf-8\") as macro_file:\n            lines \u003d macro_file.readlines()\n            joined \u003d \"\".join(lines).replace(\"\\\\\\n\", \"\").splitlines()\n            for line in joined:\n                if not line.strip().startswith(macro):\n                    continue\n                entry \u003d {}\n                line \u003d line.strip()[len(macro) :]\n                line \u003d line.strip(\"()\").split(\",\")\n                entry[\"name\"] \u003d line[0].strip()\n                entry[\"th_rc\"] \u003d self.get_return_code_value(\n                    line[1].strip().strip(\u0027\"\u0027)\n                )\n                entry[\"th_string\"] \u003d line[2].strip().strip(\u0027\"\u0027)\n                entry[\"dut_rc\"] \u003d self.get_return_code_value(\n                    line[3].strip().strip(\u0027\"\u0027)\n                )\n                entry[\"dut_string\"] \u003d line[4].strip().strip(\u0027\"\u0027)\n                tests.append(entry)\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502408c3_57b9bce2",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n        with open(filepath, \"r\", encoding\u003d\"utf-8\") as input_file:\n```",
+      "range": {
+        "startLine": 156,
+        "startChar": 54,
+        "endLine": 156,
+        "endChar": 57
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a24c66_c26b125d",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "split into multiple lines?",
+      "range": {
+        "startLine": 1806,
+        "startChar": 97,
+        "endLine": 1806,
+        "endChar": 98
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "007aaa58_8a71b518",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/stack_analyzer/stack_analyzer.py",
+              "range": {
+                "startLine": 1806,
+                "startChar": 0,
+                "endLine": 1807,
+                "endChar": 0
+              },
+              "replacement": "                f\"Task: {task.name}, Max size: \"\n                f\"{routine_func.stack_max_usage + extra_stack_frame} \"\n                f\"({routine_func.stack_max_usage} + {extra_stack_frame}), \"\n                f\"Allocated size: {task.stack_max_size}\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae4bfd5_b0bcb780",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "split into multiple lines",
+      "range": {
+        "startLine": 1821,
+        "startChar": 83,
+        "endLine": 1821,
+        "endChar": 92
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04460f4_ec1457e9",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "Remove while you\u0027re here",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 37
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac89ff34_f613c14c",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    with open(board_file, encoding\u003d\"utf-8\") as input_file:\n        data \u003d json.load(input_file)\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1c3593_5013b7cf",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "split into multiple lines",
+      "range": {
+        "startLine": 54,
+        "startChar": 78,
+        "endLine": 54,
+        "endChar": 83
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "befefa21_eaaf76ca",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_power/convert_power_log_board.py",
+              "range": {
+                "startLine": 54,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "                f\"    (\u0027sweetberry\u0027, 0x{i2c_addr:02x}, \u0027{rec[\u0027name\u0027]}\u0027, 5.0, \"\n                f\"{rec[\u0027rs\u0027]:f}, {channel:d}, \u0027True\u0027)\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82993e19_040bb127",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "split into multiple lines",
+      "range": {
+        "startLine": 78,
+        "startChar": 76,
+        "endLine": 78,
+        "endChar": 83
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006d2bde_671de016",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "split into multiple lines\n\ni\u0027m actually surprised someone bothered to hand-format json in Python",
+      "range": {
+        "startLine": 65,
+        "startChar": 78,
+        "endLine": 65,
+        "endChar": 83
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c7c499_a5de68c5",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n        for val in self._pwr.values():\n```",
+      "range": {
+        "startLine": 752,
+        "startChar": 12,
+        "endLine": 752,
+        "endChar": 40
+      },
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ae46ad_03ee9fb3",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n            for row_text, col_width in zip(row, max_col_width):\n                formatted_row +\u003d row_text.rjust(col_width + 2)\n```",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "68fa43aa_0fd7d2e5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_power/stats_manager.py",
+              "range": {
+                "startLine": 256,
+                "startChar": 0,
+                "endLine": 258,
+                "endChar": 0
+              },
+              "replacement": "            for row_text, col_width in zip(row, max_col_width):\n                formatted_row +\u003d row_text.rjust(col_width + 2)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0d8776fae4d9f510084f3915d151e57028be146a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

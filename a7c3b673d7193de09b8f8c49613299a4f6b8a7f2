@@ -1,0 +1,338 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e47df2_23393c8c",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n            with open(fname, \"w\", encoding\u003d\"utf-8\") as output_file:\n                output_file.write(\"\\n\".join(f\"{sample:.2f}\" for sample in data) + \"\\n\")\n```",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 79
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c3b178b7_5d1450f0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_power/stats_manager.py",
+              "range": {
+                "startLine": 425,
+                "startChar": 0,
+                "endLine": 427,
+                "endChar": 0
+              },
+              "replacement": "            with open(fname, \"w\", encoding\u003d\"utf-8\") as output_file:\n                output_file.write(\"\\n\".join(f\"{sample:.2f}\" for sample in\n data) + \"\\n\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4474823_bf7444db",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "Remove while you\u0027re here",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 37
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b43349_e43b4b60",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n            for device in dev_list:\n                dev_serial \u003d usb.util.get_string(device, device.iSerialNumber)\n                if dev_serial \u003d\u003d serialname:\n                    dev \u003d device\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2a2792_16fb8cfe",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n                    data \u003d self._susb._read_ep.read(  # pylint:disable\u003dprotected-access\n                        64, self._susb.TIMEOUT_MS\n                    )\n                    if data:\n                        GetBuffer(sys.stdout).write(data.tobytes())\n```",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 66
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f189d20_3bed1e13",
+        "filename": "util/chargen",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    char \u003d base\n    counter \u003d 0\n    while True:\n        sys.stdout.write(char)\n        counter \u003d counter + 1\n\n        if (max_chars !\u003d 0) and (counter \u003d\u003d max_chars):\n            sys.stdout.write(\"\\n\")\n            return\n\n        if modulo and ((counter % modulo) \u003d\u003d 0):\n            char \u003d base\n            continue\n\n        if char \u003d\u003d \"z\":\n            char \u003d base\n        elif char \u003d\u003d \"Z\":\n            char \u003d \"a\"\n        elif char \u003d\u003d \"9\":\n            char \u003d \"A\"\n        else:\n            char \u003d chr((ord(char) + 1))\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b902ce3_1a25f0d3",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "break into multiple lines",
+      "range": {
+        "startLine": 221,
+        "startChar": 75,
+        "endLine": 221,
+        "endChar": 90
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90dd7f5d_8a09ac2f",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    header_bytes \u003d Path(args.input).read_bytes()\n\n    size \u003d len(header_bytes)\n    if size \u003c FW_HEADER_SIZE + FW_BYTES_ALIGN:\n        raise ValueError(\"FW size too small\")\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f40df0_44b70f23",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    ctypes.memmove(ctypes.addressof(header), header_bytes, ctypes.sizeof(header))\n```\n\n(oh gosh, why are we using memmove here 😭)",
+      "range": {
+        "startLine": 80,
+        "startChar": 45,
+        "endLine": 80,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "da33468e_659a3247",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 80,
+                "startChar": 0,
+                "endLine": 81,
+                "endChar": 0
+              },
+              "replacement": "    ctypes.memmove(ctypes.addressof(header), header_bytes,\n                   ctypes.sizeof(header))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a23351_beb93a5e",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n\n    for key, _ in header._fields_:  # pylint:disable\u003dprotected-access\n        vvv \u003d getattr(header, key)\n        if isinstance(value, ctypes.Array):\n            print(key, list(map(hex, value)))\n        else:\n            print(key, hex(value))\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6df04d3_ad0342c0",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:24:03Z",
+      "side": 1,
+      "message": "output_file",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2c7145a0_6ed7e125",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 70,
+                "endChar": 0
+              },
+              "replacement": "    with open(args.input, \"rb\") as input_file:\n        bbs \u003d input_file.read()\n"
+            },
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "    with open(args.output, \"wb\") as output_file:\n"
+            },
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 102,
+                "startChar": 0,
+                "endLine": 104,
+                "endChar": 0
+              },
+              "replacement": "        output_file.seek(OUTPUT_FILE_SIZE - 1, os.SEEK_SET)\n        output_file.write(b\"\\x00\")\n"
+            },
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "        output_file.seek(0, os.SEEK_SET)\n        output_file.write(bbs[0 : ctypes.sizeof(header)])\n"
+            },
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 117,
+                "startChar": 0,
+                "endLine": 119,
+                "endChar": 0
+              },
+              "replacement": "            output_file.seek(UPDATE_PDU_SIZE + addr, os.SEEK_SET)\n            output_file.write(data[offset : offset + size])\n"
+            },
+            {
+              "path": "util/unpack_ftb.py",
+              "range": {
+                "startLine": 121,
+                "startChar": 0,
+                "endLine": 122,
+                "endChar": 0
+              },
+              "replacement": "        output_file.flush()\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
