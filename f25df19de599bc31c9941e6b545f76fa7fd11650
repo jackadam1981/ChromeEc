@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c45a06_d79e9ef9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-15T18:51:54Z",
+      "side": 1,
+      "message": "I\u0027m removing the Code-Coverage -1 vote since we are at 88% (one line short), and Zoss is falsely counting a comment as an uncovered line.",
+      "revId": "f25df19de599bc31c9941e6b545f76fa7fd11650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fe0c1f9_86b6b642",
