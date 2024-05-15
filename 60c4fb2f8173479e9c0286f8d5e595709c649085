@@ -46,6 +46,30 @@
       },
       "revId": "60c4fb2f8173479e9c0286f8d5e595709c649085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c92a737_58e4aedc",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T16:43:04Z",
+      "side": 1,
+      "message": "You can just `cipd install -root \"${TMP:?}\" chromiumos/infra/tools/unifdef latest` if that\u0027s what you\u0027re looking for.",
+      "parentUuid": "d3aad22d_5503866b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "60c4fb2f8173479e9c0286f8d5e595709c649085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
