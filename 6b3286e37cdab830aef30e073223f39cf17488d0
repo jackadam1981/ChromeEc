@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25907926_e898d5d6",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-15T17:15:32Z",
+      "side": 1,
+      "message": "Suggestion to Daisuke:\n\n* Rename this to `rts54_execute_ucsi_cmd` (and the PDC API to `execute_ucsi_cmd`). This would simply convert a UCSI command to the RTK format and post the task (i.e. return the result of `rts54_post_command`). I expect this to return one of 0, -EBUSY or -ENOTSUPP.\n\n* ppm_ucsi should implement the retries as `execute_ucsi_cmd_sync`\n  * Rather than wait `T_PING_STATUS`, it should use the cci_cb to detect when commands are error/completed and use a k_event to indicate the state machine is ready. Keep track of overall time spent and error out if we time out.\n  * Once a task is successfully posted, the same k_event for command completion/error will reach the end of the sync task and you can use it.\n  \nThis design should work with the TI driver that\u0027s WIP as well.",
+      "parentUuid": "edad9a2f_d1eabd69",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
