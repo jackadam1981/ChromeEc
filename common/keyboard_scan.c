@@ -1027,6 +1027,12 @@ void keyboard_scan_task(void *u)
 					new_disable_scanning);
 
 			if (!new_disable_scanning) {
+				/*
+				 * If boot keys are pressed, force scan in case
+				 * they're released before the scanner is ready.
+				 */
+				if (boot_key_value & ~BIT(BOOT_KEY_POWER))
+					force_poll = 1;
 				/* Enabled now */
 				keyboard_raw_drive_column(KEYBOARD_COLUMN_ALL);
 			} else if (!local_disable_scanning) {
