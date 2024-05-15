@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80af621f_ec5f5604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T15:38:09Z",
+      "side": 1,
+      "message": "LGTM with comments addressed.",
+      "revId": "cded2018a26aa71a9beff1d0c9da0c341eea118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e30ec8c6_5f5b0a88",
@@ -48,6 +65,29 @@
       "writtenOn": "2024-05-14T20:59:29Z",
       "side": 1,
       "message": "clear_last_error already memsets. This is not needed.",
+      "revId": "cded2018a26aa71a9beff1d0c9da0c341eea118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eebbe57_45edb155",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T15:38:09Z",
+      "side": 1,
+      "message": "Note for when this file is moved under zephyr/ucsi, this will need to use error codes defined by errno.h.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 14
+      },
       "revId": "cded2018a26aa71a9beff1d0c9da0c341eea118f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
