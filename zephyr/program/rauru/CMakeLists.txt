@@ -11,14 +11,14 @@ target_sources(app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rauru/src/usbc.c
 			${PLATFORM_EC_PROGRAM_DIR}/rauru/src/backlight.c
 			${PLATFORM_EC_PROGRAM_DIR}/rauru/src/hibernate.c
 			${PLATFORM_EC_PROGRAM_DIR}/rauru/src/hooks.c)
-target_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DP_MODE app PRIVATE
-		${PLATFORM_EC_PROGRAM_DIR}/rauru/src/dp_alt_mode.c)
 target_sources_ifdef(CONFIG_RAURU_BOARD_HAS_HDMI_SUPPORT app PRIVATE
 		${PLATFORM_EC_PROGRAM_DIR}/rauru/src/hdmi.c)
 
 if(DEFINED CONFIG_BOARD_RAURU)
 	project(rauru)
 	add_subdirectory(rauru)
+target_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DP_MODE app PRIVATE
+		${PLATFORM_EC_PROGRAM_DIR}/rauru/src/dp_alt_mode.c)
 
 elseif(DEFINED CONFIG_BOARD_NAVI)
 	project(navi)
