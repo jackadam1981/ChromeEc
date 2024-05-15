@@ -34,6 +34,24 @@
       "parentUuid": "ec1157bc_7f9cbbb4",
       "revId": "a3809fbce03fd94f0caa99eec9dae259730cd669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c42692_52a0c37a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-05-15T19:51:48Z",
+      "side": 1,
+      "message": "I think that\u0027s totally reasonable. Alternately, the logic you linked could be coded up in a before rule which should be run *after* a ZTEST_RULE.\n\nYour call tho. I just try to help a bit with reviews and Zephyr these days. 😊",
+      "parentUuid": "ec1157bc_7f9cbbb4",
+      "revId": "a3809fbce03fd94f0caa99eec9dae259730cd669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
