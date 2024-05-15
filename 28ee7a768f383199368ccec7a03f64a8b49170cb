@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fcaca8d_ce981c87",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5750,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-15T18:04:32Z",
+      "side": 1,
+      "message": "i think we\u0027ve just gone in EC_CMD_* numerical order.\ni see we just added `#define EC_CMD_UCSI_PPM_GET 0x0141`,\nso probably just after that.",
+      "parentUuid": "549e169e_2e01fe7d",
+      "range": {
+        "startLine": 5750,
+        "startChar": 36,
+        "endLine": 5750,
+        "endChar": 42
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb90488_ff377e29",
         "filename": "util/ectool.cc",
         "patchSetId": 3
