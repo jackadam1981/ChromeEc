@@ -34,6 +34,23 @@
       ],
       "revId": "4bbce858f0983434ed2e992e01f6efc9aeb5ce10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702b22a4_478528dc",
+        "filename": "zephyr/program/corsola/kyogre/src/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-15T03:51:52Z",
+      "side": 1,
+      "message": "Could you add \"KB_SCAN_DISABLE_INVALID_KEYBOARD\" as a local variable here? \nFrom \"include/keyboard_scan.h\", it just an enum type var, which should be easier to add the similar implementation here.",
+      "revId": "4bbce858f0983434ed2e992e01f6efc9aeb5ce10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
