@@ -336,7 +336,7 @@ ZTEST(pujjoga, test_db_with_a_and_hdmi)
 	fw_config_value = -1;
 
 	/* Set the sub-board, reported configuration is correct. */
-	set_fw_config_value(FW_SUB_BOARD_1);
+	set_fw_config_value(FW_SUB_BOARD_3);
 	zassert_equal(pujjoga_get_sb_type(), PUJJOGA_SB_HDMI_A,
 		      "SB: HDMI, USB type A");
 
