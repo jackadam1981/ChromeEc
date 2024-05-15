@@ -630,6 +630,8 @@ struct pdc_port_t {
 	struct set_pdos_t set_pdos;
 	/** Buffer used by public api to receive data from the driver */
 	uint8_t pch_data_status[5];
+	/** Callback */
+	struct pdc_callback cb;
 };
 
 /**
@@ -2055,9 +2057,11 @@ static const struct smf_state pdc_states[] = {
 /**
  * @brief CCI event handler call back
  */
-static void pdc_cci_handler_cb(union cci_event_t cci_event, void *cb_data)
+static void pdc_cci_handler_cb(const struct device *dev,
+			       const struct pdc_callback *callback,
+			       union cci_event_t cci_event)
 {
-	struct pdc_port_t *port = (struct pdc_port_t *)cb_data;
+	struct pdc_port_t *port = CONTAINER_OF(callback, struct pdc_port_t, cb);
 	bool post_event = false;
 
 	/* Handle busy event from driver */
@@ -2124,7 +2128,13 @@ static int pdc_subsys_init(const struct device *dev)
 	init_port_variables(port);
 
 	/* Set cci call back */
-	pdc_set_handler_cb(port->pdc, pdc_cci_handler_cb, (void *)port);
+	port->cb.handler = pdc_cci_handler_cb;
+	port->cb.cci_event_mask.busy = 1;
+	port->cb.cci_event_mask.command_completed = 1;
+	port->cb.cci_event_mask.error = 1;
+	port->cb.cci_event_mask.vendor_defined_indicator = 1;
+	pdc_set_handler_cb(port->pdc, &port->cb);
+	pdc_manage_callback(port->pdc, &port->cb, true);
 
 	/* Initialize state machine run event */
 	k_event_init(&port->sm_event);
