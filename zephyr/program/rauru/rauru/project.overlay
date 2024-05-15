@@ -25,6 +25,28 @@
 		tcs3400-int = &als_clear;
 	};
 
+	rauru-fw-config {
+		compatible = "cros-ec,cbi-fw-config";
+
+		sub-board {
+			enum-name = "FW_SUB_BOARD";
+			start = <0>;
+			size = <2>;
+
+			sub-board-redriver-tusb1046-ps8761 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_SB_REDRIVER";
+				value = <0>;
+				default;
+			};
+			sub-board-retimer-anx3443-ps8811 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_SB_RETIMER";
+				value = <1>;
+			};
+		};
+	};
+
 	/* Rotation matrix used by drivers. */
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
