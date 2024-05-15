@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df08863_8446aabf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c667270e_d120c6a0",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a7ed297_45d403c2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-14T23:02:39Z",
       "side": 1,
       "message": "\"command\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff0fe33_713d86e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a7ed297_45d403c2",
       "range": {
         "startLine": 17,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d34df0f_26e5ded6",
+        "filename": "chip/npcx/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ff83cd_9c771eda",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2e793f5_4b625b7c",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-14T23:02:39Z",
       "side": 1,
       "message": "We probably still want to continue in this case so that `mpu_config_region` runs.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 14
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511c61dd_8ceaa49a",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e793f5_4b625b7c",
       "range": {
         "startLine": 264,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55e202d_eb0da6c8",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57de344b_c6afd480",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 14
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "259adeeb_1242d4cd",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-05-14T23:06:30Z",
       "side": 1,
       "message": "Can you add the `ram_lock` test to the [`run_device_tests.py`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py) script too? [Example](https://crrev.com/c/5238955).",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 10
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca22ecb1_b2ae76a0",
+        "filename": "test/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "259adeeb_1242d4cd",
       "range": {
         "startLine": 268,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ff8212_280fca9e",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e24516d3_c0209b02",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a49bd8d2_be488b9d",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-05-14T23:02:39Z",
       "side": 1,
       "message": "2024",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70247541_273a41fa",
+        "filename": "test/ram_lock.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-15T10:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a49bd8d2_be488b9d",
       "range": {
         "startLine": 1,
         "startChar": 13,
