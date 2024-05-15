@@ -16,6 +16,24 @@
       "message": "Unrelated to the variable mix-up, I think it would make more sense for this return-to-IDLE check to be applied with suite before/after functions rather than an unconditional ztest rule because I\u0027d like to be able to deploy a suite where the driver is left in its SUSPENDED state to test ([see the code surrounding this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5532742/comment/501f9017_df06515a/)), what do you think?",
       "revId": "a3809fbce03fd94f0caa99eec9dae259730cd669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5981eb6_0d893067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-05-15T19:50:08Z",
+      "side": 1,
+      "message": "Sounds good to me, after this lands I\u0027ll submit a new CL which adds this functionality in the test suite.",
+      "parentUuid": "ec1157bc_7f9cbbb4",
+      "revId": "a3809fbce03fd94f0caa99eec9dae259730cd669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
