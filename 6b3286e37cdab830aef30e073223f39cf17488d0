@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edad9a2f_d1eabd69",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T15:58:45Z",
+      "side": 1,
+      "message": "Can you move this retry logic to some common code?  I\u0027m not of fan of continuing to complicate the logic in the driver when other drivers likely need similar logic.",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
@@ -31,6 +54,29 @@
       "writtenOn": "2024-05-14T22:03:46Z",
       "side": 1,
       "message": "Also note that we clear and restore the CCI callback to avoid the sync cmd\u0027s results from polluting the other callbacks.",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdabc35_126fcb42",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T15:58:45Z",
+      "side": 1,
+      "message": "If this remains retry logic remain here, I don\u0027t like mixing the retry logic with the polling of the command complete. \n\nThis is easier to follow as two separate loops.\n\n```\ndo {\n    rv \u003d rts54_post_command();\n\n    if (rv !\u003d -EBUSY)\n        return rv;\n        \n    if (++call_counter \u003e 100)\n        return -EBUSY;\n} while (rv !\u003d 0);\n\n/* setup callback */\n\n/* Perform polling on post command result as normal */\n```",
+      "range": {
+        "startLine": 2390,
+        "startChar": 0,
+        "endLine": 2396,
+        "endChar": 0
+      },
       "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
