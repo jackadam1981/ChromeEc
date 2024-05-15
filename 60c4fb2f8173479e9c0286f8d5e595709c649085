@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e59e3595_397b4bf4",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-05-15T15:43:07Z",
+      "side": 1,
+      "message": "why dynamically generate this file when you can just check it into this repo?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "60c4fb2f8173479e9c0286f8d5e595709c649085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
