@@ -477,6 +477,8 @@ cros_cbi_get_fw_config_kb_blight(enum cbi_fw_config_field_id field_id,
 	case 1:
 		*value = FW_KB_BACKLIGHT_OFF;
 		break;
+	case -1:
+		return -EINVAL;
 	default:
 		return 0;
 	}
@@ -515,6 +517,9 @@ ZTEST(yaviks, test_board_vivaldi_keybd_idx)
 
 	kb_blight = 0;
 	zassert_equal(board_vivaldi_keybd_idx(), 0);
+
+	kb_blight = -1;
+	zassert_equal(board_vivaldi_keybd_idx(), -1);
 }
 
 ZTEST(yaviks, test_kb_layout_init)

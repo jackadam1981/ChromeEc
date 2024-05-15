@@ -258,6 +258,15 @@ if(CONFIG_TEST_NISSA_YAVILLA)
     )
 endif()
 
+if(CONFIG_TEST_NISSA_YAVILLA)
+    zephyr_include_directories("${PLATFORM_EC}/zephyr/shim/chip/it8xxx2/include")
+    target_sources(
+            app PRIVATE
+            src/yavilla.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/yavilla/src/yavista.c
+    )
+endif()
+
 if(CONFIG_TEST_NISSA_GLASSWAY)
     target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0 CHARGER_SECONDARY=1)
     target_sources(
