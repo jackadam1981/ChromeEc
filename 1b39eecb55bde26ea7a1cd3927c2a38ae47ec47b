@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c897d2_f178a62f",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-15T22:40:41Z",
+      "side": 1,
+      "message": "If any key is pressed, the inner loop is exited at line 1043. So, we come here only if no key is being pressed. If any key is pressed, the scanner runs and boot_key_value will be corrected. So, this fix seems to work. \n\nWe should clear all boot keys except the power button:\n```\n    if (boot_key_value \u0026 ~BIT(BOOT_KEY_POWER))\n        boot_key_value \u0026\u003d BIT(BOOT_KEY_POWER);\n```\nI submitted an alternative fix: crrev.com/c/5538232, which slows down the scanner slightly more. So, maybe your fix is a way to go.",
+      "range": {
+        "startLine": 1052,
+        "startChar": 5,
+        "endLine": 1052,
+        "endChar": 38
+      },
+      "revId": "1b39eecb55bde26ea7a1cd3927c2a38ae47ec47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
