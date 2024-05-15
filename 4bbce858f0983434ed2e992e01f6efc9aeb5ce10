@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b277b535_0113ad41",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-05-15T03:48:22Z",
+      "side": 1,
+      "message": "This might be a concern to change the common code here.",
+      "fixSuggestions": [
+        {
+          "fixId": "39ea5fe1_85cebbd6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/keyboard_scan.h",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 126,
+                "endChar": 0
+              },
+              "replacement": "\tKB_SCAN_DISABLE_INVALID_KEYBOARD \u003d (1 \u003c\u003c 4),  // TODO(b/159351111)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4bbce858f0983434ed2e992e01f6efc9aeb5ce10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
