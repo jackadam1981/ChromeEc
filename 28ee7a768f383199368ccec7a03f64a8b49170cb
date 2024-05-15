@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "549e169e_2e01fe7d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5750,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-15T12:59:35Z",
+      "side": 1,
+      "message": "thanks for the feedbacks.\ndo you have any recommended file to put this code?\nthanks",
+      "parentUuid": "ad36fece_a7080e15",
+      "range": {
+        "startLine": 5750,
+        "startChar": 36,
+        "endLine": 5750,
+        "endChar": 42
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb90488_ff377e29",
         "filename": "util/ectool.cc",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2024-05-14T18:52:15Z",
       "side": 1,
       "message": "would POWER_BUTTON be a better event to use\nsince some devices don\u0027t have a lid?\n\n`EC_HOST_EVENT_HANG_DETECT` is used below.\nis that a good one to use or will that confuse the AP?",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f65d5c_3f7159c9",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-15T12:59:35Z",
+      "side": 1,
+      "message": "sounds good, will modify it",
+      "parentUuid": "5da757d4_6de861a4",
       "range": {
         "startLine": 14,
         "startChar": 23,
