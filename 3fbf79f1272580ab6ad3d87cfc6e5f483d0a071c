@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07abc1c5_5ac8e640",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-15T01:27:40Z",
+      "side": 1,
+      "message": "Acknowledged, this will require to use file `zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/project.overlay` for including dtsi files, since it will allow including header files like `zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/include/power_signals.h`.\n\nGoogle uses this same approach, we may need to follow it to avoid duplications and use macros to solve devicetree configurations.",
+      "parentUuid": "d08d56b1_cc289ff3",
+      "revId": "3fbf79f1272580ab6ad3d87cfc6e5f483d0a071c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "924808d0_35a4bd9f",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-25T19:23:35Z",
       "side": 1,
       "message": "this should go under \nzephyr/program/intelrvp/ptlrvp/program.conf",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "3fbf79f1272580ab6ad3d87cfc6e5f483d0a071c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40e0d13_9a7ffdb0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-15T01:27:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "924808d0_35a4bd9f",
       "range": {
         "startLine": 12,
         "startChar": 0,
