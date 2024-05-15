@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f6ec13_aab23f07",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-15T15:15:39Z",
+      "side": 1,
+      "message": "can\u0027t use it, I wrote the test without the standard EC include paths and don\u0027t have that macro available, I could reimplement it on the test but I need some other wrapper anyway and I think it\u0027s nicer to keep the runtime code untouched and keep the testing helper together at the end",
+      "parentUuid": "926c9946_2569fe07",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7f1ca45_368239e5",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-05-07T15:35:04Z",
       "side": 1,
       "message": "I don\u0027t see it being used in this CL.\n\nIs this to remove a compile warning for a global symbol that\u0027s included in test but we don\u0027t have an associated header in test? If so we should probably comment that this is a stub that\u0027s unused.",
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "153da82e_5dcfe202",
+        "filename": "zephyr/test/boot_keys/include/tablet_mode.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-15T15:15:39Z",
+      "side": 1,
+      "message": "it\u0027s for the file to build in the first place, the call is in an unused code path, heck let\u0027s use it instead, enabled and used",
+      "parentUuid": "a7f1ca45_368239e5",
       "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "714ae8c9_1d4dc1fb",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-15T15:15:39Z",
+      "side": 1,
+      "message": "yeah added a couple masks",
+      "parentUuid": "a2f58d91_fe123dd7",
+      "range": {
+        "startLine": 70,
+        "startChar": 46,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29e0250e_a313151d",
@@ -94,6 +160,30 @@
       "writtenOn": "2024-05-07T15:35:04Z",
       "side": 1,
       "message": "See above and similar for those below.",
+      "range": {
+        "startLine": 95,
+        "startChar": 46,
+        "endLine": 95,
+        "endChar": 56
+      },
+      "revId": "44c40af0f8d9dac9dae5cf6ce174c9a06fc2091a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f702f1de_9a3727d6",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-15T15:15:39Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "29e0250e_a313151d",
       "range": {
         "startLine": 95,
         "startChar": 46,
