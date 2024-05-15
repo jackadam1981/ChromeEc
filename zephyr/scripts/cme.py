@@ -4,6 +4,7 @@
 
 """Component Manifest Engine"""
 
+import collections
 import json
 import logging
 from pathlib import Path
@@ -72,6 +73,224 @@ CTYPE_SUFFIXES = {
     "accel": ["accel", "gyro"],
 }
 
+# A namedtuple to store the information for each compatible
+CompatibleInfo = collections.namedtuple(
+    "CompatibleInfo", ["name", "pid_expect"]
+)
+
+# A Dictionary that stores additional information that may not be stored based
+# on their compatible.
+DISAMBIGUATION_DICTIONARY = {
+    "cros-ec,bma4xx": [
+        CompatibleInfo(
+            "bosch,bma422",
+            {
+                "reg": "0x00",
+                "mask": "0xff",
+                "value": "0x12",
+            },
+        ),
+    ],
+    "cros-ec,bma255": [
+        CompatibleInfo(
+            "bosch,bma255",
+            None,
+        ),
+    ],
+    "cros-ec,bmi3xx": [
+        CompatibleInfo(
+            "bosch,bmi323",
+            {
+                "reg": "0x00",
+                "mask": "0xff",
+                "value": "0x43",
+            },
+        ),
+    ],
+    "cros-ec,bmi160": [
+        CompatibleInfo(
+            "bosch,bmi160",
+            {
+                "reg": "0x00",
+                "mask": "0xff",
+                "value": "0xd1",
+            },
+        ),
+        CompatibleInfo(
+            "bosch,bmi168",
+            {
+                "reg": "0x00",
+                "mask": "0xff",
+                "value": "0xd2",
+            },
+        ),
+    ],
+    "cros-ec,bmi260": [
+        CompatibleInfo(
+            "bosch,bmi260",
+            {
+                "reg": "0x00",
+                "mask": "0xff",
+                "value": "0x27",
+            },
+        ),
+        CompatibleInfo(
+            "bosch,bmi220",
+            {
+                "reg": "0x00",
+                "mask": "0xff",
+                "value": "0x26",
+            },
+        ),
+    ],
+    "cros-ec,icm426xx": [
+        CompatibleInfo(
+            "invensense,icm42608",
+            {
+                "reg": "0x75",
+                "mask": "0xff",
+                "value": "0x39",
+            },
+        ),
+        CompatibleInfo(
+            "invensense,icm42605",
+            {
+                "reg": "0x75",
+                "mask": "0xff",
+                "value": "0x42",
+            },
+        ),
+    ],
+    "cros-ec,icm42607": [
+        CompatibleInfo(
+            "invensense,icm42607P",
+            {
+                "reg": "0x75",
+                "mask": "0xff",
+                "value": "0x60",
+            },
+        ),
+        CompatibleInfo(
+            "invensense,icm42608P",
+            {
+                "reg": "0x75",
+                "mask": "0xff",
+                "value": "0x3f",
+            },
+        ),
+    ],
+    "cros-ec,kx022": [
+        CompatibleInfo(
+            "kionix,kx022",
+            None,
+        ),
+    ],
+    "cros-ec,lis2de": [
+        CompatibleInfo(
+            "st,lis2de",
+            None,
+        ),
+    ],
+    "cros-ec,lis2ds": [
+        CompatibleInfo(
+            "st,lis2ds",
+            None,
+        ),
+    ],
+    "cros-ec,lis2dw12": [
+        CompatibleInfo(
+            "st,lis2dw12",
+            None,
+        ),
+    ],
+    "cros-ec,lsm6dsm": [
+        CompatibleInfo(
+            "st,lsm6dsm",
+            {
+                "reg": "0x0f",
+                "mask": "0xff",
+                "value": "0x6a",
+            },
+        ),
+        CompatibleInfo(
+            "st,lsm6ds3",
+            {
+                "reg": "0x0f",
+                "mask": "0xff",
+                "value": "0x69",
+            },
+        ),
+    ],
+    "cros-ec,lsm6dso": [
+        CompatibleInfo(
+            "st,lsm6dso",
+            None,
+        ),
+    ],
+    "cros-ec,tcs3400": [
+        CompatibleInfo(
+            "ams,tcs3400",
+            None,
+        ),
+    ],
+    "parade,ps8xxx": [
+        CompatibleInfo(
+            "parade,ps8705",
+            {
+                "reg": "0x02",
+                "mask": "0xffff",
+                "value": "0x8705",
+            },
+        ),
+        CompatibleInfo(
+            "parade,ps8745",
+            {
+                "reg": "0x02",
+                "mask": "0xffff",
+                "value": "0x8745",
+            },
+        ),
+        CompatibleInfo(
+            "parade,ps8741",
+            {
+                "reg": "0x02",
+                "mask": "0xffff",
+                "value": "0x8751",
+            },
+        ),
+        CompatibleInfo(
+            "parade,ps8755",
+            {
+                "reg": "0x02",
+                "mask": "0xffff",
+                "value": "0x8755",
+            },
+        ),
+        CompatibleInfo(
+            "parade,ps8805",
+            {
+                "reg": "0x02",
+                "mask": "0xffff",
+                "value": "0x8805",
+            },
+        ),
+        CompatibleInfo(
+            "parade,ps8815",
+            {
+                "reg": "0x02",
+                "mask": "0xffff",
+                "value": "0x8815",
+            },
+        ),
+    ],
+    "nuvoton,nct38xx": [
+        CompatibleInfo(
+            "nuvoton,nct380x",
+            None,
+        ),
+    ],
+}
+
 
 def parse_args(argv: Optional[List[str]] = None):
     """Returns parsed command-line arguments"""
@@ -100,6 +319,29 @@ def parse_args(argv: Optional[List[str]] = None):
         help="Generate static version information for reproducible builds and official builds",
     )
     return parser.parse_args(argv)
+
+
+def disambiguify(component):
+    """updates information in the a component that may be ambiguous
+
+    Args:
+        component: Component object.
+    Returns:
+        A list of updated components.
+    """
+
+    ret = []
+
+    if component["component_name"] in DISAMBIGUATION_DICTIONARY:
+        for comp_info in DISAMBIGUATION_DICTIONARY[component["component_name"]]:
+            new_comp = component
+            new_comp["component_name"] = comp_info.name
+            new_comp["i2c"].update({"expect": comp_info.pid_expect})
+            ret.append(new_comp)
+    else:
+        ret.append(component)
+
+    return ret
 
 
 class Manifest:
@@ -138,7 +380,11 @@ class Manifest:
         for comp in self.manifest["component_list"]:
             if comp == component:
                 return
-        self.manifest["component_list"].append(component)
+
+        comp_list = disambiguify(component)
+
+        for comp in comp_list:
+            self.manifest["component_list"].append(comp)
 
     def json_dump(self, filepath):
         """Dump the component manifest to a JSON file."""
