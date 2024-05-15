@@ -22,6 +22,30 @@
       },
       "revId": "f9c42c70bd0a0584c606f60488d401b708ecbd4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e40ea8_03d5ec21",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-15T18:50:49Z",
+      "side": 1,
+      "message": "There is some precedent for this; I figured these were sufficiently related to be in one source. We could always break it out if this suite grows larger.",
+      "parentUuid": "501f9017_df06515a",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 69
+      },
+      "revId": "f9c42c70bd0a0584c606f60488d401b708ecbd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
