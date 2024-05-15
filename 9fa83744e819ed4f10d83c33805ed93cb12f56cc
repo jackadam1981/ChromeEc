@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7657310_0a364ad4",
+        "filename": "zephyr/test/hwtest/include/multistep_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-15T09:53:27Z",
+      "side": 1,
+      "message": "I think you should add `#include \"system.h\"` for `system_set_scratchpad()`.",
+      "fixSuggestions": [
+        {
+          "fixId": "ead87357_03891e24",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/include/multistep_test.h",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": "#include \"system.h\"\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9fa83744e819ed4f10d83c33805ed93cb12f56cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
