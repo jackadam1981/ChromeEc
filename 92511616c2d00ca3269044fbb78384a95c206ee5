@@ -16,6 +16,29 @@
       "message": "I have addressed the comment, and also added missing declaration to registers-stm32l4.h, such that the code compiles for the L4 variant.",
       "revId": "92511616c2d00ca3269044fbb78384a95c206ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e735e4_d63ef8da",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-15T15:17:27Z",
+      "side": 1,
+      "message": "Please add the definition for the TM17EN mask.  Even though the C code doesn\u0027t directly use it, it helps a read confirm the logic in the C file is correct.",
+      "range": {
+        "startLine": 1322,
+        "startChar": 8,
+        "endLine": 1322,
+        "endChar": 33
+      },
+      "revId": "92511616c2d00ca3269044fbb78384a95c206ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
