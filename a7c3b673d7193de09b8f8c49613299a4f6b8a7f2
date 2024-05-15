@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bafa5fd1_750c0a9f",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e47df2_23393c8c",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 79
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4474823_bf7444db",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-05-15T16:24:03Z",
       "side": 1,
       "message": "Remove while you\u0027re here",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 37
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1632dd6c_3fc9b546",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4474823_bf7444db",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -88,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ce4efe_8627b9d1",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b43349_e43b4b60",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a2a2792_16fb8cfe",
@@ -101,6 +173,30 @@
       "writtenOn": "2024-05-15T16:24:03Z",
       "side": 1,
       "message": "```suggestion\n                    data \u003d self._susb._read_ep.read(  # pylint:disable\u003dprotected-access\n                        64, self._susb.TIMEOUT_MS\n                    )\n                    if data:\n                        GetBuffer(sys.stdout).write(data.tobytes())\n```",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 66
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2011c5ee_116fec42",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a2a2792_16fb8cfe",
       "range": {
         "startLine": 188,
         "startChar": 0,
@@ -134,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d9e590_9b6eb0eb",
+        "filename": "util/chargen",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f189d20_3bed1e13",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b902ce3_1a25f0d3",
@@ -157,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9611ba57_758780f8",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b902ce3_1a25f0d3",
+      "range": {
+        "startLine": 221,
+        "startChar": 75,
+        "endLine": 221,
+        "endChar": 90
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90dd7f5d_8a09ac2f",
@@ -170,6 +314,30 @@
       "writtenOn": "2024-05-15T16:24:03Z",
       "side": 1,
       "message": "```suggestion\n    header_bytes \u003d Path(args.input).read_bytes()\n\n    size \u003d len(header_bytes)\n    if size \u003c FW_HEADER_SIZE + FW_BYTES_ALIGN:\n        raise ValueError(\"FW size too small\")\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1f6a41_03963366",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90dd7f5d_8a09ac2f",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -221,6 +389,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c042496e_c7a81494",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f40df0_44b70f23",
+      "range": {
+        "startLine": 80,
+        "startChar": 45,
+        "endLine": 80,
+        "endChar": 48
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a23351_beb93a5e",
@@ -234,6 +426,30 @@
       "writtenOn": "2024-05-15T16:24:03Z",
       "side": 1,
       "message": "```suggestion\n\n    for key, _ in header._fields_:  # pylint:disable\u003dprotected-access\n        vvv \u003d getattr(header, key)\n        if isinstance(value, ctypes.Array):\n            print(key, list(map(hex, value)))\n        else:\n            print(key, hex(value))\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec6e8cd_0beb0e65",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a23351_beb93a5e",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -331,6 +547,30 @@
           ]
         }
       ],
+      "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04eba135_7021f2c4",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-15T22:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6df04d3_ad0342c0",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 39
+      },
       "revId": "a7c3b673d7193de09b8f8c49613299a4f6b8a7f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
