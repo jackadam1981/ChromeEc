@@ -26,3 +26,7 @@ tests:
   pdc.console:
     extra_configs:
     - CONFIG_TEST_SUITE_PDC_CONSOLE=y
+
+  pdc.ppm_common:
+    extra_configs:
+    - CONFIG_TEST_SUITE_PPM_COMMON=y

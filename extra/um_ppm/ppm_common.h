@@ -12,6 +12,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include <zephyr/device.h>
+
 /* Forward declarations. */
 struct ucsi_pd_driver;
 
@@ -31,6 +33,9 @@ enum last_error_type {
 struct ppm_common_device {
 	/* Parent PD driver instance. Not OWNED. */
 	const struct ucsi_pd_driver *pd;
+
+	/* Zephyr device instance for this driver. */
+	const struct device *device;
 
 	/* Doorbell notification callback (and context). */
 	ucsi_ppm_notify *opm_notify;
@@ -74,7 +79,8 @@ struct ppm_common_device {
  * commands (and any other PD driver specific actions).
  */
 struct ucsi_ppm_driver *ppm_open(const struct ucsi_pd_driver *pd_driver,
-				 struct ucsiv3_get_connector_status_data *data);
+				 struct ucsiv3_get_connector_status_data *data,
+				 const struct device *device);
 
 /**
  * Allocate memory for the platform dependent part of the PPM.

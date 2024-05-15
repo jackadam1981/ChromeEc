@@ -28,7 +28,7 @@ const char *ppm_state_to_string(int state)
 	return ppm_state_strings[state];
 }
 
-const char *ucsi_cmd_strings[UCSI_CMD_VENDOR_CMD + 1] = {
+const char *ucsi_cmd_strings[UCSI_CMD_MAX] = {
 	"UCSI_CMD_RESERVED",
 	"UCSI_CMD_PPM_RESET",
 	"UCSI_CMD_CANCEL",
@@ -66,7 +66,7 @@ const char *ucsi_cmd_strings[UCSI_CMD_VENDOR_CMD + 1] = {
 
 const char *ucsi_command_to_string(uint8_t command)
 {
-	if (command > UCSI_CMD_VENDOR_CMD) {
+	if (command >= UCSI_CMD_MAX) {
 		return "UCSI_CMD_Outside_valid_range";
 	}
 
@@ -157,8 +157,7 @@ static void ppm_common_handle_async_event(struct ppm_common_device *dev)
 		 * LPM alert.
 		 */
 		if (dev->last_connector_alerted != -1) {
-			const struct device *ppm =
-				DEVICE_DT_GET(DT_INST(0, ucsi_ppm));
+			const struct device *ppm = dev->device;
 
 			DLOG("Calling GET_CONNECTOR_STATUS on port %d",
 			     dev->last_connector_alerted);
@@ -263,9 +262,9 @@ static int ppm_common_execute_pending_cmd(struct ppm_common_device *dev)
 	struct ucsiv3_ack_cc_ci_cmd *ack_cmd;
 	int ret = -1;
 	bool ack_ci = false;
-	const struct device *ppm = DEVICE_DT_GET(DT_INST(0, ucsi_ppm));
+	const struct device *ppm = dev->device;
 
-	if (control->command == 0 || control->command > UCSI_CMD_VENDOR_CMD) {
+	if (control->command == 0 || control->command >= UCSI_CMD_MAX) {
 		ELOG("Invalid command 0x%x", control->command);
 
 		/* Set error condition to invalid command. */
@@ -431,7 +430,7 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 			ppm_common_opm_notify(dev);
 			/* Intentional fallthrough since we are now processing.
 			 */
-			/* fallthrough */
+			__attribute__((fallthrough));
 		case PPM_STATE_PROCESSING_COMMAND:
 			/* TODO - Handle the case where we have a command that
 			 * takes multiple smbus calls to process (i.e. firmware
@@ -511,7 +510,7 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 static void ppm_common_task(void *context)
 {
 	struct ppm_common_device *dev = DEV_CAST_FROM(context);
-	const struct device *ppm = DEVICE_DT_GET(DT_INST(0, ucsi_ppm));
+	const struct device *ppm = dev->device;
 
 	if (!dev) {
 		ELOG("Cannot start PPM task without valid device pointer: %p",
@@ -682,6 +681,11 @@ static int ppm_common_init_and_wait(struct ucsi_ppm_device *device,
 	/* TODO - Set real lpm address based on smbus driver. */
 	ucsi_data->version.lpm_address = 0x0;
 
+	/* Reset state. */
+	dev->cleaning_up = false;
+	dev->ppm_state = PPM_STATE_NOT_READY;
+	platform_memset(&dev->pending, 0, sizeof(dev->pending));
+
 	/* Init lock to sync PPM task and main task context. */
 	if (platform_mutex_init(&dev->ppm_lock)) {
 		ELOG("Failed to init ppm_lock");
@@ -702,6 +706,7 @@ static int ppm_common_init_and_wait(struct ucsi_ppm_device *device,
 			sizeof(struct ucsiv3_get_connector_status_data));
 	}
 	dev->last_connector_changed = -1;
+	dev->last_connector_alerted = -1;
 
 	DLOG("Ready to initialize PPM task!");
 
@@ -955,6 +960,7 @@ static void ppm_common_cleanup(struct ucsi_ppm_driver *driver)
 	if (driver->dev) {
 		struct ppm_common_device *dev = DEV_CAST_FROM(driver->dev);
 
+		DLOG("Cleaning up.");
 		/* Signal clean up to waiting thread. */
 		platform_mutex_lock(dev->ppm_lock);
 		dev->cleaning_up = true;
@@ -962,7 +968,9 @@ static void ppm_common_cleanup(struct ucsi_ppm_driver *driver)
 		platform_mutex_unlock(dev->ppm_lock);
 
 		/* Wait for task to complete. */
-		platform_task_complete(dev->ppm_task_handle);
+		if (platform_task_complete(dev->ppm_task_handle) != 0) {
+			ELOG("Failed to wait for ppm task to complete.");
+		}
 
 		platform_free(dev->ppm_condvar);
 		platform_free(dev->ppm_lock);
@@ -973,7 +981,8 @@ static void ppm_common_cleanup(struct ucsi_ppm_driver *driver)
 }
 
 struct ucsi_ppm_driver *ppm_open(const struct ucsi_pd_driver *pd_driver,
-				 struct ucsiv3_get_connector_status_data *data)
+				 struct ucsiv3_get_connector_status_data *data,
+				 const struct device *device)
 {
 	struct ppm_common_device *dev = NULL;
 	struct ucsi_ppm_driver *drv = NULL;
@@ -986,6 +995,7 @@ struct ucsi_ppm_driver *ppm_open(const struct ucsi_pd_driver *pd_driver,
 	dev->pd = pd_driver;
 	dev->num_ports = pd_driver->get_active_port_count(NULL);
 	dev->per_port_status = data;
+	dev->device = device;
 
 	drv->init_and_wait = ppm_common_init_and_wait;
 	drv->get_data_region = ppm_common_get_data_region;

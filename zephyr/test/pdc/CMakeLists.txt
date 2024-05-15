@@ -35,3 +35,12 @@ if (DEFINED CONFIG_TEST_SUITE_PDC_CONSOLE)
 	target_sources(app PRIVATE src/generic/pdc_console.c)
 	target_sources(app PRIVATE src/mock_pdc_power_mgmt.c)
 endif()
+
+if (DEFINED CONFIG_TEST_SUITE_PPM_COMMON)
+	target_sources(app PRIVATE src/generic/ppm_common_test.c)
+
+	# TODO(b/339702957) - Move files out of extra/um_ppm
+	zephyr_include_directories(${PLATFORM_EC}/extra/um_ppm)
+	target_sources(app PRIVATE ${PLATFORM_EC}/extra/um_ppm/ppm_common.c)
+	target_sources(app PRIVATE ${PLATFORM_EC}/zephyr/subsys/ucsi/platform_zephyr.c)
+endif()
