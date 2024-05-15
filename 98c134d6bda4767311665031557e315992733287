@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee3f5d8_c25d09d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-15T06:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa97f8a_a40ce3a5",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "98c134d6bda4767311665031557e315992733287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f612bcbd_f6e64a66",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-14T23:35:13Z",
       "side": 1,
       "message": "\"with the run_device_tests.py script\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 61,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "98c134d6bda4767311665031557e315992733287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf25a99_3c20bfc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-15T06:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f612bcbd_f6e64a66",
       "range": {
         "startLine": 14,
         "startChar": 61,

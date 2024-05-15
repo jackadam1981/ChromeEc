@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b70bb4e_042097a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-15T06:48:01Z",
+      "side": 1,
+      "message": "100% agree. We should be able to run more or less the same tests as `nucleo_stm32f429zi`. IMO the next step after migration of our test is to take a look at Zephyr tests and add `google_dragonclaw` to [platform_allow](https://docs.zephyrproject.org/latest/develop/test/twister.html#test-cases), where it is possible.",
+      "parentUuid": "082d576b_b9e8c5ff",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "400f41f0fdd882aed2530b8a5a4e39f1db642e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3f73402_a450e3e3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
