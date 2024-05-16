@@ -16,6 +16,24 @@
       "message": "Hi Michael,\nCould you describe what kind of change you did in patch 7",
       "revId": "1d2dbd15dc643820241f5bfa8d4f9f93ff8da2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1786bee_441d8beb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-05-16T01:04:45Z",
+      "side": 1,
+      "message": "Because run \"./twister -T zephyr/test/nissa/\" will find build fail log.\nUpload patch 7 fix it.",
+      "parentUuid": "f679ff70_55db1660",
+      "revId": "1d2dbd15dc643820241f5bfa8d4f9f93ff8da2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
