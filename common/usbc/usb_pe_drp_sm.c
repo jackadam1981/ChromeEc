@@ -1986,6 +1986,7 @@ static void send_source_cap(int port)
 	if (src_pdo_cnt == 0) {
 		/* No source capabilities defined, sink only */
 		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_REJECT);
+		return;
 	}
 
 	tx_emsg[port].len = src_pdo_cnt * 4;
