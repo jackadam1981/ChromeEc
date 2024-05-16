@@ -22,6 +22,75 @@
       },
       "revId": "3eea96a322845b65e54f95ff6f4b261f810254fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e5c0ae_1c6e0887",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6303,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-16T22:12:03Z",
+      "side": 1,
+      "message": "please update `ec_cmd_api.h` as well.\ni think the line will be:\n```\n_CROS_EC_CV_F_P_R(EC_CMD_PD_CHIP_INFO, 2, pd_chip_info_v2, pd_chip_info,\n\t\t  pd_chip_info_v2);\n```",
+      "range": {
+        "startLine": 6303,
+        "startChar": 7,
+        "endLine": 6303,
+        "endChar": 34
+      },
+      "revId": "3eea96a322845b65e54f95ff6f4b261f810254fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab95453d_697887a1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 11011,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-16T22:12:03Z",
+      "side": 1,
+      "message": "12 should be derived from the sizeof(fw_name_str),\nalthough \"%-12s\" should be ok unless you don\u0027t trust the string\nto be null terminated.",
+      "range": {
+        "startLine": 11011,
+        "startChar": 25,
+        "endLine": 11011,
+        "endChar": 28
+      },
+      "revId": "3eea96a322845b65e54f95ff6f4b261f810254fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7eb6fb3_6b833b4d",
+        "filename": "util/misc_util.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-16T22:12:03Z",
+      "side": 1,
+      "message": "EC_RES_SUCCESS",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 9
+      },
+      "revId": "3eea96a322845b65e54f95ff6f4b261f810254fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
