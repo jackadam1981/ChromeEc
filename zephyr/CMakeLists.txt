@@ -193,7 +193,7 @@ add_custom_target(
   kernel
   ${CMAKE_BINARY_DIR}/gcov.sh
   )
-configure_file(gcov.tmpl.sh ${CMAKE_BINARY_DIR}/gcov.sh)
+configure_file(gcov.sh.tmpl ${CMAKE_BINARY_DIR}/gcov.sh)
 
 # CONFIG_PLATFORM_EC files that don't relate to something below should be
 # included here, sorted by filename. This is common functionality which is
