@@ -31,6 +31,11 @@
 	pinctrl-names = "default";
 	port_sel = <0>;
 	status = "okay";
+
+	kb_discrete: ite-it8801@39 {
+		compatible = "ite,it8801";
+		reg = <0x39>;
+	};
 };
 
 /* typec-aic1-power */
