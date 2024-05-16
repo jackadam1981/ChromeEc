@@ -142,6 +142,30 @@
       },
       "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b67e00_f467d174",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-16T23:51:31Z",
+      "side": 1,
+      "message": "State machine runs on rts54xx_thread: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/usbc/pdc_rts54xx.c;l\u003d2536\n\npdc_execute_command_sync calls `rts54_post_cmd` puts the command data into the buffer and waits for the PDC thread to pick it up here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/usbc/pdc_rts54xx.c;l\u003d913?q\u003dpdc_rts54xx.c\n\nSo both interrupt handler and command handling both run on the same `rts54xx_thread`",
+      "parentUuid": "f2bce33f_4647efd7",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 34
+      },
+      "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
