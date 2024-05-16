@@ -1,0 +1,24 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BOARD_BROX_SKU4
+	bool "Google Brox SKU4 Board"
+	help
+	  Build Google Brox reference board.  This board uses an Intel RPL SoC
+	  and ITE EC
+
+module = Brox_SKU4
+module-str = Brox SKU4 board-specific code
+source "subsys/logging/Kconfig.template.log_config"
+
+choice PLATFORM_EC_USBC_STACK
+	default PLATFORM_EC_USB_PD_CONTROLLER
+endchoice
+
+# Use access to the fuel gauge over I2C only to determine battery presence.
+choice PLATFORM_EC_BATTERY_PRESENT_MODE
+	default PLATFORM_EC_BATTERY_PRESENT_NONE
+endchoice
+
+source "Kconfig.zephyr"
