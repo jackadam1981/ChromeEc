@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c48804_1edddb1d",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T15:37:21Z",
+      "side": 1,
+      "message": "Can you use?\n```\nif (!IS_ENABLED(CONFIG_BOOT_KEYS_COL2_WORKAROUND))\n    return false;\n```",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fe370d_78a84626",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T15:37:21Z",
+      "side": 1,
+      "message": "Is this workaround affected by whether CONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI2 or CONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI3 is enabled?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbfc019_537954e9",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T15:37:21Z",
+      "side": 1,
+      "message": "Nit - line length.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9e4455_a18c7b28",
+        "filename": "zephyr/dts/bindings/input/cros-ec,boot-keys.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T15:37:21Z",
+      "side": 1,
+      "message": "Nit - the example should use different row/columns for each boot key.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a400fb2b_ac6e35ea",
+        "filename": "zephyr/program/brox/keyboard.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T15:37:21Z",
+      "side": 1,
+      "message": "The platform changes should be separate from the new driver.  Move to a separate CL.",
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f646766b_4cd3b7f7",
+        "filename": "zephyr/program/rex/keyboard.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T15:37:21Z",
+      "side": 1,
+      "message": "Move to a separate CL.",
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
