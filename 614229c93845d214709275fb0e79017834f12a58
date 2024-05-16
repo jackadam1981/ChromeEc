@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fc603a_eb63a16f",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:09:55Z",
+      "side": 1,
+      "message": "Does `if (IS_ENABLED(CONFIG_ARM))` work here?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71e6c17_f4ef112f",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:09:55Z",
+      "side": 1,
+      "message": "Any reason not to check the exception type like the original test?",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b430f62d_b0a5186d",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:09:55Z",
+      "side": 1,
+      "message": "Can you include the names for the [trapping arithmetic functions](https://gcc.gnu.org/onlinedocs/gccint/Integer-library-routines.html#Trapping-arithmetic-functions) like the original test?",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
