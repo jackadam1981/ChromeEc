@@ -52,6 +52,24 @@
       "parentUuid": "0f4dc5ea_150e33a8",
       "revId": "ab1420be137c47d843eb338ac1ba54493418e6cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20381c8_2d789582",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-16T21:29:14Z",
+      "side": 1,
+      "message": "it is in the `endorsement.c` and already exists for quite a while",
+      "parentUuid": "5e07f908_22c12b78",
+      "revId": "ab1420be137c47d843eb338ac1ba54493418e6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
