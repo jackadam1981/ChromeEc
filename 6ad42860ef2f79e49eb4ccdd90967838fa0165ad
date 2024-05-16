@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4622546e_92ac48f4",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-16T16:32:43Z",
+      "side": 1,
+      "message": "I think it may be confusing to add `CONFIG_PLATFORM_EC_PROTECT_CODE_RAM` which does nothing. I would put it to the `util/config_allowed.txt`",
+      "parentUuid": "ec666c9f_af3d2657",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 35
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58c058e8_60b98650",
         "filename": "zephyr/Kconfig",
         "patchSetId": 6
