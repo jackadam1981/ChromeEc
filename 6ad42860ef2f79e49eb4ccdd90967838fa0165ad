@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8779f5ca_c2420a3f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-16T16:25:35Z",
+      "side": 1,
+      "message": "\u003e Does our Zephyr build use the mpu.c file that you modified in https://crrev.com/c/5325938?\n\nOf course not. `core/` and `chip/` directories are not used. We use `zephyr/shim/core/cortex-m/mpu.c`, but there we keep only things that we can\u0027t upstream to Zephyr. If you need to add some static rules, it\u0027s possible to do that in Zephyr, without hacks in `mpu.c`.",
+      "parentUuid": "1ca5454c_23da3394",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 35
+      },
+      "revId": "6ad42860ef2f79e49eb4ccdd90967838fa0165ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58c058e8_60b98650",
         "filename": "zephyr/Kconfig",
         "patchSetId": 6
