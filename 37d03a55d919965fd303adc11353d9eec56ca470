@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5248a47_e4fb3c4a",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-16T21:36:37Z",
+      "side": 1,
+      "message": "did you mean `project_name` or did the vendor rename this\nin the latest datasheet update?",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ec019fd4_bf6df800",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/pdc.h",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "\t/** 12-byte project name string plus space for a NUL byte */\n\tchar project_name[12 + 1];\n"
+            }
+          ]
+        }
+      ],
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
