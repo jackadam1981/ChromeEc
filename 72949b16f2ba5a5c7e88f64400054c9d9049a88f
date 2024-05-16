@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d031ba_26c8a9fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:23:19Z",
+      "side": 1,
+      "message": "nit: if the board is booting , pls add info",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "72949b16f2ba5a5c7e88f64400054c9d9049a88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9383d280_1997e695",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/include/power_signals.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:23:19Z",
+      "side": 1,
+      "message": "nit: add copywrite info",
+      "revId": "72949b16f2ba5a5c7e88f64400054c9d9049a88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
