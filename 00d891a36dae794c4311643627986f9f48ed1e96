@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6feb71d_5ece1bdc",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-16T16:58:23Z",
+      "side": 1,
+      "message": "CQ failed for eel, hammer, and moonball because they don\u0027t define boot_key_value. Please guard the section by IS_ENABLED(CONFIG_KEYBOARD_BOOT_KEYS).\n\nAlso, I think the first check (boot_key_value \u0026 ~BIT(BOOT_KEY_POWER)) is redundant. We can simply do:\n```\n    if (IS_ENABLED(CONFIG_KEYBOARD_BOOT_KEYS))\n        boot_key_value \u0026\u003d BIT(BOOT_KEY_POWER);\n```",
+      "range": {
+        "startLine": 1076,
+        "startChar": 5,
+        "endLine": 1076,
+        "endChar": 19
+      },
+      "revId": "00d891a36dae794c4311643627986f9f48ed1e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
