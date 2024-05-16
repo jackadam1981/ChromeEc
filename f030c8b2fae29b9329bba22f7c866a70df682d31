@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c40ddd_3eef715d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-16T16:52:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a99c96_5b0b398b",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 61
+      },
+      "revId": "f030c8b2fae29b9329bba22f7c866a70df682d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e76a36_893651af",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-16T16:38:44Z",
       "side": 1,
       "message": "remove from here",
+      "range": {
+        "startLine": 3174,
+        "startChar": 0,
+        "endLine": 3178,
+        "endChar": 0
+      },
+      "revId": "f030c8b2fae29b9329bba22f7c866a70df682d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9cd639f_16a77f3f",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 3178,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-16T16:52:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e76a36_893651af",
       "range": {
         "startLine": 3174,
         "startChar": 0,
