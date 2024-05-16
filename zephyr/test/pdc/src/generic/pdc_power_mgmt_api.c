@@ -26,6 +26,7 @@ static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 #define SMBUS_ARA_NODE DT_NODELABEL(smbus_ara_emul)
 static const struct emul *ara = EMUL_DT_GET(SMBUS_ARA_NODE);
 
+bool pdc_power_mgmt_test_wait_unattached(void);
 bool pdc_rts54xx_test_idle_wait(void);
 
 void pdc_power_mgmt_setup(void)
@@ -43,6 +44,7 @@ void pdc_power_mgmt_before(void *fixture)
 	emul_pdc_disconnect(emul);
 	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
 
+	zassert_true(pdc_power_mgmt_test_wait_unattached());
 	zassert_true(pdc_rts54xx_test_idle_wait());
 }
 

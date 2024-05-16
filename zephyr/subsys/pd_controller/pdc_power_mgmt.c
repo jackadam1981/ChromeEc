@@ -3440,15 +3440,12 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
  * that tests start from the same state and prevents commands from a previous
  * test from impacting subsequently run tests.
  */
-static void test_reset(const struct ztest_unit_test *test, void *data)
+bool pdc_power_mgmt_test_wait_unattached(void)
 {
 	int num_unattached;
 
-	ARG_UNUSED(test);
-	ARG_UNUSED(data);
-
-	for (int i = 0; i < ARRAY_SIZE(pdc_data); i++) {
-		set_pdc_state(&pdc_data[i]->port, PDC_UNATTACHED);
+	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+		set_pdc_state(&pdc_data[port]->port, PDC_UNATTACHED);
 	}
 
 	/* Wait for up to 20 * 100ms for all ports to become unattached. */
@@ -3456,22 +3453,20 @@ static void test_reset(const struct ztest_unit_test *test, void *data)
 		num_unattached = 0;
 
 		for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
-			if (pdc_data[i]->port.unattached_local_state ==
+			if (pdc_data[port]->port.unattached_local_state ==
 			    UNATTACHED_RUN) {
 				num_unattached++;
 			}
 		}
 
 		if (num_unattached == ARRAY_SIZE(pdc_data)) {
-			break;
+			return true;
 		}
 
 		k_msleep(100);
 	}
 
-	zassert_equal(num_unattached, ARRAY_SIZE(pdc_data));
+	return false;
 }
-
-ZTEST_RULE(pdc_power_mgmt_test_reset, NULL, test_reset);
 
 #endif
