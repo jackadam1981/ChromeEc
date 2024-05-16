@@ -114,6 +114,19 @@ static const TPM2B_4_BYTE_VALUE TPM2_ECC_EK_NAME_CR50 = {
 	}
 };
 
+#ifdef CR50_USE_FIXED_CERT
+/**
+ * TPM EK Private Key (hexdump; big endian)
+ * 0x21ada77b70db7191726f3f6f650fc86013b9382b494d67f26737ddae6f78e55a
+ * Note, +1 is added in the process.
+ */
+const uint8_t FIXED_ECC_ENDORSEMENT_KEY[32] = {
+	0x21, 0xad, 0xa7, 0x7b, 0x70, 0xdb, 0x71, 0x91, 0x72, 0x6f, 0x3f,
+	0x6f, 0x65, 0x0f, 0xc8, 0x60, 0x13, 0xb9, 0x38, 0x2b, 0x49, 0x4d,
+	0x67, 0xf2, 0x67, 0x37, 0xdd, 0xae, 0x6f, 0x78, 0xe5, 0x59
+};
+#endif
+
 /* Key generation based on FIPS-186.4 section B.1.2 (Key Generation by
  * Testing Candidates) */
 CRYPT_RESULT _cpri__GenerateKeyEcc(
@@ -145,6 +158,32 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	if (count == 0)
 		count++;
 
+#ifdef CR50_USE_FIXED_CERT
+	if (extra && extra->size == sizeof(TPM2_ECC_EK_NAME_TEMPLATE) &&
+	    memcmp(extra->buffer, TPM2_ECC_EK_NAME_TEMPLATE,
+		   sizeof(TPM2_ECC_EK_NAME_TEMPLATE)) == 0) {
+		p256_int x, y, key;
+		enum dcrypto_result result;
+
+		result = DCRYPTO_p256_key_from_bytes(&x, &y, &key,
+						     FIXED_ECC_ENDORSEMENT_KEY);
+		if (result != DCRYPTO_OK)
+			return CRYPT_NO_RESULT;
+		q->x.b.size = sizeof(p256_int);
+		p256_to_bin(&x, q->x.b.buffer);
+
+		q->y.b.size = sizeof(p256_int);
+		p256_to_bin(&y, q->y.b.buffer);
+
+		d->b.size = sizeof(p256_int);
+		p256_to_bin(&key, d->b.buffer);
+		cprintf(CC_EXTENSION, "x=%ph\n", HEX_BUF(q->x.b.buffer, 32));
+		cprintf(CC_EXTENSION, "y=%ph\n", HEX_BUF(q->y.b.buffer, 32));
+		cprintf(CC_EXTENSION, "key=%ph\n", HEX_BUF(d->b.buffer, 32));
+		p256_clear(&key);
+		return CRYPT_SUCCESS;
+	}
+#endif
 	/* Hash down the primary seed for ECC key generation, so that
 	 * the derivation tree is distinct from RSA key derivation. */
 	if (DCRYPTO_hw_hmac_sha256_init(&hmac, seed->buffer, seed->size) !=
