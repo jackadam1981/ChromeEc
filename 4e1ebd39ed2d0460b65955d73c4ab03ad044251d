@@ -118,6 +118,30 @@
       },
       "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2bce33f_4647efd7",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T22:28:40Z",
+      "side": 1,
+      "message": "`pdc_execute_command_sync()` runs from the PPM task and the interrupt handler runs on the `rts54xx_thread`.",
+      "parentUuid": "0cffbeb6_19105001",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 34
+      },
+      "revId": "4e1ebd39ed2d0460b65955d73c4ab03ad044251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
