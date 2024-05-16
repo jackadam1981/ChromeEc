@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3603427a_48d3c328",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:19:08Z",
+      "side": 1,
+      "message": "can you add these GPIOs in the order they appear in the schematics ? It is extremely difficult to review",
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a43bdf2_643e3026",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:19:08Z",
+      "side": 1,
+      "message": "add a comment about not to define I2C as input CL:4826249",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608afc72_73077a9c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:19:08Z",
+      "side": 1,
+      "message": "these are unused, keep this as input, remove comment",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6586acc4_eede9326",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:19:08Z",
+      "side": 1,
+      "message": "these are unused, keep this as input, remove comment",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3665e1de_b3842ed0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-16T22:19:08Z",
+      "side": 1,
+      "message": "nit: add comment why its driven low",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
