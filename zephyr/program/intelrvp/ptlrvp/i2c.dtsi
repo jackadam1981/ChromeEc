@@ -30,6 +30,11 @@
 	pinctrl-0 = <CHARGER_I2C_PIN_CTRL_SCL CHARGER_I2C_PIN_CTRL_SDA>;
 	CHARGER_I2C_VENDOR_PROP
 	status = "okay";
+
+	kb_discrete: ite-it8801@39 {
+		compatible = "ite,it8801";
+		reg = <0x39>;
+	};
 };
 
 /* typec-aic1-power */
