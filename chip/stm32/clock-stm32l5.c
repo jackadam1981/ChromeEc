@@ -668,11 +668,29 @@ void clock_init(void)
 #endif
 #endif
 
+	/* Enable instruction cache. */
+	while (STM32_ICACHE_SR & STM32_ICACHE_SR_BUSYF) {
+	}
+	STM32_ICACHE_CR |= STM32_ICACHE_CR_EN;
+
 #ifdef CONFIG_LOW_POWER_IDLE
 	low_power_init();
 	rtc_init();
 #endif
 }
+
+void reset_flash_cache(void)
+{
+	/*
+	 * Instruction cache does not support writes to the area being cached,
+	 * so before jumping to another second, which could have been written
+	 * while the cache was active, disable the cache.  The next section may
+	 * immediately re-enable it, which is fine, since the contents would
+	 * then have been cleared.
+	 */
+	STM32_ICACHE_CR &= ~STM32_ICACHE_CR_EN;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, reset_flash_cache, HOOK_PRIO_DEFAULT);
 
 static void clock_chipset_startup(void)
 {
