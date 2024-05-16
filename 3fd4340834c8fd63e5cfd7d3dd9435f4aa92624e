@@ -34,6 +34,24 @@
       "parentUuid": "69906682_362c4608",
       "revId": "3fd4340834c8fd63e5cfd7d3dd9435f4aa92624e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c8b8ee_99af9875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T22:35:20Z",
+      "side": 1,
+      "message": "\u003e I\u0027m fine with using C++ if it improves our codebase, but in my opinion the problem we have is architectural. We should transform our codebase into state machines with clear connections between states.\n\nI agree. I\u0027m not to the point where I\u0027m rewriting the state machine. At this point, I want to start using some C++ types like [`std::span` and `std::array` in the `fpsensor_state.h` header](https://crrev.com/c/5503702), which is included by these files. With the C++ types that include size information, we can have safer buffer access. I\u0027d like to start experimenting with [hardened `libcxx`](https://bughunters.google.com/blog/6368559657254912/llvm-s-rfc-c-buffer-hardening-at-google) and [`-Wunsafe-buffer-usage`](http://b/40284755).",
+      "parentUuid": "51f179b4_61857585",
+      "revId": "3fd4340834c8fd63e5cfd7d3dd9435f4aa92624e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
