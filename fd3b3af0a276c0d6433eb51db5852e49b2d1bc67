@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88ceb80_35979e96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-16T08:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56ad3b8_9de4dbeb",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "fd3b3af0a276c0d6433eb51db5852e49b2d1bc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f404a25c_32d5bbc3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe82064_22010b96",
+        "filename": "zephyr/test/hwtest/src/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-16T08:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f404a25c_32d5bbc3",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "fd3b3af0a276c0d6433eb51db5852e49b2d1bc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e89f68b4_3c91d694",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-07T19:11:54Z",
       "side": 1,
       "message": "I just moved this to a new test called [`fpsensor_utils`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_utils.cc).",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "fd3b3af0a276c0d6433eb51db5852e49b2d1bc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a2d215_6574a1ea",
+        "filename": "zephyr/test/hwtest/src/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-16T08:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89f68b4_3c91d694",
       "range": {
         "startLine": 70,
         "startChar": 0,
