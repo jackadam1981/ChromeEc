@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa2d515_93a4a3f7",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:20:58Z",
+      "side": 1,
+      "message": "Not needed for this change, but as this gets longer it probably makes sense to list a single test on each line.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "dd25f81a4b84254011f9c0e253b41bc71fc53e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78b7835_42794933",
+        "filename": "zephyr/program/fpmcu/testcase.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:20:58Z",
+      "side": 1,
+      "message": "Is this related to this test?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "dd25f81a4b84254011f9c0e253b41bc71fc53e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d25df9ae_b1592781",
+        "filename": "zephyr/test/hwtest/src/malloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:20:58Z",
+      "side": 1,
+      "message": "For my knowledge: Do the `zassert*` macros log on success or only failure? The issue in the original test was that the `TEST_EQ` would always log a message, not just on failure. If `zassert` only logs on failure, we could add the `zassert_equal` back.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "dd25f81a4b84254011f9c0e253b41bc71fc53e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f2f526_ee50bd17",
+        "filename": "zephyr/test/hwtest/src/malloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T23:20:58Z",
+      "side": 1,
+      "message": "Can we preserve the `test_malloc_double_free` test, even though it\u0027s not used? It can be useful for debugging.",
+      "revId": "dd25f81a4b84254011f9c0e253b41bc71fc53e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
