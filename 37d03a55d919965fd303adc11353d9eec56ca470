@@ -40,6 +40,30 @@
       ],
       "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d712bf_278fbf0e",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-16T21:45:39Z",
+      "side": 1,
+      "message": "Realtek calls it project name, we\u0027ve called it the program name. We can standardize on one",
+      "parentUuid": "a5248a47_e4fb3c4a",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
