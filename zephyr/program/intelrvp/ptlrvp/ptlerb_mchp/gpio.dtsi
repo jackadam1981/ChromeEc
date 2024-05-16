@@ -162,6 +162,10 @@
 			gpios = <MCHP_GPIO_DECODE_052 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S0_L";
 		};
+		/* Unimplemented GPIO */
+		ec_spi_oe_mecc: ec-spi-wp {
+			gpios = <MCHP_GPIO_DECODE_227 GPIO_INPUT>;
+		};
 		gpio_mic_privacy_ec: mic-privacy-ec {
 			gpios = <MCHP_GPIO_DECODE_053 GPIO_OUTPUT_LOW>;
 		};
