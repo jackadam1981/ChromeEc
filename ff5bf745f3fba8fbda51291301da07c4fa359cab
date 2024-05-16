@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ca5d0a_98c286b2",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-16T18:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a989701_4a8897b6",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "ff5bf745f3fba8fbda51291301da07c4fa359cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696922dd_0b9080fb",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-08T21:06:01Z",
       "side": 1,
       "message": "These state names should be deleted.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 0
+      },
+      "revId": "ff5bf745f3fba8fbda51291301da07c4fa359cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6b6b13_94cbea43",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-16T18:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696922dd_0b9080fb",
       "range": {
         "startLine": 252,
         "startChar": 0,
