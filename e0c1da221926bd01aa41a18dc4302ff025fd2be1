@@ -22,6 +22,30 @@
       },
       "revId": "e0c1da221926bd01aa41a18dc4302ff025fd2be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee21de9_15999a8a",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-16T18:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f226980_89d64eff",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "e0c1da221926bd01aa41a18dc4302ff025fd2be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
