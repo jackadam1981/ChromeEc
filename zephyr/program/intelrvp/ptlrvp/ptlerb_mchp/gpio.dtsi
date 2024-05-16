@@ -362,6 +362,10 @@
 		dnx-force-reload-ec {
 			gpios = <MCHP_GPIO_DECODE_014 GPIO_INPUT>;
 		};
+		/* Unused GPIO, kept for legacy purpose */
+		ec_spi_oe_mecc: ec-spi-wp {
+			gpios = <MCHP_GPIO_DECODE_227 GPIO_INPUT>;
+		};
 		gpio_mic_privacy_ec: mic-privacy-ec {
 			gpios = <MCHP_GPIO_DECODE_053 GPIO_OUTPUT_LOW>;
 		};
