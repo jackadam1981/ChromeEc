@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7862cdbd_e20a8ea6",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-16T21:23:55Z",
+      "side": 1,
+      "message": "how does changing this help? Isn\u0027t this a fallback certificate which is used only if there is no valid certificate in the INFO space?",
+      "revId": "ab1420be137c47d843eb338ac1ba54493418e6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
