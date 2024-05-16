@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7400201_4b3816e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5750,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-16T08:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fcaca8d_ce981c87",
+      "range": {
+        "startLine": 5750,
+        "startChar": 36,
+        "endLine": 5750,
+        "endChar": 42
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb90488_ff377e29",
@@ -85,6 +109,30 @@
       "writtenOn": "2024-05-14T18:52:15Z",
       "side": 1,
       "message": "please preserve alphabetical order.",
+      "range": {
+        "startLine": 12456,
+        "startChar": 4,
+        "endLine": 12456,
+        "endChar": 20
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b7971a_7a903948",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 12456,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-16T08:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb90488_ff377e29",
       "range": {
         "startLine": 12456,
         "startChar": 4,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "sounds good, will modify it",
       "parentUuid": "5da757d4_6de861a4",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3c927b_c746bf0e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-16T08:38:42Z",
+      "side": 1,
+      "message": "1. tired EC_HOST_EVENT_POWER_BUTTON , but it won\u0027t wake up the system , \ni saw this event in ec log, but the host is not awaken, i really have to use powerbtn in ec console to wakeup .\n24-05-16 16:00:06.436 [6123.111200 event set 0x0000000000000004]\ncould i use EC_HOST_EVENT_RTC  instead?\n\n2.\ni made it return before power_chipset_handle_sleep_hang send EC_HOST_EVENT_HANG_DETECT\n\nthank you",
+      "parentUuid": "42f65d5c_3f7159c9",
       "range": {
         "startLine": 14,
         "startChar": 23,
