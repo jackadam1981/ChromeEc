@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5041ba_f3592677",
+        "filename": "include/ec_cmd_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-16T19:36:03Z",
+      "side": 1,
+      "message": "you should be able to use `_CROS_EC_C0_F_RF` here which is the simpler form.\nmay need to adjust response struct name to match the basic naming pattern.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fa2253fb_8ab51b9f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/ec_cmd_api.h",
+              "range": {
+                "startLine": 406,
+                "startChar": 0,
+                "endLine": 407,
+                "endChar": 0
+              },
+              "replacement": "_CROS_EC_C0_F_RF(EC_CMD_SET_ALARM_SLP_S0_DBG, set_alarm_slp_s0_dbg);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a65f20d2fe2cc41355b106a055aa7be3a26cc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
