@@ -207,15 +207,10 @@ void chip_pre_init(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* TODO(b/67081508) */
 #endif
-#if defined(CHIP_FAMILY_STM32L5)
-	(void)apb1fz_reg;
-	(void)apb2fz_reg;
-#else
 	if (apb1fz_reg)
 		STM32_DBGMCU_APB1FZ |= apb1fz_reg;
 	if (apb2fz_reg)
 		STM32_DBGMCU_APB2FZ |= apb2fz_reg;
-#endif
 }
 
 #ifdef CONFIG_PVD
