@@ -618,6 +618,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16017d14_af4ff16b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Yeah, to hide this in `tcpm.h`, you\u0027d have to make sure that the function had a safe/sensible return value for the not-supported case, and it was used consistently.\n\nFailing that, I think the named feature configs would be a readability improvement on just checking for Servo.\n\nStill just a nit.",
+      "parentUuid": "fe6fa872_4e90dc3b",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1768cc52_d448005f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 14

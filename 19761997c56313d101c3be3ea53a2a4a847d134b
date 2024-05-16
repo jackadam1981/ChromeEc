@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c44b43b_a46b160b",
+        "filename": "board/servo_v4p1_tcpmv2/usb_sm.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "You\u0027ll need to update this. (Have we really been working on this since 2019? 😂)",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5b6d3e_959f522d",
+        "filename": "board/servo_v4p1_tcpmv2/usb_sm.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "What distinguishes this from the generic `usb_sm.h`? It would probably be worth a comment blurb in this file explaining the difference/why it\u0027s needed.",
+      "fixSuggestions": [
+        {
+          "fixId": "15196548_9a9706f7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/servo_v4p1_tcpmv2/usb_sm.h",
+              "range": {
+                "startLine": 17,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": " * General usb state that can be used in multiple state machines. This is\n * different from the generic `usb_sm.h` in that it allows for a parent state\n * to be defined.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd14fe07_7171fdd9",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Seems like this should be something like `T_LOOP_PERIOD`.\n\n(But putting `_5MS` on the end also sounds like something I might have asked you to do at some point. If that happened, you can call it whatever you want, and I\u0027ll try not to bring it up again. :)",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6346c937_b58fd49f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3128,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Nit: This just occurred to me, but IIUC a lot of these Servo checks use `#ifdef` because using `IS_ENABLED` would fail to compile even though the code will ultimately be linked out, because something like the enum for the timer we\u0027re checking isn\u0027t defined for Servo. We\u0027ve solved the same problem the state enums in this file by having things like\n```\n#ifndef CONFIG_USB_PD_REV30\nGEN_NOT_SUPPORTED(PE_FRS_SNK_SRC_START_AMS);\n#define PE_FRS_SNK_SRC_START_AMS PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED\n...\n```\n\nWould it be worth doing that with the unsupported timers in the Servo timer header to reduce use of `#ifdef` in the state machines?",
+      "range": {
+        "startLine": 3128,
+        "startChar": 0,
+        "endLine": 3128,
+        "endChar": 24
+      },
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6e7514_519ff4e5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Nit: The number of `#ifdef`s make this block a little hard to follow. Ordinarily, I wouldn\u0027t want to duplicate code unnecessarily, but this might be easier to follow with something like\n```\n#ifdef CONFIG_USB_SERVO\nif (source_dpm_requests(port))\n    return;\n/* Inform DPM state machine that PE is set for messages */\ndpm_set_pe_ready(port, true);\n#else\n// Normal code path\n#endif\n```",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e6c76d_bc89c3a9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Nit: You could make `get_src_polarity` overridable (and maybe add `board_` to the name) and just override it in the Servo board code. I\u0027m not 100% on this, because overrides pose their own readability burden, but I think there\u0027s some value in making the state machine code more streamlined, since it tends to be inherently complicated without dealing with board logic.",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f75f1b_229cc359",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3393,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Does this avoid a compilation error? `tcpm_debug_detach` is specific to a certain TCPC, which is not used in the Servo. Other drivers don\u0027t define the function, so `tcpm_debug_detach` is a no-op.",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01631a2d_acd55901",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "What are the implications of this for non-Servo boards?",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a927890_55c6cfd0",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-16T18:53:50Z",
+      "side": 1,
+      "message": "Is this to avoid a compilation error on `pd_timer_next_expiration`? If so, could you implement that function to just return 1 ms in the Servo timer module and avoid the config check here?",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
