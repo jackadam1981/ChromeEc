@@ -52,6 +52,42 @@
       "parentUuid": "e1786bee_441d8beb",
       "revId": "1d2dbd15dc643820241f5bfa8d4f9f93ff8da2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85951e3_13e51c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-05-16T03:38:56Z",
+      "side": 1,
+      "message": "The config CONFIG_PLATFORM_EC_CHARGER set to y for yaviks.\nIf it set to y, we can get .twister fail message as follow",
+      "parentUuid": "1093aa50_a57f6b0e",
+      "revId": "1d2dbd15dc643820241f5bfa8d4f9f93ff8da2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdeb4fc7_fc1e522f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-05-16T03:38:56Z",
+      "side": 1,
+      "message": "The config CONFIG_PLATFORM_EC_CHARGER set to y for project yaviks.\nIf it set to y, we can get ./twister fail message as follow:\n\nwarning: PLATFORM_EC_EXTPOWER (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig:418) has direct dependencies PLATFORM_EC_HOOKS \u0026\u0026 PLATFORM_EC_HOSTCMD \u0026\u0026 PLATFORM_EC with value n, but is currently being y-selected by the following symbols:\n - PLATFORM_EC_CHARGER (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.charger:5), with value y, direct dependencies PLATFORM_EC_BATTERY \u0026\u0026 PLATFORM_EC (value: y), and select condition PLATFORM_EC_BATTERY \u0026\u0026 PLATFORM_EC (value: y)",
+      "parentUuid": "1093aa50_a57f6b0e",
+      "revId": "1d2dbd15dc643820241f5bfa8d4f9f93ff8da2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
