@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493e4dd6_a8e9e85f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-16T16:04:59Z",
+      "side": 1,
+      "message": "Sorry, I lost the CR+2. My change to zephyr/gcov.tmpl.sh failed, and I tried to rename it to avoid cros lint, but that didn\u0027t work, so I added a directive to ignore the warning instead.",
+      "revId": "47f18bdb126a684af66a2046e94f376f1b8791e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
