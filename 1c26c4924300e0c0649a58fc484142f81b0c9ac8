@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1370cc_ab5d0b02",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T22:21:18Z",
+      "side": 1,
+      "message": "I see the PPM callback is making this same change, so this doesn\u0027t belong here.\n\nSince all callbacks can be treated equally, it would make more sense to modify the existing API `pdc_set_handler_cb()` so that it manages a linked list of callbacks.\n\nZephyr\u0027s GPIO driver provides a model for this.\n[gpio_add_callback](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/zephyr/main/include/zephyr/drivers/gpio.h;l\u003d1717)\n[gpio_remove_callback](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/zephyr/main/include/zephyr/drivers/gpio.h;l\u003d1765)\n\nThe common utility [`gpio_manage_callback()`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/zephyr/main/include/zephyr/drivers/gpio/gpio_utils.h;l\u003d54) manages the singly-linked list for each driver.",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 25
+      },
+      "revId": "1c26c4924300e0c0649a58fc484142f81b0c9ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
