@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "210f0967_57776e43",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-16T20:12:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "12f6eb01_cae9be4e",
+      "range": {
+        "startLine": 51,
+        "startChar": 68,
+        "endLine": 51,
+        "endChar": 71
+      },
+      "revId": "9bc910ad14e5483bf2a88f204ce093306877aeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c5ef30_49899feb",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7c2290_de0a5d42",
+        "filename": "zephyr/program/intelrvp/ptlrvp/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-16T20:12:15Z",
+      "side": 1,
+      "message": "We need this file otherwise build fails because of [this change](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5490483/4/zephyr/program/intelrvp/CMakeLists.txt):\n```\n    /mnt/host/source/src/platform/ec/zephyr/program/intelrvp/ptlrvp\n  does not contain a CMakeLists.txt file.\n  The source directory\n    /mnt/host/source/src/platform/ec/zephyr/program/intelrvp/ptlrvp\n  does not contain a CMakeLists.txt file.\n```\nThis also serves as a placeholder, similar approach is followed in [4938558](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4938558/6/zephyr/program/brox/brox/CMakeLists.txt).",
+      "parentUuid": "91c5ef30_49899feb",
+      "revId": "9bc910ad14e5483bf2a88f204ce093306877aeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ff99c3_81fb18b6",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-15T17:32:30Z",
       "side": 1,
       "message": "wp is not routed in ERB",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "9bc910ad14e5483bf2a88f204ce093306877aeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5140311_85f4faed",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-16T20:12:15Z",
+      "side": 1,
+      "message": "Per our discussion, I will add comment, and next CL will have IOEXP.",
+      "parentUuid": "c1ff99c3_81fb18b6",
       "range": {
         "startLine": 8,
         "startChar": 13,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5f7df5_033c88e9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-16T20:12:15Z",
+      "side": 1,
+      "message": "See above comment.",
+      "parentUuid": "bf740b85_ef70a98f",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "9bc910ad14e5483bf2a88f204ce093306877aeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4bab131_8c3836c1",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-05-15T17:32:30Z",
       "side": 1,
       "message": "this is 1723 specific pin, unused in 1727",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "9bc910ad14e5483bf2a88f204ce093306877aeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0dfa6d6_e46cf19c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-16T20:12:15Z",
+      "side": 1,
+      "message": "Configuring as INPUT and add comment.",
+      "parentUuid": "d4bab131_8c3836c1",
       "range": {
         "startLine": 14,
         "startChar": 3,
