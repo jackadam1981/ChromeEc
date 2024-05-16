@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7985f084_187f0144",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-16T16:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9834bcd9_18faabae",
+      "range": {
+        "startLine": 192,
+        "startChar": 30,
+        "endLine": 192,
+        "endChar": 35
+      },
+      "revId": "a19cb27bade864272be55e9181ae2d5a80fd6253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102b710d_6a60602d",
@@ -39,6 +63,30 @@
       "side": 1,
       "message": "\u003e \"befor\" is a possible misspelling of \"before\".\n\nPlease fix.",
       "parentUuid": "14410d5f_c6c27283",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 36
+      },
+      "revId": "a19cb27bade864272be55e9181ae2d5a80fd6253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0493c07_746b4cdd",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-16T16:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102b710d_6a60602d",
       "range": {
         "startLine": 197,
         "startChar": 31,
