@@ -25,9 +25,9 @@ GPIO_INT(EC_RECOVERY_BTN_ODL,        PIN(2, 3), GPIO_INT_BOTH, button_interrupt)
 GPIO_INT(USB_C1_RT_INT_ODL,          PIN(4, 1), GPIO_INT_FALLING, retimer_interrupt)
 GPIO_INT(USB_C1_BC12_INT_ODL,        PIN(8, 3), GPIO_INT_FALLING, bc12_interrupt)
 GPIO_INT(USB_C1_PPC_INT_ODL,         PIN(7, 0), GPIO_INT_FALLING, ppc_interrupt)
-GPIO_INT(HDMI1_MONITOR_ON,           PIN(B, 4), GPIO_INT_RISING, monitor_interrupt)
-GPIO_INT(HDMI2_MONITOR_ON,           PIN(B, 5), GPIO_INT_RISING, monitor_interrupt)
-GPIO_INT(OPTION_MONITOR_ON,          PIN(1, 0), GPIO_INT_RISING, monitor_interrupt)
+GPIO_INT(HDMI1_MONITOR_ON,           PIN(B, 4), GPIO_INT_BOTH, monitor_interrupt)
+GPIO_INT(HDMI2_MONITOR_ON,           PIN(B, 5), GPIO_INT_BOTH, monitor_interrupt)
+GPIO_INT(OPTION_MONITOR_ON,          PIN(1, 0), GPIO_INT_BOTH, monitor_interrupt)
 
 /* CCD */
 GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)

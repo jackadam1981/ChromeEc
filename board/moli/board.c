@@ -485,12 +485,15 @@ DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
 static void monitor_irq_deferred(void);
 DECLARE_DEFERRED(monitor_irq_deferred);
 
+static uint64_t pulse_start;
+static uint32_t pulse_width;
+
 static void monitor_irq_deferred(void)
 {
 	int i;
 
 	for (i = 0; i < MONITOR_COUNT; i++) {
-		if (monitors[i].state && gpio_get_level(monitors[i].gpio)) {
+		if (monitors[i].state) {
 			/*
 			 * System power on from state S5 and G3.
 			 */
@@ -509,6 +512,7 @@ static void monitor_irq_deferred(void)
 /* Power on by HDMI/ DP monitor. */
 void monitor_interrupt(enum gpio_signal signal)
 {
+	uint64_t time_now = get_time().val;
 	/*
 	 * Power on by HDMI/ DP monitor only works
 	 * when system is not in S0.
@@ -517,6 +521,13 @@ void monitor_interrupt(enum gpio_signal signal)
 		return;
 
 	if (ec_cfg_power_on_monitor() == POWER_ON_MONITOR_ENABLE) {
+
+		if (gpio_get_level(signal) == 1)
+			pulse_start = time_now;
+		else {
+			pulse_width = time_now - pulse_start;
+
+		if (pulse_width <= (250 * MSEC)) {
 		switch (signal) {
 		case GPIO_HDMI1_MONITOR_ON:
 			monitors[HDMI1_MONITOR].state = MONITOR_ON;
@@ -532,5 +543,7 @@ void monitor_interrupt(enum gpio_signal signal)
 		}
 		hook_call_deferred(&monitor_irq_deferred_data,
 				   MONITOR_DEBOUNCE_MS * MSEC);
+		}
+	}
 	}
 }
