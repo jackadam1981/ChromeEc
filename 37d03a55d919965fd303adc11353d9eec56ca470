@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfdb5b26_5f0947c1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T22:01:05Z",
+      "side": 1,
+      "message": "Is it okay to read extra bytes if the FW version is too old?",
+      "range": {
+        "startLine": 2012,
+        "startChar": 49,
+        "endLine": 2012,
+        "endChar": 51
+      },
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5248a47_e4fb3c4a",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
@@ -79,6 +102,30 @@
       "writtenOn": "2024-05-16T22:00:18Z",
       "side": 1,
       "message": "as long as the commit message matches 😊",
+      "parentUuid": "b0d712bf_278fbf0e",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf9ad04_52e73ba0",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-16T22:01:05Z",
+      "side": 1,
+      "message": "Let\u0027s match the Realtek terminology.",
       "parentUuid": "b0d712bf_278fbf0e",
       "range": {
         "startLine": 71,
