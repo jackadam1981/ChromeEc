@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f820e574_1e594abc",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-16T22:59:10Z",
+      "side": 1,
+      "message": "This is now `fp_transport.c`, right?",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "650fc4e937f5c8bbcd09e1d5020430dc112f8a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
