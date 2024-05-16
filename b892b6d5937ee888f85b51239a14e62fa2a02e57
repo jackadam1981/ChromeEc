@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7631aeb7_831458c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-16T08:40:01Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org I haven\u0027t migrated the `test_malloc_double_free`. Double free causes MPU fault in Zephyr:\n```\nDEBUG:[1.052000] \u003cerr\u003e os: ***** MPU FAULT *****\nDEBUG:[1.056000] \u003cerr\u003e os:   Data Access Violation\nDEBUG:[1.060000] \u003cerr\u003e os:   MMFAR Address: 0xc\nDEBUG:[1.064000] \u003cerr\u003e os: \u003e\u003e\u003e ZEPHYR FATAL ERROR 0: CPU exception on CPU 0\nDEBUG:[1.070000] \u003cerr\u003e os: Current thread: 0x20001fd0 (test_malloc_dou)\n```\n\nCan you give any advice what to do with this test?",
+      "revId": "b892b6d5937ee888f85b51239a14e62fa2a02e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
