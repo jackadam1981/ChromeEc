@@ -34,6 +34,24 @@
       "parentUuid": "7862cdbd_e20a8ea6",
       "revId": "ab1420be137c47d843eb338ac1ba54493418e6cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e07f908_22c12b78",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-16T21:27:25Z",
+      "side": 1,
+      "message": "I don\u0027t see where the cert substitution happens, why is the one stored in INFO is ignored when this compile flag is present?",
+      "parentUuid": "0f4dc5ea_150e33a8",
+      "revId": "ab1420be137c47d843eb338ac1ba54493418e6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
