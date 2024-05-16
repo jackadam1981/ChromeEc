@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0799161_88dbbcc1",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-16T03:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd74ea1_fdb2aed9",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa7afa6c_87ade2df",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-15T16:17:49Z",
       "side": 1,
       "message": "5xxxx",
+      "range": {
+        "startLine": 593,
+        "startChar": 24,
+        "endLine": 593,
+        "endChar": 29
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe7f7bc_6d20f745",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-16T03:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7afa6c_87ade2df",
       "range": {
         "startLine": 593,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40966098_4e4df1c0",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-16T03:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ce7859_aaf3628f",
+      "range": {
+        "startLine": 594,
+        "startChar": 11,
+        "endLine": 594,
+        "endChar": 31
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "372bf721_dc47c6de",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-05-15T16:17:49Z",
       "side": 1,
       "message": "Use `else if`.  Otherwise this breaks non it5xxxx parts.",
+      "range": {
+        "startLine": 715,
+        "startChar": 2,
+        "endLine": 715,
+        "endChar": 4
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d833ab_71a9e960",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-16T03:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "372bf721_dc47c6de",
       "range": {
         "startLine": 715,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84bcc1e8_76950432",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-16T03:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b1c4430_9320034e",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 0
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6823f287_2e24bf78",
@@ -146,6 +266,30 @@
       "writtenOn": "2024-05-15T16:17:49Z",
       "side": 1,
       "message": "Delete - just set the flash size in kilobytes above.",
+      "range": {
+        "startLine": 747,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 0
+      },
+      "revId": "713d791d00d05e99a8f325bc4115b8b44b57c076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b83862_a7bda802",
+        "filename": "util/iteflash.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-16T03:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6823f287_2e24bf78",
       "range": {
         "startLine": 747,
         "startChar": 0,
