@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df76468_f1b543ef",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-17T13:27:35Z",
+      "side": 1,
+      "message": "For sure, done.",
+      "parentUuid": "e7c48804_1edddb1d",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27fe370d_78a84626",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-16T15:37:21Z",
       "side": 1,
       "message": "Is this workaround affected by whether CONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI2 or CONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI3 is enabled?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77660acf_520a0c89",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-17T13:27:35Z",
+      "side": 1,
+      "message": "Haven\u0027t looked into those, but now that I did it seems like there\u0027s no usage for those defines as the workaround code has been removed in https://crrev.com/c/4846112. I\u0027ll clean up the rest thanks for pointing it out https://crrev.com/c/5547898",
+      "parentUuid": "27fe370d_78a84626",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5bff023_e2c042b5",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-17T13:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efbfc019_537954e9",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab9e4455_a18c7b28",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-16T15:37:21Z",
       "side": 1,
       "message": "Nit - the example should use different row/columns for each boot key.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "347588de_7db11773",
+        "filename": "zephyr/dts/bindings/input/cros-ec,boot-keys.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-17T13:27:35Z",
+      "side": 1,
+      "message": "wonder where I copied these from, used the ones from an actual device",
+      "parentUuid": "ab9e4455_a18c7b28",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efb34e1_f819b1ef",
+        "filename": "zephyr/program/brox/keyboard.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-17T13:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a400fb2b_ac6e35ea",
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f646766b_4cd3b7f7",
@@ -123,6 +237,24 @@
       "writtenOn": "2024-05-16T15:37:21Z",
       "side": 1,
       "message": "Move to a separate CL.",
+      "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3b7c6e_420103a0",
+        "filename": "zephyr/program/rex/keyboard.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-17T13:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f646766b_4cd3b7f7",
       "revId": "2d5f9397ca471e650339436ec3d5d217287744a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
