@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7a1528_51e9451c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/power_signals.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T20:57:35Z",
+      "side": 1,
+      "message": "as the GPIO flags will be same for all the ECs how about below approach for all the GPIOs in here?\ngpios \u003d \u003cPWR_EN_PP3300_S5 GPIO_ACTIVE_HIGH\u003e\n\nin EC specific header\n#define PWR_EN_PP3300_S5     MCHP_GPIO_DECODE_226",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "f407b210c1b82f6c487394a19566ff5a3d0a9150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b854624_d620fe09",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T20:57:35Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "f407b210c1b82f6c487394a19566ff5a3d0a9150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
