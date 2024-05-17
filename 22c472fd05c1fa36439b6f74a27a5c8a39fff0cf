@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15444a72_2e5bd4c0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T20:46:32Z",
+      "side": 1,
+      "message": "can you add all the GPIOs",
+      "revId": "22c472fd05c1fa36439b6f74a27a5c8a39fff0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e95cb9c_b96caf10",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T20:46:32Z",
+      "side": 1,
+      "message": "I think JTAG pins also can be re-purposed, can you add them as inputs?",
+      "revId": "22c472fd05c1fa36439b6f74a27a5c8a39fff0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
