@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e53967_e37984a2",
+        "filename": "zephyr/drivers/boot_keys/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-17T17:45:52Z",
+      "side": 1,
+      "message": "Should this default 1 if the power button is configured?\n\nThis appears to the be logic in the legacy code.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/common/keyboard_scan.c;l\u003d306",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f960d893_4f11690b",
+        "filename": "zephyr/drivers/boot_keys/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-17T17:45:52Z",
+      "side": 1,
+      "message": "I\u0027ve read through that bug, but it\u0027s not obvious to me what the underlying problem is.  Can you add more context directly to the help here?",
+      "range": {
+        "startLine": 19,
+        "startChar": 43,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c28378_b58c32f4",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-17T17:45:52Z",
+      "side": 1,
+      "message": "The config is called `COL2_WORKAROUND`, but you\u0027re checking row 2 here.  Can you add a comment explaining this?",
+      "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
