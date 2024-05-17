@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e94b640_ca5219ea",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T21:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15444a72_2e5bd4c0",
+      "revId": "22c472fd05c1fa36439b6f74a27a5c8a39fff0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e95cb9c_b96caf10",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-17T20:46:32Z",
       "side": 1,
       "message": "I think JTAG pins also can be re-purposed, can you add them as inputs?",
+      "revId": "22c472fd05c1fa36439b6f74a27a5c8a39fff0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0e4ceba_84a26a32",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T21:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e95cb9c_b96caf10",
       "revId": "22c472fd05c1fa36439b6f74a27a5c8a39fff0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
