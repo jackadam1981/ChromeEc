@@ -306,7 +306,7 @@ def test(opts):
     # Otherwise, build the 'runtests' target, which verifies all
     # posix-based unit tests build and pass.
     target = "coverage" if opts.code_coverage else "runtests"
-    cmd = ["make", target, f"-j{opts.cpus}"]
+    cmd = ["make", "V=1", target, f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
