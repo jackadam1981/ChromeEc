@@ -56,6 +56,7 @@ USE_CXX_COMPILER:=1
 COMMON_WARN+=-ftrapv
 endif
 ifeq ($(BOARD), host)
+CC=clang
 USE_BUILTIN_STDLIB:=0
 endif
 
