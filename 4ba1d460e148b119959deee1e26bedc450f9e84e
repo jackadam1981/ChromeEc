@@ -16,6 +16,24 @@
       "message": "Will the fan spin constantly at 94% duty with this patch all the time when system is on?",
       "revId": "4ba1d460e148b119959deee1e26bedc450f9e84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080d09c6_5e3c9f02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-05-17T13:10:54Z",
+      "side": 1,
+      "message": "Hi Derek,\n\nI forgot the S0ix mode. BTW, I also forgot to set fan to duty mode.",
+      "parentUuid": "76f047cd_72ba456b",
+      "revId": "4ba1d460e148b119959deee1e26bedc450f9e84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
