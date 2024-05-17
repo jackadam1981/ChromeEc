@@ -41,13 +41,8 @@ static_assert(
 	"The size of each template must be a multiple of 4 to ensure that the next "
 	"template will still be aligned by 4.");
 
-/* Encryption/decryption buffer */
-/* TODO: On-the-fly encryption/decryption without a dedicated buffer */
-/*
- * Store the encryption metadata at the beginning of the buffer containing the
- * ciphered data.
- */
-uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
+static uint8_t
+	enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE] FP_TEMPLATE_SECTION;
 
 struct fpsensor_context global_context = {
 	.template_newly_enrolled = FP_NO_SUCH_TEMPLATE,
@@ -65,6 +60,7 @@ struct fpsensor_context global_context = {
 		}},
 	.fp_positive_match_salt = {{0}},
 	.template_states = {},
+	.fp_enc_buffer = std::span(enc_buffer),
 };
 
 int fp_tpm_seed_is_set(void)
@@ -96,7 +92,8 @@ void fp_reset_context()
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(global_context.fp_enc_buffer.data(),
+			global_context.fp_enc_buffer.size_bytes());
 	OPENSSL_cleanse(global_context.user_id, sizeof(global_context.user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
 	fp_disable_positive_match_secret(
