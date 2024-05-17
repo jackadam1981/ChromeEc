@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad822e16_623339fa",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3603427a_48d3c328",
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a43bdf2_643e3026",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-16T22:19:08Z",
       "side": 1,
       "message": "add a comment about not to define I2C as input CL:4826249",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8079089_aa6bf478",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a43bdf2_643e3026",
       "range": {
         "startLine": 17,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fbeac07_ad56ef7c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "608afc72_73077a9c",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6586acc4_eede9326",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4f1aa7_517fb483",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6586acc4_eede9326",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3665e1de_b3842ed0",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-05-16T22:19:08Z",
       "side": 1,
       "message": "nit: add comment why its driven low",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "fda4dbf63ab4fe955fda572c0018c02a9d6e6590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d7aaf12_77c55a41",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3665e1de_b3842ed0",
       "range": {
         "startLine": 113,
         "startChar": 2,
