@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "704904a2_b4c95555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c1d031ba_26c8a9fc",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "72949b16f2ba5a5c7e88f64400054c9d9049a88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9383d280_1997e695",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-05-16T22:23:19Z",
       "side": 1,
       "message": "nit: add copywrite info",
+      "revId": "72949b16f2ba5a5c7e88f64400054c9d9049a88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a8802e_8cf505b4",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/include/power_signals.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-17T19:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9383d280_1997e695",
       "revId": "72949b16f2ba5a5c7e88f64400054c9d9049a88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
