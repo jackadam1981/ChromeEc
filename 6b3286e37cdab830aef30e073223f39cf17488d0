@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3438c398_055cb666",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-17T22:54:56Z",
+      "side": 1,
+      "message": "Update `rts54_post_cmd` to also take a callback. \n\nUse `cci_cb` for all other apis and the new event posting one for `execute_ucsi_cmd_sync`.\n\nThat way, we only call the callback that is assigned when you post the command itself.",
+      "parentUuid": "04054171_a29866df",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
