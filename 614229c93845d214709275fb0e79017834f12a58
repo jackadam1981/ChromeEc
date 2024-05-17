@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e927e4_5e1d26ff",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-17T10:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4fc603a_eb63a16f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71e6c17_f4ef112f",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f04bc7a6_4ac086e8",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-17T10:43:11Z",
+      "side": 1,
+      "message": "Unfortunately, the panic data doesn\u0027t provide the exception number. Zephyr logs the type and subtype on the console:\n```\nDEBUG:[0.078000] \u003cerr\u003e os: ***** USAGE FAULT *****\nDEBUG:[0.084000] \u003cerr\u003e os:   Attempt to execute undefined instruction\nDEBUG:[0.091000] \u003cerr\u003e os: \u003e\u003e\u003e ZEPHYR FATAL ERROR 0: CPU exception on CPU 0\nDEBUG:[0.098000] \u003cerr\u003e os: Current thread: 0x20002470 (test_ftrapv)\n```\nThe [reason](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/arch/arm/arch.h#L62) is provided to the fatal error [handler](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d144), but we do not save that to the panic data. The current panic data structure is not adjusted to store that info.",
+      "parentUuid": "d71e6c17_f4ef112f",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b430f62d_b0a5186d",
         "filename": "zephyr/test/hwtest/src/ftrapv.c",
         "patchSetId": 4
@@ -54,6 +96,24 @@
       "writtenOn": "2024-05-16T23:09:55Z",
       "side": 1,
       "message": "Can you include the names for the [trapping arithmetic functions](https://gcc.gnu.org/onlinedocs/gccint/Integer-library-routines.html#Trapping-arithmetic-functions) like the original test?",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e19b29_ef732538",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-17T10:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b430f62d_b0a5186d",
       "revId": "614229c93845d214709275fb0e79017834f12a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
