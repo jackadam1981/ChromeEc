@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24ffba0_86425c68",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-17T17:18:51Z",
+      "side": 1,
+      "message": "What about the DP_Connection and USB4_Connection bits?\n\nCan you use the conn_partner_flag bits 1 and 2/3 to fill in the PCH_DATA_STATUS?",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 33
+      },
+      "revId": "2b4bab3357aeadf269482a3274b4fae3815e2929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
