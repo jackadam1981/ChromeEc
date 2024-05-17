@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea004ff_1182117a",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-17T18:05:39Z",
+      "side": 1,
+      "message": "This is an unbounded loop.  Please put a limit on this.\n\nWhat actually triggers the icache clear?",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 0
+      },
+      "revId": "97ab87dd9dfc6f0bfb0bda12e9cee588582cd1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857a15cc_a697658b",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-17T18:05:39Z",
+      "side": 1,
+      "message": "```suggestion\nstatic void reset_flash_cache(void)\n```",
+      "range": {
+        "startLine": 682,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 28
+      },
+      "revId": "97ab87dd9dfc6f0bfb0bda12e9cee588582cd1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
