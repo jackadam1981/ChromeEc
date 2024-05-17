@@ -90,26 +90,23 @@ struct fan_table_config {
 
 const struct fan_step fan_table0[] = {
 	{ .on = 25, .off = 0, .rpm = 0 },
-	{ .on = 37, .off = 34, .rpm = 2500 },
-	{ .on = 42, .off = 39, .rpm = 2800 },
-	{ .on = 46, .off = 43, .rpm = 3000 },
-	{ .on = 51, .off = 48, .rpm = 3200 },
-	{ .on = 55, .off = 52, .rpm = 3600 },
-	{ .on = 59, .off = 56, .rpm = 4000 },
-	{ .on = 66, .off = 63, .rpm = 4600 },
-	{ .on = 72, .off = 69, .rpm = 5000 },
-	{ .on = 74, .off = 71, .rpm = 5500 },
+	{ .on = 35, .off = 30, .rpm = 2500 },
+	{ .on = 42, .off = 39, .rpm = 3000 },
+	{ .on = 46, .off = 43, .rpm = 3500 },
+	{ .on = 51, .off = 48, .rpm = 4000 },
+	{ .on = 55, .off = 52, .rpm = 5000 },
+	{ .on = 59, .off = 56, .rpm = 6000 },
 };
 const int fan_table0_count = ARRAY_SIZE(fan_table0);
 
 const struct fan_step fan_table1[] = {
 	{ .on = 25, .off = 0, .rpm = 0 },
-	{ .on = 51, .off = 48, .rpm = 3200 },
-	{ .on = 55, .off = 52, .rpm = 3600 },
-	{ .on = 59, .off = 56, .rpm = 4000 },
-	{ .on = 66, .off = 63, .rpm = 4600 },
-	{ .on = 72, .off = 69, .rpm = 5000 },
-	{ .on = 74, .off = 71, .rpm = 5500 },
+	{ .on = 35, .off = 30, .rpm = 2500 },
+	{ .on = 42, .off = 39, .rpm = 3000 },
+	{ .on = 46, .off = 43, .rpm = 3500 },
+	{ .on = 51, .off = 48, .rpm = 4000 },
+	{ .on = 55, .off = 52, .rpm = 5000 },
+	{ .on = 59, .off = 56, .rpm = 6000 },
 };
 const int fan_table1_count = ARRAY_SIZE(fan_table1);
 
@@ -132,7 +129,7 @@ BUILD_ASSERT(ARRAY_SIZE(current_level) == FAN_CH_COUNT);
 static int previous_level[] = { 0, 0 };
 BUILD_ASSERT(ARRAY_SIZE(previous_level) == FAN_CH_COUNT);
 
-#undef BOARD_FAN_TEST
+#define BOARD_FAN_TEST
 
 #ifdef BOARD_FAN_TEST
 static int manual_temp = -1;
@@ -218,3 +215,19 @@ static int command_fan_test(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(fan_test, command_fan_test, "[temperature]",
 			"set manual temperature for fan test");
 #endif
+
+/**
+ * Use [Alt] + [F] to switch fan speed between auto mode and max mode.
+*/
+void event_alt_f(void)
+{
+	const char *argv[] = {NULL, "60"};
+
+	if(manual_temp == -1) {
+		command_fan_test(2, &argv[0]);
+		ccprints("Fan MAX");
+	} else {
+		command_fan_test(1, NULL);
+		ccprints("Fan Auto");
+	}
+}

@@ -597,6 +597,27 @@ static void boot_key_released(const uint8_t *state)
 }
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
 
+#define KEYBOARD_COL_KEY_F	3 /* KSO */
+#define KEYBOARD_ROW_KEY_F	4 /* KSI */
+
+__overridable void event_alt_f(void)
+{
+}
+
+static void check_hotkey_key(const uint8_t *state)
+{
+	/* event ALT+F */
+	if (state[KEYBOARD_COL_LEFT_ALT] == BIT(KEYBOARD_ROW_LEFT_ALT) &&
+		state[KEYBOARD_COL_KEY_F] == BIT(KEYBOARD_ROW_KEY_F))
+	{
+		CPRINTS("KB ALT+F is pressed!");
+		event_alt_f();
+	}
+
+	return;
+}
+
+
 /**
  * Update keyboard state using low-level interface to read keyboard.
  *
@@ -684,6 +705,8 @@ static int check_keys_changed(uint8_t *state)
 	if (any_change) {
 		if (print_state_changes)
 			print_state(state, "state");
+
+		check_hotkey_key(state);
 
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 		boot_key_released(state);
