@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "758f7de1_c07c4d42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-17T22:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a32b22_7ff97f80",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edad9a2f_d1eabd69",
@@ -67,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04054171_a29866df",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-17T22:46:33Z",
+      "side": 1,
+      "message": "In that design, PPM needs to remove \u0026 restore PDM\u0027s cci callback. Do we want to add an API for that?",
+      "parentUuid": "25907926_e898d5d6",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
@@ -78,6 +120,24 @@
       "writtenOn": "2024-05-14T22:03:46Z",
       "side": 1,
       "message": "Also note that we clear and restore the CCI callback to avoid the sync cmd\u0027s results from polluting the other callbacks.",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f3d9a2_6b797b75",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2381,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-17T22:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "636cf2d5_2cc78406",
       "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +178,24 @@
       "writtenOn": "2024-05-14T22:03:46Z",
       "side": 1,
       "message": "nit: Should turn this `100` into a `#define SYNC_CMD_RETRY_COUNT 100`",
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b931247b_be697fc1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-17T22:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a38efb1_38d6a4c0",
       "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
