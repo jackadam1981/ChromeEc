@@ -16,6 +16,24 @@
       "message": "I am open to suggestions on how to implement this if y\u0027all don\u0027t like the way it is going. Having to support all three chips in a single tool is started to become more of a maintenance issue 😞",
       "revId": "f879f519652e2c8cb13c23d6fe37df516b1a7368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2f8ee4_8dc21391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-17T20:40:30Z",
+      "side": 1,
+      "message": "I am not sure adding OT to gsctool is good idea, especially since we have opentitantool aready. Maybe the solution is a wrapper script which would call gsctool or openttitantool based on command line option or on the input file properties.",
+      "parentUuid": "516ad631_05eb69cb",
+      "revId": "f879f519652e2c8cb13c23d6fe37df516b1a7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
