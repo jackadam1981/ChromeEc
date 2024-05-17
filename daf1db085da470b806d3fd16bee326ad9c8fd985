@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b240c428_37f6b0aa",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-17T23:18:45Z",
+      "side": 1,
+      "message": "where is REAL_SIGNER set at this point?",
+      "range": {
+        "startLine": 150,
+        "startChar": 19,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "daf1db085da470b806d3fd16bee326ad9c8fd985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a188cd_9ad31220",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-17T23:18:45Z",
+      "side": 1,
+      "message": "should SIGNED_IMAGES be always set after this change, and as such this variable not required?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 13
+      },
+      "revId": "daf1db085da470b806d3fd16bee326ad9c8fd985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312eb13f_74cea408",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-17T23:18:45Z",
+      "side": 1,
+      "message": "this should be included only if `/usr/bin/cr50-codesigner` is not found",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 54
+      },
+      "revId": "daf1db085da470b806d3fd16bee326ad9c8fd985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
