@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5e7b3d_ff418e99",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-05-17T11:43:34Z",
+      "side": 1,
+      "message": "We may need a.set_pdos function body defined first, otherwise EC would crash while attach a usb hub.",
+      "revId": "77ee52ced0baca60e07b63af0a1e56005a72d9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
