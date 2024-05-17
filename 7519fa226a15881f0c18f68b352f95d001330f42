@@ -33,6 +33,24 @@
       "message": "I don\u0027t think we should run codesigner make every time we run cr50 make.\n\nAnd not to break the builder logic should be different, something like:\n```\nif /usr/bin/cr50-codesigner existst\n  REAL_SINER\u003d/usr/bin/cr50-codesigner\nelse\n  REAL_SIGNER_ROOT\u003d$(abspath ../cr50-utils/software/tools/codesigner)\n  REAL_SIGNER\u003d$(REAL_SIGNER_ROOT)/codesigner\n  REAL_SIGNER:\n      make -C $(REAL_SIGNER_ROOT) codesigner\nendif\n```\n\nand REAL_SIGNER should become a build only dependency of the signing rules",
       "revId": "7519fa226a15881f0c18f68b352f95d001330f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "223a1409_9134221c",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-17T23:07:37Z",
+      "side": 1,
+      "message": "ok. will update it.",
+      "parentUuid": "70e28d2e_8bb1836f",
+      "revId": "7519fa226a15881f0c18f68b352f95d001330f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
