@@ -51,6 +51,30 @@ void fan_set_count(int count)
 	fan_count = count;
 }
 
+static int fan_max = 0;
+
+int manual_fan_rpm(int rpm)
+{
+	if (fan_max)
+		return 6000;
+
+	return rpm;
+}
+
+/**
+ * Use [Alt] + [F] to switch fan speed between auto mode and max mode.
+*/
+void event_alt_f(void)
+{
+	if(fan_max == 1) {
+		fan_max = 0;
+		ccprints("Fan Auto");
+	} else {
+		fan_max = 1;
+		ccprints("Fan MAX");
+	}
+}
+
 #ifndef CONFIG_FAN_RPM_CUSTOM
 /* This is the default implementation. It's only called over [0,100].
  * Convert the percentage to a target RPM. We can't simply scale all
@@ -69,7 +93,7 @@ int fan_percent_to_rpm(int fan_index, int temp_ratio)
 		rpm = ((temp_ratio - 1) * max + (100 - temp_ratio) * min) / 99;
 	}
 
-	return rpm;
+	return manual_fan_rpm(rpm);
 }
 #endif /* CONFIG_FAN_RPM_CUSTOM */
 

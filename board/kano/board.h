@@ -175,6 +175,8 @@
 
 #define CONFIG_FANS FAN_CH_COUNT
 
+#undef CONFIG_DPTF
+
 /* Charger defines */
 #define CONFIG_CHARGER_ISL9241
 #define CONFIG_CHARGE_RAMP_SW

@@ -90,26 +90,23 @@ struct fan_table_config {
 
 const struct fan_step fan_table0[] = {
 	{ .on = 25, .off = 0, .rpm = 0 },
-	{ .on = 37, .off = 34, .rpm = 2500 },
-	{ .on = 42, .off = 39, .rpm = 2800 },
-	{ .on = 46, .off = 43, .rpm = 3000 },
-	{ .on = 51, .off = 48, .rpm = 3200 },
-	{ .on = 55, .off = 52, .rpm = 3600 },
-	{ .on = 59, .off = 56, .rpm = 4000 },
-	{ .on = 66, .off = 63, .rpm = 4600 },
-	{ .on = 72, .off = 69, .rpm = 5000 },
-	{ .on = 74, .off = 71, .rpm = 5500 },
+	{ .on = 35, .off = 30, .rpm = 2500 },
+	{ .on = 42, .off = 39, .rpm = 3000 },
+	{ .on = 46, .off = 43, .rpm = 3500 },
+	{ .on = 51, .off = 48, .rpm = 4000 },
+	{ .on = 55, .off = 52, .rpm = 5000 },
+	{ .on = 59, .off = 56, .rpm = 6000 },
 };
 const int fan_table0_count = ARRAY_SIZE(fan_table0);
 
 const struct fan_step fan_table1[] = {
 	{ .on = 25, .off = 0, .rpm = 0 },
-	{ .on = 51, .off = 48, .rpm = 3200 },
-	{ .on = 55, .off = 52, .rpm = 3600 },
-	{ .on = 59, .off = 56, .rpm = 4000 },
-	{ .on = 66, .off = 63, .rpm = 4600 },
-	{ .on = 72, .off = 69, .rpm = 5000 },
-	{ .on = 74, .off = 71, .rpm = 5500 },
+	{ .on = 35, .off = 30, .rpm = 2500 },
+	{ .on = 42, .off = 39, .rpm = 3000 },
+	{ .on = 46, .off = 43, .rpm = 3500 },
+	{ .on = 51, .off = 48, .rpm = 4000 },
+	{ .on = 55, .off = 52, .rpm = 5000 },
+	{ .on = 59, .off = 56, .rpm = 6000 },
 };
 const int fan_table1_count = ARRAY_SIZE(fan_table1);
 
