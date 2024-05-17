@@ -139,16 +139,33 @@ endif
 MANIFEST := util/signer/ec_RW-manifest-dev.json
 CR50_RO_KEY ?= rom-testkey-A.pem
 
+ifeq ($(CHIP_MK_INCLUDED_ONCE),)
+
+CHIP_MK_INCLUDED_ONCE := 1
+
+CODESIGNER_PATH := $(abspath ../cr50-utils/software/tools/codesigner)
+REAL_SIGNER:=$(CODESIGNER_PATH)/codesigner
+
+# Try to build signer from the known location, if it is missing
+ifeq ($(wildcard $(REAL_SIGNER)),)
+
+# If known path exists, try to build it
+ifneq ($(wildcard $(CODESIGNER_PATH)),)
+$(info $(MAKE) -C $(CODESIGNER_PATH))
+# Print build output if any
+$(info $(shell $(MAKE) -C $(CODESIGNER_PATH) codesigner))
+else
+REAL_SIGNER:=$(shell which cr50-codesigner)
+$(info REAL_SIGNER=$(REAL_SIGNER))
+endif
+endif
+
 # Make sure signing happens only when the signer is available.
-REAL_SIGNER = /usr/bin/cr50-codesigner
 ifneq ($(wildcard $(REAL_SIGNER)),)
 SIGNED_IMAGES = 1
 SIGNER := $(REAL_SIGNER)
 endif
 
-ifeq ($(CHIP_MK_INCLUDED_ONCE),)
-
-CHIP_MK_INCLUDED_ONCE := 1
 # We'll have to tweak the manifest no matter what, but different ways
 # depending on the way the image is built.
 SIGNER_MANIFEST := $(shell mktemp /tmp/h1.signer.XXXXXX)
@@ -176,6 +193,9 @@ DUM := $(shell sed 's/860844255/-764428053/' $(MANIFEST) > $(SIGNER_MANIFEST))
 else
 # The private key comes from the sighing fob.
 CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
+ifeq ($(wildcard $(SIGNER)),)
+$(error H1_DEVIDS=$(H1_DEVIDS) is set, but signer $(SIGNER) is not available.)
+endif
 
 ifneq ($(CHIP_MK_INCLUDED_ONCE),)
 #
