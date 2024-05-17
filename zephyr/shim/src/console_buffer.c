@@ -8,6 +8,8 @@
 #include "ec_commands.h"
 
 #include <zephyr/kernel.h>
+#include <zephyr/sys_clock.h>
+#include <zephyr/sys/time_units.h>
 
 static char console_buf[CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE];
 static uint32_t previous_snapshot_idx;
@@ -23,6 +25,36 @@ static inline uint32_t next_idx(uint32_t cur_idx)
 
 K_MUTEX_DEFINE(console_write_lock);
 
+static struct {
+	int64_t null;
+	int64_t written;
+	int64_t discarded;
+	int64_t overflow;
+	int64_t read;
+} traffic;
+
+static void print_traffic() {
+	int64_t now = k_uptime_get();
+	int64_t urate_null = (traffic.null * 1000L * 1000000L) / now;
+	int64_t urate_written = (traffic.written * 1000L * 1000000L) / now;
+	int64_t urate_discarded = (traffic.discarded * 1000L * 1000000L) / now;
+	int64_t urate_overflow = (traffic.overflow * 1000L * 1000000L) / now;
+	int64_t urate_read = (traffic.read * 1000L * 1000000L) / now;
+
+	printk("\n%" PRIi64 "ms:\n"
+	       "  null:      %" PRIi64 ".%06" PRIi64 "B/s\n"
+	       "  written:   %" PRIi64 ".%06" PRIi64 "B/s\n"
+	       "  discarded: %" PRIi64 ".%06" PRIi64 "B/s\n"
+	       "  overflow:  %" PRIi64 ".%06" PRIi64 "B/s\n"
+	       "  read:      %" PRIi64 ".%06" PRIi64 "B/s\n",
+	       now,
+	       urate_null / 1000000L, urate_null % 1000000L,
+	       urate_written / 1000000L, urate_written % 1000000L,
+	       urate_discarded / 1000000L, urate_discarded % 1000000L,
+	       urate_overflow / 1000000L, urate_overflow % 1000000L,
+	       urate_read / 1000000L, urate_read % 1000000L);
+}
+
 size_t console_buf_notify_chars(const char *s, size_t len)
 {
 	/*
@@ -30,13 +62,16 @@ size_t console_buf_notify_chars(const char *s, size_t len)
 	 * output, so if we are unable to lock the mutex immediately,
 	 * then just drop the string.
 	 */
-	if (k_mutex_lock(&console_write_lock, K_NO_WAIT))
+	if (k_mutex_lock(&console_write_lock, K_NO_WAIT)) {
+		traffic.discarded += len;
 		return 0;
+	}
 	/* We got the mutex. */
 	for (size_t i = 0; i < len; i++) {
 		/* Don't copy null byte into buffer */
 		if (!(*s)) {
 			s++;
+			traffic.null++;
 			continue;
 		}
 
@@ -45,17 +80,26 @@ size_t console_buf_notify_chars(const char *s, size_t len)
 		/* Check if we are starting to overwrite our snapshot
 		 * heads
 		 */
-		if (new_tail == head_idx)
+		if (new_tail == head_idx) {
+			traffic.overflow++;
 			head_idx = next_idx(head_idx);
-		if (new_tail == previous_snapshot_idx)
+		}
+		if (new_tail == previous_snapshot_idx) {
+			traffic.overflow++;
 			previous_snapshot_idx = next_idx(previous_snapshot_idx);
-		if (new_tail == current_snapshot_idx)
+		}
+		if (new_tail == current_snapshot_idx) {
+			traffic.overflow++;
 			current_snapshot_idx = next_idx(current_snapshot_idx);
-		if (new_tail == read_next_idx)
+		}
+		if (new_tail == read_next_idx) {
+			traffic.overflow++;
 			read_next_idx = next_idx(read_next_idx);
+		}
 
 		console_buf[tail_idx] = *s++;
 		tail_idx = new_tail;
+		traffic.written++;
 	}
 	k_mutex_unlock(&console_write_lock);
 	return len;
@@ -134,6 +178,9 @@ int uart_console_read_buffer(uint8_t type, char *dest, uint16_t dest_size,
 
 	dest[write_count] = '\0';
 	write_count++;
+
+	traffic.read += write_count;
+	print_traffic();
 
 	*write_count_out = write_count;
 	k_mutex_unlock(&console_write_lock);
