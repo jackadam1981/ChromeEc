@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0855706_74b88742",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T22:31:22Z",
+      "side": 1,
+      "message": "these are not used in the CL:5540430, do you want to add them?",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "46a9b2c484e301292e8fbd7daa711af9959147a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e474bce3_bb7acb30",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T22:31:22Z",
+      "side": 1,
+      "message": "add a comment, discrete KB is used hence defining these KB pins as inputs",
+      "revId": "46a9b2c484e301292e8fbd7daa711af9959147a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4686372c_f1df35ee",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-17T22:31:22Z",
+      "side": 1,
+      "message": "lets not use EC based MUX settings. keep them as input",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 5
+      },
+      "revId": "46a9b2c484e301292e8fbd7daa711af9959147a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
