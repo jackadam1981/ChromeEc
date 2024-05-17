@@ -236,6 +236,30 @@
       },
       "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7b2070_40c63d51",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-17T03:47:28Z",
+      "side": 1,
+      "message": "Done. AP side needs to set bit 25 of EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX to make it work",
+      "parentUuid": "c09bc3b8_144df9b1",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "28ee7a768f383199368ccec7a03f64a8b49170cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
