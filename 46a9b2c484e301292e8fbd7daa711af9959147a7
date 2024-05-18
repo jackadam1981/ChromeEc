@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17cad08c_b13ee09a",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:27:05Z",
+      "side": 1,
+      "message": "I will add them since those are for hotspots.",
+      "parentUuid": "e0855706_74b88742",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "46a9b2c484e301292e8fbd7daa711af9959147a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e474bce3_bb7acb30",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e795f29b_64f59368",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:27:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e474bce3_bb7acb30",
+      "revId": "46a9b2c484e301292e8fbd7daa711af9959147a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4686372c_f1df35ee",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-17T22:31:22Z",
       "side": 1,
       "message": "lets not use EC based MUX settings. keep them as input",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 5
+      },
+      "revId": "46a9b2c484e301292e8fbd7daa711af9959147a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad2790b_eec2633c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:27:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4686372c_f1df35ee",
       "range": {
         "startLine": 321,
         "startChar": 0,
