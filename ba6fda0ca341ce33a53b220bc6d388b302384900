@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98dcf42d_e01fd735",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd1ed29_19a83670",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "ba6fda0ca341ce33a53b220bc6d388b302384900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14a63623_3d2d60a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T21:54:54Z",
       "side": 1,
       "message": "nit: possible to use zephyr prints?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "ba6fda0ca341ce33a53b220bc6d388b302384900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7711dd00_2df6a74f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14a63623_3d2d60a2",
       "range": {
         "startLine": 10,
         "startChar": 0,
