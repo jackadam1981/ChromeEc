@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73635267_9d2163f1",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioexp_gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:27:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0a6b584_76691814",
+      "revId": "7abf827ac9682c58939433bc260313b837fc1338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea66bc5_fcccc46b",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-17T21:38:57Z",
       "side": 1,
       "message": "to avoid modifying GPIO227, declare one of the unused GPIOs from IOEX as ec_spi_oe_mecc",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 16
+      },
+      "revId": "7abf827ac9682c58939433bc260313b837fc1338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b29c87_b8e6d761",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:27:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea66bc5_fcccc46b",
       "range": {
         "startLine": 230,
         "startChar": 2,
