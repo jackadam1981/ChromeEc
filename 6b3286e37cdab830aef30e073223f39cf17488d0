@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baefebec_9374f5a2",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-18T02:04:28Z",
+      "side": 1,
+      "message": "And where and how do you expect PDM\u0027s cci_cb to be restored? We need another slot to keep PDM\u0027s cci_cb. Is that what you suggest?",
+      "parentUuid": "3438c398_055cb666",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
