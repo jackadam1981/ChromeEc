@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d1a414_f57a7a25",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-18T00:25:54Z",
+      "side": 1,
+      "message": "forgot to update. it explains CQ failure",
+      "parentUuid": "b240c428_37f6b0aa",
+      "range": {
+        "startLine": 150,
+        "startChar": 19,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "daf1db085da470b806d3fd16bee326ad9c8fd985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a188cd_9ad31220",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4973f4_b231bcaa",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-18T00:25:54Z",
+      "side": 1,
+      "message": "I don\u0027t understand logic behind it in Makefiles.rules - when the path w/o SIGNED_IMAGES is used? Can you point me to code how builders invokes make for cr50?\nIt may be some legacy stuff from EC times where the other path was needed.",
+      "parentUuid": "07a188cd_9ad31220",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 13
+      },
+      "revId": "daf1db085da470b806d3fd16bee326ad9c8fd985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312eb13f_74cea408",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-17T23:18:45Z",
       "side": 1,
       "message": "this should be included only if `/usr/bin/cr50-codesigner` is not found",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 54
+      },
+      "revId": "daf1db085da470b806d3fd16bee326ad9c8fd985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4207e0cc_adaa0fee",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-18T00:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312eb13f_74cea408",
       "range": {
         "startLine": 159,
         "startChar": 0,
