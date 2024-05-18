@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea60f81_17fe29f8",
+        "filename": "zephyr/program/intelrvp/ptlrvp/power_signals.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7a1528_51e9451c",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "f407b210c1b82f6c487394a19566ff5a3d0a9150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b854624_d620fe09",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T20:57:35Z",
       "side": 1,
       "message": "needed?",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "f407b210c1b82f6c487394a19566ff5a3d0a9150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c866c21_80c55adb",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-18T01:41:49Z",
+      "side": 1,
+      "message": "Not needed, removing.",
+      "parentUuid": "4b854624_d620fe09",
       "range": {
         "startLine": 18,
         "startChar": 4,
