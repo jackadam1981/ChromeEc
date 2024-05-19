@@ -16,6 +16,23 @@
       "message": "Firas said he needs to know more about the private SCP directory.\nHold on until we\u0027re all on the same page",
       "revId": "fd59ab2d7998507170c24b0fb8da09f89e854815",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e197f4c5_e31ab0ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-05-19T14:17:39Z",
+      "side": 1,
+      "message": "I saw b/341335438 so let\u0027s merge the revert then use b/341335438 to the follow-up.\nI think some alignments are needed to properly \"unnest\" the SCP private repo",
+      "revId": "fd59ab2d7998507170c24b0fb8da09f89e854815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
