@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94500e8_567e44e0",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-20T19:56:36Z",
+      "side": 1,
+      "message": "are you sure you want this enabled by default everywhere?\n(i.e. opt-out?)\n\ni have no objection, just wanted to make sure we agree to\nenable this \"everywhere\" now.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
