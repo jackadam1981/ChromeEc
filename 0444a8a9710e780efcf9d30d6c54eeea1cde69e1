@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9076ff8_2bddfd7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T16:49:48Z",
+      "side": 1,
+      "message": "\"implementation\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "0444a8a9710e780efcf9d30d6c54eeea1cde69e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "81bc6e91_f63f802e",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-05-20T14:43:12Z",
       "side": 1,
       "message": "https://github.com/zephyrproject-rtos/zephyr/pull/72163 has 2 approvals, so it should be merged soon.",
+      "revId": "0444a8a9710e780efcf9d30d6c54eeea1cde69e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2ef62c_9e2fb67d",
+        "filename": "zephyr/test/boringssl/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T16:49:48Z",
+      "side": 1,
+      "message": "Just curious: why did this need to change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 43
+      },
       "revId": "0444a8a9710e780efcf9d30d6c54eeea1cde69e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
