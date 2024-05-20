@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ddde27_f5e1b45d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-20T05:18:31Z",
+      "side": 1,
+      "message": "add in zephyr/subsys/ap_pwrseq/Kconfig",
+      "parentUuid": "61a72e46_1669c2b1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "0e69ff061097bc9cb360da8efa1954747fc01a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba47bd6_d79b68eb",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T18:12:21Z",
       "side": 1,
       "message": "Inside the Zephyr subdirectory, use Zephyr\u0027s shell API directly.\n\n`SHELL_CMD_ARG_REGISTER` automatically checks the correct number of parameters is passed.\n\nReference: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/subsys/pd_controller/pdc_pmc_debug.c;l\u003d93",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "0e69ff061097bc9cb360da8efa1954747fc01a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff87da2c_562f771e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-20T05:18:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba47bd6_d79b68eb",
       "range": {
         "startLine": 60,
         "startChar": 0,
