@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb63fe3f_088bd630",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-20T21:56:15Z",
+      "side": 1,
+      "message": "I have changed the API parameters as Keith suggested.",
+      "parentUuid": "863c8e1b_0ae5b351",
+      "range": {
+        "startLine": 1040,
+        "startChar": 58,
+        "endLine": 1040,
+        "endChar": 78
+      },
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ea241c4_8eab8348",
         "filename": "zephyr/include/drivers/ucsi_v3.h",
         "patchSetId": 3
@@ -137,6 +161,24 @@
       "writtenOn": "2024-05-14T18:49:17Z",
       "side": 1,
       "message": "Can you get multiple connector statuses without acking? Should we handle all events here or just a diff w/ the last cached value?",
+      "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885a5d20_555ace50",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-20T21:56:15Z",
+      "side": 1,
+      "message": "I would assume it\u0027s possible to get multiple connector_status messages prior to sending the ack_cc_ci command in the case that there are 2 IRQ events from the PDC in very quick succession. If that happens the get_connector_status command would have priority. But, even in that case (which I think in practice is very unlikely), the most recently read connector_status message would contain the most up to date value of change indicator bits.",
+      "parentUuid": "3aa2b425_879bda39",
       "revId": "75492192d520bb513113a7a520b6c4a3134eb5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
