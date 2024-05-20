@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "912042c8_72931948",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-20T17:07:38Z",
+      "side": 1,
+      "message": "Tested it out. GET_IC_STATUS on \u003c0.3.1 FW fails with the extended read length. It does function on the default image (2.0.1)",
+      "parentUuid": "dfdb5b26_5f0947c1",
+      "range": {
+        "startLine": 2012,
+        "startChar": 49,
+        "endLine": 2012,
+        "endChar": 51
+      },
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5248a47_e4fb3c4a",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
@@ -151,6 +175,30 @@
       "side": 1,
       "message": "+1 following realtek naming.",
       "parentUuid": "edf9ad04_52e73ba0",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18923b7f_52db4463",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-20T17:07:38Z",
+      "side": 1,
+      "message": "Will standardize on \"project name\"",
+      "parentUuid": "c3db18a7_48672990",
       "range": {
         "startLine": 71,
         "startChar": 6,
