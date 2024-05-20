@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3807c83_66f74397",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T18:33:37Z",
+      "side": 1,
+      "message": "For clarity, can you name these `NPCX_RAM_WRITE_LOCK` and `NPCX_RAM_FETCH_LOCK`?",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 62
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e3dbd2d_b73160ff",
         "filename": "test/ram_lock.c",
         "patchSetId": 7
