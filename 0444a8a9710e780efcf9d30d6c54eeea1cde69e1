@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5fef479a_7bf1aaf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-20T17:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9076ff8_2bddfd7a",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "0444a8a9710e780efcf9d30d6c54eeea1cde69e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "81bc6e91_f63f802e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-20T16:49:48Z",
       "side": 1,
       "message": "Just curious: why did this need to change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "0444a8a9710e780efcf9d30d6c54eeea1cde69e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5805bb_6ec8c7af",
+        "filename": "zephyr/test/boringssl/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-05-20T17:19:43Z",
+      "side": 1,
+      "message": "Switching from `native_posix` to `native_sim` changes the libc from external (host libc) to Zephyr\u0027s minimal libc. With this change, BoringSSL calls `malloc() from minimal libc. It turned out, that the malloc size was too small, but it was never used really, because we used malloc from external libc. Why it was here? \u003cs\u003eTo confuse others\u003c/s\u003e Because we had dependency in Kconfig files for that.\n\nNote for interested readers: External libc still can be used with `native_sim` - it\u0027s a default in most cases. However, it can\u0027t be used in this case, because we set `CONFIG_POSIX_API` which conflicts with headers from host libc.\n\nIf you think about running the same test with multiple libc: It is possible, but we don\u0027t have compiler for x86_64 with newlib. Maybe Zephyr SDK has (Gitlab CI)?",
+      "parentUuid": "bf2ef62c_9e2fb67d",
       "range": {
         "startLine": 9,
         "startChar": 37,
