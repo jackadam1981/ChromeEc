@@ -45,6 +45,29 @@
       },
       "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25912107_70f8b2f4",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T18:43:25Z",
+      "side": 1,
+      "message": "Did you try running this? It fails to build when I test it:\n\n```\n./test/run_device_tests.py --board helipilot -t ram_lock\n```\n\n```\nld.lld: error: undefined symbol: ram_lock_config_lock_region\n\u003e\u003e\u003e referenced by ram_lock.c:62 (test/ram_lock.c:62)\n\u003e\u003e\u003e               lto.tmp:(command_run_test)\n\u003e\u003e\u003e referenced by ram_lock.c:75 (test/ram_lock.c:75)\n\u003e\u003e\u003e               lto.tmp:(command_run_test)\n\u003e\u003e\u003e referenced by ram_lock.c:85 (test/ram_lock.c:85)\n\u003e\u003e\u003e               lto.tmp:(command_run_test)\n\u003e\u003e\u003e referenced 3 more times\n```",
+      "range": {
+        "startLine": 346,
+        "startChar": 12,
+        "endLine": 346,
+        "endChar": 45
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
