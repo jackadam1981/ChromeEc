@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901a9275_6983e4aa",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T21:49:39Z",
+      "side": 1,
+      "message": "I suggest splitting this into 2 public APIs, `pdc_add_ci_callback()` and `pdc_remove_ci_callback()` that each call into the `manage_callback` driver API with `set` configured automatically.",
+      "range": {
+        "startLine": 1102,
+        "startChar": 0,
+        "endLine": 1102,
+        "endChar": 63
+      },
+      "revId": "9bef53f944a3b939b1e90acb1fdfdb97e46cf3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
