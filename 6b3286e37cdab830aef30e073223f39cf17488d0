@@ -157,6 +157,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e44f3909_642e7515",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-20T17:14:52Z",
+      "side": 1,
+      "message": "Abhishek, Kieth, based on my understanding of your suggestion, I\u0027ve composed something like this: crrev/c/5549007. Is this what you meant?",
+      "parentUuid": "baefebec_9374f5a2",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
