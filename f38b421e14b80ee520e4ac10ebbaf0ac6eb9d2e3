@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2b045de_1d8bb165",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T18:32:20Z",
+      "side": 1,
+      "message": "The function should return failure if *any* of the configurations fail.\n\nLet\u0027s go ahead and change back to the early return for this CL:\n\n```\nif (ret !\u003d EC_SUCCESS)\n   return ret;\n```\n\nThen create a followup CL that returns failure if any of the configuration fails.",
+      "parentUuid": "e55e202d_eb0da6c8",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 14
+      },
+      "revId": "f38b421e14b80ee520e4ac10ebbaf0ac6eb9d2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "259adeeb_1242d4cd",
         "filename": "test/build.mk",
         "patchSetId": 6

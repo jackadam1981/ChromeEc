@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3dbd2d_b73160ff",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T18:32:20Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like any of these tests check that code cannot be executed (fetch protection). Can you add a test for that?\n\nThere\u0027s an example of how it could be done [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/sram_mpu_protection.c).",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
