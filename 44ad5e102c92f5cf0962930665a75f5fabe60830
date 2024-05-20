@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eda52c2_e383c276",
+        "filename": "zephyr/drivers/boot_keys/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-20T14:57:51Z",
+      "side": 1,
+      "message": "Yeah, somehow I convinced myself that Brox was unaffected and this was fixed but it turned out not to be the case, added the dependency as suggested.",
+      "parentUuid": "67e53967_e37984a2",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f960d893_4f11690b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2946c02_75bae558",
+        "filename": "zephyr/drivers/boot_keys/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-20T14:57:51Z",
+      "side": 1,
+      "message": "Yeah, re-read my comment as well and the explanation was pretty bad indeed. Went over the bug again and re-read it, let me know what you think.",
+      "parentUuid": "f960d893_4f11690b",
+      "range": {
+        "startLine": 19,
+        "startChar": 43,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99c28378_b58c32f4",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-05-17T17:45:52Z",
       "side": 1,
       "message": "The config is called `COL2_WORKAROUND`, but you\u0027re checking row 2 here.  Can you add a comment explaining this?",
+      "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1749a3f5_234d6f99",
+        "filename": "zephyr/drivers/boot_keys/boot_keys.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-20T14:57:51Z",
+      "side": 1,
+      "message": "Yeah so the issue is that the ti50 holds down the column two line as long as the power button is pressed, causing ghost keys to show up on other column, the one we care about for boot key detection is refresh (that\u0027s why it\u0027s column 2) and on Rex it happens to be on row 2, which is why there\u0027s a two here, but now that I look at this again, this should obviously be whatever row refresh happens to be at.\n\n- renamed the option\n- made this point to the refresh row\n- reworded the kconfig option explanation to be clearer\n\nThanks for spotting this.",
+      "parentUuid": "99c28378_b58c32f4",
       "revId": "44ad5e102c92f5cf0962930665a75f5fabe60830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
