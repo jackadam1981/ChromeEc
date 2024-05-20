@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3abafa_869c2be5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 2365,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T21:52:30Z",
+      "side": 1,
+      "message": "This runs in the caller thread context - PPM thread.\n\nThe the cached data is updated by the rts54xx_thread, so I still think a mutex is needed around the cached data to avoid returning inconsistent connector status to the PPM.",
+      "range": {
+        "startLine": 2357,
+        "startChar": 0,
+        "endLine": 2365,
+        "endChar": 0
+      },
+      "revId": "ec447d843f988c82331658035a2447ddb6dfd751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
