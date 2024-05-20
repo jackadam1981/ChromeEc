@@ -199,7 +199,7 @@
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_LID";
 			mutex = <&lid_mutex_bma422>;
-			port = <&i2c_ec_i2c_sensor>;
+			port = <&i2c_ec_i2c_sensor_2>;
 			rot-standard-ref = <&lid_rot_bma422>;
 			default-range = <2>;
 			drv-data = <&bma422_data>;

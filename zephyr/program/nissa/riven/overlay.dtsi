@@ -292,9 +292,7 @@
 			<&gpio7 3 0>,
 			<&gpio8 6 0>,
 			<&gpiob 1 0>,
-			<&gpiob 7 0>,
-			<&gpiof 2 0>,
-			<&gpiof 3 0>;
+			<&gpiob 7 0>;
 	 };
 };
 
@@ -351,6 +349,11 @@
 			TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_VBUS_MONITOR)>;
 	};
+};
+
+&i2c4_1 {
+	label = "I2C_SENSOR_2";
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c5_1 {
