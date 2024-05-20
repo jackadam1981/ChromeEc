@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b49913b_62992ecb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:43:55Z",
+      "side": 1,
+      "message": "This isn\u0027t the right approach.  You only need to add a new project to the existing zephyr/program/brox/BUILD.py file.\n\nLook at `brox-ish-ec` tokenized for an example.",
+      "revId": "e920ece40eb871d15569715480bb7d94d17036e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
