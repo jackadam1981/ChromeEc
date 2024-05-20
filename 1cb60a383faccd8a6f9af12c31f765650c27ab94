@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34389462_b4681bde",
+        "filename": "zephyr/program/corsola/skitty/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-20T06:30:50Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment as below to have more clear picture\n# Disable BC12",
+      "revId": "1cb60a383faccd8a6f9af12c31f765650c27ab94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad2900d7_bff8f762",
         "filename": "zephyr/program/corsola/skitty/project.overlay",
         "patchSetId": 1
