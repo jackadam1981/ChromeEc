@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a74a3797_4899aee8",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "```suggestion\n\tbool \"SLP_S0 debug\"\n```",
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c94500e8_567e44e0",
         "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
         "patchSetId": 8
@@ -19,6 +36,178 @@
         "startChar": 1,
         "endLine": 204,
         "endChar": 10
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5296fd_96b7c4e8",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "This should not default to on.  Developers should explicitly enable it when needed.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ef232e_be09a8b9",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "```suggestion\n\t  Enable debugging of SLP_S0 timeouts.  This option enables\n\t  the host command EC_CMD_SET_ALARM_SLP_S0_DBG and the console\n\t  command  \u0027slp_s0_debug_alarm\u0027.\n\t  \n\t  These commands set a debug alarm time in seconds. If the debug \n\t  alarm expires, the EC generates an RTC wake event to the host.\n\t  \n\t  If the sleep timeout expires before the debug alarm, then the \n\t  debug alarm is cancelled.\n```",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c49d4f_5ad3e167",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "Add\n\n```\nLOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);\n```",
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "282870d5_3c7eca58",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "This test is not needed.  `SHELL_CMD_ARG_REGISTER` automatically checks that the required arguments have been passed in.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2a40ca_7d19cd89",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "Use `-EINVAL`.\nAlso add a call to `shell_error()` to describe the failure.",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6422495d_61709922",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "Add a `shell_fprintf()` so the user knows what action was taken.",
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681c1085_5ca2164c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "Square brackets indicate an optional parameter.  Use angled brackets for a required parameter.\n\n```suggestion\nSHELL_CMD_ARG_REGISTER(slp_s0_debug_alarm, NULL,\n                       \"Set SLP_S0 alarm time. \"\n                       \"Usage: slp_s0_debug_alarm \u003cseconds\u003e\",\n\t\t       console_command_slp_s0_debug_alarm, 2, 0);\n\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8258c2cd_f646dd6e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T20:05:01Z",
+      "side": 1,
+      "message": "Use `LOG_ERR` instead of ccprintf.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 9
       },
       "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
