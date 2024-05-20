@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f37f79c1_8493d95a",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T18:06:32Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to consider PDC firmware 0.2.1 deprecated.  In the unlikely event we have to update an older device, we can use the CC cable.",
+      "parentUuid": "912042c8_72931948",
+      "range": {
+        "startLine": 2012,
+        "startChar": 49,
+        "endLine": 2012,
+        "endChar": 51
+      },
+      "revId": "37d03a55d919965fd303adc11353d9eec56ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5248a47_e4fb3c4a",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
