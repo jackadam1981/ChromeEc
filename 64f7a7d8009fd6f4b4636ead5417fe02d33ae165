@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbc7da05_55e845d2",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-20T21:00:22Z",
+      "side": 1,
+      "message": "I agree with Abhishek.  There\u0027s a lot of overlap with the UCSU command definition.\n\nExtending the `enum ucsi_command_t` definition with a vendor specific range will clean up a lot of code in this file.\n\n```\nenum ucsi_command_t {\n\tUCSI_PPM_RESET \u003d 0x01,\n\t...\n\tUCSI_GET_LPM_PPM_INFO \u003d 0x22,\n\t\n\tUCSI_VENDOR_TRIGGER_PDC_RESET,\n\tUCSI_VENDOR_ENABLE,\n\tUCSI_VENDOR_GET_VBUS_VOLTAGE,\n\t...\t\n```",
+      "parentUuid": "504d5cf2_236229bd",
+      "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27ad2eec_4127ca10",
         "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
         "patchSetId": 2
