@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91598361_e89d47bc",
+        "filename": "zephyr/test/drivers/default/src/cros_cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-20T15:23:00Z",
+      "side": 1,
+      "message": "NIT - these zasserts ought to be `zassert_equal`",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "dcea89e9e4e5bc6b7e92caeea8f1d2ca1cb8f65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
