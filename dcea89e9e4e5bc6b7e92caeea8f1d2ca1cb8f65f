@@ -22,6 +22,30 @@
       },
       "revId": "dcea89e9e4e5bc6b7e92caeea8f1d2ca1cb8f65f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c378b93_8cdbf490",
+        "filename": "zephyr/test/drivers/default/src/cros_cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-05-20T15:49:30Z",
+      "side": 1,
+      "message": "fixed, thanks",
+      "parentUuid": "91598361_e89d47bc",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "dcea89e9e4e5bc6b7e92caeea8f1d2ca1cb8f65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
