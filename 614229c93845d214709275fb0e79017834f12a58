@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52ae8d45_199921c1",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-20T18:58:36Z",
+      "side": 1,
+      "message": "\u003e The current panic data structure is not adjusted to store that info.\n\nIt looks like the maybe the information is [copied](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d210-213;drc\u003d3e98a43be6e8b2319f28a6ded36135116f960c5c) in [this case](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d161-169;drc\u003d3e98a43be6e8b2319f28a6ded36135116f960c5c). Shouldn\u0027t that same logic apply in the [`if` case](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d156-160;drc\u003d3e98a43be6e8b2319f28a6ded36135116f960c5c)? (It looks like you can\u0027t call `panic_set_reason` directly since it will overwrite the other data that is copied, but you could pull [this logic](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d210-213;drc\u003d3e98a43be6e8b2319f28a6ded36135116f960c5c) into a separate function. If this makes sense and you want to change `shim/src/panic.c`, you could check that the [`panic_data` test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/panic_data.c) passes after making the change.",
+      "parentUuid": "f04bc7a6_4ac086e8",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b430f62d_b0a5186d",
         "filename": "zephyr/test/hwtest/src/ftrapv.c",
         "patchSetId": 4
