@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1d42cb_816791dd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-20T21:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3c55698_a28f0406",
+      "range": {
+        "startLine": 1249,
+        "startChar": 9,
+        "endLine": 1249,
+        "endChar": 30
+      },
+      "revId": "f879f519652e2c8cb13c23d6fe37df516b1a7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84a2f06f_60cc1589",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c32c40_a2dab68d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-20T21:34:41Z",
+      "side": 1,
+      "message": "No epoch version. And there isn\u0027t a key id in the manifest either\n\nhttps://github.com/lowRISC/opentitan/blob/earlgrey_es_sival/sw/device/silicon_creator/rom_ext/doc/manifest.md",
+      "parentUuid": "84a2f06f_60cc1589",
+      "range": {
+        "startLine": 1434,
+        "startChar": 27,
+        "endLine": 1434,
+        "endChar": 28
+      },
+      "revId": "f879f519652e2c8cb13c23d6fe37df516b1a7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f6149e1_f2807f11",
@@ -131,6 +179,30 @@
       "writtenOn": "2024-05-20T15:08:58Z",
       "side": 1,
       "message": "Could we make these fields more obviously wrong? Or print a message saying that these aren\u0027t real.",
+      "range": {
+        "startLine": 2277,
+        "startChar": 22,
+        "endLine": 2277,
+        "endChar": 23
+      },
+      "revId": "f879f519652e2c8cb13c23d6fe37df516b1a7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9c1b65_f41542d7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-20T21:34:41Z",
+      "side": 1,
+      "message": "I changed values to -1 and added a print to stderr. Should we do anything else?",
+      "parentUuid": "8f6149e1_f2807f11",
       "range": {
         "startLine": 2277,
         "startChar": 22,
