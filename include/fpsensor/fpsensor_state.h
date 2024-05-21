@@ -49,13 +49,6 @@ static_assert(sizeof(enc_buffer) == FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE);
 
 /* Fingers templates for the current user */
 extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
-/* Encryption/decryption buffer */
-/* TODO: On-the-fly encryption/decryption without a dedicated buffer */
-/*
- * Store the encryption metadata at the beginning of the buffer containing the
- * ciphered data.
- */
-extern struct enc_buffer fp_enc_buffer;
 
 struct positive_match_secret_state {
 	/* Index of the most recently matched template. */
@@ -89,6 +82,8 @@ struct fpsensor_context {
 				      [FP_POSITIVE_MATCH_SALT_BYTES];
 	/** The states for different fingers. */
 	std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
+	/** Encryption/decryption buffer. */
+	struct enc_buffer &fp_enc_buffer;
 };
 
 extern struct fpsensor_context global_context;
