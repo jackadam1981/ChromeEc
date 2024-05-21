@@ -831,7 +831,7 @@ static void print_current_pdc_state(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
 
-	LOG_INF("C%d: %s", config->connector_num,
+	LOG_DBG("C%d: %s", config->connector_num,
 		pdc_state_names[get_pdc_state(port)]);
 }
 
@@ -1425,7 +1425,7 @@ static void pdc_snk_attached_run(void *obj)
 				port->snk_policy.src.pdos[i]);
 			tmp_pwr_mw = (tmp_volt_mv * tmp_curr_ma) / 1000;
 
-			LOG_INF("PDO%d: %08x, %d %d %d", i,
+			LOG_DBG("PDO%d: %08x, %d %d %d", i,
 				port->snk_policy.src.pdos[i], tmp_volt_mv,
 				tmp_curr_ma, tmp_pwr_mw);
 
@@ -1465,7 +1465,7 @@ static void pdc_snk_attached_run(void *obj)
 					  max_ma, flags);
 		}
 
-		LOG_INF("Send RDO: %d", RDO_POS(port->snk_policy.rdo_to_send));
+		LOG_DBG("Send RDO: %d", RDO_POS(port->snk_policy.rdo_to_send));
 		queue_internal_cmd(port, CMD_PDC_SET_RDO);
 		return;
 	case SNK_ATTACHED_START_CHARGING:
@@ -1473,11 +1473,9 @@ static void pdc_snk_attached_run(void *obj)
 		max_mv = PDO_FIXED_GET_VOLT(port->snk_policy.pdo);
 		max_mw = max_ma * max_mv / 1000;
 
-		LOG_INF("Available charging on C%d", config->connector_num);
-		LOG_INF("PDO: %08x", port->snk_policy.pdo);
-		LOG_INF("V: %d", max_mv);
-		LOG_INF("C: %d", max_ma);
-		LOG_INF("P: %d", max_mw);
+		LOG_INF("Available charging on C%d: PDO=%08x (%dmV, %dmA, %dmW)",
+			config->connector_num, port->snk_policy.pdo, max_mv,
+			max_ma, max_mw);
 
 		pd_set_input_current_limit(config->connector_num, max_ma,
 					   max_mv);
@@ -1545,7 +1543,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
@@ -1655,7 +1653,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	}
 
 	if (rv) {
-		LOG_DBG("Unable to send command: %s",
+		LOG_WRN("Unable to send command: %s",
 			pdc_cmd_names[port->cmd->cmd]);
 	}
 
@@ -1669,7 +1667,7 @@ static void pdc_send_cmd_start_run(void *obj)
 
 	rv = send_pdc_cmd(port);
 	if (rv) {
-		LOG_DBG("Unable to send command: %s",
+		LOG_WRN("Unable to send command: %s",
 			pdc_cmd_names[port->cmd->cmd]);
 	}
 
@@ -1690,7 +1688,7 @@ static void pdc_send_cmd_start_run(void *obj)
 		port->send_cmd.wait_counter++;
 		if (port->send_cmd.wait_counter > WAIT_MAX) {
 			/* Could not send command: TODO handle error */
-			LOG_INF("Command (%s) retry timeout",
+			LOG_ERR("Command (%s) retry timeout",
 				pdc_cmd_names[port->cmd->cmd]);
 			port->cmd->error = true;
 			port->cmd->pending = false;
@@ -2748,7 +2746,7 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 
 test_mockable int pdc_power_mgmt_set_trysrc(int port, bool enable)
 {
-	LOG_INF("PD setting TrySrc=%d", enable);
+	LOG_DBG("PD setting TrySrc=%d", enable);
 
 	pdc_data[port]->port.drp = (enable ? DRP_TRY_SRC : DRP_NORMAL);
 
@@ -2813,7 +2811,7 @@ static void pd_chipset_resume(void)
 		enforce_pd_chipset_resume_policy_2(i);
 	}
 
-	LOG_INF("PD:S3->S0");
+	LOG_DBG("PD:S3->S0");
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -2834,7 +2832,7 @@ static void pd_chipset_suspend(void)
 		enforce_pd_chipset_suspend_policy_1(i);
 	}
 
-	LOG_INF("PD:S0->S3");
+	LOG_DBG("PD:S0->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -2855,7 +2853,7 @@ static void pd_chipset_startup(void)
 		enforce_pd_chipset_startup_policy_1(i);
 	}
 
-	LOG_INF("PD:S5->S3");
+	LOG_DBG("PD:S5->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -2876,7 +2874,7 @@ static void pd_chipset_shutdown(void)
 		enforce_pd_chipset_shutdown_policy_1(i);
 	}
 
-	LOG_INF("PD:S3->S5");
+	LOG_DBG("PD:S3->S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -3062,7 +3060,7 @@ static int pdc_run_get_discovery(int port)
 		return ret;
 	}
 
-	LOG_INF("GET_VDO[%d]: vid = %04x, pid = %04x, prod_type = %d", port,
+	LOG_DBG("GET_VDO[%d]: vid = %04x, pid = %04x, prod_type = %d", port,
 		PD_IDH_VID(pdc_data[port]->port.vdo[0]),
 		PD_PRODUCT_PID(pdc_data[port]->port.vdo[1]),
 		PD_IDH_PTYPE(pdc_data[port]->port.vdo[0]));
@@ -3171,7 +3169,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
 			ret = pdc_set_comms_state(pdc_data[p]->port.pdc, true);
 			if (ret) {
-				LOG_ERR("Cannot resume port C%d driver: %d", p,
+				LOG_ERR("C%d: Cannot resume port driver: %d", p,
 					ret);
 				status = ret;
 			}
@@ -3210,8 +3208,8 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 				       SUSPEND_TIMEOUT_USEC,
 				       k_sleep(K_MSEC(LOOP_DELAY_MS)));
 			if (!ret) {
-				LOG_ERR("Timed out suspending PDC SM for port "
-					"C%d: %d",
+				LOG_ERR("C%d: Timed out suspending PDC SM for "
+					"port: %d",
 					p, ret);
 				status = -ETIMEDOUT;
 			}
@@ -3222,8 +3220,8 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 			ret = pdc_set_comms_state(pdc_data[p]->port.pdc, false);
 
 			if (ret) {
-				LOG_ERR("Cannot suspend port C%d driver: %d", p,
-					ret);
+				LOG_ERR("C%d: Cannot suspend port driver: %d",
+					p, ret);
 				status = ret;
 			}
 		}
@@ -3263,11 +3261,9 @@ uint8_t pdc_power_mgmt_get_dp_pin_mode(int port)
 {
 	uint8_t pin_mode;
 
-	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
-		LOG_ERR("get_dp_pin_mode: invalid port %d", port);
-		return 0;
-	}
+	/* Make sure port is in range */
+	__ASSERT(is_pdc_port_valid(port), "%s: invalid port %d", __func__,
+		 port);
 
 	/* Make sure port is connected and PD capable */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -3280,7 +3276,7 @@ uint8_t pdc_power_mgmt_get_dp_pin_mode(int port)
 	 */
 	pin_mode = (pdc_data[port]->port.vdo_dp_cfg >> 8) & 0xFF;
 
-	LOG_INF("C%d: DP pin mode 0x%02x", port, pin_mode);
+	LOG_DBG("C%d: DP pin mode 0x%02x", port, pin_mode);
 
 	return pin_mode;
 }
@@ -3476,7 +3472,7 @@ ZTEST_RULE(pdc_power_mgmt_test_reset, NULL, test_reset);
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)
 {
-	LOG_INF("RPZ SRC %d",
+	LOG_DBG("C%d: snk_typec_attached_local_state = %d",
 		pdc_data[port]->port.snk_typec_attached_local_state);
 	return pdc_data[port]->port.snk_typec_attached_local_state ==
 	       SNK_TYPEC_ATTACHED_RUN;
@@ -3484,7 +3480,7 @@ bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)
 
 bool test_pdc_power_mgmt_is_src_typec_attached_run(int port)
 {
-	LOG_INF("RPZ SRC %d",
+	LOG_DBG("C%d: src_typec_attached_local_state = %d",
 		pdc_data[port]->port.src_typec_attached_local_state);
 	return pdc_data[port]->port.src_typec_attached_local_state ==
 	       SRC_TYPEC_ATTACHED_RUN;
