@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99762598_4ca58cb5",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-21T08:50:21Z",
+      "side": 1,
+      "message": "Regarding tests - the [panic test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/panic.c) would fail. I\u0027m going to send a migrated version in the next set of tests.",
+      "parentUuid": "2b7fe764_2f348161",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b430f62d_b0a5186d",
         "filename": "zephyr/test/hwtest/src/ftrapv.c",
         "patchSetId": 4
