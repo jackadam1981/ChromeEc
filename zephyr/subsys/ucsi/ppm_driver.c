@@ -96,7 +96,8 @@ struct ppm_data {
 	struct ucsi_ppm_driver *ppm;
 	struct ucsiv3_get_connector_status_data
 		port_status[NUM_PORTS] __aligned(4);
-	struct pdc_callback cb;
+	struct pdc_callback cc_cb;
+	struct pdc_callback ci_cb;
 	union cci_event_t cci_event;
 };
 static struct ppm_data ppm_data;
@@ -184,7 +185,7 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 	do {
 		rv = pdc_execute_ucsi_cmd(cfg->lpm[conn - 1], ucsi_command,
 					  data_size, control->command_specific,
-					  lpm_data_out, &data->cb);
+					  lpm_data_out, &data->cc_cb);
 
 		if (rv > 0)
 			/* Command finished. */
@@ -225,11 +226,11 @@ static int ucsi_get_active_port_count(const struct device *dev)
 	return NUM_PORTS;
 }
 
-static void ppm_cci_cb(const struct device *dev,
-		       const struct pdc_callback *callback,
-		       union cci_event_t cci_event)
+static void ppm_cc_cb(const struct device *dev,
+		      const struct pdc_callback *callback,
+		      union cci_event_t cci_event)
 {
-	struct ppm_data *data = CONTAINER_OF(callback, struct ppm_data, cb);
+	struct ppm_data *data = CONTAINER_OF(callback, struct ppm_data, cc_cb);
 	uint32_t events = 0;
 
 	LOG_DBG("%s: CCI=0x%08x", __func__, cci_event.raw_value);
@@ -243,6 +244,25 @@ static void ppm_cci_cb(const struct device *dev,
 
 	if (events)
 		k_event_post(&ppm_event, events);
+}
+
+static void ppm_ci_cb(const struct device *dev,
+		      const struct pdc_callback *callback,
+		      union cci_event_t cci_event)
+{
+	const struct ppm_config *cfg = (const struct ppm_config *)dev->config;
+	struct ppm_data *data = CONTAINER_OF(callback, struct ppm_data, ci_cb);
+	struct ucsi_ppm_driver *api = data->ppm;
+
+	LOG_DBG("%s: CCI=0x%08x", __func__, cci_event.raw_value);
+
+	if (cci_event.connector_change > cfg->active_port_count) {
+		LOG_WRN("%s: Received CI on unknown connector = %u", __func__,
+			cci_event.connector_change);
+		return;
+	}
+
+	api->lpm_alert(api->dev, cci_event.connector_change);
 }
 
 static struct ucsi_pd_driver ppm_drv = {
@@ -272,11 +292,17 @@ static int ppm_init(const struct device *device)
 		return -ENODEV;
 	}
 
-	data->cb.handler = ppm_cci_cb;
-	data->cb.cci_event_mask.command_completed = 1;
-	data->cb.cci_event_mask.error = 1;
+	/*
+	 * Register connector change callback. Command completion callback will
+	 * be registered on every command execution.
+	 */
+	data->ci_cb.handler = ppm_ci_cb;
+	data->ci_cb.cci_event_mask.connector_change = 0x7f;
 	for (int i = 0; i < cfg->active_port_count; i++)
-		pdc_manage_callback(cfg->lpm[i], &data->cb, true);
+		pdc_manage_callback(cfg->lpm[i], &data->ci_cb, true);
+	data->cc_cb.handler = ppm_cc_cb;
+	data->cc_cb.cci_event_mask.command_completed = 1;
+	data->cc_cb.cci_event_mask.error = 1;
 
 	return 0;
 }
