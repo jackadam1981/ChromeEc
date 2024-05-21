@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "809885dc_5a915299",
+        "filename": "chip/npcx/mpu_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-21T17:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441c326a_a586b2e5",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 1
+      },
+      "revId": "398f4306969b10440f6ea631aba2af412d523154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7f825a4_1ee23df2",
