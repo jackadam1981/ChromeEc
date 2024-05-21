@@ -21,8 +21,8 @@
 #include "usb_descriptor.h"
 #include "util.h"
 
-#ifdef CONFIG_PLATFORM_EC_ONE_WIRE_UART
-#include "drivers/one_wire_uart_stream.h"
+#if defined(CONFIG_PLATFORM_EC_ONE_WIRE_UART) || defined(CONFIG_USB_DEVICE_GOOGLE_UPDATE)
+#include "drivers/usb_stream.h"
 #else
 #include "usb-stream.h"
 #endif

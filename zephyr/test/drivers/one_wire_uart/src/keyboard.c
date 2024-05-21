@@ -4,7 +4,7 @@
  */
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
-#include "drivers/one_wire_uart_stream.h"
+#include "drivers/usb_stream.h"
 #include "keyboard_config.h"
 #include "keyboard_scan.h"
 #include "queue.h"
