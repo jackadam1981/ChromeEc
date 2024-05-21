@@ -17,7 +17,7 @@
 
 #include <array>
 
-extern "C" enum ec_error_list rollback_get_secret(uint8_t *secret)
+enum ec_error_list rollback_get_secret(uint8_t *secret)
 {
 	// We should not call this function in the test.
 	TEST_ASSERT(false);
