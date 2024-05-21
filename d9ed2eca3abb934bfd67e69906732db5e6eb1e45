@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14242c32_6c2c68d3",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-21T05:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a74a3797_4899aee8",
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c94500e8_567e44e0",
@@ -64,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "526c6240_d2069498",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-21T05:20:32Z",
+      "side": 1,
+      "message": "i set it to defualt n in new patch\nmy original thought is to have this enabled for all platform has s0ix.",
+      "parentUuid": "fc5296fd_96b7c4e8",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7ef232e_be09a8b9",
@@ -77,6 +119,30 @@
       "writtenOn": "2024-05-20T20:05:01Z",
       "side": 1,
       "message": "```suggestion\n\t  Enable debugging of SLP_S0 timeouts.  This option enables\n\t  the host command EC_CMD_SET_ALARM_SLP_S0_DBG and the console\n\t  command  \u0027slp_s0_debug_alarm\u0027.\n\t  \n\t  These commands set a debug alarm time in seconds. If the debug \n\t  alarm expires, the EC generates an RTC wake event to the host.\n\t  \n\t  If the sleep timeout expires before the debug alarm, then the \n\t  debug alarm is cancelled.\n```",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd7eea9_8541cd6b",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-21T05:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ef232e_be09a8b9",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -203,6 +269,30 @@
       "writtenOn": "2024-05-20T20:05:01Z",
       "side": 1,
       "message": "Use `LOG_ERR` instead of ccprintf.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "d9ed2eca3abb934bfd67e69906732db5e6eb1e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a16723a_5d6ef476",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-21T05:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8258c2cd_f646dd6e",
       "range": {
         "startLine": 88,
         "startChar": 1,
