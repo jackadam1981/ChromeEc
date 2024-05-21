@@ -270,9 +270,12 @@ int task_start_called(void)
 }
 
 /**
- * Scheduling system call
+ * Scheduler handler.
+ * Return 0 if task doesn't need to be switched.
+ * Return current task address if task needs to be switched. New task is saved
+ * in current_task variable.
  */
-void svc_handler(int desched, task_id_t resched)
+task_ *svc_scheduler_handler(int desched, task_id_t resched)
 {
 	task_ *current, *next;
 #ifdef CONFIG_TASK_PROFILING
@@ -343,14 +346,40 @@ void svc_handler(int desched, task_id_t resched)
 
 	/* Nothing to do */
 	if (next == current)
-		return;
+		return 0;
 
 		/* Switch to new task */
 #ifdef CONFIG_TASK_PROFILING
 	task_switches++;
 #endif
 	current_task = next;
-	__switchto(current, next);
+
+	return current;
+}
+
+/**
+ * Scheduling system call
+ */
+__attribute__((naked)) void svc_handler(int desched, task_id_t resched)
+{
+	asm(".thumb_func\n"
+	    "	push {lr}\n"
+	    "	bl %0\n" /* call actual scheduler function */
+	    "	pop {lr}\n"
+	    /* check return value if we need to switch task */
+	    "	cmp r0, #0\n"
+	    /* if r0 == 0 */
+	    "	it eq\n"
+	    "	bxeq lr\n" /* just exit irq */
+	    /* else */
+	    /* r0 is already set to task before switch (arg#1 of __switchto) */
+	    "	ldr r3, =%2\n" /* set r3 to current_task address */
+	    /* set r1 to task after switch (arg#2 of __switchto) */
+	    "	ldr r1, [r3]\n" /* move current task to arg#2 */
+	    "	b %1\n" /* call __switchto */
+	    ".ltorg\n"
+	    :
+	    : "i"(svc_scheduler_handler), "i"(__switchto), "i"(&current_task));
 }
 
 void __schedule(int desched, int resched)
@@ -392,18 +421,35 @@ void __keep task_start_irq_handler(void *excep_return)
 }
 #endif
 
-void __keep task_resched_if_needed(void *excep_return)
+__attribute__((naked)) void __keep task_resched_if_needed(void *excep_return)
 {
-	/*
-	 * Continue iff a rescheduling event happened or profiling is active,
-	 * and we are not called from another exception.
-	 */
-	if (!need_resched_or_profiling ||
-	    (((uint32_t)excep_return & EXC_RETURN_MODE_MASK) ==
-	     EXC_RETURN_MODE_HANDLER))
-		return;
-
-	svc_handler(0, 0);
+	asm(".thumb_func\n"
+	    "	mov lr, r0\n"
+	    "	and r0, %2\n"
+	    "	cmp r0, %3\n"
+	    /* if lr & EXC_RETURN_MODE_MASK == EXC_RETURN_MODE_HANDLER */
+	    "	it eq\n"
+	    "	bxeq lr\n" /* just exit irq */
+	    /* Check if we need resched */
+	    "	ldr r0, =%1\n" /* load need_resched_or_profiling address */
+	    "	ldr r1, [r0]\n" /* load need_resched_or_profiling value */
+	    "	cmp r1, 0\n"
+	    /* if need_resched_or_profiling == 0 */
+	    "	it eq\n"
+	    "	bxeq lr\n" /* just exit irq */
+	    /*
+	     * set arguments for svc_handler:
+	     * desched=0 -- we don't want to deschedule current task
+	     * resched=TASK_ID_IDLE -- It is safe to pass idle task,
+	     *                         it should be alwyas ready to run
+	     */
+	    "	mov r1, 0\n"
+	    "	mov r0, 0\n"
+	    "	b %0\n" /* call svc_handler */
+	    ".ltorg\n"
+	    :
+	    : "i"(svc_handler), "i"(&need_resched_or_profiling),
+	      "i"(EXC_RETURN_MODE_MASK), "i"(EXC_RETURN_MODE_HANDLER));
 }
 
 static uint32_t __wait_evt(int timeout_us, task_id_t resched)
