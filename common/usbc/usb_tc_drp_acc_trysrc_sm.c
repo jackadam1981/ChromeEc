@@ -1598,6 +1598,17 @@ void tc_state_init(int port)
 	}
 
 	/*
+	 * If the battery that is expected is not present, it is likely that
+	 * this is a factory or development environment. In this case, do not
+	 * apply ErrorRecovery.
+	 */
+
+	if (IS_ENABLED(CONFIG_BATTERY) && battery_is_present() == BP_NO &&
+	    (system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN)) {
+		first_state = TC_UNATTACHED_SNK;
+	}
+
+	/*
 	 * If this is non-EFS2 device, battery is not present or at some minimum
 	 * voltage and EC RO doesn't keep power-on reset flag after reset caused
 	 * by H1, then don't apply CC open because it will cause brown out.
