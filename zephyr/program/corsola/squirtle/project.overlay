@@ -34,14 +34,21 @@
 			<&gpio8 3 0>,
 			<&gpio8 5 0>,
 			<&gpio8 6 0>,
-			<&gpio9 5 0>,
-			<&gpioa 6 0>,
 			<&gpio4 1 0>,
 			<&gpioa 5 0>,
 			<&gpiob 0 0>,
 			<&gpio9 3 0>,
 			<&gpioa 7 0>;
 	};
+
+    named-gpios {
+               gpio_tp_en:tp_en {
+                    gpios = <&gpioa 6 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8)>;
+               };
+			   gpio_tp_rst_odl: gpio_tp_rst_odl {
+					gpios = <&gpio9 5 GPIO_INPUT>;
+			   };
+       };
 
 	batteries {
 		default_battery: lges-ap23a8l {
@@ -441,6 +448,12 @@
 /* interrupts overrides */
 / {
 	gpio-interrupts {
+		int_tp_rst:  int_tp_rst{
+			irq-pin = <&gpio_tp_rst_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "tp_en_interrupt";
+		};
+
 		/delete-node/ base_imu;
 		/delete-node/ usb_c0_bc12;
 	};
