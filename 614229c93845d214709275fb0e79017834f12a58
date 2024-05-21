@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b7fe764_2f348161",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-21T05:39:54Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Actually, I added the [logic](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d161-169;drc\u003d3e98a43be6e8b2319f28a6ded36135116f960c5c) to store the reason. I\u0027ve been thinking about storing it in every case. The problem is the architecture of panic data structure. For ARM, the panic [exception/info/reason](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/panic.c;l\u003d65-67;drc\u003d3e98a43be6e8b2319f28a6ded36135116f960c5c) are stored in place of [regs IPSR/R4/R5](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/panic_defs.h;l\u003d46-49). While IPSR is a duplication of xPSR, so it is not a problem, we would overwrite values of R4/R5 regs provided with the esf structure.",
+      "parentUuid": "52ae8d45_199921c1",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b430f62d_b0a5186d",
         "filename": "zephyr/test/hwtest/src/ftrapv.c",
         "patchSetId": 4
