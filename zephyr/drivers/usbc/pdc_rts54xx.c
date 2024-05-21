@@ -382,7 +382,7 @@ struct pdc_data_t {
 	/** CC Event callback */
 	struct pdc_callback *cci_cb;
 	/** CC Event temporary callback. If it's NULL, cci_cb will be called. */
-	struct pdc_callback *cci_cb_tmp;
+	struct pdc_callback *cc_cb_tmp;
 	/** Asynchronous (CI) Event callbacks */
 	sys_slist_t async_cb;
 	/** Information about the PDC */
@@ -542,8 +542,8 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 		pdc_fire_callbacks(&data->async_cb, data->dev, cci);
 	}
 
-	if (data->cci_cb_tmp)
-		data->cci_cb_tmp->handler(data->dev, data->cci_cb_tmp, cci);
+	if (data->cc_cb_tmp)
+		data->cc_cb_tmp->handler(data->dev, data->cc_cb_tmp, cci);
 	else
 		data->cci_cb->handler(data->dev, data->cci_cb, cci);
 }
@@ -1477,7 +1477,7 @@ static int rts54_post_command_with_callback(const struct device *dev,
 	data->wr_buf_len = len;
 	data->user_buf = user_buf;
 	data->cmd = cmd;
-	data->cci_cb_tmp = callback;
+	data->cc_cb_tmp = callback;
 
 	if (IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG)) {
 		const struct pdc_config_t *cfg = dev->config;
