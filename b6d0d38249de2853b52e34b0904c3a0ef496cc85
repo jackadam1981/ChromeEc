@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8241351c_7e7a35a1",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-21T19:25:13Z",
+      "side": 1,
+      "message": "What I am saying is that you first check if this is a valid header, and then are trying to use it still not knowing what header it is. \n\nthe check in line 1345 could return true even for DT or H1 header if that header happens to have the IF_ROM_EXT value at offset of m.identifier.\n\nWhat would be more roubst is to check \u0027if (valid_nt_manifest(\u0026h))` in line 1345,  and \u0027if (valid_signed_header(\u0026h))` in line 1350, this would make the check ini line 1339 unnecessary.\n\nDoes this make sense?",
+      "parentUuid": "602e0e50_38cd306c",
+      "range": {
+        "startLine": 1339,
+        "startChar": 0,
+        "endLine": 1343,
+        "endChar": 0
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9c0fa55_ab173dce",
         "filename": "extra/usb_updater/signed_manifest.h",
         "patchSetId": 2
