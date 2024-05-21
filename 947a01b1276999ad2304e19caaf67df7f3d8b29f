@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b16236c_2e394016",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-21T19:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c222c76_5687ff8e",
+      "range": {
+        "startLine": 488,
+        "startChar": 11,
+        "endLine": 488,
+        "endChar": 12
+      },
+      "revId": "947a01b1276999ad2304e19caaf67df7f3d8b29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf57ec67_21127a09",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T17:55:26Z",
       "side": 1,
       "message": "Nit - line length.",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 57
+      },
+      "revId": "947a01b1276999ad2304e19caaf67df7f3d8b29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab78fa80_6e592efa",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-21T19:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf57ec67_21127a09",
       "range": {
         "startLine": 500,
         "startChar": 0,
