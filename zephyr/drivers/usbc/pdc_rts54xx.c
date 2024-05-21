@@ -513,15 +513,16 @@ static void print_current_state(struct pdc_data_t *data)
 	int st = get_state(data);
 
 	if (st == ST_WRITE) {
-		LOG_INF("ST%d: %s %s", cfg->connector_number, state_names[st],
-			cmd_names[data->cmd]);
+		LOG_DBG("C%d.drv: %s %s", cfg->connector_number,
+			state_names[st], cmd_names[data->cmd]);
 	} else if (st == ST_ERROR_RECOVERY) {
-		LOG_INF("ST%d: %s %s %d", cfg->connector_number,
+		LOG_ERR("C%d.drv: %s %s %d", cfg->connector_number,
 			state_names[st], cmd_names[data->cmd],
 			data->error_recovery_counter);
+	} else if (st == ST_SUSPENDED) {
+		LOG_INF("C%d.drv: %s", cfg->connector_number, state_names[st]);
 	} else {
-		LOG_INF("ST%d: %s", cfg->connector_number,
-			state_names[get_state(data)]);
+		LOG_DBG("C%d.drv: %s", cfg->connector_number, state_names[st]);
 	}
 }
 
@@ -534,7 +535,7 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 	}
 
 	if (data->cci_cb) {
-		LOG_INF("C%d: cci_event_cb event=0x%x", cfg->connector_number,
+		LOG_DBG("C%d: cci_event_cb event=0x%x", cfg->connector_number,
 			data->cci_event.raw_value);
 		data->cci_cb(data->cci_event, data->cb_data);
 	}
@@ -569,7 +570,7 @@ static bool max_i2c_retry_reached(struct pdc_data_t *data, int type)
 	data->i2c_transaction_retry_counter++;
 	if (data->i2c_transaction_retry_counter > N_I2C_TRANSACTION_COUNT) {
 		/* MAX I2C transactions exceeded */
-		LOG_ERR("C%d: %s i2c error", cfg->connector_number,
+		LOG_ERR("C%d.drv: %s i2c error", cfg->connector_number,
 			(type & I2C_MSG_READ) ? "Read" : "Write");
 		/*
 		 * The command was not successfully completed,
@@ -691,19 +692,19 @@ static void init_display_error_status(struct pdc_data_t *data)
 	int cnum = cfg->connector_number;
 
 	if (data->es.unrecognized_command) {
-		LOG_ERR("C%d: Unrecognized Command", cnum);
+		LOG_ERR("C%d.drv: Unrecognized Command", cnum);
 	}
 
 	if (data->es.non_existent_connector_number) {
-		LOG_ERR("C%d: Invalid Connector Number", cnum);
+		LOG_ERR("C%d.drv: Invalid Connector Number", cnum);
 	}
 
 	if (data->es.invalid_command_specific_param) {
-		LOG_ERR("C%d: Invalid Param", cnum);
+		LOG_ERR("C%d.drv: Invalid Param", cnum);
 	}
 
 	if (data->es.incompatible_connector_partner) {
-		LOG_ERR("C%d: Invalid Connector Partner", cnum);
+		LOG_ERR("C%d.drv: Invalid Connector Partner", cnum);
 	}
 
 	if (data->es.cc_communication_error) {
@@ -796,7 +797,7 @@ static void st_init_run(void *o)
 			/* I2C read Error. No way to recover, so disable the PDC
 			 */
 			if (data->error_status.i2c_read_error) {
-				LOG_INF("C%d: PDC I2C problem",
+				LOG_ERR("C%d.drv: PDC I2C problem",
 					cfg->connector_number);
 				set_state(data, ST_DISABLE);
 				return;
@@ -805,7 +806,7 @@ static void st_init_run(void *o)
 			/* PDC not responding to Ping Status reads. Try error
 			 * recovery */
 			if (data->error_status.pdc_internal_error) {
-				LOG_INF("C%d: PDC not responding",
+				LOG_ERR("C%d.drv: PDC not responding",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
 				return;
@@ -814,7 +815,7 @@ static void st_init_run(void *o)
 			/* PDC not responding to Error Status reads. Try error
 			 * recovery */
 			if (data->init_local_current_state == INIT_ERROR) {
-				LOG_INF("C%d: PDC error status read fail ",
+				LOG_ERR("C%d.drv: PDC error status read fail ",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
 				return;
@@ -870,7 +871,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				pdc_int_data->dev->config;
 
 			if ((ara >> 1) == cfg->i2c.addr) {
-				LOG_INF("C%d: IRQ", cfg->connector_number);
+				LOG_INF("C%d.drv: IRQ", cfg->connector_number);
 
 				/* Found pending interrupt, handle it */
 				/* Inform subsystem of the interrupt */
@@ -1016,7 +1017,7 @@ static void st_ping_status_run(void *o)
 		data->ping_retry_counter++;
 		if (data->ping_retry_counter > N_RETRY_COUNT) {
 			/* MAX Ping Retries exceeded */
-			LOG_ERR("C%d: Failed to read Ping Status",
+			LOG_ERR("C%d.drv: Failed to read Ping Status",
 				cfg->connector_number);
 			/*
 			 * The command was not successfully completed,
@@ -1060,12 +1061,13 @@ static void st_ping_status_run(void *o)
 			data->cci_event.reset_completed = 1;
 			/* Notify system of status change */
 			call_cci_event_cb(data);
-			LOG_DBG("C%d: Realtek PDC reset complete",
+			LOG_INF("C%d.drv: Realtek PDC reset complete",
 				cfg->connector_number);
 			/* All done, return to Init or Idle state */
 			TRANSITION_TO_INIT_OR_IDLE_STATE(data);
 		} else {
-			LOG_DBG("C%d: ping_status: %02x", cfg->connector_number,
+			LOG_DBG("C%d.drv: ping_status: %02x",
+				cfg->connector_number,
 				data->ping_status.raw_value);
 			/*
 			 * The command completed successfully,
@@ -1086,7 +1088,7 @@ static void st_ping_status_run(void *o)
 		}
 		break;
 	case CMD_ERROR:
-		LOG_ERR("C%d: Ping Status Error", cfg->connector_number);
+		LOG_ERR("C%d.drv: Ping Status Error", cfg->connector_number);
 		/*
 		 * The command was not successfully completed,
 		 * so set cci.error to 1b.
@@ -1105,8 +1107,8 @@ static void st_ping_status_run(void *o)
 		break;
 	default:
 		/* Ping Status returned an unknown command */
-		LOG_ERR("C%d: unknown ping_status: %02x", cfg->connector_number,
-			data->ping_status.raw_value);
+		LOG_ERR("C%d.drv: unknown ping_status: %02x",
+			cfg->connector_number, data->ping_status.raw_value);
 		/* An error occurred, try to recover */
 		set_state(data, ST_ERROR_RECOVERY);
 		return;
@@ -1225,15 +1227,14 @@ static void st_read_run(void *o)
 
 		/* Only print this log on init */
 		if (data->init_local_state != INIT_PDC_COMPLETE) {
-			LOG_INF("C%d: Realtek: FW Version: %u.%u.%u (%s)",
+			LOG_INF("C%d.drv: Realtek: FW Version: %u.%u.%u (%s)",
 				cfg->connector_number,
 				PDC_FWVER_GET_MAJOR(info->fw_version),
 				PDC_FWVER_GET_MINOR(info->fw_version),
-				PDC_FWVER_GET_PATCH(info->fw_version),
-				info->project_name);
-			LOG_INF("C%d: Realtek: PD Version: %u, Rev %u",
+				PDC_FWVER_GET_PATCH(info->fw_version));
+			LOG_INF("C%d.drv: Realtek: PD Version: %u, Rev %u",
 				cfg->connector_number, info->pd_version,
-				info->pd_revision);
+				info->pd_revision, info->project_name);
 		}
 
 		/* Retain a cached copy of this data */
@@ -1996,7 +1997,7 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 		*info = data->info;
 		k_mutex_unlock(&data->mtx);
 
-		LOG_DBG("C%d: Use cached chip info (%u.%u.%u)",
+		LOG_DBG("C%d.drv: Use cached chip info (%u.%u.%u)",
 			cfg->connector_number,
 			PDC_FWVER_GET_MAJOR(data->info.fw_version),
 			PDC_FWVER_GET_MINOR(data->info.fw_version),
@@ -2015,7 +2016,7 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 		GET_IC_STATUS.cmd, GET_IC_STATUS.len, 0, 0x00, 38,
 	};
 
-	LOG_DBG("C%d: Get live chip info", cfg->connector_number);
+	LOG_DBG("C%d.drv: Get live chip info", cfg->connector_number);
 
 	return rts54_post_command(dev, CMD_GET_IC_STATUS, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)info);
@@ -2537,7 +2538,7 @@ static int pdc_init(const struct device *dev)
 	/* Create the thread for this port */
 	cfg->create_thread(dev);
 
-	LOG_INF("C%d: Realtek RTS545x PDC DRIVER", cfg->connector_number);
+	LOG_INF("C%d.drv: Realtek RTS545x PDC DRIVER", cfg->connector_number);
 
 	return 0;
 }
@@ -2562,7 +2563,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 				 * address.
 				 */
 				if (check_comms_suspended()) {
-					LOG_INF("C%d: Ignoring interrupt",
+					LOG_WRN("C%d.drv: Ignoring interrupt",
 						cfg->connector_number);
 					continue;
 				}
