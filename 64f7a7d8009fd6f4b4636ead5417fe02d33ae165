@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a84a9eb2_01352665",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-05-21T15:24:05Z",
+      "side": 1,
+      "message": "In light of the new Intel PDC proposal, I\u0027d like to hold off on this change.",
+      "parentUuid": "fbc7da05_55e845d2",
+      "revId": "64f7a7d8009fd6f4b4636ead5417fe02d33ae165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27ad2eec_4127ca10",
         "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
         "patchSetId": 2
