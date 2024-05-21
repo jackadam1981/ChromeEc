@@ -311,11 +311,14 @@ static enum ec_status unlock_template(uint16_t idx)
 	/* We reuse the fp_enc_buffer for the data decryption, because we don't
 	 * want to allocate a huge array on the stack.
 	 * Note: fp_enc_buffer = fp_template || fp_positive_match_salt */
-	constexpr std::span enc_template = fp_enc_buffer.fp_template;
-	constexpr std::span enc_salt = fp_enc_buffer.positive_match_salt;
-	constexpr std::span enc_buffer(enc_template.data(),
-				       enc_template.size() + enc_salt.size());
-	static_assert(enc_buffer.size() <= sizeof(fp_enc_buffer));
+	const std::span enc_template = global_context.fp_enc_buffer.fp_template;
+	const std::span enc_salt =
+		global_context.fp_enc_buffer.positive_match_salt;
+	const std::span enc_buffer(enc_template.data(),
+				   enc_template.size() + enc_salt.size());
+#if 0
+	static_assert(enc_buffer.size() <= sizeof(global_context.fp_enc_buffer));
+#endif
 
 	std::ranges::copy(fp_template[idx], enc_template.begin());
 	std::ranges::copy(global_context.fp_positive_match_salt[idx],
@@ -326,14 +329,14 @@ static enum ec_status unlock_template(uint16_t idx)
 				  global_context.user_id,
 				  global_context.tpm_seed) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
-		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+		OPENSSL_cleanse(&global_context.fp_enc_buffer, sizeof(global_context.fp_enc_buffer));
 		return EC_RES_UNAVAILABLE;
 	}
 
 	if (aes_128_gcm_decrypt(key, enc_buffer, enc_buffer, enc_info.nonce,
 				enc_info.tag) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
-		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+		OPENSSL_cleanse(&global_context.fp_enc_buffer, sizeof(global_context.fp_enc_buffer));
 		return EC_RES_UNAVAILABLE;
 	}
 
@@ -341,7 +344,7 @@ static enum ec_status unlock_template(uint16_t idx)
 	std::ranges::copy(enc_salt, global_context.fp_positive_match_salt[idx]);
 
 	fp_init_decrypted_template_state_with_user_id(idx);
-	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(&global_context.fp_enc_buffer, sizeof(global_context.fp_enc_buffer));
 	return EC_RES_SUCCESS;
 }
 

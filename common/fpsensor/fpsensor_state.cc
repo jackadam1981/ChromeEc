@@ -47,7 +47,7 @@ static_assert(
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-struct enc_buffer fp_enc_buffer FP_TEMPLATE_SECTION;
+static struct enc_buffer enc_buffer FP_TEMPLATE_SECTION;
 
 struct fpsensor_context global_context = {
 	.template_newly_enrolled = FP_NO_SUCH_TEMPLATE,
@@ -65,6 +65,7 @@ struct fpsensor_context global_context = {
 		}},
 	.fp_positive_match_salt = {{0}},
 	.template_states = {},
+	.fp_enc_buffer = enc_buffer,
 };
 
 int fp_tpm_seed_is_set(void)
@@ -96,7 +97,8 @@ void fp_reset_context()
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(&global_context.fp_enc_buffer,
+			sizeof(global_context.fp_enc_buffer));
 	OPENSSL_cleanse(global_context.user_id, sizeof(global_context.user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
 	fp_disable_positive_match_secret(
