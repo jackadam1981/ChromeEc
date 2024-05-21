@@ -195,6 +195,9 @@
 		gpio_ec_i2c_pmc_pd_int_odl: ec_i2c_pmc_pd_int_odl {
 			gpios = <&gpio3 6 GPIO_INPUT>;
 		};
+		gpio_ec_soc_gpp_r2_odl: soc_gpp_r2_odl {
+			gpios = <&gpioc 0 GPIO_ODR_LOW>;
+		};
 	};
 
 	named-i2c-ports {

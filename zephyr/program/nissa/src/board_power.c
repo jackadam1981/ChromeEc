@@ -95,6 +95,8 @@ void board_ap_power_force_shutdown(void)
 
 	power_signal_disable(PWR_DSW_PWROK);
 	power_signal_disable(PWR_PG_PP1P05);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_gpp_r2_odl), 0);
+
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 	s0_stable = false;
 #endif
@@ -127,6 +129,7 @@ void board_ap_power_action_s0_s3(void)
 {
 	power_signal_enable(PWR_DSW_PWROK);
 	power_signal_enable(PWR_PG_PP1P05);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_gpp_r2_odl), 0);
 	s0_stable = false;
 }
 
@@ -147,6 +150,8 @@ int board_ap_power_assert_pch_power_ok(void)
 	if (power_signal_get(PWR_PCH_PWROK) == 0) {
 		k_msleep(AP_PWRSEQ_DT_VALUE(pch_pwrok_delay));
 		power_signal_set(PWR_PCH_PWROK, 1);
+		k_msleep(10);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_gpp_r2_odl), 1);
 	}
 
 	return 0;
