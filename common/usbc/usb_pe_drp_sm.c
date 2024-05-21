@@ -4081,7 +4081,8 @@ static void pe_snk_hard_reset_entry(int port)
 	    IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
 	    ((port == charge_manager_get_active_charge_port() ||
 	      (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE))) &&
-	    system_get_reset_flags() & EC_RESET_FLAG_SYSJUMP) {
+	    system_get_reset_flags() &
+		    (EC_RESET_FLAG_SYSJUMP | EC_RESET_FLAG_RESET_PIN)) {
 		CPRINTS("C%d: Disabling port to avoid brown out, "
 			"please reboot EC to enable port again",
 			port);
