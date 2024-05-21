@@ -1593,7 +1593,8 @@ void tc_state_init(int port)
 	 * stale PD state as well.
 	 */
 	if (system_get_reset_flags() &
-	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)) {
+	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON |
+	     EC_RESET_FLAG_RESET_PIN)) {
 		first_state = TC_UNATTACHED_SNK;
 	}
 
