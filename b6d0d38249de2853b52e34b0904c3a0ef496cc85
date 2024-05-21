@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "babde2bd_82c1f786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-21T19:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c13219_6fa152da",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0db1bf9e_df9c89f6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1871cb4a_0e9c75fb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-21T19:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db1bf9e_df9c89f6",
+      "range": {
+        "startLine": 1241,
+        "startChar": 0,
+        "endLine": 1242,
+        "endChar": 15
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc6b19c0_5615a43a",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-21T18:30:18Z",
       "side": 1,
       "message": "I think it is clearer to keep all information about the header in one function  which would make this one a one liner:\n\n`return valid_manifest() || valid_signed_header();`\n\nalso, to reduce cofusion throughout, let\u0027s use \u0027signed_header\u0027 and \u0027manifest\u0027 as opposed to \u0027signed_header\u0027 and \u0027signed_manifest\u0027.",
+      "range": {
+        "startLine": 1247,
+        "startChar": 0,
+        "endLine": 1253,
+        "endChar": 0
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da13453_83d30626",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-21T19:15:18Z",
+      "side": 1,
+      "message": "Done. I renamed to `valid_nt_manifest` to incorporate Mary\u0027s feedback as well.",
+      "parentUuid": "bc6b19c0_5615a43a",
       "range": {
         "startLine": 1247,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "602e0e50_38cd306c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-21T19:15:18Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand what you are getting at. We still want to validate each image header more thoroughly than just if the magic or ID is correct. What am I missing?",
+      "parentUuid": "36f3ba46_4206e202",
+      "range": {
+        "startLine": 1339,
+        "startChar": 0,
+        "endLine": 1343,
+        "endChar": 0
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9c0fa55_ab173dce",
         "filename": "extra/usb_updater/signed_manifest.h",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2024-05-21T18:30:18Z",
       "side": 1,
       "message": "should there be some size check?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee8a529_8232dac6",
+        "filename": "extra/usb_updater/signed_manifest.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-21T19:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c0fa55_ab173dce",
       "range": {
         "startLine": 41,
         "startChar": 0,

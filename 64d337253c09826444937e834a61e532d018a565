@@ -16,6 +16,24 @@
       "message": "I think this check belongs in this function, as well as the size check.",
       "revId": "64d337253c09826444937e834a61e532d018a565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6049f4_0e9f11b0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-21T19:15:18Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "30e6d23a_742909ba",
+      "revId": "64d337253c09826444937e834a61e532d018a565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
