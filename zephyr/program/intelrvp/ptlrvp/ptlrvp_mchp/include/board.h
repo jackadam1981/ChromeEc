@@ -31,4 +31,6 @@
 	pinctrl-names = "default";   \
 	port_sel = <6>;
 
+#define PD_POW_IRQ_GPIO MCHP_GPIO_DECODE_143
+
 #endif /* PTLRVP_MCHP_BOARD_H_ */

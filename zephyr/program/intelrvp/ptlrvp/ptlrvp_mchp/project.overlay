@@ -9,6 +9,8 @@
 #include "fan.dtsi"
 #include "gpio.dtsi"
 #include "ioexp_gpio.dtsi"
+#include "pd.dts"
+#include "../battery.dtsi"
 #include "../i2c.dtsi"
 #include "../ioexp.dtsi"
 #include "../ioexp_gpio.dtsi"
@@ -16,3 +18,4 @@
 #include "../keyboard.dtsi"
 #include "../power_signals.dtsi"
 #include "../temp_sensor.dts"
+#include "../usbc.dtsi"
