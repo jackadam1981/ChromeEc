@@ -61,6 +61,7 @@ static void opm_notify_cb(void *ctx)
 		(struct ppm_common_test_fixture *)ctx;
 
 	fixture->notified_count++;
+	DLOG("OPM notify with count = %d", fixture->notified_count);
 	k_sem_give(&fixture->opm_sem);
 }
 
@@ -388,6 +389,9 @@ static void *ppm_common_test_setup(void)
 
 static void ppm_common_test_before(void *f)
 {
+	/* Clear state. */
+	test_fixture.notified_count = 0;
+
 	/* Clear command queue. */
 	struct expected_command_t *cmd;
 	while ((cmd = k_queue_get(test_fixture.cmd_queue, K_NO_WAIT))) {
@@ -567,4 +571,217 @@ ZTEST_USER_F(ppm_common_test, test_PROCESSING_busy_allows_cancel_command)
 {
 	/* TODO(b/340895744) - Cancel is not yet implemented. */
 	ztest_test_skip();
+}
+
+/*
+ * When waiting for command complete, any command that's not ACK_CC_CI should
+ * get rejected.
+ */
+ZTEST_USER_F(ppm_common_test, test_CCACK_error_if_not_command_complete)
+{
+	zassert_equal(ppm_initialize(fixture), 0);
+
+	int notified_count = 0;
+	fixture->notified_count = 0;
+
+	ppm_queue_command_with_result(fixture, UCSI_CMD_SET_NOTIFICATION_ENABLE,
+				      /*result=*/0, /*lpm_data=*/NULL);
+	struct ucsi_control control = {
+		.command = UCSI_CMD_SET_NOTIFICATION_ENABLE, .data_length = 0
+	};
+
+	zassert_false(ppm_write_command(fixture, &control) < 0);
+	zassert_true(ppm_wait_for_cmd_to_process(fixture));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
+
+	/* one notification each for busy and command complete. */
+	notified_count += 2;
+	zassert_equal(notified_count, fixture->notified_count);
+
+	/* Resend the previous command instead of a CC Ack. */
+	zassert_false(ppm_write_command(fixture, &control) < 0);
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_error));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
+}
+
+/*
+ * The PPM state machine allows you to both ACK Command Complete AND
+ * ACK Connector Indication. Make sure this is supported in the command loop
+ * path.
+ */
+ZTEST_USER_F(ppm_common_test, test_CCACK_support_simultaneous_ack_CC_and_CI)
+{
+	ppm_initialize_to_idle_notify(fixture);
+	int notified_count = fixture->notified_count;
+
+	ppm_trigger_connector_changed(fixture, PDC_DEFAULT_CONNECTOR);
+	zassert_true(ppm_wait_for_async_event_to_process(fixture));
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+
+	notified_count = 0;
+	fixture->notified_count = 0;
+
+	/* PPM is waiting for a connector_change_ack from the OPM now. Don't
+	 * send it, instead send a new command.
+	 */
+	struct ucsi_control control = {
+		.command = UCSI_CMD_GET_CONNECTOR_CAPABILITY, .data_length = 0
+	};
+	ppm_queue_command_with_result(fixture,
+				      UCSI_CMD_GET_CONNECTOR_CAPABILITY,
+				      /*result=*/0, /*lpm_data=*/NULL);
+	zassert_false(ppm_write_command(fixture, &control) < 0);
+	/* Wait for both busy + complete. */
+	notified_count += 2;
+	zassert_true(ppm_wait_for_notification(fixture, notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_cmd_complete));
+
+	/* PPM is waiting for connector_change_ack and command_complete_ack.
+	 * Send them together.
+	 */
+	ppm_queue_command_with_result(fixture, UCSI_CMD_ACK_CC_CI, /*result=*/0,
+				      /*lpm_data=*/NULL);
+	zassert_false(ppm_write_ack_command(fixture,
+					    /*connector_change_ack=*/true,
+					    /*command_complete_ack=*/true) < 0);
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+
+	zassert_true(ppm_cci_matches(fixture, &cci_ack_command));
+	zassert_equal(get_ppm_data(fixture)->ppm_state, PPM_STATE_IDLE_NOTIFY);
+	zassert_equal(get_ppm_data(fixture)
+			      ->per_port_status[0]
+			      .connector_status_change,
+		      0);
+	zassert_equal(get_ppm_data(fixture)->last_connector_changed, -1);
+}
+
+/*
+ * If an async event is seen while a command is processing and waiting for an
+ * ack, ignore it until the current command loop finishes.
+ */
+ZTEST_USER_F(ppm_common_test, test_CCACK_ignore_async_event_processing)
+{
+	ppm_initialize_to_idle_notify(fixture);
+	int notified_count = fixture->notified_count;
+
+	ppm_queue_command_with_result(fixture, UCSI_CMD_SET_NOTIFICATION_ENABLE,
+				      /*result=*/0,
+				      /*lpm_data=*/NULL);
+	struct ucsi_control control = {
+		.command = UCSI_CMD_SET_NOTIFICATION_ENABLE, .data_length = 0
+	};
+	zassert_false(ppm_write_command(fixture, &control) < 0);
+	zassert_true(ppm_wait_for_cmd_to_process(fixture));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
+	/* Wait for both busy + complete. */
+	notified_count += 2;
+	zassert_true(ppm_wait_for_notification(fixture, notified_count));
+
+	/* The next expected command is ACK_CC_CI. Do this before triggering the
+	 * lpm alert.
+	 */
+	ppm_queue_command_with_result(fixture, UCSI_CMD_ACK_CC_CI, /*result=*/0,
+				      /*lpm_data=*/NULL);
+
+	/* Send LPM alert which should queue an async event for processing.
+	 * No notification goes out for this and async event remains
+	 * unprocessed.
+	 */
+	ppm_trigger_connector_changed(fixture, PDC_DEFAULT_CONNECTOR);
+	zassert_false(ppm_wait_for_async_event_to_process(fixture));
+	zassert_true(ppm_wait_for_notification(fixture, notified_count));
+
+	/* OPM acknowledges the PPM's cmd_complete. */
+	zassert_false(ppm_write_ack_command(fixture,
+					    /*connector_change_ack=*/false,
+					    /*command_complete_ack=*/true) < 0);
+	zassert_true(ppm_wait_for_cmd_to_process(fixture));
+
+	/* After handling the command loop, we will see the pending command and
+	 * go into the WAITING_ASYNC_EV_ACK state.
+	 */
+	notified_count += 2;
+	zassert_true(ppm_wait_for_notification(fixture, notified_count));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_ASYNC_EV_ACK);
+}
+
+/*
+ * TODO(UCSI WG): Clarify PPM behavior when incorrect ACK is received. Current
+ * implementation returns a PPM error, but does not change PPM state.
+ * |test_CCACK_fail_if_send_ci_ack| and |test_CCACK_fail_if_no_ack| validate
+ * this behavior.
+ */
+
+/*
+ * When waiting for a Command Complete Ack, send a Connector Change Ack instead.
+ */
+ZTEST_USER_F(ppm_common_test, test_CCACK_fail_if_send_ci_ack)
+{
+	ppm_initialize_to_idle_notify(fixture);
+	int notified_count = fixture->notified_count;
+
+	// Send a command and reach PPM_STATE_WAITING_CC_ACK
+	struct ucsi_control control = {
+		.command = UCSI_CMD_GET_CONNECTOR_CAPABILITY, .data_length = 0
+	};
+	ppm_queue_command_with_result(fixture,
+				      UCSI_CMD_GET_CONNECTOR_CAPABILITY,
+				      /*result=*/0,
+				      /*lpm_data=*/NULL);
+	zassert_false(ppm_write_command(fixture, &control) < 0);
+	notified_count += 2;
+	zassert_true(ppm_wait_for_notification(fixture, notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_cmd_complete));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
+
+	/* Send an unexpected connector change ack and expect an error and no
+	 * state change.
+	 */
+	zassert_false(
+		ppm_write_ack_command(fixture, /*connector_change_ack=*/true,
+				      /*command_complete_ack=*/false) < 0);
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_error));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
+}
+
+/* When waiting for a Command Complete Ack, send an Ack without setting either
+ * Command Complete Ack or Connector Change Ack.
+ */
+ZTEST_USER_F(ppm_common_test, test_CCACK_fail_if_no_ack)
+{
+	ppm_initialize_to_idle_notify(fixture);
+	int notified_count = fixture->notified_count;
+
+	// Send a command and reach PPM_STATE_WAITING_CC_ACK
+	struct ucsi_control control = {
+		.command = UCSI_CMD_GET_CONNECTOR_CAPABILITY, .data_length = 0
+	};
+	ppm_queue_command_with_result(fixture,
+				      UCSI_CMD_GET_CONNECTOR_CAPABILITY,
+				      /*result=*/0,
+				      /*lpm_data=*/NULL);
+
+	zassert_false(ppm_write_command(fixture, &control) < 0);
+	notified_count += 2;
+	zassert_true(ppm_wait_for_notification(fixture, notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_cmd_complete));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
+
+	/* Send an invalid ack and expect an error and no state change. */
+	zassert_false(
+		ppm_write_ack_command(fixture, /*connector_change_ack=*/false,
+				      /*command_complete_ack=*/false) < 0);
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_error));
+	zassert_equal(get_ppm_data(fixture)->ppm_state,
+		      PPM_STATE_WAITING_CC_ACK);
 }
