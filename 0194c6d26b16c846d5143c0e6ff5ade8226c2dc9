@@ -34,6 +34,24 @@
       "parentUuid": "2c8183e7_3e221725",
       "revId": "0194c6d26b16c846d5143c0e6ff5ade8226c2dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ebb15cf_cfd097de",
+        "filename": "zephyr/program/rauru/rauru/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-05-21T20:52:29Z",
+      "side": 1,
+      "message": "Rauru always comes with a USB-A port in the DB.\n+@bettytseng@google.com to confirm.",
+      "parentUuid": "38c3162b_b66d943f",
+      "revId": "0194c6d26b16c846d5143c0e6ff5ade8226c2dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
