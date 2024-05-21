@@ -9,6 +9,7 @@
 #include "gpio.dtsi"
 #include "i2c.dtsi"
 #include "ioexp_gpio.dtsi"
+#include "temp_sensor.dts"
 #include "../ioexp.dtsi"
 #include "../ioexp_gpio.dtsi"
 #include "../interrupts.dtsi"
