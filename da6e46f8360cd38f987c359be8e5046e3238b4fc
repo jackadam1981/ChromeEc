@@ -16,6 +16,52 @@
       "message": "Added unit test coverage for the PDC host commands.",
       "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a49086f_4db60d4b",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-21T18:30:04Z",
+      "side": 1,
+      "message": "repo upload didn\u0027t flag this?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5964b447_e98ea917",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-21T18:30:04Z",
+      "side": 1,
+      "message": "args are swapped here and similar lines.",
+      "range": {
+        "startLine": 82,
+        "startChar": 53,
+        "endLine": 82,
+        "endChar": 55
+      },
+      "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
