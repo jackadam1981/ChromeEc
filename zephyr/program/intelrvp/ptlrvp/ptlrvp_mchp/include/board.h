@@ -21,4 +21,6 @@
 #define PD_POW_I2C i2c_smb_1
 #define PD_POW_I2C_PIN_CTRL &i2c06_scl_gpio140 &i2c06_sda_gpio132
 
+#define PD_POW_IRQ_GPIO MCHP_GPIO_DECODE_143
+
 #endif /* PTLRVP_MCHP_BOARD_H_ */
