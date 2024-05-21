@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c7647f_1a216c68",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-21T16:40:30Z",
+      "side": 1,
+      "message": "This is easier to follow if you map the `conn_partner_flags` into the DATA_STATUS register definitions like this:\n\n```suggestion\n\t/* BIT 8 - DP_Connection */\n\tpch_data_status_output |\u003d\n\t\t((data-\u003econnector_status.conn_partner_flags \u0026 0x2) ? BIT8 : 0;\n```",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 59
+      },
+      "revId": "0d64eee5ef6aca5baf25275e7d9bee5b8311b1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
