@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b678f1d_c3063e11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-21T20:10:20Z",
+      "side": 1,
+      "message": "Fair point, this should have gone into the initial email notification for the reviewers, probably.",
+      "parentUuid": "03accc0f_b00d9b3d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "f1efe5e3c3e6c48f87cbaa7cf215f810d8dae377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32d6b368_eee87716",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T17:59:02Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "f1efe5e3c3e6c48f87cbaa7cf215f810d8dae377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677f8043_45fee8f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-21T20:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d6b368_eee87716",
       "range": {
         "startLine": 17,
         "startChar": 0,
