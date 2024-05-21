@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8907b2ea_1e66ce8d",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-21T20:11:10Z",
+      "side": 1,
+      "message": "Coming out of reset triggers the ICACHE to begin the process of clearing and initialization.  In my experiment, by the time execution reaches this point, the cache is already ready.\n\nI thought about a bound on the loop, but then again, this is in pre-initialization, meaning that we do not have UART console output or much that can be used to report errors, and I am not sure that the system timer is set up.  I saw that `rtc_init()` invoked below also has several unbounded loops waiting for hardware to become ready.\n\nGiven all that, I think that it is acceptable to depend on the instruction cache in fact completing its out-of-reset initialization in bounded time, without further safeguards.  (I would prefer to not have code that silently refrains from enabling the instruction cache, if at runtime it fails to detect completed initialiation, as that could lead to significant degradation going unnoticed.)",
+      "parentUuid": "cea004ff_1182117a",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 0
+      },
+      "revId": "97ab87dd9dfc6f0bfb0bda12e9cee588582cd1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "857a15cc_a697658b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T18:05:39Z",
       "side": 1,
       "message": "```suggestion\nstatic void reset_flash_cache(void)\n```",
+      "range": {
+        "startLine": 682,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 28
+      },
+      "revId": "97ab87dd9dfc6f0bfb0bda12e9cee588582cd1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef3228c_a521677c",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-21T20:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "857a15cc_a697658b",
       "range": {
         "startLine": 682,
         "startChar": 0,
