@@ -16,6 +16,24 @@
       "message": "We should also handle `-EBUSY` and `-ETIMEDOUT` here. In crrev.com/c/5516298/, the retry mechanism can return those two errors when we can\u0027t schedule in time and that should result in a `ppm_policy_conflict` error.",
       "revId": "22886284474d3067a3c9b76ae07155f7532b22f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a397f4_0cbdadce",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-21T16:46:32Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5540325/.",
+      "parentUuid": "f2cec23b_09ef68c3",
+      "revId": "22886284474d3067a3c9b76ae07155f7532b22f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
