@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fffa29a_60b960ab",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-05-21T18:34:35Z",
+      "side": 1,
+      "message": "This should be moved to a new if-clause as this does not match the comment.\n\nHow about making it:\n\n```\n/*\n  * If the battery that is expected is not present, it is likely that this is a \n  * factory or development\n  * environment. In this case, do not apply ErrorRecovery.\n  */ \n\n  if (IS_ENABLED(CONFIG_BATTERY) \u0026\u0026 battery_is_present() \u003d\u003d BP_NO \u0026\u0026 \n      (system_get_reset_flags() \u0026 EC_RESET_FLAG_RESET_PIN)) {\n\t  first_state \u003d TC_UNATTACHED_SNK;\n  }\n\n\n```",
+      "range": {
+        "startLine": 1597,
+        "startChar": 6,
+        "endLine": 1597,
+        "endChar": 29
+      },
+      "revId": "af35d59c65b15fef98a4df70f52690dee1f22e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
