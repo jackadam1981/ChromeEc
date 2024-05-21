@@ -68,6 +68,30 @@
       },
       "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6324d833_8daa00cd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-21T02:23:24Z",
+      "side": 1,
+      "message": "It needs to add `CONFIG_RAM_LOCK` definition to `board/helipilot/board.h`. So do you think we should add this part of the change to the PR or do you have other suggestions?",
+      "parentUuid": "25912107_70f8b2f4",
+      "range": {
+        "startLine": 346,
+        "startChar": 12,
+        "endLine": 346,
+        "endChar": 45
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
