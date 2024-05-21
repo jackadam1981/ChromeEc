@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca2ecbc_1fafce8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "nit: add details",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2ebbc9_8d59c396",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "nit: 80 chars",
+      "range": {
+        "startLine": 57,
+        "startChar": 61,
+        "endLine": 57,
+        "endChar": 78
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8280b6f5_5c9f3a16",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "ISL9241 or RAA489110? if depends how about adding it in Kconfig?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10130f8f_e1410902",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "I think it should be part of CL:5551775",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f8991a_c4391713",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "remove EC PD specific configs, example CLs\nCL:5493485\nCL:5491939",
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb015b58_3dee440e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/usbc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "submit a separate CL and add test result",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283fea98_2e940e02",
+        "filename": "zephyr/program/intelrvp/ptlrvp/usbc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "use PMC PD communication",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da64e510_2aca4b26",
+        "filename": "zephyr/program/intelrvp/ptlrvp/usbc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-21T21:25:44Z",
+      "side": 1,
+      "message": "same as above comments for P1",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "2e227e7b10edc120f586bdcf56871dc58c5daa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
