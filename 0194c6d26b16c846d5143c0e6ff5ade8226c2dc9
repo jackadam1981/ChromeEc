@@ -16,6 +16,24 @@
       "message": "Do we intend to treat this as program level or project level ?\nIf it is for program level, I\u0027ll suggest start from 25 based on b/341659416#comment1(I\u0027ll move panel section later).",
       "revId": "0194c6d26b16c846d5143c0e6ff5ade8226c2dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c3162b_b66d943f",
+        "filename": "zephyr/program/rauru/rauru/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-05-21T09:11:49Z",
+      "side": 1,
+      "message": "At the mean time, do we want to distinguish the USBA/USBC combination on daughter board base on FW_CONFIG ?\n\ne.g. : DB: 1C, 1A + 1C, 1A, None.\n\nIf it\u0027s not necessary for Rauru EC, then it LGTM to keep the sub-board naming for redriver and retimer.\n\nThanks.",
+      "parentUuid": "2c8183e7_3e221725",
+      "revId": "0194c6d26b16c846d5143c0e6ff5ade8226c2dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
