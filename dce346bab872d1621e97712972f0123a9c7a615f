@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "194829f9_d9c68ef5",
+        "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-05-22T05:51:13Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/src/variant_db_detection.c;l\u003d70\nBecause ```corsola_db_type corsola_get_db_type``` will use the db_config node to judge the DB type.",
+      "parentUuid": "77b53a1c_6829f855",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f3f3c9c_bb429e3b",
         "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
         "patchSetId": 16
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-22T04:30:15Z",
       "side": 1,
       "message": "same here, what\u0027s the purpose to change the enum-name here?",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c2a901_be3c7bf3",
+        "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-05-22T05:51:13Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/src/variant_db_detection.c;l\u003d93\nBecause ```corsola_db_type corsola_get_db_type```  judge the FW config value name is DB_USBA_HDMI and DB_NONE, I want to aligned the name so modified it.",
+      "parentUuid": "0f3f3c9c_bb429e3b",
       "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "708873a6_f0dddf10",
+        "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-05-22T05:51:13Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/src/variant_db_detection.c;l\u003d93\nBecause ```corsola_db_type corsola_get_db_type```  judge the FW config value name is DB_USBA_HDMI and DB_NONE, I want to aligned the name so modified it.",
+      "parentUuid": "606afdd2_5a04c893",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edce684f_5872c720",
         "filename": "zephyr/program/corsola/veluza/project.conf",
         "patchSetId": 16
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e57f8ec8_4a8f2af8",
+        "filename": "zephyr/program/corsola/veluza/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-05-22T05:51:13Z",
+      "side": 1,
+      "message": "Because the Unit boot repeatedly issue, I guess maybe the BC12 will affect this issue, so I remove BC12, I recovery BC12 and will remove BC12 with another CL.",
+      "parentUuid": "edce684f_5872c720",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c98ab09_88547ada",
         "filename": "zephyr/program/corsola/veluza/project.overlay",
         "patchSetId": 16
@@ -82,6 +154,24 @@
       "writtenOn": "2024-05-22T04:30:15Z",
       "side": 1,
       "message": "this is also for bc12, not for hdmi purpose",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2100b5a_ac640325",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-05-22T05:51:13Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/src/usbc.c;l\u003d215",
+      "parentUuid": "5c98ab09_88547ada",
       "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
