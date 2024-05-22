@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd237c2_e841bad2",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-22T21:53:30Z",
+      "side": 1,
+      "message": "nit: We\u0027re trying to use doxygen style for comments in the FPMCU code. However, having some comments is better than the current state, so I\u0027m fine submitting as-is.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 10
+      },
+      "revId": "358862e7ae8474caf0f66815155db4cce7019f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
