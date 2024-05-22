@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30fa4c7_1728dc7f",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-22T15:06:36Z",
+      "side": 1,
+      "message": "Need to document `vendor_defined`",
+      "range": {
+        "startLine": 1043,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 34
+      },
+      "revId": "2fb066a375acd61b81d4ef6c8551d1a42350dc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb49442_c81fd5f8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1929,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-22T15:06:36Z",
+      "side": 1,
+      "message": "As a follow up, can you create a helper for function to check the common cci_flags?",
+      "range": {
+        "startLine": 1919,
+        "startChar": 0,
+        "endLine": 1929,
+        "endChar": 0
+      },
+      "revId": "2fb066a375acd61b81d4ef6c8551d1a42350dc00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
