@@ -37,6 +37,14 @@ void board_config_pre_init(void)
 #define USB_STREAM_RX_SIZE 16
 #define USB_STREAM_TX_SIZE 64
 
+/*
+ * The USB serial interface carrying the console of the GSC under test may be
+ * used with speeds higher than 115200 for fast rescue bootloading, and could
+ * benefit from larger USB packets.
+ */
+#define USB_CONSOLE_STREAM_RX_SIZE 64
+#define USB_CONSOLE_STREAM_TX_SIZE 64
+
 /******************************************************************************
  * Forward USART2 as a simple USB serial interface.
  */
@@ -55,8 +63,9 @@ static struct usart_config const usart2 =
 
 USB_STREAM_CONFIG_USART_IFACE(usart2_usb, USB_IFACE_USART2_STREAM,
 			      USB_STR_USART2_STREAM_NAME, USB_EP_USART2_STREAM,
-			      USB_STREAM_RX_SIZE, USB_STREAM_TX_SIZE,
-			      usb_to_usart2, usart2_to_usb, usart2)
+			      USB_CONSOLE_STREAM_RX_SIZE,
+			      USB_CONSOLE_STREAM_TX_SIZE, usb_to_usart2,
+			      usart2_to_usb, usart2)
 
 /******************************************************************************
  * Forward USART3 as a simple USB serial interface.
