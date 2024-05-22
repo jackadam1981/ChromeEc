@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#if 0
 #include "system.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -14,3 +15,4 @@ __override void board_hibernate_late(void)
 	udelay(30 * MSEC);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ulp), 1);
 }
+#endif

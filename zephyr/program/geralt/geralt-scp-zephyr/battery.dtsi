@@ -3,7 +3,10 @@
  * found in the LICENSE file.
  */
 
-/* Geralt program common DTS includes */
-/*
-#include <cros/integrated_fwid.dtsi>
-*/
+/ {
+	batteries {
+		default_battery: smp_l21m4pg0 {
+			compatible = "smp,l21m4pg0", "battery-smart";
+		};
+	};
+};
