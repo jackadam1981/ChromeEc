@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c64c591f_46326ab0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-22T20:20:07Z",
+      "side": 1,
+      "message": "I gave this a shot, but the module and instance names do not actually get pre-pended to the log messages. This might be a LOG_MODE_MINIMAL limitation?",
+      "parentUuid": "582eb8c0_919d4111",
+      "range": {
+        "startLine": 508,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 25
+      },
+      "revId": "270db38432608d691ff00329db5ef8c4ddbba05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b67a664_32b32952",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2024-05-22T18:05:05Z",
       "side": 1,
       "message": "+1",
+      "parentUuid": "cb5a98b5_8b85cac4",
+      "range": {
+        "startLine": 834,
+        "startChar": 0,
+        "endLine": 834,
+        "endChar": 42
+      },
+      "revId": "270db38432608d691ff00329db5ef8c4ddbba05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40474383_bdbe610e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-22T20:20:07Z",
+      "side": 1,
+      "message": "Log messages for entering the four attached states plus unattached seem to get handled by `set_attached_pdc_state()`, which is at INFO level.",
       "parentUuid": "cb5a98b5_8b85cac4",
       "range": {
         "startLine": 834,
