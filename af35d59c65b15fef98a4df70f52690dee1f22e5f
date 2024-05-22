@@ -70,6 +70,30 @@
       },
       "revId": "af35d59c65b15fef98a4df70f52690dee1f22e5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49690ce_7c4cce04",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-22T02:33:18Z",
+      "side": 1,
+      "message": "The import of CL will affect the EC of ITE, causing the DUT to fail to boot.\nCan it be controlled via !IS_ENABLED(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)? Avoid affecting the ITE side.",
+      "parentUuid": "f4cb64b7_1d6dc21d",
+      "range": {
+        "startLine": 1597,
+        "startChar": 6,
+        "endLine": 1597,
+        "endChar": 29
+      },
+      "revId": "af35d59c65b15fef98a4df70f52690dee1f22e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
