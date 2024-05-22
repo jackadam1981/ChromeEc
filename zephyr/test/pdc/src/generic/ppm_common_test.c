@@ -784,3 +784,49 @@ ZTEST_USER_F(ppm_common_test, test_CCACK_fail_if_no_ack)
 	zassert_equal(get_ppm_data(fixture)->ppm_state,
 		      PPM_STATE_WAITING_CC_ACK);
 }
+
+/* When waiting for a Connection Indicator Ack, we accept an immediate ACK_CC_CI
+ * to switch the state back to Idle with Notifications.
+ */
+ZTEST_USER_F(ppm_common_test, test_CIACK_ack_immediately_or_later)
+{
+	ppm_initialize_to_idle_notify(fixture);
+	int notified_count = fixture->notified_count;
+
+	ppm_trigger_connector_changed(fixture, PDC_DEFAULT_CONNECTOR);
+	zassert_true(ppm_wait_for_async_event_to_process(fixture));
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+
+	notified_count = 0;
+	fixture->notified_count = 0;
+
+	ppm_queue_command_with_result(fixture, UCSI_CMD_ACK_CC_CI, /*result=*/0,
+				      /*lpm_data=*/NULL);
+	zassert_false(ppm_write_ack_command(fixture,
+					    /*connector_change_ack=*/true,
+					    /*command_complete_ack=*/false) <
+		      0);
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_ack_command));
+	zassert_equal(get_ppm_data(fixture)->ppm_state, PPM_STATE_IDLE_NOTIFY);
+}
+
+/* If we get an ACK_CC_CI when there is no active connector indication, we
+ * should fail. In this scenario, the starting state needs to be IdleNotify but
+ * occurs when the OPM sends other commands after receiving Connector Change
+ * Indication.
+ */
+ZTEST_USER_F(ppm_common_test, test_CIACK_fail_if_no_active_connector_indication)
+{
+	ppm_initialize_to_idle_notify(fixture);
+	int notified_count = fixture->notified_count;
+
+	zassert_false(ppm_write_ack_command(fixture,
+					    /*connector_change_ack=*/true,
+					    /*command_complete_ack=*/false) <
+		      0);
+	zassert_true(ppm_wait_for_notification(fixture, ++notified_count));
+	zassert_true(ppm_cci_matches(fixture, &cci_error));
+	zassert_true(ppm_wait_for_cmd_to_process(fixture));
+	zassert_equal(get_ppm_data(fixture)->ppm_state, PPM_STATE_IDLE_NOTIFY);
+}
