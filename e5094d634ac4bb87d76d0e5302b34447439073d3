@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a25bed0_9ba19991",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-22T23:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aac4bbb_3164a5f0",
+      "revId": "e5094d634ac4bb87d76d0e5302b34447439073d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d011695_0a26402f",
@@ -49,6 +67,24 @@
       "writtenOn": "2024-05-14T21:37:11Z",
       "side": 1,
       "message": "It looks like we only call this from `pdc_rts54xx.c` for connector change so there\u0027s no point in printing the `command completed`. \n\nMaybe we simplify this by only printing the function name and raw value. This looks useful for debugging so I would be ok keeping this.",
+      "revId": "e5094d634ac4bb87d76d0e5302b34447439073d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dfd3736_96fcaa82",
+        "filename": "zephyr/subsys/ucsi/ucsi_host_cmd.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-22T23:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d011695_0a26402f",
       "revId": "e5094d634ac4bb87d76d0e5302b34447439073d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
