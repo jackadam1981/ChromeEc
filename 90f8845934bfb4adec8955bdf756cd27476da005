@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c9e516_474d0898",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-22T18:26:30Z",
+      "side": 1,
+      "message": "nit: 5 \u0026 10 respectively?\nthere is no difference but resistors are 0.005 \u0026 0.01",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "90f8845934bfb4adec8955bdf756cd27476da005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87945bda_d8d5bad9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-05-22T18:26:30Z",
+      "side": 1,
+      "message": "nit: try remove configs which are default n",
+      "revId": "90f8845934bfb4adec8955bdf756cd27476da005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
