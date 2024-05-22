@@ -45,6 +45,30 @@
       },
       "revId": "e057fdc561beaf65120b1332e26590099f511e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3922f17b_a0607b99",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-22T15:36:20Z",
+      "side": 1,
+      "message": "After looking at ectool, I think you should go back to a NUL terminated string.",
+      "parentUuid": "799006d2_5cedb460",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "e057fdc561beaf65120b1332e26590099f511e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
