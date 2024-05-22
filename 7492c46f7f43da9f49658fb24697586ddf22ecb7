@@ -22,6 +22,30 @@
       },
       "revId": "7492c46f7f43da9f49658fb24697586ddf22ecb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16960c56_3d5d818d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7935,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-05-22T21:37:59Z",
+      "side": 1,
+      "message": "right, i was debating 32/64 bit myself... relative time matters more\nthan absolute time, specially since T\u003d0 is not a particularly\ninteresting point in time in this context.\n\ni can change this to 32 bits and note the wrap-around semantics.\n\nas for the other fields, we could merge `direction` and `port_num`,\nbut that doesn\u0027t seem like much of a win.",
+      "parentUuid": "6e20c9f8_bd5f251e",
+      "range": {
+        "startLine": 7935,
+        "startChar": 0,
+        "endLine": 7935,
+        "endChar": 28
+      },
+      "revId": "7492c46f7f43da9f49658fb24697586ddf22ecb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
