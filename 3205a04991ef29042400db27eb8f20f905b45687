@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76ad45f_1bcadda4",
+        "filename": "zephyr/drivers/usbc/pdc_trace_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-22T16:53:08Z",
+      "side": 1,
+      "message": "I think this code is better located under `zephyr/subsys/pd_controller/`. That\u0027s where all the PDC stack-specific code has been going and this isn\u0027t strictly a driver.",
+      "revId": "3205a04991ef29042400db27eb8f20f905b45687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d04c65_af1af581",
+        "filename": "zephyr/drivers/usbc/pdc_trace_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-22T16:53:08Z",
+      "side": 1,
+      "message": "Use `shell_fprintf(sh, SHELL_INFO, \"\", ...)` or `shell_info(sh, \"\", ...)` for shell command output. Also I strongly advise printing complete lines to the shell at a time. Piecewise writes tend to get clobbered by another tasks\u0027s output and become unreadable.",
+      "range": {
+        "startLine": 474,
+        "startChar": 2,
+        "endLine": 474,
+        "endChar": 15
+      },
+      "revId": "3205a04991ef29042400db27eb8f20f905b45687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a024950_d784f35c",
+        "filename": "zephyr/drivers/usbc/pdc_trace_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-22T16:53:08Z",
+      "side": 1,
+      "message": "Can `command_pdc_trace()` be a subcommand under `pdc` in `pdc_console.c`? I\u0027d like to keep all PDC CLI functionality grouped together.",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 496,
+        "endChar": 38
+      },
+      "revId": "3205a04991ef29042400db27eb8f20f905b45687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
