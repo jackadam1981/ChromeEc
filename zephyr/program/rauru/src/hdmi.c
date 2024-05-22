@@ -6,6 +6,7 @@
 #include "ap_power/ap_power.h"
 #include "chipset.h"
 #include "console.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "rauru_dp.h"
 #include "timer.h"
@@ -40,6 +41,7 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 	}
 
 	svdm_set_hpd_gpio(DP_PORT_HDMI, hpd);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_hdmi_ec_hpd), hpd);
 }
 
 static void board_hdmi_suspend(struct ap_power_ev_callback *cb,
@@ -53,10 +55,14 @@ static void board_hdmi_suspend(struct ap_power_ev_callback *cb,
 
 	case AP_POWER_RESUME:
 		value = 1;
+		gpio_enable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_hdmi_ec_hpd));
 		break;
 
 	case AP_POWER_SUSPEND:
 		value = 0;
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_hdmi_ec_hpd));
 		break;
 	}
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_en_hdmi_pwr), value);
