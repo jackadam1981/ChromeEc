@@ -118,6 +118,30 @@
       },
       "revId": "af35d59c65b15fef98a4df70f52690dee1f22e5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fb1cf3_aa2fb5ba",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-05-22T12:50:35Z",
+      "side": 1,
+      "message": "I have updated the issue. The impact of this CL import on some platforms should be huge.",
+      "parentUuid": "4bd96147_68b9b97c",
+      "range": {
+        "startLine": 1597,
+        "startChar": 6,
+        "endLine": 1597,
+        "endChar": 29
+      },
+      "revId": "af35d59c65b15fef98a4df70f52690dee1f22e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
