@@ -9,12 +9,16 @@
 #define __CROS_EC_FPSENSOR_FPSENSOR_CRYPTO_H
 
 #include "common.h"
+#include "crypto/cleanse_wrapper.h"
 #include "ec_commands.h"
 
 #include <cstdint>
 #include <span>
 
-#define SBP_ENC_KEY_LEN 16
+using FpEncryptionKey = CleanseWrapper<std::array<uint8_t, 16> >;
+static_assert(sizeof(FpEncryptionKey) == 16,
+	      "Encryption key must be 128 bits.");
+static_assert(sizeof(FpEncryptionKey) <= CONFIG_ROLLBACK_SECRET_SIZE);
 
 /**
  * Computes HKDF (as specified by RFC 5869) using SHA-256 as the digest.
