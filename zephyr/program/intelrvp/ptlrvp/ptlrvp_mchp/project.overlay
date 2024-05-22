@@ -7,6 +7,7 @@
 
 #include "gpio.dtsi"
 #include "i2c.dtsi"
+#include "ioexp_gpio.dtsi"
 #include "../ioexp.dtsi"
 #include "../ioexp_gpio.dtsi"
 #include "../interrupts.dtsi"
