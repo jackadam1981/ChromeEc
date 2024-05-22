@@ -1046,6 +1046,7 @@ void keyboard_scan_task(void *u)
 
 			local_disable_scanning = new_disable_scanning;
 
+			udelay(keyscan_config.output_settle_us);
 			/*
 			 * Done waiting if scanning is enabled and a key is
 			 * already pressed.  This prevents a race between the
