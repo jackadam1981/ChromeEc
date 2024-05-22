@@ -34,6 +34,24 @@
       "parentUuid": "e0e151d2_cb24c077",
       "revId": "c1d7f42445f8479a7cbf13663850ae4a7a593a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f55962f_a791d1de",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-22T23:41:51Z",
+      "side": 1,
+      "message": "This CL is intended only for enabling `ptlerb_mchp` in zmake build. Subsequent CL\u0027s will enable corresponding peripherals. For eSPI enablement, please see CL:5490485.",
+      "parentUuid": "a81f53de_e8c92b7b",
+      "revId": "c1d7f42445f8479a7cbf13663850ae4a7a593a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
