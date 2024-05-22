@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b53a1c_6829f855",
+        "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "Can I know what\u0027s the purpose to change to db_config form db-type?",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3f3c9c_bb429e3b",
+        "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "same here, what\u0027s the purpose to change the enum-name here?",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606afdd2_5a04c893",
+        "filename": "zephyr/program/corsola/veluza/cbi.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "same here, what\u0027s the purpose to change the enum-name here?",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edce684f_5872c720",
+        "filename": "zephyr/program/corsola/veluza/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "I believe this is for BC 1.2, but not for HDMI",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c98ab09_88547ada",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "this is also for bc12, not for hdmi purpose",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7899c0a_5675616a",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "same here, this should be for BC12",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d353e020_af749303",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 16
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-05-22T04:30:15Z",
+      "side": 1,
+      "message": "same here, this should be for BC12",
+      "revId": "dce346bab872d1621e97712972f0123a9c7a615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
