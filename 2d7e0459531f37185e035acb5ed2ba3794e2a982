@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5cab11_efc814e7",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-22T03:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3807c83_66f74397",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 62
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3dbd2d_b73160ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-20T18:32:20Z",
       "side": 1,
       "message": "It doesn\u0027t look like any of these tests check that code cannot be executed (fetch protection). Can you add a test for that?\n\nThere\u0027s an example of how it could be done [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/sram_mpu_protection.c).",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1886ce_b37824b0",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-22T03:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3dbd2d_b73160ff",
       "range": {
         "startLine": 130,
         "startChar": 0,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "FYI, it\u0027s now `baseboard/helipilot/base_board.h`. You should probably rebase on top of `main` to make sure you\u0027re working with the latest code.",
       "parentUuid": "34280729_02fe3d78",
+      "range": {
+        "startLine": 346,
+        "startChar": 12,
+        "endLine": 346,
+        "endChar": 45
+      },
+      "revId": "2d7e0459531f37185e035acb5ed2ba3794e2a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3bb58b3_af382bee",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-22T03:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b9f0d1d_ce7168a6",
       "range": {
         "startLine": 346,
         "startChar": 12,
