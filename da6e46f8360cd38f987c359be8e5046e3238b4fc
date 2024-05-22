@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7537e632_2c562a02",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6318,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-22T15:35:26Z",
+      "side": 1,
+      "message": "Needs to be documented as not NUL terminated, if you keep that.\nAlso, move the macro definition into ec_commands.h so it can be used by ectool and the AP.",
+      "range": {
+        "startLine": 6318,
+        "startChar": 0,
+        "endLine": 6318,
+        "endChar": 22
+      },
+      "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f9bf8b_4929cef2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 11014,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-22T15:35:26Z",
+      "side": 1,
+      "message": "I changed my mind.  I think it\u0027s better to make this NUL terminated.  Most of the other strings in ec_commands.h are documented as NUL terminated.",
+      "range": {
+        "startLine": 11011,
+        "startChar": 0,
+        "endLine": 11014,
+        "endChar": 0
+      },
+      "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a49086f_4db60d4b",
         "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
         "patchSetId": 4
