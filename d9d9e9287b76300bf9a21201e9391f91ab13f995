@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7b768a_ded3e007",
+        "filename": "util/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f2efcb2_6269fe17",
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ccbf81_e8e3fc00",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "`cs_low`\n\nPlease convert all names to lower case with underscores.",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc7d71a_d2f9dee6",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6ccbf81_e8e3fc00",
       "range": {
         "startLine": 96,
         "startChar": 14,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4027888_50bcd603",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af6ed6dd_b0b70cae",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 28
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02c573b3_7d5c0324",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e7b44a_41212642",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c573b3_7d5c0324",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 52
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c5e60d1_aef75347",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "Move outside the while loop.",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca8e8ad_1717eef3",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "enable follow mode can outside the while loop\nbut spi_write_enable can not outside the while loop\nspi_write_enable must set the write enable latch before the erase command\n\nit can reference the spi flash \"Sector Erase(SE)\" command.",
+      "parentUuid": "8c5e60d1_aef75347",
       "range": {
         "startLine": 593,
         "startChar": 0,
@@ -156,6 +270,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5cb7ea_8cb01846",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca144164_a0d425f3",
+      "range": {
+        "startLine": 608,
+        "startChar": 16,
+        "endLine": 608,
+        "endChar": 22
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b85584_76121b7a",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "disable follow mode can outside the while loop\nbut write enable latch will reset after the erase cycle",
+      "parentUuid": "1ae54bb9_3305db83",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a66f8d2c_ee2950ed",
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af540d8a_d4e1f189",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Reserved the wrapper for different erase size.\nSuch as Erase_1K.",
+      "parentUuid": "a66f8d2c_ee2950ed",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 48
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a53be621_6f0976e7",
         "filename": "util/itecomdbgr.c",
         "patchSetId": 10
@@ -192,6 +378,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "Use a more descriptive name such as `bool check_erased`.",
+      "range": {
+        "startLine": 631,
+        "startChar": 8,
+        "endLine": 631,
+        "endChar": 20
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a6845e_c0550975",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a53be621_6f0976e7",
       "range": {
         "startLine": 631,
         "startChar": 8,
@@ -227,6 +437,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "324a8247_cc037625",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "follow mode can outside the while loop",
+      "parentUuid": "88cbde3d_1cd5755d",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1dbfc9d_ef8aee41",
         "filename": "util/itecomdbgr.c",
         "patchSetId": 10
@@ -250,6 +484,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49f09b39_9f0dc305",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "It seems 1 byte at a time for usart2.\nI try read 256 byte 0xff to buffer, but only 1 byte 0xff save to the buffer. \n\n\u003e usart_info\nUSART2\n    dropped 0 bytes\n    overran 0 times\n    DMA RX max_bytes 0\nUSART3\n    dropped 0 bytes\n    overran 0 times\n    DMA RX max_bytes 0\nUSART4\n    dropped 0 bytes\n    overran 0 times\n\u003e",
+      "parentUuid": "c1dbfc9d_ef8aee41",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 33
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bff1edd7_4a0c34b2",
         "filename": "util/itecomdbgr.c",
         "patchSetId": 10
@@ -261,6 +519,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "This assumes the new image is a multiple of 256 bytes.",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 702,
+        "endChar": 22
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b25f81_6d13e578",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff1edd7_4a0c34b2",
       "range": {
         "startLine": 702,
         "startChar": 2,
@@ -296,6 +578,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d62d286_b1c386c2",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "follow mode can outside the loop",
+      "parentUuid": "90f841ea_0637181c",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69800e0c_1a281763",
         "filename": "util/itecomdbgr.c",
         "patchSetId": 10
@@ -307,6 +613,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "Can you write multiple blocks at once and avoid sending the address on every block?",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "426e6a74_7d633c4c",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69800e0c_1a281763",
       "range": {
         "startLine": 738,
         "startChar": 0,
@@ -340,6 +670,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce91e5a_e90f4f36",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04578f9_8c222b9d",
+      "range": {
+        "startLine": 745,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a7fe69_cd783f0e",
@@ -353,6 +707,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "Does this support image sizes that are not multiples of 0x100?",
+      "range": {
+        "startLine": 756,
+        "startChar": 2,
+        "endLine": 756,
+        "endChar": 21
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5437521e_8d20045c",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a7fe69_cd783f0e",
       "range": {
         "startLine": 756,
         "startChar": 2,
@@ -386,6 +764,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "147976ce_faf7a7e5",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7cf6c12_0d4b317a",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ad4595_0f0ac286",
@@ -399,6 +801,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "The erase occurs in 0x1000 chunks, but verify step only reads up to the new image size.\n\nThis step should verify the same extent that was erased.",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 43
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533aeb71_398f5e52",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ad4595_0f0ac286",
       "range": {
         "startLine": 780,
         "startChar": 0,
@@ -432,6 +858,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6059de0f_7ad90772",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6888979_270bf10a",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 784,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab032e79_d660cc44",
@@ -455,6 +905,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd66159_4f8540fe",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab032e79_d660cc44",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 803,
+        "endChar": 0
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cd80b56_74356f25",
@@ -468,6 +942,30 @@
       "writtenOn": "2024-05-07T20:48:04Z",
       "side": 1,
       "message": "msleep",
+      "range": {
+        "startLine": 813,
+        "startChar": 1,
+        "endLine": 813,
+        "endChar": 9
+      },
+      "revId": "d9d9e9287b76300bf9a21201e9391f91ab13f995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "826b220d_660be616",
+        "filename": "util/itecomdbgr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-05-22T06:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd80b56_74356f25",
       "range": {
         "startLine": 813,
         "startChar": 1,
