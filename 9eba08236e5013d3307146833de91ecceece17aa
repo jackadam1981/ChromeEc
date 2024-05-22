@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c29d90_fca9259f",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-22T21:57:49Z",
+      "side": 1,
+      "message": "What is this magic address? Please add a comment.",
+      "range": {
+        "startLine": 16,
+        "startChar": 40,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "9eba08236e5013d3307146833de91ecceece17aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdd53c98_9e6112dd",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-22T21:57:49Z",
+      "side": 1,
+      "message": "This should be inside `if defined(CHIP_VARIATN_NPCX9MFP)` since it looks like an address specific to that chip.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "9eba08236e5013d3307146833de91ecceece17aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
