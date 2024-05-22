@@ -1,0 +1,57 @@
+/* Copyright 2024 The Chromium OS Authors. All rights reserved
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		cs-indicate-led {
+			gpios = <&pca95xx_1 15  0>;
+		};
+		c10-gate-led {
+			gpios = <&pca95xx_1 14  0>;
+		};
+		kbc-scrollock {
+			gpios = <&pca95xx_1 13  0>;
+		};
+		tp-ec-typec-sink-disable1{
+			gpios = <&pca95xx_1 12  0>;
+		};
+		tp-ec-typec-sink-disable2{
+			gpios = <&pca95xx_1 11  0>;
+		};
+		pd-aic-detect-slot-id {
+			gpios = <&pca95xx_1 10  0>;
+		};
+		tp-ec-io1-1 {
+			gpios = <&pca95xx_1 9  0>;
+		};
+		espi-testcrd-det {
+			gpios = <&pca95xx_1 8  0>;
+		};
+		virtual-dock-det-n {
+			gpios = <&pca95xx_1 7  0>;
+		};
+		virtual-battery {
+			gpios = <&pca95xx_1 6  0>;
+		};
+		ec-m2-ssd-pln-delay {
+			gpios = <&pca95xx_1 5  0>;
+		};
+		ec-soc-vr-cntrl-pe {
+			gpios = <&pca95xx_1 4  0>;
+		};
+		pmc-gpio-boot-halt {
+			gpios = <&pca95xx_1 3  0>;
+		};
+		pnp-npnp-sku {
+			gpios = <&pca95xx_1 2  0>;
+		};
+		mod-tcss2-detect {
+			gpios = <&pca95xx_1 1  0>;
+		};
+		mod-tcss1-detect {
+			gpios = <&pca95xx_1 0  0>;
+		};
+	};
+};
