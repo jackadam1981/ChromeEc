@@ -16,6 +16,24 @@
       "message": "Could you pls add more information about ERB SKU design, which doesn\u0027t have eSPI interface, or just an intermediate project?",
       "revId": "c1d7f42445f8479a7cbf13663850ae4a7a593a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81f53de_e8c92b7b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-05-22T16:53:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e0e151d2_cb24c077",
+      "revId": "c1d7f42445f8479a7cbf13663850ae4a7a593a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
