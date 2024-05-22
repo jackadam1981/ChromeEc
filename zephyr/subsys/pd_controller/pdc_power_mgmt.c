@@ -1113,6 +1113,29 @@ static struct pdc_pdos_t *get_pdc_pdos_ptr(struct pdc_port_t *port,
 	return pdc_pdos;
 }
 
+static bool check_common_cci_flags(struct pdc_port_t *port)
+{
+	/*
+	 * The CCI_EVENT is set on a connector disconnect, so check the
+	 * connector status and take the appropriate action.
+	 */
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
+		return true;
+	}
+
+	/*
+	 * Clear change indicator bits from most recent connector_status
+	 * message.
+	 */
+	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
+		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+		return true;
+	}
+
+	return false;
+}
+
 static void run_unattached_policies(struct pdc_port_t *port)
 {
 	if (atomic_test_and_clear_bit(port->una_policy.flags,
@@ -1245,15 +1268,7 @@ static void pdc_unattached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
-	/* The CCI_EVENT is set on a connector disconnect, so check the
-	 * connector status and take the appropriate action. */
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
-	}
-
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
-		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+	if (check_common_cci_flags(port)) {
 		return;
 	}
 
@@ -1295,15 +1310,7 @@ static void pdc_src_attached_run(void *obj)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_num = config->connector_num;
 
-	/* The CCI_EVENT is set on a connector disconnect, so check the
-	 * connector status and take the appropriate action. */
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
-	}
-
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
-		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+	if (check_common_cci_flags(port)) {
 		return;
 	}
 
@@ -1401,15 +1408,7 @@ static void pdc_snk_attached_run(void *obj)
 	uint32_t pdo_pwr_mw;
 	uint32_t flags;
 
-	/* The CCI_EVENT is set on a connector disconnect, so check the
-	 * connector status and take the appropriate action. */
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
-	}
-
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
-		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+	if (check_common_cci_flags(port)) {
 		return;
 	}
 
@@ -1936,15 +1935,7 @@ static void pdc_src_typec_only_run(void *obj)
 
 	set_attached_pdc_state(port, SRC_ATTACHED_TYPEC_ONLY_STATE);
 
-	/* The CCI_EVENT is set on a connector disconnect, so check the
-	 * connector status and take the appropriate action. */
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
-	}
-
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
-		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+	if (check_common_cci_flags(port)) {
 		return;
 	}
 
@@ -2003,15 +1994,7 @@ static void pdc_snk_typec_only_run(void *obj)
 
 	set_attached_pdc_state(port, SNK_ATTACHED_TYPEC_ONLY_STATE);
 
-	/* The CCI_EVENT is set on a connector disconnect, so check the
-	 * connector status and take the appropriate action. */
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
-	}
-
-	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
-		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
+	if (check_common_cci_flags(port)) {
 		return;
 	}
 
