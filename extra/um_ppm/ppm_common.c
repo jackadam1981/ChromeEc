@@ -439,7 +439,7 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 			 * update to WAITING_CC_ACK until it was completed.
 			 */
 			ret = ppm_common_execute_pending_cmd(dev);
-			if (ret == -1) {
+			if (ret < 0) {
 				/* CCI error bits are handled by
 				 * execute_pending_command
 				 */
@@ -480,7 +480,7 @@ static void ppm_common_handle_pending_command(struct ppm_common_device *dev)
 			 * |ppm_common_execute_pending_cmd|.
 			 */
 			ret = ppm_common_execute_pending_cmd(dev);
-			if (ret != -1) {
+			if (ret >= 0) {
 				dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
 
 				clear_cci(dev);
@@ -530,7 +530,7 @@ static void ppm_common_task(void *context)
 			sizeof(struct ucsi_control));
 	dev->ucsi_data.control.command = UCSI_CMD_PPM_RESET;
 	if (dev->pd->execute_cmd(ppm, &dev->ucsi_data.control,
-				 dev->ucsi_data.message_in) != -1) {
+				 dev->ucsi_data.message_in) >= 0) {
 		/* Set platform policy before starting the state machine. */
 		ppm_common_apply_platform_policy(dev);
 
