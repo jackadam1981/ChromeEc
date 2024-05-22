@@ -22,6 +22,30 @@
       },
       "revId": "358862e7ae8474caf0f66815155db4cce7019f16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7624fe_4084280b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-05-22T22:07:10Z",
+      "side": 1,
+      "message": "Right, I did consider that, but it would have been the only doxygen comment in this file...so, I stuck to the file\u0027s style. I did double check that the comment is visible in VSCode when you hover over the symbol name.\n\nI\u0027m going to go as-is, but I\u0027m more than willing to use and convert to doxygen in the future.",
+      "parentUuid": "8bd237c2_e841bad2",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 10
+      },
+      "revId": "358862e7ae8474caf0f66815155db4cce7019f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
