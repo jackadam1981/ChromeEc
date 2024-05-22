@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82286a29_02438613",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-05-22T14:12:54Z",
+      "side": 1,
+      "message": "I need to resolve merge conflicts first. Quick look there were few commits on this file that were not CP on this branch in recent years. Some of them may be useful, so probably I would prefer to cherry pick some more commits instead of fixing only this.",
+      "revId": "04ba16c7bddaa2d766b999a71e49cc024e246346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
