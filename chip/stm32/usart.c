@@ -121,6 +121,11 @@ void usart_set_baud_f0_l(struct usart_config const *config, int baud,
 {
 	int div = DIV_ROUND_NEAREST(frequency_hz, baud);
 	intptr_t base = config->hw->base;
+	uint32_t ue;
+
+	/* Record active state and disable the UART. */
+	ue = STM32_USART_CR1(base) & STM32_USART_CR1_UE;
+	STM32_USART_CR1(base) &= ~STM32_USART_CR1_UE;
 
 #ifdef STM32_USART9_BASE
 	if (config->hw->base == STM32_USART9_BASE) /* LPUART */
@@ -142,6 +147,9 @@ void usart_set_baud_f0_l(struct usart_config const *config, int baud,
 		STM32_USART_BRR(base) = ((div / 8) << 4) | (div & 7);
 		STM32_USART_CR1(base) |= STM32_USART_CR1_OVER8;
 	}
+
+	/* Restore active state. */
+	STM32_USART_CR1(base) |= ue;
 }
 
 void usart_set_baud_f(struct usart_config const *config, int baud,
