@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb453ae_7d1b48c6",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-22T22:19:14Z",
+      "side": 1,
+      "message": "Use `collections.namedtuple` to store these values.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fbf37d0f_cf509db0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 7,
+                "startChar": 0,
+                "endLine": 7,
+                "endChar": 0
+              },
+              "replacement": "import collections\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": "\n# A namedtuple to store the information for each compatible\nCompatibleInfo \u003d collections.namedtuple(\n    \"CompatibleInfo\", [\"name\", \"pid_reg\", \"pid_dict\"]\n)\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,bma4xx\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 89,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,bma255\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 93,
+                "startChar": 0,
+                "endLine": 94,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,bmi3xx\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,bmi160\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,bmi260\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,icm426xx\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,icm42607\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,kx022\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 137,
+                "startChar": 0,
+                "endLine": 138,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,lis2de\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 142,
+                "startChar": 0,
+                "endLine": 143,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,lis2ds\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 147,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,lis2dw12\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 152,
+                "startChar": 0,
+                "endLine": 153,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,lsm6dsm\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 160,
+                "startChar": 0,
+                "endLine": 161,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,lsm6dso\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 165,
+                "startChar": 0,
+                "endLine": 166,
+                "endChar": 0
+              },
+              "replacement": "    \"cros-ec,tcs3400\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 170,
+                "startChar": 0,
+                "endLine": 171,
+                "endChar": 0
+              },
+              "replacement": "    \"parade,ps8xxx\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 183,
+                "endChar": 0
+              },
+              "replacement": "    \"nuvoton,nct38xx\": CompatibleInfo(\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 273,
+                "startChar": 0,
+                "endLine": 275,
+                "endChar": 0
+              },
+              "replacement": "            if comp.name is not None:\n                component[\"component_name\"] \u003d comp.name\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 276,
+                "startChar": 0,
+                "endLine": 277,
+                "endChar": 0
+              },
+              "replacement": "            if comp.pid_reg is not None:\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 278,
+                "startChar": 0,
+                "endLine": 279,
+                "endChar": 0
+              },
+              "replacement": "                    {\"PID\": {\"PID_reg\": comp.pid_reg, \"product_name\": comp.pid_dict}}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0b64c6ed140dd9b53ab6a03dda22bbf985edc2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481be602_efa2efe1",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-22T22:19:14Z",
+      "side": 1,
+      "message": "Nit: save it in a local variable as it is used multiple time.",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fd099f88_024f1f48",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 270,
+                "startChar": 0,
+                "endLine": 272,
+                "endChar": 0
+              },
+              "replacement": "        comp_name \u003d component[\"component_name\"]\n        if comp_name in DISAMBIGUATION_DICTIONARY:\n            comp \u003d DISAMBIGUATION_DICTIONARY[comp_name]\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0b64c6ed140dd9b53ab6a03dda22bbf985edc2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e739cc0_f79d5d3e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-22T22:19:14Z",
+      "side": 1,
+      "message": "Put it under the \"i2c\" node and use the expect format, like:\n```\n      \"i2c\": {\n        \"port\": 3,\n        \"addr\": \"0x18\"\n        \"expect\": [\n          {\n            \"reg\": \"0x0f\",\n            \"mask\": \"0xff\",\n            \"value\": \"0x6a\"\n          }\n        ]\n      },\n```",
+      "range": {
+        "startLine": 278,
+        "startChar": 20,
+        "endLine": 278,
+        "endChar": 74
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7db14bfa_d1dcd85b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 278,
+                "startChar": 0,
+                "endLine": 279,
+                "endChar": 0
+              },
+              "replacement": "                    {\n                        \"i2c\": {\n                            \"expect\": [\n                                {\n                                    \"reg\": comp[1],\n                                    \"mask\": \"0x00\",\n                                    \"value\": comp[2],\n                                }\n                            ]\n                        }\n                    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0b64c6ed140dd9b53ab6a03dda22bbf985edc2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
