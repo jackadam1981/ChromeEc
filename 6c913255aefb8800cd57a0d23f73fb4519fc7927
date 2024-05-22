@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d44008c_a79ecf44",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-22T18:31:59Z",
+      "side": 0,
+      "message": "This seems redundant since its origin because we have\n```\n#ifdef CONFIG_KEYBOARD_REFRESH_ROW3\n#define KEYBOARD_ROW_REFRESH 3\n#else\n#define KEYBOARD_ROW_REFRESH 2\n#endif\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ee0f64cc_320442d3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/keyboard_config.h",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "6c913255aefb8800cd57a0d23f73fb4519fc7927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
