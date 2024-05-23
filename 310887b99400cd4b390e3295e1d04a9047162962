@@ -16,6 +16,47 @@
       "message": "CQ is broken due to b/342071252, we\u0027ll merge for firmware branch first",
       "revId": "310887b99400cd4b390e3295e1d04a9047162962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b867406f_358c286e",
+        "filename": "baseboard/mtscp-rv32i/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-05-23T11:13:00Z",
+      "side": 1,
+      "message": "`clang-format`",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f787af6c_e5dce495",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "baseboard/mtscp-rv32i/baseboard.h",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 114,
+                "endChar": 0
+              },
+              "replacement": " * (1) 0x70000000 0x009FF000\n * (2) 0x709FF000 0\n * (3) 0x709FF000 0x1000\n * (4) 0x7A000000 0x05000000\n * (5) 0x7F000000\n"
+            }
+          ]
+        }
+      ],
+      "revId": "310887b99400cd4b390e3295e1d04a9047162962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
