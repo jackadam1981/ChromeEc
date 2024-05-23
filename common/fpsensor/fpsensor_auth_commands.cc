@@ -337,7 +337,8 @@ static enum ec_status unlock_template(uint16_t idx)
 	}
 
 	std::ranges::copy(enc_template, fp_template[idx]);
-	std::ranges::copy(enc_salt, global_context.fp_positive_match_salt[idx]);
+	std::ranges::copy(enc_salt,
+			  global_context.fp_positive_match_salt[idx].begin());
 	global_context.template_states[idx] = fp_decrypted_template_state{
 		.user_id = global_context.user_id,
 	};
