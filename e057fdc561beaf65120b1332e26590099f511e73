@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6fbca0_012d3210",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-23T16:50:00Z",
+      "side": 1,
+      "message": "No longer weird after going back to old fomratting.",
+      "parentUuid": "5b3ee8e6_c790fcef",
+      "range": {
+        "startLine": 1219,
+        "startChar": 0,
+        "endLine": 1221,
+        "endChar": 0
+      },
+      "revId": "e057fdc561beaf65120b1332e26590099f511e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "799006d2_5cedb460",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "After looking at ectool, I think you should go back to a NUL terminated string.",
       "parentUuid": "799006d2_5cedb460",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "e057fdc561beaf65120b1332e26590099f511e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ba096d_9ddff048",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-23T16:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3922f17b_a0607b99",
       "range": {
         "startLine": 57,
         "startChar": 0,
