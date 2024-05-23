@@ -46,6 +46,30 @@
       },
       "revId": "ec447d843f988c82331658035a2447ddb6dfd751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67cbc3d5_6b06e4cc",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 2365,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-23T00:27:47Z",
+      "side": 1,
+      "message": "Actually, adding a mutex guard here (and near line 1283) prevents handle_irqs from calling call_cci_event_cb. I\u0027m investigating why.",
+      "parentUuid": "5b330063_ebacbe90",
+      "range": {
+        "startLine": 2357,
+        "startChar": 0,
+        "endLine": 2365,
+        "endChar": 0
+      },
+      "revId": "ec447d843f988c82331658035a2447ddb6dfd751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
