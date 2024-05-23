@@ -16,6 +16,24 @@
       "message": "isn\u0027t this an input pin?",
       "revId": "79f09fa47378d915cff803b9b60b229ce37f4ea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b30987_ca5ea848",
+        "filename": "zephyr/program/rauru/src/hdmi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-05-23T17:06:51Z",
+      "side": 1,
+      "message": "Right. Fixed.",
+      "parentUuid": "5b6f4db9_0adbc6fd",
+      "revId": "79f09fa47378d915cff803b9b60b229ce37f4ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
