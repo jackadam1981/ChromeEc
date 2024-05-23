@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45aeabd9_350c4ded",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-23T22:01:30Z",
+      "side": 1,
+      "message": "We need to cancel the posted command in this case. Otherwise, it would confuse the PDM if the zombie cmd completes later. I have a CL for that.",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "8e1945d13fae1127c052610ea9f340b9b0c373b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
