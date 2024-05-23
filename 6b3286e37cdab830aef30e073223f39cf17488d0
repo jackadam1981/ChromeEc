@@ -205,6 +205,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00065d7c_d888cb04",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-23T17:51:06Z",
+      "side": 1,
+      "message": "I moved separated CI callback changes and move them to CL:5549007. This CL is now for CC callback changes and retry (as they\u0027re one piece). Ptal.",
+      "parentUuid": "1d779857_3b3e983d",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
