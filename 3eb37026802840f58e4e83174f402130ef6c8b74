@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fbfb6ba_c425dc2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T16:20:49Z",
+      "side": 1,
+      "message": "looks good, but please make sure you re-tested",
+      "revId": "3eb37026802840f58e4e83174f402130ef6c8b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90be9f4e_dd76f2d9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T16:20:49Z",
+      "side": 1,
+      "message": "could as well make this function return the detected devie value",
+      "range": {
+        "startLine": 1252,
+        "startChar": 29,
+        "endLine": 1252,
+        "endChar": 57
+      },
+      "revId": "3eb37026802840f58e4e83174f402130ef6c8b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
