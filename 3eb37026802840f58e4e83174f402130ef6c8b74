@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b20e1731_8b853431",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-23T16:23:17Z",
+      "side": 1,
+      "message": "Already done with latest patchset.",
+      "parentUuid": "5fbfb6ba_c425dc2d",
+      "revId": "3eb37026802840f58e4e83174f402130ef6c8b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "90be9f4e_dd76f2d9",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-23T16:20:49Z",
       "side": 1,
       "message": "could as well make this function return the detected devie value",
+      "range": {
+        "startLine": 1252,
+        "startChar": 29,
+        "endLine": 1252,
+        "endChar": 57
+      },
+      "revId": "3eb37026802840f58e4e83174f402130ef6c8b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235804ae_45b24356",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-23T16:23:17Z",
+      "side": 1,
+      "message": "It returns bool already so I would have to add a \"bad\" value to the gsc_device enum to achieve this which would have a trickle effect on other code paths",
+      "parentUuid": "90be9f4e_dd76f2d9",
       "range": {
         "startLine": 1252,
         "startChar": 29,
