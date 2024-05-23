@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b599bbb6_bf70ecf5",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T21:59:30Z",
+      "side": 1,
+      "message": "I don\u0027t know why should we be looking for cr50-codesigner in PATH. If it is installed, it is installed in `/usr/bin`. It\u0027s the ebuild installer who changes the executable name, and the installer installs only into `/usr/bin`",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "70f176a610d491281a3d583aa1f9ee54d570fd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab88caf2_24fb839c",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T21:59:30Z",
+      "side": 1,
+      "message": "there is no need to quote the variable in this check, other locations of this file don\u0027t use them, let\u0027s keep it consistent.",
+      "range": {
+        "startLine": 153,
+        "startChar": 7,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "70f176a610d491281a3d583aa1f9ee54d570fd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76dca78_bc0fcb59",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T21:59:30Z",
+      "side": 1,
+      "message": "I don\u0027t understand why is this block not combined with lines 183 where this is relevant.\n\nAlso, we do need the codesigner for reef builds, right? And this is going to be fixed, so maybe we should wait for that and then just fail attempts to build Cr50 if codesinger is not available?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "70f176a610d491281a3d583aa1f9ee54d570fd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d366b66_91f354bb",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T21:59:30Z",
+      "side": 1,
+      "message": "we have not been re-building the codesigner in Cr50, let\u0027s not change this.How about this:\n\nIf SIGNER is found, use it; if not - try building it from source, if the source is not available -fail",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 68
+      },
+      "revId": "70f176a610d491281a3d583aa1f9ee54d570fd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
