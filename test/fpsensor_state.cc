@@ -324,7 +324,7 @@ test_fp_command_read_match_secret_derive_fail(void)
 	for (auto &fp_positive_match_salt :
 	     global_context.fp_positive_match_salt) {
 		std::ranges::copy(trivial_fp_positive_match_salt,
-				  fp_positive_match_salt);
+				  fp_positive_match_salt.begin());
 	}
 
 	/* Test with the correct matched finger state and a trivial
@@ -368,7 +368,7 @@ test_fp_command_read_match_secret_derive_succeed(void)
 	for (auto &fp_positive_match_salt :
 	     global_context.fp_positive_match_salt) {
 		std::ranges::copy(default_fake_fp_positive_match_salt,
-				  fp_positive_match_salt);
+				  fp_positive_match_salt.begin());
 	}
 
 	/* Initialize an empty user_id to compare positive_match_secret */
