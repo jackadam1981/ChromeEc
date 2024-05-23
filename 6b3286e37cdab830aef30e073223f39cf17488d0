@@ -181,6 +181,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d779857_3b3e983d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-23T15:21:12Z",
+      "side": 1,
+      "message": "Are you planning to reorder the CLs so that CL:5549007 replaces this CL?",
+      "parentUuid": "e44f3909_642e7515",
+      "range": {
+        "startLine": 2379,
+        "startChar": 0,
+        "endLine": 2379,
+        "endChar": 70
+      },
+      "revId": "6b3286e37cdab830aef30e073223f39cf17488d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "636cf2d5_2cc78406",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 20
