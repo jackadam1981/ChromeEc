@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a802d80_97ee3831",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6318,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-23T16:52:23Z",
+      "side": 1,
+      "message": "No longer NUL-terminated. Length macro moved to ec_commands.h, but I didn\u0027t like the idea of that header owning details of how RTK\u0027s GET_IC_STATUS is laid out, so I made another macro in pdc_rts5xx.c that alos contains the string length plus some BUILD_ASSERTS to make sure we don\u0027t exceed the lengths supported by the HC and `struct pdc_info_t`",
+      "parentUuid": "7537e632_2c562a02",
+      "range": {
+        "startLine": 6318,
+        "startChar": 0,
+        "endLine": 6318,
+        "endChar": 22
+      },
+      "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0f9bf8b_4929cef2",
         "filename": "util/ectool.cc",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-22T15:35:26Z",
       "side": 1,
       "message": "I changed my mind.  I think it\u0027s better to make this NUL terminated.  Most of the other strings in ec_commands.h are documented as NUL terminated.",
+      "range": {
+        "startLine": 11011,
+        "startChar": 0,
+        "endLine": 11014,
+        "endChar": 0
+      },
+      "revId": "da6e46f8360cd38f987c359be8e5046e3238b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d3d6cc_8fbd6952",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 11014,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-23T16:52:23Z",
+      "side": 1,
+      "message": "NUL-terminated",
+      "parentUuid": "e0f9bf8b_4929cef2",
       "range": {
         "startLine": 11011,
         "startChar": 0,
