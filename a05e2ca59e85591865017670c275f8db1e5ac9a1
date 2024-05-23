@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1d97d2b_1038f770",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-23T18:15:04Z",
+      "side": 1,
+      "message": "the end result is that $(SIGNER) remains empty, so yes, but I also need to update other rules",
+      "parentUuid": "32d26635_33be6664",
+      "revId": "a05e2ca59e85591865017670c275f8db1e5ac9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b405ccb_f821efd3",
         "filename": "chip/g/build.mk",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-23T17:43:45Z",
       "side": 1,
       "message": "why is target needed, what depends on it?",
+      "revId": "a05e2ca59e85591865017670c275f8db1e5ac9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449c0453_38213dc6",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-23T18:15:04Z",
+      "side": 1,
+      "message": "added just in case. Practically I need to make it differently to work correctly.",
+      "parentUuid": "9b405ccb_f821efd3",
       "revId": "a05e2ca59e85591865017670c275f8db1e5ac9a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
