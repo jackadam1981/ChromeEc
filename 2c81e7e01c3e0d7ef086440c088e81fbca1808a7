@@ -40,6 +40,30 @@
       },
       "revId": "2c81e7e01c3e0d7ef086440c088e81fbca1808a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c950d8_b87482ed",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-05-23T04:42:23Z",
+      "side": 1,
+      "message": "the reason is on the comment above this line lol\n\nit\u0027s possible that `lock_all \u003d\u003d false` but we want part of the flash (e.g. RO region) be locked.",
+      "parentUuid": "67808d98_97ab6298",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 14
+      },
+      "revId": "2c81e7e01c3e0d7ef086440c088e81fbca1808a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
