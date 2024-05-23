@@ -593,7 +593,7 @@ test_static int test_command_read_match_secret(void)
 
 	/* GIVEN that salt is non-trivial. */
 	std::ranges::copy(fake_positive_match_salt,
-			  global_context.fp_positive_match_salt[0]);
+			  global_context.fp_positive_match_salt[0].begin());
 	/* THEN reading positive match secret should succeed. */
 	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
 				    sizeof(params), &resp, sizeof(resp));
@@ -662,7 +662,7 @@ test_static int test_command_read_match_secret_timeout(void)
 
 	/* EVEN IF encryption salt is non-trivial. */
 	std::ranges::copy(fake_positive_match_salt,
-			  global_context.fp_positive_match_salt[0]);
+			  global_context.fp_positive_match_salt[0].begin());
 	/* Reading secret will fail. */
 	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
 				    sizeof(params), NULL, 0);
@@ -688,7 +688,7 @@ test_static int test_command_read_match_secret_unreadable(void)
 
 	/* EVEN IF encryption salt is non-trivial. */
 	std::ranges::copy(fake_positive_match_salt,
-			  global_context.fp_positive_match_salt[0]);
+			  global_context.fp_positive_match_salt[0].begin());
 	/* Reading secret will fail. */
 	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
 				    sizeof(params), NULL, 0);
