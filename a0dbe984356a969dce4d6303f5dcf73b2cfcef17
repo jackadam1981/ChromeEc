@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833ccecc_31043259",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:49:27Z",
+      "side": 1,
+      "message": "For all of these migrated tests where we\u0027re basically copying the code from an existing test, I think it would be good to add a link to the original source code so that people can find the history of the changes if they need to.\n\nSomething like:\n\nThis code was migrated from the following EC test: https://chromium.googlesource.com/chromiumos/platform/ec/+/5aa9baf19b6b8e1c49276c8c37418d0a2d96f91a/test/printf.c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9415e376_6b826a4b",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:49:27Z",
+      "side": 1,
+      "message": "Any reason not to just use `crec_vsnprintf` everywhere?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529647ea_aa371146",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:49:27Z",
+      "side": 1,
+      "message": "Can these be made `static const` variables? Not sure what Zephyr style is, but Google style generally discourages macros when they can [otherwise be const variables](https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8854ac7e_7d90135a",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:49:27Z",
+      "side": 1,
+      "message": "`ret` was added as compared to original test, but it is not used?",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c1c785_aab1282d",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:49:27Z",
+      "side": 1,
+      "message": "`ret` was added as compared to original test, but it is not used?",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 9
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48c3caf_d00079c0",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:49:27Z",
+      "side": 1,
+      "message": "Since this is a small buffer, what about something like this in place of the loops in this function?\n\n```\nconst uint8_t buf_with_ff[5] \u003d { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };\nstatic_assert(sizeof(buf_with_ff) \u003d\u003d sizeof(str_buf)); \n\n...\n...\n\nzassert_mem_equal(str_buf, buf_with_ff, sizeof(str_buf));\n```",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 2
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
