@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895347ea_1c882483",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T20:15:58Z",
+      "side": 1,
+      "message": "Are there any upstream tests for this that we should be running? e.g., similar to how we\u0027re running the `drivers.flash.stm32.f4` test?\n\nI just want to make sure that upstream testing is sufficient to catch failures for the boards that we\u0027re interested in.\n\nFor reference purposes, could you add a link to the upstream tests?",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 31
+      },
+      "revId": "05410a63322a27bb8aca6cf2f952d29b687e3e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
