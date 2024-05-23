@@ -119,6 +119,8 @@ struct itecomdbgr_config {
 	int page_size;
 	int sector_size;
 
+	bool read_mode_only;
+
 	uint8_t SaveFlag;
 	unsigned long update_start_addr;
 	unsigned long update_end_addr;
@@ -194,20 +196,31 @@ int init_file(struct itecomdbgr_config *conf)
 	int r = 0;
 
 	printf("\n\rOpen file: %s\n\r", conf->file_name);
-	conf->fi = fopen(conf->file_name, "rb");
+
+	if (conf->read_mode_only) {
+		conf->fi = fopen(conf->file_name, "wb");
+		conf->file_size = 0x100000;
+	} else {
+		conf->fi = fopen(conf->file_name, "rb");
+	}
+
 	if (conf->fi != NULL) {
-		fseek(conf->fi, 0, SEEK_END);
-		conf->file_size = ftell(conf->fi);
-		fseek(conf->fi, 0, SEEK_SET);
-		conf->g_writebuf = (uint8_t *)malloc(conf->file_size);
-		if (conf->g_writebuf == NULL) {
-			printf("\n\ralloc g_writebuf fail");
+		if (conf->read_mode_only) {
+			conf->file_size = 0x100000;
+		} else {
+			fseek(conf->fi, 0, SEEK_END);
+			conf->file_size = ftell(conf->fi);
+			fseek(conf->fi, 0, SEEK_SET);
+			conf->g_writebuf = (uint8_t *)malloc(conf->file_size);
+			if (conf->g_writebuf == NULL) {
+				printf("\n\ralloc g_writebuf fail");
+			}
+			fread(conf->g_writebuf, 1, conf->file_size, conf->fi);
 		}
 		conf->g_readbuf = (uint8_t *)malloc(conf->file_size);
 		if (conf->g_readbuf == NULL) {
 			printf("\n\ralloc g_readbuf fail");
 		}
-		fread(conf->g_writebuf, 1, conf->file_size, conf->fi);
 	} else {
 		printf("open file error : %s\n", conf->file_name);
 		r = ITE_ERR;
@@ -239,7 +252,7 @@ void show_time(void)
 unsigned int read_com(struct itecomdbgr_config *conf, uint8_t *inbuff,
 		      int ReadBytes)
 {
-	bool bReadStat;
+	int bReadStat;
 
 	bReadStat = read(conf->g_fd, inbuff, ReadBytes);
 
@@ -325,6 +338,8 @@ static int dbgr_disable_protect_path(struct itecomdbgr_config *conf)
 	for (i = 0; i < 32; i++) {
 		Wr_REG(conf, 0xF020A0 + i, 0);
 	}
+
+	printf("disable protect path complete\n");
 
 	if (ret < 0)
 		fprintf(stderr, "DISABLE PROTECT PATH FROM DBGR FAILED!\n");
@@ -537,9 +552,9 @@ int Read_ID_2(struct itecomdbgr_config *conf)
 }
 
 int FastRead(struct itecomdbgr_config *conf, uint8_t BA, uint8_t A1, uint8_t A0,
-	     uint8_t *buffer)
+	     uint8_t *buffer, int bytes)
 {
-	int result;
+	int result = 0;
 
 	uint8_t fast_read[24] = {
 		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       SPI_FAST_READ,
@@ -550,19 +565,25 @@ int FastRead(struct itecomdbgr_config *conf, uint8_t BA, uint8_t A1, uint8_t A0,
 		W_CMD_PORT, DBUS_256R_DATA, R_BURST_DATA_PORT, 0xFF
 	};
 
-	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
-	write_com(conf, cs_high, sizeof(cs_high));
+	uint8_t fast_read_continue[4] = { W_CMD_PORT, DBUS_256R_DATA,
+					  R_BURST_DATA_PORT, 0xFF };
+
 	write_com(conf, cs_low, sizeof(cs_low));
 	write_com(conf, fast_read, sizeof(fast_read));
 
-	tcflush(conf->g_fd, TCIOFLUSH);
-	if (USE_3M) {
-		msleep(6);
-	} else {
-		msleep(60);
+	while (result < bytes) {
+		result += read_com(conf, buffer + result, 64);
+		result += read_com(conf, buffer + result, 64);
+		result += read_com(conf, buffer + result, 64);
+		result += read_com(conf, buffer + result, 64);
+
+		if (result < bytes) {
+			write_com(conf, fast_read_continue,
+				  sizeof(fast_read_continue));
+		}
 	}
-	result = read_com(conf, buffer, 256);
-	tcflush(conf->g_fd, TCIOFLUSH);
+
+	write_com(conf, cs_high, sizeof(cs_high));
 	return result;
 }
 
@@ -582,8 +603,14 @@ void Erase_4K(struct itecomdbgr_config *conf)
 		W_CMD_PORT, DBUS_DATA, W_DATA_PORT, 0x00,
 	};
 
+	printf("Enable follow mode\n");
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
+	printf("Starting erase: sector size %d\n", conf->sector_size);
+
 	while (start_addr < end_addr) {
+		printf("\rEraseing...     : %d%%",
+		       (++i * 100) / (total_size - 1));
+
 		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
 		check_status(conf, 0x02, 1);
 		write_com(conf, cs_low, sizeof(cs_low));
@@ -594,8 +621,6 @@ void Erase_4K(struct itecomdbgr_config *conf)
 		write_com(conf, cs_high, sizeof(cs_high));
 		check_status(conf, 0x01, 0);
 		start_addr += conf->sector_size;
-		printf("\rEraseing...     : %d%%",
-		       (++i * 100) / (total_size - 1));
 		fflush(stdout);
 	}
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
@@ -603,6 +628,7 @@ void Erase_4K(struct itecomdbgr_config *conf)
 
 void erase_flash(struct itecomdbgr_config *conf)
 {
+	printf("Starting erase\n");
 	Erase_4K(conf);
 	printf("\n\r");
 }
@@ -630,6 +656,8 @@ uint8_t FastRead_Burst_CData(struct itecomdbgr_config *conf, uint8_t *C_Data,
 
 	int total_size = (end_addr - start_addr) / 256;
 
+	show_time();
+
 	if (check_erased) {
 		for (i = 0; i < 256; i++) {
 			allff[i] = 0xFF;
@@ -638,6 +666,13 @@ uint8_t FastRead_Burst_CData(struct itecomdbgr_config *conf, uint8_t *C_Data,
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 	while (start_addr < end_addr) {
+		if (check_erased)
+			printf("\rChecking...     : %d%%               ",
+			       (++j * 100) / (total_size - 1));
+		else
+			printf("\rVerifying...    : %d%%               ",
+			       (++j * 100) / (total_size - 1));
+
 		if ((end_addr - start_addr) >= conf->page_size)
 			read_count = conf->page_size;
 		else
@@ -683,13 +718,6 @@ uint8_t FastRead_Burst_CData(struct itecomdbgr_config *conf, uint8_t *C_Data,
 			}
 		}
 
-		if (check_erased)
-			printf("\rChecking...     : %d%%               ",
-			       (++j * 100) / (total_size - 1));
-		else
-			printf("\rVerifying...    : %d%%               ",
-			       (++j * 100) / (total_size - 1));
-
 		write_com(conf, cs_high, sizeof(cs_high));
 		check_status(conf, 0x01, 0);
 		start_addr += read_count;
@@ -705,6 +733,58 @@ uint8_t FastRead_Burst_CData(struct itecomdbgr_config *conf, uint8_t *C_Data,
 		fclose(pW);
 		printf("\n\rSave FW to save.bin\n\r");
 	}
+
+	show_time();
+
+	return 0;
+}
+
+#define READ_COUNT 1 * 1024
+
+uint8_t read_to_file(struct itecomdbgr_config *conf)
+{
+	int ret;
+	uint8_t DBG_BUF[READ_COUNT];
+	int j = 0;
+	int read_count = READ_COUNT;
+	unsigned long start_addr = conf->update_start_addr;
+	unsigned long end_addr = conf->update_end_addr;
+
+	int total_size = (end_addr - start_addr) / read_count;
+
+	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
+
+	while (start_addr < end_addr) {
+		printf("\rReading...     : %d%%               ",
+		       (++j * 100) / (total_size - 1));
+
+		ret = FastRead(conf, (start_addr >> 16) & 0xFF,
+			       (start_addr >> 8) & 0xFF, (start_addr) & 0xFF,
+			       DBG_BUF, read_count);
+
+		if (ret < 0) {
+			fprintf(stderr, "FastRead failed: %d", ret);
+
+			perror("read");
+			return -1;
+		}
+
+		if (ret != read_count) {
+			fprintf(stderr,
+				"FastRead truncated: bytes read %d, total bytes %d\n",
+				ret, j * 0x100);
+			return -1;
+		}
+
+		memcpy(&conf->g_readbuf[start_addr], DBG_BUF, ret);
+
+		start_addr += read_count;
+	}
+	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
+
+	printf("\n\rSave FW to %s\n\r", conf->file_name);
+	fseek(conf->fi, 0, SEEK_SET);
+	fwrite(conf->g_readbuf, 1, conf->eflash_size_in_k * 1024, conf->fi);
 
 	return 0;
 }
@@ -809,6 +889,7 @@ void Exit_Uart_DBGR_mode(struct itecomdbgr_config *conf)
 int uart_app(struct itecomdbgr_config *conf)
 {
 	struct termios tty;
+	int retries = 0;
 	uint8_t dbgr_reset_buf[4] = { W_CMD_PORT, 0x27, W_DATA_PORT, 0x80 };
 
 	if (conf->device_name == NULL) {
@@ -817,6 +898,7 @@ int uart_app(struct itecomdbgr_config *conf)
 		return -1;
 	}
 
+	printf("Opening %s\n", conf->device_name);
 	conf->g_fd = open(conf->device_name, O_RDWR | O_NOCTTY);
 
 	if (conf->g_fd < 0) {
@@ -847,7 +929,7 @@ int uart_app(struct itecomdbgr_config *conf)
 	tty.c_oflag &= ~ONLCR;
 
 	tty.c_cc[VTIME] = 5;
-	tty.c_cc[VMIN] = 0;
+	tty.c_cc[VMIN] = 64;
 
 	if (USE_3M == 0) {
 		/* set baud rate to 115200 */
@@ -857,11 +939,16 @@ int uart_app(struct itecomdbgr_config *conf)
 		cfsetospeed(&tty, B3000000);
 		cfsetispeed(&tty, B3000000);
 	}
+
+	printf("Setting terminal attributes\n");
 	/*  apply settings to serial port */
 	if (tcsetattr(conf->g_fd, TCSANOW, &tty) != 0) {
 		perror("tcsetattr");
 	}
+	printf("Terminal flush\n");
 	tcflush(conf->g_fd, TCIOFLUSH);
+
+	printf("Enter DBGR mode\n");
 
 	while (1) {
 		if (conf->g_steps == STEPS_TEST) {
@@ -876,7 +963,7 @@ int uart_app(struct itecomdbgr_config *conf)
 
 			/* dbgr reset */
 			write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
-			tcflush(conf->g_fd, TCIOFLUSH);
+			// tcflush(conf->g_fd, TCIOFLUSH);
 			GetChipID(conf);
 			Read_ID_2(conf);
 
@@ -889,6 +976,11 @@ int uart_app(struct itecomdbgr_config *conf)
 		}
 
 		msleep(70);
+
+		if (retries++ > 100) {
+			fprintf(stderr, "Failed to read flash ID\n");
+			goto out;
+		}
 	}
 
 	dbgr_disable_protect_path(conf);
@@ -910,6 +1002,13 @@ int uart_app(struct itecomdbgr_config *conf)
 		printf("\n\rInvalid EFLASH TYPE!");
 		goto out;
 	}
+
+	if (conf->read_mode_only) {
+		printf("\n\rRead flash contents to file\n");
+		read_to_file(conf);
+		goto out;
+	}
+
 	erase_flash(conf);
 	if (check_flash(conf) == FALSE)
 		goto out;
@@ -928,10 +1027,12 @@ int main(int argc, char **argv)
 	int r = 0;
 	int option_index = 0;
 	int c;
-	const char *optstring = "f:d:sh";
+	const char *optstring = "f:d:r:sh";
 	struct option long_options[] = {
-		{ "filename", required_argument, NULL, 'f' },
+		{ "write filename", optional_argument, NULL, 'f' },
+		{ "read filename", optional_argument, NULL, 'r' },
 		{ "device", required_argument, NULL, 'd' },
+		{ "timeout", optional_argument, NULL, 't' },
 		{ "savebin", no_argument, NULL, 's' },
 		{ 0, 0, 0, 0 }
 	};
@@ -961,6 +1062,10 @@ int main(int argc, char **argv)
 			break;
 		case 'd':
 			conf.device_name = optarg;
+			break;
+		case 'r':
+			conf.file_name = optarg;
+			conf.read_mode_only = true;
 			break;
 		case 's':
 			conf.SaveFlag = 1;
