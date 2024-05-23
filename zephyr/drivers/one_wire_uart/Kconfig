@@ -5,13 +5,13 @@
 config PLATFORM_EC_ONE_WIRE_UART
 	bool "One-wire uart driver"
 	depends on DT_HAS_CROS_EC_ONE_WIRE_UART_ENABLED
-	default y
+	default n
 	help
 	  Enable the driver for the communication protocol  over one-wire UART.
 
 config PLATFORM_EC_ONE_WIRE_UART_TABLET
 	bool "One-wire uart tablet module"
-	depends on PLATFORM_EC_ONE_WIRE_UART
+	select PLATFORM_EC_ONE_WIRE_UART
 	help
 	  Enable the module for tablet device.
 
@@ -20,7 +20,7 @@ config PLATFORM_EC_ONE_WIRE_UART_TABLET
 
 config PLATFORM_EC_ONE_WIRE_UART_KEYBOARD
 	bool "One-wire uart keyboard module"
-	depends on PLATFORM_EC_ONE_WIRE_UART
+	select PLATFORM_EC_ONE_WIRE_UART
 	help
 	  Enable the module for keyboard device.
 
