@@ -46,6 +46,30 @@
       },
       "revId": "02feb98f58569305b0296743b2fc1cf1c0fac76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b89607_dea66e05",
+        "filename": "zephyr/drivers/usbc/CMakeLists.txt",
+        "patchSetId": 38
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-23T20:03:28Z",
+      "side": 1,
+      "message": "Please add `TODO(b/339702957)` - We\u0027ll eventually need to move these from `zephyr/subsys/include/ppm.h` to `zephyr/include/drivers/ucsiv3_h` and remove vendor specific things from that file.",
+      "parentUuid": "7a6e9f04_72a95fb5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 63
+      },
+      "revId": "02feb98f58569305b0296743b2fc1cf1c0fac76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
