@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77fb6b1_a3c23f5e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-23T16:46:05Z",
+      "side": 1,
+      "message": "Going to table this for now but I have a proof of concept commit I can upload to try and work on this again later.",
+      "parentUuid": "c64c591f_46326ab0",
+      "range": {
+        "startLine": 508,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 25
+      },
+      "revId": "270db38432608d691ff00329db5ef8c4ddbba05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b67a664_32b32952",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-05-22T18:04:23Z",
       "side": 1,
       "message": "I think this should remain LOG_INF. Otherwise the log gets a bit confusing as it can seem like GET_CONNECTOR_STATUS is duplicated.\n\n24-05-22 17:56:02.324 I: C0: Send PDC_SET_SINK_PATH (9) internal\n24-05-22 17:56:02.418 I: C0: Send PDC_GET_CONNECTOR_STATUS (15) internal\n24-05-22 17:56:02.514 I: C0: Send PDC_GET_CONNECTOR_STATUS (15) internal",
+      "range": {
+        "startLine": 866,
+        "startChar": 4,
+        "endLine": 866,
+        "endChar": 11
+      },
+      "revId": "270db38432608d691ff00329db5ef8c4ddbba05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e17649_3d5ed5be",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-23T16:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b67a664_32b32952",
       "range": {
         "startLine": 866,
         "startChar": 4,
