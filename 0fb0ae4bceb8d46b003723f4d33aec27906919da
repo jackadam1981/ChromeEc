@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f17ace_88e73f09",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-23T20:19:20Z",
+      "side": 1,
+      "message": "What\u0027s necessary from this header here?",
+      "revId": "0fb0ae4bceb8d46b003723f4d33aec27906919da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bfa425_7356f87d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2094,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-23T20:19:20Z",
+      "side": 1,
+      "message": "Non-blocking nit: So with this separation of CI, calling it a CCI callback is confusing. IMO, it should be this instead:\n\n* Command Complete Callback (cc_cb)\n* Change Indication Callback (ci_cb)",
+      "revId": "0fb0ae4bceb8d46b003723f4d33aec27906919da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d275b4_dd78ef16",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-23T20:19:20Z",
+      "side": 1,
+      "message": "Should also check 0 since we expect the connector number. Should probably also add this check to `lpm_alert` (I\u0027ll take care of that + add a test).",
+      "revId": "0fb0ae4bceb8d46b003723f4d33aec27906919da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351f5a9e_ee1170a9",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-23T20:19:20Z",
+      "side": 1,
+      "message": "IMO it makes sense to move the mask setting to the actual call adding the callbacks.\n\nBetween the above registration for PDM and here, I noticed that we aren\u0027t masking the `vendor defined event` either which is confusing to me. That seems like a driver specific thing and we should let the driver decide how to set that mask up.",
+      "revId": "0fb0ae4bceb8d46b003723f4d33aec27906919da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
