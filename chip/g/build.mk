@@ -166,6 +166,8 @@ endif
 # We'll have to tweak the manifest no matter what, but different ways
 # depending on the way the image is built.
 SIGNER_MANIFEST := $(shell mktemp /tmp/h1.signer.XXXXXX)
+COPY_MANIFEST := $(shell /bin/cp $(MANIFEST) $(SIGNER_MANIFEST))
+
 RW_SIGNER_EXTRAS += -j $(SIGNER_MANIFEST) -x util/signer/fuses.xml
 
 ifneq ($(CR50_SWAP_RMA_KEYS),)
@@ -180,18 +182,20 @@ RMA_KEY_BASE := board/$(BOARD)/rma_key_blob.$(CURVE)
 RW_SIGNER_EXTRAS += --swap $(RMA_KEY_BASE).test,$(RMA_KEY_BASE).prod
 endif
 
-endif
-
 ifeq ($(H1_DEVIDS),)
 # Signing with non-secret test key.
 CR50_RW_KEY = loader-testkey-A.pem
-# Make sure manifset Key ID field matches the actual key.
-DUM := $(shell sed 's/860844255/-764428053/' $(MANIFEST) > $(SIGNER_MANIFEST))
 else
-# The private key comes from the sighing fob.
+RW_SIGNER_EXTRAS += --override-keyid
+ifneq ($(USE_CLOUD_KMS_SIGNER),)
+export KMS_PKCS11_CONFIG = $(abspath chip/g/config.yaml)
+PKCS11_MODULE_PATH = $(abspath ../cr50-utils/software/tools/third_party/libkmsp11-1.5-linux-amd64/libkmsp11.so)
+KMS_KEY_RESOURCE_NAME = projects/gsc-cloud-kms-signing/locations/us/keyRings/gsc-node-locked-signing-keys/cryptoKeys/cr50-node-locked-key/cryptoKeyVersions/3
+RW_SIGNER_EXTRAS += --pkcs11_engine="$(PKCS11_MODULE_PATH):0:$(KMS_KEY_RESOURCE_NAME)"
+CR50_RW_KEY = cr50_RW-prod.pem.pub
+else
 CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
-
-ifneq ($(CHIP_MK_INCLUDED_ONCE),)
+endif
 #
 # When building a node locked cr50 image for an H1 device with prod RO, the
 # manifest needs to be modifed to include the device ID of the chip the image
@@ -213,19 +217,13 @@ ifneq ($(CR50_DEV),)
 # H1, whatever its info mask state is. The awk script below clears out the
 # info {} section of the manifest.
 #
-MODIFY_MANIFEST := $(shell /usr/bin/awk 'BEGIN {skip = 0}; \
+MODIFY_MANIFEST := $(shell /usr/bin/awk -i inplace 'BEGIN {skip = 0}; \
 	/^},/ {skip = 0}; \
 	{if (!skip) {print };} \
-	/"info": {/ {skip = 1};' $(MANIFEST) > $(SIGNER_MANIFEST))
-else
-MODIFY_MANIFEST := $(shell /bin/cp $(MANIFEST) $(SIGNER_MANIFEST))
+	/"info": {/ {skip = 1};' $(SIGNER_MANIFEST))
 endif
-REPLACEMENT := $(shell printf \
-	'\\n    \\"DEV_ID0\\": %s,\\n    \\"DEV_ID1\\": %s,' $(H1_DEVIDS))
-NODE_JSON :=  $(shell sed -i \
-	"s/\"fuses\": {/\"fuses\": {$(REPLACEMENT)/" $(SIGNER_MANIFEST))
-
-endif  # CHIP_MK_INCLUDED_ONCE defined
+RW_SIGNER_EXTRAS += --dev_id0=$(word 1, $(H1_DEVIDS))
+RW_SIGNER_EXTRAS += --dev_id1=$(word 2, $(H1_DEVIDS))
 endif  # H1_DEVIDS defined
 
 # Modify the manifest tag field to match the board name. This is necessary for
@@ -249,7 +247,8 @@ $(shell sed -i "s/tag\": \"0\{$(HEX_LEN)\}/tag\": \"$(HEX_NAME)/" \
 # # and then again after defining all the CONFIG_ and HAS_TASK variables. We use
 # # a guard so that recipe definitions and variable extensions only happen the
 # # second time.
-ifneq ($(CHIP_MK_INCLUDED_ONCE),)
+else
+# This is the second pass of this make file.
 $(out)/RW/ec.RW_B.flat: $(out)/RW/ec.RW.flat
 $(out)/RW/ec.RW.flat $(out)/RW/ec.RW_B.flat: SIGNER_EXTRAS = $(RW_SIGNER_EXTRAS)
 
