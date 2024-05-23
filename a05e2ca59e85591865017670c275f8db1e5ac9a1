@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d26635_33be6664",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T17:43:45Z",
+      "side": 1,
+      "message": "should this be set after line 155 so that it is present only in the `else` case?",
+      "revId": "a05e2ca59e85591865017670c275f8db1e5ac9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b405ccb_f821efd3",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T17:43:45Z",
+      "side": 1,
+      "message": "why is target needed, what depends on it?",
+      "revId": "a05e2ca59e85591865017670c275f8db1e5ac9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
