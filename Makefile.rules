@@ -651,6 +651,16 @@ $(out)/RO/%.o:%.cc
 $(out)/RW/%.o:%.cc
 	$(call quiet,cxx_to_o,CXX    )
 
+$(out)/RO/third_party/druid/private/%.o:private/%.cc
+	$(call quiet,cxx_to_o,CXX    )
+$(out)/RW/third_party/druid/private/%.o:private/%.cc
+	$(call quiet,cxx_to_o,CXX    )
+
+$(out)/RO/test/../third_party/druid/private/%.o:../private/%.cc
+	$(call quiet,cxx_to_o,CXX    )
+$(out)/RW/test/../third_party/druid/private/%.o:../private/%.cc
+	$(call quiet,cxx_to_o,CXX    )
+
 $(out)/RO/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
 $(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
 	$(call quiet,cxx_to_o,CXX    )

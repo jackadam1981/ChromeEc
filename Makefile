@@ -352,14 +352,21 @@ include third_party/boringssl/common/build.mk
 include crypto/build.mk
 endif
 
+
 # Collect all includes.
 includes-y+=$(call objs_from_dir_p,private,private-incs,y)
 includes+=$(includes-y)
+includes+=third_party/druid
+includes+=../third_party/druid
+includes+=$(druid-incs-y)
+$(info includes $(includes))
 
 # Collect all build object output directories.
 # This is different than the dirs variable, which serves as include path
 # and build output directory creation.
 dirs-y+=$(call objs_from_dir_p,private,private-dirs,y)
+dirs-y+=$(druid-dirs-y)
+$(info dir-y: $(dirs-y))
 
 # Wrapper for fetching all the sources relevant to this build
 # target.
@@ -400,6 +407,19 @@ all-obj-$(1)+= \
 all-obj-$(1)+= $(call objs_from_dir_p,crypto,crypto,$(1))
 endif
 endef
+
+$(info $($(druid-rw)))
+all-obj-rw+=$(druid-rw)
+all-obj-ro+=$(druid-ro)
+all-obj-y+=$(druid-y)
+
+all-obj-y+=$($(PROJECT)-y)
+all-obj-rw+=$($(PROJECT)-rw)
+all-obj-ro+=$($(PROJECT)-ro)
+
+$(info all-obj-rw: $(all-obj-rw))
+$(info all-obj-y: $(all-obj-y))
+$(info all-obj-ro: $(all-obj-ro))
 
 # Get all sources to build
 $(eval $(call get_sources,y))
