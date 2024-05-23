@@ -78,8 +78,9 @@ struct fpsensor_context {
 	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> user_id;
 	struct positive_match_secret_state positive_match_secret_state;
 	/** Salt used in derivation of positive match secret. */
-	uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
-				      [FP_POSITIVE_MATCH_SALT_BYTES];
+	std::array<std::array<uint8_t, FP_POSITIVE_MATCH_SALT_BYTES>,
+		   FP_MAX_FINGER_COUNT>
+		fp_positive_match_salt;
 	/** The states for different fingers. */
 	std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
 	/** Encryption/decryption buffer. */
