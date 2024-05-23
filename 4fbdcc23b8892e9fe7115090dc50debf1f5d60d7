@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe0f07a_efb525a4",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-23T20:24:26Z",
+      "side": 1,
+      "message": "@keith - Any suggestion on which errno to use here? `-EIO` seems like a close approximation.",
+      "revId": "4fbdcc23b8892e9fe7115090dc50debf1f5d60d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
