@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc768915_f745a330",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-23T16:14:24Z",
+      "side": 1,
+      "message": "I think I have refactor the code to incorporate this suggestions. PTAL.",
+      "parentUuid": "8241351c_7e7a35a1",
+      "range": {
+        "startLine": 1339,
+        "startChar": 0,
+        "endLine": 1343,
+        "endChar": 0
+      },
+      "revId": "b6d0d38249de2853b52e34b0904c3a0ef496cc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9c0fa55_ab173dce",
