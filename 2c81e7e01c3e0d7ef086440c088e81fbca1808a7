@@ -64,6 +64,30 @@
       },
       "revId": "2c81e7e01c3e0d7ef086440c088e81fbca1808a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798c5bce_275e3d53",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2024-05-23T06:50:52Z",
+      "side": 1,
+      "message": "From offline discussion, no extra action item for this part.",
+      "parentUuid": "f4c950d8_b87482ed",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 14
+      },
+      "revId": "2c81e7e01c3e0d7ef086440c088e81fbca1808a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
