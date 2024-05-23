@@ -44,6 +44,9 @@
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
+#include <libec/ec_updater.h>
+#include <libec/ec_firmware.h>
+#include <libec/ec_status.h>
 #include <memory>
 #include <optional>
 #include <string>
@@ -1525,6 +1528,37 @@ int cmd_flash_protect(int argc, char *argv[])
 				static_cast<int>(flash_protect_command
 							 .GetWritableFlags()));
 
+		return -1;
+	}
+
+	return 0;
+}
+
+int cmd_update_image(int argc, char *argv[])
+{
+	enum ec_image image = EC_IMAGE_UNKNOWN;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <filename> [RO|RW]\n",
+			argv[0]);
+		return -1;
+	}
+
+	if (argc > 2) {
+		if (!strcasecmp(argv[2], "RO")) {
+			image = EC_IMAGE_RO;
+		} else if (!strcasecmp(argv[2], "RW")) {
+			image = EC_IMAGE_RW;
+		}
+	}
+
+	auto ec_updater = ec::EcUpdater::Create(comm_get_fd());
+	if (!ec_updater) {
+		fprintf(stderr, "Failed to init updater\n");
+		return -1;
+	}
+
+	if (ec_updater->UpdateImage(base::FilePath(argv[1]), image) != ec::Status::kOk) {
 		return -1;
 	}
 
@@ -12554,6 +12588,9 @@ const struct command commands[] = {
 	{ "typecvdmresponse", cmd_typec_vdm_response,
 	  "<port>\n"
 	  "\tGet last VDM response for AP-requested VDM." },
+	{ "updateimage", cmd_update_image,
+	  "<filename> [RO|RW]\n"
+	  "\tUpdate EC image with host commands." },
 	{ "uptimeinfo", cmd_uptimeinfo,
 	  "\n\tGet info about how long the EC has been running and the most\n"
 	  "\trecent AP resets." },
