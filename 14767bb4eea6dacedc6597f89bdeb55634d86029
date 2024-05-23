@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0362cba_168a826f",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-23T02:33:36Z",
+      "side": 0,
+      "message": "this was a noop, because `CHIP_MK_INCLUDED_ONCE` is set in line 151",
+      "revId": "14767bb4eea6dacedc6597f89bdeb55634d86029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
