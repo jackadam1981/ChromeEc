@@ -537,8 +537,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 				FP_NO_SUCH_TEMPLATE;
 			trng_init();
 			trng_rand_bytes(
-				global_context.fp_positive_match_salt[fgr],
-				FP_POSITIVE_MATCH_SALT_BYTES);
+				global_context.fp_positive_match_salt[fgr]
+					.data(),
+				global_context.fp_positive_match_salt[fgr]
+					.size());
 			trng_exit();
 		}
 
@@ -685,7 +687,7 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 		return EC_RES_INVALID_PARAM;
 	}
 	std::ranges::copy(positive_match_salt,
-			  global_context.fp_positive_match_salt[idx]);
+			  global_context.fp_positive_match_salt[idx].begin());
 
 	global_context.templ_valid++;
 	return EC_RES_SUCCESS;
