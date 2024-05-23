@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b040a5_7000e9d4",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T22:15:21Z",
+      "side": 1,
+      "message": "Can you put a link to the relevant tests? Do the shim layer unit tests run on hardware? If not, we may want to figure out how to make that work.",
+      "range": {
+        "startLine": 383,
+        "startChar": 12,
+        "endLine": 383,
+        "endChar": 88
+      },
+      "revId": "848c6720922698f335179597bb49aef3e01715c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
