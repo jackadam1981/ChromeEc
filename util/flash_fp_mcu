@@ -1084,6 +1084,37 @@ config_myst() {
   readonly GPIO_PWREN=772
 }
 
+config_brox() {
+  readonly TRANSPORT="SPI"
+  readonly DEVICE="/dev/spidev0.0" # need check
+
+  # See kernel/v6.6/drivers/pinctrl/intel/pinctrl-tigerlake.c
+  # for pin name and pin number.
+  # Examine `cat /sys/kernel/debug/pinctrl/INTC1055:00/gpio-ranges` on a
+  # rex device to determine gpio number from pin number.
+  # For example: GPP_E21, the pin number is 247 from the pinctrl-meteorlake.c.
+  # From the gpio-ranges, the gpio value is 925 + (215-204) = 936 // need update
+
+  local gpiochip_dev_path="pci0000:00/INTC1055:00/gpio"
+  local gpiobase
+  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
+    echo "Unable to find gpio chip base"
+    return "${EXIT_PRECONDITION}"
+  fi
+
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
+
+  # FPMCU RST_ODL is on GPP_E21 = 64 + (247 - 29) = 87
+  local gpionrst=87
+  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  # FPMCU BOOT0 is on GPP_D9 = 64 + (108 - 29) = 86
+  local gpioboot=86
+  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  # FP_PWR_EN is on GPP_E20 = 352 + (246-204) = 363
+  local gpiopwren=363
+  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+}
+
 main() {
   local filename="$1"
   local chip_type
