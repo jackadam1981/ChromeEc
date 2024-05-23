@@ -157,6 +157,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2546f47_9c6f0641",
+        "filename": "zephyr/test/hwtest/src/ftrapv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-23T23:08:44Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n\nSorry, forgot to respond on this one.\n\n\u003e While IPSR is a duplication of xPSR, so it is not a problem, we would overwrite values of R4/R5 regs provided with the esf structure.\n\nDo we need to maintain ABI compatibility on the `panic_data` structure if we change the ? IIRC we have some code [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/ec_panicinfo.cc) that [parses the structure in userspace](https://source.chromium.org/search?q\u003dParsePanicInfo\u0026start\u003d11). Can we increase the size of the `panic_data` struct (probably with a new `panic_data_v2` struct), increment the `struct_version`, and use that to be able to parse either one?",
+      "parentUuid": "25be9a4d_650b6035",
+      "revId": "614229c93845d214709275fb0e79017834f12a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b430f62d_b0a5186d",
         "filename": "zephyr/test/hwtest/src/ftrapv.c",
         "patchSetId": 4
