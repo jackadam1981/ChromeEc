@@ -312,7 +312,6 @@ endef
 # Include all subdirs under feature-x.
 feature-x-builds = $(wildcard ../feature-x/*/ec/build.mk)
 include $(feature-x-builds)
-$(eval $(call vars_from_dir,private,../feature-x,feature-x))
 
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
