@@ -56,6 +56,7 @@ static void board_init(void)
 		motion_sensor_count = 0;
 		gmr_tablet_switch_disable();
 		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_acc));
 		/* Base accel is not stuffed, don't allow line to float */
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
 				      GPIO_INPUT | GPIO_PULL_DOWN);
