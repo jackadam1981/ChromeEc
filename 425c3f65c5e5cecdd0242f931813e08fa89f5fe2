@@ -22,6 +22,30 @@
       },
       "revId": "425c3f65c5e5cecdd0242f931813e08fa89f5fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f5ecc9_29c3934c",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-24T17:29:53Z",
+      "side": 1,
+      "message": "We do not have a MASK constant meant for this field, and the code depends on the fields being exactly two bits wide and consecutive in the register, but I have introduced a MASK constant, to make it clear what is going on.",
+      "parentUuid": "2a15b21d_f96267e3",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "425c3f65c5e5cecdd0242f931813e08fa89f5fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
