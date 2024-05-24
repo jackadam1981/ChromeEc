@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff31469_c9825a46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T15:03:06Z",
+      "side": 1,
+      "message": "Please add a test for `pdc_execute_command_sync()` to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/pdc/src/generic/pdc_api.c\n\nThis can be done as a separate CL, but it should be part of the CL chain that is submitted together.",
+      "revId": "7ca19f1fdcd5edce4a48aa1e35d69f98b28040fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
