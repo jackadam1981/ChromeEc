@@ -1,0 +1,30 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel modular add-in card (AIC) port
+
+compatible: "intel,modular-aic-port"
+
+include: intel,modular-aic-props.yaml
+
+properties:
+  id:
+    type: int
+    required: false
+    description: |
+      Sets the affinity of this particular port with a port number in a system.
+      ID is required only when port type is `MODULAR_AIC_PORT_TYPE_FIXED`, since
+      modular ports have generic interfaces that can be connected to any device.
+  devices:
+    type: phandles
+    required: false
+    description: |
+      List of devices bound to an AIC depending on its properties. Any driver
+      whose execution depends on device detection by an AIC, can be listed in
+      this property to condition its initialization, and establish
+      initialization order in case multiple drivers are dependant.
+      It is mandatory that all drivers listed here must have property
+      `zephyr,deferred-init` set as part of its node definition; this is to
+      ensure its initialization is executed at the right time once AIC detection
+      has been completed.
