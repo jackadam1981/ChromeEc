@@ -186,7 +186,7 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 		fp_reset_context();
 	}
 
-	RAND_bytes(auth_nonce.data(), auth_nonce.size());
+	rand_bytes(auth_nonce);
 
 	std::ranges::copy(auth_nonce, r->nonce);
 
