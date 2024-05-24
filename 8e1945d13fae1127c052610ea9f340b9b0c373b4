@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58d2d8df_62b0894e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T15:50:44Z",
+      "side": 1,
+      "message": "`cci_event_mask` isn\u0027t checked by the PDC driver or by the PDC API.",
+      "range": {
+        "startLine": 2154,
+        "startChar": 0,
+        "endLine": 2157,
+        "endChar": 0
+      },
+      "revId": "8e1945d13fae1127c052610ea9f340b9b0c373b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ceaca7_0ed67f47",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T15:50:44Z",
+      "side": 1,
+      "message": "Should the driver fire the callbacks instead of returning `\u003e 0`?  It would make the API call consistent: `0` is success, everything else is an error.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "8e1945d13fae1127c052610ea9f340b9b0c373b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7caaa5_b051d319",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T15:50:44Z",
+      "side": 1,
+      "message": "Instead of a counter, how about using `sys_timepoint_calc()` and `sys_timepoint_expired()`?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 21
+      },
+      "revId": "8e1945d13fae1127c052610ea9f340b9b0c373b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45aeabd9_350c4ded",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 31
