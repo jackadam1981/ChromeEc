@@ -263,3 +263,8 @@ void rand_bytes(std::span<uint8_t> buffer)
 {
 	RAND_bytes(buffer.data(), buffer.size());
 }
+
+void secure_clear(std::span<uint8_t> buffer)
+{
+	OPENSSL_cleanse(buffer.data(), buffer.size());
+}
