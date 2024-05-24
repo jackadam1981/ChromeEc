@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb00a91_7f4f0564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T18:04:29Z",
+      "side": 1,
+      "message": "Please move this cleanup to a separate CL.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "b6c45dd44aadf58b0b03f831812d3a21e60cc3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d141751_bd5bb695",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T18:04:29Z",
+      "side": 1,
+      "message": "Should this be indexed from 1 to match the UCSI definition, and use 0 to indicate an invalid value?",
+      "range": {
+        "startLine": 745,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 0
+      },
+      "revId": "b6c45dd44aadf58b0b03f831812d3a21e60cc3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
