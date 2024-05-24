@@ -1,0 +1,69 @@
+/* Copyright 2025 The Chromium OS Authors. All rights reserved
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#include <board-overlays/native_sim.dts>
+
+/ {
+	/* GPIO emulator initialization priority lesser than i2c emulator */
+	pca95xx_1: pca95xx@23 {
+		compatible = "zephyr,gpio-emul";
+		/* label marked deprecated for gpio-emul */
+		/* label = "PCA95XX"; */
+		reg = <0x23 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <16>;
+	};
+
+	named-gpios {
+		mod_aic2_detect: mod-tcss2-detect {
+			gpios = <&pca95xx_1 1  GPIO_INPUT>;
+		};
+		mod_aic1_detect: mod-tcss1-detect {
+			gpios = <&pca95xx_1 0  GPIO_INPUT>;
+		};
+		ac-present {
+			gpios = <&gpio0 9 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+	};
+
+	 named-i2c-ports {
+                compatible = "named-i2c-ports";
+
+                i2c_pd_pow: i2c-pd-pow {
+                        i2c-port = <&i2c0>;
+                        enum-names = "I2C_PORT_PD_POW";
+                };
+
+		charger: i2c-charger {
+			i2c-port = <&i2c0>;
+			enum-names = "CHARGER";
+		};
+        };
+
+};
+
+&i2c0 {
+        battery: sb@b {
+                compatible = "zephyr,smart-battery-emul";
+                reg = <0xb>;
+                cycle-count = <6>;
+                version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+                desired-charg-volt = <11250>;
+                desired-charg-cur = <2400>;
+                mf-name = "LGC";
+                dev-name = "AP18C8K";
+        };
+
+        smbus_ara_emul: smbus_ara@c {
+                compatible = "zephyr,smbus-ara-emul";
+                reg = <0xc>;
+        };
+};
+

@@ -1,0 +1,42 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	modular-aic-slots {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		/* Slots definition */
+		mod_aic_slot1: mod-aic-slot@1 {
+			compatible = "intel,modular-aic-slot";
+			reg = <0>;
+			detect-gpios = <&pca95xx_1 0 GPIO_ACTIVE_LOW>;
+			conn-type = "INTEL_MODULAR_AIC_PORT_CONN_TYPE_USBC";
+			detection-power-state = "AP_POWER_STATE_S4";
+			ports = <&mod_port1>;
+		};
+		mod_aic_slot2: mod-aic-slot@2 {
+			compatible = "intel,modular-aic-slot";
+			reg = <1>;
+			detect-gpios = <&pca95xx_1 1 GPIO_ACTIVE_LOW>;
+			conn-type = "INTEL_MODULAR_AIC_PORT_CONN_TYPE_HDMI";
+			ports = <&mod_port2>;
+		};
+	};
+	/* Ports Definition */
+	mod_port1: mod-port1 {
+		compatible = "intel,modular-aic-port";
+	};
+	mod_port2: mod-port2 {
+		compatible = "intel,modular-aic-port";
+	};
+};
+
+&mod_aic1_detect {
+	no-auto-init;
+};
+
+&mod_aic2_detect {
+	no-auto-init;
+};

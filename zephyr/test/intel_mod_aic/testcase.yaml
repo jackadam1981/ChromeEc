@@ -1,0 +1,21 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+common:
+  platform_allow:
+    - native_sim
+tests:
+  intel_mod_aic.default:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - mod_aic.dtsi
+      - power_signals.dtsi
+    extra_configs:
+      - CONFIG_TEST_SUITE_INTEL_MOD_AIC=y
+      - CONFIG_AP_PWRSEQ=y
+      - CONFIG_AP_PWRSEQ_DRIVER=y
+      - CONFIG_AP_POWER_EVENTS_MOCK=y
+      - CONFIG_POWER_SIGNALS_MOCK=y
+      - CONFIG_CHIPSET_API_MOCK=y
+      - CONFIG_AP_EVENTS=n
