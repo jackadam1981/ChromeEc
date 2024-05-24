@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18c3020_c1cf72fd",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "263e388d_ac6a3643",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 54
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f7c5585_2c786544",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-24T15:30:49Z",
       "side": 1,
       "message": "Renaming this will help make it clear about the responsibility of each callback type.\n\nHow about `pdc_set_cc_callback()` and `pdc_add_ci_callback()`.\n\nAs noted in the rts54xx driver, I think the driver should only call one callback type on each CCI event received from the PDC chip.",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 63
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4e053b_5979fb78",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7c5585_2c786544",
       "range": {
         "startLine": 576,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "799315a8_d0a4dd11",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900d8916_5a440cfc",
+      "range": {
+        "startLine": 1140,
+        "startChar": 16,
+        "endLine": 1140,
+        "endChar": 48
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3926d78_dadb5582",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-24T15:30:49Z",
       "side": 1,
       "message": "Add a note, that this should only be called by PDC drivers and not the user.",
+      "range": {
+        "startLine": 1156,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 78
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882e684b_9a914372",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3926d78_dadb5582",
       "range": {
         "startLine": 1156,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "383d29de_2288bd73",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6f4dcbe_60d01ee1",
+      "range": {
+        "startLine": 1188,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 79
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "237920eb_65c7f40d",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-05-24T15:30:49Z",
       "side": 1,
       "message": "This check treats the `cci_event.connector_change` as a bit mask, but `connector_change` is the connector number that generated the event.",
+      "range": {
+        "startLine": 1202,
+        "startChar": 0,
+        "endLine": 1202,
+        "endChar": 59
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c937a53f_380e9f17",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "237920eb_65c7f40d",
       "range": {
         "startLine": 1202,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "941bc340_6c38a9dd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d72260_3fd84e15",
+      "range": {
+        "startLine": 2153,
+        "startChar": 28,
+        "endLine": 2153,
+        "endChar": 44
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f03e3421_6875ed86",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-05-24T15:30:49Z",
       "side": 1,
       "message": "I expect that the PDC device always sets the `connector_change` field to 0, so without any other bits set, is this callback getting triggered?",
+      "range": {
+        "startLine": 234,
+        "startChar": 13,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "f954527799157fc802d6a09f56823d5944974ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7970f56_61343dfc",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-24T21:34:47Z",
+      "side": 1,
+      "message": "I removed bit mask check from pdc_fire_callback. So, CI events will call CI callbacks unconditionally.",
+      "parentUuid": "f03e3421_6875ed86",
       "range": {
         "startLine": 234,
         "startChar": 13,
