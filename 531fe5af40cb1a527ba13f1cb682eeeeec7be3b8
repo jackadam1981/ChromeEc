@@ -46,6 +46,30 @@
       },
       "revId": "531fe5af40cb1a527ba13f1cb682eeeeec7be3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efe5ae4_b5d6d42d",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-05-24T03:51:21Z",
+      "side": 1,
+      "message": "removed. it is not needed with change in Makefile.rules",
+      "parentUuid": "5b535ebb_ff646049",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "531fe5af40cb1a527ba13f1cb682eeeeec7be3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
