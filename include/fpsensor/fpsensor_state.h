@@ -22,6 +22,7 @@
 #include <stdint.h>
 
 #include <array>
+#include <optional>
 #include <span>
 
 /* if no special memory regions are defined, fallback on regular SRAM */
@@ -61,7 +62,7 @@ struct positive_match_secret_state {
 
 struct fpsensor_context {
 	/** Index of the last enrolled but not retrieved template. */
-	uint16_t template_newly_enrolled;
+	std::optional<uint16_t> template_newly_enrolled;
 	/** Number of used templates */
 	uint16_t templ_valid;
 	/** Bitmap of the templates with local modifications */
