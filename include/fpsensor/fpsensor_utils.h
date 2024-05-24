@@ -9,8 +9,16 @@
 #define __CROS_EC_FPSENSOR_FPSENSOR_UTILS_H
 
 #include "common.h"
+#include "ec_commands.h"
 
 #include <cstdint>
+#include <optional>
+
+struct match_result {
+	uint8_t error_code = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
+	std::optional<uint8_t> finger_match_index;
+	std::optional<uint8_t> finger_update_index;
+};
 
 /**
  * Test that size+offset does not exceed buffer_size
