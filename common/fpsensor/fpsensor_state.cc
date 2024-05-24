@@ -50,7 +50,7 @@ static_assert(
 static struct enc_buffer enc_buffer FP_TEMPLATE_SECTION;
 
 struct fpsensor_context global_context = {
-	.template_newly_enrolled = FP_NO_SUCH_TEMPLATE,
+	.template_newly_enrolled = std::nullopt,
 	.templ_valid = 0,
 	.templ_dirty = 0,
 	.fp_events = 0,
@@ -95,7 +95,7 @@ void fp_reset_context()
 {
 	global_context.templ_valid = 0;
 	global_context.templ_dirty = 0;
-	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
+	global_context.template_newly_enrolled = std::nullopt;
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
 	OPENSSL_cleanse(&global_context.fp_enc_buffer,
 			sizeof(global_context.fp_enc_buffer));
