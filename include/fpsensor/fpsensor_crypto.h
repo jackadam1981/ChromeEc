@@ -109,4 +109,12 @@ enum ec_error_list aes_128_gcm_decrypt(std::span<const uint8_t> key,
  */
 void rand_bytes(std::span<uint8_t> buffer);
 
+/**
+ * Sets @buffer to all zeroes. Guaranteed not to be optimized out by the
+ * compiler.
+ *
+ * @param[in/out] buffer buffer to clear.
+ */
+void secure_clear(std::span<uint8_t> buffer);
+
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_CRYPTO_H */
