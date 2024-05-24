@@ -85,7 +85,7 @@ get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
 	memcpy(ikm.data() + IKM_OTP_OFFSET_BYTES, otp_key, sizeof(otp_key));
 	BUILD_ASSERT((IKM_SIZE_BYTES - IKM_OTP_OFFSET_BYTES) ==
 		     sizeof(otp_key));
-	OPENSSL_cleanse(otp_key, OTP_KEY_SIZE_BYTES);
+	secure_clear(otp_key);
 #endif
 
 	return EC_SUCCESS;
