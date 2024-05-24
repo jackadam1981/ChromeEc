@@ -6511,6 +6511,7 @@ enum cbi_data_tag {
 	CBI_TAG_BATTERY_CONFIG = 12,
 	/* CBI_TAG_BATTERY_CONFIG_1 ~ 15 will use 13 ~ 27. */
 	CBI_TAG_BATTERY_CONFIG_15 = 27,
+	CBI_TAG_MODULAR_IO_ID = 28, /* uint32_t or smaller */
 
 	/* Last entry */
 	CBI_TAG_COUNT,

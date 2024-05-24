@@ -1,0 +1,63 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel modular add-in card (AIC) properties
+
+compatible: "intel,modular-aic-props"
+
+properties:
+  type:
+    type: string
+    default: MODULAR_AIC_PORT_TYPE_FIXED
+    description: Type of modular AIC.
+    enum:
+      - MODULAR_AIC_PORT_TYPE_FIXED
+      - MODULAR_AIC_PORT_TYPE_MODULAR
+  conn-type:
+    type: string
+    default: MODULAR_AIC_PORT_CONN_TYPE_RESERVED
+    description: Type of modular AIC.
+    enum:
+      - MODULAR_AIC_PORT_CONN_TYPE_RESERVED
+      - MODULAR_AIC_PORT_CONN_TYPE_TYPEA
+      - MODULAR_AIC_PORT_CONN_TYPE_TYPEC
+      - MODULAR_AIC_PORT_CONN_TYPE_HDMI
+      - MODULAR_AIC_PORT_CONN_TYPE_DP
+      - MODULAR_AIC_PORT_CONN_TYPE_EDP
+  retimer-status:
+    type: string
+    default: MODULAR_AIC_PORT_RETIMER_NOT_PRESENT
+    description: Type of modular AIC.
+    enum:
+      - MODULAR_AIC_PORT_RETIMER_NOT_PRESENT
+      - MODULAR_AIC_PORT_RETIMER_SINGLE
+      - MODULAR_AIC_PORT_RETIMER_DUAL
+  pd-cntrl-type:
+    type: string
+    default: MODULAR_AIC_PORT_PD_CNTRL_UNDEFINED
+    description: Type of modular AIC.
+    enum:
+      - MODULAR_AIC_PORT_PD_CNTRL_UNDEFINED
+      - MODULAR_AIC_PORT_PD_CNTRL_TI
+      - MODULAR_AIC_PORT_PD_CNTRL_CYPRESS
+      - MODULAR_AIC_PORT_PD_CNTRL_REALTEK
+      - MODULAR_AIC_PORT_PD_CNTRL_GOTHIC_BRIDGE
+  tbt-status:
+    type: string
+    default: MODULAR_AIC_PORT_TBT_NOT_CAPABLE
+    description: Type of modular AIC.
+    enum:
+      - MODULAR_AIC_PORT_TBT_NOT_CAPABLE
+      - MODULAR_AIC_PORT_TBT_CAPABLE
+  data-speed:
+    type: string
+    default: MODULAR_AIC_PORT_DATA_SPEED_UNDEFINED
+    description: Type of modular AIC.
+    enum:
+      - MODULAR_AIC_PORT_DATA_SPEED_UNDEFINED
+      - MODULAR_AIC_PORT_DATA_SPEED_6GBPS
+      - MODULAR_AIC_PORT_DATA_SPEED_12GBPS
+      - MODULAR_AIC_PORT_DATA_SPEED_20GBPS
+      - MODULAR_AIC_PORT_DATA_SPEED_40GBPS
+      - MODULAR_AIC_PORT_DATA_SPEED_80GBPS

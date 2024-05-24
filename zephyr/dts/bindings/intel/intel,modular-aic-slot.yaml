@@ -1,0 +1,31 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel modular add-in card (AIC) slot
+
+compatible: "intel,modular-aic-slot"
+
+include: intel,modular-aic-props.yaml
+
+properties:
+  id:
+    type: int
+    required: true
+    description: |
+      Number associated to modular AIC slot.
+  detect-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      GPIO used to detect modular AIC presence in platform.
+  sampling-power-state:
+    type: string
+    required: false
+    description: |
+      AP power state when `detect-gpio` and `eeprom` will be sampled.
+  available-ports:
+    type: int
+    default: 1
+    description: |
+      Number of available ports to connect devices, one port per device.
