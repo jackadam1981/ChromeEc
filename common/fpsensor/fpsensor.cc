@@ -561,11 +561,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		struct ec_fp_template_encryption_metadata *enc_info =
 			&global_context.fp_enc_buffer.metadata;
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
-		trng_init();
-		trng_rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
-		trng_rand_bytes(enc_info->encryption_salt,
-				FP_CONTEXT_ENCRYPTION_SALT_BYTES);
-		trng_exit();
+		rand_bytes(enc_info->nonce);
+		rand_bytes(enc_info->encryption_salt);
 
 		if (fgr == global_context.template_newly_enrolled.value()) {
 			/*
@@ -574,13 +571,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			 * value.
 			 */
 			global_context.template_newly_enrolled = std::nullopt;
-			trng_init();
-			trng_rand_bytes(
-				global_context.fp_positive_match_salt[fgr]
-					.data(),
-				global_context.fp_positive_match_salt[fgr]
-					.size());
-			trng_exit();
+			rand_bytes(global_context.fp_positive_match_salt[fgr]);
 		}
 
 		FpEncryptionKey key;
