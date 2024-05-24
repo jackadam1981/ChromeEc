@@ -713,7 +713,7 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	if (bytes_are_trivial(positive_match_salt.data(),
 			      positive_match_salt.size_bytes())) {
 		CPRINTS("fgr%d: Trivial positive match salt.", idx);
-		OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
+		secure_clear(fp_template[idx]);
 		return EC_RES_INVALID_PARAM;
 	}
 	std::ranges::copy(positive_match_salt,

@@ -328,6 +328,7 @@ static enum ec_status unlock_template(uint16_t idx)
 				  global_context.user_id,
 				  global_context.tpm_seed) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
+		// TODO
 		OPENSSL_cleanse(&global_context.fp_enc_buffer,
 				sizeof(global_context.fp_enc_buffer));
 		return EC_RES_UNAVAILABLE;
@@ -336,6 +337,7 @@ static enum ec_status unlock_template(uint16_t idx)
 	if (aes_128_gcm_decrypt(key, enc_buffer, enc_buffer, enc_info.nonce,
 				enc_info.tag) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
+		// TODO
 		OPENSSL_cleanse(&global_context.fp_enc_buffer,
 				sizeof(global_context.fp_enc_buffer));
 		return EC_RES_UNAVAILABLE;
@@ -347,6 +349,7 @@ static enum ec_status unlock_template(uint16_t idx)
 	global_context.template_states[idx] = fp_decrypted_template_state{
 		.user_id = global_context.user_id,
 	};
+	// TODO
 	OPENSSL_cleanse(&global_context.fp_enc_buffer,
 			sizeof(global_context.fp_enc_buffer));
 	return EC_RES_SUCCESS;
