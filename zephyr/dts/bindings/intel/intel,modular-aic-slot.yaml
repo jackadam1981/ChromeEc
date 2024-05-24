@@ -1,0 +1,67 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel modular add-in card (AIC) slot
+
+compatible: "intel,modular-aic-slot"
+
+include: base.yaml
+
+properties:
+  reg:
+    required: true
+    description: |
+      Number associated to modular AIC slot. Each AIC slot must be associated
+      with an id, starting from zero, this is the index of each instance within
+      the instances array.
+  detect-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      GPIO used to detect AIC presence in platform. This is a required property
+      since it is the most basic mechanism used for card detection.
+  detection-power-state:
+    type: string
+    default: AP_POWER_STATE_UNDEF
+    description: |
+      AP power state that will trigger AIC detection. In case `detect-gpios`
+      power rail is turned on during an AP Power state, this
+      node property can be used to associate detection with AP power state.
+      If power state is not provided, detection will be executed during EC
+      system initialization.
+  available-ports:
+    type: int
+    default: 1
+    description: |
+      Number of available ports supported by this slot.
+  ports:
+    type: phandles
+    required: false
+    description: |
+      List of ports that can be connected to this slot based on parameters,
+      connection is established dynamically.
+  conn-type:
+    type: string
+    default: INTEL_MODULAR_AIC_PORT_CONN_TYPE_RESERVED
+    description: |
+      Determines the type of connection this slot supports.
+    enum:
+      - INTEL_MODULAR_AIC_PORT_CONN_TYPE_RESERVED
+      - INTEL_MODULAR_AIC_PORT_CONN_TYPE_USBA
+      - INTEL_MODULAR_AIC_PORT_CONN_TYPE_USBC
+      - INTEL_MODULAR_AIC_PORT_CONN_TYPE_HDMI
+      - INTEL_MODULAR_AIC_PORT_CONN_TYPE_DP
+      - INTEL_MODULAR_AIC_PORT_CONN_TYPE_EDP
+  max-data-speed:
+    type: string
+    default: INTEL_MODULAR_AIC_PORT_DATA_SPEED_UNDEFINED
+    description: |
+      Sets the speed the IO lines shall be expecting from external device.
+    enum:
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_UNDEFINED
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_6GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_12GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_20GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_40GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_80GBPS
