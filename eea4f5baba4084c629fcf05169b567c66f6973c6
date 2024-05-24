@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c424e83c_29db9423",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-05-24T21:53:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like this variable is being used other that to store what the value which is last passed into pdc_power_mgmt_set_dual_role(). I think it could be confusing that the FORCE_SINK and FORCE_SOURCE is just a one time set and isn\u0027t even guaranteed to have an effect if say the port partner rejects the power role swap request.",
+      "range": {
+        "startLine": 639,
+        "startChar": 26,
+        "endLine": 639,
+        "endChar": 41
+      },
+      "revId": "eea4f5baba4084c629fcf05169b567c66f6973c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d051f55_d6961e46",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 1
