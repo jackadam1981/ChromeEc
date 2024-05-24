@@ -119,7 +119,7 @@ static uint32_t fp_process_enroll(void)
 {
 	int percent = 0;
 
-	if (global_context.template_newly_enrolled != FP_NO_SUCH_TEMPLATE)
+	if (!global_context.template_newly_enrolled.has_value())
 		CPRINTS("Warning: previously enrolled template has not been "
 			"read yet.");
 
@@ -555,14 +555,13 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 				FP_CONTEXT_ENCRYPTION_SALT_BYTES);
 		trng_exit();
 
-		if (fgr == global_context.template_newly_enrolled) {
+		if (fgr == global_context.template_newly_enrolled.value()) {
 			/*
 			 * Newly enrolled templates need new positive match
 			 * salt, new positive match secret and new validation
 			 * value.
 			 */
-			global_context.template_newly_enrolled =
-				FP_NO_SUCH_TEMPLATE;
+			global_context.template_newly_enrolled = std::nullopt;
 			trng_init();
 			trng_rand_bytes(
 				global_context.fp_positive_match_salt[fgr]
