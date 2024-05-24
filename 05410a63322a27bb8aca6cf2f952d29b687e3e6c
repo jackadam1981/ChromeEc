@@ -22,6 +22,30 @@
       },
       "revId": "05410a63322a27bb8aca6cf2f952d29b687e3e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7ae81c_e4923209",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T07:22:28Z",
+      "side": 1,
+      "message": "I added the test name. It\u0027s not hard run the mutex tests by run_device_tests:\n```\ndiff --git a/test/run_device_tests.py b/test/run_device_tests.py\nindex 49293caf41f..10bc131ff7e 100755\n--- a/test/run_device_tests.py\n+++ b/test/run_device_tests.py\n@@ -536,6 +536,12 @@ class AllTests:\n                 test_name\u003d\"zephyr_flash_stm32f4_block_registers\",\n                 exclude_boards\u003d[DARTMONKEY, HELIPILOT],\n             ),\n+            TestConfig(\n+                zephyr_name\u003d\"kernel.mutex\",\n+                test_name\u003d\"zephyr_kernel_mutex\",\n+                timeout_secs\u003d15,\n+                exclude_boards\u003d[DARTMONKEY, HELIPILOT],\n+            ),\n         ]\n \n         for test in tests:\ndiff --git a/util/twister_launcher.py b/util/twister_launcher.py\nindex ca4af049fca..d43a3900f60 100755\n--- a/util/twister_launcher.py\n+++ b/util/twister_launcher.py\n@@ -113,6 +113,7 @@ ZEPHYR_TEST_PATHS \u003d [\n     Path(\"tests/drivers/gpio\"),\n     Path(\"tests/drivers/flash/stm32\"),\n     Path(\"tests/subsys/shell\"),\n+    Path(\"tests/kernel/mutex\"),\n ]\n```\nHowever, I\u0027m not sure if we want to run such tests. It\u0027s based on common and core (ARM) code. I feel like, if there is a bug in this part, 100 issues are created in Zephyr immediately. My assumption was to run tests more specific for our use-case e.g. stm32f4 flash protection, rtc counter driver. What do you think?",
+      "parentUuid": "895347ea_1c882483",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 31
+      },
+      "revId": "05410a63322a27bb8aca6cf2f952d29b687e3e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
