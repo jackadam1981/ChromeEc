@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c97198_993cf1a5",
+        "filename": "zephyr/test/pdc/src/generic/ppm_common_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:20:58Z",
+      "side": 1,
+      "message": "Nit - the private functions to the test shouldn\u0027t use the same namespace as the PPM API.  When reading through the test, it\u0027s hard to follow which functions are calling into the PPM implementation vs local helpers.\n\nMost of these wrappers should be part of the PPM API.  Also see my comment below regarding whether we actually need `struct ucsi_ppm_driver`.",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "511035d455d446d11cc8a4fa8a6d2709490d5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2745c213_0ade5496",
+        "filename": "zephyr/test/pdc/src/generic/ppm_common_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:20:58Z",
+      "side": 1,
+      "message": "Having the test reach into the ppm structure like this isn\u0027t ideal.\nWith Daisuke\u0027s change, can the test just register it\u0027s own async callback?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "511035d455d446d11cc8a4fa8a6d2709490d5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ad0c4a_5c65dc11",
+        "filename": "zephyr/test/pdc/src/generic/ppm_common_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:20:58Z",
+      "side": 1,
+      "message": "For consideration when migrating out of extras.\n\nWill there ever be another ppm driver type, or will this always point to functions defined by `ppm_common.c`?\n\nIf there will be multiple providers of `struct ucsi_ppm_driver`, then these API calls should be wrapped instead of having the caller directly access the structure.",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 26
+      },
+      "revId": "511035d455d446d11cc8a4fa8a6d2709490d5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1b54a1_50e846a9",
+        "filename": "zephyr/test/pdc/src/generic/ppm_common_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:20:58Z",
+      "side": 1,
+      "message": "Are there any side effects that can be checked depending on the command sent?",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "511035d455d446d11cc8a4fa8a6d2709490d5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
