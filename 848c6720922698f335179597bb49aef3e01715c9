@@ -22,6 +22,30 @@
       },
       "revId": "848c6720922698f335179597bb49aef3e01715c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c745a943_39763681",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T08:09:41Z",
+      "side": 1,
+      "message": "I added the test name. \n\nRegarding unit tests - I\u0027ve tried to run it on hardware, but it is impossible with the current architecture. The main issue is [tasks definition](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/shimmed_task_id.h;l\u003d190). The [tasks list](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/tasks/shimmed_test_tasks.h) is created for the task test. It would be hard to use it with the current \"zmake\" approach.\n\nIn terms of running the upstream test. It is the same case as with the mutex test.",
+      "parentUuid": "50b040a5_7000e9d4",
+      "range": {
+        "startLine": 383,
+        "startChar": 12,
+        "endLine": 383,
+        "endChar": 88
+      },
+      "revId": "848c6720922698f335179597bb49aef3e01715c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
