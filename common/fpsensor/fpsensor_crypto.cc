@@ -10,6 +10,7 @@
 #include "openssl/evp.h"
 #include "openssl/hkdf.h"
 #include "openssl/mem.h"
+#include "openssl/rand.h"
 #include "otp_key.h"
 #include "rollback.h"
 #include "sha256.h"
@@ -256,4 +257,9 @@ enum ec_error_list aes_128_gcm_decrypt(std::span<const uint8_t> key,
 	}
 
 	return EC_SUCCESS;
+}
+
+void rand_bytes(std::span<uint8_t> buffer)
+{
+	RAND_bytes(buffer.data(), buffer.size());
 }
