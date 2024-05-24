@@ -187,6 +187,30 @@
       },
       "revId": "70f176a610d491281a3d583aa1f9ee54d570fd27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35eafaa1_bd1bd9c5",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-05-24T01:56:14Z",
+      "side": 1,
+      "message": "My point is that we should neither be checking dependencies here nor do anything if codesinger is present.\n\nIf it is not present, SIGNER should be set to $(CODESIGNER_PATH)/codesigner this rule would buid it:\n\n```\n$(SIGNER):\n   make -C $(CODESIGNER_PATH) clean codesigner\n```\n\n (adding `clean` is worth it in case `codesigner` was built outside chroot from the same tree).\n\nalso, if you care only of the development case when H1_DEVIDS are set (and it makes sense, the builder problems should be solved on a different level), why not keep all codesingner recreation logic in this section, below line 182?\n\nIn this case the only time where it will be built is when it is not present and the dev needs it, and this will follow the previous state where we never built it when it was available, and as a side benefit is guaranteed not to break the build again ;)",
+      "parentUuid": "2b5e4738_35a6bd6e",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 68
+      },
+      "revId": "70f176a610d491281a3d583aa1f9ee54d570fd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
