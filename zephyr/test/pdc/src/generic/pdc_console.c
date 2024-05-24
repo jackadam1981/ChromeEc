@@ -432,7 +432,7 @@ ZTEST_USER(console_cmd_pdc, test_src_voltage)
 		pdc_power_mgmt_request_source_voltage_fake.arg1_history[0]);
 }
 
-ZTEST_USER(console_cmd_pdc, test_dualrole)
+ZTEST_USER(console_cmd_pdc, test_dualrole_set)
 {
 	int rv;
 
@@ -487,6 +487,90 @@ ZTEST_USER(console_cmd_pdc, test_dualrole)
 		      pdc_power_mgmt_set_dual_role_fake.arg1_history[3]);
 	zassert_equal(PD_DRP_FORCE_SOURCE,
 		      pdc_power_mgmt_set_dual_role_fake.arg1_history[4]);
+}
+
+ZTEST_USER(console_cmd_pdc, test_dualrole_get)
+{
+	int rv;
+	const char *outbuffer;
+	size_t buffer_size;
+
+	/* Toggle On */
+	pdc_power_mgmt_get_dual_role_fake.return_val = PD_DRP_TOGGLE_ON;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc dualrole 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Dual role state: TOGGLE_ON"));
+	shell_backend_dummy_clear_output(get_ec_shell());
+
+	/* Toggle off */
+	pdc_power_mgmt_get_dual_role_fake.return_val = PD_DRP_TOGGLE_OFF;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc dualrole 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Dual role state: TOGGLE_OFF"));
+	shell_backend_dummy_clear_output(get_ec_shell());
+
+	/* Freeze */
+	pdc_power_mgmt_get_dual_role_fake.return_val = PD_DRP_FREEZE;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc dualrole 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Dual role state: FREEZE"));
+	shell_backend_dummy_clear_output(get_ec_shell());
+
+	/* Force sink */
+	pdc_power_mgmt_get_dual_role_fake.return_val = PD_DRP_FORCE_SINK;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc dualrole 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Dual role state: FORCE_SINK"));
+	shell_backend_dummy_clear_output(get_ec_shell());
+
+	/* Force source */
+	pdc_power_mgmt_get_dual_role_fake.return_val = PD_DRP_FORCE_SOURCE;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc dualrole 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Dual role state: FORCE_SOURCE"));
+	shell_backend_dummy_clear_output(get_ec_shell());
+
+	/* Unknown / unset */
+	pdc_power_mgmt_get_dual_role_fake.return_val = -1;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc dualrole 0");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Dual role state: Unknown"));
 }
 
 ZTEST_USER(console_cmd_pdc, test_drs)
