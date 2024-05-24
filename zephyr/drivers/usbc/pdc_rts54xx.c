@@ -2651,4 +2651,13 @@ bool pdc_rts54xx_test_idle_wait(void)
 	return false;
 }
 
+void pdc_rts54xx_clear_get_connector_status_cache(void)
+{
+	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+		struct pdc_data_t *data = pdc_data[port];
+		data->conn_status_cached = false;
+		memset(&data->conn_status, 0, sizeof(data->conn_status));
+	}
+}
+
 #endif
