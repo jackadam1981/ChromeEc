@@ -178,21 +178,62 @@ static bool authenticate_fp_match_state(const uint32_t fp_encryption_status)
 	return true;
 }
 
+static match_result
+do_match(uint16_t template_index,
+	 positive_match_secret_state &positive_match_secret_state)
+{
+	uint32_t updated = 0;
+	int32_t fgr = -1;
+	const int ret = fp_finger_match(fp_template[0], template_index,
+					fp_buffer, &fgr, &updated);
+	CPRINTS("Match =>%d (finger %d)", ret, fgr);
+
+	match_result result;
+
+	if (fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
+		return result;
+	}
+
+	/*
+	 * Negative result means that there is a problem with
+	 * code responsible for matching. Return MATCH_NO_INTERNAL
+	 * to let upper layers know what happened.
+	 */
+	if (ret < 0) {
+		return result;
+	}
+
+	result.error_code = ret;
+
+	if (!fp_match_success(ret)) {
+		return result;
+	}
+
+	if (result.error_code == EC_MKBP_FP_ERR_MATCH_YES_UPDATED) {
+		result.finger_update_index = updated;
+	}
+
+	result.finger_match_index = fgr;
+	fp_enable_positive_match_secret(fgr, &positive_match_secret_state);
+
+	return result;
+}
+
 static uint32_t fp_process_match(void)
 {
 	timestamp_t t0 = get_time();
-	int res = -1;
-	uint32_t updated = 0;
-	int32_t fgr = FP_NO_SUCH_TEMPLATE;
+	match_result result;
 
 	/* match finger against current templates */
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
 
 	if (!authenticate_fp_match_state(global_context.fp_encryption_status)) {
-		res = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
-		return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res) |
-		       ((fgr << EC_MKBP_FP_MATCH_IDX_OFFSET) &
+		result.error_code = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
+		return EC_MKBP_FP_MATCH |
+		       EC_MKBP_FP_ERRCODE(result.error_code) |
+		       ((result.finger_match_index.value()
+			 << EC_MKBP_FP_MATCH_IDX_OFFSET) &
 			EC_MKBP_FP_MATCH_IDX_MASK);
 	}
 
@@ -205,48 +246,24 @@ static uint32_t fp_process_match(void)
 
 	CPRINTS("Matching/%d ...", global_context.templ_valid);
 	if (global_context.templ_valid) {
-		res = fp_finger_match(fp_template[0],
-				      global_context.templ_valid, fp_buffer,
-				      &fgr, &updated);
-		CPRINTS("Match =>%d (finger %d)", res, fgr);
+		result = do_match(global_context.templ_valid,
+				  global_context.positive_match_secret_state);
 
-		if (fp_match_success(res)) {
-			/*
-			 * Match succeded! Let's check if template number
-			 * is valid. If it is not valid, overwrite result
-			 * with EC_MKBP_FP_ERR_MATCH_NO_INTERNAL.
-			 */
-			if (fgr >= 0 && fgr < FP_MAX_FINGER_COUNT) {
-				fp_enable_positive_match_secret(
-					fgr,
-					&global_context
-						 .positive_match_secret_state);
-			} else {
-				res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
-			}
-		} else if (res < 0) {
-			/*
-			 * Negative result means that there is a problem with
-			 * code responsible for matching. Overwrite it with
-			 * MATCH_NO_INTERNAL to let upper layers know what
-			 * happened.
-			 */
-			res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
-		}
-
-		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
-			global_context.templ_dirty |= updated;
+		if (result.error_code == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
+			global_context.templ_dirty |=
+				result.finger_update_index.value();
 	} else {
 		CPRINTS("No enrolled templates");
-		res = EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES;
+		result.error_code = EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES;
 	}
 
-	if (!fp_match_success(res))
+	if (!fp_match_success(result.error_code))
 		timestamps_invalid |= FPSTATS_MATCHING_INV;
 
 	matching_time_us = time_since32(t0);
-	return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res) |
-	       ((fgr << EC_MKBP_FP_MATCH_IDX_OFFSET) &
+	return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(result.error_code) |
+	       ((result.finger_match_index.value()
+		 << EC_MKBP_FP_MATCH_IDX_OFFSET) &
 		EC_MKBP_FP_MATCH_IDX_MASK);
 }
 
