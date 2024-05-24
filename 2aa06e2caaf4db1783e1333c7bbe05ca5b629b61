@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9795296_0b941d7e",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:47:35Z",
+      "side": 1,
+      "message": "See CL:5527273",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c02252a_4b5e3086",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:47:35Z",
+      "side": 1,
+      "message": "As noted on other CLs - is this needed or should the `ppm_common_*` routines be promoted as the direct API calls?\n\nIf `struct ucsi_ppm_driver` is needed, then you need to create wrapper routines so that callers use a `struct device`.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 0
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
