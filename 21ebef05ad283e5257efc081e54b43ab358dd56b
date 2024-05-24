@@ -22,6 +22,30 @@
       },
       "revId": "21ebef05ad283e5257efc081e54b43ab358dd56b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda94c9c_e2ee6560",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-24T17:37:28Z",
+      "side": 1,
+      "message": "This should read `The PDC driver shall not...` since that\u0027s what the change is actually doing right?",
+      "parentUuid": "36d73d10_493beda6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "21ebef05ad283e5257efc081e54b43ab358dd56b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
