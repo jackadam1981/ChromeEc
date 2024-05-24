@@ -219,16 +219,18 @@ do_match(uint16_t template_index,
 	return result;
 }
 
-static match_result fp_process_match(void)
+static match_result
+fp_process_match(const uint16_t template_index,
+		 positive_match_secret_state &positive_match_secret_state,
+		 uint32_t &fp_encryption_status, uint32_t &dirty_templates)
 {
 	timestamp_t t0 = get_time();
 	match_result result;
 
 	/* match finger against current templates */
-	fp_disable_positive_match_secret(
-		&global_context.positive_match_secret_state);
+	fp_disable_positive_match_secret(&positive_match_secret_state);
 
-	if (!authenticate_fp_match_state(global_context.fp_encryption_status)) {
+	if (!authenticate_fp_match_state(fp_encryption_status)) {
 		result.error_code = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
 		return result;
 	}
@@ -237,16 +239,13 @@ static match_result fp_process_match(void)
 	 * operation after match processed in a nonce context. If we don't do
 	 * that, the attacker can unlock template multiple times in a single
 	 * nonce context. */
-	global_context.fp_encryption_status |=
-		FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
+	fp_encryption_status |= FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
 
-	CPRINTS("Matching/%d ...", global_context.templ_valid);
-	if (global_context.templ_valid) {
-		result = do_match(global_context.templ_valid,
-				  global_context.positive_match_secret_state);
+	CPRINTS("Matching/%d ...", template_index);
+	if (template_index) {
+		result = do_match(template_index, positive_match_secret_state);
 		if (result.error_code == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
-			global_context.templ_dirty |=
-				result.finger_update_index.value();
+			dirty_templates |= result.finger_update_index.value();
 	} else {
 		CPRINTS("No enrolled templates");
 		result.error_code = EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES;
@@ -285,9 +284,12 @@ static void fp_process_finger(void)
 
 		if (global_context.sensor_mode & FP_MODE_ENROLL_IMAGE)
 			evt = fp_process_enroll();
-		else if (global_context.sensor_mode & FP_MODE_MATCH) {
-			evt = create_fp_match_event(fp_process_match());
-		}
+		else if (global_context.sensor_mode & FP_MODE_MATCH)
+			evt = create_fp_match_event(fp_process_match(
+				global_context.templ_valid,
+				global_context.positive_match_secret_state,
+				global_context.fp_encryption_status,
+				global_context.templ_dirty));
 
 		global_context.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
 		overall_time_us = time_since32(overall_t0);
