@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baee608a_1d364a17",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T21:45:47Z",
+      "side": 1,
+      "message": "This duplicates the else clause.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 0
+      },
+      "revId": "796cd6701f7a9aae8fad5d24073d94833b83b7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

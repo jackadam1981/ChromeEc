@@ -188,6 +188,30 @@
       },
       "revId": "270db38432608d691ff00329db5ef8c4ddbba05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40177782_b3dbc9d2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T21:45:47Z",
+      "side": 1,
+      "message": "One thing to note - the `set_attached_pdd_state()` isn\u0027t called for SNK/SRC attached, until the respective RUN substate is called.  So there can be quite a few commands sent there it might be confusing what the actual state tracked by `port-\u003ectx.current` is.\n\nHow about removing the call to `print_current_pdc_state()` from the `pdc_send_cmd_start_entry()`  and `pdc_send_cmd_wait_entry()`?",
+      "parentUuid": "40474383_bdbe610e",
+      "range": {
+        "startLine": 834,
+        "startChar": 0,
+        "endLine": 834,
+        "endChar": 42
+      },
+      "revId": "270db38432608d691ff00329db5ef8c4ddbba05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
