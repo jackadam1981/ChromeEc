@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035cc5c9_c0a9af03",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-24T22:29:55Z",
+      "side": 1,
+      "message": "All new configs should be added to include/config.h and a corresponding definition should be added to one of the Kconfig files in zephyr.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 42
+      },
+      "revId": "ace2c01bd78948045d7044af330093d399331112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f6a8fe_5f537a0e",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-24T22:29:55Z",
+      "side": 1,
+      "message": "nice-to-have: it would be good to validate `CONFIG_USB_MAX_CONTROL_PACKET_SIZE` value is 8, 16, 32 or 64 only",
+      "revId": "ace2c01bd78948045d7044af330093d399331112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
