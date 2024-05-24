@@ -7,6 +7,15 @@
 #include "fpsensor/fpsensor_utils.h"
 #include "overflow.h"
 
+uint32_t create_fp_match_event(const match_result &result)
+{
+	// TODO: check size of finger_index
+	return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(result.error_code) |
+	       ((result.finger_match_index.value()
+		 << EC_MKBP_FP_MATCH_IDX_OFFSET) &
+		EC_MKBP_FP_MATCH_IDX_MASK);
+}
+
 bool fp_match_success(int match_result)
 {
 	return match_result == EC_MKBP_FP_ERR_MATCH_YES ||
