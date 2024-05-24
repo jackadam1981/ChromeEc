@@ -101,4 +101,12 @@ enum ec_error_list aes_128_gcm_decrypt(std::span<const uint8_t> key,
 				       std::span<const uint8_t> nonce,
 				       std::span<const uint8_t> tag);
 
+/**
+ * Fills @buffer with random bytes. Aborts if sufficient random data cannot be
+ * obtained.
+ *
+ * @param[in] buffer buffer to fill with random bytes.
+ */
+void rand_bytes(std::span<uint8_t> buffer);
+
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_CRYPTO_H */
