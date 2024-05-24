@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e32bb417_7d2c2bcf",
+        "filename": "zephyr/program/fpmcu/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T07:28:49Z",
+      "side": 1,
+      "message": "I haven\u0027t seen such test. I agree it makes sense to add such variation. I\u0027ve created bug for it b/342504464.",
+      "parentUuid": "35d1d18e_7c96f0cf",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 42
+      },
+      "revId": "466d9986ac807daaa087f4ceb19f0ffe34cf91c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98267334_fac3b1b1",
         "filename": "zephyr/test/hwtest/src/panic.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-23T20:32:51Z",
       "side": 1,
       "message": "It looks like Zephyr [supports Cortex-M0](https://docs.zephyrproject.org/latest/hardware/arch/arm_cortex_m.html). Although the fingerprint boards will probably never be M0, it would still be nice to preserve the functionality for other boards. We\u0027ll eventually be running these hardware tests for EC boards with [Renode](http://shortn/_8srP3l5VOO), and hopefully can push the tests upstream if they work under Renode.\n\nIf you\u0027re worried about testing it on Cortex-M0, I do have instructions in the commit message [here](https://crrev.com/c/3288761). Or you could try [running it with Renode](https://renodepedia.renode.io/boards/stm32f072_eval/?view\u003dsoftware\u0026demo\u003dhello_world). But I\u0027m ok with copying it without testing on a Cortex-M0 if it\u0027s the exact same code.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "466d9986ac807daaa087f4ceb19f0ffe34cf91c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88754d8e_ac641b60",
+        "filename": "zephyr/test/hwtest/src/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T07:28:49Z",
+      "side": 1,
+      "message": "Done. I haven\u0027t tested it with Renode, but if it works with CrosEC, it should also work with Zephyr in the same way.\n\nThis test verifies pure EC feature, so I think upstreaming is not possible in this case.",
+      "parentUuid": "98267334_fac3b1b1",
       "range": {
         "startLine": 36,
         "startChar": 1,
