@@ -157,23 +157,20 @@ static uint32_t fp_process_enroll(void)
 	       (percent << EC_MKBP_FP_ENROLL_PROGRESS_OFFSET);
 }
 
-static bool authenticate_fp_match_state(void)
+static bool authenticate_fp_match_state(const uint32_t fp_encryption_status)
 {
 	/* The rate limit is only meanful for the nonce context, and we don't
 	 * have rate limit for the legacy FP user unlock flow. */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
+	if (!(fp_encryption_status & FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
 		return true;
 	}
 
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_TEMPLATE_UNLOCKED_SET)) {
+	if (!(fp_encryption_status & FP_CONTEXT_TEMPLATE_UNLOCKED_SET)) {
 		CPRINTS("Cannot process match without unlock template");
 		return false;
 	}
 
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
+	if (fp_encryption_status & FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
 		CPRINTS("Cannot process match twice in nonce context");
 		return false;
 	}
@@ -192,7 +189,7 @@ static uint32_t fp_process_match(void)
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
 
-	if (!authenticate_fp_match_state()) {
+	if (!authenticate_fp_match_state(global_context.fp_encryption_status)) {
 		res = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
 		return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res) |
 		       ((fgr << EC_MKBP_FP_MATCH_IDX_OFFSET) &
