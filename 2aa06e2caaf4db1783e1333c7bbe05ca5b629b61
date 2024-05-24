@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee7da217_40050800",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:58:48Z",
+      "side": 1,
+      "message": "This should be part of `platform_allocate_ppm()`.  Then you can drop the `malloc/calloc/free` from the platform layer.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78ed7f9_c640d14d",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:58:48Z",
+      "side": 1,
+      "message": "Is the mutex lock needed for reading a single variable?\n\nIf not, you could use Zephyr\u0027s `WAIT_FOR` macro here.\n\n```\nif (WAIT_FOR(dev-\u003eppm_state !\u003d PPM_STATE_NOT_READY, TIMEOUT_US, platform_usleep(POLL_EVERY_MS * 1000))\n    /* Success */\nelse\n    /* Timeout */\n```",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c02252a_4b5e3086",
         "filename": "zephyr/subsys/ucsi/ppm_common.c",
         "patchSetId": 1
