@@ -199,6 +199,7 @@ enum ec_error_list encrypt_data_with_ecdh_key_in_place(
 		return EC_ERROR_INVAL;
 	}
 
+	// TODO: replace with rand_bytes
 	RAND_bytes(iv.data(), iv.size());
 
 	/* The IV will be changed after the AES_ctr128_encrypt, we need a copy
