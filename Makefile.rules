@@ -642,6 +642,13 @@ $(out)/RO/%.o:%.c
 $(out)/RW/%.o:%.c
 	$(call quiet,c_to_o,CC     )
 
+$(out)/RO/feature-x/strauss/ec/%.o.cmd:../feature-x/strauss/ec/%.c
+	$(file > $@,$(subst .o.cmd,.o,$(cmd_c_to_o)))
+$(out)/RO/feature-x/strauss/ec/%.o:../feature-x/strauss/ec/%.c
+	$(call quiet,c_to_o,CC     )
+$(out)/RW/feature-x/strauss/ec/%.o:../feature-x/strauss/ec/%.c
+	$(call quiet,c_to_o,CC     )
+
 $(out)/RO/%.s:%.c
 	$(call quiet,c_to_s,CC     )
 $(out)/RW/%.s:%.c
