@@ -16,6 +16,24 @@
       "message": "Not sure if you care about updating test_vivaldi_top_keys in test/kb_8042.c.",
       "revId": "a83d13627cb38ea0caf24054112e6ad7c186cd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c5e021_639e5d60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2024-05-24T04:14:06Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I could add a follow up CL to add tests for the new keys.",
+      "parentUuid": "d20363a1_820ba8ee",
+      "revId": "a83d13627cb38ea0caf24054112e6ad7c186cd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
