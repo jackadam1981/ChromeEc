@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7e9a0c_927e420a",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T09:45:23Z",
+      "side": 1,
+      "message": "Actually, no. Done.",
+      "parentUuid": "9415e376_6b826a4b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "529647ea_aa371146",
@@ -60,6 +84,30 @@
       "writtenOn": "2024-05-23T22:49:27Z",
       "side": 1,
       "message": "Can these be made `static const` variables? Not sure what Zephyr style is, but Google style generally discourages macros when they can [otherwise be const variables](https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85f13ab_cd208914",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T09:45:23Z",
+      "side": 1,
+      "message": "I don\u0027t any rule for that in Zephyr. `static const` is for sure better. Done.",
+      "parentUuid": "529647ea_aa371146",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d79467d_246075ed",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T09:45:23Z",
+      "side": 1,
+      "message": "Oh, I forgot to check the value, after adding it. [Ignoring](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/builtin/stdio.h;l\u003d40) the result value causes a compile error.",
+      "parentUuid": "8854ac7e_7d90135a",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78c1c785_aab1282d",
         "filename": "zephyr/test/hwtest/src/printf.c",
         "patchSetId": 1
@@ -118,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0a41243_31e1de08",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T09:45:23Z",
+      "side": 1,
+      "message": "The same case.",
+      "parentUuid": "78c1c785_aab1282d",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 9
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c48c3caf_d00079c0",
         "filename": "zephyr/test/hwtest/src/printf.c",
         "patchSetId": 1
@@ -129,6 +225,30 @@
       "writtenOn": "2024-05-23T22:49:27Z",
       "side": 1,
       "message": "Since this is a small buffer, what about something like this in place of the loops in this function?\n\n```\nconst uint8_t buf_with_ff[5] \u003d { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };\nstatic_assert(sizeof(buf_with_ff) \u003d\u003d sizeof(str_buf)); \n\n...\n...\n\nzassert_mem_equal(str_buf, buf_with_ff, sizeof(str_buf));\n```",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 2
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7ca280_ff54d466",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-05-24T09:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c48c3caf_d00079c0",
       "range": {
         "startLine": 558,
         "startChar": 0,
