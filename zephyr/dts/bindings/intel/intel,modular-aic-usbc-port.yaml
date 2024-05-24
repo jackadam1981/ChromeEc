@@ -1,0 +1,64 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel modular add-in card (AIC) USB-C port
+
+compatible: "intel,modular-aic-usbc-port"
+
+properties:
+  devices:
+    type: phandles
+    required: false
+    description: |
+      List of devices bound to an AIC depending on its properties. Any driver
+      whose execution depends on device detection by an AIC, can be listed in
+      this property to condition its initialization, and establish
+      initialization order in case multiple drivers are dependant.
+      It is mandatory that all drivers listed here must have property
+      `zephyr,deferred-init` set as part of its node definition; this is to
+      ensure its initialization is executed at the right time once AIC detection
+      has been completed.
+  retimer-status:
+    type: string
+    default: INTEL_MODULAR_AIC_PORT_RETIMER_NOT_PRESENT
+    description: |
+      Sets the retimer type in the AIC, this property is relevant only when
+      connection type is configured as USBC.
+    enum:
+      - INTEL_MODULAR_AIC_PORT_RETIMER_NOT_PRESENT
+      - INTEL_MODULAR_AIC_PORT_RETIMER_SINGLE
+      - INTEL_MODULAR_AIC_PORT_RETIMER_DUAL
+  pd-cntrl-type:
+    type: string
+    default: INTEL_MODULAR_AIC_PORT_PD_CNTRL_UNDEFINED
+    description: |
+      Determines the PD chip vendor a slot is capable of recognizing.
+      This property is also relevant only when the connection type is USBC.
+    enum:
+      - INTEL_MODULAR_AIC_PORT_PD_CNTRL_UNDEFINED
+      - INTEL_MODULAR_AIC_PORT_PD_CNTRL_TI
+      - INTEL_MODULAR_AIC_PORT_PD_CNTRL_CYPRESS
+      - INTEL_MODULAR_AIC_PORT_PD_CNTRL_REALTEK
+      - INTEL_MODULAR_AIC_PORT_PD_CNTRL_GOTHIC_BRIDGE
+  tbt-status:
+    type: string
+    default: INTEL_MODULAR_AIC_PORT_TBT_NOT_CAPABLE
+    description: |
+      Sets if AIC is Thunderbolt (TBT) capable. This property is also relevant
+      only when the connection type is USBC.
+    enum:
+      - INTEL_MODULAR_AIC_PORT_TBT_NOT_CAPABLE
+      - INTEL_MODULAR_AIC_PORT_TBT_CAPABLE
+  data-speed:
+    type: string
+    default: INTEL_MODULAR_AIC_PORT_DATA_SPEED_UNDEFINED
+    description: |
+      Sets the speed the IO lines shall be expecting from external device.
+    enum:
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_UNDEFINED
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_6GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_12GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_20GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_40GBPS
+      - INTEL_MODULAR_AIC_PORT_DATA_SPEED_80GBPS
