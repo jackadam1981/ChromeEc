@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e9788c_9442f9b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-05-24T18:27:10Z",
+      "side": 1,
+      "message": "with this CL:\n```\nfsammoura@fsammoura1:~/chromiumos/src/platform/ec/build/xol$ find -name strauss.o\n./RW/feature-x/strauss/ec/strauss.o\n./RO/feature-x/strauss/ec/strauss.o\n```\nw/o this CL:\n```\nfsammoura@fsammoura1:~/chromiumos/src/platform/ec/build/xol$ find -name strauss.o\n./feature-x/strauss/ec/strauss.o\n```",
+      "revId": "2d57d9ed90e761ed72e3ceecf4a78f50c29bd6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
