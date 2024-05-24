@@ -31,8 +31,8 @@ encrypt_data_in_place(uint16_t version,
 	}
 
 	info.struct_version = version;
-	RAND_bytes(info.nonce, sizeof(info.nonce));
-	RAND_bytes(info.encryption_salt, sizeof(info.encryption_salt));
+	rand_bytes(info.nonce);
+	rand_bytes(info.encryption_salt);
 
 	FpEncryptionKey enc_key;
 	enum ec_error_list ret = derive_encryption_key(
