@@ -37,4 +37,11 @@ config PLATFORM_EC_DPTF_MOTION_LID_NO_GMR_SENSOR
       For this to work, we must have enabled tablet mode, not have a GMR sensor,
       and have motionsense enabled.
 
+config PLATFORM_EC_TABLET_MODE_SKIP_LID_CLOSE
+    bool "Skip lid close"
+    help
+      Due to hardware design that will cause the devices put on together be
+      trigger the lid close. Add this configuration for skip lid close
+      when the system in the  tablet mode..
+
 endif # PLATFORM_EC_TABLET_MODE
