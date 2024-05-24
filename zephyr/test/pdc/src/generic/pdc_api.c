@@ -10,6 +10,7 @@
 #include "drivers/ucsi_v3.h"
 #include "emul/emul_pdc.h"
 #include "i2c.h"
+#include "include/ppm.h"
 #include "pdc_trace_msg.h"
 #include "zephyr/sys/util.h"
 #include "zephyr/sys/util_macro.h"
@@ -461,6 +462,26 @@ ZTEST_USER(pdc_api, test_get_cable_property)
 	k_sleep(K_MSEC(SLEEP_MS));
 	zassert_ok(memcmp(&read_property, &property,
 			  sizeof(union cable_property_t)));
+}
+
+static void test_cc_cb(const struct device *dev,
+			       const struct pdc_callback *callback,
+			       union cci_event_t cci_event)
+{
+
+}
+
+ZTEST_USER(pdc_api, test_execute_ucsi_cmd)
+{
+	struct ucsi_memory_region ucsi_data;
+	struct ucsi_control *control = &ucsi_data.control;
+	struct pdc_callback callback;
+
+	callback.cci_event_mask.command_completed = 1;
+	callback.handler = test_cc_cb;
+	zassert_ok(pdc_execute_ucsi_cmd(dev, UCSI_CMD_PPM_RESET, 0,
+					control->command_specific,
+					ucsi_data.message_in, &callback));
 }
 
 /*
