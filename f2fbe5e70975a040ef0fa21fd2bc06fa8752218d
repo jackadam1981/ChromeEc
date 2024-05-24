@@ -1,0 +1,387 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f3868b_e20f06fd",
+        "filename": "zephyr/subsys/ucsi/include/pd_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "This needs to be located under `zephyr/include` somewhere if this is a public interface.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2907bdd2_d63db3e4",
+        "filename": "zephyr/subsys/ucsi/include/pd_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Fix namespace.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8b89d1da_26da3c08",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/ucsi/include/pd_driver.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "#ifndef ZEPHYR_SUBSYS_UCSI_INCLUDE_PD_DRIVER_H_\n#define ZEPHYR_SUBSYS_UCSI_INCLUDE_PD_DRIVER_H_\n"
+            },
+            {
+              "path": "zephyr/subsys/ucsi/include/pd_driver.h",
+              "range": {
+                "startLine": 128,
+                "startChar": 0,
+                "endLine": 129,
+                "endChar": 0
+              },
+              "replacement": "#endif /* ZEPHYR_SUBSYS_UCSI_INCLUDE_PD_DRIVER_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0748856c_59cad789",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "This file will only be included by other files under `zephyr/subsys/ucsi`, so nesting under `include` isn\u0027t needed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8d67cd_7655bc81",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Nit - fix namespace",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5754c0a4_42f6fbed",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/ucsi/include/platform.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "#ifndef ZEPHYR_SUBSYS_UCSI_INCLUDE_PLATFORM_H_\n#define ZEPHYR_SUBSYS_UCSI_INCLUDE_PLATFORM_H_\n"
+            },
+            {
+              "path": "zephyr/subsys/ucsi/include/platform.h",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "#endif /* ZEPHYR_SUBSYS_UCSI_INCLUDE_PLATFORM_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c819d28e_dc042f42",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Can these be dropped in favor of making direct calls before migrating?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03da6d58_941d940e",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "If this header needs to be visible outside the UCSI subsystem, then it needs to be located under the `zephyr/include` directory.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a01370_68ec9a92",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Fix namespace",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6edae6f6_18856bca",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/ucsi/include/ppm.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "#ifndef ZEPHYR_SUBSYS_UCSI_INCLUDE_PPM_H_\n#define ZEPHYR_SUBSYS_UCSI_INCLUDE_PPM_H_\n"
+            },
+            {
+              "path": "zephyr/subsys/ucsi/include/ppm.h",
+              "range": {
+                "startLine": 399,
+                "startChar": 0,
+                "endLine": 400,
+                "endChar": 0
+              },
+              "replacement": "#endif /* ZEPHYR_SUBSYS_UCSI_INCLUDE_PPM_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ff7ae1_662a68e5",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "This duplicates the enum Sam has created on CL:5527273\n\nWhat\u0027s the plan for merging these?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8cb53d_7a376c1b",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Duplicate of `union cci_event_t`.  Can the PPM be updated to use the definitions in ucsi_v3.h instead of duplication.?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66abb10f_aaa1f2af",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Is this layer needed?  Will any other code register a `struct ucsi_ppm_driver`?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 24
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2977373_ac3a5eab",
+        "filename": "zephyr/subsys/ucsi/ppm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Does this need to be public outside of `zephyr/subsys/ucsi`?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d1e6e5_ff812ca1",
+        "filename": "zephyr/subsys/ucsi/ppm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "Either the file needs to move under `zephyr/include` or just these function prototypes need to move to Zephyr\u0027s public include directory.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b38bc56_7373f503",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-24T19:38:05Z",
+      "side": 1,
+      "message": "For user code, this wouldn\u0027t be permitted - all public headers should be found under `zephyr/include`.\n\nAs this is for a test, this is permitted.  But check once the header files are relocated.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
