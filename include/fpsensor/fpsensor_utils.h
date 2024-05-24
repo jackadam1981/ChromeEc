@@ -20,6 +20,8 @@ struct match_result {
 	std::optional<uint8_t> finger_update_index;
 };
 
+uint32_t create_fp_match_event(const match_result &result);
+
 /**
  * Test that size+offset does not exceed buffer_size
  *
