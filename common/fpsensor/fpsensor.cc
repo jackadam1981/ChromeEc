@@ -188,7 +188,7 @@ do_match(uint16_t template_index,
 	return result;
 }
 
-static uint32_t fp_process_match(void)
+static match_result fp_process_match(void)
 {
 	timestamp_t t0 = get_time();
 	match_result result;
@@ -199,11 +199,7 @@ static uint32_t fp_process_match(void)
 
 	if (!authenticate_fp_match_state(global_context.fp_encryption_status)) {
 		result.error_code = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
-		return EC_MKBP_FP_MATCH |
-		       EC_MKBP_FP_ERRCODE(result.error_code) |
-		       ((result.finger_match_index.value()
-			 << EC_MKBP_FP_MATCH_IDX_OFFSET) &
-			EC_MKBP_FP_MATCH_IDX_MASK);
+		return result;
 	}
 
 	/* The match processed state will be used to prevent the template unlock
@@ -217,7 +213,6 @@ static uint32_t fp_process_match(void)
 	if (global_context.templ_valid) {
 		result = do_match(global_context.templ_valid,
 				  global_context.positive_match_secret_state);
-
 		if (result.error_code == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 			global_context.templ_dirty |=
 				result.finger_update_index.value();
@@ -230,10 +225,7 @@ static uint32_t fp_process_match(void)
 		timestamps_invalid |= FPSTATS_MATCHING_INV;
 
 	matching_time_us = time_since32(t0);
-	return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(result.error_code) |
-	       ((result.finger_match_index.value()
-		 << EC_MKBP_FP_MATCH_IDX_OFFSET) &
-		EC_MKBP_FP_MATCH_IDX_MASK);
+	return result;
 }
 
 static void fp_process_finger(void)
@@ -262,8 +254,9 @@ static void fp_process_finger(void)
 
 		if (global_context.sensor_mode & FP_MODE_ENROLL_IMAGE)
 			evt = fp_process_enroll();
-		else if (global_context.sensor_mode & FP_MODE_MATCH)
-			evt = fp_process_match();
+		else if (global_context.sensor_mode & FP_MODE_MATCH) {
+			evt = create_fp_match_event(fp_process_match());
+		}
 
 		global_context.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
 		overall_time_us = time_since32(overall_t0);
