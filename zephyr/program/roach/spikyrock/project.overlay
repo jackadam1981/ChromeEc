@@ -41,5 +41,11 @@
 
 	usb_hid_tp: usb-hid-tp {
 		compatible = "cros-ec,usb-hid-touchpad";
+
+		logical_max_x = <2925>;
+		logical_max_y = <1440>;
+		physical_max_x = <929>;
+		physical_max_y = <457>;
+		max_pressure = <511>;
 	};
 };
