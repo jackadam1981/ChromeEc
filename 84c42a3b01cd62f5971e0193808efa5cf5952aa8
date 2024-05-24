@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2900e7_684c8435",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1372,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-24T20:24:55Z",
+      "side": 1,
+      "message": "Nit: I\u0027d suggest naming this more descriptively. We already have a lot of test suites here that cover parts of TCPMv2. Maybe something like \"usbc_power_contract\"?",
+      "revId": "84c42a3b01cd62f5971e0193808efa5cf5952aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252c4618_b5d7f2de",
+        "filename": "zephyr/test/drivers/usbc_tcpmv2/src/usbc_tcpmv2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-24T20:24:55Z",
+      "side": 1,
+      "message": "Please remove",
+      "revId": "84c42a3b01cd62f5971e0193808efa5cf5952aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395f633d_8e0f6651",
+        "filename": "zephyr/test/drivers/usbc_tcpmv2/src/usbc_tcpmv2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-24T20:24:55Z",
+      "side": 1,
+      "message": "Could this be a fake? Depending on what we want to do with this suite, that might make it easier to run other tests later.",
+      "revId": "84c42a3b01cd62f5971e0193808efa5cf5952aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
