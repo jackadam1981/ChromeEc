@@ -50,6 +50,7 @@ BUILD_ASSERT(sizeof(touchpad_fw_full_hash) == SHA256_DIGEST_SIZE);
 #endif
 
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ##args)
 
 /* Section to be updated (i.e. not the current section). */
 struct {
@@ -120,7 +121,21 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 
 int update_pdu_valid(struct update_command *cmd_body, size_t cmd_size)
 {
-	return 1;
+	size_t body_size = cmd_size - sizeof(struct update_command);
+	const void *body = cmd_body + 1;
+	struct sha256_ctx ctx;
+	const uint8_t *tmp;
+	uint32_t block_digest = be32toh(cmd_body->block_digest);
+
+	if (body_size == 0 || block_digest == 0) {
+		return 1;
+	}
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, body, body_size);
+	tmp = SHA256_final(&ctx);
+
+	return memcmp(&block_digest, tmp, sizeof(uint32_t)) == 0;
 }
 
 static int chunk_came_too_soon(uint32_t block_offset)
