@@ -169,7 +169,19 @@
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
 				color-0 {
-					led-color = "LED_WHITE";
+					led-color = "LED_OFF";
+				};
+			};
+		};
+		bat-power-state-discharge-s3 {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S3";
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_OFF";
 				};
 			};
 		};
@@ -180,6 +192,25 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 				color-0 {
 					led-color = "LED_OFF";
+				};
+			};
+		};
+		bat-power-state-discharge-s0-bat-low {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
+			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_LOW>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <1000>;
+				};
+
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
 				};
 			};
 		};
@@ -219,6 +250,66 @@
 			chipset-state = "POWER_S5";
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
+				color-0 {
+					led-color = "LED_OFF";
+				};
+			};
+		};
+		bat-power-state-idle {
+			charge-state = "LED_PWRS_IDLE";
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+		bat-power-state-forced-idle {
+			charge-state = "LED_PWRS_FORCED_IDLE";
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+		pwr-power-state-on {
+			chipset-state = "POWER_S0";
+
+			power-led {
+				led-id = "EC_LED_ID_POWER_LED";
+
+				color-0 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+		pwr-power-state-s3 {
+			chipset-state = "POWER_S3";
+
+			power-led {
+				led-id = "EC_LED_ID_POWER_LED";
+
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <1000>;
+				};
+
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+		pwr-power-state-off {
+			chipset-state = "POWER_S5";
+
+			power-led {
+				led-id = "EC_LED_ID_POWER_LED";
 				color-0 {
 					led-color = "LED_OFF";
 				};
