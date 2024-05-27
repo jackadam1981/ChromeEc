@@ -13,14 +13,13 @@
 #include "../ite_keyboard.dtsi"
 #include "../ite_i2c.dtsi"
 #include "../ite_interrupts.dtsi"
-#include "../ite_led.dtsi"
 #include "../ite_usbc.dtsi"
 #include "../ite_shi.dtsi"
 #include "./cbi.dtsi"
 #include "./keyboard.dtsi"
 #include "./thermistor.dtsi"
 #include "../ite_motionsense.dtsi"
-
+#include "./pwm_leds.dtsi"
 / {
 	aliases {
 		/*
@@ -48,6 +47,12 @@
 		};
 		en_pp5000_usb_a1_vbus_x: en_pp5000_usb_a1_vbus_x {
 			gpios = <&gpioa 7 GPIO_OUTPUT_LOW>;
+		};
+		gpio_battery_led_amber_l: battery_led_amber_l {
+			gpios = <&gpioa 1 GPIO_OUTPUT_HIGH>;
+		};
+		gpio_battery_led_white_l: battery_led_white_l {
+			gpios = <&gpioa 2 GPIO_OUTPUT_HIGH>;
 		};
 	};
 	unused-pins {
@@ -151,6 +156,7 @@
 			sensor = <&charger_bc12_port1>;
 		};
 	};
+<<<<<<< HEAD
 
 	/*
 	 * Declare mutexes used by sensor drivers.
