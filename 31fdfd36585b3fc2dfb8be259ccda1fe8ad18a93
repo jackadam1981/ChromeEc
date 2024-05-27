@@ -16,6 +16,24 @@
       "message": "This is an unexpected message during a power transition, which should trigger a Hard Reset. This flag check should just be added to the existing one on line 2854.",
       "revId": "31fdfd36585b3fc2dfb8be259ccda1fe8ad18a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4d31c6_6f10c7ac",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2866,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-05-27T08:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "182cb63f_e5da9fe8",
+      "revId": "31fdfd36585b3fc2dfb8be259ccda1fe8ad18a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
