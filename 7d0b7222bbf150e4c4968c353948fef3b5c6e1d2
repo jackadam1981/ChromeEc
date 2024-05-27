@@ -34,6 +34,24 @@
       "parentUuid": "a841b14a_5a8141ac",
       "revId": "7d0b7222bbf150e4c4968c353948fef3b5c6e1d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aafb1fe_e2bcdbdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1199365
+      },
+      "writtenOn": "2024-05-27T06:21:18Z",
+      "side": 1,
+      "message": "i changed _CROS_EC_C0_F_RF to _CROS_EC_C0_F_PF since the cmd doesn\u0027t have response. it only return success or not.",
+      "parentUuid": "2c788798_7462b144",
+      "revId": "7d0b7222bbf150e4c4968c353948fef3b5c6e1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
