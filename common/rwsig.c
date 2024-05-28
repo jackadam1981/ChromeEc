@@ -243,7 +243,7 @@ out:
 #define TASK_EVENT_ABORT TASK_EVENT_CUSTOM_BIT(0)
 #define TASK_EVENT_CONTINUE TASK_EVENT_CUSTOM_BIT(1)
 
-static enum rwsig_status rwsig_status;
+test_export_static enum rwsig_status rwsig_status;
 
 enum rwsig_status rwsig_get_status(void)
 {
