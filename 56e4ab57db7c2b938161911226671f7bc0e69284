@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4877df_91c99742",
+        "filename": "zephyr/program/nissa/riven/overlay.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-05-28T03:42:02Z",
+      "side": 1,
+      "message": "We should chagne to i2c4_1 for base accelerometer.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 7
+      },
+      "revId": "56e4ab57db7c2b938161911226671f7bc0e69284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
