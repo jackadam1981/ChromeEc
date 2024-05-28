@@ -9,6 +9,7 @@
 #include "update_fw.h"
 #include "usb-stream.h"
 #include "usb_descriptor.h"
+#include "vboot.h"
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/flash/flash_simulator.h>
@@ -193,6 +194,8 @@ ZTEST(usb_update, test_bad_digest)
 
 static void usb_update_before(void *f)
 {
+	static const struct vb21_packed_key fake_vb21_key = {};
+
 	/* reset the usb_updater's internal state */
 	send_error_reset(0);
 
@@ -203,6 +206,7 @@ static void usb_update_before(void *f)
 	FFF_FAKES_LIST(RESET_FAKE);
 	FFF_RESET_HISTORY();
 	system_get_image_copy_fake.return_val = EC_IMAGE_RO;
+	vb21_get_packed_key_fake.return_val = &fake_vb21_key;
 }
 
 ZTEST_SUITE(usb_update, NULL, NULL, usb_update_before, NULL, NULL);

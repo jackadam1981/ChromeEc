@@ -234,6 +234,7 @@ void fw_update_start(struct first_response_pdu *rpdu)
 
 #ifdef CONFIG_RWSIG_TYPE_RWSIG
 	vb21_key = vb21_get_packed_key();
+	CPRINTF("packed key: %lld\n", (long long)(intptr_t)vb21_key);
 	rpdu->common.key_version = htobe32(vb21_key->key_version);
 #endif
 
