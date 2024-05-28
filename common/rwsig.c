@@ -24,17 +24,35 @@
 #include "vb21_struct.h"
 #include "vboot.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/device.h>
+#include <zephyr/drivers/flash/flash_simulator.h>
+#endif
+
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
-#if !defined(CONFIG_MAPPED_STORAGE)
+#ifdef CONFIG_ZTEST
+
+uint8_t *get_simulated_flash(void)
+{
+	const struct device *flash_dev =
+		DEVICE_DT_GET(DT_NODELABEL(flashcontroller0));
+	size_t unused_size;
+
+	return flash_simulator_get_memory(flash_dev, &unused_size);
+}
+
+#undef CONFIG_PROGRAM_MEMORY_BASE
+#define CONFIG_PROGRAM_MEMORY_BASE get_simulated_flash()
+
+#undef CONFIG_MAPPED_STORAGE_BASE
+#define CONFIG_MAPPED_STORAGE_BASE get_simulated_flash()
+
+#elif !defined(CONFIG_MAPPED_STORAGE)
 #error rwsig implementation assumes mem-mapped storage.
 #endif
-
-/* RW firmware reset vector */
-static uint32_t *const rw_rst =
-	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF + 4);
 
 void rwsig_jump_now(void)
 {
@@ -101,6 +119,9 @@ int rwsig_check_signature(void)
 	const uint8_t *rwdata = (uint8_t *)CONFIG_MAPPED_STORAGE_BASE +
 				CONFIG_EC_WRITABLE_STORAGE_OFF;
 	int good = 0;
+	/* RW firmware reset vector */
+	uint32_t *rw_rst = (uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE +
+					CONFIG_RW_MEM_OFF + 4);
 
 	unsigned int rwlen;
 #ifdef CONFIG_RWSIG_TYPE_RWSIG
@@ -245,7 +266,7 @@ out:
 
 static enum rwsig_status rwsig_status;
 
-enum rwsig_status rwsig_get_status(void)
+test_mockable enum rwsig_status rwsig_get_status(void)
 {
 	return rwsig_status;
 }
