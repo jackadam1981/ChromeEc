@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711ee9b2_ed07094a",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-28T22:02:03Z",
+      "side": 1,
+      "message": "I have added it to `include/config.h`, and attempted to add declarations to `zephyr/Kconfig.usbc` (it seems that this file already contains several USB configuration parameters that are not particular to USB-C, despite the name of the file.)",
+      "parentUuid": "035cc5c9_c0a9af03",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 42
+      },
+      "revId": "ace2c01bd78948045d7044af330093d399331112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21f6a8fe_5f537a0e",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-05-24T22:29:55Z",
       "side": 1,
       "message": "nice-to-have: it would be good to validate `CONFIG_USB_MAX_CONTROL_PACKET_SIZE` value is 8, 16, 32 or 64 only",
+      "revId": "ace2c01bd78948045d7044af330093d399331112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1447610_87b02ede",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-28T22:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21f6a8fe_5f537a0e",
       "revId": "ace2c01bd78948045d7044af330093d399331112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
