@@ -595,12 +595,12 @@ static int test_enable_positive_match_secret_once(
 
 test_static int test_enable_positive_match_secret(void)
 {
-	struct positive_match_secret_state
-		dumb_state = { .template_matched = FP_NO_SUCH_TEMPLATE,
-			       .readable = false,
-			       .deadline = {
-				       .val = 0,
-			       } };
+	struct positive_match_secret_state dumb_state = { .template_matched =
+								  std::nullopt,
+							  .readable = false,
+							  .deadline = {
+								  .val = 0,
+							  } };
 
 	TEST_ASSERT(test_enable_positive_match_secret_once(&dumb_state) ==
 		    EC_SUCCESS);
@@ -608,7 +608,7 @@ test_static int test_enable_positive_match_secret(void)
 	/* Trying to enable again before reading secret should fail. */
 	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
 		    EC_ERROR_UNKNOWN);
-	TEST_ASSERT(dumb_state.template_matched == FP_NO_SUCH_TEMPLATE);
+	TEST_ASSERT(!dumb_state.template_matched.has_value());
 	TEST_ASSERT(!dumb_state.readable);
 	TEST_ASSERT(dumb_state.deadline.val == 0);
 
@@ -617,18 +617,18 @@ test_static int test_enable_positive_match_secret(void)
 
 test_static int test_disable_positive_match_secret(void)
 {
-	struct positive_match_secret_state
-		dumb_state = { .template_matched = FP_NO_SUCH_TEMPLATE,
-			       .readable = false,
-			       .deadline = {
-				       .val = 0,
-			       } };
+	struct positive_match_secret_state dumb_state = { .template_matched =
+								  std::nullopt,
+							  .readable = false,
+							  .deadline = {
+								  .val = 0,
+							  } };
 
 	TEST_ASSERT(test_enable_positive_match_secret_once(&dumb_state) ==
 		    EC_SUCCESS);
 
 	fp_disable_positive_match_secret(&dumb_state);
-	TEST_ASSERT(dumb_state.template_matched == FP_NO_SUCH_TEMPLATE);
+	TEST_ASSERT(!dumb_state.template_matched);
 	TEST_ASSERT(!dumb_state.readable);
 	TEST_ASSERT(dumb_state.deadline.val == 0);
 
