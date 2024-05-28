@@ -304,17 +304,19 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 #ifdef CONFIG_TOUCHPAD
 		case UPDATE_EXTRA_CMD_TOUCHPAD_INFO: {
 			struct touchpad_info tp = { 0 };
+			int tp_info_size;
 
 			if (data_count != 0) {
 				response = EC_RES_INVALID_PARAM;
 				break;
 			}
 
-			response_size = touchpad_get_info(&tp);
-			if (response_size < 1) {
+			tp_info_size = touchpad_get_info(&tp);
+			if (tp_info_size < 1) {
 				response = EC_RES_ERROR;
 				break;
 			}
+			response_size = tp_info_size;
 
 #ifdef CONFIG_TOUCHPAD_VIRTUAL_OFF
 			tp.fw_address = CONFIG_TOUCHPAD_VIRTUAL_OFF;
