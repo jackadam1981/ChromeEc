@@ -417,6 +417,35 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 	return BATTERY_NOT_DISCONNECTED;
 }
+
+static void check_disconnect_state(void)
+{
+	const struct board_batt_params *params = get_batt_params();
+	int reg;
+
+	/* If battery type is not known, can't check CHG/DCHG FETs */
+	if (!params) {
+		/* Still don't know, so return here */
+		CPRINTS("[DEBUG] battery type is unknown!");
+		return;
+	}
+
+	if (battery_get_fet_status_regval(&reg)) {
+		CPRINTS("[DEBUG] battery sb_read error!");
+		return;
+	}
+
+	if ((reg & params->fuel_gauge.fet.reg_mask) ==
+	    params->fuel_gauge.fet.disconnect_val) {
+		CPRINTS("Batt disconnected: reg 0x%04x mask 0x%04x disc 0x%04x",
+			reg, params->fuel_gauge.fet.reg_mask,
+			params->fuel_gauge.fet.disconnect_val);
+	} else {
+		CPRINTS("[DEBUG] battery is ready!");
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, check_disconnect_state, HOOK_PRIO_DEFAULT);
+
 #endif /* TEST_BATTERY_CONFIG */
 
 __overridable int
