@@ -16,6 +16,24 @@
       "message": "@weijiahong@huaqin.corp-partner.google.com\n\nCould you please to help check if the touchpad parameters for spikyrock are correct?",
       "revId": "8e238b05fc1c8d835d7743849c213192762b4145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ebdf51_d35fce6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2024-05-28T02:26:21Z",
+      "side": 1,
+      "message": "Hi chen.\nWe just got a sample of TP and obtained the following parameters from TP’s FW.\n```\nlogical_max_x \u003d \u003c2721\u003e;\nlogical_max_y \u003d \u003c1291\u003e;\nphysical_max_x \u003d \u003c864\u003e;\nphysical_max_y \u003d \u003c410\u003e;\n```\nThe `max_pressure` parameter is still waiting to be provided by the TP supplier.\n\nThanks~",
+      "parentUuid": "5193db1a_f87d7d10",
+      "revId": "8e238b05fc1c8d835d7743849c213192762b4145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
