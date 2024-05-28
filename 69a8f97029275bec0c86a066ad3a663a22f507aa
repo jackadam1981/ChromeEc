@@ -16,6 +16,24 @@
       "message": "Why would we want to run them by default if the coverage is inconsisent?",
       "revId": "69a8f97029275bec0c86a066ad3a663a22f507aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8117bc8_263a1d71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-05-28T17:10:10Z",
+      "side": 1,
+      "message": "When we don\u0027t run these tests, sometimes we get 0/270 lines covered in the build, and sometimes 0/0 lines covered. So this way we will get x/270 lines covered all the time.",
+      "parentUuid": "6fda4dc9_6de2e8b5",
+      "revId": "69a8f97029275bec0c86a066ad3a663a22f507aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
