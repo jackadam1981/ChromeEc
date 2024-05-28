@@ -10,6 +10,9 @@
 / {
 	chosen {
 		cros-ec,flash-controller = &cros_flash;
+		zephyr,flash = &flash0;
+		zephyr,flash-controller = &flashcontroller0;
+		/delete-property/ zephyr,code-partition;
 	};
 
 	cros_flash: cros-flash {
@@ -30,25 +33,42 @@
 
 	/delete-node/ leds;
 
-	flash-controller@0 {
-		flash@0 {
+	/delete-node/ flash-controller@0;
+
+	flashcontroller0: flash-controller@800000 {
+		compatible = "zephyr,sim-flash";
+		reg = <0x800000 0x100000>;
+		#address-cells = <0x1>;
+		#size-cells = <0x1>;
+		erase-value = <0xff>;
+
+		flash0: flash@0 {
+			reg = <0x0 0x100000>;
+			status = "okay";
+			compatible = "soc-nv-flash";
+			erase-block-size = <0x1000>;
+			write-block-size = <0x1>;
+
 			partitions {
 				compatible = "fixed-partitions";
-				ro: ro@0x100000 {
+				#address-cells = <1>;
+				#size-cells = <1>;
+
+				ro: ro@800000 {
 					label = "ro";
-					reg = <0x100000 0x40000>;
+					reg = <0x00000 0x40000>;
 				};
-				rw: rw@0x140000 {
+				rw: rw@840000 {
 					label = "rw";
-					reg = <0x140000 0x40000>;
+					reg = <0x40000 0x40000>;
 				};
-				rollback0: rollback0@0x180000 {
+				rollback0: rollback0@880000 {
 					label = "rollback0";
-					reg = <0x180000 0x1000>;
+					reg = <0x80000 0x1000>;
 				};
-				rollback1: rollback1@0x181000 {
+				rollback1: rollback1@881000 {
 					label = "rollback1";
-					reg = <0x181000 0x1000>;
+					reg = <0x81000 0x1000>;
 				};
 			};
 		};

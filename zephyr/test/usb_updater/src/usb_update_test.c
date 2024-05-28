@@ -9,6 +9,7 @@
 #include "update_fw.h"
 #include "usb-stream.h"
 #include "usb_descriptor.h"
+#include "vboot.h"
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/flash/flash_simulator.h>
@@ -18,6 +19,8 @@
 #include <zephyr/ztest.h>
 
 void send_error_reset(uint8_t resp_value);
+
+extern enum rwsig_status rwsig_status;
 
 static void send_pdu(size_t payload_size, uint32_t digest, uint32_t base)
 {
@@ -191,8 +194,26 @@ ZTEST(usb_update, test_bad_digest)
 	zassert_equal(resp, 0);
 }
 
+ZTEST(usb_update, test_rwsig_busy)
+{
+	const struct queue *tx_queue = usb_update.consumer.queue;
+	struct first_response_pdu first_response_pdu;
+	int resp;
+
+	rwsig_status = RWSIG_IN_PROGRESS;
+	/* send first pdu */
+	send_pdu(0, 0, 0);
+	zassert_equal(queue_count(tx_queue), sizeof(first_response_pdu));
+	queue_remove_units(tx_queue, &first_response_pdu,
+			   sizeof(first_response_pdu));
+	resp = sys_be32_to_cpu(first_response_pdu.return_value);
+	zassert_equal(resp, UPDATE_RWSIG_BUSY);
+}
+
 static void usb_update_before(void *f)
 {
+	static const struct vb21_packed_key fake_vb21_key = {};
+
 	/* reset the usb_updater's internal state */
 	send_error_reset(0);
 
@@ -203,6 +224,7 @@ static void usb_update_before(void *f)
 	FFF_FAKES_LIST(RESET_FAKE);
 	FFF_RESET_HISTORY();
 	system_get_image_copy_fake.return_val = EC_IMAGE_RO;
+	vb21_get_packed_key_fake.return_val = &fake_vb21_key;
 }
 
 ZTEST_SUITE(usb_update, NULL, NULL, usb_update_before, NULL, NULL);

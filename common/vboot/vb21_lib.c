@@ -45,7 +45,7 @@ int vb21_is_signature_valid(const struct vb21_signature *sig,
 	return EC_SUCCESS;
 }
 
-const struct vb21_packed_key *vb21_get_packed_key(void)
+test_mockable const struct vb21_packed_key *vb21_get_packed_key(void)
 {
 	return (const struct vb21_packed_key *)(CONFIG_RO_PUBKEY_READ_ADDR);
 }

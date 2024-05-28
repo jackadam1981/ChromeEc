@@ -6,6 +6,7 @@
 #include "fakes.h"
 #include "sha256.h"
 #include "update_fw.h"
+#include "vboot.h"
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/flash/flash_simulator.h>
@@ -159,13 +160,18 @@ static void *update_fw_setup(void)
 
 	memcpy(touchpad_fw_hashes[0], checksum, SHA256_DIGEST_SIZE);
 
+	system_get_version_fake.return_val = "fake-version-str";
+
 	return NULL;
 }
 
 static void update_fw_before(void *f)
 {
+	static const struct vb21_packed_key fake_vb21_key = {};
+
 	FFF_FAKES_LIST(RESET_FAKE);
 	FFF_RESET_HISTORY();
+	vb21_get_packed_key_fake.return_val = &fake_vb21_key;
 }
 
 ZTEST_SUITE(update_fw, NULL, update_fw_setup, update_fw_before, NULL, NULL);
