@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a08e18_fbddbe9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-28T17:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abb00a91_7f4f0564",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "b6c45dd44aadf58b0b03f831812d3a21e60cc3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d141751_bd5bb695",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-24T18:04:29Z",
       "side": 1,
       "message": "Should this be indexed from 1 to match the UCSI definition, and use 0 to indicate an invalid value?",
+      "range": {
+        "startLine": 745,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 0
+      },
+      "revId": "b6c45dd44aadf58b0b03f831812d3a21e60cc3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585fc090_6667f930",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-28T17:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d141751_bd5bb695",
       "range": {
         "startLine": 745,
         "startChar": 0,
