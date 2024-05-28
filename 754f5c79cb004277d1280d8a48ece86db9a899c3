@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa4543a_a9949bf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-05-28T22:22:50Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "754f5c79cb004277d1280d8a48ece86db9a899c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05055f3e_40aef04c",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-05-28T22:22:50Z",
+      "side": 1,
+      "message": "Not the fault of this change, but I just noticed that the `is_raw_capture` func doesn\u0027t check that capture mode is enabled, like this func does.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "754f5c79cb004277d1280d8a48ece86db9a899c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
