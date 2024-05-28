@@ -46,6 +46,30 @@
       },
       "revId": "05410a63322a27bb8aca6cf2f952d29b687e3e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae29da5c_446ed113",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:28:37Z",
+      "side": 1,
+      "message": "\u003e  It\u0027s based on common and core (ARM) code. I feel like, if there is a bug in this part, 100 issues are created in Zephyr immediately. My assumption was to run tests more specific for our use-case e.g. stm32f4 flash protection, rtc counter driver.\n\nIn general, I agree, but I would like to better understand the upstream Zephyr testing process and our upreving process for Zephyr. Does Zephyr run CI against every commit for the tests in common ARM code? When we uprev the Zephyr code, do we know for sure that all the upstream tests for common code are passing?\n\nIf not, we could get into a state where someone breaks the code upstream and we uprev to that code. I\u0027m sure there will be lots of bugs filed upstream about the breakage since it\u0027s in something so fundamental, but we will have already synced that code.\n\nLet\u0027s skip this test for now in `run_device_tests.py`, but let\u0027s discuss ideas on how to handle the upstream tests for common code. Maybe we should make running them a part of the uprev process. That may not be possible though if there are too many. Maybe we work on getting our Renode board configuration into upstream Zephyr CI and run the tests through that.",
+      "parentUuid": "3a7ae81c_e4923209",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 31
+      },
+      "revId": "05410a63322a27bb8aca6cf2f952d29b687e3e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
