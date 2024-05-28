@@ -512,6 +512,26 @@ ZTEST_USER(pdc_api, test_execute_ucsi_cmd)
 	zassert_equal(out->raw_value, in.raw_value);
 }
 
+ZTEST_USER(pdc_api, test_execute_ucsi_cmd_ack_cc_ci)
+{
+	struct ucsi_memory_region ucsi_data;
+	struct ucsi_control *control = &ucsi_data.control;
+	struct pdc_callback callback;
+	struct ucsiv3_ack_cc_ci_cmd *cmd =
+		(struct ucsiv3_ack_cc_ci_cmd *)control->command_specific;
+
+	memset(&ucsi_data, 0, sizeof(ucsi_data));
+	callback.handler = test_cc_cb;
+
+	cmd->connector_change_ack = 1;
+	zassert_ok(pdc_execute_ucsi_cmd(dev, UCSI_CMD_ACK_CC_CI, 1,
+					control->command_specific,
+					ucsi_data.message_in, &callback));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_true(test_cc_cb_called);
+	zassert_true(test_cc_cb_cci.command_completed);
+}
+
 ZTEST_USER(pdc_api, test_execute_ucsi_cmd_get_connector_status)
 {
 	struct ucsi_memory_region ucsi_data;
