@@ -53,7 +53,7 @@ extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
 
 struct positive_match_secret_state {
 	/* Index of the most recently matched template. */
-	uint16_t template_matched;
+	std::optional<uint16_t> template_matched;
 	/* Flag indicating positive match secret can be read. */
 	bool readable;
 	/* Deadline to read positive match secret. */
