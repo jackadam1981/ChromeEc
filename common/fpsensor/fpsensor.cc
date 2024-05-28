@@ -620,11 +620,18 @@ static enum ec_status fp_command_stats(struct host_cmd_handler_args *args)
 	r->overall_t0.hi = overall_t0.le.hi;
 	r->timestamps_invalid = timestamps_invalid;
 	/*
-	 * Note that this is set to FP_NO_SUCH_TEMPLATE when positive match
-	 * secret is read/disabled, and we are not using this field in biod.
+	 * We are not using this field in biod.
 	 */
-	r->template_matched =
-		global_context.positive_match_secret_state.template_matched;
+	if (global_context.positive_match_secret_state.template_matched
+		    .has_value()) {
+		r->template_matched = global_context.positive_match_secret_state
+					      .template_matched.value();
+	} else {
+		/* positive match secret is read/disabled */
+		// TODO
+		// r->template_matched = FP_NO_SUCH_TEMPLATE;
+		r->template_matched = -1;
+	}
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
