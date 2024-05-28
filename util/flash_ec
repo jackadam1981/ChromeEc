@@ -434,7 +434,7 @@ esac
 
 case "${CHIP}" in
 	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx"|"ite_i2c"|"npcx_uut"|"ite_spi"| \
-			"ite_spi_ccd_i2c"|"it8xxx2"|"mchp_int_spi")
+			"ite_spi_ccd_i2c"|"ite_uart"|"it8xxx2"|"mchp_int_spi")
 		;;
 	*)
 		if [[ -n "${FLAGS_read}" ]]; then
@@ -1576,6 +1576,45 @@ function flash_it83xx() {
 	if [[ "${SERVO_TYPE}" =~ "c2d2" ]]; then
 		dut_control cr50_idle_level:active
 	fi
+
+	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
+}
+
+function flash_ite_uart() {
+	local ITECOMDBGR_BIN
+	local TOOL_PATH="${EC_DIR}/build/host/util:${PATH}"
+
+	info "Programming EC firmware using ITE UART interface"
+
+	ITECOMDBGR_BIN=$(PATH="${TOOL_PATH}" which itecomdbgr)
+	EC_UART="$(servo_ec_uart)"
+
+	info "ITE tool = ${ITECOMDBGR_BIN}"
+	info "EC UART = ${EC_UART}"
+
+	servo_save_add "ec_uart_parity"
+
+	claim_pty "${EC_UART}"
+
+	# UART programming requires even partity, and ec3po disabled
+	dut_control_or_die "ec_uart_parity:even"
+
+	# Build the iteflash command line.
+	local ITEFLASH_ARGS=( "${ITECOMDBGR_BIN}" )
+	ITEFLASH_ARGS+=( "-d" "${EC_UART}" )
+
+	if [[ -n "${FLAGS_read}" ]]; then
+		ITEFLASH_ARGS+=( "-r" "${FLAGS_read}" )
+	else
+		ITEFLASH_ARGS+=( "-f" "${IMG}" )
+	fi
+
+	# Sudo needed to access the EC file.
+	ITEFLASH_ARGS=( "sudo" "--" "${ITEFLASH_ARGS[@]}" )
+
+	# Reset the EC and then wait.  Otherwise the read of the flash ID fails.
+	servo_ec_hard_reset_or_die
+	sleep 3
 
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
 }
