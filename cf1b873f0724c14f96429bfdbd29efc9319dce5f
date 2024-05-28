@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91cb9660_0cb5f221",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "Is this supposed to be `0` or `1`?",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 24
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bf5d1c_5ac3e8cf",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "Can you add a comment on what this represents?\n\nIs it just supposed to be an address inside the code RAM region? (not the entire code ram region? Looks like code ram regions starts at `0x20058000`)",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54965e83_b0c7927a",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f6e9e4_4c85e54f",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "Can you add a comment on what makes it invalid? Alignment, right?\n\nOr you could rename the variable to make it clear: `invalid_code_reg_addr_not_aligned`.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5c4cf2_4b7263b3",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "Can you add a comment on what makes it invalid?\n\nOr rename the variable to make it clear: `invalid_code_reg_size_too_large` or whatever.",
+      "range": {
+        "startLine": 53,
+        "startChar": 6,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948581e5_b64e49d7",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "Why isn\u0027t this testing the return value anymore?",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 32
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ef3862_c3c1a392",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-28T20:10:17Z",
+      "side": 1,
+      "message": "You can simplify this as this right?\n\n```\ntest_set_next_step(TEST_STATE_FAILED);\n```\n\nsince `test_ram_fetch_protect` will either busfault (success) or return, which means the test failed.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
