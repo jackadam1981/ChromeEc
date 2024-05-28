@@ -175,6 +175,8 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
+static void check_disconnect_state(void);
+
 void init_battery_type(void)
 {
 	int type;
@@ -218,6 +220,8 @@ void init_battery_type(void)
 	}
 
 	battery_conf = &board_battery_info[type];
+
+	check_disconnect_state();
 }
 DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_BATTERY_INIT);
 
@@ -417,6 +421,36 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 	return BATTERY_NOT_DISCONNECTED;
 }
+
+static void check_disconnect_state(void)
+{
+	const struct board_batt_params *params = get_batt_params();
+	int reg;
+
+	CPRINTS("<>");
+
+	/* If battery type is not known, can't check CHG/DCHG FETs */
+	if (!params) {
+		/* Still don't know, so return here */
+		CPRINTS("[DEBUG] battery type is unknown!");
+		return;
+	}
+
+	if (battery_get_fet_status_regval(&reg)) {
+		CPRINTS("[DEBUG] battery sb_read error!");
+		return;
+	}
+
+	if ((reg & params->fuel_gauge.fet.reg_mask) ==
+	    params->fuel_gauge.fet.disconnect_val) {
+		CPRINTS("[DEBUG] battery is disconnected!");
+	} else {
+		CPRINTS("[DEBUG] battery is ready!");
+	}
+	CPRINTS("<>");
+}
+DECLARE_HOOK(HOOK_SECOND, check_disconnect_state, HOOK_PRIO_DEFAULT);
+
 #endif /* TEST_BATTERY_CONFIG */
 
 __overridable int
