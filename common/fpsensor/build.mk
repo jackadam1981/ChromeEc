@@ -36,7 +36,6 @@ $(out)/RW/$(_fpsensor_auth_crypto_stateless_obj): CFLAGS+=$(fpsensor_CFLAGS)
 all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_state_obj)
 all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_obj)
 all-obj-$(HAS_TASK_CONSOLE)+=$(_fpsensor_detect_strings_obj)
-all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_debug_obj)
 all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_auth_commands_obj)
 
 # Since we only include the FPSENSOR task in the RW image, HAS_TASK_FPSENSOR
@@ -50,6 +49,7 @@ ifeq ($(TEST_BUILD),y)
 fpsensor_obj_image=y
 endif
 
+all-obj-$(fpsensor_obj_image)+=$(_fpsensor_debug_obj)
 all-obj-$(fpsensor_obj_image)+=$(_fpsensor_utils_obj)
 all-obj-$(fpsensor_obj_image)+=$(_fpsensor_auth_crypto_stateless_obj)
 all-obj-$(fpsensor_obj_image)+=$(_fpsensor_crypto_obj)
