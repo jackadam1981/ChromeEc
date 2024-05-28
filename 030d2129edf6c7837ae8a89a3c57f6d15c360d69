@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5d5f96_a0f39cf5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:27:55Z",
+      "side": 1,
+      "message": "Nit - rename to `cc_cb`",
+      "range": {
+        "startLine": 381,
+        "startChar": 22,
+        "endLine": 381,
+        "endChar": 28
+      },
+      "revId": "030d2129edf6c7837ae8a89a3c57f6d15c360d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364af2cf_b2f35e76",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:27:55Z",
+      "side": 1,
+      "message": "Because this is under the Zephyr folder, follow the Zephyr [style](https://docs.zephyrproject.org/latest/contribute/guidelines.html#coding-style) and  use braces on all conditionals.",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 539,
+        "endChar": 26
+      },
+      "revId": "030d2129edf6c7837ae8a89a3c57f6d15c360d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85bcc65_dea99357",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:27:55Z",
+      "side": 1,
+      "message": "I see that `rts54_post_command` will clear the `cc_cb_tmp`, but I think you should clear it here as well.",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 60
+      },
+      "revId": "030d2129edf6c7837ae8a89a3c57f6d15c360d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97f0b30_9e69f8ca",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:27:55Z",
+      "side": 1,
+      "message": "Use braces.\nNit - this can be restructured as\n```\nif (rv \u003d\u003d 0) {\n}\nif (rv !\u003d -EBUSY) {\n}\n```",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 0
+      },
+      "revId": "030d2129edf6c7837ae8a89a3c57f6d15c360d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9444660_03ccd5cc",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:27:55Z",
+      "side": 1,
+      "message": "Add braces.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 17
+      },
+      "revId": "030d2129edf6c7837ae8a89a3c57f6d15c360d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e2f39e_a05676fe",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:27:55Z",
+      "side": 1,
+      "message": "Add braces",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 33
+      },
+      "revId": "030d2129edf6c7837ae8a89a3c57f6d15c360d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
