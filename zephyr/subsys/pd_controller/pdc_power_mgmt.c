@@ -2697,6 +2697,7 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 {
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
 
+	LOG_INF("pdc_set_drp[%d]: state = %d", port, state);
 	switch (state) {
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
@@ -3478,6 +3479,36 @@ bool pdc_power_mgmt_test_wait_unattached(void)
 		}
 
 		if (num_unattached == ARRAY_SIZE(pdc_data)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+/* LCOV_EXCL_STOP */
+
+/*
+ * Ensure that the PDC attached state is either SRC_ATTACHED or SNK_ATTACHED and
+ * that the substate has reached the stead state for the attached state.
+ */
+/* LCOV_EXCL_START */
+bool pdc_power_mgmt_test_wait_attached(int port)
+{
+	/* Wait for up to 20 * 100ms for all ports to become unattached. */
+	for (int i = 0; i < 20; i++) {
+		k_msleep(100);
+
+		if ((pdc_data[port]->port.attached_state ==
+		     SNK_ATTACHED_STATE) &&
+		    (pdc_data[port]->port.snk_attached_local_state ==
+		     SNK_ATTACHED_RUN)) {
+			return true;
+		}
+
+		if ((pdc_data[port]->port.attached_state ==
+		     SRC_ATTACHED_STATE) &&
+		    (pdc_data[port]->port.src_attached_local_state ==
+		     SRC_ATTACHED_RUN)) {
 			return true;
 		}
 	}
