@@ -52,6 +52,24 @@
       "parentUuid": "38c3162b_b66d943f",
       "revId": "0194c6d26b16c846d5143c0e6ff5ade8226c2dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2793c9af_9fd8e04e",
+        "filename": "zephyr/program/rauru/rauru/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-05-28T12:09:27Z",
+      "side": 1,
+      "message": "LGTM based on current fw_config.",
+      "parentUuid": "4ebb15cf_cfd097de",
+      "revId": "0194c6d26b16c846d5143c0e6ff5ade8226c2dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
