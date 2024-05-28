@@ -117,6 +117,30 @@
       },
       "revId": "d5b95e7aab2d2684fb4aab87bb3c3f1c69ef5ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86153f2a_0eba2e43",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-28T20:20:31Z",
+      "side": 1,
+      "message": "It is possible to add on additional devicetree overlays here too that can add/delete existing nodes (zephyr/test/charger/testcase.yaml is an example of different charger configurations). Simple unit_test would be even better IMO if that works.",
+      "parentUuid": "d7cb3b19_9683ea21",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "d5b95e7aab2d2684fb4aab87bb3c3f1c69ef5ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
