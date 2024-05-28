@@ -45,6 +45,54 @@
       },
       "revId": "9eba08236e5013d3307146833de91ecceece17aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b08332d_5f4f8846",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-28T05:56:55Z",
+      "side": 1,
+      "message": "Have updated the way of unit tests to test the fetch lock. Thus, the `fetch_ram_func` has not been needed.",
+      "parentUuid": "bdd53c98_9e6112dd",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "9eba08236e5013d3307146833de91ecceece17aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a1a4d8_34a0cd6f",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-28T05:56:55Z",
+      "side": 1,
+      "message": "Have updated the way of unit tests to test the fetch lock. Thus, the `fetch_ram_func` has not been needed.",
+      "parentUuid": "72c29d90_fca9259f",
+      "range": {
+        "startLine": 16,
+        "startChar": 40,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "9eba08236e5013d3307146833de91ecceece17aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
