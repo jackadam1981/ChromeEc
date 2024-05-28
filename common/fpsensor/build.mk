@@ -40,24 +40,21 @@ all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_debug_obj)
 all-obj-$(HAS_TASK_CONSOLE)+=$(_fpsensor_utils_obj)
 all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_auth_commands_obj)
 
-# If HAS_TASK_FPSENSOR is not empty.
-ifneq (,$(HAS_TASK_FPSENSOR))
-all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_auth_crypto_stateless_obj)
-endif # HAS_TASK_FPSENSOR.
-# Or we are building fpsensor related projects.
-ifeq (fpsensor,$(findstring fpsensor,$(PROJECT)))
-all-obj-y+=$(_fpsensor_auth_crypto_stateless_obj)
-endif # fpsensor projects.
+# Since we only include the FPSENSOR task in the RW image, HAS_TASK_FPSENSOR
+# will either be "rw" or empty.
+fpsensor_obj_image=$(HAS_TASK_FPSENSOR)
 
-# If HAS_TASK_FPSENSOR is not empty.
-ifneq (,$(HAS_TASK_FPSENSOR))
-all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_crypto_obj)
-all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_auth_crypto_stateful_obj)
-endif # HAS_TASK_FPSENSOR.
-# Or we are building stateful fpsensor related projects.
-ifeq (fpsensor,$(findstring fpsensor,$(PROJECT))$(findstring stateless,$(PROJECT)))
-all-obj-y+=$(_fpsensor_crypto_obj)
-all-obj-y+=$(_fpsensor_auth_crypto_stateful_obj)
-endif # stateful fpsensor projects.
+ifeq ($(TEST_BUILD),y)
+ifeq ($(BOARD),host)
+# We're building for the "emulator" (TEST_BUILD with BOARD=host), so we need
+# to include the fpsensor object files in RO, since the emulator runs the tests
+# from the RO image.
+fpsensor_obj_image=y
+endif
+endif
+
+all-obj-$(fpsensor_obj_image)+=$(_fpsensor_auth_crypto_stateless_obj)
+all-obj-$(fpsensor_obj_image)+=$(_fpsensor_crypto_obj)
+all-obj-$(fpsensor_obj_image)+=$(_fpsensor_auth_crypto_stateful_obj)
 
 endif # CONFIG_FINGERPRINT_MCU
