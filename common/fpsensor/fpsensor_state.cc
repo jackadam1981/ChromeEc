@@ -58,7 +58,7 @@ struct fpsensor_context global_context = {
 	.tpm_seed = { 0 },
 	.user_id = { 0 },
 	.positive_match_secret_state = {
-		.template_matched = FP_NO_SUCH_TEMPLATE,
+		.template_matched = std::nullopt,
 		.readable = false,
 		.deadline = {
 			.val = 0,
@@ -306,7 +306,7 @@ int fp_enable_positive_match_secret(uint16_t fgr,
 
 void fp_disable_positive_match_secret(struct positive_match_secret_state *state)
 {
-	state->template_matched = FP_NO_SUCH_TEMPLATE;
+	state->template_matched = std::nullopt;
 	state->readable = false;
 	state->deadline.val = 0;
 }
