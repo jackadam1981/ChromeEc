@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a55db05_11d79068",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:45:07Z",
+      "side": 1,
+      "message": "Move all the PDC trace Kconfigs to a separate file.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056d0550_c9837a84",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:45:07Z",
+      "side": 1,
+      "message": "I prefer the Kconfig is specified in bytes, with a power of 2 requirement.  You can add a BUILD_ASSERT to validate the size is a power of 2.",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381b4ff4_42606a85",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:45:07Z",
+      "side": 1,
+      "message": "Use `shell_fprintf` in place of all `printk`",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 8
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94230b5_399ab6e4",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-28T15:45:07Z",
+      "side": 1,
+      "message": "This specifies manadatory args (including cmd name) followed by optional args.  This should be `2, 1`.",
+      "range": {
+        "startLine": 500,
+        "startChar": 28,
+        "endLine": 500,
+        "endChar": 34
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
