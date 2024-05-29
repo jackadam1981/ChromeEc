@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a00226e_7bfc4042",
+        "filename": "zephyr/test/pdc/src/ucsi/ucsi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T16:04:49Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any value in checking the exact string for each command name.  This just means the test would have to change anytime there is an update the command name array.\n\nInstead, just verify that no command name is NULL.\n\nExample from the [pdc_power_mgmt](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c;l\u003d1140).",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "7febdee3c923d46a7e957c7a25297420f0dfdfe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
