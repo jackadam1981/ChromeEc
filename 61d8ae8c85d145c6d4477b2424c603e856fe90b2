@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0ffe23_1468fe29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-05-29T22:52:09Z",
+      "side": 1,
+      "message": "I know that we talked about this PWM functionality possibly not being very useful.  However, since I have gone through the work of coding which timer output channels map to which pins on HyperDebug, I would like to submit it, so that it does not get lost.",
+      "revId": "61d8ae8c85d145c6d4477b2424c603e856fe90b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
