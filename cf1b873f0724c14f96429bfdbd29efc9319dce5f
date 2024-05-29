@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97a53a2e_e25d7134",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-29T02:30:43Z",
+      "side": 1,
+      "message": "The definitions of `NPCX_WLK_BF_EN` here represent the position in the register instead of the function is enabled or disabled. Also, the meaning of this function is the following. When this bit is set to 1, a busfault trap is generated if the core tries to perform a write operation to write-protected sector.",
+      "parentUuid": "91cb9660_0cb5f221",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 24
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33bf5d1c_5ac3e8cf",
         "filename": "test/ram_lock.c",
         "patchSetId": 9
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11af8958_4a4e2cf6",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-29T02:30:43Z",
+      "side": 1,
+      "message": "The entire code ram region can be set to the fetch-protection region. Here just pick up a region of code RAM to do tests.",
+      "parentUuid": "33bf5d1c_5ac3e8cf",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54965e83_b0c7927a",
         "filename": "test/ram_lock.c",
         "patchSetId": 9
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-28T20:10:17Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bf0b73_01a3238e",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-29T02:30:43Z",
+      "side": 1,
+      "message": "The entire data ram region can be set to the write-protection region. Here just pick up a region of data RAM to do tests.",
+      "parentUuid": "54965e83_b0c7927a",
       "range": {
         "startLine": 43,
         "startChar": 0,
