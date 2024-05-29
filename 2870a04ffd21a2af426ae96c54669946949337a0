@@ -34,6 +34,24 @@
       "message": "The I2C port is shared with a device limited to 400KHz. May cause unexpected behaviors with the GPIO expander.",
       "revId": "2870a04ffd21a2af426ae96c54669946949337a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2626f921_54e5685e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T18:15:15Z",
+      "side": 1,
+      "message": "Acknowledged.  I haven\u0027t yet made updates to flash_ec to modify the I2C speed, but I\u0027ll limit the bus speed to 400KHz",
+      "parentUuid": "e97096b1_283922b3",
+      "revId": "2870a04ffd21a2af426ae96c54669946949337a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
