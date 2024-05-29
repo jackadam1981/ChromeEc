@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ffcb742_9029e3f2",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:13:31Z",
+      "side": 1,
+      "message": "Waiting for this to land.",
+      "parentUuid": "f9795296_0b941d7e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee7da217_40050800",
         "filename": "zephyr/subsys/ucsi/ppm_common.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-24T19:58:48Z",
       "side": 1,
       "message": "This should be part of `platform_allocate_ppm()`.  Then you can drop the `malloc/calloc/free` from the platform layer.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5d3df9_fa912429",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:13:31Z",
+      "side": 1,
+      "message": "Done in crrev.com/c/5582096/",
+      "parentUuid": "ee7da217_40050800",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-05-24T19:47:35Z",
       "side": 1,
       "message": "As noted on other CLs - is this needed or should the `ppm_common_*` routines be promoted as the direct API calls?\n\nIf `struct ucsi_ppm_driver` is needed, then you need to create wrapper routines so that callers use a `struct device`.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 0
+      },
+      "revId": "2aa06e2caaf4db1783e1333c7bbe05ca5b629b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c342b7f_41e9dc00",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:13:31Z",
+      "side": 1,
+      "message": "`struct ucsi_ppm_driver` will go away; CL will get added to top of this stack.",
+      "parentUuid": "1c02252a_4b5e3086",
       "range": {
         "startLine": 409,
         "startChar": 0,
