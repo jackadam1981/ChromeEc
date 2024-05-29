@@ -16,6 +16,24 @@
       "message": "just double checking - the octopus firmware branch is updated\nwith cherry-picks, not bulk merges, right?",
       "revId": "75f0cef02ae4a9766dc0ef8c6294770905229449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f85b08_d4c8c46f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-05-29T23:29:50Z",
+      "side": 1,
+      "message": "Correct. The ec cherry-pick / merge cop should catch the CL if you do the wrong thing.",
+      "parentUuid": "eededaf7_c9e1ee37",
+      "revId": "75f0cef02ae4a9766dc0ef8c6294770905229449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
