@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc4a045_392ecc53",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3494,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2024-05-29T16:40:12Z",
+      "side": 1,
+      "message": "Nit: we should be able to combine this block with the LCOV block above.",
+      "revId": "b54316ee961ce25632900036d6574a1e79d7a630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
