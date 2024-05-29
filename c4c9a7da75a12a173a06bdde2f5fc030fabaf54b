@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43af413a_186647b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T18:20:54Z",
+      "side": 1,
+      "message": "We\u0027re no longer allow coverage to be skipped on PDC related changes.  Please remove this and run CQ+1 to see what the coverage gap is.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "c4c9a7da75a12a173a06bdde2f5fc030fabaf54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
