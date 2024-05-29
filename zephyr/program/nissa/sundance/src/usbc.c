@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
+#include "typec_control.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 
@@ -22,12 +23,26 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
+#define PDO_FIXED_FLAGS \
+	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
+
+static const uint32_t pd_src_pdo_1A5[] = {
+	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
+};
+
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_C1, USBC_PORT_COUNT };
+
+int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
+{
+	LOG_ERR("!!%s", __func__);
+	*src_pdo = pd_src_pdo_1A5;
+	return ARRAY_SIZE(pd_src_pdo_1A5);
+}
 
 /* Used by USB charger task with CONFIG_USB_PD_5V_EN_CUSTOM */
 int board_is_sourcing_vbus(int port)
 {
-	return board_vbus_source_enabled(port);
+	return ppc_is_sourcing_vbus(port);
 }
 
 int board_set_active_charge_port(int port)
@@ -162,4 +177,16 @@ void board_reset_pd_mcu(void)
 int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
+}
+
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+{
+	int rv;
+	const int current = TYPEC_RP_1A5;
+	LOG_ERR("!! %s [%d]", __func__, current);
+	rv = ppc_set_vbus_source_current_limit(port, rp);
+	if (rv != EC_SUCCESS) {
+		LOG_WRN("Failed to set source ilimit on port %d to %d: %d",
+			port, current, rv);
+	}
 }
