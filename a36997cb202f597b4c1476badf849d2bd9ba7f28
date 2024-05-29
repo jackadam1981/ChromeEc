@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "975c996e_7b8d5d95",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "my plan is for other expects to be separate items in the tuple. It makes the tuple easier to maintain and it\u0027s easy to assemble all the expects into 1 list when putting it into the manifest.",
+      "parentUuid": "c2440f50_3f623d22",
+      "range": {
+        "startLine": 78,
+        "startChar": 32,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "585f88f1_53882b47",
         "filename": "zephyr/scripts/cme.py",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-29T20:39:15Z",
       "side": 1,
       "message": "Should be a list of dict in case some PIDs are returned from multiple registers.",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8232eb_bbfa7312",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585f88f1_53882b47",
       "range": {
         "startLine": 87,
         "startChar": 12,
@@ -94,6 +142,30 @@
           ]
         }
       ],
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b08d982_d9a6797a",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee2cc2a_6edfac40",
+      "range": {
+        "startLine": 166,
+        "startChar": 32,
+        "endLine": 166,
+        "endChar": 33
+      },
       "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +261,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d64bfc6_6287ddfa",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65b0783_d3b60036",
+      "range": {
+        "startLine": 241,
+        "startChar": 24,
+        "endLine": 241,
+        "endChar": 32
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4a90d9b_9caee0fd",
@@ -212,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bcbdb5_ef1bd856",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4a90d9b_9caee0fd",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 2
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1069c76f_f33c672e",
@@ -225,6 +345,24 @@
       "writtenOn": "2024-05-29T20:39:15Z",
       "side": 1,
       "message": "Remove the new line.",
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4a5590_e493bdd9",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1069c76f_f33c672e",
       "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -270,6 +408,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f098aab9_2b830409",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "553f9047_5b620c9c",
+      "range": {
+        "startLine": 335,
+        "startChar": 7,
+        "endLine": 335,
+        "endChar": 34
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70cd1af2_27dde75b",
@@ -307,6 +469,30 @@
           ]
         }
       ],
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e9f206_c55dee74",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T22:19:14Z",
+      "side": 1,
+      "message": "cme now throws an error when multiple expects write to the same register.",
+      "parentUuid": "70cd1af2_27dde75b",
+      "range": {
+        "startLine": 342,
+        "startChar": 41,
+        "endLine": 342,
+        "endChar": 70
+      },
       "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
