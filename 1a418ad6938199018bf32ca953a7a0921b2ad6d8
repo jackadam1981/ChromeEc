@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe818890_d4dd1e8c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-29T16:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f85a90_4cb7bb4b",
+      "range": {
+        "startLine": 543,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 50
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2087df11_f85fd5ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-29T15:23:20Z",
       "side": 1,
       "message": "You should create a local `cci_event` to sent back to the callback handler.  Updating the static `cci_event` maintained by the driver could cause side effects.",
+      "range": {
+        "startLine": 2412,
+        "startChar": 0,
+        "endLine": 2414,
+        "endChar": 0
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b050aa_7deaed44",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-29T16:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2087df11_f85fd5ba",
       "range": {
         "startLine": 2412,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6fbf7e_eab268bd",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-29T16:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1404b78_01e7beb1",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 66
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c69132_e223b799",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-29T15:23:20Z",
       "side": 1,
       "message": "Log the LPM port number instead of `__func__`",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 58
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f9a535_a8c0f118",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-29T16:45:12Z",
+      "side": 1,
+      "message": "struct pdc_data_t is hidden in pdc_rts54xx.c. Do you suggest we change pdc_cci_cb_t to include a connector number (instead of struct device)? Alternatively, we can use the connector change indicator in cci_event to pass the connector number but that\u0027s against the spec.",
+      "parentUuid": "78c69132_e223b799",
       "range": {
         "startLine": 241,
         "startChar": 0,
