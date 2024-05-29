@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be120d7a_487f222a",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T23:16:50Z",
+      "side": 1,
+      "message": "What happens for a multi-function device, like a PPC+TCPC combo?",
+      "range": {
+        "startLine": 390,
+        "startChar": 11,
+        "endLine": 390,
+        "endChar": 53
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "71c8cec9_f7f0f9ab",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 389,
+                "startChar": 0,
+                "endLine": 398,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4dc521bcc1bd3e9656be0e7d9213d20a3789a407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e52205_6f48bc8b",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T23:16:50Z",
+      "side": 1,
+      "message": "Make it a fatal and fail the build.",
+      "range": {
+        "startLine": 391,
+        "startChar": 12,
+        "endLine": 391,
+        "endChar": 26
+      },
+      "revId": "4dc521bcc1bd3e9656be0e7d9213d20a3789a407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
