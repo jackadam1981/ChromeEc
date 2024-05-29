@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c4710b_6320bea0",
+        "filename": "zephyr/subsys/ucsi/include/pd_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f3868b_e20f06fd",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2907bdd2_d63db3e4",
@@ -75,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c99681_6a7595cb",
+        "filename": "zephyr/subsys/ucsi/include/pd_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2907bdd2_d63db3e4",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0748856c_59cad789",
@@ -88,6 +136,30 @@
       "writtenOn": "2024-05-24T19:38:05Z",
       "side": 1,
       "message": "This file will only be included by other files under `zephyr/subsys/ucsi`, so nesting under `include` isn\u0027t needed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "826947ce_9d69c6d2",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0748856c_59cad789",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -149,6 +221,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d71c98c_c4ffe931",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a8d67cd_7655bc81",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c819d28e_dc042f42",
@@ -162,6 +258,30 @@
       "writtenOn": "2024-05-24T19:38:05Z",
       "side": 1,
       "message": "Can these be dropped in favor of making direct calls before migrating?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e0f664_dbed76cb",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c819d28e_dc042f42",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -195,6 +315,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "513d0ba8_75646e63",
+        "filename": "zephyr/subsys/ucsi/include/platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Given that we\u0027re really only merging in `ppm_common`, I think I can probably get rid of the entire platform header. Again, this will be a follow-up CL.",
+      "parentUuid": "721ea19b_39fa12f1",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03da6d58_941d940e",
@@ -208,6 +352,30 @@
       "writtenOn": "2024-05-24T19:38:05Z",
       "side": 1,
       "message": "If this header needs to be visible outside the UCSI subsystem, then it needs to be located under the `zephyr/include` directory.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da97f4ac_b04ca75e",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03da6d58_941d940e",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -269,6 +437,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c163f977_94bd7645",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2a01370_68ec9a92",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8ff7ae1_662a68e5",
@@ -282,6 +474,30 @@
       "writtenOn": "2024-05-24T19:38:05Z",
       "side": 1,
       "message": "This duplicates the enum Sam has created on CL:5527273\n\nWhat\u0027s the plan for merging these?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9bd8c0_2b4eba47",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Anything UCSI specific will move out of this header and will use `ucsi_v3.h`. I can switch as soon as the other change lands.",
+      "parentUuid": "e8ff7ae1_662a68e5",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -317,6 +533,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4855f072_5952fa59",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Yup -- will make the change in the zephyr versions of the code.",
+      "parentUuid": "ca8cb53d_7a376c1b",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ab6ccc_5c589f63",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "The rest of these structs will also be removed in favor of `ucsi_v3.h`",
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66abb10f_aaa1f2af",
         "filename": "zephyr/subsys/ucsi/include/ppm.h",
         "patchSetId": 1
@@ -328,6 +585,30 @@
       "writtenOn": "2024-05-24T19:38:05Z",
       "side": 1,
       "message": "Is this layer needed?  Will any other code register a `struct ucsi_ppm_driver`?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 24
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745452fa_db0b00b8",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Will merge this header into `ppm_common.h` and we\u0027ll have a single ppm header.",
+      "parentUuid": "66abb10f_aaa1f2af",
       "range": {
         "startLine": 384,
         "startChar": 0,
@@ -361,6 +642,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0a44be_469bc83b",
+        "filename": "zephyr/subsys/ucsi/ppm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Just the unit test for this (which needs to look at internal state). Otherwise, I would have preferred this inside `ppm_common.c`.\n\nPer feedback from other CLs, I will probably move this to `ppm_common.c` and create helper functions in the header to access the internal state + others behind a #ifdef only declared for tests.",
+      "parentUuid": "c2977373_ac3a5eab",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4d1e6e5_ff812ca1",
@@ -384,6 +689,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47ce881_4ade450d",
+        "filename": "zephyr/subsys/ucsi/ppm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "I\u0027ll likely move this all to `zephyr/include/usbc/ppm.h`",
+      "parentUuid": "d4d1e6e5_ff812ca1",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b38bc56_7373f503",
@@ -397,6 +726,30 @@
       "writtenOn": "2024-05-24T19:38:05Z",
       "side": 1,
       "message": "For user code, this wouldn\u0027t be permitted - all public headers should be found under `zephyr/include`.\n\nAs this is for a test, this is permitted.  But check once the header files are relocated.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffdf49ab_817e8114",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:11:21Z",
+      "side": 1,
+      "message": "Once we move everything, I\u0027m going to try to convert this to a unit test. I can\u0027t figure out a good way to do this with the existing directory structure.",
+      "parentUuid": "5b38bc56_7373f503",
       "range": {
         "startLine": 50,
         "startChar": 0,
