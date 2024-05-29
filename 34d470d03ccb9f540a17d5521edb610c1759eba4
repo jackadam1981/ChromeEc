@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d18339d_38f00413",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:57:39Z",
+      "side": 1,
+      "message": "Can the test be written without adding this API?  Adding in special APIs that are only compiled in by test code should be a last resort.\n\nWhat about triggering the cache to be updated by calling  `pdc_get_connector_status`?",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 45
+      },
+      "revId": "34d470d03ccb9f540a17d5521edb610c1759eba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
