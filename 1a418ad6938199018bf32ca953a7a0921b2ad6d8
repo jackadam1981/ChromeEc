@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f85a90_4cb7bb4b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:23:20Z",
+      "side": 1,
+      "message": "Logging the function name isn\u0027t too helpful, and losing the connector number in the log will make logs harder to follow.",
+      "range": {
+        "startLine": 543,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 50
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2087df11_f85fd5ba",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:23:20Z",
+      "side": 1,
+      "message": "You should create a local `cci_event` to sent back to the callback handler.  Updating the static `cci_event` maintained by the driver could cause side effects.",
+      "range": {
+        "startLine": 2412,
+        "startChar": 0,
+        "endLine": 2414,
+        "endChar": 0
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1404b78_01e7beb1",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:23:20Z",
+      "side": 1,
+      "message": "Log the LPM port number in place of `__func__`.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 66
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c69132_e223b799",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:23:20Z",
+      "side": 1,
+      "message": "Log the LPM port number instead of `__func__`",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 58
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
