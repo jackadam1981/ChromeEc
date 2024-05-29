@@ -360,7 +360,9 @@ static int read_matrix(uint8_t *state, bool at_boot)
 		if (pb_pressed != power_button_raw_pressed()) {
 			c--;
 			continue;
-		} else if (pb_pressed) {
+		} else if (pb_pressed && at_boot) {
+			if (c == KEYBOARD_COL_REFRESH)
+				continue;
 			state[c] &= ~KEYBOARD_MASKED_BY_POWERBTN;
 		}
 
