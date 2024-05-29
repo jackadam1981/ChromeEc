@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5ea680_210a61d2",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T23:34:06Z",
+      "side": 1,
+      "message": "The error check is for duplicates from the dictionary.\n\nIf there are multiple entries for each device for different functionalities, they\u0027ll each carry their own copy of expect and there is no conflict even if they\u0027re identical.",
+      "parentUuid": "be120d7a_487f222a",
+      "range": {
+        "startLine": 390,
+        "startChar": 11,
+        "endLine": 390,
+        "endChar": 53
+      },
+      "revId": "4dc521bcc1bd3e9656be0e7d9213d20a3789a407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2e52205_6f48bc8b",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-05-29T23:16:50Z",
       "side": 1,
       "message": "Make it a fatal and fail the build.",
+      "range": {
+        "startLine": 391,
+        "startChar": 12,
+        "endLine": 391,
+        "endChar": 26
+      },
+      "revId": "4dc521bcc1bd3e9656be0e7d9213d20a3789a407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a915afa_7df99b0d",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-05-29T23:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2e52205_6f48bc8b",
       "range": {
         "startLine": 391,
         "startChar": 12,
