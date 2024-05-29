@@ -22,6 +22,30 @@
       },
       "revId": "8599e2c60b6326022b7932dfda0afc6021667377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4ff7da_283894f8",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T18:14:09Z",
+      "side": 1,
+      "message": "I\u0027ll move this switch statement into its own function to reduce nesting. See crrev.com/c/5582095",
+      "parentUuid": "17cfb7ce_eb0fce83",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 27
+      },
+      "revId": "8599e2c60b6326022b7932dfda0afc6021667377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
