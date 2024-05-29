@@ -350,6 +350,8 @@
 
 &i2c0 {
 	label = "I2C_PWR_CBI";
+	data-hold-time = <10>;
+	prescale-scl-low = <20>;
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
