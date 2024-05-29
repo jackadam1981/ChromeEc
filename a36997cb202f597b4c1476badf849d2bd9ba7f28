@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2440f50_3f623d22",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "Maybe just `expect`. It may not be PID.",
+      "range": {
+        "startLine": 78,
+        "startChar": 32,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "585f88f1_53882b47",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "Should be a list of dict in case some PIDs are returned from multiple registers.",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee2cc2a_6edfac40",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "Lower case for consistency.",
+      "range": {
+        "startLine": 166,
+        "startChar": 32,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "93988df5_7675c2da",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 166,
+                "startChar": 0,
+                "endLine": 167,
+                "endChar": 0
+              },
+              "replacement": "            \"invensense,icm42607p\",\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 174,
+                "startChar": 0,
+                "endLine": 175,
+                "endChar": 0
+              },
+              "replacement": "            \"invensense,icm42608p\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65b0783_d3b60036",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "I guess runtime_probe just reads a 8-bit value unconditionally. If you would like to read a 16-bit value, should let the runtime_probe team know so they can make the corresponding change.",
+      "range": {
+        "startLine": 241,
+        "startChar": 24,
+        "endLine": 241,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "70faead7_187c8ce6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 239,
+                "startChar": 0,
+                "endLine": 244,
+                "endChar": 0
+              },
+              "replacement": "            None,\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 247,
+                "startChar": 0,
+                "endLine": 252,
+                "endChar": 0
+              },
+              "replacement": "            None,\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 255,
+                "startChar": 0,
+                "endLine": 260,
+                "endChar": 0
+              },
+              "replacement": "            None,\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 263,
+                "startChar": 0,
+                "endLine": 268,
+                "endChar": 0
+              },
+              "replacement": "            None,\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 271,
+                "startChar": 0,
+                "endLine": 276,
+                "endChar": 0
+              },
+              "replacement": "            None,\n"
+            },
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 279,
+                "startChar": 0,
+                "endLine": 284,
+                "endChar": 0
+              },
+              "replacement": "            None,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a90d9b_9caee0fd",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "Add a new line.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 2
+      },
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1069c76f_f33c672e",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "Remove the new line.",
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553f9047_5b620c9c",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "Save it to a local variable.",
+      "range": {
+        "startLine": 335,
+        "startChar": 7,
+        "endLine": 335,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "614fe7f8_fff658e6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 335,
+                "startChar": 0,
+                "endLine": 346,
+                "endChar": 0
+              },
+              "replacement": "    for comp_info in DISAMBIGUATION_DICTIONARY.get(\n        component[\"component_name\"], [component]\n    ):\n        new_comp \u003d component.copy()\n        new_comp[\"component_name\"] \u003d comp_info.name\n        if comp_info.pid_expect is not None:\n            if \"expect\" not in new_comp[\"i2c\"]:\n                new_comp[\"i2c\"].update({\"expect\": []})\n            new_comp[\"i2c\"][\"expect\"].append(comp_info.pid_expect)\n        ret.append(new_comp)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70cd1af2_27dde75b",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-05-29T20:39:15Z",
+      "side": 1,
+      "message": "If the `expect` is updated multiple time, is it an error? Otherwise, it may lead to a conflict, e.g. one expecting PID 0x11 but another expecting PID 0x22?",
+      "range": {
+        "startLine": 342,
+        "startChar": 41,
+        "endLine": 342,
+        "endChar": 70
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cfab4a44_bd17c71f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/cme.py",
+              "range": {
+                "startLine": 342,
+                "startChar": 0,
+                "endLine": 342,
+                "endChar": 0
+              },
+              "replacement": "                if comp_info.pid_expect in new_comp[\"i2c\"][\"expect\"]:\n                    raise util.DevicetreeError(\n                        \"Duplicate expect value found for %s\"\n                        % new_comp[\"component_name\"]\n                    )\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a36997cb202f597b4c1476badf849d2bd9ba7f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
