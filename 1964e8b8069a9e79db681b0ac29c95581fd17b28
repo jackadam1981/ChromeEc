@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b868240b_339becb0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2408,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T23:15:25Z",
+      "side": 1,
+      "message": "Please add a comment explaining this usage.",
+      "parentUuid": "d5392ad7_59e11d1e",
+      "range": {
+        "startLine": 2408,
+        "startChar": 22,
+        "endLine": 2408,
+        "endChar": 34
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1990388_70f42ae6",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 45
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "It\u0027s passed as *command_specific*.",
       "parentUuid": "70605d2a_3d2080a1",
+      "range": {
+        "startLine": 2444,
+        "startChar": 0,
+        "endLine": 2444,
+        "endChar": 34
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a536b8e5_25284308",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T23:15:25Z",
+      "side": 1,
+      "message": "Ack - the I got confused by the variable name.  How about renaming to `ack_cc_ci_cmd`?",
+      "parentUuid": "8947aa4e_f72b4f66",
       "range": {
         "startLine": 2444,
         "startChar": 0,
