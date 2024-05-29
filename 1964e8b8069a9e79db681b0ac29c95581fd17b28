@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0e90c56_c5b8ba26",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2450,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-29T22:54:56Z",
+      "side": 1,
+      "message": "We should be using the cached `connector_status_change` for the first 16 bits and clearing the latter 16 with 0xffff is fine. There\u0027s also this change coming from PDM: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5535210 which might mean that we can just no-op this command here (I.e. call the command complete right away).\n\nThe better thing to do might be to clear the connector_status_change bits of the cached connector status in `st_read_run` for ACK_CC_CI if we acked any bits (or get rid of the cached state and request re-reading it). You may want to coordinate that with Scott.",
+      "parentUuid": "817d44a7_dd1477e3",
+      "range": {
+        "startLine": 2446,
+        "startChar": 0,
+        "endLine": 2450,
+        "endChar": 0
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0f0667a_e66d5de9",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 45
