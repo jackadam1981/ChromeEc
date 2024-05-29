@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b3bae0_587a4aaf",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "Passthrough?",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 7
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857e3b88_9171e7d1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2408,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this special value is needed.  Is this here to ensure that `st_read_run()` doesn\u0027t attempt any processing of the read data?",
+      "range": {
+        "startLine": 2408,
+        "startChar": 22,
+        "endLine": 2408,
+        "endChar": 34
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1990388_70f42ae6",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2433,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "\"Convert standard UCSI command to Realtek vendor specific formats.\"",
+      "range": {
+        "startLine": 2433,
+        "startChar": 4,
+        "endLine": 2433,
+        "endChar": 21
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fa6594_f10ccb56",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2441,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "Create #define for this value.",
+      "range": {
+        "startLine": 2441,
+        "startChar": 18,
+        "endLine": 2441,
+        "endChar": 22
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70605d2a_3d2080a1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "Where is `cmd` initialized?  It\u0027s not passed in to this function.",
+      "range": {
+        "startLine": 2444,
+        "startChar": 0,
+        "endLine": 2444,
+        "endChar": 34
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657d6859_ba46da3b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2450,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "Do you really want to clear all bits here?  Doesn\u0027t this introduce race conditions if the PDC generated new connector change events while the PPM is trying to clear the old events?",
+      "range": {
+        "startLine": 2446,
+        "startChar": 0,
+        "endLine": 2450,
+        "endChar": 0
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f0667a_e66d5de9",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2458,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T15:47:14Z",
+      "side": 1,
+      "message": "Is this still true?  v3.3.24 of the Realtek spec shows support for `UCSI_GET_PD_MESSAGE`",
+      "range": {
+        "startLine": 2458,
+        "startChar": 38,
+        "endLine": 2458,
+        "endChar": 52
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
