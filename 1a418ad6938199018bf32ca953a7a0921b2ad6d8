@@ -211,6 +211,30 @@
       },
       "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6a098c_ac877e15",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-29T22:36:26Z",
+      "side": 1,
+      "message": "This implementation of the PPM executes only one command at a time across all the connectors.\n\n\u003e Log the LPM port number instead of `__func__`\n\nppm_cc_cb is called from call_cci_event_cb, which prints \"C%d and CCI\". Removed the redundant part (except the function name).",
+      "parentUuid": "4cfef7c2_02f29f6b",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 58
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
