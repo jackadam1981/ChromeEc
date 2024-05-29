@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19d557d_1bca1e76",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-29T22:57:38Z",
+      "side": 1,
+      "message": "This is different from the lines removed by crrev.com/c/4846112:\n```\n\tfor (c \u003d 0; c \u003c keyboard_cols; c++) {\n\t\tif (!(state[c] \u0026 KEYBOARD_MASK_PWRBTN))\n\t\t\tbreak;\n\t}\n\n\tif (c \u003d\u003d keyboard_cols) {\n\t\tfor (c \u003d 0; c \u003c keyboard_cols; c++)\n\t\t\tstate[c] \u0026\u003d ~KEYBOARD_MASK_PWRBTN;\n\t\tstate[KEYBOARD_COL_REFRESH] |\u003d KEYBOARD_MASK_PWRBTN;\n\t}\n```\nc \u003d\u003d keyboard_cols indicates all the columns have the masked row asserted. That implies power + refresh are both pressed. So, the code cancels everything except the column hosting the refresh key. Don\u0027t we need to get it back as is?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 44
+      },
+      "revId": "28600dd2fed70eed5af7827eee7ff8a555a0ab74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
