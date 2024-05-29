@@ -22,7 +22,20 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
+#define PDO_FIXED_FLAGS \
+	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
+
+static const uint32_t pd_src_pdo_1A5[] = {
+	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
+};
+
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_C1, USBC_PORT_COUNT };
+
+__override int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
+{
+	*src_pdo = pd_src_pdo_1A5;
+	return ARRAY_SIZE(pd_src_pdo_1A5);
+}
 
 /* Used by USB charger task with CONFIG_USB_PD_5V_EN_CUSTOM */
 int board_is_sourcing_vbus(int port)
