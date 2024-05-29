@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0e241a_15bf2fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T17:57:52Z",
+      "side": 1,
+      "message": "I tested and verified flash programming of ITE over I2C.\nVerified programming at 100 KHz, 400 KHz, and 1 MHz.",
+      "revId": "8b4755751b922b338733cec704f075ce89363a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
