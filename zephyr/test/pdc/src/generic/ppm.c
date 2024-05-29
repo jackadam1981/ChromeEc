@@ -7,11 +7,13 @@
 
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
+#include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
-#include <platform.h>
 #include <usbc/ppm.h>
-#line 16 /* For coverage. Put after #includes and point to next line. */
+#line 15 /* For coverage. Put after #includes and point to next line. */
+
+LOG_MODULE_REGISTER(ppm_test, LOG_LEVEL_DBG);
 
 #define PDC_NUM_PORTS 2
 #define PDC_DEFAULT_CONNECTOR 1
@@ -65,7 +67,7 @@ static void opm_notify_cb(void *ctx)
 	struct ppm_test_fixture *fixture = (struct ppm_test_fixture *)ctx;
 
 	fixture->notified_count++;
-	DLOG("OPM notify with count = %d", fixture->notified_count);
+	LOG_DBG("OPM notify with count = %d", fixture->notified_count);
 	k_sem_give(&fixture->opm_sem);
 }
 
@@ -74,34 +76,19 @@ static struct ppm_common_device *get_ppm_data(struct ppm_test_fixture *fixture)
 	return (struct ppm_common_device *)fixture->ppm->dev;
 }
 
-/* TODO(b/339702957) - Move into ppm_common.h */
 static enum ppm_states get_ppm_state(struct ppm_test_fixture *fixture)
 {
-	return get_ppm_data(fixture)->ppm_state;
+	return ppm_test_get_state(get_ppm_data(fixture));
 }
 
-/* TODO(b/339702957) - Move into ppm_common.h */
 static bool check_async_is_pending(struct ppm_test_fixture *fixture)
 {
-	bool pending;
-
-	platform_mutex_lock(get_ppm_data(fixture)->ppm_lock);
-	pending = get_ppm_data(fixture)->pending.async_event;
-	platform_mutex_unlock(get_ppm_data(fixture)->ppm_lock);
-
-	return pending;
+	return ppm_test_is_async_pending(get_ppm_data(fixture));
 }
 
-/* TODO(b/339702957) - Move into ppm_common.h */
 static bool check_cmd_is_pending(struct ppm_test_fixture *fixture)
 {
-	bool pending;
-
-	platform_mutex_lock(get_ppm_data(fixture)->ppm_lock);
-	pending = get_ppm_data(fixture)->pending.command;
-	platform_mutex_unlock(get_ppm_data(fixture)->ppm_lock);
-
-	return pending;
+	return ppm_test_is_cmd_pending(get_ppm_data(fixture));
 }
 
 static bool check_cci_matches(struct ppm_test_fixture *fixture,
@@ -131,7 +118,7 @@ static void unblock_fake_driver_with_command(struct ppm_test_fixture *fixture,
 	}
 
 	k_sem_give(&fixture->cmd_sem);
-	DLOG("Signaled for command 0x%x", ucsi_command);
+	LOG_DBG("Signaled for command 0x%x", ucsi_command);
 }
 
 static void queue_command_for_fake_driver(struct ppm_test_fixture *fixture,
@@ -145,8 +132,8 @@ static void queue_command_for_fake_driver(struct ppm_test_fixture *fixture,
 		return;
 	}
 
-	DLOG("Queueing command result for 0x%x with result %d", ucsi_command,
-	     result);
+	LOG_DBG("Queueing command result for 0x%x with result %d", ucsi_command,
+		result);
 
 	cmd->ucsi_command = ucsi_command;
 	cmd->result = result;
@@ -218,8 +205,8 @@ static bool wait_for_async_event_to_process(struct ppm_test_fixture *fixture)
 	for (int i = 0; i < PDC_WAIT_FOR_ITERATIONS; ++i) {
 		is_async_pending = check_async_is_pending(fixture);
 
-		DLOG("[%d]: Async is %s", i,
-		     (is_async_pending ? "pending" : "not pending"));
+		LOG_DBG("[%d]: Async is %s", i,
+			(is_async_pending ? "pending" : "not pending"));
 		if (is_async_pending) {
 			k_msleep(1);
 		} else {
@@ -242,8 +229,8 @@ static bool wait_for_cmd_to_process(struct ppm_test_fixture *fixture)
 	for (int i = 0; i < PDC_WAIT_FOR_ITERATIONS; ++i) {
 		is_cmd_pending = check_cmd_is_pending(fixture);
 
-		DLOG("[%d]: Command is %s", i,
-		     (is_cmd_pending ? "pending" : "not pending"));
+		LOG_DBG("[%d]: Command is %s", i,
+			(is_cmd_pending ? "pending" : "not pending"));
 		if (is_cmd_pending) {
 			k_msleep(1);
 		} else {
@@ -306,7 +293,7 @@ static int fake_pd_init_ppm(const struct device *device)
 		return rv;
 	}
 
-	return fixture->ppm->init_and_wait(fixture->ppm->dev, PDC_NUM_PORTS);
+	return fixture->ppm->init_and_wait(fixture->ppm->dev);
 }
 
 static struct ucsi_ppm_driver *fake_pd_get_ppm(const struct device *device)
@@ -324,7 +311,7 @@ static int fake_pd_execute_cmd(const struct device *device,
 	uint8_t ucsi_command = control->command;
 	int rv;
 
-	DLOG("Executing fake cmd for UCSI_CMD:0x%x", ucsi_command);
+	LOG_DBG("Executing fake cmd for UCSI_CMD:0x%x", ucsi_command);
 
 	/* Return any commands that were queued up to return. */
 	if (!k_queue_is_empty(fixture->cmd_queue)) {
@@ -333,15 +320,15 @@ static int fake_pd_execute_cmd(const struct device *device,
 				fixture->cmd_queue, K_NO_WAIT);
 
 		if (cmd == NULL) {
-			DLOG("Command queue is unexpectedly empty!");
+			LOG_DBG("Command queue is unexpectedly empty!");
 			return -ENOTSUP;
 		}
 
 		k_queue_append(fixture->free_cmd_queue, cmd);
 
 		if (ucsi_command != cmd->ucsi_command) {
-			DLOG("Expected queued command 0x%x doesn't match actual 0x%x",
-			     cmd->ucsi_command, ucsi_command);
+			LOG_DBG("Expected queued command 0x%x doesn't match actual 0x%x",
+				cmd->ucsi_command, ucsi_command);
 			return -ENOTSUP;
 		}
 
@@ -349,7 +336,7 @@ static int fake_pd_execute_cmd(const struct device *device,
 			memcpy(lpm_data_out, cmd->lpm_data, LPM_DATA_MAX);
 		}
 
-		DLOG("Returning queued result: %d", cmd->result);
+		LOG_DBG("Returning queued result: %d", cmd->result);
 		return cmd->result;
 	}
 
@@ -360,8 +347,9 @@ static int fake_pd_execute_cmd(const struct device *device,
 
 	if (rv != 0 ||
 	    ucsi_command != fixture->next_command_result.ucsi_command) {
-		DLOG("Sem take result(%d). Expected command %x vs actual %x",
-		     fixture->next_command_result.ucsi_command, ucsi_command);
+		LOG_DBG("Sem take result(%d). Expected command %x vs actual %x",
+			fixture->next_command_result.ucsi_command,
+			ucsi_command);
 		return -ENOTSUP;
 	}
 
@@ -372,7 +360,7 @@ static int fake_pd_execute_cmd(const struct device *device,
 
 	rv = fixture->next_command_result.result;
 
-	DLOG("Returning specific result: %d", rv);
+	LOG_DBG("Returning specific result: %d", rv);
 	return rv;
 }
 
@@ -397,8 +385,6 @@ static struct ucsi_pd_driver fake_pd_driver = {
 
 static void *ppm_test_setup(void)
 {
-	platform_set_debug(true);
-
 	test_fixture.pd = &fake_pd_driver;
 
 	test_fixture.cmd_queue = &cmd_queue;
@@ -673,11 +659,12 @@ ZTEST_USER_F(ppm_test, test_CCACK_support_simultaneous_ack_CC_and_CI)
 
 	zassert_true(check_cci_matches(fixture, &cci_ack_command));
 	zassert_equal(get_ppm_state(fixture), PPM_STATE_IDLE_NOTIFY);
-	zassert_equal(get_ppm_data(fixture)
-			      ->per_port_status[0]
-			      .connector_status_change,
-		      0);
-	zassert_equal(get_ppm_data(fixture)->last_connector_changed, 0);
+
+	uint8_t changed_port_num;
+	struct ucsiv3_get_connector_status_data *status;
+
+	zassert_false(fixture->ppm->get_next_connector_status(
+		fixture->ppm->dev, &changed_port_num, &status));
 }
 
 /*
