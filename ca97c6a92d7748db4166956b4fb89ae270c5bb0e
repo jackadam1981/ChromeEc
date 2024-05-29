@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff6abe3_615d1e10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-29T23:34:54Z",
+      "side": 1,
+      "message": "The test doesn\u0027t seem to pass (watchdog is triggered):\n\n\n```\n./test/run_device_tests.py --board helipilot -t ram_lock\n```\n\n```\nDEBUG:\u003e runtest\nDEBUG:Running test_ram_lock_config_lock_region_invalid_addr...\nDEBUG:Pass: ram_lock_config_lock_region( invalid_code_reg_addr_not_aligned.num_regions, invalid_code_reg_addr_not_aligned.addr[0], invalid_code_reg_addr_not_aligned.size[0]) \u003d\u003d -EC_ERROR_INVAL\nDEBUG:OK\nDEBUG:Running test_ram_lock_config_lock_region_invalid_size...\nDEBUG:Pass: ram_lock_config_lock_region( invalid_code_reg_size_not_aligned.num_regions, invalid_code_reg_size_not_aligned.addr[0], invalid_code_reg_size_not_aligned.size[0]) \u003d\u003d -EC_ERROR_INVAL\nDEBUG:OK\nDEBUG:Running test_ram_lock_config_lock_region...\nDEBUG:Pass: ram_lock_config_lock_region(REGION_DATA_RAM, 0x200B0000, 0x10000) \u003d\u003d EC_SUCCESS\nDEBUG:Pass: ram_lock_config_lock_region(REGION_STORAGE, 0x10058000 + 0, 0x10000) \u003d\u003d EC_SUCCESS\nDEBUG:OK\nDEBUG:Running test_ram_write_protect...\nDEBUG:Pass: verify_no_write(0x10058000 + 0) \u003d\u003d EC_SUCCESS\nDEBUG:Pass: verify_write(0x200B0000) \u003d\u003d EC_SUCCESS\nDEBUG:OK\nDEBUG:Running test_ram_lock_config_lock_region_alias...\nDEBUG:\u003e [0.258726 event set 0x0000000000002000]\nDEBUG:[0.258784 hostcmd init 0x0000000000802000]\nDEBUG:[0.258942 Verifying RW image...]\nDEBUG:[0.398015 RW verify OK]\nDEBUG:[1.259146 MKBP not cleared within threshold, toggling.]\nDEBUG:[1.398672 Jumping to image RW (0x00000010)]\nDEBUG:[1.402654 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\nDEBUG:\nDEBUG:[1.410344 UART initialized after sysjump]\nDEBUG:[Image: RW, helipilot_v2.0.25094+ca97c6a92d boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 private:v0.0.166-ae7500b fpc:v0.0.219-d3b2ef9 helipilot_15887.0.24_05_29 2024-05-29 16:33:08 tomhughes@tomhughes-ssd.c.googlers.com]\nDEBUG:[Reset cause: watchdog sysjump]\nDEBUG:[1.428394 Inits done]\nDEBUG:[1.428615 TRANSPORT_SEL: UART]\nDEBUG:[1.428800 TRANSPORT_SEL: UART]\nDEBUG:Console is enabled; type HELP for help.\nDEBUG:\u003e [1.685956 event set 0x0000000000002000]\nDEBUG:[1.686019 hostcmd init 0x0000000000002000]\nDEBUG:[1.686115 FP_SENSOR_SEL: FPC]\nDEBUG:[1.686158 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\nDEBUG:[1.686218 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\nDEBUG:[1.779448 FPC1025 id 0x021b]\nDEBUG:[2.686290 MKBP not cleared within threshold, toggling.]\nDEBUG:[3.686644 MKBP: The AP is failing to respond because it is sleeping or off]\n```",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

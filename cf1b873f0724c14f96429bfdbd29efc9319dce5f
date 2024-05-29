@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a467679_e5509827",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-29T23:34:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "97a53a2e_e25d7134",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 24
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33bf5d1c_5ac3e8cf",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8138d5f0_485551db",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-29T23:34:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11af8958_4a4e2cf6",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54965e83_b0c7927a",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "The entire data ram region can be set to the write-protection region. Here just pick up a region of data RAM to do tests.",
       "parentUuid": "54965e83_b0c7927a",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "cf1b873f0724c14f96429bfdbd29efc9319dce5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a80dca_6cf57802",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-29T23:34:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7bf0b73_01a3238e",
       "range": {
         "startLine": 43,
         "startChar": 0,
