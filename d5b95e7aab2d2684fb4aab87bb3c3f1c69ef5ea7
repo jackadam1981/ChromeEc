@@ -141,6 +141,30 @@
       },
       "revId": "d5b95e7aab2d2684fb4aab87bb3c3f1c69ef5ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9693be4f_939d86c4",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-29T21:13:45Z",
+      "side": 1,
+      "message": "As discussed in chat, we\u0027ll try to improve this in a follow-up CL",
+      "parentUuid": "86153f2a_0eba2e43",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "d5b95e7aab2d2684fb4aab87bb3c3f1c69ef5ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
