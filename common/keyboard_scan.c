@@ -360,7 +360,9 @@ static int read_matrix(uint8_t *state, bool at_boot)
 		if (pb_pressed != power_button_raw_pressed()) {
 			c--;
 			continue;
-		} else if (pb_pressed) {
+		} else if (pb_pressed && at_boot) {
+			if (c == KEYBOARD_COL_REFRESH)
+				continue;
 			state[c] &= ~KEYBOARD_MASKED_BY_POWERBTN;
 		}
 
@@ -1101,6 +1103,7 @@ void keyboard_scan_task(void *u)
 				poll_deadline.val =
 					start.val +
 					keyscan_config.poll_timeout_us;
+
 			} else if (timestamp_expired(poll_deadline, &start)) {
 				break;
 			}
@@ -1115,7 +1118,6 @@ void keyboard_scan_task(void *u)
 
 			if (wait_time < post_scan_clock_us)
 				wait_time = post_scan_clock_us;
-
 			crec_usleep(wait_time);
 		}
 	}
