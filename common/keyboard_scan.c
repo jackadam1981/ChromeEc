@@ -327,11 +327,12 @@ static int read_matrix(uint8_t *state, bool at_boot)
 {
 	int c;
 	int pressed = 0;
+	int pb_pressed;
+
+	pb_pressed = power_button_raw_pressed();
 
 	/* 1. Read input pins */
 	for (c = 0; c < keyboard_cols; c++) {
-		int pb_pressed;
-
 		/*
 		 * Skip if scanning becomes disabled. Clear the state
 		 * to make sure we don't mix new and old states in the
@@ -343,8 +344,6 @@ static int read_matrix(uint8_t *state, bool at_boot)
 			state[c] = 0;
 			continue;
 		}
-
-		pb_pressed = power_button_raw_pressed();
 
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
@@ -360,13 +359,28 @@ static int read_matrix(uint8_t *state, bool at_boot)
 		if (pb_pressed != power_button_raw_pressed()) {
 			c--;
 			continue;
-		} else if (pb_pressed) {
-			state[c] &= ~KEYBOARD_MASKED_BY_POWERBTN;
 		}
 
 		/* Use simulated keyscan sequence instead if testing active */
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
 			state[c] = keyscan_seq_get_scan(c, state[c]);
+	}
+
+	if (pb_pressed && at_boot) {
+		/* Check if KSI2 (or KSI3) is asserted on all columns */
+		for (c = 0; c < keyboard_cols; c++) {
+			if (!(state[c] & KEYBOARD_MASKED_BY_POWERBTN)) {
+				break;
+			}
+		}
+
+		if (c == keyboard_cols) {
+			for (c = 0; c < keyboard_cols; c++) {
+				if (c == KEYBOARD_COL_REFRESH)
+					continue;
+				state[c] &= ~KEYBOARD_MASKED_BY_POWERBTN;
+			}
+		}
 	}
 
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
