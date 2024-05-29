@@ -187,6 +187,30 @@
       },
       "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfef7c2_02f29f6b",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T20:54:03Z",
+      "side": 1,
+      "message": "My immediate concern is the logging doesn\u0027t identify which port had the command completion event.\n\nBut as I look at this closer, `ucsi_ppm_execute_cmd_sync()` sends a command on a specific LPM, but you only track one `k_event` for the PPM driver (which supports multiple LPMs).\n\nCan multiple calls to `ucsi_ppm_execute_cmd_sync()`, targeting different LPMs, run concurrently?  If, so you need some locking or you need to track events on each LPM separately.",
+      "parentUuid": "73f9a535_a8c0f118",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 58
+      },
+      "revId": "1a418ad6938199018bf32ca953a7a0921b2ad6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

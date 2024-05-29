@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1a159b_d450dec0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 2409,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-29T20:54:03Z",
+      "side": 1,
+      "message": "Need to initialize the full cci_event using `cci.raw_value \u003d 0;` or `memset`.",
+      "range": {
+        "startLine": 2409,
+        "startChar": 0,
+        "endLine": 2409,
+        "endChar": 24
+      },
+      "revId": "09e18cfa99e00abbd0e384f8d54e5dc084d34b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
