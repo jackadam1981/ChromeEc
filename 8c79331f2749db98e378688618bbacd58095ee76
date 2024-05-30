@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a89823_f824c0bb",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-05-30T09:31:45Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (tablet_get_mode()) {\n```\nThis just came into my mind, we can drop the variable and use the function directly as it\u0027s not used elsewhere.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "8c79331f2749db98e378688618bbacd58095ee76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
