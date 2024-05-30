@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c09e0d_e8852710",
+        "filename": "zephyr/program/nissa/sundance/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T05:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e191cfad_ed38ad75",
+      "revId": "6d4dd1ef226bd8f6e69bd8aa8cba5ba8dca9e82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "997d4e50_ece075e8",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf41480f_5559563a",
+        "filename": "zephyr/program/nissa/sundance/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T05:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997d4e50_ece075e8",
+      "revId": "6d4dd1ef226bd8f6e69bd8aa8cba5ba8dca9e82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "347f551f_4ce723de",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-05-30T00:36:02Z",
       "side": 1,
       "message": "With the other changes I don\u0027t think you need this, since the system shouldn\u0027t ever set the PPC source current limit to greater than the selected PDO. Does it still work if you remove this?",
+      "revId": "6d4dd1ef226bd8f6e69bd8aa8cba5ba8dca9e82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac117e87_3775d7a6",
+        "filename": "zephyr/program/nissa/sundance/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T05:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "347f551f_4ce723de",
       "revId": "6d4dd1ef226bd8f6e69bd8aa8cba5ba8dca9e82f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
