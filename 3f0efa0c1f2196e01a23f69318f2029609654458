@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cde9e1_11734d62",
+        "filename": "zephyr/program/rauru/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-05-30T17:21:03Z",
+      "side": 1,
+      "message": "Would it be possible to retain this line in its current location, but make the rule conditional on a Rauru-specific configuration? For instance, `CONFIG_RAURU_DUAL_DP_PIPIELINE`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "3f0efa0c1f2196e01a23f69318f2029609654458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
