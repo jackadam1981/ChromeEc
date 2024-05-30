@@ -811,6 +811,12 @@ static void isl923x_init(int chgnum)
 				goto init_fail;
 		}
 
+		/* AC/DC prochot are only used if PSYS is enabled */
+		if (IS_ENABLED(CONFIG_CHARGER_PSYS)) {
+			isl923x_set_dc_prochot(chgnum, 12000);
+			isl923x_set_ac_prochot(chgnum, 6000);
+		}
+
 		/* When using a 5 mohm battery sense resistor, adjust the
 		 * thresholds to match the default settings for a 10 mohm
 		 * resistor.
