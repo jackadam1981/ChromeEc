@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a726fce_ef7f5b8a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-30T23:52:57Z",
+      "side": 1,
+      "message": "Not needed for this CL, but I *think* we can get rid of this since it should only be in RW, so we don\u0027t need to worry about supporting the old version anymore. Could you file a bug for tracking the cleanup? (We\u0027ll want to clean up the FPMCU side as well.)",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1890,
+        "endChar": 14
+      },
+      "revId": "6ba2fb9eb9cd4668efa3831b9c0dc30e2d2b6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b17cbc_232e39ab",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-30T23:52:57Z",
+      "side": 1,
+      "message": "nit: maybe move these to line 2184 and scope `x` and `y` to the loop?",
+      "range": {
+        "startLine": 2173,
+        "startChar": 0,
+        "endLine": 2174,
+        "endChar": 10
+      },
+      "revId": "6ba2fb9eb9cd4668efa3831b9c0dc30e2d2b6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
