@@ -41,6 +41,7 @@
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/fingerprint/fp_frame_command.h>
+#include <libec/fingerprint/fp_frame_utils.h>
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
@@ -2176,16 +2177,17 @@ int cmd_fp_frame(int argc, char *argv[])
 		return 0;
 	}
 
-	/* Print 8-bpp PGM ASCII header */
-	printf("P2\n%d %d\n%d\n", r.width, r.height, (1 << r.bpp) - 1);
-
-	uint8_t *ptr = fp_frame->data();
-	for (int y = 0; y < r.height; y++) {
-		for (int x = 0; x < r.width; x++, ptr++)
-			printf("%d ", *ptr);
-		printf("\n");
+	std::optional<std::string> pgm = ec::FpFrameBufferToPGM(
+		*fp_frame, {
+				   .width = r.width,
+				   .height = r.height,
+				   .bits_per_pixel = r.bpp,
+			   });
+	if (!pgm) {
+		fprintf(stderr, "Failed to convert FP frame to PGM\n");
+		return -1;
 	}
-	printf("# END OF FILE\n");
+	fwrite(pgm->c_str(), pgm->size(), 1, stdout);
 	return 0;
 }
 
