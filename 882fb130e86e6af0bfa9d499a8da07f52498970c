@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03f08e7_8da3d5eb",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480115d9_9cf96480",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfcb5186_755d767d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c284a5_0576d56a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfcb5186_755d767d",
+      "range": {
+        "startLine": 3151,
+        "startChar": 19,
+        "endLine": 3151,
+        "endChar": 23
+      },
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d5d6d35_54c70701",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-29T11:16:29Z",
       "side": 1,
       "message": "skipping",
+      "range": {
+        "startLine": 44,
+        "startChar": 56,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e3afd6_ab92b9ec",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5d6d35_54c70701",
       "range": {
         "startLine": 44,
         "startChar": 56,
@@ -139,6 +211,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34a5a0e_a012b45e",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82eb979c_c5be128b",
+      "range": {
+        "startLine": 45,
+        "startChar": 42,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ff3a1c_bb8dd9d8",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1a44814_1fd078b9",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff34215_da86b2c7",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c241e43_f8318e29",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "747d15cc_c4c2a35f",
@@ -152,6 +296,24 @@
       "writtenOn": "2024-05-29T11:16:29Z",
       "side": 1,
       "message": "Or maybe rewrite as \n\nDue to hardware design limitations that may trigger accidental lid close when devices are stacked, this configuration skips lid close event when the system is in tablet mode.",
+      "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82698ee6_e69bbb01",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2024-05-30T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "747d15cc_c4c2a35f",
       "revId": "882fb130e86e6af0bfa9d499a8da07f52498970c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
