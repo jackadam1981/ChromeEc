@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86cbd7b_614850a3",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5617,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-30T23:42:09Z",
+      "side": 1,
+      "message": "This statement is misleading. During a BIST test, we should be able to disable interrupts. We do not expect to be able to actually process incoming interrupts fast enough to keep up with a long BIST test. There are a few TCPCs where BIST mode is a little wonky, and we just get interrupts until we overflow the TCPC buffer, and the partner Hard Resets us. Even in these situations, we do not watchdog or hit this limit.\n\nTo the best of my knowledge, there is no expected situation with this high of an interrupt rate. This value was chosen somewhat arbitrarily when this feature was added.\n\nI\u0027d just say here that this is the number of interrupts in a second that will cause the TCPM to break the PD connection to avoid a watchdog timeout.",
+      "range": {
+        "startLine": 5616,
+        "startChar": 0,
+        "endLine": 5617,
+        "endChar": 58
+      },
+      "revId": "8516276b927c224c126b849f7a40c5872b070f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4899fd36_3f57975a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3445,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-05-30T23:42:09Z",
+      "side": 1,
+      "message": "This seems wrong",
+      "range": {
+        "startLine": 3445,
+        "startChar": 7,
+        "endLine": 3445,
+        "endChar": 50
+      },
+      "revId": "8516276b927c224c126b849f7a40c5872b070f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
