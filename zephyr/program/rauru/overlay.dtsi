@@ -350,16 +350,21 @@
 
 &i2c0 {
 	label = "I2C_PWR_CBI";
+	prescale-scl-low = <8>;
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c1 {
 	label = "I2C_BATTERY";
-	clock-frequency = <50000>;
+	/* Only i2c1 uses 100kHz SMBus which needs data-hold-time */
+	data-hold-time = <10>;
+	prescale-scl-low = <8>;
+	clock-frequency = <100000>;
 };
 
 &i2c2 {
 	label = "I2C_USB_C0";
+	prescale-scl-low = <8>;
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 };
@@ -372,13 +377,13 @@
 	pinctrl-1 = <&i2c3_clk_gpb2_sleep
 			&i2c3_data_gpb5_sleep>;
 	pinctrl-names = "default", "sleep";
-	prescale-scl-low = <1>;
+	prescale-scl-low = <8>;
 };
 
 &i2c4 {
 	label = "I2C_USB_C1";
 	clock-frequency = <I2C_BITRATE_FAST>;
-	prescale-scl-low = <1>;
+	prescale-scl-low = <8>;
 };
 
 &i2c5ALT {
