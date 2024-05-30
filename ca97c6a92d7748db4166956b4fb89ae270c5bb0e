@@ -34,6 +34,24 @@
       "parentUuid": "3ff6abe3_615d1e10",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b678b293_d411391a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-05-30T20:40:04Z",
+      "side": 1,
+      "message": "@Tom Chang,\nIf you have a servo micro connected (rather than a JLink), please append --flasher servo_micro to the run_device_tests command like so:\n\n./test/run_device_tests.py -b helipilot -t ram_lock --flasher servo_micro",
+      "parentUuid": "44d632b7_2f52a138",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
