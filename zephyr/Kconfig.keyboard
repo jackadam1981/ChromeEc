@@ -186,6 +186,20 @@ config PLATFORM_EC_KEYBOARD_SCAN_ADC
 	  connected to adc channels to identify key presses by reading adc
 	  voltage.
 
+config PLATFORM_EC_KEYBOARD_BOOT_KEYS
+	bool "Support for boot key combinations"
+	default y
+	help
+	  Enable this to support for boot key combinations (e.g. refresh key
+	  being held on boot to trigger recovery).
+
+config PLATFORM_EC_KEYBOARD_RUNTIME_KEYS
+	bool "Support for extra runtime key combinations"
+	default y
+	help
+	  Enable this to support for extra runtime key combinations (e.g.
+	  alt+volup+h/r for hibernate and warm reboot, respectively).
+
 config PLATFORM_EC_VOLUME_BUTTONS
 	bool "Board has volume-up and volume-down buttons"
 	select PLATFORM_EC_BUTTON
