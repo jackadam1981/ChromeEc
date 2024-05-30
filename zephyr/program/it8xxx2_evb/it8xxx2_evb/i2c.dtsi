@@ -57,3 +57,20 @@
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
 };
+
+&pinctrl {
+	/* I2C property setting */
+	i2c0_clk_gpb3_default: i2c0_clk_gpb3_default {
+		drive-current = "low";
+	};
+	i2c0_data_gpb4_default: i2c0_data_gpb4_default {
+		drive-current = "low";
+	};
+
+	i2c4_clk_gpe0_default: i2c4_clk_gpe0_default {
+		drive-current = "high";
+	};
+	i2c4_data_gpe7_default: i2c4_data_gpe7_default {
+		drive-current = "high";
+	};
+};
