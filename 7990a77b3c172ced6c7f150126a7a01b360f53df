@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78d7a50_32f58498",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-05-30T00:28:15Z",
+      "side": 1,
+      "message": "Please run `gen_bazel_targets.py` to regen the file.\n\n```\n    def test_generated_file():\n        \"\"\"Test that the generated file is up-to-date.\"\"\"\n        # TODO(b/300287548): Generate the public and private bazel targets\n        # separately.\n        if not (pathlib.Path(__file__).parent.parent / \"private\").is_dir():\n            pytest.skip(\"Don\u0027t test bazel generation in public checkouts\")\n\u003e       assert (\n            gen_bazel_targets.DEFAULT_OUTPUT.read_text(encoding\u003d\"utf-8\")\n            \u003d\u003d gen_bazel_targets.gen_bazel()\n        ), \"Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.\"\nE       AssertionError: Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.\nE       assert \u0027# Copyright ...lse,\\n    )\\n\u0027 \u003d\u003d \u0027# Copyright 2...lse,\\n    )\\n\u0027\n```",
+      "revId": "7990a77b3c172ced6c7f150126a7a01b360f53df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
