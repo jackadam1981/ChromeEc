@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a569f7fe_528b0ffb",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 2458,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-30T19:05:15Z",
+      "side": 1,
+      "message": "The 2 ports of the Realtek PDC operate independently.  The connector number is not used by Realtek, because each port responds on a unique I2C address.\n\nI assume that the Realtek PDC manages connector change bits separately on each port.",
+      "range": {
+        "startLine": 2456,
+        "startChar": 0,
+        "endLine": 2458,
+        "endChar": 0
+      },
+      "revId": "e5abc6b4cd2bf1d810986610a8f76af5ba99a158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
