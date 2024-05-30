@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "829ff7d6_7413857d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-30T22:30:06Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "1d68d51e_7635944f",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 7
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "857e3b88_9171e7d1",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Please add a comment explaining this usage.",
       "parentUuid": "d5392ad7_59e11d1e",
+      "range": {
+        "startLine": 2408,
+        "startChar": 22,
+        "endLine": 2408,
+        "endChar": 34
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb93258_3f8f5642",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2408,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-30T22:30:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b868240b_339becb0",
       "range": {
         "startLine": 2408,
         "startChar": 22,
