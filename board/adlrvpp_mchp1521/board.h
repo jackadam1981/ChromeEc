@@ -142,6 +142,7 @@
 
 /* Free up flash space. */
 #undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_HOSTCMD_FLASHPD
 
 #ifndef __ASSEMBLER__
 
