@@ -5611,6 +5611,13 @@
  */
 #undef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
 
+/*
+ * Maximum amount of interrupts per second to support without watchdog crash.
+ * Theoretically, we may need to support up to 1800 USB-PD packets per second
+ * for intensive operations such as BIST compliance tests.
+ */
+#define CONFIG_USB_PD_INT_STORM_MAX 1800
+
 /******************************************************************************/
 /* stm32f4 dwc usb configs. */
 
