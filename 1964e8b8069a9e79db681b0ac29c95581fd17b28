@@ -355,6 +355,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fa32674_65c1f988",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2450,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-30T18:18:46Z",
+      "side": 1,
+      "message": "Filed b/343733474. There is a chance that back-to-back CI could be acked by the PPM before the PDM:\n\n1. CI1 arrives.\n1. PDM acks CI1.\n1. CI2 arrives.\n1. PPM intends to ack CI1 but acks CI2.\n1. PDM acks CI2.\n1. PPM acks CI2 (again).\n\nIf PDM or PPM assumes each CI-ACK pair is atomic, the code built on that assumption may break.",
+      "parentUuid": "a0e90c56_c5b8ba26",
+      "range": {
+        "startLine": 2446,
+        "startChar": 0,
+        "endLine": 2450,
+        "endChar": 0
+      },
+      "revId": "1964e8b8069a9e79db681b0ac29c95581fd17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0f0667a_e66d5de9",
