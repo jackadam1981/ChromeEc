@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb342ca_de27af0e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-05-31T21:15:00Z",
+      "side": 1,
+      "message": "I added some info in the ref\u0027d bug. I thin we can just yank V0 fp_info out safely, but this will happen in followup.",
+      "parentUuid": "2a0b5c27_55e891cd",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1890,
+        "endChar": 14
+      },
+      "revId": "6ba2fb9eb9cd4668efa3831b9c0dc30e2d2b6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0b17cbc_232e39ab",
