@@ -88,6 +88,24 @@
       "parentUuid": "d5d55ad8_fb233686",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639b2485_188d2e33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-31T17:31:29Z",
+      "side": 1,
+      "message": "Here\u0027s more documentation on setting up [servo micro](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md#servo-micro).\n\nI filed a request so that you can get one: http://b/343969251",
+      "parentUuid": "5577e0b0_43accfe6",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
