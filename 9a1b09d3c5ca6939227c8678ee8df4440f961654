@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1941c866_d24f3e68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-31T22:04:51Z",
+      "side": 1,
+      "message": "Removing the CC-1 vote because this CL is only one line short of 90% coverage and I can observe several lines that are marked as uncovered but absolutely are.",
+      "revId": "9a1b09d3c5ca6939227c8678ee8df4440f961654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
