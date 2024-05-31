@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f990c4_b385b560",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-31T14:07:21Z",
+      "side": 1,
+      "message": "these creation loops need many more comments explaining why we are appending the way we do (and what each snippet does)",
+      "range": {
+        "startLine": 1449,
+        "startChar": 1,
+        "endLine": 1479,
+        "endChar": 2
+      },
+      "revId": "75355033a35030e494da9612575d7c01dd247259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
