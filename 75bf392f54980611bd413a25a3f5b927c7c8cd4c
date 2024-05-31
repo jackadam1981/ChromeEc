@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3171acd_2b9ea429",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-05-31T04:03:08Z",
+      "side": 1,
+      "message": "No need to capitalize every characters.",
+      "range": {
+        "startLine": 111,
+        "startChar": 24,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "75bf392f54980611bd413a25a3f5b927c7c8cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40823fc9_74fcf9fe",
+        "filename": "zephyr/program/corsola/squirtle/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-05-31T04:03:08Z",
+      "side": 1,
+      "message": "Why is this dependent on board version?",
+      "revId": "75bf392f54980611bd413a25a3f5b927c7c8cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
