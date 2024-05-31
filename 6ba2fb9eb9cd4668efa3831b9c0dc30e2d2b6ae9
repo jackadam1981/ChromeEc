@@ -93,6 +93,30 @@
       },
       "revId": "6ba2fb9eb9cd4668efa3831b9c0dc30e2d2b6ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cc05ff_1c879bd7",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-05-31T21:14:03Z",
+      "side": 1,
+      "message": "I can, but I kinda figured that was just adding out of scope changes to this commit, only to be blown away in the next change.",
+      "parentUuid": "a0b17cbc_232e39ab",
+      "range": {
+        "startLine": 2173,
+        "startChar": 0,
+        "endLine": 2174,
+        "endChar": 10
+      },
+      "revId": "6ba2fb9eb9cd4668efa3831b9c0dc30e2d2b6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
