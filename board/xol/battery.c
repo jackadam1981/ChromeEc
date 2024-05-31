@@ -6,11 +6,14 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "math_util.h"
 #include "usb_pd.h"
+#include "util.h"
 /*
  * Battery info for all Xol battery types. Note that the fields
  * start_charging_min/max and charging_min/max are not used for the charger.
@@ -116,11 +119,330 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
 
+/* default charging voltage */
+#define DEFAULT_DESIGN_CAPACITY 4340
+#define CHARGING_VOLTAGE 17624
+#define BAT_SERIES 4
+#define TC_CHARGING_VOLTAGE 16600
+
+#define CRATE_100 130
+#define CFACT_10 9
+
+struct therm_item {
+	int low;
+	int high;
+};
+
+static const struct therm_item bat_temp_table[] = {
+	{ .low = 0, .high = 7 },   { .low = 4, .high = 17 },
+	{ .low = 14, .high = 20 }, { .low = 17, .high = 42 },
+	{ .low = 39, .high = 51 }, { .low = 45, .high = 500 },
+};
+
+/* start with normal zone */
+static int temp_zone = 3;
+void find_battery_thermal_zone(int bat_temp)
+{
+	static int prev_temp;
+	int i;
+
+	if (bat_temp < prev_temp) {
+		for (i = temp_zone; i > 0; i--) {
+			if (bat_temp <= bat_temp_table[i].low)
+				temp_zone = i - 1;
+			else
+				break;
+		}
+	} else if (bat_temp > prev_temp) {
+		for (i = temp_zone; i < ARRAY_SIZE(bat_temp_table); i++) {
+			if (bat_temp >= bat_temp_table[i].high)
+				temp_zone = i + 1;
+			else
+				break;
+		}
+	}
+
+	if (temp_zone < 0)
+		temp_zone = 0;
+
+	if (temp_zone >= ARRAY_SIZE(bat_temp_table))
+		temp_zone = ARRAY_SIZE(bat_temp_table) - 1;
+
+	prev_temp = bat_temp;
+}
+
+static struct charge_state_data *charging_data;
+static uint16_t bat_cell_volt[BAT_SERIES];
+
+#define BAT_CELL_VOLT_SPEC 4430
+#define BAT_CELL_OVERVOLTAGE (BAT_CELL_VOLT_SPEC - 50)
+#define BAT_CELL_MARGIN (BAT_CELL_VOLT_SPEC - 24)
+
+static uint8_t bat_cell_over_volt_flag;
+static int bat_cell_ovp_volt;
+void check_battery_cell_voltage(void)
+{
+	int rv;
+	static int cell_check_flag = 0;
+	static uint8_t idx = 0;
+	int wData;
+	uint16_t max_voltage, min_voltage, delta_voltage;
+	static uint8_t over_volt_count[BAT_SERIES] = {
+		0,
+	};
+
+	if (charging_data->state == ST_CHARGE) {
+		cell_check_flag = 1;
+		rv = sb_read(SB_OPTIONAL_MFG_FUNC1 + idx, &wData);
+		if (rv)
+			return;
+		bat_cell_volt[idx] = wData;
+
+		if (bat_cell_volt[idx] >= BAT_CELL_OVERVOLTAGE &&
+		    bat_cell_over_volt_flag == 0) {
+			over_volt_count[idx]++;
+			if (over_volt_count[idx] >= 4) {
+				max_voltage = min_voltage = bat_cell_volt[idx];
+				for (int i = 0; i < BAT_SERIES; i++) {
+					if (bat_cell_volt[i] > max_voltage)
+						max_voltage = bat_cell_volt[i];
+					if (bat_cell_volt[i] < min_voltage &&
+					    bat_cell_volt[i] != 0)
+						min_voltage = bat_cell_volt[i];
+				}
+				delta_voltage = max_voltage - min_voltage;
+				if ((delta_voltage < 600) &&
+				    (delta_voltage > 10)) {
+					bat_cell_over_volt_flag = 1;
+					bat_cell_ovp_volt =
+						BAT_CELL_MARGIN * BAT_SERIES -
+						delta_voltage *
+							(BAT_SERIES - 1);
+				}
+			}
+		} else {
+			over_volt_count[idx] = 0;
+		}
+
+		idx++;
+		if (idx >= BAT_SERIES)
+			idx = 0;
+	} else {
+		if (cell_check_flag != 0) {
+			cell_check_flag = 0;
+			for (int i = 0; i < BAT_SERIES; i++) {
+				over_volt_count[i] = 0;
+			}
+			bat_cell_over_volt_flag = 0;
+			bat_cell_ovp_volt = 0;
+		}
+	}
+}
+DECLARE_HOOK(HOOK_TICK, check_battery_cell_voltage, HOOK_PRIO_DEFAULT);
+
+int check_battery_swell_voltage(void)
+{
+	for (int i = 0; i < BAT_SERIES; i++) {
+		if (bat_cell_volt[i] >= 4150) {
+			return 0;
+		}
+	}
+
+	return 1;
+}
+
+static uint8_t step_charging_level = 0;
+static uint32_t step1_current = 0;
+static uint32_t step2_current = 0;
 int charger_profile_override(struct charge_state_data *curr)
 {
-	if ((chipset_in_state(CHIPSET_STATE_ON)) &&
-	    (curr->requested_current > CHARGING_CURRENT_45C))
-		curr->requested_current = CHARGING_CURRENT_45C;
+	static int design_capacity;
+	int wDataC = 0;
+	int wDataV = CHARGING_VOLTAGE;
+	int rateFCDC = 0;
+
+	uint32_t cal_current = 0;
+	enum charge_state state;
+
+	charging_data = curr;
+
+	if (curr->batt.is_present == BP_YES) {
+		int bat_temp = DECI_KELVIN_TO_CELSIUS(curr->batt.temperature);
+		find_battery_thermal_zone(bat_temp);
+
+		/* charge stop */
+		if (temp_zone == ARRAY_SIZE(bat_temp_table) - 1) {
+			curr->requested_current = curr->requested_voltage = 0;
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			curr->state = ST_IDLE;
+
+			return 0;
+		}
+
+		state = curr->state;
+		if (state == ST_CHARGE) {
+			if (design_capacity == 0) {
+				if (battery_design_capacity(&design_capacity)) {
+					design_capacity =
+						DEFAULT_DESIGN_CAPACITY;
+				}
+			}
+
+			cal_current = curr->batt.full_capacity * 100;
+			cal_current += (design_capacity / 2);
+			cal_current /= design_capacity;
+			rateFCDC = (int)cal_current;
+
+			/* calculate current & voltage */
+			if (rateFCDC <= 85) {
+				cal_current = curr->batt.full_capacity;
+
+				if (chipset_in_state(CHIPSET_STATE_ON)) {
+					/* FCC * 0.45C */
+					cal_current *= 9;
+					cal_current /= 20;
+				} else {
+					/* FCC * C-rate * Charge factor */
+					cal_current *= (CRATE_100 * CFACT_10);
+					cal_current /= 1000;
+
+					/* Step1: 0.9C */
+					step1_current =
+						curr->batt.full_capacity;
+					step1_current *= 9;
+					step1_current /= 10;
+					/* Step2: 0.72C */
+					step2_current = step1_current;
+					step2_current *= 4;
+					step2_current /= 5;
+				}
+
+				wDataC = (int)cal_current;
+				/* ChargingVoltage - (170mV * series) */
+				wDataV -= (170 * BAT_SERIES);
+			} else if (rateFCDC <= 99) {
+				cal_current = curr->batt.full_capacity;
+				if (chipset_in_state(CHIPSET_STATE_ON)) {
+					/* FCC * 0.45C */
+					cal_current *= 9;
+					cal_current /= 20;
+				} else {
+					/* FCC * C-rate * Charge factor */
+					cal_current *= (CRATE_100 * CFACT_10);
+					cal_current /= 1000;
+
+					/* Step1: 0.9C */
+					step1_current =
+						curr->batt.full_capacity;
+					step1_current *= 9;
+					step1_current /= 10;
+					/* Step2: 0.72C */
+					step2_current = step1_current;
+					step2_current *= 4;
+					step2_current /= 5;
+				}
+				wDataC = (int)cal_current;
+				/* ChargingVoltage - ((1-FCC/DC)*100*series) -
+				 * (25*series) */
+				wDataV -=
+					(((100 - rateFCDC) * 10 * BAT_SERIES) +
+					 (25 * BAT_SERIES));
+			} else {
+				cal_current = design_capacity;
+				if (chipset_in_state(CHIPSET_STATE_ON)) {
+					/* DC * 0.45C */
+					cal_current *= 9;
+					cal_current /= 20;
+				} else {
+					/* FCC * C-rate * Charge factor */
+					cal_current *= (CRATE_100 * CFACT_10);
+					cal_current /= 1000;
+
+					/* Step1: 0.9C */
+					step1_current = design_capacity;
+					step1_current *= 9;
+					step1_current /= 10;
+					/* Step2: 0.72C */
+					step2_current = step1_current;
+					step2_current *= 4;
+					step2_current /= 5;
+				}
+				wDataC = (int)cal_current;
+			}
+
+			switch (temp_zone) {
+			/* low temp 1 */
+			case 0:
+				/* DC * 8% */
+				wDataC = design_capacity;
+				wDataC *= 2;
+				wDataC /= 25;
+				break;
+			/* low temp 2 */
+			case 1:
+				/* DC * 24% */
+				wDataC = design_capacity;
+				wDataC *= 6;
+				wDataC /= 25;
+				break;
+			/* low temp 3 */
+			case 2:
+				wDataC = curr->batt.full_capacity;
+				if (chipset_in_state(CHIPSET_STATE_ON)) {
+					/* FCC * 0.45C */
+					wDataC *= 9;
+					wDataC /= 20;
+				} else {
+					/* FCC * 0.72C */
+					wDataC *= 18;
+					wDataC /= 25;
+				}
+				break;
+			/* Normal temp */
+			case 3:
+				if (step_charging_level == 1)
+					wDataC = (int)step1_current;
+				else if (step_charging_level == 2)
+					wDataC = (int)step2_current;
+				break;
+			/* high temp */
+			case 4:
+				if (check_battery_swell_voltage()) {
+					/* DC * 30% */
+					wDataC = design_capacity;
+					wDataC *= 3;
+					wDataC /= 10;
+					wDataV = TC_CHARGING_VOLTAGE;
+				} else {
+					temp_zone = 3;
+					if (step_charging_level == 1)
+						wDataC = (int)step1_current;
+					else if (step_charging_level == 2)
+						wDataC = (int)step2_current;
+				}
+				break;
+			default:
+				break;
+			}
+
+			if (bat_cell_over_volt_flag) {
+				if (wDataV > bat_cell_ovp_volt)
+					wDataV = bat_cell_ovp_volt;
+			}
+
+			if (curr->requested_current != wDataC) {
+				curr->requested_current = wDataC;
+			}
+			if (curr->requested_voltage != wDataV) {
+				curr->requested_voltage = wDataV;
+			}
+		} else {
+			temp_zone = 3;
+		}
+	} else {
+		design_capacity = 0;
+		temp_zone = 3;
+	}
 
 	return 0;
 }
@@ -166,3 +488,48 @@ static void reduce_input_voltage_when_full(void)
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, reduce_input_voltage_when_full, HOOK_PRIO_DEFAULT);
+
+#define STEP_VOLTAGE_0 16360
+#define STEP_VOLTAGE_1 16760
+static uint8_t step_charging_count = 0;
+static void check_step_charging(void)
+{
+	int32_t charger_mw;
+
+	charger_mw = charge_manager_get_power_limit_uw() / 100000;
+
+	/*
+	 *  1. if charging in suspend
+	 *  2. Not sub-power
+	 *  3. Not swelling state
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON) || (charger_mw < 300) ||
+	    (charging_data->state != ST_CHARGE) || (temp_zone != 3)) {
+		step_charging_level = step_charging_count = 0;
+		return;
+	}
+
+	if (step_charging_level == 2)
+		return;
+
+	if ((step_charging_level == 0) &&
+	    (charging_data->batt.voltage > STEP_VOLTAGE_0)) {
+		if (step_charging_count < 5) {
+			step_charging_count++;
+		} else {
+			step_charging_count = 0;
+			step_charging_level = 1;
+		}
+	} else if ((step_charging_level == 1) &&
+		   (charging_data->batt.voltage > STEP_VOLTAGE_1)) {
+		if (step_charging_count < 5) {
+			step_charging_count++;
+		} else {
+			step_charging_count = 0;
+			step_charging_level = 2;
+		}
+	} else {
+		step_charging_count = 0;
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, check_step_charging, HOOK_PRIO_DEFAULT);
