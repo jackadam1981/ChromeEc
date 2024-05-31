@@ -405,9 +405,17 @@ extern struct replacement_instruction_t signal_bits_replacement;
  * has added one to the code addresses.  The below macros convert between data
  * pointers suitable for memcpy(), and code pointers suitable for jumping to.
  * (By clearing or setting the lowest bit.)
+ *
+ * Also, the SRAM, ordinarily accessible at 0x20000000, is also mapped at
+ * address 0x00A00000.  Accessing via the former will go through the data bus
+ * while the latter will go through the instruction bus.  There is a slight
+ * performance gain by using the instruction bus when executing interrupt
+ * handlers in SRAM, as the data bus can then be simultaneously used for
+ * peripheral register accesses.
  */
 #define THUMB_CODE_TO_DATA_PTR(P) ((uint8_t *)((size_t)(P) & ~1U))
-#define DATA_TO_THUMB_CODE_PTR(P) ((void (*)(void))((size_t)(P) | 1U))
+#define DATA_TO_THUMB_CODE_PTR(P) \
+	((void (*)(void))(((size_t)(P) & 0x00FFFFFF) | 0x0A000001U))
 
 __attribute__((noinline)) void
 replace(struct monitoring_slot_t *slot,
@@ -1911,7 +1919,6 @@ static int command_gpio_pwm(int argc, const char **argv)
 			.channel_pin[(pwm_pins[gpio].channel - 1)] = gpio;
 		timer_pwm_use[timer_no].num_channels_in_use++;
 	}
-	ccprintf("Count: %d\n", tim->cnt);
 
 	return EC_SUCCESS;
 }
