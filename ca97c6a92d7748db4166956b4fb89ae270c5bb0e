@@ -70,6 +70,24 @@
       "parentUuid": "b678b293_d411391a",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5577e0b0_43accfe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-05-31T15:59:52Z",
+      "side": 1,
+      "message": "You would need a servo micro to run_device_tests. If you don\u0027t have one, you could request through a bug and we\u0027ll support the request. In the meantime, outside the run_device_tests.py script, you can flash the test firmware image over uartupdatetool. Once the firmware boots to a console, you can then execute \u0027runtest\u0027 from the FW RW command console. This should manually approximate the behavior of the script and allow you to repro the failure @tomhughes is seeing",
+      "parentUuid": "d5d55ad8_fb233686",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
