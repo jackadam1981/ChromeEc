@@ -52,6 +52,24 @@
       "parentUuid": "44d632b7_2f52a138",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d55ad8_fb233686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-05-31T02:02:26Z",
+      "side": 1,
+      "message": "Thanks for your information. \nI use `uartupdatetool` to flash the image to the helipilot. In addition, we only have Servo board V2 and Suzy-Q cable. Have any comments to run `run_device_tests` with `uartupdatetool`?",
+      "parentUuid": "b678b293_d411391a",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
