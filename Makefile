@@ -378,7 +378,8 @@ ifneq ($(PDIR),)
 all-obj-$(1)+=$(call objs_from_dir_p,$(PDIR),$(PDIR),$(1))
 endif
 ifneq ($(PBDIR),)
-all-obj-$(1)+=$(call objs_from_dir_p,$(PBDIR),board-private,$(1))
+all-obj-$(1)+= \
+	$(call objs_from_dir_p,$(subst ../,$(empty),$(PBDIR)),board-private,$(1))
 endif
 all-obj-$(1)+=$(call objs_from_dir_p,common,common,$(1))
 ifeq ($(USE_BUILTIN_STDLIB), 1)
