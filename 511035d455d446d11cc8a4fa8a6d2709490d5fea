@@ -187,6 +187,30 @@
       },
       "revId": "511035d455d446d11cc8a4fa8a6d2709490d5fea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8834c8c_2bf6a672",
+        "filename": "zephyr/test/pdc/src/generic/ppm_common_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-05-31T22:32:28Z",
+      "side": 1,
+      "message": "Closed so I can CQ+2. Please re-open if this needs addressing in a follow-up CL.",
+      "parentUuid": "4bcecd46_0865bf8d",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "511035d455d446d11cc8a4fa8a6d2709490d5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
