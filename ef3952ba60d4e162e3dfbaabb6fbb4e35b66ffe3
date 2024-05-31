@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e67aa7_6670bc5c",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-05-31T14:09:11Z",
+      "side": 1,
+      "message": "This seems clunky, but I guess it\u0027s the best solution considering ACK_CC_CCI doesn\u0027t include a connector number in the UCSI spec.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 66
+      },
+      "revId": "ef3952ba60d4e162e3dfbaabb6fbb4e35b66ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
