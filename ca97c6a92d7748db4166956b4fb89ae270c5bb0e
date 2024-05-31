@@ -106,6 +106,24 @@
       "parentUuid": "5577e0b0_43accfe6",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d95da5_ef1234b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-05-31T18:20:06Z",
+      "side": 1,
+      "message": "\u003e In the meantime, outside the run_device_tests.py script, you can flash the test firmware image over uartupdatetool. Once the firmware boots to a console, you can then execute \u0027runtest\u0027 from the FW RW command console. This should manually approximate the behavior of the script and allow you to repro the failure @tomhughes is seeing\n\nI can confirm that running `runtest` at the console exhibits the same behavior. I just tried it again. The test hangs and then the watchdog fires and the device reboots.",
+      "parentUuid": "639b2485_188d2e33",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
