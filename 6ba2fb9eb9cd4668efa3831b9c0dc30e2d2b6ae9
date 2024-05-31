@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a0b5c27_55e891cd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-05-31T20:56:16Z",
+      "side": 1,
+      "message": "Ohhh, I see that the command version is actually baked into the homst command interface and is the second argument to the `ec_command` functions. So, when we request `EC_CMD_FP_INFO` version 1 and the device doesn\u0027t support it, I think we would receive the error `EC_RES_INVALID_VERSION`.",
+      "parentUuid": "17594dad_d66c4545",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1890,
+        "endChar": 14
+      },
+      "revId": "6ba2fb9eb9cd4668efa3831b9c0dc30e2d2b6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0b17cbc_232e39ab",
         "filename": "util/ectool.cc",
         "patchSetId": 1
