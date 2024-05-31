@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236754b6_b2d3e1bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-31T20:53:48Z",
+      "side": 1,
+      "message": "Do you mean trogdor or its variant?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "9e47b2882b3383d77b9580e45e941226805d8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49369a2_a1fdacdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-31T20:53:48Z",
+      "side": 1,
+      "message": "Can you verify other cases:\n* Shutdown from recovery screen by power button.\n* Shutdown from recovery screen by selecting shutdown from the menu.\n* Shutdown from recovery screen by closing the lid.",
+      "range": {
+        "startLine": 14,
+        "startChar": 36,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "9e47b2882b3383d77b9580e45e941226805d8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd00d569_2df3c37a",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-05-31T20:53:48Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the power sequence of mt8186.\n\nI assume chipset_warm_reset_interrupt is called when the AP is warm-resetting. Why do you need to check is_resetting? What case are you trying to exclude?",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 17
+      },
+      "revId": "9e47b2882b3383d77b9580e45e941226805d8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
