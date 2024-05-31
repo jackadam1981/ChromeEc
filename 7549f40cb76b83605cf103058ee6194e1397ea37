@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48bca3c1_7df06df9",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-05-31T20:36:03Z",
+      "side": 1,
+      "message": "For zasserts inside loops I would strongly recommend printing the values being compared as well as `cmd` in the assert messages so we know what command failed, otherwise we just get a line number.",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 56
+      },
+      "revId": "7549f40cb76b83605cf103058ee6194e1397ea37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
