@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bbe84b3_0c45a6d7",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "please move those definitions to the beginning of this file",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 19
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24b545f_49f9db32",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "I suggest creating an enum for `temp_zone`",
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04796ec3_b1ea66e6",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "same here, please move to the top",
+      "range": {
+        "startLine": 174,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 29
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff620dc_a3422f56",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "naming convention: `w_data` or just `data`",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54474e3_88083365",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "please add #define for that",
+      "range": {
+        "startLine": 246,
+        "startChar": 26,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c958c9_7527041d",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "According to the logic that is checking this function,it should return \u00271\u0027 here, right?",
+      "range": {
+        "startLine": 247,
+        "startChar": 10,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb538ce_ba68f144",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "This function became very nested and long. Please split to sub-functions for better readability",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c639613f_f4373389",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "naming conventions - `data_c` and `data_v`",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c9f83f_6b58963c",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-05-31T19:11:16Z",
+      "side": 1,
+      "message": "Please move those up as well",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 39
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
