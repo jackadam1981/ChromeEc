@@ -147,6 +147,13 @@ static void set_pmic_pwroff(void)
 	GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 1);
 }
 
+static void warm_reset_request_interrupt_deferred(void)
+{
+	if (system_is_manual_recovery())
+		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+}
+DECLARE_DEFERRED(warm_reset_request_interrupt_deferred);
+
 void chipset_warm_reset_interrupt(enum gpio_signal signal)
 {
 	/* If this is not a chipset_reset, the ap_rst must be held by gsc or
@@ -159,6 +166,9 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 		is_held = false;
 
 	power_signal_interrupt(signal);
+	if (is_resetting)
+		hook_call_deferred(&warm_reset_request_interrupt_deferred_data,
+				   0);
 }
 
 static void reset_request_interrupt_deferred(void)
