@@ -34,6 +34,24 @@
       "parentUuid": "29c39474_52bfb1d5",
       "revId": "bbf5e24db9a184f270dff9f8868c23b729a5e7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765c7145_55222362",
+        "filename": "zephyr/program/nissa/sundance/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-05-31T06:53:15Z",
+      "side": 1,
+      "message": "```\n$ repo download -c chromiumos/platform/ec 5579179\n$ git checkout m/main -- zephyr/program/nissa/sundance/src/usbc.c\n$ cros_sdk zmake build sundance\n```\n\nThis builds fine as long as you don\u0027t make unnecessary changes to usbc.c, but I haven\u0027t tested the result to verify it works as you want.",
+      "parentUuid": "d298972d_daf83829",
+      "revId": "bbf5e24db9a184f270dff9f8868c23b729a5e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
