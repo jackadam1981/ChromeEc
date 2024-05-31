@@ -16,6 +16,24 @@
       "message": "I previously suggested a custom analog circuit for allowing HyperDebug to simulate USB power delivery negotiation on the CC lines, in order to test if Ti50 could still reliably detect a debug cable:\nhttps://docs.google.com/document/d/1wmBd2z1m2UsKbTXsCNqCf2S7TyXyliVpaC7E4IUE_38/edit\n\nAs I was toying with some optimizations to the bit-banging feature of HyperDebug, it dawned on me that the digital-to-analog converter in the STM32 MCU is pretty capable, and that the timer interrupt used for bit-banging could also be used to set a new DAC voltage value.  This would allow us to simulate PD communication without any additional circuits on HyperDebug, meaning that it could be made part of an automatic test suite.\n\nThe current timer interrupt can run only slightly faster than 100kHz, which is not enough for USB-PD (and branching in the interrupt handler between binary GPIO and analog signals would make it even slower), so in order for it to work quickly enough, this CL stack first replaces the interrupt handler with a routine composed at runtime by concatenating individual \"snippets\" of machine code, according to the set of pins to be manipulated, eliminating any loop or lookup in the time-sensitive handler.  In a manner similar to how GPIO monitoring currently works.\n\nBefore working on opentitantool support for analog waveform generation, I would like some initial comments on this approach.\nBenefits:\n*) Routine testing of USB-PD resilience\n*) Bitbanging up to 1MHz allows testing more SPI/I2C corner cases, and other hard-to-trigger race conditions with higher precision.\n*) Analog waveform could be used to test brownout response (with additional circuitry on the shields)\nDrawback:\n*) Maintaining machine code adds complexity",
       "revId": "89c161a8a602f00bd320fa36eb763bae145a8519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136f9a6a_c09e936a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-05-31T14:00:23Z",
+      "side": 1,
+      "message": "I think automated USB-PD resilience is great if we can replicate it. Faster bitbanging makes sense too.\n\n\nWe already have paid the cost to drop into machine code and this marginal amount of code isn\u0027t that complex, so I would  say it is worth it.",
+      "parentUuid": "557b425d_01ae163b",
+      "revId": "89c161a8a602f00bd320fa36eb763bae145a8519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
