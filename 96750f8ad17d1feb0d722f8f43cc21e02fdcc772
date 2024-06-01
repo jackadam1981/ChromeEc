@@ -16,6 +16,24 @@
       "message": "Shall we clear the rest (message_in, _out, control, CCI)?",
       "revId": "96750f8ad17d1feb0d722f8f43cc21e02fdcc772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "706b608f_70ea781a",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-01T22:42:52Z",
+      "side": 0,
+      "message": "CCI + Control get cleared by the state machine already via normal procedure.\nMESSAGE_IN and MESSAGE_OUT are only useful when the Control or CCI says to use them so there is no need to clear them.\n\nThe point of PPM_RESET is to clear internal variables and UCSI_DATA is a shared memory region.",
+      "parentUuid": "fd257c84_4ccc3962",
+      "revId": "96750f8ad17d1feb0d722f8f43cc21e02fdcc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
