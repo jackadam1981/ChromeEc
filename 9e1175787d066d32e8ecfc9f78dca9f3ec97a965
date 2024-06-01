@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65c7ef9_833fbf1f",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-01T00:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a55db05_11d79068",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "056d0550_c9837a84",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279d7f6b_8341fa77",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-01T00:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "056d0550_c9837a84",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "381b4ff4_42606a85",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-28T15:45:07Z",
       "side": 1,
       "message": "Use `shell_fprintf` in place of all `printk`",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 8
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a55ec28_a9456d4a",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-01T00:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "381b4ff4_42606a85",
       "range": {
         "startLine": 416,
         "startChar": 2,
