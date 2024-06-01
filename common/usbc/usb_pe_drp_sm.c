@@ -808,6 +808,12 @@ static void pe_init(int port)
 
 	tc_pd_connection(port, 0);
 
+	if (IS_ENABLED(CONFIG_BATTERY) && battery_is_present() == BP_NO &&
+	    (system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN)) {
+		set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
+		return;
+	}
+
 	if (pd_get_power_role(port) == PD_ROLE_SOURCE)
 		set_state_pe(port, PE_SRC_STARTUP);
 	else
