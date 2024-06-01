@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd257c84_4ccc3962",
+        "filename": "extra/um_ppm/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-01T19:10:55Z",
+      "side": 0,
+      "message": "Shall we clear the rest (message_in, _out, control, CCI)?",
+      "revId": "96750f8ad17d1feb0d722f8f43cc21e02fdcc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
