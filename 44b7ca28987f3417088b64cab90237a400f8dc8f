@@ -70,6 +70,30 @@
       },
       "revId": "44b7ca28987f3417088b64cab90237a400f8dc8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c6521d_59f56bce",
+        "filename": "zephyr/program/brox/brox/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-01T00:10:17Z",
+      "side": 1,
+      "message": "the trace feature plus host command needed to fetch the data is about\n800 bytes of flash.\nwhen you include the associated EC console command (on by default),\nthe total goes up to about 1600 bytes.",
+      "parentUuid": "013248d1_34859172",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "44b7ca28987f3417088b64cab90237a400f8dc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
