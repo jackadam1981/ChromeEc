@@ -16,6 +16,98 @@
       "message": "@shawnku@chromium.org, please help to review",
       "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be261985_5ead2793",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-03T05:08:57Z",
+      "side": 1,
+      "message": "unindent 1 level\n```suggestion\n\t/*\n```",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59195f9_9bb781b6",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-03T05:08:57Z",
+      "side": 1,
+      "message": "unindent 1 level\n```suggestion\n\tmotionsense-sensor {\n```",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103639bf_6d4f507f",
+        "filename": "zephyr/program/corsola/veluza/src/sensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-03T05:08:57Z",
+      "side": 1,
+      "message": "remove unused include\n```suggestion\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d258191_f0535228",
+        "filename": "zephyr/program/corsola/veluza/src/sensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-03T05:08:57Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
