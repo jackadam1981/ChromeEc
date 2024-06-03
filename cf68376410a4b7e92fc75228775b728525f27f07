@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799c58e3_783c08c8",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-03T19:43:54Z",
+      "side": 1,
+      "message": "can this be one time thing? if yes move to *xec_init()",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 36
+      },
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87984c55_11d5f1a5",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-03T19:43:54Z",
+      "side": 1,
+      "message": "nit: how about adding a TODO to derive these pin list \u0026 polarity from device tree?",
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c6c362_05368855",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-03T19:43:54Z",
+      "side": 1,
+      "message": "nit: how about moving the below code to another function? so that we can differentiate logic between VI \u0026 non VCI hibernate",
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
