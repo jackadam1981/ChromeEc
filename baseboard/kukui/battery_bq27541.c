@@ -11,6 +11,7 @@
 #include "console.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
+#include "system.h"
 #include "util.h"
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
@@ -24,6 +25,11 @@
 #define CHARGER_LIMIT_TIMEOUT_HOURS_TEMP 2
 
 #define BAT_LEVEL_PD_LIMIT 85
+
+#ifdef BATTERY_LIMIT_TO_80
+/* full charge mark */
+static bool charge_full_flag = false;
+#endif
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
@@ -194,6 +200,34 @@ int charger_profile_override(struct charge_state_data *curr)
 			}
 		}
 	}
+
+#ifdef BATTERY_LIMIT_TO_80
+	/*
+	 * Battery: Any value -> 100%, set the full charge mark
+	 * Battery: 100 -> 98, battery not charging
+	 * Battery: 98 -> 0, clear the battery full charge mark
+	 * 4104 mV: Battery voltage 80%
+	 */
+	if (!strcasecmp(current_region_code.region_code, "tw")) {
+		if (curr->batt.state_of_charge > 99) {
+			charge_full_flag = true;
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			curr->requested_voltage =
+				MIN(4104, curr->requested_voltage);
+			curr->requested_current =
+				MIN(1, curr->requested_current);
+		} else if (charge_full_flag &&
+			   curr->batt.state_of_charge > 98) {
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			curr->requested_voltage =
+				MIN(4104, curr->requested_voltage);
+			curr->requested_current =
+				MIN(1, curr->requested_current);
+		} else {
+			charge_full_flag = false;
+		}
+	}
+#endif
 
 #ifdef VARIANT_KUKUI_CHARGER_MT6370
 	mt6370_charger_profile_override(curr);
