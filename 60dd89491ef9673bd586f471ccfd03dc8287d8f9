@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8fd2a6_2043350c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4122,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-03T23:42:45Z",
+      "side": 1,
+      "message": "chatted offline: the way the kernel side is coded, we can only extend\nthis struct with new versions.",
+      "parentUuid": "b7f2aaed_6317a41a",
+      "range": {
+        "startLine": 4122,
+        "startChar": 8,
+        "endLine": 4122,
+        "endChar": 26
+      },
+      "revId": "60dd89491ef9673bd586f471ccfd03dc8287d8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0715df37_8a7374ac",
