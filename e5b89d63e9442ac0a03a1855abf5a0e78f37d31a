@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a18933_865a21bf",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-03T23:38:26Z",
+      "side": 1,
+      "message": "are you missing a patch in this series to remove this code once\nthe driver patch that applies the platform default?",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "e5b89d63e9442ac0a03a1855abf5a0e78f37d31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
