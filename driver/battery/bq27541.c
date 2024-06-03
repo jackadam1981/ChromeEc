@@ -337,6 +337,7 @@ void battery_get_params(struct batt_params *batt)
 		batt_new.desired_voltage = battery_get_info()->voltage_max;
 		batt_new.desired_current = 4096;
 	}
+	board_battery_compensate_params(&batt_new);
 	memcpy(batt, &batt_new, sizeof(*batt));
 }
 
