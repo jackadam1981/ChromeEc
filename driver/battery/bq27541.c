@@ -139,6 +139,15 @@ int battery_device_name(char *device_name, int buf_size)
 
 int battery_state_of_charge_abs(int *percent)
 {
+#ifdef BATTERY_LIMIT_TO_80
+	int percent_val,rv;
+
+	rv = bq27541_read(REG_STATE_OF_CHARGE, &percent_val);
+	if(rv == EC_SUCCESS)
+		*percent = ((percent_val * 5 )/4);
+
+	return rv;
+#endif
 	return bq27541_read(REG_STATE_OF_CHARGE, percent);
 }
 
@@ -149,6 +158,16 @@ int battery_remaining_capacity(int *capacity)
 
 int battery_full_charge_capacity(int *capacity)
 {
+#ifdef BATTERY_LIMIT_TO_80
+	int percent_val;
+	int rv;
+
+	rv = bq27541_read(REG_FULL_CHARGE_CAPACITY, &percent_val);
+	if(rv == EC_SUCCESS)
+		*capacity = ((percent_val *4 ) / 5);
+
+	return rv;
+#endif
 	return bq27541_read(REG_FULL_CHARGE_CAPACITY, capacity);
 }
 
@@ -289,6 +308,10 @@ void battery_get_params(struct batt_params *batt)
 	batt->state_of_charge =
 		fake_state_of_charge >= 0 ? fake_state_of_charge : v;
 
+#ifdef BATTERY_LIMIT_TO_80
+	batt->state_of_charge = fake_state_of_charge >= 0 ?
+					fake_state_of_charge : (v*10/8);
+#endif
 	if (bq27541_read(REG_VOLTAGE, &batt->voltage))
 		batt->flags |= BATT_FLAG_BAD_VOLTAGE;
 
