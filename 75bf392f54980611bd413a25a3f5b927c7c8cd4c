@@ -99,6 +99,24 @@
       "parentUuid": "d7e6121c_4436ff90",
       "revId": "75bf392f54980611bd413a25a3f5b927c7c8cd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27726e2a_9f60671b",
+        "filename": "zephyr/program/corsola/squirtle/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-06-03T07:24:33Z",
+      "side": 1,
+      "message": "We can add comments. Because I don\u0027t know how many board versions there are.",
+      "parentUuid": "571c2105_e2f2ff04",
+      "revId": "75bf392f54980611bd413a25a3f5b927c7c8cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
