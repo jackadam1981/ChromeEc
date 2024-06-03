@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e356becd_fd7f2d02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-06-03T17:46:08Z",
+      "side": 1,
+      "message": "Could we issue a reboot_at_shutdown command rather than altering the power sequencing?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "9e47b2882b3383d77b9580e45e941226805d8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "236754b6_b2d3e1bd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
