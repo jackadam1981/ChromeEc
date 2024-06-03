@@ -259,7 +259,6 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 	hook_call_deferred(&reset_flag_deferred_data, RESET_FLAG_TIMEOUT);
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 	crec_usleep(SYS_RST_PULSE_LENGTH);
-	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 }
 
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
@@ -302,7 +301,7 @@ static enum power_state power_get_signal_state(void)
 	 * - GSC or Servo is holding the SYS_RST, in this case, we should stay
 	 * at S0.
 	 */
-	if (is_resetting || is_held)
+	if (is_held)
 		return POWER_S0;
 	if (power_get_signals() & IN_AP_RST) {
 		/* If it has been put to G3 from S5 idle, then stay at G3.*/
@@ -395,6 +394,8 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S5:
 		if (is_exiting_off)
 			return POWER_S5S3;
+		else if (is_resetting)
+			return POWER_S5S3;
 		else if (next_state == POWER_G3)
 			return POWER_S5G3;
 		else if (next_state == POWER_S5)
@@ -437,6 +438,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* Off state exited. */
 		is_exiting_off = false;
 		is_s5g3_passed = false;
+		is_resetting = false;
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
 		power_signal_enable_interrupt(GPIO_AP_IN_SLEEP_L);
