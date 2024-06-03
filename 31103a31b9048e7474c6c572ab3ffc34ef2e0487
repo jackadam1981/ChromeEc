@@ -16,6 +16,29 @@
       "message": "The stress test (4000 times) over the weekend has passed.\nAdditionally, the EC power consumption is normal.",
       "revId": "31103a31b9048e7474c6c572ab3ffc34ef2e0487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7e660a_f968c296",
+        "filename": "zephyr/subsys/usb_dc/usb_google_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-06-03T02:35:22Z",
+      "side": 1,
+      "message": "Please make priority of tx/rx thread adjustable.",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 207,
+        "endChar": 17
+      },
+      "revId": "31103a31b9048e7474c6c572ab3ffc34ef2e0487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
