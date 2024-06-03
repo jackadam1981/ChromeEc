@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab79d2c2_66950af6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-03T17:14:43Z",
+      "side": 1,
+      "message": "This isn\u0027t still not as good.\n\nWhen the PB is pressed, all the columns would have ROW2 asserted. So, it\u0027s better to check that condition first before canceling ROW2 for all the columns except the refresh key column. That way, we can minimize the chance ROW2 keys are canceled by mistake.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 33
+      },
+      "revId": "8088b2c04d30ca0a551d109de7e66820ffa0875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
