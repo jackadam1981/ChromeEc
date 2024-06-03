@@ -42,6 +42,9 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
+/*Expand the a by 25%  =>  a * 125% */
+#define MULTIPLY_125(a) ((a * 5) / 4)
+
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
@@ -422,3 +425,16 @@ static void mt6370_reg_fix(void)
 		    MASK_CLR);
 }
 DECLARE_HOOK(HOOK_INIT, mt6370_reg_fix, HOOK_PRIO_DEFAULT);
+
+__override void board_battery_compensate_params(struct batt_params *batt)
+{
+	/*
+	 * (b:344542139):Change the battery capacity and battery
+	 * state_of_charge to 125% of the original value.
+	 */
+	if (!strcasecmp(current_region_code.region_code, "tw")) {
+		batt->state_of_charge = MULTIPLY_125(batt->state_of_charge);
+		batt->remaining_capacity =
+			MULTIPLY_125(batt->remaining_capacity);
+	}
+}
