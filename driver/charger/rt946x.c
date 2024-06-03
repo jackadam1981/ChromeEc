@@ -238,7 +238,7 @@ static enum ec_error_list rt946x_block_write(int chgnum, int reg,
 			       chg_chips[chgnum].i2c_addr_flags, reg, val, len);
 }
 
-static int rt946x_update_bits(int chgnum, int reg, int mask, int val)
+int rt946x_update_bits(int reg, int mask, int val)
 {
 	int rv;
 	int reg_val = 0;
@@ -771,7 +771,7 @@ static enum ec_error_list rt946x_get_status(int chgnum, int *status)
 	int rv;
 	int val = 0;
 
-	rv = rt946x_read8(chgnum, RT946X_REG_CHGCTRL2, &val);
+	rv = rt946x_read8(RT946X_REG_CHGCTRL2, &val);
 	if (rv)
 		return rv;
 	val = (val & RT946X_MASK_CHG_EN) >> RT946X_SHIFT_CHG_EN;

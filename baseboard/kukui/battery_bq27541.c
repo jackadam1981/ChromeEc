@@ -9,6 +9,7 @@
 #include "builtin/assert.h"
 #include "charge_state.h"
 #include "charger_mt6370.h"
+#include "driver/charger/rt946x.h"
 #include "console.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
@@ -29,6 +30,8 @@
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 enum battery_type { BATTERY_CPT = 0, BATTERY_COUNT };
+
+static bool charge_flag = false;
 
 static const struct battery_info info[] = {
 	[BATTERY_CPT] = {
@@ -51,6 +54,7 @@ const struct battery_info *battery_get_info(void)
 	return &info[BATT_ID];
 }
 
+extern int extpower_is_present(void);
 int charger_profile_override(struct charge_state_data *curr)
 {
 	static timestamp_t deadline_48;
@@ -188,6 +192,75 @@ int charger_profile_override(struct charge_state_data *curr)
 				curr->requested_voltage = 4100;
 			}
 		}
+	}
+
+	/*
+	if(curr->batt.state_of_charge > 97)
+	{
+		charge_flag = true;
+		if (!ac_one)
+		{
+			ac_one = 1;
+			ac_on_cyc = 1;
+		}
+		
+	}else if (curr->batt.state_of_charge < 95)
+	{
+		ac_on_cyc = 0;
+		ac_one = 0;
+		charge_flag = false;
+	}
+
+	if((!extpower_is_present()) && charge_flag)
+	{
+		ac_one = 0;
+		ac_on_cyc = 2; // 2++
+		rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
+			0x04);
+	}
+	
+	cprints(2,"ac_on_cyc = %d", ac_on_cyc);
+	if (charge_flag && (extpower_is_present()) && (ac_on_cyc == 2))
+	{
+		cprints(2, "!!!!!!IDLE");
+		curr->requested_voltage = curr->requested_current = 0;
+	}
+	else if(charge_flag && (extpower_is_present()) && (ac_on_cyc == 1) &&
+	 (curr->batt.state_of_charge >= 99))
+	{
+		cprints(2, "!!!!!!IDLE2");
+		rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
+			0xFB);
+		curr->requested_voltage = 4104; //80%
+		curr->requested_current = 1;
+	}
+	*/
+
+	if(curr->batt.state_of_charge >= 99)
+	{
+		charge_flag = true;
+	}else if (curr->batt.state_of_charge < 96)
+	{
+		rt946x_update_bits(RT946X_REG_CHGCTRL2, 0xff, 0x1);
+		charge_flag = false;
+	}
+
+	if (charge_flag && (extpower_is_present()) &&
+	(curr->batt.state_of_charge <= 99))
+	{
+		cprints(2, "!!!!!!IDLE");
+		//curr->requested_voltage = 4104; //80%
+		//curr->requested_current = 1;
+	}
+	else if(charge_flag && (extpower_is_present()) &&
+	 (curr->batt.state_of_charge >= 99))
+	{
+		cprints(2, "!!!!!!IDLE2");
+		rt946x_update_bits(RT946X_REG_CHGCTRL2, 0xff, 0x0);
+		//rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
+		//	0xFA);
+		//curr->requested_voltage = 4104; //80%
+		//curr->requested_current = 1;
 	}
 
 #ifdef VARIANT_KUKUI_CHARGER_MT6370

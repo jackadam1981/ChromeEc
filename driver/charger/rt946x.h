@@ -708,6 +708,7 @@ void rt946x_interrupt(enum gpio_signal signal);
 /* Enable/Disable rt946x (in charger or boost mode) */
 int rt946x_enable_charger_boost(int en);
 
+int rt946x_update_bits(int reg, int mask, int val);
 /*
  * Return 1 if VBUS is ready, which means
  * UVLO < VBUS < VOVP && VBUS > BATS + VSLP
